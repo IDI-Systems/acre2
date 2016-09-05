@@ -1,29 +1,29 @@
 /*
-    Copyright © 2010,International Development & Integration Systems, LLC
+    Copyright ï¿½ 2010,International Development & Integration Systems, LLC
     All rights reserved.
     http://www.idi-systems.com/
 
     For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is 
+    prohibited. Redistribution or modification of source code is
     STRICTLY prohibited.
 
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
     "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
     LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
     COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
     INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
     POSSIBILITY OF SUCH DAMAGE.
 */
 
 #define DISABLE_COMPILE_CACHE
 
-#include "\idi\clients\global\addons\game\script_common_macros.hpp"
+#include "\idi\clients\acre\addons\game\script_common_macros.hpp"
 
 #ifndef PRELOAD_ADDONS
 #define PRELOAD_ADDONS class CfgAddons \
@@ -42,8 +42,8 @@
 ARMA2/VBS2 COMPAT SECTION
 **/
 
-#include "\idi\clients\global\addons\game\script_lib.hpp"
-#include "\idi\clients\global\addons\game\script_command_replace.hpp"
+#include "\idi\clients\acre\addons\game\script_lib.hpp"
+#include "\idi\clients\acre\addons\game\script_command_replace.hpp"
 
 
 /**
@@ -92,7 +92,7 @@ END ARMA2/VBS2 COMPAT SECTION
 #define OPEN_RADIO_PATH "\idi\clients\acre\Addons\sys_radio\fnc_openRadio.sqf"
 #define LIST_RADIO_PATH "\idi\clients\acre\Addons\sys_radio\fnc_listRadios.sqf"
 
-#define ACRE_INDEX_CONTROLLERDATA        2 
+#define ACRE_INDEX_CONTROLLERDATA        2
 #define ACRE_INDEX_UIDATA                1
 #define ACRE_INDEX_TXDATA                0
 
@@ -117,25 +117,25 @@ END ARMA2/VBS2 COMPAT SECTION
 
 #define ACRE_DEBUG_TRACE1(message,value1)                                ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5%6", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, toStr[10]];\
                                                                         player sideChat format["%1 %2:%3 %4%5", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1];
-                                                    
+
 #define ACRE_DEBUG_TRACE2(message,value1,value2)                        ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6%7", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, toStr[10]];\
                                                                         player sideChat format["%1 %2:%3 %4 %5 %6", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2];
-                                                    
+
 #define ACRE_DEBUG_TRACE3(message,value1,value2,value3)                    ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7%8", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, toStr[10]];\
                                                                         player sideChat format["%1 %2:%3 %4 %5 %6 %7", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3];
-                                                    
+
 #define ACRE_DEBUG_TRACE4(message,value1,value2,value3,value4)            ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7 %8%9", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, toStr[10]];\
                                                                         player sideChat format["%1 %2:%3 %4 %5 %6 %7 %8", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4];
-                                                    
+
 #define ACRE_DEBUG_TRACE5(message,value1,value2,value3,value4,value5)    ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7 %8 %9%10", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, value5, toStr[10]];\
                                                                         player sideChat format["%1 %2:%3 %4 %5 %6 %7 %8 %9", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, value5];
-                                                    
-                            
+
+
 #define ACRE_DEBUG_FLUSH                copyToClipboard ACRE_DEBUG_STR;\
                                         ACRE_DEBUG_STR = "";
 
-                                        
-#define IS_REMOTE(radio)    
+
+#define IS_REMOTE(radio)
 
 #define IS_MUTED(playerObj) ([playerObj] call acre_sys_core_fnc_isMuted)
 
@@ -161,7 +161,7 @@ END ARMA2/VBS2 COMPAT SECTION
 #define ACRE_DATA_NETPRIORITY_HIGH        1
 #define ACRE_DATA_NETPRIORITY_MID        2
 #define ACRE_DATA_NETPRIORITY_LOW        3
-        
+
 #include "script_radio_macro.hpp"
 
 /*
@@ -292,7 +292,7 @@ PERFORMANCE COUNTERS SECTION
 
 #ifdef ACRE_PERFORMANCE_COUNTERS
     #define ADDPFH(function, timing, args) call { _ret = [function, timing, args, #function] call EFUNC(sys_sync,perFrame_add); if(isNil "ACRE_PFH" ) then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
-    
+
     #define CREATE_COUNTER(x) if(isNil "ACRE_COUNTERS" ) then { ACRE_COUNTERS=[]; }; GVAR(DOUBLES(x,counter))=[]; GVAR(DOUBLES(x,counter)) set[0, QUOTE(GVAR(DOUBLES(x,counter)))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; ACRE_COUNTERS pushBack GVAR(DOUBLES(x,counter));
     #define BEGIN_COUNTER(x) if(isNil QUOTE(GVAR(DOUBLES(x,counter)))) then { CREATE_COUNTER(x) }; GVAR(DOUBLES(x,counter)) set[2, diag_tickTime];
     #define END_COUNTER(x) GVAR(DOUBLES(x,counter)) pushBack [(GVAR(DOUBLES(x,counter)) select 2), diag_tickTime];
@@ -300,7 +300,7 @@ PERFORMANCE COUNTERS SECTION
     #define DUMP_COUNTERS ([__FILE__, __LINE__] call ACRE_DUMPCOUNTERS_FNC)
 #else
     #define ADDPFH(function, timing, args)    [function, timing, args, #function] call EFUNC(sys_sync,perFrame_add)
-    
+
     #define CREATE_COUNTER(x) /* disabled */
     #define BEGIN_COUNTER(x) /* disabled */
     #define END_COUNTER(x) /* disabled */
