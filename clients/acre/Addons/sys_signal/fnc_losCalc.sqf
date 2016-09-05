@@ -15,7 +15,7 @@ _returnPos set[0, _transmitterPos];
 _returnPos set[1, _receiverPos];
 
 if((_transmitterPos distance _receiverPos) == 0) then {
-	_receiverPos set[2, (_receiverPos select 2)+0.1];
+    _receiverPos set[2, (_receiverPos select 2)+0.1];
 };
 
 _3dDis = (_transmitterPos distance _receiverPos);

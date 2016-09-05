@@ -20,7 +20,7 @@ namespace acre {
  
             std::string filename;
 
-			uint32_t	compression;
+            uint32_t    compression;
             uint32_t    size;
             uint32_t    storage_size;
             uint32_t    offset;         // pre-computed during search, offset of file
@@ -33,7 +33,7 @@ namespace acre {
         class file {
         public:
             entry_p     entry;
-			std::unique_ptr<uint8_t[]> data;
+            std::unique_ptr<uint8_t[]> data;
             uint32_t    size;
         };
         typedef std::shared_ptr<file> file_p;

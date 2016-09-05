@@ -4,7 +4,7 @@
 params["_radioId", "_id", "_value"];
 
 if(!HASH_HASKEY(GVAR(radioScratchData), _radioId)) then {
-	HASH_SET(GVAR(radioScratchData), _radioId, HASH_CREATE);
+    HASH_SET(GVAR(radioScratchData), _radioId, HASH_CREATE);
 };
 
 private _data = HASH_GET(GVAR(radioScratchData), _radioId);

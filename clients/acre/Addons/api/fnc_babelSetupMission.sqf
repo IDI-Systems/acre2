@@ -48,8 +48,8 @@ _this spawn {
     };
     if (!((_this select 0) isEqualType [])) exitWith { false };
     // They provided an array of spoken languages
-	// Wait for player to be initialized
-	waitUntil { !isNull acre_player };
+    // Wait for player to be initialized
+    waitUntil { !isNull acre_player };
     private _languages = [];
     {
         private _curSide = _x select 0;
@@ -57,7 +57,7 @@ _this spawn {
         private _languageCount = (count _x);
         for [{_i=1}, {_i < _languageCount}, {_i=_i+1}] do {
             private _curLanguage = _x select _i;
-			
+            
             if((_languages pushBackUnique _curLanguage) != -1) then { 
                 [_curLanguage, _curLanguage] call acre_api_fnc_babelAddLanguageType;
             };

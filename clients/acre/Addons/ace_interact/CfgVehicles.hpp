@@ -6,7 +6,7 @@ class CfgVehicles {
                 displayName = "Radios";
                 condition = "true";
                 exceptions[] = {"isNotInside"};
-				statement = "true";
+                statement = "true";
                 insertChildren = "_this call acre_ace_interact_fnc_radioListChildrenActions";
                 priority = 0.1;
                 icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";

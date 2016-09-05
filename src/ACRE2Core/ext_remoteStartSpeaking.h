@@ -13,25 +13,25 @@
 
 RPC_FUNCTION(ext_remoteStartSpeaking) {
 
-	/*CTextMessage::formatNewMessage("ext_remoteStartSpeaking", 
-			"%d,%d,%s,%f,",
-			this->getSelf()->getId(),
-			this->getSelf()->getCurrentSpeakingType(),
-			this->getSelf()->getCurrentRadioId().c_str(),
-			this->getSelf()->getCurveScale()
-		) */
+    /*CTextMessage::formatNewMessage("ext_remoteStartSpeaking", 
+            "%d,%d,%s,%f,",
+            this->getSelf()->getId(),
+            this->getSelf()->getCurrentSpeakingType(),
+            this->getSelf()->getCurrentRadioId().c_str(),
+            this->getSelf()->getCurveScale()
+        ) */
 
-	ACRE_ID id = (ACRE_ID)vMessage->getParameterAsInt(0);
-	int languageId = (ACRE_ID)vMessage->getParameterAsInt(1);
-	std::string netId = std::string((char *)vMessage->getParameter(2));
-	
-	ACRE_SPEAKING_TYPE speakingType = (ACRE_SPEAKING_TYPE)vMessage->getParameterAsInt(3);
-	std::string radio_id = std::string((char *)vMessage->getParameter(4));
-	ACRE_VOLUME curveScale = vMessage->getParameterAsFloat(5);
+    ACRE_ID id = (ACRE_ID)vMessage->getParameterAsInt(0);
+    int languageId = (ACRE_ID)vMessage->getParameterAsInt(1);
+    std::string netId = std::string((char *)vMessage->getParameter(2));
+    
+    ACRE_SPEAKING_TYPE speakingType = (ACRE_SPEAKING_TYPE)vMessage->getParameterAsInt(3);
+    std::string radio_id = std::string((char *)vMessage->getParameter(4));
+    ACRE_VOLUME curveScale = vMessage->getParameterAsFloat(5);
 
-	CEngine::getInstance()->remoteStartSpeaking(id, languageId, netId, speakingType, radio_id, curveScale);
+    CEngine::getInstance()->remoteStartSpeaking(id, languageId, netId, speakingType, radio_id, curveScale);
 
-	return ACRE_OK;
+    return ACRE_OK;
 }
 DECLARE_MEMBER(char *, Name);
 };

@@ -5,10 +5,10 @@ private["_channelNumber", "_channels", "_channel", "_value", "_ret"];
 //params["_radioClass", "_presetName", "_channelReference", "_fieldName"];
 
 _ret = params [["_radioClass","",[""]],
-	["_presetName","",[""]],
-	"_channelReference",
-	["_fieldName","",[""]]];
-	
+    ["_presetName","",[""]],
+    "_channelReference",
+    ["_fieldName","",[""]]];
+    
 if (!_ret) exitWith { nil };
 
 
@@ -18,15 +18,15 @@ if (!_ret) exitWith { nil };
 
 _channelNumber = -1;
 if(_channelReference isEqualType []) then { 
-	// its a group and channel
+    // its a group and channel
 } else {
-	if(_channelReference isEqualType "") then { 
-		_channelNumber = parseNumber _channelReference;
-	} else {
-		if(_channelReference isEqualType 0) then {
-			_channelNumber = _channelReference;
-		};
-	};
+    if(_channelReference isEqualType "") then { 
+        _channelNumber = parseNumber _channelReference;
+    } else {
+        if(_channelReference isEqualType 0) then {
+            _channelNumber = _channelReference;
+        };
+    };
 };
 // The API takes channel numbers as 1-
 _channelNumber = _channelNumber - 1;

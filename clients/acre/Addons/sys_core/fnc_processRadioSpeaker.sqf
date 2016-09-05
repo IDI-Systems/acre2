@@ -1,31 +1,31 @@
 /*
-	Copyright © 2016,International Development & Integration Systems, LLC
-	All rights reserved.
-	http://www.idi-systems.com/
+    Copyright © 2016,International Development & Integration Systems, LLC
+    All rights reserved.
+    http://www.idi-systems.com/
 
-	For personal use only. Military or commercial use is STRICTLY
-	prohibited. Redistribution or modification of source code is 
-	STRICTLY prohibited.
+    For personal use only. Military or commercial use is STRICTLY
+    prohibited. Redistribution or modification of source code is 
+    STRICTLY prohibited.
 
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-	FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-	COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-	POSSIBILITY OF SUCH DAMAGE.
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+    POSSIBILITY OF SUCH DAMAGE.
 */
 // #define ACRE_PERFORMANCE_COUNTERS
 #include "script_component.hpp"
 BEGIN_COUNTER(process_radio_speaker);
 private["_okRadios", "_functionName"];
-		
-params["_unit","_playerRadios"];		
+        
+params["_unit","_playerRadios"];        
 
 private _radioId = _unit getVariable QUOTE(GVAR(currentSpeakingRadio));
 if(_radioId == "") exitWith { false };
@@ -52,25 +52,25 @@ if(!GVAR(speaking_cache_valid)) then {
 
 
 if((count _okRadios) > 0) then {
-	BEGIN_COUNTER(okradio_loop);
-	{
-		private _cachedSampleTime = _unit getVariable [format["ACRE_%1CachedSampleTime", _x], -1];
-		
-		if(time > _cachedSampleTime || !GVAR(speaking_cache_valid)) then {
+    BEGIN_COUNTER(okradio_loop);
+    {
+        private _cachedSampleTime = _unit getVariable [format["ACRE_%1CachedSampleTime", _x], -1];
+        
+        if(time > _cachedSampleTime || !GVAR(speaking_cache_valid)) then {
             BEGIN_COUNTER(signal_mode_function);
-			private _returnData = [_unit, _radioid, acre_player, _x] call CALLSTACK_NAMED((missionNamespace getVariable _functionName), _functionName);
-			// DATA STRUCTURE: _returnData = [txRadioId, rxRadioId, signalQuality, distortionModel]
+            private _returnData = [_unit, _radioid, acre_player, _x] call CALLSTACK_NAMED((missionNamespace getVariable _functionName), _functionName);
+            // DATA STRUCTURE: _returnData = [txRadioId, rxRadioId, signalQuality, distortionModel]
             END_COUNTER(signal_mode_function);
-			_eventReturn = [_x, "handleSignalData", +_returnData] call EFUNC(sys_data,transEvent);
-			if(!isNil "_eventReturn") then {
-				_returnData = _eventReturn;
-			};
-			_unit setVariable [format["ACRE_%1CachedSampleData", _x], _returnData];
-			_returnData params ["_transmittingRadioId","_receivingRadioid","_signalQuality","_signalDb","_signalModel"];
-			
-			private _nextTime = time + 0.2;
-			if (_signalDb isEqualTo -992) then { _nextTime = 0; }; // force recheck next time as data hasn't returned yet.
-			_unit setVariable [format["ACRE_%1CachedSampleTime", _x], _nextTime];
+            _eventReturn = [_x, "handleSignalData", +_returnData] call EFUNC(sys_data,transEvent);
+            if(!isNil "_eventReturn") then {
+                _returnData = _eventReturn;
+            };
+            _unit setVariable [format["ACRE_%1CachedSampleData", _x], _returnData];
+            _returnData params ["_transmittingRadioId","_receivingRadioid","_signalQuality","_signalDb","_signalModel"];
+            
+            private _nextTime = time + 0.2;
+            if (_signalDb isEqualTo -992) then { _nextTime = 0; }; // force recheck next time as data hasn't returned yet.
+            _unit setVariable [format["ACRE_%1CachedSampleTime", _x], _nextTime];
             
 
             private _radioVolume = [_receivingRadioid, "getVolume"] call EFUNC(sys_data,dataEvent);
@@ -86,13 +86,13 @@ if((count _okRadios) > 0) then {
             
             _params = [_transmittingRadioId, _receivingRadioid, [_signalQuality, _signalDb], [_radioVolume, _signalQuality, _signalModel, _isLoudspeaker, _spatialArray]];
             _unit setVariable ["ACRE_%1CachedSampleParams"+_x, _params];
-		} else {
-			_params = _unit getVariable ["ACRE_%1CachedSampleParams"+_x, []];
-		};
-		if (!ACRE_FULL_DUPLEX || _x != _radioid) then {
+        } else {
+            _params = _unit getVariable ["ACRE_%1CachedSampleParams"+_x, []];
+        };
+        if (!ACRE_FULL_DUPLEX || _x != _radioid) then {
             PUSH(_returns, _params);
         };
-	} forEach _okRadios;
+    } forEach _okRadios;
     END_COUNTER(okradio_loop);
 };
 END_COUNTER(process_radio_speaker);

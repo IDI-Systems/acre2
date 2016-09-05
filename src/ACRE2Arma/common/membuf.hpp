@@ -6,7 +6,7 @@ namespace acre {
     class membuf : public std::streambuf
     {
     public:
-		membuf() {};
+        membuf() {};
         membuf(char* mem, size_t length) {
 
             setg(mem, mem, mem + length);

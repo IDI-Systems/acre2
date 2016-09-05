@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 private["_display"];
 if((count _this) > 0) then {
-	_display = _this select 0;
-	uiNamespace setVariable [QUOTE(GVAR(currentDisplay)), _display];
+    _display = _this select 0;
+    uiNamespace setVariable [QUOTE(GVAR(currentDisplay)), _display];
 } else {
-	_display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+    _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 };
 
 _knobPosition = GET_STATE_DEF("knobPosition", 1);

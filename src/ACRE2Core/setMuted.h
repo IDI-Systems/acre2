@@ -11,24 +11,24 @@
 
 
 RPC_FUNCTION(setMuted) {
-	DWORD index;
-	int status;
-	ACRE_ID id;
+    DWORD index;
+    int status;
+    ACRE_ID id;
 
-	for(index=0; index < vMessage->getParameterCount(); -1)
-	{
-		if(vMessage->getParameter(index) == NULL)
-			break;
+    for(index=0; index < vMessage->getParameterCount(); -1)
+    {
+        if(vMessage->getParameter(index) == NULL)
+            break;
 
-		id = (unsigned int)atoi((char *)vMessage->getParameter(index));
-		index++;
-		status = atoi((char *)vMessage->getParameter(index));
-		index++;
+        id = (unsigned int)atoi((char *)vMessage->getParameter(index));
+        index++;
+        status = atoi((char *)vMessage->getParameter(index));
+        index++;
 
-		CEngine::getInstance()->getClient()->setMuted(id, (BOOL)status);
-	}
+        CEngine::getInstance()->getClient()->setMuted(id, (BOOL)status);
+    }
 
-	return ACRE_OK;
+    return ACRE_OK;
 }
 DECLARE_MEMBER(char *, Name);
 };

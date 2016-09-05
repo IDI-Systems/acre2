@@ -66,7 +66,7 @@ static inline double m_sqrt2 ()
 //  of the 1st kind. It uses a recursion relation. The first few polynomials
 //  are hard coded and the rest are found by recursion.
 //
-//  (n+1)Pn+1 = (2n+1)xPn - nPn-1 	Recursion relation.
+//  (n+1)Pn+1 = (2n+1)xPn - nPn-1     Recursion relation.
 //
 void PolynomialFinderBase::legendre (double *p, int n)
 {

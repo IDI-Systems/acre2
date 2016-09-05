@@ -1,30 +1,30 @@
 /*
-	Copyright © 2016,International Development & Integration Systems, LLC
-	All rights reserved.
-	http://www.idi-systems.com/
+    Copyright © 2016,International Development & Integration Systems, LLC
+    All rights reserved.
+    http://www.idi-systems.com/
 
-	For personal use only. Military or commercial use is STRICTLY
-	prohibited. Redistribution or modification of source code is 
-	STRICTLY prohibited.
+    For personal use only. Military or commercial use is STRICTLY
+    prohibited. Redistribution or modification of source code is 
+    STRICTLY prohibited.
 
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-	FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-	COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-	POSSIBILITY OF SUCH DAMAGE.
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+    POSSIBILITY OF SUCH DAMAGE.
 */
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 private ["_frequencyLower", "_frequencyUpper",
-			"_azimuthLbF", "_azimuthUbF", "_zenithLbF", "_zenithUpF", "_antennas", "_antennaClass",
-			"_lowerGains", "_upperGains", "_upperFLg", "_upperFUg", "_lowerFLg", "_loweFUg"];
+            "_azimuthLbF", "_azimuthUbF", "_zenithLbF", "_zenithUpF", "_antennas", "_antennaClass",
+            "_lowerGains", "_upperGains", "_upperFLg", "_upperFUg", "_lowerFLg", "_loweFUg"];
 params["_class", "_azimuth", "_zenith", "_f",["_polarization",-1]];
 
 _zenith = abs _zenith;
@@ -77,7 +77,7 @@ _zenithUbi = (_sizeZen)-_zenithUbi;
 _zenithUb = (_zenithLb + _spacingZen) min 90;
 TRACE_1("", _zenithLbi);
 if(_polarization == -1) then {
-	_polarization = getNumber(_antennaClass >> "polarization");
+    _polarization = getNumber(_antennaClass >> "polarization");
 };
 
 
@@ -85,10 +85,10 @@ TRACE_2("", count _lowerGains, _lowerGains);
 TRACE_2("", count _upperGains, _upperGains);
 
 if((count _lowerGains) == 0) exitWith {
-	[-35, _polarization]
+    [-35, _polarization]
 };
 if((count _upperGains) == 0) exitWith {
-	[-35, _polarization]
+    [-35, _polarization]
 };
 _LF_LA_LZ = ((_lowerGains select _azimuthLbi) select _zenithLbi) select _polarization;
 _LF_LA_UZ = ((_lowerGains select _azimuthLbi) select _zenithUbi) select _polarization;
@@ -109,7 +109,7 @@ TRACE_1("", _LF_UA_Z);
 _UF_LA_LZ = ((_upperGains select _azimuthLbi) select _zenithLbi) select _polarization;
 _UF_LA_UZ = ((_upperGains select _azimuthLbi) select _zenithUbi) select _polarization;
 if(_UF_LA_LZ == -999) then { _UF_LA_LZ = -35; };
-if(_UF_LA_UZ == -999) then { _UF_LA_UZ = -35; };	
+if(_UF_LA_UZ == -999) then { _UF_LA_UZ = -35; };    
 
 _UF_LA_Z = [_zenith, _zenithLb, _zenithUb, _UF_LA_LZ, _UF_LA_UZ] call FUNC(interp);
 TRACE_1("", _UF_LA_Z);

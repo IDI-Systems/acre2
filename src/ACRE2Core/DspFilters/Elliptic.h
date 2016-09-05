@@ -74,8 +74,8 @@ private:
   void calcfz2     (int i);
   void calcfz      ();
   void calcqz      ();
-  double findfact	 (int t);
-  double calcsn		 (double u);
+  double findfact     (int t);
+  double calcsn         (double u);
 
 #if 0
   template<int n>

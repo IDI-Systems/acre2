@@ -2,8 +2,8 @@
 #include "script_component.hpp"
 
 if((count GVAR(runningProcesses)) > 0) then {
-	params ["_pParams"];
-	_pParams params ["_pIndex","_currentCount"];
+    params ["_pParams"];
+    _pParams params ["_pIndex","_currentCount"];
     if(_pIndex < 0 || _currentCount < (count GVAR(runningProcesses))) then {
         _pIndex = (count GVAR(runningProcesses))-1;
         _pParams set[0, _pIndex];

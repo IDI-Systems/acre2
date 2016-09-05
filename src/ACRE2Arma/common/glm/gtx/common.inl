@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -34,69 +34,69 @@
 
 namespace glm
 {
-	template <typename T> 
-	GLM_FUNC_QUALIFIER bool isdenormal(T const & x)
-	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
+    template <typename T> 
+    GLM_FUNC_QUALIFIER bool isdenormal(T const & x)
+    {
+        GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
 
-#		if GLM_HAS_CXX11_STL
-			return std::fpclassify(x) == FP_SUBNORMAL;
-#		else
-			return x != static_cast<T>(0) && std::fabs(x) < std::numeric_limits<T>::min();
-#		endif
-	}
+#        if GLM_HAS_CXX11_STL
+            return std::fpclassify(x) == FP_SUBNORMAL;
+#        else
+            return x != static_cast<T>(0) && std::fabs(x) < std::numeric_limits<T>::min();
+#        endif
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER typename tvec1<T, P>::bool_type isdenormal
-	(
-		tvec1<T, P> const & x
-	)
-	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER typename tvec1<T, P>::bool_type isdenormal
+    (
+        tvec1<T, P> const & x
+    )
+    {
+        GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
 
-		return typename tvec1<T, P>::bool_type(
-			isdenormal(x.x));
-	}
+        return typename tvec1<T, P>::bool_type(
+            isdenormal(x.x));
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER typename tvec2<T, P>::bool_type isdenormal
-	(
-		tvec2<T, P> const & x
-	)
-	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER typename tvec2<T, P>::bool_type isdenormal
+    (
+        tvec2<T, P> const & x
+    )
+    {
+        GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
 
-		return typename tvec2<T, P>::bool_type(
-			isdenormal(x.x),
-			isdenormal(x.y));
-	}
+        return typename tvec2<T, P>::bool_type(
+            isdenormal(x.x),
+            isdenormal(x.y));
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER typename tvec3<T, P>::bool_type isdenormal
-	(
-		tvec3<T, P> const & x
-	)
-	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER typename tvec3<T, P>::bool_type isdenormal
+    (
+        tvec3<T, P> const & x
+    )
+    {
+        GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
 
-		return typename tvec3<T, P>::bool_type(
-			isdenormal(x.x),
-			isdenormal(x.y),
-			isdenormal(x.z));
-	}
+        return typename tvec3<T, P>::bool_type(
+            isdenormal(x.x),
+            isdenormal(x.y),
+            isdenormal(x.z));
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER typename tvec4<T, P>::bool_type isdenormal
-	(
-		tvec4<T, P> const & x
-	)
-	{
-		GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER typename tvec4<T, P>::bool_type isdenormal
+    (
+        tvec4<T, P> const & x
+    )
+    {
+        GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'isdenormal' only accept floating-point inputs");
 
-		return typename tvec4<T, P>::bool_type(
-			isdenormal(x.x),
-			isdenormal(x.y),
-			isdenormal(x.z),
-			isdenormal(x.w));
-	}
+        return typename tvec4<T, P>::bool_type(
+            isdenormal(x.x),
+            isdenormal(x.y),
+            isdenormal(x.z),
+            isdenormal(x.w));
+    }
 }//namespace glm

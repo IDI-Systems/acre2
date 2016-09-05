@@ -15,39 +15,39 @@
 class CTextMessage : public IMessage
 {
 public:
-	// create new message to send constructor
-	CTextMessage(char *data, size_t length);
-	~CTextMessage(void);
-	ACRE_RESULT parse(char *data, size_t len);
+    // create new message to send constructor
+    CTextMessage(char *data, size_t length);
+    ~CTextMessage(void);
+    ACRE_RESULT parse(char *data, size_t len);
 
-	char *getProcedureName(void);
-	BOOL isValid();
-	unsigned char *getParameter(unsigned int index);
-	int getParameterAsInt(unsigned int index);
-	float getParameterAsFloat(unsigned int index);
-	unsigned int getParameterCount(void);
-	
+    char *getProcedureName(void);
+    BOOL isValid();
+    unsigned char *getParameter(unsigned int index);
+    int getParameterAsInt(unsigned int index);
+    float getParameterAsFloat(unsigned int index);
+    unsigned int getParameterCount(void);
+    
 
-	static IMessage *createNewMessage(char *procedureName, ... );
-	static IMessage *formatNewMessage(char *procedureName, char *format, ... );
+    static IMessage *createNewMessage(char *procedureName, ... );
+    static IMessage *formatNewMessage(char *procedureName, char *format, ... );
 
-	unsigned char *getData() { 
-		return ((unsigned char *)this->m_DataPtr); 
-	}
-	ACRE_RESULT setData(unsigned char *data) {
-		this->parse((char *)data, strlen((char*)data));
-		return ACRE_OK;
-	}
+    unsigned char *getData() { 
+        return ((unsigned char *)this->m_DataPtr); 
+    }
+    ACRE_RESULT setData(unsigned char *data) {
+        this->parse((char *)data, strlen((char*)data));
+        return ACRE_OK;
+    }
 
-	unsigned int getLength() {
-		return this->m_Data->length();
-	}
+    unsigned int getLength() {
+        return this->m_Data->length();
+    }
 
 private:
-	std::string *m_Data;
-	std::string *m_RpcProcedureName;
-	std::string *m_Parameters[TEXTMESSAGE_MAX_PARAMETER_COUNT];
-	unsigned int m_ParameterCount;
-	BOOL m_IsValid;
-	char *m_DataPtr;
+    std::string *m_Data;
+    std::string *m_RpcProcedureName;
+    std::string *m_Parameters[TEXTMESSAGE_MAX_PARAMETER_COUNT];
+    unsigned int m_ParameterCount;
+    BOOL m_IsValid;
+    char *m_DataPtr;
 };

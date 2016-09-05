@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,14 +32,14 @@
 
 namespace glm
 {
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER T mixedProduct
-	(
-		tvec3<T, P> const & v1,
-		tvec3<T, P> const & v2,
-		tvec3<T, P> const & v3
-	)
-	{
-		return dot(cross(v1, v2), v3);
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER T mixedProduct
+    (
+        tvec3<T, P> const & v1,
+        tvec3<T, P> const & v2,
+        tvec3<T, P> const & v3
+    )
+    {
+        return dot(cross(v1, v2), v3);
+    }
 }//namespace glm

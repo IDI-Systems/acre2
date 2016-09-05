@@ -13,11 +13,11 @@ _onState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent
 TRACE_2("Opening 152", GVAR(currentRadioId), _onState);
 
 if(_onState >= 1) then {
-	_currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
-	[_currentMenu] call FUNC(changeMenu);
+    _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
+    [_currentMenu] call FUNC(changeMenu);
 } else {
-	//[GVAR(LOADING)] call FUNC(changeMenu);
-	[GVAR(OFF)] call FUNC(changeMenu);
+    //[GVAR(LOADING)] call FUNC(changeMenu);
+    [GVAR(OFF)] call FUNC(changeMenu);
 };
 
 //[11, "ABCDEFGHIJKLMNOPQRSTUVWXY", ALIGN_LEFT] call FUNC(setRowText);

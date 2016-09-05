@@ -36,14 +36,14 @@ All controls are editable in the Arma 3 controls menu, under the Configure Addon
 
 The default controls are as follows:
 
-* Radio PTT:  			Capslock
-* Alternate PTT 1:  	Shift-Capslock
-* Alternate PTT 2:  	Ctrl-Capslock
-* Alternate PTT 3:  	Alt-Capslock
-* Open/Close Radio:  	Alt-Ctrl-Capslock
-* Cycle Radio:  		Alt-Shift-Capslock
+* Radio PTT:              Capslock
+* Alternate PTT 1:      Shift-Capslock
+* Alternate PTT 2:      Ctrl-Capslock
+* Alternate PTT 3:      Alt-Capslock
+* Open/Close Radio:      Alt-Ctrl-Capslock
+* Cycle Radio:          Alt-Shift-Capslock
 * Cycle Babel Language: Left Windows Key
-* Set Radio Left Ear:  	Ctrl-Shift Left Arrow Key
+* Set Radio Left Ear:      Ctrl-Shift Left Arrow Key
 * Set Radio Right Ear:  Ctrl-Shift Right Arrow Key
 * Set Radio Both Ears:  Ctrl-Shift Up Arrow Key
 

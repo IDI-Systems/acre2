@@ -7,7 +7,7 @@ params["_radioId", "_state",["_menuPage",0],["_menuIndex",0],["_entryCursor",0],
 _editEntry = false;
 
 if((count _this) > 4) then {
-	_editEntry = true;
+    _editEntry = true;
 };
 
 _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
@@ -22,6 +22,6 @@ _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
 
 
 if(_radioId == acre_sys_radio_currentRadioDialog) then {
-	_display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
-	[_display] call FUNC(render);
+    _display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
+    [_display] call FUNC(render);
 };

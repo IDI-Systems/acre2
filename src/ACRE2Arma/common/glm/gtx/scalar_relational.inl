@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,87 +32,87 @@
 
 namespace glm
 {
-	template <typename T>
-	GLM_FUNC_QUALIFIER bool lessThan
-	(
-		T const & x, 
-		T const & y
-	)
-	{
-		return x < y;
-	}
+    template <typename T>
+    GLM_FUNC_QUALIFIER bool lessThan
+    (
+        T const & x, 
+        T const & y
+    )
+    {
+        return x < y;
+    }
 
-	template <typename T>
-	GLM_FUNC_QUALIFIER bool lessThanEqual
-	(
-		T const & x, 
-		T const & y
-	)
-	{
-		return x <= y;
-	}
+    template <typename T>
+    GLM_FUNC_QUALIFIER bool lessThanEqual
+    (
+        T const & x, 
+        T const & y
+    )
+    {
+        return x <= y;
+    }
 
-	template <typename T>
-	GLM_FUNC_QUALIFIER bool greaterThan
-	(
-		T const & x, 
-		T const & y
-	)
-	{
-		return x > y;
-	}
+    template <typename T>
+    GLM_FUNC_QUALIFIER bool greaterThan
+    (
+        T const & x, 
+        T const & y
+    )
+    {
+        return x > y;
+    }
 
-	template <typename T>
-	GLM_FUNC_QUALIFIER bool greaterThanEqual
-	(
-		T const & x, 
-		T const & y
-	)
-	{
-		return x >= y;
-	}
+    template <typename T>
+    GLM_FUNC_QUALIFIER bool greaterThanEqual
+    (
+        T const & x, 
+        T const & y
+    )
+    {
+        return x >= y;
+    }
 
-	template <typename T>
-	GLM_FUNC_QUALIFIER bool equal
-	(
-		T const & x, 
-		T const & y
-	)
-	{
-		return x == y;
-	}
+    template <typename T>
+    GLM_FUNC_QUALIFIER bool equal
+    (
+        T const & x, 
+        T const & y
+    )
+    {
+        return x == y;
+    }
 
-	template <typename T>
-	GLM_FUNC_QUALIFIER bool notEqual
-	(
-		T const & x, 
-		T const & y
-	)
-	{
-		return x != y;
-	}
+    template <typename T>
+    GLM_FUNC_QUALIFIER bool notEqual
+    (
+        T const & x, 
+        T const & y
+    )
+    {
+        return x != y;
+    }
 
-	GLM_FUNC_QUALIFIER bool any
-	(
-		bool const & x
-	)
-	{
-		return x;
-	}
+    GLM_FUNC_QUALIFIER bool any
+    (
+        bool const & x
+    )
+    {
+        return x;
+    }
 
-	GLM_FUNC_QUALIFIER bool all
-	(
-		bool const & x
-	)
-	{
-		return x;
-	}
+    GLM_FUNC_QUALIFIER bool all
+    (
+        bool const & x
+    )
+    {
+        return x;
+    }
 
-	GLM_FUNC_QUALIFIER bool not_
-	(
-		bool const & x
-	)
-	{
-		return !x;
-	}
+    GLM_FUNC_QUALIFIER bool not_
+    (
+        bool const & x
+    )
+    {
+        return !x;
+    }
 }//namespace glm

@@ -7,6 +7,6 @@ _jnetLoaded = false;
 _ret = "jnet" callExtension "getCurrentServer:";
 diag_log text format["JNET Response: '%1'", _ret];
 if(_ret != "") then {
-	_jnetLoaded = true;
+    _jnetLoaded = true;
 };
 _jnetLoaded

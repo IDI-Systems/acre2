@@ -11,8 +11,8 @@ include_directories(inc)
 
 set(ACRE2UI "")
 if(USE_ACRE2UI) 
-	set(ACRE2UI "ACRE2UI")
-	add_definitions( -DUSE_ACRE2UI )
+    set(ACRE2UI "ACRE2UI")
+    add_definitions( -DUSE_ACRE2UI )
 endif()
 
 add_library( ${ACRE_NAME} MODULE ${SOURCES})

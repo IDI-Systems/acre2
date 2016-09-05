@@ -4,19 +4,19 @@
 #define SMALL_ROW_COUNT 25
 
 // Menu Types
-#define MENUTYPE_LIST 				1
-#define MENUTYPE_ACTIONSERIES 		2
-#define MENUTYPE_NUMBER				3
-#define MENUTYPE_ALPHANUMERIC 		4
-#define MENUTYPE_SELECTION			5
-#define MENUTYPE_DISPLAY			6
-#define MENUTYPE_STATIC				7
-#define MENUTYPE_FREQUENCY			8
+#define MENUTYPE_LIST                 1
+#define MENUTYPE_ACTIONSERIES         2
+#define MENUTYPE_NUMBER                3
+#define MENUTYPE_ALPHANUMERIC         4
+#define MENUTYPE_SELECTION            5
+#define MENUTYPE_DISPLAY            6
+#define MENUTYPE_STATIC                7
+#define MENUTYPE_FREQUENCY            8
 
 // Constants for switches
-#define MENU_ACTION_NONE		50
-#define MENU_ACTION_SUBMENU		51
-#define MENU_ACTION_CODE		52
+#define MENU_ACTION_NONE        50
+#define MENU_ACTION_SUBMENU        51
+#define MENU_ACTION_CODE        52
 
 // Limits
 #define MAX_MENU_ITEMS_PER_PAGE 3
@@ -57,9 +57,9 @@
 #define ICON_LOADING   99992
 #define ICON_LOGO      99993
 #define ICON_VOLUME    99994
-#define ICON_KNOB	   99901
+#define ICON_KNOB       99901
 #define ICON_TRANSMIT  99902
-#define ICON_UP		   99903
+#define ICON_UP           99903
 #define ICON_DOWN      99904
 #define ICON_UPDOWN    99905
 #define ICON_SCROLLBAR 99906

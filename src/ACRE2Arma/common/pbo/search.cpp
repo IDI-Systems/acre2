@@ -56,14 +56,14 @@ typedef struct _SYSTEM_HANDLE
 
 typedef struct _SYSTEM_HANDLE_EX
 {
-	PVOID Object;
-	HANDLE ProcessId;
-	HANDLE Handle;
-	ULONG GrantedAccess;
-	USHORT CreatorBackTraceIndex;
-	USHORT ObjectTypeIndex;
-	ULONG HandleAttributes;
-	ULONG Reserved;
+    PVOID Object;
+    HANDLE ProcessId;
+    HANDLE Handle;
+    ULONG GrantedAccess;
+    USHORT CreatorBackTraceIndex;
+    USHORT ObjectTypeIndex;
+    ULONG HandleAttributes;
+    ULONG Reserved;
 } SYSTEM_HANDLE_EX, *PSYSTEM_HANDLE_EX;
 
 typedef struct _SYSTEM_HANDLE_INFORMATION
@@ -74,9 +74,9 @@ typedef struct _SYSTEM_HANDLE_INFORMATION
 
 typedef struct _SYSTEM_HANDLE_INFORMATION_EX
 {
-	ULONG_PTR HandleCount;
-	ULONG_PTR Reserved;
-	SYSTEM_HANDLE_EX Handles[1];
+    ULONG_PTR HandleCount;
+    ULONG_PTR Reserved;
+    SYSTEM_HANDLE_EX Handles[1];
 } SYSTEM_HANDLE_INFORMATION_EX, *PSYSTEM_HANDLE_INFORMATION_EX;
 
 typedef enum _POOL_TYPE
@@ -172,7 +172,7 @@ namespace acre {
         }
 
         bool search::generate_pbo_list() {
-			LOG(INFO) << "Generating PBO List";
+            LOG(INFO) << "Generating PBO List";
             NTSTATUS status;
             PSYSTEM_HANDLE_INFORMATION_EX handleInfo;
             ULONG handleInfoSize = 0x10000;
@@ -195,7 +195,7 @@ namespace acre {
 
             handleInfo = (PSYSTEM_HANDLE_INFORMATION_EX)malloc(handleInfoSize);
             while ((status = NtQuerySystemInformation(
-				SystemHandleInformationEx,
+                SystemHandleInformationEx,
                 handleInfo,
                 handleInfoSize,
                 NULL
@@ -209,7 +209,7 @@ namespace acre {
                 free(handleInfo);
                 return false;
             }
-			//LOG(INFO) << "Handles obtained!";
+            //LOG(INFO) << "Handles obtained!";
             for (i = 0; i < handleInfo->HandleCount; i++)
             {
                 SYSTEM_HANDLE_EX handle = handleInfo->Handles[i];
@@ -220,10 +220,10 @@ namespace acre {
                 ULONG returnLength;
 
                 /* Check if this handle belongs to the PID the user specified. */
-				if (handle.ProcessId != pid) {
-					//LOG(INFO) << "PID MISMATCH: " << (DWORD)handle.ProcessId << " != " << (DWORD)pid;
-					continue;
-				}
+                if (handle.ProcessId != pid) {
+                    //LOG(INFO) << "PID MISMATCH: " << (DWORD)handle.ProcessId << " != " << (DWORD)pid;
+                    continue;
+                }
                     
 
                 /* Duplicate the handle so we can query it. */
@@ -237,7 +237,7 @@ namespace acre {
                     0
                     )))
                 {
-					//LOG(INFO) << "FAILED TO DUPLICATE OJBECT";
+                    //LOG(INFO) << "FAILED TO DUPLICATE OJBECT";
                     continue;
                 }
 
@@ -251,7 +251,7 @@ namespace acre {
                     NULL
                     )))
                 {
-					//LOG(INFO) << "FAILED TO QUERY OJBECT";
+                    //LOG(INFO) << "FAILED TO QUERY OJBECT";
                     CloseHandle(dupHandle);
                     continue;
                 }
@@ -260,7 +260,7 @@ namespace acre {
                 0x0012019f, on which NtQueryObject could hang. */
                 if (handle.GrantedAccess == 0x0012019f)
                 {
-					//LOG(INFO) << "ACCESS == 0x0012019f";
+                    //LOG(INFO) << "ACCESS == 0x0012019f";
                     free(objectTypeInfo);
                     CloseHandle(dupHandle);
                     continue;
@@ -275,7 +275,7 @@ namespace acre {
                     &returnLength
                     )))
                 {
-					//LOG(INFO) << "THE FUCK...";
+                    //LOG(INFO) << "THE FUCK...";
                     /* Reallocate the buffer and try again. */
                     objectNameInfo = realloc(objectNameInfo, returnLength);
                     if (!NT_SUCCESS(NtQueryObject(
@@ -286,7 +286,7 @@ namespace acre {
                         NULL
                         )))
                     {
-						//LOG(INFO) << "... IS THIS SHIT?";
+                        //LOG(INFO) << "... IS THIS SHIT?";
                         free(objectTypeInfo);
                         free(objectNameInfo);
                         CloseHandle(dupHandle);
@@ -307,7 +307,7 @@ namespace acre {
                     
                     std::string object_type(tmp_type.begin(), tmp_type.end());
                     std::string object_name(tmp_name.begin(), tmp_name.end());
-					//LOG(INFO) << "File: " << object_name;
+                    //LOG(INFO) << "File: " << object_name;
                     if (object_type == "File" && object_name.find(".pbo") != object_name.npos) {
                         char buffer[MAX_PATH];
                         GetFinalPathNameByHandle(dupHandle, buffer, sizeof(buffer), VOLUME_NAME_DOS);
@@ -315,7 +315,7 @@ namespace acre {
                         //LOG(INFO) << "Pbo: " << buffer;
                         _active_pbo_list.push_back(std::string(buffer));
                     }
-				}
+                }
 
                 free(objectTypeInfo);
                 free(objectNameInfo);

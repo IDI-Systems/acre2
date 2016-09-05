@@ -7,7 +7,7 @@ private ["_obj", "_pos"];
 _obj = RADIO_OBJECT(_radioId);
 _pos = getPosASL _obj;
 if(_obj isKindOf "Man") then {
-	_pos = ATLtoASL (_obj modelToWorld (_obj selectionPosition "RightShoulder"));
+    _pos = ATLtoASL (_obj modelToWorld (_obj selectionPosition "RightShoulder"));
 };
 
 _pos;

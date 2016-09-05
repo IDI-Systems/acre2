@@ -5,12 +5,12 @@
 #include "Macros.h"
 
 AboutDialog::AboutDialog(QWidget *parent) :
-	QDialog(parent),
-	ui(new Ui::AboutDialog) {
-	ui->setupUi(this);
+    QDialog(parent),
+    ui(new Ui::AboutDialog) {
+    ui->setupUi(this);
 
-	ui->version->setText(QString(ACRE_VERSION));
+    ui->version->setText(QString(ACRE_VERSION));
 }
 AboutDialog::~AboutDialog() {
-	delete ui;
+    delete ui;
 }

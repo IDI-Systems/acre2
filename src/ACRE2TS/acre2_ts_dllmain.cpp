@@ -13,12 +13,12 @@ TS3Functions ts3Functions;
 
 BOOL WINAPI DllMain(HINSTANCE hInst,DWORD reason,LPVOID) {
 
-	if (reason == DLL_PROCESS_ATTACH){
-		//g_Log = (Log *)new Log("acre.log");
-	}
-	if (reason == DLL_PROCESS_DETACH) { 
-		
-	}
-	return 1;
+    if (reason == DLL_PROCESS_ATTACH){
+        //g_Log = (Log *)new Log("acre.log");
+    }
+    if (reason == DLL_PROCESS_DETACH) { 
+        
+    }
+    return 1;
 }
 */

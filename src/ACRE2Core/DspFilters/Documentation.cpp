@@ -47,19 +47,19 @@ Building on the work of cherished luminaries such as Sophocles Orfanidis, Andrea
 
 Classes are designed as independent re-usable building blocks. Use some or all of the provided features, or extend the functionality by writing your own objects that plug into the robust framework. Only the code that you need will get linked into your application. Here's a list of features:
 
-	* Exclusive focus on IIR filters instead of boring FIR filters
-	* Complete implementation of all "RBJ Biquad" Cookbook filter formulas
-	* Butterworth, Chebyshev, Elliptic, Bessel, Legendre designs
-	* Low Pass, High Pass, Band Pass, Band Stop transformations
-	* Low, High, and Band Shelf filter implementations for most types
-	* Smooth interpolation of filter settings, pole/zeros, and biquad coefficients to achieve seamless parameter changes
-	* Representation of digital filters using poles and zeros
-	* Realization using Direct Form I, Direct Form II, or user provided class
-	* Fully factored to minimize template instantiations
-	* "Design" layer provides runtime introspection into a filter
-	* Utility template functions for manipulating buffers of sample data
-	* No calls to malloc or new, great for embedded systems
-	* No external dependencies, just the standard C++ library!
+    * Exclusive focus on IIR filters instead of boring FIR filters
+    * Complete implementation of all "RBJ Biquad" Cookbook filter formulas
+    * Butterworth, Chebyshev, Elliptic, Bessel, Legendre designs
+    * Low Pass, High Pass, Band Pass, Band Stop transformations
+    * Low, High, and Band Shelf filter implementations for most types
+    * Smooth interpolation of filter settings, pole/zeros, and biquad coefficients to achieve seamless parameter changes
+    * Representation of digital filters using poles and zeros
+    * Realization using Direct Form I, Direct Form II, or user provided class
+    * Fully factored to minimize template instantiations
+    * "Design" layer provides runtime introspection into a filter
+    * Utility template functions for manipulating buffers of sample data
+    * No calls to malloc or new, great for embedded systems
+    * No external dependencies, just the standard C++ library!
 
 Using these filters is easy:
 
@@ -77,11 +77,11 @@ Using these filters is easy:
 
 An accompanying demonstration program that works on most popular platforms by using the separately licensed Juce application framework (included), exercises all the functionality of the library, including these features:
 
-	* Dynamic interface creates itself using filter introspection capabilities
-	* Audio playback with real time application of a selected filter
-	* Live time stretching and amplitude modulation without clicks or popping
-	* Charts to show magnitude, phase response and pole/zero placement
-	* Thread safety "best practices" for audio applications
+    * Dynamic interface creates itself using filter introspection capabilities
+    * Audio playback with real time application of a selected filter
+    * Live time stretching and amplitude modulation without clicks or popping
+    * Charts to show magnitude, phase response and pole/zero placement
+    * Thread safety "best practices" for audio applications
 
 Here's a screenshot of the DspFilters Demo
 

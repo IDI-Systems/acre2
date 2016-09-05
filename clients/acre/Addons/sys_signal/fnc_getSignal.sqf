@@ -31,7 +31,7 @@ if(_count == 0) then {
                     GVAR(terrainScaling),
                     diag_tickTime,
                     ACRE_SIGNAL_DEBUGGING,
-					GVAR(omnidirectionalRadios)
+                    GVAR(omnidirectionalRadios)
                 ],
                 true,
                 FUNC(handleSignalReturn),

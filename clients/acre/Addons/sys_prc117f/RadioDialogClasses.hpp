@@ -12,16 +12,16 @@ class Prc117f_RscBackground
 // text
 class Prc117f_RscText
 {
-	idc = -1;
-	type = CT_STATIC;
-	style = ST_CENTER;
-	font = "PixelSplitterBold";
-	colorText[] = {1,1,1,1};
-	colorBackground[] = {0, 0, 0, 0};
-	sizeEx = 0.024;
-	shadow = 0;
-	w = 0.2;
-	h = 0.03;
+    idc = -1;
+    type = CT_STATIC;
+    style = ST_CENTER;
+    font = "PixelSplitterBold";
+    colorText[] = {1,1,1,1};
+    colorBackground[] = {0, 0, 0, 0};
+    sizeEx = 0.024;
+    shadow = 0;
+    w = 0.2;
+    h = 0.03;
 };
 
 class Prc117f_RscButton
@@ -69,8 +69,8 @@ class Prc117f_RscButton
 
 class Prc117f_RscPicture : Prc117f_RscButton
 {
-	type = CT_STATIC;
-	idc = -1;
-	style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
-	text = "";
+    type = CT_STATIC;
+    idc = -1;
+    style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
+    text = "";
 };

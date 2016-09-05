@@ -109,7 +109,7 @@ std::vector<char> base64_decode(std::string const& encoded_string) {
       char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
 
       for (i = 0; (i < 3); i++)
-		ret.push_back(char_array_3[i]);
+        ret.push_back(char_array_3[i]);
       i = 0;
     }
   }
@@ -125,7 +125,7 @@ std::vector<char> base64_decode(std::string const& encoded_string) {
     char_array_3[1] = ((char_array_4[1] & 0xf) << 4) + ((char_array_4[2] & 0x3c) >> 2);
     char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
 
-	for (j = 0; (j < i - 1); j++) ret.push_back(char_array_3[j]);
+    for (j = 0; (j < i - 1); j++) ret.push_back(char_array_3[j]);
   }
 
   return ret;
@@ -134,89 +134,89 @@ std::vector<char> base64_decode(std::string const& encoded_string) {
 
 int _tmain(int argc, wchar_t* argv[])
 {
-	CWave checkFile;
+    CWave checkFile;
 
-	//printf("Loading check: %d", checkFile.Load("d:\\mic_click_other_off.wav"));
-	if(argc < 2) {
-		printf("Converts Wav Files into ACRE Base64 encoded sound files.\n\nUsage: Wav2B64.exe input.wav [output.b64]\n");
-		return 0;
-	}
-	std::string inputFile = std::string((char *)argv[1]);
-	std::string outputFile;
-	
-	std::string checkType = inputFile.substr(inputFile.length()-4);
-	if(checkType.compare(".wav") != 0) {
-		printf("Incorrect Input: %s\n\nInput must be .wav file.\n", inputFile.c_str());
-		return 0;
-	}
-	if(argc == 3) {
-		outputFile = std::string((char *)argv[2]);
-	} else {
-		outputFile = inputFile.substr(0, inputFile.length()-4);
-		outputFile += ".b64";
-	}
+    //printf("Loading check: %d", checkFile.Load("d:\\mic_click_other_off.wav"));
+    if(argc < 2) {
+        printf("Converts Wav Files into ACRE Base64 encoded sound files.\n\nUsage: Wav2B64.exe input.wav [output.b64]\n");
+        return 0;
+    }
+    std::string inputFile = std::string((char *)argv[1]);
+    std::string outputFile;
+    
+    std::string checkType = inputFile.substr(inputFile.length()-4);
+    if(checkType.compare(".wav") != 0) {
+        printf("Incorrect Input: %s\n\nInput must be .wav file.\n", inputFile.c_str());
+        return 0;
+    }
+    if(argc == 3) {
+        outputFile = std::string((char *)argv[2]);
+    } else {
+        outputFile = inputFile.substr(0, inputFile.length()-4);
+        outputFile += ".b64";
+    }
 
-	
-	
+    
+    
 
-	std::ifstream file(inputFile, std::ios::in | std::ios::binary | std::ios::ate);
-	if(!file.is_open()) {
-		printf("Unable to open/find input file: %s\n", inputFile.c_str());
-		return 0;
-	}
+    std::ifstream file(inputFile, std::ios::in | std::ios::binary | std::ios::ate);
+    if(!file.is_open()) {
+        printf("Unable to open/find input file: %s\n", inputFile.c_str());
+        return 0;
+    }
 
-	checkFile.Load(inputFile);
+    checkFile.Load(inputFile);
 
-	if(checkFile.GetChannels() > 1) {
-		printf("Input must be a mono channel PCM wav file.\n");
-		return 0;
-	}
+    if(checkFile.GetChannels() > 1) {
+        printf("Input must be a mono channel PCM wav file.\n");
+        return 0;
+    }
 
-	if(checkFile.GetBitsPerSample() != 16) {
-		printf("Input must be a 16bit PCM wav file.\n");
-		return 0;
-	}
+    if(checkFile.GetBitsPerSample() != 16) {
+        printf("Input must be a 16bit PCM wav file.\n");
+        return 0;
+    }
 
-	if(checkFile.GetSampleRate() != 48000) {
-		printf("Input must have a sample rate of 48Khz.\n");
-		return 0;
-	}
+    if(checkFile.GetSampleRate() != 48000) {
+        printf("Input must have a sample rate of 48Khz.\n");
+        return 0;
+    }
 
-	
+    
 
-	std::ofstream out(outputFile, std::ios::out);
-	if(!out.is_open()) {
-		printf("Unable to open/find output file: %s\n", outputFile.c_str());
-		return 0;
-	}
+    std::ofstream out(outputFile, std::ios::out);
+    if(!out.is_open()) {
+        printf("Unable to open/find output file: %s\n", outputFile.c_str());
+        return 0;
+    }
 
-	
+    
 
-	std::streampos size = file.tellg();
-	char *memblock = new char[size];
-	printf("Loading input (%s): ", inputFile.c_str());
-	file.seekg(0, std::ios::beg);
-	file.read(memblock, size);
-	file.close();
-	printf("complete\n");
-	printf("Encoding: ");
-	std::string b64 = base64_encode(reinterpret_cast<unsigned const char *>(memblock), size);
-	
-	std::string output = "ACRE_B64_FILE = [\n";
-	int count = ceil(b64.length()/2048);
-	for(int x = 0; x <= count; ++x) {
-		output += "\t\""; 
-		output += b64.substr(x*2048, 2048);
-		output += "\",\n";
-	}
-	output += "\t\"\"\n];";
-	printf("complete\n");
-	printf("Writing output (%s): ", outputFile.c_str());
-	out.write(&output[0], output.length());
-	out.close();
-	printf("complete\n");
-	printf("Done!\n");
+    std::streampos size = file.tellg();
+    char *memblock = new char[size];
+    printf("Loading input (%s): ", inputFile.c_str());
+    file.seekg(0, std::ios::beg);
+    file.read(memblock, size);
+    file.close();
+    printf("complete\n");
+    printf("Encoding: ");
+    std::string b64 = base64_encode(reinterpret_cast<unsigned const char *>(memblock), size);
+    
+    std::string output = "ACRE_B64_FILE = [\n";
+    int count = ceil(b64.length()/2048);
+    for(int x = 0; x <= count; ++x) {
+        output += "\t\""; 
+        output += b64.substr(x*2048, 2048);
+        output += "\",\n";
+    }
+    output += "\t\"\"\n];";
+    printf("complete\n");
+    printf("Writing output (%s): ", outputFile.c_str());
+    out.write(&output[0], output.length());
+    out.close();
+    printf("complete\n");
+    printf("Done!\n");
 
-	return 0;
+    return 0;
 }
 

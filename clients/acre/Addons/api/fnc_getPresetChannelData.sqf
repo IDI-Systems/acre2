@@ -8,15 +8,15 @@ if(!(_presetName isEqualType "")) exitWith { nil };
 
 _channelNumber = -1;
 if(_channelReference isEqualType []) then { 
-	// its a group and channel
+    // its a group and channel
 } else {
-	if(_channelReference isEqualType "") then { 
-		_channelNumber = parseNumber _channelReference;
-	} else {
-		if(_channelReference isEqualType 0) then {
-			_channelNumber = _channelReference;
-		};
-	};
+    if(_channelReference isEqualType "") then { 
+        _channelNumber = parseNumber _channelReference;
+    } else {
+        if(_channelReference isEqualType 0) then {
+            _channelNumber = _channelReference;
+        };
+    };
 };
 
 //_channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;

@@ -13,37 +13,37 @@
 using namespace std;
 
 typedef struct ACRE_KEY_ENTRY {
-	string eventName;
-	int keyCode;
-	BOOL shift;
-	BOOL ctrl;
-	BOOL alt;
+    string eventName;
+    int keyCode;
+    BOOL shift;
+    BOOL ctrl;
+    BOOL alt;
 
-	short keyState;
+    short keyState;
 } *PACRE_KEY_ENTRY;
 
 enum { ACRE_KEY_UP, ACRE_KEY_DOWN };
 
 class CKeyHandlerEngine : public CLockable {
 public:
-	CKeyHandlerEngine();
-	~CKeyHandlerEngine();
+    CKeyHandlerEngine();
+    ~CKeyHandlerEngine();
 
-	ACRE_RESULT readKeyLoop();
+    ACRE_RESULT readKeyLoop();
 
-	ACRE_RESULT initialize( void );
-	ACRE_RESULT shutdown( void );
-	ACRE_RESULT release( void ) { return ACRE_OK; };
+    ACRE_RESULT initialize( void );
+    ACRE_RESULT shutdown( void );
+    ACRE_RESULT release( void ) { return ACRE_OK; };
 
-	ACRE_RESULT setKeyBind(string eventName, int keyCode, BOOL shift, BOOL ctrl, BOOL alt);
-	ACRE_RESULT removeKeyBind(string eventName);
+    ACRE_RESULT setKeyBind(string eventName, int keyCode, BOOL shift, BOOL ctrl, BOOL alt);
+    ACRE_RESULT removeKeyBind(string eventName);
 
-	ACRE_RESULT clearKeybinds( void );
+    ACRE_RESULT clearKeybinds( void );
 
-	DECLARE_MEMBER(BOOL, ShuttingDown);
+    DECLARE_MEMBER(BOOL, ShuttingDown);
 
 protected:
-	concurrency::concurrent_unordered_map<string, ACRE_KEY_ENTRY *> m_keyMap;
-	std::thread m_keyboardReadThread;
+    concurrency::concurrent_unordered_map<string, ACRE_KEY_ENTRY *> m_keyMap;
+    std::thread m_keyboardReadThread;
 };
 */

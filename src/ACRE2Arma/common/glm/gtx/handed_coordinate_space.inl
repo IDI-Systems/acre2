@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,25 +32,25 @@
 
 namespace glm
 {
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER bool rightHanded
-	(
-		tvec3<T, P> const & tangent,
-		tvec3<T, P> const & binormal,
-		tvec3<T, P> const & normal
-	)
-	{
-		return dot(cross(normal, tangent), binormal) > T(0);
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER bool rightHanded
+    (
+        tvec3<T, P> const & tangent,
+        tvec3<T, P> const & binormal,
+        tvec3<T, P> const & normal
+    )
+    {
+        return dot(cross(normal, tangent), binormal) > T(0);
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER bool leftHanded
-	(
-		tvec3<T, P> const & tangent,
-		tvec3<T, P> const & binormal,
-		tvec3<T, P> const & normal
-	)
-	{
-		return dot(cross(normal, tangent), binormal) < T(0);
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER bool leftHanded
+    (
+        tvec3<T, P> const & tangent,
+        tvec3<T, P> const & binormal,
+        tvec3<T, P> const & normal
+    )
+    {
+        return dot(cross(normal, tangent), binormal) < T(0);
+    }
 }//namespace glm

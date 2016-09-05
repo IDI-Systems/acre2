@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,29 +32,29 @@
 
 namespace glm
 {
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat4x4<T, P> translate(
-		tvec3<T, P> const & v)
-	{
-		return translate(
-			tmat4x4<T, P>(1.0f), v);
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER tmat4x4<T, P> translate(
+        tvec3<T, P> const & v)
+    {
+        return translate(
+            tmat4x4<T, P>(1.0f), v);
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat4x4<T, P> rotate(
-		T angle, 
-		tvec3<T, P> const & v)
-	{
-		return rotate(
-			tmat4x4<T, P>(1), angle, v);
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER tmat4x4<T, P> rotate(
+        T angle, 
+        tvec3<T, P> const & v)
+    {
+        return rotate(
+            tmat4x4<T, P>(1), angle, v);
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat4x4<T, P> scale(
-		tvec3<T, P> const & v)
-	{
-		return scale(
-			tmat4x4<T, P>(1.0f), v);
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER tmat4x4<T, P> scale(
+        tvec3<T, P> const & v)
+    {
+        return scale(
+            tmat4x4<T, P>(1.0f), v);
+    }
 
 }//namespace glm

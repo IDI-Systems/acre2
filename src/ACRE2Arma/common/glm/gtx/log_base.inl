@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,16 +32,16 @@
 
 namespace glm
 {
-	template <typename genType> 
-	GLM_FUNC_QUALIFIER genType log(genType const & x, genType const & base)
-	{
-		assert(x != genType(0));
-		return glm::log(x) / glm::log(base);
-	}
+    template <typename genType> 
+    GLM_FUNC_QUALIFIER genType log(genType const & x, genType const & base)
+    {
+        assert(x != genType(0));
+        return glm::log(x) / glm::log(base);
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> log(vecType<T, P> const & x, vecType<T, P> const & base)
-	{
-		return glm::log(x) / glm::log(base);
-	}
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<T, P> log(vecType<T, P> const & x, vecType<T, P> const & base)
+    {
+        return glm::log(x) / glm::log(base);
+    }
 }//namespace glm

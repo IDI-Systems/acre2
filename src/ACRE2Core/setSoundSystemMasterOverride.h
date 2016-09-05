@@ -13,18 +13,18 @@
 
 RPC_FUNCTION(setSoundSystemMasterOverride) {
 
-	int status;
+    int status;
 
-	status = vMessage->getParameterAsInt(0);
+    status = vMessage->getParameterAsInt(0);
 
-	if(status == 1) {
-		CEngine::getInstance()->setSoundSystemOverride(TRUE);
-	} else {
-		CEngine::getInstance()->setSoundSystemOverride(FALSE);
-	}
+    if(status == 1) {
+        CEngine::getInstance()->setSoundSystemOverride(TRUE);
+    } else {
+        CEngine::getInstance()->setSoundSystemOverride(FALSE);
+    }
 
 
-	return ACRE_OK;
+    return ACRE_OK;
 }
 DECLARE_MEMBER(char *, Name);
 };

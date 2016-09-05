@@ -10,27 +10,27 @@
 #include "singleton.hpp"
 
 namespace acre {
-	class controller_module {
-	public:
-		controller_module() : _stopped(false) { };
-		~controller_module() { };
-		void stop() {
-			std::lock_guard<std::mutex> lock(_stop_lock);
-			_stopped = true;
-		}
-		bool stopped() {
-			std::lock_guard<std::mutex> lock(_stop_lock);
-			return _stopped;
-		}
-	protected:
-		std::mutex _stop_lock;
-		
-		bool _stopped;
-	};
+    class controller_module {
+    public:
+        controller_module() : _stopped(false) { };
+        ~controller_module() { };
+        void stop() {
+            std::lock_guard<std::mutex> lock(_stop_lock);
+            _stopped = true;
+        }
+        bool stopped() {
+            std::lock_guard<std::mutex> lock(_stop_lock);
+            return _stopped;
+        }
+    protected:
+        std::mutex _stop_lock;
+        
+        bool _stopped;
+    };
 
     class dispatcher {
     public:
-		dispatcher() : _ready(true) { }
+        dispatcher() : _ready(true) { }
 
         virtual bool call(const std::string & name_, arguments & args_, std::string & result_) {
             if (_methods.find(name_) == _methods.end()) {
@@ -118,34 +118,34 @@ namespace acre {
             push_result(dispatch_result(result, -1));
         }
         void stop() {
-			for (auto module : _modules) {
-				module->stop();
-			}
+            for (auto module : _modules) {
+                module->stop();
+            }
             std::lock_guard<std::mutex> lock(_messages_lock);
             _stop = true;
         }
 
-		void add_module(std::shared_ptr<controller_module> module_) {
-			_modules.push_back(module_);
-		}
+        void add_module(std::shared_ptr<controller_module> module_) {
+            _modules.push_back(module_);
+        }
 
     protected:
         void monitor() {
             _ready = false;
             while (!_stop) {
                 
-				bool empty = false;
-				{
-					std::lock_guard<std::mutex> lock(_messages_lock);
-					empty = _messages.empty();
-				}
+                bool empty = false;
+                {
+                    std::lock_guard<std::mutex> lock(_messages_lock);
+                    empty = _messages.empty();
+                }
                 while (!empty) {
                     if (_ready) {
-						_messages_lock.lock();
+                        _messages_lock.lock();
                         dispatch_result result;
                         dispatch_message _message = std::move(_messages.front());
                         _messages.pop();
-						_messages_lock.unlock();
+                        _messages_lock.unlock();
 
                         result.id = _message.id;
                         result.message.resize(4096);
@@ -162,10 +162,10 @@ namespace acre {
                             std::lock_guard<std::mutex> lock(_results_lock);
                             _results.push(result);
                         }
-						{
-							std::lock_guard<std::mutex> lock(_messages_lock);
-							empty = _messages.empty();
-						}
+                        {
+                            std::lock_guard<std::mutex> lock(_messages_lock);
+                            empty = _messages.empty();
+                        }
                             
                     }
                 }
@@ -183,7 +183,7 @@ namespace acre {
 
         uint64_t                        _message_id;
 
-		std::vector<std::shared_ptr<controller_module>> _modules;
+        std::vector<std::shared_ptr<controller_module>> _modules;
     };
     class threaded_dispatch : public threaded_dispatcher, public singleton<dispatch> { };
 };

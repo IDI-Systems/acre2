@@ -1,25 +1,25 @@
 //fnc_newSignalStrength.sqf
 /*
-	Copyright © 2016,International Development & Integration Systems, LLC
-	All rights reserved.
-	http://www.idi-systems.com/
+    Copyright © 2016,International Development & Integration Systems, LLC
+    All rights reserved.
+    http://www.idi-systems.com/
 
-	For personal use only. Military or commercial use is STRICTLY
-	prohibited. Redistribution or modification of source code is 
-	STRICTLY prohibited.
+    For personal use only. Military or commercial use is STRICTLY
+    prohibited. Redistribution or modification of source code is 
+    STRICTLY prohibited.
 
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-	FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-	COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-	POSSIBILITY OF SUCH DAMAGE.
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+    POSSIBILITY OF SUCH DAMAGE.
 */
  
 #include "script_component.hpp"
@@ -27,14 +27,14 @@
 
 
 private ["_isPersistant",
-			"_resolution", "_baseCOnfig", "_realRadioTx", "_realRadioRx", "_sinadRating", "_gainData",
-			"_transmitterPosATL",
-			"_receiverPosATL", "_vector", "_polar", "_2dDis",
-			"_lastTransmitterPos", "_lastReceiverPos", "_pE", "_pEadd", "_types", "_checkDistance",
-			"_transmitterNearObjects", "_receiverNearObjects", "_dis", "_pos", "_bb", "_avg", "_height",
-			"_los", "_backVector", "_ituLoss", "_steps", "_remainder", "_highest", "_isRising", "_lastAlt",
-			"_l", "_C0", "_lambda", "_aA", "_Lfs", "_Ptx", "_Ltx", "_Lrx", "_Lm", "_Lb", "_Sl", "_Slp",
-			"_bottom", "_Snd"];
+            "_resolution", "_baseCOnfig", "_realRadioTx", "_realRadioRx", "_sinadRating", "_gainData",
+            "_transmitterPosATL",
+            "_receiverPosATL", "_vector", "_polar", "_2dDis",
+            "_lastTransmitterPos", "_lastReceiverPos", "_pE", "_pEadd", "_types", "_checkDistance",
+            "_transmitterNearObjects", "_receiverNearObjects", "_dis", "_pos", "_bb", "_avg", "_height",
+            "_los", "_backVector", "_ituLoss", "_steps", "_remainder", "_highest", "_isRising", "_lastAlt",
+            "_l", "_C0", "_lambda", "_aA", "_Lfs", "_Ptx", "_Ltx", "_Lrx", "_Lm", "_Lb", "_Sl", "_Slp",
+            "_bottom", "_Snd"];
 /*
 DEBUG TIME
 */
@@ -46,7 +46,7 @@ Parameters
 */
 params["_receiver","_transmitter","_f","_mW","_receiverClass","_transmitterClass"];
 
-_resolution 		= 25;
+_resolution         = 25;
 
 
 /*
@@ -60,7 +60,7 @@ _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _receiverClass);
 _realRadioRx = configName ( _baseConfig );
 
 _sinadRating = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sinadRating");
-	
+    
 /*
 Antenna Gain Information
 */
@@ -76,7 +76,7 @@ Vectors from transmitter to receiver
 _transmitterPosATL = ASLtoATL _transmitterPos;
 _receiverPosATL = ASLtoATL _receiverPos;
 if((_transmitterPos distance _receiverPos) == 0) then {
-	_receiverPos set[2, (_receiverPos select 2)+0.1];
+    _receiverPos set[2, (_receiverPos select 2)+0.1];
 };
 
 _vector = [_transmitterPos, _receiverPos] call FUNC(vectorXtoY);
@@ -98,103 +98,103 @@ _pE = 4; // Base Path Loss Exponent
 _pEaddTx = 0;
 _pEaddRx = 0;
 if((_lastTransmitterPos distance _transmitterPosATL) > 1 || (_lastReceiverPos distance _receiverPos) > 1) then {
-	#ifdef DEBUG_MODE_FULL
-		// if(isNil "MARKERCOUNT") then {
-			// MARKERCOUNT = 0;
-		// };
-		// for "_x" from 0 to MARKERCOUNT do {
-			// deleteMarkerLocal format["m%1", _x];
-		// };
-		// MARKERCOUNT = 0;
-	#endif
-	_types = ["Building", "House"];
-	_checkDistance = ((_transmitterPosATL distance _receiverPosATL) min 75);
-	
-	_transmitterNearObjects = _transmitter getVariable [QUOTE(GVAR(transmitterNearObjects)), []];
-	if((_lastTransmitterPos distance _transmitterPosATL) > 10 || (count _transmitterNearObjects) == 0) then {
-		_transmitter setVariable [QUOTE(GVAR(lastTransmitterPos)), _transmitterPosATL];
-		_transmitterNearObjects = nearestObjects [_transmitterPosATL, _types, _checkDistance];
-		_transmitter setVariable [QUOTE(GVAR(transmitterNearObjects)), _transmitterNearObjects];
-	};
-	
-	_receiverNearObjects = _receiver getVariable [QUOTE(GVAR(receiverNearObjects)), []];
-	if((_lastReceiverPos distance _receiverPosATL) > 10 || (count _receiverNearObjects) == 0) then {
-		_receiver setVariable [QUOTE(GVAR(lastReceiverPos)), _receiverPosATL];
-		_receiverNearObjects = nearestObjects [_receiverPosATL, _types, _checkDistance];
-		_receiver setVariable [QUOTE(GVAR(receiverNearObjects)), _receiverNearObjects];
-	};
-	
-	{
-		_dis = _transmitterPosATL distance _x;
-		_pos = [_transmitterPosATL, _dis, (_polar select 1)] call CALLSTACK(LIB_fnc_relPos);
-		_bb = boundingBox _x;
-		_avg = (abs((_bb select 0) select 0))+((_bb select 1) select 0)+(abs((_bb select 0) select 1))+((_bb select 1) select 1);
-		_avg = _avg/4;
-		_height = ((_bb select 1) select 2);
-		if(_height > 2) then {
-			#ifdef DEBUG_MODE_FULL
-				_marker = createMarkerLocal [format["m%1", MARKERCOUNT], (getPos _x)];
-				_marker setMarkerTypeLocal "Dot";
-				MARKERCOUNT = MARKERCOUNT + 1;
-				_marker2 = createMarkerLocal [format["m%1", MARKERCOUNT], _pos];
-				MARKERCOUNT = MARKERCOUNT + 1;
-				_marker2 setMarkerTypeLocal "Dot";
-				_marker2 setMarkerColorLocal "ColorPink";
-				MARKERCOUNT = MARKERCOUNT + 1;
-			#endif
-			_posTest = (getPosASL _x);
-			_altHeight = getTerrainHeightASL [(_posTest select 0), (_posTest select 1)];
-			_height = _altHeight+_height;
-			_los = (_dis*(_vector select 2))+(_transmitterPos select 2);
-			if((_pos distance _x) <= _avg && _los <= _height) then {
-				_pEaddTx = _pEaddTx + (_avg/8);
-				#ifdef DEBUG_MODE_FULL
-					_marker setMarkerColorLocal "ColorGreen";
-				#endif
-			};
-		};
-	} forEach _transmitterNearObjects;
-	
-	_backVector = [_receiverPos, _transmitterPos] call FUNC(vectorXtoY);
-	{
-		if(!(_x in _transmitterNearObjects)) then {
-			_dis = _receiverPosATL distance _x;
-			_pos = [_receiverPosATL, _dis, ((_polar select 1) + 180) mod 360] call CALLSTACK(LIB_fnc_relPos);
-			_bb = boundingBox _x;
-			_avg = (abs((_bb select 0) select 0))+((_bb select 1) select 0)+(abs((_bb select 0) select 1))+((_bb select 1) select 1);
-			_avg = _avg/4;
-			_height = ((_bb select 1) select 2);
-			if(_height > 2) then {
-				#ifdef DEBUG_MODE_FULL
-					_marker = createMarkerLocal [format["m%1", MARKERCOUNT], (getPos _x)];
-					_marker setMarkerTypeLocal "Dot";
-					MARKERCOUNT = MARKERCOUNT + 1;
-					_marker2 = createMarkerLocal [format["m%1", MARKERCOUNT], _pos];
-					MARKERCOUNT = MARKERCOUNT + 1;
-					_marker2 setMarkerTypeLocal "Dot";
-					_marker2 setMarkerColorLocal "ColorYellow";
-					MARKERCOUNT = MARKERCOUNT + 1;
-				#endif
-				_posTest = (getPosASL _x);
-				_altHeight = getTerrainHeightASL [(_posTest select 0), (_posTest select 1)];
-				_height = _altHeight+_height;
-				_los = (_dis*(_backVector select 2))+(_receiverPos select 2);
-				if((_pos distance _x) <= _avg && _los <= _height) then {
-					_pEaddRx = _pEaddRx + (_avg/8);
-					#ifdef DEBUG_MODE_FULL
-						_marker setMarkerColorLocal "ColorGreen";
-					#endif
-				};
-			};
-		};
-	} forEach _receiverNearObjects;
+    #ifdef DEBUG_MODE_FULL
+        // if(isNil "MARKERCOUNT") then {
+            // MARKERCOUNT = 0;
+        // };
+        // for "_x" from 0 to MARKERCOUNT do {
+            // deleteMarkerLocal format["m%1", _x];
+        // };
+        // MARKERCOUNT = 0;
+    #endif
+    _types = ["Building", "House"];
+    _checkDistance = ((_transmitterPosATL distance _receiverPosATL) min 75);
+    
+    _transmitterNearObjects = _transmitter getVariable [QUOTE(GVAR(transmitterNearObjects)), []];
+    if((_lastTransmitterPos distance _transmitterPosATL) > 10 || (count _transmitterNearObjects) == 0) then {
+        _transmitter setVariable [QUOTE(GVAR(lastTransmitterPos)), _transmitterPosATL];
+        _transmitterNearObjects = nearestObjects [_transmitterPosATL, _types, _checkDistance];
+        _transmitter setVariable [QUOTE(GVAR(transmitterNearObjects)), _transmitterNearObjects];
+    };
+    
+    _receiverNearObjects = _receiver getVariable [QUOTE(GVAR(receiverNearObjects)), []];
+    if((_lastReceiverPos distance _receiverPosATL) > 10 || (count _receiverNearObjects) == 0) then {
+        _receiver setVariable [QUOTE(GVAR(lastReceiverPos)), _receiverPosATL];
+        _receiverNearObjects = nearestObjects [_receiverPosATL, _types, _checkDistance];
+        _receiver setVariable [QUOTE(GVAR(receiverNearObjects)), _receiverNearObjects];
+    };
+    
+    {
+        _dis = _transmitterPosATL distance _x;
+        _pos = [_transmitterPosATL, _dis, (_polar select 1)] call CALLSTACK(LIB_fnc_relPos);
+        _bb = boundingBox _x;
+        _avg = (abs((_bb select 0) select 0))+((_bb select 1) select 0)+(abs((_bb select 0) select 1))+((_bb select 1) select 1);
+        _avg = _avg/4;
+        _height = ((_bb select 1) select 2);
+        if(_height > 2) then {
+            #ifdef DEBUG_MODE_FULL
+                _marker = createMarkerLocal [format["m%1", MARKERCOUNT], (getPos _x)];
+                _marker setMarkerTypeLocal "Dot";
+                MARKERCOUNT = MARKERCOUNT + 1;
+                _marker2 = createMarkerLocal [format["m%1", MARKERCOUNT], _pos];
+                MARKERCOUNT = MARKERCOUNT + 1;
+                _marker2 setMarkerTypeLocal "Dot";
+                _marker2 setMarkerColorLocal "ColorPink";
+                MARKERCOUNT = MARKERCOUNT + 1;
+            #endif
+            _posTest = (getPosASL _x);
+            _altHeight = getTerrainHeightASL [(_posTest select 0), (_posTest select 1)];
+            _height = _altHeight+_height;
+            _los = (_dis*(_vector select 2))+(_transmitterPos select 2);
+            if((_pos distance _x) <= _avg && _los <= _height) then {
+                _pEaddTx = _pEaddTx + (_avg/8);
+                #ifdef DEBUG_MODE_FULL
+                    _marker setMarkerColorLocal "ColorGreen";
+                #endif
+            };
+        };
+    } forEach _transmitterNearObjects;
+    
+    _backVector = [_receiverPos, _transmitterPos] call FUNC(vectorXtoY);
+    {
+        if(!(_x in _transmitterNearObjects)) then {
+            _dis = _receiverPosATL distance _x;
+            _pos = [_receiverPosATL, _dis, ((_polar select 1) + 180) mod 360] call CALLSTACK(LIB_fnc_relPos);
+            _bb = boundingBox _x;
+            _avg = (abs((_bb select 0) select 0))+((_bb select 1) select 0)+(abs((_bb select 0) select 1))+((_bb select 1) select 1);
+            _avg = _avg/4;
+            _height = ((_bb select 1) select 2);
+            if(_height > 2) then {
+                #ifdef DEBUG_MODE_FULL
+                    _marker = createMarkerLocal [format["m%1", MARKERCOUNT], (getPos _x)];
+                    _marker setMarkerTypeLocal "Dot";
+                    MARKERCOUNT = MARKERCOUNT + 1;
+                    _marker2 = createMarkerLocal [format["m%1", MARKERCOUNT], _pos];
+                    MARKERCOUNT = MARKERCOUNT + 1;
+                    _marker2 setMarkerTypeLocal "Dot";
+                    _marker2 setMarkerColorLocal "ColorYellow";
+                    MARKERCOUNT = MARKERCOUNT + 1;
+                #endif
+                _posTest = (getPosASL _x);
+                _altHeight = getTerrainHeightASL [(_posTest select 0), (_posTest select 1)];
+                _height = _altHeight+_height;
+                _los = (_dis*(_backVector select 2))+(_receiverPos select 2);
+                if((_pos distance _x) <= _avg && _los <= _height) then {
+                    _pEaddRx = _pEaddRx + (_avg/8);
+                    #ifdef DEBUG_MODE_FULL
+                        _marker setMarkerColorLocal "ColorGreen";
+                    #endif
+                };
+            };
+        };
+    } forEach _receiverNearObjects;
 
-	_transmitter setVariable [QUOTE(GVAR(pEaddTx)), _pEaddTx];
-	_transmitter setVariable [QUOTE(GVAR(pEaddRx)), _pEaddRx];
-	
+    _transmitter setVariable [QUOTE(GVAR(pEaddTx)), _pEaddTx];
+    _transmitter setVariable [QUOTE(GVAR(pEaddRx)), _pEaddRx];
+    
 } else {
-	_pEaddTx = _transmitter getVariable [QUOTE(GVAR(pEaddTx)), 0];
-	_pEaddRx = _transmitter getVariable [QUOTE(GVAR(pEaddRx)), 0];
+    _pEaddTx = _transmitter getVariable [QUOTE(GVAR(pEaddTx)), 0];
+    _pEaddRx = _transmitter getVariable [QUOTE(GVAR(pEaddRx)), 0];
 };
 
 _ituLoss = 0; // base loss level (based on empirical testing...)
@@ -210,22 +210,22 @@ _isRising = false;
 _lastAlt = -10000;
 _lastHighest = -10000;
 for "_i" from 1 to _steps do {
-	_alt = (getTerrainHeightASL [_nx, _ny]);
-	if(_alt > _lastAlt) then {
-		_isRising = true;
-	} else {
-		if(_isRising) then {
-			_isRising = false;
-			if(abs(_lastHighest - _lastAlt) >= 5) then {
-				_lastHighest = _lastAlt;
-				PUSH(_highest, ARR_4(_i*_resolution, _lastAlt, _nz-_z, ARR_3(_nx-_x, _ny-_y, 0)));
-			};
-		};
-	};
-	_nx = _nx + _x;
-	_ny = _ny + _y;
-	_nz = _nz + _z;
-	_lastAlt = _alt;
+    _alt = (getTerrainHeightASL [_nx, _ny]);
+    if(_alt > _lastAlt) then {
+        _isRising = true;
+    } else {
+        if(_isRising) then {
+            _isRising = false;
+            if(abs(_lastHighest - _lastAlt) >= 5) then {
+                _lastHighest = _lastAlt;
+                PUSH(_highest, ARR_4(_i*_resolution, _lastAlt, _nz-_z, ARR_3(_nx-_x, _ny-_y, 0)));
+            };
+        };
+    };
+    _nx = _nx + _x;
+    _ny = _ny + _y;
+    _nz = _nz + _z;
+    _lastAlt = _alt;
 };
 
 
@@ -235,24 +235,24 @@ for "_i" from 1 to _steps do {
 Terrain loss (ITU Model)
 */
 {
-	_l = [(_x select 2), (_x select 1), (_x select 0)/1000, (_2dDis - (_x select 0))/1000, _f/1000] call FUNC(ITULoss);
-	#ifdef DEBUG_MODE_FULL
-		_marker2 = createMarkerLocal [format["m%1", MARKERCOUNT], (_x select 3)];
-		MARKERCOUNT = MARKERCOUNT + 1;
-		_marker2 setMarkerTypeLocal "Dot";
-		_marker2 setMarkerColorLocal "ColorGreen";
-		_marker2 setMarkerTextLocal format["pos: %1 dif: %2 loss: %3dBm", [(_x select 3) select 0, (_x select 3) select 1, (_x select 1)], (_x select 2)-(_x select 1), _l];
-	#endif
-	if(_l > 12) then {
-		_ituLoss = _ituLoss + (_l*GVAR(terrainScaling));
-		#ifdef DEBUG_MODE_FULL
-			_marker2 setMarkerColorLocal "ColorRed";
-		#endif
-	};
-	if(_ituLoss > 120) exitWith {};
+    _l = [(_x select 2), (_x select 1), (_x select 0)/1000, (_2dDis - (_x select 0))/1000, _f/1000] call FUNC(ITULoss);
+    #ifdef DEBUG_MODE_FULL
+        _marker2 = createMarkerLocal [format["m%1", MARKERCOUNT], (_x select 3)];
+        MARKERCOUNT = MARKERCOUNT + 1;
+        _marker2 setMarkerTypeLocal "Dot";
+        _marker2 setMarkerColorLocal "ColorGreen";
+        _marker2 setMarkerTextLocal format["pos: %1 dif: %2 loss: %3dBm", [(_x select 3) select 0, (_x select 3) select 1, (_x select 1)], (_x select 2)-(_x select 1), _l];
+    #endif
+    if(_l > 12) then {
+        _ituLoss = _ituLoss + (_l*GVAR(terrainScaling));
+        #ifdef DEBUG_MODE_FULL
+            _marker2 setMarkerColorLocal "ColorRed";
+        #endif
+    };
+    if(_ituLoss > 120) exitWith {};
 } forEach _highest;
 if(_ituLoss < 32) then {
-	_ituLoss = _ituLoss + (32-_ituLoss);
+    _ituLoss = _ituLoss + (32-_ituLoss);
 };
 /*
 Free Space Path Loss model
@@ -288,8 +288,8 @@ _Lb = _Ptx + _transmitterGain - _Ltx - _Lfs - _Lm + _receiverGain - _Lrx;
 /*
 Signal percentage variables
 */
-_Sl     			= (abs _sinadRating)/2;
-_Slp   				= 0.075;
+_Sl                 = (abs _sinadRating)/2;
+_Slp                   = 0.075;
 
 /*
 Signal Percentage equation
@@ -306,49 +306,49 @@ DEBUG
 */
 _total = diag_tickTime - _startTime;
 #ifdef DEBUG_MODE_FULL
-	GVAR(showSignalHint) = true;
-	
+    GVAR(showSignalHint) = true;
+    
 #endif
 if(GVAR(showSignalHint)) then {
-	COMPAT_hintSilent format["Strength: %1%9 @ %2Mhz\nRx: %3dBm @ %4mW\nAlt: %5m\nDis2D: %6m Dis3D: %7\nTxG: %10 RxG: %11\nAvg Time: %8", 
-								format["%1%2 ADJ: %3", _Px*100, "%", ((_Px*100)-(_Slp*100)) max 0],
-								_f, 
-								_Lb, 
-								_mW, 
-								((_gainData select 5) select 2), 
-								_2dDis, 
-								(_transmitterPos distance _receiverPos),
-								(_total),
-								"%",
-								(_gainData select 1),
-								(_gainData select 0)
-							  ];
-	#ifdef DEBUG_MODE_FULL
-		diag_log text format["----------------------------- ACRE SYS_SIGNAL FULL REPORT -----------------------------"];
-		diag_log text format["TRANSMISSION INFORMATION:"];
-		diag_log text format["    RADIO TX: %1", _realRadioTx];
-		diag_log text format["    RADIO RX: %1", _realRadioRx];
-		diag_log text format["    SENSITIVITY: %1dBm", _sinadRating];
-		diag_log text format["    FREQUENCY: %1MHz", _f];
-		diag_log text format["    TX POWER: %1mW (%2dBm)", _mW, _Ptx];
-		diag_log text format["    TX GAIN: %1dBi", _transmitterGain];
-		diag_log text format["    RX GAIN: %1dBi", _receiverGain];
-		diag_log text format["    TX POS: %1", _transmitterPos];
-		diag_log text format["    RX POS: %1", _receiverPos];
-		diag_log text format["    2D DISTANCE: %1m", _2dDis];
-		diag_log text format["    3D DISTANCE: %1m", _3dDis];
-		diag_log text format["    HEIGHT DIFFERENCE (TX TO RX): %1m", (_transmitterPos select 2) - (_receiverPos select 2)]; 
-		diag_log text format["SIGNAL LOSS INFORMATION:"];
-		diag_log text format["    ITU LOSS: %1dBm", _ituLoss];
-		diag_log text format["    OCLUSION LOSS TX: %1dBm", _pEaddTx];
-		diag_log text format["    OCLUSION LOSS RX: %1dBm", _pEaddRx];
-		diag_log text format["    FREE SPACE PATH LOSS: %1dBm", _Lfs];
-		diag_log text format["    TOTAL QUALITY: %1%2 REL SINAD: %3%4", _Px*100, "%", ((_Px*100)-(_Slp*100)) max 0, "%"];
-		
-		
-		
-		diag_log text format[" "];
-	#endif
+    COMPAT_hintSilent format["Strength: %1%9 @ %2Mhz\nRx: %3dBm @ %4mW\nAlt: %5m\nDis2D: %6m Dis3D: %7\nTxG: %10 RxG: %11\nAvg Time: %8", 
+                                format["%1%2 ADJ: %3", _Px*100, "%", ((_Px*100)-(_Slp*100)) max 0],
+                                _f, 
+                                _Lb, 
+                                _mW, 
+                                ((_gainData select 5) select 2), 
+                                _2dDis, 
+                                (_transmitterPos distance _receiverPos),
+                                (_total),
+                                "%",
+                                (_gainData select 1),
+                                (_gainData select 0)
+                              ];
+    #ifdef DEBUG_MODE_FULL
+        diag_log text format["----------------------------- ACRE SYS_SIGNAL FULL REPORT -----------------------------"];
+        diag_log text format["TRANSMISSION INFORMATION:"];
+        diag_log text format["    RADIO TX: %1", _realRadioTx];
+        diag_log text format["    RADIO RX: %1", _realRadioRx];
+        diag_log text format["    SENSITIVITY: %1dBm", _sinadRating];
+        diag_log text format["    FREQUENCY: %1MHz", _f];
+        diag_log text format["    TX POWER: %1mW (%2dBm)", _mW, _Ptx];
+        diag_log text format["    TX GAIN: %1dBi", _transmitterGain];
+        diag_log text format["    RX GAIN: %1dBi", _receiverGain];
+        diag_log text format["    TX POS: %1", _transmitterPos];
+        diag_log text format["    RX POS: %1", _receiverPos];
+        diag_log text format["    2D DISTANCE: %1m", _2dDis];
+        diag_log text format["    3D DISTANCE: %1m", _3dDis];
+        diag_log text format["    HEIGHT DIFFERENCE (TX TO RX): %1m", (_transmitterPos select 2) - (_receiverPos select 2)]; 
+        diag_log text format["SIGNAL LOSS INFORMATION:"];
+        diag_log text format["    ITU LOSS: %1dBm", _ituLoss];
+        diag_log text format["    OCLUSION LOSS TX: %1dBm", _pEaddTx];
+        diag_log text format["    OCLUSION LOSS RX: %1dBm", _pEaddRx];
+        diag_log text format["    FREE SPACE PATH LOSS: %1dBm", _Lfs];
+        diag_log text format["    TOTAL QUALITY: %1%2 REL SINAD: %3%4", _Px*100, "%", ((_Px*100)-(_Slp*100)) max 0, "%"];
+        
+        
+        
+        diag_log text format[" "];
+    #endif
 };
 // Return
 [_Px, _Lb]

@@ -11,8 +11,8 @@ _channelData = [_radioId, _channelNumber] call FUNC(getChannelDataInternal);
 _rxOnly = HASH_GET(_channelData, "rxOnly");
 TRACE_3("RX ONLY", _radioId, _channelNumber, _rxOnly);
 if(_rxOnly) exitWith {
-	TRACE_1("EXITING RX ONLY", _rxOnly);
-	false;
+    TRACE_1("EXITING RX ONLY", _rxOnly);
+    false;
 };
 
 _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);

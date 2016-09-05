@@ -100,8 +100,8 @@ private:
 
 protected:
   int m_maxdegree;
-  complex_t* m_a;		// input coefficients (m_maxdegree+1 elements)
-  complex_t* m_ad;	// copy of deflating coefficients
+  complex_t* m_a;        // input coefficients (m_maxdegree+1 elements)
+  complex_t* m_ad;    // copy of deflating coefficients
   complex_t* m_root; // array of roots (maxdegree elements)
 };
 

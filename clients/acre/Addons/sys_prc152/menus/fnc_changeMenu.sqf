@@ -6,7 +6,7 @@ params["_newMenu"];
 
 /*
 if(!([_newMenu] call FUNC(verifyIsMenu)) ) then {
-	_newMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+    _newMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
 };
 */
 // clear menu data
@@ -19,32 +19,32 @@ _oldMenu = GET_STATE("currentMenu");
 SCRATCH_SET(GVAR(currentRadioId),"menuEntry",true);
 // Set the state
 if(!isNil "_oldMenu") then {
-	if(_oldMenu isEqualType "") then { 
-		_oldMenu = HASH_GET(GVAR(Menus), _oldMenu);
-	};
-	if(!isNil "_oldMenu") then {
-		TRACE_1("changeMenu calling", _oldMenu);
-		[_oldMenu] call FUNC(callCompleteFunctor);
-		
-		_menuId = MENU_ID(_oldMenu);
-		if(!isNil "_menuId") then { SET_STATE("lastMenu", _menuId); } else { SET_STATE("lastMenu", _oldMenu); };
-	};
-		
+    if(_oldMenu isEqualType "") then { 
+        _oldMenu = HASH_GET(GVAR(Menus), _oldMenu);
+    };
+    if(!isNil "_oldMenu") then {
+        TRACE_1("changeMenu calling", _oldMenu);
+        [_oldMenu] call FUNC(callCompleteFunctor);
+        
+        _menuId = MENU_ID(_oldMenu);
+        if(!isNil "_menuId") then { SET_STATE("lastMenu", _menuId); } else { SET_STATE("lastMenu", _oldMenu); };
+    };
+        
 };
 
 // Set the state
 if(_newMenu isEqualType "") then { 
-	if(_newMenu == "HOME") then {
-		_newMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
-	};
-	if(_newMenu isEqualType "") then { 
-		_newMenu = HASH_GET(GVAR(Menus), _newMenu);
-	};
+    if(_newMenu == "HOME") then {
+        _newMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+    };
+    if(_newMenu isEqualType "") then { 
+        _newMenu = HASH_GET(GVAR(Menus), _newMenu);
+    };
 };
 TRACE_1("CHANGING MENU", _newMenu);
 if(isNil "_newMenu") then {
-	// Fall back worst case on the VULOS home if we fucked up royally somehow
-	_newMenu = GVAR(VULOSHOME);
+    // Fall back worst case on the VULOS home if we fucked up royally somehow
+    _newMenu = GVAR(VULOSHOME);
 };
 
 _menuId = MENU_ID(_newMenu);

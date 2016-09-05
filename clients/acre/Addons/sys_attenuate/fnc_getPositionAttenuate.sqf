@@ -1,24 +1,24 @@
 /*
-	Copyright © 2016,International Development & Integration Systems, LLC
-	All rights reserved.
-	http://www.idi-systems.com/
+    Copyright © 2016,International Development & Integration Systems, LLC
+    All rights reserved.
+    http://www.idi-systems.com/
 
-	For personal use only. Military or commercial use is STRICTLY
-	prohibited. Redistribution or modification of source code is 
-	STRICTLY prohibited.
+    For personal use only. Military or commercial use is STRICTLY
+    prohibited. Redistribution or modification of source code is 
+    STRICTLY prohibited.
 
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-	FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-	COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-	POSSIBILITY OF SUCH DAMAGE.
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+    POSSIBILITY OF SUCH DAMAGE.
 */
  
 #include "script_component.hpp"
@@ -38,19 +38,19 @@ private _attenuate = 0;
 private _playerVehicle = vehicle acre_player;
 
 if( !(_unitVehicle != _playerVehicle) ) then { // We are NOT in the same vehicle, use outide attenuation value
-	if(_playerVehicle != acre_player) then { // wee are in a vehicle
-		// get our own outside attenuation value
-		_temp = [_playerVehicle, acre_player] call FUNC(getVehicleOutsideAttenuate);
-		TRACE_2("", _attenuate, _temp);
+    if(_playerVehicle != acre_player) then { // wee are in a vehicle
+        // get our own outside attenuation value
+        _temp = [_playerVehicle, acre_player] call FUNC(getVehicleOutsideAttenuate);
+        TRACE_2("", _attenuate, _temp);
         if(!(isTurnedOut acre_player)) then {
-		// if(!([acre_player] call FUNC(isTurnedOut))) then {
-			_attenuate = _attenuate + _temp;
-		};
-	};
-	
-	_temp = [_unitVehicle, _positionName] call FUNC(getVehicleOutsideAttenuate);
+        // if(!([acre_player] call FUNC(isTurnedOut))) then {
+            _attenuate = _attenuate + _temp;
+        };
+    };
+    
+    _temp = [_unitVehicle, _positionName] call FUNC(getVehicleOutsideAttenuate);
 } else { // crew member attenuation code goes here
-	_attenuate = [_unitVehicle, acre_player, _positionName] call FUNC(getVehicleCrewAttenuate);
+    _attenuate = [_unitVehicle, acre_player, _positionName] call FUNC(getVehicleCrewAttenuate);
 };
 
 TRACE_3("returning attenuate", _playerVehicle, _unitVehicle, _attenuate);

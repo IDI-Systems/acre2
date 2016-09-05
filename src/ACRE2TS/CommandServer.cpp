@@ -10,51 +10,51 @@
 extern TS3Functions ts3Functions;
 
 ACRE_RESULT CCommandServer::initialize(void){
-	TRACE("enter");
+    TRACE("enter");
 
-	return ACRE_OK;
+    return ACRE_OK;
 }
 
 ACRE_RESULT CCommandServer::shutdown(void) {
-	TRACE("enter");
+    TRACE("enter");
 
-	return ACRE_OK;
+    return ACRE_OK;
 }
 
 
 ACRE_RESULT CCommandServer::sendMessage(IMessage *msg){
-	LOCK(this);
-	//LOG("Sending: %s", (const char *)msg->getData());
-	ts3Functions.sendPluginCommand((unsigned __int64)ts3Functions.getCurrentServerConnectionHandlerID(),
-		(const char *)this->getCommandId(), 
-		(const char *)msg->getData(), 
-		PluginCommandTarget_CURRENT_CHANNEL, NULL, NULL);
-	//LOG("sending [%s], [%s]", this->getCommandId(), msg->getData());
+    LOCK(this);
+    //LOG("Sending: %s", (const char *)msg->getData());
+    ts3Functions.sendPluginCommand((unsigned __int64)ts3Functions.getCurrentServerConnectionHandlerID(),
+        (const char *)this->getCommandId(), 
+        (const char *)msg->getData(), 
+        PluginCommandTarget_CURRENT_CHANNEL, NULL, NULL);
+    //LOG("sending [%s], [%s]", this->getCommandId(), msg->getData());
 
-	delete msg;
+    delete msg;
 
-	UNLOCK(this);
+    UNLOCK(this);
 
-	return ACRE_OK;
+    return ACRE_OK;
 }
 
 ACRE_RESULT CCommandServer::handleMessage(unsigned char *data){
-	CTextMessage *msg;
-	//LOG("recv: [%s]", data);
-	msg = new CTextMessage((char *)data, strlen((char *)data));
-	if(CEngine::getInstance()->getRpcEngine() && msg) {
-		CEngine::getInstance()->getRpcEngine()->runProcedure((IServer *)this, (IMessage *)msg);
-	}
-	return ACRE_OK;
+    CTextMessage *msg;
+    //LOG("recv: [%s]", data);
+    msg = new CTextMessage((char *)data, strlen((char *)data));
+    if(CEngine::getInstance()->getRpcEngine() && msg) {
+        CEngine::getInstance()->getRpcEngine()->runProcedure((IServer *)this, (IMessage *)msg);
+    }
+    return ACRE_OK;
 }
 
 
 ACRE_RESULT CCommandServer::release(void) {
-	
-	if(this->getCommandId())
-		free(this->getCommandId());
+    
+    if(this->getCommandId())
+        free(this->getCommandId());
 
-	return ACRE_OK;
+    return ACRE_OK;
 }
 
 
@@ -62,12 +62,12 @@ ACRE_RESULT CCommandServer::release(void) {
 // constructor/destructor foo
 // 
 CCommandServer::CCommandServer(ACRE_ID id) {
-	this->setId(id);
+    this->setId(id);
 }
 CCommandServer::CCommandServer(void) {
-	this->setCommandId(NULL);
-	this->setConnected(TRUE);
+    this->setCommandId(NULL);
+    this->setConnected(TRUE);
 }
 CCommandServer::~CCommandServer() {
-	
+    
 }

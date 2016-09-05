@@ -19,11 +19,11 @@ private _radioBaseClass = getText(configFile >> "CfgWeapons" >> _radioId >> "acr
 
 private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
 if(_interfaceClass == "") then {
-	_interfaceClass = "DefaultInterface";
+    _interfaceClass = "DefaultInterface";
 };
 private _handlerFunction = getText(configFile >> _eventKind >> _interfaceClass >> _event >> "handler");
 if(_handlerFunction != "") then {
-	_return = [_radioId, _event, _data, _radioData, _eventKind, _remote] call (missionNamespace getVariable[_handlerFunction, FUNC(noApiSystemFunction)]);
+    _return = [_radioId, _event, _data, _radioData, _eventKind, _remote] call (missionNamespace getVariable[_handlerFunction, FUNC(noApiSystemFunction)]);
 };
 
 if(isNil "_return") exitWith { nil };

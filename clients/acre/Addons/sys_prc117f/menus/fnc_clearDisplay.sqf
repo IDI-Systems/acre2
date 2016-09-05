@@ -1,17 +1,17 @@
 #include "script_component.hpp"
 
 FUNC(_internalClearDisplay) = {
-	private["_id"];
-	params["_row", "_columns"];
+    private["_id"];
+    params["_row", "_columns"];
 
-	for "_i" from 0 to _columns do {
-		_id = ((_row * 1000) +1) + _i;
+    for "_i" from 0 to _columns do {
+        _id = ((_row * 1000) +1) + _i;
 
-		((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetBackgroundColor [0.1, 0.1, 0.1, 0];
-		((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetTextColor [0.1, 0.1, 0.1, 1];
-		((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetText "";
-		((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlCommit 0;
-	};
+        ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetBackgroundColor [0.1, 0.1, 0.1, 0];
+        ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetTextColor [0.1, 0.1, 0.1, 1];
+        ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetText "";
+        ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlCommit 0;
+    };
 };
 
 [ROW_SMALL_1, COLUMNS_SMALL] call FUNC(_internalClearDisplay);

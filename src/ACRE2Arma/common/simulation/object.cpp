@@ -8,12 +8,12 @@ acre::simulation::vertex::vertex(vertex_table & _table, acre::vector3<float> _ve
 {
     this->original_vertex = _vertex;
     this->animated_vertex = _vertex;
-	if(reversed) {
-		this->original_vertex.z(this->original_vertex.z()*-1);
-		this->animated_vertex.z(this->animated_vertex.z()*-1);
-		this->original_vertex.x(this->original_vertex.x()*-1);
-		this->animated_vertex.x(this->animated_vertex.x()*-1);
-	}
+    if(reversed) {
+        this->original_vertex.z(this->original_vertex.z()*-1);
+        this->animated_vertex.z(this->animated_vertex.z()*-1);
+        this->original_vertex.x(this->original_vertex.x()*-1);
+        this->animated_vertex.x(this->animated_vertex.x()*-1);
+    }
 }
 
 acre::simulation::vertex::~vertex()
@@ -28,37 +28,37 @@ acre::simulation::face::face(
     acre::simulation::lod *object_lod)
 {
     this->type = p3d_face->type;
-	if (type == 3) {
-		for (uint16_t vertex_id : p3d_face->vertex_table) {
-			this->vertices.push_back(object_lod->vertices[vertex_id]);
-			object_lod->vertices[vertex_id]->faces.push_back(this);
-		}
-	}
-	else if(type == 4) {
-		this->vertices.push_back(object_lod->vertices[p3d_face->vertex_table[0]]);
-		object_lod->vertices[p3d_face->vertex_table[0]]->faces.push_back(this);
+    if (type == 3) {
+        for (uint16_t vertex_id : p3d_face->vertex_table) {
+            this->vertices.push_back(object_lod->vertices[vertex_id]);
+            object_lod->vertices[vertex_id]->faces.push_back(this);
+        }
+    }
+    else if(type == 4) {
+        this->vertices.push_back(object_lod->vertices[p3d_face->vertex_table[0]]);
+        object_lod->vertices[p3d_face->vertex_table[0]]->faces.push_back(this);
 
-		this->vertices.push_back(object_lod->vertices[p3d_face->vertex_table[1]]);
-		object_lod->vertices[p3d_face->vertex_table[1]]->faces.push_back(this);
+        this->vertices.push_back(object_lod->vertices[p3d_face->vertex_table[1]]);
+        object_lod->vertices[p3d_face->vertex_table[1]]->faces.push_back(this);
 
-		this->vertices.push_back(object_lod->vertices[p3d_face->vertex_table[2]]);
-		object_lod->vertices[p3d_face->vertex_table[2]]->faces.push_back(this);
+        this->vertices.push_back(object_lod->vertices[p3d_face->vertex_table[2]]);
+        object_lod->vertices[p3d_face->vertex_table[2]]->faces.push_back(this);
 
-		this->sub_face = std::make_shared<face>(p3d_face->vertex_table[2], p3d_face->vertex_table[3], p3d_face->vertex_table[0], object_lod);
-	}
+        this->sub_face = std::make_shared<face>(p3d_face->vertex_table[2], p3d_face->vertex_table[3], p3d_face->vertex_table[0], object_lod);
+    }
 }
 
 acre::simulation::face::face(uint32_t v1, uint32_t v2, uint32_t v3, acre::simulation::lod *object_lod) {
-	this->type = 3;
+    this->type = 3;
 
-	this->vertices.push_back(object_lod->vertices[v1]);
-	object_lod->vertices[v1]->faces.push_back(this);
+    this->vertices.push_back(object_lod->vertices[v1]);
+    object_lod->vertices[v1]->faces.push_back(this);
 
-	this->vertices.push_back(object_lod->vertices[v2]);
-	object_lod->vertices[v2]->faces.push_back(this);
+    this->vertices.push_back(object_lod->vertices[v2]);
+    object_lod->vertices[v2]->faces.push_back(this);
 
-	this->vertices.push_back(object_lod->vertices[v3]);
-	object_lod->vertices[v3]->faces.push_back(this);
+    this->vertices.push_back(object_lod->vertices[v3]);
+    object_lod->vertices[v3]->faces.push_back(this);
 
 }
 
@@ -87,9 +87,9 @@ acre::simulation::named_selection::named_selection(
     }
     for (uint16_t face_id : p3d_selection->faces.data) {
         this->faces.push_back(object_lod->faces[face_id]);
-		if (object_lod->faces[face_id]->type == 4) {
-			this->faces.push_back(object_lod->faces[face_id]->sub_face);
-		}
+        if (object_lod->faces[face_id]->type == 4) {
+            this->faces.push_back(object_lod->faces[face_id]->sub_face);
+        }
     }
 }
 
@@ -110,17 +110,17 @@ void acre::simulation::named_selection::animate(const glm::mat4 &matrix)
 acre::simulation::vertex_table::vertex_table(const acre::p3d::vertex_table_p p3d_vertex_table, const acre::p3d::lod_p p3d_lod, const acre::p3d::model_p p3d, bool reversed) : animated(false)
 {
     this->vertices.resize(p3d_vertex_table->points.size);
-	acre::vector3<float> center_off = p3d_lod->autocenter_pos;//p3d->info->cog_offset;//p3d->info->center_of_gravity + p3d->info->offset_2 + p3d->info->cog_offset;
-	//center_off.y(center_off.y() * 2);
-	//center_off.x(0);
-	//center_off.z(0);
-	if (reversed) {
-		center_off.x(center_off.x()*-1);
-		center_off.z(center_off.z()*-1);
-	}
+    acre::vector3<float> center_off = p3d_lod->autocenter_pos;//p3d->info->cog_offset;//p3d->info->center_of_gravity + p3d->info->offset_2 + p3d->info->cog_offset;
+    //center_off.y(center_off.y() * 2);
+    //center_off.x(0);
+    //center_off.z(0);
+    if (reversed) {
+        center_off.x(center_off.x()*-1);
+        center_off.z(center_off.z()*-1);
+    }
     for (uint32_t i = 0; i <= p3d_vertex_table->points.size - 1; ++i) {
         if (p3d->info->autocenter) {
-			acre::vector3<float> new_vertex = p3d_vertex_table->points[i]; 
+            acre::vector3<float> new_vertex = p3d_vertex_table->points[i]; 
             this->vertices[i] = std::make_shared<vertex>(*this, new_vertex, i, reversed);
         }
         else {
@@ -137,14 +137,14 @@ acre::simulation::lod::lod(const acre::p3d::lod_p p3d_lod, const acre::p3d::mode
 {
     this->id = p3d_lod->id;
     this->vertices = vertex_table(p3d_lod->vertices, p3d_lod, p3d, reversed);
-	this->autocenter_pos = p3d_lod->autocenter_pos;//p3d->info->center_of_gravity + p3d->info->offset_2 + p3d->info->cog_offset;
-	//autocenter_pos.y(autocenter_pos.y() * 2);
-	//autocenter_pos.x(0);
-	//autocenter_pos.z(0);
-	if (reversed) {
-		this->autocenter_pos.x(this->autocenter_pos.x()*-1);
-		this->autocenter_pos.z(this->autocenter_pos.z()*-1);
-	}
+    this->autocenter_pos = p3d_lod->autocenter_pos;//p3d->info->center_of_gravity + p3d->info->offset_2 + p3d->info->cog_offset;
+    //autocenter_pos.y(autocenter_pos.y() * 2);
+    //autocenter_pos.x(0);
+    //autocenter_pos.z(0);
+    if (reversed) {
+        this->autocenter_pos.x(this->autocenter_pos.x()*-1);
+        this->autocenter_pos.z(this->autocenter_pos.z()*-1);
+    }
     for (acre::p3d::face_p p3d_face : p3d_lod->faces) {
         this->faces.push_back(std::make_shared<face>(p3d_face, p3d_lod, p3d, this));
     }
@@ -152,15 +152,15 @@ acre::simulation::lod::lod(const acre::p3d::lod_p p3d_lod, const acre::p3d::mode
     for (acre::p3d::named_selection_p p3d_selection : p3d_lod->selections) {
         this->selections[p3d_selection->name] = std::make_shared<named_selection>(p3d_selection, p3d_lod, p3d, this);
     }
-	std::vector<face_p> new_faces;
-	for (auto test_face : this->faces) {
-		if (test_face->type == 4) {
-			new_faces.push_back(test_face->sub_face);
-		}
-	}
-	for (auto new_face : new_faces) {
-		this->faces.push_back(new_face);
-	}
+    std::vector<face_p> new_faces;
+    for (auto test_face : this->faces) {
+        if (test_face->type == 4) {
+            new_faces.push_back(test_face->sub_face);
+        }
+    }
+    for (auto new_face : new_faces) {
+        this->faces.push_back(new_face);
+    }
 }
 
 
@@ -174,18 +174,18 @@ acre::simulation::lod_animation_info::lod_animation_info(
     const acre::p3d::animate_bone_p p3d_animate_bone,
     const acre::p3d::animation_p p3d_animation,
     const acre::p3d::model_p p3d,
-	bool reversed) : animation_definition(_animation), lod(_lod)
+    bool reversed) : animation_definition(_animation), lod(_lod)
 {
     this->index = p3d_animate_bone->index;
     if (p3d->info->autocenter) {
-		acre::vector3<float> center_off = _lod->autocenter_pos;//p3d->info->cog_offset;//p3d->info->center_of_gravity + p3d->info->offset_2 + p3d->info->cog_offset;
-		//center_off.y(center_off.y() * 2);
-		//center_off.x(0);
-		//center_off.z(0);
-		if (reversed) {
-			center_off.x(center_off.x()*-1);
-			center_off.z(center_off.z()*-1);
-		}
+        acre::vector3<float> center_off = _lod->autocenter_pos;//p3d->info->cog_offset;//p3d->info->center_of_gravity + p3d->info->offset_2 + p3d->info->cog_offset;
+        //center_off.y(center_off.y() * 2);
+        //center_off.x(0);
+        //center_off.z(0);
+        if (reversed) {
+            center_off.x(center_off.x()*-1);
+            center_off.z(center_off.z()*-1);
+        }
         this->axis_position = p3d_animate_bone->axis_position;
         this->axis_direction = p3d_animate_bone->axis_direction;
     }
@@ -193,12 +193,12 @@ acre::simulation::lod_animation_info::lod_animation_info(
         this->axis_position = p3d_animate_bone->axis_position;
         this->axis_direction = p3d_animate_bone->axis_direction.normalize();
     }
-	if (reversed) {
-		this->axis_position.x(this->axis_position.x()*-1);
-		this->axis_position.z(this->axis_position.z()*-1);
-		this->axis_direction.x(this->axis_direction.x()*-1);
-		this->axis_direction.z(this->axis_direction.z()*-1);
-	}
+    if (reversed) {
+        this->axis_position.x(this->axis_position.x()*-1);
+        this->axis_position.z(this->axis_position.z()*-1);
+        this->axis_direction.x(this->axis_direction.x()*-1);
+        this->axis_direction.z(this->axis_direction.z()*-1);
+    }
 }
 
 acre::simulation::lod_animation_info::~lod_animation_info()
@@ -241,13 +241,13 @@ acre::simulation::animation::animation(object *parent_object, const acre::p3d::a
         direct_axis_dir = p3d_animation->direct_axis_dir;
         direct_angle = p3d_animation->direct_angle;
         direct_axis_offset = p3d_animation->direct_axis_offset;
-		if (reversed) {
-			this->direct_axis_pos.x(this->direct_axis_pos.x()*-1);
-			this->direct_axis_pos.z(this->direct_axis_pos.z()*-1);
+        if (reversed) {
+            this->direct_axis_pos.x(this->direct_axis_pos.x()*-1);
+            this->direct_axis_pos.z(this->direct_axis_pos.z()*-1);
 
-			this->direct_axis_dir.x(this->direct_axis_dir.x()*-1);
-			this->direct_axis_dir.z(this->direct_axis_dir.z()*-1);
-		}
+            this->direct_axis_dir.x(this->direct_axis_dir.x()*-1);
+            this->direct_axis_dir.z(this->direct_axis_dir.z()*-1);
+        }
         break;
     case 9:
         hide_value = p3d_animation->hide_value;
@@ -276,7 +276,7 @@ typedef union {
     } parts;
 } double_cast;
 
-#define RAD2DEG(rad)	(rad * 180.0f / 3.1415926f);
+#define RAD2DEG(rad)    (rad * 180.0f / 3.1415926f);
 
 typedef std::map<uint32_t, glm::mat4> animation_transform;
 
@@ -297,9 +297,9 @@ animation_transform acre::simulation::animation::animate(const float phase, cons
             //rotation
         case 0: {
             scale = (scale / (max_value - min_value)) * (angle1 - angle0);
-			animation_matrix = glm::translate(glm::mat4(1.0f), axis_position);
-			animation_matrix *= glm::rotate(glm::mat4(1.0f), scale, axis_direction);
-			animation_matrix *= glm::translate(glm::mat4(1.0f), -axis_position);
+            animation_matrix = glm::translate(glm::mat4(1.0f), axis_position);
+            animation_matrix *= glm::rotate(glm::mat4(1.0f), scale, axis_direction);
+            animation_matrix *= glm::translate(glm::mat4(1.0f), -axis_position);
             break;
         }
                 //rotationX
@@ -308,28 +308,28 @@ animation_transform acre::simulation::animation::animate(const float phase, cons
 
             glm::vec3 rotation_axis = glm::vec3(1.0f, 0.0f, 0.0f);
 
-			animation_matrix = glm::translate(glm::mat4(1.0f), axis_position);
+            animation_matrix = glm::translate(glm::mat4(1.0f), axis_position);
             animation_matrix *= glm::rotate(glm::mat4(1.0f), -scale, rotation_axis);
-			animation_matrix *= glm::translate(glm::mat4(1.0f), -axis_position);
+            animation_matrix *= glm::translate(glm::mat4(1.0f), -axis_position);
             break;
         }
                 //rotationY
         case 2: {
             scale = (scale / (max_value - min_value)) * (angle1 - angle0);
             glm::vec3 rotation_axis = glm::vec3(0.0f, 1.0f, 0.0f);
-			
-			animation_matrix = glm::translate(glm::mat4(1.0f), axis_position);
-			animation_matrix *= glm::rotate(glm::mat4(1.0f), -scale, rotation_axis);
-			animation_matrix *= glm::translate(glm::mat4(1.0f), -axis_position);
+            
+            animation_matrix = glm::translate(glm::mat4(1.0f), axis_position);
+            animation_matrix *= glm::rotate(glm::mat4(1.0f), -scale, rotation_axis);
+            animation_matrix *= glm::translate(glm::mat4(1.0f), -axis_position);
             break;
         }
                 //rotationZ
         case 3: {
             scale = (scale / (max_value - min_value)) * (angle1 - angle0);
             glm::vec3 rotation_axis = glm::vec3(0.0f, 0.0f, 1.0f);
-			animation_matrix = glm::translate(glm::mat4(1.0f), axis_position);
-			animation_matrix *= glm::rotate(glm::mat4(1.0f), -scale, rotation_axis);
-			animation_matrix *= glm::translate(glm::mat4(1.0f), -axis_position);
+            animation_matrix = glm::translate(glm::mat4(1.0f), axis_position);
+            animation_matrix *= glm::rotate(glm::mat4(1.0f), -scale, rotation_axis);
+            animation_matrix *= glm::translate(glm::mat4(1.0f), -axis_position);
             break;
         }
                 //translation
@@ -393,18 +393,18 @@ float acre::simulation::animation::get_scale(float phase)
     switch (source_address)
     {
     case 1:
-		scale = fmod(phase - min_value, max_value - min_value) + min_value;
+        scale = fmod(phase - min_value, max_value - min_value) + min_value;
         scale = std::min(std::max(scale, min_phase), max_phase);
         break;
     case 2:
-		//@TODO: possibly a better way to do this?!
-		if (min_phase < 0.0f && phase < 0) {
-			scale = std::fmod((std::fabs(phase) - std::fabs(min_value)), ((max_value - min_value) * 2)) + min_value;
-		}
-		else {
-			scale = std::fmod((phase - min_value), ((max_value - min_value) * 2)) + min_value;
-		};
-		if (scale>max_value) scale = max_value - (scale - max_value);
+        //@TODO: possibly a better way to do this?!
+        if (min_phase < 0.0f && phase < 0) {
+            scale = std::fmod((std::fabs(phase) - std::fabs(min_value)), ((max_value - min_value) * 2)) + min_value;
+        }
+        else {
+            scale = std::fmod((phase - min_value), ((max_value - min_value) * 2)) + min_value;
+        };
+        if (scale>max_value) scale = max_value - (scale - max_value);
         scale = std::min(std::max(scale, min_phase), max_phase);
         break;
     default:

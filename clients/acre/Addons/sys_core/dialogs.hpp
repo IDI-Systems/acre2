@@ -86,66 +86,66 @@
 
 
 class ACRE_SYNC_DIALOG {
-	idd = 56823;                      
-	movingEnable = true;           
-	enableSimulation = true;
-	hideCursor = 1;
-	enableCursor = false;
-	onLoad = "[] call acre_sys_core_fnc_syncPlayerProcess";
-	
-	controlsBackground[] = { };    
-	objects[] = { };
+    idd = 56823;                      
+    movingEnable = true;           
+    enableSimulation = true;
+    hideCursor = 1;
+    enableCursor = false;
+    onLoad = "[] call acre_sys_core_fnc_syncPlayerProcess";
+    
+    controlsBackground[] = { };    
+    objects[] = { };
 
-	class controls {
+    class controls {
 
-		class Background {
-			idc = -1;              
-			moving = 0;            
-							   
-			type = CT_STATIC;     
-			style = ST_LEFT;
-			text = "";
-			font = FontM;
-			sizeEx = 0.023;
-			hideCursor = 1;
-			colorBackground[] = { 0, 0, 0, 1 };
-			colorText[] = { 1, 1, 1, 1 };
+        class Background {
+            idc = -1;              
+            moving = 0;            
+                               
+            type = CT_STATIC;     
+            style = ST_LEFT;
+            text = "";
+            font = FontM;
+            sizeEx = 0.023;
+            hideCursor = 1;
+            colorBackground[] = { 0, 0, 0, 1 };
+            colorText[] = { 1, 1, 1, 1 };
 
-			x = SafeZoneX;
-			y = SafeZoneY;
-			w = SafeZoneW;
-			h = SafeZoneH;
-		};
-		
-		class StatusText {
-			idc = 512001;              
-			moving = 0;            
-			hideCursor = 1;
-			type = CT_STATIC;     
-			style = ST_CENTER;
-			text = "";
-			font = FontM;
-			sizeEx = 0.05;
+            x = SafeZoneX;
+            y = SafeZoneY;
+            w = SafeZoneW;
+            h = SafeZoneH;
+        };
+        
+        class StatusText {
+            idc = 512001;              
+            moving = 0;            
+            hideCursor = 1;
+            type = CT_STATIC;     
+            style = ST_CENTER;
+            text = "";
+            font = FontM;
+            sizeEx = 0.05;
 
-			colorBackground[] = { 0, 0, 0, 0 };
-			colorText[] = { 1, 1, 1, 1 };
+            colorBackground[] = { 0, 0, 0, 0 };
+            colorText[] = { 1, 1, 1, 1 };
 
-			x = SafeZoneX;
-			y = 0.5;
-			w = SafeZoneW;
-			h = 0.1;
-		};
-		
-	};
+            x = SafeZoneX;
+            y = 0.5;
+            w = SafeZoneW;
+            h = 0.1;
+        };
+        
+    };
 };
 
 class RscStandardDisplay;
 class RscAcreTestDisplay : RscStandardDisplay {
-	idd = 9998;
-	name = "acre_test_display";
-	movingEnable = 1;
-	controlsBackground[] = {};
-	objects[] = {};
-	controls[] = {};
-	onload = "_this call acre_sys_core_fnc_handleDialog;";
+    idd = 9998;
+    name = "acre_test_display";
+    movingEnable = 1;
+    controlsBackground[] = {};
+    objects[] = {};
+    controls[] = {};
+    onload = "_this call acre_sys_core_fnc_handleDialog;";
 };

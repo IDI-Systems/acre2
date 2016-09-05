@@ -1,24 +1,24 @@
 /*
-	Copyright © 2016,International Development & Integration Systems, LLC
-	All rights reserved.
-	http://www.idi-systems.com/
+    Copyright © 2016,International Development & Integration Systems, LLC
+    All rights reserved.
+    http://www.idi-systems.com/
 
-	For personal use only. Military or commercial use is STRICTLY
-	prohibited. Redistribution or modification of source code is
-	STRICTLY prohibited.
+    For personal use only. Military or commercial use is STRICTLY
+    prohibited. Redistribution or modification of source code is
+    STRICTLY prohibited.
 
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-	FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-	COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-	POSSIBILITY OF SUCH DAMAGE.
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+    POSSIBILITY OF SUCH DAMAGE.
 */
 class Prc148_RscBackground
 {
@@ -34,19 +34,19 @@ class Prc148_RscBackground
 // text
 class Prc148_RscText
 {
-	idc = -1;
-	type = CT_STATIC;
-	style = ST_CENTER;
-	font = FontM;
-	colorText[] = {1,1,1,1};
-	colorBackground[] = {0, 0, 0, 0};
-	sizeEx = 0.03;
-	w = 0.2;
-	h = 0.03;
+    idc = -1;
+    type = CT_STATIC;
+    style = ST_CENTER;
+    font = FontM;
+    colorText[] = {1,1,1,1};
+    colorBackground[] = {0, 0, 0, 0};
+    sizeEx = 0.03;
+    w = 0.2;
+    h = 0.03;
 };
 
 class Prc148_Cursor : Prc148_RscText {
-	style = ST_CENTER + ST_FRAME;
+    style = ST_CENTER + ST_FRAME;
 };
 
 class Prc148_RscButton
@@ -98,8 +98,8 @@ class Prc148_RscButton
 
 class Prc148_RscPicture : Prc148_RscButton
 {
-	type = CT_STATIC;
-	idc = -1;
-	style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
-	text = "";
+    type = CT_STATIC;
+    idc = -1;
+    style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
+    text = "";
 };

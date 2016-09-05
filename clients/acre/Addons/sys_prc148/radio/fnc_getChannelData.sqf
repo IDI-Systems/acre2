@@ -7,8 +7,8 @@ private ["_cachedChannels", "_return"];
 _cachedChannels = SCRATCH_GET_DEF(_radioId, "cachedFullChannels", []);
 _return = nil;
 if(_eventData < (count _cachedChannels)) then {
-	_return = _cachedChannels select _eventData;
+    _return = _cachedChannels select _eventData;
 } else {
-	_return = [_eventData, _radioData] call FUNC(getChannelDataInternal);
+    _return = [_eventData, _radioData] call FUNC(getChannelDataInternal);
 };
 _return;

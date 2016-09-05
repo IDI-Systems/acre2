@@ -8,12 +8,12 @@ class AboutDialog;
 
 class AboutDialog : public QDialog
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	explicit AboutDialog(QWidget *parent = 0);
-	~AboutDialog();
+    explicit AboutDialog(QWidget *parent = 0);
+    ~AboutDialog();
 private:
-	Ui::AboutDialog *ui;
-				
+    Ui::AboutDialog *ui;
+                
 };

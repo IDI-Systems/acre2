@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,36 +32,36 @@
 
 namespace glm
 {
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat3x3<T, P> matrixCross3
-	(
-		tvec3<T, P> const & x
-	)
-	{
-		tmat3x3<T, P> Result(T(0));
-		Result[0][1] = x.z;
-		Result[1][0] = -x.z;
-		Result[0][2] = -x.y;
-		Result[2][0] = x.y;
-		Result[1][2] = x.x;
-		Result[2][1] = -x.x;
-		return Result;
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER tmat3x3<T, P> matrixCross3
+    (
+        tvec3<T, P> const & x
+    )
+    {
+        tmat3x3<T, P> Result(T(0));
+        Result[0][1] = x.z;
+        Result[1][0] = -x.z;
+        Result[0][2] = -x.y;
+        Result[2][0] = x.y;
+        Result[1][2] = x.x;
+        Result[2][1] = -x.x;
+        return Result;
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tmat4x4<T, P> matrixCross4
-	(
-		tvec3<T, P> const & x
-	)
-	{
-		tmat4x4<T, P> Result(T(0));
-		Result[0][1] = x.z;
-		Result[1][0] = -x.z;
-		Result[0][2] = -x.y;
-		Result[2][0] = x.y;
-		Result[1][2] = x.x;
-		Result[2][1] = -x.x;
-		return Result;
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER tmat4x4<T, P> matrixCross4
+    (
+        tvec3<T, P> const & x
+    )
+    {
+        tmat4x4<T, P> Result(T(0));
+        Result[0][1] = x.z;
+        Result[1][0] = -x.z;
+        Result[0][2] = -x.y;
+        Result[2][0] = x.y;
+        Result[1][2] = x.x;
+        Result[2][1] = -x.x;
+        return Result;
+    }
 
 }//namespace glm

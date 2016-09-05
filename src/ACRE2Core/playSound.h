@@ -13,32 +13,32 @@
 
 RPC_FUNCTION(playLoadedSound) {
 
-	std::string id;
-	ACRE_VECTOR position, direction;
-	float volume;
-	bool isWorld = false;
+    std::string id;
+    ACRE_VECTOR position, direction;
+    float volume;
+    bool isWorld = false;
 
 
-	id = std::string((char *)vMessage->getParameter(0));
-	position.x = vMessage->getParameterAsFloat(1);
-	position.z = vMessage->getParameterAsFloat(2);
-	position.y = vMessage->getParameterAsFloat(3);
+    id = std::string((char *)vMessage->getParameter(0));
+    position.x = vMessage->getParameterAsFloat(1);
+    position.z = vMessage->getParameterAsFloat(2);
+    position.y = vMessage->getParameterAsFloat(3);
 
-	direction.x = vMessage->getParameterAsFloat(4);
-	direction.z = vMessage->getParameterAsFloat(5);
-	direction.y = vMessage->getParameterAsFloat(6);
+    direction.x = vMessage->getParameterAsFloat(4);
+    direction.z = vMessage->getParameterAsFloat(5);
+    direction.y = vMessage->getParameterAsFloat(6);
 
 
-	volume = vMessage->getParameterAsFloat(7);
+    volume = vMessage->getParameterAsFloat(7);
 
-	isWorld = vMessage->getParameterAsInt(8);
+    isWorld = vMessage->getParameterAsInt(8);
 
-	ACRE_RESULT res = CEngine::getInstance()->getSoundPlayback()->playSound(id, position, direction, volume, isWorld);
-	if(res == ACRE_ERROR) {
-		vServer->sendMessage(CTextMessage::formatNewMessage("handleSoundError", "%s,", id.c_str()));
-	}
+    ACRE_RESULT res = CEngine::getInstance()->getSoundPlayback()->playSound(id, position, direction, volume, isWorld);
+    if(res == ACRE_ERROR) {
+        vServer->sendMessage(CTextMessage::formatNewMessage("handleSoundError", "%s,", id.c_str()));
+    }
 
-	return ACRE_OK;
+    return ACRE_OK;
 }
 DECLARE_MEMBER(char *, Name);
 };

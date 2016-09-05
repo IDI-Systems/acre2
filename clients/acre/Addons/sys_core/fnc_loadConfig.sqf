@@ -8,12 +8,12 @@ private _data = [_file] call FUNC(parseIni);
 private _section = "";
 
 {
-	if(IS_STRING(_x)) then {
-		_section = _x;
-	} else {
-		_x params ["_key","_val"];
+    if(IS_STRING(_x)) then {
+        _section = _x;
+    } else {
+        _x params ["_key","_val"];
 
-		missionNamespace setVariable ["ACRE" + _namespace + _section + _key, _val];
-	};
+        missionNamespace setVariable ["ACRE" + _namespace + _section + _key, _val];
+    };
 } forEach _data;
 true

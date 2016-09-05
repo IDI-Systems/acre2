@@ -49,7 +49,7 @@ params ["_radioId", "_event", "_eventData", "_radioData"];
 private _channelNumber = HASH_GET(_radioData,"currentChannel");
 
 if(isNil "_channelNumber") then {
-	_channelNumber = 0;
+    _channelNumber = 0;
 };
 
 _channelNumber

@@ -18,7 +18,7 @@ private _radioBaseClass = getText(configFile >> "CfgWeapons" >> _radioId >> "acr
 
 private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
 if(_interfaceClass == "") then {
-	_interfaceClass = "DefaultInterface";
+    _interfaceClass = "DefaultInterface";
 };
 private _handlerFunction = (getText (configFile >> "CfgAcreComponents" >> _radioBaseClass >> "Interfaces" >> _eventKind >> _event));
 

@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -56,17 +56,17 @@ void print(const fvec4SIMD &v)
 // Implicit basic constructors
 
 GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD()
-#	ifdef GLM_FORCE_NO_CTOR_INIT
-		: Data(_mm_set_ps(1.0f, 0.0f, 0.0f, 0.0f))
-#	endif
+#    ifdef GLM_FORCE_NO_CTOR_INIT
+        : Data(_mm_set_ps(1.0f, 0.0f, 0.0f, 0.0f))
+#    endif
 {}
 
 GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD(__m128 const & Data) :
-	Data(Data)
+    Data(Data)
 {}
 
 GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD(fquatSIMD const & q) :
-	Data(q.Data)
+    Data(q.Data)
 {}
 
 
@@ -74,17 +74,17 @@ GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD(fquatSIMD const & q) :
 // Explicit basic constructors
 
 GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD(float const & w, float const & x, float const & y, float const & z) :
-	Data(_mm_set_ps(w, z, y, x))
+    Data(_mm_set_ps(w, z, y, x))
 {}
 
 GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD(quat const & q) :
-	Data(_mm_set_ps(q.w, q.z, q.y, q.x))
+    Data(_mm_set_ps(q.w, q.z, q.y, q.x))
 {}
 
 GLM_FUNC_QUALIFIER fquatSIMD::fquatSIMD(vec3 const & eulerAngles)
 {
     vec3 c = glm::cos(eulerAngles * 0.5f);
-	vec3 s = glm::sin(eulerAngles * 0.5f);
+    vec3 s = glm::sin(eulerAngles * 0.5f);
 
     Data = _mm_set_ps(
         (c.x * c.y * c.z) + (s.x * s.y * s.z),
@@ -105,14 +105,14 @@ GLM_FUNC_QUALIFIER fquatSIMD& fquatSIMD::operator=(fquatSIMD const & q)
 
 GLM_FUNC_QUALIFIER fquatSIMD& fquatSIMD::operator*=(float const & s)
 {
-	this->Data = _mm_mul_ps(this->Data, _mm_set_ps1(s));
-	return *this;
+    this->Data = _mm_mul_ps(this->Data, _mm_set_ps1(s));
+    return *this;
 }
 
 GLM_FUNC_QUALIFIER fquatSIMD& fquatSIMD::operator/=(float const & s)
 {
-	this->Data = _mm_div_ps(Data, _mm_set1_ps(s));
-	return *this;
+    this->Data = _mm_div_ps(Data, _mm_set1_ps(s));
+    return *this;
 }
 
 
@@ -126,7 +126,7 @@ GLM_FUNC_QUALIFIER fquatSIMD operator- (fquatSIMD const & q)
 // operator+
 GLM_FUNC_QUALIFIER fquatSIMD operator+ (fquatSIMD const & q1, fquatSIMD const & q2)
 {
-	return fquatSIMD(_mm_add_ps(q1.Data, q2.Data));
+    return fquatSIMD(_mm_add_ps(q1.Data, q2.Data));
 }
 
 //operator*
@@ -198,11 +198,11 @@ GLM_FUNC_QUALIFIER fvec4SIMD operator* (fquatSIMD const & q, fvec4SIMD const & v
 
     __m128 q_wwww  = _mm_shuffle_ps(q.Data, q.Data, _MM_SHUFFLE(3, 3, 3, 3));
     __m128 q_swp0  = _mm_shuffle_ps(q.Data, q.Data, _MM_SHUFFLE(3, 0, 2, 1));
-	__m128 q_swp1  = _mm_shuffle_ps(q.Data, q.Data, _MM_SHUFFLE(3, 1, 0, 2));
-	__m128 v_swp0  = _mm_shuffle_ps(v.Data, v.Data, _MM_SHUFFLE(3, 0, 2, 1));
-	__m128 v_swp1  = _mm_shuffle_ps(v.Data, v.Data, _MM_SHUFFLE(3, 1, 0, 2));
-	
-	__m128 uv      = _mm_sub_ps(_mm_mul_ps(q_swp0, v_swp1), _mm_mul_ps(q_swp1, v_swp0));
+    __m128 q_swp1  = _mm_shuffle_ps(q.Data, q.Data, _MM_SHUFFLE(3, 1, 0, 2));
+    __m128 v_swp0  = _mm_shuffle_ps(v.Data, v.Data, _MM_SHUFFLE(3, 0, 2, 1));
+    __m128 v_swp1  = _mm_shuffle_ps(v.Data, v.Data, _MM_SHUFFLE(3, 1, 0, 2));
+    
+    __m128 uv      = _mm_sub_ps(_mm_mul_ps(q_swp0, v_swp1), _mm_mul_ps(q_swp1, v_swp0));
     __m128 uv_swp0 = _mm_shuffle_ps(uv, uv, _MM_SHUFFLE(3, 0, 2, 1));
     __m128 uv_swp1 = _mm_shuffle_ps(uv, uv, _MM_SHUFFLE(3, 1, 0, 2));
     __m128 uuv     = _mm_sub_ps(_mm_mul_ps(q_swp0, uv_swp1), _mm_mul_ps(q_swp1, uv_swp0));
@@ -216,24 +216,24 @@ GLM_FUNC_QUALIFIER fvec4SIMD operator* (fquatSIMD const & q, fvec4SIMD const & v
 
 GLM_FUNC_QUALIFIER fvec4SIMD operator* (fvec4SIMD const & v, fquatSIMD const & q)
 {
-	return glm::inverse(q) * v;
+    return glm::inverse(q) * v;
 }
 
 GLM_FUNC_QUALIFIER fquatSIMD operator* (fquatSIMD const & q, float s)
 {
-	return fquatSIMD(_mm_mul_ps(q.Data, _mm_set1_ps(s)));
+    return fquatSIMD(_mm_mul_ps(q.Data, _mm_set1_ps(s)));
 }
 
 GLM_FUNC_QUALIFIER fquatSIMD operator* (float s, fquatSIMD const & q)
 {
-	return fquatSIMD(_mm_mul_ps(_mm_set1_ps(s), q.Data));
+    return fquatSIMD(_mm_mul_ps(_mm_set1_ps(s), q.Data));
 }
 
 
 //operator/
 GLM_FUNC_QUALIFIER fquatSIMD operator/ (fquatSIMD const & q, float s)
 {
-	return fquatSIMD(_mm_div_ps(q.Data, _mm_set1_ps(s)));
+    return fquatSIMD(_mm_div_ps(q.Data, _mm_set1_ps(s)));
 }
 
 
@@ -242,13 +242,13 @@ GLM_FUNC_QUALIFIER fquatSIMD operator/ (fquatSIMD const & q, float s)
 
 GLM_FUNC_QUALIFIER quat quat_cast
 (
-	detail::fquatSIMD const & x
+    detail::fquatSIMD const & x
 )
 {
-	GLM_ALIGN(16) quat Result;
-	_mm_store_ps(&Result[0], x.Data);
+    GLM_ALIGN(16) quat Result;
+    _mm_store_ps(&Result[0], x.Data);
 
-	return Result;
+    return Result;
 }
 
 template <typename T>
@@ -309,7 +309,7 @@ GLM_FUNC_QUALIFIER detail::fquatSIMD quatSIMD_cast_impl(const T m0[], const T m1
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD quatSIMD_cast
 (
-	detail::fmat4x4SIMD const & m
+    detail::fmat4x4SIMD const & m
 )
 {
     // Scalar implementation for now.
@@ -345,7 +345,7 @@ GLM_FUNC_QUALIFIER detail::fquatSIMD quatSIMD_cast
 
 GLM_FUNC_QUALIFIER detail::fmat4x4SIMD mat4SIMD_cast
 (
-	detail::fquatSIMD const & q
+    detail::fquatSIMD const & q
 )
 {
     detail::fmat4x4SIMD result;
@@ -400,7 +400,7 @@ GLM_FUNC_QUALIFIER detail::fmat4x4SIMD mat4SIMD_cast
 
 GLM_FUNC_QUALIFIER mat4 mat4_cast
 (
-	detail::fquatSIMD const & q
+    detail::fquatSIMD const & q
 )
 {
     return mat4_cast(mat4SIMD_cast(q));
@@ -410,7 +410,7 @@ GLM_FUNC_QUALIFIER mat4 mat4_cast
 
 GLM_FUNC_QUALIFIER float length
 (
-	detail::fquatSIMD const & q
+    detail::fquatSIMD const & q
 )
 {
     return glm::sqrt(dot(q, q));
@@ -418,7 +418,7 @@ GLM_FUNC_QUALIFIER float length
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD normalize
 (
-	detail::fquatSIMD const & q
+    detail::fquatSIMD const & q
 )
 {
     return _mm_mul_ps(q.Data, _mm_set1_ps(1.0f / length(q)));
@@ -426,8 +426,8 @@ GLM_FUNC_QUALIFIER detail::fquatSIMD normalize
 
 GLM_FUNC_QUALIFIER float dot
 (
-	detail::fquatSIMD const & q1,
-	detail::fquatSIMD const & q2
+    detail::fquatSIMD const & q1,
+    detail::fquatSIMD const & q2
 )
 {
     float result;
@@ -438,16 +438,16 @@ GLM_FUNC_QUALIFIER float dot
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD mix
 (
-	detail::fquatSIMD const & x, 
-	detail::fquatSIMD const & y, 
-	float const & a
+    detail::fquatSIMD const & x, 
+    detail::fquatSIMD const & y, 
+    float const & a
 )
 {
-	float cosTheta = dot(x, y);
+    float cosTheta = dot(x, y);
 
     if (cosTheta > 1.0f - glm::epsilon<float>())
     {
-	    return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
+        return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
     }
     else
     {
@@ -464,68 +464,68 @@ GLM_FUNC_QUALIFIER detail::fquatSIMD mix
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD lerp
 (
-	detail::fquatSIMD const & x, 
-	detail::fquatSIMD const & y, 
-	float const & a
+    detail::fquatSIMD const & x, 
+    detail::fquatSIMD const & y, 
+    float const & a
 )
 {
-	// Lerp is only defined in [0, 1]
-	assert(a >= 0.0f);
-	assert(a <= 1.0f);
+    // Lerp is only defined in [0, 1]
+    assert(a >= 0.0f);
+    assert(a <= 1.0f);
 
     return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
 }
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD slerp
 (
-	detail::fquatSIMD const & x, 
-	detail::fquatSIMD const & y, 
-	float const & a
+    detail::fquatSIMD const & x, 
+    detail::fquatSIMD const & y, 
+    float const & a
 )
 {
-	detail::fquatSIMD z = y;
+    detail::fquatSIMD z = y;
 
-	float cosTheta = dot(x, y);
+    float cosTheta = dot(x, y);
 
-	// If cosTheta < 0, the interpolation will take the long way around the sphere. 
-	// To fix this, one quat must be negated.
-	if (cosTheta < 0.0f)
-	{
-		z        = -y;
-		cosTheta = -cosTheta;
-	}
+    // If cosTheta < 0, the interpolation will take the long way around the sphere. 
+    // To fix this, one quat must be negated.
+    if (cosTheta < 0.0f)
+    {
+        z        = -y;
+        cosTheta = -cosTheta;
+    }
 
-	// Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator
-	if(cosTheta > 1.0f - epsilon<float>())
-	{
-		return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
-	}
-	else
-	{
+    // Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator
+    if(cosTheta > 1.0f - epsilon<float>())
+    {
+        return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
+    }
+    else
+    {
         float angle = glm::acos(cosTheta);
 
 
-		float s0 = glm::sin((1.0f - a) * angle);
+        float s0 = glm::sin((1.0f - a) * angle);
         float s1 = glm::sin(a * angle);
         float d  = 1.0f / glm::sin(angle);
 
         return (s0 * x + s1 * y) * d;
-	}
+    }
 }
 
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD fastMix
 (
-	detail::fquatSIMD const & x, 
-	detail::fquatSIMD const & y, 
-	float const & a
+    detail::fquatSIMD const & x, 
+    detail::fquatSIMD const & y, 
+    float const & a
 )
 {
-	float cosTheta = dot(x, y);
+    float cosTheta = dot(x, y);
 
     if (cosTheta > 1.0f - glm::epsilon<float>())
     {
-	    return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
+        return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
     }
     else
     {
@@ -544,27 +544,27 @@ GLM_FUNC_QUALIFIER detail::fquatSIMD fastMix
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD fastSlerp
 (
-	detail::fquatSIMD const & x, 
-	detail::fquatSIMD const & y, 
-	float const & a
+    detail::fquatSIMD const & x, 
+    detail::fquatSIMD const & y, 
+    float const & a
 )
 {
-	detail::fquatSIMD z = y;
+    detail::fquatSIMD z = y;
 
-	float cosTheta = dot(x, y);
-	if (cosTheta < 0.0f)
-	{
-		z        = -y;
-		cosTheta = -cosTheta;
-	}
+    float cosTheta = dot(x, y);
+    if (cosTheta < 0.0f)
+    {
+        z        = -y;
+        cosTheta = -cosTheta;
+    }
 
 
-	if(cosTheta > 1.0f - epsilon<float>())
-	{
-		return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
-	}
-	else
-	{
+    if(cosTheta > 1.0f - epsilon<float>())
+    {
+        return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
+    }
+    else
+    {
         float angle = glm::fastAcos(cosTheta);
 
 
@@ -575,70 +575,70 @@ GLM_FUNC_QUALIFIER detail::fquatSIMD fastSlerp
         __m128 d  = _mm_div_ps(_mm_set1_ps(1.0f), _mm_shuffle_ps(s, s, _MM_SHUFFLE(1, 1, 1, 1)));
         
         return _mm_mul_ps(_mm_add_ps(_mm_mul_ps(s0, x.Data), _mm_mul_ps(s1, y.Data)), d);
-	}
+    }
 }
 
 
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD conjugate
 (
-	detail::fquatSIMD const & q
+    detail::fquatSIMD const & q
 )
 {
-	return detail::fquatSIMD(_mm_mul_ps(q.Data, _mm_set_ps(1.0f, -1.0f, -1.0f, -1.0f)));
+    return detail::fquatSIMD(_mm_mul_ps(q.Data, _mm_set_ps(1.0f, -1.0f, -1.0f, -1.0f)));
 }
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD inverse
 (
-	detail::fquatSIMD const & q
+    detail::fquatSIMD const & q
 )
 {
-	return conjugate(q) / dot(q, q);
+    return conjugate(q) / dot(q, q);
 }
 
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD angleAxisSIMD
 (
-	float const & angle,
-	vec3 const & v
+    float const & angle,
+    vec3 const & v
 )
 {
-	float s = glm::sin(angle * 0.5f);
+    float s = glm::sin(angle * 0.5f);
 
-	return _mm_set_ps(
-		glm::cos(angle * 0.5f),
-		v.z * s,
-		v.y * s,
-		v.x * s);
+    return _mm_set_ps(
+        glm::cos(angle * 0.5f),
+        v.z * s,
+        v.y * s,
+        v.x * s);
 }
 
 GLM_FUNC_QUALIFIER detail::fquatSIMD angleAxisSIMD
 (
-	float const & angle, 
-	float const & x, 
-	float const & y, 
-	float const & z
+    float const & angle, 
+    float const & x, 
+    float const & y, 
+    float const & z
 )
 {
-	return angleAxisSIMD(angle, vec3(x, y, z));
+    return angleAxisSIMD(angle, vec3(x, y, z));
 }
 
 
 GLM_FUNC_QUALIFIER __m128 fastSin(__m128 x)
 {
-	static const __m128 c0 = _mm_set1_ps(0.16666666666666666666666666666667f);
-	static const __m128 c1 = _mm_set1_ps(0.00833333333333333333333333333333f);
-	static const __m128 c2 = _mm_set1_ps(0.00019841269841269841269841269841f);
+    static const __m128 c0 = _mm_set1_ps(0.16666666666666666666666666666667f);
+    static const __m128 c1 = _mm_set1_ps(0.00833333333333333333333333333333f);
+    static const __m128 c2 = _mm_set1_ps(0.00019841269841269841269841269841f);
 
-	__m128 x3 = _mm_mul_ps(x,  _mm_mul_ps(x, x));
-	__m128 x5 = _mm_mul_ps(x3, _mm_mul_ps(x, x));
-	__m128 x7 = _mm_mul_ps(x5, _mm_mul_ps(x, x));
+    __m128 x3 = _mm_mul_ps(x,  _mm_mul_ps(x, x));
+    __m128 x5 = _mm_mul_ps(x3, _mm_mul_ps(x, x));
+    __m128 x7 = _mm_mul_ps(x5, _mm_mul_ps(x, x));
 
-	__m128 y0 = _mm_mul_ps(x3, c0);
-	__m128 y1 = _mm_mul_ps(x5, c1);
-	__m128 y2 = _mm_mul_ps(x7, c2);
+    __m128 y0 = _mm_mul_ps(x3, c0);
+    __m128 y1 = _mm_mul_ps(x5, c1);
+    __m128 y2 = _mm_mul_ps(x7, c2);
 
-	return _mm_sub_ps(_mm_add_ps(_mm_sub_ps(x, y0), y1), y2);
+    return _mm_sub_ps(_mm_add_ps(_mm_sub_ps(x, y0), y1), y2);
 }
 
 

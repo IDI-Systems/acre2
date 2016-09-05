@@ -25,29 +25,29 @@ namespace acre {
             uint32_t        type;
             std::string     name;  // "RightDoor"
             std::string     source;     // "rotor"
-			float			min_value;
-			float			max_value;
-			float			min_phase;
-			float			max_phase;
+            float            min_value;
+            float            max_value;
+            float            min_phase;
+            float            max_phase;
             uint32_t        junk;
 
-			uint32_t		junk2;
+            uint32_t        junk2;
 
-			uint32_t		source_address;
+            uint32_t        source_address;
 
-			float			offset0;
-			float			offset1;
+            float            offset0;
+            float            offset1;
 
-			float			angle0;
-			float			angle1;
+            float            angle0;
+            float            angle1;
 
-			float			hide_value;
+            float            hide_value;
 
-			acre::vector3<float> direct_axis_pos;
-			acre::vector3<float> direct_axis_dir;
+            acre::vector3<float> direct_axis_pos;
+            acre::vector3<float> direct_axis_dir;
 
-			float direct_angle;
-			float direct_axis_offset;
+            float direct_angle;
+            float direct_axis_offset;
 
 
             std::vector<animate_bone_p> bones;

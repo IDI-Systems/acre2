@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -36,85 +36,85 @@ namespace detail
 
 }//namespace detail
 
-	template <>
-	GLM_FUNC_QUALIFIER tvec4<float, lowp>::tvec4()
-#		ifndef GLM_FORCE_NO_CTOR_INIT
-			: data(_mm_setzero_ps())
-#		endif
-	{}
-	
-	template <>
-	GLM_FUNC_QUALIFIER tvec4<float, mediump>::tvec4()
-#		ifndef GLM_FORCE_NO_CTOR_INIT
-			: data(_mm_setzero_ps())
-#		endif
-	{}
+    template <>
+    GLM_FUNC_QUALIFIER tvec4<float, lowp>::tvec4()
+#        ifndef GLM_FORCE_NO_CTOR_INIT
+            : data(_mm_setzero_ps())
+#        endif
+    {}
+    
+    template <>
+    GLM_FUNC_QUALIFIER tvec4<float, mediump>::tvec4()
+#        ifndef GLM_FORCE_NO_CTOR_INIT
+            : data(_mm_setzero_ps())
+#        endif
+    {}
 
-	template <>
-	GLM_FUNC_QUALIFIER tvec4<float, lowp>::tvec4(float s) :
-		data(_mm_set1_ps(s))
-	{}
-	
-	template <>
-	GLM_FUNC_QUALIFIER tvec4<float, mediump>::tvec4(float s) :
-		data(_mm_set1_ps(s))
-	{}
+    template <>
+    GLM_FUNC_QUALIFIER tvec4<float, lowp>::tvec4(float s) :
+        data(_mm_set1_ps(s))
+    {}
+    
+    template <>
+    GLM_FUNC_QUALIFIER tvec4<float, mediump>::tvec4(float s) :
+        data(_mm_set1_ps(s))
+    {}
 
-	template <>
-	GLM_FUNC_QUALIFIER tvec4<float, lowp>::tvec4(float a, float b, float c, float d) :
-		data(_mm_set_ps(d, c, b, a))
-	{}
-	
-	template <>
-	GLM_FUNC_QUALIFIER tvec4<float, mediump>::tvec4(float a, float b, float c, float d) :
-		data(_mm_set_ps(d, c, b, a))
-	{}
+    template <>
+    GLM_FUNC_QUALIFIER tvec4<float, lowp>::tvec4(float a, float b, float c, float d) :
+        data(_mm_set_ps(d, c, b, a))
+    {}
+    
+    template <>
+    GLM_FUNC_QUALIFIER tvec4<float, mediump>::tvec4(float a, float b, float c, float d) :
+        data(_mm_set_ps(d, c, b, a))
+    {}
 
-	template <>
-	template <typename U>
-	GLM_FUNC_QUALIFIER tvec4<float, lowp> & tvec4<float, lowp>::operator+=(U scalar)
-	{
-		this->data = _mm_add_ps(this->data, _mm_set_ps1(static_cast<float>(scalar)));
-		return *this;
-	}
+    template <>
+    template <typename U>
+    GLM_FUNC_QUALIFIER tvec4<float, lowp> & tvec4<float, lowp>::operator+=(U scalar)
+    {
+        this->data = _mm_add_ps(this->data, _mm_set_ps1(static_cast<float>(scalar)));
+        return *this;
+    }
 
-	template <>
-	template <>
-	GLM_FUNC_QUALIFIER tvec4<float, lowp> & tvec4<float, lowp>::operator+=<float>(float scalar)
-	{
-		this->data = _mm_add_ps(this->data, _mm_set_ps1(scalar));
-		return *this;
-	}
+    template <>
+    template <>
+    GLM_FUNC_QUALIFIER tvec4<float, lowp> & tvec4<float, lowp>::operator+=<float>(float scalar)
+    {
+        this->data = _mm_add_ps(this->data, _mm_set_ps1(scalar));
+        return *this;
+    }
 
-	template <>
-	template <typename U>
-	GLM_FUNC_QUALIFIER tvec4<float, mediump> & tvec4<float, mediump>::operator+=(U scalar)
-	{
-		this->data = _mm_add_ps(this->data, _mm_set_ps1(static_cast<float>(scalar)));
-		return *this;
-	}
+    template <>
+    template <typename U>
+    GLM_FUNC_QUALIFIER tvec4<float, mediump> & tvec4<float, mediump>::operator+=(U scalar)
+    {
+        this->data = _mm_add_ps(this->data, _mm_set_ps1(static_cast<float>(scalar)));
+        return *this;
+    }
 
-	template <>
-	template <>
-	GLM_FUNC_QUALIFIER tvec4<float, mediump> & tvec4<float, mediump>::operator+=<float>(float scalar)
-	{
-		this->data = _mm_add_ps(this->data, _mm_set_ps1(scalar));
-		return *this;
-	}
+    template <>
+    template <>
+    GLM_FUNC_QUALIFIER tvec4<float, mediump> & tvec4<float, mediump>::operator+=<float>(float scalar)
+    {
+        this->data = _mm_add_ps(this->data, _mm_set_ps1(scalar));
+        return *this;
+    }
 
-	template <>
-	template <typename U>
-	GLM_FUNC_QUALIFIER tvec4<float, lowp> & tvec4<float, lowp>::operator+=(tvec1<U, lowp> const & v)
-	{
-		this->data = _mm_add_ps(this->data, _mm_set_ps1(static_cast<float>(v.x)));
-		return *this;
-	}
+    template <>
+    template <typename U>
+    GLM_FUNC_QUALIFIER tvec4<float, lowp> & tvec4<float, lowp>::operator+=(tvec1<U, lowp> const & v)
+    {
+        this->data = _mm_add_ps(this->data, _mm_set_ps1(static_cast<float>(v.x)));
+        return *this;
+    }
 
-	template <>
-	template <typename U>
-	GLM_FUNC_QUALIFIER tvec4<float, mediump> & tvec4<float, mediump>::operator+=(tvec1<U, mediump> const & v)
-	{
-		this->data = _mm_add_ps(this->data, _mm_set_ps1(static_cast<float>(v.x)));
-		return *this;
-	}
+    template <>
+    template <typename U>
+    GLM_FUNC_QUALIFIER tvec4<float, mediump> & tvec4<float, mediump>::operator+=(tvec1<U, mediump> const & v)
+    {
+        this->data = _mm_add_ps(this->data, _mm_set_ps1(static_cast<float>(v.x)));
+        return *this;
+    }
 }//namespace glm

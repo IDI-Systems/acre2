@@ -22,36 +22,36 @@ _outputACRE = "";
 _outputJNET = "";
 
 if(!(_jvon select 0)) then {
-	_outputJVON = "File Not Found";
+    _outputJVON = "File Not Found";
 } else {
-	_outputJVON = "JVON OK ";
+    _outputJVON = "JVON OK ";
 };
 
 if(!_jnet) then {
-	_outputJNET = "Extension Not Found";
+    _outputJNET = "Extension Not Found";
 } else {
-	_outputJNET = "JNET OK ";
+    _outputJNET = "JNET OK ";
 };
 
 if(!(_pipes select 0) && !(_pipes select 1)) then {
-	_outputACRE = "No ACRE Client Found";
+    _outputACRE = "No ACRE Client Found";
 } else {
-	if((_pipes select 0) && (_pipes select 1)) then {
-		_outputACRE = "JVON OK  TS3 OK ";
-	} else {
-		if((_pipes select 0)) then {
-			_outputACRE = _outputACRE + " TS3 OK ";
-		};
-		if((_pipes select 1)) then {
-			_outputACRE = _outputACRE + " JVON OK ";
-		};
-	};
+    if((_pipes select 0) && (_pipes select 1)) then {
+        _outputACRE = "JVON OK  TS3 OK ";
+    } else {
+        if((_pipes select 0)) then {
+            _outputACRE = _outputACRE + " TS3 OK ";
+        };
+        if((_pipes select 1)) then {
+            _outputACRE = _outputACRE + " JVON OK ";
+        };
+    };
 };
 
-//[	"ACRE Status",
-//	format["ACRE: %1", _outputACRE],
-//	format["JVON: %1 JNET: %2", _outputJVON, _outputJNET],
-//	1] 
+//[    "ACRE Status",
+//    format["ACRE: %1", _outputACRE],
+//    format["JVON: %1 JNET: %2", _outputJVON, _outputJNET],
+//    1] 
 //call EFUNC(sys_list,displayHint);
 
 [_pipes, _jnet, _jvon, [_outputACRE, _outputJVON, _outputJNET]]

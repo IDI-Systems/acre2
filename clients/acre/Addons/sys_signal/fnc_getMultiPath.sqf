@@ -73,18 +73,18 @@ _returns = [];
 _totalIts = 0;
 _newBpCachedReturns = [];
 {
-	_reflectPos = _x select 0;
-	_vectorFromTxToR = _txPos vectorFromTo _reflectPos;
+    _reflectPos = _x select 0;
+    _vectorFromTxToR = _txPos vectorFromTo _reflectPos;
         
-	if(_reflectPos vectorDistanceSqr _rxPos > 10000) then {
+    if(_reflectPos vectorDistanceSqr _rxPos > 10000) then {
         
-		_lastPos = _reflectPos;
+        _lastPos = _reflectPos;
         
         
  
-		/*
-		Terrain Profile Generation
-		*/
+        /*
+        Terrain Profile Generation
+        */
         _ituLoss = 0;
         _ituLoss = [_txPos, _reflectPos, _f, 50] call FUNC(getItuLoss);
         if((_ituLoss+16) < 120) then {
@@ -98,24 +98,24 @@ _newBpCachedReturns = [];
         
         _vectorFromRtoRx = _reflectPos vectorFromTo _rxPos;
         _dirToRx = (((_vectorFromRtoRx select 0) atan2 (_vectorFromRtoRx select 1)) + 360) mod 360;
-		_dirToTx = (((_vectorFromTxToR select 0) atan2 (_vectorFromTxToR select 1)) + 360) mod 360;
-		
-		_elevToRx = asin (_vectorFromRtoRx select 2);
-		_elevToTx = asin (_vectorFromTxToR select 2);
+        _dirToTx = (((_vectorFromTxToR select 0) atan2 (_vectorFromTxToR select 1)) + 360) mod 360;
+        
+        _elevToRx = asin (_vectorFromRtoRx select 2);
+        _elevToTx = asin (_vectorFromTxToR select 2);
         
         _txGain = [_rxAntenna, _dirToRx, _elevToTx, _f] call acre_sys_antenna_fnc_getGain;
         _rxGain = [_txAntenna, _dirToTx, _elevToRx, _f, (_txGain select 1)] call acre_sys_antenna_fnc_getGain;
         _sum = (_txGain select 0) + (_rxGain select 0);
-		
-		
+        
+        
             
-		_deg = (asin((surfaceNormal _reflectPos) select 2) - asin (_vectorFromRtoRx select 2));
-		_ratio = cos(_deg);
-		
-		
-		_Lfs = -27.55 + 20*log(_f) + 20*log(_newDistance);
-		_Ptx = 10 * (log ((_mW*_ratio)/1000)) + 30;
-		_Rp = _Ptx - _Lfs;
+        _deg = (asin((surfaceNormal _reflectPos) select 2) - asin (_vectorFromRtoRx select 2));
+        _ratio = cos(_deg);
+        
+        
+        _Lfs = -27.55 + 20*log(_f) + 20*log(_newDistance);
+        _Ptx = 10 * (log ((_mW*_ratio)/1000)) + 30;
+        _Rp = _Ptx - _Lfs;
         
         _objectLoss1 = [_reflectPos, _rxPos, _f] call FUNC(objectLoss);
         _objectLoss2 = [_reflectPos, _txPos, _f] call FUNC(objectLoss);
@@ -123,26 +123,26 @@ _newBpCachedReturns = [];
         
         
 
-		/*
-		Transmitter/Receiver cable/internal loss.
-		*/
-		_Ltx = 5; // Transmitter
-		_Lrx = 5; // Receiver
+        /*
+        Transmitter/Receiver cable/internal loss.
+        */
+        _Ltx = 5; // Transmitter
+        _Lrx = 5; // Receiver
 
-		/*
-		Loss from fading, obstruction, noise, etc (including ITU model)
-		*/
-		_Lm = _ituLoss + ((random 1) - 0.5) + _objectLoss;
-		_Rp = (_Rp + _sum) - _Ltx - _Lrx - _Lm;
+        /*
+        Loss from fading, obstruction, noise, etc (including ITU model)
+        */
+        _Lm = _ituLoss + ((random 1) - 0.5) + _objectLoss;
+        _Rp = (_Rp + _sum) - _Ltx - _Lrx - _Lm;
 
         
         
         
         
-		_highestRef = _highestRef max _Rp;
+        _highestRef = _highestRef max _Rp;
             
-        _Sl     			= (abs _sinadRating)/2;
-        _Slp   				= 0.075;
+        _Sl                 = (abs _sinadRating)/2;
+        _Slp                   = 0.075;
         
         _bottom = _sinadRating - (_Sl*_Slp);
         _Snd = abs ((_bottom - (_Rp max _bottom))/_Sl);
@@ -166,9 +166,9 @@ _newBpCachedReturns = [];
         _highestPx = _highestPx max _Px;
             
             
-	};
+    };
     _totalIts = _totalIts + 1;
-	if(_testCount >= GVAR(maxReflections)) exitWith { GVAR(maxReflections) = (GVAR(maxReflections) + 1) min 5; };
+    if(_testCount >= GVAR(maxReflections)) exitWith { GVAR(maxReflections) = (GVAR(maxReflections) + 1) min 5; };
 } forEach _bestPlaces;
 
 if(_testCount == 0 || _highestPx == 0) then {

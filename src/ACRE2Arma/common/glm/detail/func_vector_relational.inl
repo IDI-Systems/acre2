@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -34,98 +34,98 @@
 
 namespace glm
 {
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> lessThan(vecType<T, P> const & x, vecType<T, P> const & y)
-	{
-		assert(detail::component_count(x) == detail::component_count(y));
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<bool, P> lessThan(vecType<T, P> const & x, vecType<T, P> const & y)
+    {
+        assert(detail::component_count(x) == detail::component_count(y));
 
-		vecType<bool, P> Result(uninitialize);
-		for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
-			Result[i] = x[i] < y[i];
+        vecType<bool, P> Result(uninitialize);
+        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+            Result[i] = x[i] < y[i];
 
-		return Result;
-	}
+        return Result;
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> lessThanEqual(vecType<T, P> const & x, vecType<T, P> const & y)
-	{
-		assert(detail::component_count(x) == detail::component_count(y));
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<bool, P> lessThanEqual(vecType<T, P> const & x, vecType<T, P> const & y)
+    {
+        assert(detail::component_count(x) == detail::component_count(y));
 
-		vecType<bool, P> Result(uninitialize);
-		for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
-			Result[i] = x[i] <= y[i];
-		return Result;
-	}
+        vecType<bool, P> Result(uninitialize);
+        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+            Result[i] = x[i] <= y[i];
+        return Result;
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> greaterThan(vecType<T, P> const & x, vecType<T, P> const & y)
-	{
-		assert(detail::component_count(x) == detail::component_count(y));
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<bool, P> greaterThan(vecType<T, P> const & x, vecType<T, P> const & y)
+    {
+        assert(detail::component_count(x) == detail::component_count(y));
 
-		vecType<bool, P> Result(uninitialize);
-		for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
-			Result[i] = x[i] > y[i];
-		return Result;
-	}
+        vecType<bool, P> Result(uninitialize);
+        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+            Result[i] = x[i] > y[i];
+        return Result;
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> greaterThanEqual(vecType<T, P> const & x, vecType<T, P> const & y)
-	{
-		assert(detail::component_count(x) == detail::component_count(y));
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<bool, P> greaterThanEqual(vecType<T, P> const & x, vecType<T, P> const & y)
+    {
+        assert(detail::component_count(x) == detail::component_count(y));
 
-		vecType<bool, P> Result(uninitialize);
-		for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
-			Result[i] = x[i] >= y[i];
-		return Result;
-	}
+        vecType<bool, P> Result(uninitialize);
+        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+            Result[i] = x[i] >= y[i];
+        return Result;
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> equal(vecType<T, P> const & x, vecType<T, P> const & y)
-	{
-		assert(detail::component_count(x) == detail::component_count(y));
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<bool, P> equal(vecType<T, P> const & x, vecType<T, P> const & y)
+    {
+        assert(detail::component_count(x) == detail::component_count(y));
 
-		vecType<bool, P> Result(uninitialize);
-		for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
-			Result[i] = x[i] == y[i];
-		return Result;
-	}
+        vecType<bool, P> Result(uninitialize);
+        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+            Result[i] = x[i] == y[i];
+        return Result;
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> notEqual(vecType<T, P> const & x, vecType<T, P> const & y)
-	{
-		assert(detail::component_count(x) == detail::component_count(y));
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<bool, P> notEqual(vecType<T, P> const & x, vecType<T, P> const & y)
+    {
+        assert(detail::component_count(x) == detail::component_count(y));
 
-		vecType<bool, P> Result(uninitialize);
-		for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
-			Result[i] = x[i] != y[i];
-		return Result;
-	}
+        vecType<bool, P> Result(uninitialize);
+        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+            Result[i] = x[i] != y[i];
+        return Result;
+    }
 
-	template <precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER bool any(vecType<bool, P> const & v)
-	{
-		bool Result = false;
-		for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
-			Result = Result || v[i];
-		return Result;
-	}
+    template <precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER bool any(vecType<bool, P> const & v)
+    {
+        bool Result = false;
+        for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
+            Result = Result || v[i];
+        return Result;
+    }
 
-	template <precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER bool all(vecType<bool, P> const & v)
-	{
-		bool Result = true;
-		for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
-			Result = Result && v[i];
-		return Result;
-	}
+    template <precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER bool all(vecType<bool, P> const & v)
+    {
+        bool Result = true;
+        for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
+            Result = Result && v[i];
+        return Result;
+    }
 
-	template <precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<bool, P> not_(vecType<bool, P> const & v)
-	{
-		vecType<bool, P> Result(uninitialize);
-		for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
-			Result[i] = !v[i];
-		return Result;
-	}
+    template <precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<bool, P> not_(vecType<bool, P> const & v)
+    {
+        vecType<bool, P> Result(uninitialize);
+        for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
+            Result[i] = !v[i];
+        return Result;
+    }
 }//namespace glm
 

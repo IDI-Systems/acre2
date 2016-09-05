@@ -12,14 +12,14 @@ _interference = _logic getVariable["Interference", true];
 _ignoreAntennaDirection = _logic getVariable["IgnoreAntennaDirection", false];
 
 if(!_signalLoss) then {
-	[0.0] call acre_api_fnc_setLossModelScale;
+    [0.0] call acre_api_fnc_setLossModelScale;
 };
 if(_fullDuplex) then {
-	[true] call acre_api_fnc_setFullDuplex;
+    [true] call acre_api_fnc_setFullDuplex;
 };
 if(!_interference) then {
-	[false] call acre_api_fnc_setInterference;
+    [false] call acre_api_fnc_setInterference;
 };
 if(_ignoreAntennaDirection) then {
-	[true] call acre_api_fnc_ignoreAntennaDirection;
+    [true] call acre_api_fnc_ignoreAntennaDirection;
 };

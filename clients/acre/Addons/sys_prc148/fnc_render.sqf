@@ -54,14 +54,14 @@ RADIO_CTRL(99902) ctrlCommit 0;
 
 // acre_player sideChat format["off: %1", (["getOnOffState"] call GUI_DATA_EVENT)];
 if((["getOnOffState"] call GUI_DATA_EVENT) > 0) then {
-	private _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
-	GVAR(currentState) = _currentState;
-	[_display] call (missionNamespace getVariable [QUOTE(ADDON) + "_fnc_" + _currentState + "_Render", {}]);
+    private _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
+    GVAR(currentState) = _currentState;
+    [_display] call (missionNamespace getVariable [QUOTE(ADDON) + "_fnc_" + _currentState + "_Render", {}]);
 
-	RADIO_CTRL(99911) ctrlSetFade 0.9;
-	RADIO_CTRL(99911) ctrlCommit 0;
+    RADIO_CTRL(99911) ctrlSetFade 0.9;
+    RADIO_CTRL(99911) ctrlCommit 0;
 
 } else {
-	RADIO_CTRL(99911) ctrlSetFade 0.5;
-	RADIO_CTRL(99911) ctrlCommit 0
+    RADIO_CTRL(99911) ctrlSetFade 0.5;
+    RADIO_CTRL(99911) ctrlCommit 0
 };

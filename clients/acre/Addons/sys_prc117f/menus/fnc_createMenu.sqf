@@ -5,10 +5,10 @@ private["_menu", "_x", "_subMenuList", "_menuId"];
 params["_menu"];
 
 /*if(count _this > 1) then {
-	_nested = true;
-	_parentMenu = _this select 1;
+    _nested = true;
+    _parentMenu = _this select 1;
 } else {
-	_nested = false;
+    _nested = false;
 };*/
 // Add a menu
 if(!isNil "_menu") then {
@@ -16,7 +16,7 @@ if(!isNil "_menu") then {
 
     // Loop through the menu and add its children if it has ID's
     _subMenuList = MENU_SUBMENUS(_menu);
-    if( !isNil "_subMenuList" ) then {		// If there are submenus, loop
+    if( !isNil "_subMenuList" ) then {        // If there are submenus, loop
         {
             private["_subMenu_id"];
             _subMenu_id = MENU_ID(_x);

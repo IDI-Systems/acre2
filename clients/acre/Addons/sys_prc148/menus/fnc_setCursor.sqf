@@ -16,10 +16,10 @@ _endPos = ctrlPosition _endCtrl;
 _cursorCtrl = (_display displayCtrl 99212);
 
 _cursorCtrl ctrlSetPosition [
-			(_startPos select 0)-((_endPos select 2)*0.25),
-			(_startPos select 1)-((_endPos select 3)*0.125),
-			((_endPos select 0)+((_endPos select 2)+((_endPos select 2)*0.5)))-(_startPos select 0),
-			((_endPos select 1)+((_endPos select 3)+((_endPos select 3)*0.25)))-(_startPos select 1)
-		];
+            (_startPos select 0)-((_endPos select 2)*0.25),
+            (_startPos select 1)-((_endPos select 3)*0.125),
+            ((_endPos select 0)+((_endPos select 2)+((_endPos select 2)*0.5)))-(_startPos select 0),
+            ((_endPos select 1)+((_endPos select 3)+((_endPos select 3)*0.25)))-(_startPos select 1)
+        ];
 
 _cursorCtrl ctrlCommit 0;

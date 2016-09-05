@@ -7,12 +7,12 @@ params ["_command", "_params", ["_threaded", false], ["_callBack",{}], ["_callBa
 private _paramsString = "";
 _res = nil;
 if(IS_ARRAY(_params)) then {
-	private _arrayParams = _params;
-	{
-		private _element = _x;
-		if(IS_ARRAY(_element)) then {
-			{
-				if(!IS_STRING(_x)) then {
+    private _arrayParams = _params;
+    {
+        private _element = _x;
+        if(IS_ARRAY(_element)) then {
+            {
+                if(!IS_STRING(_x)) then {
                     if(IS_BOOL(_x)) then {
                         if(_x) then {
                             _x = 1;
@@ -29,16 +29,16 @@ if(IS_ARRAY(_params)) then {
                 } else {
                     _paramsString = _paramsString + _x + ",";
                 };
-			} forEach _element;
-		} else {
-			if(!IS_STRING(_element)) then {
-				if(IS_BOOL(_element)) then {
-					if(_element) then {
-						_element = 1;
-					} else {
-						_element = 0;
-					};
-				};
+            } forEach _element;
+        } else {
+            if(!IS_STRING(_element)) then {
+                if(IS_BOOL(_element)) then {
+                    if(_element) then {
+                        _element = 1;
+                    } else {
+                        _element = 0;
+                    };
+                };
                 
                 // if(IS_NUMBER(_element)) then {
                     // _element = FORMAT_NUMBER(_element);
@@ -46,12 +46,12 @@ if(IS_ARRAY(_params)) then {
                 // } else {
                     _paramsString = _paramsString + (str _element) + ",";
                 // };
-			} else {
-				_paramsString = _paramsString + _element + ",";
-			};
-		};
-	
-	} forEach _arrayParams;
+            } else {
+                _paramsString = _paramsString + _element + ",";
+            };
+        };
+    
+    } forEach _arrayParams;
 };
 _command = format["%1:%2", _command, _paramsString];
 // diag_log text format["c: %1", _command];

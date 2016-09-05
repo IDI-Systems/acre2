@@ -9,13 +9,13 @@
 class CAmplitudeAttenuation :  public CLockable
 {
 public:
-	CAmplitudeAttenuation(void);
-	~CAmplitudeAttenuation(void);
+    CAmplitudeAttenuation(void);
+    ~CAmplitudeAttenuation(void);
 
-	ACRE_RESULT process(short* samples, int sampleCount, int channels, CPlayer *player);
-	ACRE_RESULT reset(void);
+    ACRE_RESULT process(short* samples, int sampleCount, int channels, CPlayer *player);
+    ACRE_RESULT reset(void);
 
-	ACRE_RESULT processAmplitudes(void); 
+    ACRE_RESULT processAmplitudes(void); 
 
 };
 

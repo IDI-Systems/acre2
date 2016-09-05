@@ -9,7 +9,7 @@ _channelData = [_radioId, _channelNumber] call FUNC(getChannelDataInternal);
 
 _rxOnly = HASH_GET(_channelData, "rxOnly");
 if(_rxOnly) exitWith {
-	false
+    false
 };
 
 _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);

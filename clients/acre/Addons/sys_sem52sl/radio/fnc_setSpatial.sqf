@@ -26,14 +26,14 @@
 /*
  *  This function sets the spatialization state of
  *  the radio. The spatialization is set through
- *	a "setState" Event. It is generally recommended
- *	to insert a check if the values are safe for this
- *	kind of parameter. 
- *	Spatial settings are -1/0/1 for left/center/right
- *	if set through the keybindings. Nevertheless
- *	they could represent any other numeric value.
- *	However this is not recommended because of possible
- *	confusion for the player.
+ *    a "setState" Event. It is generally recommended
+ *    to insert a check if the values are safe for this
+ *    kind of parameter. 
+ *    Spatial settings are -1/0/1 for left/center/right
+ *    if set through the keybindings. Nevertheless
+ *    they could represent any other numeric value.
+ *    However this is not recommended because of possible
+ *    confusion for the player.
  *  
  *
  *  Type of Event:
@@ -60,6 +60,6 @@ params ["_radioId",  "_event", "_eventData", "_radioData"];
 private _spatial = _eventData;
 
 if(_spatial in [-1,0,1]) then {
-	[_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _spatial]] call EFUNC(sys_data,dataEvent);
+    [_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _spatial]] call EFUNC(sys_data,dataEvent);
 };
 

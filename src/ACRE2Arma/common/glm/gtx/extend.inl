@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,47 +32,47 @@
 
 namespace glm
 {
-	template <typename genType>
-	GLM_FUNC_QUALIFIER genType extend
-	(
-		genType const & Origin, 
-		genType const & Source, 
-		genType const & Distance
-	)
-	{
-		return Origin + (Source - Origin) * Distance;
-	}
+    template <typename genType>
+    GLM_FUNC_QUALIFIER genType extend
+    (
+        genType const & Origin, 
+        genType const & Source, 
+        genType const & Distance
+    )
+    {
+        return Origin + (Source - Origin) * Distance;
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec2<T, P> extend
-	(
-		tvec2<T, P> const & Origin,
-		tvec2<T, P> const & Source,
-		T const & Distance
-	)
-	{
-		return Origin + (Source - Origin) * Distance;
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER tvec2<T, P> extend
+    (
+        tvec2<T, P> const & Origin,
+        tvec2<T, P> const & Source,
+        T const & Distance
+    )
+    {
+        return Origin + (Source - Origin) * Distance;
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec3<T, P> extend
-	(
-		tvec3<T, P> const & Origin,
-		tvec3<T, P> const & Source,
-		T const & Distance
-	)
-	{
-		return Origin + (Source - Origin) * Distance;
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER tvec3<T, P> extend
+    (
+        tvec3<T, P> const & Origin,
+        tvec3<T, P> const & Source,
+        T const & Distance
+    )
+    {
+        return Origin + (Source - Origin) * Distance;
+    }
 
-	template <typename T, precision P>
-	GLM_FUNC_QUALIFIER tvec4<T, P> extend
-	(
-		tvec4<T, P> const & Origin,
-		tvec4<T, P> const & Source,
-		T const & Distance
-	)
-	{
-		return Origin + (Source - Origin) * Distance;
-	}
+    template <typename T, precision P>
+    GLM_FUNC_QUALIFIER tvec4<T, P> extend
+    (
+        tvec4<T, P> const & Origin,
+        tvec4<T, P> const & Source,
+        T const & Distance
+    )
+    {
+        return Origin + (Source - Origin) * Distance;
+    }
 }//namespace glm

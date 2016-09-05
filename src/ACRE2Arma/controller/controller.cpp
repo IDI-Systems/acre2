@@ -12,25 +12,25 @@
 
 namespace acre {
     controller::controller() : threaded_dispatcher() {
-		add("init", std::bind(&acre::controller::init, this, std::placeholders::_1, std::placeholders::_2));
+        add("init", std::bind(&acre::controller::init, this, std::placeholders::_1, std::placeholders::_2));
         add("reset", std::bind(&acre::controller::reset, this, std::placeholders::_1, std::placeholders::_2));
         add("ready", std::bind(&acre::controller::get_ready, this, std::placeholders::_1, std::placeholders::_2));
-		add("stop", std::bind(&controller::do_stop, this, std::placeholders::_1, std::placeholders::_2));
+        add("stop", std::bind(&controller::do_stop, this, std::placeholders::_1, std::placeholders::_2));
         // action results
         add("fetch_result", std::bind(&acre::controller::fetch_result, this, std::placeholders::_1, std::placeholders::_2));
-		_initiated = false;
+        _initiated = false;
         _ready = true;
     }
     controller::~controller() { }
 
-	bool controller::init(const arguments &_args, std::string & result) {
-		if (!_initiated) {
-			_initiated = true;
-			acre::pbo::fileloader::get().poke();
-			add_module(std::make_shared<acre::signal::controller>());
-		}
-		return true;
-	}
+    bool controller::init(const arguments &_args, std::string & result) {
+        if (!_initiated) {
+            _initiated = true;
+            acre::pbo::fileloader::get().poke();
+            add_module(std::make_shared<acre::signal::controller>());
+        }
+        return true;
+    }
 
     bool controller::get_ready(const arguments &_args, std::string & result) {
         result = "0";
@@ -67,8 +67,8 @@ namespace acre {
         if (_results.size() > 0) {
             std::lock_guard<std::mutex> _lock(_results_lock);
             dispatch_result res = _results.front();
-			std::stringstream ss;
-			ss << "[" << res.id << ",[" << res.message << "]]";
+            std::stringstream ss;
+            ss << "[" << res.id << ",[" << res.message << "]]";
             result = ss.str();
             _results.pop();
         }

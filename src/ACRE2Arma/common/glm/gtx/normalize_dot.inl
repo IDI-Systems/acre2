@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,15 +32,15 @@
 
 namespace glm
 {
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER T normalizeDot(vecType<T, P> const & x, vecType<T, P> const & y)
-	{
-		return glm::dot(x, y) * glm::inversesqrt(glm::dot(x, x) * glm::dot(y, y));
-	}
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER T normalizeDot(vecType<T, P> const & x, vecType<T, P> const & y)
+    {
+        return glm::dot(x, y) * glm::inversesqrt(glm::dot(x, x) * glm::dot(y, y));
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER T fastNormalizeDot(vecType<T, P> const & x, vecType<T, P> const & y)
-	{
-		return glm::dot(x, y) * glm::fastInverseSqrt(glm::dot(x, x) * glm::dot(y, y));
-	}
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER T fastNormalizeDot(vecType<T, P> const & x, vecType<T, P> const & y)
+    {
+        return glm::dot(x, y) * glm::fastInverseSqrt(glm::dot(x, x) * glm::dot(y, y));
+    }
 }//namespace glm

@@ -83,79 +83,79 @@
 #define false             0
 class RscMapControl;
 class ACRE_Dummy_Map: RscMapControl {
-	idc = -1;
+    idc = -1;
 
-	type=100;
-	style=48;
+    type=100;
+    style=48;
 
-	x = 0;
-	y = 0;
-	w = 1;
-	h = 1;
+    x = 0;
+    y = 0;
+    w = 1;
+    h = 1;
 
-	colorBackground[] = {1.00, 1.00, 1.00, 0};
-	colorText[] = {0.00, 0.00, 0.00, 0};
-	colorSea[] = {0.56, 0.80, 0.98, 0};
-	colorForest[] = {0.60, 0.80, 0.20, 0};
-	colorRocks[] = {0.50, 0.50, 0.50, 0};
-	colorCountlines[] = {0.65, 0.45, 0.27, 0};
-	colorMainCountlines[] = {0.65, 0.45, 0.27, 0};
-	colorCountlinesWater[] = {0.00, 0.53, 1.00, 0};
-	colorMainCountlinesWater[] = {0.00, 0.53, 1.00, 0};
-	colorForestBorder[] = {0.40, 0.80, 0.00, 0};
-	colorRocksBorder[] = {0.50, 0.50, 0.50, 0};
-	colorPowerLines[] = {0.00, 0.00, 0.00, 0};
-	colorNames[] = {0.00, 0.00, 0.00, 0};
-	colorInactive[] = {1.00, 1.00, 1.00, 0};
-	colorLevels[] = {0.00, 0.00, 0.00, 0};
-	colorRailWay[] = {0.00, 0.00, 0.00, 0};
-	colorOutside[] = {0.56, 0.80, 0.98, 0};
+    colorBackground[] = {1.00, 1.00, 1.00, 0};
+    colorText[] = {0.00, 0.00, 0.00, 0};
+    colorSea[] = {0.56, 0.80, 0.98, 0};
+    colorForest[] = {0.60, 0.80, 0.20, 0};
+    colorRocks[] = {0.50, 0.50, 0.50, 0};
+    colorCountlines[] = {0.65, 0.45, 0.27, 0};
+    colorMainCountlines[] = {0.65, 0.45, 0.27, 0};
+    colorCountlinesWater[] = {0.00, 0.53, 1.00, 0};
+    colorMainCountlinesWater[] = {0.00, 0.53, 1.00, 0};
+    colorForestBorder[] = {0.40, 0.80, 0.00, 0};
+    colorRocksBorder[] = {0.50, 0.50, 0.50, 0};
+    colorPowerLines[] = {0.00, 0.00, 0.00, 0};
+    colorNames[] = {0.00, 0.00, 0.00, 0};
+    colorInactive[] = {1.00, 1.00, 1.00, 0};
+    colorLevels[] = {0.00, 0.00, 0.00, 0};
+    colorRailWay[] = {0.00, 0.00, 0.00, 0};
+    colorOutside[] = {0.56, 0.80, 0.98, 0};
 
-	font = "TahomaB";
-	sizeEx = 0.00;
+    font = "TahomaB";
+    sizeEx = 0.00;
 
-	stickX[] = {0.0, {"Gamma", 1.00, 1.50} };
-	stickY[] = {0.0, {"Gamma", 1.00, 1.50} };
-	ptsPerSquareSea = 0;
-	ptsPerSquareTxt = 0;
-	ptsPerSquareCLn = 0;
-	ptsPerSquareExp = 0;
-	ptsPerSquareCost = 0;
-	ptsPerSquareFor = "0f";
-	ptsPerSquareForEdge = "0f";
-	ptsPerSquareRoad = 0;
-	ptsPerSquareObj = 0;
+    stickX[] = {0.0, {"Gamma", 1.00, 1.50} };
+    stickY[] = {0.0, {"Gamma", 1.00, 1.50} };
+    ptsPerSquareSea = 0;
+    ptsPerSquareTxt = 0;
+    ptsPerSquareCLn = 0;
+    ptsPerSquareExp = 0;
+    ptsPerSquareCost = 0;
+    ptsPerSquareFor = "0f";
+    ptsPerSquareForEdge = "0f";
+    ptsPerSquareRoad = 0;
+    ptsPerSquareObj = 0;
 
-	fontLabel = "TahomaB";
-	sizeExLabel = 0.0;
-	fontGrid = "TahomaB";
-	sizeExGrid = 0.0;
-	fontUnits = "TahomaB";
-	sizeExUnits = 0.0;
-	fontNames = "TahomaB";
-	sizeExNames = 0.0;
-	fontInfo = "TahomaB";
-	sizeExInfo = 0.0;
-	fontLevel = "TahomaB";
-	sizeExLevel = 0.0;
+    fontLabel = "TahomaB";
+    sizeExLabel = 0.0;
+    fontGrid = "TahomaB";
+    sizeExGrid = 0.0;
+    fontUnits = "TahomaB";
+    sizeExUnits = 0.0;
+    fontNames = "TahomaB";
+    sizeExNames = 0.0;
+    fontInfo = "TahomaB";
+    sizeExInfo = 0.0;
+    fontLevel = "TahomaB";
+    sizeExLevel = 0.0;
     scaleMax = 1;
     scaleMin = 0.125;
-	text = "";
-	
-	maxSatelliteAlpha = 0;	 // Alpha to 0 by default
-	alphaFadeStartScale = 1.0; 
-	alphaFadeEndScale = 1.1;   // Prevent div/0
+    text = "";
+    
+    maxSatelliteAlpha = 0;     // Alpha to 0 by default
+    alphaFadeStartScale = 1.0; 
+    alphaFadeEndScale = 1.1;   // Prevent div/0
 
-	showCountourInterval=1;
-	scaleDefault = 2;
+    showCountourInterval=1;
+    scaleDefault = 2;
 };
 
 
 class RscTitles
 {
-	class ACRE_FrameHandlerTitle {
-		idd = 50902;
-		movingEnable = 1;
+    class ACRE_FrameHandlerTitle {
+        idd = 50902;
+        movingEnable = 1;
         enableSimulation = 1;
         enableDisplay = 1;
 
@@ -164,21 +164,21 @@ class RscTitles
         duration = 99999999999999999;
         fadein  = 0;
         fadeout = 0;
-		name = "ACRE_FrameHandlerTitle";
-		class controlsBackground { 
-			class dummy_map : ACRE_Dummy_Map {
-				idc = 50909;
-				x = 0; 
-				y = 0;
-				w = 0;  
-				h = 0;
-			};
-		};
-		class objects { 
-			
-		};
-		class controls {
-			
-		};
-	};
+        name = "ACRE_FrameHandlerTitle";
+        class controlsBackground { 
+            class dummy_map : ACRE_Dummy_Map {
+                idc = 50909;
+                x = 0; 
+                y = 0;
+                w = 0;  
+                h = 0;
+            };
+        };
+        class objects { 
+            
+        };
+        class controls {
+            
+        };
+    };
 };

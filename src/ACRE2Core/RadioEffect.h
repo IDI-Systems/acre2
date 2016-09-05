@@ -8,9 +8,9 @@
 
 class CRadioEffect : public CSoundMonoEffect {
 private:
-	CFilterRadio *radioFilter;
+    CFilterRadio *radioFilter;
 public:
-	CRadioEffect();
-	~CRadioEffect();
-	void process(short *samples, int sampleCount);
+    CRadioEffect();
+    ~CRadioEffect();
+    void process(short *samples, int sampleCount);
 };

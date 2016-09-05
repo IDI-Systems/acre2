@@ -10,15 +10,15 @@
 
 class CSoundMixer : public CLockable {
 private:
-	concurrency::concurrent_unordered_set<CSoundChannelMono *> channelList;
+    concurrency::concurrent_unordered_set<CSoundChannelMono *> channelList;
 public:
-	CSoundMixer() { };
-	~CSoundMixer() { };
-	bool acquireChannel(CSoundChannelMono **returnChannel);
-	bool acquireChannel(CSoundChannelMono **returnChannel, int bufferSize);
-	bool acquireChannel(CSoundChannelMono **returnChannel, int bufferSize, bool singleShot);
+    CSoundMixer() { };
+    ~CSoundMixer() { };
+    bool acquireChannel(CSoundChannelMono **returnChannel);
+    bool acquireChannel(CSoundChannelMono **returnChannel, int bufferSize);
+    bool acquireChannel(CSoundChannelMono **returnChannel, int bufferSize, bool singleShot);
 
-	bool releaseChannel(CSoundChannelMono *releaseChannel);
-	void mixDown(short* samples, int sampleCount, int channels, const unsigned int speakerMask);
+    bool releaseChannel(CSoundChannelMono *releaseChannel);
+    void mixDown(short* samples, int sampleCount, int channels, const unsigned int speakerMask);
 
 };

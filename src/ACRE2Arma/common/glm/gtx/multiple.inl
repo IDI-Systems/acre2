@@ -13,8 +13,8 @@
 /// all copies or substantial portions of the Software.
 /// 
 /// Restrictions:
-///		By making use of the Software for military purposes, you choose to make
-///		a Bunny unhappy.
+///        By making use of the Software for military purposes, you choose to make
+///        a Bunny unhappy.
 /// 
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -32,33 +32,33 @@
 
 namespace glm
 {
-	//////////////////////
-	// higherMultiple
+    //////////////////////
+    // higherMultiple
 
-	template <typename genType>
-	GLM_FUNC_QUALIFIER genType higherMultiple(genType Source, genType Multiple)
-	{
-		return detail::compute_ceilMultiple<std::numeric_limits<genType>::is_iec559, std::numeric_limits<genType>::is_signed>::call(Source, Multiple);
-	}
+    template <typename genType>
+    GLM_FUNC_QUALIFIER genType higherMultiple(genType Source, genType Multiple)
+    {
+        return detail::compute_ceilMultiple<std::numeric_limits<genType>::is_iec559, std::numeric_limits<genType>::is_signed>::call(Source, Multiple);
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> higherMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple)
-	{
-		return detail::functor2<T, P, vecType>::call(higherMultiple, Source, Multiple);
-	}
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<T, P> higherMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple)
+    {
+        return detail::functor2<T, P, vecType>::call(higherMultiple, Source, Multiple);
+    }
 
-	//////////////////////
-	// lowerMultiple
+    //////////////////////
+    // lowerMultiple
 
-	template <typename genType>
-	GLM_FUNC_QUALIFIER genType lowerMultiple(genType Source, genType Multiple)
-	{
-		return detail::compute_floorMultiple<std::numeric_limits<genType>::is_iec559, std::numeric_limits<genType>::is_signed>::call(Source, Multiple);
-	}
+    template <typename genType>
+    GLM_FUNC_QUALIFIER genType lowerMultiple(genType Source, genType Multiple)
+    {
+        return detail::compute_floorMultiple<std::numeric_limits<genType>::is_iec559, std::numeric_limits<genType>::is_signed>::call(Source, Multiple);
+    }
 
-	template <typename T, precision P, template <typename, precision> class vecType>
-	GLM_FUNC_QUALIFIER vecType<T, P> lowerMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple)
-	{
-		return detail::functor2<T, P, vecType>::call(lowerMultiple, Source, Multiple);
-	}
+    template <typename T, precision P, template <typename, precision> class vecType>
+    GLM_FUNC_QUALIFIER vecType<T, P> lowerMultiple(vecType<T, P> const & Source, vecType<T, P> const & Multiple)
+    {
+        return detail::functor2<T, P, vecType>::call(lowerMultiple, Source, Multiple);
+    }
 }//namespace glm

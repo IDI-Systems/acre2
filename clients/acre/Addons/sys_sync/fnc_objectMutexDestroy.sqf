@@ -1,24 +1,24 @@
 /*
-	Copyright © 2016,International Development & Integration Systems, LLC
-	All rights reserved.
-	http://www.idi-systems.com/
+    Copyright © 2016,International Development & Integration Systems, LLC
+    All rights reserved.
+    http://www.idi-systems.com/
 
-	For personal use only. Military or commercial use is STRICTLY
-	prohibited. Redistribution or modification of source code is 
-	STRICTLY prohibited.
+    For personal use only. Military or commercial use is STRICTLY
+    prohibited. Redistribution or modification of source code is 
+    STRICTLY prohibited.
 
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-	FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-	COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-	POSSIBILITY OF SUCH DAMAGE.
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
+    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
+    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
+    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
+    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+    POSSIBILITY OF SUCH DAMAGE.
 */
  
 #include "script_component.hpp"
@@ -29,28 +29,28 @@ private["_object", "_caller", "_mutexName", "_mutex", "_lockStatus", "_remoteCal
 params["_caller","_object", "_mutexName"];
 
 if( (count _this) > 3) then {
-	_remoteCall = true;
+    _remoteCall = true;
 } else {
-	_remoteCall = false;
+    _remoteCall = false;
 };
 
 if( !(local _object) && !_remoteCall) exitWith {
-	[ACRE_EVENT(om_d), [_caller, _object, _mutexName] ] call CALLSTACK(LIB_fnc_globalEvent);
+    [ACRE_EVENT(om_d), [_caller, _object, _mutexName] ] call CALLSTACK(LIB_fnc_globalEvent);
 
-	waitUntil { // OK
-		_mutex = _object getVariable _mutexName;
-		(isNil "_mutex")
-	};
-	
-	true
+    waitUntil { // OK
+        _mutex = _object getVariable _mutexName;
+        (isNil "_mutex")
+    };
+    
+    true
 };
 
 // object mutex are formated [status, lock_owner, objOwner]
 // wait until its unlocked to destroy it
 if(isServer) then {
-	[GVAR(serverObject), _object, _mutexName] call FUNC(objectMutexLock);
+    [GVAR(serverObject), _object, _mutexName] call FUNC(objectMutexLock);
 } else {
-	[acre_player, _object, _mutexName] call FUNC(objectMutexLock);
+    [acre_player, _object, _mutexName] call FUNC(objectMutexLock);
 };
 // this means the object is local to us, we create the mutex
 

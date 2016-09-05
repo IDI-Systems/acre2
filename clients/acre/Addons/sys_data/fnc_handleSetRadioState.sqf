@@ -7,17 +7,17 @@ params["_radioId", "_event", "_eventData", "_radioData"];
 
 private _radioState = HASH_GET(_radioData,"acre_radioState");
 if(isNil "_radioState") then {
-	_radioState = HASH_CREATE;
-	HASH_SET(_radioData,"acre_radioState",_radioState);
+    _radioState = HASH_CREATE;
+    HASH_SET(_radioData,"acre_radioState",_radioState);
 };
 {
-	if(IS_ARRAY(_x)) then {
-		if((count _x) == 2) then {
-			_x params ["_key","_val"];
-			if(IS_STRING(_key)) then {
-				TRACE_2("SETTING RADIO STATE",_key,_val);
-				HASH_SET(_radioState,_key,_val);
-			};
-		};
-	};
+    if(IS_ARRAY(_x)) then {
+        if((count _x) == 2) then {
+            _x params ["_key","_val"];
+            if(IS_STRING(_key)) then {
+                TRACE_2("SETTING RADIO STATE",_key,_val);
+                HASH_SET(_radioState,_key,_val);
+            };
+        };
+    };
 } forEach _eventData;
