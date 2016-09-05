@@ -5,7 +5,7 @@ _params params ["_radio","","_pttAssign",""];
 
 if (count _pttAssign > 3) then {
     _pttAssign resize 3;
-};    
+};
 _oldIdx = _pttAssign find _radio;
 
 if (_desiredIdx +1 > count _pttAssign) then {
