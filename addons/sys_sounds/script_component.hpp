@@ -1,5 +1,5 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
+    Copyright ï¿½ 2016,International Development & Integration Systems, LLC
     All rights reserved.
     http://www.idi-systems.com/
 
@@ -22,7 +22,7 @@
 */
 #define COMPONENT sys_sounds
 
-#include "\idi\clients\acre\Addons\main\script_mod.hpp"
+#include "\idi\clients\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_SOUND
     #define DEBUG_MODE_FULL
@@ -32,4 +32,4 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_SOUND
 #endif
 
-#include "\idi\clients\acre\Addons\main\script_macros.hpp"
+#include "\idi\clients\acre\addons\main\script_macros.hpp"

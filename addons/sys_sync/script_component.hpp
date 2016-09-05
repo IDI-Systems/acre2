@@ -1,5 +1,5 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
+    Copyright ï¿½ 2016,International Development & Integration Systems, LLC
     All rights reserved.
     http://www.idi-systems.com/
 
@@ -22,7 +22,7 @@
 */
 #define COMPONENT sys_sync
 
-#include "\idi\clients\acre\Addons\main\script_mod.hpp"
+#include "\idi\clients\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_SYNC
     #define DEBUG_MODE_FULL
@@ -34,4 +34,4 @@
 
 #define ACRE_SYNC(x) "as_"+##x
 
-#include "\idi\clients\acre\Addons\main\script_macros.hpp"
+#include "\idi\clients\acre\addons\main\script_macros.hpp"

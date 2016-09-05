@@ -35,7 +35,7 @@
 
 #include "\idi\clients\acre\addons\main\script_macros.hpp"
 
-#include "\idi\clients\acre\Addons\sys_components\script_acre_component_defines.hpp"
+#include "\idi\clients\acre\addons\sys_components\script_acre_component_defines.hpp"
 
 #define BIG_LINE_1    50000
 #define BIG_LINE_2    51000

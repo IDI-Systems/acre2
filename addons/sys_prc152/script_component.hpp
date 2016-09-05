@@ -1,5 +1,5 @@
 /*
-    Copyright © 2016, International Development & Integration Systems, LLC
+    Copyright ï¿½ 2016, International Development & Integration Systems, LLC
     All rights reserved.
     http://www.idi-systems.com/
 
@@ -35,8 +35,8 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_PRC152
 #endif
 
-#include "\idi\clients\acre\Addons\main\script_macros.hpp"
+#include "\idi\clients\acre\addons\main\script_macros.hpp"
 #include "\idi\clients\acre\addons\sys_prc152\script_macros.hpp"
 #include "\idi\clients\acre\addons\sys_prc152\menus\script_menus.hpp"
 
-#include "\idi\clients\acre\Addons\sys_components\script_acre_component_defines.hpp"
+#include "\idi\clients\acre\addons\sys_components\script_acre_component_defines.hpp"

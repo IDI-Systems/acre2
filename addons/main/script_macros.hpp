@@ -89,8 +89,8 @@ END ARMA2/VBS2 COMPAT SECTION
 
 #define ACTIVE_RADIO "acre_active_radio"
 
-#define OPEN_RADIO_PATH "\idi\clients\acre\Addons\sys_radio\fnc_openRadio.sqf"
-#define LIST_RADIO_PATH "\idi\clients\acre\Addons\sys_radio\fnc_listRadios.sqf"
+#define OPEN_RADIO_PATH "\idi\clients\acre\addons\sys_radio\fnc_openRadio.sqf"
+#define LIST_RADIO_PATH "\idi\clients\acre\addons\sys_radio\fnc_listRadios.sqf"
 
 #define ACRE_INDEX_CONTROLLERDATA        2
 #define ACRE_INDEX_UIDATA                1

@@ -1,5 +1,5 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
+    Copyright ï¿½ 2016,International Development & Integration Systems, LLC
     All rights reserved.
     http://www.idi-systems.com/
 
@@ -21,7 +21,7 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 #define COMPONENT sys_signalmap
-#include "\idi\clients\acre\Addons\main\script_mod.hpp"
+#include "\idi\clients\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_SIGNALMAP
     #define DEBUG_MODE_FULL
@@ -31,8 +31,8 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_SIGNALMAP
 #endif
 
-#include "\idi\clients\acre\Addons\main\script_macros.hpp"
+#include "\idi\clients\acre\addons\main\script_macros.hpp"
 
-#include "\idi\clients\acre\Addons\sys_components\script_acre_component_defines.hpp"
+#include "\idi\clients\acre\addons\sys_components\script_acre_component_defines.hpp"
 #define CTRL(var, type)    var = GVAR(mapDisplay) ctrlCreate [type, GVAR(debugIdc), GVAR(ctrlGroup)]; GVAR(debugIdc) = GVAR(debugIdc) + 1; GVAR(signal_debug) pushBack var
 #define CTRLOVERLAY(var, type)    var = GVAR(mapDisplay) ctrlCreate [type, GVAR(debugIdc), GVAR(overlayMessageGrp)]; GVAR(debugIdc) = GVAR(debugIdc) + 1; GVAR(signal_debug) pushBack var

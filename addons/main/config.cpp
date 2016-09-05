@@ -1,5 +1,5 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
+    Copyright ï¿½ 2016,International Development & Integration Systems, LLC
     All rights reserved.
     http://www.idi-systems.com/
 
@@ -36,7 +36,7 @@ class CfgMods {
     class ACRE2
     {
         dir = "@ACRE2";
-        picture = "idi\clients\acre\Addons\main\acre2_large-logo.paa";
+        picture = "idi\clients\acre\addons\main\acre2_large-logo.paa";
         action = "http://tracker.idi-systems.com/projects/acre2";
         hideName = 0;
         hidePicture = 0;

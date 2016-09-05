@@ -1,5 +1,5 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
+    Copyright ï¿½ 2016,International Development & Integration Systems, LLC
     All rights reserved.
     http://www.idi-systems.com/
 
@@ -26,7 +26,7 @@
 #define PREFIX acre
 
 //--BUILDPREFIX
-#include "\idi\clients\acre\Addons\main\script_version.hpp"
+#include "\idi\clients\acre\addons\main\script_version.hpp"
 //--ENDBUILDPREFIX
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD

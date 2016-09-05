@@ -1,5 +1,5 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
+    Copyright ï¿½ 2016,International Development & Integration Systems, LLC
     All rights reserved.
     http://www.idi-systems.com/
 
@@ -21,7 +21,7 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 #define COMPONENT sys_rpc
-#include "\idi\clients\acre\Addons\main\script_mod.hpp"
+#include "\idi\clients\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_RPC
     #define DEBUG_MODE_FULL
@@ -31,4 +31,4 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_RPC
 #endif
 
-#include "\idi\clients\acre\Addons\main\script_macros.hpp"
+#include "\idi\clients\acre\addons\main\script_macros.hpp"
