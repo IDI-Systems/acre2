@@ -1,0 +1,19 @@
+ambient[]={1,1,1,1};
+diffuse[]={1,1,1,1};
+forcedDiffuse[]={0,0,0,0};
+emmisive[]={0,0,0,1};
+specular[]={4.7102571e-008,4.7102571e-008,4.7102571e-008,0.70999998};
+specularPower=6.8000002;
+PixelShaderID="Normal";
+VertexShaderID="Basic";
+class Stage0
+{
+	texture="idi\clients\acre\Addons\sys_prc148\Data\Models\148_full_uv_CDT.paa";
+	uvSource="tex";
+	Filter="Trilinear";
+};
+class Stage1
+{
+	texture="";
+	uvSource="none";
+};

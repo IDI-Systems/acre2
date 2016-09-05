@@ -1,0 +1,30 @@
+//fnc_processSysEvent.sqf
+ 
+#include "script_component.hpp"
+ 
+#define DEBUG_MODE_REBUILD
+
+TRACE_1("SYSTEM EVENT ENTER", _this);
+
+params["_eventKind","_radioId","_event",["_data",[]],["_remote",false]];
+private _return = nil;
+
+if(!HASH_HASKEY(GVAR(radioData), _radioId)) exitWith {
+    diag_log text format["%1 ACRE WARNING: Non-existent radio '%2' called %3 system event!", diag_tickTime, _radioId, _event];
+    nil;
+};
+private _radioData = HASH_GET(GVAR(radioData), _radioId);
+
+private _radioBaseClass = getText(configFile >> "CfgWeapons" >> _radioId >> "acre_baseClass");
+
+private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
+if(_interfaceClass == "") then {
+	_interfaceClass = "DefaultInterface";
+};
+private _handlerFunction = getText(configFile >> _eventKind >> _interfaceClass >> _event >> "handler");
+if(_handlerFunction != "") then {
+	_return = [_radioId, _event, _data, _radioData, _eventKind, _remote] call (missionNamespace getVariable[_handlerFunction, FUNC(noApiSystemFunction)]);
+};
+
+if(isNil "_return") exitWith { nil };
+_return;

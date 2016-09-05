@@ -1,0 +1,39 @@
+END USER LICENSE AGREEMENT
+
+ACRE (Advanced Combat Radio Environment)
+
+Copyright © 2016 International Development & Integration Systems, LLC
+All rights reserved.
+
+http://www.idi-systems.com/
+
+NOTE: PLEASE READ THE TERMS AND CONDITIONS OF THIS LICENSE AGREEMENT
+CAREFULLY BEFORE USING THE SOFTWARE. USE OF THE SOFTWARE IS ON THE CONDITION 
+THAT YOU ACCEPT ALL OF THE TERMS OF THIS LICENSE AGREEMENT. THIS IS A LEGAL 
+AND ENFORCEABLE CONTRACT BETWEEN YOU AND THE COPYRIGHT HOLDER. 
+
+This Software is for personal recreational use only. Military, governmental 
+or commercial use of the Software is STRICTLY prohibited. Redistribution, 
+modification or reverse engineering of source code is STRICTLY prohibited. 
+The Software in any form may not be distributed to or by, or utilized in any 
+fashion by, any military, government or commercial entity.
+
+The software and documentation that accompanies this license (collectively 
+the "Software") is the property of International Development & Integration 
+Systems, LLC, or its licensors, and is protected by copyright law. This 
+Agreement will be governed by the laws of the State of Washington, United 
+States of America. 
+
+The Software is provided by the copyright holder "as is" and any express or 
+implied warranties, including, but not limited to, the implied warranties of 
+merchantability and fitness for a particular purpose are disclaimed. In no 
+event shall the copyright owner be liable for any direct, indirect, incidental, 
+special, exemplary, or consequential damages including, but not limited to, 
+procurement of substitute goods or services; loss of use, data, or profits; or 
+business interruption, however caused and on any theory of liability, whether 
+in contract, strict liability, or tort (including negligence or otherwise) 
+arising in any way out of the use of this software, even if advised of the 
+possibility of such damage.
+
+For military, governmental or commercial licensing of the professional version 
+of this Software, please contact sales@arnesim.com
