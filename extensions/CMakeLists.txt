@@ -27,11 +27,11 @@ else()
 endif()
 
 option(USE_64BIT_BUILD "USE_64BIT_BUILD" OFF)
-option(USE_STATIC_LINKING "USE_STATIC_LINKING" OFF)
+option(USE_STATIC_LINKING "USE_STATIC_LINKING" ON)
 option(USE_ACRE2UI "USE_ACRE2UI" ON)
 option(USE_ACRE311 "USE_ACRE311" OFF)
 
-if(USE_STATIC_LINKING) 
+if(USE_STATIC_LINKING)
     message("WARNING: Linking statically")
     set(ACRE_LINK_TYPE "static")
 else()
@@ -41,10 +41,10 @@ endif()
 
 message("GENERATOR USED: '${CMAKE_GENERATOR}'")
 
-if(USE_64BIT_BUILD) 
+if(USE_64BIT_BUILD)
     message("WARNING: Building 64-bit projects")
-    set(ACRE_ARCH "x64")    
-    
+    set(ACRE_ARCH "x64")
+
     if(CMAKE_GENERATOR STREQUAL "Visual Studio 12 2013 Win64")
         message("VS2013 Build initialized")
         set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/vs2013/win64/")
@@ -56,7 +56,7 @@ if(USE_64BIT_BUILD)
 else()
     message("WARNING: Building 32-bit projects")
     set(ACRE_ARCH "x86")
-    
+
     if(CMAKE_GENERATOR STREQUAL "Visual Studio 12 2013")
         message("VS2013 Build initialized")
         set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/vs2013/win32/")
@@ -67,7 +67,7 @@ else()
     link_directories("${DirectX_ROOT_DIR}/lib/x86")
 endif()
 
-SET(CMAKE_INCLUDE_CURRENT_DIR ON) 
+SET(CMAKE_INCLUDE_CURRENT_DIR ON)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 include_directories(src/ACRE2Shared)
