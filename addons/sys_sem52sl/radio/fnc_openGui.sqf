@@ -70,7 +70,6 @@ createDialog "SEM52SL_RadioDialog";
     
     if (_lastAction+3 < time) then {
         // Do not shut whilst on the programming page.
-        diag_log ["Call getState channelKnobPosition ",_radioId];
         if (([_radioId, "getState", "channelKnobPosition"] call EFUNC(sys_data,dataEvent)) != 15) then {
             if (GVAR(backlightOn)) then {
                 GVAR(backlightOn) = false;
