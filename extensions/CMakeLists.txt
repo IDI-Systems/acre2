@@ -2,7 +2,6 @@ cmake_minimum_required (VERSION 3.0)
 project (ACRE)
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
-#include(${PROJECT_SOURCE_DIR}/CMakeModules/FindDirectX.cmake)
 include(${PROJECT_SOURCE_DIR}/CMakeModules/cxx_compiler_functions.cmake)
 
 find_package(DirectX)
@@ -30,26 +29,12 @@ message("GENERATOR USED: '${CMAKE_GENERATOR}'")
 if(USE_64BIT_BUILD)
     message("WARNING: Building 64-bit projects")
     set(ACRE_ARCH "x64")
-
-    if(CMAKE_GENERATOR STREQUAL "Visual Studio 12 2013 Win64")
-        message("VS2013 Build initialized")
-        set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/vs2013/win64/")
-    else()
-        set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/win64/")
-    endif()
-
+    set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/win64/")
     link_directories("${DirectX_ROOT_DIR}/lib/x64")
 else()
     message("WARNING: Building 32-bit projects")
     set(ACRE_ARCH "x86")
-
-    if(CMAKE_GENERATOR STREQUAL "Visual Studio 12 2013")
-        message("VS2013 Build initialized")
-        set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/vs2013/win32/")
-    else()
-        set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/win32/")
-    endif()
-
+    set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/build/win32/")
     link_directories("${DirectX_ROOT_DIR}/lib/x86")
 endif()
 
