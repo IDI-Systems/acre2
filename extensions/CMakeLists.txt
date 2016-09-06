@@ -14,7 +14,6 @@ endif()
 option(USE_64BIT_BUILD "USE_64BIT_BUILD" OFF)
 option(USE_STATIC_LINKING "USE_STATIC_LINKING" ON)
 option(USE_ACRE2UI "USE_ACRE2UI" ON)
-option(USE_ACRE311 "USE_ACRE311" OFF)
 
 if(USE_STATIC_LINKING)
     message("WARNING: Linking statically")
@@ -52,16 +51,10 @@ add_subdirectory(src/ACRE2Arma)
 add_subdirectory(src/ACRE2Steam)
 
 if(USE_ACRE2UI)
-    if(USE_ACRE311)
-        add_subdirectory(src/ACRE2UI311)
-    endif()
     add_subdirectory(src/ACRE2UI)
 endif()
 
 add_subdirectory(src/ACRE2TS)
-if(USE_ACRE311)
-    add_subdirectory(src/ACRE2TS311)
-endif()
 
 #Extras
 add_subdirectory(src/Wav2B64)
