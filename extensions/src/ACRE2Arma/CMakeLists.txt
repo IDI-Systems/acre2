@@ -1,8 +1,8 @@
 cmake_minimum_required (VERSION 3.0)
 
-set_property(GLOBAL PROPERTY USE_FOLDERS ON) 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-if(WIN32) 
+if(WIN32)
 add_definitions(/DWINVER=0x0600 /D_WIN32_WINNT=0x0600)
 endif()
 
@@ -34,7 +34,6 @@ include_directories("controller")
 include_directories("data")
 include_directories("signal")
 include_directories("acre")
-#include_directories("steam")
 include_directories("lib/lzo/include")
 
 if(USE_DIRECTX)
@@ -53,13 +52,8 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/controller)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/data)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/signal)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/acre)
-#include_directories(${CMAKE_CURRENT_BINARY_DIR}/steam)
-
-
-
 
 set(GLOBAL_SOURCES ${GLOBAL_RC})
-
 
 # Add extensions to build here
 add_subdirectory(common)
@@ -68,12 +62,10 @@ add_subdirectory(data)
 add_subdirectory(arma2ts)
 add_subdirectory(signal)
 add_subdirectory(acre)
-#add_subdirectory(steam)
 
 add_subdirectory(tests)
 add_subdirectory(utils)
 add_subdirectory(lib/lzo)
-
 
 # Extensions
 

@@ -10,23 +10,12 @@ DFUNC(connectionFnc) = {
             // acre_player sideChat "OPEN PIPE";
             GVAR(pongTime) = diag_tickTime;
             private _connectString = "0ts";
-            if(uiNamespace getVariable ["JVON_connected", false]) then {
-                _connectString = "0jvon";
-            };
             GVAR(pipeCode) = "ACRE2Arma" callExtension _connectString;
             // acre_player sideChat format["RESULT: %1", GVAR(pipeCode)];
-            if(GVAR(pipeCode) != "1") then { 
+            if(GVAR(pipeCode) != "1") then {
                 if(time > 15) then {
                     if(isMultiplayer) then {
-                        
-                        private _warning = "";
-                        if(uiNamespace getVariable ["JVON_connected", false]) then {
-                            _connectString = "0jvon";
-                            _warning = "WARNING: ACRE IS NOT CONNECTED TO JVON!";
-                        } else {
-                            _warning = "WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!";
-                        };
-                        
+                        private _warning = "WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!";
                         COMPAT_hintSilent _warning;
                         GVAR(connectCount) = GVAR(connectCount) + 1;
                         if(GVAR(connectCount) > 15) then {
