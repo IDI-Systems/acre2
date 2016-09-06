@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 params["_handle"];
 if (isNil "_handle") exitWith {}; // Nil handle, nil action

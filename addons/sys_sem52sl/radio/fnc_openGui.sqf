@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 /*
  *     On a command to open the radio this function will be called.

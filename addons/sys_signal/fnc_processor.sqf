@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 if((count GVAR(runningProcesses)) > 0) then {
     params ["_pParams"];

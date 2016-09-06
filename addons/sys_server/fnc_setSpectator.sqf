@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 if(isServer) then {
     if((_this select 1) == 1) then {

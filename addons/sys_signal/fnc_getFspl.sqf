@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_Lfs", "_Ptx", "_Rp"];
 params["_distance", "_f", "_mW", "_ratio"];

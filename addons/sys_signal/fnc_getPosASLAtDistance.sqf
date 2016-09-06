@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 //private ["_unit" , "_storedPos", "_gamePos", "_alt", "_gen", "_returnPos"];
 //_unit = _this;

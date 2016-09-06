@@ -15,7 +15,7 @@
  * Public: No
  */
 
- #include "script_component.hpp"
+#include "script_component.hpp"
 private["_invalid"];
 params["_var"];
 

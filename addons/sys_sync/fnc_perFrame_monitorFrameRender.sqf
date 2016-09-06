@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 #define _DELAY_MONITOR_THRESHOLD 5
 #define _DELAY_MONITOR_SLEEP     0.5

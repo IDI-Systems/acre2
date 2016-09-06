@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 params ["_className", "_position", "_direction", "_volume", "_isWorld"];
 

@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 params["_player", "_class", "_callback", ["_replacementId",""]];
 

@@ -15,7 +15,7 @@
  * Public: No
  */
 
- #include "script_component.hpp"
+#include "script_component.hpp"
 private["_channelNumber", "_channels", "_channel", "_value", "_ret"];
 
 //TODO: remove comments? and from setPresetChannelField

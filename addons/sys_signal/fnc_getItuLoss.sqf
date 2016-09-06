@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_pos1", "_pos2", "_pos2p", "_pos1p", "_f", "_resolution", "_multi", "_ituLoss", "_3dDis", "_stepVector", "_nextPos", "_prevPos", "_z", "_2dDis", "_isRising", "_lastAlt", "_lastHighest", "_fGhz", "_ops", "_exit", "_hasIntersected", "_c", "_alt", "_disPos", "_disKm", "_l"];
 _pos1 = +(_this select 0);

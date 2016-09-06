@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 private ["_d","_f","_d1","_d2","_hL","_hO","_Oc","_mW","_Gtxl","_Grxl","_N","_Itu","_Sl","_Slp",
             "_A","_C0","_Ptx","_Gtx","_Grx","_Ltx","_Lm","_Lrx","_lambda","_aA","_FSPL","_Lfs",
             "_Ox", "_Lb","_Ss","_bottom","_Snd","_Px"];

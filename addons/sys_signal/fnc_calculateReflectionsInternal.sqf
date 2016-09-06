@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_reflectInfo", "_l", "_Ls", "_deg", "_ratio1", "_ratio2", "_ratio", "_newDistance", "_Rp", "_vectorFromTxToR", "_vectorFromRxtoR", "_dirToRx", "_dirToTx", "_elevToRx", "_elevToTx", "_txGain", "_rxGain", "_sum", "_objectLoss1", "_objectLoss2", "_objectLoss", "_Ltx", "_Lrx", "_Lm"];
 

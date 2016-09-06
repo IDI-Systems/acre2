@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 params ["_func", "_delay", ["_params", []], ["_functionName", "Unknown Function"]];
 

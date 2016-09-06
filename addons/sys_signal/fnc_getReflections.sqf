@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_txPos", "_rxPos", "_index", "_returns", "_txAntenna", "_rxAntenna", "_highPos", "_visPos", "_rxHighPos", "_txHighPos", "_bestPlaces", "_rPos", "_x", "_v2t", "_v2r", "_add"];
     _txPos = _this select 0;

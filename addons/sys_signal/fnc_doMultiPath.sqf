@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_testExit", "_losExit", "_returnPos", "_l", "_startIndex", "_endDex", "_startTime", "_i", "_rxAntennaData", "_x", "_rxAntennaClass", "_txAntennaData", "_txAntennaClass", "_rxPos", "_txPos"];
 

@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 // we just return a handle value for this new fifo we created.
 private["_handle"];

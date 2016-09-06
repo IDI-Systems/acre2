@@ -15,7 +15,7 @@
  * Public: No
  */
 
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 // Variables are provided as
 // [ [side, languages], [side, languages] ] call acre_api_fnc_babelSetupMission;

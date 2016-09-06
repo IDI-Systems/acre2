@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_gainData", "_3dDis", "_pEaddRx", "_Rp", "_ituLoss", "_Ltx", "_Lrx", "_Lm", "_Lb"];
 

@@ -15,7 +15,7 @@
  * Public: No
  */
 
- #include "script_component.hpp"
+#include "script_component.hpp"
 params ["_var"];
 
 if(!( _var isEqualType "SCALAR")) exitWith { false };

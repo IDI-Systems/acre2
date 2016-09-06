@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private["_deleteArray", "_newHandle", "_i"];
 params["_handle"];

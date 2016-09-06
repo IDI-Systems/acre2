@@ -15,7 +15,7 @@
  * Public: No
  */
 
- #include "script_component.hpp"
+#include "script_component.hpp"
 private["_radioLists","_returnValue"];
 
 //Emulate behaviour of the handleMultiPttKeyPress algorithm

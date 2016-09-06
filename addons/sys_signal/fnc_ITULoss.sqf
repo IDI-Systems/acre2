@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_F1", "_h", "_A", "_Cn"];
 params["_hL","_hO","_d1","_d2","_f"];

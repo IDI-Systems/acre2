@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 params ["_args", "_result"];
 _args params ["_transmitterClass", "_receiverClass"];
 

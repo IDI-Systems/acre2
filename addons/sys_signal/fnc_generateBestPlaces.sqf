@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_startTime", "_i", "_basePlaces", "_reflectPos", "_x", "_bestPlaces", "_bestAlt", "_bestPlace", "_testPos", "_alt", "_add", "_forEachIndex", "_endTime", "_rPos", "_offset", "_bestAngle", "_bestPos", "_c", "_normal"];
 GVAR(reflections) = [];

@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_pEaddRx", "_intersects", "_n", "_bb", "_x", "_avg", "_height", "_dis"];
 

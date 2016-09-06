@@ -15,7 +15,7 @@
  * Public: No
  */
 
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 params ["_target","_player","_params","_desiredEar"];
 _params params ["_radio"];

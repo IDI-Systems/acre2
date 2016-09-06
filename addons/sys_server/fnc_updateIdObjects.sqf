@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private _update = _this;
 if(ACRE_DATA_SYNCED) then {

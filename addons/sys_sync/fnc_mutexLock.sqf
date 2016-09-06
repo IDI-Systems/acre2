@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 private["_fullName", "_mutex", "_fail"];
 
 TRACE_1("enter", _this);

@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 #define __br (parseText "<br />")
 #define __det (parseText (format ["Version mismatch detected."]))

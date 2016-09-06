@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 GVAR(fpsCount) = 0;
 GVAR(lastCount) = -1;

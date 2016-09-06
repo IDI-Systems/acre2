@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
 private ["_pos1","_pos2","_interval","_direction","_distance","_intervalDistance",
             "_profile","_pollPos","_alt","_lastPos"];
