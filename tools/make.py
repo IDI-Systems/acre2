@@ -73,7 +73,7 @@ dssignfile = ""
 prefix = "acre"
 pbo_name_prefix = "acre_"
 signature_blacklist = []
-importantFiles = ["mod.cpp", "README.md", "LICENSE", "acre_logo_medium_ca.paa"]
+importantFiles = ["meta.cpp", "mod.cpp", "README.md", "LICENSE", "acre_logo_medium_ca.paa"]
 versionFiles = []
 
 ciBuild = False # Used for CI builds
