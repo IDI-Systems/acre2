@@ -25,6 +25,7 @@ if(count _result > 0) then {
             ACRE_DEBUG_SIGNAL_FILE = _result select 3; 
         }; 
     };
-}; 
+};
+
 private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];
 missionNamespace setVariable [_transmitterClass + "_running_count", _count - 1];

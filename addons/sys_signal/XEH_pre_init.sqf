@@ -65,5 +65,7 @@ _drawLines = {
     
     } forEach ACRE_SIGNAL_TEST_ICONS;
 };
+
 [_drawLines, 0, []] call CBA_fnc_addPerFrameHandler;
+
 ADDON = true;

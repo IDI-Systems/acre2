@@ -31,5 +31,5 @@ class CfgPatches {
         AUTHOR;
     };
 };
+
 #include "cfgEventhandlers.hpp"
-//#include "cfgSounds.hpp"
