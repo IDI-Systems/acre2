@@ -1,4 +1,20 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
 #include "script_component.hpp"
 private["_button", "_event", "_currentMenu", "_tmpMenu", "_ret", "_control", "_pressret"];
 //TRACE_1("enter", _this);

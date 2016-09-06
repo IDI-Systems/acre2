@@ -1,9 +1,25 @@
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "\idi\clients\acre\addons\sys_prc148\script_component.hpp"
 
 DFUNC(ProgrammingDisplay_Render) = {
     params["_display"];
 
-    GVAR(currentMenu) = 
+    GVAR(currentMenu) =
     [
         [
             ["ZEROIZE", "ZEROIZE", BIG_LINE_1, [2, 12], MENU_TYPE_MENU, FUNC(AccessDeniedState)],
@@ -15,8 +31,8 @@ DFUNC(ProgrammingDisplay_Render) = {
             ["MAINTENANCE", "MAINTENANCE", BIG_LINE_1, [2, 12], MENU_TYPE_MENU, FUNC(AccessDeniedState)]
         ]
     ];
-    
-    [_display, GVAR(currentMenu)] call FUNC(showMenu);        
+
+    [_display, GVAR(currentMenu)] call FUNC(showMenu);
 };
 
 DFUNC(ProgrammingDisplay_ESC) = {

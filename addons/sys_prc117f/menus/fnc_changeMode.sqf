@@ -1,4 +1,20 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
 #include "script_component.hpp"
 TRACE_1("changeMode", _this);
 
@@ -14,7 +30,7 @@ if(_mode == 0) then {
     _onOffState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
     TRACE_2("State", _mode, _onOffState);
     if(_onOffState >= 1) then {
-        switch _mode do { 
+        switch _mode do {
             case 1: {
                 [GVAR(VULOSHOME)] call FUNC(changeMenu);
             };

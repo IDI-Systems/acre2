@@ -1,4 +1,20 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
 #include "script_component.hpp"
 TRACE_1("changeMenu ENTER", "");
 private["_oldMenu", "_menuId"];
@@ -14,25 +30,25 @@ _oldMenu = GET_STATE("currentMenu");
 SCRATCH_SET(GVAR(currentRadioId),"menuEntry",true);
 // Set the state
 if(!isNil "_oldMenu") then {
-    if(_oldMenu isEqualType "") then { 
+    if(_oldMenu isEqualType "") then {
         _oldMenu = HASH_GET(GVAR(Menus), _oldMenu);
     };
     if(!isNil "_oldMenu") then {
         TRACE_1("changeMenu calling complete", MENU_DISPLAYNAME(_oldMenu));
         [_oldMenu] call FUNC(callCompleteFunctor);
-        
+
         _menuId = MENU_ID(_oldMenu);
         if(!isNil "_menuId") then { SET_STATE("lastMenu", _menuId); } else { SET_STATE("lastMenu", _oldMenu); };
     };
-        
+
 };
 
 // Set the state
-if(_newMenu isEqualType "") then { 
+if(_newMenu isEqualType "") then {
     if(_newMenu == "HOME") then {
         _newMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
     };
-    if(_newMenu isEqualType "") then { 
+    if(_newMenu isEqualType "") then {
         _newMenu = HASH_GET(GVAR(Menus), _newMenu);
     };
 };

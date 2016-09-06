@@ -1,9 +1,24 @@
-//fnc_attachComponentHandler.sqf
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params["_radioId", "_event", "_data", "_radioData", "_eventKind"];
 
-_data params ["_componentId", "_childConnector", "_parentConnector", "_attributes"]; 
+_data params ["_componentId", "_childConnector", "_parentConnector", "_attributes"];
 //_childConnector - this is the connector on this event's device
 //_parentConnector -  this is the connector on the device being connected
 

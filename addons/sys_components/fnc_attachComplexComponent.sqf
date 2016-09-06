@@ -1,4 +1,19 @@
-//fnc_attachComplexComponent.sqf
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params["_parentComponentId", "_parentConnector", "_childComponentId", "_childConnector", "_attributes", ["_force",false]];
@@ -15,11 +30,11 @@ if(_componentSimple == 1) exitWith { diag_log text format["%1 ACRE ERROR: %2 is 
 
 private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")) select _parentConnector) select 1;
 private _childConnectorType = ((getArray(_childComponentClass >> "connectors")) select _childConnector) select 1;
-    
+
 if(_parentConnectorType == _childConnectorType) then {
     private _exit = false;
     private _parentComponentData = HASH_GET(acre_sys_data_radioData, _parentComponentId);
-    
+
     if(!isNil "_parentComponentData") then {
         private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
         if(!isNil "_parentConnectorData") then {
@@ -34,7 +49,7 @@ if(_parentConnectorType == _childConnectorType) then {
                 };
             };
         };
-        
+
         private _childComponentData = HASH_GET(acre_sys_data_radioData,_childComponentId);
         if(!isNil "_childComponentData") then {
             private _childConnectorData = HASH_GET(_childComponentData, "acre_radioConnectionData");

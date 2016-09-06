@@ -1,27 +1,20 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is 
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-    POSSIBILITY OF SUCH DAMAGE.
-*/
-// SINAD.sqf
-#include "script_component.hpp"
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+ #include "script_component.hpp"
 private ["_d","_f","_d1","_d2","_hL","_hO","_Oc","_mW","_Gtxl","_Grxl","_N","_Itu","_Sl","_Slp",
             "_A","_C0","_Ptx","_Gtx","_Grx","_Ltx","_Lm","_Lrx","_lambda","_aA","_FSPL","_Lfs",
             "_Ox", "_Lb","_Ss","_bottom","_Snd","_Px"];
@@ -84,11 +77,11 @@ for "_i" from 1 to (count _Itu)-2 do {
 _Ptx = 10 * (log (_mW/1000)) + 30;
 
 
-_Ltx = 3; 
+_Ltx = 3;
 
 _Lm = ((random 1) - 0.5); // Random noise
 
-_Lrx = 3; 
+_Lrx = 3;
 
 _lambda = _C0/(_f*1000*1000);
 _aA = (4*4*pi*pi*_d*_d)/(_lambda*_lambda);

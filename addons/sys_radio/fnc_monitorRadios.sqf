@@ -1,26 +1,19 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-*/
-//#define DEBUG_MODE_FULL
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 
@@ -45,8 +38,8 @@ DFUNC(monitorRadios_PFH) = {
     if(ACREALIVE(acre_player)) then {
         _currentUniqueItems = [];
         _weapons = [acre_player] call EFUNC(lib,getGear);
-        
-        
+
+
         if(!("ItemRadio" in _weapons) && !("ItemRadioAcreFlagged" in _weapons) && !ACRE_HOLD_OFF_ITEMRADIO_CHECK) then {
             // [acre_player, "ItemRadioAcreFlagged"] call EFUNC(lib,addGear);
             acre_player linkItem "ItemRadioAcreFlagged";
@@ -157,7 +150,7 @@ DFUNC(monitorRadios_PFH) = {
 ADDPFH(DFUNC(monitorRadios_PFH), 0.25, []);
 
 DFUNC(handleDesyncCheck) = {
-    params ["_player", "_isDesynced"]; 
+    params ["_player", "_isDesynced"];
     if(_player == acre_player) then {
         if(_isDesynced && ("ACRE_TestGearDesyncItem" in (items acre_player))) then {
             acre_player removeItem "ACRE_TestGearDesyncItem";

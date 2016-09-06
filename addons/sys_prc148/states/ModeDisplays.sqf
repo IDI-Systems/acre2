@@ -1,3 +1,19 @@
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "\idi\clients\acre\addons\sys_prc148\script_component.hpp"
 
 DFUNC(ModeDisplay_Render) = {
@@ -11,7 +27,7 @@ DFUNC(ModeDisplay_Render) = {
             ["cloningMode", "CLONING OFF", BIG_LINE_4, [1, 12], MENU_TYPE_MENU, {}]
         ]
     ];
-    [_display, GVAR(currentMenu)] call FUNC(showMenu);    
+    [_display, GVAR(currentMenu)] call FUNC(showMenu);
 };
 
 DFUNC(ModeDisplay_ESC) = {

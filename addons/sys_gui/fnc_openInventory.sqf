@@ -1,4 +1,20 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
 #include "script_component.hpp"
 //TRACE_1("ENTER", _this);
 
@@ -29,13 +45,13 @@ DFUNC(onInventoryAction) = {
 
 
     _container = nil;
-    
+
     TRACE_1("GO", _this);
-    
+
     private _index = lbValue [_idc, _selectedIndex];
     _item = nil;
     switch _typeIndex do {
-        case 'uniform': { 
+        case 'uniform': {
             _container = _typeIndex;
             private _itemsArray = (uniformItems acre_player) + (uniformMagazines acre_player);
             private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
@@ -74,7 +90,7 @@ DFUNC(onInventoryAction) = {
             */
         };
     };
-    
+
     if(!isNil "_item") then {
         _ret = [_item] call acre_api_fnc_isRadio;
         if(_ret) then {
@@ -90,22 +106,22 @@ DFUNC(onInventoryAction) = {
             };
         };
     };
-    
+
     false
 };
 
 DFUNC(handleContextMenu) = {
     private["_cargs", "_location"];
     TRACE_1("enter", _this);
-    
+
     /*
     _location = _this select 0;
     _cargs = _this select 1;
     _coords = [_this select 2, _this select 3];
-    
+
     if(_cargs select 4) then {
         // SHOW THE MPPT SELECTION DIALOG HERE
-        
+
     };
     */
 };
@@ -119,17 +135,17 @@ DFUNC(inventoryMonitorPFH) = {
         // Hide the ItemRadio slot
         (INVENTORY_DISPLAY displayCtrl IDC_RADIOSLOT) ctrlSetPosition [0,0,0,0];
         (INVENTORY_DISPLAY displayCtrl IDC_RADIOSLOT) ctrlCommit 0;
-        
+
         /* Unused MTT...
         (INVENTORY_DISPLAY displayCtrl IDC_FG_UNIFORM_CONTAINER) ctrlSetEventHandler["MouseButtonDown", "['uniform',_this] call acre_sys_gui_fnc_handleContextMenu"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_VEST_CONTAINER) ctrlSetEventHandler ["MouseButtonDown", "['vest',_this] call acre_sys_gui_fnc_handleContextMenu"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_BACKPACK_CONTAINER) ctrlSetEventHandler ["MouseButtonDown", "['backpack',_this] call acre_sys_gui_fnc_handleContextMenu"];
         */
-        
+
         (INVENTORY_DISPLAY displayCtrl IDC_FG_UNIFORM_CONTAINER) ctrlSetEventHandler["LBDblClick", "[1, 'uniform',_this] call acre_sys_gui_fnc_onInventoryAction"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_VEST_CONTAINER) ctrlSetEventHandler ["LBDblClick", "[1, 'vest',_this] call acre_sys_gui_fnc_onInventoryAction"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_BACKPACK_CONTAINER) ctrlSetEventHandler ["LBDblClick", "[1, 'backpack',_this] call acre_sys_gui_fnc_onInventoryAction"];
-            
+
         (INVENTORY_DISPLAY displayCtrl IDC_FG_UNIFORM_CONTAINER) ctrlSetEventHandler ["LBSelChanged", "[0, 'uniform',_this] call acre_sys_gui_fnc_onInventoryAction"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_VEST_CONTAINER) ctrlSetEventHandler ["LBSelChanged", "[0, 'vest',_this] call acre_sys_gui_fnc_onInventoryAction"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_BACKPACK_CONTAINER) ctrlSetEventHandler ["LBSelChanged", "[0, 'backpack',_this] call acre_sys_gui_fnc_onInventoryAction"];
@@ -137,18 +153,17 @@ DFUNC(inventoryMonitorPFH) = {
         // Ground
         (INVENTORY_DISPLAY displayCtrl IDC_FG_GROUND_ITEMS) ctrlAddEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(inventoryListMouseDown))];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_GROUND_ITEMS) ctrlAddEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(inventoryListMouseUp))];
-        
-        (INVENTORY_DISPLAY displayCtrl IDC_FG_GROUND_ITEMS) ctrlSetEventHandler ["LBDblClick", "[1, 'remote',_this] call acre_sys_gui_fnc_onInventoryAction"];        
+
+        (INVENTORY_DISPLAY displayCtrl IDC_FG_GROUND_ITEMS) ctrlSetEventHandler ["LBDblClick", "[1, 'remote',_this] call acre_sys_gui_fnc_onInventoryAction"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_GROUND_ITEMS) ctrlSetEventHandler ["LBSelChanged", "[0, 'remote',_this] call acre_sys_gui_fnc_onInventoryAction"];
         // Container
         (INVENTORY_DISPLAY displayCtrl IDC_FG_CHOSEN_CONTAINER) ctrlAddEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(inventoryListMouseDown))];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_CHOSEN_CONTAINER) ctrlAddEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(inventoryListMouseUp))];
-        
-        (INVENTORY_DISPLAY displayCtrl IDC_FG_CHOSEN_CONTAINER) ctrlSetEventHandler ["LBDblClick", "[1, 'remote',_this] call acre_sys_gui_fnc_onInventoryAction"];        
+
+        (INVENTORY_DISPLAY displayCtrl IDC_FG_CHOSEN_CONTAINER) ctrlSetEventHandler ["LBDblClick", "[1, 'remote',_this] call acre_sys_gui_fnc_onInventoryAction"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_CHOSEN_CONTAINER) ctrlSetEventHandler ["LBSelChanged", "[0, 'remote',_this] call acre_sys_gui_fnc_onInventoryAction"];
-        
+
         [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
     };
 };
 ADDPFH(DFUNC(inventoryMonitorPFH), 0, []);
-

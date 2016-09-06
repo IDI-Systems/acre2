@@ -1,4 +1,19 @@
-
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 private["_ret", "_subMenus", "_menuId"];
 
@@ -16,8 +31,8 @@ _menuId = MENU_ID(_menu);
 if(!isNil "_menuId") then {
     if((typeName _menuId) != "STRING") exitWith { _ret = false; false };
 };
-if( (typeName (_menu select 1) != "STRING" ) || 
-(typeName (_menu select 2) != "STRING" ) ) exitWith { 
+if( (typeName (_menu select 1) != "STRING" ) ||
+(typeName (_menu select 2) != "STRING" ) ) exitWith {
     _ret = false; false
 };
 

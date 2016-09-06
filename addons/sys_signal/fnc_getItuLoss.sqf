@@ -1,5 +1,20 @@
-//fnc_getItuLoss.sqf
-#include "script_component.hpp"
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+ #include "script_component.hpp"
 
 private ["_pos1", "_pos2", "_pos2p", "_pos1p", "_f", "_resolution", "_multi", "_ituLoss", "_3dDis", "_stepVector", "_nextPos", "_prevPos", "_z", "_2dDis", "_isRising", "_lastAlt", "_lastHighest", "_fGhz", "_ops", "_exit", "_hasIntersected", "_c", "_alt", "_disPos", "_disKm", "_l"];
 _pos1 = +(_this select 0);
@@ -57,7 +72,7 @@ while {!_exit} do {
             _nextPos = _prevPos;
         };
         _alt = (getTerrainHeightASL _nextPos);
-        
+
         if(_alt > _lastAlt) then {
             _isRising = true;
         } else {

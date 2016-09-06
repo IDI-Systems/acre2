@@ -1,5 +1,20 @@
-//fnc_generateBestPlaces.sqf
-#include "script_component.hpp"
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+ #include "script_component.hpp"
 
 private ["_startTime", "_i", "_basePlaces", "_reflectPos", "_x", "_bestPlaces", "_bestAlt", "_bestPlace", "_testPos", "_alt", "_add", "_forEachIndex", "_endTime", "_rPos", "_offset", "_bestAngle", "_bestPos", "_c", "_normal"];
 GVAR(reflections) = [];
@@ -11,7 +26,7 @@ _fnc = {
     _params = _this select 0;
     _places = _params select 0;
     _index = _params select 1;
-    
+
     _startTime = diag_tickTime;
     while {diag_tickTime-_startTime > 0.003} do {
         if(_index <= (count _places)-1) then {
@@ -47,12 +62,12 @@ _fnc = {
             _index = _index + 1;
         } else {
             [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
-            
+
             _fnc = {
                 _params = _this select 0;
                 _places = _params select 0;
                 _index = _params select 1;
-                
+
                 _startTime = diag_tickTime;
                 while {diag_tickTime-_startTime > 0.003} do {
                     if(_index <= (count _places)-1) then {
@@ -85,7 +100,5 @@ _fnc = {
         };
     };
     _params set[1, _index];
-    
+
 };
-
-

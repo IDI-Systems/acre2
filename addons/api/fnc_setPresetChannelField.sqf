@@ -1,4 +1,21 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
+ //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 private["_channelNumber", "_channels", "_channel", "_ret"];
 
@@ -7,7 +24,7 @@ _ret = params [["_radioClass","",[""]],
     "_channelReference",
     ["_fieldName","",[""]],
     ["_value","",["",0,[]]]];
-    
+
 if (!_ret) exitWith { false };
 
 //if(typeName _radioClass != "STRING") exitWith { false };
@@ -19,10 +36,10 @@ if (!_ret) exitWith { false };
 
 
 _channelNumber = -1;
-if(_channelReference isEqualType []) then { 
+if(_channelReference isEqualType []) then {
     // its a group and channel
 } else {
-    if(_channelReference isEqualType "") then { 
+    if(_channelReference isEqualType "") then {
         _channelNumber = parseNumber _channelReference;
     } else {
         if(_channelReference isEqualType 0) then {

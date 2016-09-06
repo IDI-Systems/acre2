@@ -1,4 +1,19 @@
-//fnc_getComponentTree.sqf
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params["_componentId"];
@@ -10,7 +25,7 @@ private _searchFunction = {
     params["_componentParentId"];
     PUSH(_searchedComponents, _componentParentId);
     _componentData = HASH_GET(acre_sys_data_radioData, _componentParentId);
-    
+
     if(!isNil "_componentData") then {
         _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
         if(!isNil "_connectorData") then {

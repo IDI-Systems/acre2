@@ -1,4 +1,19 @@
-//fnc_sendComponentMessage.sqf
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_parentComponentId", "_parentConnector"]; // UNDEFINED (was like this orginally)
@@ -13,7 +28,7 @@ if(!isNil "_parentComponentData") then {
     if(!isNil "_parentConnectorData") then {
         if((count _parentConnectorData) > _parentConnector) then {
             private _parentConnectedComponentData = _parentConnectorData select _parentConnector;
-            
+
             private _childComponentId = _parentConnectedComponentData select 0;
             private _childComponentData = HASH_GET(acre_sys_data_radioData,_childComponentId);
             if(!isNil "_childComponentData") then {

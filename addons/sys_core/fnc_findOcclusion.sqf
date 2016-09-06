@@ -1,4 +1,20 @@
-//fnc_findOcclusion.sqf
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
 
 // #define MAX_THICKNESS 1.0
 #include "script_component.hpp"
@@ -38,7 +54,7 @@ if(_useCache) exitWith {
     if(!isNil "_cachedPos") then {
         _cachedResultDis = (_startPos distance _cachedPos)+(_endPos distance _cachedPos);
     };
-    
+
     //((_distance/_cachedResultDis) max 0) max (1-(_cachedThickness/MAX_THICKNESS));
     ((_distance/_cachedResultDis) max 0) max _cachedThickness;
 };
@@ -63,12 +79,12 @@ private _intersectObjects = lineIntersectsObjs [_startPos, _endPos, _vehicleUnit
             if (_typeString isKindOf "LandVehicle") exitWith { _thicknessFactor = _thicknessFactor + 0.07; };
             _thicknessFactor = _thicknessFactor + 0.05;
         };
-        
+
     } else {
         // No class, default to low factor
         _thicknessFactor = _thicknessFactor + 0.002;
     };
-    
+
 } forEach _intersectObjects;
 /*intersectObj = _intersectObjects;
 thicknessFactor = _thicknessFactor;
@@ -90,13 +106,13 @@ if ((count _intersectObjects) > 0) then { // do occlusion
         _np = _np vectorAdd _vec;
         //checks = checks +1;
         if (lineIntersects [_np, _pp, _vehicleUnit, _vehiclePlayer]) then {
-            
+
             /*for "_i" from 1 to 10 do {
-                
+
                 private _tnp = _pp vectorAdd (_vec vectorMultiply (_i*0.1));
                 checks = checks + 1;
                 if (lineIntersects [_pp, _tnp, _vehicleUnit, _vehiclePlayer]) then {
-                */    
+                */
                     //_totalThickness = _totalThickness + _thicknessFactor;
                     _directAttenuate = _directAttenuate * (1 - _thicknessFactor);
                     _thicknessFactor = _thicknessFactor * _thicknessFactor;
@@ -110,7 +126,7 @@ if ((count _intersectObjects) > 0) then { // do occlusion
                 /*};
                 _pp = _tnp;
             };*/
-            
+
         };
         _pp = _np;
     };
@@ -151,7 +167,7 @@ if ((count _intersectObjects) > 0) then { // do occlusion
     if (!isNil "_foundPos") then {
         _resultDis = (_startPos distance _foundPos)+(_endPos distance _foundPos);
     };
-    
+
     if (!isNil "_foundPos") then {
         _cachedData = [_foundPos, _directAttenuate, diag_tickTime+0.5+(random 0.25)];
         //_cachedData = [_foundPos, _totalThickness, diag_tickTime+0.5+(random 0.25)];

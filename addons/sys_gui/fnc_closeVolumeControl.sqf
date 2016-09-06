@@ -1,10 +1,26 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
 #include "script_component.hpp"
 
-private _factor = .7; 
+private _factor = .7;
 private _doDefault = true;
 
-if (!alive acre_player) exitWith {}; 
+if (!alive acre_player) exitWith {};
 
 if(!isNil "ACRE_CustomVolumeControl") then {
     if((ACRE_CustomVolumeControl) isEqualType {}) then {
@@ -32,7 +48,7 @@ if (!isNil "_currentVolume") then {
     #ifdef DEBUG_MODE_FULL
         acre_player sideChat format["Curv: %1  Fact: %2",_currentVolume,_factor];
     #endif
-    
+
     if (_currentVolume != _factor) then  {
         [_factor] call acre_api_fnc_setSelectableVoiceCurve;
         #ifdef DEBUG_MODE_FULL

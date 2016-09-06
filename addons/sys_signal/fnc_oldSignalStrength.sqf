@@ -1,37 +1,28 @@
-//fnc_oldSignalStrength.sqf
-
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is 
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-    POSSIBILITY OF SUCH DAMAGE.
-*/
- 
-#include "script_component.hpp"
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+ #include "script_component.hpp"
 private ["_receiver", "_transmitter", "_f", "_mW", "_receiverClass", "_transmitterClass", "_resDiv",
             "_baseConfig", "_realRadio", "_txAntenna", "_rxAntenna", "_sinadRating", "_start", "_res",
             "_profile", "_altitudes", "_maxHeight", "_losDif", "_d1", "_txPos", "_txHeight", "_rxPos",
             "_rxHeight", "_d", "_opposite", "_elevation", "_avgObjCount", "_forItu", "_a", "_alt", "_dif",
-            "_intersect", "_groundWeave", "_s", "_obj", "_aA", "_size", "_width", "_depth", "_height", 
+            "_intersect", "_groundWeave", "_s", "_obj", "_aA", "_size", "_width", "_depth", "_height",
             "_objAlt", "_oc", "_args", "_signal", "_p", "_end", "_total", "_isPersistant"];
 
-            
+
 TRACE_1("PARAMS TO fnc_testSignalStrength",_this);
 _receiver = _this select 0;
 _transmitter = _this select 1;
@@ -84,7 +75,7 @@ if((count _gainData) > 5) then {
     _rxHeight = ((_gainData select 4) select 2);
     _txHeight = ((_gainData select 5) select 2);
 
-    _elevation = _gainData select 3; 
+    _elevation = _gainData select 3;
 
     _avgObjCount = 0;
     _forItu = [];
@@ -105,19 +96,19 @@ if((count _gainData) > 5) then {
             if(_groundWeave < 10 && _groundWeave > 0) then {
                 _s = (_alt select 2);
                 _s set[2, 0];
-                
+
                 _obj = nearestObjects [_s, ["All"], ((((_profile select 2)/2) min 50) max 5)];
                 _obj = _obj + nearestObjects [_s, [], ((((_profile select 2)/2) min 50) max 5)];
                 if((count _obj) > 0) then {
                     _aA = 0;
                     for "_i" from 0 to (50 min ((count _obj)-1)) do {
-                        
+
                         _size = boundingBox (_obj select _i);
                         _width    = (abs ((_size select 0) select 0)) + ((_size select 1) select 0);
                         _depth    = (abs ((_size select 0) select 1)) + ((_size select 1) select 1);
                         _height    = (abs ((_size select 0) select 2)) + ((_size select 1) select 2);
                         _objAlt = ((getPosASL (_obj select _i)) select 2);
-                        
+
                         if(_height >= (2)) then {
                             _aA = _aA + ((_width*_depth)*0.01);
                         };
@@ -170,13 +161,13 @@ if((count _gainData) > 5) then {
     _total = _end - _start;
     if(GVAR(showSignalHint)) then {
         if(!_isPersistant) then {
-            COMPAT_hintSilent format["Strength: %1%9 @ %2Mhz\nRx: %3dBm @ %4mW\nAlt: %5m\nDis2D: %6m Dis3D: %7\nTxG: %10 RxG: %11\nAvg Time: %8", 
-                                _p*100, 
-                                _f, 
-                                _signal select 1, 
-                                _mW, 
-                                _txHeight, 
-                                (_profile select 0), 
+            COMPAT_hintSilent format["Strength: %1%9 @ %2Mhz\nRx: %3dBm @ %4mW\nAlt: %5m\nDis2D: %6m Dis3D: %7\nTxG: %10 RxG: %11\nAvg Time: %8",
+                                _p*100,
+                                _f,
+                                _signal select 1,
+                                _mW,
+                                _txHeight,
+                                (_profile select 0),
                                 _d,
                                 (_total),
                                 "%",
@@ -188,9 +179,9 @@ if((count _gainData) > 5) then {
             // ACRE_DEBUG_LOG_LINE set [(count ACRE_DEBUG_LOG_LINE), (_gainData select 1)];
             // ACRE_DEBUG_LOG_LINE set [(count ACRE_DEBUG_LOG_LINE), (_gainData select 0)];
             // ACRE_DEBUG_LOG_LINE set [(count ACRE_DEBUG_LOG_LINE), _mW];
-            
-            
-            
+
+
+
         };
     };
 };

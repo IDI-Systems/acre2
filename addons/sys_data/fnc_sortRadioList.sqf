@@ -1,8 +1,20 @@
 /*
-    This function will take 2 lists, 1 being the ones to prepend, the other being the full list.
-    It'll remove duplicates, and prepend the first array. It will also remove radios that don't exist 
-    in the second array, from the first array. The return is a [ [1], [2] ] return of the sorted value and the updated prepend list.
-*/
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
 #include "script_component.hpp"
 
 params["_prepend", "_currentRadioList"];

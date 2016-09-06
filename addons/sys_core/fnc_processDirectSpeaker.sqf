@@ -1,5 +1,19 @@
-//fnc_processDirectSpeaker.sqf
- 
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 private["_emitterPos", "_emitterDir"];
 params["_unit"];
@@ -51,4 +65,3 @@ _canUnderstand = [_unit] call FUNC(canUnderstand);
 private _params = [_speakingType, _id, !_canUnderstand, _directVolume^3, _emitterPos, _emitterDir];
 TRACE_1("SPEAKING UPDATE", _params);
 _params
-

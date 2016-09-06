@@ -1,28 +1,20 @@
-//fnc_newSignalStrength.sqf
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is 
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-    POSSIBILITY OF SUCH DAMAGE.
-*/
- 
-#include "script_component.hpp"
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+ #include "script_component.hpp"
 
 
 
@@ -60,7 +52,7 @@ _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _receiverClass);
 _realRadioRx = configName ( _baseConfig );
 
 _sinadRating = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sinadRating");
-    
+
 /*
 Antenna Gain Information
 */
@@ -109,21 +101,21 @@ if((_lastTransmitterPos distance _transmitterPosATL) > 1 || (_lastReceiverPos di
     #endif
     _types = ["Building", "House"];
     _checkDistance = ((_transmitterPosATL distance _receiverPosATL) min 75);
-    
+
     _transmitterNearObjects = _transmitter getVariable [QUOTE(GVAR(transmitterNearObjects)), []];
     if((_lastTransmitterPos distance _transmitterPosATL) > 10 || (count _transmitterNearObjects) == 0) then {
         _transmitter setVariable [QUOTE(GVAR(lastTransmitterPos)), _transmitterPosATL];
         _transmitterNearObjects = nearestObjects [_transmitterPosATL, _types, _checkDistance];
         _transmitter setVariable [QUOTE(GVAR(transmitterNearObjects)), _transmitterNearObjects];
     };
-    
+
     _receiverNearObjects = _receiver getVariable [QUOTE(GVAR(receiverNearObjects)), []];
     if((_lastReceiverPos distance _receiverPosATL) > 10 || (count _receiverNearObjects) == 0) then {
         _receiver setVariable [QUOTE(GVAR(lastReceiverPos)), _receiverPosATL];
         _receiverNearObjects = nearestObjects [_receiverPosATL, _types, _checkDistance];
         _receiver setVariable [QUOTE(GVAR(receiverNearObjects)), _receiverNearObjects];
     };
-    
+
     {
         _dis = _transmitterPosATL distance _x;
         _pos = [_transmitterPosATL, _dis, (_polar select 1)] call CALLSTACK(LIB_fnc_relPos);
@@ -154,7 +146,7 @@ if((_lastTransmitterPos distance _transmitterPosATL) > 1 || (_lastReceiverPos di
             };
         };
     } forEach _transmitterNearObjects;
-    
+
     _backVector = [_receiverPos, _transmitterPos] call FUNC(vectorXtoY);
     {
         if(!(_x in _transmitterNearObjects)) then {
@@ -191,7 +183,7 @@ if((_lastTransmitterPos distance _transmitterPosATL) > 1 || (_lastReceiverPos di
 
     _transmitter setVariable [QUOTE(GVAR(pEaddTx)), _pEaddTx];
     _transmitter setVariable [QUOTE(GVAR(pEaddRx)), _pEaddRx];
-    
+
 } else {
     _pEaddTx = _transmitter getVariable [QUOTE(GVAR(pEaddTx)), 0];
     _pEaddRx = _transmitter getVariable [QUOTE(GVAR(pEaddRx)), 0];
@@ -262,7 +254,7 @@ Free Space Path Loss model
 // _aA = ((_pE^2)*(pi^2)*(_3dDis^2))/(_lambda*_lambda);
 // _Lfs = 10*(log _aA);
 
-_Lfs = -27.55 + 20*log(_f) + 20*log(_3dDis); 
+_Lfs = -27.55 + 20*log(_f) + 20*log(_3dDis);
 
 /*
 Transmitter Power (mW to dBm)
@@ -307,16 +299,16 @@ DEBUG
 _total = diag_tickTime - _startTime;
 #ifdef DEBUG_MODE_FULL
     GVAR(showSignalHint) = true;
-    
+
 #endif
 if(GVAR(showSignalHint)) then {
-    COMPAT_hintSilent format["Strength: %1%9 @ %2Mhz\nRx: %3dBm @ %4mW\nAlt: %5m\nDis2D: %6m Dis3D: %7\nTxG: %10 RxG: %11\nAvg Time: %8", 
+    COMPAT_hintSilent format["Strength: %1%9 @ %2Mhz\nRx: %3dBm @ %4mW\nAlt: %5m\nDis2D: %6m Dis3D: %7\nTxG: %10 RxG: %11\nAvg Time: %8",
                                 format["%1%2 ADJ: %3", _Px*100, "%", ((_Px*100)-(_Slp*100)) max 0],
-                                _f, 
-                                _Lb, 
-                                _mW, 
-                                ((_gainData select 5) select 2), 
-                                _2dDis, 
+                                _f,
+                                _Lb,
+                                _mW,
+                                ((_gainData select 5) select 2),
+                                _2dDis,
                                 (_transmitterPos distance _receiverPos),
                                 (_total),
                                 "%",
@@ -337,16 +329,16 @@ if(GVAR(showSignalHint)) then {
         diag_log text format["    RX POS: %1", _receiverPos];
         diag_log text format["    2D DISTANCE: %1m", _2dDis];
         diag_log text format["    3D DISTANCE: %1m", _3dDis];
-        diag_log text format["    HEIGHT DIFFERENCE (TX TO RX): %1m", (_transmitterPos select 2) - (_receiverPos select 2)]; 
+        diag_log text format["    HEIGHT DIFFERENCE (TX TO RX): %1m", (_transmitterPos select 2) - (_receiverPos select 2)];
         diag_log text format["SIGNAL LOSS INFORMATION:"];
         diag_log text format["    ITU LOSS: %1dBm", _ituLoss];
         diag_log text format["    OCLUSION LOSS TX: %1dBm", _pEaddTx];
         diag_log text format["    OCLUSION LOSS RX: %1dBm", _pEaddRx];
         diag_log text format["    FREE SPACE PATH LOSS: %1dBm", _Lfs];
         diag_log text format["    TOTAL QUALITY: %1%2 REL SINAD: %3%4", _Px*100, "%", ((_Px*100)-(_Slp*100)) max 0, "%"];
-        
-        
-        
+
+
+
         diag_log text format[" "];
     #endif
 };

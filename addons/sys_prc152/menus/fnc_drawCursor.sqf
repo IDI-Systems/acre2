@@ -1,4 +1,19 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 TRACE_1("drawCursor", _this);
 // Swap the background and foreground colors for a text range
@@ -28,7 +43,7 @@ if(_alignment != ALIGN_LEFT) then {
     } else {
         _rowCount = COLUMNS_SMALL;
     };
-    
+
     _start = 0;
     for "_i" from _start to _rowCount do {
         _textCtrl = _display displayCtrl (_id+_i);
@@ -63,7 +78,7 @@ if(_len < 1) then {
 for "_i" from _start to (_start+_len) do {
     _textCtrl = _display displayCtrl (_id+_i);
     if(_highlight) then {
-        
+
         _textCtrl ctrlSetBackgroundColor [0.2, 0.2, 0.2, 1];
         _textCtrl ctrlSetTextColor [115/255, 126/255, 42/255, 1];
     } else {

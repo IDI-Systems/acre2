@@ -1,4 +1,19 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params["_name","_value"];
@@ -17,15 +32,15 @@ switch _name do {
     case "frequencyRX": {
         _value = [_value, 3, 4] call CBA_fnc_formatNumber;
     };
-    case "encryption": { 
+    case "encryption": {
         if(_value > 1) then { _value = "CT"; } else { _value = "PT"; };
     };
-    case "channelMode": { 
+    case "channelMode": {
         switch _value do {
             case "BASIC": { _value = "VULOS"; }
         };
     };
-    case "squelch": { 
+    case "squelch": {
         switch _value do {
             case SQUELCH_CTCSS: { _value = "TCS"; }
         };
@@ -42,7 +57,7 @@ _value
 /*
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
-    
+
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
@@ -58,7 +73,7 @@ _value
     HASH_SET(_channel,"fade",2);
     HASH_SET(_channel,"phase",256);
     HASH_SET(_channel,"squelch",3);
-    
+
     // 152 specific channel settings
     HASH_SET(_channel,"deviation", 8.0);
     HASH_SET(_channel,"optionCode", 201);    // 200 for AM

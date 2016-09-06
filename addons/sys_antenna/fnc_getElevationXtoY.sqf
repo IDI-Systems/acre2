@@ -1,4 +1,3 @@
-//fnc_getElevationXtoY.sqf
 #include "script_component.hpp"
 
 private ["_vec", "_mag", "_elev", "_dir"];

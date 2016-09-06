@@ -1,4 +1,20 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
 #include "script_component.hpp"
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
@@ -127,7 +143,7 @@ GVAR(PGM_NORM) = ["PGM_NORM", "PGM_NORM", "",
         };
         HASH_SET(_channel, "active", _activeInList);
         HASHLIST_SET(_channels, _channelNumber, _channel);
-        
+
         SET_STATE("channels", _channels);
 
         SET_STATE("pgm_preset_number", 0);
@@ -226,9 +242,9 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 _tx = GET_STATE("pgm_tx_freq");
                 _rxOnly = SCRATCH_GET(GVAR(currentRadioId), "pgm_rx_only");
                 if(_rxOnly == "YES") then { _rxOnly = true; } else { _rxOnly = false; };
-                
+
                 if(isNil "_rx" || isNil "_tx") exitWith { false };
-                
+
                 _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                 _channels = GET_STATE("channels");
                 _channel = HASHLIST_SELECT(_channels, _channelNumber);
@@ -343,4 +359,3 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
     nil
 ];
 [GVAR(PGM_NORM_LOS)] call FUNC(createMenu);
-

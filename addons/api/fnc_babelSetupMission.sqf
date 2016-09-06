@@ -1,4 +1,21 @@
-#include "script_component.hpp"
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
+ #include "script_component.hpp"
 
 // Variables are provided as
 // [ [side, languages], [side, languages] ] call acre_api_fnc_babelSetupMission;
@@ -24,26 +41,26 @@ _this spawn {
                 //something acre_player
                 waitUntil { !isNull acre_player };
                 _side = side acre_player;
-                switch _side do { 
-                    case east: { 
+                switch _side do {
+                    case east: {
                         ["east"] call acre_api_fnc_babelSetSpokenLanguages;
                     };
-                    case west: { 
+                    case west: {
                         ["west"] call acre_api_fnc_babelSetSpokenLanguages;
                     };
-                    case independent: { 
+                    case independent: {
                         ["ind"] call acre_api_fnc_babelSetSpokenLanguages;
                     };
-                    case civilian: { 
+                    case civilian: {
                         ["civ"] call acre_api_fnc_babelSetSpokenLanguages;
                     };
-                    default { 
+                    default {
                         ["east", "west", "ind", "civ", "logic"] call acre_api_fnc_babelSetSpokenLanguages;
                     };
                 };
             };
         };
-        
+
         true
     };
     if (!((_this select 0) isEqualType [])) exitWith { false };
@@ -57,8 +74,8 @@ _this spawn {
         private _languageCount = (count _x);
         for [{_i=1}, {_i < _languageCount}, {_i=_i+1}] do {
             private _curLanguage = _x select _i;
-            
-            if((_languages pushBackUnique _curLanguage) != -1) then { 
+
+            if((_languages pushBackUnique _curLanguage) != -1) then {
                 [_curLanguage, _curLanguage] call acre_api_fnc_babelAddLanguageType;
             };
             _sideLanguages pushBack _curLanguage;

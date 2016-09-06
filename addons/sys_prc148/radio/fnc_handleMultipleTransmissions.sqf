@@ -1,4 +1,19 @@
-//fnc_handleMultipleTransmissions.sqf
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params["_radioId","","_radios"];
@@ -30,12 +45,12 @@ private _lastSortTime = SCRATCH_GET_DEF(_radioId, "lastSortTime", diag_tickTime-
 private _radioCache = SCRATCH_GET_DEF(_radioId, "currentTransmissionRadioCache", []);
 
 // Restort every 3 seconds no matter what.
-if(diag_tickTime - _lastSortTime > 3) then {    
+if(diag_tickTime - _lastSortTime > 3) then {
     _transmissionsChanged = true;
 } else {
     // Don't resort if we already resorted within the past second
     // If its been a second, lets check to see if the transmitters changed.
-    //if(diag_tickTime - _lastSortTime > 1) then {    
+    //if(diag_tickTime - _lastSortTime > 1) then {
         if(count _radioCache > 0) then {
             // Compare BOTH arrays.
             {
@@ -48,7 +63,7 @@ if(diag_tickTime - _lastSortTime > 3) then {
             };
         } else {
             // If the cache is empty, resort.
-            _transmissionsChanged = true; 
+            _transmissionsChanged = true;
         };
     //};
 };
@@ -64,12 +79,12 @@ if(_transmissionsChanged) then {
             _x params ["","_txID","_signalData"];
             _signalData params ["_signalPercent"];
             if (_signalData isEqualTo [0, -992]) then {_areAllRadiosInitialized = false;};
-            
+
             PUSH(_sorted, ARR_2(_signalPercent, _forEachIndex));
             PUSH(_transmissions, _txId);
         } forEach _radios;
         _sorted sort false; // descending order
-        
+
         {
             PUSH(_sortedRadios, (_radios select (_x select 1)));
         } forEach _sorted;
@@ -85,7 +100,7 @@ if(_transmissionsChanged) then {
         SCRATCH_SET(_radioId, "currentTransmissions", _currentTransmissions);
     };
 
-    
+
     private _radioRxData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     // diag_log text format["%1 NON-CACHED", diag_tickTime];
     if(HASH_GET(_radioRxData, "mode") == "singleChannel") then {
@@ -136,7 +151,7 @@ if(_transmissionsChanged) then {
                 PUSH(_junkTransmissions, _x);
             };
         } forEach _sortedRadios;
-        
+
         //diag_log text format["sorted: %1", _sortedRadios];
         //diag_log text format["junk: %1", _junkTransmissions];
         //diag_log text format["ok: %1", _hearableTransmissions];
@@ -171,7 +186,7 @@ if(_transmissionsChanged) then {
             _okRadios = _hearableTransmissions;
         };
     };
-        
+
 
     if((count _okRadios) > 0) then {
         private _signalData = (_okRadios select 0) select 2;

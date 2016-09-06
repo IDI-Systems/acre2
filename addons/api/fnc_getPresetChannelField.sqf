@@ -1,4 +1,21 @@
-#include "script_component.hpp"
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
+ #include "script_component.hpp"
 private["_channelNumber", "_channels", "_channel", "_value", "_ret"];
 
 //TODO: remove comments? and from setPresetChannelField
@@ -8,7 +25,7 @@ _ret = params [["_radioClass","",[""]],
     ["_presetName","",[""]],
     "_channelReference",
     ["_fieldName","",[""]]];
-    
+
 if (!_ret) exitWith { nil };
 
 
@@ -17,10 +34,10 @@ if (!_ret) exitWith { nil };
 //if(typeName _fieldName != "STRING") exitWith { nil };
 
 _channelNumber = -1;
-if(_channelReference isEqualType []) then { 
+if(_channelReference isEqualType []) then {
     // its a group and channel
 } else {
-    if(_channelReference isEqualType "") then { 
+    if(_channelReference isEqualType "") then {
         _channelNumber = parseNumber _channelReference;
     } else {
         if(_channelReference isEqualType 0) then {

@@ -1,4 +1,21 @@
-#include "script_component.hpp"
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+
+ #include "script_component.hpp"
 
 // This function should setup the appropriate default babel as well as radio presets per side
 // [ setupBabel, setupPerSideRadios] call acre_api_fnc_setupMission;
@@ -19,29 +36,29 @@ if(_setupPresets) then {
             waitUntil { !isNull acre_player };
 
             _side = side acre_player;
-            switch _side do { 
-                case east: { 
+            switch _side do {
+                case east: {
                     ["ACRE_PRC343", "default2" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC77", "default2" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC117F", "default2" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC152", "default2" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC148", "default2" ] call acre_api_fnc_setPreset;
                 };
-                case west: { 
+                case west: {
                     ["ACRE_PRC343", "default3" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC77", "default3" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC117F", "default3" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC152", "default3" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC148", "default3" ] call acre_api_fnc_setPreset;
                 };
-                case independent: { 
+                case independent: {
                     ["ACRE_PRC343", "default4" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC77", "default4" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC117F", "default4" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC152", "default4" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC148", "default4" ] call acre_api_fnc_setPreset;
                 };
-                default { 
+                default {
                     ["ACRE_PRC343", "default" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC77", "default" ] call acre_api_fnc_setPreset;
                     ["ACRE_PRC117F", "default" ] call acre_api_fnc_setPreset;

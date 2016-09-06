@@ -1,5 +1,20 @@
-//fnc_onGetRadioId.sqf
-#include "script_component.hpp"
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+ #include "script_component.hpp"
 
 params["_player", "_class", "_callback", ["_replacementId",""]];
 
@@ -10,7 +25,7 @@ if (getNumber(configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0) th
 private _ret = [_class] call FUNC(getRadioId);
 if(_ret != -1) then {
     private _uniqueClass = format["%1_id_%2", tolower(_class), _ret];
-        
+
     if(!(_uniqueClass in GVAR(masterIdList))) then {
         PUSH(GVAR(masterIdList), _uniqueClass);
         if(isServer) then {

@@ -1,4 +1,19 @@
-//fnc_handleMenuDirButton.sqf
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_alt", "_menuEntry", "_length", "_newIndex", "_list", "_entryIndex", "_i", "_valArray", "_currentCharValue", "_charIndex"];
@@ -9,7 +24,7 @@ if(GET_STATE(editEntry)) then {
     _alt = _params select 7;
     _menuEntry = (GVAR(currentMenu) select (GVAR(entryMap) select 0)) select (GVAR(entryMap) select 1);
     _menuEntry params ["", "_value", "_row", "_range", "_type"];
-    
+
     if(_alt && _type != MENU_TYPE_LIST) then {
         if(_type == MENU_TYPE_TEXT) then {
             _length = (_range select 1)-(_range select 0);
@@ -42,7 +57,7 @@ if(GET_STATE(editEntry)) then {
                 _list = _menuEntry select 7;
                 _value = GET_STATE(currentEditEntry);
                 _index = _list find _value;
-                
+
                 _index = _index + _dir;
                 if(_index < 0) then {
                     _index = (count _list)-1;
@@ -63,7 +78,7 @@ if(GET_STATE(editEntry)) then {
                     };
                 };
                 _valArray = toArray _value;
-                
+
                 _currentCharValue = toString [_valArray select _entryIndex];
                 _charIndex = GVAR(alphaNumeric) find _currentCharValue;
                 _charIndex = _charIndex + _dir;
@@ -76,11 +91,11 @@ if(GET_STATE(editEntry)) then {
                 _valArray set[_entryIndex, (toArray (GVAR(alphaNumeric) select _charIndex)) select 0];
                 //acre_player sideChat format["_valArray after: %1", _valArray];
                 _value = toString _valArray;
-                
+
                 SET_STATE(currentEditEntry, _value);
             };
             case MENU_TYPE_NUM: {
-                
+
                 _entryIndex = ENTRY_INDEX;
                 _value = GET_STATE(currentEditEntry);
                 //acre_player sideChat format["ei: %1", _entryIndex];
@@ -97,7 +112,7 @@ if(GET_STATE(editEntry)) then {
                 _valArray set[_entryIndex, (toArray (GVAR(numeric) select _charIndex)) select 0];
                 //acre_player sideChat format["_valArray after: %1", _valArray];
                 _value = toString _valArray;
-                
+
                 SET_STATE(currentEditEntry, _value);
             };
         };

@@ -1,5 +1,20 @@
-//fnc_invalidGarbageCollect.sqf
-#include "script_component.hpp"
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+ #include "script_component.hpp"
 
 params["_player", "_radioId", "_radioData"];
 
@@ -21,5 +36,3 @@ if(_key != -1) then {
 } else {
     diag_log text format["%1 ACRE ERROR: LOOKING TO RESTORE TYPE %2, COULD NOT FIND!", diag_tickTime, _radioId];
 };
-
-

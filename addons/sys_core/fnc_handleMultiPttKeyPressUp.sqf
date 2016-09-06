@@ -1,4 +1,19 @@
-//fnc_handleMultiPttKeyPressUp.sqf
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 DFUNC(doHandleMultiPttKeyPressUp) = {
@@ -6,7 +21,7 @@ DFUNC(doHandleMultiPttKeyPressUp) = {
     if( (_args select 1) ) then {
         [GVAR(delayReleasePTT_Handle)] call EFUNC(sys_sync,perFrame_remove);
         GVAR(delayReleasePTT_Handle) = nil;
-        
+
         if(GVAR(pttKeyDown)) then {
             [(_args select 0), "handlePTTUp"] call EFUNC(sys_data,transEvent);
             ["stopRadioSpeaking", ","] call EFUNC(sys_rpc,callRemoteProcedure);

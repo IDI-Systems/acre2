@@ -1,5 +1,20 @@
-//fnc_masterIdTracker.sqf
-//#define DEBUG_MODE_FULL
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
+ //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 TRACE_1("Enter", "");
@@ -94,7 +109,7 @@ if(GVAR(doFullSearch) && !GVAR(fullSearchRunning) ) then {
                         _items = (getWeaponCargo _object) select 0;
                         #endif
                     };
-                    
+
                     {
                         private _item = _x;
                         if(getNumber(_cfgWeapons >> _item >> "acre_isUnique") == 1) then {
@@ -125,7 +140,7 @@ if(GVAR(doFullSearch) && !GVAR(fullSearchRunning) ) then {
                 diag_log text format["%1 ACRE WARNING: Unacknowledged key not found in masterIdTable (%2)", diag_tickTime, _key];
             };
         } forEach GVAR(unacknowledgedIds);
-        
+
         {
             private _key = _x;
             private _duplicates = HASH_GET(_duplicateIdTable, _key);
@@ -178,7 +193,7 @@ if(GVAR(doFullSearch) && !GVAR(fullSearchRunning) ) then {
             private _key = _x;
             if(!(_key in GVAR(unacknowledgedIds))) then {
                 private _value = HASH_GET(_idTable, _key);
-                
+
                 if(HASH_HASKEY(GVAR(masterIdTable), _key)) then {
                     private _currentEntry = HASH_GET(GVAR(masterIdTable), _key);
                     if(!(_value isEqualTo _currentEntry)) then {
@@ -203,7 +218,7 @@ if(GVAR(doFullSearch) && !GVAR(fullSearchRunning) ) then {
         GVAR(masterIdTable) = _idTable;
         GVAR(nextSearchTime) = diag_tickTime + 10;
         GVAR(fullSearchRunning) = false;
-        
+
         TRACE_2("COMPLETE crate search", GVAR(nextSearchTime), GVAR(fullSearchRunning) );
     //};
 };

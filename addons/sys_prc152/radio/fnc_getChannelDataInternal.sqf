@@ -1,3 +1,19 @@
+/*
+ * Author: AUTHOR
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 private ["_channels", "_optChannelId", "_opt", "_currentChannelId", "_channel"];
 TRACE_1("", _this);
@@ -22,15 +38,15 @@ if(!(isNil "_optChannelId") && !(isNil "_opt")) then {
     } else {
         // Get the actual channel data, then overlay it with the operational data
         _channel =  HASHLIST_SELECT(_channels, _currentChannelId);
-        
+
         {
             private["_value", "_key"];
             _key = _x;
             _value = HASH_GET(_channel, _x);
-            
+
             HASH_SET(_channel, _key, _value);
         } forEach HASH_KEYS(_opt);
-        
+
         _channel
     };
 } else {
