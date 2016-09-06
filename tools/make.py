@@ -74,6 +74,7 @@ prefix = "acre"
 pbo_name_prefix = "acre_"
 signature_blacklist = []
 importantFiles = ["meta.cpp", "mod.cpp", "README.md", "LICENSE", "acre_logo_medium_ca.paa"]
+extrasFiles = ["Wav2B64.exe", "examples"]
 versionFiles = []
 
 ciBuild = False # Used for CI builds
@@ -348,6 +349,31 @@ def copy_important_files(source_dir,destination_dir):
             shutil.copyfile(os.path.join(source_dir,filePath),os.path.join(destination_dir,file))
     except:
         print_error("COPYING IMPORTANT FILES.")
+        raise
+
+    # Copy extrasFiles
+    try:
+        source_extras_dir = os.path.join(source_dir, "extras")
+        destination_extras_dir = os.path.join(destination_dir, "extras")
+        print_blue("\nSearching for extras files in {}".format(source_extras_dir))
+        print("Source_dir: {}".format(source_extras_dir))
+        print("Destination_dir: {}".format(destination_extras_dir))
+
+        if os.path.exists(destination_extras_dir):
+            shutil.rmtree(destination_extras_dir, True)
+        os.mkdir(destination_extras_dir)
+
+        for file in extrasFiles:
+            filePath = os.path.join(source_extras_dir, file)
+            if os.path.exists(filePath):
+                if os.path.isdir(filePath):
+                    print_green("Copying directory => {}".format(filePath))
+                    shutil.copytree(filePath, os.path.join(destination_extras_dir,file))
+                else:
+                    print_green("Copying file => {}".format(filePath))
+                    shutil.copyfile(filePath, os.path.join(destination_extras_dir,file))
+    except:
+        print_error("COPYING EXTRAS FILES.")
         raise
 
     #copy all extension dlls
@@ -1145,6 +1171,23 @@ See the make.cfg file for additional build options.
                         except:
                             print_error("\nFailed to delete {}".format(os.path.join(obsolete_check_path,file)))
                             pass
+            if len(os.listdir(obsolete_check_path)) == 0:
+                shutil.rmtree(obsolete_check_path, True)
+
+        obsolete_check_path = os.path.join(module_root, release_dir, project, "extras")
+        if os.path.exists(obsolete_check_path):
+            for file in os.listdir(obsolete_check_path):
+                if not os.path.exists(os.path.join(module_root_parent, "extras", file)):
+                    try:
+                        if os.path.isdir(os.path.join(obsolete_check_path,file)):
+                            print_yellow("Removing obsolete extras directory => {}".format(file))
+                            shutil.rmtree(os.path.join(obsolete_check_path,file), True)
+                        else:
+                            print_yellow("Removing obsolete extras file => {}".format(file))
+                            os.remove(os.path.join(obsolete_check_path,file))
+                    except:
+                        print_error("\nFailed to delete {}".format(os.path.join(obsolete_check_path,file)))
+                        pass
             if len(os.listdir(obsolete_check_path)) == 0:
                 shutil.rmtree(obsolete_check_path, True)
 
