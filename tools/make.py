@@ -363,6 +363,26 @@ def copy_important_files(source_dir,destination_dir):
             print_green("Copying dll => {}".format(os.path.join(source_dir,dll)))
             if os.path.isfile(dll):
                 shutil.copyfile(os.path.join(source_dir,dll),os.path.join(destination_dir,dll))
+
+        # Copy TeamSpeak plugins
+        plugin_dir = os.path.join(source_dir,"plugin")
+        destination_plugin_dir = os.path.join(destination_dir,"plugin")
+        if os.path.exists(plugin_dir):
+            os.chdir(plugin_dir)
+            filenames = glob.glob("*.dll")
+
+            if not filenames:
+                print("Empty plugin SET")
+            else:
+                if not os.path.exists(destination_plugin_dir):
+                    os.mkdir(destination_plugin_dir)
+
+            for dll in filenames:
+                print_green("Copying plugin dll => {}".format(os.path.join(plugin_dir,dll)))
+                if os.path.isfile(dll):
+                    shutil.copyfile(os.path.join(plugin_dir,dll), os.path.join(destination_plugin_dir,dll))
+        else:
+            print("Plugin dlls not found.")
     except:
         print_error("COPYING DLL FILES.")
         raise
@@ -1100,20 +1120,33 @@ See the make.cfg file for additional build options.
             if (file.endswith(".pbo") and os.path.isfile(os.path.join(obsolete_check_path,file))):
                 if check_for_obsolete_pbos(module_root, file):
                     fileName = os.path.splitext(file)[0]
-                    print_yellow("Removing obsolete file => {}".format(file))
+                    print_yellow("Removing obsolete pbo => {}".format(file))
                     purge(obsolete_check_path, "{}\..".format(fileName), "{}.*".format(fileName))
 
         obsolete_check_path = os.path.join(module_root, release_dir, project)
         for file in os.listdir(obsolete_check_path):
             if (file.endswith(".dll") and os.path.isfile(os.path.join(obsolete_check_path,file))):
-                if check_for_obsolete_pbos(extensions_root, file):
-                    fileName = os.path.splitext(file)[0]
-                    print_yellow("Removing obsolete file => {}".format(file))
+                if not os.path.exists(os.path.join(module_root_parent, file)):
+                    print_yellow("Removing obsolete dll => {}".format(file))
                     try:
                         os.remove(os.path.join(obsolete_check_path,file))
                     except:
                         print_error("\nFailed to delete {}".format(os.path.join(obsolete_check_path,file)))
                         pass
+
+        obsolete_check_path = os.path.join(module_root, release_dir, project, "plugin")
+        if os.path.exists(obsolete_check_path):
+            for file in os.listdir(obsolete_check_path):
+                if (file.endswith(".dll") and os.path.isfile(os.path.join(obsolete_check_path,file))):
+                    if not os.path.exists(os.path.join(module_root_parent, "plugin", file)):
+                        print_yellow("Removing obsolete plugin dll => {}".format(file))
+                        try:
+                            os.remove(os.path.join(obsolete_check_path,file))
+                        except:
+                            print_error("\nFailed to delete {}".format(os.path.join(obsolete_check_path,file)))
+                            pass
+            if len(os.listdir(obsolete_check_path)) == 0:
+                shutil.rmtree(obsolete_check_path, True)
 
         # For each module, prep files and then build.
         print_blue("\nBuilding...")
