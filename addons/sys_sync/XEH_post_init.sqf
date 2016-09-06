@@ -21,20 +21,7 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 #include "script_component.hpp"
-/*
-DFUNC(perFrame_Dialog) = {
-    //waitUntil {time > 0}; // OK
-    //6323 cutRsc ["ACRE_FrameHandlerTitle", "PLAIN"];
-    
-    
-};
 
-DFUNC(perFrame_Trigger) = {
-    GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0], false];
-    GVAR(perFrameTrigger) setTriggerActivation["ANY","PRESENT",true];
-    GVAR(perFrameTrigger) setTriggerStatements[QUOTE(call FUNC(perFrame_onTriggerFrame)), "", ""];
-};
-*/
 DFUNC(perFrame_TriggerClient) = {
     GVAR(perFrameTrigger) = createTrigger["EmptyDetector", [0,0,0], false];
     GVAR(perFrameTrigger) setTriggerActivation["ANY","PRESENT",true];

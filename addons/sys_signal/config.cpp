@@ -32,5 +32,4 @@ class CfgPatches {
     };
 };
 #include "cfgEventhandlers.hpp"
-#include "CfgAcreReflectionMaps.hpp"
 //#include "cfgSounds.hpp"

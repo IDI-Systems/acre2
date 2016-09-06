@@ -35,7 +35,3 @@ class CfgPatches {
 #include "CfgVehicles.hpp"
 #include "CfgAcreComponents.hpp"
 #include "CfgEventhandlers.hpp"
-
-class CfgWeapons {
-    class FirstAidKit;
-};

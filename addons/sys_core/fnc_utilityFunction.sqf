@@ -35,12 +35,6 @@ DFUNC(utilityFuncPFH) = {
 };
 ADDPFH(DFUNC(utilityFuncPFH), 5, []);
 
-/* Used by getPosASLAtDistance (deprecated), to improve accurcay of position.
-DFUNC(remotePosPFH) = {
-    acre_player setVariable ["ap", (eyePos acre_player), true];
-};
-ADDPFH(DFUNC(remotePosPFH), 5, []);
-*/
 [] call FUNC(aliveMonitor);
 
 

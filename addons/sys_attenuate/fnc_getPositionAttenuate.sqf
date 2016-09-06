@@ -43,7 +43,6 @@ if( !(_unitVehicle != _playerVehicle) ) then { // We are NOT in the same vehicle
         _temp = [_playerVehicle, acre_player] call FUNC(getVehicleOutsideAttenuate);
         TRACE_2("", _attenuate, _temp);
         if(!(isTurnedOut acre_player)) then {
-        // if(!([acre_player] call FUNC(isTurnedOut))) then {
             _attenuate = _attenuate + _temp;
         };
     };

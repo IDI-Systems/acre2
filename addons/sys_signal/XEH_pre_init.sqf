@@ -23,35 +23,14 @@
 //XEH_pre_init.sqf
 #include "script_component.hpp"
 
-
-
 NO_DEDICATED;
 ADDON = false;
-PREP(ITULoss);
-PREP(getItuLoss);
-// PREP(generateBestPlaces);
-PREP(getReflections);
-PREP(doMultiPath);
-PREP(getFspl);
-PREP(calculateReflectionsInternal);
-PREP(losCalc);
 PREP(getSignal);
-PREP(processor);
-PREP(objectLoss);
 PREP(handleSignalReturn);
 
-
-DGVAR(lastRxPos) = 0;
-DGVAR(lastTxPos) = 0;
-DGVAR(lastProfile) = [];
 DGVAR(showSignalHint) = false;
 DGVAR(terrainScaling) = 1;
 DGVAR(omnidirectionalRadios) = 0;
-DGVAR(maxReflections) = 1;
-DGVAR(runningGenerator) = false;
-
-DGVAR(runningProcesses) = [];
-
 
 ACRE_SIGNAL_TEST_LINES = [];
 ACRE_SIGNAL_TEST_ICONS = [];
@@ -64,7 +43,6 @@ FUNC(handleEndTransmission) = {
     missionNamespace setVariable [_transmitterClass + "_best_ant", ""];
     nil;
 };
-
 
 _drawLines = {
     {
@@ -87,5 +65,5 @@ _drawLines = {
     
     } forEach ACRE_SIGNAL_TEST_ICONS;
 };
-[_drawLines, 0, []] call cba_fnc_addPerFrameHandler;
+[_drawLines, 0, []] call CBA_fnc_addPerFrameHandler;
 ADDON = true;

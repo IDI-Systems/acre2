@@ -55,14 +55,14 @@ if(_vehListener == _vehSpeaker) then {
         private _listenerTurnedOut = isTurnedOut _listener;
         if(!_listenerTurnedOut) then {
             // acre_player sideChat format["1 %1 %2", _attenuate, (1-(getNumber(configFile >> "CfgVehicles" >> (typeOf (vehicle _listener)) >> "insideSoundCoef")))];
-            _attenuate = _attenuate + ([_listener] call FUNC(getVehicleAttenuation)); //((getNumber(configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "insideSoundCoef")));
+            _attenuate = _attenuate + ([_listener] call FUNC(getVehicleAttenuation));
         };
     };
     if(_vehSpeaker != _speaker) then {
         private _speakerTurnedOut = isTurnedOut _speaker;
         if(!_speakerTurnedOut) then {
             // acre_player sideChat format["2 %1 %2", _attenuate, (1-(getNumber(configFile >> "CfgVehicles" >> (typeOf (vehicle _speaker)) >> "insideSoundCoef")))];
-            _attenuate = _attenuate + ([_speaker] call FUNC(getVehicleAttenuation)); //((getNumber(configFile >> "CfgVehicles" >> (typeOf _vehSpeaker) >> "insideSoundCoef")));
+            _attenuate = _attenuate + ([_speaker] call FUNC(getVehicleAttenuation));
         };
     };
 };

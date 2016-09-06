@@ -58,9 +58,7 @@ class CfgVehicles {
         };
     };
     
-    class Car_F : Car {
-        insideSoundCoef = 0.5;
-    };
+    class Car_F : Car {};
     
     class Wheeled_APC_F : Car_F {
         class ACRE {
@@ -94,7 +92,6 @@ class CfgVehicles {
                 hasCVC = true;
             };
         };
-        insideSoundCoef = 0.8;
     };
 
     class Tank : LandVehicle {
@@ -231,49 +228,6 @@ class CfgVehicles {
                 hasCVC = true;
             };
         };
-    };
-    
-    class Truck_F;
-    class Van_01_base_F: Truck_F {
-        insideSoundCoef = 0.0f;
-    };
-    /*
-    class Truck_01_base_F: Truck_F {
-        class ACRE {
-            class attenuation {
-                class Compartment1  {
-                    Compartment1 = 0.4;
-                    Compartment2 = 0.4;
-                    Compartment3 = 0.4;
-                    Compartment4 = 0.4;
-                };
-                class Compartment2  {
-                    Compartment1 = 0.4;
-                    Compartment2 = 0.4;
-                    Compartment3 = 0.4;
-                    Compartment4 = 0.4;
-                };
-                class Compartment3  {
-                    Compartment1 = 0.4;
-                    Compartment2 = 0.4;
-                    Compartment3 = 0.4;
-                    Compartment4 = 0.4;
-                };
-                class Compartment4  {
-                    Compartment1 = 0.4;
-                    Compartment2 = 0.4;
-                    Compartment3 = 0.4;
-                    Compartment4 = 0.4;
-                };
-            };
-            class CVC {
-                hasCVC = false;
-            };
-        };
-    };
-    */
-    class Quadbike_01_base_F: Car_F {
-        insideSoundCoef = 0.0f;
     };
 #endif
 };
