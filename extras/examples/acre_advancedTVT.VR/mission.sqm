@@ -1,25 +1,56 @@
-version=12;
+version=52;
+class EditorData
+{
+	moveGridStep=1;
+	angleGridStep=0.2617994;
+	scaleGridStep=1;
+	autoGroupingDist=10;
+	toggles=1;
+	class ItemIDProvider
+	{
+		nextID=119;
+	};
+	class Camera
+	{
+		pos[]={3962.4287,30,4010.2004};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
+	};
+};
+binarizationWanted=0;
+addons[]=
+{
+	"A3_Characters_F",
+	"acre_api"
+};
+class AddonsMetaData
+{
+	class List
+	{
+		items=2;
+		class Item0
+		{
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
+			author="Bohemia Interactive";
+			url="http://www.arma3.com";
+		};
+		class Item1
+		{
+			className="acre_api";
+			name="acre_api";
+			author="ACRE2 Team";
+		};
+	};
+};
+randomSeed=9797871;
+class ScenarioData
+{
+	author="Jonpas";
+};
 class Mission
 {
-	addOns[]=
-	{
-		"A3_Characters_F_BLUFOR",
-		"a3_characters_f",
-		"map_vr",
-		"A3_Characters_F_OPFOR",
-		"acre_api",
-		"A3_Characters_F_INDEP"
-	};
-	addOnsAuto[]=
-	{
-		"A3_Characters_F_BLUFOR",
-		"a3_characters_f",
-		"A3_Characters_F_OPFOR",
-		"acre_api",
-		"A3_Characters_F_INDEP",
-		"map_vr"
-	};
-	randomSeed=2092605;
 	class Intel
 	{
 		timeOfChanges=1800.0002;
@@ -37,637 +68,1015 @@ class Mission
 		startFogDecay=0.0049999999;
 		forecastFogDecay=0.0049999999;
 	};
-	class Groups
+	class Entities
 	{
-		items=9;
+		items=10;
 		class Item0
 		{
-			side="WEST";
-			class Vehicles
+			dataType="Group";
+			side="West";
+			class Entities
 			{
 				items=8;
 				class Item0
 				{
-					position[]={3989.6064,5,4016.3408};
-					id=0;
-					side="WEST";
-					vehicle="B_Soldier_SL_F";
-					player="PLAY CDG";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.5;
-					init="this addItem ""ACRE_PRC152"";";
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3989.6064,5.0014391,4016.4409};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						rank="SERGEANT";
+						init="this addItem ""ACRE_PRC152"";";
+						isPlayable=1;
+					};
+					id=71;
+					type="B_Soldier_SL_F";
 				};
 				class Item1
 				{
-					position[]={3994.6064,5,4011.3408};
-					id=1;
-					side="WEST";
-					vehicle="B_Soldier_TL_F";
-					player="PLAY CDG";
-					rank="SERGEANT";
-					skill=0.5;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3994.6064,5.0014391,4014.791};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						rank="SERGEANT";
+						isPlayable=1;
+					};
+					id=72;
+					type="B_Soldier_TL_F";
 				};
 				class Item2
 				{
-					position[]={3984.6064,5,4011.3408};
-					id=2;
-					side="WEST";
-					vehicle="B_soldier_AR_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.44999999;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3984.6064,5.0014391,4014.791};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+						isPlayable=1;
+					};
+					id=73;
+					type="B_soldier_AR_F";
 				};
 				class Item3
 				{
-					position[]={3999.6064,5,4006.3408};
-					id=3;
-					side="WEST";
-					vehicle="B_soldier_AR_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3999.6064,5.0014391,4012.0522};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=74;
+					type="B_soldier_AR_F";
 				};
 				class Item4
 				{
-					position[]={3979.6064,5,4006.3408};
-					id=4;
-					side="WEST";
-					vehicle="B_soldier_AAR_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3979.6064,5.0014391,4012.0522};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=75;
+					type="B_soldier_AAR_F";
 				};
 				class Item5
 				{
-					position[]={4004.6064,5,4001.3408};
-					id=5;
-					side="WEST";
-					vehicle="B_soldier_LAT_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.44999999;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4004.6064,5.0014391,4007.5059};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+						isPlayable=1;
+					};
+					id=76;
+					type="B_soldier_LAT_F";
 				};
 				class Item6
 				{
-					position[]={3974.6064,5,4001.3408};
-					id=6;
-					side="WEST";
-					vehicle="B_medic_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3974.6064,5.0014391,4007.5059};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=77;
+					type="B_medic_F";
 				};
 				class Item7
 				{
-					position[]={4009.6064,5,3996.3408};
-					id=7;
-					side="WEST";
-					vehicle="B_Soldier_A_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4009.6064,5.0014391,4002.5559};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=78;
+					type="B_Soldier_A_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=70;
 		};
 		class Item1
 		{
-			side="WEST";
-			class Vehicles
+			dataType="Group";
+			side="West";
+			class Entities
 			{
 				items=8;
 				class Item0
 				{
-					position[]={3941.885,5,4011.8345};
-					id=8;
-					side="WEST";
-					vehicle="B_Soldier_SL_F";
-					player="PLAY CDG";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.5;
-					init="this addItem ""ACRE_PRC152"";";
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3941.885,5.0014391,4011.9346};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						rank="SERGEANT";
+						init="this addItem ""ACRE_PRC152"";";
+						isPlayable=1;
+					};
+					id=80;
+					type="B_Soldier_SL_F";
 				};
 				class Item1
 				{
-					position[]={3936.885,5,4006.8345};
-					id=9;
-					side="WEST";
-					vehicle="B_soldier_AR_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.44999999;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3946.885,5.0014391,4010.2847};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+						isPlayable=1;
+					};
+					id=81;
+					type="B_soldier_AR_F";
 				};
 				class Item2
 				{
-					position[]={3931.885,5,4001.8345};
-					id=10;
-					side="WEST";
-					vehicle="B_soldier_AAR_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3936.885,5.0014391,4010.2847};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=82;
+					type="B_soldier_AAR_F";
 				};
 				class Item3
 				{
-					position[]={3926.885,5,3996.8345};
-					id=11;
-					side="WEST";
-					vehicle="B_medic_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3951.885,5.0014391,4007.5459};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=83;
+					type="B_medic_F";
 				};
 				class Item4
 				{
-					position[]={3946.885,5,4006.8345};
-					id=12;
-					side="WEST";
-					vehicle="B_Soldier_TL_F";
-					player="PLAY CDG";
-					rank="SERGEANT";
-					skill=0.5;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3931.885,5.0014391,4007.5459};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						rank="SERGEANT";
+						isPlayable=1;
+					};
+					id=84;
+					type="B_Soldier_TL_F";
 				};
 				class Item5
 				{
-					position[]={3951.885,5,4001.8345};
-					id=13;
-					side="WEST";
-					vehicle="B_soldier_AR_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3956.885,5.0014391,4002.9995};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=85;
+					type="B_soldier_AR_F";
 				};
 				class Item6
 				{
-					position[]={3956.885,5,3996.8345};
-					id=14;
-					side="WEST";
-					vehicle="B_soldier_LAT_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.44999999;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3926.885,5.0014391,4002.9995};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+						isPlayable=1;
+					};
+					id=86;
+					type="B_soldier_LAT_F";
 				};
 				class Item7
 				{
-					position[]={3961.885,5,3991.8345};
-					id=15;
-					side="WEST";
-					vehicle="B_Soldier_A_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3961.885,5.0014391,3998.0496};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=87;
+					type="B_Soldier_A_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=79;
 		};
 		class Item2
 		{
-			side="WEST";
-			class Vehicles
+			dataType="Group";
+			side="West";
+			class Entities
 			{
 				items=2;
 				class Item0
 				{
-					position[]={3962.4287,5,4035.1504};
-					id=16;
-					side="WEST";
-					vehicle="B_Soldier_SL_F";
-					player="PLAYER COMMANDER";
-					leader=1;
-					rank="LIEUTENANT";
-					skill=0.5;
-					init="this addItem ""ACRE_PRC152"";";
-					description="Platoon Leader";
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3962.4287,5.0014391,4035.2505};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						rank="LIEUTENANT";
+						init="this addItem ""ACRE_PRC152"";";
+						description="Platoon Leader";
+						isPlayer=1;
+						isPlayable=1;
+					};
+					id=89;
+					type="B_Soldier_SL_F";
 				};
 				class Item1
 				{
-					position[]={3965.6858,5,4033.4155};
-					id=17;
-					side="WEST";
-					vehicle="B_Soldier_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.5;
-					init="this addItem ""ACRE_PRC152""; this addBackpack ""B_AssaultPack_khk""; this addItemToBackpack ""ACRE_PRC117F"";";
-					description="Platoon RTO";
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3967.4287,5.0014391,4033.6006};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						rank="CORPORAL";
+						init="this addItem ""ACRE_PRC152""; this addBackpack ""B_AssaultPack_khk""; this addItemToBackpack ""ACRE_PRC117F"";";
+						description="Platoon RTO";
+						isPlayable=1;
+					};
+					id=90;
+					type="B_Soldier_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=88;
 		};
 		class Item3
 		{
-			side="EAST";
-			class Vehicles
+			dataType="Group";
+			side="East";
+			class Entities
 			{
 				items=8;
 				class Item0
 				{
-					position[]={3960.8108,5,5026.0049};
-					id=18;
-					side="EAST";
-					vehicle="O_Soldier_SL_F";
-					player="PLAY CDG";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.5;
-					init="this addItem ""ACRE_PRC152"";";
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3960.8108,5.0014391,5026.1045};
+					};
+					side="East";
+					flags=6;
+					class Attributes
+					{
+						rank="SERGEANT";
+						init="this addItem ""ACRE_PRC152"";";
+						isPlayable=1;
+					};
+					id=92;
+					type="O_Soldier_SL_F";
 				};
 				class Item1
 				{
-					position[]={3965.8108,5,5021.0049};
-					id=19;
-					side="EAST";
-					vehicle="O_Soldier_TL_F";
-					player="PLAY CDG";
-					rank="SERGEANT";
-					skill=0.5;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3965.8108,5.0014391,5024.4541};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						rank="SERGEANT";
+						isPlayable=1;
+					};
+					id=93;
+					type="O_Soldier_TL_F";
 				};
 				class Item2
 				{
-					position[]={3955.8108,5,5021.0049};
-					id=20;
-					side="EAST";
-					vehicle="O_Soldier_AR_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.44999999;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3955.8108,5.0014391,5024.4541};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+						isPlayable=1;
+					};
+					id=94;
+					type="O_Soldier_AR_F";
 				};
 				class Item3
 				{
-					position[]={3970.8108,5,5016.0049};
-					id=21;
-					side="EAST";
-					vehicle="O_Soldier_AR_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3970.8108,5.0014391,5021.7148};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=95;
+					type="O_Soldier_AR_F";
 				};
 				class Item4
 				{
-					position[]={3950.8108,5,5016.0049};
-					id=22;
-					side="EAST";
-					vehicle="O_Soldier_AAR_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3950.8108,5.0014391,5021.7148};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=96;
+					type="O_Soldier_AAR_F";
 				};
 				class Item5
 				{
-					position[]={3975.8108,5,5011.0049};
-					id=23;
-					side="EAST";
-					vehicle="O_Soldier_LAT_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.44999999;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3975.8108,5.0014391,5017.1675};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+						isPlayable=1;
+					};
+					id=97;
+					type="O_Soldier_LAT_F";
 				};
 				class Item6
 				{
-					position[]={3945.8108,5,5011.0049};
-					id=24;
-					side="EAST";
-					vehicle="O_medic_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3945.8108,5.0014391,5017.1675};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=98;
+					type="O_medic_F";
 				};
 				class Item7
 				{
-					position[]={3980.8108,5,5006.0049};
-					id=25;
-					side="EAST";
-					vehicle="O_Soldier_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3980.8108,5.0014391,5012.2173};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=99;
+					type="O_Soldier_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=91;
 		};
 		class Item4
 		{
-			side="EAST";
-			class Vehicles
+			dataType="Group";
+			side="East";
+			class Entities
 			{
 				items=8;
 				class Item0
 				{
-					position[]={4006.5979,5,5025.0269};
-					id=26;
-					side="EAST";
-					vehicle="O_Soldier_SL_F";
-					player="PLAY CDG";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.5;
-					init="this addItem ""ACRE_PRC152"";";
-					description="Squad Leader";
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4006.5979,5.0014391,5025.1265};
+					};
+					side="East";
+					flags=6;
+					class Attributes
+					{
+						rank="SERGEANT";
+						init="this addItem ""ACRE_PRC152"";";
+						description="Squad Leader";
+						isPlayable=1;
+					};
+					id=101;
+					type="O_Soldier_SL_F";
 				};
 				class Item1
 				{
-					position[]={4011.5979,5,5020.0269};
-					id=27;
-					side="EAST";
-					vehicle="O_Soldier_TL_F";
-					player="PLAY CDG";
-					rank="SERGEANT";
-					skill=0.5;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4011.5979,5.0014391,5023.4761};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						rank="SERGEANT";
+						isPlayable=1;
+					};
+					id=102;
+					type="O_Soldier_TL_F";
 				};
 				class Item2
 				{
-					position[]={4001.5979,5,5020.0269};
-					id=28;
-					side="EAST";
-					vehicle="O_Soldier_AR_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.44999999;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4001.5979,5.0014391,5023.4761};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+						isPlayable=1;
+					};
+					id=103;
+					type="O_Soldier_AR_F";
 				};
 				class Item3
 				{
-					position[]={4016.5979,5,5015.0269};
-					id=29;
-					side="EAST";
-					vehicle="O_Soldier_AR_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4016.5979,5.0014391,5020.7368};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=104;
+					type="O_Soldier_AR_F";
 				};
 				class Item4
 				{
-					position[]={3996.5979,5,5015.0269};
-					id=30;
-					side="EAST";
-					vehicle="O_Soldier_AAR_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3996.5979,5.0014391,5020.7368};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=105;
+					type="O_Soldier_AAR_F";
 				};
 				class Item5
 				{
-					position[]={4021.5979,5,5010.0269};
-					id=31;
-					side="EAST";
-					vehicle="O_Soldier_LAT_F";
-					player="PLAY CDG";
-					rank="CORPORAL";
-					skill=0.44999999;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4021.5979,5.0014391,5016.1895};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.44999999;
+						rank="CORPORAL";
+						isPlayable=1;
+					};
+					id=106;
+					type="O_Soldier_LAT_F";
 				};
 				class Item6
 				{
-					position[]={3991.5979,5,5010.0269};
-					id=32;
-					side="EAST";
-					vehicle="O_medic_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3991.5979,5.0014391,5016.1895};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=107;
+					type="O_medic_F";
 				};
 				class Item7
 				{
-					position[]={4026.5979,5,5005.0269};
-					id=33;
-					side="EAST";
-					vehicle="O_Soldier_F";
-					player="PLAY CDG";
-					skill=0.40000001;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4026.5979,5.0014391,5011.2393};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+						skill=0.40000001;
+						isPlayable=1;
+					};
+					id=108;
+					type="O_Soldier_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=100;
 		};
 		class Item5
 		{
-			side="EAST";
-			class Vehicles
+			dataType="Group";
+			side="East";
+			class Entities
 			{
 				items=1;
 				class Item0
 				{
-					position[]={3988.593,5,5040.8345};
-					id=34;
-					side="EAST";
-					vehicle="O_Soldier_SL_F";
-					player="PLAY CDG";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.5;
-					init="this addItem ""ACRE_PRC152""; ";
-					description="Platoon Leader";
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3988.593,5.0014391,5040.9341};
+					};
+					side="East";
+					flags=6;
+					class Attributes
+					{
+						rank="SERGEANT";
+						init="this addItem ""ACRE_PRC152""; ";
+						description="Platoon Leader";
+						isPlayable=1;
+					};
+					id=110;
+					type="O_Soldier_SL_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=109;
 		};
 		class Item6
 		{
-			side="EAST";
-			class Vehicles
+			dataType="Group";
+			side="East";
+			class Entities
 			{
 				items=1;
 				class Item0
 				{
-					position[]={3987.0103,5,5037.2778};
-					id=35;
-					side="EAST";
-					vehicle="O_Soldier_F";
-					player="PLAY CDG";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.5;
-					init="this addItem ""ACRE_PRC152""; this addBackpack ""B_AssaultPack_khk""; this addItemToBackpack ""ACRE_PRC117F"";";
-					description="Platoon RTO";
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3987.0103,5.0014391,5037.3774};
+					};
+					side="East";
+					flags=6;
+					class Attributes
+					{
+						rank="SERGEANT";
+						init="this addItem ""ACRE_PRC152""; this addBackpack ""B_AssaultPack_khk""; this addItemToBackpack ""ACRE_PRC117F"";";
+						description="Platoon RTO";
+						isPlayable=1;
+					};
+					id=112;
+					type="O_Soldier_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=111;
 		};
 		class Item7
 		{
-			side="LOGIC";
-			class Vehicles
+			dataType="Logic";
+			class PositionInfo
 			{
-				items=2;
-				class Item0
+				position[]={3964.6938,5,4536.3784};
+			};
+			id=113;
+			type="acre_api_basicMissionSetup";
+			class CustomAttributes
+			{
+				class Attribute0
 				{
-					position[]={3964.6938,5,4536.3784};
-					class args
+					property="acre_api_basicMissionSetup_DefaultRadio";
+					expression="_this setVariable ['DefaultRadio',_value,true];";
+					class Value
 					{
-						items=5;
-						class Item0
+						class data
 						{
-							value="1";
-							parentCls="acre_api_basicMissionSetup";
-							typeName="RadioSetup";
-						};
-						class Item1
-						{
-							value="2";
-							parentCls="acre_api_basicMissionSetup";
-							typeName="BabelSetup";
-						};
-						class Item2
-						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
 							value="";
-							parentCls="acre_api_basicMissionSetup";
-							typeName="DefaultRadio";
-						};
-						class Item3
-						{
-							value="";
-							parentCls="acre_api_basicMissionSetup";
-							typeName="DefaultRadio_Two";
-						};
-						class Item4
-						{
-							value="";
-							parentCls="acre_api_basicMissionSetup";
-							typeName="DefaultRadio_Three";
 						};
 					};
-					id=36;
-					side="LOGIC";
-					vehicle="acre_api_basicMissionSetup";
-					leader=1;
-					lock="UNLOCKED";
-					skill=0.60000002;
 				};
-				class Item1
+				class Attribute1
 				{
-					position[]={4030.1975,5,4536.4922};
-					class args
+					property="acre_api_basicMissionSetup_BabelSetup";
+					expression="_this setVariable ['BabelSetup',_value,true];";
+					class Value
 					{
-						items=3;
-						class Item0
+						class data
 						{
-							value="1";
-							parentCls="acre_api_DifficultySettings";
-							typeName="SignalLoss";
-						};
-						class Item1
-						{
-							value="0";
-							parentCls="acre_api_DifficultySettings";
-							typeName="FullDuplex";
-						};
-						class Item2
-						{
-							value="1";
-							parentCls="acre_api_DifficultySettings";
-							typeName="Interference";
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=2;
 						};
 					};
-					id=37;
-					side="LOGIC";
-					vehicle="acre_api_DifficultySettings";
-					lock="UNLOCKED";
-					skill=0.60000002;
 				};
+				class Attribute2
+				{
+					property="acre_api_basicMissionSetup_RadioSetup";
+					expression="_this setVariable ['RadioSetup',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="acre_api_basicMissionSetup_DefaultRadio_Three";
+					expression="_this setVariable ['DefaultRadio_Three',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="acre_api_basicMissionSetup_DefaultRadio_Four";
+					expression="_this setVariable ['DefaultRadio_Four',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="acre_api_basicMissionSetup_DefaultRadio_Two";
+					expression="_this setVariable ['DefaultRadio_Two',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="";
+						};
+					};
+				};
+				nAttributes=6;
 			};
 		};
 		class Item8
 		{
-			side="GUER";
-			class Vehicles
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={4030.1975,5,4536.4922};
+			};
+			id=114;
+			type="acre_api_DifficultySettings";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="acre_api_DifficultySettings_Interference";
+					expression="_this setVariable ['Interference',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="acre_api_DifficultySettings_SignalLoss";
+					expression="_this setVariable ['SignalLoss',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="acre_api_DifficultySettings_IgnoreAntennaDirection";
+					expression="_this setVariable ['IgnoreAntennaDirection',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="acre_api_DifficultySettings_FullDuplex";
+					expression="_this setVariable ['FullDuplex',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=4;
+			};
+		};
+		class Item9
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
 			{
 				items=3;
 				class Item0
 				{
-					position[]={3494.5737,5,4568.4707};
-					id=38;
-					side="GUER";
-					vehicle="I_soldier_F";
-					player="PLAY CDG";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.5;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3494.5737,5.0014391,4568.5703};
+					};
+					side="Independent";
+					flags=6;
+					class Attributes
+					{
+						rank="SERGEANT";
+						isPlayable=1;
+					};
+					id=116;
+					type="I_soldier_F";
 				};
 				class Item1
 				{
-					position[]={3489.542,5,4529.9424};
-					id=39;
-					side="GUER";
-					vehicle="I_soldier_F";
-					player="PLAY CDG";
-					rank="SERGEANT";
-					skill=0.5;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3499.5737,5.0014391,4566.9199};
+					};
+					side="Independent";
+					flags=4;
+					class Attributes
+					{
+						rank="SERGEANT";
+						isPlayable=1;
+					};
+					id=117;
+					type="I_soldier_F";
 				};
 				class Item2
 				{
-					position[]={3490.9958,5,4500.9453};
-					id=40;
-					side="GUER";
-					vehicle="I_soldier_F";
-					player="PLAY CDG";
-					rank="SERGEANT";
-					skill=0.5;
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={3489.5737,5.0014391,4566.9199};
+					};
+					side="Independent";
+					flags=4;
+					class Attributes
+					{
+						rank="SERGEANT";
+						isPlayable=1;
+					};
+					id=118;
+					type="I_soldier_F";
 				};
 			};
+			class Attributes
+			{
+			};
+			id=115;
 		};
-	};
-};
-class Intro
-{
-	addOns[]=
-	{
-		"map_vr"
-	};
-	addOnsAuto[]=
-	{
-		"map_vr"
-	};
-	randomSeed=2770571;
-	class Intel
-	{
-		timeOfChanges=1800.0002;
-		startWeather=0;
-		startWind=0.1;
-		startWaves=0.1;
-		forecastWeather=0;
-		forecastWind=0.1;
-		forecastWaves=0.1;
-		forecastLightnings=0.1;
-		year=2035;
-		day=28;
-		hour=13;
-		minute=37;
-		startFogDecay=0.0049999999;
-		forecastFogDecay=0.0049999999;
-	};
-};
-class OutroWin
-{
-	addOns[]=
-	{
-		"map_vr"
-	};
-	addOnsAuto[]=
-	{
-		"map_vr"
-	};
-	randomSeed=11863400;
-	class Intel
-	{
-		timeOfChanges=1800.0002;
-		startWeather=0;
-		startWind=0.1;
-		startWaves=0.1;
-		forecastWeather=0;
-		forecastWind=0.1;
-		forecastWaves=0.1;
-		forecastLightnings=0.1;
-		year=2035;
-		day=28;
-		hour=13;
-		minute=37;
-		startFogDecay=0.0049999999;
-		forecastFogDecay=0.0049999999;
-	};
-};
-class OutroLoose
-{
-	addOns[]=
-	{
-		"map_vr"
-	};
-	addOnsAuto[]=
-	{
-		"map_vr"
-	};
-	randomSeed=756103;
-	class Intel
-	{
-		timeOfChanges=1800.0002;
-		startWeather=0;
-		startWind=0.1;
-		startWaves=0.1;
-		forecastWeather=0;
-		forecastWind=0.1;
-		forecastWaves=0.1;
-		forecastLightnings=0.1;
-		year=2035;
-		day=28;
-		hour=13;
-		minute=37;
-		startFogDecay=0.0049999999;
-		forecastFogDecay=0.0049999999;
 	};
 };
