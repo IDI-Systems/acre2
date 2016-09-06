@@ -25,6 +25,4 @@ ACRE2 has a lot of features planned. However, due to time constraints, we have m
 
 ## Requesting a feature
 
-In order to avoid duplicates and keep the issue tracker organized, we have created a common issue for [ACE3 Feature requests](https://github.com/IDI-Systems/acre2/issues/?). Any and all relevant requests should be submitted there, where they will also get discussed and evaluated. Before adding a new one, make sure to check the previous entries from the thread and do a quick search for similar suggestions; please don't reiterate requests for features that had already been accepted for inclusion, or those which were disregarded earlier.
-
-Following their approval, feature requests may be moved by moderators to a separate issue for further discussion.
+Before adding a new one, make sure to check the previous entries from the issue tracker and do a quick search for similar accepted and revoked suggestions; please don't reiterate requests for features that had already been accepted for inclusion, or those which were disregarded earlier, but rather comment on that issue.
