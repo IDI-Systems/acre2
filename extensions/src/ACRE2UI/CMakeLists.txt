@@ -25,7 +25,6 @@ target_link_libraries(${ACRE_NAME} ACRE2Core ACRE2Shared x3daudio Qt5::Widgets Q
 set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2)
 set_target_properties(ACRE2UI PROPERTIES AUTOMOC ON)
 
-ADD_CUSTOM_COMMAND(TARGET ${ACRE_NAME}
-          PRE_BUILD
-          COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/../docs/acre_welcome.html ${PROJECT_SOURCE_DIR}/src/ACRE2UI/acre_welcome.html
+add_custom_command(TARGET ${ACRE_NAME} PRE_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/../docs/acre_welcome.html ${PROJECT_SOURCE_DIR}/src/ACRE2UI/acre_welcome.html
 )

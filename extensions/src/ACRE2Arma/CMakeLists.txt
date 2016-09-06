@@ -78,5 +78,4 @@ if (DEVEL)
     endif()
 endif()
 
-
 message("Build Type: ${CMAKE_BUILD_TYPE}")
