@@ -75,6 +75,7 @@ pbo_name_prefix = "acre_"
 signature_blacklist = []
 importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md"]
 extrasFiles = ["examples", "vcredist", "Wav2B64.exe"]
+steamFiles = ["extras\\ACRE2Steam.dll"]
 versionFiles = ["README.md"]
 extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
 extensions64 = ["ACRE2\\ACRE2TS"]
@@ -368,12 +369,8 @@ def copy_important_files(source_dir,destination_dir):
 
         for file in importantFiles:
             filePath = os.path.join(module_root_parent, file)
-            # Take only file name for destination path (to put it into root of release dir)
-            if "\\" in file:
-                count = file.count("\\")
-                file = file.split("\\", count)[-1]
-            print_green("Copying file => {}".format(os.path.join(source_dir,file)))
-            shutil.copyfile(os.path.join(source_dir,filePath),os.path.join(destination_dir,file))
+            print_green("Copying file => {}".format(filePath))
+            shutil.copy(os.path.join(source_dir,filePath), destination_dir)
     except:
         print_error("COPYING IMPORTANT FILES.")
         raise
@@ -398,7 +395,7 @@ def copy_important_files(source_dir,destination_dir):
                     shutil.copytree(filePath, os.path.join(destination_extras_dir,file))
                 else:
                     print_green("Copying file => {}".format(filePath))
-                    shutil.copyfile(filePath, os.path.join(destination_extras_dir,file))
+                    shutil.copy(filePath, destination_extras_dir)
     except:
         print_error("COPYING EXTRAS FILES.")
         raise
@@ -415,7 +412,7 @@ def copy_important_files(source_dir,destination_dir):
         for dll in filenames:
             print_green("Copying dll => {}".format(os.path.join(source_dir,dll)))
             if os.path.isfile(dll):
-                shutil.copyfile(os.path.join(source_dir,dll),os.path.join(destination_dir,dll))
+                shutil.copy(os.path.join(source_dir,dll), destination_dir)
 
         # Copy TeamSpeak plugins
         plugin_dir = os.path.join(source_dir,"plugin")
@@ -433,7 +430,7 @@ def copy_important_files(source_dir,destination_dir):
             for dll in filenames:
                 print_green("Copying plugin dll => {}".format(os.path.join(plugin_dir,dll)))
                 if os.path.isfile(dll):
-                    shutil.copyfile(os.path.join(plugin_dir,dll), os.path.join(destination_plugin_dir,dll))
+                    shutil.copy(os.path.join(plugin_dir,dll), destination_plugin_dir)
         else:
             print("Plugin dlls not found.")
     except:
@@ -1485,7 +1482,7 @@ See the make.cfg file for additional build options.
     # Make release
     if make_release_zip:
         release_name = "{}_{}".format(zipPrefix, project_version)
-        print_blue("\nMaking release: {}.zip".format(release_name))
+        release_name_steam = "{}_steam".format(release_name)
 
         try:
             # Delete all log files
@@ -1500,10 +1497,23 @@ See the make.cfg file for additional build options.
                     os.remove(os.path.join(release_dir, file))
 
             # Create a zip with the contents of release folder in it
+            print_blue("\nMaking release: {}.zip".format(release_name))
             release_zip = shutil.make_archive("{}".format(release_name), "zip", release_dir)
+
+            # Create a zip with Steam extension
+            print_blue("\nMaking release: {}.zip".format(release_name_steam))
+            for file in steamFiles:
+                steam_file = os.path.join(module_root_parent,file)
+                if os.path.exists(steam_file):
+                    print("Copying file => {}".format(steam_file))
+                    shutil.copy(steam_file, os.path.join(release_dir, project))
+            release_zip_steam = shutil.make_archive("{}".format(release_name_steam), "zip", release_dir)
+
             # Move release zip to release folder
             shutil.copy(release_zip, release_dir)
+            shutil.copy(release_zip_steam, release_dir)
             os.remove(release_zip)
+            os.remove(release_zip_steam)
         except:
             raise
             print_error("Could not make release.")
