@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 //TRACE_1("ENTER", _this);
 

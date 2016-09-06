@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 private["_onCompleteFunction", "_events", "_ret"];

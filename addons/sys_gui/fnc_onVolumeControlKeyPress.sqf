@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 if (!(alive acre_player) || GVAR(keyBlock) || time < 1) exitWith { false };

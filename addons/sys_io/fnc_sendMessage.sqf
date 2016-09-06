@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 /**
     _this = string;

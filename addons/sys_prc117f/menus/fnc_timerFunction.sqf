@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private ["_fnc"];
 params["_radioId", "_endFunction", "_step", "_time"];

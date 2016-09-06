@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 private["_attenuateClass", "_ret", "_parent", "_positionClass", "_playerTurnedOut"];

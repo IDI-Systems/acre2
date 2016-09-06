@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private["_button", "_event", "_currentMenu", "_tmpMenu", "_ret", "_control", "_pressret"];
 //TRACE_1("enter", _this);

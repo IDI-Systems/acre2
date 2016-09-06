@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 if(!isNil "ACRE_AI_ENABLED") exitWith {

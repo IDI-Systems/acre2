@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private _params = ["CfgAcreInteractInterface", acre_sys_radio_currentRadioDialog];
 //_params pushBack acre_sys_radio_currentRadioDialog;

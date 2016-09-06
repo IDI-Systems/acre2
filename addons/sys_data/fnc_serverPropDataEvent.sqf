@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 GVAR(serverNetworkIdCounter) = GVAR(serverNetworkIdCounter) + 1;

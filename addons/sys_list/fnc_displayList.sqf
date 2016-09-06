@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 //COMPAT_diag_log format["%1", acre_sys_radio_currentRadioDialog];

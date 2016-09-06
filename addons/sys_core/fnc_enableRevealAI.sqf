@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 #define ACRE_REVEAL_AMOUNT 1.6

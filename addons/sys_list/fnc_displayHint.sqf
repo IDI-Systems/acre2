@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 GVAR(hintTitle) = _this select 0;
 GVAR(hintLine1) = _this select 1;

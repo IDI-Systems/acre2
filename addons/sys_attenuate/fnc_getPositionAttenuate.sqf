@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 // this function gets the attenuation value relative *from* the provided unit *to* the acre_player

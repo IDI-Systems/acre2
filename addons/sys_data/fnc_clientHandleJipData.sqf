@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 BEGIN_COUNTER(JIPSync_Total);

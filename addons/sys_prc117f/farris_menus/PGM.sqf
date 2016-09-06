@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)

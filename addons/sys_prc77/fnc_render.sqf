@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 #define RADIO_CTRL(var1) (_display displayCtrl var1)
 private["_currentVolume", "_currentFunction", "_currentBand", "_currentTuneKnob"];

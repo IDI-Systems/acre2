@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private["_onEntryFunction", "_events", "_ret"];
 params["_menu"];

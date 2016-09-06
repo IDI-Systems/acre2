@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 params ["_namespace", "_keyEvent", "_eventCode", ["_keyState","keydown"]];

@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 private["_currentBand", "_key", "_dir", "_newBand", "_currentTuneKnobsPosition"];

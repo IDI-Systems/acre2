@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 // This function should setup the appropriate default babel as well as radio presets per side

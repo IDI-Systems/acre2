@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private ["_radioId", "_remote", "_fnc", "_vals", "_unit", "_okRadios", "_dif", "_x", "_keyedRadios"];
 

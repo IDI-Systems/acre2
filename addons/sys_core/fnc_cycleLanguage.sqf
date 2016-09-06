@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 if((count ACRE_SPOKEN_LANGUAGES) > 1) then {

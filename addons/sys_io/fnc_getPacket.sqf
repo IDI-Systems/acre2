@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private["_packet", "_data", "_header", "_id", "_received", "_type"];
 _packet = copyFromClipboard;

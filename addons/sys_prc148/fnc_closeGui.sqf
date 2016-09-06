@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 [GVAR(PFHId)] call EFUNC(sys_sync,perFrame_remove);
 GVAR(currentRadioId) = nil;

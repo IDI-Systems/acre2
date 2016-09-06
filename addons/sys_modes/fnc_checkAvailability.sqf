@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 params["_list1", "_list2", ["_quick",true]];

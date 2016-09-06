@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 params["_tx", "_txRadioId", "_rx", "_rxRadioId"];

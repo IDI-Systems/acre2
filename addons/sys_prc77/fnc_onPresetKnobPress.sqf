@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 private["_key", "_fnc", "_currentPresets"];

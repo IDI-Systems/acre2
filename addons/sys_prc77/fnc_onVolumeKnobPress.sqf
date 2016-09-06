@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 private["_currentVolume", "_key", "_shift", "_dir", "_newVolume"];

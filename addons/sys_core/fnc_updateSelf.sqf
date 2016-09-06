@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 // ref bug: http://feedback.arma3.com/view.php?id=15580

@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 call FUNC(setActive);
 call FUNC(closeDialog);

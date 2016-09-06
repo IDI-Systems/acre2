@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private["_menuId"];
 TRACE_1("renderMenu", _this);

@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 if((count GVAR(eventQueue)) > 0 && ACRE_DATA_SYNCED) then {

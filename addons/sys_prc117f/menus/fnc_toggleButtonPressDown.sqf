@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private["_button", "_iconcontrol", "_display", "_knobImageStr"];
 

@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 private ["_array", "_radioId", "_ret"];
 params ["_radioType"];

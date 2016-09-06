@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 LOG("HIT CYCLE RADIO");
 if(!dialog) then {

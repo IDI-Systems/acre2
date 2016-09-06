@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 private ["_beeped", "_txId", "_currentTransmissions", "_volume"];

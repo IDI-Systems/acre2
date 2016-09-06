@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 if(isServer) exitWith { ACRE_DATA_SYNCED = true; };

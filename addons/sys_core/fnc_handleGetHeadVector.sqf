@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 // return the head vector of the current acre_player, or 0,0,0 if no vector

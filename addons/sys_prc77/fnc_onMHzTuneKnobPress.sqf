@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 
 private["_key", "_shift", "_dir", "_currentTuneKnobsPosition", "_currentMHzKnobPosition", "_newMHzKnobPosition", "_newTuneKnobsPosition"];

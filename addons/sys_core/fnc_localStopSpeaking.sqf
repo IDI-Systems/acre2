@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-
 #include "script_component.hpp"
 TRACE_1("LOCAL STOP SPEAKING ENTER", _this);
 ACRE_LOCAL_SPEAKING = false;
