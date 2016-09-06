@@ -1,5 +1,5 @@
 |/*
- * Author: AUTHOR
+ * Author: ACRE2Team
  * SHORT DESCRIPTION
  *
  * Arguments:
