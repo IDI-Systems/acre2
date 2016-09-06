@@ -21,7 +21,12 @@ target_include_directories(${ACRE_NAME} PUBLIC ../ACRE2UI)
 set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2)
 
 # Copy to plugin folder and rename
-#@todo win64
-add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../plugin/acre2_win32.dll
-)
+if(USE_64BIT_BUILD)
+    add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../plugin/acre2_win64.dll
+    )
+else()
+    add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../plugin/acre2_win32.dll
+    )
+endif()

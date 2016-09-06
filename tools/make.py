@@ -76,6 +76,8 @@ signature_blacklist = []
 importantFiles = ["meta.cpp", "mod.cpp", "README.md", "LICENSE", "acre_logo_medium_ca.paa"]
 extrasFiles = ["Wav2B64.exe", "examples"]
 versionFiles = []
+extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
+extensions64 = ["ACRE2\\ACRE2TS"]
 
 ciBuild = False # Used for CI builds
 
@@ -329,8 +331,33 @@ def print_yellow(msg):
     color("reset")
 
 
-def copy_important_files(source_dir,destination_dir):
+def compile_extensions(extensions_root, force_build):
+    originalDir = os.getcwd()
 
+    try:
+        print_blue("\nCompiling extensions in {}".format(extensions_root))
+        os.chdir(os.path.join(extensions_root,"vcproj"))
+        joinstr = ":rebuild;" if force_build else ";"
+
+        # 64-bit @todo
+        #subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON"])
+        #print()
+        #extensions64_cmd = joinstr.join(extensions64)
+        #subprocess.call(["msbuild", "ACRE.sln", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
+
+        # 32-bit
+        subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF"])
+        print()
+        extensions32_cmd = joinstr.join(extensions32)
+        subprocess.call(["msbuild", "ACRE.sln", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
+    except:
+        print_error("COMPILING EXTENSIONS.")
+        raise
+    finally:
+        os.chdir(originalDir)
+
+
+def copy_important_files(source_dir,destination_dir):
     originalDir = os.getcwd()
 
     # Copy importantFiles
@@ -907,6 +934,12 @@ See the make.cfg file for additional build options.
     else:
         version_update = False
 
+    if "compile" in argv:
+        argv.remove("compile")
+        compile_ext = True
+    else:
+        compile_ext = False
+
     if "--ci" in argv:
         argv.remove("--ci")
         ciBuild = True
@@ -1426,6 +1459,8 @@ See the make.cfg file for additional build options.
 
 
     finally:
+        if compile_ext:
+            compile_extensions(extensions_root, force_build)
         copy_important_files(module_root_parent,os.path.join(release_dir, project))
         if (os.path.isdir(optionals_root)):
             cleanup_optionals(optionals_modules)
@@ -1448,7 +1483,7 @@ See the make.cfg file for additional build options.
 
     # Make release
     if make_release_zip:
-        release_name = "{}_{}".format(zipPrefix, release_version)
+        release_name = "{}_{}".format(zipPrefix, project_version)
         print_blue("\nMaking release: {}.zip".format(release_name))
 
         try:
