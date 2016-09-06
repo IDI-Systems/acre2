@@ -30,7 +30,7 @@
 
 ###############################################################################
 
-__version__ = "0.7"
+__version__ = "0.8"
 
 import sys
 
@@ -813,7 +813,7 @@ def version_stamp_pboprefix(module,commitID):
 
 def main(argv):
     """Build an Arma addon suite in a directory from rules in a make.cfg file."""
-    print_blue("\nmake.py for Arma, modified for Advanced Combat Environment v{}".format(__version__))
+    print_blue("\nmake.py for Arma, modified for Advanced Combat Radio Environment v{}".format(__version__))
 
     global project_version
     global arma3tools_path
