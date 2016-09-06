@@ -75,7 +75,7 @@ pbo_name_prefix = "acre_"
 signature_blacklist = []
 importantFiles = ["meta.cpp", "mod.cpp", "README.md", "LICENSE", "acre_logo_medium_ca.paa"]
 extrasFiles = ["Wav2B64.exe", "examples"]
-versionFiles = []
+versionFiles = ["README.md"]
 extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
 extensions64 = ["ACRE2\\ACRE2TS"]
 
@@ -540,9 +540,10 @@ def cleanup_optionals(mod):
 
 def purge(dir, pattern, friendlyPattern="files"):
     print_green("Deleting {} files from directory: {}".format(friendlyPattern,dir))
-    for f in os.listdir(dir):
-        if re.search(pattern, f):
-            os.remove(os.path.join(dir, f))
+    if os.path.exists(dir):
+        for f in os.listdir(dir):
+            if re.search(pattern, f):
+                os.remove(os.path.join(dir, f))
 
 
 def build_signature_file(file_name):
