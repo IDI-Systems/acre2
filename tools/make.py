@@ -941,8 +941,7 @@ See the make.cfg file for additional build options.
         if (os.path.isdir(optionals_root)):
             print_green ("optionals_root: {}".format(optionals_root))
         else:
-            print_error ("Directory {} does not exist.".format(optionals_root))
-            sys.exit()
+            print("optionals_root does not exist: {}".format(optionals_root))
 
         print_green ("release_dir: {}".format(release_dir))
 
@@ -1033,9 +1032,10 @@ See the make.cfg file for additional build options.
 
     try:
         # Temporarily copy optionals_root for building. They will be removed later.
-        optionals_modules = []
-        optional_files = []
-        copy_optionals_for_building(optionals_modules,optional_files)
+        if (os.path.isdir(optionals_root)):
+            optionals_modules = []
+            optional_files = []
+            copy_optionals_for_building(optionals_modules,optional_files)
 
         # Get list of subdirs in make root.
         dirs = next(os.walk(module_root))[1]
@@ -1351,7 +1351,8 @@ See the make.cfg file for additional build options.
 
     finally:
         copy_important_files(module_root_parent,os.path.join(release_dir, project))
-        cleanup_optionals(optionals_modules)
+        if (os.path.isdir(optionals_root)):
+            cleanup_optionals(optionals_modules)
         if not version_update:
             restore_version_files()
 
