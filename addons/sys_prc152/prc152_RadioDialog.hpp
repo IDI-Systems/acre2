@@ -20,7 +20,6 @@
     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
     POSSIBILITY OF SUCH DAMAGE.
 */
-#include "\idi\clients\acre\addons\sys_Prc152\script_component.hpp"
 
 class Prc152_RadioDialog {
     idd = 31337;
@@ -49,7 +48,7 @@ class Prc152_RadioDialog {
         {
             idc = 99991;
             //(((TEXT_X - 0.5)*SCALE)+0.5)
-            
+
             x = ((((((0.435+(0.0038*6))-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = ((((((0.415 + 0.0009)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
             h = SCALE*0.00805*safeZoneH;

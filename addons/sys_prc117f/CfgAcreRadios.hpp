@@ -1,5 +1,3 @@
-#include "script_component.hpp"
-
 class CfgAcreComponents
 {
     class ACRE_BaseRadio;
@@ -14,7 +12,7 @@ class CfgAcreComponents
         sinadRating = -118;
         sensitivityMin = -118;
         sensitivityMax = -50;
-        isPackRadio = 1;        
+        isPackRadio = 1;
         isDeployable = 0;
 
         connectors[] =     {

@@ -20,7 +20,6 @@
     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
     POSSIBILITY OF SUCH DAMAGE.
 */
-#include "script_component.hpp"
 
 #define CODE_SPACING    0.0245
 

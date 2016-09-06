@@ -20,7 +20,6 @@
     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
     POSSIBILITY OF SUCH DAMAGE.
 */
-#include "\idi\clients\acre\addons\sys_Prc117f\script_component.hpp"
 
 class Prc117f_RadioDialog {
     idd = 31337;

@@ -20,7 +20,6 @@
     ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
     POSSIBILITY OF SUCH DAMAGE.
 */
-#include "script_component.hpp"
 
 #define CODE_SPACING    0.0245
 
@@ -50,16 +49,16 @@ class SEM52SL_RadioDialog {
         colorText[] = {1, 1, 1, 1};
         font = FontM;
         sizeEx = 0.04;
-        
+
         x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
         y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
         w=NEW_SCALE * SafeZoneH;
         h=NEW_SCALE * SafeZoneH;
-        
+
         text = QUOTE(PATHTOF(data\ui\sem52slui_ca.paa));
     };*/
     class controls {
-        
+
         BEGIN_CONTROL(RadioBackground, SEM52SL_RscPicture, 300)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
@@ -67,7 +66,7 @@ class SEM52SL_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = QUOTE(PATHTOF(data\ui\sem52slui_ca.paa));
         END_CONTROL
-        
+
         BEGIN_CONTROL(Backlight, SEM52SL_RscPicture, 109)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
@@ -75,7 +74,7 @@ class SEM52SL_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
-        
+
         BEGIN_CONTROL(Display1, SEM52SL_RscPicture, 301)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
@@ -91,7 +90,7 @@ class SEM52SL_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
-        
+
         BEGIN_CONTROL(Display3, SEM52SL_RscPicture, 303)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
@@ -99,7 +98,7 @@ class SEM52SL_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
-        
+
         BEGIN_CONTROL(Display4, SEM52SL_RscPicture, 304)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
@@ -107,7 +106,7 @@ class SEM52SL_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
-        
+
         BEGIN_CONTROL(Display5, SEM52SL_RscPicture, 305)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
@@ -115,8 +114,8 @@ class SEM52SL_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
-        
-        
+
+
         BEGIN_CONTROL(ChannelKnob, SEM52SL_RscPicture, 106)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
@@ -132,7 +131,7 @@ class SEM52SL_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = QUOTE(PATHTOF(Data\knobs\volume\vol_1000.paa));
         END_CONTROL
-        
+
         BEGIN_CONTROL(PTTButtonImage, SEM52SL_RscPicture, 108)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
@@ -170,7 +169,7 @@ class SEM52SL_RadioDialog {
             onMouseButtonUp = QUOTE(_this call FUNC(onPTTButtonPress));
             toolTip = QUOTE(PTT);
         END_CONTROL
-        
+
         BEGIN_CONTROL(AudioCableButton, SEM52SL_RscButton, 204)
             x=((((0.416-0.615)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             y=((((0.595-0.6)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
