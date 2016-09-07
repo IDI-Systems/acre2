@@ -41,9 +41,8 @@ if(!(isNil "_optChannelId") && !(isNil "_opt")) then {
         private _channel =  HASHLIST_SELECT(_channels, _currentChannelId);
 
         {
-            private["_value", "_key"];
-            _key = _x;
-            _value = HASH_GET(_channel, _x);
+            private _key = _x;
+            private _value = HASH_GET(_channel, _x);
 
             HASH_SET(_channel, _key, _value);
         } forEach HASH_KEYS(_opt);

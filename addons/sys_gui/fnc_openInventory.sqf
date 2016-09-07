@@ -38,18 +38,16 @@ DFUNC(uniqueArray) = {
 };
 
 DFUNC(onInventoryAction) = {
-    private["_container" , "_item"];
     params["_typeClick", "_typeIndex", "_vars"];
     _vars params ["_idc", "_selectedIndex"];
     _idc = ctrlIDC (_idc);
 
-
-    _container = nil;
+    private _container = nil;
 
     TRACE_1("GO", _this);
 
     private _index = lbValue [_idc, _selectedIndex];
-    _item = nil;
+    private _item = nil;
     switch _typeIndex do {
         case 'uniform': {
             _container = _typeIndex;
@@ -111,13 +109,12 @@ DFUNC(onInventoryAction) = {
 };
 
 DFUNC(handleContextMenu) = {
-    private["_cargs", "_location"];
     TRACE_1("enter", _this);
 
     /*
-    _location = _this select 0;
-    _cargs = _this select 1;
-    _coords = [_this select 2, _this select 3];
+    private _location = _this select 0;
+    private _cargs = _this select 1;
+    private _coords = [_this select 2, _this select 3];
 
     if(_cargs select 4) then {
         // SHOW THE MPPT SELECTION DIALOG HERE

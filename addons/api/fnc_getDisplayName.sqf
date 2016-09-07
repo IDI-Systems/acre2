@@ -16,10 +16,9 @@
  */
 #include "script_component.hpp"
 
-private["_baseClass", "_typeName"];
 params["_radioId"];
 
-_baseClass = BASECLASS(_radioId);
-_typeName = getText (configFile >> "CfgAcreComponents" >> _baseClass >> "name");
+private _baseClass = BASECLASS(_radioId);
+private _typeName = getText (configFile >> "CfgAcreComponents" >> _baseClass >> "name");
 
 _typeName

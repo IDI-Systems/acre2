@@ -16,8 +16,6 @@
  */
 #include "script_component.hpp"
 
-private["_ret"];
-
-_ret = [] call EFUNC(sys_data,getPlayerRadioList);
+private _ret = [] call EFUNC(sys_data,getPlayerRadioList);
 
 _ret

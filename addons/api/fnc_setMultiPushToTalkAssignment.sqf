@@ -16,18 +16,17 @@
  */
 #include "script_component.hpp"
 
-private["_invalid"];
 params["_var"];
 
-_invalid = false;
+private _invalid = false;
 if(!(_var isEqualType [])) exitWith { false };
 
-_currentRadioList = [] call acre_api_fnc_getCurrentRadioList;
+private _currentRadioList = [] call acre_api_fnc_getCurrentRadioList;
 {
     if(!(_x isEqualType "")) exitWith {
         _invalid = true;
     };
-    _isRadio = [_x] call acre_api_fnc_isRadio;
+    private _isRadio = [_x] call acre_api_fnc_isRadio;
     if(!_isRadio) exitWith {
         _invalid = true;
     };

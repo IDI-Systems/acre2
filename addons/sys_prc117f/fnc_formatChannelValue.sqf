@@ -45,9 +45,8 @@ switch _name do {
         };
     };
     case "squelch": {
-        private["_channel", "_ctcss"];
-        _channel = GET_CHANNEL_DATA();
-        _ctcss = HASH_GET(_channel, "CTCSSRx");
+        private _channel = GET_CHANNEL_DATA();
+        private _ctcss = HASH_GET(_channel, "CTCSSRx");
 
         if (_value > 0) then {
             _value = "TONE";

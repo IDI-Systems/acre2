@@ -16,12 +16,10 @@
  */
 #include "script_component.hpp"
 
-private["_vehicleClass", "_ret"];
 params["_vehicle"];
 
-_vehicleClass = typeOf _vehicle;
-
-_ret = nil;
+private _vehicleClass = typeOf _vehicle;
+private _ret = nil;
 
 // we recursive search up CfgVehicles until we find a vehicle with a
 

@@ -25,11 +25,10 @@ DFUNC(onButtonPress_ChangeValueAck) = {
 
 DFUNC(renderMenu_ChangeValueAck) = {
     TRACE_1("renderMenu_ChangeValueAck", _this);
-    private["_displaySet", "_valueHash"];
     params["_menu"]; // the menu to render is passed
-    _displaySet = MENU_SUBMENUS(_menu);
+    private _displaySet = MENU_SUBMENUS(_menu);
 
-    _valueHash = HASH_CREATE;
+    private _valueHash = HASH_CREATE;
 
     [] call FUNC(clearDisplay);
 

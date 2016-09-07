@@ -16,20 +16,18 @@
  */
 #include "script_component.hpp"
 
-private["_number", "_temp", "_tempArray", "_str", "_digit", "_count"];
-_number = _this;
-
-_tempStr = "";
+private _number = _this;
+private _tempStr = "";
 
 while { _number >= 1 } do {
-    _digit = (floor _number) % 10;
+    private _digit = (floor _number) % 10;
     _tempStr = _tempStr + toString [(_digit+48)];
     _number = floor (_number / 10);
 };
 
-_tempArray = toArray _tempStr;
-_count = (count _tempArray) - 1;
-_str = "";
+private _tempArray = toArray _tempStr;
+private _count = (count _tempArray) - 1;
+private _str = "";
 while { _count >= 0 } do {
     _str = _str + toString[(_tempArray select _count)];
     _count = _count - 1;

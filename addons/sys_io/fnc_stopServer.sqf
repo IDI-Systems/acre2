@@ -16,9 +16,7 @@
  */
 #include "script_component.hpp"
 
-private["_return"];
-
-_return = false;
+private _return = false;
 if(!(scriptDone GVAR(processId))) then {
     GVAR(runServer) = false;
     waitUntil{(scriptDone GVAR(processId))}; // OK - TEMP

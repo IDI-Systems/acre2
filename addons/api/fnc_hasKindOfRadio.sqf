@@ -16,19 +16,18 @@
  */
 #include "script_component.hpp"
 
-private["_unit", "_ret", "_weapon"];
 params["_weaponArray", "_type"];
 
 if(IS_OBJECT(_weaponArray)) then {
     _weaponArray = [_weaponArray] call EFUNC(lib,getGear);
 };
 
-_ret = false;
+private _ret = false;
 if(_type in _weaponArray) then {
     _ret = true;
 } else {
     {
-        _weapon = _x;
+        private _weapon = _x;
         _ret = [_weapon, _type] call FUNC(isKindOf);
         if(_ret) exitWith { };
     } foreach _weaponArray;

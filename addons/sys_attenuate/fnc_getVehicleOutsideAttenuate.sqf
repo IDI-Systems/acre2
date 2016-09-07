@@ -16,15 +16,15 @@
  */
 #include "script_component.hpp"
 
-private["_attenuateClass", "_ret", "_parent", "_positionClass", "_playerTurnedOut"];
 params["_vehicle", "_unit"];
 
 TRACE_2("Getting outside attenuation", _vehicle, _unit);
 
-_ret = 0;
-_playerTurnedOut = false;
-_positionClass = _unit;
-_attenuateClass = [_vehicle] call FUNC(getVehicleAttenuateClass);
+private _ret = 0;
+private _playerTurnedOut = false;
+private _positionClass = _unit;
+private _attenuateClass = [_vehicle] call FUNC(getVehicleAttenuateClass);
+
 if(IS_OBJECT(_unit)) then {
     _positionClass = [_unit, _vehicle] call FUNC(getVehiclePositionClass);
 

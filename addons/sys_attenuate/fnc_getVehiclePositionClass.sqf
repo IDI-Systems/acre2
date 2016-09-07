@@ -16,21 +16,19 @@
  */
 #include "script_component.hpp"
 
-private["_positionList", "_attenuateClass", "_ret", "_position"];
 params["_unit", "_vehicle"];
 
-_ret = "other";
+private _ret = "other";
+private _attenuateClass = [_vehicle] call FUNC(getVehicleAttenuateClass);
+private _positionList = getArray ( configFile >> "CfgAcreAttenuation" >>_attenuateClass >> "positions");
 
-_attenuateClass = [_vehicle] call FUNC(getVehicleAttenuateClass);
-_positionList = getArray ( configFile >> "CfgAcreAttenuation" >>_attenuateClass >> "positions");
 // figure out what position they are in, weee
-
 if((count _positionList) < 2) exitWith {
     _ret
 };
 
 // Determine position
-_position = [_unit] call FUNC(getVehicleUnitPosition);
+private _position = [_unit] call FUNC(getVehicleUnitPosition);
 if((_position in _positionList)) then {
     _ret = _position;
 };

@@ -56,15 +56,14 @@ _radioId = _this select 3;
 if (!ACRE_FULL_DUPLEX) then {
     if (ACRE_BROADCASTING_RADIOID != "") then {
         GVAR(previousSortedParams) params ["_radios","_sources"];
-        private["_unit","_paramArray","_canUnderstand"];
         {
             if (ACRE_BROADCASTING_RADIOID == _x) exitWith {
                 {
-                    _unit = _x select 0;
+                    private _unit = _x select 0;
                     if(!isNull _unit) then {
                         if(_unit != acre_player) then {
-                            _canUnderstand = [_unit] call FUNC(canUnderstand);
-                            _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand,1,0,1,0,false,[0,0,0]];
+                            private _canUnderstand = [_unit] call FUNC(canUnderstand);
+                            private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand,1,0,1,0,false,[0,0,0]];
                             CALL_RPC("updateSpeakingData", _paramArray);
                         };
                     };

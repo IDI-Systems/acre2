@@ -16,13 +16,11 @@
  */
 #include "script_component.hpp"
 
-private["_return"];
-
 if(([] call FUNC(serverRunning))) then {
     call FUNC(stopServer);
 };
 
-_return = call FUNC(startServer);
+private _return = call FUNC(startServer);
 LOG("server restarted");
 
 _return

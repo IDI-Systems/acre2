@@ -16,14 +16,13 @@
  */
 #include "script_component.hpp"
 
-private["_type", "_ret", "_i", "_scope", "_id", "_flag"];
 params["_weapon"];
 
 // check that it at least inherits from ACRE_BaseRadio *AND* has a unique ID
 // If its scoped 1, that means its either a base or not a radio.
-_flag = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_isRadio");
-_id = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_uniqueId");
-_scope = getNumber(configFile >> "CfgWeapons" >> _weapon >> "scope");
+private _flag = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_isRadio");
+private _id = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_uniqueId");
+private _scope = getNumber(configFile >> "CfgWeapons" >> _weapon >> "scope");
 if(isNil "_flag" || isNil "_scope" || isNil "_id") exitWith { false };
 if(_flag == 1 && _scope == 1) exitWith { true };
 

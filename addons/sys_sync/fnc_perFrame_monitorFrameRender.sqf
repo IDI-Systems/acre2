@@ -20,7 +20,6 @@
 #define _DELAY_MONITOR_SLEEP     0.5
 
 
-//private["_func", "_delay", "_delta", "_handlerData"];
 #ifdef PLATFORM_A3
 if((COMPAT_diag_tickTime - GVAR(lastFrameRender)) > _DELAY_MONITOR_THRESHOLD) then {
     onEachFrame { ["oneachframe"] call BIS_fnc_executeStackedEventHandler; };

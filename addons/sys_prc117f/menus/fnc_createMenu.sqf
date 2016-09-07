@@ -17,7 +17,6 @@
 #include "script_component.hpp"
 
 TRACE_1("createMenu", _this);
-private["_menu", "_x", "_subMenuList", "_menuId"];
 params["_menu"];
 
 /*if(count _this > 1) then {
@@ -31,11 +30,10 @@ if(!isNil "_menu") then {
     ADD_MENU(_menu);
 
     // Loop through the menu and add its children if it has ID's
-    _subMenuList = MENU_SUBMENUS(_menu);
+    private _subMenuList = MENU_SUBMENUS(_menu);
     if( !isNil "_subMenuList" ) then {        // If there are submenus, loop
         {
-            private["_subMenu_id"];
-            _subMenu_id = MENU_ID(_x);
+            private _subMenu_id = MENU_ID(_x);
             if(! isNil "_subMenu_id" ) then {
                 if(MENU_TYPE(_x) == MENUTYPE_DISPLAY ||
                 MENU_TYPE(_x) == MENUTYPE_LIST ||

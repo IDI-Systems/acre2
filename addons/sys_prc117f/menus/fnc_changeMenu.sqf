@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 TRACE_1("changeMenu ENTER", "");
-private["_oldMenu", "_menuId"];
+
 params["_newMenu"];
 
 
@@ -26,7 +26,7 @@ SET_STATE("menuSelection" , 0);
 
 //
 //
-_oldMenu = GET_STATE("currentMenu");
+private _oldMenu = GET_STATE("currentMenu");
 SCRATCH_SET(GVAR(currentRadioId),"menuEntry",true);
 // Set the state
 if(!isNil "_oldMenu") then {
@@ -37,7 +37,7 @@ if(!isNil "_oldMenu") then {
         TRACE_1("changeMenu calling complete", MENU_DISPLAYNAME(_oldMenu));
         [_oldMenu] call FUNC(callCompleteFunctor);
 
-        _menuId = MENU_ID(_oldMenu);
+        private _menuId = MENU_ID(_oldMenu);
         if(!isNil "_menuId") then { SET_STATE("lastMenu", _menuId); } else { SET_STATE("lastMenu", _oldMenu); };
     };
 
@@ -58,7 +58,7 @@ if(isNil "_newMenu") then {
     _newMenu = GVAR(VULOSHOME);
 };
 
-_menuId = MENU_ID(_newMenu);
+private _menuId = MENU_ID(_newMenu);
 if(!isNil "_menuId") then { SET_STATE("currentMenu", _menuId); } else { SET_STATE("currentMenu", _newMenu); };
 [_newMenu] call FUNC(callEntryFunctor);
 [_newMenu, _oldMenu] call FUNC(renderMenu);

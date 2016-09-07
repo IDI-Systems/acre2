@@ -16,13 +16,12 @@
  */
 #include "script_component.hpp"
 
-private["_packet", "_data", "_header", "_id", "_received", "_type"];
-_packet = copyFromClipboard;
-_data = toArray _packet;
-_id = "";
-_received = "";
-_header = "";
-_type = -1;
+private _packet = copyFromClipboard;
+private _data = toArray _packet;
+private _id = "";
+private _received = "";
+private _header = "";
+private _type = -1;
 if((count _data) >= 11) then {
     _header = toString[_data select 0, _data select 1, _data select 2];
     if(_header == PACKET_PREFIX || _header == REMOTE_PACKET_PREFIX) then {

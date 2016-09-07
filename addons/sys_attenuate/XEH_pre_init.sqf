@@ -11,8 +11,6 @@ PREP(getVehiclePositionClass);
 PREP(isCrewIntercomAttenuate);
 PREP(getVehicleAttenuation);
 
-PREP(getPositionAttenuate);
-
 GVAR(attenuationCache) = HASH_CREATE;
 
 ADDON = true;

@@ -16,13 +16,11 @@
  */
 #include "script_component.hpp"
 
-private["_key", "_shift", "_dir", "_currentTuneKnobsPosition", "_currentMHzKnobPosition", "_newMHzKnobPosition", "_newTuneKnobsPosition"];
-
-_key = _this select 1;
-_shift = _this select 4;
+private _key = _this select 1;
+private _shift = _this select 4;
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
-_dir = -1;
+private _dir = -1;
 if(_key == 0) then {
     _dir = 1;
 };
@@ -33,12 +31,11 @@ _dir = _dir*5;
 };
 
 //Read out the current KnobPositions via DataEvent | need to make a full copy of the array
-_currentTuneKnobsPosition = [];
-_currentTuneKnobsPosition = GET_STATE(currentChannel);
-_currentMHzKnobPosition = _currentTuneKnobsPosition select 0;
+private _currentTuneKnobsPosition = GET_STATE(currentChannel);
+private _currentMHzKnobPosition = _currentTuneKnobsPosition select 0;
 
 //Define and set new knob position
-_newMHzKnobPosition = _currentMHzKnobPosition + _dir;
+private _newMHzKnobPosition = _currentMHzKnobPosition + _dir;
 //Allow a jump over the null position
 if (_newMHzKnobPosition > 22) then {
     _newMHzKnobPosition = 0;
@@ -48,7 +45,7 @@ if (_newMHzKnobPosition < 0) then {
 };
 
 
-_newTuneKnobsPosition = + _currentTuneKnobsPosition;
+private _newTuneKnobsPosition = + _currentTuneKnobsPosition;
 _newTuneKnobsPosition set [0, _newMHzKnobPosition];
 ["setCurrentChannel", _newTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);
 

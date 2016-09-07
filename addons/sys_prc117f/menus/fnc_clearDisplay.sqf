@@ -17,11 +17,10 @@
 #include "script_component.hpp"
 
 FUNC(_internalClearDisplay) = {
-    private["_id"];
     params["_row", "_columns"];
 
     for "_i" from 0 to _columns do {
-        _id = ((_row * 1000) +1) + _i;
+        private _id = ((_row * 1000) +1) + _i;
 
         ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetBackgroundColor [0.1, 0.1, 0.1, 0];
         ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetTextColor [0.1, 0.1, 0.1, 1];

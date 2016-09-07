@@ -16,17 +16,16 @@
  */
 #include "script_component.hpp"
 
-private["_ret", "_dir", "_knobPosition"];
 params["_menu", "_event"];
 
-_ret = false;
+private _ret = false;
 
 
-_display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 TRACE_2("defaultButtonPress", _display, _event);
 switch (_event select 0) do {
     case 'VOLUME_UP': {
-        _volume = GET_STATE("volume");
+        private _volume = GET_STATE("volume");
         _volume = _volume + 0.1;
         if(_volume > 1) then {
             _volume = 1.0;
@@ -34,7 +33,7 @@ switch (_event select 0) do {
         ["setVolume", _volume] call GUI_DATA_EVENT;
     };
     case 'VOLUME_DOWN': {
-        _volume = GET_STATE("volume");
+        private _volume = GET_STATE("volume");
         _volume = _volume - 0.1;
         if(_volume < 0) then {
             _volume = 0;
@@ -43,8 +42,8 @@ switch (_event select 0) do {
     };
     case 'MODE_KNOB': {
         // Knob was clicked
-        _knobPositionOld = GET_STATE_DEF("knobPosition", 1);
-        _dir = _event select 2;
+        private _knobPositionOld = GET_STATE_DEF("knobPosition", 1);
+        private _dir = _event select 2;
         if(_dir == 0) then {
             _dir = 1;
         } else {
@@ -55,7 +54,7 @@ switch (_event select 0) do {
         TRACE_2("Knob Press", _knobPositionOld, _dir);
 
         ///////////////////////
-        _knobPosition = _knobPositionOld + _dir;
+        private _knobPosition = _knobPositionOld + _dir;
         if(_knobPosition > 7) then {
             _knobPosition = 7;
         };

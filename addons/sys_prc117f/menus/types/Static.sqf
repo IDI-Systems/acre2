@@ -25,11 +25,10 @@ DFUNC(onButtonPress_Static) = {
 
 DFUNC(renderMenu_Static) = {
     TRACE_1("renderMenu_Static", _this);
-    private["_format", "_renderString"];
     params["_menu"]; // the menu to render is passed
-    _displaySet = MENU_SUBMENUS(_menu);
+    private _displaySet = MENU_SUBMENUS(_menu);
 
-    _valueHash = HASH_CREATE;
+    private _valueHash = HASH_CREATE;
 
     [] call FUNC(clearDisplay);
 

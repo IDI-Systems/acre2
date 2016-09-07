@@ -16,7 +16,6 @@
  */
 #include "script_component.hpp"
 
-private["_spatialReturnValue"];
 params["_radio", "_side"];
 
 if( (isNil "_side") || (isNil "_radio") ) exitWith { false };
@@ -24,7 +23,7 @@ if ( !(_radio in ([] call EFUNC(sys_data,getPlayerRadioList))) ) exitWith { fals
 
 if(_side != "LEFT" && _side != "RIGHT" && _side != "CENTER") exitWith { false };
 
-_spatialReturnValue = false;
+private _spatialReturnValue = false;
 _spatialReturnValue = [(_this select 0), _side] call EFUNC(sys_radio,setRadioSpatial);
 
 _spatialReturnValue

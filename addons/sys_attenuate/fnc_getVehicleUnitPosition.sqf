@@ -16,16 +16,14 @@
  */
 #include "script_component.hpp"
 
-private["_vehicle", "_ret"];
 params["_unit"];
 
-_ret = "other";
+private _ret = "other";
+private _vehicle = vehicle _unit;
 
-if( (vehicle _unit) == _unit) exitWith {
+if( _vehicle == _unit) exitWith {
     nil
 };
-_vehicle = vehicle _unit;
-
 
 if(((commander _vehicle) == _unit) && (((assignedVehicleRole _unit) select 0) == "Turret")) exitWith {
     _ret = "commander";

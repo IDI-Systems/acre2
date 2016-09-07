@@ -30,12 +30,10 @@ GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
     [
         nil,nil,nil,
         {
-            private["_volume", "_display"];
-
             [ICON_LOADING, true] call DFUNC(toggleIcon);
-            _volume = GET_STATE("volume");
+            private _volume = GET_STATE("volume");
 
-            _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+            private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 
             TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
             if(!isNil "_display") then {

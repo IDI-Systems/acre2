@@ -25,23 +25,22 @@ DFUNC(onButtonPress_ActionSeries) = {
 
 DFUNC(renderMenu_ActionSeries) = {
     TRACE_1("renderMenu_ActionSeries", _this);
-    private["_currentAction", "_subMenu"];
     params["_menu"];
 
     // Its an action list of things to do in series,
     // which can be action menu types. Either way, they always bail back to us once completed
-    _currentAction = GET_STATE_DEF("menuAction", 0);
+    private _currentAction = GET_STATE_DEF("menuAction", 0);
 
     if(_currentAction < (count MENU_SUBMENUS(_menu)) ) then {
         // Annnnnd call it
         if(_currentAction > 0) then {
-            _subMenu = MENU_SUBMENUS_ITEM(_menu, _currentAction-1);
+            private _subMenu = MENU_SUBMENUS_ITEM(_menu, _currentAction-1);
             [_subMenu] call FUNC(callSingleActionCompleteFunctor);
         };
 
-        _saveAction = -1;
+        private _saveAction = -1;
         if(_currentAction < (count MENU_SUBMENUS(_menu)) ) then {
-            _subMenu = MENU_SUBMENUS_ITEM(_menu, _currentAction);
+            private _subMenu = MENU_SUBMENUS_ITEM(_menu, _currentAction);
             TRACE_1("ACTIONS INCREMENTING", _currentAction);
             _saveAction = _currentAction;
 
@@ -60,7 +59,7 @@ DFUNC(renderMenu_ActionSeries) = {
 
         SET_STATE("menuAction", 0);
         TRACE_1("Calling", MENU_ACTION_SERIESCOMPLETE(_menu));
-        _ret = [MENU_ACTION_SERIESCOMPLETE(_menu), [_menu]] call FUNC(dynamicCall);
+        private _ret = [MENU_ACTION_SERIESCOMPLETE(_menu), [_menu]] call FUNC(dynamicCall);
 
         // Swap back to our parent
         // Otherwise, the series complete event returns true

@@ -31,23 +31,22 @@ GVAR(NumpadMap_Number) = [
 
 DFUNC(doNumberButton) = {
     //TRACE_1(QUOTE(FUNC(doNumberButton)), _this);
-    private["_arr", "_character", "_key", "_number", "_value", "_remainder", "_factor", "_editIndex", "_editDigits", "_numberValue"];
     params["_menu", "_event"];
 
-    _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
+    private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
 
-    _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
-    _numberValue = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumber", 0.0);
-    _value = [_numberValue, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
+    private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
+    private _numberValue = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumber", 0.0);
+    private _value = [_numberValue, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
 
-    _number = parseNumber (_event select 0);
-    _key = _event select 0;
+    private _number = parseNumber (_event select 0);
+    private _key = _event select 0;
 
     TRACE_5("", _number, _numberValue, _value, _editDigits, _editIndex);
     if(_number > -1 && _number < 10) then {
 
-        _arr = toArray _value;
-        _character = _arr select _editIndex;
+        private _arr = toArray _value;
+        private _character = _arr select _editIndex;
 
         _character = ( toArray ((GVAR(NumpadMap_Number) select _number) select 0) select 0);
         TRACE_3("Values", _character, _number, _arr);
@@ -81,10 +80,9 @@ DFUNC(doNumberButton) = {
 
 DFUNC(onButtonPress_Number) = {
     //TRACE_1(QUOTE(FUNC(onButtonPress_Number)), _this);
-    private["_value"];
     params["_menu", "_event"];
 
-    _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumber", 0.0);
+    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumber", 0.0);
 
     TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!", (_event select 0));
     switch (_event select 0) do {
@@ -99,8 +97,8 @@ DFUNC(onButtonPress_Number) = {
         case '9': { _this call FUNC(doNumberButton); };
         case '0': { _this call FUNC(doNumberButton); };
         case 'LEFT': {
-            _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
-            _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
+            private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
             if(_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
@@ -108,7 +106,7 @@ DFUNC(onButtonPress_Number) = {
             };
 
             TRACE_3("Left hit, checking", _value, _editIndex, _editDigits);
-            _strValue = [_value, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
+            private _strValue = [_value, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
             if( ((toArray _strValue) select _editIndex) == 46) then {
                 // recursively push a button again, since we want to skip it.
                 TRACE_1("Hit a digit, skipping", _editIndex);
@@ -123,8 +121,8 @@ DFUNC(onButtonPress_Number) = {
             [_menu] call FUNC(renderMenu_Number);
         };
         case 'RIGHT': {
-            _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
-            _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
+            private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
             if(_editIndex+1 < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
@@ -132,7 +130,7 @@ DFUNC(onButtonPress_Number) = {
             };
 
             TRACE_3("Right hit, checking", _value, _editIndex, _editDigits);
-            _strValue = [_value, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
+            private _strValue = [_value, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
             if( ((toArray _strValue) select _editIndex) == 46) then {
                 // recursively push a button again, since we want to skip it.
                 TRACE_1("Hit a digit, skipping", _editIndex);
@@ -150,7 +148,7 @@ DFUNC(onButtonPress_Number) = {
             // swap to the parent
             TRACE_1("onButtonPress_Number: ENT hit", _value);
 
-            _saveName = MENU_SELECTION_VARIABLE(_menu);
+            private _saveName = MENU_SELECTION_VARIABLE(_menu);
             SET_STATE(_saveName, _value);
 
             SCRATCH_SET(GVAR(currentRadioId), "menuNumber", nil);
@@ -189,15 +187,14 @@ DFUNC(onButtonPress_Number) = {
 
 DFUNC(renderMenu_Number) = {
     //TRACE_1(QUOTE(FUNC(renderMenu_Number)), _this);
-    private["_displaySet", "_value", "_editIndex", "_numberValue", "_valueHash", "_replaceValue", "_editLocation"];
     params["_menu"]; // the menu to render is passed
 
-    _displaySet = MENU_SUBMENUS(_menu);
+    private _displaySet = MENU_SUBMENUS(_menu);
 
-    _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
-    _numberValue = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumber", 0.0);
+    private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
+    private _numberValue = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumber", 0.0);
 
-    _value = [_numberValue, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
+    private _value = [_numberValue, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
     TRACE_2("Formatted number", _numberValue, _value);
 
     // Check the current digit. If its a dot, we should skip it.
@@ -207,8 +204,8 @@ DFUNC(renderMenu_Number) = {
         _editIndex = _editIndex + 1;
     };
 
-    _valueHash = HASH_CREATE;
-    _replaceValue = format["$ch%1",_numberValue];
+    private _valueHash = HASH_CREATE;
+    private _replaceValue = format["$ch%1",_numberValue];
     HASH_SET(_valueHash, "ch", _replaceValue);    // This is a custom menu change to allow displaying the channel in the display
     HASH_SET(_valueHash, "1", _value);
     TRACE_1("Pushed value hash", _value);
@@ -216,7 +213,6 @@ DFUNC(renderMenu_Number) = {
     [] call FUNC(clearDisplay);
     if(!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
         {
-            private["_format", "_renderString"];
             // Data selection row
             [(_x select 0),
              (_x select 2),
@@ -226,7 +222,7 @@ DFUNC(renderMenu_Number) = {
     };
 
     [ROW_SMALL_1, MENU_PATHNAME(_menu)] call FUNC(renderText);        // Header line
-    _editLocation = (MENU_SELECTION_DISPLAYSET(_menu) select 3);    // cursor location from the config
+    private _editLocation = (MENU_SELECTION_DISPLAYSET(_menu) select 3);    // cursor location from the config
     TRACE_1("Rendered, pushing cursor", _editLocation);
 
     [(_editLocation select 0),
