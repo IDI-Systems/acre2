@@ -69,7 +69,7 @@ if (WIN32)
         set (DirectX_BIN_SEARCH_PATH "${DirectX_ROOT_DIR}/Utilities/bin/x86")
     endif ()
 
-    # With VS 2011 and Windows 8 SDK, the DirectX SDK is included as part of
+    # With VS 2011+ and Windows 8+ SDK, the DirectX SDK is included as part of
     # the Windows SDK.
     #
     # See also:
@@ -177,6 +177,7 @@ if (WIN32)
     find_winsdk_header  (DXGI    dxgi.h)
     find_winsdk_header  (DXGI1_2 dxgi1_2.h)
     find_winsdk_header  (DXGI1_3 dxgi1_3.h)
+    find_winsdk_header  (DXGI1_4 dxgi1_4.h)
     find_winsdk_library (DXGI    dxgi)
 
     find_winsdk_header  (D3D10   d3d10.h)
@@ -198,6 +199,8 @@ if (WIN32)
     find_combined       (D3D11_1 D3D11_1 D3D11)
     find_winsdk_header  (D3D11_2 d3d11_2.h)
     find_combined       (D3D11_2 D3D11_2 D3D11)
+    find_winsdk_header  (D3D11_3 d3d11_3.h)
+    find_combined       (D3D11_3 D3D11_3 D3D11)
 
     find_dxsdk_header   (D3DX11  d3dx11.h)
     find_dxsdk_library  (D3DX11  d3dx11)
@@ -206,6 +209,8 @@ if (WIN32)
     find_winsdk_header  (D2D1    d2d1.h)
     find_winsdk_library (D2D1    d2d1)
     find_combined       (D2D1    D2D1 D2D1)
+    find_winsdk_header  (D2D1_1  d2d1_1.h)
+    find_combined       (D2D1_1  D2D1_1 D2D1)
 
     find_program (DirectX_FXC_EXECUTABLE fxc
         HINTS ${DirectX_BIN_SEARCH_PATH}

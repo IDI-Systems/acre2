@@ -117,7 +117,7 @@ if(WIN32) # The only platform it makes sense to check for DirectX SDK
 
   # look for D3D11 components
   if (DirectX_FOUND)
-    find_path(DirectX_D3D11_INCLUDE_DIR NAMES D3d11shader.h HINTS ${DirectX_INCLUDE_DIR} NO_DEFAULT_PATH)
+    find_path(DirectX_D3D11_INCLUDE_DIR NAMES d3d11shader.h HINTS ${DirectX_INCLUDE_DIR} NO_DEFAULT_PATH)
     get_filename_component(DirectX_LIBRARY_DIR "${DirectX_LIBRARY}" PATH)
     message(STATUS "DX lib dir: ${DirectX_LIBRARY_DIR}")
     find_library(DirectX_D3D11_LIBRARY NAMES d3d11 d3d11_beta HINTS ${DirectX_LIBRARY_DIR} NO_DEFAULT_PATH)
