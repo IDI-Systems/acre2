@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_ret", "_dir", "_knobPosition"];
 params["_menu", "_event"];
 

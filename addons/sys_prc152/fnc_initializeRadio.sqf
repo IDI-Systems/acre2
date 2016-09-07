@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_presetData", "_channels", "_currentChannels", "_channelData"];
 TRACE_1("INITIALIZING RADIO PRC-152", _this);
 

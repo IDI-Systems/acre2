@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 params["_radioId", "_eventKind", "_eventData"];
 
 true;

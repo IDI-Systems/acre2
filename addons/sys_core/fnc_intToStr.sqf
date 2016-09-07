@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_number", "_temp", "_tempArray", "_str", "_digit", "_count"];
 _number = _this;
 

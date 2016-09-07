@@ -14,8 +14,6 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
 
 params[["_unit",acre_player]];

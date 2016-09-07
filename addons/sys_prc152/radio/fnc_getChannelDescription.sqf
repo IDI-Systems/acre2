@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 params["_radioId"];
 
 _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);

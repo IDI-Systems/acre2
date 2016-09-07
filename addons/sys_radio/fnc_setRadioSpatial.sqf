@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 params["_radio","_side"];
 
 if((isNil "_radio") || (isNil "_side")) exitWith {

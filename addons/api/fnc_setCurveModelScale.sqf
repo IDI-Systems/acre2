@@ -14,9 +14,8 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
+
 params ["_curveScale"];
 
 if(IS_NUMBER(_curveScale)) then {

@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private ["_path", "_data", "_alpha", "_numeric", "_alphaNumeric", "_special", "_printable", "_lineCount",
             "_organizedData", "_lines", "_line", "_comment", "_preValue", "_foundEqualSign", "_openString",
             "_openStringType", "_openSection", "_end", "_char", "_lineData", "_key", "_val", "_foundVal",

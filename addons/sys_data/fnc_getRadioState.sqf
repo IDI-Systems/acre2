@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 params["_radio"];
 private _stateCopy = nil;
 

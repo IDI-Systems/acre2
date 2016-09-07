@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private ["_currentBand", "_baseMhzFrequency", "_MHz", "_kHz", "_frequency", "_power"];
 TRACE_1("", _this);
 

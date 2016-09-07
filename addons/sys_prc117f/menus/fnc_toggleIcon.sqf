@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 params["_iconId", "_toggle"];
 
 _display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));

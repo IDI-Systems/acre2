@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 params["_speakingId","_netId"];
 _speakingId = parseNumber _speakingId;
 // if(_speakingId != GVAR(ts3id)) then {

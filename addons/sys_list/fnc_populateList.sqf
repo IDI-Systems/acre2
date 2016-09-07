@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_radioList", "_listId", "_curIndex", "_radioClass", "_activeRadio", "_oblix", "_freq", "_baseConfig", "_realRadio", "_typeName"];
 _radioList = _this select 0;
 

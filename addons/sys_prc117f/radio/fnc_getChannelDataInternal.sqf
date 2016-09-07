@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private ["_channels", "_optChannelId", "_opt", "_currentChannelId", "_channel"];
 TRACE_1("", _this);
 

@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_channelNumber", "_channels", "_channel", "_fieldName", "_value"];
 
 params ["_radioClass", "_presetName", "_channelReference"];

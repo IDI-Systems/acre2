@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_iconcontrol", "_display", "_button"];
 _button = GET_STATE(pressedButton);
 _iconcontrol = 99901;

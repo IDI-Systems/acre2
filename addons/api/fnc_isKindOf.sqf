@@ -14,10 +14,8 @@
  *
  * Public: No
  */
-
- 
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
+
 private["_ret", "_parent", "_parentCheck", "_isAcre"];
 params["_radioId", "_radioType"];
 

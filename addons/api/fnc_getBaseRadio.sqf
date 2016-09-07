@@ -14,9 +14,8 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
+
 private["_parent", "_hasUnique"];
 params["_radioId"];
 

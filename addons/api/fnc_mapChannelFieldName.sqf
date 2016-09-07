@@ -14,9 +14,8 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
+
 private["_baseRadio"];
 params["_radioId", "_fieldName"];
 

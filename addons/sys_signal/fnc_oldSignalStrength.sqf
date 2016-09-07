@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private ["_receiver", "_transmitter", "_f", "_mW", "_receiverClass", "_transmitterClass", "_resDiv",
             "_baseConfig", "_realRadio", "_txAntenna", "_rxAntenna", "_sinadRating", "_start", "_res",
             "_profile", "_altitudes", "_maxHeight", "_losDif", "_d1", "_txPos", "_txHeight", "_rxPos",

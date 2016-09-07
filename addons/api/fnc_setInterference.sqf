@@ -14,8 +14,6 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
 
 diag_log format["ACRE API: acre_api_fnc_setInterference called with: %1", str _this];

@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_button", "_iconcontrol", "_display", "_knobImageStr"];
 
 _button = toLower (_this select 0);

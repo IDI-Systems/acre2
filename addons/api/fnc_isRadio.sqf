@@ -14,8 +14,6 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
 
 private["_type", "_ret", "_i", "_scope", "_id", "_flag"];

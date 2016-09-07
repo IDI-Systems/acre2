@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 params["_radioId"];
 
 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);

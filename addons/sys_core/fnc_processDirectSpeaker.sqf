@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_emitterPos", "_emitterDir"];
 params["_unit"];
 

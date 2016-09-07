@@ -14,9 +14,8 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
+
 params ["_languageKey"];
 
 [_languageKey] call EFUNC(sys_core,setSpeakingLanguage);

@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_ret", "_subMenus", "_menuId"];
 
 /* just in case we get a bad menu or a bad value, lets verify its a valid menu! */

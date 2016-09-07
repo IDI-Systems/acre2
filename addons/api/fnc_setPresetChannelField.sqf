@@ -14,9 +14,8 @@
  *
  * Public: No
  */
-
- //#define DEBUG_MODE_FULL
 #include "script_component.hpp"
+
 private["_channelNumber", "_channels", "_channel", "_ret"];
 
 _ret = params [["_radioClass","",[""]],

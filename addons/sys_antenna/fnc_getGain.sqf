@@ -17,6 +17,7 @@
 
 // #define DEBUG_MODE_FULL
 #include "script_component.hpp"
+
 private ["_frequencyLower", "_frequencyUpper",
             "_azimuthLbF", "_azimuthUbF", "_zenithLbF", "_zenithUpF", "_antennas", "_antennaClass",
             "_lowerGains", "_upperGains", "_upperFLg", "_upperFUg", "_lowerFLg", "_loweFUg"];

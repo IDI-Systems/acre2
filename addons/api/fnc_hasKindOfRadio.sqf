@@ -14,8 +14,6 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
 
 private["_unit", "_ret", "_weapon"];

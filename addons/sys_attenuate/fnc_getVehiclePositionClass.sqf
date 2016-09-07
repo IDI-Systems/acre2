@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 private["_positionList", "_attenuateClass", "_ret", "_position"];
 params["_unit", "_vehicle"];
 

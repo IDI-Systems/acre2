@@ -14,7 +14,5 @@
  *
  * Public: No
  */
-
- 
 #include "script_component.hpp"
 [] call EFUNC(sys_core,getSpeakingLanguageId);
