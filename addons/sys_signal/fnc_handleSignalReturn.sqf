@@ -1,5 +1,21 @@
-//fnc_handleSignalReturn.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
+
 params ["_args", "_result"];
 _args params ["_transmitterClass", "_receiverClass"];
 
@@ -15,16 +31,16 @@ if(count _result > 0) then {
             _realRadioRx = configName ( _baseConfig );
             _min = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMin");
             _max = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMax");
-            
+
             _Px = (((_maxSignal - _min) / (_max - _min)) max 0.0) min 1.0;
             missionNamespace setVariable [_transmitterClass + "_best_px", _Px];
         } else {
             missionNamespace setVariable [_transmitterClass + "_best_px", 0];
         };
-        if(count _result > 3) then { 
-            ACRE_DEBUG_SIGNAL_FILE = _result select 3; 
-        }; 
+        if(count _result > 3) then {
+            ACRE_DEBUG_SIGNAL_FILE = _result select 3;
+        };
     };
-}; 
+};
 private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];
 missionNamespace setVariable [_transmitterClass + "_running_count", _count - 1];

@@ -1,10 +1,25 @@
-//fnc_losCalc.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_gainData", "_3dDis", "_pEaddRx", "_Rp", "_ituLoss", "_Ltx", "_Lrx", "_Lm", "_Lb"];
 
 params["_f", "_mW", "_receiverClass", "_transmitterClass", "_returnPos"];
-    
+
 _gainData = [_receiverClass, _transmitterClass, _f] call EFUNC(sys_antenna,getAntennaInfo);
 
 if((count _gainData) == 0) exitWith { -999; }; // no antenna someplace!

@@ -1,4 +1,19 @@
-//fnc_handleMenuButtonEnter.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_menuEntry", "_format", "_formatLength", "_formatArray", "_x", "_valLength", "_i", "_length", "_call", "_newValue"];
@@ -7,7 +22,7 @@ if(!GET_STATE(editEntry)) then {
     SET_STATE(editEntry, true);
     _menuEntry = (GVAR(currentMenu) select (GVAR(entryMap) select 0)) select (GVAR(entryMap) select 1);
     _menuEntry params ["", "_value", "_row", "_range", "_type"];
-    
+
     switch _type do {
         case MENU_TYPE_TEXT: {
             SET_ENTRY_INDEX(0);
@@ -15,7 +30,7 @@ if(!GET_STATE(editEntry)) then {
         };
         case MENU_TYPE_NUM: {
             _format = _menuEntry select 6;
-            
+
             _formatLength = 0;
             _formatArray = toArray _format;
             {
@@ -54,5 +69,5 @@ if(!GET_STATE(editEntry)) then {
     [_newValue, _menuEntry] call _call;
     SET_STATE(editEntry, false);
     SET_STATE(currentEditEntry, "")
-    
+
 };

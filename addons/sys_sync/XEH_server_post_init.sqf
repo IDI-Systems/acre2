@@ -1,26 +1,3 @@
-/*
-    Copyright © 2016,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is 
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE 
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; 
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT 
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN 
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
-    POSSIBILITY OF SUCH DAMAGE.
-*/
- 
 #include "script_component.hpp"
 
 if(!isServer) exitWith { true };
@@ -28,9 +5,9 @@ if(!isServer) exitWith { true };
 DFUNC(srv_mutexCreate) = {
     private["_mutexName", "_sender", "_fullName"];
     _mutexName = _this select 0;
-    
+
     TRACE_1("", _this);
-    
+
     _fullName = ACRE_SYNC(_mutexName);
 
     if(isNil _fullName) then {
@@ -39,7 +16,7 @@ DFUNC(srv_mutexCreate) = {
         publicVariable _fullName;
     };
     // if the else statement hits, mutex was already created anyways
-    
+
     true
 };
 
@@ -47,13 +24,13 @@ DFUNC(srv_mutexDestroy) = {
     private["_mutexName", "_sender"];
     _mutexName = _this select 0;
     _sender = _this select 1;
-    
+
     _fullName = ACRE_SYNC(_mutexName);
     if(!(isNil _fullName)) then {
         [_fullName + " = nil;true"] call FUNC(runScript);
         publicVariable _fullName;
     };
-    
+
     true
 };
 
@@ -61,21 +38,21 @@ DFUNC(srv_mutexLock) = {
     private["_mutexName", "_sender", "_mutex", "_owner", "_locked"];
     _mutexName = _this select 0;
     _sender = _this select 1;
-    
+
     _fullName = ACRE_SYNC(_mutexName);
     _mutex = [_fullName] call FUNC(runScript);
-    
+
     _locked = _mutex select 0;
     _owner = _mutex select 1;
-    
+
     TRACE_2("", _owner, _sender);
-    if(_locked == 1) then { 
+    if(_locked == 1) then {
         // wait until its not locked by someone other than us
         if(_owner != _sender) then {
             waitUntil { // OK
                 _mutex = [_fullName] call FUNC(runScript);
                 _locked = _mutex select 0;
-                
+
                 !(_locked == 1)
             };
         };
@@ -84,13 +61,13 @@ DFUNC(srv_mutexLock) = {
     // now its freed
     _mutex = [1, _sender];
     TRACE_1("gogogo", _mutex);
-    
+
     [_fullName + " = _this select 0; true", [_mutex] ] call FUNC(runScript);
     publicVariable _fullName;
-    
+
     _mutex = [_fullName] call FUNC(runScript);
     TRACE_1("return", _mutex);
-    
+
     true
 };
 
@@ -98,22 +75,22 @@ DFUNC(srv_mutexUnlock) = {
     private["_mutexName", "_sender", "_mutex", "_owner", "_locked"];
     _mutexName = _this select 0;
     _sender = _this select 1;
-    
+
     _fullName = ACRE_SYNC(_mutexName);
     _mutex = [_fullName] call FUNC(runScript);
-    
+
     LOG("UNLOCKING");
-    
+
     _locked = _mutex select 0;
     _owner = _mutex select 1;
     TRACE_2("", _this, _mutex);
-    if(_locked == 1) then { 
+    if(_locked == 1) then {
         // wait until its not locked by someone other than us
         if(_owner != _sender) then {
             waitUntil { // OK
                 _mutex = [_fullName] call FUNC(runScript);
                 _locked = _mutex select 0;
-                
+
                 !(_locked == 1)
             };
         };
@@ -122,14 +99,14 @@ DFUNC(srv_mutexUnlock) = {
     // now its freed
     _mutex = [0, _sender];
     TRACE_1("gogogo", _mutex);
-    
+
     [_fullName + " = _this select 0; true", [_mutex] ] call FUNC(runScript);
     publicVariable _fullName;
-    
+
     _mutex = [_fullName] call FUNC(runScript);
     TRACE_1("return", _mutex);
-    
-    
+
+
     true
 };
 
@@ -140,5 +117,3 @@ GVAR(serverObject) = (units GVAR(serverOwner_group)) select 0;
 GVAR(serverObject) setPosASL [0,0,0];
 GVAR(serverObject) setVariable ["created", "created", true];
 publicVariable QUOTE(GVAR(serverObject));
-
-

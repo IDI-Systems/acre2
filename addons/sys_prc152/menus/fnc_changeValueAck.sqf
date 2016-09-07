@@ -1,4 +1,19 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 DFUNC(changeValueAck_End) = {
@@ -8,7 +23,7 @@ DFUNC(changeValueAck_End) = {
     if(diag_tickTime > GVAR(changeValueAckTimer)) then {
         _lastMenu = SCRATCH_GET_DEF(_radioId, "lastMenu", nil);
         if(isNil "_lastMenu") then { _lastMenu = GVAR(VULOSHOME); };
-        
+
         if(!isNil "acre_sys_radio_currentRadioDialog") then {
             if(acre_sys_radio_currentRadioDialog == _radioId) then {
                 TRACE_1("ChangeMenu","");
@@ -52,7 +67,7 @@ switch _valueType do {
 
         GVAR(changeValueAckTimer) = diag_tickTime + 3.5;
         [GVAR(currentRadioId), DFUNC(changeValueAck_End), 3.5] call DFUNC(delayFunction);
-        
+
         [GVAR(VOLUME)] call FUNC(changeMenu);
     };
 };

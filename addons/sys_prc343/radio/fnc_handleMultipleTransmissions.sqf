@@ -1,4 +1,19 @@
-//fnc_handleMultipleTransmissions.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params["_radioId","","_radios"];
@@ -57,19 +72,19 @@ if(diag_tickTime - _lastSortTime > 3) then {
 
 if(_transmissionsChanged) then {
     private _areAllRadiosInitialized = true;
-    
+
     if((count _radios) > 1) then {
         private _sorted = [];
         {
             _x params ["","_txID","_signalData"];
             _signalData params ["_signalPercent"];
             if (_signalData isEqualTo [0, -992]) then {_areAllRadiosInitialized = false;};
-            
+
             PUSH(_sorted, ARR_2(_signalPercent, _forEachIndex));
             PUSH(_transmissions, _txId);
         } forEach _radios;
         _sorted sort false; // descending order
-        
+
         {
             PUSH(_sortedRadios, (_radios select (_x select 1)));
         } forEach _sorted;
@@ -84,11 +99,11 @@ if(_transmissionsChanged) then {
         _currentTransmissions = _transmissions;
         SCRATCH_SET(_radioId, "currentTransmissions", _currentTransmissions);
     };
-    
+
 
     private _radioRxData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-    
-    
+
+
     //diag_log text format["%1 NON-CACHED", diag_tickTime];
     if(HASH_GET(_radioRxData, "mode") == "singleChannelPRR") then {
         private _hearableTransmissions = [];
@@ -176,15 +191,15 @@ if(_transmissionsChanged) then {
     };
 
 
-    
+
     if((count _okRadios) > 0) then {
         private _signalData = (_okRadios select 0) select 2;
         _signalData params ["_signalPercent","_signalDbM"];
-        
+
         private _squelch = -100;
         // diag_log text format["squelch: %1 signal: %2", _squelch, _signalDbM];
         if(_signalDbM < _squelch || !ACRE_INTERFERENCE) then {
-            
+
             if(ACRE_INTERFERENCE) then {
                 _okRadios = [];
             };
@@ -217,7 +232,7 @@ if(_transmissionsChanged) then {
 
     // Cache it
     SCRATCH_SET(_radioId, "currentTransmissionRadioCache", _okRadios);
-    
+
     //Force a recalculation if data is not ready
     if (_areAllRadiosInitialized) then {
         SCRATCH_SET(_radioId, "lastSortTime", diag_tickTime);

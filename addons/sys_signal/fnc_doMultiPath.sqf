@@ -1,4 +1,19 @@
-//fnc_doMultiPath.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_testExit", "_losExit", "_returnPos", "_l", "_startIndex", "_endDex", "_startTime", "_i", "_rxAntennaData", "_x", "_rxAntennaClass", "_txAntennaData", "_txAntennaClass", "_rxPos", "_txPos"];
@@ -34,12 +49,12 @@ if((count _returns) > _returnSize) then {
         };
     };
 } else {
-    
-    
+
+
     _startIndex = (count _filter);
     _endDex = (count GVAR(reflections))-1;
     _startTime = diag_tickTime;
-    
+
     for "_i" from _startIndex to _endDex do {
         {
             _rxAntennaData = _x;
@@ -48,7 +63,7 @@ if((count _returns) > _returnSize) then {
                 _txAntennaData = _x;
                 _txAntennaClass = (_txAntennaData select 0);
                 _rxPos = _rxAntennaData select 2;
-                _txPos = _txAntennaData select 2;                    
+                _txPos = _txAntennaData select 2;
                 [_txPos, _rxPos, _i, _returns, _txAntennaClass, _rxAntennaClass] call FUNC(getReflections);
                 if((count _returns) >= MAX_RETURNS) exitWith {};
             } forEach _txAntennas;
@@ -61,13 +76,13 @@ if((count _returns) > _returnSize) then {
     _testExit = true;
 };
 if(_testExit && {(_losExit || {(count _filter) >= (count GVAR(reflections))} || {(count _returns) >= MAX_RETURNS && _returnSize >= MAX_RETURNS})}) exitWith {
-        
+
     _info set[2, false];
     _info set[4, +_results];
     _info set[0, []];
     _info set[1, []];
     _info set[3, []];
-    
+
     TEST_end = diag_tickTime;
     // acre_player sideChat format["t: %1 %2", TEST_end-TEST_start, (TEST_end-TEST_start)/((diag_frameno-TEST_startFrame) max 1)];
     false;

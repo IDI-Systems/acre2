@@ -1,4 +1,19 @@
-//fnc_ping.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 DFUNC(pingFunc) = {
@@ -9,7 +24,7 @@ DFUNC(pingFunc) = {
             private _ret = "ACRE2Arma" callExtension "2ping:";
             if(diag_tickTime - GVAR(pongTime) > 10) then {
                 hintSilent "ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.";
-                
+
                 _ret = "ACRE2Arma" callExtension "4";
                 GVAR(runServer) = false;
                 [] spawn {

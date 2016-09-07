@@ -1,8 +1,23 @@
-//fnc_setText.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_textArray", "_length", "_i", "_formatArray", "_count", "_valCount", "_formatChar", "_val"];
-params["_display", "_row", "_range", "_text", ["_format",""]]; 
+params["_display", "_row", "_range", "_text", ["_format",""]];
 
 if(!IS_STRING(_text)) then {
     _text = str _text;

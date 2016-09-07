@@ -1,4 +1,19 @@
-//fnc_objectLoss.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_pEaddRx", "_intersects", "_n", "_bb", "_x", "_avg", "_height", "_dis"];
@@ -15,8 +30,8 @@ if(count _intersects > 0) then {
         if(_typeString != "") then {
             _bb = boundingBox _x;
             _avg = (abs((_bb select 0) select 0))+((_bb select 1) select 0)+(abs((_bb select 0) select 1))+((_bb select 1) select 1);
-            
-            
+
+
             _height = ((_bb select 1) select 2);
             _avg = (_avg*_height);
             if(_avg > 8) then {

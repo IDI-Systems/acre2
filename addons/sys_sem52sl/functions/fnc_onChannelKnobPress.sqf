@@ -1,25 +1,19 @@
 /*
-    Copyright © 2016, International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params ["","_key"];
@@ -40,46 +34,46 @@ private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 15;
 if(_knobPosition != _newKnobPosition) then {
     ["setState", ["channelKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
     private _currentChannel = ["getState", "currentChannel"] call GUI_DATA_EVENT;
-    
+
     switch _newKnobPosition do {
         case 0: { // Off
             // Turn off
             [GVAR(currentRadioId), "setOnOffState", 0] call EFUNC(sys_data,dataEvent);
-            
+
             // Erase Channel H (index=12)
             private _channels = GET_STATE(channels);
             private _channel = _channels select 12; // CHANNEL H
             HASH_SET(_channel,"frequencyRX",100);
             HASH_SET(_channel,"frequencyTX",100);
             ["setChannelData", [12, _channel]] call GUI_DATA_EVENT;
-            
+
             GVAR(backlightOn) = false; // turn backlight off.
         };
         case 15: { // P - Programming
             // reset step
-            
+
             private _isOn = ["getState", "radioOn"] call GUI_DATA_EVENT;
             if (_isOn == 1) then {
                 [GVAR(currentRadioId), "setOnOffState", 0] call EFUNC(sys_data,dataEvent); // Turn Off (Disables incoming signals).
             };
-            
+
             [GVAR(currentRadioId), "setState", ["programmingStep",0]] call EFUNC(sys_data,dataEvent);
-            
+
             GVAR(selectionDir) = 0;
             GVAR(selectedChannel) = 12;
             GVAR(newFrequency) = 46;
             GVAR(alternate) = false;
-            
+
             // ADD a PFH to keep things working.
             [{
                 if (GVAR(currentRadioId) isEqualTo -1) exitWith {}; // While UI is closed hide.
                 params ["","_handler"];
                 // if we have left the programming mode exit.
-                
+
                 if  (([GVAR(currentRadioId), "getState", "channelKnobPosition"] call EFUNC(sys_data,dataEvent)) != 15) exitWith { [_handler] call CBA_fnc_removePerFrameHandler;}; //
                 //blink.
                 GVAR(alternate) = !GVAR(alternate);
-                
+
                 private _step = [GVAR(currentRadioId), "getState", "programmingStep"] call EFUNC(sys_data,dataEvent);
                 switch (_step) do {
                     case 0: {
@@ -128,20 +122,20 @@ if(_knobPosition != _newKnobPosition) then {
                         };
                     };
                 };
-                
-                
+
+
                 [MAIN_DISPLAY] call FUNC(render);
             },  0.55] call CBA_fnc_addPerFrameHandler;
         };
         default { // Handle all channels (1-12, H and EIN) in here for shortest code
-    
-        
+
+
             private _newChanNumber = (_newKnobPosition - 2);
             private _isOn = ["getState", "radioOn"] call GUI_DATA_EVENT;
-            
+
             if (_newKnobPosition == 1) then { // EIN (ON)
                 _newChanNumber = GET_STATE(lastActiveChannel); // use last active channel.
-                
+
                 if (_knobPosition == 0) then { //Last position was OFF
                     GVAR(booting) = true;
                     // Booting
@@ -154,22 +148,22 @@ if(_knobPosition != _newKnobPosition) then {
                         private _channels = ([_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent));
                         private _channel = _channels select _currentChannel;
                         private _freq = HASH_GET(_channel,"frequencyRX");
-                        
+
                         if (_freq < 69 && _knobPosition > 0 && _knobPosition < 15 && !(_knobPosition == 1 and {_currentChannel == 12 })) then {
-                            [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent); 
+                            [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
                         };
-                        
+
                         if (GVAR(currentRadioId) isEqualTo _radioId) then {
                             [MAIN_DISPLAY] call FUNC(render);
                         };
                     }, GVAR(currentRadioId), 1.1] call CBA_fnc_waitAndExecute;
                 };
             };
-    
+
             private _channels = GET_STATE(channels);
             private _channel = _channels select _newChanNumber;
             private _freq = HASH_GET(_channel,"frequencyRX");
-            
+
             if (!GVAR(booting)) then { // Don't change on/off while booting
                 if (_freq > 70) then { // Invalid Freq (Turn off to prevent use.)
                     if (_isOn == 1) then {

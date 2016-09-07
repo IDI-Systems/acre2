@@ -1,4 +1,19 @@
-//fnc_updateChannelData.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_channelNumber", "_channel", "_modulation", "_spacing", "_power"];
@@ -6,7 +21,7 @@ private ["_channelNumber", "_channel", "_modulation", "_spacing", "_power"];
 params["_newVal", "_entry"];
 _entry params ["_key", "_oldVal"];
 
-_channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;    
+_channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
 _channel = HASHLIST_SELECT(GET_STATE(channels), _channelNumber);
 if(_key == "frequencyRX" || _key == "frequencyTX") then {
     _oldVal = (parseNumber _oldVal)/100000;
@@ -30,7 +45,7 @@ if(_key == "frequencyRX" || _key == "frequencyTX") then {
             };
         };
     };
-    
+
     // //diag_log text format["final: %1", _newVal];
 };
 switch _key do {

@@ -1,6 +1,19 @@
-//fnc_getAntennaInfo.sqf
- 
-
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params ["_rx", "_rxRt", "_tx", "_txRt", "_f"];
@@ -32,11 +45,11 @@ _maxGain = [];
         _rxPos = _rxAntennaData select 2;
         _txPos = _txAntennaData select 2;
         //acre_player sideChat format["tx %1: %2 rx %3: %4", _txRt, _txPos, _rxRt, _rxPos];
-        
+
         if((_txPos distance _rxPos) == 0) then {
             _rxPos set[2, (_rxPos select 2)+0.1];
         };
-        
+
         _heading = [_rxPos, _txPos] call FUNC(getElevationXtoY);
 
         _heading params ["_rxElev","_lineDir"];
@@ -45,10 +58,10 @@ _maxGain = [];
         _txDir = (_lineDir + (getDir _rx) + 180) mod 360;
 
         _txElev = _rxElev;
-        
+
         _txGain = [_txAntennaClass, _txDir, _txElev, _f] call FUNC(getGain);
         _rxGain = [_rxAntennaClass, _rxDir, _rxElev, _f, (_txGain select 1)] call FUNC(getGain);
-        
+
         _sum = (_txGain select 0) + (_rxGain select 0);
         if(_sum > _maxGainSum) then {
             _maxGainSum = _sum;
@@ -57,10 +70,3 @@ _maxGain = [];
     } forEach _txAntennas;
 } forEach _rxAntennas;
 _maxGain
-
-
-
-
-
-
-

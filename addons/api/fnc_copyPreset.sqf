@@ -1,10 +1,19 @@
 /*
-    Copies the preset by the given name.
-    ["ACRE_RADIOTYPE", "srcPresetName", "dstPresetName"]
-    
-    ex:
-    ["ACRE_PRC343", "default", "balls"] call acre_api_fnc_copyPreset;
-*/
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: Yes
+ */
 #include "script_component.hpp"
 
 private ["_presetData", "_presetCopy"];

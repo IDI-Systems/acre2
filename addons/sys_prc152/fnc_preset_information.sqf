@@ -1,5 +1,21 @@
-
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
+
 private["_presetData", "_channels", "_usedPresetFrequencies"];
 
 // channels information
@@ -9,7 +25,7 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private["_frequency", "_ok", "_find", "_channel"];
     _frequency = 0;
-    _frequency = (950+(_i*2))*0.0625;                    
+    _frequency = (950+(_i*2))*0.0625;
     if(!(_frequency in _usedPresetFrequencies)) then {
         _ok = true;
         {
@@ -23,7 +39,7 @@ for "_i" from 0 to 99 do {
         };
     };
     // The above frequency generation is taken from the 148 so we match.
-    
+
     _channel = HASHLIST_CREATEHASH(_channels);
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
@@ -38,13 +54,13 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"TEK",1);
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"syncLength",256);
-    
+
     // 152 specific channel settings
     HASH_SET(_channel,"squelch", 3);
     HASH_SET(_channel,"deviation", 8.0);
     HASH_SET(_channel,"optionCode", 201);    // 200 for AM
     HASH_SET(_channel,"rxOnly", false);
-    
+
     HASHLIST_PUSH(_channels, _channel);
 };
 HASH_SET(_presetData,"channels",_channels);
@@ -57,7 +73,7 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private["_frequency", "_ok", "_find", "_channel"];
     _frequency = 0;
-    _frequency = (950+200+(_i*2))*0.0625;                    
+    _frequency = (950+200+(_i*2))*0.0625;
     if(!(_frequency in _usedPresetFrequencies)) then {
         _ok = true;
         {
@@ -71,7 +87,7 @@ for "_i" from 0 to 99 do {
         };
     };
     // The above frequency generation is taken from the 148 so we match.
-    
+
     _channel = HASHLIST_CREATEHASH(_channels);
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
@@ -86,13 +102,13 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"TEK",1);
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"syncLength",256);
-    
+
     // 152 specific channel settings
     HASH_SET(_channel,"squelch", 3);
     HASH_SET(_channel,"deviation", 8.0);
     HASH_SET(_channel,"optionCode", 201);    // 200 for AM
     HASH_SET(_channel,"rxOnly", false);
-    
+
     HASHLIST_PUSH(_channels, _channel);
 };
 HASH_SET(_presetData,"channels",_channels);
@@ -105,7 +121,7 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private["_frequency", "_ok", "_find", "_channel"];
     _frequency = 0;
-    _frequency = (950+400+(_i*2))*0.0625;                    
+    _frequency = (950+400+(_i*2))*0.0625;
     if(!(_frequency in _usedPresetFrequencies)) then {
         _ok = true;
         {
@@ -119,7 +135,7 @@ for "_i" from 0 to 99 do {
         };
     };
     // The above frequency generation is taken from the 148 so we match.
-    
+
     _channel = HASHLIST_CREATEHASH(_channels);
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
@@ -134,13 +150,13 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"TEK",1);
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"syncLength",256);
-    
+
     // 152 specific channel settings
     HASH_SET(_channel,"squelch", 3);
     HASH_SET(_channel,"deviation", 8.0);
     HASH_SET(_channel,"optionCode", 201);    // 200 for AM
     HASH_SET(_channel,"rxOnly", false);
-    
+
     HASHLIST_PUSH(_channels, _channel);
 };
 HASH_SET(_presetData,"channels",_channels);
@@ -153,7 +169,7 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private["_frequency", "_ok", "_find", "_channel"];
     _frequency = 0;
-    _frequency = (950+600+(_i*2))*0.0625;                    
+    _frequency = (950+600+(_i*2))*0.0625;
     if(!(_frequency in _usedPresetFrequencies)) then {
         _ok = true;
         {
@@ -167,7 +183,7 @@ for "_i" from 0 to 99 do {
         };
     };
     // The above frequency generation is taken from the 148 so we match.
-    
+
     _channel = HASHLIST_CREATEHASH(_channels);
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
@@ -182,13 +198,13 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"TEK",1);
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"syncLength",256);
-    
+
     // 152 specific channel settings
     HASH_SET(_channel,"squelch", 3);
     HASH_SET(_channel,"deviation", 8.0);
     HASH_SET(_channel,"optionCode", 201);    // 200 for AM
     HASH_SET(_channel,"rxOnly", false);
-    
+
     HASHLIST_PUSH(_channels, _channel);
 };
 HASH_SET(_presetData,"channels",_channels);
