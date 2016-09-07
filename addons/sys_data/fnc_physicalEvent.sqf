@@ -17,8 +17,7 @@
 #include "script_component.hpp"
 
 // _this = [radioId, eventType, data]
-private ["_params"];
-_params = ["CfgAcrePhysicalInterface"];
+private _params = ["CfgAcrePhysicalInterface"];
 _params append _this;
 
 /*_params set[1, _this select 0];

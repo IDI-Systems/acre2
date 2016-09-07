@@ -16,20 +16,19 @@
  */
 #include "script_component.hpp"
 
-private["_dir","_currentFunction","_newFunction"];
 params["_control", "_key"];
 
 //Read out the key pressed (left/right mousebutton) and define the function increase/decrease
-_dir = -1;
+private _dir = -1;
 if(_key == 0) then {
     _dir = 1;
 };
 
 //Read out the currentFunction via DataEvent
-_currentFunction = GET_STATE(function);
+private _currentFunction = GET_STATE(function);
 
 //Define and set new function
-_newFunction = ((_currentFunction + _dir) max 0) min 4;
+private _newFunction = ((_currentFunction + _dir) max 0) min 4;
 SET_STATE_CRIT(function, _newFunction);
 
 //Handle new function
@@ -53,8 +52,7 @@ if(_newFunction != _currentFunction) then {
         // Retrans
     // };
     if(_newFunction == 4) then {
-        private ["_eh"];
-        _eh = _control ctrlAddEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(snapbackFunctionKnob))];
+        private _eh = _control ctrlAddEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(snapbackFunctionKnob))];
     };
     //Play sound and render dialog
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);

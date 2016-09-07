@@ -16,12 +16,11 @@
  */
 #include "script_component.hpp"
 
-private ["_channels", "_cachedChannels"];
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-_channels = HASH_GET(_radioData, "channels");
+private _channels = HASH_GET(_radioData, "channels");
 
-_cachedChannels = SCRATCH_GET_DEF(_radioId, "cachedFullChannels", []);
+private _cachedChannels = SCRATCH_GET_DEF(_radioId, "cachedFullChannels", []);
 _cachedChannels set[(_eventData select 0), nil];
 SCRATCH_SET(_radioId, "cachedFullChannels", _cachedChannels);
 

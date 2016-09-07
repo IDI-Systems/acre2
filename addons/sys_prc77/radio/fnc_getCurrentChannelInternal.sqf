@@ -16,12 +16,11 @@
  */
 #include "script_component.hpp"
 
-private ["_currentChannelId"];
 TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!GET CURRENT CHANNEL", _this);
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-_currentChannelId = HASH_GET(_radioData,"currentChannel");
+private _currentChannelId = HASH_GET(_radioData,"currentChannel");
 if(isNil "_currentChannelId") then {
     _currentChannelId = [0,0];
 };

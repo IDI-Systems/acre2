@@ -16,19 +16,18 @@
  */
 #include "script_component.hpp"
 
-private ["_startCtrl", "_endCtrl", "_startPos", "_endPos", "_cursorCtrl"];
 params ["_display", "_row", "_range"];
 
 [_display, 99212, true] call FUNC(showIcon); // cursor!
 _range params ["_start", "_end"];
 
-_startCtrl = _display displayCtrl (_row+_start);
-_endCtrl = _display displayCtrl (_row+_end);
+private _startCtrl = _display displayCtrl (_row+_start);
+private _endCtrl = _display displayCtrl (_row+_end);
 
-_startPos = ctrlPosition _startCtrl;
-_endPos = ctrlPosition _endCtrl;
+private _startPos = ctrlPosition _startCtrl;
+private _endPos = ctrlPosition _endCtrl;
 
-_cursorCtrl = (_display displayCtrl 99212);
+private _cursorCtrl = (_display displayCtrl 99212);
 
 _cursorCtrl ctrlSetPosition [
             (_startPos select 0)-((_endPos select 2)*0.25),

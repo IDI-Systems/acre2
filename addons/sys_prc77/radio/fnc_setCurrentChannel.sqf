@@ -16,30 +16,30 @@
  */
 #include "script_component.hpp"
 
-private ["_currentBand", "_baseMhzFrequency", "_MHz", "_kHz", "_frequency", "_power"];
 TRACE_1("", _this);
 
 params["_radioId", "_event", "_eventData", "_radioData"];
 
 TRACE_1("SETTING CURRENT CHANNEL",_this);
 
-_currentBand = HASH_GET(_radioData,"band");
+private _currentBand = HASH_GET(_radioData,"band");
 //Finding the MHz
 //interpreting the band selector
-_baseMhzFrequency = 30;
+private _baseMhzFrequency = 30;
 if (_currentBand == 1) then {
     _baseMhzFrequency = 53;
 };
 //adding the value of the KnobPosition
-_MHz = _baseMhzFrequency + (_eventData select 0);
+private _MHz = _baseMhzFrequency + (_eventData select 0);
 //Finding the kHz
-_kHz = (_eventData select 1)*0.05;
+private _kHz = (_eventData select 1)*0.05;
 //Making it Arma-Float-Stable
 _kHz = [_kHz, 1, 2] call CBA_fnc_formatNumber;
 _kHz = parseNumber _kHz;
 //Combining both
-_frequency = _MHz + _kHz;
+private _frequency = _MHz + _kHz;
 
+private _power = 4000;
 if (_frequency < 34 || _frequency > 50) then {
     _power = 3500;
 
@@ -49,8 +49,6 @@ if (_frequency < 34 || _frequency > 50) then {
     if (_frequency > 71) then {
         _power = 2600;
     };
-} else {
-    _power = 4000;
 };
 
 

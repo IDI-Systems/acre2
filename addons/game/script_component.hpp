@@ -16,9 +16,8 @@
 #define ERROR(msg)    throw msg + format[" @ %1:%2", _callFrom, _lineNo]
 #define HANDLECATCH    diag_log text _exception; assert(exception=="")
 
-#define ERRORDATA(c)    private ["_callFrom", "_lineNo"];\
-                        _callFrom = "";\
-                        _lineNo = -1;\
+#define ERRORDATA(c)    private _callFrom = "";\
+                        private _lineNo = -1;\
                         if((count _this) > c) then {\
                             _callFrom = _this select c;\
                             _lineNo = _this select c+1;\

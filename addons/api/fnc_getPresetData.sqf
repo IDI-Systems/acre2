@@ -16,10 +16,9 @@
  */
 #include "script_component.hpp"
 
-private ["_presetData"];
 params ["_radioClass", "_preset"];
 
 //_preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
-_presetData = [_radioClass, _preset] call EFUNC(sys_data,getPresetData);
+private _presetData = [_radioClass, _preset] call EFUNC(sys_data,getPresetData);
 
 _presetData

@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-private ["_parentComponentId", "_parentConnector"]; // UNDEFINED (was like this orginally)
+private ["_parentComponentId", "_parentConnector"]; // UNDEFINED (was like this orginally), TODO: FIX
 
 params["_componentId","_connectorId", "_message"];
 

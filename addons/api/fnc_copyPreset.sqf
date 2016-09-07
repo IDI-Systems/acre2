@@ -16,13 +16,12 @@
  */
 #include "script_component.hpp"
 
-private ["_presetData", "_presetCopy"];
 params ["_radioClass", "_srcPresetName", "_dstPresetName"];
 
-_presetData = [_radioClass, _srcPresetName] call FUNC(getPresetData);
+private _presetData = [_radioClass, _srcPresetName] call FUNC(getPresetData);
 if(isNil "_presetData") exitWith { false };
 
-_presetCopy = [_presetData] call FUNC(copyArray);
+private _presetCopy = [_presetData] call FUNC(copyArray);
 
 [_radioClass,_dstPresetName,_presetCopy] call EFUNC(sys_data,registerRadioPreset);
 

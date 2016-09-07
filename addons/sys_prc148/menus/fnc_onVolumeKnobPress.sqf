@@ -18,19 +18,17 @@
 
 #define RADIO_CTRL(var1) (MAIN_DISPLAY displayCtrl var1)
 
-
-private ["_dir", "_ctrl", "_currentVolume", "_newVolume"];
-_dir = -0.20;
+private _dir = -0.20;
 if((_this select 1) == 0) then {
     _dir = 0.20;
 };
-_ctrl = _this select 5;
-_currentVolume = GET_STATE(volume);     //I am not using the API for getting the volume because that could
+private _ctrl = _this select 5;
+private _currentVolume = GET_STATE(volume);     //I am not using the API for getting the volume because that could
                                         //be different from what the internal value is based on the speaker
                                         //the API value should be used as a modifier coefficient, not as a
                                         //state.
 
-_newVolume = _currentVolume + _dir;
+private _newVolume = _currentVolume + _dir;
 if(_newVolume < 0) then {
     _newVolume = 0.0;
 };

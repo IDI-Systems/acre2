@@ -16,11 +16,10 @@
  */
 #include "script_component.hpp"
 
-private ["_hashData", "_description"];
 params["_radioId"];
 
-_hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 
-_description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];
+private _description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];
 
 _description
