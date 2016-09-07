@@ -337,20 +337,29 @@ def compile_extensions(extensions_root, force_build):
 
     try:
         print_blue("\nCompiling extensions in {}".format(extensions_root))
-        os.chdir(os.path.join(extensions_root,"vcproj"))
         joinstr = ":rebuild;" if force_build else ";"
 
-        # 64-bit @todo
-        #subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON"])
-        #print()
-        #extensions64_cmd = joinstr.join(extensions64)
-        #subprocess.call(["msbuild", "ACRE.sln", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
+        # Prepare build dirs
+        vcproj = os.path.join(extensions_root,"vcproj")
+        vcproj64 = os.path.join(extensions_root,"vcproj64")
+        if not os.path.exists(vcproj):
+            os.mkdir(vcproj)
+        if not os.path.exists(vcproj64):
+            os.mkdir(vcproj64)
 
         # 32-bit
-        subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF"])
+        os.chdir(vcproj)
+        subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF", "-G", "Visual Studio 14 2015"])
         print()
         extensions32_cmd = joinstr.join(extensions32)
         subprocess.call(["msbuild", "ACRE.sln", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
+
+        # 64-bit
+        os.chdir(vcproj64)
+        subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON", "-G", "Visual Studio 14 2015 Win64"])
+        print()
+        extensions64_cmd = joinstr.join(extensions64)
+        subprocess.call(["msbuild", "ACRE.sln", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
     except:
         print_error("COMPILING EXTENSIONS.")
         raise
