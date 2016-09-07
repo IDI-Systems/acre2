@@ -12,7 +12,8 @@
  * Example:
  * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
  *
- * Public: No
+ * Public: Yes
  */
 #include "script_component.hpp"
+
 [] call EFUNC(sys_core,getSpeakingLanguageId);
