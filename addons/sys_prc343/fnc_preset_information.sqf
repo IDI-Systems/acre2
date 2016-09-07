@@ -1,11 +1,26 @@
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private _presetFrequencies = [];
 for "_i" from 0 to 255 do {
-    private ["_basefrequency","_frequencymodifier","_frequency"];
-    _basefrequency = 2400;
-    _frequencymodifier = _i*0.01;
-    _frequency = _basefrequency + _frequencymodifier;
+    private _basefrequency = 2400;
+    private _frequencymodifier = _i*0.01;
+    private _frequency = _basefrequency + _frequencymodifier;
     PUSH(_presetFrequencies,_frequency);
 };
 

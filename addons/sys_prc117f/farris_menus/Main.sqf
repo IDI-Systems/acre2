@@ -1,4 +1,19 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 GVAR(OFF) = ["OFF", "OFF", "", MENUTYPE_STATIC, [],[ nil,nil, nil ] ];
@@ -77,13 +92,12 @@ GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
     [
         nil,nil,nil,
         {
-            private["_volume", "_display"];
 
 //            [ICON_BATTERY, false] call DFUNC(toggleIcon);
             [ICON_LOADING, true] call DFUNC(toggleIcon);
-            _volume = GET_STATE("volume");
+            private _volume = GET_STATE("volume");
 
-            _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+            private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 
             TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
             if(!isNil "_display") then {

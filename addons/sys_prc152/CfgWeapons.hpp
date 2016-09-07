@@ -1,5 +1,3 @@
-
-
 class CfgWeapons {
     class Default;
     class ACRE_BaseRadio;
@@ -13,7 +11,7 @@ class CfgWeapons {
         descriptionShort = "AN/PRC-152 VHF/UHF Radio";
         scopeCurator = 2;
         scope = 2;
-        
+
         type = 4096;
         simulation = "ItemMineDetector";
         class ItemInfo

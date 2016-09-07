@@ -1,20 +1,33 @@
-//fnc_updateChannelData.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
-
-private ["_channelNumber", "_channel", "_modulation", "_spacing", "_power"];
 
 params["_newVal", "_entry"];
 _entry params ["_key", "_oldVal"];
 
-_channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;    
-_channel = HASHLIST_SELECT(GET_STATE(channels), _channelNumber);
+private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+private _channel = HASHLIST_SELECT(GET_STATE(channels), _channelNumber);
 if(_key == "frequencyRX" || _key == "frequencyTX") then {
     _oldVal = (parseNumber _oldVal)/100000;
     // //diag_log text format["new freq: %1", _newVal];
     _newVal = parseNumber _newVal;
     // //diag_log text format["parse freq: %1", _newVal];
-    _modulation = HASH_GET(_channel, "modulation");
-    _spacing = 500;
+    private _modulation = HASH_GET(_channel, "modulation");
+    private _spacing = 500;
     if(_modulation == "NB") then {
         _spacing = 625;
     };
@@ -30,7 +43,7 @@ if(_key == "frequencyRX" || _key == "frequencyTX") then {
             };
         };
     };
-    
+
     // //diag_log text format["final: %1", _newVal];
 };
 switch _key do {
@@ -42,7 +55,7 @@ switch _key do {
     };
     case "modulation": {
         if(_newVal == "AM") then {
-            _power = HASH_GET(_channel, "power");
+            private _power = HASH_GET(_channel, "power");
             if(_power != 1000 && _power != 5000) then {
                 HASH_SET(_channel, "power", 1000);
             };

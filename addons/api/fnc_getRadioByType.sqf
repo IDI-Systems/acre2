@@ -1,21 +1,34 @@
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: Yes
+ */
 #include "script_component.hpp"
-private ["_array", "_radioId", "_ret"];
-params ["_radioType"];
 
-_ret = nil;
+params ["_radioType",["_array",[]]];
 
-if((count _this) > 1) then {
-    _array = _this select 1;
-    if(IS_OBJECT(_array)) then {
-        _array = [_array] call EFUNC(lib,getGear);
-    };
+private _array = [];
+private _ret = nil;
+
+if (_array isEqualType objNull) then {
+    _array = [_array] call EFUNC(lib,getGear);
 } else {
     _array = [] call FUNC(getCurrentRadioList);
 };
 
-
 {
-    _radioId = _x;
+    private _radioId = _x;
     if( ([_radioId, _radioType] call FUNC(isKindOf) ) ) exitWith {
         _ret = _radioId;
     };

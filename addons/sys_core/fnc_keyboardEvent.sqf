@@ -1,10 +1,24 @@
-//fnc_keyboardEvent.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
-private ["_index"];
-
 params["_eventName","_state"];
-_state = parseNumber _state;
+
+private _state = parseNumber _state;
 //GVAR(keyboardEventsDown) = HASH_CREATE;
 //GVAR(keyboardEventsUp) = HASH_CREATE;
 if(_state == 1) then {

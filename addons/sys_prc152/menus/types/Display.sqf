@@ -1,4 +1,19 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 DFUNC(onButtonPress_Display) = {
@@ -9,9 +24,9 @@ DFUNC(onButtonPress_Display) = {
     switch (_event select 0) do {
         case 'PRE_UP': {     // OPT
             BEGIN_COUNTER(onButtonPress_Display_PRE_UP);
-            
+
             BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
-            
+
             _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
             _channels = GET_STATE("channels");
             if(_channelNumber < 98) then {
@@ -20,32 +35,32 @@ DFUNC(onButtonPress_Display) = {
                 _channelNumber = 0;
             };
             ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
-            
+
             END_COUNTER(onButtonPress_Display_GuiEvents);
-            
+
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
-            
+
             END_COUNTER(onButtonPress_Display_PRE_UP);
         };
         case 'PRE_DOWN': { // PGM
             BEGIN_COUNTER(onButtonPress_Display_PRE_DOWN);
-            
+
             BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
-            
+
             _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
             _channels = GET_STATE("channels");
             if(_channelNumber > 0) then {
                 _channelNumber = _channelNumber - 1;
             } else {
-                // Go to the last preset 
+                // Go to the last preset
                 _channelNumber = 98;
             };
             ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
-            
+
             END_COUNTER(onButtonPress_Display_GuiEvents);
-            
+
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
-            
+
             END_COUNTER(onButtonPress_Display_PRE_DOWN);
         };
         case '7': {     // OPT
@@ -57,13 +72,13 @@ DFUNC(onButtonPress_Display) = {
         case '0': {
             TRACE_2("Cycling display", _currentSelection, (count MENU_SUBMENUS(_menu)));
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(callCompleteFunctor);
-            
+
             if(_currentSelection+1 >= (count MENU_SUBMENUS(_menu))) then {
                 _currentSelection = 0;
             } else {
                 _currentSelection = _currentSelection + 1;
             };
-            
+
             SET_STATE("menuSelection", _currentSelection);
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(callEntryFunctor);
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(renderMenu_Static);
@@ -73,30 +88,29 @@ DFUNC(onButtonPress_Display) = {
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(onButtonPress_Static);
         };
     };
-    
+
     false
 };
 
 DFUNC(renderMenu_Display) = {
     BEGIN_COUNTER(renderMenu_Display);
-    
-    private["_format", "_renderString"];
+
     TRACE_1("renderMenu_Display", _this);
     params["_menu"]; // the menu to render is passed
-    _displaySet = MENU_SUBMENUS(_menu);
+    private _displaySet = MENU_SUBMENUS(_menu);
 
-    
-    _currentSelection = GET_STATE_DEF("menuSelection", 0);
-    _currentDisplay = MENU_SUBMENUS_ITEM(_menu,_currentSelection);
-        
+
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _currentDisplay = MENU_SUBMENUS_ITEM(_menu,_currentSelection);
+
     // A display set has a set of children STATIC displays, which are rendered and canFire
     // be swaped with the 'NEXT' circly button thingy
-    _entry = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuEntry", false);
+    private _entry = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuEntry", false);
     if(_entry) then {
         [_currentDisplay] call FUNC(callEntryFunctor);
     };
-    
+
     [_currentDisplay, _menu] call FUNC(renderMenu);
-    
+
     END_COUNTER(renderMenu_Display);
 };

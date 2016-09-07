@@ -1,13 +1,28 @@
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 BEGIN_COUNTER(clearDisplay);
 
 FUNC(_internalClearDisplay) = {
-    private["_id"];
     params["_row", "_columns"];
 
     for "_i" from 0 to _columns do {
-        _id = ((_row * 1000) +1) + _i;
+        private _id = ((_row * 1000) +1) + _i;
 
         ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetBackgroundColor [0.1, 0.1, 0.1, 0];
         ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetTextColor [0.1, 0.1, 0.1, 1];

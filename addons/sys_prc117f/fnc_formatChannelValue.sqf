@@ -1,5 +1,21 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
+
 params["_name", "_value"];
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
@@ -29,9 +45,8 @@ switch _name do {
         };
     };
     case "squelch": {
-        private["_channel", "_ctcss"];
-        _channel = GET_CHANNEL_DATA();
-        _ctcss = HASH_GET(_channel, "CTCSSRx");
+        private _channel = GET_CHANNEL_DATA();
+        private _ctcss = HASH_GET(_channel, "CTCSSRx");
 
         if (_value > 0) then {
             _value = "TONE";

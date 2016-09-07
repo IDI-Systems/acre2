@@ -1,26 +1,19 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-*/
-
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 // this function gets the attenuation value relative *from* the provided unit *to* the acre_player
@@ -38,7 +31,7 @@ if(_vehListener == _vehSpeaker) then {
     private _listenerTurnedOut = isTurnedOut _listener;
     private _speakerTurnedOut = isTurnedOut _speaker;
     if(!(_listenerTurnedOut && _speakerTurnedOut)) then {
-        
+
         private _listenerCompartment = [_listener] call EFUNC(lib,getCompartment);
         private _speakerCompartment = [_speaker] call EFUNC(lib,getCompartment);
         if(_speakerCompartment != _listenerCompartment) then {
@@ -55,14 +48,14 @@ if(_vehListener == _vehSpeaker) then {
         private _listenerTurnedOut = isTurnedOut _listener;
         if(!_listenerTurnedOut) then {
             // acre_player sideChat format["1 %1 %2", _attenuate, (1-(getNumber(configFile >> "CfgVehicles" >> (typeOf (vehicle _listener)) >> "insideSoundCoef")))];
-            _attenuate = _attenuate + ([_listener] call FUNC(getVehicleAttenuation)); //((getNumber(configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "insideSoundCoef")));
+            _attenuate = _attenuate + ([_listener] call FUNC(getVehicleAttenuation));
         };
     };
     if(_vehSpeaker != _speaker) then {
         private _speakerTurnedOut = isTurnedOut _speaker;
         if(!_speakerTurnedOut) then {
             // acre_player sideChat format["2 %1 %2", _attenuate, (1-(getNumber(configFile >> "CfgVehicles" >> (typeOf (vehicle _speaker)) >> "insideSoundCoef")))];
-            _attenuate = _attenuate + ([_speaker] call FUNC(getVehicleAttenuation)); //((getNumber(configFile >> "CfgVehicles" >> (typeOf _vehSpeaker) >> "insideSoundCoef")));
+            _attenuate = _attenuate + ([_speaker] call FUNC(getVehicleAttenuation));
         };
     };
 };

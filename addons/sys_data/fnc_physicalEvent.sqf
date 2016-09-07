@@ -1,8 +1,23 @@
-//fnc_physicalEvent.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
+
 // _this = [radioId, eventType, data]
-private ["_params"];
-_params = ["CfgAcrePhysicalInterface"];
+private _params = ["CfgAcrePhysicalInterface"];
 _params append _this;
 
 /*_params set[1, _this select 0];

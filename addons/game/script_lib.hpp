@@ -32,4 +32,3 @@
 #define LIB_fnc_setVarNet                    CBA_fnc_setVarNet
 #define LIB_fnc_serverEvent                    acre_lib_fnc_serverEvent
 #define LIB_fnc_getCompartment                acre_lib_fnc_getCompartment
-#define LIB_fnc_isTurnedOut                    acre_lib_fnc_isTurnedOut

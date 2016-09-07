@@ -1,14 +1,28 @@
-//fnc_getChannelDataInternal.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
-private ["_channels", "_channel", "_channelType", "_return"];
 params["_channelNumber", "_radioData"];
 
-_channels = HASH_GET(_radioData, "channels");
-_channel = HASHLIST_SELECT(_channels, _channelNumber);
+private _channels = HASH_GET(_radioData, "channels");
+private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
-_channelType = HASH_GET(_channel, "channelMode");
-_return = HASH_CREATE;
+private _channelType = HASH_GET(_channel, "channelMode");
+private _return = HASH_CREATE;
 switch _channelType do {
     case "BASIC": {
         HASH_SET(_return, "mode", "singleChannel");

@@ -1,34 +1,26 @@
 /*
-    Copyright © 2016, International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
-private["_key", "_shift", "_dir", "_currentTuneKnobsPosition", "_currentMHzKnobPosition", "_newMHzKnobPosition", "_newTuneKnobsPosition"];
-
-_key = _this select 1;
-_shift = _this select 4;
+private _key = _this select 1;
+private _shift = _this select 4;
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
-_dir = -1;
+private _dir = -1;
 if(_key == 0) then {
     _dir = 1;
 };
@@ -39,12 +31,11 @@ _dir = _dir*5;
 };
 
 //Read out the current KnobPositions via DataEvent | need to make a full copy of the array
-_currentTuneKnobsPosition = [];
-_currentTuneKnobsPosition = GET_STATE(currentChannel);
-_currentMHzKnobPosition = _currentTuneKnobsPosition select 0;
+private _currentTuneKnobsPosition = GET_STATE(currentChannel);
+private _currentMHzKnobPosition = _currentTuneKnobsPosition select 0;
 
 //Define and set new knob position
-_newMHzKnobPosition = _currentMHzKnobPosition + _dir;
+private _newMHzKnobPosition = _currentMHzKnobPosition + _dir;
 //Allow a jump over the null position
 if (_newMHzKnobPosition > 22) then {
     _newMHzKnobPosition = 0;
@@ -54,7 +45,7 @@ if (_newMHzKnobPosition < 0) then {
 };
 
 
-_newTuneKnobsPosition = + _currentTuneKnobsPosition;
+private _newTuneKnobsPosition = + _currentTuneKnobsPosition;
 _newTuneKnobsPosition set [0, _newMHzKnobPosition];
 ["setCurrentChannel", _newTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);
 

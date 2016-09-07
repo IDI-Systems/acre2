@@ -1,4 +1,19 @@
-
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params [["_unit",objNull]];
@@ -9,11 +24,11 @@ if (isNull _vehicle) exitWith {};
 private _attenuation = 0;
 if (_unit != _vehicle) then {
     private _effectType = getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "attenuationEffectType");
-    
+
     {
         if (_unit == (_vehicle turretUnit _x)) exitWith {
-            private _config = [_vehicle, _x] call CBA_fnc_getTurret; 
-            
+            private _config = [_vehicle, _x] call CBA_fnc_getTurret;
+
             if ((getNumber (_config >> "disableSoundAttenuation")) == 1) then {
                 _effectType = "";
             } else {
@@ -38,7 +53,7 @@ if (_unit != _vehicle) then {
     } else {
         _attenuation = _value;
     };
-    
+
 };
 
 _attenuation;

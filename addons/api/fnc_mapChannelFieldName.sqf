@@ -1,11 +1,25 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: Yes
+ */
 #include "script_component.hpp"
-private["_baseRadio"];
+
 params["_radioId", "_fieldName"];
 
-
 TRACE_1("CALLING", "");
-_baseRadio = [_radioId] call FUNC(getBaseRadio);
+private _baseRadio = [_radioId] call FUNC(getBaseRadio);
 TRACE_1("", _baseRadio);
 switch _baseRadio do {
     case "ACRE_PRC148": {

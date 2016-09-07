@@ -1,11 +1,25 @@
-//fnc_getChannelData.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params["_radioId", "_event", "_eventData", "_radioData"];
-private ["_cachedChannels", "_return"];
 
-_cachedChannels = SCRATCH_GET_DEF(_radioId, "cachedFullChannels", []);
-_return = nil;
+private _cachedChannels = SCRATCH_GET_DEF(_radioId, "cachedFullChannels", []);
+private _return = nil;
 if(_eventData < (count _cachedChannels)) then {
     _return = _cachedChannels select _eventData;
 } else {

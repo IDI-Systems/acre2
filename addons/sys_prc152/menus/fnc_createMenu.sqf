@@ -1,8 +1,23 @@
-
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
+
 TRACE_1("createMenu", _this);
 
-private["_x", "_subMenuList"];
 params["_menu","_parentMenu"];
 
 // Add a menu
@@ -10,13 +25,12 @@ if(!isNil "_menu") then {
     ADD_MENU(_menu);
 
     // Loop through the menu and add its children if it has ID's
-    _subMenuList = MENU_SUBMENUS(_menu);
+    private _subMenuList = MENU_SUBMENUS(_menu);
     if( !isNil "_subMenuList" ) then {        // If there are submenus, loop
         {
-            private["_subMenu_id"];
-            _subMenu_id = MENU_ID(_x);
+            private _subMenu_id = MENU_ID(_x);
             if(! isNil "_subMenu_id" ) then {
-                if(MENU_TYPE(_x) == MENUTYPE_DISPLAY || 
+                if(MENU_TYPE(_x) == MENUTYPE_DISPLAY ||
                 MENU_TYPE(_x) == MENUTYPE_LIST ||
                 MENU_TYPE(_x) == MENUTYPE_ACTIONSERIES) then {
                     [_x, _menu] call FUNC(createMenu);

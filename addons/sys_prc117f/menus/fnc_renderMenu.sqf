@@ -1,12 +1,27 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
-private["_menuId"];
+
 TRACE_1("renderMenu", _this);
 params ["_menu", "_callerMenu"];  // the menu to render is passed
 
 [] call FUNC(clearDisplay);
 
-_menuId = MENU_ID(_menu);
+private _menuId = MENU_ID(_menu);
 if(isNil "_menuId") then {
     SET_STATE("currentRenderMenu", _menu);
 } else {
@@ -18,14 +33,14 @@ if(isNil "_menuId") then {
 if(MENU_TYPE(_menu) >= MENU_ACTION_NONE ) then {
     switch( MENU_TYPE(_menu) ) do {
         // Its not a full submenu, but it references another embedded submenu. Render it
-        case MENU_ACTION_SUBMENU: { 
+        case MENU_ACTION_SUBMENU: {
             TRACE_1("MENU_ACTION_SUBMENU", MENU_SUBMENUS_ITEM(_menu,0));
             [MENU_SUBMENUS_ITEM(_menu,0), _callerMenu] call FUNC(changeMenu);
         };
         case MENU_ACTION_CODE: {
             [_menu, _callerMenu] call MENU_SUBMENUS_ITEM(_menu, 0);
         };
-        default { 
+        default {
             diag_log text format["!!! UNHANDLED MENU ACTION TYPE"];
         };
     };
@@ -58,7 +73,7 @@ if(MENU_TYPE(_menu) >= MENU_ACTION_NONE ) then {
         case MENUTYPE_FREQUENCY: {
             [_menu, _callerMenu] call FUNC(renderMenu_Frequency);
         };
-        
+
         default {
             TRACE_1("!!! INVALID MENU SPECIFIED", "");
         };

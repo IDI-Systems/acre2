@@ -24,10 +24,10 @@ PREP_FOLDER(farris_menus);
 GVAR(currentRadioId) = -1;
 
 DFUNC(onKnobMouseEnter) = {
-    
+
 };
 DFUNC(onKnobMouseExit) = {
-    
+
 };
 
 ADDON = true;

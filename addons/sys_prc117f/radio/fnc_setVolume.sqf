@@ -1,10 +1,24 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
-private ["_vol", "_currentMenu"];
 params["_radioId", "_event", "_eventData", "_radioData"];
 
-_vol = _eventData;
+private _vol = _eventData;
 
 if(_vol%0.10 != 0) then {
     _vol = _vol-(_vol%0.10);
@@ -21,7 +35,7 @@ if(!isNil "_display") then {
 
 if(IS_STRING(GVAR(currentRadioId))) then {
     if(GVAR(currentRadioId) == _radioId) then {
-        _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
+        private _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
         TRACE_2("", GVAR(currentRadioId), _currentMenu);
         [_currentMenu, ["VOLUME", _vol] ] call FUNC(changeValueAck);
     };

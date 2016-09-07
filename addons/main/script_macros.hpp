@@ -1,26 +1,3 @@
-/*
-    Copyright � 2010,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-*/
-
 #define DISABLE_COMPILE_CACHE
 
 #include "\idi\clients\acre\addons\game\script_common_macros.hpp"
@@ -140,8 +117,6 @@ END ARMA2/VBS2 COMPAT SECTION
 #define IS_MUTED(playerObj) ([playerObj] call acre_sys_core_fnc_isMuted)
 
 #define __CFG_GAPI_FUNCTION(x, y) getText ( configFile >> "CfgAcreComponents" >> x >> "interface" >> y )
-
-#define GETPOSASLDIS(x)    (x call acre_sys_signal_fnc_getPosASLAtDistance)
 
 #define GUI_INTERACT_EVENT    EFUNC(sys_data,guiInteractEvent)
 #define GUI_DATA_EVENT        EFUNC(sys_data,guiDataEvent)

@@ -1,9 +1,25 @@
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "\idi\clients\acre\addons\sys_prc148\script_component.hpp"
 
 DFUNC(ProgramDisplay_Render) = {
     params["_display"];
 
-    GVAR(currentMenu) = 
+    GVAR(currentMenu) =
     [
         [
             ["GLOBAL", "GLOBAL", BIG_LINE_1, [2, 11], MENU_TYPE_MENU, FUNC(AccessDeniedState)],
@@ -15,8 +31,8 @@ DFUNC(ProgramDisplay_Render) = {
             ["IW", "IW", BIG_LINE_1, [2, 11], MENU_TYPE_MENU, FUNC(AccessDeniedState)]
         ]
     ];
-    
-    [_display, GVAR(currentMenu)] call FUNC(showMenu);        
+
+    [_display, GVAR(currentMenu)] call FUNC(showMenu);
 };
 
 DFUNC(ProgramDisplay_ESC) = {

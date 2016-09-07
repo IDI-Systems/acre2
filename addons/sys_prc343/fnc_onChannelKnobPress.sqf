@@ -1,45 +1,37 @@
 /*
-    Copyright © 2016, International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-*/
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
-
-private["_key", "_currentDirection", "_currentAbsChannel", "_currentBlock", "_currentChannel", "_newBlock", "_newChannel", "_newAbsChannel"];
 
 params["_handlerarray", "_knob"];
 
-_key = _handlerarray select 1;
+private _key = _handlerarray select 1;
 
-_currentDirection = -1;
+private _currentDirection = -1;
 if(_key == 0) then {
     // left click
     _currentDirection = 1;
 };
 
-_currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
-_currentBlock = floor(_currentAbsChannel / 16);
-_currentChannel = _currentAbsChannel - _currentBlock*16;
+private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
+private _currentBlock = floor(_currentAbsChannel / 16);
+private _currentChannel = _currentAbsChannel - _currentBlock*16;
 
-_newBlock = _currentBlock;
-_newChannel = _currentChannel;
+private _newBlock = _currentBlock;
+private _newChannel = _currentChannel;
 
 if (_knob == 0) then {
     _newChannel = ((_currentChannel + _currentDirection) max 0) min 15;
@@ -47,15 +39,14 @@ if (_knob == 0) then {
 };
 
 if (_knob == 1) then {
-    private ["_totalblocks", "_channels"];
 
     //_totalblocks = ceil (count (([GVAR(currentRadioId), "getState", "channels"] call EFUNC(sys_data,dataEvent)) select 1)/16) - 1;
-    _channels = [GVAR(currentRadioId), "getState", "channels"] call EFUNC(sys_data,dataEvent); //is a HASH_LIST
-    _totalblocks = (ceil (count (_channels) /16) - 1);
+    private _channels = [GVAR(currentRadioId), "getState", "channels"] call EFUNC(sys_data,dataEvent); //is a HASH_LIST
+    private _totalblocks = (ceil (count (_channels) /16) - 1);
     _newBlock = ((_currentBlock + _currentDirection) max 0) min _totalblocks;
 };
 
-_newAbsChannel = _newBlock*16 + _newChannel;
+private _newAbsChannel = _newBlock*16 + _newChannel;
 
 if(_newAbsChannel != _currentAbsChannel) then {
     ["setCurrentChannel", _newAbsChannel] call GUI_DATA_EVENT;

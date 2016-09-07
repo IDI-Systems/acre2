@@ -1,12 +1,26 @@
-//#define DEBUG_MODE_FULL
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
-private["_ret", "_dir", "_knobPosition"];
 
 params["_menu", "_event"];
 
-_ret = false;
+private _ret = false;
 
-_dir = _event select 2;
+private _dir = _event select 2;
 if(_dir == 0) then {
     _dir = 1;
 } else {
@@ -15,12 +29,11 @@ if(_dir == 0) then {
     };
 };
 
-_display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 TRACE_2("defaultButtonPress", _display, _event);
 switch (_event select 0) do {
     case 'VOLUME': {
-        private["_volume"];
-        _volume = GET_STATE("volume");
+        private _volume = GET_STATE("volume");
         TRACE_2("Volume Before", _volume, _dir);
         _volume = ( (_volume * 10) + _dir) / 10;
         TRACE_1("Volume After", _volume);
@@ -36,11 +49,11 @@ switch (_event select 0) do {
     };
     case 'KNOB': {
         // Knob was clicked
-        _knobPositionOld = GET_STATE_DEF("knobPosition", 1);
+        private _knobPositionOld = GET_STATE_DEF("knobPosition", 1);
         TRACE_2("Knob Press", _knobPositionOld, _dir);
 
         ///////////////////////
-        _knobPosition = _knobPositionOld + _dir;
+        private _knobPosition = _knobPositionOld + _dir;
         if(_knobPosition > 5) then {
             _knobPosition = 5;
         };

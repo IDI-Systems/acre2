@@ -1,8 +1,22 @@
-//fnc_onChannelKnobPress.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
-private ["_dir", "_group", "_channelPosition", "_channelNumber"];
-_dir = _this select 1;
+private _dir = _this select 1;
 if(_dir == 0) then {
     _dir = 1;
 } else {
@@ -10,10 +24,10 @@ if(_dir == 0) then {
         _dir = -1;
     };
 };
-_group = GET_STATE(groups) select GET_STATE(currentGroup);
-_channelPositionOld = GET_STATE(channelKnobPosition);
+private _group = GET_STATE(groups) select GET_STATE(currentGroup);
+private _channelPositionOld = GET_STATE(channelKnobPosition);
 
-_channelPosition = _channelPositionOld + _dir;
+private _channelPosition = _channelPositionOld + _dir;
 
 
 if(_channelPosition > 15) then {
@@ -30,7 +44,7 @@ if(_channelPositionOld != _channelPosition) then {
     if(_channelPosition > (count (_group select 1))-1) then {
         _channelPosition = (count (_group select 1))-1;
     };
-    _channelNumber = (_group select 1) select _channelPosition;
+    private _channelNumber = (_group select 1) select _channelPosition;
     ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
     // if(GET_STATE(currentState) == "AlternateDisplay") then {
         // [GVAR(currentRadioId), "DefaultDisplay"] call FUNC(changeState);

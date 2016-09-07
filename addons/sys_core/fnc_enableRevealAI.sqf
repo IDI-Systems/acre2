@@ -1,4 +1,19 @@
-//#define DEBUG_MODE_FULL 
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 #define ACRE_REVEAL_AMOUNT 1.6
@@ -11,34 +26,34 @@ DFUNC(monitorAI_PFH) = {
     //if(! ACRE_LOCAL_SPEAKING ) exitWith {};
     if(!(acre_player in GVAR(speakers))) exitWith {};
     if(isNil "acre_api_selectableCurveScale" ) exitWith {};
-    
+
     //soundFactor is how loud the local player is speaking.
     private _soundFactor = acre_api_selectableCurveScale; // typically 0.1 -> 1.3
     private _multiplier = 250*(_soundFactor^2);
-    
+
     private _nearUnits = (getPosATL acre_player) nearEntities ["CAManBase", (130 * _soundFactor)];
     private _startTime = diag_tickTime;
     {
         if(diag_tickTime - _startTime > 0.002) exitWith {};
         private _curUnit = _x;
-        
+
         if(!isPlayer _curUnit) then {
             // Scale revealing to be a better and better chance over time
             // and based on distance
             private _distance = (eyePos _curUnit) vectorDistance ACRE_LISTENER_POS;
             if (_distance == 0) exitWith {}; // Zeus remote control fix.
-            
+
             // _occlusion = 1;//[eyePos _curUnit, ACRE_LISTENER_POS, _curUnit] call FUNC(findOcclusion);
             //_occlusion = [eyePos _curUnit, ACRE_LISTENER_POS, _curUnit] call FUNC(findOcclusion);
-            
+
             // Cheaper approximation for AI
             private _intersectObjects = lineIntersectsObjs [eyePos _curUnit, ACRE_LISTENER_POS, _curUnit, acre_player, false, 6];
             private _occlusion = ((0.1+_soundFactor)/2)^(count _intersectObjects); // - Occlusion make harsher the quieter the player is.
-            
+
             // Calculate the probability of revealing.
             // y=\frac{250\cdot \left(\left(1.3\right)^2\right)}{\left(x\right)^2}
             // 1.3 is standing in for the value of selectableCurveScale
-            
+
             private _chance = _occlusion * (_multiplier  / _distance);
             TRACE_4("", _curUnit, _distance, _occlusion, _chance);
             if((random 1) < _chance) then {

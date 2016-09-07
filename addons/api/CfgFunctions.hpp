@@ -89,9 +89,6 @@ class CfgFunctions {
             DEFINE_FUNCTION(babelSetSpeakingLanguage);
             DEFINE_FUNCTION(babelAddLanguageType);
         };
-        class Helpers {
-            DEFINE_FUNCTION(copyArray);
-        };
     };
 
 
