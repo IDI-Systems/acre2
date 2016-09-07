@@ -18,13 +18,6 @@
 
 DFUNC(utilityFuncPFH) = {
     ["setVoiceCurveModel", format["%1,%2,", ACRE_VOICE_CURVE_MODEL, ACRE_VOICE_CURVE_SCALE]] call EFUNC(sys_rpc,callRemoteProcedure);
-    // acre_player sideChat format["ptt: %1", (GVAR(keyboardEvents) select 1)];
-    {
-        _key = HASH_GET(GVAR(keyboardEvents), _x);
-        _kbData = format (["%1,%2,%3,%4,%5,"] + _key);
-        // diag_log text format["Setting PTT Key: %1", _kbData];
-        ["setPTTKeys", _kbData] call EFUNC(sys_rpc,callRemoteProcedure);
-    } forEach HASH_KEYS(GVAR(keyboardEvents));
 };
 ADDPFH(DFUNC(utilityFuncPFH), 5, []);
 

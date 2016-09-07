@@ -3,7 +3,6 @@ NO_DEDICATED;
 
 
 [] call EFUNC(sys_io,startServer);
-// ["\userconfig\acre2\acre_key_config.ini", "core"] call FUNC(loadConfig);
 
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetPluginVersion", FUNC(handleGetPluginVersion)] call EFUNC(sys_rpc,addProcedure);
@@ -12,7 +11,6 @@ NO_DEDICATED;
 ["remoteStopSpeaking", FUNC(remoteStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["localStartSpeaking", FUNC(localStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["localStopSpeaking", FUNC(localStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
-["keyBoardEvent", FUNC(keyBoardEvent)] call EFUNC(sys_rpc,addProcedure);
 ["pong", FUNC(pong)] call EFUNC(sys_rpc,addProcedure);
 ["gen", FUNC(gen)] call EFUNC(sys_rpc,addProcedure);
 
@@ -20,8 +18,6 @@ DFUNC(gen) = {
     params["_code"];
     [] call (compile _code);
 };
-
-//[QUOTE(ADDON), "PTTRadio", { [] call FUNC(showBroadCastHint) }] call CALLSTACK(LIB_fnc_addKeyHandlerFromConfig);
 
 
 ///////////////////////////////////
