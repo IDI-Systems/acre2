@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calculates the attenuation of a unit being heard externally from the vehicle.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <Object>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Attenuation <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [unit] call acre_sys_attenuate_fnc_getVehicleAttenuation
  *
  * Public: No
  */

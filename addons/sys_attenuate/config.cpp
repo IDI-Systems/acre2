@@ -14,9 +14,7 @@ class CfgPatches {
         version = VERSION;
     };
 };
+
 #include "cfgEventhandlers.hpp"
-
 #include "CfgVehicles.hpp"
-// #include "CfgAcreAttenuation.hpp"
-
 #include "CfgSoundEffects.hpp"

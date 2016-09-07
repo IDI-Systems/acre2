@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calculates the attenuation between the local player unit and the inputted unit.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: ARGUMENT ONE <Object>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Attenuation  <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [unit] call acre_sys_attenuate_fnc_getUnitAttenuate
  *
  * Public: No
  */
