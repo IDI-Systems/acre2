@@ -23,13 +23,13 @@ _ret = 0;
 
 _attenuateClass = [_vehicle] call FUNC(getVehicleAttenuateClass);
 _selfPositionClass = [_self, _vehicle] call FUNC(getVehiclePositionClass);
-_selfTurnedOut = isTurnedOut _self;//[_self] call FUNC(isTurnedOut);
+_selfTurnedOut = isTurnedOut _self;
 
 _unitTurnedOut = false;
 _unitPositionClass = _unit;
 if(IS_OBJECT(_unit)) then {
     _unitPositionClass = [_unit, _vehicle] call FUNC(getVehiclePositionClass);
-    _unitTurnedOut = isTurnedOut _unitTurnedOut;//[_unit] call FUNC(isTurnedOut);
+    _unitTurnedOut = isTurnedOut _unitTurnedOut;
 };
 
 // Get this value based on whether we are turned out or inside

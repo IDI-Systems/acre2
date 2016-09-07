@@ -76,10 +76,9 @@ FUNC(hashSet) = {
 
 FUNC(hashGet) = {
     // diag_log text format["%1 HASH GET: %2", diag_tickTime, _this];
-    private ["_returnValue"];
     params ["_hash", "_key"];
     // ERRORDATA(2);
-    _returnValue = nil;
+    private _returnValue = nil;
     // try {
         // if(VALIDHASH(_hash)) then {
             private _index = (_hash select 0) find _key;
@@ -101,11 +100,10 @@ FUNC(hashGet) = {
 
 FUNC(hashHasKey) = {
     // diag_log text format["%1 HASH HAS KEY: %2", diag_tickTime, _this];
-    private ["_returnValue"];
     params ["_hash", "_key"];
 
     //ERRORDATA(2);
-    _returnValue = false;
+    private _returnValue = false;
     //try {
         //if(VALIDHASH(_hash)) then {
             private _index = (_hash select 0) find _key;
@@ -123,11 +121,10 @@ FUNC(hashHasKey) = {
 };
 
 FUNC(hashRem) = {
-    private ["_val"];
     params ["_hash", "_key"];
 
     // ERRORDATA(2);
-    _val = nil;
+    private _val = nil;
     // try {
         // if(VALIDHASH(_hash)) then {
             private _index = (_hash select 0) find _key;
@@ -174,12 +171,11 @@ FUNC(hashListCreateHash) = {
 };
 
 FUNC(hashListSelect) = {
-    private ["_hash"];
     params ["_hashList", "_index"];
     // _hashList = _this select 0;
     // _index = _this select 1;
     // ERRORDATA(2);
-    _hash = nil;
+    private _hash = nil;
     // try {
         // if(VALIDHASH(_hashList)) then {
             _hashList params ["_keys","_hashes"];
@@ -312,11 +308,10 @@ FUNC(removeGear) = {
 };
 
 FUNC(addGear) = {
-    //private ["_assignedItems", "_needsAssigned", "_simulationType", "_gearContainer"];
     params["_unit", "_item"];
 
     if( (count _this) > 2) then {
-        _gearContainer = _this select 2;
+        private _gearContainer = _this select 2;
         switch _gearContainer do {
             case 'vest': {
                 _unit addItemToVest _item;
@@ -331,10 +326,10 @@ FUNC(addGear) = {
     } else {
         _unit addItem _item;
     };
-    // _assignedItems = assignedItems _unit;
-    // _needsAssigned = true;
+    // private _assignedItems = assignedItems _unit;
+    // private _needsAssigned = true;
     // {
-        // _simulationType = getText(configFile >> "CfgWeapons" >> _x >> "simulation");
+        // private _simulationType = getText(configFile >> "CfgWeapons" >> _x >> "simulation");
         // if(_simulationType == "ItemRadio") exitWith {
             // _needsAssigned = false;
         // };
@@ -373,81 +368,14 @@ ACRE_DUMPSTACK_FNC = {
     };
 };
 
-FUNC(isTurnedOut) = {
-    private ["_turn","_out","_vehicle","_cfg","_forceHideDriver","_phase","_assignedRole","_turretPath","_turret","_canHideGunner","_forceHideGunner","_hatchAnimation","_attenuateCargo","_index"];
-    _turn = false;
-    _out = false;
-    params["_unit"];
-    _vehicle = vehicle _unit;
-
-    _cfg = configFile >> "CfgVehicles" >> (typeOf _vehicle);
-    if(_vehicle != _unit) then {
-        if(driver _vehicle == _unit) then {
-            _forceHideDriver = getNumber(_cfg >> "forceHideDriver");
-            if(_forceHideDriver == 1) then {
-                _turn = false;
-            } else {
-                _turn = true;
-            };
-            _phase = _vehicle animationPhase "hatchDriver";
-            if(_phase > 0) then {
-                _out = true;
-            };
-        } else {
-            _assignedRole = assignedVehicleRole _unit;
-            if(_assignedRole select 0 == "Turret") then {
-                _turretPath = _assignedRole select 1;
-                _turret = [_vehicle, _turretPath] call CBA_fnc_getTurret;
-
-                _canHideGunner = getNumber(_turret >> "canHideGunner");
-                _forceHideGunner = getNumber(_turret >> "forceHideGunner");
-                if(_canHideGunner == 1 && _forceHideGunner == 0) then {
-                    _turn = true;
-                } else {
-                    _turn = false;
-                };
-                _hatchAnimation = getText(_turret >> "animationSourceHatch");
-                _phase = _vehicle animationPhase _hatchAnimation;
-                if(_phase > 0) then {
-                    _out = true;
-                };
-            } else {
-                if((_assignedRole select 0) == "Cargo") then {
-                    _attenuateCargo = getArray(_cfg >> "soundAttenuationCargo");
-                    if((count _attenuateCargo) > 0) then {
-                        _index = -1;
-                        // if((productVersion select 3) < 126064) then {
-                            // _index = (count _attenuateCargo)-1; // wait for command to get cargo index
-                        // } else {
-                            _index = _vehicle getCargoIndex _unit;
-                        // };
-                        if(_index > -1) then {
-                            if(_index > (count _attenuateCargo)-1) then {
-                                _index = (count _attenuateCargo)-1;
-                            };
-                            if((_attenuateCargo select _index) == 0) then {
-                                _out = true;
-                            };
-                        };
-                    };
-                };
-            };
-        };
-    } else {
-        _out = true;
-    };
-    _out;
-};
-
 FUNC(getCompartment) = {
-    private ["_vehicle","_compartment","_defaultCompartment","_cfg","_assignedRole","_turretPath","_turret","_veh","_cargoCompartments","_index","_attenuateCargo"];
     params["_unit"];
-    _vehicle = (vehicle _unit);
-    _compartment = "";
+    private _vehicle = (vehicle _unit);
+    private _compartment = "";
     if(_vehicle != _unit) then {
-        _defaultCompartment = "Compartment1";
-        _cfg = configFile >> "CfgVehicles" >> typeOf _vehicle;
-        _assignedRole = assignedVehicleRole _unit;
+        private _defaultCompartment = "Compartment1";
+        private _cfg = configFile >> "CfgVehicles" >> typeOf _vehicle;
+        private _assignedRole = assignedVehicleRole _unit;
         if((_assignedRole select 0) == "Driver") then {
             _compartment = getText(_cfg >> "driverCompartments");
             if(_compartment == "") then {
@@ -455,8 +383,8 @@ FUNC(getCompartment) = {
             };
         } else {
             if((_assignedRole select 0) == "Turret") then {
-                _turretPath = _assignedRole select 1;
-                _turret = [_veh, _turretPath] call CBA_fnc_getTurret;
+                private _turretPath = _assignedRole select 1;
+                private _turret = [_vehicle, _turretPath] call CBA_fnc_getTurret;
                 _compartment = getText(_turret >> "gunnerCompartments");
                 if(_compartment == "") then {
                     _compartment = getText(_cfg >> "driverCompartments");
@@ -466,9 +394,9 @@ FUNC(getCompartment) = {
                 };
             } else {
                 if((_assignedRole select 0) == "Cargo") then {
-                    _cargoCompartments = getArray(_cfg >> "cargoCompartments");
+                    private _cargoCompartments = getArray(_cfg >> "cargoCompartments");
                     if((count _cargoCompartments) > 0) then {
-                        _index = -1;
+                        private _index = -1;
                         // if((productVersion select 3) < 126064) then {
                             // _index = (count _attenuateCargo)-1; // wait for command to get cargo index
                         // } else {
@@ -497,13 +425,12 @@ FUNC(getCompartment) = {
 };
 #define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
 FUNC(fastHashCreate) = {
-    private ["_ret"];
     if(count FAST_HASH_POOL > 0) exitWith {
-        _ret = (FAST_HASH_POOL deleteAt 0);
+        private _ret = (FAST_HASH_POOL deleteAt 0);
         FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
         _ret;
     };
-    _ret = createLocation ["AcreHashType", [-10000,-10000,-10000], 0, 0];
+    private _ret = createLocation ["AcreHashType", [-10000,-10000,-10000], 0, 0];
     _ret setText "acre_hash";
     FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
     _ret;
@@ -560,8 +487,7 @@ FUNC(fastHashKeys) = {
 /*
 FUNC(fastHashSerialize) = {
     params ["_hash"];
-    private ["_array"];
-    _array = ["ACRE_FAST_HASH",[],[]];
+    private _array = ["ACRE_FAST_HASH",[],[]];
     _keys = _array select 1;
     _vals = _array select 2;
     _allVars = (allVariables _hash) - FAST_HASH_DEFAULT_KEYS;
@@ -574,8 +500,7 @@ FUNC(fastHashSerialize) = {
 
 FUNC(fastHashDeSerialize) = {
     params ["_array"];
-    private ["_hash"];
-    _hash = HASH_CREATE;
+    private _hash = HASH_CREATE;
     _keys = _array select 1;
     _vals = _array select 2;
     {
@@ -594,7 +519,7 @@ if(isNil "FAST_HASH_POOL") then {
 };
 FAST_HASH_TO_DELETE = [];
 
-_fnc_hashMonitor = {
+private _fnc_hashMonitor = {
     if((count FAST_HASH_TO_DELETE) > 0) then {
         _init_time = diag_tickTime;
         while {((diag_tickTime - _init_time)*1000) < 2.0 && count FAST_HASH_TO_DELETE > 0} do {
@@ -624,15 +549,14 @@ FAST_HASH_GC_CHECK_OBJECTS = [];
 FAST_HASH_CREATED_HASHES_NEW = [];
 FAST_HASH_GC_IGNORE = ["fast_hash_gc_found_objects","fast_hash_gc_found_arrays","fast_hash_created_hashes","fast_hash_gc_check_objects","fast_hash_created_hashes_new","fast_hash_var_state","fast_hash_pool","fast_hash_to_delete"];
 FAST_HASH_GC_ORPHAN_CHECK_INDEX = 0;
-_garbageCollector = {
+private _garbageCollector = {
 
     if(count FAST_HASH_CREATED_HASHES_NEW < ((count FAST_HASH_CREATED_HASHES)*0.1)/2) exitWith {};
     // diag_log text format["---------------------------------------------------"];
-    private ["_x", "_init_time", "_var_name", "_array", "_name"];
-    _init_time = diag_tickTime;
+    private _init_time = diag_tickTime;
     while {diag_tickTime - _init_time < 0.001 && {FAST_HASH_GC_INDEX < FAST_HASH_VAR_LENGTH}} do {
-        _var_name = FAST_HASH_VAR_STATE select FAST_HASH_GC_INDEX;
-        _x = missionNamespace getVariable [_var_name, nil];
+        private _var_name = FAST_HASH_VAR_STATE select FAST_HASH_GC_INDEX;
+        private _x = missionNamespace getVariable [_var_name, nil];
 
         FAST_HASH_GC_INDEX = FAST_HASH_GC_INDEX + 1;
         if(!(_var_name in FAST_HASH_GC_IGNORE)) then {
@@ -651,7 +575,7 @@ _garbageCollector = {
 
     _init_time = diag_tickTime;
     while {diag_tickTime - _init_time < 0.001 && {(count FAST_HASH_GC_FOUND_ARRAYS) > 0}} do {
-        _array = FAST_HASH_GC_FOUND_ARRAYS deleteAt 0;
+        private _array = FAST_HASH_GC_FOUND_ARRAYS deleteAt 0;
         {
             if(IS_HASH(_x)) then {
                 // diag_log text format["pushBack: %1", _name];
@@ -670,7 +594,7 @@ _garbageCollector = {
     while {diag_tickTime - _init_time < 0.001 && {(count FAST_HASH_GC_FOUND_OBJECTS) > 0}} do {
         _hash = FAST_HASH_GC_FOUND_OBJECTS deleteAt 0;
         FAST_HASH_GC_CHECK_OBJECTS pushBack _hash;
-        _array = allVariables _hash;
+        private _array = allVariables _hash;
         {
             _x = _hash getVariable _x;
             if(IS_HASH(_x)) then {

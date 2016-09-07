@@ -16,7 +16,6 @@
  */
 #include "script_component.hpp"
 
-private ["_eventdata"];
-_eventData = _this select 2;
+private _eventData = _this select 2;
 
 _eventData;

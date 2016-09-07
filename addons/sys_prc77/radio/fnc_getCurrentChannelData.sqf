@@ -16,7 +16,6 @@
  */
 #include "script_component.hpp"
 
-private ["_return"];
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
 /*//copy all necessary information from _radioData
@@ -39,7 +38,7 @@ _kHz = [_kHz, 1, 2] call CBA_fnc_formatNumber;
 //Combining both
 _frequency = _MHz + _kHz;*/
 
-_return = HASH_CREATE;
+private _return = HASH_CREATE;
 
 HASH_SET(_return, "mode", HASH_GET(_radioData, "mode"));
 HASH_SET(_return, "frequencyTX", HASH_GET(_radioData, "frequencyTX"));

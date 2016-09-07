@@ -47,7 +47,6 @@
  *      nil
 */
 
-private ["_vol", "_currentMenu"];
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
 private _vol = _eventData;

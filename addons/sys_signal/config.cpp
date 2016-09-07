@@ -9,6 +9,5 @@ class CfgPatches {
         AUTHOR;
     };
 };
+
 #include "cfgEventhandlers.hpp"
-#include "CfgAcreReflectionMaps.hpp"
-//#include "cfgSounds.hpp"

@@ -16,24 +16,22 @@
  */
 #include "script_component.hpp"
 
-private["_key", "_currentDirection", "_currentAbsChannel", "_currentBlock", "_currentChannel", "_newBlock", "_newChannel", "_newAbsChannel"];
-
 params["_handlerarray", "_knob"];
 
-_key = _handlerarray select 1;
+private _key = _handlerarray select 1;
 
-_currentDirection = -1;
+private _currentDirection = -1;
 if(_key == 0) then {
     // left click
     _currentDirection = 1;
 };
 
-_currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
-_currentBlock = floor(_currentAbsChannel / 16);
-_currentChannel = _currentAbsChannel - _currentBlock*16;
+private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
+private _currentBlock = floor(_currentAbsChannel / 16);
+private _currentChannel = _currentAbsChannel - _currentBlock*16;
 
-_newBlock = _currentBlock;
-_newChannel = _currentChannel;
+private _newBlock = _currentBlock;
+private _newChannel = _currentChannel;
 
 if (_knob == 0) then {
     _newChannel = ((_currentChannel + _currentDirection) max 0) min 15;
@@ -41,15 +39,14 @@ if (_knob == 0) then {
 };
 
 if (_knob == 1) then {
-    private ["_totalblocks", "_channels"];
 
     //_totalblocks = ceil (count (([GVAR(currentRadioId), "getState", "channels"] call EFUNC(sys_data,dataEvent)) select 1)/16) - 1;
-    _channels = [GVAR(currentRadioId), "getState", "channels"] call EFUNC(sys_data,dataEvent); //is a HASH_LIST
-    _totalblocks = (ceil (count (_channels) /16) - 1);
+    private _channels = [GVAR(currentRadioId), "getState", "channels"] call EFUNC(sys_data,dataEvent); //is a HASH_LIST
+    private _totalblocks = (ceil (count (_channels) /16) - 1);
     _newBlock = ((_currentBlock + _currentDirection) max 0) min _totalblocks;
 };
 
-_newAbsChannel = _newBlock*16 + _newChannel;
+private _newAbsChannel = _newBlock*16 + _newChannel;
 
 if(_newAbsChannel != _currentAbsChannel) then {
     ["setCurrentChannel", _newAbsChannel] call GUI_DATA_EVENT;

@@ -16,14 +16,13 @@
  */
 #include "script_component.hpp"
 
-private ["_channels", "_channel", "_channelType", "_return"];
 params["_channelNumber", "_radioData"];
 
-_channels = HASH_GET(_radioData, "channels");
-_channel = HASHLIST_SELECT(_channels, _channelNumber);
+private _channels = HASH_GET(_radioData, "channels");
+private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
-_channelType = HASH_GET(_channel, "channelMode");
-_return = HASH_CREATE;
+private _channelType = HASH_GET(_channel, "channelMode");
+private _return = HASH_CREATE;
 switch _channelType do {
     case "BASIC": {
         HASH_SET(_return, "mode", "singleChannel");

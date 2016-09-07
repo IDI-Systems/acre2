@@ -28,7 +28,7 @@ _attenuateClass = [_vehicle] call FUNC(getVehicleAttenuateClass);
 if(IS_OBJECT(_unit)) then {
     _positionClass = [_unit, _vehicle] call FUNC(getVehiclePositionClass);
 
-    _playerTurnedOut = isTurnedOut _unit;//[_unit] call FUNC(isTurnedOut);
+    _playerTurnedOut = isTurnedOut _unit;
     TRACE_3("turned out status", _attenuateClass, _positionClass, _playerTurnedOut);
 };
 if(!(isNil "_playerTurnedOut")) then {

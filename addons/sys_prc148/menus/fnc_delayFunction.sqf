@@ -16,10 +16,9 @@
  */
 #include "script_component.hpp"
 
-private ["_fnc"];
 params["_radioId", "_endFunction", "_time"];
 
-_fnc = {
+private _fnc = {
     params["_args"];
     _args params ["_time", "_radioId", "_function", "_funcArgs"];
 

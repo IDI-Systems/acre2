@@ -42,5 +42,6 @@ if(count _result > 0) then {
         };
     };
 };
+
 private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];
 missionNamespace setVariable [_transmitterClass + "_running_count", _count - 1];

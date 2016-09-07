@@ -16,11 +16,10 @@
  */
 #include "script_component.hpp"
 
-private ["_return"];
 TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!GET CURRENT CHANNEL", _this);
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-_return = 0;
+private _return = 0;
 
 _return

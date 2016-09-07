@@ -18,13 +18,11 @@
 
 TRACE_1("Enter", _this);
 
-private ["_menuDef", "_target", "_params", "_menuName", "_menuRsc", "_menus"];
 // _this==[_target, _menuNameOrParams]
-_target = _this select 0;
-_params = _this select 1;
+params ["_target", "_params"];
 
-_menuName = "";
-_menuRsc = "popup";
+private _menuName = "";
+private _menuRsc = "popup";
 
 if (typeName _params == typeName []) then {
     if (count _params < 1) exitWith {diag_log format["Error: Invalid params: %1, %2", _this, __FILE__];};
@@ -37,7 +35,7 @@ if (typeName _params == typeName []) then {
 
 
 
-_menus = [
+private _menus = [
     [
         ["main", "ACRE Interact", _menuRsc],
         [
@@ -50,7 +48,7 @@ _menus = [
     ]
 ];
 //-----------------------------------------------------------------------------
-_menuDef = [];
+private _menuDef = [];
 {
     if (_x select 0 select 0 == _menuName) exitWith {_menuDef = _x};
 } forEach _menus;

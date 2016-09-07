@@ -538,11 +538,10 @@ DFUNC(drawMenu) = {
         GVAR(currentArgs) = [];
         GVAR(areaProgress) = 0;
         FUNC(formatNumber) = {
-            private ["_ext", "_str", "_d"];
-            _ext = abs _this - (floor abs _this);
-            _str = "";
+            private _ext = abs _this - (floor abs _this);
+            private _str = "";
             for "_i" from 1 to 8 do {
-                _d = floor (_ext*10);
+                private _d = floor (_ext*10);
                 _str = _str + (str _d);
                 _ext = (_ext*10)-_d;
             };
