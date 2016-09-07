@@ -12,7 +12,7 @@
  * Example:
  * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
  *
- * Public: Yes
+ * Public: No
  */
 #include "script_component.hpp"
 
