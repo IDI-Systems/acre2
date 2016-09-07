@@ -1,4 +1,19 @@
-//fnc_initializeComponent.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 private ["_return"];
@@ -19,7 +34,7 @@ if(isNil "_connectorData") then {
     private _attributes = HASH_CREATE;
     private _componentClass = configFile >> "CfgAcreComponents" >> _component;
     if(!isClass(_componentClass)) exitWith { diag_log text format["%1 ACRE ERROR: %2 is not a class type of CfgAcreComponents", diag_tickTime, _component]; };
-    
+
     private _componentSimple = getNumber(_componentClass >> "simple");
     if(_componentSimple == 1) then {
         private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")) select _connector) select 1;

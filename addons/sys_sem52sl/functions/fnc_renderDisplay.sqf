@@ -1,26 +1,19 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-*/
-
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 #define RADIO_CTRL(var1) (_display displayCtrl var1)
@@ -185,14 +178,14 @@ private _isOn = GET_STATE(radioOn);
 private _fnc_formatNumber = {
     params ["_in"];
     private _numbers = [];
-    
+
     _numbers = [floor ((_in mod 100)/10), floor (_in mod 10)];
 
     _in = round ((_in - (floor _in)) * 1000); // bypass floating point issues
     _numbers + [floor ((_in mod 1000)/100),floor ((_in mod 100)/10), floor (_in mod 10)];
 };
 
-                
+
 
 switch _channelKnobPosition do {
         case 1: { // ON
@@ -200,9 +193,9 @@ switch _channelKnobPosition do {
             private _channels = GET_STATE(channels);
             private _channel = _channels select _currentChannel;
             private _freq = HASH_GET(_channel,"frequencyRX");
-                        
+
             if (_freq > 69) then { // If freq invalid display no frequency
-                RADIO_CTRL(301) ctrlSetText (_complete select 1); // noFr 
+                RADIO_CTRL(301) ctrlSetText (_complete select 1); // noFr
             } else {
                 _currentChannel = _currentChannel + 1; // +1 to convert from index to display channel.
                 if (_currentChannel == 13) then { // H
@@ -218,10 +211,10 @@ switch _channelKnobPosition do {
                     };
                 };
             };
-        }; 
+        };
         case 15: { // P - Programming mode
             // Pr <H>
-            // Step 1) choose channel (push PTT) 
+            // Step 1) choose channel (push PTT)
             // (then show current freq for that channel)
             //
             private _step = GET_STATE(programmingStep);
@@ -249,10 +242,10 @@ switch _channelKnobPosition do {
                     };
                 };
                 case 1: { // MHZ selector (blinking)
-                    
+
                     private _freq = GVAR(newFrequency);
                     private _numbers = [_freq] call _fnc_formatNumber;
-                    if (GVAR(alternate)) then { 
+                    if (GVAR(alternate)) then {
                         switch (_numbers select 0) do {
                             case 0: { RADIO_CTRL(301) ctrlSetText (_firstDigit select 0); };
                             case 4: { RADIO_CTRL(301) ctrlSetText (_firstDigit select 1); };
@@ -271,7 +264,7 @@ switch _channelKnobPosition do {
                         case 6: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 3); };
                         case 8: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 4); };
                     };
-                
+
                 };
                 case 2: { // Khz selector (blinking)
                     private _freq = GVAR(newFrequency);
@@ -284,7 +277,7 @@ switch _channelKnobPosition do {
                         case 8: { RADIO_CTRL(301) ctrlSetText (_firstDigit select 4); };
                     };
                     RADIO_CTRL(302) ctrlSetText (_secondDigit select (_numbers select 1));
-                    if (GVAR(alternate)) then { 
+                    if (GVAR(alternate)) then {
                         RADIO_CTRL(303) ctrlSetText (_thirdDigit select (_numbers select 2));
                         RADIO_CTRL(304) ctrlSetText (_fourthDigit select (_numbers select 3));
                         switch (_numbers select 4) do {
@@ -303,7 +296,7 @@ switch _channelKnobPosition do {
             private _channels = GET_STATE(channels);
             private _channel = _channels select _currentChannel;
             private _freq = HASH_GET(_channel,"frequencyRX");
-            
+
             if (_freq > 69) then { // out of bounds frequency (technically only possible for channel 13)
                 RADIO_CTRL(301) ctrlSetText (_complete select 1); // noFr (on boot)
             } else {
@@ -326,7 +319,7 @@ switch _channelKnobPosition do {
                     case 8: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 4); };
                 };
             };
-        
+
             // show frequency...
         }; // chan
 };

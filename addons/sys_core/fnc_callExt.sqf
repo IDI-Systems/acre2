@@ -1,3 +1,19 @@
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 #define FORMAT_NUMBER(num) (num call FUNC(formatNumber))
@@ -39,7 +55,7 @@ if(IS_ARRAY(_params)) then {
                         _element = 0;
                     };
                 };
-                
+
                 // if(IS_NUMBER(_element)) then {
                     // _element = FORMAT_NUMBER(_element);
                     // _paramsString = _paramsString + _element + ",";
@@ -50,7 +66,7 @@ if(IS_ARRAY(_params)) then {
                 _paramsString = _paramsString + _element + ",";
             };
         };
-    
+
     } forEach _arrayParams;
 };
 _command = format["%1:%2", _command, _paramsString];

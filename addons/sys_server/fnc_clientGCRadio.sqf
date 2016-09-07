@@ -1,4 +1,19 @@
-//fnc_clientGCRadio.sqf
+/*
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params ["_radioId"];
@@ -11,6 +26,6 @@ params ["_radioId"];
     HASH_REM(GVAR(objectIdRelationTable), _radioId)
 // } else {
     // _radioData = HASH_GET(acre_sys_data_radioData, _radioId);
-    
+
     // [QGVAR(invalidGarbageCollect), [acre_player, _radioId, _radioData]] call CALLSTACK(LIB_fnc_serverEvent);
 // };

@@ -1,26 +1,19 @@
 /*
-    Copyright © 2016,International Development & Integration Systems, LLC
-    All rights reserved.
-    http://www.idi-systems.com/
-
-    For personal use only. Military or commercial use is STRICTLY
-    prohibited. Redistribution or modification of source code is
-    STRICTLY prohibited.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-    "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-    FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-    COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-    INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
-    BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-    CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-    ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-    POSSIBILITY OF SUCH DAMAGE.
-*/
-
+ * Author: ACRE2Team
+ * SHORT DESCRIPTION
+ *
+ * Arguments:
+ * 0: ARGUMENT ONE <TYPE>
+ * 1: ARGUMENT TWO <TYPE>
+ *
+ * Return Value:
+ * RETURN VALUE <TYPE>
+ *
+ * Example:
+ * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *
+ * Public: No
+ */
 #include "script_component.hpp"
 
 params["_radioId","","_radios"];
@@ -79,19 +72,19 @@ if(diag_tickTime - _lastSortTime > 3) then {
 
 if(_transmissionsChanged) then {
     private _areAllRadiosInitialized = true;
-    
+
     if((count _radios) > 1) then {
         _sorted = [];
         {
             _x params ["","_txID","_signalData"];
             _signalData params ["_signalPercent"];
             if (_signalData isEqualTo [0, -992]) then {_areAllRadiosInitialized = false;};
-            
+
             PUSH(_sorted, ARR_2(_signalPercent, _forEachIndex));
             PUSH(_transmissions, _txId);
         } forEach _radios;
         _sorted sort false; // descending order
-        
+
         {
             PUSH(_sortedRadios, (_radios select (_x select 1)));
         } forEach _sorted;
@@ -107,8 +100,8 @@ if(_transmissionsChanged) then {
         SCRATCH_SET(_radioId, "currentTransmissions", _currentTransmissions);
     };
 
-    
-    
+
+
     private _radioRxData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     // diag_log text format["%1 NON-CACHED", diag_tickTime];
     if(HASH_GET(_radioRxData, "mode") == "singleChannel") then {
@@ -194,7 +187,7 @@ if(_transmissionsChanged) then {
             _okRadios = _hearableTransmissions;
         };
     };
-        
+
 
     if((count _okRadios) > 0) then {
         private _signalData = (_okRadios select 0) select 2;

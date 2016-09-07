@@ -1,5 +1,3 @@
-//command_replace.hpp
-
 #define COMPAT_getPosATL            getPosATL                 // needs to be getPos in VBS2
 #define COMPAT_getTerrainHeightASL    getTerrainHeightASL     // needs to be replaced wtih terrainHeight in VBS2
 #define COMPAT_say3d                say                        // needs to be replaced with say in VBS2

@@ -1,4 +1,3 @@
-//XEH_pre_init.sqf
 #include "script_component.hpp"
 
 
@@ -13,17 +12,17 @@ FUNC(substring) = {
     //params["_arr", "_i"];
     /*_arr = toArray _arr;
     private _ret = [];
-    
+
     private _x = 0;
     while { _i < ((_this select 1)+(_this select 2)) } do {
         _ret set[_x, (_arr select _i)];
         _x = _x + 1;
         _i = _i + 1;
     };
-    
+
     _ret = toString _ret;*/
     private _ret = _string select [_start, _length];
-    
+
     _ret
 };
 
@@ -42,7 +41,7 @@ FUNC(find) = {
             _ret = -1;
         };
     };
-    
+
     _ret
 };
 
@@ -207,7 +206,7 @@ FUNC(hashListSet) = {
         // if(VALIDHASH(_hashList)) then {
             // if(VALIDHASH(_value)) then {
                 private _vals = _value select 1;
-                
+
                 (_hashList select 1) set[_index, _vals];
             // } else {
                 // ERROR("Set hash in hashlist is not valid");
@@ -250,12 +249,12 @@ FUNC(getGear) = {
 
 FUNC(replaceGear) = {
     params["_unit", "_itemToReplace", "_itemReplaceWith"];
-    
-    private _assignedItems = assignedItems _unit;    
+
+    private _assignedItems = assignedItems _unit;
     if(_itemToReplace in _assignedItems) then {
         _unit unassignItem _itemToReplace;
     };
-    
+
     // Remove and replace in correct container
     private _uniformItems = uniformItems _unit;
     if(_itemToReplace in _uniformItems) exitWith {
@@ -268,21 +267,21 @@ FUNC(replaceGear) = {
         _unit removeItem _itemToReplace;
         _unit addItemToVest _itemReplaceWith;
     };
-    
+
     private _backpackItems = backpackitems _unit;
     if(_itemToReplace in _backpackItems) exitWith {
         _unit removeItem _itemToReplace;
         _unit addItemToBackpack _itemReplaceWith;
     };
-    
+
     private _weapons = weapons _unit;
     if(_itemToReplace in _weapons) exitWith {
         _unit removeWeapon _itemToReplace;
         _unit addWeapon _itemReplaceWith;
     };
-    
+
     //private _allItems = items _unit;
-    
+
     // Total fallback for replacement if its somehow not in any container, but still on them?
     // Somehow, SSG was getting massive duplicate radios because it was not being replaced above
     // So it somehow wasnt ItemRadio, but was assigned, and not being assigned, and not in a container.
@@ -560,7 +559,7 @@ FAST_HASH_CREATED_HASHES_NEW = [];
 FAST_HASH_GC_IGNORE = ["fast_hash_gc_found_objects","fast_hash_gc_found_arrays","fast_hash_created_hashes","fast_hash_gc_check_objects","fast_hash_created_hashes_new","fast_hash_var_state","fast_hash_pool","fast_hash_to_delete"];
 FAST_HASH_GC_ORPHAN_CHECK_INDEX = 0;
 _garbageCollector = {
-    
+
     if(count FAST_HASH_CREATED_HASHES_NEW < ((count FAST_HASH_CREATED_HASHES)*0.1)/2) exitWith {};
     // diag_log text format["---------------------------------------------------"];
     private ["_x", "_init_time", "_var_name", "_array", "_name"];
@@ -568,11 +567,11 @@ _garbageCollector = {
     while {diag_tickTime - _init_time < 0.001 && {FAST_HASH_GC_INDEX < FAST_HASH_VAR_LENGTH}} do {
         _var_name = FAST_HASH_VAR_STATE select FAST_HASH_GC_INDEX;
         _x = missionNamespace getVariable [_var_name, nil];
-        
+
         FAST_HASH_GC_INDEX = FAST_HASH_GC_INDEX + 1;
         if(!(_var_name in FAST_HASH_GC_IGNORE)) then {
             if(IS_HASH(_x)) then {
-                
+
                 FAST_HASH_GC_FOUND_OBJECTS pushBack _x;
             } else {
                 if(IS_ARRAY(_x)) then {
@@ -600,7 +599,7 @@ _garbageCollector = {
         } forEach _array;
     };
     // diag_log text format["GC Arrays Left: %1", (count FAST_HASH_GC_FOUND_ARRAYS)];
-    
+
     _init_time = diag_tickTime;
     while {diag_tickTime - _init_time < 0.001 && {(count FAST_HASH_GC_FOUND_OBJECTS) > 0}} do {
         _hash = FAST_HASH_GC_FOUND_OBJECTS deleteAt 0;
@@ -619,7 +618,7 @@ _garbageCollector = {
         } forEach _array;
     };
     // diag_log text format["GC Hashes Left: %1", (count FAST_HASH_GC_FOUND_OBJECTS)];
-    
+
     if(FAST_HASH_GC_INDEX >= FAST_HASH_VAR_LENGTH && {(count FAST_HASH_GC_FOUND_ARRAYS) <= 0} && {(count FAST_HASH_GC_FOUND_OBJECTS) <= 0}) then {
         if(FAST_HASH_GC_ORPHAN_CHECK_INDEX < (count FAST_HASH_CREATED_HASHES)) then {
             _init_time = diag_tickTime;
@@ -643,7 +642,7 @@ _garbageCollector = {
             FAST_HASH_GC_ORPHAN_CHECK_INDEX = 0;
         };
     };
-    
+
 };
 [_garbageCollector, 0.25, []] call cba_fnc_addPerFrameHandler;
 
