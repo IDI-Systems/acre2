@@ -3,7 +3,6 @@
 NO_DEDICATED;
 ADDON = false;
 
-PREP(addKeyHandlerFromConfig);
 PREP(addLanguageType);
 PREP(aliveMonitor);
 PREP(callExt);
@@ -24,18 +23,11 @@ PREP(handleGetHeadVector);
 PREP(handleGetPluginVersion);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
-PREP(interactMenu_deadMenu);
-PREP(interactMenu);
-PREP(intToStr);
 PREP(isMuted);
-PREP(keyboardEvent);
-PREP(loadConfig);
 PREP(localStartSpeaking);
 PREP(localStopSpeaking);
-PREP(moveLips);
 PREP(muting);
 PREP(onPlayerKilled);
-PREP(parseIni);
 PREP(pong);
 PREP(processDirectSpeaker);
 PREP(processRadioSpeaker);
@@ -63,9 +55,6 @@ PREP(onRevealUnit);
 *
 *
 */
-DGVAR(spect_muteDead) = false;
-DGVAR(spect_muteAlive) = false;
-PREP(interactMenu_deadMenu_actions);
 
 // globals
 DGVAR(lowered) = 0;
@@ -87,10 +76,6 @@ DGVAR(threadedExtCalls) = [];
 DGVAR(nearRadios) = [];
 
 DGVAR(pttKeyDown) = false;
-
-DGVAR(keyboardEventsDown) = HASH_CREATE;
-DGVAR(keyboardEventsUp) = HASH_CREATE;
-DGVAR(keyboardEvents) = HASH_CREATE;
 
 DGVAR(speaking_cache_valid) = false;
 
@@ -171,14 +156,14 @@ DFUNC(formatNumber) = {
     format["%1%2.%3", ["","-"] select (_this < 0), (floor (abs _this)), _str];
 };
 
-_monitorFnc = {
-    _res = ["fetch_result", ""] call FUNC(callExt);
+private _monitorFnc = {
+    private _res = ["fetch_result", ""] call FUNC(callExt);
     while {!isNil "_res"} do {
         // diag_log text format["RES: %1", _res];
-        _id = _res select 0;
-        _callBack = GVAR(threadedExtCalls) select _id;
+        private _id = _res select 0;
+        private _callBack = GVAR(threadedExtCalls) select _id;
         if(IS_ARRAY(_callBack)) then {
-            _args = (_res select 1);
+            private _args = (_res select 1);
             if(count _args > 0) then {
                 _args = _args select 0;
             };

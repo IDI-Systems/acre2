@@ -21,7 +21,7 @@
 params ["_command", "_params", ["_threaded", false], ["_callBack",{}], ["_callBackArgs",[]]];
 
 private _paramsString = "";
-_res = nil;
+
 if(IS_ARRAY(_params)) then {
     private _arrayParams = _params;
     {
