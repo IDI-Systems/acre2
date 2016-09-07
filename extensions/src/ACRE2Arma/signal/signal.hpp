@@ -114,11 +114,13 @@ namespace acre {
 
                 if (!acre::signal::antenna_library::get().get_antenna(tx_antenna_name, tx_antenna)) {
                     result = "[]";
+                    LOG(INFO) << "MISSING ANTENNA FROM LIBRARY: " << tx_antenna_name;
                     return true;
                 }
 
                 if (!acre::signal::antenna_library::get().get_antenna(rx_antenna_name, rx_antenna)) {
                     result = "[]";
+                    LOG(INFO) << "MISSING ANTENNA FROM LIBRARY: " << rx_antenna_name;
                     return true;
                 }
 
