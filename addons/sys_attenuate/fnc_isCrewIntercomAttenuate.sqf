@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks if the unit should be heard on vehicle intercom or not for the local player.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: unit to be evaluated <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * is other unit speaking on intercom <Boolean>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [unit] call acre_sys_attenuate_fnc_isCrewIntercomAttenuate
  *
  * Public: No
  */
