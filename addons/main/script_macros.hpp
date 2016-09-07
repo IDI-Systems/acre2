@@ -176,16 +176,10 @@ Antenna Defines
 
 #define FUNC(var1) {private ['_ret']; if(ACRE_IS_ERRORED) then { ['AUTO','AUTO'] call ACRE_DUMPSTACK_FNC; ACRE_IS_ERRORED = false; }; ACRE_IS_ERRORED = true; ACRE_STACK_TRACE set [ACRE_STACK_DEPTH, [diag_tickTime, __FILE__, __LINE__, ACRE_CURRENT_FUNCTION, 'TRIPLES(ADDON,fnc,var1)', _this]]; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH + 1; ACRE_CURRENT_FUNCTION = 'TRIPLES(ADDON,fnc,var1)'; _ret = _this call TRIPLES(ADDON,fnc,var1); ACRE_STACK_DEPTH = ACRE_STACK_DEPTH - 1; ACRE_IS_ERRORED = false; _ret;}
 #define EFUNC(var1,var2) {private ['_ret']; if(ACRE_IS_ERRORED) then { ['AUTO','AUTO'] call ACRE_DUMPSTACK_FNC; ACRE_IS_ERRORED = false; }; ACRE_IS_ERRORED = true; ACRE_STACK_TRACE set [ACRE_STACK_DEPTH, [diag_tickTime, __FILE__, __LINE__, ACRE_CURRENT_FUNCTION, 'TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)', _this]]; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH + 1; ACRE_CURRENT_FUNCTION = 'TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)'; _ret = _this call TRIPLES(DOUBLES(PREFIX,var1),fnc,var2); ACRE_STACK_DEPTH = ACRE_STACK_DEPTH - 1; ACRE_IS_ERRORED = false; _ret;}
-
 #else
 #define CALLSTACK(function) function
 #define CALLSTACK_NAMED(function, functionName) function
 #define DUMPSTACK
-
-#define FUNC(var1) TRIPLES(ADDON,fnc,var1)
-#define EFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
-
-
 #endif
 
 
@@ -240,13 +234,17 @@ Antenna Defines
 #define LOG_COUNT(name, count, value)    [name, count, value] call acre_sys_debug_countLog
 #endif
 
-// #define PUSH(arr, val)    arr set[(count arr), val]
-#define PUSH(arr, val)    arr pushBack val
+#undef ARR_1
 #define ARR_1(val1)                                    [val1]
+#undef ARR_2
 #define ARR_2(val1, val2)                            [val1, val2]
+#undef ARR_3
 #define ARR_3(val1, val2, val3)                        [val1, val2, val3]
+#undef ARR_4
 #define ARR_4(val1, val2, val3, val4)                [val1, val2, val3, val4]
+#undef ARR_5
 #define ARR_5(val1, val2, val3, val4, val5)            [val1, val2, val3, val4, val5]
+#undef ARR_6
 #define ARR_6(val1, val2, val3, val4, val5, val6)    [val1, val2, val3, val4, val5, val6]
 
 

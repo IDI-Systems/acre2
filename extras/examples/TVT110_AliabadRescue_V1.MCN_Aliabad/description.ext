@@ -1,0 +1,41 @@
+// Disable CBA caching
+class CfgSettings {
+	class CBA {
+		class Caching {
+			compile = 0;
+			xeh = 0;
+			functions = 0;
+		};
+	};
+};
+
+// Mission Headers
+
+class Header{
+	gameType = Seize;
+	minPlayers = 75;
+	maxPlayers = 110;
+};
+
+
+#include "tb3_loadouts.hpp"
+#include "CfgParameters.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgEndings.hpp"
+
+// Respawn Settings
+loadScreen = "data\uoLogo.jpg";
+onLoadName = "TVT110 Aliabad Rescue v1";
+onLoadMission = "";
+author = "jaynus, Toadball";
+onLoadMissionTime = true;
+
+// Setting
+disabledAI = 1;
+respawnButton = 0;
+respawn = "BASE";
+respawnDialog = 1;
+respawndelay = 5;
+
+// Debug
+enabledebugconsole = 1;

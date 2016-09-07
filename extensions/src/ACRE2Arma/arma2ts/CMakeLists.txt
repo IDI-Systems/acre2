@@ -10,3 +10,7 @@ file(GLOB_RECURSE SOURCES *.h *.hpp *.c *.cpp)
 add_library( ${ACRE_NAME} MODULE ${SOURCES})
 set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2Arma)
 
+# Copy to root and rename
+add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../ACRE2ArmA.dll
+)
