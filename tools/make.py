@@ -51,6 +51,7 @@ import traceback
 import time
 import timeit
 import re
+import fileinput
 
 from tempfile import mkstemp
 
@@ -76,7 +77,7 @@ signature_blacklist = []
 importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md"]
 extrasFiles = ["examples", "vcredist", "Wav2B64.exe"]
 steamFiles = ["extras\\ACRE2Steam.dll"]
-versionFiles = ["README.md"]
+versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h"]
 extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
 extensions64 = ["ACRE2\\ACRE2TS"]
 
@@ -645,26 +646,19 @@ def get_project_version():
 
 
 def replace_file(filePath, oldSubstring, newSubstring):
-    #Create temp file
-    fh, absPath = mkstemp()
-    with open(absPath,'w') as newFile:
-        with open(filePath) as oldFile:
-            for line in oldFile:
-                newFile.write(line.replace(oldSubstring, newSubstring))
-    newFile.close()
-    #Remove original file
-    os.remove(filePath)
-    #Move new file
-    shutil.move(absPath, filePath)
+    for line in fileinput.input(filePath, inplace=True):
+        # Use stdout directly, print() adds newlines automatically
+        sys.stdout.write(line.replace(oldSubstring,newSubstring))
 
 
 def set_version_in_files():
     newVersion = project_version # MAJOR.MINOR.PATCH.BUILD
-    newVersionShort = newVersion[:-2] # MAJOR.MINOR.PATCH
+    newVersionArr = newVersion.split(".")
+    newVersionShort = ".".join((newVersionArr[0],newVersionArr[1],newVersionArr[2])) # MAJOR.MINOR.PATCH
 
     # Regex patterns
-    pattern = re.compile(r"(\b[0\.-9]+\b\.[0\.-9]+\b\.[0\.-9]+\b\.[0\.-9]+)") # MAJOR.MINOR.PATCH.BUILD
-    patternShort = re.compile(r"(\b[0\.-9]+\b\.[0\.-9]+\b\.[0\.-9]+)") # MAJOR.MINOR.PATCH
+    pattern = re.compile(r"([\d]+\.[\d]+\.[\d]+\.[\d]+)") # MAJOR.MINOR.PATCH.BUILD
+    patternShort = re.compile(r"([\d]+\.[\d]+\.[\d]+)") # MAJOR.MINOR.PATCH
 
     # Change versions in files containing version
     for i in versionFiles:
@@ -678,27 +672,37 @@ def set_version_in_files():
                 f.close()
 
                 if fileText:
-                    # Search and save version stamp, search short if long not found
-                    versionFound = re.findall(pattern, fileText)
-                    if not versionFound:
-                        versionFound = re.findall(patternShort, fileText)
+                    # Extension version file
+                    if "ACRE_VERSION_" in fileText:
+                        print_green("Changing extension version => {} in {}".format(newVersion, filePath))
+                        with open(filePath, "w") as file:
+                            file.writelines([
+                                "#define ACRE_VERSION_MAJOR {}\n".format(newVersionArr[0]),
+                                "#define ACRE_VERSION_MINOR {}\n".format(newVersionArr[1]),
+                                "#define ACRE_VERSION_SUBMINOR {}\n".format(newVersionArr[2]),
+                                "#define ACRE_VERSION_BUILD {}".format(newVersionArr[3])
+                            ])
+                        continue
+
+                    # Version string files
+                    # Search and save version stamp
+                    versionsFound = re.findall(pattern, fileText) + re.findall(patternShort, fileText)
+                    # Filter out sub-versions of other versions
+                    versionsFound = [j for i, j in enumerate(versionsFound) if all(j not in k for k in versionsFound[i + 1:])]
 
                     # Replace version stamp if any of the new version parts is higher than the one found
-                    if versionFound:
-                        # First item in the list findall returns
-                        versionFound = versionFound[0]
+                    for versionFound in versionsFound:
+                        if versionFound:
+                            # Use the same version length as the one found
+                            if len(versionFound) == len(newVersion):
+                                newVersionUsed = newVersion
+                            if len(versionFound) == len(newVersionShort):
+                                newVersionUsed = newVersionShort
 
-                        # Use the same version length as the one found
-                        if len(versionFound) == len(newVersion):
-                            newVersionUsed = newVersion
-                        if len(versionFound) == len(newVersionShort):
-                            newVersionUsed = newVersionShort
-
-                        # Print change and modify the file if changed
-                        if versionFound != newVersionUsed:
-                            print_green("Changing version {} => {} in {}".format(versionFound, newVersionUsed, filePath))
-                            replace_file(filePath, versionFound, newVersionUsed)
-
+                            # Print change and modify the file if changed
+                            if newVersionUsed and versionFound != newVersionUsed:
+                                print_green("Changing version {} => {} in {}".format(versionFound, newVersionUsed, filePath))
+                                replace_file(filePath, versionFound, newVersionUsed)
         except WindowsError as e:
             # Temporary file is still "in use" by Python, pass this exception
             pass
@@ -906,12 +910,9 @@ See the make.cfg file for additional build options.
 
     if "release" in argv:
         make_release_zip = True
-        release_version = argv[argv.index("release") + 1]
-        argv.remove(release_version)
         argv.remove("release")
     else:
         make_release_zip = False
-        release_version = project_version
 
     if "target" in argv:
         make_target = argv[argv.index("target") + 1]
