@@ -16,13 +16,12 @@
  */
 #include "script_component.hpp"
 
-private["_type", "_ret", "_weapon"];
 params["_unit"];
 
-_ret = false;
+private _ret = false;
 
 {
-    _weapon = _x;
+    private _weapon = _x;
     _ret = [_weapon] call FUNC(isBaseRadio);
     if(_ret) exitWith { _ret };
 } foreach ([_unit] call EFUNC(lib,getGear));

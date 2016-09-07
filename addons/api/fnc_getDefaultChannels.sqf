@@ -16,13 +16,12 @@
  */
 #include "script_component.hpp"
 
-private["_preset", "_presetData"];
 params["_radioClass"];
 
 hintSilent "WARNING: ACRE API getDefaultChannels is depricated. Please use getPresetData";
 diag_log text format ["WARNING: ACRE API getDefaultChannels is depricated. Please use getPresetData"];
 
-_preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
-_presetData = [_radioClass, _preset] call EFUNC(sys_data,getPresetData);
+private _preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
+private _presetData = [_radioClass, _preset] call EFUNC(sys_data,getPresetData);
 
 _presetData

@@ -16,13 +16,11 @@
  */
 #include "script_component.hpp"
 
-private["_key", "_fnc", "_currentPresets"];
-
 params["_handlerarray", "_preset"];
 
-_key = _handlerarray select 1;
+private _key = _handlerarray select 1;
 
-_fnc = 1; //0=Load; 1=Save
+private _fnc = 1; //0=Load; 1=Save
 //Read out the current KnobPositions via DataEvent | need to make a full copy of the array
 if(_key == 0) then {
     _fnc = 0;
@@ -30,16 +28,15 @@ if(_key == 0) then {
 
 //Select Presetarray
 //Get the full Preset array [[x,y],[u,v]]
-_currentPresets = GET_STATE(currentPreset);
+private _currentPresets = GET_STATE(currentPreset);
 
 
 if(_fnc == 0) exitWith {
 
-private["_currentPreset", "_newTuneKnobsPosition"];
 //Select array according to preset handler (left,right) [x,y]
-_currentPreset = _currentPresets select _preset;
+private _currentPreset = _currentPresets select _preset;
 //Copy the new presetarray to the knobs position [x,y]
-_newTuneKnobsPosition = + _currentPreset;
+private _newTuneKnobsPosition = + _currentPreset;
 //Set the tuneknobsposition
 ["setCurrentChannel", _newTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);
 
@@ -50,13 +47,12 @@ _newTuneKnobsPosition = + _currentPreset;
 
 
 if(_fnc == 1) exitWith {
-private["_currentTuneKnobsPosition", "_newPreset", "_newPresets"];
 //Read out current TuneKnobsPosition
-_currentTuneKnobsPosition = GET_STATE(currentChannel);
+private _currentTuneKnobsPosition = GET_STATE(currentChannel);
 //Define new preset
-_newPreset = + _currentTuneKnobsPosition;
+private _newPreset = + _currentTuneKnobsPosition;
 //Write in the presets array
-_newPresets = + _currentPresets;
+private _newPresets = + _currentPresets;
 (_newPresets select _preset) set [0, _newPreset select 0];
 (_newPresets select _preset) set [1, _newPreset select 1];
 SET_STATE(currentPreset, _newPresets);

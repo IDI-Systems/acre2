@@ -16,13 +16,11 @@
  */
 #include "script_component.hpp"
 
-private["_currentVolume", "_key", "_shift", "_dir", "_newVolume"];
-
-_key = _this select 1;
-_shift = _this select 4;
+private _key = _this select 1;
+private _shift = _this select 4;
 
 //Read out the key pressed (left/right mousebutton) and define the volume increase/decrease
-_dir = -1;
+private _dir = -1;
 if(_key == 0) then {
     _dir = 1;
 };
@@ -33,11 +31,11 @@ _dir = _dir*5;
 };
 
 //Read out the currentVolume via DataEvent
-_currentVolume = GET_STATE(volume);
+private _currentVolume = GET_STATE(volume);
 _currentVolume = _currentVolume * 10;
 
 //Define and set new volume
-_newVolume = ((_currentVolume + _dir) max 0) min 10;
+private _newVolume = ((_currentVolume + _dir) max 0) min 10;
 ["setVolume", _newVolume*0.1] call CALLSTACK(GUI_DATA_EVENT);
 
 //Play ClickSound and render dialog

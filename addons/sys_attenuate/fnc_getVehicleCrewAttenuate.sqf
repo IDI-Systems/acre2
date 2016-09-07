@@ -16,27 +16,24 @@
  */
 #include "script_component.hpp"
 
-private["_attenuateClass", "_ret", "_unitRet", "_selfRet", "_unitPositionClass", "_selfPositionClass", "_unitTurnedOut", "_selfTurnedOut"];
 params["_vehicle", "_self", "_unit"];
 
-_ret = 0;
+private _ret = 0;
 
-_attenuateClass = [_vehicle] call FUNC(getVehicleAttenuateClass);
-_selfPositionClass = [_self, _vehicle] call FUNC(getVehiclePositionClass);
-_selfTurnedOut = isTurnedOut _self;
+private _attenuateClass = [_vehicle] call FUNC(getVehicleAttenuateClass);
+private _selfPositionClass = [_self, _vehicle] call FUNC(getVehiclePositionClass);
+private _selfTurnedOut = isTurnedOut _self;
+private _unitTurnedOut = false;
+private _unitPositionClass = _unit;
 
-_unitTurnedOut = false;
-_unitPositionClass = _unit;
 if(IS_OBJECT(_unit)) then {
     _unitPositionClass = [_unit, _vehicle] call FUNC(getVehiclePositionClass);
     _unitTurnedOut = isTurnedOut _unitTurnedOut;
 };
 
 // Get this value based on whether we are turned out or inside
-_selfRet = 0;
-_unitRet = 0;
-
-
+private _selfRet = 0;
+private _unitRet = 0;
 
 if(!(isNil "_selfTurnedOut")) then {
     // load up the attenuation class from the main root

@@ -38,9 +38,8 @@ TRACE_4("", _currentChannelId, _currentChannelData, _optChannelId, _opt);
 if(!(isNil "_optChannelId") && !(isNil "_opt")) then {
     if(_optChannelId == _currentChannelId) then {
         {
-            private["_value", "_key"];
-            _key = _x;
-            _value = HASH_GET(_opt, _x);
+            private _key = _x;
+            private _value = HASH_GET(_opt, _x);
 
             HASH_SET(_currentChannelData, _key, _value);
         } forEach HASH_KEYS(_opt);

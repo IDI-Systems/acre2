@@ -31,24 +31,23 @@ GVAR(NumpadMap_frequency) = [
 
 DFUNC(doFrequencyButton) = {
     //TRACE_1(QUOTE(FUNC(doNumberButton)), _this);
-    private["_number", "_value", "_remainder", "_factor"];
 
     params["_menu", "_event"];
 
-    _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
+    private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
 
-    _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
-    _floatValue = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequency", 0.0);
-    _value = ["frequency", _floatValue] call FUNC(formatChannelValue);
+    private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
+    private _floatValue = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequency", 0.0);
+    private _value = ["frequency", _floatValue] call FUNC(formatChannelValue);
 
-    _number = parseNumber (_event select 0);
-    _key = _event select 0;
+    private _number = parseNumber (_event select 0);
+    private _key = _event select 0;
 
     TRACE_1("", _number);
     if(_number > -1 && _number < 10) then {
 
-        _arr = toArray _value;
-        _character = _arr select _editIndex;
+        private _arr = toArray _value;
+        private _character = _arr select _editIndex;
 
         _character = ( toArray ((GVAR(NumpadMap_frequency) select _number) select 0) select 0);
         TRACE_3("Values", _character, _number, _arr);
@@ -82,10 +81,9 @@ DFUNC(doFrequencyButton) = {
 
 DFUNC(onButtonPress_Frequency) = {
     //TRACE_1(QUOTE(FUNC(onButtonPress_Frequency)), _this);
-    private["_value"];
     params["_menu", "_event"];
 
-    _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequency", 0.0);
+    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequency", 0.0);
 
     TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!", (_event select 0));
     switch (_event select 0) do {
@@ -100,8 +98,8 @@ DFUNC(onButtonPress_Frequency) = {
         case '9': { _this call FUNC(doFrequencyButton); };
         case '0': { _this call FUNC(doFrequencyButton); };
         case 'LEFT': {
-            _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
-            _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
+            private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
             if(_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
@@ -124,8 +122,8 @@ DFUNC(onButtonPress_Frequency) = {
             [_menu] call FUNC(renderMenu_Frequency);
         };
         case 'RIGHT': {
-            _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
-            _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
+            private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
             if(_editIndex+1 < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
@@ -151,7 +149,7 @@ DFUNC(onButtonPress_Frequency) = {
             // swap to the parent
             TRACE_1("onButtonPress_Frequency: ENT hit", _value);
 
-            _saveName = MENU_SELECTION_VARIABLE(_menu);
+            private _saveName = MENU_SELECTION_VARIABLE(_menu);
             SET_STATE(_saveName, _value);
 
             SCRATCH_SET(GVAR(currentRadioId), "menuFrequency", 0);
@@ -190,31 +188,29 @@ DFUNC(onButtonPress_Frequency) = {
 
 DFUNC(renderMenu_Frequency) = {
     //TRACE_1(QUOTE(FUNC(renderMenu_Frequency)), _this);
-    private["_displaySet", "_value", "_editIndex", "_strValue"];
     params["_menu"]; // the menu to render is passed
-    _displaySet = MENU_SUBMENUS(_menu);
+    private _displaySet = MENU_SUBMENUS(_menu);
 
-    _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
-    _freqValue = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequency", 0.0);
+    private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
+    private _freqValue = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequency", 0.0);
 
-    _value = ["frequency", _freqValue] call FUNC(formatChannelValue);
+    private _value = ["frequency", _freqValue] call FUNC(formatChannelValue);
     TRACE_2("Formatted frequency", _freqValue, _value);
 
     // Check the current digit. If its a dot, we should skip it.
     // Dot as a DEC value of 46
-        TRACE_1("Digit was a dot, moving forward", _editIndex);
+    TRACE_1("Digit was a dot, moving forward", _editIndex);
     if( ((toArray _value) select _editIndex) == 46) then {
         _editIndex = _editIndex + 1;
     };
 
-    _valueHash = HASH_CREATE;
+    private _valueHash = HASH_CREATE;
     HASH_SET(_valueHash, "1", _value);
     TRACE_1("Pushed value hash", _value);
 
     [] call FUNC(clearDisplay);
     if(!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
         {
-            private["_format", "_renderString"];
             // Data selection row
             [(_x select 0),
              (_x select 2),
@@ -224,7 +220,7 @@ DFUNC(renderMenu_Frequency) = {
     };
 
     [ROW_SMALL_1, MENU_PATHNAME(_menu)] call FUNC(renderText);        // Header line
-    _editLocation = (MENU_SELECTION_DISPLAYSET(_menu) select 3);    // cursor location from the config
+    private _editLocation = (MENU_SELECTION_DISPLAYSET(_menu) select 3);    // cursor location from the config
     TRACE_1("Rendered, pushing cursor", _editLocation);
 
     [(_editLocation select 0),

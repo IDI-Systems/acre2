@@ -18,9 +18,7 @@
 
 TRACE_1("", _this);
 
-private["_action"];
-
-_action = _this select 0;
+params["_action"];
 
 switch (_action) do {
     case "toggledead": {

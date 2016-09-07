@@ -16,20 +16,19 @@
  */
 #include "script_component.hpp"
 
-private["_radioList", "_listId", "_curIndex", "_radioClass", "_activeRadio", "_oblix", "_freq", "_baseConfig", "_realRadio", "_typeName"];
-_radioList = _this select 0;
+params["_radioList"];
 
-_listId = 20100;
+private _listId = 20100;
 lbClear _listId;
-_curIndex = 0;
+private _curIndex = 0;
 
 // Populate local radio list
 {
-    _radioClass = _x;
-    _freq = [_radioClass, "getListInfo"] call EFUNC(sys_data,dataEvent);
-    _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _radioClass);
-    _realRadio = configName ( _baseConfig );
-    _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
+    private _radioClass = _x;
+    private _freq = [_radioClass, "getListInfo"] call EFUNC(sys_data,dataEvent);
+    private _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _radioClass);
+    private _realRadio = configName ( _baseConfig );
+    private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
 
     lbAdd [_listId, format["%1   Freq: %2Mhz",_typeName,_freq]];
     lbSetData [_listId, _curIndex, _radioClass];

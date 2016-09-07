@@ -16,12 +16,10 @@
  */
 #include "script_component.hpp"
 
-private["_baseRadio"];
 params["_radioId", "_fieldName"];
 
-
 TRACE_1("CALLING", "");
-_baseRadio = [_radioId] call FUNC(getBaseRadio);
+private _baseRadio = [_radioId] call FUNC(getBaseRadio);
 TRACE_1("", _baseRadio);
 switch _baseRadio do {
     case "ACRE_PRC148": {

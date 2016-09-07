@@ -16,8 +16,6 @@
  */
 #include "script_component.hpp"
 
-private["_ret"];
-
-_ret = [(_this select 0)] call EFUNC(sys_radio,getRadioSpatial);
+private _ret = [(_this select 0)] call EFUNC(sys_radio,getRadioSpatial);
 
 _ret

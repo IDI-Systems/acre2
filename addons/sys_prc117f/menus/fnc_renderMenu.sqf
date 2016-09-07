@@ -16,13 +16,12 @@
  */
 #include "script_component.hpp"
 
-private["_menuId"];
 TRACE_1("renderMenu", _this);
 params ["_menu", "_callerMenu"];  // the menu to render is passed
 
 [] call FUNC(clearDisplay);
 
-_menuId = MENU_ID(_menu);
+private _menuId = MENU_ID(_menu);
 if(isNil "_menuId") then {
     SET_STATE("currentRenderMenu", _menu);
 } else {

@@ -16,11 +16,9 @@
  */
 #include "script_component.hpp"
 
-private["_prefix"];
-
 params["_type",["_message",""],["_id","ccddeeff"]];
 
-_prefix = PACKET_PREFIX;
+private _prefix = PACKET_PREFIX;
 
 TRACE_4("Created packet ", _prefix, _type, _id, _message);
 format["%1%2%3%4", _prefix, _type, _id, _message]

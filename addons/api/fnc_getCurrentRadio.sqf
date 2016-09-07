@@ -16,7 +16,5 @@
  */
 #include "script_component.hpp"
 
-private["_radio"];
-
 if(isNil "ACRE_ACTIVE_RADIO") exitWith { "" };
 ACRE_ACTIVE_RADIO

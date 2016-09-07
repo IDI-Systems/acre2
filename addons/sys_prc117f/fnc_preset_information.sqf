@@ -16,37 +16,33 @@
  */
 #include "script_component.hpp"
 
-private["_presetData", "_channels", "_usedPresetFrequencies"];
-
 // channels information
-_presetData = HASH_CREATE;
-_channels = HASHLIST_CREATELIST(["frequencyTX"]);
-_usedPresetFrequencies = [];
+private _presetData = HASH_CREATE;
+private _channels = HASHLIST_CREATELIST(["frequencyTX"]);
+private _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
-    private["_frequency", "_ok", "_find", "_channel"];
-    _frequency = 0;
+    private _frequency = 0;
     _frequency = (950+(_i*2))*0.0625;
     if(!(_frequency in _usedPresetFrequencies)) then {
-        _ok = true;
+        private _ok = true;
         {
             if(abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
         if(_ok || (count _usedPresetFrequencies) == 0) then {
-            _find = false;
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
     // The above frequency generation is taken from the 148 so we match.
 
-    _channel = HASHLIST_CREATEHASH(_channels);
+    private _channel = HASHLIST_CREATEHASH(_channels);
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    _desc = format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+    private _desc = format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"name",_desc);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
@@ -71,30 +67,28 @@ _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
 _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
-    private["_frequency", "_ok", "_find", "_channel"];
-    _frequency = 0;
+    private _frequency = 0;
     _frequency = (950+200+(_i*2))*0.0625;
     if(!(_frequency in _usedPresetFrequencies)) then {
-        _ok = true;
+        private _ok = true;
         {
             if(abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
         if(_ok || (count _usedPresetFrequencies) == 0) then {
-            _find = false;
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
     // The above frequency generation is taken from the 148 so we match.
 
-    _channel = HASHLIST_CREATEHASH(_channels);
+    private _channel = HASHLIST_CREATEHASH(_channels);
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"name",_desc);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
@@ -118,30 +112,28 @@ _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
 _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
-    private["_frequency", "_ok", "_find", "_channel"];
-    _frequency = 0;
+    private _frequency = 0;
     _frequency = (950+400+(_i*2))*0.0625;
     if(!(_frequency in _usedPresetFrequencies)) then {
-        _ok = true;
+        private _ok = true;
         {
             if(abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
         if(_ok || (count _usedPresetFrequencies) == 0) then {
-            _find = false;
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
     // The above frequency generation is taken from the 148 so we match.
 
-    _channel = HASHLIST_CREATEHASH(_channels);
+    private _channel = HASHLIST_CREATEHASH(_channels);
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"name",_desc);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
@@ -165,30 +157,28 @@ _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
 _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
-    private["_frequency", "_ok", "_find", "_channel"];
-    _frequency = 0;
+    private _frequency = 0;
     _frequency = (950+600+(_i*2))*0.0625;
     if(!(_frequency in _usedPresetFrequencies)) then {
-        _ok = true;
+        private _ok = true;
         {
             if(abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
         if(_ok || (count _usedPresetFrequencies) == 0) then {
-            _find = false;
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
     // The above frequency generation is taken from the 148 so we match.
 
-    _channel = HASHLIST_CREATEHASH(_channels);
+    private _channel = HASHLIST_CREATEHASH(_channels);
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"name",_desc);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
