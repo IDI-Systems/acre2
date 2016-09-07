@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 disableSerialization;
 _listId = 20100;
 _listControl = ((findDisplay 20099) displayCtrl 20100);

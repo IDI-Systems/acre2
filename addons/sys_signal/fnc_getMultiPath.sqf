@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 #define MAX_REFLECTIONS 1
 _startTime = diag_tickTime;
 private ["_rxAntenna", "_txPos", "_txAntenna", "_mW", "_f", "_txObj", "_sinadRating", "_waveLength", "_vector", "_rxPos",

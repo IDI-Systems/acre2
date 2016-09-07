@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 // _this = [radioId, eventType, data]
 private ["_params"];
 _params = ["CfgAcrePhysicalInterface"];

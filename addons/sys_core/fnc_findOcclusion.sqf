@@ -14,9 +14,6 @@
  *
  * Public: No
  */
-
-
-// #define MAX_THICKNESS 1.0
 #include "script_component.hpp"
 
 params ["_startPos", "_endPos", "_unit"];

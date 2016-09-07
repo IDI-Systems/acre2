@@ -14,9 +14,6 @@
  *
  * Public: No
  */
- 
-// #define DEBUG_MODE_FULL
-//#define ACRE_PERFORMANCE_COUNTERS
 #include "script_component.hpp"
 
 GVAR(lastFrameRender) = COMPAT_diag_tickTime;

@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("createMenu", _this);
 private["_menu", "_x", "_subMenuList", "_menuId"];
 params["_menu"];

@@ -14,10 +14,6 @@
  *
  * Public: No
  */
-
-//#define ACRE_PERFORMANCE_COUNTERS
-// #define DEBUG_MODE_FULL
-
 #include "script_component.hpp"
 GVAR(persistAlive) = 1;
 GVAR(lastRadioTime) = time + 0.25;

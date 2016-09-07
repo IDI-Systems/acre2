@@ -14,7 +14,6 @@
  *
  * Public: No
  */
- 
 #include "script_component.hpp"
 
 //I am not using the API for getting the volume because that could

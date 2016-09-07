@@ -35,7 +35,6 @@
  *  Returned parameters:
  *      Number (zero-based) of current channel
 */
-
 #include "script_component.hpp"
 
 params ["_radioId", "_event", "_eventData", "_radioData"];

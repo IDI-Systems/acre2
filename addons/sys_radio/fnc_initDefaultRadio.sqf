@@ -16,7 +16,6 @@
  */
 #include "script_component.hpp"
 
-
 LOG("INITIALIZING DEFAULT RADIO");
 TRACE_1("", _this);
 params["_radioId", ["_preset", "default"]];

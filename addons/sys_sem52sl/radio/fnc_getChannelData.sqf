@@ -36,7 +36,6 @@
  *  Returned parameters:
  *      Hash containing all data of parsed channel number
 */
-
 #include "script_component.hpp"
 
 params ["_radioId", "_event", "_eventData", "_radioData"];

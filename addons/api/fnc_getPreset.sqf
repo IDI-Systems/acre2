@@ -16,7 +16,6 @@
  */
 #include "script_component.hpp"
 
-
 private["_preset"];
 params["_radioClass"];
 

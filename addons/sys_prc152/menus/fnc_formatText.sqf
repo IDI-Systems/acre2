@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("formatText", _this);
 private["_hash", "_formatStringFunc", "_channelNumber", "_channel", "_channels", "_result", "_iter", "_dash", "_space", "_key", "_value", "_replacementValue"];
 params ["_text"];

@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("changeMenu ENTER", "");
 private["_oldMenu", "_menuId"];
 params["_newMenu"];

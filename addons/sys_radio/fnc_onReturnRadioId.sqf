@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 LOG("HIT CALLBACK");
 
 params["_player", "_class", "_returnIdNumber", "_replacementId"];

@@ -15,7 +15,6 @@
  * Public: No
  */
 #define FORMAT_NUMBER(num) (num call FUNC(formatNumber))
-
 #include "script_component.hpp"
 
 params["_name","_params"];

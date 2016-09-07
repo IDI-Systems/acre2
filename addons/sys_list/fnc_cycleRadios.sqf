@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 LOG("HIT CYCLE RADIO");
 if(!dialog) then {
     private["_radios", "_count", "_newRadioIndex", "_activeRadio", "_activateRadio", "_oblix",

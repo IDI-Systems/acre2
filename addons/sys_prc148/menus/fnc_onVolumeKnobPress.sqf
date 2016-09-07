@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 #define RADIO_CTRL(var1) (MAIN_DISPLAY displayCtrl var1)
 
 

@@ -14,8 +14,6 @@
  *
  * Public: No
  */
-
-// #define ACRE_PERFORMANCE_COUNTERS
 #include "script_component.hpp"
 BEGIN_COUNTER(process_radio_speaker);
 private["_okRadios", "_functionName"];

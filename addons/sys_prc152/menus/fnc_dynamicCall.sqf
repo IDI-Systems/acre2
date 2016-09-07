@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("dynamicCall", _this);
 private["_func", "_ret"];
 params["_funcName", "_var"];

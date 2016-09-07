@@ -16,10 +16,6 @@
  */
 #include "script_component.hpp"
 
-
-
-
-
 disableSerialization;
 GVAR(currentRadioId) = _this select 0;
 createDialog "PRC148_RadioDialog";

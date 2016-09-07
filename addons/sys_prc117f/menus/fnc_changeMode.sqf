@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("changeMode", _this);
 
 _mode = GET_STATE_DEF("knobPosition", 1);

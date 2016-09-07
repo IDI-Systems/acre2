@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("renderMenu", _this);
 params ["_menu", "_callerMenu"]; // the menu to render is passed
 

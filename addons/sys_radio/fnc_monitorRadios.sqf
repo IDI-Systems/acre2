@@ -16,7 +16,6 @@
  */
 #include "script_component.hpp"
 
-
 GVAR(oldUniqueItemList) = [];
 GVAR(forceRecheck) = false;
 GVAR(requestingNewId) = false;

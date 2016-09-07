@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("drawCursor", _this);
 // Swap the background and foreground colors for a text range
 private ["_id", "_i", "_textCtrl", "_display", "_len", "_saveLength"];

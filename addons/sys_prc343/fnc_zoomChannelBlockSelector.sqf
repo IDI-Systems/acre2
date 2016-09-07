@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 #define IN 0
 #define OUT 1
 

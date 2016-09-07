@@ -16,8 +16,6 @@
  */
 #include "script_component.hpp"
 
-
-
 private ["_isPersistant",
             "_resolution", "_baseCOnfig", "_realRadioTx", "_realRadioRx", "_sinadRating", "_gainData",
             "_transmitterPosATL",

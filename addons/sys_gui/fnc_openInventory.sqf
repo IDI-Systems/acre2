@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 //TRACE_1("ENTER", _this);
 
 #define INVENTORY_DISPLAY (findDisplay 602)

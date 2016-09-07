@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("renderText", _this);
 
 params["_row", "_text", ["_alignment", ALIGN_LEFT]];

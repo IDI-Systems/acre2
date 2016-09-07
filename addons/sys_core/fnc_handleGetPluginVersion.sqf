@@ -14,10 +14,6 @@
  *
  * Public: No
  */
-
-// KEEP THIS IN DEBUG MODE FOR DIAGNOSTICS PURPOSES!
-
-// KEEP THIS IN DEBUG MODE FOR DIAGNOSTICS PURPOSES!
 #include "script_component.hpp"
 // for testing below...
 GVAR(pluginVersion) = _this select 0;

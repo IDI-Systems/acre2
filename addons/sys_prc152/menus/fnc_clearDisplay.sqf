@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 BEGIN_COUNTER(clearDisplay);
 
 FUNC(_internalClearDisplay) = {

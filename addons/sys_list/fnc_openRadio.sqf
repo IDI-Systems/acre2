@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 call FUNC(setActive);
 call FUNC(closeDialog);
 ACRE_ACTIVE_RADIO call EFUNC(sys_radio,openRadio);

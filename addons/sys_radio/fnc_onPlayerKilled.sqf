@@ -15,6 +15,7 @@
  * Public: No
  */
 #include "script_component.hpp"
+
 TRACE_1("", _this);
 
 if((_this select 0) == acre_player) then {

@@ -35,7 +35,6 @@
  *  Returned parameters:
  *      nothing
 */
-
 #include "script_component.hpp"
 
 params ["_radioId", "_event", "_eventData", "_radioData"];

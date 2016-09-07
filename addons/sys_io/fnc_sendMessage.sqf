@@ -15,9 +15,6 @@
  * Public: No
  */
 #include "script_component.hpp"
-/**
-    _this = string;
-*/
 
 if(GVAR(pipeCode) == "1") exitWith {
     _ret = "ACRE2Arma" callExtension ("2" + _this);

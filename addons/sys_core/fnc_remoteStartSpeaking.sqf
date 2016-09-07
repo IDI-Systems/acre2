@@ -14,9 +14,8 @@
  *
  * Public: No
  */
-
-// #define ACRE_PERFORMANCE_COUNTERS
 #include "script_component.hpp"
+
 ACRE_COUNTERS = [];
 CREATE_COUNTER(speaking_loop);
 CREATE_COUNTER(speaking_loop_with_transmissions);
