@@ -2,33 +2,8 @@
 
 ADDON = false;
 
-// Interlocks
-PREP(interlockedDecrement);
-PREP(interlockedIncrement);
-PREP(interlockedExchange);
-
-// Mutex
-PREP(mutexCreate);
-PREP(mutexDestroy);
-PREP(mutexLock);
-PREP(mutexUnlock);
-PREP(mutexPeek);
-// Object-based locking
-PREP(objectMutexCreate);
-PREP(objectMutexDestroy);
-PREP(objectMutexLock);
-PREP(objectMutexUnlock);
-PREP(objectMutexPeek);
-
 // Helpers
 PREP(runScript);
-
-// Circular FIFO handling functions for ourselves
-PREP(circularFifoCreate);            // create a new circular fifo
-PREP(circularFifoPush);                // pushes a new item to the fifo queue, to end
-PREP(circularFifoPop);                // pops the next item in the fifo queue, moving it back to the end
-PREP(circularFifoGet);                // gets the full array of items in the circular fifo queu
-PREP(circularFifoDestroy);            // destroy a current circular fifo
 
 // perFrame/persistant engine handlers
 PREP(perFrame_add);

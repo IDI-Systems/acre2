@@ -118,8 +118,6 @@ END ARMA2/VBS2 COMPAT SECTION
 
 #define __CFG_GAPI_FUNCTION(x, y) getText ( configFile >> "CfgAcreComponents" >> x >> "interface" >> y )
 
-#define GETPOSASLDIS(x)    (x call acre_sys_signal_fnc_getPosASLAtDistance)
-
 #define GUI_INTERACT_EVENT    EFUNC(sys_data,guiInteractEvent)
 #define GUI_DATA_EVENT        EFUNC(sys_data,guiDataEvent)
 

@@ -8,7 +8,6 @@ PREP(getVehicleCrewAttenuate);
 PREP(getUnitAttenuate);
 PREP(getVehicleUnitPosition);
 PREP(getVehiclePositionClass);
-PREP(isTurnedOut);
 PREP(isCrewIntercomAttenuate);
 PREP(getVehicleAttenuation);
 

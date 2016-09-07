@@ -14,6 +14,3 @@ class CfgPatches {
 #include "CfgAcreComponents.hpp"
 #include "CfgEventhandlers.hpp"
 
-class CfgWeapons {
-    class FirstAidKit;
-};

@@ -11,6 +11,5 @@ class CfgPatches {
 };
 
 #include "CfgEventhandlers.hpp"
-//#include "CfgPerFrame.hpp"
 
 PRELOAD_ADDONS;
