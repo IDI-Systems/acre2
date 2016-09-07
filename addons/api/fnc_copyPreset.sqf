@@ -22,7 +22,7 @@ params ["_radioClass", "_srcPresetName", "_dstPresetName"];
 _presetData = [_radioClass, _srcPresetName] call FUNC(getPresetData);
 if(isNil "_presetData") exitWith { false };
 
-_presetCopy = [_presetData] call FUNC(copyArray);
+_presetCopy = HASH_COPY(_presetData);
 
 [_radioClass,_dstPresetName,_presetCopy] call EFUNC(sys_data,registerRadioPreset);
 
