@@ -21,8 +21,7 @@ TRACE_1("", _this);
 if((_this select 0) == acre_player) then {
     LOG("acre_player died. resetting all radio info");
     {
-        private ["_foo", "_bar", "_radioName"];
-        _radioName = _x;
+        private _radioName = _x;
         acre_player setVariable [_radioName, nil, false];
     } foreach GVAR(currentRadioList);
     GVAR(currentRadioList) = [];

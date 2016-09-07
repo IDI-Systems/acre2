@@ -16,6 +16,7 @@
  */
 #include "script_component.hpp"
 
-private ["_animations", "_id"];
-_id = _this select 0;
+params ["_id"];
+
+private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId), "animations", []);
 _animations set[_id, []];

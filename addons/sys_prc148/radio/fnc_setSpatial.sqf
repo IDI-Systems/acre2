@@ -17,8 +17,7 @@
 #include "script_component.hpp"
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
-private ["_spatial"];
 
-_spatial = _eventData;
+private _spatial = _eventData;
 
 [_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _spatial]] call EFUNC(sys_data,dataEvent);

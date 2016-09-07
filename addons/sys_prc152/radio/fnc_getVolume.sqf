@@ -16,12 +16,11 @@
  */
 #include "script_component.hpp"
 
-private ["_volume"];
 TRACE_1("", _this);
 
 params["_radioId", "_event", "_eventData", "_radioData"];
 
-_volume = HASH_GET(_radioData,"volume");
+private _volume = HASH_GET(_radioData,"volume");
 if(isNil "_volume") then {
     _volume = 1;
 };

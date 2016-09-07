@@ -17,10 +17,11 @@
 #include "script_component.hpp"
 // for testing below...
 GVAR(pluginVersion) = _this select 0;
-private ["_warn", "_str", "_isServer", "_isClient"];
-_warn = false;
-_isServer = false;
-_isClient = false;
+
+private _warn = false;
+private _isServer = false;
+private _isClient = false;
+
 if(!isNil "ACRE_FULL_SERVER_VERSION") then {
     if(ACRE_FULL_SERVER_VERSION != QUOTE(VERSION)) then {
         _warn = true;
@@ -35,7 +36,7 @@ if(GVAR(pluginVersion) != QUOTE(VERSION_PLUGIN)) then {
 if(!ACRE_SPIT_VERSION) then {
     if(!isNil "ACRE_FULL_SERVER_VERSION") then {
         ACRE_SPIT_VERSION = true;
-        _str = format["ACRE Version Information: Plugin:[%1], Addon:[%2], Server:[%3]",GVAR(pluginVersion), QUOTE(VERSION), ACRE_FULL_SERVER_VERSION];
+        private _str = format["ACRE Version Information: Plugin:[%1], Addon:[%2], Server:[%3]",GVAR(pluginVersion), QUOTE(VERSION), ACRE_FULL_SERVER_VERSION];
         LOG(_str);
     };
 };
@@ -51,7 +52,7 @@ if(_warn) then {
     };
     hint _warning;
     GVAR(wrongVersionIncrease) = GVAR(wrongVersionIncrease) + 1;
-    _str = format["!!!!!!!!!!!!!!!!! ACRE: Mismatched plugin and addon! Plugin:[%1], Addon:[%2], Server:[%3] !!!!!!!!!!!!!!!!! ",GVAR(pluginVersion), QUOTE(VERSION), ACRE_FULL_SERVER_VERSION];
+    private _str = format["!!!!!!!!!!!!!!!!! ACRE: Mismatched plugin and addon! Plugin:[%1], Addon:[%2], Server:[%3] !!!!!!!!!!!!!!!!! ",GVAR(pluginVersion), QUOTE(VERSION), ACRE_FULL_SERVER_VERSION];
     LOG(_str);
     if(GVAR(wrongVersionIncrease) >= 5) then {
         titleText [_warning, "BLACK OUT", 15];

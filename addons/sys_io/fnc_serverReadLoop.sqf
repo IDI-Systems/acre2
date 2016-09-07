@@ -16,8 +16,7 @@
  */
 #include "script_component.hpp"
 
-private ["_ret"];
-_ret = nil;
+private _ret = nil;
 
 private _exit = false;
 private _count = 0;

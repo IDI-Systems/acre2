@@ -37,9 +37,8 @@ DGVAR(moanCount) = 0;
 
 
 DFUNC(bitchAndMoanBadMissionMaker) = {
-    private ["_message"];
     GVAR(moanCount) = GVAR(moanCount) + 1;
-    _message = "!!!! WARNING ONEACHFRAME POSSIBLY REASSIGNED !!!! IT APPEARS THAT A ADDON OR MISSION HAS POSSIBLY FAILED TO CORRECTLY USE THE BIS STACKED EVENT HANDLER FUNCTIONS FOR ONEACHFRAME!";
+    private _message = "!!!! WARNING ONEACHFRAME POSSIBLY REASSIGNED !!!! IT APPEARS THAT A ADDON OR MISSION HAS POSSIBLY FAILED TO CORRECTLY USE THE BIS STACKED EVENT HANDLER FUNCTIONS FOR ONEACHFRAME!";
     diag_log text _message;
     if(GVAR(moanCount) > 10) then {
         acre_player sideChat _message;

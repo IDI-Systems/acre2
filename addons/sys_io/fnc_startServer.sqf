@@ -16,14 +16,12 @@
  */
 #include "script_component.hpp"
 
-private ["_return", "_server", "_ping"];
-
 #define __INTERVAL 0.001
 GVAR(hasErrored) = false;
 GVAR(connectCount) = 15;
 
 // test dsound.dll
-private["_testVal", "_fail", "_testFunc"];
+
 GVAR(runserver) = true;
 [] call FUNC(server);
 LOG("server started");
