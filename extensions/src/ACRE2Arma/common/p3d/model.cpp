@@ -95,8 +95,8 @@ namespace acre {
             }
 
             for (uint32_t lod = 0; lod < lod_count; lod++) {
-                char buffer[64]; 
                 #ifdef _DEBUG
+                char buffer[64];
                 sprintf_s(buffer, "\t\t%08X",  info->resolutions[lod]);
                 LOG(DEBUG) << "LOD #" << lod << ", type: " << buffer;
                 #endif
