@@ -30,7 +30,7 @@
 #define TS3_PLUGIN_API_VERSION 20
 
 #define ACRE_NAME                "ACRE2"
-#define ACRE_URL                "IDI-Systems http://tracker.idi-systems.com/projects/acre2"
+#define ACRE_URL                "ACRE2 Team - https://github.com/IDI-Systems/acre2"
 #define ACRE_DESC                "This plugin handles realistic radio and direct communcations in Arma 3."
 #define ACRE_COMMAND_KEYWORD    "ACRE2"
 

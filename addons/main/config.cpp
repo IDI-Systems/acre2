@@ -15,7 +15,7 @@ class CfgMods {
     {
         dir = "@ACRE2";
         picture = "idi\clients\acre\addons\main\acre2_large-logo.paa";
-        action = "http://tracker.idi-systems.com/projects/acre2";
+        action = "https://github.com/IDI-Systems/acre2";
         hideName = 0;
         hidePicture = 0;
         name = "ACRE 2!";
