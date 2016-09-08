@@ -115,7 +115,7 @@ bool acre::wrp::landscape::_process(std::istream &stream_)
     float *peak_floats = new float[peak_count * 3];
     stream_.read((char *)peak_floats, sizeof(float)*peak_count * 3);
 
-    for (int i = 0; i < peak_count * 3; i = i + 3) {
+    for (uint32_t i = 0; i < peak_count * 3; i = i + 3) {
         peaks.push_back(vector3<float>(peak_floats[i], peak_floats[i + 1], peak_floats[i + 2]));
     }
     delete[] peak_floats;

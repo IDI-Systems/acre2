@@ -5,7 +5,7 @@
 #include <regex>
 
 #include "glm\geometric.hpp"
-#include "glm\gtx\intersect.hpp";
+#include "glm\gtx\intersect.hpp"
 #include "glm\gtx\normal.hpp"
 
 #define POINT(y,x) points.push_back(glm::vec2((x)*_cell_size, (y)*_cell_size))
@@ -50,7 +50,7 @@ namespace acre {
                 size_t peak_size = 0;
                 bin_file.read((char *)&peak_size, sizeof(size_t));
 
-                for (int i = 1; i <= peak_size; ++i) {
+                for (size_t i = 1; i <= peak_size; ++i) {
                     float x, y, z;
                     bin_file.read((char *)&x, sizeof(float));
                     bin_file.read((char *)&y, sizeof(float));
@@ -96,11 +96,11 @@ namespace acre {
                 int pad_length = 0;
                 if (asc_header["ncols"] < asc_header["nrows"]) {
                     pad_cols = true;
-                    pad_length = asc_header["nrows"] - asc_header["ncols"];
-                    _map_size = asc_header["nrows"];
+                    pad_length = (int)(asc_header["nrows"] - asc_header["ncols"]);
+                    _map_size = (uint32_t)asc_header["nrows"];
                 }
                 else {
-                    _map_size = asc_header["ncols"];
+                    _map_size = (uint32_t)asc_header["ncols"];
                 }
                 _cell_size = 10;
                 _inv_cell_size = 1 / _cell_size;
@@ -140,7 +140,6 @@ namespace acre {
             
             _generate_peaks();
         }
-
         map::map(acre::wrp::landscape_p wrp_)
         {
             _map_size = wrp_->map_size_x;
@@ -152,11 +151,11 @@ namespace acre {
             }
 
             //for (auto test_peak : initial_peaks) {
-            for (int i = 0; i < initial_peaks.size(); ++i) {
+            for (uint32_t i = 0; i < initial_peaks.size(); ++i) {
                 auto test_peak = initial_peaks[i];
                 if (test_peak.z > 5.0f) {
                     bool ok = true;
-                    for (int c = 0; c < initial_peaks.size(); ++c) {
+                    for (uint32_t c = 0; c < initial_peaks.size(); ++c) {
                         auto test_peak2 = initial_peaks[c];
 
                         if (c != i && glm::distance(test_peak, test_peak2) <= 150.0f && test_peak2.z >= test_peak.z) {
@@ -172,7 +171,7 @@ namespace acre {
             
 
             _map_elevations = new float[_map_size*_map_size];
-            std::copy(wrp_->elevations.data.begin(), wrp_->elevations.data.end(), _map_elevations);
+            std::copy(wrp_->elevations.data.begin(), wrp_->elevations.data.end(), stdext::checked_array_iterator<float *>(_map_elevations, _map_size*_map_size));
 
             if (strcmp(wrp_->filetype,"8WVR")==0) _generate_peaks(); // These WRP formats do not contain the peaks.
 
@@ -321,7 +320,7 @@ namespace acre {
             glm::vec3 vector_to = glm::normalize(end_pos_ - start_pos_);
 
             float distance = glm::distance(start_pos_, end_pos_);
-            uint32_t steps = floor(distance / precision_);
+            uint32_t steps = (int)(std::floor(distance / precision_));
             std::vector<float> profile;
             for (uint32_t i = 0; i < steps; ++i) {
                 glm::vec3 sample_pos = vector_to * (i * precision_);
@@ -354,8 +353,8 @@ namespace acre {
         {
             std::vector<glm::vec2> first_pass_peaks;
 
-            for (int x = 0; x < _map_size; ++x) {
-                for (int y = 0; y < _map_size; ++y) {
+            for (uint32_t x = 0; x < _map_size; ++x) {
+                for (uint32_t y = 0; y < _map_size; ++y) {
                     if (_is_peak(x, y)) {
                         float z = _internal_elevation(x, y);
                         if (z > 0.0f) {
@@ -367,12 +366,12 @@ namespace acre {
 
             float filter_distance = 150;
             std::vector<glm::vec2> filtered_max_peaks;
-            int distance = std::ceil(filter_distance / _cell_size);
+            int distance = (int)(std::ceil(filter_distance / _cell_size));
 
             for (auto peak : first_pass_peaks) {
-                float peak_height = _internal_elevation(peak.x, peak.y);
-                int peak_x = peak.x;
-                int peak_y = peak.y;
+                float peak_height = _internal_elevation((int)peak.x, (int)peak.y);
+                int peak_x = (int)peak.x;
+                int peak_y = (int)peak.y;
                 int offset_x_min = std::max(peak_x - distance, 0);
                 int offset_y_min = std::max(peak_y - distance, 0);
 
@@ -414,7 +413,7 @@ namespace acre {
             }
             std::vector<glm::vec3> found_peaks;
             for (auto filtered_peak : filtered_max_peaks) {
-                peaks.push_back(glm::vec3(filtered_peak.x*_cell_size, filtered_peak.y*_cell_size, _internal_elevation(filtered_peak.x, filtered_peak.y)));
+                peaks.push_back(glm::vec3(filtered_peak.x*_cell_size, filtered_peak.y*_cell_size, _internal_elevation((int)filtered_peak.x, (int)filtered_peak.y)));
             }
         }
 

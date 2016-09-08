@@ -19,7 +19,7 @@ namespace acre {
                     if (fill) {
                         T val;
                         stream_.read((char *)&val, sizeof(T));
-                        for (int x = 0; x < size_; x++) {
+                        for (uint32_t x = 0; x < size_; x++) {
                             data.push_back(val);
                         }
                     }
@@ -40,7 +40,7 @@ namespace acre {
                             }
                         }
                         else {
-                            for (int x = 0; x < size_; x++) {
+                            for (uint32_t x = 0; x < size_; x++) {
                                 T val;
                                 stream_.read((char *)&val, sizeof(T));
                                 data.push_back(val);

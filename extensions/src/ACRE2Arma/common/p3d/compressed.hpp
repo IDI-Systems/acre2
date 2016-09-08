@@ -28,7 +28,7 @@ namespace acre {
                     if (fill) {
                         T val;
                         stream_.read((char *)&val, sizeof(T));
-                        for (int x = 0; x < size; x++) {
+                        for (uint32_t x = 0; x < size; x++) {
                             data.push_back(val);
                         }
                     }  else {
@@ -41,7 +41,7 @@ namespace acre {
                             T * ptr = (T *)(_data.get());
                             data.assign(ptr, ptr + size );
                         } else {
-                            for (int x = 0; x < size; x++) { 
+                            for (uint32_t x = 0; x < size; x++) {
                                 T val;
                                 stream_.read((char *)&val, sizeof(T));
                                 data.push_back(val);
@@ -64,7 +64,7 @@ namespace acre {
                 
                 if (fill) {
                     acre::vector3<float> val(stream_);
-                    for (int x = 0; x < size; x++) {
+                    for (uint32_t x = 0; x < size; x++) {
                         data.push_back(val);
                     }
                 }
@@ -76,19 +76,19 @@ namespace acre {
                         if (xyzCompressed) {
                             int32_t result = _decompress_safe(stream_, size * sizeof(float));
                             uint32_t * ptr = (uint32_t *)(_data.get());
-                            for (int x = 0; x < size; x++) {
+                            for (uint32_t x = 0; x < size; x++) {
                                 uint32_t value = ptr[x];
                                 data.push_back(decode_xyz(value));
                             }
                         } else {
                             int32_t result = _decompress_safe(stream_, size * sizeof(float) * 3);
                             float * ptr = (float *)(_data.get());
-                            for (int x = 0; x < size*3; x+=3) {
+                            for (uint32_t x = 0; x < size*3; x+=3) {
                                 data.push_back(acre::vector3<float>(ptr+x));
                             }
                         }
                     } else {
-                        for (int x = 0; x < size; x++) {
+                        for (uint32_t x = 0; x < size; x++) {
                             data.push_back(acre::vector3<float>(stream_));
                         }
                     }
@@ -97,7 +97,7 @@ namespace acre {
 
             acre::vector3<float> decode_xyz(uint32_t CompressedXYZ)
             {
-                double scaleFactor = -1.0 / 511;
+                const float scaleFactor = -1.0f / 511.0f;
 
                 int x = CompressedXYZ & 0x3FF;
                 int y = (CompressedXYZ >> 10) & 0x3FF;
@@ -122,7 +122,7 @@ namespace acre {
 
                 if (fill) {
                     acre::pair<float> val(stream_);
-                    for (int x = 0; x < size; x++) {
+                    for (uint32_t x = 0; x < size; x++) {
                         data.push_back(val);
                     }
                 }
@@ -134,12 +134,12 @@ namespace acre {
                         
                         int32_t result = _decompress_safe(stream_, size * sizeof(float) * 2);
                         float * ptr = (float *)(_data.get());
-                        for (int x = 0; x < size * 2; x += 2) {
+                        for (uint32_t x = 0; x < size * 2; x += 2) {
                             data.push_back(acre::pair<float>(ptr + x));
                         }
                     }
                     else {
-                        for (int x = 0; x < size; x++) {
+                        for (uint32_t x = 0; x < size; x++) {
                             data.push_back(acre::pair<float>(stream_));
                         }
                     }

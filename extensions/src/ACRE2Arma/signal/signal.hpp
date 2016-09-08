@@ -273,7 +273,7 @@ namespace acre {
 
                 uint32_t y_chunk_size, y_chunk_remainder;
                 if (count_y > thread_count) {
-                    y_chunk_size = std::floor(count_y / thread_count);
+                    y_chunk_size = (uint32_t)std::floor(count_y / thread_count);
                     y_chunk_remainder = count_y % thread_count;
                 }
                 else {
@@ -297,7 +297,7 @@ namespace acre {
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*thread_count, y_chunk_remainder, count_x, sample_size,
                         rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
                 }
-                for (int c = 0; c < thread_pool.size(); ++c) {
+                for (size_t c = 0; c < thread_pool.size(); ++c) {
                     thread_pool[c].join();
                 }
 
@@ -312,7 +312,7 @@ namespace acre {
                         for (uint32_t x = 0; x < count_x; ++x) {
                             float s = results.at(y_count * count_x + x).result.result_dbm;
                             float p = _get_percentage(s, lower_sensitivity, upper_sensitivity);
-                            draw_square(png_data, 4096, sample_size, x, y, 255 * (1.0f - p), 255 * p, 0, 225 * p);
+                            draw_square(png_data, 4096, (uint32_t)sample_size, x, y, (uint8_t)(255 * (1.0f - p)), (uint8_t)(255 * p), 0, (uint8_t)(225 * p));
                         }
                         y_count++;
                     }

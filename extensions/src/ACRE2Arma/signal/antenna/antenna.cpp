@@ -1,7 +1,7 @@
 #include "antenna.hpp"
 
 #include "glm\geometric.hpp"
-#include "glm\gtx\intersect.hpp";
+#include "glm\gtx\intersect.hpp"
 #include "glm\gtx\normal.hpp"
 
 acre::signal::antenna::antenna(std::istream & stream_)
@@ -33,11 +33,11 @@ float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 
 
     glm::vec3 dir_antenna_v = glm::normalize(dir_antenna_);
     float elev_antenna = asin(dir_antenna_v.z)*57.2957795f;
-    float dir_antenna = atan2(dir_antenna_v.x, dir_antenna_v.y)*57.2957795;
+    float dir_antenna = atan2(dir_antenna_v.x, dir_antenna_v.y)*57.2957795f;
 
     glm::vec3 dir_signal_v = glm::normalize(dir_signal_);
     float elev_signal = asin(dir_signal_v.z)*57.2957795f;
-    float dir_signal = atan2(dir_signal_v.x, dir_signal_v.y)*57.2957795;
+    float dir_signal = atan2(dir_signal_v.x, dir_signal_v.y)*57.2957795f;
 
     float dir = std::fmod(dir_antenna + dir_signal, 360.0f);
     float elev = elev_antenna + elev_signal;
@@ -71,14 +71,14 @@ float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 
 
 float acre::signal::antenna::_get_gain(float f_, float dir_, float elev_)
 {
-    uint32_t f_index = std::floor((f_ - _min_frequency)/_frequency_step);
+    uint32_t f_index = (uint32_t)std::floor((f_ - _min_frequency)/_frequency_step);
     if (f_index > _total_entries - 1)
         f_index = _total_entries - 1;
-    uint32_t dir_index_min = std::floor(dir_ / _direction_step);
-    uint32_t dir_index_max = std::floor((dir_ + _direction_step) / _direction_step);
+    uint32_t dir_index_min = (uint32_t)std::floor(dir_ / _direction_step);
+    uint32_t dir_index_max = (uint32_t)std::floor((dir_ + _direction_step) / _direction_step);
 
-    uint32_t elev_index_min = std::floor(elev_ / _elevation_step) - 1;
-    uint32_t elev_index_max = std::floor((elev_ + _elevation_step) / _elevation_step) - 1;
+    uint32_t elev_index_min = (uint32_t)std::floor(elev_ / _elevation_step) - 1;
+    uint32_t elev_index_max = (uint32_t)std::floor((elev_ + _elevation_step) / _elevation_step) - 1;
     if (dir_index_max > _height - 1) {
         dir_index_max = 0;
     }

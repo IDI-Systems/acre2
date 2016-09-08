@@ -198,6 +198,8 @@ namespace acre {
                 LOG(ERROR) << "Could not register raw input devices. ";
                 exit(1);
             }
+
+            return true;
         }
 
         bool d3d_display::create(uint32_t width = 1024, uint32_t height = 768, bool fullscreen = false) {
@@ -224,7 +226,7 @@ namespace acre {
 
             // Create window
             _hInst = (HINSTANCE)GetCurrentProcess();
-            RECT rc = { 0, 0, width, height };
+            RECT rc = { 0, 0, (LONG)width, (LONG)height };
             AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
             _hWnd = CreateWindowW(L"ACE3BaseDisplayClass", L"ACE3 D3D Render", WS_OVERLAPPEDWINDOW,
                 CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, _hInst,

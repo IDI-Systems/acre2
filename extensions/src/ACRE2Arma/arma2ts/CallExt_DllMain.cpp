@@ -30,7 +30,6 @@ static inline std::string &rtrim(std::string &s) {
 static inline std::string &trim(std::string &s) {
     return ltrim(rtrim(s));
 }
-#include "simplepipe_win32.hpp"
 
 #pragma comment(lib, "shlwapi.lib")
 
@@ -39,18 +38,6 @@ static inline std::string &trim(std::string &s) {
 #define PIPE_COMMAND_WRITE    2
 #define PIPE_COMMAND_READ    3
 #define PIPE_COMMAND_RESET    4
-#define JVON_CLIENT_START    5
-#define JVON_CLIENT_STOP    6
-#define JVON_SERVER_START    7
-#define JVON_SERVER_STOP    8
-#define JVON_CLIENT_CHECK    9
-#define JVON_SERVER_CHECK    10
-#define JVON_KEEPALIVE_OPEN 11
-#define JVON_KEEPALIVE_CLOSE 12
-#define JVON_KEEPALIVE_STATUS 13
-
-#define FROM_PIPENAME_JVON    "\\\\.\\pipe\\acre_comm_pipe_fromJVON"
-#define TO_PIPENAME_JVON    "\\\\.\\pipe\\acre_comm_pipe_toJVON"
 
 #define FROM_PIPENAME_TS    "\\\\.\\pipe\\acre_comm_pipe_fromTS"
 #define TO_PIPENAME_TS        "\\\\.\\pipe\\acre_comm_pipe_toTS"
@@ -58,7 +45,6 @@ static inline std::string &trim(std::string &s) {
 
 HANDLE    writeHandle = INVALID_HANDLE_VALUE;
 HANDLE    readHandle = INVALID_HANDLE_VALUE;
-PipeWin *keepalivePipe = nullptr;
 
 BOOL writeConnected, readConnected;
 
@@ -157,118 +143,6 @@ inline std::string find_mod_file(std::string filename) {
     return path;
 }
 
-/* THIS WAS BROKEN WHY WERNT WE JUST USING GETMODULEFILENAME!?
-inline std::string parse_modlines(std::string filename) {
-    // First, extract the mod paths
-    //    Then test each one to see if the specified path filename exists
-    std::string cmd_line = get_cmdline();
-    std::string acre_mod_path;
-    std::string mod_path;
-    std::string par_path;
-
-    std::string return_path;
-
-    // BUGFIX
-    // Fixes bug idi-systems/jvon#8: if its a par file, we need to parse for \r\n and just pass that modline instead. So, we handle our own modline parsing here. 
-    if (cmd_line.find_first_of("-par") != std::string::npos) {    // Parse a PAR file
-        par_path = cmd_line.substr(cmd_line.find("-par") + 5, cmd_line.size() - (cmd_line.find("-par") + 5));
-
-        size_t end_index = par_path.find_first_of(" ");
-        if (par_path.find_first_of(" ") == std::string::npos)
-            end_index = par_path.size();
-        par_path.resize(end_index);
-
-        // We pull the par, condense the \r\n to spaces, then replace cmd_line with it
-        if (PathFileExistsA(par_path.c_str())) {
-            std::ifstream par_file(par_path);
-            std::string par_str((std::istreambuf_iterator<char>(par_file)),
-                std::istreambuf_iterator<char>());
-            cmd_line = par_str;
-
-            mod_path = cmd_line.substr(cmd_line.find("-mod") + 5, cmd_line.size() - (cmd_line.find("-mod") + 5));
-
-            //Check for spaces OR quote in the modline.End the modline at the first instance of either.
-            size_t end_index_1 = mod_path.find_first_of("\r");
-            size_t end_index_2 = mod_path.find_first_of("\n");
-            
-            // resize to end
-            size_t end_index = std::min(end_index_1, end_index_2);
-            if (mod_path.find_first_of("\r") == std::string::npos && mod_path.find_first_of("\n") == std::string::npos)
-                end_index = mod_path.size();
-            mod_path.resize(end_index);
-
-            // Bugfix:  trim spaces
-            trim(mod_path);
-
-            //mod_path
-            std::vector<std::string> strings;
-            std::stringstream mod_path_f(mod_path);
-
-            std::string mod;
-            while (getline(mod_path_f, mod, ';')) {
-                std::string fullpath = mod + "\\" + filename;
-                if (PathFileExistsA(fullpath.c_str())) {
-                    acre_mod_path = fullpath;
-                    break;
-                }
-            }
-        }
-    } else {        // Its a modline
-
-        if (cmd_line.find_first_of("-mod") != std::string::npos) {
-            mod_path = cmd_line.substr(cmd_line.find("-mod") + 5, cmd_line.size() - (cmd_line.find("-mod") + 5));
-
-            //Bugfix: Fixes idi-systems/jvon#8 : Check for spaces OR quote in the modline. End the modline at the first instance of either.
-            size_t end_index_1 = mod_path.find_first_of(" ");
-            size_t end_index_2 = mod_path.find_first_of("\"");
-            size_t end_index = std::min(end_index_1, end_index_2);
-            if (mod_path.find_first_of(" ") == std::string::npos)
-                end_index = mod_path.size();
-            mod_path.resize(end_index);
-
-            // Bugfix:  trim spaces
-            trim(mod_path);
-
-            //mod_path
-            std::vector<std::string> strings;
-            std::stringstream mod_path_f(mod_path);
-
-            std::string mod;
-            while (getline(mod_path_f, mod, ';')) {
-                std::string fullpath = mod + "\\" + filename;
-                if (PathFileExistsA(fullpath.c_str())) {
-                    acre_mod_path = fullpath;
-                    break;
-                }
-            }
-        }
-    }
-    if(acre_mod_path.empty()) {
-        // No mod path was set, it means they used the mod config. It *DOES* mean it relative to a folder in our path at least. 
-        // So, we just search all the local folders
-
-        WIN32_FIND_DATAA data;
-        std::string path("*");
-        std::string *name;
-        HANDLE hFile = FindFirstFileA(path.c_str(), &data);
-
-        if (hFile == INVALID_HANDLE_VALUE)
-            return "";
-
-        while (FindNextFile(hFile, &data) != 0 || GetLastError() != ERROR_NO_MORE_FILES) {
-            if (data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-                std::string fullpath = std::string(data.cFileName) + "\\" + filename;
-                if (PathFileExistsA(fullpath.c_str())) {
-                    acre_mod_path = fullpath;
-                    break;
-                }
-            }
-        }
-    }
-
-    return acre_mod_path;
-}
-*/
 void __stdcall RVExtension(char *output, int outputSize, const char *function)
 {
     size_t id_length = 1;
@@ -366,11 +240,6 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             }
             std::string fromPipeName = FROM_PIPENAME_TS;
             std::string toPipeName = TO_PIPENAME_TS;
-
-            if (params == "jvon") {
-                fromPipeName = FROM_PIPENAME_JVON;
-                toPipeName = TO_PIPENAME_JVON;
-            }
             
             if (readHandle != INVALID_HANDLE_VALUE) {
                 CloseHandle(readHandle);
@@ -479,130 +348,6 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             ClosePipe();
             writeHandle = INVALID_HANDLE_VALUE;
             readHandle = INVALID_HANDLE_VALUE;
-            return;
-        }
-        case JVON_CLIENT_START: {
-            PROCESS_INFORMATION procInfo;
-            STARTUPINFOA startInfo = { 0 };
-
-            std::string bootstrapper_exe = find_mod_file("jvon\\bootstrapper_win32.exe");
-            std::string startin_path = get_path(bootstrapper_exe);
-
-            startInfo.cb = sizeof(startInfo);
-            std::string cmd;
-            cmd = bootstrapper_exe + " -r -b \"" + params + "\"";
-            
-            BOOL res = CreateProcessA(NULL,
-                (LPSTR)cmd.c_str(),
-                NULL,
-                NULL,
-                false,
-                NORMAL_PRIORITY_CLASS,
-                NULL,
-                startin_path.c_str(),
-                &startInfo,
-                &procInfo);
-            if (res) {
-                strncpy(output, "1", outputSize);
-            } else {
-                sprintf(output, "CreateProcessA WinErrCode: %d, path={'%s'}, startin={'%s'}", GetLastError(), bootstrapper_exe.c_str(), startin_path.c_str());
-            }
-            return;
-        }
-        case JVON_CLIENT_STOP: {
-            PROCESS_INFORMATION procInfo;
-            STARTUPINFOA startInfo = { 0 };
-
-            std::string bootstrapper_exe = find_mod_file("jvon\\bootstrapper_win32.exe");
-            std::string startin_path = get_path(bootstrapper_exe);
-
-            startInfo.cb = sizeof(startInfo);
-            std::string cmd;
-            cmd = bootstrapper_exe + " -s";
-            BOOL res = CreateProcessA(NULL,
-                (LPSTR)cmd.c_str(),
-                NULL,
-                NULL,
-                false,
-                NORMAL_PRIORITY_CLASS,
-                NULL,
-                startin_path.c_str(),
-                &startInfo,
-                &procInfo);
-
-            if (res) {
-                strncpy(output, "1", outputSize);
-            } else {
-                sprintf(output, "CreateProcessA WinErrCode: %d, path={'%s'}, startin={'%s'}", GetLastError(), bootstrapper_exe.c_str(), startin_path.c_str());
-            }
-
-            return;
-        }
-        case JVON_CLIENT_CHECK: {
-            std::string bootstrapper_exe = find_mod_file("jvon\\bootstrapper_win32.exe");
-            std::string client_exe = find_mod_file("jvon\\client_win32.exe");
-            if (PathFileExistsA(bootstrapper_exe.c_str()) && PathFileExistsA(client_exe.c_str())) {
-                strncpy(output, "1", outputSize);
-            } else {
-                strncpy(output, "0", outputSize);
-            }
-
-            return;
-        }
-        case JVON_SERVER_CHECK: {
-            std::string bootstrapper_exe = find_mod_file("jvon\\bootstrapper_win32.exe");
-            std::string server_exe = find_mod_file("jvon\\server_win32.exe");
-            if (PathFileExistsA(bootstrapper_exe.c_str()) && PathFileExistsA(server_exe.c_str())) {
-                strncpy(output, "1", outputSize);
-            }
-            else {
-                strncpy(output, "0", outputSize);
-            }
-
-            return;
-        }
-        case JVON_KEEPALIVE_OPEN: {
-            HANDLE _hPipe;
-            if ((_hPipe = PipePair::OpenPipeClient(L"jvon_bootstrapper_win32_keepalive", true, true)) == INVALID_HANDLE_VALUE) {
-                for (int tries = 0; tries < 4; tries++) {
-                    if (GetLastError() == ERROR_FILE_NOT_FOUND) {
-                        if ((_hPipe = PipePair::OpenPipeClient(L"jvon_bootstrapper_win32_keepalive", true, true)) != INVALID_HANDLE_VALUE) {
-                            break;
-                        }
-                    } else {
-                        break;
-                    }
-                    //Sleep(1000);
-                }
-                if (_hPipe == INVALID_HANDLE_VALUE) {
-                    sprintf(output, "PipePair::OpenPipeClient WinErrCode: %d", GetLastError());
-                    return;
-                }
-            }
-            keepalivePipe = new PipeWin();
-            keepalivePipe->OpenClient(_hPipe);
-            sprintf(output, "1");
-
-            return;
-        }
-        case JVON_KEEPALIVE_CLOSE: {
-            if (keepalivePipe) {
-                delete keepalivePipe;
-                keepalivePipe = nullptr;
-            }
-            sprintf(output, "1");
-            return;
-        }
-        case JVON_KEEPALIVE_STATUS: {
-            if (keepalivePipe) {
-                if(keepalivePipe->IsConnected() && keepalivePipe->CheckStatus())
-                    sprintf(output, "1");
-                else
-                    sprintf(output, "0");
-            } else {
-                sprintf(output, "0");
-            }
-            
             return;
         }
         default:

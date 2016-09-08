@@ -34,7 +34,7 @@ namespace acre {
         public:
             entry_p     entry;
             std::unique_ptr<uint8_t[]> data;
-            uint32_t    size;
+            std::streamsize    size;
         };
         typedef std::shared_ptr<file> file_p;
 
@@ -47,7 +47,7 @@ namespace acre {
             bool      get_file(std::istream &, const std::string & file, file_p output);
             bool      get_file(std::istream &, const entry_p entry, file_p output);
 
-            uint32_t                begin_data_offset;
+            std::streamoff          begin_data_offset;
 
             ext_entry_p             info;
             std::vector<entry_p>    entries;
