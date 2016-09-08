@@ -12,6 +12,6 @@ class CfgPatches {
 
 class CfgAcreWorlds {
     class Tanoa {
-        wrp = "\idi\clients\acre\addons\tanoa\tanoa.fakewrp";
+        wrp = "\idi\acre\addons\tanoa\tanoa.fakewrp";
     };
 };

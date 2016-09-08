@@ -8,7 +8,7 @@ PixelShaderID="Super";
 VertexShaderID="Super";
 class Stage1
 {
-    texture="idi\clients\acre\addons\sys_sem52sl\data\model\sem52sl_nohq.paa";
+    texture="idi\acre\addons\sys_sem52sl\data\model\sem52sl_nohq.paa";
     uvSource="tex";
     class uvTransform
     {

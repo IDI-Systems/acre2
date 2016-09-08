@@ -5,7 +5,7 @@ import sys
 import subprocess
 
 ######## GLOBALS #########
-MAINPREFIX = "idi\\clients"
+MAINPREFIX = "idi"
 PREFIX = "acre_"
 ##########################
 

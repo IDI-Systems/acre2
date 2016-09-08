@@ -12,7 +12,7 @@ import subprocess
 import winreg
 
 ######## GLOBALS #########
-MAINDIR = "idi\\clients"
+MAINDIR = "idi"
 PROJECTDIR = "acre"
 CBA = "P:\\x\\cba"
 ##########################
