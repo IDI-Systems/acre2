@@ -5,11 +5,10 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "acre_main", "acre_sys_components" };
+        requiredAddons[] = { "acre_sys_radio" };
         version = VERSION;
         AUTHOR;
     };
 };
 
-#include "CfgAcreComponents.hpp"
-#include "CfgEventhandlers.hpp"
+#include "CfgVehicles.hpp"
