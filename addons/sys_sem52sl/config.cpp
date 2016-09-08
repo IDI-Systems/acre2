@@ -9,7 +9,8 @@ class CfgPatches
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = { "acre_sys_radio" };
         version = VERSION;
-        author[] = {"Raspu"};
+        AUTHOR;
+        authors[] = {"Raspu"};
         authorUrl = URL;
     };
 };
