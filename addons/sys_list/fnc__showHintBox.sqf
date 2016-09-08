@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-_hintIDD = _this select 0;
+params ["_hintIDD"];
 
 (_hintIDD displayCtrl 19100) ctrlSetText GVAR(hintTitle);
 (_hintIDD displayCtrl 19101) ctrlSetText GVAR(hintLine1);

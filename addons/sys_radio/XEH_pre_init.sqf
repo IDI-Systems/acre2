@@ -7,7 +7,6 @@ PREP(monitorRadios);
 PREP(setActiveRadio);
 
 PREP(openRadio);
-PREP(listRadios);
 PREP(onDialogClose);
 
 PREP(initDefaultRadio);
