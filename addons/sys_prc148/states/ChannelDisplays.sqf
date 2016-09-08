@@ -14,7 +14,7 @@
  *
  * Public: No
  */
-#include "\idi\clients\acre\addons\sys_prc148\script_component.hpp"
+#include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
 DFUNC(ChannelDisplay_ESC) = {
     [GVAR(currentRadioId), "ProgramDisplay"] call FUNC(changeState);

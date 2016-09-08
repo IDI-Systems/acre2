@@ -21,7 +21,7 @@ private _iconcontrol = 1000;
 private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 if(!isNil "_display") then {
     //if (GET_STATE("pressedButton") < 0) Then {
-        private _knobImageStr = QUOTE(\idi\clients\acre\addons\sys_prc152\Data\Knobs\keypad\prc152c_ui_) + _button + QUOTE(.paa);
+        private _knobImageStr = QUOTE(\idi\acre\addons\sys_prc152\Data\Knobs\keypad\prc152c_ui_) + _button + QUOTE(.paa);
         (_display displayCtrl _iconcontrol) ctrlSetText _knobImageStr;
         SET_STATE("pressedButton",_button);
         _ret = [GVAR(currentRadioId), FUNC(toggleButtonPressUp), 0.15] call FUNC(delayFunction);

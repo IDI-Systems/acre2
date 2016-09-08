@@ -1,6 +1,6 @@
 #define COMPONENT sys_prc148
 
-#include "\idi\clients\acre\addons\main\script_mod.hpp"
+#include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_PRC148
     #define DEBUG_MODE_FULL
@@ -11,9 +11,9 @@
 #endif
 
 
-#include "\idi\clients\acre\addons\main\script_macros.hpp"
+#include "\idi\acre\addons\main\script_macros.hpp"
 
-#include "\idi\clients\acre\addons\sys_components\script_acre_component_defines.hpp"
+#include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
 
 #define BIG_LINE_1    50000
 #define BIG_LINE_2    51000

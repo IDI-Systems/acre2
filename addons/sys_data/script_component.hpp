@@ -1,6 +1,6 @@
 #define COMPONENT sys_data
 // #define DEBUG_MODE_FULL
-#include "\idi\clients\acre\addons\main\script_mod.hpp"
+#include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_DATA
     #define DEBUG_MODE_FULL
@@ -10,4 +10,4 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_DATA
 #endif
 
-#include "\idi\clients\acre\addons\main\script_macros.hpp"
+#include "\idi\acre\addons\main\script_macros.hpp"

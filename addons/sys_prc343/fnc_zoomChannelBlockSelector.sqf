@@ -64,17 +64,17 @@ if (_direction == OUT) then {
                     if(_channelindex < _currentChannel) then {
                         INC(_channelindex);
                         _animationhandler set [1, _channelindex];
-                        (MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\clients\acre\addons\sys_prc343\Data\knobs\channel\prc343_ui_pre_%1.paa", _channelindex + 1];
+                        (MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\channel\prc343_ui_pre_%1.paa", _channelindex + 1];
                     };
                     if(_volumeindex > _currentVolume) then {
                         DEC(_volumeindex);
                         _animationhandler set [2, _volumeindex];
-                        (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\clients\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
+                        (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
                     };
                     if(_volumeindex < _currentVolume) then {
                         INC(_volumeindex);
                         _animationhandler set [2, _volumeindex];
-                        (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\clients\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
+                        (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
                     };
                 } else {
                     SCRATCH_SET(_radioId, "animation", false);
@@ -91,7 +91,7 @@ if (_direction == OUT) then {
                     } forEach [106,107];
 
                     (MAIN_DISPLAY displayCtrl 99999) ctrlSetText (GVAR(backgroundImages) select _index);
-                    //(MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\clients\acre\addons\sys_prc343\Data\knobs\channel\%1\acre_prc343_channelKnob_%2.paa", (_currentChannel + 1), _index];
+                    //(MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\channel\%1\acre_prc343_channelKnob_%2.paa", (_currentChannel + 1), _index];
                     DEC(_index);
                     _animationhandler set [0, _index];
             };
@@ -151,17 +151,17 @@ if (_direction == IN) then {
                     if(_channelindex > 0) then {
                         DEC(_channelindex);
                         _animationhandler set [1, _channelindex];
-                        (MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\clients\acre\addons\sys_prc343\Data\knobs\channel\prc343_ui_pre_%1.paa", _channelindex + 1];
+                        (MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\channel\prc343_ui_pre_%1.paa", _channelindex + 1];
                     };
                     if(_volumeindex < 3) then {
                         INC(_volumeindex);
                         _animationhandler set [2, _volumeindex];
-                        (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\clients\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
+                        (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
                     };
                     if(_volumeindex > 3) then {
                         DEC(_volumeindex);
                         _animationhandler set [2, _volumeindex];
-                        (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\clients\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
+                        (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
                     };
                 } else {
                     {
@@ -170,7 +170,7 @@ if (_direction == IN) then {
                     } forEach [106,107];
 
                     (MAIN_DISPLAY displayCtrl 99999) ctrlSetText (GVAR(backgroundImages) select _index);
-                    //(MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\clients\acre\addons\sys_prc343\Data\knobs\channel\%1\acre_prc343_channelKnob_%2.paa", (_currentChannel + 1), _index];
+                    //(MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\channel\%1\acre_prc343_channelKnob_%2.paa", (_currentChannel + 1), _index];
                     INC(_index);
                     _animationhandler set [0, _index];
                 };

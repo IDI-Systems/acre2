@@ -1,9 +1,9 @@
-#define MAINPREFIX idi\clients
+#define MAINPREFIX idi
 
 #define PREFIX acre
 
 //--BUILDPREFIX
-#include "\idi\clients\acre\addons\main\script_version.hpp"
+#include "\idi\acre\addons\main\script_version.hpp"
 //--ENDBUILDPREFIX
 
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD

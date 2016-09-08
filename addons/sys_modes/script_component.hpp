@@ -1,5 +1,5 @@
 #define COMPONENT sys_modes
-#include "\idi\clients\acre\addons\main\script_mod.hpp"
+#include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_MODES
     #define DEBUG_MODE_FULL
@@ -9,4 +9,4 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_MODES
 #endif
 
-#include "\idi\clients\acre\addons\main\script_macros.hpp"
+#include "\idi\acre\addons\main\script_macros.hpp"

@@ -1,5 +1,5 @@
 #define COMPONENT sys_server
-#include "\idi\clients\acre\addons\main\script_mod.hpp"
+#include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_SERVER
     #define DEBUG_MODE_FULL
@@ -10,7 +10,7 @@
 #endif
 
 
-#include "\idi\clients\acre\addons\main\script_macros.hpp"
+#include "\idi\acre\addons\main\script_macros.hpp"
 
 #define DEFAULT_COLLECTION_TIME 350
 
