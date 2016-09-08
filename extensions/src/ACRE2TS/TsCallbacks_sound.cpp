@@ -46,7 +46,7 @@ void ts3plugin_onEditPlaybackVoiceDataEvent(uint64 server, anyID id, short* samp
 
     for (int c = 0; c <= sampleCount - 1; ++c) {
     
-        int32_t result = samples[c] * gain;
+        float result = static_cast<float>(samples[c]) * gain;
         
         if (result > LIMITER::max())result = LIMITER::max();
         else if (result < LIMITER::min()) result = LIMITER::min();

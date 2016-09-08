@@ -19,7 +19,7 @@ ACRE_RESULT CSoundEngine::onEditPlaybackVoiceDataEvent(ACRE_ID id, short* sample
 
     for (int x = 0; x < sampleCount * channels; x += channels) {
         for (int i = 0; i < channels; i++) {
-            int32_t result = static_cast<float>(samples[x + i]) * CAcreSettings::getInstance()->getPremixGlobalVolume();
+            float result = static_cast<float>(samples[x + i]) * CAcreSettings::getInstance()->getPremixGlobalVolume();
             
             if (result > LIMITER::max()) result = LIMITER::max();
             else if (result < LIMITER::min()) result = LIMITER::min();
@@ -34,7 +34,7 @@ ACRE_RESULT CSoundEngine::onEditPlaybackVoiceDataEvent(ACRE_ID id, short* sample
         player = (CPlayer *)it->second;
         LOCK(player);
         if(player->getSpeakingType() != ACRE_SPEAKING_UNKNOWN) {
-            for(int i = 0; i < player->channels.size(); ++i) {
+            for(size_t i = 0; i < player->channels.size(); ++i) {
                 if(player->channels[i]) {
                     player->channels[i]->lock();
                     player->channels[i]->In(samples, sampleCount);
@@ -79,7 +79,7 @@ ACRE_RESULT CSoundEngine::onEditMixedPlaybackVoiceDataEvent(short* samples, int 
 
     for (int x = 0; x < sampleCount * channels; x += channels) {
         for (int i = 0; i < channels; i++) {
-            int32_t result = static_cast<float>(samples[x + i]) * CAcreSettings::getInstance()->getGlobalVolume();
+            float result = static_cast<float>(samples[x + i]) * CAcreSettings::getInstance()->getGlobalVolume();
 
             if (result > LIMITER::max()) result = LIMITER::max();
             else if (result < LIMITER::min()) result = LIMITER::min();

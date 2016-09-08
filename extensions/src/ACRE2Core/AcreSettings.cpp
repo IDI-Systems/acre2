@@ -36,8 +36,8 @@ ACRE_RESULT CAcreSettings::load(std::string filename) {
 
     this->m_HasShownWelcome = config.GetBoolean("acre2", "hasShownWelcome", true);
     this->m_LastVersion = config.Get("acre2", "lastVersion", ACRE_VERSION);
-    this->m_GlobalVolume = config.GetReal("acre2", "globalVolume", 1.0f);
-    this->m_PremixGlobalVolume = config.GetReal("acre2", "premixGlobalVolume", 1.0f);
+    this->m_GlobalVolume = (float)config.GetReal("acre2", "globalVolume", 1.0f);
+    this->m_PremixGlobalVolume = (float)config.GetReal("acre2", "premixGlobalVolume", 1.0f);
     this->m_DisableUnmuteClients = config.GetBoolean("acre2", "disableUnmuteClients", false);
 
     //LOG("Config Load: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
