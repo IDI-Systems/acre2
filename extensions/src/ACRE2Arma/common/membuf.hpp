@@ -21,7 +21,7 @@ namespace acre {
         }
 
         std::streampos seekpos(std::streampos pos, std::ios_base::openmode) {
-            char *p = eback() + pos;
+            char *p = eback() + (std::uintptr_t)pos;
             if (p >= eback() && p <= egptr()) {
                 setg(eback(), p, egptr());
                 return pos;

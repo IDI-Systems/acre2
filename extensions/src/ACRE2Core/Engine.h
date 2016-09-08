@@ -12,11 +12,8 @@
 
 #include "Log.h"
 
-#ifdef _JVON_PLUGIN
-    #define ACRE_LOG_PATH "logs\\acre2.log"
-#else
-    #define ACRE_LOG_PATH "acre2.log"
-#endif
+
+#define ACRE_LOG_PATH "acre2.log"
 
 class CEngine : public TSingleton<CEngine>, public CLockable {
 public:

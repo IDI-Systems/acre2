@@ -66,7 +66,7 @@ typedef struct ACRE_VECTOR {
         return ACRE_VECTOR((x / w), (y / w), (z / w));
     }
     const float length() {
-        return sqrt((x * x) + (y * y) + (z * z));
+        return (float)sqrt((x * x) + (y * y) + (z * z));
     }
     const float distance(ACRE_VECTOR a, ACRE_VECTOR b) {
         ACRE_VECTOR lineVector;

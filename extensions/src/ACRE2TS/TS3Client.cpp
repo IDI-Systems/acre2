@@ -373,9 +373,7 @@ ACRE_RESULT CTS3Client::microphoneOpen(BOOL status) {
 ACRE_RESULT CTS3Client::unMuteAll( void ) {
     anyID clientId;
     anyID *clientList;
-    unsigned __int64 currentChannel;
     unsigned int res;
-    unsigned int x;
     uint32_t total_retries = 0;
     uint32_t total_intentional_runs = 0;
 

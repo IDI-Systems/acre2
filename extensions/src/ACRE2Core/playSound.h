@@ -16,7 +16,7 @@ RPC_FUNCTION(playLoadedSound) {
     std::string id;
     ACRE_VECTOR position, direction;
     float volume;
-    bool isWorld = false;
+    int32_t isWorld = 0;
 
 
     id = std::string((char *)vMessage->getParameter(0));
@@ -33,7 +33,7 @@ RPC_FUNCTION(playLoadedSound) {
 
     isWorld = vMessage->getParameterAsInt(8);
 
-    ACRE_RESULT res = CEngine::getInstance()->getSoundPlayback()->playSound(id, position, direction, volume, isWorld);
+    ACRE_RESULT res = CEngine::getInstance()->getSoundPlayback()->playSound(id, position, direction, volume, isWorld == 1);
     if(res == ACRE_ERROR) {
         vServer->sendMessage(CTextMessage::formatNewMessage("handleSoundError", "%s,", id.c_str()));
     }

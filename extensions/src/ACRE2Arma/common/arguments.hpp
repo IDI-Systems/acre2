@@ -41,7 +41,7 @@ namespace acre {
     public:
         arguments(const std::string & str) : _original(str), _internal_index(0) {
             _args = acre::split(str, ',');
-            for (int i = 0; i < _args.size(); i++) {
+            for (size_t i = 0; i < _args.size(); i++) {
                 _args[i] = trim(_args[i]);
             }
         }

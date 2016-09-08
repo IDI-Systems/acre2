@@ -33,7 +33,7 @@ namespace acre {
             std::vector<face>                   defaultFaces;
             std::vector<lod_p>                  lods;
 
-            size_t                              size;
+            std::streampos                      size;
             model_info_p                        info;
             skeleton_p                          skeleton;
 
@@ -48,7 +48,7 @@ namespace acre {
             std::string                         filename;
             uint32_t                            lod_count;
             uint32_t                            filetype;
-            uint64_t                            version;
+            uint32_t                            version;
             std::string                         prefix_name;
 
         };

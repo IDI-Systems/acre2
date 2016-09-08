@@ -12,7 +12,7 @@ namespace acre {
                 READ_BOOL(inherited);
                 stream_.read((char *)&size, sizeof(uint32_t));
                 
-                for (int x = 0; x < size; x++) {
+                for (uint32_t x = 0; x < size; x++) {
                     std::string _name, _parent;
 
                     READ_STRING(_name);

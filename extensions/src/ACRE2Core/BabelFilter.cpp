@@ -107,6 +107,5 @@ BabelStruct *CBabelFilter::getSpeaker(ACRE_ID id) {
     return speaker;
     UNLOCK(this);
     */
-    BabelStruct *speaker;
-    return speaker;
+    return NULL;
 }
