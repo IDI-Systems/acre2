@@ -1,5 +1,0 @@
-<RCC>
-  <qresource prefix="WelcomeDialog">
-    <file>acre_welcome.html</file>
-  </qresource>
-</RCC>

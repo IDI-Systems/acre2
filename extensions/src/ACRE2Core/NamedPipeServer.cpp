@@ -241,19 +241,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
         LOG("LocalAlloc() failed: %d", GetLastError());
     }
     /*
-    this->validTSServers.insert(std::string("mJuldN/TLy76bFc+1x48Lm2a+Y4=")); // United Operations
-    this->validTSServers.insert(std::string("1VGxwrAxbdku8qssecdmhDV3aWE=")); // UST101 columdrum
-    this->validTSServers.insert(std::string("xrh/tzy3SITbNOHk/NygYmiW+Ug=")); // AAF deFrager
-    this->validTSServers.insert(std::string("1RkVgLpjBNKDa6cKNdnr/2kurhI=")); // BTC Giallustio (ACE)
-    this->validTSServers.insert(std::string("QrSN53oK0R8ujeStVrVPYwtLnB8=")); // ACE Rocko (ACE)
-    this->validTSServers.insert(std::string("fSvR6n8G1n7JouQFe/adu6M03vA=")); // TI Diogo
-    this->validTSServers.insert(std::string("2gqqEEUHL+ISOmFRFclP1oT0iwI=")); // Tupolov
-    this->validTSServers.insert(std::string("T44wbWop9P47POYaWThI49DCkZc=")); // Armatec
-    this->validTSServers.insert(std::string("Hbzu8Q8Thcu8UsFBBX0p5plC4QM=")); // JP
-    this->validTSServers.insert(std::string("yng6nxHm8NP07KXIp2sHzq2W2tc=")); // JP's group
-    this->validTSServers.insert(std::string("t4BAGwauftNFqnQ18UjUPXpboyc=")); // Pers (Swedish Defense Force?)
-    this->validTSServers.insert(std::string("8jCCeSlV83TqS+PArLb/fHEfaUQ=")); // TFB Attridge
-    this->validTSServers.insert(std::string("m7LdBS6PEvwKoqg33Tw2h98Uj9I=")); // F3
+    this->validTSServers.insert(std::string("enter a ts3 server id here")); 
     */
     while(!this->getShuttingDown()) {
         //this->checkServer();
