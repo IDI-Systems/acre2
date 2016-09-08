@@ -14,7 +14,7 @@
  *
  * Public: No
  */
-#define FORMAT_NUMBER(num) (num call FUNC(formatNumber))
+
 #include "script_component.hpp"
 
 params["_name","_params"];
@@ -34,12 +34,7 @@ if(IS_ARRAY(_params)) then {
                             _x = 0;
                         };
                     };
-                    // if(IS_NUMBER(_x)) then {
-                        // _x = FORMAT_NUMBER(_x);
-                        // _params = _params + _x + ",";
-                    // } else {
-                        _params = _params + (str _x) + ",";
-                    // };
+                    _params = _params + (str _x) + ",";
                 } else {
                     _params = _params + _x + ",";
                 };
@@ -53,12 +48,7 @@ if(IS_ARRAY(_params)) then {
                         _element = 0;
                     };
                 };
-                // if(IS_NUMBER(_element)) then {
-                    // _element = FORMAT_NUMBER(_element);
-                    // _params = _params + _element + ",";
-                // } else {
-                    _params = _params + (str _element) + ",";
-                // };
+                _params = _params + (str _element) + ",";
             } else {
                 _params = _params + _element + ",";
             };
