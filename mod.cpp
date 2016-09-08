@@ -1,5 +1,12 @@
 name = "Advanced Combat Radio Environment 2";
 picture = "acre_logo_medium_ca.paa";
-actionName = "Website";
-action = "http://tracker.idi-systems.com/projects/acre2";
-description = "Alpha Version";
+logo = "acre_logo_medium_ca.paa";
+logoOver = "acre_logo_medium_ca.paa";
+actionName = "Github";
+action = "https://github.com/IDI-Systems/acre2";
+description = "ACRE2";
+tooltip = "ACRE2";
+tooltipOwned = "ACRE2 Owned";
+overview = "ACRE2 is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications through Teamspeak 3.";
+overviewPicture = "acre_logo_medium_ca.paa";
+author = "ACRE2 Team";
