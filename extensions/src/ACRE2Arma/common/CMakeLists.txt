@@ -29,6 +29,3 @@ SOURCE_GROUP("sqf" FILES ${ACRE_SQF_SOURCES})
 add_library(acre_common STATIC ${ACRE_SQF_SOURCES} ${ACRE_WRP_SOURCES} ${ACRE_GLM_SOURCES} ${ACRE_BASE_COMMON_SOURCES} ${ACRE_P3D_SOURCES} ${ACRE_PBO_SOURCES} ${ACRE_SIMULATION_SOURCES} ${ACRE_DIRECTX_SOURCES})
 
 set_target_properties(acre_common PROPERTIES FOLDER ACRE2Arma)
-
-add_dependencies(acre_common lzo_static)
-target_link_libraries(acre_common lzo_static)

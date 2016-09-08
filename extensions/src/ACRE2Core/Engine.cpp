@@ -29,7 +29,7 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
         g_Log = (Log *)new Log("acre2.log"); 
         LOG("* Logging engine initialized.");
     }
-    LOG("Configuration Path: {%s}", client->getConfigFilePath());
+    LOG("Configuration Path: {%s}", client->getConfigFilePath().c_str());
     CAcreSettings::getInstance()->load(client->getConfigFilePath() + "acre2.ini");
 
     this->setClient(client);

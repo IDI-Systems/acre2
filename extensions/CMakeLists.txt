@@ -6,7 +6,6 @@ include(${PROJECT_SOURCE_DIR}/CMakeModules/cxx_compiler_functions.cmake)
 
 option(USE_64BIT_BUILD "USE_64BIT_BUILD" OFF)
 option(USE_STATIC_LINKING "USE_STATIC_LINKING" ON)
-option(USE_ACRE2UI "USE_ACRE2UI" ON)
 
 set(CMAKE_BUILD_TYPE "RelWithDebInfo")
 
@@ -52,10 +51,6 @@ add_subdirectory(src/ACRE2Core)
 
 add_subdirectory(src/ACRE2Arma)
 add_subdirectory(src/ACRE2Steam)
-
-if(USE_ACRE2UI)
-    add_subdirectory(src/ACRE2UI)
-endif()
 
 add_subdirectory(src/ACRE2TS)
 
