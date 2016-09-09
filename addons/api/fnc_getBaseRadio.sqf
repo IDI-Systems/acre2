@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Takes an actual unique radio ID, and returns its actual base radio type
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio item name with ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * The base radio class <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC148_ID_15"] call acre_api_fnc_getBaseRadio;
  *
  * Public: Yes
  */

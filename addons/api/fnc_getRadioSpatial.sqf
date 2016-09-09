@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Gets what spatialization zone the specified radio ID is currently in. “LEFT”, “RIGHT” or “CENTER”
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * "LEFT", "RIGHT" or "CENTER" <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _spatial = ["ACRE_PRC148"] call acre_api_fnc_getRadioSpatial;
  *
  * Public: Yes
  */

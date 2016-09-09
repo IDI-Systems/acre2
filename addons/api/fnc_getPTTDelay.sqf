@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Gets the current delay value for releasing radio PTT events. The default value for this is 200ms, or 0.2
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * The delay time in seconds to release PTT radio events. <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _delay = [] call acre_api_fnc_getPTTDelay
  *
  * Public: Yes
  */

@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Gets the babel language display name from the language key.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Language key <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Language display name <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["en"] call acre_api_fnc_babelSetSpeakingLanguage;
  *
  * Public: Yes
  */

@@ -10,9 +10,9 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343","default"] call acre_api_fnc_setDefaultChannels;
  *
- * Public: Yes
+ * Deprecated
  */
 #include "script_component.hpp"
 

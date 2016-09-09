@@ -1,16 +1,20 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the value of a given channel field for the given radio preset.
+ * This function must be called on all clients and the server to work properly.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio Base class <STRING>
+ * 1: Preset name <STRING>
+ * 2: Channel number <NUMBER>
+ * 3: Field name <STRING>
+ * 4: value <ANY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Success on setting the channel field data <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC148", "default", 5, "label", "COY"] call acre_api_fnc_setPresetChannelField;
  *
  * Public: Yes
  */

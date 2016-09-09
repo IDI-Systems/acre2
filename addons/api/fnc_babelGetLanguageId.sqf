@@ -1,19 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Gets the babel language key from the display name.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Language display name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Language key <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["English"] call acre_api_fnc_babelGetLanguageId;
  *
  * Public: Yes
  */
+
 #include "script_component.hpp"
 
 params ["_languageKey"];

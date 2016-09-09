@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks whether the provided unit has a radio of the specified radio type in their inventory.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit or array of item classnames <OBJECT/ARRAY>
+ * 1: Radio base type <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Has kind of radio <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _hasRadio = [player, "ACRE_PRC148"] call acre_api_fnc_hasKindOfRadio
  *
  * Public: Yes
  */
