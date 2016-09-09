@@ -21,16 +21,17 @@
 #include "ping.h"
 #include "updateSelf.h"
 #include "setSelectableVoiceCurve.h"
+#include "setSetting.h"
 
 
 ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
-    
+
     if(!g_Log) {
-        g_Log = (Log *)new Log("acre2.log"); 
+        g_Log = (Log *)new Log("acre2.log");
         LOG("* Logging engine initialized.");
     }
-    LOG("Configuration Path: {%s}", client->getConfigFilePath().c_str());
-    CAcreSettings::getInstance()->load(client->getConfigFilePath() + "acre2.ini");
+    LOG("Configuration Path: {%s\\acre2.ini}", client->getConfigFilePath().c_str());
+    CAcreSettings::getInstance()->load(client->getConfigFilePath() + "\\acre2.ini");
 
     this->setClient(client);
     this->setExternalServer(externalServer);
@@ -63,16 +64,17 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
     this->getRpcEngine()->addProcedure(new ping());
     this->getRpcEngine()->addProcedure(new updateSelf());
     this->getRpcEngine()->addProcedure(new setSelectableVoiceCurve());
+    this->getRpcEngine()->addProcedure(new setSetting());
 
     // Initialize the client, because it never was derp
     this->getClient()->initialize();
-    
+
     return ACRE_OK;
 }
 
 ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName, std::string loggingPath) {
-    
-    g_Log = (Log *)new Log(const_cast<char *>(loggingPath.c_str())); 
+
+    g_Log = (Log *)new Log(const_cast<char *>(loggingPath.c_str()));
     LOG("* Logging engine initialized.");
 
     return initialize(client, externalServer, fromPipeName, toPipeName);
@@ -121,10 +123,10 @@ ACRE_RESULT CEngine::stop() {
 
     if(this->getExternalServer()) {
         this->getExternalServer()->shutdown();
-    }    
+    }
 
     CAcreSettings::getInstance()->save();
-    
+
     this->setState(ACRE_STATE_STOPPED);
     LOG("Engine Shutdown Complete");
     return ACRE_OK;
@@ -144,7 +146,7 @@ ACRE_RESULT CEngine::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::st
     this->getSelf()->clearSoundChannels();
 
     CEngine::getInstance()->getExternalServer()->sendMessage(
-        CTextMessage::formatNewMessage("ext_remoteStartSpeaking", 
+        CTextMessage::formatNewMessage("ext_remoteStartSpeaking",
             "%d,%d,%s,%d,%s,%f,",
             this->getSelf()->getId(),
             this->getSelf()->getCurrentLanguageId(),
@@ -152,17 +154,17 @@ ACRE_RESULT CEngine::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::st
             this->getSelf()->getSpeakingType(),
             this->getSelf()->getCurrentRadioId().c_str(),
             this->getSelf()->getSelectableCurveScale()
-        ) 
+        )
     );
 
     // Send the local start speaking event to ourselves, so we can play squawk, etc in game.
-    CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("localStartSpeaking", 
+    CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("localStartSpeaking",
         "%d,%d,%d,%s,",
         this->getSelf()->getId(),
         this->getSelf()->getCurrentLanguageId(),
         this->getSelf()->getSpeakingType(),
         this->getSelf()->getCurrentRadioId().c_str()
-        ) 
+        )
     );
 
     this->getSelf()->setSpeaking(TRUE);
@@ -173,22 +175,22 @@ ACRE_RESULT CEngine::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::st
 ACRE_RESULT CEngine::localStopSpeaking( void ) {
     this->getSelf()->setSpeaking(FALSE);
     CEngine::getInstance()->getExternalServer()->sendMessage(
-        CTextMessage::formatNewMessage("ext_remoteStopSpeaking", 
+        CTextMessage::formatNewMessage("ext_remoteStopSpeaking",
             "%d,%s,",
             this->getSelf()->getId(),
             this->getSelf()->getNetId().c_str()
-        ) 
+        )
     );
 
-    CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("localStopSpeaking", 
+    CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("localStopSpeaking",
         "%d,%d,%s,",
         this->getSelf()->getId(),
         this->getSelf()->getSpeakingType(),
         this->getSelf()->getCurrentRadioId().c_str()
-        ) 
+        )
     );
 
-    
+
     return ACRE_OK;
 }
 
@@ -207,16 +209,16 @@ ACRE_RESULT CEngine::remoteStartSpeaking(ACRE_ID remoteId, int languageId, std::
     remotePlayer->setCurrentRadioId(radioId);
     remotePlayer->setNetId(netId);
 
-    
 
-    CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("remoteStartSpeaking", 
+
+    CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("remoteStartSpeaking",
         "%d,%d,%s,%d,%s,",
         remoteId,
         languageId,
         netId.c_str(),
         speakingType,
         radioId.c_str()
-        ) 
+        )
     );
 
     return ACRE_OK;
@@ -228,13 +230,13 @@ ACRE_RESULT CEngine::remoteStopSpeaking(ACRE_ID remoteId) {
     if(it != this->speakingList.end()) {
         CPlayer *remotePlayer = (CPlayer *)it->second;
 
-        CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("remoteStopSpeaking", 
+        CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("remoteStopSpeaking",
             "%d,%s,%d,%s,",
             remotePlayer->getId(),
             remotePlayer->getNetId().c_str(),
             remotePlayer->getSpeakingType(),
             remotePlayer->getCurrentRadioId().c_str()
-            ) 
+            )
         );
 
         this->speakingList.erase(it);

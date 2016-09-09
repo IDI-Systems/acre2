@@ -33,6 +33,7 @@ PREP(processDirectSpeaker);
 PREP(processRadioSpeaker);
 PREP(remoteStartSpeaking);
 PREP(remoteStopSpeaking);
+PREP(setPluginSetting);
 PREP(setSpeakingLanguage);
 PREP(setSpokenLanguages);
 PREP(showBroadCastHint);
@@ -100,8 +101,6 @@ DVAR(ACRE_LISTENER_DIR) = [0,1,0];
 DVAR(ACRE_PTT_RELEASE_DELAY) = 0.2;
 DVAR(ACRE_ASSIGNED_PTT_RADIOS) = [];
 GVAR(delayReleasePTT_Handle) = nil;
-
-// DVAR(ACRE_USE_DEBUG_EXTENSIONS) = true;
 
 DVAR(ACRE_ACTIVE_PTTKEY) = -2;
 DVAR(ACRE_BROADCASTING_RADIOID) = "";
@@ -185,5 +184,46 @@ for "_i" from 1 to (_m/2) do {
         PUSH(ACRE_TESTANGLES, _negative);
     };
 };
+
+
+// Settings
+[
+    QGVAR(postmixGlobalVolume),
+    "SLIDER",
+    "Post-Mix Global Volume",
+    "ACRE2",
+    [0, 3, 1, 2],
+    false,
+    {
+        params ["_value"];
+        ["globalVolume", _value] call FUNC(setPluginSetting);
+    }
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(premixGlobalVolume),
+    "SLIDER",
+    "Pre-Mix Global Volume",
+    "ACRE2",
+    [0, 3, 1, 2],
+    false,
+    {
+        params ["_value"];
+        ["premixGlobalVolume", _value] call FUNC(setPluginSetting);
+    }
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(unmuteClients),
+    "CHECKBOX",
+    "Unmute Clients",
+    "ACRE2",
+    true,
+    false,
+    {
+        params ["_value"];
+        ["disableUnmuteClients", _value] call FUNC(setPluginSetting);
+    }
+] call CBA_Settings_fnc_init;
 
 ADDON = true;
