@@ -51,6 +51,8 @@ PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
 
+#include "initSettings.sqf"
+
 /**
 *
 *
@@ -184,46 +186,5 @@ for "_i" from 1 to (_m/2) do {
         PUSH(ACRE_TESTANGLES, _negative);
     };
 };
-
-
-// Settings
-[
-    QGVAR(postmixGlobalVolume),
-    "SLIDER",
-    "Post-Mix Global Volume",
-    "ACRE2",
-    [0, 3, 1, 2],
-    false,
-    {
-        params ["_value"];
-        ["globalVolume", _value] call FUNC(setPluginSetting);
-    }
-] call CBA_Settings_fnc_init;
-
-[
-    QGVAR(premixGlobalVolume),
-    "SLIDER",
-    "Pre-Mix Global Volume",
-    "ACRE2",
-    [0, 3, 1, 2],
-    false,
-    {
-        params ["_value"];
-        ["premixGlobalVolume", _value] call FUNC(setPluginSetting);
-    }
-] call CBA_Settings_fnc_init;
-
-[
-    QGVAR(unmuteClients),
-    "CHECKBOX",
-    "Unmute Clients",
-    "ACRE2",
-    true,
-    false,
-    {
-        params ["_value"];
-        ["disableUnmuteClients", _value] call FUNC(setPluginSetting);
-    }
-] call CBA_Settings_fnc_init;
 
 ADDON = true;
