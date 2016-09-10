@@ -1,16 +1,7 @@
 #pragma once
 
-#include "compat.h"
-#include "Types.h"
-#include "Macros.h"
-#include "Log.h"
 #include "IRpcFunction.h"
-
-#include "IServer.h"
-#include "Engine.h"
-
-#include "TextMessage.h"
-
+#include "Log.h"
 #include "AcreSettings.h"
 
 RPC_FUNCTION(setSetting) {
