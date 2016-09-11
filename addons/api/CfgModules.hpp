@@ -9,9 +9,9 @@ class CfgVehicles
 {
     class Logic;
     class Module_F: Logic { class ArgumentsBaseUnits { class Units; }; class ModuleDescription { class AnyBrain; }; };
-    
+
     class GVAR(basicMissionSetup) : Module_F {
-        scope = 2;
+        scope = 1;
         displayName = "Basic Mission Setup";
         author = "ACRE Team";
         category = QGVAR(mission_setup);
@@ -28,14 +28,14 @@ class CfgVehicles
         class Arguments {
             class RadioSetup {
                 displayName = "Channels Per Side";
-                description = "Set to true to have each side have different ACRE radio frequencies"; 
-                typeName = "BOOL"; 
+                description = "Set to true to have each side have different ACRE radio frequencies";
+                typeName = "BOOL";
                 class values { };
             };
             class BabelSetup {
                 displayName = "Babel Language Per Side";
-                description = "Select whether each side has its own language, and whether they also share a common tongue."; 
-                typeName = "NUMBER"; 
+                description = "Select whether each side has its own language, and whether they also share a common tongue.";
+                typeName = "NUMBER";
                 class values {
                     class AllDifferent    {name = "Per-Side";    value = 1; };
                     class SharingDifferent    {name = "Per-Side /w Common"; value = 2; default = 2; };
@@ -69,9 +69,9 @@ class CfgVehicles
             sync[] = {};
         };
     };
-    
+
     class GVAR(DifficultySettings) : Module_F {
-        scope = 2;
+        scope = 1;
         displayName = "Difficulty Settings";
         category = QGVAR(mission_setup);
 
@@ -87,29 +87,29 @@ class CfgVehicles
         class Arguments {
             class SignalLoss {
                 displayName = "Signal Loss";
-                description = "Set to false to disable signal and terrain loss values"; 
-                typeName = "BOOL"; 
+                description = "Set to false to disable signal and terrain loss values";
+                typeName = "BOOL";
                 defaultValue = true;
                 class values { };
             };
             class FullDuplex {
                 displayName = "Full-Duplex Transmissions";
-                description = "Set to true to enable full-duplex, or multiple people transmitting"; 
-                typeName = "BOOL"; 
+                description = "Set to true to enable full-duplex, or multiple people transmitting";
+                typeName = "BOOL";
                 defaultValue = false;
                 class values { };
             };
             class Interference {
                 displayName = "Signal Interference";
-                description = "Set to false to disable the interference from multiple transmitters"; 
-                typeName = "BOOL"; 
+                description = "Set to false to disable the interference from multiple transmitters";
+                typeName = "BOOL";
                 defaultValue = true;
                 class values { };
             };
             class IgnoreAntennaDirection {
                 displayName = "Ignore Antenna Direction";
-                description = "Set to true to disable loss due to antenna directional radiation patterns."; 
-                typeName = "BOOL"; 
+                description = "Set to true to disable loss due to antenna directional radiation patterns.";
+                typeName = "BOOL";
                 defaultValue = false;
                 class values { };
             };
@@ -120,7 +120,7 @@ class CfgVehicles
             sync[] = {};
         };
     };
-    
+
     class GVAR(nameChannels) : Module_F {
         scope = 2;
         displayName = "Name Channels";
@@ -137,11 +137,11 @@ class CfgVehicles
 
         // Module arguments
         class Arguments {
-            
+
             class SideSelect {
                 displayName = "Side";
-                description = "Select the side to name channels for"; 
-                typeName = "NUMBER"; 
+                description = "Select the side to name channels for";
+                typeName = "NUMBER";
                 class values
                 {
                     class All    {name = "All";    value = 1; default = 1;};
@@ -151,7 +151,7 @@ class CfgVehicles
                     class Civ    {name = "Civilian"; value = 5;};
                 };
             };
-            
+
             class Channel_1 {
                 displayName = "Channel 1";
                 description = "Name of Channel 1";

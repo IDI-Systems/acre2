@@ -39,6 +39,7 @@ class CfgFunctions {
         };
 
         class Radios {
+            DEFINE_FUNCTION(getAllRadios);
             DEFINE_FUNCTION(getCurrentRadio);
             DEFINE_FUNCTION(setCurrentRadio);
             DEFINE_FUNCTION(getCurrentRadioList);

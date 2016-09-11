@@ -51,8 +51,6 @@ PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
 
-#include "initSettings.sqf"
-
 /**
 *
 *
