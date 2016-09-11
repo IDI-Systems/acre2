@@ -20,6 +20,8 @@ params ["_logic", "_units", "_activated"];
 
 if (!_activated) exitWith {};
 
+ACRE_DEPRECATED("Difficulty Settings module","2.4.0","CBA Settings");
+
 TRACE_1("enter", _this);
 
 _signalLoss = _logic getVariable["SignalLoss", true];

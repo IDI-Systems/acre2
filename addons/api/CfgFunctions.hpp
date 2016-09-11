@@ -96,7 +96,6 @@ class CfgFunctions {
     class AcreModules {
         class GVAR(mission_setup) {
             class basicMissionSetup { file = PATHTOF(modules\basicMissionSetup.sqf); };
-            class disableSignalLoss { file = PATHTOF(modules\disableSignalLoss.sqf); };
             class difficultySettings { file = PATHTOF(modules\difficultySettings.sqf); };
             class nameChannels { file = PATHTOF(modules\nameChannels.sqf); };
         };

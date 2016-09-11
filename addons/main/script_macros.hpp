@@ -276,3 +276,5 @@ PERFORMANCE COUNTERS SECTION
     #define END_COUNTER(x) /* disabled */
     #define DUMP_COUNTERS  /* disabled */
 #endif
+
+#define ACRE_DEPRECATED(arg1,arg2,arg3) diag_log text format ["[ACRE] (%1) WARNING: %2 is deprecated. Support will be dropped in version %3. Replaced by: %4", QUOTE(COMPONENT), arg1, arg2, arg3]
