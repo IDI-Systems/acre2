@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks whether the provided weapon/item is the specified ACRE radio type.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID/Item classname <STRING>
+ * 1: Radio base type <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Whether the provided item is of the radio base type <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _ret = ["ACRE_PRC117F_ID_123", "ACRE_PRC117F"] call acre_api_fnc_isKindOf;
  *
  * Public: Yes
  */

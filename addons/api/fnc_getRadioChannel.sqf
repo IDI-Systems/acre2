@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the channel number of the currently active channel on the provided radio ID.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Channel number, 1-N depending on the radio <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _currentChannel = ["ACRE_PRC152_ID_123"] call acre_api_fnc_getRadioChannel;
  *
  * Public: Yes
  */

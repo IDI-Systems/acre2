@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Copies all parameters of the source preset to a new destination preset name.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio base type <STRING>
+ * 1: Preset name to copy <STRING>
+ * 2: Destination preset name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Copy preset succesful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [["ACRE_PRC152", "default2", "balls"] call acre_api_fnc_copyPreset;E
  *
  * Public: Yes
  */

@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function generically sets up a mission so that each side will have their own radios as well as speak their own separate languages. Further API calls will be needed to allow them to speak to each other, or configure specific intermingling channels.
+ * This function should allow for the most basic and common TVT and gameplay setups; allowing for different radios that do not interfere, as well as different languages.
+ * Call this on all clients.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Babel - true to set up a unique babel language for each side. <BOOLEAN>
+ * 1: Radio - true to set up different frequencies for each side by using different presets. <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [true, true] call acre_api_fnc_setupMission;
  *
  * Public: Yes
  */

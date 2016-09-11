@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Set the radio type to replace "ItemRadio" in unit inventories. By default this is the "ACRE_PRC343"
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio base type <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Success <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC148"] call acre_api_fnc_setItemRadioReplacement;
  *
  * Public: Yes
  */

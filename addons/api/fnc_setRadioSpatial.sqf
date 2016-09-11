@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets what spatialization zone the specified radio ID should be in. “LEFT”, “RIGHT” or “CENTER”.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Spatial “LEFT”, “RIGHT” or “CENTER" <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _success = ["ACRE_PRC148_ID_3", "LEFT" ] call acre_api_fnc_setRadioSpatial;
  *
  * Public: Yes
  */

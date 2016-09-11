@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks whether the provided unit has an ACRE radio in their inventory.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Whether the unit or player has a radio <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _hasRadio = [player] call acre_api_fnc_hasRadio;
  *
  * Public: Yes
  */

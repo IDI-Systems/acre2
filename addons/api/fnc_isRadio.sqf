@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns true or false whether the provided weapon is a ACRE radio or not.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Classname <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Whether the provided object class name is a radio or not <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _isRadio = ["NVGoggles"] call acre_api_fnc_isRadio;
  *
  * Public: Yes
  */

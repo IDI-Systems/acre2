@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the global volume of the output from ACRE. 1 is normal, 0 is silent
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Volume between 0 and 1 <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Volume <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [0.05] call acre_api_fnc_setGlobalVolume;
  *
  * Public: Yes
  */

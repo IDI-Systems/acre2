@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the value of the channel field for the given radio preset.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio Base class <STRING>
+ * 1: Preset name <STRING>
+ * 2: Channel number <NUMBER>
+ * 3: Field name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Value of the given field <ANY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC148", "default", 2, "label"] call acre_api_fnc_getPresetChannelField;
  *
  * Public: Yes
  */

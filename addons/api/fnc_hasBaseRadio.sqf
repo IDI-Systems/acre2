@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks whether the given unit has a base radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Has base radio <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _result = [player] call acre_api_fnc_hasBaseRadio;
  *
  * Public: Yes
  */

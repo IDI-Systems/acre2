@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the full ACRE2 channel Hash data of the specified preset name for the specified radio.
+ * The channel number must be a valid channel for that type of radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Base radio class <STRING>
+ * 1: Preset name <STRING>
+ * 2: Channel number <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Hash containing all the channel preset information <HASH>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _presetData = ["ACRE_PRC152", "default", 4] call acre_api_fnc_getPresetChannelData;
  *
  * Public: Yes
  */
