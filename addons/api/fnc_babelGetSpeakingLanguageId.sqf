@@ -9,7 +9,7 @@
  * Language key <STRING>
  *
  * Example:
- * [] call acre_api_fnc_babelSetSpeakingLanguage;
+ * [] call acre_api_fnc_babelSetSpeakingLanguageId;
  *
  * Public: Yes
  */
