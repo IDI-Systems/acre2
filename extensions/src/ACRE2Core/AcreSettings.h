@@ -7,7 +7,7 @@
 #include "SoundEngine.h"
 #include "ini_reader.hpp"
 
-class CAcreSettings : 
+class CAcreSettings :
     public TSingleton<CAcreSettings>, public CLockable {
 public:
     CAcreSettings();
@@ -18,7 +18,6 @@ public:
     ACRE_RESULT save(std::string filename);
     ACRE_RESULT load(std::string filename);
 
-    DECLARE_MEMBER(bool, HasShownWelcome);
     DECLARE_MEMBER(std::string, LastVersion);
 
     DECLARE_MEMBER(float, GlobalVolume);
