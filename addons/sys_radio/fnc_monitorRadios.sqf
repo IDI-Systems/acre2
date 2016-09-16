@@ -35,14 +35,13 @@ DFUNC(monitorRadios_PFH) = {
     if(time < 1) exitWith { };
 
     if(ACREALIVE(acre_player)) then {
-        _currentUniqueItems = [];
-        _weapons = [acre_player] call EFUNC(lib,getGear);
-
+        private _currentUniqueItems = [];
+        private _weapons = [acre_player] call EFUNC(lib,getGear);
 
         if(!("ItemRadio" in _weapons) && !("ItemRadioAcreFlagged" in _weapons) && !ACRE_HOLD_OFF_ITEMRADIO_CHECK) then {
-            // [acre_player, "ItemRadioAcreFlagged"] call EFUNC(lib,addGear);
-            acre_player linkItem "ItemRadioAcreFlagged";
-            _newWeapons = [acre_player] call EFUNC(lib,getGear);
+            acre_player linkItem "ItemRadioAcreFlagged"; // Only ItemRadio/ItemRadioAcreFlagged can be in the linked item slot for Radios.
+            // Check if the linkItem removes anything... Only ItemRadio
+            /*_newWeapons = [acre_player] call EFUNC(lib,getGear);
             {
                 _radio = _x;
                 _hasUnique = getNumber(configFile >> "CfgWeapons" >> _radio >> "acre_hasUnique");
@@ -52,7 +51,7 @@ DFUNC(monitorRadios_PFH) = {
                     };
                 };
             } forEach _weapons;
-            _weapons = _newWeapons;
+            _weapons = _newWeapons;*/
         } else {
             if("ItemRadioAcreFlagged" in _weapons && !("ItemRadioAcreFlagged" in (assignedItems acre_player)) && !ACRE_HOLD_OFF_ITEMRADIO_CHECK) then {
                 acre_player assignItem "ItemRadioAcreFlagged";
@@ -110,7 +109,7 @@ DFUNC(monitorRadios_PFH) = {
                     [acre_player, _radio, _baseRadio] call EFUNC(lib,replaceGear);
                     _radio = _baseRadio;
                 };
-                PUSH(_currentUniqueItems, _radio);
+                _currentUniqueItems pushBack _radio;
             };
         } forEach _weapons;
 
