@@ -46,6 +46,7 @@ if (!GVAR(doFullSearch)) then {
             } else {
                 #ifdef PLATFORM_A3
                 _items = itemCargo _object;
+                _items = _items select {(_x select [0, 4]) == "ACRE" || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged"};
                 #endif
                 #ifdef PLATFORM_A2
                 _items = (getWeaponCargo _object) select 0;
@@ -103,6 +104,7 @@ if(GVAR(doFullSearch) && !GVAR(fullSearchRunning) ) then {
                     } else {
                         #ifdef PLATFORM_A3
                         _items = itemCargo _object;
+                        _items = _items select {(_x select [0, 4]) == "ACRE" || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged"};
                         #endif
                         #ifdef PLATFORM_A2
                         _items = (getWeaponCargo _object) select 0;
