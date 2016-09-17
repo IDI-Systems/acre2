@@ -246,28 +246,27 @@ FUNC(getGear) = {
 FUNC(replaceGear) = {
     params["_unit", "_itemToReplace", "_itemReplaceWith"];
 
+    private _uniform = (uniformContainer _unit);
+    if (!isNull _uniform && {_itemToReplace in (itemCargo _uniform)}) exitWith {
+        _unit removeItem _itemToReplace;
+        _uniform addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit
+    };
+
+    private _vest = (vestContainer _unit);
+    if (!isNull _vest && {_itemToReplace in (itemCargo _vest)}) exitWith {
+        _unit removeItem _itemToReplace;
+        _vest addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit
+    };
+
+    private _backpack = (backpackContainer _unit);
+    if (!isNull _backpack && {_itemToReplace in (itemCargo _backpack)}) exitWith {
+        _unit removeItem _itemToReplace;
+        _backpack addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit
+    };
+
     private _assignedItems = assignedItems _unit;
     if(_itemToReplace in _assignedItems) then {
         _unit unassignItem _itemToReplace;
-    };
-
-    // Remove and replace in correct container
-    private _uniformItems = uniformItems _unit;
-    if(_itemToReplace in _uniformItems) exitWith {
-        _unit removeItem _itemToReplace;
-        _unit addItemToUniform _itemReplaceWith;
-    };
-
-    private _vestItems = vestItems _unit;
-    if(_itemToReplace in _vestItems) exitWith {
-        _unit removeItem _itemToReplace;
-        _unit addItemToVest _itemReplaceWith;
-    };
-
-    private _backpackItems = backpackitems _unit;
-    if(_itemToReplace in _backpackItems) exitWith {
-        _unit removeItem _itemToReplace;
-        _unit addItemToBackpack _itemReplaceWith;
     };
 
     private _weapons = weapons _unit;
@@ -276,15 +275,17 @@ FUNC(replaceGear) = {
         _unit addWeapon _itemReplaceWith;
     };
 
-    //private _allItems = items _unit;
-
-    // Total fallback for replacement if its somehow not in any container, but still on them?
-    // Somehow, SSG was getting massive duplicate radios because it was not being replaced above
-    // So it somehow wasnt ItemRadio, but was assigned, and not being assigned, and not in a container.
-    //if(_itemToReplace in _allItems) then {
-        _unit removeItem _itemToReplace;
+    _unit removeItem _itemToReplace;
+    if (_unit canAdd _itemReplaceWith) then {
         _unit addItem _itemReplaceWith;
-    //};
+    } else {
+        if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_itemReplaceWith, 1];};
+        if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_itemReplaceWith, 1];};
+        if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_itemReplaceWith, 1];};
+        private _message = "ACRE2: Unable to add '%1' to your inventory.";
+        systemChat _message;
+        diag_log _message;
+    };
 };
 
 FUNC(removeGear) = {
@@ -308,10 +309,9 @@ FUNC(removeGear) = {
 };
 
 FUNC(addGear) = {
-    params["_unit", "_item"];
+    params["_unit", "_item",["_gearContainer",""]];
 
-    if( (count _this) > 2) then {
-        private _gearContainer = _this select 2;
+    if( _gearContainer != "") then {
         switch _gearContainer do {
             case 'vest': {
                 _unit addItemToVest _item;
@@ -324,7 +324,17 @@ FUNC(addGear) = {
             };
         };
     } else {
-        _unit addItem _item;
+        if (_unit canAdd _item) then {
+            _unit addItem _item;
+        } else {
+            // Attempt to force add Item.
+            private _uniform = (uniformContainer _unit);
+            if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_item, 1];};
+            private _vest = (vestContainer _unit);
+            if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_item, 1];};
+            private _backpack = (backpackContainer _unit);
+            if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_item, 1];};
+        };
     };
     // private _assignedItems = assignedItems _unit;
     // private _needsAssigned = true;

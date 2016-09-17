@@ -172,7 +172,7 @@ DFUNC(checkServerDesyncBug) = {
     if(ACRE_SERVER_GEAR_DESYNC_CHECK) then {
         switch(ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE) do {
             case 0: {
-                acre_player addItem "ACRE_TestGearDesyncItem";
+                [acre_player, "ACRE_TestGearDesyncItem"] call EFUNC(lib,addGear);
                 ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE = 1;
             };
             case 1: {
