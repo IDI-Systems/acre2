@@ -309,10 +309,9 @@ FUNC(removeGear) = {
 };
 
 FUNC(addGear) = {
-    params["_unit", "_item"];
+    params["_unit", "_item",["_gearContainer",""]];
 
-    if( (count _this) > 2) then {
-        private _gearContainer = _this select 2;
+    if( _gearContainer != "") then {
         switch _gearContainer do {
             case 'vest': {
                 _unit addItemToVest _item;
@@ -325,7 +324,17 @@ FUNC(addGear) = {
             };
         };
     } else {
-        _unit addItem _item;
+        if (_unit canAdd _item) then {
+            _unit addItem _item;
+        } else {
+            // Attempt to force add Item.
+            private _uniform = (uniformContainer _unit);
+            if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_item, 1];};
+            private _vest = (vestContainer _unit);
+            if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_item, 1];};
+            private _backpack = (backpackContainer _unit);
+            if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_item, 1];};
+        };
     };
     // private _assignedItems = assignedItems _unit;
     // private _needsAssigned = true;
