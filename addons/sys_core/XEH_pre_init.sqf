@@ -33,6 +33,7 @@ PREP(processDirectSpeaker);
 PREP(processRadioSpeaker);
 PREP(remoteStartSpeaking);
 PREP(remoteStopSpeaking);
+PREP(setPluginSetting);
 PREP(setSpeakingLanguage);
 PREP(setSpokenLanguages);
 PREP(showBroadCastHint);
@@ -49,6 +50,8 @@ PREP(utilityFunction);
 PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
+
+#include "initSettings.sqf"
 
 /**
 *
@@ -100,8 +103,6 @@ DVAR(ACRE_LISTENER_DIR) = [0,1,0];
 DVAR(ACRE_PTT_RELEASE_DELAY) = 0.2;
 DVAR(ACRE_ASSIGNED_PTT_RADIOS) = [];
 GVAR(delayReleasePTT_Handle) = nil;
-
-// DVAR(ACRE_USE_DEBUG_EXTENSIONS) = true;
 
 DVAR(ACRE_ACTIVE_PTTKEY) = -2;
 DVAR(ACRE_BROADCASTING_RADIOID) = "";

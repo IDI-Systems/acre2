@@ -31,6 +31,8 @@ ACRE_RESULT CAcreSettings::load(std::string filename) {
         LOG("Failed to load ACRE ini file. Using defaults...");
         this->save(filename);
         return ACRE_ERROR;
+    } else {
+        LOG("Successfully loaded ACRE ini file (any failures above can be ignored).");
     }
 
     this->m_LastVersion = config.Get("acre2", "lastVersion", ACRE_VERSION);

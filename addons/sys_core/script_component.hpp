@@ -13,4 +13,4 @@
 
 #define EOL_CHAR toString[10]
 
-//#define USE_DEBUG_EXTENSIONS 1
+//#define USE_DEBUG_EXTENSIONS

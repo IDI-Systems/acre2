@@ -21,7 +21,7 @@ BOOLEAN WINAPI DllMain(IN HINSTANCE hDllHandle,
         el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "%datetime-{%level}- %msg");
 #endif
         el::Loggers::setDefaultConfigurations(conf, true);
-        
+
         LOG(INFO) << "ACRE Loaded";
 
         break;
