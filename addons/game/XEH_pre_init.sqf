@@ -285,7 +285,7 @@ FUNC(replaceGear) = {
         if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_itemReplaceWith, 1];};
         if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_itemReplaceWith, 1];};
         if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_itemReplaceWith, 1];};
-        private _message = "ACRE2: Unable to add '%1' to your inventory.";
+        private _message = format["ACRE2: Unable to add '%1' to your inventory.",_itemReplaceWith];
         systemChat _message;
         diag_log _message;
     };
