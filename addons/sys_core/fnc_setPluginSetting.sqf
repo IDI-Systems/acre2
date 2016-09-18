@@ -16,6 +16,11 @@
  */
 #include "script_component.hpp"
 
+// Can only be connected in multiplayer or in debug mode
+#ifndef DEBUG_MODE_FULL
+if (!isMultiplayer) exitWith {};
+#endif
+
 params ["_name", "_value"];
 
 // Plugin initialized, apply setting directly
