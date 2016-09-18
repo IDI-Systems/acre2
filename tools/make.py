@@ -604,7 +604,7 @@ def addon_restore(modulePath):
     return True
 
 
-def get_project_version():
+def get_project_version(version_update):
     global project_version
     versionStamp = project_version
     #do the magic based on https://github.com/acemod/ACE3/issues/806#issuecomment-95639048
@@ -623,8 +623,13 @@ def get_project_version():
                 patchlvlText = re.search(r"#define PATCHLVL (.*\b)", hpptext).group(1)
                 buildText = re.search(r"#define BUILD (.*\b)", hpptext).group(1)
 
+                # Increment build number
+                if version_update:
+                    buildText = int(buildText) + 1
+                    print_green("Incrementing build number to {}".format(buildText))
+
                 if majorText:
-                    versionStamp = "{major}.{minor}.{patchlvl}.{build}".format(major=majorText,minor=minorText,patchlvl=patchlvlText,build=buildText)
+                    versionStamp = "{}.{}.{}.{}".format(majorText,minorText,patchlvlText,buildText)
 
         else:
             print_error("A Critical file seems to be missing or inaccessible: {}".format(scriptModPath))
@@ -751,7 +756,7 @@ def restore_version_files():
 def get_private_keyname(commitID,module="main"):
     global pbo_name_prefix
 
-    aceVersion = get_project_version()
+    aceVersion = get_project_version(False)
     keyName = str("{prefix}{version}-{commit_id}".format(prefix=pbo_name_prefix,version=aceVersion,commit_id=commitID))
     return keyName
 
@@ -1078,7 +1083,7 @@ See the make.cfg file for additional build options.
         cache = {}
 
     # Check the build version (from main) with cached version - forces a full rebuild when version changes
-    project_version = get_project_version()
+    project_version = get_project_version(version_update)
     cacheVersion = "None";
     if 'cacheVersion' in cache:
         cacheVersion = cache['cacheVersion']
