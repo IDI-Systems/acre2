@@ -31,8 +31,8 @@ ACRE_SERVER_DESYNCED_PLAYERS = [];
 LOG("Monitor Inventory Starting");
 DFUNC(monitorRadios_PFH) = {
     if(!ACRE_DATA_SYNCED || {(isNil "ACRE_SERVER_INIT")}) exitWith { };
-    if(!ACREALIVE(acre_player)) exitWith { };
     if(time < 1) exitWith { };
+    if((side group acre_player) == sideLogic) exitWith {};
 
     if(ACREALIVE(acre_player)) then {
         private _currentUniqueItems = [];
