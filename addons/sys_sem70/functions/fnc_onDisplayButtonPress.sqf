@@ -20,9 +20,6 @@ params["_control"];
 
 GVAR(backlightOn) = true;
 GVAR(lastAction) = time;
+GVAR(displayButtonPressed) = true;
 
-
-
-
-
-private _eh = _control ctrlAddEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(snapbackDisplayButton))];
+private _eh = _control ctrlAddEventHandler ["MouseButtonUp", {GVAR(displayButtonPress) = false;}];

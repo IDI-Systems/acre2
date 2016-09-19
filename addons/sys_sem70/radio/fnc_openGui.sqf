@@ -55,10 +55,8 @@ createDialog "SEM70_RadioDialog";
     private _lastAction = _input select 2;
 
     if (_lastAction+5 < time) then {
-        if (GVAR(backlightOn)) then {
+        if (GVAR(backlightOn) && !GVAR(displayButtonPressed)) then {
             GVAR(backlightOn) = false;
-            private _currentChannel = ([_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent));
-            [_radioId, "setState", ["lastActiveChannel", _currentChannel]] call EFUNC(sys_data,dataEvent);
 
             if (_open) then {
                 [MAIN_DISPLAY] call FUNC(renderDisplay);
