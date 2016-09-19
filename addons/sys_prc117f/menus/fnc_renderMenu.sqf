@@ -23,9 +23,9 @@ params ["_menu", "_callerMenu"];  // the menu to render is passed
 
 private _menuId = MENU_ID(_menu);
 if(isNil "_menuId") then {
-    SET_STATE("currentRenderMenu", _menu);
+    SET_STATE(currentRenderMenu, _menu);
 } else {
-    SET_STATE("currentRenderMenu", _menuId);
+    SET_STATE(currentRenderMenu, _menuId);
 };
 
 [_menu] call FUNC(callRenderFunctor);

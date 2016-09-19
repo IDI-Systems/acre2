@@ -18,7 +18,7 @@
 
 TRACE_1("changeMode", _this);
 
-_mode = GET_STATE_DEF("knobPosition", 1);
+_mode = GET_STATE_DEF(knobPosition, 1);
 
 if(_mode == 0) then {
     TRACE_2("Turning radio off!", _mode, GVAR(currentRadioId));

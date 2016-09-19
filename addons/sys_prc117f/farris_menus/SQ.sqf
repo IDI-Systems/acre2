@@ -33,7 +33,7 @@ GVAR(SQ_ONLY_AM) = ["SQ_ONLY_AM", "SQ_ONLY_AM", "",
             TRACE_1("ERROR_NOENTRY:onButtonPress", (_this select 1));
             if(((_this select 1) select 0) == "ENT" || ((_this select 1) select 0) == "CLR") then {
                 TRACE_1("BACK TO HOME", "");
-                _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+                _home = GET_STATE_DEF(currentHome, GVAR(VULOSHOME));
                 [_home] call FUNC(changeMenu);
             };
             true
@@ -56,7 +56,7 @@ GVAR(SQ) = ["SQ", "SQ", "Squelch Settings",
                 {
                     // Need to pull the current squelch type and check if its digital currently
                     // As there is no digital currently (and the value is not saved), we are going with OFF all the time
-                    SET_STATE("menuSelection", 1);
+                    SET_STATE(menuSelection, 1);
                 }, // onEntry
                 nil,
                 nil
@@ -115,7 +115,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                     _mode = "";
                     _ctcss = GET_RADIO_VALUE("CTCSSRx");
                     _squelch  = GET_RADIO_VALUE("squelch");
-                    SET_STATE("menuSelection", 0);
+                    SET_STATE(menuSelection, 0);
 
                     if (_ctcss > 0) then {
                         _mode = "CTCSS";
@@ -131,7 +131,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                         _modeInt = _x;
                         if(_modeInt == _mode) exitWith {
                             TRACE_1("FOUND MATCH", _forEachIndex);
-                            SET_STATE("menuSelection", _forEachIndex);
+                            SET_STATE(menuSelection, _forEachIndex);
                         };
                     } forEach _options;
                 }, // onEntry,
@@ -195,7 +195,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                 true
             };
         };
-        _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+        _home = GET_STATE_DEF(currentHome, GVAR(VULOSHOME));
         [_home] call FUNC(changeMenu);
         true
     },
@@ -276,7 +276,7 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
                 {
                     TRACE_1("Entering ctcss value","");
                     _ctcss = GET_RADIO_VALUE("CTCSSRx");
-                    SET_STATE("menuSelection", 0);
+                    SET_STATE(menuSelection, 0);
 
                     _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
                     {
@@ -284,7 +284,7 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
                         TRACE_2("COMPARE", _ctcssInt, _ctcss);
                         if(_ctcssInt == _ctcss) exitWith {
                             TRACE_1("FOUND MATCH", _forEachIndex);
-                            SET_STATE("menuSelection", _forEachIndex);
+                            SET_STATE(menuSelection, _forEachIndex);
                         };
                     } forEach _options;
                 }, // onEntry,,

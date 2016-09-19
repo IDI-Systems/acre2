@@ -18,7 +18,7 @@
 
 TRACE_1("changeMode", _this);
 
-_knobPosition = GET_STATE_DEF("knobPosition", 1);
+_knobPosition = GET_STATE_DEF(knobPosition, 1);
 
 if(_knobPosition == 0) then {
     TRACE_2("Turning radio off!", _knobPosition, GVAR(currentRadioId));
@@ -31,7 +31,7 @@ if(_knobPosition == 0) then {
     TRACE_2("State", _knobPosition, _onOffState);
     if(_onOffState >= 1) then {
         ["setCurrentChannel", _knobPosition-1] call GUI_DATA_EVENT;
-        _currentMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+        _currentMenu = GET_STATE_DEF(currentHome, GVAR(VULOSHOME));
         [_currentMenu] call FUNC(renderMenu);
     } else {
         if(_onOffState == 0) then {

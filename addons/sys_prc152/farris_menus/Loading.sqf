@@ -5,17 +5,17 @@ DFUNC(Loading_End) = {
     params["_radioId"];
     // Turn the radio on
     [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
-    
+
     if (_radioId isEqualTo GVAR(currentRadioId)) then {
         [GVAR(LOADING), ["0"]] call DFUNC(onButtonPress_Display);
     };
 };
 
 DFUNC(Loading_BarFill) = {
-    
+
     if(isNil QUOTE(GVAR(currentBarFill))) then { GVAR(currentBarFill) = 0.0; };
     GVAR(currentBarFill) = GVAR(currentBarFill) + 0.05;
-    
+
     private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
     if(!isNil "_display") then {
         (_display displayCtrl ICON_LOADING) progressSetPosition GVAR(currentBarFill);
@@ -28,28 +28,28 @@ DFUNC(Loading_BarFill_end) = {
     // Turn the radio on
     [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
     if(_radioId isEqualTo GVAR(currentRadioId)) then {
-        private _currentMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+        private _currentMenu = GET_STATE_DEF(currentHome, GVAR(VULOSHOME));
         [_currentMenu] call FUNC(changeMenu);
     };
 };
 
-GVAR(LOADING) = ["LOADING", "LOADING", "", 
+GVAR(LOADING) = ["LOADING", "LOADING", "",
     MENUTYPE_DISPLAY,
     [
         ["LOADING-STAGE-1", "LOADING-STAGE-1", "",
-            MENUTYPE_STATIC, 
+            MENUTYPE_STATIC,
             [
                 [ROW_SMALL_1, ALIGN_LEFT, ""],
                 [ROW_LARGE_2, ALIGN_LEFT, ""],
                 [ROW_LARGE_3, ALIGN_LEFT, ""],
                 [ROW_SMALL_5, ALIGN_LEFT, ""]
-            ], 
+            ],
             [
                 {
                     private _radioId = GVAR(currentRadioId);
                     // Turn the radio on
                     [_radioId, "setOnOffState", 0.5] call EFUNC(sys_data,dataEvent);
-                    
+
                     TRACE_1("Registering function","");
                     [GVAR(currentRadioId), DFUNC(Loading_End), 3] call DFUNC(delayFunction);
                 }, // onEntry
@@ -62,13 +62,13 @@ GVAR(LOADING) = ["LOADING", "LOADING", "",
             ]
         ],
         ["LOADING-STAGE-2", "LOADING-STAGE-2", "",
-            MENUTYPE_STATIC, 
+            MENUTYPE_STATIC,
             [
                 [ROW_LARGE_1, ALIGN_CENTER, "IDI SYSTEMS"],
                 [ROW_LARGE_2, ALIGN_CENTER, ".. INITIALIZING .."],
                 [ROW_LARGE_3, ALIGN_CENTER, ""],
                 [ROW_SMALL_5, ALIGN_CENTER, "Bueller II FIrmware"]
-            ], 
+            ],
             [
                 nil, // onEntry
                 nil,  // onExit. Our parent static display generic event handler handles the 'Next' key

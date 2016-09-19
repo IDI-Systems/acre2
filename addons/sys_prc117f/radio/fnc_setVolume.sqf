@@ -35,7 +35,7 @@ if(!isNil "_display") then {
 
 if(IS_STRING(GVAR(currentRadioId))) then {
     if(GVAR(currentRadioId) == _radioId) then {
-        private _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
+        private _currentMenu = GET_STATE_DEF(currentMenu, GVAR(VULOSHOME));
         TRACE_2("", GVAR(currentRadioId), _currentMenu);
         [_currentMenu, ["VOLUME", _vol] ] call FUNC(changeValueAck);
     };

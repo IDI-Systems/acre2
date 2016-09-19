@@ -29,7 +29,7 @@ DFUNC(renderMenu_ActionSeries) = {
 
     // Its an action list of things to do in series,
     // which can be action menu types. Either way, they always bail back to us once completed
-    private _currentAction = GET_STATE_DEF("menuAction", 0);
+    private _currentAction = GET_STATE_DEF(menuAction, 0);
 
     if(_currentAction < (count MENU_SUBMENUS(_menu)) ) then {
         // Annnnnd call it
@@ -48,7 +48,7 @@ DFUNC(renderMenu_ActionSeries) = {
         };
 
         _currentAction = _currentAction + 1;
-        SET_STATE("menuAction", _currentAction);
+        SET_STATE(menuAction, _currentAction);
 
         if(_saveAction+1 != _currentAction) then {
             _this call FUNC(renderMenu_ActionSeries);
@@ -57,7 +57,7 @@ DFUNC(renderMenu_ActionSeries) = {
         TRACE_1("ACTIONS COMPLETE", _currentAction);
         // Call the action completion function
 
-        SET_STATE("menuAction", 0);
+        SET_STATE(menuAction, 0);
         TRACE_1("Calling", MENU_ACTION_SERIESCOMPLETE(_menu));
         private _ret = [MENU_ACTION_SERIESCOMPLETE(_menu), [_menu]] call FUNC(dynamicCall);
 

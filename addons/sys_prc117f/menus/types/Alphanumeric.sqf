@@ -153,7 +153,7 @@ DFUNC(onButtonPress_Alphanumeric) = {
                 private _pid = MENU_PARENT_ID(_parentMenu);
                 if (_pid isEqualType "") then {
                     _useParent = false;
-                    SET_STATE("menuAction", 0);
+                    SET_STATE(menuAction, 0);
                     [_pid] call FUNC(changeMenu);
                 };
             };

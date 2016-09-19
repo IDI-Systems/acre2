@@ -24,7 +24,7 @@ if((count _this) > 0) then {
     _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 };
 
-private _knobPosition = GET_STATE_DEF("knobPosition", 1);
+private _knobPosition = GET_STATE_DEF(knobPosition, 1);
 private _knobImageStr = [_knobPosition, 1, 0] call CBA_fnc_formatNumber;
 _knobImageStr = format["\idi\acre\addons\sys_prc152\Data\knobs\channelknob\prc152c_ui_knob_%1.paa", _knobImageStr];
 TRACE_1("Setting knob image", _knobImageStr);

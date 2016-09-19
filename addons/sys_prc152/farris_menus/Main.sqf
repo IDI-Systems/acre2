@@ -31,7 +31,7 @@ GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
         nil,nil,nil,
         {
             [ICON_LOADING, true] call DFUNC(toggleIcon);
-            private _volume = GET_STATE("volume");
+            private _volume = GET_STATE(volume);
 
             private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 
@@ -62,7 +62,7 @@ GVAR(NoItems) = ["ERROR_NOENTRY", "ERROR_NOENTRY", "",
             TRACE_1("ERROR_NOENTRY:onButtonPress", (_this select 1));
             if(((_this select 1) select 0) == "ENT" || ((_this select 1) select 0) == "CLR") then {
                 TRACE_1("BACK TO HOME", "");
-                _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+                _home = GET_STATE_DEF(currentHome, GVAR(VULOSHOME));
                 [_home] call FUNC(changeMenu);
             };
             true
@@ -91,7 +91,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                     [ICON_VOLUME, true] call DFUNC(toggleIcon);
                     [ICON_TRANSMIT, true] call FUNC(toggleIcon);
 
-                    _volume = GET_STATE("volume");
+                    _volume = GET_STATE(volume);
 
                     _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 

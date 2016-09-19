@@ -21,14 +21,14 @@
 
 DFUNC(CURRENT_RADIO_VALUE) = {
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-    _channels = GET_STATE("channels");
+    _channels = GET_STATE(channels);
     _channel = HASHLIST_SELECT(_channels, _channelNumber);
     _value = HASH_GET(_channel, (_this select 0));
     _value
 };
 DFUNC(CURRENT_RADIO_CHANNEL) = {
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-    _channels = GET_STATE("channels");
+    _channels = GET_STATE(channels);
     _channel = HASHLIST_SELECT(_channels, _channelNumber);
     _channel
 };
@@ -126,12 +126,12 @@ GVAR(PGM_NORM) = ["PGM_NORM", "PGM_NORM", "",
      // This will get called on series completion
     {
         // Set the current channel to the edited preset, and save the so-far-edited values
-        _channelNumber = GET_STATE("pgm_preset_number") - 1;
-        _activeInList = GET_STATE("pgm_active_in_list");
+        _channelNumber = GET_STATE(pgm_preset_number) - 1;
+        _activeInList = GET_STATE(pgm_active_in_list);
         //_channelDescription = [_channelDescription] call CBA_fnc_trim;
 
         ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
-        _channels = GET_STATE("channels");
+        _channels = GET_STATE(channels);
         _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
         //TRACE_3("Retrieving radio information", _channelNumber, _channel, _channels);
@@ -143,10 +143,10 @@ GVAR(PGM_NORM) = ["PGM_NORM", "PGM_NORM", "",
         HASH_SET(_channel, "active", _activeInList);
         HASHLIST_SET(_channels, _channelNumber, _channel);
 
-        SET_STATE("channels", _channels);
+        SET_STATE(channels, _channels);
 
-        SET_STATE("pgm_preset_number", 0);
-        SET_STATE("pgm_active_in_list", nil);
+        SET_STATE(pgm_preset_number, 0);
+        SET_STATE(pgm_active_in_list, nil);
 
         ["PGM_NORM_LOS"] call FUNC(changeMenu);
         true
@@ -217,7 +217,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                         {
                             _value = GET_RADIO_VALUE("rxOnly");
                             if(_value) then {
-                                SET_STATE("menuSelection", 1);
+                                SET_STATE(menuSelection, 1);
                                 SCRATCH_SET(GVAR(currentRadioId), "pgm_rx_only", "YES");
                             };
                         },
@@ -236,16 +236,16 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
             [nil, nil],
             {
                 // Set the current channel to the edited preset, and save the so-far-edited values
-                _channelType = GET_STATE("pgm_preset_type");
-                _rx = GET_STATE("pgm_rx_freq");
-                _tx = GET_STATE("pgm_tx_freq");
+                _channelType = GET_STATE(pgm_preset_type);
+                _rx = GET_STATE(pgm_rx_freq);
+                _tx = GET_STATE(pgm_tx_freq);
                 _rxOnly = SCRATCH_GET(GVAR(currentRadioId), "pgm_rx_only");
                 if(_rxOnly == "YES") then { _rxOnly = true; } else { _rxOnly = false; };
 
                 if(isNil "_rx" || isNil "_tx") exitWith { false };
 
                 _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-                _channels = GET_STATE("channels");
+                _channels = GET_STATE(channels);
                 _channel = HASHLIST_SELECT(_channels, _channelNumber);
                 //TRACE_3("Retrieving radio information", _channelNumber, _channel, _channels);
 
@@ -254,11 +254,11 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 HASH_SET(_channel, "rxOnly", _rxOnly);
 
                 HASHLIST_SET(_channels, _channelNumber, _channel);
-                SET_STATE("channels", _channels);
+                SET_STATE(channels, _channels);
 
-                SET_STATE("pgm_tx_freq", nil);
-                SET_STATE("pgm_rx_freq", nil);
-                SET_STATE("pgm_rx_only", nil);
+                SET_STATE(pgm_tx_freq, nil);
+                SET_STATE(pgm_rx_freq, nil);
+                SET_STATE(pgm_rx_only, nil);
             }
         ],
         [nil, "COMSEC", "", MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ],
@@ -275,7 +275,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 {
                     TRACE_1("Entering tx power","");
                     _power = GET_RADIO_VALUE("power");
-                    SET_STATE("menuSelection", 7);
+                    SET_STATE(menuSelection, 7);
 
                     _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
                     {
@@ -283,7 +283,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                         TRACE_2("COMPARE", _powerInt, _power);
                         if(_powerInt == _power) exitWith {
                             TRACE_1("FOUND MATCH", _forEachIndex);
-                            SET_STATE("menuSelection", _forEachIndex);
+                            SET_STATE(menuSelection, _forEachIndex);
                         };
                     } forEach _options;
                 }, // onEntry
@@ -293,19 +293,19 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     TRACE_1("Saving tx selection", "");
                     // If we are not in user mode, just skip this menu item
                     _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-                    _selection = GET_STATE("menuSelection");
+                    _selection = GET_STATE(menuSelection);
                     _value = (parseNumber (_options select _selection)) * 1000;
 
                     TRACE_2("", _selection, _value);
 
                     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-                    _channels = GET_STATE("channels");
+                    _channels = GET_STATE(channels);
                     _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
                     HASH_SET(_channel, "power", _value);
                     TRACE_1("Set radio power", _value);
                     HASHLIST_SET(_channels, _channelNumber, _channel);
-                    SET_STATE("channels", _channels);
+                    SET_STATE(channels, _channels);
                 },
                 nil,
                 nil,
@@ -331,15 +331,15 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 },
                 {
                     private _value = nil;
-                    _value = GET_STATE_DEF("pgm_name", "");
+                    _value = GET_STATE_DEF(pgm_name, "");
                     if(_value != "") then {
                         _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-                        _channels = GET_STATE("channels");
+                        _channels = GET_STATE(channels);
                         _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
                         HASH_SET(_channel, "name", _value);
                         HASHLIST_SET(_channels, _channelNumber, _channel);
-                        SET_STATE("channels", _channels);
+                        SET_STATE(channels, _channels);
                     };
                 },
                 nil,

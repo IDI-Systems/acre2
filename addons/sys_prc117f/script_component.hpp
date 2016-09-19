@@ -11,7 +11,6 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
-#include "\idi\acre\addons\sys_prc117f\script_macros.hpp"
 #include "\idi\acre\addons\sys_prc117f\menus\script_menus.hpp"
 
 
