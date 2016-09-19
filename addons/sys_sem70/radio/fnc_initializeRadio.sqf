@@ -79,8 +79,13 @@ for "_i" from 0 to (count _channels)-1 do {
 HASH_SET(_radioData,"volume",1);
 HASH_SET(_radioData,"radioOn",1);
 HASH_SET(_radioData,"currentChannel",0);
-HASH_SET(_radioData,"channelKnobPosition", 2); // Channel 1 (after on/off options)
-HASH_SET(_radioData,"volumeKnobPosition", 0);// mid-way
-HASH_SET(_radioData,"programmingStep", 0);
+HASH_SET(_radioData,"mainKnobPosition",2); // High Power Setting
+HASH_SET(_radioData,"functionKnobPosition",2); // Manual Frequency Selection (no Relais)
+HASH_SET(_radioData,"manualChannelSelection",1); // Manual Frequency Selection Flag
+HASH_SET(_radioData,"volumeKnobPosition", 5);// mid-way
+HASH_SET(_radioData,"kHzKnobPosition",0);
+HASH_SET(_radioData,"MHzKnobPosition",0);
 HASH_SET(_radioData,"lastActiveChannel",0);
 HASH_SET(_radioData,"audioPath", "HEADSET");
+// Spacing
+// Auto Channel

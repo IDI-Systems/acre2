@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function sets the current channel
  *
@@ -38,6 +38,8 @@
 #include "script_component.hpp"
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
+
+//TODO: If eventData is -1 -> manual mode
 
 // First, we check how many channels are available in total
 private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;

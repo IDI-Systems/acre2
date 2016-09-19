@@ -40,14 +40,12 @@ if(_knobPosition != _newKnobPosition) then {
 
         case 1: {
             // Automatic Channel Selection
-            ["setState", ["manualChannel",0]] call GUI_DATA_EVENT;
-            ["setState", ["autoChannel",1]] call GUI_DATA_EVENT;
+            ["setState", ["manualChannelSelection",0]] call GUI_DATA_EVENT;
         };
 
         case 2: {
             // Manual Channel Selection
-            ["setState", ["manualChannel",1]] call GUI_DATA_EVENT;
-            ["setState", ["autoChannel",0]] call GUI_DATA_EVENT;
+            ["setState", ["manualChannelSelection",1]] call GUI_DATA_EVENT;
         };
 
         case 3: {
