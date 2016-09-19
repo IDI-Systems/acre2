@@ -41,12 +41,6 @@
 disableSerialization;
 //PARAMS_1(GVAR(currentRadioId))
 GVAR(currentRadioId) = _this select 0;
-GVAR(depressedPTT) = false;
-if (([GVAR(currentRadioId), "getState", "channelKnobPosition"] call EFUNC(sys_data,dataEvent)) == 15) then { // is programming
-    GVAR(backlightOn) = true;
-} else {
-    GVAR(backlightOn) = false;
-};
 GVAR(lastAction) = time;
 createDialog "SEM70_RadioDialog";
 
@@ -55,23 +49,19 @@ createDialog "SEM70_RadioDialog";
 [{
     params ["_input","_pfhID"];
 
-
     if (GVAR(currentRadioId) isEqualTo -1) then {_input set [1,false]}; // Remove PFH on exit.
     _input params ["_radioId","_open"];
     if (_open) then { _input set [2,GVAR(lastAction)]; };
     private _lastAction = _input select 2;
 
-    if (_lastAction+3 < time) then {
-        // Do not shut whilst on the programming page.
-        if (([_radioId, "getState", "channelKnobPosition"] call EFUNC(sys_data,dataEvent)) != 15) then {
-            if (GVAR(backlightOn)) then {
-                GVAR(backlightOn) = false;
-                private _currentChannel = ([_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent));
-                [_radioId, "setState", ["lastActiveChannel", _currentChannel]] call EFUNC(sys_data,dataEvent);
+    if (_lastAction+5 < time) then {
+        if (GVAR(backlightOn)) then {
+            GVAR(backlightOn) = false;
+            private _currentChannel = ([_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent));
+            [_radioId, "setState", ["lastActiveChannel", _currentChannel]] call EFUNC(sys_data,dataEvent);
 
-                if (_open) then {
-                    [MAIN_DISPLAY] call FUNC(renderDisplay);
-                };
+            if (_open) then {
+                [MAIN_DISPLAY] call FUNC(renderDisplay);
             };
         };
         if (!_open) then { [_pfhID] call CBA_fnc_removePerFrameHandler; };

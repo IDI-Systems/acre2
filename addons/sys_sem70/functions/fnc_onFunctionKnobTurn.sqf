@@ -16,3 +16,45 @@
  */
 #include "script_component.hpp"
 
+params ["","_key"];
+
+GVAR(backlightOn) = true;
+GVAR(lastAction) = time;
+
+private _currentDirection = -1;
+if(_key == 0) then {
+    // left click
+    _currentDirection = 1;
+};
+
+private _knobPosition = ["getState", "functionKnobPosition"] call GUI_DATA_EVENT;
+private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 2;
+
+if(_knobPosition != _newKnobPosition) then {
+    ["setState", ["functionKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
+
+    switch _newKnobPosition do {
+        case 0: {
+            // This is reserved for Relais Mode (AKW)
+        };
+
+        case 1: {
+            // Automatic Channel Selection
+            ["setState", ["manualChannel",0]] call GUI_DATA_EVENT;
+            ["setState", ["autoChannel",1]] call GUI_DATA_EVENT;
+        };
+
+        case 2: {
+            // Manual Channel Selection
+            ["setState", ["manualChannel",1]] call GUI_DATA_EVENT;
+            ["setState", ["autoChannel",0]] call GUI_DATA_EVENT;
+        };
+
+        case 3: {
+            // This is reserved for Relais Mode (HW)
+        };
+    };
+
+    ["Acre_SEM70Knob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
+    [MAIN_DISPLAY] call FUNC(render);
+};

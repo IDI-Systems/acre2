@@ -16,3 +16,13 @@
  */
 #include "script_component.hpp"
 
+params["_control"];
+
+GVAR(backlightOn) = true;
+GVAR(lastAction) = time;
+
+
+
+
+
+private _eh = _control ctrlAddEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(snapbackDisplayButton))];
