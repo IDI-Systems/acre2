@@ -160,7 +160,7 @@ DFUNC(inventoryMonitorPFH) = {
         (INVENTORY_DISPLAY displayCtrl IDC_FG_CHOSEN_CONTAINER) ctrlSetEventHandler ["LBDblClick", "[1, 'remote',_this] call acre_sys_gui_fnc_onInventoryAction"];
         (INVENTORY_DISPLAY displayCtrl IDC_FG_CHOSEN_CONTAINER) ctrlSetEventHandler ["LBSelChanged", "[0, 'remote',_this] call acre_sys_gui_fnc_onInventoryAction"];
 
-        [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
 };
 ADDPFH(DFUNC(inventoryMonitorPFH), 0, []);

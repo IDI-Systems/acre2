@@ -84,7 +84,7 @@ DFUNC(coreInitPFH) = { // OK
 
     ACRE_CORE_INIT = true;
     TRACE_1("ACRE CORE INIT", ACRE_CORE_INIT);
-    [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+    [(_this select 1)] call CBA_fnc_removePerFrameHandler;
 };
 
 ADDPFH(DFUNC(coreInitPFH), 0, []);

@@ -4,7 +4,7 @@ class CfgPatches {
         units[] = {"ACRE_TestLoader"};
         weapons[] = {};
         requiredVersion = 0.1;
-        requiredAddons[] = { "acre_main", "acre_sys_sync", "acre_sys_rpc", "acre_sys_data" };
+        requiredAddons[] = { "acre_main", "acre_sys_rpc", "acre_sys_data" };
         AUTHOR;
         version = VERSION;
     };
