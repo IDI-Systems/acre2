@@ -604,7 +604,7 @@ def addon_restore(modulePath):
     return True
 
 
-def get_project_version(version_update):
+def get_project_version(version_increments=[]):
     global project_version
     versionStamp = project_version
     #do the magic based on https://github.com/acemod/ACE3/issues/806#issuecomment-95639048
@@ -620,16 +620,31 @@ def get_project_version(version_update):
             if hpptext:
                 majorText = re.search(r"#define MAJOR (.*\b)", hpptext).group(1)
                 minorText = re.search(r"#define MINOR (.*\b)", hpptext).group(1)
-                patchlvlText = re.search(r"#define PATCHLVL (.*\b)", hpptext).group(1)
+                patchText = re.search(r"#define PATCHLVL (.*\b)", hpptext).group(1)
                 buildText = re.search(r"#define BUILD (.*\b)", hpptext).group(1)
 
-                # Increment build number
-                if version_update:
-                    buildText = int(buildText) + 1
-                    print_green("Incrementing build number to {}".format(buildText))
+                # Increment version
+                if version_increments != []:
+                    if "major" in version_increments:
+                        majorText = int(majorText) + 1
+                    if "minor" in version_increments:
+                        minorText = int(minorText) + 1
+                    if "patch" in version_increments:
+                        patchText = int(patchText) + 1
+                    if "build" in version_increments:
+                        buildText = int(buildText) + 1
+
+                    print_green("Incrementing version to {}.{}.{}.{}".format(majorText,minorText,patchText,buildText))
+                    with open(scriptModPath, "w", newline="\n") as file:
+                        file.writelines([
+                            "#define MAJOR {}\n".format(majorText),
+                            "#define MINOR {}\n".format(minorText),
+                            "#define PATCHLVL {}\n".format(patchText),
+                            "#define BUILD {}\n".format(buildText)
+                        ])
 
                 if majorText:
-                    versionStamp = "{}.{}.{}.{}".format(majorText,minorText,patchlvlText,buildText)
+                    versionStamp = "{}.{}.{}.{}".format(majorText,minorText,patchText,buildText)
 
         else:
             print_error("A Critical file seems to be missing or inaccessible: {}".format(scriptModPath))
@@ -755,9 +770,9 @@ def restore_version_files():
 
 def get_private_keyname(commitID,module="main"):
     global pbo_name_prefix
+    global project_version
 
-    aceVersion = get_project_version(False)
-    keyName = str("{prefix}{version}-{commit_id}".format(prefix=pbo_name_prefix,version=aceVersion,commit_id=commitID))
+    keyName = str("{prefix}{version}-{commit_id}".format(prefix=pbo_name_prefix,version=project_version,commit_id=commitID))
     return keyName
 
 
@@ -945,6 +960,20 @@ See the make.cfg file for additional build options.
     else:
         version_update = False
 
+    version_increments = []
+    if "increment_build" in argv:
+        argv.remove("increment_build")
+        version_increments.append("build")
+    if "increment_patch" in argv:
+        argv.remove("increment_patch")
+        version_increments.append("patch")
+    if "increment_minor" in argv:
+        argv.remove("increment_minor")
+        version_increments.append("minor")
+    if "increment_major" in argv:
+        argv.remove("increment_major")
+        version_increments.append("major")
+
     if "compile" in argv:
         argv.remove("compile")
         compile_ext = True
@@ -1018,15 +1047,16 @@ See the make.cfg file for additional build options.
         optionals_root = os.path.join(module_root_parent, "optionals")
         extensions_root = os.path.join(module_root_parent, "extensions")
 
-        commit_id = get_commit_ID()
-        key_name = versionStamp = get_private_keyname(commit_id)
-        print_green ("module_root: {}".format(module_root))
-
         if (os.path.isdir(module_root)):
             os.chdir(module_root)
         else:
             print_error ("Directory {} does not exist.".format(module_root))
-            sys.exit()
+            sys.exit(1)
+
+        commit_id = get_commit_ID()
+        get_project_version(version_increments)
+        key_name = versionStamp = get_private_keyname(commit_id)
+        print_green ("module_root: {}".format(module_root))
 
         if (os.path.isdir(optionals_root)):
             print_green ("optionals_root: {}".format(optionals_root))
@@ -1083,7 +1113,6 @@ See the make.cfg file for additional build options.
         cache = {}
 
     # Check the build version (from main) with cached version - forces a full rebuild when version changes
-    project_version = get_project_version(version_update)
     cacheVersion = "None";
     if 'cacheVersion' in cache:
         cacheVersion = cache['cacheVersion']
