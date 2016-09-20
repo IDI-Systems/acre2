@@ -123,17 +123,17 @@ ADDPFH(_vehicleCrewPFH, 1.1, []);
 
 // Disable positional audio whilst in briefing.
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
-	["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
-	private _briefingCheck = {
-		if (getClientStateNumber > 9) then { // Briefing has been read.
-			["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
-			[(_this select 1)] call CBA_fnc_removePerFrameHandler;
-		} else {
-			// Keep calling incase ACRE is not connected to teamspeak.
-			["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
-		};
-	};
-	ADDPFH(_briefingCheck, 0, []);
+    ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
+    private _briefingCheck = {
+        if (getClientStateNumber > 9) then { // Briefing has been read.
+            ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
+            [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        } else {
+            // Keep calling incase ACRE is not connected to teamspeak.
+            ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
+        };
+    };
+    ADDPFH(_briefingCheck, 0, []);
 };
 
 true
