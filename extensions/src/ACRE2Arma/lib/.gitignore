@@ -1,8 +1,0 @@
-# Ignore everything in this directory
-*
-# Except these files
-!.gitignore
-!directxtk/CMakeLists.txt
-
-# Even if they are in subdirectories
-!*/

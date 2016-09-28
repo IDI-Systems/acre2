@@ -1,28 +1,26 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks if a class name is a base radio or not. Base radios are ACRE radios without IDs. e.g. “ACRE_PRC148” would return true, “ACRE_PRC148_ID_1” would return false
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Item name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Is base radio <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _result = ["ACRE_PRC343"] call acre_api_fnc_isBaseRadio;
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-private["_type", "_ret", "_i"];
 params["_weapon"];
 
 // check that it at least inherits from ACRE_BaseRadio *AND* has a unique ID
 // If its scoped 1, that means its either a base or not a radio.
-_flag = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_isRadio");
-_scope = getNumber(configFile >> "CfgWeapons" >> _weapon >> "scope");
+private _flag = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_isRadio");
+private _scope = getNumber(configFile >> "CfgWeapons" >> _weapon >> "scope");
 if(isNil "_flag" || isNil "_scope") exitWith { false };
 if(_flag == 1 && _scope == 2) exitWith { true };
 

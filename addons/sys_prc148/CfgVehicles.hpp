@@ -1,6 +1,3 @@
-//CfgVehicles.hpp
-#include "script_component.hpp"
-
 class CfgVehicles {
     class ACRE_RadioBox_Base;
     class ACRE_RadioBox : ACRE_RadioBox_Base {

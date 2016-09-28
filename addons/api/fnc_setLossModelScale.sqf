@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Setting it to 0 means the terrain loss model is disabled, 1 is default. Note this setting only effects loss caused by terrain, loss due to power dissipation over range will always occur.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Terrain loss scale. Value between 0 and 1. <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Terrain loss scale <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [0.5] call acre_api_fnc_setLossModelScale
  *
  * Public: Yes
  */

@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * For use by the ACRE API nameChannels module.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Logic <OBJECT>
+ * 1: Units <ARRAY>
+ * 2: Activated <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call AcreModules_fnc_nameChannels;
  *
  * Public: No
  */
@@ -45,15 +46,13 @@ FUNC(_channelNamesNoSides) = {
     private _presetNames = [];
     TRACE_1("Naming Channels",_this);
     {
-        private["_presetName"];
-        
-        _presetName = [_x] call acre_api_fnc_getPreset;
+        private _presetName = [_x] call acre_api_fnc_getPreset;
+
         if(!isNil "_presetName") then {
             if(_presetName isEqualType "") then {
                 _presetNames pushBack [_x, _presetName];
             };
         };
-        
     } forEach ["ACRE_PRC152", "ACRE_PRC148", "ACRE_PRC117F"];
     
     TRACE_1("Configuring radio for presets", _presetNames);

@@ -9,7 +9,8 @@ class CfgPatches
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = { "acre_sys_radio" };
         version = VERSION;
-        author[] = {"Raspu"};
+        AUTHOR;
+        authors[] = {"Raspu"};
         authorUrl = URL;
     };
 };
@@ -18,7 +19,6 @@ PRELOAD_ADDONS;
 
 #include "CfgWeapons.hpp"
 #include "CfgAcreRadios.hpp"
-#include "CfgAcreSounds.hpp"
 
 #include "CfgEventHandlers.hpp"
 #include "MyDialogDefines.hpp"

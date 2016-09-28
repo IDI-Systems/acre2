@@ -1,6 +1,6 @@
 #define DISABLE_COMPILE_CACHE
 
-#include "\idi\clients\acre\addons\game\script_common_macros.hpp"
+#include "\idi\acre\addons\game\script_common_macros.hpp"
 
 #ifndef PRELOAD_ADDONS
 #define PRELOAD_ADDONS class CfgAddons \
@@ -19,8 +19,8 @@
 ARMA2/VBS2 COMPAT SECTION
 **/
 
-#include "\idi\clients\acre\addons\game\script_lib.hpp"
-#include "\idi\clients\acre\addons\game\script_command_replace.hpp"
+#include "\idi\acre\addons\game\script_lib.hpp"
+#include "\idi\acre\addons\game\script_command_replace.hpp"
 
 
 /**
@@ -65,9 +65,6 @@ END ARMA2/VBS2 COMPAT SECTION
 #define INDEX_USE_BY         1
 
 #define ACTIVE_RADIO "acre_active_radio"
-
-#define OPEN_RADIO_PATH "\idi\clients\acre\addons\sys_radio\fnc_openRadio.sqf"
-#define LIST_RADIO_PATH "\idi\clients\acre\addons\sys_radio\fnc_listRadios.sqf"
 
 #define ACRE_INDEX_CONTROLLERDATA        2
 #define ACRE_INDEX_UIDATA                1
@@ -176,16 +173,10 @@ Antenna Defines
 
 #define FUNC(var1) {private ['_ret']; if(ACRE_IS_ERRORED) then { ['AUTO','AUTO'] call ACRE_DUMPSTACK_FNC; ACRE_IS_ERRORED = false; }; ACRE_IS_ERRORED = true; ACRE_STACK_TRACE set [ACRE_STACK_DEPTH, [diag_tickTime, __FILE__, __LINE__, ACRE_CURRENT_FUNCTION, 'TRIPLES(ADDON,fnc,var1)', _this]]; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH + 1; ACRE_CURRENT_FUNCTION = 'TRIPLES(ADDON,fnc,var1)'; _ret = _this call TRIPLES(ADDON,fnc,var1); ACRE_STACK_DEPTH = ACRE_STACK_DEPTH - 1; ACRE_IS_ERRORED = false; _ret;}
 #define EFUNC(var1,var2) {private ['_ret']; if(ACRE_IS_ERRORED) then { ['AUTO','AUTO'] call ACRE_DUMPSTACK_FNC; ACRE_IS_ERRORED = false; }; ACRE_IS_ERRORED = true; ACRE_STACK_TRACE set [ACRE_STACK_DEPTH, [diag_tickTime, __FILE__, __LINE__, ACRE_CURRENT_FUNCTION, 'TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)', _this]]; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH + 1; ACRE_CURRENT_FUNCTION = 'TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)'; _ret = _this call TRIPLES(DOUBLES(PREFIX,var1),fnc,var2); ACRE_STACK_DEPTH = ACRE_STACK_DEPTH - 1; ACRE_IS_ERRORED = false; _ret;}
-
 #else
 #define CALLSTACK(function) function
 #define CALLSTACK_NAMED(function, functionName) function
 #define DUMPSTACK
-
-#define FUNC(var1) TRIPLES(ADDON,fnc,var1)
-#define EFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
-
-
 #endif
 
 
@@ -240,13 +231,17 @@ Antenna Defines
 #define LOG_COUNT(name, count, value)    [name, count, value] call acre_sys_debug_countLog
 #endif
 
-// #define PUSH(arr, val)    arr set[(count arr), val]
-#define PUSH(arr, val)    arr pushBack val
+#undef ARR_1
 #define ARR_1(val1)                                    [val1]
+#undef ARR_2
 #define ARR_2(val1, val2)                            [val1, val2]
+#undef ARR_3
 #define ARR_3(val1, val2, val3)                        [val1, val2, val3]
+#undef ARR_4
 #define ARR_4(val1, val2, val3, val4)                [val1, val2, val3, val4]
+#undef ARR_5
 #define ARR_5(val1, val2, val3, val4, val5)            [val1, val2, val3, val4, val5]
+#undef ARR_6
 #define ARR_6(val1, val2, val3, val4, val5, val6)    [val1, val2, val3, val4, val5, val6]
 
 
@@ -266,7 +261,7 @@ PERFORMANCE COUNTERS SECTION
 //#define ACRE_PERFORMANCE_COUNTERS
 
 #ifdef ACRE_PERFORMANCE_COUNTERS
-    #define ADDPFH(function, timing, args) call { _ret = [function, timing, args, #function] call EFUNC(sys_sync,perFrame_add); if(isNil "ACRE_PFH" ) then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
+    #define ADDPFH(function, timing, args) call { _ret = [function, timing, args] call CBA_fnc_addPerFrameHandler; if(isNil "ACRE_PFH" ) then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
 
     #define CREATE_COUNTER(x) if(isNil "ACRE_COUNTERS" ) then { ACRE_COUNTERS=[]; }; GVAR(DOUBLES(x,counter))=[]; GVAR(DOUBLES(x,counter)) set[0, QUOTE(GVAR(DOUBLES(x,counter)))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; ACRE_COUNTERS pushBack GVAR(DOUBLES(x,counter));
     #define BEGIN_COUNTER(x) if(isNil QUOTE(GVAR(DOUBLES(x,counter)))) then { CREATE_COUNTER(x) }; GVAR(DOUBLES(x,counter)) set[2, diag_tickTime];
@@ -274,7 +269,7 @@ PERFORMANCE COUNTERS SECTION
 
     #define DUMP_COUNTERS ([__FILE__, __LINE__] call ACRE_DUMPCOUNTERS_FNC)
 #else
-    #define ADDPFH(function, timing, args)    [function, timing, args, #function] call EFUNC(sys_sync,perFrame_add)
+    #define ADDPFH(function, timing, args)    [function, timing, args] call CBA_fnc_addPerFrameHandler
 
     #define CREATE_COUNTER(x) /* disabled */
     #define BEGIN_COUNTER(x) /* disabled */

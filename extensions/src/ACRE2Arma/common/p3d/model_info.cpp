@@ -14,7 +14,7 @@ namespace acre {
             raw_resolutions = new uint32_t[lod_count];
             stream_.read((char *)raw_resolutions, sizeof(uint32_t) * lod_count);
             // Get them to parsable int values
-            for (int x = 0; x < lod_count; x++) {
+            for (uint32_t x = 0; x < lod_count; x++) {
                 resolutions.push_back(*(int *)&raw_resolutions[x]);
             }
 

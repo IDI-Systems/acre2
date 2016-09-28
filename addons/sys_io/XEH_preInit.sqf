@@ -6,10 +6,7 @@ ADDON = false;
 LOG(MSG_INIT);
 
 PREP(sendMessage);
-PREP(createPacket);
-PREP(getPacket);
 PREP(restartServer);
-PREP(sendPacket);
 PREP(serverRunning);
 PREP(startServer);
 PREP(stopServer);
@@ -19,7 +16,6 @@ PREP(ping);
 
 
 DGVAR(pipeCode) = "0";
-DGVAR(FIFO) = [];
 DGVAR(ioEventFnc) = {};
 DGVAR(runserver) = false;
 DGVAR(serverStarted) = false;

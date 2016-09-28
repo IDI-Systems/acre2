@@ -7,4 +7,4 @@ texHeaders.bin
 *.biprivatekey
 Thumbs.db
 *.dll
-extensions/src/ACRE2UI/acre_welcome.html
+*.exe

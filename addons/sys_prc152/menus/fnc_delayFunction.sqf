@@ -27,10 +27,10 @@ private _fnc = {
 
     _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
     if(_onState < 0.2) then {
-        [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
     if(diag_tickTime > _time) then {
-        [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);    // Remove the PFH first, in case the function errors
+        [(_this select 1)] call CBA_fnc_removePerFrameHandler;    // Remove the PFH first, in case the function errors
 
         [_radioId, _funcArgs] call _function;
     };

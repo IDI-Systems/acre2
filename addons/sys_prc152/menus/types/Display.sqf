@@ -95,18 +95,17 @@ DFUNC(onButtonPress_Display) = {
 DFUNC(renderMenu_Display) = {
     BEGIN_COUNTER(renderMenu_Display);
 
-    private["_format", "_renderString"];
     TRACE_1("renderMenu_Display", _this);
     params["_menu"]; // the menu to render is passed
-    _displaySet = MENU_SUBMENUS(_menu);
+    private _displaySet = MENU_SUBMENUS(_menu);
 
 
-    _currentSelection = GET_STATE_DEF("menuSelection", 0);
-    _currentDisplay = MENU_SUBMENUS_ITEM(_menu,_currentSelection);
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _currentDisplay = MENU_SUBMENUS_ITEM(_menu,_currentSelection);
 
     // A display set has a set of children STATIC displays, which are rendered and canFire
     // be swaped with the 'NEXT' circly button thingy
-    _entry = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuEntry", false);
+    private _entry = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuEntry", false);
     if(_entry) then {
         [_currentDisplay] call FUNC(callEntryFunctor);
     };

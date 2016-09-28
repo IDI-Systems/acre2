@@ -8,7 +8,7 @@ PixelShaderID="Normal";
 VertexShaderID="Basic";
 class Stage0
 {
-    texture="idi\clients\acre\addons\sys_prc148\Data\Models\148_full_uv_CDT.paa";
+    texture="idi\acre\addons\sys_prc148\Data\Models\148_full_uv_CDT.paa";
     uvSource="tex";
     Filter="Trilinear";
 };

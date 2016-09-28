@@ -1,5 +1,5 @@
 #define COMPONENT sys_core
-#include "\idi\clients\acre\addons\main\script_mod.hpp"
+#include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_CORE
     #define DEBUG_MODE_FULL
@@ -9,8 +9,8 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_CORE
 #endif
 
-#include "\idi\clients\acre\addons\main\script_macros.hpp"
+#include "\idi\acre\addons\main\script_macros.hpp"
 
 #define EOL_CHAR toString[10]
 
-//#define USE_DEBUG_EXTENSIONS 1
+//#define USE_DEBUG_EXTENSIONS

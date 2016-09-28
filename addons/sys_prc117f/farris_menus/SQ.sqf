@@ -195,6 +195,9 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                 true
             };
         };
+        _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+        [_home] call FUNC(changeMenu);
+        true
     },
     "SQ"
 ];

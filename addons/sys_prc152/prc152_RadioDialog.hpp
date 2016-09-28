@@ -1,5 +1,3 @@
-#include "\idi\clients\acre\addons\sys_Prc152\script_component.hpp"
-
 class Prc152_RadioDialog {
     idd = 31337;
     MovingEnable = 0;

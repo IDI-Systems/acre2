@@ -12,7 +12,8 @@ namespace acre {
         }
 
         bool      archive::get_file(std::istream & stream_, const entry_p entry_, file_p output) {
-            uint32_t file_offset, bytes_read, use_size;
+            std::streamoff file_offset, bytes_read;
+            uint32_t use_size;
 
             std::streampos _save = stream_.tellg();
             file_offset = begin_data_offset + entry_->offset;

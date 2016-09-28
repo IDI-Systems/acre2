@@ -11,12 +11,11 @@ ACRE_RESULT CAcreSettings::save(std::string filename) {
         return ACRE_ERROR;
     }
     iniFile << "[acre2]\n";
-    iniFile << "hasShownWelcome = " << (this->m_HasShownWelcome ? "true" : "false") << ";\n";
     iniFile << "lastVersion = " << ACRE_VERSION << ";\n";
     iniFile << "globalVolume = " << this->m_GlobalVolume << ";\n";
     iniFile << "premixGlobalVolume = " << this->m_PremixGlobalVolume << ";\n";
     iniFile << "disableUnmuteClients = " << (this->m_DisableUnmuteClients ? "true" : "false") << ";\n";
-    
+
     //LOG("Config Save: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
     iniFile.flush();
     iniFile.close();
@@ -32,12 +31,13 @@ ACRE_RESULT CAcreSettings::load(std::string filename) {
         LOG("Failed to load ACRE ini file. Using defaults...");
         this->save(filename);
         return ACRE_ERROR;
+    } else {
+        LOG("Successfully loaded ACRE ini file (any failures above can be ignored).");
     }
 
-    this->m_HasShownWelcome = config.GetBoolean("acre2", "hasShownWelcome", true);
     this->m_LastVersion = config.Get("acre2", "lastVersion", ACRE_VERSION);
-    this->m_GlobalVolume = config.GetReal("acre2", "globalVolume", 1.0f);
-    this->m_PremixGlobalVolume = config.GetReal("acre2", "premixGlobalVolume", 1.0f);
+    this->m_GlobalVolume = (float)config.GetReal("acre2", "globalVolume", 1.0f);
+    this->m_PremixGlobalVolume = (float)config.GetReal("acre2", "premixGlobalVolume", 1.0f);
     this->m_DisableUnmuteClients = config.GetBoolean("acre2", "disableUnmuteClients", false);
 
     //LOG("Config Load: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
@@ -64,7 +64,6 @@ CAcreSettings::CAcreSettings() :
     m_DisableRadioFilter(false),
     m_DisableUnmuteClients(false),
     m_LastVersion(ACRE_VERSION),
-    m_HasShownWelcome(false),
     m_Path("acre2.ini")
     {
     // Set defaults!

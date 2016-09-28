@@ -18,15 +18,13 @@
 
 DFUNC(onButtonPress_Selection) = {
     TRACE_1("onButtonPress_Selection", _this);
-    private["_currentSelection"];
     params["_menu", "_event"];
 
-    _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
     TRACE_2("!!!!!!!!!!!!!!!!!!!!!!!!!", _currentSelection, (_event select 0));
     switch (_event select 0) do {
         case 'ENT': {
-            private["_value"];
-            _value = ((MENU_SELECTION_DISPLAYSET(_menu) select 0) select _currentSelection);
+            private _value = ((MENU_SELECTION_DISPLAYSET(_menu) select 0) select _currentSelection);
 
             SCRATCH_SET(GVAR(currentRadioId), MENU_SELECTION_VARIABLE(_menu), _value);
 
@@ -78,23 +76,21 @@ DFUNC(onButtonPress_Selection) = {
 };
 DFUNC(renderMenu_Selection) = {
     //TRACE_1(QUOTE(FUNC(renderMenu_Number)), _this);
-    private["_displaySet", "_value", "_options", "_cursor", "_valueHash"];
     params["_menu"]; // the menu to render is passed
-    _displaySet = MENU_SUBMENUS(_menu);
+    private _displaySet = MENU_SUBMENUS(_menu);
 
-    _options = MENU_SELECTION_DISPLAYSET(_menu) select 0;
-    _cursor = MENU_SELECTION_DISPLAYSET(_menu) select 1;
+    private _options = MENU_SELECTION_DISPLAYSET(_menu) select 0;
+    private _cursor = MENU_SELECTION_DISPLAYSET(_menu) select 1;
 
-    _currentSelection = GET_STATE_DEF("menuSelection", 0);
-    _value = _options select _currentSelection;
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _value = _options select _currentSelection;
 
-    _valueHash = HASH_CREATE;
+    private _valueHash = HASH_CREATE;
     HASH_SET(_valueHash, "1", _value);
 
     [] call FUNC(clearDisplay);
     if(!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
         {
-            private["_format", "_renderString"];
             // Data selection row
             [(_x select 0),
              (_x select 2),

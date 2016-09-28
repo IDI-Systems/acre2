@@ -16,8 +16,7 @@
  */
 #include "script_component.hpp"
 
-private["_running"];
-_running = false;
+private _running = false;
 if(!(scriptDone GVAR(processId))) then {
     _running = true;
 };

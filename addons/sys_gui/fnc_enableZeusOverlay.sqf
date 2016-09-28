@@ -17,11 +17,10 @@
 #include "script_component.hpp"
 
 DFUNC(getCurators) = {
-    private["_curatorPlayers", "_curatorObject", "_curatorPlayer"];
-    _curatorPlayers = [];
+    private _curatorPlayers = [];
     {
-        _curatorObject = _x;
-        _curatorPlayer = getAssignedCuratorUnit _curatorObject;
+        private _curatorObject = _x;
+        private _curatorPlayer = getAssignedCuratorUnit _curatorObject;
         _curatorPlayers pushBack [_curatorPlayer, _curatorObject];
     } forEach allCurators;
 
@@ -29,10 +28,9 @@ DFUNC(getCurators) = {
 };
 
 DFUNC(isUnitCurator) = {
-    private["_curators", "_result"];
 
-    _result = false;
-    _curators = [] call FUNC(getCurators);
+    private _result = false;
+    private _curators = [] call FUNC(getCurators);
 
     {
         if((_x select 0) == acre_player) exitWith {

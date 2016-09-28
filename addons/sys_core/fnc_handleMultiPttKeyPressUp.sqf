@@ -19,7 +19,7 @@
 DFUNC(doHandleMultiPttKeyPressUp) = {
     params ["_args"];
     if( (_args select 1) ) then {
-        [GVAR(delayReleasePTT_Handle)] call EFUNC(sys_sync,perFrame_remove);
+        [GVAR(delayReleasePTT_Handle)] call CBA_fnc_removePerFrameHandler;
         GVAR(delayReleasePTT_Handle) = nil;
 
         if(GVAR(pttKeyDown)) then {

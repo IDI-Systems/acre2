@@ -3,9 +3,6 @@
 ADDON = false;
 
 PREP(getRadioState);
-PREP(callRadio);
-PREP(setVarNet);
-PREP(getMixedConfig);
 // new data functions
 PREP(getRadioPresetName);
 PREP(acreEvent);

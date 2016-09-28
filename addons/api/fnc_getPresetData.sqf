@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the full preset data of the specified preset name for the specified radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio base class <STRING>
+ * 1: Preset Name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Preset data <HASH>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _presetData = ["ACRE_PRC152", "default"] call acre_api_fnc_getPresetData;
  *
  * Public: Yes
  */

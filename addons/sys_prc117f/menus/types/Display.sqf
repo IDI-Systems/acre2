@@ -17,24 +17,23 @@
 #include "script_component.hpp"
 
 DFUNC(onButtonPress_Display) = {
-    private["_active", "_channelNumber", "_channel", "_currentSelection"];
 
     TRACE_1("onButtonPress_Display", _this);
     params["_menu", "_event"];
 
-    _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
     switch (_event select 0) do {
         case 'PRE_UP': {     // OPT
-            _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+            private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
 
-            _active = false;
+            private _active = false;
             while { !_active } do {
                 if(_channelNumber < 98) then {
                     _channelNumber = _channelNumber + 1;
                 } else {
                     _channelNumber = 0;
                 };
-                _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
+                private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
                 _active = HASH_GET(_channel, "active");
             };
 
@@ -43,16 +42,16 @@ DFUNC(onButtonPress_Display) = {
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
         };
         case 'PRE_DOWN': { // PGM
-            _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+            private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
 
-            _active = false;
+            private _active = false;
             while { !_active } do {
                 if(_channelNumber > 0) then {
                     _channelNumber = _channelNumber - 1;
                 } else {
                     _channelNumber = 98;
                 };
-                _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
+                private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
                 _active = HASH_GET(_channel, "active");
             };
 
@@ -92,18 +91,17 @@ DFUNC(onButtonPress_Display) = {
 };
 
 DFUNC(renderMenu_Display) = {
-    private["_displaySet", "_currentSelection", "_currentDisplay", "_entry"];
     TRACE_1("renderMenu_Display", _this);
     params["_menu"]; // the menu to render is passed
-    _displaySet = MENU_SUBMENUS(_menu);
+    private _displaySet = MENU_SUBMENUS(_menu);
 
 
-    _currentSelection = GET_STATE_DEF("menuSelection", 0);
-    _currentDisplay = MENU_SUBMENUS_ITEM(_menu,_currentSelection);
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _currentDisplay = MENU_SUBMENUS_ITEM(_menu,_currentSelection);
 
     // A display set has a set of children STATIC displays, which are rendered and canFire
     // be swaped with the 'NEXT' circly button thingy
-    _entry = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuEntry", false);
+    private _entry = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuEntry", false);
     if(_entry) then {
         [_currentDisplay] call FUNC(callEntryFunctor);
     };

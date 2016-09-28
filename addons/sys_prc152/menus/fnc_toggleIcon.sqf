@@ -16,15 +16,13 @@
  */
 #include "script_component.hpp"
 
-private["_display","_type"];
 params["_iconId","_toggle"];
 
-_display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
-_type = ctrlType (_display displayCtrl _iconId);
+private _display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
+private _type = ctrlType (_display displayCtrl _iconId);
 
 if((count _this) > 2) then {
-    private["_newPosition"];
-    _newPosition = _this select 2;
+    private _newPosition = _this select 2;
     (_display displayCtrl _iconId) ctrlSetPosition _toggle;
 };
 

@@ -1,27 +1,25 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Set the channel number that the currently active radio is on.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Channel number <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _success = [5] call acre_api_fnc_setCurrentRadioChannelNumber;
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-private["_radioId"];
 params["_channelNumber"];
 
 if( !(_channelNumber isEqualType 0)) exitWith { false };
 
-_radioId = [] call FUNC(getCurrentRadio);
+private _radioId = [] call FUNC(getCurrentRadio);
 if(_radioId == "") exitWith { false };
 
 [_radioId, _channelNumber] call FUNC(setRadioChannel);

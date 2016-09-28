@@ -1,5 +1,3 @@
-#include "script_component.hpp"
-
 class ACRE_VERSION_MISMATCH {
     idd = 666123666;
        movingEnable =  1;

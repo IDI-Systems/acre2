@@ -1,24 +1,22 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Gets the preset name to utilize on the provided radio class during initialization.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio base type <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * The string name of the current preset <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _currentPreset = ["ACRE_PRC152"] call acre_api_fnc_getPreset;
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-private["_preset"];
 params["_radioClass"];
 
-_preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
+private _preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
 
 _preset

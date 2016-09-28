@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks whether the provided unit (or by default local player) is spectating.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <OBJECT>(default:acre_player)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Spectating <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ *  _isSpectator = [] call acre_api_fnc_isSpectator;
+ * _isSpectator = [player] call acre_api_fnc_isSpectator;
  *
  * Public: Yes
  */

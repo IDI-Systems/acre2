@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Pass true or false to set the unit as a “spectator” or not. This will override current alive status, and join the player to dead channel regardless.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: true or false on whether the unit should locally be considered a spectator <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _ret = [true] call acre_api_fnc_setSpectator;
  *
  * Public: Yes
  */

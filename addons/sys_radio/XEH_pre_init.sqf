@@ -7,7 +7,6 @@ PREP(monitorRadios);
 PREP(setActiveRadio);
 
 PREP(openRadio);
-PREP(listRadios);
 PREP(onDialogClose);
 
 PREP(initDefaultRadio);
@@ -23,7 +22,6 @@ PREP(getRadioSpatial);
 PREP(getRadioPos);
 PREP(getRadioObject);
 PREP(getRadioSubObject);
-PREP(radioObjectsSame);
 PREP(radioExists);
 PREP(nearRadios);
 PREP(playRadioSound);
@@ -35,7 +33,7 @@ PREP(onPlayerKilled);
 
 NO_DEDICATED;
 
-DGVAR(workingRadioList) = [];
+//DGVAR(workingRadioList) = [];
 DGVAR(currentRadioList) = [];
 
 // Addition for compat: Compat features / remote features can add a radio here.
@@ -45,9 +43,9 @@ DGVAR(pendingClaim) = 0;
 DGVAR(replacementRadioIdList) = [];
 
 // handler callbacks
-DGVAR(radioListHandlers) = [];
-DGVAR(lostRadioHandlers) = [];
-DGVAR(gotRadioHandlers) = [];
+//DGVAR(radioListHandlers) = [];
+//DGVAR(lostRadioHandlers) = [];
+//DGVAR(gotRadioHandlers) = [];
 
 DGVAR(currentRadioDialog) = "";
 
@@ -60,7 +58,5 @@ DVAR(ACRE_SPECTATOR_RADIOS) = [];
 if(isNil QUOTE(GVAR(defaultItemRadioType))) then {
     GVAR(defaultItemRadioType) = "ACRE_PRC343";
 };
-
-DGVAR(pendingClaim)  = 0;
 
 ADDON = true;

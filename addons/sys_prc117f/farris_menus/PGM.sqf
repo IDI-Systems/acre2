@@ -325,14 +325,12 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
             ],
             [
                 {
-                    private["_value"];
-                    _value = nil;
+                    private _value = nil;
                     _value = GET_RADIO_VALUE("name");
                     SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                 },
                 {
-                    private["_value"];
-                    _value = nil;
+                    private _value = nil;
                     _value = GET_STATE_DEF("pgm_name", "");
                     if(_value != "") then {
                         _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;

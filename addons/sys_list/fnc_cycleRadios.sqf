@@ -18,21 +18,19 @@
 
 LOG("HIT CYCLE RADIO");
 if(!dialog) then {
-    private["_radios", "_count", "_newRadioIndex", "_activeRadio", "_activateRadio", "_oblix",
-    "_listInfo", "_baseConfig", "_realRadio", "_typeName", "_radio", "_radioClass", "_radioList"];
     params["_direction"];
-    _radios = [];
-    _count = 0;
-    _newRadioIndex = 0;
+    private _radios = [];
+    private _count = 0;
+    private _newRadioIndex = 0;
     // populate from local radio list
-    _radioList = ([] call EFUNC(sys_data,getPlayerRadioList));
+    private _radioList = ([] call EFUNC(sys_data,getPlayerRadioList));
     {
-        _radioClass = _x;
-        _listInfo = [_radioClass, "getListInfo"] call EFUNC(sys_data,dataEvent);
-        _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _radioClass);
-        _realRadio = configName ( _baseConfig );
-        _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
-        _radio = [_typeName, _listInfo, _radioClass];
+        private _radioClass = _x;
+        private _listInfo = [_radioClass, "getListInfo"] call EFUNC(sys_data,dataEvent);
+        private _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _radioClass);
+        private _realRadio = configName ( _baseConfig );
+        private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
+        private _radio = [_typeName, _listInfo, _radioClass];
         TRACE_2("heh", _radioClass, ACRE_ACTIVE_RADIO);
         if(_radioClass == ACRE_ACTIVE_RADIO) then {
             TRACE_1("found index", _count);
@@ -59,7 +57,7 @@ if(!dialog) then {
         };
         TRACE_1("radios are", _radios);
         TRACE_1("index is", _newRadioIndex);
-        _activateRadio = _radios select _newRadioIndex;
+        private _activateRadio = _radios select _newRadioIndex;
         TRACE_1("Active is now", _activateRadio);
         [(_activateRadio select 2)] call EFUNC(sys_radio,setActiveRadio);
         //diag_log "GO GO GOGO";

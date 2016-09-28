@@ -33,9 +33,6 @@ THE SOFTWARE.
 
 *******************************************************************************/
 
-#include "Common.h"
-#include "Design.h"
-
-namespace Dsp {
-
-}
+// This file is not needed, all of it's stuff is in the header, but the DSPFilters
+// lib includes it. Getting rid of the contents, an empty namespace, prevents an
+// unused object warning during compilation.

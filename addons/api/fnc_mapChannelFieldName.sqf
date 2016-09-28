@@ -1,27 +1,25 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Used to get the correct channel field name for a particular radio type. As the field names can differ between radio IDs.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Field Name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Field name <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC148_ID_1","description"] call acre_api_fnc_mapChannelFieldName;
  *
- * Public: Yes
+ * Deprecated
  */
 #include "script_component.hpp"
 
-private["_baseRadio"];
 params["_radioId", "_fieldName"];
 
-
 TRACE_1("CALLING", "");
-_baseRadio = [_radioId] call FUNC(getBaseRadio);
+private _baseRadio = [_radioId] call FUNC(getBaseRadio);
 TRACE_1("", _baseRadio);
 switch _baseRadio do {
     case "ACRE_PRC148": {

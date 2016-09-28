@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+
 class CfgPatches {
     class ADDON {
         units[] = {};
@@ -10,7 +11,5 @@ class CfgPatches {
     };
 };
 
-#include "CfgVehicles.hpp"
 #include "CfgAcreComponents.hpp"
 #include "CfgEventhandlers.hpp"
-

@@ -65,7 +65,6 @@ add_subdirectory(acre)
 
 add_subdirectory(tests)
 add_subdirectory(utils)
-add_subdirectory(lib/lzo)
 
 # Extensions
 
@@ -73,10 +72,6 @@ add_subdirectory(lib/lzo)
 if (DEVEL)
     add_subdirectory(dynload)
     #add_subdirectory(tests)
-    if(USE_DIRECTX)
-        add_subdirectory(lib/directxtk)
-    endif()
 endif()
-
 
 message("Build Type: ${CMAKE_BUILD_TYPE}")

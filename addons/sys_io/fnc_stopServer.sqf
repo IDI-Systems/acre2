@@ -16,16 +16,14 @@
  */
 #include "script_component.hpp"
 
-private["_return"];
-
-_return = false;
+private _return = false;
 if(!(scriptDone GVAR(processId))) then {
     GVAR(runServer) = false;
     waitUntil{(scriptDone GVAR(processId))}; // OK - TEMP
     waitUntil{(scriptDone GVAR(pingProcessId))}; // OK - TEMP
     _return = true;
 };
-[GVAR(serverHandle)] call EFUNC(sys_sync,perFrame_remove);
+[GVAR(serverHandle)] call CBA_fnc_removePerFrameHandler;
 "ACRE2Arma" callExtension "1";
 
 _return

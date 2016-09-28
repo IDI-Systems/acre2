@@ -30,7 +30,7 @@ namespace acre {
     int _compressed_base::_decompress_safe(std::istream & in, uint32_t expected_size) {
         // We read 512 bytes at a time, until we have hit the end of the compressed stream
         uint8_t     *buffer;
-        uint32_t    input_size = 0;
+        std::streamsize input_size = 0;
         int32_t     result;
         std::streampos   save_pos;
 
@@ -235,7 +235,7 @@ namespace acre {
 #define N 4096
 #define F 18
 #define THRESHOLD 2
-#define READ_CHAR(var) in.read((char *)&temp, 1); var = (unsigned char)temp
+#define READ_CHAR2(var) in.read((char *)&temp, 1); var = (unsigned char)temp
     bool _compressed_base::_lzss_decompress(std::istream &in, long lensb)
     {
         unsigned char temp;
@@ -252,7 +252,7 @@ namespace acre {
         {
             if (((flags >>= 1) & 256) == 0)
             {
-                READ_CHAR(c);
+                READ_CHAR2(c);
                 flags = c | 0xff00;
             }
             if (in.fail() || in.eof())
@@ -278,8 +278,8 @@ namespace acre {
             }
             else
             {
-                READ_CHAR(i);
-                READ_CHAR(j);
+                READ_CHAR2(i);
+                READ_CHAR2(j);
                 if (in.fail() || in.eof())
                 {
                     //Fail("LZW: stream read failed");

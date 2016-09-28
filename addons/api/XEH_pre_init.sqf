@@ -5,11 +5,8 @@ ADDON = false;
 DGVAR(selectableCurveScale) = 1.0;
 DVAR(ACRE_IS_SPECTATOR) = false;
 
-// Field name mapping for unifying radio field names
-PREP(mapChannelFieldName);
-
-
 // DEPRICATED /////
+PREP(mapChannelFieldName); // DEPRICATING
 PREP(setDefaultChannels);    // DEPRICATING
 PREP(getDefaultChannels);    // DEPRICATING
 

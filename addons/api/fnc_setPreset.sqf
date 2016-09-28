@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the preset name to utilize on the provided radio class during initialization.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio base type <STRING>
+ * 1: Preset name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _success = ["ACRE_PRC152", "default2"] call acre_api_fnc_setPreset;
  *
  * Public: Yes
  */

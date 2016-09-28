@@ -1,37 +1,36 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks whether the provided weapon/item is the specified ACRE radio type.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID/Item classname <STRING>
+ * 1: Radio base type <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Whether the provided item is of the radio base type <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _ret = ["ACRE_PRC117F_ID_123", "ACRE_PRC117F"] call acre_api_fnc_isKindOf;
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-private["_ret", "_parent", "_parentCheck", "_isAcre"];
 params["_radioId", "_radioType"];
 
-_ret = false;
-_parent = configName (inheritsFrom ( configFile >> "CfgAcreComponents" >> _radioId));
+private _ret = false;
+private _parent = configName (inheritsFrom ( configFile >> "CfgAcreComponents" >> _radioId));
 if(_parent == "") then {
     _parent = configName (inheritsFrom ( configFile >> "CfgWeapons" >> _radioId));
 };
 
-_isAcre = getNumber (configFile >> "CfgAcreComponents" >> _parent >> "isAcre");
+private _isAcre = getNumber (configFile >> "CfgAcreComponents" >> _parent >> "isAcre");
 // diag_log text format["_radioId: %1 isAcre: %2", _parent, _isAcre];
 TRACE_2("", _parent, _isAcre);
 if(_isAcre == 0) exitWith {
     false
 };
-TRACE_2("", _parent, _parentCheck);
+TRACE_2("", _parent, _radioType);
 
 if(_parent == _radioType) exitWith {
     true

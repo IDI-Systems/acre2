@@ -12,7 +12,7 @@ namespace acre {
 
             // proxies
             stream_.read((char *)&temp_count, sizeof(uint32_t)); assert(temp_count < 4096 * 10);
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                 proxies.push_back(std::make_shared<proxy>(stream_, version));
             }
             LOG(DEBUG) << "Found Proxies:";
@@ -26,12 +26,12 @@ namespace acre {
 
             // bone links
             stream_.read((char *)&temp_count, sizeof(uint32_t)); assert(temp_count < 4096 * 10);
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                 // @ TODO: BoneLInks
                 uint32_t link_count;
                 std::vector<uint32_t> links;
                 stream_.read((char *)&link_count, sizeof(uint32_t));
-                for (int x = 0; x < link_count; x++) {
+                for (uint32_t x = 0; x < link_count; x++) {
                     uint32_t val;
                     stream_.read((char *)&val, sizeof(uint32_t));
                     links.push_back(val);
@@ -56,7 +56,7 @@ namespace acre {
 
             // Texture strings
             stream_.read((char *)&temp_count, sizeof(uint32_t));
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                 std::string temp;
 
                 READ_STRING(temp);
@@ -66,7 +66,7 @@ namespace acre {
             
             //Materials
             stream_.read((char *)&temp_count, sizeof(uint32_t));
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                  materials.push_back(std::make_shared<material>(stream_, version));
             }
 
@@ -82,25 +82,25 @@ namespace acre {
             // WTF IS GOING ON!?
             stream_.seekg(2, stream_.cur);
 
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                 faces.push_back(std::make_shared<face>(stream_, version));
             }
 
             // Sections
             stream_.read((char *)&temp_count, sizeof(uint32_t));
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                 sections.push_back(std::make_shared<section>(stream_, version));
             }
 
             stream_.read((char *)&temp_count, sizeof(uint32_t));
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                 selections.push_back(std::make_shared<named_selection>(stream_, version));
             }
             
             // named properties
             LOG(DEBUG) << "Loaded properties";
             stream_.read((char *)&temp_count, sizeof(uint32_t));
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                 std::string key, value;
                 READ_STRING(key);
                 READ_STRING(value);
@@ -109,7 +109,7 @@ namespace acre {
             }
 
             stream_.read((char *)&temp_count, sizeof(uint32_t));
-            for (int x = 0; x < temp_count; x++) {
+            for (uint32_t x = 0; x < temp_count; x++) {
                 frames.push_back(std::make_shared<frame>(stream_, version));
             }
 
@@ -141,7 +141,7 @@ namespace acre {
 
             // UV optionala additional sets
             stream_.read((char *)&temp_count, sizeof(uint32_t));
-            for (int x = 0; x < temp_count-1; x++) {
+            for (uint32_t x = 0; x < temp_count-1; x++) {
                 uvsets.push_back(std::make_shared<uv>(stream_, version));
             }
             
@@ -152,8 +152,6 @@ namespace acre {
 
         named_selection::named_selection() {}
         named_selection::named_selection(std::istream &stream_, uint32_t version = 68) {
-            uint32_t count;
-            uint32_t junk;
 
             READ_STRING(name);
 
@@ -247,11 +245,11 @@ namespace acre {
             stream_.read((char *)&textures_count, sizeof(uint32_t));
             stream_.read((char *)&transforms_count, sizeof(uint32_t));
 
-            for (int x = 0; x < textures_count; x++) {
+            for (uint32_t x = 0; x < textures_count; x++) {
                 texture_stages.push_back(std::make_shared<stage_texture>(stream_, type));
             }
 
-            for (int x = 0; x < textures_count; x++) {
+            for (uint32_t x = 0; x < textures_count; x++) {
                 uint32_t uv_source;
                 stream_.read((char *)&uv_source, sizeof(uint32_t));
                 transform_stages.push_back(std::pair<uint32_t, transform_matrix>(uv_source, transform_matrix(stream_)));
@@ -268,7 +266,7 @@ namespace acre {
             stream_.read((char *)&time, sizeof(float));
 
             stream_.read((char *)&count, sizeof(uint32_t));
-            for (int x = 0; x < count; x++) {
+            for (uint32_t x = 0; x < count; x++) {
                 bone_positions.push_back(acre::vector3<float>(stream_));
             }
         }

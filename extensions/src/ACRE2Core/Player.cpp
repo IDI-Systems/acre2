@@ -8,7 +8,7 @@ void CPlayer::init(ACRE_ID id) {
     this->setAttenCount(1);
     this->setPreviousVolume(0);
     this->setSelectableCurveScale(1.0f);
-    for(int i = 0; i < channels.size(); ++i) {
+    for(size_t i = 0; i < channels.size(); ++i) {
         this->channels[i] = NULL;
     }
 }
@@ -24,7 +24,7 @@ CPlayer::CPlayer(ACRE_ID id) {
 void CPlayer::clearSoundChannels() {
     CEngine::getInstance()->lock();
     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->lock();
-    for(int i = 0; i < channels.size(); ++i) {
+    for(size_t i = 0; i < channels.size(); ++i) {
         if(channels[i]) {
             CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(channels[i]);
         }

@@ -1,5 +1,3 @@
-#include "\idi\clients\acre\addons\sys_prc148\script_component.hpp"
-
 #define NEW_SCALE 1
 #define SCALE (NEW_SCALE/0.9)
 

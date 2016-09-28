@@ -16,10 +16,9 @@
  */
 #include "script_component.hpp"
 
-private["_spatial"];
 params["_radioId"];
 
-_spatial = [_radioId, "getState", "ACRE_INTERNAL_RADIOSPATIALIZATION"] call EFUNC(sys_data,dataEvent);
+private _spatial = [_radioId, "getState", "ACRE_INTERNAL_RADIOSPATIALIZATION"] call EFUNC(sys_data,dataEvent);
 
 if(!isNil "_spatial") exitWith { _spatial };
 0

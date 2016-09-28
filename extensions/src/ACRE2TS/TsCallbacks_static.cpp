@@ -68,13 +68,10 @@ void ts3plugin_freeMemory(void* data) {
 }
 // add plugin configuration crap
 int ts3plugin_offersConfigure() {
-    return PLUGIN_OFFERS_CONFIGURE_QT_THREAD;
+    return PLUGIN_OFFERS_NO_CONFIGURE;
 }
 void ts3plugin_configure(void* handle, void* qParentWidget) {
-    TRACE("opened configure: [%08x], [%08x]", handle, qParentWidget);
-#ifdef USE_ACRE2UI
-    UiEngine::launch(handle, qParentWidget);
-#endif
+
 }
 
 int ts3plugin_onServerErrorEvent(uint64 serverConnectionHandlerID, const char* errorMessage, unsigned int error, const char* returnCode, const char* extraMessage) {

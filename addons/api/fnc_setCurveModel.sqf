@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the curve model for all clients. This model affects the dropoff for direct speech.
+ * ACRE_CURVE_MODEL_ORIGINAL > The volume range is static and based off a custom curve.
+ * ACRE_CURVE_MODEL_SELECTABLE_A > This method allows you to use the acre_api_fnc_setSelectableVoiceCurve to change how far the voice curve goes. The curve that the it modifies in mode A is the default X3DAudio curve based off the inverse square law.
+ * ACRE_CURVE_MODEL_SELECTABLE_B > Same as above but it modifies the distance of the custom curve available when using the ACRE_CURVE_MODEL_ORIGINAL mode.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: "ACRE_CURVE_MODEL_ORIGINAL", "ACRE_CURVE_MODEL_SELECTABLE_A" or "ACRE_CURVE_MODEL_SELECTABLE_B" <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_CURVE_MODEL_ORIGINAL"] call acre_api_fnc_setCurveModel;
  *
  * Public: Yes
  */

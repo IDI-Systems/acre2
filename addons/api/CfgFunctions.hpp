@@ -1,21 +1,21 @@
-#define DEFINE_FUNCTION(x) class x {  file = PATHTOF(DOUBLES(fnc,x).sqf);  };
+#define DEFINE_FUNCTION(x) class x {  file = PATHTOF(DOUBLES(fnc,x).sqf);  }
 
 class CfgFunctions {
     class ADDON {
         class General {
             DEFINE_FUNCTION(isInitialized);
-            
+
             DEFINE_FUNCTION(setupMission);
 
             DEFINE_FUNCTION(getMultiPushToTalkAssignment);
             DEFINE_FUNCTION(setMultiPushToTalkAssignment);
-            
+
             DEFINE_FUNCTION(setPTTDelay);
             DEFINE_FUNCTION(getPTTDelay);
-            
+
             DEFINE_FUNCTION(setRevealToAI);
             DEFINE_FUNCTION(getRevealToAI);
-            
+
             DEFINE_FUNCTION(setLossModelScale);
             DEFINE_FUNCTION(setFullDuplex);
             DEFINE_FUNCTION(setInterference);
@@ -30,7 +30,7 @@ class CfgFunctions {
             DEFINE_FUNCTION(isBaseRadio);
             DEFINE_FUNCTION(hasBaseRadio);
             DEFINE_FUNCTION(getRadioByType);
-            
+
             DEFINE_FUNCTION(setItemRadioReplacement);
             DEFINE_FUNCTION(getDisplayName);
 
@@ -42,21 +42,21 @@ class CfgFunctions {
             DEFINE_FUNCTION(getCurrentRadio);
             DEFINE_FUNCTION(setCurrentRadio);
             DEFINE_FUNCTION(getCurrentRadioList);
-            
+
             DEFINE_FUNCTION(setRadioChannel);
             DEFINE_FUNCTION(getRadioChannel);
 
             DEFINE_FUNCTION(setCurrentRadioChannelNumber);
             DEFINE_FUNCTION(getCurrentRadioChannelNumber);
         };
-        class Presets {        
+        class Presets {
             DEFINE_FUNCTION(setPreset);
             DEFINE_FUNCTION(getPreset);
             DEFINE_FUNCTION(copyPreset);
 
             DEFINE_FUNCTION(setPresetData);
             DEFINE_FUNCTION(getPresetData);
-            
+
             DEFINE_FUNCTION(setPresetChannelData);
             DEFINE_FUNCTION(getPresetChannelData);
 
@@ -69,14 +69,14 @@ class CfgFunctions {
 
             DEFINE_FUNCTION(getRadioSpatial);
             DEFINE_FUNCTION(setRadioSpatial);
-            
+
             DEFINE_FUNCTION(isSpectator);
             DEFINE_FUNCTION(setSpectator);
         };
         class DirectVoiceCurve {
             DEFINE_FUNCTION(getSelectableVoiceCurve);
             DEFINE_FUNCTION(setSelectableVoiceCurve);
-            
+
             DEFINE_FUNCTION(setCurveModel);
             DEFINE_FUNCTION(setCurveModelScale);
         };
@@ -90,8 +90,8 @@ class CfgFunctions {
             DEFINE_FUNCTION(babelAddLanguageType);
         };
     };
-    
-    
+
+
     // Module Functions
     class AcreModules {
         class GVAR(mission_setup) {

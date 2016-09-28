@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/IDI-Systems/acre2/blob/master/extras/logos/small-logo.png">
+    <img src="https://github.com/IDI-Systems/acre2/blob/master/extras/logos/acre2-small-logo.png">
 </p>
 
 <p align="center">

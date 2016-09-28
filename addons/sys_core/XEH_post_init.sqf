@@ -3,7 +3,6 @@ NO_DEDICATED;
 
 
 [] call EFUNC(sys_io,startServer);
-// ["\userconfig\acre2\acre_key_config.ini", "core"] call FUNC(loadConfig);
 
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetPluginVersion", FUNC(handleGetPluginVersion)] call EFUNC(sys_rpc,addProcedure);
@@ -12,7 +11,6 @@ NO_DEDICATED;
 ["remoteStopSpeaking", FUNC(remoteStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["localStartSpeaking", FUNC(localStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["localStopSpeaking", FUNC(localStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
-["keyBoardEvent", FUNC(keyBoardEvent)] call EFUNC(sys_rpc,addProcedure);
 ["pong", FUNC(pong)] call EFUNC(sys_rpc,addProcedure);
 ["gen", FUNC(gen)] call EFUNC(sys_rpc,addProcedure);
 
@@ -20,8 +18,6 @@ DFUNC(gen) = {
     params["_code"];
     [] call (compile _code);
 };
-
-//[QUOTE(ADDON), "PTTRadio", { [] call FUNC(showBroadCastHint) }] call CALLSTACK(LIB_fnc_addKeyHandlerFromConfig);
 
 
 ///////////////////////////////////
@@ -88,7 +84,7 @@ DFUNC(coreInitPFH) = { // OK
 
     ACRE_CORE_INIT = true;
     TRACE_1("ACRE CORE INIT", ACRE_CORE_INIT);
-    [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+    [(_this select 1)] call CBA_fnc_removePerFrameHandler;
 };
 
 ADDPFH(DFUNC(coreInitPFH), 0, []);
@@ -124,5 +120,20 @@ private _vehicleCrewPFH = {
     };
 };
 ADDPFH(_vehicleCrewPFH, 1.1, []);
+
+// Disable positional audio whilst in briefing.
+if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
+    ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
+    private _briefingCheck = {
+        if (getClientStateNumber > 9) then { // Briefing has been read.
+            ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
+            [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        } else {
+            // Keep calling incase ACRE is not connected to teamspeak.
+            ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
+        };
+    };
+    ADDPFH(_briefingCheck, 0, []);
+};
 
 true

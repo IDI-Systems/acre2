@@ -20,7 +20,7 @@ RPC_FUNCTION(updateSpeakingData) {
 
     speakingType = std::string((char *)vMessage->getParameter(0));
     playerId = (ACRE_ID)vMessage->getParameterAsInt(1);
-    bool speaksBabbel = (bool)vMessage->getParameterAsInt(2);
+    int32_t speaksBabbel = vMessage->getParameterAsInt(2);
     if(playerId == CEngine::getInstance()->getSelf()->getId() && speakingType == "r") {
         //speaker = CEngine::getInstance()->getSelf();
     } else {

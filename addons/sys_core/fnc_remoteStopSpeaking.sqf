@@ -37,9 +37,10 @@ _speakingId = parseNumber _speakingId;
                     missionNamespace setVariable [_radioId + "_best_signal", -992];
                     missionNamespace setVariable [_radioId + "_best_px", 0];
                     missionNamespace setVariable [_radioId + "_best_ant", ""];
-                    private _signalTrace = missionNamespace getVariable [_radioId + "_signal_trace", []];
-                    private _signalStartTime = missionNamespace getVariable [_radioId + "_signal_startTime", diag_tickTime];
+
                     if(_unit != acre_player && ACRE_SIGNAL_DEBUGGING > 0) then {
+                        private _signalTrace = missionNamespace getVariable [_radioId + "_signal_trace", []];
+                        private _signalStartTime = missionNamespace getVariable [_radioId + "_signal_startTime", diag_tickTime];
                         diag_log text format["ACRE TX from %1 (on radio %2, distance at end: %3 m), duration %4s: %5", name _unit, _radioId, (_unit distance acre_player), diag_tickTime-_signalStartTime, _signalTrace];
                     };
                     missionNamespace setVariable [_radioId + "_signal_trace", []];

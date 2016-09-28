@@ -1,28 +1,26 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Gets the preset data for a given radio base class.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio base class <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Preset data <HASH>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343"] call acre_api_fnc_getDefaultChannels
  *
- * Public: Yes
+ * Deprecated
  */
 #include "script_component.hpp"
 
-private["_preset", "_presetData"];
 params["_radioClass"];
 
 hintSilent "WARNING: ACRE API getDefaultChannels is depricated. Please use getPresetData";
 diag_log text format ["WARNING: ACRE API getDefaultChannels is depricated. Please use getPresetData"];
 
-_preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
-_presetData = [_radioClass, _preset] call EFUNC(sys_data,getPresetData);
+private _preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
+private _presetData = [_radioClass, _preset] call EFUNC(sys_data,getPresetData);
 
 _presetData

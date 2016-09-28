@@ -1,4 +1,4 @@
-class GVAR(buttonBase) {
+/*class GVAR(buttonBase) {
     idc = -1;
     type = CT_BUTTON;
     style = ST_LEFT;
@@ -22,8 +22,7 @@ class GVAR(buttonBase) {
     soundPush[] = { "", 0.1, 1 };
     soundClick[] = { "", 0, 1 };  // no sound
     soundEscape[] = { "", 0, 1 };  // no sound
-
-};
+};*/
 
 
 class RscTitles {

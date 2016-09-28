@@ -10,7 +10,6 @@
 #include <thread>
 
 #include "AcreSettings.h"
-#include "UiEngine.hpp"
 
 #pragma comment(lib, "Shlwapi.lib")
 
@@ -20,24 +19,6 @@ extern TS3Functions ts3Functions;
 //TS3Functions CTS3Client::ts3Functions;
 
 ACRE_RESULT CTS3Client::initialize(void) {
-    if (CAcreSettings::getInstance()->getLastVersion() != ACRE_VERSION) {
-        // Show the welcome version dialog
-        CAcreSettings::getInstance()->setHasShownWelcome(false);
-    }
-
-    UiEngine::initialize();
-
-    LOG("Client initialized [%d]", CAcreSettings::getInstance()->getHasShownWelcome());
-
-    if (!CAcreSettings::getInstance()->getHasShownWelcome()) {
-        // Show the welcome dialog
-        CAcreSettings::getInstance()->setHasShownWelcome(true);
-        CAcreSettings::getInstance()->save();
-
-        //WelcomeDialog *welcomeDialog = new WelcomeDialog();
-        //welcomeDialog->show();
-        UiEngine::launch_welcome();
-    }
 
     return ACRE_OK;
 }
@@ -392,9 +373,7 @@ ACRE_RESULT CTS3Client::microphoneOpen(BOOL status) {
 ACRE_RESULT CTS3Client::unMuteAll( void ) {
     anyID clientId;
     anyID *clientList;
-    unsigned __int64 currentChannel;
     unsigned int res;
-    unsigned int x;
     uint32_t total_retries = 0;
     uint32_t total_intentional_runs = 0;
 

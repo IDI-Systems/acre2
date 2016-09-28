@@ -1,29 +1,27 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns true or false whether the provided weapon is a ACRE radio or not.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Classname <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Whether the provided object class name is a radio or not <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _isRadio = ["NVGoggles"] call acre_api_fnc_isRadio;
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-private["_type", "_ret", "_i", "_scope", "_id", "_flag"];
 params["_weapon"];
 
 // check that it at least inherits from ACRE_BaseRadio *AND* has a unique ID
 // If its scoped 1, that means its either a base or not a radio.
-_flag = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_isRadio");
-_id = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_uniqueId");
-_scope = getNumber(configFile >> "CfgWeapons" >> _weapon >> "scope");
+private _flag = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_isRadio");
+private _id = getNumber(configFile >> "CfgWeapons" >> _weapon >> "acre_uniqueId");
+private _scope = getNumber(configFile >> "CfgWeapons" >> _weapon >> "scope");
 if(isNil "_flag" || isNil "_scope" || isNil "_id") exitWith { false };
 if(_flag == 1 && _scope == 1) exitWith { true };
 

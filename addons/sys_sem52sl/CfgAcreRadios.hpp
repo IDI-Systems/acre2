@@ -1,5 +1,3 @@
-#include "script_component.hpp"
-
 class CfgAcreComponents
 {
     class ACRE_BaseRadio;

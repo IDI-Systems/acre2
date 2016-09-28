@@ -38,7 +38,7 @@ namespace acre {
             LOG(INFO) << "Load requested [" << args_.as_string(0) << "]";
 
             if (_modules.find(args_.as_string(0)) != _modules.end()) {
-                LOG(ERROR) << "Module already loaded [" << args_.as_string(0) << "]";
+                LOG(INFO) << "Module already loaded [" << args_.as_string(0) << "]";
                 return true;
             }
 
@@ -153,7 +153,7 @@ namespace acre {
 
             return false;
         }
-        
+
         bool register_functions() {
             dispatch::get().add("list", std::bind(&acre::dynloader::list, this, std::placeholders::_1, std::placeholders::_2));
             dispatch::get().add("load", std::bind(&acre::dynloader::load, this, std::placeholders::_1, std::placeholders::_2));

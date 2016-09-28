@@ -1,27 +1,27 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the full data set to be utilized for the specified preset name. Improper data will most likely break ACRE on all clients. This function must be called on all clients and the server to work properly.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio base type <STRING>
+ * 1: Preset name <STRING>
+ * 2: Preset data <HASH>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * _success = ["ACRE_PRC152", "new_preset", _presetData] call acre_api_fnc_setPresetData;
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-private["_presetPointer", "_return"];
 params["_radioClass", "_preset", "_presetData"];
 
-_return = false;
+private _return = false;
 
-_presetPointer = [_radioClass,_preset] call EFUNC(sys_data,getPresetData);
+private _presetPointer = [_radioClass,_preset] call EFUNC(sys_data,getPresetData);
 if(!isNil "_presetPointer") then {
     {
         if((_presetData select _forEachIndex) isEqualType []) then {
