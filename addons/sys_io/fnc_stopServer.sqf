@@ -23,7 +23,7 @@ if(!(scriptDone GVAR(processId))) then {
     waitUntil{(scriptDone GVAR(pingProcessId))}; // OK - TEMP
     _return = true;
 };
-[GVAR(serverHandle)] call EFUNC(sys_sync,perFrame_remove);
+[GVAR(serverHandle)] call CBA_fnc_removePerFrameHandler;
 "ACRE2Arma" callExtension "1";
 
 _return

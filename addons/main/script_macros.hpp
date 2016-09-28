@@ -261,7 +261,7 @@ PERFORMANCE COUNTERS SECTION
 //#define ACRE_PERFORMANCE_COUNTERS
 
 #ifdef ACRE_PERFORMANCE_COUNTERS
-    #define ADDPFH(function, timing, args) call { _ret = [function, timing, args, #function] call EFUNC(sys_sync,perFrame_add); if(isNil "ACRE_PFH" ) then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
+    #define ADDPFH(function, timing, args) call { _ret = [function, timing, args] call CBA_fnc_addPerFrameHandler; if(isNil "ACRE_PFH" ) then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
 
     #define CREATE_COUNTER(x) if(isNil "ACRE_COUNTERS" ) then { ACRE_COUNTERS=[]; }; GVAR(DOUBLES(x,counter))=[]; GVAR(DOUBLES(x,counter)) set[0, QUOTE(GVAR(DOUBLES(x,counter)))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; ACRE_COUNTERS pushBack GVAR(DOUBLES(x,counter));
     #define BEGIN_COUNTER(x) if(isNil QUOTE(GVAR(DOUBLES(x,counter)))) then { CREATE_COUNTER(x) }; GVAR(DOUBLES(x,counter)) set[2, diag_tickTime];
@@ -269,7 +269,7 @@ PERFORMANCE COUNTERS SECTION
 
     #define DUMP_COUNTERS ([__FILE__, __LINE__] call ACRE_DUMPCOUNTERS_FNC)
 #else
-    #define ADDPFH(function, timing, args)    [function, timing, args, #function] call EFUNC(sys_sync,perFrame_add)
+    #define ADDPFH(function, timing, args)    [function, timing, args] call CBA_fnc_addPerFrameHandler
 
     #define CREATE_COUNTER(x) /* disabled */
     #define BEGIN_COUNTER(x) /* disabled */
