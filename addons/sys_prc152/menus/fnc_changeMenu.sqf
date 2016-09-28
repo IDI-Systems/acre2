@@ -26,7 +26,7 @@ if(!([_newMenu] call FUNC(verifyIsMenu)) ) then {
 };
 */
 // clear menu data
-SET_STATE(menuSelection , 0);
+SET_STATE(menuSelection, 0);
 
 //
 //
