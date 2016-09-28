@@ -20,81 +20,93 @@
 params["_display"];
 
 
-private _channelKnobPosition = GET_STATE(channelKnobPosition);
+//private _channelKnobPosition = GET_STATE(channelKnobPosition);
+private _mainKnobPosition = GET_STATE(mainKnobPosition);
+private _functionKnobPosition = GET_STATE(functionKnobPosition);
+//private _manualChannelSelection = GET_STATE(manualChannelSelection);
+private _channelStepPosition = GET_STATE(channelStepPosition);
 private _volumeKnobPosition = GET_STATE(volumeKnobPosition);
+private _kHzKnobPosition = GET_STATE(kHzKnobPosition);
+private _MHzKnobPostion = GET_STATE(MHzKnobPostion);
+
+// Main knob
+private _mainImages = [
+    QUOTE(PATHTOF(Data\knobs\main\lstg_aus.paa)),
+    QUOTE(PATHTOF(Data\knobs\main\lstg_kl.paa)),
+    QUOTE(PATHTOF(Data\knobs\main\lstg_gr.paa))
+];
+
+// Function knob
+private _functionImages = [
+    QUOTE(PATHTOF(Data\knobs\function\bs_akw_rl.paa)),
+    QUOTE(PATHTOF(Data\knobs\function\bs_akw.paa)),
+    QUOTE(PATHTOF(Data\knobs\function\bs_hw.paa)),
+    QUOTE(PATHTOF(Data\knobs\function\bs_rsp.paa)),
+    QUOTE(PATHTOF(Data\knobs\function\bs_hw_rl.paa))
+];
+
+// Channel Step knob
+private _channelStepImages = [
+    QUOTE(PATHTOF(Data\knobs\cs\ka_25mhz_pil.paa)),
+    QUOTE(PATHTOF(Data\knobs\cs\ka_25mhz.paa)),
+    QUOTE(PATHTOF(Data\knobs\cs\ka_50mhz.paa)),
+    QUOTE(PATHTOF(Data\knobs\cs\ka_50mhz_pil.paa))
+];
 
 // Volume knob
-
 private _volImages = [
-    QUOTE(PATHTOF(Data\knobs\volume\vol_1000.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_0875.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_0750.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_0625.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_0500.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_0375.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_0250.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_0125.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_0000.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\volsq_0125.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\volsq_0250.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\volsq_0375.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\volsq_0500.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\volsq_0625.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\volsq_0750.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\volsq_0875.paa)),
-    QUOTE(PATHTOF(Data\knobs\volume\vol_1000.paa))
-];
-private _channelKnobPosition = GET_STATE(channelKnobPosition);
-if (_channelKnobPosition == 15) then { //programming mode p
-    // Wiggle the knob one state over depending on the selection Dir.
-    _newIdx = _volumeKnobPosition + (-1 * GVAR(selectionDir)); // works the opposite way to the sorting.
-    if (_newIdx > 16) then { _newIdx = 1; };
-    if (_newIdx < 0) then {_newIdx = 15; };
-    RADIO_CTRL(107) ctrlSetText (_volImages select _newIdx);
-} else {
-    RADIO_CTRL(107) ctrlSetText (_volImages select _volumeKnobPosition);
-};
-
-// Channel Switch
-
-private _channelImages = [
-    QUOTE(PATHTOF(Data\knobs\channel\ch_off.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_on.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_01.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_02.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_03.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_04.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_05.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_06.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_07.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_08.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_09.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_10.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_11.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_12.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_h.paa)),
-    QUOTE(PATHTOF(Data\knobs\channel\ch_p.paa))
+    QUOTE(PATHTOF(Data\knobs\volume\vol_100.paa)),
+    QUOTE(PATHTOF(Data\knobs\volume\vol_80.paa)),
+    QUOTE(PATHTOF(Data\knobs\volume\vol_60.paa)),
+    QUOTE(PATHTOF(Data\knobs\volume\vol_40.paa)),
+    QUOTE(PATHTOF(Data\knobs\volume\vol_20.paa)),
+    QUOTE(PATHTOF(Data\knobs\volume\vol_00.paa))
 ];
 
-RADIO_CTRL(106) ctrlSetText (_channelImages select _channelKnobPosition);
+// kHz Knob
+private _kHzKnobImages = [
+    QUOTE(PATHTOF(Data\knobs\khz\khz_0.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_1.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_2.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_3.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_4.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_5.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_6.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_7.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_8.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_9.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_10.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_11.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_12.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_13.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_14.paa)),
+    QUOTE(PATHTOF(Data\knobs\khz\khz_15.paa))
+];
 
-// PPT Button
+// MHz Knob
+private _MHzKnobImages = [
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_0.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_1.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_2.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_3.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_4.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_5.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_6.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_7.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_8.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_9.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_10.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_11.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_12.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_13.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_14.paa)),
+    QUOTE(PATHTOF(Data\knobs\mhz\mhz_15.paa))
+];
 
-if (GVAR(depressedPTT)) then {
-    RADIO_CTRL(108) ctrlSetText QUOTE(PATHTOF(Data\knobs\ptt_down.paa));
-} else {
-    RADIO_CTRL(108) ctrlSetText "";
-};
 
-// Audio headset cable
 
-private _audioPath = GET_STATE(audioPath);
+RADIO_CTRL(106) ctrlSetText (_volImages select _volumeKnobPosition);
 
-if (_audioPath == "HEADSET") then {
-    RADIO_CTRL(300) ctrlSetText QUOTE(PATHTOF(Data\ui\sem70ui_headset_ca.paa));
-} else {
-    RADIO_CTRL(300) ctrlSetText QUOTE(PATHTOF(data\ui\sem70ui_ca.paa));
-};
 
 //display
 [_display] call FUNC(renderDisplay);

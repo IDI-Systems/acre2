@@ -30,10 +30,15 @@ if (_channelKnobPosition == 0) exitWith {}; // OFF
 
 _firstDigit = [
     QUOTE(PATHTOF(data\display\1char_0.paa)),
+    QUOTE(PATHTOF(data\display\1char_1.paa)),
+    QUOTE(PATHTOF(data\display\1char_2.paa)),
+    QUOTE(PATHTOF(data\display\1char_3.paa)),
     QUOTE(PATHTOF(data\display\1char_4.paa)),
     QUOTE(PATHTOF(data\display\1char_5.paa)),
     QUOTE(PATHTOF(data\display\1char_6.paa)),
-    QUOTE(PATHTOF(data\display\1char_8.paa))
+    QUOTE(PATHTOF(data\display\1char_7.paa)),
+    QUOTE(PATHTOF(data\display\1char_8.paa)),
+    QUOTE(PATHTOF(data\display\1char_9.paa))
 ];
 
 _secondDigit = [
@@ -72,16 +77,20 @@ _fourthDigit = [
     QUOTE(PATHTOF(data\display\4char_6.paa)),
     QUOTE(PATHTOF(data\display\4char_7.paa)),
     QUOTE(PATHTOF(data\display\4char_8.paa)),
-    QUOTE(PATHTOF(data\display\4char_9.paa)),
-    QUOTE(PATHTOF(data\display\4char_H.paa))
+    QUOTE(PATHTOF(data\display\4char_9.paa))
 ];
 
 _fifthDigit = [
     QUOTE(PATHTOF(data\display\5char_0.paa)),
+    QUOTE(PATHTOF(data\display\5char_1.paa)),
     QUOTE(PATHTOF(data\display\5char_2.paa)),
+    QUOTE(PATHTOF(data\display\5char_3.paa)),
+    QUOTE(PATHTOF(data\display\5char_4.paa)),
     QUOTE(PATHTOF(data\display\5char_5.paa)),
     QUOTE(PATHTOF(data\display\5char_6.paa)),
-    QUOTE(PATHTOF(data\display\5char_8.paa))
+    QUOTE(PATHTOF(data\display\5char_7.paa)),
+    QUOTE(PATHTOF(data\display\5char_8.paa)),
+    QUOTE(PATHTOF(data\display\5char_9.paa))
 ];
 
 _complete = [

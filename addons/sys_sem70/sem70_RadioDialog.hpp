@@ -95,65 +95,93 @@ class SEM70_RadioDialog {
         END_CONTROL
 
 
-        BEGIN_CONTROL(ChannelKnob, SEM70_RscPicture, 106)
+        BEGIN_CONTROL(VolumeKnob, SEM70_RscPicture, 106)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
-            text = QUOTE(PATHTOF(data\knobs\channel\ch_01.paa));
+            text = QUOTE(PATHTOF(data\knobs\volume\vol_100.paa));
         END_CONTROL
 
-        BEGIN_CONTROL(VolumeKnob, SEM70_RscPicture, 107)
+        BEGIN_CONTROL(MainKnob, SEM70_RscPicture, 107)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
-            text = QUOTE(PATHTOF(Data\knobs\volume\vol_1000.paa));
+            text = QUOTE(PATHTOF(Data\knobs\main\lstg_gr.paa));
         END_CONTROL
 
-        BEGIN_CONTROL(PTTButtonImage, SEM70_RscPicture, 108)
+        BEGIN_CONTROL(FunctionKnob, SEM70_RscPicture, 108)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
-            text = "";
+            text = QUOTE(PATHTOF(Data\knobs\function\bs_hw.paa));
+        END_CONTROL
+
+        BEGIN_CONTROL(ChannelStepKnob, SEM70_RscPicture, 109)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QUOTE(PATHTOF(Data\knobs\cs\ka_25mhz.paa));
+        END_CONTROL
+
+        BEGIN_CONTROL(khzKnob, SEM70_RscPicture, 110)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QUOTE(PATHTOF(Data\knobs\khz\khz_0.paa));
+        END_CONTROL
+
+        BEGIN_CONTROL(mhzKnob, SEM70_RscPicture, 111)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QUOTE(PATHTOF(Data\knobs\mhz\mhz_0.paa));
         END_CONTROL
         // Do the buttons last so they come on top.
-        BEGIN_CONTROL(ChannelKnobButton, SEM70_RscButton, 201)
+        BEGIN_CONTROL(VolumeButton, SEM70_RscButton, 201)
             x=((((0.416-0.543)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             w=(1.15/0.8)*0.050*SafeZoneH;
             h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {1, 0, 0, 1};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onChannelKnobPress));
             toolTip = QUOTE(Change channel);
         END_CONTROL
 
-        BEGIN_CONTROL(VolumeKnobButton, SEM70_RscButton, 202)
+        BEGIN_CONTROL(MainButton, SEM70_RscButton, 202)
             x=(((((0.416+0.087)-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             w=(1.15/0.8)*0.050*SafeZoneH;
             h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {0, 1, 0, 1};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onVolumeKnobPress));
             toolTip = QUOTE(Change volume);
         END_CONTROL
 
-        BEGIN_CONTROL(PTTButton, SEM70_RscButton, 203)
+        BEGIN_CONTROL(FunctionButton, SEM70_RscButton, 203)
             x=((((0.416-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             w=(1.15/0.8)*0.050*SafeZoneH * 4/3;
             h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {0, 0, 1, 1};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onPTTButtonPress));
             toolTip = QUOTE(PTT);
         END_CONTROL
 
-        BEGIN_CONTROL(AudioCableButton, SEM70_RscButton, 204)
+        BEGIN_CONTROL(ChannelStepButton, SEM70_RscButton, 204)
             x=((((0.416-0.615)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             y=((((0.595-0.6)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             w=(1.15/0.8)*0.050*SafeZoneH * 4/3;
             h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {1, 0, 1, 1};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onAudioSocketPress));
             toolTip = QUOTE(Plug/Unplug headset);
@@ -162,26 +190,26 @@ class SEM70_RadioDialog {
     };
 };
 
-class RscTitles
-{
-    class GVAR(volumeKnobPicture)
-    {
-        idd = 19008;
-        MovingEnable = 0;
-        name = QUOTE(GVAR(volumeKnobPicture));
-        duration = 2;
-        fadein = 0;
-        onLoad = QUOTE([(_this select 0)] call FUNC(_showVolumeKnob));
-        class controls
-        {
-            BEGIN_CONTROL(volumeKnobPictureControl, SEM70_RscPicture, 1071)
-                x = (((((0.416+0.057)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
-                y = ((((0.15-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
-                w = SCALE*0.1*SafeZoneH;
-                h = SCALE*0.1*SafeZoneH;
-                text = QUOTE(PATHTOF(Data\knobs\volume\vol_0000.paa));
-                colorText[]= {1,1,1,1};
-            END_CONTROL
-        };
-    };
-};
+//class RscTitles
+//{
+//    class GVAR(volumeKnobPicture)
+//    {
+//        idd = 19008;
+//        MovingEnable = 0;
+//        name = QUOTE(GVAR(volumeKnobPicture));
+//        duration = 2;
+//        fadein = 0;
+//        onLoad = QUOTE([(_this select 0)] call FUNC(_showVolumeKnob));
+//        class controls
+//        {
+//            BEGIN_CONTROL(volumeKnobPictureControl, SEM70_RscPicture, 1071)
+//                x = (((((0.416+0.057)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
+//                y = ((((0.15-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
+//                w = SCALE*0.1*SafeZoneH;
+//                h = SCALE*0.1*SafeZoneH;
+//                text = QUOTE(PATHTOF(Data\knobs\volume\vol_0000.paa));
+//                colorText[]= {1,1,1,1};
+//            END_CONTROL
+//        };
+//    };
+//};
