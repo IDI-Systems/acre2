@@ -63,11 +63,12 @@ GVAR(basicMissionSetup) = true;
 // Default radios
 if (!hasInterface) exitWith {true};
 
-private _defaultRadios = [];
-_defaultRadios set [0, _logic getVariable ["DefaultRadio", ""]];
-_defaultRadios set [1, _logic getVariable ["DefaultRadio_Two", ""]];
-_defaultRadios set [2, _logic getVariable ["DefaultRadio_Three", ""]];
-_defaultRadios set [3, _logic getVariable ["DefaultRadio_Four", ""]];
+private _defaultRadios = [
+    _logic getVariable ["DefaultRadio", ""]
+    _logic getVariable ["DefaultRadio_Two", ""]
+    _logic getVariable ["DefaultRadio_Three", ""]
+    _logic getVariable ["DefaultRadio_Four", ""]
+];
 
 private _addRadios = {
     params ["_defaultRadios", "_player"];
