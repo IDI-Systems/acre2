@@ -19,7 +19,7 @@
 TRACE_1("Enter", "");
 
 if(diag_tickTime > GVAR(nextSearchTime)) then {
-    GVAR(doFullSearch) = true;
+    //GVAR(doFullSearch) = true;
 };
 
 if (!GVAR(doFullSearch)) then {
