@@ -62,7 +62,7 @@ private _channelNamesForPresetGroup = {
 };
 
 
-params["_logic", "_units", "_activated"];
+params ["_logic", "_units", "_activated"];
 
 if (!_activated) exitWith {};
 
@@ -70,16 +70,16 @@ TRACE_1("enter", _this);
 
 private _sideNumber = _logic getVariable ["SideSelect", false];
 private _channelNames = [
-    _logic getVariable ["Channel_1", ""];
-    _logic getVariable ["Channel_2", ""];
-    _logic getVariable ["Channel_3", ""];
-    _logic getVariable ["Channel_4", ""];
-    _logic getVariable ["Channel_5", ""];
-    _logic getVariable ["Channel_6", ""];
-    _logic getVariable ["Channel_7", ""];
-    _logic getVariable ["Channel_8", ""];
-    _logic getVariable ["Channel_9", ""];
-    _logic getVariable ["Channel_10", ""];
+    _logic getVariable ["Channel_1", ""],
+    _logic getVariable ["Channel_2", ""],
+    _logic getVariable ["Channel_3", ""],
+    _logic getVariable ["Channel_4", ""],
+    _logic getVariable ["Channel_5", ""],
+    _logic getVariable ["Channel_6", ""],
+    _logic getVariable ["Channel_7", ""],
+    _logic getVariable ["Channel_8", ""],
+    _logic getVariable ["Channel_9", ""],
+    _logic getVariable ["Channel_10", ""]
 ];
 
 private _setupSides = false;

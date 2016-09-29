@@ -64,9 +64,9 @@ GVAR(basicMissionSetup) = true;
 if (!hasInterface) exitWith {true};
 
 private _defaultRadios = [
-    _logic getVariable ["DefaultRadio", ""]
-    _logic getVariable ["DefaultRadio_Two", ""]
-    _logic getVariable ["DefaultRadio_Three", ""]
+    _logic getVariable ["DefaultRadio", ""],
+    _logic getVariable ["DefaultRadio_Two", ""],
+    _logic getVariable ["DefaultRadio_Three", ""],
     _logic getVariable ["DefaultRadio_Four", ""]
 ];
 
