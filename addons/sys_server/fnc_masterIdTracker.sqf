@@ -122,7 +122,7 @@ if(GVAR(doFullSearch)) then {
         private _key = _x;
         private _duplicates = HASH_GET(_duplicateIdTable, _key);
         private _firstFound = HASH_GET(_idTable, _key);
-        
+
         private _players = allPlayers;
         // firstFound is always a player if a player has the item.
         if((_firstFound select 0) in _players) then {
@@ -130,6 +130,7 @@ if(GVAR(doFullSearch)) then {
             //Only collect firstFound if there are non-player objects with IDs as well.
             if ({!((_x select 0) in _players)} count _duplicates > 0) then {
                 [(_firstFound select 0), _baseRadio, "acre_sys_radio_returnRadioId", _key] call FUNC(onGetRadioId);
+                diag_log text format["%1 ACRE WARNING: Duplicate radio ID found attemping replace of (%2,%3)", diag_tickTime, name (_firstFound select 0), _key];
             };
 
             // Replace all duplicates that other players have.
@@ -137,6 +138,7 @@ if(GVAR(doFullSearch)) then {
                private _data = _x;
                if((_data select 0) in _players) then {
                    [(_data select 0), _baseRadio, "acre_sys_radio_returnRadioId", _key] call FUNC(onGetRadioId);
+                   diag_log text format["%1 ACRE WARNING: Duplicate radio ID found attemping replace of (%2,%3)", diag_tickTime, name (_data select 0), _key];
                };
            } forEach _duplicates;
         };
