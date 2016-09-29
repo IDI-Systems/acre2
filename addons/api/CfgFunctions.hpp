@@ -1,4 +1,10 @@
-#define DEFINE_FUNCTION(x) class x {  file = PATHTOF(DOUBLES(fnc,x).sqf);  }
+#ifdef DEBUG_MODE_FULL
+    #define DEFINE_FUNCTION(x) class x { file = QPATHTOF(DOUBLES(fnc,x).sqf); recompile = 1; }
+    #define DEFINE_FUNCTION_MODULE(x) class x { file = QPATHTOF(modules\x.sqf); recompile = 1; }
+#else
+    #define DEFINE_FUNCTION(x) class x { file = QPATHTOF(DOUBLES(fnc,x).sqf); }
+    #define DEFINE_FUNCTION_MODULE(x) class x { file = QPATHTOF(modules\x.sqf); }
+#endif
 
 class CfgFunctions {
     class ADDON {
@@ -95,10 +101,9 @@ class CfgFunctions {
     // Module Functions
     class AcreModules {
         class GVAR(mission_setup) {
-            class basicMissionSetup { file = PATHTOF(modules\basicMissionSetup.sqf); };
-            class disableSignalLoss { file = PATHTOF(modules\disableSignalLoss.sqf); };
-            class difficultySettings { file = PATHTOF(modules\difficultySettings.sqf); };
-            class nameChannels { file = PATHTOF(modules\nameChannels.sqf); };
+            DEFINE_FUNCTION_MODULE(basicMissionSetup);
+            DEFINE_FUNCTION_MODULE(difficultySettings);
+            DEFINE_FUNCTION_MODULE(nameChannels);
         };
     };
 };
