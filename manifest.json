@@ -1,0 +1,28 @@
+{
+    "project_name": "ACRE",
+    "build": {
+        "addon_folder": "@acre2",
+        "key_name": "acre",
+        "prefix": "acre",
+        "pbo_name_prefix": "acre_",
+        "signature_blacklist": [],
+        "build_copy": [
+            {
+                "src": ""
+            }
+        ]
+    },
+    "publish": {
+        "destinations": [
+            {
+                "type": "steam",
+                "login_var": "ACRE_STEAM_USERNAME",
+                "password_var": "ACRE_STEAM_PASSWORD",
+                "project_id": 522695873,
+                "release_dir": "P:\\idi\\acre\\release\\@acre2",
+                "release_text": "P:\\idi\\acre\\release\\@acre2\\README.md"
+            }
+        ]
+    }
+
+}
