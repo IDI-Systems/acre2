@@ -8,8 +8,8 @@
 #define BEGIN_CONTROL(name, parent, idval) class name : parent { idc = idval;
 #define END_CONTROL        };
 
-#define NEW_SCALE 1.8963
-#define SCALE (NEW_SCALE*1.8963)
+#define NEW_SCALE 1
+#define SCALE (NEW_SCALE*1)
 
 
 class SEM70_RadioDialog {
