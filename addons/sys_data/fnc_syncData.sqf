@@ -24,7 +24,7 @@ DFUNC(syncDataPFH) = {
         diag_log text format["%1 ACRE Data Sync Requested", diag_tickTime];
         GVAR(dataSyncStart) = diag_tickTime;
         publicVariableServer "ACREjips";
-        [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
 };
 ADDPFH(DFUNC(syncDataPFH), 0, []);

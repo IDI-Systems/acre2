@@ -4,7 +4,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "acre_main", "acre_sys_radio", "acre_sys_data", "acre_sys_sync" };
+        requiredAddons[] = { "acre_main", "acre_sys_radio", "acre_sys_data" };
         version = VERSION;
         AUTHOR;
     };
