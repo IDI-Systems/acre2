@@ -126,8 +126,8 @@ Antenna Defines
 
 #define BASECLASS(radioId) (configName (inheritsFrom (configFile >> "CfgWeapons" >> radioId)))
 
-#define DGVAR(varName)    if(isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QGVAR(varName) in ACRE_DEBUG_NAMESPACE)) then { PUSH(ACRE_DEBUG_NAMESPACE, QGVAR(varName)); }; GVAR(varName)
-#define DVAR(varName)     if(isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { PUSH(ACRE_DEBUG_NAMESPACE, QUOTE(varName)); }; varName
+#define DGVAR(varName) if(isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QGVAR(varName) in ACRE_DEBUG_NAMESPACE)) then { PUSH(ACRE_DEBUG_NAMESPACE, QGVAR(varName)); }; GVAR(varName)
+#define DVAR(varName) if(isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { PUSH(ACRE_DEBUG_NAMESPACE, QUOTE(varName)); }; varName
 
 // Dynamic sub-modules for systems
 #define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QUOTE(PATHTOF(folder\__PREP__.sqf))

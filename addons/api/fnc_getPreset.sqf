@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-params["_radioClass"];
+params ["_radioClass"];
 
 private _preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
 
