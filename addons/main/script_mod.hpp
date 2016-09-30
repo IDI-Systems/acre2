@@ -13,7 +13,7 @@
 #define ACRE_TAG ACRE
 
 // MINIMAL required version for the Mod. Components can specify others..
-#define REQUIRED_VERSION 1.01
+#define REQUIRED_VERSION 1.64
 #define REQUIRED_CBA_VERSION {3,1,0}
 
 #define AUTHOR author = "ACRE2 Team"
