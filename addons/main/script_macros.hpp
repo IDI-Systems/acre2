@@ -30,6 +30,7 @@
 #define GUI_INTERACT_EVENT EFUNC(sys_data,guiInteractEvent)
 #define GUI_DATA_EVENT EFUNC(sys_data,guiDataEvent)
 
+#define IS_ARRAY(array) array isEqualType []
 #define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
 
 
