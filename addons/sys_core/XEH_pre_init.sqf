@@ -381,7 +381,7 @@ EFUNC(lib,getCompartment) = {
     };
     _compartment;
 };
-#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
+
 EFUNC(lib,fastHashCreate) = {
     if(count FAST_HASH_POOL > 0) exitWith {
         private _ret = (FAST_HASH_POOL deleteAt 0);
