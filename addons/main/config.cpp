@@ -890,5 +890,6 @@ class CfgMods {
 #include "Dialog.hpp"
 #include "CfgSettings.hpp"
 
+#include "CfgEventHandlers.hpp"
 #include "CfgLocationTypes.hpp"
 #include "CfgWeapons.hpp"
