@@ -41,9 +41,9 @@ while { _result != -1 && _iter < 5} do {
     if(_space == -1) then { _space = count (toArray _text); };
 
     TRACE_4("BALLS", _text, _result, _dash, _space);
-    private _channelNumber = (parseNumber ([_text, _result+3, (_dash - (_result+3))] call CBA_fnc_substring)) - 1;
-    private _key = [_text, _dash+1, (_space - _dash)] call CBA_fnc_substring;
-    private _replacementValue = [_text, _result, (_space - _result)] call CBA_fnc_substring;
+    private _channelNumber = (parseNumber ([_text, _result+3, (_dash - (_result+3))] call CBA_fnc_substr)) - 1;
+    private _key = [_text, _dash+1, (_space - _dash)] call CBA_fnc_substr;
+    private _replacementValue = [_text, _result, (_space - _result)] call CBA_fnc_substr;
     TRACE_3("Replacement index", _replacementValue, _channelNumber, _key);
 
     private _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
