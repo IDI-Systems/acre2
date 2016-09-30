@@ -1,4 +1,5 @@
 #define COMPONENT sys_components
+#define COMPONENT_BEAUTIFIED Components
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

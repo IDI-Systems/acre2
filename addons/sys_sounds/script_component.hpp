@@ -1,4 +1,5 @@
 #define COMPONENT sys_sounds
+#define COMPONENT_BEAUTIFIED Sounds
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

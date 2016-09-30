@@ -1,10 +1,9 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class ADDON
-    {
-        units[] = { QGVAR(basicSetup) };
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
+        units[] = {QGVAR(basicSetup)};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
             DOUBLES(PREFIX,main),
@@ -14,7 +13,7 @@ class CfgPatches
             DOUBLES(PREFIX,sys_prc77),
             DOUBLES(PREFIX,sys_prc343),
             "acre_sys_core"
-            };
+        };
         version = VERSION;
         AUTHOR;
         authors[] = {"Jaynus", "Nou"};

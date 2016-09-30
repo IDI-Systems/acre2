@@ -1,4 +1,5 @@
 #define COMPONENT sys_radio
+#define COMPONENT_BEAUTIFIED Radio
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

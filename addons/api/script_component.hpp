@@ -1,5 +1,5 @@
 #define COMPONENT api
-
+#define COMPONENT_BEAUTIFIED API
 #include "\idi\acre\addons\main\script_mod.hpp"
 //#define DEBUG_ENABLED_API
 

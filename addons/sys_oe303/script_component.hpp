@@ -1,4 +1,5 @@
 #define COMPONENT sys_oe303
+#define COMPONENT_BEAUTIFIED OE-303
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

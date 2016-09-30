@@ -1,4 +1,5 @@
 #define COMPONENT sys_rpc
+#define COMPONENT_BEAUTIFIED Remote Procedures
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

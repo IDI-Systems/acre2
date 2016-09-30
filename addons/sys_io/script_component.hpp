@@ -1,4 +1,5 @@
 #define COMPONENT sys_io
+#define COMPONENT_BEAUTIFIED Iinput/Ooutput
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

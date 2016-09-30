@@ -1,4 +1,5 @@
 #define COMPONENT sys_prc152
+#define COMPONENT_BEAUTIFIED AN/PRC-152
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

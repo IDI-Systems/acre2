@@ -1,4 +1,5 @@
 #define COMPONENT sys_antenna
+#define COMPONENT_BEAUTIFIED Antenna
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

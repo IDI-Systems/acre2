@@ -1,4 +1,5 @@
 #define COMPONENT sys_core
+#define COMPONENT_BEAUTIFIED Core
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define USE_DEBUG_EXTENSIONS

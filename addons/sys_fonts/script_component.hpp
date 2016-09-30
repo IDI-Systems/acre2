@@ -1,4 +1,5 @@
 #define COMPONENT sys_fonts
+#define COMPONENT_BEAUTIFIED Fonts
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

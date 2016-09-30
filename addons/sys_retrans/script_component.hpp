@@ -1,4 +1,5 @@
 #define COMPONENT sys_retrans
+#define COMPONENT_BEAUTIFIED Retransmission
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

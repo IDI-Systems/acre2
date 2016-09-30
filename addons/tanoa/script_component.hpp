@@ -1,4 +1,5 @@
 #define COMPONENT tanoa
+#define COMPONENT_BEAUTIFIED Tanoa
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

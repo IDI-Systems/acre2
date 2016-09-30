@@ -1,4 +1,5 @@
 #define COMPONENT ace_interact
+#define COMPONENT_BEAUTIFIED ACE3 Interaction
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

@@ -2,10 +2,11 @@
 
 class CfgPatches {
     class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "acre_main" };
+        requiredAddons[] = {"acre_main"};
         VERSION_CONFIG;
         AUTHOR;
     };

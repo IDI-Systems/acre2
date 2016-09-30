@@ -1,4 +1,5 @@
 #define COMPONENT sys_attenuate
+#define COMPONENT_BEAUTIFIED Attenuate
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

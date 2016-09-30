@@ -1,4 +1,5 @@
 #define COMPONENT sys_sem52sl
+#define COMPONENT_BEAUTIFIED SEM 52 SL
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL

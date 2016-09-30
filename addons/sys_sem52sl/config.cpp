@@ -1,13 +1,12 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class ADDON
-    {
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
-        weapons[] = { RADIO_WEAPON_LIST_STR(ACRE_SEM52SL) };
+        weapons[] = {RADIO_WEAPON_LIST_STR(ACRE_SEM52SL)};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "acre_sys_radio" };
+        requiredAddons[] = {"acre_sys_radio"};
         version = VERSION;
         AUTHOR;
         authors[] = {"Raspu"};

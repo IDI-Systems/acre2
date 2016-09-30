@@ -1,4 +1,5 @@
 #define COMPONENT sys_signalmap
+#define COMPONENT_BEAUTIFIED Signal Map
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define DEBUG_MODE_FULL
