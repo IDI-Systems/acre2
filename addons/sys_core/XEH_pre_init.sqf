@@ -41,7 +41,6 @@ PREP(spectatorOn);
 PREP(switchChannelFast);
 PREP(switchRadioEar);
 PREP(toggleHeadset);
-PREP(ts3idToPlayer);
 PREP(updateSelf);
 PREP(utilityFunction);
 

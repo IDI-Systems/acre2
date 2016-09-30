@@ -1,5 +1,6 @@
-#define MAINPREFIX idi
+// COMPONENT should be defined in the script_component.hpp and included BEFORE this hpp
 
+#define MAINPREFIX idi
 #define PREFIX acre
 
 //--BUILDPREFIX

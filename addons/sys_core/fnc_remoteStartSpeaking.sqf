@@ -97,7 +97,7 @@ private _result = false;
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
                 _unit setVariable[QUOTE(GVAR(currentSpeakingRadio)), _radioId];
                 _speakerRadio = [];
-                _nearRadios = NEAR_RADIOS(ACRE_LISTENER_POS, 150);
+                _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
                 {
                     if([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                         PUSH(_speakerRadio, _x);
