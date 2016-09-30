@@ -6,7 +6,7 @@ ADDON = false;
 ACRE_STACK_TRACE = [];
 ACRE_STACK_DEPTH = 0;
 ACRE_CURRENT_FUNCTION = "";
-diag_log text format ["ACRE2 Library Loaded"];
+INFO("Library loaded.")
 
 EFUNC(lib,getGear) = {
     params["_unit"];
@@ -58,9 +58,8 @@ EFUNC(lib,replaceGear) = {
         if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_itemReplaceWith, 1];};
         if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_itemReplaceWith, 1];};
         if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_itemReplaceWith, 1];};
-        private _message = format["ACRE2: Unable to add '%1' to your inventory.",_itemReplaceWith];
-        systemChat _message;
-        diag_log _message;
+        INFO("Unable to add '%1' to inventory.",_itemReplaceWith);
+        hintSilent format ["ACRE2: Unable to add '%1' to your inventory.", _itemReplaceWith];
     };
 };
 

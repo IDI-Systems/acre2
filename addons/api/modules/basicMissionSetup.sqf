@@ -60,7 +60,7 @@ switch (_setupBabel) do {
     //This shouldn't be reached. If so, we throw an error.
     default {
         [false, _setupRadios] call acre_api_fnc_setupMission;
-        hint "The Babel System is not set correctly. Please double check the settings in the module you placed."
+        ERROR_WITH_TITLE("Incorrect Babel System Configuration","Double check the settings in the module you placed.");
     };
 };
 

@@ -31,5 +31,5 @@ if((GVAR(unacknowledgedIds) find _class) != -1) then {
         GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];
     };
 } else {
-    diag_log text format["%1 ACRE ERROR: %2 attempted to acknowledge ID %3 which was not awaiting acknowledgement!", diag_tickTime, _player, _class];
+    WARNING_2("%1 attempted to acknowledge ID %2 which was not awaiting acknowledgement",_player,_class);
 };

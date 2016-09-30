@@ -22,11 +22,17 @@ private _return = false;
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass"));
 private _childComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _childComponentId >> "acre_baseClass"));
 
-private _componentSimple = getNumber(_parentComponentClass >> "simple");
-if(_componentSimple == 1) exitWith { diag_log text format["%1 ACRE ERROR: %2 is not a complex component!", diag_tickTime, _parentComponentId]; false; };
+private _componentSimple = getNumber (_parentComponentClass >> "simple");
+if (_componentSimple == 1) exitWith {
+    WARNING_1("%1 is not a complex component!",_parentComponentId);
+    false
+};
 
-private _componentSimple = getNumber(_childComponentClass >> "simple");
-if(_componentSimple == 1) exitWith { diag_log text format["%1 ACRE ERROR: %2 is not a complex component!", diag_tickTime, _childComponentId]; false; };
+private _componentSimple = getNumber (_childComponentClass >> "simple");
+if (_componentSimple == 1) exitWith {
+    WARNING_1("%1 is not a complex component!",_childComponentId);
+    false
+};
 
 private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")) select _parentConnector) select 1;
 private _childConnectorType = ((getArray(_childComponentClass >> "connectors")) select _childConnector) select 1;

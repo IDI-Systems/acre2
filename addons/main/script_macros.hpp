@@ -105,7 +105,7 @@ Antenna Defines
 #define SCRATCH_GET(radioId, key) ([radioId, key] call EFUNC(sys_data,getScratchData))
 #define SCRATCH_GET_DEF(radioId, key, defaultVal) ([radioId, key, defaultVal] call EFUNC(sys_data,getScratchData))
 
-#define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if(_ret == -1) then { diag_log text format["%1 has no TS3 ID at %2:%3", _this, __FILE__, __LINE__]; }; _ret })
+#define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if(_ret == -1) then { WARNING_1("%1 has no TS3 ID",_this); }; _ret })
 
 
 #define HASH_CREATE (call EFUNC(lib,fastHashCreate))
@@ -152,3 +152,5 @@ PERFORMANCE COUNTERS
     #define END_COUNTER(x) /* disabled */
     #define DUMP_COUNTERS  /* disabled */
 #endif
+
+#define ACRE_DEPRECATED(arg1,arg2,arg3) WARNING_3("%1 is deprecated. Support will be dropped in version %2. Replaced by: %3",arg1,arg2,arg3)

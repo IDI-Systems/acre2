@@ -42,5 +42,5 @@ if(_ret != -1) then {
         // GVAR(waitingForIdAck) = true;
     };
 } else {
-    diag_log text format["%1 ACRE ERROR: ALL IDS FOR CLASS %2 ARE TAKEN!", diag_tickTime, _class];
+    WARNING("All IDs for class %2 are taken!",_class);
 };

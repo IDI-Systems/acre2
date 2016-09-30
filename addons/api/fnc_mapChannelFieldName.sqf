@@ -16,7 +16,9 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_fieldName"];
+ACRE_DEPRECATED(QFUNC(mapChannelFieldName),"2.5.0","None");
+
+params ["_radioId", "_fieldName"];
 
 TRACE_1("CALLING", "");
 private _baseRadio = [_radioId] call FUNC(getBaseRadio);
