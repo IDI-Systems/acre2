@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+
 class CfgPatches {
     class ADDON {
         units[] = {};
@@ -24,5 +25,6 @@ class CfgMods {
 
 #include "CfgRscStd.hpp"
 #include "Dialog.hpp"
+#include "CfgSettings.hpp"
 
 //#include "CfgEventHandlers.hpp"
