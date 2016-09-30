@@ -6,7 +6,7 @@ ADDON = false;
 ACRE_STACK_TRACE = [];
 ACRE_STACK_DEPTH = 0;
 ACRE_CURRENT_FUNCTION = "";
-INFO("Library loaded.")
+INFO("Library loaded.");
 
 EFUNC(lib,getGear) = {
     params["_unit"];

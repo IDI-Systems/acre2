@@ -18,7 +18,7 @@
 
 params ["_player", "_radioId", "_radioData"];
 
-WARNING_2("Invalid garbage collection done on radio %1 for player %2! Restoring all data!",_radioId,name _player)
+WARNING_2("Invalid garbage collection done on radio %1 for player %2! Restoring all data!",_radioId,name _player);
 
 private _baseRadio = configName(inheritsFrom (configFile >> "CfgWeapons" >> _radioId));
 private _idNumber = getNumber(configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
