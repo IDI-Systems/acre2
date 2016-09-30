@@ -98,7 +98,7 @@ DFUNC(monitorRadios_PFH) = {
                 };
 
 
-                ["acre_getRadioId", [acre_player, _radio, QUOTE(GVAR(returnRadioId))]] call CALLSTACK(CBA_fnc_globalEvent);
+                ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_globalEvent);
 
             };
             _isUnique = getNumber(configFile >> "CfgWeapons" >> _radio >> "acre_isUnique");

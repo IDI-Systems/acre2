@@ -26,7 +26,7 @@ _speakingId = parseNumber _speakingId;
         _found = true;
         _unit setRandomLip false;
         REM(GVAR(speakers),_unit);
-        private _radioId = _unit getVariable[QUOTE(GVAR(currentSpeakingRadio)), ""];
+        private _radioId = _unit getVariable[QGVAR(currentSpeakingRadio), ""];
         //if(ACRE_BROADCASTING_RADIOID != _radioId) then {
             if(_radioId != "") then {
                 if(_unit in GVAR(keyedMicRadios)) then {
@@ -60,7 +60,7 @@ _speakingId = parseNumber _speakingId;
         // };
         REM(GVAR(keyedMicRadios),_unit);
 
-        _unit setVariable[QUOTE(GVAR(currentSpeakingRadio)), ""];
+        _unit setVariable[QGVAR(currentSpeakingRadio), ""];
         _unit setVariable[QUOTE(currentListeningRadio), ""];
         TRACE_2("speakers",GVAR(speakers),GVAR(keyedMicRadios));
         if(_unit == acre_player) then {

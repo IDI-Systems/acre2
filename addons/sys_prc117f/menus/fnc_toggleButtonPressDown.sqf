@@ -18,7 +18,7 @@
 
 private _button = toLower (_this select 0);
 private _iconcontrol = 1000;
-private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
 if(!isNil "_display") then {
     //if (GET_STATE("pressedButton") < 0) Then {
         private _knobImageStr = QUOTE(\idi\acre\addons\sys_prc117f\Data\knobs\prc117f_ui_) + _button + QUOTE(.paa);

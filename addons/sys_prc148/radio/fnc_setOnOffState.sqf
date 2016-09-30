@@ -37,6 +37,6 @@ if(_radioId == acre_sys_radio_currentRadioDialog) then {
             HASH_SET(_radioData, "selectedEntry", 0);
         };
     };
-    _display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
+    _display = uiNamespace getVariable QGVAR(currentDisplay);
     [_display] call FUNC(render);
 };

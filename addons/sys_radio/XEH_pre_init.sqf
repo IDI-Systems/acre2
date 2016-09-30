@@ -53,9 +53,9 @@ DVAR(ACRE_ACTIVE_RADIO) = "";
 DVAR(ACRE_SPECTATOR_RADIOS) = [];
 
 // this isn't used anymore i do not think?
-// acre_player setVariable [QUOTE(GVAR(currentRadioList)), []];
+// acre_player setVariable [QGVAR(currentRadioList), []];
 
-if(isNil QUOTE(GVAR(defaultItemRadioType))) then {
+if(isNil QGVAR(defaultItemRadioType)) then {
     GVAR(defaultItemRadioType) = "ACRE_PRC343";
 };
 

@@ -176,7 +176,7 @@ DFUNC(doProcess) = {
         GVAR(rxSensitivityValue) = _lowerSensitivity;
         GVAR(rxSensitivityUpperValue) = _upperSensitivity;
 
-        if(isNil QUOTE(GVAR(txPosition))) exitWith {
+        if(isNil QGVAR(txPosition)) exitWith {
             hint format["Please set the Tx position."];
         };
 

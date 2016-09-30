@@ -105,7 +105,7 @@ Antenna Defines
 #define SCRATCH_GET(radioId, key) ([radioId, key] call EFUNC(sys_data,getScratchData))
 #define SCRATCH_GET_DEF(radioId, key, defaultVal) ([radioId, key, defaultVal] call EFUNC(sys_data,getScratchData))
 
-#define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QUOTE(GVAR(ts3id)), -1]); if(_ret == -1) then { diag_log text format["%1 has no TS3 ID at %2:%3", _this, __FILE__, __LINE__]; }; _ret })
+#define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if(_ret == -1) then { diag_log text format["%1 has no TS3 ID at %2:%3", _this, __FILE__, __LINE__]; }; _ret })
 
 
 #define HASH_CREATE (call EFUNC(lib,fastHashCreate))
@@ -126,7 +126,7 @@ Antenna Defines
 
 #define BASECLASS(radioId) (configName (inheritsFrom (configFile >> "CfgWeapons" >> radioId)))
 
-#define DGVAR(varName)    if(isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QUOTE(GVAR(varName)) in ACRE_DEBUG_NAMESPACE)) then { PUSH(ACRE_DEBUG_NAMESPACE, QUOTE(GVAR(varName))); }; GVAR(varName)
+#define DGVAR(varName)    if(isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QGVAR(varName) in ACRE_DEBUG_NAMESPACE)) then { PUSH(ACRE_DEBUG_NAMESPACE, QGVAR(varName)); }; GVAR(varName)
 #define DVAR(varName)     if(isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { PUSH(ACRE_DEBUG_NAMESPACE, QUOTE(varName)); }; varName
 
 // Dynamic sub-modules for systems
@@ -139,8 +139,8 @@ PERFORMANCE COUNTERS
 #ifdef ENABLE_PERFORMANCE_COUNTERS
     #define ADDPFH(function, timing, args) call { _ret = [function, timing, args] call CBA_fnc_addPerFrameHandler; if(isNil "ACRE_PFH" ) then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
 
-    #define CREATE_COUNTER(x) if(isNil "ACRE_COUNTERS" ) then { ACRE_COUNTERS=[]; }; GVAR(DOUBLES(x,counter))=[]; GVAR(DOUBLES(x,counter)) set[0, QUOTE(GVAR(DOUBLES(x,counter)))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; ACRE_COUNTERS pushBack GVAR(DOUBLES(x,counter));
-    #define BEGIN_COUNTER(x) if(isNil QUOTE(GVAR(DOUBLES(x,counter)))) then { CREATE_COUNTER(x) }; GVAR(DOUBLES(x,counter)) set[2, diag_tickTime];
+    #define CREATE_COUNTER(x) if(isNil "ACRE_COUNTERS" ) then { ACRE_COUNTERS=[]; }; GVAR(DOUBLES(x,counter))=[]; GVAR(DOUBLES(x,counter)) set[0, QGVAR(DOUBLES(x,counter))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; ACRE_COUNTERS pushBack GVAR(DOUBLES(x,counter));
+    #define BEGIN_COUNTER(x) if(isNil QGVAR(DOUBLES(x,counter))) then { CREATE_COUNTER(x) }; GVAR(DOUBLES(x,counter)) set[2, diag_tickTime];
     #define END_COUNTER(x) GVAR(DOUBLES(x,counter)) pushBack [(GVAR(DOUBLES(x,counter)) select 2), diag_tickTime];
 
     #define DUMP_COUNTERS ([__FILE__, __LINE__] call ACRE_DUMPCOUNTERS_FNC)

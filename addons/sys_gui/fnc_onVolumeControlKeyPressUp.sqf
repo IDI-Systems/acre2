@@ -23,7 +23,7 @@ inGameUISetEventHandler ['NextAction', 'false'];
 
 disableSerialization;
 GVAR(KeyBlock) = false;
-57701 cutRsc [QUOTE(GVAR(VolumeControlDialog_Close)), "PLAIN"];
+57701 cutRsc [QGVAR(VolumeControlDialog_Close), "PLAIN"];
 call FUNC(closeVolumeControl);
 
 

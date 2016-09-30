@@ -82,20 +82,20 @@ private _result = false;
         false;
     };
 
-    _unit setVariable[QUOTE(GVAR(ts3id)), _speakingId];
-    _unit setVariable[QUOTE(GVAR(languageId)), _languageId];
+    _unit setVariable[QGVAR(ts3id), _speakingId];
+    _unit setVariable[QGVAR(languageId), _languageId];
     TRACE_1("unit pos", getPosASL _unit);
     private _isMuted = IS_MUTED(_unit);
     _unit setRandomLip true;
     if(!_isMuted) then {
         TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_onRadio,(_unit distance acre_player));
-        _unit setVariable[QUOTE(GVAR(lastSpeakingEventTime)), diag_tickTime, false];
+        _unit setVariable[QGVAR(lastSpeakingEventTime), diag_tickTime, false];
         if(_onRadio == 1) then {
             if([_radioId] call EFUNC(sys_radio,radioExists)) then {
                 PUSH(GVAR(speakers),_unit);
                 private _val = [_netId, _speakingId];
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
-                _unit setVariable[QUOTE(GVAR(currentSpeakingRadio)), _radioId];
+                _unit setVariable[QGVAR(currentSpeakingRadio), _radioId];
                 _speakerRadio = [];
                 _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
                 {

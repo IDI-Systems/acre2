@@ -29,7 +29,7 @@ class RscTitles {
     class GVAR(radioCycleDisplayBG) {
         idd = 19099;
         movingEnable = 0;
-        name = QUOTE(GVAR(radioCycleDisplayBG));
+        name = QGVAR(radioCycleDisplayBG);
         duration = 0.15;
         fadein = 0;
         class controlsBackground {
@@ -52,16 +52,16 @@ class RscTitles {
 
         class controls { };
 
-        //onLoad = QUOTE(GVAR(hintIDD) = (_this select 0));
+        //onLoad = QGVAR(hintIDD) = (_this select 0);
     };
     class GVAR(radioCycleDisplay) {
         idd = 19099;
         movingEnable = 0;
-        name = QUOTE(GVAR(radioCycleDisplay));
+        name = QGVAR(radioCycleDisplay);
         duration = 2;
         fadein = 0;
 
-        //onLoad = QUOTE(GVAR(hintIDD) = (_this select 0));
+        //onLoad = QGVAR(hintIDD) = (_this select 0);
         onLoad = QUOTE([(_this select 0)] call FUNC(_showHintBox));
         class controlsBackground {
             class GVAR(CycleDialogBackgroundYellow) {
