@@ -1,7 +1,8 @@
 #define COMPONENT api
-
 #include "\idi\acre\addons\main\script_mod.hpp"
-//#define DEBUG_ENABLED_API
+
+// #define DEBUG_ENABLED_API
+// #define RECOMPILE
 
 #ifdef DEBUG_ENABLED_API
     #define DEBUG_MODE_FULL

@@ -1,6 +1,7 @@
 #define COMPONENT sys_data
-// #define DEBUG_MODE_FULL
 #include "\idi\acre\addons\main\script_mod.hpp"
+
+// #define DEBUG_MODE_FULL
 
 #ifdef DEBUG_ENABLED_SYS_DATA
     #define DEBUG_MODE_FULL

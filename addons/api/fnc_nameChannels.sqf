@@ -23,14 +23,15 @@ FUNC(_channelNamesForPresets) = {
     TRACE_1("enter", _this);
     if !(_presetNames isEqualTo []) then {
         {
-            // _x = channel name, _forEachIndex = channel number
             if (_x != "") then {
+                private _channelName = _x;
+                private _channelNumber = _forEachIndex;
                 {
                     //["ACRE_PRC117F",["default3"],10,"label","SUPPORT"]
                     #ifdef DEBUG_MODE_FULL
-                        diag_log text format ["%1, %2, %3, %4, %5", (_x select 0), (_x select 1), _forEachIndex + 1, "label", _x];
+                        diag_log text format ["%1, %2, %3, %4, %5", _x select 0, _x select 1, _channelNumber + 1, "label", _channelName];
                     #endif
-                    [_x select 0, _x select 1, _forEachIndex+1, "label", _x] call FUNC(setPresetChannelField);
+                    [_x select 0, _x select 1, _channelNumber + 1, "label", _channelName] call FUNC(setPresetChannelField);
                 } forEach _presetNames;
             };
         } forEach _channelNames;

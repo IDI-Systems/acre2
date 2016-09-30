@@ -1,100 +1,92 @@
-#ifdef DEBUG_MODE_FULL
-    #define DEFINE_FUNCTION(x) class x { file = QPATHTOF(DOUBLES(fnc,x).sqf); recompile = 1; }
-    #define DEFINE_FUNCTION_MODULE(x) class x { file = QPATHTOF(modules\x.sqf); recompile = 1; }
-#else
-    #define DEFINE_FUNCTION(x) class x { file = QPATHTOF(DOUBLES(fnc,x).sqf); }
-    #define DEFINE_FUNCTION_MODULE(x) class x { file = QPATHTOF(modules\x.sqf); }
-#endif
-
 class CfgFunctions {
     class ADDON {
         class General {
-            DEFINE_FUNCTION(isInitialized);
+            PATHTO_FNC(isInitialized);
 
-            DEFINE_FUNCTION(setupMission);
+            PATHTO_FNC(setupMission);
 
-            DEFINE_FUNCTION(getMultiPushToTalkAssignment);
-            DEFINE_FUNCTION(setMultiPushToTalkAssignment);
+            PATHTO_FNC(getMultiPushToTalkAssignment);
+            PATHTO_FNC(setMultiPushToTalkAssignment);
 
-            DEFINE_FUNCTION(setPTTDelay);
-            DEFINE_FUNCTION(getPTTDelay);
+            PATHTO_FNC(setPTTDelay);
+            PATHTO_FNC(getPTTDelay);
 
-            DEFINE_FUNCTION(setRevealToAI);
-            DEFINE_FUNCTION(getRevealToAI);
+            PATHTO_FNC(setRevealToAI);
+            PATHTO_FNC(getRevealToAI);
 
-            DEFINE_FUNCTION(setLossModelScale);
-            DEFINE_FUNCTION(setFullDuplex);
-            DEFINE_FUNCTION(setInterference);
-            DEFINE_FUNCTION(ignoreAntennaDirection);
+            PATHTO_FNC(setLossModelScale);
+            PATHTO_FNC(setFullDuplex);
+            PATHTO_FNC(setInterference);
+            PATHTO_FNC(ignoreAntennaDirection);
 
-            DEFINE_FUNCTION(isRadio);
-            DEFINE_FUNCTION(hasRadio);
-            DEFINE_FUNCTION(hasKindOfRadio);
-            DEFINE_FUNCTION(isKindOf);
+            PATHTO_FNC(isRadio);
+            PATHTO_FNC(hasRadio);
+            PATHTO_FNC(hasKindOfRadio);
+            PATHTO_FNC(isKindOf);
 
-            DEFINE_FUNCTION(getBaseRadio);
-            DEFINE_FUNCTION(isBaseRadio);
-            DEFINE_FUNCTION(hasBaseRadio);
-            DEFINE_FUNCTION(getRadioByType);
+            PATHTO_FNC(getBaseRadio);
+            PATHTO_FNC(isBaseRadio);
+            PATHTO_FNC(hasBaseRadio);
+            PATHTO_FNC(getRadioByType);
 
-            DEFINE_FUNCTION(setItemRadioReplacement);
-            DEFINE_FUNCTION(getDisplayName);
+            PATHTO_FNC(setItemRadioReplacement);
+            PATHTO_FNC(getDisplayName);
 
-            DEFINE_FUNCTION(setGlobalVolume);
-            DEFINE_FUNCTION(getGlobalVolume);
+            PATHTO_FNC(setGlobalVolume);
+            PATHTO_FNC(getGlobalVolume);
         };
 
         class Radios {
-            DEFINE_FUNCTION(getAllRadios);
-            DEFINE_FUNCTION(getCurrentRadio);
-            DEFINE_FUNCTION(setCurrentRadio);
-            DEFINE_FUNCTION(getCurrentRadioList);
+            PATHTO_FNC(getAllRadios);
+            PATHTO_FNC(getCurrentRadio);
+            PATHTO_FNC(setCurrentRadio);
+            PATHTO_FNC(getCurrentRadioList);
 
-            DEFINE_FUNCTION(setRadioChannel);
-            DEFINE_FUNCTION(getRadioChannel);
+            PATHTO_FNC(setRadioChannel);
+            PATHTO_FNC(getRadioChannel);
 
-            DEFINE_FUNCTION(setCurrentRadioChannelNumber);
-            DEFINE_FUNCTION(getCurrentRadioChannelNumber);
+            PATHTO_FNC(setCurrentRadioChannelNumber);
+            PATHTO_FNC(getCurrentRadioChannelNumber);
         };
         class Presets {
-            DEFINE_FUNCTION(setPreset);
-            DEFINE_FUNCTION(getPreset);
-            DEFINE_FUNCTION(copyPreset);
+            PATHTO_FNC(setPreset);
+            PATHTO_FNC(getPreset);
+            PATHTO_FNC(copyPreset);
 
-            DEFINE_FUNCTION(setPresetData);
-            DEFINE_FUNCTION(getPresetData);
+            PATHTO_FNC(setPresetData);
+            PATHTO_FNC(getPresetData);
 
-            DEFINE_FUNCTION(setPresetChannelData);
-            DEFINE_FUNCTION(getPresetChannelData);
+            PATHTO_FNC(setPresetChannelData);
+            PATHTO_FNC(getPresetChannelData);
 
-            DEFINE_FUNCTION(setPresetChannelField);
-            DEFINE_FUNCTION(getPresetChannelField);
+            PATHTO_FNC(setPresetChannelField);
+            PATHTO_FNC(getPresetChannelField);
         };
         class Speaking {
-            DEFINE_FUNCTION(isBroadcasting);
-            DEFINE_FUNCTION(isSpeaking);
+            PATHTO_FNC(isBroadcasting);
+            PATHTO_FNC(isSpeaking);
 
-            DEFINE_FUNCTION(getRadioSpatial);
-            DEFINE_FUNCTION(setRadioSpatial);
+            PATHTO_FNC(getRadioSpatial);
+            PATHTO_FNC(setRadioSpatial);
 
-            DEFINE_FUNCTION(isSpectator);
-            DEFINE_FUNCTION(setSpectator);
+            PATHTO_FNC(isSpectator);
+            PATHTO_FNC(setSpectator);
         };
         class DirectVoiceCurve {
-            DEFINE_FUNCTION(getSelectableVoiceCurve);
-            DEFINE_FUNCTION(setSelectableVoiceCurve);
+            PATHTO_FNC(getSelectableVoiceCurve);
+            PATHTO_FNC(setSelectableVoiceCurve);
 
-            DEFINE_FUNCTION(setCurveModel);
-            DEFINE_FUNCTION(setCurveModelScale);
+            PATHTO_FNC(setCurveModel);
+            PATHTO_FNC(setCurveModelScale);
         };
         class Babel {
-            DEFINE_FUNCTION(babelSetupMission);
-            DEFINE_FUNCTION(babelSetSpokenLanguages);
-            DEFINE_FUNCTION(babelGetLanguageId);
-            DEFINE_FUNCTION(babelGetLanguageName);
-            DEFINE_FUNCTION(babelGetSpeakingLanguageId);
-            DEFINE_FUNCTION(babelSetSpeakingLanguage);
-            DEFINE_FUNCTION(babelAddLanguageType);
+            PATHTO_FNC(babelSetupMission);
+            PATHTO_FNC(babelSetSpokenLanguages);
+            PATHTO_FNC(babelGetLanguageId);
+            PATHTO_FNC(babelGetLanguageName);
+            PATHTO_FNC(babelGetSpeakingLanguageId);
+            PATHTO_FNC(babelSetSpeakingLanguage);
+            PATHTO_FNC(babelAddLanguageType);
         };
     };
 
@@ -102,9 +94,9 @@ class CfgFunctions {
     // Module Functions
     class AcreModules {
         class GVAR(mission_setup) {
-            DEFINE_FUNCTION_MODULE(basicMissionSetup);
-            DEFINE_FUNCTION_MODULE(difficultySettings);
-            DEFINE_FUNCTION_MODULE(nameChannels);
+            PATHTO_FNC(basicMissionSetup);
+            PATHTO_FNC(difficultySettings);
+            PATHTO_FNC(nameChannels);
         };
     };
 };
