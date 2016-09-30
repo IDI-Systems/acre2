@@ -21,7 +21,7 @@
 
 GVAR(oldSpectators) = [];
 GVAR(lastSpectate) = false;
-GVAR(_waitFullSend) = COMPAT_diag_tickTime;
+GVAR(_waitFullSend) = diag_tickTime;
 GVAR(_fullListTime) = true;
 
 GVAR(oldPlayerIdList) = [];
@@ -31,7 +31,7 @@ DFUNC(mutingPFHLoop) = {
     if(time == 0) exitWith {
         true;
     };
-    if(COMPAT_diag_tickTime > GVAR(_waitFullSend)) then {
+    if(diag_tickTime > GVAR(_waitFullSend)) then {
         GVAR(_fullListTime) = true;
     };
     private _mutingParams = "";
@@ -120,7 +120,7 @@ DFUNC(mutingPFHLoop) = {
 
     GVAR(muting) = _muting;
     if(GVAR(_fullListTime)) then {
-        GVAR(_waitFullSend) = COMPAT_diag_tickTime + FULL_SEND_INTERVAL;
+        GVAR(_waitFullSend) = diag_tickTime + FULL_SEND_INTERVAL;
         GVAR(_fullListTime) = false;
     };
     if(_mutingParams != "") then {

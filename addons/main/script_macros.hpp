@@ -15,18 +15,6 @@
 };
 #endif
 
-/**
-ARMA2/VBS2 COMPAT SECTION
-**/
-
-#include "\idi\acre\addons\game\script_lib.hpp"
-#include "\idi\acre\addons\game\script_command_replace.hpp"
-
-
-/**
-END ARMA2/VBS2 COMPAT SECTION
-**/
-
 // local event handler naming macro
 #define ACRE_EVENT(x) QUOTE(acre_##x)
 
@@ -86,23 +74,23 @@ END ARMA2/VBS2 COMPAT SECTION
 
 #define ACRE_HINT(title,line1,line2)    [title, line1, line2] call acre_sys_list_fnc_displayHint;
 
-#define ACRE_DEBUG_LOG(message,value1)                                    ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4%5", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), toStr[10]];\
-                                                                        player sideChat format["%1 %2:%3 %4", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message)];
+#define ACRE_DEBUG_LOG(message,value1)                                    ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4%5", diag_tickTime, __FILE__, __LINE__, QUOTE(message), toStr[10]];\
+                                                                        player sideChat format["%1 %2:%3 %4", diag_tickTime, __FILE__, __LINE__, QUOTE(message)];
 
-#define ACRE_DEBUG_TRACE1(message,value1)                                ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5%6", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, toStr[10]];\
-                                                                        player sideChat format["%1 %2:%3 %4%5", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1];
+#define ACRE_DEBUG_TRACE1(message,value1)                                ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5%6", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, toStr[10]];\
+                                                                        player sideChat format["%1 %2:%3 %4%5", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1];
 
-#define ACRE_DEBUG_TRACE2(message,value1,value2)                        ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6%7", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, toStr[10]];\
-                                                                        player sideChat format["%1 %2:%3 %4 %5 %6", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2];
+#define ACRE_DEBUG_TRACE2(message,value1,value2)                        ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6%7", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, toStr[10]];\
+                                                                        player sideChat format["%1 %2:%3 %4 %5 %6", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2];
 
-#define ACRE_DEBUG_TRACE3(message,value1,value2,value3)                    ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7%8", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, toStr[10]];\
-                                                                        player sideChat format["%1 %2:%3 %4 %5 %6 %7", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3];
+#define ACRE_DEBUG_TRACE3(message,value1,value2,value3)                    ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7%8", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, toStr[10]];\
+                                                                        player sideChat format["%1 %2:%3 %4 %5 %6 %7", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3];
 
-#define ACRE_DEBUG_TRACE4(message,value1,value2,value3,value4)            ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7 %8%9", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, toStr[10]];\
-                                                                        player sideChat format["%1 %2:%3 %4 %5 %6 %7 %8", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4];
+#define ACRE_DEBUG_TRACE4(message,value1,value2,value3,value4)            ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7 %8%9", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, toStr[10]];\
+                                                                        player sideChat format["%1 %2:%3 %4 %5 %6 %7 %8", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4];
 
-#define ACRE_DEBUG_TRACE5(message,value1,value2,value3,value4,value5)    ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7 %8 %9%10", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, value5, toStr[10]];\
-                                                                        player sideChat format["%1 %2:%3 %4 %5 %6 %7 %8 %9", COMPAT_diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, value5];
+#define ACRE_DEBUG_TRACE5(message,value1,value2,value3,value4,value5)    ACRE_DEBUG_STR = ACRE_DEBUG_STR + format["%1 %2:%3 %4 %5 %6 %7 %8 %9%10", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, value5, toStr[10]];\
+                                                                        player sideChat format["%1 %2:%3 %4 %5 %6 %7 %8 %9", diag_tickTime, __FILE__, __LINE__, QUOTE(message), value1, value2, value3, value4, value5];
 
 
 #define ACRE_DEBUG_FLUSH                copyToClipboard ACRE_DEBUG_STR;\
@@ -120,12 +108,6 @@ END ARMA2/VBS2 COMPAT SECTION
 
 #define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
 
-
-/*
-#define HASH_CREATE                    [] call { diag_log text format["%1 %2:%3 HASH CREATED", diag_tickTime, __FILE__, __LINE__]; ([] call LIB_fnc_hashCreate) }
-#define HASH_SET(hash, key, val)    [hash, key, val] call { diag_log text format["%1 %2:%3 HASH SET hash=%4, key=%5 val=%6", diag_tickTime, __FILE__, __LINE__, #hash, key, val]; (_this call LIB_fnc_hashSet) }
-#define HASH_GET(hash, key)            [hash, key] call { diag_log text format["%1 %2:%3 HASH GET hash=%4, key=%5", diag_tickTime, __FILE__, __LINE__, #hash, key]; (_this call LIB_fnc_hashGet) }
-*/
 #define TS3ID2PLAYER(id)    [id] call acre_sys_core_fnc_ts3idToPlayer
 
 
@@ -160,7 +142,7 @@ Antenna Defines
 
 #define ACREALIVE(obj)        (alive obj)
 
-#define REMOTEDEBUGMSG(msg)    ["acre_sys_server_remoteDebugMsg", msg] call LIB_fnc_globalEvent;
+#define REMOTEDEBUGMSG(msg)    ["acre_sys_server_remoteDebugMsg", msg] call CBA_fnc_globalEvent;
 
 #define LOAD_SOUND(className)    [QUOTE(className)] call acre_sys_sounds_fnc_loadSound;
 
@@ -186,14 +168,9 @@ Antenna Defines
 #define SCRATCH_GET(radioId, key)    ([radioId, key] call acre_sys_data_fnc_getScratchData)
 #define SCRATCH_GET_DEF(radioId, key, defaultVal)    ([radioId, key, defaultVal] call acre_sys_data_fnc_getScratchData)
 
-#define GET_TS3ID(object)    (object call { private _ret = (_this getVariable [QUOTE(GVAR(ts3id)), -1]); if(_ret == -1) then { COMPAT_diag_log text format["%1 has no TS3 ID at %2:%3", _this, __FILE__, __LINE__]; }; _ret })
-/*
-#define HASH_CREATE                    ([] call CALLSTACK(LIB_fnc_hashCreate))
-#define HASH_SET(hash, key, val)    ([hash, key, val, __FILE__, __LINE__] call CALLSTACK(LIB_fnc_hashSet))
-#define HASH_GET(hash, key)            ([hash, key, __FILE__, __LINE__] call CALLSTACK(LIB_fnc_hashGet))
-#define HASH_REM(hash, key)            ([hash, key, __FILE__, __LINE__] call CALLSTACK(LIB_fnc_hashRem))
-#define HASH_HASKEY(hash, key)        ([hash, key, __FILE__, __LINE__] call CALLSTACK(LIB_fnc_hashHasKey))
-*/
+#define GET_TS3ID(object)    (object call { private _ret = (_this getVariable [QUOTE(GVAR(ts3id)), -1]); if(_ret == -1) then { diag_log text format["%1 has no TS3 ID at %2:%3", _this, __FILE__, __LINE__]; }; _ret })
+
+
 #define HASH_CREATE (call acre_lib_fnc_fastHashCreate)
 #define HASH_DELETE(hash) (FAST_HASH_TO_DELETE pushBack hash)
 #define HASH_HASKEY(hash, key) (!(isNil {hash getVariable key}))
@@ -202,13 +179,6 @@ Antenna Defines
 #define HASH_REM(hash, key) (hash setVariable [key, nil])
 #define HASH_COPY(hash) (hash call acre_lib_fnc_fastHashCopy)
 #define HASH_KEYS(hash) (hash call acre_lib_fnc_fastHashKeys)
-/*
-#define HASHLIST_CREATELIST(keys)                ([keys] call CALLSTACK(LIB_fnc_hashListCreateList))
-#define HASHLIST_CREATEHASH(hashList)            ([hashList] call CALLSTACK(LIB_fnc_hashListCreateHash))
-#define HASHLIST_SELECT(hashList, index)        ([hashList, index, __FILE__, __LINE__] call LIB_fnc_hashListSelect)
-#define HASHLIST_SET(hashList, index, value)    ([hashList, index, value, __FILE__, __LINE__] call LIB_fnc_hashListSet)
-#define HASHLIST_PUSH(hashList, value)            ([hashList, value, __FILE__, __LINE__] call LIB_fnc_hashListPush)
-*/
 
 #define HASHLIST_CREATELIST(keys)                []
 #define HASHLIST_CREATEHASH(hashList)            HASH_CREATE

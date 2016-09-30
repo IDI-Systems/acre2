@@ -63,7 +63,7 @@ if(_player == acre_player) then {
                     _fnc = {
                         [(_this select 0)] call EFUNC(sys_radio,setActiveRadio);
                     };
-                    [_fnc, [_class]] call EFUNC(sys_core,delayFrame);
+                    [_fnc, [_class]] call CBA_fnc_execNextFrame;
                 } else {
                     [_class] call EFUNC(sys_radio,setActiveRadio);
                 };
@@ -77,5 +77,5 @@ if(_player == acre_player) then {
         diag_log text format["%1 ACRE Warning: Radio ID %2 was returned for a non-existent baseclass (%3) in inventory, possibly removed by a gear script while requesting ID: %4", diag_tickTime, _class, _baseRadio, _weapons];
     };
     GVAR(requestingNewId) = false;
-    ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(LIB_fnc_globalEvent);
+    ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_globalEvent);
 };

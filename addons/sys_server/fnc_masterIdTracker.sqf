@@ -176,7 +176,7 @@ if(GVAR(doFullSearch)) then {
             TRACE_1("calling updateIdObjects", _toUpdate);
             acre_player sideChat "Calling updateIdObjects";
         #endif
-        ["acre_updateIdObjects", _toUpdate] call CALLSTACK(LIB_fnc_globalEvent);
+        ["acre_updateIdObjects", _toUpdate] call CALLSTACK(CBA_fnc_globalEvent);
     };
     GVAR(masterIdTable) = _idTable;
     GVAR(nextSearchTime) = diag_tickTime + 10;

@@ -86,12 +86,10 @@ private _result = false;
     _unit setVariable[QUOTE(GVAR(languageId)), _languageId];
     TRACE_1("unit pos", getPosASL _unit);
     private _isMuted = IS_MUTED(_unit);
-    #ifdef PLATFORM_A3
     _unit setRandomLip true;
-    #endif
     if(!_isMuted) then {
         TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_onRadio,(_unit distance acre_player));
-        _unit setVariable[QUOTE(GVAR(lastSpeakingEventTime)), COMPAT_diag_tickTime, false];
+        _unit setVariable[QUOTE(GVAR(lastSpeakingEventTime)), diag_tickTime, false];
         if(_onRadio == 1) then {
             if([_radioId] call EFUNC(sys_radio,radioExists)) then {
                 PUSH(GVAR(speakers),_unit);

@@ -26,7 +26,7 @@ if(_keyIndex != -1) then {
     (GVAR(radioIdMap) select 1) set[_keyIndex, _newIds];
     GVAR(masterIdList) = GVAR(masterIdList) - [_radioId];
     GVAR(markedForGC) = GVAR(markedForGC) - [_radioId];
-    [QGVAR(clientGCRadio), [_radioId]] call CALLSTACK(LIB_fnc_globalEvent);
+    [QGVAR(clientGCRadio), [_radioId]] call CALLSTACK(CBA_fnc_globalEvent);
     HASH_SET(acre_sys_data_radioData, _radioId, nil);
     HASH_SET(GVAR(markedForGCData), _radioId, nil);
 } else {

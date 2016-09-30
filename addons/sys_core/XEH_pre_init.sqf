@@ -8,8 +8,6 @@ PREP(aliveMonitor);
 PREP(callExt);
 PREP(canUnderstand);
 PREP(cycleLanguage);
-PREP(delayFrame);
-PREP(delayFramePFH);
 PREP(findOcclusion);
 PREP(getAlive);
 PREP(getClientIdLoop);
