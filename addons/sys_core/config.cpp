@@ -5,10 +5,11 @@ class CfgPatches {
         name = COMPONENT_NAME;
         units[] = {"ACRE_TestLoader"};
         weapons[] = {};
-        requiredVersion = 0.1;
+        requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_main", "acre_sys_rpc", "acre_sys_data"};
-        AUTHOR;
-        version = VERSION;
+        author = ECSTRING(main,Author);
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 #include "cfgEventhandlers.hpp"

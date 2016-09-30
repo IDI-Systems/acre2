@@ -34,7 +34,7 @@ DFUNC(monitorRadios_PFH) = {
     if(time < 1) exitWith { };
     if((side group acre_player) == sideLogic) exitWith {};
 
-    if(alie acre_player) then {
+    if(alive acre_player) then {
         private _currentUniqueItems = [];
         private _weapons = [acre_player] call EFUNC(lib,getGear);
 

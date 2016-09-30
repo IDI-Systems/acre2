@@ -7,10 +7,10 @@ class CfgPatches {
         weapons[] = {RADIO_WEAPON_LIST_STR(ACRE_SEM52SL)};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_sys_radio"};
-        version = VERSION;
-        AUTHOR;
+        author = ECSTRING(main,Author);
         authors[] = {"Raspu"};
-        authorUrl = URL;
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 

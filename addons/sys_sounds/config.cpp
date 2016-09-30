@@ -6,10 +6,10 @@ class CfgPatches {
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_main", "acre_sys_rpc", "acre_sys_core", "acre_sys_io"};
-        version = VERSION;
-        AUTHOR;
+        author = ECSTRING(main,Author);
         authors[] = {"Jaynus", "Nou"};
-        authorUrl = URL;
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 

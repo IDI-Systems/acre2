@@ -7,8 +7,9 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_main", "acre_sys_components"};
-        version = VERSION;
-        AUTHOR;
+        author = ECSTRING(main,Author);
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 

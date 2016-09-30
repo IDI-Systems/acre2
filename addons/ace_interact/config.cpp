@@ -3,14 +3,14 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main", "acre_sys_core", "acre_api"};
         units[] = {};
         weapons[] = {};
-        version = VERSION;
-        AUTHOR;
+        requiredVersion = REQUIRED_VERSION;
+        requiredAddons[] = {"acre_main", "acre_sys_core", "acre_api"};
+        author = ECSTRING(main,Author);
         authors[] = {"Snippers"};
-        authorUrl = URL;
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 

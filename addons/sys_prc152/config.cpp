@@ -7,10 +7,10 @@ class CfgPatches {
         weapons[] = {RADIO_WEAPON_LIST_STR(ACRE_PRC152)};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_sys_radio", "acre_sys_fonts"};
-        version = VERSION;
-        AUTHOR;
+        author = ECSTRING(main,Author);
         authors[] = {"Jaynus", "Nou"};
-        authorUrl = URL;
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 
