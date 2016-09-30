@@ -238,7 +238,7 @@ DFUNC(speakingLoop) = {
                     // if(!(_unit getVariable[QUOTE(GVAR(isDisabled)), false]) ) then {
                         // _sayTime = _unit getVariable [QUOTE(GVAR(sayTime)), time-2];
                         // if((abs (time-_sayTime)) >= 1) then {
-                            // _unit COMPAT_say3d "acre_lip_sound";
+                            // _unit say "acre_lip_sound";
                             // _unit setVariable [QUOTE(GVAR(sayTime)), time, false];
                         // };
                     // };

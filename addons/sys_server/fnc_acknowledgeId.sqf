@@ -25,7 +25,7 @@ if((GVAR(unacknowledgedIds) find _class) != -1) then {
                 _class = _this;
                 GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];
             };
-            [_fnc, _class] call EFUNC(sys_core,delayFrame);
+            [_fnc, _class] call CBA_fnc_execNextFrame;
         };
     } else {
         GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];

@@ -31,7 +31,7 @@ DFUNC(connectionFnc) = {
                 if(time > 15) then {
                     if(isMultiplayer) then {
                         private _warning = "WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!";
-                        COMPAT_hintSilent _warning;
+                        hintSilent _warning;
                         GVAR(connectCount) = GVAR(connectCount) + 1;
                         if(GVAR(connectCount) > 15) then {
                             diag_log text format["Pipe Error: %1", GVAR(pipeCode)];
@@ -41,7 +41,7 @@ DFUNC(connectionFnc) = {
                     LOG("Client not responding, trying again.");
                 };
                 GVAR(serverStarted) = false;
-                //diag_log text format["%1 ACRE: Pipe failed opening: %2", COMPAT_diag_tickTime, GVAR(pipeCode)];
+                //diag_log text format["%1 ACRE: Pipe failed opening: %2", diag_tickTime, GVAR(pipeCode)];
             } else {
                 LOG("PIPE OPENED!");
                 if(GVAR(hasErrored) && isMultiplayer) then {
@@ -50,7 +50,7 @@ DFUNC(connectionFnc) = {
                     hint format["ACRE CONNECTED"];
                 };
                 GVAR(hasErrored) = false;
-                diag_log text format["%1 ACRE: Pipe opened.", COMPAT_diag_tickTime];
+                diag_log text format["%1 ACRE: Pipe opened.", diag_tickTime];
                 GVAR(serverStarted) = true;
             };
         };

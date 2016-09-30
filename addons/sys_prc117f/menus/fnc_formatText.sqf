@@ -30,20 +30,20 @@ if(count _this > 1) then {
 };
 
 // Check for channel number formats
-private _result = [_text, "$ch"] call LIB_fnc_find;
+private _result = [_text, "$ch"] call CBA_fnc_find;
 private _iter = 0;
 while { _result != -1 && _iter < 5} do {
     TRACE_2("FOUND CHANNEL VALUE REPLACE", _text, _result);
 
-    private _dash = [_text, "-", _result] call LIB_fnc_find;
-    private _space = [_text, " ", _result] call LIB_fnc_find;
+    private _dash = [_text, "-", _result] call CBA_fnc_find;
+    private _space = [_text, " ", _result] call CBA_fnc_find;
     if(_dash == -1) exitWith {};
     if(_space == -1) then { _space = count (toArray _text); };
 
     TRACE_4("BALLS", _text, _result, _dash, _space);
-    private _channelNumber = (parseNumber ([_text, _result+3, (_dash - (_result+3))] call LIB_fnc_substring)) - 1;
-    private _key = [_text, _dash+1, (_space - _dash)] call LIB_fnc_substring;
-    private _replacementValue = [_text, _result, (_space - _result)] call LIB_fnc_substring;
+    private _channelNumber = (parseNumber ([_text, _result+3, (_dash - (_result+3))] call CBA_fnc_substring)) - 1;
+    private _key = [_text, _dash+1, (_space - _dash)] call CBA_fnc_substring;
+    private _replacementValue = [_text, _result, (_space - _result)] call CBA_fnc_substring;
     TRACE_3("Replacement index", _replacementValue, _channelNumber, _key);
 
     private _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
@@ -62,18 +62,18 @@ while { _result != -1 && _iter < 5} do {
     TRACE_1("DONE", _text);
 
     _iter = _iter + 1;
-    _result = [_text, "$ch"] call LIB_fnc_find;
+    _result = [_text, "$ch"] call CBA_fnc_find;
 };
 
 // Check for current channel formats
-_result = [_text, "$cch"] call LIB_fnc_find;
+_result = [_text, "$cch"] call CBA_fnc_find;
 if(_result != -1) then {
     // Do replacements from current channel next
     private _channelNumber = ["getCurrentChannel"] call EFUNC(sys_data,guiDataEvent);
     private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
 
     // Replace channel number if its there
-    _result = [_text, "$cch-number"] call LIB_fnc_find;
+    _result = [_text, "$cch-number"] call CBA_fnc_find;
     if(_result != -1) then {
         _text = [_text, "$cch-number", ([_channelNumber+1, 2] call CBA_fnc_formatNumber)] call CBA_fnc_replace;
     };
@@ -83,7 +83,7 @@ if(_result != -1) then {
         private _repStr = "$cch-" + _x;
         private _value = [ _x, HASH_GET(_channel, _x)] call FUNC(formatChannelValue);
         TRACE_3("Calling replace", _text, _repStr, _value);
-        _result = [_text, _x] call LIB_fnc_find;
+        _result = [_text, _x] call CBA_fnc_find;
         if(_result != -1) then {
             _text = [_text, _repStr, _value] call CBA_fnc_replace;
         };

@@ -98,7 +98,7 @@ DFUNC(monitorRadios_PFH) = {
                 };
 
 
-                ["acre_getRadioId", [acre_player, _radio, QUOTE(GVAR(returnRadioId))]] call CALLSTACK(LIB_fnc_globalEvent);
+                ["acre_getRadioId", [acre_player, _radio, QUOTE(GVAR(returnRadioId))]] call CALLSTACK(CBA_fnc_globalEvent);
 
             };
             _isUnique = getNumber(configFile >> "CfgWeapons" >> _radio >> "acre_isUnique");
@@ -177,7 +177,7 @@ DFUNC(checkServerDesyncBug) = {
             case 1: {
                 if("ACRE_TestGearDesyncItem" in (items acre_player)) then {
                     ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE = 2;
-                    ["acre_checkServerGearDesync", [acre_player]] call CALLSTACK(LIB_fnc_globalEvent);
+                    ["acre_checkServerGearDesync", [acre_player]] call CALLSTACK(CBA_fnc_globalEvent);
                 };
             };
             case 2: {

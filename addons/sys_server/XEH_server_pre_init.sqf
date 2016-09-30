@@ -54,23 +54,23 @@ DFUNC(doAddComponentCargo) = {
                 _container addItemCargoGlobal [_uniqueComponent, 1];
                 [_uniqueComponent, "initializeComponent", [_type, _preset]] call EFUNC(sys_data,dataEvent);
                 if(_callBack != "") then {
-                    [_callBack, [_uniqueComponent]+_this] call CALLSTACK(LIB_fnc_globalEvent);
+                    [_callBack, [_uniqueComponent]+_this] call CALLSTACK(CBA_fnc_globalEvent);
                 };
                 _fnc = {
                     _uniqueComponent = _this;
                     GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_uniqueComponent];
                 };
-                [_fnc, _uniqueComponent] call EFUNC(sys_core,delayFrame);
+                [_fnc, _uniqueComponent] call CBA_fnc_execNextFrame;
                 // GVAR(waitingForIdAck) = true;
             };
         } else {
             if(_failCallback != "") then {
-                [_failCallback, _this] call CALLSTACK(LIB_fnc_globalEvent);
+                [_failCallback, _this] call CALLSTACK(CBA_fnc_globalEvent);
             };
         };
     } else {
         if(_failCallback != "") then {
-            [_failCallback, _this] call CALLSTACK(LIB_fnc_globalEvent);
+            [_failCallback, _this] call CALLSTACK(CBA_fnc_globalEvent);
         };
     };
 };

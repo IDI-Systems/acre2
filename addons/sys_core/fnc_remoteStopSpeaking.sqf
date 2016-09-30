@@ -24,9 +24,7 @@ _speakingId = parseNumber _speakingId;
     if(!isNil "_unit") then {
 
         _found = true;
-        #ifdef PLATFORM_A3
         _unit setRandomLip false;
-        #endif
         REM(GVAR(speakers),_unit);
         private _radioId = _unit getVariable[QUOTE(GVAR(currentSpeakingRadio)), ""];
         //if(ACRE_BROADCASTING_RADIOID != _radioId) then {

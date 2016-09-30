@@ -97,7 +97,7 @@ if(ACRE_AI_ENABLED && hasInterface) then {
     diag_log text format["[ACRE]: AI Detection not active"];
 };
 
-[QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(LIB_fnc_addEventHandler);
+[QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 ACRE_PLAYER_VEHICLE_CREW = [];
 //Store objects occupying crew seats, note this is empty if the player is not a crew member.
