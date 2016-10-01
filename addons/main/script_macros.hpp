@@ -30,9 +30,6 @@
 #define GUI_INTERACT_EVENT EFUNC(sys_data,guiInteractEvent)
 #define GUI_DATA_EVENT EFUNC(sys_data,guiDataEvent)
 
-#define IS_ARRAY(array) array isEqualType []
-#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
-
 
 #define ACRE_DATA_NETPRIORITY_NONE 0
 #define ACRE_DATA_NETPRIORITY_HIGH 1
@@ -79,9 +76,7 @@ Antenna Defines
     count = COUNT; \
 }
 
-
 #define REMOTEDEBUGMSG(msg) [QEGVAR(sys_server,remoteDebugMsg), msg] call CBA_fnc_globalEvent;
-
 #define LOAD_SOUND(className) [QUOTE(className)] call EFUNC(sys_sounds,loadSound);
 
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
@@ -100,13 +95,13 @@ Antenna Defines
 #endif
 
 
-
 #define SCRATCH_SET(radioId, key, val) ([radioId, key, val] call EFUNC(sys_data,setScratchData))
 #define SCRATCH_GET(radioId, key) ([radioId, key] call EFUNC(sys_data,getScratchData))
 #define SCRATCH_GET_DEF(radioId, key, defaultVal) ([radioId, key, defaultVal] call EFUNC(sys_data,getScratchData))
 
 #define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if(_ret == -1) then { WARNING_1("%1 has no TS3 ID",_this); }; _ret })
 
+#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
 
 #define HASH_CREATE (call EFUNC(lib,fastHashCreate))
 #define HASH_DELETE(hash) (FAST_HASH_TO_DELETE pushBack hash)
@@ -122,7 +117,6 @@ Antenna Defines
 #define HASHLIST_SELECT(hashList, index) (hashList select index)
 #define HASHLIST_SET(hashList, index, value) (hashList set[index, value])
 #define HASHLIST_PUSH(hashList, value) (hashList pushBack value)
-
 
 #define BASECLASS(radioId) (configName (inheritsFrom (configFile >> "CfgWeapons" >> radioId)))
 
@@ -153,4 +147,5 @@ PERFORMANCE COUNTERS
     #define DUMP_COUNTERS  /* disabled */
 #endif
 
+// Deprecation
 #define ACRE_DEPRECATED(arg1,arg2,arg3) WARNING_3("%1 is deprecated. Support will be dropped in version %2. Replaced by: %3",arg1,arg2,arg3)
