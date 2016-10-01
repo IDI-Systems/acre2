@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-     <a href="http://raceriv.com/arma2/acre/acre2_2.2.0.904.zip">
-        <img src="https://img.shields.io/badge/Version-2.2.0-blue.svg?style=flat-square" alt="ACRE2 Version">
+     <a href="http://raceriv.com/arma2/acre/acre2_2.3.0.906.zip">
+        <img src="https://img.shields.io/badge/Version-2.3.0-blue.svg?style=flat-square" alt="ACRE2 Version">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/issues">
         <img src="https://img.shields.io/github/issues-raw/IDI-Systems/acre2.svg?style=flat-square&label=Issues" alt="ACRE2 Issues">
