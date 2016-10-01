@@ -25,11 +25,12 @@ if (!isNil QGVAR(allRadios)) exitWith {
 private _classes = [];
 private _names = [];
 {
-    private _isAcre = getNumber (_x >> "isAcre"); // All radio classes have that
-    private _name = getText (_x >> "name"); // Only non-base classes have that
+    private _isRadio = getNumber (_x >> "type") == ACRE_COMPONENT_RADIO;
+    private _hasComponents = !(getArray (_x >> "defaultComponents") isEqualTo []); // Only non-base classes have that
+    private _name = getText (_x >> "name");
 
     // Has name and isAcre, assume valid radio class
-    if (_isAcre == 1 && {_name != ""}) then {
+    if (_isRadio && {_hasComponents} && {_name != ""}) then {
         _classes pushBack (configName _x);
         _names pushBack _name;
     };

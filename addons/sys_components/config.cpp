@@ -15,12 +15,12 @@ class CfgPatches {
 
 #include "CfgEventhandlers.hpp"
 
-class AcreCfgComponents {
+class CfgAcreComponents {
     class Default;
 
     class ACRE_ComponentBase {
-        simple            = false;
-        type            = ACRE_COMPONENT_GENERIC;
+        simple = false;
+        type = ACRE_COMPONENT_GENERIC;
     };
 
     class ACRE_BaseRadio : ACRE_ComponentBase {
