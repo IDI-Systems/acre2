@@ -24,11 +24,11 @@ private _fnc = {
 
     _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
     if(_onState < 0.2) then {
-        [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
     if(diag_tickTime > _time) then {
         [_radioId, _funcArgs] call _function;
-        [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
 };
 ADDPFH(_fnc, 0, ARR_3(diag_tickTime+_time, acre_sys_radio_currentRadioDialog, _endFunction));

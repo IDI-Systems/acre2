@@ -55,7 +55,7 @@ DFUNC(connectionFnc) = {
             };
         };
     } else {
-        [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
     true
 };

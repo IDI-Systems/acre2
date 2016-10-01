@@ -3,7 +3,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.01;
-        requiredAddons[] = { "A3_Weapons_F", "Extended_EventHandlers", "CBA_MAIN"  };
+        requiredAddons[] = { "A3_Weapons_F", "Extended_EventHandlers", "CBA_MAIN", "CBA_common" };
         author = "ACRE2 Team";
     };
 };

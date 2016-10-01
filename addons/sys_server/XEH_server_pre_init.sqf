@@ -32,7 +32,6 @@ DVAR(ACRE_SPECTATORS_LIST) = [];
 GVAR(masterIdTable) = HASH_CREATE;
 GVAR(unacknowledgedIds) = [];
 GVAR(doFullSearch) = false;
-GVAR(fullSearchRunning) = false;
 GVAR(waitingForIdAck) = false;
 GVAR(nextSearchTime) = diag_tickTime + 5;
 

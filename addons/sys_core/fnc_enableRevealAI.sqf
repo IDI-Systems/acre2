@@ -70,7 +70,7 @@ DFUNC(monitorAI_PFH) = {
     } forEach _nearUnits;
 
     if(!ACRE_AI_ENABLED) then {
-        [(_this select 1)] call EFUNC(sys_sync,perFrame_remove);
+        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
 };
 
