@@ -31,7 +31,7 @@ if((count ACRE_SPOKEN_LANGUAGES) > 1) then {
         //@TODO: This is an uber hack, should probably be set up as a TS event.
         //Basically we update globally a locally set object variable from the
         //start speaking event when they cycle languages while talking.
-        acre_player setVariable [QUOTE(GVAR(languageId)), _languageId, true];
+        acre_player setVariable [QGVAR(languageId), _languageId, true];
     };
 } else {
     if((count ACRE_SPOKEN_LANGUAGES) == 1) then {

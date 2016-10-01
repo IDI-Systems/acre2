@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-private _display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
+private _display = uiNamespace getVariable QGVAR(currentDisplay);
 private _flashingText = SCRATCH_GET_DEF(GVAR(currentRadioId), "flashingText", []);
 private _flashingState = SCRATCH_GET_DEF(GVAR(currentRadioId), "flashingTextState", false);
 private _color = [0,0,0,1];

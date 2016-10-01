@@ -37,11 +37,11 @@ private _searchFunction = {
                     private _componentClass = configFile >> "CfgAcreComponents" >> _connectedComponent;
                     private _componentSimple = getNumber(_componentClass >> "simple");
                     if(_componentSimple == 1) then {
-                        PUSH(_returnTree, ARR_3(_connectedComponent, _connectorIndex, []));
+                        PUSH(_returnTree, [ARR_3(_connectedComponent,_connectorIndex,[])]);
                     } else {
                         if(!(_connectedComponent in _searchedComponents)) then {
                             private _ret = [_connectedComponent] call _searchFunction;
-                            PUSH(_returnTree, ARR_3(_connectedComponent, _connectorIndex, _ret));
+                            PUSH(_returnTree, [ARR_3(_connectedComponent,_connectorIndex,_ret)]);
                         };
                     };
                 };

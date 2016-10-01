@@ -16,9 +16,9 @@
  */
 #include "script_component.hpp"
 
-params["_player", "_radioId", "_radioData"];
+params ["_player", "_radioId", "_radioData"];
 
-diag_log text format["%1 ACRE ERROR: INVALID GARBAGE COLLECTION DONE ON RADIO %2 FOR acre_player %3, RESTORING ALL DATA!", diag_tickTime, _radioId, (name _player)];
+WARNING_2("Invalid garbage collection done on radio %1 for player %2! Restoring all data!",_radioId,name _player);
 
 private _baseRadio = configName(inheritsFrom (configFile >> "CfgWeapons" >> _radioId));
 private _idNumber = getNumber(configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
@@ -32,7 +32,7 @@ if(_key != -1) then {
     PUSH(GVAR(masterIdList), tolower(_radioId));
     HASH_SET(acre_sys_data_radioData, tolower(_radioId), _radioData);
 
-    [QGVAR(restoreInvalidGCData), [_this select 1, _this select 2]] call CALLSTACK(LIB_fnc_globalEvent);
+    [QGVAR(restoreInvalidGCData), [_this select 1, _this select 2]] call CALLSTACK(CBA_fnc_globalEvent);
 } else {
-    diag_log text format["%1 ACRE ERROR: LOOKING TO RESTORE TYPE %2, COULD NOT FIND!", diag_tickTime, _radioId];
+    WARNING_1("Looking to restore type %1. Could not find!",_radioId);
 };

@@ -23,12 +23,12 @@ SCRATCH_SET(_radioId, "currentTransmissions", []);
 
 
 //Radio Settings
-HASH_SET(_radioData,"volume",1);                                //0-1
-HASH_SET(_radioData,"function",2);                              //0 - OFF, 1 - ON, 2 - SQUELCH, 3 - RETRANS, 4 - LITE (Temp)
-HASH_SET(_radioData,"radioOn",1);                                //0 - OFF, 1 - ON
-HASH_SET(_radioData,"band",0);                                    //{0,1}
-HASH_SET(_radioData,"currentPreset",ARR_2(ARR_2(0,0),ARR_2(0,0))); //Array of Presetarrays (KnobPositions)
-HASH_SET(_radioData,"currentChannel",ARR_2(0,0));
+HASH_SET(_radioData,"volume",1); //0-1
+HASH_SET(_radioData,"function",2); //0 - OFF, 1 - ON, 2 - SQUELCH, 3 - RETRANS, 4 - LITE (Temp)
+HASH_SET(_radioData,"radioOn",1); //0 - OFF, 1 - ON
+HASH_SET(_radioData,"band",0); //{0,1}
+HASH_SET(_radioData,"currentPreset",[ARR_2([ARR_2(0,0)],[ARR_2(0,0)])]); //Array of Presetarrays (KnobPositions)
+HASH_SET(_radioData,"currentChannel",[ARR_2(0,0)]);
 
 
 //Common Channel Settings

@@ -12,11 +12,11 @@
  * Example:
  * ["ACRE_PRC148_ID_1","description"] call acre_api_fnc_mapChannelFieldName;
  *
- * Deprecated
+ * Public: No
  */
 #include "script_component.hpp"
 
-params["_radioId", "_fieldName"];
+params ["_radioId", "_fieldName"];
 
 TRACE_1("CALLING", "");
 private _baseRadio = [_radioId] call FUNC(getBaseRadio);

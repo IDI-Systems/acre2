@@ -21,7 +21,7 @@
 
 GVAR(oldSpectators) = [];
 GVAR(lastSpectate) = false;
-GVAR(_waitFullSend) = COMPAT_diag_tickTime;
+GVAR(_waitFullSend) = diag_tickTime;
 GVAR(_fullListTime) = true;
 
 GVAR(oldPlayerIdList) = [];
@@ -31,7 +31,7 @@ DFUNC(mutingPFHLoop) = {
     if(time == 0) exitWith {
         true;
     };
-    if(COMPAT_diag_tickTime > GVAR(_waitFullSend)) then {
+    if(diag_tickTime > GVAR(_waitFullSend)) then {
         GVAR(_fullListTime) = true;
     };
     private _mutingParams = "";
@@ -47,7 +47,7 @@ DFUNC(mutingPFHLoop) = {
         _x params ["_remoteTs3Id","_remoteUser"];
         if(_remoteUser != acre_player) then {
             private _muted = 0;
-            //private _remoteTs3Id = (_remoteUser getVariable QUOTE(GVAR(ts3id)));
+            //private _remoteTs3Id = (_remoteUser getVariable QGVAR(ts3id));
             //if(!(isNil "_remoteTs3Id")) then {
                 if(!(_remoteTs3Id in ACRE_SPECTATORS_LIST)) then {
                     private _isRemotePlayerAlive = [_remoteUser] call FUNC(getAlive);
@@ -66,17 +66,17 @@ DFUNC(mutingPFHLoop) = {
                         };
                         if(GVAR(_fullListTime)) then {
                             _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
-                            _remoteUser setVariable[QUOTE(GVAR(muted)), _muted, false];
+                            _remoteUser setVariable[QGVAR(muted), _muted, false];
                         } else {
                             if(((_remoteUser in GVAR(muting)) && _muted == 0) || (!(_remoteUser in GVAR(muting)) && _muted == 1)) then {
                                 _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
-                                _remoteUser setVariable[QUOTE(GVAR(muted)), _muted, false];
+                                _remoteUser setVariable[QGVAR(muted), _muted, false];
                             };
                         };
                     };
                 } else {
                     PUSH(_muting,_remoteUser);
-                    _remoteUser setVariable[QUOTE(GVAR(muted)), 1, false];
+                    _remoteUser setVariable[QGVAR(muted), 1, false];
                 };
             //};
         };
@@ -120,7 +120,7 @@ DFUNC(mutingPFHLoop) = {
 
     GVAR(muting) = _muting;
     if(GVAR(_fullListTime)) then {
-        GVAR(_waitFullSend) = COMPAT_diag_tickTime + FULL_SEND_INTERVAL;
+        GVAR(_waitFullSend) = diag_tickTime + FULL_SEND_INTERVAL;
         GVAR(_fullListTime) = false;
     };
     if(_mutingParams != "") then {

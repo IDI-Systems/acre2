@@ -119,9 +119,7 @@ if(!isNil "_currentMenu") then {
         };
     };
 } else {
-    diag_log text format["!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
-    diag_log text format["!!!!! BUTTON PRESS WITHOUT A SELECTED MENU ITEM"];
-    diag_log text format["!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+    WARNING("Button press without a selected menu item!");
 };
 
 END_COUNTER(buttonPress);

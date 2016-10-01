@@ -1,17 +1,16 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class ADDON
-    {
-        requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main", "acre_sys_core", "acre_api"};
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
-        version = VERSION;
-        AUTHOR;
+        requiredVersion = REQUIRED_VERSION;
+        requiredAddons[] = {"acre_main", "acre_sys_core", "acre_api"};
+        author = ECSTRING(main,Author);
         authors[] = {"Snippers"};
-        authorUrl = URL;
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 

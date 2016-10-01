@@ -39,4 +39,4 @@ private _fnc = {
         }
     };
 };
-ADDPFH(_fnc, 0, ARR_4(diag_tickTime+_time, acre_sys_radio_currentRadioDialog, _endFunction, _step));
+ADDPFH(_fnc, 0, [ARR_4(diag_tickTime+_time,EGVAR(sys_radio,currentRadioDialog),_endFunction,_step)]);

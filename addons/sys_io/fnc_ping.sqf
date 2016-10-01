@@ -28,7 +28,7 @@ DFUNC(pingFunc) = {
                 _ret = "ACRE2Arma" callExtension "4";
                 GVAR(runServer) = false;
                 [] spawn {
-                    diag_log text format["%1 ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.", diag_tickTime];
+                    INFO("Pipe error. No ping return, attempting to reattach named pipe.");
                     sleep 2;
                     GVAR(runserver) = true;
                     [] call FUNC(server);
@@ -38,7 +38,8 @@ DFUNC(pingFunc) = {
                 };
             };
             if(!(GVAR(runServer))) then {
-                diag_log text format["%1 ACRE: Server shutting down ping loop.", COMPAT_diag_tickTime];
+                diag_log text format["%1 ACRE: Server shutting down ping loop.", diag_tickTime];
+                INFO("Server shutting down ping loop.");
                 [(_this select 1)] call CBA_fnc_removePerFrameHandler;
             };
         };

@@ -24,7 +24,6 @@ ADDPFH(DFUNC(utilityFuncPFH), 5, []);
 [] call FUNC(aliveMonitor);
 
 
-GVAR(wrongVersionIncrease) = 0;
 DFUNC(getPluginVersion) = {
     ["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
 };

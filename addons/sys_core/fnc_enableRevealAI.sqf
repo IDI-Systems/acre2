@@ -63,7 +63,7 @@ DFUNC(monitorAI_PFH) = {
                 if(_lastRevealed + 15 < time) then {
                     TRACE_2("Calling reveal event", _curUnit, _hasRevealed);
                     _curUnit setVariable[QGVAR(lastRevealed), time, false];
-                    [QGVAR(onRevealUnit), [acre_player, _curUnit, ACRE_REVEAL_AMOUNT ] ] call CALLSTACK(LIB_fnc_globalEvent);
+                    [QGVAR(onRevealUnit), [acre_player, _curUnit, ACRE_REVEAL_AMOUNT ] ] call CALLSTACK(CBA_fnc_globalEvent);
                 };
             };
         };

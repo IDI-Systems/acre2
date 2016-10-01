@@ -36,6 +36,6 @@ private _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
 
 
 if(_radioId == acre_sys_radio_currentRadioDialog) then {
-    private _display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
+    private _display = uiNamespace getVariable QGVAR(currentDisplay);
     [_display] call FUNC(render);
 };

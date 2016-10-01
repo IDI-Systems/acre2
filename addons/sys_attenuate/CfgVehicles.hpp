@@ -1,5 +1,4 @@
 class CfgVehicles {
-#ifdef PLATFORM_A3
     class Air;
     class LandVehicle;
     class Car : LandVehicle {
@@ -205,5 +204,4 @@ class CfgVehicles {
             };
         };
     };
-#endif
 };

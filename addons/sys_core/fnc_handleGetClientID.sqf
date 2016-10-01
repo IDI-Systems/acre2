@@ -36,7 +36,7 @@ if(_playerObject == acre_player) then {
     };
     TRACE_1("SETTING TS3ID",GVAR(ts3id));
 } else {
-    _playerObject setVariable [QUOTE(GVAR(ts3id)), _newTs3Id, false];
+    _playerObject setVariable [QGVAR(ts3id), _newTs3Id, false];
 };
 
 //Ensure the incoming TS ID is pointing to the correct unit.
