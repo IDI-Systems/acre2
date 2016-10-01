@@ -1,12 +1,14 @@
 #include "script_component.hpp"
 
+// Lib - @todo put into functions in sys_core and rename to component sys_core across the board
+
 ADDON = false;
 ACRE_STACK_TRACE = [];
 ACRE_STACK_DEPTH = 0;
 ACRE_CURRENT_FUNCTION = "";
-diag_log text format["ACRE2 Library Loaded"];
+INFO("Library loaded.");
 
-FUNC(getGear) = {
+EFUNC(lib,getGear) = {
     params["_unit"];
     if (isNull _unit) exitWith {[]};
     // diag_log text format["Assigned Items: %1", (assignedItems _unit)];
@@ -17,7 +19,7 @@ FUNC(getGear) = {
     _gear;
 };
 
-FUNC(replaceGear) = {
+EFUNC(lib,replaceGear) = {
     params["_unit", "_itemToReplace", "_itemReplaceWith"];
 
     private _uniform = (uniformContainer _unit);
@@ -56,13 +58,12 @@ FUNC(replaceGear) = {
         if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_itemReplaceWith, 1];};
         if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_itemReplaceWith, 1];};
         if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_itemReplaceWith, 1];};
-        private _message = format["ACRE2: Unable to add '%1' to your inventory.",_itemReplaceWith];
-        systemChat _message;
-        diag_log _message;
+        INFO("Unable to add '%1' to inventory.",_itemReplaceWith);
+        hintSilent format ["ACRE2: Unable to add '%1' to your inventory.", _itemReplaceWith];
     };
 };
 
-FUNC(removeGear) = {
+EFUNC(lib,removeGear) = {
     params["_unit", "_item"];
 
     /*_weapons = weapons _unit;
@@ -82,7 +83,7 @@ FUNC(removeGear) = {
     // };
 };
 
-FUNC(addGear) = {
+EFUNC(lib,addGear) = {
     params["_unit", "_item",["_gearContainer",""]];
 
     if( _gearContainer != "") then {
@@ -135,7 +136,7 @@ ACRE_DUMPSTACK_FNC = {
     };
 };
 
-FUNC(getCompartment) = {
+EFUNC(lib,getCompartment) = {
     params["_unit"];
     private _vehicle = (vehicle _unit);
     private _compartment = "";
@@ -190,8 +191,8 @@ FUNC(getCompartment) = {
     };
     _compartment;
 };
-#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
-FUNC(fastHashCreate) = {
+
+EFUNC(lib,fastHashCreate) = {
     if(count FAST_HASH_POOL > 0) exitWith {
         private _ret = (FAST_HASH_POOL deleteAt 0);
         FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
@@ -203,14 +204,14 @@ FUNC(fastHashCreate) = {
     _ret;
 };
 
-FUNC(fastHashCopyArray) = {
+EFUNC(lib,fastHashCopyArray) = {
     private _newArray = [];
     {
         if(IS_HASH(_x)) then {
-            _newArray pushBack (_x call FUNC(fastHashCopy));
+            _newArray pushBack (_x call EFUNC(lib,fastHashCopy));
         } else {
             if(IS_ARRAY(_x)) then {
-                _newArray pushBack (_x call FUNC(fastHashCopyArray));
+                _newArray pushBack (_x call EFUNC(lib,fastHashCopyArray));
             } else {
                 _newArray pushBack _x;
             };
@@ -219,20 +220,20 @@ FUNC(fastHashCopyArray) = {
     _newArray;
 };
 
-FUNC(fastHashCopy) = {
+EFUNC(lib,fastHashCopy) = {
     private _return = [];
     if(IS_ARRAY(_this)) then {
-        _return = _this call FUNC(fastHashCopyArray);
+        _return = _this call EFUNC(lib,fastHashCopyArray);
     } else {
-        _return = (call FUNC(fastHashCreate));
+        _return = (call EFUNC(lib,fastHashCreate));
         {
             private _el = (_this getVariable _x);
             private _eln = _x;
             if(IS_ARRAY(_el)) then {
-                _return setVariable [_eln, (_el call FUNC(fastHashCopyArray))];
+                _return setVariable [_eln, (_el call EFUNC(lib,fastHashCopyArray))];
             } else {
                 if(IS_HASH(_el)) then {
-                    _return setVariable [_eln, (_el call FUNC(fastHashCopy))];
+                    _return setVariable [_eln, (_el call EFUNC(lib,fastHashCopy))];
                 } else {
                     _return setVariable [_eln, _el];
                 };
@@ -242,7 +243,7 @@ FUNC(fastHashCopy) = {
     _return;
 };
 
-FUNC(fastHashKeys) = {
+EFUNC(lib,fastHashKeys) = {
     private _keys = [];
     {
         if(!(isNil {_this getVariable _x})) then {
@@ -252,7 +253,7 @@ FUNC(fastHashKeys) = {
     _keys;
 };
 /*
-FUNC(fastHashSerialize) = {
+EFUNC(lib,fastHashSerialize) = {
     params ["_hash"];
     private _array = ["ACRE_FAST_HASH",[],[]];
     _keys = _array select 1;
@@ -265,7 +266,7 @@ FUNC(fastHashSerialize) = {
     _array;
 };
 
-FUNC(fastHashDeSerialize) = {
+EFUNC(lib,fastHashDeSerialize) = {
     params ["_array"];
     private _hash = HASH_CREATE;
     _keys = _array select 1;
@@ -401,7 +402,7 @@ private _garbageCollector = {
     };
 
 };
-[_garbageCollector, 0.25, []] call cba_fnc_addPerFrameHandler;
+[_garbageCollector, 0.25, []] call CBA_fnc_addPerFrameHandler;
 
 
 ADDON = true;

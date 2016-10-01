@@ -74,7 +74,7 @@ if(_player == acre_player) then {
         // radio id is acknowledged below because the ID became unassociated with any world object.
         // I wish there was a more clean way to do this, but I can't think of it now, and hopefully
         // mission makers will use proper gear scripts.
-        diag_log text format["%1 ACRE Warning: Radio ID %2 was returned for a non-existent baseclass (%3) in inventory, possibly removed by a gear script while requesting ID: %4", diag_tickTime, _class, _baseRadio, _weapons];
+        WARNING_3("Radio ID %1 was returned for a non-existent base class (%2) in inventory! Possibly removed by a gear script while requesting ID: %3!",_class,_baseRadio,_weapons);
     };
     GVAR(requestingNewId) = false;
     ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_globalEvent);

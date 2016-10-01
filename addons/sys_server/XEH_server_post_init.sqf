@@ -13,9 +13,9 @@ ADDPFH(DFUNC(masterIdTracker), 1, []);
 
 ACRE_SERVER_INIT = true;
 
-[QUOTE(GVAR(onSetSpector)), { _this call FUNC(setSpectator) }] call CALLSTACK(CBA_fnc_addEventHandler);
-[QUOTE(GVAR(remoteDebugMsg)), { _this call FUNC(remoteDebugMsg) }] call CALLSTACK(CBA_fnc_addEventHandler);
-[QUOTE(GVAR(doAddComponentCargo)), { _this call FUNC(doAddComponentCargo) }] call CALLSTACK(CBA_fnc_addEventHandler);
+[QGVAR(onSetSpector), { _this call FUNC(setSpectator) }] call CALLSTACK(CBA_fnc_addEventHandler);
+[QGVAR(remoteDebugMsg), { _this call FUNC(remoteDebugMsg) }] call CALLSTACK(CBA_fnc_addEventHandler);
+[QGVAR(doAddComponentCargo), { _this call FUNC(doAddComponentCargo) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 publicVariable "ACRE_SERVER_INIT";
 

@@ -18,4 +18,4 @@
 
 params ["_radioId","_event"];
 
-diag_log text format["WARNING: System event handler function %1 is not defined!", _event];
+WARNING_1("System event handler function %1 is not defined!",_event);

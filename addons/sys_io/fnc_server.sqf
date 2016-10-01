@@ -34,7 +34,7 @@ DFUNC(connectionFnc) = {
                         hintSilent _warning;
                         GVAR(connectCount) = GVAR(connectCount) + 1;
                         if(GVAR(connectCount) > 15) then {
-                            diag_log text format["Pipe Error: %1", GVAR(pipeCode)];
+                            INFO_1("Pipe error: %1",GVAR(pipeCode));
                             GVAR(connectCount) = 0;
                         };
                     };
@@ -45,12 +45,12 @@ DFUNC(connectionFnc) = {
             } else {
                 LOG("PIPE OPENED!");
                 if(GVAR(hasErrored) && isMultiplayer) then {
-                    hint format["ACRE HAS RECOVERED FROM A CLOSED PIPE!"];
+                    hint "ACRE HAS RECOVERED FROM A CLOSED PIPE!";
                 } else {
-                    hint format["ACRE CONNECTED"];
+                    hint "ACRE CONNECTED";
                 };
                 GVAR(hasErrored) = false;
-                diag_log text format["%1 ACRE: Pipe opened.", diag_tickTime];
+                INFO("Pipe opened.");
                 GVAR(serverStarted) = true;
             };
         };

@@ -21,7 +21,7 @@ params["_menu", "_event"];
 private _ret = false;
 
 
-private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
 TRACE_2("defaultButtonPress", _display, _event);
 switch (_event select 0) do {
     case 'VOLUME_UP': {

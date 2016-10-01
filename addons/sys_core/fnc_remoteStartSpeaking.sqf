@@ -76,28 +76,28 @@ private _result = false;
     };
 
     if (isNull _unit) exitWith {
-        _msg = format["START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, On Radio: %4", acre_player, _speakingId, _netId, _onRadio];
+        _msg = format ["START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, On Radio: %4", acre_player, _speakingId, _netId, _onRadio];
         // REMOTEDEBUGMSG(_msg);
-        diag_log text format["%1 ACRE: %2", diag_tickTime, _msg];
-        false;
+        WARNING(_msg);
+        false
     };
 
-    _unit setVariable[QUOTE(GVAR(ts3id)), _speakingId];
-    _unit setVariable[QUOTE(GVAR(languageId)), _languageId];
+    _unit setVariable[QGVAR(ts3id), _speakingId];
+    _unit setVariable[QGVAR(languageId), _languageId];
     TRACE_1("unit pos", getPosASL _unit);
     private _isMuted = IS_MUTED(_unit);
     _unit setRandomLip true;
     if(!_isMuted) then {
         TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_onRadio,(_unit distance acre_player));
-        _unit setVariable[QUOTE(GVAR(lastSpeakingEventTime)), diag_tickTime, false];
+        _unit setVariable[QGVAR(lastSpeakingEventTime), diag_tickTime, false];
         if(_onRadio == 1) then {
             if([_radioId] call EFUNC(sys_radio,radioExists)) then {
                 PUSH(GVAR(speakers),_unit);
                 private _val = [_netId, _speakingId];
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
-                _unit setVariable[QUOTE(GVAR(currentSpeakingRadio)), _radioId];
+                _unit setVariable[QGVAR(currentSpeakingRadio), _radioId];
                 _speakerRadio = [];
-                _nearRadios = NEAR_RADIOS(ACRE_LISTENER_POS, 150);
+                _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
                 {
                     if([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                         PUSH(_speakerRadio, _x);
@@ -125,7 +125,7 @@ private _result = false;
                 };
 
             } else {
-                diag_log text format["%1 ACRE WARNING: Got start speaking event with non-existent radio id: %2", diag_tickTime, _radioId];
+                WARNING_1("Got start speaking event with non-existent radio id: %1",_radioId);
             };
         } else {
             if((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {

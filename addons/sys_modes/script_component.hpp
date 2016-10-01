@@ -1,4 +1,5 @@
 #define COMPONENT sys_modes
+#define COMPONENT_BEAUTIFIED Modes
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_MODES

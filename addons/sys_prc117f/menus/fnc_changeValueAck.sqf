@@ -44,7 +44,7 @@ DFUNC(changeValueAck_End) = {
 params ["_menu","_valuePair"];
 _valuePair params ["_valueType", "_value"];
 
-if(isNil QUOTE(GVAR(currentRadioId)) || isNil QUOTE(acre_sys_radio_currentRadioDialog) ) exitWith {
+if(isNil QGVAR(currentRadioId) || isNil QUOTE(acre_sys_radio_currentRadioDialog) ) exitWith {
     false
 };
 if(acre_sys_radio_currentRadioDialog != GVAR(currentRadioId)) exitWith {

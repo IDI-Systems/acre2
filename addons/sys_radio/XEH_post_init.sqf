@@ -6,7 +6,7 @@ NO_DEDICATED;
 
 
 // radio claiming handler
-[QUOTE(GVAR(returnRadioId)), { _this call FUNC(onReturnRadioId) }] call CALLSTACK(CBA_fnc_addEventHandler);
+[QGVAR(returnRadioId), { _this call FUNC(onReturnRadioId) }] call CALLSTACK(CBA_fnc_addEventHandler);
 ["acre_handleDesyncCheck", { _this call FUNC(handleDesyncCheck) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 // main inventory thread

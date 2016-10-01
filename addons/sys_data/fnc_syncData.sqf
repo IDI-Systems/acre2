@@ -20,7 +20,7 @@ if(isServer) exitWith { ACRE_DATA_SYNCED = true; };
 ACRE_DATA_SYNCED = false;
 DFUNC(syncDataPFH) = {
     ACREjips = player;
-    diag_log text format["%1 ACRE Data Sync Requested", diag_tickTime];
+    INFO("Data Sync Requested.");
     GVAR(dataSyncStart) = diag_tickTime;
     publicVariableServer "ACREjips";
 };

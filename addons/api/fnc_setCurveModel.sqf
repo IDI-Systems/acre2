@@ -34,7 +34,7 @@ switch _modelType do {
         ACRE_VOICE_CURVE_MODEL = ACRE_CURVE_MODEL_SELECTABLE_B;
     };
     default {
-        diag_log text format["ACRE: VOICE CURVE MODEL ""%1"" DOES NOT EXIST!", _modelType];
+        WARNING_1("Voice curve model '%1' does not exist!",_modelType);
     };
 };
 

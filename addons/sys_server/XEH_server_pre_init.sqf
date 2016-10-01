@@ -50,7 +50,7 @@ DFUNC(doAddComponentCargo) = {
                 _dataHash = HASH_CREATE;
                 HASH_SET(acre_sys_data_radioData,_uniqueComponent,_dataHash);
                 PUSH(GVAR(unacknowledgedIds), _uniqueComponent);
-                HASH_SET(GVAR(masterIdTable), _uniqueComponent, ARR_2(_container, _container));
+                HASH_SET(GVAR(masterIdTable), _uniqueComponent, [ARR_2(_container,_container)]);
                 _container addItemCargoGlobal [_uniqueComponent, 1];
                 [_uniqueComponent, "initializeComponent", [_type, _preset]] call EFUNC(sys_data,dataEvent);
                 if(_callBack != "") then {

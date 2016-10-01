@@ -74,7 +74,7 @@ DFUNC(speakingLoop) = {
                             _sources set[_keyIndex, []];
                         };
                         _txRadios = _sources select _keyIndex;
-                        PUSH(_txRadios, ARR_4(_unit, _txId, _signalData, _params));
+                        PUSH(_txRadios, [ARR_4(_unit,_txId,_signalData,_params)]);
                         if(acre_sys_signal_showSignalHint) then {
                             _signalHint = _signalHint + format["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
                         };
@@ -90,7 +90,7 @@ DFUNC(speakingLoop) = {
 
         _radioParamsSorted params ["_radios","_sources"];
 
-        #ifdef ACRE_PERFORMANCE_COUNTERS
+        #ifdef ENABLE_PERFORMANCE_COUNTERS
         if( (count _radios) > 0) then {
             BEGIN_COUNTER(radio_loop);
         };
@@ -142,7 +142,8 @@ DFUNC(speakingLoop) = {
                         _radioPos = [_recRadio, "getExternalAudioPosition"] call EFUNC(sys_data,physicalEvent);
                         _args = [_radioPos, ACRE_LISTENER_POS, acre_player];
                         // there needs to be handling of vehicle attenuation too
-                        _attenuate = [RADIO_OBJECT(_recRadio)] call EFUNC(sys_attenuate,getUnitAttenuate);
+                        private _recRadioObject = [_recRadio] call EFUNC(sys_radio,getRadioObject);
+                        _attenuate = [_recRadioObject] call EFUNC(sys_attenuate,getUnitAttenuate);
                         _attenuate = (1-_attenuate)^3;
                         _volumeModifier = _args call FUNC(findOcclusion);
                         _volumeModifier = _volumeModifier^3;
@@ -193,7 +194,7 @@ DFUNC(speakingLoop) = {
             };
         } forEach _radios;
 
-        #ifdef ACRE_PERFORMANCE_COUNTERS
+        #ifdef ENABLE_PERFORMANCE_COUNTERS
         if( (count _radios) > 0) then {
             END_COUNTER(radio_loop);
         };
@@ -235,11 +236,11 @@ DFUNC(speakingLoop) = {
                     private _params = [_unit] call FUNC(processDirectSpeaker);
                     CALL_RPC("updateSpeakingData", _params);
 
-                    // if(!(_unit getVariable[QUOTE(GVAR(isDisabled)), false]) ) then {
-                        // _sayTime = _unit getVariable [QUOTE(GVAR(sayTime)), time-2];
+                    // if(!(_unit getVariable[QGVAR(isDisabled), false]) ) then {
+                        // _sayTime = _unit getVariable [QGVAR(sayTime), time-2];
                         // if((abs (time-_sayTime)) >= 1) then {
                             // _unit say "acre_lip_sound";
-                            // _unit setVariable [QUOTE(GVAR(sayTime)), time, false];
+                            // _unit setVariable [QGVAR(sayTime), time, false];
                         // };
                     // };
                 } else {

@@ -27,7 +27,7 @@ if(_unit == acre_player) then {
     GVAR(globalVolume) = 1.0;
     GVAR(isDeaf) = false;
 
-    acre_player setVariable[QUOTE(GVAR(isDisabled)), false, true];
+    acre_player setVariable[QGVAR(isDisabled), false, true];
 };
 
 true

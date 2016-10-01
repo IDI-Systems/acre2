@@ -1,5 +1,12 @@
 #define COMPONENT sys_core
+#define COMPONENT_BEAUTIFIED Core
 #include "\idi\acre\addons\main\script_mod.hpp"
+
+// #define USE_DEBUG_EXTENSIONS
+// #define DEBUG_MODE_FULL
+// #define DISABLE_COMPILE_CACHE
+// #define CBA_DEBUG_SYNCHRONOUS
+// #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_SYS_CORE
     #define DEBUG_MODE_FULL
@@ -10,7 +17,3 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
-
-#define EOL_CHAR toString[10]
-
-//#define USE_DEBUG_EXTENSIONS

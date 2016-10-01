@@ -20,7 +20,7 @@
 params ["_logic", "_units", "_activated"];
 
 // Run once
-if(!isNil QUOTE(GVAR(basicMissionSetup))) then {
+if(!isNil QGVAR(basicMissionSetup)) then {
     if(GVAR(basicMissionSetup)) exitWith {};
 };
 
@@ -60,7 +60,7 @@ switch (_setupBabel) do {
     //This shouldn't be reached. If so, we throw an error.
     default {
         [false, _setupRadios] call acre_api_fnc_setupMission;
-        hint "The Babel System is not set correctly. Please double check the settings in the module you placed."
+        ERROR_WITH_TITLE("Incorrect Babel System Configuration","Double check the settings in the module you placed.");
     };
 };
 
@@ -71,18 +71,18 @@ FUNC(_addRadios) = {
     _unit setVariable [QGVAR(basicMissionSetup),true,true];
 
     private _cleanRadioList = [];
-    
+
     if(!("ACRE_PRC343" in _this) ) then {
         [_unit, "ItemRadio"] call EFUNC(lib,removeGear);
         [_unit, "ACRE_PRC343"] call EFUNC(lib,removeGear);
-        
+
         _cleanRadioList = _this;
     } else {
         private _countDefaultRadios = 0;
-        
-        { 
-            if(_x == "ACRE_PRC343") then { 
-                _countDefaultRadios = _countDefaultRadios + 1; 
+
+        {
+            if(_x == "ACRE_PRC343") then {
+                _countDefaultRadios = _countDefaultRadios + 1;
                 if(_countDefaultRadios > 1) then {
                     _cleanRadioList pushBack _x;
                 };
@@ -90,11 +90,11 @@ FUNC(_addRadios) = {
                 _cleanRadioList pushBack _x;
             };
         } forEach _this;
-        
+
     };
 
     TRACE_1("Adding Radios", _cleanRadioList);
-    
+
     if( ("ACRE_PRC77" in _cleanRadioList) || ("ACRE_PRC117F" in _cleanRadioList) ) then {
         if( (backpack _unit) == "") then {
             _unit addBackpack "B_AssaultPack_khk";
@@ -103,13 +103,13 @@ FUNC(_addRadios) = {
     {
         private _radioType = _x;
         TRACE_1("", _radioType);
-        
+
         if(!isNil "_radioType") then {
             if(_radioType != "") then {
                 _unit addItem _radioType;
             };
         };
-    } forEach _cleanRadioList;    
+    } forEach _cleanRadioList;
 };
 
 if(hasInterface) then {

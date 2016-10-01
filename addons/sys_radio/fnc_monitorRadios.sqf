@@ -34,7 +34,7 @@ DFUNC(monitorRadios_PFH) = {
     if(time < 1) exitWith { };
     if((side group acre_player) == sideLogic) exitWith {};
 
-    if(ACREALIVE(acre_player)) then {
+    if(alive acre_player) then {
         private _currentUniqueItems = [];
         private _weapons = [acre_player] call EFUNC(lib,getGear);
 
@@ -98,13 +98,13 @@ DFUNC(monitorRadios_PFH) = {
                 };
 
 
-                ["acre_getRadioId", [acre_player, _radio, QUOTE(GVAR(returnRadioId))]] call CALLSTACK(CBA_fnc_globalEvent);
+                ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_globalEvent);
 
             };
             _isUnique = getNumber(configFile >> "CfgWeapons" >> _radio >> "acre_isUnique");
             if(_isUnique == 1) then {
                 if(!([_radio] call EFUNC(sys_data,isRadioInitialized))) then {
-                    diag_log text format["%1 ACRE Warning: %2 was found in personal inventory but is uninitialized, trying to collect new ID.", diag_tickTime, _radio];
+                    WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
                     _baseRadio = BASECLASS(_radio);
                     [acre_player, _radio, _baseRadio] call EFUNC(lib,replaceGear);
                     _radio = _baseRadio;
@@ -191,12 +191,12 @@ ADDPFH(DFUNC(checkServerDesyncBug), 1, []);
 
 DFUNC(hasGearDesync) = {
     if(ACRE_SERVER_GEAR_DESYNCED) then {
-        _message = "ACRE has determined that players in this mission have an inventory that has desynchronized from the server, this is due to a bug in the mission or a bug in Arma 3, NOT ACRE. This message will not dissappear and is a warning that ACRE may no longer be functioning correctly in this mission. The players experiencing the bug are listed below:\n\n";
+        private _message = "ACRE has determined that players in this mission have an inventory that has desynchronized from the server, this is due to a bug in the mission or a bug in Arma 3, NOT ACRE. This message will not dissappear and is a warning that ACRE may no longer be functioning correctly in this mission. The players experiencing the bug are listed below:\n\n";
         {
-            _message = _message + format["%1\n", name _x];
+            _message = _message + format ["%1\n", name _x];
         } forEach ACRE_SERVER_DESYNCED_PLAYERS;
         hintSilent _message;
-        diag_log text _message;
+        WARNING(_message);
     };
 };
 

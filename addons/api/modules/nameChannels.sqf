@@ -29,12 +29,12 @@ FUNC(_channelNamesForPresets) = {
                 {
                     //["ACRE_PRC117F",["default3"],10,"label","SUPPORT"]
                     #ifdef DEBUG_MODE_FULL
-                        diag_log text format["%1,%2,%3,%4,%5", (_x select 0), (_x select 1), 
-                        _channelNumber+1, 
+                        diag_log text format["%1,%2,%3,%4,%5", (_x select 0), (_x select 1),
+                        _channelNumber+1,
                         "label", _channelName];
                     #endif
-                    [(_x select 0), (_x select 1), 
-                    _channelNumber+1, 
+                    [(_x select 0), (_x select 1),
+                    _channelNumber+1,
                     "label", _channelName] call acre_api_fnc_setPresetChannelField;
                 } forEach _presetNames;
             };
@@ -54,22 +54,22 @@ FUNC(_channelNamesNoSides) = {
             };
         };
     } forEach ["ACRE_PRC152", "ACRE_PRC148", "ACRE_PRC117F"];
-    
+
     TRACE_1("Configuring radio for presets", _presetNames);
-    
+
     [_this, _presetNames] call FUNC(_channelNamesForPresets);
 };
 
 FUNC(_channelNamesForPresetGroup) = {
     params ["_channelNames", "_presetName"];
-    
+
     private _presetNames = [];
     {
         _presetNames pushBack [_x, _presetName];
     } forEach ["ACRE_PRC152", "ACRE_PRC148", "ACRE_PRC117F"];
-    
+
     TRACE_1("Configuring radio for presets", _presetNames);
-    
+
     [_channelNames, _presetNames] call FUNC(_channelNamesForPresets);
 };
 
@@ -99,8 +99,8 @@ _channelNames set[9, ( _logic getVariable["Channel_10", ""] ) ];
 
 _logics = allMissionObjects "logic";
 if( count _logics > 0) then {
-    { 
-        if(_x isKindOf QUOTE(GVAR(basicMissionSetup)) ) exitWith {
+    {
+        if(_x isKindOf QGVAR(basicMissionSetup) ) exitWith {
             _setupSides = _x getVariable["RadioSetup", false];
             TRACE_1("Dedicated basic mission module, checking sides configuration", _setupSides);
         };
@@ -109,24 +109,24 @@ if( count _logics > 0) then {
 
 if(_setupSides) then {
     switch _sideNumber do {
-        // All 
+        // All
         case 1: {
             _channelNames call FUNC(_channelNamesNoSides);
         };
         // West
-        case 2: { 
+        case 2: {
             [_channelNames, "default3"] call FUNC(_channelNamesForPresetGroup);
         };
         // East
-        case 3: { 
+        case 3: {
             [_channelNames, "default2"] call FUNC(_channelNamesForPresetGroup);
         };
         // Indy
-        case 4: { 
+        case 4: {
             [_channelNames, "default4"] call FUNC(_channelNamesForPresetGroup);
         };
         // Civie
-        case 5: { 
+        case 5: {
             [_channelNames, "default"] call FUNC(_channelNamesForPresetGroup);
         };
     };

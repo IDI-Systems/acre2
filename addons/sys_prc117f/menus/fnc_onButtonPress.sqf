@@ -79,7 +79,7 @@ if(!isNil "_currentMenu") then {
                     _ret = [_currentMenu, _this] call FUNC(onButtonPress_Alphanumeric);
                 };
                 default {
-                    diag_log text format["!!! INVALID MENU SPECIFIED"];
+                    WARNING("Invalid menu specified!");
                 };
             };
             if(isNil "_ret") then { _ret = false; };
@@ -115,9 +115,7 @@ if(!isNil "_currentMenu") then {
         };
     };
 } else {
-    diag_log text format["!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
-    diag_log text format["!!!!! BUTTON PRESS WITHOUT A SELECTED MENU ITEM"];
-    diag_log text format["!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"];
+    WARNING("Button press without a selected menu item!");
 };
 
 
