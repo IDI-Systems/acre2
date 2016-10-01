@@ -48,7 +48,7 @@ github_token = os.environ["IDI_GITHUB_TOKEN"]
 print(current_branch)
 
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
-do_action(["python", "make.py", "version increment_build compile force check_external release"], "Make failed")
+do_action(["python", "make.py", "version","increment_build","compile","force","check_external","release"], "Make failed")
 do_action(["git", "commit", "-am", "Build Increment {}".format(os.environ["BUILD_NUMBER"])], "Failed to commit changes back into branch '{}'".format(current_branch))
 do_action(["git", "push", "origin", current_branch], "Failed to push changes back into branch 'origin/{}'".format(current_branch))
 do_action(["git", "checkout", target_branch], "Failed to checkout target branch '{}'".format(target_branch))
