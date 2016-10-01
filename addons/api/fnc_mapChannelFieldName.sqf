@@ -12,11 +12,9 @@
  * Example:
  * ["ACRE_PRC148_ID_1","description"] call acre_api_fnc_mapChannelFieldName;
  *
- * Deprecated
+ * Public: No
  */
 #include "script_component.hpp"
-
-ACRE_DEPRECATED(QFUNC(mapChannelFieldName),"2.5.0","None");
 
 params ["_radioId", "_fieldName"];
 
