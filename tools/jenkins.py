@@ -58,6 +58,6 @@ do_action(["git", "pull", "origin", target_branch], "Failed to update target bra
 do_action(["git", "merge", current_branch], "Failed to merge '{}' into '{}', conflict exists.".format(current_branch, target_branch), create_pull_request, [repository, current_branch, target_branch, github_token])
 do_action(["git", "diff"], "Diff failed to resolve '{}' and '{}' cleanly, conflict exists.".format(current_branch, target_branch))
 do_action(["git", "push", "origin", target_branch], "Failed to push changes back into branch 'origin/{}'".format(target_branch))
-do_action(["python", "publish.py", "..\\manifest.json", "-r {}".format(release_target)], "Publish failed.")
+do_action(["python", "publish.py", "..\\manifest.json", "-r", release_target], "Publish failed.")
 
 sys.exit(0)
