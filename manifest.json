@@ -13,16 +13,24 @@
         ]
     },
     "publish": {
-        "destinations": [
-            {
-                "type": "steam",
-                "login_var": "ACRE_STEAM_USERNAME",
-                "password_var": "ACRE_STEAM_PASSWORD",
-                "project_id": 522695873,
-                "release_dir": "P:\\idi\\acre\\release\\@acre2",
-                "release_text": "P:\\idi\\acre\\release\\@acre2\\README.md"
-            }
-        ]
+        "release": {
+            "destinations": [
+                {
+                    "type": "steam",
+                    "cred_file": "acre_release_steam.json",
+                    "project_id": 522695873,
+                    "release_dir": "P:\\idi\\acre\\release\\@acre2",
+                    "release_text": "P:\\idi\\acre\\release\\@acre2\\README.md"
+                },
+                {
+                    "type": "sftp",
+                    "cred_file": "acre_release_sftp.json",
+                    "hostname": "dev.idi-systems.com",
+                    "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}.zip",
+                    "remote_path": "dev.idi-systems.com/release/acre2_{major}.{minor}.{patch}.{build}.zip"
+                }
+            ]
+        }
     }
 
 }

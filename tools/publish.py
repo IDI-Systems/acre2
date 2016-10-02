@@ -31,6 +31,32 @@ import psutil
 if sys.platform == "win32":
     import winreg
 
+def get_project_version(version_file):
+    majorText = ""
+    minorText = ""
+    patchText = ""
+    buildText = ""
+    try:
+        if os.path.isfile(version_file):
+            f = open(version_file, "r")
+            hpptext = f.read()
+            f.close()
+
+            if hpptext:
+                majorText = re.search(r"#define MAJOR (.*\b)", hpptext).group(1)
+                minorText = re.search(r"#define MINOR (.*\b)", hpptext).group(1)
+                patchText = re.search(r"#define PATCHLVL (.*\b)", hpptext).group(1)
+                buildText = re.search(r"#define BUILD (.*\b)", hpptext).group(1)
+
+        else:
+            print_error("A Critical file seems to be missing or inaccessible: {}".format(version_file))
+            raise FileNotFoundError("File Not Found: {}".format(version_file))
+
+    except Exception as e:
+        raise Exception("Check the integrity of the file: {}".format(version_file))
+
+    return [majorText, minorText, patchText, buildText]
+
 def find_steam_exe():
     reg = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
     try:
@@ -105,52 +131,80 @@ def steam_publish_folder(folder, mod_id, change_notes):
 
 
 def main(argv):
-    
-    parser = argparse.ArgumentParser(description="Arma Automatic Publishing Script")
-    parser.add_argument('manifest', type=argparse.FileType('r'), help='manifest json file')
+    try:
+        parser = argparse.ArgumentParser(description="Arma Automatic Publishing Script")
+        parser.add_argument('manifest', type=argparse.FileType('r'), help='manifest json file')
+        parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="publish")
 
-    args = parser.parse_args()
+        args = parser.parse_args()
 
-    manifest_file = args.manifest
+        manifest_file = args.manifest
+        release_target = args.release_target
 
-    manifest = json.load(manifest_file)
-    
-    for destination in manifest['publish']['destinations']:
-        if(destination["type"] == "steam"):
-            if("login_var" in destination and "password_var" in destination):
-                login_var = destination["login_var"]
-                password_var = destination["password_var"]
-                steam_login = ""
-                steam_password = ""
-                if(login_var in os.environ):
-                    steam_login = os.environ[login_var]
+        manifest = json.load(manifest_file)
+
+        credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
+
+        if(credentials_path == "")
+            raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
+
+        
+        
+        for destination in manifest['publish'][release_target]['destinations']:
+            cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
+            if(destination["type"] == "steam"):
+                if("username" in cred_file and "password" in cred_file):
+                    steam_username = cred_file["username"]
+                    steam_password = cred_file["password"]
+                    
+                    start_steam_with_user(steam_username, steam_password)
                 else:
-                    raise Exception("Steam Login","No Steam login environment variable found for {}".format(login_var))
+                    raise Exception("Credentials file did not specify a username and password for Steam login")
+                if(not "project_id" in destination):
+                    raise Exception("Steam Publish","No project ID defined in manifest for Steam publish")
+                project_id = destination["project_id"]
 
-                if(password_var in os.environ):
-                    steam_password = os.environ[password_var]
+                if(not "release_dir" in destination):
+                    raise Exception("Steam Publish","No release directory defined in manifest for Steam publish")
+                release_dir = destination["release_dir"]
+
+                if(not "release_text" in destination):
+                    raise Exception("Steam Publish","No release text file defined in manifest for Steam publish")
+                release_text = destination["release_text"]
+
+                steam_publish_folder(release_dir, project_id, release_text)
+            if(destination["type"] == "sftp"):
+                if("username" in cred_file and "password" in cred_file):
+                    sftp_username = cred_file["username"]
+                    sftp_password = cred_file["password"]
                 else:
-                    raise Exception("Steam Login","No Steam password environment variable found for {}".format(password_var))
+                    raise Exception("Credentials file did not specify a username and password for SFTP login")
+
+                if(not "hostname" in destination):
+                    raise Exception("SFTP Publish","No hostname was defined for the SFTP site.")
+                hostname = destination["hostname"]
+
+                if(not "local_path" in destination):
+                    raise Exception("SFTP Publish","No local path was defined for the SFTP upload.")
+                local_path = destination["local_path"]
+
+                if(not "remote_path" in destination):
+                    raise Exception("SFTP Publish","No remote path was defined for the SFTP upload.")
+                remote_path = destination["remote_path"]
+
                 
-                start_steam_with_user(steam_login, steam_password)
-            else:
-                raise Exception("Steam Login","Manifest did not specify the environment variables for Steam login and password")
-            
-            if(not "project_id" in destination):
-                raise Exception("Steam Publish","No project ID defined in manifest for Steam publish")
-            project_id = destination["project_id"]
 
-            if(not "release_dir" in destination):
-                raise Exception("Steam Publish","No release directory defined in manifest for Steam publish")
-            release_dir = destination["release_dir"]
-
-            if(not "release_text" in destination):
-                raise Exception("Steam Publish","No release text file defined in manifest for Steam publish")
-            release_text = destination["release_text"]
-
-            steam_publish_folder(release_dir, project_id, release_text)
-
-
+                cnopts = pysftp.CnOpts()
+                cnopts.hostkeys = None   
+                sftp = pysftp.Connection(host=hostname, username=sftp_username, password=sftp_password, cnopts=cnopts)
+                version = get_project_version()
+                local_path = local_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
+                remote_path = remote_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
+                
+                sftp.put(local_path, remotepath=remote_path)
+    except Exception as e:
+        print(e)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main(sys.argv)
