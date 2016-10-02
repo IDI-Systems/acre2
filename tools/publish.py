@@ -143,11 +143,12 @@ def main(argv):
 
         manifest = json.load(manifest_file)
 
-        credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
+        
 
-        if(credentials_path == "")
+        if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ)
             raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
 
+        credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
         
         
         for destination in manifest['publish'][release_target]['destinations']:
