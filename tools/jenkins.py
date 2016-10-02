@@ -36,7 +36,7 @@ parser = argparse.ArgumentParser(description="Jenkins CI System for Arma Project
 parser.add_argument('repository', type=str, help='repository name in format owner/repo')
 parser.add_argument('current_branch', type=str, help='the name of the current branch, can be supplied with a remote, ie: origin/release')
 parser.add_argument('-t', '--target_branch', type=str, help="the targeted branch for merging changes during build, defaults to 'master'", default="master")
-parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="publish")
+parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="release")
 
 
 args = parser.parse_args()
@@ -58,6 +58,6 @@ do_action(["git", "pull", "origin", target_branch], "Failed to update target bra
 do_action(["git", "merge", current_branch], "Failed to merge '{}' into '{}', conflict exists.".format(current_branch, target_branch), create_pull_request, [repository, current_branch, target_branch, github_token])
 do_action(["git", "diff"], "Diff failed to resolve '{}' and '{}' cleanly, conflict exists.".format(current_branch, target_branch))
 do_action(["git", "push", "origin", target_branch], "Failed to push changes back into branch 'origin/{}'".format(target_branch))
-do_action(["python", "publish.py", "..\\manifest.json", release_target], "Publish failed.")
+do_action(["python", "publish.py", "..\\manifest.json", "-r {}".format(release_target)], "Publish failed.")
 
 sys.exit(0)

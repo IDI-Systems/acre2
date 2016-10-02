@@ -134,7 +134,7 @@ def main(argv):
     try:
         parser = argparse.ArgumentParser(description="Arma Automatic Publishing Script")
         parser.add_argument('manifest', type=argparse.FileType('r'), help='manifest json file')
-        parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="publish")
+        parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="release")
 
         args = parser.parse_args()
 
