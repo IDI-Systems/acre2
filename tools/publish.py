@@ -89,7 +89,26 @@ def start_steam_with_user(username, password):
 
     print("Starting Steam...")
     print(steam_path)
-    os.system("start \"\" \"{}\" -silent -login {} {}".format(steam_path, username, password))
+    os.system("start \"\" \"{}\" -silent -noverifyfiles -login {} {}".format(steam_path, username, password))
+
+def close_steam():
+    PROCNAME = "Steam.exe"
+    steam_path = find_steam_exe()
+    for proc in psutil.process_iter():
+        if proc.name().lower() == PROCNAME.lower():
+            print(proc.exe())
+            steam_path = proc.exe()
+            print("Shutting down Steam...")
+            subprocess.call([steam_path, "-shutdown"])
+
+            steam_running = True
+            while steam_running:
+                steam_running = False
+                for proc in psutil.process_iter():
+                    if proc.name() == PROCNAME:
+                        steam_running = True
+                    
+            print("Steam shutdown.")
 
 def find_bi_publisher():
     reg = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
@@ -175,6 +194,7 @@ def main(argv):
                 release_text = destination["release_text"]
 
                 steam_publish_folder(release_dir, project_id, release_text)
+                close_steam()
             if(destination["type"] == "sftp"):
                 if("username" in cred_file and "password" in cred_file):
                     sftp_username = cred_file["username"]
