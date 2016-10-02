@@ -215,15 +215,16 @@ def main(argv):
                 remote_path = destination["remote_path"]
 
                 
-
+                print("Publishing {} to remote {}:{}", local_path, hostname, remote_path)
                 cnopts = pysftp.CnOpts()
                 cnopts.hostkeys = None   
                 sftp = pysftp.Connection(host=hostname, username=sftp_username, password=sftp_password, cnopts=cnopts)
                 version = get_project_version("..\\addons\\\main\\script_version.hpp")
                 local_path = local_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 remote_path = remote_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
-                
+                print("SFTP: Publishing {} to remote {}:{}", local_path, hostname, remote_path)
                 sftp.put(local_path, remotepath=remote_path)
+                print("SFTP: Complete!")
     except Exception as e:
         print(e)
         sys.exit(1)

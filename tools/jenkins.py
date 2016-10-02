@@ -50,7 +50,7 @@ github_token = os.environ["IDI_GITHUB_TOKEN"]
 print(current_branch)
 
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
-do_action(["python", "make.py", "--ci", "version","increment_build","compile","force","check_external","release"], "Make failed")
+do_action(["python", "-u", "make.py", "--ci", "version","increment_build","compile","force","check_external","release"], "Make failed")
 do_action(["git", "commit", "-am", "Build Increment {}".format(os.environ["BUILD_NUMBER"])], "Failed to commit changes back into branch '{}'".format(current_branch))
 do_action(["git", "push", "origin", current_branch], "Failed to push changes back into branch 'origin/{}'".format(current_branch))
 do_action(["git", "checkout", target_branch], "Failed to checkout target branch '{}'".format(target_branch))
@@ -58,6 +58,6 @@ do_action(["git", "pull", "origin", target_branch], "Failed to update target bra
 do_action(["git", "merge", current_branch], "Failed to merge '{}' into '{}', conflict exists.".format(current_branch, target_branch), create_pull_request, [repository, current_branch, target_branch, github_token])
 do_action(["git", "diff"], "Diff failed to resolve '{}' and '{}' cleanly, conflict exists.".format(current_branch, target_branch))
 do_action(["git", "push", "origin", target_branch], "Failed to push changes back into branch 'origin/{}'".format(target_branch))
-do_action(["python", "publish.py", "..\\manifest.json", "-r", release_target], "Publish failed.")
+do_action(["python", "-u", "publish.py", "..\\manifest.json", "-r", release_target], "Publish failed.")
 
 sys.exit(0)
