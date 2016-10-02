@@ -145,7 +145,7 @@ def main(argv):
 
         
 
-        if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ)
+        if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
             raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
 
         credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
