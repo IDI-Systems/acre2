@@ -27,6 +27,7 @@ import re
 import fnmatch
 import argparse
 import psutil
+import pysftp
 
 if sys.platform == "win32":
     import winreg
@@ -198,7 +199,7 @@ def main(argv):
                 cnopts = pysftp.CnOpts()
                 cnopts.hostkeys = None   
                 sftp = pysftp.Connection(host=hostname, username=sftp_username, password=sftp_password, cnopts=cnopts)
-                version = get_project_version()
+                version = get_project_version("..\\addons\\\main\\script_version.hpp")
                 local_path = local_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 remote_path = remote_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 
