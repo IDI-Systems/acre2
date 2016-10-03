@@ -37,7 +37,7 @@ parser.add_argument('repository', type=str, help='repository name in format owne
 parser.add_argument('current_branch', type=str, help='the name of the current branch, can be supplied with a remote, ie: origin/release')
 parser.add_argument('-t', '--target_branch', type=str, help="the targeted branch for merging changes during build, defaults to 'master'", default="master")
 parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="release")
-parser.add_argument('-m', '--make_arg', type=str, help="a list of args for make", action="append")
+parser.add_argument('-m', '--make_arg', help="a list of args for make", action="append", nargs="*")
 
 
 args = parser.parse_args()
