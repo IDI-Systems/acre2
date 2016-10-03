@@ -66,4 +66,4 @@
 #define SET_STATE(id, val) ([GVAR(currentRadioId), "setState", [#id, val]] call EFUNC(sys_data,dataEvent))
 #define SET_STATE_CRIT(id, val) ([GVAR(currentRadioId), "setStateCritical", [#id, val]] call EFUNC(sys_data,dataEvent))
 
-#define MAIN_DISPLAY    (findDisplay 31337)
+#define MAIN_DISPLAY (findDisplay 31337)
