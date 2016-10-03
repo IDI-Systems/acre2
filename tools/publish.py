@@ -28,6 +28,9 @@ import fnmatch
 import argparse
 import psutil
 import pysftp
+import tempfile
+
+from uritemplate import URITemplate, expand
 
 if sys.platform == "win32":
     import winreg
@@ -172,8 +175,9 @@ def main(argv):
         
         
         for destination in manifest['publish'][release_target]['destinations']:
-            cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
+            
             if(destination["type"] == "steam"):
+                cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
                 if("username" in cred_file and "password" in cred_file):
                     steam_username = cred_file["username"]
                     steam_password = cred_file["password"]
@@ -196,6 +200,7 @@ def main(argv):
                 steam_publish_folder(release_dir, project_id, release_text)
                 close_steam()
             if(destination["type"] == "sftp"):
+                cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
                 if("username" in cred_file and "password" in cred_file):
                     sftp_username = cred_file["username"]
                     sftp_password = cred_file["password"]
@@ -215,16 +220,89 @@ def main(argv):
                 remote_path = destination["remote_path"]
 
                 
-                print("Publishing {} to remote {}:{}", local_path, hostname, remote_path)
                 cnopts = pysftp.CnOpts()
                 cnopts.hostkeys = None   
                 sftp = pysftp.Connection(host=hostname, username=sftp_username, password=sftp_password, cnopts=cnopts)
                 version = get_project_version("..\\addons\\\main\\script_version.hpp")
                 local_path = local_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 remote_path = remote_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
-                print("SFTP: Publishing {} to remote {}:{}", local_path, hostname, remote_path)
+                
+                print("SFTP: Publishing {} to remote {}:{}".format(local_path, hostname, remote_path))
+                
                 sftp.put(local_path, remotepath=remote_path)
-                print("SFTP: Complete!")
+                print("SFTP: Upload Complete!")
+            if(destination["type"] == "github"):
+
+                account = destination["account"]
+                tag_name = destination["tag_name"]
+                branch = destination["branch"]
+                name = destination["name"]
+                body_file = destination["body_file"]
+                local_path = destination["local_path"]
+                prerelease = destination["prerelease"]
+                asset_name = destination["asset_name"]
+                
+                version = get_project_version("..\\addons\\\main\\script_version.hpp")
+
+                tag_name = tag_name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
+                name = name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
+                asset_name = asset_name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
+                local_path = local_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
+
+                release_text_file = open(body_file, mode='r')
+                release_text = release_text_file.read()
+                release_text_file.close()
+
+
+                create_request = {
+                    "tag_name": tag_name,
+                    "target_commitish": branch,
+                    "name": name,
+                    "body": release_text,
+                    "draft": False,
+                    "prerelease": prerelease
+                }
+
+                github_token = os.environ["IDI_GITHUB_TOKEN"]
+
+                release_string = json.dumps(create_request, separators=(',',':'))
+
+                temp_dir = tempfile.mkdtemp()
+                tmpname = os.path.join(temp_dir,"jsonpost")
+                temp_file = open(tmpname, 'w')
+                temp_file.write(release_string)
+                temp_file.close()
+                curl_string = ' '.join(["curl", '-s', '-H "Authorization: token {}"'.format(github_token), '-H "Content-Type: application/json"', "--request POST", "--data", '"@{}"'.format(tmpname).replace('\\','\\\\'), "https://api.github.com/repos/{}/releases".format(account)])
+
+                print("Creating Github Release...")
+                response = subprocess.check_output(curl_string)
+                response_json = json.loads(response.decode("ascii"))
+                shutil.rmtree(temp_dir)
+                if("id" in response_json):
+                    print("Github Release Created @ {}".format(response_json["url"]))
+                    release_id = response_json["id"]
+                    upload_url = response_json["upload_url"]
+
+                    t = URITemplate(upload_url)
+                    upload_url = t.expand(name=asset_name)
+
+
+                    curl_string = ' '.join(["curl", '-s', '-H "Authorization: token {}"'.format(github_token),
+                        '-H "Content-Type: application/zip"',
+                        "--data-binary",
+                        '"@{}"'.format(local_path),
+                        upload_url])
+                    print("Attaching Asset...")
+                    response = subprocess.check_output(curl_string)
+                    response_json = json.loads(response.decode("ascii"))
+                    if("browser_download_url" in response_json):
+                        print("Asset Attached @ {}".format(response_json["browser_download_url"]))
+                    else:
+                        raise Exception("Github Publish","Failed to Attach Asset")
+                    
+                else:
+                    raise Exception("Github Publish","Failed to Create Release")
+
     except Exception as e:
         print(e)
         sys.exit(1)
