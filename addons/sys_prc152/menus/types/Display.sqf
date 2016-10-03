@@ -20,7 +20,7 @@ DFUNC(onButtonPress_Display) = {
     TRACE_1("onButtonPress_Display", _this);
     params["_menu", "_event"];
 
-    _currentSelection = GET_STATE_DEF(menuSelection, 0);
+    _currentSelection = GET_STATE_DEF("menuSelection", 0);
     switch (_event select 0) do {
         case 'PRE_UP': {     // OPT
             BEGIN_COUNTER(onButtonPress_Display_PRE_UP);
@@ -28,7 +28,7 @@ DFUNC(onButtonPress_Display) = {
             BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
 
             _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-            _channels = GET_STATE(channels);
+            _channels = GET_STATE("channels");
             if(_channelNumber < 98) then {
                 _channelNumber = _channelNumber + 1;
             } else {
@@ -48,7 +48,7 @@ DFUNC(onButtonPress_Display) = {
             BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
 
             _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-            _channels = GET_STATE(channels);
+            _channels = GET_STATE("channels");
             if(_channelNumber > 0) then {
                 _channelNumber = _channelNumber - 1;
             } else {
@@ -79,7 +79,7 @@ DFUNC(onButtonPress_Display) = {
                 _currentSelection = _currentSelection + 1;
             };
 
-            SET_STATE(menuSelection, _currentSelection);
+            SET_STATE("menuSelection", _currentSelection);
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(callEntryFunctor);
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(renderMenu_Static);
         };
@@ -100,7 +100,7 @@ DFUNC(renderMenu_Display) = {
     private _displaySet = MENU_SUBMENUS(_menu);
 
 
-    private _currentSelection = GET_STATE_DEF(menuSelection, 0);
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
     private _currentDisplay = MENU_SUBMENUS_ITEM(_menu,_currentSelection);
 
     // A display set has a set of children STATIC displays, which are rendered and canFire

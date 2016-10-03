@@ -20,7 +20,7 @@ params["_newVal", "_entry"];
 _entry params ["_key", "_oldVal"];
 
 private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-private _channel = HASHLIST_SELECT(GET_STATE(channels), _channelNumber);
+private _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
 if(_key == "frequencyRX" || _key == "frequencyTX") then {
     _oldVal = (parseNumber _oldVal)/100000;
     // //diag_log text format["new freq: %1", _newVal];

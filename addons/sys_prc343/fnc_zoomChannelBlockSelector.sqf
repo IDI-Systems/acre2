@@ -31,7 +31,7 @@ if (_direction == OUT) then {
     private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
     private _currentBlock = floor(_currentAbsChannel / 16);
     private _currentChannel = _currentAbsChannel - _currentBlock*16;
-    private _currentVolume = GET_STATE(volume); //from 0 to 1
+    private _currentVolume = GET_STATE("volume"); //from 0 to 1
     private _currentVolumeKnobState = round(_currentVolume * 5);
     private _animationhandler = [count GVAR(backgroundImages) -1,0,3,_currentVolumeKnobState,_currentChannel];
 
@@ -114,7 +114,7 @@ if (_direction == IN) then {
     private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
     private _currentBlock = floor(_currentAbsChannel / 16);
     private _currentChannel = _currentAbsChannel - _currentBlock*16;
-    private _currentVolume = GET_STATE(volume); //from 0 to 1
+    private _currentVolume = GET_STATE("volume"); //from 0 to 1
     private _currentVolumeKnobState = round(_currentVolume * 5);
     private _animationhandler = [0,_currentChannel,_currentVolumeKnobState,_currentChannel]; //[30,currentchannel]
     ["setOnOffState", 0] call GUI_DATA_EVENT;

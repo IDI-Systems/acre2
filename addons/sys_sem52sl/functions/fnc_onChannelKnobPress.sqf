@@ -41,7 +41,7 @@ if(_knobPosition != _newKnobPosition) then {
             [GVAR(currentRadioId), "setOnOffState", 0] call EFUNC(sys_data,dataEvent);
 
             // Erase Channel H (index=12)
-            private _channels = GET_STATE(channels);
+            private _channels = GET_STATE("channels");
             private _channel = _channels select 12; // CHANNEL H
             HASH_SET(_channel,"frequencyRX",100);
             HASH_SET(_channel,"frequencyTX",100);
@@ -134,7 +134,7 @@ if(_knobPosition != _newKnobPosition) then {
             private _isOn = ["getState", "radioOn"] call GUI_DATA_EVENT;
 
             if (_newKnobPosition == 1) then { // EIN (ON)
-                _newChanNumber = GET_STATE(lastActiveChannel); // use last active channel.
+                _newChanNumber = GET_STATE("lastActiveChannel"); // use last active channel.
 
                 if (_knobPosition == 0) then { //Last position was OFF
                     GVAR(booting) = true;
@@ -160,7 +160,7 @@ if(_knobPosition != _newKnobPosition) then {
                 };
             };
 
-            private _channels = GET_STATE(channels);
+            private _channels = GET_STATE("channels");
             private _channel = _channels select _newChanNumber;
             private _freq = HASH_GET(_channel,"frequencyRX");
 

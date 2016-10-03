@@ -23,8 +23,8 @@ params["_button"];
 private _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
 private _buttonFunction = QUOTE(ADDON) + "_fnc_" + _currentState + "_" + _button;
 //acre_player sideChat format["BUTTON: %1", _buttonFunction];
-//diag_log text format["EDIT: %1", GET_STATE(editEntry)];
-if(!GET_STATE(editEntry)) then {
+//diag_log text format["EDIT: %1", GET_STATE("editEntry")];
+if(!GET_STATE("editEntry")) then {
     //diag_log text format["trying: %1", _buttonFunction];
     _this call (missionNamespace getVariable [_buttonFunction, FUNC(defaultButtonHandler)]);
 } else {

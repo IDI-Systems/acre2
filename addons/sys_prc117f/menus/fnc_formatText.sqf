@@ -46,7 +46,7 @@ while { _result != -1 && _iter < 5} do {
     private _replacementValue = [_text, _result, (_space - _result)] call LIB_fnc_substring;
     TRACE_3("Replacement index", _replacementValue, _channelNumber, _key);
 
-    private _channel = HASHLIST_SELECT(GET_STATE(channels), _channelNumber);
+    private _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
     private _value = HASH_GET(_channel, _key);
 
     TRACE_2("channel data", _channelNumber, _channel);

@@ -22,11 +22,11 @@ params["_newMenu"];
 
 
 // clear menu data
-SET_STATE(menuSelection, 0);
+SET_STATE("menuSelection", 0);
 
 //
 //
-private _oldMenu = GET_STATE(currentMenu);
+private _oldMenu = GET_STATE("currentMenu");
 SCRATCH_SET(GVAR(currentRadioId),"menuEntry",true);
 // Set the state
 if(!isNil "_oldMenu") then {
@@ -38,7 +38,7 @@ if(!isNil "_oldMenu") then {
         [_oldMenu] call FUNC(callCompleteFunctor);
 
         private _menuId = MENU_ID(_oldMenu);
-        if(!isNil "_menuId") then { SET_STATE(lastMenu, _menuId); } else { SET_STATE(lastMenu, _oldMenu); };
+        if(!isNil "_menuId") then { SET_STATE("lastMenu", _menuId); } else { SET_STATE("lastMenu", _oldMenu); };
     };
 
 };
@@ -46,7 +46,7 @@ if(!isNil "_oldMenu") then {
 // Set the state
 if(_newMenu isEqualType "") then {
     if(_newMenu == "HOME") then {
-        _newMenu = GET_STATE_DEF(currentHome, GVAR(VULOSHOME));
+        _newMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
     };
     if(_newMenu isEqualType "") then {
         _newMenu = HASH_GET(GVAR(Menus), _newMenu);
@@ -59,7 +59,7 @@ if(isNil "_newMenu") then {
 };
 
 private _menuId = MENU_ID(_newMenu);
-if(!isNil "_menuId") then { SET_STATE(currentMenu, _menuId); } else { SET_STATE(currentMenu, _newMenu); };
+if(!isNil "_menuId") then { SET_STATE("currentMenu", _menuId); } else { SET_STATE("currentMenu", _newMenu); };
 [_newMenu] call FUNC(callEntryFunctor);
 [_newMenu, _oldMenu] call FUNC(renderMenu);
 

@@ -28,9 +28,9 @@ private _currentChannel = _currentAbsChannel - _currentBlock*16;
 
 
 //private _currentChannelKnobState = _currentChannelArray select 0; //channel from 0 to 15
-private _currentVolume = GET_STATE(volume); //from 0 to 1
+private _currentVolume = GET_STATE("volume"); //from 0 to 1
 private _currentVolumeKnobState = round(_currentVolume * 5);
-private _currentView = GET_STATE(currentView); //0(IN) or 1(OUT)
+private _currentView = GET_STATE("currentView"); //0(IN) or 1(OUT)
 
 {_x ctrlEnable false;} forEach [RADIO_CTRL(201), RADIO_CTRL(202), RADIO_CTRL(203), RADIO_CTRL(204)];
 

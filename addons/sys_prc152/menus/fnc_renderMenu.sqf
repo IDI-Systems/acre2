@@ -22,15 +22,15 @@ params ["_menu", "_callerMenu"]; // the menu to render is passed
 [] call FUNC(clearDisplay);
 /*
 if(!([_menu] call FUNC(verifyIsMenu)) ) exitWith {
-    _menu = GET_STATE_DEF(currentHome, GVAR(VULOSHOME));
+    _menu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
     [_menu] call FUNC(changeMenu);
 };
 */
 _menuId = MENU_ID(_menu);
 if(isNil "_menuId") then {
-    SET_STATE(currentRenderMenu, _menu);
+    SET_STATE("currentRenderMenu", _menu);
 } else {
-    SET_STATE(currentRenderMenu, _menuId);
+    SET_STATE("currentRenderMenu", _menuId);
 };
 
 [_menu] call FUNC(callRenderFunctor);

@@ -27,7 +27,7 @@ if(_control != (99902+222)) then {
 };
 
 
-private _currentMenu = GET_STATE_DEF(currentMenu, "");
+private _currentMenu = GET_STATE_DEF("currentMenu", "");
 TRACE_1("Got current menu", _currentMenu);
 if(!isNil "_currentMenu") then {
     if(_currentMenu isEqualType "") then {
@@ -89,7 +89,7 @@ if(!isNil "_currentMenu") then {
                 _ret = [_currentMenu, _this] call FUNC(defaultButtonPress);
                 if(!_ret) then {
                     private["_newId"];
-                    private _newMenu = GET_STATE_DEF(currentMenu, GVAR(VULOSHOME));
+                    private _newMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
                     private _oldId = MENU_ID(_currentMenu);
 
                     if(typeName _newMenu == "STRING") then {

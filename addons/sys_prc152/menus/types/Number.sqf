@@ -149,12 +149,12 @@ DFUNC(onButtonPress_Number) = {
             TRACE_1("onButtonPress_Number: ENT hit", _value);
 
             _saveName = MENU_SELECTION_VARIABLE(_menu);
-            SET_STATE(_saveName, _value);
+            SET_STATE("_saveName", _value);
 
             SCRATCH_SET(GVAR(currentRadioId), "menuNumber", nil);
             SCRATCH_SET(GVAR(currentRadioId), "menuNumberCursor", 0);
 
-            TRACE_2("Saved", _saveName, (GET_STATE(_saveName)));
+            TRACE_2("Saved", _saveName, (GET_STATE("_saveName")));
 
             // Our parent?
             TRACE_1("Parent", MENU_PARENT_ID(_menu));
@@ -170,7 +170,7 @@ DFUNC(onButtonPress_Number) = {
                 private _pid = MENU_PARENT_ID(_parentMenu);
                 if (_pid isEqualType "") then {
                     _useParent = false;
-                    SET_STATE(menuAction, 0);
+                    SET_STATE("menuAction", 0);
                     [_pid] call FUNC(changeMenu);
                 };
             };

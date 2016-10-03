@@ -28,7 +28,7 @@ if(_key == 0) then {
     _currentDirection = 0.2;
 };
 
-private _currentVolume = GET_STATE(volume); //["getState", "volume"] call GUI_DATA_EVENT;
+private _currentVolume = GET_STATE("volume"); //["getState", "volume"] call GUI_DATA_EVENT;
 private _newVolume = ((_currentVolume + _currentDirection) max 0) min 1;
 
 if(_currentVolume != _newVolume) then {

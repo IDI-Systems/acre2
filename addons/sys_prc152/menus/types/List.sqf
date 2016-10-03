@@ -20,7 +20,7 @@ DFUNC(onButtonPress_List) = {
 //    TRACE_1("onButtonPress_List", _this);
     params["_menu", "_event"];
 
-    private _currentSelection = GET_STATE_DEF(menuSelection, 0);
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
     private _selectedMenu = MENU_SUBMENUS_ITEM(_menu, _currentSelection);
     TRACE_3("", _currentSelection, _selectedMenu, _menu);
     switch (_event select 0) do {
@@ -29,7 +29,7 @@ DFUNC(onButtonPress_List) = {
         };
         case 'CLR': {
             // Back out of the menu back to the root menu of this menu...confusing right?
-            _homeDisplay = GET_STATE_DEF(currentHome, GVAR(VULOSHOME));
+            _homeDisplay = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
             [_homeDisplay] call FUNC(changeMenu);
             _ret = true;
         };
@@ -50,7 +50,7 @@ DFUNC(onButtonPress_List) = {
         };
     };
 
-    SET_STATE(menuSelection, _currentSelection);
+    SET_STATE("menuSelection", _currentSelection);
 
     false
 };
@@ -67,7 +67,7 @@ DFUNC(renderMenu_List) = {
             [ICON_SCROLLBAR, true] call FUNC(toggleIcon);
         };
         // Set our page based on the current selection index
-        private _currentSelection = GET_STATE_DEF(menuSelection, 0);
+        private _currentSelection = GET_STATE_DEF("menuSelection", 0);
         private _pageCount = floor ((count MENU_SUBMENUS(_menu)) / MAX_MENU_ITEMS_PER_PAGE)+1;
 
         if(_currentSelection >= MAX_MENU_ITEMS_PER_PAGE) then {

@@ -25,7 +25,7 @@ private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
 TRACE_2("defaultButtonPress", _display, _event);
 switch (_event select 0) do {
     case 'VOLUME_UP': {
-        private _volume = GET_STATE(volume);
+        private _volume = GET_STATE("volume");
         _volume = _volume + 0.1;
         if(_volume > 1) then {
             _volume = 1.0;
@@ -33,7 +33,7 @@ switch (_event select 0) do {
         ["setVolume", _volume] call GUI_DATA_EVENT;
     };
     case 'VOLUME_DOWN': {
-        private _volume = GET_STATE(volume);
+        private _volume = GET_STATE("volume");
         _volume = _volume - 0.1;
         if(_volume < 0) then {
             _volume = 0;
@@ -42,7 +42,7 @@ switch (_event select 0) do {
     };
     case 'MODE_KNOB': {
         // Knob was clicked
-        private _knobPositionOld = GET_STATE_DEF(knobPosition, 1);
+        private _knobPositionOld = GET_STATE_DEF("knobPosition", 1);
         private _dir = _event select 2;
         if(_dir == 0) then {
             _dir = 1;
@@ -63,7 +63,7 @@ switch (_event select 0) do {
         };
 
         TRACE_1("New knob position", _knobPosition);
-        SET_STATE(knobPosition, _knobPosition);
+        SET_STATE("knobPosition", _knobPosition);
 
         _this call FUNC(changeMode);
     };
