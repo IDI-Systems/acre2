@@ -37,6 +37,7 @@ parser.add_argument('repository', type=str, help='repository name in format owne
 parser.add_argument('current_branch', type=str, help='the name of the current branch, can be supplied with a remote, ie: origin/release')
 parser.add_argument('-t', '--target_branch', type=str, help="the targeted branch for merging changes during build, defaults to 'master'", default="master")
 parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="release")
+parser.add_argument('-m', '--make_arg', type=str, help="a list of args for make", action="append")
 
 
 args = parser.parse_args()
@@ -45,12 +46,16 @@ repository = args.repository
 current_branch = os.path.basename(args.current_branch)
 target_branch = args.target_branch
 release_target = args.release_target
+make_args = []
+if(args.make_arg is not None):
+    make_args = args.make_arg
+
 github_token = os.environ["IDI_GITHUB_TOKEN"]
 
 print(current_branch)
-
+#"--ci", "version","increment_build","compile","force","check_external","release"
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
-do_action(["python", "-u", "make.py", "--ci", "version","increment_build","compile","force","check_external","release"], "Make failed")
+do_action(["python", "-u", "make.py"].extend(make_args), "Make failed")
 do_action(["git", "commit", "-am", "Build Increment {}".format(os.environ["BUILD_NUMBER"])], "Failed to commit changes back into branch '{}'".format(current_branch))
 do_action(["git", "push", "origin", current_branch], "Failed to push changes back into branch 'origin/{}'".format(current_branch))
 do_action(["git", "checkout", target_branch], "Failed to checkout target branch '{}'".format(target_branch))
