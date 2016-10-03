@@ -19,7 +19,7 @@
 TRACE_1("drawCursor", _this);
 // Swap the background and foreground colors for a text range
 private ["_saveLength"]; // TODO - some cases undefined
-private _display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
+private _display = uiNamespace getVariable QGVAR(currentDisplay);
 
 params["_row", "_range", ["_highlight",true], ["_alignment", ALIGN_LEFT]];
 

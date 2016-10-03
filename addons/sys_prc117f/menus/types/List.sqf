@@ -130,7 +130,7 @@ DFUNC(drawCursor_List) = {
 
     TRACE_2("Searching for row text", _row, _rowText);
 
-    private _result = [_rowText, _currentItemDisplayName] call LIB_fnc_find;
+    private _result = [_rowText, _currentItemDisplayName] call CBA_fnc_find;
     if(_result != -1) then {
         TRACE_1("Dumping cursor at", _result);
         [_row, [_result,_len], true, ALIGN_CENTER] call FUNC(drawCursor);

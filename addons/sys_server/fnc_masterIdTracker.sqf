@@ -91,7 +91,7 @@ if(GVAR(doFullSearch)) then {
                     private _item = _x;
                     if(getNumber(_cfgWeapons >> _item >> "acre_isUnique") == 1) then {
                         if (_idList pushBackUnique _item != -1) then { // Add to ID list and this condition returns true if it was not present in the _idList.
-                            HASH_SET(_idTable, _item, ARR_2(_mainObject, _object));
+                            HASH_SET(_idTable, _item, [ARR_2(_mainObject,_object)]);
                         } else { // Already present in _idList
                             private _duplicateIdList = [];
                             if(!HASH_HASKEY(_duplicateIdTable, _item)) then {
@@ -114,7 +114,7 @@ if(GVAR(doFullSearch)) then {
             #ifdef DEBUG_MODE_FULL
                 acre_player sideChat format["%1 ACRE WARNING: Unacknowledged key not found in masterIdTable (%2)", diag_tickTime, _key];
             #endif
-            diag_log text format["%1 ACRE WARNING: Unacknowledged key not found in masterIdTable (%2)", diag_tickTime, _key];
+            WARNING_1("Unacknowledged key not found in masterIdTable (%1)",_key);
         };
     } forEach GVAR(unacknowledgedIds);
 
@@ -130,7 +130,7 @@ if(GVAR(doFullSearch)) then {
             //Only collect firstFound if there are non-player objects with IDs as well.
             if ({!((_x select 0) in _players)} count _duplicates > 0) then {
                 [(_firstFound select 0), _baseRadio, "acre_sys_radio_returnRadioId", _key] call FUNC(onGetRadioId);
-                diag_log text format["%1 ACRE WARNING: Duplicate radio ID found attemping replace of (%2,%3)", diag_tickTime, name (_firstFound select 0), _key];
+                WARNING_2("Duplicate radio ID found! Attempting replace of (%1,%2)",name (_firstFound select 0),_key);
             };
 
             // Replace all duplicates that other players have.
@@ -138,7 +138,7 @@ if(GVAR(doFullSearch)) then {
                private _data = _x;
                if((_data select 0) in _players) then {
                    [(_data select 0), _baseRadio, "acre_sys_radio_returnRadioId", _key] call FUNC(onGetRadioId);
-                   diag_log text format["%1 ACRE WARNING: Duplicate radio ID found attemping replace of (%2,%3)", diag_tickTime, name (_data select 0), _key];
+                   WARNING_2("Duplicate radio ID found! Attempting replace of (%1,%2)",name (_data select 0),_key);
                };
            } forEach _duplicates;
         };
@@ -166,7 +166,7 @@ if(GVAR(doFullSearch)) then {
                 #ifdef DEBUG_MODE_FULL
                     acre_player sideChat format["%1 ACRE WARNING: Id object relation created independently of unique ID creation process (%2)", diag_tickTime, _key];
                 #endif
-                diag_log text format["%1 ACRE WARNING: Id object relation created independently of unique ID creation process (%2)", diag_tickTime, _key];
+                WARNING_1("Id object relation created independently of unique ID creation process (%1)!",_key);
                 _toUpdate pushBack [_key, _value];
             };
         };
@@ -176,8 +176,8 @@ if(GVAR(doFullSearch)) then {
             TRACE_1("calling updateIdObjects", _toUpdate);
             acre_player sideChat "Calling updateIdObjects";
         #endif
-	        ["acre_updateIdObjects", _toUpdate] call CALLSTACK(LIB_fnc_globalEvent);
-	    };
+        ["acre_updateIdObjects", _toUpdate] call CALLSTACK(CBA_fnc_globalEvent);
+    };
     GVAR(masterIdTable) = _idTable;
     GVAR(nextSearchTime) = diag_tickTime + 10;
 

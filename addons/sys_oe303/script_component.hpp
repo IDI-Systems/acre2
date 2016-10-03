@@ -1,5 +1,11 @@
 #define COMPONENT sys_oe303
+#define COMPONENT_BEAUTIFIED OE-303
 #include "\idi\acre\addons\main\script_mod.hpp"
+
+// #define DEBUG_MODE_FULL
+// #define DISABLE_COMPILE_CACHE
+// #define CBA_DEBUG_SYNCHRONOUS
+// #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_SYS_OE303
     #define DEBUG_MODE_FULL

@@ -18,7 +18,7 @@
 
 params["_iconId", "_toggle"];
 
-_display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
+_display = uiNamespace getVariable QGVAR(currentDisplay);
 _type = ctrlType (_display displayCtrl _iconId);
 
 if((count _this) > 2) then {

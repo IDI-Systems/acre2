@@ -18,11 +18,11 @@
 
 #define DEBUG_MODE_REBUILD
 
-params["_eventKind","_radioId","_event",["_data",[]],["_remote",false]];
+params ["_eventKind","_radioId","_event",["_data",[]],["_remote",false]];
 
 if(!HASH_HASKEY(GVAR(radioData), _radioId)) exitWith {
-    diag_log text format["%1 ACRE WARNING: Non-existent radio '%2' called %3 radio event!", diag_tickTime, _radioId, _event];
-    nil;
+    WARNING_2("Non-existent radio '%1' called %2 radio event!",_radioId,_event);
+    nil
 };
 
 private _radioData = HASH_GET(GVAR(radioData), _radioId);

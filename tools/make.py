@@ -981,8 +981,8 @@ See the make.cfg file for additional build options.
     else:
         compile_ext = False
 
-    if "--ci" in argv:
-        argv.remove("--ci")
+    if "ci" in argv:
+        argv.remove("ci")
         ciBuild = True
 
     print_yellow("\nCheck external references is set to {}".format(str(check_external)))

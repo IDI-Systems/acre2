@@ -1,16 +1,16 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class ADDON
-    {
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "acre_main" };
-        version = VERSION;
-        AUTHOR;
+        requiredAddons[] = {"acre_main"};
+        author = ECSTRING(main,Author);
         authors[] = {"Jaynus", "Nou"};
-        authorUrl = URL;
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 

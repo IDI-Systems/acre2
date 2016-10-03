@@ -29,7 +29,8 @@ if([_radioId, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
     _position = [_radioId, "getExternalAudioPosition"] call EFUNC(sys_data,physicalEvent);
     _isWorld = true;
     private _args = [_position, ACRE_LISTENER_POS, acre_player];
-    _attenuate = [RADIO_OBJECT(_radioId)] call EFUNC(sys_attenuate,getUnitAttenuate);
+    private _radioObject = [_radioId] call FUNC(getRadioObject);
+    _attenuate = [_radioObject] call EFUNC(sys_attenuate,getUnitAttenuate);
     _attenuate = (1-_attenuate)^3;
     _volumeModifier = _args call EFUNC(sys_core,findOcclusion);
     _volumeModifier = _volumeModifier^3;

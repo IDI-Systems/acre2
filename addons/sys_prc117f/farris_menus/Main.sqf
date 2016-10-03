@@ -97,7 +97,7 @@ GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
             [ICON_LOADING, true] call DFUNC(toggleIcon);
             private _volume = GET_STATE("volume");
 
-            private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+            private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
 
             TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
             if(!isNil "_display") then {
@@ -130,7 +130,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                     //[ICON_TRANSMIT, true] call FUNC(toggleIcon);
                     _volume = GET_STATE("volume");
 
-                    _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+                    _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
                     if(!isNil "_display") then {

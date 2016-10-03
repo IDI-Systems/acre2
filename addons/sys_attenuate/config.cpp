@@ -1,17 +1,15 @@
 #include "script_component.hpp"
+
 class CfgPatches {
     class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        #ifdef PLATFORM_A2
-        requiredAddons[] = { "acre_main", "acre_sys_core" };
-        #endif
-        #ifdef PLATFORM_A3
-        requiredAddons[] = { "A3_UI_F", "acre_main", "acre_sys_core" };
-        AUTHOR;
-        #endif
-        version = VERSION;
+        requiredAddons[] = {"acre_main", "acre_sys_core"};
+        author = ECSTRING(main,Author);
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 

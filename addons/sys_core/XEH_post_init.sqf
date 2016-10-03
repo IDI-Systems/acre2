@@ -54,7 +54,7 @@ private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wr
 if (_wrpLocation == "") then {
     _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
 };
-diag_log text format["ACRE: Loading Map: %1", _wrpLocation];
+INFO_1("Loading Map: %1",_wrpLocation);
 
 [
     "load_map",
@@ -62,7 +62,7 @@ diag_log text format["ACRE: Loading Map: %1", _wrpLocation];
     true,
     {
         ACRE_MAP_LOADED = true;
-        diag_log text format["ACRE: Map Load Complete: %1", getText(configFile >> "CfgWorlds" >> worldName >> "worldName")];
+        INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
     },
     []
 ] call FUNC(callExt);
@@ -91,13 +91,13 @@ ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
 if(ACRE_AI_ENABLED && hasInterface) then {
-    diag_log text format["[ACRE]: AI Detection Activated!"];
+    INFO("AI Detection Activated.");
     [] call FUNC(enableRevealAI);
 } else {
-    diag_log text format["[ACRE]: AI Detection not active"];
+    INFO("AI Detection Not Active.");
 };
 
-[QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(LIB_fnc_addEventHandler);
+[QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 ACRE_PLAYER_VEHICLE_CREW = [];
 //Store objects occupying crew seats, note this is empty if the player is not a crew member.

@@ -50,12 +50,12 @@ if(ACRE_TEST_OCCLUSION && !_bothSpectating && !_isCrewAttenuate) then {
     _result = _args call FUNC(findOcclusion);
     _unit setVariable ["ACRE_OCCLUSION_VAL", _result];
     // _endTime = diag_tickTime;
-    // _unit setVariable [QUOTE(GVAR(lastPathPos)), _lastResult];
+    // _unit setVariable [QGVAR(lastPathPos), _lastResult];
     _directVolume = _directVolume*(_result);
     // hintSilent format["vol: %1\nt: %2", _directVolume, _endTime-_startTime];
 };
 
-if(GVAR(isDeaf) || (_unit getVariable[QUOTE(GVAR(isDisabled)), false])) then {
+if(GVAR(isDeaf) || (_unit getVariable[QGVAR(isDisabled), false])) then {
     _directVolume = 0.0;
 };
 if(_isCrewAttenuate) then {

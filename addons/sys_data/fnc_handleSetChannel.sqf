@@ -44,7 +44,7 @@ if(hasInterface) then {
         private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + acre_sys_core_nearRadios, false] call EFUNC(sys_modes,checkAvailability);
         _okRadios = (_okRadios select 0) select 1;
         _okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
-        [_fnc, [_radioId, _okRadios]] call EFUNC(sys_core,delayFrame);
+        [_fnc, [_radioId, _okRadios]] call CBA_fnc_execNextFrame;
     } else {
         private _fnc = {
             params["_radioId","_keyedRadios"];
@@ -62,7 +62,7 @@ if(hasInterface) then {
             true;
         };
         private _keyedRadios = HASH_KEYS(acre_sys_core_keyedRadioIds);
-        [_fnc, [_radioId, _keyedRadios]] call EFUNC(sys_core,delayFrame);
+        [_fnc, [_radioId, _keyedRadios]] call CBA_fnc_execNextFrame;
     };
 };
 _this call FUNC(handleSetData);

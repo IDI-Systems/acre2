@@ -11,7 +11,7 @@ for "_i" from 0 to (count _components)-1 do {
             private _binaryGainFile = getText(_component >> "binaryGainFile");
             if(_binaryGainFile != "") then {
                 private _res = ["load_antenna", [(configName _component), _binaryGainFile]] call EFUNC(sys_core,callExt);
-                diag_log text format["ACRE: Loaded Binary Antenna Data for %1 [%2]: %3", (configName _component), _binaryGainFile, _res];
+                INFO_3("Loaded Binary Atenna Data for %1 [%2]: %3",configName _component,_binaryGainFile,_res);
             };
         };
     };

@@ -22,8 +22,8 @@ if(IS_NUMBER(_curveScale)) then {
         ACRE_VOICE_CURVE_SCALE = _curveScale;
         publicVariable "ACRE_VOICE_CURVE_SCALE";
     } else {
-        diag_log text format["ACRE: VOICE CURVE SCALE MUST BE A NUMBER GREATER OR EQUAL TO 0"];
+        WARNING("Voice curve scale must be a number greater or equal to 0!");
     };
 } else {
-    diag_log text format["ACRE: VOICE CURVE SCALE MUST BE A NUMBER GREATER OR EQUAL TO 0"];
+    WARNING("Voice curve scale must be a number greater or equal to 0!");
 };
