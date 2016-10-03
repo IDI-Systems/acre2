@@ -62,8 +62,4 @@
 
 #define SET_TEXT(text, row, start, length) [_display, row, [start, start+length-1], text] call FUNC(setText)
 
-#define GET_STATE(id) ([GVAR(currentRadioId), "getState", #id] call EFUNC(sys_data,dataEvent))
-#define SET_STATE(id, val) ([GVAR(currentRadioId), "setState", [#id, val]] call EFUNC(sys_data,dataEvent))
-#define SET_STATE_CRIT(id, val) ([GVAR(currentRadioId), "setStateCritical", [#id, val]] call EFUNC(sys_data,dataEvent))
-
 #define MAIN_DISPLAY (findDisplay 31337)
