@@ -296,11 +296,13 @@ def main(argv):
                     response = subprocess.check_output(curl_string)
                     response_json = json.loads(response.decode("ascii"))
                     if("browser_download_url" in response_json):
+                        print(response_json)
                         print("Asset Attached @ {}".format(response_json["browser_download_url"]))
                     else:
                         raise Exception("Github Publish","Failed to Attach Asset")
                     
                 else:
+                    print(response_json)
                     raise Exception("Github Publish","Failed to Create Release")
 
     except Exception as e:
