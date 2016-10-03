@@ -18,7 +18,7 @@
 TRACE_1("Enter", "");
 
 if(diag_tickTime > GVAR(nextSearchTime)) then {
-    //GVAR(doFullSearch) = true;
+    GVAR(doFullSearch) = true;
 };
 
 // Short-scan checks that radios are with their last associated object.
@@ -176,8 +176,8 @@ if(GVAR(doFullSearch)) then {
             TRACE_1("calling updateIdObjects", _toUpdate);
             acre_player sideChat "Calling updateIdObjects";
         #endif
-        ["acre_updateIdObjects", _toUpdate] call CALLSTACK(LIB_fnc_globalEvent);
-    };
+	        ["acre_updateIdObjects", _toUpdate] call CALLSTACK(LIB_fnc_globalEvent);
+	    };
     GVAR(masterIdTable) = _idTable;
     GVAR(nextSearchTime) = diag_tickTime + 10;
 
