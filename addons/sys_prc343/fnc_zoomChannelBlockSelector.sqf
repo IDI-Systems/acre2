@@ -45,7 +45,7 @@ if (_direction == OUT) then {
         if!(IS_STRING(GVAR(currentRadioId))) exitWith {
             SCRATCH_SET(_radioId, "animation", false);
             [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
-            [_PFHid] call EFUNC(sys_sync,perFrame_remove);
+            [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
 
         // If currentRadioId is valid, check if it is equal to the temporary ID (_radioId)
@@ -82,7 +82,7 @@ if (_direction == OUT) then {
                         ["setOnOffState", 1] call GUI_DATA_EVENT;
                     };
                     [MAIN_DISPLAY] call CALLSTACK(FUNC(render));
-                    [_PFHid] call EFUNC(sys_sync,perFrame_remove);
+                    [_PFHid] call CBA_fnc_removePerFrameHandler;
                 };
             } else {
                     {
@@ -99,12 +99,12 @@ if (_direction == OUT) then {
             TRACE_2("Mismatch", _radioId, GVAR(currentRadioId));
             SCRATCH_SET(_radioId, "animation", false);
             [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
-            [_PFHid] call EFUNC(sys_sync,perFrame_remove);
+            [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
     };
 
     private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
-    ADDPFH(DFUNC(zoomOut_PFH), 0.05,ARR_2(_animationhandler,_tempRadioId))
+    ADDPFH(DFUNC(zoomOut_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
 
 };
 
@@ -128,7 +128,7 @@ if (_direction == IN) then {
         // If the CurrentRadioId is not existing (-1) -> Bug out
         if!(IS_STRING(GVAR(currentRadioId))) exitWith {
             SCRATCH_SET(_radioId, "animation", false);
-            [_PFHid] call EFUNC(sys_sync,perFrame_remove);
+            [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
 
         // If currentRadioId is valid, check if it is equal to the temporary ID (_radioId)
@@ -139,7 +139,7 @@ if (_direction == IN) then {
                 SCRATCH_SET(_radioId, "animation", false);
                 [MAIN_DISPLAY] call CALLSTACK(FUNC(render));
 
-                [_PFHid] call EFUNC(sys_sync,perFrame_remove);
+                [_PFHid] call CBA_fnc_removePerFrameHandler;
             } else {
                 if(_channelindex > 0 || _volumeindex != 3) then {
 
@@ -178,11 +178,11 @@ if (_direction == IN) then {
         } else {
             TRACE_2("Mismatch", _radioId, GVAR(currentRadioId));
             SCRATCH_SET(_radioId, "animation", false);
-            [_PFHid] call EFUNC(sys_sync,perFrame_remove);
+            [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
     };
 
     private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
-    ADDPFH(DFUNC(zoomIn_PFH), 0.05,ARR_2(_animationhandler,_tempRadioId))
+    ADDPFH(DFUNC(zoomIn_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
 
 };

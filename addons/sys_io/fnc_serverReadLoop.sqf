@@ -36,9 +36,10 @@ if(GVAR(pipeCode) == "1") then {
                 };
             } else {
                 GVAR(hasErrored) = true;
-                diag_log text format["%1 ACRE: ACRE HAS EXPERIENCED A PIPE ERROR AND PIPE IS NOW CLOSING!", COMPAT_diag_tickTime];
-                if(isMultiplayer) then {
-                    hint format["%1 ACRE: ACRE HAS EXPERIENCED A PIPE ERROR AND PIPE IS NOW CLOSING!", COMPAT_diag_tickTime];
+                private _msg = "Experienced a pipe error! Closing!";
+                WARNING(_msg);
+                if (isMultiplayer) then {
+                    hint _msg;
                 };
                 "ACRE2Arma" callExtension "1";
                 GVAR(pipeCode) = "0";

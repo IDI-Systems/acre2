@@ -1,241 +1,14 @@
 #include "script_component.hpp"
 
+// Lib - @todo put into functions in sys_core and rename to component sys_core across the board
 
 ADDON = false;
 ACRE_STACK_TRACE = [];
 ACRE_STACK_DEPTH = 0;
 ACRE_CURRENT_FUNCTION = "";
-diag_log text format["ACRE2 Library Loaded"];
+INFO("Library loaded.");
 
-FUNC(substring) = {
-    params ["_string","_start","_length"];
-    //params["_arr", "_i"];
-    /*_arr = toArray _arr;
-    private _ret = [];
-
-    private _x = 0;
-    while { _i < ((_this select 1)+(_this select 2)) } do {
-        _ret set[_x, (_arr select _i)];
-        _x = _x + 1;
-        _i = _i + 1;
-    };
-
-    _ret = toString _ret;*/
-    private _ret = _string select [_start, _length];
-
-    _ret
-};
-
-FUNC(find) = {
-    params["_searchIn", "_searchFor", ["_start",-1]];
-    private _ret = -1;
-
-    if(_start < 1) then {
-        _ret = _searchIn find _searchFor;
-    } else {
-        private _tempString = [_searchIn, _start, ((count _searchIn) - _start)] call FUNC(substring);
-        _ret = _tempString find _searchFor;
-        if(_ret > -1) then {
-            _ret = _ret + _start;
-        } else {
-            _ret = -1;
-        };
-    };
-
-    _ret
-};
-
-FUNC(hashCreate) = {
-    // diag_log text format["%1 HASH CREATE"];
-    [[],[]]
-};
-
-FUNC(hashSet) = {
-    // diag_log text format["%1 HASH SET: %2", diag_tickTime, _this];
-    params ["_hash", "_key", "_val"];
-
-    // ERRORDATA(3);
-    // try {
-        // if(VALIDHASH(_hash)) then {
-            private _index = (_hash select 0) find _key;
-            if(_index == -1) then {
-                _index = (_hash select 0) find "ACREHASHREMOVEDONOTUSETHISVAL";
-                if(_index == -1) then {
-                    _index = (count (_hash select 0));
-                };
-                (_hash select 0) set[_index, _key];
-            };
-            (_hash select 1) set[_index, _val];
-        // } else {
-            // ERROR("Input hash is not valid");
-        // };
-    // } catch {
-        // HANDLECATCH;
-    // };
-};
-
-FUNC(hashGet) = {
-    // diag_log text format["%1 HASH GET: %2", diag_tickTime, _this];
-    params ["_hash", "_key"];
-    // ERRORDATA(2);
-    private _returnValue = nil;
-    // try {
-        // if(VALIDHASH(_hash)) then {
-            private _index = (_hash select 0) find _key;
-            if(_index != -1) then {
-                _returnValue = (_hash select 1) select _index;
-                if(IS_STRING(_returnValue) && {_returnValue == "ACREHASHREMOVEDONOTUSETHISVAL"}) then {
-                    _returnValue = nil;
-                };
-            };
-        // } else {
-            // ERROR("Input hash is not valid");
-        // };
-    // } catch {
-        // HANDLECATCH;
-    // };
-    // if(isNil "_returnValue") exitWith { nil };
-    _returnValue
-};
-
-FUNC(hashHasKey) = {
-    // diag_log text format["%1 HASH HAS KEY: %2", diag_tickTime, _this];
-    params ["_hash", "_key"];
-
-    //ERRORDATA(2);
-    private _returnValue = false;
-    //try {
-        //if(VALIDHASH(_hash)) then {
-            private _index = (_hash select 0) find _key;
-            if(_index != -1) then {
-                _returnValue = true;
-            };
-        //} else {
-        //    ERROR("Input hash is not valid");
-        //};
-    // } catch {
-        // HANDLECATCH;
-    // };
-    // if(isNil "_returnValue") exitWith { nil };
-    _returnValue
-};
-
-FUNC(hashRem) = {
-    params ["_hash", "_key"];
-
-    // ERRORDATA(2);
-    private _val = nil;
-    // try {
-        // if(VALIDHASH(_hash)) then {
-            private _index = (_hash select 0) find _key;
-            if(_index != -1) then {
-                (_hash select 1) set[_index, "ACREHASHREMOVEDONOTUSETHISVAL"];
-                // is this hash is not part of a hash list?
-                // if it is we need to leave the keys intact.
-                if((count _hash) == 2) then {
-                    // if this is a standalone hash then we can clean it up
-                    (_hash select 0) set[_index, "ACREHASHREMOVEDONOTUSETHISVAL"];
-                    _hash set[0, ((_hash select 0) - ["ACREHASHREMOVEDONOTUSETHISVAL"])];
-                    _hash set[1, ((_hash select 1) - ["ACREHASHREMOVEDONOTUSETHISVAL"])];
-                };
-            };
-        // } else {
-            // ERROR("Input hash is not valid");
-        // };
-    // } catch {
-        // HANDLECATCH;
-    // };
-    true
-};
-
-FUNC(hashListCreateList) = {
-    params ["_keys"];
-    [_keys,[]];
-};
-
-FUNC(hashListCreateHash) = {
-    // _hashList = _this select 0;
-    params ["_hashList"];
-    // ERRORDATA(1);
-    private _hashKeys = [];
-    // try {
-        // if(VALIDHASH(_hashList)) then {
-            _hashKeys = (_hashList select 0);
-        // } else {
-            // ERROR("Input hashlist is not valid");
-        // };
-    // } catch {
-        // HANDLECATCH;
-    // };
-    [_hashKeys, []];
-};
-
-FUNC(hashListSelect) = {
-    params ["_hashList", "_index"];
-    // _hashList = _this select 0;
-    // _index = _this select 1;
-    // ERRORDATA(2);
-    private _hash = nil;
-    // try {
-        // if(VALIDHASH(_hashList)) then {
-            _hashList params ["_keys","_hashes"];
-            // if(_index < (count _hashes)) then {
-                private _values = _hashes select _index;
-
-                _hash = [_keys, _values, 1];
-            // } else {
-                // ERROR("Index of hashlist is out of range");
-            // };
-        // } else {
-            // ERROR("Input hashlist is not valid");
-        // };
-    // } catch {
-        // HANDLECATCH;
-    // };
-    _hash;
-};
-
-FUNC(hashListSet) = {
-    params ["_hashList", "_index", "_value"];
-    // ERRORDATA(3);
-    // try {
-        // if(VALIDHASH(_hashList)) then {
-            // if(VALIDHASH(_value)) then {
-                private _vals = _value select 1;
-
-                (_hashList select 1) set[_index, _vals];
-            // } else {
-                // ERROR("Set hash in hashlist is not valid");
-            // };
-        // } else {
-            // ERROR("Input hashlist is not valid");
-        // };
-    // } catch {
-        // HANDLECATCH;
-    // };
-};
-
-FUNC(hashListPush) = {
-    params ["_hashList", "_value"];
-
-    // ERRORDATA(2);
-    // try {
-        // if(VALIDHASH(_hashList)) then {
-            [_hashList, (count (_hashList select 1)), _value] call FUNC(hashListSet);
-        // } else {
-            // ERROR("Input hashlist in push not valid");
-        // };
-    // } catch {
-        // HANDLECATCH;
-    // };
-};
-
-FUNC(serverEvent) = {
-    CBA_e = _this;
-    publicVariableServer "CBA_e"; // Nasty short name to limit bandwidth.
-};
-
-FUNC(getGear) = {
+EFUNC(lib,getGear) = {
     params["_unit"];
     if (isNull _unit) exitWith {[]};
     // diag_log text format["Assigned Items: %1", (assignedItems _unit)];
@@ -246,7 +19,7 @@ FUNC(getGear) = {
     _gear;
 };
 
-FUNC(replaceGear) = {
+EFUNC(lib,replaceGear) = {
     params["_unit", "_itemToReplace", "_itemReplaceWith"];
 
     private _uniform = (uniformContainer _unit);
@@ -285,13 +58,12 @@ FUNC(replaceGear) = {
         if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_itemReplaceWith, 1];};
         if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_itemReplaceWith, 1];};
         if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_itemReplaceWith, 1];};
-        private _message = "ACRE2: Unable to add '%1' to your inventory.";
-        systemChat _message;
-        diag_log _message;
+        INFO("Unable to add '%1' to inventory.",_itemReplaceWith);
+        hintSilent format ["ACRE2: Unable to add '%1' to your inventory.", _itemReplaceWith];
     };
 };
 
-FUNC(removeGear) = {
+EFUNC(lib,removeGear) = {
     params["_unit", "_item"];
 
     /*_weapons = weapons _unit;
@@ -311,7 +83,7 @@ FUNC(removeGear) = {
     // };
 };
 
-FUNC(addGear) = {
+EFUNC(lib,addGear) = {
     params["_unit", "_item",["_gearContainer",""]];
 
     if( _gearContainer != "") then {
@@ -339,34 +111,17 @@ FUNC(addGear) = {
             if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_item, 1];};
         };
     };
-    // private _assignedItems = assignedItems _unit;
-    // private _needsAssigned = true;
-    // {
-        // private _simulationType = getText(configFile >> "CfgWeapons" >> _x >> "simulation");
-        // if(_simulationType == "ItemRadio") exitWith {
-            // _needsAssigned = false;
-        // };
-    // } forEach _assignedItems;
-    // if(_needsAssigned) then {
-        // _unit assignItem _item;
-    // };
 };
 
 ACRE_DUMPSTACK_FNC = {
     diag_log text format["ACRE CALL STACK DUMP: %1:%2(%3) DEPTH: %4", _this select 0, _this select 1, ACRE_CURRENT_FUNCTION, ACRE_STACK_DEPTH];
     for "_x" from ACRE_STACK_DEPTH-1 to 0 step -1 do {
         _stackEntry = ACRE_STACK_TRACE select _x;
-        _callTickTime = _stackEntry select 0;
-        _callFileName = _stackEntry select 1;
-        _callLineNumb = _stackEntry select 2;
-        _callFuncName = _stackEntry select 3;
-        _nextFuncName = _stackEntry select 4;
-        _nextFuncArgs = _stackEntry select 5;
+        _stackEntry params ["_callTickTime", "_callFileName", "_callLineNumb", "_callFuncName", "_nextFuncName", "_nextFuncArgs"];
 
         if(_callFuncName == "") then {
             _callFuncName = "<root>";
         };
-
 
         diag_log text format["%8%1:%2 | %3:%4(%5) => %6(%7)",
             _x+1,
@@ -381,7 +136,7 @@ ACRE_DUMPSTACK_FNC = {
     };
 };
 
-FUNC(getCompartment) = {
+EFUNC(lib,getCompartment) = {
     params["_unit"];
     private _vehicle = (vehicle _unit);
     private _compartment = "";
@@ -436,8 +191,8 @@ FUNC(getCompartment) = {
     };
     _compartment;
 };
-#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
-FUNC(fastHashCreate) = {
+
+EFUNC(lib,fastHashCreate) = {
     if(count FAST_HASH_POOL > 0) exitWith {
         private _ret = (FAST_HASH_POOL deleteAt 0);
         FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
@@ -449,14 +204,14 @@ FUNC(fastHashCreate) = {
     _ret;
 };
 
-FUNC(fastHashCopyArray) = {
+EFUNC(lib,fastHashCopyArray) = {
     private _newArray = [];
     {
         if(IS_HASH(_x)) then {
-            _newArray pushBack (_x call FUNC(fastHashCopy));
+            _newArray pushBack (_x call EFUNC(lib,fastHashCopy));
         } else {
             if(IS_ARRAY(_x)) then {
-                _newArray pushBack (_x call FUNC(fastHashCopyArray));
+                _newArray pushBack (_x call EFUNC(lib,fastHashCopyArray));
             } else {
                 _newArray pushBack _x;
             };
@@ -465,20 +220,20 @@ FUNC(fastHashCopyArray) = {
     _newArray;
 };
 
-FUNC(fastHashCopy) = {
+EFUNC(lib,fastHashCopy) = {
     private _return = [];
     if(IS_ARRAY(_this)) then {
-        _return = _this call FUNC(fastHashCopyArray);
+        _return = _this call EFUNC(lib,fastHashCopyArray);
     } else {
-        _return = (call FUNC(fastHashCreate));
+        _return = (call EFUNC(lib,fastHashCreate));
         {
             private _el = (_this getVariable _x);
             private _eln = _x;
             if(IS_ARRAY(_el)) then {
-                _return setVariable [_eln, (_el call FUNC(fastHashCopyArray))];
+                _return setVariable [_eln, (_el call EFUNC(lib,fastHashCopyArray))];
             } else {
                 if(IS_HASH(_el)) then {
-                    _return setVariable [_eln, (_el call FUNC(fastHashCopy))];
+                    _return setVariable [_eln, (_el call EFUNC(lib,fastHashCopy))];
                 } else {
                     _return setVariable [_eln, _el];
                 };
@@ -488,7 +243,7 @@ FUNC(fastHashCopy) = {
     _return;
 };
 
-FUNC(fastHashKeys) = {
+EFUNC(lib,fastHashKeys) = {
     private _keys = [];
     {
         if(!(isNil {_this getVariable _x})) then {
@@ -498,7 +253,7 @@ FUNC(fastHashKeys) = {
     _keys;
 };
 /*
-FUNC(fastHashSerialize) = {
+EFUNC(lib,fastHashSerialize) = {
     params ["_hash"];
     private _array = ["ACRE_FAST_HASH",[],[]];
     _keys = _array select 1;
@@ -511,7 +266,7 @@ FUNC(fastHashSerialize) = {
     _array;
 };
 
-FUNC(fastHashDeSerialize) = {
+EFUNC(lib,fastHashDeSerialize) = {
     params ["_array"];
     private _hash = HASH_CREATE;
     _keys = _array select 1;
@@ -647,7 +402,7 @@ private _garbageCollector = {
     };
 
 };
-[_garbageCollector, 0.25, []] call cba_fnc_addPerFrameHandler;
+[_garbageCollector, 0.25, []] call CBA_fnc_addPerFrameHandler;
 
 
 ADDON = true;

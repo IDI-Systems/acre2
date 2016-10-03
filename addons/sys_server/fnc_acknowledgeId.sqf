@@ -25,11 +25,11 @@ if((GVAR(unacknowledgedIds) find _class) != -1) then {
                 _class = _this;
                 GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];
             };
-            [_fnc, _class] call EFUNC(sys_core,delayFrame);
+            [_fnc, _class] call CBA_fnc_execNextFrame;
         };
     } else {
         GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];
     };
 } else {
-    diag_log text format["%1 ACRE ERROR: %2 attempted to acknowledge ID %3 which was not awaiting acknowledgement!", diag_tickTime, _player, _class];
+    WARNING_2("%1 attempted to acknowledge ID %2 which was not awaiting acknowledgement",_player,_class);
 };

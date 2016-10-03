@@ -1,6 +1,11 @@
 #define COMPONENT sys_prc117f
-
+#define COMPONENT_BEAUTIFIED AN/PRC-117F
 #include "\idi\acre\addons\main\script_mod.hpp"
+
+// #define DEBUG_MODE_FULL
+// #define DISABLE_COMPILE_CACHE
+// #define CBA_DEBUG_SYNCHRONOUS
+// #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_SYS_PRC117F
     #define DEBUG_MODE_FULL
@@ -12,6 +17,5 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 #include "\idi\acre\addons\sys_prc117f\menus\script_menus.hpp"
-
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"

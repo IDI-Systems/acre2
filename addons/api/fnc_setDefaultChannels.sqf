@@ -16,10 +16,9 @@
  */
 #include "script_component.hpp"
 
-params["_baseClass","_presetName"];
+params ["_baseClass","_presetName"];
 
-hintSilent "WARNING: ACRE API setDefaultChannels is depricated. Please use setRadioPreset";
-diag_log text format ["WARNING: ACRE API setDefaultChannels is depricated. Please use setRadioPreset"];
+ACRE_DEPRECATED(QFUNC(setDefaultChannels),"2.5.0",QFUNC(setRadioPreset));
 
 [_baseClass, _presetName] call EFUNC(sys_data,assignRadioPreset);
 

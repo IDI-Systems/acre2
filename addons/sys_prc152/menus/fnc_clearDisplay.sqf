@@ -24,10 +24,10 @@ FUNC(_internalClearDisplay) = {
     for "_i" from 0 to _columns do {
         private _id = ((_row * 1000) +1) + _i;
 
-        ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetBackgroundColor [0.1, 0.1, 0.1, 0];
-        ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetTextColor [0.1, 0.1, 0.1, 1];
-        ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlSetText "";
-        ((uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil]) displayCtrl (_id)) ctrlCommit 0;
+        ((uiNamespace getVariable [QGVAR(currentDisplay), nil]) displayCtrl (_id)) ctrlSetBackgroundColor [0.1, 0.1, 0.1, 0];
+        ((uiNamespace getVariable [QGVAR(currentDisplay), nil]) displayCtrl (_id)) ctrlSetTextColor [0.1, 0.1, 0.1, 1];
+        ((uiNamespace getVariable [QGVAR(currentDisplay), nil]) displayCtrl (_id)) ctrlSetText "";
+        ((uiNamespace getVariable [QGVAR(currentDisplay), nil]) displayCtrl (_id)) ctrlCommit 0;
     };
 };
 

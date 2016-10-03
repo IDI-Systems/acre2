@@ -176,7 +176,7 @@ DFUNC(doProcess) = {
         GVAR(rxSensitivityValue) = _lowerSensitivity;
         GVAR(rxSensitivityUpperValue) = _upperSensitivity;
 
-        if(isNil QUOTE(GVAR(txPosition))) exitWith {
+        if(isNil QGVAR(txPosition)) exitWith {
             hint format["Please set the Tx position."];
         };
 
@@ -244,7 +244,7 @@ DFUNC(doProcess) = {
                     true,
                     {
                         with uiNamespace do {
-                            diag_log text format["Completed area: %1", GVAR(areaProgress)];
+                            INFO_1("Completed area: %1",GVAR(areaProgress));
                             GVAR(completedAreas) pushBack +(GVAR(currentArgs) select GVAR(areaProgress));
                             _marker = (GVAR(rxAreas) select GVAR(areaProgress)) select 1;
                             _marker setMarkerBrushLocal "Border";

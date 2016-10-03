@@ -29,10 +29,10 @@
 
 #define TS3_PLUGIN_API_VERSION 20
 
-#define ACRE_NAME                "ACRE2"
-#define ACRE_URL                "ACRE2 Team - https://github.com/IDI-Systems/acre2"
-#define ACRE_DESC                "This plugin handles realistic radio and direct communcations in Arma 3."
-#define ACRE_COMMAND_KEYWORD    "ACRE2"
+#define ACRE_NAME "ACRE2"
+#define ACRE_URL "ACRE2 Team - https://github.com/IDI-Systems/acre2"
+#define ACRE_DESC "This plugin handles realistic radio and direct communcations in Arma 3."
+#define ACRE_COMMAND_KEYWORD "ACRE2"
 
 #define QUOTE_(x) #x
 #define QUOTE(x) QUOTE_(x)
@@ -40,10 +40,10 @@
 #define ACRE_VERSION QUOTE(ACRE_VERSION_MAJOR.ACRE_VERSION_MINOR.ACRE_VERSION_SUBMINOR.ACRE_VERSION_BUILD)
 #define ACRE_VERSION_METADATA "Version: "QUOTE(ACRE_VERSION_MAJOR)"."QUOTE(ACRE_VERSION_MINOR)"."QUOTE(ACRE_VERSION_SUBMINOR)"."QUOTE(ACRE_VERSION_BUILD)
 
-#define    ACRE_CURVE_MODEL_ORIGINAL        0
-#define    ACRE_CURVE_MODEL_AMPLITUDE        1
-#define    ACRE_CURVE_MODEL_SELECTABLE_A    2
-#define    ACRE_CURVE_MODEL_SELECTABLE_B    3
+#define ACRE_CURVE_MODEL_ORIGINAL 0
+#define ACRE_CURVE_MODEL_AMPLITUDE 1
+#define ACRE_CURVE_MODEL_SELECTABLE_A 2
+#define ACRE_CURVE_MODEL_SELECTABLE_B 3
 
 
 

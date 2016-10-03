@@ -1,12 +1,16 @@
 #include "script_component.hpp"
+
 class CfgPatches {
     class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = { "acre_main", "acre_sys_sync", "acre_sys_rpc", "acre_sys_data", "acre_sys_core" };
-        version = VERSION;
-        AUTHOR;
+        requiredAddons[] = {"acre_main", "acre_sys_rpc", "acre_sys_data", "acre_sys_core"};
+        author = ECSTRING(main,Author);
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
+
 #include "cfgEventhandlers.hpp"

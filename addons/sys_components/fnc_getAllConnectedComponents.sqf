@@ -26,7 +26,7 @@ if(!isNil "_parentComponentData") then {
         _return = [];
         {
             if(!isNil "_x") then {
-                PUSH(_return, ARR_2(_forEachIndex, _x));
+                PUSH(_return, [ARR_2(_forEachIndex,_x)]);
             };
         } forEach _parentConnectorData;
     };

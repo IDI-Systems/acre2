@@ -16,6 +16,6 @@
  */
 #include "script_component.hpp"
 
-[GVAR(PFHId)] call EFUNC(sys_sync,perFrame_remove);
+[GVAR(PFHId)] call CBA_fnc_removePerFrameHandler;
 GVAR(currentRadioId) = nil;
 true

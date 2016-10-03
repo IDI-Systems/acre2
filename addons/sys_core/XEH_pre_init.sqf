@@ -8,8 +8,6 @@ PREP(aliveMonitor);
 PREP(callExt);
 PREP(canUnderstand);
 PREP(cycleLanguage);
-PREP(delayFrame);
-PREP(delayFramePFH);
 PREP(findOcclusion);
 PREP(getAlive);
 PREP(getClientIdLoop);
@@ -43,7 +41,6 @@ PREP(spectatorOn);
 PREP(switchChannelFast);
 PREP(switchRadioEar);
 PREP(toggleHeadset);
-PREP(ts3idToPlayer);
 PREP(updateSelf);
 PREP(utilityFunction);
 
@@ -186,5 +183,6 @@ for "_i" from 1 to (_m/2) do {
         PUSH(ACRE_TESTANGLES, _negative);
     };
 };
+
 
 ADDON = true;

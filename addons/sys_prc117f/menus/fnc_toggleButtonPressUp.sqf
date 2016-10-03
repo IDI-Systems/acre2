@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 private _iconcontrol = 1000;
-private _display = uiNamespace getVariable [QUOTE(GVAR(currentDisplay)), nil];
+private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
 if(!isNil "_display") then {
     private _knobImageStr = QUOTE(PATHTOF(Data\knobs\prc117f_ui_keys_default.paa));
     (_display displayCtrl _iconcontrol) ctrlSetText _knobImageStr;

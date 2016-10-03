@@ -20,7 +20,7 @@
 
 params["_display"];
 
-uiNamespace setVariable [QUOTE(GVAR(currentDisplay)), _display];
+uiNamespace setVariable [QGVAR(currentDisplay), _display];
 
 SCRATCH_SET(GVAR(currentRadioId), "flashingText", []);
 SCRATCH_SET(GVAR(currentRadioId), "animations", []);

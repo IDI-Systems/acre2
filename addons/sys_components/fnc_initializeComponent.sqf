@@ -33,7 +33,9 @@ if(isNil "_connectorData") then {
 
     private _attributes = HASH_CREATE;
     private _componentClass = configFile >> "CfgAcreComponents" >> _component;
-    if(!isClass(_componentClass)) exitWith { diag_log text format["%1 ACRE ERROR: %2 is not a class type of CfgAcreComponents", diag_tickTime, _component]; };
+    if (!isClass _componentClass) exitWith {
+        WARNING_1("%1 is not a class type of CfgAcreComponents!",_component);
+    };
 
     private _componentSimple = getNumber(_componentClass >> "simple");
     if(_componentSimple == 1) then {
@@ -46,7 +48,7 @@ if(isNil "_connectorData") then {
             _return = true;
         };
     } else {
-        diag_log text format["%1 ACRE WARNING: Tried to initialize non-simple component attachment %2 on %3", diag_tickTime, _component, _radioId];
+        WARNING_2("Tried to initialize non-simple component attachment %1 on %2",_component,_radioId);
     };
 } forEach (getArray(_parentComponentClass >> "defaultComponents"));
 

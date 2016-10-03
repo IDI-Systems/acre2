@@ -41,7 +41,7 @@ if(MENU_TYPE(_menu) >= MENU_ACTION_NONE ) then {
             [_menu, _callerMenu] call MENU_SUBMENUS_ITEM(_menu, 0);
         };
         default {
-            diag_log text format["!!! UNHANDLED MENU ACTION TYPE"];
+            WARNING("Unhandled menu action type!")
         };
     };
 } else {

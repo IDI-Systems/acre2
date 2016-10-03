@@ -24,5 +24,5 @@ if((count _this) == 4) then {
     GVAR(hintDuration) = _this select 3;
 };
 
-99911 cutRsc [QUOTE(GVAR(radioCycleDisplay)), "PLAIN", GVAR(hintDuration)];
-99910 cutRsc [QUOTE(GVAR(radioCycleDisplayBG)), "PLAIN", 0.15];
+99911 cutRsc [QGVAR(radioCycleDisplay), "PLAIN", GVAR(hintDuration)];
+99910 cutRsc [QGVAR(radioCycleDisplayBG), "PLAIN", 0.15];
