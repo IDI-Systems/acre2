@@ -20,12 +20,12 @@
 
 TRACE_1("SYSTEM EVENT ENTER", _this);
 
-params["_eventKind","_radioId","_event",["_data",[]],["_remote",false]];
+params ["_eventKind","_radioId","_event",["_data",[]],["_remote",false]];
 private _return = nil;
 
 if(!HASH_HASKEY(GVAR(radioData), _radioId)) exitWith {
-    diag_log text format["%1 ACRE WARNING: Non-existent radio '%2' called %3 system event!", diag_tickTime, _radioId, _event];
-    nil;
+    WARNING_2("Non-existent radio '%1' called %2 system event!",_radioId,_event);
+    nil
 };
 private _radioData = HASH_GET(GVAR(radioData), _radioId);
 

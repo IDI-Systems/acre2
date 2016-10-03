@@ -24,7 +24,7 @@ inGameUISetEventHandler ['NextAction', 'true'];
 GVAR(keyBlock) = true;
 disableSerialization;
 
-57701 cutRsc [QUOTE(GVAR(VolumeControlDialog)), "PLAIN"];
+57701 cutRsc [QGVAR(VolumeControlDialog), "PLAIN"];
 
 _slider = (GVAR(VolumeControlDialog) select 0) displayCtrl 1900;
 _slider sliderSetRange [-2, 2];

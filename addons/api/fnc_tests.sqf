@@ -17,11 +17,11 @@
 
 GVAR(testResults) = [];
 
-#define ASSERT_BOOL(val1,val2)         (val1 == val2)
-#define ASSERT_STRING(val1,val2)    (val1 == val2)
-#define ASSERT_TYPE(val1,val2)        ((typeName val1) == val2)
-#define PASS(fncName)                PUSH(GVAR(testResults), ARR_2(#fncName, true))
-#define    FAIL(fncName)                PUSH(GVAR(testResults), ARR_2(#fncName, false))
+#define ASSERT_BOOL(val1,val2) (val1 == val2)
+#define ASSERT_STRING(val1,val2) (val1 == val2)
+#define ASSERT_TYPE(val1,val2) ((typeName val1) == val2)
+#define PASS(fncName) PUSH(GVAR(testResults), [ARR_2(#fncName,true)])
+#define FAIL(fncName) PUSH(GVAR(testResults), [ARR_2(#fncName,false)])
 
 /*
 acre_api_fnc_getBaseRadio

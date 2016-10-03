@@ -23,9 +23,9 @@ if((count GVAR(eventQueue)) > 0 && ACRE_DATA_SYNCED) then {
         if((_x select 4) <= diag_tickTime) then {
             private _data = (_x select 3) call FUNC(serialize);
             if((_x select 5) != "CfgAcreDataInterface") then {
-                PUSH(_sendEvents, ARR_5((_x select 0), (_x select 1), (_x select 2), _data, (_x select 5)));
+                PUSH(_sendEvents, [ARR_5(_x select 0,_x select 1,_x select 2,_data,_x select 5)]);
             } else {
-                PUSH(_sendEvents, ARR_4((_x select 0), (_x select 1), (_x select 2), _data));
+                PUSH(_sendEvents, [ARR_4(_x select 0,_x select 1,_x select 2,_data)]);
             };
         } else {
             PUSH(_newQueue, _x);

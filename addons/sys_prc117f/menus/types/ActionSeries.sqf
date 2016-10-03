@@ -18,9 +18,9 @@
 
 DFUNC(onButtonPress_ActionSeries) = {
     TRACE_1("onButtonPress_List", _this);
-    params["_menu", "_event"];
+    params ["_menu", "_event"];
 
-    ERROR("This shouldnt hit", "This should not have been reached");
+    WARNING("AN/PRC-117F Menu Error!, This should not have been reached!");
 };
 
 DFUNC(renderMenu_ActionSeries) = {

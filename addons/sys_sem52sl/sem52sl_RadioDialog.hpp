@@ -166,7 +166,7 @@ class RscTitles
     {
         idd = 19008;
         MovingEnable = 0;
-        name = QUOTE(GVAR(volumeKnobPicture));
+        name = QGVAR(volumeKnobPicture);
         duration = 2;
         fadein = 0;
         onLoad = QUOTE([(_this select 0)] call FUNC(_showVolumeKnob));

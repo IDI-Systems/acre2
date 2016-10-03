@@ -23,7 +23,10 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(co
 private _childComponentClass = configFile >> "CfgAcreComponents" >> _childComponentType;
 
 private _componentSimple = getNumber(_childComponentClass >> "simple");
-if(_componentSimple == 0) exitWith { diag_log text format["%1 ACRE ERROR: %2 is not a simple component!", diag_tickTime, _childComponentType]; false; };
+if (_componentSimple == 0) exitWith {
+    WARNING_1("%1 is not a simple component!",_childComponentType);
+    false
+};
 
 private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")) select _parentConnector) select 1;
 private _childConnectorType = getNumber(_childComponentClass >> "connector");

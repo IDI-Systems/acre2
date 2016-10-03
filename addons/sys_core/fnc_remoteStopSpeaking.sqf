@@ -24,11 +24,9 @@ _speakingId = parseNumber _speakingId;
     if(!isNil "_unit") then {
 
         _found = true;
-        #ifdef PLATFORM_A3
         _unit setRandomLip false;
-        #endif
         REM(GVAR(speakers),_unit);
-        private _radioId = _unit getVariable[QUOTE(GVAR(currentSpeakingRadio)), ""];
+        private _radioId = _unit getVariable[QGVAR(currentSpeakingRadio), ""];
         //if(ACRE_BROADCASTING_RADIOID != _radioId) then {
             if(_radioId != "") then {
                 if(_unit in GVAR(keyedMicRadios)) then {
@@ -41,7 +39,7 @@ _speakingId = parseNumber _speakingId;
                     if(_unit != acre_player && ACRE_SIGNAL_DEBUGGING > 0) then {
                         private _signalTrace = missionNamespace getVariable [_radioId + "_signal_trace", []];
                         private _signalStartTime = missionNamespace getVariable [_radioId + "_signal_startTime", diag_tickTime];
-                        diag_log text format["ACRE TX from %1 (on radio %2, distance at end: %3 m), duration %4s: %5", name _unit, _radioId, (_unit distance acre_player), diag_tickTime-_signalStartTime, _signalTrace];
+                        INFO_5("ACRE TX from %1 (on radio %2, distance at end: %3 m), duration %4s: %5",name _unit,_radioId,_unit distance acre_player,diag_tickTime-_signalStartTime,_signal_trace);
                     };
                     missionNamespace setVariable [_radioId + "_signal_trace", []];
                     private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + GVAR(nearRadios), false] call EFUNC(sys_modes,checkAvailability);
@@ -62,7 +60,7 @@ _speakingId = parseNumber _speakingId;
         // };
         REM(GVAR(keyedMicRadios),_unit);
 
-        _unit setVariable[QUOTE(GVAR(currentSpeakingRadio)), ""];
+        _unit setVariable[QGVAR(currentSpeakingRadio), ""];
         _unit setVariable[QUOTE(currentListeningRadio), ""];
         TRACE_2("speakers",GVAR(speakers),GVAR(keyedMicRadios));
         if(_unit == acre_player) then {
@@ -74,9 +72,9 @@ _speakingId = parseNumber _speakingId;
         REM(GVAR(spectatorSpeakers), _speakingId);
     };
     if(!_found) then {
-        private _msg = format["STOP SPEAKING: Player [%1] could not find a player with ID: %2 %3", acre_player, _speakingId, _netId];
+        private _msg = format ["STOP SPEAKING: Player [%1] could not find a player with ID: %2 %3", acre_player, _speakingId, _netId];
         // REMOTEDEBUGMSG(_msg);
-        diag_log text format["%1 ACRE: %2", diag_tickTime, _msg];
+        WARNING(_msg);
     };
     TRACE_1("REMOTE STOPPED SPEAKING",_speakingId);
 

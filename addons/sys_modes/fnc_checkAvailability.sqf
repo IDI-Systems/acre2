@@ -24,7 +24,7 @@ private _foundRadios = [];
     private _matches = [];
     private _exit = false;
     private _radioId1 = _x;
-    PUSH(_foundRadios, ARR_2(_radioId1, _matches));
+    PUSH(_foundRadios, [ARR_2(_radioId1,_matches)]);
     private _radio1Data = [_radioId1, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     private _mode1 = HASH_GET(_radio1Data, "mode");
     private _functionName = getText(configFile >> "CfgAcreRadioModes" >> _mode1 >> "availability");
