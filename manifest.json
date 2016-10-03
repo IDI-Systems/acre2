@@ -49,7 +49,7 @@
                     "cred_file": "acre_release_steam.json",
                     "project_id": 774084145,
                     "release_dir": "P:\\idi\\acre\\release\\@acre2",
-                    "release_text": "P:\\idi\\acre\\release\\@acre2\\README.md"
+                    "release_text": "P:\\idi\\acre\\dummy_release_notes.txt"
                 },
                 {
                     "type": "sftp",
@@ -64,7 +64,7 @@
                     "tag_name": "v{major}.{minor}.{patch}.{build}",
                     "branch": "development-build",
                     "name": "v{major}.{minor}.{patch}.{build}",
-                    "body_file": "P:\\idi\\acre\\release\\@acre2\\README.md",
+                    "body_file": "P:\\idi\\acre\\dummy_release_notes.txt",
                     "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}.zip",
                     "asset_name": "acre2_{major}.{minor}.{patch}.{build}.zip",
                     "prerelease": true
