@@ -150,12 +150,12 @@ DFUNC(onButtonPress_Frequency) = {
             TRACE_1("onButtonPress_Frequency: ENT hit", _value);
 
             private _saveName = MENU_SELECTION_VARIABLE(_menu);
-            SET_STATE("_saveName", _value);
+            SET_STATE(_saveName, _value);
 
             SCRATCH_SET(GVAR(currentRadioId), "menuFrequency", 0);
             SCRATCH_SET(GVAR(currentRadioId), "menuFrequencyCursor", 0.0);
 
-            TRACE_2("Saved", _saveName, (GET_STATE("_saveName")));
+            TRACE_2("Saved", _saveName, (GET_STATE(_saveName)));
 
             // Our parent?
             TRACE_1("Parent", MENU_PARENT_ID(_menu));

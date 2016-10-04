@@ -149,12 +149,12 @@ DFUNC(onButtonPress_Number) = {
             TRACE_1("onButtonPress_Number: ENT hit", _value);
 
             private _saveName = MENU_SELECTION_VARIABLE(_menu);
-            SET_STATE("_saveName", _value);
+            SET_STATE(_saveName, _value);
 
             SCRATCH_SET(GVAR(currentRadioId), "menuNumber", nil);
             SCRATCH_SET(GVAR(currentRadioId), "menuNumberCursor", 0);
 
-            TRACE_2("Saved", _saveName, (GET_STATE("_saveName")));
+            TRACE_2("Saved", _saveName, (GET_STATE(_saveName)));
 
             // Our parent?
             TRACE_1("Parent", MENU_PARENT_ID(_menu));
