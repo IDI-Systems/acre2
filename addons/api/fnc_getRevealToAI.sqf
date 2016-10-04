@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Returns whether the player reveal to AI direct speech system is enabled.
+ * Returns whether the player reveal to AI direct speech system is enabled. Return value is only valid on a player client.
  *
  * Arguments:
  * None
