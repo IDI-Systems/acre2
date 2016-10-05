@@ -22,7 +22,7 @@ params["_newMenu"];
 
 
 // clear menu data
-SET_STATE("menuSelection" , 0);
+SET_STATE("menuSelection", 0);
 
 //
 //

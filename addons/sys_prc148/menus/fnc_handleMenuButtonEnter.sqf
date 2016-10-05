@@ -17,15 +17,15 @@
 #include "script_component.hpp"
 
 private _menuEntry = (GVAR(currentMenu) select (GVAR(entryMap) select 0)) select (GVAR(entryMap) select 1);
-if(!GET_STATE(editEntry)) then {
-    SET_STATE(editEntry, true);
+if(!GET_STATE("editEntry")) then {
+    SET_STATE("editEntry", true);
     _menuEntry = (GVAR(currentMenu) select (GVAR(entryMap) select 0)) select (GVAR(entryMap) select 1);
     _menuEntry params ["", "_value", "_row", "_range", "_type"];
 
     switch _type do {
         case MENU_TYPE_TEXT: {
             SET_ENTRY_INDEX(0);
-            SET_STATE(currentEditEntry, _value);
+            SET_STATE("currentEditEntry", _value);
         };
         case MENU_TYPE_NUM: {
             private _format = _menuEntry select 6;
@@ -48,25 +48,25 @@ if(!GET_STATE(editEntry)) then {
             //acre_player sideChat format["VAL: '%1'", _value];
             private _length = (count (toArray _value))-1;
             SET_ENTRY_INDEX(_length);
-            SET_STATE(currentEditEntry, _value);
+            SET_STATE("currentEditEntry", _value);
         };
         case MENU_TYPE_LIST: {
-            SET_STATE(currentEditEntry, _value);
+            SET_STATE("currentEditEntry", _value);
         };
         case MENU_TYPE_MENU: {
             private _call = _menuEntry select 5;
-            private _newValue = GET_STATE(currentEditEntry);
+            private _newValue = GET_STATE("currentEditEntry");
             [_newValue, _menuEntry] call _call;
-            SET_STATE(editEntry, false);
-            SET_STATE(currentEditEntry, "")
+            SET_STATE("editEntry", false);
+            SET_STATE("currentEditEntry", "")
         };
     };
 } else {
     //acre_player sideChat "BOOP SHABOOP";
     private _call = _menuEntry select 5;
-    private _newValue = GET_STATE(currentEditEntry);
+    private _newValue = GET_STATE("currentEditEntry");
     [_newValue, _menuEntry] call _call;
-    SET_STATE(editEntry, false);
-    SET_STATE(currentEditEntry, "")
+    SET_STATE("editEntry", false);
+    SET_STATE("currentEditEntry", "")
 
 };

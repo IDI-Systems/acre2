@@ -31,7 +31,7 @@ if (_knobPosition == 15) then { //programming mode
     switch (_step) do {
         case 0: {
             [GVAR(currentRadioId), "setState", ["programmingStep",1]] call EFUNC(sys_data,dataEvent);
-            private _channels = GET_STATE(channels);
+            private _channels = GET_STATE("channels");
             private _channel = _channels select GVAR(selectedChannel);
             private _freq = HASH_GET(_channel,"frequencyRX");
             GVAR(selectionDir) = 0;
@@ -47,7 +47,7 @@ if (_knobPosition == 15) then { //programming mode
         };
         case 2: {
             // SAVE.
-            private _channels = GET_STATE(channels);
+            private _channels = GET_STATE("channels");
             private _channel = _channels select GVAR(selectedChannel);
             HASH_SET(_channel,"frequencyRX",GVAR(newFrequency));
             HASH_SET(_channel,"frequencyTX",GVAR(newFrequency));

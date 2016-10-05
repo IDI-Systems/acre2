@@ -18,7 +18,7 @@
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
 DFUNC(GroupDisplay_Render) = {
-    _groups = GET_STATE(groups);
+    _groups = GET_STATE("groups");
     _options = [];
     _labels = [];
     SET_TEXT("GROUP =", BIG_LINE_3, 4, 10);
@@ -34,7 +34,7 @@ DFUNC(GroupDisplay_Render) = {
     GVAR(currentMenu) =
     [
         [
-            ["groupSelect", GET_STATE_DEF(currentGroup, 0), BIG_LINE_3, [12, 14], MENU_TYPE_LIST, FUNC(GroupDisplay_Select), _labels, _options]
+            ["groupSelect", GET_STATE_DEF("currentGroup", 0), BIG_LINE_3, [12, 14], MENU_TYPE_LIST, FUNC(GroupDisplay_Select), _labels, _options]
         ]
     ];
 
@@ -50,10 +50,10 @@ DFUNC(GroupDisplay_Select) = {
 
     //diag_log text format["new: %1", _newValue];
     _newGroup = (_menuEntry select 7) select _newValue;
-    SET_STATE_CRIT(currentGroup, _newGroup);
+    SET_STATE_CRIT("currentGroup", _newGroup);
 
-    _group = GET_STATE(groups) select GET_STATE(currentGroup);
-    _channelPosition = GET_STATE(channelKnobPosition);
+    _group = GET_STATE("groups") select GET_STATE("currentGroup");
+    _channelPosition = GET_STATE("channelKnobPosition");
 
 
 

@@ -31,18 +31,18 @@ DFUNC(DefaultDisplay_Render) = {
     //[_display, ICON_SIDECONNECTOR, true] call FUNC(showIcon);
 
 
-    _group = GET_STATE(groups) select GET_STATE(currentGroup);
+    _group = GET_STATE("groups") select GET_STATE("currentGroup");
 
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
     _groupLabel = _group select 0;
 
-    _channel = HASHLIST_SELECT(GET_STATE(channels), _channelNumber);
+    _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
 
     _channelLabel = HASH_GET(_channel, "label");
 
     SET_TEXT(_groupLabel, SMALL_LINE_1, 6, 8);
     SET_TEXT(_channelLabel, SMALL_LINE_2, 6, 12);
-    if(GET_STATE_DEF(SAEnabled, false)) then {
+    if(GET_STATE_DEF("SAEnabled", false)) then {
         SET_TEXT("SA", SMALL_LINE_4, 9, 10);
     };
 
@@ -78,10 +78,10 @@ DFUNC(DefaultDisplay_ENT) = {
 DFUNC(AlternateDisplay_Render) = {
     params["_display"];
 
-    _group = GET_STATE(groups) select GET_STATE(currentGroup);
+    _group = GET_STATE("groups") select GET_STATE("currentGroup");
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
 
-    _channel = HASHLIST_SELECT(GET_STATE(channels), _channelNumber);
+    _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
 
     _channelMode = HASH_GET(_channel, "channelMode");
     switch _channelMode do {

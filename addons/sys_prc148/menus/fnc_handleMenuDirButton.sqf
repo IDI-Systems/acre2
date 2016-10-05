@@ -19,7 +19,7 @@
 params["_dir", "_params"];
 
 //acre_player sideChat format["p: %1", _params];
-if(GET_STATE(editEntry)) then {
+if(GET_STATE("editEntry")) then {
     private _alt = _params select 7;
     private _menuEntry = (GVAR(currentMenu) select (GVAR(entryMap) select 0)) select (GVAR(entryMap) select 1);
     _menuEntry params ["", "_value", "_row", "_range", "_type"];
@@ -36,7 +36,7 @@ if(GET_STATE(editEntry)) then {
             };
             SET_ENTRY_INDEX(_newIndex);
         } else {
-            _value = GET_STATE(currentEditEntry);
+            _value = GET_STATE("currentEditEntry");
             //acre_player sideChat format["v: '%1'", _value];
             private _length = (count (toArray _value))-1;
 
@@ -54,7 +54,7 @@ if(GET_STATE(editEntry)) then {
         switch _type do {
             case MENU_TYPE_LIST: {
                 private _list = _menuEntry select 7;
-                _value = GET_STATE(currentEditEntry);
+                _value = GET_STATE("currentEditEntry");
                 _index = _list find _value;
 
                 _index = _index + _dir;
@@ -65,11 +65,11 @@ if(GET_STATE(editEntry)) then {
                     _index = 0;
                 };
                 _value = _list select _index;
-                SET_STATE(currentEditEntry, _value);
+                SET_STATE("currentEditEntry", _value);
             };
             case MENU_TYPE_TEXT: {
                 private _entryIndex = ENTRY_INDEX;
-                _value = GET_STATE(currentEditEntry);
+                _value = GET_STATE("currentEditEntry");
                 if(isNil "_value") then {
                     _value = "";
                     for "_i" from 1 to (_range select 1) - (_range select 0) do {
@@ -91,12 +91,12 @@ if(GET_STATE(editEntry)) then {
                 //acre_player sideChat format["_valArray after: %1", _valArray];
                 _value = toString _valArray;
 
-                SET_STATE(currentEditEntry, _value);
+                SET_STATE("currentEditEntry", _value);
             };
             case MENU_TYPE_NUM: {
 
                 private _entryIndex = ENTRY_INDEX;
-                _value = GET_STATE(currentEditEntry);
+                _value = GET_STATE("currentEditEntry");
                 //acre_player sideChat format["ei: %1", _entryIndex];
                 private _valArray = toArray _value;
                 private _currentCharValue = toString [_valArray select _entryIndex];
@@ -112,7 +112,7 @@ if(GET_STATE(editEntry)) then {
                 //acre_player sideChat format["_valArray after: %1", _valArray];
                 _value = toString _valArray;
 
-                SET_STATE(currentEditEntry, _value);
+                SET_STATE("currentEditEntry", _value);
             };
         };
     };
