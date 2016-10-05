@@ -24,8 +24,8 @@ if(_dir == 0) then {
         _dir = -1;
     };
 };
-private _group = GET_STATE(groups) select GET_STATE(currentGroup);
-private _channelPositionOld = GET_STATE(channelKnobPosition);
+private _group = GET_STATE("groups") select GET_STATE("currentGroup");
+private _channelPositionOld = GET_STATE("channelKnobPosition");
 
 private _channelPosition = _channelPositionOld + _dir;
 
@@ -38,7 +38,7 @@ if(_channelPosition < 0) then {
 };
 if(_channelPositionOld != _channelPosition) then {
     ["Acre_GenericClick", [0,0,0], [0,0,0], 0.6, false] call EFUNC(sys_sounds,playSound);
-    SET_STATE_CRIT(channelKnobPosition, _channelPosition);
+    SET_STATE_CRIT("channelKnobPosition", _channelPosition);
 
 
     if(_channelPosition > (count (_group select 1))-1) then {
@@ -46,12 +46,12 @@ if(_channelPositionOld != _channelPosition) then {
     };
     private _channelNumber = (_group select 1) select _channelPosition;
     ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
-    // if(GET_STATE(currentState) == "AlternateDisplay") then {
+    // if(GET_STATE("currentState") == "AlternateDisplay") then {
         // [GVAR(currentRadioId), "DefaultDisplay"] call FUNC(changeState);
     // };
-    if(GET_STATE(editEntry)) then {
-        SET_STATE(editEntry, false);
-        SET_STATE(currentEditEntry, "");
+    if(GET_STATE("editEntry")) then {
+        SET_STATE("editEntry", false);
+        SET_STATE("currentEditEntry", "");
     };
     [GET_DISPLAY] call FUNC(render);
 };

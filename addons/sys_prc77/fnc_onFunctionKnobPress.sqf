@@ -25,11 +25,11 @@ if(_key == 0) then {
 };
 
 //Read out the currentFunction via DataEvent
-private _currentFunction = GET_STATE(function);
+private _currentFunction = GET_STATE("function");
 
 //Define and set new function
 private _newFunction = ((_currentFunction + _dir) max 0) min 4;
-SET_STATE_CRIT(function, _newFunction);
+SET_STATE_CRIT("function", _newFunction);
 
 //Handle new function
 if(_newFunction != _currentFunction) then {
@@ -39,14 +39,14 @@ if(_newFunction != _currentFunction) then {
         ["setOnOffState", 0] call GUI_DATA_EVENT;
     };
     if(_newFunction == 1) then {
-        SET_STATE(squelch, 0);
-        SET_STATE(CTCSSRx, 0);
-        SET_STATE(CTCSSTx, 0);
+        SET_STATE("squelch", 0);
+        SET_STATE("CTCSSRx", 0);
+        SET_STATE("CTCSSTx", 0);
     };
     if(_newFunction == 2) then {
-        SET_STATE(squelch, 3);
-        SET_STATE(CTCSSRx, 150);
-        SET_STATE(CTCSSTx, 150);
+        SET_STATE("squelch", 3);
+        SET_STATE("CTCSSRx", 150);
+        SET_STATE("CTCSSTx", 150);
     };
     // if(_newFunction == 3) then {
         // Retrans

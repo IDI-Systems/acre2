@@ -19,7 +19,7 @@
 #define IN 0
 #define OUT 1
 
-private _currentView = GET_STATE(currentView);
+private _currentView = GET_STATE("currentView");
 params ["","_key"];
 
 if(_key == 0) then {
@@ -29,7 +29,7 @@ if(_key == 0) then {
     _newView = IN;
     };
     if(_newView != _currentView) then {
-    SET_STATE(currentView, _newView);
+    SET_STATE("currentView", _newView);
     [_newView] call CALLSTACK(FUNC(zoomChannelBlockSelector));
     };
 };

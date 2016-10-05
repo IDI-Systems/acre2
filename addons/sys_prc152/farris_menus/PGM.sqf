@@ -24,25 +24,25 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
         ["SYSTEM PRESETS", "SYSTEM PRESETS", "PGM-SYS PRESETS",
             MENUTYPE_LIST, [
                 [nil, "SYSTEM PRESET CONFIG", nil, MENU_ACTION_SUBMENU, ["SYSTEM PRESET CONFIG"] ],
-                [nil, "RESET SYSTEM PRESET", nil,  MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ], 
-                [nil, "SYSTEM SCAN CONFIG", nil,  MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ] 
+                [nil, "RESET SYSTEM PRESET", nil,  MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ],
+                [nil, "SYSTEM SCAN CONFIG", nil,  MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ]
             ],
             nil
         ],
         ["RADIO CONFIG", "RADIO CONFIG", "PGM-RADIO",
-            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil 
+            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil
         ],
         ["VULOS CONFIG", "VULOS CONFIG", "PGM-VULOS",
-            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil 
+            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil
         ],
         ["SINCGARS CONFIG", "SINCGARS CONFIG", "PGM-SINCGARS",
-            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil 
+            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil
         ],
         ["HAVEQUICK II CONFIG", "HAVEQUICK II CONFIG", "PGM-HAVEQUICK",
-            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil 
+            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil
         ],
         ["P25 CONFIG", "P25 CONFIG", "PGM-P25",
-            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil 
+            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil
         ]
     ],
     nil
@@ -54,8 +54,8 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
     MENUTYPE_ACTIONSERIES,
     [
         [nil, "SYSTEM PRESET NUMBER", "PGM-SYS PRESETS-CFG",
-            MENUTYPE_NUMBER, 
-            [    
+            MENUTYPE_NUMBER,
+            [
                 [ROW_LARGE_2, ALIGN_CENTER, "SYSTEM PRESET NUMBER"],
                 [ROW_LARGE_3, ALIGN_CENTER, "%1-%ch-description"],
                 [ROW_SMALL_5, ALIGN_CENTER, "ENTER 01 TO 99"]
@@ -77,18 +77,18 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
             "pgm_preset_number"
         ],
         [nil, "PRESET DESCRIPTION", "PGM-SYS PRESETS-CFG",
-            MENUTYPE_ALPHANUMERIC, 
-            [    
+            MENUTYPE_ALPHANUMERIC,
+            [
                 [ROW_LARGE_2, ALIGN_CENTER, "PRESET DESCRIPTION"],
                 [ROW_LARGE_3, ALIGN_LEFT, "%1"],
                 [ROW_SMALL_5, ALIGN_CENTER, "ENTER DESCRIPTION"]
             ],
             [
-                { 
+                {
                     _value = GET_RADIO_VALUE("description");
                     SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                 },
-                nil, 
+                nil,
                 nil
             ],
             [
@@ -98,8 +98,8 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
             "pgm_description"
         ],
         [nil, "PRESET WAVEFORM", "PGM-SYS PRESETS-CFG",
-            MENUTYPE_SELECTION, 
-            [    
+            MENUTYPE_SELECTION,
+            [
                 [ROW_LARGE_2, ALIGN_CENTER, "PRESET WAVEFORM"],
                 [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                 [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -119,7 +119,7 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
     [nil,
     nil],    // This will be called after every action within the action list
      // This will get called on series completion
-    { 
+    {
         TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", _this);
         // Set the current channel to the edited preset, and save the so-far-edited values
         _channelNumber = GET_STATE("pgm_preset_number") - 1;
@@ -130,24 +130,24 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
         _channels = GET_STATE("channels");
         _channel = HASHLIST_SELECT(_channels, _channelNumber);
         //TRACE_3("Retrieving radio information", _channelNumber, _channel, _channels);
-        
-        HASH_SET(_channel, "description", _channelDescription); 
-        //HASH_SET(_channel, "type", (["channelMode", _channelWaveform, 1] call FUNC(formatChannelValue))); 
+
+        HASH_SET(_channel, "description", _channelDescription);
+        //HASH_SET(_channel, "type", (["channelMode", _channelWaveform, 1] call FUNC(formatChannelValue)));
         HASH_SET(_channel, "type", "BASIC");
         //TRACE_1("Setting", _channel);
-        
+
         HASHLIST_SET(_channels, _channelNumber, _channel);
         SET_STATE("channels", _channels);
-        
+
         SET_STATE("pgm_preset_number", 0);
         SET_STATE("pgm_preset_waveform", nil);
         SET_STATE("pgm_description", nil);
-        
+
         // Now move on to our inner PGM menu
-        // Because this action series ends differently, we call out our change menu rather than 
+        // Because this action series ends differently, we call out our change menu rather than
         // Let the action series handle backing us out.
         ["PGM PRESET"] call FUNC(changeMenu);
-        
+
         true
     },
     "PGM"
@@ -160,14 +160,14 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             MENUTYPE_ACTIONSERIES,
             [
                 [nil, "PRESET DESCRIPTION", "PGM-SYS PRESETS-CFG",
-                    MENUTYPE_ALPHANUMERIC, 
-                    [    
+                    MENUTYPE_ALPHANUMERIC,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "PRESET DESCRIPTION"],
                         [ROW_LARGE_3, ALIGN_LEFT, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "ENTER DESCRIPTION"]
                     ],
                     [
-                        { 
+                        {
                             _value = GET_RADIO_VALUE("description");
                             SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                         }, // onEntry
@@ -181,8 +181,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     "pgm_preset_description"
                 ],
                 [nil, "PRESET TYPE", "PGM-SYS PRESETS-CFG",
-                    MENUTYPE_SELECTION, 
-                    [    
+                    MENUTYPE_SELECTION,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "PRESET TYPE"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -202,27 +202,27 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             [nil,
             nil],    // This will be called after every action within the action list
              // This will get called on series completion
-            { 
+            {
                 // Set the current channel to the edited preset, and save the so-far-edited values
                 _channelType = GET_STATE("pgm_preset_type");
                 _channelDescription = GET_STATE("pgm_preset_description");
-                
+
                 if(isNil "_channelType" || isNil "_channelDescription") exitWith {};
-                
+
                 _channelDescription = [_channelDescription] call CBA_fnc_trim;
-                
+
                 _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                 _channels = GET_STATE("channels");
                 _channel = HASHLIST_SELECT(_channels, _channelNumber);
                 //TRACE_3("Retrieving radio information", _channelNumber, _channel, _channels);
-                
-                HASH_SET(_channel, "description", _channelDescription); 
+
+                HASH_SET(_channel, "description", _channelDescription);
                 HASH_SET(_channel, "type", _channelType);
                 //TRACE_1("Setting", _channel);
-                
+
                 HASHLIST_SET(_channels, _channelNumber, _channel);
                 SET_STATE("channels", _channels);
-                
+
                 SET_STATE("pgm_preset_type", nil);
                 SET_STATE("pgm_preset_description", nil);
             }
@@ -231,8 +231,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             MENUTYPE_ACTIONSERIES,
             [
                 [nil, "RX FREQUENCY", "PGM-SYS PRESETS-CFG-RX",
-                    MENUTYPE_FREQUENCY, 
-                    [    
+                    MENUTYPE_FREQUENCY,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "RX FREQUENCY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "ENTER FERQUENCY"]
@@ -254,8 +254,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     "pgm_rx_freq"
                 ],
                 [nil, "RX ONLY", "PGM-SYS PRESETS-CFG-RX",
-                    MENUTYPE_SELECTION, 
-                    [    
+                    MENUTYPE_SELECTION,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "RECEIVE ONLY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -263,10 +263,10 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         nil,
                         nil,
-                        nil, 
+                        nil,
                         nil,
                         {
-                            // If its RX only, zero out the TX frequency and 
+                            // If its RX only, zero out the TX frequency and
                             // Skip the rest of the menus
                             _menu = _this select 0;
                             _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_rx_only", "NO");
@@ -285,8 +285,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     "pgm_rx_only"
                 ],
                 [nil, "TX_USE_RX", "PGM-SYS PRESETS-CFG-TX",
-                    MENUTYPE_SELECTION, 
-                    [    
+                    MENUTYPE_SELECTION,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "TX FREQUENCY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -315,8 +315,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     "pgm_tx"
                 ],
                 [nil, "TX FREQUENCY", "PGM-SYS PRESETS-CFG-RX",
-                    MENUTYPE_FREQUENCY, 
-                    [    
+                    MENUTYPE_FREQUENCY,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "TX FREQUENCY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "ENTER FERQUENCY"]
@@ -339,47 +339,47 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 ]
             ],
             [nil, nil],
-            { 
+            {
                 // Set the current channel to the edited preset, and save the so-far-edited values
                 _channelType = GET_STATE("pgm_preset_type");
                 _rx = GET_STATE("pgm_rx_freq");
                 _tx = GET_STATE("pgm_tx_freq");
                 _rxOnly = SCRATCH_GET(GVAR(currentRadioId), "pgm_rx_only");
                 if(_rxOnly == "YES") then { _rxOnly = true; } else { _rxOnly = false; };
-                
+
                 if(isNil "_rx" || isNil "_tx") exitWith {};
-                
+
                 _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                 _channels = GET_STATE("channels");
                 _channel = HASHLIST_SELECT(_channels, _channelNumber);
-                
+
                 TRACE_3("Retrieving radio information", _channelNumber, _channel, _channels);
                 TRACE_3("Saving", _rx, _tx, _rxOnly);
-                
-                HASH_SET(_channel, "frequencyRX", _rx); 
+
+                HASH_SET(_channel, "frequencyRX", _rx);
                 HASH_SET(_channel, "frequencyTX", _tx);
                 HASH_SET(_channel, "rxOnly", _rxOnly);
-                
+
                 HASHLIST_SET(_channels, _channelNumber, _channel);
                 SET_STATE("channels", _channels);
-                                
+
                 SET_STATE("pgm_tx_freq", nil);
                 SET_STATE("pgm_rx_freq", nil);
                 SET_STATE("pgm_rx_only", nil);
             }
         ],
         ["COMSEC", "COMSEC", "PGM-SYS PRESETS-CFG",
-            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil 
+            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil
         ],
         ["TRAFFIC", "TRAFFIC", "PGM-SYS PRESETS-CFG",
-            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil 
+            MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil
         ],
         ["TX POWER", "TX POWER", "PGM-SYS PRESETS-CFG",
             MENUTYPE_ACTIONSERIES,
             [
                 [nil, "TX POWER", "PGM-SYS PRESETS-TX POWER",
-                    MENUTYPE_SELECTION, 
-                    [    
+                    MENUTYPE_SELECTION,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "TX POWER"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -387,7 +387,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         {
                             _power = GET_RADIO_VALUE("power");
-                            
+
                             SCRATCH_SET(GVAR(currentRadioId), "pgm_tx_power", _power);
                             switch _power do {
                                 case 5000: {
@@ -408,7 +408,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                                 };
                             };
                         }, // onEntry
-                        nil, 
+                        nil,
                         nil,
                         nil,
                         {
@@ -439,8 +439,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     "pgm_tx_select"
                 ],
                 [nil, "TX POWER USER", "PGM-SYS PRESETS-TX POWER",
-                    MENUTYPE_NUMBER, 
-                    [    
+                    MENUTYPE_NUMBER,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "TX POWER"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1 "],
                         [ROW_SMALL_5, ALIGN_CENTER, "ENTER 1 to 5000 MW"]
@@ -449,7 +449,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         {
                             _value = GET_RADIO_VALUE("power");
                             SCRATCH_SET(GVAR(currentRadioId), "menuNumber", _value);
-                        },  
+                        },
                         nil
                     ],
                     [
@@ -463,22 +463,22 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             ],
             [nil,
             nil],
-            { 
+            {
                 // Save the new power.
                 _power = GET_STATE_DEF("pgm_tx_power", 5000);
                 _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                 _channels = GET_STATE("channels");
                 _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
-                if(_power > 5000) then { 
+                if(_power > 5000) then {
                     _power = 5000;
                 };
                 HASH_SET(_channel, "power", _power);
-                
+
                 HASHLIST_SET(_channels, _channelNumber, _channel);
                 SET_STATE("channels", _channels);
-                
-            
+
+
                 SET_STATE("pgm_tx_power", nil);
             }
         ],
@@ -486,8 +486,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             MENUTYPE_ACTIONSERIES,
             [
                 [nil, "SQUELCH TYPE", "PGM-SYS PRESETS-SQUELCH",
-                    MENUTYPE_SELECTION, 
-                    [    
+                    MENUTYPE_SELECTION,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "SQUELCH TYPE"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -497,20 +497,20 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                             _sqType = GET_RADIO_VALUE("squelch");
                             switch _sqType do {
                                 default {
-                                    
+
                                 };
                                 case 3: {
                                     SCRATCH_SET(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
                                     SET_STATE("menuSelection", 1);
                                 };
                             };
-                        }, 
-                        nil, 
+                        },
+                        nil,
                         nil,
                         nil,
                         {
                             _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
-                            switch _sqType do { 
+                            switch _sqType do {
                                 default {        // Default is go to end, we only have 1 configurable SQ for now
                                     _currentAction = GET_STATE("menuAction");
                                     _currentAction = _currentAction + 999;
@@ -529,8 +529,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     "pgm_sq_tx_select"
                 ],
                 [nil, "CTCSS_TONE", "PGM-SYS PRESETS-SQUELCH-CTCSS",
-                    MENUTYPE_SELECTION, 
-                    [    
+                    MENUTYPE_SELECTION,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "CTCSS TX TONE"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -538,15 +538,15 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         {
                             _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-                            
+
                             _txTone = GET_RADIO_VALUE("CTCSSTx");
                             {
                                 if(_txTone == (parseNumber _x)) exitWith {
                                     SET_STATE("menuSelection", _forEachIndex);
                                 };
                             } forEach _options;
-                        }, 
-                        nil, 
+                        },
+                        nil,
                         nil,
                         nil,
                         {
@@ -560,8 +560,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     "pgm_sq_tx_ctcss_tone"
                 ],
                 [nil, "RX_SQUELCH_TYPE", "PGM-SYS PRESETS-SQUELCH-CTCSS",
-                    MENUTYPE_SELECTION, 
-                    [    
+                    MENUTYPE_SELECTION,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "RX SQUELCH TYPE"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -570,8 +570,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         {
                             SCRATCH_SET(GVAR(currentRadioId), "pgm_sq_rx_select", "CTCSS");
                             SET_STATE("menuSelection", 1);
-                        }, 
-                        nil, 
+                        },
+                        nil,
                         nil,
                         nil,
                         {
@@ -585,8 +585,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     "pgm_sq_rx_select"
                 ],
                 [nil, "CHAN_BUSY_PRIORITY", "PGM-SYS PRESETS-SQUELCH",
-                    MENUTYPE_SELECTION, 
-                    [    
+                    MENUTYPE_SELECTION,
+                    [
                         [ROW_LARGE_2, ALIGN_CENTER, "CHAN BUSY PRIORITY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                         [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
@@ -599,8 +599,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                                 _currentAction = _currentAction + 1;
                                 SET_STATE("menuAction", _currentAction);
                             };
-                        }, 
-                        nil, 
+                        },
+                        nil,
                         nil,
                         nil,
                         {
@@ -617,9 +617,9 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             [
                 nil, nil, nil,nil
             ],
-            { 
+            {
                 TRACE_1("Saving top level squelch information", "");
-                
+
                 _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
                 TRACE_1("SQUELCH TYPE", _sqType);
                 switch _sqType do {
@@ -628,22 +628,22 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         _sqToneStr = SCRATCH_GET(GVAR(currentRadioId), "pgm_sq_tx_ctcss_tone");
                         _value = parseNumber _sqToneStr;
                         TRACE_3("Set squelch", _sqType, _sqToneStr, _value);
-                        
-                        
+
+
                         _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                         _channels = GET_STATE("channels");
                         _channel = HASHLIST_SELECT(_channels, _channelNumber);
-                        
+
                         HASH_SET(_channel, "squelch", 3);
                         HASH_SET(_channel, "CTCSSTx", _value);
                         HASH_SET(_channel, "CTCSSRx", _value);
-                        
-                        SET_STATE("channels", _channels);                    
+
+                        SET_STATE("channels", _channels);
                     };
                 };
             }
         ],
-        ["EXIT", "EXIT", "PGM-SYS PRESETS-CFG", MENU_ACTION_SUBMENU, ["HOME"], [], nil ]    
+        ["EXIT", "EXIT", "PGM-SYS PRESETS-CFG", MENU_ACTION_SUBMENU, ["HOME"], [], nil ]
     ],
     [
         nil, nil, nil,nil

@@ -22,12 +22,12 @@ DFUNC(ChannelDisplay_ESC) = {
 
 DFUNC(ChannelDisplay_Render) = {
     params["_display"];
-    _group = GET_STATE(groups) select GET_STATE(currentGroup);
+    _group = GET_STATE("groups") select GET_STATE("currentGroup");
 
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
     _groupLabel = _group select 0;
 
-    _channel = HASHLIST_SELECT(GET_STATE(channels), _channelNumber);
+    _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
 
     _channelType = HASH_GET(_channel, "channelMode");
     _pageIndex = PAGE_INDEX;

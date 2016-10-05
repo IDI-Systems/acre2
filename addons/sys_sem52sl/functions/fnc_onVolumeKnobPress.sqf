@@ -51,7 +51,7 @@ if (_channelKnobPosition == 15) then { // programming (used to help program).
 
         ["setState", ["volumeKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 
-        //private _currentVolume = GET_STATE(volume); //["getState", "volume"] call GUI_DATA_EVENT;
+        //private _currentVolume = GET_STATE("volume"); //["getState", "volume"] call GUI_DATA_EVENT;
         private _newVolume = abs ((_newKnobPosition - 8)/8);
         ["setVolume", _newVolume] call GUI_DATA_EVENT;
 

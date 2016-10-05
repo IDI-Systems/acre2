@@ -44,9 +44,9 @@ private _currentPage = _menu select _pageIndex;
     private _isEdit = false;
     if(_forEachIndex == _menuIndex) then {
         GVAR(entryMap) = [_pageIndex, _menuIndex];
-        if(GET_STATE(editEntry)) then {
+        if(GET_STATE("editEntry")) then {
             _isEdit = true;
-            _value = GET_STATE(currentEditEntry);
+            _value = GET_STATE("currentEditEntry");
         };
         [_display, _row, _range] call FUNC(setCursor);
     };

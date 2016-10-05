@@ -16,7 +16,6 @@
  */
 #include "script_component.hpp"
 
-private _button = GET_STATE("pressedButton");
 private _iconcontrol = 1000;
 private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
 if(!isNil "_display") then {

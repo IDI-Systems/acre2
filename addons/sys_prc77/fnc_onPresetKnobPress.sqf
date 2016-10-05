@@ -28,7 +28,7 @@ if(_key == 0) then {
 
 //Select Presetarray
 //Get the full Preset array [[x,y],[u,v]]
-private _currentPresets = GET_STATE(currentPreset);
+private _currentPresets = GET_STATE("currentPreset");
 
 
 if(_fnc == 0) exitWith {
@@ -48,14 +48,14 @@ private _newTuneKnobsPosition = + _currentPreset;
 
 if(_fnc == 1) exitWith {
 //Read out current TuneKnobsPosition
-private _currentTuneKnobsPosition = GET_STATE(currentChannel);
+private _currentTuneKnobsPosition = GET_STATE("currentChannel");
 //Define new preset
 private _newPreset = + _currentTuneKnobsPosition;
 //Write in the presets array
 private _newPresets = + _currentPresets;
 (_newPresets select _preset) set [0, _newPreset select 0];
 (_newPresets select _preset) set [1, _newPreset select 1];
-SET_STATE(currentPreset, _newPresets);
+SET_STATE("currentPreset", _newPresets);
 
 //Change the image and play click sound
 ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
