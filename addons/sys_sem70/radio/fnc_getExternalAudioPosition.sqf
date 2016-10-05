@@ -49,7 +49,7 @@
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-private _obj = RADIO_OBJECT(_radioId);
+private _obj = [_radioId] call EFUNC(sys_radio,getRadioObject);
 private _pos = getPosASL _obj;
 if(_obj isKindOf "Man") then {
     _pos = ATLtoASL (_obj modelToWorldVisual (_obj selectionPosition "RightShoulder"));
