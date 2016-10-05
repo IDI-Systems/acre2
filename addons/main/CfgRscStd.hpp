@@ -18,7 +18,8 @@ class RscDisplayMain: RscStandardDisplay {
             __SH(0.05);
             //colorText[] = { 1, 1, 1, 1 };
             sizeEx = 0.02674;
-            #include "version.hpp"
+            version = QUOTE(VERSION);
+            text = QUOTE(ACRE VERSION);
         };
     };
 };

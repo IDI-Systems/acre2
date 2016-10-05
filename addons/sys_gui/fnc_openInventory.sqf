@@ -76,8 +76,8 @@ DFUNC(onInventoryAction) = {
         case 'remote': {
             // TODO, disabled remote for now
             /*
-            _object = uiNamespace getVariable[QUOTE(GVAR(inventoryObject)), nil];
-            _container = uiNamespace getVariable[QUOTE(GVAR(inventoryContainer)), nil];
+            _object = uiNamespace getVariable[QGVAR(inventoryObject), nil];
+            _container = uiNamespace getVariable[QGVAR(inventoryContainer), nil];
             _itemArray = [];
             _itemArray = _itemArray + ((getWeaponCargo _container) select 0);
             _itemArray = _itemArray + ((getItemCargo _container) select 0);
@@ -124,8 +124,8 @@ DFUNC(handleContextMenu) = {
 };
 
 
-uiNamespace setVariable[QUOTE(GVAR(inventoryObject)), (_this select 0)];
-uiNamespace setVariable[QUOTE(GVAR(inventoryContainer)), (_this select 1)];
+uiNamespace setVariable[QGVAR(inventoryObject), (_this select 0)];
+uiNamespace setVariable[QGVAR(inventoryContainer), (_this select 1)];
 DFUNC(inventoryMonitorPFH) = {
     if(!isNull INVENTORY_DISPLAY) then {
         TRACE_1("Registering Events", "");

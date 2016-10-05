@@ -104,7 +104,7 @@ if (_direction == OUT) then {
     };
 
     private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
-    ADDPFH(DFUNC(zoomOut_PFH), 0.05,ARR_2(_animationhandler,_tempRadioId))
+    ADDPFH(DFUNC(zoomOut_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
 
 };
 
@@ -183,6 +183,6 @@ if (_direction == IN) then {
     };
 
     private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
-    ADDPFH(DFUNC(zoomIn_PFH), 0.05,ARR_2(_animationhandler,_tempRadioId))
+    ADDPFH(DFUNC(zoomIn_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
 
 };

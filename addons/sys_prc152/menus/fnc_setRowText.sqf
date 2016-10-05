@@ -19,7 +19,7 @@
 BEGIN_COUNTER(setRowText);
 
 TRACE_1("setRowText", _this);
-private _display = uiNamespace getVariable QUOTE(GVAR(currentDisplay));
+private _display = uiNamespace getVariable QGVAR(currentDisplay);
 
 params["_row", "_string", ["_alignment", ALIGN_LEFT]];
 

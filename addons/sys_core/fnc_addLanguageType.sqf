@@ -18,4 +18,4 @@
 
 params ["_languageKey", "_languageName"];
 
-PUSH(GVAR(languages), ARR_2(_languageKey, _languageName));
+PUSH(GVAR(languages), [ARR_2(_languageKey,_languageName)]);

@@ -80,7 +80,7 @@ if(_transmissionsChanged) then {
             _signalData params ["_signalPercent"];
             if (_signalData isEqualTo [0, -992]) then {_areAllRadiosInitialized = false;};
 
-            PUSH(_sorted, ARR_2(_signalPercent, _forEachIndex));
+            PUSH(_sorted, [ARR_2(_signalPercent, _forEachIndex)]);
             PUSH(_transmissions, _txId);
         } forEach _radios;
         _sorted sort false; // descending order

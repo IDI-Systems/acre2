@@ -15,10 +15,10 @@
  */
 #include "script_component.hpp"
 
-diag_log format["ACRE API: acre_api_fnc_setFullDuplex called with: %1", str _this];
+INFO_2("%1 called with: %2",QFUNC(setFullDuplex),_this)
 
 params ["_value"];
 
 ACRE_FULL_DUPLEX = _value;
 
-diag_log format["ACRE API: Difficulty changed [Interference=%1, Duplex=%2, Terrain Loss=%3, Omnidrectional=%4, AI Hearing=%5]", str ACRE_INTERFERENCE, str ACRE_FULL_DUPLEX, str acre_sys_signal_terrainScaling, str acre_sys_signal_omnidirectionalRadios, str ACRE_AI_ENABLED];
+INFO_5("Difficulty changed. Interference: %1 - Duplex: %2 - Terrain Loss: %3 - Omni-directional: %4 - AI Hearing: %5",ACRE_INTERFERENCE,ACRE_FULL_DUPLEX,EGVAR(sys_signal,terrainScaling),EGVAR(sys_signal,omnidirectionalRadios),ACRE_AI_ENABLED);

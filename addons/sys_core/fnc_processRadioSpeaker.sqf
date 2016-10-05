@@ -20,7 +20,7 @@ private["_okRadios", "_functionName"];
 
 params["_unit","_playerRadios"];
 
-private _radioId = _unit getVariable QUOTE(GVAR(currentSpeakingRadio));
+private _radioId = _unit getVariable QGVAR(currentSpeakingRadio);
 if(_radioId == "") exitWith { false };
 
 private _params = [];

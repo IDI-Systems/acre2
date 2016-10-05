@@ -23,20 +23,23 @@ if (!_activated) exitWith {};
 
 TRACE_1("enter", _this);
 
-_signalLoss = _logic getVariable["SignalLoss", true];
-_fullDuplex = _logic getVariable["FullDuplex", false];
-_interference = _logic getVariable["Interference", true];
-_ignoreAntennaDirection = _logic getVariable["IgnoreAntennaDirection", false];
+private _signalLoss = _logic getVariable ["SignalLoss", true];
+private _fullDuplex = _logic getVariable ["FullDuplex", false];
+private _interference = _logic getVariable ["Interference", true];
+private _ignoreAntennaDirection = _logic getVariable ["IgnoreAntennaDirection", false];
 
-if(!_signalLoss) then {
+if (!_signalLoss) then {
     [0.0] call acre_api_fnc_setLossModelScale;
 };
-if(_fullDuplex) then {
+
+if (_fullDuplex) then {
     [true] call acre_api_fnc_setFullDuplex;
 };
-if(!_interference) then {
+
+if (!_interference) then {
     [false] call acre_api_fnc_setInterference;
 };
-if(_ignoreAntennaDirection) then {
+
+if (_ignoreAntennaDirection) then {
     [true] call acre_api_fnc_ignoreAntennaDirection;
 };

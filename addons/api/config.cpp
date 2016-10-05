@@ -1,24 +1,24 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class ADDON
-    {
-        units[] = { QGVAR(basicSetup) };
+class CfgPatches {
+    class ADDON {
+        name = COMPONENT_NAME;
+        units[] = {QGVAR(basicSetup)};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            DOUBLES(PREFIX,main),
-            DOUBLES(PREFIX,sys_prc117f),
-            DOUBLES(PREFIX,sys_prc152),
-            DOUBLES(PREFIX,sys_prc148),
-            DOUBLES(PREFIX,sys_prc77),
-            DOUBLES(PREFIX,sys_prc343),
+            "acre_main",
+            "acre_sys_prc117f",
+            "acre_sys_prc152",
+            "acre_sys_prc148",
+            "acre_sys_prc77",
+            "acre_sys_prc343",
             "acre_sys_core"
-            };
-        version = VERSION;
-        AUTHOR;
+        };
+        author = ECSTRING(main,Author);
         authors[] = {"Jaynus", "Nou"};
-        authorUrl = URL;
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 

@@ -35,4 +35,4 @@ private _fnc = {
         [_radioId, _funcArgs] call _function;
     };
 };
-ADDPFH(_fnc, 0, ARR_3(diag_tickTime+_time, acre_sys_radio_currentRadioDialog, _endFunction));
+ADDPFH(_fnc, 0, [ARR_3(diag_tickTime+_time,EGVAR(sys_radio,currentRadioDialog),_endFunction)]);

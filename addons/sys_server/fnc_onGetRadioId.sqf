@@ -37,10 +37,10 @@ if(_ret != -1) then {
         };
         TRACE_1("callback=", _callback);
         PUSH(GVAR(unacknowledgedIds), _uniqueClass);
-        HASH_SET(GVAR(masterIdTable), _uniqueClass, ARR_2(acre_player, acre_player));
-        [_callback, [_player, _uniqueClass, _ret, _replacementId]] call CALLSTACK(LIB_fnc_globalEvent);
+        HASH_SET(GVAR(masterIdTable), _uniqueClass, [ARR_2(acre_player,acre_player)]);
+        [_callback, [_player, _uniqueClass, _ret, _replacementId]] call CALLSTACK(CBA_fnc_globalEvent);
         // GVAR(waitingForIdAck) = true;
     };
 } else {
-    diag_log text format["%1 ACRE ERROR: ALL IDS FOR CLASS %2 ARE TAKEN!", COMPAT_diag_tickTime, _class];
+    WARNING("All IDs for class %2 are taken!",_class);
 };

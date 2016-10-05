@@ -33,30 +33,14 @@ if(GVAR(pluginVersion) != QUOTE(VERSION_PLUGIN)) then {
     _isClient = true;
 };
 
-if(!ACRE_SPIT_VERSION) then {
-    if(!isNil "ACRE_FULL_SERVER_VERSION") then {
-        ACRE_SPIT_VERSION = true;
-        private _str = format["ACRE Version Information: Plugin:[%1], Addon:[%2], Server:[%3]",GVAR(pluginVersion), QUOTE(VERSION), ACRE_FULL_SERVER_VERSION];
-        LOG(_str);
-    };
+if (!ACRE_SPIT_VERSION && {!isNil "ACRE_FULL_SERVER_VERSION"}) then {
+    ACRE_SPIT_VERSION = true;
+    INFO_3("Version information. Plugin: %1 - Client: %1 - Server: %3",GVAR(pluginVersion),QUOTE(VERSION),ACRE_FULL_SERVER_VERSION);
 };
 
 if(_warn) then {
     ACRE_HAS_WARNED = true;
-    _warning = "ACRE: Plugin version and Addon version do not match!";
-    if(_isServer) then {
-        _warning = "ACRE: Server version and client version do not match!";
-    };
-    if(_isClient && _isServer) then {
-        _warning = "ACRE: Server version and client version do not match. Client does not match plugin!";
-    };
-    hint _warning;
-    GVAR(wrongVersionIncrease) = GVAR(wrongVersionIncrease) + 1;
-    private _str = format["!!!!!!!!!!!!!!!!! ACRE: Mismatched plugin and addon! Plugin:[%1], Addon:[%2], Server:[%3] !!!!!!!!!!!!!!!!! ",GVAR(pluginVersion), QUOTE(VERSION), ACRE_FULL_SERVER_VERSION];
-    LOG(_str);
-    if(GVAR(wrongVersionIncrease) >= 5) then {
-        titleText [_warning, "BLACK OUT", 15];
-    };
+    ERROR_3("Mismatched TeamSpeak plugin and mod versions!\nPlugin: %1\nMod: %2\nServer: %3",GVAR(pluginVersion), QUOTE(VERSION), ACRE_FULL_SERVER_VERSION);
 } else {
     if(ACRE_HAS_WARNED) then {
         ACRE_HAS_WARNED = false;
