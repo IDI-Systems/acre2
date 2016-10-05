@@ -22,10 +22,10 @@ GVAR(backlightOn) = true;
 GVAR(lastAction) = time;
 
 
-private _currentDirection = 1;
+private _currentDirection = -1;
 if(_key == 0) then {
     // left click
-    _currentDirection = -1;
+    _currentDirection = 1;
 };
 
 private _knobPosition = ["getState", "volumeKnobPosition"] call GUI_DATA_EVENT;
@@ -37,8 +37,8 @@ if(_knobPosition != _newKnobPosition) then {
 
     ["setState", ["volumeKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 
-    //private _currentVolume = GET_STATE(volume); //["getState", "volume"] call GUI_DATA_EVENT;
-    private _newVolume = abs ((_newKnobPosition - 5)/5);
+    //private _currentVolume = GET_STATE("volume"); //["getState", "volume"] call GUI_DATA_EVENT;
+    private _newVolume = abs ((_newKnobPosition)/5);
     ["setVolume", _newVolume] call GUI_DATA_EVENT;
 
     ["Acre_SEM70Knob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);

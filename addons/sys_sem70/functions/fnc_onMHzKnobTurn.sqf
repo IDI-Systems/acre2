@@ -20,12 +20,12 @@ params ["","_key","","","_shift"];
 
 // Ignore all interaction if radio is not on manual Channel Selection
 private _manualChannelSelection = ["getState", "manualChannelSelection"] call GUI_DATA_EVENT;
-if !(_manualChannelSelection) exitWith {};
+if (_manualChannelSelection != 1) exitWith {};
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
 _dir = -1;
 if(_key == 0) then {
-     _dir = 1;
+    _dir = 1;
 };
 
 //If shift is pressed, perform a step by +-5
@@ -39,10 +39,10 @@ private _newKnobPosition = _knobPosition + _dir;
 if(_knobPosition != _newKnobPosition) then {
     //Allow a jump over the null position
     if (_newKnobPosition > 49) then {
-     _newKnobPosition = 0;
+        _newKnobPosition = 0;
     };
     if (_newKnobPosition < 0) then {
-     _newKnobPosition = 49;
+        _newKnobPosition = 49;
     };
     ["setState", ["MHzKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 

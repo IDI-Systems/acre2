@@ -47,11 +47,11 @@ if(_knobPosition != _newKnobPosition) then {
             [GVAR(currentRadioId), "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
 
             if (_newKnobPosition == 1) then {
-                GVAR(channelPower) = 400;
+                SET_STATE("channelPower",400);
             };
 
             if (_newKnobPosition == 2) then {
-                GVAR(channelPower) = 4000;
+                SET_STATE("channelPower",4000);
             };
         };
     };

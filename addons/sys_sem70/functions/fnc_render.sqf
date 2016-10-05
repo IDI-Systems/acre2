@@ -28,7 +28,7 @@ private _functionKnobPosition = GET_STATE("functionKnobPosition");
 private _channelStepPosition = GET_STATE("channelStepPosition");
 private _volumeKnobPosition = GET_STATE("volumeKnobPosition");
 private _kHzKnobPosition = GET_STATE("kHzKnobPosition");
-private _MHzKnobPostion = GET_STATE("MHzKnobPostion");
+private _MHzKnobPostion = GET_STATE("MHzKnobPosition");
 
 // Main knob
 private _mainImages = [
@@ -56,12 +56,12 @@ private _channelStepImages = [
 
 // Volume knob
 private _volImages = [
-    QUOTE(PATHTOF(data\knobs\volume\vol_100.paa)),
-    QUOTE(PATHTOF(data\knobs\volume\vol_80.paa)),
-    QUOTE(PATHTOF(data\knobs\volume\vol_60.paa)),
-    QUOTE(PATHTOF(data\knobs\volume\vol_40.paa)),
+    QUOTE(PATHTOF(data\knobs\volume\vol_00.paa)),
     QUOTE(PATHTOF(data\knobs\volume\vol_20.paa)),
-    QUOTE(PATHTOF(data\knobs\volume\vol_00.paa))
+    QUOTE(PATHTOF(data\knobs\volume\vol_40.paa)),
+    QUOTE(PATHTOF(data\knobs\volume\vol_60.paa)),
+    QUOTE(PATHTOF(data\knobs\volume\vol_80.paa)),
+    QUOTE(PATHTOF(data\knobs\volume\vol_100.paa))
 ];
 
 // kHz Knob
@@ -106,11 +106,17 @@ private _MHzKnobImages = [
 
 
 
-//RADIO_CTRL(106) ctrlSetText (_volImages select _volumeKnobPosition);
+RADIO_CTRL(106) ctrlSetText (_volImages select _volumeKnobPosition);
+RADIO_CTRL(107) ctrlSetText (_mainImages select _mainKnobPosition);
+RADIO_CTRL(108) ctrlSetText (_functionImages select _functionKnobPosition);
+RADIO_CTRL(109) ctrlSetText (_channelStepImages select _channelStepPosition);
+
+RADIO_CTRL(110) ctrlSetText (_kHzKnobImages select (_kHzKnobPosition%16));
+RADIO_CTRL(111) ctrlSetText (_MHzKnobImages select (_MHzKnobPosition%16));
 
 
 //display
 //[_display] call FUNC(renderDisplay);
 
-TRACE_3("rendering", _currentChannel, _currentVolume, acre_sys_radio_currentRadioDialog);
+//TRACE_3("rendering", _volumeKnobPosition, _, acre_sys_radio_currentRadioDialog);
 true

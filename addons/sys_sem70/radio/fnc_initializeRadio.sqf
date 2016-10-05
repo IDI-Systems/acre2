@@ -86,6 +86,7 @@ HASH_SET(_radioData,"volumeKnobPosition", 5);// mid-way
 HASH_SET(_radioData,"kHzKnobPosition",0);
 HASH_SET(_radioData,"MHzKnobPosition",0);
 HASH_SET(_radioData,"lastActiveChannel",0);
+HASH_SET(_radioData,"channelPower",4000);
 HASH_SET(_radioData,"audioPath", "HEADSET");
 // Spacing
 // Auto Channel

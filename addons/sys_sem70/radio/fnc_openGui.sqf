@@ -48,7 +48,7 @@ TRACE_2("OpenGui",GVAR(currentRadioId),GVAR(lastAction));
 
 // Use this to turn off the backlight display//also to save last channel
 
-[{
+/*[{
     params ["_input","_pfhID"];
 
     if (GVAR(currentRadioId) isEqualTo -1) then {_input set [1,false]}; // Remove PFH on exit.
@@ -67,5 +67,5 @@ TRACE_2("OpenGui",GVAR(currentRadioId),GVAR(lastAction));
         if (!_open) then { [_pfhID] call CBA_fnc_removePerFrameHandler; };
     };
 }, 1, [GVAR(currentRadioId),true,0]] call CBA_fnc_addPerFrameHandler;
-
+*/
 true

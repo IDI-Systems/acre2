@@ -28,7 +28,7 @@ if(_key == 0) then {
 };
 
 private _knobPosition = ["getState", "functionKnobPosition"] call GUI_DATA_EVENT;
-private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 2;
+private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 4;
 
 if(_knobPosition != _newKnobPosition) then {
     ["setState", ["functionKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
@@ -49,6 +49,10 @@ if(_knobPosition != _newKnobPosition) then {
         };
 
         case 3: {
+            // This is reserved for HW without Squelch
+        };
+
+        case 4: {
             // This is reserved for Relais Mode (HW)
         };
     };

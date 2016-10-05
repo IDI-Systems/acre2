@@ -8,7 +8,7 @@ PREP_FOLDER(functions);
 [] call FUNC(presetInformation);
 
 GVAR(channelMode) = "singleChannel";
-GVAR(channelPower) = 400;
+//GVAR(channelPower) = 400;
 GVAR(channelCTCSS) = 0;
 GVAR(channelModulation) = "FM";
 GVAR(channelEncryption) = 0;
