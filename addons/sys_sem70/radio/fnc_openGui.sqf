@@ -44,6 +44,8 @@ GVAR(currentRadioId) = _this select 0;
 GVAR(lastAction) = time;
 createDialog "SEM70_RadioDialog";
 
+TRACE_2("OpenGui",GVAR(currentRadioId),GVAR(lastAction));
+
 // Use this to turn off the backlight display//also to save last channel
 
 [{

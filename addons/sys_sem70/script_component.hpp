@@ -2,7 +2,7 @@
 
 #include "\idi\acre\addons\main\script_mod.hpp"
 
-//#define DEBUG_ENABLED_SYS_SEM70
+#define DEBUG_ENABLED_SYS_SEM70
 #ifdef DEBUG_ENABLED_SYS_SEM70
     #define DEBUG_MODE_FULL
 #endif
