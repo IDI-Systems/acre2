@@ -28,7 +28,7 @@ private _functionKnobPosition = GET_STATE("functionKnobPosition");
 private _channelStepPosition = GET_STATE("channelStepPosition");
 private _volumeKnobPosition = GET_STATE("volumeKnobPosition");
 private _kHzKnobPosition = GET_STATE("kHzKnobPosition");
-private _MHzKnobPostion = GET_STATE("MHzKnobPosition");
+private _MHzKnobPosition = GET_STATE("MHzKnobPosition");
 
 // Main knob
 private _mainImages = [
