@@ -2,6 +2,8 @@
 #include "script_component.hpp"
 TRACE_1("enter", _this);
 
+PREP_MODULE(radio,initializeRadio);
+
 PREP_MODULE(radio,setVolume);
 PREP_MODULE(radio,getVolume);
 PREP_MODULE(radio,getSpatial);
