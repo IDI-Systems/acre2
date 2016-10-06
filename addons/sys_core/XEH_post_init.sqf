@@ -104,6 +104,14 @@ ACRE_PLAYER_VEHICLE_CREW = [];
 
 private _vehicleCrewPFH = {
     private _vehicle = vehicle acre_player;
+    private _height = eyePos acre_player param [2, 1];
+
+    if (_height < 0) then {
+        ACRE_LISTENER_DIVE = 1;
+    } else {
+        ACRE_LISTENER_DIVE = 0;
+    };
+
     if (_vehicle != acre_player) then {
         private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
         {
@@ -120,16 +128,6 @@ private _vehicleCrewPFH = {
     };
 };
 ADDPFH(_vehicleCrewPFH, 1.1, []);
-
-private _playerDivePFH = {
-    private _height = eyePos acre_player param [2, 1];
-    if (_height < 0) then {
-        ACRE_LISTENER_DIVE = 1;
-    } else {
-        ACRE_LISTENER_DIVE = 0;
-    };
-};
-ADDPFH(_playerDivePFH, 1.1, []);
 
 // Disable positional audio whilst in briefing.
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
