@@ -34,6 +34,13 @@ if(_shift) then {
 };
 
 private _knobPosition = ["getState", "kHzKnobPosition"] call GUI_DATA_EVENT;
+private _channelSpacing = ["getState", "channelSpacing"] call GUI_DATA_EVENT;
+if (_channelSpacing == 1) then {
+   _dir = _dir*2;
+   if (_knobPosition%2 == 1) then {
+      _knobPosition = _knobPosition - 1;
+  };
+};
 private _newKnobPosition = _knobPosition + _dir;
 
 if(_knobPosition != _newKnobPosition) then {
@@ -42,7 +49,11 @@ if(_knobPosition != _newKnobPosition) then {
         _newKnobPosition = 0;
     };
     if (_newKnobPosition < 0) then {
-        _newKnobPosition = 39;
+        if(_channelSpacing == 1) then {
+            _newKnobPosition = 38;
+        } else {
+            _newKnobPosition = 39;
+        };
     };
     ["setState", ["kHzKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 

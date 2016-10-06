@@ -82,11 +82,13 @@ HASH_SET(_radioData,"currentChannel",0);
 HASH_SET(_radioData,"mainKnobPosition",2); // High Power Setting
 HASH_SET(_radioData,"functionKnobPosition",2); // Manual Frequency Selection (no Relais)
 HASH_SET(_radioData,"manualChannelSelection",1); // Manual Frequency Selection Flag
-HASH_SET(_radioData,"volumeKnobPosition", 5);// mid-way
+HASH_SET(_radioData,"volumeKnobPosition", 5);
+HASH_SET(_radioData,"channelSpacingKnobPosition", 1); // 0-3
 HASH_SET(_radioData,"kHzKnobPosition",0);
 HASH_SET(_radioData,"MHzKnobPosition",0);
 HASH_SET(_radioData,"lastActiveChannel",0);
 HASH_SET(_radioData,"channelPower",4000);
+HASH_SET(_radioData,"channelSpacing",0); // 0: 25kHz, 1: 50kHz
 HASH_SET(_radioData,"audioPath", "HEADSET");
 // Spacing
 // Auto Channel

@@ -25,7 +25,7 @@ TRACE_1("Render",_display);
 private _mainKnobPosition = GET_STATE("mainKnobPosition");
 private _functionKnobPosition = GET_STATE("functionKnobPosition");
 //private _manualChannelSelection = GET_STATE("manualChannelSelection");
-private _channelStepPosition = GET_STATE("channelStepPosition");
+private _channelStepPosition = GET_STATE("channelSpacingKnobPosition");
 private _volumeKnobPosition = GET_STATE("volumeKnobPosition");
 private _kHzKnobPosition = GET_STATE("kHzKnobPosition");
 private _MHzKnobPosition = GET_STATE("MHzKnobPosition");
