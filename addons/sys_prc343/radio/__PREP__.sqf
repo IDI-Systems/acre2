@@ -30,3 +30,6 @@ PREP_MODULE(radio,handlePTTDown);
 PREP_MODULE(radio,handlePTTUp);
 PREP_MODULE(radio,isExternalAudio);
 PREP_MODULE(radio,getExternalAudioPosition);
+
+PREP_MODULE(radio,closeGUI);
+PREP_MODULE(radio,openGUI);
