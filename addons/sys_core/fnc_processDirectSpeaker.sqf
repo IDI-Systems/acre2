@@ -55,7 +55,7 @@ if(ACRE_TEST_OCCLUSION && !_bothSpectating && !_isCrewAttenuate) then {
     // hintSilent format["vol: %1\nt: %2", _directVolume, _endTime-_startTime];
 };
 
-if(GVAR(isDeaf) || (_unit getVariable[QGVAR(isDisabled), false])) then {
+if(GVAR(isDeaf) || (_unit getVariable[QGVAR(isDisabled), false]) || (ACRE_LISTENER_DIVE == 1)) then {
     _directVolume = 0.0;
 };
 if(_isCrewAttenuate) then {
