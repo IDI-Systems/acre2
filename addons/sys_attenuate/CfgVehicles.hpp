@@ -1,6 +1,7 @@
 class CfgVehicles {
     class Air;
     class LandVehicle;
+    class Ship;
     class Car : LandVehicle {
         class ACRE {
             class attenuation {
@@ -172,6 +173,75 @@ class CfgVehicles {
     };
 
     class MRAP_02_base_F: Car_F {
+        class ACRE {
+            class attenuation {
+                class Compartment1  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                    Compartment3 = 0;
+                    Compartment4 = 0;
+                };
+                class Compartment2  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                    Compartment3 = 0;
+                    Compartment4 = 0;
+                };
+                class Compartment3  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                    Compartment3 = 0;
+                    Compartment4 = 0;
+                };
+                class Compartment4  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                    Compartment3 = 0;
+                    Compartment4 = 0;
+                };
+            };
+            class CVC {
+                hasCVC = true;
+            };
+        };
+    };
+
+    class Ship_F : Ship {
+        class ACRE {
+            class attenuation {
+                class Compartment1  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                    Compartment3 = 0;
+                    Compartment4 = 0;
+                };
+                class Compartment2  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                    Compartment3 = 0;
+                    Compartment4 = 0;
+                };
+                class Compartment3  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                    Compartment3 = 0;
+                    Compartment4 = 0;
+                };
+                class Compartment4  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                    Compartment3 = 0;
+                    Compartment4 = 0;
+                };
+            };
+            class CVC {
+                hasCVC = false;
+            };
+        };
+    };
+
+    class Boat_F : Ship_F {};
+    class SDV_01_base_F: Boat_F {
         class ACRE {
             class attenuation {
                 class Compartment1  {
