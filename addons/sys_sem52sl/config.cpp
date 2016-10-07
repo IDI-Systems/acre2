@@ -16,6 +16,8 @@ class CfgPatches {
 
 PRELOAD_ADDONS;
 
+//This is a useless comment!
+
 #include "CfgWeapons.hpp"
 #include "CfgAcreRadios.hpp"
 
