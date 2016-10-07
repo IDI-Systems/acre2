@@ -5,6 +5,8 @@ topnav:
   items:
     - title: News
       url: /news.html
+    - title: Download
+      external_url: https://github.com/IDI-Systems/acre2/releases/latest
 
 #Topnav dropdowns
 topnav_dropdowns:
@@ -14,9 +16,7 @@ topnav_dropdowns:
       folderitems:
         - title: Github Repo
           external_url: https://github.com/IDI-Systems/acre2
-        - title: Download & Release Notes
-          external_url: https://github.com/IDI-Systems/acre2/releases/latest
-        - title: Slack-in
+        - title: Slack
           external_url: http://slackin.idi-systems.com
         - title: Report Issue
           external_url: https://github.com/IDI-Systems/acre2/issues

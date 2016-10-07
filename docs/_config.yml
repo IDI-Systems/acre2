@@ -39,7 +39,7 @@ feedback_disable: true
 # feedback_text: "Need help?"
 # if you uncomment the previous line, it changes the Feedback text
 
-feedback_link: "https://github.com/IDI-Systems/acre2/issues"
+# feedback_link: "https://github.com/IDI-Systems/acre2/issues"
 # if you uncomment the previous line, it changes where the feedback link points to
 
 highlighter: rouge
