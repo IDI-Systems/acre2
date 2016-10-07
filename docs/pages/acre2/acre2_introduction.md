@@ -1,8 +1,8 @@
 ---
 title: Introduction
-sidebar: mydoc_sidebar
-permalink: mydoc_introduction.html
-folder: mydoc
+sidebar: acre2_sidebar
+permalink: acre2_introduction.html
+folder: acre2
 ---
 
 ## Overview

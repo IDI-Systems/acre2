@@ -12,5 +12,5 @@ entries:
       url: /news.html
       output: web
     - title: ACRE2 Introduction
-      url: /mydoc_introduction.html
+      url: /acre2_introduction.html
       output: web

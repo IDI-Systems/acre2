@@ -1,10 +1,10 @@
 destination: _site/
 url: "http://127.0.0.1:4010"
-baseurl: "/mydoc-pdf"
+baseurl: "/acre2-pdf"
 port: 4010
 output: pdf
-product: mydoc
-print_title: Jekyll theme for documentation — mydoc product
+product: acre2
+print_title: Jekyll theme for documentation — acre2 product
 print_subtitle: version 5.0
 output: pdf
 defaults:

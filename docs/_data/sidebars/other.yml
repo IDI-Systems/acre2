@@ -9,10 +9,10 @@ entries:
     folderitems:
 
     - title: Automated links bookmark
-      url: /mydoc_hyperlinks.html#automatedlinks
+      url: /acre2_hyperlinks.html#automatedlinks
 
     - title: Bookmark links
-      url: /mydoc_hyperlinks.html#bookmarklinks
+      url: /acre2_hyperlinks.html#bookmarklinks
 
     - title: Some link bookmark
-      url: /mydoc_pages.html#someIdTag
+      url: /acre2_pages.html#someIdTag

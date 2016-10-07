@@ -2,7 +2,7 @@
 title: Getting started with the Documentation Theme for Jekyll
 keywords: sample homepage
 tags: [getting_started]
-sidebar: mydoc_sidebar
+sidebar: acre2_sidebar
 permalink: index.html
 summary: These brief instructions will help you get started quickly with the theme. The other topics in this help provide additional information and detail about working with other aspects of this theme and Jekyll.
 ---
@@ -15,12 +15,12 @@ First download or clone the theme from the [Github repo](https://github.com/tomj
 
 If you're used to running Jekyll sites, you can type the normal jekyll command, `jekyll serve`, to build the Jekyll theme. However, if you're a new Jekyll user or if you run into issues, see the following two topics:
 
-* [Install Jekyll on Mac][mydoc_install_jekyll_on_mac]
-* [Install Jekyll on Windows][mydoc_install_jekyll_on_windows]
+* [Install Jekyll on Mac][acre2_install_jekyll_on_mac]
+* [Install Jekyll on Windows][acre2_install_jekyll_on_windows]
 
 ## Customize the Gemfile
 
-The Gemfile is how project dependencies are managed. This project doesn't have any dependencies beyond core Jekyll. 
+The Gemfile is how project dependencies are managed. This project doesn't have any dependencies beyond core Jekyll.
 
 Open the Gemfile (in any text editor) in the Jekyll doc theme project with the following command:
 
@@ -74,8 +74,8 @@ The sidebarconfigs.html file uses simple `if elsif` logic to set a variable that
 {% elsif page.sidebar == "product2_sidebar" %}
 {% assign sidebar = site.data.sidebars.product2_sidebar.entries %}
 
-{% elsif page.sidebar == "mydoc_sidebar" %}
-{% assign sidebar = site.data.sidebars.mydoc_sidebar.entries %}
+{% elsif page.sidebar == "acre2_sidebar" %}
+{% assign sidebar = site.data.sidebars.acre2_sidebar.entries %}
 
 {% else %}
 {% assign sidebar = site.data.sidebars.home_sidebar.entries %}
@@ -92,12 +92,12 @@ tags: [formatting]
 keywords: notes, tips, cautions, warnings, admonitions
 last_updated: July 3, 2016
 summary: "You can insert notes, tips, warnings, and important alerts in your content. These notes are stored as shortcodes made available through the linksrefs.hmtl include."
-<span class="red">sidebar: mydoc_sidebar</span>
-permalink: mydoc_alerts
+<span class="red">sidebar: acre2_sidebar</span>
+permalink: acre2_alerts
 ---
 </pre>
 
-The `sidebar: mydoc_sidebar` refers to the \_data/sidebars/mydoc_sidebar.yml file (meaning, the mydoc_sidebar.yml file inside the sidebars subfolder inside the \data folder).
+The `sidebar: acre2_sidebar` refers to the \_data/sidebars/acre2_sidebar.yml file (meaning, the acre2_sidebar.yml file inside the sidebars subfolder inside the \data folder).
 
 If no sidebar assignment is found in the page frontmatter, the default sidebar (specified by the `else` statement) will be shown: `site.data.sidebars.home_sidebar.entries`.
 
@@ -105,7 +105,7 @@ Note that your sidebar can only have 2 levels. Given that each product has its o
 
 {% include note.html content="Note that each level must have at least one topic before the next level starts. You can't have a second level that contains multiple third levels without having at least one standalone topic in the second level." %}
 
-For more detail on the sidebar, see [Sidebar navigation][mydoc_sidebar_navigation].
+For more detail on the sidebar, see [Sidebar navigation][acre2_sidebar_navigation].
 
 ## Sidebar syntax
 
@@ -127,19 +127,19 @@ entries:
       output: web, pdf
 
     - title: Introduction
-      url: /mydoc_introduction.html
+      url: /acre2_introduction.html
       output: web, pdf
 
     - title: Supported features
-      url: /mydoc_supported_features.html
+      url: /acre2_supported_features.html
       output: web, pdf
 
     - title: About the theme author
-      url: /mydoc_about.html
+      url: /acre2_about.html
       output: web, pdf
 
     - title: Support
-      url: /mydoc_support.html
+      url: /acre2_support.html
       output: web, pdf
 
   - title: Release Notes
@@ -147,11 +147,11 @@ entries:
     folderitems:
 
     - title: 6.0 Release notes
-      url: /mydoc_release_notes_60.html
+      url: /acre2_release_notes_60.html
       output: web, pdf
 
     - title: 5.0 Release notes
-      url: /mydoc_release_notes_50.html
+      url: /acre2_release_notes_50.html
       output: web, pdf
 
 ```
@@ -160,7 +160,7 @@ Each `folder` or `subfolder` must contain a `title` and `output` property. Each 
 
 The two outputs available are `web` and `pdf`. (Even if you aren't publishing PDF, you still need to specify `output: web`).
 
-The YAML syntax depends on exact spacing, so make sure you follow the pattern shown in the sample sidebars. See my [YAML tutorial](mydoc_yaml_tutorial) for more details about how YAML works.
+The YAML syntax depends on exact spacing, so make sure you follow the pattern shown in the sample sidebars. See my [YAML tutorial](acre2_yaml_tutorial) for more details about how YAML works.
 
 To accommodate the title page and table of contents in PDF outputs, each product sidebar must list these pages before any other:
 
@@ -181,7 +181,7 @@ To accommodate the title page and table of contents in PDF outputs, each product
 
 Leave the output as `output: pdf` for these frontmatter pages so that they don't appear in the web output.
 
-For more detail on the sidebar, see [Sidebar navigation][mydoc_sidebar_navigation] and [YAML tutorial][mydoc_yaml_tutorial].
+For more detail on the sidebar, see [Sidebar navigation][acre2_sidebar_navigation] and [YAML tutorial][acre2_yaml_tutorial].
 
 ## Relative links and offline viewing
 
@@ -217,15 +217,15 @@ If you don't want the mini-TOC to show on a page (such as for the homepage or la
 
 The `permalink` value should be the same as your filename and include the ".html" file extension.
 
-For more detail, see [Pages][mydoc_pages].
+For more detail, see [Pages][acre2_pages].
 
 ## Where to store your documentation topics
 
 You can store your files for each product inside subfolders following the pattern shown in the theme. For example, product1, product2, etc, can be stored in their own subfolders inside the \_pages directory. Inside \_pages, you can store your topics inside sub-subfolders or sub-sub-folders to your heart's content. When Jekyll builds your site, it will pull the topics into the root directory and use the permalink for the URL.
 
-Note that product1, product2, and mydoc are all just sample content to demonstrate how to add multiple products into the theme. You can freely delete that content.
+Note that product1, product2, and acre2 are all just sample content to demonstrate how to add multiple products into the theme. You can freely delete that content.
 
-For more information, see [Pages][mydoc_pages] and [Posts][mydoc_posts].
+For more information, see [Pages][acre2_pages] and [Posts][acre2_posts].
 
 ## Configure the top navigation
 
@@ -243,7 +243,7 @@ If you're on Windows, install [Git Bash client](https://git-for-windows.github.i
 
 Open up the css/printstyles.css file and customize the email address (`youremail@domain.com`) that is listed there. This email address appears in the bottom left footer of the PDF output. You'll also need to create a PDF configuration file following the examples shown in the pdfconfigs folder, and also customize some build scripts following the same pattern shown in the root: pdf-product1.sh
 
-See the section on [Generating PDFs][mydoc_generating_pdfs] for more details about setting the theme up for this output.
+See the section on [Generating PDFs][acre2_generating_pdfs] for more details about setting the theme up for this output.
 
 ## Blogs / News
 
@@ -251,7 +251,7 @@ For blog posts, create your markdown files in the \_posts folder following the s
 
 The news/news.html file displays the posts, and the news_archive.html file shows a yearly history of posts. In documentation, you might use the news to highlight product features outside of your documentation, or to provide release notes and other updates.
 
-See [Posts][mydoc_posts] for more information.
+See [Posts][acre2_posts] for more information.
 
 ## Markdown
 
@@ -283,7 +283,7 @@ See the topics under "Formatting" in the sidebar for more information.
 
 ## Automated links
 
-If you want to use an automated system for managing links, see [Automated Links][mydoc_hyperlinks.html#automatedlinks]. This approach automatically creates a list of Markdown references to simplify linking.
+If you want to use an automated system for managing links, see [Automated Links][acre2_hyperlinks.html#automatedlinks]. This approach automatically creates a list of Markdown references to simplify linking.
 
 ## Other instructions
 

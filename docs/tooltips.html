@@ -21,12 +21,12 @@ $(document).ready(function(){
         html: true
     });
 
-/* Set the location where mydoc_tooltips_source.json is. */
+/* Set the location where acre2_tooltips_source.json is. */
 var url = "http://idratherbewriting.com/documentation-theme-jekyll/tooltips.json";
 
 $.get( url, function( data ) {
- 
- /* Bootstrap popover text is defined inside a data-content attribute inside an element. That's 
+
+ /* Bootstrap popover text is defined inside a data-content attribute inside an element. That's
  why I'm using attr here. If you just want to insert content on the page, use append and remove the data-content argument from the parentheses.*/
 
         $.each(data.entries, function(i, page) {
@@ -50,7 +50,7 @@ $.get( url, function( data ) {
         });
     });
 
- 
+
 });
 </script>
 
