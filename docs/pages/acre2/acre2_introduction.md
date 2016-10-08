@@ -1,7 +1,7 @@
 ---
 title: Introduction
-sidebar: acre2_sidebar
 permalink: acre2_introduction.html
+sidebar: acre2_sidebar
 folder: acre2
 ---
 

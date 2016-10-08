@@ -1,9 +1,8 @@
 ---
 title: Support
-keywords: questions, troubleshooting, contact, support
 summary: "Contact me for any support issues."
-sidebar: acre2_sidebar
 permalink: acre2_support.html
+sidebar: acre2_sidebar
 folder: acre2
 ---
 

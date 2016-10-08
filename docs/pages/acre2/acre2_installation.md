@@ -1,7 +1,6 @@
 ---
 title: Install ACRE2
 permalink: acre2_installation.html
-keywords: jekyll on windows, pc, ruby, ruby dev kit
 sidebar: acre2_sidebar
 folder: acre2
 ---

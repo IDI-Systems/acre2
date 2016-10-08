@@ -9,7 +9,6 @@ search: exclude
 {% unless page.search == "exclude" %}
 {
 "title": "{{ page.title | escape }}",
-"keywords": "{{page.keywords}}",
 "url": "{{ page.url | remove: "/"}}",
 "summary": "{{page.summary | strip }}"
 },
@@ -20,7 +19,6 @@ search: exclude
 
 {
 "title": "{{ post.title | escape }}",
-"keywords": "{{post.keywords}}",
 "url": "{{ post.url }}",
 "summary": "{{post.summary | strip }}"
 }

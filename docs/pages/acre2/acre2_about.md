@@ -1,9 +1,8 @@
 ---
 title: About the theme author
-keywords: documentation theme, jekyll, technical writers, help authoring tools, hat replacements
 summary: "I have used this theme for projects that I've worked on as a professional technical writer."
-sidebar: acre2_sidebar
 permalink: acre2_about.html
+sidebar: acre2_sidebar
 folder: acre2
 ---
 
