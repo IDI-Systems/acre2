@@ -23,7 +23,7 @@ entries:
     output: web, pdf
     folderitems:
 
-    - title: Get started
+    - title: Home
       url: /index.html
       output: web, pdf
       type: homepage
@@ -47,3 +47,23 @@ entries:
     - title: Install ACRE2
       url: /acre2_installation.html
       output: web, pdf
+
+  - title: API / Frameworks
+    output: web, pdf
+    folderitems:
+
+      - title: API Documentation
+        url: /acre2_api.html
+        output: web, pdf
+
+      - title: Mission Making Intro
+        url: /acre2_mission_making_intro.html
+        output: web, pdf
+
+      - title: Mission Making Guide
+        url: /acre2_mission_making_guide.html
+        output: web, pdf
+
+      - title: Vehicle Attenuation
+        url: /acre2_vehicle_attenuation.html
+        output: web, pdf
