@@ -93,13 +93,16 @@ namespace acre {
             }
             //#define DEBUG_OUTPUT
             bool process(const arguments & args_, std::string & result) {
-                if (args_.size() != 21) {
-                    result = "[]";
-                    return true;
-                }
+                //if (args_.size() != 21) {
+                //    result = "[]";
+                //    return true;
+                //}
                 
                 int logging = args_.as_int(19);
                 bool omnidirectional = args_.as_int(20) == 1;
+
+				//LOG(INFO) << "omniP: " << omnidirectional;
+
 
                 std::string id = args_.as_string(0);
                 glm::vec3 tx_pos = glm::vec3(args_.as_float(1), args_.as_float(2), args_.as_float(3));
@@ -193,46 +196,55 @@ namespace acre {
             }
 
             bool signal_map(arguments &args_, std::string &result) {
+
+				//LOG(INFO) << "ARGS: " << args_.get();
+
                 _signal_map_progress = 0;
 
-                std::string id = args_.as_string();
-                float sample_size = (std::max)(std::floor(args_.as_float()), 1.0f);
+                std::string id = args_.as_string(0);
+                float sample_size = (std::max)(std::floor(args_.as_float(1)), 1.0f);
                 float x, y, z;
 
-                x = args_.as_float();
-                y = args_.as_float();
-                z = args_.as_float();
+                x = args_.as_float(2);
+                y = args_.as_float(3);
+                z = args_.as_float(4);
                 glm::vec3 start_pos = glm::vec3(x, y, z);
 
-                x = args_.as_float();
-                y = args_.as_float();
-                z = args_.as_float();
+                x = args_.as_float(5);
+                y = args_.as_float(6);
+                z = args_.as_float(7);
                 glm::vec3 end_pos = glm::vec3(x, y, z);
 
-                x = args_.as_float();
-                y = args_.as_float();
-                z = args_.as_float();
+                x = args_.as_float(8);
+                y = args_.as_float(9);
+                z = args_.as_float(10);
                 glm::vec3 tx_pos = glm::vec3(x, y, z);
 
-                x = args_.as_float();
-                y = args_.as_float();
-                z = args_.as_float();
+                x = args_.as_float(11);
+                y = args_.as_float(12);
+                z = args_.as_float(13);
                 glm::vec3 tx_dir = glm::vec3(x, y, z);
 
-                float tx_antenna_height = args_.as_float();
-                float rx_antenna_height = args_.as_float();
+                float tx_antenna_height = args_.as_float(14);
+                float rx_antenna_height = args_.as_float(15);
 
                 tx_pos.z += tx_antenna_height;
 
-                std::string tx_antenna_name = args_.as_string();
-                std::string rx_antenna_name = args_.as_string();
+                std::string tx_antenna_name = args_.as_string(16);
+                std::string rx_antenna_name = args_.as_string(17);
 
                 
-                float f = args_.as_float();
-                float power = args_.as_float();
+                float f = args_.as_float(18);
+                float power = args_.as_float(19);
 
-                float lower_sensitivity = args_.as_float();
-                float upper_sensitivity = args_.as_float();
+                float lower_sensitivity = args_.as_float(20);
+                float upper_sensitivity = args_.as_float(21);
+
+				float scale = args_.as_float(22);
+				bool omnidirectional = args_.as_int(23) == 1;
+
+				//LOG(INFO) << "scale: " << scale;
+				//LOG(INFO) << "omni: " << omnidirectional;
 
                 float start_x = start_pos.x;
                 float start_y = start_pos.y;
@@ -289,13 +301,13 @@ namespace acre {
                     std::vector<signal_map_result> *result_entry = &result_sets[i];
                     result_entry->resize(y_chunk_size*count_x);
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*i, y_chunk_size, count_x, sample_size,
-                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
+                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, scale, omnidirectional));
                 }
                 if (y_chunk_remainder) {
                     std::vector<signal_map_result> *result_entry = &result_sets[thread_count];
                     result_entry->resize(y_chunk_size*count_x);
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*thread_count, y_chunk_remainder, count_x, sample_size,
-                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
+                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, scale, omnidirectional));
                 }
                 for (size_t c = 0; c < thread_pool.size(); ++c) {
                     thread_pool[c].join();
@@ -349,8 +361,12 @@ namespace acre {
             }
 
             void signal_map_chunk(std::vector<signal_map_result> *results, float start_y, float start_x, uint32_t y_offset, uint32_t length, uint32_t x_size, float sample_size,
-                float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, antenna_p &tx_antenna_, antenna_p &rx_antenna_, float frequency_, float power_, float sinad_
+                float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, antenna_p &tx_antenna_, antenna_p &rx_antenna_, float frequency_, float power_, float sinad_, float scale_, bool omnidirectional_
                 ) {
+
+				//LOG(INFO) << "scale: " << scale_;
+				//LOG(INFO) << "omni: " << omnidirectional_;
+
                 uint32_t y_val = 0;
                 for (uint32_t y = y_offset; y < y_offset+length; ++y) {
                     if (stopped())
@@ -364,7 +380,7 @@ namespace acre {
                         signal_map_result result;
                         result.rx_pos = glm::vec3(rx_x_pos, rx_y_pos, z);
                         result.tx_pos = glm::vec3(tx_pos_);
-                        _signal_processor.process(&result.result, tx_pos_, tx_dir_, result.rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 1.0f, false);
+                        _signal_processor.process(&result.result, tx_pos_, tx_dir_, result.rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, scale_, omnidirectional_);
                         results->at(y_val * x_size + x) = result;
                     }
                     y_val++;
