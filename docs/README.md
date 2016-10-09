@@ -1,6 +1,6 @@
 # Source of http://idi-systems.com/
 
-Built using [http://idratherbewriting.com/documentation-theme-jekyll/](http://idratherbewriting.com/documentation-theme-jekyll/)
+Built using [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-jekyll/) version [47160d82f1c76836c624a33d5a77889b51e4bbff](https://github.com/tomjohnson1492/documentation-theme-jekyll/commit/47160d82f1c76836c624a33d5a77889b51e4bbff)
 
 ## Setting up the development environment
 
