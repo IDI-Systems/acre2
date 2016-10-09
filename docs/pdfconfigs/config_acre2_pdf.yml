@@ -4,7 +4,7 @@ baseurl: "/acre2-pdf"
 port: 4010
 output: pdf
 product: acre2
-print_title: Jekyll theme for documentation — acre2 product
+print_title: ACRE2 Documentation
 print_subtitle: version 5.0
 output: pdf
 defaults:
