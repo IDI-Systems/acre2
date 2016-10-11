@@ -8,7 +8,7 @@
  * 2: Force <BOOL> - Forces the sound to be loaded again.
  *
  * Return Value:
- * None <TYPE>
+ * None
  *
  * Example:
  * ["Acre_GenericClick"] call acre_sys_sounds_fnc_loadSound;
@@ -43,10 +43,10 @@ if (EGVAR(sys_core,ts3id) != -1) then {
     if (isNil QGVAR(soundLoadBuffer)) then {
         GVAR(soundLoadBuffer) = [_this];
         [{EGVAR(sys_core,ts3id) != -1}, {
-        {
-            _x call FUNC(loadSound);
-        } forEach (GVAR(soundLoadBuffer));
-        GVAR(soundLoadBuffer) = nil;
+            {
+                _x call FUNC(loadSound);
+            } forEach (GVAR(soundLoadBuffer));
+            GVAR(soundLoadBuffer) = nil;
         },[]] call CBA_fnc_waitUntilAndExecute;
     } else {
         GVAR(soundLoadBuffer) pushBackUnique _this;
