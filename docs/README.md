@@ -68,7 +68,7 @@ Built using [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-
 
 - Run Jekyll through bundler
     ```
-    bundle exec jekyll serve --future --incremental --config _config_dev.yml
+    bundle exec jekyll serve --future
     ```
     _Use `--force_polling` on Bash on Ubuntu on Windows due to a bug preventing watching._
 
