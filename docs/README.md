@@ -34,14 +34,14 @@ Built using [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-
 
 - Install `make` and `gcc`
     ```
-    sudo apt-get make gcc
+    sudo apt-get install make gcc
     ```
 
 - Install `ruby2.3`, `rbuy2.3-dev` and `ruby-switch`
     ```
     sudo apt-add-repository ppa:brightbox/ruby-ng
-    sudo apt update
-    sudo apt install ruby2.3 ruby2.3-dev ruby-switch
+    sudo apt-get update
+    sudo apt-get install ruby2.3 ruby2.3-dev ruby-switch
     ```
 
 - Set Ruby version
