@@ -37,7 +37,7 @@ class SEM52SL_RadioDialog {
     class controls {
 
         BEGIN_CONTROL(RadioBackground, SEM52SL_RscPicture, 300)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -45,7 +45,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(Backlight, SEM52SL_RscPicture, 109)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -53,7 +53,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(Display1, SEM52SL_RscPicture, 301)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -61,7 +61,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(Display2, SEM52SL_RscPicture, 302)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -69,7 +69,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(Display3, SEM52SL_RscPicture, 303)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -77,7 +77,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(Display4, SEM52SL_RscPicture, 304)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -85,7 +85,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(Display5, SEM52SL_RscPicture, 305)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -94,7 +94,7 @@ class SEM52SL_RadioDialog {
 
 
         BEGIN_CONTROL(ChannelKnob, SEM52SL_RscPicture, 106)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32  * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -102,7 +102,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(VolumeKnob, SEM52SL_RscPicture, 107)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -110,7 +110,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(PTTButtonImage, SEM52SL_RscPicture, 108)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH - 1/16 * safeZoneW;
+            x=safeZoneY + safeZoneH - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 2/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
@@ -118,7 +118,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
         // Do the buttons last so they come on top.
         BEGIN_CONTROL(ChannelKnobButton, SEM52SL_RscButton, 201)
-            x=((((0.416-0.543)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            x=((((0.416-0.615)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + 1/32 * safeZoneW;
             y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             w=(1.15/0.8)*0.050*SafeZoneH;
             h=(1.15/0.8)*0.050*SafeZoneH;
@@ -128,9 +128,9 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(VolumeKnobButton, SEM52SL_RscButton, 202)
-            x=(((((0.416+0.087)-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            x=((((0.416-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + 1/32 * safeZoneW;
             y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
-            w=(1.15/0.8)*0.050*SafeZoneH;
+            w=(1.35/0.8)*0.050*SafeZoneH;
             h=(1.15/0.8)*0.050*SafeZoneH;
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onVolumeKnobPress));
@@ -138,7 +138,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(PTTButton, SEM52SL_RscButton, 203)
-            x=((((0.416-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            x=((((0.416-0.543)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + 1/32 * safeZoneW;
             y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             w=(1.15/0.8)*0.050*SafeZoneH * 4/3;
             h=(1.15/0.8)*0.050*SafeZoneH;
@@ -148,7 +148,7 @@ class SEM52SL_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(AudioCableButton, SEM52SL_RscButton, 204)
-            x=((((0.416-0.615)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            x=((((0.416-0.687)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + 1/32 * safeZoneW;
             y=((((0.595-0.6)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             w=(1.15/0.8)*0.050*SafeZoneH * 4/3;
             h=(1.15/0.8)*0.050*SafeZoneH;
