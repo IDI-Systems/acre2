@@ -1,3 +1,4 @@
+#define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros_common.hpp"
 
 #define CALL_RPC(proc,params) [proc, params] call EFUNC(sys_rpc,callRemoteProcedure);

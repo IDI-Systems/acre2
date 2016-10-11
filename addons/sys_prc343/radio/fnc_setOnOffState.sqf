@@ -18,5 +18,4 @@
 
 params["_radioId","_event", "_eventData", "_radioData"];
 
-TRACE_1("SETTING CURRENT VOLUME",_this);
 HASH_SET(_radioData,"radioOn",_eventData);
