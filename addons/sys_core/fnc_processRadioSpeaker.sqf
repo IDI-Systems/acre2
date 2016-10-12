@@ -22,6 +22,7 @@ params["_unit","_playerRadios"];
 
 private _radioId = _unit getVariable QGVAR(currentSpeakingRadio);
 if(_radioId == "") exitWith { false };
+// @todo if Underwater Radios are implemented
 //if(ACRE_LISTENER_DIVE == 1) exitWith { false };
 
 private _params = [];
