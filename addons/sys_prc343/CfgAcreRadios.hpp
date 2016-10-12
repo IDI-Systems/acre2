@@ -32,7 +32,7 @@ class CfgAcreComponents
 
         class Interfaces: Interfaces {
             class CfgAcreDataInterface {
-                getListInfo                    =    QUOTE(DFUNC(getListInfo));
+                getListInfo                    =    QUOTE(DFUNC(getChannelDescription));
 
                 setVolume                    =    QUOTE(DFUNC(setVolume));                // [0-1]
                 getVolume                    =     QUOTE(DFUNC(getVolume));                // [] = 0-1
