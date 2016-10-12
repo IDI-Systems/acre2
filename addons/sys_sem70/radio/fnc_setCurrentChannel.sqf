@@ -40,11 +40,30 @@
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
 //TODO: If eventData is -1 -> manual mode
+_eventData params ["_channelNumber"]
 
-// First, we check how many channels are available in total
-private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;
+if (_channelNumber isEqualTo -1) then {
+    private _currentMHzFrequency = ["getState", "MHzKnobPosition"] call GUI_DATA_EVENT;
+    _currentMHzFrequency = _currentMHzFrequency + 30;
+    private _currentkHzFrequency = ["getState", "kHzKnobPosition"] call GUI_DATA_EVENT;
+    _currentkHzFrequency = _currentkHzFrequency * 25 / 1000;
+    private _newFreq = _currentMHzFrequency + _currentkHzFrequency;
 
-// Then we define our upper and lower limits
-// And write the new channel to the radioData hash
-private _newChannel = (0 max _eventData) min _channelCount;
-HASH_SET(_radioData,"currentChannel",_newChannel);
+    private _channels = HASH_GET(_radioData, "channels");
+    private _channel = HASHLIST_SELECT(_channels, _channelNumber);
+
+    HASH_SET(_channel, "frequencyTX", _newFreq);
+    HASH_SET(_channel, "frequencyRX", _newFreq);
+
+    ["setChannelData", [_channelNumber, _channel]] call GUI_DATA_EVENT;
+} else {
+    // First, we check how many channels are available in total
+    private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;
+
+    // Then we define our upper and lower limits
+    // And write the new channel to the radioData hash
+    private _newChannel = (0 max _eventData) min _channelCount;
+    HASH_SET(_radioData,"currentChannel",_newChannel);    
+}
+
+
