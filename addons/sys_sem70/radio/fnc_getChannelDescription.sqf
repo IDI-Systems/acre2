@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function shall provide data to the transmission hint function
  *  The returned string will represent the last line of the hint
@@ -41,15 +41,13 @@
 private "_description";
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-
-private _manualChannel = ["getState", "manualChannelSelection"] call GUI_DATA_EVENT;
+private _manualChannel = [_radioId, "getState", "manualChannelSelection"] call EFUNC(sys_data,dataEvent);
 if (_manualChannel isEqualTo 1) then {
     private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     _description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];
 } else {
     private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
-    _description = format["Channel %1", ([(_channelNumber+1), 2] call CBA_fnc_formatNumber)]; 
-}
-
+    _description = format["Channel %1", ([(_channelNumber+1), 2] call CBA_fnc_formatNumber)];
+};
 
 _description

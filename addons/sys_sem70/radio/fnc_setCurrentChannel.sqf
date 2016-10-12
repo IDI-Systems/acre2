@@ -39,10 +39,11 @@
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-//TODO: If eventData is -1 -> manual mode
-_eventData params ["_channelNumber"]
+//TODO: If eventData is 0 -> manual mode
+_eventData params ["_channelNumber"];
+private _manualChannel = ["getState", "manualChannelSelection"] call GUI_DATA_EVENT;
 
-if (_channelNumber isEqualTo -1) then {
+if (_manualChannel isEqualTo 1) then {
     private _currentMHzFrequency = ["getState", "MHzKnobPosition"] call GUI_DATA_EVENT;
     _currentMHzFrequency = _currentMHzFrequency + 30;
     private _currentkHzFrequency = ["getState", "kHzKnobPosition"] call GUI_DATA_EVENT;
@@ -63,7 +64,5 @@ if (_channelNumber isEqualTo -1) then {
     // Then we define our upper and lower limits
     // And write the new channel to the radioData hash
     private _newChannel = (0 max _eventData) min _channelCount;
-    HASH_SET(_radioData,"currentChannel",_newChannel);    
-}
-
-
+    HASH_SET(_radioData,"currentChannel",_newChannel);
+};

@@ -16,7 +16,8 @@
  */
 #include "script_component.hpp"
 
-// Any frequency larger than 70 is counted as noFreq.
+
+
 
 //46->65.975MHZ (25khz min spacing)
 private _presetFrequencies = [];

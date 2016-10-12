@@ -57,8 +57,8 @@ if(_knobPosition != _newKnobPosition) then {
     };
     ["setState", ["kHzKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 
-    // Switch Channel with argument -1 to show manual mode
-    ["setCurrentChannel", -1] call GUI_DATA_EVENT;
+    // It doesn't matter what we put as a channel here, because we are in manual mode
+    ["setCurrentChannel", 0] call GUI_DATA_EVENT;
 
     ["Acre_SEM52Knob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
     [MAIN_DISPLAY] call FUNC(render);
