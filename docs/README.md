@@ -10,6 +10,7 @@ Built using [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-
 
 - Install [Ruby 2.3.1 (x64)](http://rubyinstaller.org/downloads/)
 - Install [Ruby DevKit for 2.0 and above (x64)](http://rubyinstaller.org/downloads/)
+- Install [NodeJS](https://nodejs.org/download/)
 - Open Command Prompt and navigate to this directory
     ```
     cd <ACRE2_directory>/docs
@@ -32,9 +33,9 @@ Built using [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-
     cd <ACRE2_directory>/docs
     ```
 
-- Install `make` and `gcc`
+- Install `make`, `gcc` and `nodejs`
     ```
-    sudo apt-get install make gcc
+    sudo apt-get install make gcc nodejs
     ```
 
 - Install `ruby2.3`, `rbuy2.3-dev` and `ruby-switch`
