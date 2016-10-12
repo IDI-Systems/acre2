@@ -104,6 +104,14 @@ ACRE_PLAYER_VEHICLE_CREW = [];
 
 private _vehicleCrewPFH = {
     private _vehicle = vehicle acre_player;
+    private _height = eyePos acre_player param [2, 1];
+
+    if (_height < 0) then {
+        ACRE_LISTENER_DIVE = 1;
+    } else {
+        ACRE_LISTENER_DIVE = 0;
+    };
+
     if (_vehicle != acre_player) then {
         private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
         {
