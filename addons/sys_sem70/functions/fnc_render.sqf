@@ -66,42 +66,42 @@ private _volImages = [
 
 // kHz Knob
 private _kHzKnobImages = [
-    QUOTE(PATHTOF(data\knobs\khz\khz_0.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_1.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_2.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_3.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_4.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_5.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_6.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_7.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_8.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_9.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_10.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_11.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_12.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_13.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_14.paa)),
-    QUOTE(PATHTOF(data\knobs\khz\khz_15.paa))
+    QUOTE(PATHTOF(data\knobs\khz\kHz_0.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_1.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_2.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_3.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_4.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_5.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_6.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_7.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_8.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_9.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_10.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_11.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_12.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_13.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_14.paa)),
+    QUOTE(PATHTOF(data\knobs\khz\kHz_15.paa))
 ];
 
 // MHz Knob
 private _MHzKnobImages = [
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_0.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_1.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_2.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_3.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_4.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_5.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_6.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_7.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_8.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_9.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_10.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_11.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_12.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_13.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_14.paa)),
-    QUOTE(PATHTOF(data\knobs\mhz\mhz_15.paa))
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_0.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_1.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_2.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_3.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_4.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_5.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_6.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_7.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_8.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_9.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_10.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_11.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_12.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_13.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_14.paa)),
+    QUOTE(PATHTOF(data\knobs\mhz\MHz_15.paa))
 ];
 
 

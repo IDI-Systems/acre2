@@ -46,13 +46,13 @@ class SEM70_RadioDialog {
             text = QUOTE(PATHTOF(data\ui\sem70ui_ca.paa));
         END_CONTROL
 
-        BEGIN_CONTROL(Backlight, SEM70_RscPicture, 109)
+        /*BEGIN_CONTROL(Backlight, SEM70_RscPicture, 109)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = "";
-        END_CONTROL
+        END_CONTROL*/
 
         BEGIN_CONTROL(Display1, SEM70_RscPicture, 301)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
