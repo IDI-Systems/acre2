@@ -116,7 +116,7 @@ RADIO_CTRL(111) ctrlSetText (_MHzKnobImages select (_MHzKnobPosition%16));
 
 
 //display
-//[_display] call FUNC(renderDisplay);
+[_display] call FUNC(renderDisplay);
 
 //TRACE_3("rendering", _volumeKnobPosition, _, acre_sys_radio_currentRadioDialog);
 true

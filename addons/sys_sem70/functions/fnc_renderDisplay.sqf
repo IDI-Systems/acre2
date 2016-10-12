@@ -22,9 +22,13 @@ params["_display"];
 
 {
     RADIO_CTRL(_x) ctrlSetText "";
-} forEach [301,302,303,304,305,109]; // purge.
+} forEach [301,302,303,304,305/*,109*/]; // purge.
 
-private _channelKnobPosition = GET_STATE("channelKnobPosition");
+//private _channelKnobPosition = GET_STATE("channelKnobPosition");
+private _mainKnobPosition = GET_STATE("mainKnobPosition");
+private _functionKnobPosition = GET_STATE("functionKnobPosition");
+//private _manualChannelSelection = GET_STATE("manualChannelSelection");
+
 
 if (_channelKnobPosition == 0) exitWith {}; // OFF
 
@@ -93,12 +97,6 @@ _fifthDigit = [
     QUOTE(PATHTOF(data\display\5char_9.paa))
 ];
 
-_complete = [
-    QUOTE(PATHTOF(data\display\display_blank.paa)),
-    QUOTE(PATHTOF(data\display\noFr.paa)),
-    QUOTE(PATHTOF(data\display\preset_xx.paa)),
-    QUOTE(PATHTOF(data\display\preset_1x.paa))
-]; //Also a preset_1x.paa
 
 // Force  backlight
 if (GVAR(backlightOn)) then {
@@ -180,7 +178,8 @@ if (GVAR(booting)) exitWith {
 
 
 
-private _channelKnobPosition = GET_STATE("channelKnobPosition");
+private _kHzKnobPosition = GET_STATE("kHzKnobPosition");
+private _MHzKnobPosition = GET_STATE("MHzKnobPosition");
 private _isOn = GET_STATE("radioOn");
 
 // Can't use CBA_fnc_formatNumber due to precision error - This will simply format a number into usable array.
@@ -194,8 +193,22 @@ private _fnc_formatNumber = {
     _numbers + [floor ((_in mod 1000)/100),floor ((_in mod 100)/10), floor (_in mod 10)];
 };
 
+private _currentChannel = GET_STATE("currentChannel"); // add 1 for UI thing
+private _channels = GET_STATE("channels");
+private _channel = _channels select _currentChannel;
+private _freq = HASH_GET(_channel,"frequencyRX");
+private _numbers = [_freq] call _fnc_formatNumber;
+
+TRACE_1("Frequency NUmber", _numbers);
+
+RADIO_CTRL(301) ctrlSetText (_firstDigit param [_numbers param [0,0]]);
+RADIO_CTRL(302) ctrlSetText (_secondDigit param [_numbers param [1,0]]);
+RADIO_CTRL(303) ctrlSetText (_thirdDigit param [_numbers param [2,0]]);
+RADIO_CTRL(304) ctrlSetText (_fourthDigit param [_numbers param [3,0]]);
+RADIO_CTRL(305) ctrlSetText (_fifthDigit param [_numbers param [4,0]]);
 
 
+/*
 switch _channelKnobPosition do {
         case 1: { // ON
             private _currentChannel = GET_STATE("currentChannel"); // add 1 for UI thing
@@ -332,6 +345,9 @@ switch _channelKnobPosition do {
             // show frequency...
         }; // chan
 };
+*/
+
+
 
 /*+ 1;
 if (_currentchannel > 9) then {
