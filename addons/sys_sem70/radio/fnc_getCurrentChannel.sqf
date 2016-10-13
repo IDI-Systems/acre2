@@ -40,8 +40,12 @@
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
 private _channelNumber = HASH_GET(_radioData,"currentChannel");
+private _manualChannel = HASH_GET(_radioData,"manualChannelSelection");
 
 if(isNil "_channelNumber") then {
+    _channelNumber = 0;
+};
+if (_manualChannel isEqualTo 1) then {
     _channelNumber = 0;
 };
 

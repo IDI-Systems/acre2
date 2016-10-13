@@ -48,7 +48,7 @@ private _channelNumber = HASH_GET(_radioData,"currentChannel");
 ISNILS(_channelNumber,0);
 private _channels = HASH_GET(_radioData, "channels");
 private _channel = HASHLIST_SELECT(_channels, _channelNumber);
-
+private _manualChannel = ["getState", "manualChannelSelection"] call GUI_DATA_EVENT;
 /*
  *  All needed data from the channel hash can be extracted and
  *  consequently written to the _return hash.
@@ -62,14 +62,29 @@ private _channel = HASHLIST_SELECT(_channels, _channelNumber);
  *  For our example, we also got the "mode" parameter set to
  *  "singleChannel" for all channels.
 */
+
 private _return = HASH_CREATE;
-HASH_SET(_return, "mode", GVAR(channelMode));
-HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
-HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
-HASH_SET(_return, "CTCSSTx", GVAR(channelCTCSS));
-HASH_SET(_return, "CTCSSRx", GVAR(channelCTCSS));
-HASH_SET(_return, "modulation", GVAR(channelModulation));
-HASH_SET(_return, "encryption", GVAR(channelEncryption));
-HASH_SET(_return, "power", GVAR(channelPower));
-HASH_SET(_return, "squelch", GVAR(channelSquelch));
+
+if (_manualChannel isEqualTo 1) then {
+    _channel = HASHLIST_SELECT(_channels, 0);
+    HASH_SET(_return, "mode", GVAR(channelMode));
+    HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
+    HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
+    HASH_SET(_return, "CTCSSTx", GVAR(channelCTCSS));
+    HASH_SET(_return, "CTCSSRx", GVAR(channelCTCSS));
+    HASH_SET(_return, "modulation", GVAR(channelModulation));
+    HASH_SET(_return, "encryption", GVAR(channelEncryption));
+    HASH_SET(_return, "power", GVAR(channelPower));
+    HASH_SET(_return, "squelch", GVAR(channelSquelch));
+} else {
+    HASH_SET(_return, "mode", GVAR(channelMode));
+    HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
+    HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
+    HASH_SET(_return, "CTCSSTx", GVAR(channelCTCSS));
+    HASH_SET(_return, "CTCSSRx", GVAR(channelCTCSS));
+    HASH_SET(_return, "modulation", GVAR(channelModulation));
+    HASH_SET(_return, "encryption", GVAR(channelEncryption));
+    HASH_SET(_return, "power", GVAR(channelPower));
+    HASH_SET(_return, "squelch", GVAR(channelSquelch));
+};
 _return

@@ -39,8 +39,6 @@
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-//TODO: If eventData is 0 -> manual mode
-_eventData params ["_channelNumber"];
 private _manualChannel = ["getState", "manualChannelSelection"] call GUI_DATA_EVENT;
 
 if (_manualChannel isEqualTo 1) then {
@@ -51,12 +49,14 @@ if (_manualChannel isEqualTo 1) then {
     private _newFreq = _currentMHzFrequency + _currentkHzFrequency;
 
     private _channels = HASH_GET(_radioData, "channels");
-    private _channel = HASHLIST_SELECT(_channels, _channelNumber);
+    private _channel = HASHLIST_SELECT(_channels, 0);
 
     HASH_SET(_channel, "frequencyTX", _newFreq);
     HASH_SET(_channel, "frequencyRX", _newFreq);
 
     ["setChannelData", [_channelNumber, _channel]] call GUI_DATA_EVENT;
+
+    
 } else {
     // First, we check how many channels are available in total
     private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;
