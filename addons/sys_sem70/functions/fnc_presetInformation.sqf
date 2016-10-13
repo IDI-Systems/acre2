@@ -33,7 +33,7 @@ _presetFrequencies pushBack 100; // H*/
 private _presetData = HASH_CREATE;
 private _channels = [];
 for "_i" from 0 to 0 do {
-    private _frequency = _presetFrequencies select _i;
+    private _frequency = _basefrequency;//_presetFrequencies select _i;
     private _channel = HASH_CREATE;
 
     HASH_SET(_channel,"frequencyTX",_frequency);
