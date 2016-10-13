@@ -39,12 +39,12 @@
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-private _manualChannel = ["getState", "manualChannelSelection"] call GUI_DATA_EVENT;
+private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
 
 if (_manualChannel isEqualTo 1) then {
-    private _currentMHzFrequency = ["getState", "MHzKnobPosition"] call GUI_DATA_EVENT;
+    private _currentMHzFrequency = HASH_GET(_radioData, "MHzKnobPosition");
     _currentMHzFrequency = _currentMHzFrequency + 30;
-    private _currentkHzFrequency = ["getState", "kHzKnobPosition"] call GUI_DATA_EVENT;
+    private _currentkHzFrequency = HASH_GET(_radioData, "kHzKnobPosition");
     _currentkHzFrequency = _currentkHzFrequency * 25 / 1000;
     private _newFreq = _currentMHzFrequency + _currentkHzFrequency;
 
@@ -54,9 +54,11 @@ if (_manualChannel isEqualTo 1) then {
     HASH_SET(_channel, "frequencyTX", _newFreq);
     HASH_SET(_channel, "frequencyRX", _newFreq);
 
-    ["setChannelData", [_channelNumber, _channel]] call GUI_DATA_EVENT;
+    ["setChannelData", [_channelNumber, _channel]] call EFUNC(sys_data,dataEvent);
 
-    
+    HASH_SET(_radioData,"currentChannel",0);
+
+
 } else {
     // First, we check how many channels are available in total
     private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;

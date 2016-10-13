@@ -18,6 +18,9 @@
 
 params ["","_key","","","_shift"];
 
+GVAR(backlightOn) = true;
+GVAR(lastAction) = time;
+
 // Ignore all interaction if radio is not on manual Channel Selection
 private _manualChannelSelection = ["getState", "manualChannelSelection"] call GUI_DATA_EVENT;
 if (_manualChannelSelection != 1) exitWith {};

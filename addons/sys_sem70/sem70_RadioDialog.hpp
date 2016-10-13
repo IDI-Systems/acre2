@@ -142,6 +142,14 @@ class SEM70_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = QUOTE(PATHTOF(Data\knobs\mhz\mhz_0.paa));
         END_CONTROL
+
+        BEGIN_CONTROL(displayKnob, SEM70_RscPicture, 112)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QUOTE(PATHTOF(Data\knobs\display\anzeige_aus.paa));
+        END_CONTROL
         // Do the buttons last so they come on top.
         BEGIN_CONTROL(VolumeButton, SEM70_RscButton, 201)
             x=((((0.416-0.25)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
@@ -190,23 +198,34 @@ class SEM70_RadioDialog {
         BEGIN_CONTROL(MHzButton, SEM70_RscButton, 205)
             x=((((0.416-0.515)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             y=((((0.595-0.72)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
-            w=(1.15/0.8)*0.050*SafeZoneH;
+            w=(1.05/0.8)*0.050*SafeZoneH;
             h=(1.15/0.8)*0.050*SafeZoneH;
             colorBackground[] = {1, 0, 0, 0};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onMHzKnobTurn));
-            //toolTip = QUOTE(Change MHz);
+            toolTip = QUOTE(Change MHz);
         END_CONTROL
 
         BEGIN_CONTROL(kHzButton, SEM70_RscButton, 206)
             x=((((0.416-0.35)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
             y=((((0.595-0.72)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
-            w=(1.15/0.8)*0.050*SafeZoneH;
+            w=(1.05/0.8)*0.050*SafeZoneH;
             h=(1.15/0.8)*0.050*SafeZoneH;
             colorBackground[] = {0, 0, 1, 0};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onkHzKnobTurn));
-            //toolTip = QUOTE(Change kHz);
+            toolTip = QUOTE(Change kHz);
+        END_CONTROL
+
+        BEGIN_CONTROL(displayButton, SEM70_RscButton, 207)
+            x=((((0.416-0.565)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            y=((((0.595-0.75)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.05/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {0, 0, 1, 0};
+            text = "";
+            onMouseButtonDown = QUOTE(_this call FUNC(onDisplayButtonPress));
+            toolTip = QUOTE(Lit Display);
         END_CONTROL
 
     };

@@ -41,7 +41,7 @@
 private "_description";
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
-private _manualChannel = [_radioId, "getState", "manualChannelSelection"] call EFUNC(sys_data,dataEvent);
+private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
 if (_manualChannel isEqualTo 1) then {
     private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     _description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];

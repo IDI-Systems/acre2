@@ -18,8 +18,8 @@
 
 params ["","_key"];
 
-GVAR(backlightOn) = true;
-GVAR(lastAction) = time;
+//GVAR(backlightOn) = true;
+//GVAR(lastAction) = time;
 
 
 private _currentDirection = -1;

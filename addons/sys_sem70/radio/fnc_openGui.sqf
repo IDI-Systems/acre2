@@ -47,7 +47,7 @@ createDialog "SEM70_RadioDialog";
 TRACE_2("OpenGui",GVAR(currentRadioId),GVAR(lastAction));
 
 // Use this to turn off the backlight display//also to save last channel
-/*
+
 [{
     params ["_input","_pfhID"];
 
@@ -61,11 +61,10 @@ TRACE_2("OpenGui",GVAR(currentRadioId),GVAR(lastAction));
             GVAR(backlightOn) = false;
 
             if (_open) then {
-                [MAIN_DISPLAY] call FUNC(renderDisplay);
+                [MAIN_DISPLAY] call FUNC(clearDisplay);
             };
         };
         if (!_open) then { [_pfhID] call CBA_fnc_removePerFrameHandler; };
     };
 }, 1, [GVAR(currentRadioId),true,0]] call CBA_fnc_addPerFrameHandler;
-*/
 true

@@ -16,12 +16,10 @@
  */
 #include "script_component.hpp"
 
-params["_control"];
+#define RADIO_CTRL(var1) (_display displayCtrl var1)
 
-//GVAR(backlightOn) = true;
-//GVAR(lastAction) = time;
-GVAR(displayButtonPressed) = true;
+params["_display"];
 
-private _eh = _control ctrlAddEventHandler ["MouseButtonUp", {GVAR(displayButtonPressed) = false; [MAIN_DISPLAY] call FUNC(render);}];
-
-[MAIN_DISPLAY] call FUNC(render);
+{
+    RADIO_CTRL(_x) ctrlSetText "";
+} forEach [301,302,303,304,305/*,109*/]; // purge.

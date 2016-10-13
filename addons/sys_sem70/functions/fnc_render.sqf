@@ -30,6 +30,12 @@ private _volumeKnobPosition = GET_STATE("volumeKnobPosition");
 private _kHzKnobPosition = GET_STATE("kHzKnobPosition");
 private _MHzKnobPosition = GET_STATE("MHzKnobPosition");
 
+private _displayButton = 0;
+if (GVAR(displayButtonPressed)) then {
+    _displayButton = 1;
+};
+
+
 // Main knob
 private _mainImages = [
     QUOTE(PATHTOF(data\knobs\main\lstg_aus.paa)),
@@ -104,6 +110,12 @@ private _MHzKnobImages = [
     QUOTE(PATHTOF(data\knobs\mhz\MHz_15.paa))
 ];
 
+// Display Button
+private _displayButtonImages = [
+    QUOTE(PATHTOF(data\knobs\display\anzeige_aus.paa)),
+    QUOTE(PATHTOF(data\knobs\display\anzeige_ein.paa))
+];
+
 
 
 RADIO_CTRL(106) ctrlSetText (_volImages select _volumeKnobPosition);
@@ -114,9 +126,18 @@ RADIO_CTRL(109) ctrlSetText (_channelStepImages select _channelStepPosition);
 RADIO_CTRL(110) ctrlSetText (_kHzKnobImages select (_kHzKnobPosition%16));
 RADIO_CTRL(111) ctrlSetText (_MHzKnobImages select (_MHzKnobPosition%16));
 
+RADIO_CTRL(112) ctrlSetText (_displayButtonImages select _displayButton);
+
 
 //display
-[_display] call FUNC(renderDisplay);
+if (GVAR(backlightOn) || GVAR(displayButtonPressed)) then {
+    [_display] call FUNC(renderDisplay);
+} else {
+    [_display] call FUNC(clearDisplay);
+};
+
+
+//[_display] call FUNC(renderDisplay);
 
 //TRACE_3("rendering", _volumeKnobPosition, _, acre_sys_radio_currentRadioDialog);
 true

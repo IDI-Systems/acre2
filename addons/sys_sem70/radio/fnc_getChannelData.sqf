@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function returns all specific data of the
  *  channel which number is parsed to the event.
@@ -47,7 +47,7 @@ params ["_radioId", "_event", "_eventData", "_radioData"];
 private _channelNumber = _eventData;
 private _channels = HASH_GET(_radioData, "channels");
 private _channel = HASHLIST_SELECT(_channels, _channelNumber);
-private _manualChannel = ["getState", "manualChannelSelection"] call GUI_DATA_EVENT;
+private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
 /*
  *  All needed data from the channel hash can be extracted and
  *  consequently written to the _return hash.
