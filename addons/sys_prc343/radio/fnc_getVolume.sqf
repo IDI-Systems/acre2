@@ -16,7 +16,6 @@
  */
 #include "script_component.hpp"
 
-TRACE_1("", _this);
 params["_radioId", "_event", "_eventData","_radioData"];
 
 private _volume = HASH_GET(_radioData,"volume");
