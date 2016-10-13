@@ -18,8 +18,11 @@
 
 params ["","_key"];
 
-GVAR(backlightOn) = true;
-GVAR(lastAction) = time;
+private _isOn = ["getState", "radioOn"] call GUI_DATA_EVENT;
+if (_isOn isEqualTo 1) then {
+    GVAR(backlightOn) = true;
+    GVAR(lastAction) = time;
+};
 
 private _currentDirection = -1;
 if(_key == 0) then {

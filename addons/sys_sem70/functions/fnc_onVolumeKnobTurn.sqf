@@ -18,10 +18,6 @@
 
 params ["","_key"];
 
-//GVAR(backlightOn) = true;
-//GVAR(lastAction) = time;
-
-
 private _currentDirection = -1;
 if(_key == 0) then {
     // left click

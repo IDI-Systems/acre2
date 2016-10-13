@@ -18,6 +18,9 @@
 
 params ["","_key","","","_shift"];
 
+private _isOn = ["getState", "radioOn"] call GUI_DATA_EVENT;
+if (_isOn != 1) exitWith {};
+
 GVAR(backlightOn) = true;
 GVAR(lastAction) = time;
 
