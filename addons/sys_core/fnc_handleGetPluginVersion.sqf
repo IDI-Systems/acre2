@@ -40,7 +40,7 @@ if (!ACRE_SPIT_VERSION && {!isNil "ACRE_FULL_SERVER_VERSION"}) then {
 
 if(_warn) then {
     ACRE_HAS_WARNED = true;
-    ERROR_WITH_TITLE_3("Mismatched TeamSpeak plugin and mod versions!","\nPlugin: %1\nMod: %2\nServer: %3",GVAR(pluginVersion),QUOTE(VERSION),ACRE_FULL_SERVER_VERSION);
+    ERROR_WITH_TITLE_3("Mismatched TeamSpeak plugin or mod versions!","\nPlugin: %1\nClient: %2\nServer: %3",GVAR(pluginVersion),QUOTE(VERSION),ACRE_FULL_SERVER_VERSION);
 } else {
     if(ACRE_HAS_WARNED) then {
         ACRE_HAS_WARNED = false;
