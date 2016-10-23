@@ -69,21 +69,21 @@ if (_manualChannel isEqualTo 1) then {
     HASH_SET(_return, "mode", GVAR(channelMode));
     HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
     HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
-    HASH_SET(_return, "CTCSSTx", GVAR(channelCTCSS));
-    HASH_SET(_return, "CTCSSRx", GVAR(channelCTCSS));
-    HASH_SET(_return, "modulation", GVAR(channelModulation));
-    HASH_SET(_return, "encryption", GVAR(channelEncryption));
-    HASH_SET(_return, "power", GVAR(channelPower));
-    HASH_SET(_return, "squelch", GVAR(channelSquelch));
+    HASH_SET(_return, "CTCSSTx", HASH_GET(_radioData, "CTCSS"));
+    HASH_SET(_return, "CTCSSRx", HASH_GET(_radioData, "CTCSS"));
+    HASH_SET(_return, "modulation", HASH_GET(_radioData, "modulation"));
+    HASH_SET(_return, "encryption", HASH_GET(_radioData, "encryption"));
+    HASH_SET(_return, "power", HASH_GET(_radioData, "power"));
+    HASH_SET(_return, "squelch", HASH_GET(_radioData, "squelch"));
 } else {
     HASH_SET(_return, "mode", GVAR(channelMode));
     HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
     HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
-    HASH_SET(_return, "CTCSSTx", GVAR(channelCTCSS));
-    HASH_SET(_return, "CTCSSRx", GVAR(channelCTCSS));
-    HASH_SET(_return, "modulation", GVAR(channelModulation));
-    HASH_SET(_return, "encryption", GVAR(channelEncryption));
-    HASH_SET(_return, "power", GVAR(channelPower));
-    HASH_SET(_return, "squelch", GVAR(channelSquelch));
+    //HASH_SET(_return, "CTCSSTx", HASH_GET(_radioData, "CTCSS"));
+    //HASH_SET(_return, "CTCSSRx", HASH_GET(_radioData, "CTCSS"));
+    //HASH_SET(_return, "modulation", HASH_GET(_radioData, "modulation"));
+    //HASH_SET(_return, "encryption", HASH_GET(_radioData, "encryption"));
+    HASH_SET(_return, "power", HASH_GET(_radioData, "power"));
+    //HASH_SET(_return, "squelch", HASH_GET(_radioData, "squelch"));
 };
 _return

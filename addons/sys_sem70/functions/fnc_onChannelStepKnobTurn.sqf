@@ -33,20 +33,26 @@
      switch _newKnobPosition do {
          case 0: {
              // CTCSS on, 25kHz
+             ["setState", ["channelSpacing",0]] call GUI_DATA_EVENT;
+             ["setState", ["CTCSS",150]] call GUI_DATA_EVENT;
          };
 
          case 1: {
              // CTCSS off, 25kHz
              ["setState", ["channelSpacing",0]] call GUI_DATA_EVENT;
+             ["setState", ["CTCSS",0]] call GUI_DATA_EVENT;
          };
 
          case 2: {
              // CTCSS off, 50kHz
              ["setState", ["channelSpacing",1]] call GUI_DATA_EVENT;
+             ["setState", ["CTCSS",0]] call GUI_DATA_EVENT;
          };
 
          case 3: {
              // CTCSS on, 50kHz
+             ["setState", ["channelSpacing",1]] call GUI_DATA_EVENT;
+             ["setState", ["CTCSS",150]] call GUI_DATA_EVENT;
          };
      };
 
