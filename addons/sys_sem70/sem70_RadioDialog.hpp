@@ -228,6 +228,49 @@ class SEM70_RadioDialog {
             toolTip = QUOTE(Lit Display);
         END_CONTROL
 
+        BEGIN_CONTROL(memorySlotButton, SEM70_RscButton, 208)
+            x=((((0.416-0.4)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            y=((((0.595-0.62)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.05/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {0, 0, 1, 0};
+            text = "";
+            onMouseButtonDown = QUOTE(_this call FUNC(onMemorySlotKnobTurn));
+            toolTip = QUOTE(Change Memory Slot);
+        END_CONTROL
+
+        BEGIN_CONTROL(network1Button, SEM70_RscButton, 209)
+            x=((((0.416-0.35)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            y=((((0.595-0.62)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.05/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {0, 1, 0, 0};
+            text = "";
+            //onMouseButtonDown = QUOTE(_this call FUNC(onMemorySlotKnobTurn));
+            toolTip = QUOTE(Network 1);
+        END_CONTROL
+
+        BEGIN_CONTROL(network2Button, SEM70_RscButton, 210)
+            x=((((0.416-0.3)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            y=((((0.595-0.62)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.05/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {1, 0, 0, 0};
+            text = "";
+            //onMouseButtonDown = QUOTE(_this call FUNC(onMemorySlotKnobTurn));
+            toolTip = QUOTE(Network 2);
+        END_CONTROL
+
+        BEGIN_CONTROL(network3Button, SEM70_RscButton, 211)
+            x=((((0.416-0.25)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            y=((((0.595-0.62)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.05/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            colorBackground[] = {1, 0, 1, 0};
+            text = "";
+            //onMouseButtonDown = QUOTE(_this call FUNC(onMemorySlotKnobTurn));
+            toolTip = QUOTE(Network 3);
+        END_CONTROL
     };
 };
 

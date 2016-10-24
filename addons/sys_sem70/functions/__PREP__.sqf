@@ -21,3 +21,5 @@ PREP_MODULE(functions,onNetworkKnobTurn);
 PREP_MODULE(functions,onMemorySlotKnobTurn);
 PREP_MODULE(functions,onVolumeKnobTurn);
 PREP_MODULE(functions,onDisplayButtonPress);
+
+PREP_MODULE(functions,setNetworkID);
