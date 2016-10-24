@@ -9,6 +9,7 @@ PREP_FOLDER(functions);
 
 NO_DEDICATED;
 
+GVAR(manualChannel) = 10;
 GVAR(currentRadioId) = -1;
 
 // UI Variables

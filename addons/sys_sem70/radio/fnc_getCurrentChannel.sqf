@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function returns the current channel
  *
@@ -46,7 +46,7 @@ if(isNil "_channelNumber") then {
     _channelNumber = 0;
 };
 if (_manualChannel isEqualTo 1) then {
-    _channelNumber = 0;
+    _channelNumber = GVAR(manualChannel);
 };
 
 _channelNumber

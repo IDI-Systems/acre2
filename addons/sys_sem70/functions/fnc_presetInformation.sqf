@@ -22,17 +22,17 @@
 //30->79.975MHZ (25khz min spacing)
 private _presetFrequencies = [];
 private _basefrequency = 30;
-/*for "_i" from 0 to 11 do {
+for "_i" from 0 to 9 do {
     private _frequencymodifier = _i*1;
     private _frequency = _basefrequency + _frequencymodifier;
     _presetFrequencies pushBack _frequency;
 };
-_presetFrequencies pushBack 100; // H*/
+_presetFrequencies pushBack 30; // Manual
 
 
 private _presetData = HASH_CREATE;
 private _channels = [];
-for "_i" from 0 to 0 do {
+for "_i" from 0 to 10 do {
     private _frequency = _basefrequency;//_presetFrequencies select _i;
     private _channel = HASH_CREATE;
 

@@ -49,14 +49,14 @@ if (_manualChannel isEqualTo 1) then {
     private _newFreq = _currentMHzFrequency + _currentkHzFrequency;
 
     private _channels = HASH_GET(_radioData, "channels");
-    private _channel = HASHLIST_SELECT(_channels, 0);
+    private _channel = HASHLIST_SELECT(_channels, GVAR(manualChannel));
 
     HASH_SET(_channel, "frequencyTX", _newFreq);
     HASH_SET(_channel, "frequencyRX", _newFreq);
 
     ["setChannelData", [_channelNumber, _channel]] call EFUNC(sys_data,dataEvent);
 
-    HASH_SET(_radioData,"currentChannel",0);
+    HASH_SET(_radioData,"currentChannel",GVAR(manualChannel));
 
 
 } else {
