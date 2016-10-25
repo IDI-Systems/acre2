@@ -27,7 +27,7 @@ params["_display"];
 //private _channelKnobPosition = GET_STATE("channelKnobPosition");
 private _mainKnobPosition = GET_STATE("mainKnobPosition");
 private _functionKnobPosition = GET_STATE("functionKnobPosition");
-//private _manualChannelSelection = GET_STATE("manualChannelSelection");
+private _manualChannelSelection = GET_STATE("manualChannelSelection");
 
 
 if (_channelKnobPosition == 0) exitWith {}; // OFF
@@ -97,9 +97,15 @@ _fifthDigit = [
     QUOTE(PATHTOF(data\display\5char_9.paa))
 ];
 
-private _kHzKnobPosition = GET_STATE("kHzKnobPosition");
-private _MHzKnobPosition = GET_STATE("MHzKnobPosition");
-private _isOn = GET_STATE("radioOn");
+_dotDisplay = QUOTE(PATHTOF(data\display\dot.paa));
+
+
+
+
+private _currentChannel = GET_STATE("currentChannel");
+private _channels = GET_STATE("channels");
+private _channel = _channels select _currentChannel;
+
 
 // Can't use CBA_fnc_formatNumber due to precision error - This will simply format a number into usable array.
 private _fnc_formatNumber = {
@@ -112,16 +118,26 @@ private _fnc_formatNumber = {
     _numbers + [floor ((_in mod 1000)/100),floor ((_in mod 100)/10), floor (_in mod 10)];
 };
 
-private _currentChannel = GET_STATE("currentChannel"); // add 1 for UI thing
-private _channels = GET_STATE("channels");
-private _channel = _channels select _currentChannel;
-private _freq = HASH_GET(_channel,"frequencyRX");
-private _numbers = [_freq] call _fnc_formatNumber;
+if (_manualChannelSelection == 1) then {
+    private _kHzKnobPosition = GET_STATE("kHzKnobPosition");
+    private _MHzKnobPosition = GET_STATE("MHzKnobPosition");
 
-TRACE_1("Frequency NUmber", _numbers);
+    private _freq = HASH_GET(_channel,"frequencyRX");
+    private _numbers = [_freq] call _fnc_formatNumber;
 
-RADIO_CTRL(301) ctrlSetText (_firstDigit param [_numbers param [0,0]]);
-RADIO_CTRL(302) ctrlSetText (_secondDigit param [_numbers param [1,0]]);
-RADIO_CTRL(303) ctrlSetText (_thirdDigit param [_numbers param [2,0]]);
-RADIO_CTRL(304) ctrlSetText (_fourthDigit param [_numbers param [3,0]]);
-RADIO_CTRL(305) ctrlSetText (_fifthDigit param [_numbers param [4,0]]);
+    TRACE_1("Frequency Number", _numbers);
+
+    RADIO_CTRL(301) ctrlSetText (_firstDigit param [_numbers param [0,0]]);
+    RADIO_CTRL(302) ctrlSetText (_secondDigit param [_numbers param [1,0]]);
+    RADIO_CTRL(303) ctrlSetText (_thirdDigit param [_numbers param [2,0]]);
+    RADIO_CTRL(304) ctrlSetText (_fourthDigit param [_numbers param [3,0]]);
+    RADIO_CTRL(305) ctrlSetText (_fifthDigit param [_numbers param [4,0]]);
+} else {
+    private _networkKnobPosition = ["getState", "NetworkKnobPosition"] call GUI_DATA_EVENT;
+
+    RADIO_CTRL(301) ctrlSetText (_firstDigit param [_currentChannel param [0,0]]);
+    RADIO_CTRL(302) ctrlSetText (_thirdDigit param [_networkKnobPosition param [0,0]]);
+    RADIO_CTRL(303) ctrlSetText _dotDisplay; // Yeah, swapped with the other dialog due to layer order
+    RADIO_CTRL(304) ctrlSetText (_fourthDigit param [_networkKnobPosition param [1,0]]);
+    RADIO_CTRL(305) ctrlSetText (_fifthDigit param [_networkKnobPosition param [2,0]]);
+};

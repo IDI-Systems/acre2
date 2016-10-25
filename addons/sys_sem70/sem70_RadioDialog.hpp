@@ -150,6 +150,41 @@ class SEM70_RadioDialog {
             h=NEW_SCALE * SafeZoneH;
             text = QUOTE(PATHTOF(Data\knobs\display\anzeige_aus.paa));
         END_CONTROL
+
+        BEGIN_CONTROL(memorySlotKnob, SEM70_RscPicture, 113)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QUOTE(PATHTOF(Data\knobs\sp\sp_0.paa));
+        END_CONTROL
+
+        BEGIN_CONTROL(network1Knob, SEM70_RscPicture, 114)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QUOTE(PATHTOF(Data\knobs\fk\fk1_0.paa));
+        END_CONTROL
+
+        BEGIN_CONTROL(network2Knob, SEM70_RscPicture, 115)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QUOTE(PATHTOF(Data\knobs\fk\fk2_0.paa));
+        END_CONTROL
+
+        BEGIN_CONTROL(network3Knob, SEM70_RscPicture, 116)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QUOTE(PATHTOF(Data\knobs\fk\fk3_0.paa));
+        END_CONTROL
+
+
+
         // Do the buttons last so they come on top.
         BEGIN_CONTROL(VolumeButton, SEM70_RscButton, 201)
             x=((((0.416-0.25)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
@@ -246,7 +281,7 @@ class SEM70_RadioDialog {
             h=(1.15/0.8)*0.050*SafeZoneH;
             colorBackground[] = {0, 1, 0, 0};
             text = "";
-            //onMouseButtonDown = QUOTE(_this call FUNC(onMemorySlotKnobTurn));
+            onMouseButtonDown = QUOTE(_this call FUNC(onNetworkKnobTurn));
             toolTip = QUOTE(Network 1);
         END_CONTROL
 
@@ -257,7 +292,7 @@ class SEM70_RadioDialog {
             h=(1.15/0.8)*0.050*SafeZoneH;
             colorBackground[] = {1, 0, 0, 0};
             text = "";
-            //onMouseButtonDown = QUOTE(_this call FUNC(onMemorySlotKnobTurn));
+            onMouseButtonDown = QUOTE(_this call FUNC(onNetworkKnobTurn));
             toolTip = QUOTE(Network 2);
         END_CONTROL
 
@@ -268,7 +303,7 @@ class SEM70_RadioDialog {
             h=(1.15/0.8)*0.050*SafeZoneH;
             colorBackground[] = {1, 0, 1, 0};
             text = "";
-            //onMouseButtonDown = QUOTE(_this call FUNC(onMemorySlotKnobTurn));
+            onMouseButtonDown = QUOTE(_this call FUNC(onNetworkKnobTurn));
             toolTip = QUOTE(Network 3);
         END_CONTROL
     };

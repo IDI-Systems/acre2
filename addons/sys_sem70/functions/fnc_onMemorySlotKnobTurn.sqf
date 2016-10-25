@@ -45,7 +45,7 @@ if(_knobPosition != _newKnobPosition) then {
     if (_newKnobPosition < 0) then {
         _newKnobPosition = 9;
     };
-    ["setState", ["MHzKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
+    ["setState", ["MemorySlotKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 
     ["setCurrentChannel", _newKnobPosition] call GUI_DATA_EVENT;
 

@@ -103,7 +103,7 @@ HASH_SET(_radioData,"channelSpacingKnobPosition", 1); // 0-3
 HASH_SET(_radioData,"kHzKnobPosition",0);
 HASH_SET(_radioData,"MHzKnobPosition",0);
 HASH_SET(_radioData,"MemorySlotKnobPosition",0);
-HASH_SET(_radioData,"NetworkKnobPosition",[0,0,0]);
+HASH_SET(_radioData,"NetworkKnobPosition",[ARR_3(0,0,0)]);
 
 // Spacing
 // Auto Channel
