@@ -15,6 +15,8 @@
  */
 #include "script_component.hpp"
 
+if (!hasInterface) exitWith {false};
+
 INFO_2("%1 called with: %2",QFUNC(ignoreAntennaDirection),_this);
 
 params ["_value"];
