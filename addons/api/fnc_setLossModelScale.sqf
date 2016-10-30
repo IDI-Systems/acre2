@@ -17,6 +17,8 @@
 
 INFO_2("%1 called with: %2",QFUNC(setLossModelScale),_this);
 
+if (!hasInterface) exitWith {false};
+
 params ["_scale"];
 
 _scale = _scale max 0;

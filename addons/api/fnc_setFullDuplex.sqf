@@ -17,6 +17,8 @@
 
 INFO_2("%1 called with: %2",QFUNC(setFullDuplex),_this);
 
+if (!hasInterface) exitWith {false};
+
 params ["_value"];
 
 ACRE_FULL_DUPLEX = _value;

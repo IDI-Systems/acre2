@@ -18,9 +18,9 @@
 
 INFO_2("%1 called with: %2",QFUNC(setRevealToAI),_this);
 
-params ["_var"];
-
 if (!hasInterface) exitWith {false};
+
+params ["_var"];
 
 //if(!isServer) exitWith {
 //    WARNING_1("%1 called on client! Function is server-side only!",QFUNC(setRevealToAI));
