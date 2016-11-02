@@ -161,7 +161,7 @@ namespace acre {
             uint32_t version;
             float cell_size;
             float map_grid_size;
-
+            int32_t failure; // 0 - success, -1 recovered, -2 failure - no recovery
         protected:
             bool _read_binary_tree_block(std::istream &, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
             bool _process(std::istream &);

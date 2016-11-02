@@ -61,6 +61,17 @@ INFO_1("Loading Map: %1",_wrpLocation);
     [_wrpLocation],
     true,
     {
+        params ["_args", "_result"];
+        // Log island name.
+        INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+        if (_result < 0) then {
+            if (_result == -1) then {
+                WARNING("Map Load (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.");
+            } else {
+                ERROR("Map Load (WRP) failed");
+            };
+        };
+
         ACRE_MAP_LOADED = true;
         INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
     },

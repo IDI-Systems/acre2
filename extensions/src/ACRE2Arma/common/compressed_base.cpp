@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <malloc.h>
+#include <exception>
 
 #define COMPRESS_ASSERT(val) if (!(val)) return LZO_E_ERROR
 #define M2_MAX_OFFSET   0x0800
@@ -27,6 +28,15 @@ namespace acre {
     /*lzo1x_decompress_safe   ( const lzo_bytep src, lzo_uint  src_len,
     lzo_bytep dst, lzo_uintp dst_len,
     lzo_voidp wrkmem  ) */
+
+    class decompress_failure : public std::exception
+    {
+        virtual const char* what() const throw()
+        {
+            return "Decompression Failure";
+        }
+    } dec_failure;
+
     int _compressed_base::_decompress_safe(std::istream & in, uint32_t expected_size) {
         // We read 512 bytes at a time, until we have hit the end of the compressed stream
         uint8_t     *buffer;
@@ -46,8 +56,8 @@ namespace acre {
         result = _mikero_lzo1x_decompress_safe(buffer, _data.get(), expected_size);
         if (result < 0) {
             delete[] buffer;
-            LOG(ERROR) << "Decompression failed";
-            assert(false);
+            LOG(ERROR) << "WRP parsing decompression failed";
+            throw dec_failure;
         }
         in.seekg(save_pos);
         in.seekg(result, in.cur);
@@ -64,7 +74,7 @@ namespace acre {
 
         uint8_t* const op_end = out + OutLen;
 
-        OutLen = 0;
+        //OutLen = 0;
         op = out;
         ip = in;
 
@@ -84,10 +94,12 @@ namespace acre {
             if (t >= 16)           goto match;
             if (t == 0)
             {
+                if (ip >= (in+ OutLen+1024)) throw dec_failure;
                 while (*ip == 0)
                 {
                     t += 255;
                     ip++;
+                    if (ip >= (in + OutLen + 1024)) throw dec_failure;
                 }
                 t += 15 + *ip++;
             }
