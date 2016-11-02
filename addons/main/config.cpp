@@ -869,8 +869,8 @@ class CfgPatches {
             "cba_main",
             "cba_xeh"
         };
-        author = CSTRING(main,Author);
-        url = CSTRING(main,URL);
+        author = CSTRING(Author);
+        url = CSTRING(URL);
         VERSION_CONFIG;
     };
 };
