@@ -10,7 +10,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_components_fnc_detachComponentHandler
  *
  * Public: No
  */
@@ -18,7 +18,7 @@
 
 params["_radioId","_event", "_data", "_radioData", "_eventKind"];
 
-private _childConnector    = _data select 0; // this is the connector on this event's device
+private _childConnector = _data select 0; // this is the connector on this event's device
 
 private _connectorData = HASH_GET(_radioData, "acre_radioConnectionData");
 if(isNil "_connectorData") then {

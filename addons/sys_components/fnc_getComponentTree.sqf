@@ -3,14 +3,13 @@
  * SHORT DESCRIPTION
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID <STRING>
  *
  * Return Value:
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1"] call acre_sys_components_fnc_getComponentTree
  *
  * Public: No
  */

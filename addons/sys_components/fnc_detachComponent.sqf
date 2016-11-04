@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Remove component from another component.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID to remove from <STRING>
+ * 1: Connector Index <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1",0] call acre_sys_components_fnc_detachComponent
  *
  * Public: No
  */
