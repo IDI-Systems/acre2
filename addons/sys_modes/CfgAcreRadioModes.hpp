@@ -23,6 +23,7 @@ class CfgAcreRadioModes {
         availability = QUOTE(DFUNC(sem70akw_muting));
         speaking = QUOTE(DFUNC(sem70akw_speaking));
         channelHash[] = {
+            "frequencies",
             "frequencyTX",
             "frequencyRX",
             "power",

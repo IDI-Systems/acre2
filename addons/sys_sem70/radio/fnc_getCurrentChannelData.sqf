@@ -67,7 +67,7 @@ private _return = HASH_CREATE;
 
 if (_manualChannel isEqualTo 1) then {
     _channel = HASHLIST_SELECT(_channels, GVAR(manualChannel));
-    HASH_SET(_return, "mode", HASH_GET(_radioData, "mode"));
+    HASH_SET(_return, "mode", HASH_GET(_channel, "mode"));
     HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
     HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
     HASH_SET(_return, "CTCSSTx", HASH_GET(_radioData, "CTCSS"));
@@ -77,7 +77,9 @@ if (_manualChannel isEqualTo 1) then {
     HASH_SET(_return, "power", HASH_GET(_radioData, "power"));
     HASH_SET(_return, "squelch", HASH_GET(_radioData, "squelch"));
 } else {
-    HASH_SET(_return, "mode", HASH_GET(_radioData, "mode"));
+    HASH_SET(_return, "mode", HASH_GET(_channel, "mode"));
+    HASH_SET(_return, "networkID", HASH_GET(_channel, "networkID"));
+    HASH_SET(_return, "frequencies", HASH_GET(_channel, "frequencies"));
     HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
     HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
     //HASH_SET(_return, "CTCSSTx", HASH_GET(_radioData, "CTCSS"));

@@ -42,12 +42,13 @@ private "_description";
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
 private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
+private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 if (_manualChannel isEqualTo 1) then {
-    private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+    //private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     _description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];
 } else {
     private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
-    _description = format["Channel %1", ([(_channelNumber+1), 2] call CBA_fnc_formatNumber)];
+    _description = format["Channel %1 -- Network ID %2", ([(_channelNumber), 1] call CBA_fnc_formatNumber), HASH_GET(_hashData,"networkID")];
 };
 
 _description

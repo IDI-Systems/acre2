@@ -85,7 +85,7 @@ HASH_SET(_radioData,"currentChannel",GVAR(manualChannel)); // Manual Channel
 HASH_SET(_radioData,"audioPath", "HEADSET");
 
 // Channel
-HASH_SET(_radioData,"mode","singleChannel"); // or "sem70AKW"
+//HASH_SET(_radioData,"mode","singleChannel"); // or "sem70AKW"
 HASH_SET(_radioData,"manualChannelSelection",1); // Manual Frequency Selection Flag
 HASH_SET(_radioData,"power",4000);
 HASH_SET(_radioData,"channelSpacing",0); // 0: 25kHz, 1: 50kHz
@@ -93,7 +93,7 @@ HASH_SET(_radioData,"CTCSS",0);
 HASH_SET(_radioData,"modulation","FM");
 HASH_SET(_radioData,"encryption",0);
 HASH_SET(_radioData,"squelch",0);
-HASH_SET(_radioData,"networkID",0);
+//HASH_SET(_radioData,"networkID",0);
 
 // Knobs
 HASH_SET(_radioData,"mainKnobPosition",2); // High Power Setting
@@ -103,7 +103,7 @@ HASH_SET(_radioData,"channelSpacingKnobPosition", 1); // 0-3
 HASH_SET(_radioData,"kHzKnobPosition",0);
 HASH_SET(_radioData,"MHzKnobPosition",0);
 HASH_SET(_radioData,"MemorySlotKnobPosition",0);
-HASH_SET(_radioData,"NetworkKnobPosition",[ARR_3(0,0,0)]);
+HASH_SET(_radioData,"NetworkKnobPosition",[ARR_3(1,2,3)]);
 
 // Spacing
 // Auto Channel
