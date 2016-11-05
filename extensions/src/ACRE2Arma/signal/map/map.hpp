@@ -34,6 +34,7 @@ namespace acre {
                     return landscape.get()->failure;
                 }
 
+                LOG(ERROR) << "WRP unable to find wrp file: " << wrp_path_;
                 return -2;
             };
 
