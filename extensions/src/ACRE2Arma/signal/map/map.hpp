@@ -18,11 +18,12 @@ namespace acre {
         public:
             map_loader() {};
             ~map_loader() {};
-            bool get_map(const std::string wrp_path_, map_p &result_, bool &loaded_) {
+            int32_t get_map(const std::string wrp_path_, map_p &result_, bool &loaded_) {
+                //Return 0 = OKAY, -1 RECOVERD, -2 FAILURE
                 if (wrp_path_ == _current_map && _map != nullptr) { 
                     result_ = _map;
                     loaded_ = true;
-                    return true;
+                    return 0;
                 }
                 loaded_ = false;
                 acre::pbo::file_entry_p wrp_file;
@@ -30,10 +31,11 @@ namespace acre {
                     acre::wrp::landscape_p landscape = std::make_shared<acre::wrp::landscape>(wrp_file->stream());
                     result_ = std::make_shared<map>(landscape);
                     _current_map = wrp_path_;
-                    return true;
+                    return landscape.get()->failure;
                 }
 
-                return false;
+                LOG(ERROR) << "WRP unable to find wrp file: " << wrp_path_;
+                return -2;
             };
 
         protected:
