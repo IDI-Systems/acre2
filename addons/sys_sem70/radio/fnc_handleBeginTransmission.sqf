@@ -39,7 +39,7 @@
  *      true
 */
 
-params ["_radioId", "_eventKind", "_eventData"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
 SCRATCH_SET(_radioId, "cachedTransmissions", false);
 

@@ -40,7 +40,7 @@
  *      false if radio can't transmit
 */
 
-params ["_radioId"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
 /*
  *  Insert code here if a radio can be only in receive
@@ -48,6 +48,20 @@ params ["_radioId"];
  *  be false in this case. Otherwise the radio will be
  *  handled as if it is transmitting.
 */
+
+private _manualChannelSelection = [_radioId, "getState", "manualChannelSelection"] call EFUNC(sys_data,dataEvent);
+if (_manualChannelSelection != 1) exitWith {
+    private _currentChannel = HASH_GET(_radioData, "currentChannel");
+    private _channels = HASH_GET(_radioData, "channels");
+    private _channel = HASHLIST_SELECT(_channels, _currentChannel);
+
+    private _frequencies = HASH_GET(_channel,"frequencies");
+    private _frequency = _frequencies call BIS_fnc_selectRandom;
+    HASH_SET(_channel, "frequencyTX", _frequency);
+    HASH_SET(_channel, "frequencyRX", _frequency);
+
+    [_radioId, "setChannelData", [_currentChannel, _channel]] call EFUNC(sys_data,dataEvent);
+};
 
 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
 [_radioId, "Acre_GenericBeep", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);

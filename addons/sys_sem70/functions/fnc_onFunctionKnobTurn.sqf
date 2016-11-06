@@ -51,6 +51,7 @@ if(_knobPosition != _newKnobPosition) then {
         case 2: {
             // Manual Channel Selection
             ["setState", ["manualChannelSelection",1]] call GUI_DATA_EVENT;
+            ["setCurrentChannel", GVAR(manualChannel)] call GUI_DATA_EVENT;
         };
 
         case 3: {
