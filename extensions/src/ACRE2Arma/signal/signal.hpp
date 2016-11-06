@@ -78,17 +78,15 @@ namespace acre {
 
             bool load(const arguments & args_, std::string & result) {
                 bool loaded = false;
-                bool ok = acre::signal::map_loader::get().get_map(args_.as_string(0), _map, loaded);
-                if (ok) {
+                int32_t map_load_result = acre::signal::map_loader::get().get_map(args_.as_string(0), _map, loaded);
+
+                if (map_load_result > -2) { //Return 0 = OKAY, -1 RECOVERD, -2 FAILURE
                     if (!loaded) {
                         _signal_processor = acre::signal::model::multipath(_map);
                     }
                     LOG(INFO) << "Map Loaded";
-                    result = "1";
                 }
-                else {
-                    result = "-1";
-                }
+                result = std::to_string(map_load_result);
                 return true;
             }
             //#define DEBUG_OUTPUT
