@@ -23,7 +23,9 @@ if(!isNil "_componentData") then {
     private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
     if(!isNil "_connectorData") then {
         _return = [];
-        private _componentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _componentId >> "acre_baseClass"));
+        private _baseClass = getText(configFile >> "CfgWeapons" >> _componentId >> "acre_baseClass");
+        if (_baseClass == "") then {_baseClass = getText(configFile >> "CfgVehicles" >> _componentId >> "acre_baseClass"); };
+        private _componentClass = configFile >> "CfgAcreComponents" >> _baseClass;
         private _connectors = getArray(_componentClass >> "connectors");
         {
             if(_forEachIndex < (count _connectorData)) then {
