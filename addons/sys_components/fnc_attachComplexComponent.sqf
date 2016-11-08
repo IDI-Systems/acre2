@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Attaches a complex component to a complex component.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID to attach to <STRING>
+ * 1: Connector to use - Index on component it is being attached to <NUMBER>
+ * 2: Component ID of child component <STRING>
+ * 3: Attributes - These are passed on to the attachComponent event <HASH>
+ * 4: Force - If set to false it will not replace any existing components already attached to the connector. (default:false) <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1",0,"ACRE_PRC152_ID_2",[],false] call acre_sys_components_fnc_attachComplexComponent;
  *
  * Public: No
  */

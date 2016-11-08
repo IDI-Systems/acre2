@@ -3,14 +3,13 @@
  * Returns all the components connected to the component and also all the components attached to those components and so forth.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID <STRING>
  *
  * Return Value:
  * Nested array of connected components <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1"] call acre_sys_components_fnc_getComponentTree
  *
  * Public: No
  */

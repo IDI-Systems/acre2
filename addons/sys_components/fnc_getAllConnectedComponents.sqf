@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns all the connected components for a given component ID
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Components, nil if component ID does not exist <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1"] call acre_sys_components_fnc_getAllConnectedComponents
  *
  * Public: No
  */
@@ -26,7 +25,7 @@ if(!isNil "_parentComponentData") then {
         _return = [];
         {
             if(!isNil "_x") then {
-                PUSH(_return, [ARR_2(_forEachIndex,_x)]);
+                _return pushBack [_forEachIndex,_x];
             };
         } forEach _parentConnectorData;
     };

@@ -1,16 +1,20 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Creates a complex component and will attachs all the default components.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID <STRING>
+ * 1: Event <STRING>
+ * 2: Data <ANY>
+ * 3: Radio data <HASH>
+ * 4: Event Kind <STRING>
+ * 5: Remote <BOOLEAN>
  *
  * Return Value:
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_components_fnc_initializeComponent
  *
  * Public: No
  */

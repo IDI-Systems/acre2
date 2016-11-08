@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks if a component is attached to the connector
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID <STRING>
+ * 1: Connector index <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Is component attached to the component <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1",0] call acre_sys_components_fnc_connectorConnected
  *
  * Public: No
  */
