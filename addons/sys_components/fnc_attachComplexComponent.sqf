@@ -19,8 +19,12 @@
 params["_parentComponentId", "_parentConnector", "_childComponentId", "_childConnector", "_attributes", ["_force",false]];
 
 private _return = false;
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass"));
-private _childComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _childComponentId >> "acre_baseClass"));
+private _baseClass = getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass");
+if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> _parentComponentId >> "acre_baseClass"); };
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
+private _baseClass = getText(configFile >> "CfgWeapons" >> _childComponentId >> "acre_baseClass");
+if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> _childComponentId >> "acre_baseClass"); };
+private _childComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
 
 private _componentSimple = getNumber (_parentComponentClass >> "simple");
 if (_componentSimple == 1) exitWith {

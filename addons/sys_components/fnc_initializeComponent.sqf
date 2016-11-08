@@ -20,8 +20,11 @@ private ["_return"];
 
 params["_radioId","_event","_data", "_radioData", "_eventKind", "_remote"];
 
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _radioId >> "acre_baseClass"));
+private _baseClass = getText(configFile >> "CfgWeapons" >> _radioId >> "acre_baseClass");
+if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> _radioId >> "acre_baseClass"); };
 
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
+systemChat str ["_initComp",_parentComponentClass,_baseClass];
 private _connectorData = HASH_GET(_radioData, "acre_radioConnectionData");
 if(isNil "_connectorData") then {
     _connectorData = [];

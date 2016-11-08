@@ -1,13 +1,13 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns all the components connected to the component and also all the components attached to those components and so forth.
  *
  * Arguments:
  * 0: ARGUMENT ONE <TYPE>
  * 1: ARGUMENT TWO <TYPE>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Nested array of connected components <ARRAY>
  *
  * Example:
  * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
@@ -22,7 +22,7 @@ private _searchedComponents = [];
 private _searchFunction = {
     private _returnTree = [];
     params["_componentParentId"];
-    PUSH(_searchedComponents, _componentParentId);
+    _searchedComponents pushBack _componentParentId;
     private _componentData = HASH_GET(acre_sys_data_radioData, _componentParentId);
 
     if(!isNil "_componentData") then {
