@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Remove component from another component.
+ * Removes a component from another component, also can be used for removing complex components.
  *
  * Arguments:
  * 0: Component ID to remove from <STRING>

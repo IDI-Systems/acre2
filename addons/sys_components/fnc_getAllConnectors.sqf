@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns an array with data for all its connectors. Nil values will be given for unused connectors.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of connector data <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_components_fnc_getAllConnectors
+ * ["acre_prc152_id_1"] call acre_sys_components_fnc_getAllConnectors
  *
  * Public: No
  */
