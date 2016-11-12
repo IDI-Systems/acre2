@@ -5,7 +5,7 @@ class CfgVehicles {
             class ACRE_Interact {
                 displayName = "Radios";
                 condition = "true";
-                exceptions[] = {"isNotInside"};
+                exceptions[] = {"isNotInside", "isNotSitting"};
                 statement = "true";
                 insertChildren = "_this call acre_ace_interact_fnc_radioListChildrenActions";
                 priority = 0.1;
