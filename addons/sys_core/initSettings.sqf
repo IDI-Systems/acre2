@@ -29,7 +29,7 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(disableGearDesync),
+    QGVAR(disableDesyncHint),
     "CHECKBOX",
     "Disable Gear Desync Hint",
     "ACRE2",
