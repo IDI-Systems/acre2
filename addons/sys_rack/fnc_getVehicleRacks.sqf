@@ -23,6 +23,6 @@ private _racks = [];
     if (_rackId isKindOf "ACRE_BaseRack") then {
         _racks pushBack _rackId;
     };
-} ForEach (attachedObjects _vehicle);
+} forEach (attachedObjects _vehicle);
 
 _racks;

@@ -25,6 +25,6 @@ private _racks = [];
             _racks pushBack _rackId;
         };
     };
-} ForEach (attachedObjects _vehicle);
+} forEach (attachedObjects _vehicle);
 
 _racks;
