@@ -258,6 +258,56 @@ if(_transmissionsChanged) then {
                 _okRadios = _hearableTransmissions;
             };
         };
+
+        if(HASH_GET(_radioRxData, "mode") == "sem70AKW") then {
+            private _hearableTransmissions = [];
+            private _junkTransmissions = [];
+            private _digital = false;
+            {
+                private _txId = _x select 1;
+                _radioTxData = [_txId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+                if(HASH_GET(_radioRxData, "networkID") == HASH_GET(_radioTxData, "networkID")) then {
+                    PUSH(_hearableTransmissions, _x);
+                } else {
+                    PUSH(_junkTransmissions, _x);
+                };
+            } forEach _sortedRadios;
+
+            //diag_log text format["sorted: %1", _sortedRadios];
+            //diag_log text format["junk: %1", _junkTransmissions];
+            //diag_log text format["ok: %1", _hearableTransmissions];
+            if(ACRE_INTERFERENCE) then {
+                if((count _hearableTransmissions) > 0) then {
+                    _junkTransmissions = _hearableTransmissions + _junkTransmissions;
+                    _hearableTransmissions params ["_bestSignal"];
+                    (_bestSignal select 2) params ["_highestSignal", "_dbm"];
+                    private _newSignal = _highestSignal;
+                    //diag_log text format["new sig start: %1", _newSignal];
+                    for "_i" from 1 to (count _junkTransmissions)-1 do {
+                        private _data = _junkTransmissions select _i;
+                        _data params ["","_txId","_signalData"];
+                        _signalData params ["_signal"];
+                        if(_newSignal <= 0) exitWith {
+                            _newSignal = 0;
+                        };
+                        _newSignal = _newSignal*(1-(_signal/_newSignal));
+                        if(_newSignal <= 0) exitWith {
+                            _newSignal = 0;
+                        };
+                    };
+                    //diag_log text format["new sig end: %1", _newSignal];
+                    if(_newSignal > 0) then {
+                        _okRadios = [_bestSignal];
+                        _bestSignal set[2, [_newSignal, _dbm+_dbm*(1-_newSignal/_highestSignal)]];
+                    } else {
+                        _okRadios = [];
+                    };
+                };
+            } else {
+                _okRadios = _hearableTransmissions;
+            };
+        };
+
         SCRATCH_SET(_radioId, "cachedTransmissionsData", +_okRadios);
         SCRATCH_SET(_radioId, "cachedTransmissions", true);
         SCRATCH_SET(_radioId, "cachedTransmissionsTime", diag_tickTime);
@@ -272,7 +322,7 @@ if(_transmissionsChanged) then {
         _channelNum = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
         _channels = [_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent);
         _channel = HASHLIST_SELECT(_channels, _channelNum);
-        _squelch = -117 + HASH_GET(_channel, "squelch");
+        _squelch = -117;
         // diag_log text format["squelch: %1 signal: %2", _squelch, _signalDbM];
         if(_signalDbM < _squelch) then {
             _okRadios = [];
