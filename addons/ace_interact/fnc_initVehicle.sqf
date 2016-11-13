@@ -25,6 +25,7 @@ if (_type in GVAR(initializedVehicleClasses)) exitWith {};
 GVAR(initializedVehicleClasses) pushBack _type;
 
 if (!hasInterface) exitWith {};
+if (isNil "ace_interact_menu_fnc_addActionToClass") exitWith {} // No ACE exit.
 
 ////{alive _target} && 
 private _condition = {
