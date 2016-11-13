@@ -8,10 +8,12 @@ PREP(initializeComponent);
 PREP(findAntenna);
 PREP(detachComponent);
 PREP(detachComponentHandler);
+PREP(detachAllConnectorsFromComponent);
 PREP(sendComponentMessage);
 PREP(handleComponentMessage);
 PREP(getAllConnectedComponents);
 PREP(getAllAvailableConnectors);
+PREP(getConnectorSpecification);
 PREP(connectorConnected);
 PREP(getComponentTree);
 

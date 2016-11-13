@@ -16,11 +16,12 @@
  */
 #include "script_component.hpp"
 
-params["_player", "_class", "_callback", ["_replacementId",""]];
+params["_entity", "_class", "_callback", ["_replacementId",""]];
 
-if (getNumber(configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0) then {
+if (getNumber(configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0 && getNumber(configFile >> "CfgVehicles" >> _class >> "acre_hasUnique") == 0) then {
     _class = BASECLASS(_class);
 };
+
 
 private _ret = [_class] call FUNC(getRadioId);
 if(_ret != -1) then {
@@ -38,7 +39,7 @@ if(_ret != -1) then {
         TRACE_1("callback=", _callback);
         PUSH(GVAR(unacknowledgedIds), _uniqueClass);
         HASH_SET(GVAR(masterIdTable), _uniqueClass, [ARR_2(acre_player,acre_player)]);
-        [_callback, [_player, _uniqueClass, _ret, _replacementId]] call CALLSTACK(CBA_fnc_globalEvent);
+        [_callback, [_entity, _uniqueClass, _ret, _replacementId]] call CALLSTACK(CBA_fnc_globalEvent);
         // GVAR(waitingForIdAck) = true;
     };
 } else {

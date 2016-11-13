@@ -151,6 +151,35 @@ class CfgAcreDataInterface {
             returnType = ACRE_DATA_RETURNTYPE_BOOL;
         };
     };
+    
+    class DefaultRackInterface : DefaultComponentInterface {        
+        class getState : DefaultGetter {
+            required = 1;
+            returnType = ACRE_DATA_RETURNTYPE_ARRAY;
+        };
+
+        class setState : DefaultSetter {
+            priority = ACRE_DATA_NETPRIORITY_LOW;
+            uniqueKey = 1;
+            required = 1;
+        };
+
+        class mountRadio : DefaultSetter {
+            required = 1;
+            priority = ACRE_DATA_NETPRIORITY_HIGH;
+        };
+
+        class unmountRadio : DefaultSetter {
+            required = 1;
+            priority = ACRE_DATA_NETPRIORITY_HIGH;
+        };
+        
+        class mountableRadio : DefaultGetter {
+            required = 1;
+            returnType = ACRE_DATA_RETURNTYPE_BOOL;
+        };
+    };
+    
 };
 
 class CfgAcreTransmissionInterface {

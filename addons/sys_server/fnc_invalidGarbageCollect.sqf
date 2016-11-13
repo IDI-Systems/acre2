@@ -23,7 +23,7 @@ WARNING_2("Invalid garbage collection done on radio %1 for player %2! Restoring 
 private _baseRadio = configName(inheritsFrom (configFile >> "CfgWeapons" >> _radioId));
 private _idNumber = getNumber(configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
 
-private _key = (GVAR(radioIdMap) select 0) find _baseRadio;
+private _key = (GVAR(radioIdMap) select 0) find (toLower _baseRadio);
 if(_key != -1) then {
     private _idArray = ((GVAR(radioIdMap) select 1) select _key);
 

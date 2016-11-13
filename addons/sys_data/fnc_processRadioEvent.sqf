@@ -29,7 +29,7 @@ private _radioData = HASH_GET(GVAR(radioData), _radioId);
 
 //_return = nil;
 
-private _radioBaseClass = getText(configFile >> "CfgWeapons" >> _radioId >> "acre_baseClass");
+private _radioBaseClass = BASE_CLASS_CONFIG(_radioId);
 
 private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
 if(_interfaceClass == "") then {

@@ -119,6 +119,8 @@ DGVAR(languages) = [];
 DVAR(ACRE_TEST_OCCLUSION) = true;
 DVAR(ACRE_SIGNAL_DEBUGGING) = 0;
 
+DVAR(ACRE_ACTIVE_RACK_RADIOS) = []; // Extra radios that a player can use, should be used for radios that are racked.
+
 acre_player = player;
 
 GVAR(coreCache) = HASH_CREATE;

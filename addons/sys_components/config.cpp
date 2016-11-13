@@ -90,6 +90,34 @@ class CfgAcreComponents {
             };
         };
     };
+    
+    class ACRE_BaseRack : ACRE_ComponentBase {
+        type = ACRE_COMPONENT_RACK;
+        isAcre = 1;
+        name = "ACRE Rack";
+        
+        // Amplification
+        // Speaker
+        // Antenna slots.
+        connectors[] = {};
+        defaultComponents[] = {};
+        
+        class Interfaces {
+            class CfgAcreDataInterface {
+                getState                    = "acre_sys_rack_fnc_getState";
+                setState                    = "acre_sys_rack_fnc_setState";
+                handleComponentMessage      = "acre_sys_data_fnc_noApiSystemFunction";
+
+                initializeComponent         = "acre_sys_data_fnc_noApiSystemFunction";
+
+                attachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
+                detachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
+                mountRadio                  = "acre_sys_data_fnc_noApiSystemFunction";
+                unmountRadio                  = "acre_sys_data_fnc_noApiSystemFunction";
+                mountableRadio              = "acre_sys_data_fnc_noApiSystemFunction";
+            };
+        };
+    };
 };
 
 class CfgVehicles {
@@ -99,6 +127,18 @@ class CfgVehicles {
         //acre_antennaMemoryPointsDir[] = {{"Spine3", "Neck"}};
         acre_antennaDirFnc = QUOTE(DFUNC(getAntennaDirMan));
     };
+    class Thing;
+    class ACRE_BaseRack : Thing {
+        author = "ACRE2 Team";// TODO: sort out
+        displayName = "ACRE Base Rack";
+        scope = 0;
+        mass = 0;
+        vehicleClass = "";
+        
+        acre_isRack = 1;
+        acre_hasUnique = 1;
+	};
+
 };
 
 
@@ -127,8 +167,7 @@ class CfgWeapons {
         useActionTitle = "ACRE: Pickup Radio";
         acre_isRadio = 1;
 
-        class Library
-        {
+        class Library {
             libTextDesc = "ACRE Radio";
         };
     };

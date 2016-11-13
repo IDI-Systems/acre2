@@ -41,4 +41,5 @@ for "_i" from 0 to (count _channels)-1 do {
 HASH_SET(_radioData,"volume",1);
 HASH_SET(_radioData,"currentChannel",0);
 HASH_SET(_radioData,"radioOn",1);
-HASH_SET(_radioData, "audioPath", "TOPAUDIO");
+HASH_SET(_radioData,"audioPath", "TOPAUDIO");
+HASH_SET(_radioData,"powerSource","BAT");

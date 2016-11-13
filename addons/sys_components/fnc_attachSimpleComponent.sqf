@@ -19,7 +19,7 @@
 params["_parentComponentId", "_parentConnector", "_childComponentType", "_attributes", ["_force",false]];
 
 private _return = false;
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass"));
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_parentComponentId);
 private _childComponentClass = configFile >> "CfgAcreComponents" >> _childComponentType;
 
 private _componentSimple = getNumber(_childComponentClass >> "simple");

@@ -15,9 +15,10 @@ class CfgAcreComponents
         isPackRadio = 1;
         isDeployable = 0;
 
-        connectors[] =     {
+        connectors[] =  {
                             {"Antenna", ACRE_CONNECTOR_TNC},
-                            {"Audio/Data", ACRE_CONNECTOR_U_283}
+                            {"Audio/Data", ACRE_CONNECTOR_U_283},
+                            {"Rear Accessory", ACRE_CONNECTOR_CONN_26PIN}
                         };
         defaultComponents[] = {
                                 {0, "ACRE_120CM_VHF_TNC"},

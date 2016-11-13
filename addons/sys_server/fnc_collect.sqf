@@ -18,9 +18,14 @@
 
 params ["_radioId"];
 
-private _baseRadio = configName (inheritsFrom (configFile >> "CfgWeapons" >> _radioId));
-private _idNumber = getNumber(configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
-private _keyIndex = (GVAR(radioIdMap) select 0) find _baseRadio;
+
+private _baseClass = configFile >> "CfgWeapons" >> _radioId;
+if (!isClass _baseClass) then { _baseClass = configFile >> "CfgVehicles" >> _radioId; };
+
+private _baseRadio = getText (_baseClass >> "acre_baseClass");
+private _idNumber = getNumber(_baseClass >> "acre_uniqueId");
+private _keyIndex = (GVAR(radioIdMap) select 0) find (toLower _baseRadio);
+
 if(_keyIndex != -1) then {
     private _newIds = ((GVAR(radioIdMap) select 1) select _keyIndex) - [_idNumber];
     (GVAR(radioIdMap) select 1) set[_keyIndex, _newIds];

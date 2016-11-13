@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the list of all connectors on a component that are unused.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Connectors array of indexes <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1"] call acre_sys_components_fnc_getAllAvailableConnectors
  *
  * Public: No
  */
@@ -24,15 +23,16 @@ if(!isNil "_componentData") then {
     private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
     if(!isNil "_connectorData") then {
         _return = [];
-        private _componentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _componentId >> "acre_baseClass"));
+        private _componentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_componentId);
         private _connectors = getArray(_componentClass >> "connectors");
         {
             if(_forEachIndex < (count _connectorData)) then {
-                if(isNil "_x") then {
-                    PUSH(_return, _forEachIndex);
+                private _connectorIndexData = _connectorData select _forEachIndex;
+                if(isNil "_connectorIndexData") then {
+                    _return pushBack _forEachIndex;
                 };
             } else {
-                PUSH(_return, _forEachIndex);
+                _return pushBack _forEachIndex;
             };
         } forEach _connectors;
     };

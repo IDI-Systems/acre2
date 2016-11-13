@@ -17,3 +17,7 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 
 #include "script_acre_component_defines.hpp"
+
+
+
+
