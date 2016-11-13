@@ -44,8 +44,9 @@ if(_knobPosition != _newKnobPosition) then {
         case 1: {
             // Automatic Channel Selection
             ["setState", ["manualChannelSelection",0]] call GUI_DATA_EVENT;
-            private _knobPosition = ["getState", "MemorySlotKnobPosition"] call GUI_DATA_EVENT;
-            ["setCurrentChannel", _knobPosition] call GUI_DATA_EVENT;
+            private _memoryKnobPosition = ["getState", "MemorySlotKnobPosition"] call GUI_DATA_EVENT;
+            TRACE_1("",_memoryKnobPosition);
+            ["setCurrentChannel", _memoryKnobPosition] call GUI_DATA_EVENT;
         };
 
         case 2: {

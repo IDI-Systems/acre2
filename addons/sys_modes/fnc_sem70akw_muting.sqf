@@ -38,10 +38,10 @@ if(
 
     private _freqRX = _frequenciesRX find _freqTX;
     if!(_freqRX isEqualTo -1) then {
-        private _radioRXData = HASH_GET("acre_sys_data_radioData", _radioIdRX);
+        private _radioRXData = HASH_GET(acre_sys_data_radioData, _radioIdRX);
         private _currentChannel = [_radioIdRX, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
-        private _channels = HASH_GET(_radioData, "channels");
-        private _channel = HASHLIST_SELECT(_channels, _channelNumber);
+        private _channels = HASH_GET(_radioRXData, "channels");
+        private _channel = HASHLIST_SELECT(_channels, _currentChannel);
         HASH_SET(_channel, "frequencyTX", _freqTX);
         HASH_SET(_channel, "frequencyRX", _freqTX);
         _match = [_radioIdRX, "setChannelData", [_currentChannel, _channel]] call EFUNC(sys_data,dataEvent); // Will be true if successful
