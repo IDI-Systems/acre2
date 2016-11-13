@@ -33,7 +33,7 @@
     "CHECKBOX",
     "Disable Gear Desync Hint",
     "ACRE2",
-    false,
+    true,
     false,
     {EGVAR(sys_radio,disableDesyncHint) = _this}
 ] call CBA_Settings_fnc_init;
