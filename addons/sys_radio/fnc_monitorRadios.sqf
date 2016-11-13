@@ -190,12 +190,17 @@ DFUNC(checkServerDesyncBug) = {
 ADDPFH(DFUNC(checkServerDesyncBug), 1, []);
 
 DFUNC(hasGearDesync) = {
-    if(ACRE_SERVER_GEAR_DESYNCED && GVAR(disableDesyncHint)) then {
+    if(ACRE_SERVER_GEAR_DESYNCED) then {
         private _message = "ACRE has determined that players in this mission have an inventory that has desynchronized from the server, this is due to a bug in the mission or a bug in Arma 3, NOT ACRE. This message will not dissappear and is a warning that ACRE may no longer be functioning correctly in this mission. The players experiencing the bug are listed below:\n\n";
         {
             _message = _message + format ["%1\n", name _x];
         } forEach ACRE_SERVER_DESYNCED_PLAYERS;
-        hintSilent _message;
+        if(GVAR(disableDesyncHint)) then {
+            diag_log _message;
+        } else {
+            hintSilent _message;
+        };
+
         WARNING(_message);
     };
 };
