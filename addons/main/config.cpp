@@ -873,6 +873,9 @@ class CfgPatches {
         url = CSTRING(URL);
         VERSION_CONFIG;
     };
+
+    // Backwards compatibility
+    class acre_game: ADDON {}; // Component removed in 2.3.0
 };
 
 class CfgMods {
