@@ -1,15 +1,15 @@
 /*
  * Author: ACRE2Team
- * Mount radio classname
+ * Mount radio to a specified rack
  *
  * Arguments:
  * 0: Target Vehicle <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <ARRAY>
+ * None
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_fnc_mountRadio;
+ * ["ACRE_VRC103_ID_1","ACRE_PRC117F_ID_1"] call acre_sys_rack_fnc_mountRadio;
  *
  * Public: No
  */

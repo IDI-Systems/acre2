@@ -1,9 +1,17 @@
 /*
  * Author: ACRE2Team
+ * Attachs a complex component to another complex component.
  *
  * Arguments:
+ * 0: Parent component Id <STRING>
+ * 1: Parent connector Index <NUMBER>
+ * 2: Child component Id <STRING>
+ * 3: Child connector Index <NUMBER>
+ * 4: Attributes of connection <HASH>
+ * 5: Force - Permits replacing a pre-existing connection <BOOLEAN>
  *
  * Return Value:
+ * Succesful <BOOLEAN>
  *
  * Example:
  * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,[],false] call acre_sys_components_fnc_attachComplexComponent;

@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles setting up the rack once a unique ID has been returned by the server
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Vehicle <OBJECT>
+ * 1: Rack ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_rack_fnc_addRackOnReturn
+ * [vehicle2,"ACRE_VRC110_ID_1"] call acre_sys_rack_fnc_addRackOnReturn
  *
  * Public: No
  */
@@ -33,13 +33,11 @@ private _idx = -1;
     if (_handled) exitWith {};
     if (_baseRackName == _x select 0) exitWith {
     
-    
         // Initalize the Rack Component
         _x pushBack _vehicle;
         [_rackId, "initializeComponent", _x] call EFUNC(sys_data,dataEvent);
         
         private _mountedRadio = _x select 4;
-      
         if (_mountedRadio != "") then {
             if (getNumber(configFile >> "CfgWeapons" >> _mountedRadio >> "acre_hasUnique") == 1) then {
                 //Init the radio
@@ -47,9 +45,7 @@ private _idx = -1;
             };
         };
 
-        _idx = _forEachIndex;
-        //TODO COmponents
-        
+        _idx = _forEachIndex;     
         _handled = true;
     };
 } forEach _queue;

@@ -3,11 +3,10 @@
  * Returns the vehicle object for a given rack ID.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Rack ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Vehicle <OBJECT>
  *
  * Example:
  * ["ACRE_VRC110_ID_1"] call acre_sys_rack_fnc_getVehicleFromRack;

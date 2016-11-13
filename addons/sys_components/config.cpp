@@ -137,7 +137,7 @@ class CfgVehicles {
         
         acre_isRack = 1;
         acre_hasUnique = 1;
-	};
+    };
 
 };
 

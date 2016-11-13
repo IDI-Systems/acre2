@@ -7,7 +7,7 @@
  * 1: ARGUMENT TWO <TYPE>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
  * [ARGUMENTS] call acre_sys_rack_fnc_onReturnRadioId

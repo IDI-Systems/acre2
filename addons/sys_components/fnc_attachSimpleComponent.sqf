@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Attaches a simple component to a complex component.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Parent component Id <STRING>
+ * 1: Parent connector Index <NUMBER>
+ * 2: Child component Id - Simple component <STRING>
+ * 3: Attributes of connection <HASH>
+ * 4: Force - Permits replacing a pre-existing connection <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1",0,"ACRE_120CM_VHF_TNC",[],false] call acre_sys_components_fnc_attachSimpleComponent;
  *
  * Public: No
  */

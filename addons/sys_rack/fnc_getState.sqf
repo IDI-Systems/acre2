@@ -1,21 +1,23 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Function for retrieving data from the data interface events
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Rack ID <STRING>
+ * 1: Event <STRING>
+ * 2: Event Data <ANY>
+ * 3: Rack Data <HASH>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Any
  *
  * Example:
- * [ARGUMENTS] call acre_sys_rack_fnc_getState
+ * ["ACRE_VRC110_ID_1","getState","mountedRadio",(acre_sys_data_radioData getVariable "ACRE_VRC110_ID_1")] call acre_sys_rack_fnc_getState
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_radioId", "_event", "_eventData", "_radioData"];
+params["_rackId", "_event", "_eventData", "_rackData"];
 
 HASH_GET(_radioData, _eventData);

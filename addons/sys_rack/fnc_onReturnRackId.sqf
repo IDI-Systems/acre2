@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the return of a unique ID for a new rack from the server.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Vehicle rack is attached to <OBJECT>
+ * 1: Unique rack ID <STRING>
+ * 2: Unique ID Number <NUMBER>
+ * 3: Replacement ID - if the rack is replacing an older rack <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_rack_fnc_onReturnRackId
  *
  * Public: No
  */

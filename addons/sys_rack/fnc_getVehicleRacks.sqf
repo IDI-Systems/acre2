@@ -6,7 +6,7 @@
  * 0: Target Vehicle <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <ARRAY>
+ * Racks <ARRAY>
  *
  * Example:
  * [cursorTarget] call acre_sys_rack_fnc_getVehicleRacks;

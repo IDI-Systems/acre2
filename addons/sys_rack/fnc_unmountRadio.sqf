@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_rack_fnc_unmountRadio
+ * ["ACRE_VRC110_ID_1",acre_player] call acre_sys_rack_fnc_unmountRadio
  *
  * Public: No
  */
