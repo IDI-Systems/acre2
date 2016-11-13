@@ -27,3 +27,13 @@
     false,
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
 ] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(disableGearDesync),
+    "CHECKBOX",
+    "Disable Gear Desync Hint",
+    "ACRE2",
+    false,
+    false,
+    {EGVAR(sys_radio,disableDesyncHint) = _this}
+] call CBA_Settings_fnc_init;
