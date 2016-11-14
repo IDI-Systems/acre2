@@ -9,7 +9,7 @@
  * Setup succesful <BOOLEAN>
  *
  * Example:
- * [ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_setupMission;
+ * [ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_bableSetupMission;
  *
  * Public: Yes
  */
