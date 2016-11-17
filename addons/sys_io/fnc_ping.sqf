@@ -38,7 +38,6 @@ DFUNC(pingFunc) = {
                 };
             };
             if(!(GVAR(runServer))) then {
-                diag_log text format["%1 ACRE: Server shutting down ping loop.", diag_tickTime];
                 INFO("Server shutting down ping loop.");
                 [(_this select 1)] call CBA_fnc_removePerFrameHandler;
             };
