@@ -1,6 +1,6 @@
 ---
 title: Vehicle Attenuation
-permalink: api_vehicle_attenuation.html
+permalink: api_vehicle-attenuation.html
 sidebar: acre2_sidebar
 folder: api
 ---

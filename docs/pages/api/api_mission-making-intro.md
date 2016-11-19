@@ -1,13 +1,13 @@
 ---
 title: Mission Making Intro
-permalink: api_mission_making_intro.html
+permalink: api_mission-making-intro.html
 sidebar: acre2_sidebar
 folder: api
 ---
 
 ## Introduction
 
-When making missions with ACRE2 there are a few things you should be aware of to prevent problems with your missions. For this page we will also assume that you are loosely familiar with the basic features of ACRE, notably [BABEL](http://acre.idi-systems.com/api/api_babel.html). If you aren't familiar with the basic features of ACRE2 please [read this first][acre2_feature_list]. We have split this page up into several parts starting with the basics and simple cases and slowly progressing into more detail, at the end we'll give some full examples.
+When making missions with ACRE2 there are a few things you should be aware of to prevent problems with your missions. For this page we will also assume that you are loosely familiar with the basic features of ACRE, notably [BABEL](http://acre.idi-systems.com/api/api_babel.html). If you aren't familiar with the basic features of ACRE2 please [read this first][user_feature-list]. We have split this page up into several parts starting with the basics and simple cases and slowly progressing into more detail, at the end we'll give some full examples.
 
 The default behaviour of ACRE2 is to replace any vanilla radio items (classname:"ItemRadio") (which all the vanilla Arma 3 military units have) with AN/PRC 343 radios. If you want players to have custom radios you must add them yourself. All radios by default are set to the same settings and this allow players on other teams to hear each other on the radios. All players will also start out speaking the same babel language.
 
@@ -145,6 +145,6 @@ If we want a unit to speak multiple languages we can easily add more in:
 ## Examples
 
 - Included in the @ACRE2/extras/examples/ folder you should find some sample scripts.
-- [ACRE2 API Examples Page][acre2_api]
+- [ACRE2 API Examples Page][api]
 
 {% include links.html %}
