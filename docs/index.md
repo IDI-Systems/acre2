@@ -1,37 +1,71 @@
 ---
-title: Getting started with the Documentation Theme for Jekyll
-summary: These brief instructions will help you get started quickly with the theme. The other topics in this help provide additional information and detail about working with other aspects of this theme and Jekyll.
+title: Home
 permalink: index.html
 sidebar: acre2_sidebar
+toc: false
 ---
 
-## Markdown
-
-This theme uses [kramdown markdown](http://kramdown.gettalong.org/). kramdown is similar to Github-flavored Markdown, except that when you have text that intercepts list items, the spacing of the intercepting text must align with the spacing of the first character after the space of a numbered list item. Basically, with your list item numbering, use two spaces after the dot in the number, like this:
-
-```
-1.  First item
-2.  Second item
-3.  Third item
-```
-
-When you want to insert paragraphs, notes, code snippets, or other matter in between the list items, use four spaces to indent. The four spaces will line up with the first letter of the list item (the <b>F</b>irst or <b>S</b>econd or <b>T</b>hird).
-
-```
-1.  First item
-
-    ```
-    alert("hello");
-    ```
-
-2.  Second item
-
-    Some pig!
-
-3.  Third item
-```
-
-See the topics under "Formatting" in the sidebar for more information.
-
+<div class="row">
+         <div class="col-md-3 col-sm-6">
+             <div class="panel panel-default text-center">
+                 <div class="panel-heading">
+                     <span class="fa-stack fa-5x">
+                           <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                           <i class="fa fa-users fa-stack-1x fa-inverse"></i>
+                     </span>
+                 </div>
+                 <div class="panel-body">
+                     <h4>User guides</h4>
+                     <p>Learn how to use the features to their full potential.</p>
+                     <a href="tag_getting_started.html" class="btn btn-primary">Learn More</a>
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-3 col-sm-6">
+             <div class="panel panel-default text-center">
+                 <div class="panel-heading">
+                     <span class="fa-stack fa-5x">
+                           <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                           <i class="fa fa-building fa-stack-1x fa-inverse"></i>
+                     </span>
+                 </div>
+                 <div class="panel-body">
+                     <h4>API/Frameworks</h4>
+                     <p>Expand your missions and mods with our public.</p>
+                     <a href="tag_navigation.html" class="btn btn-primary">Learn More</a>
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-3 col-sm-6">
+             <div class="panel panel-default text-center">
+                 <div class="panel-heading">
+                     <span class="fa-stack fa-5x">
+                           <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                           <i class="fa fa-database fa-stack-1x fa-inverse"></i>
+                     </span>
+                 </div>
+                 <div class="panel-body">
+                     <h4>Class Names</h4>
+                     <p>See a list of class names and what they are.</p>
+                     <a href="tag_single_sourcing.html" class="btn btn-primary">Learn More</a>
+                 </div>
+             </div>
+         </div>
+         <div class="col-md-3 col-sm-6">
+             <div class="panel panel-default text-center">
+                 <div class="panel-heading">
+                     <span class="fa-stack fa-5x">
+                           <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                           <i class="fa fa-code-fork fa-stack-1x fa-inverse"></i>
+                     </span>
+                 </div>
+                 <div class="panel-body">
+                     <h4>Development</h4>
+                     <p>Learn how to help in development and documentation.</p>
+                     <a href="tag_formatting.html" class="btn btn-primary">Learn More</a>
+                 </div>
+             </div>
+         </div>
+</div>
 
 {% include links.html %}
