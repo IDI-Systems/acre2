@@ -1,8 +1,8 @@
 ---
 title: Mission Making Intro
-permalink: acre2_mission_making_intro.html
+permalink: api_mission_making_intro.html
 sidebar: acre2_sidebar
-folder: acre2
+folder: api
 ---
 
 ## Introduction

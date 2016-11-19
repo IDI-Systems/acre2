@@ -1,8 +1,8 @@
 ---
 title: API
-permalink: acre2_api.html
+permalink: api.html
 sidebar: acre2_sidebar
-folder: acre2
+folder: api
 ---
 
 _To be moved from [Old API Documentation](http://acre.idi-systems.com/api/)._

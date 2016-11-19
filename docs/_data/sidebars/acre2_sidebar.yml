@@ -19,7 +19,7 @@ entries:
       output: pdf
       type: frontmatter
 
-  - title: Overview
+  - title: User Guides
     output: web, pdf
     folderitems:
 
@@ -28,24 +28,12 @@ entries:
       output: web, pdf
       type: homepage
 
-    - title: Introduction
-      url: /acre2_introduction.html
-      output: web, pdf
-
-    - title: About the theme author
-      url: /acre2_about.html
+    - title: Installation
+      url: /user_installation.html
       output: web, pdf
 
     - title: Support
-      url: /acre2_support.html
-      output: web, pdf
-
-  - title: Installation
-    output: web, pdf
-    folderitems:
-
-    - title: Install ACRE2
-      url: /acre2_installation.html
+      url: /user_support.html
       output: web, pdf
 
   - title: API / Frameworks
@@ -53,17 +41,29 @@ entries:
     folderitems:
 
       - title: API Documentation
-        url: /acre2_api.html
+        url: /api.html
         output: web, pdf
 
       - title: Mission Making Intro
-        url: /acre2_mission_making_intro.html
+        url: /api_mission_making_intro.html
         output: web, pdf
 
       - title: Mission Making Guide
-        url: /acre2_mission_making_guide.html
+        url: /api_mission_making_guide.html
         output: web, pdf
 
       - title: Vehicle Attenuation
-        url: /acre2_vehicle_attenuation.html
+        url: /api_vehicle_attenuation.html
         output: web, pdf
+
+  - title: Development
+    output: web, pdf
+    folderitems:
+
+    - title: Documentation Installation
+      url: /dev_docs_installation.html
+      output: web, pdf
+
+    - title: Documentation Guidelines
+      url: /dev_docs_guidelines.html
+      output: web, pdf

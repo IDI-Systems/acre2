@@ -1,8 +1,8 @@
 ---
 title: Vehicle Attenuation
-permalink: acre2_vehicle_attenuation.html
+permalink: api_vehicle_attenuation.html
 sidebar: acre2_sidebar
-folder: acre2
+folder: api
 ---
 
 Vehicle attenuation is the system where people outside and inside of a vehicle hear each other at reduced volumes. The old implementation was to simply use the `insideSoundCoef` in the vehicle config. This value was used by the game engine to determine the sound level heard internally.

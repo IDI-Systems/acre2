@@ -5,6 +5,8 @@ sidebar: acre2_sidebar
 toc: false
 ---
 
+This site provides documentation and other notes for the ACRE2 Arma 3 mod. There's a lot of information about the mod, its features and functionalities, tutorials, API and frameworks usage and how to help in development and expanding documentation.
+
 <div class="row">
          <div class="col-md-3 col-sm-6">
              <div class="panel panel-default text-center">
@@ -15,7 +17,7 @@ toc: false
                      </span>
                  </div>
                  <div class="panel-body">
-                     <h4>User guides</h4>
+                     <h4>User Guides</h4>
                      <p>Learn how to use the features to their full potential.</p>
                      <a href="tag_getting_started.html" class="btn btn-primary">Learn More</a>
                  </div>
