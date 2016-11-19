@@ -28,6 +28,7 @@ HASH_SET(_radioData, "currentEditEntry", "");
 HASH_SET(_radioData, "volume", 1);
 HASH_SET(_radioData, "radioOn", 1);
 HASH_SET(_radioData, "audioPath", "TOPAUDIO");
+HASH_SET(_radioData, "powerSource", "BAT");
 
 _eventData params ["_baseName", "_preset"];
 private _presetData = [_baseName, _preset] call EFUNC(sys_data,getPresetData);

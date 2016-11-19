@@ -113,7 +113,7 @@ class CfgAcreComponents {
                 attachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
                 detachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
                 mountRadio                  = "acre_sys_data_fnc_noApiSystemFunction";
-                unmountRadio                  = "acre_sys_data_fnc_noApiSystemFunction";
+                unmountRadio                = "acre_sys_data_fnc_noApiSystemFunction";
                 mountableRadio              = "acre_sys_data_fnc_noApiSystemFunction";
             };
         };

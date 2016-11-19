@@ -19,10 +19,11 @@ class CfgAcreComponents
          Array of arrays, each item being {connectorLabel, connectorType}
         */
 
-        connectors[] =     {
+        connectors[] = {
                             {"Antenna", ACRE_CONNECTOR_TNC},
-                            {"Audio/Data", ACRE_CONNECTOR_U_283}
-                        };
+                            {"Audio/Data", ACRE_CONNECTOR_U_283},
+                            {"Side Connector", ACRE_CONNECTOR_CONN_18PIN}
+                       };
 
         defaultComponents[] = {
                 {0, "ACRE_120CM_VHF_TNC"}
