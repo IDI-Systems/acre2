@@ -1,7 +1,6 @@
 ---
 title: Building Extensions
 permalink: dev_building-extensions.html
-sidebar: acre2_sidebar
 folder: dev
 ---
 

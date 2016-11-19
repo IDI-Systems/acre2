@@ -1,0 +1,19 @@
+---
+title: News posted in 2016
+permalink: news_2016.html
+sidebar: news_sidebar
+folder: news
+toc: false
+---
+<div class="home">
+    <div class="post-list">
+        {% for post in site.posts %}
+            {% assign year = post.date | date: "%Y" %}
+            {% if year == "2016" %}
+                <h2><a class="post-link" href="{{ post.url | remove: "/" }}">{{ post.title }}</a></h2>
+                <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+                <p>{% if page.summary %} {{ page.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} {{ post.content | truncatewords: 50 | strip_html }} {% endif %}</p>
+            {% endif %}
+        {% endfor %}
+    <p><a href="feed.xml"" class="btn btn-primary navbar-btn cursorNorm" role="button">RSS Subscribe{{tag}}</a></p>
+</div>

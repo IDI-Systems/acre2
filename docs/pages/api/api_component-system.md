@@ -1,7 +1,6 @@
 ---
 title: Component System
 permalink: api_component-system.html
-sidebar: acre2_sidebar
 folder: api
 ---
 

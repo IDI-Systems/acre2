@@ -1,7 +1,6 @@
 ---
 title: Basic Concepts
 permalink: user_basic-concepts.html
-sidebar: acre2_sidebar
 folder: user
 ---
 

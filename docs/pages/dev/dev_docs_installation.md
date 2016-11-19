@@ -1,7 +1,6 @@
 ---
 title: Documentation Installation
 permalink: dev_docs_installation.html
-sidebar: acre2_sidebar
 folder: dev
 ---
 

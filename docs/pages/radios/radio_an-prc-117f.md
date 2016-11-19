@@ -1,8 +1,7 @@
 ---
 title: AN/PRC-117F
 permalink: radio_an-prc-117f.html
-sidebar: acre2_sidebar
-folder: radio
+folder: radios
 ---
 
 _Work in progress, this radio and the documentation is not yet final._
@@ -11,7 +10,7 @@ See [AN/PRC-152](radio_an-prc-152) for general operation guidelines.
 
 ## Interface
 
-![AN/PRC-117F Interface](images/radio/an-prc-117f_interface.png)
+![AN/PRC-117F Interface](images/radios/an-prc-117f_interface.png)
 
 
 ## Mission Editor Reference
@@ -43,18 +42,18 @@ object [addItemCargoGlobal](https://community.bistudio.com/wiki/addItemCargoGlob
 | Field name | Description |
 | -------- | -------- | -------- |
 | frequencyTX |  |
-| frequencyRX |    | 
+| frequencyRX |    |
 | power|  |
-| encryption |  | 
+| encryption |  |
 | channelMode |  |
 | name |  |
-| CTCSSTx |  | 
+| CTCSSTx |  |
 | CTCSSRx |  |
 | modulation |  |
-| TEK |  | 
+| TEK |  |
 | trafficRate |  |
 | syncLength |  |
-| squelch |  | 
+| squelch |  |
 | deviation | |
 | optioncode |  |
 | rxOnly |  |

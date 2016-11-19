@@ -1,7 +1,6 @@
 ---
 title: Coding Guidelines (SQF)
 permalink: dev_coding-guidelines-sqf.html
-sidebar: acre2_sidebar
 folder: dev
 ---
 

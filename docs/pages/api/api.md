@@ -1,7 +1,6 @@
 ---
 title: API
 permalink: api.html
-sidebar: acre2_sidebar
 folder: api
 ---
 

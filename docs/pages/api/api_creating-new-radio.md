@@ -1,7 +1,6 @@
 ---
 title: Creating New Radio
 permalink: api_creating-new-radio.html
-sidebar: acre2_sidebar
 folder: api
 ---
 

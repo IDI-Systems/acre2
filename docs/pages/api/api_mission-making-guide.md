@@ -1,7 +1,6 @@
 ---
 title: Mission Making Guide
 permalink: api_mission-making-guide.html
-sidebar: acre2_sidebar
 folder: api
 ---
 

@@ -1,8 +1,7 @@
 ---
 title: SEM 52 SL
 permalink: radio_sem-52-sl.html
-sidebar: acre2_sidebar
-folder: radio
+folder: radios
 ---
 
 The SEM 52 SL (Sender/Empfänger, mobil SEM 52 SL) is a small power radio for military purposes in the German Army. It was issued in 1995 and succeeds the SEM 52 S. As a modern radio it can transmit voice and data. To transmit voice a built-in loudspeaker / microphone is used. An external microphone can also be connected. The frequency band is from 46 to 65,975 MHz. The channel spacing is 25 KHz. 800 channels are available.
@@ -22,11 +21,11 @@ The SEM 52 SL (Sender/Empfänger, mobil SEM 52 SL) is a small power radio for mi
 
 ### Interface
 
-![SEM 52 SL Interface] (images/radio/sem-52-sl_interface.jpg)
+![SEM 52 SL Interface] (images/radios/sem-52-sl_interface.jpg)
 
 ### Volume Control Knob
 
-The volume control knob has 16 settings and is divided in volume control with (filled volume arrow) and without squelch (open volume arrow). Operating the radio without squelch is not modelled. Right and left clicking will decrease / increase the radio volume by 12.5%. The minimum volume is 0%. 
+The volume control knob has 16 settings and is divided in volume control with (filled volume arrow) and without squelch (open volume arrow). Operating the radio without squelch is not modelled. Right and left clicking will decrease / increase the radio volume by 12.5%. The minimum volume is 0%.
 
 ### Channel Knob
 

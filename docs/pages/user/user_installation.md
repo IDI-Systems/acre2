@@ -1,7 +1,6 @@
 ---
 title: Installation
 permalink: user_installation.html
-sidebar: acre2_sidebar
 folder: user
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Mission Making Intro
 permalink: api_mission-making-intro.html
-sidebar: acre2_sidebar
 folder: api
 ---
 

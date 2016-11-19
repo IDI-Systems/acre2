@@ -1,7 +1,6 @@
 ---
 title: Feature List
 permalink: user_feature-list.html
-sidebar: acre2_sidebar
 folder: user
 ---
 

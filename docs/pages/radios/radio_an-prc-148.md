@@ -1,8 +1,7 @@
 ---
 title: AN/PRC-148
 permalink: radio_an-prc-148.html
-sidebar: acre2_sidebar
-folder: radio
+folder: radios
 ---
 
 The AN/PRC-148 Multiband Inter/Intra Team Radio (MBITR) is a secure handheld multiband, tactical software-defined radio. It was developed in the 1990’s entering service in 2000 with the US Army.
@@ -11,17 +10,17 @@ The AN/PRC-148 Multiband Inter/Intra Team Radio (MBITR) is a secure handheld mul
 
 ### Interface
 
-![AN/PRC-148 Interface](images/radio/an-prc-148_interface.png)
+![AN/PRC-148 Interface](images/radios/an-prc-148_interface.png)
 
 ### Power/Volume Control Knob
 
-Left clicking will increase the radio’s volume to a maximum of 100%. Right clicking will decrease the radio’s volume to a minimum of 20%. 
+Left clicking will increase the radio’s volume to a maximum of 100%. Right clicking will decrease the radio’s volume to a minimum of 20%.
 
 You can turn the radio off by holding control and right clicking the volume knob while it is at the minimum setting of 20%. To turn the radio back on simply left click the volume knob.
 
 ### Channel Knob
 
-Left clicking the knob will increment the current channel selection through the 16 settings on the knob. 
+Left clicking the knob will increment the current channel selection through the 16 settings on the knob.
 
 Right clicking will decrement the current channel selection through the 16 settings on the knob.
 
@@ -41,9 +40,9 @@ The alternate default display shows the current receiving (RX) and transmitting 
 | Keypad | Function | ALT Function
 | -------- | -------- | -------- |
 | ALT   | Press and hold your keyboard ALT key for alternate functions  | Not Applicable |
-| MODE  | Opens Mode Select screen | Opens Programming Menus screen | 
-| GR | Opens Group Select screen   | Opens Scan Operation screen | 
-| ESC | Closest current screen / Returns to previous screen   | Lock / Unlock keypad | 
+| MODE  | Opens Mode Select screen | Opens Programming Menus screen |
+| GR | Opens Group Select screen   | Opens Scan Operation screen |
+| ESC | Closest current screen / Returns to previous screen   | Lock / Unlock keypad |
 | ▼ | Decrement selection or value   | Highlights character to left of current selection |
 | ▲ | Increment selection or value   | Highlights character to right of current selection |
 
@@ -69,7 +68,7 @@ The menu of available parameters appears on the display. To move the selection o
 
 To change the selected parameter, first press **ENT** to select the currently highlighted menu item and use the **▼** or **▲** to change the selection value. Press **ENT** to confirm the change and move the outline to the next line.
 
-The first line selects the audio path: internal audio, external audio, or external audio with sidetones enabled (INT/EXT AUDIO, SIDETONE). 
+The first line selects the audio path: internal audio, external audio, or external audio with sidetones enabled (INT/EXT AUDIO, SIDETONE).
 
 The INT AUDIO setting will enable the internal speakers of the radio, all other settings currently use the external headset. None of the other MODE Select options, such as Emergency Beacon, are currently implemented.
 
@@ -87,7 +86,7 @@ The Program Menu allows for the programming of a variety of radio functions. Cur
 
 ### Channel Programming
 
-The "Channel" Menu allows the user to program general channel data (channel number, encryption mode, channel label, transmission power, etc.) and select the operating mode (the type of radio operation to be programmed in a channel). 
+The "Channel" Menu allows the user to program general channel data (channel number, encryption mode, channel label, transmission power, etc.) and select the operating mode (the type of radio operation to be programmed in a channel).
 
 The screen opens with the Channel Number outlined. To change the channel use the Channel Knob. To navigate the channel programming menu use the **▼** and **▲** keys, and **ENT** to select a channel setting you would like to change.
 
@@ -97,19 +96,19 @@ To change the encryption mode setting use the **▼** or **▲** keys to toggle 
 
 #### Channel Label
 
-The Channel Label setting allows the user to give the Channel a custom label. 
+The Channel Label setting allows the user to give the Channel a custom label.
 
-When entering the Channel Label setting, the rightmost character will be in reverse video. 
-To select a new character, scroll up or down using the **▼** or **▲** keys. 
+When entering the Channel Label setting, the rightmost character will be in reverse video.
+To select a new character, scroll up or down using the **▼** or **▲** keys.
 
-Holding the **ALT** key and pressing **▲** will move to the character to the right of the current selection. 
+Holding the **ALT** key and pressing **▲** will move to the character to the right of the current selection.
 Holding the **ALT** key and pressing **▼** will move to the character to the left of the current selection.
 
 When all the characters of the new label have been selected, press **ENT** to confirm.
 
 #### Output Power
 
-The Output Power ("PWE") can be set to: 0.1W, 0.5W, 1.0W, 3.0W or 5.0). 
+The Output Power ("PWE") can be set to: 0.1W, 0.5W, 1.0W, 3.0W or 5.0).
 Use the **▼** or **▲** keys to scroll through the available power settings. Press **ENT** to confirm.
 
 #### Operating Mode
@@ -119,9 +118,9 @@ WIP
 #### RX & TX - Receive & Transmit Frequencies
 
 The Receive Frequency (RX) is the frequency the radio will receive on when using the channel being edited.
-The Transmit Frequency (TX) is the frequency the radio will transmit on when using the channel being edited. 
+The Transmit Frequency (TX) is the frequency the radio will transmit on when using the channel being edited.
 
-To change the frequency, press **ENT**. To change the selected value, scroll up or down using the **▼** or **▲** keys. 
+To change the frequency, press **ENT**. To change the selected value, scroll up or down using the **▼** or **▲** keys.
 To change the selected digit, hold the **ALT** key and press **▼** or **▲** to move selection left and right.
 
 Note that the TX frequency automatically matches the RX frequency unless it is manually changed.
@@ -142,7 +141,7 @@ Note that the TX frequency automatically matches the RX frequency unless it is m
 
 #### SQUELCH - Squelch Level
 
-The squelch level determines the signal quality required to "break squelch" and activate the receiver. 
+The squelch level determines the signal quality required to "break squelch" and activate the receiver.
 
 
 ## Mission Editor Reference
@@ -175,18 +174,18 @@ object [addItemCargoGlobal](https://community.bistudio.com/wiki/addItemCargoGlob
 | -------- | -------- | -------- |
 | power | Power Setting  |
 | frequencyTX | Transmit Frequency |
-| frequencyRX | Receive Frequency   | 
+| frequencyRX | Receive Frequency   |
 | encryption | Encryption Mode |
-| channelMode | Operating Mode | 
+| channelMode | Operating Mode |
 | label | Channel Label |
 | CTCSSTx | RX CTCSS Subtone |
-| CTCSSRx | TX CTCSS Subtone | 
+| CTCSSRx | TX CTCSS Subtone |
 | modulation | Modulation Type |
 | trafficRate | Traffic / Data Rate |
-| TEK | Encryption Key | 
+| TEK | Encryption Key |
 | RPTR | Repeater Delay |
 | fade | Fade Bridge |
-| phase | Crypto Synchronization | 
+| phase | Crypto Synchronization |
 | squelch | Squelch Level |
 
 

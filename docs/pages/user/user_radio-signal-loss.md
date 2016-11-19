@@ -1,7 +1,6 @@
 ---
 title: Radio Signal Loss
 permalink: user_radio-signal-loss.html
-sidebar: acre2_sidebar
 folder: user
 ---
 

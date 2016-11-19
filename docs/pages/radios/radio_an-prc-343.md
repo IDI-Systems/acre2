@@ -1,8 +1,7 @@
 ---
 title: AN/PRC-343 PRR
 permalink: radio_an-prc-343.html
-sidebar: acre2_sidebar
-folder: radio
+folder: radios
 ---
 
 The AN/PRC-343 PRR is short range lightweight intra-squad personal role radio originally known as
@@ -13,7 +12,7 @@ channel in 16 blocks (256 channels in total) with a range up to 500 meters.
 
 ### Interface
 
-![AN/PRC-343 Interface](images/radio/an-prc-343_interface.jpg)
+![AN/PRC-343 Interface](images/radios/an-prc-343_interface.jpg)
 
 The interface in ACRE 2 can be reached via two different ways:
 + double click the AN/PRC-343 in your inventory
@@ -34,7 +33,7 @@ channel will also be shown in the lower left when you start transmitting. The ch
 different channels. If you want to access the other channels you have to left click the handle which offers
 you the following view:
 
-![AN/PRC-343 Channel Control](images/radio/an-prc-343_channel-control.jpg)
+![AN/PRC-343 Channel Control](images/radios/an-prc-343_channel-control.jpg)
 
 Left clicking the channel block knob increases the block by one to a maximum of 16 while right clicking
 decreases it. The current block will be shown while transmitting. Changing the block has no influence
@@ -70,6 +69,6 @@ object [addItemCargoGlobal](https://community.bistudio.com/wiki/addItemCargoGlob
 | Field name | Description |
 | -------- | -------- | -------- |
 | frequencyTX | Transmit Frequency |
-| frequencyRX | Receive Frequency   | 
+| frequencyRX | Receive Frequency   |
 
 {% include links.html %}

@@ -5,12 +5,18 @@ entries:
   levels: one
   folders:
 
-  - title: Products
+  - title: News
     output: web
     folderitems:
-    - title: News
+
+    - title: Latest
       url: /news.html
       output: web
-    - title: ACRE2 Introduction
-      url: /acre2_introduction.html
+
+    - title: 2016
+      url: /news_2016.html
       output: web
+
+    # - title: 2017
+    #   url: /news_2017.html
+    #   output: web

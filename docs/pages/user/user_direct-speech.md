@@ -1,7 +1,6 @@
 ---
 title: Direct Speech
 permalink: user_direct-speech.html
-sidebar: acre2_sidebar
 folder: user
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: Coding Guidelines (C++)
 permalink: dev_coding-guidelines-cpp.html
-sidebar: acre2_sidebar
 folder: dev
 ---
 

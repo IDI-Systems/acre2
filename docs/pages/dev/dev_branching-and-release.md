@@ -1,7 +1,6 @@
 ---
 title: Branching and Release
 permalink: dev_branching-and-release.html
-sidebar: acre2_sidebar
 folder: dev
 ---
 

@@ -1,8 +1,7 @@
 ---
 title: AN/PRC-152
 permalink: radio_an-prc-152.html
-sidebar: acre2_sidebar
-folder: radio
+folder: radios
 ---
 
 The AN/PRC-152 Multiband Handheld Radio (Harris Falcon III) is a portable, compact, tactical software-defined combat-net radio manufactured by Harris Corporation.
@@ -11,14 +10,14 @@ The AN/PRC-152 Multiband Handheld Radio (Harris Falcon III) is a portable, compa
 
 ### Interface
 
-![AN/PRC-152 Interface](images/radio/an-prc-152_interface.png)
+![AN/PRC-152 Interface](images/radios/an-prc-152_interface.png)
 
 
 ## Basic Use
 
 ### Function Switch
 
-Left and right clicking the function switch will cycle between the 1st 6 preset channels on the radio. 
+Left and right clicking the function switch will cycle between the 1st 6 preset channels on the radio.
 Additionally this can be used to turn off the radio by placing the switch in the left most position, turning it back to any of the channel positions will turn the radio back on.
 
 ### Volume Control
@@ -37,7 +36,7 @@ Click PRE +/- to change between channels. Alternatively, you can use the top kno
 
 ### Programming Instructions
 
-The Farris radio operating system follows a standard across all farris radios for operational programming, usage, and menu navigation. 
+The Farris radio operating system follows a standard across all farris radios for operational programming, usage, and menu navigation.
 
 #### Navigation
 
@@ -53,7 +52,7 @@ Numerical values are entered with the number pad, clicking left and right to nav
 
 All operational programming modes are accessible through pressing 7-OPT button. Once entering this menu, you'll receive the operational programming menu. Operational changes to a radio are erased when the current channel is changed, unless auto-saving is on.
 
-![AN/PRC-152 OPT Menu](images/radio/an-prc-152_opt-menu.png)
+![AN/PRC-152 OPT Menu](images/radios/an-prc-152_opt-menu.png)
 
 ### Preset Programming
 
@@ -63,8 +62,8 @@ All operational programming modes are accessible through pressing 8-PGM->System 
 
 Press PGM, select System Preset Settings, select System Presets, use UP/DOWN to navigate the preset to modify. Begin changing settings.
 
-![AN/PRC-152 PGM Menu](images/radio/an-prc-152_pgm-menu.png)
-![AN/PRC-152 Preset Menu](images/radio/an-prc-152_preset-menu.png)
+![AN/PRC-152 PGM Menu](images/radios/an-prc-152_pgm-menu.png)
+![AN/PRC-152 Preset Menu](images/radios/an-prc-152_preset-menu.png)
 
 ## Mission Editor Reference
 
@@ -95,18 +94,18 @@ object [addItemCargoGlobal](https://community.bistudio.com/wiki/addItemCargoGlob
 | Field name | Description |
 | -------- | -------- | -------- |
 | frequencyTX |  |
-| frequencyRX |    | 
+| frequencyRX |    |
 | power|  |
-| encryption |  | 
+| encryption |  |
 | channelMode |  |
 | name |  |
-| CTCSSTx |  | 
+| CTCSSTx |  |
 | CTCSSRx |  |
 | modulation |  |
-| TEK |  | 
+| TEK |  |
 | trafficRate |  |
 | syncLength |  |
-| squelch |  | 
+| squelch |  |
 | deviation | |
 | optioncode |  |
 | rxOnly |  |

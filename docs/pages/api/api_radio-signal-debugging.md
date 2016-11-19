@@ -1,7 +1,6 @@
 ---
 title: Radio Signal Debugging
 permalink: api_radio-signal-debugging.html
-sidebar: acre2_sidebar
 folder: api
 ---
 

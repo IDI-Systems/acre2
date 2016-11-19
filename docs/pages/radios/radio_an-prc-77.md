@@ -1,8 +1,7 @@
 ---
 title: AN/PRC-77
 permalink: radio_an-prc-77.html
-sidebar: acre2_sidebar
-folder: radio
+folder: radios
 ---
 
 The AN/PRC-77 is a portable VHF FM manpack radio first introduced in 1968 during the Vietnam War. It served as the primary squad-level radio for US troops up to and including the Gulf War, after which it was phased out by the AN/PRC-119 SINCGARS system.
@@ -13,7 +12,7 @@ The AN/PRC-77 is a portable VHF FM manpack radio first introduced in 1968 during
 
 ### Interface
 
-![AN/PRC-77 Interface](images/radio/an-prc-77_interface.png)
+![AN/PRC-77 Interface](images/radios/an-prc-77_interface.png)
 
 The Radio Interface is opened using the ACRE 2 Open Radio Interface key (default ALT + CTRL + CAPSLOCK). Unlike the other combat net radios in ACRE2, the PRC-77 is an analogue device without any menus or screens or keypads.
 

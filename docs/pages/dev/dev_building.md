@@ -1,7 +1,6 @@
 ---
 title: Building
 permalink: dev_building.html
-sidebar: acre2_sidebar
 folder: dev
 ---
 
