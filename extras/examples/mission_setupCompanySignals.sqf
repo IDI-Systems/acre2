@@ -57,7 +57,7 @@ params ["_unit", "_localUnitType"];
 ["ACRE_PRC117F", "default", 5, "name", "CAS"] call acre_api_fnc_setPresetChannelField;
 ["ACRE_PRC117F", "default", 6, "name", "FIRES"] call acre_api_fnc_setPresetChannelField;
 
-if (isDedicated || {player != _unit}) exitWith {false};
+if (!hasInterface || {player != _unit}) exitWith {false};
 
 [{
     call acre_api_fnc_isInitialized

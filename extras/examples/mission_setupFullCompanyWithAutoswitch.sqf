@@ -20,7 +20,7 @@ params ["_unit", "_localUnitType"];
 ["ACRE_PRC152", "example1"] call acre_api_fnc_setPreset;
 ["ACRE_PRC117F", "example1"] call acre_api_fnc_setPreset;
 
-if (isDedicated || {_unit != player}) exitWith {false};
+if (!hasInterface || {_unit != player}) exitWith {false};
 
 [{
     call acre_api_fnc_isInitialized
