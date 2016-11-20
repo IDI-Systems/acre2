@@ -1,4 +1,3 @@
-
 ---
 title: AN/PRC-148
 ---
@@ -9,7 +8,7 @@ The AN/PRC-148 Multiband Inter/Intra Team Radio (MBITR) is a secure handheld mul
 
 ### Interface
 
-![AN/PRC-148 Interface](/images/radios/an-prc-148_interface.png)
+{% include image.html file="radios/an-prc-148_interface.png" alt="AN/PRC-148 Interface" %}
 
 ### Power/Volume Control Knob
 
@@ -186,6 +185,5 @@ Can be added using the following methods.
 
 ## Further Reading / External Links
 
-United Operations Text Guide: http://www.unitedoperations.net/wiki/AN/PRC-148
-
-Youtube Instructional Video: https://www.youtube.com/watch?v=io3uzbYO0iU
+- [United Operations Text Guide](http://www.unitedoperations.net/wiki/AN/PRC-148)
+- [Youtube Instructional Video](https://www.youtube.com/watch?v=io3uzbYO0iU)

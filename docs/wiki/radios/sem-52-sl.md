@@ -19,7 +19,7 @@ The SEM 52 SL (Sender/Empfänger, mobil SEM 52 SL) is a small power radio for mi
 
 ### Interface
 
-![SEM 52 SL Interface](/images/radios/sem-52-sl_interface.jpg)
+{% include image.html file="radios/sem-52-sl_interface.jpg" alt="SEM 52 SL Interface" %}
 
 ### Volume Control Knob
 
@@ -73,8 +73,6 @@ Can be added using the following methods.
 
 ## Further Reading / External Links
 
-[Greenradio.de](http://www.greenradio.de/e_sem52sl.htm){:target="_blank"}
-
-[Youtube Instructional Video](https://www.youtube.com/watch?v=TPzkBB-UWBg){:target="_blank"} (German)
-
-German Army manual: TDv 5820/357-13 - Funkgerätesatz VHF (tragbar) SEM 52-SL
+- [Greenradio.de](http://www.greenradio.de/e_sem52sl.htm){:target="_blank"}
+- [Youtube Instructional Video](https://www.youtube.com/watch?v=TPzkBB-UWBg){:target="_blank"} (German)
+- German Army manual: TDv 5820/357-13 - Funkgerätesatz VHF (tragbar) SEM 52-SL

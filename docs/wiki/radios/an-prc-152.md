@@ -8,8 +8,7 @@ The AN/PRC-152 Multiband Handheld Radio (Harris Falcon III) is a portable, compa
 
 ### Interface
 
-![AN/PRC-152 Interface](/images/radios/an-prc-152_interface.png)
-
+{% include image.html file="radios/an-prc-152_interface.png" alt="AN/PRC-152 Interface" %}
 
 ## Basic Use
 
@@ -50,7 +49,7 @@ Numerical values are entered with the number pad, clicking left and right to nav
 
 All operational programming modes are accessible through pressing 7-OPT button. Once entering this menu, you'll receive the operational programming menu. Operational changes to a radio are erased when the current channel is changed, unless auto-saving is on.
 
-![AN/PRC-152 OPT Menu](/images/radios/an-prc-152_opt-menu.png)
+{% include image.html file="radios/an-prc-152_opt-menu.png" alt="AN/PRC-152 OPT Menu" %}
 
 ### Preset Programming
 
@@ -60,8 +59,7 @@ All operational programming modes are accessible through pressing 8-PGM->System 
 
 Press PGM, select System Preset Settings, select System Presets, use UP/DOWN to navigate the preset to modify. Begin changing settings.
 
-![AN/PRC-152 PGM Menu](/images/radios/an-prc-152_pgm-menu.png)
-![AN/PRC-152 Preset Menu](/images/radios/an-prc-152_preset-menu.png)
+{% include inline_image.html file="radios/an-prc-152_pgm-menu.png" alt="AN/PRC-152 PGM Menu" %}{% include inline_image.html file="radios/an-prc-152_preset-menu.png" alt="AN/PRC-152 Preset Menu" %}
 
 ## Mission Editor Reference
 

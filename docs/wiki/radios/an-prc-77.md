@@ -10,7 +10,7 @@ The AN/PRC-77 is a portable VHF FM manpack radio first introduced in 1968 during
 
 ### Interface
 
-![AN/PRC-77 Interface](/images/radios/an-prc-77_interface.png)
+{% include image.html file="radios/an-prc-77_interface.png" alt="AN/PRC-77 Interface" %}
 
 The Radio Interface is opened using the ACRE 2 Open Radio Interface key (default ALT + CTRL + CAPSLOCK). Unlike the other combat net radios in ACRE2, the PRC-77 is an analogue device without any menus or screens or keypads.
 

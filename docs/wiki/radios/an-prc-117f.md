@@ -8,8 +8,7 @@ See [AN/PRC-152](an-prc-152) for general operation guidelines.
 
 ## Interface
 
-![AN/PRC-117F Interface](/images/radios/an-prc-117f_interface.png)
-
+{% include image.html file="radios/an-prc-117f_interface.png" alt="AN/PRC-117F Interface" %}
 
 ## Mission Editor Reference
 

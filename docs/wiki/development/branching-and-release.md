@@ -31,4 +31,4 @@ During this release process work can continue on as normal on the `master` branc
 
 ### Diagram
 
-![Branching and Release Flowchart](images/dev/branching-and-release.jpg)
+{% include image.html file="dev/branching-and-release.jpg" alt="Branching and Release Flowchart" %}
