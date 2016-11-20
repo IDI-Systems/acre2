@@ -6,7 +6,7 @@ redirect_from:
 ---
 
 
-<p>This site provides documentation and other notes for the ACRE2 Arma 3 mod. There's a lot of information about the mod, its features and functionalities, tutorials, API and frameworks usage and how to help in development and expanding documentation.</p>
+This site provides documentation and other notes for the ACRE2 Arma 3 mod. There's a lot of information about the mod, its features and functionalities, tutorials, API and frameworks usage and how to help in development and expanding documentation.
 
 <div class="row">
     <div class="col-md-4 col-sm-6">

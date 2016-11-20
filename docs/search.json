@@ -9,9 +9,9 @@ search: exclude
 {% unless page.search == "exclude" %}
 {
 "title": "{{ page.title | escape }}",
-"url": "{{ page.url | remove: "/"}}",
-"summary": "{{page.summary | strip }}"
-},
+"url": "{{ page.url }}"
+}
+{% unless forloop.last and site.posts.size < 1 %},{% endunless %}
 {% endunless %}
 {% endfor %}
 
