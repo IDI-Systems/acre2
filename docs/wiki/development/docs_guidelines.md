@@ -4,7 +4,7 @@ title: Documentation Guidelines
 
 ## Overview
 
-This documentation is built using [Jekyll Documentation Theme](http://idratherbewriting.com/documentation-theme-jekyll/) (version [47160d82f1c76836c624a33d5a77889b51e4bbff](https://github.com/tomjohnson1492/documentation-theme-jekyll/commit/47160d82f1c76836c624a33d5a77889b51e4bbff)), all the theme documentation and tutorials are appliccable to ACRE2's documentation, with few changes:
+This documentation is built using [Jekyll Documentation Theme](http://idratherbewriting.com/documentation-theme-jekyll/) ([commit](https://github.com/tomjohnson1492/documentation-theme-jekyll/commit/47160d82f1c76836c624a33d5a77889b51e4bbff)), all the theme documentation and tutorials are appliccable to ACRE2's documentation, with few changes:
 - Removed tooltips
 - Removed multi-project functionality
 - Merged news pages into main part
