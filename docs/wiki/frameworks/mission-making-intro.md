@@ -112,7 +112,7 @@ For setups where you would like to just set the same languages spoken by the ent
 
 Example: This function creates the languages and will check the local unit and setup their languages automatically to match the settings.
 ```
-[ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_setupMission;
+[ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_babelSetupMission;
 ```
 
 ### Defining the languages
@@ -130,12 +130,12 @@ There are two main commands API commands for setting the languages of a unit. Fi
 
 For a unit we wish to speak 'English' we would call the following of code. 
 ```
-[“en”] call acre_api_fnc_babelSetSpokenLanguages;
+["en"] call acre_api_fnc_babelSetSpokenLanguages;
 ["en"] call acre_api_fnc_babelSetSpeakingLanguage;
 ```
 If we want a unit to speak multiple languages we can easily add more in:
 ```
-[“en”, "fa", "gr"] call acre_api_fnc_babelSetSpokenLanguages;
+["en", "fa", "gr"] call acre_api_fnc_babelSetSpokenLanguages;
 ["en"] call acre_api_fnc_babelSetSpeakingLanguage;
 ```
 
