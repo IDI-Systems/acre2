@@ -1,12 +1,10 @@
-# Source of http://idi-systems.com/
+---
+title: Documentation Installation
+---
 
-Built using [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-jekyll/) version [47160d82f1c76836c624a33d5a77889b51e4bbff](https://github.com/tomjohnson1492/documentation-theme-jekyll/commit/47160d82f1c76836c624a33d5a77889b51e4bbff)
+## Installing prerequisites
 
-## Setting up the development environment
-
-### Installing prerequisites
-
-#### Windows (CMD)
+### Windows (CMD)
 
 - Install [Ruby 2.3.1 (x64)](http://rubyinstaller.org/downloads/)
 - Install [Ruby DevKit for 2.0 and above (x64)](http://rubyinstaller.org/downloads/)
@@ -26,7 +24,7 @@ Built using [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-
     bundle install
     ```
 
-#### Debian / Bash on Ubuntu on Windows
+### Debian / Bash on Ubuntu on Windows
 
 - Open Bash and navigate to this directory
     ```
@@ -65,12 +63,13 @@ Built using [Jekyll Doc Theme](http://idratherbewriting.com/documentation-theme-
     find ~/.bundle/cache -type d -exec chmod 0755 {} +
     ```
 
-### Running
+## Running
 
 - Run Jekyll through bundler
     ```
-    bundle exec jekyll serve --future --incremental --config _config_dev.yml
+    bundle exec jekyll serve --future
     ```
     _Use `--force_polling` on Bash on Ubuntu on Windows due to a bug preventing watching._
 
-- Navigate to http://localhost:4000
+- Navigate to http://localhost:4005
+

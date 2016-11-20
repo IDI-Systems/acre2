@@ -1,16 +1,2 @@
-{% if page.folder == "news" or page.path contains "_posts" %}
-    {% assign sidebar = site.data.sidebars.news_sidebar.entries %}
-{% else %}
-    {% assign sidebar = site.data.sidebars.main_sidebar.entries %}
-{% endif %}
-
-
-
-{% comment %}
-    sidebar configuration for print files
-{% endcomment %}
-
-{% if site.product == "acre2" %}
-    {% assign sidebar_pdf = site.data.sidebars.main_sidebar.entries %}
-{% endif %}
-
+{% assign sidebar = site.data.sidebar.entries %}
+{% assign sidebar_pdf = site.data.sidebar.entries %}
