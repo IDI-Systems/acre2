@@ -89,7 +89,7 @@ We include files for [Docker](https://www.docker.com/) to run Jekyll in a separa
 
 - Run Jekyll through bundler
     ```
-    bundle exec jekyll serve --future --config _config_dev.yml
+    bundle exec jekyll serve --future --incremental --config _config_dev.yml
     ```
     _Use `--force_polling` on Bash on Ubuntu on Windows due to a bug preventing watching._
 
