@@ -61,8 +61,19 @@ INFO_1("Loading Map: %1",_wrpLocation);
     [_wrpLocation],
     true,
     {
+        params ["_args", "_result"];
+
+        if (_result < 0) then {
+            if (_result == -1) then {
+                WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+            } else {
+                ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+            };
+        } else {
+            INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+        };
+
         ACRE_MAP_LOADED = true;
-        INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
     },
     []
 ] call FUNC(callExt);
@@ -104,6 +115,14 @@ ACRE_PLAYER_VEHICLE_CREW = [];
 
 private _vehicleCrewPFH = {
     private _vehicle = vehicle acre_player;
+    private _height = eyePos acre_player param [2, 1];
+
+    if (_height < 0) then {
+        ACRE_LISTENER_DIVE = 1;
+    } else {
+        ACRE_LISTENER_DIVE = 0;
+    };
+
     if (_vehicle != acre_player) then {
         private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
         {
@@ -125,7 +144,7 @@ ADDPFH(_vehicleCrewPFH, 1.1, []);
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
     ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
     private _briefingCheck = {
-        if (getClientStateNumber > 9) then { // Briefing has been read.
+        if (getClientStateNumber > 9 && time > 0) then { // Briefing has been read AND Mission has started.
             ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
             [(_this select 1)] call CBA_fnc_removePerFrameHandler;
         } else {

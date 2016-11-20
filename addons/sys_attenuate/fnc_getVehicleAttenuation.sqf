@@ -38,6 +38,7 @@ if (_unit != _vehicle) then {
         };
     } forEach allTurrets [_vehicle, true];
 
+    if (_effectType == "") exitWith {};
     // CfgSoundEffects >> AttenuationsEffects
     private _value = HASH_GET(GVAR(attenuationCache), _effectType);
     if (isNil "_value") then {

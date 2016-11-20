@@ -16,10 +16,6 @@
  */
 #include "script_component.hpp"
 
-TRACE_1("", _this);
-
 GVAR(currentRadioId) = -1;
-
-
 
 true

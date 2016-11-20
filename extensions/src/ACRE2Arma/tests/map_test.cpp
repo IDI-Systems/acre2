@@ -46,14 +46,19 @@ int main(int argc, char **argv) {
     //std::string pbo_path = "C:\\Steam\\SteamApps\\common\\Arma 3\\@UOMAPS_A3\\addons\\sara.pbo";
     //std::string wrp_path = "\\ca\\chernarus\\chernarus.wrp";
     //std::string pbo_path = "C:\\Steam\\SteamApps\\common\\Arma 3\\@UOMAPS_A3_CUP\\addons\\chernarus.pbo";
-    std::string wrp_path = "\\ca\\takistan\\takistan.wrp";
-    std::string pbo_path = "C:\\Steam\\SteamApps\\common\\Arma 3\\@UOMAPS_A3_CUP\\addons\\takistan.pbo";
+    //std::string wrp_path = "\\ca\\takistan\\takistan.wrp";
+    //std::string pbo_path = "C:\\Steam\\SteamApps\\common\\Arma 3\\@UOMAPS_A3_CUP\\addons\\takistan.pbo";
+	//std::string wrp_path = "\\WW2\\Terrains_w\\Worlds\\Ivachev_w\\Ivachev.wrp";
+	//std::string pbo_path = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3\\!Workshop\\@IFA3LITE\\addons\\ww2_terrains_w_worlds_ivachev_w.pbo";
+	//std::string wrp_path = "\\a3\\map_altis\\Altis.wrp";
+	//std::string pbo_path = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3\\Addons\\map_altis.pbo";
+	std::string wrp_path = "\\ca\\afghan\\Mountains_ACR.wrp";
+	std::string pbo_path = "C:\\Program Files (x86)\\Steam\\SteamApps\\common\\Arma 3\\swifty\\@cup_terrains\\addons\\cup_terrains_maps_afghan.pbo";
 
     _filestream.open(pbo_path, std::ios::binary | std::ios::in);
     acre::signal::map_p test_map;
     bool loaded;
-    bool ok = acre::signal::map_loader::get().get_map(wrp_path, test_map, loaded);
-    return 0;
+    int32_t ok = acre::signal::map_loader::get().get_map(wrp_path, test_map, loaded);
     int offset_x = 0;
     int offset_y = 0;
     int size_x = -1;
@@ -78,8 +83,8 @@ int main(int argc, char **argv) {
     int map_size = test_map->map_size()*scale;
     float cell_sample_size = test_map->cell_size() / scale;
     bitmap_image image(size_x, size_y);
-    bitmap_image land_grad("d:\\land_grad.bmp");
-    bitmap_image sea_grad("d:\\sea_grad.bmp");
+    //bitmap_image land_grad("d:\\land_grad.bmp");
+    //bitmap_image sea_grad("d:\\sea_grad.bmp");
 
 
 
@@ -108,7 +113,7 @@ int main(int argc, char **argv) {
             glm::vec3 normal = glm::normalize(glm::vec3(-r_x, -r_y, 1.0f));
             float factor = glm::dot(normal, -light_source);
             
-            if (height > 0.0f) {
+            //if (height > 0.0f) {
                 //r.R = fg.R * fg.A / r.A + bg.R * bg.A * (1 - fg.A) / r.A; // 0.67
                 //r.G = fg.G * fg.A / r.A + bg.G * bg.A * (1 - fg.A) / r.A; // 0.33
                 //r.B = fg.B * fg.A / r.A + bg.B * bg.A * (1 - fg.A) / r.A; // 0.00
@@ -116,7 +121,8 @@ int main(int argc, char **argv) {
                 uint8_t shadow = 254 + shade;
                 uint8_t color_index = (height / max_height) * 254;
 
-                land_grad.get_pixel(color_index, 0, colorR, colorG, colorB);
+                colorR = 0.5; colorG = 0.5; colorB = 0.5;
+                //land_grad.get_pixel(color_index, 0, colorR, colorG, colorB);
                 //colorR = colorG = colorB = 254;
                 float r, g, b, fa, s, ra, ba;
                 
@@ -139,7 +145,7 @@ int main(int argc, char **argv) {
                 colorB = b * 254;
 
                 //colorR = colorG = colorB = color_index + shadow;
-            }
+            /*}
             else {
                 int8_t shade = 127 * factor;
                 uint8_t shadow = 127 + shade;
@@ -167,7 +173,7 @@ int main(int argc, char **argv) {
                 colorG = g * 254;
                 colorB = b * 254;
                 //colorR = colorG = colorB = 254;
-            }
+            }*/
             image.set_pixel(x - offset_x, (size_y-1)-(y - offset_y), colorR, colorG, colorB);
         }
     }

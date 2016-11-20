@@ -1,3 +1,5 @@
+#include "script_component.hpp"
+
 //steam_boot.sqf
 if (!hasInterface) exitWith {}; // Don't run on HC/Dedicated server.
 

@@ -3,17 +3,7 @@
 ADDON = false;
 
 PREP_FOLDER(radio);
-
-PREP(initializeRadio);
-PREP(openGui);
-PREP(closeGui);
-PREP(zoomChannelBlockSelector);
-PREP(render);
-PREP(preset_information);
-// button functions
-PREP(onVolumeKnobPress);
-PREP(onChannelKnobPress);
-PREP(onPTTHandlePress);
+PREP_FOLDER(functions);
 
 [] call FUNC(preset_information);
 

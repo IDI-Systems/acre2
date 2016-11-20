@@ -15,7 +15,9 @@
  */
 #include "script_component.hpp"
 
-INFO_2("%1 called with: %2",QFUNC(setInterference),_this)
+INFO_2("%1 called with: %2",QFUNC(setInterference),_this);
+
+if (!hasInterface) exitWith {false};
 
 params ["_value"];
 

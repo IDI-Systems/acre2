@@ -110,61 +110,15 @@ if(_transmissionsChanged) then {
         private _junkTransmissions = [];
         _digital = false;
         {
-            /*private _txId = _x select 1;
-            _radioTxData = [_txId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-            if(HASH_GET(_radioRxData, "modulation") == HASH_GET(_radioTxData, "modulation")) then {
-                //diag_log text "MOD OK";
-                if(HASH_GET(_radioRxData, "encryption") == 1 && HASH_GET(_radioTxData, "encryption") == 1) then {
-                    //diag_log text "ENCRYPTED";
-                    if(HASH_GET(_radioRxData, "TEK") == HASH_GET(_radioTxData, "TEK") &&
-                        {HASH_GET(_radioRxData, "trafficRate") == HASH_GET(_radioTxData, "trafficRate")}
-                    ) then {
-                        //diag_log text "DIGITAL CRYPTO!";
-                        PUSH(_hearableTransmissions, _x);
-                        _digital = true;
-                    } else {
-                        PUSH(_junkTransmissions, _x);
-                    };
-                } else {
-                    if(HASH_GET(_radioRxData, "encryption") == 0 && HASH_GET(_radioTxData, "encryption") == 0) then {
-                        //diag_log text "PT!";
-                        if(HASH_GET(_radioRxData, "modulation") == "FM" || HASH_GET(_radioRxData, "modulation") == "NB") then {
-                            //diag_log text "ITS FM BABY!";
-                            if(HASH_GET(_radioRxData, "CTCSSRx") == HASH_GET(_radioTxData, "CTCSSTx") || {HASH_GET(_radioRxData, "CTCSSRx") == 0}) then {
-                                //diag_log text "THE TONES MATCH!";
-                                PUSH(_hearableTransmissions, _x);
-                            } else {
-                                //diag_log text format["NO TONE BONE: %1 == %2", HASH_GET(_radioRxData, "CTCSSRx"), HASH_GET(_radioTxData, "CTCSSTx")];
-                                PUSH(_junkTransmissions, _x);
-                            };
-                        } else {
-                            if(HASH_GET(_radioRxData, "modulation") == "AM") then {
-                                //diag_log text "AM TALK JUNKIE!";
-                                PUSH(_hearableTransmissions, _x);
-                            } else {
-                                PUSH(_junkTransmissions, _x);
-                            };
-                        };
-                    } else {
-                        PUSH(_junkTransmissions, _x);
-                    };
-                };
-            } else {
-                PUSH(_junkTransmissions, _x);
-            };*/
             PUSH(_hearableTransmissions, _x);
         } forEach _sortedRadios;
 
-        //diag_log text format["sorted: %1", _sortedRadios];
-        //diag_log text format["junk: %1", _junkTransmissions];
-        //diag_log text format["ok: %1", _hearableTransmissions];
         if(ACRE_INTERFERENCE) then {
             if((count _hearableTransmissions) > 0) then {
                 _junkTransmissions append _hearableTransmissions;
                 _hearableTransmissions params ["_bestSignal"];
                 (_bestSignal select 2) params ["_highestSignal", "_dbm"];
                 private _newSignal = _highestSignal;
-                //diag_log text format["new sig start: %1", _newSignal];
                 for "_i" from 1 to (count _junkTransmissions)-1 do {
                     private _data = _junkTransmissions select _i;
                     _data params ["","_txId","_signalData"];
@@ -177,7 +131,6 @@ if(_transmissionsChanged) then {
                         _newSignal = 0;
                     };
                 };
-                //diag_log text format["new sig end: %1", _newSignal];
                 if(_newSignal > 0) then {
                     _okRadios = [_bestSignal];
                     _bestSignal set[2, [_newSignal, _dbm+_dbm*(1-_newSignal/_highestSignal)]];
@@ -197,7 +150,6 @@ if(_transmissionsChanged) then {
         _signalData params ["_signalPercent","_signalDbM"];
 
         private _squelch = -100;
-        // diag_log text format["squelch: %1 signal: %2", _squelch, _signalDbM];
         if(_signalDbM < _squelch || !ACRE_INTERFERENCE) then {
 
             if(ACRE_INTERFERENCE) then {
@@ -213,7 +165,6 @@ if(_transmissionsChanged) then {
             SCRATCH_SET(_radioId, "hasBeeped", false);
         } else {
             if(isNil "_beeped" || {!_beeped}) then {
-                //diag_log "BEEP!";
                 SCRATCH_SET(_radioId, "hasBeeped", true);
                 _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
                 [_radioId, "Acre_GenericClickOn", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
@@ -243,6 +194,4 @@ if(_transmissionsChanged) then {
     _okRadios = _radioCache;
 };
 
-
-// diag_log text format["m: %1", _mend-_mstart];
 _okRadios

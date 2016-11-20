@@ -12,8 +12,8 @@
  * Setup succesful <BOOL>
  *
  * Example:
- * [ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_setupMission;
- * [ [west, "English", "French"], [east, "Russian", "French" ] ] call acre_api_fnc_setupMission;
+ * [ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_babelSetupMission;
+ * [ [west, "English", "French"], [east, "Russian", "French" ] ] call acre_api_fnc_babelSetupMission;
  *
  * Public: Yes
  */
