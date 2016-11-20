@@ -2,9 +2,31 @@
 title: Documentation Installation
 ---
 
-## Installing prerequisites
+## Setting up the Jekyll environment
 
-### Windows (CMD)
+### Using Docker
+
+We include files for [Docker](https://www.docker.com/) to run Jekyll in a separate container. This allows you to not having to install anything apart from Docker on your computer.
+
+#### Running the Dockerfile
+
+- Install [Docker](https://www.docker.com/)
+- Open Command Prompt and navigate to this directory
+    ```
+    cd <ACRE2_directory>/docs
+    ```
+
+- Build and run the container
+    ```
+    docker-compose up
+    ```
+
+- Navigate to [http://localhost:4000](http://localhost:4000)
+
+
+### Manually
+
+#### Windows (CMD)
 
 - Install [Ruby 2.3.1 (x64)](http://rubyinstaller.org/downloads/)
 - Install [Ruby DevKit for 2.0 and above (x64)](http://rubyinstaller.org/downloads/)
@@ -24,7 +46,7 @@ title: Documentation Installation
     bundle install
     ```
 
-### Debian / Bash on Ubuntu on Windows
+#### Debian / Bash on Ubuntu on Windows
 
 - Open Bash and navigate to this directory
     ```
@@ -63,13 +85,13 @@ title: Documentation Installation
     find ~/.bundle/cache -type d -exec chmod 0755 {} +
     ```
 
-## Running
+#### Running
 
 - Run Jekyll through bundler
     ```
-    bundle exec jekyll serve --future --incremental --config _config_dev.yml
+    bundle exec jekyll serve --future --config _config_dev.yml
     ```
     _Use `--force_polling` on Bash on Ubuntu on Windows due to a bug preventing watching._
 
-- Navigate to http://localhost:4005
+- Navigate to http://localhost:4000
 
