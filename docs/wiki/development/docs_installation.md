@@ -67,7 +67,7 @@ title: Documentation Installation
 
 - Run Jekyll through bundler
     ```
-    bundle exec jekyll serve --future
+    bundle exec jekyll serve --future --incremental --config _config_dev.yml
     ```
     _Use `--force_polling` on Bash on Ubuntu on Windows due to a bug preventing watching._
 

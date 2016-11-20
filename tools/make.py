@@ -76,7 +76,7 @@ importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "
 extrasFiles = ["examples", "Wav2B64.exe"]
 pluginFiles = ["acre2_win32.dll", "acre2_win64.dll"]
 steamFiles = ["extras\\ACRE2Steam.dll"]
-versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h"]
+versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h", "docs\\_data\\sidebar.yml"]
 extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
 extensions64 = ["ACRE2\\ACRE2TS"]
 

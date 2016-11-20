@@ -10,7 +10,7 @@ topnav:
     - title: GitHub
       external_url: https://github.com/IDI-Systems/acre2
 
-    - title: Report Issue
+    - title: Issues
       external_url: https://github.com/IDI-Systems/acre2/issues
 
 #Topnav dropdowns
