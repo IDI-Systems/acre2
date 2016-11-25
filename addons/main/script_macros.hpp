@@ -82,19 +82,6 @@ Antenna Defines
 
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
 
-#ifdef ENABLE_CALLSTACK
-    #define CALLSTACK(function) {private ['_ret']; if(ACRE_IS_ERRORED) then { ['AUTO','AUTO'] call ACRE_DUMPSTACK_FNC; ACRE_IS_ERRORED = false; }; ACRE_IS_ERRORED = true; ACRE_STACK_TRACE set [ACRE_STACK_DEPTH, [diag_tickTime, __FILE__, __LINE__, ACRE_CURRENT_FUNCTION, 'ANON', _this]]; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH + 1; ACRE_CURRENT_FUNCTION = 'ANON'; _ret = _this call ##function; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH - 1; ACRE_IS_ERRORED = false; _ret;}
-    #define CALLSTACK_NAMED(function, functionName) {private ['_ret']; if(ACRE_IS_ERRORED) then { ['AUTO','AUTO'] call ACRE_DUMPSTACK_FNC; ACRE_IS_ERRORED = false; }; ACRE_IS_ERRORED = true; ACRE_STACK_TRACE set [ACRE_STACK_DEPTH, [diag_tickTime, __FILE__, __LINE__, ACRE_CURRENT_FUNCTION, functionName, _this]]; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH + 1; ACRE_CURRENT_FUNCTION = functionName; _ret = _this call ##function; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH - 1; ACRE_IS_ERRORED = false; _ret;}
-    #define DUMPSTACK ([__FILE__, __LINE__] call ACRE_DUMPSTACK_FNC)
-
-    #define FUNC(var1) {private ['_ret']; if(ACRE_IS_ERRORED) then { ['AUTO','AUTO'] call ACRE_DUMPSTACK_FNC; ACRE_IS_ERRORED = false; }; ACRE_IS_ERRORED = true; ACRE_STACK_TRACE set [ACRE_STACK_DEPTH, [diag_tickTime, __FILE__, __LINE__, ACRE_CURRENT_FUNCTION, 'TRIPLES(ADDON,fnc,var1)', _this]]; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH + 1; ACRE_CURRENT_FUNCTION = 'TRIPLES(ADDON,fnc,var1)'; _ret = _this call TRIPLES(ADDON,fnc,var1); ACRE_STACK_DEPTH = ACRE_STACK_DEPTH - 1; ACRE_IS_ERRORED = false; _ret;}
-    #define EFUNC(var1,var2) {private ['_ret']; if(ACRE_IS_ERRORED) then { ['AUTO','AUTO'] call ACRE_DUMPSTACK_FNC; ACRE_IS_ERRORED = false; }; ACRE_IS_ERRORED = true; ACRE_STACK_TRACE set [ACRE_STACK_DEPTH, [diag_tickTime, __FILE__, __LINE__, ACRE_CURRENT_FUNCTION, 'TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)', _this]]; ACRE_STACK_DEPTH = ACRE_STACK_DEPTH + 1; ACRE_CURRENT_FUNCTION = 'TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)'; _ret = _this call TRIPLES(DOUBLES(PREFIX,var1),fnc,var2); ACRE_STACK_DEPTH = ACRE_STACK_DEPTH - 1; ACRE_IS_ERRORED = false; _ret;}
-#else
-    #define CALLSTACK(function) function
-    #define CALLSTACK_NAMED(function, functionName) function
-    #define DUMPSTACK
-#endif
-
 #define GET_STATE(id)            ([GVAR(currentRadioId), "getState", id] call acre_sys_data_fnc_dataEvent)
 #define SET_STATE(id, val)        ([GVAR(currentRadioId), "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
 #define SET_STATE_CRIT(id, val)    ([GVAR(currentRadioId), "setStateCritical", [id, val]] call acre_sys_data_fnc_dataEvent)
@@ -132,25 +119,7 @@ Antenna Defines
 #define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QUOTE(PATHTOF(folder\__PREP__.sqf))
 #define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QUOTE(PATHTOF(module\DOUBLES(fnc,fncName).sqf))
 
-/**
-PERFORMANCE COUNTERS
-**/
-#ifdef ENABLE_PERFORMANCE_COUNTERS
-    #define ADDPFH(function, timing, args) call { _ret = [function, timing, args] call CBA_fnc_addPerFrameHandler; if(isNil "ACRE_PFH" ) then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
-
-    #define CREATE_COUNTER(x) if(isNil "ACRE_COUNTERS" ) then { ACRE_COUNTERS=[]; }; GVAR(DOUBLES(x,counter))=[]; GVAR(DOUBLES(x,counter)) set[0, QGVAR(DOUBLES(x,counter))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; ACRE_COUNTERS pushBack GVAR(DOUBLES(x,counter));
-    #define BEGIN_COUNTER(x) if(isNil QGVAR(DOUBLES(x,counter))) then { CREATE_COUNTER(x) }; GVAR(DOUBLES(x,counter)) set[2, diag_tickTime];
-    #define END_COUNTER(x) GVAR(DOUBLES(x,counter)) pushBack [(GVAR(DOUBLES(x,counter)) select 2), diag_tickTime];
-
-    #define DUMP_COUNTERS ([__FILE__, __LINE__] call ACRE_DUMPCOUNTERS_FNC)
-#else
-    #define ADDPFH(function, timing, args) [function, timing, args] call CBA_fnc_addPerFrameHandler
-
-    #define CREATE_COUNTER(x) /* disabled */
-    #define BEGIN_COUNTER(x) /* disabled */
-    #define END_COUNTER(x) /* disabled */
-    #define DUMP_COUNTERS  /* disabled */
-#endif
-
 // Deprecation
 #define ACRE_DEPRECATED(arg1,arg2,arg3) WARNING_3("%1 is deprecated. Support will be dropped in version %2. Replaced by: %3",arg1,arg2,arg3)
+
+#include "script_debug.hpp"
