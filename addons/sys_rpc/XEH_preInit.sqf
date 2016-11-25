@@ -2,9 +2,9 @@
 
 ADDON = false;
 
-PREP(addProcedure);
-PREP(callRemoteProcedure);
-PREP(handleData);
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
 
 GVAR(procedures) = HASH_CREATE;
 
