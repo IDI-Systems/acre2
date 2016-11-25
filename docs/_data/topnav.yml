@@ -1,0 +1,28 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+
+    - title: Download
+      external_url: https://github.com/IDI-Systems/acre2/releases/latest
+
+    - title: GitHub
+      external_url: https://github.com/IDI-Systems/acre2
+
+    - title: Issues
+      external_url: https://github.com/IDI-Systems/acre2/issues
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+
+    - title: Contact
+      folderitems:
+
+        - title: Slack
+          external_url: http://slackin.idi-systems.com
+
+        - title: BI Forums
+          external_url: https://forums.bistudio.com/topic/193813-acre2-v22-stable-steam-workshop-release/

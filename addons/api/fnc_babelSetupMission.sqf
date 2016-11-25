@@ -1,15 +1,19 @@
 /*
  * Author: ACRE2Team
- * Provides functionality to allow for easy setup of side-specific languages. An array is provided for each configurable side which specifies the languages that side can speak.
+ * Provides functionality to allow for easy setup of side-specific languages.
+ * An array is provided for each configurable side which specifies the languages that side can speak.
  *
  * Arguments:
- * N: Array where the first element is a side and the following elements are language diplay names. <ARRAY>
+ * N: Array of sides and languages <ARRAY>
+ *   0: Side <SIDE>
+ *   1: Language display name <STRING>
  *
  * Return Value:
- * Setup succesful <BOOLEAN>
+ * Setup succesful <BOOL>
  *
  * Example:
  * [ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_babelSetupMission;
+ * [ [west, "English", "French"], [east, "Russian", "French" ] ] call acre_api_fnc_babelSetupMission;
  *
  * Public: Yes
  */

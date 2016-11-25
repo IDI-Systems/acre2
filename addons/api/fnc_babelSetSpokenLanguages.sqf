@@ -3,10 +3,10 @@
  * Sets the languages that the local player can speak.
  *
  * Arguments:
- * N: Language keys as strings <ARRAY>
+ * N: Language IDs <ARRAY>
  *
  * Return Value:
- * None
+ * Setup succesful <BOOL>
  *
  * Example:
  * ["en"] call acre_api_fnc_babelSetSpokenLanguages;
