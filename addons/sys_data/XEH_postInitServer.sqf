@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+NO_CLIENT;
+
 LOG("ENTER");
 
 ACRE_DATA_SYNCED = true;

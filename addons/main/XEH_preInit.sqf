@@ -408,5 +408,6 @@ private _garbageCollector = {
 };
 [_garbageCollector, 0.25, []] call CBA_fnc_addPerFrameHandler;
 
+INFO("Library loaded.");
 
 ADDON = true;
