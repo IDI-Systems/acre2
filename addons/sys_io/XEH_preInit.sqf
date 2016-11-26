@@ -5,15 +5,9 @@ ADDON = false;
 
 LOG(MSG_INIT);
 
-PREP(sendMessage);
-PREP(restartServer);
-PREP(serverRunning);
-PREP(startServer);
-PREP(stopServer);
-PREP(serverReadLoop);
-PREP(server);
-PREP(ping);
-
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
 
 DGVAR(pipeCode) = "0";
 DGVAR(ioEventFnc) = {};

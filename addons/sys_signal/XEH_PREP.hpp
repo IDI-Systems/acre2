@@ -1,0 +1,2 @@
+PREP(getSignal);
+PREP(handleSignalReturn);
