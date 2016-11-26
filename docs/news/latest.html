@@ -8,9 +8,9 @@ toc: false
         {% for post in site.posts limit:5 %}
             <h2><a class="post-link" href="{{post.url}}">{{ post.title }}</a></h2>
             <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-            <p>{% if page.summary %} {{ page.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} {{ post.content | truncatewords: 50 | strip_html }} {% endif %}</p>
+            <p>{% if post.summary %} {{ post.summary | strip_html | strip_newlines | truncate: 160 }} {% else %} {{ post.content | truncatewords: 50 | strip_html }} {% endif %}</p>
         {% endfor %}
-    <p><a href="feed.xml"" class="btn btn-primary navbar-btn cursorNorm" role="button">RSS Subscribe{{tag}}</a></p>
+    <p><a href="{{ "/feed.xml" | prepend: site.url }}"" class="btn btn-primary navbar-btn cursorNorm" role="button">RSS Subscribe{{tag}}</a></p>
 
     <hr>
     <p>See more posts from the <a href="archive">News Archive</a>.</p>
