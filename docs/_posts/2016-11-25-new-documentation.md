@@ -1,7 +1,7 @@
 ---
 title: New Documentation Page Live
 summary: ACRE2's new documentation is live and open for contributions.
-permalink: 2016-10-06-new-documentation.html
+permalink: 2016-11-25-new-documentation.html
 ---
 
 You are viewing ACRE2's new documentation website. All resources from old pages are consolidated here. You can read into user and radio guides, learn how to expand your work with ACRE2's APIs and frameworks and even help in expanding this documentation or join the development of [now open-source ACRE2](https://github.com/IDI-Systems/acre2).
