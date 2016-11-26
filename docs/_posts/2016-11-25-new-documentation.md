@@ -1,6 +1,6 @@
 ---
-title: New Documentation Page Live
-summary: ACRE2's new documentation is live and open for contributions.
+title: New Documentation
+summary: ACRE2's new documentation is live and open for contributions!
 permalink: 2016-11-25-new-documentation.html
 ---
 
@@ -9,6 +9,8 @@ You are viewing ACRE2's new documentation website. All resources from old pages 
 ## Future
 
 In the future, we will be adding automatically generated such as [Class Names](/wiki/class-names.md) and [Public Functions List](/wiki/frameworks/functions-list.md), and also further expanding the documentation on existing features, functionalities and frameworks.
+
+ACRE2 Slack will also become available to the public very soon! A self-invite will be available from the menu on top, under "Contact".
 
 ## Contributing
 
