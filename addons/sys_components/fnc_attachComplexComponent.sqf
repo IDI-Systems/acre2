@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Attaches a complex component to a complex component.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID to attach to <STRING>
+ * 1: Connector to use - Index on component it is being attached to <NUMBER>
+ * 2: Component ID of child component <STRING>
+ * 3: Attributes - These are passed on to the attachComponent event <HASH>
+ * 4: Force - If set to false it will not replace any existing components already attached to the connector. (default:false) <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1",0,"ACRE_PRC152_ID_2",[],false] call acre_sys_components_fnc_attachComplexComponent;
  *
  * Public: No
  */
@@ -19,8 +22,12 @@
 params["_parentComponentId", "_parentConnector", "_childComponentId", "_childConnector", "_attributes", ["_force",false]];
 
 private _return = false;
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass"));
-private _childComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _childComponentId >> "acre_baseClass"));
+private _baseClass = getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass");
+if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> _parentComponentId >> "acre_baseClass"); };
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
+private _baseClass = getText(configFile >> "CfgWeapons" >> _childComponentId >> "acre_baseClass");
+if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> _childComponentId >> "acre_baseClass"); };
+private _childComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
 
 private _componentSimple = getNumber (_parentComponentClass >> "simple");
 if (_componentSimple == 1) exitWith {

@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Removes a component from another component, also can be used for removing complex components.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID to remove from <STRING>
+ * 1: Connector Index <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1",0] call acre_sys_components_fnc_detachComponent
  *
  * Public: No
  */
@@ -18,8 +18,12 @@
 
 params["_parentComponentId", "_parentConnector"];
 
+
 private _return = false;
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass"));
+private _baseClass = getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass");
+if (_baseClass == "") then {_baseClass = getText(configFile >> "CfgVehicles" >> _componentId >> "acre_baseClass"); };
+
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
 
 private _parentComponentData = HASH_GET(acre_sys_data_radioData,_parentComponentId);
 if(!isNil "_parentComponentData") then {
@@ -29,7 +33,9 @@ if(!isNil "_parentComponentData") then {
             private _parentConnectedComponentData = _parentConnectorData select _parentConnector;
 
             private _childComponentId = _parentConnectedComponentData select 0;
-            if(isClass(configFile >> "CfgAcreComponents" >> _childComponentId)) then {
+            private _config = configFile >> "CfgAcreComponents" >> _childComponentId;
+
+            if(isClass(_config)) then { // Is Simple component
                 if(count _parentConnectorData > _parentConnector) then {
                     private _test = _parentConnectorData select _parentConnector;
                     if(!isNil "_test") then {
@@ -38,16 +44,14 @@ if(!isNil "_parentComponentData") then {
                     };
                 };
             } else {
-                private _childComponentData = HASH_GET(acre_sys_data_radioData,_childComponentId);
-
-                if(!isNil "_childComponentData") then {
-                    private _childConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
+                if(HASH_HASKEY(acre_sys_data_radioData,_childComponentId)) then { // Is Complex Component
+                    private _components = [_childComponentId] call FUNC(getAllConnectedComponents);
                     private _childConnector = -1;
                     {
-                        if((_x select 0) == _parentComponentId && {(_x select 1) == _parentConnector}) exitWith {
-                            _childConnector = _forEachIndex;
-                        };
-                    } forEach _childComponentData;
+                        _x params ["_idx","_data"];
+
+                        if (_data select 0 == _parentComponentId) exitWith { _childConnector = _idx;};
+                    } forEach _components; //_childComponentData;
                     if(_childConnector != -1) then {
                         [_parentComponentId, "detachComponent", [_parentConnector]] call EFUNC(sys_data,dataEvent);
                         [_childComponentId, "detachComponent", [_childConnector]] call EFUNC(sys_data,dataEvent);

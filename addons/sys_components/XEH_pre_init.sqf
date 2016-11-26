@@ -12,6 +12,7 @@ PREP(sendComponentMessage);
 PREP(handleComponentMessage);
 PREP(getAllConnectedComponents);
 PREP(getAllAvailableConnectors);
+PREP(getAllConnectors);
 PREP(connectorConnected);
 PREP(getComponentTree);
 

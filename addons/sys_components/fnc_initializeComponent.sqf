@@ -1,16 +1,20 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Creates a complex component and will attachs all the default components.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Component ID <STRING>
+ * 1: Event <STRING>
+ * 2: Data <ANY>
+ * 3: Radio data <HASH>
+ * 4: Event Kind <STRING>
+ * 5: Remote <BOOLEAN>
  *
  * Return Value:
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_components_fnc_initializeComponent
  *
  * Public: No
  */
@@ -20,8 +24,11 @@ private ["_return"];
 
 params["_radioId","_event","_data", "_radioData", "_eventKind", "_remote"];
 
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _radioId >> "acre_baseClass"));
+private _baseClass = getText(configFile >> "CfgWeapons" >> _radioId >> "acre_baseClass");
+if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> _radioId >> "acre_baseClass"); };
 
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
+systemChat str ["_initComp",_parentComponentClass,_baseClass];
 private _connectorData = HASH_GET(_radioData, "acre_radioConnectionData");
 if(isNil "_connectorData") then {
     _connectorData = [];

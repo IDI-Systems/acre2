@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Finds all the attached antennas to a specific radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Found antennas <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1"] call acre_sys_components_fnc_findAntenna
  *
  * Public: No
  */
