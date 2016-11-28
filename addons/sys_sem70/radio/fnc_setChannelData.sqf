@@ -14,6 +14,7 @@
  *
  * Public: No
  */
+ #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 /*
@@ -43,6 +44,8 @@
 */
 
 params ["_radioId",  "_event", "_eventData", "_radioData"];
+
+TRACE_1("",_this);
 
 private _channels = HASH_GET(_radioData, "channels");
 

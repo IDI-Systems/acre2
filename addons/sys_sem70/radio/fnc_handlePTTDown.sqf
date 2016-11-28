@@ -50,13 +50,15 @@ params ["_radioId", "_event", "_eventData", "_radioData"];
 */
 
 private _manualChannelSelection = [_radioId, "getState", "manualChannelSelection"] call EFUNC(sys_data,dataEvent);
-if (_manualChannelSelection != 1) exitWith {
+if (_manualChannelSelection != 1) then {
     private _currentChannel = HASH_GET(_radioData, "currentChannel");
     private _channels = HASH_GET(_radioData, "channels");
     private _channel = HASHLIST_SELECT(_channels, _currentChannel);
 
     private _frequencies = HASH_GET(_channel,"frequencies");
     private _frequency = _frequencies call BIS_fnc_selectRandom;
+
+    //[_radioId, "setState", ["transmittingFrequency",_frequency]] call EFUNC(sys_data,dataEvent);
     HASH_SET(_channel, "frequencyTX", _frequency);
     HASH_SET(_channel, "frequencyRX", _frequency);
 

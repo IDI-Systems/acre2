@@ -14,6 +14,7 @@
  *
  * Public: No
  */
+ #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 GVAR(persistAlive) = 1;
 GVAR(lastRadioTime) = time + 0.25;
