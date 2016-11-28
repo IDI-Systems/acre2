@@ -103,18 +103,6 @@ ADDPFH(_acrePlayerFnc, 0, []);
 "acre_dynload" callExtension format["load:%1", "idi\build\win32\Debug\acre.dll"];
 #endif
 
-DFUNC(formatNumber) = {
-    private _ext = abs _this - (floor abs _this);
-    private _str = "";
-
-    for "_i" from 1 to 24 do {
-        private _d = floor (_ext*10);
-        _str = _str + (str _d);
-        _ext = (_ext*10)-_d;
-    };
-    format["%1%2.%3", ["","-"] select (_this < 0), (floor (abs _this)), _str];
-};
-
 private _monitorFnc = {
     private _res = ["fetch_result", ""] call FUNC(callExt);
     while {!isNil "_res"} do {
