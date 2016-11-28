@@ -14,8 +14,9 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
 
- if(isNil QGVAR(startDrawing)) then {
+if (isNil QGVAR(startDrawing)) then {
     with uiNamespace do {
         GVAR(mapDisplay) = (findDisplay 12);
         _mapCtrl = (GVAR(mapDisplay) displayCtrl 51);

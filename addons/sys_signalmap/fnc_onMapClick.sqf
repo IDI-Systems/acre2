@@ -14,6 +14,7 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
 
 if(_this select 1 != 0) exitWith {};
 

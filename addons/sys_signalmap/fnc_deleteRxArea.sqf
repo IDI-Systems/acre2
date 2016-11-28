@@ -14,6 +14,7 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
 
 with uiNamespace do {
     _index = lbCurSel GVAR(rxAreaList);

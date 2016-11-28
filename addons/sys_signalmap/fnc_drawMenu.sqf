@@ -14,6 +14,8 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
+
 with uiNamespace do {
     GVAR(debugIdc) = 13121;
 

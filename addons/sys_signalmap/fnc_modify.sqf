@@ -14,6 +14,8 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
+
 [] spawn {
     sleep 0.1;
     [] call FUNC(clearOverlayMessage);

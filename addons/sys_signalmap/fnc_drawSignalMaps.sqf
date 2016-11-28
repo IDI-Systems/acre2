@@ -14,6 +14,8 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
+
  with uiNamespace do {
     _mapCtrl = (GVAR(mapDisplay) displayCtrl 51);
     _pos1 = _mapCtrl ctrlMapWorldToScreen [4096,0,0];

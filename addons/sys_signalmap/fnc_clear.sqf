@@ -14,7 +14,8 @@
  *
  * Public: No
  */
- 
+#include "script_component.hpp"
+
 with uiNamespace do {
     {
         deleteMarker (_x select 1);

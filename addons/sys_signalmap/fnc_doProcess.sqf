@@ -14,6 +14,8 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
+
 with uiNamespace do {
 
     _txAntennaName = GVAR(txAntennaListBox) lbData (lbCurSel GVAR(txAntennaListBox));
