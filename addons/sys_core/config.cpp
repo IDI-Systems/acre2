@@ -12,9 +12,9 @@ class CfgPatches {
         VERSION_CONFIG;
     };
 };
-#include "cfgEventhandlers.hpp"
-#include "cfgSounds.hpp"
-#include "cfgVehicles.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgSounds.hpp"
+#include "CfgVehicles.hpp"
 #include "dialogs.hpp"
 
 class CfgAcreWorlds {

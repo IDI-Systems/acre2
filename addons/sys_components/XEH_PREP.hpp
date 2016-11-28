@@ -1,0 +1,13 @@
+PREP(attachComplexComponent);
+PREP(attachSimpleComponent);
+PREP(attachComponentHandler);
+PREP(initializeComponent);
+PREP(findAntenna);
+PREP(detachComponent);
+PREP(detachComponentHandler);
+PREP(sendComponentMessage);
+PREP(handleComponentMessage);
+PREP(getAllConnectedComponents);
+PREP(getAllAvailableConnectors);
+PREP(connectorConnected);
+PREP(getComponentTree);

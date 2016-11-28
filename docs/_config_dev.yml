@@ -1,0 +1,60 @@
+url: http://localhost:4000
+
+output: web # Useful for conditional filtering of content that is separate from the PDF
+
+title: ACRE2 Documentation
+project_name: ACRE2
+description: "Documentation for Advanced Combat Radio Environment 2, an Arma 3 radio simulation mod."
+company_name: IDI-Systems
+
+github_editme_path: IDI-Systems/acre2/blob/master/docs
+feedback_disable: true
+
+exclude: [.idea/, pdfconfigs, .editorconfig, .gitignore, CNAME, Gemfile, Gemfile.lock, "*.sh", README.md]
+
+gems:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
+
+permalink: /:path/:title
+
+highlighter: rouge
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+timezone: UTC
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      comments: true
+      search: true
+      sidebar: main_sidebar
+  -
+    scope:
+      path: ""
+      type: "tooltips"
+    values:
+      layout: "page"
+      comments: true
+      search: true
+      tooltip: true
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      search: true
+      sidebar: news_sidebar
+
