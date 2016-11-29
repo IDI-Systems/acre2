@@ -274,7 +274,7 @@ Bad:
 
 ```
 if(alive player) then {
-    hint ":)";
+    hint ":(";
 };
 ```
 
