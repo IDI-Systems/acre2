@@ -10,7 +10,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc343_fnc_getOnOffState;
  *
  * Public: No
  */
