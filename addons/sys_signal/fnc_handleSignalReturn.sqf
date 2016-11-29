@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Return function for signal calculation. Will be called after signal has been calculated in extension
+ * Return function for signal calculation. Will be called after signal has been calculated in the extension
  *
  * Arguments:
  * 0: Radio IDs (TX and RX) <ARRAY>
@@ -9,8 +9,6 @@
  * Return Value:
  * -
  *
- * Example:
- * [ARGUMENTS, RESULT] call acre_sys_signal_fnc_handleSignalReturn
  *
  * Public: No
  */

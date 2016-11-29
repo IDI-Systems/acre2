@@ -12,7 +12,7 @@
  * Tuple of power and maximum signal strength <ARRAY>
  *
  * Example:
- * [FREQUENCY, POWER, "_radioID1", "_radioID2"] call acre_sys_signal_fnc_getSignal
+ * [30, 5000, "ACRE_PRC343_ID_1", "ACRE_PRC343_ID_2"] call acre_sys_signal_fnc_getSignal
  *
  * Public: No
  */
