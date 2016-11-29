@@ -63,6 +63,110 @@ class CfgAcreComponents {
 ```
 
 
+## Macro Usage
+
+### Module/PBO Specific Macro Usage
+
+The family of `GVAR` macros define global variable strings or constants for use within a module. Please use these to make sure we follow naming conventions across all modules and also prevent duplicate/overwriting between variables in different modules. The macro family expands as follows, for the example of the module `balls`:
+
+| Macros | Expands to |
+| -------|---------|
+|`GVAR(face)` | `acre_radio_face` |
+|`QGVAR(face)` | `"acre_radio_face"` |
+|`QQGVAR(face)` | `""acre_radio_face""` used inside `QUOTE` macros where double quotation is required.  |
+|`EGVAR(rack,face)` | `acre_rack_face` |
+|`QEGVAR(rack,face)` | `"acre_rack_face"` |
+|`QQEGVAR(rack,face)` | `""acre_rack_face""` used inside `QUOTE` macros where double quotation is required. |
+
+There also exists the `FUNC` family of macros:
+
+| Macros | Expands to |
+| -------|---------|
+|`FUNC(face)` | `acre_radio_fnc_face` or the call trace wrapper for that function. |
+|`EFUNC(rack,face)` | `acre_rack_fnc_face` or the call trace wrapper for that function. |
+|`DFUNC(face)` | `acre_radio_fnc_face` and will ALWAYS be the function global variable. |
+|`DEFUNC(rack,face)` | `acre_rack_fnc_face` and will ALWAYS be the function global variable. |
+|`QFUNC(face)` | `"acre_radio_fnc_face"` |
+|`QEFUNC(rack,face)` | `"acre_rack_fnc_face"` |
+|`QQFUNC(face)` | `""acre_radio_fnc_face""` used inside `QUOTE` macros where double quotation is required.  |
+|`QQEFUNC(rack,face)` | `""acre_rack_fnc_face""` used inside `QUOTE` macros where double quotation is required.  |
+
+The `FUNC` and `EFUNC` macros shall NOT be used inside `QUOTE` macros if the intention is to get the function name or assumed to be the function variable due to call tracing (see below). If you need to 100% always be sure that you are getting the function name or variable use the `DFUNC` or `DEFUNC` macros. For example `QUOTE(FUNC(face)) == "acre_radio_fnc_face"` would be an illegal use of `FUNC` inside `QUOTE`.
+
+Using `FUNC` or `EFUNC` inside a `QUOTE` macro is fine if the intention is for it to be executed as a function.
+
+### Function Macros, Call Tracing, and Non-ACRE2/Anonymous Functions
+
+ACRE2 implements a basic call tracing system that can dump the call stack on errors or wherever you want. To do this the `FUNC` macros in debug mode will expand out to include metadata about the call including line numbers and files. This functionality is automatic with the use of calls via `FUNC` and `EFUNC`, but any calls to other functions need to use the following macros:
+
+| Macro  | Example |
+| -------|---------|
+|`CALLSTACK(functionName)` | `[] call CALLSTACK(cba_fnc_someFunction)` |
+|`CALLSTACK_NAMED(function,functionName)` | `[] call CALLSTACK_NAMED(_anonymousFunction,'My anonymous function!')`|
+
+These macros will call these functions with the appropriate wrappers and enable call logging into them (but to no further calls inside obviously).
+
+### General Purpose Macros
+
+[CBA script_macros_common.hpp](https://github.com/CBATeam/CBA_A3/blob/master/addons/main/script_macros_common.hpp){:target="_blank"}
+
+`QUOTE()` is utilized within configuration files for bypassing the quote issues in configuration macros. So, all code segments inside a given config should utilize wrapping in the `QUOTE()` macro instead of direct strings. This allows us to use our macros inside the string segments, such as `QUOTE(_this call FUNC(balls))`
+
+### Path Macros
+
+The family of path macros define global paths to files for use within a module. Please use these to reference files in the ACE3 project. The macro family expands as follows, for the example of the module 'balls':
+
+| Macro | Expands to |
+| -------|---------|
+|`PATHTOF(data\radio.p3d)` | `\idi\acre\addons\balls\data\radio.p3d` |
+|`QPATHTOF(data\radio.p3d)` | `"\idi\acre\addons\balls\data\radio.p3d"` |
+|`PATHTOEF(leg,data\radio.p3d)` | `\idi\acre\addons\leg\data\radio.p3d` |
+|`QPATHTOEF(leg,data\radio.p3d)` | `"\idi\acre\addons\leg\data\radio.p3d"` |
+
+
+## Functions
+
+Functions shall be created in the component directory, named `fnc_functionName.sqf`. They shall then be indexed via the `PREP(functionName)` macro in the `XEH_PREP.hpp` file.
+
+The `PREP` macro allows for CBA function caching, which drastically speeds up load times. Beware though that function caching is enabled by default and as such to disable it you need to [disable CBA function caching](building#disable-cba-function-caching)!
+
+### Headers
+
+Every function should have a header of the following format as the start of their function file:
+
+```
+/*
+ * Author: ACRE2Team
+ * [Description]
+ *
+ * Arguments:
+ * 0: The first argument <STRING>
+ * 1: The second argument <OBJECT>
+ * 2: The third optional argument <BOOL> (default: true)
+ *
+ * Return Value:
+ * The return value <BOOL>
+ *
+ * Example:
+ * ["something", player] call acre_main_fnc_example
+ *
+ * Public: [Yes/No]
+ */
+```
+
+This is not the case for inline functions or functions not containing their own file.
+
+### Includes
+
+Every function includes the `script_component.hpp` file just below the function header. Any additional includes or defines must be below this include.
+
+All scripts written must be below this include and any potential additional includes or defines.
+
+#### Reasoning
+
+This ensures every function starts of in an uniform way and enforces function documentation.
+
+
 ## Code Style
 
 ### Braces placement
@@ -130,7 +234,7 @@ Putting the opening brace in it's own line wastes a lot of space, and keeping th
 
 Ever new scope should be on a new indent. This will make the code easier to understand and read. Indentations consist of 4 spaces. Tabs are not allowed.
 
-Good example:
+Good:
 
 ```cpp
 call {
@@ -142,7 +246,7 @@ call {
 };
 ```
 
-Bad Example:
+Bad:
 
 ```cpp
 call {
@@ -154,6 +258,26 @@ call {
 };
 ```
 
+### Spacing
+
+All control blocks should be separated from the condition with a space.
+
+Good:
+
+```cpp
+if (alive player) then {
+    hint ":)";
+};
+```
+
+Bad:
+
+```
+if(alive player) then {
+    hint ":(";
+};
+```
+
 ### Inline comments
 
 Inline comments should use `//`. Usage of `/* */` is allowed for larger comment blocks.
@@ -161,9 +285,9 @@ Inline comments should use `//`. Usage of `/* */` is allowed for larger comment 
 Example:
 
 ```cpp
-//// Comment   // < incorrect
-// Comment     // < correct
-/* Comment */  // < correct
+//// Comment   // Incorrect
+// Comment     // Correct
+/* Comment */  // Correct
 ```
 
 ### Comments in code
@@ -296,6 +420,86 @@ _elementTwo = _myArray select 1;
 
 Any one function shall contain no more than 250 lines of code, excluding the function header and any includes.
 
+### Variable declarations
+
+Declarations should be at the smallest feasible scope.
+
+Good:
+
+```js
+if (call FUNC(myCondition)) then {
+   private _areAllAboveTen = true; // Smallest feasible scope
+
+   {
+      if (_x >= 10) then {
+         _areAllAboveTen = false;
+      };
+   } forEach _anArray;
+
+   if (_areAllAboveTen) then {
+       hint "all values are above ten!";
+   };
+}
+```
+
+Bad:
+
+```js
+private _areAllAboveTen = true; // Bad because it can be initialized in the if statement
+if (call FUNC(myCondition)) then {
+   {
+      if (_x >= 10) then {
+         _areAllAboveTen = false;
+      };
+   } forEach _anArray;
+
+   if (_areAllAboveTen) then {
+       hint "all values are above ten!";
+   };
+};
+```
+
+### Variable initialization
+
+Private variables will not be introduced until they can be initialized with meaningful values.
+
+Good:
+
+```js
+private _myVariable = 0; // Good because the value will be used
+{
+    _x params ["_value", "_amount"];
+    if (_value > 0) then {
+        _myVariable = _myVariable + _amount;
+    };
+} forEach _array;
+```
+
+Bad:
+
+```js
+private _myvariable = 0; // Bad because it is initialized with a zero, but this value does not mean anything
+if (_condition) then {
+    _myVariable = 1;
+} else {
+    _myvariable = 2;
+};
+```
+
+Good:
+
+```js
+private _myvariable = [1, 2] select _condition;
+```
+
+### Initialization expression in `for` loops
+
+The initialization expression in a `for` loop shall perform no actions other than to initialize the value of a single `for` loop parameter.
+
+### Increment expression in `for` loops
+
+The increment expression in a `for` loop shall perform no action other than to change a single loop parameter to the next value for the loop.
+
 ### `getVariable`
 
 When using `getVariable`, there should either be a default value given in the statement or the return value should be checked for correct data type as well as return value. A default value may not be given after a nil check.
@@ -358,13 +562,17 @@ Unnecessary temporary objects or variables should be avoided.
 
 Code that is not used (commented out) shall be deleted.
 
+### Constant Global Variables
+
+There shall be no constant global variables, constants shall be put in a `#define`.
+
 ### Logging
 
-Functions should whenever possible and logical, make use of logging functionality through the logging and debugging macros from CBA and ACRE.
+Functions should whenever possible and logical, make use of logging functionality through the logging and debugging macros from CBA and ACRE2.
 
 ### Constant Private Variables
 
-Constant private variables that are used more as once should be put in a #define.
+Constant private variables that are used more as once should be put in a `#define`.
 
 ### Code used more than once
 
@@ -385,6 +593,14 @@ This is a large open source project that will get many different maintainers in 
 Avoid the usage of scheduled space as much as possible and stay in unscheduled. This is to provide a smooth experience to the user by guaranteeing code to run when we want it. See Performance considerations, Spawn & ExecVm for more information.
 
 This also helps avoid various bugs as a result of unguaranteed execution sequences when running multiple scripts.
+
+### Event driven
+
+All ACRE2 components shall be implemented in an event driven fashion. This is done to ensure code only runs when it is required instead of continous checking.
+
+Event handlers in ACRE2 are implemented through the CBA event system. They should be used to trigger or allow triggering of specific functionality.
+
+More information on the [CBA Events System](https://github.com/CBATeam/CBA_A3/wiki/Custom-Events-System){:target="_blank"} and [CBA Player Events](https://github.com/CBATeam/CBA_A3/wiki/Player-Events){:target="_blank"} pages.
 
 ### Hashes
 
@@ -457,8 +673,7 @@ As you can see above working with hashlists are fairly simple, a more in depth e
 |`HASHLIST_SELECT(hashlist,index)` | Returns the hash at that index in the list. |
 |`HASHLIST_SET(hashlist,index,hash)` | Sets a specific index to that hash. |
 
-##### A note on pass by reference and hashes
-
+#### Pass by reference
 
 Hashes and hashlists are implemented with SQF arrays, and as such they are passed by reference to other functions. Remember to make copies (using the + operator) if you intend for the hash or hashlist to be modified with out the need for changing the original value.
 
@@ -495,6 +710,26 @@ When adding multiple elements to an array, the binary addition may be used for t
 ### `createVehicle`
 
 `createVehicle` array shall be used instead of `createVehicle`.
+
+
+### `createVehicle(Local)` position
+
+`createVehicle(Local)` used with a non-`[0, 0, 0]` position performs search for empty space to prevent collisions on spawn.
+Where possible `[0, 0, 0]` position shall be used, except on `#` objects (e.g. `#lightsource`, `#soundsource`) where empty position search is not performed.
+
+This code requires ~1.00ms and will be higher with more objects near wanted position:
+
+```js
+_vehicle = _type createVehicleLocal _posATL;
+_vehicle setposATL _posATL;
+```
+
+While this one requires ~0.04ms:
+
+```js
+_vehicle = _type createVehicleLocal [0, 0, 0];
+_vehicle setposATL _posATL;
+```
 
 ### Unscheduled vs Scheduled
 

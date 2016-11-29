@@ -12,6 +12,7 @@ This page describes how you can setup your development environment for ACRE2, al
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
 - [Python 3.x](https://www.python.org/)
 - [Mikero Tools](https://dev.withsix.com/projects/mikero-pbodll/files): DePbo, DeRap, DeOgg, Rapify, MakePbo, pboProject
+- `*.hpp` removed from PboProject's "Exclude From Pbo" list
 - Python, Mikero Tools and Git in PATH environment variable
 - [CBA](https://github.com/CBATeam/CBA_A3/releases/latest) mod (release or development version)
 
@@ -104,6 +105,7 @@ By default CBA caches a compiled version of functions to reduce mission load tim
 
 - Load `cba_cache_disable.pbo` (included in CBA’s `optionals` folder - simply move it to `addons` folder for the time being)
 - Add the following to your test missions description.ext:
+
 ```c++
 class CfgSettings {
     class CBA {
@@ -115,7 +117,9 @@ class CfgSettings {
     };
 };
 ```
+
 - To only disable caching for a single module, hence greatly improving mission restart time, add the following line to the `script_component.hpp` file of said module:
+
 ```c++
 #define DISABLE_COMPILE_CACHE
 ```

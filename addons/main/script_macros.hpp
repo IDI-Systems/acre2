@@ -81,6 +81,7 @@ Antenna Defines
 #define LOAD_SOUND(className) [QUOTE(className)] call EFUNC(sys_sounds,loadSound);
 
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
+#define DEFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 
 #define GET_STATE(id)            ([GVAR(currentRadioId), "getState", id] call acre_sys_data_fnc_dataEvent)
 #define SET_STATE(id, val)        ([GVAR(currentRadioId), "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
