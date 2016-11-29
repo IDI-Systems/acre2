@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Return function for signal calculation. Will be called after signal has been calculated in extension
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio IDs (TX and RX) <ARRAY>
+ * 1: Antenna and Signal Strength <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * -
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS, RESULT] call acre_sys_signal_fnc_handleSignalReturn
  *
  * Public: No
  */
