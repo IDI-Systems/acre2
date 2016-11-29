@@ -57,9 +57,10 @@
 #define ICON_LOADING   99992
 #define ICON_LOGO      99993
 #define ICON_VOLUME    99994
-#define ICON_KNOB       99901
+#define ICON_TRANSMITBAR 99995
+#define ICON_KNOB      99901
 #define ICON_TRANSMIT  99902
-#define ICON_UP           99903
+#define ICON_UP        99903
 #define ICON_DOWN      99904
 #define ICON_UPDOWN    99905
 #define ICON_SCROLLBAR 99906

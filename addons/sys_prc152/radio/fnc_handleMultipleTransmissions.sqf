@@ -214,6 +214,7 @@ if(_transmissionsChanged) then {
                 [_radioId, "Acre_GenericClickOn", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
             };
         };
+        SCRATCH_SET(_radioId, "receivingSignal", _signalPercent);
     } else {
         private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
         if(!_pttDown) then {
@@ -223,6 +224,7 @@ if(_transmissionsChanged) then {
             };
         };
         SCRATCH_SET(_radioId, "hasBeeped", false);
+        SCRATCH_SET(_radioId, "receivingSignal", 0);
     };
 
     // Cache it
@@ -238,6 +240,21 @@ if(_transmissionsChanged) then {
     _okRadios = _radioCache;
 };
 
+//Re-render if open.
+if (_radioId isEqualTo GVAR(currentRadioId)) then {
+    // If display is open
+    private _currentMenu = GET_STATE_DEF("currentMenu", "");
+    if(_currentMenu isEqualType "") then {
+        if(_currentMenu != "") then {
+            private _tmpMenu = HASH_GET(GVAR(Menus), _currentMenu);
+            if(!isNil "_tmpMenu") then {
+                _currentMenu = _tmpMenu;
+            };
+        };
+    };
+    
+    [_currentMenu, _currentMenu] call FUNC(renderMenu);
+};
 
 // diag_log text format["m: %1", _mend-_mstart];
 _okRadios

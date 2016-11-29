@@ -27,9 +27,9 @@ class Prc152_RadioDialog {
             //(((TEXT_X - 0.5)*SCALE)+0.5)
 
             x = ((((((0.435+(0.0038*6))-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
-            y = ((((((0.415 + 0.0009)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
-            h = SCALE*0.00805*safeZoneH;
-            w = SCALE*(0.0038*5)*safeZoneH;
+            y = ((((((0.415 + 0.0004)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
+            h = SCALE*0.007*safeZoneH;
+            w = SCALE*(0.00438*6)*safeZoneH;
             type = 8;
             style = 0;
             colorFrame[] = {0.2, 0.2, 0.2, 1};
@@ -43,9 +43,9 @@ class Prc152_RadioDialog {
         {
             idc = 99994;
             x = ((((((0.435+(0.0038*6))-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
-            y = ((((((0.415 + 0.0009)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
+            y = ((((((0.415 + 0.0004)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.0007
             h = SCALE*0.007*safeZoneH;
-            w = SCALE*(0.00438*3)*safeZoneH;
+            w = SCALE*(0.00438*6)*safeZoneH;
             type = 8;
             style = 0;
             colorFrame[] = {0.2, 0.2, 0.2, 1};
@@ -91,16 +91,32 @@ class Prc152_RadioDialog {
             text = PATHTOF(Data\Knobs\channelknob\prc152c_ui_knob_1.paa);
             colorText[] = {1,1,1, 1};
         };
+        class TransmitBar
+        {
+            idc = 99995;
+            x = (((((0.496-0.5 + (0.0933/2.42))*SCALE)+0.5) * safeZoneH) + safeZoneY); // 2.55
+            y = (((((0.4211 + 0.005 -0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.005
+            w = SCALE*(0.0933/4.25)*safeZoneH; //4.22
+            h = SCALE*(0.00438*1.7)*safeZoneH; //0.01105, 3
+            type = 8;
+            style = 0;
+            colorFrame[] = {0.2, 0.2, 0.2,1};
+            colorBar[] = {0.2, 0.2, 0.2, 1};
+            texture = "#(argb,8,8,3)color(1,1,1,1)";
+            tooltip = "ST_HORIZONTAL";
+        };   
 
+        // Lower down for render order.
         class TransmitIcon : Prc152_RscPicture {
             idc = 99902;
-            x = (((((0.52-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
-            y = (((((0.426-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
-            w = SCALE*0.05*safeZoneH;
-            h = SCALE*0.01105*safeZoneH;
+            x = (((((0.496-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY); // 0.50 -> 0.49 -> 0.493
+            y = (((((0.4211-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.426 -> 0.41 -> 0.42
+            w = SCALE*0.0933*safeZoneH; //0.05, 0.07
+            h = SCALE*(0.00438*4)*safeZoneH; //0.01105, 3
             colorText[] = { 0, 0, 0, 1 };
             text = PATHTOF(Data\icons\icon_transmit.paa);
-        };
+        };    
+     
 
         class UpIcon : Prc152_RscPicture {
             idc = 99903;
@@ -359,5 +375,6 @@ class Prc152_RadioDialog {
             onMouseButtonUp = QUOTE((['VOLUME'] + _this) call FUNC(onButtonPress));
             tooltip = QUOTE(Change volume);
         END_CONTROL
+
     };
 };

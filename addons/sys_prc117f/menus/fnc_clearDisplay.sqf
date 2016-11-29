@@ -51,6 +51,7 @@ FUNC(_internalClearDisplay) = {
 [ICON_BATTERY, false] call FUNC(toggleIcon);
 [ICON_VOLUME, false] call FUNC(toggleIcon);
 [ICON_TRANSMIT, false] call FUNC(toggleIcon);
+[ICON_TRANSMITBAR, false] call FUNC(toggleIcon);
 [ICON_UP, false] call FUNC(toggleIcon);
 [ICON_DOWN, false] call FUNC(toggleIcon);
 [ICON_UPDOWN, false] call FUNC(toggleIcon);
