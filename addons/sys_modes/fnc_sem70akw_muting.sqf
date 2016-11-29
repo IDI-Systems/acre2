@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- #define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 params ["_radioIdTX","_radioIdRX"];
@@ -36,12 +36,15 @@ if(
     (_modeTX == "sem70AKW" && _modeRX == "sem70AKW") &&
     (_frequenciesTX isEqualTo _frequenciesRX)
 ) then {
-    private _freqTX = HASH_GET(_radioTxData, "frequencyTX");
+    //TODO: Alle Frequenzberechnungen raus. Das wird in handleMultipleTransmission gemacht.
+
+    /*
+    private _freqTx = HASH_GET(_radioTxData, "frequencyTX");
     //private _freqTX = [_radioIdTX, "getState", "transmittingFrequency"] call EFUNC(sys_data,dataEvent);
 
-    TRACE_1("TX FREQ", _freqTX);
+    TRACE_1("TX FREQ", _freqTx);
 
-    private _freqRXNumber = _frequenciesRX find _freqTX;
+    private _freqRXNumber = _frequenciesRX find _freqTx;
 
     private _freqRX = HASH_GET(_radioRxData, "frequencyRX");
 
@@ -59,12 +62,12 @@ if(
         HASH_SET(_radioRxData, "frequencyRX", _freqTX);
         _match = [_radioIdRX, "setChannelData", [_currentChannel, _radioRxData]] call EFUNC(sys_data,dataEvent); // Will be true if successful*/
 
-        TRACE_1("Match", _match);
+        //TRACE_1("Match", _match);
 
-        //_match = true;
+        _match = true;
     };
 };
 
-diag_log str _match;
+//diag_log str _match;
 
 _match

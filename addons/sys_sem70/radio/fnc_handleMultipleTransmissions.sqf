@@ -113,7 +113,7 @@ private _okRadios = [];
 private _lastSortTime = SCRATCH_GET_DEF(_radioId, "lastSortTime", diag_tickTime-4);
 private _radioCache = SCRATCH_GET_DEF(_radioId, "currentTransmissionRadioCache", []);
 
-// Restort every 3 seconds no matter what.
+// Resort every 3 seconds no matter what.
 if(diag_tickTime - _lastSortTime > 3) then {
     _transmissionsChanged = true;
 } else {
@@ -136,7 +136,6 @@ if(diag_tickTime - _lastSortTime > 3) then {
         };
     //};
 };
-
 
 
 if(_transmissionsChanged) then {
@@ -259,15 +258,46 @@ if(_transmissionsChanged) then {
             };
         };
 
+        // Here we handle the automatic channel selection
+        // There are several parameters already checked in previous functions which need to be equal on both radio
+        // prior leading to this function:
+        //      - Modes (sem70AKW)
+        //      - Frequency Sets (Arrays of frequencies belonging to a channel)
+        // Therefore we are sure that both radios can communicate with each other
+        // We only need to check if networkIDs match. This is as it is stated in the manual
+        //
+        // What we need to find out is if the receiving frequency on the RX Radio needs to be set to the TX Frequency.
+        // ToDo: Implement the functionality that a receiving radio is able to transmit on the same frequency if PTT is held within
+        // 4 seconds prior current transmission ends.
+
         if(HASH_GET(_radioRxData, "mode") == "sem70AKW") then {
             private _hearableTransmissions = [];
             private _junkTransmissions = [];
             private _digital = false;
+            private _rxFreqRX = HASH_GET(_radioRxData, "frequencyRX")
+            //private _rxFreqTX = HASH_GET(_radioRxData, "frequencyTX")
             {
                 private _txId = _x select 1;
                 _radioTxData = [_txId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+                _txFreqTX = HASH_GET(_radioTxData, "frequencyTX");
+                // Check if we have the same networkID
                 if(HASH_GET(_radioRxData, "networkID") == HASH_GET(_radioTxData, "networkID")) then {
-                    PUSH(_hearableTransmissions, _x);
+                    // If both frequencies on receiver and transmitter match, go ahead
+                    // Otherwise set frequency on receiver
+                    if (_rxFreqRX isEqualTo _txFreqTX) then {
+                        PUSH(_hearableTransmissions, _x);
+                    } else {
+                        private _currentChannel = [_radioIdRX, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
+                        HASH_SET(_radioRxData, "frequencyTX", _txFreqTX);
+                        HASH_SET(_radioRxData, "frequencyRX", _txFreqTX);
+                        private _success = [_radioIdRX, "setChannelData", [_currentChannel, _radioRxData]] call EFUNC(sys_data,dataEvent); // Will be true if successful
+                        // If success then push hearable Transmission
+                        if (_success) then {
+                            PUSH(_hearableTransmissions, _x);
+                        } else {
+                            PUSH(_junkTransmissions, _x);
+                        };
+                    };
                 } else {
                     PUSH(_junkTransmissions, _x);
                 };
