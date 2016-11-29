@@ -234,7 +234,7 @@ Putting the opening brace in it's own line wastes a lot of space, and keeping th
 
 Ever new scope should be on a new indent. This will make the code easier to understand and read. Indentations consist of 4 spaces. Tabs are not allowed.
 
-Good example:
+Good:
 
 ```cpp
 call {
@@ -246,7 +246,7 @@ call {
 };
 ```
 
-Bad Example:
+Bad:
 
 ```cpp
 call {
@@ -258,6 +258,26 @@ call {
 };
 ```
 
+### Spacing
+
+All control blocks should be separated from the condition with a space.
+
+Good:
+
+```cpp
+if (alive player) then {
+    hint ":)";
+};
+```
+
+Bad:
+
+```
+if(alive player) then {
+    hint ":)";
+};
+```
+
 ### Inline comments
 
 Inline comments should use `//`. Usage of `/* */` is allowed for larger comment blocks.
@@ -265,9 +285,9 @@ Inline comments should use `//`. Usage of `/* */` is allowed for larger comment 
 Example:
 
 ```cpp
-//// Comment   // < incorrect
-// Comment     // < correct
-/* Comment */  // < correct
+//// Comment   // Incorrect
+// Comment     // Correct
+/* Comment */  // Correct
 ```
 
 ### Comments in code
