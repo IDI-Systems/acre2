@@ -87,17 +87,21 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                 nil,
                 nil,
                 {
-                    [ICON_BATTERY, false] call DFUNC(toggleIcon);
-                    [ICON_VOLUME, true] call DFUNC(toggleIcon);
+                    [ICON_BATTERY, false] call FUNC(toggleIcon);
+                    [ICON_VOLUME, true] call FUNC(toggleIcon);
                     [ICON_TRANSMIT, true] call FUNC(toggleIcon);
+                    [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
 
                     private _volume = GET_STATE("volume");
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
                     if(!isNil "_display") then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
+                        (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;
+                        (_display displayCtrl ICON_TRANSMITBAR) ctrlCommit 0;
                     };
                 }
             ]
@@ -115,17 +119,21 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                 nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
                 nil,
                 {
-                    [ICON_BATTERY, false] call DFUNC(toggleIcon);
-                    [ICON_VOLUME, true] call DFUNC(toggleIcon);
+                    [ICON_BATTERY, false] call FUNC(toggleIcon);
+                    [ICON_VOLUME, true] call FUNC(toggleIcon);
                     [ICON_TRANSMIT, true] call FUNC(toggleIcon);
+                    [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
 
                     private _volume = GET_STATE("volume");
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
                     if(!isNil "_display") then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
+                        (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;
+                        (_display displayCtrl ICON_TRANSMITBAR) ctrlCommit 0;
                     };
                 }
             ]
@@ -143,17 +151,21 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                 nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
                 nil,
                 {
-                    [ICON_BATTERY, false] call DFUNC(toggleIcon);
-                    [ICON_VOLUME, true] call DFUNC(toggleIcon);
+                    [ICON_BATTERY, false] call FUNC(toggleIcon);
+                    [ICON_VOLUME, true] call FUNC(toggleIcon);
                     [ICON_TRANSMIT, true] call FUNC(toggleIcon);
+                    [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
 
                     private _volume = GET_STATE("volume");
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
                     if(!isNil "_display") then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
+                        (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;
+                        (_display displayCtrl ICON_TRANSMITBAR) ctrlCommit 0;
                     };
                 }
             ]
@@ -169,17 +181,21 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                 nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
                 nil,
                 {
-                    [ICON_BATTERY, false] call DFUNC(toggleIcon);
-                    [ICON_VOLUME, true] call DFUNC(toggleIcon);
+                    [ICON_BATTERY, false] call FUNC(toggleIcon);
+                    [ICON_VOLUME, true] call FUNC(toggleIcon);
                     [ICON_TRANSMIT, true] call FUNC(toggleIcon);
+                    [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
 
                     private _volume = GET_STATE("volume");
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
                     if(!isNil "_display") then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
+                        (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;
+                        (_display displayCtrl ICON_TRANSMITBAR) ctrlCommit 0;
                     };
                 }
             ]
