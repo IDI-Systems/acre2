@@ -104,6 +104,7 @@ By default CBA caches a compiled version of functions to reduce mission load tim
 
 - Load `cba_cache_disable.pbo` (included in CBA’s `optionals` folder - simply move it to `addons` folder for the time being)
 - Add the following to your test missions description.ext:
+
 ```c++
 class CfgSettings {
     class CBA {
@@ -115,7 +116,9 @@ class CfgSettings {
     };
 };
 ```
+
 - To only disable caching for a single module, hence greatly improving mission restart time, add the following line to the `script_component.hpp` file of said module:
+
 ```c++
 #define DISABLE_COMPILE_CACHE
 ```
