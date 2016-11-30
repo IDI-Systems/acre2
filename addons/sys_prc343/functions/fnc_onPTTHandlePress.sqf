@@ -23,13 +23,13 @@ private _currentView = GET_STATE("currentView");
 params ["","_key"];
 
 if (_key == 0) then {
-// left click
+    // left click
     private _newView = OUT;
     if (_currentView == OUT) then {
-    _newView = IN;
+        _newView = IN;
     };
     if (_newView != _currentView) then {
-    SET_STATE("currentView", _newView);
-    [_newView] call CALLSTACK(FUNC(zoomChannelBlockSelector));
+        SET_STATE("currentView", _newView);
+        [_newView] call CALLSTACK(FUNC(zoomChannelBlockSelector));
     };
 };
