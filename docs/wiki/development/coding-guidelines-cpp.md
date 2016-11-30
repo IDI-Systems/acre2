@@ -4,6 +4,8 @@ title: Coding Guidelines (C++)
 
 _Disclaimer: Not all ACRE2's code complies with the below coding guidelines, we are working towards improving as much as we can!_
 
+Majority of the [SQF Code Style Guidelines](coding-guidelines-sqf#code-style) also apply to C++ code! Differences and C++-specific styles are noted on this page.
+
 ## Code Indentation
 
 All indents should be four normal spaces.
@@ -41,14 +43,14 @@ Opening braces should always be on the same line as their block identifier (such
 Examples:
 
 ```c++
-if(test) {
+if (test) {
     // do something
 }
 else {
     // something else
 }
 
-for(auto it : some_list_) {
+for (auto it : some_list_) {
     // blah blah
 }
 
