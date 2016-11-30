@@ -18,7 +18,7 @@
 
 params ["_player", "_class", "_callback", ["_replacementId",""]];
 
-if (getNumber(configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0) then {
+if (getNumber (configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0) then {
     _class = BASECLASS(_class);
 };
 

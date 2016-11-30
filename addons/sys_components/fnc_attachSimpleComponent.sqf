@@ -22,14 +22,14 @@ private _return = false;
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass"));
 private _childComponentClass = configFile >> "CfgAcreComponents" >> _childComponentType;
 
-private _componentSimple = getNumber(_childComponentClass >> "simple");
+private _componentSimple = getNumber (_childComponentClass >> "simple");
 if (_componentSimple == 0) exitWith {
     WARNING_1("%1 is not a simple component!",_childComponentType);
     false
 };
 
 private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")) select _parentConnector) select 1;
-private _childConnectorType = getNumber(_childComponentClass >> "connector");
+private _childConnectorType = getNumber (_childComponentClass >> "connector");
 if (_parentConnectorType == _childConnectorType) then {
     private _exit = false;
     private _parentComponentData = HASH_GET(acre_sys_data_radioData, _parentComponentId);

@@ -589,7 +589,7 @@ DFUNC(drawMenu) = {
         _c = 0;
         for "_i" from 0 to (count _components) - 1 do {
             _component = _components select _i;
-            _type = getNumber(_component >> "type");
+            _type = getNumber (_component >> "type");
             if (_type == ACRE_COMPONENT_ANTENNA) then {
                 if (getText(_component >> "binaryGainFile") != "") then {
                     GVAR(txAntennaListBox) lbAdd (getText(_component >> "name"));
@@ -637,7 +637,7 @@ DFUNC(drawMenu) = {
         _c = 0;
         for "_i" from 0 to (count _components) - 1 do {
             _component = _components select _i;
-            _type = getNumber(_component >> "type");
+            _type = getNumber (_component >> "type");
             if (_type == ACRE_COMPONENT_ANTENNA) then {
                 if (getText(_component >> "binaryGainFile") != "") then {
                     GVAR(rxAntennaListBox) lbAdd (getText(_component >> "name"));

@@ -34,9 +34,9 @@ private _searchFunction = {
                 if (!isNil "_connector") then {
                     _connector params ["_connectedComponent", "", "_attributes"];
                     private _componentClass = configFile >> "CfgAcreComponents" >> _connectedComponent;
-                    private _componentSimple = getNumber(_componentClass >> "simple");
+                    private _componentSimple = getNumber (_componentClass >> "simple");
                     if (_componentSimple == 1) then {
-                        private _componentType = getNumber(_componentClass >> "type");
+                        private _componentType = getNumber (_componentClass >> "type");
                         if (_componentType == ACRE_COMPONENT_ANTENNA) then {
                             private _componentObject = _componentParentId;
                             if (IS_STRING(_componentParentId)) then {
@@ -74,7 +74,7 @@ private _searchFunction = {
                                     _antennaDirUp = _antennaDirResults select 1;
                                 };
                             };
-                            _antennaPos2 = _antennaPos vectorAdd (_antennaDirUp vectorMultiply (getNumber(_componentClass >> "height")));
+                            _antennaPos2 = _antennaPos vectorAdd (_antennaDirUp vectorMultiply (getNumber (_componentClass >> "height")));
                             private _foundAntenna = [_connectedComponent, _componentObject, _antennaPos2, _antennaDir];
                             PUSH(_foundAntennas, _foundAntenna);
                         };

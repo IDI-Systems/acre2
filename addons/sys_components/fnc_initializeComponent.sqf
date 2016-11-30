@@ -37,10 +37,10 @@ if (isNil "_connectorData") then {
         WARNING_1("%1 is not a class type of CfgAcreComponents!",_component);
     };
 
-    private _componentSimple = getNumber(_componentClass >> "simple");
+    private _componentSimple = getNumber (_componentClass >> "simple");
     if (_componentSimple == 1) then {
         private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")) select _connector) select 1;
-        private _childConnectorType = getNumber(_componentClass >> "connector");
+        private _childConnectorType = getNumber (_componentClass >> "connector");
         // diag_log text format["%3 _parentConnectorType: %1 _childConnectorType: %2", _parentConnectorType, _childConnectorType, _componentClass];
         if (_parentConnectorType == _childConnectorType) then {
             _connectorData set[_connector, [_component, 0, _attributes]];

@@ -28,7 +28,7 @@ if (_parent == "") then {
 };
 private _hasUnique = 0;
 while { _hasUnique != 1 && _parent != ""} do {
-    _hasUnique = getNumber(configFile >> "CfgWeapons" >> _parent >> "acre_hasUnique");
+    _hasUnique = getNumber (configFile >> "CfgWeapons" >> _parent >> "acre_hasUnique");
     if (_hasUnique != 1) then {
         _parent = configName (inheritsFrom ( configFile >> "CfgWeapons" >> _parent));
     };

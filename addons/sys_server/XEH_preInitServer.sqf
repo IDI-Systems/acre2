@@ -32,7 +32,7 @@ DFUNC(doAddComponentCargo) = {
     params ["_container","_type","_preset","_player","_callBack","_failCallback"];
 
     diag_log text format["this: %1", _this];
-    _hasUnique = getNumber(configFile >> "CfgWeapons" >> _type >> "acre_hasUnique");
+    _hasUnique = getNumber (configFile >> "CfgWeapons" >> _type >> "acre_hasUnique");
     if (_hasUnique == 1) then {
         _ret = [_type] call FUNC(getRadioId);
         if (_ret != -1) then {

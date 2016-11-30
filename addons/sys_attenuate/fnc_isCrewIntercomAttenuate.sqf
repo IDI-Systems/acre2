@@ -19,7 +19,7 @@ params ["_unit"];
 private _ret = false;
 
 if ((_unit in ACRE_PLAYER_VEHICLE_CREW) and {vehicle acre_player != acre_player}) then {
-    _hasCVC = getNumber(configFile >> "CfgVehicles" >> typeOf (vehicle acre_player) >> "ACRE" >> "CVC" >> "hasCVC");
+    _hasCVC = getNumber (configFile >> "CfgVehicles" >> typeOf (vehicle acre_player) >> "ACRE" >> "CVC" >> "hasCVC");
     if (_hasCVC == 1) then {
         _ret = true;
     };

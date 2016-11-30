@@ -41,7 +41,7 @@ private _timeToSend = diag_tickTime;
 };*/
 
 if (isClass _eventClass) then {
-    _priority = getNumber(_eventClass >> "priority");
+    _priority = getNumber (_eventClass >> "priority");
     if (_radioId in GVAR(forceHighPriorityIds)) then {
         _priority = ACRE_DATA_NETPRIORITY_HIGH;
     };
@@ -62,7 +62,7 @@ if (isClass _eventClass) then {
 };
 TRACE_1("EVENT PRIORITY",_priority);
 if (_priority > ACRE_DATA_NETPRIORITY_NONE) then {
-    private _hasUniqueDataKey = getNumber(_eventClass >> "uniqueKey");
+    private _hasUniqueDataKey = getNumber (_eventClass >> "uniqueKey");
     private _found = false;
     {
         private _qEvent = _x;

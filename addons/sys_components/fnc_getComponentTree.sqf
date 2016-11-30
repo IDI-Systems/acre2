@@ -35,7 +35,7 @@ private _searchFunction = {
                     private _connectedComponent = _connector select 0;
                     private _attributes = _connector select 2;
                     private _componentClass = configFile >> "CfgAcreComponents" >> _connectedComponent;
-                    private _componentSimple = getNumber(_componentClass >> "simple");
+                    private _componentSimple = getNumber (_componentClass >> "simple");
                     if (_componentSimple == 1) then {
                         PUSH(_returnTree, [ARR_3(_connectedComponent,_connectorIndex,[])]);
                     } else {

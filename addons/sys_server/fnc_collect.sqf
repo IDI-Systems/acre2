@@ -19,7 +19,7 @@
 params ["_radioId"];
 
 private _baseRadio = configName (inheritsFrom (configFile >> "CfgWeapons" >> _radioId));
-private _idNumber = getNumber(configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
+private _idNumber = getNumber (configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
 private _keyIndex = (GVAR(radioIdMap) select 0) find _baseRadio;
 if (_keyIndex != -1) then {
     private _newIds = ((GVAR(radioIdMap) select 1) select _keyIndex) - [_idNumber];

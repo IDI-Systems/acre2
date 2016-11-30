@@ -89,7 +89,7 @@ if (GVAR(doFullSearch)) then {
 
                 {
                     private _item = _x;
-                    if (getNumber(_cfgWeapons >> _item >> "acre_isUnique") == 1) then {
+                    if (getNumber (_cfgWeapons >> _item >> "acre_isUnique") == 1) then {
                         if (_idList pushBackUnique _item != -1) then { // Add to ID list and this condition returns true if it was not present in the _idList.
                             HASH_SET(_idTable, _item, [ARR_2(_mainObject,_object)]);
                         } else { // Already present in _idList

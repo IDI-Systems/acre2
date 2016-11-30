@@ -6,7 +6,7 @@ private _components = configFile >> "CfgAcreComponents";
 for "_i" from 0 to (count _components)-1 do {
     private _component = _components select _i;
     if (isClass _component) then {
-        private _type = getNumber(_component >> "type");
+        private _type = getNumber (_component >> "type");
         if (_type == ACRE_COMPONENT_ANTENNA) then {
             private _binaryGainFile = getText(_component >> "binaryGainFile");
             if (_binaryGainFile != "") then {
