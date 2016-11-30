@@ -45,7 +45,7 @@ unsigned getChunkInfo(std::vector<std::string>& names, std::vector<size_t>& size
   end = &png.back() + 1;
   begin = chunk = &png.front() + 8;
 
-  while(chunk + 8 < end && chunk >= begin)
+  while (chunk + 8 < end && chunk >= begin)
   {
     char type[5];
     lodepng_chunk_type(type, chunk);
@@ -73,7 +73,7 @@ unsigned getChunks(std::vector<std::string> names[3],
 
   int location = 0;
 
-  while(chunk + 8 < end && chunk >= begin)
+  while (chunk + 8 < end && chunk >= begin)
   {
     char type[5];
     lodepng_chunk_type(type, chunk);
@@ -118,7 +118,7 @@ unsigned insertChunks(std::vector<unsigned char>& png,
   long l1 = 0; //location 1: PLTE-l1-IDAT (or IHDR-l0-l1-IDAT)
   long l2 = 0; //location 2: IDAT-l2-IEND
 
-  while(chunk + 8 < end && chunk >= begin)
+  while (chunk + 8 < end && chunk >= begin)
   {
     char type[5];
     lodepng_chunk_type(type, chunk);
@@ -147,11 +147,11 @@ unsigned insertChunks(std::vector<unsigned char>& png,
 
   std::vector<unsigned char> result;
   result.insert(result.end(), png.begin(), png.begin() + l0);
-  for(size_t i = 0; i < chunks[0].size(); i++) result.insert(result.end(), chunks[0][i].begin(), chunks[0][i].end());
+  for (size_t i = 0; i < chunks[0].size(); i++) result.insert(result.end(), chunks[0][i].begin(), chunks[0][i].end());
   result.insert(result.end(), png.begin() + l0, png.begin() + l1);
-  for(size_t i = 0; i < chunks[1].size(); i++) result.insert(result.end(), chunks[1][i].begin(), chunks[1][i].end());
+  for (size_t i = 0; i < chunks[1].size(); i++) result.insert(result.end(), chunks[1][i].begin(), chunks[1][i].end());
   result.insert(result.end(), png.begin() + l1, png.begin() + l2);
-  for(size_t i = 0; i < chunks[2].size(); i++) result.insert(result.end(), chunks[2][i].begin(), chunks[2][i].end());
+  for (size_t i = 0; i < chunks[2].size(); i++) result.insert(result.end(), chunks[2][i].begin(), chunks[2][i].end());
   result.insert(result.end(), png.begin() + l2, png.end());
 
   png = result;
@@ -176,7 +176,7 @@ unsigned getFilterTypesInterlaced(std::vector<std::vector<unsigned char> >& filt
 
   std::vector<unsigned char> zdata;
 
-  while(chunk + 8 < end && chunk >= begin)
+  while (chunk + 8 < end && chunk >= begin)
   {
     char type[5];
     lodepng_chunk_type(type, chunk);
@@ -191,7 +191,7 @@ unsigned getFilterTypesInterlaced(std::vector<std::vector<unsigned char> >& filt
         return 1;
       }
 
-      for(unsigned i = 0; i < clength; i++)
+      for (unsigned i = 0; i < clength; i++)
       {
         zdata.push_back(cdata[i]);
       }
@@ -215,7 +215,7 @@ unsigned getFilterTypesInterlaced(std::vector<std::vector<unsigned char> >& filt
     //A line is 1 filter byte + all pixels
     size_t linebytes = 1 + lodepng_get_raw_size(w, 1, &state.info_png.color);
 
-    for(size_t i = 0; i < data.size(); i += linebytes)
+    for (size_t i = 0; i < data.size(); i += linebytes)
     {
       filterTypes[0].push_back(data[i]);
     }
@@ -229,13 +229,13 @@ unsigned getFilterTypesInterlaced(std::vector<std::vector<unsigned char> >& filt
     static const unsigned ADAM7_DX[7] = { 8, 8, 4, 4, 2, 2, 1 }; /*x delta values*/
     static const unsigned ADAM7_DY[7] = { 8, 8, 8, 4, 4, 2, 2 }; /*y delta values*/
     size_t pos = 0;
-    for(size_t j = 0; j < 7; j++)
+    for (size_t j = 0; j < 7; j++)
     {
       unsigned w2 = (w - ADAM7_IX[j] + ADAM7_DX[j] - 1) / ADAM7_DX[j];
       unsigned h2 = (h - ADAM7_IY[j] + ADAM7_DY[j] - 1) / ADAM7_DY[j];
       if (ADAM7_IX[j] >= w || ADAM7_IY[j] >= h) w2 = h2 = 0;
       size_t linebytes = 1 + lodepng_get_raw_size(w2, 1, &state.info_png.color);
-      for(size_t i = 0; i < h2; i++)
+      for (size_t i = 0; i < h2; i++)
       {
         filterTypes[j].push_back(data[pos]);
         pos += linebytes;
@@ -267,7 +267,7 @@ unsigned getFilterTypes(std::vector<unsigned char>& filterTypes, const std::vect
     filter corresponding the closest to what it would be for non-interlaced
     image.
     */
-    for(size_t i = 0; i < h; i++)
+    for (size_t i = 0; i < h; i++)
     {
       filterTypes.push_back(i % 2 == 0 ? passes[5][i / 2] : passes[6][i / 2]);
     }
@@ -312,7 +312,7 @@ struct ExtractZlib // Zlib decompression and information extraction
   unsigned long readBitsFromStream(size_t& bitp, const unsigned char* bits, size_t nbits)
   {
     unsigned long result = 0;
-    for(size_t i = 0; i < nbits; i++) result += (readBitFromStream(bitp, bits)) << i;
+    for (size_t i = 0; i < nbits; i++) result += (readBitFromStream(bitp, bits)) << i;
     return result;
   }
 
@@ -323,16 +323,16 @@ struct ExtractZlib // Zlib decompression and information extraction
       unsigned long numcodes = (unsigned long)(bitlen.size()), treepos = 0, nodefilled = 0;
       std::vector<unsigned long> tree1d(numcodes), blcount(maxbitlen + 1, 0), nextcode(maxbitlen + 1, 0);
       //count number of instances of each code length
-      for(unsigned long bits = 0; bits < numcodes; bits++) blcount[bitlen[bits]]++;
-      for(unsigned long bits = 1; bits <= maxbitlen; bits++)
+      for (unsigned long bits = 0; bits < numcodes; bits++) blcount[bitlen[bits]]++;
+      for (unsigned long bits = 1; bits <= maxbitlen; bits++)
       {
         nextcode[bits] = (nextcode[bits - 1] + blcount[bits - 1]) << 1;
       }
       //generate all the codes
-      for(unsigned long n = 0; n < numcodes; n++) if (bitlen[n] != 0) tree1d[n] = nextcode[bitlen[n]]++;
+      for (unsigned long n = 0; n < numcodes; n++) if (bitlen[n] != 0) tree1d[n] = nextcode[bitlen[n]]++;
       tree2d.clear(); tree2d.resize(numcodes * 2, 32767); //32767 here means the tree2d isn't filled there yet
-      for(unsigned long n = 0; n < numcodes; n++) //the codes
-      for(unsigned long i = 0; i < bitlen[n]; i++) //the bits for this code
+      for (unsigned long n = 0; n < numcodes; n++) //the codes
+      for (unsigned long i = 0; i < bitlen[n]; i++) //the bits for this code
       {
         unsigned long bit = (tree1d[n] >> (bitlen[n] - i - 1)) & 1;
         if (treepos > numcodes - 2) return 55;
@@ -373,7 +373,7 @@ struct ExtractZlib // Zlib decompression and information extraction
     size_t bp = 0, pos = 0; //bit pointer and byte pointer
     error = 0;
     unsigned long BFINAL = 0;
-    while(!BFINAL && !error)
+    while (!BFINAL && !error)
     {
       size_t uncomprblockstart = pos;
       size_t bpstart = bp;
@@ -394,8 +394,8 @@ struct ExtractZlib // Zlib decompression and information extraction
   void generateFixedTrees(HuffmanTree& tree, HuffmanTree& treeD) //get the tree of a deflated block with fixed tree
   {
     std::vector<unsigned long> bitlen(288, 8), bitlenD(32, 5);;
-    for(size_t i = 144; i <= 255; i++) bitlen[i] = 9;
-    for(size_t i = 256; i <= 279; i++) bitlen[i] = 7;
+    for (size_t i = 144; i <= 255; i++) bitlen[i] = 9;
+    for (size_t i = 256; i <= 279; i++) bitlen[i] = 7;
     tree.makeFromLengths(bitlen, 15);
     treeD.makeFromLengths(bitlenD, 15);
   }
@@ -406,7 +406,7 @@ struct ExtractZlib // Zlib decompression and information extraction
   {
     //decode a single symbol from given list of bits with given code tree. return value is the symbol
     bool decoded; unsigned long ct;
-    for(size_t treepos = 0;;)
+    for (size_t treepos = 0;;)
     {
       if ((bp & 0x07) == 0 && (bp >> 3) > inlength) { error = 10; return 0; } //error: end reached without endcode
       error = tree.decode(decoded, ct, treepos, readBitFromStream(bp, in));
@@ -429,12 +429,12 @@ struct ExtractZlib // Zlib decompression and information extraction
     zlibinfo->back().hdist = HDIST - 1;
     zlibinfo->back().hclen = HCLEN - 4;
     std::vector<unsigned long> codelengthcode(19); //lengths of tree to decode the lengths of the dynamic tree
-    for(size_t i = 0; i < 19; i++) codelengthcode[CLCL[i]] = (i < HCLEN) ? readBitsFromStream(bp, in, 3) : 0;
+    for (size_t i = 0; i < 19; i++) codelengthcode[CLCL[i]] = (i < HCLEN) ? readBitsFromStream(bp, in, 3) : 0;
     //code length code lengths
-    for(size_t i = 0; i < codelengthcode.size(); i++) zlibinfo->back().clcl.push_back(codelengthcode[i]);
+    for (size_t i = 0; i < codelengthcode.size(); i++) zlibinfo->back().clcl.push_back(codelengthcode[i]);
     error = codelengthcodetree.makeFromLengths(codelengthcode, 7); if (error) return;
     size_t i = 0, replength;
-    while(i < HLIT + HDIST)
+    while (i < HLIT + HDIST)
     {
       unsigned long code = huffmanDecodeSymbol(in, bp, codelengthcodetree, inlength); if (error) return;
       zlibinfo->back().treecodes.push_back(code); //tree symbol code
@@ -446,7 +446,7 @@ struct ExtractZlib // Zlib decompression and information extraction
         unsigned long value; //set value to the previous code
         if ((i - 1) < HLIT) value = bitlen[i - 1];
         else value = bitlenD[i - HLIT - 1];
-        for(size_t n = 0; n < replength; n++) //repeat this value in the next lengths
+        for (size_t n = 0; n < replength; n++) //repeat this value in the next lengths
         {
           if (i >= HLIT + HDIST) { error = 13; return; } //error: i is larger than the amount of codes
           if (i < HLIT) bitlen[i++] = value; else bitlenD[i++ - HLIT] = value;
@@ -457,7 +457,7 @@ struct ExtractZlib // Zlib decompression and information extraction
         if (bp >> 3 >= inlength) { error = 50; return; } //error, bit pointer jumps past memory
         replength = 3 + readBitsFromStream(bp, in, 3);
         zlibinfo->back().treecodes.push_back(replength); //tree symbol code repetitions
-        for(size_t n = 0; n < replength; n++) //repeat this value in the next lengths
+        for (size_t n = 0; n < replength; n++) //repeat this value in the next lengths
         {
           if (i >= HLIT + HDIST) { error = 14; return; } //error: i is larger than the amount of codes
           if (i < HLIT) bitlen[i++] = 0; else bitlenD[i++ - HLIT] = 0;
@@ -468,7 +468,7 @@ struct ExtractZlib // Zlib decompression and information extraction
         if (bp >> 3 >= inlength) { error = 50; return; } //error, bit pointer jumps past memory
         replength = 11 + readBitsFromStream(bp, in, 7);
         zlibinfo->back().treecodes.push_back(replength); //tree symbol code repetitions
-        for(size_t n = 0; n < replength; n++) //repeat this value in the next lengths
+        for (size_t n = 0; n < replength; n++) //repeat this value in the next lengths
         {
           if (i >= HLIT + HDIST) { error = 15; return; } //error: i is larger than the amount of codes
           if (i < HLIT) bitlen[i++] = 0; else bitlenD[i++ - HLIT] = 0;
@@ -483,9 +483,9 @@ struct ExtractZlib // Zlib decompression and information extraction
     if (error) return;
     zlibinfo->back().treebits = bp - bpstart;
     //lit/len/end symbol lengths
-    for(size_t j = 0; j < bitlen.size(); j++) zlibinfo->back().litlenlengths.push_back(bitlen[j]);
+    for (size_t j = 0; j < bitlen.size(); j++) zlibinfo->back().litlenlengths.push_back(bitlen[j]);
     //dist lengths
-    for(size_t j = 0; j < bitlenD.size(); j++) zlibinfo->back().distlengths.push_back(bitlenD[j]);
+    for (size_t j = 0; j < bitlenD.size(); j++) zlibinfo->back().distlengths.push_back(bitlenD[j]);
   }
 
   void inflateHuffmanBlock(std::vector<unsigned char>& out,
@@ -494,7 +494,7 @@ struct ExtractZlib // Zlib decompression and information extraction
     size_t numcodes = 0, numlit = 0, numlen = 0; //for logging
     if (btype == 1) { generateFixedTrees(codetree, codetreeD); }
     else if (btype == 2) { getTreeInflateDynamic(codetree, codetreeD, in, bp, inlength); if (error) return; }
-    for(;;)
+    for (;;)
     {
       unsigned long code = huffmanDecodeSymbol(in, bp, codetree, inlength); if (error) return;
       numcodes++;
@@ -523,7 +523,7 @@ struct ExtractZlib // Zlib decompression and information extraction
         if ((bp >> 3) >= inlength) { error = 51; return; } //error, bit pointer will jump past memory
         dist += readBitsFromStream(bp, in, numextrabitsD);
         size_t start = pos, back = start - dist; //backwards
-        for(size_t i = 0; i < length; i++)
+        for (size_t i = 0; i < length; i++)
         {
           out.push_back(out[back++]);
           pos++;
@@ -544,13 +544,13 @@ struct ExtractZlib // Zlib decompression and information extraction
   void inflateNoCompression(std::vector<unsigned char>& out,
                             const unsigned char* in, size_t& bp, size_t& pos, size_t inlength)
   {
-    while((bp & 0x7) != 0) bp++; //go to first boundary of byte
+    while ((bp & 0x7) != 0) bp++; //go to first boundary of byte
     size_t p = bp / 8;
     if (p >= inlength - 4) { error = 52; return; } //error, bit pointer will jump past memory
     unsigned long LEN = in[p] + 256u * in[p + 1], NLEN = in[p + 2] + 256u * in[p + 3]; p += 4;
     if (LEN + NLEN != 65535) { error = 21; return; } //error: NLEN is not one's complement of LEN
     if (p + LEN > inlength) { error = 23; return; } //error: reading outside of in buffer
-    for(unsigned long n = 0; n < LEN; n++)
+    for (unsigned long n = 0; n < LEN; n++)
     {
       out.push_back(in[p++]); //read LEN bytes of literal data
       pos++;
@@ -588,7 +588,7 @@ struct ExtractPNG //PNG decoding and information extraction
     bool IEND = false;
     //loop through the chunks, ignoring unknown chunks and stopping at IEND chunk.
     //IDAT data is put at the start of the in buffer
-    while(!IEND)
+    while (!IEND)
     {
       //error: size of the in buffer too small to contain next chunk
       if (pos + 8 >= size) { error = 30; return; }
@@ -639,7 +639,7 @@ struct ExtractPNG //PNG decoding and information extraction
   unsigned long readBitsFromReversedStream(size_t& bitp, const unsigned char* bits, unsigned long nbits)
   {
     unsigned long result = 0;
-    for(size_t i = nbits - 1; i < nbits; i--) result += ((readBitFromReversedStream(bitp, bits)) << i);
+    for (size_t i = nbits - 1; i < nbits; i--) result += ((readBitFromReversedStream(bitp, bits)) << i);
     return result;
   }
 

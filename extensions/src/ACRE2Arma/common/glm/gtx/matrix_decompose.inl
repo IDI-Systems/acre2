@@ -72,15 +72,15 @@ namespace glm
         if (LocalMatrix[3][3] == static_cast<T>(0))
             return false;
 
-        for(length_t i = 0; i < 4; ++i)
-        for(length_t j = 0; j < 4; ++j)
+        for (length_t i = 0; i < 4; ++i)
+        for (length_t j = 0; j < 4; ++j)
             LocalMatrix[i][j] /= LocalMatrix[3][3];
 
         // perspectiveMatrix is used to solve for perspective, but it also provides
         // an easy way to test for singularity of the upper 3x3 component.
         tmat4x4<T, P> PerspectiveMatrix(LocalMatrix);
 
-        for(length_t i = 0; i < 3; i++)
+        for (length_t i = 0; i < 3; i++)
             PerspectiveMatrix[i][3] = 0;
         PerspectiveMatrix[3][3] = 1;
 
@@ -124,8 +124,8 @@ namespace glm
         tvec3<T, P> Row[3], Pdum3;
 
         // Now get scale and shear.
-        for(length_t i = 0; i < 3; ++i)
-            for(int j = 0; j < 3; ++j)
+        for (length_t i = 0; i < 3; ++i)
+            for (int j = 0; j < 3; ++j)
                 Row[i][j] = LocalMatrix[i][j];
 
         // Compute X scale factor and normalize first row.
@@ -160,7 +160,7 @@ namespace glm
         Pdum3 = cross(Row[1], Row[2]); // v3Cross(row[1], row[2], Pdum3);
         if (dot(Row[0], Pdum3) < 0)
         {
-            for(length_t i = 0; i < 3; i++)
+            for (length_t i = 0; i < 3; i++)
             {
                 Scale.x *= static_cast<T>(-1);
                 Row[i] *= static_cast<T>(-1);

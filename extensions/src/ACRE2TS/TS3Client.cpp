@@ -88,7 +88,7 @@ ACRE_RESULT CTS3Client::exPersistVersion( void ) {
     ts3Functions.printMessageToCurrentTab(ACRE_VERSION_METADATA);
 
     run = delta = clock() / CLOCKS_PER_SEC;
-    while(this->getState() == ACRE_STATE_RUNNING && CEngine::getInstance()->getExternalServer()) {
+    while (this->getState() == ACRE_STATE_RUNNING && CEngine::getInstance()->getExternalServer()) {
         
         delta = (clock() / CLOCKS_PER_SEC) - run;
         if (delta > (PERSIST_VERSION_TIMER / 1000) ) {
@@ -398,7 +398,7 @@ ACRE_RESULT CTS3Client::unMuteAll( void ) {
             /* Disable this method
             res = ts3Functions.getClientList(ts3Functions.getCurrentServerConnectionHandlerID(), &clientList);
             if (res == ERROR_ok) {
-                for(x=0;clientList[x]!=0 && total_retries < 20;x++) {
+                for (x=0;clientList[x]!=0 && total_retries < 20;x++) {
                     anyID tempList[2];
                     uint32_t tries_on_client;
 

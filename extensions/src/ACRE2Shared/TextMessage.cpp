@@ -24,7 +24,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
     }
 
     // Check to make sure the entire chunk of data is a NULL terminated ascii string
-    for(x=0;x<len;x++) {
+    for (x=0;x<len;x++) {
         if (!__isascii(value[x]) && value[x] != 0x00) {
             this->m_IsValid = FALSE;
             LOG("INVALID PACKET DETECTED l:%d", len);
@@ -67,7 +67,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
 
     std::string t( this->m_Data->substr(this->m_Data->find_first_of(":")+1 , (this->m_Data->length() - this->m_Data->find_first_of(":")+1) ).c_str() );
     int pParamCount = 0;
-    for(x = 0;x<TEXTMESSAGE_MAX_PARAMETER_COUNT;x++) {
+    for (x = 0;x<TEXTMESSAGE_MAX_PARAMETER_COUNT;x++) {
         if (t.length() < 1)
             break;
         if (t.length() > 1 && t.find("<null>") == std::string::npos && t.find(",") != std::string::npos ) {
@@ -144,7 +144,7 @@ CTextMessage::~CTextMessage(void)
 {
     unsigned int x;
 
-    for(x=0;x<TEXTMESSAGE_MAX_PARAMETER_COUNT;x++) {
+    for (x=0;x<TEXTMESSAGE_MAX_PARAMETER_COUNT;x++) {
         if (this->m_Parameters[x])
             delete this->m_Parameters[x];
     }
@@ -228,7 +228,7 @@ IMessage *CTextMessage::createNewMessage(char *procedureName, ... ) {
     
     va_start(va, procedureName);
     ptr = va_arg( va, char * );
-    while(ptr != NULL) {
+    while (ptr != NULL) {
         strcat_s(buffer, TEXTMESSAGE_BUFSIZE, ptr);
         strcat_s(buffer, TEXTMESSAGE_BUFSIZE, ",");
         ptr = va_arg( va, char * );    

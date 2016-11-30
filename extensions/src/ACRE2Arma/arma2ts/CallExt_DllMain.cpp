@@ -292,7 +292,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             }
             if (!writeConnected) {
                 tries = 0;
-                while(tries < 1) {
+                while (tries < 1) {
                     writeHandle = CreateFileA( 
                         toPipeName.c_str(),        // pipe name 
                         GENERIC_WRITE | GENERIC_READ,

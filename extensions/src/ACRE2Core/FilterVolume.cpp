@@ -19,7 +19,7 @@ ACRE_RESULT CFilterVolume::process(short* samples, int sampleCount, int channels
             dif = -(previousVolume - volume);
         }
         int tempVolume;
-        for(int i = 0; i < sampleCount; ++i) {
+        for (int i = 0; i < sampleCount; ++i) {
             v = (previousVolume + (dif*(((float)i/(float)sampleCount))));
             //LOG("vol: %f %f %f %d=%f", previousVolume, volume, dif, i, v);
             tempVolume = (int)(samples[i] * v);

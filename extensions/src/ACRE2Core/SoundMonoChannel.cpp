@@ -7,7 +7,7 @@
 #include "Log.h"
 
 void CSoundChannelMono::init( int length, bool singleShot ) {
-    for(int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 8; ++i) {
         this->effects[i] = NULL;
         this->mixdownEffects[i] = NULL;
     }
@@ -36,7 +36,7 @@ CSoundChannelMono::~CSoundChannelMono() {
         delete this->buffer;
         this->buffer = NULL;
     }
-    for(int i = 0; i < 8; ++i) {
+    for (int i = 0; i < 8; ++i) {
         if (effects[i])
             delete effects[i];
         if (mixdownEffects[i])

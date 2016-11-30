@@ -41,7 +41,7 @@ namespace detail
     {
         volatile float f = 1e10;
 
-        for(int i = 0; i < 10; ++i)    
+        for (int i = 0; i < 10; ++i)    
             f *= f; // this will overflow before the for loop terminates
         return f;
     }
@@ -88,7 +88,7 @@ namespace detail
                 // Denormalized number -- renormalize it
                 //
 
-                while(!(m & 0x00000400))
+                while (!(m & 0x00000400))
                 {
                     m <<= 1;
                     e -=  1;

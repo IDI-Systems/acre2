@@ -221,8 +221,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator+=
     typename base<vT, cT, rT, pT>::size_type stop_col = x.col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = x.row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         this->value[j][i] += x;
 
     return *this;
@@ -237,8 +237,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator+=
     typename base<vT, cT, rT, pT>::size_type stop_col = x.col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = x.row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         this->value[j][i] += x[j][i];
 
     return *this;
@@ -253,8 +253,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator-=
     typename base<vT, cT, rT, pT>::size_type stop_col = x.col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = x.row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         this->value[j][i] -= x;
 
     return *this;
@@ -269,8 +269,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator-=
     typename base<vT, cT, rT, pT>::size_type stop_col = x.col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = x.row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         this->value[j][i] -= x[j][i];
 
     return *this;
@@ -285,8 +285,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator*=
     typename base<vT, cT, rT, pT>::size_type stop_col = x.col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = x.row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         this->value[j][i] *= x;
 
     return *this;
@@ -301,8 +301,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator*=
     typename base<vT, cT, rT, pT>::size_type stop_col = x.col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = x.row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         this->value[j][i] *= x[j][i];
 
     return *this;
@@ -317,8 +317,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator/=
     typename base<vT, cT, rT, pT>::size_type stop_col = x.col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = x.row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         this->value[j][i] /= x;
 
     return *this;
@@ -333,8 +333,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator/=
     typename base<vT, cT, rT, pT>::size_type stop_col = x.col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = x.row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         this->value[j][i] /= x[j][i];
 
     return *this;
@@ -346,8 +346,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator++ ()
     typename base<vT, cT, rT, pT>::size_type stop_col = col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         ++this->value[j][i];
 
     return *this;
@@ -359,8 +359,8 @@ typename base<vT, cT, rT, pT>::class_type& base<vT, cT, rT, pT>::operator-- ()
     typename base<vT, cT, rT, pT>::size_type stop_col = col_size();
     typename base<vT, cT, rT, pT>::size_type stop_row = row_size();
 
-    for(typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
-    for(typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
+    for (typename base<vT, cT, rT, pT>::size_type j = 0; j < stop_col; ++j)
+    for (typename base<vT, cT, rT, pT>::size_type i = 0; i < stop_row; ++i)
         --this->value[j][i];
 
     return *this;

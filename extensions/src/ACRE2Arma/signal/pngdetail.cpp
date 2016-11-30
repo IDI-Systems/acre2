@@ -124,12 +124,12 @@ void displayPNGInfo(const LodePNGInfo& info, const Options& options)
   }
   std::cout << "Interlace method: " << info.interlace_method << std::endl;
   if (options.show_extra_png_info) std::cout << "Texts: " << info.text_num << std::endl;
-  for(size_t i = 0; i < info.text_num; i++)
+  for (size_t i = 0; i < info.text_num; i++)
   {
     std::cout << "Text: " << info.text_keys[i] << ": " << info.text_strings[i] << std::endl;
   }
   if (options.show_extra_png_info) std::cout << "International texts: " << info.itext_num << std::endl;
-  for(size_t i = 0; i < info.itext_num; i++)
+  for (size_t i = 0; i < info.itext_num; i++)
   {
     std::cout << "Text: "
               << info.itext_keys[i] << ", "
@@ -170,17 +170,17 @@ void displayChunkNames(const std::vector<unsigned char>& buffer, const Options& 
   if (options.show_chunks2)
   {
     std::cout << "Chunk types: ";
-    for(size_t i = 0; i < names.size(); i++) std::cout << names[i] << " ";
+    for (size_t i = 0; i < names.size(); i++) std::cout << names[i] << " ";
     std::cout << std::endl;
     std::cout << "Chunk sizes: ";
-    for(size_t i = 0; i < sizes.size(); i++) std::cout << sizes[i] << " ";
+    for (size_t i = 0; i < sizes.size(); i++) std::cout << sizes[i] << " ";
     std::cout << std::endl;
   }
   else
   {
     std::cout << "Chunks (type: lengths):";
     std::string last_type;
-    for(size_t i = 0; i < names.size(); i++)
+    for (size_t i = 0; i < names.size(); i++)
     {
       if (last_type != names[i])
       {
@@ -212,12 +212,12 @@ void displayAsciiArt(const std::vector<unsigned char>& image, unsigned w, unsign
     if (h2 > (w2 * 2)) h2 = w2 * 2; //avoid too large output
 
     std::cout << '+';
-    for(unsigned x = 0; x < w2; x++) std::cout << '-';
+    for (unsigned x = 0; x < w2; x++) std::cout << '-';
     std::cout << '+' << std::endl;
-    for(unsigned y = 0; y < h2; y++)
+    for (unsigned y = 0; y < h2; y++)
     {
       std::cout << "|";
-      for(unsigned x = 0; x < w2; x++)
+      for (unsigned x = 0; x < w2; x++)
       {
         unsigned x2 = x * w / w2;
         unsigned y2 = y * h / h2;
@@ -250,7 +250,7 @@ void displayAsciiArt(const std::vector<unsigned char>& image, unsigned w, unsign
       std::cout << std::endl;
     }
     std::cout << '+';
-    for(unsigned x = 0; x < w2; x++) std::cout << '-';
+    for (unsigned x = 0; x < w2; x++) std::cout << '-';
     std::cout << '+' << std::endl;
   }
 }
@@ -266,11 +266,11 @@ void displayColorsHex(const std::vector<unsigned char>& image, unsigned w, unsig
   {
     std::cout << "Colors (CSS RGBA hex format):" << std::endl;
 
-    for(unsigned y = 0; y < h; y++)
+    for (unsigned y = 0; y < h; y++)
     {
       std::cout.flags(flags); //print line numbers in hex or dec whatever it originally was
       std::cout << y << ":";
-      for(unsigned x = 0; x < w; x++)
+      for (unsigned x = 0; x < w; x++)
       {
         size_t index = y * w * 8 + x * 8;
         if (sixteen)
@@ -314,10 +314,10 @@ void displayFilterTypes(const std::vector<unsigned char>& buffer)
   if (types.size() == 7)
   {
     std::cout << "Filter types (Adam7 interlaced):" << std::endl;
-    for(int j = 0; j < 7; j++)
+    for (int j = 0; j < 7; j++)
     {
       std::cout << " Pass " << (j + 1) << ": ";
-      for(size_t i = 0; i < types[j].size(); i++)
+      for (size_t i = 0; i < types[j].size(); i++)
       {
         std::cout << (int)(types[j][i]);
       }
@@ -327,7 +327,7 @@ void displayFilterTypes(const std::vector<unsigned char>& buffer)
   else
   {
     std::cout << "Filter types: ";
-    for(size_t i = 0; i < types[0].size(); i++)
+    for (size_t i = 0; i < types[0].size(); i++)
     {
       std::cout << (int)(types[0][i]);
     }
@@ -350,7 +350,7 @@ void displayPalette(const std::vector<unsigned char>& buffer)
   std::cout << "Palette colors: ";
   std::ios_base::fmtflags flags = std::cout.flags();
   std::cout << std::hex << std::setfill('0');
-  for(size_t i = 0; i < state.info_png.color.palettesize; i++)
+  for (size_t i = 0; i < state.info_png.color.palettesize; i++)
   {
     unsigned char* p = &state.info_png.color.palette[i * 4];
     std::cout << "#" << std::setw(2) << (int)p[0] << std::setw(2) << (int)p[1] << std::setw(2) << (int)p[2] << std::setw(2) << (int)p[3] << " ";
@@ -364,7 +364,7 @@ void displayPalette(const std::vector<unsigned char>& buffer)
     std::vector<size_t> count(256, 0);
     size_t outofbounds = 0;
 
-    for(size_t i = 0; i < w * h; i++)
+    for (size_t i = 0; i < w * h; i++)
     {
       int value = lodepng::getPaletteValue(&out[0], i, state.info_raw.bitdepth);
       count[value]++;
@@ -372,7 +372,7 @@ void displayPalette(const std::vector<unsigned char>& buffer)
     }
 
     std::cout << "Palette count: ";
-    for(size_t i = 0; i < state.info_raw.palettesize; i++)
+    for (size_t i = 0; i < state.info_raw.palettesize; i++)
     {
       std::cout << count[i] << " ";
     }
@@ -397,7 +397,7 @@ void displayPalettePixels(const std::vector<unsigned char>& buffer)
   if (state.info_png.color.colortype == LCT_PALETTE)
   {
     std::cout << "Pixel palette indices:" << std::endl;
-    for(size_t i = 0; i < w * h; i++)
+    for (size_t i = 0; i < w * h; i++)
     {
       int value = lodepng::getPaletteValue(&out[0], i, state.info_raw.bitdepth);
       std::cout << value << ", ";
@@ -420,7 +420,7 @@ void printZlibInfo(const std::vector<unsigned char>& in, const Options& options)
     size_t uncompressed = 0;
     std::vector<size_t> boundaries_compressed;
     std::vector<size_t> boundaries_uncompressed;
-    for(size_t i = 0; i < zlibinfo.size(); i++)
+    for (size_t i = 0; i < zlibinfo.size(); i++)
     {
       compressed += zlibinfo[i].compressedbits / 8;
       uncompressed += zlibinfo[i].uncompressedbytes;
@@ -434,19 +434,19 @@ void printZlibInfo(const std::vector<unsigned char>& in, const Options& options)
     if (zlibinfo.size() > 1)
     {
       std::cout << "Block sizes (uncompressed): ";
-      for(size_t i = 0; i < zlibinfo.size(); i++)
+      for (size_t i = 0; i < zlibinfo.size(); i++)
           std::cout << zlibinfo[i].uncompressedbytes << " ";
       std::cout << std::endl;
       std::cout << "Block sizes (compressed): ";
-      for(size_t i = 0; i < zlibinfo.size(); i++)
+      for (size_t i = 0; i < zlibinfo.size(); i++)
           std::cout << (zlibinfo[i].compressedbits / 8) << " ";
       std::cout << std::endl;
       std::cout << "Block boundaries (uncompressed): ";
-      for(size_t i = 0; i + 1 < boundaries_uncompressed.size(); i++)
+      for (size_t i = 0; i + 1 < boundaries_uncompressed.size(); i++)
           std::cout << boundaries_uncompressed[i] << " ";
       std::cout << std::endl;
       std::cout << "Block boundaries (compressed): ";
-      for(size_t i = 0; i + 1 < boundaries_compressed.size(); i++)
+      for (size_t i = 0; i + 1 < boundaries_compressed.size(); i++)
           std::cout << boundaries_compressed[i] << " ";
       std::cout << std::endl;
     }
@@ -454,7 +454,7 @@ void printZlibInfo(const std::vector<unsigned char>& in, const Options& options)
 
   if (options.zlib_blocks)
   {
-    for(size_t i = 0; i < zlibinfo.size(); i++)
+    for (size_t i = 0; i < zlibinfo.size(); i++)
     {
       const lodepng::ZlibBlockInfo& info = zlibinfo[i];
 
@@ -479,11 +479,11 @@ void printZlibInfo(const std::vector<unsigned char>& in, const Options& options)
         std::cout << " HDIST: " << info.hdist << std::endl;
         std::cout << " HCLEN: " << info.hclen << std::endl;
         std::cout << std::hex;
-        std::cout << " code length code lengths: "; for(size_t j = 0; j < 19; j++) std::cout << info.clcl[j]; std::cout << std::endl;
+        std::cout << " code length code lengths: "; for (size_t j = 0; j < 19; j++) std::cout << info.clcl[j]; std::cout << std::endl;
         if (!options.use_hex) std::cout << std::dec;
         if (options.zlib_full)
         {
-          for(size_t j = 0; j < info.treecodes.size(); j++)
+          for (size_t j = 0; j < info.treecodes.size(); j++)
           {
             int code = info.treecodes[j];
             if (code < 17)
@@ -500,11 +500,11 @@ void printZlibInfo(const std::vector<unsigned char>& in, const Options& options)
         }
 
         std::cout << std::hex;
-        std::cout << " lit code lengths 0-127  : "; for(size_t j = 0; j < 128; j++) std::cout << info.litlenlengths[j]; std::cout << std::endl;
-        std::cout << " lit code lengths 128-255: "; for(size_t j = 128; j < 256; j++) std::cout << info.litlenlengths[j]; std::cout << std::endl;
+        std::cout << " lit code lengths 0-127  : "; for (size_t j = 0; j < 128; j++) std::cout << info.litlenlengths[j]; std::cout << std::endl;
+        std::cout << " lit code lengths 128-255: "; for (size_t j = 128; j < 256; j++) std::cout << info.litlenlengths[j]; std::cout << std::endl;
         std::cout << " end code length         : "; std::cout << info.litlenlengths[256]; std::cout << std::endl;
-        std::cout << " len code lengths        : "; for(size_t j = 257; j < 288; j++) std::cout << info.litlenlengths[j]; std::cout << std::endl;
-        std::cout << " dist code lengths       : "; for(size_t j = 0; j < 32; j++) std::cout << info.distlengths[j]; std::cout << std::endl;
+        std::cout << " len code lengths        : "; for (size_t j = 257; j < 288; j++) std::cout << info.litlenlengths[j]; std::cout << std::endl;
+        std::cout << " dist code lengths       : "; for (size_t j = 0; j < 32; j++) std::cout << info.distlengths[j]; std::cout << std::endl;
         if (!options.use_hex) std::cout << std::dec;
       }
       
@@ -515,7 +515,7 @@ void printZlibInfo(const std::vector<unsigned char>& in, const Options& options)
 
         if (options.zlib_full)
         {
-          for(size_t j = 0; j < info.lz77_lcode.size(); j++)
+          for (size_t j = 0; j < info.lz77_lcode.size(); j++)
           {
             int symbol = info.lz77_lcode[j];
             if (symbol == 256)
@@ -537,7 +537,7 @@ void printZlibInfo(const std::vector<unsigned char>& in, const Options& options)
         {
           std::vector<size_t> ll_count(288, 0);
           std::vector<size_t> d_count(32, 0);
-          for(size_t j = 0; j < info.lz77_lcode.size(); j++)
+          for (size_t j = 0; j < info.lz77_lcode.size(); j++)
           {
             int symbol = info.lz77_lcode[j];
             if (symbol <= 256)
@@ -550,13 +550,13 @@ void printZlibInfo(const std::vector<unsigned char>& in, const Options& options)
               d_count[info.lz77_dcode[j]]++;
             }
           }
-          std::cout << " lit code 0-63 counts   : "; for(size_t j = 0; j < 64; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
-          std::cout << " lit code 64-127 counts : "; for(size_t j = 64; j < 128; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
-          std::cout << " lit code 128-191 counts: "; for(size_t j = 128; j < 192; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
-          std::cout << " lit code 192-255 counts: "; for(size_t j = 192; j < 256; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
+          std::cout << " lit code 0-63 counts   : "; for (size_t j = 0; j < 64; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
+          std::cout << " lit code 64-127 counts : "; for (size_t j = 64; j < 128; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
+          std::cout << " lit code 128-191 counts: "; for (size_t j = 128; j < 192; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
+          std::cout << " lit code 192-255 counts: "; for (size_t j = 192; j < 256; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
           std::cout << " end code count         : "; std::cout << ll_count[256] << " "; std::cout << std::endl;
-          std::cout << " len code counts        : "; for(size_t j = 257; j < 288; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
-          std::cout << " dist code counts       : "; for(size_t j = 0; j < 32; j++) std::cout << d_count[j] << " "; std::cout << std::endl;
+          std::cout << " len code counts        : "; for (size_t j = 257; j < 288; j++) std::cout << ll_count[j] << " "; std::cout << std::endl;
+          std::cout << " dist code counts       : "; for (size_t j = 0; j < 32; j++) std::cout << d_count[j] << " "; std::cout << std::endl;
         }
       }
     }
@@ -689,7 +689,7 @@ int main(int argc, char *argv[])
     if (s[0] == '-' && s.size() > 1)
     {
       if (s != "-x") options_chosen = true; //only selecting hexadecimal is no choice, keep the defaults
-      for(size_t j = 1; j < s.size(); j++)
+      for (size_t j = 1; j < s.size(); j++)
       {
         char c = s[j];
         if (c == 'h')
@@ -761,7 +761,7 @@ int main(int argc, char *argv[])
     options.zlib_info = true;
   }
 
-  for(size_t i = 0; i < filenames.size(); i++)
+  for (size_t i = 0; i < filenames.size(); i++)
   {
     if (filenames.size() > 1) std::cout << filenames[i] << std::endl;
     showFileInfo(filenames[i], options);

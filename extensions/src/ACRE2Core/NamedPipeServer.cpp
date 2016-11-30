@@ -48,7 +48,7 @@ ACRE_RESULT CNamedPipeServer::initialize() {
     LOG("Opening game pipe...");
     BOOL tryAgain = TRUE;
 
-    while(tryAgain) {
+    while (tryAgain) {
         writeHandle = CreateNamedPipeA(
                 this->getFromPipeName().c_str(), // name of the pipe
                 PIPE_ACCESS_DUPLEX, 
@@ -83,7 +83,7 @@ ACRE_RESULT CNamedPipeServer::initialize() {
         TEXT("S:(ML;;NWNR;;;LW)"), SDDL_REVISION_1, &saRead.lpSecurityDescriptor, NULL);
 
     tryAgain = TRUE;
-    while(tryAgain) {
+    while (tryAgain) {
         readHandle = CreateNamedPipeA(
                 this->getToPipeName().c_str(), // name of the pipe
                 PIPE_ACCESS_DUPLEX, 
@@ -163,7 +163,7 @@ ACRE_RESULT CNamedPipeServer::sendLoop() {
     BOOL ret;
     clock_t lastTick, tick;
 
-    while(!this->getShuttingDown()) {
+    while (!this->getShuttingDown()) {
         
         do {
             ConnectNamedPipe(this->m_PipeHandleWrite, NULL);
@@ -179,7 +179,7 @@ ACRE_RESULT CNamedPipeServer::sendLoop() {
         } while (!this->getConnectedWrite() && !this->getShuttingDown());
 
         lastTick = clock() / CLOCKS_PER_SEC;
-        while(this->getConnectedWrite()) {
+        while (this->getConnectedWrite()) {
             if (this->getShuttingDown())
                 break;
 
@@ -243,7 +243,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
     /*
     this->validTSServers.insert(std::string("enter a ts3 server id here")); 
     */
-    while(!this->getShuttingDown()) {
+    while (!this->getShuttingDown()) {
         //this->checkServer();
         ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
         if (GetLastError() == ERROR_PIPE_CONNECTED) {    

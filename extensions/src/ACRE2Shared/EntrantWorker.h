@@ -43,7 +43,7 @@ public:
 
     ACRE_RESULT exWorkerThread() {
         T item;
-        while(!this->getShuttingDown()) {
+        while (!this->getShuttingDown()) {
             LOCK(this);
             if (this->m_processQueue.try_pop(item)) {    
                 this->exProcessItem(item);

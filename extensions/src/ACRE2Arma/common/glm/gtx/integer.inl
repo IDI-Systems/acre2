@@ -38,7 +38,7 @@ namespace glm
         if (y == 0)
             return 1;
         int result = x;
-        for(int i = 1; i < y; ++i)
+        for (int i = 1; i < y; ++i)
             result *= x;
         return result;
     }
@@ -55,7 +55,7 @@ namespace glm
         {
             CurrentAnswer = NextTrial;
             NextTrial = (NextTrial + x / NextTrial) >> 1;
-        } while(NextTrial < CurrentAnswer);
+        } while (NextTrial < CurrentAnswer);
 
         return CurrentAnswer;
     }
@@ -103,7 +103,7 @@ namespace detail
     {
         genType Temp = x;
         genType Result;
-        for(Result = 1; Temp > 1; --Temp)
+        for (Result = 1; Temp > 1; --Temp)
             Result *= Temp;
         return Result;
     }
@@ -141,7 +141,7 @@ namespace detail
     GLM_FUNC_QUALIFIER uint pow(uint x, uint y)
     {
         uint result = x;
-        for(uint i = 1; i < y; ++i)
+        for (uint i = 1; i < y; ++i)
             result *= x;
         return result;
     }
@@ -157,7 +157,7 @@ namespace detail
         {
             CurrentAnswer = NextTrial;
             NextTrial = (NextTrial + x / NextTrial) >> 1;
-        } while(NextTrial < CurrentAnswer);
+        } while (NextTrial < CurrentAnswer);
 
         return CurrentAnswer;
     }

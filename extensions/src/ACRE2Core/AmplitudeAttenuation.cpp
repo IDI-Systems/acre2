@@ -18,7 +18,7 @@ ACRE_RESULT CAmplitudeAttenuation::processAmplitudes(void) {
 ACRE_RESULT CAmplitudeAttenuation::process(short* samples, int sampleCount, int channels, CPlayer * player) {
     float averageSum, currentSample, averageAmplitude, ampCoef;
     averageSum = 0;
-    for(int i = 0; i < sampleCount*channels && i < 4095; i++, iter++) {
+    for (int i = 0; i < sampleCount*channels && i < 4095; i++, iter++) {
         if (samples[i] > 0) {
             currentSample = 20.0f * log10((float)samples[i]);
             averageSum += currentSample;

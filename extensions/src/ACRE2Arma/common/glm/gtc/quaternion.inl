@@ -732,7 +732,7 @@ namespace detail
     GLM_FUNC_QUALIFIER tvec4<bool, P> lessThan(tquat<T, P> const & x, tquat<T, P> const & y)
     {
         tvec4<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] < y[i];
         return Result;
     }
@@ -741,7 +741,7 @@ namespace detail
     GLM_FUNC_QUALIFIER tvec4<bool, P> lessThanEqual(tquat<T, P> const & x, tquat<T, P> const & y)
     {
         tvec4<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] <= y[i];
         return Result;
     }
@@ -750,7 +750,7 @@ namespace detail
     GLM_FUNC_QUALIFIER tvec4<bool, P> greaterThan(tquat<T, P> const & x, tquat<T, P> const & y)
     {
         tvec4<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] > y[i];
         return Result;
     }
@@ -759,7 +759,7 @@ namespace detail
     GLM_FUNC_QUALIFIER tvec4<bool, P> greaterThanEqual(tquat<T, P> const & x, tquat<T, P> const & y)
     {
         tvec4<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] >= y[i];
         return Result;
     }
@@ -768,7 +768,7 @@ namespace detail
     GLM_FUNC_QUALIFIER tvec4<bool, P> equal(tquat<T, P> const & x, tquat<T, P> const & y)
     {
         tvec4<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] == y[i];
         return Result;
     }
@@ -777,7 +777,7 @@ namespace detail
     GLM_FUNC_QUALIFIER tvec4<bool, P> notEqual(tquat<T, P> const & x, tquat<T, P> const & y)
     {
         tvec4<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] != y[i];
         return Result;
     }

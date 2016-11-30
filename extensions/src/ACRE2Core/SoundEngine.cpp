@@ -34,7 +34,7 @@ ACRE_RESULT CSoundEngine::onEditPlaybackVoiceDataEvent(ACRE_ID id, short* sample
         player = (CPlayer *)it->second;
         LOCK(player);
         if (player->getSpeakingType() != ACRE_SPEAKING_UNKNOWN) {
-            for(size_t i = 0; i < player->channels.size(); ++i) {
+            for (size_t i = 0; i < player->channels.size(); ++i) {
                 if (player->channels[i]) {
                     player->channels[i]->lock();
                     player->channels[i]->In(samples, sampleCount);
@@ -104,7 +104,7 @@ ACRE_RESULT CSoundEngine::onEditCapturedVoiceDataEvent(short* samples, int sampl
             CEngine::getInstance()->getSoundEngine()->getSoundMixer()->lock();
             CSelf *self = CEngine::getInstance()->getSelf();
             self->lock();
-            for(int i = 0; i < self->channels.size(); ++i) {
+            for (int i = 0; i < self->channels.size(); ++i) {
                 if (self->channels[i]) {
                     self->channels[i]->lock();
                     self->channels[i]->In(samples, sampleCount);

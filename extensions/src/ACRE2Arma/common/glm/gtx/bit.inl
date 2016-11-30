@@ -40,7 +40,7 @@ namespace glm
     {
         genIUType tmp = Value;
         genIUType result = genIUType(0);
-        while(tmp)
+        while (tmp)
         {
             result = (tmp & (~tmp + 1)); // grab lowest bit
             tmp &= ~result; // clear lowest bit

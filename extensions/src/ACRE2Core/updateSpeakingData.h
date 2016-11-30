@@ -80,7 +80,7 @@ RPC_FUNCTION(updateSpeakingData) {
             if (CEngine::getInstance()->getClient()->getMuted(playerId)) {
                 CEngine::getInstance()->getClient()->setMuted(playerId, false);
             }
-            for(int i = 0; i < count; ++i) {
+            for (int i = 0; i < count; ++i) {
                 int channelId = i+1;
                 if (!speaker->channels[channelId]) {
                     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->channels[channelId], 4800, false);

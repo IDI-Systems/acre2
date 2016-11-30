@@ -103,7 +103,7 @@ public:                                                                        \
 
 #define DO_ITERATOR(type,name,from)                        \
     CREATE_ITERATOR(type,name,from)                        \
-    for(iter_##name = name##.begin();                    \
+    for (iter_##name = name##.begin();                    \
         iter_##name != name##.end();                    \
         iter_##name++ )    
 

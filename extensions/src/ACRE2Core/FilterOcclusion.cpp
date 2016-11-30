@@ -36,14 +36,14 @@ ACRE_RESULT CFilterOcclusion::process(short* samples, int sampleCount, int chann
         floatPointer[0] = buffer;
         shortPointer[0] = samples;
         memset(floatPointer[0], 0x00, 4096*sizeof(float));
-        for(int i = 0; i < sampleCount; ++i) {
+        for (int i = 0; i < sampleCount; ++i) {
             floatPointer[0][i] = static_cast<float>(samples[i]) / 32768.0f;
         }
         if (filter) {
             filter->setParam(2, ((double)CUTTOFF_FREQ*(double)pow(log10(volume*10.0f),4.0f)));
             filter->process(sampleCount*channels, floatPointer);
         }
-        for(int i = 0; i < sampleCount; ++i) {
+        for (int i = 0; i < sampleCount; ++i) {
             if (floatPointer[0][i] > 1.0f) {
                 floatPointer[0][i] = 1.0f;
             }

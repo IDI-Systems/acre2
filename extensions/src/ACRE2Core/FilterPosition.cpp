@@ -40,7 +40,7 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         /*
         unsigned int initSpeakers = channelSpeakerArray[0];
         LOG("Speaker 1: %d", channelSpeakerArray[0]);
-        for(int i = 1; i < channels; i++) {
+        for (int i = 1; i < channels; i++) {
             LOG("Speaker %d: %d", i+1, channelSpeakerArray[i]);
             initSpeakers = initSpeakers | channelSpeakerArray[i];
         }
@@ -151,7 +151,7 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
 
     /*
     std::string matrixVals = std::string("");
-    for(int i = 0; i < channels; i++) {
+    for (int i = 0; i < channels; i++) {
         char *mAppend;
         sprintf(mAppend, "%f, ", Matrix[i]);
         matrixVals.append(std::string(mAppend));
@@ -184,8 +184,8 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         killCoef = 1;
     };
     //LOG("dis: %f kc: %f ac: %f", DSPSettings.EmitterToListenerDistance, killCoef, this->getPlayer()->getAmplitudeCoef());
-    for(int x = 0; x < sampleCount * channels; x+=channels) {
-        for(int i = 0; i < channels; i++) {
+    for (int x = 0; x < sampleCount * channels; x+=channels) {
+        for (int i = 0; i < channels; i++) {
             samples[x+i] = (short)(samples[x+i] * Matrix[i] * killCoef);
         }
     }

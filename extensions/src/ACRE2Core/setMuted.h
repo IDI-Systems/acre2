@@ -15,7 +15,7 @@ RPC_FUNCTION(setMuted) {
     int status;
     ACRE_ID id;
 
-    for(index=0; index < vMessage->getParameterCount(); -1)
+    for (index=0; index < vMessage->getParameterCount(); -1)
     {
         if (vMessage->getParameter(index) == NULL)
             break;

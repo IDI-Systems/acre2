@@ -60,7 +60,7 @@ std::string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_
       char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
       char_array_4[3] = char_array_3[2] & 0x3f;
 
-      for(i = 0; (i <4) ; i++)
+      for (i = 0; (i <4) ; i++)
         ret += base64_chars[char_array_4[i]];
       i = 0;
     }
@@ -68,7 +68,7 @@ std::string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_
 
   if (i)
   {
-    for(j = i; j < 3; j++)
+    for (j = i; j < 3; j++)
       char_array_3[j] = '\0';
 
     char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
@@ -79,7 +79,7 @@ std::string base64_encode(unsigned char const* bytes_to_encode, unsigned int in_
     for (j = 0; (j < i + 1); j++)
       ret += base64_chars[char_array_4[j]];
 
-    while((i++ < 3))
+    while ((i++ < 3))
       ret += '=';
 
   }
@@ -204,7 +204,7 @@ int _tmain(int argc, wchar_t* argv[])
     
     std::string output = "ACRE_B64_FILE = [\n";
     int count = ceil(b64.length()/2048);
-    for(int x = 0; x <= count; ++x) {
+    for (int x = 0; x <= count; ++x) {
         output += "\t\""; 
         output += b64.substr(x*2048, 2048);
         output += "\",\n";

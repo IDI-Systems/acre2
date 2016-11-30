@@ -50,7 +50,7 @@ BOOL CWave::Load(std::string wavFile)
     file.read(testChunk, 4);
 
 
-    while(strncmp(testChunk, "fmt", 3) != 0 && !file.eof()) {
+    while (strncmp(testChunk, "fmt", 3) != 0 && !file.eof()) {
         file.read(testChunk, 4);
     }
     if (strncmp(testChunk, "fmt", 3) == 0) {
@@ -69,7 +69,7 @@ BOOL CWave::Load(std::string wavFile)
 
         file.read(testChunk, 4);
 
-        while(strncmp(testChunk, "data", 4) != 0 && !file.eof()) {
+        while (strncmp(testChunk, "data", 4) != 0 && !file.eof()) {
             file.read(testChunk, 4);
         }
         if (strncmp(testChunk, "data", 4) == 0) {

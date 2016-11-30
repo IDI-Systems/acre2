@@ -48,7 +48,7 @@ namespace glm
     )
     {
         tvec2<T, P> Result;
-        for(typename tvec2<T, P>::size_type i = 0; i < tvec2<T, P>::value_size(); ++i)
+        for (typename tvec2<T, P>::size_type i = 0; i < tvec2<T, P>::value_size(); ++i)
             Result[i] = clamp(Texcoord[i]);
         return Result;
     }
@@ -60,7 +60,7 @@ namespace glm
     )
     {
         tvec3<T, P> Result;
-        for(typename tvec3<T, P>::size_type i = 0; i < tvec3<T, P>::value_size(); ++i)
+        for (typename tvec3<T, P>::size_type i = 0; i < tvec3<T, P>::value_size(); ++i)
             Result[i] = clamp(Texcoord[i]);
         return Result;
     }
@@ -72,7 +72,7 @@ namespace glm
     )
     {
         tvec4<T, P> Result;
-        for(typename tvec4<T, P>::size_type i = 0; i < tvec4<T, P>::value_size(); ++i)
+        for (typename tvec4<T, P>::size_type i = 0; i < tvec4<T, P>::value_size(); ++i)
             Result[i] = clamp(Texcoord[i]);
         return Result;
     }
@@ -96,7 +96,7 @@ namespace glm
     )
     {
         tvec2<T, P> Result;
-        for(typename tvec2<T, P>::size_type i = 0; i < tvec2<T, P>::value_size(); ++i)
+        for (typename tvec2<T, P>::size_type i = 0; i < tvec2<T, P>::value_size(); ++i)
             Result[i] = repeat(Texcoord[i]);
         return Result;
     }
@@ -108,7 +108,7 @@ namespace glm
     )
     {
         tvec3<T, P> Result;
-        for(typename tvec3<T, P>::size_type i = 0; i < tvec3<T, P>::value_size(); ++i)
+        for (typename tvec3<T, P>::size_type i = 0; i < tvec3<T, P>::value_size(); ++i)
             Result[i] = repeat(Texcoord[i]);
         return Result;
     }
@@ -120,7 +120,7 @@ namespace glm
     )
     {
         tvec4<T, P> Result;
-        for(typename tvec4<T, P>::size_type i = 0; i < tvec4<T, P>::value_size(); ++i)
+        for (typename tvec4<T, P>::size_type i = 0; i < tvec4<T, P>::value_size(); ++i)
             Result[i] = repeat(Texcoord[i]);
         return Result;
     }
@@ -154,7 +154,7 @@ namespace glm
     )
     {
         tvec2<T, P> Result;
-        for(typename tvec2<T, P>::size_type i = 0; i < tvec2<T, P>::value_size(); ++i)
+        for (typename tvec2<T, P>::size_type i = 0; i < tvec2<T, P>::value_size(); ++i)
             Result[i] = mirrorRepeat(Texcoord[i]);
         return Result;
     }
@@ -166,7 +166,7 @@ namespace glm
     )
     {
         tvec3<T, P> Result;
-        for(typename tvec3<T, P>::size_type i = 0; i < tvec3<T, P>::value_size(); ++i)
+        for (typename tvec3<T, P>::size_type i = 0; i < tvec3<T, P>::value_size(); ++i)
             Result[i] = mirrorRepeat(Texcoord[i]);
         return Result;
     }
@@ -178,7 +178,7 @@ namespace glm
     )
     {
         tvec4<T, P> Result;
-        for(typename tvec4<T, P>::size_type i = 0; i < tvec4<T, P>::value_size(); ++i)
+        for (typename tvec4<T, P>::size_type i = 0; i < tvec4<T, P>::value_size(); ++i)
             Result[i] = mirrorRepeat(Texcoord[i]);
         return Result;
     }

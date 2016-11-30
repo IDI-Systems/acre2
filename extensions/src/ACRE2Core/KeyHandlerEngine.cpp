@@ -17,9 +17,9 @@ ACRE_RESULT CKeyHandlerEngine::initialize() {
 }
 
 ACRE_RESULT CKeyHandlerEngine::readKeyLoop() {
-    while(!this->getShuttingDown()) {
+    while (!this->getShuttingDown()) {
         if (CEngine::getInstance()->getGameServer() && CEngine::getInstance()->getGameServer()->getConnected()) { 
-            for(auto it = this->m_keyMap.begin(); it != this->m_keyMap.end(); ++it) {
+            for (auto it = this->m_keyMap.begin(); it != this->m_keyMap.end(); ++it) {
                 ACRE_KEY_ENTRY *keyEntry = it->second;
                 short currentKeyState = ACRE_KEY_UP;
                 if (GetAsyncKeyState(keyEntry->keyCode) & 0x8000) {
