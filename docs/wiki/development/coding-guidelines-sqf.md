@@ -137,15 +137,16 @@ Every function should have a header of the following format as the start of thei
 ```
 /*
  * Author: ACRE2Team
- * [Description]
+ * Description in sentence(s).
  *
  * Arguments:
  * 0: The first argument <STRING>
  * 1: The second argument <OBJECT>
  * 2: The third optional argument <BOOL> (default: true)
+ * 3: The fourth unused argument <ARRAY> (unused)
  *
  * Return Value:
- * The return value <BOOL>
+ * The return value <BOOL> / None
  *
  * Example:
  * ["something", player] call acre_main_fnc_example
@@ -260,22 +261,26 @@ call {
 
 ### Spacing
 
-All control blocks should be separated from the condition with a space.
+All command shall be separated from its parameters with a space.
 
 Good:
 
 ```cpp
-if (alive player) then {
-    hint ":)";
-};
+params ["_player"];
+
+if (alive _player) then { hint ":)" };
+
+private _config = getNumber (configFile >> "CfgWeapons" >> _parent >> "acre_hasUnique");
 ```
 
 Bad:
 
 ```
-if(alive player) then {
-    hint ":(";
-};
+params["_player"];
+
+if(alive _player) then { hint ":(" };
+
+private _config = getNumber(configFile >> "CfgWeapons" >> _parent >> "acre_hasUnique");
 ```
 
 ### Inline comments
