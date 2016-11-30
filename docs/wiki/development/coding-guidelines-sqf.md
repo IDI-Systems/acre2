@@ -367,7 +367,6 @@ if (!_value) then {};
 if (_value) then {};
 ```
 
-
 ### Magic Numbers
 
 There should be no magic numbers. Any magic number should be put in a define either on top of the .sqf file (below the header), or in the script_component.hpp file in the root directory of the component (recommended) in case it is used in multiple locations.
@@ -379,6 +378,7 @@ Magic numbers are any of the following:
 - Unique values with unexplained meaning or multiple occurrences which could (preferably) be replaced with named constants
 
 [Source](http://en.wikipedia.org/wiki/Magic_number_%28programming%29)
+
 
 ## Code Standards
 
