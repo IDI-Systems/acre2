@@ -90,7 +90,7 @@ namespace glm
     template <typename genType>
     GLM_FUNC_QUALIFIER genType powerOfTwoNearest(genType value)
     {
-        if(isPowerOfTwo(value))
+        if (isPowerOfTwo(value))
             return value;
 
         genType const prev = highestBitValue(value);

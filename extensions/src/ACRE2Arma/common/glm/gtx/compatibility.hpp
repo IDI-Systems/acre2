@@ -54,7 +54,7 @@
 #    include <cfloat>
 #elif(GLM_COMPILER & GLM_COMPILER_GCC)
 #    include <cmath>
-#    if(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
+#    if (GLM_PLATFORM & GLM_PLATFORM_ANDROID)
 #        undef isfinite
 #    endif
 #endif//GLM_COMPILER

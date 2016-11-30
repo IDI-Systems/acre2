@@ -179,7 +179,7 @@ namespace acre {
 
         acre::signal::map::~map()
         {
-            if(this->_map_elevations) {
+            if (this->_map_elevations) {
                 delete[] this->_map_elevations;
                 this->_map_elevations = NULL;
             }

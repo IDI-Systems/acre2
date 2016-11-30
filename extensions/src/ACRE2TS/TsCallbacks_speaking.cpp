@@ -20,33 +20,33 @@
 // 
 void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int status, int isReceivedWhisper, anyID clientID) {
 
-    if((ACRE_ID)clientID == CEngine::getInstance()->getSelf()->getId()) {     
-        if(CEngine::getInstance()->getClient()->getState() != ACRE_STATE_RUNNING)
+    if ((ACRE_ID)clientID == CEngine::getInstance()->getSelf()->getId()) {     
+        if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_RUNNING)
             return;
-        if(!CEngine::getInstance()->getGameServer())
+        if (!CEngine::getInstance()->getGameServer())
             return;
-        if(CEngine::getInstance()->getState() != ACRE_STATE_RUNNING)
+        if (CEngine::getInstance()->getState() != ACRE_STATE_RUNNING)
             return;
-        if(!CEngine::getInstance()->getGameServer()->getConnected())
+        if (!CEngine::getInstance()->getGameServer()->getConnected())
             return;
 
         
         ((CTS3Client *)(CEngine::getInstance()->getClient()))->setTsSpeakingState(status);
-        if(CEngine::getInstance()->getSoundSystemOverride())
+        if (CEngine::getInstance()->getSoundSystemOverride())
             return;
-        if(((CTS3Client *)(CEngine::getInstance()->getClient()))->getOnRadio()) {
-            if(((CTS3Client *)(CEngine::getInstance()->getClient()))->getVAD()) {
+        if (((CTS3Client *)(CEngine::getInstance()->getClient()))->getOnRadio()) {
+            if (((CTS3Client *)(CEngine::getInstance()->getClient()))->getVAD()) {
                 return;
             } else {
-                if(status == STATUS_NOT_TALKING) {
-                    if(!((CTS3Client *)(CEngine::getInstance()->getClient()))->getRadioPTTDown()) {
+                if (status == STATUS_NOT_TALKING) {
+                    if (!((CTS3Client *)(CEngine::getInstance()->getClient()))->getRadioPTTDown()) {
                         ((CTS3Client *)(CEngine::getInstance()->getClient()))->setOnRadio(FALSE);
                     } else {
-                        if(!((CTS3Client *)(CEngine::getInstance()->getClient()))->getDirectFirst()) {
+                        if (!((CTS3Client *)(CEngine::getInstance()->getClient()))->getDirectFirst()) {
                             ((CTS3Client *)(CEngine::getInstance()->getClient()))->microphoneOpen(TRUE);
                         } else {
                             ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(FALSE);
-                            if(((CTS3Client *)(CEngine::getInstance()->getClient()))->getRadioPTTDown()) {
+                            if (((CTS3Client *)(CEngine::getInstance()->getClient()))->getRadioPTTDown()) {
                                 ((CTS3Client *)(CEngine::getInstance()->getClient()))->microphoneOpen(TRUE);
                             }
                         }
@@ -59,10 +59,10 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
         TRACE("enter: [%d],[%d]", clientID, status);
 
         
-        if(status == STATUS_TALKING) {
+        if (status == STATUS_TALKING) {
             ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(TRUE);
             CEngine::getInstance()->getClient()->localStartSpeaking(ACRE_SPEAKING_DIRECT);
-        } else if(status == STATUS_NOT_TALKING)  {
+        } else if (status == STATUS_NOT_TALKING)  {
             ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(FALSE);
             CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_DIRECT);
             ((CTS3Client *)(CEngine::getInstance()->getClient()))->setMainPTTDown(FALSE);

@@ -55,7 +55,7 @@ namespace detail
         typedef std::uint32_t                uint32;
         typedef std::uint64_t                uint64;
 #    else
-#        if(defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)) // C99 detected, 64 bit types available
+#        if (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)) // C99 detected, 64 bit types available
             typedef int64_t                    sint64;
             typedef uint64_t                uint64;
 #        elif GLM_COMPILER & GLM_COMPILER_VC

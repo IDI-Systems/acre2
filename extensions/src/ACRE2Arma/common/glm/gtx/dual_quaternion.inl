@@ -353,7 +353,7 @@ namespace glm
         tquat<T, P> real(uninitialize);
         
         T const trace = x[0].x + x[1].y + x[2].z;
-        if(trace > static_cast<T>(0))
+        if (trace > static_cast<T>(0))
         {
             T const r = sqrt(T(1) + trace);
             T const invr = static_cast<T>(0.5) / r;
@@ -362,7 +362,7 @@ namespace glm
             real.y = (x[0].z - x[2].x) * invr;
             real.z = (x[1].x - x[0].y) * invr;
         }
-        else if(x[0].x > x[1].y && x[0].x > x[2].z)
+        else if (x[0].x > x[1].y && x[0].x > x[2].z)
         {
             T const r = sqrt(T(1) + x[0].x - x[1].y - x[2].z);
             T const invr = static_cast<T>(0.5) / r;
@@ -371,7 +371,7 @@ namespace glm
             real.z = (x[0].z + x[2].x) * invr;
             real.w = (x[2].y - x[1].z) * invr;
         }
-        else if(x[1].y > x[2].z)
+        else if (x[1].y > x[2].z)
         {
             T const r = sqrt(T(1) + x[1].y - x[0].x - x[2].z);
             T const invr = static_cast<T>(0.5) / r;

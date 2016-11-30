@@ -46,11 +46,11 @@ namespace acre {
             // Make a copy of the file to temp, and load it from there, referencing the current path name
             char tmpPath[MAX_PATH +1], buffer[MAX_PATH + 1];
 
-            if(!GetTempPathA(MAX_PATH, tmpPath)) {
+            if (!GetTempPathA(MAX_PATH, tmpPath)) {
                 LOG(ERROR) << "GetTempPath() failed, e=" << GetLastError();
                 return false;
             }
-            if(!GetTempFileNameA(tmpPath, "acre_dynload", TRUE, buffer)) {
+            if (!GetTempFileNameA(tmpPath, "acre_dynload", TRUE, buffer)) {
                 LOG(ERROR) << "GetTempFileName() failed, e=" << GetLastError();
                 return false;
             }

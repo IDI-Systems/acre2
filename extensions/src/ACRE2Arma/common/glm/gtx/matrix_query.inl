@@ -67,7 +67,7 @@ namespace glm
         {
             for(detail::component_count_t j(0); result && j < i ; ++j)
                 result = abs(m[i][j]) <= epsilon;
-            if(result)
+            if (result)
                 result = abs(m[i][i] - 1) <= epsilon;
             for(detail::component_count_t j(i + 1); result && j < detail::component_count(m); ++j)
                 result = abs(m[i][j]) <= epsilon;
@@ -131,7 +131,7 @@ namespace glm
         for(detail::component_count_t j(i + 1); result && j < detail::component_count(m); ++j)
             result = areOrthogonal(m[i], m[j], epsilon);
 
-        if(result)
+        if (result)
         {
             matType<T, P> tmp = transpose(m);
             for(detail::component_count_t i(0); result && i < detail::component_count(m) - 1 ; ++i)

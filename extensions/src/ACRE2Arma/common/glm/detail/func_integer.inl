@@ -97,7 +97,7 @@ namespace detail
     {
         GLM_FUNC_QUALIFIER static int call(genIUType Value)
         {
-            if(Value == 0)
+            if (Value == 0)
                 return -1;
 
             return glm::bitCount(~Value & (Value - static_cast<genIUType>(1)));
@@ -227,7 +227,7 @@ namespace detail
         GLM_STATIC_ASSERT(sizeof(uint) == sizeof(uint32), "uint and uint32 size mismatch");
 
         Borrow = x >= y ? static_cast<uint32>(0) : static_cast<uint32>(1);
-        if(y >= x)
+        if (y >= x)
             return y - x;
         else
             return static_cast<uint32>((static_cast<int64>(1) << static_cast<int64>(32)) + (static_cast<int64>(y) - static_cast<int64>(x)));

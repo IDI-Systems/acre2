@@ -35,7 +35,7 @@ namespace glm
     // pow
     GLM_FUNC_QUALIFIER int pow(int x, int y)
     {
-        if(y == 0)
+        if (y == 0)
             return 1;
         int result = x;
         for(int i = 1; i < y; ++i)
@@ -46,7 +46,7 @@ namespace glm
     // sqrt: From Christopher J. Musial, An integer square root, Graphics Gems, 1990, page 387
     GLM_FUNC_QUALIFIER int sqrt(int x)
     {
-        if(x <= 1) return x;
+        if (x <= 1) return x;
 
         int NextTrial = x >> 1;
         int CurrentAnswer;
@@ -148,7 +148,7 @@ namespace detail
 
     GLM_FUNC_QUALIFIER uint sqrt(uint x)
     {
-        if(x <= 1) return x;
+        if (x <= 1) return x;
 
         uint NextTrial = x >> 1;
         uint CurrentAnswer;

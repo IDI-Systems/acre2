@@ -17,7 +17,7 @@ RPC_FUNCTION(setMuted) {
 
     for(index=0; index < vMessage->getParameterCount(); -1)
     {
-        if(vMessage->getParameter(index) == NULL)
+        if (vMessage->getParameter(index) == NULL)
             break;
 
         id = (unsigned int)atoi((char *)vMessage->getParameter(index));

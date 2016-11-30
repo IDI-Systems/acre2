@@ -5,7 +5,7 @@
 /* 
    base64.cpp and base64.h
 
-   Copyright (C) 2004-2008 René Nyffenegger
+   Copyright (C) 2004-2008 Renï¿½ Nyffenegger
 
    This source code is provided 'as-is', without any express or implied
    warranty. In no event will the author be held liable for any damages
@@ -25,7 +25,7 @@
 
    3. This notice may not be removed or altered from any source distribution.
 
-   René Nyffenegger rene.nyffenegger@adp-gmbh.ch
+   Renï¿½ Nyffenegger rene.nyffenegger@adp-gmbh.ch
 
 */
 
@@ -137,7 +137,7 @@ int _tmain(int argc, wchar_t* argv[])
     CWave checkFile;
 
     //printf("Loading check: %d", checkFile.Load("d:\\mic_click_other_off.wav"));
-    if(argc < 2) {
+    if (argc < 2) {
         printf("Converts Wav Files into ACRE Base64 encoded sound files.\n\nUsage: Wav2B64.exe input.wav [output.b64]\n");
         return 0;
     }
@@ -145,11 +145,11 @@ int _tmain(int argc, wchar_t* argv[])
     std::string outputFile;
     
     std::string checkType = inputFile.substr(inputFile.length()-4);
-    if(checkType.compare(".wav") != 0) {
+    if (checkType.compare(".wav") != 0) {
         printf("Incorrect Input: %s\n\nInput must be .wav file.\n", inputFile.c_str());
         return 0;
     }
-    if(argc == 3) {
+    if (argc == 3) {
         outputFile = std::string((char *)argv[2]);
     } else {
         outputFile = inputFile.substr(0, inputFile.length()-4);
@@ -160,24 +160,24 @@ int _tmain(int argc, wchar_t* argv[])
     
 
     std::ifstream file(inputFile, std::ios::in | std::ios::binary | std::ios::ate);
-    if(!file.is_open()) {
+    if (!file.is_open()) {
         printf("Unable to open/find input file: %s\n", inputFile.c_str());
         return 0;
     }
 
     checkFile.Load(inputFile);
 
-    if(checkFile.GetChannels() > 1) {
+    if (checkFile.GetChannels() > 1) {
         printf("Input must be a mono channel PCM wav file.\n");
         return 0;
     }
 
-    if(checkFile.GetBitsPerSample() != 16) {
+    if (checkFile.GetBitsPerSample() != 16) {
         printf("Input must be a 16bit PCM wav file.\n");
         return 0;
     }
 
-    if(checkFile.GetSampleRate() != 48000) {
+    if (checkFile.GetSampleRate() != 48000) {
         printf("Input must have a sample rate of 48Khz.\n");
         return 0;
     }
@@ -185,7 +185,7 @@ int _tmain(int argc, wchar_t* argv[])
     
 
     std::ofstream out(outputFile, std::ios::out);
-    if(!out.is_open()) {
+    if (!out.is_open()) {
         printf("Unable to open/find output file: %s\n", outputFile.c_str());
         return 0;
     }

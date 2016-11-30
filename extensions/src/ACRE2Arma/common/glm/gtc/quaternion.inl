@@ -389,7 +389,7 @@ namespace detail
     GLM_FUNC_QUALIFIER tquat<T, P> normalize(tquat<T, P> const & q)
     {
         T len = length(q);
-        if(len <= T(0)) // Problem
+        if (len <= T(0)) // Problem
             return tquat<T, P>(1, 0, 0, 0);
         T oneOverLen = T(1) / len;
         return tquat<T, P>(q.w * oneOverLen, q.x * oneOverLen, q.y * oneOverLen, q.z * oneOverLen);
@@ -409,12 +409,12 @@ namespace detail
     template <typename T, precision P>
     GLM_FUNC_QUALIFIER tquat<T, P> mix(tquat<T, P> const & x, tquat<T, P> const & y, T const & a)
     {
-        if(a <= T(0)) return x;
-        if(a >= T(1)) return y;
+        if (a <= T(0)) return x;
+        if (a >= T(1)) return y;
 
         float fCos = dot(x, y);
         tquat<T, P> y2(y); //BUG!!! tquat<T, P> y2;
-        if(fCos < T(0))
+        if (fCos < T(0))
         {
             y2 = -y;
             fCos = -fCos;
@@ -422,7 +422,7 @@ namespace detail
 
         //if(fCos > 1.0f) // problem
         float k0, k1;
-        if(fCos > T(0.9999))
+        if (fCos > T(0.9999))
         {
             k0 = T(1) - a;
             k1 = T(0) + a; //BUG!!! 1.0f + a;
@@ -452,11 +452,11 @@ namespace detail
     )
     {
         bool flip = false;
-        if(a <= static_cast<T>(0)) return x;
-        if(a >= static_cast<T>(1)) return y;
+        if (a <= static_cast<T>(0)) return x;
+        if (a >= static_cast<T>(1)) return y;
 
         T cos_t = dot(x, y);
-        if(cos_t < T(0))
+        if (cos_t < T(0))
         {
             cos_t = -cos_t;
             flip = true;
@@ -464,7 +464,7 @@ namespace detail
 
         T alpha(0), beta(0);
 
-        if(T(1) - cos_t < 1e-7)
+        if (T(1) - cos_t < 1e-7)
             beta = static_cast<T>(1) - alpha;
         else
         {
@@ -474,7 +474,7 @@ namespace detail
             alpha = sin(alpha * theta) / sin_t;
         }
 
-        if(flip)
+        if (flip)
             alpha = -alpha;
         
         return normalize(beta * x + alpha * y);
@@ -487,7 +487,7 @@ namespace detail
         T cosTheta = dot(x, y);
 
         // Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator
-        if(cosTheta > T(1) - epsilon<T>())
+        if (cosTheta > T(1) - epsilon<T>())
         {
             // Linear interpolation
             return tquat<T, P>(
@@ -530,7 +530,7 @@ namespace detail
         }
 
         // Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator
-        if(cosTheta > T(1) - epsilon<T>())
+        if (cosTheta > T(1) - epsilon<T>())
         {
             // Linear interpolation
             return tquat<T, P>(
@@ -554,7 +554,7 @@ namespace detail
 
         // Axis of rotation must be normalised
         T len = glm::length(Tmp);
-        if(abs(len - T(1)) > T(0.001))
+        if (abs(len - T(1)) > T(0.001))
         {
             T oneOverLen = static_cast<T>(1) / len;
             Tmp.x *= oneOverLen;
@@ -637,17 +637,17 @@ namespace detail
 
         int biggestIndex = 0;
         T fourBiggestSquaredMinus1 = fourWSquaredMinus1;
-        if(fourXSquaredMinus1 > fourBiggestSquaredMinus1)
+        if (fourXSquaredMinus1 > fourBiggestSquaredMinus1)
         {
             fourBiggestSquaredMinus1 = fourXSquaredMinus1;
             biggestIndex = 1;
         }
-        if(fourYSquaredMinus1 > fourBiggestSquaredMinus1)
+        if (fourYSquaredMinus1 > fourBiggestSquaredMinus1)
         {
             fourBiggestSquaredMinus1 = fourYSquaredMinus1;
             biggestIndex = 2;
         }
-        if(fourZSquaredMinus1 > fourBiggestSquaredMinus1)
+        if (fourZSquaredMinus1 > fourBiggestSquaredMinus1)
         {
             fourBiggestSquaredMinus1 = fourZSquaredMinus1;
             biggestIndex = 3;
@@ -707,7 +707,7 @@ namespace detail
     GLM_FUNC_QUALIFIER tvec3<T, P> axis(tquat<T, P> const & x)
     {
         T tmp1 = static_cast<T>(1) - x.w * x.w;
-        if(tmp1 <= static_cast<T>(0))
+        if (tmp1 <= static_cast<T>(0))
             return tvec3<T, P>(0, 0, 1);
         T tmp2 = static_cast<T>(1) / sqrt(tmp1);
         return tvec3<T, P>(x.x * tmp2, x.y * tmp2, x.z * tmp2);

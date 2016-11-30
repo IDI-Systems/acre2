@@ -19,8 +19,8 @@ namespace acre {
             {
                 stream_.read((char *)&size, sizeof(uint32_t));
                  
-               // if(version <)
-                if(fill_)
+               // if (version <)
+                if (fill_)
                     READ_BOOL(fill);
 
                 assert(size < 4095 * 10);
@@ -59,7 +59,7 @@ namespace acre {
             compressed(std::istream &stream_, bool compressed_ = false, bool fill_ = false, bool xyzCompressed = false, uint32_t version = 68) {
                 stream_.read((char *)&size, sizeof(uint32_t));
                 
-                if(fill_)
+                if (fill_)
                     READ_BOOL(fill);
                 
                 if (fill) {

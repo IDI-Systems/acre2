@@ -104,7 +104,7 @@ base<vT, cT, rT, pT>::base
     typename base<vT, cT, rT, pT>::T const & x
 )
 {
-    if(rT == 1) // vector
+    if (rT == 1) // vector
     {
         for
         (

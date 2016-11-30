@@ -211,7 +211,7 @@ void AnalogLowPass::calcfz2( int i )
 void AnalogLowPass::calcfz( void )
 {
   int i = 1;
-  if( m_nin == 1 )
+  if ( m_nin == 1 )
     m_s1[i++] = 1;
   for (; i <= m_nin+m_n2; i++)
     m_s1[i] = m_s1[i+m_n2] = m_z1[i-m_nin];

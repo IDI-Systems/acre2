@@ -19,7 +19,7 @@ ACRE_RESULT CAmplitudeAttenuation::process(short* samples, int sampleCount, int 
     float averageSum, currentSample, averageAmplitude, ampCoef;
     averageSum = 0;
     for(int i = 0; i < sampleCount*channels && i < 4095; i++, iter++) {
-        if(samples[i] > 0) {
+        if (samples[i] > 0) {
             currentSample = 20.0f * log10((float)samples[i]);
             averageSum += currentSample;
         }
@@ -36,7 +36,7 @@ ACRE_RESULT CAmplitudeAttenuation::process(short* samples, int sampleCount, int 
     
     //LOG("ampCoef: %f %fdB", ampCoef, averageAmplitude);
     LOCK(player);
-    if(player->getAttenCount() > AVERAGE_RATE) {
+    if (player->getAttenCount() > AVERAGE_RATE) {
         player->setAttenCount(1);
         ampCoef = player->getAttenAverageSum()/AVERAGE_RATE;
         player->setAmplitudeCoef(ampCoef);

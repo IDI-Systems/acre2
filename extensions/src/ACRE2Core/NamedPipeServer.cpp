@@ -65,7 +65,7 @@ ACRE_RESULT CNamedPipeServer::initialize() {
             
             _snprintf_s(errstr, sizeof(errstr), "Conflicting game write pipe detected, could not create pipe!\nERROR CODE: %d", GetLastError());
             int ret = MessageBoxA(NULL, errstr, "ACRE Error", MB_RETRYCANCEL | MB_ICONEXCLAMATION);
-            if(ret != IDRETRY) {
+            if (ret != IDRETRY) {
                 tryAgain = FALSE;
                 TerminateProcess(GetCurrentProcess(), 0);
             }
@@ -101,7 +101,7 @@ ACRE_RESULT CNamedPipeServer::initialize() {
             
             _snprintf_s(errstr, sizeof(errstr), "Conflicting game read pipe detected, could not create pipe!\nERROR CODE: %d", GetLastError());
             int ret = MessageBoxA(NULL, errstr, "ACRE Error", MB_RETRYCANCEL | MB_ICONEXCLAMATION);
-            if(ret != IDRETRY) {
+            if (ret != IDRETRY) {
                 tryAgain = FALSE;
                 TerminateProcess(GetCurrentProcess(), 0);
             }
@@ -167,7 +167,7 @@ ACRE_RESULT CNamedPipeServer::sendLoop() {
         
         do {
             ConnectNamedPipe(this->m_PipeHandleWrite, NULL);
-            if(GetLastError() == ERROR_PIPE_CONNECTED) {    
+            if (GetLastError() == ERROR_PIPE_CONNECTED) {    
                 LOG("Client write connected");
                 CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
                 this->setConnectedWrite(TRUE);
@@ -180,21 +180,21 @@ ACRE_RESULT CNamedPipeServer::sendLoop() {
 
         lastTick = clock() / CLOCKS_PER_SEC;
         while(this->getConnectedWrite()) {
-            if(this->getShuttingDown())
+            if (this->getShuttingDown())
                 break;
 
             tick = clock() / CLOCKS_PER_SEC;
-            if(tick - lastTick > (PIPE_TIMEOUT / 1000)) {
+            if (tick - lastTick > (PIPE_TIMEOUT / 1000)) {
                 LOG("No send message for %d seconds, disconnecting", (PIPE_TIMEOUT / 1000));
                 this->setConnectedWrite(FALSE);
                 break;
             }
 
-            if(this->m_sendQueue.try_pop(msg)) {
-                if(msg) {
+            if (this->m_sendQueue.try_pop(msg)) {
+                if (msg) {
                     lastTick = clock() / CLOCKS_PER_SEC;
                     size = (DWORD)strlen((char *)msg->getData())+1;
-                    if(size > 3) {
+                    if (size > 3) {
                         // send it and free it
                         //LOCK(this);
                         this->lock();
@@ -237,7 +237,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
 
 
     mBuffer = (char *)LocalAlloc(LMEM_FIXED, BUFSIZE);
-    if(!mBuffer) {
+    if (!mBuffer) {
         LOG("LocalAlloc() failed: %d", GetLastError());
     }
     /*
@@ -246,7 +246,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
     while(!this->getShuttingDown()) {
         //this->checkServer();
         ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
-        if(GetLastError() == ERROR_PIPE_CONNECTED) {    
+        if (GetLastError() == ERROR_PIPE_CONNECTED) {    
             LOG("Client read connected");
             CEngine::getInstance()->getClient()->unMuteAll();
             CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
@@ -285,7 +285,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
                 //LOG("READ: %s", (char *)mBuffer);
                 msg = new CTextMessage((char *)mBuffer, cbRead);    
                 //TRACE("got and parsed message [%s]", msg->getData());
-                if(msg && msg->getProcedureName()) {
+                if (msg && msg->getProcedureName()) {
                     
                     CEngine::getInstance()->getRpcEngine()->runProcedure(this, msg);
 
@@ -311,7 +311,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
         this->m_sendQueue.clear();
         
         // send an event that we have disconnected 
-        if(CEngine::getInstance()->getExternalServer()->getConnected()) {
+        if (CEngine::getInstance()->getExternalServer()->getConnected()) {
             CEngine::getInstance()->getExternalServer()->sendMessage(
                 CTextMessage::formatNewMessage("ext_reset", 
                     "%d,",
@@ -322,7 +322,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
         Sleep(1);
     }
     
-    if(mBuffer)
+    if (mBuffer)
         LocalFree(mBuffer);
 
     TRACE("Receiving thread terminating");
@@ -331,7 +331,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
 }
 
 ACRE_RESULT CNamedPipeServer::sendMessage( IMessage *message ) {
-    if(message) {
+    if (message) {
         TRACE("sending [%s]", message->getData());
         this->m_sendQueue.push(message);
         return ACRE_OK;
@@ -342,7 +342,7 @@ ACRE_RESULT CNamedPipeServer::sendMessage( IMessage *message ) {
 
 ACRE_RESULT CNamedPipeServer::checkServer( void ) {
     std::string uniqueId = CEngine::getInstance()->getClient()->getUniqueId();
-    if(uniqueId != "" && this->validTSServers.find(uniqueId) == this->validTSServers.end()) {
+    if (uniqueId != "" && this->validTSServers.find(uniqueId) == this->validTSServers.end()) {
         MessageBoxA(NULL, "This server is NOT registered for ACRE2 testing! Please remove the plugin! Teamspeak will now close.", "ACRE Error", MB_OK | MB_ICONEXCLAMATION);
         TerminateProcess(GetCurrentProcess(), 0);
     }

@@ -35,7 +35,7 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
     float *Matrix = new float[1 * channels];
 
     //LOG("channels: %d", channels);
-    if(!this->p_IsInitialized) {
+    if (!this->p_IsInitialized) {
         // we need to figure out what channel mask we want to use.
         /*
         unsigned int initSpeakers = channelSpeakerArray[0];
@@ -72,7 +72,7 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
     Emitter.Velocity = X3DAUDIO_VECTOR( 0, 0, 0 );
     Emitter.ChannelCount = 1;
 
-    if(params->getParam("isWorld") == POSITIONAL_EFFECT_ISWORLD) {
+    if (params->getParam("isWorld") == POSITIONAL_EFFECT_ISWORLD) {
         listener_position.x = CEngine::getInstance()->getSelf()->getWorldPosition().x;
         listener_position.y = CEngine::getInstance()->getSelf()->getWorldPosition().y;
         listener_position.z = CEngine::getInstance()->getSelf()->getWorldPosition().z;
@@ -82,15 +82,15 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         vector_listenerDirection.y = CEngine::getInstance()->getSelf()->getHeadVector().y;
         vector_listenerDirection.z = CEngine::getInstance()->getSelf()->getHeadVector().z;
 
-        if(params->getParam("speakingType") == ACRE_SPEAKING_DIRECT) {
+        if (params->getParam("speakingType") == ACRE_SPEAKING_DIRECT) {
             /*if(CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_AMPLITUDE) {
                 Emitter.CurveDistanceScaler = (player->getAmplitudeCoef())*(CEngine::getInstance()->getSoundEngine()->getCurveScale());
                 Emitter.pVolumeCurve = NULL;
             } else */
-            if(CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_SELECTABLE_A) {
+            if (CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_SELECTABLE_A) {
                 Emitter.CurveDistanceScaler = 1.0f*(params->getParam("curveScale"));
                 Emitter.pVolumeCurve = NULL;
-            } else if(CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_SELECTABLE_B) {
+            } else if (CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_SELECTABLE_B) {
                 Emitter.CurveDistanceScaler = 1.0f*(params->getParam("curveScale"));
                 Emitter.pVolumeCurve = (X3DAUDIO_DISTANCE_CURVE *)&distanceCurve;
             } else {
@@ -173,10 +173,10 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
     */
 
 
-    if(CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_AMPLITUDE || CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_SELECTABLE_A) {
+    if (CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_AMPLITUDE || CEngine::getInstance()->getSoundEngine()->getCurveModel() == ACRE_CURVE_MODEL_SELECTABLE_A) {
         killCoef = std::max(0.0f,(1-((DSPSettings.EmitterToListenerDistance-(MAX_FALLOFF_DISTANCE))/MAX_FALLOFF_RANGE)));
 
-        if(DSPSettings.EmitterToListenerDistance < (MAX_FALLOFF_DISTANCE)) {
+        if (DSPSettings.EmitterToListenerDistance < (MAX_FALLOFF_DISTANCE)) {
             killCoef = 1;
         }
         killCoef = std::min(1.0f, killCoef);
@@ -190,7 +190,7 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         }
     }
 
-    if(Matrix)
+    if (Matrix)
         delete Matrix;
 
     return ACRE_OK;

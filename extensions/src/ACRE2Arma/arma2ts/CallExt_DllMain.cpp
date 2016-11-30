@@ -156,7 +156,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 
     std::string id = functionStr.substr(0, id_length);
     std::string params;
-    if(functionStr.length() > 1) {
+    if (functionStr.length() > 1) {
         params = functionStr.substr(id_length, functionStr.length() - id_length);
     }
 
@@ -165,8 +165,8 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
     switch(command) {
         
         case PIPE_COMMAND_WRITE: {
-            if(writeConnected) {
-                if(params.length() > 0) {
+            if (writeConnected) {
+                if (params.length() > 0) {
                     DWORD cbWritten;
                     BOOL ret;
                     //DEBUG("Writing [%s] to pipe [%d]\n", params.c_str(), hPipe);
@@ -178,7 +178,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                     params.length(),            // message length 
                     &cbWritten,             // bytes written 
                     NULL);                  // not overlapped 
-                    if(cbWritten != params.length()) {
+                    if (cbWritten != params.length()) {
                         FlushFileBuffers(writeHandle);
                         //printf("FLUSHING!\n");
                     }
@@ -199,7 +199,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             return;
         }
         case PIPE_COMMAND_READ: {
-            if(readConnected) {
+            if (readConnected) {
                 DWORD cbRead;
                 DWORD err;
                 BOOL ret;
@@ -213,11 +213,11 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                     }
                     //DEBUG("ReadFile failed, [%08x]\r\n", err);
                 }
-                if(cbRead != 0) {
+                if (cbRead != 0) {
                     //DEBUG("Read data: %s\n", value);
                     strncpy(output,value,cbRead);
                 } else {
-                    if(err == 232) {
+                    if (err == 232) {
                         strncpy(output,"_JERR_NULL",outputSize);
                     } else {
                         //LOG("PIPE ERROR: %d\r\n", err);
@@ -234,7 +234,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
         case PIPE_COMMAND_OPEN: {
             BOOL ret;
             int tries = 0;
-            if(readConnected || writeConnected) {
+            if (readConnected || writeConnected) {
                 ClosePipe();
                 //Sleep(100);
             }
@@ -245,7 +245,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                 CloseHandle(readHandle);
                 readConnected = false;
             }
-            if(!readConnected) {
+            if (!readConnected) {
                 while (tries < 1) {
                     readHandle = CreateFileA( 
                         fromPipeName.c_str(),        // pipe name 
@@ -255,7 +255,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         OPEN_EXISTING,  // opens existing pipe 
                         0,              // default attributes 
                         NULL);          // no template file 
-                    if(readHandle != INVALID_HANDLE_VALUE) {
+                    if (readHandle != INVALID_HANDLE_VALUE) {
                         DWORD dwModeRead = PIPE_NOWAIT | PIPE_READMODE_MESSAGE;
                         ret = SetNamedPipeHandleState( 
                                 readHandle,    // pipe handle 
@@ -271,7 +271,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         readConnected = TRUE;
                         break;
                     } else {
-                        if(GetLastError() == ERROR_PIPE_BUSY) {
+                        if (GetLastError() == ERROR_PIPE_BUSY) {
                             //if (!WaitNamedPipeA(fromPipeName.c_str(), NMPWAIT_USE_DEFAULT_WAIT))
                                  tries++;
                         } else {
@@ -281,7 +281,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         }
                     }
                 }
-                if(!readConnected) {
+                if (!readConnected) {
                     sprintf(output, "Read Loop CreateFileA WinErrCode: %d", GetLastError());
                     return;
                 }
@@ -290,7 +290,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                 CloseHandle(writeHandle);
                 writeConnected = false;
             }
-            if(!writeConnected) {
+            if (!writeConnected) {
                 tries = 0;
                 while(tries < 1) {
                     writeHandle = CreateFileA( 
@@ -302,7 +302,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         0,              // default attributes 
                         NULL);          // no template file 
 
-                    if(writeHandle != INVALID_HANDLE_VALUE) {
+                    if (writeHandle != INVALID_HANDLE_VALUE) {
                         DWORD dwModeWrite = PIPE_READMODE_MESSAGE;
                         ret = SetNamedPipeHandleState( 
                                 writeHandle,    // pipe handle 
@@ -318,7 +318,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         break;
                         //printf("WRITE CONNECTED\n");
                     } else {
-                        if(GetLastError() == ERROR_PIPE_BUSY) {
+                        if (GetLastError() == ERROR_PIPE_BUSY) {
                             //if (!WaitNamedPipeA(fromPipeName.c_str(), NMPWAIT_USE_DEFAULT_WAIT))
                                  tries++;
                         } else {
@@ -327,12 +327,12 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         }
                     }
                 }
-                if(!writeConnected) {
+                if (!writeConnected) {
                     sprintf(output, "Write Loop CreateFileA WinErrCode: %d", GetLastError());
                     return;
                 }
             }
-            if(writeConnected && readConnected) {
+            if (writeConnected && readConnected) {
                 strncpy(output,"1",outputSize);
             } else {
                 strncpy(output,"0",outputSize);

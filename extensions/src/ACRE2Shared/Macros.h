@@ -25,11 +25,11 @@
 #endif
 
 #ifndef RELEASE
-#define RELEASE(p)      { if(p) { (p)->Release(); (p)=NULL; } }
+#define RELEASE(p)      { if (p) { (p)->Release(); (p)=NULL; } }
 #endif
 
 #ifndef ARNE_RELEASE
-#define ARNE_RELEASE(p)  { if(p) { p->release(); delete p; (p)=NULL; }  }
+#define ARNE_RELEASE(p)  { if (p) { p->release(); delete p; (p)=NULL; }  }
 #endif
 
 
@@ -107,7 +107,7 @@ public:                                                                        \
         iter_##name != name##.end();                    \
         iter_##name++ )    
 
-#define WAIT_IF_VALID(handle, wait)        if(handle != INVALID_HANDLE_VALUE) {        \
+#define WAIT_IF_VALID(handle, wait)        if (handle != INVALID_HANDLE_VALUE) {        \
                                             WaitForSingleObject(handle, wait);        \
                                         }
 

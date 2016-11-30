@@ -140,7 +140,7 @@ namespace glm
         genType const Mirror = Clamp + Rest;
 
         genType Out;
-        if(Mirror >= genType(1))
+        if (Mirror >= genType(1))
             Out = genType(1) - Rest;
         else
             Out = Rest;

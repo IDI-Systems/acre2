@@ -88,7 +88,7 @@
 // Report platform detection
 #if(defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_PLATFORM_DISPLAYED))
 #    define GLM_MESSAGE_PLATFORM_DISPLAYED
-#    if(GLM_PLATFORM & GLM_PLATFORM_QNXNTO)
+#    if (GLM_PLATFORM & GLM_PLATFORM_QNXNTO)
 #        pragma message("GLM: QNX platform detected")
 //#    elif(GLM_PLATFORM & GLM_PLATFORM_IOS)
 //#        pragma message("GLM: iOS platform detected")
@@ -324,7 +324,7 @@
 
 #if defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_MODEL_DISPLAYED)
 #    define GLM_MESSAGE_MODEL_DISPLAYED
-#    if(GLM_MODEL == GLM_MODEL_64)
+#    if (GLM_MODEL == GLM_MODEL_64)
 #        pragma message("GLM: 64 bits model")
 #    elif(GLM_MODEL == GLM_MODEL_32)
 #        pragma message("GLM: 32 bits model")
@@ -701,7 +701,7 @@
 #elif defined(GLM_FORCE_SSE2)
 #    define GLM_ARCH (GLM_ARCH_SSE2)
 #elif (GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM | GLM_COMPILER_GCC)) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_LINUX))
-#    if(__AVX2__)
+#    if (__AVX2__)
 #        define GLM_ARCH (GLM_ARCH_AVX2 | GLM_ARCH_AVX | GLM_ARCH_SSE3 | GLM_ARCH_SSE2)
 #    elif(__AVX__)
 #        define GLM_ARCH (GLM_ARCH_AVX | GLM_ARCH_SSE3 | GLM_ARCH_SSE2)
@@ -763,7 +763,7 @@
 #endif//GLM_ARCH
 #if GLM_ARCH & GLM_ARCH_SSE2
 #    include <emmintrin.h>
-#    if(GLM_COMPILER == GLM_COMPILER_VC2005) // VC2005 is missing some intrinsics, workaround
+#    if (GLM_COMPILER == GLM_COMPILER_VC2005) // VC2005 is missing some intrinsics, workaround
         inline float _mm_cvtss_f32(__m128 A) { return A.m128_f32[0]; }
         inline __m128 _mm_castpd_ps(__m128d PD) { union { __m128 ps; __m128d pd; } c; c.pd = PD; return c.ps; }
         inline __m128d _mm_castps_pd(__m128 PS) { union { __m128 ps; __m128d pd; } c; c.ps = PS; return c.pd; }
@@ -774,7 +774,7 @@
 
 #if defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_ARCH_DISPLAYED)
 #    define GLM_MESSAGE_ARCH_DISPLAYED
-#    if(GLM_ARCH == GLM_ARCH_PURE)
+#    if (GLM_ARCH == GLM_ARCH_PURE)
 #        pragma message("GLM: Platform independent code")
 #    elif(GLM_ARCH & GLM_ARCH_ARM)
 #        pragma message("GLM: ARM instruction set")
