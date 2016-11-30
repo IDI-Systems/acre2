@@ -167,7 +167,7 @@ namespace detail
         return x - y * (x / y);
     }
 
-#if(GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_GCC))
+#if (GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_GCC))
 
     GLM_FUNC_QUALIFIER unsigned int nlz(unsigned int x) 
     {

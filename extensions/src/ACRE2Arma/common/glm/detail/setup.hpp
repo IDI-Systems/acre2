@@ -44,7 +44,7 @@
 #define GLM_VERSION_PATCH            6
 #define GLM_VERSION_REVISION        3
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_VERSION_DISPLAYED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_VERSION_DISPLAYED))
 #    define GLM_MESSAGE_VERSION_DISPLAYED
 #    pragma message ("GLM: version 0.9.6.3")
 #endif//GLM_MESSAGE
@@ -86,27 +86,27 @@
 #endif//
 
 // Report platform detection
-#if(defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_PLATFORM_DISPLAYED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_PLATFORM_DISPLAYED))
 #    define GLM_MESSAGE_PLATFORM_DISPLAYED
 #    if (GLM_PLATFORM & GLM_PLATFORM_QNXNTO)
 #        pragma message("GLM: QNX platform detected")
-//#    elif(GLM_PLATFORM & GLM_PLATFORM_IOS)
+//#    elif (GLM_PLATFORM & GLM_PLATFORM_IOS)
 //#        pragma message("GLM: iOS platform detected")
-#    elif(GLM_PLATFORM & GLM_PLATFORM_APPLE)
+#    elif (GLM_PLATFORM & GLM_PLATFORM_APPLE)
 #        pragma message("GLM: Apple platform detected")
-#    elif(GLM_PLATFORM & GLM_PLATFORM_WINCE)
+#    elif (GLM_PLATFORM & GLM_PLATFORM_WINCE)
 #        pragma message("GLM: WinCE platform detected")
-#    elif(GLM_PLATFORM & GLM_PLATFORM_WINDOWS)
+#    elif (GLM_PLATFORM & GLM_PLATFORM_WINDOWS)
 #        pragma message("GLM: Windows platform detected")
-#    elif(GLM_PLATFORM & GLM_PLATFORM_CHROME_NACL)
+#    elif (GLM_PLATFORM & GLM_PLATFORM_CHROME_NACL)
 #        pragma message("GLM: Native Client detected")
-#    elif(GLM_PLATFORM & GLM_PLATFORM_ANDROID)
+#    elif (GLM_PLATFORM & GLM_PLATFORM_ANDROID)
 #        pragma message("GLM: Android platform detected")
-#    elif(GLM_PLATFORM & GLM_PLATFORM_LINUX)
+#    elif (GLM_PLATFORM & GLM_PLATFORM_LINUX)
 #        pragma message("GLM: Linux platform detected")
-#    elif(GLM_PLATFORM & GLM_PLATFORM_UNIX)
+#    elif (GLM_PLATFORM & GLM_PLATFORM_UNIX)
 #        pragma message("GLM: UNIX platform detected")
-#    elif(GLM_PLATFORM & GLM_PLATFORM_UNKNOWN)
+#    elif (GLM_PLATFORM & GLM_PLATFORM_UNKNOWN)
 #        pragma message("GLM: platform unknown")
 #    else
 #        pragma message("GLM: platform not detected")
@@ -326,7 +326,7 @@
 #    define GLM_MESSAGE_MODEL_DISPLAYED
 #    if (GLM_MODEL == GLM_MODEL_64)
 #        pragma message("GLM: 64 bits model")
-#    elif(GLM_MODEL == GLM_MODEL_32)
+#    elif (GLM_MODEL == GLM_MODEL_32)
 #        pragma message("GLM: 32 bits model")
 #    endif//GLM_MODEL
 #endif//GLM_MESSAGE
@@ -703,11 +703,11 @@
 #elif (GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM | GLM_COMPILER_GCC)) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_LINUX))
 #    if (__AVX2__)
 #        define GLM_ARCH (GLM_ARCH_AVX2 | GLM_ARCH_AVX | GLM_ARCH_SSE3 | GLM_ARCH_SSE2)
-#    elif(__AVX__)
+#    elif (__AVX__)
 #        define GLM_ARCH (GLM_ARCH_AVX | GLM_ARCH_SSE3 | GLM_ARCH_SSE2)
-#    elif(__SSE3__)
+#    elif (__SSE3__)
 #        define GLM_ARCH (GLM_ARCH_SSE3 | GLM_ARCH_SSE2)
-#    elif(__SSE2__)
+#    elif (__SSE2__)
 #        define GLM_ARCH (GLM_ARCH_SSE2)
 #    else
 #        define GLM_ARCH GLM_ARCH_PURE
@@ -776,15 +776,15 @@
 #    define GLM_MESSAGE_ARCH_DISPLAYED
 #    if (GLM_ARCH == GLM_ARCH_PURE)
 #        pragma message("GLM: Platform independent code")
-#    elif(GLM_ARCH & GLM_ARCH_ARM)
+#    elif (GLM_ARCH & GLM_ARCH_ARM)
 #        pragma message("GLM: ARM instruction set")
-#    elif(GLM_ARCH & GLM_ARCH_AVX2)
+#    elif (GLM_ARCH & GLM_ARCH_AVX2)
 #        pragma message("GLM: AVX2 instruction set")
-#    elif(GLM_ARCH & GLM_ARCH_AVX)
+#    elif (GLM_ARCH & GLM_ARCH_AVX)
 #        pragma message("GLM: AVX instruction set")
-#    elif(GLM_ARCH & GLM_ARCH_SSE3)
+#    elif (GLM_ARCH & GLM_ARCH_SSE3)
 #        pragma message("GLM: SSE3 instruction set")
-#    elif(GLM_ARCH & GLM_ARCH_SSE2)
+#    elif (GLM_ARCH & GLM_ARCH_SSE2)
 #        pragma message("GLM: SSE2 instruction set")
 #    endif//GLM_ARCH
 #endif//GLM_MESSAGE

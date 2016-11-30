@@ -358,7 +358,7 @@ namespace detail
     //////////////////////////
     // Float definition
     
-#if(defined(GLM_PRECISION_LOWP_FLOAT))
+#if (defined(GLM_PRECISION_LOWP_FLOAT))
     typedef lowp_mat2x2            mat2x2;
     typedef lowp_mat2x3            mat2x3;
     typedef lowp_mat2x4            mat2x4;
@@ -368,7 +368,7 @@ namespace detail
     typedef lowp_mat4x2            mat4x2;
     typedef lowp_mat4x3            mat4x3;
     typedef lowp_mat4x4            mat4x4;
-#elif(defined(GLM_PRECISION_MEDIUMP_FLOAT))
+#elif (defined(GLM_PRECISION_MEDIUMP_FLOAT))
     typedef mediump_mat2x2        mat2x2;
     typedef mediump_mat2x3        mat2x3;
     typedef mediump_mat2x4        mat2x4;
@@ -705,7 +705,7 @@ namespace detail
     
     /// @}
     
-#if(defined(GLM_PRECISION_LOWP_DOUBLE))
+#if (defined(GLM_PRECISION_LOWP_DOUBLE))
     typedef lowp_dmat2x2        dmat2x2;
     typedef lowp_dmat2x3        dmat2x3;
     typedef lowp_dmat2x4        dmat2x4;
@@ -715,7 +715,7 @@ namespace detail
     typedef lowp_dmat4x2        dmat4x2;
     typedef lowp_dmat4x3        dmat4x3;
     typedef lowp_dmat4x4        dmat4x4;
-#elif(defined(GLM_PRECISION_MEDIUMP_DOUBLE))
+#elif (defined(GLM_PRECISION_MEDIUMP_DOUBLE))
     typedef mediump_dmat2x2        dmat2x2;
     typedef mediump_dmat2x3        dmat2x3;
     typedef mediump_dmat2x4        dmat2x4;

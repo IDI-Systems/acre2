@@ -278,13 +278,13 @@
 // Extended integral types    N1988    Yes
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n1988.pdf
 
-#if(GLM_COMPILER & GLM_COMPILER_GCC)
+#if (GLM_COMPILER & GLM_COMPILER_GCC)
 
 #    if (GLM_COMPILER >= GLM_COMPILER_GCC43)
 #        define GLM_CXX11_STATIC_ASSERT
 #    endif
 
-#elif(GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
+#elif (GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
 #    if (__has_feature(cxx_exceptions))
 #        define GLM_CXX98_EXCEPTIONS
 #    endif

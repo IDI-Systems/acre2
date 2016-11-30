@@ -29,7 +29,7 @@
 namespace glm{
 namespace detail{
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if (GLM_COMPILER & GLM_COMPILER_VC)
 #pragma warning(push)
 #pragma warning(disable : 4510 4512 4610)
 #endif
@@ -45,7 +45,7 @@ namespace detail{
         ieee754_QNAN() : f(0.0)/*, mantissa(0x7FFFFF), exp(0xFF), sign(0x0)*/ {}
     };
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if (GLM_COMPILER & GLM_COMPILER_VC)
 #pragma warning(pop)
 #endif
 

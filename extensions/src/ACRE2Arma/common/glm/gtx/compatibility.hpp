@@ -46,13 +46,13 @@
 #include "../glm.hpp"
 #include "../gtc/quaternion.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_compatibility extension included")
 #endif
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if (GLM_COMPILER & GLM_COMPILER_VC)
 #    include <cfloat>
-#elif(GLM_COMPILER & GLM_COMPILER_GCC)
+#elif (GLM_COMPILER & GLM_COMPILER_GCC)
 #    include <cmath>
 #    if (GLM_PLATFORM & GLM_PLATFORM_ANDROID)
 #        undef isfinite
