@@ -37,7 +37,7 @@ if (_interfaceClass == "") then {
 };
 private _handlerFunction = (getText (configFile >> "CfgAcreComponents" >> _radioBaseClass >> "Interfaces" >> _eventKind >> _event));
 
-private _return = [_radioId, _event, _data, _radioData, _remote] call (missionNamespace getVariable[_handlerFunction, FUNC(noApiFunction)]);
+private _return = [_radioId, _event, _data, _radioData, _remote] call (missionNamespace getVariable [_handlerFunction, FUNC(noApiFunction)]);
 
 if (isNil "_return") exitWith { nil };
 _return;

@@ -59,10 +59,10 @@ DFUNC(monitorAI_PFH) = {
             if ((random 1) < _chance) then {
                 TRACE_2("REVEAL!", _curUnit, acre_player);
                 // 15 second block before revealing again.
-                private _lastRevealed = _curUnit getVariable[QGVAR(lastRevealed), -15];
+                private _lastRevealed = _curUnit getVariable [QGVAR(lastRevealed), -15];
                 if (_lastRevealed + 15 < time) then {
                     TRACE_2("Calling reveal event", _curUnit, _hasRevealed);
-                    _curUnit setVariable[QGVAR(lastRevealed), time, false];
+                    _curUnit setVariable [QGVAR(lastRevealed), time, false];
                     [QGVAR(onRevealUnit), [acre_player, _curUnit, ACRE_REVEAL_AMOUNT ] ] call CALLSTACK(CBA_fnc_globalEvent);
                 };
             };

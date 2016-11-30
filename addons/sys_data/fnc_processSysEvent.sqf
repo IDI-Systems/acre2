@@ -37,7 +37,7 @@ if (_interfaceClass == "") then {
 };
 private _handlerFunction = getText(configFile >> _eventKind >> _interfaceClass >> _event >> "handler");
 if (_handlerFunction != "") then {
-    _return = [_radioId, _event, _data, _radioData, _eventKind, _remote] call (missionNamespace getVariable[_handlerFunction, FUNC(noApiSystemFunction)]);
+    _return = [_radioId, _event, _data, _radioData, _eventKind, _remote] call (missionNamespace getVariable [_handlerFunction, FUNC(noApiSystemFunction)]);
 };
 
 if (isNil "_return") exitWith { nil };

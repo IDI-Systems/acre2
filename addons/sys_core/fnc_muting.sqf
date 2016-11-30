@@ -66,17 +66,17 @@ DFUNC(mutingPFHLoop) = {
                         };
                         if (GVAR(_fullListTime)) then {
                             _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
-                            _remoteUser setVariable[QGVAR(muted), _muted, false];
+                            _remoteUser setVariable [QGVAR(muted), _muted, false];
                         } else {
                             if (((_remoteUser in GVAR(muting)) && _muted == 0) || (!(_remoteUser in GVAR(muting)) && _muted == 1)) then {
                                 _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
-                                _remoteUser setVariable[QGVAR(muted), _muted, false];
+                                _remoteUser setVariable [QGVAR(muted), _muted, false];
                             };
                         };
                     };
                 } else {
                     PUSH(_muting,_remoteUser);
-                    _remoteUser setVariable[QGVAR(muted), 1, false];
+                    _remoteUser setVariable [QGVAR(muted), 1, false];
                 };
             //};
         };

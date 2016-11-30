@@ -236,7 +236,7 @@ DFUNC(speakingLoop) = {
                     private _params = [_unit] call FUNC(processDirectSpeaker);
                     CALL_RPC("updateSpeakingData", _params);
 
-                    // if (!(_unit getVariable[QGVAR(isDisabled), false]) ) then {
+                    // if (!(_unit getVariable [QGVAR(isDisabled), false]) ) then {
                         // _sayTime = _unit getVariable [QGVAR(sayTime), time-2];
                         // if ((abs (time-_sayTime)) >= 1) then {
                             // _unit say "acre_lip_sound";
