@@ -29,11 +29,11 @@
 if (!hasInterface) exitWith {};
 
 _this spawn {
-    if((_this select 0) isEqualType false) exitWith {
-        params["_flag"];
+    if ((_this select 0) isEqualType false) exitWith {
+        params ["_flag"];
         // Bail with a default setup
         // Wait for the mission to initialize first
-        if(_flag) then {
+        if (_flag) then {
             _flag spawn {
                 ["east", "Opfor"] call acre_api_fnc_babelAddLanguageType;
                 ["west", "Blufor"] call acre_api_fnc_babelAddLanguageType;
@@ -77,13 +77,13 @@ _this spawn {
         for [{_i=1}, {_i < _languageCount}, {_i=_i+1}] do {
             private _curLanguage = _x select _i;
 
-            if((_languages pushBackUnique _curLanguage) != -1) then {
+            if ((_languages pushBackUnique _curLanguage) != -1) then {
                 [_curLanguage, _curLanguage] call acre_api_fnc_babelAddLanguageType;
             };
             _sideLanguages pushBack _curLanguage;
         };
         //acre_player may not ready yet?
-        if(_curSide == (side acre_player) ) then {
+        if (_curSide == (side acre_player) ) then {
             _sideLanguages call acre_api_fnc_babelSetSpokenLanguages;
         };
     } forEach _this;

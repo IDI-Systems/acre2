@@ -29,7 +29,7 @@ parameters: radioId string
 return: parent class string
 */
 _test = ["ACRE_PRC343_ID_1"] call EFUNC(api,getBaseRadio);
-if(ASSERT_STRING(_test,"ACRE_PRC343")) then {
+if (ASSERT_STRING(_test,"ACRE_PRC343")) then {
     PASS(acre_api_fnc_getBaseRadio);
 } else {
     FAIL(acre_api_fnc_getBaseRadio);
@@ -41,7 +41,7 @@ parameters: radioId string
 return: parent class string
 */
 _test = ["ACRE_PRC343"] call EFUNC(api,hasKindOfRadio);
-if(ASSERT_BOOL(_test,true)) then {
+if (ASSERT_BOOL(_test,true)) then {
     PASS(acre_api_fnc_hasKindOfradio);
 } else {
     FAIL(acre_api_fnc_hasKindOfRadio);
@@ -53,7 +53,7 @@ parameters: none
 return: radioId string
 */
 _test = [] call EFUNC(api,getCurrentRadio);
-if(ASSERT_TYPE(_test,"STRING")) then {
+if (ASSERT_TYPE(_test,"STRING")) then {
     PASS(acre_api_fnc_getCurrentRadio);
 } else {
     FAIL(acre_api_fnc_getCurrentRadio);
@@ -65,7 +65,7 @@ parameters: none
 return: array of radioIds
 */
 _test = [] call EFUNC(api,getCurrentRadioList);
-if(ASSERT_TYPE(_test,"ARRAY")) then {
+if (ASSERT_TYPE(_test,"ARRAY")) then {
     PASS(acre_api_fnc_getCurrentRadioList);
 } else {
     FAIL(acre_api_fnc_getCurrentRadioList);
@@ -77,7 +77,7 @@ parameters: none
 return: array of radioIds
 */
 _test = [] call EFUNC(api,getCurrentRadioList);
-if(ASSERT_TYPE(_test,"ARRAY")) then {
+if (ASSERT_TYPE(_test,"ARRAY")) then {
     PASS(acre_api_fnc_getCurrentRadioList);
 } else {
     FAIL(acre_api_fnc_getCurrentRadioList);
@@ -89,7 +89,7 @@ parameters: none
 return: array of radioIds
 */
 _test = [] call EFUNC(api,getDefaultChannels);
-if(ASSERT_TYPE(_test,"ARRAY")) then {
+if (ASSERT_TYPE(_test,"ARRAY")) then {
     PASS(acre_api_fnc_getDefaultChannels);
 } else {
     FAIL(acre_api_fnc_getDefaultChannels);

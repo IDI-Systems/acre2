@@ -24,7 +24,7 @@ private _baseRadio = configName(inheritsFrom (configFile >> "CfgWeapons" >> _rad
 private _idNumber = getNumber(configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
 
 private _key = (GVAR(radioIdMap) select 0) find _baseRadio;
-if(_key != -1) then {
+if (_key != -1) then {
     private _idArray = ((GVAR(radioIdMap) select 1) select _key);
 
 

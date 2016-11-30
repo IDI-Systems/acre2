@@ -20,7 +20,7 @@ GVAR(hintTitle) = _this select 0;
 GVAR(hintLine1) = _this select 1;
 GVAR(hintLine2) = _this select 2;
 GVAR(hintDuration) = 1;
-if((count _this) == 4) then {
+if ((count _this) == 4) then {
     GVAR(hintDuration) = _this select 3;
 };
 

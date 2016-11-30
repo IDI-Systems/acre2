@@ -16,5 +16,5 @@
  */
 #include "script_component.hpp"
 
-params["_procedureName", "_procedureCodeBlock"];
+params ["_procedureName", "_procedureCodeBlock"];
 HASH_SET(GVAR(procedures), _procedureName, _procedureCodeBlock);

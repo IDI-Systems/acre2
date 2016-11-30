@@ -20,13 +20,13 @@ TRACE_1("setRowText", _this);
 
 private _display = uiNamespace getVariable QGVAR(currentDisplay);
 
-params["_row", "_string", ["_alignment", ALIGN_LEFT]];
+params ["_row", "_string", ["_alignment", ALIGN_LEFT]];
 private _data = toArray _string;
 
 private _rowCount = 0;
-if(_row > 20) then {
-    if(_row > 30) then {
-        if(_row > 40) then {
+if (_row > 20) then {
+    if (_row > 30) then {
+        if (_row > 40) then {
             _rowCount = COLUMNS_XXLARGE;
         } else {
             _rowCount = COLUMNS_XLARGE;
@@ -48,7 +48,7 @@ switch _alignment do {
         _start = _rowCount - _length;
     };
     case ALIGN_CENTER: {
-        if(_length < _rowCount-1) then {
+        if (_length < _rowCount-1) then {
             _start = floor ( (_rowCount - _length) / 2);
         } else {
             _start = 0;

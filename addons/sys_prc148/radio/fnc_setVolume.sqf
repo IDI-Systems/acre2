@@ -16,11 +16,11 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
 private _vol = _eventData;
 
-if(_vol%0.20 != 0) then {
+if (_vol%0.20 != 0) then {
     _vol = _vol-(_vol%0.20);
 };
 

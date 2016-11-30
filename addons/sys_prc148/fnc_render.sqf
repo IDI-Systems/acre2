@@ -18,7 +18,7 @@
 
 #define RADIO_CTRL(var1) (_display displayCtrl var1)
 
-params["_display"];
+params ["_display"];
 
 uiNamespace setVariable [QGVAR(currentDisplay), _display];
 
@@ -69,7 +69,7 @@ RADIO_CTRL(99902) ctrlCommit 0;
 
 
 // acre_player sideChat format["off: %1", (["getOnOffState"] call GUI_DATA_EVENT)];
-if((["getOnOffState"] call GUI_DATA_EVENT) > 0) then {
+if ((["getOnOffState"] call GUI_DATA_EVENT) > 0) then {
     private _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
     GVAR(currentState) = _currentState;
     [_display] call (missionNamespace getVariable [QUOTE(ADDON) + "_fnc_" + _currentState + "_Render", {}]);

@@ -10,7 +10,7 @@ PREP_RECOMPILE_END;
 
 ACRE_HOLD_OFF_ITEMRADIO_CHECK = false;
 DFUNC(inventoryListMouseDown) = {
-    if((_this select 1) == 1) then {
+    if ((_this select 1) == 1) then {
         ACRE_HOLD_OFF_ITEMRADIO_CHECK = true;
         acre_player unassignItem "ItemRadioAcreFlagged";
         acre_player removeItem "ItemRadioAcreFlagged";
@@ -18,7 +18,7 @@ DFUNC(inventoryListMouseDown) = {
 };
 
 DFUNC(inventoryListMouseUp) = {
-    if((_this select 1) == 1) then {
+    if ((_this select 1) == 1) then {
         ACRE_HOLD_OFF_ITEMRADIO_CHECK = false;
     };
 };

@@ -17,12 +17,12 @@
 #include "script_component.hpp"
 
 DFUNC(pingFunc) = {
-    if(!isNull player) then {
-        if(GVAR(serverStarted)) then {
+    if (!isNull player) then {
+        if (GVAR(serverStarted)) then {
             LOG("ARMA2 TO TS3: PING!");
             // diag_log text format["%1 ACRE: ping!", diag_tickTime];
             private _ret = "ACRE2Arma" callExtension "2ping:";
-            if(diag_tickTime - GVAR(pongTime) > 10) then {
+            if (diag_tickTime - GVAR(pongTime) > 10) then {
                 hintSilent "ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.";
 
                 _ret = "ACRE2Arma" callExtension "4";
@@ -37,7 +37,7 @@ DFUNC(pingFunc) = {
                     [] call FUNC(ping);
                 };
             };
-            if(!(GVAR(runServer))) then {
+            if (!(GVAR(runServer))) then {
                 INFO("Server shutting down ping loop.");
                 [(_this select 1)] call CBA_fnc_removePerFrameHandler;
             };

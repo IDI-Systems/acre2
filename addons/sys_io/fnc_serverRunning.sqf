@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 private _running = false;
-if(!(scriptDone GVAR(processId))) then {
+if (!(scriptDone GVAR(processId))) then {
     _running = true;
 };
 

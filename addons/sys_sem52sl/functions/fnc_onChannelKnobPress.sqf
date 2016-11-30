@@ -22,7 +22,7 @@ GVAR(backlightOn) = true;
 GVAR(lastAction) = time;
 
 private _currentDirection = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     // left click
     _currentDirection = 1;
 };
@@ -31,7 +31,7 @@ private _knobPosition = ["getState", "channelKnobPosition"] call GUI_DATA_EVENT;
 private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 15;
 
 
-if(_knobPosition != _newKnobPosition) then {
+if (_knobPosition != _newKnobPosition) then {
     ["setState", ["channelKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
     private _currentChannel = ["getState", "currentChannel"] call GUI_DATA_EVENT;
 

@@ -32,13 +32,13 @@
 #define INV_DOUBLE_CLICK 1
 
 DFUNC(uniqueArray) = {
-    params[["_inArray",[]]];
+    params [["_inArray",[]]];
 
     (_inArray arrayIntersect _inArray)
 };
 
 DFUNC(onInventoryAction) = {
-    params["_typeClick", "_typeIndex", "_vars"];
+    params ["_typeClick", "_typeIndex", "_vars"];
     _vars params ["_idc", "_selectedIndex"];
     _idc = ctrlIDC (_idc);
 
@@ -53,7 +53,7 @@ DFUNC(onInventoryAction) = {
             _container = _typeIndex;
             private _itemsArray = (uniformItems acre_player) + (uniformMagazines acre_player);
             private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
-            if(_index < (count _uniqueItems) ) then {
+            if (_index < (count _uniqueItems) ) then {
                 _item = _uniqueItems select _index;
             };
         };
@@ -61,7 +61,7 @@ DFUNC(onInventoryAction) = {
             _container = _typeIndex;
             private _itemsArray = (vestItems acre_player) + (vestMagazines acre_player);
             private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
-            if(_index < (count _uniqueItems) ) then {
+            if (_index < (count _uniqueItems) ) then {
                 _item = _uniqueItems select _index;
             };
         };
@@ -69,7 +69,7 @@ DFUNC(onInventoryAction) = {
             _container = _typeIndex;
             private _itemsArray = (backpackItems acre_player) + (backpackMagazines acre_player);
             private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
-            if(_index < (count _uniqueItems) ) then {
+            if (_index < (count _uniqueItems) ) then {
                 _item = _uniqueItems select _index;
             };
         };
@@ -89,9 +89,9 @@ DFUNC(onInventoryAction) = {
         };
     };
 
-    if(!isNil "_item") then {
+    if (!isNil "_item") then {
         _ret = [_item] call acre_api_fnc_isRadio;
-        if(_ret) then {
+        if (_ret) then {
             private _object = acre_player;
             TRACE_3("Calling handler", _object, _container, _item);
             switch _typeClick do {
@@ -116,7 +116,7 @@ DFUNC(handleContextMenu) = {
     private _cargs = _this select 1;
     private _coords = [_this select 2, _this select 3];
 
-    if(_cargs select 4) then {
+    if (_cargs select 4) then {
         // SHOW THE MPPT SELECTION DIALOG HERE
 
     };
@@ -127,7 +127,7 @@ DFUNC(handleContextMenu) = {
 uiNamespace setVariable[QGVAR(inventoryObject), (_this select 0)];
 uiNamespace setVariable[QGVAR(inventoryContainer), (_this select 1)];
 DFUNC(inventoryMonitorPFH) = {
-    if(!isNull INVENTORY_DISPLAY) then {
+    if (!isNull INVENTORY_DISPLAY) then {
         TRACE_1("Registering Events", "");
         // Hide the ItemRadio slot
         (INVENTORY_DISPLAY displayCtrl IDC_RADIOSLOT) ctrlSetPosition [0,0,0,0];

@@ -10,7 +10,7 @@ DFUNC(getAntennaDirMan) = {
     private ["_forwardV", "_upV"];
     params ["_obj"];
     //@TODO: This is a hack fix for vehicles having funky up vectors when people are inside...
-    if(vehicle _obj == _obj) then {
+    if (vehicle _obj == _obj) then {
         _spinePos = (_obj selectionPosition "Spine3");
         _upV = _spinePos vectorFromTo (_obj selectionPosition "Neck");
 

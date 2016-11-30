@@ -24,7 +24,7 @@ BEGIN_COUNTER(buttonPress);
 
 private _control = ctrlIDC (_this select 1);
 
-if(_control != 222 && _control != 99902+116 && _control != 99902+117) then {
+if (_control != 222 && _control != 99902+116 && _control != 99902+117) then {
 [(_this select 0)] call FUNC(toggleButtonPressDown);
 } else {
     ["Acre_GenericClick", [0,0,0], [0,0,0], 0.2, false] call EFUNC(sys_sounds,playSound);
@@ -34,17 +34,17 @@ if(_control != 222 && _control != 99902+116 && _control != 99902+117) then {
 private _currentMenu = GET_STATE_DEF("currentMenu", "");
 TRACE_1("Got current menu", _currentMenu);
 
-if(!isNil "_currentMenu") then {
-    if(_currentMenu isEqualType "") then {
-        if(_currentMenu != "") then {
+if (!isNil "_currentMenu") then {
+    if (_currentMenu isEqualType "") then {
+        if (_currentMenu != "") then {
             private _tmpMenu = HASH_GET(GVAR(Menus), _currentMenu);
-            if(!isNil "_tmpMenu") then {
+            if (!isNil "_tmpMenu") then {
                 _currentMenu = _tmpMenu;
             };
         };
     };
 
-    if(_currentMenu isEqualType []) then {
+    if (_currentMenu isEqualType []) then {
         TRACE_1("Searching for key handler", MENU_ID(_currentMenu));
         // First, call our global key handler
         // We only call it if we had a valid menu, because it means the radio is active. Right!?
@@ -54,7 +54,7 @@ if(!isNil "_currentMenu") then {
         // If it returns true, it means it consumed it and we dont move further
         // nil or false, continue.
         private _ret = [_currentMenu, _this] call FUNC(callButtonFunctor);
-        if(!_ret) then {
+        if (!_ret) then {
             // Now call the menus type handler
             TRACE_1("onButtonPress","");
             switch MENU_TYPE(_currentMenu) do {
@@ -86,29 +86,29 @@ if(!isNil "_currentMenu") then {
                     diag_log text format["!!! INVALID MENU SPECIFIED"];
                 };
             };
-            if(isNil "_ret") then { _ret = false; };
+            if (isNil "_ret") then { _ret = false; };
 
-            if(!_ret) then {
+            if (!_ret) then {
                 //TRACE_2("", _currentMenu, _this);
                 _ret = [_currentMenu, _this] call FUNC(defaultButtonPress);
-                if(!_ret) then {
+                if (!_ret) then {
                     private _newId = nil;
                     private _newMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
                     private _oldId = MENU_ID(_currentMenu);
 
-                    if(typeName _newMenu == "STRING") then {
+                    if (typeName _newMenu == "STRING") then {
                         _newId = _newMenu;
                         _newMenu = HASH_GET(GVAR(Menus), _newMenu);
                     };
 
-                    if(!isNil "_oldId" && !isNil "_newId") then {
-                        if(MENU_ID(_currentMenu) != MENU_ID(_newMenu)) then {
+                    if (!isNil "_oldId" && !isNil "_newId") then {
+                        if (MENU_ID(_currentMenu) != MENU_ID(_newMenu)) then {
                             [_newMenu, _currentMenu] call FUNC(changeMenu);
                         } else {
                             [_currentMenu, _currentMenu] call FUNC(renderMenu);
                         };
                     } else {
-                        if(!isNil "_newId" && isNil "_oldId" || isNil "_newId" && !isNil "_oldId") then {
+                        if (!isNil "_newId" && isNil "_oldId" || isNil "_newId" && !isNil "_oldId") then {
                             [_newMenu] call FUNC(changeMenu);
                         } else {
                             [_currentMenu, _currentMenu] call FUNC(renderMenu);

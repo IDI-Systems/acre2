@@ -17,8 +17,8 @@
 
 params ["_curveScale"];
 
-if(IS_NUMBER(_curveScale)) then {
-    if(_curveScale >= 0) then {
+if (IS_NUMBER(_curveScale)) then {
+    if (_curveScale >= 0) then {
         ["setSelectableVoiceCurve", format["%1,", _curveScale]] call EFUNC(sys_rpc,callRemoteProcedure);
         GVAR(selectableCurveScale) = _curveScale;
     } else {

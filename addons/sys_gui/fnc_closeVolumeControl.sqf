@@ -21,14 +21,14 @@ private _doDefault = true;
 
 if (!alive acre_player) exitWith {};
 
-if(!isNil "ACRE_CustomVolumeControl") then {
-    if((ACRE_CustomVolumeControl) isEqualType {}) then {
+if (!isNil "ACRE_CustomVolumeControl") then {
+    if ((ACRE_CustomVolumeControl) isEqualType {}) then {
         _factor = [GVAR(VolumeControl_Level)] call ACRE_CustomVolumeControl;
         _doDefault = false;
     };
 };
 
-if(_doDefault) then {
+if (_doDefault) then {
     switch (GVAR(VolumeControl_Level)) do {
         case -2:     {_factor = .1};
         //case -1.5:  {_factor = .3};

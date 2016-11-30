@@ -30,7 +30,7 @@ CREATE_COUNTER(hearableRadios);
 // PREP(processRadioSpeaker);
 
 TRACE_1("START SPEAKING ENTER", _this);
-params["_speakingId","_languageId","_netId","_onRadio",["_radioId",","]];
+params ["_speakingId","_languageId","_netId","_onRadio",["_radioId",","]];
 
 if (!(_speakingId isEqualType 0)) then { _speakingId = parseNumber _speakingId; };
 if (!(_languageId isEqualType 0)) then { _languageId = parseNumber _languageId; };
@@ -40,7 +40,7 @@ if (!(_onRadio isEqualType 0)) then { _onRadio = parseNumber _onRadio; };
 
 
 private _result = false;
-//if(_onRadio != 1 || {_radioId != ACRE_BROADCASTING_RADIOID}) then {
+//if (_onRadio != 1 || {_radioId != ACRE_BROADCASTING_RADIOID}) then {
     private _unit = objectFromNetId _netId; // will be objNull if not found.
 
     //Ensure unit wasn't previously speaking
@@ -70,7 +70,7 @@ private _result = false;
         GVAR(playerList) pushBack [_speakingId,_unit];
     };
 
-    if(_speakingId in ACRE_SPECTATORS_LIST) exitWith {
+    if (_speakingId in ACRE_SPECTATORS_LIST) exitWith {
         GVAR(spectatorSpeakers) pushBack _speakingId;
         false;
     };
@@ -87,11 +87,11 @@ private _result = false;
     TRACE_1("unit pos", getPosASL _unit);
     private _isMuted = IS_MUTED(_unit);
     _unit setRandomLip true;
-    if(!_isMuted) then {
+    if (!_isMuted) then {
         TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_onRadio,(_unit distance acre_player));
         _unit setVariable[QGVAR(lastSpeakingEventTime), diag_tickTime, false];
-        if(_onRadio == 1) then {
-            if([_radioId] call EFUNC(sys_radio,radioExists)) then {
+        if (_onRadio == 1) then {
+            if ([_radioId] call EFUNC(sys_radio,radioExists)) then {
                 GVAR(speakers) pushBack _unit;
                 private _val = [_netId, _speakingId];
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
@@ -99,20 +99,20 @@ private _result = false;
                 _speakerRadio = [];
                 _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
                 {
-                    if([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
+                    if ([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                         _speakerRadio pushBack _x;
                     };
                 } forEach _nearRadios;
                 GVAR(nearRadios) = _speakerRadio;
                 _personalRadioList = [] call EFUNC(sys_data,getPlayerRadioList);
-                if(_radioId in _personalRadioList && ACRE_BROADCASTING_RADIOID == "") then {
+                if (_radioId in _personalRadioList && ACRE_BROADCASTING_RADIOID == "") then {
                     ACRE_BROADCASTING_RADIOID = _radioId;
                     // diag_log text format["ASSIGNED ACRE_BROADCASTING_RADIOID REMOTE START: %1", ACRE_BROADCASTING_RADIOID];
                 };
                 private _okRadios = [[_radioId], _personalRadioList + GVAR(nearRadios), false] call EFUNC(sys_modes,checkAvailability);
                 _okRadios = (_okRadios select 0) select 1;
                 //_okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
-                if((count _okRadios) > 0) then {
+                if ((count _okRadios) > 0) then {
                     missionNamespace setVariable [_radioId + "_signal_startTime", diag_tickTime];
                     _result = true;
                     GVAR(speaking_cache_valid) = false;
@@ -129,7 +129,7 @@ private _result = false;
                 WARNING_1("Got start speaking event with non-existent radio id: %1",_radioId);
             };
         } else {
-            if((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
+            if ((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
                 GVAR(speakers) pushBack _unit;
             };
             TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));

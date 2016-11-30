@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 disableSerialization;
-params["","_amount"];
+params ["","_amount"];
 
 if ((!alive player) || (time < 2)) exitWith {};
 

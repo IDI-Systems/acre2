@@ -20,7 +20,7 @@ private _key = _this select 1;
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
 private _dir = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     _dir = 1;
 };
 

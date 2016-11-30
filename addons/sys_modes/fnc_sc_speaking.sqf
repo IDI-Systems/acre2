@@ -18,7 +18,7 @@
  */
 #include "script_component.hpp"
 
-params["_tx", "_txRadioId", "_rx", "_rxRadioId"];
+params ["_tx", "_txRadioId", "_rx", "_rxRadioId"];
 
 // acre_player sideChat format["Radio speaking! %1", _this];
 private _txData = [_txRadioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);

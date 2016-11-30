@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 FUNC(_internalClearDisplay) = {
-    params["_row", "_columns"];
+    params ["_row", "_columns"];
 
     for "_i" from 0 to _columns do {
         private _id = ((_row * 1000) +1) + _i;

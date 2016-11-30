@@ -23,7 +23,7 @@ TRACE_1("SYSTEM EVENT ENTER", _this);
 params ["_eventKind","_radioId","_event",["_data",[]],["_remote",false]];
 private _return = nil;
 
-if(!HASH_HASKEY(GVAR(radioData), _radioId)) exitWith {
+if (!HASH_HASKEY(GVAR(radioData), _radioId)) exitWith {
     WARNING_2("Non-existent radio '%1' called %2 system event!",_radioId,_event);
     nil
 };
@@ -32,13 +32,13 @@ private _radioData = HASH_GET(GVAR(radioData), _radioId);
 private _radioBaseClass = getText(configFile >> "CfgWeapons" >> _radioId >> "acre_baseClass");
 
 private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
-if(_interfaceClass == "") then {
+if (_interfaceClass == "") then {
     _interfaceClass = "DefaultInterface";
 };
 private _handlerFunction = getText(configFile >> _eventKind >> _interfaceClass >> _event >> "handler");
-if(_handlerFunction != "") then {
+if (_handlerFunction != "") then {
     _return = [_radioId, _event, _data, _radioData, _eventKind, _remote] call (missionNamespace getVariable[_handlerFunction, FUNC(noApiSystemFunction)]);
 };
 
-if(isNil "_return") exitWith { nil };
+if (isNil "_return") exitWith { nil };
 _return;

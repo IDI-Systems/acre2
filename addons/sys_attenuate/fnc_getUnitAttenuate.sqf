@@ -26,33 +26,33 @@ private _attenuate = 0;
 private _vehListener = vehicle _listener;
 private _vehSpeaker = vehicle _speaker;
 
-if(_vehListener == _vehSpeaker) then {
+if (_vehListener == _vehSpeaker) then {
     private _listenerTurnedOut = isTurnedOut _listener;
     private _speakerTurnedOut = isTurnedOut _speaker;
-    if(!(_listenerTurnedOut && _speakerTurnedOut)) then {
+    if (!(_listenerTurnedOut && _speakerTurnedOut)) then {
 
         private _listenerCompartment = [_listener] call EFUNC(lib,getCompartment);
         private _speakerCompartment = [_speaker] call EFUNC(lib,getCompartment);
-        if(_speakerCompartment != _listenerCompartment) then {
+        if (_speakerCompartment != _listenerCompartment) then {
             // acre_player sideChat format["1 lc: %1 sc: %2 %3", _listenerCompartment, _speakerCompartment, (getNumber(configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment))];
             _attenuate = ((getNumber(configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment)));
         };
-        if(_speakerTurnedOut || _listenerTurnedOut) then {
+        if (_speakerTurnedOut || _listenerTurnedOut) then {
             // acre_player sideChat format["2 lc: %1 sc: %2 %3", _listenerCompartment, _speakerCompartment, (getNumber(configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment))];
             _attenuate = ([_listener] call FUNC(getVehicleAttenuation))*0.5;
         };
     };
 } else {
-    if(_vehListener != _listener) then {
+    if (_vehListener != _listener) then {
         private _listenerTurnedOut = isTurnedOut _listener;
-        if(!_listenerTurnedOut) then {
+        if (!_listenerTurnedOut) then {
             // acre_player sideChat format["1 %1 %2", _attenuate, (1-(getNumber(configFile >> "CfgVehicles" >> (typeOf (vehicle _listener)) >> "insideSoundCoef")))];
             _attenuate = _attenuate + ([_listener] call FUNC(getVehicleAttenuation));
         };
     };
-    if(_vehSpeaker != _speaker) then {
+    if (_vehSpeaker != _speaker) then {
         private _speakerTurnedOut = isTurnedOut _speaker;
-        if(!_speakerTurnedOut) then {
+        if (!_speakerTurnedOut) then {
             // acre_player sideChat format["2 %1 %2", _attenuate, (1-(getNumber(configFile >> "CfgVehicles" >> (typeOf (vehicle _speaker)) >> "insideSoundCoef")))];
             _attenuate = _attenuate + ([_speaker] call FUNC(getVehicleAttenuation));
         };

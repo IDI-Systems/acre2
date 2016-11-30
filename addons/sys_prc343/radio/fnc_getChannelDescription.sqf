@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
 _currentAbsChannel = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 _currentBlock = floor(_currentAbsChannel / 16);
