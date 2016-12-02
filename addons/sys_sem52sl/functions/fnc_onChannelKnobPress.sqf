@@ -112,7 +112,7 @@ if(_knobPosition != _newKnobPosition) then {
                             private _floor = floor (GVAR(newFrequency));
                             private _dif = GVAR(newFrequency) - _floor;
                             _dif = _dif + GVAR(selectionDir)*0.025;
-                            if (_dif >= 1) then {
+                            if (_dif >= 0.999) then {
                                 _dif = 0;
                             };
                             if (_dif < 0) then {
