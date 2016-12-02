@@ -19,8 +19,7 @@
                     "type": "steam",
                     "cred_file": "acre_release_steam.json",
                     "project_id": 751965892,
-                    "release_dir": "P:\\idi\\acre\\release\\@acre2",
-                    "release_text": "P:\\idi\\acre\\release\\@acre2\\README.md"
+                    "release_dir": "P:\\idi\\acre\\release\\@acre2"
                 },
                 {
                     "type": "sftp",

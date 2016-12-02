@@ -129,8 +129,9 @@ def find_bi_publisher():
     else:
         raise Exception("BadTools","Arma 3 Tools are not installed correctly or the P: drive needs to be created.")
 
-def steam_publish_folder(folder, mod_id, change_notes):
-    cmd = [find_bi_publisher(), "update", "/id:{}".format(mod_id), "/changeNoteFile:{}".format(change_notes), "/path:{}".format(folder)]
+def steam_publish_folder(folder, mod_id, version):
+    change_notes = "Version {}.{}.{}.{} - See changelog on github - https://github.com/IDI-Systems/acre2/releases".format(version[0],version[1],version[2],version[3])
+    cmd = [find_bi_publisher(), "update", "/id:{}".format(mod_id), "/changeNote:{}".format(change_notes), "/path:{}".format(folder)]
 
     print ("running: {}".format(" ".join(cmd)))
 
@@ -165,8 +166,7 @@ def main(argv):
         release_target = args.release_target
 
         manifest = json.load(manifest_file)
-
-        
+        version = get_project_version("..\\addons\\\main\\script_version.hpp")
 
         if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
             raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
@@ -193,11 +193,7 @@ def main(argv):
                     raise Exception("Steam Publish","No release directory defined in manifest for Steam publish")
                 release_dir = destination["release_dir"]
 
-                if(not "release_text" in destination):
-                    raise Exception("Steam Publish","No release text file defined in manifest for Steam publish")
-                release_text = destination["release_text"]
-
-                steam_publish_folder(release_dir, project_id, release_text)
+                steam_publish_folder(release_dir, project_id, version)
                 close_steam()
             if(destination["type"] == "sftp"):
                 cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
@@ -223,7 +219,7 @@ def main(argv):
                 cnopts = pysftp.CnOpts()
                 cnopts.hostkeys = None   
                 sftp = pysftp.Connection(host=hostname, username=sftp_username, password=sftp_password, cnopts=cnopts)
-                version = get_project_version("..\\addons\\\main\\script_version.hpp")
+
                 local_path = local_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 remote_path = remote_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 
@@ -242,8 +238,6 @@ def main(argv):
                 prerelease = destination["prerelease"]
                 asset_name = destination["asset_name"]
                 
-                version = get_project_version("..\\addons\\\main\\script_version.hpp")
-
                 tag_name = tag_name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 name = name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 asset_name = asset_name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
