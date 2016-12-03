@@ -42,6 +42,17 @@
                 }
             ]
         },
+        "steam-test": {
+            "destinations": [
+                {
+                    "type": "steam",
+                    "cred_file": "test_acre_release_steam.json",
+                    "project_id": 522695873,
+                    "release_dir": "P:\\idi\\acre\\release\\@acre2",
+                    "release_text": "P:\\idi\\acre\\release\\@acre2\\README.md"
+                }
+            ]
+        },
         "development": {
             "destinations": [
                 {
