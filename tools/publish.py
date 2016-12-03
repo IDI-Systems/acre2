@@ -131,7 +131,11 @@ def find_bi_publisher():
 
 def steam_publish_folder(folder, mod_id, version):
     change_notes = "Version {}.{}.{}.{} - See changelog on github - https://github.com/IDI-Systems/acre2/releases".format(version[0],version[1],version[2],version[3])
-    cmd = [find_bi_publisher(), "update", "/id:{}".format(mod_id), "/changeNote:{}".format(change_notes), "/path:{}".format(folder)]
+    steam_changelog_filepath = "steam_changelog.txt"
+    steam_changelog_file = open(changelog_file_path, "w")
+    steam_changelog_file.write(change_notes)
+    steam_changelog_file.close()
+    cmd = [find_bi_publisher(), "update", "/id:{}".format(mod_id), "/changeNoteFile:{}".format(steam_changelog_filepath), "/path:{}".format(folder)]
 
     print ("running: {}".format(" ".join(cmd)))
 
@@ -149,7 +153,7 @@ def steam_publish_folder(folder, mod_id, version):
             raise Exception("Publisher","Publisher had problems")
         ret = subprocess.call(cmd)
         print("Publisher Status: {}".format(ret))
-       
+    os.remove(steam_changelog_filepath)
 
 
 
