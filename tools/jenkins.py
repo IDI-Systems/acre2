@@ -6,6 +6,32 @@ import argparse
 import os
 import json
 
+def get_project_version(version_file):
+    majorText = ""
+    minorText = ""
+    patchText = ""
+    buildText = ""
+    try:
+        if os.path.isfile(version_file):
+            f = open(version_file, "r")
+            hpptext = f.read()
+            f.close()
+
+            if hpptext:
+                majorText = re.search(r"#define MAJOR (.*\b)", hpptext).group(1)
+                minorText = re.search(r"#define MINOR (.*\b)", hpptext).group(1)
+                patchText = re.search(r"#define PATCHLVL (.*\b)", hpptext).group(1)
+                buildText = re.search(r"#define BUILD (.*\b)", hpptext).group(1)
+
+        else:
+            print_error("A Critical file seems to be missing or inaccessible: {}".format(version_file))
+            raise FileNotFoundError("File Not Found: {}".format(version_file))
+
+    except Exception as e:
+        raise Exception("Check the integrity of the file: {}".format(version_file))
+
+    return [majorText, minorText, patchText, buildText]
+
 def do_action(args, error_msg, error_handler=None, error_args=None):
     if(subprocess.call(args) != 0):
         print("Error: {}".format(error_msg))
@@ -55,7 +81,10 @@ github_token = os.environ["IDI_GITHUB_TOKEN"]
 print(current_branch)
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
 do_action(make_args, "Make failed")
-do_action(["git", "commit", "-am", "Build Increment {}".format(os.environ["BUILD_NUMBER"])], "Failed to commit changes back into branch '{}'".format(current_branch))
+
+version = get_project_version("..\\addons\\\main\\script_version.hpp")
+commit_message = "v{}.{}.{}.{} - Build {}".format(version[0],version[1],version[2],version[3],os.environ["BUILD_NUMBER"])
+do_action(["git", "commit", "-am", commit_message], "Failed to commit changes back into branch '{}'".format(current_branch))
 do_action(["git", "push", "origin", current_branch], "Failed to push changes back into branch 'origin/{}'".format(current_branch))
 do_action(["git", "checkout", target_branch], "Failed to checkout target branch '{}'".format(target_branch))
 do_action(["git", "pull", "origin", target_branch], "Failed to update target branch from 'origin/{}'".format(target_branch))
