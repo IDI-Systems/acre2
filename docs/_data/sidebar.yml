@@ -151,7 +151,7 @@ entries:
       output: web, pdf
 
     - title: Building Extensions
-      url: /wiki/development/building-extensions.
+      url: /wiki/development/building-extensions
       output: web, pdf
 
     - title: Coding Guidelines (SQF)
