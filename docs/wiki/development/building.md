@@ -61,13 +61,13 @@ To start the game using this build, you can use the following modline:
 -mod=@CBA_A3;idi\clients\acre
 ```
 
-You will also need `acre.dll` and `ACRE2Arma.dll` placed in `idi\clients\acre` folder. You can obtain those from last release or [build them yourself](../Building-ACRE2-Extensions). TeamSpeak plugin is not required for basic operation.
+You will also need `acre.dll` and `ACRE2Arma.dll` placed in `idi\clients\acre` folder. You can obtain those from last release or [build them yourself](building-extensions). TeamSpeak plugin is not required for basic operation.
 
 ### Create a Release Build
 
 To create a complete build of ACRE2 that you can use without the source files you will need:
 
-- All [C++ requirements](./Building-ACRE2-Extensions#requirements)
+- All [C++ requirements](building-extensions)
 - `msbuild` in `PATH` environment variable (usually `C:\Program Files (x86)\MSBuild\14.0\Bin`)
 - Ensure `.hpp` is **NOT** in pboProject's "Exclude From Pbo" list
 
