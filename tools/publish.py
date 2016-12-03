@@ -129,8 +129,8 @@ def find_bi_publisher():
     else:
         raise Exception("BadTools","Arma 3 Tools are not installed correctly or the P: drive needs to be created.")
 
-def steam_publish_folder(folder, mod_id, version):
-    change_notes = "Version {}.{}.{}.{} - See changelog on github - https://github.com/IDI-Systems/acre2/releases".format(version[0],version[1],version[2],version[3])
+def steam_publish_folder(folder, mod_id, version, steam_changelog):
+    change_notes = steam_changelog.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
     steam_changelog_filepath = "steam_changelog.txt"
     steam_changelog_file = open(changelog_file_path, "w")
     steam_changelog_file.write(change_notes)
@@ -197,7 +197,11 @@ def main(argv):
                     raise Exception("Steam Publish","No release directory defined in manifest for Steam publish")
                 release_dir = destination["release_dir"]
 
-                steam_publish_folder(release_dir, project_id, version)
+                if(not "steam_changelog" in destination):
+                    raise Exception("Steam Publish","No steam changelog defined in manifest for Steam publish")
+                steam_changelog = destination["steam_changelog"]
+
+                steam_publish_folder(release_dir, project_id, version, steam_changelog)
                 close_steam()
             if(destination["type"] == "sftp"):
                 cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
