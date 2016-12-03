@@ -5,6 +5,7 @@ import subprocess
 import argparse
 import os
 import json
+import re
 
 def get_project_version(version_file):
     majorText = ""
