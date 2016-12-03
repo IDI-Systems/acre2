@@ -132,7 +132,7 @@ def find_bi_publisher():
 def steam_publish_folder(folder, mod_id, version, steam_changelog):
     change_notes = steam_changelog.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
     steam_changelog_filepath = "steam_changelog.txt"
-    steam_changelog_file = open(changelog_file_path, "w")
+    steam_changelog_file = open(steam_changelog_filepath, "w")
     steam_changelog_file.write(change_notes)
     steam_changelog_file.close()
     cmd = [find_bi_publisher(), "update", "/id:{}".format(mod_id), "/changeNoteFile:{}".format(steam_changelog_filepath), "/path:{}".format(folder)]
