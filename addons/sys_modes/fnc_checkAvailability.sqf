@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calls the mode specific availability function and there checks if two list of radios are able to communicate with each other.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: First radio list <ARRAY>
+ * 1: Second radio list <ARRAY>
+ * 2: Quick, only check if any radio can communicate <BOOL> (optional)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * List of Radios who can communicate <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [[ACRE_ACTIVE_RADIO], [] call acre_sys_data_fnc_getPlayerRadioList, false] call acre_sys_modes_fnc_checkAvailability
  *
  * Public: No
  */

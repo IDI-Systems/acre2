@@ -4,7 +4,6 @@
 
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
-// #define CBA_DEBUG_SYNCHRONOUS
 // #define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_SYS_PRC148
@@ -61,12 +60,5 @@
 #define GET_DISPLAY (uiNamespace getVariable QGVAR(currentDisplay))
 
 #define SET_TEXT(text, row, start, length) [_display, row, [start, start+length-1], text] call FUNC(setText)
-
-#define GET_STATE(id) ([GVAR(currentRadioId), "getState", #id] call EFUNC(sys_data,dataEvent))
-#define SET_STATE(id, val) ([GVAR(currentRadioId), "setState", [#id, val]] call EFUNC(sys_data,dataEvent))
-#define SET_STATE_CRIT(id, val) ([GVAR(currentRadioId), "setStateCritical", [#id, val]] call EFUNC(sys_data,dataEvent))
-
-
-#define GET_STATE_DEF(id, default) ([#id, default] call FUNC(getDefaultState))
 
 #define MAIN_DISPLAY (findDisplay 31337)

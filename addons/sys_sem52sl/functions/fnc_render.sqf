@@ -20,8 +20,8 @@
 params["_display"];
 
 
-private _channelKnobPosition = GET_STATE(channelKnobPosition);
-private _volumeKnobPosition = GET_STATE(volumeKnobPosition);
+private _channelKnobPosition = GET_STATE("channelKnobPosition");
+private _volumeKnobPosition = GET_STATE("volumeKnobPosition");
 
 // Volume knob
 
@@ -44,7 +44,7 @@ private _volImages = [
     QUOTE(PATHTOF(Data\knobs\volume\volsq_0875.paa)),
     QUOTE(PATHTOF(Data\knobs\volume\vol_1000.paa))
 ];
-private _channelKnobPosition = GET_STATE(channelKnobPosition);
+private _channelKnobPosition = GET_STATE("channelKnobPosition");
 if (_channelKnobPosition == 15) then { //programming mode p
     // Wiggle the knob one state over depending on the selection Dir.
     _newIdx = _volumeKnobPosition + (-1 * GVAR(selectionDir)); // works the opposite way to the sorting.
@@ -88,7 +88,7 @@ if (GVAR(depressedPTT)) then {
 
 // Audio headset cable
 
-private _audioPath = GET_STATE(audioPath);
+private _audioPath = GET_STATE("audioPath");
 
 if (_audioPath == "HEADSET") then {
     RADIO_CTRL(300) ctrlSetText QUOTE(PATHTOF(Data\ui\sem52slui_headset_ca.paa));

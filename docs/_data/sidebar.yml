@@ -1,0 +1,171 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: ACRE2
+  version: v2.3.0
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage
+      output: pdf
+      type: frontmatter
+
+  - title: Overview
+    output: web, pdf
+    folderitems:
+
+    - title: Home
+      url: /
+      output: web, pdf
+      type: homepage
+
+    - title: News
+      url: /news/latest
+      output: web
+
+  - title: User Guides
+    output: web, pdf
+    folderitems:
+
+    - title: Overview
+      url: /wiki/user/overview
+      output: web, pdf
+
+    - title: Installation
+      url: /wiki/user/installation
+      output: web, pdf
+
+    - title: Feature List
+      url: /wiki/user/feature-list
+      output: web, pdf
+
+    - title: Basic Concepts
+      url: /wiki/user/basic-concepts
+      output: web, pdf
+
+    - title: Direct Speech
+      url: /wiki/user/direct-speech
+      output: web, pdf
+
+    - title: Radio Signal Loss
+      url: /wiki/user/radio-signal-loss
+      output: web, pdf
+
+    - title: Class Names
+      url: /wiki/class-names
+      output: web, pdf
+
+  - title: Radio Guides
+    output: web, pdf
+    folderitems:
+
+    - title: Overview
+      url: /wiki/radios/overview
+      output: web, pdf
+
+    - title: AN/PRC-343 PRR
+      url: /wiki/radios/an-prc-343
+      output: web, pdf
+
+    - title: AN/PRC-148
+      url: /wiki/radios/an-prc-148
+      output: web, pdf
+
+    - title: AN/PRC-152
+      url: /wiki/radios/an-prc-152
+      output: web, pdf
+
+    - title: AN/PRC-117F
+      url: /wiki/radios/an-prc-117f
+      output: web, pdf
+
+    - title: AN/PRC-77
+      url: /wiki/radios/an-prc-77
+      output: web, pdf
+
+    - title: SEM 52 SL
+      url: /wiki/radios/sem-52-sl
+      output: web, pdf
+
+
+  - title: API / Frameworks
+    output: web, pdf
+    folderitems:
+
+      - title: Overview
+        url: /wiki/frameworks/overview
+        output: web, pdf
+
+      - title: Functions List
+        url: /wiki/frameworks/functions-list
+        output: web, pdf
+
+      - title: Mission Making Intro
+        url: /wiki/frameworks/mission-making-intro
+        output: web, pdf
+
+      - title: Mission Making Guide
+        url: /wiki/frameworks/mission-making-guide
+        output: web, pdf
+
+      - title: Vehicle Attenuation
+        url: /wiki/frameworks/vehicle-attenuation
+        output: web, pdf
+
+      - title: Component System
+        url: /wiki/frameworks/component-system
+        output: web, pdf
+
+      - title: Creating New Radio
+        url: /wiki/frameworks/creating-new-radio
+        output: web, pdf
+
+      - title: Radio Signal Debugging
+        url: /wiki/frameworks/radio-signal-debugging
+        output: web, pdf
+
+
+  - title: Development
+    output: web, pdf
+    folderitems:
+
+    - title: Overview
+      url: /wiki/development/overview
+      output: web, pdf
+
+    - title: Branching and Release
+      url: /wiki/development/branching-and-release
+      output: web, pdf
+
+    - title: Building
+      url: /wiki/development/building
+      output: web, pdf
+
+    - title: Building Extensions
+      url: /wiki/development/building-extensions
+      output: web, pdf
+
+    - title: Coding Guidelines (SQF)
+      url: /wiki/development/coding-guidelines-sqf
+      output: web, pdf
+
+    - title: Coding Guidelines (C++)
+      url: /wiki/development/coding-guidelines-cpp
+      output: web, pdf
+
+    - title: Documentation Installation
+      url: /wiki/development/docs_installation
+      output: web, pdf
+
+    - title: Documentation Guidelines
+      url: /wiki/development/docs_guidelines
+      output: web, pdf

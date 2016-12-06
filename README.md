@@ -3,20 +3,23 @@
 </p>
 
 <p align="center">
-     <a href="http://raceriv.com/arma2/acre/acre2_2.2.0.904.zip">
+    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.3.0.926/acre2_2.3.0.926.zip">
         <img src="https://img.shields.io/badge/Version-2.3.0-blue.svg?style=flat-square" alt="ACRE2 Version">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/issues">
         <img src="https://img.shields.io/github/issues-raw/IDI-Systems/acre2.svg?style=flat-square&label=Issues" alt="ACRE2 Issues">
     </a>
-    <a href="https://forums.bistudio.com/topic/193813-acre2-v22-stable-steam-workshop-release/">
+    <a href="https://forums.bistudio.com/topic/193813-acre2-v22-stable-steam-workshop-release">
         <img src="https://img.shields.io/badge/BIF-Thread-lightgrey.svg?style=flat-square" alt="BIF Thread">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/blob/master/LICENSE">
         <img src="https://img.shields.io/badge/License-GPLv3-red.svg?style=flat-square" alt="ACRE2 License">
     </a>
-    <a href="https://github.com/IDI-Systems/acre2/wiki">
-        <img src="https://img.shields.io/badge/Github-Wiki-lightgrey.svg?style=flat-square" alt="ACRE2 WIKI">
+    <a href="http://acre2.idi-systems.com">
+        <img src="https://img.shields.io/badge/Documentation-Home-lightgrey.svg?style=flat-square" alt="ACRE2 Wiki">
+    </a>
+    <a href="http://slackin.idi-systems.com:3000">
+        <img src="http://slackin.idi-systems.com:3000/badge.svg?style=flat-square&label=Slack" alt="ACRE2 Slack">
     </a>
     <a href="https://travis-ci.org/IDI-Systems/acre2">
         <img src="https://img.shields.io/travis/IDI-Systems/acre2.svg?style=flat-square&label=Build" alt="ACRE2 Build Status">
@@ -46,5 +49,5 @@
 ### Guides & how-tos
 
 If you installed ACRE2 but have trouble understanding how it all works, or where to start, read this first:
-- [Installation instructions](https://github.com/IDI-Systems/acre2/wiki/Installation-Instructions)
-- [ACRE2 wiki](https://github.com/IDI-Systems/acre2/wiki/)
+- [Installation Instructions](http://acre2.idi-systems.com/wiki/user/installation)
+- [Documentation Home](http://acre2.idi-systems.com)

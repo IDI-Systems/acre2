@@ -23,7 +23,7 @@ if((_this select 1) == 0) then {
     _dir = 0.20;
 };
 private _ctrl = _this select 5;
-private _currentVolume = GET_STATE(volume);     //I am not using the API for getting the volume because that could
+private _currentVolume = GET_STATE("volume");     //I am not using the API for getting the volume because that could
                                         //be different from what the internal value is based on the speaker
                                         //the API value should be used as a modifier coefficient, not as a
                                         //state.

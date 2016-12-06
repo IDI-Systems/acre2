@@ -92,7 +92,7 @@ private _result = false;
         _unit setVariable[QGVAR(lastSpeakingEventTime), diag_tickTime, false];
         if(_onRadio == 1) then {
             if([_radioId] call EFUNC(sys_radio,radioExists)) then {
-                PUSH(GVAR(speakers),_unit);
+                GVAR(speakers) pushBack _unit;
                 private _val = [_netId, _speakingId];
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
                 _unit setVariable[QGVAR(currentSpeakingRadio), _radioId];
@@ -100,7 +100,7 @@ private _result = false;
                 _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
                 {
                     if([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
-                        PUSH(_speakerRadio, _x);
+                        _speakerRadio pushBack _x;
                     };
                 } forEach _nearRadios;
                 GVAR(nearRadios) = _speakerRadio;
@@ -116,12 +116,13 @@ private _result = false;
                     missionNamespace setVariable [_radioId + "_signal_startTime", diag_tickTime];
                     _result = true;
                     GVAR(speaking_cache_valid) = false;
-                    PUSH(GVAR(keyedMicRadios), _unit);
+                    GVAR(keyedMicRadios) pushBack _unit;
                     {
                         [_x, "handleBeginTransmission", [_radioId]] call EFUNC(sys_data,transEvent);
                     } forEach _okRadios;
-
-                    [_unit, _okRadios] call FUNC(processRadioSpeaker); // Call here to initiate the extension call.
+                    if (ACRE_CORE_INIT) then { // Must wait for the map to have finished loading.
+                        [_unit, _okRadios] call FUNC(processRadioSpeaker); // Call here to initiate the extension call.
+                    };
                 };
 
             } else {
@@ -129,7 +130,7 @@ private _result = false;
             };
         } else {
             if((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
-                PUSH(GVAR(speakers), _unit);
+                GVAR(speakers) pushBack _unit;
             };
             TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));
             REM(GVAR(keyedMicRadios),_unit);

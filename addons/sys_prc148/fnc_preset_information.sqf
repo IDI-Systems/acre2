@@ -286,6 +286,3 @@ DGVAR(entryMap) = [];
 DGVAR(currentMenu) = [];
 DGVAR(editEntry) = false;
 
-
-
-ADDON = true;

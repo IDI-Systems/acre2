@@ -27,7 +27,7 @@ if((count _this) > 2) then {
 };
 
 if(_type == 8) then {
-    (_display displayCtrl _iconId) progressSetPosition 0.85;
+    (_display displayCtrl _iconId) progressSetPosition 0.5;
 };
 
 (_display displayCtrl _iconId) ctrlShow _toggle;

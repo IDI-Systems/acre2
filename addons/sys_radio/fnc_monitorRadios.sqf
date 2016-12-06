@@ -195,7 +195,9 @@ DFUNC(hasGearDesync) = {
         {
             _message = _message + format ["%1\n", name _x];
         } forEach ACRE_SERVER_DESYNCED_PLAYERS;
-        hintSilent _message;
+        if (!GVAR(disableDesyncHint)) then {
+            hintSilent _message;
+        };
         WARNING(_message);
     };
 };

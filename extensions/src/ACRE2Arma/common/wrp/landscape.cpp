@@ -1,4 +1,5 @@
 #include "landscape.hpp"
+#include <exception>
 
 acre::wrp::landscape::landscape(std::string path_)
 {
@@ -18,6 +19,9 @@ acre::wrp::landscape::~landscape()
 
 bool acre::wrp::landscape::_read_binary_tree_block(std::istream &stream_, uint32_t bit_length, uint32_t block_size, uint32_t cell_size, uint32_t block_offset_x, uint32_t block_offset_y)
 {
+    block_size = (int)ceil((log10(block_size) / log10(2)) / 2);
+    block_size = (int)pow(2, 2 * block_size);
+
     uint32_t current_block_size = block_size / 4;//256..64..16..1
     uint32_t current_block_offset_x, current_block_offset_y;
 
@@ -57,6 +61,7 @@ bool acre::wrp::landscape::_process(std::istream &stream_)
 {
     stream_.read(filetype, 4);
     filetype[4] = 0x00;
+    failure = 0;
 
     if (strcmp(filetype, "8WVR") == 0) {
         // Header
@@ -91,58 +96,77 @@ bool acre::wrp::landscape::_process(std::istream &stream_)
 
     uint8_t flag; // Determines if the blocks are present.
 
-    stream_.read((char *)&flag, sizeof(uint8_t));
-    if (flag == '\x1') {
-        _read_binary_tree_block(stream_, sizeof(uint16_t), 16, map_size_x, 0, 0);
-    } else {
-        // Grid is not present, read the fill bits.
-        uint32_t fill_bits;
-        stream_.read((char *)&fill_bits, sizeof(uint32_t));
-    }
-
-    stream_.read((char *)&flag, sizeof(uint8_t));
-    if (flag == '\x1') {
-        _read_binary_tree_block(stream_, sizeof(uint16_t), 16, map_size_x, 0, 0);
-    } else {
-        // Grid is not present, read the fill bits.
-        uint32_t fill_bits;
-        stream_.read((char *)&fill_bits, sizeof(uint32_t));
-    }
-
-    uint32_t peak_count;
-    stream_.read((char *)&peak_count, sizeof(uint32_t));
-
-    float *peak_floats = new float[peak_count * 3];
-    stream_.read((char *)peak_floats, sizeof(float)*peak_count * 3);
-
-    for (uint32_t i = 0; i < peak_count * 3; i = i + 3) {
-        peaks.push_back(vector3<float>(peak_floats[i], peak_floats[i + 1], peak_floats[i + 2]));
-    }
-    delete[] peak_floats;
-
-    /* GridBlock - RvmatLayerIndex*/
-    stream_.read((char *)&flag, sizeof(uint8_t));
-    if (flag == '\x1') {
-        _read_binary_tree_block(stream_, sizeof(int16_t), 16, layer_size_x, 0, 0);
-    } else {
-        // Grid is not present, read the fill bits.
-        uint32_t fill_bits;
-        stream_.read((char *)&fill_bits, sizeof(uint32_t));
-    }
-
-    /* CHEEKY HACK for our dummy Tanoa WRP */
-    if (strcmp(filetype, "ACRE") == 0) {
-        elevations = compressed<float>(stream_, map_size_x*map_size_x, false, false, version);
-    } else {
-        if (version <= 20) {
-            compressed<int16_t> test_demcompress_old = compressed<int16_t>(stream_, layer_size_x*layer_size_y, true, false, version);
+    // Failure is only likely on recompression/reading gridblocks.
+    try {
+        /* GridBlock - CellEnv */
+        stream_.read((char *)&flag, sizeof(uint8_t));
+        if (flag == '\x1') {
+            _read_binary_tree_block(stream_, sizeof(uint16_t), 16, map_size_x, 0, 0);
+        } else {
+            // Grid is not present, read the fill bits.
+            uint32_t fill_bits;
+            stream_.read((char *)&fill_bits, sizeof(uint32_t));
         }
-        //Random clutter
-        compressed<uint8_t> test_demcompress1 = compressed<uint8_t>(stream_, map_size_x*map_size_x, true, false, version);
-        if (version >= 22) //CompressedBytes 1
-            compressed<int8_t> test_demcompress2 = compressed<int8_t>(stream_, map_size_x*map_size_x, true, false, version);//map_size_x*map_size_x
 
-        elevations = compressed<float>(stream_, map_size_x*map_size_x, true, false, version);
+        /* GridBlock - CfgEnvSounds */
+        stream_.read((char *)&flag, sizeof(uint8_t));
+        if (flag == '\x1') {
+            _read_binary_tree_block(stream_, sizeof(uint16_t), 16, map_size_x, 0, 0);
+        } else {
+            // Grid is not present, read the fill bits.
+            uint32_t fill_bits;
+            stream_.read((char *)&fill_bits, sizeof(uint32_t));
+        }
+
+        uint32_t peak_count;
+        stream_.read((char *)&peak_count, sizeof(uint32_t));
+
+        float *peak_floats = new float[peak_count * 3];
+        stream_.read((char *)peak_floats, sizeof(float)*peak_count * 3);
+
+        for (uint32_t i = 0; i < peak_count * 3; i = i + 3) {
+            peaks.push_back(vector3<float>(peak_floats[i], peak_floats[i + 1], peak_floats[i + 2]));
+        }
+        delete[] peak_floats;
+
+        /* GridBlock - RvmatLayerIndex*/
+        stream_.read((char *)&flag, sizeof(uint8_t));
+        if (flag == '\x1') {
+            _read_binary_tree_block(stream_, sizeof(int16_t), 16, layer_size_x, 0, 0);
+        } else {
+            // Grid is not present, read the fill bits.
+            uint32_t fill_bits;
+            stream_.read((char *)&fill_bits, sizeof(uint32_t));
+        }
+
+        /* CHEEKY HACK for our dummy Tanoa WRP */
+        if (strcmp(filetype, "ACRE") == 0) {
+            elevations = compressed<float>(stream_, map_size_x*map_size_x, false, false, version);
+        } else {
+            //Random clutter
+            if (version <= 20) {
+                compressed<int16_t> test_demcompress_old = compressed<int16_t>(stream_, layer_size_x*layer_size_y, true, false, version); // int16_t
+            } else {
+                compressed<uint8_t> test_demcompress1 = compressed<uint8_t>(stream_, map_size_x*map_size_y, true, false, version);
+            }
+            if (version >= 22) { //CompressedBytes 1
+                compressed<uint8_t> test_demcompress2 = compressed<uint8_t>(stream_, map_size_x*map_size_y, true, false, version);
+            }
+
+            elevations = compressed<float>(stream_, map_size_x*map_size_y, true, false, version);
+        }
+    } catch (std::exception& e) {
+        LOG(ERROR) << "WRP Parsing exception: " << e.what();
+        //Insert 1 peak in the middle.
+        peaks.clear();
+        peaks.push_back(vector3<float>((map_size_x*map_grid_size)/2, (map_size_y*map_grid_size)/2,0));
+
+        // Fill elevation grid with 0 data.
+        for (uint32_t x = 0; x < (map_size_x*map_size_y); x++) {
+            elevations.data.push_back(0.0f);
+        }
+        //elevations.size = elevations
+        failure = -1;
     }
     return true;
 }

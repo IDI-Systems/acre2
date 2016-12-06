@@ -31,7 +31,7 @@ _dir = _dir*5;
 };
 
 //Read out the currentVolume via DataEvent
-private _currentVolume = GET_STATE(volume);
+private _currentVolume = GET_STATE("volume");
 _currentVolume = _currentVolume * 10;
 
 //Define and set new volume

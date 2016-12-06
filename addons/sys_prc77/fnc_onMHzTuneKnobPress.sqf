@@ -31,7 +31,7 @@ _dir = _dir*5;
 };
 
 //Read out the current KnobPositions via DataEvent | need to make a full copy of the array
-private _currentTuneKnobsPosition = GET_STATE(currentChannel);
+private _currentTuneKnobsPosition = GET_STATE("currentChannel");
 private _currentMHzKnobPosition = _currentTuneKnobsPosition select 0;
 
 //Define and set new knob position

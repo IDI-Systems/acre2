@@ -65,6 +65,13 @@ while { _result != -1 && _iter < 5} do {
     _result = [_text, "$ch"] call CBA_fnc_find;
 };
 
+_result = [_text, "$transmitting"] call CBA_fnc_find;
+if(_result != -1) then {
+    private _transText = "R";
+    if (ACRE_LOCAL_BROADCASTING && {ACRE_BROADCASTING_RADIOID isEqualTo GVAR(currentRadioId)}) then { _transText = "T"; };
+    _text = [_text, "$transmitting", _transText] call CBA_fnc_replace;
+};
+
 // Check for current channel formats
 _result = [_text, "$cch"] call CBA_fnc_find;
 if(_result != -1) then {

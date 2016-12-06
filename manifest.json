@@ -18,9 +18,9 @@
                 {
                     "type": "steam",
                     "cred_file": "acre_release_steam.json",
-                    "project_id": 774084145,
+                    "project_id": 751965892,
                     "release_dir": "P:\\idi\\acre\\release\\@acre2",
-                    "release_text": "P:\\idi\\acre\\release\\@acre2\\README.md"
+                    "steam_changelog": "Version {major}.{minor}.{patch}.{build} - See changelog on github - https://github.com/IDI-Systems/acre2/releases"
                 },
                 {
                     "type": "sftp",
@@ -42,32 +42,25 @@
                 }
             ]
         },
-        "development": {
+        "steam-test": {
             "destinations": [
                 {
                     "type": "steam",
-                    "cred_file": "acre_release_steam.json",
-                    "project_id": 774084145,
+                    "cred_file": "test_acre_release_steam.json",
+                    "project_id": 522695873,
                     "release_dir": "P:\\idi\\acre\\release\\@acre2",
-                    "release_text": "P:\\idi\\acre\\dummy_release_notes.txt"
-                },
+                    "steam_changelog": "Version {major}.{minor}.{patch}.{build} - See changelog on github - https://github.com/IDI-Systems/acre2/releases"
+                }
+            ]
+        },
+        "development": {
+            "destinations": [
                 {
                     "type": "sftp",
                     "cred_file": "acre_release_sftp.json",
                     "hostname": "dev.idi-systems.com",
                     "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}.zip",
                     "remote_path": "dev.idi-systems.com/dev/acre2_{major}.{minor}.{patch}.{build}.zip"
-                },
-                {
-                    "type": "github",
-                    "account": "IDI-Systems/acre2",
-                    "tag_name": "v{major}.{minor}.{patch}.{build}",
-                    "branch": "development-build",
-                    "name": "v{major}.{minor}.{patch}.{build}",
-                    "body_file": "P:\\idi\\acre\\dummy_release_notes.txt",
-                    "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}.zip",
-                    "asset_name": "acre2_{major}.{minor}.{patch}.{build}.zip",
-                    "prerelease": true
                 }
             ]
         }

@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Initiates the signal calculation function for a transmission between two radios. This is done on the receiving client
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Transmitter <OBJECT>
+ * 1: Transmitter Radio ID <STRING>
+ * 2: Receiver <OBJECT>
+ * 3: Receiver Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Signal Calculation Paramteres <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [unit1, "_txRadioId", acre_player, "_rxRadioId"] call acre_sys_modes_fnc_sc_speaking
  *
  * Public: No
  */
@@ -23,7 +25,11 @@ private _txData = [_txRadioId, "getCurrentChannelData"] call EFUNC(sys_data,data
 private _txFreq = HASH_GET(_txData, "frequencyTX");
 private _txPower = HASH_GET(_txData, "power");
 
-private _maxSignal = [_txFreq, _txPower, _rxRadioId, _txRadioId] call EFUNC(sys_signal,getSignal);
+private _maxSignal = [0,-993];
+
+if (_rxRadioId != _txRadioId) then {
+    _maxSignal = [_txFreq, _txPower, _rxRadioId, _txRadioId] call EFUNC(sys_signal,getSignal);
+};
 
 private _return = [_txRadioId, _rxRadioId, _maxSignal select 0, _maxSignal select 1, 0];
 

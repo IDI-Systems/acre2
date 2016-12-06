@@ -24,7 +24,7 @@ params["_display"];
     RADIO_CTRL(_x) ctrlSetText "";
 } forEach [301,302,303,304,305,109]; // purge.
 
-private _channelKnobPosition = GET_STATE(channelKnobPosition);
+private _channelKnobPosition = GET_STATE("channelKnobPosition");
 
 if (_channelKnobPosition == 0) exitWith {}; // OFF
 
@@ -171,8 +171,8 @@ if (GVAR(booting)) exitWith {
 
 
 
-private _channelKnobPosition = GET_STATE(channelKnobPosition);
-private _isOn = GET_STATE(radioOn);
+private _channelKnobPosition = GET_STATE("channelKnobPosition");
+private _isOn = GET_STATE("radioOn");
 
 // Can't use CBA_fnc_formatNumber due to precision error - This will simply format a number into usable array.
 private _fnc_formatNumber = {
@@ -189,8 +189,8 @@ private _fnc_formatNumber = {
 
 switch _channelKnobPosition do {
         case 1: { // ON
-            private _currentChannel = GET_STATE(currentChannel); // add 1 for UI thing
-            private _channels = GET_STATE(channels);
+            private _currentChannel = GET_STATE("currentChannel"); // add 1 for UI thing
+            private _channels = GET_STATE("channels");
             private _channel = _channels select _currentChannel;
             private _freq = HASH_GET(_channel,"frequencyRX");
 
@@ -217,7 +217,7 @@ switch _channelKnobPosition do {
             // Step 1) choose channel (push PTT)
             // (then show current freq for that channel)
             //
-            private _step = GET_STATE(programmingStep);
+            private _step = GET_STATE("programmingStep");
             switch _step do {
                 //PTT used as confirm
                 case 0: {  // select channels - Starting with H
@@ -292,8 +292,8 @@ switch _channelKnobPosition do {
             };
         };
         default {
-            private _currentChannel = GET_STATE(currentChannel);
-            private _channels = GET_STATE(channels);
+            private _currentChannel = GET_STATE("currentChannel");
+            private _channels = GET_STATE("channels");
             private _channel = _channels select _currentChannel;
             private _freq = HASH_GET(_channel,"frequencyRX");
 

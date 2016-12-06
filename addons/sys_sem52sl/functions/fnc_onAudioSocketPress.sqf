@@ -18,7 +18,7 @@
 
 params ["","_key"];
 
-private _audioPath = GET_STATE(audioPath);
+private _audioPath = GET_STATE("audioPath");
 
 if (_audioPath == "HEADSET") then {
     [GVAR(currentRadioId), "setState", ["audioPath", "INTSPEAKER"]] call EFUNC(sys_data,dataEvent);
