@@ -28,5 +28,13 @@ if(!ACRE_IS_SPECTATOR) then {
 } else {
     ACRE_LISTENER_POS = _projectPos1;
 };
+
+private _height = ACRE_LISTENER_POS param [2, 1];
+if (_height < 0) then {
+    ACRE_LISTENER_DIVE = 1;
+} else {
+    ACRE_LISTENER_DIVE = 0;
+};
+
 private _additionalValues = [([] call FUNC(getSpeakingLanguageId))];
 CALL_RPC("updateSelf", ACRE_LISTENER_POS + ACRE_LISTENER_DIR + _additionalValues);
