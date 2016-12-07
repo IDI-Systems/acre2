@@ -66,11 +66,11 @@ namespace detail
     {
         T const angle(wrapAngle<T>(x));
 
-        if(angle<half_pi<T>())
+        if (angle<half_pi<T>())
             return detail::cos_52s(angle);
-        if(angle<pi<T>())
+        if (angle<pi<T>())
             return -detail::cos_52s(pi<T>() - angle);
-        if(angle<(T(3) * half_pi<T>()))
+        if (angle<(T(3) * half_pi<T>()))
             return -detail::cos_52s(angle - pi<T>());
 
         return detail::cos_52s(two_pi<T>() - angle);

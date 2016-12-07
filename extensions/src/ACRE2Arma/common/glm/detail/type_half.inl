@@ -41,7 +41,7 @@ namespace detail
     {
         volatile float f = 1e10;
 
-        for(int i = 0; i < 10; ++i)    
+        for (int i = 0; i < 10; ++i)    
             f *= f; // this will overflow before the for loop terminates
         return f;
     }
@@ -70,9 +70,9 @@ namespace detail
         int e = (value >> 10) & 0x0000001f;
         int m =  value        & 0x000003ff;
 
-        if(e == 0)
+        if (e == 0)
         {
-            if(m == 0)
+            if (m == 0)
             {
                 //
                 // Plus or minus zero
@@ -88,7 +88,7 @@ namespace detail
                 // Denormalized number -- renormalize it
                 //
 
-                while(!(m & 0x00000400))
+                while (!(m & 0x00000400))
                 {
                     m <<= 1;
                     e -=  1;
@@ -98,9 +98,9 @@ namespace detail
                 m &= ~0x00000400;
             }
         }
-        else if(e == 31)
+        else if (e == 31)
         {
-            if(m == 0)
+            if (m == 0)
             {
                 //
                 // Positive or negative infinity
@@ -162,9 +162,9 @@ namespace detail
         // Now reassemble s, e and m into a half:
         //
 
-        if(e <= 0)
+        if (e <= 0)
         {
-            if(e < -10)
+            if (e < -10)
             {
                 //
                 // E is less than -10.  The absolute value of f is
@@ -195,7 +195,7 @@ namespace detail
             // the code below will handle it correctly.
             // 
 
-            if(m & 0x00001000) 
+            if (m & 0x00001000) 
                 m += 0x00002000;
 
             //
@@ -204,9 +204,9 @@ namespace detail
 
             return hdata(s | (m >> 13));
         }
-        else if(e == 0xff - (127 - 15))
+        else if (e == 0xff - (127 - 15))
         {
-            if(m == 0)
+            if (m == 0)
             {
                 //
                 // F is an infinity; convert f to a half
@@ -242,11 +242,11 @@ namespace detail
             // Round to nearest, round "0.5" up
             //
 
-            if(m &  0x00001000)
+            if (m &  0x00001000)
             {
                 m += 0x00002000;
 
-                if(m & 0x00800000)
+                if (m & 0x00800000)
                 {
                     m =  0;     // overflow in significand,
                     e += 1;     // adjust exponent

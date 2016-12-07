@@ -29,9 +29,9 @@ void ts3plugin_registerPluginID(const char* commandID) {
 void ts3plugin_onPluginCommandEvent(uint64 serverConnectionHandlerID, const char* pluginName, const char* pluginCommand) {
     //LOG("[%s], [%s]", pluginName, pluginCommand);
 
-    if(pluginName && pluginCommand) {
+    if (pluginName && pluginCommand) {
         // this we pass to a custom TS3 IServer to handle the damn messages
-        if(strstr(pluginName, "acre2") != NULL && CEngine::getInstance()->getExternalServer() ) {
+        if (strstr(pluginName, "acre2") != NULL && CEngine::getInstance()->getExternalServer() ) {
             CEngine::getInstance()->getExternalServer()->handleMessage((unsigned char *)pluginCommand);
         }
     }

@@ -41,7 +41,7 @@ typedef struct ACRE_VECTOR {
         z = o.z; 
     }
     bool operator== (const ACRE_VECTOR& rhs ) const {
-        if(x == rhs.x && y == rhs.y && z == rhs.z)
+        if (x == rhs.x && y == rhs.y && z == rhs.z)
             return true;
         else
             return false;

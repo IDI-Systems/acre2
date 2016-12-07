@@ -30,7 +30,7 @@
 
 #include "glm/glm.hpp"
 
-#if(!(GLM_ARCH & GLM_ARCH_SSE2))
+#if (!(GLM_ARCH & GLM_ARCH_SSE2))
 #    error "SSE2 instructions not supported or enabled"
 #else
 

@@ -28,7 +28,7 @@ INITIALIZE_EASYLOGGINGPP
 
 #define READ_STRING(output) { \
                                     std::stringstream ss; \
-                                      for(int x = 0; x < 2056;x++) { char byte = 0; stream_.read((char *)&byte, 1);  if(byte == 0x00) break; ss << byte;  } \
+                                      for (int x = 0; x < 2056;x++) { char byte = 0; stream_.read((char *)&byte, 1);  if (byte == 0x00) break; ss << byte;  } \
                                     output = ss.str(); \
                                     }
 
@@ -294,7 +294,7 @@ int main(int argc, char **argv) {
     
     
     std::string file_path;
-    if(argc == 3)
+    if (argc == 3)
         file_path = std::string(argv[2]);
 
     config["signal_overlay_path"] = file_path + "_signal.png";

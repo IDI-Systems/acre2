@@ -51,10 +51,10 @@ BOOL CWave::Load(std::string wavFile)
     file.read(testChunk, 4);
 
 
-    while(strncmp(testChunk, "fmt", 3) != 0 && !file.eof()) {
+    while (strncmp(testChunk, "fmt", 3) != 0 && !file.eof()) {
         file.read(testChunk, 4);
     }
-    if(strncmp(testChunk, "fmt", 3) == 0) {
+    if (strncmp(testChunk, "fmt", 3) == 0) {
         memcpy(this->m_Format.id, testChunk, sizeof(testChunk));
         file.read((char *)&this->m_Format.size, sizeof(this->m_Format.size));
         file.read((char *)&this->m_Format.format, sizeof(this->m_Format.format));
@@ -64,18 +64,18 @@ BOOL CWave::Load(std::string wavFile)
         file.read((char *)&this->m_Format.blockAlign, sizeof(this->m_Format.blockAlign));
         file.read((char *)&this->m_Format.bitsPerSample, sizeof(this->m_Format.bitsPerSample));
 
-        if(this->m_Format.size == 18) {
+        if (this->m_Format.size == 18) {
             file.seekg(2, std::ifstream::cur);
         }
 
         file.read(testChunk, 4);
 
-        while(strncmp(testChunk, "data", 4) != 0 && !file.eof()) {
+        while (strncmp(testChunk, "data", 4) != 0 && !file.eof()) {
             file.read(testChunk, 4);
         }
-        if(strncmp(testChunk, "data", 4) == 0) {
+        if (strncmp(testChunk, "data", 4) == 0) {
             file.read((char *)&this->m_dwSize, sizeof(this->m_dwSize));
-            if(this->m_dwSize%2 == 1) {
+            if (this->m_dwSize%2 == 1) {
                 this->m_dwSize -= 1;
             }
             this->m_lpData = new BYTE[this->m_dwSize];

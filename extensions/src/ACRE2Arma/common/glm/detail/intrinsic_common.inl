@@ -29,7 +29,7 @@
 namespace glm{
 namespace detail{
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if (GLM_COMPILER & GLM_COMPILER_VC)
 #pragma warning(push)
 #pragma warning(disable : 4510 4512 4610)
 #endif
@@ -45,7 +45,7 @@ namespace detail{
         ieee754_QNAN() : f(0.0)/*, mantissa(0x7FFFFF), exp(0xFF), sign(0x0)*/ {}
     };
 
-#if(GLM_COMPILER & GLM_COMPILER_VC)
+#if (GLM_COMPILER & GLM_COMPILER_VC)
 #pragma warning(pop)
 #endif
 
@@ -264,7 +264,7 @@ GLM_FUNC_QUALIFIER __m128 sse_mix_ps(__m128 v1, __m128 v2, __m128 a)
 GLM_FUNC_QUALIFIER __m128 sse_stp_ps(__m128 edge, __m128 x)
 {
     __m128 cmp = _mm_cmple_ps(x, edge);
-    if(_mm_movemask_ps(cmp) == 0)
+    if (_mm_movemask_ps(cmp) == 0)
         return glm::detail::one;
     else
         return glm::detail::zero;

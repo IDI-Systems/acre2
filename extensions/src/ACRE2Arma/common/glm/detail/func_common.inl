@@ -87,7 +87,7 @@ namespace detail
         GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x, vecType<T, P> const & y, vecType<bool, P> const & a)
         {
             vecType<T, P> Result(uninitialize);
-            for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+            for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
                 Result[i] = a[i] ? y[i] : x[i];
             return Result;
         }
@@ -283,15 +283,15 @@ namespace detail
         genType IntegerPart = static_cast<genType>(Integer);
         genType FractionalPart = fract(x);
 
-        if(FractionalPart > static_cast<genType>(0.5) || FractionalPart < static_cast<genType>(0.5))
+        if (FractionalPart > static_cast<genType>(0.5) || FractionalPart < static_cast<genType>(0.5))
         {
             return round(x);
         }
-        else if((Integer % 2) == 0)
+        else if ((Integer % 2) == 0)
         {
             return IntegerPart;
         }
-        else if(x <= static_cast<genType>(0)) // Work around... 
+        else if (x <= static_cast<genType>(0)) // Work around... 
         {
             return IntegerPart - static_cast<genType>(1);
         }
@@ -585,7 +585,7 @@ namespace detail
 #            elif GLM_COMPILER & (GLM_COMPILER_INTEL | GLM_COMPILER_VC)
                 return _fpclass(x) == _FPCLASS_NINF || _fpclass(x) == _FPCLASS_PINF;
 #            elif GLM_COMPILER & (GLM_COMPILER_GCC | (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
-#                if(GLM_PLATFORM & GLM_PLATFORM_ANDROID && __cplusplus < 201103L)
+#                if (GLM_PLATFORM & GLM_PLATFORM_ANDROID && __cplusplus < 201103L)
                     return _isinf(x) != 0;
 #                else
                     return std::isinf(x);

@@ -47,7 +47,7 @@
 #include "../gtx/vector_query.hpp"
 #include <limits>
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_matrix_query extension included")
 #endif
 

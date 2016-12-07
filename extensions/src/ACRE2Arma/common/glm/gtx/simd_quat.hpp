@@ -46,15 +46,15 @@
 #include "../gtc/quaternion.hpp"
 #include "../gtx/fast_trigonometry.hpp"
 
-#if(GLM_ARCH != GLM_ARCH_PURE)
+#if (GLM_ARCH != GLM_ARCH_PURE)
 
-#if(GLM_ARCH & GLM_ARCH_SSE2)
+#if (GLM_ARCH & GLM_ARCH_SSE2)
 #   include "../gtx/simd_mat4.hpp"
 #else
 #    error "GLM: GLM_GTX_simd_quat requires compiler support of SSE2 through intrinsics"
 #endif
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_simd_quat extension included")
 #endif
 

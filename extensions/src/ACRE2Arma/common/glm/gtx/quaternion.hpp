@@ -48,7 +48,7 @@
 #include "../gtc/quaternion.hpp"
 #include "../gtx/norm.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_quaternion extension included")
 #endif
 

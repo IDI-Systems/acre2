@@ -34,7 +34,7 @@ RPC_FUNCTION(playLoadedSound) {
     isWorld = vMessage->getParameterAsInt(8);
 
     ACRE_RESULT res = CEngine::getInstance()->getSoundPlayback()->playSound(id, position, direction, volume, isWorld == 1);
-    if(res == ACRE_ERROR) {
+    if (res == ACRE_ERROR) {
         vServer->sendMessage(CTextMessage::formatNewMessage("handleSoundError", "%s,", id.c_str()));
     }
 
