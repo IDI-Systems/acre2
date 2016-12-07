@@ -19,8 +19,8 @@ if (!hasInterface) exitWith {false};
 
 params ["_spectVariable"];
 
-if(!IS_BOOL(_spectVariable)) exitWith { false };
-if(_spectVariable) then {
+if (!IS_BOOL(_spectVariable)) exitWith { false };
+if (_spectVariable) then {
     [] call EFUNC(sys_core,spectatorOn);
 } else {
     [] call EFUNC(sys_core,spectatorOff);

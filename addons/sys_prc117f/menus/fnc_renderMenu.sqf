@@ -22,7 +22,7 @@ params ["_menu", "_callerMenu"];  // the menu to render is passed
 [] call FUNC(clearDisplay);
 
 private _menuId = MENU_ID(_menu);
-if(isNil "_menuId") then {
+if (isNil "_menuId") then {
     SET_STATE("currentRenderMenu", _menu);
 } else {
     SET_STATE("currentRenderMenu", _menuId);
@@ -30,8 +30,8 @@ if(isNil "_menuId") then {
 
 [_menu] call FUNC(callRenderFunctor);
 
-if(MENU_TYPE(_menu) >= MENU_ACTION_NONE ) then {
-    switch( MENU_TYPE(_menu) ) do {
+if (MENU_TYPE(_menu) >= MENU_ACTION_NONE ) then {
+    switch ( MENU_TYPE(_menu) ) do {
         // Its not a full submenu, but it references another embedded submenu. Render it
         case MENU_ACTION_SUBMENU: {
             TRACE_1("MENU_ACTION_SUBMENU", MENU_SUBMENUS_ITEM(_menu,0));

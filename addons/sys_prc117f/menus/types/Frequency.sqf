@@ -32,7 +32,7 @@ GVAR(NumpadMap_frequency) = [
 DFUNC(doFrequencyButton) = {
     //TRACE_1(QUOTE(FUNC(doNumberButton)), _this);
 
-    params["_menu", "_event"];
+    params ["_menu", "_event"];
 
     private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
 
@@ -44,7 +44,7 @@ DFUNC(doFrequencyButton) = {
     private _key = _event select 0;
 
     TRACE_1("", _number);
-    if(_number > -1 && _number < 10) then {
+    if (_number > -1 && _number < 10) then {
 
         private _arr = toArray _value;
         private _character = _arr select _editIndex;
@@ -58,12 +58,12 @@ DFUNC(doFrequencyButton) = {
         TRACE_2("Values 2", _editIndex, _character);
         TRACE_1("New value", _value);
 
-        if(_editIndex+1 < _editDigits) then {
+        if (_editIndex+1 < _editDigits) then {
             _editIndex = _editIndex + 1;
         } else {
             _editIndex = 0;
         };
-        if( ((toArray _value) select _editIndex) == 46) then {
+        if ( ((toArray _value) select _editIndex) == 46) then {
             // recursively push a button again, since we want to skip it.
             TRACE_1("Edit digit incrementing hit a dot, skip it"."");
             _editIndex = _editIndex + 1;
@@ -81,7 +81,7 @@ DFUNC(doFrequencyButton) = {
 
 DFUNC(onButtonPress_Frequency) = {
     //TRACE_1(QUOTE(FUNC(onButtonPress_Frequency)), _this);
-    params["_menu", "_event"];
+    params ["_menu", "_event"];
 
     private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequency", 0.0);
 
@@ -100,7 +100,7 @@ DFUNC(onButtonPress_Frequency) = {
         case 'LEFT': {
             _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
             _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
-            if(_editIndex > 0) then {
+            if (_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
                 _editIndex = _editDigits;
@@ -108,10 +108,10 @@ DFUNC(onButtonPress_Frequency) = {
 
             TRACE_3("Left hit, checking", _value, _editIndex, _editDigits);
             _strValue = ["frequency", _value] call FUNC(formatChannelValue);
-            if( ((toArray _strValue) select _editIndex) == 46) then {
+            if ( ((toArray _strValue) select _editIndex) == 46) then {
                 // recursively push a button again, since we want to skip it.
                 TRACE_1("Hit a digit, skipping", _editIndex);
-                if(_editIndex > 1) then {
+                if (_editIndex > 1) then {
                     _editIndex = _editIndex - 1;
                 } else {
                     _editIndex = _editDigits;
@@ -124,7 +124,7 @@ DFUNC(onButtonPress_Frequency) = {
         case 'RIGHT': {
             _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
             _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
-            if(_editIndex+1 < _editDigits) then {
+            if (_editIndex+1 < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
                 _editIndex = 0;
@@ -132,10 +132,10 @@ DFUNC(onButtonPress_Frequency) = {
 
             TRACE_3("Right hit, checking", _value, _editIndex, _editDigits);
             _strValue = ["frequency", _value] call FUNC(formatChannelValue);
-            if( ((toArray _strValue) select _editIndex) == 46) then {
+            if ( ((toArray _strValue) select _editIndex) == 46) then {
                 // recursively push a button again, since we want to skip it.
                 TRACE_1("Hit a digit, skipping", _editIndex);
-                if(_editIndex < _editDigits) then {
+                if (_editIndex < _editDigits) then {
                     _editIndex = _editIndex + 1;
                 } else {
                     _editIndex = 0;
@@ -188,7 +188,7 @@ DFUNC(onButtonPress_Frequency) = {
 
 DFUNC(renderMenu_Frequency) = {
     //TRACE_1(QUOTE(FUNC(renderMenu_Frequency)), _this);
-    params["_menu"]; // the menu to render is passed
+    params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 
     private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
@@ -199,7 +199,7 @@ DFUNC(renderMenu_Frequency) = {
 
     // Check the current digit. If its a dot, we should skip it.
     // Dot as a DEC value of 46
-    if( ((toArray _value) select _editIndex) == 46) then {
+    if ( ((toArray _value) select _editIndex) == 46) then {
         TRACE_1("Digit was a dot, moving forward", _editIndex);
         _editIndex = _editIndex + 1;
     };
@@ -209,7 +209,7 @@ DFUNC(renderMenu_Frequency) = {
     TRACE_1("Pushed value hash", _value);
 
     [] call FUNC(clearDisplay);
-    if(!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
+    if (!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
         {
             // Data selection row
             [(_x select 0),

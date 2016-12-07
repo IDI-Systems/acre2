@@ -17,8 +17,8 @@
 #include "script_component.hpp"
 
 TRACE_1("enter", _this);
-if(!ACRE_IS_SPECTATOR) then {
-    if(GVAR(lowered) == 1) then {
+if (!ACRE_IS_SPECTATOR) then {
+    if (GVAR(lowered) == 1) then {
         GVAR(lowered) = 0;
         hintSilent "Headset raised";
     } else {

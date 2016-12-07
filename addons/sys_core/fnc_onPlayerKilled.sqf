@@ -16,9 +16,9 @@
  */
 #include "script_component.hpp"
 
-params["_unit"];
+params ["_unit"];
 
-if(_unit == acre_player) then {
+if (_unit == acre_player) then {
     // close any dialogs just to be safe
     closeDialog 0;
     closeDialog 0;
@@ -27,7 +27,7 @@ if(_unit == acre_player) then {
     GVAR(globalVolume) = 1.0;
     GVAR(isDeaf) = false;
 
-    acre_player setVariable[QGVAR(isDisabled), false, true];
+    acre_player setVariable [QGVAR(isDisabled), false, true];
 };
 
 true

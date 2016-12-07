@@ -42,12 +42,12 @@ DFUNC(_hashSerialize) = {
     private _vars = allVariables _hash;
     {
         _val = HASH_GET(_hash, _x);
-        if(!isNil "_val") then {
+        if (!isNil "_val") then {
             _keys pushBack _x;
-            if(IS_ARRAY(_val)) then {
+            if (IS_ARRAY(_val)) then {
                 _val = _val call FUNC(_arraySerialize);
             };
-            if(IS_HASH(_val)) then {
+            if (IS_HASH(_val)) then {
                 _val = _val call FUNC(_hashSerialize);
             };
             _vals pushBack _val;
@@ -59,10 +59,10 @@ DFUNC(_hashSerialize) = {
 DFUNC(_arraySerialize) = {
     private _ret = [];
     {
-        if(IS_HASH(_x)) then {
+        if (IS_HASH(_x)) then {
             _ret pushBack (_x call FUNC(_hashSerialize));
         } else {
-            if(IS_ARRAY(_x)) then {
+            if (IS_ARRAY(_x)) then {
                 _ret pushBack (_x call FUNC(_arraySerialize));
             } else {
                 _ret pushBack _x;
@@ -74,10 +74,10 @@ DFUNC(_arraySerialize) = {
 
 DFUNC(serialize) = {
     private ["_ret"];
-    if(IS_HASH(_this)) then {
+    if (IS_HASH(_this)) then {
         _ret = _this call FUNC(_hashSerialize);
     } else {
-        if(IS_ARRAY(_this)) then {
+        if (IS_ARRAY(_this)) then {
             _ret = _this call FUNC(_arraySerialize);
         } else {
             _ret = _this;
@@ -92,10 +92,10 @@ DFUNC(_hashDeserialize) = {
     private _hash = HASH_CREATE;
     {
         private _val = _vals select _forEachIndex;
-        if(IS_SERIALIZEDHASH(_val)) then {
+        if (IS_SERIALIZEDHASH(_val)) then {
             _val = _val call FUNC(_hashDeserialize);
         } else {
-            if(IS_ARRAY(_val)) then {
+            if (IS_ARRAY(_val)) then {
                 _val = _val call FUNC(_arrayDeserialize);
             };
         };
@@ -107,10 +107,10 @@ DFUNC(_hashDeserialize) = {
 DFUNC(_arrayDeserialize) = {
     private _ret = [];
     {
-        if(IS_SERIALIZEDHASH(_x)) then {
+        if (IS_SERIALIZEDHASH(_x)) then {
             _ret pushBack (_x call FUNC(_hashDeserialize));
         } else {
-            if(IS_ARRAY(_x)) then {
+            if (IS_ARRAY(_x)) then {
                 _ret pushBack (_x call FUNC(_arrayDeserialize));
             } else {
                 _ret pushBack _x;
@@ -122,10 +122,10 @@ DFUNC(_arrayDeserialize) = {
 
 DFUNC(deserialize) = {
     private ["_ret"];
-    if(IS_SERIALIZEDHASH(_this)) then {
+    if (IS_SERIALIZEDHASH(_this)) then {
         _ret = _this call FUNC(_hashDeserialize);
     } else {
-        if(IS_ARRAY(_this)) then {
+        if (IS_ARRAY(_this)) then {
             _ret = _this call FUNC(_arrayDeserialize);
         } else {
             _ret = _this;

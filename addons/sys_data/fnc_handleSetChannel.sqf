@@ -16,20 +16,20 @@
  */
 #include "script_component.hpp"
 
-if(hasInterface) then {
+if (hasInterface) then {
     private _radioId    = _this select 0;
     private _remote     = _this select 5;
-    if(_remote) then {
+    if (_remote) then {
         private _fnc = {
-            params["_radioId","_previousOkRadios"];
-            if(HASH_HASKEY(acre_sys_core_keyedRadioIds, _radioId)) then {
+            params ["_radioId","_previousOkRadios"];
+            if (HASH_HASKEY(acre_sys_core_keyedRadioIds, _radioId)) then {
                 private _vals = HASH_GET(acre_sys_core_keyedRadioIds, _radioId);
                 _vals params ["_netId","_speakingId"];
                 HASH_REM(acre_sys_core_keyedRadioIds, _radioId);
                 private _unit = (objectFromNetId _netId);
                 private _languageID = _unit getVariable [QUOTE(EGVAR(core,languageId)),0];
                 [str _speakingId, _languageID, _netId, "1", _radioId] call EFUNC(sys_core,remoteStartSpeaking);
-                if(!(_unit in acre_sys_core_keyedMicRadios)) then {
+                if (!(_unit in acre_sys_core_keyedMicRadios)) then {
                     private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + acre_sys_core_nearRadios, false] call EFUNC(sys_modes,checkAvailability);
                     _okRadios = (_okRadios select 0) select 1;
                     _okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
@@ -47,7 +47,7 @@ if(hasInterface) then {
         [_fnc, [_radioId, _okRadios]] call CBA_fnc_execNextFrame;
     } else {
         private _fnc = {
-            params["_radioId","_keyedRadios"];
+            params ["_radioId","_keyedRadios"];
             {
                 private _vals = HASH_GET(acre_sys_core_keyedRadioIds, _x);
                 _vals params ["_netId","_speakingId"];
@@ -55,7 +55,7 @@ if(hasInterface) then {
                 REM(acre_sys_core_keyedMicRadios,_unit);
                 private _languageID = _unit getVariable [QUOTE(EGVAR(core,languageId)),0];
                 [str _speakingId, _languageID, _netId, "1", _x] call EFUNC(sys_core,remoteStartSpeaking);
-                if(!(_unit in acre_sys_core_keyedMicRadios)) then {
+                if (!(_unit in acre_sys_core_keyedMicRadios)) then {
                     [_radioId, "handleEndTransmission", [_x]] call EFUNC(sys_data,transEvent);
                 };
             } forEach _keyedRadios;

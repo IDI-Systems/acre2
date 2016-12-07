@@ -17,7 +17,7 @@
 
 params ["_radio"];
 
-if(isNil "_radio") exitWith { false };
+if (isNil "_radio") exitWith { false };
 if ( !(_radio in ([] call EFUNC(sys_data,getPlayerRadioList))) ) exitWith { false };
 
 [_radio] call EFUNC(sys_radio,setActiveRadio);

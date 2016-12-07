@@ -18,7 +18,7 @@
 
 LOG("HIT CALLBACK");
 
-params["_player", "_class", "_returnIdNumber", "_replacementId"];
+params ["_player", "_class", "_returnIdNumber", "_replacementId"];
 
 private _dataHash = HASH_CREATE;
 
@@ -27,24 +27,24 @@ private _dataHash = HASH_CREATE;
 HASH_SET(acre_sys_data_radioData,_class,_dataHash);
 _idRelation = [_player, _player];
 HASH_SET(acre_sys_server_objectIdRelationTable, _class, _idRelation);
-if(_replacementId != "") then {
+if (_replacementId != "") then {
     _radioData = HASH_GET(acre_sys_data_radioData, _replacementId);
     HASH_SET(acre_sys_data_radioData, _class, HASH_COPY(_radioData));
 };
-if(_player == acre_player) then {
+if (_player == acre_player) then {
     _baseRadio = _replacementId;
-    if(_baseRadio == "") then {
+    if (_baseRadio == "") then {
         _baseRadio = BASECLASS(_class);
     };
     _weapons = [acre_player] call EFUNC(lib,getGear);
 
-    //if(_baseRadio in _weapons || ("ItemRadio" in _weapons && _baseRadio == GVAR(defaultItemRadioType) ) ) then {
+    //if (_baseRadio in _weapons || ("ItemRadio" in _weapons && _baseRadio == GVAR(defaultItemRadioType) ) ) then {
     TRACE_2("Check inventory", _baseRadio, _weapons);
-    if((toLower _baseRadio) in (_weapons apply {toLower _x})) then {
+    if ((toLower _baseRadio) in (_weapons apply {toLower _x})) then {
         // Add a new radio based on the id we just got
         TRACE_3("Adding radio", _class, _baseRadio, _replacementId);
 
-        if(_replacementId == "") then {
+        if (_replacementId == "") then {
             // initialize the new radio
             _preset = [BASECLASS(_class)] call EFUNC(sys_data,getRadioPresetName);
             [_class, _preset] call FUNC(initDefaultRadio);
@@ -53,8 +53,8 @@ if(_player == acre_player) then {
             [_class] call EFUNC(sys_radio,setActiveRadio);
         } else {
             [acre_player, _replacementId, _class] call EFUNC(lib,replaceGear);
-            if(_replacementId == ACRE_ACTIVE_RADIO) then {
-                if(!isDedicated && isServer) then {
+            if (_replacementId == ACRE_ACTIVE_RADIO) then {
+                if (!isDedicated && isServer) then {
                     // need to delay setting the active radio out a frame because
                     // on a self hosted, this executes before the last gear check
                     // and Arma delays comitting gear changes till the next frame

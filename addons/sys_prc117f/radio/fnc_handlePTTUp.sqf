@@ -16,13 +16,13 @@
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
 private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 private _channelData = [_radioId, _channelNumber] call FUNC(getChannelDataInternal);
 
 private _rxOnly = HASH_GET(_channelData, "rxOnly");
-if(_rxOnly) exitWith {
+if (_rxOnly) exitWith {
     false
 };
 

@@ -17,21 +17,21 @@
 #include "script_component.hpp"
 
 TRACE_1("dynamicCall", _this);
-params["_funcName", "_var"];
+params ["_funcName", "_var"];
 
 private _ret = nil;
 
-if(_funcName isEqualType "") then {
+if (_funcName isEqualType "") then {
     private _func = missionNamespace getVariable format["%1_fnc_%2", QUOTE(ADDON), _funcName];
     _ret = _var call CALLSTACK_NAMED(_func, _funcName);
 } else {
-    if(_funcName isEqualType {}) then {
+    if (_funcName isEqualType {}) then {
         // Calling code
         _ret = _var call CALLSTACK(_funcName);
     };
 };
 
-if(isNil "_ret") then {
+if (isNil "_ret") then {
     nil
 };
 

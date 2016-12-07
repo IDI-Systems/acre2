@@ -91,8 +91,8 @@ acre_sys_io_ioEventFnc = {
 
 _acrePlayerFnc = {
     acre_player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
-    /*if(cameraOn != acre_player) then {
-        if(lifeState cameraOn != "") then {
+    /*if (cameraOn != acre_player) then {
+        if (lifeState cameraOn != "") then {
             acre_player = cameraOn;
         };
     };*/
@@ -121,9 +121,9 @@ private _monitorFnc = {
         // diag_log text format["RES: %1", _res];
         private _id = _res select 0;
         private _callBack = GVAR(threadedExtCalls) select _id;
-        if(IS_ARRAY(_callBack)) then {
+        if (IS_ARRAY(_callBack)) then {
             private _args = (_res select 1);
-            if(count _args > 0) then {
+            if (count _args > 0) then {
                 _args = _args select 0;
             };
             [_callBack select 0, _args] call (_callBack select 1);
@@ -140,7 +140,7 @@ for "_i" from 1 to (_m/2) do {
     _positive = (_spread/_m)*_i;
     _negative = ((_spread/_m)*_i)*-1;
     PUSH(ACRE_TESTANGLES, _positive);
-    if(_positive != _negative) then {
+    if (_positive != _negative) then {
         PUSH(ACRE_TESTANGLES, _negative);
     };
 };

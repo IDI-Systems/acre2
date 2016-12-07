@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-if(isNil "acre_sys_core_globalVolume") then {
+if (isNil "acre_sys_core_globalVolume") then {
     nil
 };
 

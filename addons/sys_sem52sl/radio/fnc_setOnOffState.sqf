@@ -42,8 +42,8 @@
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
 HASH_SET(_radioData, "radioOn", _eventData);
-if(_radioId == acre_sys_radio_currentRadioDialog) then {
-    if(_eventData isEqualTo 0) then {
+if (_radioId == acre_sys_radio_currentRadioDialog) then {
+    if (_eventData isEqualTo 0) then {
 
     } else {
 

@@ -16,9 +16,9 @@
  */
 #include "script_component.hpp"
 
-params["_display", "_row", "_range", "_text", ["_format",""]];
+params ["_display", "_row", "_range", "_text", ["_format",""]];
 
-if(!IS_STRING(_text)) then {
+if (!IS_STRING(_text)) then {
     _text = str _text;
 };
 private _textArray = toArray _text;
@@ -26,7 +26,7 @@ private _textArray = toArray _text;
 _range params ["_start", "_end"];
 
 private _length = ((_end-_start) min ((count _textArray)-1));
-if(_format == "") then {
+if (_format == "") then {
     for "_i" from 0 to _length do {
         (_display displayCtrl (_row+_start+_i)) ctrlSetText (toString [(_textArray select (_i))]);
     };
@@ -37,8 +37,8 @@ if(_format == "") then {
     while {_count >= 0} do {
         private _formatChar = toString [_formatArray select _count];
         private _val = "";
-        if(_formatChar == "#") then {
-            if(_valCount >= 0) then {
+        if (_formatChar == "#") then {
+            if (_valCount >= 0) then {
                 _val = (toString [(_textArray select _valCount)]);
                 _valCount = _valCount - 1;
             } else {

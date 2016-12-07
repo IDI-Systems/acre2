@@ -16,14 +16,14 @@
  */
 #include "script_component.hpp"
 
-params["_radio","_side"];
+params ["_radio","_side"];
 
-if((isNil "_radio") || (isNil "_side")) exitWith {
+if ((isNil "_radio") || (isNil "_side")) exitWith {
     false
 };
 
 private _spatial = 0;
-switch(_side) do {
+switch (_side) do {
     case "LEFT": {
         _spatial = -1;
     };

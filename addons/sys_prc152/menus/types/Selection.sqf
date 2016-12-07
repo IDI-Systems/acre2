@@ -18,7 +18,7 @@
 
 DFUNC(onButtonPress_Selection) = {
     TRACE_1("onButtonPress_Selection", _this);
-    params["_menu", "_event"];
+    params ["_menu", "_event"];
 
     private _currentSelection = GET_STATE_DEF("menuSelection", 0);
     TRACE_2("!!!!!!!!!!!!!!!!!!!!!!!!!", _currentSelection, (_event select 0));
@@ -52,7 +52,7 @@ DFUNC(onButtonPress_Selection) = {
             };
         };
         case '6': {
-            if(_currentSelection > 0 ) then {
+            if (_currentSelection > 0 ) then {
                 _currentSelection = _currentSelection - 1;
                 SET_STATE("menuSelection", _currentSelection);
 
@@ -61,7 +61,7 @@ DFUNC(onButtonPress_Selection) = {
             };
         };
         case '9': {
-            if(_currentSelection+1 < (count (MENU_SELECTION_DISPLAYSET(_menu) select 0) ) ) then {
+            if (_currentSelection+1 < (count (MENU_SELECTION_DISPLAYSET(_menu) select 0) ) ) then {
                 _currentSelection = _currentSelection + 1;
                 SET_STATE("menuSelection", _currentSelection);
 
@@ -76,7 +76,7 @@ DFUNC(onButtonPress_Selection) = {
 };
 DFUNC(renderMenu_Selection) = {
     //TRACE_1(QUOTE(FUNC(renderMenu_Number)), _this);
-    params["_menu"]; // the menu to render is passed
+    params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 
     private _options = MENU_SELECTION_DISPLAYSET(_menu) select 0;
@@ -89,7 +89,7 @@ DFUNC(renderMenu_Selection) = {
     HASH_SET(_valueHash, "1", _value);
 
     [] call FUNC(clearDisplay);
-    if(!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
+    if (!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
         {
             // Data selection row
             [(_x select 0),

@@ -19,14 +19,14 @@
 params ["_args", "_result"];
 _args params ["_transmitterClass", "_receiverClass"];
 
-if(count _result > 0) then {
+if (count _result > 0) then {
     _result params ["_id", "_signal"];
     private _maxSignal = missionNamespace getVariable [_transmitterClass + "_best_signal", -992];
     private _currentAntenna = missionNamespace getVariable [_transmitterClass + "_best_ant", ""];
-    if(_id == _currentAntenna || {(_id != _currentAntenna && {_signal > _maxSignal})}) then {
+    if (_id == _currentAntenna || {(_id != _currentAntenna && {_signal > _maxSignal})}) then {
         missionNamespace setVariable [_transmitterClass + "_best_signal", _signal];
         missionNamespace setVariable [_transmitterClass + "_best_ant", _id];
-        if(_maxSignal >= -500) then {
+        if (_maxSignal >= -500) then {
             _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _receiverClass);
             _realRadioRx = configName ( _baseConfig );
             _min = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMin");
@@ -37,7 +37,7 @@ if(count _result > 0) then {
         } else {
             missionNamespace setVariable [_transmitterClass + "_best_px", 0];
         };
-        if(count _result > 3) then {
+        if (count _result > 3) then {
             ACRE_DEBUG_SIGNAL_FILE = _result select 3;
         };
     };

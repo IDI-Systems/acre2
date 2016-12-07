@@ -17,7 +17,7 @@
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
 DFUNC(ModeDisplay_Render) = {
-    params["_display"];
+    params ["_display"];
 
     GVAR(currentMenu) = [
         [

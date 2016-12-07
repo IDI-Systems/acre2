@@ -18,9 +18,9 @@
 
 params ["_radioId"];
 
-// if(!(_radioId in ([] call EFUNC(sys_data,getPlayerRadioList)))) then {
+// if (!(_radioId in ([] call EFUNC(sys_data,getPlayerRadioList)))) then {
     HASH_SET(acre_sys_data_radioData, _radioId, nil);
-    if(HASH_HASKEY(acre_sys_data_radioScratchData, _radioId)) then {
+    if (HASH_HASKEY(acre_sys_data_radioScratchData, _radioId)) then {
         HASH_REM(acre_sys_data_radioScratchData, _radioId);
     };
     HASH_REM(GVAR(objectIdRelationTable), _radioId)

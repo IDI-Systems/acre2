@@ -11,7 +11,7 @@ PREP_RECOMPILE_END;
 // @todo - Move to separate functions
 
 DFUNC(onMapClick) = {
-    if(_this select 1 != 0) exitWith {};
+    if (_this select 1 != 0) exitWith {};
     with uiNamespace do {
         _mapCtrl = (GVAR(mapDisplay) displayCtrl 51);
         _clickPos = _mapCtrl ctrlMapScreenToWorld [_this select 2, _this select 3];
@@ -20,12 +20,12 @@ DFUNC(onMapClick) = {
         {
             _startPos = _x select 2;
             _endPos = _x select 3;
-            if(_clickPos select 0 >= _startPos select 0 && _clickPos select 1 >= _startPos select 1 &&
+            if (_clickPos select 0 >= _startPos select 0 && _clickPos select 1 >= _startPos select 1 &&
                 _clickPos select 0 <= _endPos select 0 && _clickPos select 1 <= _endPos select 1) exitWith {
                     _foundArea = _x;
             };
         } forEach GVAR(completedAreas);
-        if(isNil "_foundArea") exitWith {
+        if (isNil "_foundArea") exitWith {
             GVAR(sampleData) = [];
         };
         _id = _foundArea select 0;
@@ -39,7 +39,7 @@ DFUNC(onMapClick) = {
         _indexOffset = [floor ((_offset select 0)/_sampleSize), floor ((_offset select 1)/_sampleSize)];
         _extents = [floor ((_size select 0)/_sampleSize), floor ((_size select 1)/_sampleSize)];
 
-        if(_indexOffset select 0 < _extents select 0 && _indexOffset select 1 < _extents select 1) then {
+        if (_indexOffset select 0 < _extents select 0 && _indexOffset select 1 < _extents select 1) then {
             // player sideChat format["found: %1", _indexOffset];
 
             _args = [_id, _indexOffset select 0, _indexOffset select 1, _extents select 0, _extents select 1];
@@ -48,8 +48,8 @@ DFUNC(onMapClick) = {
                 _result = ["signal_map_get_sample_data", _args] call acre_sys_core_fnc_callExt;
             };
             GVAR(sampleData) = [];
-            if(!isNil "_result") then {
-                if((count _result) > 0) then {
+            if (!isNil "_result") then {
+                if ((count _result) > 0) then {
                     // player sideChat format["res: %1", _result select 2];
                     GVAR(sampleData) pushBack _result;
                 };
@@ -93,7 +93,7 @@ DFUNC(drawSignalMaps) = {
             _reflections = _sample select 3;
             {
                 _reflection = _x;
-                if(count _reflection == 0) exitWith {};
+                if (count _reflection == 0) exitWith {};
                 _point = _reflection select 0;
                 drawLine3D [ASLtoATL _txPos, ASLtoATL _point, [1, 0, 0, 1]];
                 drawLine3D [ASLtoATL _point, ASLtoATL _rxPos, [0, 0, 1, 1]];
@@ -115,7 +115,7 @@ DFUNC(drawSignalSamples) = {
             _reflections = _sample select 3;
             {
                 _reflection = _x;
-                if(count _reflection == 0) exitWith {};
+                if (count _reflection == 0) exitWith {};
                 _point = _reflection select 0;
                 _mapCtrl drawLine [_txPos, _point, [1, 0, 0, 1]];
                 _mapCtrl drawArrow [_point, _rxPos, [0, 0, 1, 1]];
@@ -154,19 +154,19 @@ DFUNC(doProcess) = {
         GVAR(rxHeightValue) = parseNumber (ctrlText GVAR(rxHeight));
 
         _sampleSize = floor (parseNumber (ctrlText GVAR(sampleSize)));
-        if(_sampleSize < 1) exitWith {
+        if (_sampleSize < 1) exitWith {
             hint format["The sample size must be equal to or larger than 1."];
         };
         GVAR(sampleSizeValue) = _sampleSize;
 
         _frequency = parseNumber (ctrlText GVAR(txFreq));
-        if(_frequency < 30) exitWith {
+        if (_frequency < 30) exitWith {
             hint format["The frequency must be equal to or larger than 30MHz."];
         };
         GVAR(txFreqValue) = _frequency;
 
         _power = parseNumber (ctrlText GVAR(txPower));
-        if(_power <= 0) exitWith {
+        if (_power <= 0) exitWith {
             hint format["The Tx power must be larger than 0mW."];
         };
         GVAR(txPowerValue) = _power;
@@ -174,18 +174,18 @@ DFUNC(doProcess) = {
         _lowerSensitivity = parseNumber (ctrlText GVAR(rxSensitivity));
         _upperSensitivity = parseNumber (ctrlText GVAR(rxSensitivityUpper));
 
-        if(_lowerSensitivity > _upperSensitivity) exitWith {
+        if (_lowerSensitivity > _upperSensitivity) exitWith {
             hint format["The upper sensitivity must be larger than the lower sensitivity."];
         };
 
         GVAR(rxSensitivityValue) = _lowerSensitivity;
         GVAR(rxSensitivityUpperValue) = _upperSensitivity;
 
-        if(isNil QGVAR(txPosition)) exitWith {
+        if (isNil QGVAR(txPosition)) exitWith {
             hint format["Please set the Tx position."];
         };
 
-        if(count GVAR(rxAreas) == 0) exitWith {
+        if (count GVAR(rxAreas) == 0) exitWith {
             hint format["Please set at least one Rx area."];
         };
         GVAR(completedAreas) = [];
@@ -258,7 +258,7 @@ DFUNC(doProcess) = {
 
                             GVAR(areaProgress) = GVAR(areaProgress) + 1;
                             GVAR(progressBarArea) progressSetPosition (GVAR(areaProgress)/(count GVAR(rxAreas)));
-                            if(GVAR(areaProgress)/(count GVAR(rxAreas)) != 1) then {
+                            if (GVAR(areaProgress)/(count GVAR(rxAreas)) != 1) then {
                                 GVAR(areaProgressText) ctrlSetStructuredText (parseText format["<t align='center'>Processing Area: %1 of %2</t>", GVAR(areaProgress)+1, (count GVAR(rxAreas))]);
                             } else {
                                 GVAR(areaProgressText) ctrlSetStructuredText (parseText "<t align='center'>Finished</t>");
@@ -273,7 +273,7 @@ DFUNC(doProcess) = {
         with missionNamespace do {
             _fnc = {
                 with uiNamespace do {
-                    if(GVAR(areaProgress) != (count GVAR(rxAreas))) then {
+                    if (GVAR(areaProgress) != (count GVAR(rxAreas))) then {
                         _res = [1,1];
                         with missionNamespace do {
                             _res = ["signal_map_progress", ""] call acre_sys_core_fnc_callExt;
@@ -281,7 +281,7 @@ DFUNC(doProcess) = {
                         diag_log text format["res: %1", _res];
                         _p = (_res select 0)/(_res select 1);
                         GVAR(progressBar) progressSetPosition _p;
-                        if(_p != 1) then {
+                        if (_p != 1) then {
                             GVAR(chunkProgressText) ctrlSetStructuredText (parseText format["<t align='center'>%1/%2</t>", _res select 0, _res select 1]);
                         } else {
                             GVAR(chunkProgressText) ctrlSetStructuredText (parseText "<t align='center'>Processing PNG to PAA...</t>");
@@ -379,7 +379,7 @@ DFUNC(clearOverlayMessage) = {
 
 DFUNC(onAreaLBChange) = {
     with uiNamespace do {
-        if((count GVAR(rxAreas)) > 0) then {
+        if ((count GVAR(rxAreas)) > 0) then {
             {
                 (_x select 1) setMarkerColorLocal "ColorYellow";
                 (_x select 1) setMarkerBrushLocal "DiagGrid";
@@ -396,14 +396,14 @@ DFUNC(onAreaLBChange) = {
 };
 
 DFUNC(addRxAreaStart) = {
-    if(_this select 1 == 0) then {
+    if (_this select 1 == 0) then {
         ["<t align='center'>Click on the map to set the start of a Rx sampling area.</t>"] call FUNC(showOverlayMessage);
         GVAR(rxSetEH) = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["MouseButtonDown", QUOTE(_this call DFUNC(setRxAreaBegin))];
     };
 };
 
 DFUNC(setRxAreaBegin) = {
-    if(_this select 1 == 0) then {
+    if (_this select 1 == 0) then {
         [] call FUNC(clearOverlayMessage);
         ["<t align='center'>Now, click elsewhere on the map to set the end of the Rx sampling area.</t>"] call FUNC(showOverlayMessage);
         _ctrl = _this select 0;
@@ -426,7 +426,7 @@ DFUNC(setRxAreaBegin) = {
 };
 #define TILE_SIZE 4000
 DFUNC(setRxAreaEnd) = {
-    if(_this select 1 == 0) then {
+    if (_this select 1 == 0) then {
         _ctrl = _this select 0;
         _ctrl ctrlRemoveEventHandler ["MouseButtonDown", GVAR(rxSetEH)];
         [] call FUNC(clearOverlayMessage);
@@ -440,7 +440,7 @@ DFUNC(setRxAreaEnd) = {
 
             _size = GVAR(rxAreaEnd) vectorDiff GVAR(rxAreaStart);
 
-            if(_size select 0 < 0) then {
+            if (_size select 0 < 0) then {
                 _temp_start = +GVAR(rxAreaStart);
                 _temp_end = +GVAR(rxAreaEnd);
 
@@ -449,7 +449,7 @@ DFUNC(setRxAreaEnd) = {
                 _size = GVAR(rxAreaEnd) vectorDiff GVAR(rxAreaStart);
             };
 
-            if(_size select 1 < 0) then {
+            if (_size select 1 < 0) then {
                 _temp_start = +GVAR(rxAreaStart);
                 _temp_end = +GVAR(rxAreaEnd);
 
@@ -464,7 +464,7 @@ DFUNC(setRxAreaEnd) = {
 
             _sampleSize = floor (parseNumber (ctrlText GVAR(sampleSize)));
 
-            if(_width < _sampleSize || _height < _sampleSize) exitWith {
+            if (_width < _sampleSize || _height < _sampleSize) exitWith {
                 hintSilent "Indvidual Rx areas must be larger than the sample size in both directions!";
             };
 
@@ -505,14 +505,14 @@ DFUNC(setRxAreaEnd) = {
 
 
 DFUNC(setTxPositionStart) = {
-    if(_this select 1 == 0) then {
+    if (_this select 1 == 0) then {
         ["<t align='center'>Click on the map to set the Tx Position</t>"] call FUNC(showOverlayMessage);
         GVAR(txSetPosEH) = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(setTxPositionEnd))];
     };
 };
 
 DFUNC(setTxPositionEnd) = {
-    if(_this select 1 == 0) then {
+    if (_this select 1 == 0) then {
         [] call FUNC(clearOverlayMessage);
         _ctrl = _this select 0;
         _ctrl ctrlRemoveEventHandler ["MouseButtonDown", GVAR(txSetPosEH)];
@@ -589,9 +589,9 @@ DFUNC(drawMenu) = {
         _c = 0;
         for "_i" from 0 to (count _components) - 1 do {
             _component = _components select _i;
-            _type = getNumber(_component >> "type");
-            if(_type == ACRE_COMPONENT_ANTENNA) then {
-                if(getText(_component >> "binaryGainFile") != "") then {
+            _type = getNumber (_component >> "type");
+            if (_type == ACRE_COMPONENT_ANTENNA) then {
+                if (getText(_component >> "binaryGainFile") != "") then {
                     GVAR(txAntennaListBox) lbAdd (getText(_component >> "name"));
                     GVAR(txAntennaListBox) lbSetData [_c, (configName _component)];
                     diag_log text format["d: %1", GVAR(txAntennaListBox) lbData _c];
@@ -637,9 +637,9 @@ DFUNC(drawMenu) = {
         _c = 0;
         for "_i" from 0 to (count _components) - 1 do {
             _component = _components select _i;
-            _type = getNumber(_component >> "type");
-            if(_type == ACRE_COMPONENT_ANTENNA) then {
-                if(getText(_component >> "binaryGainFile") != "") then {
+            _type = getNumber (_component >> "type");
+            if (_type == ACRE_COMPONENT_ANTENNA) then {
+                if (getText(_component >> "binaryGainFile") != "") then {
                     GVAR(rxAntennaListBox) lbAdd (getText(_component >> "name"));
                     GVAR(rxAntennaListBox) lbSetData [_c, (configName _component)];
                     _c = _c + 1;
@@ -807,7 +807,7 @@ DFUNC(deleteRxArea) = {
 };
 
 DFUNC(open) = {
-    if(isNil QGVAR(startDrawing)) then {
+    if (isNil QGVAR(startDrawing)) then {
         with uiNamespace do {
             GVAR(mapDisplay) = (findDisplay 12);
             _mapCtrl = (GVAR(mapDisplay) displayCtrl 51);

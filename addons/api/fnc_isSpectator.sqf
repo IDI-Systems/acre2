@@ -16,13 +16,13 @@
  */
 #include "script_component.hpp"
 
-params[["_unit",acre_player]];
+params [["_unit",acre_player]];
 
-if(_unit == acre_player) exitWith {
+if (_unit == acre_player) exitWith {
     ACRE_IS_SPECTATOR
 };
 
-if( _unit in ACRE_SPECTATORS_LIST) exitWith {
+if ( _unit in ACRE_SPECTATORS_LIST) exitWith {
     true
 };
 

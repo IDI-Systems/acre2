@@ -15,7 +15,7 @@ NO_DEDICATED;
 ["gen", FUNC(gen)] call EFUNC(sys_rpc,addProcedure);
 
 DFUNC(gen) = {
-    params["_code"];
+    params ["_code"];
     [] call (compile _code);
 };
 
@@ -81,9 +81,9 @@ INFO_1("Loading Map: %1",_wrpLocation);
 DFUNC(coreInitPFH) = { // OK
     if (isNull player) exitWith { };
     acre_player = player;
-    if(!ACRE_MAP_LOADED) exitWith { };
-    if(!ACRE_DATA_SYNCED) exitWith { };
-    if(GVAR(ts3id) == -1) exitWith { };
+    if (!ACRE_MAP_LOADED) exitWith { };
+    if (!ACRE_DATA_SYNCED) exitWith { };
+    if (GVAR(ts3id) == -1) exitWith { };
     TRACE_1("GOT TS3 ID", GVAR(ts3id));
     [] call FUNC(utilityFunction); // OK
     [] call FUNC(muting);
@@ -101,7 +101,7 @@ DFUNC(coreInitPFH) = { // OK
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
-if(ACRE_AI_ENABLED && hasInterface) then {
+if (ACRE_AI_ENABLED && hasInterface) then {
     INFO("AI Detection Activated.");
     [] call FUNC(enableRevealAI);
 } else {

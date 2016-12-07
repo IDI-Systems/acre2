@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if(isServer) exitWith { ACRE_DATA_SYNCED = true; };
+if (isServer) exitWith { ACRE_DATA_SYNCED = true; };
 ACRE_DATA_SYNCED = false;
 DFUNC(syncDataPFH) = {
     ACREjips = player;

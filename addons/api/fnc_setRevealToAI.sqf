@@ -22,17 +22,17 @@ if (!hasInterface) exitWith {false};
 
 params ["_var"];
 
-//if(!isServer) exitWith {
+//if (!isServer) exitWith {
 //    WARNING_1("%1 called on client! Function is server-side only!",QFUNC(setRevealToAI));
 //};
 
-if(!(_var isEqualType false)) exitWith { false };
+if (!(_var isEqualType false)) exitWith { false };
 
 
-if( !ACRE_AI_ENABLED && _var ) then {
+if ( !ACRE_AI_ENABLED && _var ) then {
     [] call acre_sys_core_fnc_enableRevealAI;
 } else {
-    if( ACRE_AI_ENABLED && !_var ) then {
+    if ( ACRE_AI_ENABLED && !_var ) then {
         [] call acre_sys_core_fnc_disableRevealAI;
     };
 };

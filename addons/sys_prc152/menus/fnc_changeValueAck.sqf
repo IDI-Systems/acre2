@@ -20,12 +20,12 @@ DFUNC(changeValueAck_End) = {
     params ["_radioId"];
 
     TRACE_1("",_this);
-    if(diag_tickTime > GVAR(changeValueAckTimer)) then {
+    if (diag_tickTime > GVAR(changeValueAckTimer)) then {
         _lastMenu = SCRATCH_GET_DEF(_radioId, "lastMenu", nil);
-        if(isNil "_lastMenu") then { _lastMenu = GVAR(VULOSHOME); };
+        if (isNil "_lastMenu") then { _lastMenu = GVAR(VULOSHOME); };
 
-        if(!isNil "acre_sys_radio_currentRadioDialog") then {
-            if(acre_sys_radio_currentRadioDialog == _radioId) then {
+        if (!isNil "acre_sys_radio_currentRadioDialog") then {
+            if (acre_sys_radio_currentRadioDialog == _radioId) then {
                 TRACE_1("ChangeMenu","");
                 [_lastMenu] call FUNC(changeMenu);
             } else {
@@ -44,13 +44,13 @@ DFUNC(changeValueAck_End) = {
 
 
 
-params["_menu","_valuePair"];
+params ["_menu","_valuePair"];
 _valuePair params ["_valueType","_value"];
 
-if(isNil QGVAR(currentRadioId) || isNil QUOTE(acre_sys_radio_currentRadioDialog) ) exitWith {
+if (isNil QGVAR(currentRadioId) || isNil QUOTE(acre_sys_radio_currentRadioDialog) ) exitWith {
     false
 };
-if(acre_sys_radio_currentRadioDialog != GVAR(currentRadioId)) exitWith {
+if (acre_sys_radio_currentRadioDialog != GVAR(currentRadioId)) exitWith {
     false
 };
 
@@ -61,7 +61,7 @@ TRACE_2("ENTER", _valueType, _value);
 switch _valueType do {
     case 'VOLUME': {
         _lastMenu = SCRATCH_GET_DEF(GVAR(currentRadioId), "lastMenu", nil);
-        if(isNil "_lastMenu") then {
+        if (isNil "_lastMenu") then {
             SCRATCH_SET(GVAR(currentRadioId), "lastMenu", _menu);
         };
 

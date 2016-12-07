@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_display"];
+params ["_display"];
 
 private _knobPosition = ["getState", "channelKnobPosition"] call GUI_DATA_EVENT;
 

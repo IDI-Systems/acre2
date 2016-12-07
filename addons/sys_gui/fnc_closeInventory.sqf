@@ -18,5 +18,5 @@
 
 TRACE_1("", _this);
 
-uiNamespace setVariable[QGVAR(inventoryObject), nil];
-uiNamespace setVariable[QGVAR(inventoryContainer), nil];
+uiNamespace setVariable [QGVAR(inventoryObject), nil];
+uiNamespace setVariable [QGVAR(inventoryContainer), nil];

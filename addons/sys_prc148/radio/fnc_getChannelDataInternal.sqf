@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_channelNumber", "_radioData"];
+params ["_channelNumber", "_radioData"];
 
 private _channels = HASH_GET(_radioData, "channels");
 private _channel = HASHLIST_SELECT(_channels, _channelNumber);
