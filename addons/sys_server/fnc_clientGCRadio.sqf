@@ -22,8 +22,8 @@ private _radioList = [] call EFUNC(sys_data,getPlayerRadioList);
 _radioList = _radioList apply {toLower _x};
 
 if ((toLower _radioId) in _radioList) then {
-    private _message = format ["[ACRE] Your radio '%1' is being garbage collected. The server believes you do not have this radio. You are probably desynced. Please contact the server administrator.",_radioId];
-    systemChat _message;
+    private _message = format ["Your radio '%1' is being garbage collected. The server believes you do not have this radio. You are probably desynced. Please contact the server administrator.",_radioId];
+    systemChat format ["[ACRE2] %1", _message];
     ERROR(_message);
 
     // Send event to server - so it is logged to server RPT as well.
