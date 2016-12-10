@@ -21,6 +21,8 @@ params ["","_amount"];
 
 if ((!alive player) || (time < 2)) exitWith {};
 
+if (isNil QGVAR(VolumeControlDialog)) exitWith {};
+
 if (isNull (GVAR(VolumeControlDialog) select 0)) exitWith {};
 
 if (_amount > 0) then {

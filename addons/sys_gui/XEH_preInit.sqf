@@ -25,7 +25,7 @@ DFUNC(inventoryListMouseUp) = {
 
 //[] call FUNC(initializeVolumeControl);
 
-DVAR(ACRE_CustomVolumeControl) = nil;
+DVAR(ACRE_CustomVolumeControl) = [displayNull]; //Stores the display of the volume control
 GVAR(VolumeControl_Level) = 0; // range of -2 to +2
 GVAR(keyBlock) = false;
 
