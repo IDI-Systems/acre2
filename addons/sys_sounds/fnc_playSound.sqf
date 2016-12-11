@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Plays a loaded sound from teamspeak.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Sound classname <STRING> - Same classname as used in the loadSound function.
+ * 1: Relative position <ARRAY>
+ * 2: Direction of sound <ARRAY>
+ * 3: Volume <NUMBER>
+ * 4: World <BOOL>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call acre_sys_sounds_fnc_playSound;
  *
  * Public: No
  */
@@ -18,5 +21,5 @@
 
 params ["_className", "_position", "_direction", "_volume", "_isWorld"];
 
-_volume = (_volume max 0) min 1;
+private _volume = (_volume max 0) min 1;
 ["playLoadedSound", [_className, _position, _direction, _volume, _isWorld]] call EFUNC(sys_rpc,callRemoteProcedure);
