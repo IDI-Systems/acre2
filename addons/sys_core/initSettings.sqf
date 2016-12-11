@@ -25,7 +25,7 @@
     "ACRE2",
     [0, 1, 1, 2],
     false,
-    {["premixGlobalVolume", _this] call FUNC(setPluginSetting)}
+    {}
 ] call CBA_Settings_fnc_init;
 
 [
