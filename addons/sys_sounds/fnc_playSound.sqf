@@ -21,5 +21,5 @@
 
 params ["_className", "_position", "_direction", "_volume", "_isWorld"];
 
-private _volume = (_volume max 0) min 1;
+_volume = (_volume max 0) min 1;
 ["playLoadedSound", [_className, _position, _direction, _volume, _isWorld]] call EFUNC(sys_rpc,callRemoteProcedure);
