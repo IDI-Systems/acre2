@@ -27,7 +27,7 @@ with uiNamespace do {
         _reflections = _sample select 3;
         {
             _reflection = _x;
-            if(count _reflection == 0) exitWith {};
+            if (count _reflection == 0) exitWith {};
             _point = _reflection select 0;
             _mapCtrl drawLine [_txPos, _point, [1, 0, 0, 1]];
             _mapCtrl drawArrow [_point, _rxPos, [0, 0, 1, 1]];

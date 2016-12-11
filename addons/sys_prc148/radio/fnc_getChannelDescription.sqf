@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
 _group = ([_radioId, "getState", "groups"] call EFUNC(sys_data,dataEvent)) select ([_radioId, "getState", "currentGroup"] call EFUNC(sys_data,dataEvent));
 _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);

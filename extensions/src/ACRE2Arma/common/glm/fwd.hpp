@@ -58,13 +58,13 @@ namespace glm
     /// @see gtc_quaternion
     typedef tquat<float, highp>        highp_quat;
 
-#if(defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
+#if (defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
     typedef highp_quat            quat;
-#elif(!defined(GLM_PRECISION_HIGHP_FLOAT) && defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
+#elif (!defined(GLM_PRECISION_HIGHP_FLOAT) && defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
     typedef mediump_quat        quat;
-#elif(!defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && defined(GLM_PRECISION_LOWP_FLOAT))
+#elif (!defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && defined(GLM_PRECISION_LOWP_FLOAT))
     typedef lowp_quat            quat;
-#elif(!defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
+#elif (!defined(GLM_PRECISION_HIGHP_FLOAT) && !defined(GLM_PRECISION_MEDIUMP_FLOAT) && !defined(GLM_PRECISION_LOWP_FLOAT))
     /// Quaternion of default single-precision floating-point numbers.
     typedef highp_quat            quat;
 #endif
@@ -105,13 +105,13 @@ namespace glm
     /// @see gtc_quaternion
     typedef tquat<double, highp>    highp_dquat;
     
-#if(defined(GLM_PRECISION_HIGHP_DOUBLE) && !defined(GLM_PRECISION_MEDIUMP_DOUBLE) && !defined(GLM_PRECISION_LOWP_DOUBLE))
+#if (defined(GLM_PRECISION_HIGHP_DOUBLE) && !defined(GLM_PRECISION_MEDIUMP_DOUBLE) && !defined(GLM_PRECISION_LOWP_DOUBLE))
     typedef highp_dquat            dquat;
-#elif(!defined(GLM_PRECISION_HIGHP_DOUBLE) && defined(GLM_PRECISION_MEDIUMP_DOUBLE) && !defined(GLM_PRECISION_LOWP_DOUBLE))
+#elif (!defined(GLM_PRECISION_HIGHP_DOUBLE) && defined(GLM_PRECISION_MEDIUMP_DOUBLE) && !defined(GLM_PRECISION_LOWP_DOUBLE))
     typedef mediump_dquat        dquat;
-#elif(!defined(GLM_PRECISION_HIGHP_DOUBLE) && !defined(GLM_PRECISION_MEDIUMP_DOUBLE) && defined(GLM_PRECISION_LOWP_DOUBLE))
+#elif (!defined(GLM_PRECISION_HIGHP_DOUBLE) && !defined(GLM_PRECISION_MEDIUMP_DOUBLE) && defined(GLM_PRECISION_LOWP_DOUBLE))
     typedef lowp_dquat            dquat;
-#elif(!defined(GLM_PRECISION_HIGHP_DOUBLE) && !defined(GLM_PRECISION_MEDIUMP_DOUBLE) && !defined(GLM_PRECISION_LOWP_DOUBLE))
+#elif (!defined(GLM_PRECISION_HIGHP_DOUBLE) && !defined(GLM_PRECISION_MEDIUMP_DOUBLE) && !defined(GLM_PRECISION_LOWP_DOUBLE))
     /// Quaternion of default double-precision floating-point numbers.
     ///
     /// @see gtc_quaternion
@@ -380,12 +380,12 @@ namespace glm
     /// @see gtc_type_precision
     typedef tvec4<i8, highp> highp_i8vec4;
     
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_i8vec1                i8vec1;
     typedef lowp_i8vec2                i8vec2;
     typedef lowp_i8vec3                i8vec3;
     typedef lowp_i8vec4                i8vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_i8vec1            i8vec1;
     typedef mediump_i8vec2            i8vec2;
     typedef mediump_i8vec3            i8vec3;
@@ -460,12 +460,12 @@ namespace glm
     typedef tvec4<i16, highp>        highp_i16vec4;
     
     
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_i16vec1            i16vec1;
     typedef lowp_i16vec2            i16vec2;
     typedef lowp_i16vec3            i16vec3;
     typedef lowp_i16vec4            i16vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_i16vec1            i16vec1;
     typedef mediump_i16vec2            i16vec2;
     typedef mediump_i16vec3            i16vec3;
@@ -539,12 +539,12 @@ namespace glm
     /// @see gtc_type_precision
     typedef tvec4<i32, highp>        highp_i32vec4;
     
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_i32vec1            i32vec1;
     typedef lowp_i32vec2            i32vec2;
     typedef lowp_i32vec3            i32vec3;
     typedef lowp_i32vec4            i32vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_i32vec1            i32vec1;
     typedef mediump_i32vec2            i32vec2;
     typedef mediump_i32vec3            i32vec3;
@@ -618,12 +618,12 @@ namespace glm
     /// @see gtc_type_precision
     typedef tvec4<i32, highp>        highp_i32vec4;
     
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_i32vec1            i32vec1;
     typedef lowp_i32vec2            i32vec2;
     typedef lowp_i32vec3            i32vec3;
     typedef lowp_i32vec4            i32vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_i32vec1            i32vec1;
     typedef mediump_i32vec2            i32vec2;
     typedef mediump_i32vec3            i32vec3;
@@ -698,12 +698,12 @@ namespace glm
     /// @see gtc_type_precision
     typedef tvec4<i64, highp>        highp_i64vec4;
     
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_i64vec1            i64vec1;
     typedef lowp_i64vec2            i64vec2;
     typedef lowp_i64vec3            i64vec3;
     typedef lowp_i64vec4            i64vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_i64vec1            i64vec1;
     typedef mediump_i64vec2            i64vec2;
     typedef mediump_i64vec3            i64vec3;
@@ -989,12 +989,12 @@ namespace glm
     /// @see gtc_type_precision
     typedef tvec4<u8, highp> highp_u8vec4;
 
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_u8vec1                u8vec1;
     typedef lowp_u8vec2                u8vec2;
     typedef lowp_u8vec3                u8vec3;
     typedef lowp_u8vec4                u8vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_u8vec1            u8vec1;
     typedef mediump_u8vec2            u8vec2;
     typedef mediump_u8vec3            u8vec3;
@@ -1069,12 +1069,12 @@ namespace glm
     typedef tvec4<u16, highp>        highp_u16vec4;
 
 
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_u16vec1            u16vec1;
     typedef lowp_u16vec2            u16vec2;
     typedef lowp_u16vec3            u16vec3;
     typedef lowp_u16vec4            u16vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_u16vec1            u16vec1;
     typedef mediump_u16vec2            u16vec2;
     typedef mediump_u16vec3            u16vec3;
@@ -1148,12 +1148,12 @@ namespace glm
     /// @see gtc_type_precision
     typedef tvec4<u32, highp>        highp_u32vec4;
 
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_u32vec1            u32vec1;
     typedef lowp_u32vec2            u32vec2;
     typedef lowp_u32vec3            u32vec3;
     typedef lowp_u32vec4            u32vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_u32vec1            u32vec1;
     typedef mediump_u32vec2            u32vec2;
     typedef mediump_u32vec3            u32vec3;
@@ -1227,12 +1227,12 @@ namespace glm
     /// @see gtc_type_precision
     typedef tvec4<u32, highp>        highp_u32vec4;
 
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_u32vec1            u32vec1;
     typedef lowp_u32vec2            u32vec2;
     typedef lowp_u32vec3            u32vec3;
     typedef lowp_u32vec4            u32vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_u32vec1            u32vec1;
     typedef mediump_u32vec2            u32vec2;
     typedef mediump_u32vec3            u32vec3;
@@ -1307,12 +1307,12 @@ namespace glm
     /// @see gtc_type_precision
     typedef tvec4<u64, highp>        highp_u64vec4;
 
-#if(defined(GLM_PRECISION_LOWP_UINT))
+#if (defined(GLM_PRECISION_LOWP_UINT))
     typedef lowp_u64vec1            u64vec1;
     typedef lowp_u64vec2            u64vec2;
     typedef lowp_u64vec3            u64vec3;
     typedef lowp_u64vec4            u64vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_UINT))
+#elif (defined(GLM_PRECISION_MEDIUMP_UINT))
     typedef mediump_u64vec1            u64vec1;
     typedef mediump_u64vec2            u64vec2;
     typedef mediump_u64vec3            u64vec3;
@@ -1463,7 +1463,7 @@ namespace glm
     typedef float64 highp_f64;
 
 
-#if(defined(GLM_PRECISION_LOWP_FLOAT))
+#if (defined(GLM_PRECISION_LOWP_FLOAT))
     /// Default 32 bit single-precision floating-point scalar.
     /// @see gtc_type_precision
     typedef lowp_float32 float32;
@@ -1488,7 +1488,7 @@ namespace glm
     /// @see gtc_type_precision
     typedef lowp_f64 f64;
 
-#elif(defined(GLM_PRECISION_MEDIUMP_FLOAT))
+#elif (defined(GLM_PRECISION_MEDIUMP_FLOAT))
 
     /// Default 32 bit single-precision floating-point scalar.
     /// @see gtc_type_precision
@@ -2281,7 +2281,7 @@ namespace glm
     typedef tquat<f64, highp> highp_f64quat;
 
 
-#if(defined(GLM_PRECISION_LOWP_FLOAT))
+#if (defined(GLM_PRECISION_LOWP_FLOAT))
     typedef lowp_f32vec1            fvec1;
     typedef lowp_f32vec2            fvec2;
     typedef lowp_f32vec3            fvec3;
@@ -2317,7 +2317,7 @@ namespace glm
     typedef lowp_f32mat3x4            f32mat3x4;
     typedef lowp_f32mat4x4            f32mat4x4;
     typedef lowp_f32quat            f32quat;
-#elif(defined(GLM_PRECISION_MEDIUMP_FLOAT))
+#elif (defined(GLM_PRECISION_MEDIUMP_FLOAT))
     typedef mediump_f32vec1            fvec1;
     typedef mediump_f32vec2            fvec2;
     typedef mediump_f32vec3            fvec3;
@@ -2493,7 +2493,7 @@ namespace glm
     typedef highp_f32quat            f32quat;
 #endif
 
-#if(defined(GLM_PRECISION_LOWP_DOUBLE))
+#if (defined(GLM_PRECISION_LOWP_DOUBLE))
     typedef lowp_f64vec1            f64vec1;
     typedef lowp_f64vec2            f64vec2;
     typedef lowp_f64vec3            f64vec3;
@@ -2511,7 +2511,7 @@ namespace glm
     typedef lowp_f64mat3x4            f64mat3x4;
     typedef lowp_f64mat4x4            f64mat4x4;
     typedef lowp_f64quat            f64quat;
-#elif(defined(GLM_PRECISION_MEDIUMP_DOUBLE))
+#elif (defined(GLM_PRECISION_MEDIUMP_DOUBLE))
     typedef mediump_f64vec1            f64vec1;
     typedef mediump_f64vec2            f64vec2;
     typedef mediump_f64vec3            f64vec3;

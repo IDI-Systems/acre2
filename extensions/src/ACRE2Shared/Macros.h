@@ -25,11 +25,11 @@
 #endif
 
 #ifndef RELEASE
-#define RELEASE(p)      { if(p) { (p)->Release(); (p)=NULL; } }
+#define RELEASE(p)      { if (p) { (p)->Release(); (p)=NULL; } }
 #endif
 
 #ifndef ARNE_RELEASE
-#define ARNE_RELEASE(p)  { if(p) { p->release(); delete p; (p)=NULL; }  }
+#define ARNE_RELEASE(p)  { if (p) { p->release(); delete p; (p)=NULL; }  }
 #endif
 
 
@@ -103,11 +103,11 @@ public:                                                                        \
 
 #define DO_ITERATOR(type,name,from)                        \
     CREATE_ITERATOR(type,name,from)                        \
-    for(iter_##name = name##.begin();                    \
+    for (iter_##name = name##.begin();                    \
         iter_##name != name##.end();                    \
         iter_##name++ )    
 
-#define WAIT_IF_VALID(handle, wait)        if(handle != INVALID_HANDLE_VALUE) {        \
+#define WAIT_IF_VALID(handle, wait)        if (handle != INVALID_HANDLE_VALUE) {        \
                                             WaitForSingleObject(handle, wait);        \
                                         }
 

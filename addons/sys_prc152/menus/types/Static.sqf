@@ -27,7 +27,7 @@ DFUNC(renderMenu_Static) = {
     BEGIN_COUNTER(renderMenu_Static);
 
     TRACE_1("renderMenu_Static", _this);
-    params["_menu"]; // the menu to render is passed
+    params ["_menu"]; // the menu to render is passed
 
     private _displaySet = MENU_SUBMENUS(_menu);
 
@@ -43,7 +43,7 @@ DFUNC(renderMenu_Static) = {
 
     BEGIN_COUNTER(renderMenu_Static_setText);
 
-    if(!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
+    if (!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
         {
             [(_x select 0),
              (_x select 2),

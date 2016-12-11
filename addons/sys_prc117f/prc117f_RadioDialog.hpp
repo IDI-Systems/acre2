@@ -24,7 +24,7 @@ class Prc117f_RadioDialog {
 
         BEGIN_CONTROL(DisplayBackground, Prc117f_RscBackground, 99990)
             style = 0x800;
-               x = ((0.33 * safeZoneW) + safeZoneX);
+            x = ((0.33 * safeZoneW) + safeZoneX);
             y = ((0.392 * safeZoneW) + safeZoneX);
             w = ((0.00438 * 32) + 0.0043)*SafeZoneW;
             h = ((0.011 * 4) + 0.011)*SafeZoneW;
@@ -37,7 +37,7 @@ class Prc117f_RadioDialog {
         {
             idc = 99991;
             x = (( (0.33+(0.00438*6)) * safeZoneW) + safeZoneX);
-            y = (((0.392 + 0.00175) * safeZoneW)  + safeZoneX);
+            y = (((0.392 + 0.00175) * safeZoneW) + safeZoneX);
             h = 0.007*SafeZoneW;
             w = (0.00438*3)*SafeZoneW;
             type = 8;
@@ -52,9 +52,24 @@ class Prc117f_RadioDialog {
         {
             idc = 99994;
             x = (( (0.33+(0.00438*6)) * safeZoneW) + safeZoneX);
-            y = (((0.392 + 0.00175) * safeZoneW)  + safeZoneX);
+            y = (((0.392 + 0.00175) * safeZoneW) + safeZoneX);
             h = 0.007*SafeZoneW;
             w = (0.00438*3)*SafeZoneW;
+            type = 8;
+            style = 0;
+            colorFrame[] = {0.2, 0.2, 0.2, 1};
+            colorBar[] = {0.2, 0.2, 0.2, 1};
+            texture = "#(argb,8,8,3)color(1,1,1,1)";
+            tooltip = "ST_HORIZONTAL";
+        };
+
+        class TransmitBar
+        {
+            idc = 99995;
+            x = ((ROW_LARGE_X * safeZoneW) + ((ROW_LARGE_OFFX*safeZoneW) * 19) + safeZoneX); //19th Character
+            y = ((ROW_LARGE_Y * safeZoneW) + ((ROW_LARGE_OFFY*safeZoneW) * 1) + safeZoneX); // 1first row
+            h = 0.9*ROW_LARGE_H*SafeZoneW;
+            w = (3*ROW_LARGE_W)*SafeZoneW;
             type = 8;
             style = 0;
             colorFrame[] = {0.2, 0.2, 0.2, 1};
@@ -67,7 +82,7 @@ class Prc117f_RadioDialog {
         {
             idc = 99992;
             x = (( (0.33+(0.00438*7.5)) * safeZoneW) + safeZoneX);
-            y = (((0.392+ (0.01375*2.5)) * safeZoneW)  + safeZoneX);
+            y = (((0.392+ (0.01375*2.5)) * safeZoneW) + safeZoneX);
             h = 0.005*SafeZoneW;
             w = (0.00438*16)*SafeZoneW;
             type = 8;
@@ -91,7 +106,7 @@ class Prc117f_RadioDialog {
         class TransmitIcon : Prc117f_RscPicture {
             idc = 99902;
             x = ((0.5315 * safeZoneW) + safeZoneX);
-            y = ((0.3905 * safeZoneW)  + safeZoneX);
+            y = ((0.3905 * safeZoneW) + safeZoneX);
             w = 0.05*SafeZoneW;
             h = 0.01105*SafeZoneW;
             colorText[] = { 0, 0, 0, 1 };

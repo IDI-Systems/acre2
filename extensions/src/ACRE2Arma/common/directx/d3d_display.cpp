@@ -401,7 +401,7 @@ namespace acre {
                     if (raw->data.mouse.ulButtons & RI_MOUSE_LEFT_BUTTON_DOWN) {
                         _leftMouseButton = true;
                     }
-                    if(raw->data.mouse.ulButtons & RI_MOUSE_LEFT_BUTTON_UP) {
+                    if (raw->data.mouse.ulButtons & RI_MOUSE_LEFT_BUTTON_UP) {
                         _leftMouseButton = false;
                     }
                     

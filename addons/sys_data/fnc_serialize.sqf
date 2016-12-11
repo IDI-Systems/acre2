@@ -17,10 +17,10 @@
 #include "script_component.hpp"
 
 private ["_ret"];
-if(IS_HASH(_this)) then {
+if (IS_HASH(_this)) then {
     _ret = _this call FUNC(_hashSerialize);
 } else {
-    if(IS_ARRAY(_this)) then {
+    if (IS_ARRAY(_this)) then {
         _ret = _this call FUNC(_arraySerialize);
     } else {
         _ret = _this;

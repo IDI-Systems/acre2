@@ -32,19 +32,19 @@ with uiNamespace do {
     GVAR(rxHeightValue) = parseNumber (ctrlText GVAR(rxHeight));
 
     _sampleSize = floor (parseNumber (ctrlText GVAR(sampleSize)));
-    if(_sampleSize < 1) exitWith {
+    if (_sampleSize < 1) exitWith {
         hint format["The sample size must be equal to or larger than 1."];
     };
     GVAR(sampleSizeValue) = _sampleSize;
 
     _frequency = parseNumber (ctrlText GVAR(txFreq));
-    if(_frequency < 30) exitWith {
+    if (_frequency < 30) exitWith {
         hint format["The frequency must be equal to or larger than 30MHz."];
     };
     GVAR(txFreqValue) = _frequency;
 
     _power = parseNumber (ctrlText GVAR(txPower));
-    if(_power <= 0) exitWith {
+    if (_power <= 0) exitWith {
         hint format["The Tx power must be larger than 0mW."];
     };
     GVAR(txPowerValue) = _power;
@@ -52,18 +52,18 @@ with uiNamespace do {
     _lowerSensitivity = parseNumber (ctrlText GVAR(rxSensitivity));
     _upperSensitivity = parseNumber (ctrlText GVAR(rxSensitivityUpper));
 
-    if(_lowerSensitivity > _upperSensitivity) exitWith {
+    if (_lowerSensitivity > _upperSensitivity) exitWith {
         hint format["The upper sensitivity must be larger than the lower sensitivity."];
     };
 
     GVAR(rxSensitivityValue) = _lowerSensitivity;
     GVAR(rxSensitivityUpperValue) = _upperSensitivity;
 
-    if(isNil QGVAR(txPosition)) exitWith {
+    if (isNil QGVAR(txPosition)) exitWith {
         hint format["Please set the Tx position."];
     };
 
-    if(count GVAR(rxAreas) == 0) exitWith {
+    if (count GVAR(rxAreas) == 0) exitWith {
         hint format["Please set at least one Rx area."];
     };
     GVAR(completedAreas) = [];
@@ -136,7 +136,7 @@ with uiNamespace do {
 
                         GVAR(areaProgress) = GVAR(areaProgress) + 1;
                         GVAR(progressBarArea) progressSetPosition (GVAR(areaProgress)/(count GVAR(rxAreas)));
-                        if(GVAR(areaProgress)/(count GVAR(rxAreas)) != 1) then {
+                        if (GVAR(areaProgress)/(count GVAR(rxAreas)) != 1) then {
                             GVAR(areaProgressText) ctrlSetStructuredText (parseText format["<t align='center'>Processing Area: %1 of %2</t>", GVAR(areaProgress)+1, (count GVAR(rxAreas))]);
                         } else {
                             GVAR(areaProgressText) ctrlSetStructuredText (parseText "<t align='center'>Finished</t>");
@@ -151,7 +151,7 @@ with uiNamespace do {
     with missionNamespace do {
         _fnc = {
             with uiNamespace do {
-                if(GVAR(areaProgress) != (count GVAR(rxAreas))) then {
+                if (GVAR(areaProgress) != (count GVAR(rxAreas))) then {
                     _res = [1,1];
                     with missionNamespace do {
                         _res = ["signal_map_progress", ""] call acre_sys_core_fnc_callExt;
@@ -159,7 +159,7 @@ with uiNamespace do {
                     diag_log text format["res: %1", _res];
                     _p = (_res select 0)/(_res select 1);
                     GVAR(progressBar) progressSetPosition _p;
-                    if(_p != 1) then {
+                    if (_p != 1) then {
                         GVAR(chunkProgressText) ctrlSetStructuredText (parseText format["<t align='center'>%1/%2</t>", _res select 0, _res select 1]);
                     } else {
                         GVAR(chunkProgressText) ctrlSetStructuredText (parseText "<t align='center'>Processing PNG to PAA...</t>");

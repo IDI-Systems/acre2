@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if(_this select 1 == 0) then {
+if (_this select 1 == 0) then {
     _ctrl = _this select 0;
     _ctrl ctrlRemoveEventHandler ["MouseButtonDown", GVAR(rxSetEH)];
     [] call FUNC(clearOverlayMessage);
@@ -30,7 +30,7 @@ if(_this select 1 == 0) then {
 
         _size = GVAR(rxAreaEnd) vectorDiff GVAR(rxAreaStart);
 
-        if(_size select 0 < 0) then {
+        if (_size select 0 < 0) then {
             _temp_start = +GVAR(rxAreaStart);
             _temp_end = +GVAR(rxAreaEnd);
 
@@ -39,7 +39,7 @@ if(_this select 1 == 0) then {
             _size = GVAR(rxAreaEnd) vectorDiff GVAR(rxAreaStart);
         };
 
-        if(_size select 1 < 0) then {
+        if (_size select 1 < 0) then {
             _temp_start = +GVAR(rxAreaStart);
             _temp_end = +GVAR(rxAreaEnd);
 
@@ -54,7 +54,7 @@ if(_this select 1 == 0) then {
 
         _sampleSize = floor (parseNumber (ctrlText GVAR(sampleSize)));
 
-        if(_width < _sampleSize || _height < _sampleSize) exitWith {
+        if (_width < _sampleSize || _height < _sampleSize) exitWith {
             hintSilent "Indvidual Rx areas must be larger than the sample size in both directions!";
         };
 

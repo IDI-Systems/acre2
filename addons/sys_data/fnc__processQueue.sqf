@@ -16,13 +16,13 @@
  */
 #include "script_component.hpp"
 
-if((count GVAR(eventQueue)) > 0 && ACRE_DATA_SYNCED) then {
+if ((count GVAR(eventQueue)) > 0 && ACRE_DATA_SYNCED) then {
     private _newQueue = [];
     private _sendEvents = [];
     {
-        if((_x select 4) <= diag_tickTime) then {
+        if ((_x select 4) <= diag_tickTime) then {
             private _data = (_x select 3) call FUNC(serialize);
-            if((_x select 5) != "CfgAcreDataInterface") then {
+            if ((_x select 5) != "CfgAcreDataInterface") then {
                 PUSH(_sendEvents, [ARR_5(_x select 0,_x select 1,_x select 2,_data,_x select 5)]);
             } else {
                 PUSH(_sendEvents, [ARR_4(_x select 0,_x select 1,_x select 2,_data)]);
@@ -32,7 +32,7 @@ if((count GVAR(eventQueue)) > 0 && ACRE_DATA_SYNCED) then {
         };
     } forEach GVAR(eventQueue);
     TRACE_1("SEND EVENT COUNT", (count _sendEvents));
-    if((count _sendEvents) > 0) then {
+    if ((count _sendEvents) > 0) then {
         private _id = [] call FUNC(createEventMsgId);
         PUSH(GVAR(pendingNetworkEvents), _id);
         TRACE_2("SENDING NETWORK EVENT", _id, _sendEvents);

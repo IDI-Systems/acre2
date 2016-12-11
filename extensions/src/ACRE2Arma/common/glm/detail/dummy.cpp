@@ -169,14 +169,14 @@ glm::vec3 lighting
         Light.position - Intersection.position +
         glm::vecRand3(0.0f, Light.inaccuracy));
 
-    if(!shadow(Intersection.position, Light.position, LightVertor))
+    if (!shadow(Intersection.position, Light.position, LightVertor))
     {
         float Diffuse = glm::dot(Intersection.normal, LightVector);
-        if(Diffuse <= 0.0f)
+        if (Diffuse <= 0.0f)
             return Color;
-        if(Material.isDiffuse())
+        if (Material.isDiffuse())
             Color += Light.color() * Material.diffuse * Diffuse;
-        if(Material.isSpecular())
+        if (Material.isSpecular())
         {
             glm::vec3 Reflect(glm::reflect(
                 glm::normalize(-LightVector),

@@ -17,25 +17,25 @@
 #include "script_component.hpp"
 
 TRACE_1("createMenu", _this);
-params["_menu"];
+params ["_menu"];
 
-/*if(count _this > 1) then {
+/*if (count _this > 1) then {
     _nested = true;
     _parentMenu = _this select 1;
 } else {
     _nested = false;
 };*/
 // Add a menu
-if(!isNil "_menu") then {
+if (!isNil "_menu") then {
     ADD_MENU(_menu);
 
     // Loop through the menu and add its children if it has ID's
     private _subMenuList = MENU_SUBMENUS(_menu);
-    if( !isNil "_subMenuList" ) then {        // If there are submenus, loop
+    if ( !isNil "_subMenuList" ) then {        // If there are submenus, loop
         {
             private _subMenu_id = MENU_ID(_x);
-            if(! isNil "_subMenu_id" ) then {
-                if(MENU_TYPE(_x) == MENUTYPE_DISPLAY ||
+            if (! isNil "_subMenu_id" ) then {
+                if (MENU_TYPE(_x) == MENUTYPE_DISPLAY ||
                 MENU_TYPE(_x) == MENUTYPE_LIST ||
                 MENU_TYPE(_x) == MENUTYPE_ACTIONSERIES) then {
                     [_x, _menu] call FUNC(createMenu);

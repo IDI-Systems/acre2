@@ -16,15 +16,15 @@
  */
 #include "script_component.hpp"
 
-params["_menu", "_event"];
+params ["_menu", "_event"];
 
 private _ret = false;
 
 private _dir = _event select 2;
-if(_dir == 0) then {
+if (_dir == 0) then {
     _dir = 1;
 } else {
-    if(_dir == 1) then {
+    if (_dir == 1) then {
         _dir = -1;
     };
 };
@@ -38,10 +38,10 @@ switch (_event select 0) do {
         _volume = ( (_volume * 10) + _dir) / 10;
         TRACE_1("Volume After", _volume);
 
-        if(_volume > 1) then {
+        if (_volume > 1) then {
             _volume = 1.0;
         };
-        if(_volume < 0) then {
+        if (_volume < 0) then {
             _volume = 0;
         };
         SET_STATE("volume", _volume);
@@ -54,10 +54,10 @@ switch (_event select 0) do {
 
         ///////////////////////
         private _knobPosition = _knobPositionOld + _dir;
-        if(_knobPosition > 5) then {
+        if (_knobPosition > 5) then {
             _knobPosition = 5;
         };
-        if(_knobPosition < 0) then {
+        if (_knobPosition < 0) then {
             _knobPosition = 0;
         };
 

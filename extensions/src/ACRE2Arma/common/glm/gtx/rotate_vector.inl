@@ -206,7 +206,7 @@ namespace glm
         tvec3<T, P> const & Up
     )
     {
-        if(all(equal(Normal, Up)))
+        if (all(equal(Normal, Up)))
             return tmat4x4<T, P>(T(1));
 
         tvec3<T, P> RotationAxis = cross(Up, Normal);

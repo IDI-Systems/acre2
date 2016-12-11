@@ -20,7 +20,7 @@
                     "cred_file": "acre_release_steam.json",
                     "project_id": 751965892,
                     "release_dir": "P:\\idi\\acre\\release\\@acre2",
-                    "release_text": "P:\\idi\\acre\\release\\@acre2\\README.md"
+                    "steam_changelog": "Version {major}.{minor}.{patch}.{build} - See changelog on github - https://github.com/IDI-Systems/acre2/releases"
                 },
                 {
                     "type": "sftp",
@@ -39,6 +39,17 @@
                     "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}.zip",
                     "asset_name": "acre2_{major}.{minor}.{patch}.{build}.zip",
                     "prerelease": false
+                }
+            ]
+        },
+        "steam-test": {
+            "destinations": [
+                {
+                    "type": "steam",
+                    "cred_file": "test_acre_release_steam.json",
+                    "project_id": 522695873,
+                    "release_dir": "P:\\idi\\acre\\release\\@acre2",
+                    "steam_changelog": "Version {major}.{minor}.{patch}.{build} - See changelog on github - https://github.com/IDI-Systems/acre2/releases"
                 }
             ]
         },

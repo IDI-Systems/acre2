@@ -22,21 +22,21 @@ params ["_command", "_params", ["_threaded", false], ["_callBack",{}], ["_callBa
 
 private _paramsString = "";
 
-if(IS_ARRAY(_params)) then {
+if (IS_ARRAY(_params)) then {
     private _arrayParams = _params;
     {
         private _element = _x;
-        if(IS_ARRAY(_element)) then {
+        if (IS_ARRAY(_element)) then {
             {
-                if(!IS_STRING(_x)) then {
-                    if(IS_BOOL(_x)) then {
-                        if(_x) then {
+                if (!IS_STRING(_x)) then {
+                    if (IS_BOOL(_x)) then {
+                        if (_x) then {
                             _x = 1;
                         } else {
                             _x = 0;
                         };
                     };
-                    // if(IS_NUMBER(_x)) then {
+                    // if (IS_NUMBER(_x)) then {
                         // _x = FORMAT_NUMBER(_x);
                         // _paramsString = _paramsString + _x + ",";
                     // } else {
@@ -47,16 +47,16 @@ if(IS_ARRAY(_params)) then {
                 };
             } forEach _element;
         } else {
-            if(!IS_STRING(_element)) then {
-                if(IS_BOOL(_element)) then {
-                    if(_element) then {
+            if (!IS_STRING(_element)) then {
+                if (IS_BOOL(_element)) then {
+                    if (_element) then {
                         _element = 1;
                     } else {
                         _element = 0;
                     };
                 };
 
-                // if(IS_NUMBER(_element)) then {
+                // if (IS_NUMBER(_element)) then {
                     // _element = FORMAT_NUMBER(_element);
                     // _paramsString = _paramsString + _element + ",";
                 // } else {
@@ -77,7 +77,7 @@ _command = format["%1:%2", _command, _paramsString];
     private _res = "acre" callExtension _command;
 #endif
 _res = call compile _res;
-if(_threaded) then {
+if (_threaded) then {
     GVAR(threadedExtCalls) set[(_res select 1), [_callBackArgs, _callBack]];
 };
 

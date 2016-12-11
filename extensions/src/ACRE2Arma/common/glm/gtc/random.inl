@@ -309,7 +309,7 @@ namespace detail
             x2 = linearRand(genType(-1), genType(1));
         
             w = x1 * x1 + x2 * x2;
-        } while(w > genType(1));
+        } while (w > genType(1));
     
         return x2 * Deviation * Deviation * sqrt((genType(-2) * log(w)) / w) + Mean;
     }
@@ -333,7 +333,7 @@ namespace detail
                 tvec2<T, defaultp>(Radius));
             LenRadius = length(Result);
         }
-        while(LenRadius > Radius);
+        while (LenRadius > Radius);
         
         return Result;
     }
@@ -351,7 +351,7 @@ namespace detail
                 tvec3<T, defaultp>(Radius));
             LenRadius = length(Result);
         }
-        while(LenRadius > Radius);
+        while (LenRadius > Radius);
         
         return Result;
     }

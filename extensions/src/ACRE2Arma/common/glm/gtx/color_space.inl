@@ -38,7 +38,7 @@ namespace glm
         tvec3<T, P> hsv = hsvColor;
         tvec3<T, P> rgbColor;
 
-        if(hsv.y == static_cast<T>(0))
+        if (hsv.y == static_cast<T>(0))
             // achromatic (grey)
             rgbColor = tvec3<T, P>(hsv.z);
         else
@@ -99,22 +99,22 @@ namespace glm
 
         hsv.z = Max;                               
 
-        if(Max != static_cast<T>(0))
+        if (Max != static_cast<T>(0))
         {
             hsv.y = Delta / hsv.z;    
             T h = static_cast<T>(0);
 
-            if(rgbColor.r == Max)
+            if (rgbColor.r == Max)
                 // between yellow & magenta
                 h = static_cast<T>(0) + T(60) * (rgbColor.g - rgbColor.b) / Delta;
-            else if(rgbColor.g == Max)
+            else if (rgbColor.g == Max)
                 // between cyan & yellow
                 h = static_cast<T>(120) + T(60) * (rgbColor.b - rgbColor.r) / Delta;
             else
                 // between magenta & cyan
                 h = static_cast<T>(240) + T(60) * (rgbColor.r - rgbColor.g) / Delta;
 
-            if(h < T(0)) 
+            if (h < T(0)) 
                 hsv.x = h + T(360);
             else
                 hsv.x = h;

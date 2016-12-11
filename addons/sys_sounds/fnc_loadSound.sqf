@@ -11,23 +11,23 @@
  * None
  *
  * Example:
- * ["Acre_GenericClick"] call acre_sys_sounds_fnc_loadSound;
+ * ["Acre_GenericClick"] call acre_sys_sounds_fnc_loadSound
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_className",["_returnFunction",nil],["_force",false]];
+params ["_className",["_returnFunction",nil],["_force",false]];
 
 // If teamspeak is connected.
 if (EGVAR(sys_core,ts3id) != -1) then { 
-    if(!(_className in GVAR(loadedSounds)) && {!_force}) then {
+    if (!(_className in GVAR(loadedSounds)) && {!_force}) then {
         private _fileName = getText(configFile >> "CfgAcreSounds" >> _className >> "sound");
-        if(_fileName != "") then {
+        if (_fileName != "") then {
             [] call (compile loadFile _fileName);
-            if(!isNil "ACRE_B64_FILE") then {
+            if (!isNil "ACRE_B64_FILE") then {
                 TRACE_2("Lounding Sound File", _className, _fileName);
-                if(!isNil "_returnFunction") then {
+                if (!isNil "_returnFunction") then {
                     HASH_SET(GVAR(callBacks),_className,_returnFunction);
                 };
                 {

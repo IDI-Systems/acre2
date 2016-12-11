@@ -183,7 +183,7 @@ namespace acre {
                 stream_.read((char *)&extra, sizeof(uint8_t));
             }
 
-            if(version >= 68) stream_.read((char *)&u_long_2, sizeof(uint32_t));
+            if (version >= 68) stream_.read((char *)&u_long_2, sizeof(uint32_t));
             stream_.read((char *)&u_long_1, sizeof(uint32_t));
             stream_.read((char *)&u_float_resolution_1, sizeof(float));
             stream_.read((char *)&u_float_resolution_2, sizeof(float));

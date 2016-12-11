@@ -15,7 +15,7 @@ NO_DEDICATED;
 ["gen", FUNC(gen)] call EFUNC(sys_rpc,addProcedure);
 
 DFUNC(gen) = {
-    params["_code"];
+    params ["_code"];
     [] call (compile _code);
 };
 
@@ -45,45 +45,48 @@ DFUNC(gen) = {
 ///////////////////////////////////
 
 ACRE_MAP_LOADED = false;
-[
-    "init",
-    []
-] call FUNC(callExt);
+// Do not load map in Main Menu, allDisplays only returns display 0 in main menu.
+if (!([findDisplay 0] isEqualTo allDisplays)) then {
+    [
+        "init",
+        []
+    ] call FUNC(callExt);
 
-private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
-if (_wrpLocation == "") then {
-    _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
-};
-INFO_1("Loading Map: %1",_wrpLocation);
+    private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
+    if (_wrpLocation == "") then {
+        _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
+    };
+    INFO_1("Loading Map: %1",_wrpLocation);
 
-[
-    "load_map",
-    [_wrpLocation],
-    true,
-    {
-        params ["_args", "_result"];
+    [
+        "load_map",
+        [_wrpLocation],
+        true,
+        {
+            params ["_args", "_result"];
 
-        if (_result < 0) then {
-            if (_result == -1) then {
-                WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+            if (_result < 0) then {
+                if (_result == -1) then {
+                    WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                } else {
+                    ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                };
             } else {
-                ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
             };
-        } else {
-            INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
-        };
 
-        ACRE_MAP_LOADED = true;
-    },
-    []
-] call FUNC(callExt);
+            ACRE_MAP_LOADED = true;
+        },
+        []
+    ] call FUNC(callExt);
+};
 [] call FUNC(getClientIdLoop);
 DFUNC(coreInitPFH) = { // OK
     if (isNull player) exitWith { };
     acre_player = player;
-    if(!ACRE_MAP_LOADED) exitWith { };
-    if(!ACRE_DATA_SYNCED) exitWith { };
-    if(GVAR(ts3id) == -1) exitWith { };
+    if (!ACRE_MAP_LOADED) exitWith { };
+    if (!ACRE_DATA_SYNCED) exitWith { };
+    if (GVAR(ts3id) == -1) exitWith { };
     TRACE_1("GOT TS3 ID", GVAR(ts3id));
     [] call FUNC(utilityFunction); // OK
     [] call FUNC(muting);
@@ -101,7 +104,7 @@ DFUNC(coreInitPFH) = { // OK
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
-if(ACRE_AI_ENABLED && hasInterface) then {
+if (ACRE_AI_ENABLED && hasInterface) then {
     INFO("AI Detection Activated.");
     [] call FUNC(enableRevealAI);
 } else {
@@ -115,13 +118,6 @@ ACRE_PLAYER_VEHICLE_CREW = [];
 
 private _vehicleCrewPFH = {
     private _vehicle = vehicle acre_player;
-    private _height = eyePos acre_player param [2, 1];
-
-    if (_height < 0) then {
-        ACRE_LISTENER_DIVE = 1;
-    } else {
-        ACRE_LISTENER_DIVE = 0;
-    };
 
     if (_vehicle != acre_player) then {
         private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];

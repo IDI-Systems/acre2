@@ -16,18 +16,18 @@
  */
 #include "script_component.hpp"
 
-params["_side"];
+params ["_side"];
 
 
 TRACE_1("GOT SPATIAL KEY PRESS", _side);
 
-if(ACRE_ACTIVE_RADIO == "") exitWith {
+if (ACRE_ACTIVE_RADIO == "") exitWith {
     nil
 };
 
 private _currentSide = [ACRE_ACTIVE_RADIO] call FUNC(getRadioSpatial);
-if(!isNil "_currentSide") then {
-    if(_currentSide != _side) then {
+if (!isNil "_currentSide") then {
+    if (_currentSide != _side) then {
         [ACRE_ACTIVE_RADIO, _side] call FUNC(setRadioSpatial);
 
         hintSilent format["Radio set to %1", _side];

@@ -103,7 +103,7 @@ namespace detail
         template <typename genType>
         GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
         {
-            if(Source > genType(0))
+            if (Source > genType(0))
             {
                 genType Tmp = Source - genType(1);
                 return Tmp + (Multiple - std::fmod(Tmp, Multiple));
@@ -130,7 +130,7 @@ namespace detail
         template <typename genType>
         GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
         {
-            if(Source > genType(0))
+            if (Source > genType(0))
             {
                 genType Tmp = Source - genType(1);
                 return Tmp + (Multiple - (Tmp % Multiple));
@@ -149,7 +149,7 @@ namespace detail
         template <typename genType>
         GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
         {
-            if(Source >= genType(0))
+            if (Source >= genType(0))
                 return Source - std::fmod(Source, Multiple);
             else
             {
@@ -165,7 +165,7 @@ namespace detail
         template <typename genType>
         GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
         {
-            if(Source >= genType(0))
+            if (Source >= genType(0))
                 return Source - Source % Multiple;
             else
             {
@@ -181,7 +181,7 @@ namespace detail
         template <typename genType>
         GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
         {
-            if(Source >= genType(0))
+            if (Source >= genType(0))
                 return Source - Source % Multiple;
             else
             {
@@ -200,7 +200,7 @@ namespace detail
         template <typename genType>
         GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
         {
-            if(Source >= genType(0))
+            if (Source >= genType(0))
                 return Source - std::fmod(Source, Multiple);
             else
             {
@@ -216,7 +216,7 @@ namespace detail
         template <typename genType>
         GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
         {
-            if(Source >= genType(0))
+            if (Source >= genType(0))
                 return Source - Source % Multiple;
             else
             {
@@ -232,7 +232,7 @@ namespace detail
         template <typename genType>
         GLM_FUNC_QUALIFIER static genType call(genType Source, genType Multiple)
         {
-            if(Source >= genType(0))
+            if (Source >= genType(0))
                 return Source - Source % Multiple;
             else
             {
@@ -296,7 +296,7 @@ namespace detail
     template <typename genIUType>
     GLM_FUNC_QUALIFIER genIUType roundPowerOfTwo(genIUType value)
     {
-        if(isPowerOfTwo(value))
+        if (isPowerOfTwo(value))
             return value;
 
         genIUType const prev = highestBitValue(value);

@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_menu", "_event"];
+params ["_menu", "_event"];
 
 private _ret = false;
 
@@ -27,7 +27,7 @@ switch (_event select 0) do {
     case 'VOLUME_UP': {
         private _volume = GET_STATE("volume");
         _volume = _volume + 0.1;
-        if(_volume > 1) then {
+        if (_volume > 1) then {
             _volume = 1.0;
         };
         ["setVolume", _volume] call GUI_DATA_EVENT;
@@ -35,7 +35,7 @@ switch (_event select 0) do {
     case 'VOLUME_DOWN': {
         private _volume = GET_STATE("volume");
         _volume = _volume - 0.1;
-        if(_volume < 0) then {
+        if (_volume < 0) then {
             _volume = 0;
         };
         ["setVolume", _volume] call GUI_DATA_EVENT;
@@ -44,10 +44,10 @@ switch (_event select 0) do {
         // Knob was clicked
         private _knobPositionOld = GET_STATE_DEF("knobPosition", 1);
         private _dir = _event select 2;
-        if(_dir == 0) then {
+        if (_dir == 0) then {
             _dir = 1;
         } else {
-            if(_dir == 1) then {
+            if (_dir == 1) then {
                 _dir = -1;
             };
         };
@@ -55,10 +55,10 @@ switch (_event select 0) do {
 
         ///////////////////////
         private _knobPosition = _knobPositionOld + _dir;
-        if(_knobPosition > 7) then {
+        if (_knobPosition > 7) then {
             _knobPosition = 7;
         };
-        if(_knobPosition < 0) then {
+        if (_knobPosition < 0) then {
             _knobPosition = 0;
         };
 

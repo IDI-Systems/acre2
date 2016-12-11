@@ -19,7 +19,7 @@
 private _button = GET_STATE("pressedButton");
 private _iconcontrol = 99901;
 private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
-if(!isNil "_display") then {
+if (!isNil "_display") then {
     private _knobImageStr = QUOTE(PATHTOF(Data\knobs\keypad\prc148_ui_keys_default.paa));
     (_display displayCtrl _iconcontrol) ctrlSetText _knobImageStr;
     SET_STATE("pressedButton",-1);

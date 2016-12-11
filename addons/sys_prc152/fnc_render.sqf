@@ -16,8 +16,8 @@
  */
 #include "script_component.hpp"
 
-private["_display"];
-if((count _this) > 0) then {
+private ["_display"];
+if ((count _this) > 0) then {
     _display = _this select 0;
     uiNamespace setVariable [QGVAR(currentDisplay), _display];
 } else {

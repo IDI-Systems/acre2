@@ -16,6 +16,6 @@
  */
 #include "script_component.hpp"
 
-if((_this select 1) == 1) then {
+if ((_this select 1) == 1) then {
     ACRE_HOLD_OFF_ITEMRADIO_CHECK = false;
 };

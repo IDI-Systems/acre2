@@ -19,7 +19,7 @@
 BEGIN_COUNTER(clearDisplay);
 
 FUNC(_internalClearDisplay) = {
-    params["_row", "_columns"];
+    params ["_row", "_columns"];
 
     for "_i" from 0 to _columns do {
         private _id = ((_row * 1000) +1) + _i;
@@ -52,6 +52,7 @@ FUNC(_internalClearDisplay) = {
 [ICON_LOGO, false] call FUNC(toggleIcon);
 [ICON_BATTERY, false] call FUNC(toggleIcon);
 [ICON_TRANSMIT, false] call FUNC(toggleIcon);
+[ICON_TRANSMITBAR, false] call FUNC(toggleIcon);
 [ICON_VOLUME, false] call FUNC(toggleIcon);
 [ICON_UP, false] call FUNC(toggleIcon);
 [ICON_DOWN, false] call FUNC(toggleIcon);

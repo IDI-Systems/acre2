@@ -28,11 +28,7 @@
         _filename = _x select 0;
         _startPos = _x select 2;
 
-
-
-
         _mapStartPos = _mapCtrl ctrlMapWorldToScreen _startPos;
-
 
         _signalMapPos = [(_mapStartPos select 0), (_mapStartPos select 1)-_height, _width, _height];
 
@@ -50,7 +46,7 @@
         _reflections = _sample select 3;
         {
             _reflection = _x;
-            if(count _reflection == 0) exitWith {};
+            if (count _reflection == 0) exitWith {};
             _point = _reflection select 0;
             drawLine3D [ASLtoATL _txPos, ASLtoATL _point, [1, 0, 0, 1]];
             drawLine3D [ASLtoATL _point, ASLtoATL _rxPos, [0, 0, 1, 1]];

@@ -19,7 +19,7 @@
 params ["_f", "_mW", "_receiverClass", "_transmitterClass", ["_skip", false]];
 
 private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];
-if(_count == 0) then {
+if (_count == 0) then {
     private _rxAntennas = [_receiverClass] call EFUNC(sys_components,findAntenna);
     private _txAntennas = [_transmitterClass] call EFUNC(sys_components,findAntenna);
 

@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 _eventData params ["_baseName", "_preset"];
 
 _presetData = [_baseName, _preset] call EFUNC(sys_data,getPresetData);
@@ -26,7 +26,7 @@ _channels = HASH_GET(_presetData,"channels");
 _currentChannels = HASH_GET(_radioData,"channels");
 SCRATCH_SET(_radioId, "currentTransmissions", []);
 
-if(isNil "_currentChannels") then {
+if (isNil "_currentChannels") then {
     _currentChannels = [];
     HASH_SET(_radioData,"channels",_currentChannels);
 };

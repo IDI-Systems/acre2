@@ -24,11 +24,11 @@ RPC_FUNCTION(loadSound) {
 
     content = std::string((char *)vMessage->getParameter(3));
     //LOG("BUILDING SOUND %s PART %d of %d", id.c_str(), currentCount, totalCount);
-    if(content != "") {
+    if (content != "") {
         CEngine::getInstance()->getSoundPlayback()->buildSound(id, content);
     } else {
         ACRE_RESULT ret = CEngine::getInstance()->getSoundPlayback()->loadSound(id);
-        if(ret == ACRE_OK) {
+        if (ret == ACRE_OK) {
             vServer->sendMessage(CTextMessage::formatNewMessage("handleLoadedSound", "%s,%s", id.c_str(), "1"));
         } else {
             vServer->sendMessage(CTextMessage::formatNewMessage("handleLoadedSound", "%s,%s", id.c_str(), "0"));

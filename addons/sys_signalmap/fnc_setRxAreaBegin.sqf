@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if(_this select 1 == 0) then {
+if (_this select 1 == 0) then {
     [] call FUNC(clearOverlayMessage);
     ["<t align='center'>Now, click elsewhere on the map to set the end of the Rx sampling area.</t>"] call FUNC(showOverlayMessage);
     _ctrl = _this select 0;
