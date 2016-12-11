@@ -44,8 +44,8 @@ DFUNC(gen) = {
 ///////////////////////////////////
 ///////////////////////////////////
 
-// Only load the map data in multiplayer.
-if (isMultiplayer) then {
+// Do not load map in Main Menu, allDisplays only returns display 0 in main menu.
+if (!([findDisplay 0] isEqualTo allDisplays)) then {
     ACRE_MAP_LOADED = false;
     [
         "init",
