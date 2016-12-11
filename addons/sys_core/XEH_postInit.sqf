@@ -44,39 +44,42 @@ DFUNC(gen) = {
 ///////////////////////////////////
 ///////////////////////////////////
 
-ACRE_MAP_LOADED = false;
-[
-    "init",
-    []
-] call FUNC(callExt);
+// Only load the map data in multiplayer.
+if (isMultiplayer) then {
+    ACRE_MAP_LOADED = false;
+    [
+        "init",
+        []
+    ] call FUNC(callExt);
 
-private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
-if (_wrpLocation == "") then {
-    _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
-};
-INFO_1("Loading Map: %1",_wrpLocation);
+    private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
+    if (_wrpLocation == "") then {
+        _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
+    };
+    INFO_1("Loading Map: %1",_wrpLocation);
 
-[
-    "load_map",
-    [_wrpLocation],
-    true,
-    {
-        params ["_args", "_result"];
+    [
+        "load_map",
+        [_wrpLocation],
+        true,
+        {
+            params ["_args", "_result"];
 
-        if (_result < 0) then {
-            if (_result == -1) then {
-                WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+            if (_result < 0) then {
+                if (_result == -1) then {
+                    WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                } else {
+                    ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                };
             } else {
-                ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
             };
-        } else {
-            INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
-        };
 
-        ACRE_MAP_LOADED = true;
-    },
-    []
-] call FUNC(callExt);
+            ACRE_MAP_LOADED = true;
+        },
+        []
+    ] call FUNC(callExt);
+};
 [] call FUNC(getClientIdLoop);
 DFUNC(coreInitPFH) = { // OK
     if (isNull player) exitWith { };
