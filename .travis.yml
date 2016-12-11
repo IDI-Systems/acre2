@@ -1,13 +1,23 @@
 branches:
   only:
   - master
-  - release
 language: python
 python:
 - '3.4'
+before_script:
+- if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
+    pip install pygithub;
+    pip install pygithub3;
+  fi
 script:
 - python3 tools/sqf_validator.py
 - python3 tools/config_style_checker.py
+- if [ -n "${GH_TOKEN}" ] && [ "${TRAVIS_BRANCH}" == "master" ] && [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
+    python3 tools/deploy.py;
+  fi
+env:
+  global:
+  - secure: I/Kwnu2w9pkxKb4abjnyU0fKybYAXsMgVySWjveQbIkXF+We3YLhHXW5SeKof0MbA0Knd83MU51x/j0c9oam3MkvJxqTf4TJOLlhGfqJefycY2KWXOLqkOgy7xMB5vAJm+9Pe8/ZrqKcJvs4j60HcoUG2K4Ehh8KPojmQI/SXA6s/XBKJ0gm5o6NFkgF9PBIUJ2FAQdtXeO4dfttDIJIp1fdrtdwDgAMMAwK75mMvAAkFuloxUqe8jXF2Fwq6KYQYWDXklb7tK93Ib3B4CeiGxZU7hQpqrFmaS8MaZilEZtIx18Vwvl7CdqrscLFO5s7JyPAXGF998T6IK7WbTVXjDiTLN/U1g6ETXjnR6ZzMiYQApdljV1Sqnunqhk6KytfQmHhFapRvhfFYTcKqq4TLXGadydU8wdLs9s66laNY9U2quUvdEVoqq21kO2m9atCL8jeqF5u5SnfzHOpfX++OK0u4sunWCk6Z1b/joqCbT/fByrFC3Yc56KEaCltTdxIx7Z2kKSBvuCIWTdFSODkhlUu2pSTlc3huwzl2EAGtAEkji61CtJS+06iupirv/H3KLAxO89pbRtS8jVAs/lhi0ZjmMUGsxgnBLMybEEHpj4AFUH6+u2ZUiAhgTlbJMB3xTLcpwPrKggVvVVMsaZX95S2LO9L3WrTEmYerK8ObiI=
 notifications:
   slack:
     secure: eH27KHy2bmV//YnDOEcuQDpMviDZTBO3flwfBQGZHGkx1t2yzYcY/OJQEXvn7YNgL3cRFO35o5vQACGzf3nEGBaxPlxlT54jdhBicqK3pCHkef+mGcY2DDXhZKymXnHHW4P9jtnJ2/YijLpRF7WbHDgAQy+Yy9KiPrWDSZQlxLmz1xz6/0jffKghrMO+KYeaaZBmbvzq1l27Tuw/WjDXDrfMMpxlj19NZjoepLeovC8HIfoipquDLyfrJAhmC9oEHNft+Xv4RP2jcekWkIUka5petTShL3oDWcs4guwcUepsZqxhOdcBYa6Ng0MjgmCHilbOzJVtDVxzQx2i1Xq/iOxJoHx5VX7EnGhvsbpAiCf2DoR4Z3UH4eOr2kSkD8CHe6IwgVwgA74k5KurdSP/ZPsEoM1rh//QDT4nWD3g2qUq/xUT+sYTfj5K+BQAgDluaTmhip+KmupF3qKns7s4cskSx88ABXv+8Wm7HA3G55u81/QmboibvIhBpnHf0gR+iWdGqNZhIjBnt45E8run6Qs8niQ7RDgtks3I8i3kUTh1H0tb4S1H/seYuXQHzJGzMXfKugS2zLYxm5Wbl5ntFbC5CkWsEwN7xosGdANVYasmRofIhbfk3HaVbR9b8lPxg0+9oxxcYlm8irxUZV+lai3YGfAQkSn0njnImckNUFA=

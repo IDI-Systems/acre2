@@ -169,3 +169,7 @@ entries:
     - title: Documentation Guidelines
       url: /wiki/development/docs_guidelines
       output: web, pdf
+
+    - title: Translating
+      url: /wiki/development/translating
+      output: web, pdf
