@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Adds a procedure for when a message is received from the teamspeak plugin. Note only one callback exists before procedure this will override any previously setup callbacks for the specified procedure name.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Procedure name <STRING>
+ * 1: Callback code <CODE>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * NONE
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["localStopSpeaking", {systemChat "localStopSpeaking";}] call acre_sys_rpc_fnc_addProcedure;
  *
  * Public: No
  */
