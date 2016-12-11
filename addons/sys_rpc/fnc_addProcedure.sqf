@@ -7,7 +7,7 @@
  * 1: Callback code <CODE>
  *
  * Return Value:
- * NONE
+ * None
  *
  * Example:
  * ["localStopSpeaking", {systemChat "localStopSpeaking";}] call acre_sys_rpc_fnc_addProcedure

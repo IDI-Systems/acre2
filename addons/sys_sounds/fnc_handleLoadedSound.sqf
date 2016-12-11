@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: Radio classname <STRING>
- * 1: Load code <NUMBER> - 1 represents a successful load.
+ * 1: Load code (1 represents a successful load) <NUMBER>
  *
  * Return Value:
  * None

@@ -6,7 +6,7 @@
  * 0: Message <STRING>
  *
  * Return Value:
- * Always returns true <BOOL>
+ * Handled - Returns true if a handler was called. <BOOL>
  *
  * Example:
  * ["localStopSpeaking:1,0,'',"] call acre_sys_rpc_fnc_handleData
@@ -19,7 +19,7 @@ private _message = _this;
 TRACE_1("RECEIEVED RPC DATA",_message);
 
 private _procedureCall = (_message splitString ":") select 0;
-if (isNil "_procedureCall") exitWith {};
+if (isNil "_procedureCall") exitWith {false};
 
 TRACE_1("PROCEDURE CALL",_procedureCall);
 
