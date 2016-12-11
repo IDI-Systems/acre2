@@ -1,7 +1,7 @@
 [
     QGVAR(postmixGlobalVolume),
     "SLIDER",
-    "Post-Mix Global Volume",
+    localize LSTRING(postmixGlobalVolume_displayName),
     "ACRE2",
     [0, 3, 1, 2],
     false,
@@ -11,7 +11,7 @@
 [
     QGVAR(premixGlobalVolume),
     "SLIDER",
-    "Pre-Mix Global Volume",
+    localize LSTRING(premixGlobalVolume_displayName),
     "ACRE2",
     [0, 3, 1, 2],
     false,
@@ -19,9 +19,19 @@
 ] call CBA_Settings_fnc_init;
 
 [
+    "ACRE_SPECTATOR_VOLUME",
+    "SLIDER",
+    localize LSTRING(ACRE_SPECTATOR_VOLUME_displayName),
+    "ACRE2",
+    [0, 1, 1, 2],
+    false,
+    {["premixGlobalVolume", _this] call FUNC(setPluginSetting)}
+] call CBA_Settings_fnc_init;
+
+[
     QGVAR(unmuteClients),
     "CHECKBOX",
-    "Unmute Clients",
+    localize LSTRING(unmuteClients_displayName),
     "ACRE2",
     true,
     false,
@@ -31,7 +41,7 @@
 [
     QGVAR(disableDesyncHint),
     "CHECKBOX",
-    "Disable Gear Desync Hint",
+    localize LSTRING(disableDesyncHint_displayName),
     "ACRE2",
     true,
     false,
