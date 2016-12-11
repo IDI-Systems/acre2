@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_core">
+        <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
+            <English>Post-Mix Global Volume</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
+            <English>Pre-Mix Global Volume</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ACRE_SPECTATOR_VOLUME_displayName">
+            <English>Spectator Volume</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
+            <English>Unmute Clients</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
+            <English>Disable Gear Desync Hint</English>
+        </Key>
+    </Package>
+</Project>
