@@ -890,7 +890,6 @@ class CfgMods {
 };
 
 #include "CfgRscStd.hpp"
-#include "Dialog.hpp"
 #include "CfgSettings.hpp"
 
 #include "CfgEventHandlers.hpp"
