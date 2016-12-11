@@ -146,6 +146,10 @@ entries:
       url: /wiki/development/branching-and-release
       output: web, pdf
 
+    - title: Translating
+      url: /wiki/development/translating
+      output: web, pdf
+
     - title: Building
       url: /wiki/development/building
       output: web, pdf
