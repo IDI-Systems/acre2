@@ -113,7 +113,7 @@ These macros will call these functions with the appropriate wrappers and enable 
 `QUOTE()` is utilized within configuration files for bypassing the quote issues in configuration macros. So, all code segments inside a given config should utilize wrapping in the `QUOTE()` macro instead of direct strings. This allows us to use our macros inside the string segments, such as `QUOTE(_this call FUNC(signal))`
 
 
-#### String Macros
+### String Macros
 
 Note that you need the strings in component's `stringtable.xml` file in the correct format: `STR_ACRE_<component>_<string>`.
 
