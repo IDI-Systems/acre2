@@ -67,31 +67,31 @@ class CfgAcreComponents {
 
 ### Module/PBO Specific Macro Usage
 
-The family of `GVAR` macros define global variable strings or constants for use within a module. Please use these to make sure we follow naming conventions across all modules and also prevent duplicate/overwriting between variables in different modules. The macro family expands as follows, for the example of the module `balls`:
+The family of `GVAR` macros define global variable strings or constants for use within a module. Please use these to make sure we follow naming conventions across all modules and also prevent duplicate/overwriting between variables in different modules. The macro family expands as follows, for example inside the component `radio`:
 
 | Macros | Expands to |
 | -------|---------|
-|`GVAR(face)` | `acre_radio_face` |
-|`QGVAR(face)` | `"acre_radio_face"` |
-|`QQGVAR(face)` | `""acre_radio_face""` used inside `QUOTE` macros where double quotation is required.  |
-|`EGVAR(rack,face)` | `acre_rack_face` |
-|`QEGVAR(rack,face)` | `"acre_rack_face"` |
-|`QQEGVAR(rack,face)` | `""acre_rack_face""` used inside `QUOTE` macros where double quotation is required. |
+|`GVAR(signal)` | `acre_radio_signal` |
+|`QGVAR(signal)` | `"acre_radio_signal"` |
+|`QQGVAR(signal)` | `""acre_radio_signal""` used inside `QUOTE` macros where double quotation is required.  |
+|`EGVAR(rack,signal)` | `acre_rack_signal` |
+|`QEGVAR(rack,signal)` | `"acre_rack_signal"` |
+|`QQEGVAR(rack,signal)` | `""acre_rack_signal""` used inside `QUOTE` macros where double quotation is required. |
 
 There also exists the `FUNC` family of macros:
 
 | Macros | Expands to |
 | -------|---------|
-|`FUNC(face)` | `acre_radio_fnc_face` or the call trace wrapper for that function. |
-|`EFUNC(rack,face)` | `acre_rack_fnc_face` or the call trace wrapper for that function. |
-|`DFUNC(face)` | `acre_radio_fnc_face` and will ALWAYS be the function global variable. |
-|`DEFUNC(rack,face)` | `acre_rack_fnc_face` and will ALWAYS be the function global variable. |
-|`QFUNC(face)` | `"acre_radio_fnc_face"` |
-|`QEFUNC(rack,face)` | `"acre_rack_fnc_face"` |
-|`QQFUNC(face)` | `""acre_radio_fnc_face""` used inside `QUOTE` macros where double quotation is required.  |
-|`QQEFUNC(rack,face)` | `""acre_rack_fnc_face""` used inside `QUOTE` macros where double quotation is required.  |
+|`FUNC(signal)` | `acre_radio_fnc_signal` or the call trace wrapper for that function. |
+|`EFUNC(rack,signal)` | `acre_rack_fnc_signal` or the call trace wrapper for that function. |
+|`DFUNC(signal)` | `acre_radio_fnc_signal` and will ALWAYS be the function global variable. |
+|`DEFUNC(rack,signal)` | `acre_rack_fnc_signal` and will ALWAYS be the function global variable. |
+|`QFUNC(signal)` | `"acre_radio_fnc_signal"` |
+|`QEFUNC(rack,signal)` | `"acre_rack_fnc_signal"` |
+|`QQFUNC(signal)` | `""acre_radio_fnc_signal""` used inside `QUOTE` macros where double quotation is required.  |
+|`QQEFUNC(rack,signal)` | `""acre_rack_fnc_signal""` used inside `QUOTE` macros where double quotation is required.  |
 
-The `FUNC` and `EFUNC` macros shall NOT be used inside `QUOTE` macros if the intention is to get the function name or assumed to be the function variable due to call tracing (see below). If you need to 100% always be sure that you are getting the function name or variable use the `DFUNC` or `DEFUNC` macros. For example `QUOTE(FUNC(face)) == "acre_radio_fnc_face"` would be an illegal use of `FUNC` inside `QUOTE`.
+The `FUNC` and `EFUNC` macros shall NOT be used inside `QUOTE` macros if the intention is to get the function name or assumed to be the function variable due to call tracing (see below). If you need to 100% always be sure that you are getting the function name or variable use the `DFUNC` or `DEFUNC` macros. For example `QUOTE(FUNC(signal)) == "acre_radio_fnc_signal"` would be an illegal use of `FUNC` inside `QUOTE`.
 
 Using `FUNC` or `EFUNC` inside a `QUOTE` macro is fine if the intention is for it to be executed as a function.
 
@@ -110,18 +110,38 @@ These macros will call these functions with the appropriate wrappers and enable 
 
 [CBA script_macros_common.hpp](https://github.com/CBATeam/CBA_A3/blob/master/addons/main/script_macros_common.hpp){:target="_blank"}
 
-`QUOTE()` is utilized within configuration files for bypassing the quote issues in configuration macros. So, all code segments inside a given config should utilize wrapping in the `QUOTE()` macro instead of direct strings. This allows us to use our macros inside the string segments, such as `QUOTE(_this call FUNC(balls))`
+`QUOTE()` is utilized within configuration files for bypassing the quote issues in configuration macros. So, all code segments inside a given config should utilize wrapping in the `QUOTE()` macro instead of direct strings. This allows us to use our macros inside the string segments, such as `QUOTE(_this call FUNC(signal))`
 
-### Path Macros
 
-The family of path macros define global paths to files for use within a module. Please use these to reference files in the ACE3 project. The macro family expands as follows, for the example of the module 'balls':
+#### String Macros
+
+Note that you need the strings in component's `stringtable.xml` file in the correct format: `STR_ACRE_<component>_<string>`.
+
+Script strings (still require `localize` to localize the string):
 
 | Macro | Expands to |
 | -------|---------|
-|`PATHTOF(data\radio.p3d)` | `\idi\acre\addons\balls\data\radio.p3d` |
-|`QPATHTOF(data\radio.p3d)` | `"\idi\acre\addons\balls\data\radio.p3d"` |
-|`PATHTOEF(leg,data\radio.p3d)` | `\idi\acre\addons\leg\data\radio.p3d` |
-|`QPATHTOEF(leg,data\radio.p3d)` | `"\idi\acre\addons\leg\data\radio.p3d"` |
+|`LSTRING(signal)` | `"STR_ACRE_radio_signal"` |
+|`ELSTRING(rack,signal)` | `"STR_ACRE_rack_signal"` |
+
+
+Config strings (require `$` as first character):
+
+| Macro | Expands to |
+| -------|---------|
+|`CSTRING(signal)` | `"$STR_ACRE_radio_signal"` |
+|`ECSTRING(rack,signal)` | `"$STR_ACRE_rack_signal"` |
+
+### Path Macros
+
+The family of path macros define global paths to files for use within a module. Please use these to reference files in the ACRE2 project. The macro family expands as follows, for the example inside the component `balls`:
+
+| Macro | Expands to |
+| -------|---------|
+|`PATHTOF(data\radio.p3d)` | `\idi\acre\addons\radio\data\radio.p3d` |
+|`QPATHTOF(data\radio.p3d)` | `"\idi\acre\addons\radio\data\radio.p3d"` |
+|`PATHTOEF(rack,data\radio.p3d)` | `\idi\acre\addons\rack\data\radio.p3d` |
+|`QPATHTOEF(rack,data\radio.p3d)` | `"\idi\acre\addons\rack\data\radio.p3d"` |
 
 
 ## Functions
