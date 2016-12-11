@@ -6,7 +6,7 @@
  * 0: Message <STRING>
  *
  * Return Value:
- * Handled - Returns true if a handler was called. <BOOL>
+ * Handled (returns true if a handler was called) <BOOL>
  *
  * Example:
  * ["localStopSpeaking:1,0,'',"] call acre_sys_rpc_fnc_handleData
