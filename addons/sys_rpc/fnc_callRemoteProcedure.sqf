@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calls a procedure in the teamspeak plugin.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Procedure name <STRING>
+ * 1: Arguments <ANY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["getPluginVersion", ","] call acre_sys_rpc_fnc_callRemoteProcedure
  *
  * Public: No
  */

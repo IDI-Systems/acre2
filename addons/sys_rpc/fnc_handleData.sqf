@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the receipt of messages from the teamspeak plugin. Firstly by de-serializing the recieved message. It will then call any procedure handlers.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Message <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled (returns true if a handler was called) <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["localStopSpeaking:1,0,'',"] call acre_sys_rpc_fnc_handleData
  *
  * Public: No
  */
@@ -20,7 +19,7 @@ private _message = _this;
 TRACE_1("RECEIEVED RPC DATA",_message);
 
 private _procedureCall = (_message splitString ":") select 0;
-if (isNil "_procedureCall") exitWith {};
+if (isNil "_procedureCall") exitWith {false};
 
 TRACE_1("PROCEDURE CALL",_procedureCall);
 
