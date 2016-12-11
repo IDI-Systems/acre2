@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * ["getPluginVersion", ","] call acre_sys_rpc_fnc_callRemoteProcedure;
+ * ["getPluginVersion", ","] call acre_sys_rpc_fnc_callRemoteProcedure
  *
  * Public: No
  */

@@ -9,7 +9,7 @@
  * Always returns true <BOOL>
  *
  * Example:
- * ["localStopSpeaking:1,0,'',"] call acre_sys_rpc_fnc_handleData;
+ * ["localStopSpeaking:1,0,'',"] call acre_sys_rpc_fnc_handleData
  *
  * Public: No
  */

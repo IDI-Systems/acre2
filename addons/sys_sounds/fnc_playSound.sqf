@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call acre_sys_sounds_fnc_playSound;
+ * ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call acre_sys_sounds_fnc_playSound
  *
  * Public: No
  */

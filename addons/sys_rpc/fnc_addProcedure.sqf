@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * ["localStopSpeaking", {systemChat "localStopSpeaking";}] call acre_sys_rpc_fnc_addProcedure;
+ * ["localStopSpeaking", {systemChat "localStopSpeaking";}] call acre_sys_rpc_fnc_addProcedure
  *
  * Public: No
  */

@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * ["Acre_GenericClick"] call acre_sys_sounds_fnc_loadSound;
+ * ["Acre_GenericClick"] call acre_sys_sounds_fnc_loadSound
  *
  * Public: No
  */
