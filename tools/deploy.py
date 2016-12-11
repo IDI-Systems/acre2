@@ -12,10 +12,10 @@ import sys
 import shutil
 import traceback
 import subprocess as sp
-from github import Github, InputGitAuthor
+from github import Github
 
 
-TRANSLATIONISSUE = 51
+TRANSLATIONISSUE = 135
 TRANSLATIONBODY = """**[ACRE2 Translation Guide](http://acre2.idi-systems.com/wiki/development/translating)**
 
 {}

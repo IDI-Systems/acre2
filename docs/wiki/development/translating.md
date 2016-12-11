@@ -2,9 +2,11 @@
 title: Translating
 ---
 
-## Guide
+## Overview
 
-This page describes in short how you can help translating ACRE2 into your language.
+This page describes how to help in translating ACRE2 to different languages. Most of the things can be translated, however radio dialogs are not one of them, as they require precise positioning and sizing to correctly fit.
+
+## Guide
 
 1. If you don't already have a GitHub account create one at [http://github.com](http://github.com)
 2. Open the ACRE2 repository at [https://github.com/IDI-Systems/acre2](https://github.com/IDI-Systems/acre2)
