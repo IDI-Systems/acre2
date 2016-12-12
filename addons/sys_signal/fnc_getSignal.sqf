@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Wrapper function for calling the signal calculation (extension)
+ * Wrapper function for calling the signal calculation (extension).
  *
  * Arguments:
  * 0: Frequency <NUMBER>

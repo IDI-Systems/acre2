@@ -1,13 +1,13 @@
 /*
  * Author: ACRE2Team
- * Return function for signal calculation. Will be called after signal has been calculated in the extension
+ * Return function for signal calculation. Will be called after signal has been calculated in the extension.
  *
  * Arguments:
  * 0: Radio IDs (TX and RX) <ARRAY>
  * 1: Antenna and Signal Strength <ARRAY>
  *
  * Return Value:
- * -
+ * None
  *
  *
  * Public: No
