@@ -35,6 +35,12 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 # Copy to root
-add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../$<TARGET_FILE_NAME:${ACRE_NAME}>
-)
+if(USE_64BIT_BUILD)
+    add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../acre_64.dll
+    )
+else()
+    add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../$<TARGET_FILE_NAME:${ACRE_NAME}>
+    )
+endif()
