@@ -13,10 +13,10 @@ set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2)
 # Copy to root
 if(USE_64BIT_BUILD)
     add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../extras/ACRE2Steam_64.dll
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../extras/${ACRE_NAME}_64.dll
     )
 else()
     add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../extras/$<TARGET_FILE_NAME:${ACRE_NAME}>
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../extras/${ACRE_NAME}.dll
     )
 endif()
