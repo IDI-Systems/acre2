@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 #define RADIO_CTRL(var1) (_display displayCtrl var1)
-
+disableSerialization;
 params ["_display"];
 
 
