@@ -33,8 +33,6 @@ ACREjips = "";
 
 DGVAR(validStates) = HASH_CREATE;
 
-#define IS_SERIALIZEDHASH(array) (IS_ARRAY(array) && {(count array) > 0} && {IS_STRING((array select 0))} && {(array select 0) == "ACRE_HASH"})
-
 DFUNC(_hashSerialize) = {
     private _hash = _this;
     private _keys = [];
@@ -72,20 +70,6 @@ DFUNC(_arraySerialize) = {
     _ret;
 };
 
-DFUNC(serialize) = {
-    private ["_ret"];
-    if (IS_HASH(_this)) then {
-        _ret = _this call FUNC(_hashSerialize);
-    } else {
-        if (IS_ARRAY(_this)) then {
-            _ret = _this call FUNC(_arraySerialize);
-        } else {
-            _ret = _this;
-        };
-    };
-    _ret;
-};
-
 DFUNC(_hashDeserialize) = {
     params ["","_keys","_vals"];
 
@@ -117,20 +101,6 @@ DFUNC(_arrayDeserialize) = {
             };
         };
     } forEach _this;
-    _ret;
-};
-
-DFUNC(deserialize) = {
-    private ["_ret"];
-    if (IS_SERIALIZEDHASH(_this)) then {
-        _ret = _this call FUNC(_hashDeserialize);
-    } else {
-        if (IS_ARRAY(_this)) then {
-            _ret = _this call FUNC(_arrayDeserialize);
-        } else {
-            _ret = _this;
-        };
-    };
     _ret;
 };
 

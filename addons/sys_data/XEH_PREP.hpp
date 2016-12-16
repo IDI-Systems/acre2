@@ -41,3 +41,6 @@ PREP(addHighPriorityId);
 PREP(removeHighPriorityId);
 PREP(noApiFunction);
 PREP(noApiSystemFunction);
+
+PREP(serialize);
+PREP(deserialize);
