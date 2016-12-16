@@ -1,20 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
             <English>Post-Mix Global Volume</English>
+            <French>Volume Global Post-Mix</French>
+            <Japanese>ポスト ミックスの全体音量</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
             <English>Pre-Mix Global Volume</English>
+            <French>Volume Global Pre-Mix</French>
+            <Japanese>プレ ミックスの全体音量</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_ACRE_SPECTATOR_VOLUME_displayName">
             <English>Spectator Volume</English>
+            <French>Volume Spectateur</French>
+            <Japanese>スペクテイター音量</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
+            <French>Démuter les clients</French>
+            <Japanese>クライアントを非ミュート化</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
+            <French>Désactiver la notification de désynchronisation d'équipement</French>
+            <Japanese>装備の非同期ヒントを無効化</Japanese>
         </Key>
     </Package>
 </Project>
