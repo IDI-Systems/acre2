@@ -33,8 +33,6 @@ ACREjips = "";
 
 DGVAR(validStates) = HASH_CREATE;
 
-#define IS_SERIALIZEDHASH(array) (IS_ARRAY(array) && {(count array) > 0} && {IS_STRING((array select 0))} && {(array select 0) == "ACRE_HASH"})
-
 DFUNC(_hashSerialize) = {
     private _hash = _this;
     private _keys = [];
