@@ -32,55 +32,67 @@ We include files for [Docker](https://www.docker.com/) to run Jekyll in a separa
 - Install [Ruby DevKit for 2.0 and above (x64)](http://rubyinstaller.org/downloads/)
 - Install [NodeJS](https://nodejs.org/download/)
 - Open Command Prompt and navigate to this directory
+
     ```
     cd <ACRE2_directory>/docs
     ```
 
 - Install `bundler` and `jekyll` gems
+
     ```
     gem install bundler jekyll
     ```
 
 - Install required gems through `bundler`
+
     ```
     bundle install
     ```
 
 #### Debian / Bash on Ubuntu on Windows
 
+_`sudo` might be required when using below commands._
+
 - Open Bash and navigate to this directory
+
     ```
     cd <ACRE2_directory>/docs
     ```
 
 - Install `make`, `gcc` and `nodejs`
+
     ```
-    sudo apt-get install make gcc nodejs
+    apt-get install make gcc nodejs
     ```
 
 - Install `ruby2.3`, `rbuy2.3-dev` and `ruby-switch`
+
     ```
-    sudo apt-add-repository ppa:brightbox/ruby-ng
-    sudo apt-get update
-    sudo apt-get install ruby2.3 ruby2.3-dev ruby-switch
+    apt-add-repository ppa:brightbox/ruby-ng
+    apt-get update
+    apt-get install ruby2.3 ruby2.3-dev ruby-switch
     ```
 
 - Set Ruby version
+
     ```
-    sudo ruby-switch --set ruby2.3
+    ruby-switch --set ruby2.3
     ```
 
 - Install `bundler` and `jekyll`
+
     ```
-    sudo gem install bundler jekyll
+    gem install bundler jekyll
     ```
 
 - Install required gems through bundler
+
     ```
     bundle install
     ```
 
 - In case of sticky folder error during `bundle install`, execute the following to fix permissions
+
     ```
     find ~/.bundle/cache -type d -exec chmod 0755 {} +
     ```
@@ -88,9 +100,11 @@ We include files for [Docker](https://www.docker.com/) to run Jekyll in a separa
 #### Running
 
 - Run Jekyll through bundler
+
     ```
     bundle exec jekyll serve --future --incremental --config _config_dev.yml
     ```
+
     _Use `--force_polling` on Bash on Ubuntu on Windows due to a bug preventing watching._
 
 - Navigate to http://localhost:4000

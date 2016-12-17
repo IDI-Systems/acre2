@@ -1,22 +1,24 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Initiates the signal calculation function for a transmission between two radios. This is done on the receiving client
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Transmitter <OBJECT>
+ * 1: Transmitter Radio ID <STRING>
+ * 2: Receiver <OBJECT>
+ * 3: Receiver Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Signal Calculation Paramteres <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [unit1, "_txRadioId", acre_player, "_rxRadioId"] call acre_sys_modes_fnc_sc_speaking
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_tx", "_txRadioId", "_rx", "_rxRadioId"];
+params ["_tx", "_txRadioId", "_rx", "_rxRadioId"];
 
 // acre_player sideChat format["Radio speaking! %1", _this];
 private _txData = [_txRadioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);

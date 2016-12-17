@@ -50,11 +50,11 @@
 #include "../gtc/type_precision.hpp"
 #include <string>
 
-#if(GLM_COMPILER & GLM_COMPILER_CUDA)
+#if (GLM_COMPILER & GLM_COMPILER_CUDA)
 #    error "GLM_GTX_string_cast is not supported on CUDA compiler"
 #endif
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_string_cast extension included")
 #endif
 

@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_dir"];
+params ["_dir"];
 
 private _return = false;
 private _radioId = ACRE_ACTIVE_RADIO;

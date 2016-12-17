@@ -19,13 +19,13 @@
 #define ACRE_REVEAL_AMOUNT 1.6
 
 DFUNC(monitorAI_PFH) = {
-    //if(time < 10) exitWith {};
-    if(isNull acre_player) exitWith {};
-    if(ACRE_IS_SPECTATOR) exitWith {};
-    if(!alive acre_player) exitWith {};
-    //if(! ACRE_LOCAL_SPEAKING ) exitWith {};
-    if(!(acre_player in GVAR(speakers))) exitWith {};
-    if(isNil "acre_api_selectableCurveScale" ) exitWith {};
+    //if (time < 10) exitWith {};
+    if (isNull acre_player) exitWith {};
+    if (ACRE_IS_SPECTATOR) exitWith {};
+    if (!alive acre_player) exitWith {};
+    //if (! ACRE_LOCAL_SPEAKING ) exitWith {};
+    if (!(acre_player in GVAR(speakers))) exitWith {};
+    if (isNil "acre_api_selectableCurveScale" ) exitWith {};
 
     //soundFactor is how loud the local player is speaking.
     private _soundFactor = acre_api_selectableCurveScale; // typically 0.1 -> 1.3
@@ -34,10 +34,10 @@ DFUNC(monitorAI_PFH) = {
     private _nearUnits = (getPosATL acre_player) nearEntities ["CAManBase", (130 * _soundFactor)];
     private _startTime = diag_tickTime;
     {
-        if(diag_tickTime - _startTime > 0.002) exitWith {};
+        if (diag_tickTime - _startTime > 0.002) exitWith {};
         private _curUnit = _x;
 
-        if(!isPlayer _curUnit) then {
+        if (!isPlayer _curUnit) then {
             // Scale revealing to be a better and better chance over time
             // and based on distance
             private _distance = (eyePos _curUnit) vectorDistance ACRE_LISTENER_POS;
@@ -56,20 +56,20 @@ DFUNC(monitorAI_PFH) = {
 
             private _chance = _occlusion * (_multiplier  / _distance);
             TRACE_4("", _curUnit, _distance, _occlusion, _chance);
-            if((random 1) < _chance) then {
+            if ((random 1) < _chance) then {
                 TRACE_2("REVEAL!", _curUnit, acre_player);
                 // 15 second block before revealing again.
-                private _lastRevealed = _curUnit getVariable[QGVAR(lastRevealed), -15];
-                if(_lastRevealed + 15 < time) then {
+                private _lastRevealed = _curUnit getVariable [QGVAR(lastRevealed), -15];
+                if (_lastRevealed + 15 < time) then {
                     TRACE_2("Calling reveal event", _curUnit, _hasRevealed);
-                    _curUnit setVariable[QGVAR(lastRevealed), time, false];
+                    _curUnit setVariable [QGVAR(lastRevealed), time, false];
                     [QGVAR(onRevealUnit), [acre_player, _curUnit, ACRE_REVEAL_AMOUNT ] ] call CALLSTACK(CBA_fnc_globalEvent);
                 };
             };
         };
     } forEach _nearUnits;
 
-    if(!ACRE_AI_ENABLED) then {
+    if (!ACRE_AI_ENABLED) then {
         [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
 };

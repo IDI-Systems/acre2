@@ -9,13 +9,13 @@ RPC_FUNCTION(setSelectableVoiceCurve) {
 
     voiceCurveScale = vMessage->getParameterAsFloat(0);
     //LOG("VOICE MODEL: %d VOICE CURVE: %f", voiceModel, voiceCurveScale);
-    if(!CEngine::getInstance()->getGameServer()->getConnected())
+    if (!CEngine::getInstance()->getGameServer()->getConnected())
         return ACRE_OK;
 
-    if(CEngine::getInstance()->getSelf()) {
+    if (CEngine::getInstance()->getSelf()) {
         LOCK(CEngine::getInstance()->getSelf());
         CEngine::getInstance()->getSelf()->setSelectableCurveScale(voiceCurveScale);
-        if(CEngine::getInstance()->getSelf()->getSpeaking()) {
+        if (CEngine::getInstance()->getSelf()->getSpeaking()) {
             CEngine::getInstance()->getExternalServer()->sendMessage(
                 CTextMessage::formatNewMessage("ext_remoteStartSpeaking", 
                     "%d,%d,%s,%d,%s,%f,",

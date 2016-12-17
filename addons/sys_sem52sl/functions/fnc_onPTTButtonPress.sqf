@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_display"];
+params ["_display"];
 
 private _knobPosition = ["getState", "channelKnobPosition"] call GUI_DATA_EVENT;
 
@@ -49,8 +49,12 @@ if (_knobPosition == 15) then { //programming mode
             // SAVE.
             private _channels = GET_STATE("channels");
             private _channel = _channels select GVAR(selectedChannel);
-            HASH_SET(_channel,"frequencyRX",GVAR(newFrequency));
-            HASH_SET(_channel,"frequencyTX",GVAR(newFrequency));
+
+            private _floored = floor (GVAR(newFrequency));
+            private _decimal = GVAR(newFrequency) - _floored;
+            private _frequency = _floored + ((round (_decimal * 40)) * 0.025);
+            HASH_SET(_channel,"frequencyRX",_frequency);
+            HASH_SET(_channel,"frequencyTX",_frequency);
             ["setChannelData", [GVAR(selectedChannel), _channel]] call GUI_DATA_EVENT;
 
             [GVAR(currentRadioId), "setState", ["programmingStep",0]] call EFUNC(sys_data,dataEvent);

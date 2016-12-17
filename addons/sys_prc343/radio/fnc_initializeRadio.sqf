@@ -18,7 +18,7 @@
 
 TRACE_1("INITIALIZING RADIO 343", _this);
 
-params["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
 _eventData params ["_baseName", "_preset"];
 private _presetData = [_baseName, _preset] call EFUNC(sys_data,getPresetData);
@@ -27,7 +27,7 @@ _currentChannels = HASH_GET(_radioData,"channels");
 
 SCRATCH_SET(_radioId, "currentTransmissions", []);
 
-if(isNil "_currentChannels") then {
+if (isNil "_currentChannels") then {
     _currentChannels = [];
     HASH_SET(_radioData,"channels",_currentChannels);
 };

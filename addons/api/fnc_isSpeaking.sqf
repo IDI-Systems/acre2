@@ -17,7 +17,7 @@
 
 params ["_unit"];
 
-if(_unit in acre_sys_core_speakers) exitWith {
+if (_unit in acre_sys_core_speakers) exitWith {
     true
 };
 false

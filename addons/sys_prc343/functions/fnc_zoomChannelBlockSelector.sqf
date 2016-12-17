@@ -19,7 +19,7 @@
 #define IN 0
 #define OUT 1
 
-params["_direction"];
+params ["_direction"];
 
 {ctrlEnable [_x, false];} forEach [201, 202, 203, 204];
 
@@ -52,8 +52,8 @@ if (_direction == OUT) then {
         // and run animation or bug out
         if (GVAR(currentRadioId) == _radioId) then {
             TRACE_1("Radio Id Match", _radioId);
-            if(_index < 0) then {
-                if(_channelindex < _currentChannel || (_currentVolume != 3 && _currentVolume != _volumeindex)) then {
+            if (_index < 0) then {
+                if (_channelindex < _currentChannel || (_currentVolume != 3 && _currentVolume != _volumeindex)) then {
 
                     {
                         (MAIN_DISPLAY displayCtrl _x) ctrlSetFade 0;
@@ -61,24 +61,24 @@ if (_direction == OUT) then {
                     } forEach [106,107];
 
 
-                    if(_channelindex < _currentChannel) then {
+                    if (_channelindex < _currentChannel) then {
                         INC(_channelindex);
                         _animationhandler set [1, _channelindex];
                         (MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\channel\prc343_ui_pre_%1.paa", _channelindex + 1];
                     };
-                    if(_volumeindex > _currentVolume) then {
+                    if (_volumeindex > _currentVolume) then {
                         DEC(_volumeindex);
                         _animationhandler set [2, _volumeindex];
                         (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
                     };
-                    if(_volumeindex < _currentVolume) then {
+                    if (_volumeindex < _currentVolume) then {
                         INC(_volumeindex);
                         _animationhandler set [2, _volumeindex];
                         (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
                     };
                 } else {
                     SCRATCH_SET(_radioId, "animation", false);
-                    if(_currentVolume != 0) then {
+                    if (_currentVolume != 0) then {
                         ["setOnOffState", 1] call GUI_DATA_EVENT;
                     };
                     [MAIN_DISPLAY] call CALLSTACK(FUNC(render));
@@ -141,24 +141,24 @@ if (_direction == IN) then {
 
                 [_PFHid] call CBA_fnc_removePerFrameHandler;
             } else {
-                if(_channelindex > 0 || _volumeindex != 3) then {
+                if (_channelindex > 0 || _volumeindex != 3) then {
 
                     {
                         (MAIN_DISPLAY displayCtrl _x) ctrlSetFade 0;
                         (MAIN_DISPLAY displayCtrl _x) ctrlCommit 0;
                     } forEach [106,107];
 
-                    if(_channelindex > 0) then {
+                    if (_channelindex > 0) then {
                         DEC(_channelindex);
                         _animationhandler set [1, _channelindex];
                         (MAIN_DISPLAY displayCtrl 106) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\channel\prc343_ui_pre_%1.paa", _channelindex + 1];
                     };
-                    if(_volumeindex < 3) then {
+                    if (_volumeindex < 3) then {
                         INC(_volumeindex);
                         _animationhandler set [2, _volumeindex];
                         (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
                     };
-                    if(_volumeindex > 3) then {
+                    if (_volumeindex > 3) then {
                         DEC(_volumeindex);
                         _animationhandler set [2, _volumeindex];
                         (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];

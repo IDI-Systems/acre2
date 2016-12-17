@@ -23,7 +23,7 @@
 params ["","_key"];
 
 private _currentDirection = -0.2;
-if(_key == 0) then {
+if (_key == 0) then {
     // left click
     _currentDirection = 0.2;
 };
@@ -31,17 +31,17 @@ if(_key == 0) then {
 private _currentVolume = GET_STATE("volume"); //["getState", "volume"] call GUI_DATA_EVENT;
 private _newVolume = ((_currentVolume + _currentDirection) max 0) min 1;
 
-if(_currentVolume != _newVolume) then {
+if (_currentVolume != _newVolume) then {
     ["Acre_GenericClick", [0,0,0], [0,0,0], _newVolume^3, false] call EFUNC(sys_sounds,playSound);
     ["setVolume", _newVolume] call GUI_DATA_EVENT;
 
 
     [MAIN_DISPLAY] call FUNC(render);
 
-    if(_newVolume < 0.2) then {
+    if (_newVolume < 0.2) then {
         ["setOnOffState", 0] call GUI_DATA_EVENT;
     } else {
-        if(_newVolume > 0 && _currentVolume < 0.2) then {
+        if (_newVolume > 0 && _currentVolume < 0.2) then {
             ["setOnOffState", 1] call GUI_DATA_EVENT;
         };
     };

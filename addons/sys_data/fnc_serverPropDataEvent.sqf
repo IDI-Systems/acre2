@@ -19,6 +19,6 @@
 GVAR(serverNetworkIdCounter) = GVAR(serverNetworkIdCounter) + 1;
 ACREc = [GVAR(serverNetworkIdCounter), _this select 0, _this select 1];
 publicVariable "ACREc";
-if(isServer) then {
+if (isServer) then {
     [GVAR(serverNetworkIdCounter), _this select 0, _this select 1] call FUNC(onDataChangeEvent);
 };

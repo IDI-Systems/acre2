@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if(GVAR(pipeCode) == "1") exitWith {
+if (GVAR(pipeCode) == "1") exitWith {
     _ret = "ACRE2Arma" callExtension ("2" + _this);
     true;
 };

@@ -16,3 +16,6 @@ PREP(closeInventory);
 
 PREP(onInventoryRadioSelected);
 PREP(onInventoryRadioDoubleClick);
+
+PREP(inventoryListMouseDown);
+PREP(inventoryListMouseUp);

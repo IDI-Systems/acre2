@@ -16,14 +16,14 @@
  */
 #include "script_component.hpp"
 
-params["_prepend", "_currentRadioList"];
+params ["_prepend", "_currentRadioList"];
 
 private _sortList = [];
 
 private _toRemove = [];
 private _sortList = _currentRadioList + [];
 {
-    if(!(_x in _currentRadioList)) then {
+    if (!(_x in _currentRadioList)) then {
         PUSH(_toRemove, _x);
     } else {
         REM(_sortList, _x);

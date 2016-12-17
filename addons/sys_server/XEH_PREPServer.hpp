@@ -1,3 +1,4 @@
+PREP(doAddComponentCargo);
 PREP(getRadioId);
 PREP(setSpectator);
 PREP(remoteDebugMsg);

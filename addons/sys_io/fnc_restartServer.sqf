@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if(([] call FUNC(serverRunning))) then {
+if (([] call FUNC(serverRunning))) then {
     call FUNC(stopServer);
 };
 

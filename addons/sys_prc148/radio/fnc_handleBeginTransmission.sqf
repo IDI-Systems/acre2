@@ -16,6 +16,6 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_eventKind", "_eventData"];
+params ["_radioId", "_eventKind", "_eventData"];
 
 true;

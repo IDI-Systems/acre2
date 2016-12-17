@@ -16,11 +16,11 @@
  */
 #include "script_component.hpp"
 
-params["_languageKey"];
+params ["_languageKey"];
 
 private _ret = -1;
 {
-    if((_x select 0) == _languageKey) exitWith {
+    if ((_x select 0) == _languageKey) exitWith {
         _ret = _forEachIndex;
     };
 } forEach GVAR(languages);

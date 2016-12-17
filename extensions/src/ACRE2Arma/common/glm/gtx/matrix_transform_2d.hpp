@@ -46,7 +46,7 @@
 #include "../vec2.hpp"
 
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_matrix_transform_2d extension included")
 #endif
 

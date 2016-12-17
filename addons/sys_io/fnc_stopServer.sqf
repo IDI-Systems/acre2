@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 private _return = false;
-if(!(scriptDone GVAR(processId))) then {
+if (!(scriptDone GVAR(processId))) then {
     GVAR(runServer) = false;
     waitUntil{(scriptDone GVAR(processId))}; // OK - TEMP
     waitUntil{(scriptDone GVAR(pingProcessId))}; // OK - TEMP

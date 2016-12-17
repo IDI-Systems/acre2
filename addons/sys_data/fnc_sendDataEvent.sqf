@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if(isServer) then {
+if (isServer) then {
     _this call FUNC(serverPropDataEvent);
     _this call FUNC(onDataChangeEvent);
 } else {

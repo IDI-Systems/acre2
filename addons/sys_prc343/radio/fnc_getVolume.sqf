@@ -16,10 +16,10 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_event", "_eventData","_radioData"];
+params ["_radioId", "_event", "_eventData","_radioData"];
 
 private _volume = HASH_GET(_radioData,"volume");
-if(isNil "_volume") then {
+if (isNil "_volume") then {
     _volume = 1;
 };
 _volume^3;

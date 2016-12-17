@@ -8,13 +8,13 @@ Log *g_Log = NULL;
 Log::Log(char *logFile) { 
     InitializeCriticalSection(&this->m_CriticalSection);
 
-    if(logFile == NULL) {
+    if (logFile == NULL) {
         this->fileHandle = GetStdHandle(STD_OUTPUT_HANDLE);
         return;
     }
 
     this->fileHandle = CreateFileA(logFile, GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, 0);
-    if(this->fileHandle != INVALID_HANDLE_VALUE) {
+    if (this->fileHandle != INVALID_HANDLE_VALUE) {
         SetFilePointer(this->fileHandle, 0, NULL, FILE_END);
 
     } else {
@@ -36,7 +36,7 @@ size_t Log::Write(DWORD msgType, char *function, unsigned int line, const char *
     BOOL res;
     SYSTEMTIME st;
 
-    if(this->fileHandle == INVALID_HANDLE_VALUE) 
+    if (this->fileHandle == INVALID_HANDLE_VALUE) 
         return 0xFFFFFFFF;
 
     buffer[0] = 0x00;
@@ -62,7 +62,7 @@ size_t Log::Write(DWORD msgType, char *function, unsigned int line, const char *
 
     EnterCriticalSection(&this->m_CriticalSection);
     res = WriteFile(this->fileHandle, (LPCVOID)buffer, (DWORD)ret, &count, NULL);
-    if(res == FALSE) {
+    if (res == FALSE) {
         printf("Write file failed");
     }
     LeaveCriticalSection(&this->m_CriticalSection);
@@ -70,7 +70,7 @@ size_t Log::Write(DWORD msgType, char *function, unsigned int line, const char *
     // test debug, print it too
     printf("%s", buffer);
 
-    if(msgType == LOGLEVEL_ERROR) {
+    if (msgType == LOGLEVEL_ERROR) {
         MessageBoxA(NULL, buffer, "CRITICAL ERROR", MB_OK);
     }
 

@@ -17,7 +17,7 @@
 
 TRACE_1("Enter", "");
 
-if(diag_tickTime > GVAR(nextSearchTime)) then {
+if (diag_tickTime > GVAR(nextSearchTime)) then {
     GVAR(doFullSearch) = true;
 };
 
@@ -29,7 +29,7 @@ if (!GVAR(doFullSearch)) then {
         private _uniqueId = _x;
         private _mainObject = HASH_GET(GVAR(masterIdTable), _uniqueId) select 0;
         // diag_log text format["main object: %1", _mainObject];
-        if(isNil "_mainObject") exitWith { GVAR(doFullSearch) = true; };
+        if (isNil "_mainObject") exitWith { GVAR(doFullSearch) = true; };
         private _objects = [_mainObject];
         private _allContainers = (everyContainer _mainObject);
         {
@@ -40,7 +40,7 @@ if (!GVAR(doFullSearch)) then {
         {
             private _object = _x;
             private _items = [];
-            if(_object isKindOf "Man") then {
+            if (_object isKindOf "Man") then {
                 _items = [_object] call EFUNC(lib,getGear);
             } else {
                 _items = itemCargo _object;
@@ -52,12 +52,12 @@ if (!GVAR(doFullSearch)) then {
             } forEach _items;
             if (_found) exitWith {};
         } forEach _objects;
-        if(!_found) exitWith { GVAR(doFullSearch) = true; };
+        if (!_found) exitWith { GVAR(doFullSearch) = true; };
     } forEach _shortSearchList;
 };
 
 TRACE_2("Enter masterIdTracker", GVAR(doFullSearch), GVAR(nextSearchTime) );
-if(GVAR(doFullSearch)) then {
+if (GVAR(doFullSearch)) then {
     GVAR(doFullSearch) = false;
 
     TRACE_1("Spawned master container search", "");
@@ -71,7 +71,7 @@ if(GVAR(doFullSearch)) then {
     private _cfgWeapons = configFile >> "CfgWeapons";
     {
         private _mainObject = _x;
-        if(_searchedObjects pushBackUnique _mainObject != -1) then { // If not already searched
+        if (_searchedObjects pushBackUnique _mainObject != -1) then { // If not already searched
             private _objects = [_mainObject];
             private _allContainers = (everyContainer _mainObject);
             {
@@ -80,7 +80,7 @@ if(GVAR(doFullSearch)) then {
             {
                 private _object = _x;
                 private _items = [];
-                if(_object isKindOf "Man") then {
+                if (_object isKindOf "Man") then {
                     _items = [_object] call EFUNC(lib,getGear);
                 } else {
                     _items = itemCargo _object;
@@ -89,12 +89,12 @@ if(GVAR(doFullSearch)) then {
 
                 {
                     private _item = _x;
-                    if(getNumber(_cfgWeapons >> _item >> "acre_isUnique") == 1) then {
+                    if (getNumber (_cfgWeapons >> _item >> "acre_isUnique") == 1) then {
                         if (_idList pushBackUnique _item != -1) then { // Add to ID list and this condition returns true if it was not present in the _idList.
                             HASH_SET(_idTable, _item, [ARR_2(_mainObject,_object)]);
                         } else { // Already present in _idList
                             private _duplicateIdList = [];
-                            if(!HASH_HASKEY(_duplicateIdTable, _item)) then {
+                            if (!HASH_HASKEY(_duplicateIdTable, _item)) then {
                                 HASH_SET(_duplicateIdTable, _item, _duplicateIdList);
                             } else {
                                 HASH_GET(_duplicateIdTable, _item);
@@ -108,7 +108,7 @@ if(GVAR(doFullSearch)) then {
     } forEach _searchObjects;
     {
         private _key = _x;
-        if(HASH_HASKEY(GVAR(masterIdTable), _key)) then {
+        if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {
             HASH_SET(_idTable, _key, HASH_GET(GVAR(masterIdTable), _key));
         } else {
             #ifdef DEBUG_MODE_FULL
@@ -125,7 +125,7 @@ if(GVAR(doFullSearch)) then {
 
         private _players = allPlayers;
         // firstFound is always a player if a player has the item.
-        if((_firstFound select 0) in _players) then {
+        if ((_firstFound select 0) in _players) then {
             private _baseRadio = configName (inheritsFrom (_cfgWeapons >> _key));
             //Only collect firstFound if there are non-player objects with IDs as well.
             if ({!((_x select 0) in _players)} count _duplicates > 0) then {
@@ -136,7 +136,7 @@ if(GVAR(doFullSearch)) then {
             // Replace all duplicates that other players have.
             {
                private _data = _x;
-               if((_data select 0) in _players) then {
+               if ((_data select 0) in _players) then {
                    [(_data select 0), _baseRadio, "acre_sys_radio_returnRadioId", _key] call FUNC(onGetRadioId);
                    WARNING_2("Duplicate radio ID found! Attempting replace of (%1,%2)",name (_data select 0),_key);
                };
@@ -154,12 +154,12 @@ if(GVAR(doFullSearch)) then {
     private _toUpdate = [];
     {
         private _key = _x;
-        if(!(_key in GVAR(unacknowledgedIds))) then {
+        if (!(_key in GVAR(unacknowledgedIds))) then {
             private _value = HASH_GET(_idTable, _key);
 
-            if(HASH_HASKEY(GVAR(masterIdTable), _key)) then {
+            if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {
                 private _currentEntry = HASH_GET(GVAR(masterIdTable), _key);
-                if(!(_value isEqualTo _currentEntry)) then {
+                if (!(_value isEqualTo _currentEntry)) then {
                     _toUpdate pushBack [_key, _value];
                 };
             } else {
@@ -171,7 +171,7 @@ if(GVAR(doFullSearch)) then {
             };
         };
     } forEach HASH_KEYS(_idTable);
-    if((count _toUpdate) > 0) then {
+    if ((count _toUpdate) > 0) then {
         #ifdef DEBUG_MODE_FULL
             TRACE_1("calling updateIdObjects", _toUpdate);
             acre_player sideChat "Calling updateIdObjects";

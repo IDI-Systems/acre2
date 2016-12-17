@@ -28,22 +28,22 @@ private _ret = params [["_radioClass","",[""]],
 
 if (!_ret) exitWith { false };
 
-//if(typeName _radioClass != "STRING") exitWith { false };
-//if(typeName _presetName != "STRING") exitWith { false };
-//if(typeName _fieldName != "STRING") exitWith { false };
+//if (typeName _radioClass != "STRING") exitWith { false };
+//if (typeName _presetName != "STRING") exitWith { false };
+//if (typeName _fieldName != "STRING") exitWith { false };
 
 // Just make sure its some valid type for now
-//if(typeName _value != "STRING" && typeName _value != "SCALAR" && typeName _value != "ARRAY") exitWith { false };
+//if (typeName _value != "STRING" && typeName _value != "SCALAR" && typeName _value != "ARRAY") exitWith { false };
 
 
 private _channelNumber = -1;
-if(_channelReference isEqualType []) then {
+if (_channelReference isEqualType []) then {
     // its a group and channel
 } else {
-    if(_channelReference isEqualType "") then {
+    if (_channelReference isEqualType "") then {
         _channelNumber = parseNumber _channelReference;
     } else {
-        if(_channelReference isEqualType 0) then {
+        if (_channelReference isEqualType 0) then {
             _channelNumber = _channelReference;
         };
     };
@@ -67,7 +67,7 @@ TRACE_1("", _channel);
 private _newFieldName = [_radioClass, _fieldName] call FUNC(mapChannelFieldName);
 TRACE_2("", _channel, _newFieldName);
 
-if(!HASH_HASKEY(_channel, _newFieldName)) exitWith { false };
+if (!HASH_HASKEY(_channel, _newFieldName)) exitWith { false };
 HASH_SET(_channel, _newFieldName, _value);
 
 true
