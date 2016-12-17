@@ -216,7 +216,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     [
                         {
                             _value = GET_RADIO_VALUE("rxOnly");
-                            if(_value) then {
+                            if (_value) then {
                                 SET_STATE("menuSelection", 1);
                                 SCRATCH_SET(GVAR(currentRadioId), "pgm_rx_only", "YES");
                             };
@@ -240,9 +240,9 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 _rx = GET_STATE("pgm_rx_freq");
                 _tx = GET_STATE("pgm_tx_freq");
                 _rxOnly = SCRATCH_GET(GVAR(currentRadioId), "pgm_rx_only");
-                if(_rxOnly == "YES") then { _rxOnly = true; } else { _rxOnly = false; };
+                if (_rxOnly == "YES") then { _rxOnly = true; } else { _rxOnly = false; };
 
-                if(isNil "_rx" || isNil "_tx") exitWith { false };
+                if (isNil "_rx" || isNil "_tx") exitWith { false };
 
                 _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                 _channels = GET_STATE("channels");
@@ -281,7 +281,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     {
                         _powerInt = (parseNumber _x) * 1000;
                         TRACE_2("COMPARE", _powerInt, _power);
-                        if(_powerInt == _power) exitWith {
+                        if (_powerInt == _power) exitWith {
                             TRACE_1("FOUND MATCH", _forEachIndex);
                             SET_STATE("menuSelection", _forEachIndex);
                         };
@@ -332,7 +332,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 {
                     private _value = nil;
                     _value = GET_STATE_DEF("pgm_name", "");
-                    if(_value != "") then {
+                    if (_value != "") then {
                         _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                         _channels = GET_STATE("channels");
                         _channel = HASHLIST_SELECT(_channels, _channelNumber);

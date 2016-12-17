@@ -16,13 +16,13 @@
  */
 #include "script_component.hpp"
 
-params["_class"];
+params ["_class"];
 
 GVAR(radioIdMap) params ["_baseTypes","_radioIds"];
 
 private _mapIndex = _baseTypes find _class;
 
-if(_mapIndex == -1) then {
+if (_mapIndex == -1) then {
     _mapIndex = (count _baseTypes);
     _baseTypes pushBack _class;
     _radioIds set[_mapIndex, []];
@@ -32,7 +32,7 @@ private _takenIds = _radioIds select _mapIndex;
 
 private _ret = -1;
 for "_i" from 1 to 512 do {
-    if(!(_i in _takenIds)) exitWith {
+    if (!(_i in _takenIds)) exitWith {
         _ret = _i;
         PUSH(_takenIds, _ret);
     };

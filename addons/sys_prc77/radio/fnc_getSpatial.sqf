@@ -16,9 +16,9 @@
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
 private _spatial = [_radioId, "getState", "ACRE_INTERNAL_RADIOSPATIALIZATION"] call EFUNC(sys_data,dataEvent);
 
-if(!isNil "_spatial") exitWith { _spatial };
+if (!isNil "_spatial") exitWith { _spatial };
 0

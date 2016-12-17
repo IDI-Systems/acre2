@@ -41,7 +41,7 @@ void ts3plugin_setFunctionPointers(const struct TS3Functions funcs) {
 int ts3plugin_init() {
     CEngine::getInstance()->initialize(new CTS3Client(), new CCommandServer(), FROM_PIPENAME, TO_PIPENAME);
 
-    if(ts3Functions.getCurrentServerConnectionHandlerID()) {
+    if (ts3Functions.getCurrentServerConnectionHandlerID()) {
         // we are activating while connected, call it
         // virtualize a connect event
         ts3plugin_onConnectStatusChangeEvent(ts3Functions.getCurrentServerConnectionHandlerID(), STATUS_CONNECTION_ESTABLISHED, NULL);
@@ -59,7 +59,7 @@ void ts3plugin_currentServerConnectionChanged(uint64 serverConnectionHandlerID) 
 
 void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int err) {
 
-    if(status == STATUS_CONNECTION_ESTABLISHED) {
+    if (status == STATUS_CONNECTION_ESTABLISHED) {
         
 
         // 
@@ -70,11 +70,11 @@ void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int er
 
         // subscribe to all channels to receive event
         ts3Functions.requestChannelSubscribeAll(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
-        if(CEngine::getInstance()->getClient()->getState() != ACRE_STATE_RUNNING) {
+        if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_RUNNING) {
             CEngine::getInstance()->getClient()->start((ACRE_ID)id);
         }
     } else if (status == STATUS_DISCONNECTED) {
-        if(CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED) {
+        if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED) {
             CEngine::getInstance()->getClient()->stop();
         }
     }
@@ -88,7 +88,7 @@ void ts3plugin_onPlaybackShutdownCompleteEvent(uint64) {
 }
 
 void ts3plugin_shutdown() {
-    if(CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED && CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPING) {
+    if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED && CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPING) {
         CEngine::getInstance()->getClient()->stop();
     }
 }

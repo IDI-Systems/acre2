@@ -16,13 +16,13 @@
  */
 #include "script_component.hpp"
 
-params["_handlerarray", "_preset"];
+params ["_handlerarray", "_preset"];
 
 private _key = _handlerarray select 1;
 
 private _fnc = 1; //0=Load; 1=Save
 //Read out the current KnobPositions via DataEvent | need to make a full copy of the array
-if(_key == 0) then {
+if (_key == 0) then {
     _fnc = 0;
 };
 
@@ -31,7 +31,7 @@ if(_key == 0) then {
 private _currentPresets = GET_STATE("currentPreset");
 
 
-if(_fnc == 0) exitWith {
+if (_fnc == 0) exitWith {
 
 //Select array according to preset handler (left,right) [x,y]
 private _currentPreset = _currentPresets select _preset;
@@ -46,7 +46,7 @@ private _newTuneKnobsPosition = + _currentPreset;
 };
 
 
-if(_fnc == 1) exitWith {
+if (_fnc == 1) exitWith {
 //Read out current TuneKnobsPosition
 private _currentTuneKnobsPosition = GET_STATE("currentChannel");
 //Define new preset

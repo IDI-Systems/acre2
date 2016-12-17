@@ -377,11 +377,11 @@ namespace glm
     //////////////////////////
     // Default float definition
 
-#if(defined(GLM_PRECISION_LOWP_FLOAT))
+#if (defined(GLM_PRECISION_LOWP_FLOAT))
     typedef lowp_vec2            vec2;
     typedef lowp_vec3            vec3;
     typedef lowp_vec4            vec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_FLOAT))
+#elif (defined(GLM_PRECISION_MEDIUMP_FLOAT))
     typedef mediump_vec2        vec2;
     typedef mediump_vec3        vec3;
     typedef mediump_vec4        vec4;
@@ -405,11 +405,11 @@ namespace glm
     //////////////////////////
     // Default double definition
 
-#if(defined(GLM_PRECISION_LOWP_DOUBLE))
+#if (defined(GLM_PRECISION_LOWP_DOUBLE))
     typedef lowp_dvec2            dvec2;
     typedef lowp_dvec3            dvec3;
     typedef lowp_dvec4            dvec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_DOUBLE))
+#elif (defined(GLM_PRECISION_MEDIUMP_DOUBLE))
     typedef mediump_dvec2        dvec2;
     typedef mediump_dvec3        dvec3;
     typedef mediump_dvec4        dvec4;
@@ -433,11 +433,11 @@ namespace glm
     //////////////////////////
     // Signed integer definition
     
-#if(defined(GLM_PRECISION_LOWP_INT))
+#if (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_ivec2            ivec2;
     typedef lowp_ivec3            ivec3;
     typedef lowp_ivec4            ivec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_INT))
+#elif (defined(GLM_PRECISION_MEDIUMP_INT))
     typedef mediump_ivec2        ivec2;
     typedef mediump_ivec3        ivec3;
     typedef mediump_ivec4        ivec4;
@@ -461,11 +461,11 @@ namespace glm
     //////////////////////////
     // Unsigned integer definition
     
-#if(defined(GLM_PRECISION_LOWP_UINT))
+#if (defined(GLM_PRECISION_LOWP_UINT))
     typedef lowp_uvec2            uvec2;
     typedef lowp_uvec3            uvec3;
     typedef lowp_uvec4            uvec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_UINT))
+#elif (defined(GLM_PRECISION_MEDIUMP_UINT))
     typedef mediump_uvec2        uvec2;
     typedef mediump_uvec3        uvec3;
     typedef mediump_uvec4        uvec4;
@@ -489,11 +489,11 @@ namespace glm
     //////////////////////////
     // Boolean definition
 
-#if(defined(GLM_PRECISION_LOWP_BOOL))
+#if (defined(GLM_PRECISION_LOWP_BOOL))
     typedef lowp_bvec2            bvec2;
     typedef lowp_bvec3            bvec3;
     typedef lowp_bvec4            bvec4;
-#elif(defined(GLM_PRECISION_MEDIUMP_BOOL))
+#elif (defined(GLM_PRECISION_MEDIUMP_BOOL))
     typedef mediump_bvec2        bvec2;
     typedef mediump_bvec3        bvec3;
     typedef mediump_bvec4        bvec4;

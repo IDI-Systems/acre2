@@ -15,12 +15,12 @@
  */
 #include "script_component.hpp"
 
-params["_channelNumber"];
+params ["_channelNumber"];
 
-if( !(_channelNumber isEqualType 0)) exitWith { false };
+if ( !(_channelNumber isEqualType 0)) exitWith { false };
 
 private _radioId = [] call FUNC(getCurrentRadio);
-if(_radioId == "") exitWith { false };
+if (_radioId == "") exitWith { false };
 
 [_radioId, _channelNumber] call FUNC(setRadioChannel);
 

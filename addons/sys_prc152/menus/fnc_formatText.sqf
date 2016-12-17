@@ -21,7 +21,7 @@ TRACE_1("formatText", _this);
 params ["_text"];
 
 // If we got a format hash, use it
-if(count _this > 1) then {
+if (count _this > 1) then {
     private _hash = _this select 1;
     {
         private _repStr = "%"+_x;
@@ -37,8 +37,8 @@ while { _result != -1 && _iter < 5} do {
 
     private _dash = [_text, "-", _result] call CBA_fnc_find;
     private _space = [_text, " ", _result] call CBA_fnc_find;
-    if(_dash == -1) exitWith {};
-    if(_space == -1) then { _space = count (toArray _text); };
+    if (_dash == -1) exitWith {};
+    if (_space == -1) then { _space = count (toArray _text); };
 
     TRACE_4("BALLS", _text, _result, _dash, _space);
     private _channelNumber = (parseNumber ([_text, _result+3, (_dash - (_result+3))] call CBA_fnc_substr)) - 1;
@@ -65,16 +65,23 @@ while { _result != -1 && _iter < 5} do {
     _result = [_text, "$ch"] call CBA_fnc_find;
 };
 
+_result = [_text, "$transmitting"] call CBA_fnc_find;
+if (_result != -1) then {
+    private _transText = "R";
+    if (ACRE_LOCAL_BROADCASTING && {ACRE_BROADCASTING_RADIOID isEqualTo GVAR(currentRadioId)}) then { _transText = "T"; };
+    _text = [_text, "$transmitting", _transText] call CBA_fnc_replace;
+};
+
 // Check for current channel formats
 _result = [_text, "$cch"] call CBA_fnc_find;
-if(_result != -1) then {
+if (_result != -1) then {
     // Do replacements from current channel next
     private _channelNumber = ["getCurrentChannel"] call EFUNC(sys_data,guiDataEvent);
     private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
 
     // Replace channel number if its there
     _result = [_text, "$cch-number"] call CBA_fnc_find;
-    if(_result != -1) then {
+    if (_result != -1) then {
         _text = [_text, "$cch-number", ([_channelNumber+1, 2] call CBA_fnc_formatNumber)] call CBA_fnc_replace;
     };
 
@@ -84,7 +91,7 @@ if(_result != -1) then {
         private _value = [ _x, HASH_GET(_channel, _x) ] call FUNC(formatChannelValue);
         TRACE_3("Calling replace", _text, _repStr, _value);
         _result = [_text, _x] call CBA_fnc_find;
-        if(_result != -1) then {
+        if (_result != -1) then {
             _text = [_text, _repStr, _value] call CBA_fnc_replace;
         };
     } forEach HASH_KEYS(_channel);

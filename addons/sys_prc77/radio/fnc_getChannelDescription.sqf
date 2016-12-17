@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
 private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 

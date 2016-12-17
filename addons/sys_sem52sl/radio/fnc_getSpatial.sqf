@@ -44,5 +44,5 @@ params ["_radioId", "_event", "_eventData", "_radioData"];
 
 private _spatial = HASH_GET(_radioData, "ACRE_INTERNAL_RADIOSPATIALIZATION");
 
-if(!isNil "_spatial") exitWith { _spatial };
+if (!isNil "_spatial") exitWith { _spatial };
 0

@@ -17,8 +17,8 @@
 #include "script_component.hpp"
 
 LOG("HIT CYCLE RADIO");
-if(!dialog) then {
-    params["_direction"];
+if (!dialog) then {
+    params ["_direction"];
     private _radios = [];
     private _count = 0;
     private _newRadioIndex = 0;
@@ -32,7 +32,7 @@ if(!dialog) then {
         private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
         private _radio = [_typeName, _listInfo, _radioClass];
         TRACE_2("heh", _radioClass, ACRE_ACTIVE_RADIO);
-        if(_radioClass == ACRE_ACTIVE_RADIO) then {
+        if (_radioClass == ACRE_ACTIVE_RADIO) then {
             TRACE_1("found index", _count);
             _newRadioIndex = _count;
         };
@@ -41,15 +41,15 @@ if(!dialog) then {
     } foreach _radioList;
     TRACE_1("index was", _newRadioIndex);
     TRACE_1("Active was", ACRE_ACTIVE_RADIO);
-    if((count _radios) > 1) then {
-        if(_direction == 1) then {
-            if(_newRadioIndex >= (count _radios)-1) then {
+    if ((count _radios) > 1) then {
+        if (_direction == 1) then {
+            if (_newRadioIndex >= (count _radios)-1) then {
                 _newRadioIndex = 0;
             } else {
                 _newRadioIndex = _newRadioIndex + 1;
             };
         } else {
-            if(_newRadioIndex <= 0) then {
+            if (_newRadioIndex <= 0) then {
                 _newRadioIndex = (count _radios) - 1;
             } else {
                 _newRadioIndex = _newRadioIndex - 1;

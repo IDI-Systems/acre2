@@ -5,6 +5,7 @@ PREP(initializeComponent);
 PREP(findAntenna);
 PREP(detachComponent);
 PREP(detachComponentHandler);
+PREP(getAntennaDirMan);
 PREP(sendComponentMessage);
 PREP(handleComponentMessage);
 PREP(getAllConnectedComponents);

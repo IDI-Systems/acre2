@@ -16,11 +16,11 @@
  */
 #include "script_component.hpp"
 
-params["_class","_player"];
+params ["_class","_player"];
 
-if((GVAR(unacknowledgedIds) find _class) != -1) then {
-    if(!isDedicated) then {
-        if(isServer && acre_player == _player) then {
+if ((GVAR(unacknowledgedIds) find _class) != -1) then {
+    if (!isDedicated) then {
+        if (isServer && acre_player == _player) then {
             private _fnc = {
                 _class = _this;
                 GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];

@@ -16,12 +16,12 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_channelId", "_key", "_value"];
+params ["_radioId", "_channelId", "_key", "_value"];
 
 private _optChannelId = [GVAR(currentRadioId), "getState", "optChannelId"] call EFUNC(sys_data,dataEvent);
 private _opt = [GVAR(currentRadioId), "getState", "optChannelData"] call EFUNC(sys_data,dataEvent);
 
-if(_optChannelId != _channelId) then {
+if (_optChannelId != _channelId) then {
     _opt = HASH_CREATE;
     [GVAR(currentRadioId), "setState", "optChannelId", _optChannelId] call EFUNC(sys_data,dataEvent);
     false

@@ -49,7 +49,7 @@ GLM_FUNC_QUALIFIER __m128 sse_dst_ps(__m128 p0, __m128 p1)
 GLM_FUNC_QUALIFIER __m128 sse_dot_ps(__m128 v1, __m128 v2)
 {
 
-#    if(GLM_ARCH & GLM_ARCH_AVX)
+#    if (GLM_ARCH & GLM_ARCH_AVX)
         return _mm_dp_ps(v1, v2, 0xff);
 #    else
         __m128 mul0 = _mm_mul_ps(v1, v2);
@@ -130,7 +130,7 @@ GLM_FUNC_QUALIFIER __m128 sse_rfa_ps(__m128 I, __m128 N, __m128 eta)
     __m128 sub1 = _mm_sub_ps(glm::detail::one, mul1);
     __m128 mul2 = _mm_mul_ps(sub0, sub1);
     
-    if(_mm_movemask_ps(_mm_cmplt_ss(mul2, glm::detail::zero)) == 0)
+    if (_mm_movemask_ps(_mm_cmplt_ss(mul2, glm::detail::zero)) == 0)
         return glm::detail::zero;
 
     __m128 sqt0 = _mm_sqrt_ps(mul2);

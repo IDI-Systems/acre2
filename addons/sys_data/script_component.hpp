@@ -14,4 +14,6 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_DATA
 #endif
 
+#define IS_SERIALIZEDHASH(array) (IS_ARRAY(array) && {(count array) > 0} && {IS_STRING((array select 0))} && {(array select 0) == "ACRE_HASH"})
+
 #include "\idi\acre\addons\main\script_macros.hpp"

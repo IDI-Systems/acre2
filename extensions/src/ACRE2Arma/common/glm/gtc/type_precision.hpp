@@ -62,7 +62,7 @@
 #include "../mat4x3.hpp"
 #include "../mat4x4.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTC_type_precision extension included")
 #endif
 

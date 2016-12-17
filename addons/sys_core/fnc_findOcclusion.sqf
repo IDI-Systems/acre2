@@ -19,36 +19,36 @@
 params ["_startPos", "_endPos", "_unit"];
 
 private _distance = _startPos distance _endPos;
-if(_distance > 150) exitWith { 0; };
-if(!lineIntersects [_startPos, _endPos]) exitWith { 1; };
+if (_distance > 150) exitWith { 0; };
+if (!lineIntersects [_startPos, _endPos]) exitWith { 1; };
 private _vehicleUnit = vehicle _unit;
 private _vehiclePlayer = vehicle acre_player;
-if(_vehicleUnit isEqualTo _vehiclePlayer) exitWith { 1; };
+if (_vehicleUnit isEqualTo _vehiclePlayer) exitWith { 1; };
 
 private _cachedData = (_unit getVariable [QGVAR(occlusionCache), [nil,nil,-1]]);
 _cachedData params ["_cachedPos", "_cachedThickness", "_cachedTime"];
 
 private _useCache = false;
 
-if(!isNil "_cachedPos") then {
-    if(!_useCache) then {
-        if(!lineIntersects [_cachedPos, _startPos, _vehicleUnit, _vehiclePlayer] && {!lineIntersects [_cachedPos, _endPos, _vehicleUnit, _vehiclePlayer]}) then {
+if (!isNil "_cachedPos") then {
+    if (!_useCache) then {
+        if (!lineIntersects [_cachedPos, _startPos, _vehicleUnit, _vehiclePlayer] && {!lineIntersects [_cachedPos, _endPos, _vehicleUnit, _vehiclePlayer]}) then {
             _useCache = true;
         };
     };
 } else {
-    if(!isNil "_cachedThickness") then {
+    if (!isNil "_cachedThickness") then {
         _useCache = true;
     };
 };
 
-if(_useCache && {_cachedTime < diag_tickTime}) then {
+if (_useCache && {_cachedTime < diag_tickTime}) then {
     _useCache = false;
 };
 
-if(_useCache) exitWith {
+if (_useCache) exitWith {
     private _cachedResultDis = -1;
-    if(!isNil "_cachedPos") then {
+    if (!isNil "_cachedPos") then {
         _cachedResultDis = (_startPos distance _cachedPos)+(_endPos distance _cachedPos);
     };
 
@@ -69,7 +69,7 @@ private _intersectObjects = lineIntersectsObjs [_startPos, _endPos, _vehicleUnit
 
 {
     private _typeString = typeOf _x;
-    if(_typeString != "") then {
+    if (_typeString != "") then {
 
         call {
             if (_typeString isKindOf "House") exitWith { _thicknessFactor = _thicknessFactor + 0.3; };
@@ -140,7 +140,7 @@ if ((count _intersectObjects) > 0) then { // do occlusion
             //private _testPos = _startPos getPos [_dist, _dir];
             //_testPos = _testPos vectorAdd [0,0,(_x * (_vec select 2))];
             //_testPos set [2, (_startPos select 2) + (_x * (_vec select 2))]; // (_dist * (sin _elev))
-            if(!lineIntersects [_endPos, _testPos, _vehicleUnit, _vehiclePlayer] && {!lineIntersects [_startPos, _testPos, _vehicleUnit, _vehiclePlayer]}) then {
+            if (!lineIntersects [_endPos, _testPos, _vehicleUnit, _vehiclePlayer] && {!lineIntersects [_startPos, _testPos, _vehicleUnit, _vehiclePlayer]}) then {
                 _foundPos = _testPos;
                 breakTo "mainSearch";
             };
@@ -151,11 +151,11 @@ if ((count _intersectObjects) > 0) then { // do occlusion
             private _testPos = _startPos vectorAdd [0,0,_i*5];
 
             //_cc = _cc + 1;
-            if(lineIntersects [_testPos, _startPos, _vehicleUnit, _vehiclePlayer]) exitWith { };
+            if (lineIntersects [_testPos, _startPos, _vehicleUnit, _vehiclePlayer]) exitWith { };
             //_cc = _cc + 1;
-            if(!(lineIntersects [_testPos, _endPos, _vehicleUnit, _vehiclePlayer])) exitWith {
+            if (!(lineIntersects [_testPos, _endPos, _vehicleUnit, _vehiclePlayer])) exitWith {
                 _distance = (_testPos distance _startPos)+(_testPos distance _endPos);
-                if((_distance*2) < _resultDis) then {
+                if ((_distance*2) < _resultDis) then {
                     _foundPos = _testPos;
                 };
             };

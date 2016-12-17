@@ -47,7 +47,7 @@
 // Dependency:
 #include "../gtc/type_precision.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_type_aligned extension included")
 #endif
 

@@ -16,12 +16,12 @@
  */
 #include "script_component.hpp"
 
-params["_control"];
+params ["_control"];
 //_key = _this select 1;
 
 //Read out the key pressed (left/right mousebutton) and define the function increase/decrease
 private _dir = -1;
-//if(_key == 0) then {
+//if (_key == 0) then {
 //    _dir = 1;
 //};
 
@@ -33,7 +33,7 @@ private _newFunction = ((_currentFunction + _dir) max 0) min 4;
 SET_STATE_CRIT("function", _newFunction);
 
 //Handle new function
-if(_newFunction != _currentFunction) then {
+if (_newFunction != _currentFunction) then {
     _control ctrlRemoveAllEventHandlers "MouseButtonUp";
     //Play sound and render dialog
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);

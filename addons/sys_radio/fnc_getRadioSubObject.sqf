@@ -19,7 +19,7 @@
 params ["_class"];
 
 private _ret = nil;
-if(HASH_HASKEY(acre_sys_server_objectIdRelationTable, _class)) then {
+if (HASH_HASKEY(acre_sys_server_objectIdRelationTable, _class)) then {
     _ret = (HASH_GET(acre_sys_server_objectIdRelationTable, _class) select 1);
 };
 _ret;

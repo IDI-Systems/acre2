@@ -21,12 +21,12 @@ private _shift = _this select 4;
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
 private _dir = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     _dir = 1;
 };
 
 //If shift is pressed, perform a step by +-5
-if(_shift) then {
+if (_shift) then {
 _dir = _dir*5;
 };
 

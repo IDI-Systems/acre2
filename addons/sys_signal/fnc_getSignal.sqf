@@ -1,25 +1,27 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Wrapper function for calling the signal calculation (extension).
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Frequency <NUMBER>
+ * 1: Power <NUMBER>
+ * 2: Receiving Radio ID <STRING>
+ * 3: Transmitting Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Tuple of power and maximum signal strength <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [30, 5000, "ACRE_PRC343_ID_1", "ACRE_PRC343_ID_2"] call acre_sys_signal_fnc_getSignal
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_f", "_mW", "_receiverClass", "_transmitterClass", ["_skip", false]];
+params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
 private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];
-if(_count == 0) then {
+if (_count == 0) then {
     private _rxAntennas = [_receiverClass] call EFUNC(sys_components,findAntenna);
     private _txAntennas = [_transmitterClass] call EFUNC(sys_components,findAntenna);
 

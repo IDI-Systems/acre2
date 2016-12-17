@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 private _menuEntry = (GVAR(currentMenu) select (GVAR(entryMap) select 0)) select (GVAR(entryMap) select 1);
-if(!GET_STATE("editEntry")) then {
+if (!GET_STATE("editEntry")) then {
     SET_STATE("editEntry", true);
     _menuEntry = (GVAR(currentMenu) select (GVAR(entryMap) select 0)) select (GVAR(entryMap) select 1);
     _menuEntry params ["", "_value", "_row", "_range", "_type"];
@@ -33,13 +33,13 @@ if(!GET_STATE("editEntry")) then {
             private _formatLength = 0;
             private _formatArray = toArray _format;
             {
-                if(toString [_x] == "#") then {
+                if (toString [_x] == "#") then {
                     _formatLength = _formatLength + 1;
                 };
             } forEach _formatArray;
             private _valLength = (count (toArray _value));
             //acre_player sideChat format["v: %1 f: %2", _valLength, _formatLength];
-            if(_valLength < _formatLength) then {
+            if (_valLength < _formatLength) then {
                 for "_i" from 1 to _formatLength - _valLength do {
                     //acre_player sideChat "AA!";
                     _value = " " + _value;

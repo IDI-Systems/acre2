@@ -370,7 +370,7 @@ namespace glm
         assert(delta.x > T(0) && delta.y > T(0));
         tmat4x4<T, P> Result(1.0f);
 
-        if(!(delta.x > T(0) && delta.y > T(0)))
+        if (!(delta.x > T(0) && delta.y > T(0)))
             return Result; // Error
 
         tvec3<T, P> Temp(

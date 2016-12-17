@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_ear"];
+params ["_ear"];
 
 private _radioId = ACRE_ACTIVE_RADIO;
 

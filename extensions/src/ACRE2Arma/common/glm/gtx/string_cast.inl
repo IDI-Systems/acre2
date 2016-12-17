@@ -42,11 +42,11 @@ namespace detail
         char text[STRING_BUFFER];
         va_list list;
 
-        if(msg == 0)
+        if (msg == 0)
             return std::string();
 
         va_start(list, msg);
-#        if(GLM_COMPILER & GLM_COMPILER_VC)
+#        if (GLM_COMPILER & GLM_COMPILER_VC)
             vsprintf_s(text, STRING_BUFFER, msg, list);
 #        else//
             vsprintf(text, msg, list);

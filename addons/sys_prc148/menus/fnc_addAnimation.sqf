@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId), "animations", []);
-params["_func", "_args"];
+params ["_func", "_args"];
 
 private _id = (count _animations);
 _animations set[_id, [_args, _id, _func]];

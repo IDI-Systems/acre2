@@ -24,7 +24,7 @@ namespace glm
         typename genType::value_type d = glm::dot(dir, planeNormal);
         typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
 
-        if(d < Epsilon)
+        if (d < Epsilon)
         {
             intersectionDistance = glm::dot(planeOrig - orig, planeNormal) / d;
             return true;
@@ -49,23 +49,23 @@ namespace glm
         typename genType::value_type a = glm::dot(e1, p);
 
         typename genType::value_type Epsilon = std::numeric_limits<typename genType::value_type>::epsilon();
-        if(a < Epsilon)
+        if (a < Epsilon)
             return false;
 
         typename genType::value_type f = typename genType::value_type(1.0f) / a;
 
         genType s = orig - v0;
         baryPosition.x = f * glm::dot(s, p);
-        if(baryPosition.x < typename genType::value_type(0.0f))
+        if (baryPosition.x < typename genType::value_type(0.0f))
             return false;
-        if(baryPosition.x > typename genType::value_type(1.0f))
+        if (baryPosition.x > typename genType::value_type(1.0f))
             return false;
 
         genType q = glm::cross(s, e1);
         baryPosition.y = f * glm::dot(dir, q);
-        if(baryPosition.y < typename genType::value_type(0.0f))
+        if (baryPosition.y < typename genType::value_type(0.0f))
             return false;
-        if(baryPosition.y + baryPosition.x > typename genType::value_type(1.0f))
+        if (baryPosition.y + baryPosition.x > typename genType::value_type(1.0f))
             return false;
 
         baryPosition.z = f * glm::dot(e2, q);
@@ -89,7 +89,7 @@ namespace glm
     //    genType pvec = cross(dir, edge2);
     //
     //    float det = dot(edge1, pvec);
-    //    if(det < Epsilon)
+    //    if (det < Epsilon)
     //        return false;
     //
     //    genType tvec = orig - vert0;
@@ -160,7 +160,7 @@ namespace glm
         genType diff = sphereCenter - rayStarting;
         typename genType::value_type t0 = dot(diff, rayNormalizedDirection);
         typename genType::value_type dSquared = dot(diff, diff) - t0 * t0;
-        if( dSquared > sphereRadiusSquered )
+        if ( dSquared > sphereRadiusSquered )
         {
             return false;
         }
@@ -178,7 +178,7 @@ namespace glm
     )
     {
         typename genType::value_type distance;
-        if( intersectRaySphere( rayStarting, rayNormalizedDirection, sphereCenter, sphereRadius * sphereRadius, distance ) )
+        if ( intersectRaySphere( rayStarting, rayNormalizedDirection, sphereCenter, sphereRadius * sphereRadius, distance ) )
         {
             intersectionPosition = rayStarting + rayNormalizedDirection * distance;
             intersectionNormal = (intersectionPosition - sphereCenter) / sphereRadius;
@@ -201,12 +201,12 @@ namespace glm
         genType diff = sphereCenter - point0;
         typename genType::value_type t0 = dot(diff, dir);
         typename genType::value_type dSquared = dot(diff, diff) - t0 * t0;
-        if( dSquared > sphereRadius * sphereRadius )
+        if ( dSquared > sphereRadius * sphereRadius )
         {
             return false;
         }
         typename genType::value_type t1 = sqrt( sphereRadius * sphereRadius - dSquared );
-        if( t0 < t1 + Epsilon )
+        if ( t0 < t1 + Epsilon )
             t1 = -t1;
         intersectionPoint1 = point0 + dir * (t0 - t1);
         intersectionNormal1 = (intersectionPoint1 - sphereCenter) / sphereRadius;

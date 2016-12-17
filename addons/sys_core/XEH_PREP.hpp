@@ -42,3 +42,5 @@ PREP(utilityFunction);
 PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
+
+PREP(formatNumber);

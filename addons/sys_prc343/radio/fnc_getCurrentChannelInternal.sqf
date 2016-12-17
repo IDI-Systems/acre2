@@ -16,10 +16,10 @@
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
 private _currentChannelId = [_radioId, "getState", "currentChannel"] call EFUNC(sys_data,dataEvent);
-if(isNil "_currentChannelId") then {
+if (isNil "_currentChannelId") then {
     _currentChannelId = 0;
 };
 

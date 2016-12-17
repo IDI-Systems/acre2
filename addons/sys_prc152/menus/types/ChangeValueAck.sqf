@@ -25,7 +25,7 @@ DFUNC(onButtonPress_ChangeValueAck) = {
 
 DFUNC(renderMenu_ChangeValueAck) = {
     TRACE_1("renderMenu_ChangeValueAck", _this);
-    params["_menu"]; // the menu to render is passed
+    params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 
     private _valueHash = HASH_CREATE;
@@ -35,7 +35,7 @@ DFUNC(renderMenu_ChangeValueAck) = {
     // Call entry
     [_menu] call FUNC(callRenderFunctor);
 
-    if(!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
+    if (!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
         {
             [(_x select 0),
              (_x select 2),

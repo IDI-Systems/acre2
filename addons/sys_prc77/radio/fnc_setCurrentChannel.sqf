@@ -18,7 +18,7 @@
 
 TRACE_1("", _this);
 
-params["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
 TRACE_1("SETTING CURRENT CHANNEL",_this);
 

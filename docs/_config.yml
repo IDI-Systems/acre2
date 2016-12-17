@@ -10,7 +10,7 @@ company_name: IDI-Systems
 github_editme_path: IDI-Systems/acre2/blob/master/docs
 feedback_disable: true
 
-exclude: [.idea/, pdfconfigs, .editorconfig, .gitignore, CNAME, Gemfile, Gemfile.lock, "*.sh", README.md]
+exclude: [.idea/, pdfconfigs, .editorconfig, .gitignore, CNAME, docker-compose.yml, Dockerfile, Gemfile, Gemfile.lock, "*.sh", README.md]
 
 gems:
   - jekyll-redirect-from

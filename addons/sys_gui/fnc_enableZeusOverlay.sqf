@@ -33,7 +33,7 @@ DFUNC(isUnitCurator) = {
     private _curators = [] call FUNC(getCurators);
 
     {
-        if((_x select 0) == acre_player) exitWith {
+        if ((_x select 0) == acre_player) exitWith {
             _result = true;
             _result
         };
@@ -48,7 +48,7 @@ while { true } do {
     // If theres a zues acre_player, give him the ACRE overlay
     waitUntil { !isNull acre_player && { diag_tickTime > 0 } };
 
-    if([acre_player] call FUNC(isUnitCurator)) then {
+    if ([acre_player] call FUNC(isUnitCurator)) then {
         // Curator is local acre_player
 
         //"RscDisplayCurator" call bis_fnc_rscLayer;

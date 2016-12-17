@@ -16,9 +16,9 @@
  */
 #include "script_component.hpp"
 
-if(isNil QGVAR(monitorAIHandle)) exitWith { false };
+if (isNil QGVAR(monitorAIHandle)) exitWith { false };
 
-if(GVAR(monitorAIHandle) > -1) then {
+if (GVAR(monitorAIHandle) > -1) then {
     [GVAR(monitorAIHandle)] call CBA_fnc_removePerFrameHandler;
 };
 

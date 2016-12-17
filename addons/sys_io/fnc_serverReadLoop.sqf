@@ -21,14 +21,14 @@ private _ret = nil;
 private _exit = false;
 private _count = 0;
 
-if(GVAR(pipeCode) == "1") then {
+if (GVAR(pipeCode) == "1") then {
     while {!_exit && _count < 50} do {
         // diag_log text format["Trying pipe."];
         _ret = "ACRE2Arma" callExtension "3";
         // diag_log text format["Pipe Response: %1", _ret];
-        if(!(isNil "_ret")) then {
-            if(_ret != "_JERR_FALSE") then {
-                if(_ret != "_JERR_NULL" && _ret != "_JERR_NOCONNECT") then {
+        if (!(isNil "_ret")) then {
+            if (_ret != "_JERR_FALSE") then {
+                if (_ret != "_JERR_NULL" && _ret != "_JERR_NOCONNECT") then {
                     TRACE_1("got message", _ret);
                     _ret call CALLSTACK(GVAR(ioEventFnc));
                 } else {

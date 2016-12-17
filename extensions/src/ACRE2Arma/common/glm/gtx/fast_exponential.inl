@@ -49,7 +49,7 @@ namespace glm
     GLM_FUNC_QUALIFIER T fastPow(T x, int y)
     {
         T f = static_cast<T>(1);
-        for(int i = 0; i < y; ++i)
+        for (int i = 0; i < y; ++i)
             f *= x;
         return f;
     }
@@ -58,7 +58,7 @@ namespace glm
     GLM_FUNC_QUALIFIER vecType<T, P> fastPow(vecType<T, P> const & x, vecType<int, P> const & y)
     {
         vecType<T, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = fastPow(x[i], y[i]);
         return Result;
     }
@@ -84,7 +84,7 @@ namespace glm
         const float FloatPart = x - IntegerPart;
         float z = 1.f;
 
-        for(int i = 0; i < int(IntegerPart); ++i)
+        for (int i = 0; i < int(IntegerPart); ++i)
             z *= e;
 
         const float x2 = FloatPart * FloatPart;

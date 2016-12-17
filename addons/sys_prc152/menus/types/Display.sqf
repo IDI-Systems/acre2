@@ -18,7 +18,7 @@
 
 DFUNC(onButtonPress_Display) = {
     TRACE_1("onButtonPress_Display", _this);
-    params["_menu", "_event"];
+    params ["_menu", "_event"];
 
     _currentSelection = GET_STATE_DEF("menuSelection", 0);
     switch (_event select 0) do {
@@ -29,7 +29,7 @@ DFUNC(onButtonPress_Display) = {
 
             _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
             _channels = GET_STATE("channels");
-            if(_channelNumber < 98) then {
+            if (_channelNumber < 98) then {
                 _channelNumber = _channelNumber + 1;
             } else {
                 _channelNumber = 0;
@@ -49,7 +49,7 @@ DFUNC(onButtonPress_Display) = {
 
             _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
             _channels = GET_STATE("channels");
-            if(_channelNumber > 0) then {
+            if (_channelNumber > 0) then {
                 _channelNumber = _channelNumber - 1;
             } else {
                 // Go to the last preset
@@ -73,7 +73,7 @@ DFUNC(onButtonPress_Display) = {
             TRACE_2("Cycling display", _currentSelection, (count MENU_SUBMENUS(_menu)));
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(callCompleteFunctor);
 
-            if(_currentSelection+1 >= (count MENU_SUBMENUS(_menu))) then {
+            if (_currentSelection+1 >= (count MENU_SUBMENUS(_menu))) then {
                 _currentSelection = 0;
             } else {
                 _currentSelection = _currentSelection + 1;
@@ -96,7 +96,7 @@ DFUNC(renderMenu_Display) = {
     BEGIN_COUNTER(renderMenu_Display);
 
     TRACE_1("renderMenu_Display", _this);
-    params["_menu"]; // the menu to render is passed
+    params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 
 
@@ -106,7 +106,7 @@ DFUNC(renderMenu_Display) = {
     // A display set has a set of children STATIC displays, which are rendered and canFire
     // be swaped with the 'NEXT' circly button thingy
     private _entry = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuEntry", false);
-    if(_entry) then {
+    if (_entry) then {
         [_currentDisplay] call FUNC(callEntryFunctor);
     };
 
