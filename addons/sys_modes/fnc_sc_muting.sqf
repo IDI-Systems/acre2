@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks if two radios in singleChannel or singleChannelPRR mode can "hear" eachother
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID one <STRING>
+ * 1: Radio ID two <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * TRUE if match <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["_radioId1","_radioId2"] call acre_sys_modes_fnc_sc_muting
  *
  * Public: No
  */
@@ -24,13 +24,13 @@ private _radioRxData = [_radioId2, "getCurrentChannelData"] call EFUNC(sys_data,
 private _mode1 = HASH_GET(_radioTxData, "mode");
 private _mode2 = HASH_GET(_radioRxData, "mode");
 private _match = false;
-if(
+if (
     (_mode1 == "singleChannel" && _mode2 == "singleChannel") ||
     (_mode1 == "singleChannelPRR" && _mode2 == "singleChannelPRR")
 ) then {
     private _freq1 = HASH_GET(_radioTxData, "frequencyTX");
     private _freq2 = HASH_GET(_radioRxData, "frequencyRX");
-    if(_freq1 == _freq2) then {
+    if (_freq1 == _freq2) then {
         _match = true;
     };
 };

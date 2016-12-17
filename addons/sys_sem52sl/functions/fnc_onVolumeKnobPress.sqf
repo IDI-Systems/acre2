@@ -27,7 +27,7 @@ GVAR(lastAction) = time;
 
 
 private _currentDirection = 1;
-if(_key == 0) then {
+if (_key == 0) then {
     // left click
     _currentDirection = -1;
 };
@@ -47,7 +47,7 @@ if (_channelKnobPosition == 15) then { // programming (used to help program).
 } else { // Channel selected do Volume control
     private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 16;
 
-    if(_knobPosition != _newKnobPosition) then {
+    if (_knobPosition != _newKnobPosition) then {
 
         ["setState", ["volumeKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 

@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_name","_value"];
+params ["_name","_value"];
 
 #define SQUELCH_CTCSS 3
 
@@ -33,7 +33,7 @@ switch _name do {
         _value = [_value, 2, 4] call CBA_fnc_formatNumber;
     };
     case "encryption": {
-        if(_value > 1) then { _value = "CT"; } else { _value = "PT"; };
+        if (_value > 1) then { _value = "CT"; } else { _value = "PT"; };
     };
     case "channelMode": {
         switch _value do {
@@ -47,7 +47,7 @@ switch _name do {
     };
 };
 
-if(!(_value isEqualType "")) then {
+if (!(_value isEqualType "")) then {
     _value = format["%1", _value];
 };
 TRACE_1("Output", _value);

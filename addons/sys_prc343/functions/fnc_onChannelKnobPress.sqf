@@ -16,12 +16,12 @@
  */
 #include "script_component.hpp"
 
-params["_handlerarray", "_knob"];
+params ["_handlerarray", "_knob"];
 
 private _key = _handlerarray select 1;
 
 private _currentDirection = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     // left click
     _currentDirection = 1;
 };
@@ -48,7 +48,7 @@ if (_knob == 1) then {
 
 private _newAbsChannel = _newBlock*16 + _newChannel;
 
-if(_newAbsChannel != _currentAbsChannel) then {
+if (_newAbsChannel != _currentAbsChannel) then {
     ["setCurrentChannel", _newAbsChannel] call GUI_DATA_EVENT;
 
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);

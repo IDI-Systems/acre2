@@ -39,7 +39,7 @@ private _currentChannels = HASH_GET(_radioData,"channels");
 
 SCRATCH_SET(_radioId, "currentTransmissions", []);
 
-if(isNil "_currentChannels") then {
+if (isNil "_currentChannels") then {
     _currentChannels = HASH_COPY(_channels);
     HASH_SET(_radioData,"channels",_currentChannels);
 };

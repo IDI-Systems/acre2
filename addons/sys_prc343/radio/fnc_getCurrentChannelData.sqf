@@ -16,10 +16,10 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
-if(isNil "_currentChannelId") then {
+if (isNil "_currentChannelId") then {
     _currentChannelId = 0;
 };
 private _radioChannels = HASH_GET(_radioData,"channels");

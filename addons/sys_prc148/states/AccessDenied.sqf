@@ -22,7 +22,7 @@ DFUNC(AccessDeniedState) = {
 };
 
 DFUNC(AccessDeniedDisplay_Render) = {
-    params["_display"];
+    params ["_display"];
     [_display, BIG_LINE_1, "PROGRAMMING", CENTER_ALIGN] call FUNC(displayLine);
     [_display, BIG_LINE_2, "ACCESS DENIED", CENTER_ALIGN] call FUNC(displayLine);
     [_display, BIG_LINE_4, "PRESS ESC TO EXIT", CENTER_ALIGN] call FUNC(displayLine);

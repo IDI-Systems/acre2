@@ -23,7 +23,7 @@
                                + __GNUC_PATCHLEVEL__)
 #   if defined(__GXX_EXPERIMENTAL_CXX0X__)
 #      define ELPP_CXX0X 1
-#   elif(ELPP_GCC_VERSION >= 40801)
+#   elif (ELPP_GCC_VERSION >= 40801)
 #      define ELPP_CXX11 1
 #   endif  // defined(__GXX_EXPERIMENTAL_CXX0X__)
 #endif  // defined(__GNUC__)
@@ -33,7 +33,7 @@
 #   define ELPP_CRT_DBG_WARNINGS 1
 #   if (_MSC_VER == 1600)
 #      define ELPP_CXX0X 1
-#   elif(_MSC_VER >= 1700)
+#   elif (_MSC_VER >= 1700)
 #      define ELPP_CXX11 1
 #   endif  // (_MSC_VER == 1600)
 #endif  // defined(_MSC_VER)
@@ -350,7 +350,7 @@
 #   include <thread>
 #   include <queue>
 #   include <condition_variable>
-#endif  // ELPP_ASYNC_LOGGING 
+#endif  // ELPP_ASYNC_LOGGING
 #if defined(ELPP_STL_LOGGING)
 // For logging STL based templates
 #   include <list>
@@ -571,7 +571,7 @@ namespace el {
             return Level::Unknown;
         }
         /// @brief Applies specified function to each level starting from startIndex
-        /// @param startIndex initial value to start the iteration from. This is passed as pointer and 
+        /// @param startIndex initial value to start the iteration from. This is passed as pointer and
         ///        is left-shifted so this can be used inside function (fn) to represent current level.
         /// @param fn function to apply with each level. This bool represent whether or not to stop iterating through levels.
         static inline void forEachLevel(base::type::EnumType* startIndex, const std::function<bool(void)>& fn) {
@@ -607,7 +607,7 @@ namespace el {
         PerformanceTracking = 64,
         /// @brief Specifies log file max size.
         ///
-        /// @detail If file size of corresponding log file (for corresponding level) is >= specified size, log file will 
+        /// @detail If file size of corresponding log file (for corresponding level) is >= specified size, log file will
         /// be truncated and re-initiated.
         MaxLogFileSize = 128,
         /// @brief Specifies number of log entries to hold until we flush pending log data
@@ -672,7 +672,7 @@ namespace el {
         /// @brief Applies specified function to each configuration type starting from startIndex
         /// @param startIndex initial value to start the iteration from. This is passed by pointer and is left-shifted
         ///        so this can be used inside function (fn) to represent current configuration type.
-        /// @param fn function to apply with each configuration type. 
+        /// @param fn function to apply with each configuration type.
         ///        This bool represent whether or not to stop iterating through configurations.
         static inline void forEachConfigType(base::type::EnumType* startIndex, const std::function<bool(void)>& fn) {
             base::type::EnumType cIndexMax = ConfigurationTypeHelper::kMaxValid;
@@ -1421,7 +1421,7 @@ namespace el {
             class OS : base::StaticClass {
             public:
 #if ELPP_OS_WINDOWS
-                /// @brief Gets environment variables for Windows based OS. 
+                /// @brief Gets environment variables for Windows based OS.
                 ///        We are not using <code>getenv(const char*)</code> because of CRT deprecation
                 /// @param varname Variable name to get environment variable value for
                 /// @return If variable exist the value of it otherwise nullptr
@@ -1930,7 +1930,7 @@ namespace el {
             /// @brief A pointer registry mechanism to manage memory and provide search functionalities. (non-predicate version)
             ///
             /// @detail NOTE: This is thread-unsafe implementation (although it contains lock function, it does not use these functions)
-            ///         of AbstractRegistry<T_Ptr, Container>. Any implementation of this class should be  
+            ///         of AbstractRegistry<T_Ptr, Container>. Any implementation of this class should be
             ///         explicitly (by using lock functions)
             template <typename T_Ptr, typename T_Key = const char*>
             class Registry : public AbstractRegistry<T_Ptr, std::map<T_Key, T_Ptr*>> {
@@ -5960,7 +5960,7 @@ namespace el {
                 configure();
             }
         }
-        /// @brief Configures loggers using command line arg. Ensure you have already set command line args, 
+        /// @brief Configures loggers using command line arg. Ensure you have already set command line args,
         /// @return False if invalid argument or argument with no value provided, true if attempted to configure logger.
         ///         If true is returned that does not mean it has been configured successfully, it only means that it
         ///         has attempeted to configure logger using configuration file provided in argument

@@ -701,7 +701,7 @@ public:
 
   void Process (size_t samples, const Value** src)
   {
-    for( int i=0; i<Channels; i++ )
+    for ( int i=0; i<Channels; i++ )
     {
       const Value* cur = src[i];
 

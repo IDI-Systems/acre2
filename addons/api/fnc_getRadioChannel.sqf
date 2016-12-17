@@ -15,12 +15,12 @@
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
-if(!(_radioId isEqualType "")) exitWith { -1 };
+if (!(_radioId isEqualType "")) exitWith { -1 };
 
 private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 
-if(isNil "_channelNumber") exitWith { nil };
+if (isNil "_channelNumber") exitWith { nil };
 _channelNumber = _channelNumber + 1;
 _channelNumber

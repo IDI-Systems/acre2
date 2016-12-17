@@ -26,7 +26,7 @@
 
 ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
 
-    if(!g_Log) {
+    if (!g_Log) {
         g_Log = (Log *)new Log("acre2.log");
         LOG("* Logging engine initialized.");
     }
@@ -81,19 +81,19 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
 }
 
 ACRE_RESULT CEngine::start(ACRE_ID id) {
-    if(this->getExternalServer()) {
+    if (this->getExternalServer()) {
         this->getExternalServer()->initialize();
     } else {
         return ACRE_ERROR;
     }
 
-    if(this->getGameServer()) {
+    if (this->getGameServer()) {
         this->getGameServer()->initialize();
     } else {
         return ACRE_ERROR;
     }
     /*
-    if(this->getKeyHandlerEngine()) {
+    if (this->getKeyHandlerEngine()) {
         this->getKeyHandlerEngine()->initialize();
     } else {
         return ACRE_ERROR;
@@ -121,7 +121,7 @@ ACRE_RESULT CEngine::stop() {
         this->getGameServer()->shutdown();
     }
 
-    if(this->getExternalServer()) {
+    if (this->getExternalServer()) {
         this->getExternalServer()->shutdown();
     }
 
@@ -197,7 +197,7 @@ ACRE_RESULT CEngine::localStopSpeaking( void ) {
 ACRE_RESULT CEngine::remoteStartSpeaking(ACRE_ID remoteId, int languageId, std::string netId, ACRE_SPEAKING_TYPE speakingType, std::string radioId, ACRE_VOLUME curveScale) {
     TRACE("Remote Start Speaking Enter: %d, %d", remoteId, speakingType);
     auto it = this->speakingList.find(remoteId);
-    if(it != this->speakingList.end()) {
+    if (it != this->speakingList.end()) {
         //ghetto rig the remote players curveScale updates
         it->second->setSelectableCurveScale(curveScale);
         return ACRE_OK;
@@ -227,7 +227,7 @@ ACRE_RESULT CEngine::remoteStartSpeaking(ACRE_ID remoteId, int languageId, std::
 ACRE_RESULT CEngine::remoteStopSpeaking(ACRE_ID remoteId) {
     TRACE("Remote STOP Speaking Enter: %d", remoteId);
     auto it = this->speakingList.find(remoteId);
-    if(it != this->speakingList.end()) {
+    if (it != this->speakingList.end()) {
         CPlayer *remotePlayer = (CPlayer *)it->second;
 
         CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("remoteStopSpeaking",
@@ -240,7 +240,7 @@ ACRE_RESULT CEngine::remoteStopSpeaking(ACRE_ID remoteId) {
         );
 
         this->speakingList.erase(it);
-        if(remotePlayer)
+        if (remotePlayer)
             delete remotePlayer;
     }
     return ACRE_OK;

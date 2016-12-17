@@ -16,7 +16,7 @@
 // Entrant worker, weee
 //
 ACRE_RESULT CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
-    if(data->function) {
+    if (data->function) {
         data->function->call(data->server, data->message);
     }
     delete data->message;
@@ -53,11 +53,11 @@ IRpcFunction *CRpcEngine::findProcedure(char *cmd) {
     
     std::map<std::string, IRpcFunction *>::iterator it;
 
-    if(this->getShuttingDown())
+    if (this->getShuttingDown())
         return NULL;
 
     it = this->m_FunctionList.find(std::string((char *)cmd));
-    if(it != this->m_FunctionList.end())
+    if (it != this->m_FunctionList.end())
         return (IRpcFunction *)it->second;
 
     return NULL;
@@ -69,21 +69,21 @@ ACRE_RESULT CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg, BOO
     IRpcFunction *ptr;
     ACRE_RPCDATA *data;
     
-    if(msg) {
-        if(!msg->getProcedureName()) {
+    if (msg) {
+        if (!msg->getProcedureName()) {
             delete msg;
             return FALSE;
         }
 
         ptr = this->findProcedure(msg->getProcedureName());
-        if(ptr) {
-            if(!entrant) {
+        if (ptr) {
+            if (!entrant) {
                 LOCK(this);
                 ptr->call(serverInstance, msg);
                 delete msg;
                 UNLOCK(this);
             } else {
-                if(!this->getRunning()) {
+                if (!this->getRunning()) {
                     this->startWorker();
                 }
                 data = (ACRE_RPCDATA *)malloc(sizeof(ACRE_RPCDATA));

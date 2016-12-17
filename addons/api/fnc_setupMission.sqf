@@ -22,17 +22,17 @@
 // [ setupBabel, setupPerSideRadios] call acre_api_fnc_setupMission;
 // [ true/false, true/false]
 
-params["_setupBabel","_setupPresets"];
+params ["_setupBabel","_setupPresets"];
 
-if((typeName _setupBabel) != "BOOL") exitWith { false };
-if((typeName _setupPresets) != "BOOL") exitWith { false };
+if ((typeName _setupBabel) != "BOOL") exitWith { false };
+if ((typeName _setupPresets) != "BOOL") exitWith { false };
 
-if(_setupbabel) then {
+if (_setupbabel) then {
     [ true ] call FUNC(babelSetupMission);
 };
 
-if(_setupPresets) then {
-    if(hasInterface) then {
+if (_setupPresets) then {
+    if (hasInterface) then {
         [] spawn {
             waitUntil { !isNull acre_player };
 

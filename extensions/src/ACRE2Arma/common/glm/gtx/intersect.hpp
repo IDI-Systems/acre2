@@ -46,7 +46,7 @@
 #include "../glm.hpp"
 #include "../gtx/closest_point.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_closest_point extension included")
 #endif
 

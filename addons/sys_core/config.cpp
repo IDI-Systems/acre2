@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {"ACRE_TestLoader"};
+        units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_main", "acre_sys_rpc", "acre_sys_data"};
@@ -12,10 +12,9 @@ class CfgPatches {
         VERSION_CONFIG;
     };
 };
-#include "cfgEventhandlers.hpp"
-#include "cfgSounds.hpp"
-#include "cfgVehicles.hpp"
-#include "dialogs.hpp"
+#include "CfgEventHandlers.hpp"
+#include "CfgSounds.hpp"
+#include "CfgVehicles.hpp"
 
 class CfgAcreWorlds {
 

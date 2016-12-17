@@ -144,7 +144,7 @@ namespace glm
         //////////////////////////////////////
         // Swizzle constructors
 
-#        if(GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE))
+#        if (GLM_HAS_ANONYMOUS_UNION && defined(GLM_SWIZZLE))
             template <int E0>
             GLM_FUNC_DECL tvec1(detail::_swizzle<1, T, P, tvec1<T, P>, E0, -1,-2,-3> const & that)
             {

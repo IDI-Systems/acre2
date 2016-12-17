@@ -17,8 +17,8 @@
 
 params ["_curveScale"];
 
-if(IS_NUMBER(_curveScale)) then {
-    if(_curveScale >= 0) then {
+if (IS_NUMBER(_curveScale)) then {
+    if (_curveScale >= 0) then {
         ACRE_VOICE_CURVE_SCALE = _curveScale;
         publicVariable "ACRE_VOICE_CURVE_SCALE";
     } else {

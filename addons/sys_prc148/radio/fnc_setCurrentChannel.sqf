@@ -22,13 +22,13 @@ TRACE_1("SETTING CURRENT CHANNEL",_this);
 private _groups = HASH_GET(_radioData, "groups");
 private _group = _groups select HASH_GET(_radioData, "currentGroup");
 
-if(!(_eventData in (_group select 1))) then {
+if (!(_eventData in (_group select 1))) then {
     {
         _x params ["","_channelNums"];
         private _groupIndex = _forEachIndex;
-        if(_eventData in _channelNums) exitWith {
+        if (_eventData in _channelNums) exitWith {
             {
-                if(_x == _eventData) then {
+                if (_x == _eventData) then {
                     HASH_SET(_radioData, "currentGroup", _groupIndex);
                     HASH_SET(_radioData, "channelKnobPosition", _forEachIndex);
                 };

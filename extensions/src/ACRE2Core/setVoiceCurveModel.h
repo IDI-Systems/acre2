@@ -11,7 +11,7 @@ RPC_FUNCTION(setVoiceCurveModel) {
     voiceModel = vMessage->getParameterAsInt(0);
     voiceCurveScale = vMessage->getParameterAsFloat(1);
 
-    if(!CEngine::getInstance()->getGameServer()->getConnected())
+    if (!CEngine::getInstance()->getGameServer()->getConnected())
         return ACRE_OK;
 
     LOCK(CEngine::getInstance()->getSelf());

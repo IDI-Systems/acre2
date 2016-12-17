@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_name", "_value"];
+params ["_name", "_value"];
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 #define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
@@ -37,7 +37,7 @@ switch _name do {
         _value = [_value, 3, 5] call CBA_fnc_formatNumber;
     };
     case "encryption": {
-        if(_value > 1) then { _value = "CT"; } else { _value = "PT"; };
+        if (_value > 1) then { _value = "CT"; } else { _value = "PT"; };
     };
     case "channelMode": {
         switch _value do {
@@ -62,7 +62,7 @@ switch _name do {
     };
 };
 
-if(!(_value isEqualType "")) then {
+if (!(_value isEqualType "")) then {
     _value = format["%1", _value];
 };
 TRACE_1("Output", _value);

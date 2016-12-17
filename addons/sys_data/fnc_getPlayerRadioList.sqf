@@ -18,10 +18,10 @@
 
 private _radioList = [];
 
-if(!ACRE_IS_SPECTATOR) then {
+if (!ACRE_IS_SPECTATOR) then {
     private _weapons = [acre_player] call EFUNC(lib,getGear);
     {
-        if(getNumber(configFile >> "CfgWeapons" >> _x >> "acre_isUnique") == 1) then {
+        if (getNumber (configFile >> "CfgWeapons" >> _x >> "acre_isUnique") == 1) then {
             _radioList pushBackUnique _x;
         };
     } forEach _weapons;

@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_display", "_icon", "_show"];
+params ["_display", "_icon", "_show"];
 
 private _ctrl = _display displayCtrl _icon;
 

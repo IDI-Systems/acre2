@@ -35,10 +35,10 @@ namespace glm
     // pow
     GLM_FUNC_QUALIFIER int pow(int x, int y)
     {
-        if(y == 0)
+        if (y == 0)
             return 1;
         int result = x;
-        for(int i = 1; i < y; ++i)
+        for (int i = 1; i < y; ++i)
             result *= x;
         return result;
     }
@@ -46,7 +46,7 @@ namespace glm
     // sqrt: From Christopher J. Musial, An integer square root, Graphics Gems, 1990, page 387
     GLM_FUNC_QUALIFIER int sqrt(int x)
     {
-        if(x <= 1) return x;
+        if (x <= 1) return x;
 
         int NextTrial = x >> 1;
         int CurrentAnswer;
@@ -55,7 +55,7 @@ namespace glm
         {
             CurrentAnswer = NextTrial;
             NextTrial = (NextTrial + x / NextTrial) >> 1;
-        } while(NextTrial < CurrentAnswer);
+        } while (NextTrial < CurrentAnswer);
 
         return CurrentAnswer;
     }
@@ -103,7 +103,7 @@ namespace detail
     {
         genType Temp = x;
         genType Result;
-        for(Result = 1; Temp > 1; --Temp)
+        for (Result = 1; Temp > 1; --Temp)
             Result *= Temp;
         return Result;
     }
@@ -141,14 +141,14 @@ namespace detail
     GLM_FUNC_QUALIFIER uint pow(uint x, uint y)
     {
         uint result = x;
-        for(uint i = 1; i < y; ++i)
+        for (uint i = 1; i < y; ++i)
             result *= x;
         return result;
     }
 
     GLM_FUNC_QUALIFIER uint sqrt(uint x)
     {
-        if(x <= 1) return x;
+        if (x <= 1) return x;
 
         uint NextTrial = x >> 1;
         uint CurrentAnswer;
@@ -157,7 +157,7 @@ namespace detail
         {
             CurrentAnswer = NextTrial;
             NextTrial = (NextTrial + x / NextTrial) >> 1;
-        } while(NextTrial < CurrentAnswer);
+        } while (NextTrial < CurrentAnswer);
 
         return CurrentAnswer;
     }
@@ -167,7 +167,7 @@ namespace detail
         return x - y * (x / y);
     }
 
-#if(GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_GCC))
+#if (GLM_COMPILER & (GLM_COMPILER_VC | GLM_COMPILER_GCC))
 
     GLM_FUNC_QUALIFIER unsigned int nlz(unsigned int x) 
     {

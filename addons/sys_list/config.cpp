@@ -14,4 +14,4 @@ class CfgPatches {
 };
 
 #include "list_dialog.hpp"
-#include "CfgEventhandlers.hpp"
+#include "CfgEventHandlers.hpp"

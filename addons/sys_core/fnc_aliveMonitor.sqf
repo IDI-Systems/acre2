@@ -23,10 +23,10 @@ DFUNC(utility_aliveStatus) = {
     _isMutedBool = IS_MUTED(acre_player);
 
     _isMuted = 0;
-    if(_isMutedBool) then {
+    if (_isMutedBool) then {
         _isMuted = 1;
     };
-    if((_isMuted != GVAR(oldMute)) || (diag_tickTime > GVAR(_waitTime))) then {
+    if ((_isMuted != GVAR(oldMute)) || (diag_tickTime > GVAR(_waitTime))) then {
         GVAR(_waitTime) = diag_tickTime + 3;
         ["localMute", (str _isMuted)] call EFUNC(sys_rpc,callRemoteProcedure);
     };

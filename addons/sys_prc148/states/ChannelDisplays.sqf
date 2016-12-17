@@ -21,7 +21,7 @@ DFUNC(ChannelDisplay_ESC) = {
 };
 
 DFUNC(ChannelDisplay_Render) = {
-    params["_display"];
+    params ["_display"];
     _group = GET_STATE("groups") select GET_STATE("currentGroup");
 
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
@@ -33,22 +33,22 @@ DFUNC(ChannelDisplay_Render) = {
     _pageIndex = PAGE_INDEX;
     GVAR(currentMenu) = [];
 
-    if(_pageIndex == 0) then {
+    if (_pageIndex == 0) then {
         SET_TEXT("CH = ", BIG_LINE_1, 2, 6);
         SET_TEXT("PWR = ", BIG_LINE_3, 2, 7);
     };
     _pageOne = [];
     _channelNumberTxt = str (_channelNumber+1);
-    if(_channelNumber+1 < 10) then {
+    if (_channelNumber+1 < 10) then {
         _channelNumberTxt = "00" + _channelNumberTxt;
     } else {
-        if(_channelNumber+1 < 100) then {
+        if (_channelNumber+1 < 100) then {
             _channelNumberTxt = "0" + _channelNumberTxt;
         };
     };
     _pageOne pushBack ["CHANNEL", _channelNumberTxt, BIG_LINE_1, [7, 9], MENU_TYPE_MENU, {}];
     _encryption = "PLAIN";
-    if(HASH_GET(_channel, "encryption") == 1) then {
+    if (HASH_GET(_channel, "encryption") == 1) then {
         _encryption = "SECURE";
     };
     _pageOne pushBack ["encryption", HASH_GET(_channel, "encryption"), BIG_LINE_1, [12, 17], MENU_TYPE_LIST, FUNC(updateChannelData), ["PLAIN", "SECURE"], [0,1]];
@@ -82,7 +82,7 @@ DFUNC(ChannelDisplay_Render) = {
                         ];
             _ctcssLabelList = +_ctcssList;
             _ctcssLabelList set[0, "OFF"];
-            if(HASH_GET(_channel, "modulation") == "AM") then {
+            if (HASH_GET(_channel, "modulation") == "AM") then {
                 _ctcssList = [0];
                 _ctcssLabelList = ["OFF"];
                 _powersList = [["1.0 W", "5.0 W"], [1000, 5000]];

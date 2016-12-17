@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_frequency"];
+params ["_frequency"];
 
 private _mhz = floor _frequency;
 private _khz = round((_frequency*100000)-((floor _frequency)*100000));

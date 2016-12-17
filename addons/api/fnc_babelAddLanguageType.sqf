@@ -3,11 +3,11 @@
  * Creates a new language to be used by the babel system.
  *
  * Arguments:
- * 0: Language key <STRING>
+ * 0: Language ID (used internally for identifying the language or specifying languages via other API methods) <STRING>
  * 1: Language display name <STRING>
  *
  * Return Value:
- * None
+ * Setup succesful <BOOL>
  *
  * Example:
  * ["en", "English"] call acre_api_fnc_babelAddLanguageType;

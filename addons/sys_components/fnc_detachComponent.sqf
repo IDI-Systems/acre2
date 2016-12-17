@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_parentComponentId", "_parentConnector"];
+params ["_parentComponentId", "_parentConnector"];
 
 private _return = false;
 private _baseClass = getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass");
@@ -25,19 +25,19 @@ if (_baseClass == "") then {_baseClass = getText(configFile >> "CfgVehicles" >> 
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
 
 private _parentComponentData = HASH_GET(acre_sys_data_radioData,_parentComponentId);
-if(!isNil "_parentComponentData") then {
+if (!isNil "_parentComponentData") then {
     private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
-    if(!isNil "_parentConnectorData") then {
-        if((count _parentConnectorData) > _parentConnector) then {
+    if (!isNil "_parentConnectorData") then {
+        if ((count _parentConnectorData) > _parentConnector) then {
             private _parentConnectedComponentData = _parentConnectorData select _parentConnector;
 
             private _childComponentId = _parentConnectedComponentData select 0;
             private _config = configFile >> "CfgAcreComponents" >> _childComponentId;
 
-            if(isClass(_config)) then { // Is Simple component
-                if(count _parentConnectorData > _parentConnector) then {
+            if (isClass(_config)) then { // Is Simple component
+                if (count _parentConnectorData > _parentConnector) then {
                     private _test = _parentConnectorData select _parentConnector;
-                    if(!isNil "_test") then {
+                    if (!isNil "_test") then {
                         [_parentComponentId, "detachComponent", [_parentConnector]] call EFUNC(sys_data,dataEvent);
                         _return = true;
                     };
@@ -51,7 +51,7 @@ if(!isNil "_parentComponentData") then {
 
                         if (_data select 0 == _parentComponentId) exitWith { _childConnector = _idx;};
                     } forEach _components; //_childComponentData;
-                    if(_childConnector != -1) then {
+                    if (_childConnector != -1) then {
                         [_parentComponentId, "detachComponent", [_parentConnector]] call EFUNC(sys_data,dataEvent);
                         [_childComponentId, "detachComponent", [_childConnector]] call EFUNC(sys_data,dataEvent);
                         _return = true;

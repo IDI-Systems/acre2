@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_event", "_data", "_radioData", "_eventKind"];
+params ["_radioId", "_event", "_data", "_radioData", "_eventKind"];
 
 _data params ["_componentId", "_childConnector", "_parentConnector", "_attributes"];
 //_childConnector - this is the connector on this event's device
@@ -24,7 +24,7 @@ _data params ["_componentId", "_childConnector", "_parentConnector", "_attribute
 
 
 private _connectorData = HASH_GET(_radioData, "acre_radioConnectionData");
-if(isNil "_connectorData") then {
+if (isNil "_connectorData") then {
     _connectorData = [];
     HASH_SET(_radioData, "acre_radioConnectionData", _connectorData);
 };

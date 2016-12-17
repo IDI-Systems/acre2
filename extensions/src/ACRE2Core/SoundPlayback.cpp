@@ -9,7 +9,7 @@
 
 ACRE_RESULT CSoundPlayback::buildSound(std::string id, std::string content) {
     SoundItem *item;
-    if(itemMap.find(id) == itemMap.end()) {
+    if (itemMap.find(id) == itemMap.end()) {
         item = new SoundItem();
         item->loaded = FALSE;
         item->id = id;
@@ -17,7 +17,7 @@ ACRE_RESULT CSoundPlayback::buildSound(std::string id, std::string content) {
     } else {
         item = itemMap.find(id)->second;
     }
-    if(!item->loaded) {
+    if (!item->loaded) {
         item->base64 += content;
     }
 
@@ -26,7 +26,7 @@ ACRE_RESULT CSoundPlayback::buildSound(std::string id, std::string content) {
 
 ACRE_RESULT CSoundPlayback::loadSound(std::string id) {
     SoundItem *item;
-    if(itemMap.find(id) == itemMap.end()) {
+    if (itemMap.find(id) == itemMap.end()) {
         return ACRE_ERROR;
     }
     item = itemMap.find(id)->second;
@@ -38,7 +38,7 @@ ACRE_RESULT CSoundPlayback::loadSound(std::string id) {
     tempPath += "\\";
     tempPath += id;
     std::ofstream out(tempPath, std::ios::out | std::ios::binary);
-    if(!out.is_open()) {
+    if (!out.is_open()) {
         return ACRE_ERROR;
     }
     out.write(&decoded[0], decoded.size());
@@ -55,7 +55,7 @@ ACRE_RESULT CSoundPlayback::playSound(std::string id, ACRE_VECTOR position, ACRE
     tempPath += "\\";
     tempPath += id;
     CWave waveFile;
-    if(waveFile.Load(tempPath)) {
+    if (waveFile.Load(tempPath)) {
         CSoundChannelMono *tempChannel;
         CEngine::getInstance()->getSoundEngine()->getSoundMixer()->lock();
         CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&tempChannel, waveFile.GetSize()/sizeof(short), true);
@@ -71,7 +71,7 @@ ACRE_RESULT CSoundPlayback::playSound(std::string id, ACRE_VECTOR position, ACRE
         tempChannel->getMixdownEffectInsert(0)->setParam("headVectorY", direction.y);
         tempChannel->getMixdownEffectInsert(0)->setParam("headVectorZ", direction.z);
 
-        if(isWorld) {
+        if (isWorld) {
             tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000001);
             tempChannel->getMixdownEffectInsert(0)->setParam("speakingType", ACRE_SPEAKING_RADIO);
         } else {
