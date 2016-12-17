@@ -25,21 +25,21 @@ DFUNC(gen) = {
 // CBA KEYBINDS
 ///////////////////////////////////
 
-["ACRE2", "DefaultPTTKey", ["Default Radio Key", "Use currently selected radio to talk."], { [-1] call FUNC(handleMultiPttKeyPress) }, { [-1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, false]]] call cba_fnc_addKeybind;
-["ACRE2", "AltPTTKey1", ["Alt Radio Key 1", "Use the first radio in your inventory to talk."], { [0] call FUNC(handleMultiPttKeyPress) }, { [0] call FUNC(handleMultiPttKeyPressUp) }, [58, [true, false, false]]] call cba_fnc_addKeybind;
-["ACRE2", "AltPTTKey2", ["Alt Radio Key 2", "Use the second radio in your inventory to talk."], { [1] call FUNC(handleMultiPttKeyPress) }, { [1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "AltPTTKey3", ["Alt Radio Key 3", "Use the third radio in your inventory to talk."], { [2] call FUNC(handleMultiPttKeyPress) }, { [2] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, true]]] call cba_fnc_addKeybind;
+["ACRE2", "DefaultPTTKey",  [(localize LSTRING(DefaultPTTKey)), (localize LSTRING(DefaultPTTKey_description))], { [-1] call FUNC(handleMultiPttKeyPress) }, { [-1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "AltPTTKey1", [(localize LSTRING(AltPTTKey1)), (localize LSTRING(AltPTTKey1_description))], { [0] call FUNC(handleMultiPttKeyPress) }, { [0] call FUNC(handleMultiPttKeyPressUp) }, [58, [true, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "AltPTTKey2", [(localize LSTRING(AltPTTKey2)), (localize LSTRING(AltPTTKey2_description))], { [1] call FUNC(handleMultiPttKeyPress) }, { [1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "AltPTTKey3", [(localize LSTRING(AltPTTKey3)), (localize LSTRING(AltPTTKey3_description))], { [2] call FUNC(handleMultiPttKeyPress) }, { [2] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, true]]] call cba_fnc_addKeybind;
 
-["ACRE2", "PreviousChannel", "Previous Channel (Active Radio)", "", { [-1] call FUNC(switchChannelFast) }, [208, [false, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "NextChannel", "Next Channel (Active Radio)", "", { [1] call FUNC(switchChannelFast) }, [200, [false, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "PreviousChannel", (localize LSTRING(PreviousChannel)), "", { [-1] call FUNC(switchChannelFast) }, [208, [false, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "NextChannel", (localize LSTRING(NextChannel)), "", { [1] call FUNC(switchChannelFast) }, [200, [false, true, false]]] call cba_fnc_addKeybind;
 
-["ACRE2", "BabelCycleKey", "Babel Cycle Language", "", { [] call FUNC(cycleLanguage) }, [0xDB, [false, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "BabelCycleKey", (localize LSTRING(BabelCycleKey)), "", { [] call FUNC(cycleLanguage) }, [0xDB, [false, false, false]]] call cba_fnc_addKeybind;
 
-["ACRE2", "RadioLeftEar", "Radio Left Ear", { [-1] call FUNC(switchRadioEar) }, "", [203, [true, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "RadioCentertEar", "Radio Center Ear", { [0] call FUNC(switchRadioEar) }, "", [200, [true, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "RightRightEar", "Radio Right Ear", { [1] call FUNC(switchRadioEar) }, "", [205, [true, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "RadioLeftEar", (localize LSTRING(RadioLeftEar)), { [-1] call FUNC(switchRadioEar) }, "", [203, [true, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "RadioCentertEar", (localize LSTRING(RadioCentertEar)), { [0] call FUNC(switchRadioEar) }, "", [200, [true, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "RightRightEar", (localize LSTRING(RightRightEar)), { [1] call FUNC(switchRadioEar) }, "", [205, [true, true, false]]] call cba_fnc_addKeybind;
 
-["ACRE2", "HeadSet", "Toggle Headset/Toggle Spectators", "", { [] call FUNC(toggleHeadset) }, [208, [true, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "HeadSet", (localize LSTRING(HeadSet)), "", { [] call FUNC(toggleHeadset) }, [208, [true, true, false]]] call cba_fnc_addKeybind;
 
 ///////////////////////////////////
 ///////////////////////////////////

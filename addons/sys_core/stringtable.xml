@@ -26,5 +26,50 @@
             <French>Désactiver la notification de désynchronisation d'équipement</French>
             <Japanese>装備の非同期ヒントを無効化</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
+            <English>Default Radio Key</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
+            <English>Use currently selected radio to talk.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey1">
+            <English>Alt Radio Key 1</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey2">
+            <English>Alt Radio Key 2</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey3">
+            <English>Alt Radio Key 3</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
+            <English>Use the first radio in your inventory to talk.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
+            <English>Use the second radio in your inventory to talk.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
+            <English>Use the third radio in your inventory to talk.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_PreviousChannel">
+            <English>Previous Channel (Active Radio)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_NextChannel">
+            <English>Next Channel (Active Radio)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_BabelCycleKey">
+            <English>Babel Cycle Language</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_RadioLeftEar">
+            <English>Radio Left Ear</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_RadioCentertEar">
+            <English>Radio Center Ear</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_RightRightEar">
+            <English>Radio Right Ear</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_HeadSet">
+            <English>Toggle Headset/Toggle Spectators</English>
+        </Key>
     </Package>
 </Project>
