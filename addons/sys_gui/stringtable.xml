@@ -3,6 +3,7 @@
     <Package name="sys_gui">
         <Key ID="STR_ACRE_sys_gui_VolumeControl">
             <English>Direct Speech Volume Control</English>
+            <Czech>Ovládání hlasitosti přímého mluvení</Czech>
             <Japanese>直接会話の音量設定</Japanese>
         </Key>
     </Package>
