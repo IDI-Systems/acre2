@@ -3,10 +3,10 @@
  * Event handler to monitor inventory changes upon ACRE radios.
  *
  * Arguments:
- * 0: eventhandler [eventhandler, function handler] <ARRAY>
+ * 0: Eventhandler [eventhandler, function handler] <ARRAY>
  *
  * Return Value:
- * none
+ * None
  *
  * Example:
  * ADDPFH(DFUNC(inventoryMonitorPFH), 0, []);

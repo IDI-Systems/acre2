@@ -6,7 +6,7 @@
  * ACRE radios
  *
  * Arguments:
- * 0: array containing object and container <ARRAY>
+ * 0: Array containing object and container <ARRAY>
  *
  * Return Value:
  * None
