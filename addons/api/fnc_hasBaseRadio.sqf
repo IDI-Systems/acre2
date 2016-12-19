@@ -23,6 +23,6 @@ private _ret = false;
     private _weapon = _x;
     _ret = [_weapon] call FUNC(isBaseRadio);
     if (_ret) exitWith { _ret };
-} foreach ([_unit] call EFUNC(lib,getGear));
+} foreach ([_unit] call EFUNC(sys_core, getGear));
 
 _ret
