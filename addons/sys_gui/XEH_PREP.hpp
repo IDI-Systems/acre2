@@ -11,11 +11,16 @@ PREP(enableZeusOverlay);
 PREP(setZeusOverlayDetail);
 PREP(disableZeusOverlay);
 
-PREP(openInventory);
 PREP(closeInventory);
+PREP(openInventory);
+PREP(uniqueArray);
 
+PREP(onInventoryAction);
 PREP(onInventoryRadioSelected);
 PREP(onInventoryRadioDoubleClick);
 
 PREP(inventoryListMouseDown);
 PREP(inventoryListMouseUp);
+PREP(inventoryMonitorPFH);
+
+PREP(handleContextMenu);

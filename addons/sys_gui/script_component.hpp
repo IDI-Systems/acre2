@@ -15,3 +15,16 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+#define INVENTORY_DISPLAY (findDisplay 602)
+
+#define IDC_FG_VEST_CONTAINER 638
+#define IDC_FG_UNIFORM_CONTAINER 633
+#define IDC_FG_BACKPACK_CONTAINER 619
+#define IDC_FG_GROUND_ITEMS       632
+#define IDC_FG_CHOSEN_CONTAINER  640
+
+#define IDC_RADIOSLOT 6214
+
+#define INV_SELECTION_CHANGED 0
+#define INV_DOUBLE_CLICK 1
