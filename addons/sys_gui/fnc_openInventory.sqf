@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Function called from Extended_InventoryOpened_EventHandlers. Sets the to
+ * global namespace the object whose eventhandler is attached to as well as its
+ * connected container. Adds a per frame handler to monitor inventory actions upon
+ * ACRE radios
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: array containing object and container <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_gui_fnc_openInventory
  *
  * Public: No
  */
@@ -18,8 +20,7 @@
 
 //TRACE_1("ENTER", _this);
 
-
-uiNamespace setVariable [QGVAR(inventoryObject), (_this select 0)];
-uiNamespace setVariable [QGVAR(inventoryContainer), (_this select 1)];
+uiNamespace setVariable [QGVAR(inventoryObject), _this select 0];
+uiNamespace setVariable [QGVAR(inventoryContainer), _this select 1];
 
 ADDPFH(DFUNC(inventoryMonitorPFH), 0, []);

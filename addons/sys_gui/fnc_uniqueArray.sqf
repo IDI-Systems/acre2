@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns an array of unique elements without nil values
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Array whose unique elements are extracted <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of unique elements without nil values of the parsed array
  *
  * Example:
- * [ARGUMENTS] call acre_sys_gui_fnc_uniqueArray
+ * [["ACRE_PRC343",nil,"ACRE_PRC148"]] call acre_sys_gui_fnc_uniqueArray
  *
  * Public: No
  */

@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks whther the an ACRE radio is selected or opened in the inventory
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Double (1) or single click (0) <NUMBER>
+ * 1: Container to look at: uniform, vest or backpack or remote (disabled) <STRING>
+ * 2: Array containing the control idc and the additional integer value in the item <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * false <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_gui_fnc_onInventoryAction
+ * [0, "uniform", [101, 0]] call acre_sys_gui_fnc_onInventoryAction
  *
  * Public: No
  */
@@ -18,16 +19,16 @@
 
 params ["_typeClick", "_typeIndex", "_vars"];
 _vars params ["_idc", "_selectedIndex"];
-_idc = ctrlIDC (_idc);
-
-private _container = nil;
+_idc = ctrlIDC _idc;
 
 TRACE_1("GO", _this);
 
 private _index = lbValue [_idc, _selectedIndex];
 private _item = nil;
+private _container = nil;
+
 switch _typeIndex do {
-    case 'uniform': {
+    case "uniform": {
         _container = _typeIndex;
         private _itemsArray = (uniformItems acre_player) + (uniformMagazines acre_player);
         private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
@@ -35,7 +36,7 @@ switch _typeIndex do {
             _item = _uniqueItems select _index;
         };
     };
-    case 'vest': {
+    case "vest": {
         _container = _typeIndex;
         private _itemsArray = (vestItems acre_player) + (vestMagazines acre_player);
         private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
@@ -43,7 +44,7 @@ switch _typeIndex do {
             _item = _uniqueItems select _index;
         };
     };
-    case 'backpack': {
+    case "backpack": {
         _container = _typeIndex;
         private _itemsArray = (backpackItems acre_player) + (backpackMagazines acre_player);
         private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
@@ -51,7 +52,7 @@ switch _typeIndex do {
             _item = _uniqueItems select _index;
         };
     };
-    case 'remote': {
+    case "remote": {
         // TODO, disabled remote for now
         /*
         _object = uiNamespace getVariable [QGVAR(inventoryObject), nil];
