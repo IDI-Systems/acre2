@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * ["acre_prc343_id_1", acre_player] call acre_sys_server_fnc_acknowledgeId;
+ * ["acre_prc343_id_1", acre_player] call acre_sys_server_fnc_acknowledgeId
  *
  * Public: No
  */
