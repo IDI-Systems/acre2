@@ -14,6 +14,7 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
 
 params [["_inArray",[]]];
 

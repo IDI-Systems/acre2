@@ -15,6 +15,8 @@
  * Public: No
  */
 
+#include "script_component.hpp"
+
  if (!isNull INVENTORY_DISPLAY) then {
      TRACE_1("Registering Events", "");
      // Hide the ItemRadio slot

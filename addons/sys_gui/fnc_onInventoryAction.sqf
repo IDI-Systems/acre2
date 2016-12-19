@@ -14,6 +14,7 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
 
 params ["_typeClick", "_typeIndex", "_vars"];
 _vars params ["_idc", "_selectedIndex"];

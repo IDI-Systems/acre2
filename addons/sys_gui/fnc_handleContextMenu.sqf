@@ -14,6 +14,7 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
 
  DFUNC(handleContextMenu) = {
      TRACE_1("enter", _this);
