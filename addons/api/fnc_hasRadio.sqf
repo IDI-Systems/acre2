@@ -22,6 +22,6 @@ private _ret = false;
     private _weapon = _x;
     _ret = [_weapon] call FUNC(isRadio);
     if (_ret) exitWith { };
-} foreach ([_unit] call EFUNC(sys_core, getGear));
+} foreach ([_unit] call EFUNC(sys_core,getGear));
 
 _ret

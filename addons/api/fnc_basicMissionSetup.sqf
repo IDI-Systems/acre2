@@ -79,8 +79,8 @@ private _addRadios = {
 
     private _cleanRadioList = [];
     if !("ACRE_PRC343" in _defaultRadios) then {
-        [_player, "ItemRadio"] call EFUNC(sys_core, removeGear);
-        [_player, "ACRE_PRC343"] call EFUNC(sys_core, removeGear);
+        [_player, "ItemRadio"] call EFUNC(sys_core,removeGear);
+        [_player, "ACRE_PRC343"] call EFUNC(sys_core,removeGear);
         _cleanRadioList = _defaultRadios;
     } else {
         private _countDefaultRadios = 0;

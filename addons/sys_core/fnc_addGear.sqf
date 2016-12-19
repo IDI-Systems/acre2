@@ -1,13 +1,12 @@
 /*
  * Author: ACRE2Team
- * Adds the specified item to a unit. The item can be added to a specific
- * container (uniform, vest or backpack) or wherever can be added.
+ * Adds the specified item to a unit.
+ * The item can be added to a specific container (uniform, vest or backpack) or wherever can be added.
  *
  * Arguments:
- * 0: unit <OBJECT>
- * 1: item to be added <STRING>
- * 2: location where the item will be added: vest, uniform or backpack
- *    <STRING><OPTIONAL>
+ * 0: Unit <OBJECT>
+ * 1: Item to be added <STRING>
+ * 2: Location where the item will be added: vest, uniform or backpack <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
  * None
@@ -20,9 +19,9 @@
  */
 #include "script_component.hpp"
 
-params ["_unit", "_item",["_gearContainer",""]];
+params ["_unit", "_item", ["_gearContainer",""]];
 
-if ( _gearContainer != "") then {
+if (_gearContainer != "") then {
     switch _gearContainer do {
         case 'vest': {
             _unit addItemToVest _item;

@@ -3,10 +3,10 @@
  * Returns an array of ACRE gear in the passed unit
  *
  * Arguments:
- * 0: unit <OBJECT>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * Array of ACRE related gear
+ * Array of ACRE related gear <ARRAY>
  *
  * Example:
  * [player] call acre_sys_core_fnc_getGear

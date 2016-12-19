@@ -3,8 +3,8 @@
  * Removes the specified item from the given unit inventory
  *
  * Arguments:
- * 0: unit <OBJECT>
- * 1: item to be removed <STRING>
+ * 0: Unit <OBJECT>
+ * 1: Item to be removed <STRING>
  *
  * Return Value:
  * None

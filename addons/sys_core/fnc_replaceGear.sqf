@@ -1,12 +1,11 @@
 /*
  * Author: ACRE2Team
- * Replaces an item in a unit with another one. It is not limited to ACRE 2
- * related items
+ * Replaces an item in a unit with another one. It is not limited to ACRE 2 related items
  *
  * Arguments:
- * 0: unit <OBJECT>
- * 1: item to be replaced <STRING>
- * 2: item used as a replacement <STRING>
+ * 0: Unit <OBJECT>
+ * 1: Item to be replaced <STRING>
+ * 2: Item used as a replacement <STRING>
  *
  * Return Value:
  * None
