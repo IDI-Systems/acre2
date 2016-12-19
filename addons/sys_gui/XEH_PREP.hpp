@@ -7,10 +7,6 @@ PREP(onVolumeControlKeyPressUp);
 PREP(onVolumeControlSliderChanged);
 PREP(setVolumeSliderColor);
 
-PREP(enableZeusOverlay);
-PREP(setZeusOverlayDetail);
-PREP(disableZeusOverlay);
-
 PREP(openInventory);
 PREP(closeInventory);
 
