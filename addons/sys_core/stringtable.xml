@@ -49,7 +49,7 @@
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
             <English>Alt Radio Key 1</English>
             <Czech>Alternativní klávesa rádia 1</Czech>
-            <German>Alternative Fungerätetaste 1</German>
+            <German>Alternative Funkgerätetaste 1</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2">
             <English>Alt Radio Key 2</English>
@@ -59,7 +59,7 @@
         <Key ID="STR_ACRE_sys_core_AltPTTKey3">
             <English>Alt Radio Key 3</English>
             <Czech>Alternativní klávesa rádia 3</Czech>
-            <German>Alterative Funkgerätetaste 3</German>
+            <German>Alternative Funkgerätetaste 3</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Use the first radio in your inventory to talk.</English>
