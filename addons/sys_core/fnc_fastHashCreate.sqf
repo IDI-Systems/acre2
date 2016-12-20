@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Creates an ACRE 2 hash. This function can also be accessed through the macro HASH_CREATE
+ * Creates an ACRE 2 hash. This function can also be accessed through the macro HASH_CREATE.
  *
  * Arguments:
  * None

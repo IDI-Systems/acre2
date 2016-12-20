@@ -1,9 +1,9 @@
 /*
  * Author: ACRE2Team
- * Copies one hash to another or creates an ACRE2 hash with the object variables if the input is an object
+ * Copies one hash to another or creates an ACRE2 hash with the object variables if the input is an object.
  *
  * Arguments:
- * 0: ACRE 2 Hash <ARRAY> or object <OBJECT>
+ * 0: ACRE 2 Hash <HASH>/<OBJECT>
  *
  * Return Value:
  * ACRE 2 Hash <HASH>

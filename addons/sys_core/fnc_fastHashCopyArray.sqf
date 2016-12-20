@@ -3,13 +3,14 @@
  * Copies an array or an ACRE 2 hash entry inside an ACRE 2 hash
  *
  * Arguments:
- * 0: ACRE 2 Hash <HASH> or array <ARRAY> to be copied
+ * 0: ACRE 2 Hash <HASH>/<ARRAY> to be copied
  *
  * Return Value:
  * Extracted array of values to be copied <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_core_fnc_fastHashCopyArray
+ * [["foo1", "foo2"]] call acre_sys_core_fnc_fastHashCopyArray
+ * [acreHash] call acre_sys_core_fnc_fastHashCopyArray
  *
  * Public: No
  */

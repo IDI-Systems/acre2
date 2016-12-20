@@ -1,7 +1,7 @@
 /*
  * Author: ACRE2Team
  * Retrieves the compartment where the specified unit finds itself (driver, turret,...).
- * Relevant for signal attenuating purposes
+ * Relevant for signal attenuating purposes.
  *
  * Arguments:
  * 0: Unit <OBJECT>

@@ -1,10 +1,10 @@
 /*
  * Author: ACRE2Team
  * Retrieves a list of keys inside an ACRE 2 hash or variable names defined in an object.
- * This function can be accessed through the macro HASH_KEYS
+ * This function can be accessed through the macro HASH_KEYS.
  *
  * Arguments:
- * 0: ACRE 2 hash <HASH> or object <OBJECT>
+ * 0: ACRE 2 Hash <HASH>/<OBJECT>
  *
  * Return Value:
  * Array of keys inside an ACRE 2 Hash or object <ARRAY>
