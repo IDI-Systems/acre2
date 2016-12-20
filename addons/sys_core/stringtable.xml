@@ -27,7 +27,7 @@
             <French>Démuter les clients</French>
             <Japanese>クライアントを非ミュート化</Japanese>
             <Czech>Zrušit ztlumení diváků</Czech>
-            <German>Stummschaltung der CLients aufheben</German>
+            <German>Stummschaltung der Clients aufheben</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
