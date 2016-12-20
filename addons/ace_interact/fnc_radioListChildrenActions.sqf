@@ -28,7 +28,7 @@ private _radioList = [] call acre_api_fnc_getCurrentRadioList;
     private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
     private _displayName = getText(_item >> "displayName");
     private _currentChannel = [_x] call acre_api_fnc_getRadioChannel;
-    _displayName = format["%1 Chn: %2",_displayName, _currentChannel];
+    _displayName = format[localize LSTRING(channelShort),_displayName, _currentChannel];
     private _picture = getText(_item >> "picture");
     private _isActive = _x isEqualTo _currentRadio;
 
@@ -37,8 +37,8 @@ private _radioList = [] call acre_api_fnc_getCurrentRadioList;
 } forEach (_radioList);
 
 if (count _radioList > 0) then {
-    private _text = "Lower Headset";
-    if (acre_sys_core_lowered == 1) then { _text = "Raise Headset"};
+    private _text = localize LSTRING(lowerHeadset);
+    if (acre_sys_core_lowered == 1) then { _text = localize LSTRING(raiseHeadset); };
     private _action = ["acre_toggle_headset", _text, "", {[] call acre_sys_core_fnc_toggleHeadset}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };

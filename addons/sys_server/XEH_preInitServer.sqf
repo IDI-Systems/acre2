@@ -23,9 +23,11 @@ DGVAR(masterIdList) = [];
 DVAR(ACRE_SPECTATORS_LIST) = [];
 
 GVAR(masterIdTable) = HASH_CREATE;
-GVAR(unacknowledgedIds) = [];
 GVAR(doFullSearch) = false;
 GVAR(waitingForIdAck) = false;
 GVAR(nextSearchTime) = diag_tickTime + 5;
+
+GVAR(unacknowledgedIds) = [];
+GVAR(unacknowledgedTable) = HASH_CREATE;
 
 ADDON = true;
