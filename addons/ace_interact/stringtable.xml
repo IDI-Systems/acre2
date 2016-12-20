@@ -3,45 +3,59 @@
     <Package name="ace_interact">
         <Key ID="STR_ACRE_ace_interact_radios">
             <English>Radios</English>
+            <German>Funkgeräte</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelShort">
             <English>%1 Chn: %2</English>
+            <German>%1 Kanal: %2</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_lowerHeadset">
             <English>Lower Headset</English>
+            <German>Headset absetzen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_raiseHeadset">
             <English>Raise Headset</English>
+            <German>Headset aufsetzen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bothEars">
             <English>Both Ears</English>
+            <German>Beide Ohrhörer</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setToBothEars">
             <English>Set To Both Ears</English>
+            <German>Auf beide Ohrhörer legen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_leftEar">
             <English>Left Ear</English>
+            <German>Linker Ohrhörer</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setToLeftEar">
             <English>Set To Left Ear</English>
+            <German>Auf linken Ohrhörer legen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_rightEar">
             <English>Right Ear</English>
+            <German>Rechter Ohrhörer</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setToRightEar">
             <English>Set To Right Ear</English>
+            <German>Auf rechten Ohrhörer legen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsActive">
             <English>Set as Active</English>
+            <German>Als aktiv setzen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bindMultiPushToTalk">
             <English>Bind Multi Push To Talk</English>
+            <German>Sprechtasten festlegen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_multiPushToTalk">
             <English>Multi Push To Talk-%1</English>
+            <German>Sprechtaste %1</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsMultiPTT">
             <English>Set as Multi PTT %1</English>
+            <German>Als Sprechtaste %1 festlegen</German>
         </Key>
     </Package>
 </Project>

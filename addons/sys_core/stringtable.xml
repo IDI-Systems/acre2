@@ -44,7 +44,7 @@
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
             <English>Default Radio Key</English>
             <Czech>Defaultní klávesa rádia</Czech>
-            <German>Standard Funkgerätetaste</German>
+            <German>Standard Sprechtaste</German>
             <Japanese>標準の無線送信キー</Japanese>
             <Italian>Tasto Radio Standard</Italian>
         </Key>
@@ -58,21 +58,21 @@
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
             <English>Alt Radio Key 1</English>
             <Czech>Alternativní klávesa rádia 1</Czech>
-            <German>Alternative Funkgerätetaste 1</German>
+            <German>Alternative Sprechtaste 1</German>
             <Japanese>代替無線キー 1</Japanese>
             <Italian>Trasmetti sulla Radio alternativa n.1</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2">
             <English>Alt Radio Key 2</English>
             <Czech>Alternativní klávesa rádia 2</Czech>
-            <German>Alternative Funkgerätetaste 2</German>
+            <German>Alternative Sprechtaste 2</German>
             <Japanese>代替無線キー 2</Japanese>
             <Italian>Trasmetti sulla Radio alternativa n.2</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3">
             <English>Alt Radio Key 3</English>
             <Czech>Alternativní klávesa rádia 3</Czech>
-            <German>Alternative Funkgerätetaste 3</German>
+            <German>Alternative Sprechtaste 3</German>
             <Japanese>代替無線キー 3</Japanese>
             <Italian>Trasmetti sulla Radio alternativa n.3</Italian>
         </Key>
