@@ -111,10 +111,29 @@ if (GVAR(doFullSearch)) then {
         if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {
             HASH_SET(_idTable, _key, HASH_GET(GVAR(masterIdTable), _key));
         } else {
-            #ifdef DEBUG_MODE_FULL
-                acre_player sideChat format["%1 ACRE WARNING: Unacknowledged key not found in masterIdTable (%2)", diag_tickTime, _key];
-            #endif
-            WARNING_1("Unacknowledged key not found in masterIdTable (%1)",_key);
+            private _time = HASH_GET(GVAR(unacknowledgedTable),_key);
+
+            if (time > _time + 10) then { // Allow 10 seconds before indiciating it is unacknowledged.
+                #ifdef DEBUG_MODE_FULL
+                    acre_player sideChat format["%1 ACRE WARNING: Unacknowledged key not found in masterIdTable (%2)", diag_tickTime, _key];
+                #endif
+                WARNING_1("Unacknowledged key not found in masterIdTable (%1)",_key);
+                if (time > _time + 60) then { // Free up the ID after if it remains unclaimed after 60 seconds.
+                    // Cleanup unacknowledge ID.
+                    WARNING_1("Releasing unacknowledged key (%1)",_key);
+                    GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_key];
+                    GVAR(masterIdList) = GVAR(masterIdList) - [_key];
+                    HASH_REM(GVAR(unacknowledgedTable), _key);
+
+                    private _baseRadio = configName (inheritsFrom (configFile >> "CfgWeapons" >> _key));
+                    private _idNumber = getNumber (configFile >> "CfgWeapons" >> _key >> "acre_uniqueId");
+                    private _keyIndex = (GVAR(radioIdMap) select 0) find _baseRadio;
+                    if (_keyIndex != -1) then {
+                        private _newIds = ((GVAR(radioIdMap) select 1) select _keyIndex) - [_idNumber];
+                        (GVAR(radioIdMap) select 1) set[_keyIndex, _newIds];
+                    };
+                };
+            };
         };
     } forEach GVAR(unacknowledgedIds);
 

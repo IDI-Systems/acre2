@@ -3,7 +3,7 @@ class CfgVehicles {
     class CAManBase: Man {
         class ACE_SelfActions {
             class ACRE_Interact {
-                displayName = "Radios";
+                displayName = CSTRING(radios);
                 condition = "true";
                 exceptions[] = {"isNotInside", "isNotSitting"};
                 statement = "true";
