@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * ADDPFH(DFUNC(inventoryMonitorPFH), 0, []);
+ * [acre_sys_gui_inventoryMonitorPFH, 0, []] call CBA_fnc_addPerFrameHandler
  *
  * Public: No
  */

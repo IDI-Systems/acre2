@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Returns an array of unique elements without nil values
+ * Returns an array of unique elements without nil values.
  *
  * Arguments:
  * 0: Array whose unique elements are extracted <ARRAY>

@@ -16,17 +16,15 @@
  */
 #include "script_component.hpp"
 
-DFUNC(handleContextMenu) = {
-    TRACE_1("enter", _this);
+TRACE_1("enter", _this);
 
-    /*
-    private _location = _this select 0;
-    private _cargs = _this select 1;
-    private _coords = [_this select 2, _this select 3];
+/*
+private _location = _this select 0;
+private _cargs = _this select 1;
+private _coords = [_this select 2, _this select 3];
 
-    if (_cargs select 4) then {
-        // SHOW THE MPPT SELECTION DIALOG HERE
+if (_cargs select 4) then {
+    // SHOW THE MPPT SELECTION DIALOG HERE
 
-    };
-    */
 };
+*/
