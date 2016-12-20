@@ -3,7 +3,7 @@
  * Copies an array or an ACRE 2 hash entry inside an ACRE 2 hash
  *
  * Arguments:
- * 0: ACRE 2 Hash <HASH>/<ARRAY> to be copied
+ * 0: ACRE 2 Hash to be copied <HASH>/<ARRAY>
  *
  * Return Value:
  * Extracted array of values to be copied <ARRAY>
