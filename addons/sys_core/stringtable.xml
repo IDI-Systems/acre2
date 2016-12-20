@@ -7,6 +7,7 @@
             <Japanese>ポスト ミックスの全体音量</Japanese>
             <Czech>Hlasitost Post-Mixu</Czech>
             <German>Post-Mix Lautstärke</German>
+            <Italian>Volume Globale Post-Mix</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
             <English>Pre-Mix Global Volume</English>
@@ -14,6 +15,7 @@
             <Japanese>プレ ミックスの全体音量</Japanese>
             <Czech>Hlasitost Pre-Mixu</Czech>
             <German>Pre-Mix Lautstärke</German>
+            <Italian>Volume Globale Pre-Mix</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_ACRE_SPECTATOR_VOLUME_displayName">
             <English>Spectator Volume</English>
@@ -21,6 +23,7 @@
             <Japanese>スペクテイター音量</Japanese>
             <Czech>Hlasitost diváků</Czech>
             <German>Lautstärke der Zuschauer</German>
+            <Italian>Volume Spettatore</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
@@ -28,6 +31,7 @@
             <Japanese>クライアントを非ミュート化</Japanese>
             <Czech>Zrušit ztlumení diváků</Czech>
             <German>Stummschaltung der Clients aufheben</German>
+            <Italian>Disattiva l'Audio dei Clients</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -35,81 +39,112 @@
             <Japanese>装備の非同期ヒントを無効化</Japanese>
             <Czech>Vypnout upozornění o desynchronizaci vybavení</Czech>
             <German>Desyncronisierungshinweis ausschalten</German>
+            <Italian>Disattiva le Notifiche della Desincronizzazione dell'Equipaggiamento</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
             <English>Default Radio Key</English>
             <Czech>Defaultní klávesa rádia</Czech>
             <German>Standard Funkgerätetaste</German>
+            <Japanese>標準の無線送信キー</Japanese>
+            <Italian>Tasto Radio Standard</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
             <English>Use currently selected radio to talk.</English>
             <Czech>Použít právě zvolené rádio k mluvení.</Czech>
             <German>Das ausgewählte Funkgerät zum Sprechen nutzen.</German>
+            <Japanese>選択している無線機を使って話します。</Japanese>
+            <Italian>Trasmetti sulla Radio selezionata.</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
             <English>Alt Radio Key 1</English>
             <Czech>Alternativní klávesa rádia 1</Czech>
             <German>Alternative Funkgerätetaste 1</German>
+            <Japanese>代替無線キー 1</Japanese>
+            <Italian>Trasmetti sulla Radio alternativa n.1</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2">
             <English>Alt Radio Key 2</English>
             <Czech>Alternativní klávesa rádia 2</Czech>
             <German>Alternative Funkgerätetaste 2</German>
+            <Japanese>代替無線キー 2</Japanese>
+            <Italian>Trasmetti sulla Radio alternativa n.2</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3">
             <English>Alt Radio Key 3</English>
             <Czech>Alternativní klávesa rádia 3</Czech>
             <German>Alternative Funkgerätetaste 3</German>
+            <Japanese>代替無線キー 3</Japanese>
+            <Italian>Trasmetti sulla Radio alternativa n.3</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Use the first radio in your inventory to talk.</English>
             <Czech>Použít první rádio v inventáři k mluvení.</Czech>
             <German>Das erste Funkgerät zum Sprechen verwenden.</German>
+            <Japanese>インベントリの1番目にある無線機を使って話します。</Japanese>
+            <Italian>Trasmetti sulla Prima Radio nel tuo equipaggiamento.</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Use the second radio in your inventory to talk.</English>
             <Czech>Použít druhé rádio v inventáři k mluvení.</Czech>
             <German>Das zweite Funkgerät zum Sprechen verwenden.</German>
+            <Japanese>インベントリの2番目にある無線機を使って話します。</Japanese>
+            <Italian>Trasmetti sulla Seconda Radio nel tuo equipaggiamento.</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Use the third radio in your inventory to talk.</English>
             <Czech>Použít třetí rádio v inventáři k mluvení.</Czech>
             <German>Das dritte Funkgerät zum Sprechen verwenden.</German>
+            <Japanese>インベントリの3番目にある無線機を使って話します。</Japanese>
+            <Italian>Trasmetti sulla Terza Radio nel tuo equipaggiamento.</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_PreviousChannel">
             <English>Previous Channel (Active Radio)</English>
             <Czech>Předchozí kanál</Czech>
             <German>Vorheriger Funkkanal (aktives Funkgerät)</German>
+            <Japanese>前のチャンネル (選択している無線機)</Japanese>
+            <Italian>Canale Precedente (Ricetrasmittente Attiva)</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_NextChannel">
             <English>Next Channel (Active Radio)</English>
             <Czech>Další kanál</Czech>
             <German>Nächster Funkkanal (aktives Funkgerät)</German>
+            <Japanese>次のチャンネル (選択している無線機)</Japanese>
+            <Italian>Canale Successivo (Ricetrasmittente Attiva)</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_BabelCycleKey">
             <English>Babel Cycle Language</English>
             <Czech>Změnit jazyk Babelu</Czech>
             <German>Babel Sprache wechseln</German>
+            <Japanese>バベル言語の切り替え</Japanese>
+            <Italian>Cambia Linguaggio (Babel)</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioLeftEar">
             <English>Radio Left Ear</English>
             <Czech>Rádio do levého ucha</Czech>
             <German>Linker Ohrhörer</German>
+            <Japanese>音声を左側から</Japanese>
+            <Italian>Imposta Auricolare Sinistro</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioCentertEar">
             <English>Radio Center Ear</English>
             <Czech>Rádio do prostředního ucha</Czech>
             <German>Beide Ohrhörer</German>
+            <Japanese>音声を両側から</Japanese>
+            <Italian>Centra gli Auricolari</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_RightRightEar">
             <English>Radio Right Ear</English>
             <Czech>Rádio do pravého ucha</Czech>
             <German>Rechter Ohrhörer</German>
+            <Japanese>音声を右側から</Japanese>
+            <Italian>Imposta Auricolare Destro</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_HeadSet">
             <English>Toggle Headset/Toggle Spectators</English>
             <Czech>Přepnout headset/Přepnout diváky</Czech>
             <German>Headset umschalten/Zuschauer umschalten</German>
+            <Japanese>ヘッドセットのトグル/スペクテイターのトグル</Japanese>
+            <Italian>Attiva/Disattiva Cuffia - Attiva/Disattiva Spettatori</Italian>
         </Key>
     </Package>
 </Project>
