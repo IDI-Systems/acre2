@@ -7,6 +7,7 @@ PREP(cycleLanguage);
 PREP(findOcclusion);
 PREP(getAlive);
 PREP(getClientIdLoop);
+PREP(getCompartment);
 PREP(getHeadVector);
 PREP(getGear);
 PREP(getLanguageId);
@@ -48,3 +49,8 @@ PREP(enableRevealAI);
 PREP(onRevealUnit);
 
 PREP(formatNumber);
+
+PREP(fastHashCopy);
+PREP(fastHashCopyArray);
+PREP(fastHashCreate);
+PREP(fastHashKeys);
