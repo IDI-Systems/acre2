@@ -21,3 +21,9 @@ class Extended_Killed_EventHandlers {
         ADDON = QUOTE(_this call FUNC(onPlayerKilled));
     };
 };
+
+class Extended_initPost_EventHandlers {
+    class ADDON    {
+        init = QUOTE(call COMPILE_FILE(XEH_initPost));
+    };
+};

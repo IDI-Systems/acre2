@@ -1,7 +1,6 @@
 #include "script_component.hpp"
 NO_DEDICATED;
 
-
 [] call EFUNC(sys_io,startServer);
 
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
@@ -150,5 +149,38 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
     };
     ADDPFH(_briefingCheck, 0, []);
 };
+
+///////////////////////////////////
+//
+// CBA SETTINGS
+// Applies the difficulty module settings over CBA settings. This allows the mission editor to bypass cba server settings.
+// If the module is not present, this function has no effect.
+//////////////////////////////////
+{
+    private _ignoreAntennaDirection = ((allMissionObjects "acre_api_DifficultySettings") select 0) getVariable ["IgnoreAntennaDirection", nil];
+    private _fullDuplex = ((allMissionObjects "acre_api_DifficultySettings") select 0) getVariable ["FullDuplex", nil];
+    private _interference = ((allMissionObjects "acre_api_DifficultySettings") select 0) getVariable ["Interference", nil];
+    private _signalLoss = ((allMissionObjects "acre_api_DifficultySettings") select 0) getVariable ["SignalLoss", nil];
+
+    if (!isNil "_signalLoss") then {
+        if (_signalLoss) then {
+            [1.0] call acre_api_fnc_setLossModelScale;
+        } else {
+            [0.0] call acre_api_fnc_setLossModelScale;
+        };
+    };
+
+    if (!isNil "_fullDuplex") then {
+        [_fullDuplex] call acre_api_fnc_setFullDuplex;
+    };
+
+    if (!isNil "_interference") then {
+        [_interference] call acre_api_fnc_setInterference;
+    };
+
+    if (!isNil "_ignoreAntennaDirection") then {
+        [_ignoreAntennaDirection] call acre_api_fnc_ignoreAntennaDirection;
+    };
+} call CBA_fnc_execNextFrame;
 
 true

@@ -73,7 +73,7 @@
 
 // Antena direction
 [
-    QEGVAR(sys_signal,omnidirectionalRadios)
+    QGVAR(ignoreAntenaDirection),
     "CHECKBOX",
     localize LSTRING(difficultyAntennaDirection_displayName),
     "ACRE2",
@@ -84,7 +84,7 @@
 
 // Terrain loss
 [
-    QEGVAR(sys_signal,terrainScaling)
+    QGVAR(terrainLoss),
     "SLIDER",
     localize LSTRING(difficultyTerrainLoss_displayName),
     "ACRE2",
