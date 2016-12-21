@@ -157,10 +157,12 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
 // If the module is not present, this function has no effect.
 //////////////////////////////////
 {
-    private _ignoreAntennaDirection = ((allMissionObjects "acre_api_DifficultySettings") select 0) getVariable ["IgnoreAntennaDirection", nil];
-    private _fullDuplex = ((allMissionObjects "acre_api_DifficultySettings") select 0) getVariable ["FullDuplex", nil];
-    private _interference = ((allMissionObjects "acre_api_DifficultySettings") select 0) getVariable ["Interference", nil];
-    private _signalLoss = ((allMissionObjects "acre_api_DifficultySettings") select 0) getVariable ["SignalLoss", nil];
+    private _missionModules = allMissionObjects "acre_api_DifficultySettings";
+    private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", nil];
+    private _fullDuplex = (_missionModules select 0) getVariable ["FullDuplex", nil];
+    private _interference = (_missionModules select 0) getVariable ["Interference", nil];
+    private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", nil];
+
 
     if (!isNil "_signalLoss") then {
         if (_signalLoss) then {
