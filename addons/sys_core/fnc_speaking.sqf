@@ -260,7 +260,7 @@ DFUNC(speakingLoop) = {
     if (ACRE_IS_SPECTATOR) then {
         {
             _speakingId = _x;
-            _volume = ACRE_SPECTATOR_VOLUME;
+            _volume = QGVAR(spectatorVolume);
             if (ACRE_MUTE_SPECTATORS) then {
                 _volume = 0;
             };

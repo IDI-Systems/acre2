@@ -19,9 +19,9 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    "ACRE_SPECTATOR_VOLUME",
+    "QGVAR(spectatorVolume)",
     "SLIDER",
-    localize LSTRING(ACRE_SPECTATOR_VOLUME_displayName),
+    localize LSTRING(spectatorVolume_displayName),
     "ACRE2",
     [0, 1, 1, 2],
     false,
@@ -51,7 +51,7 @@
 // Difficulty settings
 // Interference
 [
-    "ACRE_INTERFERENCE",
+    QGVAR(interference),
     "CHECKBOX",
     localize LSTRING(difficultyInterference_displayName),
     "ACRE2",
@@ -62,7 +62,7 @@
 
 // Full duplex
 [
-    "ACRE_FULL_DUPLEX",
+    QGVAR(fullDuplex),
     "CHECKBOX",
     localize LSTRING(difficultyFullDuplex_displayName),
     "ACRE2",
@@ -95,7 +95,7 @@
 
 // Reveal to AI
 [
-    "ACRE_AI_ENABLED",
+    QGVAR(revealToAI),
     "CHECKBOX",
     localize LSTRING(difficultyRevealToAI_displayName),
     "ACRE2",
