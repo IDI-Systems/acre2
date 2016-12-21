@@ -158,31 +158,23 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
 //////////////////////////////////
 {
     private _missionModules = allMissionObjects "acre_api_DifficultySettings";
-    private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", nil];
-    private _fullDuplex = (_missionModules select 0) getVariable ["FullDuplex", nil];
-    private _interference = (_missionModules select 0) getVariable ["Interference", nil];
-    private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", nil];
 
+    if (count _missionModules == 0) exitWith {};
 
-    if (!isNil "_signalLoss") then {
-        if (_signalLoss) then {
-            [1.0] call acre_api_fnc_setLossModelScale;
-        } else {
-            [0.0] call acre_api_fnc_setLossModelScale;
-        };
+    private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", false];
+    private _fullDuplex = (_missionModules select 0) getVariable ["FullDuplex", false];
+    private _interference = (_missionModules select 0) getVariable ["Interference", true];
+    private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", true];
+
+    if (_signalLoss) then {
+        [1.0] call acre_api_fnc_setLossModelScale;
+    } else {
+        [0.0] call acre_api_fnc_setLossModelScale;
     };
 
-    if (!isNil "_fullDuplex") then {
-        [_fullDuplex] call acre_api_fnc_setFullDuplex;
-    };
-
-    if (!isNil "_interference") then {
-        [_interference] call acre_api_fnc_setInterference;
-    };
-
-    if (!isNil "_ignoreAntennaDirection") then {
-        [_ignoreAntennaDirection] call acre_api_fnc_ignoreAntennaDirection;
-    };
+    [_fullDuplex] call acre_api_fnc_setFullDuplex;
+    [_interference] call acre_api_fnc_setInterference;
+    [_ignoreAntennaDirection] call acre_api_fnc_ignoreAntennaDirection;
 } call CBA_fnc_execNextFrame;
 
 true
