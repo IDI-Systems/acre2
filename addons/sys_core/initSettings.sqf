@@ -19,7 +19,7 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    "QGVAR(spectatorVolume)",
+    QGVAR(spectatorVolume),
     "SLIDER",
     localize LSTRING(spectatorVolume_displayName),
     "ACRE2",
