@@ -53,7 +53,7 @@
 [
     QGVAR(interference),
     "CHECKBOX",
-    localize LSTRING(Interference_displayName),
+    localize LSTRING(interference_displayName),
     "ACRE2",
     true,
     true,
@@ -64,7 +64,7 @@
 [
     QGVAR(fullDuplex),
     "CHECKBOX",
-    localize LSTRING(FullDuplex_displayName),
+    localize LSTRING(fullDuplex_displayName),
     "ACRE2",
     false,
     true,
@@ -75,7 +75,7 @@
 [
     QGVAR(ignoreAntenaDirection),
     "CHECKBOX",
-    localize LSTRING(AntennaDirection_displayName),
+    localize LSTRING(antennaDirection_displayName),
     "ACRE2",
     false,
     true,
@@ -86,7 +86,7 @@
 [
     QGVAR(terrainLoss),
     "SLIDER",
-    localize LSTRING(TerrainLoss_displayName),
+    localize LSTRING(terrainLoss_displayName),
     "ACRE2",
     [0, 1, 1, 2],
     true,
@@ -97,7 +97,7 @@
 [
     QGVAR(revealToAI),
     "CHECKBOX",
-    localize LSTRING(RevealToAI_displayName),
+    localize LSTRING(revealToAI_displayName),
     "ACRE2",
     true,
     true,
