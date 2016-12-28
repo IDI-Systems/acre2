@@ -28,7 +28,8 @@ if (!isNull INVENTORY_DISPLAY) then {
     (INVENTORY_DISPLAY displayCtrl IDC_FG_BACKPACK_CONTAINER) ctrlSetEventHandler ["MouseButtonDown", "['backpack',_this] call acre_sys_gui_fnc_handleContextMenu"];
     */
 
-    (INVENTORY_DISPLAY displayCtrl IDC_FG_UNIFORM_CONTAINER) ctrlSetEventHandler["LBDblClick", "[1, 'uniform', _this] call acre_sys_gui_fnc_onInventoryAction"];         (INVENTORY_DISPLAY displayCtrl IDC_FG_VEST_CONTAINER) ctrlSetEventHandler ["LBDblClick", "[1, 'vest',_this] call acre_sys_gui_fnc_onInventoryAction"];
+    (INVENTORY_DISPLAY displayCtrl IDC_FG_UNIFORM_CONTAINER) ctrlSetEventHandler["LBDblClick", "[1, 'uniform', _this] call acre_sys_gui_fnc_onInventoryAction"];
+    (INVENTORY_DISPLAY displayCtrl IDC_FG_VEST_CONTAINER) ctrlSetEventHandler ["LBDblClick", "[1, 'vest',_this] call acre_sys_gui_fnc_onInventoryAction"];
     (INVENTORY_DISPLAY displayCtrl IDC_FG_BACKPACK_CONTAINER) ctrlSetEventHandler ["LBDblClick", "[1, 'backpack', _this] call acre_sys_gui_fnc_onInventoryAction"];
 
     (INVENTORY_DISPLAY displayCtrl IDC_FG_UNIFORM_CONTAINER) ctrlSetEventHandler ["LBSelChanged", "[0, 'uniform', _this] call acre_sys_gui_fnc_onInventoryAction"];
