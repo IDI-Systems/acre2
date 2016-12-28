@@ -9,15 +9,14 @@ PREP(setVolumeSliderColor);
 
 PREP(openInventory);
 PREP(closeInventory);
-PREP(openInventory);
-PREP(uniqueArray);
 
-PREP(onInventoryAction);
 PREP(onInventoryRadioSelected);
 PREP(onInventoryRadioDoubleClick);
 
 PREP(inventoryListMouseDown);
 PREP(inventoryListMouseUp);
-PREP(inventoryMonitorPFH);
 
+PREP(uniqueArray);
+PREP(onInventoryAction);
 PREP(handleContextMenu);
+PREP(inventoryMonitorPFH);
