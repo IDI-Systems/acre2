@@ -35,8 +35,20 @@ ACRE_DUMPSTACK_FNC = {
     };
 };
 
+EFUNC(sys_core,fastHashCreate) = {
+  if (count FAST_HASH_POOL > 0) exitWith {
+      private _ret = (FAST_HASH_POOL deleteAt 0);
+      FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
+      _ret;
+  };
+  private _ret = createLocation ["AcreHashType", [-10000,-10000,-10000], 0, 0];
+  _ret setText "acre_hash";
+  FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
+  _ret;
+};
+
 /*
-EFUNC(lib,fastHashSerialize) = {
+EFUNC(sys_core,fastHashSerialize) = {
     params ["_hash"];
     private _array = ["ACRE_FAST_HASH",[],[]];
     _keys = _array select 1;
@@ -49,7 +61,7 @@ EFUNC(lib,fastHashSerialize) = {
     _array;
 };
 
-EFUNC(lib,fastHashDeSerialize) = {
+EFUNC(sys_core,fastHashDeSerialize) = {
     params ["_array"];
     private _hash = HASH_CREATE;
     _keys = _array select 1;
