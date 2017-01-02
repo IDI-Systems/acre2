@@ -88,15 +88,9 @@ acre_sys_io_ioEventFnc = {
     END_COUNTER(ioEventFunction);
 };
 
-_acrePlayerFnc = {
-    acre_player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
-    /*if (cameraOn != acre_player) then {
-        if (lifeState cameraOn != "") then {
-            acre_player = cameraOn;
-        };
-    };*/
-};
-ADDPFH(_acrePlayerFnc, 0, []);
+["unit", {
+    acre_player = (_this select 0);
+}] call CBA_fnc_addPlayerEventHandler;
 
 #ifdef USE_DEBUG_EXTENSIONS
 "acre_dynload" callExtension format["load:%1", "idi\build\win32\Debug\acre.dll"];
