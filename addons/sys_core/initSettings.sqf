@@ -19,9 +19,9 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    "ACRE_SPECTATOR_VOLUME",
+    QGVAR(spectatorVolume),
     "SLIDER",
-    localize LSTRING(ACRE_SPECTATOR_VOLUME_displayName),
+    localize LSTRING(spectatorVolume_displayName),
     "ACRE2",
     [0, 1, 1, 2],
     false,
@@ -46,4 +46,60 @@
     true,
     false,
     {EGVAR(sys_radio,disableDesyncHint) = _this}
+] call CBA_Settings_fnc_init;
+
+// Difficulty settings
+// Interference
+[
+    QGVAR(interference),
+    "CHECKBOX",
+    localize LSTRING(interference_displayName),
+    "ACRE2",
+    true,
+    true,
+    {[_this] call EFUNC(api,setInterference)}
+] call CBA_Settings_fnc_init;
+
+// Full duplex
+[
+    QGVAR(fullDuplex),
+    "CHECKBOX",
+    localize LSTRING(fullDuplex_displayName),
+    "ACRE2",
+    false,
+    true,
+    {[_this] call EFUNC(api,setFullDuplex)}
+] call CBA_Settings_fnc_init;
+
+// Antena direction
+[
+    QGVAR(ignoreAntenaDirection),
+    "CHECKBOX",
+    localize LSTRING(antennaDirection_displayName),
+    "ACRE2",
+    false,
+    true,
+    {[_this] call EFUNC(api,ignoreAntennaDirection)}
+] call CBA_Settings_fnc_init;
+
+// Terrain loss
+[
+    QGVAR(terrainLoss),
+    "SLIDER",
+    localize LSTRING(terrainLoss_displayName),
+    "ACRE2",
+    [0, 1, 1, 2],
+    true,
+    {[_this] call EFUNC(api,setLossModelScale)}
+] call CBA_Settings_fnc_init;
+
+// Reveal to AI
+[
+    QGVAR(revealToAI),
+    "CHECKBOX",
+    localize LSTRING(revealToAI_displayName),
+    "ACRE2",
+    true,
+    true,
+    {[_this] call EFUNC(api,setRevealToAI)}
 ] call CBA_Settings_fnc_init;

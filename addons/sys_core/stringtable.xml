@@ -17,7 +17,7 @@
             <German>Pre-Mix Lautstärke</German>
             <Italian>Volume Globale Pre-Mix</Italian>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ACRE_SPECTATOR_VOLUME_displayName">
+        <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
             <French>Volume Spectateur</French>
             <Japanese>スペクテイター音量</Japanese>
@@ -145,6 +145,26 @@
             <German>Headset umschalten/Zuschauer umschalten</German>
             <Japanese>ヘッドセットのトグル/スペクテイターのトグル</Japanese>
             <Italian>Attiva/Disattiva Cuffia - Attiva/Disattiva Spettatori</Italian>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_interference_displayName">
+            <English>Model Interference</English>
+            <Spanish>Modelar interferencias</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
+            <English>Full Duplex radios</English>
+            <Spanish>Radios Dúplex</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_antennaDirection_displayName">
+            <English>Ignore Antenna Direction</English>
+            <Spanish>Ignorar dirección de antena</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
+            <English>Terrain Loss Coefficient</English>
+            <Spanish>Coefficiente de pérdida de señal por terreno</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
+            <English>AI Voice Detection</English>
+            <Spanish>Detección del habla por parte de la IA</Spanish>
         </Key>
     </Package>
 </Project>
