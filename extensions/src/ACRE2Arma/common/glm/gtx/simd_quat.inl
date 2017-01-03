@@ -147,7 +147,7 @@ GLM_FUNC_QUALIFIER fquatSIMD operator* (fquatSIMD const & q1, fquatSIMD const & 
     __m128 mul2 = _mm_mul_ps(q1.Data, _mm_shuffle_ps(q2.Data, q2.Data, _MM_SHUFFLE(2, 3, 0, 1)));
     __m128 mul3 = _mm_mul_ps(q1.Data, q2.Data);
 
-#   if((GLM_ARCH & GLM_ARCH_SSE4))
+#   if ((GLM_ARCH & GLM_ARCH_SSE4))
     __m128 add0 = _mm_dp_ps(mul0, _mm_set_ps(1.0f, -1.0f,  1.0f,  1.0f), 0xff);
     __m128 add1 = _mm_dp_ps(mul1, _mm_set_ps(1.0f,  1.0f,  1.0f, -1.0f), 0xff);
     __m128 add2 = _mm_dp_ps(mul2, _mm_set_ps(1.0f,  1.0f, -1.0f,  1.0f), 0xff);
@@ -496,7 +496,7 @@ GLM_FUNC_QUALIFIER detail::fquatSIMD slerp
     }
 
     // Perform a linear interpolation when cosTheta is close to 1 to avoid side effect of sin(angle) becoming a zero denominator
-    if(cosTheta > 1.0f - epsilon<float>())
+    if (cosTheta > 1.0f - epsilon<float>())
     {
         return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
     }
@@ -559,7 +559,7 @@ GLM_FUNC_QUALIFIER detail::fquatSIMD fastSlerp
     }
 
 
-    if(cosTheta > 1.0f - epsilon<float>())
+    if (cosTheta > 1.0f - epsilon<float>())
     {
         return _mm_add_ps(x.Data, _mm_mul_ps(_mm_set1_ps(a), _mm_sub_ps(y.Data, x.Data)));
     }

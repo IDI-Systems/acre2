@@ -43,7 +43,7 @@ namespace glm
         assert(index >= 0 && static_cast<detail::component_count_t>(index) < detail::component_count(m[0]));
 
         genType Result = m;
-        for(detail::component_count_t i = 0; i < detail::component_count(m); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(m); ++i)
             Result[i][index] = x[i];
         return Result;
     }
@@ -58,7 +58,7 @@ namespace glm
         assert(index >= 0 && static_cast<detail::component_count_t>(index) < detail::component_count(m[0]));
 
         typename genType::row_type Result;
-        for(detail::component_count_t i = 0; i < detail::component_count(m); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(m); ++i)
             Result[i] = m[i][index];
         return Result;
     }

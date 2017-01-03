@@ -40,7 +40,7 @@ namespace glm
         assert(detail::component_count(x) == detail::component_count(y));
 
         vecType<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] < y[i];
 
         return Result;
@@ -52,7 +52,7 @@ namespace glm
         assert(detail::component_count(x) == detail::component_count(y));
 
         vecType<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] <= y[i];
         return Result;
     }
@@ -63,7 +63,7 @@ namespace glm
         assert(detail::component_count(x) == detail::component_count(y));
 
         vecType<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] > y[i];
         return Result;
     }
@@ -74,7 +74,7 @@ namespace glm
         assert(detail::component_count(x) == detail::component_count(y));
 
         vecType<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] >= y[i];
         return Result;
     }
@@ -85,7 +85,7 @@ namespace glm
         assert(detail::component_count(x) == detail::component_count(y));
 
         vecType<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] == y[i];
         return Result;
     }
@@ -96,7 +96,7 @@ namespace glm
         assert(detail::component_count(x) == detail::component_count(y));
 
         vecType<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(x); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(x); ++i)
             Result[i] = x[i] != y[i];
         return Result;
     }
@@ -105,7 +105,7 @@ namespace glm
     GLM_FUNC_QUALIFIER bool any(vecType<bool, P> const & v)
     {
         bool Result = false;
-        for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(v); ++i)
             Result = Result || v[i];
         return Result;
     }
@@ -114,7 +114,7 @@ namespace glm
     GLM_FUNC_QUALIFIER bool all(vecType<bool, P> const & v)
     {
         bool Result = true;
-        for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(v); ++i)
             Result = Result && v[i];
         return Result;
     }
@@ -123,7 +123,7 @@ namespace glm
     GLM_FUNC_QUALIFIER vecType<bool, P> not_(vecType<bool, P> const & v)
     {
         vecType<bool, P> Result(uninitialize);
-        for(detail::component_count_t i = 0; i < detail::component_count(v); ++i)
+        for (detail::component_count_t i = 0; i < detail::component_count(v); ++i)
             Result[i] = !v[i];
         return Result;
     }

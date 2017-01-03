@@ -34,16 +34,16 @@ ACRE_RESULT CBabelFilter::process(short* samples, int sampleCount, int channels,
     float averageSum, currentSample, averageAmplitude;
     averageSum = 0;
     vector<FFT::Complex> buf_complex((sampleCount*channels)/2);
-    for(int i = 0; i < sampleCount*channels && i < 4095; i++) {
+    for (int i = 0; i < sampleCount*channels && i < 4095; i++) {
         buf_complex[i >> 1] = samples[i >> 1];
-        if(samples[i] > 0) {
+        if (samples[i] > 0) {
             currentSample = 20.0f * log10((float)samples[i]);
             averageSum += currentSample;
         }
     }
     averageAmplitude = averageSum/(sampleCount*channels);
 
-    if(speaker->attenCount > AVERAGE_RATE) {
+    if (speaker->attenCount > AVERAGE_RATE) {
         speaker->attenCount = 1;
         speaker->averageSum = (speaker->averageSum+averageAmplitude)/AVERAGE_RATE;
     } else {
@@ -65,7 +65,7 @@ ACRE_RESULT CBabelFilter::process(short* samples, int sampleCount, int channels,
 
     short val;
     float multiplier = tan(averageAmplitude/100);
-    for(int i = 0; i < sampleCount; i++){
+    for (int i = 0; i < sampleCount; i++){
         //val = sin((2*M_PI*440)/(TS_SAMPLE_RATE*speaker->period))*32768;
         val = 32760 * sin( (2.f*float(M_PI)*(440))/TS_SAMPLE_RATE * speaker->period );
         
@@ -95,7 +95,7 @@ BabelStruct *CBabelFilter::getSpeaker(ACRE_ID id) {
     LOCK(this);
     BabelStruct *speaker;
     auto it = this->babelSpeakers.find(id);
-    if(it == this->babelSpeakers.end()) {
+    if (it == this->babelSpeakers.end()) {
         speaker = new BabelStruct();
         speaker->period = 0;
         speaker->attenCount = 0;

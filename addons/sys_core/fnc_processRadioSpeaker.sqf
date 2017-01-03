@@ -17,7 +17,7 @@
 #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 BEGIN_COUNTER(process_radio_speaker);
-private["_okRadios", "_functionName"];
+private ["_okRadios", "_functionName"];
 
 params["_unit","_playerRadios"];
 TRACE_2("",_unit,_playerRadios);
@@ -26,12 +26,12 @@ private _radioId = _unit getVariable QGVAR(currentSpeakingRadio);
 diag_log _radioId;
 if(_radioId == "") exitWith { false };
 // @todo if Underwater Radios are implemented
-//if(ACRE_LISTENER_DIVE == 1) exitWith { false };
+//if (ACRE_LISTENER_DIVE == 1) exitWith { false };
 
 private _params = [];
 BEGIN_COUNTER(okradio_check);
 private _returns = [];
-if(!GVAR(speaking_cache_valid)) then {
+if (!GVAR(speaking_cache_valid)) then {
     _okRadios = [[_radioId], _playerRadios, false] call EFUNC(sys_modes,checkAvailability);
     END_COUNTER(okradio_check);
     // acre_player sideChat format["_okRadios: %1", _okRadios];
@@ -49,18 +49,18 @@ if(!GVAR(speaking_cache_valid)) then {
 };
 
 
-if((count _okRadios) > 0) then {
+if ((count _okRadios) > 0) then {
     BEGIN_COUNTER(okradio_loop);
     {
         private _cachedSampleTime = _unit getVariable [format["ACRE_%1CachedSampleTime", _x], -1];
 
-        if(time > _cachedSampleTime || !GVAR(speaking_cache_valid)) then {
+        if (time > _cachedSampleTime || !GVAR(speaking_cache_valid)) then {
             BEGIN_COUNTER(signal_mode_function);
             private _returnData = [_unit, _radioid, acre_player, _x] call CALLSTACK_NAMED((missionNamespace getVariable _functionName), _functionName);
             // DATA STRUCTURE: _returnData = [txRadioId, rxRadioId, signalQuality, distortionModel]
             END_COUNTER(signal_mode_function);
             _eventReturn = [_x, "handleSignalData", +_returnData] call EFUNC(sys_data,transEvent);
-            if(!isNil "_eventReturn") then {
+            if (!isNil "_eventReturn") then {
                 _returnData = _eventReturn;
             };
             _unit setVariable [format["ACRE_%1CachedSampleData", _x], _returnData];
@@ -76,7 +76,7 @@ if((count _okRadios) > 0) then {
             // acre_player sideChat format["rv: %1", _radioVolume];
             private _isLoudspeaker = [_receivingRadioid, "isExternalAudio"] call EFUNC(sys_data,dataEvent);
             private _spatialArray = [0,0,0];
-            if(!_isLoudspeaker) then {
+            if (!_isLoudspeaker) then {
                 private _spatial = [_receivingRadioid, "getSpatial"] call EFUNC(sys_data,dataEvent);
                 _spatialArray = [_spatial, 0, 0];
             };

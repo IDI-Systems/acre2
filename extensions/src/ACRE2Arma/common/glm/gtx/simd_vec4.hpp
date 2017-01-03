@@ -44,9 +44,9 @@
 // Dependency:
 #include "../glm.hpp"
 
-#if(GLM_ARCH != GLM_ARCH_PURE)
+#if (GLM_ARCH != GLM_ARCH_PURE)
 
-#if(GLM_ARCH & GLM_ARCH_SSE2)
+#if (GLM_ARCH & GLM_ARCH_SSE2)
 #    include "../detail/intrinsic_common.hpp"
 #    include "../detail/intrinsic_geometric.hpp"
 #    include "../detail/intrinsic_integer.hpp"
@@ -54,7 +54,7 @@
 #    error "GLM: GLM_GTX_simd_vec4 requires compiler support of SSE2 through intrinsics"
 #endif
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTX_simd_vec4 extension included")
 #endif
 

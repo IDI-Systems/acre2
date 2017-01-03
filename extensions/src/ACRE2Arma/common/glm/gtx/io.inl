@@ -190,11 +190,11 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 io::basic_state_saver<CTy> const bss(os);
 
@@ -223,11 +223,11 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 io::basic_state_saver<CTy> const bss(os);
 
@@ -254,11 +254,11 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 io::basic_state_saver<CTy> const bss(os);
 
@@ -286,11 +286,11 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 io::basic_state_saver<CTy> const bss(os);
 
@@ -319,15 +319,15 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat2x2<T,P> m(a);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
                 m = transpose(a);
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 os << fmt.newline
                     << fmt.delim_left << m[0] << fmt.newline
@@ -347,15 +347,15 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat3x2<T,P> m(a);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
                 m = transpose(a);
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 os << fmt.newline
                     << fmt.delim_left << m[0] << fmt.newline
@@ -376,16 +376,16 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat4x2<T,P> m(a);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
                 m = transpose(a);
 
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 os << fmt.newline
                     << fmt.delim_left << m[0] << fmt.newline
@@ -407,15 +407,15 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat2x3<T,P> m(a);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
                 m = transpose(a);
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 os << fmt.newline
                     << fmt.delim_left << m[0] << fmt.newline
@@ -435,15 +435,15 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat3x3<T,P> m(a);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
                 m = transpose(a);
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 os << fmt.newline
                     << fmt.delim_left << m[0] << fmt.newline
@@ -464,12 +464,12 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat4x3<T,P> m(a);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
                 m = transpose(a);
 
             if (fmt.formatted)
@@ -494,12 +494,12 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat2x4<T,P> m(a);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
                 m = transpose(a);
 
             if (fmt.formatted)
@@ -522,15 +522,15 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat3x4<T,P> m(a);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
                 m = transpose(a);
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 os << fmt.newline
                     << fmt.delim_left << m[0] << fmt.newline
@@ -551,7 +551,7 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat4x4<T,P> m(a);
@@ -559,7 +559,7 @@ namespace io
             if (io::row_major == fmt.order)
                 m = transpose(a);
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 os << fmt.newline
                     << fmt.delim_left << m[0] << fmt.newline
@@ -583,19 +583,19 @@ namespace io
     {
         typename std::basic_ostream<CTy,CTr>::sentry const cerberus(os);
 
-        if(cerberus)
+        if (cerberus)
         {
             io::format_punct<CTy> const & fmt(io::get_facet<io::format_punct<CTy> >(os));
             tmat4x4<T,P> ml(a.first);
             tmat4x4<T,P> mr(a.second);
 
-            if(io::row_major == fmt.order)
+            if (io::row_major == fmt.order)
             {
                 ml = transpose(a.first);
                 mr = transpose(a.second);
             }
 
-            if(fmt.formatted)
+            if (fmt.formatted)
             {
                 CTy const & l(fmt.delim_left);
                 CTy const & r(fmt.delim_right);

@@ -56,7 +56,7 @@
 
 #pragma once
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_EXT_INCLUDED_DISPLAYED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_MESSAGE_EXT_INCLUDED_DISPLAYED))
 #    define GLM_MESSAGE_EXT_INCLUDED_DISPLAYED
 #    pragma message("GLM: All extensions included (not recommanded)")
 #endif//GLM_MESSAGES

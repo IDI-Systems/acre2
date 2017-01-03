@@ -51,7 +51,7 @@
 #include "../mat4x3.hpp"
 #include "../mat4x4.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTC_matrix_integer extension included")
 #endif
 
@@ -357,7 +357,7 @@ namespace glm
     /// @see gtc_matrix_integer
     typedef tmat4x4<uint, lowp>                lowp_umat4x4;
 
-#if(defined(GLM_PRECISION_HIGHP_INT))
+#if (defined(GLM_PRECISION_HIGHP_INT))
     typedef highp_imat2                                imat2;
     typedef highp_imat3                                imat3;
     typedef highp_imat4                                imat4;
@@ -370,7 +370,7 @@ namespace glm
     typedef highp_imat4x2                            imat4x2;
     typedef highp_imat4x3                            imat4x3;
     typedef highp_imat4x4                            imat4x4;
-#elif(defined(GLM_PRECISION_LOWP_INT))
+#elif (defined(GLM_PRECISION_LOWP_INT))
     typedef lowp_imat2                                imat2;
     typedef lowp_imat3                                imat3;
     typedef lowp_imat4                                imat4;
@@ -434,7 +434,7 @@ namespace glm
     typedef mediump_imat4x4                            imat4x4;
 #endif//GLM_PRECISION
 
-#if(defined(GLM_PRECISION_HIGHP_UINT))
+#if (defined(GLM_PRECISION_HIGHP_UINT))
     typedef highp_umat2                                umat2;
     typedef highp_umat3                                umat3;
     typedef highp_umat4                                umat4;
@@ -447,7 +447,7 @@ namespace glm
     typedef highp_umat4x2                            umat4x2;
     typedef highp_umat4x3                            umat4x3;
     typedef highp_umat4x4                            umat4x4;
-#elif(defined(GLM_PRECISION_LOWP_UINT))
+#elif (defined(GLM_PRECISION_LOWP_UINT))
     typedef lowp_umat2                                umat2;
     typedef lowp_umat3                                umat3;
     typedef lowp_umat4                                umat4;

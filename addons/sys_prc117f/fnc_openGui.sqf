@@ -25,7 +25,7 @@ createDialog "Prc117f_RadioDialog";
 
 
 _onState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
-if(_onState >= 1) then {
+if (_onState >= 1) then {
     _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
     [_currentMenu] call FUNC(changeMenu);
 } else {

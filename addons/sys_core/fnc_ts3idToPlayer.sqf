@@ -18,7 +18,7 @@
 
 params ["_id"];
 
-if(IS_STRING(_id)) then {
+if (IS_STRING(_id)) then {
     _id = parseNumber _id;
 };
 

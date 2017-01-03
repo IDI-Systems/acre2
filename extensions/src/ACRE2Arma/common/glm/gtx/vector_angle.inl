@@ -65,7 +65,7 @@ namespace glm
         GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'orientedAngle' only accept floating-point inputs");
         T const Angle(acos(clamp(dot(x, y), T(-1), T(1))));
 
-        if(all(epsilonEqual(y, glm::rotate(x, Angle), T(0.0001))))
+        if (all(epsilonEqual(y, glm::rotate(x, Angle), T(0.0001))))
             return Angle;
         else
             return -Angle;

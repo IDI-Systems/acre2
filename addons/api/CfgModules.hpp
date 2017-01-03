@@ -71,7 +71,7 @@ class CfgVehicles
     };
 
     class GVAR(DifficultySettings) : Module_F {
-        scope = 2;
+        scope = 1;
         displayName = "Difficulty Settings";
         category = QGVAR(mission_setup);
 

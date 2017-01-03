@@ -15,5 +15,5 @@
  */
 #include "script_component.hpp"
 
-if(isNil "ACRE_ACTIVE_RADIO") exitWith { "" };
+if (isNil "ACRE_ACTIVE_RADIO") exitWith { "" };
 ACRE_ACTIVE_RADIO

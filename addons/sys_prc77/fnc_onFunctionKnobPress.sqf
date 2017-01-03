@@ -16,11 +16,11 @@
  */
 #include "script_component.hpp"
 
-params["_control", "_key"];
+params ["_control", "_key"];
 
 //Read out the key pressed (left/right mousebutton) and define the function increase/decrease
 private _dir = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     _dir = 1;
 };
 
@@ -32,26 +32,26 @@ private _newFunction = ((_currentFunction + _dir) max 0) min 4;
 SET_STATE_CRIT("function", _newFunction);
 
 //Handle new function
-if(_newFunction != _currentFunction) then {
+if (_newFunction != _currentFunction) then {
     ["setOnOffState", 1] call GUI_DATA_EVENT;
 
-    if(_newFunction == 0) then {
+    if (_newFunction == 0) then {
         ["setOnOffState", 0] call GUI_DATA_EVENT;
     };
-    if(_newFunction == 1) then {
+    if (_newFunction == 1) then {
         SET_STATE("squelch", 0);
         SET_STATE("CTCSSRx", 0);
         SET_STATE("CTCSSTx", 0);
     };
-    if(_newFunction == 2) then {
+    if (_newFunction == 2) then {
         SET_STATE("squelch", 3);
         SET_STATE("CTCSSRx", 150);
         SET_STATE("CTCSSTx", 150);
     };
-    // if(_newFunction == 3) then {
+    // if (_newFunction == 3) then {
         // Retrans
     // };
-    if(_newFunction == 4) then {
+    if (_newFunction == 4) then {
         private _eh = _control ctrlAddEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(snapbackFunctionKnob))];
     };
     //Play sound and render dialog

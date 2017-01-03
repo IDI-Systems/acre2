@@ -20,7 +20,7 @@
 #define IN 0
 #define OUT 1
 
-params["_display"];
+params ["_display"];
 
 private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
 private _currentBlock = floor(_currentAbsChannel / 16);

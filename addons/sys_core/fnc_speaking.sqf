@@ -27,26 +27,26 @@ DFUNC(speakingLoop) = {
     // private _rstart = 0;
     // private _rend = 0;
 
-    if(time == 0) exitWith { true; };
+    if (time == 0) exitWith { true; };
 
     // Call update self
     [] call FUNC(updateSelf);
 
     private _radioParamsSorted = [[],[]];
-    if(GVAR(speaking_cache_valid)) then {
+    if (GVAR(speaking_cache_valid)) then {
         BEGIN_COUNTER(speaking_loop);
     };
 
     private _sentMicRadios = [];
-    if(count GVAR(keyedMicRadios) > 0) then {
+    if (count GVAR(keyedMicRadios) > 0) then {
         BEGIN_COUNTER(speaking_loop_with_transmissions);
 
-        // if((time >= GVAR(lastRadioTime) || {GVAR(lastKeyCount) != count GVAR(keyedMicRadios) })) then {
+        // if ((time >= GVAR(lastRadioTime) || {GVAR(lastKeyCount) != count GVAR(keyedMicRadios) })) then {
         BEGIN_COUNTER(signal_code);
 
         // GVAR(lastKeyCount) = count GVAR(keyedMicRadios);
         private ["_playerRadios"];
-        if(!GVAR(speaking_cache_valid)) then {
+        if (!GVAR(speaking_cache_valid)) then {
             _playerRadios = [] call EFUNC(sys_data,getPlayerRadioList);
             _playerRadios = _playerRadios - GVAR(nearRadios);
             _playerRadios append GVAR(nearRadios);
@@ -59,31 +59,31 @@ DFUNC(speakingLoop) = {
 
         {
             private _unit = _x;
-            if(!IS_MUTED(_unit)) then {
+            if (!IS_MUTED(_unit)) then {
                 TRACE_1("Calling processRadioSpeaker", _unit);
                 private _returnedRadios = [_unit, _playerRadios] call FUNC(processRadioSpeaker);
                 {
                     private _params = _x;
-                    if((count _params) > 0) then {
+                    if ((count _params) > 0) then {
                         _params params ["_txId","_rxId","_signalData","_params"];
                         //_params = _params select 3;
                         _radioParamsSorted params ["_radios","_sources"];
                         private _keyIndex = _radios find _rxId;
-                        if(_keyIndex == -1) then {
+                        if (_keyIndex == -1) then {
                             _keyIndex = (count _radios);
                             _radios set[_keyIndex, _rxId];
                             _sources set[_keyIndex, []];
                         };
                         _txRadios = _sources select _keyIndex;
                         PUSH(_txRadios, [ARR_4(_unit,_txId,_signalData,_params)]);
-                        if(acre_sys_signal_showSignalHint) then {
+                        if (acre_sys_signal_showSignalHint) then {
                             _signalHint = _signalHint + format["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
                         };
                     };
                 } forEach _returnedRadios;
             };
         } forEach GVAR(keyedMicRadios);
-        if(_signalHint != "") then {
+        if (_signalHint != "") then {
             hintSilent ("Current transmissions:\n\n" + _signalHint);
         };
 
@@ -92,7 +92,7 @@ DFUNC(speakingLoop) = {
         _radioParamsSorted params ["_radios","_sources"];
 
         #ifdef ENABLE_PERFORMANCE_COUNTERS
-        if( (count _radios) > 0) then {
+        if ( (count _radios) > 0) then {
             BEGIN_COUNTER(radio_loop);
         };
         #endif
@@ -100,15 +100,15 @@ DFUNC(speakingLoop) = {
         private _compiledParams = HASH_CREATE;
         {
             private _recRadio = _x;
-            if(_recRadio != ACRE_BROADCASTING_RADIOID || ACRE_FULL_DUPLEX) then {
+            if (_recRadio != ACRE_BROADCASTING_RADIOID || ACRE_FULL_DUPLEX) then {
                 BEGIN_COUNTER(radio_loop_single_radio);
-                private["_radioVolume", "_volumeModifier", "_on"];
-                if(!GVAR(speaking_cache_valid)) then {
+                private ["_radioVolume", "_volumeModifier", "_on"];
+                if (!GVAR(speaking_cache_valid)) then {
                     _radioVolume = [_recRadio, "getVolume"] call EFUNC(sys_data,dataEvent);
                     // _rend = diag_tickTime;
                     _volumeModifier = GVAR(globalVolume);
                     _on = [_recRadio, "getOnOffState"] call EFUNC(sys_data,dataEvent);
-                    if(_on == 0) then {
+                    if (_on == 0) then {
                         _volumeModifier = 0;
                     };
                     HASH_SET(GVAR(coreCache), "volume"+_recRadio, _radioVolume);
@@ -119,12 +119,12 @@ DFUNC(speakingLoop) = {
                     _volumeModifier = HASH_GET(GVAR(coreCache), "volumeModifier"+_recRadio);
                     _on = HASH_GET(GVAR(coreCache), "on"+_recRadio);
                 };
-                if(_on == 1) then {
+                if (_on == 1) then {
                     BEGIN_COUNTER(handleMultipleTransmissions);
-                    // if(!GVAR(speaking_cache_valid)) then {
+                    // if (!GVAR(speaking_cache_valid)) then {
                     private _sourceRadios = _sources select _forEachIndex;
                     private _hearableRadios = [_recRadio, "handleMultipleTransmissions", _sourceRadios] call EFUNC(sys_data,transEvent);
-                    if(ACRE_FULL_DUPLEX) then {
+                    if (ACRE_FULL_DUPLEX) then {
                         _hearableRadios = _sourceRadios;
                     };
                         // HASH_SET(GVAR(coreCache), _recRadio + "hmt_cache", _hearableRadios);
@@ -139,7 +139,7 @@ DFUNC(speakingLoop) = {
 
                     private _radioPos = [0,0,0];
                     private _attenuate = 1;
-                    if([_recRadio, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
+                    if ([_recRadio, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                         _radioPos = [_recRadio, "getExternalAudioPosition"] call EFUNC(sys_data,physicalEvent);
                         _args = [_radioPos, ACRE_LISTENER_POS, acre_player];
                         // there needs to be handling of vehicle attenuation too
@@ -157,13 +157,13 @@ DFUNC(speakingLoop) = {
                     // acre_player sideChat format["_volumeModifier: %1 %2", _volumeModifier];
                     {
                         _on = [_x select 1, "getOnOffState"] call EFUNC(sys_data,dataEvent);
-                        if(_on == 1) then {
+                        if (_on == 1) then {
                             _x params ["_unit","","_signalData","_params"];
-                            if(!HASH_HASKEY(_compiledParams, netId _unit)) then {
+                            if (!HASH_HASKEY(_compiledParams, netId _unit)) then {
                                 HASH_SET(_compiledParams, netId _unit, []);
                             };
                             private _speakingRadios = HASH_GET(_compiledParams, netId _unit);
-                            if((_params select 3)) then {
+                            if ((_params select 3)) then {
 
                                 // Possible sound fix: Always double the distance of the radio for hearing purposes
                                 // on external speaker to make it 'distant' like a speaker.
@@ -173,14 +173,14 @@ DFUNC(speakingLoop) = {
                                 _params set[0, _radioVolume*_volumeModifier*_attenuate];
                             } else {
                                 _ear = [_recRadio, "getState", "ACRE_INTERNAL_RADIOSPATIALIZATION"] call EFUNC(sys_data,dataEvent);
-                                if(isNil "_ear") then {
+                                if (isNil "_ear") then {
                                     _ear = 0;
                                 };
                                 _params set[4, [_ear*2, 0, 0]];
 
                                 // Scale radio volume for headset
                                 // I'm not sure if this is the best way or place to do it. But Fuck your Life (tm), i'm doing it here.
-                                if(GVAR(lowered) == 1) then {
+                                if (GVAR(lowered) == 1) then {
                                     _radioVolume = _radioVolume * 0.15;
                                 };
                                 _params set[0, _radioVolume];
@@ -196,7 +196,7 @@ DFUNC(speakingLoop) = {
         } forEach _radios;
 
         #ifdef ENABLE_PERFORMANCE_COUNTERS
-        if( (count _radios) > 0) then {
+        if ( (count _radios) > 0) then {
             END_COUNTER(radio_loop);
         };
         #endif
@@ -207,7 +207,7 @@ DFUNC(speakingLoop) = {
         // _rstart = diag_tickTime;
         {
             private _unit = objectFromNetId _x;
-            if(!isNull _unit) then {
+            if (!isNull _unit) then {
                 PUSH(_sentMicRadios, _unit);
                 private _params = HASH_GET(_compiledParams, _x);
                 _count = (count _params);
@@ -230,39 +230,39 @@ DFUNC(speakingLoop) = {
 
     {
         private _unit = _x;
-        if(!isNull _unit) then {
-            if(!IS_MUTED(_unit) && _unit != acre_player) then {
-                if((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
+        if (!isNull _unit) then {
+            if (!IS_MUTED(_unit) && _unit != acre_player) then {
+                if ((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
                     TRACE_1("Calling processDirectSpeaker", _unit);
                     private _params = [_unit] call FUNC(processDirectSpeaker);
                     CALL_RPC("updateSpeakingData", _params);
 
-                    // if(!(_unit getVariable[QGVAR(isDisabled), false]) ) then {
+                    // if (!(_unit getVariable [QGVAR(isDisabled), false]) ) then {
                         // _sayTime = _unit getVariable [QGVAR(sayTime), time-2];
-                        // if((abs (time-_sayTime)) >= 1) then {
+                        // if ((abs (time-_sayTime)) >= 1) then {
                             // _unit say "acre_lip_sound";
                             // _unit setVariable [QGVAR(sayTime), time, false];
                         // };
                     // };
                 } else {
-                    if(!(_unit in _sentMicRadios)) then {
+                    if (!(_unit in _sentMicRadios)) then {
                         private _params = ['m', GET_TS3ID(_unit), 0];
                         CALL_RPC("updateSpeakingData", _params);
                     };
                 };
             } else {
-                if(_unit != acre_player) then {
+                if (_unit != acre_player) then {
                     private _params = ['m', GET_TS3ID(_unit), 0];
                     CALL_RPC("updateSpeakingData", _params);
                 };
             };
         };
     } forEach GVAR(speakers);
-    if(ACRE_IS_SPECTATOR) then {
+    if (ACRE_IS_SPECTATOR) then {
         {
             _speakingId = _x;
-            _volume = ACRE_SPECTATOR_VOLUME;
-            if(ACRE_MUTE_SPECTATORS) then {
+            _volume = GVAR(spectatorVolume);
+            if (ACRE_MUTE_SPECTATORS) then {
                 _volume = 0;
             };
             private _params = ["s", _speakingId, 0, _volume];
@@ -272,7 +272,7 @@ DFUNC(speakingLoop) = {
 
     END_COUNTER(muting);
 
-    if(GVAR(speaking_cache_valid)) then {
+    if (GVAR(speaking_cache_valid)) then {
         END_COUNTER(speaking_loop);
     };
 

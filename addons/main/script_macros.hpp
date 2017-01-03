@@ -81,6 +81,7 @@ Antenna Defines
 #define LOAD_SOUND(className) [QUOTE(className)] call EFUNC(sys_sounds,loadSound);
 
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
+#define DEFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 
 #define GET_STATE(id)            ([GVAR(currentRadioId), "getState", id] call acre_sys_data_fnc_dataEvent)
 #define SET_STATE(id, val)        ([GVAR(currentRadioId), "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
@@ -91,7 +92,7 @@ Antenna Defines
 #define SCRATCH_GET(radioId, key) ([radioId, key] call EFUNC(sys_data,getScratchData))
 #define SCRATCH_GET_DEF(radioId, key, defaultVal) ([radioId, key, defaultVal] call EFUNC(sys_data,getScratchData))
 
-#define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if(_ret == -1) then { WARNING_1("%1 has no TS3 ID",_this); }; _ret })
+#define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if (_ret == -1) then { WARNING_1("%1 has no TS3 ID",_this); }; _ret })
 
 #define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
 
@@ -112,8 +113,8 @@ Antenna Defines
 
 #define BASECLASS(radioId) (configName (inheritsFrom (configFile >> "CfgWeapons" >> radioId)))
 
-#define DGVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QGVAR(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QGVAR(varName); }; GVAR(varName)
-#define DVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if(!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QUOTE(varName); }; varName
+#define DGVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QGVAR(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QGVAR(varName); }; GVAR(varName)
+#define DVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QUOTE(varName); }; varName
 
 // Dynamic sub-modules for systems
 #define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QUOTE(PATHTOF(folder\__PREP__.sqf))

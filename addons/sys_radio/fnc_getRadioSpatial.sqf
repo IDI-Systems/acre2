@@ -16,17 +16,17 @@
  */
 #include "script_component.hpp"
 
-params["_radio"];
+params ["_radio"];
 
 private _side = "CENTER";
 
-if(!(isNil "_radio")) then {
+if (!(isNil "_radio")) then {
     private _isInitialized = [_radio] call EFUNC(sys_data,isRadioInitialized);
 //    diag_log format["STATE WTF: %1=%2", _radio, _state];
-    if(_isInitialized) then {
+    if (_isInitialized) then {
         private _spatial = [_radio, "getSpatial"] call EFUNC(sys_data,dataEvent);
 
-        switch(_spatial) do {
+        switch (_spatial) do {
             case -1: {
                 _side = "LEFT";
             };

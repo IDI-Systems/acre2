@@ -143,14 +143,14 @@ namespace detail
 
     GLM_FUNC_QUALIFIER glm::uint floatTo11bit(float x)
     {
-        if(x == 0.0f)
+        if (x == 0.0f)
             return 0u;
-        else if(glm::isnan(x))
+        else if (glm::isnan(x))
             return ~0u;
-        else if(glm::isinf(x))
+        else if (glm::isinf(x))
             return 0x1Fu << 6u;
 
-#        if(GLM_COMPILER & GLM_COMPILER_GCC || GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
+#        if (GLM_COMPILER & GLM_COMPILER_GCC || GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
             uint Pack = 0u;
             memcpy(&Pack, &x, sizeof(Pack));
 #        else    
@@ -162,16 +162,16 @@ namespace detail
 
     GLM_FUNC_QUALIFIER float packed11bitToFloat(glm::uint x)
     {
-        if(x == 0)
+        if (x == 0)
             return 0.0f;
-        else if(x == ((1 << 11) - 1))
+        else if (x == ((1 << 11) - 1))
             return ~0;//NaN
-        else if(x == (0x1f << 6))
+        else if (x == (0x1f << 6))
             return ~0;//Inf
 
         uint Result = packed11ToFloat(x);
 
-#        if(GLM_COMPILER & GLM_COMPILER_GCC || GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
+#        if (GLM_COMPILER & GLM_COMPILER_GCC || GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
             float Temp = 0;
             memcpy(&Temp, &Result, sizeof(Temp));
             return Temp;
@@ -182,14 +182,14 @@ namespace detail
 
     GLM_FUNC_QUALIFIER glm::uint floatTo10bit(float x)
     {
-        if(x == 0.0f)
+        if (x == 0.0f)
             return 0u;
-        else if(glm::isnan(x))
+        else if (glm::isnan(x))
             return ~0u;
-        else if(glm::isinf(x))
+        else if (glm::isinf(x))
             return 0x1Fu << 5u;
 
-#        if(GLM_COMPILER & GLM_COMPILER_GCC || GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
+#        if (GLM_COMPILER & GLM_COMPILER_GCC || GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
             uint Pack = 0;
             memcpy(&Pack, &x, sizeof(Pack));
 #        else    
@@ -201,16 +201,16 @@ namespace detail
 
     GLM_FUNC_QUALIFIER float packed10bitToFloat(glm::uint x)
     {
-        if(x == 0)
+        if (x == 0)
             return 0.0f;
-        else if(x == ((1 << 10) - 1))
+        else if (x == ((1 << 10) - 1))
             return ~0;//NaN
-        else if(x == (0x1f << 5))
+        else if (x == (0x1f << 5))
             return ~0;//Inf
 
         uint Result = packed10ToFloat(x);
 
-#        if(GLM_COMPILER & GLM_COMPILER_GCC || GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
+#        if (GLM_COMPILER & GLM_COMPILER_GCC || GLM_COMPILER & (GLM_COMPILER_APPLE_CLANG | GLM_COMPILER_LLVM))
             float Temp = 0;
             memcpy(&Temp, &Result, sizeof(Temp));
             return Temp;

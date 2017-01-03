@@ -23,14 +23,14 @@ private _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private _frequency = 0;
     _frequency = (950+(_i*2))*0.0625;
-    if(!(_frequency in _usedPresetFrequencies)) then {
+    if (!(_frequency in _usedPresetFrequencies)) then {
         private _ok = true;
         {
-            if(abs(_x-_frequency) <= 0.25) exitWith {
+            if (abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
-        if(_ok || (count _usedPresetFrequencies) == 0) then {
+        if (_ok || (count _usedPresetFrequencies) == 0) then {
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
@@ -69,14 +69,14 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private _frequency = 0;
     _frequency = (950+200+(_i*2))*0.0625;
-    if(!(_frequency in _usedPresetFrequencies)) then {
+    if (!(_frequency in _usedPresetFrequencies)) then {
         private _ok = true;
         {
-            if(abs(_x-_frequency) <= 0.25) exitWith {
+            if (abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
-        if(_ok || (count _usedPresetFrequencies) == 0) then {
+        if (_ok || (count _usedPresetFrequencies) == 0) then {
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
@@ -114,14 +114,14 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private _frequency = 0;
     _frequency = (950+400+(_i*2))*0.0625;
-    if(!(_frequency in _usedPresetFrequencies)) then {
+    if (!(_frequency in _usedPresetFrequencies)) then {
         private _ok = true;
         {
-            if(abs(_x-_frequency) <= 0.25) exitWith {
+            if (abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
-        if(_ok || (count _usedPresetFrequencies) == 0) then {
+        if (_ok || (count _usedPresetFrequencies) == 0) then {
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
@@ -159,14 +159,14 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private _frequency = 0;
     _frequency = (950+600+(_i*2))*0.0625;
-    if(!(_frequency in _usedPresetFrequencies)) then {
+    if (!(_frequency in _usedPresetFrequencies)) then {
         private _ok = true;
         {
-            if(abs(_x-_frequency) <= 0.25) exitWith {
+            if (abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
-        if(_ok || (count _usedPresetFrequencies) == 0) then {
+        if (_ok || (count _usedPresetFrequencies) == 0) then {
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };

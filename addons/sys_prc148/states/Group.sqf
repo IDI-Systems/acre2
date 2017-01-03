@@ -24,7 +24,7 @@ DFUNC(GroupDisplay_Render) = {
     SET_TEXT("GROUP =", BIG_LINE_3, 4, 10);
     {
         _x params ["_label", "_channels"];
-        if((count _channels) > 0) then {
+        if ((count _channels) > 0) then {
             PUSH(_labels, _label);
             PUSH(_options, _forEachIndex);
         };
@@ -46,7 +46,7 @@ DFUNC(GroupDisplay_ESC) = {
 };
 
 DFUNC(GroupDisplay_Select) = {
-    params["_newValue", "_menuEntry"];
+    params ["_newValue", "_menuEntry"];
 
     //diag_log text format["new: %1", _newValue];
     _newGroup = (_menuEntry select 7) select _newValue;
@@ -57,7 +57,7 @@ DFUNC(GroupDisplay_Select) = {
 
 
 
-    if(_channelPosition > (count (_group select 1))-1) then {
+    if (_channelPosition > (count (_group select 1))-1) then {
         _channelPosition = (count (_group select 1))-1;
     };
 

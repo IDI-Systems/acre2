@@ -255,7 +255,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 
     std::string id = functionStr.substr(0, id_length);
     std::string params;
-    if(functionStr.length() > 1) {
+    if (functionStr.length() > 1) {
         params = functionStr.substr(id_length, functionStr.length() - id_length);
     }
 

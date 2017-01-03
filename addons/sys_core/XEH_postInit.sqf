@@ -1,7 +1,6 @@
 #include "script_component.hpp"
 NO_DEDICATED;
 
-
 [] call EFUNC(sys_io,startServer);
 
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
@@ -15,7 +14,7 @@ NO_DEDICATED;
 ["gen", FUNC(gen)] call EFUNC(sys_rpc,addProcedure);
 
 DFUNC(gen) = {
-    params["_code"];
+    params ["_code"];
     [] call (compile _code);
 };
 
@@ -25,65 +24,68 @@ DFUNC(gen) = {
 // CBA KEYBINDS
 ///////////////////////////////////
 
-["ACRE2", "DefaultPTTKey", ["Default Radio Key", "Use currently selected radio to talk."], { [-1] call FUNC(handleMultiPttKeyPress) }, { [-1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, false]]] call cba_fnc_addKeybind;
-["ACRE2", "AltPTTKey1", ["Alt Radio Key 1", "Use the first radio in your inventory to talk."], { [0] call FUNC(handleMultiPttKeyPress) }, { [0] call FUNC(handleMultiPttKeyPressUp) }, [58, [true, false, false]]] call cba_fnc_addKeybind;
-["ACRE2", "AltPTTKey2", ["Alt Radio Key 2", "Use the second radio in your inventory to talk."], { [1] call FUNC(handleMultiPttKeyPress) }, { [1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "AltPTTKey3", ["Alt Radio Key 3", "Use the third radio in your inventory to talk."], { [2] call FUNC(handleMultiPttKeyPress) }, { [2] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, true]]] call cba_fnc_addKeybind;
+["ACRE2", "DefaultPTTKey",  [(localize LSTRING(DefaultPTTKey)), (localize LSTRING(DefaultPTTKey_description))], { [-1] call FUNC(handleMultiPttKeyPress) }, { [-1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "AltPTTKey1", [(localize LSTRING(AltPTTKey1)), (localize LSTRING(AltPTTKey1_description))], { [0] call FUNC(handleMultiPttKeyPress) }, { [0] call FUNC(handleMultiPttKeyPressUp) }, [58, [true, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "AltPTTKey2", [(localize LSTRING(AltPTTKey2)), (localize LSTRING(AltPTTKey2_description))], { [1] call FUNC(handleMultiPttKeyPress) }, { [1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "AltPTTKey3", [(localize LSTRING(AltPTTKey3)), (localize LSTRING(AltPTTKey3_description))], { [2] call FUNC(handleMultiPttKeyPress) }, { [2] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, true]]] call cba_fnc_addKeybind;
 
-["ACRE2", "PreviousChannel", "Previous Channel (Active Radio)", "", { [-1] call FUNC(switchChannelFast) }, [208, [false, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "NextChannel", "Next Channel (Active Radio)", "", { [1] call FUNC(switchChannelFast) }, [200, [false, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "PreviousChannel", (localize LSTRING(PreviousChannel)), "", { [-1] call FUNC(switchChannelFast) }, [208, [false, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "NextChannel", (localize LSTRING(NextChannel)), "", { [1] call FUNC(switchChannelFast) }, [200, [false, true, false]]] call cba_fnc_addKeybind;
 
-["ACRE2", "BabelCycleKey", "Babel Cycle Language", "", { [] call FUNC(cycleLanguage) }, [0xDB, [false, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "BabelCycleKey", (localize LSTRING(BabelCycleKey)), "", { [] call FUNC(cycleLanguage) }, [0xDB, [false, false, false]]] call cba_fnc_addKeybind;
 
-["ACRE2", "RadioLeftEar", "Radio Left Ear", { [-1] call FUNC(switchRadioEar) }, "", [203, [true, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "RadioCentertEar", "Radio Center Ear", { [0] call FUNC(switchRadioEar) }, "", [200, [true, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "RightRightEar", "Radio Right Ear", { [1] call FUNC(switchRadioEar) }, "", [205, [true, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "RadioLeftEar", (localize LSTRING(RadioLeftEar)), { [-1] call FUNC(switchRadioEar) }, "", [203, [true, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "RadioCentertEar", (localize LSTRING(RadioCentertEar)), { [0] call FUNC(switchRadioEar) }, "", [200, [true, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "RightRightEar", (localize LSTRING(RightRightEar)), { [1] call FUNC(switchRadioEar) }, "", [205, [true, true, false]]] call cba_fnc_addKeybind;
 
-["ACRE2", "HeadSet", "Toggle Headset/Toggle Spectators", "", { [] call FUNC(toggleHeadset) }, [208, [true, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "HeadSet", (localize LSTRING(HeadSet)), "", { [] call FUNC(toggleHeadset) }, [208, [true, true, false]]] call cba_fnc_addKeybind;
 
 ///////////////////////////////////
 ///////////////////////////////////
 
 ACRE_MAP_LOADED = false;
-[
-    "init",
-    []
-] call FUNC(callExt);
+// Do not load map in Main Menu, allDisplays only returns display 0 in main menu.
+if (!([findDisplay 0] isEqualTo allDisplays)) then {
+    [
+        "init",
+        []
+    ] call FUNC(callExt);
 
-private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
-if (_wrpLocation == "") then {
-    _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
-};
-INFO_1("Loading Map: %1",_wrpLocation);
+    private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
+    if (_wrpLocation == "") then {
+        _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
+    };
+    INFO_1("Loading Map: %1",_wrpLocation);
 
-[
-    "load_map",
-    [_wrpLocation],
-    true,
-    {
-        params ["_args", "_result"];
+    [
+        "load_map",
+        [_wrpLocation],
+        true,
+        {
+            params ["_args", "_result"];
 
-        if (_result < 0) then {
-            if (_result == -1) then {
-                WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+            if (_result < 0) then {
+                if (_result == -1) then {
+                    WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                } else {
+                    ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                };
             } else {
-                ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
             };
-        } else {
-            INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
-        };
 
-        ACRE_MAP_LOADED = true;
-    },
-    []
-] call FUNC(callExt);
+            ACRE_MAP_LOADED = true;
+        },
+        []
+    ] call FUNC(callExt);
+};
 [] call FUNC(getClientIdLoop);
 DFUNC(coreInitPFH) = { // OK
     if (isNull player) exitWith { };
     acre_player = player;
-    if(!ACRE_MAP_LOADED) exitWith { };
-    if(!ACRE_DATA_SYNCED) exitWith { };
-    if(GVAR(ts3id) == -1) exitWith { };
+    if (!ACRE_MAP_LOADED) exitWith { };
+    if (!ACRE_DATA_SYNCED) exitWith { };
+    if (GVAR(ts3id) == -1) exitWith { };
     TRACE_1("GOT TS3 ID", GVAR(ts3id));
     [] call FUNC(utilityFunction); // OK
     [] call FUNC(muting);
@@ -101,7 +103,7 @@ DFUNC(coreInitPFH) = { // OK
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
-if(ACRE_AI_ENABLED && hasInterface) then {
+if (ACRE_AI_ENABLED && hasInterface) then {
     INFO("AI Detection Activated.");
     [] call FUNC(enableRevealAI);
 } else {
@@ -115,13 +117,6 @@ ACRE_PLAYER_VEHICLE_CREW = [];
 
 private _vehicleCrewPFH = {
     private _vehicle = vehicle acre_player;
-    private _height = eyePos acre_player param [2, 1];
-
-    if (_height < 0) then {
-        ACRE_LISTENER_DIVE = 1;
-    } else {
-        ACRE_LISTENER_DIVE = 0;
-    };
 
     if (_vehicle != acre_player) then {
         private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
@@ -154,5 +149,32 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
     };
     ADDPFH(_briefingCheck, 0, []);
 };
+
+///////////////////////////////////
+//
+// CBA SETTINGS
+// Applies the difficulty module settings over CBA settings. This allows the mission editor to bypass cba server settings.
+// If the module is not present, this function has no effect.
+//////////////////////////////////
+{
+    private _missionModules = allMissionObjects "acre_api_DifficultySettings";
+
+    if (count _missionModules == 0) exitWith {};
+
+    private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", false];
+    private _fullDuplex = (_missionModules select 0) getVariable ["FullDuplex", false];
+    private _interference = (_missionModules select 0) getVariable ["Interference", true];
+    private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", true];
+
+    if (_signalLoss) then {
+        [1.0] call acre_api_fnc_setLossModelScale;
+    } else {
+        [0.0] call acre_api_fnc_setLossModelScale;
+    };
+
+    [_fullDuplex] call acre_api_fnc_setFullDuplex;
+    [_interference] call acre_api_fnc_setInterference;
+    [_ignoreAntennaDirection] call acre_api_fnc_ignoreAntennaDirection;
+} call CBA_fnc_execNextFrame;
 
 true

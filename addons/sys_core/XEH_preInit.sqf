@@ -46,7 +46,6 @@ DVAR(ACRE_HAS_WARNED) = false;
 
 DVAR(ACRE_LOCAL_BROADCASTING) = false;
 DVAR(ACRE_LOCAL_SPEAKING) = false;
-DVAR(ACRE_SPECTATOR_VOLUME) = 1;
 
 DVAR(ACRE_MUTE_SPECTATORS) = false;
 DVAR(ACRE_CORE_INIT) = false;
@@ -68,11 +67,7 @@ DVAR(ACRE_BROADCASTING_RADIOID) = "";
 DVAR(ACRE_CURRENT_LANGUAGE_ID) = 0;
 DVAR(ACRE_SPOKEN_LANGUAGES) = [];
 
-DVAR(ACRE_AI_ENABLED) = true;
 DGVAR(monitorAIHandle) = -1;
-
-DVAR(ACRE_FULL_DUPLEX) = false;
-DVAR(ACRE_INTERFERENCE) = true;
 
 DGVAR(languages) = [];
 
@@ -89,31 +84,13 @@ acre_sys_io_ioEventFnc = {
     END_COUNTER(ioEventFunction);
 };
 
-_acrePlayerFnc = {
-    acre_player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
-    /*if(cameraOn != acre_player) then {
-        if(lifeState cameraOn != "") then {
-            acre_player = cameraOn;
-        };
-    };*/
-};
-ADDPFH(_acrePlayerFnc, 0, []);
+["unit", {
+    acre_player = (_this select 0);
+}] call CBA_fnc_addPlayerEventHandler;
 
 #ifdef USE_DEBUG_EXTENSIONS
 "acre_dynload" callExtension format["load:%1", "idi\build\win32\Debug\acre.dll"];
 #endif
-
-DFUNC(formatNumber) = {
-    private _ext = abs _this - (floor abs _this);
-    private _str = "";
-
-    for "_i" from 1 to 24 do {
-        private _d = floor (_ext*10);
-        _str = _str + (str _d);
-        _ext = (_ext*10)-_d;
-    };
-    format["%1%2.%3", ["","-"] select (_this < 0), (floor (abs _this)), _str];
-};
 
 private _monitorFnc = {
     private _res = ["fetch_result", ""] call FUNC(callExt);
@@ -121,9 +98,9 @@ private _monitorFnc = {
         // diag_log text format["RES: %1", _res];
         private _id = _res select 0;
         private _callBack = GVAR(threadedExtCalls) select _id;
-        if(IS_ARRAY(_callBack)) then {
+        if (IS_ARRAY(_callBack)) then {
             private _args = (_res select 1);
-            if(count _args > 0) then {
+            if (count _args > 0) then {
                 _args = _args select 0;
             };
             [_callBack select 0, _args] call (_callBack select 1);
@@ -140,7 +117,7 @@ for "_i" from 1 to (_m/2) do {
     _positive = (_spread/_m)*_i;
     _negative = ((_spread/_m)*_i)*-1;
     PUSH(ACRE_TESTANGLES, _positive);
-    if(_positive != _negative) then {
+    if (_positive != _negative) then {
         PUSH(ACRE_TESTANGLES, _negative);
     };
 };

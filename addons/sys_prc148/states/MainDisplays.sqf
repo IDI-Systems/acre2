@@ -18,12 +18,12 @@
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
 DFUNC(DefaultDisplay_Render) = {
-    params["_display"];
+    params ["_display"];
 
     [_display, ICON_BATTERY, true] call FUNC(showIcon);
     [_display, ICON_BATSTRENGTH, true] call FUNC(showIcon);
 
-    if(SCRATCH_GET_DEF(GVAR(currentRadioId), "squelchOpen", false)) then {
+    if (SCRATCH_GET_DEF(GVAR(currentRadioId), "squelchOpen", false)) then {
         [_display, ICON_SQUELCH, true] call FUNC(showIcon);
     };
 
@@ -42,11 +42,11 @@ DFUNC(DefaultDisplay_Render) = {
 
     SET_TEXT(_groupLabel, SMALL_LINE_1, 6, 8);
     SET_TEXT(_channelLabel, SMALL_LINE_2, 6, 12);
-    if(GET_STATE_DEF("SAEnabled", false)) then {
+    if (GET_STATE_DEF("SAEnabled", false)) then {
         SET_TEXT("SA", SMALL_LINE_4, 9, 10);
     };
 
-    if(HASH_GET(_channel, "encryption") == 1) then {
+    if (HASH_GET(_channel, "encryption") == 1) then {
         SET_TEXT("CT", SMALL_LINE_5, 9, 10);
     } else {
         SET_TEXT("PT", SMALL_LINE_5, 9, 10);
@@ -76,7 +76,7 @@ DFUNC(DefaultDisplay_ENT) = {
 };
 
 DFUNC(AlternateDisplay_Render) = {
-    params["_display"];
+    params ["_display"];
 
     _group = GET_STATE("groups") select GET_STATE("currentGroup");
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
