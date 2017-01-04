@@ -30,11 +30,11 @@
     <sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.<br/></strong></sub>
 </p>
 
-**ACRE2** is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications through Teamspeak 3. 
+**ACRE2** is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications through Teamspeak 3.
 
 ### A short list of some ACRE2 features
 
-- Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152.
+- Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152, SEM 52 SL.
 - Real time voice occlusion for world objects, including buildings.
 - Babel language system that allows you to implement virtual languages on other players.
 - Multi-channel audio, allowing people on the radio to be heard locally as well.

@@ -67,11 +67,7 @@ DVAR(ACRE_BROADCASTING_RADIOID) = "";
 DVAR(ACRE_CURRENT_LANGUAGE_ID) = 0;
 DVAR(ACRE_SPOKEN_LANGUAGES) = [];
 
-DVAR(ACRE_AI_ENABLED) = true;
 DGVAR(monitorAIHandle) = -1;
-
-DVAR(ACRE_FULL_DUPLEX) = false;
-DVAR(ACRE_INTERFERENCE) = true;
 
 DGVAR(languages) = [];
 
@@ -88,15 +84,9 @@ acre_sys_io_ioEventFnc = {
     END_COUNTER(ioEventFunction);
 };
 
-_acrePlayerFnc = {
-    acre_player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
-    /*if (cameraOn != acre_player) then {
-        if (lifeState cameraOn != "") then {
-            acre_player = cameraOn;
-        };
-    };*/
-};
-ADDPFH(_acrePlayerFnc, 0, []);
+["unit", {
+    acre_player = (_this select 0);
+}] call CBA_fnc_addPlayerEventHandler;
 
 #ifdef USE_DEBUG_EXTENSIONS
 "acre_dynload" callExtension format["load:%1", "idi\build\win32\Debug\acre.dll"];

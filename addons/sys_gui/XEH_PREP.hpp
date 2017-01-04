@@ -15,3 +15,8 @@ PREP(onInventoryRadioDoubleClick);
 
 PREP(inventoryListMouseDown);
 PREP(inventoryListMouseUp);
+
+PREP(uniqueArray);
+PREP(onInventoryAction);
+PREP(handleContextMenu);
+PREP(inventoryMonitorPFH);

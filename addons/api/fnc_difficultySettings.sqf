@@ -23,6 +23,8 @@ if (!_activated) exitWith {};
 
 TRACE_1("enter", _this);
 
+ACRE_DEPRECATED("Difficulty Settings module","2.6.0","CBA Settings");
+
 private _signalLoss = _logic getVariable ["SignalLoss", true];
 private _fullDuplex = _logic getVariable ["FullDuplex", false];
 private _interference = _logic getVariable ["Interference", true];

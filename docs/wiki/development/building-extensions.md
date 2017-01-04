@@ -19,15 +19,13 @@ _This is done automatically when doing a [release build](building#create-a-relea
 ### 32-bit
 
 - Navigate to the `extensions\vcproj` directory.
-- Run `cmake ..`
-- Visual Studio project should be selected by default, if not use the `-G` option and choose the right 32-bit CMake generator.
+- Run `cmake .. -G "Visual Studio 14 2015` (replace generator for any other 32-bit Visual Studio generator)
 - Compile projects.
 
 ### 64-bit
 
-_Only `ACRE2TS` project (`acre2_win64.dll`) TeamSpeak plugin can be built in 64-bit._
-
 - Navigate to the `extensions\vcproj64` directory.
 - Run `cmake .. -DUSE_64BIT_BUILD=ON -G "Visual Studio 14 2015 Win64"` (replace generator for any other 64-bit Visual Studio generator)
+- Compile projects.
 
 Extensions files will also be copied to their appropriate locations automatically after compilation (ready for [test](building#create-a-test-build) and [release](building#create-a-release-build) builds).
