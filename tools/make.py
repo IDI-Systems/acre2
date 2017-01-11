@@ -1544,30 +1544,32 @@ See the make.cfg file for additional build options.
     finally:
         if compile_ext:
             compile_extensions(extensions_root, force_build)
-            #Sign extensions.
-            if("CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
-                credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
-                cred_file_path = os.path.join(credentials_path, be_cred_filename)
-                if os.path.isfile(cred_file_path):
-                    print("Credential file found")
-                    cred_file = json.load(open(cred_file_path))
-                    dll_sign_path = os.path.join(release_dir, project)
-                    sign_tool = cred_file["signtool"]
-                    path_to_certificate = cred_file["certificate_path"]
-                    certificate_password = cred_file["certificate_password"]
-                    print("Signing dlls in folder: {}".format(dll_sign_path))
-                    for file in os.listdir(dll_sign_path):
-                        if (file.endswith(".dll") and os.path.isfile(os.path.join(dll_sign_path,file))):
-                            fileToSignPath = os.path.join(dll_sign_path, file)
-                            print("Signing file {}".format(fileToSignPath))
-                            cmd = [sign_tool, "sign", "/f", path_to_certificate, "/p", certificate_password, "/t", "http://timestamp.digicert.com", fileToSignPath]
-                            subprocess.call(cmd)
-                else:
-                    print("Credential file not found: {}".format(cred_file_path))
-            else:
-                print("Credential environment variable not found.")
 
         copy_important_files(module_root_parent,os.path.join(release_dir, project))
+
+        # Sign the extensions.
+        if("CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
+            credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
+            cred_file_path = os.path.join(credentials_path, be_cred_filename)
+            if os.path.isfile(cred_file_path):
+                print("Credential file found")
+                cred_file = json.load(open(cred_file_path))
+                dll_sign_path = os.path.join(release_dir, project)
+                sign_tool = cred_file["signtool"]
+                path_to_certificate = cred_file["certificate_path"]
+                certificate_password = cred_file["certificate_password"]
+                print("Signing dlls in folder: {}".format(dll_sign_path))
+                for file in os.listdir(dll_sign_path):
+                    if (file.endswith(".dll") and os.path.isfile(os.path.join(dll_sign_path,file))):
+                        fileToSignPath = os.path.join(dll_sign_path, file)
+                        print("Signing file {}".format(fileToSignPath))
+                        cmd = [sign_tool, "sign", "/f", path_to_certificate, "/p", certificate_password, "/t", "http://timestamp.digicert.com", fileToSignPath]
+                        subprocess.call(cmd)
+            else:
+                print("Credential file not found: {}".format(cred_file_path))
+        else:
+            print("Credential environment variable not found.")
+        
         if (os.path.isdir(optionals_root)):
             cleanup_optionals(optionals_modules)
         if not version_update:
