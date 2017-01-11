@@ -79,6 +79,9 @@ steamFiles = ["extras\\ACRE2Steam.dll", "extras\\ACRE2Steam_x64.dll"]
 versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h", "docs\\_data\\sidebar.yml"]
 extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
 extensions64 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS"]
+# be_cred_file expected to be in folder defined by enviorment variable CBA_PUBLISH_CREDENTIALS_PATH
+be_cred_filename = "acre_battleye_creds.json"
+
 
 ciBuild = False # Used for CI builds
 
@@ -1541,6 +1544,23 @@ See the make.cfg file for additional build options.
     finally:
         if compile_ext:
             compile_extensions(extensions_root, force_build)
+            #Sign extensions.
+            if("CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
+                credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
+                cred_file_path = os.path.join(credentials_path, be_cred_filename)
+                if os.path.isfile(cred_file_path):
+                    cred_file = json.load(open(cred_file_path))
+                    dll_sign_path = os.path.join(release_dir, project)
+                    sign_tool = cred_file["signtool"]
+                    path_to_certificate = cred_file["certificate_path"]
+                    certificate_password = cred_file["certificate_password"]
+                    for file in os.listdir(dll_sign_path):
+                        if (file.endswith(".dll") and os.path.isfile(os.path.join(dll_sign_path,file))):
+                            fileToSignPath = os.path.join(dll_sign_path, file)
+                            print("Signing file {}".format(fileToSignPath))
+                            cmd = [sign_tool, "sign", "/f", path_to_certificate, "/p", certificate_password, "/t", "http://timestamp.digicert.com", fileToSignPath]
+                            subprocess.call(cmd)
+
         copy_important_files(module_root_parent,os.path.join(release_dir, project))
         if (os.path.isdir(optionals_root)):
             cleanup_optionals(optionals_modules)
