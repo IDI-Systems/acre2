@@ -43,7 +43,7 @@
 - A highly customizable and documented framework for the creation of radios.
 - A highly customizable and documented framework for implementing different game modes (persistent world, replays, logging, external data storage, external radio control).
 - Customizable sound configs that allow traditional patching of sounds played in ACRE via Arma addons.
-- Customizable radio presets, allowing groups to define radio presets in additional addons for mission makers to take advantage of (also see the [F3 framework](https://github.com/ferstaberinde/F3)).
+- Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (As an example see the ACRE2 implementation in the [F3 framework](https://github.com/ferstaberinde/F3)).
 - Enhanced and easily configurable vehicle sound occlusion and intercoms.
 
 ### Guides & how-tos
