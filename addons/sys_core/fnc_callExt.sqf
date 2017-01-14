@@ -1,22 +1,23 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function is used to make calls in acre.dll
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Command <STRING>
+ * 1: Parameters <ANY>
+ * 2: Threaded call if so uses the following arguments to handle the return <BOOLEAN> (optional)
+ * 3: Callback code <CODE> (optional)
+ * 4: Return arguments <ANY> (optional)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Return from call extension <ANY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["init",[]] call acre_sys_core_fnc_callExt
  *
  * Public: No
  */
 #include "script_component.hpp"
-
-#define FORMAT_NUMBER(num) (num call FUNC(formatNumber))
 
 params ["_command", "_params", ["_threaded", false], ["_callBack",{}], ["_callBackArgs",[]]];
 
@@ -29,6 +30,7 @@ if (IS_ARRAY(_params)) then {
         if (IS_ARRAY(_element)) then {
             {
                 if (!IS_STRING(_x)) then {
+                    // Convert boolean to number.
                     if (IS_BOOL(_x)) then {
                         if (_x) then {
                             _x = 1;
@@ -36,18 +38,14 @@ if (IS_ARRAY(_params)) then {
                             _x = 0;
                         };
                     };
-                    // if (IS_NUMBER(_x)) then {
-                        // _x = FORMAT_NUMBER(_x);
-                        // _paramsString = _paramsString + _x + ",";
-                    // } else {
-                        _paramsString = _paramsString + (str _x) + ",";
-                    // };
+                    _paramsString = _paramsString + (str _x) + ","; // Convert number to string
                 } else {
                     _paramsString = _paramsString + _x + ",";
                 };
             } forEach _element;
         } else {
             if (!IS_STRING(_element)) then {
+                // Convert boolean to number.
                 if (IS_BOOL(_element)) then {
                     if (_element) then {
                         _element = 1;
@@ -56,12 +54,7 @@ if (IS_ARRAY(_params)) then {
                     };
                 };
 
-                // if (IS_NUMBER(_element)) then {
-                    // _element = FORMAT_NUMBER(_element);
-                    // _paramsString = _paramsString + _element + ",";
-                // } else {
-                    _paramsString = _paramsString + (str _element) + ",";
-                // };
+                _paramsString = _paramsString + (str _element) + ","; // Convert number to string
             } else {
                 _paramsString = _paramsString + _element + ",";
             };

@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the spoken languages of the local player.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Languages by Id <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Spoken Languages <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["en"] call acre_sys_core_fnc_setSpokenLanguages
  *
  * Public: No
  */
@@ -20,7 +19,7 @@ private _list = _this;
 private _languageIds = [];
 
 {
-    PUSH(_languageIds, ([_x] call FUNC(getLanguageId)));
+    _languageIds pushBack ([_x] call FUNC(getLanguageId));
 } forEach _list;
 ACRE_SPOKEN_LANGUAGES = _languageIds;
 [_list select 0] call FUNC(setSpeakingLanguage);

@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of other (remote) players stopping speaking.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Teamspeak ID of talking player <STRING>
+ * 1: Net ID of player object <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["0","0:2"] call acre_sys_core_fnc_remoteStopSpeaking
  *
  * Public: No
  */

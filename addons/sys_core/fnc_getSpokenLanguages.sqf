@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns a list of language ids understood by the local player.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of language Ids <Array>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_getSpokenLanguages
  *
  * Public: No
  */
@@ -19,6 +18,6 @@
 private _list = [];
 
 {
-    PUSH(_list, ((GVAR(languages) select _x) select 0));
+    _list pushBack ((GVAR(languages) select _x) select 0);
 } forEach ACRE_SPOKEN_LANGUAGES;
 _list

@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Enables AI hearing of direct speech.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_enableRevealAI
  *
  * Public: No
  */
@@ -20,9 +19,8 @@
 
 DFUNC(monitorAI_PFH) = {
     //if (time < 10) exitWith {};
-    if (isNull acre_player) exitWith {};
+    if (!alive acre_player) exitWith {}; // alive returns false for objNull
     if (ACRE_IS_SPECTATOR) exitWith {};
-    if (!alive acre_player) exitWith {};
     //if (! ACRE_LOCAL_SPEAKING ) exitWith {};
     if (!(acre_player in GVAR(speakers))) exitWith {};
     if (isNil "acre_api_selectableCurveScale" ) exitWith {};

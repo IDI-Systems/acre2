@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to teamspeak.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_speaking
  *
  * Public: No
  */
@@ -74,7 +73,7 @@ DFUNC(speakingLoop) = {
                             _sources set[_keyIndex, []];
                         };
                         _txRadios = _sources select _keyIndex;
-                        PUSH(_txRadios, [ARR_4(_unit,_txId,_signalData,_params)]);
+                        _txRadios pushBack [_unit,_txId,_signalData,_params];
                         if (acre_sys_signal_showSignalHint) then {
                             _signalHint = _signalHint + format["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
                         };
@@ -185,7 +184,7 @@ DFUNC(speakingLoop) = {
                                 _params set[0, _radioVolume];
                             };
                             _params set[1, (_signalData select 0)];
-                            PUSH(_speakingRadios, _params);
+                            _speakingRadios pushBack _params;
                         };
                     } forEach _hearableRadios;
                     END_COUNTER(hearableRadios);
@@ -207,7 +206,7 @@ DFUNC(speakingLoop) = {
         {
             private _unit = objectFromNetId _x;
             if (!isNull _unit) then {
-                PUSH(_sentMicRadios, _unit);
+                _sentMicRadios pushBack _unit;
                 private _params = HASH_GET(_compiledParams, _x);
                 _count = (count _params);
                 _canUnderstand = [_unit] call FUNC(canUnderstand);

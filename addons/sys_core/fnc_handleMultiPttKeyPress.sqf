@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Used to handle a keypress of multiPttKeyPress
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio PTT index <Number>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [1] call acre_sys_core_fnc_handleMultiPttKeyPress
  *
  * Public: No
  */

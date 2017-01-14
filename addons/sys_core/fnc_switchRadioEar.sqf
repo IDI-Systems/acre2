@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Changes the spatial mode of the active radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Spatial mode (-1 = left, 0 = center, 1 = right) <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [0] call acre_sys_core_fnc_switchRadioEar
  *
  * Public: No
  */
