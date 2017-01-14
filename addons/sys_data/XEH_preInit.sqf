@@ -6,16 +6,19 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
-DGVAR(radioPresets) = HASH_CREATE;
-DGVAR(radioData) = HASH_CREATE;
-DGVAR(radioPresets) = HASH_CREATE;
-DGVAR(assignedRadioPresets) = HASH_CREATE;
-DGVAR(currentRadioStates) = HASH_CREATE;
-DGVAR(eventQueue) = [];
-DGVAR(pendingNetworkEvents) = [];
-DGVAR(pendingSyncEvents) = [];
-DGVAR(radioScratchData) = HASH_CREATE;
-DGVAR(forceHighPriorityIds) = [];
+GVAR(radioPresets) = HASH_CREATE;
+GVAR(radioData) = HASH_CREATE;
+GVAR(radioPresets) = HASH_CREATE;
+GVAR(assignedRadioPresets) = HASH_CREATE;
+GVAR(currentRadioStates) = HASH_CREATE;
+GVAR(eventQueue) = [];
+GVAR(pendingNetworkEvents) = [];
+GVAR(pendingSyncEvents) = [];
+GVAR(radioScratchData) = HASH_CREATE;
+GVAR(forceHighPriorityIds) = [];
+
+GVAR(sysEventCache) = HASH_CREATE;
+GVAR(radioEventCache) = HASH_CREATE;
 
 DVAR(ACRE_DATA_SYNCED) = false;
 
@@ -24,14 +27,14 @@ DVAR(ACRE_DEBUG_ECOUNT) = 0;
 DVAR(ACRE_DEBUG_CTIME) = 0;
 DVAR(ACRE_DEBUG_CALLLIST) = [];
 
-DGVAR(serverNetworkIdCounter) = 0;
+GVAR(serverNetworkIdCounter) = 0;
 
 ACREc = "";
 ACREs = "";
 ACREjipc = "";
 ACREjips = "";
 
-DGVAR(validStates) = HASH_CREATE;
+GVAR(validStates) = HASH_CREATE;
 
 DFUNC(_hashSerialize) = {
     private _hash = _this;
