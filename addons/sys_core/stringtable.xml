@@ -166,30 +166,35 @@
             <Spanish>Modelar interferencias</Spanish>
             <Japanese>モデル干渉</Japanese>
             <French>Modèle d'interférence</French>
+            <German>Interferenz Modul</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
             <English>Full Duplex radios</English>
             <Spanish>Radios Dúplex</Spanish>
             <Japanese>全二重通信ラジオ</Japanese>
             <French>Radios Full Duplex</French>
+            <German>Vollduplexbetrieb</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_antennaDirection_displayName">
             <English>Ignore Antenna Direction</English>
             <Spanish>Ignorar dirección de antena</Spanish>
             <Japanese>アンテナ指向を無視</Japanese>
             <French>Ignorer l'orientation de l'antenne</French>
+            <German>Antennenausrichtung ignorieren</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
             <Spanish>Coefficiente de pérdida de señal por terreno</Spanish>
             <Japanese>地形による干渉係数</Japanese>
             <French>Coefficient d'atténuation du terrain</French>
+            <German>Topografie-Signalverlustskoeffizienz</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
             <English>AI Voice Detection</English>
             <Spanish>Detección del habla por parte de la IA</Spanish>
             <Japanese>AI による声の検知</Japanese>
             <French>Détection de la voix par l'IA</French>
+            <German>Sprachwahrnehmung durch KI</German>
         </Key>
     </Package>
 </Project>
