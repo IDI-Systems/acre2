@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_gui">
         <Key ID="STR_ACRE_sys_gui_VolumeControl">
@@ -7,6 +7,7 @@
             <German>Lautstärke der Direktkommunikation</German>
             <Japanese>直接会話の音量設定</Japanese>
             <Italian>Regolazione Volume Diretto</Italian>
+            <French>Contrôle du volume de communication directe</French>
         </Key>
     </Package>
 </Project>
