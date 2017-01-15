@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets up the per frame event handler for monitoring the local player inventory for changes.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_monitorRadios
  *
  * Public: No
  */
@@ -30,127 +29,111 @@ ACRE_SERVER_DESYNCED_PLAYERS = [];
 
 LOG("Monitor Inventory Starting");
 DFUNC(monitorRadios_PFH) = {
-    if (!ACRE_DATA_SYNCED || {(isNil "ACRE_SERVER_INIT")}) exitWith { };
-    if (time < 1) exitWith { };
+    if (!alive acre_player) exitWith {};
     if ((side group acre_player) == sideLogic) exitWith {};
 
-    if (alive acre_player) then {
-        private _currentUniqueItems = [];
-        private _weapons = [acre_player] call EFUNC(lib,getGear);
+    private _weapons = [acre_player] call EFUNC(lib,getGear);
 
-        if (!("ItemRadio" in _weapons) && !("ItemRadioAcreFlagged" in _weapons) && !ACRE_HOLD_OFF_ITEMRADIO_CHECK) then {
-            acre_player linkItem "ItemRadioAcreFlagged"; // Only ItemRadio/ItemRadioAcreFlagged can be in the linked item slot for Radios.
-            // Check if the linkItem removes anything... Only ItemRadio
-            /*_newWeapons = [acre_player] call EFUNC(lib,getGear);
-            {
-                _radio = _x;
-                _hasUnique = getNumber (configFile >> "CfgWeapons" >> _radio >> "acre_hasUnique");
-                if (_hasUnique == 1 || _radio == "ItemRadio") then {
-                    if (!(_radio in _newWeapons)) then {
-                        [acre_player, _radio] call EFUNC(lib,addGear);
-                    };
-                };
-            } forEach _weapons;
-            _weapons = _newWeapons;*/
-        } else {
-            if ("ItemRadioAcreFlagged" in _weapons && !("ItemRadioAcreFlagged" in (assignedItems acre_player)) && !ACRE_HOLD_OFF_ITEMRADIO_CHECK) then {
-                acre_player assignItem "ItemRadioAcreFlagged";
-            };
+    // Handle ItemRadioAcreFlagged - This is a dummy ItemRadio that allows the player to continue using ingame text chat.
+
+    if (!ACRE_HOLD_OFF_ITEMRADIO_CHECK && {!("ItemRadio" in _weapons)} && {!("ItemRadioAcreFlagged" in _weapons)}) then {
+        acre_player linkItem "ItemRadioAcreFlagged"; // Only ItemRadio/ItemRadioAcreFlagged can be in the linked item slot for Radios.
+    } else {
+        if (!ACRE_HOLD_OFF_ITEMRADIO_CHECK && {"ItemRadioAcreFlagged" in _weapons} && {!("ItemRadioAcreFlagged" in (assignedItems acre_player))}) then {
+            acre_player assignItem "ItemRadioAcreFlagged";
         };
-
-        if ("ItemRadioAcreFlagged" in _weapons) then {
-            // Only allow 1 ItemRadioAcreFlagged
-            private _flaggedCount = 0;
-            {
-                if (_x == "ItemRadioAcreFlagged") then {
-                    _flaggedCount = _flaggedCount + 1;
-                };
-            } forEach _weapons;
-            if (_flaggedCount > 1) then {
-                private "_i";
-                for [{_i=0}, {_i<_flaggedCount-1}, {_i=_i+1}] do {
-                    [acre_player, "ItemRadioAcreFlagged"] call EFUNC(lib,removeGear);
-                };
-                acre_player assignItem "ItemRadioAcreFlagged";
-            };
-        };
-
-        {
-            if (GVAR(requestingNewId)) exitWith { };
-            _radio = _x;
-            _hasUnique = getNumber (configFile >> "CfgWeapons" >> _radio >> "acre_hasUnique");
-            if (_hasUnique == 1 || _radio == "ItemRadio") then {
-
-                GVAR(requestingNewId) = true;
-                if (_radio == "ItemRadio") then {
-                    _radio = GVAR(defaultItemRadioType);
-                    [acre_player, "ItemRadio", _radio] call EFUNC(lib,replaceGear);
-                };
-                TRACE_1("Getting ID for", _radio);
-                if (diag_tickTime-ACRE_SERVER_GEAR_DESYNC_TIME < 60) then {
-                    ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT = ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT + 1;
-                    if (ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT > 10 && !ACRE_SERVER_GEAR_DESYNC_CHECK) then {
-                        ACRE_SERVER_GEAR_DESYNC_CHECK = true;
-                    };
-                } else {
-                    ACRE_SERVER_GEAR_DESYNC_TIME = diag_tickTime;
-                    ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT = 0;
-                };
-
-
-                ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_globalEvent);
-
-            };
-            _isUnique = getNumber (configFile >> "CfgWeapons" >> _radio >> "acre_isUnique");
-            if (_isUnique == 1) then {
-                if (!([_radio] call EFUNC(sys_data,isRadioInitialized))) then {
-                    WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
-                    _baseRadio = BASECLASS(_radio);
-                    [acre_player, _radio, _baseRadio] call EFUNC(lib,replaceGear);
-                    _radio = _baseRadio;
-                };
-                _currentUniqueItems pushBack _radio;
-            };
-        } forEach _weapons;
-
-        //_dif = (GVAR(oldUniqueItemList) + _currentUniqueItems) - (GVAR(oldUniqueItemList) arrayIntersect _currentUniqueItems); same speed..
-        _dif1 = GVAR(oldUniqueItemList) - _currentUniqueItems;
-        _dif2 = _currentUniqueItems - GVAR(oldUniqueItemList);
-        _dif = _dif1 + _dif2;
-        if ((count _dif) > 0) then {
-            {
-                acre_player unassignItem _x;
-                if (_x in _currentUniqueItems) then {
-                    [(_currentUniqueItems select 0)] call EFUNC(sys_radio,setActiveRadio);
-                } else {
-                    if (_x == ACRE_ACTIVE_RADIO) then {
-                        if (_x == ACRE_BROADCASTING_RADIOID) then {
-                            // simulate a key up event to end the current transmission
-                            [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
-                        };
-                        if ((count _currentUniqueItems) > 0) then {
-                            [_currentUniqueItems select 0] call EFUNC(sys_radio,setActiveRadio);
-                        } else {
-                            [""] call EFUNC(sys_radio,setActiveRadio);
-                        };
-                    };
-                };
-                if (ACRE_HOLD_OFF_ITEMRADIO_CHECK) then {
-                    ACRE_HOLD_OFF_ITEMRADIO_CHECK = false;
-                    acre_player assignItem "ItemRadioAcreFlagged";
-                };
-            } forEach _dif;
-        };
-        GVAR(oldUniqueItemList) = _currentUniqueItems;
-        // if (!("ItemRadioAcreFlagged" in (assignedItems acre_player))) then { acre_player assignItem "ItemRadioAcreFlagged" };
     };
+
+    if ("ItemRadioAcreFlagged" in _weapons) then {
+        // Only allow 1 ItemRadioAcreFlagged
+        private _flaggedCount = {_x == "ItemRadioAcreFlagged"} count _weapons;
+
+        if (_flaggedCount > 1) then {
+            for "_i" from 1 to (_flaggedCount - 1) do {
+                [acre_player, "ItemRadioAcreFlagged"] call EFUNC(lib,removeGear);
+            };
+            acre_player assignItem "ItemRadioAcreFlagged";
+        };
+    };
+
+    private _currentUniqueItems = [];
+    {
+        if (GVAR(requestingNewId)) exitWith { };
+        private _radio = _x;
+        private _hasUnique = getNumber (configFile >> "CfgWeapons" >> _radio >> "acre_hasUnique");
+        if (_hasUnique == 1 || _radio == "ItemRadio") then {
+
+            GVAR(requestingNewId) = true;
+            if (_radio == "ItemRadio") then {
+                _radio = GVAR(defaultItemRadioType);
+                [acre_player, "ItemRadio", _radio] call EFUNC(lib,replaceGear);
+            };
+            TRACE_1("Getting ID for", _radio);
+            if (diag_tickTime-ACRE_SERVER_GEAR_DESYNC_TIME < 60) then {
+                ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT = ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT + 1;
+                if (ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT > 10 && !ACRE_SERVER_GEAR_DESYNC_CHECK) then {
+                    ACRE_SERVER_GEAR_DESYNC_CHECK = true;
+                };
+            } else {
+                ACRE_SERVER_GEAR_DESYNC_TIME = diag_tickTime;
+                ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT = 0;
+            };
+
+            ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_globalEvent);
+        };
+        private _isUnique = getNumber (configFile >> "CfgWeapons" >> _radio >> "acre_isUnique");
+        if (_isUnique == 1) then {
+            if (!([_radio] call EFUNC(sys_data,isRadioInitialized))) then {
+                WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
+                _baseRadio = BASECLASS(_radio);
+                [acre_player, _radio, _baseRadio] call EFUNC(lib,replaceGear);
+                _radio = _baseRadio;
+            };
+            _currentUniqueItems pushBack _radio;
+        };
+    } forEach _weapons;
+
+    //_dif = (GVAR(oldUniqueItemList) + _currentUniqueItems) - (GVAR(oldUniqueItemList) arrayIntersect _currentUniqueItems); same speed..
+    private _dif1 = GVAR(oldUniqueItemList) - _currentUniqueItems;
+    private _dif2 = _currentUniqueItems - GVAR(oldUniqueItemList);
+    private _dif = _dif1 + _dif2;
+    if ((count _dif) > 0) then {
+        {
+            if (_x in _currentUniqueItems) then {
+                [(_currentUniqueItems select 0)] call EFUNC(sys_radio,setActiveRadio);
+            } else {
+                if (_x == ACRE_ACTIVE_RADIO) then {
+                    if (_x == ACRE_BROADCASTING_RADIOID) then {
+                        // simulate a key up event to end the current transmission
+                        [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
+                    };
+                    if ((count _currentUniqueItems) > 0) then {
+                        [_currentUniqueItems select 0] call EFUNC(sys_radio,setActiveRadio);
+                    } else {
+                        [""] call EFUNC(sys_radio,setActiveRadio);
+                    };
+                };
+            };
+            if (ACRE_HOLD_OFF_ITEMRADIO_CHECK) then {
+                ACRE_HOLD_OFF_ITEMRADIO_CHECK = false;
+                acre_player assignItem "ItemRadioAcreFlagged";
+            };
+        } forEach _dif;
+    };
+    GVAR(oldUniqueItemList) = _currentUniqueItems;
+    // if (!("ItemRadioAcreFlagged" in (assignedItems acre_player))) then { acre_player assignItem "ItemRadioAcreFlagged" };
+
 };
-ADDPFH(DFUNC(monitorRadios_PFH), 0.25, []);
+
+[{ACRE_DATA_SYNCED && {(!isNil "ACRE_SERVER_INIT")} && {time >= 1}},{
+    ADDPFH(FUNC(monitorRadios_PFH), 0.25, []);
+},[]] call CBA_fnc_waitUntilAndExecute;
+
 
 DFUNC(handleDesyncCheck) = {
     params ["_player", "_isDesynced"];
     if (_player == acre_player) then {
-        if (_isDesynced && ("ACRE_TestGearDesyncItem" in (items acre_player))) then {
+        if (_isDesynced && {"ACRE_TestGearDesyncItem" in (items acre_player)}) then {
             acre_player removeItem "ACRE_TestGearDesyncItem";
             ACRE_SERVER_GEAR_DESYNCED = true;
             ACRE_SERVER_DESYNCED_PLAYERS pushBack _player;
@@ -187,7 +170,7 @@ DFUNC(checkServerDesyncBug) = {
     };
 };
 
-ADDPFH(DFUNC(checkServerDesyncBug), 1, []);
+ADDPFH(FUNC(checkServerDesyncBug), 1, []);
 
 DFUNC(hasGearDesync) = {
     if (ACRE_SERVER_GEAR_DESYNCED) then {
@@ -202,4 +185,4 @@ DFUNC(hasGearDesync) = {
     };
 };
 
-ADDPFH(DFUNC(hasGearDesync), 10, []);
+ADDPFH(FUNC(hasGearDesync), 10, []);

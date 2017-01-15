@@ -143,7 +143,7 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
             ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
             [(_this select 1)] call CBA_fnc_removePerFrameHandler;
         } else {
-            // Keep calling incase ACRE is not connected to teamspeak.
+            // Keep calling incase ACRE is not connected to TeamSpeak.
             ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
         };
     };
