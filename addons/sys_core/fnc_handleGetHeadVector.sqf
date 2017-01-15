@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Sends the current head direction vector to the teamspeak plugin.
+ * Sends the current head direction vector to the TeamSpeak plugin.
  *
  * Arguments:
  * None

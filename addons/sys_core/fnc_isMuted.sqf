@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * This function determines is used to check if the unit should be muted on teamspeak or not.
+ * This function determines is used to check if the unit should be muted on TeamSpeak or not.
  *
  * Arguments:
  * 0: unit <OBJECT>

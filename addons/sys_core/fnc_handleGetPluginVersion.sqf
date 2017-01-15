@@ -1,9 +1,9 @@
 /*
  * Author: ACRE2Team
- * Handles the return of the current plugin version from teamspeak. Displays messages to the player if any of the versions do not match.
+ * Handles the return of the current plugin version from TeamSpeak. Displays messages to the player if any of the versions do not match.
  *
  * Arguments:
- * 0: Teamspeak plugin version <STRING>
+ * 0: TeamSpeak plugin version <STRING>
  *
  * Return Value:
  * Handled <BOOL>

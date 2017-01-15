@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * This function exists to setup the process for sending our object and player ID to other clients to associate with our teamspeak ID.
+ * This function exists to setup the process for sending our object and player ID to other clients to associate with our TeamSpeak ID.
  *
  * Arguments:
  * None

@@ -3,7 +3,7 @@
  * Handles the event of other (remote) players starting to speaking.
  *
  * Arguments:
- * 0: Teamspeak ID of talking player <STRING>
+ * 0: TeamSpeak ID of talking player <STRING>
  * 1: Language ID <STRING>
  * 2: Net ID of player object <STRING>
  * 3: On radio <STRING>

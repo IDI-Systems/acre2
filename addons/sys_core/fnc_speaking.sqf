@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to teamspeak.
+ * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to TeamSpeak.
  *
  * Arguments:
  * None

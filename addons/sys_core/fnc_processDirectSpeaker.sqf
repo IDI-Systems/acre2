@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * Calculates the information required by teamspeak for a direct speech speaker.
+ * Calculates the information required by TeamSpeak for a direct speech speaker.
  *
  * Arguments:
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Parameters to send to teamspeak <ARRAY>
+ * Parameters to send to TeamSpeak <ARRAY>
  *
  * Example:
  * [unit] call acre_sys_core_fnc_processDirectSpeaker

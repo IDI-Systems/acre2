@@ -1,13 +1,13 @@
 /*
  * Author: ACRE2Team
- * Calculates the information required by teamspeak for a radio speaker.
+ * Calculates the information required by TeamSpeak for a radio speaker.
  *
  * Arguments:
  * 0: Unit to process <OBJECT>
  * 1: List of radio classnames <ARRAY>
  *
  * Return Value:
- * Parameters to send to teamspeak  <ARRAY>
+ * Parameters to send to TeamSpeak  <ARRAY>
  *
  * Example:
  * [unit,["ACRE_PRC343_ID_1"]] call acre_sys_core_fnc_processRadioSpeaker

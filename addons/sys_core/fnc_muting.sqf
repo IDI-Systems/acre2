@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Sets up the per frame event handler to mute and unmute clients on teamspeak. The muting occurs to optimize teamspeak bandwidth as voice data is not sent for muted clients.
+ * Sets up the per frame event handler to mute and unmute clients on TeamSpeak. The muting occurs to optimize TeamSpeak bandwidth as voice data is not sent for muted clients.
  *
  * Arguments:
  * None

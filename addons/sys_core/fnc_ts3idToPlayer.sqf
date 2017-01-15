@@ -1,9 +1,9 @@
 /*
  * Author: ACRE2Team
- * Retrieves the game object of a player from a teamspeak ID.
+ * Retrieves the game object of a player from a TeamSpeak ID.
  *
  * Arguments:
- * 0: Teamspeak ID <STRING>
+ * 0: TeamSpeak ID <STRING>
  *
  * Return Value:
  * Player <OBJECT>
