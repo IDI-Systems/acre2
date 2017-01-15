@@ -7,7 +7,7 @@
  * 1: Net ID of player object <STRING>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * ["0","0:2"] call acre_sys_core_fnc_remoteStopSpeaking

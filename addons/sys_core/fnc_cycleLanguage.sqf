@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * This function is used to cycle the language that the local player is speaking.
+ * Cycles the language that the local player is speaking.
  *
  * Arguments:
  * None

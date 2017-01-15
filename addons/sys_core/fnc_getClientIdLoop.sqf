@@ -23,6 +23,6 @@ DFUNC(getClientIdLoopFunc) = {
 };
 ADDPFH(FUNC(getClientIdLoopFunc), 3, []); // Send on regular interval for JIP etc.
 
-["unit", {[] call FUNC(getClientIdLoopFunc);}] call CBA_fnc_addPlayerEventHandler; // Use EH for immediate sending on unit transfer.
+["unit", {[] call FUNC(getClientIdLoopFunc);}] call CBA_fnc_addPlayerEventHandler; // Use EH for immediate sending on unit transfer
 
 true

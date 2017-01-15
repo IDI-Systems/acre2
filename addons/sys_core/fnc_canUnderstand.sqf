@@ -6,7 +6,7 @@
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Can understand <BOOLEAN>
+ * Can understand <BOOL>
  *
  * Example:
  * [unit] call acre_sys_core_fnc_canUnderstand

@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * Used to handle a keypress of multiPttKeyPress
+ * Used to handle a keypress of multiPttKeyPress.
  *
  * Arguments:
  * 0: Radio PTT index <Number>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [1] call acre_sys_core_fnc_handleMultiPttKeyPress

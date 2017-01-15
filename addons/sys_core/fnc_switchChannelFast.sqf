@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * Handles the channel switching keybind
+ * Handles the channel switching keybind.
  *
  * Arguments:
  * 0: Channel change amount (expected -1 or 1) <NUMBER>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [1] call acre_sys_core_fnc_switchChannelFast

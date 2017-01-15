@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * Used to handle key up of multiPttKeyPress
+ * Used to handle key up of multiPttKeyPress.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [] call acre_sys_core_fnc_handleMultiPttKeyPressUp

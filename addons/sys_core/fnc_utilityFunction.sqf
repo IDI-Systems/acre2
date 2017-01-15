@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Setups some utility per frame event handlers.
+ * Sets up some utility per frame event handlers.
  *
  * Arguments:
  * None

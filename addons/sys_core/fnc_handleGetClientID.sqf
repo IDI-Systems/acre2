@@ -7,7 +7,7 @@
  * 1: Net ID of object for TS client ID <STRING>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * ["2","2:3"] call acre_sys_core_fnc_handleGetClientID

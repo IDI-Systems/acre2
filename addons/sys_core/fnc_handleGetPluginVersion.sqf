@@ -6,7 +6,7 @@
  * 0: Teamspeak plugin version <STRING>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * ["2.3.0.926"] call acre_sys_core_fnc_handleGetPluginVersion

@@ -1,11 +1,11 @@
 /*
  * Author: ACRE2Team
- * This function is used to make calls in acre.dll
+ * This function is used to make calls in acre.dll.
  *
  * Arguments:
  * 0: Command <STRING>
  * 1: Parameters <ANY>
- * 2: Threaded call if so uses the following arguments to handle the return <BOOLEAN> (optional)
+ * 2: Threaded call if so uses the following arguments to handle the return <BOOL> (optional)
  * 3: Callback code <CODE> (optional)
  * 4: Return arguments <ANY> (optional)
  *
@@ -30,7 +30,7 @@ if (IS_ARRAY(_params)) then {
         if (IS_ARRAY(_element)) then {
             {
                 if (!IS_STRING(_x)) then {
-                    // Convert boolean to number.
+                    // Convert boolean to number
                     if (IS_BOOL(_x)) then {
                         if (_x) then {
                             _x = 1;
@@ -45,7 +45,7 @@ if (IS_ARRAY(_params)) then {
             } forEach _element;
         } else {
             if (!IS_STRING(_element)) then {
-                // Convert boolean to number.
+                // Convert boolean to number
                 if (IS_BOOL(_element)) then {
                     if (_element) then {
                         _element = 1;

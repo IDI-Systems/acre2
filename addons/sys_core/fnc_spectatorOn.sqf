@@ -6,7 +6,7 @@
  * None
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [] call acre_sys_core_fnc_spectatorOn

@@ -6,7 +6,7 @@
  * 0: Language key <STRING>
  *
  * Return Value:
- * Language display name (returns "" if not found) <STRING>
+ * Language display name ("" if not found) <STRING>
  *
  * Example:
  * ["en"] call acre_sys_core_fnc_getLanguageName

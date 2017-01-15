@@ -6,7 +6,7 @@
  * None
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME

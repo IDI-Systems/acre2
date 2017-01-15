@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Function for handling the local player start speaking event.
+ * Handles the local player start speaking event.
  *
  * Arguments:
  * 0: Speaking ID <STRING>
@@ -9,7 +9,7 @@
  * 3: Radio ID if talking on radio <STRING>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [0,"0:2","1","ACRE_PRC343_ID_2"] call acre_sys_core_fnc_localStartSpeaking

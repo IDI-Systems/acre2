@@ -8,7 +8,7 @@
  * 2: Reveal amount <NUMBER>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [player,unit,4.0] call acre_sys_core_fnc_onRevealUnit

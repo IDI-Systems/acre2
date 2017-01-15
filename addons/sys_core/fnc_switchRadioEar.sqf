@@ -6,7 +6,7 @@
  * 0: Spatial mode (-1 = left, 0 = center, 1 = right) <NUMBER>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [0] call acre_sys_core_fnc_switchRadioEar

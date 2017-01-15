@@ -6,7 +6,7 @@
  * 0: unit <OBJECT>
  *
  * Return Value:
- * should the unit be muted <BOOLEAN>
+ * should the unit be muted <BOOL>
  *
  * Example:
  * [acre_player] call acre_sys_core_fnc_isMuted

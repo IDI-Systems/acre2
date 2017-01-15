@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * Sets the local player speaking language by language key
+ * Sets the local player speaking language by language key.
  *
  * Arguments:
  * 0: Language key <STRING>
  *
  * Return Value:
- * Successful <BOOLEAN>
+ * Successful <BOOL>
  *
  * Example:
  * ["en"] call acre_sys_core_fnc_setSpeakingLanguage

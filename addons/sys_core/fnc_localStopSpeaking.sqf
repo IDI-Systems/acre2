@@ -1,13 +1,13 @@
 /*
  * Author: ACRE2Team
- * Function for handling the local player stop speaking event.
+ * Handles the local player stop speaking event.
  *
  * Arguments:
  * 0: ARGUMENT ONE <TYPE>
  * 1: ARGUMENT TWO <TYPE>
  *
  * Return Value:
- * Handled <BOOLEAN>
+ * Handled <BOOL>
  *
  * Example:
  * [] call acre_sys_core_fnc_localStopSpeaking
