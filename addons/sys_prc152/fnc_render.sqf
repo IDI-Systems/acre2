@@ -10,7 +10,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc152_fnc_render
  *
  * Public: No
  */
@@ -21,7 +21,7 @@ if ((count _this) > 0) then {
     _display = _this select 0;
     uiNamespace setVariable [QGVAR(currentDisplay), _display];
 } else {
-    _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+    _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
 };
 
 private _knobPosition = GET_STATE_DEF("knobPosition", 1);
