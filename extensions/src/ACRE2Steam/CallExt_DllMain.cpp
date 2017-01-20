@@ -44,9 +44,8 @@ BOOL writeConnected, readConnected;
 
 void ClosePipe();
 
-extern "C"
-{
-  __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
+extern "C" {
+    __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
 };
 
 inline std::string get_path() {
@@ -81,13 +80,11 @@ inline std::string get_quoted(std::string text) {
     std::string               found_text;
 
     start_position = text.find("\"");
-    if (start_position != std::string::npos)
-    {
+    if (start_position != std::string::npos) {
         ++start_position; // start after the double quotes.
                           // look for end position;
         end_position = text.find("\"");
-        if (end_position != std::string::npos)
-        {
+        if (end_position != std::string::npos) {
             found_text = text.substr(start_position, end_position - start_position);
         }
     }
@@ -108,7 +105,7 @@ inline std::string find_mod_folder() {
         dir,
         NULL,
         NULL
-        );
+    );
 
     std::string path = std::string(drive) + std::string(dir);
     return path;
@@ -155,29 +152,25 @@ inline std::string find_mod_file(std::string filename) {
     return path;
 }
 
-std::string ReadRegValue(HKEY root, std::string key, std::string name)
-{
+std::string ReadRegValue(HKEY root, std::string key, std::string name) {
     HKEY hkey;
     if (RegOpenKeyExA(root, key.c_str(), 0, KEY_READ, &hkey) != ERROR_SUCCESS)
         return "";
 
     DWORD type;
     DWORD cbData;
-    if (RegQueryValueExA(hkey, name.c_str(), NULL, &type, NULL, &cbData) != ERROR_SUCCESS)
-    {
+    if (RegQueryValueExA(hkey, name.c_str(), NULL, &type, NULL, &cbData) != ERROR_SUCCESS) {
         RegCloseKey(hkey);
         return "";
     }
 
-    if (type != REG_SZ)
-    {
+    if (type != REG_SZ) {
         RegCloseKey(hkey);
         return "";
     }
 
     std::string value(cbData / sizeof(char), '\0');
-    if (RegQueryValueExA(hkey, name.c_str(), NULL, NULL, reinterpret_cast<LPBYTE>(&value[0]), &cbData) != ERROR_SUCCESS)
-    {
+    if (RegQueryValueExA(hkey, name.c_str(), NULL, NULL, reinterpret_cast<LPBYTE>(&value[0]), &cbData) != ERROR_SUCCESS) {
         RegCloseKey(hkey);
         return "";
     }
@@ -191,29 +184,25 @@ std::string ReadRegValue(HKEY root, std::string key, std::string name)
     return value;
 }
 
-std::string ReadRegValue64(HKEY root, std::string key, std::string name)
-{
+std::string ReadRegValue64(HKEY root, std::string key, std::string name) {
     HKEY hkey;
     if (RegOpenKeyExA(root, key.c_str(), 0, KEY_READ | KEY_WOW64_64KEY, &hkey) != ERROR_SUCCESS)
         return "";
 
     DWORD type;
     DWORD cbData;
-    if (RegQueryValueExA(hkey, name.c_str(), NULL, &type, NULL, &cbData) != ERROR_SUCCESS)
-    {
+    if (RegQueryValueExA(hkey, name.c_str(), NULL, &type, NULL, &cbData) != ERROR_SUCCESS) {
         RegCloseKey(hkey);
         return "";
     }
 
-    if (type != REG_SZ)
-    {
+    if (type != REG_SZ) {
         RegCloseKey(hkey);
         return "";
     }
 
     std::string value(cbData / sizeof(char), '\0');
-    if (RegQueryValueExA(hkey, name.c_str(), NULL, NULL, reinterpret_cast<LPBYTE>(&value[0]), &cbData) != ERROR_SUCCESS)
-    {
+    if (RegQueryValueExA(hkey, name.c_str(), NULL, NULL, reinterpret_cast<LPBYTE>(&value[0]), &cbData) != ERROR_SUCCESS) {
         RegCloseKey(hkey);
         return "";
     }
@@ -272,8 +261,7 @@ bool compare_file(std::string pathA, std::string pathB) {
 }
 
 
-void __stdcall RVExtension(char *output, int outputSize, const char *function)
-{
+void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     size_t id_length = 1;
     std::string functionStr = std::string(function);
 
@@ -292,7 +280,6 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
     int command = atoi(id.c_str());
 
     switch(command) {
-
         case STEAM_CHECK: {
             strncpy(output, "1", outputSize);
             return;
