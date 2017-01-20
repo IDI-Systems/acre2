@@ -9,8 +9,8 @@
 #include <algorithm>
 #include "shlobj.h"
 #include "Shlwapi.h"
-#include <algorithm> 
-#include <functional> 
+#include <algorithm>
+#include <functional>
 #include <cctype>
 #include <locale>
 
@@ -44,9 +44,9 @@ BOOL writeConnected, readConnected;
 
 void ClosePipe();
 
-extern "C" 
+extern "C"
 {
-  __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function); 
+  __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
 };
 
 inline std::string get_path() {
@@ -62,7 +62,7 @@ inline std::string get_cmdline() {
 inline std::string get_path(std::string filepath) {
     char drive[_MAX_DRIVE];
     char dir [_MAX_DIR];
-    
+
     _splitpath(
         filepath.c_str(),
         drive,
@@ -131,7 +131,7 @@ inline std::string find_mod_file(std::string filename) {
 
     std::string path = std::string(drive) + std::string(dir) + filename;
     if (!PathFileExistsA(path.c_str())) {
-        // No mod path was set, it means they used the mod config. It *DOES* mean it relative to a folder in our path at least. 
+        // No mod path was set, it means they used the mod config. It *DOES* mean it relative to a folder in our path at least.
         // So, we just search all the local folders
 
         WIN32_FIND_DATAA data;
@@ -276,7 +276,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 {
     size_t id_length = 1;
     std::string functionStr = std::string(function);
-    
+
     if (functionStr.length() > 1) {
         if (isdigit(functionStr.substr(1, 1).c_str()[0])) {
             id_length = 2;
@@ -292,7 +292,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
     int command = atoi(id.c_str());
 
     switch(command) {
-        
+
         case STEAM_CHECK: {
             strncpy(output, "1", outputSize);
             return;
@@ -325,7 +325,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 
             std::string path_x86 = find_mod_file("plugin\\acre2_win32.dll");
             if (path_x86 == "") {
-                int result = MessageBoxA(NULL, "ACRE was unable to find x86 Teamspeak plugin file. The ACRE installation is corrupted. Please reinstall from Steam Workshop.", "ACRE Installation Error", MB_OK | MB_ICONERROR);
+                int result = MessageBoxA(NULL, "ACRE2 was unable to find x86 TeamSpeak 3 plugin file. The ACRE2 installation is corrupted. Please reinstall.", "ACRE2 Installation Error", MB_OK | MB_ICONERROR);
                 //strncpy(output, "[-1]", outputSize);
                 TerminateProcess(GetCurrentProcess(), 0);
                 return;
@@ -333,7 +333,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 
             std::string path_x64 = find_mod_file("plugin\\acre2_win64.dll");
             if (path_x86 == "") {
-                int result = MessageBoxA(NULL, "ACRE was unable to find x64 Teamspeak plugin file. The ACRE installation is corrupted. Please reinstall from Steam Workshop.", "ACRE Installation Error", MB_OK | MB_ICONERROR);
+                int result = MessageBoxA(NULL, "ACRE2 was unable to find x64 TeamSpeak 3 plugin file. The ACRE2 installation is corrupted. Please reinstall.", "ACRE2 Installation Error", MB_OK | MB_ICONERROR);
                 //strncpy(output, "[-2]", outputSize);
                 TerminateProcess(GetCurrentProcess(), 0);
                 return;
@@ -443,7 +443,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 
             // No locations to copy to.
             if (unique_ts_locations.size() == 0) {
-                int result = MessageBoxA(NULL, "ACRE was unable to find a Teamspeak 3 installation. If you do have installation please copy the plugins yourself or reinstall Teamspeak. \n\n If you are sure you have Teamspeak installed and wish to prevent this message from appearing again remove ACRE2Steam.dll and ACRE2Steam_x64.dll from your @ACRE2 folder.\n\nContinue anyway?", "ACRE Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
+                int result = MessageBoxA(NULL, "ACRE2 was unable to find a TeamSpeak 3 installation. If you do have an installation please copy the plugins yourself or reinstall TeamSpeak 3. \n\n If you are sure you have TeamSpeak 3 installed and wish to prevent this message from appearing again remove ACRE2Steam.dll and ACRE2Steam_x64.dll from your @acre2 folder.\n\nContinue anyway?", "ACRE2 Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
                 if (result == IDYES) {
                     strncpy(output, "[-3,true]", outputSize);
                     return;
@@ -478,7 +478,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         if (!CopyFileA((LPCSTR)path_x86.c_str(), (LPCSTR)ts_path_x86.c_str(), false) || !CopyFileA((LPCSTR)path_x64.c_str(), (LPCSTR)ts_path_x64.c_str(), false)) {
                             DWORD last_error = GetLastError();
                             if (last_error == 32) {
-                                int result = MessageBoxA(NULL, "ACRE was unable to copy the Teamspeak plugin due to it being in use. Please close any instances of Teamspeak 3 and click Retry.\n\nIf you would like to close Arma, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
+                                int result = MessageBoxA(NULL, "ACRE2 was unable to copy the TeamSpeak 3 plugin due to it being in use. Please close any instances of TeamSpeak 3 and click Retry.\n\nIf you would like to close Arma 3, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
                                 if (result == IDCANCEL) {
                                     TerminateProcess(GetCurrentProcess(), 0);
                                     return;
@@ -489,7 +489,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                                 }
                             }
                             else { //Not error 32
-                                int result = MessageBoxA(NULL, "ACRE was unable to copy the Teamspeak plugin. This is most likely because Steam is not running with admin privileges. Please restart Steam as administrator (right click on the shortcut -> run as administrator) and relaunch Arma 3 with ACRE2 loaded. You only need to do this when ACRE is updated. \n\nWould you like to run Arma 3 anyway?", "ACRE Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
+                                int result = MessageBoxA(NULL, "ACRE2 was unable to copy the TeamSpeak 3 plugin. This is most likely because Steam is not running with admin privileges. Please restart Steam as administrator (right click on the shortcut -> run as administrator) and relaunch Arma 3 with ACRE2 loaded. You only need to do this when ACRE2 is updated. \n\nWould you like to run Arma 3 anyway?", "ACRE2 Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
                                 if (result == IDNO) {
                                     TerminateProcess(GetCurrentProcess(), 0);
                                     return;
@@ -526,7 +526,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                             if (last_error != ERROR_FILE_NOT_FOUND) {
                                 updateRequired = true;
                                 if (last_error == FILE_SHARE_DELETE) { // File in use
-                                    int result = MessageBoxA(NULL, "ACRE is unable to copy the Teamspeak plugin due to it being in use. Please close any instances of Teamspeak 3 and click Retry.\n\nIf you would like to close Arma, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
+                                    int result = MessageBoxA(NULL, "ACRE2 is unable to copy the TeamSpeak 3 plugin due to it being in use. Please close any instances of TeamSpeak 3 and click Retry.\n\nIf you would like to close Arma 3, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
                                     if (result == IDCANCEL) {
                                         TerminateProcess(GetCurrentProcess(), 0);
                                         return;
@@ -537,7 +537,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                                     }
                                 }
                                 if (last_error == ERROR_ACCESS_DENIED) { //Not error 32
-                                    int result = MessageBoxA(NULL, "ACRE was unable to copy the Teamspeak plugin. This is most likely because Steam is not running with admin privileges. Please restart Steam as administrator (right click on the shortcut -> run as administrator) and relaunch Arma 3 with ACRE2 loaded. You only need to do this when ACRE is updated. \n\nWould you like to run Arma 3 anyway?", "ACRE Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
+                                    int result = MessageBoxA(NULL, "ACRE2 was unable to copy the TeamSpeak 3 plugin. This is most likely because Steam is not running with admin privileges. Please restart Steam as administrator (right click on the shortcut -> run as administrator) and relaunch Arma 3 with ACRE2 loaded. You only need to do this when ACRE2 is updated. \n\nWould you like to run Arma 3 anyway?", "ACRE2 Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
                                     if (result == IDNO) {
                                         TerminateProcess(GetCurrentProcess(), 0);
                                         return;
@@ -574,20 +574,20 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             ss << "A new version of ACRE2 (" << current_version << ") has been installed!\n";
             ss << "\n";
             if (found_paths != "") {
-                ss << "The Teamspeak plugins have been copied to the following location(s):\n" << found_paths;
+                ss << "The TeamSpeak 3 plugins have been copied to the following location(s):\n" << found_paths;
                 ss << "\n";
             }
             if (remove_paths != "") {
-                ss << "The Teamspeak plugin has been removed from the following location(s):\n" << remove_paths << "\n";
+                ss << "The TeamSpeak 3 plugin has been removed from the following location(s):\n" << remove_paths << "\n";
                 if (found_paths == "") {
                     ss << "An update to version is already in:\n" << unique_ts_locations.at(0) << "\n";
                     ss << "\n";
                 }
             }
-            ss << "If this is NOT your Teamspeak installation folder(s), please uninstall all versions of Teamspeak and reinstall both it and ACRE2 or copy the plugins manually to your correct installation.\n";
+            ss << "If this is NOT your TeamSpeak 3 installation folder(s), please uninstall all versions of TeamSpeak 3 and reinstall both it and ACRE2 or copy the plugins manually to your correct installation.\n";
             ss << "\n";
-            ss << "If this appears to be the correct folder(s) please remember to enable the plugin in Teamspeak!";
-            int result = MessageBoxA(NULL, (LPCSTR)ss.str().c_str(), "ACRE Installation Success", MB_OK | MB_ICONINFORMATION);
+            ss << "If this appears to be the correct folder(s) please remember to enable the plugin in TeamSpeak 3!";
+            int result = MessageBoxA(NULL, (LPCSTR)ss.str().c_str(), "ACRE2 Installation Success", MB_OK | MB_ICONINFORMATION);
 
             sprintf(output, "[1,\"%s\"]", found_paths.c_str());
             return;
