@@ -227,7 +227,7 @@ std::string ReadRegValue64(HKEY root, std::string key, std::string name)
     return value;
 }
 
-void write_config(std::string version, int skip) {
+/*void write_config(std::string version, int skip) {
     std::string mod_folder = find_mod_folder();
     std::string config_path = mod_folder + "acresteamconfig";
     std::ofstream config_file(config_path);
@@ -238,8 +238,38 @@ void write_config(std::string version, int skip) {
     else {
         int result = MessageBoxA(NULL, "ACRE was unable to write the Steam Workshop configuration file to the mod folder. Please check permissions on the folder.", "ACRE Installation Error", MB_OK | MB_ICONEXCLAMATION);
     }
-}
+}*/
 
+bool compare_file(std::string pathA, std::string pathB) {
+    std::ifstream streamA(pathA, std::ios::binary);
+    std::ifstream streamB(pathB, std::ios::binary);
+    std::ifstream::pos_type sizeA, sizeB;
+
+    sizeA = streamA.seekg(0, std::ifstream::end).tellg();
+    streamA.seekg(0, std::ifstream::beg);
+
+    sizeB = streamB.seekg(0, std::ifstream::end).tellg();
+    streamB.seekg(0, std::ifstream::beg);
+
+    if (sizeA != sizeB) return false;
+
+    static const size_t BLOCKSIZE = 4096*512; // 2MB good expected size for the teamspeak dlls
+    size_t remaining = sizeA;
+
+    while (remaining) {
+        char bufferA[BLOCKSIZE], bufferB[BLOCKSIZE];
+        size_t size = std::min(BLOCKSIZE, remaining);
+
+        streamA.read(bufferA, size);
+        streamB.read(bufferB, size);
+
+        if (memcmp(bufferA, bufferB, size) != 0) return false;
+
+        remaining -= size;
+    }
+
+    return true;
+}
 
 
 void __stdcall RVExtension(char *output, int outputSize, const char *function)
@@ -275,10 +305,10 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
         }
         case STEAM_DO_COPY: {
             std::string current_version = params;
-            std::string version;
-            std::string skip_str;
-            bool skip = false;
-            std::string path_config = find_mod_file("acresteamconfig");
+            //std::string version;
+            //std::string skip_str;
+
+            /*std::string path_config = find_mod_file("acresteamconfig");
             if (path_config != "") {
                 std::ifstream config(path_config);
                 if (config.is_open())
@@ -291,15 +321,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         }
                     }
                 }
-            }
-            if (current_version != version) {
-                skip = false;
-            }
-            if (skip) {
-                strncpy(output, "[0]", outputSize);
-                return;
-            }
-
+            }*/
 
             std::string path_x86 = find_mod_file("plugin\\acre2_win32.dll");
             if (path_x86 == "") {
@@ -316,40 +338,163 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                 TerminateProcess(GetCurrentProcess(), 0);
                 return;
             }
-            std::vector<std::string> ts_locations;
-            ts_locations.push_back(ReadRegValue(HKEY_LOCAL_MACHINE, "SOFTWARE\\TeamSpeak 3 Client", ""));
-            ts_locations.push_back(ReadRegValue64(HKEY_LOCAL_MACHINE, "SOFTWARE\\TeamSpeak 3 Client", ""));
-            ts_locations.push_back(ReadRegValue(HKEY_CURRENT_USER, "Software\\TeamSpeak 3 Client", ""));
-            ts_locations.push_back(ReadRegValue64(HKEY_CURRENT_USER, "Software\\TeamSpeak 3 Client", ""));
+            std::vector<std::string> ts_locations; // Locations to copy the TS dll to.
+            std::vector<std::string> ts_delete_locations; // Locations to remove the TS dll from.
 
-            bool found = false;
-            std::string found_paths = "";
+            //Teamspeak 3.1 location - Default location - Roaming Appdata.
+            wchar_t *appDataRoaming = NULL;
+            SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, NULL, &appDataRoaming);
+
+            std::wstringstream ssAppData;
+            ssAppData << appDataRoaming;
+            std::wstring ws = ssAppData.str();
+            std::string appData(ws.begin(), ws.end());
+            appData += "\\TS3Client";
+            CoTaskMemFree(appDataRoaming); //Free it up.
+
+            /* 32 Bit - Machine */
+            std::string rootkey = ReadRegValue(HKEY_LOCAL_MACHINE, "SOFTWARE\\TeamSpeak 3 Client", "");
+            if (rootkey != "") {
+                std::string configLocation = ReadRegValue(HKEY_LOCAL_MACHINE, "SOFTWARE\\TeamSpeak 3 Client", "ConfigLocation");
+                if (configLocation == "0") {
+                    ts_locations.push_back(appData);
+                    ts_delete_locations.push_back(rootkey);
+                }
+                else {
+                    ts_locations.push_back(rootkey);
+                }
+            }
+
+            /* 64 Bit - Machine */
+            rootkey = ReadRegValue64(HKEY_LOCAL_MACHINE, "SOFTWARE\\TeamSpeak 3 Client", "");
+            if (rootkey != "") {
+                std::string configLocation = ReadRegValue64(HKEY_LOCAL_MACHINE, "SOFTWARE\\TeamSpeak 3 Client", "ConfigLocation");
+                if (configLocation == "0") {
+                    ts_locations.push_back(appData);
+                    ts_delete_locations.push_back(rootkey);
+                }
+                else {
+                    ts_locations.push_back(rootkey);
+                }
+            }
+
+            /* 32 Bit - User */
+            rootkey = ReadRegValue(HKEY_CURRENT_USER, "Software\\TeamSpeak 3 Client", "");
+            if (rootkey != "") {
+                std::string configLocation = ReadRegValue(HKEY_CURRENT_USER, "Software\\TeamSpeak 3 Client", "ConfigLocation");
+                if (configLocation == "0") {
+                    ts_locations.push_back(appData);
+                    ts_delete_locations.push_back(rootkey);
+                }
+                else {
+                    ts_locations.push_back(rootkey);
+                }
+            }
+
+            /* 64 Bit - User */
+            rootkey = ReadRegValue64(HKEY_CURRENT_USER, "Software\\TeamSpeak 3 Client", "");
+            if (rootkey != "") {
+                std::string configLocation = ReadRegValue64(HKEY_CURRENT_USER, "Software\\TeamSpeak 3 Client", "ConfigLocation");
+                if (configLocation == "0") {
+                    ts_locations.push_back(appData);
+                    ts_delete_locations.push_back(rootkey);
+                }
+                else {
+                    ts_locations.push_back(rootkey);
+                }
+            }
+
+            // Remove duplicates
+            std::vector<std::string> unique_ts_locations;
+            std::vector<std::string> unique_delete_ts_locations;
+            for (auto location : ts_delete_locations) {
+                if (location != "") {
+                    bool found = false;
+                    for (auto unique_ts : unique_delete_ts_locations) {
+                        if (location == unique_ts) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        unique_delete_ts_locations.push_back(location);
+                    }
+                }
+            }
+
             for (auto location : ts_locations) {
                 if (location != "") {
-                    found = true;
-                    bool try_copy = true;
-                    std::string ts_path_x86 = location + "\\plugins\\acre2_win32.dll";
-                    std::string ts_path_x64 = location + "\\plugins\\acre2_win64.dll";
+                    bool found = false;
+                    for (auto unique_ts : unique_ts_locations) {
+                        if (location == unique_ts) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        unique_ts_locations.push_back(location);
+
+                        // If we are going to copy to a folder do not remove from the plugin from it.
+                        std::remove(unique_delete_ts_locations.begin(), unique_delete_ts_locations.end(), location);
+                    }
+                }
+            }
+
+
+            // No locations to copy to.
+            if (unique_ts_locations.size() == 0) {
+                int result = MessageBoxA(NULL, "ACRE was unable to find a Teamspeak 3 installation. If you do have installation please copy the plugins yourself or reinstall Teamspeak. \n\n If you are sure you have Teamspeak installed and wish to prevent this message from appearing again remove ACRE2Steam.dll and ACRE2Steam_x64.dll from your @ACRE2 folder.\n\nContinue anyway?", "ACRE Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
+                if (result == IDYES) {
+                    strncpy(output, "[-3,true]", outputSize);
+                    return;
+                }
+                else {
+                    TerminateProcess(GetCurrentProcess(), 0);
+                    return;
+                }
+            }
+
+            bool updateRequired = false;
+            std::string found_paths = "";
+            for (auto location : unique_ts_locations) {
+                bool try_copy = true;
+
+
+                // Skip directory if the folder does not exist.
+                DWORD location_folder_attr = GetFileAttributes(location.c_str());
+                if (location_folder_attr == INVALID_FILE_ATTRIBUTES) { continue; }
+                if (!(location_folder_attr & FILE_ATTRIBUTE_DIRECTORY)) { continue; }
+
+                std::string plugin_folder = location + "\\plugins";
+
+                // If plugins folder does not exist - create it
+                CreateDirectory(plugin_folder.c_str(), NULL); // This will silently fail if it exists - Exactly what we want.
+
+                std::string ts_path_x86 = plugin_folder + "\\acre2_win32.dll";
+                std::string ts_path_x64 = plugin_folder + "\\acre2_win64.dll";
+                if (!compare_file(ts_path_x86, path_x86) || !compare_file(ts_path_x64, path_x64)) { // Only copy if files don't match.
+                    updateRequired = true;
                     do {
                         if (!CopyFileA((LPCSTR)path_x86.c_str(), (LPCSTR)ts_path_x86.c_str(), false) || !CopyFileA((LPCSTR)path_x64.c_str(), (LPCSTR)ts_path_x64.c_str(), false)) {
                             DWORD last_error = GetLastError();
                             if (last_error == 32) {
-                                int result = MessageBoxA(NULL, "ACRE was unable to copy the Teamspeak plugin due to it being in use. Please close any instances of Teamspeak 3 and click Retry.\n\nIf you would like to close Arma, click Abort. To ignore this error in the future and not attempt to copy this version of the Teamspeak plugin click Ignore.", "ACRE Installation Error", MB_ABORTRETRYIGNORE | MB_ICONEXCLAMATION);
-                                if (result == IDABORT) {
+                                int result = MessageBoxA(NULL, "ACRE was unable to copy the Teamspeak plugin due to it being in use. Please close any instances of Teamspeak 3 and click Retry.\n\nIf you would like to close Arma, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
+                                if (result == IDCANCEL) {
                                     TerminateProcess(GetCurrentProcess(), 0);
                                     return;
                                 }
-                                else if (result == IDIGNORE) {
-                                    write_config(current_version, 1);
+                                if (result == IDCONTINUE) {
                                     sprintf(output, "[-4,true,%d]", last_error);
                                     return;
                                 }
-                            } else { //Not error 32
+                            }
+                            else { //Not error 32
                                 int result = MessageBoxA(NULL, "ACRE was unable to copy the Teamspeak plugin. This is most likely because Steam is not running with admin privileges. Please restart Steam as administrator (right click on the shortcut -> run as administrator) and relaunch Arma 3 with ACRE2 loaded. You only need to do this when ACRE is updated. \n\nWould you like to run Arma 3 anyway?", "ACRE Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
                                 if (result == IDNO) {
                                     TerminateProcess(GetCurrentProcess(), 0);
                                     return;
-                                } else {  //result is yes continue
+                                }
+                                else {  //result is yes continue
                                     sprintf(output, "[-5,true,%d]", last_error);
                                     return;
                                 }
@@ -363,30 +508,86 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                 }
             }
 
+            std::string remove_paths = "";
+            for (auto location : unique_delete_ts_locations) {
+                // Skip directory if the folder does not exist.
+                std::string plugin_folder = location + "\\plugins";
 
-
-            if (!found) {
-                int result = MessageBoxA(NULL, "ACRE was unable to find a Teamspeak 3 installation. If you do have installation please copy the plugins yourself or reinstall Teamspeak.\n\nWould you like to ignore this error in the future (ignoring will prevent automatic installation for this version)?", "ACRE Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
-                if (result == IDYES) {
-                    write_config(current_version, 1);
-                    strncpy(output, "[-3,true]", outputSize);
-                    return;
+                std::vector<std::string> files;
+                std::string ts_path_x64 = plugin_folder + "\\acre2_win64.dll";
+                files.push_back(ts_path_x64);
+                std::string ts_path_x86 = plugin_folder + "\\acre2_win32.dll";
+                files.push_back(ts_path_x86);
+                for (auto file : files) {
+                    bool try_delete = true;
+                    {
+                        if (!DeleteFileA(file.c_str())) {
+                            DWORD last_error = GetLastError();
+                            if (last_error != ERROR_FILE_NOT_FOUND) {
+                                updateRequired = true;
+                                if (last_error == FILE_SHARE_DELETE) { // File in use
+                                    int result = MessageBoxA(NULL, "ACRE is unable to copy the Teamspeak plugin due to it being in use. Please close any instances of Teamspeak 3 and click Retry.\n\nIf you would like to close Arma, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
+                                    if (result == IDCANCEL) {
+                                        TerminateProcess(GetCurrentProcess(), 0);
+                                        return;
+                                    }
+                                    if (result == IDCONTINUE) {
+                                        sprintf(output, "[-4,true,%d]", last_error);
+                                        return;
+                                    }
+                                }
+                                if (last_error == ERROR_ACCESS_DENIED) { //Not error 32
+                                    int result = MessageBoxA(NULL, "ACRE was unable to copy the Teamspeak plugin. This is most likely because Steam is not running with admin privileges. Please restart Steam as administrator (right click on the shortcut -> run as administrator) and relaunch Arma 3 with ACRE2 loaded. You only need to do this when ACRE is updated. \n\nWould you like to run Arma 3 anyway?", "ACRE Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
+                                    if (result == IDNO) {
+                                        TerminateProcess(GetCurrentProcess(), 0);
+                                        return;
+                                    }
+                                    else {  //result is yes continue
+                                        sprintf(output, "[-5,true,%d]", last_error);
+                                        return;
+                                    }
+                                }
+                            }
+                            else {
+                                // The dll was already removed, exit the loop.
+                                try_delete = false;
+                            }
+                        }
+                        else {
+                            // Successfully deleted the dll.
+                            updateRequired = true;
+                            try_delete = false;
+                            remove_paths += location + "\n";
+                        }
+                    } while (try_delete);
                 }
-                write_config(current_version, 0);
-                strncpy(output, "[-3,false]", outputSize);
+
+            }
+
+
+            if (!updateRequired) { // No update was copied etc.
+                strncpy(output, "[0]", outputSize);
                 return;
             }
 
             std::stringstream ss;
             ss << "A new version of ACRE2 (" << current_version << ") has been installed!\n";
             ss << "\n";
-            ss << "The Teamspeak plugins have been copied to the following location(s):\n" << found_paths;
-            ss << "\n";
+            if (found_paths != "") {
+                ss << "The Teamspeak plugins have been copied to the following location(s):\n" << found_paths;
+                ss << "\n";
+            }
+            if (remove_paths != "") {
+                ss << "The Teamspeak plugin has been removed from the following location(s):\n" << remove_paths << "\n";
+                if (found_paths == "") {
+                    ss << "An update to version is already in:\n" << unique_ts_locations.at(0) << "\n";
+                    ss << "\n";
+                }
+            }
             ss << "If this is NOT your Teamspeak installation folder(s), please uninstall all versions of Teamspeak and reinstall both it and ACRE2 or copy the plugins manually to your correct installation.\n";
             ss << "\n";
             ss << "If this appears to be the correct folder(s) please remember to enable the plugin in Teamspeak!";
             int result = MessageBoxA(NULL, (LPCSTR)ss.str().c_str(), "ACRE Installation Success", MB_OK | MB_ICONINFORMATION);
-            write_config(current_version, 1);
 
             sprintf(output, "[1,\"%s\"]", found_paths.c_str());
             return;
