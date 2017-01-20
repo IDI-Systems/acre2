@@ -72,10 +72,9 @@ dssignfile = ""
 prefix = "acre"
 pbo_name_prefix = "acre_"
 signature_blacklist = []
-importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "acre_x64.dll", "ACRE2Arma.dll", "ACRE2Arma_x64.dll"]
+importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "acre_x64.dll", "ACRE2Arma.dll", "ACRE2Arma_x64.dll", "ACRE2Steam.dll", "ACRE2Steam_x64.dll"]
 extrasFiles = ["examples", "Wav2B64.exe"]
 pluginFiles = ["acre2_win32.dll", "acre2_win64.dll"]
-steamFiles = ["extras\\ACRE2Steam.dll", "extras\\ACRE2Steam_x64.dll"]
 versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h", "docs\\_data\\sidebar.yml"]
 extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
 extensions64 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS"]
@@ -1569,7 +1568,7 @@ See the make.cfg file for additional build options.
                 print("Credential file not found: {}".format(cred_file_path))
         else:
             print("Credential environment variable not found.")
-        
+
         if (os.path.isdir(optionals_root)):
             cleanup_optionals(optionals_modules)
         if not version_update:
@@ -1592,7 +1591,6 @@ See the make.cfg file for additional build options.
     # Make release
     if make_release_zip:
         release_name = "{}_{}".format(zipPrefix, project_version)
-        release_name_steam = "{}_steam".format(release_name)
 
         try:
             # Delete all log files
@@ -1611,21 +1609,9 @@ See the make.cfg file for additional build options.
             print("Packing...")
             release_zip = shutil.make_archive("{}".format(release_name), "zip", release_dir)
 
-            # Create a zip with Steam extension
-            print_blue("\nMaking release: {}.zip".format(release_name_steam))
-            for file in steamFiles:
-                steam_file = os.path.join(module_root_parent,file)
-                if os.path.exists(steam_file):
-                    print("Copying file => {}".format(steam_file))
-                    shutil.copy(steam_file, os.path.join(release_dir, project))
-            print("Packing...")
-            release_zip_steam = shutil.make_archive("{}".format(release_name_steam), "zip", release_dir)
-
             # Move release zip to release folder
             shutil.copy(release_zip, release_dir)
-            shutil.copy(release_zip_steam, release_dir)
             os.remove(release_zip)
-            os.remove(release_zip_steam)
         except:
             raise
             print_error("Could not make release.")
