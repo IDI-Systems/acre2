@@ -55,7 +55,7 @@ _radioId = _this select 3;
 */
 
 //Make all the present speakers on the radio net, volume go to 0
-if (!ACRE_FULL_DUPLEX) then {
+if (!GVAR(fullDuplex)) then {
     if (ACRE_BROADCASTING_RADIOID != "") then {
         GVAR(previousSortedParams) params ["_radios","_sources"];
         {

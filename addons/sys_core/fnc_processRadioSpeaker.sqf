@@ -84,7 +84,7 @@ if ((count _okRadios) > 0) then {
         } else {
             _params = _unit getVariable ["ACRE_%1CachedSampleParams"+_x, []];
         };
-        if (!ACRE_FULL_DUPLEX || _x != _radioid) then {
+        if (!GVAR(fullDuplex) || _x != _radioid) then {
             _returns pushBack _params;
         };
     } forEach _okRadios;

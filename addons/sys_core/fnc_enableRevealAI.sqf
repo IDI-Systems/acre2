@@ -67,7 +67,7 @@ DFUNC(monitorAI_PFH) = {
         };
     } forEach _nearUnits;
 
-    if (!ACRE_AI_ENABLED) then {
+    if (!GVAR(revealToAI)) then {
         [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
 };

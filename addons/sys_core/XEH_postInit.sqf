@@ -103,7 +103,7 @@ DFUNC(coreInitPFH) = { // OK
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
-if (ACRE_AI_ENABLED && hasInterface) then {
+if (GVAR(revealToAI) && hasInterface) then {
     INFO("AI Detection Activated.");
     [] call FUNC(enableRevealAI);
 } else {

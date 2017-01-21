@@ -98,7 +98,7 @@ DFUNC(speakingLoop) = {
         private _compiledParams = HASH_CREATE;
         {
             private _recRadio = _x;
-            if (_recRadio != ACRE_BROADCASTING_RADIOID || ACRE_FULL_DUPLEX) then {
+            if (_recRadio != ACRE_BROADCASTING_RADIOID || GVAR(fullDuplex)) then {
                 BEGIN_COUNTER(radio_loop_single_radio);
                 private ["_radioVolume", "_volumeModifier", "_on"];
                 if (!GVAR(speaking_cache_valid)) then {
@@ -122,7 +122,7 @@ DFUNC(speakingLoop) = {
                     // if (!GVAR(speaking_cache_valid)) then {
                     private _sourceRadios = _sources select _forEachIndex;
                     private _hearableRadios = [_recRadio, "handleMultipleTransmissions", _sourceRadios] call EFUNC(sys_data,transEvent);
-                    if (ACRE_FULL_DUPLEX) then {
+                    if (GVAR(fullDuplex)) then {
                         _hearableRadios = _sourceRadios;
                     };
                         // HASH_SET(GVAR(coreCache), _recRadio + "hmt_cache", _hearableRadios);
