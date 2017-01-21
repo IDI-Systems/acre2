@@ -18,7 +18,7 @@
 
 params ["_radioId","","_radios"];
 
-if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !ACRE_FULL_DUPLEX) exitWith { [] };
+if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !EGVAR(sys_core,fullDuplex)) exitWith { [] };
 private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
 private _found = false;
 private _transmissionsChanged = false;
@@ -155,7 +155,7 @@ if (_transmissionsChanged) then {
         //diag_log text format["sorted: %1", _sortedRadios];
         //diag_log text format["junk: %1", _junkTransmissions];
         //diag_log text format["ok: %1", _hearableTransmissions];
-        if (ACRE_INTERFERENCE) then {
+        if (EGVAR(sys_core,interference)) then {
             if ((count _hearableTransmissions) > 0) then {
                 _junkTransmissions = _hearableTransmissions + _junkTransmissions;
                 _hearableTransmissions params ["_bestSignal"];
@@ -251,7 +251,7 @@ if (_radioId isEqualTo GVAR(currentRadioId)) then {
             };
         };
     };
-    
+
     [_currentMenu, _currentMenu] call FUNC(renderMenu);
 };
 
