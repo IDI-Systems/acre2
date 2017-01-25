@@ -116,8 +116,9 @@
     private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", false];
     private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", true];
 
-    ["CBA_settings_setSettingMission", [QGVAR(interference), _interference]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(fullDuplex), _fullDuplex]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(ignoreAntennaDirection), _ignoreAntennaDirection]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(terrainLoss), parseNumber _signalLoss]] call CBA_fnc_localEvent;
+    //@todo remove force when CBA issue fixed: https://github.com/CBATeam/CBA_A3/issues/580
+    ["CBA_settings_setSettingMission", [QGVAR(interference), _interference, true]] call CBA_fnc_localEvent;
+    ["CBA_settings_setSettingMission", [QGVAR(fullDuplex), _fullDuplex, true]] call CBA_fnc_localEvent;
+    ["CBA_settings_setSettingMission", [QGVAR(ignoreAntennaDirection), _ignoreAntennaDirection, true]] call CBA_fnc_localEvent;
+    ["CBA_settings_setSettingMission", [QGVAR(terrainLoss), parseNumber _signalLoss, true]] call CBA_fnc_localEvent;
 }] call CBA_fnc_addEventHandler;
