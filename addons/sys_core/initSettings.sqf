@@ -73,7 +73,7 @@
 
 // Antena direction
 [
-    QGVAR(ignoreAntenaDirection),
+    QGVAR(ignoreAntennaDirection),
     "CHECKBOX",
     localize LSTRING(antennaDirection_displayName),
     "ACRE2",
