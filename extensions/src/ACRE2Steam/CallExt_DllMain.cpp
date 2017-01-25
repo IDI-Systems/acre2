@@ -112,21 +112,7 @@ inline std::string find_mod_folder() {
 }
 
 inline std::string find_mod_file(std::string filename) {
-    char module_path[MAX_PATH];
-    GetModuleFileNameA((HINSTANCE)&__ImageBase, module_path, MAX_PATH);
-
-    char drive[_MAX_DRIVE];
-    char dir[_MAX_DIR];
-
-    _splitpath(
-        module_path,
-        drive,
-        dir,
-        NULL,
-        NULL
-        );
-
-    std::string path = std::string(drive) + std::string(dir) + filename;
+    std::string path = find_mod_folder() + filename;
     if (!PathFileExistsA(path.c_str())) {
         // No mod path was set, it means they used the mod config. It *DOES* mean it relative to a folder in our path at least.
         // So, we just search all the local folders
@@ -312,15 +298,17 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
             std::string path_x86 = find_mod_file("plugin\\acre2_win32.dll");
             if (path_x86 == "") {
-                int result = MessageBoxA(NULL, "ACRE2 was unable to find x86 TeamSpeak 3 plugin file. The ACRE2 installation is corrupted. Please reinstall.", "ACRE2 Installation Error", MB_OK | MB_ICONERROR);
+                std::string message_string = "ACRE2 was unable to find TeamSpeak 3 plugin file.\n\nMissing file: " + find_mod_folder() + "plugin\\acre2_win32.dll\n\nThe ACRE2 installation is likely corrupted. Please reinstall.";
+                int result = MessageBoxA(NULL, (LPCSTR)message_string.c_str(), "ACRE2 Installation Error", MB_OK | MB_ICONERROR);
                 //strncpy(output, "[-1]", outputSize);
                 TerminateProcess(GetCurrentProcess(), 0);
                 return;
             }
 
             std::string path_x64 = find_mod_file("plugin\\acre2_win64.dll");
-            if (path_x86 == "") {
-                int result = MessageBoxA(NULL, "ACRE2 was unable to find x64 TeamSpeak 3 plugin file. The ACRE2 installation is corrupted. Please reinstall.", "ACRE2 Installation Error", MB_OK | MB_ICONERROR);
+            if (path_x64 == "") {
+                std::string message_string = "ACRE2 was unable to find TeamSpeak 3 plugin file.\n\nMissing file: " + find_mod_folder() + "plugin\\acre2_win64.dll\n\nThe ACRE2 installation is likely corrupted. Please reinstall.";
+                int result = MessageBoxA(NULL, (LPCSTR)message_string.c_str(), "ACRE2 Installation Error", MB_OK | MB_ICONERROR);
                 //strncpy(output, "[-2]", outputSize);
                 TerminateProcess(GetCurrentProcess(), 0);
                 return;
@@ -505,6 +493,8 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 files.push_back(ts_path_x64);
                 std::string ts_path_x86 = plugin_folder + "\\acre2_win32.dll";
                 files.push_back(ts_path_x86);
+
+                bool popupLocationNotify = false;
                 for (auto file : files) {
                     bool try_delete = true;
                     {
@@ -544,7 +534,11 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                             // Successfully deleted the dll.
                             updateRequired = true;
                             try_delete = false;
-                            remove_paths += location + "\n";
+                            if (!popupLocationNotify) {
+                                // Prevent the location from being outputted to the pop-up twice.
+                                remove_paths += location + "\n";
+                                popupLocationNotify = true;
+                            }
                         }
                     } while (try_delete);
                 }
