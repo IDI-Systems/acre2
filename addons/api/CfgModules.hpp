@@ -1,12 +1,10 @@
-class CfgFactionClasses
-{
+class CfgFactionClasses {
     class NO_CATEGORY;
     class GVAR(mission_setup) : NO_CATEGORY {
         displayName = "ACRE";
     };
 };
-class CfgVehicles
-{
+class CfgVehicles {
     class Logic;
     class Module_F: Logic { class ArgumentsBaseUnits { class Units; }; class ModuleDescription { class AnyBrain; }; };
 

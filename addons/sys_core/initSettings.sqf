@@ -103,3 +103,21 @@
     true,
     {[_this] call EFUNC(api,setRevealToAI)}
 ] call CBA_Settings_fnc_init;
+
+
+// Module settings
+// Applies the difficulty module settings over CBA settings. If the module is not present, this function has no effect.
+["CBA_beforeSettingsInitialized", {
+    private _missionModules = allMissionObjects "acre_api_DifficultySettings";
+    if (count _missionModules == 0) exitWith {};
+
+    private _fullDuplex = (_missionModules select 0) getVariable ["FullDuplex", false];
+    private _interference = (_missionModules select 0) getVariable ["Interference", true];
+    private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", false];
+    private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", true];
+
+    ["CBA_settings_setSettingMission", [QGVAR(interference), _interference]] call CBA_fnc_localEvent;
+    ["CBA_settings_setSettingMission", [QGVAR(fullDuplex), _fullDuplex]] call CBA_fnc_localEvent;
+    ["CBA_settings_setSettingMission", [QGVAR(ignoreAntennaDirection), _ignoreAntennaDirection]] call CBA_fnc_localEvent;
+    ["CBA_settings_setSettingMission", [QGVAR(terrainLoss), parseNumber _signalLoss]] call CBA_fnc_localEvent;
+}] call CBA_fnc_addEventHandler;

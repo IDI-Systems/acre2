@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-#include "initSettings.sqf"
+#include "initSettings.sqf" // CBA Settings
 
 NO_DEDICATED;
 
