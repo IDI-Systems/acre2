@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Handles deletion and creation of acre hashes.
+ * Handles deletion and creation of ACRE2 hashes.
  *
  * Arguments:
  * None

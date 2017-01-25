@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * ACRE 2 garbage collector. Run as a per frame event handler..
+ * ACRE2 garbage collector. Run as a per frame event handler.
  *
  * Arguments:
  * Mone
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * ["globalVolume", "1.5"] call acre_main_fnc__garbageCollector
+ * ["globalVolume", "1.5"] call acre_main_fnc_garbageCollector
  *
  * Public: No
  */

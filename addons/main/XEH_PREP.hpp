@@ -1,2 +1,2 @@
-PREP(_garbageCollector);
-PREP(_hashMonitor);
+PREP(garbageCollector);
+PREP(hashMonitor);
