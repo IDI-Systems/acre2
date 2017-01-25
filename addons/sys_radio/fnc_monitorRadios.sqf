@@ -60,8 +60,8 @@ DFUNC(monitorRadios_PFH) = {
     {
         if (GVAR(requestingNewId)) exitWith { };
         private _radio = _x;
-        private _hasUnique = getNumber (configFile >> "CfgWeapons" >> _radio >> "acre_hasUnique");
-        if (_hasUnique == 1 || _radio == "ItemRadio") then {
+        private _hasUnique = _radio call EFUNC(sys_radio,isBaseClassRadio);
+        if (_hasUnique || _radio == "ItemRadio") then {
 
             GVAR(requestingNewId) = true;
             if (_radio == "ItemRadio") then {
@@ -81,8 +81,8 @@ DFUNC(monitorRadios_PFH) = {
 
             ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_globalEvent);
         };
-        private _isUnique = getNumber (configFile >> "CfgWeapons" >> _radio >> "acre_isUnique");
-        if (_isUnique == 1) then {
+        private _isUnique = _radio call EFUNC(sys_radio,isUniqueRadio);
+        if (_isUnique) then {
             if (!([_radio] call EFUNC(sys_data,isRadioInitialized))) then {
                 WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
                 _baseRadio = BASECLASS(_radio);
