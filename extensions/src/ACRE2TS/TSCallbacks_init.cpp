@@ -35,12 +35,30 @@ void ts3plugin_setFunctionPointers(const struct TS3Functions funcs) {
     ts3Functions = funcs;
 }
 
+char *pluginID = NULL;
+//
+// Register the command engine - Seems to be called before ts3plugin_init in 3.1
+//
+void ts3plugin_registerPluginID(const char* commandID) {
+
+    pluginID = _strdup(commandID);
+    //LOG("Registered: [%s]", str);
+    if (CEngine::getInstance() != NULL) {
+        if (((CCommandServer *)CEngine::getInstance()->getExternalServer()) != NULL) {
+            ((CCommandServer *)CEngine::getInstance()->getExternalServer())->setCommandId(pluginID);
+        }
+    }
+}
+
+
 //
 // Init
 //
 int ts3plugin_init() {
     CEngine::getInstance()->initialize(new CTS3Client(), new CCommandServer(), FROM_PIPENAME, TO_PIPENAME);
 
+    // if PluginID was already loaded.
+    if (pluginID != NULL) ((CCommandServer *)CEngine::getInstance()->getExternalServer())->setCommandId(pluginID);
     if (ts3Functions.getCurrentServerConnectionHandlerID()) {
         // we are activating while connected, call it
         // virtualize a connect event

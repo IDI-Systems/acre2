@@ -1,7 +1,6 @@
 #include "script_component.hpp"
 NO_DEDICATED;
 
-
 [] call EFUNC(sys_io,startServer);
 
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
@@ -104,7 +103,7 @@ DFUNC(coreInitPFH) = { // OK
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
-if (ACRE_AI_ENABLED && hasInterface) then {
+if (GVAR(revealToAI) && hasInterface) then {
     INFO("AI Detection Activated.");
     [] call FUNC(enableRevealAI);
 } else {
@@ -144,11 +143,38 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
             ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
             [(_this select 1)] call CBA_fnc_removePerFrameHandler;
         } else {
-            // Keep calling incase ACRE is not connected to teamspeak.
+            // Keep calling incase ACRE is not connected to TeamSpeak.
             ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
         };
     };
     ADDPFH(_briefingCheck, 0, []);
 };
+
+///////////////////////////////////
+//
+// CBA SETTINGS
+// Applies the difficulty module settings over CBA settings. This allows the mission editor to bypass cba server settings.
+// If the module is not present, this function has no effect.
+//////////////////////////////////
+{
+    private _missionModules = allMissionObjects "acre_api_DifficultySettings";
+
+    if (count _missionModules == 0) exitWith {};
+
+    private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", false];
+    private _fullDuplex = (_missionModules select 0) getVariable ["FullDuplex", false];
+    private _interference = (_missionModules select 0) getVariable ["Interference", true];
+    private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", true];
+
+    if (_signalLoss) then {
+        [1.0] call acre_api_fnc_setLossModelScale;
+    } else {
+        [0.0] call acre_api_fnc_setLossModelScale;
+    };
+
+    [_fullDuplex] call acre_api_fnc_setFullDuplex;
+    [_interference] call acre_api_fnc_setInterference;
+    [_ignoreAntennaDirection] call acre_api_fnc_ignoreAntennaDirection;
+} call CBA_fnc_execNextFrame;
 
 true

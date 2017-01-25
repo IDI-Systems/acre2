@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Get the language display name from the language key.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Language key <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Language display name ("" if not found) <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["en"] call acre_sys_core_fnc_getLanguageName
  *
  * Public: No
  */

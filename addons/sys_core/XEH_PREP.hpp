@@ -48,7 +48,6 @@ PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
 
-PREP(formatNumber);
 
 PREP(fastHashCopy);
 PREP(fastHashCopyArray);

@@ -27,7 +27,7 @@
 
 #include "version.h"
 
-#define TS3_PLUGIN_API_VERSION 20
+#define TS3_PLUGIN_API_VERSION 21
 
 #define ACRE_NAME "ACRE2"
 #define ACRE_URL "ACRE2 Team - https://github.com/IDI-Systems/acre2"

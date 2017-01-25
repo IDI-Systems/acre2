@@ -10,7 +10,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_render
  *
  * Public: No
  */
@@ -21,11 +21,11 @@ if ((count _this) > 0) then {
     _display = _this select 0;
     uiNamespace setVariable [QGVAR(currentDisplay), _display];
 } else {
-    _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+    _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
 };
 
-_knobPosition = GET_STATE_DEF("knobPosition", 1);
-_knobImageStr = [_knobPosition, 2, 0] call CBA_fnc_formatNumber;
+private _knobPosition = GET_STATE_DEF("knobPosition", 1);
+private _knobImageStr = [_knobPosition, 2, 0] call CBA_fnc_formatNumber;
 _knobImageStr = format["\idi\acre\addons\sys_prc117f\Data\knobs\switch\prc117f_ui_swtch1_%1.paa", _knobImageStr];
 TRACE_1("Setting knob image", _knobImageStr);
 

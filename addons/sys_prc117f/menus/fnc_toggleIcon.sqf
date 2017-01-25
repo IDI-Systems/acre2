@@ -10,7 +10,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_renderMenu;
  *
  * Public: No
  */
@@ -18,17 +18,17 @@
 
 params ["_iconId", "_toggle"];
 
-_display = uiNamespace getVariable QGVAR(currentDisplay);
-_type = ctrlType (_display displayCtrl _iconId);
+private _ctrl = ((uiNamespace getVariable [QGVAR(currentDisplay), displayNull]) displayCtrl _iconId);
+private _type = ctrlType _ctrl;
 
 if ((count _this) > 2) then {
-    _newPosition = _this select 2;
-    (_display displayCtrl _iconId) ctrlSetPosition _toggle;
+    private _newPosition = _this select 2;
+    _ctrl ctrlSetPosition _toggle;
 };
 
 //if (_type == 8) then {
 //    (_display displayCtrl _iconId) progressSetPosition 0.85;
 //};
 
-(_display displayCtrl _iconId) ctrlShow _toggle;
-(_display displayCtrl _iconId) ctrlCommit 0;
+_ctrl ctrlShow _toggle;
+_ctrl ctrlCommit 0;

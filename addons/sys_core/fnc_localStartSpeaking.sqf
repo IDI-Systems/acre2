@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the local player start speaking event.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Speaking ID <STRING>
+ * 1: Net id of local player object <STRING>
+ * 2: On radio ("0" for false, "1" for true) <STRING>
+ * 3: Radio ID if talking on radio <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [0,"0:2","1","ACRE_PRC343_ID_2"] call acre_sys_core_fnc_localStartSpeaking
  *
  * Public: No
  */
@@ -53,7 +55,7 @@ _radioId = _this select 3;
 */
 
 //Make all the present speakers on the radio net, volume go to 0
-if (!ACRE_FULL_DUPLEX) then {
+if (!GVAR(fullDuplex)) then {
     if (ACRE_BROADCASTING_RADIOID != "") then {
         GVAR(previousSortedParams) params ["_radios","_sources"];
         {

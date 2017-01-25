@@ -18,6 +18,8 @@
  */
 #include "script_component.hpp"
 
+if (!isNil "ACRE_CUSTOM_SIGNAL_FUNC") exitWith { _this call ACRE_CUSTOM_SIGNAL_FUNC; };
+
 params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
 private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];
