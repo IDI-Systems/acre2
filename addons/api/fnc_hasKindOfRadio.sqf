@@ -19,7 +19,7 @@
 params ["_weaponArray", "_type"];
 
 if (IS_OBJECT(_weaponArray)) then {
-    _weaponArray = [_weaponArray] call EFUNC(lib,getGear);
+    _weaponArray = [_weaponArray] call EFUNC(sys_core,getGear);
 };
 
 private _ret = false;

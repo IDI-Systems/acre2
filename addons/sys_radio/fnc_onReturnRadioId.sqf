@@ -36,7 +36,7 @@ if (_player == acre_player) then {
     if (_baseRadio == "") then {
         _baseRadio = BASECLASS(_class);
     };
-    _weapons = [acre_player] call EFUNC(lib,getGear);
+    _weapons = [acre_player] call EFUNC(sys_core,getGear);
 
     //if (_baseRadio in _weapons || ("ItemRadio" in _weapons && _baseRadio == GVAR(defaultItemRadioType) ) ) then {
     TRACE_2("Check inventory", _baseRadio, _weapons);
@@ -49,10 +49,10 @@ if (_player == acre_player) then {
             _preset = [BASECLASS(_class)] call EFUNC(sys_data,getRadioPresetName);
             [_class, _preset] call FUNC(initDefaultRadio);
 
-            [acre_player, _baseRadio, _class] call EFUNC(lib,replaceGear);
+            [acre_player, _baseRadio, _class] call EFUNC(sys_core,replaceGear);
             [_class] call EFUNC(sys_radio,setActiveRadio);
         } else {
-            [acre_player, _replacementId, _class] call EFUNC(lib,replaceGear);
+            [acre_player, _replacementId, _class] call EFUNC(sys_core,replaceGear);
             if (_replacementId == ACRE_ACTIVE_RADIO) then {
                 if (!isDedicated && isServer) then {
                     // need to delay setting the active radio out a frame because
