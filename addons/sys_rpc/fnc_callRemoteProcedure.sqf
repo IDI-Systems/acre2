@@ -20,41 +20,34 @@
 params ["_name","_params"];
 
 if (IS_ARRAY(_params)) then {
-    private _arrayParams = _params;
-    _params = "";
-    {
-        _element = _x;
+    private _array = _params apply {
+        private _element = _x;
         if (IS_ARRAY(_element)) then {
-            {
-                if (!IS_STRING(_x)) then {
-                    if (IS_BOOL(_x)) then {
-                        if (_x) then {
-                            _x = 1;
-                        } else {
-                            _x = 0;
-                        };
-                    };
-                    _params = _params + (str _x) + ",";
-                } else {
-                    _params = _params + _x + ",";
-                };
-            } forEach _element;
-        } else {
-            if (!IS_STRING(_element)) then {
-                if (IS_BOOL(_element)) then {
-                    if (_element) then {
-                        _element = 1;
+            (_element apply {
+                if (IS_BOOL(_x)) then {
+                    if (_x) then {
+                        1;
                     } else {
-                        _element = 0;
+                        0;
                     };
+                } else {
+                    _x;
                 };
-                _params = _params + (str _element) + ",";
+            }) joinString ",";
+        } else {
+            if (IS_BOOL(_element)) then {
+                if (_element) then {
+                    1;
+                } else {
+                    0;
+                };
             } else {
-                _params = _params + _element + ",";
+                _element;
             };
         };
-
-    } forEach _arrayParams;
+    };
+    if (count _array > 0) then { _array pushBack ""; }; //Add empty element to add a trailing comma
+    _params = _array joinString ",";
 };
 private _data = _name + ":" + _params;
 TRACE_1("sendMessage ", _data);

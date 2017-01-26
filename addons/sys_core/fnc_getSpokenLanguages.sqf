@@ -15,9 +15,4 @@
  */
 #include "script_component.hpp"
 
-private _list = [];
-
-{
-    _list pushBack ((GVAR(languages) select _x) select 0);
-} forEach ACRE_SPOKEN_LANGUAGES;
-_list
+ACRE_SPOKEN_LANGUAGES apply {((GVAR(languages) select _x) select 0);};

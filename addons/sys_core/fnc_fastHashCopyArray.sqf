@@ -16,16 +16,14 @@
  */
 #include "script_component.hpp"
 
-private _newArray = [];
-{
+_this apply {
     if (IS_HASH(_x)) then {
-        _newArray pushBack (_x call FUNC(fastHashCopy));
+        (_x call FUNC(fastHashCopy));
     } else {
         if (IS_ARRAY(_x)) then {
-            _newArray pushBack (_x call FUNC(fastHashCopyArray));
+           (_x call FUNC(fastHashCopyArray));
         } else {
-            _newArray pushBack _x;
+            _x;
         };
     };
-} forEach _this;
-_newArray;
+};

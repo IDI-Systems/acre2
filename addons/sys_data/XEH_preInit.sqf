@@ -38,39 +38,34 @@ GVAR(validStates) = HASH_CREATE;
 
 DFUNC(_hashSerialize) = {
     private _hash = _this;
-    private _keys = [];
-    private _vals = [];
-    private _vars = allVariables _hash;
-    {
-        _val = HASH_GET(_hash, _x);
-        if (!isNil "_val") then {
-            _keys pushBack _x;
+    private _keys = (allVariables _hash) select {!(isNil {_hash getVariable _x})}; // Do not macro for speed, HASH_KEYS
+
+    private _vals = _keys apply {
+        private _val = HASH_GET(_hash, _x);
+        if (IS_HASH(_val)) then {
+            _val = _val call FUNC(_hashSerialize);
+        } else {
             if (IS_ARRAY(_val)) then {
                 _val = _val call FUNC(_arraySerialize);
             };
-            if (IS_HASH(_val)) then {
-                _val = _val call FUNC(_hashSerialize);
-            };
-            _vals pushBack _val;
         };
-    } forEach _vars;
+        _val;
+    };
     ["ACRE_HASH", _keys, _vals];
 };
 
 DFUNC(_arraySerialize) = {
-    private _ret = [];
-    {
+    _this apply {
         if (IS_HASH(_x)) then {
-            _ret pushBack (_x call FUNC(_hashSerialize));
+            (_x call FUNC(_hashSerialize));
         } else {
             if (IS_ARRAY(_x)) then {
-                _ret pushBack (_x call FUNC(_arraySerialize));
+                (_x call FUNC(_arraySerialize));
             } else {
-                _ret pushBack _x;
+                _x;
             };
         };
-    } forEach _this;
-    _ret;
+    };
 };
 
 DFUNC(_hashDeserialize) = {
@@ -92,19 +87,17 @@ DFUNC(_hashDeserialize) = {
 };
 
 DFUNC(_arrayDeserialize) = {
-    private _ret = [];
-    {
+    _this apply {
         if (IS_SERIALIZEDHASH(_x)) then {
-            _ret pushBack (_x call FUNC(_hashDeserialize));
+            (_x call FUNC(_hashDeserialize));
         } else {
             if (IS_ARRAY(_x)) then {
-                _ret pushBack (_x call FUNC(_arrayDeserialize));
+                (_x call FUNC(_arrayDeserialize));
             } else {
-                _ret pushBack _x;
+                _x;
             };
         };
-    } forEach _this;
-    _ret;
+    };
 };
 
 ADDON = true;
