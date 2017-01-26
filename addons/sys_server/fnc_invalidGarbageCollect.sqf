@@ -1,40 +1,34 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the reciept of an invalid garbage collect message.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Player <OBJECT>
+ * 1: Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [acre_player,"acre_prc152_id_1"] call acre_sys_server_fnc_invalidGarbageCollect
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_player", "_radioId"/*, "_radioData"*/];
-
-ERROR_2("Invalid garbage collection done on radio %1 for player %2! Please forward on the client and server RPTs to the ACRE2 bug tracker.",_radioId,name _player);
-
-// NOTE - Format of Radio Data is now HASH - This would need addressing if the following was to be re-used.
-
-/*private _baseRadio = configName(inheritsFrom (configFile >> "CfgWeapons" >> _radioId));
-private _idNumber = getNumber (configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
-
-private _key = (GVAR(radioIdMap) select 0) find _baseRadio;
-if (_key != -1) then {
-    private _idArray = ((GVAR(radioIdMap) select 1) select _key);
+params ["_player", "_radioId"];
 
 
-    PUSH(_idArray, _idNumber);
-    PUSH(GVAR(masterIdList), tolower(_radioId));
-    HASH_SET(acre_sys_data_radioData, tolower(_radioId), _radioData);
 
-    [QGVAR(restoreInvalidGCData), [_radioId, _radioData]] call CALLSTACK(CBA_fnc_globalEvent);
+if (HASH_HASKEY(GVAR(markedForGC),_radioId)) then {
+    private _value = HASH_GET(GVAR(markedForGC),_radioId);
+    _value params ["_timeMessage","_timeGC","_object"];
+    if (time < _timeGC + 15) then {
+        WARNING_2("Desync - Garbage collection prevented for radio '%1' by player '%2' as it still exists for them locally!",_radioId,name _player);
+    };
+    _timeMessage = time;
+    _value = [_timeMessage,_timeGC,_player];
+    HASH_SET(GVAR(markedForGC),_radioId,_value);
 } else {
-    WARNING_1("Looking to restore type %1. Could not find!",_radioId);
-};*/
+    ERROR_2("Desync - Recieved an unexpected invalid garbage collect message radio '%1' for player '%2'!",_radioId,name _player);
+};

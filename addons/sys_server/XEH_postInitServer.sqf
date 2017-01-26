@@ -7,7 +7,7 @@ LOG("Starting radio id handler events");
 ["acre_acknowledgeId", { _this call FUNC(acknowledgeId) }] call CALLSTACK(CBA_fnc_addEventHandler);
 [QGVAR(invalidGarbageCollect), { _this call FUNC(invalidGarbageCollect); }] call CALLSTACK(CBA_fnc_addEventHandler);
 
-ADDPFH(DFUNC(masterIdTracker), 1, []);
+ADDPFH(FUNC(masterIdTracker), 1, []);
 
 ACRE_SERVER_INIT = true;
 

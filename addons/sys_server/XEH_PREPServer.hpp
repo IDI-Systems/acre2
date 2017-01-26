@@ -8,3 +8,4 @@ PREP(onGetRadioId);
 PREP(acknowledgeId);
 PREP(invalidGarbageCollect);
 PREP(checkServerGearDesync);
+PREP(sendIntentToGarbageCollect);
