@@ -29,22 +29,14 @@ if (IS_ARRAY(_params)) then {
         if (IS_ARRAY(_element)) then {
             (_element apply {
                 if (IS_BOOL(_x)) then {
-                    if (_x) then {
-                        1;
-                    } else {
-                        0;
-                    };
+                    parseNumber _x;
                 } else {
                     _x;
                 };
             }) joinString ",";
         } else {
             if (IS_BOOL(_element)) then {
-                if (_element) then {
-                    1;
-                } else {
-                    0;
-                };
+                parseNumber _element;
             } else {
                 _element;
             };
