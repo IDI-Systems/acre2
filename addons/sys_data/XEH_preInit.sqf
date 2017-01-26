@@ -38,18 +38,21 @@ GVAR(validStates) = HASH_CREATE;
 
 DFUNC(_hashSerialize) = {
     private _hash = _this;
-    private _keys = (allVariables _hash) select {!(isNil {_hash getVariable _x})}; // Do not macro for speed, HASH_KEYS
-
-    private _vals = _keys apply {
+    private _vals = [];
+    private _keys = (allVariables _hash) select {
         private _val = HASH_GET(_hash, _x);
-        if (IS_HASH(_val)) then {
-            _val = _val call FUNC(_hashSerialize);
-        } else {
+        if (!isNil "_val") then {
             if (IS_ARRAY(_val)) then {
                 _val = _val call FUNC(_arraySerialize);
             };
+            if (IS_HASH(_val)) then {
+                _val = _val call FUNC(_hashSerialize);
+            };
+            _vals pushBack _val;
+            true;
+        } else {
+            false
         };
-        _val;
     };
     ["ACRE_HASH", _keys, _vals];
 };
