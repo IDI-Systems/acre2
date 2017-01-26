@@ -32,7 +32,7 @@ DFUNC(monitorRadios_PFH) = {
     if (!alive acre_player) exitWith {};
     if ((side group acre_player) == sideLogic) exitWith {};
 
-    private _weapons = [acre_player] call EFUNC(lib,getGear);
+        private _weapons = [acre_player] call EFUNC(sys_core,getGear);
 
     // Handle ItemRadioAcreFlagged - This is a dummy ItemRadio that allows the player to continue using ingame text chat.
 
@@ -50,7 +50,7 @@ DFUNC(monitorRadios_PFH) = {
 
         if (_flaggedCount > 1) then {
             for "_i" from 1 to (_flaggedCount - 1) do {
-                [acre_player, "ItemRadioAcreFlagged"] call EFUNC(lib,removeGear);
+                    [acre_player, "ItemRadioAcreFlagged"] call EFUNC(sys_core,removeGear);
             };
             acre_player assignItem "ItemRadioAcreFlagged";
         };
@@ -66,7 +66,7 @@ DFUNC(monitorRadios_PFH) = {
             GVAR(requestingNewId) = true;
             if (_radio == "ItemRadio") then {
                 _radio = GVAR(defaultItemRadioType);
-                [acre_player, "ItemRadio", _radio] call EFUNC(lib,replaceGear);
+                    [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
             };
             TRACE_1("Getting ID for", _radio);
             if (diag_tickTime-ACRE_SERVER_GEAR_DESYNC_TIME < 60) then {
@@ -86,7 +86,7 @@ DFUNC(monitorRadios_PFH) = {
             if (!([_radio] call EFUNC(sys_data,isRadioInitialized))) then {
                 WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
                 _baseRadio = BASECLASS(_radio);
-                [acre_player, _radio, _baseRadio] call EFUNC(lib,replaceGear);
+                    [acre_player, _radio, _baseRadio] call EFUNC(sys_core,replaceGear);
                 _radio = _baseRadio;
             };
             _currentUniqueItems pushBack _radio;
@@ -154,7 +154,7 @@ DFUNC(checkServerDesyncBug) = {
     if (ACRE_SERVER_GEAR_DESYNC_CHECK) then {
         switch (ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE) do {
             case 0: {
-                [acre_player, "ACRE_TestGearDesyncItem"] call EFUNC(lib,addGear);
+                [acre_player, "ACRE_TestGearDesyncItem"] call EFUNC(sys_core,addGear);
                 ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE = 1;
             };
             case 1: {

@@ -41,7 +41,7 @@ if (!GVAR(doFullSearch)) then {
             private _object = _x;
             private _items = [];
             if (_object isKindOf "Man") then {
-                _items = [_object] call EFUNC(lib,getGear);
+                _items = [_object] call EFUNC(sys_core,getGear);
             } else {
                 _items = itemCargo _object;
                 _items = _items select {(_x select [0, 4]) == "ACRE" || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged"};
@@ -81,7 +81,7 @@ if (GVAR(doFullSearch)) then {
                 private _object = _x;
                 private _items = [];
                 if (_object isKindOf "Man") then {
-                    _items = [_object] call EFUNC(lib,getGear);
+                    _items = [_object] call EFUNC(sys_core,getGear);
                 } else {
                     _items = itemCargo _object;
                     _items = _items select {(_x select [0, 4]) == "ACRE"}; /* || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged" // Only interested in unique IDs*/
