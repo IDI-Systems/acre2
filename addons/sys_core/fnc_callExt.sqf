@@ -28,10 +28,18 @@ if (IS_ARRAY(_params)) then {
         private _element = _x;
         if (IS_ARRAY(_element)) then {
             (_element apply {
-                [_x, parseNumber _x] select (IS_BOOL(_x));
+                if (IS_BOOL(_x)) then {
+                    parseNumber _x
+                } else {
+                    _x
+                };
             }) joinString ",";
         } else {
-            [_element, parseNumber _element] select (IS_BOOL(_element));
+            if (IS_BOOL(_element)) then {
+                parseNumber _element
+            } else {
+                _element
+            };
         };
     };
     if (count _array > 0) then { _array pushBack ""; }; //Add empty element to add a trailing comma
