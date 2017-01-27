@@ -44,7 +44,7 @@ DFUNC(gen) = {
 ///////////////////////////////////
 
 ACRE_MAP_LOADED = false;
-// Do not load map in Main Menu, allDisplays only returns display 0 in main menu.
+// Do not load map in Main Menu, allDisplays only returns display 0 in main menu
 if (!([findDisplay 0] isEqualTo allDisplays)) then {
     [
         "init",
@@ -80,26 +80,8 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
     ] call FUNC(callExt);
 };
 [] call FUNC(getClientIdLoop);
-DFUNC(coreInitPFH) = { // OK
-    if (isNull player) exitWith { };
-    acre_player = player;
-    if (!ACRE_MAP_LOADED) exitWith { };
-    if (!ACRE_DATA_SYNCED) exitWith { };
-    if (GVAR(ts3id) == -1) exitWith { };
-    TRACE_1("GOT TS3 ID", GVAR(ts3id));
-    [] call FUNC(utilityFunction); // OK
-    [] call FUNC(muting);
-    [] call FUNC(speaking);
 
-    //Set the speaking volume to normal.
-    [.7] call acre_api_fnc_setSelectableVoiceCurve;
-    acre_sys_gui_VolumeControl_Level = 0;
-
-    ACRE_CORE_INIT = true;
-    TRACE_1("ACRE CORE INIT", ACRE_CORE_INIT);
-    [(_this select 1)] call CBA_fnc_removePerFrameHandler;
-};
-
+// Check whether ACRE2 is fully loaded
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
@@ -112,42 +94,22 @@ if (GVAR(revealToAI) && hasInterface) then {
 
 [QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
+//Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_VEHICLE_CREW = [];
-//Store objects occupying crew seats, note this is empty if the player is not a crew member.
-
-private _vehicleCrewPFH = {
-    private _vehicle = vehicle acre_player;
-
-    if (_vehicle != acre_player) then {
-        private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
-        {
-            _crew pushBackUnique (_vehicle turretUnit _x);
-        } forEach (allTurrets [_vehicle, false]);
-        _crew = _crew - [objNull];
-        if (acre_player in _crew) then {
-            ACRE_PLAYER_VEHICLE_CREW = _crew;
-        } else {
-            ACRE_PLAYER_VEHICLE_CREW = [];
-        };
-    } else {
-        ACRE_PLAYER_VEHICLE_CREW = [];
-    };
-};
-ADDPFH(_vehicleCrewPFH, 1.1, []);
+ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
 
 // Disable positional audio whilst in briefing.
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
     ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
-    private _briefingCheck = {
-        if (getClientStateNumber > 9 && time > 0) then { // Briefing has been read AND Mission has started.
+    [{
+        if (getClientStateNumber > 9 && time > 0) then { // Briefing has been read AND Mission has started
             ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
             [(_this select 1)] call CBA_fnc_removePerFrameHandler;
         } else {
-            // Keep calling incase ACRE is not connected to TeamSpeak.
+            // Keep calling incase ACRE is not connected to TeamSpeak
             ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
         };
-    };
-    ADDPFH(_briefingCheck, 0, []);
+    }, 0, []] CBA_fnc_addPerFrameHandler;
 };
 
 true
