@@ -2,13 +2,15 @@
 
 #include "initSettings.sqf" // CBA Settings
 
-NO_DEDICATED;
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
+
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 /**
 *
