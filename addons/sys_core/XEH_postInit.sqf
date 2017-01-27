@@ -44,7 +44,7 @@ DFUNC(gen) = {
 ///////////////////////////////////
 
 ACRE_MAP_LOADED = false;
-// Do not load map in Main Menu, allDisplays only returns display 0 in main menu.
+// Do not load map in Main Menu, allDisplays only returns display 0 in main menu
 if (!([findDisplay 0] isEqualTo allDisplays)) then {
     [
         "init",
@@ -81,7 +81,7 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
 };
 [] call FUNC(getClientIdLoop);
 
-// Check whether ACRE2 is fully loaded.
+// Check whether ACRE2 is fully loaded
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
@@ -94,7 +94,7 @@ if (GVAR(revealToAI) && hasInterface) then {
 
 [QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
-//Store objects occupying crew seats, note this is empty if the player is not a crew member.
+//Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_VEHICLE_CREW = [];
 ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
 
@@ -102,11 +102,11 @@ ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
     ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
     [{
-        if (getClientStateNumber > 9 && time > 0) then { // Briefing has been read AND Mission has started.
+        if (getClientStateNumber > 9 && time > 0) then { // Briefing has been read AND Mission has started
             ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
             [(_this select 1)] call CBA_fnc_removePerFrameHandler;
         } else {
-            // Keep calling incase ACRE is not connected to TeamSpeak.
+            // Keep calling incase ACRE is not connected to TeamSpeak
             ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
         };
     }, 0, []] CBA_fnc_addPerFrameHandler;
