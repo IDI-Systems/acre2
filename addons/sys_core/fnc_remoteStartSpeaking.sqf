@@ -80,7 +80,6 @@ private _result = false;
 
     if (isNull _unit) exitWith {
         _msg = format ["START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, On Radio: %4", acre_player, _speakingId, _netId, _onRadio];
-        // REMOTEDEBUGMSG(_msg);
         WARNING(_msg);
         false
     };

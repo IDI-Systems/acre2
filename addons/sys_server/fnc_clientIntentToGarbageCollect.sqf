@@ -28,10 +28,19 @@ if (_radioId in _radioList) then {
     if (GVAR(clientGCPFHID) == -1) then {
         GVAR(clientGCPFHID) = [{
             private _radioList = ([] call EFUNC(sys_data,getPlayerRadioList)) apply {toLower _x};
-            GVAR(radioGCWatchList) = GVAR(radioGCWatchList) select {_x in _radioList};
+            GVAR(radioGCWatchList) = GVAR(radioGCWatchList) select {
+                private _bool = _x in _radioList;
+                if (!(_x in _radioList)) then {
+                    // Local player no longer has radio - send event to restart the GC process should another desynced player recieve it.
+                    [QGVAR(removeGCQueue), [_x]] call CALLSTACK(CBA_fnc_serverEvent);
+                    false;
+                } else {
+                    true;
+                };
+            };
 
             {
-                [QGVAR(invalidGarbageCollect), [acre_player, _x]] call CALLSTACK(CBA_fnc_serverEvent);
+                [QGVAR(stopRadioGarbageCollect), [acre_player, _x]] call CALLSTACK(CBA_fnc_serverEvent);
             } forEach GVAR(radioGCWatchList);
 
             if (count GVAR(radioGCWatchList) == 0) then {

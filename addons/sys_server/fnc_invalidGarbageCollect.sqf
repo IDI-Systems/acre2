@@ -1,34 +1,21 @@
 /*
  * Author: ACRE2Team
- * Handles the reciept of an invalid garbage collect message.
+ * An invalid garbage collect event occurs when a radio is being collected when it shouldn't.
  *
  * Arguments:
- * 0: Player <OBJECT>
- * 1: Radio ID <STRING>
+ * 0: player <OBJECT>
+ * 1: Radio classname <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [acre_player,"acre_prc152_id_1"] call acre_sys_server_fnc_invalidGarbageCollect
+ * [acre_player,"acre_prc343_id_1"] call acre_sys_server_fnc_invalidGarbageCollect
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_player", "_radioId"];
+params ["_playerName", "_radioId"];
 
-
-
-if (HASH_HASKEY(GVAR(markedForGC),_radioId)) then {
-    private _value = HASH_GET(GVAR(markedForGC),_radioId);
-    _value params ["_timeMessage","_timeGC","_object"];
-    if (time < _timeGC + 15) then {
-        WARNING_2("Desync - Garbage collection prevented for radio '%1' by player '%2' as it still exists for them locally!",_radioId,name _player);
-    };
-    _timeMessage = time;
-    _value = [_timeMessage,_timeGC,_player];
-    HASH_SET(GVAR(markedForGC),_radioId,_value);
-} else {
-    ERROR_2("Desync - Recieved an unexpected invalid garbage collect message radio '%1' for player '%2'!",_radioId,name _player);
-};
+ERROR_2("Invalid garbage collection for radio '%1' from player %2! Please forward on the client and server RPTs to the ACRE2 bug tracker.",_radioId,_playerName);

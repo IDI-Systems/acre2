@@ -77,7 +77,6 @@ Antenna Defines
     count = COUNT; \
 }
 
-#define REMOTEDEBUGMSG(msg) [QEGVAR(sys_server,remoteDebugMsg), msg] call CBA_fnc_globalEvent;
 #define LOAD_SOUND(className) [QUOTE(className)] call EFUNC(sys_sounds,loadSound);
 
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
