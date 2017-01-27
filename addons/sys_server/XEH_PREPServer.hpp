@@ -6,6 +6,5 @@ PREP(collect);
 PREP(onGetRadioId);
 PREP(acknowledgeId);
 PREP(stopRadioGarbageCollect);
-PREP(checkServerGearDesync);
 PREP(sendIntentToGarbageCollect);
 PREP(removeGCQueue);
