@@ -19,9 +19,9 @@
 params["_container","_type","_preset","_player","_callBack","_failCallback"];
 
 diag_log text format ["this: %1", _this];
-private _hasUnique = getNumber (configFile >> "CfgWeapons" >> _type >> "acre_hasUnique");
+private _hasUnique = _type call EFUNC(sys_radio,isBaseClassRadio);
 
-if (_hasUnique == 1) then {
+if (_hasUnique) then {
     private _ret = [_type] call FUNC(getRadioId);
     if (_ret != -1) then {
          private _uniqueComponent = format ["%1_id_%2", tolower _type, _ret];

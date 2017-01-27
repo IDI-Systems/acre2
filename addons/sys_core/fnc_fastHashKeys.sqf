@@ -17,10 +17,4 @@
  */
 #include "script_component.hpp"
 
-private _keys = [];
-{
-    if (!(isNil {_this getVariable _x})) then {
-        _keys pushBack _x;
-    };
-} forEach (allVariables _this);
-_keys;
+(allVariables _this) select {!(isNil {_this getVariable _x})};

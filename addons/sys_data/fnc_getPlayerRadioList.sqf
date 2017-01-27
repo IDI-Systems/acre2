@@ -20,11 +20,8 @@ private _radioList = [];
 
 if (alive acre_player) then {
     private _weapons = [acre_player] call EFUNC(sys_core,getGear);
-    {
-        if (getNumber (configFile >> "CfgWeapons" >> _x >> "acre_isUnique") == 1) then {
-            _radioList pushBack _x;
-        };
-    } forEach _weapons;
+    _radioList = _weapons select {_x call EFUNC(sys_radio,isUniqueRadio)};
+
     if (ACRE_ACTIVE_RADIO != "") then {
         _radioList pushBackUnique ACRE_ACTIVE_RADIO;
     };

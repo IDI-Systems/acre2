@@ -24,44 +24,20 @@ params ["_command", "_params", ["_threaded", false], ["_callBack",{}], ["_callBa
 private _paramsString = "";
 
 if (IS_ARRAY(_params)) then {
-    private _arrayParams = _params;
-    {
+    private _array = _params apply {
         private _element = _x;
         if (IS_ARRAY(_element)) then {
-            {
-                if (!IS_STRING(_x)) then {
-                    // Convert boolean to number
-                    if (IS_BOOL(_x)) then {
-                        if (_x) then {
-                            _x = 1;
-                        } else {
-                            _x = 0;
-                        };
-                    };
-                    _paramsString = _paramsString + (str _x) + ","; // Convert number to string
-                } else {
-                    _paramsString = _paramsString + _x + ",";
-                };
-            } forEach _element;
+            (_element apply {
+                [_x, parseNumber _x] select (IS_BOOL(_x));
+            }) joinString ",";
         } else {
-            if (!IS_STRING(_element)) then {
-                // Convert boolean to number
-                if (IS_BOOL(_element)) then {
-                    if (_element) then {
-                        _element = 1;
-                    } else {
-                        _element = 0;
-                    };
-                };
-
-                _paramsString = _paramsString + (str _element) + ","; // Convert number to string
-            } else {
-                _paramsString = _paramsString + _element + ",";
-            };
+            [_element, parseNumber _element] select (IS_BOOL(_element));
         };
-
-    } forEach _arrayParams;
+    };
+    if (count _array > 0) then { _array pushBack ""; }; //Add empty element to add a trailing comma
+    _paramsString = _array joinString ",";
 };
+
 _command = format["%1:%2", _command, _paramsString];
 // diag_log text format["c: %1", _command];
 #ifdef USE_DEBUG_EXTENSIONS
