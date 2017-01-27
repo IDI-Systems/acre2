@@ -49,7 +49,7 @@ DFUNC(_hashSerialize) = {
                 _val = _val call FUNC(_hashSerialize);
             };
             _vals pushBack _val;
-            true;
+            true
         } else {
             false
         };

@@ -18,7 +18,7 @@
 
 params ["_player", "_class", "_callback", ["_replacementId",""]];
 
-if (!(_class call EFUNC(sys_radio,isBaseClassRadio))) then {
+if !(_class call EFUNC(sys_radio,isBaseClassRadio)) then {
     _class = BASECLASS(_class);
 };
 

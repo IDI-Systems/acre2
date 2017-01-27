@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 private _list = _this;
-private _languageIds = _list apply {([_x] call FUNC(getLanguageId))};
+private _languageIds = _list apply {[_x] call FUNC(getLanguageId)};
 
 ACRE_SPOKEN_LANGUAGES = _languageIds;
 [_list select 0] call FUNC(setSpeakingLanguage);

@@ -15,14 +15,12 @@
  */
 #include "script_component.hpp"
 
-private _isBaseClassRadio = false;
-
-if (HASH_HASKEY(GVAR(radioBaseClassCache),_this)) then {
-    _isBaseClassRadio = HASH_GET(GVAR(radioBaseClassCache),_this);
-} else {
-    private _configEntry = configFile >> "CfgWeapons" >> _this;
-    _isBaseClassRadio = (getNumber(_configEntry >> "acre_hasUnique") == 1) && {getNumber(_configEntry >> "acre_isRadio") == 1};
-    HASH_SET(GVAR(radioBaseClassCache),_this,_isBaseClassRadio);
+if (HASH_HASKEY(GVAR(radioBaseClassCache),_this)) exitWith {
+    HASH_GET(GVAR(radioBaseClassCache),_this);
 };
 
-_isBaseClassRadio;
+private _configEntry = configFile >> "CfgWeapons" >> _this;
+private _isBaseClassRadio = (getNumber(_configEntry >> "acre_hasUnique") == 1) && {getNumber(_configEntry >> "acre_isRadio") == 1};
+HASH_SET(GVAR(radioBaseClassCache),_this,_isBaseClassRadio);
+
+_isBaseClassRadio

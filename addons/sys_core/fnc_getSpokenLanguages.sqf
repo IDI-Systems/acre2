@@ -15,4 +15,4 @@
  */
 #include "script_component.hpp"
 
-ACRE_SPOKEN_LANGUAGES apply {((GVAR(languages) select _x) select 0);};
+ACRE_SPOKEN_LANGUAGES apply {(GVAR(languages) select _x) select 0};
