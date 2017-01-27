@@ -3,9 +3,9 @@
 LOG("Starting radio id handler events");
 ["acre_getRadioId", { _this call FUNC(onGetRadioId) }] call CALLSTACK(CBA_fnc_addEventHandler);
 ["acre_acknowledgeId", { _this call FUNC(acknowledgeId) }] call CALLSTACK(CBA_fnc_addEventHandler);
-[QGVAR(stopRadioGarbageCollect), { _this call FUNC(stopRadioGarbageCollect); }] call CALLSTACK(CBA_fnc_addEventHandler);
-[QGVAR(removeGCQueue), { _this call FUNC(removeGCQueue); }] call CALLSTACK(CBA_fnc_addEventHandler);
-[QGVAR(invalidGarbageCollect), { _this call FUNC(invalidGarbageCollect); }] call CALLSTACK(CBA_fnc_addEventHandler);
+[QGVAR(stopRadioGarbageCollect), { _this call FUNC(stopRadioGarbageCollect) }] call CALLSTACK(CBA_fnc_addEventHandler);
+[QGVAR(removeGCQueue), { _this call FUNC(removeGCQueue) }] call CALLSTACK(CBA_fnc_addEventHandler);
+[QGVAR(invalidGarbageCollect), { _this call FUNC(invalidGarbageCollect) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 ADDPFH(FUNC(masterIdTracker), 1, []);
 

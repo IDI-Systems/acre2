@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Client function to update the local copy of objectIdRelationTable
+ * Client function to update the local copy of objectIdRelationTable.
  *
  * Arguments:
  * 0: Array of updates, format of update [key,value] <ARRAY>

@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * This function is used to start initializing a radio for the intended player. The callback is used to complete to the process.
+ * This function is used to start initializing a radio for the intended player. The callback is used to complete the process.
  *
  * Arguments:
  * 0: Player's game object <OBJECT>
- * 1: Radio base classname <TYPE>
+ * 1: Radio base classname <STRING>
  * 2: CBA event name that is triggered when complete <STRING>
- * 3: Optional: Replacement ID - Use this when copying data from another radio <STRING>
+ * 3: Replacement ID - Use this when copying data from another radio <STRING> (default: "")
  *
  * Return Value:
  * None

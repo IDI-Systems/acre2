@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Remove the specified radio from the GC queue. This is typically called when a client no longer has a desynced radio to reset it's GC status.
+ * Remove the specified radio from the GC queue. This is typically called when a client no longer has a desynced radio to reset its GC status.
  *
  * Arguments:
  * 0: Radio ID <STRING>
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [acre_player,"acre_prc152_id_1"] call acre_sys_server_fnc_removeGCQueue
+ * ["acre_prc152_id_1"] call acre_sys_server_fnc_removeGCQueue
  *
  * Public: No
  */
