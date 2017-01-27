@@ -363,6 +363,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 }
                 else {
                     ts_locations.push_back(rootkey);
+                    ts_delete_locations.push_back(rootkey + "\\config");
                 }
             }
 
@@ -376,6 +377,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 }
                 else {
                     ts_locations.push_back(rootkey);
+                    ts_delete_locations.push_back(rootkey + "\\config");
                 }
             }
 
