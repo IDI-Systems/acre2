@@ -18,14 +18,6 @@
 GVAR(oldUniqueItemList) = [];
 GVAR(forceRecheck) = false;
 GVAR(requestingNewId) = false;
-ACRE_SERVER_GEAR_DESYNCED = false;
-ACRE_SERVER_GEAR_DESYNC_CHECK = false;
-
-ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE = 0;
-
-ACRE_SERVER_GEAR_DESYNC_TIME = diag_tickTime;
-ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT = 0;
-ACRE_SERVER_DESYNCED_PLAYERS = [];
 
 LOG("Monitor Inventory Starting");
 DFUNC(monitorRadios_PFH) = {
@@ -69,15 +61,6 @@ DFUNC(monitorRadios_PFH) = {
                     [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
             };
             TRACE_1("Getting ID for", _radio);
-            if (diag_tickTime-ACRE_SERVER_GEAR_DESYNC_TIME < 60) then {
-                ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT = ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT + 1;
-                if (ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT > 10 && !ACRE_SERVER_GEAR_DESYNC_CHECK) then {
-                    ACRE_SERVER_GEAR_DESYNC_CHECK = true;
-                };
-            } else {
-                ACRE_SERVER_GEAR_DESYNC_TIME = diag_tickTime;
-                ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT = 0;
-            };
 
             ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_globalEvent);
         };
@@ -128,61 +111,3 @@ DFUNC(monitorRadios_PFH) = {
 [{ACRE_DATA_SYNCED && {(!isNil "ACRE_SERVER_INIT")} && {time >= 1}},{
     ADDPFH(FUNC(monitorRadios_PFH), 0.25, []);
 },[]] call CBA_fnc_waitUntilAndExecute;
-
-
-DFUNC(handleDesyncCheck) = {
-    params ["_player", "_isDesynced"];
-    if (_player == acre_player) then {
-        if (_isDesynced && {"ACRE_TestGearDesyncItem" in (items acre_player)}) then {
-            acre_player removeItem "ACRE_TestGearDesyncItem";
-            ACRE_SERVER_GEAR_DESYNCED = true;
-            ACRE_SERVER_DESYNCED_PLAYERS pushBack _player;
-            publicVariable "ACRE_SERVER_GEAR_DESYNCED";
-            publicVariable "ACRE_SERVER_DESYNCED_PLAYERS";
-        } else {
-            ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE = 0;
-            ACRE_SERVER_GEAR_DESYNC_CHECK = false;
-            ACRE_SERVER_GEAR_DESYNC_REQUESTCOUNT = 0;
-            if ("ACRE_TestGearDesyncItem" in (items acre_player)) then {
-                acre_player removeItem "ACRE_TestGearDesyncItem";
-            };
-        };
-    };
-};
-
-DFUNC(checkServerDesyncBug) = {
-    if (ACRE_SERVER_GEAR_DESYNC_CHECK) then {
-        switch (ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE) do {
-            case 0: {
-                [acre_player, "ACRE_TestGearDesyncItem"] call EFUNC(sys_core,addGear);
-                ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE = 1;
-            };
-            case 1: {
-                if ("ACRE_TestGearDesyncItem" in (items acre_player)) then {
-                    ACRE_SERVER_GEAR_DESYNC_CHECK_STAGE = 2;
-                    ["acre_checkServerGearDesync", [acre_player]] call CALLSTACK(CBA_fnc_globalEvent);
-                };
-            };
-            case 2: {
-
-            };
-        };
-    };
-};
-
-ADDPFH(FUNC(checkServerDesyncBug), 1, []);
-
-DFUNC(hasGearDesync) = {
-    if (ACRE_SERVER_GEAR_DESYNCED) then {
-        private _message = "ACRE has determined that players in this mission have an inventory that has desynchronized from the server, this is due to a bug in the mission or a bug in Arma 3, NOT ACRE. This message will not dissappear and is a warning that ACRE may no longer be functioning correctly in this mission. The players experiencing the bug are listed below:\n\n";
-        {
-            _message = _message + format ["%1\n", name _x];
-        } forEach ACRE_SERVER_DESYNCED_PLAYERS;
-        if (!GVAR(disableDesyncHint)) then {
-            hintSilent _message;
-        };
-        WARNING(_message);
-    };
-};
-
-ADDPFH(FUNC(hasGearDesync), 10, []);

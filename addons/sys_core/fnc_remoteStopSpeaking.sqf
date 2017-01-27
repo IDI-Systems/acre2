@@ -73,7 +73,6 @@ _speakingId = parseNumber _speakingId;
     };
     if (!_found) then {
         private _msg = format ["STOP SPEAKING: Player [%1] could not find a player with ID: %2 %3", acre_player, _speakingId, _netId];
-        // REMOTEDEBUGMSG(_msg);
         WARNING(_msg);
     };
     TRACE_1("REMOTE STOPPED SPEAKING",_speakingId);

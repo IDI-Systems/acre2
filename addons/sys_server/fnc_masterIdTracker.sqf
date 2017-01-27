@@ -164,12 +164,31 @@ if (GVAR(doFullSearch)) then {
     } forEach HASH_KEYS(_duplicateIdTable);
     private _unaccountedForIds = HASH_KEYS(GVAR(masterIdTable)) - HASH_KEYS(_idTable) - GVAR(unacknowledgedIds);
     {
-        #ifdef DEBUG_MODE_FULL
-            acre_player sideChat "Collecting Unaccounted";
-            TRACE_1("Collecting", _x);
-        #endif
-        [_x] call FUNC(collect);
+        private _radio = _x;
+
+        // GC handle
+        if (HASH_HASKEY(GVAR(markedForGC),_radio)) then {
+            private _value = HASH_GET(GVAR(markedForGC),_radio);
+            _value params ["_timeMessage","_timeGC","_object"];
+
+            if (time > _timeMessage + 20 && {time > _timeGC + 20}) then { // GC
+                #ifdef DEBUG_MODE_FULL
+                    acre_player sideChat "Collecting Unaccounted";
+                    TRACE_1("Collecting", _radio);
+                #endif
+                [_radio] call FUNC(collect);
+            } else {
+                HASH_SET(_idTable, _radio, [ARR_2(_object,_object)]);
+            };
+        } else {
+            [_radio] call FUNC(sendIntentToGarbageCollect);
+            // Act as if nothing has happened just yet.
+            if (HASH_HASKEY(GVAR(masterIdTable), _radio)) then {
+                HASH_SET(_idTable, _radio, HASH_GET(GVAR(masterIdTable), _radio));
+            };
+        };
     } forEach _unaccountedForIds;
+
     private _toUpdate = [];
     {
         private _key = _x;

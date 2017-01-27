@@ -38,16 +38,6 @@
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
 ] call CBA_Settings_fnc_init;
 
-[
-    QGVAR(disableDesyncHint),
-    "CHECKBOX",
-    localize LSTRING(disableDesyncHint_displayName),
-    "ACRE2",
-    true,
-    false,
-    {EGVAR(sys_radio,disableDesyncHint) = _this}
-] call CBA_Settings_fnc_init;
-
 // Difficulty settings
 // Interference
 [
