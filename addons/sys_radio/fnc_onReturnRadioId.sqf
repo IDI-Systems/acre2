@@ -77,5 +77,5 @@ if (_player == acre_player) then {
         WARNING_3("Radio ID %1 was returned for a non-existent base class (%2) in inventory! Possibly removed by a gear script while requesting ID: %3!",_class,_baseRadio,_weapons);
     };
     GVAR(requestingNewId) = false;
-    ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_globalEvent);
+    ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_serverEvent);
 };
