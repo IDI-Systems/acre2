@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-if (!isServer) exitWith {};
-
 LOG("ENTER");
 
 ACRE_DATA_SYNCED = true;

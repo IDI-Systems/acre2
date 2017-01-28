@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-if (!isServer) exitWith {};
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
