@@ -20,7 +20,7 @@ params ["_class","_player"];
 _class = toLower _class;
 
 if ((GVAR(unacknowledgedIds) find _class) != -1) then {
-    if (isServer && {hasInterface && acre_player == _player}) then {
+    if (hasInterface && {isServer && {acre_player == _player}}) then {
         private _fnc = {
             _class = _this;
             GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];
