@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-NO_CLIENT;
+if (!isServer) exitWith {};
 
 ADDON = false;
 
