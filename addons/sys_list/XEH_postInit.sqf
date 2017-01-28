@@ -1,5 +1,7 @@
 #include "script_component.hpp"
-NO_DEDICATED;
+
+if (!hasInterface) exitWith {};
+
 LOG("ADDING KEY HANDLERS FOR LIST");
 
 ["ACRE2", "CycleRadio", (localize LSTRING(CycleRadio)), { [1] call FUNC(cycleRadios) }, "", [58, [true, false, true]]] call cba_fnc_addKeybind;

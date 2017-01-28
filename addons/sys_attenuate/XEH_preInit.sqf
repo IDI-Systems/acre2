@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-NO_DEDICATED;
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
@@ -10,4 +8,6 @@ PREP_RECOMPILE_END;
 
 GVAR(attenuationCache) = HASH_CREATE;
 
-ADDON = true;
+if (!hasInterface) exitWith {
+    ADDON = true;
+};

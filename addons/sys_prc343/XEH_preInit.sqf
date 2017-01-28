@@ -8,7 +8,9 @@ PREP_RECOMPILE_END;
 
 [] call FUNC(preset_information);
 
-NO_DEDICATED;
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 GVAR(currentRadioId) = -1;
 

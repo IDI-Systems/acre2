@@ -1,5 +1,6 @@
 #include "script_component.hpp"
-NO_DEDICATED;
+
+if (!hasInterface) exitWith {};
 
 private _components = configFile >> "CfgAcreComponents";
 

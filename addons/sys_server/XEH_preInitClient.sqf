@@ -1,12 +1,14 @@
 #include "script_component.hpp"
 
-NO_DEDICATED;
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
 #include "XEH_PREPClient.hpp"
 PREP_RECOMPILE_END;
+
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 GVAR(objectIdRelationTable) = HASH_CREATE;
 GVAR(pendingIdRelationUpdates) = [];

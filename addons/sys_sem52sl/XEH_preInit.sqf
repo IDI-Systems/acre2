@@ -15,7 +15,9 @@ GVAR(channelModulation) = "FM";
 GVAR(channelEncryption) = 0;
 GVAR(channelSquelch) = 0;
 
-NO_DEDICATED;
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 GVAR(currentRadioId) = -1;
 

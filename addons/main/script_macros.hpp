@@ -3,7 +3,6 @@
 
 #define CALL_RPC(proc,params) [proc, params] call EFUNC(sys_rpc,callRemoteProcedure);
 
-#define NO_DEDICATED if (!hasInterface) exitWith {}
 #define NO_CLIENT if (!isServer) exitWith {}
 
 #define RGB_GREEN 0, 0.5, 0, 1

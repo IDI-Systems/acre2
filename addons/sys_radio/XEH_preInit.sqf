@@ -10,7 +10,9 @@ PREP_RECOMPILE_END;
 GVAR(radioUniqueCache) = HASH_CREATE;
 GVAR(radioBaseClassCache) = HASH_CREATE;
 
-NO_DEDICATED;
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 //DGVAR(workingRadioList) = [];
 DGVAR(currentRadioList) = [];
