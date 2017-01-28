@@ -515,8 +515,10 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                                         return;
                                     }
                                 }
-                                if (last_error == ERROR_ACCESS_DENIED) { //Not error 32
-                                    int result = MessageBoxA(NULL, "ACRE2 was unable to copy the TeamSpeak 3 plugin. This is most likely because Steam is not running with admin privileges. Please restart Steam as administrator (right click on the shortcut -> run as administrator) and relaunch Arma 3 with ACRE2 loaded. You only need to do this when ACRE2 is updated. \n\nWould you like to run Arma 3 anyway?", "ACRE2 Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
+                                else {
+                                    // ERROR_ACCESS_DENIED.
+                                    std::string message = "ACRE2 was unable to remove an old version of the TeamSpeak 3 plugin. You have two options:\n\n1) Manually delete the following file: \n" + file + "\n\n2) Restart Steam and Arma 3 as administrator (right click on the shortcut -> run as administrator) and relaunch Arma 3 with ACRE2 loaded. \n\nWould you like to run Arma 3 anyway?";
+                                    int result = MessageBoxA(NULL, (LPCSTR)message.c_str(), "ACRE2 Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
                                     if (result == IDNO) {
                                         TerminateProcess(GetCurrentProcess(), 0);
                                         return;
@@ -567,7 +569,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                     ss << "\n";
                 }
             }
-            ss << "If this is NOT your TeamSpeak 3 installation folder(s), please uninstall all versions of TeamSpeak 3 and reinstall both it and ACRE2 or copy the plugins manually to your correct installation.\n";
+            ss << "If this is NOT valid, please uninstall all versions of TeamSpeak 3 and reinstall both it and ACRE2 or copy the plugins manually to your correct installation.\n";
             ss << "\n";
             ss << "If this appears to be the correct folder(s) please remember to enable the plugin in TeamSpeak 3!";
             int result = MessageBoxA(NULL, (LPCSTR)ss.str().c_str(), "ACRE2 Installation Success", MB_OK | MB_ICONINFORMATION);
