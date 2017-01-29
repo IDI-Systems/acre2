@@ -62,7 +62,7 @@ DFUNC(monitorRadios_PFH) = {
             };
             TRACE_1("Getting ID for", _radio);
 
-            ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_globalEvent);
+            ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
         };
         private _isUnique = _radio call EFUNC(sys_radio,isUniqueRadio);
         if (_isUnique) then {
