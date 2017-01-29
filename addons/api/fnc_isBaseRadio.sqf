@@ -18,5 +18,3 @@
 params ["_weapon"];
 
 _weapon call EFUNC(sys_radio,isBaseClassRadio);
-
-false
