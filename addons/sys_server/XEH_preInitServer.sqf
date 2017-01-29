@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-NO_CLIENT;
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
