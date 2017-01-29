@@ -6,12 +6,10 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
-if (!hasInterface) exitWith {
-    ADDON = true;
+if (hasInterface) then {
+    DGVAR(loadedSounds) = [];
+    DGVAR(callBacks) = HASH_CREATE;
+    DGVAR(delayedSounds) = [];
 };
-
-DGVAR(loadedSounds) = [];
-DGVAR(callBacks) = HASH_CREATE;
-DGVAR(delayedSounds) = [];
 
 ADDON = true;

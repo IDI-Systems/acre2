@@ -8,6 +8,4 @@ PREP_RECOMPILE_END;
 
 GVAR(attenuationCache) = HASH_CREATE;
 
-if (!hasInterface) exitWith {
-    ADDON = true;
-};
+ADDON = true;

@@ -6,14 +6,12 @@ PREP_RECOMPILE_START;
 #include "XEH_PREPClient.hpp"
 PREP_RECOMPILE_END;
 
-if (!hasInterface) exitWith {
-    ADDON = true;
+if (hasInterface) then {
+    GVAR(objectIdRelationTable) = HASH_CREATE;
+    GVAR(pendingIdRelationUpdates) = [];
+
+    GVAR(clientGCPFHID) = -1;
+    GVAR(radioGCWatchList) = [];
 };
-
-GVAR(objectIdRelationTable) = HASH_CREATE;
-GVAR(pendingIdRelationUpdates) = [];
-
-GVAR(clientGCPFHID) = -1;
-GVAR(radioGCWatchList) = [];
 
 ADDON = true;
