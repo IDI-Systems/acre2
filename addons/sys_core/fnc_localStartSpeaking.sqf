@@ -16,7 +16,6 @@
  *
  * Public: No
  */
- #define DEBUG_MODE_FULL
 #include "script_component.hpp"
 
 private _onRadio = parseNumber(_this select 2);

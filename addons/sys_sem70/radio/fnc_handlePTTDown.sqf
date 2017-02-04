@@ -58,7 +58,6 @@ if (_manualChannelSelection != 1) then {
     private _frequencies = HASH_GET(_channel,"frequencies");
     private _frequency = _frequencies call BIS_fnc_selectRandom;
 
-    //[_radioId, "setState", ["transmittingFrequency",_frequency]] call EFUNC(sys_data,dataEvent);
     HASH_SET(_channel, "frequencyTX", _frequency);
     HASH_SET(_channel, "frequencyRX", _frequency);
 

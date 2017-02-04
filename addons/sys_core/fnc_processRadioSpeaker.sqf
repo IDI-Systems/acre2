@@ -14,7 +14,6 @@
  *
  * Public: No
  */
-#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 BEGIN_COUNTER(process_radio_speaker);
 private ["_okRadios", "_functionName"];
@@ -23,7 +22,6 @@ params["_unit","_playerRadios"];
 TRACE_2("",_unit,_playerRadios);
 
 private _radioId = _unit getVariable QGVAR(currentSpeakingRadio);
-diag_log _radioId;
 if(_radioId == "") exitWith { false };
 // @todo if Underwater Radios are implemented
 //if (ACRE_LISTENER_DIVE == 1) exitWith { false };
