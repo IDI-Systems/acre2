@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles death of unit, primarily for handling local player death.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [player] call acre_sys_core_fnc_onPlayerKilled
  *
  * Public: No
  */

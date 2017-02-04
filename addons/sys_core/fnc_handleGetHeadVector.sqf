@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sends the current head direction vector to the TeamSpeak plugin.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_handleGetHeadVector
  *
  * Public: No
  */

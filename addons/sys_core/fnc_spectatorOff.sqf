@@ -1,21 +1,20 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Disables spectator mode on the local player.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_spectatorOff
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 ACRE_IS_SPECTATOR = false;
-["acre_sys_server_onSetSpector", [GVAR(ts3id), 0] ] call CALLSTACK(CBA_fnc_globalEvent);
+["acre_sys_server_onSetSpector", [GVAR(ts3id), 0] ] call CALLSTACK(CBA_fnc_serverEvent);
 true

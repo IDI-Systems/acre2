@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of other (remote) players starting to speaking.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: TeamSpeak ID of talking player <STRING>
+ * 1: Language ID <STRING>
+ * 2: Net ID of player object <STRING>
+ * 3: On radio <STRING>
+ * 4: Radio ID (default: ',') <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_remoteStartSpeaking
  *
  * Public: No
  */
@@ -78,7 +81,6 @@ private _result = false;
 
     if (isNull _unit) exitWith {
         _msg = format ["START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, On Radio: %4", acre_player, _speakingId, _netId, _onRadio];
-        // REMOTEDEBUGMSG(_msg);
         WARNING(_msg);
         false
     };

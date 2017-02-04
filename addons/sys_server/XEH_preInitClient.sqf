@@ -8,7 +8,10 @@ PREP_RECOMPILE_START;
 #include "XEH_PREPClient.hpp"
 PREP_RECOMPILE_END;
 
-DGVAR(objectIdRelationTable) = HASH_CREATE;
-DGVAR(pendingIdRelationUpdates) = [];
+GVAR(objectIdRelationTable) = HASH_CREATE;
+GVAR(pendingIdRelationUpdates) = [];
+
+GVAR(clientGCPFHID) = -1;
+GVAR(radioGCWatchList) = [];
 
 ADDON = true;

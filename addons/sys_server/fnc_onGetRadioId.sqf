@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function is used to start initializing a radio for the intended player. The callback is used to complete the process.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Player's game object <OBJECT>
+ * 1: Radio base classname <STRING>
+ * 2: CBA event name that is triggered when complete <STRING>
+ * 3: Replacement ID - Use this when copying data from another radio <STRING> (default: "")
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [acre_player,"acre_prc152","acre_sys_radio_returnRadioId"] call acre_sys_server_fnc_onGetRadioId
  *
  * Public: No
  */
@@ -18,7 +20,7 @@
 
 params ["_player", "_class", "_callback", ["_replacementId",""]];
 
-if (getNumber (configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0) then {
+if !(_class call EFUNC(sys_radio,isBaseClassRadio)) then {
     _class = BASECLASS(_class);
 };
 
