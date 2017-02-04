@@ -226,7 +226,7 @@ if(_transmissionsChanged) then {
             //diag_log text format["sorted: %1", _sortedRadios];
             //diag_log text format["junk: %1", _junkTransmissions];
             //diag_log text format["ok: %1", _hearableTransmissions];
-            if(ACRE_INTERFERENCE) then {
+            if(EGVAR(sys_core,interference)) then {
                 if((count _hearableTransmissions) > 0) then {
                     _junkTransmissions = _hearableTransmissions + _junkTransmissions;
                     _hearableTransmissions params ["_bestSignal"];
@@ -274,7 +274,11 @@ if(_transmissionsChanged) then {
             private _hearableTransmissions = [];
             private _junkTransmissions = [];
             private _digital = false;
-            private _rxFreqRX = HASH_GET(_radioRxData, "frequencyRX")
+            private _rxFreqRX = HASH_GET(_radioRxData, "frequencyRX");
+            if (isNil "_rxFreqRX" ) then {
+                _rxFreqRX = -1; 
+            };
+
             //private _rxFreqTX = HASH_GET(_radioRxData, "frequencyTX")
             {
                 private _txId = _x select 1;
@@ -287,10 +291,10 @@ if(_transmissionsChanged) then {
                     if (_rxFreqRX isEqualTo _txFreqTX) then {
                         PUSH(_hearableTransmissions, _x);
                     } else {
-                        private _currentChannel = [_radioIdRX, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
+                        private _currentChannel = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
                         HASH_SET(_radioRxData, "frequencyTX", _txFreqTX);
                         HASH_SET(_radioRxData, "frequencyRX", _txFreqTX);
-                        private _success = [_radioIdRX, "setChannelData", [_currentChannel, _radioRxData]] call EFUNC(sys_data,dataEvent); // Will be true if successful
+                        private _success = [_radioId, "setChannelData", [_currentChannel, _radioRxData]] call EFUNC(sys_data,dataEvent); // Will be true if successful
                         // If success then push hearable Transmission
                         if (_success) then {
                             PUSH(_hearableTransmissions, _x);
@@ -306,7 +310,7 @@ if(_transmissionsChanged) then {
             //diag_log text format["sorted: %1", _sortedRadios];
             //diag_log text format["junk: %1", _junkTransmissions];
             //diag_log text format["ok: %1", _hearableTransmissions];
-            if(ACRE_INTERFERENCE) then {
+            if(EGVAR(sys_core,interference)) then {
                 if((count _hearableTransmissions) > 0) then {
                     _junkTransmissions = _hearableTransmissions + _junkTransmissions;
                     _hearableTransmissions params ["_bestSignal"];
