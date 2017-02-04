@@ -1,32 +1,32 @@
 ---
-title: Custom radio signal strengh functions
+title: Custom Signal Processing
 ---
 
-ACRE2 allows replacing its default signal strength calculator with a custom signal strength function. This can be done by using the following API function `acre_api_fnc_setCustomSignalFunc`. This page addresses aims to assist in creating your own and provide an examples.
+ACRE2 allows replacing its default signal strength calculator with a custom signal strength function: This can be done by using the following API function `acre_api_fnc_setCustomSignalFunc`. This page aims to assist in creating your own and provide examples.
 
-The default signal calculator is sophisticated and complex and as such is largely calculated in the C++ extension. However this signal model doesn't always appeal to every community and it doesn't always afford possibilites for various mission mechanics such as radio jammers. This command is intended to be used by communities seeking a specific signal expierence or for highly ambitious mission makers.
+The default signal calculator is sophisticated and complex and as such is largely calculated in the C++ extension. However this signal model doesn't always appeal to every community and it doesn't always afford possibilites for various mission mechanics such as radio jammers. This function is intended to be used by communities seeking a specific signal experience or for highly ambitious mission makers.
 
-For the time being this command is highly expiermental and is included as of dev-build 940. 
+For the time being this command is highly experimental and is included as of dev-build 940. 
 
 ## Function Usage
 
-You can see the default function here but note this mainly just a dispatcher that sends data to the C++ extension. It gives an idea as to what data might be useful. It does not provide insight into the default signal model that is used though.
+You can see the default function here but note this is mainly just a dispatcher that sends data to the C++ extension. It gives an idea as to what data might be useful. It does not provide insight into the default signal model that is used though.
 
 ### Input
 
 The input to your custom function will be of the format: `[30, 5000, "ACRE_PRC343_ID_1", "ACRE_PRC343_ID_2"]`
 - The first element is the frequency (megahertz) e.g. `30`. 
-- The second element is the power of the transmitter (milliwatts) e.g. `5000`,.
+- The second element is the power of the transmitter (milliwatts) e.g. `5000`.
 - Then the classname of the recieving radio e.g. `"ACRE_PRC343_ID_1"`.
-- Lastly the classname of the recieving radio e.g. `"ACRE_PRC343_ID_2"`.
+- Lastly the classname of the broadcasting radio e.g. `"ACRE_PRC343_ID_2"`.
 
 ### Output
 
 The output of your function should be an array of size 2 with two numerical values:
-- The signal strength as a percentage (0-1). This value is what will be used by the teamspeak plugin to adjust the audio of the player being heard on the radio.
-- The decibal signal strength value (dBM). A typical value that is heard is between 0 to ~ -110 (radio specific). Lower values are not heard.
+- The signal strength as a percentage (0-1). This value is what will be used by the TeamSpeak 3 plugin to adjust the audio of the player being heard on the radio.
+- The decibel signal strength value (dBM). A typical value that is heard is between 0 to about -110 (radio specific). Lower values are not heard.
 
-The decibal signal strength value value is used to determine if the specific radio is capabable of hearing the transmission. This process is typically carried out in the `handleMultipleTransmissions` function for that particular radio radio (i.e. AN/PRC-148). Firstly there exists a minimum signal sensitivity that each radio can pick up - This can be thought of as the minimum signal strength the hardware is capabable of registering. The minimum that is registered is typically around -100 (AN/PRC343) to -117 (AN/PRC-117F) this is defined in `configFile >> 'CfgAcreComponents' >> RADIO_BASECLASS >> 'sensitivityMin'`. Some radios also make use of Squelch - If you are curious to see this it is all handled in the radio specific handleMultipleTransmissions function.
+The decibel signal strength value value is used to determine if the specific radio is capable of hearing the transmission. This process is typically carried out in the `handleMultipleTransmissions` function for that particular radio radio (i.e. AN/PRC-148). Firstly there exists a minimum signal sensitivity that each radio can pick up - This can be thought of as the minimum signal strength the hardware is capable of registering. The minimum that is registered is typically around -100 (AN/PRC343) to -117 (AN/PRC-117F) which is defined in `configFile >> 'CfgAcreComponents' >> RADIO_BASECLASS >> 'sensitivityMin'`. Some radios also make use of Squelch - If you are curious to see this is all handled in the radio specific `handleMultipleTransmissions` function.
 
 ### Helper functions
 
@@ -38,8 +38,8 @@ The provided inputs are a bit lacking as they don't provide the position or any 
 
 ## Examples
 
-### Simple calculation.
-Below is an example of a simple calculation that is based on how ACRE1 calculated signal loss. It is a largely based on [free-space path loss](https://en.wikipedia.org/wiki/Free-space_path_loss) over the distance which does not take into account terrain. It is also provides a bit of a boost to the signal strength of the AN/PRC-343. In this example the range of a AN/PRC-343 is around 500m and virtually all other radios will have no problems with arma terrains (40km+).
+### Simple calculation
+Below is an example of a simple calculation that is based on how ACRE1 calculated signal loss. It is a largely based on [free-space path loss](https://en.wikipedia.org/wiki/Free-space_path_loss) over the distance which does not take into account terrain. It is also provides a bit of a boost to the signal strength of the AN/PRC-343. In this example the range of a AN/PRC-343 is around 500m and virtually all other radios will have no problems with Arma terrains (40km+).
 
 ```
 MY_CUSTOM_ACRE_FUNC = {
@@ -97,5 +97,5 @@ MY_CUSTOM_ACRE_FUNC = {
 
 ## Debugging
 
-See the radio signal debugging wiki page.
+See [Radio Signal Debugging](radio-signal-debugging)
 
