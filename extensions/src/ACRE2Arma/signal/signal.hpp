@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #define NOMINMAX 1
 #include <algorithm>
 #include "shared.hpp"
@@ -78,13 +78,21 @@ namespace acre {
 
             bool load(const arguments & args_, std::string & result) {
                 bool loaded = false;
+                LOG(INFO) << "Attempting to load map from PBO...";
                 int32_t map_load_result = acre::signal::map_loader::get().get_map(args_.as_string(0), _map, loaded);
-
                 if (map_load_result > -2) { //Return 0 = OKAY, -1 RECOVERD, -2 FAILURE
+                    LOG(INFO) << "Map Loaded, Error Status: " << map_load_result;
                     if (!loaded) {
+                        LOG(INFO) << "Adding signal processing to map...";
                         _signal_processor = acre::signal::model::multipath(_map);
+                        LOG(INFO) << "Finished adding signal processor to map.";
                     }
-                    LOG(INFO) << "Map Loaded";
+                    else {
+                        LOG(INFO) << "Reloaded current map.";
+                    }
+                }
+                else {
+                    LOG(INFO) << "ERROR Map Loading, Error Code: " << map_load_result;
                 }
                 result = std::to_string(map_load_result);
                 return true;
