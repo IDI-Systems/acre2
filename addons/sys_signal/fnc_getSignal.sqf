@@ -18,7 +18,7 @@
  */
 #include "script_component.hpp"
 
-if (!isNil "ACRE_CUSTOM_SIGNAL_FUNC") exitWith { _this call ACRE_CUSTOM_SIGNAL_FUNC; };
+if (!isNil QGVAR(customSignalFunc)) exitWith { _this call GVAR(customSignalFunc); };
 
 params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
