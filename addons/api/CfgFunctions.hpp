@@ -19,6 +19,8 @@ class CfgFunctions {
             PATHTO_FNC(setInterference);
             PATHTO_FNC(ignoreAntennaDirection);
 
+            PATHTO_FNC(setCustomSignalFunc);
+
             PATHTO_FNC(isRadio);
             PATHTO_FNC(hasRadio);
             PATHTO_FNC(hasKindOfRadio);
