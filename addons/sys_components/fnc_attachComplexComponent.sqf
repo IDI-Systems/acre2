@@ -1,16 +1,20 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Attachs a complex component to another complex component.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Parent component Id <STRING>
+ * 1: Parent connector Index <NUMBER>
+ * 2: Child component Id <STRING>
+ * 3: Child connector Index <NUMBER>
+ * 4: Attributes of connection <HASH>
+ * 5: Force - Permits replacing a pre-existing connection <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Succesful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,[],false] call acre_sys_components_fnc_attachComplexComponent;
  *
  * Public: No
  */
@@ -19,8 +23,9 @@
 params ["_parentComponentId", "_parentConnector", "_childComponentId", "_childConnector", "_attributes", ["_force",false]];
 
 private _return = false;
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass"));
-private _childComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _childComponentId >> "acre_baseClass"));
+
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> ([_parentComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
+private _childComponentClass = configFile >> "CfgAcreComponents" >> ([_childComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
 
 private _componentSimple = getNumber (_parentComponentClass >> "simple");
 if (_componentSimple == 1) exitWith {

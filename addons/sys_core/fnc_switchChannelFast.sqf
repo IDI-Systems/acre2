@@ -20,8 +20,7 @@ params ["_dir"];
 private _return = false;
 private _radioId = ACRE_ACTIVE_RADIO;
 
-private _baseConfig = inheritsFrom  (configFile >> "CfgWeapons" >> _radioId);
-private _radioType = configName (_baseConfig);
+private _radioType = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 private _typeName = getText (configFile >> "CfgAcreComponents" >> _radioType >> "name");
 private _isManpack = getNumber (configFile >> "CfgAcreComponents" >> _radioType >> "isPackRadio");
 

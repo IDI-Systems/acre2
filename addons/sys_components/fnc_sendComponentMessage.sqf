@@ -1,24 +1,23 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Send a message to a component
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Parent component class <STRING>
+ * 1: Connector ID <NUMBER>
+ * 2: Message <ANY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Message sent <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1",0,"hello"] call acre_sys_components_fnc_sendComponentMessage
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-private ["_parentComponentId", "_parentConnector"]; // UNDEFINED (was like this orginally), TODO: FIX
-
-params ["_componentId","_connectorId", "_message"];
+params ["_parentComponentId","_parentConnector", "_message"];
 
 private _return = false;
 
@@ -40,7 +39,7 @@ if (!isNil "_parentComponentData") then {
                     };
                 } forEach _childComponentData;
                 if (_childConnector != -1) then {
-                    [_childComponentId, "handleComponentMessage", [_childConnector, _message, _componentId, _connectorId]] call EFUNC(sys_data,dataEvent);
+                    [_childComponentId, "handleComponentMessage", [_childConnector, _message, _parentComponentId, _parentConnector]] call EFUNC(sys_data,dataEvent);
                     _return = true;
                 };
             };
