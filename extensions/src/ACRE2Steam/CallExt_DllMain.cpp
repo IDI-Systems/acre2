@@ -439,7 +439,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 bool try_copy = true;
 
 
-                // Skip directory if the folder does not exist.
+                // Skip directory if the folder the plugins folder should be in does not exist.
                 DWORD location_folder_attr = GetFileAttributes(location.c_str());
                 if (location_folder_attr == INVALID_FILE_ATTRIBUTES) { continue; }
                 if (!(location_folder_attr & FILE_ATTRIBUTE_DIRECTORY)) { continue; }
@@ -489,8 +489,13 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
             std::string remove_paths = "";
             for (auto location : unique_delete_ts_locations) {
-                // Skip directory if the folder does not exist.
                 std::string plugin_folder = location + "\\plugins";
+
+                // Skip directory if the plugins folder does not exist.
+                DWORD plugin_folder_attr = GetFileAttributes(plugin_folder.c_str());
+                if (plugin_folder_attr == INVALID_FILE_ATTRIBUTES) { continue; }
+                if (!(plugin_folder_attr & FILE_ATTRIBUTE_DIRECTORY)) { continue; }
+
 
                 std::vector<std::string> files;
                 std::string ts_path_x64 = plugin_folder + "\\acre2_win64.dll";
