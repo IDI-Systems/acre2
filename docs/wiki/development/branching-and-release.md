@@ -17,18 +17,22 @@ PATCH version when a release contains only bug fixes.
 
 ## Branching and Releases
 
-When an ACRE2 release is being prepared, the current `master` branch will be merged into the `release` branch. The `release` branch will not contain any direct commits and no other branches will be merged into this branch. The exception being hotfixes, which are branched off `release` and merged back into `release`, allowing patches to be released without disrupting the work on features. `release` will be merged back into `master` as often as possible.
+When an ACRE2 release is being prepared, the current `master` branch will be merged into the `development-build` branch which will automatically start a development build process. Once the development build is confirmed to be stable, `development-build` (or `master`) branch is merged into `release-build` branch which will automatically start a build and publish process.
 
-Hotfixes are fixes for critical bugs that prevent stable gameplay with the currently available version of ACRE2.
+The `development-build` and `release-build` branches will not contain any direct commits and no other branches will be merged into those branches. The exception being hotfixes, which are branched off `release-build` into a new `hotfix` branch and merged back once hotfix is ready (at which point the hotfix branch is deleted), allowing patches to be released without disrupting the work on features. `release-build` will automaticlly be merged back into `master` during the automatic build process.
 
-During this release process work can continue on as normal on the `master` branch. This includes new features, bug fixes that won't make it for release or other work. These will not be merged into the `release` branch until the next release cycle.
+Hotfixes are fixes for critical bugs that prevent stable gameplay with the currently available stable version of ACRE2.
+
+During this release process work can continue on as normal on the `master` branch. This includes new features, bug fixes that won't make it for release or other work. These will not be merged into the `release-build` branch until the next release cycle.
 
 ### Branching
 
-* New features, bug fixes that are not a hotfix or other work will always be branched off `master` or another branch but never a `hotfix` or the `release` branch.
-* Hotfixes are always branched off the `release` branch
-* The `release` branch is never merged or deleted. Only `master` or hotfixes are allowed to merge into the `release` branch.
+- New features, bug fixes that are not a hotfix or other work will always be branched off `master` or another branch but never a `hotfix` or the `release-build` branch.
+- Hotfixes are always branched off the `release-build` branch.
+- The `release-build` and `development-build` branches are never merged or deleted.
+    - Only `master` is allowed to merge into the `development-build` branch.
+    - Only `master` or hotfixes are allowed to merge into the `release-build` branch.
 
 ### Diagram
 
-{% include image.html file="dev/branching-and-release.jpg" alt="Branching and Release Flowchart" %}
+{% include image.html file="dev/branching-and-release.png" alt="Branching and Release Flowchart" %}
