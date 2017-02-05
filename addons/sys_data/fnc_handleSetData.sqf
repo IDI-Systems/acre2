@@ -23,8 +23,8 @@ acre_sys_core_speaking_cache_valid = false;
 if (_remote) exitWith { true };
 
 TRACE_1("SET DATA EVENT ENTER", _this);
-private _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _radioId);
-private _radioBaseClass = configName ( _baseConfig );
+
+private _radioBaseClass = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 
 private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
 if (_interfaceClass == "") then {

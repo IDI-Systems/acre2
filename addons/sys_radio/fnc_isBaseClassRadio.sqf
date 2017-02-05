@@ -17,12 +17,12 @@
 
 params ["_radio"];
 
-if (HASH_HASKEY(GVAR(radioBaseClassCache),_radio)) exitWith {
-    HASH_GET(GVAR(radioBaseClassCache),_radio);
+if (HASH_HASKEY(GVAR(radioIsBaseClassCache),_radio)) exitWith {
+    HASH_GET(GVAR(radioIsBaseClassCache),_radio);
 };
 
 private _configEntry = configFile >> "CfgWeapons" >> _radio;
 private _isBaseClassRadio = (getNumber(_configEntry >> "acre_hasUnique") == 1) && {getNumber(_configEntry >> "acre_isRadio") == 1};
-HASH_SET(GVAR(radioBaseClassCache),_radio,_isBaseClassRadio);
+HASH_SET(GVAR(radioIsBaseClassCache),_radio,_isBaseClassRadio);
 
 _isBaseClassRadio
