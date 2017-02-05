@@ -47,7 +47,7 @@
     "ACRE2",
     true,
     true,
-    {[_this] call EFUNC(api,setInterference)}
+    {[_this, true] call EFUNC(api,setInterference)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
 // Full duplex
@@ -58,7 +58,7 @@
     "ACRE2",
     false,
     true,
-    {[_this] call EFUNC(api,setFullDuplex)}
+    {[_this, true] call EFUNC(api,setFullDuplex)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
 // Antena direction
@@ -69,7 +69,7 @@
     "ACRE2",
     false,
     true,
-    {[_this] call EFUNC(api,ignoreAntennaDirection)}
+    {[_this, true] call EFUNC(api,ignoreAntennaDirection)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
 // Terrain loss
@@ -80,7 +80,7 @@
     "ACRE2",
     [0, 1, 1, 2],
     true,
-    {[_this] call EFUNC(api,setLossModelScale)}
+    {[_this, true] call EFUNC(api,setLossModelScale)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
 // Reveal to AI
@@ -91,10 +91,11 @@
     "ACRE2",
     true,
     true,
-    {[_this] call EFUNC(api,setRevealToAI)}
+    {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
 
+// @todo remove in 2.7.0
 // Module settings
 // Applies the difficulty module settings over CBA settings. If the module is not present, this function has no effect.
 ["CBA_beforeSettingsInitialized", {

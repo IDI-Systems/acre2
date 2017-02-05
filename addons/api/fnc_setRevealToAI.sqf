@@ -5,6 +5,7 @@
  *
  * Arguments:
  * 0: Reveal players to AI that speak <BOOL>
+ * 1: CBA Settings Call <BOOL> (default: false)
  *
  * Return Value:
  * Are players that speak revealed to AI <BOOL>
@@ -16,12 +17,21 @@
  */
 #include "script_component.hpp"
 
-INFO_2("%1 called with: %2",QFUNC(setRevealToAI),_this);
-
 if (!hasInterface) exitWith {false};
 
-params ["_var"];
+// @todo remove backwards compatibility in 2.7.0 (including second argument) and move function to sys_core
+params ["_var", ["_CBASettingCall", false]];
 
+// Backwards compatibility - block CBA settings if API function called directly
+if (_CBASettingCall && {!isNil QGVAR(revealToAIBlockCBASetting)}) exitWith {};
+
+if (!_CBASettingCall) then {
+    GVAR(revealToAIBlockCBASetting) = true;
+    ACRE_DEPRECATED(QFUNC(setRevealToAI),"2.7.0","CBA Settings");
+    WARNING_1("%1 has been called directly and CBA Setting for it has been blocked!",QFUNC(setRevealToAI));
+};
+
+// Set
 if !(_var isEqualType false) exitWith { false };
 
 if (!EGVAR(sys_core,revealToAI) && _var) then {
