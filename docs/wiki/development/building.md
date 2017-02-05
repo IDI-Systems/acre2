@@ -61,7 +61,7 @@ To start the game using this build, you can use the following modline:
 -mod=@CBA_A3;idi\clients\acre
 ```
 
-You will also need `acre.dll` and `ACRE2Arma.dll` placed in `idi\clients\acre` folder. You can obtain those from last release or [build them yourself](building-extensions). TeamSpeak plugin is not required for basic operation.
+You will also need `acre.dll` and `ACRE2Arma.dll` (or `acre_x64.dll` and `ACRE2Arma_x64.dll` for 64-bit) placed in `idi\clients\acre` folder. You can obtain those from last release or [build them yourself](building-extensions). TeamSpeak plugin is not required for basic operation.
 
 ### Create a Release Build
 

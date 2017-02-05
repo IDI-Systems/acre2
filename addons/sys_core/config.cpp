@@ -14,7 +14,6 @@ class CfgPatches {
 };
 #include "CfgEventHandlers.hpp"
 #include "CfgSounds.hpp"
-#include "CfgVehicles.hpp"
 
 class CfgAcreWorlds {
 

@@ -18,7 +18,7 @@
 
 params ["_radioId","","_radios"];
 
-if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !ACRE_FULL_DUPLEX) exitWith { [] };
+if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !EGVAR(sys_core,fullDuplex)) exitWith { [] };
 private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
 private _found = false;
 private _transmissionsChanged = false;
@@ -113,7 +113,7 @@ if (_transmissionsChanged) then {
             PUSH(_hearableTransmissions, _x);
         } forEach _sortedRadios;
 
-        if (ACRE_INTERFERENCE) then {
+        if (EGVAR(sys_core,interference)) then {
             if ((count _hearableTransmissions) > 0) then {
                 _junkTransmissions append _hearableTransmissions;
                 _hearableTransmissions params ["_bestSignal"];
@@ -150,9 +150,9 @@ if (_transmissionsChanged) then {
         _signalData params ["_signalPercent","_signalDbM"];
 
         private _squelch = -100;
-        if (_signalDbM < _squelch || !ACRE_INTERFERENCE) then {
+        if (_signalDbM < _squelch || !EGVAR(sys_core,interference)) then {
 
-            if (ACRE_INTERFERENCE) then {
+            if (EGVAR(sys_core,interference)) then {
                 _okRadios = [];
             };
             private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);

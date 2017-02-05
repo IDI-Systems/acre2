@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Reserves a unique ID for a radio baseclass and returns it.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Base class <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Unique id for classname (-1 is returned if no more unique Ids are left) <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["acre_prc343"] call acre_sys_server_fnc_getRadioId
  *
  * Public: No
  */
@@ -34,7 +33,7 @@ private _ret = -1;
 for "_i" from 1 to 512 do {
     if (!(_i in _takenIds)) exitWith {
         _ret = _i;
-        PUSH(_takenIds, _ret);
+        _takenIds pushBack _ret;
     };
 };
 

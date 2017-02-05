@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of other (remote) players stopping speaking.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: TeamSpeak ID of talking player <STRING>
+ * 1: Net ID of player object <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["0","0:2"] call acre_sys_core_fnc_remoteStopSpeaking
  *
  * Public: No
  */
@@ -73,7 +73,6 @@ _speakingId = parseNumber _speakingId;
     };
     if (!_found) then {
         private _msg = format ["STOP SPEAKING: Player [%1] could not find a player with ID: %2 %3", acre_player, _speakingId, _netId];
-        // REMOTEDEBUGMSG(_msg);
         WARNING(_msg);
     };
     TRACE_1("REMOTE STOPPED SPEAKING",_speakingId);

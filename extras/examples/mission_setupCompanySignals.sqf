@@ -1,7 +1,7 @@
 /*
  * Sample of setting up RTO's for a company signals setup.
  *
- * Called by: [this, "platoon_rto"] call compile "mission_setupCompanySignals.sqf";
+ * Called by: [this, "platoon_rto"] call compile preprocessFileLineNumbers "mission_setupCompanySignals.sqf";
  *
  * This setup assumes that each RTO has a single PRC-152 and a single PRC-117F.
  * Each platoon command and the company commander has not been configured in this config,

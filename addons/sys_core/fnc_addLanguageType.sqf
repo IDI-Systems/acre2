@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Babel add a new language.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Language key name <STRING>
+ * 1: Language display name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["en", "English"] call acre_sys_core_fnc_addLanguageType
  *
  * Public: No
  */
@@ -18,4 +18,4 @@
 
 params ["_languageKey", "_languageName"];
 
-PUSH(GVAR(languages), [ARR_2(_languageKey,_languageName)]);
+GVAR(languages) pushBack [_languageKey, _languageName];

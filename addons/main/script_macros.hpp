@@ -4,7 +4,6 @@
 #define CALL_RPC(proc,params) [proc, params] call EFUNC(sys_rpc,callRemoteProcedure);
 
 #define NO_DEDICATED if (!hasInterface) exitWith {}
-#define NO_CLIENT if (!isServer) exitWith {}
 
 #define RGB_GREEN 0, 0.5, 0, 1
 #define RGB_BLUE 0, 0, 1, 1
@@ -77,7 +76,6 @@ Antenna Defines
     count = COUNT; \
 }
 
-#define REMOTEDEBUGMSG(msg) [QEGVAR(sys_server,remoteDebugMsg), msg] call CBA_fnc_globalEvent;
 #define LOAD_SOUND(className) [QUOTE(className)] call EFUNC(sys_sounds,loadSound);
 
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
@@ -94,16 +92,16 @@ Antenna Defines
 
 #define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if (_ret == -1) then { WARNING_1("%1 has no TS3 ID",_this); }; _ret })
 
-#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
+#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) isEqualTo "acre_hash"})
 
-#define HASH_CREATE (call EFUNC(lib,fastHashCreate))
+#define HASH_CREATE (call EFUNC(sys_core,fastHashCreate))
 #define HASH_DELETE(hash) (FAST_HASH_TO_DELETE pushBack hash)
 #define HASH_HASKEY(hash, key) (!(isNil {hash getVariable key}))
 #define HASH_SET(hash, key, val) (hash setVariable [key, val])
 #define HASH_GET(hash, key) (hash getVariable key)
 #define HASH_REM(hash, key) (hash setVariable [key, nil])
-#define HASH_COPY(hash) (hash call EFUNC(lib,fastHashCopy))
-#define HASH_KEYS(hash) (hash call EFUNC(lib,fastHashKeys))
+#define HASH_COPY(hash) (hash call EFUNC(sys_core,fastHashCopy))
+#define HASH_KEYS(hash) (hash call EFUNC(sys_core,fastHashKeys))
 
 #define HASHLIST_CREATELIST(keys) []
 #define HASHLIST_CREATEHASH(hashList) HASH_CREATE

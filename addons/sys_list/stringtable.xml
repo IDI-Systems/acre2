@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_list">
+        <Key ID="STR_ACRE_sys_list_CycleRadio">
+            <English>Cycle Radio</English>
+            <Spanish>Cambiar Radio</Spanish>
+            <Czech>Změnit rádio</Czech>
+            <German>Funkgeräte durchschalten</German>
+            <Japanese>ラジオを切り替え</Japanese>
+            <Italian>Cambia Ricetrasmittente</Italian>
+            <French>Cycler radio</French>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_OpenRadio">
+            <English>Open Radio</English>
+            <Spanish>Abrir radio</Spanish>
+            <Czech>Otevřít rádio</Czech>
+            <German>Funkgerät öffnen</German>
+            <Japanese>ラジオを開く</Japanese>
+            <Italian>Apri Ricetrasmittente</Italian>
+            <French>Ouvrir radio</French>
+        </Key>
+    </Package>
+</Project>

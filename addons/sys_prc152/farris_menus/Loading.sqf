@@ -16,8 +16,8 @@ DFUNC(Loading_BarFill) = {
     if (isNil QGVAR(currentBarFill)) then { GVAR(currentBarFill) = 0.0; };
     GVAR(currentBarFill) = GVAR(currentBarFill) + 0.05;
 
-    private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
-    if (!isNil "_display") then {
+    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
+    if (!isNull _display) then {
         (_display displayCtrl ICON_LOADING) progressSetPosition GVAR(currentBarFill);
         (_display displayCtrl ICON_LOADING) ctrlCommit 0;
     };
@@ -77,8 +77,8 @@ GVAR(LOADING) = ["LOADING", "LOADING", "",
                     TRACE_1("Rendering LOADING-STAGE-2","");
                     GVAR(currentBarFill) = 0;
                     [ICON_LOADING, true] call DFUNC(toggleIcon);
-                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
-                    if (!isNil "_display") then {
+                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
+                    if (!isNull _display) then {
                         (_display displayCtrl ICON_LOADING) progressSetPosition 0.0;
                         (_display displayCtrl ICON_LOADING) ctrlCommit 0;
                     };

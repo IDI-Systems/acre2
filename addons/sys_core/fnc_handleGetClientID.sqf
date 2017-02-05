@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles receipt of TS client ID alongside its objects network ID.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: TS client ID <STRING>
+ * 1: Net ID of object for TS client ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["2","2:3"] call acre_sys_core_fnc_handleGetClientID
  *
  * Public: No
  */
@@ -20,10 +20,10 @@ params ["_newTs3Id","_netId"];
 
 _newTs3Id = parseNumber _newTs3Id;
 
-_playerObject = objectFromNetId _netId;
+private _playerObject = objectFromNetId _netId;
 TRACE_1("got client ID", _this);
 if (_playerObject == acre_player) then {
-    _resendSpectator = false;
+    private _resendSpectator = false;
     if (_newTs3Id != GVAR(ts3id)) then {
         if (ACRE_IS_SPECTATOR) then {
             [] call FUNC(spectatorOff);
