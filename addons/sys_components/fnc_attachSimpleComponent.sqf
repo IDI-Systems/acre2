@@ -13,7 +13,7 @@
  * Successful <BOOLEAN>
  *
  * Example:
- * ["ACRE_PRC152_ID_1",0,"ACRE_120CM_VHF_TNC",[],false] call acre_sys_components_fnc_attachSimpleComponent;
+ * ["ACRE_PRC152_ID_1",0,"ACRE_120CM_VHF_TNC",[],false] call acre_sys_components_fnc_attachSimpleComponent
  *
  * Public: No
  */

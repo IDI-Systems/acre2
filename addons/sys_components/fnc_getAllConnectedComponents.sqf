@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Returns all the connected components for a given component ID
+ * Returns all the connected components for a given component ID.
  *
  * Arguments:
  * 0: Component ID <STRING>

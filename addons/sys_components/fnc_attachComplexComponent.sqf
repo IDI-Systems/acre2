@@ -14,7 +14,7 @@
  * Succesful <BOOLEAN>
  *
  * Example:
- * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,[],false] call acre_sys_components_fnc_attachComplexComponent;
+ * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,[],false] call acre_sys_components_fnc_attachComplexComponent
  *
  * Public: No
  */

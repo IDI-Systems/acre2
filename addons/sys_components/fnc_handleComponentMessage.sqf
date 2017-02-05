@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * Handler for recieving a component message
+ * Handler for recieving a component message.
  *
  * Arguments:
  * 0: Component ID <STRING>
  * 1: Event name <STRING>
  * 2: Data <ARRAY>
- * 3: Component DATA <HASH>
+ * 3: Component data <HASH>
  *
  * Return Value:
  * None

@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Creates a complex component and will attachs all the default components.
+ * Creates a complex component and will attaches all the default components.
  *
  * Arguments:
  * 0: Component ID <STRING>
@@ -11,10 +11,10 @@
  * 5: Remote <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_components_fnc_initializeComponent
+ * ["ACRE_PRC343_ID_1", "initializeComponent, nil, acre_sys_data_radioData getVariable "ACRE_PRC343_ID_1"] call acre_sys_components_fnc_initializeComponent
  *
  * Public: No
  */

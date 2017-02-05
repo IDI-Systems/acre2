@@ -6,7 +6,7 @@
  * 0: Component ID <STRING>
  *
  * Return Value:
- * Array of connector data <ARRAY>
+ * Connector data <ARRAY>
  *
  * Example:
  * ["acre_prc152_id_1"] call acre_sys_components_fnc_getAllConnectors

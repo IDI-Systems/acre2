@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Send a message to a component
+ * Send a message to a component.
  *
  * Arguments:
  * 0: Parent component class <STRING>
