@@ -56,6 +56,6 @@
          };
      };
 
-     ["Acre_SEM70Knob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
+     ["Acre_SEMKnob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
      [MAIN_DISPLAY] call FUNC(render);
  };

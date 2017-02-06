@@ -18,7 +18,6 @@ PRELOAD_ADDONS;
 
 #include "CfgWeapons.hpp"
 #include "CfgAcreRadios.hpp"
-#include "CfgAcreSounds.hpp"
 
 #include "CfgEventHandlers.hpp"
 #include "MyDialogDefines.hpp"

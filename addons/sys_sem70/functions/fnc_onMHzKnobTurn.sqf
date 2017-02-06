@@ -55,6 +55,6 @@ if(_knobPosition != _newKnobPosition) then {
     // We parse a 0 here, because we are in manual mode
     ["setCurrentChannel", GVAR(manualChannel)] call GUI_DATA_EVENT;
 
-    ["Acre_SEM52Knob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_SEMKnob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
     [MAIN_DISPLAY] call FUNC(render);
 };

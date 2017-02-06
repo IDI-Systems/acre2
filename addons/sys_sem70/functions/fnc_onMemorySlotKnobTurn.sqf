@@ -49,6 +49,6 @@ if(_knobPosition != _newKnobPosition) then {
 
     ["setCurrentChannel", _newKnobPosition] call GUI_DATA_EVENT;
 
-    ["Acre_SEM52Knob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_SEMKnob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
     [MAIN_DISPLAY] call FUNC(render);
 };

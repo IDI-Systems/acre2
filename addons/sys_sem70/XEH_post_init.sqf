@@ -8,4 +8,4 @@ LOAD_SOUND(Acre_GenericBeepLow);
 LOAD_SOUND(Acre_GenericClickOn);
 LOAD_SOUND(Acre_GenericClickOff);
 
-LOAD_SOUND(Acre_SEM70Knob);
+LOAD_SOUND(Acre_SEMKnob);
