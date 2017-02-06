@@ -31,11 +31,8 @@ private _match = false;
 
 TRACE_4("Modes and Frequencies", _modeTX, _modeRX, _frequenciesRX, _frequenciesTX);
 
-if(
-    (_modeTX == "sem70AKW" && _modeRX == "sem70AKW") &&
-    (_frequenciesTX isEqualTo _frequenciesRX)
-) then {
-        _match = true;
+if(_modeTX == "sem70AKW" && {_modeRX == "sem70AKW"} && {_frequenciesTX isEqualTo _frequenciesRX}) then {
+	_match = true;
 };
 
 _match
