@@ -30,19 +30,19 @@ if (_manualChannelSelection != 1) exitWith {};
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
 _dir = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     _dir = 1;
 };
 
 //If shift is pressed, perform a step by +-5
-if(_shift) then {
+if (_shift) then {
     _dir = _dir*5;
 };
 
 private _knobPosition = ["getState", "MHzKnobPosition"] call GUI_DATA_EVENT;
 private _newKnobPosition = _knobPosition + _dir;
 
-if(_knobPosition != _newKnobPosition) then {
+if (_knobPosition != _newKnobPosition) then {
     //Allow a jump over the null position
     if (_newKnobPosition > 49) then {
         _newKnobPosition = 0;

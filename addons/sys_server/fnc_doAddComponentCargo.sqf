@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_container","_type","_preset","_player","_callBack","_failCallback"];
+params ["_container","_type","_preset","_player","_callBack","_failCallback"];
 
 diag_log text format ["this: %1", _this];
 private _hasUnique = _type call EFUNC(sys_radio,isBaseClassRadio);

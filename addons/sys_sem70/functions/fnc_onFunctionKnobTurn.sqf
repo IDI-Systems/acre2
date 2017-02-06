@@ -25,7 +25,7 @@ if (_isOn isEqualTo 1) then {
 };
 
 private _currentDirection = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     // left click
     _currentDirection = 1;
 };
@@ -33,7 +33,7 @@ if(_key == 0) then {
 private _knobPosition = ["getState", "functionKnobPosition"] call GUI_DATA_EVENT;
 private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 4;
 
-if(_knobPosition != _newKnobPosition) then {
+if (_knobPosition != _newKnobPosition) then {
     ["setState", ["functionKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 
     switch _newKnobPosition do {

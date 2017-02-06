@@ -32,7 +32,7 @@ if (_manualChannelSelection == 1) exitWith {};
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
 _dir = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     _dir = 1;
 };
 

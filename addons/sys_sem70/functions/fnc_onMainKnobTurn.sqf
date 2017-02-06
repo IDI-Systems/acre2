@@ -22,7 +22,7 @@ GVAR(backlightOn) = true;
 GVAR(lastAction) = time;
 
 private _currentDirection = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     // left click
     _currentDirection = 1;
 };
@@ -30,7 +30,7 @@ if(_key == 0) then {
 private _knobPosition = ["getState", "mainKnobPosition"] call GUI_DATA_EVENT;
 private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 2;
 
-if(_knobPosition != _newKnobPosition) then {
+if (_knobPosition != _newKnobPosition) then {
     ["setState", ["mainKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 
     switch _newKnobPosition do {

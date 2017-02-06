@@ -52,6 +52,6 @@ params ["_radioId",  "_event", "_eventData", "_radioData"];
 
 private _spatial = _eventData;
 
-if(_spatial in [-1,0,1]) then {
+if (_spatial in [-1,0,1]) then {
     [_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _spatial]] call EFUNC(sys_data,dataEvent);
 };

@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_control"];
+params ["_control"];
 
 private _isOn = ["getState", "radioOn"] call GUI_DATA_EVENT;
 if (_isOn != 1) exitWith {};

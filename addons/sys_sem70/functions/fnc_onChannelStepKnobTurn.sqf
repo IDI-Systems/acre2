@@ -19,7 +19,7 @@
  params ["","_key"];
 
   private _currentDirection = -1;
- if(_key == 0) then {
+ if (_key == 0) then {
      // left click
      _currentDirection = 1;
  };
@@ -27,7 +27,7 @@
  private _knobPosition = ["getState", "channelSpacingKnobPosition"] call GUI_DATA_EVENT;
  private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 3;
 
- if(_knobPosition != _newKnobPosition) then {
+ if (_knobPosition != _newKnobPosition) then {
      ["setState", ["channelSpacingKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 
      switch _newKnobPosition do {
