@@ -15,9 +15,9 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
- params ["", "", "_data"];
+params ["", "", "_data"];
 
 _transmitterClass = _data select 0;
 missionNamespace setVariable [_transmitterClass + "_running_count", 0];
