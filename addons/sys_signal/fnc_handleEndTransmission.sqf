@@ -8,7 +8,7 @@
  * 2:  Radio ID with transmitting radio Id <ARRAY>
  *
  * Return Value:
- * nil
+ * None
  *
  * Example:
  * ["ACRE_PRC152_ID_1", "handleEndTransmission", "ACRE_PRC152_ID_2"] call acre_sys_signal_fnc_handleEndTransmission
