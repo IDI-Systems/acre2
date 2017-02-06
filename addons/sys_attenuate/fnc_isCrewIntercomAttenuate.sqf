@@ -6,7 +6,7 @@
  * 0: Unit to be evaluated <OBJECT>
  *
  * Return Value:
- * Us other unit speaking on intercom <Boolean>
+ * Is other unit speaking on intercom <Boolean>
  *
  * Example:
  * [unit] call acre_sys_attenuate_fnc_isCrewIntercomAttenuate
