@@ -3,10 +3,10 @@
  * Checks if the unit should be heard on vehicle intercom or not for the local player.
  *
  * Arguments:
- * 0: unit to be evaluated <OBJECT>
+ * 0: Unit to be evaluated <OBJECT>
  *
  * Return Value:
- * is other unit speaking on intercom <Boolean>
+ * Us other unit speaking on intercom <Boolean>
  *
  * Example:
  * [unit] call acre_sys_attenuate_fnc_isCrewIntercomAttenuate
