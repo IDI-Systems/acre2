@@ -9,7 +9,6 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 if (hasInterface) then {
-
     DGVAR(pipeCode) = "0";
     DGVAR(ioEventFnc) = {};
     DGVAR(runserver) = false;

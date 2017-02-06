@@ -6,6 +6,8 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
-GVAR(attenuationCache) = HASH_CREATE;
+if (hasInterface) then {
+    GVAR(attenuationCache) = HASH_CREATE;
+};
 
 ADDON = true;

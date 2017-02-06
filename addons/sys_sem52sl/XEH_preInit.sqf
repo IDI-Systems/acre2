@@ -15,13 +15,13 @@ GVAR(channelModulation) = "FM";
 GVAR(channelEncryption) = 0;
 GVAR(channelSquelch) = 0;
 
-if (!hasInterface) exitWith {
-    ADDON = true;
+ADDON = true;
+
+if (hasInterface) then {
+    GVAR(currentRadioId) = -1;
+
+    // UI Variables
+    GVAR(booting) = false;
 };
-
-GVAR(currentRadioId) = -1;
-
-// UI Variables
-GVAR(booting) = false;
 
 ADDON = true;
