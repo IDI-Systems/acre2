@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Initiates the signal calculation function for a transmission between two radios in sem70AKW mode. This is done on the receiving client
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Transmitter <OBJECT>
+ * 1: Transmitter Radio ID <STRING>
+ * 2: Receiver <OBJECT>
+ * 3: Receiver Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Signal Calculation Paramteres <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [unit1, "_txRadioId", acre_player, "_rxRadioId"] call acre_sys_modes_fnc_sc_speaking
  *
  * Public: No
  */

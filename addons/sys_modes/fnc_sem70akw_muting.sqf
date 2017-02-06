@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks if two radios in sem70AKW mode can "hear" eachother
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID one <STRING>
+ * 1: Radio ID two <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * TRUE if match <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["_radioId1","_radioId2"] call acre_sys_modes_fnc_sc_muting
  *
  * Public: No
  */
