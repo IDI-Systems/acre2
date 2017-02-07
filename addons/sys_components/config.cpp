@@ -38,55 +38,55 @@ class CfgAcreComponents {
 
         class Interfaces {
             class CfgAcreDataInterface {
-                getListInfo                    =    "acre_sys_data_fnc_noApiSystemFunction";
+                getListInfo                 = QUOTE(EFUNC(sys_data,noApiSystemFunction));
 
-                setVolume                    =    "acre_sys_data_fnc_noApiSystemFunction";                // [0-1]
-                getVolume                    =     "acre_sys_data_fnc_noApiSystemFunction";                // [] = 0-1
+                setVolume                   = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [0-1]
+                getVolume                   = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [] = 0-1
 
-                setSpatial                    =    "acre_sys_data_fnc_noApiSystemFunction";
-                getSpatial                    =    "acre_sys_data_fnc_noApiSystemFunction";
+                setSpatial                  = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                getSpatial                  = QUOTE(EFUNC(sys_data,noApiSystemFunction));
 
-                setChannelData                 =    "acre_sys_data_fnc_noApiSystemFunction";            // [channelNumber, [channelData] ]
-                getChannelData                =    "acre_sys_data_fnc_noApiSystemFunction";            // [channelNumber] = channelData
-                getCurrentChannelData        =    "acre_sys_data_fnc_noApiSystemFunction";        // channelData (of current channel)
-
-
-                getCurrentChannel            =    "acre_sys_data_fnc_noApiSystemFunction";        // [] = channelNumber
-                setCurrentChannel            =    "acre_sys_data_fnc_noApiSystemFunction";        // [channelNumber]
-
-                getStates                    =    "acre_sys_data_fnc_noApiSystemFunction";                // [] = [ [stateName, stateData], [stateName, stateData] ]
-                getState                    =    "acre_sys_data_fnc_noApiSystemFunction";                // [stateName] = stateData
-                setState                    =     "acre_sys_data_fnc_noApiSystemFunction";                // [stateName, stateData] = sets state
-                setStateCritical            =     "acre_sys_data_fnc_noApiSystemFunction";                // [stateName, stateData] = sets state
+                setChannelData              = QUOTE(EFUNC(sys_data,noApiSystemFunction));            // [channelNumber, [channelData] ]
+                getChannelData              = QUOTE(EFUNC(sys_data,noApiSystemFunction));            // [channelNumber] = channelData
+                getCurrentChannelData       = QUOTE(EFUNC(sys_data,noApiSystemFunction));        // channelData (of current channel)
 
 
-                getOnOffState                =     "acre_sys_data_fnc_noApiSystemFunction";            // [] = 0/1
-                setOnOffState                =     "acre_sys_data_fnc_noApiSystemFunction";            // [ZeroOrOne]
+                getCurrentChannel           = QUOTE(EFUNC(sys_data,noApiSystemFunction));        // [] = channelNumber
+                setCurrentChannel           = QUOTE(EFUNC(sys_data,noApiSystemFunction));        // [channelNumber]
 
-                initializeComponent            =     "acre_sys_data_fnc_noApiSystemFunction";
+                getStates                   = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [] = [ [stateName, stateData], [stateName, stateData] ]
+                getState                    = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [stateName] = stateData
+                setState                    = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [stateName, stateData] = sets state
+                setStateCritical            = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [stateName, stateData] = sets state
 
-                getChannelDescription        =     "acre_sys_data_fnc_noApiSystemFunction";
 
-                isExternalAudio                =    "acre_sys_data_fnc_noApiSystemFunction";
-                getExternalAudioPosition    =     "acre_sys_data_fnc_noApiSystemFunction";
+                getOnOffState               = QUOTE(EFUNC(sys_data,noApiSystemFunction));            // [] = 0/1
+                setOnOffState               = QUOTE(EFUNC(sys_data,noApiSystemFunction));            // [ZeroOrOne]
+
+                initializeComponent         = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+
+                getChannelDescription       = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+
+                isExternalAudio             = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                getExternalAudioPosition    = QUOTE(EFUNC(sys_data,noApiSystemFunction));
 
 
             };
 
             class CfgAcreTransmissionInterface {
-                handleBeginTransmission        =     "acre_sys_data_fnc_noApiSystemFunction";
-                handleEndTransmission        =    "acre_sys_data_fnc_noApiSystemFunction";
+                handleBeginTransmission     = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                handleEndTransmission       = QUOTE(EFUNC(sys_data,noApiSystemFunction));
 
-                handleSignalData            =    "acre_sys_data_fnc_noApiSystemFunction";
-                handleMultipleTransmissions =    "acre_sys_data_fnc_noApiSystemFunction";
+                handleSignalData            = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                handleMultipleTransmissions = QUOTE(EFUNC(sys_data,noApiSystemFunction));
 
-                handlePTTDown                =    "acre_sys_data_fnc_noApiSystemFunction";
-                handlePTTUp                    =     "acre_sys_data_fnc_noApiSystemFunction";
+                handlePTTDown               = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                handlePTTUp                 = QUOTE(EFUNC(sys_data,noApiSystemFunction));
             };
 
             class CfgAcreInteractInterface {
-                openGui                        =     "acre_sys_data_fnc_noApiSystemFunction";                // [RadioId]
-                closeGui                    =    "acre_sys_data_fnc_noApiSystemFunction";                // []
+                openGui                     = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [RadioId]
+                closeGui                    = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // []
             };
         };
     };
