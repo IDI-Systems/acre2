@@ -109,7 +109,7 @@ Antenna Defines
 #define HASHLIST_SET(hashList, index, value) (hashList set[index, value])
 #define HASHLIST_PUSH(hashList, value) (hashList pushBack value)
 
-#define BASECLASS(radioId) ([radioId] call acre_sys_radio_fnc_getRadioBaseClassname)
+#define BASECLASS(radioId) ([radioId] call EFUNC(sys_radio,getRadioBaseClassname))
 
 #define DGVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QGVAR(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QGVAR(varName); }; GVAR(varName)
 #define DVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QUOTE(varName); }; varName

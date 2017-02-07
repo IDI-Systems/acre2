@@ -24,12 +24,12 @@ private _dataHash = HASH_CREATE;
 
 // diag_log text format["acre_sys_data_radioData: %1", acre_sys_data_radioData];
 
-HASH_SET(acre_sys_data_radioData,_class,_dataHash);
+HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
 _idRelation = [_player, _player];
-HASH_SET(acre_sys_server_objectIdRelationTable, _class, _idRelation);
+HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
 if (_replacementId != "") then {
-    _radioData = HASH_GET(acre_sys_data_radioData, _replacementId);
-    HASH_SET(acre_sys_data_radioData, _class, HASH_COPY(_radioData));
+    _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
+    HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
 };
 if (_player == acre_player) then {
     _baseRadio = _replacementId;
