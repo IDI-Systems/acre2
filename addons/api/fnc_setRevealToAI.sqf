@@ -25,10 +25,10 @@ params ["_var"];
 if !(_var isEqualType false) exitWith { false };
 
 if (!EGVAR(sys_core,revealToAI) && _var) then {
-    [] call acre_sys_core_fnc_enableRevealAI;
+    [] call EFUNC(sys_core,enableRevealAI);
 } else {
     if (EGVAR(sys_core,revealToAI) && !_var) then {
-        [] call acre_sys_core_fnc_disableRevealAI;
+        [] call EFUNC(sys_core,disableRevealAI);
     };
 };
 

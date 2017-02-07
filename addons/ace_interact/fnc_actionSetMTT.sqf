@@ -34,4 +34,4 @@ if (_oldIdx > -1 and _oldIdx < 3) then {
 
 _pttAssign set [_desiredIdx, _radio];
 
-[_pttAssign] call acre_api_fnc_setMultiPushToTalkAssignment;
+[_pttAssign] call EFUNC(api,setMultiPushToTalkAssignment);
