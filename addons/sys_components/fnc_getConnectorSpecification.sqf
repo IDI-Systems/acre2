@@ -1,40 +1,30 @@
 /*
  * Author: ACRE2Team
- * Returns the list of all connectors on a component that are unused.
+ * Returns an array with the specification of of the connectors for a component.
  *
  * Arguments:
  * 0: Component ID <STRING>
  *
  * Return Value:
- * Connectors array of indexes <ARRAY>
+ * Array of connector data <ARRAY>
  *
  * Example:
- * ["ACRE_PRC152_ID_1"] call acre_sys_components_fnc_getAllAvailableConnectors
+ * ["acre_prc152_id_1"] call acre_sys_components_fnc_getConnectorSpecification
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_componentId"];
+params["_componentId"];
 
 private _componentData = HASH_GET(acre_sys_data_radioData,_componentId);
 private _return = nil;
 if(!isNil "_componentData") then {
     private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
     if(!isNil "_connectorData") then {
-        _return = [];
         private _componentClass = configFile >> "CfgAcreComponents" >> ([_componentId] call EFUNC(sys_radio,getRadioBaseClassname));
         private _connectors = getArray(_componentClass >> "connectors");
-        {
-            if(_forEachIndex < (count _connectorData)) then {
-                private _connectorIndexData = _connectorData select _forEachIndex;
-                if(isNil "_connectorIndexData") then {
-                    _return pushBack _forEachIndex;
-                };
-            } else {
-                _return pushBack _forEachIndex;
-            };
-        } forEach _connectors;
+        _return = _connectors;
     };
 };
 _return;

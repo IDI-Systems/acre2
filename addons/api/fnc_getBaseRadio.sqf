@@ -24,7 +24,7 @@ if ( ([_radioId] call FUNC(isBaseRadio)) ) exitWith {
 
 private _parent = configName (inheritsFrom ( configFile >> "CfgAcreComponents" >> _radioId));
 if (_parent == "") then {
-    _parent = configName (inheritsFrom ( configFile >> "CfgWeapons" >> _radioId));
+    _parent = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 };
 private _hasUnique = 0;
 while { _hasUnique != 1 && _parent != ""} do {

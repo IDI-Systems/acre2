@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the detachment of a component.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Complex Component Id <STRING>
+ * 1: Event type <STRING>
+ * 2: Data <ARRAY>
+ * 3: Radio data for the specified radio <HASH>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1","detachComponent",[0],acre_sys_data_radioData getVariable "ACRE_PRC343_ID_1"] call acre_sys_components_fnc_detachComponentHandler
  *
  * Public: No
  */
@@ -18,7 +20,7 @@
 
 params ["_radioId","_event", "_data", "_radioData", "_eventKind"];
 
-private _childConnector    = _data select 0; // this is the connector on this event's device
+private _childConnector = _data select 0; // this is the connector on this event's device
 
 private _connectorData = HASH_GET(_radioData, "acre_radioConnectionData");
 if (isNil "_connectorData") then {

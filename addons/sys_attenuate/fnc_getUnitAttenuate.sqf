@@ -3,10 +3,10 @@
  * Calculates the attenuation between the local player unit and the inputted unit.
  *
  * Arguments:
- * 0: ARGUMENT ONE <Object>
+ * 0: The speaking unit <Object>
  *
  * Return Value:
- * Attenuation  <NUMBER>
+ * Attenuation <NUMBER>
  *
  * Example:
  * [unit] call acre_sys_attenuate_fnc_getUnitAttenuate

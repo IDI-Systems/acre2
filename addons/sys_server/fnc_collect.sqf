@@ -17,7 +17,7 @@
 
 params ["_radioId"];
 _radioId = toLower _radioId;
-private _baseRadio = configName (inheritsFrom (configFile >> "CfgWeapons" >> _radioId));
+private _baseRadio = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 private _idNumber = getNumber (configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
 private _keyIndex = (GVAR(radioIdMap) select 0) find _baseRadio;
 if (_keyIndex != -1) then {
