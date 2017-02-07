@@ -38,55 +38,55 @@ class CfgAcreComponents {
 
         class Interfaces {
             class CfgAcreDataInterface {
-                getListInfo                 = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                getListInfo                 = QEFUNC(sys_data,noApiSystemFunction);
 
-                setVolume                   = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [0-1]
-                getVolume                   = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [] = 0-1
+                setVolume                   = QEFUNC(sys_data,noApiSystemFunction);                // [0-1]
+                getVolume                   = QEFUNC(sys_data,noApiSystemFunction);                // [] = 0-1
 
-                setSpatial                  = QUOTE(EFUNC(sys_data,noApiSystemFunction));
-                getSpatial                  = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                setSpatial                  = QEFUNC(sys_data,noApiSystemFunction);
+                getSpatial                  = QEFUNC(sys_data,noApiSystemFunction);
 
-                setChannelData              = QUOTE(EFUNC(sys_data,noApiSystemFunction));            // [channelNumber, [channelData] ]
-                getChannelData              = QUOTE(EFUNC(sys_data,noApiSystemFunction));            // [channelNumber] = channelData
-                getCurrentChannelData       = QUOTE(EFUNC(sys_data,noApiSystemFunction));        // channelData (of current channel)
-
-
-                getCurrentChannel           = QUOTE(EFUNC(sys_data,noApiSystemFunction));        // [] = channelNumber
-                setCurrentChannel           = QUOTE(EFUNC(sys_data,noApiSystemFunction));        // [channelNumber]
-
-                getStates                   = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [] = [ [stateName, stateData], [stateName, stateData] ]
-                getState                    = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [stateName] = stateData
-                setState                    = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [stateName, stateData] = sets state
-                setStateCritical            = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [stateName, stateData] = sets state
+                setChannelData              = QEFUNC(sys_data,noApiSystemFunction);            // [channelNumber, [channelData] ]
+                getChannelData              = QEFUNC(sys_data,noApiSystemFunction);            // [channelNumber] = channelData
+                getCurrentChannelData       = QEFUNC(sys_data,noApiSystemFunction);        // channelData (of current channel)
 
 
-                getOnOffState               = QUOTE(EFUNC(sys_data,noApiSystemFunction));            // [] = 0/1
-                setOnOffState               = QUOTE(EFUNC(sys_data,noApiSystemFunction));            // [ZeroOrOne]
+                getCurrentChannel           = QEFUNC(sys_data,noApiSystemFunction);        // [] = channelNumber
+                setCurrentChannel           = QEFUNC(sys_data,noApiSystemFunction);        // [channelNumber]
 
-                initializeComponent         = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                getStates                   = QEFUNC(sys_data,noApiSystemFunction);                // [] = [ [stateName, stateData], [stateName, stateData] ]
+                getState                    = QEFUNC(sys_data,noApiSystemFunction);                // [stateName] = stateData
+                setState                    = QEFUNC(sys_data,noApiSystemFunction);                // [stateName, stateData] = sets state
+                setStateCritical            = QEFUNC(sys_data,noApiSystemFunction);                // [stateName, stateData] = sets state
 
-                getChannelDescription       = QUOTE(EFUNC(sys_data,noApiSystemFunction));
 
-                isExternalAudio             = QUOTE(EFUNC(sys_data,noApiSystemFunction));
-                getExternalAudioPosition    = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                getOnOffState               = QEFUNC(sys_data,noApiSystemFunction);            // [] = 0/1
+                setOnOffState               = QEFUNC(sys_data,noApiSystemFunction);            // [ZeroOrOne]
+
+                initializeComponent         = QEFUNC(sys_data,noApiSystemFunction);
+
+                getChannelDescription       = QEFUNC(sys_data,noApiSystemFunction);
+
+                isExternalAudio             = QEFUNC(sys_data,noApiSystemFunction);
+                getExternalAudioPosition    = QEFUNC(sys_data,noApiSystemFunction);
 
 
             };
 
             class CfgAcreTransmissionInterface {
-                handleBeginTransmission     = QUOTE(EFUNC(sys_data,noApiSystemFunction));
-                handleEndTransmission       = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                handleBeginTransmission     = QEFUNC(sys_data,noApiSystemFunction);
+                handleEndTransmission       = QEFUNC(sys_data,noApiSystemFunction);
 
-                handleSignalData            = QUOTE(EFUNC(sys_data,noApiSystemFunction));
-                handleMultipleTransmissions = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                handleSignalData            = QEFUNC(sys_data,noApiSystemFunction);
+                handleMultipleTransmissions = QEFUNC(sys_data,noApiSystemFunction);
 
-                handlePTTDown               = QUOTE(EFUNC(sys_data,noApiSystemFunction));
-                handlePTTUp                 = QUOTE(EFUNC(sys_data,noApiSystemFunction));
+                handlePTTDown               = QEFUNC(sys_data,noApiSystemFunction);
+                handlePTTUp                 = QEFUNC(sys_data,noApiSystemFunction);
             };
 
             class CfgAcreInteractInterface {
-                openGui                     = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // [RadioId]
-                closeGui                    = QUOTE(EFUNC(sys_data,noApiSystemFunction));                // []
+                openGui                     = QEFUNC(sys_data,noApiSystemFunction);                // [RadioId]
+                closeGui                    = QEFUNC(sys_data,noApiSystemFunction);                // []
             };
         };
     };
