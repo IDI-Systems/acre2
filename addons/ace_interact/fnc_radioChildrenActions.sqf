@@ -21,7 +21,7 @@ _params params ["_radio","","_pttAssign"];
 
 private _actions = [];
 
-private _spatial = [_radio] call EFUNC(api,setRadioSpatial);
+private _spatial = [_radio] call EFUNC(api,getRadioSpatial);
 private _txt = localize LSTRING(bothEars);
 if (_spatial == "LEFT") then {
     _txt = localize LSTRING(leftEar);
