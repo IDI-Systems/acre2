@@ -1,27 +1,26 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the description of the currently selected channel. Used in the transmission hint.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Description of the channel in the form "Block x - Channel y" <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_getChannelDescription;
+ * ["ACRE_PRC343_ID_1"] call acre_sys_prc343_fnc_getChannelDescription
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId"];
+params ["_radioId", "",  "", ""];
 
 _currentAbsChannel = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 _currentBlock = floor(_currentAbsChannel / 16);
 _currentChannel = _currentAbsChannel - _currentBlock*16;
 
-_description = format["Block %1 - Channel %2", _currentBlock +1, _currentChannel +1];
+_description = format ["Block %1 - Channel %2", _currentBlock + 1, _currentChannel + 1];
 
 _description
