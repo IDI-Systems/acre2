@@ -97,7 +97,7 @@ class CfgVehicles {
     class CAManBase: Man {
         acre_antennaMemoryPoints[] = {{"LeftShoulder", "LeftShoulder"}};
         //acre_antennaMemoryPointsDir[] = {{"Spine3", "Neck"}};
-        acre_antennaDirFnc = QUOTE(DFUNC(getAntennaDirMan));
+        acre_antennaDirFnc = QFUNC(getAntennaDirMan);
     };
 };
 
