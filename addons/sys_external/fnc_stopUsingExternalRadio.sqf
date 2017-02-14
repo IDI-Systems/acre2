@@ -21,8 +21,6 @@ params ["_radioId", "_target"];
 
 private _owner = [_radioId] call FUNC(getExternalRadioOwner);
 
-player sideChat format ["Rem radio %1 own %2 targ %3", _radioId, _owner, _target];
-
 if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
     // simulate a key up event to end the current transmission
     [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
@@ -34,7 +32,6 @@ ACRE_ACTIVE_EXTERNAL_RADIOS = ACRE_ACTIVE_EXTERNAL_RADIOS - [_radioId];
 if (_target == _owner) then {
     // Give radio back to the owner
     [_radioId, "setState", ["isUsedExternally", [false, nil, nil]]] call EFUNC(sys_data,dataEvent);
-    player sideChat format ["Removing radio %1", _radioId];
 } else {
     // Give radio to another player
     [_radioId, _owner, _target] remoteExecCall [QFUNC(startUsingExternalRadio), _target, false];

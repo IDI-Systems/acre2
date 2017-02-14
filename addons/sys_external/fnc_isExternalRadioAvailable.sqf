@@ -24,6 +24,7 @@ params ["_radioId", "_owner"];
 // Check if actual owner of the radio is less than 2.0m away.
 if ((_owner distance acre_player) > 2.0) exitWith {false};
 
+// Captive players are not allowed to use external radios
 if (captive acre_player) exitWith {false};
 
 // Check if actual owner of the radio and the player are on the same vehicle.

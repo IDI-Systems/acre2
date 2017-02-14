@@ -20,8 +20,6 @@ params ["_radioId", "_target"];
 
 private _owner = [_radioId] call EFUNC(sys_external,getExternalRadioOwner);
 
-player sideChat format ["Check Ret owner %1, target %2", _owner, _target];
-
 if (isNil "_owner") exitWith {true};
 if (_owner == _target) exitWith {true};
 
