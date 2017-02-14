@@ -1,37 +1,37 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Retrieves the external use status of a radio
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique radio identity <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array with information if a radio is shared, is in external use, the owner and the end user <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_radio_allowExternalUse
+ * ["ACRE_PRC343_ID_1"] call acre_sys_external_getExternalUseStatus
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-/* TODO: External use.
-* - Remove function? */
-
 params ["_radioId"];
 
 private _isShared = [_radioId] call FUNC(isRadioShared);
-private _isUsedExternally = [_radioId] call FUNC(isExternalRadioUsed);
 
-private _externalStatus = 0;
+private ["_isUsedExternally", "_owner", "_user"];
+_isUsedExternally = false;
+_owner = nil;
+_user = nil;
 
 if (_isShared) then {
-    _externalStatus = _externalStatus + 1;
+    private _isUsedExternally = [_radioId] call FUNC(isExternalRadioUsed);
+    if (_isUsedExternally) then {
+        private _owner = [_radioId] call FUNC(getExternalRadioOwner);
+        private _user = [_radioId] call FUNC(getExternalRadioUser);
+    };
 };
 
-if (_isUsedExternally) then {
-    _externalStatus = _externalStatus + 1;
-};
+private _externalStatus = [_isShared, _isUsedExternally, _owner, _user];
 
 _externalStatus

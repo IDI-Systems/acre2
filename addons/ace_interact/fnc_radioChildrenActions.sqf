@@ -1,23 +1,24 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Generates a list of actions for using a radio in the player's inventory or externally used radios
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit with ACRE2 radios <OBJECT>
+ * 1: None <TYPE>
+ * 2: Array with additional parameters: unique radio ID <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of actions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [acre_player, "", ["ACRE_PRC343_ID_1"]] call acre_ace_interact_fnc_externalRadioChildrenActions
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 /* TODO:
-* Option to share and not share radios should not be displayed for external radios.
+* Implemented, to be tested: Option to share and not share radios should not be displayed for external radios.
 */
 
 params ["_target","","_params"];
@@ -41,11 +42,13 @@ _actions pushBack [_action, [], _target];
 _action = ["acre_make_active", localize LSTRING(setAsActive), "", {[(_this select 2) select 0] call EFUNC(api,setCurrentRadio)}, {!((_this select 2) select 1)}, {},_params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
-// External radios
-_action = ["acre_share_radio", localize LSTRING(shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params]  call ace_interact_menu_fnc_createAction;
-_actions pushBack [_action, [], _target];
-_action = ["acre_retrieve_radio", localize LSTRING(retrieveRadio), "", {[(_this select 2) select 0, false] call EFUNC(sys_external,allowExternalUse)}, {[(_this select 2) select 0] call EFUNC(sys_external,isRadioShared)}, {}, _params]  call ace_interact_menu_fnc_createAction;
-_actions pushBack [_action, [], _target];
+// External radios. Show only options to share/stop sharing the radio if you are the actual owner and not an external user
+if ([(_this select 2) select 0] call FUNC(radioCheckChildrenActions)) then {
+    _action = ["acre_share_radio", localize LSTRING(shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params]  call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
+    _action = ["acre_retrieve_radio", localize LSTRING(retrieveRadio), "", {[(_this select 2) select 0, false] call EFUNC(sys_external,allowExternalUse)}, {[(_this select 2) select 0] call EFUNC(sys_external,isRadioShared)}, {}, _params]  call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
+};
 
 private _idx = _pttAssign find _radio;
 _txt = localize LSTRING(bindMultiPushToTalk);;

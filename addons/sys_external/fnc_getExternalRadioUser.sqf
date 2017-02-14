@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Retrieves the end user of a radio that is being used externally
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique radio identity <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * End user <STRING>. If it is not in external use, it returns nil
  *
  * Example:
- * [ARGUMENTS] call acre_sys_radio_allowExternalUse
+ * ["ACRE_PRC343_ID_1"] call acre_sys_external_getExternalRadioUser
  *
  * Public: No
  */

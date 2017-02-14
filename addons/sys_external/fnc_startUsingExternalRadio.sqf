@@ -1,27 +1,21 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Start using an external radio
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique radio identity <STRING>
+ * 1: Radio owner <OBJECT>
+ * 2: End used <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_radio_allowExternalUse
+ * ["ACRE_PRC343_ID_1", cursorTarget, acre_player] call acre_sys_external_startUsingExternalRadio
  *
  * Public: No
  */
 #include "script_component.hpp"
-
-
-/* TODO: External use:
-* - Flag radio as being in external use.
-* - Remove from active radio list from actual ownwer.
-* - ACE interaction should not display: allow external use nor disable external use.
-*/
 
 params ["_radioID", "_owner", "_endUser"];
 

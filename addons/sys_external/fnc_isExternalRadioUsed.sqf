@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks if a radio is flagged as being used by another unit
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique radio identity <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Radio is being externally used <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_radio_allowExternalUse
+ * ["ACRE_PRC343_ID_1"] call acre_sys_external_isExternalRadioUsed
  *
  * Public: No
  */

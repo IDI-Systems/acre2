@@ -25,14 +25,19 @@
             <Spanish>Recuperar radio</Spanish>
             <German>Radio abrufen</German>
         </Key>
-        <Key ID="STR_ACRE_ace_interact_takeTransmitter">
+        <Key ID="STR_ACRE_ace_interact_takeHeadset">
             <English>Take Headset</English>
             <Spanish>Coger transmisor</Spanish>
             <German>Radio teilen</German>
         </Key>
-        <Key ID="STR_ACRE_ace_interact_releaseTransmitter">
+        <Key ID="STR_ACRE_ace_interact_returnHeadset">
             <English>Return Headset</English>
             <Spanish>Devolver transmisor</Spanish>
+            <German>Radio teilen</German>
+        </Key>
+        <Key ID="STR_ACRE_ace_interact_giveHeadset">
+            <English>Give Headset</English>
+            <Spanish>Dar transmisor</Spanish>
             <German>Radio teilen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelShort">

@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns a list of radios that are being shared by a unit
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of ACRE2 unique radio IDs that are flagged as shared <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_radio_allowExternalUse
+ * [cursorTarget] call acre_sys_external_getSharedExternalRadios
  *
  * Public: No
  */

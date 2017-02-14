@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Generates actions for controlling the spatial set-up of a radio
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit with a radio <OBJECT>
+ * 1: None <TYPE>
+ * 2: Array with additional parameters: unused, unused, unused, current spatial configuration <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of actions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [acre_player, "", ["", "", "", "LEFT"]] call acre_ace_interact_fnc_externalRadioVehicleListChildrenActions
  *
  * Public: No
  */

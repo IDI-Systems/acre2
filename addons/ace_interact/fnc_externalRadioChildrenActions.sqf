@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Generates a list of actions for using a radio externaly
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit with a shared radio <OBJECT>
+ * 1: None <TYPE>
+ * 2: Array with additional parameters: unique radio ID <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of actions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [cursorTarget, "", ["ACRE_PRC343_ID_1"]] call acre_ace_interact_fnc_externalRadioChildrenActions
  *
  * Public: No
  */
@@ -22,9 +23,17 @@ _params params ["_radio"];
 private _actions = [];
 diag_log format ["%1", _target];
 
-private _action = ["acre_use_externalRadio", localize LSTRING(takeTransmitter), "", {[(_this select 2) select 0, _target, acre_player] call EFUNC(sys_external,startUsingExternalRadio)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isExternalRadioUsed))}, {}, _params] call ace_interact_menu_fnc_createAction;
+private _action = ["acre_use_externalRadio", localize LSTRING(takeHeadset), "", {[(_this select 2) select 0, _target, acre_player] call EFUNC(sys_external,startUsingExternalRadio)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isExternalRadioUsed))}, {}, _params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
-private _action = ["acre_return_externalRadio", localize LSTRING(releaseTransmitter), "", {[(_this select 2) select 0] call EFUNC(sys_external,stopUsingExternalRadio)}, {[(_this select 2) select 0] call EFUNC(sys_external,isExternalRadioUsed)}, {}, _params] call ace_interact_menu_fnc_createAction;
+
+private _txt;
+// Check if we are giving or returning the headset
+if([(_this select 2) select 0, _target] call FUNC(externalRadioCheckReturnGive)) then {
+    _txt = localize LSTRING(returnHeadset);
+} else {
+    _txt = localize LSTRING(giveHeadset);
+};
+private _action = ["acre_return_externalRadio", _txt, "", {[(_this select 2) select 0, _target] call EFUNC(sys_external,stopUsingExternalRadio)}, {[(_this select 2) select 0] call EFUNC(sys_external,isExternalRadioUsed)}, {}, _params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
 _actions

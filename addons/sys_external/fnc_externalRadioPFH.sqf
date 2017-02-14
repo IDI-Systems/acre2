@@ -1,16 +1,22 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Eventhandler to monitor if external radios can be still used by a specific player.
+ *
+ * - Disabled uses of external radios are:
+ *   - Radio is in players inventory.
+ *   - Player is dead. External radios are returned to the original owner.
+ *   - Distance between owner and end user is greater than 2m.
+ *   - Owner and end user are not in the same vehicle.
+ * - Radios in dead or captive units can always be accessed by other players.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_radio_allowExternalUse
+ * [] call acre_sys_external_externalRadioPFH
  *
  * Public: No
  */
@@ -32,7 +38,11 @@ if (alive acre_player) then {
         // Remove the external radio if distance is greater than 2m or owner and user are not in the same vehicle.
         if (!([_x] call FUNC(isExternalRadioAvailable))) then {
             _remove pushBackUnique _x;
-        }
+        };
+
+        if (captive acre_player) then {
+            _remove pushBackUnique _x;
+        };
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
 
     // Remove the actual radios
@@ -53,10 +63,10 @@ if (alive acre_player) then {
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
 
     // Mark all the radios as shared
-    private _radios = [acre_player] call EFUNC(sys_core,getGear);
-    _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
+    // private _radios = [acre_player] call EFUNC(sys_core,getGear);
+    // _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
 
-    {
-        [_x, true] call FUNC(allowExternalUse);
-    } forEach _radioList;
+    //{
+    //    [_x, true] call FUNC(allowExternalUse);
+    //} forEach _radioList;
 };
