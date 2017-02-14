@@ -16,9 +16,9 @@
  */
 #include "script_component.hpp"
 
-params [_radioId, _unit];
+params ["_radioId", "_unit"];
 
-if (!alive _unit) exitWith {true}
+if (!alive _unit) exitWith {true};
 if (captive _unit) exitWith {true};
 
 private _externalStatus = [_radioId] call EFUNC(sys_external,getExternalUseStatus);

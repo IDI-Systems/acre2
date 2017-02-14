@@ -19,12 +19,12 @@
  * - Consider further corner cases.
  */
 
-params ["_radioId"];
-
-private _owner = [_radioId] call FUNC(getExternalRadioOwner);
+params ["_radioId", "_owner"];
 
 // Check if actual owner of the radio is less than 2.0m away.
 if ((_owner distance acre_player) > 2.0) exitWith {false};
+
+if (captive acre_player) exitWith {false};
 
 // Check if actual owner of the radio and the player are on the same vehicle.
 if ((vehicle _owner != _owner) && (vehicle acre_player != acre_player) && (vehicle _owner != vehicle acre_player)) exitWith {false};

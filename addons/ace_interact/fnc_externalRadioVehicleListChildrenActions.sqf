@@ -29,6 +29,8 @@ private _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
     _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
 
-    private _action = [_x, _displayName, _picture, {}, {[_x, acre_player] call FUNC(externalRadioVehicleCheckListChildrenActions)}, {_this call FUNC(externalRadioChildrenActions)}, [_x]] call ace_interact_menu_fnc_createAction;
-    [typeof _vehicle, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+    if ([_x, acre_player] call FUNC(externalRadioVehicleCheckListChildrenActions)) then {
+        private _action = [_x, _displayName, _picture, {}, {true}, {_this call FUNC(externalRadioVehicleChildrenActions)}, [_x]] call ace_interact_menu_fnc_createAction;
+        [typeof _vehicle, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
+    };
 } forEach _radioList;

@@ -27,39 +27,24 @@
  */
 
 private _remove = [];
+private _owner;
 
 if (alive acre_player) then {
     // Check if we need to remove active radios
     private _radios = [acre_player] call EFUNC(sys_core,getGear);
     {
-        // If the radio is in the players inventory, radio is no longer remote.
-        if (_x in _radios) exitWith {_remove pushBackUnique _x;};
-
-        // Remove the external radio if distance is greater than 2m or owner and user are not in the same vehicle.
-        if (!([_x] call FUNC(isExternalRadioAvailable))) then {
-            _remove pushBackUnique _x;
-        };
-
-        if (captive acre_player) then {
-            _remove pushBackUnique _x;
+        // Remove radios that are in unit's inventory or match a certain criteria.
+        _owner = [_x] call FUNC(getExternalRadioOwner);
+        private _isExternalRadioAvailable = [_x, _owner] call FUNC(isExternalRadioAvailable);
+        if ((_x in _radios) || !_isExternalRadioAvailable) then {
+            [_x, _owner] call FUNC(stopUsingExternalRadio);
         };
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
-
-    // Remove the actual radios
-    if (count _remove > 0 ) then {
-        {
-            if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
-                // simulate a key up event to end the current transmission
-                [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
-            };
-            [_x] call FUNC(stopUsingExternalRadio);
-            [1] call EFUNC(sys_list,cycleRadios); // Change active radio
-        } forEach _remove;
-    };
 } else {
     // All external radios in use are now returned to the owner.
     {
-        [_x] call FUNC(stopUsingExternalRadio);
+        _owner = [_x] call FUNC(getExternalRadioOwner);
+        [_x, _owner] call FUNC(stopUsingExternalRadio);
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
 
     // Mark all the radios as shared

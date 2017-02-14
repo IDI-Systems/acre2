@@ -36,9 +36,11 @@ private _sharedRadios = [_target] call EFUNC(sys_external,getSharedExternalRadio
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
     _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
-
-    private _action = [_x, _displayName, _picture, {}, {[_x, acre_player] call FUNC(externalRadioCheckListChildrenActions)}, {_this call FUNC(externalRadioChildrenActions)}, [_x]] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
+    
+    if ([_x, acre_player] call FUNC(externalRadioCheckListChildrenActions)) then {
+        private _action = [_x, _displayName, _picture, {}, {true}, {_this call FUNC(externalRadioChildrenActions)}, [_x]] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    };
 } forEach _sharedRadios;
 
 _actions

@@ -26,14 +26,13 @@ diag_log format ["%1", _target];
 private _action = ["acre_use_externalRadio", localize LSTRING(takeHeadset), "", {[(_this select 2) select 0, _target, acre_player] call EFUNC(sys_external,startUsingExternalRadio)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isExternalRadioUsed))}, {}, _params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
-private _txt;
 // Check if we are giving or returning the headset
-if([(_this select 2) select 0, _target] call FUNC(externalRadioCheckReturnGive)) then {
-    _txt = localize LSTRING(returnHeadset);
+if ([(_this select 2) select 0, _target] call FUNC(externalRadioCheckReturnGive)) then {
+    private _action = ["acre_return_externalRadio", localize LSTRING(returnHeadset), "", {[(_this select 2) select 0, _target] call EFUNC(sys_external,stopUsingExternalRadio)}, {[(_this select 2) select 0] call EFUNC(sys_external,isExternalRadioUsed)}, {}, _params] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
 } else {
-    _txt = localize LSTRING(giveHeadset);
+    private _action = ["acre_give_externalRadio", localize LSTRING(giveHeadset), "", {[(_this select 2) select 0, _target] call EFUNC(sys_external,stopUsingExternalRadio)}, {[(_this select 2) select 0] call EFUNC(sys_external,isExternalRadioUsed)}, {}, _params] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
 };
-private _action = ["acre_return_externalRadio", _txt, "", {[(_this select 2) select 0, _target] call EFUNC(sys_external,stopUsingExternalRadio)}, {[(_this select 2) select 0] call EFUNC(sys_external,isExternalRadioUsed)}, {}, _params] call ace_interact_menu_fnc_createAction;
-_actions pushBack [_action, [], _target];
 
 _actions
