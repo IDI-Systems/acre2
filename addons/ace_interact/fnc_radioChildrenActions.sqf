@@ -16,12 +16,16 @@
  */
 #include "script_component.hpp"
 
+/* TODO:
+* Option to share and not share radios should not be displayed for external radios.
+*/
+
 params ["_target","","_params"];
-_params params ["_radio","","_pttAssign"];
+_params params ["_radio"];
 
 private _actions = [];
 
-private _spatial = [_radio] call acre_api_fnc_getRadioSpatial;
+private _spatial = [_radio] call EFUNC(api,getRadioSpatial);
 private _txt = localize LSTRING(bothEars);
 if (_spatial == "LEFT") then {
     _txt = localize LSTRING(leftEar);
@@ -32,9 +36,15 @@ if (_spatial == "RIGHT") then {
 
 private _action = ["acre_spatial_radio", _txt, "", {}, {true}, {_this call FUNC(generateSpatialChildrenActions);}, _params + [_spatial]] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
-_action = ["acre_open_radio", localize ELSTRING(sys_list,OpenRadio), "", {[((_this select 2) select 0)] call acre_sys_radio_fnc_openRadio}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+_action = ["acre_open_radio", localize ELSTRING(sys_list,OpenRadio), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
-_action = ["acre_make_active", localize LSTRING(setAsActive), "", {[(_this select 2) select 0] call acre_api_fnc_setCurrentRadio}, {!((_this select 2) select 1)}, {},_params] call ace_interact_menu_fnc_createAction;
+_action = ["acre_make_active", localize LSTRING(setAsActive), "", {[(_this select 2) select 0] call EFUNC(api,setCurrentRadio)}, {!((_this select 2) select 1)}, {},_params] call ace_interact_menu_fnc_createAction;
+_actions pushBack [_action, [], _target];
+
+// External radios
+_action = ["acre_share_radio", localize LSTRING(shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params]  call ace_interact_menu_fnc_createAction;
+_actions pushBack [_action, [], _target];
+_action = ["acre_retrieve_radio", localize LSTRING(retrieveRadio), "", {[(_this select 2) select 0, false] call EFUNC(sys_external,allowExternalUse)}, {[(_this select 2) select 0] call EFUNC(sys_external,isRadioShared)}, {}, _params]  call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
 private _idx = _pttAssign find _radio;

@@ -4,3 +4,6 @@ PREP(generateSpatialChildrenActions);
 PREP(radioChildrenActions);
 PREP(radioListChildrenActions);
 PREP(radioPTTChildrenActions);
+
+PREP(externalRadioChildrenActions);
+PREP(externalRadioListChildrenActions);

@@ -1,0 +1,12 @@
+PREP(allowExternalUse);
+PREP(externalRadioPFH);
+PREP(getExternalRadioOwner);
+PREP(getExternalRadioUser);
+PREP(getExternalUseStatus);
+PREP(getSharedExternalRadios);
+PREP(initRadio);
+PREP(isExternalRadioAvailable);
+PREP(isExternalRadioUsed);
+PREP(isRadioShared);
+PREP(startUsingExternalRadio);
+PREP(stopUsingExternalRadio);
