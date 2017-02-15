@@ -34,6 +34,7 @@ PREP(sendDataEvent);
 PREP(serverPropDataEvent);
 PREP(getRemoteRadioList);
 PREP(getPlayerRadioList);
+PREP(getVehicleRadioList);
 PREP(sortRadioList);
 PREP(stateEvent);
 PREP(handleSetChannel);

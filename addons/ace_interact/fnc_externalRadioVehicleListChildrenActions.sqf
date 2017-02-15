@@ -15,12 +15,11 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle"];
+params ["_vehicle", "", "_params"];
 
 // All radios inside a vehicle are shared
-private _radios = [_vehicle] call EFUNC(sys_core,getGear);
-private _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
-
+private _radioList = [_vehicle] call EFUNC(sys_data,getVehicleRadioList);
+private _actions = [];
 {
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
     private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
@@ -29,8 +28,8 @@ private _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
     _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
 
-    if ([_x, acre_player] call FUNC(externalRadioVehicleCheckListChildrenActions)) then {
-        private _action = [_x, _displayName, _picture, {}, {true}, {_this call FUNC(externalRadioVehicleChildrenActions)}, [_x]] call ace_interact_menu_fnc_createAction;
-        [typeof _vehicle, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;
-    };
+    private _action = [_x, _displayName, _picture, {}, {true}, {_this call FUNC(externalRadioChildrenActions)}, [_x]] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
 } forEach _radioList;
+
+_actions

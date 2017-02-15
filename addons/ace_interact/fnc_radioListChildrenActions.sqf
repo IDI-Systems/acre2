@@ -23,6 +23,12 @@ private _currentRadio = [] call acre_api_fnc_getCurrentRadio;
 private _pttAssign = [] call acre_api_fnc_getMultiPushToTalkAssignment;
 private _radioList = [] call acre_api_fnc_getCurrentRadioList;
 
+if (vehicle acre_player != acre_player) then {
+    {
+        _radioList pushBackUnique _x;
+    } forEach ([vehicle acre_player] call EFUNC(sys_data,getVehicleRadioList));
+};
+
 {
     private _owner = "";
     if (_x in ACRE_ACTIVE_EXTERNAL_RADIOS) then {

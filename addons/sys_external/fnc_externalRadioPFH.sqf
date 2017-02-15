@@ -46,12 +46,4 @@ if (alive acre_player) then {
         _owner = [_x] call FUNC(getExternalRadioOwner);
         [_x, _owner] call FUNC(stopUsingExternalRadio);
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
-
-    // Mark all the radios as shared
-    // private _radios = [acre_player] call EFUNC(sys_core,getGear);
-    // _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
-
-    //{
-    //    [_x, true] call FUNC(allowExternalUse);
-    //} forEach _radioList;
 };

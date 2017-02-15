@@ -18,7 +18,7 @@
 params ["_radioId", "_unit"];
 
 // Only drivers and commanders are allowed to use the radio unless one of the gives it to any member in the vehicle
-if (tolower (assignedVehicleRole acre_player) in ["driver","commander"]) then {
+if (tolower (assignedVehicleRole acre_player select 0) in ["driver","commander"]) then {
     _return = [_radioId, _unit] call FUNC(externalRadioCheckListChildrenActions);
 } else {
     _return = false;
