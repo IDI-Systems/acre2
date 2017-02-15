@@ -28,7 +28,7 @@ if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
 
 ACRE_ACTIVE_EXTERNAL_RADIOS = ACRE_ACTIVE_EXTERNAL_RADIOS - [_radioId];
 [1] call EFUNC(sys_list,cycleRadios); // Change active radio
-
+player sideChat format ["Stop using %1", _radioId];
 if (_target == _owner) then {
     // Give radio back to the owner
     [_radioId, "setState", ["isUsedExternally", [false, nil, nil]]] call EFUNC(sys_data,dataEvent);

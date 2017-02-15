@@ -26,7 +26,6 @@
  * - Consider further corner cases.
  */
 
-private _remove = [];
 private _owner;
 
 if (alive acre_player) then {

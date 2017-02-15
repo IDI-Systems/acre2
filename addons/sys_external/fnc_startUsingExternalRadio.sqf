@@ -23,3 +23,5 @@ params ["_radioID", "_owner", "_endUser"];
 
 // Add the radio to the player
 ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
+
+player sideChat format ["Start using %1", _radioId];

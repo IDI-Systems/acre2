@@ -18,7 +18,7 @@
 #include "script_component.hpp"
 
 params ["_target","","_params"];
-_params params ["","","","_spatial"];
+_params params ["","","", "", "_spatial"];
 private _actions  = [];
 
 if (_spatial != "LEFT") then {
