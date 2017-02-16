@@ -1,5 +1,6 @@
 #include "script_component.hpp"
-NO_DEDICATED;
+
+if (!hasInterface) exitWith {};
 
 [] call EFUNC(sys_io,startServer);
 

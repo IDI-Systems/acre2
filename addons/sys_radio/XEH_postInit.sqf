@@ -1,9 +1,6 @@
 #include "script_component.hpp"
 
-NO_DEDICATED;
-
-
-
+if (!hasInterface) exitWith {};
 
 // radio claiming handler
 [QGVAR(returnRadioId), { _this call FUNC(onReturnRadioId) }] call CALLSTACK(CBA_fnc_addEventHandler);
