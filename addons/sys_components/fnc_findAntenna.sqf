@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Find all antennas connected to the specified radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Antenna data <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1"] call acre_sys_components_fnc_findAntenna
  *
  * Public: No
  */
@@ -23,7 +22,7 @@ private _searchedComponents = [];
 private _searchFunction = {
     params ["_componentParentId"];
     PUSH(_searchedComponents, _componentParentId);
-    private _componentData = HASH_GET(acre_sys_data_radioData,_componentParentId);
+    private _componentData = HASH_GET(EGVAR(sys_data,radioData),_componentParentId);
 
     if (!isNil "_componentData") then {
         private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
@@ -48,6 +47,9 @@ private _searchFunction = {
                             };
                             private _objectType = typeOf _componentObject;
                             private _antennaPos = getPosASL _componentObject;
+                            if (!(_objectType isKindOf "CAManBase")) then {
+                                _antennaPos = _antennaPos vectorAdd [0,0,(boundingCenter _componentObject) select 2];
+                            };
                             private _antennaDir = vectorDir _componentObject;
                             private _antennaDirUp = vectorUp _componentObject;
                             if (isArray(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaMemoryPoints")) then {

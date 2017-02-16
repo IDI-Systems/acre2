@@ -29,7 +29,7 @@ if (_onRadio == 1) then {
         if (alive player) then {
             private _factor = .4;
             // Shifted one lower.
-            switch (acre_sys_gui_VolumeControl_Level) do {
+            switch (EGVAR(sys_gui,VolumeControl_Level)) do {
                 case -2:     {_factor = .1};
                 case -1:     {_factor = .1};
                 case 0:     {_factor = .4};

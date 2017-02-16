@@ -23,8 +23,8 @@ DFUNC(changeValueAck_End) = {
         _lastMenu = SCRATCH_GET_DEF(_radioId, "lastMenu", nil);
         if (isNil "_lastMenu") then { _lastMenu = GVAR(VULOSHOME); };
 
-        if (!isNil "acre_sys_radio_currentRadioDialog") then {
-            if (acre_sys_radio_currentRadioDialog == _radioId) then {
+        if (!isNil QEGVAR(sys_radio,currentRadioDialog)) then {
+            if (EGVAR(sys_radio,currentRadioDialog) == _radioId) then {
                 TRACE_1("ChangeMenu","");
                 [_lastMenu] call FUNC(changeMenu);
             } else {
@@ -44,10 +44,10 @@ DFUNC(changeValueAck_End) = {
 params ["_menu","_valuePair"];
 _valuePair params ["_valueType", "_value"];
 
-if (isNil QGVAR(currentRadioId) || isNil QUOTE(acre_sys_radio_currentRadioDialog) ) exitWith {
+if (isNil QGVAR(currentRadioId) || isNil QEGVAR(sys_radio,currentRadioDialog) ) exitWith {
     false
 };
-if (acre_sys_radio_currentRadioDialog != GVAR(currentRadioId)) exitWith {
+if (EGVAR(sys_radio,currentRadioDialog) != GVAR(currentRadioId)) exitWith {
     false
 };
 

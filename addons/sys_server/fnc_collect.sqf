@@ -17,7 +17,7 @@
 
 params ["_radioId"];
 _radioId = toLower _radioId;
-private _baseRadio = configName (inheritsFrom (configFile >> "CfgWeapons" >> _radioId));
+private _baseRadio = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 private _idNumber = getNumber (configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
 private _keyIndex = (GVAR(radioIdMap) select 0) find _baseRadio;
 if (_keyIndex != -1) then {
@@ -26,7 +26,7 @@ if (_keyIndex != -1) then {
     GVAR(masterIdList) = GVAR(masterIdList) - [_radioId];
     HASH_REM(GVAR(markedForGC),_radio);
     [QGVAR(clientGCRadio), [_radioId]] call CALLSTACK(CBA_fnc_globalEvent);
-    HASH_SET(acre_sys_data_radioData, _radioId, nil);
+    HASH_SET(EGVAR(sys_data,radioData), _radioId, nil);
 } else {
     WARNING_1("A unique radio of a never initialized base class was attempted to be collected! Possible gear script issue on radio: %1!",_baseRadio);
 };

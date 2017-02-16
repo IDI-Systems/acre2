@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Attaches a simple component to a complex component.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Parent component Id <STRING>
+ * 1: Parent connector Index <NUMBER>
+ * 2: Child component Id - Simple component <STRING>
+ * 3: Attributes of connection <HASH>
+ * 4: Force - Permits replacing a pre-existing connection <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOLEAN>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC152_ID_1",0,"ACRE_120CM_VHF_TNC",[],false] call acre_sys_components_fnc_attachSimpleComponent
  *
  * Public: No
  */
@@ -19,7 +22,7 @@
 params ["_parentComponentId", "_parentConnector", "_childComponentType", "_attributes", ["_force",false]];
 
 private _return = false;
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> (getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass"));
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> ([_parentComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
 private _childComponentClass = configFile >> "CfgAcreComponents" >> _childComponentType;
 
 private _componentSimple = getNumber (_childComponentClass >> "simple");
@@ -32,7 +35,7 @@ private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")
 private _childConnectorType = getNumber (_childComponentClass >> "connector");
 if (_parentConnectorType == _childConnectorType) then {
     private _exit = false;
-    private _parentComponentData = HASH_GET(acre_sys_data_radioData, _parentComponentId);
+    private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData), _parentComponentId);
 
     if (!isNil "_parentComponentData") then {
         private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");

@@ -33,9 +33,9 @@ if (_ret != -1) then {
         if (isServer) then {
             private _dataHash = HASH_CREATE;
             if (_replacementId != "") then {
-                _dataHash = HASH_COPY(HASH_GET(acre_sys_data_radioData, _replacementId));
+                _dataHash = HASH_COPY(HASH_GET(EGVAR(sys_data,radioData), _replacementId));
             };
-            HASH_SET(acre_sys_data_radioData,_uniqueClass,_dataHash);
+            HASH_SET(EGVAR(sys_data,radioData),_uniqueClass,_dataHash);
         };
         TRACE_1("callback=", _callback);
         GVAR(unacknowledgedIds) pushBack _uniqueClass;

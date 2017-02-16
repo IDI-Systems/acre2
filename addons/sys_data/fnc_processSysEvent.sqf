@@ -33,7 +33,7 @@ private _radioData = HASH_GET(GVAR(radioData), _radioId);
 private _cachekey = _eventKind+":"+_radioId+":"+_event;
 private _handlerFunction = HASH_GET(GVAR(sysEventCache),_cacheKey);
 if (isNil "_handlerFunction") then {
-    private _radioBaseClass = getText(configFile >> "CfgWeapons" >> _radioId >> "acre_baseClass");
+    private _radioBaseClass = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 
     private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
     if (_interfaceClass == "") then {

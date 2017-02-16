@@ -9,6 +9,7 @@
             <Czech>Hlasitost Post-Mixu</Czech>
             <German>Post-Mix Lautstärke</German>
             <Italian>Volume Globale Post-Mix</Italian>
+            <Korean>Post-Mix 전체 음량</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
             <English>Pre-Mix Global Volume</English>
@@ -18,6 +19,7 @@
             <Czech>Hlasitost Pre-Mixu</Czech>
             <German>Pre-Mix Lautstärke</German>
             <Italian>Volume Globale Pre-Mix</Italian>
+            <Korean>Pre-Mix 전체 음량</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
@@ -27,6 +29,7 @@
             <Czech>Hlasitost diváků</Czech>
             <German>Lautstärke der Zuschauer</German>
             <Italian>Volume Spettatore</Italian>
+            <Korean>관전자 음량</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
@@ -36,6 +39,7 @@
             <Czech>Zrušit ztlumení diváků</Czech>
             <German>Stummschaltung der Clients aufheben</German>
             <Italian>Disattiva l'Audio dei Clients</Italian>
+            <Korean>클라이언트 음소거 해제</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -45,6 +49,7 @@
             <Czech>Vypnout upozornění o desynchronizaci vybavení</Czech>
             <German>Desyncronisierungshinweis ausschalten</German>
             <Italian>Disattiva le Notifiche della Desincronizzazione dell'Equipaggiamento</Italian>
+            <Korean>장비 디싱크 힌트 해제</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
             <English>Default Radio Key</English>
@@ -54,6 +59,7 @@
             <Japanese>標準の無線送信キー</Japanese>
             <Italian>Tasto Radio Standard</Italian>
             <French>Touche radio par défaut</French>
+            <Korean>기본 무전 단축키</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
             <English>Use currently selected radio to talk.</English>
@@ -63,6 +69,7 @@
             <Japanese>選択している無線機を使って話します。</Japanese>
             <Italian>Trasmetti sulla Radio selezionata.</Italian>
             <French>Utiliser la radio actuellement sélectionnée pour parler.</French>
+            <Korean>현재 선택한 무전기 사용해 대화하세요.</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
             <English>Alt Radio Key 1</English>
@@ -72,6 +79,7 @@
             <Japanese>代替無線キー 1</Japanese>
             <Italian>Trasmetti sulla Radio alternativa n.1</Italian>
             <French>Touche radio alternative 1</French>
+            <Korean>대체 무전 단축키 1</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2">
             <English>Alt Radio Key 2</English>
@@ -81,6 +89,7 @@
             <Japanese>代替無線キー 2</Japanese>
             <Italian>Trasmetti sulla Radio alternativa n.2</Italian>
             <French>Touche radio alternative 2</French>
+            <Korean>대체 무전 단축키 2</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3">
             <English>Alt Radio Key 3</English>
@@ -90,6 +99,7 @@
             <Japanese>代替無線キー 3</Japanese>
             <Italian>Trasmetti sulla Radio alternativa n.3</Italian>
             <French>Touche radio alternative 3</French>
+            <Korean>대체 무전 단축키 3</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Use the first radio in your inventory to talk.</English>
@@ -99,6 +109,7 @@
             <Japanese>インベントリの1番目にある無線機を使って話します。</Japanese>
             <Italian>Trasmetti sulla Prima Radio nel tuo equipaggiamento.</Italian>
             <French>Utiliser la première radio dans l'inventaire pour parler.</French>
+            <Korean>인벤토리의 첫 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Use the second radio in your inventory to talk.</English>
@@ -108,6 +119,7 @@
             <Japanese>インベントリの2番目にある無線機を使って話します。</Japanese>
             <Italian>Trasmetti sulla Seconda Radio nel tuo equipaggiamento.</Italian>
             <French>Utiliser la seconde radio dans l'inventaire pour parler.</French>
+            <Korean>인벤토리의 두 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Use the third radio in your inventory to talk.</English>
@@ -117,6 +129,7 @@
             <Japanese>インベントリの3番目にある無線機を使って話します。</Japanese>
             <Italian>Trasmetti sulla Terza Radio nel tuo equipaggiamento.</Italian>
             <French>Utiliser la troisième radio dans l'inventaire pour parler.</French>
+            <Korean>인벤토리의 세 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_PreviousChannel">
             <English>Previous Channel (Active Radio)</English>
@@ -126,6 +139,7 @@
             <Japanese>前のチャンネル (選択している無線機)</Japanese>
             <Italian>Canale Precedente (Ricetrasmittente Attiva)</Italian>
             <French>Canal précédent (radio active)</French>
+            <Korean>이전 채널 (활성화된 무전기)</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_NextChannel">
             <English>Next Channel (Active Radio)</English>
@@ -135,6 +149,7 @@
             <Japanese>次のチャンネル (選択している無線機)</Japanese>
             <Italian>Canale Successivo (Ricetrasmittente Attiva)</Italian>
             <French>Canal suivant (radio active)</French>
+            <Korean>다음 채널 (활성화된 무전기)</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_BabelCycleKey">
             <English>Babel Cycle Language</English>
@@ -144,6 +159,7 @@
             <Japanese>バベル言語の切り替え</Japanese>
             <Italian>Cambia Linguaggio (Babel)</Italian>
             <French>Cycler langue Babel</French>
+            <Korean>바벨 언어 전환</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioLeftEar">
             <English>Radio Left Ear</English>
@@ -153,6 +169,7 @@
             <Japanese>音声を左側から</Japanese>
             <Italian>Imposta Auricolare Sinistro</Italian>
             <French>Radio oreille gauche</French>
+            <Korean>왼쪽 이어폰</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioCentertEar">
             <English>Radio Center Ear</English>
@@ -162,6 +179,7 @@
             <Japanese>音声を両側から</Japanese>
             <Italian>Centra gli Auricolari</Italian>
             <French>Radio oreille centre</French>
+            <Korean>양쪽 이어폰</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_RightRightEar">
             <English>Radio Right Ear</English>
@@ -171,6 +189,7 @@
             <Japanese>音声を右側から</Japanese>
             <Italian>Imposta Auricolare Destro</Italian>
             <French>Radio oreille droite</French>
+            <Korean>오른쪽 이어폰</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_HeadSet">
             <English>Toggle Headset/Toggle Spectators</English>
@@ -180,6 +199,7 @@
             <Japanese>ヘッドセットのトグル/スペクテイターのトグル</Japanese>
             <Italian>Attiva/Disattiva Cuffia - Attiva/Disattiva Spettatori</Italian>
             <French>Alterner Casque/Spectateurs</French>
+            <Korean>헤드셋 전환/관전자 전환</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -187,6 +207,8 @@
             <Japanese>モデル干渉</Japanese>
             <French>Modèle d'interférence</French>
             <German>Interferenz Modul</German>
+            <Czech>Interference radiových vln</Czech>
+            <Korean>모델 간섭</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
             <English>Full Duplex radios</English>
@@ -194,6 +216,8 @@
             <Japanese>全二重通信ラジオ</Japanese>
             <French>Radios Full Duplex</French>
             <German>Vollduplexbetrieb</German>
+            <Czech>Režim plného duplexu vysílaček</Czech>
+            <Korean>전이중 무전기</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_antennaDirection_displayName">
             <English>Ignore Antenna Direction</English>
@@ -201,6 +225,8 @@
             <Japanese>アンテナ指向を無視</Japanese>
             <French>Ignorer l'orientation de l'antenne</French>
             <German>Antennenausrichtung ignorieren</German>
+            <Czech>Ignorovat orientaci antény</Czech>
+            <Korean>안테나 방향 무시</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -208,6 +234,8 @@
             <Japanese>地形による干渉係数</Japanese>
             <French>Coefficient d'atténuation du terrain</French>
             <German>Topografie-Signalverlustskoeffizienz</German>
+            <Czech>Koeficient ztráty signálu způsobené terénem</Czech>
+            <Korean>지형 손실 계수</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
             <English>AI Voice Detection</English>
@@ -215,6 +243,8 @@
             <Japanese>AI による声の検知</Japanese>
             <French>Détection de la voix par l'IA</French>
             <German>Sprachwahrnehmung durch KI</German>
+            <Czech>Detekce hlasu hráčů AIčky</Czech>
+            <Korean>AI 음성 감지</Korean>
         </Key>
     </Package>
 </Project>

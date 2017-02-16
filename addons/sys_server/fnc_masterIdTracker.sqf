@@ -113,7 +113,7 @@ if (GVAR(doFullSearch)) then {
                     GVAR(masterIdList) = GVAR(masterIdList) - [_key];
                     HASH_REM(GVAR(unacknowledgedTable), _key);
 
-                    private _baseRadio = configName (inheritsFrom (configFile >> "CfgWeapons" >> _key));
+                    private _baseRadio = [_key] call EFUNC(sys_radio,getRadioBaseClassname);
                     private _idNumber = getNumber (configFile >> "CfgWeapons" >> _key >> "acre_uniqueId");
                     private _keyIndex = (GVAR(radioIdMap) select 0) find _baseRadio;
                     if (_keyIndex != -1) then {
@@ -133,10 +133,10 @@ if (GVAR(doFullSearch)) then {
         private _players = allPlayers;
         // firstFound is always a player if a player has the item.
         if ((_firstFound select 0) in _players) then {
-            private _baseRadio = configName (inheritsFrom (configFile >> "CfgWeapons" >> _key));
+            private _baseRadio = [_key] call EFUNC(sys_radio,getRadioBaseClassname);
             //Only collect firstFound if there are non-player objects with IDs as well.
             if ({!((_x select 0) in _players)} count _duplicates > 0) then {
-                [(_firstFound select 0), _baseRadio, "acre_sys_radio_returnRadioId", _key] call FUNC(onGetRadioId);
+                [(_firstFound select 0), _baseRadio, QEGVAR(sys_radio,currentRadioDialog), _key] call FUNC(onGetRadioId);
                 WARNING_2("Duplicate radio ID found! Attempting replace of (%1,%2)",name (_firstFound select 0),_key);
             };
 
@@ -144,7 +144,7 @@ if (GVAR(doFullSearch)) then {
             {
                private _data = _x;
                if ((_data select 0) in _players) then {
-                   [(_data select 0), _baseRadio, "acre_sys_radio_returnRadioId", _key] call FUNC(onGetRadioId);
+                   [(_data select 0), _baseRadio, QEGVAR(sys_radio,currentRadioDialog), _key] call FUNC(onGetRadioId);
                    WARNING_2("Duplicate radio ID found! Attempting replace of (%1,%2)",name (_data select 0),_key);
                };
            } forEach _duplicates;
