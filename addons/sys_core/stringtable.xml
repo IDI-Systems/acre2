@@ -207,6 +207,7 @@
             <Japanese>モデル干渉</Japanese>
             <French>Modèle d'interférence</French>
             <German>Interferenz Modul</German>
+            <Czech>Interference radiových vln</Czech>
             <Korean>모델 간섭</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
@@ -215,6 +216,7 @@
             <Japanese>全二重通信ラジオ</Japanese>
             <French>Radios Full Duplex</French>
             <German>Vollduplexbetrieb</German>
+            <Czech>Režim plného duplexu vysílaček</Czech>
             <Korean>전이중 무전기</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_antennaDirection_displayName">
@@ -223,6 +225,7 @@
             <Japanese>アンテナ指向を無視</Japanese>
             <French>Ignorer l'orientation de l'antenne</French>
             <German>Antennenausrichtung ignorieren</German>
+            <Czech>Ignorovat orientaci antény</Czech>
             <Korean>안테나 방향 무시</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
@@ -231,6 +234,7 @@
             <Japanese>地形による干渉係数</Japanese>
             <French>Coefficient d'atténuation du terrain</French>
             <German>Topografie-Signalverlustskoeffizienz</German>
+            <Czech>Koeficient ztráty signálu způsobené terénem</Czech>
             <Korean>지형 손실 계수</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
@@ -239,6 +243,7 @@
             <Japanese>AI による声の検知</Japanese>
             <French>Détection de la voix par l'IA</French>
             <German>Sprachwahrnehmung durch KI</German>
+            <Czech>Detekce hlasu hráčů AIčky</Czech>
             <Korean>AI 음성 감지</Korean>
         </Key>
     </Package>
