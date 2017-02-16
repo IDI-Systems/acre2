@@ -3,9 +3,9 @@
  * Function called when radio transmission is finished (see sys_data/CfgAcreInterface.hpp).
  *
  * Arguments:
- * 0:  Receiving radio ID <STRING> (Unused)
- * 1:  Event (-> "handleEndTransmission") <STRING> (Unused)
- * 2:  Radio ID with transmitting radio Id <ARRAY>
+ * 0: Receiving radio ID <STRING> (Unused)
+ * 1: Event (-> "handleEndTransmission") <STRING> (Unused)
+ * 2: Radio ID with transmitting radio Id <ARRAY>
  *
  * Return Value:
  * None
