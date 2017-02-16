@@ -44,7 +44,7 @@ if (!(_radio in _vehicleRadioList)) then {
     _actions pushBack [_action, [], _target];
 
     // External radios. Show only options to share/stop sharing the radio if you are the actual owner and not an external user
-    if ([_radio] call FUNC(radioCheckChildrenActions)) then {
+    if (!(_radio in ACRE_ACTIVE_EXTERNAL_RADIOS)) then {
         _action = ["acre_share_radio", localize LSTRING(shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params]  call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
         _action = ["acre_retrieve_radio", localize LSTRING(retrieveRadio), "", {[(_this select 2) select 0, false] call EFUNC(sys_external,allowExternalUse)}, {[(_this select 2) select 0] call EFUNC(sys_external,isRadioShared)}, {}, _params]  call ace_interact_menu_fnc_createAction;
@@ -61,7 +61,7 @@ if (!(_radio in _vehicleRadioList)) then {
     _actions pushBack [_action, [], _target];
 } else {
     // They are only available if the player is the driver or commander of a vehicle
-    if (tolower (assignedVehicleRole acre_player select 0) in ["driver","commander"]) then {
+    if (tolower (assignedVehicleRole acre_player select 0) in ["driver","commander"] || (_radio in ACRE_ACTIVE_EXTERNAL_RADIOS)) then {
         if (!([_radio] call EFUNC(sys_external,isExternalRadioUsed))) then {
             // Force first the player to take the headset
             private _action = ["acre_use_externalRadio", localize LSTRING(takeHeadset), "", {[(_this select 2) select 0, vehicle acre_player, acre_player] call EFUNC(sys_external,startUsingExternalRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
@@ -79,7 +79,7 @@ if (!(_radio in _vehicleRadioList)) then {
                 _actions pushBack [_action, [], _target];
 
                 // External radios. Show only options to share/stop sharing the radio if you are the actual owner and not an external user
-                if ([_radio] call FUNC(radioCheckChildrenActions)) then {
+                if (!(_radio in ACRE_ACTIVE_EXTERNAL_RADIOS)) then {
                     _action = ["acre_share_radio", localize LSTRING(shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params]  call ace_interact_menu_fnc_createAction;
                     _actions pushBack [_action, [], _target];
                     _action = ["acre_retrieve_radio", localize LSTRING(retrieveRadio), "", {[(_this select 2) select 0, false] call EFUNC(sys_external,allowExternalUse)}, {[(_this select 2) select 0] call EFUNC(sys_external,isRadioShared)}, {}, _params]  call ace_interact_menu_fnc_createAction;

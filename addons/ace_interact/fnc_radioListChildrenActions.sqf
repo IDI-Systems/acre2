@@ -35,6 +35,10 @@ if (vehicle acre_player != acre_player) then {
     private _owner = "";
     if (_x in ACRE_ACTIVE_EXTERNAL_RADIOS) then {
         _owner = format [" (%1)", [_x] call EFUNC(sys_external,getExternalRadioOwner)];
+    } else {
+        if (_x in _vehicleRadioList) then {
+            _owner = format [" (%1)", vehicle acre_player];
+        };
     };
 
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
