@@ -25,7 +25,7 @@ private _typeName = getText (configFile >> "CfgAcreComponents" >> _radioType >> 
 private _isManpack = getNumber (configFile >> "CfgAcreComponents" >> _radioType >> "isPackRadio");
 
 if (_isManpack == 0) then {
-    private _channel = [_radioId] call acre_api_fnc_getRadioChannel;
+    private _channel = [_radioId] call EFUNC(api,getRadioChannel);
 
     switch (_radioType) do {
         case ("ACRE_PRC343"): {
@@ -40,7 +40,7 @@ if (_isManpack == 0) then {
         };
     };
 
-    _return = [_radioId,_channel] call acre_api_fnc_setRadioChannel;
+    _return = [_radioId,_channel] call EFUNC(api,setRadioChannel);
 
     private _listInfo = [_radioId, "getListInfo"] call EFUNC(sys_data,dataEvent);
     [_typeName, _listInfo, "", 1] call EFUNC(sys_list,displayHint);

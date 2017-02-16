@@ -38,55 +38,55 @@ class CfgAcreComponents {
 
         class Interfaces {
             class CfgAcreDataInterface {
-                getListInfo                    =    "acre_sys_data_fnc_noApiSystemFunction";
+                getListInfo                 = QEFUNC(sys_data,noApiSystemFunction);
 
-                setVolume                    =    "acre_sys_data_fnc_noApiSystemFunction";                // [0-1]
-                getVolume                    =     "acre_sys_data_fnc_noApiSystemFunction";                // [] = 0-1
+                setVolume                   = QEFUNC(sys_data,noApiSystemFunction);                // [0-1]
+                getVolume                   = QEFUNC(sys_data,noApiSystemFunction);                // [] = 0-1
 
-                setSpatial                    =    "acre_sys_data_fnc_noApiSystemFunction";
-                getSpatial                    =    "acre_sys_data_fnc_noApiSystemFunction";
+                setSpatial                  = QEFUNC(sys_data,noApiSystemFunction);
+                getSpatial                  = QEFUNC(sys_data,noApiSystemFunction);
 
-                setChannelData                 =    "acre_sys_data_fnc_noApiSystemFunction";            // [channelNumber, [channelData] ]
-                getChannelData                =    "acre_sys_data_fnc_noApiSystemFunction";            // [channelNumber] = channelData
-                getCurrentChannelData        =    "acre_sys_data_fnc_noApiSystemFunction";        // channelData (of current channel)
-
-
-                getCurrentChannel            =    "acre_sys_data_fnc_noApiSystemFunction";        // [] = channelNumber
-                setCurrentChannel            =    "acre_sys_data_fnc_noApiSystemFunction";        // [channelNumber]
-
-                getStates                    =    "acre_sys_data_fnc_noApiSystemFunction";                // [] = [ [stateName, stateData], [stateName, stateData] ]
-                getState                    =    "acre_sys_data_fnc_noApiSystemFunction";                // [stateName] = stateData
-                setState                    =     "acre_sys_data_fnc_noApiSystemFunction";                // [stateName, stateData] = sets state
-                setStateCritical            =     "acre_sys_data_fnc_noApiSystemFunction";                // [stateName, stateData] = sets state
+                setChannelData              = QEFUNC(sys_data,noApiSystemFunction);            // [channelNumber, [channelData] ]
+                getChannelData              = QEFUNC(sys_data,noApiSystemFunction);            // [channelNumber] = channelData
+                getCurrentChannelData       = QEFUNC(sys_data,noApiSystemFunction);        // channelData (of current channel)
 
 
-                getOnOffState                =     "acre_sys_data_fnc_noApiSystemFunction";            // [] = 0/1
-                setOnOffState                =     "acre_sys_data_fnc_noApiSystemFunction";            // [ZeroOrOne]
+                getCurrentChannel           = QEFUNC(sys_data,noApiSystemFunction);        // [] = channelNumber
+                setCurrentChannel           = QEFUNC(sys_data,noApiSystemFunction);        // [channelNumber]
 
-                initializeComponent            =     "acre_sys_data_fnc_noApiSystemFunction";
+                getStates                   = QEFUNC(sys_data,noApiSystemFunction);                // [] = [ [stateName, stateData], [stateName, stateData] ]
+                getState                    = QEFUNC(sys_data,noApiSystemFunction);                // [stateName] = stateData
+                setState                    = QEFUNC(sys_data,noApiSystemFunction);                // [stateName, stateData] = sets state
+                setStateCritical            = QEFUNC(sys_data,noApiSystemFunction);                // [stateName, stateData] = sets state
 
-                getChannelDescription        =     "acre_sys_data_fnc_noApiSystemFunction";
 
-                isExternalAudio                =    "acre_sys_data_fnc_noApiSystemFunction";
-                getExternalAudioPosition    =     "acre_sys_data_fnc_noApiSystemFunction";
+                getOnOffState               = QEFUNC(sys_data,noApiSystemFunction);            // [] = 0/1
+                setOnOffState               = QEFUNC(sys_data,noApiSystemFunction);            // [ZeroOrOne]
+
+                initializeComponent         = QEFUNC(sys_data,noApiSystemFunction);
+
+                getChannelDescription       = QEFUNC(sys_data,noApiSystemFunction);
+
+                isExternalAudio             = QEFUNC(sys_data,noApiSystemFunction);
+                getExternalAudioPosition    = QEFUNC(sys_data,noApiSystemFunction);
 
 
             };
 
             class CfgAcreTransmissionInterface {
-                handleBeginTransmission        =     "acre_sys_data_fnc_noApiSystemFunction";
-                handleEndTransmission        =    "acre_sys_data_fnc_noApiSystemFunction";
+                handleBeginTransmission     = QEFUNC(sys_data,noApiSystemFunction);
+                handleEndTransmission       = QEFUNC(sys_data,noApiSystemFunction);
 
-                handleSignalData            =    "acre_sys_data_fnc_noApiSystemFunction";
-                handleMultipleTransmissions =    "acre_sys_data_fnc_noApiSystemFunction";
+                handleSignalData            = QEFUNC(sys_data,noApiSystemFunction);
+                handleMultipleTransmissions = QEFUNC(sys_data,noApiSystemFunction);
 
-                handlePTTDown                =    "acre_sys_data_fnc_noApiSystemFunction";
-                handlePTTUp                    =     "acre_sys_data_fnc_noApiSystemFunction";
+                handlePTTDown               = QEFUNC(sys_data,noApiSystemFunction);
+                handlePTTUp                 = QEFUNC(sys_data,noApiSystemFunction);
             };
 
             class CfgAcreInteractInterface {
-                openGui                        =     "acre_sys_data_fnc_noApiSystemFunction";                // [RadioId]
-                closeGui                    =    "acre_sys_data_fnc_noApiSystemFunction";                // []
+                openGui                     = QEFUNC(sys_data,noApiSystemFunction);                // [RadioId]
+                closeGui                    = QEFUNC(sys_data,noApiSystemFunction);                // []
             };
         };
     };
@@ -97,7 +97,7 @@ class CfgVehicles {
     class CAManBase: Man {
         acre_antennaMemoryPoints[] = {{"LeftShoulder", "LeftShoulder"}};
         //acre_antennaMemoryPointsDir[] = {{"Spine3", "Neck"}};
-        acre_antennaDirFnc = QUOTE(DFUNC(getAntennaDirMan));
+        acre_antennaDirFnc = QFUNC(getAntennaDirMan);
     };
 };
 

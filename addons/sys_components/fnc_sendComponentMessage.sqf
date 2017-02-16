@@ -21,7 +21,7 @@ params ["_parentComponentId","_parentConnector", "_message"];
 
 private _return = false;
 
-private _parentComponentData = HASH_GET(acre_sys_data_radioData,_parentComponentId);
+private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData),_parentComponentId);
 if (!isNil "_parentComponentData") then {
     private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
     if (!isNil "_parentConnectorData") then {
@@ -29,7 +29,7 @@ if (!isNil "_parentComponentData") then {
             private _parentConnectedComponentData = _parentConnectorData select _parentConnector;
 
             private _childComponentId = _parentConnectedComponentData select 0;
-            private _childComponentData = HASH_GET(acre_sys_data_radioData,_childComponentId);
+            private _childComponentData = HASH_GET(EGVAR(sys_data,radioData),_childComponentId);
             if (!isNil "_childComponentData") then {
                 private _childConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
                 private _childConnector = -1;

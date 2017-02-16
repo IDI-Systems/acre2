@@ -23,10 +23,10 @@ DFUNC(monitorAI_PFH) = {
     if (ACRE_IS_SPECTATOR) exitWith {};
     //if (! ACRE_LOCAL_SPEAKING ) exitWith {};
     if (!(acre_player in GVAR(speakers))) exitWith {};
-    if (isNil "acre_api_selectableCurveScale" ) exitWith {};
+    if (isNil QEGVAR(api,selectableCurveScale)) exitWith {};
 
     //soundFactor is how loud the local player is speaking.
-    private _soundFactor = acre_api_selectableCurveScale; // typically 0.1 -> 1.3
+    private _soundFactor = EGVAR(api,selectableCurveScale); // typically 0.1 -> 1.3
     private _multiplier = 250*(_soundFactor^2);
 
     private _nearUnits = (getPosATL acre_player) nearEntities ["CAManBase", (130 * _soundFactor)];

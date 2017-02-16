@@ -20,8 +20,8 @@
 
 params ["_code"];
 
-if (!(_code isEqualType {})) exitWith { 
+if (!(_code isEqualType {})) exitWith {
     ERROR("acre_api_fnc_setCustomSignalFunc called with invalid argument.");
 };
 
-acre_sys_signal_customSignalFunc = _code;
+EGVAR(sys_signal,customSignalFunc) = _code;

@@ -22,7 +22,7 @@ private _searchFunction = {
     private _returnTree = [];
     params ["_componentParentId"];
     _searchedComponents pushBack _componentParentId;
-    private _componentData = HASH_GET(acre_sys_data_radioData, _componentParentId);
+    private _componentData = HASH_GET(EGVAR(sys_data,radioData), _componentParentId);
 
     if (!isNil "_componentData") then {
         private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");

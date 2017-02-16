@@ -17,6 +17,6 @@
 
 params ["_radioType"];
 
-acre_sys_radio_defaultItemRadioType = _radioType;
+EGVAR(sys_radio,defaultItemRadioType) = _radioType;
 
 true
