@@ -18,8 +18,8 @@
 #include "script_component.hpp"
 
 params ["", "", "_data"];
+_data params ["_transmitterClass"];
 
-_transmitterClass = _data select 0;
 missionNamespace setVariable [_transmitterClass + "_running_count", 0];
 missionNamespace setVariable [_transmitterClass + "_best_signal", -992];
 missionNamespace setVariable [_transmitterClass + "_best_ant", ""];
