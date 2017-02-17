@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: Unique radio identity <STRING>
- * 2: New end user/original owner <OBJECT>(Optional)
+ * 1: New end user/original owner <OBJECT>(Optional)
  *
  * Return Value:
  * None

@@ -4,6 +4,7 @@
  *
  * Arguments:
  * 0: Unique radio identity <STRING>
+ * 1: Radio owner <OBJECT>
  *
  * Return Value:
  * Radio is available for external use <BOOL>
