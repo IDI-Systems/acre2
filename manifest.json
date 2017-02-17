@@ -34,7 +34,7 @@
                     "account": "IDI-Systems/acre2",
                     "tag_name": "v{major}.{minor}.{patch}.{build}",
                     "branch": "release-build",
-                    "name": "v{major}.{minor}.{patch}.{build}",
+                    "name": "ACRE2 v{major}.{minor}.{patch}.{build}",
                     "body_file": "P:\\idi\\acre\\release\\@acre2\\README.md",
                     "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}.zip",
                     "asset_name": "acre2_{major}.{minor}.{patch}.{build}.zip",

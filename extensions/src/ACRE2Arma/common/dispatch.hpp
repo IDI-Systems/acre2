@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <thread>
 #include <mutex>
@@ -56,6 +56,7 @@ namespace acre {
         std::unordered_map < std::string, std::function<bool(arguments &, std::string &)> > _methods;
         std::atomic_bool _ready;
     };
+
     class dispatch : public dispatcher, public singleton<dispatch> { };
 
     struct dispatch_message {
@@ -109,14 +110,14 @@ namespace acre {
         }
 
         void push_result(const dispatch_result & result) {
-            {
-                std::lock_guard<std::mutex> lock(_results_lock);
-                _results.push(result);
-            }
+            std::lock_guard<std::mutex> lock(_results_lock);
+            _results.push(result);
         }
+
         void push_result(const std::string & result) {
             push_result(dispatch_result(result, -1));
         }
+
         void stop() {
             for (auto module : _modules) {
                 module->stop();

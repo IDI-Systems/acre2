@@ -42,14 +42,14 @@ if (_doDefault) then {
     };
 };
 
-private _currentVolume = call acre_api_fnc_getSelectableVoiceCurve;
+private _currentVolume = call EFUNC(api,getSelectableVoiceCurve);
 if (!isNil "_currentVolume") then {
     #ifdef DEBUG_MODE_FULL
         acre_player sideChat format["Curv: %1  Fact: %2",_currentVolume,_factor];
     #endif
 
     if (_currentVolume != _factor) then  {
-        [_factor] call acre_api_fnc_setSelectableVoiceCurve;
+        [_factor] call EFUNC(api,setSelectableVoiceCurve);
         #ifdef DEBUG_MODE_FULL
             acre_player sideChat format["Set volume factor: %1",_factor];
         #endif

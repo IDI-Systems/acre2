@@ -31,17 +31,17 @@ private _interference = _logic getVariable ["Interference", true];
 private _ignoreAntennaDirection = _logic getVariable ["IgnoreAntennaDirection", false];
 
 if (!_signalLoss) then {
-    [0.0] call acre_api_fnc_setLossModelScale;
+    [0.0] call FUNC(setLossModelScale);
 };
 
 if (_fullDuplex) then {
-    [true] call acre_api_fnc_setFullDuplex;
+    [true] call FUNC(setFullDuplex);
 };
 
 if (!_interference) then {
-    [false] call acre_api_fnc_setInterference;
+    [false] call FUNC(setInterference);
 };
 
 if (_ignoreAntennaDirection) then {
-    [true] call acre_api_fnc_ignoreAntennaDirection;
+    [true] call FUNC(ignoreAntennaDirection);
 };

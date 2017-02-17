@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calculates the antenna direction
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Object to calculate the antenna direction for <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Vector data for forward direction and upright direction <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_components_getAntennaDirMan
+ * [player] call acre_sys_components_getAntennaDirMan
  *
  * Public: No
  */

@@ -3,8 +3,6 @@
 
 #define CALL_RPC(proc,params) [proc, params] call EFUNC(sys_rpc,callRemoteProcedure);
 
-#define NO_DEDICATED if (!hasInterface) exitWith {}
-
 #define RGB_GREEN 0, 0.5, 0, 1
 #define RGB_BLUE 0, 0, 1, 1
 #define RGB_ORANGE 0.5, 0.5, 0, 1
@@ -81,9 +79,9 @@ Antenna Defines
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define DEFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 
-#define GET_STATE(id)            ([GVAR(currentRadioId), "getState", id] call acre_sys_data_fnc_dataEvent)
-#define SET_STATE(id, val)        ([GVAR(currentRadioId), "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
-#define SET_STATE_CRIT(id, val)    ([GVAR(currentRadioId), "setStateCritical", [id, val]] call acre_sys_data_fnc_dataEvent)
+#define GET_STATE(id)            ([GVAR(currentRadioId), "getState", id] call EFUNC(sys_data,dataEvent))
+#define SET_STATE(id, val)        ([GVAR(currentRadioId), "setState", [id, val]] call EFUNC(sys_data,dataEvent))
+#define SET_STATE_CRIT(id, val)    ([GVAR(currentRadioId), "setStateCritical", [id, val]] call EFUNC(sys_data,dataEvent))
 #define GET_STATE_DEF(id, default)    ([id, default] call FUNC(getDefaultState))
 
 #define SCRATCH_SET(radioId, key, val) ([radioId, key, val] call EFUNC(sys_data,setScratchData))
@@ -109,7 +107,7 @@ Antenna Defines
 #define HASHLIST_SET(hashList, index, value) (hashList set[index, value])
 #define HASHLIST_PUSH(hashList, value) (hashList pushBack value)
 
-#define BASECLASS(radioId) (configName (inheritsFrom (configFile >> "CfgWeapons" >> radioId)))
+#define BASECLASS(radioId) ([radioId] call EFUNC(sys_radio,getRadioBaseClassname))
 
 #define DGVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QGVAR(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QGVAR(varName); }; GVAR(varName)
 #define DVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QUOTE(varName); }; varName
