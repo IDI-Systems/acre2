@@ -17,7 +17,7 @@
 
 params["_componentId"];
 
-private _parentComponentData = HASH_GET(acre_sys_data_radioData,_componentId);
+private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData),_componentId);
 private _return = nil;
 if(!isNil "_parentComponentData") then {
     private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");

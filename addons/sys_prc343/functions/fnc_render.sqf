@@ -76,5 +76,5 @@ if (_currentView == 0) then {
     {_x ctrlEnable true;} forEach [RADIO_CTRL(201), RADIO_CTRL(202), RADIO_CTRL(203)];
 };
 
-TRACE_3("rendering", _currentChannel, _currentVolume, acre_sys_radio_currentRadioDialog);
+TRACE_3("rendering", _currentChannel, _currentVolume, EGVAR(sys_radio,currentRadioDialog));
 true

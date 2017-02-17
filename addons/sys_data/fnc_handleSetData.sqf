@@ -18,7 +18,7 @@
 
 params ["_radioId", "_event", "_data", "_radioData","_eventKind", "_remote"];
 
-acre_sys_core_speaking_cache_valid = false;
+EGVAR(sys_core,speaking_cache_valid) = false;
 //missionNamespace setVariable [_radioId+"dataCache", nil];
 if (_remote) exitWith { true };
 

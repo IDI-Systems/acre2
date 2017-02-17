@@ -10,15 +10,15 @@ class CfgAcreAPI {
         };
         class setTransmitPower {
             required = false;
-            defaultFunction = QUOTE(DFUNC(api_setTransmitPower));
+            defaultFunction = QFUNC(api_setTransmitPower);
         };
         class toggleOnOff {
             required = false;
-            defaultFunction = QUOTE(DFUNC(api_toggleOnOffState));
+            defaultFunction = QFUNC(api_toggleOnOffState);
         };
         class getOnOffState {
             required = false;
-            defaultFunction = QUOTE(DFUNC(api_getOnOffState));
+            defaultFunction = QFUNC(api_getOnOffState);
         };
         class getVolume {
             required = true;

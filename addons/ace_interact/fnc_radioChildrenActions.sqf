@@ -53,8 +53,8 @@ if (!(_radio in _vehicleRadioList)) then {
 
     private _idx = _pttAssign find _radio;
     _txt = localize LSTRING(bindMultiPushToTalk);;
-    if (_idx > -1 and _idx < 3) then {
-        _txt = format [localize LSTRING(multiPushToTalk),(_idx+1)];
+    if ((_idx > -1) and (_idx < 3)) then {
+        _txt = format [localize LSTRING(multiPushToTalk), (_idx + 1)];
     };
 
     _action = ["acre_mptt_assign", _txt, "", {}, {true}, {_this call FUNC(radioPTTChildrenActions);}, _params] call ace_interact_menu_fnc_createAction;

@@ -19,9 +19,9 @@
 params ["_target"];
 
 private _actions = [];
-private _currentRadio = [] call acre_api_fnc_getCurrentRadio;
-private _pttAssign = [] call acre_api_fnc_getMultiPushToTalkAssignment;
-private _radioList = [] call acre_api_fnc_getCurrentRadioList;
+private _currentRadio = [] call EFUNC(api,getCurrentRadio);
+private _pttAssign = [] call EFUNC(api,getMultiPushToTalkAssignment);
+private _radioList = [] call EFUNC(api,getCurrentRadioList);
 private _vehicleRadioList = [];
 
 if (vehicle acre_player != acre_player) then {

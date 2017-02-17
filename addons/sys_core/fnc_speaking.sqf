@@ -74,7 +74,7 @@ DFUNC(speakingLoop) = {
                         };
                         _txRadios = _sources select _keyIndex;
                         _txRadios pushBack [_unit,_txId,_signalData,_params];
-                        if (acre_sys_signal_showSignalHint) then {
+                        if (EGVAR(sys_signal,showSignalHint)) then {
                             _signalHint = _signalHint + format["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
                         };
                     };

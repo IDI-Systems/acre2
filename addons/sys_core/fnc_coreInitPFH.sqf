@@ -28,8 +28,8 @@ TRACE_1("GOT TS3 ID", GVAR(ts3id));
 [] call FUNC(speaking);
 
 // Set the speaking volume to normal
-[.7] call acre_api_fnc_setSelectableVoiceCurve;
-acre_sys_gui_VolumeControl_Level = 0;
+[.7] call EFUNC(api,setSelectableVoiceCurve);
+EGVAR(sys_gui,VolumeControl_Level) = 0;
 
 ACRE_CORE_INIT = true;
 TRACE_1("ACRE CORE INIT", ACRE_CORE_INIT);

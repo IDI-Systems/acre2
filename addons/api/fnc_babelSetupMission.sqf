@@ -35,29 +35,29 @@ _this spawn {
         // Wait for the mission to initialize first
         if (_flag) then {
             _flag spawn {
-                ["east", "Opfor"] call acre_api_fnc_babelAddLanguageType;
-                ["west", "Blufor"] call acre_api_fnc_babelAddLanguageType;
-                ["ind", "Indepedent"] call acre_api_fnc_babelAddLanguageType;
-                ["civ", "Civilian"] call acre_api_fnc_babelAddLanguageType;
-                ["logic", "Zeus"] call acre_api_fnc_babelAddLanguageType;
+                ["east", "Opfor"] call FUNC(babelAddLanguageType);
+                ["west", "Blufor"] call FUNC(babelAddLanguageType);
+                ["ind", "Indepedent"] call FUNC(babelAddLanguageType);
+                ["civ", "Civilian"] call FUNC(babelAddLanguageType);
+                ["logic", "Zeus"] call FUNC(babelAddLanguageType);
                 //something acre_player
                 waitUntil { !isNull acre_player };
                 _side = side acre_player;
                 switch _side do {
                     case east: {
-                        ["east"] call acre_api_fnc_babelSetSpokenLanguages;
+                        ["east"] call FUNC(babelSetSpokenLanguages);
                     };
                     case west: {
-                        ["west"] call acre_api_fnc_babelSetSpokenLanguages;
+                        ["west"] call FUNC(babelSetSpokenLanguages);
                     };
                     case independent: {
-                        ["ind"] call acre_api_fnc_babelSetSpokenLanguages;
+                        ["ind"] call FUNC(babelSetSpokenLanguages);
                     };
                     case civilian: {
-                        ["civ"] call acre_api_fnc_babelSetSpokenLanguages;
+                        ["civ"] call FUNC(babelSetSpokenLanguages);
                     };
                     default {
-                        ["east", "west", "ind", "civ", "logic"] call acre_api_fnc_babelSetSpokenLanguages;
+                        ["east", "west", "ind", "civ", "logic"] call FUNC(babelSetSpokenLanguages);
                     };
                 };
             };
@@ -78,13 +78,13 @@ _this spawn {
             private _curLanguage = _x select _i;
 
             if ((_languages pushBackUnique _curLanguage) != -1) then {
-                [_curLanguage, _curLanguage] call acre_api_fnc_babelAddLanguageType;
+                [_curLanguage, _curLanguage] call FUNC(babelAddLanguageType);
             };
             _sideLanguages pushBack _curLanguage;
         };
         //acre_player may not ready yet?
         if (_curSide == (side acre_player) ) then {
-            _sideLanguages call acre_api_fnc_babelSetSpokenLanguages;
+            _sideLanguages call FUNC(babelSetSpokenLanguages);
         };
     } forEach _this;
 
