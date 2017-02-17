@@ -30,7 +30,6 @@ GVAR(NumpadMap) = [
 ];
 
 DFUNC(doAlphanumericButton) = {
-    //TRACE_1(QUOTE(FUNC(doNumberButton)), _this);
     params ["_menu", "_event"];
 
     private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
@@ -83,7 +82,6 @@ DFUNC(doAlphanumericButton) = {
 };
 
 DFUNC(onButtonPress_Alphanumeric) = {
-    //TRACE_1(QUOTE(FUNC(onButtonPress_Alphanumeric)), _this);
     params ["_menu", "_event"];
 
     private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
@@ -170,7 +168,6 @@ DFUNC(onButtonPress_Alphanumeric) = {
 };
 
 DFUNC(renderMenu_Alphanumeric) = {
-    //TRACE_1(QUOTE(FUNC(renderMenu_Alphanumeric)), _this);
     params ["_menu"]; // the menu to render is passed
 
     private _displaySet = MENU_SUBMENUS(_menu);
