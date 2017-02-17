@@ -18,7 +18,7 @@ class Prc152_RadioDialog {
         y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
         w = NEW_SCALE*safeZoneH;
         h = NEW_SCALE*safeZoneH;
-        text = QUOTE(PATHTOF(Data\prc152c_ui.paa));
+        text = QPATHTOF(Data\prc152c_ui.paa);
     };
     class controls {
         class BatteryBar
@@ -181,7 +181,7 @@ class Prc152_RadioDialog {
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
             colorText[] = {1,1,1,1};
-            text = QUOTE(PATHTOF(Data\Knobs\functionknob\prc152c_ui_swtch_0.paa));
+            text = QPATHTOF(Data\Knobs\functionknob\prc152c_ui_swtch_0.paa);
         END_CONTROL
 
         /*BEGIN_CONTROL(CHIPHER_KNOB, Prc152_RscButton, 222)
@@ -201,7 +201,7 @@ class Prc152_RadioDialog {
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
             colorText[] = {1,1,1,1};
-            text = QUOTE(PATHTOF(Data\Knobs\keypad\prc152c_ui_default.paa));
+            text = QPATHTOF(Data\Knobs\keypad\prc152c_ui_default.paa);
         END_CONTROL
 
         BEGIN_CONTROL(BUTTON_ONE, Prc152_RscButton, 99902+101)

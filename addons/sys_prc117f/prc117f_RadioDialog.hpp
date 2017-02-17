@@ -18,7 +18,7 @@ class Prc117f_RadioDialog {
         y= (0.5-((1*safezoneW)/2));
         w = 1*SafeZoneW;
         h = 1*SafeZoneW;
-        text = QUOTE(PATHTOF(Data\prc117f_ui.paa));
+        text = QPATHTOF(Data\prc117f_ui.paa);
     };
     class controls {
 
@@ -178,7 +178,7 @@ class Prc117f_RadioDialog {
             w = 1*SafeZoneW;
             h = 1*SafeZoneW;
             colorText[] = {1,1,1,1};
-            text = QUOTE(PATHTOF(Data\knobs\switch\prc117f_ui_swtch1_01.paa));
+            text = QPATHTOF(Data\knobs\switch\prc117f_ui_swtch1_01.paa);
         END_CONTROL
 
         BEGIN_CONTROL(MODE_KNOB, Prc117f_RscButton, 99902+222)
@@ -200,7 +200,7 @@ class Prc117f_RadioDialog {
             w = 1*SafeZoneW;
             h = 1*SafeZoneW;
             colorText[] = {1,1,1,1};
-            text = QUOTE(PATHTOF(Data\knobs\prc117f_ui_keys_default.paa));
+            text = QPATHTOF(Data\knobs\prc117f_ui_keys_default.paa);
         END_CONTROL
 
         BEGIN_CONTROL(BUTTON_ZERO, Prc117f_RscButton, 99902+100)

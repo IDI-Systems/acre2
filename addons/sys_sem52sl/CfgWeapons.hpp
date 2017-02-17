@@ -16,8 +16,8 @@ class CfgWeapons {
     class ACRE_SEM52SL : ACRE_BaseRadio {
         displayName = "SEM 52 SL";
         useActionTitle = "SEM 52 SL";
-        picture = QUOTE(PATHTOF(data\ui\sem52sl_icon.paa));
-        model = QUOTE(PATHTOF(Data\model\sem52sl.p3d));
+        picture = QPATHTOF(data\ui\sem52sl_icon.paa);
+        model = QPATHTOF(Data\model\sem52sl.p3d);
         descriptionShort = "Sender/Empfänger, mobil SEM 52 SL";
 
         scopeCurator = 2;

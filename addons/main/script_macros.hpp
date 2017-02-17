@@ -113,8 +113,8 @@ Antenna Defines
 #define DVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QUOTE(varName); }; varName
 
 // Dynamic sub-modules for systems
-#define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QUOTE(PATHTOF(folder\__PREP__.sqf))
-#define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QUOTE(PATHTOF(module\DOUBLES(fnc,fncName).sqf))
+#define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QPATHTOF(folder\__PREP__.sqf)
+#define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(module\DOUBLES(fnc,fncName).sqf)
 #define PREP_STATE(stateFile) [] call compile preprocessFileLineNumbers format [QPATHTOF(states\%1.sqf), #stateFile]
 
 // Deprecation
