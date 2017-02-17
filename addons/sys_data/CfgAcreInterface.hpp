@@ -172,7 +172,7 @@ class CfgAcreTransmissionInterface {
         };
 
         class handleEndTransmission : DefaultAction {
-            handler = QUOTE(EFUNC(sys_signal,handleEndTransmission));
+            handler = QEFUNC(sys_signal,handleEndTransmission);
         };
 
         class handleMultipleTransmissions : DefaultAction {
