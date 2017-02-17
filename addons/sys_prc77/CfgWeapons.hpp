@@ -18,8 +18,8 @@ class CfgWeapons {
     class ACRE_PRC77 : ACRE_BaseRadio {
         displayName = "AN/PRC-77";
         useActionTitle = "AN/PRC-77";
-        model = QUOTE(PATHTOF(Data\models\prc_77.p3d));
-        picture = QUOTE(PATHTOF(Data\prc77_icon.paa));
+        model = QPATHTOF(Data\models\prc_77.p3d);
+        picture = QPATHTOF(Data\prc77_icon.paa);
         descriptionShort = "AN/PRC-77 Manpack Radio";
         scopeCurator = 2;
         scope = 2;

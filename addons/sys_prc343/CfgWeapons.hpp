@@ -18,8 +18,8 @@ class CfgWeapons {
     class ACRE_PRC343 : ACRE_BaseRadio {
         displayName = "AN/PRC-343";
         useActionTitle = "AN/PRC-343";
-        picture = QUOTE(PATHTOF(Data\static\prc343_icon.paa));
-        model = QUOTE(PATHTOF(Data\models\acre_prc343_model.p3d));
+        picture = QPATHTOF(Data\static\prc343_icon.paa);
+        model = QPATHTOF(Data\models\acre_prc343_model.p3d);
         descriptionShort = "AN/PRC-343 PRR Radio";
 
         scopeCurator = 2;

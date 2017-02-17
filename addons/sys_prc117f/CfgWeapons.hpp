@@ -6,8 +6,8 @@ class CfgWeapons {
     class ACRE_PRC117F : ACRE_BaseRadio {
         displayName = "AN/PRC-117F";
         useActionTitle = "AN/PRC-117F";
-        //model = QUOTE(PATHTOF(Data\Models\PRC117F.p3d));
-        picture = QUOTE(PATHTOF(Data\PRC117F_ico.paa));
+        //model = QPATHTOF(Data\Models\PRC117F.p3d);
+        picture = QPATHTOF(Data\PRC117F_ico.paa);
         descriptionShort = "AN/PRC-117F Manpack Radio";
         scopeCurator = 2;
         scope = 2;

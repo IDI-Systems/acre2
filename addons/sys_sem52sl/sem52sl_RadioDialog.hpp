@@ -23,7 +23,7 @@ class SEM52SL_RadioDialog {
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2))) - (1/8 * safeZoneH);
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
-            text = QUOTE(PATHTOF(data\ui\sem52slui_ca.paa));
+            text = QPATHTOF(data\ui\sem52slui_ca.paa);
         END_CONTROL
 
         BEGIN_CONTROL(Backlight, SEM52SL_RscPicture, 109)
@@ -80,7 +80,7 @@ class SEM52SL_RadioDialog {
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2))) - (1/8 * safeZoneH);
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
-            text = QUOTE(PATHTOF(data\knobs\channel\ch_01.paa));
+            text = QPATHTOF(data\knobs\channel\ch_01.paa);
         END_CONTROL
 
         BEGIN_CONTROL(VolumeKnob, SEM52SL_RscPicture, 107)
@@ -88,7 +88,7 @@ class SEM52SL_RadioDialog {
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2))) - (1/8 * safeZoneH);
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
-            text = QUOTE(PATHTOF(Data\knobs\volume\vol_1000.paa));
+            text = QPATHTOF(Data\knobs\volume\vol_1000.paa);
         END_CONTROL
 
         BEGIN_CONTROL(PTTButtonImage, SEM52SL_RscPicture, 108)
