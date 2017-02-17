@@ -3,8 +3,8 @@
  * Check if a given action is available for a specific radio and unit
  *
  * Arguments:
- * 1: Unique radio ID <STRING>
- * 0: Unit to be checked <OBJECT>
+ * 0: Unique radio ID <STRING>
+ * 1: Unit to be checked <OBJECT>
  *
  * Return Value:
  * Action is available <BOOL>
