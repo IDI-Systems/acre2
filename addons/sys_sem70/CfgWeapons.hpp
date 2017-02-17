@@ -16,8 +16,8 @@ class CfgWeapons {
     class ACRE_SEM70 : ACRE_BaseRadio {
         displayName = "SEM 70";
         useActionTitle = "SEM 70";
-        picture = QUOTE(PATHTOF(data\ui\sem70_icon.paa));
-        model = QUOTE(PATHTOF(data\model\sem70.p3d));
+        picture = QPATHTOF(data\ui\sem70_icon.paa);
+        model = QPATHTOF(data\model\sem70.p3d);
         descriptionShort = "Sender/Empfänger, mobil SEM 70";
 
         scopeCurator = 2;
