@@ -27,13 +27,13 @@ GVAR(initializedVehicleClasses) pushBack _type;
 if (!hasInterface) exitWith {};
 if (!isClass (configFile >> "CfgPatches" >> "ace_interaction")) exitWith {}; // No ACE exit.
 
-////{alive _target} && 
+////{alive _target} &&
 private _condition = {
     //true
     //{[_player, _target, ["isNotInside"]] call ace_common_fnc_canInteractWith}
      //{[_player, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)}
      params ["_target","_unit"];
-     private _accessibleRacks = [_target,_unit] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
+     private _accessibleRacks = [_target,_unit] call EFUNC(sys_rack,getAccessibleVehicleRacks);
      count _accessibleRacks > 0;
 };
 private _statement = {true};

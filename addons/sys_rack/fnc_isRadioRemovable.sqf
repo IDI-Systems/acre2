@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-params["_rackClassName"];
+params ["_rackClassName"];
 
 private _removable = GET_STATE_RACK(_rackClassName,"isRadioRemovable");
 

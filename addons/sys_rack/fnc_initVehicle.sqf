@@ -17,13 +17,13 @@
 
 params ["_vehicle"];
 
-private _initialized = _vehicle getVariable [QGVAR(initialized),false];
+private _initialized = _vehicle getVariable [QGVAR(initialized), false];
 if (!_initialized) then {
     private _classname = typeOf _vehicle;
     private _racks = configFile >> "CfgVehicles" >> _classname >> "AcreRacks";
 
-    
-    for "_i" from 0 to ((count _racks)-1) do {
+
+    for "_i" from 0 to ((count _racks) - 1) do {
         private _x = _racks select _i;
         private _componentName = getText (_x >> "componentname");
         private _displayName = getText (_x >> "name");
@@ -32,8 +32,8 @@ if (!_initialized) then {
         private _mountedRadio = getText (_x >> "mountedRadio");
         private _isRadioRemovable = getNumber (_x >> "isRadioRemovable") == 1;
 
-        [_vehicle,_componentName,_displayName,_isRadioRemovable,_allowed,_mountedRadio,_components] call FUNC(addRack);
+        [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _mountedRadio, _components] call FUNC(addRack);
     };
 
-    _vehicle setVariable [QGVAR(initialized),true,true];
+    _vehicle setVariable [QGVAR(initialized), true, true];
 };

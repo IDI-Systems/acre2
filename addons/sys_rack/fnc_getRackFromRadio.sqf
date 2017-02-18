@@ -15,10 +15,10 @@
  */
  #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
 private _return = "";
- 
+
  //TODO: Optimize
 {
     private _rackId = typeOf _x;

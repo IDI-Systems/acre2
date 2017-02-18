@@ -1,7 +1,3 @@
-#include "script_component.hpp"
-
-ADDON = false;
-
 // Compile here
 PREP(onReturnRackId);
 PREP(onReturnRadioId);
@@ -30,5 +26,3 @@ PREP(setState);
 PREP_FOLDER(vrc103);
 PREP_FOLDER(vrc110);
 PREP_FOLDER(vrc111);
-
-ADDON = true;

@@ -18,8 +18,8 @@
  */
 #include "script_component.hpp"
 
-params["_rackId", "_event", "_eventData", "_rackData"];
-_eventData params ["_componentName","_displayName","_isRadioRemovable","_allowed","_mountedRadio","_defaultComponents","_vehicle"];
+params ["_rackId", "_event", "_eventData", "_rackData"];
+_eventData params ["_componentName", "_displayName", "_isRadioRemovable", "_allowed", "_mountedRadio", "_defaultComponents", "_vehicle"];
 
 
 HASH_SET(_rackData,"name",_displayName);
@@ -30,7 +30,7 @@ HASH_SET(_rackData,"vehicle",_vehicle);
 
 //Only run on server as initializeRack is called globally.
 if (isServer && {count _defaultComponents > 0}) then {
-    private _connectedComponents = ([_rackId] call acre_sys_components_fnc_getAllConnectors);
+    private _connectedComponents = ([_rackId] call EFUNC(sys_components,getAllConnectors));
     private _componentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_rackId);
     private _freeConnectors = [];
     private _usedConnectors = [];
@@ -41,17 +41,17 @@ if (isServer && {count _defaultComponents > 0}) then {
         private _icon = "";
 
         if (!isNil "_connectorData") then { // Comomponent attached.
-            _usedConnectors pushBack [_forEachIndex,_connectorType];
+            _usedConnectors pushBack [_forEachIndex, _connectorType];
         } else { // No Component attached.
-            _freeConnectors pushBack [_forEachIndex,_connectorType];
+            _freeConnectors pushBack [_forEachIndex, _connectorType];
         };
-    } forEach (getArray(_componentClass >> "connectors"));
- 
+    } forEach (getArray (_componentClass >> "connectors"));
+
     {
         private _componentName = _x;
         private _componentCfg = configFile >> "CfgAcreComponents" >> _componentName;
-        if (getNumber(_componentCfg >> "simple")==1) then { // only attaach simple components.
-            private _connectorType = getNumber(_componentCfg >> "connector");
+        if (getNumber (_componentCfg >> "simple") == 1) then { // only attaach simple components.
+            private _connectorType = getNumber (_componentCfg >> "connector");
             // Is there a free_componentIdx component
             private _attributes = HASH_CREATE;
             private _freeComponentIdx = -1;
@@ -62,9 +62,9 @@ if (isServer && {count _defaultComponents > 0}) then {
                     _freeConnectorsIdx = _forEachIndex;
                 };
             } forEach _freeConnectors;
-            
+
             if (_freeComponentIdx != -1) then {
-                [_rackId,_freeComponentIdx,_componentName,_attributes,false] call EFUNC(sys_components,attachSimpleComponent);
+                [_rackId, _freeComponentIdx, _componentName, _attributes, false] call EFUNC(sys_components,attachSimpleComponent);
                 _usedConnectors pushBack (_freeConnectors deleteAt _freeConnectorsIdx);
                 //Add to used index.
             } else { // Try using a used index.
@@ -75,10 +75,9 @@ if (isServer && {count _defaultComponents > 0}) then {
                     };
                 } forEach _usedConnectors;
                 if (_usedComponentIdx != -1) then {
-                    [_rackId,_usedComponentIdx,_componentName,_attributes,true] call EFUNC(sys_components,attachSimpleComponent);
+                    [_rackId, _usedComponentIdx, _componentName, _attributes, true] call EFUNC(sys_components,attachSimpleComponent);
                 };
             };
         };
     } forEach _defaultComponents;
-
 };

@@ -20,18 +20,18 @@
 
 LOG("HIT CALLBACK");
 
-params["_entity", "_class", "_returnIdNumber", "_replacementId"];
+params ["_entity", "_class", "_returnIdNumber", "_replacementId"];
 
 private _dataHash = HASH_CREATE;
 
 // diag_log text format["acre_sys_data_radioData: %1", acre_sys_data_radioData];
 
-HASH_SET(acre_sys_data_radioData,_class,_dataHash);
+HASH_SET(EGVAR(sys_data,radioData), _class, _dataHash);
 _idRelation = [_entity, _entity];
-HASH_SET(acre_sys_server_objectIdRelationTable, _class, _idRelation);
-if(_replacementId != "") then {
-    _radioData = HASH_GET(acre_sys_data_radioData, _replacementId);
-    HASH_SET(acre_sys_data_radioData, _class, HASH_COPY(_radioData));
+HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
+if (_replacementId != "") then {
+    _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
+    HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
 };
 
  //TODO: test this works.
@@ -52,6 +52,6 @@ if ((count _crewPlayers > 0)) then {
 if (_condition) then {
     //Add to vehicle
     [_entity, _class] call FUNC(addRackOnReturn);
-    
+
     ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_globalEvent);
 };

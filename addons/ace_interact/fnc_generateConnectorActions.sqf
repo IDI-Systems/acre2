@@ -24,9 +24,9 @@ private _actions = [];
 switch (_connectorType) do {
     case ACRE_CONNECTOR_CONN_32PIN: {
         if (_connectedType != -1) then { // something connected.
-            
-            private _name = format ["Unplug %1",_childDisplayName];         
-            
+
+            private _name = format ["Unplug %1",_childDisplayName];
+
             private _action = [format["acre_con_%1_action",_forEachIndex], _name, "", {
                 params ["_target","","_params"];
                 _params params["_parentComponentId", "_parentConnector"];
@@ -61,7 +61,7 @@ switch (_connectorType) do {
                 } forEach _radioList;
             };
             if (_parentType == ACRE_COMPONENT_RADIO) then {
-                private _rackList = ([vehicle _target,_target] call acre_sys_rack_fnc_getAccessibleVehicleRacks) - [_parentComponent]; // Can't connect to self.
+                private _rackList = ([vehicle _target,_target] call EFUNC(sys_rack,getAccessibleVehicleRacks)) - [_parentComponent]; // Can't connect to self.
                 {
                     private _rackId = _x;
                     private _baseClass = BASE_CLASS_CONFIG(_rackId);
@@ -73,7 +73,7 @@ switch (_connectorType) do {
                             _connectorRackIdx = _forEachIndex;
                         };
                     } forEach _connectors;
-                   
+
                     if (_connectorRackIdx != -1) then {
                         private _name = format ["Connect to %1",getText(configFile >> "CfgAcreComponents" >> _baseClass >> "name")];
                         private _icon = "\idi\acre\addons\ace_interact\data\icons\rack.paa";
@@ -85,7 +85,7 @@ switch (_connectorType) do {
                         _actions pushBack [_action, [], _target];
                     };
                 } forEach _rackList;
-            
+
             };
         };
     };

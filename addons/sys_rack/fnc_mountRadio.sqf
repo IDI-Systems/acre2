@@ -15,10 +15,10 @@
  */
 #include "script_component.hpp"
 
-params ["_rackId","_radioId",["_unit",objNull]];
+params ["_rackId", "_radioId", ["_unit",objNull]];
 
 if (!isNull _unit) then {
-    [_unit, _radioId] call EFUNC(lib,removeGear);
+    [_unit, _radioId] call EFUNC(core,removeGear);
 };
 
 //Stash Radio

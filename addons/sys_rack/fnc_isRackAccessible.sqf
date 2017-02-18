@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_rackId","_unit",["_vehicle",objNull]];
+params ["_rackId", "_unit", ["_vehicle", objNull]];
 
 if (isNull _vehicle) then {
     _vehicle = [_rackId] call FUNC(getVehicleFromRack);
@@ -31,7 +31,7 @@ private _allowed = [_rackId, "getState", "allowed"] call EFUNC(sys_data,dataEven
         case "gunner":{ if (gunner _vehicle == _unit) then { _return = true; }; };
         case "commander":{ if (commander _vehicle == _unit) then { _return = true; }; };
         case "inside":{ if (_vehicle == vehicle _unit) then { _return = true; }; };
-        case "copilot":{ 
+        case "copilot":{
             private _crew = ((fullCrew _vehicle) select { getNumber ([_vehicle, _x select 3] call CBA_fnc_getTurret >> "isCopilot") == 1 }) apply {_x select 0};
             if (_unit in _crew) then { _return = true; };
         };

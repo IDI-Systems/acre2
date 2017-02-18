@@ -15,9 +15,9 @@
  */
 #include "script_component.hpp"
 
-params["_rackId", "_event", "_eventData", "_radioData"];
+params ["_rackId", "_event", "_eventData", "_radioData"];
 
 private _radioId = _eventData;
 
 //Enable VAA Mode.
-[_radioId, "setState", ["powerSource", "BAT"]] call acre_sys_data_fnc_dataEvent;
+[_radioId, "setState", ["powerSource", "BAT"]] call EFUNC(sys_data,dataEvent);

@@ -20,10 +20,9 @@
 
 params["_entity", "_class", "_callback", ["_replacementId",""]];
 
-if (getNumber(configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0 && getNumber(configFile >> "CfgVehicles" >> _class >> "acre_hasUnique") == 0) then {
+if (getNumber (configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0 && getNumber(configFile >> "CfgVehicles" >> _class >> "acre_hasUnique") == 0) then {
     _class = BASECLASS(_class);
 };
-
 
 private _ret = [_class] call FUNC(getRadioId);
 if (_ret != -1) then {

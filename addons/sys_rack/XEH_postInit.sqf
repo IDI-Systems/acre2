@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-NO_DEDICATED;
+if (!hasInterface) exitWith {};
 
 // EH for vehicle racks
 
@@ -26,8 +26,8 @@ NO_DEDICATED;
 private _vehicleCrewPFH = {
     private _vehicle = vehicle acre_player;
     if (_vehicle != acre_player) then {
-    
-        private _initialized = _vehicle getVariable [QGVAR(initialized),false];
+
+        private _initialized = _vehicle getVariable [QGVAR(initialized), false];
         if (!_initialized) then {
             //Only initialize if we are first in the crew array - This helps prevent multiple requests if multiple players enter a vehicle around the same time.
             private _crew = crew _vehicle;
@@ -47,7 +47,7 @@ private _vehicleCrewPFH = {
             };
         };
     };
-    
+
     //Check we can still use the vehicle rack radios.
     private _remove = [];
     {
@@ -62,11 +62,11 @@ private _vehicleCrewPFH = {
         ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - _remove;
         if (ACRE_ACTIVE_RADIO in _remove) then { // If it is the active radio.
             // Check if radio is now in inventory
-            private _items = [acre_player] call EFUNC(lib,getGear);
+            private _items = [acre_player] call EFUNC(core,getGear);
             _items = _items apply {toLower _x};
             if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // no need to remove
             // Otherwise cleanup
-            if(ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
+            if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
                 // simulate a key up event to end the current transmission
                 [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
             };

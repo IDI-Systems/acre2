@@ -22,12 +22,11 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle","_rackClassname","_rackName",["_isRadioRemovable",true],["_allowed",["inside"]],["_mountedRadio",""],["_defaultComponents",[]]];
+params ["_vehicle", "_rackClassname", "_rackName", ["_isRadioRemovable",true], ["_allowed", ["inside"]], ["_mountedRadio",""], ["_defaultComponents", []]];
 
-private _queue = _vehicle getVariable [QGVAR(queue),[]];
+private _queue = _vehicle getVariable [QGVAR(queue), []];
 
 _queue pushBack [_rackClassname,_rackName,_isRadioRemovable,_allowed,_mountedRadio,_defaultComponents];
-_vehicle setVariable [QGVAR(queue),_queue];
+_vehicle setVariable [QGVAR(queue), _queue];
 //Request RACK ID
 ["acre_getRadioId", [_vehicle, _rackClassname, QGVAR(returnRackId)]] call CALLSTACK(CBA_fnc_globalEvent);
-

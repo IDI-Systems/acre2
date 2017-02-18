@@ -64,6 +64,7 @@ if (GVAR(doFullSearch)) then {
     private _searchObjects = allPlayers + allUnits + allDead + vehicles + (allMissionObjects "WeaponHolder"); // search players first
 
     _searchObjects = _searchObjects arrayIntersect _searchObjects; // Ensure nothing gets searched twice.
+    private _cfgWeapons = configFile >> "CfgWeapons";
     private _cfgVehicles = configFile >> "CfgVehicles";
     {
         private _mainObject = _x;
@@ -98,8 +99,8 @@ if (GVAR(doFullSearch)) then {
     // VEHICLE RACKS
     {
         private _rackId = typeOf _x;
-        
-        if(getNumber(_cfgVehicles >> _rackId >> "acre_isUnique") == 1) then {
+
+        if (getNumber (_cfgVehicles >> _rackId >> "acre_isUnique") == 1) then {
             private _attachedTo = attachedTo _x;
             private _mainObject = _x;
             if (isNull _attachedTo) then {
@@ -110,7 +111,7 @@ if (GVAR(doFullSearch)) then {
                     HASH_SET(_idTable, _rackId, [ARR_2(_mainObject,_x)]);
                 } else { // Already present in _idList
                     private _duplicateIdList = [];
-                    if(!HASH_HASKEY(_duplicateIdTable, _rackId)) then {
+                    if (!HASH_HASKEY(_duplicateIdTable, _rackId)) then {
                         HASH_SET(_duplicateIdTable, _rackId, _duplicateIdList);
                     } else {
                         HASH_GET(_duplicateIdTable, _rackId);
@@ -120,12 +121,12 @@ if (GVAR(doFullSearch)) then {
                //Mounted Radio
                 private _mountedRadio = [_rackId] call EFUNC(sys_rack,getMountedRadio);
                 if (_mountedRadio != "") then { // Radio is mounted.
-                    if(getNumber(_cfgWeapons >> _mountedRadio >> "acre_isUnique") == 1) then {
+                    if (getNumber (_cfgWeapons >> _mountedRadio >> "acre_isUnique") == 1) then {
                         if (_idList pushBackUnique _mountedRadio != -1) then { // Add to ID list and this condition returns true if it was not present in the _idList.
                             HASH_SET(_idTable, _mountedRadio, [ARR_2(_mainObject,_x)]);
                         } else { // Already present in _idList
                             private _duplicateIdList = [];
-                            if(!HASH_HASKEY(_duplicateIdTable, _mountedRadio)) then {
+                            if (!HASH_HASKEY(_duplicateIdTable, _mountedRadio)) then {
                                 HASH_SET(_duplicateIdTable, _mountedRadio, _duplicateIdList);
                             } else {
                                 HASH_GET(_duplicateIdTable, _mountedRadio);
@@ -135,9 +136,8 @@ if (GVAR(doFullSearch)) then {
                     };
                 };
             };
-
         };
-        
+
 
     } forEach (allMissionObjects "ACRE_BASERACK");
     {
