@@ -36,7 +36,7 @@ class PRC343_RadioDialog {
         w = NEW_SCALE*safeZoneH;
         h = NEW_SCALE*safeZoneH;
 
-        text = QUOTE(PATHTOF(Data\static\prc343_ui_backplate.paa));
+        text = QPATHTOF(Data\static\prc343_ui_backplate.paa);
     };
     class controls {
         BEGIN_CONTROL(ChannelKnob, Prc343_RscPicture, 106)
@@ -44,7 +44,7 @@ class PRC343_RadioDialog {
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
-            text = QUOTE(PATHTOF(Data\knobs\channel\prc343_ui_pre_1.paa));
+            text = QPATHTOF(Data\knobs\channel\prc343_ui_pre_1.paa);
         END_CONTROL
 
         BEGIN_CONTROL(ChannelKnobButton, Prc343_RscButton, 201)
@@ -63,7 +63,7 @@ class PRC343_RadioDialog {
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
-            text = QUOTE(PATHTOF(Data\knobs\volume\prc343_ui_vol_5.paa));
+            text = QPATHTOF(Data\knobs\volume\prc343_ui_vol_5.paa);
         END_CONTROL
 
         BEGIN_CONTROL(VolumeKnobButton, Prc343_RscButton, 202)

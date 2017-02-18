@@ -34,7 +34,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\dials\PRC77_dial_background.paa));
+            text = QPATHTOF(Data\images\dials\PRC77_dial_background.paa);
         END_CONTROL
 
         BEGIN_CONTROL(MHzDial, Prc77_RscPicture, 202)
@@ -42,7 +42,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\dials\prc77_ui_disc_MHz_100.paa));
+            text = QPATHTOF(Data\images\dials\prc77_ui_disc_MHz_100.paa);
         END_CONTROL
 
         BEGIN_CONTROL(kHzDial, Prc77_RscPicture, 203)
@@ -50,7 +50,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\dials\prc77_ui_disc_KHz_00.paa));
+            text = QPATHTOF(Data\images\dials\prc77_ui_disc_KHz_00.paa);
         END_CONTROL
 
         BEGIN_CONTROL(DialSlider, Prc77_RscPicture, 204)
@@ -58,7 +58,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\dials\PRC77_display_0.paa));
+            text = QPATHTOF(Data\images\dials\PRC77_display_0.paa);
         END_CONTROL
 
         /*BEGIN_CONTROL(DialCover, Prc77_RscPicture, 205)
@@ -66,7 +66,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\dials\PRC77_dial_cover.paa));
+            text = QPATHTOF(Data\images\dials\PRC77_dial_cover.paa);
         END_CONTROL*/
 
         BEGIN_CONTROL(FrontPlate, Prc77_RscPicture, 210)
@@ -74,7 +74,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\PRC77_frame.paa));
+            text = QPATHTOF(Data\images\PRC77_frame.paa);
             colorBackground[] = {0, 0, 0, 0};
             colorText[] = {1, 1, 1, 1};
         END_CONTROL
@@ -84,7 +84,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\knob\prc77_ui_knob_MHz_0.paa));
+            text = QPATHTOF(Data\images\knob\prc77_ui_knob_MHz_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(kHzDialKnob, Prc77_RscPicture, 2031)
@@ -92,7 +92,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\knob\prc77_ui_knob_KHz_0.paa));
+            text = QPATHTOF(Data\images\knob\prc77_ui_knob_KHz_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(MHzTuneKnobButton, Prc77_RscButton, -1)
@@ -118,7 +118,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\volume\PRC77_volume_0.paa));
+            text = QPATHTOF(Data\images\volume\PRC77_volume_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(VolumeKnobButton, Prc77_RscButton, -1)
@@ -135,7 +135,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\band\PRC77_bandselector_0.paa));
+            text = QPATHTOF(Data\images\band\PRC77_bandselector_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(BandSelectorKnobButton, Prc77_RscButton, -1)
@@ -152,7 +152,7 @@ class PRC77_RadioDialog {
             y=(0.5-((1*safezoneW)/2));
             w=1*safezoneW;
             h=1*safezoneW;
-            text = QUOTE(PATHTOF(Data\images\function\PRC77_function_0.paa));
+            text = QPATHTOF(Data\images\function\PRC77_function_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(FunctionKnobButton, Prc77_RscButton, -1)
@@ -188,7 +188,7 @@ class PRC77_RadioDialog {
             y=safezoneY;
             w=safezoneW;
             h=safezoneH;
-            text = QUOTE(PATHTOF(Data\images\darken\PRC77_display_darken.paa));
+            text = QPATHTOF(Data\images\darken\PRC77_display_darken.paa);
             colorBackground[] = {0, 0, 0, 0};
             colorText[] = {1, 1, 1, 0};
         END_CONTROL
@@ -198,7 +198,7 @@ class PRC77_RadioDialog {
             y=safezoneY;
             w=safezoneW;
             h=safezoneH;
-            text = QUOTE(PATHTOF(Data\images\darken\PRC77_frame_darken.paa));
+            text = QPATHTOF(Data\images\darken\PRC77_frame_darken.paa);
             colorBackground[] = {0, 0, 0, 0};
             colorText[] = {1, 1, 1, 0};
         END_CONTROL*/

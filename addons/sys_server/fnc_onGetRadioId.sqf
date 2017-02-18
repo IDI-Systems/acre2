@@ -1,16 +1,18 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function is used to start initializing a radio for the intended player. The callback is used to complete the process.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Entity game object <OBJECT>
+ * 1: Radio base classname <STRING>
+ * 2: CBA event name that is triggered when complete <STRING>
+ * 3: Replacement ID - Use this when copying data from another radio <STRING> (default: "")
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [acre_player,"acre_prc152","acre_sys_radio_returnRadioId"] call acre_sys_server_fnc_onGetRadioId
  *
  * Public: No
  */
@@ -32,12 +34,13 @@ if (_ret != -1) then {
         if (isServer) then {
             private _dataHash = HASH_CREATE;
             if (_replacementId != "") then {
-                _dataHash = HASH_COPY(HASH_GET(acre_sys_data_radioData, _replacementId));
+                _dataHash = HASH_COPY(HASH_GET(EGVAR(sys_data,radioData), _replacementId));
             };
-            HASH_SET(acre_sys_data_radioData,_uniqueClass,_dataHash);
+            HASH_SET(EGVAR(sys_data,radioData),_uniqueClass,_dataHash);
         };
         TRACE_1("callback=", _callback);
         GVAR(unacknowledgedIds) pushBack _uniqueClass;
+        HASH_SET(GVAR(unacknowledgedTable), _uniqueClass, time);
         HASH_SET(GVAR(masterIdTable), _uniqueClass, [ARR_2(acre_player,acre_player)]);
         [_callback, [_entity, _uniqueClass, _ret, _replacementId]] call CALLSTACK(CBA_fnc_globalEvent);
         // GVAR(waitingForIdAck) = true;

@@ -13,7 +13,7 @@
  * Successful <BOOLEAN>
  *
  * Example:
- * ["ACRE_PRC152_ID_1",0,"ACRE_120CM_VHF_TNC",[],false] call acre_sys_components_fnc_attachSimpleComponent;
+ * ["ACRE_PRC152_ID_1",0,"ACRE_120CM_VHF_TNC",[],false] call acre_sys_components_fnc_attachSimpleComponent
  *
  * Public: No
  */
@@ -22,7 +22,7 @@
 params ["_parentComponentId", "_parentConnector", "_childComponentType", "_attributes", ["_force",false]];
 
 private _return = false;
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_parentComponentId);
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> ([_parentComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
 private _childComponentClass = configFile >> "CfgAcreComponents" >> _childComponentType;
 
 private _componentSimple = getNumber (_childComponentClass >> "simple");
@@ -35,7 +35,7 @@ private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")
 private _childConnectorType = getNumber (_childComponentClass >> "connector");
 if (_parentConnectorType == _childConnectorType) then {
     private _exit = false;
-    private _parentComponentData = HASH_GET(acre_sys_data_radioData, _parentComponentId);
+    private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData), _parentComponentId);
 
     if (!isNil "_parentComponentData") then {
         private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");

@@ -27,8 +27,7 @@ if (!dialog) then {
     {
         private _radioClass = _x;
         private _listInfo = [_radioClass, "getListInfo"] call EFUNC(sys_data,dataEvent);
-        private _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _radioClass);
-        private _realRadio = configName ( _baseConfig );
+        private _realRadio = [_radioClass] call EFUNC(sys_radio,getRadioBaseClassname);
         private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
         private _radio = [_typeName, _listInfo, _radioClass];
         TRACE_2("heh", _radioClass, ACRE_ACTIVE_RADIO);

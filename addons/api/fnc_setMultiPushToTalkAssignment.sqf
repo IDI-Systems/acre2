@@ -11,7 +11,7 @@
  * Example:
  * _personalRadio = [“ACRE_PRC343”] call acre_api_fnc_getRadioByType;
  * _handheldRadio = [“ACRE_PRC152”] call acre_api_fnc_getRadioByType;
- * _manpackRadio = [“ACRE_PRC117F”] call acre_api_fnc_getRadioByType; 
+ * _manpackRadio = [“ACRE_PRC117F”] call acre_api_fnc_getRadioByType;
  * _success = [ [ _personalRadio, _handheldRadio, _manpackRadio ] ] call acre_api_fnc_setMultiPushToTalkAssignment;
  *
  * Public: Yes
@@ -23,12 +23,12 @@ params ["_var"];
 private _invalid = false;
 if (!(_var isEqualType [])) exitWith { false };
 
-private _currentRadioList = [] call acre_api_fnc_getCurrentRadioList;
+private _currentRadioList = [] call FUNC(getCurrentRadioList);
 {
     if (!(_x isEqualType "")) exitWith {
         _invalid = true;
     };
-    private _isRadio = [_x] call acre_api_fnc_isRadio;
+    private _isRadio = [_x] call FUNC(isRadio);
     if (!_isRadio) exitWith {
         _invalid = true;
     };

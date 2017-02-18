@@ -6,8 +6,8 @@ class CfgWeapons {
     class ACRE_PRC152 : ACRE_BaseRadio {
         displayName = "AN/PRC-152";
         useActionTitle = "AN/PRC-152";
-        model = QUOTE(PATHTOF(Data\Models\PRC152.p3d));
-        picture = QUOTE(PATHTOF(Data\PRC152c_ico.paa));
+        model = QPATHTOF(Data\Models\PRC152.p3d);
+        picture = QPATHTOF(Data\PRC152c_ico.paa);
         descriptionShort = "AN/PRC-152 VHF/UHF Radio";
         scopeCurator = 2;
         scope = 2;

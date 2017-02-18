@@ -15,8 +15,8 @@
  */
 #include "script_component.hpp"
 
-if (isNil "acre_sys_core_globalVolume") then {
+if (isNil QEGVAR(sys_core,globalVolume)) then {
     nil
 };
 
-acre_sys_core_globalVolume
+EGVAR(sys_core,globalVolume)

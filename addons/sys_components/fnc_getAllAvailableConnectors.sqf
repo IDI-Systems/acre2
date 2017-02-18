@@ -17,13 +17,13 @@
 
 params ["_componentId"];
 
-private _componentData = HASH_GET(acre_sys_data_radioData,_componentId);
+private _componentData = HASH_GET(EGVAR(sys_data,radioData),_componentId);
 private _return = nil;
 if(!isNil "_componentData") then {
     private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
     if(!isNil "_connectorData") then {
         _return = [];
-        private _componentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_componentId);
+        private _componentClass = configFile >> "CfgAcreComponents" >> ([_componentId] call EFUNC(sys_radio,getRadioBaseClassname));
         private _connectors = getArray(_componentClass >> "connectors");
         {
             if(_forEachIndex < (count _connectorData)) then {

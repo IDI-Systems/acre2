@@ -19,12 +19,11 @@
 params ["_parentComponentId", "_parentConnector"];
 
 private _return = false;
-private _baseClass = getText(configFile >> "CfgWeapons" >> _parentComponentId >> "acre_baseClass");
-if (_baseClass == "") then {_baseClass = getText(configFile >> "CfgVehicles" >> _componentId >> "acre_baseClass"); };
+private _baseClass = [_parentComponentId] call EFUNC(sys_radio,getRadioBaseClassname);
 
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
 
-private _parentComponentData = HASH_GET(acre_sys_data_radioData,_parentComponentId);
+private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData),_parentComponentId);
 if (!isNil "_parentComponentData") then {
     private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
     if (!isNil "_parentConnectorData") then {
@@ -43,7 +42,7 @@ if (!isNil "_parentComponentData") then {
                     };
                 };
             } else {
-                if(HASH_HASKEY(acre_sys_data_radioData,_childComponentId)) then { // Is Complex Component
+                if(HASH_HASKEY(EGVAR(sys_data,radioData),_childComponentId)) then { // Is Complex Component
                     private _components = [_childComponentId] call FUNC(getAllConnectedComponents);
                     private _childConnector = -1;
                     {

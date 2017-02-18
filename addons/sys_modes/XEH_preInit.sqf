@@ -1,7 +1,5 @@
 #include "script_component.hpp"
 
-NO_DEDICATED;
-
 ADDON = false;
 
 PREP_RECOMPILE_START;

@@ -8,6 +8,7 @@ PREP(detachComponentHandler);
 PREP(detachAllConnectorsFromComponent);
 PREP(sendComponentMessage);
 PREP(handleComponentMessage);
+PREP(getAntennaDirMan);
 PREP(getAllConnectedComponents);
 PREP(getAllAvailableConnectors);
 PREP(getAllConnectors);

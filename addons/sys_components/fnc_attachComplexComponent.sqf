@@ -14,7 +14,7 @@
  * Succesful <BOOLEAN>
  *
  * Example:
- * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,[],false] call acre_sys_components_fnc_attachComplexComponent;
+ * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,[],false] call acre_sys_components_fnc_attachComplexComponent
  *
  * Public: No
  */
@@ -24,8 +24,8 @@ params ["_parentComponentId", "_parentConnector", "_childComponentId", "_childCo
 
 private _return = false;
 
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_parentComponentId);
-private _childComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_childComponentId);
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> ([_parentComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
+private _childComponentClass = configFile >> "CfgAcreComponents" >> ([_childComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
 
 private _componentSimple = getNumber (_parentComponentClass >> "simple");
 if (_componentSimple == 1) exitWith {
@@ -44,7 +44,7 @@ private _childConnectorType = ((getArray(_childComponentClass >> "connectors")) 
 
 if (_parentConnectorType == _childConnectorType) then {
     private _exit = false;
-    private _parentComponentData = HASH_GET(acre_sys_data_radioData, _parentComponentId);
+    private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData), _parentComponentId);
 
     if (!isNil "_parentComponentData") then {
         private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
@@ -61,7 +61,7 @@ if (_parentConnectorType == _childConnectorType) then {
             };
         };
 
-        private _childComponentData = HASH_GET(acre_sys_data_radioData,_childComponentId);
+        private _childComponentData = HASH_GET(EGVAR(sys_data,radioData),_childComponentId);
         if (!isNil "_childComponentData") then {
             private _childConnectorData = HASH_GET(_childComponentData, "acre_radioConnectionData");
             if (!isNil "_childConnectorData") then {

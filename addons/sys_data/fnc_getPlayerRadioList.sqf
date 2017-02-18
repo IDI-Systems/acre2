@@ -19,12 +19,9 @@
 private _radioList = [];
 
 if (!ACRE_IS_SPECTATOR) then {
-    private _weapons = [acre_player] call EFUNC(lib,getGear);
-    {
-        if (getNumber (configFile >> "CfgWeapons" >> _x >> "acre_isUnique") == 1) then {
-            _radioList pushBackUnique _x;
-        };
-    } forEach _weapons;
+    private _weapons = [acre_player] call EFUNC(sys_core,getGear);
+    _radioList = _weapons select {_x call EFUNC(sys_radio,isUniqueRadio)};
+
     
     //Auxilary radios are for radios not in inventory like racked radios.
     {

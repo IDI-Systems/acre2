@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-NO_DEDICATED;
+#include "initSettings.sqf" // CBA Settings
 
 ADDON = false;
 
@@ -8,7 +8,9 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
-#include "initSettings.sqf"
+if (!hasInterface) exitWith {
+    ADDON = true;
+};
 
 /**
 *
@@ -67,11 +69,7 @@ DVAR(ACRE_BROADCASTING_RADIOID) = "";
 DVAR(ACRE_CURRENT_LANGUAGE_ID) = 0;
 DVAR(ACRE_SPOKEN_LANGUAGES) = [];
 
-DVAR(ACRE_AI_ENABLED) = true;
 DGVAR(monitorAIHandle) = -1;
-
-DVAR(ACRE_FULL_DUPLEX) = false;
-DVAR(ACRE_INTERFERENCE) = true;
 
 DGVAR(languages) = [];
 
@@ -90,15 +88,9 @@ acre_sys_io_ioEventFnc = {
     END_COUNTER(ioEventFunction);
 };
 
-_acrePlayerFnc = {
-    acre_player = missionNamespace getVariable ["bis_fnc_moduleRemoteControl_unit", player];
-    /*if (cameraOn != acre_player) then {
-        if (lifeState cameraOn != "") then {
-            acre_player = cameraOn;
-        };
-    };*/
-};
-ADDPFH(_acrePlayerFnc, 0, []);
+["unit", {
+    acre_player = (_this select 0);
+}] call CBA_fnc_addPlayerEventHandler;
 
 #ifdef USE_DEBUG_EXTENSIONS
 "acre_dynload" callExtension format["load:%1", "idi\build\win32\Debug\acre.dll"];
@@ -123,14 +115,14 @@ private _monitorFnc = {
 ADDPFH(_monitorFnc, 0, []);
 
 ACRE_TESTANGLES = [];
-_m = 8;
-_spread = 75;
+private _m = 8;
+private _spread = 75;
 for "_i" from 1 to (_m/2) do {
-    _positive = (_spread/_m)*_i;
-    _negative = ((_spread/_m)*_i)*-1;
-    PUSH(ACRE_TESTANGLES, _positive);
+    private _positive = (_spread/_m)*_i;
+    private _negative = ((_spread/_m)*_i)*-1;
+    ACRE_TESTANGLES pushBack _positive;
     if (_positive != _negative) then {
-        PUSH(ACRE_TESTANGLES, _negative);
+        ACRE_TESTANGLES pushBack _negative;
     };
 };
 

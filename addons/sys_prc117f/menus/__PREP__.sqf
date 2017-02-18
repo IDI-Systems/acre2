@@ -1,6 +1,6 @@
 
 #include "script_component.hpp"
-#define PREP_MENU(menuType) [] call compile preprocessFileLineNumbers QUOTE(PATHTOF(menus\types\menuType.sqf))
+#define PREP_MENU(menuType) [] call compile preprocessFileLineNumbers QPATHTOF(menus\types\menuType.sqf)
 
 
 // Menu hash stuff

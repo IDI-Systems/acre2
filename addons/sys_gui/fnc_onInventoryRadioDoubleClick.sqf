@@ -19,4 +19,4 @@ TRACE_1("enter", _this);
 
 params ["_object","_container","_radioId"];
 
-[_radioId] call acre_sys_radio_fnc_openRadio;
+[_radioId] call EFUNC(sys_radio,openRadio);
