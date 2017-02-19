@@ -22,23 +22,11 @@ private _actions = [];
 private _currentRadio = [] call EFUNC(api,getCurrentRadio);
 private _pttAssign = [] call EFUNC(api,getMultiPushToTalkAssignment);
 private _radioList = [] call EFUNC(api,getCurrentRadioList);
-private _vehicleRadioList = [];
-
-if (vehicle acre_player != acre_player) then {
-    _vehicleRadioList = [vehicle acre_player] call EFUNC(sys_data,getVehicleRadioList);
-    {
-        _radioList pushBackUnique _x;
-    } forEach _vehicleRadioList;
-};
 
 {
     private _owner = "";
     if (_x in ACRE_ACTIVE_EXTERNAL_RADIOS) then {
         _owner = format [" (%1)", [_x] call EFUNC(sys_external,getExternalRadioOwner)];
-    } else {
-        if (_x in _vehicleRadioList) then {
-            _owner = format [" (%1)", vehicle acre_player];
-        };
     };
 
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
@@ -49,7 +37,7 @@ if (vehicle acre_player != acre_player) then {
     private _picture = getText (_item >> "picture");
     private _isActive = _x isEqualTo _currentRadio;
 
-    private _action = [_x, _displayName, _picture, {}, {true}, {_this call FUNC(radioChildrenActions)}, [_x, _isActive, _pttAssign, _vehicleRadioList]] call ace_interact_menu_fnc_createAction;
+    private _action = [_x, _displayName, _picture, {}, {true}, {_this call FUNC(radioChildrenActions)}, [_x, _isActive, _pttAssign]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } forEach (_radioList);
 

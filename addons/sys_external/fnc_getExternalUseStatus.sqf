@@ -19,16 +19,15 @@ params ["_radioId"];
 
 private _isShared = [_radioId] call FUNC(isRadioShared);
 
-private ["_isUsedExternally", "_owner", "_user"];
-_isUsedExternally = false;
-_owner = nil;
-_user = nil;
+private _isUsedExternally = false;
+private _owner = nil;
+private _user = nil;
 
 if (_isShared) then {
-    private _isUsedExternally = [_radioId] call FUNC(isExternalRadioUsed);
+    _isUsedExternally = [_radioId] call FUNC(isExternalRadioUsed);
     if (_isUsedExternally) then {
-        private _owner = [_radioId] call FUNC(getExternalRadioOwner);
-        private _user = [_radioId] call FUNC(getExternalRadioUser);
+        _owner = [_radioId] call FUNC(getExternalRadioOwner);
+        _user = [_radioId] call FUNC(getExternalRadioUser);
     };
 };
 

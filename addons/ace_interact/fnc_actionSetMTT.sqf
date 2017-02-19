@@ -16,8 +16,8 @@
  */
 #include "script_component.hpp"
 
-params ["_target","_player","_params","_desiredIdx"];
-_params params ["_radio","","_pttAssign",""];
+params ["_target", "_player", "_params", "_desiredIdx"];
+_params params ["_radio", "", "_pttAssign", ""];
 
 if (count _pttAssign > 3) then {
     _pttAssign resize 3;
