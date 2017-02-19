@@ -16,7 +16,7 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
-#define SET_STATE_RACK(rack, id, val)        ([rack, "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
-#define GET_STATE_RACK(rack, id)             ([rack, "getState", id] call acre_sys_data_fnc_dataEvent)
+#define SET_STATE_RACK(rack, id, val)        ([rack, "setState", [id, val]] call EFUNC(sys_data,dataEvent))
+#define GET_STATE_RACK(rack, id)             ([rack, "getState", id] call EFUNC(sys_data,dataEvent))
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"

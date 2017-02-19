@@ -24,7 +24,7 @@ class CfgAcreComponents {
                 attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(mountRadio110);
-                unmountRadio                = QFUNC(unmountRadio110)
+                unmountRadio                = QFUNC(unmountRadio110);
                 mountableRadio              = QFUNC(mountableRadio110);
             };
         };

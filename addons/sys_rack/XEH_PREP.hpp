@@ -1,4 +1,3 @@
-// Compile here
 PREP(onReturnRackId);
 PREP(onReturnRadioId);
 PREP(addRack);
