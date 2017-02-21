@@ -46,7 +46,7 @@ if (_vehicle != acre_player) then {
     if (_usingIntercomExternally) then {
         if ((_externalIntercomUnit distance _vehicle > 10.0) || (vehicle _externalIntercomUnit == _vehicle) || !(alive _externalIntercomUnit)) then {
             _usingIntercomExternally = false;
-            [_vehicle, _externalIntercomUnit, 0] call FUNC(updateExternalIntercomStatus);
+            [_vehicle, _externalIntercomUnit, 0] call FUNC(updateInfantryPhoneStatus);
         };
     };
 

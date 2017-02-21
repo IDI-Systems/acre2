@@ -100,6 +100,7 @@ class CfgVehicles {
             };
             class CVC {
                 hasCVC = true;
+                hasInfantryPhone = true;
             };
         };
     };
@@ -202,6 +203,7 @@ class CfgVehicles {
             };
             class CVC {
                 hasCVC = true;
+                hasInfantryPhone = true;
             };
         };
     };

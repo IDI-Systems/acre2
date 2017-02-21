@@ -142,24 +142,24 @@
             <Korean>%1번 PTT로 설정</Korean>
         </Key>
         <Key ID="STR_ACRE_ace_interact_intercom">
-            <English>Intercom</English>
-            <Spanish>Intercom</Spanish>
-            <German>Intercom</German>
+            <English>Infantry Phone</English>
+            <Spanish>Teléfono de infanteria</Spanish>
+            <German>Infanterie-Telefon</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_giveIntercom">
-            <English>Give intercom</English>
-            <Spanish>Dar intercom</Spanish>
-            <German>Intercom geben</German>
+            <English>Pass Infantry Phone</English>
+            <Spanish>Dar teléfono de infanteria</Spanish>
+            <German>Infanterie-Telefon geben</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_takeIntercom">
-            <English>Take intercom</English>
-            <Spanish>Coger intercom</Spanish>
-            <German>Intercom nehmen</German>
+            <English>Take Infantry Phone</English>
+            <Spanish>Coger teléfono de infanteria</Spanish>
+            <German>Infanterie-Telefon nehmen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_returnIntercom">
-            <English>Return intercom</English>
-            <Spanish>Devolver intercom</Spanish>
-            <German>Intercom zurückgeben</German>
+            <English>Return Infantry Phone</English>
+            <Spanish>Devolver teléfono de infanteria</Spanish>
+            <German>Infanterie-Telefon zurückgeben</German>
         </Key>
     </Package>
 </Project>

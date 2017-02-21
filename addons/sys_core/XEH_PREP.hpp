@@ -41,7 +41,7 @@ PREP(spectatorOn);
 PREP(switchChannelFast);
 PREP(switchRadioEar);
 PREP(toggleHeadset);
-PREP(updateExternalIntercomStatus);
+PREP(updateInfantryPhoneStatus);
 PREP(updateSelf);
 PREP(utilityFunction);
 
