@@ -44,7 +44,7 @@ if (_vehicle != acre_player) then {
 
     // The intercom can only be used externally up to a distance of 5m
     if (_usingIntercomExternally) then {
-        if ((_externalIntercomUnit distance _vehicle > 10.0) || (vehicle _externalIntercomUnit == _vehicle)) then {
+        if ((_externalIntercomUnit distance _vehicle > 10.0) || (vehicle _externalIntercomUnit == _vehicle) || !(alive _externalIntercomUnit)) then {
             _usingIntercomExternally = false;
             [_vehicle, _externalIntercomUnit, 0] call FUNC(updateExternalIntercomStatus);
         };
