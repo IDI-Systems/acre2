@@ -46,7 +46,7 @@ DFUNC(connectionFnc) = {
                 LOG("PIPE OPENED!");
                 if (GVAR(hasErrored) && isMultiplayer) then {
                     hint "ACRE HAS RECOVERED FROM A CLOSED PIPE!";
-                    [{call EFUNC(sys_server,channelCheck)}, 5, []] call CALLSTACK(CBA_fnc_addPerFrameHandler);
+                    call EFUNC(sys_server,channelCheck);
                 } else {
                     hint "ACRE CONNECTED";
                 };

@@ -7,4 +7,4 @@ if (!hasInterface) exitWith {};
 
 [QGVAR(intentToGarbageCollect), { _this call FUNC(clientIntentToGarbageCollect) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
-[{call FUNC(channelCheck)}, 5, []] call CALLSTACK(CBA_fnc_addPerFrameHandler);
+call FUNC(channelCheck);

@@ -43,13 +43,6 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_channelSwitch_displayName">
             <English>Channel Switch</English>
-            <Spanish>HELP</Spanish>
-            <French>HELP</French>
-            <Japanese>HELP</Japanese>
-            <Czech>HELP</Czech>
-            <German>HELP</German>
-            <Italian>HELP</Italian>
-            <Korean>HELP</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
