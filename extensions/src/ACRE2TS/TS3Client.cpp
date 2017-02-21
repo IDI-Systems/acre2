@@ -13,13 +13,15 @@
 
 #pragma comment(lib, "Shlwapi.lib")
 
+#define INVALID_CHANNEL -1
+#define DEFAULT_CHANNEL "ACRE"
 
 extern TS3Functions ts3Functions;
 
 //TS3Functions CTS3Client::ts3Functions;
 
 ACRE_RESULT CTS3Client::initialize(void) {
-
+	this->setPreviousChannel(INVALID_CHANNEL);
     return ACRE_OK;
 }
 
@@ -420,4 +422,107 @@ ACRE_RESULT CTS3Client::unMuteAll( void ) {
     //    Sleep(500);
     //}
     return ACRE_OK;
+}
+
+ACRE_RESULT CTS3Client::moveToServerChannel(void) {
+	//Only switch channel if enabled in settings
+	if(!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
+		anyID clientId;
+		std::string serverName = this->getServerName();
+
+		if(ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+			uint64 channelId = INVALID_CHANNEL;
+			uint64 currentChannelId = INVALID_CHANNEL;
+			//Get current channel and store
+			if(ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok) {
+				//LOG("Storing current channel: %d", currentChannelId);
+				this->setPreviousChannel(currentChannelId);
+			} else {
+				//LOG("Can't get current channel");
+			}
+
+			if((channelId = findChannelByName(serverName)) != INVALID_CHANNEL) {
+				//LOG("Trying to move to channel: %d", channelId);
+				if(channelId != INVALID_CHANNEL && channelId != currentChannelId) {
+					if(ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
+						//LOG("Moved to channel: %d", channelId);
+						this->setServerName("");
+					} else {
+						//LOG("Couldn't move to channel: %d", channelId);
+					}
+				}
+			} else {
+				//LOG("Couldn't find channel contianing %s or a default channel", serverName);
+			}
+		}
+	}
+	return ACRE_OK;
+}
+
+ACRE_RESULT CTS3Client::moveToPreviousChannel(void) {
+	if(!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
+		anyID clientId;
+		if(ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+			uint64 channelId = INVALID_CHANNEL;
+			uint64 currentChannelId = INVALID_CHANNEL;
+			if(ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok) {
+				channelId = this->getPreviousChannel();
+				if(channelId != INVALID_CHANNEL && channelId != currentChannelId) {
+					//LOG("Trying to move to original channel: %d", channelId);
+					if(ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
+						//LOG("Moved to channel: %d", channelId);
+					} else {
+						//LOG("Couldn't move to channel: %d", channelId);
+					}
+				} else {
+					//LOG("Same channel or no original channel to switch to");
+				}
+			} else {
+				//LOG("Can't get current channel");
+			}
+		}
+	}
+	return ACRE_OK;
+}
+
+uint64 CTS3Client::findChannelByName(std::string name) {
+	uint64 *channelList;
+	uint64 channelId = INVALID_CHANNEL;
+	if(ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
+		while(*channelList) {
+			channelId = *channelList;
+			channelList++;
+			char* channelName;
+			//LOG("Found channel: %d", channelId);
+			if(ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
+				std::string channelNameString = channelName;
+				if(upperCase(channelName).find(upperCase(name)) != -1) {
+					//LOG("%s should contain %s", channelName, name);
+					ts3Functions.freeMemory(channelName);
+					return channelId;
+				}
+			} else {
+				//LOG("Can't get channel name");
+			}
+		}
+		return findChannelByName(DEFAULT_CHANNEL);
+	} else {
+		//LOG("Can't get channel list");
+	}
+	return INVALID_CHANNEL;
+}
+
+std::string CTS3Client::upperCase(std::string input) {
+	for(std::string::iterator it = input.begin(); it != input.end(); ++it)
+		*it = toupper(*it);
+	return input;
+}
+
+ACRE_RESULT CTS3Client::updateServerName(std::string name) {
+	this->setServerName(name);
+	return ACRE_OK;
+}
+
+std::string CTS3Client::retrieveServerName(void) {
+	return this->getServerName();
 }

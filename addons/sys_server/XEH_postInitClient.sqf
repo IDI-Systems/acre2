@@ -6,3 +6,5 @@ if (!hasInterface) exitWith {};
 ["acre_updateIdObjects", { _this call FUNC(updateIdObjects) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 [QGVAR(intentToGarbageCollect), { _this call FUNC(clientIntentToGarbageCollect) }] call CALLSTACK(CBA_fnc_addEventHandler);
+
+[{call FUNC(channelCheck)}, 5, []] call CALLSTACK(CBA_fnc_addPerFrameHandler);
