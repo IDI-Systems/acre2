@@ -18,8 +18,19 @@
 params ["_unit"];
 private _ret = false;
 
-if ((_unit in ACRE_PLAYER_VEHICLE_CREW) and {vehicle acre_player != acre_player}) then {
-    _hasCVC = getNumber (configFile >> "CfgVehicles" >> typeOf (vehicle acre_player) >> "ACRE" >> "CVC" >> "hasCVC");
+// Get the vehicle
+private _vehicle = vehicle acre_player;
+
+// The player is not inside a vehicle. Check if it is using the intercom network externally
+if (_vehicle == acre_player) then {
+    private _vehicleIntercom = acre_player getVariable ["vehicleIntercom", nil];
+    if (!isNil "_vehicleIntercom") then {
+        _vehicle = _vehicleIntercom;
+    };
+};
+
+if (_unit in ACRE_PLAYER_VEHICLE_CREW) then {
+    _hasCVC = getNumber (configFile >> "CfgVehicles" >> typeOf (_vehicle) >> "ACRE" >> "CVC" >> "hasCVC");
     if (_hasCVC == 1) then {
         _ret = true;
     };
