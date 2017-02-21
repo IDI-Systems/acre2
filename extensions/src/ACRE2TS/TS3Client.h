@@ -46,6 +46,13 @@ public:
 
     ACRE_RESULT unMuteAll( void );
 
+	ACRE_RESULT moveToServerChannel(void);
+	ACRE_RESULT moveToPreviousChannel(void);
+	ACRE_RESULT updateServerName(std::string name);
+	std::string retrieveServerName(void);
+	uint64 findChannelByName(std::string name);
+	std::string upperCase(std::string name);
+
     DECLARE_MEMBER(BOOL, hadVAD);
     DECLARE_MEMBER(BOOL, InputActive);
     DECLARE_MEMBER(ACRE_STATE, State);
@@ -56,7 +63,9 @@ public:
     DECLARE_MEMBER(BOOL, DirectFirst);
     DECLARE_MEMBER(BOOL, HitTSSpeakingEvent);
     DECLARE_MEMBER(BOOL, IsX3DInitialized);
-    DECLARE_MEMBER(UINT32, SpeakerMask)
+    DECLARE_MEMBER(UINT32, SpeakerMask);
+	DECLARE_MEMBER(uint64, PreviousChannel);
+	DECLARE_MEMBER(std::string, ServerName)
 protected:
     std::thread m_versionThreadHandle;
     char *m_vadLevel;
