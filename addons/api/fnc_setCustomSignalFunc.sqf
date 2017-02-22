@@ -19,11 +19,11 @@
  */
 #include "script_component.hpp"
 
-If !(_this params [["_code",{},[{}]]]) exitWith {
+if !(_this params [["_code",{},[{}]]]) exitWith {
     ERROR("acre_api_fnc_setCustomSignalFunc called with invalid argument.");
 };
 
-If (_code isEqualTo {}) then {
+if (_code isEqualTo {}) then {
     EGVAR(sys_signal,customSignalFunc) = nil;
 } else {
     EGVAR(sys_signal,customSignalFunc) = _code;
