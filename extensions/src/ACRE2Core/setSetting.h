@@ -27,11 +27,11 @@ RPC_FUNCTION(setSetting) {
             CAcreSettings::getInstance()->setDisableUnmuteClients(value != 1);
         }
     } 
-	else if(name == "disableChannelSwitch") {
-		if(CAcreSettings::getInstance()->getDisableChannelSwitch() != (value != 1)) {
-			CAcreSettings::getInstance()->setDisableChannelSwitch(value != 1);
-		}
-	}
+    else if(name == "disableTeamspeakChannelSwitch") {
+        if(CAcreSettings::getInstance()->getDisableTeamspeakChannelSwitch() != (value != 1)) {
+            CAcreSettings::getInstance()->setDisableTeamspeakChannelSwitch(value != 1);
+        }
+    }
     else {
         LOG("Setting [%s] failed to change to [%f]", name.c_str(), value);
         return ACRE_ERROR;

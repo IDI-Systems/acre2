@@ -1,6 +1,6 @@
 /*
  * Author: Tim Beswick
- * Checks if main display is visible and sets server name, triggering channel move.
+ * Checks if main display is visible and sets server name, triggering teamspeak channel move.
  *
  * Arguments:
  * None
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_server_fnc_checkChannel
+ * [] call acre_sys_server_fnc_teamspeakChannelCheck
  *
  * Public: No
  */

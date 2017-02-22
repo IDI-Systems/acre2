@@ -46,10 +46,10 @@ DFUNC(connectionFnc) = {
                 LOG("PIPE OPENED!");
                 if (GVAR(hasErrored) && isMultiplayer) then {
                     hint "ACRE HAS RECOVERED FROM A CLOSED PIPE!";
-                    call EFUNC(sys_server,channelCheck);
                 } else {
                     hint "ACRE CONNECTED";
                 };
+                call FUNC(teamspeakChannelCheck);
                 GVAR(hasErrored) = false;
                 INFO("Pipe opened.");
                 GVAR(serverStarted) = true;

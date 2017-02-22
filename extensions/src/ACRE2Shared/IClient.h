@@ -38,10 +38,11 @@ public:
 
     virtual ACRE_RESULT unMuteAll( void ) = 0;
 
-	virtual ACRE_RESULT moveToServerChannel(void) = 0;
-	virtual ACRE_RESULT moveToPreviousChannel(void) = 0;
-	virtual ACRE_RESULT updateServerName(std::string name) = 0;
-	virtual std::string retrieveServerName(void) = 0;
+    virtual ACRE_RESULT moveToServerTSChannel() = 0;
+    virtual ACRE_RESULT moveToPreviousTSChannel() = 0;
+    virtual ACRE_RESULT updateServerName(std::string name) = 0;
+    virtual ACRE_RESULT updateShouldSwitch(BOOL state) = 0;
+    virtual BOOL shouldSwitchTSChannel() = 0;
 
     DECLARE_INTERFACE_MEMBER(ACRE_STATE, State);
 
