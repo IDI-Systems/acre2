@@ -46,11 +46,11 @@ public:
 
     ACRE_RESULT unMuteAll( void );
 
-    ACRE_RESULT moveToServerTSChannel();
-    ACRE_RESULT moveToPreviousTSChannel();
+    ACRE_RESULT moveToServerTS3Channel();
+    ACRE_RESULT moveToPreviousTS3Channel();
     ACRE_RESULT updateServerName(std::string name);
-    ACRE_RESULT updateShouldSwitch(BOOL state);
-    BOOL shouldSwitchTSChannel();
+    ACRE_RESULT updateShouldSwitchTS3Channel(BOOL state);
+    BOOL shouldSwitchTS3Channel();
     uint64 findChannelByName(std::string name);
     std::string upperCase(std::string name);
 
@@ -67,7 +67,7 @@ public:
     DECLARE_MEMBER(UINT32, SpeakerMask);
     DECLARE_MEMBER(uint64, PreviousTSChannel);
     DECLARE_MEMBER(std::string, ServerName);
-    DECLARE_MEMBER(BOOL, ShouldSwitch)
+    DECLARE_MEMBER(BOOL, ShouldSwitchTS3Channel)
 protected:
     std::thread m_versionThreadHandle;
     char *m_vadLevel;

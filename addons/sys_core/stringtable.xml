@@ -41,7 +41,7 @@
             <Italian>Disattiva l'Audio dei Clients</Italian>
             <Korean>클라이언트 음소거 해제</Korean>
         </Key>
-        <Key ID="STR_ACRE_sys_core_teamspeakChannelSwitch_displayName">
+        <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
             <English>TeamSpeak Channel Switch</English>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">

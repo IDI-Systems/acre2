@@ -6,4 +6,4 @@ PREP(stopServer);
 PREP(serverReadLoop);
 PREP(server);
 PREP(ping);
-PREP(teamspeakChannelCheck);
+PREP(ts3ChannelCheck);

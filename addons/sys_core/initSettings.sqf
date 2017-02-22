@@ -39,13 +39,13 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(teamspeakChannelSwitch),
+    QGVAR(ts3ChannelSwitch),
     "CHECKBOX",
-    localize LSTRING(teamspeakChannelSwitch_displayName),
+    localize LSTRING(ts3ChannelSwitch_displayName),
     "ACRE2",
     true,
     false,
-    {["disableTeamspeakChannelSwitch", _this] call FUNC(setPluginSetting)}
+    {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
 ] call CBA_Settings_fnc_init;
 
 // Difficulty settings

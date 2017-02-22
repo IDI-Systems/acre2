@@ -27,9 +27,9 @@ RPC_FUNCTION(setSetting) {
             CAcreSettings::getInstance()->setDisableUnmuteClients(value != 1);
         }
     } 
-    else if(name == "disableTeamspeakChannelSwitch") {
-        if(CAcreSettings::getInstance()->getDisableTeamspeakChannelSwitch() != (value != 1)) {
-            CAcreSettings::getInstance()->setDisableTeamspeakChannelSwitch(value != 1);
+    else if (name == "disableTS3ChannelSwitch") {
+        if (CAcreSettings::getInstance()->getDisableTS3ChannelSwitch() != (value != 1)) {
+            CAcreSettings::getInstance()->setDisableTS3ChannelSwitch(value != 1);
         }
     }
     else {

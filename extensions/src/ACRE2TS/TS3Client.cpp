@@ -14,15 +14,15 @@
 
 #pragma comment(lib, "Shlwapi.lib")
 
-#define INVALID_TS_CHANNEL -1
-#define DEFAULT_TS_CHANNEL "ACRE"
+#define INVALID_TS3_CHANNEL -1
+#define DEFAULT_TS3_CHANNEL "ACRE"
 
 extern TS3Functions ts3Functions;
 
 //TS3Functions CTS3Client::ts3Functions;
 
 ACRE_RESULT CTS3Client::initialize(void) {
-    setPreviousTSChannel(INVALID_TS_CHANNEL);
+    setPreviousTSChannel(INVALID_TS3_CHANNEL);
     return ACRE_OK;
 }
 
@@ -425,17 +425,17 @@ ACRE_RESULT CTS3Client::unMuteAll( void ) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::moveToServerTSChannel() {
+ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
     //Only switch channel if enabled in settings
-    if(!CAcreSettings::getInstance()->getDisableTeamspeakChannelSwitch()) {
+    if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
         anyID clientId;
         std::string serverName = getServerName();
 
-        if(ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
-            uint64 channelId = INVALID_TS_CHANNEL;
-            uint64 currentChannelId = INVALID_TS_CHANNEL;
+        if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+            uint64 channelId = INVALID_TS3_CHANNEL;
+            uint64 currentChannelId = INVALID_TS3_CHANNEL;
             //Get current channel and store
-            if(ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok && getPreviousTSChannel() == INVALID_TS_CHANNEL) {
+            if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok && getPreviousTSChannel() == INVALID_TS3_CHANNEL) {
                 //LOG("Storing current channel: %d", currentChannelId);
                 setPreviousTSChannel(currentChannelId);
             } else {
@@ -443,10 +443,10 @@ ACRE_RESULT CTS3Client::moveToServerTSChannel() {
             }
 
             channelId = findChannelByName(serverName);
-            if(channelId != INVALID_TS_CHANNEL) {
+            if (channelId != INVALID_TS3_CHANNEL) {
                 //LOG("Trying to move to channel: %d", channelId);
-                if(channelId != INVALID_TS_CHANNEL && channelId != currentChannelId) {
-                    if(ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
+                if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
+                    if (ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
                         //LOG("Moved to channel: %d", channelId);
                     } else {
                         //LOG("Couldn't move to channel: %d", channelId);
@@ -457,21 +457,21 @@ ACRE_RESULT CTS3Client::moveToServerTSChannel() {
             }
         }
     }
-    setShouldSwitch(false);
+    setShouldSwitchTS3ChannelTS3Channel(false);
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::moveToPreviousTSChannel() {
-    if(!CAcreSettings::getInstance()->getDisableTeamspeakChannelSwitch()) {
+ACRE_RESULT CTS3Client::moveToPreviousTS3Channel() {
+    if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
         anyID clientId;
-        if(ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
-            uint64 channelId = INVALID_TS_CHANNEL;
-            uint64 currentChannelId = INVALID_TS_CHANNEL;
-            if(ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok) {
+        if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+            uint64 channelId = INVALID_TS3_CHANNEL;
+            uint64 currentChannelId = INVALID_TS3_CHANNEL;
+            if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok) {
                 channelId = getPreviousTSChannel();
-                if(channelId != INVALID_TS_CHANNEL && channelId != currentChannelId) {
+                if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
                     //LOG("Trying to move to original channel: %d", channelId);
-                    if(ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
+                    if (ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
                         //LOG("Moved to channel: %d", channelId);
                     } else {
                         //LOG("Couldn't move to channel: %d", channelId);
@@ -483,31 +483,31 @@ ACRE_RESULT CTS3Client::moveToPreviousTSChannel() {
                 //LOG("Can't get current channel");
             }
         }
-        setPreviousTSChannel(INVALID_TS_CHANNEL);
+        setPreviousTSChannel(INVALID_TS3_CHANNEL);
     }
     return ACRE_OK;
 }
 
 uint64 CTS3Client::findChannelByName(std::string name) {
     uint64 *channelList;
-    uint64 channelId = INVALID_TS_CHANNEL;
-    if(ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
-        while(*channelList) {
+    uint64 channelId = INVALID_TS3_CHANNEL;
+    if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
+        while (*channelList) {
             channelId = *channelList;
             channelList++;
             char* channelName;
             ////LOG("Found channel: %d", channelId);
-            if(ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
+            if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
                 std::string channelNameString = std::string(channelName);
-                if(name == DEFAULT_TS_CHANNEL) {
-                    if(strcmp(channelName, name.c_str()) == 0) {
+                if (name == DEFAULT_TS3_CHANNEL) {
+                    if (strcmp(channelName, name.c_str()) == 0) {
                         //LOG("Found default channel");
                         return channelId;
                     }
-                } else if(upperCase(channelName).find(upperCase(name)) != -1) {
+                } else if (upperCase(channelName).find(upperCase(name)) != -1) {
                     //LOG("Channel name '%s' should contain server name '%s'", channelName, name.c_str());
                     return channelId;
-                } else if(upperCase(name).find(upperCase(channelName)) != -1) {
+                } else if (upperCase(name).find(upperCase(channelName)) != -1) {
                     //LOG("Server name '%s' should contain channel name '%s'", name.c_str(), channelName);
                     return channelId;
                 }
@@ -516,14 +516,14 @@ uint64 CTS3Client::findChannelByName(std::string name) {
             }
             ts3Functions.freeMemory(channelName);
         }
-        if(name != DEFAULT_TS_CHANNEL) {
+        if (name != DEFAULT_TS3_CHANNEL) {
             //LOG("Can't find server channel, looking for default");
-            return findChannelByName(DEFAULT_TS_CHANNEL);
+            return findChannelByName(DEFAULT_TS3_CHANNEL);
         }
     } else {
         //LOG("Can't get channel list");
     }
-    return INVALID_TS_CHANNEL;
+    return INVALID_TS3_CHANNEL;
 }
 
 std::string CTS3Client::upperCase(std::string input) {
@@ -534,17 +534,17 @@ std::string CTS3Client::upperCase(std::string input) {
 
 ACRE_RESULT CTS3Client::updateServerName(std::string name) {
     setServerName(name);
-    if(name != "") {
-        updateShouldSwitch(true);
+    if (name != "") {
+        updateShouldSwitchTS3Channel(true);
     }
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::updateShouldSwitch(BOOL state) {
-    setShouldSwitch(state);
+ACRE_RESULT CTS3Client::updateShouldSwitchTS3Channel(BOOL state) {
+    setShouldSwitchTS3Channel(state);
     return ACRE_OK;
 }
 
-BOOL CTS3Client::shouldSwitchTSChannel() {
-    return getShouldSwitch();
+BOOL CTS3Client::shouldSwitchTS3Channel() {
+    return getShouldSwitchTS3Channel();
 }

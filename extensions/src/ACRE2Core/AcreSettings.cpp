@@ -15,7 +15,7 @@ ACRE_RESULT CAcreSettings::save(std::string filename) {
     iniFile << "globalVolume = " << this->m_GlobalVolume << ";\n";
     iniFile << "premixGlobalVolume = " << this->m_PremixGlobalVolume << ";\n";
     iniFile << "disableUnmuteClients = " << (this->m_DisableUnmuteClients ? "true" : "false") << ";\n";
-    iniFile << "disableTeamspeakChannelSwitch = " << (this->m_DisableTeamspeakChannelSwitch ? "true" : "false") << ";\n";
+    iniFile << "disableTS3ChannelSwitch = " << (this->m_DisableTS3ChannelSwitch ? "true" : "false") << ";\n";
 
     //LOG("Config Save: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
     iniFile.flush();
@@ -40,7 +40,7 @@ ACRE_RESULT CAcreSettings::load(std::string filename) {
     this->m_GlobalVolume = (float)config.GetReal("acre2", "globalVolume", 1.0f);
     this->m_PremixGlobalVolume = (float)config.GetReal("acre2", "premixGlobalVolume", 1.0f);
     this->m_DisableUnmuteClients = config.GetBoolean("acre2", "disableUnmuteClients", false);
-    this->m_DisableTeamspeakChannelSwitch = config.GetBoolean("acre2", "disableTeamspeakChannelSwitch", false);
+    this->m_DisableTS3ChannelSwitch = config.GetBoolean("acre2", "disableTS3ChannelSwitch", false);
 
     //LOG("Config Load: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
     this->m_Path = filename;
@@ -65,7 +65,7 @@ CAcreSettings::CAcreSettings() :
     m_EnableAudioTest(false),
     m_DisableRadioFilter(false),
     m_DisableUnmuteClients(false),
-    m_DisableTeamspeakChannelSwitch(false),
+    m_DisableTS3ChannelSwitch(false),
     m_LastVersion(ACRE_VERSION),
     m_Path("acre2.ini")
     {

@@ -1,6 +1,6 @@
 /*
  * Author: Tim Beswick
- * Checks if main display is visible and sets server name, triggering teamspeak channel move.
+ * Checks if main display is visible and sets server name, triggering ts3 channel move.
  *
  * Arguments:
  * None

@@ -49,7 +49,7 @@ DFUNC(connectionFnc) = {
                 } else {
                     hint "ACRE CONNECTED";
                 };
-                call FUNC(teamspeakChannelCheck);
+                call FUNC(ts3ChannelCheck);
                 GVAR(hasErrored) = false;
                 INFO("Pipe opened.");
                 GVAR(serverStarted) = true;
