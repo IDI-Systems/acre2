@@ -21,7 +21,7 @@ private _usingInfantryPhone = false;
 
 
 // The player is not inside a vehicle. Check if it is using the intercom network externally (infantry phone)
-if (_vehicle acre_player == acre_player) then {
+if (_vehicle == acre_player) then {
     private _vehicleInfantryPhone = acre_player getVariable [QGVAR(vehicleInfantryPhone), objNull];
     if (!isNull _vehicleInfantryPhone) then {
         _vehicle = _vehicleInfantryPhone;
@@ -29,7 +29,7 @@ if (_vehicle acre_player == acre_player) then {
     };
 };
 
-if (_vehicle acre_player != acre_player) then {
+if (_vehicle != acre_player) then {
     private "_unitInfantryPhone";
     if (_usingInfantryPhone) then {
         // The player is using the intercom externally

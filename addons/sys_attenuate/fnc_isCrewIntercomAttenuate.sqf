@@ -22,7 +22,7 @@ private _ret = false;
 private _vehicle = vehicle _unit;
 
 // The player is not inside a vehicle. Check if it is using the intercom network externally
-if (_vehicle _unit == _unit) then {
+if (_vehicle == _unit) then {
     private _vehicleInfantryPhone = _unit getVariable [QEGVAR(sys_core,vehicleInfantryPhone), objNull];
     if (!isNull _vehicleInfantryPhone) then {
         _vehicle = _vehicleInfantryPhone;
