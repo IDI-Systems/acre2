@@ -173,7 +173,7 @@ DFUNC(renderMenu_Alphanumeric) = {
     private _displaySet = MENU_SUBMENUS(_menu);
 
     private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
-    private _value =  SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
+    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
 
     private _valueHash = HASH_CREATE;
     HASH_SET(_valueHash, "1", _value);
