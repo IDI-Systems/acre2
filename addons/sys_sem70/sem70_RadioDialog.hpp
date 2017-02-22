@@ -1,12 +1,12 @@
 #include "script_component.hpp"
 
-#define CODE_SPACING    0.0245
+#define CODE_SPACING 0.0245
 
 #define CONTROL_SetRelativePos(xpos,ypos) x = H_OFFSET + (xpos * 0.001); y = H_OFFSET + (ypos * 0.001);
 #define CONTROL_SetDimensions(width, height) w = width * 0.001; h = height * 0.001;
 
 #define BEGIN_CONTROL(name, parent, idval) class name: parent { idc = idval;
-#define END_CONTROL        };
+#define END_CONTROL };
 
 #define NEW_SCALE 1.4
 #define SCALE (NEW_SCALE*1)

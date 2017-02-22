@@ -20,6 +20,6 @@
 #define GET_VAR(var1) acre_player getVariable QUOTE(GVAR(var1))
 #define SET_VAR(var1,var2) acre_player setVariable [QUOTE(GVAR(var1)), var2]
 
-#define MAIN_DISPLAY    (findDisplay 31532)
+#define MAIN_DISPLAY (findDisplay 31532)
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"

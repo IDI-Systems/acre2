@@ -1,12 +1,12 @@
-#define WeaponNoSlot        0    // dummy weapon
-#define WeaponSlotPrimary    1    // primary weapon
-#define WeaponSlotHandGun    2    // handGun/sidearm
-#define WeaponSlotSecondary    4    // secondary weapon    // 4 in ArmA, not 16.
-#define WeaponSlotHandGunItem    16    // sidearm/GL magazines    // 16 in ArmA, not 32.
-#define WeaponSlotItem        256    // main magazines, items, explosives
-#define WeaponSlotBinocular    4096    // binocular, NVG, LD, equipment
-#define WeaponHardMounted    65536
-#define WeaponSlotSmallItems    131072
+#define WeaponNoSlot 0    // dummy weapon
+#define WeaponSlotPrimary 1    // primary weapon
+#define WeaponSlotHandGun 2    // handGun/sidearm
+#define WeaponSlotSecondary 4    // secondary weapon    // 4 in ArmA, not 16.
+#define WeaponSlotHandGunItem 16    // sidearm/GL magazines    // 16 in ArmA, not 32.
+#define WeaponSlotItem 256    // main magazines, items, explosives
+#define WeaponSlotBinocular 4096    // binocular, NVG, LD, equipment
+#define WeaponHardMounted 65536
+#define WeaponSlotSmallItems 131072
 
 class CfgWeapons {
     class Default;
