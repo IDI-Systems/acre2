@@ -29,6 +29,6 @@ class CfgAcreSounds {
 
     // sys_sem52sl and sem70
     class Acre_SEMKnob {
-        sound = "\idi\acre\addons\sys_sounds\sounds\sem52knob.b64";
+        sound = "\idi\acre\addons\sys_sounds\sounds\semknob.b64";
     };
 };
