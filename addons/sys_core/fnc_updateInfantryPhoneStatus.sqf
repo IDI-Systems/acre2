@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * Updates the status of the infantry phone of a vehicle
+ * Updates the status of the infantry phone of a vehicle.
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
  * 1: Unit using the infantry phone <OBJECT>
  * 2: Type of action <NUMBER>
- * 3: Unit giving the infantry phone <OBJECT><OPTIONAL>
+ * 3: Unit giving the infantry phone <OBJECT> (default: objNull)
  *
  * Return Value:
  * None
@@ -19,7 +19,7 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_unitInfantryPhone", "_action", "_givingUnit"];
+params ["_vehicle", "_unitInfantryPhone", "_action", ["_givingUnit", objNull, [objNull]]];
 
 switch (_action) do {
     case 0: {

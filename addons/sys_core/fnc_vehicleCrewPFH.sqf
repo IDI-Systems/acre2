@@ -1,7 +1,7 @@
 /*
  * Author: ACRE2Team
  * Per frame execution. Sets if player is inside a vehicle and qualifies as vehicle crew (driver, gunner, turret and commander).
- * Additionally it checks if a unit is using the vehicle's infantry phone
+ * Additionally it checks if a unit is using the vehicle's infantry phone.
  *
  * Arguments:
  * None
