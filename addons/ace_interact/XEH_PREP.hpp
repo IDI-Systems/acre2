@@ -1,7 +1,7 @@
 PREP(actionSetMTT);
 PREP(actionSetSpatialAudio);
 PREP(checkIntercomInfantry);
-PREP(externalIntercomListChildrenActions);
+PREP(infantryPhoneChildrenActions);
 PREP(generateSpatialChildrenActions);
 PREP(radioChildrenActions);
 PREP(radioListChildrenActions);

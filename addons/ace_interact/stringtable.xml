@@ -144,22 +144,22 @@
         <Key ID="STR_ACRE_ace_interact_intercom">
             <English>Infantry Phone</English>
             <Spanish>Teléfono de infanteria</Spanish>
-            <German>Infanterie-Telefon</German>
+            <German>Außenbord Sprechanlage</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_giveIntercom">
             <English>Pass Infantry Phone</English>
             <Spanish>Dar teléfono de infanteria</Spanish>
-            <German>Infanterie-Telefon geben</German>
+            <German>Außenbord Sprechanlage geben</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_takeIntercom">
             <English>Take Infantry Phone</English>
             <Spanish>Coger teléfono de infanteria</Spanish>
-            <German>Infanterie-Telefon nehmen</German>
+            <German>Außenbord Sprechanlage abnehmen</German>
         </Key>
         <Key ID="STR_ACRE_ace_interact_returnIntercom">
             <English>Return Infantry Phone</English>
-            <Spanish>Devolver teléfono de infanteria</Spanish>
-            <German>Infanterie-Telefon zurückgeben</German>
+            <Spanish>Colgar teléfono de infanteria</Spanish>
+            <German>Außenbord Sprechanlage aufhängen</German>
         </Key>
     </Package>
 </Project>

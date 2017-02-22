@@ -20,7 +20,7 @@ class CfgVehicles {
                     condition = QUOTE([] call FUNC(checkIntercomInfantry));
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = "true";
-                    insertChildren = QUOTE(_this call FUNC(externalIntercomListChildrenActions));
+                    insertChildren = QUOTE(_this call FUNC(infantryPhoneChildrenActions));
                     priority = 0.1;
                     icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
                  };
@@ -39,7 +39,7 @@ class CfgVehicles {
                     condition = "true";
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = "true";
-                    insertChildren = QUOTE(_this call FUNC(externalIntercomListChildrenActions));
+                    insertChildren = QUOTE(_this call FUNC(infantryPhoneChildrenActions));
                     priority = 0.1;
                     icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
                  };
@@ -55,7 +55,7 @@ class CfgVehicles {
                     condition = "true";
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = "true";
-                    insertChildren = QUOTE(_this call FUNC(externalIntercomListChildrenActions));
+                    insertChildren = QUOTE(_this call FUNC(infantryPhoneChildrenActions));
                     priority = 0.1;
                     icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
                  };
@@ -71,7 +71,7 @@ class CfgVehicles {
                     condition = "true";
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = "true";
-                    insertChildren = QUOTE(_this call FUNC(externalIntercomListChildrenActions));
+                    insertChildren = QUOTE(_this call FUNC(infantryPhoneChildrenActions));
                     priority = 0.1;
                     icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
                  };

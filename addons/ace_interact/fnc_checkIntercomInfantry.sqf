@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-private _vehicle = acre_player getVariable ["vehicleIntercom", nil];
+private _vehicle = acre_player getVariable ["vehicleInfantryPhone", nil];
 
 private _return = false;
 

@@ -17,36 +17,35 @@
 #include "script_component.hpp"
 
 private _vehicle = vehicle acre_player;
-private "_vehicleIntercom";
 private _usingIntercomExternally = false;
 
 // The player is not inside a vehicle. Check if it is using the intercom network externally
 if (_vehicle == acre_player) then {
-    private _vehicleIntercom = acre_player getVariable ["vehicleIntercom", nil];
-    if (!isNil "_vehicleIntercom") then {
-        _vehicle = _vehicleIntercom;
+    private _vehicleInfantryPhone = acre_player getVariable ["vehicleInfantryPhone", nil];
+    if (!isNil "_vehicleInfantryPhone") then {
+        _vehicle = _vehicleInfantryPhone;
         _usingIntercomExternally = true;
     };
 };
 
 if (_vehicle != acre_player) then {
-    private "_externalIntercomUnit";
+    private "_unitInfantryPhone";
     if (_usingIntercomExternally) then {
         // The player is using the intercom externally
-        _externalIntercomUnit = acre_player;
+        _unitInfantryPhone = acre_player;
     } else {
         // The player is inside the vehicle. Check if a unit is using the intercom externally
-        _externalIntercomUnit = _vehicle getVariable ["intercomUnit", nil];
-        if (!isNil "_externalIntercomUnit") then {
+        _unitInfantryPhone = _vehicle getVariable ["unitInfantryPhone", nil];
+        if (!isNil "_unitInfantryPhone") then {
             _usingIntercomExternally = true;
         };
     };
 
     // The intercom can only be used externally up to a distance of 5m
     if (_usingIntercomExternally) then {
-        if ((_externalIntercomUnit distance _vehicle > 10.0) || (vehicle _externalIntercomUnit == _vehicle) || !(alive _externalIntercomUnit)) then {
+        if ((_unitInfantryPhone distance _vehicle > 5.0) || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone)) then {
             _usingIntercomExternally = false;
-            [_vehicle, _externalIntercomUnit, 0] call FUNC(updateInfantryPhoneStatus);
+            [_vehicle, _unitInfantryPhone, 0] call FUNC(updateInfantryPhoneStatus);
         };
     };
 
@@ -60,7 +59,7 @@ if (_vehicle != acre_player) then {
         ACRE_PLAYER_VEHICLE_CREW = _crew;
         if (_usingIntercomExternally) then {
             // An external unit is using the vehicle intercom network
-            ACRE_PLAYER_VEHICLE_CREW pushBackUnique _externalIntercomUnit;
+            ACRE_PLAYER_VEHICLE_CREW pushBackUnique _unitInfantryPhone;
         };
     } else {
         ACRE_PLAYER_VEHICLE_CREW = [];
