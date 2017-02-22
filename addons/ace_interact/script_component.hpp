@@ -17,3 +17,7 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+
+#define INFANTRYPHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
+#define INFANTRYPHONE_MAXDISTANCE_CUSTOM 1.5

@@ -22,8 +22,8 @@ private _usingInfantryPhone = false;
 
 // The player is not inside a vehicle. Check if it is using the intercom network externally (infantry phone)
 if (_vehicle == acre_player) then {
-    private _vehicleInfantryPhone = acre_player getVariable ["vehicleInfantryPhone", nil];
-    if (!isNil "_vehicleInfantryPhone") then {
+    private _vehicleInfantryPhone = acre_player getVariable [QGVAR(vehicleInfantryPhone), objNull];
+    if (!isNull _vehicleInfantryPhone) then {
         _vehicle = _vehicleInfantryPhone;
         _usingInfantryPhone = true;
     };
@@ -36,15 +36,17 @@ if (_vehicle != acre_player) then {
         _unitInfantryPhone = acre_player;
     } else {
         // The player is inside the vehicle. Check if a unit is using the intercom externally (infantry phone)
-        _unitInfantryPhone = _vehicle getVariable ["unitInfantryPhone", nil];
-        if (!isNil "_unitInfantryPhone") then {
+        _unitInfantryPhone = _vehicle getVariable [QGVAR(unitInfantryPhone), objNull];
+        if (!isNull _unitInfantryPhone) then {
             _usingInfantryPhone = true;
         };
     };
 
-    // The infantry phone can only be used externally up to a distance of 5m
+    // The infantry phone can only be used externally
     if (_usingInfantryPhone) then {
-        if ((_unitInfantryPhone distance _vehicle >= _vehicle getVariable [QGVAR(infantryPhoneMaxDistance), 10]) || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
+        (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
+        _infantryPhonePosition = AGLToASL (_vehicle modelToWorld _infantryPhonePosition);
+        if ((_unitInfantryPhone distance _infantryPhonePosition >= _infantryPhoneMaxDistance) || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
             _usingInfantryPhone = false;
             [_vehicle, _unitInfantryPhone, 0] call FUNC(updateInfantryPhoneStatus);
         };

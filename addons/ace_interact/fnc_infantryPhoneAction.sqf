@@ -36,7 +36,7 @@ TRACE_1("Adding Infantry Phone Action",_type);
 private _positionConfig = configFile >> "CfgVehicles" >> _type >> "ACRE" >> "CVC" >> "infantryPhonePosition";
 private _position = [0, 0, 0]; // Default to main action point
 if (isText _positionConfig) then {
-    _position = getText _positionConfig;
+    _position = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core vehicleCrewPFH checks
 };
 if (isArray _positionConfig) then {
     _position = getArray _positionConfig;
@@ -47,18 +47,23 @@ private _infantryPhoneAction = [
     localize LSTRING(infantryPhone),
     "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa",
     {true},
-    {_player distance _target < _target getVariable [QEGVAR(sys_core,infantryPhoneMaxDistance), 10]},
+    {
+        (_this select 2) params ["_position", "_maxDistance"];
+        // Only manually check distance if not main node (custom position)
+        if !(_position isEqualTo [0, 0, 0]) exitWith {true};
+        _player distance _target < _maxDistance
+    },
     {_this call FUNC(infantryPhoneChildrenActions)},
-    [],
+    [_position, [INFANTRYPHONE_MAXDISTANCE_CUSTOM, INFANTRYPHONE_MAXDISTANCE_DEFAULT] select (_position isEqualTo [0, 0, 0])],
     _position,
-    5
+    INFANTRYPHONE_MAXDISTANCE_CUSTOM // Works for main actions only, used when custom position is defined
 ] call ace_interact_menu_fnc_createAction;
 
 // Put inside main actions if no other position was found above
 if (_position isEqualTo [0, 0, 0]) then {
     [_type, 0, ["ACE_MainActions"], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
-    _target setVariable [QEGVAR(sys_core,infantryPhoneMaxDistance), 10];
+    _target setVariable [QEGVAR(sys_core,infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_DEFAULT]];
 } else {
     [_type, 0, [], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
-    _target setVariable [QEGVAR(sys_core,infantryPhoneMaxDistance), 7];
+    _target setVariable [QEGVAR(sys_core,infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_CUSTOM]];
 };

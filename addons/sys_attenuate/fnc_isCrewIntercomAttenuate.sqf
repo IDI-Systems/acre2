@@ -23,7 +23,7 @@ private _vehicle = vehicle acre_player;
 
 // The player is not inside a vehicle. Check if it is using the intercom network externally
 if (_vehicle == acre_player) then {
-    private _vehicleInfantryPhone = acre_player getVariable ["vehicleInfantryPhone", nil];
+    private _vehicleInfantryPhone = acre_player getVariable [QEGVAR(sys_core,vehicleInfantryPhone), nil];
     if (!isNil "_vehicleInfantryPhone") then {
         _vehicle = _vehicleInfantryPhone;
     };

@@ -3,7 +3,7 @@
  * Check if intercom option is available on infantry units.
  *
  * Arguments:
- * None
+ * 0: Player <OBJECT>
  *
  * Return Value:
  * ACE interaction is available <BOOL>
@@ -15,4 +15,6 @@
  */
 #include "script_component.hpp"
 
-!isNil {acre_player getVariable ["vehicleInfantryPhone", nil]}
+params ["_player"];
+
+!isNil {_player getVariable [QEGVAR(sys_core,vehicleInfantryPhone), nil]}

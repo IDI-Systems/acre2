@@ -17,7 +17,7 @@ class CfgVehicles {
             class ACE_MainActions {
                 class ACRE_InfantryPhone {
                     displayName = CSTRING(infantryPhone);
-                    condition = QUOTE([] call FUNC(checkIntercomInfantry));
+                    condition = QUOTE(_player call FUNC(checkIntercomInfantry));
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = "true";
                     insertChildren = QUOTE(_this call FUNC(infantryPhoneChildrenActions));
