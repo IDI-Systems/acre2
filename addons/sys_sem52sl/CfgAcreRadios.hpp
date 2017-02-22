@@ -1,12 +1,12 @@
 class CfgAcreComponents {
     class ACRE_BaseRadio;
 
-    class ACRE_SEM52SL_base : ACRE_BaseRadio {
+    class ACRE_SEM52SL_base: ACRE_BaseRadio {
         class Interfaces;
         isAcre = 1;
     };
 
-    class ACRE_SEM52SL : ACRE_SEM52SL_base {
+    class ACRE_SEM52SL: ACRE_SEM52SL_base {
         name = "SEM 52 SL";
         sinadRating = -117;
         sensitivityMin = -117;

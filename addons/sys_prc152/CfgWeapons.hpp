@@ -3,7 +3,7 @@ class CfgWeapons {
     class ACRE_BaseRadio;
     class ItemCore;
 
-    class ACRE_PRC152 : ACRE_BaseRadio {
+    class ACRE_PRC152: ACRE_BaseRadio {
         displayName = "AN/PRC-152";
         useActionTitle = "AN/PRC-152";
         model = QPATHTOF(Data\Models\PRC152.p3d);

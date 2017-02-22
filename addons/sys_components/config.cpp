@@ -23,7 +23,7 @@ class CfgAcreComponents {
         type = ACRE_COMPONENT_GENERIC;
     };
 
-    class ACRE_BaseRadio : ACRE_ComponentBase {
+    class ACRE_BaseRadio: ACRE_ComponentBase {
         type = ACRE_COMPONENT_RADIO;
         isAcre = 1;
         name = "ACRE Base Radio";
@@ -107,7 +107,7 @@ class CfgWeapons {
     class ACRE_GameComponentBase;
 
     class ItemRadio;
-    class ItemRadioAcreFlagged : ItemRadio {
+    class ItemRadioAcreFlagged: ItemRadio {
         scopeCurator = 1;
         scope = 1;
         class ItemInfo {
@@ -115,13 +115,13 @@ class CfgWeapons {
         };
     };
 
-    class ACRE_BaseComponent : ACRE_GameComponentBase {
+    class ACRE_BaseComponent: ACRE_GameComponentBase {
         acre_hasUnique = 1;
         scopeCurator = 1;
         scope = 1;
     };
 
-    class ACRE_BaseRadio : ACRE_BaseComponent {
+    class ACRE_BaseRadio: ACRE_BaseComponent {
         displayName = "ACRE Radio";
         useActionTitle = "ACRE: Pickup Radio";
         acre_isRadio = 1;

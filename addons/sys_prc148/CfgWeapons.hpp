@@ -2,7 +2,7 @@ class CfgWeapons {
     class Default;
     class ACRE_BaseRadio;
 
-    class ACRE_PRC148 : ACRE_BaseRadio {
+    class ACRE_PRC148: ACRE_BaseRadio {
         displayName = "AN/PRC-148";
         useActionTitle = "AN/PRC-148";
         model = QPATHTOF(Data\models\prc148.p3d);
@@ -24,7 +24,7 @@ class CfgWeapons {
         };
     };
     /*
-    class ACRE_PRC148_UHF : ACRE_BaseRadio {
+    class ACRE_PRC148_UHF: ACRE_BaseRadio {
         displayName = "AN/PRC-148 UHF";
         useActionTitle = "AN/PRC-148 UHF";
         model = QPATHTOF(Data\Models\prc148.p3d);

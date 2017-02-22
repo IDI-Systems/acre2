@@ -21,7 +21,7 @@ class Prc148_RscText {
     h = 0.03;
 };
 
-class Prc148_Cursor : Prc148_RscText {
+class Prc148_Cursor: Prc148_RscText {
     style = ST_CENTER + ST_FRAME;
 };
 
@@ -71,7 +71,7 @@ class Prc148_RscButton {
   action = "";
 };
 
-class Prc148_RscPicture : Prc148_RscButton {
+class Prc148_RscPicture: Prc148_RscButton {
     type = CT_STATIC;
     idc = -1;
     style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

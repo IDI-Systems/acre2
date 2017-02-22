@@ -67,7 +67,7 @@ class SEM52SL_RscButton {
   action = "";
 };
 
-class SEM52SL_RscPicture : SEM52SL_RscButton {
+class SEM52SL_RscPicture: SEM52SL_RscButton {
     type = CT_STATIC;
     idc = -1;
     style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

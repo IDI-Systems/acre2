@@ -1,12 +1,12 @@
 class CfgAcreComponents {
     class ACRE_BaseRadio;
 
-    class ACRE_PRC343_base : ACRE_BaseRadio {
+    class ACRE_PRC343_base: ACRE_BaseRadio {
         class Interfaces;
         isAcre = 1;
     };
 
-    class ACRE_PRC343 : ACRE_PRC343_base {
+    class ACRE_PRC343: ACRE_PRC343_base {
         name = "AN/PRC-343";
         sinadRating = -100;
         sensitivityMin = -110;

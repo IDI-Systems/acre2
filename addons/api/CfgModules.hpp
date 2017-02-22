@@ -1,6 +1,6 @@
 class CfgFactionClasses {
     class NO_CATEGORY;
-    class GVAR(mission_setup) : NO_CATEGORY {
+    class GVAR(mission_setup): NO_CATEGORY {
         displayName = "ACRE";
     };
 };
@@ -8,7 +8,7 @@ class CfgVehicles {
     class Logic;
     class Module_F: Logic { class ArgumentsBaseUnits { class Units; }; class ModuleDescription { class AnyBrain; }; };
 
-    class GVAR(basicMissionSetup) : Module_F {
+    class GVAR(basicMissionSetup): Module_F {
         scope = 2;
         displayName = "Basic Mission Setup";
         author = "ACRE Team";
@@ -68,7 +68,7 @@ class CfgVehicles {
         };
     };
 
-    class GVAR(DifficultySettings) : Module_F {
+    class GVAR(DifficultySettings): Module_F {
         scope = 1;
         displayName = "Difficulty Settings";
         category = QGVAR(mission_setup);
@@ -119,7 +119,7 @@ class CfgVehicles {
         };
     };
 
-    class GVAR(nameChannels) : Module_F {
+    class GVAR(nameChannels): Module_F {
         scope = 2;
         displayName = "Name Channels";
         author = "ACRE Team";

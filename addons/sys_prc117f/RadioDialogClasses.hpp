@@ -64,7 +64,7 @@ class Prc117f_RscButton {
   action = "";
 };
 
-class Prc117f_RscPicture : Prc117f_RscButton {
+class Prc117f_RscPicture: Prc117f_RscButton {
     type = CT_STATIC;
     idc = -1;
     style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

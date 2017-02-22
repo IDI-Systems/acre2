@@ -6,7 +6,7 @@ class Prc152_RadioDialog {
     controlsBackground[] = {Prc152Background};
     objects[] = {};
 
-    class Prc152Background : Prc152_RscBackground {
+    class Prc152Background: Prc152_RscBackground {
         type = CT_STATIC;
         idc = -1;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
@@ -69,7 +69,7 @@ class Prc152_RadioDialog {
 
 
 
-        class LogoIcon : Prc152_RscPicture {
+        class LogoIcon: Prc152_RscPicture {
             idc = 99993;
             x = ((((((0.435+(0.1254/2)-0.07)-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = ((((((0.415 +(0.02/2)-0.05)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -79,7 +79,7 @@ class Prc152_RadioDialog {
             colorText[] = {1,1,1,1};
         };
 
-        class KnobImage : Prc152_RscPicture {
+        class KnobImage: Prc152_RscPicture {
             idc = 99901;
             x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
@@ -103,7 +103,7 @@ class Prc152_RadioDialog {
         };   
 
         // Lower down for render order.
-        class TransmitIcon : Prc152_RscPicture {
+        class TransmitIcon: Prc152_RscPicture {
             idc = 99902;
             x = (((((0.496-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY); // 0.50 -> 0.49 -> 0.493
             y = (((((0.4211-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.426 -> 0.41 -> 0.42
@@ -114,7 +114,7 @@ class Prc152_RadioDialog {
         };    
      
 
-        class UpIcon : Prc152_RscPicture {
+        class UpIcon: Prc152_RscPicture {
             idc = 99903;
             x = (((((0.28-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = (((((0.6-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -125,7 +125,7 @@ class Prc152_RadioDialog {
             colorBackground[] = {1,1,1,0};
         };
 
-        class DownIcon : Prc152_RscPicture {
+        class DownIcon: Prc152_RscPicture {
             idc = 99904;
             x = (((((0.28-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = (((((0.6-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -135,7 +135,7 @@ class Prc152_RadioDialog {
             colorText[] = { 0, 0, 0, 1 };
         };
 
-        class UpDownIcon : Prc152_RscPicture {
+        class UpDownIcon: Prc152_RscPicture {
             idc = 99905;
             x = (((((0.2-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = (((((0.7-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -145,7 +145,7 @@ class Prc152_RadioDialog {
             colorText[] = { 0, 0, 0, 1 };
         };
 
-        class ScrollbarIcon : Prc152_RscPicture {
+        class ScrollbarIcon: Prc152_RscPicture {
             idc = 99906;
             x = ((((((0.556-0.0115)-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = (((((0.425-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);

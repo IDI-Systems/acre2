@@ -2,7 +2,7 @@ class CfgVehicles {
     class Air;
     class LandVehicle;
     class Ship;
-    class Car : LandVehicle {
+    class Car: LandVehicle {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -35,8 +35,8 @@ class CfgVehicles {
             };
         };
     };
-    class Car_F : Car {};
-    class Wheeled_APC_F : Car_F {
+    class Car_F: Car {};
+    class Wheeled_APC_F: Car_F {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -70,7 +70,7 @@ class CfgVehicles {
         };
     };
 
-    class Tank : LandVehicle {
+    class Tank: LandVehicle {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -104,7 +104,7 @@ class CfgVehicles {
         };
     };
 
-    class Helicopter : Air {
+    class Helicopter: Air {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -138,7 +138,7 @@ class CfgVehicles {
         };
     };
 
-    class Plane : Air {
+    class Plane: Air {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -206,7 +206,7 @@ class CfgVehicles {
         };
     };
 
-    class Ship_F : Ship {
+    class Ship_F: Ship {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -240,7 +240,7 @@ class CfgVehicles {
         };
     };
 
-    class Boat_F : Ship_F {};
+    class Boat_F: Ship_F {};
     class SDV_01_base_F: Boat_F {
         class ACRE {
             class attenuation {
