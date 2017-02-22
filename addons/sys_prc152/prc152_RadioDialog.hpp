@@ -21,8 +21,7 @@ class Prc152_RadioDialog {
         text = QPATHTOF(Data\prc152c_ui.paa);
     };
     class controls {
-        class BatteryBar
-        {
+        class BatteryBar {
             idc = 99991;
             //(((TEXT_X - 0.5)*SCALE)+0.5)
 
@@ -39,8 +38,7 @@ class Prc152_RadioDialog {
         };
 
 
-        class VolumeBar
-        {
+        class VolumeBar {
             idc = 99994;
             x = ((((((0.435+(0.0038*6))-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = ((((((0.415 + 0.0004)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.0007
@@ -55,8 +53,7 @@ class Prc152_RadioDialog {
         };
 
 
-        class LoadingBar
-        {
+        class LoadingBar {
             idc = 99992;
             x = ((((((0.435+(0.0038*3))-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = ((((((0.415+ (0.01105*2.25))-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -91,8 +88,7 @@ class Prc152_RadioDialog {
             text = PATHTOF(Data\Knobs\channelknob\prc152c_ui_knob_1.paa);
             colorText[] = {1,1,1, 1};
         };
-        class TransmitBar
-        {
+        class TransmitBar {
             idc = 99995;
             x = (((((0.496-0.5 + (0.0933/2.42))*SCALE)+0.5) * safeZoneH) + safeZoneY); // 2.55
             y = (((((0.4211 + 0.005 -0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.005

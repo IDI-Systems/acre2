@@ -25,15 +25,13 @@ class CfgWeapons {
 
         type = 4096;
         simulation = "ItemMineDetector";
-        class ItemInfo
-        {
+        class ItemInfo {
             mass = 8;
             type = 0;
             scope = 0;
         };
 
-        class Library
-        {
+        class Library {
             libTextDesc = "SEM 52 SL";
         };
     };

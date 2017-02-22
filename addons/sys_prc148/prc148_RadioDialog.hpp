@@ -127,8 +127,7 @@ class PRC148_RadioDialog {
     controlsBackground[] = {"PRC148Background"};
     objects[] = {};
 
-    class PRC148Background : Prc148_RscBackground
-    {
+    class PRC148Background : Prc148_RscBackground {
         type = CT_STATIC;
         idc = 999;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

@@ -11,8 +11,7 @@ class CfgWeapons {
         descriptionShort = "AN/PRC-117F Manpack Radio";
         scopeCurator = 2;
         scope = 2;
-        class ItemInfo
-         {
+        class ItemInfo {
              mass = 120;
              allowedSlots[] = {901};
             type = 0;
@@ -22,8 +21,7 @@ class CfgWeapons {
         type = 4096;
         simulation = "ItemMineDetector";
 
-        class Library
-        {
+        class Library {
             libTextDesc = "AN/PRC-117F Manpack Radio";
         };
     };

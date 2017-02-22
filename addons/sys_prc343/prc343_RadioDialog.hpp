@@ -17,8 +17,7 @@ class PRC343_RadioDialog {
     onLoad = QUOTE(_this call FUNC(render));
     controlsBackground[] = {PRC343Background};
     objects[] = {};
-    class PRC343Background
-    {
+    class PRC343Background {
         type = CT_STATIC;
         idc = 99999;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

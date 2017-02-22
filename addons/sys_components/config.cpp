@@ -121,14 +121,12 @@ class CfgWeapons {
         scope = 1;
     };
 
-    class ACRE_BaseRadio : ACRE_BaseComponent
-    {
+    class ACRE_BaseRadio : ACRE_BaseComponent {
         displayName = "ACRE Radio";
         useActionTitle = "ACRE: Pickup Radio";
         acre_isRadio = 1;
 
-        class Library
-        {
+        class Library {
             libTextDesc = "ACRE Radio";
         };
     };

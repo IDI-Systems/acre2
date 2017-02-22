@@ -1,5 +1,4 @@
-class CfgAcreComponents
-{
+class CfgAcreComponents {
     class ACRE_BaseRadio;
 
     class ACRE_PRC117F_base : ACRE_BaseRadio {
@@ -15,13 +14,9 @@ class CfgAcreComponents
         isPackRadio = 1;
         isDeployable = 0;
 
-        connectors[] = {
-                            {"Antenna", ACRE_CONNECTOR_TNC},
-                            {"Audio/Data", ACRE_CONNECTOR_U_283}
+        connectors[] = { {"Antenna", ACRE_CONNECTOR_TNC}, {"Audio/Data", ACRE_CONNECTOR_U_283}
                         };
-        defaultComponents[] = {
-                                {0, "ACRE_120CM_VHF_TNC"},
-                                {1, "ACRE_14IN_UHF_TNC"}
+        defaultComponents[] = { {0, "ACRE_120CM_VHF_TNC"}, {1, "ACRE_14IN_UHF_TNC"}
                             };
 
         class InterfaceClasses {

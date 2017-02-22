@@ -33,8 +33,7 @@ class Prc117f_RadioDialog {
         END_CONTROL
 
 
-        class BatteryBar
-        {
+        class BatteryBar {
             idc = 99991;
             x = (( (0.33+(0.00438*6)) * safeZoneW) + safeZoneX);
             y = (((0.392 + 0.00175) * safeZoneW) + safeZoneX);
@@ -48,8 +47,7 @@ class Prc117f_RadioDialog {
             tooltip = "ST_HORIZONTAL";
         };
 
-        class VolumeBar
-        {
+        class VolumeBar {
             idc = 99994;
             x = (( (0.33+(0.00438*6)) * safeZoneW) + safeZoneX);
             y = (((0.392 + 0.00175) * safeZoneW) + safeZoneX);
@@ -63,8 +61,7 @@ class Prc117f_RadioDialog {
             tooltip = "ST_HORIZONTAL";
         };
 
-        class TransmitBar
-        {
+        class TransmitBar {
             idc = 99995;
             x = ((ROW_LARGE_X * safeZoneW) + ((ROW_LARGE_OFFX*safeZoneW) * 19) + safeZoneX); //19th Character
             y = ((ROW_LARGE_Y * safeZoneW) + ((ROW_LARGE_OFFY*safeZoneW) * 1) + safeZoneX); // 1first row
@@ -78,8 +75,7 @@ class Prc117f_RadioDialog {
             tooltip = "ST_HORIZONTAL";
         };
 
-        class LoadingBar
-        {
+        class LoadingBar {
             idc = 99992;
             x = (( (0.33+(0.00438*7.5)) * safeZoneW) + safeZoneX);
             y = (((0.392+ (0.01375*2.5)) * safeZoneW) + safeZoneX);

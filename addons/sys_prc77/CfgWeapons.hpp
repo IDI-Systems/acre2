@@ -34,8 +34,7 @@ class CfgWeapons {
             scope = 0;
          };
 
-        class Library
-        {
+        class Library {
             libTextDesc = "AN/PRC-77";
         };
     };

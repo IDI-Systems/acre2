@@ -1,5 +1,4 @@
-class CfgAcreComponents
-{
+class CfgAcreComponents {
     class ACRE_BaseRadio;
 
     class ACRE_SEM52SL_base : ACRE_BaseRadio {
@@ -15,12 +14,9 @@ class CfgAcreComponents
         isPackRadio = 0;
         isDeployable = 0;
 
-        connectors[] = {
-                            {"Antenna", ACRE_CONNECTOR_BNC},
-                            {"Audio/Data", ACRE_CONNECTOR_U_283}
+        connectors[] = { {"Antenna", ACRE_CONNECTOR_BNC}, {"Audio/Data", ACRE_CONNECTOR_U_283}
                         };
-        defaultComponents[] = {
-                                {0, "ACRE_120CM_VHF_BNC"} /*TODO Not use this */
+        defaultComponents[] = { {0, "ACRE_120CM_VHF_BNC"} /*TODO Not use this */
                             };
 
         class InterfaceClasses {

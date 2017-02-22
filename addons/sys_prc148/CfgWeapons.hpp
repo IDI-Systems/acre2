@@ -13,15 +13,13 @@ class CfgWeapons {
 
         type = 4096;
         simulation = "ItemMineDetector";
-        class ItemInfo
-        {
+        class ItemInfo {
             mass = 8;
             type = 0;
             scope = 0;
         };
 
-        class Library
-        {
+        class Library {
             libTextDesc = "AN/PRC-148";
         };
     };
@@ -33,8 +31,7 @@ class CfgWeapons {
         picture = QPATHTOF(Data\148_icon.paa);
 
         descriptionShort = "AN/PRC-148 UHF Radio";
-        class Library
-        {
+        class Library {
             libTextDesc = "ACRE AN/PRC-148 UHF";
         };
     };

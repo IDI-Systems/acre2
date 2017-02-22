@@ -1,5 +1,4 @@
-#define ACRE_SQUAWK(squawkName, squawkPath)    class DOUBLES(squawkName,10) \
-                                            { \
+#define ACRE_SQUAWK(squawkName, squawkPath)    class DOUBLES(squawkName,10) \ { \
                                                 name = #squawkName; \
                                                 sound[] = {squawkPath, 1, 1}; \
                                                 titles[] = {}; \

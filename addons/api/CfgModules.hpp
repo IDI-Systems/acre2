@@ -140,8 +140,7 @@ class CfgVehicles {
                 displayName = "Side";
                 description = "Select the side to name channels for";
                 typeName = "NUMBER";
-                class values
-                {
+                class values {
                     class All    {name = "All";    value = 1; default = 1;};
                     class West    {name = "West"; value = 2;};
                     class East    {name = "East"; value = 3;};
