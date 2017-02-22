@@ -67,7 +67,7 @@ class SEM70_RscButton {
   action = "";
 };
 
-class SEM70_RscPicture : SEM70_RscButton {
+class SEM70_RscPicture: SEM70_RscButton {
     type = CT_STATIC;
     idc = -1;
     style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

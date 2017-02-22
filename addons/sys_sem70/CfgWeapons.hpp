@@ -13,7 +13,7 @@ class CfgWeapons {
     class ACRE_BaseRadio;
     class ItemCore;
 
-    class ACRE_SEM70 : ACRE_BaseRadio {
+    class ACRE_SEM70: ACRE_BaseRadio {
         displayName = "SEM 70";
         useActionTitle = "SEM 70";
         picture = QPATHTOF(data\ui\sem70_icon.paa);

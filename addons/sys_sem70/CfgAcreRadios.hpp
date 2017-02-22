@@ -3,12 +3,12 @@
 class CfgAcreComponents {
     class ACRE_BaseRadio;
 
-    class ACRE_SEM70_base : ACRE_BaseRadio {
+    class ACRE_SEM70_base: ACRE_BaseRadio {
         class Interfaces;
         isAcre = 1;
     };
 
-    class ACRE_SEM70 : ACRE_SEM70_base {
+    class ACRE_SEM70: ACRE_SEM70_base {
         name = "SEM 70";
         sinadRating = -117;
         sensitivityMin = -117;
