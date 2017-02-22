@@ -18,7 +18,7 @@
 [{
     params ["", "_idPFH"];
 
-    if (EGVAR(sys_io,serverStarted) && {!(isNull (findDisplay 46))}) exitWith {
+    if (GVAR(serverStarted) && {!(isNull (findDisplay 46))}) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
         ["setServerName", [serverName]] call EFUNC(sys_rpc,callRemoteProcedure);
     };
