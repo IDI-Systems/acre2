@@ -3,7 +3,7 @@
 if (!hasInterface) exitWith {};
 
 ["Tank", "init", {call FUNC(infantryPhoneAction)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Car", "init", {call FUNC(infantryPhoneAction)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Car_F", "init", {call FUNC(infantryPhoneAction)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
 
@@ -34,6 +34,6 @@ addMissionEventHandler ["Draw3D", {
     xArrow setPosASL (xIntersects select 0 select 0);
     xArrow setVectorUp (xIntersects select 0 select 1);
     xPosWorld = (xIntersects select 0) select 0;
-    xPosModel = cursorObject modelToWorld (ASLToAGL xPosWorld); // Enter in watch field and copy to config
+    xPosModel = cursorObject worldToModel (ASLToAGL xPosWorld); // Enter in watch field and copy to config
 }];
 #endif

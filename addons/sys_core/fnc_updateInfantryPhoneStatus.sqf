@@ -26,20 +26,16 @@ switch (_action) do {
         // Stop using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
         _unitInfantryPhone setVariable [QGVAR(vehicleInfantryPhone), nil, true];
-        systemChat format ["Stop using infantry phone of vehicle %1", _vehicle];
+        hintSilent "Infantry Phone disconnected";
     };
-
     case 1: {
         _vehicle setVariable [QGVAR(unitInfantryPhone), _unitInfantryPhone, true];
         _unitInfantryPhone setVariable [QGVAR(vehicleInfantryPhone), _vehicle, true];
-        systemChat format ["Start using infantry phone of vehicle %1", _vehicle];
     };
-
     case 2: {
         // Give the intercom to another unit
         _vehicle setVariable [QGVAR(unitInfantryPhone), _unitInfantryPhone, true];
         _unitInfantryPhone setVariable [QGVAR(vehicleInfantryPhone), _vehicle, true];
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
-        systemChat format ["Giving infantry phone of vehicle %1 to %2", _vehicle, _unitInfantryPhone];
     };
 };

@@ -48,15 +48,14 @@ private _infantryPhoneAction = [
     "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa",
     {true},
     {
-        (_this select 2) params ["_position", "_maxDistance"];
-        // Only manually check distance if not main node (custom position)
-        if !(_position isEqualTo [0, 0, 0]) exitWith {true};
-        _player distance _target < _maxDistance
+         // Only manually check distance if under main node (not a custom position on hull)
+        if !((_this select 2) isEqualTo [0, 0, 0]) exitWith {true};
+        _player distance _target < INFANTRYPHONE_MAXDISTANCE_DEFAULT
     },
     {_this call FUNC(infantryPhoneChildrenActions)},
-    [_position, [INFANTRYPHONE_MAXDISTANCE_CUSTOM, INFANTRYPHONE_MAXDISTANCE_DEFAULT] select (_position isEqualTo [0, 0, 0])],
     _position,
-    INFANTRYPHONE_MAXDISTANCE_CUSTOM // Works for main actions only, used when custom position is defined
+    _position,
+    INFANTRYPHONE_MAXDISTANCE_HULL // Works for main actions only, used when custom position is defined
 ] call ace_interact_menu_fnc_createAction;
 
 // Put inside main actions if no other position was found above
@@ -65,5 +64,5 @@ if (_position isEqualTo [0, 0, 0]) then {
     _target setVariable [QEGVAR(sys_core,infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_DEFAULT]];
 } else {
     [_type, 0, [], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
-    _target setVariable [QEGVAR(sys_core,infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_CUSTOM]];
+    _target setVariable [QEGVAR(sys_core,infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_HULL]];
 };

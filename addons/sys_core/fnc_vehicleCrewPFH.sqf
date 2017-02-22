@@ -45,8 +45,10 @@ if (_vehicle != acre_player) then {
     // The infantry phone can only be used externally
     if (_usingInfantryPhone) then {
         (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
-        _infantryPhonePosition = AGLToASL (_vehicle modelToWorld _infantryPhonePosition);
-        if ((_unitInfantryPhone distance _infantryPhonePosition >= _infantryPhoneMaxDistance) || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
+        _infantryPhonePosition = ASLToATL (AGLToASL (_vehicle modelToWorld _infantryPhonePosition));
+        TRACE_4("Infantry Phone PFH Check",_infantryPhonePosition,getPosATL _unitInfantryPhone,_infantryPhoneMaxDistance,_unitInfantryPhone distance _infantryPhonePosition);
+        // Add an extra meter due to 3d position check height differences and movement leeway
+        if ((getPosATL _unitInfantryPhone) distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || vehicle _unitInfantryPhone == _vehicle || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
             _usingInfantryPhone = false;
             [_vehicle, _unitInfantryPhone, 0] call FUNC(updateInfantryPhoneStatus);
         };
