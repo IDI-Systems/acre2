@@ -19,23 +19,23 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_unitInfantryPhone", "_action", ["_givingUnit", objNull, [objNull]]];
+params ["_vehicle", "_unit", "_action", ["_givingUnit", objNull, [objNull]]];
 
 switch (_action) do {
     case 0: {
         // Stop using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
-        _unitInfantryPhone setVariable [QGVAR(vehicleInfantryPhone), nil, true];
+        _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
         hintSilent "Infantry Phone disconnected";
     };
     case 1: {
-        _vehicle setVariable [QGVAR(unitInfantryPhone), _unitInfantryPhone, true];
-        _unitInfantryPhone setVariable [QGVAR(vehicleInfantryPhone), _vehicle, true];
+        _vehicle setVariable [QGVAR(unitInfantryPhone), _unit, true];
+        _unit setVariable [QGVAR(vehicleInfantryPhone), _vehicle, true];
     };
     case 2: {
         // Give the intercom to another unit
-        _vehicle setVariable [QGVAR(unitInfantryPhone), _unitInfantryPhone, true];
-        _unitInfantryPhone setVariable [QGVAR(vehicleInfantryPhone), _vehicle, true];
+        _vehicle setVariable [QGVAR(unitInfantryPhone), _unit, true];
+        _unit setVariable [QGVAR(vehicleInfantryPhone), _vehicle, true];
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
     };
 };
