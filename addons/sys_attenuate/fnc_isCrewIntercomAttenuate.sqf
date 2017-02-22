@@ -30,7 +30,7 @@ if (_vehicle == acre_player) then {
 };
 
 if (_unit in ACRE_PLAYER_VEHICLE_CREW) then {
-    _hasCVC = getNumber (configFile >> "CfgVehicles" >> typeOf (_vehicle) >> "ACRE" >> "CVC" >> "hasCVC");
+    private _hasCVC = getNumber (configFile >> "CfgVehicles" >> typeOf (_vehicle) >> "ACRE" >> "CVC" >> "hasCVC");
     if (_hasCVC == 1) then {
         _ret = true;
     };

@@ -1,7 +1,7 @@
 /*
  * Author: ACRE2Team
  * Per frame execution. Sets if player is inside a vehicle and qualifies as vehicle crew (driver, gunner, turret and commander).
- * Additionally it checks if a unit is using the intercom externally
+ * Additionally it checks if a unit is using the vehicle's infantry phone
  *
  * Arguments:
  * None
@@ -17,34 +17,35 @@
 #include "script_component.hpp"
 
 private _vehicle = vehicle acre_player;
-private _usingIntercomExternally = false;
+private _usingInfantryPhone = false;
 
-// The player is not inside a vehicle. Check if it is using the intercom network externally
+
+// The player is not inside a vehicle. Check if it is using the intercom network externally (infantry phone)
 if (_vehicle == acre_player) then {
     private _vehicleInfantryPhone = acre_player getVariable ["vehicleInfantryPhone", nil];
     if (!isNil "_vehicleInfantryPhone") then {
         _vehicle = _vehicleInfantryPhone;
-        _usingIntercomExternally = true;
+        _usingInfantryPhone = true;
     };
 };
 
 if (_vehicle != acre_player) then {
     private "_unitInfantryPhone";
-    if (_usingIntercomExternally) then {
+    if (_usingInfantryPhone) then {
         // The player is using the intercom externally
         _unitInfantryPhone = acre_player;
     } else {
-        // The player is inside the vehicle. Check if a unit is using the intercom externally
+        // The player is inside the vehicle. Check if a unit is using the intercom externally (infantry phone)
         _unitInfantryPhone = _vehicle getVariable ["unitInfantryPhone", nil];
         if (!isNil "_unitInfantryPhone") then {
-            _usingIntercomExternally = true;
+            _usingInfantryPhone = true;
         };
     };
 
-    // The intercom can only be used externally up to a distance of 5m
-    if (_usingIntercomExternally) then {
-        if ((_unitInfantryPhone distance _vehicle > 5.0) || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone)) then {
-            _usingIntercomExternally = false;
+    // The infantry phone can only be used externally up to a distance of 5m
+    if (_usingInfantryPhone) then {
+        if ((_unitInfantryPhone distance _vehicle > MAX_DISTANCE_INFANTRYPHONE) || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
+            _usingInfantryPhone = false;
             [_vehicle, _unitInfantryPhone, 0] call FUNC(updateInfantryPhoneStatus);
         };
     };
@@ -55,9 +56,9 @@ if (_vehicle != acre_player) then {
     } forEach (allTurrets [_vehicle, false]);
     _crew = _crew - [objNull];
 
-    if (acre_player in _crew || _usingIntercomExternally) then {
+    if (acre_player in _crew || _usingInfantryPhone) then {
         ACRE_PLAYER_VEHICLE_CREW = _crew;
-        if (_usingIntercomExternally) then {
+        if (_usingInfantryPhone) then {
             // An external unit is using the vehicle intercom network
             ACRE_PLAYER_VEHICLE_CREW pushBackUnique _unitInfantryPhone;
         };

@@ -141,22 +141,22 @@
             <French>Définir comme Multi PTT</French>
             <Korean>%1번 PTT로 설정</Korean>
         </Key>
-        <Key ID="STR_ACRE_ace_interact_intercom">
+        <Key ID="STR_ACRE_ace_interact_infantryPhone">
             <English>Infantry Phone</English>
             <Spanish>Teléfono de infanteria</Spanish>
             <German>Außenbord Sprechanlage</German>
         </Key>
-        <Key ID="STR_ACRE_ace_interact_giveIntercom">
+        <Key ID="STR_ACRE_ace_interact_giveInfantryTelephone">
             <English>Pass Infantry Phone</English>
             <Spanish>Dar teléfono de infanteria</Spanish>
             <German>Außenbord Sprechanlage geben</German>
         </Key>
-        <Key ID="STR_ACRE_ace_interact_takeIntercom">
+        <Key ID="STR_ACRE_ace_interact_takeInfantryTelephone">
             <English>Take Infantry Phone</English>
             <Spanish>Coger teléfono de infanteria</Spanish>
             <German>Außenbord Sprechanlage abnehmen</German>
         </Key>
-        <Key ID="STR_ACRE_ace_interact_returnIntercom">
+        <Key ID="STR_ACRE_ace_interact_returnInfantryTelephone">
             <English>Return Infantry Phone</English>
             <Spanish>Colgar teléfono de infanteria</Spanish>
             <German>Außenbord Sprechanlage aufhängen</German>

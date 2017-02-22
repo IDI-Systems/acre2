@@ -51,7 +51,7 @@ class CfgVehicles {
         class ACE_Actions {
             class ACE_MainActions {
                 class ACRE_Interact {
-                    displayName = CSTRING(externalIntercom);
+                    displayName = CSTRING(infantryTelephone);
                     condition = "true";
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = "true";
