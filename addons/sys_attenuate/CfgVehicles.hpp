@@ -101,6 +101,7 @@ class CfgVehicles {
             class CVC {
                 hasCVC = true;
                 hasInfantryPhone = true;
+                infantryPhonePosition[] = {1.42, -4.43, -1.05};
             };
         };
     };

@@ -15,6 +15,4 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_CORE
 #endif
 
-#define MAX_DISTANCE_INFANTRYPHONE 5
-
 #include "\idi\acre\addons\main\script_macros.hpp"

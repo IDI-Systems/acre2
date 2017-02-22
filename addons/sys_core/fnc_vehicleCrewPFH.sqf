@@ -44,7 +44,7 @@ if (_vehicle != acre_player) then {
 
     // The infantry phone can only be used externally up to a distance of 5m
     if (_usingInfantryPhone) then {
-        if ((_unitInfantryPhone distance _vehicle > MAX_DISTANCE_INFANTRYPHONE) || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
+        if ((_unitInfantryPhone distance _vehicle >= _vehicle getVariable [QGVAR(infantryPhoneMaxDistance), 10]) || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
             _usingInfantryPhone = false;
             [_vehicle, _unitInfantryPhone, 0] call FUNC(updateInfantryPhoneStatus);
         };
