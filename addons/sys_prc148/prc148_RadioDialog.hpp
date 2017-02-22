@@ -327,8 +327,8 @@ class PRC148_RadioDialog {
             colorDisabled[] = {ClrGray, 0};
             colorBackgroundDisabled[] = {ClrGray,0};
 
-            onMouseEnter  = "[_this, 'Volume'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
-            onMouseExit  = "[_this, 'Volume'] call acre_sys_prc148_fnc_onKnobMouseExit;";
+            onMouseEnter = "[_this, 'Volume'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
+            onMouseExit = "[_this, 'Volume'] call acre_sys_prc148_fnc_onKnobMouseExit;";
             onMouseButtonUp = "_this call acre_sys_prc148_fnc_onVolumeKnobPress;";
             toolTip = QUOTE(Current volume: 100%);
         END_CONTROL
@@ -349,8 +349,8 @@ class PRC148_RadioDialog {
             colorDisabled[] = {ClrGray, 0};
             colorBackgroundDisabled[] = {ClrGray,9};
 
-            onMouseEnter  = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
-            onMouseExit  = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseExit;";
+            onMouseEnter = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
+            onMouseExit = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseExit;";
             onMouseButtonUp = "_this call acre_sys_prc148_fnc_onChannelKnobPress;";
             toolTip = QUOTE(Change channel);
         END_CONTROL

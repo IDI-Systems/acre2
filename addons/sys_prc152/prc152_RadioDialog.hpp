@@ -366,8 +366,8 @@ class Prc152_RadioDialog {
             sizeEx = 0.014;
             color[] = {1,1,1,0};
             colorBackground[] = {1,1,1,0};
-            onMouseEnter  = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseEnter));
-            onMouseExit  = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseExit));
+            onMouseEnter = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseEnter));
+            onMouseExit = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseExit));
             onMouseButtonUp = QUOTE((['VOLUME'] + _this) call FUNC(onButtonPress));
             tooltip = QUOTE(Change volume);
         END_CONTROL
