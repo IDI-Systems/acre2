@@ -1,9 +1,7 @@
 #include "script_component.hpp"
 
-class CfgPatches
-{
-    class ADDON
-    {
+class CfgPatches {
+    class ADDON {
         units[] = {};
         weapons[] = { RADIO_WEAPON_LIST_STR(ACRE_SEM70) };
         requiredVersion = REQUIRED_VERSION;

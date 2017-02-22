@@ -19,8 +19,7 @@ class SEM70_RadioDialog {
     onLoad = QUOTE(_this call FUNC(render));
     controlsBackground[] = {/*SEM70Background*/};
     objects[] = {};
-    /*class SEM70Background
-    {
+    /*class SEM70Background {
         type = CT_STATIC;
         idc = 99999;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

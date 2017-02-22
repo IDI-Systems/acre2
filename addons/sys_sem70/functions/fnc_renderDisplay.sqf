@@ -19,8 +19,7 @@
 #define RADIO_CTRL(var1) (_display displayCtrl var1)
 
 params ["_display"];
-
-{
+ {
     RADIO_CTRL(_x) ctrlSetText "";
 } forEach [301,302,303,304,305/*,109*/]; // purge.
 

@@ -121,12 +121,10 @@ if (diag_tickTime - _lastSortTime > 3) then {
     // If its been a second, lets check to see if the transmitters changed.
     //if (diag_tickTime - _lastSortTime > 1) then {
         if (count _radioCache > 0) then {
-            // Compare BOTH arrays.
-            {
+            // Compare BOTH arrays. {
                 if (!(_x in _radioCache)) exitWith { _transmissionsChanged = true; };
             } forEach _radios;
-            if (!_transmissionsChanged) then {
-                {
+            if (!_transmissionsChanged) then { {
                     if (!(_x in _radios)) exitWith { _transmissionsChanged = true; };
                 } forEach _radioCache;
             };
@@ -142,8 +140,7 @@ if (_transmissionsChanged) then {
     private _areAllRadiosInitialized = true;
 
     if ((count _radios) > 1) then {
-        private _sorted = [];
-        {
+        private _sorted = []; {
             _x params ["","_txID","_signalData"];
             _signalData params ["_signalPercent"];
             if (_signalData isEqualTo [0, -992]) then {_areAllRadiosInitialized = false;};
@@ -152,8 +149,7 @@ if (_transmissionsChanged) then {
             PUSH(_transmissions, _txId);
         } forEach _radios;
         _sorted sort false; // descending order
-
-        {
+ {
             PUSH(_sortedRadios, (_radios select (_x select 1)));
         } forEach _sorted;
     } else {
@@ -177,16 +173,14 @@ if (_transmissionsChanged) then {
         if (HASH_GET(_radioRxData, "mode") == "singleChannel") then {
             private _hearableTransmissions = [];
             private _junkTransmissions = [];
-            private _digital = false;
-            {
+            private _digital = false; {
                 private _txId = _x select 1;
                 _radioTxData = [_txId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
                 if (HASH_GET(_radioRxData, "modulation") == HASH_GET(_radioTxData, "modulation")) then {
                     //diag_log text "MOD OK";
                     if (HASH_GET(_radioRxData, "encryption") == 1 && HASH_GET(_radioTxData, "encryption") == 1) then {
                         //diag_log text "ENCRYPTED";
-                        if (HASH_GET(_radioRxData, "TEK") == HASH_GET(_radioTxData, "TEK") &&
-                            {HASH_GET(_radioRxData, "trafficRate") == HASH_GET(_radioTxData, "trafficRate")}
+                        if (HASH_GET(_radioRxData, "TEK") == HASH_GET(_radioTxData, "TEK") && {HASH_GET(_radioRxData, "trafficRate") == HASH_GET(_radioTxData, "trafficRate")}
                         ) then {
                             //diag_log text "DIGITAL CRYPTO!";
                             PUSH(_hearableTransmissions, _x);
@@ -279,8 +273,7 @@ if (_transmissionsChanged) then {
                 _rxFreqRX = -1; 
             };
 
-            //private _rxFreqTX = HASH_GET(_radioRxData, "frequencyTX")
-            {
+            //private _rxFreqTX = HASH_GET(_radioRxData, "frequencyTX") {
                 private _txId = _x select 1;
                 _radioTxData = [_txId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
                 _txFreqTX = HASH_GET(_radioTxData, "frequencyTX");
