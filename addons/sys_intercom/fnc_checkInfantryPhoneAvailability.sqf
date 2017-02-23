@@ -9,7 +9,7 @@
  * ACE interaction is available <BOOL>
  *
  * Example:
- * [] call acre_ace_interact_fnc_checkInfantryPhoneAvailability
+ * [] call acre_sys_intercom_fnc_checkInfantryPhoneAvailability
  *
  * Public: No
  */

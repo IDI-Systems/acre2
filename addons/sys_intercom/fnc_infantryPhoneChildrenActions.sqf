@@ -9,7 +9,7 @@
  * Array of actions <ARRAY>
  *
  * Example:
- * [cursorTarget] call acre_ace_interact_infantryPhoneChildrenActions
+ * [cursorTarget] call acre_sys_intercom_infantryPhoneChildrenActions
  *
  * Public: No
  */

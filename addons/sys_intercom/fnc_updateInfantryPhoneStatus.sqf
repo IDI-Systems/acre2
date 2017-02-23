@@ -12,8 +12,8 @@
  * None
  *
  * Example:
- * [cursorTarget, player, 1] call acre_sys_core_updateInfantryPhoneStatus
- * [cursorTarget, infantryUnit, 1, player] call acre_sys_core_updateInfantryPhoneStatus
+ * [cursorTarget, player, 1] call acre_sys_intercom_updateInfantryPhoneStatus
+ * [cursorTarget, infantryUnit, 1, player] call acre_sys_intercom_updateInfantryPhoneStatus
  *
  * Public: No
  */

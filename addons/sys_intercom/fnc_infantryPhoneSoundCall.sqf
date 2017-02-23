@@ -9,7 +9,7 @@
  * Handled <BOOL>
  *
  * Example:
- * [] call acre_sys_core_fnc_handleMultiPttKeyPressUp
+ * [] call acre_sys_intercom_fnc_handleMultiPttKeyPressUp
  *
  * Public: No
  */

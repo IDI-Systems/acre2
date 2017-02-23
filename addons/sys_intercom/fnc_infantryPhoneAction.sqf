@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_ace_interact_infantryPhoneAction
+ * [cursorTarget] call acre_sys_intercom_infantryPhoneAction
  *
  * Public: No
  */
