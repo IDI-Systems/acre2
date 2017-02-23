@@ -1,15 +1,15 @@
 /*
  * Author: ACRE2Team
- * Generates a list of actions for using vehicle intercoms externally
+ * Generates a list of actions for using vehicle intercoms externally.
  *
  * Arguments:
- * 0: Unit with an intercom action <OBJECT>
+ * 0: Vehicle/Unit <OBJECT>
  *
  * Return Value:
  * Array of actions <ARRAY>
  *
  * Example:
- * [cursorTarget] call acre_ace_interact_infantryPhoneChildrenActions
+ * [cursorTarget] call acre_sys_intercom_infantryPhoneChildrenActions
  *
  * Public: No
  */

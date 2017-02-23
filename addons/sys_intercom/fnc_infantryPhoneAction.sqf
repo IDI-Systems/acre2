@@ -3,13 +3,13 @@
  * Adds an action for using vehicle intercom externally.
  *
  * Arguments:
- * 0: Vehicle with an intercom action <OBJECT>
+ * 0: Vehicle <OBJECT>
  *
  * Return Value:
  * None
  *
  * Example:
- * [cursorTarget] call acre_ace_interact_infantryPhoneAction
+ * [cursorTarget] call acre_sys_intercom_infantryPhoneAction
  *
  * Public: No
  */
@@ -43,35 +43,41 @@ if (isArray _positionConfig) then {
 };
 
 private _infantryPhoneAction = [
-    "ACRE_InfantryPhone",
+    QGVAR(infantryPhone),
     localize LSTRING(infantryPhone),
     "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa",
     {true},
     {
          // Only manually check distance if under main node (not a custom position on hull)
         if !((_this select 2) isEqualTo [0, 0, 0]) exitWith {true};
-        _player distance _target < INFANTRYPHONE_MAXDISTANCE_DEFAULT
+        _player distance _target < PHONE_MAXDISTANCE_DEFAULT
     },
     {_this call FUNC(infantryPhoneChildrenActions)},
     _position,
     _position,
-    INFANTRYPHONE_MAXDISTANCE_HULL // Works for main actions only, used when custom position is defined
+    PHONE_MAXDISTANCE_HULL // Works for main actions only, used when custom position is defined
 ] call ace_interact_menu_fnc_createAction;
 
 // Put inside main actions if no other position was found above
 if (_position isEqualTo [0, 0, 0]) then {
     [_type, 0, ["ACE_MainActions"], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
-    _target setVariable [QGVAR(infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_DEFAULT]];
+    _target setVariable [QGVAR(infantryPhoneInfo), [_position, PHONE_MAXDISTANCE_DEFAULT]];
 } else {
     [_type, 0, [], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
-    _target setVariable [QGVAR(infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_HULL]];
+    _target setVariable [QGVAR(infantryPhoneInfo), [_position, PHONE_MAXDISTANCE_HULL]];
 };
 
 // Passenger actions
-private _icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
-_condition = {
-
-};
-_infantryPhoneAction = ["ACRE_InfantryPhone", localize LSTRING(infantryPhone), _icon, {true}, {[_target, acre_player] call FUNC(isInfantryPhoneSpeakerAvailable)}, {_this call FUNC(infantryPhoneChildrenActions)}, [], {[0,0,0]},2,[false, true, false, false, false]] call ace_interact_menu_fnc_createAction;
-
-[_type, 1, ["ACE_SelfActions"], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
+private _infantryPhoneSpeakerAction = [
+    QGVAR(infantryPhoneSpeaker),
+    localize LSTRING(infantryPhone),
+    "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa",
+    {true},
+    {_this call FUNC(isInfantryPhoneSpeakerAvailable)},
+    {_this call FUNC(infantryPhoneChildrenActions)},
+    [],
+    [0, 0, 0],
+    2,
+    [false, true, false, false, false]
+] call ace_interact_menu_fnc_createAction;
+[_type, 1, ["ACE_SelfActions"], _infantryPhoneSpeakerAction] call ace_interact_menu_fnc_addActionToClass;

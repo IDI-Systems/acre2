@@ -1,11 +1,10 @@
 #include "script_component.hpp"
 
-if (!hasInterface) exitWith {};
-
 ["Tank", "init", {call FUNC(infantryPhoneAction)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 ["Car_F", "init", {call FUNC(infantryPhoneAction)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-#ifdef DRAW_INFANTRYPHONE_INFO
+
+#ifdef DRAW_PHONE_INFO
 addMissionEventHandler ["Draw3D", {
     private _target = cursorObject;
     private _config = configFile >> "CfgVehicles" >> typeOf _target >> "ACRE" >> "CVC";
@@ -24,7 +23,7 @@ addMissionEventHandler ["Draw3D", {
 }];
 #endif
 
-#ifdef DRAW_INTERSECT_INFO
+#ifdef DRAW_CURSORPOS_INFO
 xArrow = "Sign_Arrow_F" createVehicle [0, 0, 0];
 addMissionEventHandler ["Draw3D", {
     xIntersects = lineIntersectsSurfaces [AGLToASL positionCameraToWorld [0, 0, 0], AGLToASL positionCameraToWorld [0, 0, 100], player];

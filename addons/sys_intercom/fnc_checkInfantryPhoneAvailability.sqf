@@ -3,13 +3,13 @@
  * Check if intercom option is available on infantry units.
  *
  * Arguments:
- * 0: Player <OBJECT>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * ACE interaction is available <BOOL>
+ * Interaction Available <BOOL>
  *
  * Example:
- * [] call acre_ace_interact_fnc_checkInfantryPhoneAvailability
+ * [] call acre_sys_intercom_fnc_checkInfantryPhoneAvailability
  *
  * Public: No
  */

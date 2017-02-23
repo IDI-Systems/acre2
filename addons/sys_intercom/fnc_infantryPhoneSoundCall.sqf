@@ -1,15 +1,15 @@
 /*
  * Author: ACRE2Team
- * Used to handle key up of multiPttKeyPress.
+ * Calls the infantry phone.
  *
  * Arguments:
- * None
+ * 0: Vehicle <OBJECT>
  *
  * Return Value:
- * Handled <BOOL>
+ * None
  *
  * Example:
- * [] call acre_sys_core_fnc_handleMultiPttKeyPressUp
+ * [] call acre_sys_intercom_fnc_infantryPhoneSoundCall
  *
  * Public: No
  */

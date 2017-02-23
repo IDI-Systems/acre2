@@ -1,9 +1,9 @@
 #define COMPONENT sys_intercom
-#define COMPONENT_BEAUTIFIED Vehicle intercom
+#define COMPONENT_BEAUTIFIED Vehicle Intercom
 #include "\idi\acre\addons\main\script_mod.hpp"
 
-// #define DRAW_INFANTRYPHONE_INFO
-// #define DRAW_INTERSECT_INFO
+// #define DRAW_PHONE_INFO
+// #define DRAW_CURSORPOS_INFO
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
@@ -18,5 +18,5 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
-#define INFANTRYPHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
-#define INFANTRYPHONE_MAXDISTANCE_HULL 1.5
+#define PHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
+#define PHONE_MAXDISTANCE_HULL 1.5
