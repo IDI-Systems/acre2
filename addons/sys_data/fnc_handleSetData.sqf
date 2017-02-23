@@ -18,11 +18,12 @@
 
 params ["_radioId", "_event", "_data", "_radioData","_eventKind", "_remote"];
 
-acre_sys_core_speaking_cache_valid = false;
+EGVAR(sys_core,speaking_cache_valid) = false;
 //missionNamespace setVariable [_radioId+"dataCache", nil];
 if (_remote) exitWith { true };
 
 TRACE_1("SET DATA EVENT ENTER", _this);
+
 private _radioBaseClass = BASE_CLASS_CONFIG(_radioId);
 
 private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);

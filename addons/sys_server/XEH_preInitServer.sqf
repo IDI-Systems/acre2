@@ -1,31 +1,24 @@
 #include "script_component.hpp"
 
-NO_CLIENT;
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
 #include "XEH_PREPServer.hpp"
 PREP_RECOMPILE_END;
 
-DGVAR(radioIdMap) = [[],[]];
+GVAR(radioIdMap) = [[],[]];
+GVAR(masterIdList) = [];
 
-DGVAR(collectionMap) = [];
-DGVAR(repopulateGCMap) = true;
-DGVAR(colletionMapIndexes) = [0,0];
-DGVAR(markedForGC) = [];
-DGVAR(markedForGCData) = HASH_CREATE;
-
-DGVAR(collectionTime) = DEFAULT_COLLECTION_TIME;
-
-DGVAR(masterIdList) = [];
+GVAR(markedForGC) = HASH_CREATE; //Entry format key: radioId value: [time_last_recieved,time_last_gc_find,object]
 
 DVAR(ACRE_SPECTATORS_LIST) = [];
 
 GVAR(masterIdTable) = HASH_CREATE;
-GVAR(unacknowledgedIds) = [];
 GVAR(doFullSearch) = false;
 GVAR(waitingForIdAck) = false;
 GVAR(nextSearchTime) = diag_tickTime + 5;
+
+GVAR(unacknowledgedIds) = [];
+GVAR(unacknowledgedTable) = HASH_CREATE;
 
 ADDON = true;

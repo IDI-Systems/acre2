@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Creates a complex component and will attachs all the default components.
+ * Creates a complex component and attaches all the default components.
  *
  * Arguments:
  * 0: Component ID <STRING>
@@ -11,10 +11,10 @@
  * 5: Remote <BOOLEAN>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_components_fnc_initializeComponent
+ * ["ACRE_PRC343_ID_1", "initializeComponent, nil, acre_sys_data_radioData getVariable "ACRE_PRC343_ID_1"] call acre_sys_components_fnc_initializeComponent
  *
  * Public: No
  */
@@ -25,13 +25,13 @@ params["_radioId","_event","_data", "_radioData", "_eventKind", "_remote"];
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_radioId);
 
 private _connectorData = HASH_GET(_radioData, "acre_radioConnectionData");
-if(isNil "_connectorData") then {
+if (isNil "_connectorData") then {
     _connectorData = [];
     HASH_SET(_radioData, "acre_radioConnectionData", _connectorData);
 };
 {
     // diag_log text format["x: %1", _x];
-    _x params["_connector", "_component"];
+    _x params ["_connector", "_component"];
 
     private _attributes = HASH_CREATE;
     private _componentClass = configFile >> "CfgAcreComponents" >> _component;

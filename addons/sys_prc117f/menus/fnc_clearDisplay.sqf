@@ -10,22 +10,24 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_clearDisplay
  *
  * Public: No
  */
 #include "script_component.hpp"
+
+private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
 
 FUNC(_internalClearDisplay) = {
     params ["_row", "_columns"];
 
     for "_i" from 0 to _columns do {
         private _id = ((_row * 1000) +1) + _i;
-
-        ((uiNamespace getVariable [QGVAR(currentDisplay), nil]) displayCtrl (_id)) ctrlSetBackgroundColor [0.1, 0.1, 0.1, 0];
-        ((uiNamespace getVariable [QGVAR(currentDisplay), nil]) displayCtrl (_id)) ctrlSetTextColor [0.1, 0.1, 0.1, 1];
-        ((uiNamespace getVariable [QGVAR(currentDisplay), nil]) displayCtrl (_id)) ctrlSetText "";
-        ((uiNamespace getVariable [QGVAR(currentDisplay), nil]) displayCtrl (_id)) ctrlCommit 0;
+        private _ctrl = (_display displayCtrl _id);
+        _ctrl ctrlSetBackgroundColor [0.1, 0.1, 0.1, 0];
+        _ctrl ctrlSetTextColor [0.1, 0.1, 0.1, 1];
+        _ctrl ctrlSetText "";
+        _ctrl ctrlCommit 0;
     };
 };
 

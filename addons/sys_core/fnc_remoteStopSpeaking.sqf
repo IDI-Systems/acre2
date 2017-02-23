@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of other (remote) players stopping speaking.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: TeamSpeak ID of talking player <STRING>
+ * 1: Net ID of player object <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["0","0:2"] call acre_sys_core_fnc_remoteStopSpeaking
  *
  * Public: No
  */
@@ -39,7 +39,7 @@ _speakingId = parseNumber _speakingId;
                     if (_unit != acre_player && ACRE_SIGNAL_DEBUGGING > 0) then {
                         private _signalTrace = missionNamespace getVariable [_radioId + "_signal_trace", []];
                         private _signalStartTime = missionNamespace getVariable [_radioId + "_signal_startTime", diag_tickTime];
-                        INFO_5("ACRE TX from %1 (on radio %2, distance at end: %3 m), duration %4s: %5",name _unit,_radioId,_unit distance acre_player,diag_tickTime-_signalStartTime,_signal_trace);
+                        INFO_5("ACRE TX from %1 (on radio %2, distance at end: %3 m), duration %4s: %5",name _unit,_radioId,_unit distance acre_player,diag_tickTime-_signalStartTime,_signalTrace);
                     };
                     missionNamespace setVariable [_radioId + "_signal_trace", []];
                     private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + GVAR(nearRadios), false] call EFUNC(sys_modes,checkAvailability);
@@ -73,7 +73,6 @@ _speakingId = parseNumber _speakingId;
     };
     if (!_found) then {
         private _msg = format ["STOP SPEAKING: Player [%1] could not find a player with ID: %2 %3", acre_player, _speakingId, _netId];
-        // REMOTEDEBUGMSG(_msg);
         WARNING(_msg);
     };
     TRACE_1("REMOTE STOPPED SPEAKING",_speakingId);

@@ -15,11 +15,11 @@
  * Public: No
  */
 #include "script_component.hpp"
- 
+
 params ["_firstComponentId","_secondComponentId"];
- 
+
 private _firstComponentConnectors = [_firstComponentId] call EFUNC(sys_components,getAllConnectedComponents);
- 
+
 {
     _x params ["_connectorIdx","_connectorData"];
     _connectorData params ["_connectedComponent"];
@@ -28,7 +28,7 @@ private _firstComponentConnectors = [_firstComponentId] call EFUNC(sys_component
         [_firstComponentId, _connectorIdx] call FUNC(detachComponent);
     };
 } forEach (_firstComponentConnectors);
- 
+
 private _secondComponentConnectors = [_secondComponentId] call EFUNC(sys_components,getAllConnectedComponents);
 {
     _x params ["_connectorIdx","_connectorData"];

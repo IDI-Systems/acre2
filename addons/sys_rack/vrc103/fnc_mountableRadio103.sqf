@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-params["_rackId", "_event", "_eventData", "_radioData"];
+params ["_rackId", "_event", "_eventData", "_radioData"];
 
 if (([_rackId] call FUNC(getMountedRadio)) != "") exitWith {false}; // If a radio is already mounted we can't mount another.
 

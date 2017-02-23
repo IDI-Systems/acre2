@@ -3,9 +3,6 @@
 
 #define CALL_RPC(proc,params) [proc, params] call EFUNC(sys_rpc,callRemoteProcedure);
 
-#define NO_DEDICATED if (!hasInterface) exitWith {}
-#define NO_CLIENT if (!isServer) exitWith {}
-
 #define RGB_GREEN 0, 0.5, 0, 1
 #define RGB_BLUE 0, 0, 1, 1
 #define RGB_ORANGE 0.5, 0.5, 0, 1
@@ -77,15 +74,14 @@ Antenna Defines
     count = COUNT; \
 }
 
-#define REMOTEDEBUGMSG(msg) [QEGVAR(sys_server,remoteDebugMsg), msg] call CBA_fnc_globalEvent;
 #define LOAD_SOUND(className) [QUOTE(className)] call EFUNC(sys_sounds,loadSound);
 
 #define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
 #define DEFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
 
-#define GET_STATE(id)            ([GVAR(currentRadioId), "getState", id] call acre_sys_data_fnc_dataEvent)
-#define SET_STATE(id, val)        ([GVAR(currentRadioId), "setState", [id, val]] call acre_sys_data_fnc_dataEvent)
-#define SET_STATE_CRIT(id, val)    ([GVAR(currentRadioId), "setStateCritical", [id, val]] call acre_sys_data_fnc_dataEvent)
+#define GET_STATE(id)            ([GVAR(currentRadioId), "getState", id] call EFUNC(sys_data,dataEvent))
+#define SET_STATE(id, val)        ([GVAR(currentRadioId), "setState", [id, val]] call EFUNC(sys_data,dataEvent))
+#define SET_STATE_CRIT(id, val)    ([GVAR(currentRadioId), "setStateCritical", [id, val]] call EFUNC(sys_data,dataEvent))
 #define GET_STATE_DEF(id, default)    ([id, default] call FUNC(getDefaultState))
 
 #define SCRATCH_SET(radioId, key, val) ([radioId, key, val] call EFUNC(sys_data,setScratchData))
@@ -94,16 +90,16 @@ Antenna Defines
 
 #define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if (_ret == -1) then { WARNING_1("%1 has no TS3 ID",_this); }; _ret })
 
-#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) == "acre_hash"})
+#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) isEqualTo "acre_hash"})
 
-#define HASH_CREATE (call EFUNC(lib,fastHashCreate))
+#define HASH_CREATE (call EFUNC(sys_core,fastHashCreate))
 #define HASH_DELETE(hash) (FAST_HASH_TO_DELETE pushBack hash)
 #define HASH_HASKEY(hash, key) (!(isNil {hash getVariable key}))
 #define HASH_SET(hash, key, val) (hash setVariable [key, val])
 #define HASH_GET(hash, key) (hash getVariable key)
 #define HASH_REM(hash, key) (hash setVariable [key, nil])
-#define HASH_COPY(hash) (hash call EFUNC(lib,fastHashCopy))
-#define HASH_KEYS(hash) (hash call EFUNC(lib,fastHashKeys))
+#define HASH_COPY(hash) (hash call EFUNC(sys_core,fastHashCopy))
+#define HASH_KEYS(hash) (hash call EFUNC(sys_core,fastHashKeys))
 
 #define HASHLIST_CREATELIST(keys) []
 #define HASHLIST_CREATEHASH(hashList) HASH_CREATE
@@ -111,14 +107,14 @@ Antenna Defines
 #define HASHLIST_SET(hashList, index, value) (hashList set[index, value])
 #define HASHLIST_PUSH(hashList, value) (hashList pushBack value)
 
-#define BASECLASS(radioId) (configName (inheritsFrom (configFile >> "CfgWeapons" >> radioId)))
+#define BASECLASS(radioId) ([radioId] call EFUNC(sys_radio,getRadioBaseClassname))
 
 #define DGVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QGVAR(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QGVAR(varName); }; GVAR(varName)
 #define DVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QUOTE(varName); }; varName
 
 // Dynamic sub-modules for systems
-#define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QUOTE(PATHTOF(folder\__PREP__.sqf))
-#define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QUOTE(PATHTOF(module\DOUBLES(fnc,fncName).sqf))
+#define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QPATHTOF(folder\__PREP__.sqf)
+#define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(module\DOUBLES(fnc,fncName).sqf)
 #define PREP_STATE(stateFile) [] call compile preprocessFileLineNumbers format [QPATHTOF(states\%1.sqf), #stateFile]
 
 // Deprecation

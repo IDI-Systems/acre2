@@ -1,5 +1,6 @@
 #include "script_component.hpp"
-NO_DEDICATED;
+
+if (!hasInterface) exitWith {};
 
 private _components = configFile >> "CfgAcreComponents";
 
@@ -16,5 +17,3 @@ for "_i" from 0 to (count _components)-1 do {
         };
     };
 };
-
-// this function does setVariables on units to assign their current attenuation volumes

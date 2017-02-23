@@ -11,10 +11,13 @@ PREP(onReturnRadioId);
 PREP(getRadioVolume);
 PREP(setRadioVolume);
 
+PREP(isUniqueRadio);
+PREP(isBaseClassRadio);
 
 PREP(setRadioSpatial);
 PREP(getRadioSpatial);
 
+PREP(getRadioBaseClassname);
 PREP(getRadioPos);
 PREP(getRadioObject);
 PREP(getRadioSubObject);

@@ -15,27 +15,23 @@
  * Public: No
  */
 #include "script_component.hpp"
- 
-params["_rackId","_unit"];
- 
+
+params ["_rackId", "_unit"];
+
 private _mountedRadio = GET_STATE_RACK(_rackId,"mountedRadio");
- 
+
 if (_mountedRadio == "") exitWith {
     WARNING_1("Attempting to unmount empty rack '%1'",_rackId);
 };
 
 if (_unit canAdd _mountedRadio) then {
-    [_unit, _mountedRadio] call EFUNC(lib,addGear); 
-    
+    [_unit, _mountedRadio] call EFUNC(core,addGear);
+
     SET_STATE_RACK(_rackId,"mountedRadio","");
     [_rackId,_mountedRadio] call EFUNC(sys_components,detachAllConnectorsFromComponent);
-    
+
     //Trigger event
     [_rackId, "unmountRadio", _mountedRadio] call EFUNC(sys_data,dataEvent);
 } else {
     systemChat "Unable to unmount radio as you have no inventory space";
 };
-
-
-
- 

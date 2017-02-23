@@ -15,17 +15,17 @@ class CfgAcreComponents {
                             };
         class Interfaces {
             class CfgAcreDataInterface {
-                getState                    = "acre_sys_rack_fnc_getState";
-                setState                    = "acre_sys_rack_fnc_setState";
-                handleComponentMessage      = "acre_sys_data_fnc_noApiSystemFunction";
+                getState                    = QFUNC(getState);
+                setState                    = QFUNC(setState);
+                handleComponentMessage      = QEFUNC(sys_data,noApiSystemFunction);
 
-                initializeComponent         = "acre_sys_rack_fnc_initializeRack";
+                initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
-                detachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
-                mountRadio                  = "acre_sys_rack_fnc_mountRadio110";
-                unmountRadio                = "acre_sys_rack_fnc_unmountRadio110";
-                mountableRadio              = "acre_sys_rack_fnc_mountableRadio110";
+                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                mountRadio                  = QFUNC(mountRadio110);
+                unmountRadio                = QFUNC(unmountRadio110);
+                mountableRadio              = QFUNC(mountableRadio110);
             };
         };
         class InterfaceClasses {
@@ -52,19 +52,19 @@ class CfgAcreComponents {
                             };
         class Interfaces {
             class CfgAcreDataInterface {
-                getState                    = "acre_sys_rack_fnc_getState";
-                setState                    = "acre_sys_rack_fnc_setState";
-                handleComponentMessage      = "acre_sys_data_fnc_noApiSystemFunction";
+                getState                    = QFUNC(getState);
+                setState                    = QFUNC(setState);
+                handleComponentMessage      = QEFUNC(sys_data,noApiSystemFunction);
 
-                initializeComponent         = "acre_sys_rack_fnc_initializeRack";
+                initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
-                detachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
-                mountRadio                  = "acre_sys_rack_fnc_mountRadio103";
-                unmountRadio                = "acre_sys_rack_fnc_unmountRadio103";
-                mountableRadio              = "acre_sys_rack_fnc_mountableRadio103";
+                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                mountRadio                  = QFUNC(mountRadio103);
+                unmountRadio                = QFUNC(unmountRadio103);
+                mountableRadio              = QFUNC(mountableRadio103);
             };
-        };        
+        };
         class InterfaceClasses {
             CfgAcreDataInterface = "DefaultRackInterface";
             CfgAcreInteractInterface = "DefaultRadioInterface";
@@ -87,19 +87,19 @@ class CfgAcreComponents {
                             };
         class Interfaces {
             class CfgAcreDataInterface {
-                getState                    = "acre_sys_rack_fnc_getState";
-                setState                    = "acre_sys_rack_fnc_setState";
-                handleComponentMessage      = "acre_sys_data_fnc_noApiSystemFunction";
+                getState                    = QFUNC(getState);
+                setState                    = QFUNC(setState);
+                handleComponentMessage      = QEFUNC(sys_data,noApiSystemFunction);
 
-                initializeComponent         = "acre_sys_rack_fnc_initializeRack";
+                initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
-                detachComponent             = "acre_sys_data_fnc_noApiSystemFunction";
-                mountRadio                  = "acre_sys_rack_fnc_mountRadio111";
-                unmountRadio                = "acre_sys_rack_fnc_unmountRadio111";
-                mountableRadio              = "acre_sys_rack_fnc_mountableRadio111";
+                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                mountRadio                  = QFUNC(mountRadio111);
+                unmountRadio                = QFUNC(unmountRadio111);
+                mountableRadio              = QFUNC(mountableRadio111);
             };
-        };        
+        };
         class InterfaceClasses {
             CfgAcreDataInterface = "DefaultRackInterface";
             CfgAcreInteractInterface = "DefaultRadioInterface";

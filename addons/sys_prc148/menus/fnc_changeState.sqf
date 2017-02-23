@@ -35,7 +35,7 @@ private _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
 [_radioId, "setState", ["selectedEntry", _selectedEntry]] call EFUNC(sys_data,dataEvent);
 
 
-if (_radioId == acre_sys_radio_currentRadioDialog) then {
+if (_radioId == EGVAR(sys_radio,currentRadioDialog)) then {
     private _display = uiNamespace getVariable QGVAR(currentDisplay);
     [_display] call FUNC(render);
 };

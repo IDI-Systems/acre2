@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-params["_vehicle","_unit"];
+params ["_vehicle", "_unit"];
 
 private _racks = [];
 {

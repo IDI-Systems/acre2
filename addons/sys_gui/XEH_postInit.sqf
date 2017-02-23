@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-NO_DEDICATED;
+if (!hasInterface) exitWith {};
 
 [] call FUNC(enableZeusOverlay);
 
@@ -25,4 +25,4 @@ acre_player addEventHandler ["take", {
 
 
 // Register volume control key handlers
-["ACRE2", "VolumeControl", "Volume Control", FUNC(onVolumeControlKeyPress), FUNC(onVolumeControlKeyPressUp), [15, [false, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "VolumeControl", (localize LSTRING(VolumeControl)), FUNC(onVolumeControlKeyPress), FUNC(onVolumeControlKeyPressUp), [15, [false, false, false]]] call cba_fnc_addKeybind;

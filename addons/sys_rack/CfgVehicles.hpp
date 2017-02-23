@@ -4,17 +4,17 @@ class CfgVehicles {
     class ACRE_VRC110 : ACRE_BaseRack {
         displayName = "AN/VRC-110 Rack";
     };
-    RADIO_ID_LIST(ACRE_VRC110);
+    RADIO_ID_LIST(ACRE_VRC110)
 
     class ACRE_VRC103 : ACRE_BaseRack {
         displayName = "AN/VRC-103 Rack";
     };
-    RADIO_ID_LIST(ACRE_VRC103);
+    RADIO_ID_LIST(ACRE_VRC103)
 
     class ACRE_VRC111 : ACRE_BaseRack {
         displayName = "AN/VRC-111 Rack";
     };
-    RADIO_ID_LIST(ACRE_VRC111);
+    RADIO_ID_LIST(ACRE_VRC111)
 
     // Define which vehicles have racks.
     class All {
@@ -34,7 +34,7 @@ class CfgVehicles {
             class Rack_2 {
                 name = "Dashboard Lower"; // If you have multiple racks a text label helps identify the particular rack..
                 componentname = "ACRE_VRC103";
-                allowed[] = {"driver"}; 
+                allowed[] = {"driver"};
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
@@ -91,6 +91,6 @@ class CfgVehicles {
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
             };
-        };        
+        };
     };
 };

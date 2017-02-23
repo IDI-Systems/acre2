@@ -3,10 +3,10 @@
  * Calculates the attenuation between the local player unit and the inputted unit.
  *
  * Arguments:
- * 0: ARGUMENT ONE <Object>
+ * 0: The speaking unit <Object>
  *
  * Return Value:
- * Attenuation  <NUMBER>
+ * Attenuation <NUMBER>
  *
  * Example:
  * [unit] call acre_sys_attenuate_fnc_getUnitAttenuate
@@ -31,8 +31,8 @@ if (_vehListener == _vehSpeaker) then {
     private _speakerTurnedOut = isTurnedOut _speaker;
     if (!(_listenerTurnedOut && _speakerTurnedOut)) then {
 
-        private _listenerCompartment = [_listener] call EFUNC(lib,getCompartment);
-        private _speakerCompartment = [_speaker] call EFUNC(lib,getCompartment);
+        private _listenerCompartment = [_listener] call EFUNC(sys_core,getCompartment);
+        private _speakerCompartment = [_speaker] call EFUNC(sys_core,getCompartment);
         if (_speakerCompartment != _listenerCompartment) then {
             // acre_player sideChat format["1 lc: %1 sc: %2 %3", _listenerCompartment, _speakerCompartment, (getNumber (configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment))];
             _attenuate = ((getNumber (configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment)));

@@ -15,7 +15,7 @@ class CfgAcreComponents
         isPackRadio = 1;
         isDeployable = 0;
 
-        connectors[] =  {
+        connectors[] = {
                             {"Antenna", ACRE_CONNECTOR_TNC},
                             {"Audio/Data", ACRE_CONNECTOR_U_283},
                             {"Rear Accessory", ACRE_CONNECTOR_CONN_26PIN}
@@ -34,54 +34,54 @@ class CfgAcreComponents
 
         class Interfaces: Interfaces {
             class CfgAcreDataInterface {
-                getListInfo                    =    QUOTE(DFUNC(getListInfo));
+                getListInfo                 = QFUNC(getListInfo);
 
-                setVolume                    =    QUOTE(DFUNC(setVolume));                // [0-1]
-                getVolume                    =     QUOTE(DFUNC(getVolume));                // [] = 0-1
+                setVolume                   = QFUNC(setVolume);                // [0-1]
+                getVolume                   = QFUNC(getVolume);                // [] = 0-1
 
-                setSpatial                    =    QUOTE(DFUNC(setSpatial));
-                getSpatial                    =    QUOTE(DFUNC(getSpatial));
+                setSpatial                  = QFUNC(setSpatial);
+                getSpatial                  = QFUNC(getSpatial);
 
-                setChannelData                 =    QUOTE(DFUNC(setChannelData));            // [channelNumber, [channelData] ]
-                getChannelData                =    QUOTE(DFUNC(getChannelData));            // [channelNumber] = channelData
-                getCurrentChannelData        =    QUOTE(DFUNC(getCurrentChannelData));        // channelData (of current channel)
+                setChannelData              = QFUNC(setChannelData);            // [channelNumber, [channelData] ]
+                getChannelData              = QFUNC(getChannelData);            // [channelNumber] = channelData
+                getCurrentChannelData       = QFUNC(getCurrentChannelData);        // channelData (of current channel)
 
 
-                getCurrentChannel            =    QUOTE(DFUNC(getCurrentChannel));        // [] = channelNumber
-                setCurrentChannel            =    QUOTE(DFUNC(setCurrentChannel));        // [channelNumber]
+                getCurrentChannel           = QFUNC(getCurrentChannel);        // [] = channelNumber
+                setCurrentChannel           = QFUNC(setCurrentChannel);        // [channelNumber]
 
-                getStates                    =    QUOTE(DFUNC(getStates));                // [] = [ [stateName, stateData], [stateName, stateData] ]
-                getState                    =    QUOTE(DFUNC(getState));                // [stateName] = stateData
-                setState                    =     QUOTE(DFUNC(setState));                // [stateName, stateData] = sets state
+                getStates                   = QFUNC(getStates);                // [] = [ [stateName, stateData], [stateName, stateData] ]
+                getState                    = QFUNC(getState);                // [stateName] = stateData
+                setState                    = QFUNC(setState);                // [stateName, stateData] = sets state
 
-                getOnOffState                =     QUOTE(DFUNC(getOnOffState));            // [] = 0/1
-                setOnOffState                =     QUOTE(DFUNC(setOnOffState));            // [ZeroOrOne]
+                getOnOffState               = QFUNC(getOnOffState);            // [] = 0/1
+                setOnOffState               = QFUNC(setOnOffState);            // [ZeroOrOne]
 
-                initializeComponent            =     QUOTE(DFUNC(initializeRadio));
+                initializeComponent         = QFUNC(initializeRadio);
 
-                getChannelDescription        =     QUOTE(DFUNC(getChannelDescription));
+                getChannelDescription       = QFUNC(getChannelDescription);
 
-                isExternalAudio                =    QUOTE(DFUNC(isExternalAudio));
+                isExternalAudio             = QFUNC(isExternalAudio);
             };
 
             class CfgAcrePhysicalInterface {
-                getExternalAudioPosition    =     QUOTE(DFUNC(getExternalAudioPosition));
+                getExternalAudioPosition    = QFUNC(getExternalAudioPosition);
             };
 
             class CfgAcreTransmissionInterface {
-                handleBeginTransmission        =     QUOTE(DFUNC(handleBeginTransmission));
-                handleEndTransmission        =    QUOTE(DFUNC(handleEndTransmission));
+                handleBeginTransmission     = QFUNC(handleBeginTransmission);
+                handleEndTransmission       = QFUNC(handleEndTransmission);
 
-                handleSignalData            =    QUOTE(DFUNC(handleSignalData));
-                handleMultipleTransmissions =    QUOTE(DFUNC(handleMultipleTransmissions));
+                handleSignalData            = QFUNC(handleSignalData);
+                handleMultipleTransmissions = QFUNC(handleMultipleTransmissions);
 
-                handlePTTDown                =    QUOTE(DFUNC(handlePTTDown));
-                handlePTTUp                    =     QUOTE(DFUNC(handlePTTUp));
+                handlePTTDown               = QFUNC(handlePTTDown);
+                handlePTTUp                 = QFUNC(handlePTTUp);
             };
 
             class CfgAcreInteractInterface {
-                openGui                        =     QUOTE(DFUNC(openGui));                // [RadioId]
-                closeGui                    =    QUOTE(DFUNC(closeGui));                // []
+                openGui                     = QFUNC(openGui);                // [RadioId]
+                closeGui                    = QFUNC(closeGui);                // []
             };
         };
     };

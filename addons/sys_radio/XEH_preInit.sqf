@@ -6,32 +6,39 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
-NO_DEDICATED;
+// Define caches to save repetitive config lookups.
+GVAR(radioUniqueCache) = HASH_CREATE;
+GVAR(radioBaseClassCache) = HASH_CREATE;
+GVAR(radioIsBaseClassCache) = HASH_CREATE;
 
-//DGVAR(workingRadioList) = [];
-DGVAR(currentRadioList) = [];
+ADDON = true;
 
-// Addition for compat: Compat features / remote features can add a radio here.
-// TODO: not managed by monitorRadios yet
-DGVAR(auxRadioList) = [];
-DGVAR(pendingClaim) = 0;
-DGVAR(replacementRadioIdList) = [];
+if (hasInterface) then {
+    //DGVAR(workingRadioList) = [];
+    DGVAR(currentRadioList) = [];
 
-// handler callbacks
-//DGVAR(radioListHandlers) = [];
-//DGVAR(lostRadioHandlers) = [];
-//DGVAR(gotRadioHandlers) = [];
+    // Addition for compat: Compat features / remote features can add a radio here.
+    // TODO: not managed by monitorRadios yet
+    DGVAR(auxRadioList) = [];
+    DGVAR(pendingClaim) = 0;
+    DGVAR(replacementRadioIdList) = [];
 
-DGVAR(currentRadioDialog) = "";
+    // handler callbacks
+    //DGVAR(radioListHandlers) = [];
+    //DGVAR(lostRadioHandlers) = [];
+    //DGVAR(gotRadioHandlers) = [];
 
-DVAR(ACRE_ACTIVE_RADIO) = "";
-DVAR(ACRE_SPECTATOR_RADIOS) = [];
+    DGVAR(currentRadioDialog) = "";
 
-// this isn't used anymore i do not think?
-// acre_player setVariable [QGVAR(currentRadioList), []];
+    DVAR(ACRE_ACTIVE_RADIO) = "";
+    DVAR(ACRE_SPECTATOR_RADIOS) = [];
 
-if (isNil QGVAR(defaultItemRadioType)) then {
-    GVAR(defaultItemRadioType) = "ACRE_PRC343";
+    // this isn't used anymore i do not think?
+    // acre_player setVariable [QGVAR(currentRadioList), []];
+
+    if (isNil QGVAR(defaultItemRadioType)) then {
+        GVAR(defaultItemRadioType) = "ACRE_PRC343";
+    };
 };
 
 ADDON = true;

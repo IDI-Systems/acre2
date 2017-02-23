@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the channel switching keybind.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Channel change amount (expected -1 or 1) <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [1] call acre_sys_core_fnc_switchChannelFast
  *
  * Public: No
  */
@@ -21,13 +20,12 @@ params ["_dir"];
 private _return = false;
 private _radioId = ACRE_ACTIVE_RADIO;
 
-private _baseConfig = inheritsFrom  (configFile >> "CfgWeapons" >> _radioId);
-private _radioType = configName (_baseConfig);
+private _radioType = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 private _typeName = getText (configFile >> "CfgAcreComponents" >> _radioType >> "name");
 private _isManpack = getNumber (configFile >> "CfgAcreComponents" >> _radioType >> "isPackRadio");
 
 if (_isManpack == 0) then {
-    private _channel = [_radioId] call acre_api_fnc_getRadioChannel;
+    private _channel = [_radioId] call EFUNC(api,getRadioChannel);
 
     switch (_radioType) do {
         case ("ACRE_PRC343"): {
@@ -42,7 +40,7 @@ if (_isManpack == 0) then {
         };
     };
 
-    _return = [_radioId,_channel] call acre_api_fnc_setRadioChannel;
+    _return = [_radioId,_channel] call EFUNC(api,setRadioChannel);
 
     private _listInfo = [_radioId, "getListInfo"] call EFUNC(sys_data,dataEvent);
     [_typeName, _listInfo, "", 1] call EFUNC(sys_list,displayHint);

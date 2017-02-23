@@ -16,13 +16,13 @@
  */
 #include "script_component.hpp"
 
-params["_rackObject", "_class", "_returnIdNumber"];
+params ["_rackObject", "_class", "_returnIdNumber"];
 
 private _dataHash = HASH_CREATE;
 
-HASH_SET(acre_sys_data_radioData,_class,_dataHash);
+HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
 _idRelation = [_rackObject, _rackObject];
-HASH_SET(acre_sys_server_objectIdRelationTable, _class, _idRelation);
+HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
 
 private _vehicle = _rackObject;
 if (!isNull (attachedTo _rackObject)) then { _vehicle = attachedTo _rackObject; };
@@ -43,7 +43,7 @@ if ((count _crewPlayers > 0)) then {
 if (_condition) then {
     private _baseRadio = BASECLASS(_class);
     private _rackId = typeOf _rackObject;
-    if(_baseRadio == GET_STATE_RACK(_rackId,"mountedRadio")) then {
+    if (_baseRadio == GET_STATE_RACK(_rackId,"mountedRadio")) then {
         // Add a new radio based on the id we just got
         TRACE_2("Adding radio", _class, _baseRadio);
 
