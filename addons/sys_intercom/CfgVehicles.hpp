@@ -20,16 +20,16 @@ class CfgVehicles {
     class LandVehicle;
     class Ship;
     class Car: LandVehicle {
-        acre_hasIntercom = false;
+        acre_hasIntercom = 0;
     };
     class Car_F: Car {};
     class Wheeled_APC_F: Car_F {
-        acre_hasIntercom = true;
+        acre_hasIntercom = 1;
     };
 
     class Tank: LandVehicle {
-        acre_hasIntercom = true;
-        acre_hasInfantryPhone = true;
+        acre_hasIntercom = 1;
+        acre_hasInfantryPhone = 1;
     };
     class Tank_F;
     class MBT_01_base_F: Tank_F {
@@ -65,23 +65,23 @@ class CfgVehicles {
     };
 
     class Helicopter: Air {
-        acre_hasIntercom = true;
+        acre_hasIntercom = 1;
     };
 
     class Plane: Air {
-        acre_hasIntercom = true;
+        acre_hasIntercom = 1;
     };
 
     class MRAP_02_base_F: Car_F {
-        acre_hasIntercom = true;
+        acre_hasIntercom = 1;
     };
 
     class Ship_F: Ship {
-        acre_hasIntercom = false;
+        acre_hasIntercom = 0;
     };
 
     class Boat_F: Ship_F {};
     class SDV_01_base_F: Boat_F {
-        acre_hasIntercom = true;
+        acre_hasIntercom = 1;
     };
 };
