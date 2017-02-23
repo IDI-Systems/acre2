@@ -30,8 +30,13 @@ if (_vehicle == _unit) then {
 };
 
 if (_unit in ACRE_PLAYER_VEHICLE_CREW) then {
-    private _hasCVC = getNumber (configFile >> "CfgVehicles" >> typeOf (_vehicle) >> "ACRE" >> "CVC" >> "hasCVC");
-    if (_hasCVC == 1) then {
+    private _configIntercom = configFile >> "CfgVehicles" >> typeOf _vehicle;
+    private _hasIntercom = getNumber (_configIntercom >> "acre_hasIntercom");
+    // Backwards compatibility @todo remove in 2.7.0
+    if (isNumber (_configIntercom >> "ACRE" >> "CVC" >> "hasCVC")) then {
+        _hasIntercom = getNumber (_configIntercom >> "ACRE" >> "CVC" >> "hasCVC");
+    };
+    if (_hasIntercom == 1) then {
         _ret = true;
     };
 };

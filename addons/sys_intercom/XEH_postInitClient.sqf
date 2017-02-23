@@ -7,10 +7,10 @@
 #ifdef DRAW_PHONE_INFO
 addMissionEventHandler ["Draw3D", {
     private _target = cursorObject;
-    private _config = configFile >> "CfgVehicles" >> typeOf _target >> "ACRE" >> "CVC";
-    if (getNumber (_config >> "hasInfantryPhone") != 1) exitWith {};
+    private _config = configFile >> "CfgVehicles" >> typeOf _target;
+    if (getNumber (_config >> "acre_hasInfantryPhone") != 1) exitWith {};
 
-    private _positionConfig = _config >> "infantryPhonePosition";
+    private _positionConfig = _config >> "acre_infantryPhonePosition";
     private _position = [0, 0, 0]; // Default to main action point
     if (isText _positionConfig) then { _position = _target worldToModelVisual (_target selectionPosition (getText _positionConfig)) };
     if (isArray _positionConfig) then { _position = getArray _positionConfig };

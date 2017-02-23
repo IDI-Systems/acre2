@@ -23,7 +23,7 @@ params ["_target"];
 private _type = typeOf _target;
 
 // Exit if object has no infantry phone
-if (getNumber (configFile >> "CfgVehicles" >> _type >> "ACRE" >> "CVC" >> "hasInfantryPhone") != 1) exitWith {};
+if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasInfantryPhone") != 1) exitWith {};
 
 // Exit if class already initialized
 if (_type in GVAR(initializedInfantryPhone)) exitWith {};
@@ -33,7 +33,7 @@ GVAR(initializedInfantryPhone) pushBack _type;
 // Add action
 TRACE_1("Adding Infantry Phone Action",_type);
 
-private _positionConfig = configFile >> "CfgVehicles" >> _type >> "ACRE" >> "CVC" >> "infantryPhonePosition";
+private _positionConfig = configFile >> "CfgVehicles" >> _type >> "acre_infantryPhonePosition";
 private _position = [0, 0, 0]; // Default to main action point
 if (isText _positionConfig) then {
     _position = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core vehicleCrewPFH checks
