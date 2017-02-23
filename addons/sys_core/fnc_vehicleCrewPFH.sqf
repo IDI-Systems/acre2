@@ -22,7 +22,7 @@ private _usingInfantryPhone = false;
 
 // The player is not inside a vehicle. Check if it is using the intercom network externally (infantry phone)
 if (_vehicle == acre_player) then {
-    private _vehicleInfantryPhone = acre_player getVariable [QGVAR(vehicleInfantryPhone), objNull];
+    private _vehicleInfantryPhone = acre_player getVariable [QEGVAR(sys_intercom,vehicleInfantryPhone), objNull];
     if (!isNull _vehicleInfantryPhone) then {
         _vehicle = _vehicleInfantryPhone;
         _usingInfantryPhone = true;
@@ -36,7 +36,7 @@ if (_vehicle != acre_player) then {
         _unitInfantryPhone = acre_player;
     } else {
         // The player is inside the vehicle. Check if a unit is using the intercom externally (infantry phone)
-        _unitInfantryPhone = _vehicle getVariable [QGVAR(unitInfantryPhone), objNull];
+        _unitInfantryPhone = _vehicle getVariable [QEGVAR(sys_intercom,unitInfantryPhone), objNull];
         if (!isNull _unitInfantryPhone) then {
             _usingInfantryPhone = true;
         };
@@ -44,7 +44,7 @@ if (_vehicle != acre_player) then {
 
     // The infantry phone can only be used externally
     if (_usingInfantryPhone) then {
-        (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
+        (_vehicle getVariable [QEGVAR(sys_intercom,infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
         _infantryPhonePosition = ASLToATL (AGLToASL (_vehicle modelToWorld _infantryPhonePosition));
         TRACE_4("Infantry Phone PFH Check",_infantryPhonePosition,getPosATL _unitInfantryPhone,_infantryPhoneMaxDistance,_unitInfantryPhone distance _infantryPhonePosition);
         // Add an extra meter due to 3d position check height differences and movement leeway

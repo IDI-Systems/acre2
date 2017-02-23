@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_intercom">
+        <Key ID="STR_ACRE_sys_intercom_infantryPhone">
+            <English>Infantry Phone</English>
+            <Spanish>Teléfono de infanteria</Spanish>
+            <German>Außenbord Sprechanlage</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_giveInfantryPhone">
+            <English>Pass Infantry Phone</English>
+            <Spanish>Dar teléfono de infanteria</Spanish>
+            <German>Außenbord Sprechanlage geben</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_takeInfantryPhone">
+            <English>Take Infantry Phone</English>
+            <Spanish>Coger teléfono de infanteria</Spanish>
+            <German>Außenbord Sprechanlage abnehmen</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_returnInfantryPhone">
+            <English>Return Infantry Phone</English>
+            <Spanish>Colgar teléfono de infanteria</Spanish>
+            <German>Außenbord Sprechanlage aufhängen</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
+            <English>Start calling</English>
+            <Spanish>Llamar al exterior</Spanish>
+            <German>Außenbord Sprechanlage (läutend)</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhone_stopCalling">
+            <English>Stop calling</English>
+            <Spanish>Dejar de llamar</Spanish>
+            <German>Außenbord Sprechanlage (läutend)</German>
+        </Key>
+    </Package>
+</Project>

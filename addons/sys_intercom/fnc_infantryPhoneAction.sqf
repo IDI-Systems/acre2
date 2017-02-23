@@ -61,8 +61,30 @@ private _infantryPhoneAction = [
 // Put inside main actions if no other position was found above
 if (_position isEqualTo [0, 0, 0]) then {
     [_type, 0, ["ACE_MainActions"], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
-    _target setVariable [QEGVAR(sys_core,infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_DEFAULT]];
+    _target setVariable [QGVAR(infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_DEFAULT]];
 } else {
     [_type, 0, [], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
-    _target setVariable [QEGVAR(sys_core,infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_HULL]];
+    _target setVariable [QGVAR(infantryPhoneInfo), [_position, INFANTRYPHONE_MAXDISTANCE_HULL]];
 };
+
+// Passenger actions
+_infantryPhoneAction = [
+    "ACRE_InfantryPhone",
+    localize LSTRING(infantryPhone),"\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa",
+    {true},
+    {
+        // Only show for actual crew members. Not someone in cargo...
+        private _crew = [driver _target, gunner _target, commander _target];
+        {
+            _crew pushBackUnique (_target turretUnit _x);
+        } forEach (allTurrets [_target, false]);
+        _crew = _crew - [objNull];
+
+        if (_player in _crew) exitWith {true};
+
+        false;
+    },
+    {_this call FUNC(infantryPhoneChildrenActions)}
+] call ace_interact_menu_fnc_createAction;
+
+[_type, 0, ["ACE_MainActions"], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;

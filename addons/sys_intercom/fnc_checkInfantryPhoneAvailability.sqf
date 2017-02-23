@@ -9,7 +9,7 @@
  * ACE interaction is available <BOOL>
  *
  * Example:
- * [] call acre_ace_interact_fnc_checkIntercomInfantry
+ * [] call acre_ace_interact_fnc_checkInfantryPhoneAvailability
  *
  * Public: No
  */
@@ -17,4 +17,4 @@
 
 params ["_player"];
 
-!isNil {_player getVariable [QEGVAR(sys_core,vehicleInfantryPhone), nil]}
+!isNulll {_player getVariable [QGVAR(vehicleInfantryPhone), objNull]}
