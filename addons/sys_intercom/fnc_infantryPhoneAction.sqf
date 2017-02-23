@@ -68,23 +68,10 @@ if (_position isEqualTo [0, 0, 0]) then {
 };
 
 // Passenger actions
-_infantryPhoneAction = [
-    "ACRE_InfantryPhone",
-    localize LSTRING(infantryPhone),"\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa",
-    {true},
-    {
-        // Only show for actual crew members. Not someone in cargo...
-        private _crew = [driver _target, gunner _target, commander _target];
-        {
-            _crew pushBackUnique (_target turretUnit _x);
-        } forEach (allTurrets [_target, false]);
-        _crew = _crew - [objNull];
+private _icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
+_condition = {
 
-        if (_player in _crew) exitWith {true};
+};
+_infantryPhoneAction = ["ACRE_InfantryPhone", localize LSTRING(infantryPhone), _icon, {true}, {[_target, acre_player] call FUNC(isInfantryPhoneSpeakerAvailable)}, {_this call FUNC(infantryPhoneChildrenActions)}, [], {[0,0,0]},2,[false, true, false, false, false]] call ace_interact_menu_fnc_createAction;
 
-        false;
-    },
-    {_this call FUNC(infantryPhoneChildrenActions)}
-] call ace_interact_menu_fnc_createAction;
-
-[_type, 0, ["ACE_MainActions"], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;
+[_type, 1, ["ACE_SelfActions"], _infantryPhoneAction] call ace_interact_menu_fnc_addActionToClass;

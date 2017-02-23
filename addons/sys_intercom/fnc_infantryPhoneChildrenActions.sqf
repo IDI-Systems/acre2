@@ -25,7 +25,7 @@ if (_target isKindOf "CAManBase") then {
     // Pointing at an infantry unit. Check if the infantry telelphone can be given
     if (!isNull _vehicleInfantryPhone) then {
         // Generate the action to give the intercom
-        private _action = ["acre_give_infantryTelephone", localize LSTRING(giveInfantryPhone), "", {[_player getVariable [QGVAR(vehicleInfantryPhone), nil], _target, 2, _player] call EFUNC(sys_core,updateInfantryPhoneStatus)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+        private _action = ["acre_give_infantryTelephone", localize LSTRING(giveInfantryPhone), "", {[_player getVariable [QGVAR(vehicleInfantryPhone), nil], _target, 2, _player] call FUNC(updateInfantryPhoneStatus)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
 } else {
@@ -35,25 +35,28 @@ if (_target isKindOf "CAManBase") then {
             private _unitInfantryPhone = _target getVariable [QGVAR(unitInfantryPhone), acre_player];
             if (acre_player == _unitInfantryPhone) then {
                 // Generate the action to take the infantry telelphone
-                private _action = ["acre_take_infantryTelephone", localize LSTRING(takeInfantryPhone), "", {[_target, _player, 1] call EFUNC(sys_core,updateInfantryPhoneStatus)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+                private _action = ["acre_take_infantryTelephone", localize LSTRING(takeInfantryPhone), "", {[_target, _player, 1] call FUNC(updateInfantryPhoneStatus)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
             };
         } else {
             if (_vehicleInfantryPhone == _target) then {
                 // Generate the action to return the infantry telephone
-                private _action = ["acre_return_infantryTelephone", localize LSTRING(returnInfantryPhone), "", {[_target, _player, 0] call EFUNC(sys_core,updateInfantryPhoneStatus)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+                private _action = ["acre_return_infantryTelephone", localize LSTRING(returnInfantryPhone), "", {[_target, _player, 0] call FUNC(updateInfantryPhoneStatus)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
             };
         };
     } else {
         // Player is inside the vehicle.
-        private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), false];
+        private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), false];
         if (_isCalling) then {
             private _action = ["acre_infantryTelephone_stopCalling", localize LSTRING(infantryPhone_stopCalling), "", {_target setVariable [QGVAR(isInfantryPhoneCalling), false, true];}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
         } else {
-            private _action = ["acre_infantryTelephone_startCalling", localize LSTRING(infantryPhone_startCalling), "", {[_target] call FUNC(infantryPhoneSoundCall)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            if (isNull _vehicleInfantryPhone) then {
+                private _action = ["acre_infantryTelephone_startCalling", localize LSTRING(infantryPhone_startCalling), "", {[_target] call FUNC(infantryPhoneSoundCall)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+                _actions pushBack [_action, [], _target];
+            };
         };
-        _actions pushBack [_action, [], _target];
     };
 };
 

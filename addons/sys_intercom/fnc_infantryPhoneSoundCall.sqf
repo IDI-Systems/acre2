@@ -19,7 +19,7 @@ params ["_vehicle"];
 
 (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", ""];
 private _position = AGLToASL (_vehicle modelToWorld _infantryPhonePosition);  // ACRE_LISTENER_POS is in ASL coordinates.
-
+//_position = getPosASL _vehicle;
 private _direction = getPosASL _vehicle;
 private _attenuate = [_vehicle] call EFUNC(sys_attenuate,getUnitAttenuate);
 _attenuate = (1 - _attenuate)^3;               // Same attenuation as in EFUNC(sys_radio,playRadioSound)
@@ -30,8 +30,6 @@ private _volumeModifier = _volumeModifier^3;   // Same volume modifier as in EFU
 
 // The infantry phone of the vehicle is ringing
 _vehicle setVariable [QGVAR(isInfantryPhoneCalling), true, true];
-
-systemchat format ["pos %1, dir %2, att %3, vol %4", _position, _direction, _attenuate, _volumeModifier];
 
 _ringing = {
     params ["_args", "_pfhID"];
