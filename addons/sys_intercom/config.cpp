@@ -8,7 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_main", "acre_sys_core", "acre_sys_attenuate", "acre_sys_sounds"};
         author = ECSTRING(main,Author);
-        authors[] = {"TheMangetar", "Jonpas"};
+        authors[] = {"TheMagnetar", "Jonpas"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
