@@ -31,5 +31,11 @@
             <Spanish>Dejar de llamar</Spanish>
             <German>Außenbord Sprechanlage (läutend)</German>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhoneDisconnected">
+            <English>Infantry Phone Disconnected</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
+            <English>Infantry Phone Received</English>
+        </Key>
     </Package>
 </Project>

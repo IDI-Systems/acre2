@@ -25,6 +25,4 @@ private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
 } forEach (allTurrets [_vehicle, false]);
 _crew = _crew - [objNull];
 
-if (_unit in _crew) exitWith {true};
-
-false
+(_unit in _crew)
