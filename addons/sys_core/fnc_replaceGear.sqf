@@ -55,6 +55,5 @@ if (_unit canAdd _itemReplaceWith) then {
     if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_itemReplaceWith, 1];};
     if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_itemReplaceWith, 1];};
     if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_itemReplaceWith, 1];};
-    INFO("Unable to add '%1' to inventory.",_itemReplaceWith);
-    hintSilent format ["ACRE2: Unable to add '%1' to your inventory.", _itemReplaceWith];
+    WARNING_1("Unable to add '%1' to inventory.",_itemReplaceWith);
 };

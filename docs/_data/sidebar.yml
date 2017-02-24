@@ -10,6 +10,7 @@ entries:
     output: pdf
     type: frontmatter
     folderitems:
+
     - title:
       url: /titlepage
       output: pdf
@@ -100,47 +101,49 @@ entries:
       url: /wiki/radios/sem-52-sl
       output: web, pdf
 
-
   - title: API / Frameworks
     output: web, pdf
     folderitems:
 
-      - title: Overview
-        url: /wiki/frameworks/overview
-        output: web, pdf
+    - title: Overview
+      url: /wiki/frameworks/overview
+      output: web, pdf
 
-      - title: Functions List
-        url: /wiki/frameworks/functions-list
-        output: web, pdf
+    - title: Functions List
+      url: /wiki/frameworks/functions-list
+      output: web, pdf
 
-      - title: Mission Making Intro
-        url: /wiki/frameworks/mission-making-intro
-        output: web, pdf
+    - title: Mission Making Intro
+      url: /wiki/frameworks/mission-making-intro
+      output: web, pdf
 
-      - title: Mission Making Guide
-        url: /wiki/frameworks/mission-making-guide
-        output: web, pdf
+    - title: Mission Making Guide
+      url: /wiki/frameworks/mission-making-guide
+      output: web, pdf
 
-      - title: Vehicle Attenuation
-        url: /wiki/frameworks/vehicle-attenuation
-        output: web, pdf
+    - title: Vehicle Attenuation
+      url: /wiki/frameworks/vehicle-attenuation
+      output: web, pdf
 
-      - title: Vehicle Intercom
-        url: /wiki/frameworks/vehicle-intercom
-        output: web, pdf
+    - title: Vehicle Intercom
+      url: /wiki/frameworks/vehicle-intercom
+      output: web, pdf
 
-      - title: Component System
-        url: /wiki/frameworks/component-system
-        output: web, pdf
+    - title: Component System
+      url: /wiki/frameworks/component-system
+      output: web, pdf
 
-      - title: Creating New Radio
-        url: /wiki/frameworks/creating-new-radio
-        output: web, pdf
+    - title: Creating New Radio
+      url: /wiki/frameworks/creating-new-radio
+      output: web, pdf
 
-      - title: Radio Signal Debugging
-        url: /wiki/frameworks/radio-signal-debugging
-        output: web, pdf
+    - title: Radio Signal Debugging
+      url: /wiki/frameworks/radio-signal-debugging
+      output: web, pdf
 
+    - title: Custom Signal Processing
+      url: /wiki/frameworks/custom-signal-processing
+      output: web, pdf
 
   - title: Development
     output: web, pdf

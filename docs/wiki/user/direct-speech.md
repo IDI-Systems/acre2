@@ -28,8 +28,4 @@ Voice occlusion will occur if there is direct path for another player's voice to
 
 Vehicle attenuation is the system where people outside and inside of a vehicle may hear each other at reduced volumes. This is particularly noticeable in armoured vehicles but generally isn't in effect in open seats. This is can be different for each seat in the vehicle. Turning out of the vehicle will also reduce this effect. Generally firing from vehicles positions, helicopter door gunners) will have this effect weakened too. This should generally work well with most vehicles from mods.
 
-For technical details for addon makers see [vehicle attenuation configuration](api_vehicle-attenuation).
-
-## Vehicle intercom and infantry telephones
-
-Vehicle intercom allows for an easier communication with crew members. For non-crew members there is the possibility, in vehicles like tanks or IFVs, to communicate with the crew without entering the vehicle. To do so, face the vehicle, interact with it (requires ACE3) and take the infantry telephone if it is not in use already. It has a range of 5 meters and you can either put it back or give it to another player.
+For technical details for addon makers see [vehicle attenuation configuration](/wiki/frameworks/vehicle-attenuation).

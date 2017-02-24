@@ -230,7 +230,7 @@ DFUNC(speakingLoop) = {
         private _unit = _x;
         if (!isNull _unit) then {
             if (!IS_MUTED(_unit) && _unit != acre_player) then {
-                if ((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
+                if (GVAR(enableDistanceMuting) && {(getPosASL _unit) distance ACRE_LISTENER_POS < 300}) then {
                     TRACE_1("Calling processDirectSpeaker", _unit);
                     private _params = [_unit] call FUNC(processDirectSpeaker);
                     CALL_RPC("updateSpeakingData", _params);

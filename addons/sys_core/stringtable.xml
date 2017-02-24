@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
@@ -171,8 +171,8 @@
             <French>Radio oreille gauche</French>
             <Korean>왼쪽 이어폰</Korean>
         </Key>
-        <Key ID="STR_ACRE_sys_core_RadioCentertEar">
-            <English>Radio Center Ear</English>
+        <Key ID="STR_ACRE_sys_core_RadioBothEars">
+            <English>Radio Both Ears</English>
             <Spanish>Radio ambas auriculares</Spanish>
             <Czech>Rádio do prostředního ucha</Czech>
             <German>Beide Ohrhörer</German>
@@ -245,6 +245,42 @@
             <German>Sprachwahrnehmung durch KI</German>
             <Czech>Detekce hlasu hráčů AIčky</Czech>
             <Korean>AI 음성 감지</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_switchRadioEarLeft">
+            <English>Set to Left Ear</English>
+            <Spanish>Usar auricular izquierdo</Spanish>
+            <German>Auf linken Ohrhörer legen</German>
+            <Japanese>左耳側からに設定</Japanese>
+            <Czech>Nastavit do levého ucha</Czech>
+            <Italian>Imposta sull'Orecchio Sinistro</Italian>
+            <French>Régler sur oreille gauche</French>
+            <Korean>왼쪽 귀로 설정</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_switchRadioEarBoth">
+            <English>Set to Both Ears</English>
+            <Spanish>Usar ambos auriculares</Spanish>
+            <German>Auf beide Ohrhörer legen</German>
+            <Japanese>両耳側からに設定</Japanese>
+            <Czech>Nastavit do obou uší</Czech>
+            <Italian>Imposta su entrambe le orecchie</Italian>
+            <French>Régler sur les deux oreilles</French>
+            <Korean>양쪽 귀로 설정</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_switchRadioEarRight">
+            <English>Set to Right Ear</English>
+            <Spanish>Usar auricular derecho</Spanish>
+            <German>Auf rechten Ohrhörer legen</German>
+            <Japanese>右耳側からに設定</Japanese>
+            <Czech>Nastavit do pravého ucha</Czech>
+            <Italian>Imposta sull'Orecchio Destro</Italian>
+            <French>Régler sur oreille droite</French>
+            <Korean>오른쪽 귀로 설정</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_headsetRaised">
+            <English>Headset Raised</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_headsetLowered">
+            <English>Headset Lowered</English>
         </Key>
     </Package>
 </Project>

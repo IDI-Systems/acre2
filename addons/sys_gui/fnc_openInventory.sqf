@@ -18,7 +18,6 @@
  */
 #include "script_component.hpp"
 
-//TRACE_1("ENTER", _this);
 
 uiNamespace setVariable [QGVAR(inventoryObject), _this select 0];
 uiNamespace setVariable [QGVAR(inventoryContainer), _this select 1];
