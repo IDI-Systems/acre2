@@ -1,7 +1,5 @@
-class CfgFontFamilies
-{
-    class PixelSplitterBold
-    {
+class CfgFontFamilies {
+    class PixelSplitterBold {
         fonts[] = { PATHTOF(PixelSplitterBold\PixelSplitterBold6),
                     PATHTOF(PixelSplitterBold\PixelSplitterBold7),
                     PATHTOF(PixelSplitterBold\PixelSplitterBold8),

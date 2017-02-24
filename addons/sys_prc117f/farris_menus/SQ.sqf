@@ -114,7 +114,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                     TRACE_1("Entering ctcss value","");
                     _mode = "";
                     _ctcss = GET_RADIO_VALUE("CTCSSRx");
-                    _squelch  = GET_RADIO_VALUE("squelch");
+                    _squelch = GET_RADIO_VALUE("squelch");
                     SET_STATE("menuSelection", 0);
 
                     if (_ctcss > 0) then {

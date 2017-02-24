@@ -19,7 +19,7 @@
 params ["_target", "", "_params"];
 _params params ["_radio", "", "_pttAssign"];
 
-private _actions  = [];
+private _actions = [];
 private _idx = _pttAssign find _radio;
 
 if (_idx != 0) then {
