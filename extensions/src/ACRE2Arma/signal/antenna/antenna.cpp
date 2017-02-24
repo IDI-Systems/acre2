@@ -14,14 +14,17 @@ acre::signal::antenna::antenna(std::istream & stream_)
     stream_.read((char *)&_width, sizeof(uint32_t));
     stream_.read((char *)&_height, sizeof(uint32_t));
 
+	stream_.read((char *)&_elevation_step, sizeof(uint32_t));
+	stream_.read((char *)&_direction_step, sizeof(uint32_t));
+
     uint32_t map_size = _width * _height * _total_entries;
 
     _gain_map = new antenna_gain_entry[map_size];
 
     stream_.read((char *)_gain_map, sizeof(antenna_gain_entry)*map_size);
 
-    _elevation_step = 100.0f / (float)_width;
-    _direction_step = 360.0f / (float)_height;
+    //_elevation_step = 100.0f / (float)_width;
+    //_direction_step = 360.0f / (float)_height;
 
 
 }
@@ -30,7 +33,7 @@ float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 
 {
     if (f_ < _min_frequency || f_ + _frequency_step > _max_frequency)
         return -1000.0f;
-
+	
     glm::vec3 dir_antenna_v = glm::normalize(dir_antenna_);
     float elev_antenna = asin(dir_antenna_v.z)*57.2957795f;
     float dir_antenna = atan2(dir_antenna_v.x, dir_antenna_v.y)*57.2957795f;
@@ -39,8 +42,14 @@ float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 
     float elev_signal = asin(dir_signal_v.z)*57.2957795f;
     float dir_signal = atan2(dir_signal_v.x, dir_signal_v.y)*57.2957795f;
 
+	LOG(TRACE) << "Elevation Antenna : " << elev_antenna;
+	LOG(TRACE) << "Elevation Signal : " << elev_signal;
+
     float dir = std::fmod(dir_antenna + dir_signal, 360.0f);
     float elev = elev_antenna + elev_signal;
+
+	LOG(TRACE) << "Elevation Combined: " << elev;
+
     if (elev > 90.0f || elev < -90.0f) {
         dir = std::fmod(dir + 180.0f, 360.0f);
         if (elev < -90.0f) {
@@ -51,11 +60,15 @@ float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 
         }
     }
 
+	LOG(TRACE) << "Elevation Corrected: " << elev;
+
     if (dir < 0) {
         dir = dir + 360.0f;
     }
     
     elev = 90.0f - std::abs(elev);
+
+	LOG(TRACE) << "Elevation Final: " << elev;
 
     float lower_freq_gain = _get_gain(f_, dir, elev);
     float upper_freq_gain = _get_gain(f_ + _frequency_step, dir, elev);

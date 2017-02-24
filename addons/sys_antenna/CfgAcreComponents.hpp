@@ -57,4 +57,11 @@ class CfgAcreComponents {
         height             = 0.062457; //meters
         binaryGainFile  = "\idi\acre\addons\sys_antenna\binary\oe303_gain.aba";
     };
+
+    class ACRE_SEM52_SHORT_BNC : ACRE_BaseAntenna {
+        name            = "SEM52SL Antenna Short (0.4m)";
+        connector       = ACRE_CONNECTOR_BNC;
+        height          = 0.4; //meters
+        binaryGainFile  = "\idi\acre\addons\sys_antenna\binary\sem52_short_gain.aba";
+    };
 };
