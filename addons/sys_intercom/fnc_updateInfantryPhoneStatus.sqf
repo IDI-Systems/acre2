@@ -31,6 +31,7 @@ switch (_action) do {
     case 1: {
         _vehicle setVariable [QGVAR(unitInfantryPhone), _unit, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), _vehicle, true];
+        [localize LSTRING(infantryPhoneConnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
     case 2: {
         // Give the intercom to another unit
