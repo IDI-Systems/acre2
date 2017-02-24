@@ -70,11 +70,10 @@ with open("{}.inp".format(classname)) as f:
 	for line in f:
 		if 'RP' in line:
 			values = line.split()
-			thetaSteps = int(values[2])
+			thetaSteps = int((int(values[2]) - 1)/2 + 1)
 			phiSteps = int(values[3])
 			thetaResolution = int(values[7])
 			phiResolution = int(values[8])
-
 
 out = struct.pack("fffIIIII",freqMin,freqMax,freqStep,freqCount,thetaSteps,phiSteps,thetaResolution,phiResolution) + gaindata
 
