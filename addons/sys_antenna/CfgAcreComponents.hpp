@@ -48,7 +48,7 @@ class CfgAcreComponents {
         name             = "2.5 Inch UHF Antenna AN/PRC-343 ONLY";
         connector         = ACRE_CONNECTOR_TNC;
         height             = 0.062457; //meters
-        binaryGainFile  = "\idi\acre\addons\sys_antenna\binary\UHF_2.5_inch_gain.aba";
+        binaryGainFile  = "\idi\acre\addons\sys_antenna\binary\prc343_gain.aba";
     };
     
     class ACRE_OE303_VHF_BNC : ACRE_BaseAntenna {
