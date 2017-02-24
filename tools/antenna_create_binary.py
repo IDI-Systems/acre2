@@ -41,7 +41,7 @@ with open("{}.out".format(classname)) as f:
 			if (i > startRead):
 				## Copy those values
 				values = line.split()
-				if (float(values[0]) > 0):
+				if ((float(values[0]) >= 0) and (float(values[1]) > 0)):
 					values = values[2:4]
 					values = [float(x) for x in values]
 					gaindata += struct.pack("ff",values[0],values[1])
@@ -71,11 +71,14 @@ with open("{}.inp".format(classname)) as f:
 		if 'RP' in line:
 			values = line.split()
 			thetaSteps = int((int(values[2]) - 1)/2 + 1)
-			phiSteps = int(values[3])
-			thetaResolution = int(values[7])
-			phiResolution = int(values[8])
+			phiSteps = int(int(values[3]) - 1)
+			thetaResolution = float(values[7])
+			phiResolution = float(values[8])
 
-out = struct.pack("fffIIIII",freqMin,freqMax,freqStep,freqCount,thetaSteps,phiSteps,thetaResolution,phiResolution) + gaindata
+print(thetaResolution)
+print(phiResolution)
+
+out = struct.pack("fffIIIff",freqMin,freqMax,freqStep,freqCount,thetaSteps,phiSteps,thetaResolution,phiResolution) + gaindata
 
 maindirectory = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
 outputfilename = os.path.join(maindirectory,'addons','sys_antenna','binary','{}_gain.aba'.format(classname))
