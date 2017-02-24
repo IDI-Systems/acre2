@@ -72,7 +72,7 @@ class CfgVehicles {
         acre_hasIntercom = 1;
     };
 
-    class Boat_F: Ship_F {};
+    class Boat_F;
     class SDV_01_base_F: Boat_F {
         acre_hasIntercom = 1;
     };
