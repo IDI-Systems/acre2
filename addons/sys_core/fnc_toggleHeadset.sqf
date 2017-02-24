@@ -19,10 +19,10 @@ TRACE_1("enter", _this);
 if (!ACRE_IS_SPECTATOR) then {
     if (GVAR(lowered) == 1) then {
         GVAR(lowered) = 0;
-        hintSilent "Headset raised";
+        [localize LSTRING(headsetRaised)] call FUNC(displayNotification);
     } else {
         GVAR(lowered) = 1;
-        hintSilent "Headset lowered";
+        [localize LSTRING(headsetLowered)] call FUNC(displayNotification);
     };
 } else {
     ACRE_MUTE_SPECTATORS = !ACRE_MUTE_SPECTATORS;
