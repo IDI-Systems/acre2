@@ -25,8 +25,8 @@
      _upP set [2, (_upP select 2) -90];
      _forwardV = _upP call cba_fnc_polar2vect;
 
-     _forwardV = (ATLtoASL (_obj modelToWorldVisual _spinePos)) vectorFromTo (ATLtoASL (_obj modelToWorldVisual (_spinePos vectorAdd _forwardV)));
-     _upV = (ATLtoASL (_obj modelToWorldVisual _spinePos)) vectorFromTo (ATLtoASL (_obj modelToWorldVisual (_spinePos vectorAdd _upV)));
+     _forwardV = (ATLtoASL (_obj modelToWorldVisual _spinePos)) vectorFromTo (ATLtoASL ((_obj modelToWorldVisual _spinePos) vectorAdd _forwardV));
+     _upV = (ATLtoASL (_obj modelToWorldVisual _spinePos)) vectorFromTo (ATLtoASL ((_obj modelToWorldVisual _spinePos) vectorAdd _upV));
  } else {
      _forwardV = vectorDir (vehicle _obj);
      _upV = vectorUp (vehicle _obj);
