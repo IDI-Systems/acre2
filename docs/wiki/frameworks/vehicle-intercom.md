@@ -51,7 +51,7 @@ class CfgVehicles {
 
 ### Position
 
-Additionally, infantry telephone interaction is put on the main interaction node (center of vehicle) if no custom position is defined in config. Custom position can be set using a config entry to put the interaction node anywhere on the hull of the vehicle.
+Additionally, infantry telephone interaction is put on the main interaction node (center of vehicle) if no custom position is defined in config. Custom position can be set using a config entry to put the interaction node anywhere on the hull of the vehicle. This position will also be used as a sound source for the ringing functionality.
 
 ```cpp
 class CfgVehicles {
