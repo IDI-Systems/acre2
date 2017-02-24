@@ -46,9 +46,10 @@ if (_vehicle != acre_player) then {
     if (_usingInfantryPhone) then {
         (_vehicle getVariable [QEGVAR(sys_intercom,infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
         _infantryPhonePosition = _vehicle modelToWorld _infantryPhonePosition;
-        private _unitInfantryPhonePosition = ASLToAGL (getPosASL _unitInfantryPhone) - 1; // Add an extra meter leeway due to 3d position check height differences and movement
+        private _unitInfantryPhonePosition = ASLToAGL (getPosASL _unitInfantryPhone);
         TRACE_4("Infantry Phone PFH Check",_infantryPhonePosition,_unitInfantryPhonePosition,_infantryPhoneMaxDistance,_unitInfantryPhone distance _infantryPhonePosition);
-        if (_unitInfantryPhonePosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
+        // Add an extra meter leeway due to 3d position check height differences and movement
+        if (_unitInfantryPhonePosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
             _usingInfantryPhone = false;
             [_vehicle, _unitInfantryPhone, 0] call EFUNC(sys_intercom,updateInfantryPhoneStatus);
         };
