@@ -28,4 +28,4 @@ Voice occlusion will occur if there is direct path for another player's voice to
 
 Vehicle attenuation is the system where people outside and inside of a vehicle may hear each other at reduced volumes. This is particularly noticeable in armoured vehicles but generally isn't in effect in open seats. This is can be different for each seat in the vehicle. Turning out of the vehicle will also reduce this effect. Generally firing from vehicles positions, helicopter door gunners) will have this effect weakened too. This should generally work well with most vehicles from mods.
 
-For technical details for addon makers see [vehicle attenuation configuration](api_vehicle-attenuation).
+For technical details for addon makers see [vehicle attenuation configuration](/wiki/frameworks/vehicle-attenuation).
