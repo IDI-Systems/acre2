@@ -42,7 +42,7 @@ if (isArray _positionConfig) then {
 private _infantryPhoneAction = [
     QGVAR(infantryPhone),
     localize LSTRING(infantryPhone),
-    "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa",
+    ICON_RADIO_CALL,
     {true},
     {
          // Only manually check distance if under main node (not a custom position on hull)
@@ -68,7 +68,7 @@ if (_position isEqualTo [0, 0, 0]) then {
 private _infantryPhoneSpeakerAction = [
     QGVAR(infantryPhoneSpeaker),
     localize LSTRING(infantryPhone),
-    "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa",
+    ICON_RADIO_CALL,
     {true},
     {_this call FUNC(isInfantryPhoneSpeakerAvailable)},
     {_this call FUNC(infantryPhoneChildrenActions)},

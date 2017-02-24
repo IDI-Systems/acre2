@@ -26,7 +26,7 @@ switch (_action) do {
         // Stop using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
-        [localize LSTRING(infantryPhoneDisconnected), "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa"] call ace_common_fnc_displayTextPicture;
+        [localize LSTRING(infantryPhoneDisconnected), ICON_RADIO_CALL] call FUNC(displayNotification);
     };
     case 1: {
         _vehicle setVariable [QGVAR(unitInfantryPhone), _unit, true];
@@ -37,6 +37,6 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), _unit, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), _vehicle, true];
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
-        [localize LSTRING(infantryPhoneReceived), "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa", nil, _unit] call ace_common_fnc_displayTextPicture;
+        [localize LSTRING(infantryPhoneReceived), ICON_RADIO_CALL, nil, _unit] call FUNC(displayNotification);
     };
 };
