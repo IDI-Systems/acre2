@@ -25,7 +25,7 @@ _attenuate = (1 - _attenuate)^3; // Same attenuation as in EFUNC(sys_radio,playR
 private _volume = 1;
 private _args = [_position, ACRE_LISTENER_POS, acre_player];
 private _volumeModifier = _args call EFUNC(sys_core,findOcclusion);
-private _volumeModifier = _volumeModifier^3; // Same volume modifier as in EFUNC(sys_radio,playRadioSound)
+_volumeModifier = _volumeModifier^3; // Same volume modifier as in EFUNC(sys_radio,playRadioSound)
 
 // The infantry phone of the vehicle is ringing
 _vehicle setVariable [QGVAR(isInfantryPhoneCalling), true, true];
