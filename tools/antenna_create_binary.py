@@ -6,6 +6,9 @@ import struct
 
 classname = sys.argv[1]
 
+maindirectory = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
+filepath = os.path.join(maindirectory,'extras','antennas')
+
 ###################################
 #
 #	Read Values from Output file
@@ -17,7 +20,7 @@ frequencies = []
 radiationBlockFlag = 0
 gaindata = b""
 
-with open("{}.out".format(classname)) as f:
+with open(os.path.join(filepath,"{}.out".format(classname))) as f:
 	for i, line in enumerate(f, 1):
 		if 'FREQUENCY=' in line:
 			line = line.strip()
@@ -66,7 +69,7 @@ phiSteps = 0
 thetaResolution = 0
 phiResolution = 0
 
-with open("{}.inp".format(classname)) as f:
+with open(os.path.join(filepath,"{}.inp".format(classname))) as f:
 	for line in f:
 		if 'RP' in line:
 			values = line.split()
@@ -75,12 +78,16 @@ with open("{}.inp".format(classname)) as f:
 			thetaResolution = float(values[7])
 			phiResolution = float(values[8])
 
-print(thetaResolution)
-print(phiResolution)
+
+###################################
+#
+#	Generate binarized output
+#
+###################################
+
 
 out = struct.pack("fffIIIff",freqMin,freqMax,freqStep,freqCount,thetaSteps,phiSteps,thetaResolution,phiResolution) + gaindata
 
-maindirectory = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
 outputfilename = os.path.join(maindirectory,'addons','sys_antenna','binary','{}_gain.aba'.format(classname))
 
 outputfile = open(outputfilename, 'bw')
@@ -90,4 +97,3 @@ outputfile.close()
 
 
 print("{} bytes written to {}".format(len(out),outputfilename))
-
