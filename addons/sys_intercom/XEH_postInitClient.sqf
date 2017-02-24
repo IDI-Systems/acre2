@@ -1,10 +1,13 @@
 #include "script_component.hpp"
 
+// Exit if ACE3 not loaded
+if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
+
 ["Tank", "init", {call FUNC(infantryPhoneAction)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 ["Car_F", "init", {call FUNC(infantryPhoneAction)}, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 
-#ifdef DRAW_PHONE_INFO
+#ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {
     private _target = cursorObject;
     private _config = configFile >> "CfgVehicles" >> typeOf _target;

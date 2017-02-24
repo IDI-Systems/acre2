@@ -15,9 +15,6 @@
  */
 #include "script_component.hpp"
 
-// Exit if ACE3 not loaded
-if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
-
 params ["_target"];
 
 private _type = typeOf _target;

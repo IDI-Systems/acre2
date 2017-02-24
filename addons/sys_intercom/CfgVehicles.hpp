@@ -16,17 +16,16 @@ class CfgVehicles {
          };
     };
 
-    class Air;
-    class LandVehicle;
-    class Ship;
-    class Car: LandVehicle {
-        acre_hasIntercom = 0;
-    };
-    class Car_F: Car {};
+    class Car_F;
     class Wheeled_APC_F: Car_F {
         acre_hasIntercom = 1;
     };
 
+    class MRAP_02_base_F: Car_F {
+        acre_hasIntercom = 1;
+    };
+
+    class LandVehicle;
     class Tank: LandVehicle {
         acre_hasIntercom = 1;
         acre_hasInfantryPhone = 1;
@@ -64,20 +63,13 @@ class CfgVehicles {
         acre_infantryPhonePosition[] = {1.1, -3.87, -0.78};
     };
 
+    class Air;
     class Helicopter: Air {
         acre_hasIntercom = 1;
     };
 
     class Plane: Air {
         acre_hasIntercom = 1;
-    };
-
-    class MRAP_02_base_F: Car_F {
-        acre_hasIntercom = 1;
-    };
-
-    class Ship_F: Ship {
-        acre_hasIntercom = 0;
     };
 
     class Boat_F: Ship_F {};
