@@ -41,10 +41,10 @@ with open("{}.out".format(classname)) as f:
 			if (i > startRead):
 				## Copy those values
 				values = line.split()
-				values = values[2:4]
-				values = [float(x) for x in values]
-				gaindata += struct.pack("ff",values[0],values[1])
-				pass
+				if (values[0] > 0):
+					values = values[2:4]
+					values = [float(x) for x in values]
+					gaindata += struct.pack("ff",values[0],values[1])
 
 frequencies = frequencies[1:]
 
