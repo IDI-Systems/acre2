@@ -3,7 +3,7 @@
 #define CONTROL_SetRelativePos(xpos,ypos) x = H_OFFSET + (xpos * 0.001); y = H_OFFSET + (ypos * 0.001);
 #define CONTROL_SetDimensions(width, height) w = width * 0.001; h = height * 0.001;
 
-#define BEGIN_CONTROL(name, parent, idval) class name : parent { idc = idval;
+#define BEGIN_CONTROL(name, parent, idval) class name: parent { idc = idval;
 #define END_CONTROL        };
 
 class PRC77_RadioDialog {
@@ -13,8 +13,7 @@ class PRC77_RadioDialog {
     onLoad = QUOTE(_this call FUNC(render));
     controlsBackground[] = {PRC77Background};
     objects[] = {};
-    class PRC77Background
-    {
+    class PRC77Background {
         type = CT_STATIC;
         idc = 99999;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

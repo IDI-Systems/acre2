@@ -13,7 +13,7 @@ class CfgWeapons {
     class ACRE_BaseRadio;
     class ItemCore;
 
-    class ACRE_SEM52SL : ACRE_BaseRadio {
+    class ACRE_SEM52SL: ACRE_BaseRadio {
         displayName = "SEM 52 SL";
         useActionTitle = "SEM 52 SL";
         picture = QPATHTOF(data\ui\sem52sl_icon.paa);
@@ -25,15 +25,13 @@ class CfgWeapons {
 
         type = 4096;
         simulation = "ItemMineDetector";
-        class ItemInfo
-        {
+        class ItemInfo {
             mass = 8;
             type = 0;
             scope = 0;
         };
 
-        class Library
-        {
+        class Library {
             libTextDesc = "SEM 52 SL";
         };
     };

@@ -23,7 +23,7 @@ class CfgAcreComponents {
         type = ACRE_COMPONENT_GENERIC;
     };
 
-    class ACRE_BaseRadio : ACRE_ComponentBase {
+    class ACRE_BaseRadio: ACRE_ComponentBase {
         type = ACRE_COMPONENT_RADIO;
         isAcre = 1;
         name = "ACRE Base Radio";
@@ -38,55 +38,55 @@ class CfgAcreComponents {
 
         class Interfaces {
             class CfgAcreDataInterface {
-                getListInfo                 = QEFUNC(sys_data,noApiSystemFunction);
+                getListInfo = QEFUNC(sys_data,noApiSystemFunction);
 
-                setVolume                   = QEFUNC(sys_data,noApiSystemFunction);                // [0-1]
-                getVolume                   = QEFUNC(sys_data,noApiSystemFunction);                // [] = 0-1
+                setVolume = QEFUNC(sys_data,noApiSystemFunction);                // [0-1]
+                getVolume = QEFUNC(sys_data,noApiSystemFunction);                // [] = 0-1
 
-                setSpatial                  = QEFUNC(sys_data,noApiSystemFunction);
-                getSpatial                  = QEFUNC(sys_data,noApiSystemFunction);
+                setSpatial = QEFUNC(sys_data,noApiSystemFunction);
+                getSpatial = QEFUNC(sys_data,noApiSystemFunction);
 
-                setChannelData              = QEFUNC(sys_data,noApiSystemFunction);            // [channelNumber, [channelData] ]
-                getChannelData              = QEFUNC(sys_data,noApiSystemFunction);            // [channelNumber] = channelData
-                getCurrentChannelData       = QEFUNC(sys_data,noApiSystemFunction);        // channelData (of current channel)
-
-
-                getCurrentChannel           = QEFUNC(sys_data,noApiSystemFunction);        // [] = channelNumber
-                setCurrentChannel           = QEFUNC(sys_data,noApiSystemFunction);        // [channelNumber]
-
-                getStates                   = QEFUNC(sys_data,noApiSystemFunction);                // [] = [ [stateName, stateData], [stateName, stateData] ]
-                getState                    = QEFUNC(sys_data,noApiSystemFunction);                // [stateName] = stateData
-                setState                    = QEFUNC(sys_data,noApiSystemFunction);                // [stateName, stateData] = sets state
-                setStateCritical            = QEFUNC(sys_data,noApiSystemFunction);                // [stateName, stateData] = sets state
+                setChannelData = QEFUNC(sys_data,noApiSystemFunction);            // [channelNumber, [channelData] ]
+                getChannelData = QEFUNC(sys_data,noApiSystemFunction);            // [channelNumber] = channelData
+                getCurrentChannelData = QEFUNC(sys_data,noApiSystemFunction);        // channelData (of current channel)
 
 
-                getOnOffState               = QEFUNC(sys_data,noApiSystemFunction);            // [] = 0/1
-                setOnOffState               = QEFUNC(sys_data,noApiSystemFunction);            // [ZeroOrOne]
+                getCurrentChannel = QEFUNC(sys_data,noApiSystemFunction);        // [] = channelNumber
+                setCurrentChannel = QEFUNC(sys_data,noApiSystemFunction);        // [channelNumber]
 
-                initializeComponent         = QEFUNC(sys_data,noApiSystemFunction);
+                getStates = QEFUNC(sys_data,noApiSystemFunction);                // [] = [ [stateName, stateData], [stateName, stateData] ]
+                getState = QEFUNC(sys_data,noApiSystemFunction);                // [stateName] = stateData
+                setState = QEFUNC(sys_data,noApiSystemFunction);                // [stateName, stateData] = sets state
+                setStateCritical = QEFUNC(sys_data,noApiSystemFunction);                // [stateName, stateData] = sets state
 
-                getChannelDescription       = QEFUNC(sys_data,noApiSystemFunction);
 
-                isExternalAudio             = QEFUNC(sys_data,noApiSystemFunction);
-                getExternalAudioPosition    = QEFUNC(sys_data,noApiSystemFunction);
+                getOnOffState = QEFUNC(sys_data,noApiSystemFunction);            // [] = 0/1
+                setOnOffState = QEFUNC(sys_data,noApiSystemFunction);            // [ZeroOrOne]
+
+                initializeComponent = QEFUNC(sys_data,noApiSystemFunction);
+
+                getChannelDescription = QEFUNC(sys_data,noApiSystemFunction);
+
+                isExternalAudio = QEFUNC(sys_data,noApiSystemFunction);
+                getExternalAudioPosition = QEFUNC(sys_data,noApiSystemFunction);
 
 
             };
 
             class CfgAcreTransmissionInterface {
-                handleBeginTransmission     = QEFUNC(sys_data,noApiSystemFunction);
-                handleEndTransmission       = QEFUNC(sys_data,noApiSystemFunction);
+                handleBeginTransmission = QEFUNC(sys_data,noApiSystemFunction);
+                handleEndTransmission = QEFUNC(sys_data,noApiSystemFunction);
 
-                handleSignalData            = QEFUNC(sys_data,noApiSystemFunction);
+                handleSignalData = QEFUNC(sys_data,noApiSystemFunction);
                 handleMultipleTransmissions = QEFUNC(sys_data,noApiSystemFunction);
 
-                handlePTTDown               = QEFUNC(sys_data,noApiSystemFunction);
-                handlePTTUp                 = QEFUNC(sys_data,noApiSystemFunction);
+                handlePTTDown = QEFUNC(sys_data,noApiSystemFunction);
+                handlePTTUp = QEFUNC(sys_data,noApiSystemFunction);
             };
 
             class CfgAcreInteractInterface {
-                openGui                     = QEFUNC(sys_data,noApiSystemFunction);                // [RadioId]
-                closeGui                    = QEFUNC(sys_data,noApiSystemFunction);                // []
+                openGui = QEFUNC(sys_data,noApiSystemFunction);                // [RadioId]
+                closeGui = QEFUNC(sys_data,noApiSystemFunction);                // []
             };
         };
     };
@@ -107,7 +107,7 @@ class CfgWeapons {
     class ACRE_GameComponentBase;
 
     class ItemRadio;
-    class ItemRadioAcreFlagged : ItemRadio {
+    class ItemRadioAcreFlagged: ItemRadio {
         scopeCurator = 1;
         scope = 1;
         class ItemInfo {
@@ -115,20 +115,18 @@ class CfgWeapons {
         };
     };
 
-    class ACRE_BaseComponent : ACRE_GameComponentBase {
+    class ACRE_BaseComponent: ACRE_GameComponentBase {
         acre_hasUnique = 1;
         scopeCurator = 1;
         scope = 1;
     };
 
-    class ACRE_BaseRadio : ACRE_BaseComponent
-    {
+    class ACRE_BaseRadio: ACRE_BaseComponent {
         displayName = "ACRE Radio";
         useActionTitle = "ACRE: Pickup Radio";
         acre_isRadio = 1;
 
-        class Library
-        {
+        class Library {
             libTextDesc = "ACRE Radio";
         };
     };

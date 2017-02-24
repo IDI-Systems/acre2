@@ -1,5 +1,4 @@
-class Prc77_RscBackground
-{
+class Prc77_RscBackground {
         type = CT_STATIC;
         idc = -1;
         style = ST_BACKGROUND + ST_KEEP_ASPECT_RATIO;
@@ -10,8 +9,7 @@ class Prc77_RscBackground
 };
 
 // text
-class Prc77_RscText
-{
+class Prc77_RscText {
     idc = -1;
     type = CT_STATIC;
     style = ST_LEFT + ST_KEEP_ASPECT_RATIO;
@@ -23,8 +21,7 @@ class Prc77_RscText
     h = 0.03;
 };
 
-class Prc77_RscButton
-{
+class Prc77_RscButton {
   type = CT_BUTTON;
   idc = -1;
   style = ST_CENTER + ST_KEEP_ASPECT_RATIO;
@@ -70,8 +67,7 @@ class Prc77_RscButton
   action = "";
 };
 
-class Prc77_RscPicture : Prc77_RscButton
-{
+class Prc77_RscPicture: Prc77_RscButton {
     type = CT_STATIC;
     idc = -1;
     style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

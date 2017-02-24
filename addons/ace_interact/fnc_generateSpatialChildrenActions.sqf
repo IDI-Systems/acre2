@@ -18,7 +18,7 @@
 
 params ["_target","","_params"];
 _params params ["","","","_spatial"];
-private _actions  = [];
+private _actions = [];
 
 if (_spatial != "RIGHT") then {
     private _action = ["acre_audio_right", localize LSTRING(setToRightEar), "", {(_this + [1]) call FUNC(actionSetSpatialAudio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;

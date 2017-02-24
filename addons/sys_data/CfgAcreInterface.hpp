@@ -13,7 +13,7 @@ class CfgAcreDataInterface {
             required = 0;
         };
 
-        class DefaultSetter : Default {
+        class DefaultSetter: Default {
             priority = ACRE_DATA_NETPRIORITY_LOW;
             returnType = ACRE_DATA_RETURNTYPE_ANY;
             uniqueKey = 0;
@@ -21,132 +21,132 @@ class CfgAcreDataInterface {
             type = ACRE_DATA_SETTER;
         };
 
-        class DefaultGetter : Default {
+        class DefaultGetter: Default {
             priority = ACRE_DATA_NETPRIORITY_NONE;
             returnType = ACRE_DATA_RETURNTYPE_ANY;
             handler = "";//QFUNC(handleGetData);
         };
 
-        class attachComponent : DefaultSetter {
+        class attachComponent: DefaultSetter {
             required = 0;
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             uniqueKey = 1;
             handler = QEFUNC(sys_components,attachComponentHandler);
         };
 
-        class detachComponent : DefaultSetter {
+        class detachComponent: DefaultSetter {
             required = 0;
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             uniqueKey = 1;
             handler = QEFUNC(sys_components,detachComponentHandler);
         };
 
-        class handleComponentMessage : DefaultGetter {
+        class handleComponentMessage: DefaultGetter {
             required = 1;
             handler = QEFUNC(sys_components,handleComponentMessageHandler);
         };
 
-        class initializeComponent : DefaultSetter {
+        class initializeComponent: DefaultSetter {
             required = 1;
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             handler = QEFUNC(sys_components,initializeComponent);
         };
     };
 
-    class DefaultRadioInterface : DefaultComponentInterface {
+    class DefaultRadioInterface: DefaultComponentInterface {
 
-        class getListInfo : DefaultGetter {
+        class getListInfo: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_STRING;
         };
 
-        class setVolume : DefaultSetter {
+        class setVolume: DefaultSetter {
             priority = ACRE_DATA_NETPRIORITY_LOW;
             required = 1;
         };
 
-        class getVolume : DefaultGetter {
+        class getVolume: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_SCALAR;
         };
 
-        class setSpatial : DefaultSetter {
+        class setSpatial: DefaultSetter {
             priority = ACRE_DATA_NETPRIORITY_LOW;
             required = 1;
         };
 
-        class getSpatial : DefaultGetter {
+        class getSpatial: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_SCALAR;
         };
 
-        class setChannelData : DefaultSetter {
+        class setChannelData: DefaultSetter {
             required = 1;
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             uniqueKey = 1;
             handler = QFUNC(handleSetChannel);
         };
 
-        class getChannelData : DefaultGetter {
+        class getChannelData: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_ARRAY;
         };
 
-        class getCurrentChannelData : DefaultGetter {
+        class getCurrentChannelData: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_ARRAY;
         };
 
-        class setCurrentChannel : DefaultSetter {
+        class setCurrentChannel: DefaultSetter {
             required = 1;
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             handler = QFUNC(handleSetChannel);
         };
 
-        class getCurrentChannel : DefaultGetter {
+        class getCurrentChannel: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_SCALAR;
         };
 
-        class getStates : DefaultGetter {
+        class getStates: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_ARRAY;
         };
 
-        class getState : DefaultGetter {
+        class getState: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_ARRAY;
         };
 
-        class setState : DefaultSetter {
+        class setState: DefaultSetter {
             priority = ACRE_DATA_NETPRIORITY_LOW;
             uniqueKey = 1;
             required = 1;
         };
 
-        class setStateCritical : DefaultSetter {
+        class setStateCritical: DefaultSetter {
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             uniqueKey = 1;
             required = 1;
         };
 
-        class getOnOffState : DefaultGetter {
+        class getOnOffState: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_SCALAR;
         };
 
-        class setOnOffState : DefaultSetter {
+        class setOnOffState: DefaultSetter {
             required = 1;
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             handler = QFUNC(handleSetChannel);
         };
 
-        class getChannelDescription : DefaultGetter {
+        class getChannelDescription: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_STRING;
         };
 
-        class isExternalAudio : DefaultGetter {
+        class isExternalAudio: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_BOOL;
         };
@@ -160,30 +160,30 @@ class CfgAcreTransmissionInterface {
             required = 1;
         };
 
-        class DefaultAction : Default {
+        class DefaultAction: Default {
             priority = ACRE_DATA_NETPRIORITY_NONE;
             handler = "";
         };
 
-        class handleSignalData : DefaultAction {
+        class handleSignalData: DefaultAction {
         };
 
-        class handleBeginTransmission : DefaultAction {
+        class handleBeginTransmission: DefaultAction {
         };
 
-        class handleEndTransmission : DefaultAction {
-            handler = QUOTE(EFUNC(sys_signal,handleEndTransmission));
+        class handleEndTransmission: DefaultAction {
+            handler = QEFUNC(sys_signal,handleEndTransmission);
         };
 
-        class handleMultipleTransmissions : DefaultAction {
+        class handleMultipleTransmissions: DefaultAction {
             returnType = ACRE_DATA_RETURNTYPE_ARRAY;
         };
 
-        class handlePTTDown : DefaultAction {
+        class handlePTTDown: DefaultAction {
             returnType = ACRE_DATA_RETURNTYPE_BOOL;
         };
 
-        class handlePTTUp : DefaultAction {
+        class handlePTTUp: DefaultAction {
             returnType = ACRE_DATA_RETURNTYPE_BOOL;
         };
     };
@@ -196,16 +196,16 @@ class CfgAcreInteractInterface {
             required = 0;
         };
 
-        class DefaultAction : Default {
+        class DefaultAction: Default {
             priority = ACRE_DATA_NETPRIORITY_NONE;
         };
 
-        class openGui : DefaultAction {
+        class openGui: DefaultAction {
             required = 1;
             handler = QFUNC(openGui);
         };
 
-        class closeGui : DefaultAction {
+        class closeGui: DefaultAction {
             required = 1;
             handler = QFUNC(closeGui);
         };
@@ -220,22 +220,22 @@ class CfgAcreStateInterface {
             required = 0;
         };
 
-        class DefaultSetter : Default {
+        class DefaultSetter: Default {
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             handler = QFUNC(handleSetData);
         };
 
-        class DefaultGetter : Default {
+        class DefaultGetter: Default {
             priority = ACRE_DATA_NETPRIORITY_NONE;
             handler = QFUNC(handleGetData);
         };
 
-        class getRadioState : DefaultGetter {
+        class getRadioState: DefaultGetter {
             returnType = ACRE_DATA_RETURNTYPE_ARRAY;
             required = 1;
         };
 
-        class setRadioState : DefaultSetter {
+        class setRadioState: DefaultSetter {
             required = 1;
             priority = ACRE_DATA_NETPRIORITY_HIGH;
         };
@@ -250,17 +250,17 @@ class CfgAcrePhysicalInterface {
             required = 0;
         };
 
-        class DefaultSetter : Default {
+        class DefaultSetter: Default {
             priority = ACRE_DATA_NETPRIORITY_HIGH;
             handler = QFUNC(handleSetData);
         };
 
-        class DefaultGetter : Default {
+        class DefaultGetter: Default {
             priority = ACRE_DATA_NETPRIORITY_NONE;
             handler = QFUNC(handleGetData);
         };
 
-        class getExternalAudioPosition : DefaultGetter {
+        class getExternalAudioPosition: DefaultGetter {
             required = 1;
             returnType = ACRE_DATA_RETURNTYPE_ARRAY;
         };
