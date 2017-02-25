@@ -9,7 +9,7 @@
  * Action is available <BOOL>
  *
  * Example:
- * ["ACRE_PRC_343_ID_1"] call acre_ace_interact_fnc_radioCheckChildrenActions
+ * ["ACRE_PRC_343_ID_1"] call acre_sys_external_fnc_radioCheckChildrenActions
  *
  * Public: No
  */

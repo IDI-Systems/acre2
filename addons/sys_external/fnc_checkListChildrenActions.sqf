@@ -10,7 +10,7 @@
  * Action is available <BOOL>
  *
  * Example:
- * [cursorTarget] call acre_ace_interact_fnc_externalRadioCheckListChildrenActions
+ * [cursorTarget] call acre_sys_external_fnc_checkListChildrenActions
  *
  * Public: No
  */
@@ -18,7 +18,7 @@
 
 params ["_radioId", "_unit"];
 
-private _externalStatus = [_radioId] call EFUNC(sys_external,getExternalUseStatus);
+private _externalStatus = [_radioId] call FUNC(getExternalUseStatus);
 
 _externalStatus params ["_isShared", "_isUsedExternally", "_owner", "_user"];
 

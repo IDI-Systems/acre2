@@ -9,7 +9,7 @@
  * Array of actions <ARRAY>
  *
  * Example:
- * [cursorTarget] call acre_ace_interact_fnc_externalRadioListChildrenActions
+ * [cursorTarget] call acre_sys_external_fnc_listChildrenActions
  *
  * Public: No
  */
@@ -22,7 +22,7 @@
 params ["_target"];
 
 private _actions = [];
-private _sharedRadios = [_target] call EFUNC(sys_external,getSharedExternalRadios);
+private _sharedRadios = [_target] call FUNC(getSharedExternalRadios);
 
 // Add external radios in order to be able to "give" them to other players
 {
@@ -37,8 +37,8 @@ private _sharedRadios = [_target] call EFUNC(sys_external,getSharedExternalRadio
     _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
 
-    if ([_x, acre_player] call FUNC(externalRadioCheckListChildrenActions)) then {
-        private _action = [_x, _displayName, _picture, {}, {true}, {_this call FUNC(externalRadioChildrenActions)}, [_x]] call ace_interact_menu_fnc_createAction;
+    if ([_x, acre_player] call FUNC(checkListChildrenActions)) then {
+        private _action = [_x, _displayName, _picture, {}, {true}, {_this call FUNC(childrenActions)}, [_x]] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
 } forEach _sharedRadios;

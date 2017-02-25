@@ -10,7 +10,7 @@
  * Radio is returned (true) or given (false) <BOOL>
  *
  * Example:
- * [cursorTarget] call acre_ace_interact_fnc_externalRadioReturnGive
+ * [cursorTarget] call acre_sys_external_fnc_externalRadioReturnGive
  *
  * Public: No
  */
@@ -18,7 +18,7 @@
 
 params ["_radioId", "_target"];
 
-private _owner = [_radioId] call EFUNC(sys_external,getExternalRadioOwner);
+private _owner = [_radioId] call FUNC(getExternalRadioOwner);
 
 if (isNil "_owner") exitWith {true};
 if (_owner == _target) exitWith {true};
