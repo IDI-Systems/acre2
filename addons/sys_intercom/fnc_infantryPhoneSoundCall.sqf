@@ -37,7 +37,18 @@ private _ringing = {
     private _unitInfantryPhone = _vehicle getVariable [QGVAR(unitInfantryPhone), objNull];
     private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), false];
 
-    if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle}) then {
+    private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
+    {
+        _crew pushBackUnique (_vehicle turretUnit _x);
+    } forEach (allTurrets [_vehicle, false]);
+    _crew = _crew - [objNull];
+
+    private _noCrew = false;
+    if (count _crew == 0) then {
+        _noCrew = true;
+    };
+
+    if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && !_noCrew) then {
         TRACE_5("Infantry Phone Calling PFH Check",_vehicle,acre_player,_position,_direction,_volume);
         ["Acre_GenericBeep", _position, _direction, _volume, true] call EFUNC(sys_sounds,playSound);
     } else {
