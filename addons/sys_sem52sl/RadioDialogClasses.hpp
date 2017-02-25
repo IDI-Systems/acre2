@@ -1,5 +1,4 @@
-class SEM52SL_RscBackground
-{
+class SEM52SL_RscBackground {
         type = CT_STATIC;
         idc = -1;
         style = ST_BACKGROUND + ST_KEEP_ASPECT_RATIO;
@@ -10,8 +9,7 @@ class SEM52SL_RscBackground
 };
 
 // text
-class SEM52SL_RscText
-{
+class SEM52SL_RscText {
     idc = -1;
     type = CT_STATIC;
     style = ST_LEFT + ST_KEEP_ASPECT_RATIO;
@@ -23,8 +21,7 @@ class SEM52SL_RscText
     h = 0.03;
 };
 
-class SEM52SL_RscButton
-{
+class SEM52SL_RscButton {
   type = CT_BUTTON;
   idc = -1;
   style = ST_CENTER + ST_KEEP_ASPECT_RATIO;
@@ -70,8 +67,7 @@ class SEM52SL_RscButton
   action = "";
 };
 
-class SEM52SL_RscPicture : SEM52SL_RscButton
-{
+class SEM52SL_RscPicture: SEM52SL_RscButton {
     type = CT_STATIC;
     idc = -1;
     style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

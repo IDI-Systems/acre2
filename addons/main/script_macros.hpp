@@ -120,4 +120,7 @@ Antenna Defines
 // Deprecation
 #define ACRE_DEPRECATED(arg1,arg2,arg3) WARNING_3("%1 is deprecated. Support will be dropped in version %2. Replaced by: %3",arg1,arg2,arg3)
 
+// Icons
+#define ICON_RADIO_CALL "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa"
+
 #include "script_debug.hpp"

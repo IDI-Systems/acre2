@@ -19,15 +19,15 @@ params ["_ear"];
 
 private _radioId = ACRE_ACTIVE_RADIO;
 
-switch _ear do {
+switch (_ear) do {
     case -1: {
-        hintSilent "LEFT EAR";
+        [localize LSTRING(switchRadioEarLeft), ICON_RADIO_CALL] call FUNC(displayNotification);
     };
     case 0: {
-        hintSilent "CENTER EAR";
+        [localize LSTRING(switchRadioEarBoth), ICON_RADIO_CALL] call FUNC(displayNotification);
     };
     case 1: {
-        hintSilent "RIGHT EAR";
+        [localize LSTRING(switchRadioEarRight), ICON_RADIO_CALL] call FUNC(displayNotification);
     };
 };
 //[_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _ear]] call EFUNC(sys_data,dataEvent);
