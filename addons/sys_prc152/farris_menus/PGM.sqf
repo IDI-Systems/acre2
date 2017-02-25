@@ -134,8 +134,7 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
         HASH_SET(_channel, "description", _channelDescription);
         //HASH_SET(_channel, "type", (["channelMode", _channelWaveform, 1] call FUNC(formatChannelValue)));
         HASH_SET(_channel, "type", "BASIC");
-        //TRACE_1("Setting", _channel);
-
+        
         HASHLIST_SET(_channels, _channelNumber, _channel);
         SET_STATE("channels", _channels);
 
@@ -218,8 +217,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
 
                 HASH_SET(_channel, "description", _channelDescription);
                 HASH_SET(_channel, "type", _channelType);
-                //TRACE_1("Setting", _channel);
-
+                
                 HASHLIST_SET(_channels, _channelNumber, _channel);
                 SET_STATE("channels", _channels);
 

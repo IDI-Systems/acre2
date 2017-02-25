@@ -34,5 +34,5 @@ if (_this select 1 == 0) then {
         _marker setMarkerTextLocal "Rx Area Begin";
         _marker setMarkerColorLocal "ColorRed";
     };
-    GVAR(rxSetEH) = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(setRxAreaEnd))];
+    GVAR(rxSetEH) = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["MouseButtonDown", {call FUNC(setRxAreaEnd)}];
 };

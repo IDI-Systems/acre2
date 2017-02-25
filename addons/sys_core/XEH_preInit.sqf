@@ -22,6 +22,7 @@ if (!hasInterface) exitWith {
 DGVAR(lowered) = 0;
 DGVAR(muting) = [];
 DGVAR(speakers) = [];
+DGVAR(enableDistanceMuting) = true;
 DGVAR(ts3id) = -1;
 DGVAR(keyedMicRadios) = [];
 DGVAR(keyedRadioIds) = HASH_CREATE;

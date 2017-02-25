@@ -1,5 +1,4 @@
 PREP(actionSetMTT);
-PREP(actionSetSpatialAudio);
 PREP(generateConnectors);
 PREP(generateConnectorActions);
 PREP(generateConnectorList);
