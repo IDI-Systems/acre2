@@ -37,7 +37,7 @@ private _ringing = {
     private _unitInfantryPhone = _vehicle getVariable [QGVAR(unitInfantryPhone), objNull];
     private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), false];
 
-    if ((isNull _unitInfantryPhone) && _isCalling) then {
+    if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle}) then {
         TRACE_5("Infantry Phone Calling PFH Check",_vehicle,acre_player,_position,_direction,_volume);
         ["Acre_GenericBeep", _position, _direction, _volume, true] call EFUNC(sys_sounds,playSound);
     } else {
