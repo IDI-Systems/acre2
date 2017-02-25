@@ -29,7 +29,7 @@ if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
 ACRE_ACTIVE_EXTERNAL_RADIOS = ACRE_ACTIVE_EXTERNAL_RADIOS - [_radioId];
 [1] call EFUNC(sys_list,cycleRadios); // Change active radio
 
-[format ["Stop using %1", _radioId];] call EFUNC(sys_core,displayNotification);
+[format ["Stop using %1", _radioId]] call EFUNC(sys_core,displayNotification);
 
 if (_target == _owner) then {
     // Give radio back to the owner
