@@ -225,7 +225,7 @@ with uiNamespace do {
     GVAR(setTxPosButton) ctrlSetPosition [0.05, 0.055*8, 0.4, 0.045];
     GVAR(setTxPosButton) ctrlSetBackgroundColor [0,0,0,0.25];
     GVAR(setTxPosButton) ctrlSetText "Set Tx Position";
-    GVAR(setTxPosButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(setTxPositionStart))];
+    GVAR(setTxPosButton) ctrlSetEventHandler ["MouseButtonUp", {call FUNC(setTxPositionStart)}];
     GVAR(setTxPosButton) ctrlCommit 0;
 
     CTRL(GVAR(txPositionTxt), "RscEdit");
@@ -243,7 +243,7 @@ with uiNamespace do {
     GVAR(addRxAreaButton) ctrlSetPosition [0.05, 0.055*10, 0.4, 0.045];
     GVAR(addRxAreaButton) ctrlSetBackgroundColor [0,0,0,0.25];
     GVAR(addRxAreaButton) ctrlSetText "Add Rx Area";
-    GVAR(addRxAreaButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(addRxAreaStart))];
+    GVAR(addRxAreaButton) ctrlSetEventHandler ["MouseButtonUp", {call FUNC(addRxAreaStart)}];
     GVAR(addRxAreaButton) ctrlCommit 0;
 
     CTRL(GVAR(rxAreaList), "RscCombo");
@@ -256,7 +256,7 @@ with uiNamespace do {
         GVAR(rxAreaList) lbSetData [_i, str _forEachIndex];
         _i = _i + 1;
     } forEach GVAR(rxAreas);
-    GVAR(rxAreaList) ctrlAddEventHandler ["LBSelChanged", QUOTE(_this call FUNC(onAreaLBChange))];
+    GVAR(rxAreaList) ctrlAddEventHandler ["LBSelChanged", {call FUNC(onAreaLBChange)}];
     GVAR(rxAreaList) lbSetCurSel 0;
     GVAR(rxAreaList) ctrlCommit 0;
 
@@ -264,14 +264,14 @@ with uiNamespace do {
     GVAR(addRxAreaButton) ctrlSetPosition [0.355, 0.055*11, 0.095, 0.045];
     GVAR(addRxAreaButton) ctrlSetBackgroundColor [0,0,0,0.25];
     GVAR(addRxAreaButton) ctrlSetText "Delete";
-    GVAR(addRxAreaButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(deleteRxArea))];
+    GVAR(addRxAreaButton) ctrlSetEventHandler ["MouseButtonUp", {call FUNC(deleteRxArea)}];
     GVAR(addRxAreaButton) ctrlCommit 0;
 
     CTRL(GVAR(addRxAreaButton), "RscButton");
     GVAR(addRxAreaButton) ctrlSetPosition [0.05, 0.055*12.5, 0.4, 0.045];
     GVAR(addRxAreaButton) ctrlSetBackgroundColor [0,0,0,0.25];
     GVAR(addRxAreaButton) ctrlSetText "Process";
-    GVAR(addRxAreaButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(doProcess))];
+    GVAR(addRxAreaButton) ctrlSetEventHandler ["MouseButtonUp", {call FUNC(doProcess)}];
     GVAR(addRxAreaButton) ctrlCommit 0;
 
 };

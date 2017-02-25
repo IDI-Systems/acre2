@@ -173,14 +173,14 @@ with uiNamespace do {
                     GVAR(modifyButton) ctrlSetPosition [0.05, 0.055*10, 0.4, 0.045];
                     GVAR(modifyButton) ctrlSetBackgroundColor [0,0,0,0.25];
                     GVAR(modifyButton) ctrlSetText "Modify";
-                    GVAR(modifyButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE([] call FUNC(modify))];
+                    GVAR(modifyButton) ctrlSetEventHandler ["MouseButtonUp", {call FUNC(modify)}];
                     GVAR(modifyButton) ctrlCommit 0;
 
                     CTRLOVERLAY(GVAR(clearButton), "RscButton");
                     GVAR(clearButton) ctrlSetPosition [0.05, 0.055*11, 0.4, 0.045];
                     GVAR(clearButton) ctrlSetBackgroundColor [0,0,0,0.25];
                     GVAR(clearButton) ctrlSetText "Clear";
-                    GVAR(clearButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE([] call FUNC(clear))];
+                    GVAR(clearButton) ctrlSetEventHandler ["MouseButtonUp", {call FUNC(clear)}];
                     GVAR(clearButton) ctrlCommit 0;
 
                     with missionNamespace do {
