@@ -20,10 +20,10 @@ if (isNil QGVAR(startDrawing)) then {
     with uiNamespace do {
         GVAR(mapDisplay) = (findDisplay 12);
         _mapCtrl = (GVAR(mapDisplay) displayCtrl 51);
-        _mapCtrl ctrlAddEventHandler ["MouseButtonDown", QUOTE(_this call FUNC(onMapClick))];
-        _mapCtrl ctrlAddEventHandler ["draw", QUOTE(_this call DFUNC(drawSignalSamples))];
+        _mapCtrl ctrlAddEventHandler ["MouseButtonDown", {call FUNC(onMapClick)}];
+        _mapCtrl ctrlAddEventHandler ["Draw", {call DFUNC(drawSignalSamples)}];
     };
     GVAR(startDrawing) = true;
-    [{ _this call FUNC(drawSignalMaps); }, 0, []] call cba_fnc_addPerFrameHandler;
+    [{_this call FUNC(drawSignalMaps)}, 0, []] call cba_fnc_addPerFrameHandler;
 };
 [] call FUNC(drawMenu);
