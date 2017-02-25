@@ -24,4 +24,4 @@ params ["_radioID", "_owner", "_endUser"];
 // Add the radio to the player
 ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
 
-systemChat format ["Start using %1", _radioId];
+[format ["Start using %1", _radioId];] call EFUNC(sys_core,displayNotification);

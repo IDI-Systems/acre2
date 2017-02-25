@@ -10,7 +10,7 @@ class CfgVehicles {
                     statement = "true";
                     insertChildren = QUOTE(_this call FUNC(listChildrenActions));
                     priority = 0.1;
-                    icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
+                    icon = ICON_RADIO_CALL;
                 };
             };
         };
