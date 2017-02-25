@@ -20,7 +20,7 @@ class CfgAcreComponents
                             {"Audio/Data", ACRE_CONNECTOR_U_283}
                         };
         defaultComponents[] = {
-                                {0, "ACRE_SEM52_SHORT_BNC"} /*TODO Not use this */
+                                {0, "ACRE_SEM52_LONG_BNC"} /*TODO Not use this */
                             };
 
         class InterfaceClasses {

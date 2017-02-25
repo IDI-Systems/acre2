@@ -1,0 +1,17 @@
+CM SEM52SL Antenna -- short
+CM 
+CM 
+CM 
+CM 
+CM forw: 0, 0 ; back: 0, 180
+CE
+GW 1 9 0 0 0 0 0 0.9 .0001
+GE 1
+LD 4 1 9 9 50
+GN 0 0 0 0 4 0.003
+EK
+EX 0 1 1 0 1 0 0
+FR 0 1 0 0 30 0
+XQ
+FR 0 63 0 0 30 1
+RP 0 37 73 1000 -90 0 5 5

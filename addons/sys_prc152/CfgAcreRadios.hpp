@@ -20,7 +20,7 @@ class CfgAcreComponents
                             {"Audio/Data", ACRE_CONNECTOR_U_283}
                         };
         defaultComponents[] = {
-                                {0, "ACRE_120CM_VHF_TNC"}
+                                {0, "ACRE_100CM_VHF_TNC"}
                             };
 
         class InterfaceClasses {
