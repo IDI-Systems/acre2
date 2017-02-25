@@ -48,7 +48,7 @@ private _ringing = {
         _noCrew = true;
     };
 
-    if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && !_noCrew) then {
+    if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && {!_noCrew}) then {
         TRACE_5("Infantry Phone Calling PFH Check",_vehicle,acre_player,_position,_direction,_volume);
         ["Acre_GenericBeep", _position, _direction, _volume, true] call EFUNC(sys_sounds,playSound);
     } else {

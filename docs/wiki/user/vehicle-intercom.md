@@ -14,6 +14,6 @@ Infantry also has the possibility, in vehicles like tanks or IFVs, to communicat
 
 Telephone can be mounted on the hull of the vehicle or in the center of the vehicle. If mounted on the hull (requires config support), maximum distance is 1.5m, otherwise it is 10m. The telephone will automatically be returned if the distance exceeds the maximum, either by player movement or vehicle movement.
 
-Crew members (not passengers) can make the infantry telephone ring as long as it is not in use. In order to do so, interact with the vehicle from one of the allowed positions (driver, commander, gunner and turret positions) and select start/stop ringing. The ringing will automatically stop once the infantry telephone is picked up.
+Crew members (not passengers) can make the infantry telephone ring as long as it is not in use. In order to do so, interact with the vehicle from one of the allowed positions (driver, commander, gunner and turret positions) and select start/stop ringing. The ringing will automatically stop once the infantry telephone is picked up, the vehicle is destroyed or no crew members are aboard.
 
 For technical details for addon makers see [vehicle intercom configuration](/wiki/frameworks/vehicle-intercom).
