@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+if (!hasInterface) exitWith {};
+
 // Exit if ACE3 not loaded
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
