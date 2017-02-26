@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the volume of the current radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING> (Unused)
+ * 1: Event: "setVolume" <STRING> (Unused)
+ * 2: Event data <NUMBER> (Unused)
+ * 3: Radio data <HASH>
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_setVolume;
+ * [ARGUMENTS] call acre_sys_prc343_fnc_setVolume
  *
  * Public: No
  */
@@ -18,7 +21,7 @@
 
 TRACE_1("", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData", ""];
 
 TRACE_1("SETTING CURRENT VOLUME",_this);
 HASH_SET(_radioData,"volume",_eventData);

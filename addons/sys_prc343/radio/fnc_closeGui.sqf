@@ -1,15 +1,16 @@
 /*
  * Author: ACRE2Team
- * Close radio GUI when calling this function. Event rised by onUnload (PRC343_RadioDialog).
+ * Close radio GUI. Event raised by onUnload (PRC343_RadioDialog).
  *
  * Arguments:
- * 0: Radio ID (Unused) <STRING>
- * 1: Event with the value "getChannelData" (Unused) <STRING>
- * 2: Event data with the channel number (Unused) <NUMBER>
- * 3: Radio data (Unused) <HASH>
+ * 0: Radio ID <STRING> (Unused)
+ * 1: Event: "closeGui" <STRING> (Unused)
+ * 2: Event data <NUMBER> (Unused)
+ * 3: Radio data <HASH> (Unused)
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * true <BOOL>
+ * True <BOOL>
  *
  * Example:
  * [] call acre_sys_prc343_fnc_closeGui

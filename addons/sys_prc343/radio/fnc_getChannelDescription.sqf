@@ -4,6 +4,10 @@
  *
  * Arguments:
  * 0: Radio ID <STRING>
+ * 1: Event: "getChannelDescription" <STRING> (Unused)
+ * 2: Event data <ARRAY> (Unused)
+ * 3: Radio data <HASH> (Unused)
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
  * Description of the channel in the form "Block x - Channel y" <STRING>
@@ -15,7 +19,7 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId", "",  "", ""];
+params ["_radioId", "",  "", "", ""];
 
 _currentAbsChannel = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 _currentBlock = floor(_currentAbsChannel / 16);

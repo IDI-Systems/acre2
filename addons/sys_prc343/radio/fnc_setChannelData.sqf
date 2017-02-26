@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the channel data. On a AN/PRC 343 this cannot be changed.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING> (Unused)
+ * 1: Event: "setChannelData" <STRING> (Unused)
+ * 2: Event data <NUMBER> (Unused)
+ * 3: Radio data <HASH>
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_setChannelData;
+ * [ARGUMENTS] call acre_sys_prc343_fnc_setChannelData
  *
  * Public: No
  */
