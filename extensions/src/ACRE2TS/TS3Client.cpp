@@ -433,7 +433,7 @@ ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
     //Only switch channel if enabled in settings
     if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
         anyID clientId;
-		std::string serverName = getServerName();
+        std::string serverName = getServerName();
 
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
             uint64 channelId = INVALID_TS3_CHANNEL;
@@ -496,7 +496,7 @@ uint64 CTS3Client::findChannelByName(std::string name) {
     uint64 *channelList;
     uint64 channelId = INVALID_TS3_CHANNEL;
     char* channelName;
-	std::map<uint64, std::string> channelMap;
+    std::map<uint64, std::string> channelMap;
     int bestDistance = 40;
     uint64 bestChannelId = INVALID_TS3_CHANNEL;
 
@@ -506,7 +506,7 @@ uint64 CTS3Client::findChannelByName(std::string name) {
             channelList++;
             //LOG("Found channel: %d", channelId);
             if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
-				std::string channelNameString = std::string(channelName);
+                std::string channelNameString = std::string(channelName);
                 if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1) {
                     channelMap.emplace(channelId, channelNameString);
                 }
