@@ -22,7 +22,7 @@ disableSerialization;
 private _slider = (GVAR(VolumeControlDialog) select 0) displayCtrl 1900;
 _slider sliderSetRange [-2, 2];
 
-_slider ctrlSetEventHandler ["SliderPosChanged", {call FUNC(onVolumeControlSliderChanged)}];
+_slider ctrlSetEventHandler ["SliderPosChanged", QUOTE(_this call FUNC(onVolumeControlSliderChanged))];
 
 _slider sliderSetPosition GVAR(VolumeControl_Level);
 call FUNC(setVolumeSliderColor);
