@@ -21,7 +21,6 @@
 #define DEFAULT_TS3_CHANNEL "ACRE"
 
 extern TS3Functions ts3Functions;
-using namespace std;
 typedef std::vector<std::string> Sentence;
 
 //TS3Functions CTS3Client::ts3Functions;
@@ -434,7 +433,7 @@ ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
     //Only switch channel if enabled in settings
     if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
         anyID clientId;
-        string serverName = getServerName();
+		std::string serverName = getServerName();
 
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
             uint64 channelId = INVALID_TS3_CHANNEL;
@@ -493,11 +492,11 @@ ACRE_RESULT CTS3Client::moveToPreviousTS3Channel() {
     return ACRE_OK;
 }
 
-uint64 CTS3Client::findChannelByName(string name) {
+uint64 CTS3Client::findChannelByName(std::string name) {
     uint64 *channelList;
     uint64 channelId = INVALID_TS3_CHANNEL;
     char* channelName;
-    map<uint64, string> channelMap;
+	std::map<uint64, std::string> channelMap;
     int bestDistance = 40;
     uint64 bestChannelId = INVALID_TS3_CHANNEL;
 
@@ -507,7 +506,7 @@ uint64 CTS3Client::findChannelByName(string name) {
             channelList++;
             //LOG("Found channel: %d", channelId);
             if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
-                string channelNameString = string(channelName);
+				std::string channelNameString = std::string(channelName);
                 if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1) {
                     channelMap.emplace(channelId, channelNameString);
                 }
@@ -516,7 +515,7 @@ uint64 CTS3Client::findChannelByName(string name) {
             }
         }
 
-        for(auto& element : channelMap) {
+        for (auto& element : channelMap) {
             int distance = levenshteinDistance(split(element.second, ' '), split(name, ' ')) + levenshteinDistance(split(name, ' '), split(element.second, ' '));
             //LOG("Combined istance between '%s' and '%s' is %d", element.second.c_str(), name.c_str(), distance);
             if (distance < bestDistance) {
@@ -562,7 +561,7 @@ Sentence CTS3Client::split(const std::string &s, char delim) {
     return elems;
 }
 
-ACRE_RESULT CTS3Client::updateServerName(string name) {
+ACRE_RESULT CTS3Client::updateServerName(std::string name) {
     setServerName(name);
     if (name != "") {
         updateShouldSwitchTS3Channel(true);
