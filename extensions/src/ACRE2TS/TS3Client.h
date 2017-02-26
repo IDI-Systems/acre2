@@ -51,9 +51,9 @@ public:
     ACRE_RESULT moveToServerTS3Channel();
     ACRE_RESULT moveToPreviousTS3Channel();
     uint64 findChannelByName(std::string name);
-	unsigned int levenshteinDistance(const Sentence& string1, const Sentence& string2);
-	Sentence split(const std::string &s, char delim, Sentence &elems);
-	Sentence split(const std::string &s, char delim);
+    unsigned int levenshteinDistance(const Sentence& string1, const Sentence& string2);
+    Sentence split(const std::string &s, char delim, Sentence &elems);
+    Sentence split(const std::string &s, char delim);
     ACRE_RESULT updateServerName(std::string name);
     ACRE_RESULT updateShouldSwitchTS3Channel(BOOL state);
     BOOL shouldSwitchTS3Channel();

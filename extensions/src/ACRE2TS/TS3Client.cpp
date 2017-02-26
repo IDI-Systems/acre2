@@ -517,13 +517,13 @@ uint64 CTS3Client::findChannelByName(string name) {
         }
 
         for(auto& element : channelMap) {
-			int distance = levenshteinDistance(split(element.second, ' '), split(name, ' ')) + levenshteinDistance(split(name, ' '), split(element.second, ' '));
-			//LOG("Combined istance between '%s' and '%s' is %d", element.second.c_str(), name.c_str(), distance);
-			if (distance < bestDistance) {
-				bestDistance = distance;
-				bestChannelId = element.first;
-				//LOG("New best channel is '%s'", element.second.c_str());
-			}
+            int distance = levenshteinDistance(split(element.second, ' '), split(name, ' ')) + levenshteinDistance(split(name, ' '), split(element.second, ' '));
+            //LOG("Combined istance between '%s' and '%s' is %d", element.second.c_str(), name.c_str(), distance);
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                bestChannelId = element.first;
+                //LOG("New best channel is '%s'", element.second.c_str());
+            }
         }
         return bestChannelId;
     } else {
@@ -533,33 +533,33 @@ uint64 CTS3Client::findChannelByName(string name) {
 }
 
 unsigned int CTS3Client::levenshteinDistance(const Sentence& string1, const Sentence& string2) {
-	const std::size_t len1 = string1.size(), len2 = string2.size();
-	std::vector<unsigned int> col(len2 + 1), prevCol(len2 + 1);
+    const std::size_t len1 = string1.size(), len2 = string2.size();
+    std::vector<unsigned int> col(len2 + 1), prevCol(len2 + 1);
 
-	for (unsigned int i = 0; i < prevCol.size(); i++)
-		prevCol[i] = i;
-	for (unsigned int i = 0; i < len1; i++) {
-		col[0] = i + 1;
-		for (unsigned int j = 0; j < len2; j++)
-			col[j + 1] = std::min({prevCol[1 + j] + 1, col[j] + 1, prevCol[j] + (string1[i] == string2[j] ? 0 : 1)});
-		col.swap(prevCol);
-	}
-	return prevCol[len2];
+    for (unsigned int i = 0; i < prevCol.size(); i++)
+        prevCol[i] = i;
+    for (unsigned int i = 0; i < len1; i++) {
+        col[0] = i + 1;
+        for (unsigned int j = 0; j < len2; j++)
+            col[j + 1] = std::min({prevCol[1 + j] + 1, col[j] + 1, prevCol[j] + (string1[i] == string2[j] ? 0 : 1)});
+        col.swap(prevCol);
+    }
+    return prevCol[len2];
 }
 
 Sentence CTS3Client::split(const std::string &s, char delim, Sentence &elems) {
-	std::stringstream ss(s);
-	std::string item;
-	while (std::getline(ss, item, delim)) {
-		elems.push_back(item);
-	}
-	return elems;
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, delim)) {
+        elems.push_back(item);
+    }
+    return elems;
 }
 
 Sentence CTS3Client::split(const std::string &s, char delim) {
-	Sentence elems;
-	split(s, delim, elems);
-	return elems;
+    Sentence elems;
+    split(s, delim, elems);
+    return elems;
 }
 
 ACRE_RESULT CTS3Client::updateServerName(string name) {
