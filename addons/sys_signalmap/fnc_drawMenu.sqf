@@ -256,7 +256,7 @@ with uiNamespace do {
         GVAR(rxAreaList) lbSetData [_i, str _forEachIndex];
         _i = _i + 1;
     } forEach GVAR(rxAreas);
-    GVAR(rxAreaList) ctrlAddEventHandler ["LBSelChanged", QUOTE(_this call FUNC(onAreaLBChange))];
+    GVAR(rxAreaList) ctrlAddEventHandler ["LBSelChanged", {call FUNC(onAreaLBChange)}];
     GVAR(rxAreaList) lbSetCurSel 0;
     GVAR(rxAreaList) ctrlCommit 0;
 
