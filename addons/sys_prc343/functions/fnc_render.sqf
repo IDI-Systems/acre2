@@ -71,7 +71,7 @@ if (_currentView == 0) then {
     RADIO_CTRL(106) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\channel\prc343_ui_pre_%1.paa", _currentChannel + 1];
     RADIO_CTRL(107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _currentVolumeKnobState];
     RADIO_CTRL(202) ctrlSetTooltip format ["Current Volume: %1%2", round(_currentVolume * 100), "%"];
-    RADIO_CTRL(99999) ctrlSetText QUOTE(PATHTOF(Data\static\prc343_ui_backplate.paa));
+    RADIO_CTRL(99999) ctrlSetText QPATHTOF(Data\static\prc343_ui_backplate.paa);
 
     {_x ctrlEnable true;} forEach [RADIO_CTRL(201), RADIO_CTRL(202), RADIO_CTRL(203)];
 };

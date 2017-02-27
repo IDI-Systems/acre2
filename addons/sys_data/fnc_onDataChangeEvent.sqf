@@ -25,7 +25,7 @@ if (ACRE_DATA_SYNCED) then {
     if (!(_eventId in GVAR(pendingNetworkEvents))) then {
         {
             _x params ["_unit", "_radioId", "_event", "_data", ["_eventKind", "CfgAcreDataInterface"]];
-            /*_eventKind     = "CfgAcreDataInterface";
+            /*_eventKind = "CfgAcreDataInterface";
             if ((count _x) > 4) then {
                 _eventKind = _x select 4;
             } else {

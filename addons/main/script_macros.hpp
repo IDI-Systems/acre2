@@ -113,11 +113,14 @@ Antenna Defines
 #define DVAR(varName) if (isNil "ACRE_DEBUG_NAMESPACE") then { ACRE_DEBUG_NAMESPACE = []; }; if (!(QUOTE(varName) in ACRE_DEBUG_NAMESPACE)) then { ACRE_DEBUG_NAMESPACE pushBack QUOTE(varName); }; varName
 
 // Dynamic sub-modules for systems
-#define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QUOTE(PATHTOF(folder\__PREP__.sqf))
-#define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QUOTE(PATHTOF(module\DOUBLES(fnc,fncName).sqf))
+#define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QPATHTOF(folder\__PREP__.sqf)
+#define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(module\DOUBLES(fnc,fncName).sqf)
 #define PREP_STATE(stateFile) [] call compile preprocessFileLineNumbers format [QPATHTOF(states\%1.sqf), #stateFile]
 
 // Deprecation
 #define ACRE_DEPRECATED(arg1,arg2,arg3) WARNING_3("%1 is deprecated. Support will be dropped in version %2. Replaced by: %3",arg1,arg2,arg3)
+
+// Icons
+#define ICON_RADIO_CALL "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa"
 
 #include "script_debug.hpp"

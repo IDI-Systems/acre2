@@ -14,16 +14,14 @@ acre::signal::antenna::antenna(std::istream & stream_)
     stream_.read((char *)&_width, sizeof(uint32_t));
     stream_.read((char *)&_height, sizeof(uint32_t));
 
+    stream_.read((char *)&_elevation_step, sizeof(uint32_t));
+    stream_.read((char *)&_direction_step, sizeof(uint32_t));
+
     uint32_t map_size = _width * _height * _total_entries;
 
     _gain_map = new antenna_gain_entry[map_size];
 
     stream_.read((char *)_gain_map, sizeof(antenna_gain_entry)*map_size);
-
-    _elevation_step = 100.0f / (float)_width;
-    _direction_step = 360.0f / (float)_height;
-
-
 }
 
 float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 dir_signal_, const float f_)
@@ -41,6 +39,7 @@ float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 
 
     float dir = std::fmod(dir_antenna + dir_signal, 360.0f);
     float elev = elev_antenna + elev_signal;
+
     if (elev > 90.0f || elev < -90.0f) {
         dir = std::fmod(dir + 180.0f, 360.0f);
         if (elev < -90.0f) {
