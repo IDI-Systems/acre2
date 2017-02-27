@@ -16,9 +16,12 @@ class CfgAcreComponents {
         isPackRadio = 1;
         isDeployable = 0;
 
-        connectors[] =     { {"Antenna", ACRE_CONNECTOR_BNC}, {"Audio/Data", ACRE_CONNECTOR_U_283}
+        connectors[] =     {
+            {"Antenna", ACRE_CONNECTOR_BNC},
+            {"Audio/Data", ACRE_CONNECTOR_U_283}
         };
-        defaultComponents[] = { {0, "ACRE_120CM_VHF_BNC"} /*TODO Not use this */
+        defaultComponents[] = {
+            {0, "ACRE_SEM70_LONG_BNC"}
         };
 
         class InterfaceClasses {

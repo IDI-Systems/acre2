@@ -37,7 +37,7 @@ class CfgAcreComponents {
     };
 
     class ACRE_SEM52_SHORT_BNC: ACRE_BaseAntenna {
-        name = "SEM52SL Antenna Short (0.4m)";
+        name = "SEM52SL/SEM70 Antenna Short (0.4m)";
         connector = ACRE_CONNECTOR_BNC;
         height = 0.4;
         binaryGainFile = QPATHTOF(binary\sem52_short_gain.aba);
@@ -48,6 +48,13 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_BNC;
         height = 0.9;
         binaryGainFile = QPATHTOF(binary\sem52_long_gain.aba);
+    };
+
+    class ACRE_SEM70_LONG_BNC: ACRE_BaseAntenna {
+        name = "SEM70 Antenna long (1.03m)";
+        connector = ACRE_CONNECTOR_BNC;
+        height = 1.03;
+        binaryGainFile = QPATHTOF(binary\sem70_long_gain.aba);
     };
 
     class ACRE_AT271_38: ACRE_BaseAntenna {
