@@ -1,5 +1,5 @@
 ---
-title: Adding new antenna
+title: Adding New Antenna
 ---
 
 Every radio in ACRE can be equipped with at least one antenna. Since radios usually have specific antennas designed and tuned for the radio and the frequency range used, it is likely one must add a new antenna if a [new radio](creating-new-radio) is created for ACRE.
