@@ -1,6 +1,6 @@
 /*
  * Author: Tim Beswick
- * Checks if main display is visible and sets server name, triggering ts3 channel move.
+ * Checks if main display is visible and sets server name, triggering TeamSpeak 3 channel move.
  *
  * Arguments:
  * None
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_server_fnc_teamspeakChannelCheck
+ * [] call acre_sys_io_fnc_teamspeakChannelCheck
  *
  * Public: No
  */
@@ -18,7 +18,7 @@
 [{
     params ["", "_idPFH"];
 
-    if (GVAR(serverStarted) && {!(isNull (findDisplay 46))}) exitWith {
+    if (!(isNull (findDisplay 46))) exitWith {
         [_idPFH] call CBA_fnc_removePerFrameHandler;
         ["setServerName", [serverName]] call EFUNC(sys_rpc,callRemoteProcedure);
     };

@@ -49,10 +49,10 @@ DFUNC(connectionFnc) = {
                 } else {
                     hint "ACRE CONNECTED";
                 };
-                call FUNC(ts3ChannelCheck);
                 GVAR(hasErrored) = false;
                 INFO("Pipe opened.");
                 GVAR(serverStarted) = true;
+                call FUNC(ts3ChannelCheck);
             };
         };
     } else {
