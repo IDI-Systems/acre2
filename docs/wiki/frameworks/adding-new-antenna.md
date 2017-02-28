@@ -37,7 +37,7 @@ class CfgAcreComponents {
 
 ## Generating Antenna Gain Data
 
-As ACRE tries to simulate radios as close to reality as possible, the gain data used is coming from a tool used for antenna and electromagnetic effects simulation. This tool is called 4NEC2 and can be obtained for free: [4NEC2](http://www.qsl.net/4nec2/)
+As ACRE tries to simulate radios as close to reality as possible, the gain data used is coming from a tool used for antenna and electromagnetic effects simulation. This tool is called 4NEC2 and can be obtained for free: [4NEC2](http://www.qsl.net/4nec2/).
 For installation instructions and a bunch of good tutorials, please refer to the website. 
 
 ### Setting up the antenna
@@ -46,16 +46,17 @@ The first step after opening 4NEC2 is to create a model of the antenna. Usually 
 
 ### Calculating antenna gain
 
-Calculation of antenna gain can be done directly in 4NEC2 by pressing F7. To ensure the result to be usable by ACRE2, the setup shown in the figure below is highly recommended. A resolution of 5 Degrees is a good trade-off between file size/calculation speed and later in-game precision. Before calculating the frequency range must be set correctly. The actual values depend on the frequency range of the antenna/radio and a step size of 1(MHz) is recommended. While the lower limit can be on the minimal frequency, the higher limit must be 1-2 MHz over the highest used frequency. _**Note**: As 4NEC2 is only capable of 256 frequency steps, the step size must be set to a higher value of the frequency range is higher than 256._
-To perform the calculation, press the button TBC.
+Calculation of antenna gain can be done directly in 4NEC2 by pressing F7. To ensure the result to be usable by ACRE2, the setup shown in the figure below is highly recommended. A resolution of 5 Degrees is a good trade-off between file size/calculation speed and later in-game precision. Before calculating the frequency range must be set correctly. The actual values depend on the frequency range of the antenna/radio and a step size of 1(MHz) is recommended. While the lower limit can be on the minimal frequency, the higher limit must be 1-2 MHz over the highest used frequency. To perform the calculation, press the button TBC.
+_**Note**: As 4NEC2 is only capable of 256 frequency steps, the step size must be set to a higher value of the frequency range is higher than 256._
 
 ### The resulting files
 
-4NEC2 creates two files after finishing the calculation process. One with the ending `*.inp` and the other one with `*.out`. The input file `*.inp` looks very similar to the `*.nec` file, with the difference that it contains the specific input data for the calculation (the parameters, we entered in the calculation window earlier). The output file `*.out` contains all the generated gain data plus a bunch of additional data. _**Note**: 4NEC2 sometimes doesn't name the two files correctly. The input file's name seems to be cut off after a few characters. As the file names need to be the same for the python script to work properly, rename them.
+4NEC2 creates two files after finishing the calculation process. One with the ending `*.inp` and the other one with `*.out`. The input file `*.inp` looks very similar to the `*.nec` file, with the difference that it contains the specific input data for the calculation (the parameters, we entered in the calculation window earlier). The output file `*.out` contains all the generated gain data plus a bunch of additional data.
+_**Note**: 4NEC2 sometimes doesn't name the two files correctly. The input file's name seems to be cut off after a few characters. As the file names need to be the same for the python script to work properly, rename them._
 
 ## Writing binary files to ACRE2
 
-The first step is to copy both `*.inp` and `*.out` files to the correct location in your ACRE2 development folder. E.g. `P:\acre2\extras\antennas`. After that simply start a Command Prompt (Win) or Terminal (Linux) instance and navigate to the tools folder. The python script we are looking for is `antenna_create_binary.py`. Simply start it with a single parameter: The name of the input/output files. If we stay at the PRC343 antenna as an example, the command should be like this: `python antenna_create_binary.py prc343`. And then you need to wait a few seconds, the script will tell you how many bytes were written to which file.
+The first step is to copy both `*.inp` and `*.out` files to the correct location in your ACRE2 development folder. E.g. `P:\acre2\extras\antennas`. After that simply start a Command Prompt (Win) or Terminal (Linux) instance and navigate to the tools folder. The python script we are looking for is `antenna_create_binary.py`. Start it with a single parameter: The name of the input/output files. If we stay at the PRC343 antenna as an example, the command should be like this: `python antenna_create_binary.py prc343`. After waiting for a few seconds, the script will tell you how many bytes were written to which file.
 
 ### Create Antenna config entry
 
