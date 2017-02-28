@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Creates a PFH to monitor the extension's connection to the TeamSpeak plugin.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_io_fnc_server
  *
  * Public: No
  */
@@ -24,8 +23,7 @@ DFUNC(connectionFnc) = {
             LOG("ATEEEMPTING TO OPEN PIPE!");
             // acre_player sideChat "OPEN PIPE";
             GVAR(pongTime) = diag_tickTime;
-            private _connectString = "0ts";
-            GVAR(pipeCode) = "ACRE2Arma" callExtension _connectString;
+            GVAR(pipeCode) = "ACRE2Arma" callExtension "0ts"; // Connect String
             // acre_player sideChat format["RESULT: %1", GVAR(pipeCode)];
             if (GVAR(pipeCode) != "1") then {
                 if (time > 15) then {
