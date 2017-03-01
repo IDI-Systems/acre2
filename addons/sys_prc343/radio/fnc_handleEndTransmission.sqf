@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Radio ID <STRING>
  * 1: Event: "handleEndTransmission" <STRING> (Unused)
- * 2: Event data <NUMBER>
+ * 2: Event data with transmitting ID <STRING>
  * 3: Radio data <HASH> (Unused)
  * 4: Remote <BOOL> (Unused)
  *
@@ -14,16 +14,16 @@
  * True <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_handleEndTransmission
+ * ["ACRE_PRC343_ID_1", "handleEndTransmission", "ACRE_PRC343_ID_2", [], false] call acre_sys_prc343_fnc_handleEndTransmission
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId", "_eventKind", "_eventData", "", ""];
+params ["_radioId", "", "_eventData", "", ""];
 
 _eventData params ["_txId"];
-private _currentTransmissions = SCRATCH_GET(_radioId, "currentTransmissions");
+private _currentTransmissions = SCRATCH_GET(_radioId,"currentTransmissions");
 _currentTransmissions = _currentTransmissions - [_txId];
 
 if ((count _currentTransmissions) == 0) then {

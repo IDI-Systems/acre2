@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_setOnOffState
+ * ["ACRE_PRC343_ID_1", "setOnOffState", 1, [], false] call acre_sys_prc343_fnc_setOnOffState
  *
  * Public: No
  */

@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
  * 1: Event: "handleBeginTransmission" <STRING> (Unused)
- * 2: Event data <NUMBER> (Unused)
+ * 2: Event data <ARRAY> (Unused)
  * 3: Radio data <HASH> (Unused)
  * 4: Remote <BOOL> (Unused)
  *
@@ -13,7 +13,7 @@
  * True <BOOL>
  *
  * Example:
- * [] call acre_sys_prc343_fnc_handleBeginTransmission
+ * ["ACRE_PRC343_ID_1", "handleBeginTransmission", [], [], false] call acre_sys_prc343_fnc_handleBeginTransmission
  *
  * Public: No
  */

@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
  * 1: Event: "setChannelData" <STRING> (Unused)
- * 2: Event data <NUMBER> (Unused)
+ * 2: Event data <ARRAY> (Unused)
  * 3: Radio data <HASH>
  * 4: Remote <BOOL> (Unused)
  *
@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_setChannelData
+ * ["ACRE_PRC343_ID_1", "setChannelData", [], [], false] call acre_sys_prc343_fnc_setChannelData
  *
  * Public: No
  */

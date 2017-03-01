@@ -1,19 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the unique identity of the current channel since the PRC343 has multiple blocks
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
- * 1: Event: "getCurrentChannelInternal" <STRING> (Unused)
- * 2: Event data <NUMBER> (Unused)
- * 3: Radio data <HASH>
- * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Identity of the current channel <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_getCurrentChannelInternal
+ * ["ACRE_PRC343_ID_1"] call acre_sys_prc343_fnc_getCurrentChannelInternal
  *
  * Public: No
  */

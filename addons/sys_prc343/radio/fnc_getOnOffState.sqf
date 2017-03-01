@@ -13,7 +13,7 @@
  * Returns 1 if the radio is on 0 otherwise <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_getOnOffState
+ * ["ACRE_PRC343_ID_1", "getOnOffState", [], _radioData, false] call acre_sys_prc343_fnc_getOnOffState
  *
  * Public: No
  */

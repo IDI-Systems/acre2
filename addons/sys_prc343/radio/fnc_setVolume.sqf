@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_setVolume
+ * [* ["ACRE_PRC343_ID_1", "volume", 0.8, _radioData, false] call acre_sys_prc343_fnc_setState] call acre_sys_prc343_fnc_setVolume
  *
  * Public: No
  */

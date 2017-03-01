@@ -15,7 +15,7 @@
  * True <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_openGui
+ * ["ACRE_PRC343_ID_1", "openGui", [], [], false] call acre_sys_prc343_fnc_openGui
  *
  * Public: No
  */

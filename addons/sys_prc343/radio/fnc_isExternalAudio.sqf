@@ -14,7 +14,7 @@
  * False <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_isExternalAudio
+ * ["ACRE_PRC343_ID_1", "isExternalAudio", [], [], false] call acre_sys_prc343_fnc_isExternalAudio
  *
  * Public: No
  */

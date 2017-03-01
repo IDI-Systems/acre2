@@ -1,11 +1,11 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the a key pair content into the radioData hash.
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
  * 1: Event: "setState" <STRING> (Unused)
- * 2: Event data <NUMBER>
+ * 2: Event data key pair ["Key", value] <ARRAY>
  * 3: Radio data <HASH>
  * 4: Remote <BOOL> (Unused)
  *
@@ -13,7 +13,8 @@
  * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_setState
+ * ["ACRE_PRC343_ID_1", "setState", ["volume", 0.8], _radioData, false] call acre_sys_prc343_fnc_setState
+ * ["ACRE_PRC343_ID_1", "setState", ["currentChannel", 1], _radioData, false] call acre_sys_prc343_fnc_setState
  *
  * Public: No
  */

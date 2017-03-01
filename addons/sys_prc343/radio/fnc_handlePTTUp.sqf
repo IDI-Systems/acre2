@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Radio ID <STRING>
  * 1: Event: "handlePTTUp" <STRING> (Unused)
- * 2: Event data <NUMBER> (Unused)
+ * 2: Event data <ARRAY> (Unused)
  * 3: Radio data <HASH> (Unused)
  * 4: Remote <BOOL> (Unused)
  *
@@ -14,7 +14,7 @@
  * True <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_handlePTTUp
+ * ["ACRE_PRC343_ID_1", "handlePTTUp", [], [], false] call acre_sys_prc343_fnc_handlePTTUp
  *
  * Public: No
  */

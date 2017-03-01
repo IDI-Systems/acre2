@@ -13,12 +13,12 @@
  * Array returning the modified signal data <ARRAY>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "handleSignalData", _eventData, _radioData, false] call acre_sys_prc343_fnc_handleSignalData
+ * ["ACRE_PRC343_ID_1", "handleSignalData", _eventData, [], false] call acre_sys_prc343_fnc_handleSignalData
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["","","_eventData", ""];
+params ["", "", "_eventData", ""];
 
 _eventData;

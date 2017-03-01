@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of turning the channel radio knob or changing the block. It essentially sets a new channel as active
+ * and plays the necessary sounds.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Array with the second entry identifying if it was a left or right click <ARRAY>
+ * 1: Is changing block <BOOL>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_onChannelKnobPress;
+ * [["", 0], 0] call acre_sys_prc343_fnc_onChannelKnobPress
  *
  * Public: No
  */

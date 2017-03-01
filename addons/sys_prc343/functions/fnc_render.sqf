@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Renders the radio when opened
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Display identifier <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * True <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_render;
+ * [DisplazID] call acre_sys_prc343_fnc_render
  *
  * Public: No
  */
@@ -23,13 +22,13 @@
 params ["_display"];
 
 private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
-private _currentBlock = floor(_currentAbsChannel / 16);
+private _currentBlock = floor (_currentAbsChannel / 16);
 private _currentChannel = _currentAbsChannel - _currentBlock*16;
 
 
 //private _currentChannelKnobState = _currentChannelArray select 0; //channel from 0 to 15
 private _currentVolume = GET_STATE("volume"); //from 0 to 1
-private _currentVolumeKnobState = round(_currentVolume * 5);
+private _currentVolumeKnobState = round (_currentVolume * 5);
 private _currentView = GET_STATE("currentView"); //0(IN) or 1(OUT)
 
 {_x ctrlEnable false;} forEach [RADIO_CTRL(201), RADIO_CTRL(202), RADIO_CTRL(203), RADIO_CTRL(204)];
@@ -70,7 +69,7 @@ if (_currentView == 0) then {
 
     RADIO_CTRL(106) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\channel\prc343_ui_pre_%1.paa", _currentChannel + 1];
     RADIO_CTRL(107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _currentVolumeKnobState];
-    RADIO_CTRL(202) ctrlSetTooltip format ["Current Volume: %1%2", round(_currentVolume * 100), "%"];
+    RADIO_CTRL(202) ctrlSetTooltip format ["Current Volume: %1%2", round (_currentVolume * 100), "%"];
     RADIO_CTRL(99999) ctrlSetText QUOTE(PATHTOF(Data\static\prc343_ui_backplate.paa));
 
     {_x ctrlEnable true;} forEach [RADIO_CTRL(201), RADIO_CTRL(202), RADIO_CTRL(203)];

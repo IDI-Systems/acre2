@@ -14,7 +14,7 @@
  * Description of the channel in the form "Block x - Channel y" <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_getListInfo
+ * ["ACRE_PRC343_ID_1", "getListInfo", [], [], false] call acre_sys_prc343_fnc_getListInfo
  *
  * Public: No
  */

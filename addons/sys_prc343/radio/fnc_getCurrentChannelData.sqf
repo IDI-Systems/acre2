@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
  * 1: Event: "getCurrentChannelData" <STRING> (Unused)
- * 2: Event data <NUMBER> (Unused)
+ * 2: Event data <ARRAY> (Unused)
  * 3: Radio data <HASH>
  * 4: Remote <BOOL> (Unused)
  *
@@ -13,7 +13,7 @@
  * Hash with mode, transmitting and receiving frequencies and power <HASH>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc343_fnc_getCurrentChannelData
+ * ["ACRE_PRC343_ID_1", "getCurrentChannelData", [], _radioData, false] call acre_sys_prc343_fnc_getCurrentChannelData
  *
  * Public: No
  */
