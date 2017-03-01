@@ -35,26 +35,27 @@ class CfgAcreComponents {
             class CfgAcreDataInterface {
                 getListInfo = QFUNC(getListInfo);
 
-                setVolume = QFUNC(setVolume);                // [0-1]
-                getVolume = QFUNC(getVolume);                // [] = 0-1
+                setVolume = QFUNC(setVolume); // [0-1]
+                getVolume = QFUNC(getVolume); // [] = 0-1
 
                 setSpatial = QFUNC(setSpatial);
                 getSpatial = QFUNC(getSpatial);
 
-                setChannelData = QFUNC(setChannelData);            // [channelNumber, [channelData] ]
-                getChannelData = QFUNC(getChannelData);            // [channelNumber] = channelData
-                getCurrentChannelData = QFUNC(getCurrentChannelData);        // channelData (of current channel)
+                setChannelData = QFUNC(setChannelData); // [channelNumber, [channelData] ]
+                getChannelData = QFUNC(getChannelData); // [channelNumber] = channelData
+                getCurrentChannelData = QFUNC(getCurrentChannelData); // channelData (of current channel)
 
 
-                getCurrentChannel = QFUNC(getCurrentChannel);        // [] = channelNumber
-                setCurrentChannel = QFUNC(setCurrentChannel);        // [channelNumber]
+                getCurrentChannel = QFUNC(getCurrentChannel); // [] = channelNumber
+                setCurrentChannel = QFUNC(setCurrentChannel); // [channelNumber]
 
-                getStates = QFUNC(getStates);                // [] = [ [stateName, stateData], [stateName, stateData] ]
-                getState = QFUNC(getState);                // [stateName] = stateData
-                setState = QFUNC(setState);                // [stateName, stateData] = sets state
+                getStates = QFUNC(getStates); // [] = [ [stateName, stateData], [stateName, stateData] ]
+                getState = QFUNC(getState); // [stateName] = stateData
+                setState = QFUNC(setState); // [stateName, stateData] = sets state
+                setStateCritical = QFUNC(setState); // [stateName, stateData] = sets state
 
-                getOnOffState = QFUNC(getOnOffState);            // [] = 0/1
-                setOnOffState = QFUNC(setOnOffState);            // [ZeroOrOne]
+                getOnOffState = QFUNC(getOnOffState); // [] = 0/1
+                setOnOffState = QFUNC(setOnOffState); // [ZeroOrOne]
 
                 initializeComponent = QFUNC(initializeRadio);
 
