@@ -72,13 +72,15 @@ dssignfile = ""
 prefix = "acre"
 pbo_name_prefix = "acre_"
 signature_blacklist = []
-importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "ACRE2ArmA.dll"]
+importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "acre_x64.dll", "ACRE2Arma.dll", "ACRE2Arma_x64.dll", "ACRE2Steam.dll", "ACRE2Steam_x64.dll"]
 extrasFiles = ["examples", "Wav2B64.exe"]
 pluginFiles = ["acre2_win32.dll", "acre2_win64.dll"]
-steamFiles = ["extras\\ACRE2Steam.dll"]
 versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h", "docs\\_data\\sidebar.yml"]
 extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
-extensions64 = ["ACRE2\\ACRE2TS"]
+extensions64 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS"]
+# be_cred_file expected to be in folder defined by enviorment variable CBA_PUBLISH_CREDENTIALS_PATH
+be_cred_filename = "acre_battleye_creds.json"
+
 
 ciBuild = False # Used for CI builds
 
@@ -339,27 +341,35 @@ def compile_extensions(extensions_root, force_build):
         print_blue("\nCompiling extensions in {}".format(extensions_root))
         joinstr = ":rebuild;" if force_build else ";"
 
-        # Prepare build dirs
-        vcproj32 = os.path.join(extensions_root,"vcproj")
-        vcproj64 = os.path.join(extensions_root,"vcproj64")
-        if not os.path.exists(vcproj32):
-            os.mkdir(vcproj32)
-        if not os.path.exists(vcproj64):
-            os.mkdir(vcproj64)
-
         # 32-bit
-        os.chdir(vcproj32)
-        subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF", "-G", "Visual Studio 14 2015"])
-        print()
-        extensions32_cmd = joinstr.join(extensions32)
-        subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
+        if extensions32:
+            # Prepare build dirs
+            vcproj32 = os.path.join(extensions_root,"vcproj")
+            if not os.path.exists(vcproj32):
+                os.mkdir(vcproj32)
+            # Build
+            os.chdir(vcproj32)
+            subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF", "-G", "Visual Studio 14 2015"])
+            print()
+            extensions32_cmd = joinstr.join(extensions32)
+            subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
+        else:
+            print("No 32-bit extensions found.")
 
         # 64-bit
-        os.chdir(vcproj64)
-        subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON", "-G", "Visual Studio 14 2015 Win64"])
-        print()
-        extensions64_cmd = joinstr.join(extensions64)
-        subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
+        if extensions64:
+            # Prepare build dirs
+            vcproj64 = os.path.join(extensions_root,"vcproj64")
+            if not os.path.exists(vcproj64):
+                os.mkdir(vcproj64)
+            # Build
+            os.chdir(vcproj64)
+            subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON", "-G", "Visual Studio 14 2015 Win64"])
+            print()
+            extensions64_cmd = joinstr.join(extensions64)
+            subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
+        else:
+            print("No 64-bit extensions found.")
     except:
         print_error("COMPILING EXTENSIONS.")
         raise
@@ -1533,7 +1543,32 @@ See the make.cfg file for additional build options.
     finally:
         if compile_ext:
             compile_extensions(extensions_root, force_build)
+
         copy_important_files(module_root_parent,os.path.join(release_dir, project))
+
+        # Sign the extensions.
+        if("CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
+            credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
+            cred_file_path = os.path.join(credentials_path, be_cred_filename)
+            if os.path.isfile(cred_file_path):
+                print("Credential file found")
+                cred_file = json.load(open(cred_file_path))
+                dll_sign_path = os.path.join(release_dir, project)
+                sign_tool = cred_file["signtool"]
+                path_to_certificate = cred_file["certificate_path"]
+                certificate_password = cred_file["certificate_password"]
+                print("Signing dlls in folder: {}".format(dll_sign_path))
+                for file in os.listdir(dll_sign_path):
+                    if (file.endswith(".dll") and os.path.isfile(os.path.join(dll_sign_path,file))):
+                        fileToSignPath = os.path.join(dll_sign_path, file)
+                        print("Signing file {}".format(fileToSignPath))
+                        cmd = [sign_tool, "sign", "/f", path_to_certificate, "/p", certificate_password, "/t", "http://timestamp.digicert.com", fileToSignPath]
+                        subprocess.call(cmd)
+            else:
+                print("Credential file not found: {}".format(cred_file_path))
+        else:
+            print("Credential environment variable not found.")
+
         if (os.path.isdir(optionals_root)):
             cleanup_optionals(optionals_modules)
         if not version_update:
@@ -1556,7 +1591,6 @@ See the make.cfg file for additional build options.
     # Make release
     if make_release_zip:
         release_name = "{}_{}".format(zipPrefix, project_version)
-        release_name_steam = "{}_steam".format(release_name)
 
         try:
             # Delete all log files
@@ -1575,21 +1609,9 @@ See the make.cfg file for additional build options.
             print("Packing...")
             release_zip = shutil.make_archive("{}".format(release_name), "zip", release_dir)
 
-            # Create a zip with Steam extension
-            print_blue("\nMaking release: {}.zip".format(release_name_steam))
-            for file in steamFiles:
-                steam_file = os.path.join(module_root_parent,file)
-                if os.path.exists(steam_file):
-                    print("Copying file => {}".format(steam_file))
-                    shutil.copy(steam_file, os.path.join(release_dir, project))
-            print("Packing...")
-            release_zip_steam = shutil.make_archive("{}".format(release_name_steam), "zip", release_dir)
-
             # Move release zip to release folder
             shutil.copy(release_zip, release_dir)
-            shutil.copy(release_zip_steam, release_dir)
             os.remove(release_zip)
-            os.remove(release_zip_steam)
         except:
             raise
             print_error("Could not make release.")

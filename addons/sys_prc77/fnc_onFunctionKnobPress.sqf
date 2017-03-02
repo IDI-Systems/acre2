@@ -52,7 +52,7 @@ if (_newFunction != _currentFunction) then {
         // Retrans
     // };
     if (_newFunction == 4) then {
-        private _eh = _control ctrlAddEventHandler ["MouseButtonUp", QUOTE(_this call FUNC(snapbackFunctionKnob))];
+        private _eh = _control ctrlAddEventHandler ["MouseButtonUp", {call FUNC(snapbackFunctionKnob)}];
     };
     //Play sound and render dialog
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);

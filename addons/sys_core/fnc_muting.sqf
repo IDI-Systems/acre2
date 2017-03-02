@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets up the per frame event handler to mute and unmute clients on TeamSpeak. The muting occurs to optimize TeamSpeak bandwidth as voice data is not sent for muted clients.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_muting
  *
  * Public: No
  */
@@ -27,10 +26,6 @@ GVAR(_fullListTime) = true;
 GVAR(oldPlayerIdList) = [];
 
 DFUNC(mutingPFHLoop) = {
-
-    if (time == 0) exitWith {
-        true;
-    };
     if (diag_tickTime > GVAR(_waitFullSend)) then {
         GVAR(_fullListTime) = true;
     };
@@ -52,31 +47,29 @@ DFUNC(mutingPFHLoop) = {
                 if (!(_remoteTs3Id in ACRE_SPECTATORS_LIST)) then {
                     private _isRemotePlayerAlive = [_remoteUser] call FUNC(getAlive);
                     if (_isRemotePlayerAlive == 1) then {
-                        //PUSH(_playerIdList, _remoteTs3Id);
+                        //_playerIdList pushBack _remoteTs3Id;
 
                         // private _radioListRemote = [_remoteUser] call EFUNC(sys_data,getRemoteRadioList);
                         // private _radioListLocal = [] call EFUNC(sys_data,getPlayerRadioList);
                         // private _okRadios = [_radioListLocal, _radioListRemote, true] call EFUNC(sys_modes,checkAvailability);
-                        if (_remoteUser distance _dynamicPos > 300) then {
-                            PUSH(_muting,_remoteUser);
+                        if (GVAR(enableDistanceMuting) && {_remoteUser distance _dynamicPos > 300}) then {
+                            _muting pushBack _remoteUser;
                             _muted = 1;
+                            if (_remoteUser in GVAR(speakers)) then {
+                                _muted = 0;
+                            };
                         };
-                        if (_remoteUser in GVAR(speakers)) then {
-                            _muted = 0;
-                        };
+
                         if (GVAR(_fullListTime)) then {
                             _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
-                            _remoteUser setVariable [QGVAR(muted), _muted, false];
                         } else {
-                            if (((_remoteUser in GVAR(muting)) && _muted == 0) || (!(_remoteUser in GVAR(muting)) && _muted == 1)) then {
+                            if ((_muted == 0 && {_remoteUser in GVAR(muting)}) || (_muted == 1 && {!(_remoteUser in GVAR(muting))})) then {
                                 _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
-                                _remoteUser setVariable [QGVAR(muted), _muted, false];
                             };
                         };
                     };
                 } else {
-                    PUSH(_muting,_remoteUser);
-                    _remoteUser setVariable [QGVAR(muted), 1, false];
+                    _muting pushBack _remoteUser;
                 };
             //};
         };
@@ -90,7 +83,7 @@ DFUNC(mutingPFHLoop) = {
         if ((count _newSpectators) > 0) then {
             {
                 if (_x != GVAR(ts3id)) then {
-                    _mutingParams = _mutingParams + format["%1,%2,", _x, 1];
+                    _mutingParams = _mutingParams + format["%1,1,", _x];
                 };
             } forEach _newSpectators;
             if (!GVAR(_fullListTime)) then {
@@ -102,7 +95,7 @@ DFUNC(mutingPFHLoop) = {
             if (ACRE_IS_SPECTATOR) then {
                 {
                     if (_x != GVAR(ts3id)) then {
-                        _mutingParams = _mutingParams + format["%1,%2,", _x, 0];
+                        _mutingParams = _mutingParams + format["%1,0,", _x];
                     };
                 } forEach ACRE_SPECTATORS_LIST;
             };
@@ -113,7 +106,7 @@ DFUNC(mutingPFHLoop) = {
     if (ACRE_IS_SPECTATOR && GVAR(_fullListTime)) then {
         {
             if (_x != GVAR(ts3id)) then {
-                _mutingParams = _mutingParams + format["%1,%2,", _x, 0];
+                _mutingParams = _mutingParams + format["%1,0,", _x];
             };
         } forEach ACRE_SPECTATORS_LIST;
     };
@@ -128,4 +121,8 @@ DFUNC(mutingPFHLoop) = {
     };
     true
 };
-ADDPFH(DFUNC(mutingPFHLoop), 0.25, []);
+
+// Wait until time > 0, to save check in PFH
+[{time > 0},{
+    ADDPFH(FUNC(mutingPFHLoop), 0.25, []);
+},[]] call CBA_fnc_waitUntilAndExecute;

@@ -7,10 +7,6 @@ PREP(onVolumeControlKeyPressUp);
 PREP(onVolumeControlSliderChanged);
 PREP(setVolumeSliderColor);
 
-PREP(enableZeusOverlay);
-PREP(setZeusOverlayDetail);
-PREP(disableZeusOverlay);
-
 PREP(openInventory);
 PREP(closeInventory);
 
@@ -19,3 +15,9 @@ PREP(onInventoryRadioDoubleClick);
 
 PREP(inventoryListMouseDown);
 PREP(inventoryListMouseUp);
+
+PREP(uniqueArray);
+PREP(onInventoryAction);
+PREP(handleContextMenu);
+PREP(handleTake);
+PREP(inventoryMonitorPFH);

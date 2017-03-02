@@ -18,6 +18,8 @@
  */
 #include "script_component.hpp"
 
+if (!isNil QGVAR(customSignalFunc)) exitWith { _this call GVAR(customSignalFunc); };
+
 params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
 private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];

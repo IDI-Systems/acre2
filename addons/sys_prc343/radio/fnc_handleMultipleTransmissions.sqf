@@ -1,24 +1,30 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles multiple transmissions in the "singleChannelPRR" mode. In this mode, the following parameters
+ * are passed: transmitting frequency (frequencyTX), receiving frequency (frequencyRX), power and mode.
+ * Depending on this parameters, the function determines if a transmission is usable by the radio or if it
+ * is ignored.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Event: "handleMultipleTransmission" <STRING> (Unused)
+ * 2: Event data: transmitting radio IDs <ARRAY>
+ * 3: Radio data <HASH> (Unused)
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * List of usable transmissions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1", "handleMultipleTransmissions", ["ACRE_PRC343_ID_2", "ACRE_PRC_343_ID_3"], [], false] call acre_sys_prc343_fnc_handleMultipleTransmissions
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId","","_radios"];
+params ["_radioId", "", "_radios", "", ""];
 
-if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !ACRE_FULL_DUPLEX) exitWith { [] };
+if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !EGVAR(sys_core,fullDuplex)) exitWith { [] };
 private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
 private _found = false;
 private _transmissionsChanged = false;
@@ -113,7 +119,7 @@ if (_transmissionsChanged) then {
             PUSH(_hearableTransmissions, _x);
         } forEach _sortedRadios;
 
-        if (ACRE_INTERFERENCE) then {
+        if (EGVAR(sys_core,interference)) then {
             if ((count _hearableTransmissions) > 0) then {
                 _junkTransmissions append _hearableTransmissions;
                 _hearableTransmissions params ["_bestSignal"];
@@ -150,9 +156,9 @@ if (_transmissionsChanged) then {
         _signalData params ["_signalPercent","_signalDbM"];
 
         private _squelch = -100;
-        if (_signalDbM < _squelch || !ACRE_INTERFERENCE) then {
+        if (_signalDbM < _squelch || !EGVAR(sys_core,interference)) then {
 
-            if (ACRE_INTERFERENCE) then {
+            if (EGVAR(sys_core,interference)) then {
                 _okRadios = [];
             };
             private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);

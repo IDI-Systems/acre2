@@ -1,12 +1,16 @@
+PREP(addGear);
 PREP(addLanguageType);
 PREP(aliveMonitor);
 PREP(callExt);
 PREP(canUnderstand);
 PREP(cycleLanguage);
+PREP(displayNotification);
 PREP(findOcclusion);
 PREP(getAlive);
 PREP(getClientIdLoop);
+PREP(getCompartment);
 PREP(getHeadVector);
+PREP(getGear);
 PREP(getLanguageId);
 PREP(getLanguageName);
 PREP(getSpeakingLanguageId);
@@ -26,6 +30,8 @@ PREP(processDirectSpeaker);
 PREP(processRadioSpeaker);
 PREP(remoteStartSpeaking);
 PREP(remoteStopSpeaking);
+PREP(removeGear);
+PREP(replaceGear);
 PREP(setPluginSetting);
 PREP(setSpeakingLanguage);
 PREP(setSpokenLanguages);
@@ -43,4 +49,11 @@ PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
 
-PREP(formatNumber);
+
+PREP(fastHashCopy);
+PREP(fastHashCopyArray);
+//PREP(fastHashCreate);
+PREP(fastHashKeys);
+
+PREP(coreInitPFH);
+PREP(vehicleCrewPFH);

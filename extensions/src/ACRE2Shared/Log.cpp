@@ -36,6 +36,9 @@ size_t Log::Write(DWORD msgType, char *function, unsigned int line, const char *
     BOOL res;
     SYSTEMTIME st;
 
+    if (this == NULL)
+        return 0xFFFFFFFF;
+
     if (this->fileHandle == INVALID_HANDLE_VALUE) 
         return 0xFFFFFFFF;
 

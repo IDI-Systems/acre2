@@ -33,10 +33,10 @@ GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
             [ICON_LOADING, true] call DFUNC(toggleIcon);
             private _volume = GET_STATE("volume");
 
-            private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+            private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
 
             TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
-            if (!isNil "_display") then {
+            if (!isNull _display) then {
                 (_display displayCtrl ICON_LOADING) progressSetPosition _volume;
                 (_display displayCtrl ICON_LOADING) ctrlCommit 0;
             };
@@ -93,11 +93,11 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                     [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
 
                     private _volume = GET_STATE("volume");
-                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
                     private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
-                    if (!isNil "_display") then {
+                    if (!isNull _display) then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
                         (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;
@@ -125,11 +125,11 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                     [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
 
                     private _volume = GET_STATE("volume");
-                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
                     private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
-                    if (!isNil "_display") then {
+                    if (!isNull _display) then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
                         (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;
@@ -157,11 +157,11 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                     [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
 
                     private _volume = GET_STATE("volume");
-                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
                     private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
-                    if (!isNil "_display") then {
+                    if (!isNull _display) then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
                         (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;
@@ -187,11 +187,11 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
                     [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
 
                     private _volume = GET_STATE("volume");
-                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
                     private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
 
                     TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
-                    if (!isNil "_display") then {
+                    if (!isNull _display) then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
                         (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;

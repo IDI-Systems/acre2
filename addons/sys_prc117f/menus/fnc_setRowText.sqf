@@ -10,7 +10,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_setRowText
  *
  * Public: No
  */
@@ -59,22 +59,17 @@ TRACE_3("setting text", _start, _rowCount, _length);
 
 private _baseId = (_row * 1000) +1;
 
-private _i = 0;
-while { _i < _rowCount} do {
+
+for "_i" from 0 to (_rowCount -1) do {
     private _id = _baseId + _i;
-    (_display displayCtrl _id) ctrlSetText "";
-    (_display displayCtrl _id) ctrlCommit 0;
-    _i = _i + 1;
+    private _ctrl = (_display displayCtrl _id);
+    _ctrl ctrlSetText "";
+    _ctrl ctrlCommit 0;
 };
 
-
-_i = 0;
-private _tmp = _start;
-while { _tmp < _rowCount && _i < _length} do {
-    private _id = _baseId + _tmp;
-    (_display displayCtrl _id) ctrlSetText (toString [_data select _i]);
-    (_display displayCtrl _id) ctrlCommit 0;
-
-    _tmp = _tmp + 1;
-    _i = _i + 1;
+for "_i" from _start to ((_rowCount -1) min (_start+_length-1)) do {
+    private _id = _baseId + _i;
+    private _ctrl = (_display displayCtrl _id);
+    _ctrl ctrlSetText (toString [_data select (_i-_start)]);
+    _ctrl ctrlCommit 0;
 };

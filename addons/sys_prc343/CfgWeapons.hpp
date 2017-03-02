@@ -15,11 +15,11 @@ class CfgWeapons {
 
     // replace ItemRadios icon with the 343 icon for stupid people
 
-    class ACRE_PRC343 : ACRE_BaseRadio {
+    class ACRE_PRC343: ACRE_BaseRadio {
         displayName = "AN/PRC-343";
         useActionTitle = "AN/PRC-343";
-        picture = QUOTE(PATHTOF(Data\static\prc343_icon.paa));
-        model = QUOTE(PATHTOF(Data\models\acre_prc343_model.p3d));
+        picture = QPATHTOF(Data\static\prc343_icon.paa);
+        model = QPATHTOF(Data\models\acre_prc343_model.p3d);
         descriptionShort = "AN/PRC-343 PRR Radio";
 
         scopeCurator = 2;
@@ -27,15 +27,13 @@ class CfgWeapons {
 
         type = 4096;
         simulation = "ItemMineDetector";
-        class ItemInfo
-        {
+        class ItemInfo {
             mass = 8;
             type = 0;
             scope = 0;
         };
 
-        class Library
-        {
+        class Library {
             libTextDesc = "AN/PRC-343";
         };
     };

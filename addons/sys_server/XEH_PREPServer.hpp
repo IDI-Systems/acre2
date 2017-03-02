@@ -1,10 +1,10 @@
 PREP(doAddComponentCargo);
 PREP(getRadioId);
 PREP(setSpectator);
-PREP(remoteDebugMsg);
 PREP(masterIdTracker);
 PREP(collect);
 PREP(onGetRadioId);
 PREP(acknowledgeId);
-PREP(invalidGarbageCollect);
-PREP(checkServerGearDesync);
+PREP(stopRadioGarbageCollect);
+PREP(sendIntentToGarbageCollect);
+PREP(removeGCQueue);

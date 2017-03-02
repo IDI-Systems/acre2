@@ -29,7 +29,7 @@ if (_dir == 0) then {
     };
 };
 
-private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
+private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
 TRACE_2("defaultButtonPress", _display, _event);
 switch (_event select 0) do {
     case 'VOLUME': {

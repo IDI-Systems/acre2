@@ -30,7 +30,6 @@ GVAR(NumpadMap_Number) = [
 ];
 
 DFUNC(doNumberButton) = {
-    //TRACE_1(QUOTE(FUNC(doNumberButton)), _this);
     params ["_menu","_event"];
 
     private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
@@ -79,7 +78,6 @@ DFUNC(doNumberButton) = {
 };
 
 DFUNC(onButtonPress_Number) = {
-    //TRACE_1(QUOTE(FUNC(onButtonPress_Number)), _this);
     params ["_menu","_event"];
 
     private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumber", 0.0);
@@ -186,7 +184,6 @@ DFUNC(onButtonPress_Number) = {
 };
 
 DFUNC(renderMenu_Number) = {
-    //TRACE_1(QUOTE(FUNC(renderMenu_Number)), _this);
     params ["_menu"]; // the menu to render is passed
 
     private _displaySet = MENU_SUBMENUS(_menu);

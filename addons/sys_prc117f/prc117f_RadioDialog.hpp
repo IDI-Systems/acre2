@@ -6,7 +6,7 @@ class Prc117f_RadioDialog {
     controlsBackground[] = {Prc117fBackground};
     objects[] = {};
 
-    class Prc117fBackground : Prc117f_RscBackground {
+    class Prc117fBackground: Prc117f_RscBackground {
         type = CT_STATIC;
         idc = -1;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
@@ -18,7 +18,7 @@ class Prc117f_RadioDialog {
         y= (0.5-((1*safezoneW)/2));
         w = 1*SafeZoneW;
         h = 1*SafeZoneW;
-        text = QUOTE(PATHTOF(Data\prc117f_ui.paa));
+        text = QPATHTOF(Data\prc117f_ui.paa);
     };
     class controls {
 
@@ -33,8 +33,7 @@ class Prc117f_RadioDialog {
         END_CONTROL
 
 
-        class BatteryBar
-        {
+        class BatteryBar {
             idc = 99991;
             x = (( (0.33+(0.00438*6)) * safeZoneW) + safeZoneX);
             y = (((0.392 + 0.00175) * safeZoneW) + safeZoneX);
@@ -48,8 +47,7 @@ class Prc117f_RadioDialog {
             tooltip = "ST_HORIZONTAL";
         };
 
-        class VolumeBar
-        {
+        class VolumeBar {
             idc = 99994;
             x = (( (0.33+(0.00438*6)) * safeZoneW) + safeZoneX);
             y = (((0.392 + 0.00175) * safeZoneW) + safeZoneX);
@@ -63,8 +61,7 @@ class Prc117f_RadioDialog {
             tooltip = "ST_HORIZONTAL";
         };
 
-        class TransmitBar
-        {
+        class TransmitBar {
             idc = 99995;
             x = ((ROW_LARGE_X * safeZoneW) + ((ROW_LARGE_OFFX*safeZoneW) * 19) + safeZoneX); //19th Character
             y = ((ROW_LARGE_Y * safeZoneW) + ((ROW_LARGE_OFFY*safeZoneW) * 1) + safeZoneX); // 1first row
@@ -78,8 +75,7 @@ class Prc117f_RadioDialog {
             tooltip = "ST_HORIZONTAL";
         };
 
-        class LoadingBar
-        {
+        class LoadingBar {
             idc = 99992;
             x = (( (0.33+(0.00438*7.5)) * safeZoneW) + safeZoneX);
             y = (((0.392+ (0.01375*2.5)) * safeZoneW) + safeZoneX);
@@ -93,7 +89,7 @@ class Prc117f_RadioDialog {
             tooltip = "ST_HORIZONTAL";
         };
 
-        class LogoIcon : Prc117f_RscPicture {
+        class LogoIcon: Prc117f_RscPicture {
             idc = 99993;
             x = (((0.33+(0.14454/2)-0.06) * safeZoneW) + safeZoneX);
             y = (((0.392+(0.055/2)-0.06) * safeZoneW) + safeZoneX);
@@ -103,7 +99,7 @@ class Prc117f_RadioDialog {
             colorText[] = {0,0,0,1};
         };
 
-        class TransmitIcon : Prc117f_RscPicture {
+        class TransmitIcon: Prc117f_RscPicture {
             idc = 99902;
             x = ((0.5315 * safeZoneW) + safeZoneX);
             y = ((0.3905 * safeZoneW) + safeZoneX);
@@ -113,7 +109,7 @@ class Prc117f_RadioDialog {
             text = PATHTOF(Data\icons\icon_transmit.paa);
         };
 
-        class UpIcon : Prc117f_RscPicture {
+        class UpIcon: Prc117f_RscPicture {
             idc = 99903;
             x = ((0.3 * safeZoneW) + safeZoneX);
             y = ((0.52 * safeZoneW)  + safeZoneX);
@@ -123,7 +119,7 @@ class Prc117f_RadioDialog {
             colorText[] = { 0, 0, 0, 1  };
         };
 
-        class DownIcon : Prc117f_RscPicture {
+        class DownIcon: Prc117f_RscPicture {
             idc = 99904;
             x = ((0.3 * safeZoneW) + safeZoneX);
             y = ((0.52 * safeZoneW)  + safeZoneX);
@@ -133,7 +129,7 @@ class Prc117f_RadioDialog {
             colorText[] = { 0, 0, 0, 1 };
         };
 
-        class UpDownIcon : Prc117f_RscPicture {
+        class UpDownIcon: Prc117f_RscPicture {
             idc = 99905;
             x = ((0.3 * safeZoneW) + safeZoneX);
             y = ((0.52 * safeZoneW)  + safeZoneX);
@@ -143,7 +139,7 @@ class Prc117f_RadioDialog {
             colorText[] = { 0, 0, 0, 1 };
         };
 
-        class ScrollbarIcon : Prc117f_RscPicture {
+        class ScrollbarIcon: Prc117f_RscPicture {
             idc = 99906;
             x = (((0.556-0.005) * safeZoneW) + safeZoneX);
             y = ((0.39 * safeZoneW)  + safeZoneX);
@@ -178,7 +174,7 @@ class Prc117f_RadioDialog {
             w = 1*SafeZoneW;
             h = 1*SafeZoneW;
             colorText[] = {1,1,1,1};
-            text = QUOTE(PATHTOF(Data\knobs\switch\prc117f_ui_swtch1_01.paa));
+            text = QPATHTOF(Data\knobs\switch\prc117f_ui_swtch1_01.paa);
         END_CONTROL
 
         BEGIN_CONTROL(MODE_KNOB, Prc117f_RscButton, 99902+222)
@@ -200,7 +196,7 @@ class Prc117f_RadioDialog {
             w = 1*SafeZoneW;
             h = 1*SafeZoneW;
             colorText[] = {1,1,1,1};
-            text = QUOTE(PATHTOF(Data\knobs\prc117f_ui_keys_default.paa));
+            text = QPATHTOF(Data\knobs\prc117f_ui_keys_default.paa);
         END_CONTROL
 
         BEGIN_CONTROL(BUTTON_ZERO, Prc117f_RscButton, 99902+100)

@@ -51,7 +51,7 @@ with uiNamespace do {
         _args = [_id, _indexOffset select 0, _indexOffset select 1, _extents select 0, _extents select 1];
         _result = [];
         with missionNamespace do {
-            _result = ["signal_map_get_sample_data", _args] call acre_sys_core_fnc_callExt;
+            _result = ["signal_map_get_sample_data", _args] call EFUNC(sys_core,callExt);
         };
         GVAR(sampleData) = [];
         if (!isNil "_result") then {

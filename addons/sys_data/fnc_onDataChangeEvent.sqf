@@ -17,13 +17,15 @@
 #include "script_component.hpp"
 
 TRACE_1("NETWORK DATA EVENT", _this);
-acre_sys_core_speaking_cache_valid = false;
+
+EGVAR(sys_core,speaking_cache_valid) = false;
+
 if (ACRE_DATA_SYNCED) then {
     params ["_networkSequence", "_eventId"];
     if (!(_eventId in GVAR(pendingNetworkEvents))) then {
         {
             _x params ["_unit", "_radioId", "_event", "_data", ["_eventKind", "CfgAcreDataInterface"]];
-            /*_eventKind     = "CfgAcreDataInterface";
+            /*_eventKind = "CfgAcreDataInterface";
             if ((count _x) > 4) then {
                 _eventKind = _x select 4;
             } else {
