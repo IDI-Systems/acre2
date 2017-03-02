@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Renders the radio when opened
+ * Renders the radio when opened.
  *
  * Arguments:
  * 0: Display identifier <NUMBER>
@@ -9,7 +9,7 @@
  * True <BOOL>
  *
  * Example:
- * [DisplazID] call acre_sys_prc343_fnc_render
+ * [DisplayID] call acre_sys_prc343_fnc_render
  *
  * Public: No
  */

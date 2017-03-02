@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Returns the unique identity of the current channel since the PRC343 has multiple blocks
+ * Returns the unique identity of the current channel since the PRC343 has multiple blocks.
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)

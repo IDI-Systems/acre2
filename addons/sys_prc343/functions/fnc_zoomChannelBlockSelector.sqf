@@ -3,8 +3,7 @@
  * Triggers an animation when zooming in or out of the channel block selector
  *
  * Arguments:
- * 0: Zoom in(0) or out (1) <BOOL>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Zoom in (0) or out (1) <BOOL>
  *
  * Return Value:
  * None
