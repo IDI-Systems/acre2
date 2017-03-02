@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Sends a message to the TeamSpeak plugin via extension.
+ * Sends a message to the TeamSpeak plugin via the ACRE2Arma extension.
  *
  * Arguments:
  * 0: Message <STRING>

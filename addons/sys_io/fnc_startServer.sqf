@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Starts the SQF code to maintain connectivity to the TeamSpeak plugin via extension.
+ * Starts the SQF code to maintain connectivity to the TeamSpeak plugin via the ACRE2Arma extension.
  *
  * Arguments:
  * None

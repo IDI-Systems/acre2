@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Creates a PFH to monitor the extension's connection to the TeamSpeak plugin.
+ * Creates a PFH to monitor the ACRE2Arma extension's connection to the TeamSpeak plugin.
  *
  * Arguments:
  * None

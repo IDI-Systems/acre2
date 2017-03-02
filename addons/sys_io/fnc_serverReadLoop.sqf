@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Handles return data from the TeamSpeak plugin.
+ * Checks if the ACRE2Arma extension has any pending messages (typically for return data from the TeamSpeak plugin). This is called on a per frame basis.
  *
  * Arguments:
  * None

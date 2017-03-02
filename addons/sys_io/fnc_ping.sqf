@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Setups a loop to send periodic messages to the TeamSpeak plugin to indiciate that the game is still connected.
+ * Creates a loop to send periodic messages to the TeamSpeak plugin (via the ACRE2Arma extension) to indiciate that the game is still connected.
  *
  * Arguments:
  * None
