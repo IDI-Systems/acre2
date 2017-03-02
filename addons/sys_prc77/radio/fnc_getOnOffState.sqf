@@ -3,19 +3,22 @@
  * SHORT DESCRIPTION
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING> (Unused)
+ * 1: Event: "getOnOffState" <STRING> (Unused)
+ * 2: Event data <ARRAY> (Unused)
+ * 3: Radio data <HASH>
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Returns 1 if the radio is on 0 otherwise <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc77_fnc_getOnOffState;
+ * ["ACRE_PRC77_ID_1", "getOnOffState", [], _radioData, false] call acre_sys_prc77_fnc_getOnOffState
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData", ""];
 
 HASH_GET(_radioData, "radioOn");

@@ -1,22 +1,26 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Initialises a radio by givint it a radio ID. This only happens once and the default
+ * preset (configuration) is copied.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Event: "initializeRadio" <STRING> (Unused)
+ * 2: Event data [baseclass, preset] <ARRAY>
+ * 3: Radio data <HASH>
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc77_fnc_initializeRadio;
+ * ["ACRE_PRC77_ID_1", "initializeRadio", ["ACRE_PRC77_base", default1], [], false] call acre_sys_prc77_fnc_initializeRadio
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "", "_radioData", ""];
 TRACE_1("INITIALIZING RADIO 77", _this);
 
 SCRATCH_SET(_radioId, "currentTransmissions", []);

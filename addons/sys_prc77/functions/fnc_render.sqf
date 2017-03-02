@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Renders the radio when opened.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Display identifier <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * True <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc77_fnc_render;
+ * [DisplayID] call acre_sys_prc77_fnc_render
  *
  * Public: No
  */

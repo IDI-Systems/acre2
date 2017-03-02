@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId","","_radios"];
+params ["_radioId", "", "_radios", "", ""];
 
 if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !EGVAR(sys_core,fullDuplex)) exitWith { [] };
 private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
