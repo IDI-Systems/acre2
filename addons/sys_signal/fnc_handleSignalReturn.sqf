@@ -25,12 +25,11 @@ if (count _result > 0) then {
         missionNamespace setVariable [_transmitterClass + "_best_signal", _signal];
         missionNamespace setVariable [_transmitterClass + "_best_ant", _id];
         if (_maxSignal >= -500) then {
-            _baseConfig = inheritsFrom (configFile >> "CfgWeapons" >> _receiverClass);
-            _realRadioRx = configName ( _baseConfig );
-            _min = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMin");
-            _max = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMax");
+            private _realRadioRx = [_receiverClass] call EFUNC(sys_radio,getRadioBaseClassname);
+            private _min = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMin");
+            private _max = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMax");
 
-            _Px = (((_maxSignal - _min) / (_max - _min)) max 0.0) min 1.0;
+            private _Px = (((_maxSignal - _min) / (_max - _min)) max 0.0) min 1.0;
             missionNamespace setVariable [_transmitterClass + "_best_px", _Px];
         } else {
             missionNamespace setVariable [_transmitterClass + "_best_px", 0];

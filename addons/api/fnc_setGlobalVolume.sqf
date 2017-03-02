@@ -19,6 +19,6 @@ params ["_volume"];
 
 _volume = ((_volume min 1) max 0);
 
-acre_sys_core_globalVolume = _volume;
+EGVAR(sys_core,globalVolume) = _volume;
 
 _volume

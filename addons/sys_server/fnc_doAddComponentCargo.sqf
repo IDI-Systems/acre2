@@ -28,7 +28,7 @@ if (_hasUnique) then {
          if (!(_uniqueComponent in GVAR(masterIdList))) then {
              GVAR(masterIdList) pushBack _uniqueComponent;
              private _dataHash = HASH_CREATE;
-             HASH_SET(acre_sys_data_radioData,_uniqueComponent,_dataHash);
+             HASH_SET(EGVAR(sys_data,radioData),_uniqueComponent,_dataHash);
              GVAR(unacknowledgedIds) pushBack _uniqueComponent;
              HASH_SET(GVAR(unacknowledgedTable), _uniqueComponent, time);
              HASH_SET(GVAR(masterIdTable), _uniqueComponent, [ARR_2(_container,_container)]);

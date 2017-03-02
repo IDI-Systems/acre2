@@ -58,7 +58,7 @@ DFUNC(monitorRadios_PFH) = {
             GVAR(requestingNewId) = true;
             if (_radio == "ItemRadio") then {
                 _radio = GVAR(defaultItemRadioType);
-                    [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
+                [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
             };
             TRACE_1("Getting ID for", _radio);
 
@@ -69,7 +69,7 @@ DFUNC(monitorRadios_PFH) = {
             if (!([_radio] call EFUNC(sys_data,isRadioInitialized))) then {
                 WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
                 _baseRadio = BASECLASS(_radio);
-                    [acre_player, _radio, _baseRadio] call EFUNC(sys_core,replaceGear);
+                [acre_player, _radio, _baseRadio] call EFUNC(sys_core,replaceGear);
                 _radio = _baseRadio;
             };
             _currentUniqueItems pushBack _radio;

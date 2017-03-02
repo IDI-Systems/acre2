@@ -74,7 +74,7 @@ DFUNC(speakingLoop) = {
                         };
                         _txRadios = _sources select _keyIndex;
                         _txRadios pushBack [_unit,_txId,_signalData,_params];
-                        if (acre_sys_signal_showSignalHint) then {
+                        if (EGVAR(sys_signal,showSignalHint)) then {
                             _signalHint = _signalHint + format["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
                         };
                     };
@@ -230,7 +230,7 @@ DFUNC(speakingLoop) = {
         private _unit = _x;
         if (!isNull _unit) then {
             if (!IS_MUTED(_unit) && _unit != acre_player) then {
-                if ((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
+                if (GVAR(enableDistanceMuting) && {(getPosASL _unit) distance ACRE_LISTENER_POS < 300}) then {
                     TRACE_1("Calling processDirectSpeaker", _unit);
                     private _params = [_unit] call FUNC(processDirectSpeaker);
                     CALL_RPC("updateSpeakingData", _params);

@@ -17,20 +17,20 @@
 #include "script_component.hpp"
 
 if (hasInterface) then {
-    private _radioId    = _this select 0;
-    private _remote     = _this select 5;
+    private _radioId = _this select 0;
+    private _remote = _this select 5;
     if (_remote) then {
         private _fnc = {
             params ["_radioId","_previousOkRadios"];
-            if (HASH_HASKEY(acre_sys_core_keyedRadioIds, _radioId)) then {
-                private _vals = HASH_GET(acre_sys_core_keyedRadioIds, _radioId);
+            if (HASH_HASKEY(EGVAR(sys_core,keyedRadioIds), _radioId)) then {
+                private _vals = HASH_GET(EGVAR(sys_core,keyedRadioIds), _radioId);
                 _vals params ["_netId","_speakingId"];
-                HASH_REM(acre_sys_core_keyedRadioIds, _radioId);
+                HASH_REM(EGVAR(sys_core,keyedRadioIds), _radioId);
                 private _unit = (objectFromNetId _netId);
                 private _languageID = _unit getVariable [QUOTE(EGVAR(core,languageId)),0];
                 [str _speakingId, _languageID, _netId, "1", _radioId] call EFUNC(sys_core,remoteStartSpeaking);
-                if (!(_unit in acre_sys_core_keyedMicRadios)) then {
-                    private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + acre_sys_core_nearRadios, false] call EFUNC(sys_modes,checkAvailability);
+                if (!(_unit in EGVAR(sys_core,keyedMicRadios))) then {
+                    private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + EGVAR(sys_core,nearRadios), false] call EFUNC(sys_modes,checkAvailability);
                     _okRadios = (_okRadios select 0) select 1;
                     _okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
                     private _dif = _previousOkRadios - _okRadios;
@@ -41,7 +41,7 @@ if (hasInterface) then {
             };
             true;
         };
-        private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + acre_sys_core_nearRadios, false] call EFUNC(sys_modes,checkAvailability);
+        private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + EGVAR(sys_core,nearRadios), false] call EFUNC(sys_modes,checkAvailability);
         _okRadios = (_okRadios select 0) select 1;
         _okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
         [_fnc, [_radioId, _okRadios]] call CBA_fnc_execNextFrame;
@@ -49,19 +49,19 @@ if (hasInterface) then {
         private _fnc = {
             params ["_radioId","_keyedRadios"];
             {
-                private _vals = HASH_GET(acre_sys_core_keyedRadioIds, _x);
+                private _vals = HASH_GET(EGVAR(sys_core,keyedRadioIds), _x);
                 _vals params ["_netId","_speakingId"];
                 private _unit = (objectFromNetId _netId);
-                REM(acre_sys_core_keyedMicRadios,_unit);
-                private _languageID = _unit getVariable [QUOTE(EGVAR(core,languageId)),0];
+                REM(EGVAR(sys_core,keyedMicRadios),_unit);
+                private _languageID = _unit getVariable [QEGVAR(core,languageId),0];
                 [str _speakingId, _languageID, _netId, "1", _x] call EFUNC(sys_core,remoteStartSpeaking);
-                if (!(_unit in acre_sys_core_keyedMicRadios)) then {
+                if (!(_unit in EGVAR(sys_core,keyedMicRadios))) then {
                     [_radioId, "handleEndTransmission", [_x]] call EFUNC(sys_data,transEvent);
                 };
             } forEach _keyedRadios;
             true;
         };
-        private _keyedRadios = HASH_KEYS(acre_sys_core_keyedRadioIds);
+        private _keyedRadios = HASH_KEYS(EGVAR(sys_core,keyedRadioIds));
         [_fnc, [_radioId, _keyedRadios]] call CBA_fnc_execNextFrame;
     };
 };

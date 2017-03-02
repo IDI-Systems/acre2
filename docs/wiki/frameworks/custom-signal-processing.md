@@ -2,7 +2,7 @@
 title: Custom Signal Processing
 ---
 
-ACRE2 allows replacing its default signal strength calculator with a custom signal strength function: This can be done by using the following API function `acre_api_fnc_setCustomSignalFunc`. This page aims to assist in creating your own and provide examples.
+ACRE2 allows replacing its default signal strength calculator with a custom signal strength function: This can be done by using the following API function [`acre_api_fnc_setCustomSignalFunc`](https://github.com/IDI-Systems/acre2/blob/master/addons/api/fnc_setCustomSignalFunc.sqf). This page aims to assist in creating your own and provide examples.
 
 The default signal calculator is sophisticated and complex and as such is largely calculated in the C++ extension. However this signal model doesn't always appeal to every community and it doesn't always afford possibilites for various mission mechanics such as radio jammers. This function is intended to be used by communities seeking a specific signal experience or for highly ambitious mission makers.
 
@@ -10,7 +10,7 @@ For the time being this command is highly experimental and is included as of dev
 
 ## Function Usage
 
-You can see the default function here but note this is mainly just a dispatcher that sends data to the C++ extension. It gives an idea as to what data might be useful. It does not provide insight into the default signal model that is used though.
+You can see the default function [here](https://github.com/IDI-Systems/acre2/blob/master/addons/sys_signal/fnc_getSignal.sqf) but note this is mainly just a dispatcher that sends data to the C++ extension. It gives an idea as to what data might be useful. It does not provide insight into the default signal model that is used though.
 
 ### Input
 
@@ -41,7 +41,7 @@ The provided inputs are a bit lacking as they don't provide the position or any 
 ### Simple calculation
 Below is an example of a simple calculation that is based on how ACRE1 calculated signal loss. It is a largely based on [free-space path loss](https://en.wikipedia.org/wiki/Free-space_path_loss) over the distance which does not take into account terrain. It is also provides a bit of a boost to the signal strength of the AN/PRC-343. In this example the range of a AN/PRC-343 is around 500m and virtually all other radios will have no problems with Arma terrains (40km+).
 
-```
+```js
 MY_CUSTOM_ACRE_FUNC = {
     params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
@@ -93,6 +93,14 @@ MY_CUSTOM_ACRE_FUNC = {
     [_Px, _signal];
 };
 [MY_CUSTOM_ACRE_FUNC] call acre_api_fnc_setCustomSignalFunc;
+```
+
+## Reset
+
+To reset the signal handling to default simply call the function with empty code:
+
+```js
+[{}] call acre_api_fnc_setCustomSignalFunc;
 ```
 
 ## Debugging

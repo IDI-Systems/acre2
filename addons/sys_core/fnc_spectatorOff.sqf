@@ -16,5 +16,5 @@
 #include "script_component.hpp"
 
 ACRE_IS_SPECTATOR = false;
-["acre_sys_server_onSetSpector", [GVAR(ts3id), 0] ] call CALLSTACK(CBA_fnc_serverEvent);
+[QEGVAR(sys_server,onSetSpector), [GVAR(ts3id), 0] ] call CALLSTACK(CBA_fnc_serverEvent);
 true

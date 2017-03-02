@@ -3,8 +3,10 @@
 **ACRE2 Version:** `2.x.x` (stable / dev + commit hash)
 
 **Mods:**
-- `@CBA_A3`
-- `@acre2`
+```
+- @CBA_A3
+- @acre2
+```
 
 **Description:**
 - Add a detailed description of the error. This makes it easier for us to fix the issue.

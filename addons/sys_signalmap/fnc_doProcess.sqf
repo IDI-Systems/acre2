@@ -144,7 +144,7 @@ with uiNamespace do {
                     };
                 },
                 []
-            ] call acre_sys_core_fnc_callExt;
+            ] call EFUNC(sys_core,callExt);
         };
 
     } forEach GVAR(rxAreas);
@@ -154,7 +154,7 @@ with uiNamespace do {
                 if (GVAR(areaProgress) != (count GVAR(rxAreas))) then {
                     _res = [1,1];
                     with missionNamespace do {
-                        _res = ["signal_map_progress", ""] call acre_sys_core_fnc_callExt;
+                        _res = ["signal_map_progress", ""] call EFUNC(sys_core,callExt);
                     };
                     diag_log text format["res: %1", _res];
                     _p = (_res select 0)/(_res select 1);
