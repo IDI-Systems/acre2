@@ -23,6 +23,6 @@ private _externalStatus = [_radioId] call FUNC(getExternalUseStatus);
 _externalStatus params ["_isShared", "_isUsedExternally", "_owner", "_user"];
 
 // Do not allow an external user to return the headset if the radio is in use
-if (_isUsedExternally && (_unit != _user)) exitWith {false};
+if (_isUsedExternally && (_unit != _user)) exitWith { false };
 
 true

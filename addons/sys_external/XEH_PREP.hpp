@@ -17,3 +17,4 @@ PREP(checkReturnGive);
 PREP(childrenActions);
 PREP(listChildrenActions);
 PREP(radioCheckChildrenActions);
+PREP(isExternalActionAvailable);

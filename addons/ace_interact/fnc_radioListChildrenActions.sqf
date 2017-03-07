@@ -26,7 +26,7 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
 {
     private _owner = "";
     if (_x in ACRE_ACTIVE_EXTERNAL_RADIOS) then {
-        _owner = format [" (%1)", [_x] call EFUNC(sys_external,getExternalRadioOwner)];
+        _owner = format [" (%1)", name ([_x] call EFUNC(sys_external,getExternalRadioOwner))];
     };
 
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
