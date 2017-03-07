@@ -5,7 +5,7 @@ class CfgVehicles {
             class ACE_MainActions {
                 class ACRE_Interact {
                     displayName = CSTRING(externalRadios);
-                    condition = "true";
+                    condition = QUOTE(count (_this call FUNC(getSharedExternalRadios)) > 0);
                     exceptions[] = {"isNotInside", "isNotSitting"};
                     statement = "true";
                     insertChildren = QUOTE(_this call FUNC(listChildrenActions));
