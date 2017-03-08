@@ -4,8 +4,8 @@
 
 **Mods:**
 ```
-- @CBA_A3
-- @acre2
+- CBA_A3
+- acre2
 ```
 
 **Description:**

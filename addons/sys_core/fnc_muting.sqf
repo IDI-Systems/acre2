@@ -52,7 +52,7 @@ DFUNC(mutingPFHLoop) = {
                         // private _radioListRemote = [_remoteUser] call EFUNC(sys_data,getRemoteRadioList);
                         // private _radioListLocal = [] call EFUNC(sys_data,getPlayerRadioList);
                         // private _okRadios = [_radioListLocal, _radioListRemote, true] call EFUNC(sys_modes,checkAvailability);
-                        if (_remoteUser distance _dynamicPos > 300) then {
+                        if (GVAR(enableDistanceMuting) && {_remoteUser distance _dynamicPos > 300}) then {
                             _muting pushBack _remoteUser;
                             _muted = 1;
                             if (_remoteUser in GVAR(speakers)) then {

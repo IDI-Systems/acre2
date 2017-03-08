@@ -20,14 +20,14 @@ if ((count FAST_HASH_TO_DELETE) > 0) then {
     while {((diag_tickTime - _init_time)*1000) < 2.0 && count FAST_HASH_TO_DELETE > 0} do {
         _hash = FAST_HASH_TO_DELETE deleteAt 0;
         deleteLocation _hash;
-        _newHash = createLocation ["AcreHashType", [-10000,-10000,-10000], 0, 0];
+        private _newHash = call CBA_fnc_createNamespace;
         _newHash setText "acre_hash";
         FAST_HASH_POOL pushBack _newHash;
     };
 };
 if ((count FAST_HASH_POOL) <= ((count FAST_HASH_CREATED_HASHES)*0.1)) then {
     for "_i" from 1 to 10 do {
-        _newHash = createLocation ["AcreHashType", [-10000,-10000,-10000], 0, 0];
+        private _newHash = call CBA_fnc_createNamespace;
         _newHash setText "acre_hash";
         FAST_HASH_POOL pushBack _newHash;
     };

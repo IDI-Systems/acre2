@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Close radio GUI. Event raised by onUnload (PRC343_RadioDialog).
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING> (Unused)
+ * 1: Event: "closeGui" <STRING> (Unused)
+ * 2: Event data <NUMBER> (Unused)
+ * 3: Radio data <HASH> (Unused)
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * True <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1", "closeGui", [], [], false] call acre_sys_prc343_fnc_closeGui
  *
  * Public: No
  */
