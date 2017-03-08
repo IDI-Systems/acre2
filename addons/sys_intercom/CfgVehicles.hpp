@@ -29,6 +29,7 @@ class CfgVehicles {
     class Tank: LandVehicle {
         acre_hasIntercom = 1;
         acre_hasInfantryPhone = 1;
+        acre_hasPassengerIntercom = 1;
     };
 
     // BLUFOR
@@ -37,6 +38,7 @@ class CfgVehicles {
 
     class B_MBT_01_cannon_F: B_MBT_01_base_F {
         acre_infantryPhonePosition[] = {1.35, -4.4, -1};
+        acre_passengerIntercomConnections = 2;
     };
 
     class MBT_01_arty_base_F: MBT_01_base_F {};

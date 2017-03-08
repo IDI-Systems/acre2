@@ -40,5 +40,26 @@
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
             <English>Infantry Phone Received</English>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
+            <English>Passenger Intercom</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_connectPassengerIntercom">
+            <English>Connect</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_disconnectPassengerIntercom">
+            <English>Disconnect</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
+            <English>Disconnected from Passenger Intercom</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
+            <English>Disconnected from Passenger Intercom</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercomConnected">
+            <English>Connected to Passenger Intercom</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercomNoConnections">
+            <English>No more connections for Passenger Intercom</English>
+        </Key>
     </Package>
 </Project>

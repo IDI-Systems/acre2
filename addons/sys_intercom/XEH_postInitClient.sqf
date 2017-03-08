@@ -8,6 +8,9 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 ["Tank", "init", FUNC(infantryPhoneAction), nil, nil, true] call CBA_fnc_addClassEventHandler;
 ["Car_F", "init", FUNC(infantryPhoneAction), nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["Tank", "init", FUNC(passengerIntercomAction), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Car_F", "init", FUNC(passengerIntercomAction), nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 
 #ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {

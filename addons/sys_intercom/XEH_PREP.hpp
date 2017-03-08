@@ -4,3 +4,9 @@ PREP(infantryPhoneSoundCall);
 PREP(infantryPhoneChildrenActions);
 PREP(isInfantryPhoneSpeakerAvailable);
 PREP(updateInfantryPhoneStatus);
+
+// Passenger intercom
+PREP(passengerIntercomAction);
+PREP(passengerIntercomChildrenActions);
+PREP(unitInPassengerIntercom);
+PREP(updatePassengerIntercomStatus);

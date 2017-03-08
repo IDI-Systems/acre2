@@ -27,6 +27,11 @@ if (_vehicle == acre_player) then {
         _vehicle = _vehicleInfantryPhone;
         _usingInfantryPhone = true;
     };
+
+    private _vehiclePassengerIntercom = acre_player getVariable [QEGVAR(sys_intercom,vehiclePassengerIntercom), objNull];
+    if (!isNull _vehiclePassengerIntercom) then {
+        [_vehiclePassengerIntercom, acre_player, 0] call EFUNC(sys_intercom,updatePassengerIntercomStatus);
+    };
 };
 
 if (_vehicle != acre_player) then {
@@ -69,6 +74,16 @@ if (_vehicle != acre_player) then {
         };
     } else {
         ACRE_PLAYER_VEHICLE_CREW = [];
+    };
+
+    private _unitsPassengerIntercom = _vehicle getVariable [QEGVAR(sys_intercom,unitsPassengerIntercom), []];
+    if (acre_player in _unitsPassengerIntercom) then {
+        if ((acre_player in _crew) && (acre_player getVariable [QGVAR(usesPassengerIntercomConnection), false])) then {
+            acre_player setVariable [QGVAR(usesPassengerIntercomConnection), false, true];
+        };
+        ACRE_PLAYER_PASSENGER_INTERCOM = _unitsPassengerIntercom;
+    } else {
+        ACRE_PLAYER_PASSENGER_INTERCOM = [];
     };
 } else {
     ACRE_PLAYER_VEHICLE_CREW = [];
