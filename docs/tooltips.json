@@ -1,5 +1,5 @@
 ---
-layout: none
+layout: null
 search: exclude
 ---
 
@@ -8,12 +8,9 @@ search: exclude
 [
 {% for page in site.tooltips %}
 {
-"id"    : "{{ page.id }}",
+"doc_id": "{{ page.doc_id }}",
 "body": "{{ page.content | strip_newlines | replace: '\', '\\\\' | replace: '"', '\\"' }}"
 } {% unless forloop.last %},{% endunless %}
 {% endfor %}
 ]
 }
-
-
-

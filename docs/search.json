@@ -9,7 +9,7 @@ search: exclude
 {% unless page.search == "exclude" %}
 {
 "title": "{{ page.title | escape }}",
-"url": "{{ page.url }}"
+"url": "{{ page.url | remove: "/" }}"
 }
 {% unless forloop.last and site.posts.size < 1 %},{% endunless %}
 {% endunless %}
@@ -19,7 +19,7 @@ search: exclude
 
 {
 "title": "{{ post.title | escape }}",
-"url": "{{ post.url }}",
+"url": "{{ post.url | remove: "/" }}",
 "summary": "{{post.summary | strip }}"
 }
 {% unless forloop.last %},{% endunless %}
