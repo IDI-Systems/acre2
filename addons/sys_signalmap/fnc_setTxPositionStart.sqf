@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if(_this select 1 == 0) then {
+if (_this select 1 == 0) then {
     ["<t align='center'>Click on the map to set the Tx Position</t>"] call FUNC(showOverlayMessage);
     GVAR(txSetPosEH) = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["MouseButtonDown", {call FUNC(setTxPositionEnd)}];
 };

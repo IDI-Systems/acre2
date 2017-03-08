@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-if(_this select 1 == 0) then {
+if (_this select 1 == 0) then {
     [] call FUNC(clearOverlayMessage);
     _ctrl = _this select 0;
     _ctrl ctrlRemoveEventHandler ["MouseButtonDown", GVAR(txSetPosEH)];
