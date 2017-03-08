@@ -129,6 +129,10 @@ entries:
       url: /wiki/frameworks/creating-new-radio
       output: web, pdf
 
+    - title: Adding New Antenna
+      url: /wiki/frameworks/adding-new-antenna
+      output: web, pdf
+
     - title: Radio Signal Debugging
       url: /wiki/frameworks/radio-signal-debugging
       output: web, pdf
