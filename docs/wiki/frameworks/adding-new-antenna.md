@@ -4,11 +4,7 @@ title: Adding New Antenna
 
 Every radio in ACRE can be equipped with at least one antenna. Since radios usually have specific antennas designed and tuned for the radio and the frequency range used, it is likely one must add a new antenna if a [new radio](creating-new-radio) is created for ACRE.
 
-<<<<<<< HEAD
-In order to allow an antenna to work properly in ACRE, there are a few required config entries and most importantly a set of gain data covering the desired frequency range. The gain data is used by the signal processing functions for calculation of signal strengths. For basics refer to [Radio Loss](http://acre2.idi-systems.com/wiki/user/radio-signal-loss.html).
-=======
 In order to allow an antenna to work properly in ACRE, there are a few required config entries and most importantly a set of gain data covering the desired frequency range. The gain data is used by the signal processing functions for calculation of signal strengths. For basics refer to [Radio Loss](/wiki/user/radio-signal-loss).
->>>>>>> master
 
 ## Example Antenna Config
 
