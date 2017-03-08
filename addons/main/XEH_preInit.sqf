@@ -14,7 +14,7 @@ EFUNC(sys_core,fastHashCreate) = {
         FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
         _ret;
     };
-    private _ret = createLocation ["AcreHashType", [-10000,-10000,-10000], 0, 0];
+    private _ret = call CBA_fnc_createNamespace;
     _ret setText "acre_hash";
     FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
     _ret;
@@ -51,7 +51,7 @@ ACRE_DUMPSTACK_FNC = {
 if (isNil "FAST_HASH_POOL") then {
     FAST_HASH_POOL = [];
     for "_i" from 1 to 50000 do {
-        _newHash = createLocation ["AcreHashType", [-10000,-10000,-10000], 0, 0];
+        private _newHash = call CBA_fnc_createNamespace;
         _newHash setText "acre_hash";
         FAST_HASH_POOL pushBack _newHash;
     };
