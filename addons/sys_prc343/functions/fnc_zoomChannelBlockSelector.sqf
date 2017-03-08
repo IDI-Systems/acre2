@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Triggers an animation when zooming in or out of the channel block selector
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Zoom in (0) or out (1) <BOOL>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [1] call acre_sys_prc343_fnc_zoomChannelBlockSelector
  *
  * Public: No
  */
@@ -29,17 +28,17 @@ if (_animation) exitWith { [] };
 if (_direction == OUT) then {
     SCRATCH_SET(GVAR(currentRadioId), "animation", true);
     private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
-    private _currentBlock = floor(_currentAbsChannel / 16);
+    private _currentBlock = floor (_currentAbsChannel / 16);
     private _currentChannel = _currentAbsChannel - _currentBlock*16;
     private _currentVolume = GET_STATE("volume"); //from 0 to 1
-    private _currentVolumeKnobState = round(_currentVolume * 5);
-    private _animationhandler = [count GVAR(backgroundImages) -1,0,3,_currentVolumeKnobState,_currentChannel];
+    private _currentVolumeKnobState = round (_currentVolume * 5);
+    private _animationhandler = [count GVAR(backgroundImages) - 1, 0, 3, _currentVolumeKnobState, _currentChannel];
 
     DFUNC(zoomOut_PFH)=  {
         // Extract all variables
-        params ["_paramsarray","_PFHid"];
-        _paramsarray params ["_animationhandler","_radioId"];
-        _animationhandler params ["_index","_channelindex","_volumeindex","_currentVolume","_currentChannel"];
+        params ["_paramsarray", "_PFHid"];
+        _paramsarray params ["_animationhandler", "_radioId"];
+        _animationhandler params ["_index", "_channelindex", "_volumeindex", "_currentVolume", "_currentChannel"];
 
         // If the CurrentRadioId is not existing (-1) -> Bug out
         if!(IS_STRING(GVAR(currentRadioId))) exitWith {
@@ -96,7 +95,7 @@ if (_direction == OUT) then {
                     _animationhandler set [0, _index];
             };
         } else {
-            TRACE_2("Mismatch", _radioId, GVAR(currentRadioId));
+            TRACE_2("Mismatch",_radioId,GVAR(currentRadioId));
             SCRATCH_SET(_radioId, "animation", false);
             [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
             [_PFHid] call CBA_fnc_removePerFrameHandler;
@@ -112,22 +111,22 @@ if (_direction == OUT) then {
 if (_direction == IN) then {
     SCRATCH_SET(GVAR(currentRadioId), "animation", true);
     private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
-    private _currentBlock = floor(_currentAbsChannel / 16);
+    private _currentBlock = floor (_currentAbsChannel / 16);
     private _currentChannel = _currentAbsChannel - _currentBlock*16;
     private _currentVolume = GET_STATE("volume"); //from 0 to 1
-    private _currentVolumeKnobState = round(_currentVolume * 5);
-    private _animationhandler = [0,_currentChannel,_currentVolumeKnobState,_currentChannel]; //[30,currentchannel]
+    private _currentVolumeKnobState = round (_currentVolume * 5);
+    private _animationhandler = [0, _currentChannel, _currentVolumeKnobState, _currentChannel]; //[30,currentchannel]
     ["setOnOffState", 0] call GUI_DATA_EVENT;
 
     DFUNC(zoomIn_PFH) = {
         // Extract all variables
         params ["_paramsarray","_PFHid"];
-        _paramsarray params ["_animationhandler","_radioId"];
-        _animationhandler params ["_index","_channelindex","_volumeindex","_currentChannel"];
+        _paramsarray params ["_animationhandler", "_radioId"];
+        _animationhandler params ["_index", "_channelindex", "_volumeindex", "_currentChannel"];
 
         // If the CurrentRadioId is not existing (-1) -> Bug out
         if!(IS_STRING(GVAR(currentRadioId))) exitWith {
-            SCRATCH_SET(_radioId, "animation", false);
+            SCRATCH_SET(_radioId,"animation",false);
             [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
 
@@ -176,8 +175,8 @@ if (_direction == IN) then {
                 };
             };
         } else {
-            TRACE_2("Mismatch", _radioId, GVAR(currentRadioId));
-            SCRATCH_SET(_radioId, "animation", false);
+            TRACE_2("Mismatch",_radioId,GVAR(currentRadioId));
+            SCRATCH_SET(_radioId,"animation",false);
             [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
     };
