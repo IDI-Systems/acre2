@@ -60,4 +60,5 @@ private _ringing = {
     };
 };
 
-[_ringing, 1, [_vehicle, _position, _direction, _volume*_volumeModifier*_attenuate]] call CBA_fnc_addPerFrameHandler;
+
+[_ringing, 1, [_vehicle, _position, _direction, _volume*_volumeModifier*_attenuate]] remoteExecCall ["CBA_fnc_addPerFrameHandler", 0, true];
