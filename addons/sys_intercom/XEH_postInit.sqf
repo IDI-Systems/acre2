@@ -3,7 +3,7 @@
 // Exit if ACE3 not loaded
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
-[QGVAR(infPhoneEventCalling), FUNC(infantryPhoneRingingPFH)] call CBA_fnc_addEventHandler;
+[QGVAR(infPhoneEventCalling), {[FUNC(infantryPhoneRingingPFH), 1, _this] call CBA_fnc_addPerFrameHandler}] call CBA_fnc_addEventHandler;
 
 if (!hasInterface) exitWith {};
 
