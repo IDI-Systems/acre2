@@ -30,35 +30,4 @@ _volumeModifier = _volumeModifier^3; // Same volume modifier as in EFUNC(sys_rad
 // The infantry phone of the vehicle is ringing
 _vehicle setVariable [QGVAR(isInfantryPhoneCalling), true, true];
 
-private _ringing = {
-    params ["_args", "_pfhID"];
-    _args params ["_vehicle", "_position", "_direction", "_volume"];
-
-    private _unitInfantryPhone = _vehicle getVariable [QGVAR(unitInfantryPhone), objNull];
-    private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), false];
-
-    private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
-    {
-        _crew pushBackUnique (_vehicle turretUnit _x);
-    } forEach (allTurrets [_vehicle, false]);
-    _crew = _crew - [objNull];
-
-    private _noCrew = false;
-    if (count _crew == 0) then {
-        _noCrew = true;
-    };
-
-    if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && {!_noCrew}) then {
-        TRACE_5("Infantry Phone Calling PFH Check",_vehicle,acre_player,_position,_direction,_volume);
-        ["Acre_GenericBeep", _position, _direction, _volume, true] call EFUNC(sys_sounds,playSound);
-    } else {
-        // A unit picked up the phone. Reset isCalling variable.
-        if (_isCalling) then {
-            _vehicle setVariable [QGVAR(isInfantryPhoneCalling), false, true];
-        };
-        [_pfhID] call CBA_fnc_removePerFrameHandler;
-    };
-};
-
-
-[_ringing, 1, [_vehicle, _position, _direction, _volume*_volumeModifier*_attenuate]] remoteExecCall ["CBA_fnc_addPerFrameHandler", 0, true];
+[QGVAR(infPhoneEventCalling), [_vehicle, _position, _direction, _volume*_volumeModifier*_attenuate]] call CBA_fnc_globalEvent;
