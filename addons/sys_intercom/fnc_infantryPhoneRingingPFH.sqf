@@ -17,7 +17,7 @@
 
 params ["_vehicle", "_position", "_direction", "_volume"];
 
-_ringing = {
+private _ringing = {
     params ["_args", "_pfhID"];
     _args params ["_vehicle", "_position", "_direction", "_volume"];
 
