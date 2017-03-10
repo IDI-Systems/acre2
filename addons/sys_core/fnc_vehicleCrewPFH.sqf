@@ -19,7 +19,6 @@
 private _vehicle = vehicle acre_player;
 private _usingInfantryPhone = false;
 
-
 // The player is not inside a vehicle. Check if it is using the intercom network externally (infantry phone)
 if (_vehicle == acre_player) then {
     private _vehicleInfantryPhone = acre_player getVariable [QEGVAR(sys_intercom,vehicleInfantryPhone), objNull];
