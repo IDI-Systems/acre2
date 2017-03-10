@@ -1,9 +1,11 @@
 #include "script_component.hpp"
 
-if (!hasInterface) exitWith {};
-
 // Exit if ACE3 not loaded
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
+
+[QGVAR(infPhoneEventCalling), {[FUNC(infantryPhoneRingingPFH), 1, _this] call CBA_fnc_addPerFrameHandler}] call CBA_fnc_addEventHandler;
+
+if (!hasInterface) exitWith {};
 
 ["Tank", "init", FUNC(infantryPhoneAction), nil, nil, true] call CBA_fnc_addClassEventHandler;
 ["Car_F", "init", FUNC(infantryPhoneAction), nil, nil, true] call CBA_fnc_addClassEventHandler;
