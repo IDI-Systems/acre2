@@ -18,4 +18,4 @@
 params ["_radioId"];
 
 [_radioId, false] call FUNC(allowExternalUse);
-[_radioId, "setState", ["isUsedExternally", [false, nil, nil]]] call EFUNC(sys_data,dataEvent);
+[_radioId, "setState", ["isUsedExternally", [false, objNull]]] call EFUNC(sys_data,dataEvent);

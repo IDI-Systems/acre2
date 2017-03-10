@@ -21,12 +21,13 @@ params ["_target", "", "_params"];
 _params params ["_radio"];
 
 private _actions = [];
-private _radios = [acre_player] call EFUNC(sys_core,getGear);
-private _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
-private _playerOwnsRadio = ((_this select 2) select 0) in _radioList;
+private _playerOwnsRadio = false;
+if (acre_player == [_radio] call FUNC(getExternalRadioOwner)) then {
+    _playerOwnsRadio = true;
+};
 
 if (!_playerOwnsRadio) then {
-    private _action = ["acre_use_externalRadio", localize LSTRING(takeHeadset), "", {[(_this select 2) select 0, _target, acre_player] call FUNC(startUsingExternalRadio)}, {!([(_this select 2) select 0] call FUNC(isExternalRadioUsed))}, {}, _params] call ace_interact_menu_fnc_createAction;
+    private _action = ["acre_use_externalRadio", localize LSTRING(takeHeadset), "", {[(_this select 2) select 0, acre_player] call FUNC(startUsingExternalRadio)}, {!([(_this select 2) select 0] call FUNC(isExternalRadioUsed))}, {}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } else {
     private _action = ["acre_give_externalRadio", localize LSTRING(giveHeadset), "", {[(_this select 2) select 0, _target] call FUNC(stopUsingExternalRadio)}, {!([(_this select 2) select 0] call FUNC(isExternalRadioUsed))}, {}, _params] call ace_interact_menu_fnc_createAction;

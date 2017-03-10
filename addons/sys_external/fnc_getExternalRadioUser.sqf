@@ -6,7 +6,7 @@
  * 0: Unique radio identity <STRING>
  *
  * Return Value:
- * End user <STRING>. If it is not in external use, it returns nil
+ * End user <OBJECT>. If it is not in external use, it returns objNull
  *
  * Example:
  * ["ACRE_PRC343_ID_1"] call acre_sys_external_getExternalRadioUser
@@ -17,6 +17,6 @@
 
 params ["_radioId"];
 
-private _user = ([_radioId, "getState", "isUsedExternally"] call EFUNC(sys_data,dataEvent)) select 2;
+private _user = ([_radioId, "getState", "isUsedExternally"] call EFUNC(sys_data,dataEvent)) select 1;
 
 _user

@@ -20,7 +20,6 @@ params ["_radioId", "_target"];
 
 private _owner = [_radioId] call FUNC(getExternalRadioOwner);
 
-if (isNil "_owner") exitWith {true};
 if (_owner == _target) exitWith {true};
 
 false

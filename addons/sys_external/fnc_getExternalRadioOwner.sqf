@@ -6,7 +6,7 @@
  * 0: Unique radio identity <STRING>
  *
  * Return Value:
- * Radio owner <STRING>. If it is not in external use, it returns nil
+ * Radio owner <OBJECT>. If it is not in external use, it returns objNull
  *
  * Example:
  * ["ACRE_PRC343_ID_1"] call acre_sys_external_getExternalRadioOwner
@@ -17,6 +17,10 @@
 
 params ["_radioId"];
 
-private _owner = ([_radioId, "getState", "isUsedExternally"] call EFUNC(sys_data,dataEvent)) select 1;
+private _owner = [_radioId] call EFUNC(sys_radio,getRadioObject);
+
+if !(_owner isKindOf "CAManBase") then {
+    _owner = objNull;
+};
 
 _owner
