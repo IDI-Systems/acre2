@@ -77,10 +77,28 @@ if (_vehicle != acre_player) then {
 
     private _unitsPassengerIntercom = _vehicle getVariable [QEGVAR(sys_intercom,unitsPassengerIntercom), []];
     if (acre_player in _unitsPassengerIntercom) then {
-        if ((acre_player in _crew) && (acre_player getVariable [QGVAR(usesPassengerIntercomConnection), false])) then {
-            acre_player setVariable [QGVAR(usesPassengerIntercomConnection), false, true];
+        // Crew members do not use passenger intercom slots. Activated if a unit was in a passenger seat,
+        // and moved to a "crew" position.
+        private _availableConnections = _vehicle getVariable [QEGVAR(sys_intercom,availablePassIntercomConn), 0];
+        if ((acre_player in _crew) && (acre_player getVariable [QEGVAR(sys_intercom,usesPassengerIntercomConnection), false])) then {
+            acre_player setVariable [QEGVAR(sys_intercom,usesPassengerIntercomConnection), false, true];
+            _vehicle setVariable [QEGVAR(sys_intercom,availablePassIntercomConn), _availableConnections + 1, true];
         };
+
         ACRE_PLAYER_PASSENGER_INTERCOM = _unitsPassengerIntercom;
+
+        // Unit moved from a crew seat to a passenger seat and must use available connections
+        if (!(acre_player in _crew) && !(acre_player getVariable [QEGVAR(sys_intercom,usesPassengerIntercomConnection), false])) then {
+            if (_availableConnections > 0) then {
+                _vehicle setVariable [QEGVAR(sys_intercom,availablePassIntercomConn), _availableConnections - 1, true];
+                acre_player setVariable [QEGVAR(sys_intercom,usesPassengerIntercomConnection), true, true];
+            } else {
+                // Remove unit from intercom
+                [_vehicle, acre_player, 0] call EFUNC(sys_intercom,updatePassengerIntercomStatus);
+                ACRE_PLAYER_PASSENGER_INTERCOM = [];
+            };
+        };
+
     } else {
         ACRE_PLAYER_PASSENGER_INTERCOM = [];
     };

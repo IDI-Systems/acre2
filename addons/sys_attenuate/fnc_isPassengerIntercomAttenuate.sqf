@@ -23,6 +23,7 @@ private _vehicle = vehicle _unit;
 
 if (_unit in ACRE_PLAYER_PASSENGER_INTERCOM) then {
     private _configIntercom = configFile >> "CfgVehicles" >> typeOf _vehicle;
+    private _hasPassengerIntercom = getNumber (_configIntercom >> "acre_hasPassengerIntercom");
 
     if (_hasPassengerIntercom == 1) then {
         _ret = true;
