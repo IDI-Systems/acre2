@@ -1,16 +1,19 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns all information regarding the parsed radio channel.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING> (Unused)
+ * 1: Event: "getChannelData" <STRING> (Unused)
+ * 2: Event data with the channel number <NUMBER>
+ * 3: Radio data <HASH>
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Mode, transmitting frequency, receiving frequency and power of the parsed channel <HASH>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1", "getChannelData", 2, _radioData, false] call acre_sys_prc343_fnc_getChannelData
  *
  * Public: No
  */
@@ -18,7 +21,7 @@
 
 TRACE_1("343 getChannelData", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData", ""];
 
 private _channelNumber = _eventData;
 private _channels = HASH_GET(_radioData, "channels");

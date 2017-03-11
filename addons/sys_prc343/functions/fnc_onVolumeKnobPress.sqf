@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of turning the volume radio knob.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unused <TYPE>
+ * 1: Left or right mouse click identifier <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [["", 0], 0] call acre_sys_prc343_fnc_onVolumeKnobPress
  *
  * Public: No
  */
@@ -20,7 +20,7 @@
 //be different from what the internal value is based on the speaker
 //the API value should be used as a modifier coefficient, not as a
 //state.
-params ["","_key"];
+params ["", "_key"];
 
 private _currentDirection = -0.2;
 if (_key == 0) then {
