@@ -30,9 +30,6 @@ class CfgVehicles {
                     Compartment4 = 0;
                 };
             };
-            class CVC {
-                hasCVC = false;
-            };
         };
     };
     class Car_F: Car {};
@@ -63,9 +60,6 @@ class CfgVehicles {
                     Compartment3 = 1;
                     Compartment4 = 1;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };
@@ -98,9 +92,6 @@ class CfgVehicles {
                     Compartment4 = 1;
                 };
             };
-            class CVC {
-                hasCVC = true;
-            };
         };
     };
 
@@ -131,9 +122,6 @@ class CfgVehicles {
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };
@@ -166,9 +154,6 @@ class CfgVehicles {
                     Compartment4 = 0;
                 };
             };
-            class CVC {
-                hasCVC = true;
-            };
         };
     };
 
@@ -199,9 +184,6 @@ class CfgVehicles {
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };
@@ -234,9 +216,6 @@ class CfgVehicles {
                     Compartment4 = 0;
                 };
             };
-            class CVC {
-                hasCVC = false;
-            };
         };
     };
 
@@ -268,9 +247,6 @@ class CfgVehicles {
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };

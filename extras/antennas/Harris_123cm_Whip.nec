@@ -1,0 +1,14 @@
+CM PRC152/117 Antenna
+CM 
+CM 
+CM 
+CM 
+CE
+GW	1	9	0	0	0	0	0	1.23	.0015	'Wire 1, 9 segments, halve wavelength long.
+GE	1
+LD	4	1	9	9	50
+GN	0	0	0	0	4	0.003
+EK
+EX	0	1	1	0	1	0	0	'Voltage source (1+j0) at wire 1 segment 1.
+FR	0	482	0	0	30	1
+EN

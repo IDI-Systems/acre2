@@ -57,6 +57,10 @@ entries:
       url: /wiki/user/direct-speech
       output: web, pdf
 
+    - title: Vehicle Intercom
+      url: /wiki/user/vehicle-intercom
+      output: web, pdf
+
     - title: Radio Signal Loss
       url: /wiki/user/radio-signal-loss
       output: web, pdf
@@ -121,12 +125,20 @@ entries:
       url: /wiki/frameworks/vehicle-attenuation
       output: web, pdf
 
+    - title: Vehicle Intercom
+      url: /wiki/frameworks/vehicle-intercom
+      output: web, pdf
+
     - title: Component System
       url: /wiki/frameworks/component-system
       output: web, pdf
 
     - title: Creating New Radio
       url: /wiki/frameworks/creating-new-radio
+      output: web, pdf
+
+    - title: Adding New Antenna
+      url: /wiki/frameworks/adding-new-antenna
       output: web, pdf
 
     - title: Radio Signal Debugging
