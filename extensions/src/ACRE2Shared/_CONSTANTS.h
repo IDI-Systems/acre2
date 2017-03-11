@@ -15,8 +15,7 @@
 #undef _DEBUG_DIALOG
 
 
-//#define PIPE_TIMEOUT 10000
-#define PIPE_TIMEOUT 5000 //Lowered this as a 10 second wait before being moved is very noticable. This is however my opinion/preference, so is not required.
+#define PIPE_TIMEOUT 5000
 #define PIPE_PING_TIMEOUT 15000
 #define PERSIST_VERSION_TIMER 5000
 #define BUFSIZE 10240
