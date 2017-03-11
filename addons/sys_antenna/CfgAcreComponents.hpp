@@ -2,7 +2,7 @@
 
 class CfgAcreComponents {
     class ACRE_ComponentBase;
-    
+
     class ACRE_BaseAntenna: ACRE_ComponentBase {
         type = ACRE_COMPONENT_ANTENNA;
         simple = true;
@@ -23,15 +23,15 @@ class CfgAcreComponents {
         height = 1;
         binaryGainFile = QPATHTOF(binary\Thales_100cm_Whip_gain.aba);
     };
-    
+
     class ACRE_100CM_VHF_BNC : ACRE_BaseAntenna {
         name = "1 Meter VHF Antenna BNC";
-        connector = ACRE_CONNECTOR_BNC;
         shortName = "1M VHF BNC";
+        connector = ACRE_CONNECTOR_BNC;
         height = 1;
         binaryGainFile = QPATHTOF(binary\Thales_100cm_Whip_gain.aba);
     };
-    
+
     class ACRE_2HALFINCH_UHF_TNC: ACRE_BaseAntenna {
         name = "2.5 Inch UHF Antenna AN/PRC-343 ONLY";
         shortName = "2.5 INCH UHF TNC";
@@ -42,7 +42,7 @@ class CfgAcreComponents {
 
     class ACRE_SEM52_SHORT_BNC: ACRE_BaseAntenna {
         name = "SEM52SL/SEM70 Antenna Short (0.4m)";
-        shortName = "Short SEM52/SEM70 VHF BNC";
+        shortName = "Short SEM52SL/SEM70 VHF BNC";
         connector = ACRE_CONNECTOR_BNC;
         height = 0.4;
         binaryGainFile = QPATHTOF(binary\sem52_short_gain.aba);
@@ -50,7 +50,7 @@ class CfgAcreComponents {
 
     class ACRE_SEM52_LONG_BNC: ACRE_BaseAntenna {
         name = "SEM52SL Antenna long (0.9m)";
-        shortName = "Long SEM52 VHF BNC";
+        shortName = "Long SEM52SL VHF BNC";
         connector = ACRE_CONNECTOR_BNC;
         height = 0.9;
         binaryGainFile = QPATHTOF(binary\sem52_long_gain.aba);

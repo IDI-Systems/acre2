@@ -21,10 +21,10 @@ _class = toLower _class;
 
 GVAR(radioIdMap) params ["_baseTypes","_radioIds"];
 
-private _mapIndex = _baseTypes find (toLower _class);
+private _mapIndex = _baseTypes find _class;
 
 if (_mapIndex == -1) then {
-    _mapIndex = _baseTypes pushBack (toLower _class);
+    _mapIndex = _baseTypes pushBack _class;
     _radioIds set [_mapIndex, []];
 };
 

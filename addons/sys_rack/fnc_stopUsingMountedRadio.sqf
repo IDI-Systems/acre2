@@ -21,7 +21,7 @@ _radioId = toLower _radioId;
 ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - [_radioId];
 if (ACRE_ACTIVE_RADIO == _radioId) then { // If it is the active radio.
     // Check if radio is now in inventory
-    private _items = [acre_player] call EFUNC(core,getGear);
+    private _items = [acre_player] call EFUNC(sys_core,getGear);
     _items = _items apply {toLower _x};
 
     if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // No need to proceed further as the radio is in player inventory.

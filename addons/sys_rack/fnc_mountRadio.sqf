@@ -18,7 +18,7 @@
 params ["_rackId", "_radioId", ["_unit",objNull]];
 
 if (!isNull _unit) then {
-    [_unit, _radioId] call EFUNC(core,removeGear);
+    [_unit, _radioId] call EFUNC(sys_core,removeGear);
 };
 
 //Stash Radio

@@ -120,6 +120,9 @@ Antenna Defines
 // Deprecation
 #define ACRE_DEPRECATED(arg1,arg2,arg3) WARNING_3("%1 is deprecated. Support will be dropped in version %2. Replaced by: %3",arg1,arg2,arg3)
 
+// Icons
+#define ICON_RADIO_CALL "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa"
+
 #define BASE_CLASS_CONFIG(configName) call { private _baseClass = getText(configFile >> "CfgWeapons" >> configName >> "acre_baseClass"); if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> configName >> "acre_baseClass"); }; _baseClass }
 
 // Icons
