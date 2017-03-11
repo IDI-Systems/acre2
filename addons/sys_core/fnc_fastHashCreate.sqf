@@ -21,7 +21,7 @@ if (count FAST_HASH_POOL > 0) exitWith {
     _ret;
 };
 
-private _ret = createLocation ["AcreHashType", [-10000,-10000,-10000], 0, 0];
+private _ret = call CBA_fnc_createNamespace;
 _ret setText "acre_hash";
 FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
 _ret;

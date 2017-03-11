@@ -13,7 +13,6 @@ if (!hasInterface) exitWith {};
 ["Tank", "init", FUNC(passengerIntercomAction), nil, nil, true] call CBA_fnc_addClassEventHandler;
 ["Car_F", "init", FUNC(passengerIntercomAction), nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-
 #ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {
     private _target = cursorObject;

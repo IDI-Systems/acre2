@@ -3,13 +3,14 @@
  * Ringing event.
  *
  * Arguments:
- * 0: Vehicle <ARRAY>
+ * 0: Array with vehicle, position, direction and volume entries <ARRAY>
+ * 1: Per frame handler ID <NUMBER>
  *
  * Return Value:
  * None
  *
  * Example:
- * [] call acre_sys_intercom_fnc_infantryPhoneRingingPFH
+ * [[cursorTarget, [0,0,0], [0,1,0], 1], pfhID] call acre_sys_intercom_fnc_infantryPhoneRingingPFH
  *
  * Public: No
  */

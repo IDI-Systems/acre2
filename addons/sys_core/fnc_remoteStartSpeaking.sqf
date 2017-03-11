@@ -113,6 +113,7 @@ private _result = false;
                 };
                 private _okRadios = [[_radioId], _personalRadioList + GVAR(nearRadios), false] call EFUNC(sys_modes,checkAvailability);
                 _okRadios = (_okRadios select 0) select 1;
+
                 //_okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
                 if ((count _okRadios) > 0) then {
                     missionNamespace setVariable [_radioId + "_signal_startTime", diag_tickTime];

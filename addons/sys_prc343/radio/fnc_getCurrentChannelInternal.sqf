@@ -1,22 +1,21 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the unique identity of the current channel since the PRC343 has multiple blocks.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Identity of the current channel <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1"] call acre_sys_prc343_fnc_getCurrentChannelInternal
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId"];
+params ["_radioId", "", "", "", ""];
 
 private _currentChannelId = [_radioId, "getState", "currentChannel"] call EFUNC(sys_data,dataEvent);
 if (isNil "_currentChannelId") then {

@@ -3,4 +3,4 @@
 params ["_display"];
 
 // Init the volume control.
-GVAR(MWheel) = _display displayAddEventHandler ["MouseZChanged", QUOTE(_this call FUNC(onVolumeControlAdjust) )];
+GVAR(MWheel) = _display displayAddEventHandler ["MouseZChanged", {call FUNC(onVolumeControlAdjust)}];
