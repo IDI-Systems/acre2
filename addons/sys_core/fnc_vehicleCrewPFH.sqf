@@ -77,8 +77,7 @@ if (_vehicle != acre_player) then {
 
     private _unitsPassengerIntercom = _vehicle getVariable [QEGVAR(sys_intercom,unitsPassengerIntercom), []];
     if (acre_player in _unitsPassengerIntercom) then {
-        // Crew members do not use passenger intercom slots. Activated if a unit was in a passenger seat,
-        // and moved to a "crew" position.
+        // Crew members do not use passenger intercom slots. Activated if a unit was in a passenger seat, and moved to a "crew" position.
         private _availableConnections = _vehicle getVariable [QEGVAR(sys_intercom,availablePassIntercomConn), 0];
         if ((acre_player in _crew) && (acre_player getVariable [QEGVAR(sys_intercom,usesPassengerIntercomConnection), false])) then {
             acre_player setVariable [QEGVAR(sys_intercom,usesPassengerIntercomConnection), false, true];

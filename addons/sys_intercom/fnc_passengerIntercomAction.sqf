@@ -22,6 +22,11 @@ private _type = typeOf _target;
 // Exit if object has no infantry phone
 if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") != 1) exitWith {};
 
+// Exit if class already initialized
+if (_type in GVAR(initializedPassengerIntercom)) exitWith {};
+
+GVAR(initializedPassengerIntercom) pushBack _type;
+
 private _availableConnections = getNumber (configFile >> "CfgVehicles" >> _type >> "acre_passengerIntercomConnections");
 
 // Set the number of passenger intercom connections

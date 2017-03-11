@@ -1,3 +1,6 @@
+PREP(intercomActions);
+
+// Infantry Phone
 PREP(checkInfantryPhoneAvailability);
 PREP(infantryPhoneAction);
 PREP(infantryPhoneRingingPFH);

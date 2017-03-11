@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Checks if a unit is in the passenger intercom of a vehicle
+ * Checks if a unit is in the passenger intercom of a vehicle.
  *
  * Arguments:
  * 0: Vehicle with a passenger intercom action <OBJECT>
@@ -18,10 +18,4 @@
 
 params ["_vehicle", "_unit"];
 
-private _inPassengerIntercom = false;
-
-if (_unit in (_vehicle getVariable [QGVAR(unitsPassengerIntercom), []])) then {
-    _inPassengerIntercom = true;
-};
-
-_inPassengerIntercom
+_unit in (_vehicle getVariable [QGVAR(unitsPassengerIntercom), []])

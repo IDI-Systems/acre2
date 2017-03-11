@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Ringing event.
+ * Ringing handler.
  *
  * Arguments:
  * 0: Array with vehicle, position, direction and volume entries <ARRAY>
