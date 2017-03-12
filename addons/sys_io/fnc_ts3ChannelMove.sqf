@@ -16,4 +16,4 @@
 #include "script_component.hpp"
 
 TRACE_1("Moving TS3 Channel",serverName);
-["setServerName", [serverName]] call EFUNC(sys_rpc,callRemoteProcedure);
+CALL_RPC("setServerName",serverName);
