@@ -16,7 +16,6 @@
 #include "script_component.hpp"
 
 params ["_target"];
-
 private _actions = [];
 
 private _action = ["acre_connect_passengerIntercom", localize LSTRING(connectPassengerIntercom), "", {[_target, _player, 1] call FUNC(updatePassengerIntercomStatus)}, {!([_target, _player] call FUNC(unitInPassengerIntercom))}, {}, {}] call ace_interact_menu_fnc_createAction;
