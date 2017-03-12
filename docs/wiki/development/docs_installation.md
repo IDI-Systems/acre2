@@ -102,9 +102,10 @@ _`sudo` might be required when using below commands._
 - Run Jekyll through bundler
 
     ```
-    bundle exec jekyll serve --future --incremental --config _config_dev.yml
+    bundle exec jekyll serve --future --config _config_dev.yml
     ```
 
+    _Use `--incremental` for small changes (not adding/removing files)._  
     _Use `--force_polling` on Bash on Ubuntu on Windows due to a bug preventing watching._
 
 - Navigate to http://localhost:4000
