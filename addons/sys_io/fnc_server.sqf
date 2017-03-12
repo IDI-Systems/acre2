@@ -52,20 +52,26 @@ DFUNC(connectionFnc) = {
                 GVAR(hasErrored) = false;
                 INFO("Pipe opened.");
                 GVAR(serverStarted) = true;
-                call FUNC(ts3ChannelCheck);
+
+                // Move TeamSpeak 3 channel if already in-game (otherwise display XEH will take care of it)
+                if (!isNull (findDisplay 46)) then {
+                    call FUNC(ts3ChannelMove);
+                };
             };
         };
     } else {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     true
 };
-// CHANGE: Don't initialize ACRE in editor
+
 #ifndef DEBUG_MODE_FULL
 if (isMultiplayer) then {
+#endif
     [] call FUNC(connectionFnc);
     ADDPFH(DFUNC(connectionFnc), 1, []);
     GVAR(serverStarted) = true;
+#ifndef DEBUG_MODE_FULL
 };
 #endif
 
