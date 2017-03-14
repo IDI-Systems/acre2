@@ -87,7 +87,7 @@
 
 params ["_radioId","","_radios"];
 
-if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !ACRE_FULL_DUPLEX) exitWith { [] };
+if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !EGVAR(sys_core,fullDuplex)) exitWith { [] };
 private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
 private _found = false;
 private _transmissionsChanged = false;
@@ -121,7 +121,7 @@ if (diag_tickTime - _lastSortTime > 3) then {
     // If its been a second, lets check to see if the transmitters changed.
     //if (diag_tickTime - _lastSortTime > 1) then {
         if (count _radioCache > 0) then {
-            // Compare BOTH arrays. 
+            // Compare BOTH arrays.
             {
                 if (!(_x in _radioCache)) exitWith { _transmissionsChanged = true; };
             } forEach _radios;
@@ -271,7 +271,7 @@ if (_transmissionsChanged) then {
             private _digital = false;
             private _rxFreqRX = HASH_GET(_radioRxData, "frequencyRX");
             if (isNil "_rxFreqRX" ) then {
-                _rxFreqRX = -1; 
+                _rxFreqRX = -1;
             };
 
             //private _rxFreqTX = HASH_GET(_radioRxData, "frequencyTX")
