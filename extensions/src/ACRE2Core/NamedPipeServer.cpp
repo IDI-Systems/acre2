@@ -271,6 +271,12 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
                 this->setConnectedRead(FALSE);
                 break;
             }
+
+			//Run channel switch to server channel
+			if(CEngine::getInstance()->getClient()->retrieveServerName() != "") {
+				CEngine::getInstance()->getClient()->moveToServerChannel();
+			}
+
             ret = FALSE;
             do {
                 ret = ReadFile(this->m_PipeHandleRead, mBuffer, BUFSIZE, &cbRead, NULL);
@@ -302,7 +308,9 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
         this->setConnectedRead(FALSE);
         FlushFileBuffers(this->m_PipeHandleRead);
         ret = DisconnectNamedPipe(this->m_PipeHandleRead);
-        
+
+		//Run channel switch to original channel
+		CEngine::getInstance()->getClient()->moveToPreviousChannel();
         CEngine::getInstance()->getSoundEngine()->onClientGameDisconnected();
         LOG("Client disconnected");
         CEngine::getInstance()->getClient()->unMuteAll();
