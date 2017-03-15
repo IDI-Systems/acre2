@@ -49,6 +49,9 @@
             <Polish>Odmutuj klientów</Polish>
             <Russian>Размьютить клиенты</Russian>
         </Key>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
+            <English>TeamSpeak Channel Switch</English>
+        </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
             <Spanish>Desactiva la notificación de desincronización del equipaje</Spanish>
