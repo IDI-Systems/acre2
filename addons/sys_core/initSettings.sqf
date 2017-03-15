@@ -38,6 +38,16 @@
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
 ] call CBA_Settings_fnc_init;
 
+[
+    QGVAR(ts3ChannelSwitch),
+    "CHECKBOX",
+    localize LSTRING(ts3ChannelSwitch_displayName),
+    "ACRE2",
+    true,
+    false,
+    {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
+] call CBA_Settings_fnc_init;
+
 // Difficulty settings
 // Interference
 [
