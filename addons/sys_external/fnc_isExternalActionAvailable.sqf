@@ -6,7 +6,7 @@
  * 0: Infantry unit <OBJECT>
  *
  * Return Value:
- * <BOOL>
+ * Unit can interact with external radios <BOOL>
  *
  * Example:
  * [cursorTarget] call acre_sys_external_isExternalRadioAvailable

@@ -21,7 +21,7 @@ params ["_target", "", "_params"];
 _params params ["_radio"];
 
 private _actions = [];
-private _playerOwnsRadio = (acre_player == [_radio] call FUNC(getExternalRadioOwner));
+private _playerOwnsRadio = acre_player == [_radio] call FUNC(getExternalRadioOwner);
 
 if (!_playerOwnsRadio) then {
     private _action = ["acre_use_externalRadio", localize LSTRING(takeHeadset), "", {[(_this select 2) select 0, acre_player] call FUNC(startUsingExternalRadio)}, {!([(_this select 2) select 0] call FUNC(isExternalRadioUsed))}, {}, _params] call ace_interact_menu_fnc_createAction;
