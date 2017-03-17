@@ -74,10 +74,15 @@ if (_vehicle != acre_player) then {
 
             if (acre_player != _unitInfantryPhone) then {
                 [localize LSTRING(crewIntercomConnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+
+                // Check if the crew member should join automatically the passenger intercom
+                if (EGVAR(sys_core,crewJoinPassengerIntercom) && {!(acre_player in (_vehicle getVariable [QGVAR(unitsPassengerIntercom), []]))} && {[_vehicle, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable)}) then {
+                    [_vehicle, acre_player, 1] call FUNC(updatePassengerIntercomStatus);
+                };
             };
         } else {
             ACRE_PLAYER_VEHICLE_CREW = [];
-            if (!isNull (acre_player getVariable [QGVAR(vehiclePassengerIntercom), objNull])) then {
+            if (!isNull (acre_player getVariable [QGVAR(vehicleCrewIntercom), objNull])) then {
                 // Player switchet to a non intercom position
                 acre_player setVariable [QGVAR(vehicleCrewIntercom), objNull, true];
             };

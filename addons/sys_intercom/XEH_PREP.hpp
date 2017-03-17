@@ -1,4 +1,5 @@
 PREP(intercomActions);
+PREP(intercomConfig);
 PREP(isIntercomAvailable);
 PREP(processConfigArray);
 PREP(vehicleCrewPFH);
@@ -9,6 +10,7 @@ PREP(crewIntercomConfig);
 // Infantry Phone
 PREP(checkInfantryPhoneAvailability);
 PREP(infantryPhoneAction);
+PREP(infantryPhoneConfig);
 PREP(infantryPhoneRingingPFH);
 PREP(infantryPhoneSoundCall);
 PREP(infantryPhoneChildrenActions);

@@ -67,6 +67,13 @@ if (_availableConnections == 0) then {
     _availableConnections = count _availablePassIntercomPos;
 };
 
+if (_availablePassIntercomPos isEqualTo (_vehicle getVariable [QGVAR(crewIntercomPositions), []]) && _exceptionsPassIntercomPos isEqualTo (_vehicle getVariable [QGVAR(crewIntercomExceptions), []])) then {
+    WARNING_3("Vehicle type %1 has the same positions defined for crew and passenger intercoms. Disabling passenger intercom. (Positions: %2 Esceptions: %3)",_type,_availablePassIntercomPos,_exceptionsPassIntercomPos);
+    _availablePassIntercomPos = [];
+    _exceptionsPassIntercomPos = [];
+    _availableConnections = 0;
+};
+
 _vehicle setVariable [QGVAR(passengerIntercomPositions), _availablePassIntercomPos, true];
 _vehicle setVariable [QGVAR(passengerIntercomExceptions), _exceptionsPassIntercomPos, true];
 _vehicle setVariable [QGVAR(availablePassIntercomConn), _availableConnections, true];

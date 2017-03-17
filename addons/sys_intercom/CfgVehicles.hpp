@@ -44,7 +44,7 @@ class CfgVehicles {
     class LandVehicle;
     class Tank: LandVehicle {
         acre_hasCrewIntercom = 1;
-        acre_crewIntercomPositions[] = {"crew"};
+        acre_crewIntercomPositions[] = {"default"};
         acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 1;
         acre_infantryPhoneIntercom[] = {};

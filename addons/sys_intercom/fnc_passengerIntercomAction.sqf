@@ -26,9 +26,6 @@ if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerInterco
 if (_type in GVAR(initializedPassengerIntercom)) exitWith {};
 GVAR(initializedPassengerIntercom) pushBack _type;
 
-// Configure valid positions and number of connections
-[_target] call FUNC(passengerIntercomConfig);
-
 // Passenger actions
 private _passengerIntercomAction = [
     QGVAR(passengerIntercom),

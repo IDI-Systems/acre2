@@ -19,12 +19,20 @@ params ["_target"];
 
 private _type = typeOf _target;
 
+// Configure if the vehicle has crew intercom.
+if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom") == 1) then {
+    [_target] call FUNC(crewIntercomConfig);
+};
+
+// Exit if ACE3 not loaded.
+if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
+
 // Exit if object has no passenger intercom
 if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") == 1) then {
-    [_target] call FUNC(passengerIntercomAction);
+    [_target] call FUNC(passengerIntercomConfig);
 };
 
 // Exit if object has no infantry phone
 if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasInfantryPhone") == 1) then {
-    [_target] call FUNC(infantryPhoneAction);
+    [_target] call FUNC(infantryPhoneConfig);
 };
