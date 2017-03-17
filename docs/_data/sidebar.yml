@@ -57,8 +57,8 @@ entries:
       url: /wiki/user/direct-speech
       output: web, pdf
 
-    - title: Vehicle Intercom
-      url: /wiki/user/vehicle-intercom
+    - title: External Radios
+      url: /wiki/user/external-radios
       output: web, pdf
 
     - title: Radio Signal Loss
