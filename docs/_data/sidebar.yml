@@ -61,6 +61,10 @@ entries:
       url: /wiki/user/external-radios
       output: web, pdf
 
+    - title: Vehicle Intercom
+      url: /wiki/user/vehicle-intercom
+      output: web, pdf
+
     - title: Radio Signal Loss
       url: /wiki/user/radio-signal-loss
       output: web, pdf
