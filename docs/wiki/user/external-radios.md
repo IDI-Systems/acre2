@@ -1,5 +1,5 @@
 ---
-title: External radios
+title: External Radios
 ---
 
 {% include important.html content="Requires ACE3 Interaction Menu!" %}

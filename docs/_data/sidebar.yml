@@ -57,6 +57,10 @@ entries:
       url: /wiki/user/direct-speech
       output: web, pdf
 
+    - title: External Radios
+      url: /wiki/user/external-radios
+      output: web, pdf
+
     - title: Radio Signal Loss
       url: /wiki/user/radio-signal-loss
       output: web, pdf
