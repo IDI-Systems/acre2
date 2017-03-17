@@ -22,12 +22,7 @@ params ["_vehicle", "_unit", "_action"];
 
 private _unitsPassengerIntercom = _vehicle getVariable [QGVAR(unitsPassengerIntercom), []];
 private _availableConnections = _vehicle getVariable  [QGVAR(availablePassIntercomConn), 0];
-
-private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
-{
-    _crew pushBackUnique (_vehicle turretUnit _x);
-} forEach (allTurrets [_vehicle, false]);
-_crew = _crew - [objNull];
+private _unitsCrewIntercom = _vehicle getVariable [QGVAR(unitsCrewIntercom), []];
 
 if (_action == 0) then {
     // Disconnect from passenger intercom
@@ -42,11 +37,12 @@ if (_action == 0) then {
     [localize LSTRING(passengerIntercomDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 } else {
     // Connect to passenger intercom
-    if ((_unit in _crew) || (!(_unit in _crew) && _availableConnections > 0)) then {
-        _unitsPassengerIntercom = _unitsPassengerIntercom + [_unit];
-        if (!(_unit in _crew)) then {
+    if ((_unit in _unitsCrewIntercom) || (!(_unit in _unitsCrewIntercom) && [_vehicle, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable) && _availableConnections > 0)) then {
+        _unitsPassengerIntercom pushBack _unit;
+        if (!(_unit in _unitsCrewIntercom) && [_vehicle, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable) && (vehicle _unit == _vehicle)) then {
             _availableConnections = _availableConnections - 1;
             _vehicle setVariable [QGVAR(availablePassIntercomConn), _availableConnections, true];
+            // Infantry phone does not use any connection
             _unit setVariable [QGVAR(usesPassengerIntercomConnection), true, true];
         };
 

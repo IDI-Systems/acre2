@@ -18,18 +18,40 @@ class CfgVehicles {
 
     class Car_F;
     class Wheeled_APC_F: Car_F {
-        acre_hasIntercom = 1;
+        acre_hasCrewIntercom = 1;
+        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomExceptions[] = {};
+        acre_hasInfantryPhone = 0;
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {};
+        acre_passengerIntercomConnections = -1;
     };
 
     class MRAP_02_base_F: Car_F {
-        acre_hasIntercom = 1;
+        acre_hasCrewIntercom = 1;
+        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomExceptions[] = {};
+        acre_hasInfantryPhone = 0;
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {};
+        acre_passengerIntercomConnections = -1;
     };
 
     class LandVehicle;
     class Tank: LandVehicle {
-        acre_hasIntercom = 1;
+        acre_hasCrewIntercom = 1;
+        acre_crewIntercomPositions[] = {"crew"};
+        acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 1;
-        acre_hasPassengerIntercom = 1;
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {};
+        acre_passengerIntercomConnections = -1;
     };
 
     // BLUFOR
@@ -38,7 +60,7 @@ class CfgVehicles {
 
     class B_MBT_01_cannon_F: B_MBT_01_base_F {
         acre_infantryPhonePosition[] = {1.35, -4.4, -1};
-        acre_passengerIntercomConnections = 2;
+        acre_hasPassengerIntercom = 1;
     };
 
     class MBT_01_arty_base_F: MBT_01_base_F {};
@@ -105,15 +127,39 @@ class CfgVehicles {
 
     class Air;
     class Helicopter: Air {
-        acre_hasIntercom = 1;
+        acre_hasCrewIntercom = 1;
+        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomExceptions[] = {};
+        acre_hasInfantryPhone = 0;
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {{"ffv", "all"}};
+        acre_passengerIntercomConnections = -1;
     };
 
     class Plane: Air {
-        acre_hasIntercom = 1;
+        acre_hasCrewIntercom = 1;
+        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomExceptions[] = {};
+        acre_hasInfantryPhone = 0;
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {};
+        acre_passengerIntercomConnections = -1;
     };
 
     class Boat_F;
     class SDV_01_base_F: Boat_F {
-        acre_hasIntercom = 1;
+        acre_hasCrewIntercom = 1;
+        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomExceptions[] = {};
+        acre_hasInfantryPhone = 0;
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {};
+        acre_passengerIntercomConnections = -1;
     };
 };

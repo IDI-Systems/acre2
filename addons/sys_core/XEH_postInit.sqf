@@ -98,7 +98,6 @@ if (GVAR(revealToAI) && hasInterface) then {
 //Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_VEHICLE_CREW = [];
 ACRE_PLAYER_PASSENGER_INTERCOM = [];
-ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
 
 // Disable positional audio whilst in briefing.
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)

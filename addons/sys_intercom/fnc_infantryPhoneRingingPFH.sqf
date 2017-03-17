@@ -19,14 +19,10 @@
 params ["_args", "_pfhID"];
 _args params ["_vehicle", "_position", "_direction", "_volume"];
 
-private _unitInfantryPhone = _vehicle getVariable [QGVAR(unitInfantryPhone), objNull];
+(_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, objNull]]) params ["_unitInfantryPhone", ""];
 private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), false];
 
-private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
-{
-    _crew pushBackUnique (_vehicle turretUnit _x);
-} forEach (allTurrets [_vehicle, false]);
-_crew = _crew - [objNull];
+private _crew = crew _vehicle select {[_vehicle, _x] call FUNC(isInfantryPhoneSpeakerAvailable)};
 
 private _noCrew = false;
 if (count _crew == 0) then {

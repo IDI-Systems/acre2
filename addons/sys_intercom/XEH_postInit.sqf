@@ -9,7 +9,9 @@ if (!hasInterface) exitWith {};
 
 ["Tank", "init", FUNC(intercomActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
 ["Car_F", "init", FUNC(intercomActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Air", "init", FUNC(intercomActions), nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
 
 #ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {

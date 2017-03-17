@@ -39,6 +39,21 @@ if (isArray _positionConfig) then {
     _position = getArray _positionConfig;
 };
 
+// Configure what intercom networks the infantry phone has access to
+private _infantryPhoneIntercom = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneIntercom");
+
+// Set by default to have access to all intercom networks if none was specified
+if (count _infantryPhoneIntercom ==  0) then {
+    if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom") == 1) then {
+        _infantryPhoneIntercom = ["crew"];
+    };
+    if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") == 1) then {
+        _infantryPhoneIntercom pushBack "passenger";
+    };
+};
+
+_target setVariable [QGVAR(infantryPhoneIntercom), _infantryPhoneIntercom, true];
+
 private _infantryPhoneAction = [
     QGVAR(infantryPhone),
     localize LSTRING(infantryPhone),

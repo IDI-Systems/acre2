@@ -12,9 +12,12 @@
             <German>Außenbord Sprechanlage geben</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_takeInfantryPhone">
-            <English>Take Infantry Phone</English>
-            <Spanish>Coger teléfono de infanteria</Spanish>
-            <German>Außenbord Sprechanlage abnehmen</German>
+            <English>Take Infantry Phone %1</English>
+            <Spanish>Coger teléfono de infanteria %1</Spanish>
+            <German>Außenbord Sprechanlage abnehmen %1</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_switchInfantryPhone">
+            <English>Switch Network %1</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_returnInfantryPhone">
             <English>Return Infantry Phone</English>
@@ -35,10 +38,22 @@
             <English>Infantry Phone Disconnected</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneConnected">
-            <English>Infantry Phone Connected</English>
+            <English>Infantry Phone Connected %1</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhoneSwitched">
+            <English>Intercom Switched %1</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
-            <English>Infantry Phone Received</English>
+            <English>Infantry Phone Received %1</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_crewIntercom">
+            <English>Crew Intercom</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_crewIntercomDisconnected">
+            <English>Disconnected from Crew Intercom</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_crewIntercomConnected">
+            <English>Connected to Crew Intercom</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
             <English>Passenger Intercom</English>
@@ -48,9 +63,6 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_disconnectPassengerIntercom">
             <English>Disconnect</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
-            <English>Disconnected from Passenger Intercom</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
             <English>Disconnected from Passenger Intercom</English>

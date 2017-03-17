@@ -56,4 +56,4 @@ PREP(fastHashCopyArray);
 PREP(fastHashKeys);
 
 PREP(coreInitPFH);
-PREP(vehicleCrewPFH);
+//PREP(vehicleCrewPFH);

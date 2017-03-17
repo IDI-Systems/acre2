@@ -16,13 +16,11 @@
  */
 #include "script_component.hpp"
 
-// Only show for actual crew members. Not someone in cargo...
 params ["_vehicle", "_unit"];
 
-private _crew = [driver _vehicle, gunner _vehicle, commander _vehicle];
-{
-    _crew pushBackUnique (_vehicle turretUnit _x);
-} forEach (allTurrets [_vehicle, false]);
-_crew = _crew - [objNull];
+if (!alive _unit) exitWith {false};
 
-(_unit in _crew)
+// For the moment only those in crew intercom are entitled to infantry phone actions
+private _isPhoneAvailable = [_vehicle, _unit, CREW_INTERCOM] call FUNC(isIntercomAvailable);
+
+_isPhoneAvailable

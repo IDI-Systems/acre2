@@ -19,18 +19,15 @@ params ["_target"];
 
 private _type = typeOf _target;
 
-// Exit if object has no infantry phone
+// Exit if object has no passenger intercom phone
 if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") != 1) exitWith {};
 
 // Exit if class already initialized
 if (_type in GVAR(initializedPassengerIntercom)) exitWith {};
-
 GVAR(initializedPassengerIntercom) pushBack _type;
 
-private _availableConnections = getNumber (configFile >> "CfgVehicles" >> _type >> "acre_passengerIntercomConnections");
-
-// Set the number of passenger intercom connections
-_target setVariable [QGVAR(availablePassIntercomConn), _availableConnections, true];
+// Configure valid positions and number of connections
+[_target] call FUNC(passengerIntercomConfig);
 
 // Passenger actions
 private _passengerIntercomAction = [
@@ -38,7 +35,7 @@ private _passengerIntercomAction = [
     localize LSTRING(passengerIntercom),
     ICON_RADIO_CALL,
     {true},
-    {true},
+    {[_target, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable)},
     {_this call FUNC(passengerIntercomChildrenActions)},
     [],
     [0, 0, 0],
