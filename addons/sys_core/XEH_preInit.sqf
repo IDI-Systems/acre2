@@ -1,12 +1,49 @@
 #include "script_component.hpp"
 
-#include "initSettings.sqf" // CBA Settings
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
+
+#include "initSettings.sqf" // CBA Settings
+
+// Fast hashes
+FUNC(fastHashCreate) = {
+    if (count FAST_HASH_POOL > 0) exitWith {
+        private _ret = (FAST_HASH_POOL deleteAt 0);
+        FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
+        _ret
+    };
+
+    private _ret = HASH_CREATE_NAMESPACE;
+    FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
+    _ret
+};
+
+if (isNil "FAST_HASH_POOL") then {
+    FAST_HASH_POOL = [];
+    for "_i" from 1 to 50000 do {
+        FAST_HASH_POOL pushBack HASH_CREATE_NAMESPACE;
+    };
+};
+FAST_HASH_TO_DELETE = [];
+
+[FUNC(hashMonitor), 0.33, []] call cba_fnc_addPerFrameHandler;
+
+FAST_HASH_CREATED_HASHES = [];
+FAST_HASH_VAR_STATE = (allVariables missionNamespace);
+FAST_HASH_VAR_LENGTH = count FAST_HASH_VAR_STATE;
+FAST_HASH_GC_INDEX = 0;
+FAST_HASH_GC_FOUND_OBJECTS = [];
+FAST_HASH_GC_FOUND_ARRAYS = [];
+FAST_HASH_GC_CHECK_OBJECTS = [];
+FAST_HASH_CREATED_HASHES_NEW = [];
+FAST_HASH_GC_IGNORE = ["fast_hash_gc_found_objects","fast_hash_gc_found_arrays","fast_hash_created_hashes","fast_hash_gc_check_objects","fast_hash_created_hashes_new","fast_hash_var_state","fast_hash_pool","fast_hash_to_delete"];
+FAST_HASH_GC_ORPHAN_CHECK_INDEX = 0;
+
+[FUNC(garbageCollector), 0.25, []] call CBA_fnc_addPerFrameHandler;
+
 
 if (!hasInterface) exitWith {
     ADDON = true;

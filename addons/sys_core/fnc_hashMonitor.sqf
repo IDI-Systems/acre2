@@ -9,14 +9,14 @@
  * None
  *
  * Example:
- * [] call acre_main_fnc__hashMonitor
+ * [] call acre_sys_core_fnc_hashMonitor
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 if (count FAST_HASH_TO_DELETE > 0) then {
-    _init_time = diag_tickTime;
+    private _init_time = diag_tickTime;
     while {(diag_tickTime - _init_time) * 1000 < 2.0 && count FAST_HASH_TO_DELETE > 0} do {
         deleteLocation (FAST_HASH_TO_DELETE deleteAt 0);
         FAST_HASH_POOL pushBack HASH_CREATE_NAMESPACE;

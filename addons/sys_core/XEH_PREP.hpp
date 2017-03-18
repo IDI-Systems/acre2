@@ -49,11 +49,12 @@ PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
 
+PREP(garbageCollector);
+PREP(hashMonitor);
 
 PREP(fastHashCopy);
 PREP(fastHashCopyArray);
 //PREP(fastHashCreate);
-PREP(fastHashCreateNamespace);
 PREP(fastHashKeys);
 
 PREP(coreInitPFH);

@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * ["globalVolume", "1.5"] call acre_main_fnc_garbageCollector
+ * ["globalVolume", "1.5"] call acre_sys_core_fnc_garbageCollector
  *
  * Public: No
  */
