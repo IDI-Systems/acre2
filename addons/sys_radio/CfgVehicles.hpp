@@ -7,7 +7,7 @@ class CfgVehicles {
         scopeCurator = 2;
         accuracy = 1000;
         model = "\A3\weapons_F\AmmoBoxes\AmmoBox_F";
-        author = "ACRE2-Team";
+        author = ECSTRING(main,Author);
         class TransportItems {
             MACRO_ADDITEM(ACRE_PRC77,NUM_RADIOS_IN_CRATE);
             MACRO_ADDITEM(ACRE_PRC117F,NUM_RADIOS_IN_CRATE);
