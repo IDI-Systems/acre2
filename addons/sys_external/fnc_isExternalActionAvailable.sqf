@@ -26,7 +26,7 @@ private _radiosInUse = _sharedRadios select {[_x] call FUNC(isExternalRadioUsed)
     if (acre_player != [_x] call FUNC(getExternalRadioUser))  then {
         _sharedRadios = _sharedRadios - [_x];
     };
-} forEach _radiosInUse;		
+} forEach _radiosInUse;
 
 if (count _sharedRadios > 0) exitWith { true };
 
