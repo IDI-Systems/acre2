@@ -16,4 +16,5 @@ class CfgPatches {
 
 PRELOAD_ADDONS;
 
+#include "CfgVehicles.hpp"
 #include "CfgEventHandlers.hpp"

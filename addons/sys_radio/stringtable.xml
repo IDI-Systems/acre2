@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_radio">
+        <Key ID="STR_ACRE_sys_radio_radioSupplyCrate">
+            <English>[ACRE2] Radio Supply Crate</English>
+        </Key>
+    </Package>
+</Project>
