@@ -53,6 +53,7 @@ PREP(onRevealUnit);
 PREP(fastHashCopy);
 PREP(fastHashCopyArray);
 //PREP(fastHashCreate);
+PREP(fastHashCreateNamespace);
 PREP(fastHashKeys);
 
 PREP(coreInitPFH);

@@ -90,8 +90,9 @@ Antenna Defines
 
 #define GET_TS3ID(object) (object call { private _ret = (_this getVariable [QGVAR(ts3id), -1]); if (_ret == -1) then { WARNING_1("%1 has no TS3 ID",_this); }; _ret })
 
-#define IS_HASH(hash) (hash isEqualType locationNull && {(text hash) isEqualTo "acre_hash"})
+#define IS_HASH(hash) ((type hash) isEqualTo "ACRE_FastHashNamespaceDummy")
 
+#define HASH_CREATE_NAMESPACE (call EFUNC(sys_core,fastHashCreateNamespace))
 #define HASH_CREATE (call EFUNC(sys_core,fastHashCreate))
 #define HASH_DELETE(hash) (FAST_HASH_TO_DELETE pushBack hash)
 #define HASH_HASKEY(hash, key) (!(isNil {hash getVariable key}))

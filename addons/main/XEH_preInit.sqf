@@ -12,12 +12,11 @@ EFUNC(sys_core,fastHashCreate) = {
     if (count FAST_HASH_POOL > 0) exitWith {
         private _ret = (FAST_HASH_POOL deleteAt 0);
         FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
-        _ret;
+        _ret
     };
-    private _ret = call CBA_fnc_createNamespace;
-    _ret setText "acre_hash";
+    private _ret = HASH_CREATE_NAMESPACE;
     FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
-    _ret;
+    _ret
 };
 
 // Funtions and definitions of *HASH* variables must remain in main due to the dependency within script_debug.hpp
@@ -51,9 +50,7 @@ ACRE_DUMPSTACK_FNC = {
 if (isNil "FAST_HASH_POOL") then {
     FAST_HASH_POOL = [];
     for "_i" from 1 to 50000 do {
-        private _newHash = call CBA_fnc_createNamespace;
-        _newHash setText "acre_hash";
-        FAST_HASH_POOL pushBack _newHash;
+        FAST_HASH_POOL pushBack HASH_CREATE_NAMESPACE;
     };
 };
 FAST_HASH_TO_DELETE = [];
