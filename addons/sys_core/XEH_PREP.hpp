@@ -54,7 +54,7 @@ PREP(hashMonitor);
 
 PREP(fastHashCopy);
 PREP(fastHashCopyArray);
-//PREP(fastHashCreate);
+PREP(fastHashCreate);
 PREP(fastHashKeys);
 
 PREP(coreInitPFH);

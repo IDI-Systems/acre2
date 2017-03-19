@@ -11,6 +11,9 @@ PREP_RECOMPILE_END;
 //
 [] call FUNC(preset_information);
 
+// Menu hash stuff
+GVAR(Menus) = HASH_CREATE;
+
 GVAR(currentRadioId) = -1;
 
 DFUNC(onKnobMouseEnter) = {
