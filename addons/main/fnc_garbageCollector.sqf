@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_core_fnc_garbageCollector
+ * [] call acre_main_fnc_garbageCollector
  *
  * Public: No
  */
@@ -56,7 +56,7 @@ while {diag_tickTime - _init_time < 0.001 && {(count ACRE_FAST_HASH_GC_FOUND_ARR
 
 _init_time = diag_tickTime;
 while {diag_tickTime - _init_time < 0.001 && {(count ACRE_FAST_HASH_GC_FOUND_OBJECTS) > 0}} do {
-    _hash = ACRE_FAST_HASH_GC_FOUND_OBJECTS deleteAt 0;
+    private _hash = ACRE_FAST_HASH_GC_FOUND_OBJECTS deleteAt 0;
     ACRE_FAST_HASH_GC_CHECK_OBJECTS pushBack _hash;
     private _array = allVariables _hash;
     {

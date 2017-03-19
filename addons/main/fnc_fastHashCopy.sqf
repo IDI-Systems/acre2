@@ -9,8 +9,8 @@
  * ACRE 2 Hash <HASH>
  *
  * Example:
- * new_acreHash = [acreHash] call acre_sys_core_fnc_fastHashCopy
- * new_acreHash = [player] call acre_sys_core_fnc_fastHashCopy
+ * new_acreHash = [acreHash] call acre_main_fnc_fastHashCopy
+ * new_acreHash = [player] call acre_main_fnc_fastHashCopy
  *
  * Public: No
  */
@@ -21,7 +21,7 @@ private _return = [];
 if (IS_ARRAY(_this)) then {
     _return = _this call FUNC(fastHashCopyArray);
 } else {
-    _return = (call FUNC(fastHashCreate));
+    _return = call FUNC(fastHashCreate);
     {
         private _el = _this getVariable _x;
         private _eln = _x;

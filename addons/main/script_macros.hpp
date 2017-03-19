@@ -93,14 +93,14 @@ Antenna Defines
 #define IS_HASH(hash) (hash isEqualType locationNull && {(type hash) isEqualTo "ACRE_FastHashNamespaceDummy"})
 
 #define HASH_CREATE_NAMESPACE (createLocation ["ACRE_FastHashNamespaceDummy", [-1000, -1000, 0], 0, 0])
-#define HASH_CREATE (call EFUNC(sys_core,fastHashCreate))
+#define HASH_CREATE (call EFUNC(main,fastHashCreate))
 #define HASH_DELETE(hash) (ACRE_FAST_HASH_TO_DELETE pushBack hash)
 #define HASH_HASKEY(hash, key) (!(isNil {hash getVariable key}))
 #define HASH_SET(hash, key, val) (hash setVariable [key, val])
 #define HASH_GET(hash, key) (hash getVariable key)
 #define HASH_REM(hash, key) (hash setVariable [key, nil])
-#define HASH_COPY(hash) (hash call EFUNC(sys_core,fastHashCopy))
-#define HASH_KEYS(hash) (hash call EFUNC(sys_core,fastHashKeys))
+#define HASH_COPY(hash) (hash call EFUNC(main,fastHashCopy))
+#define HASH_KEYS(hash) (hash call EFUNC(main,fastHashKeys))
 
 #define HASHLIST_CREATELIST(keys) []
 #define HASHLIST_CREATEHASH(hashList) HASH_CREATE

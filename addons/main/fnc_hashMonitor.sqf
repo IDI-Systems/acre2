@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_core_fnc_hashMonitor
+ * [] call acre_main_fnc_hashMonitor
  *
  * Public: No
  */

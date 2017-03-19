@@ -49,13 +49,5 @@ PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
 
-PREP(garbageCollector);
-PREP(hashMonitor);
-
-PREP(fastHashCopy);
-PREP(fastHashCopyArray);
-PREP(fastHashCreate);
-PREP(fastHashKeys);
-
 PREP(coreInitPFH);
 PREP(vehicleCrewPFH);

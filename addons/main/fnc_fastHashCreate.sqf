@@ -9,7 +9,7 @@
  * ACRE2 Hash <HASH>
  *
  * Example:
- * [] call acre_sys_core_fnc_fastHashCreate
+ * [] call acre_main_fnc_fastHashCreate
  *
  * Public: No
  */
