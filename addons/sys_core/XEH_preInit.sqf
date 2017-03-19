@@ -22,25 +22,25 @@ FUNC(fastHashCreate) = {
 };
 
 if (isNil "FAST_HASH_POOL") then {
-    FAST_HASH_POOL = [];
+    ACRE_FAST_HASH_POOL = [];
     for "_i" from 1 to 50000 do {
         FAST_HASH_POOL pushBack HASH_CREATE_NAMESPACE;
     };
 };
-FAST_HASH_TO_DELETE = [];
+ACRE_FAST_HASH_TO_DELETE = [];
 
 [FUNC(hashMonitor), 0.33, []] call cba_fnc_addPerFrameHandler;
 
-FAST_HASH_CREATED_HASHES = [];
-FAST_HASH_VAR_STATE = (allVariables missionNamespace);
-FAST_HASH_VAR_LENGTH = count FAST_HASH_VAR_STATE;
-FAST_HASH_GC_INDEX = 0;
-FAST_HASH_GC_FOUND_OBJECTS = [];
-FAST_HASH_GC_FOUND_ARRAYS = [];
-FAST_HASH_GC_CHECK_OBJECTS = [];
-FAST_HASH_CREATED_HASHES_NEW = [];
-FAST_HASH_GC_IGNORE = ["fast_hash_gc_found_objects","fast_hash_gc_found_arrays","fast_hash_created_hashes","fast_hash_gc_check_objects","fast_hash_created_hashes_new","fast_hash_var_state","fast_hash_pool","fast_hash_to_delete"];
-FAST_HASH_GC_ORPHAN_CHECK_INDEX = 0;
+ACRE_FAST_HASH_CREATED_HASHES = [];
+ACRE_FAST_HASH_VAR_STATE = (allVariables missionNamespace);
+ACRE_FAST_HASH_VAR_LENGTH = count FAST_HASH_VAR_STATE;
+ACRE_FAST_HASH_GC_INDEX = 0;
+ACRE_FAST_HASH_GC_FOUND_OBJECTS = [];
+ACRE_FAST_HASH_GC_FOUND_ARRAYS = [];
+ACRE_FAST_HASH_GC_CHECK_OBJECTS = [];
+ACRE_FAST_HASH_CREATED_HASHES_NEW = [];
+ACRE_FAST_HASH_GC_IGNORE = ["fast_hash_gc_found_objects","fast_hash_gc_found_arrays","fast_hash_created_hashes","fast_hash_gc_check_objects","fast_hash_created_hashes_new","fast_hash_var_state","fast_hash_pool","fast_hash_to_delete"];
+ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX = 0;
 
 [FUNC(garbageCollector), 0.25, []] call CBA_fnc_addPerFrameHandler;
 

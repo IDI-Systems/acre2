@@ -22,7 +22,7 @@ while {diag_tickTime - _init_time < 0.001 && {FAST_HASH_GC_INDEX < FAST_HASH_VAR
     private _var_name = FAST_HASH_VAR_STATE select FAST_HASH_GC_INDEX;
     private _x = missionNamespace getVariable [_var_name, nil];
 
-    FAST_HASH_GC_INDEX = FAST_HASH_GC_INDEX + 1;
+    ACRE_FAST_HASH_GC_INDEX = FAST_HASH_GC_INDEX + 1;
     if (!(_var_name in FAST_HASH_GC_IGNORE)) then {
         if (IS_HASH(_x)) then {
 
@@ -78,21 +78,21 @@ if (FAST_HASH_GC_INDEX >= FAST_HASH_VAR_LENGTH && {(count FAST_HASH_GC_FOUND_ARR
         _init_time = diag_tickTime;
         while {diag_tickTime - _init_time < 0.001 && {FAST_HASH_GC_ORPHAN_CHECK_INDEX < (count FAST_HASH_CREATED_HASHES)}} do {
             _check = FAST_HASH_CREATED_HASHES select FAST_HASH_GC_ORPHAN_CHECK_INDEX;
-            FAST_HASH_GC_ORPHAN_CHECK_INDEX = FAST_HASH_GC_ORPHAN_CHECK_INDEX + 1;
+            ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX = FAST_HASH_GC_ORPHAN_CHECK_INDEX + 1;
             if (!(_check in FAST_HASH_GC_CHECK_OBJECTS)) then {
                 FAST_HASH_TO_DELETE pushBack _check;
             };
         };
     } else {
-        FAST_HASH_VAR_STATE = (allVariables missionNamespace);
-        FAST_HASH_CREATED_HASHES = FAST_HASH_GC_CHECK_OBJECTS;
-        FAST_HASH_GC_CHECK_OBJECTS = [];
-        FAST_HASH_GC_FOUND_ARRAYS = [];
-        FAST_HASH_VAR_LENGTH = count FAST_HASH_VAR_STATE;
-        FAST_HASH_GC_INDEX = 0;
+        ACRE_FAST_HASH_VAR_STATE = (allVariables missionNamespace);
+        ACRE_FAST_HASH_CREATED_HASHES = FAST_HASH_GC_CHECK_OBJECTS;
+        ACRE_FAST_HASH_GC_CHECK_OBJECTS = [];
+        ACRE_FAST_HASH_GC_FOUND_ARRAYS = [];
+        ACRE_FAST_HASH_VAR_LENGTH = count FAST_HASH_VAR_STATE;
+        ACRE_FAST_HASH_GC_INDEX = 0;
         FAST_HASH_CREATED_HASHES append FAST_HASH_CREATED_HASHES_NEW;
-        FAST_HASH_CREATED_HASHES_NEW = [];
-        FAST_HASH_GC_FOUND_OBJECTS = [];
-        FAST_HASH_GC_ORPHAN_CHECK_INDEX = 0;
+        ACRE_FAST_HASH_CREATED_HASHES_NEW = [];
+        ACRE_FAST_HASH_GC_FOUND_OBJECTS = [];
+        ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX = 0;
     };
 };
