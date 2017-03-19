@@ -7,6 +7,10 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 // DATA PREPERATION
+GVAR(Menus) = HASH_CREATE; // Base hash for menus
+PREP_FOLDER(menus\types); // Directly calls after compilation
+PREP_FOLDER(farris_menus); // Directly calls after compilation
+
 [] call FUNC(preset_information);
 
 GVAR(currentRadioId) = -1;

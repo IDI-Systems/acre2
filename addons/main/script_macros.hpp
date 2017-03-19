@@ -117,6 +117,8 @@ Antenna Defines
 #define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QPATHTOF(folder\__PREP__.sqf)
 #define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(module\DOUBLES(fnc,fncName).sqf)
 #define PREP_STATE(stateFile) [] call compile preprocessFileLineNumbers format [QPATHTOF(states\%1.sqf), #stateFile]
+#define PREP_MENU(menuType) [] call compile preprocessFileLineNumbers QPATHTOF(menus\types\menuType.sqf)
+#define MENU_DEFINITION(folder,menu) [] call compile preprocessFileLineNumbers QPATHTOF(folder\menu.sqf);
 
 // Deprecation
 #define ACRE_DEPRECATED(arg1,arg2,arg3) WARNING_3("%1 is deprecated. Support will be dropped in version %2. Replaced by: %3",arg1,arg2,arg3)
