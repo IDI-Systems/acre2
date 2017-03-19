@@ -7,10 +7,8 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 // DATA PREPERATION
+GVAR(Menus) = HASH_CREATE; // Must be created first
 [] call FUNC(preset_information);
-
-// Menu hash stuff
-GVAR(Menus) = HASH_CREATE;
 
 GVAR(currentRadioId) = -1;
 

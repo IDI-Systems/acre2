@@ -35,6 +35,7 @@ ACRE_DUMPSTACK_FNC = {
 };
 
 // Fast Hashes
+// All hash stuff must be in main to guarantee it is compiled and executed first for proper data handling.
 if (isNil "ACRE_FAST_HASH_POOL") then {
     ACRE_FAST_HASH_POOL = [];
     for "_i" from 1 to 50000 do {
