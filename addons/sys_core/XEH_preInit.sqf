@@ -6,21 +6,10 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
-#include "initSettings.sqf" // CBA Settings
+// CBA Settings
+#include "initSettings.sqf"
 
-// Fast hashes
-FUNC(fastHashCreate) = {
-    if (count FAST_HASH_POOL > 0) exitWith {
-        private _ret = (FAST_HASH_POOL deleteAt 0);
-        FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
-        _ret
-    };
-
-    private _ret = HASH_CREATE_NAMESPACE;
-    FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
-    _ret
-};
-
+// Fast Hashes
 if (isNil "FAST_HASH_POOL") then {
     ACRE_FAST_HASH_POOL = [];
     for "_i" from 1 to 50000 do {
