@@ -22,7 +22,16 @@ private _type = typeOf _vehicle;
 // All crew members have access to passenger intercom
 private _availablePassIntercomPos = +(_vehicle getVariable [QGVAR(crewIntercomPositions), []]);
 private _passengerIntercomPositions = getArray (configFile >> "CfgVehicles" >> _type >> "acre_passengerIntercomPositions");
-if (count _passengerIntercomPositions == 0 || {toLower (_passengerIntercomPositions select 0) == "default"}) then {
+private _default = false;
+if (count _passengerIntercomPositions == 0 || "default" in _passengerIntercomPositions) then {
+    _default = true;
+    if (count _passengerIntercomPositions > 1) then {
+        WARNING_1("Vehicle type %1 has the default entry followed by other options. This is not supported. Ignoring custom configuration for passenger intercom.",_type);
+        _default = true;
+    };
+};
+
+if (_default) then {
     // Add all cargo positions
     private _cargoPositions = fullCrew [_vehicle, "cargo", true];
     {

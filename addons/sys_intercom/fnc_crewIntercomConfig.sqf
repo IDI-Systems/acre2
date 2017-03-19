@@ -23,10 +23,28 @@ if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom") !
 
 private _crewIntercomPositions = getArray (configFile >> "CfgVehicles" >> _type >> "acre_crewIntercomPositions");
 private _availableCrewIntercomPos = [];
-if (count _crewIntercomPositions == 0 || {toLower (_crewIntercomPositions select 0) == "default"}) then {
+
+private _default = false;
+if (count _crewIntercomPositions == 0 || "default" in _crewIntercomPositions) then {
+    _default = true;
+    if (count _crewIntercomPositions > 1) then {
+        WARNING_1("Vehicle type %1 has the default entry followed by other options. This is not supported. Ignoring custom configuration for crew intercom.",_type);
+        _default = true;
+    };
+};
+
+if (_default) then {
     // Use Standard configuration
-    // Driver, commander and gunner positions
-    _availableCrewIntercomPos = [["driver"], ["commander"], ["gunner"]];
+    // Driver, commander and gunner positions. Only select thoses that are defined.
+    {
+        private _role = _x;
+        private _crew = fullCrew [_vehicle, _role, true];
+        {
+            if (_role == toLower (_x select 1)) then {
+                _availableCrewIntercomPos pushBackUnique [_role];
+            };
+        } forEach _crew;
+    } forEach ["driver", "commander", "gunner"];
 
     // Turrets excluding FFV turrets
     {

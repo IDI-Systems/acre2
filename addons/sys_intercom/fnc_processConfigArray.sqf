@@ -24,10 +24,16 @@ private _processedArray = [];
     if (typeName _x == "STRING") then {
         if (_x == "crew") then {
             // Add Standard configuration
-            // Driver, commander and gunner positions
+            // Driver, commander and gunner positions. Only select thoses that are defined.
             {
-                _processedArray pushBackUnique _x
-            } forEach [["driver"], ["commander"], ["gunner"]];
+                private _role = _x;
+                private _crew = fullCrew [_vehicle, _role, true];
+                {
+                    if (_role == toLower (_x select 1)) then {
+                        _processedArray pushBackUnique [_x];
+                    };
+                } forEach _crew;
+            } forEach ["driver", "commander", "gunner"];
 
             // Turrets excluding FFV turrets
             {
@@ -64,7 +70,7 @@ private _processedArray = [];
             };
         } else {
             if (_positionType == "ffv") then {_positionType = "turret";};
-            for [{private _i = 1}, {_i < count (_x select 1)}, {_i = _i + 1}] do {
+            for [{private _i = 1}, {_i < count _x}, {_i = _i + 1}] do {
                 _processedArray pushBackUnique [_positionType, _x select _i];
             };
         };
