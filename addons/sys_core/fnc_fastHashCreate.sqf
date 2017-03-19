@@ -15,12 +15,12 @@
  */
 #include "script_component.hpp"
 
-if (count FAST_HASH_POOL > 0) exitWith {
-    private _ret = (FAST_HASH_POOL deleteAt 0);
-    FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
+if (count ACRE_FAST_HASH_POOL > 0) exitWith {
+    private _ret = (ACRE_FAST_HASH_POOL deleteAt 0);
+    ACRE_FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
     _ret
 };
 
 private _ret = HASH_CREATE_NAMESPACE;
-FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
+ACRE_FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
 _ret

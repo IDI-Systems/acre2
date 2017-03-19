@@ -94,7 +94,7 @@ Antenna Defines
 
 #define HASH_CREATE_NAMESPACE (createLocation ["ACRE_FastHashNamespaceDummy", [-1000, -1000, 0], 0, 0])
 #define HASH_CREATE (call EFUNC(sys_core,fastHashCreate))
-#define HASH_DELETE(hash) (FAST_HASH_TO_DELETE pushBack hash)
+#define HASH_DELETE(hash) (ACRE_FAST_HASH_TO_DELETE pushBack hash)
 #define HASH_HASKEY(hash, key) (!(isNil {hash getVariable key}))
 #define HASH_SET(hash, key, val) (hash setVariable [key, val])
 #define HASH_GET(hash, key) (hash getVariable key)
