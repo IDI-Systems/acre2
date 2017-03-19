@@ -10,8 +10,8 @@
  * Array of keys inside an ACRE 2 Hash or object <ARRAY>
  *
  * Example:
- * keys = [acreHash] call acre_sys_core_fnc_fastHashKeys
- * keys = [player] call acre_sys_core_fnc_fastHashKeys
+ * keys = [acreHash] call acre_main_fnc_fastHashKeys
+ * keys = [player] call acre_main_fnc_fastHashKeys
  *
  * Public: No
  */
