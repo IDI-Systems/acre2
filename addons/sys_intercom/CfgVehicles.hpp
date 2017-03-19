@@ -80,6 +80,7 @@ class CfgVehicles {
     class B_APC_Tracked_01_base_F;
     class B_APC_Tracked_01_rcws_F: B_APC_Tracked_01_base_F {
         acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82};
+        acre_hasPassengerIntercom = 1;
     };
 
     class B_APC_Tracked_01_AA_F: B_APC_Tracked_01_base_F {
@@ -88,6 +89,11 @@ class CfgVehicles {
 
     class B_APC_Tracked_01_CRV_F: B_APC_Tracked_01_base_F {
         acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82};
+    };
+
+    class B_APC_Wheeled_01_base_F;
+    class B_APC_Wheeled_01_cannon_F :B_APC_Wheeled_01_base_F {
+        acre_hasPassengerIntercom = 1;
     };
 
     // OPFOR
@@ -133,10 +139,30 @@ class CfgVehicles {
         acre_hasInfantryPhone = 0;
         acre_infantryPhoneIntercom[] = {};
         acre_hasPassengerIntercom = 0;
-        acre_passengerIntercomPositions[] = {};
-        acre_passengerIntercomExceptions[] = {{"ffv", "all"}};
+        acre_passengerIntercomPositions[] = {"default"};
+        acre_passengerIntercomExceptions[] = {};
         acre_passengerIntercomConnections = -1;
     };
+
+    // BLUFOR
+    class Heli_Light_01_unarmed_base_F;
+    class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
+        acre_hasPassengerIntercom = 1;
+    };
+
+    class Helicopter_Base_H;
+    class Heli_Transport_03_base_F: Helicopter_Base_H {
+        acre_hasPassengerIntercom = 1;
+        acre_passengerIntercomPositions[] = {{"cargo", "all"}, {"ffv", "all"}};
+    };
+
+    class Heli_Transport_01_base_F: Helicopter_Base_H {
+        acre_hasPassengerIntercom = 1;
+    };
+
+    // OPFOR
+
+    // INDEPENDENT
 
     class Plane: Air {
         acre_hasCrewIntercom = 1;
