@@ -114,10 +114,16 @@ class CfgVehicles {
     class O_APC_Tracked_02_base_F;
     class O_APC_Tracked_02_cannon_F: O_APC_Tracked_02_base_F {
         acre_infantryPhonePosition[] = {0.98, -4.9, -0.79};
+        acre_hasPassengerIntercom = 1;
     };
 
     class O_APC_Tracked_02_AA_F: O_APC_Tracked_02_base_F {
         acre_infantryPhonePosition[] = {0.98, -4.9, -0.79};
+    };
+
+    class APC_Wheeled_02_base_F;
+    class O_APC_Wheeled_02_base_F: APC_Wheeled_02_base_F {
+        acre_hasPassengerIntercom = 1;
     };
 
     // INDEPENDENT
@@ -129,6 +135,12 @@ class CfgVehicles {
     class I_APC_tracked_03_base_F;
     class I_APC_tracked_03_cannon_F: I_APC_tracked_03_base_F {
         acre_infantryPhonePosition[] = {1.1, -3.87, -0.78};
+        acre_hasPassengerIntercom = 1;
+    };
+
+    class APC_Wheeled_03_base_F;
+    class I_APC_Wheeled_03_base_F: APC_Wheeled_03_base_F {
+        acre_hasPassengerIntercom = 1;
     };
 
     class Air;
@@ -161,19 +173,63 @@ class CfgVehicles {
     };
 
     // OPFOR
+    class Heli_Light_02_base_F: Helicopter_Base_H {
+        acre_hasPassengerIntercom = 1;
+    };
+
+    class Helicopter_Base_F;
+    class Heli_Attack_02_base_F: Helicopter_Base_F {
+        acre_hasPassengerIntercom = 1;
+    };
+
+    class Heli_Transport_04_base_F;
+    class O_Heli_Transport_04_medevac_F: Heli_Transport_04_base_F {
+        acre_hasPassengerIntercom = 1;
+    };
+
+    class O_Heli_Transport_04_F: Heli_Transport_04_base_F {
+        acre_hasPassengerIntercom = 1;
+    };
 
     // INDEPENDENT
+    class Heli_Transport_02_base_F: Helicopter_Base_H {
+        acre_hasPassengerIntercom = 1;
+        acre_passengerIntercomPositions[] = {{"cargo", "all"}, {"ffv", "all"}};
+    };
+
+    class Heli_light_03_base_F: Helicopter_Base_F {
+        acre_hasPassengerIntercom = 1;
+    };
 
     class Plane: Air {
         acre_hasCrewIntercom = 1;
-        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomPositions[] = {"default"};
         acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 0;
         acre_infantryPhoneIntercom[] = {};
         acre_hasPassengerIntercom = 0;
-        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomPositions[] = {"default"};
         acre_passengerIntercomExceptions[] = {};
         acre_passengerIntercomConnections = -1;
+    };
+
+    class VTOL_01_unarmed_base_F;
+    class VTOL_01_infantry_base_F: VTOL_01_unarmed_base_F {
+        acre_hasPassengerIntercom = 1;
+        acre_crewIntercomExceptions[] = {{"turret", {1}, {2}}};
+        acre_passengerIntercomPositions[] = {{"cargo", "all"},{"turret", "all"},{"ffv", "all"}};
+    };
+
+    class VTOL_01_vehicle_base_F: VTOL_01_unarmed_base_F {
+        acre_hasPassengerIntercom = 1;
+        acre_crewIntercomExceptions[] = {{"turret", {1}, {2}}};
+        acre_passengerIntercomPositions[] = {{"turret", "all"}};
+    };
+
+    class VTOL_02_base_F;
+    class VTOL_02_infantry_base_F: VTOL_02_base_F {
+        acre_hasPassengerIntercom = 1;
+        acre_passengerIntercomPositions[] = {{"cargo", "all"},{"ffv", "all"}};
     };
 
     class Boat_F;
@@ -183,7 +239,7 @@ class CfgVehicles {
         acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 0;
         acre_infantryPhoneIntercom[] = {};
-        acre_hasPassengerIntercom = 0;
+        acre_hasPassengerIntercom = 1;
         acre_passengerIntercomPositions[] = {};
         acre_passengerIntercomExceptions[] = {};
         acre_passengerIntercomConnections = -1;
