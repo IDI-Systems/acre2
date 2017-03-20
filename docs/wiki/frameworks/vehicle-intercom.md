@@ -139,7 +139,7 @@ An entry is provided in order to be able to execute a custom function if the inf
 * 1: Infantry phone unit (OBJECT)
 * 2: Infantry phone action (1: return, 2: pick-up, 3: give, 4: switch network) (NUMBER)
 
-The following configuration would execute, in a call enviroment, `myCustomFunction`:
+The following configuration would execute, in a **call** enviroment, `myCustomFunction`:
 
 ```cpp
 class CfgVehicles {
