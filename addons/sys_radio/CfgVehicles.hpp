@@ -6,6 +6,7 @@ class CfgVehicles {
         scope = 2;
         scopeCurator = 2;
         accuracy = 1000;
+        displayName = CSTRING(radioSupplyCrate);
         model = "\A3\weapons_F\AmmoBoxes\AmmoBox_F";
         author = ECSTRING(main,Author);
         class TransportItems {
