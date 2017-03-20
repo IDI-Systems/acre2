@@ -31,5 +31,11 @@
             <Spanish>Dar transmisor</Spanish>
             <German>Headset geben</German>
         </Key>
+        <Key ID="STR_ACRE_sys_external_hintTake">
+            <English>Start using %1 from %2</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_hintReturn">
+            <English>Stop using %1 from %2</English>
+        </Key>
     </Package>
 </Project>
