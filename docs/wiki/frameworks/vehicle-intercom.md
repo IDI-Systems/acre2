@@ -107,6 +107,8 @@ class CfgVehicles {
         acre_hasInfantryPhone = 1; // 1 - enabled, 0 -
         // Intercom the infantry phone can connect to. If left empty, the infantry phone is able to connect to all available intercom networks. Supported entries are "crew" and "passenger".
         acre_infantryPhoneIntercom[] = {"crew", "passenger"};
+        // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched.
+        acre_eventInfantryPhone = QFUNC(noApiFunction);
     };
 };
 ```
@@ -128,6 +130,29 @@ ACRE2 provides helper functions for retrieving the position and quickly making s
 
 - `DRAW_INFANTRYPHONE_INFO` draws text with class name of the vehicle and current position at the current position on the model (when pointing at the vehicle).
 - `DRAW_CURSORPOS_INFO` draws an arrow where your cursor is pointing to. Current position is saved in `xPosModel` variable which can easily be watched in the debug console to retrieve precise coordinates in model space for direct use in config.
+
+### Custom function
+
+An entry is provided in order to be able to execute a custom function if the infantry phone is picked up, put back, given to another unit or the intercom network is switched. By default a dummy function is called, but any other function could be defined instead on a class basis. This can be useful if the vehicle has a hatch that gets opened when the infantry phone is picked up for example. The arguments passed to this function are:
+
+
+* 0: Vehicle with infantry phone <OBJECT>
+* 1: Infantry phone unit <OBJECT>
+* 2: Infantry phone action (1: return, 2: pick-up, 3: give, 4: switch network) <NUMBER>
+
+
+The following configuration would execute, in a call enviroment, `myCustomFunction`:
+
+```cpp
+class CfgVehicles {
+    class ParentVehicle;
+    class MyVehicle: ParentVehicle {
+        acre_hasInfantryPhone = 1;
+        acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82};
+        acre_eventInfantryPhone = "myCustomFunction";
+    };
+};
+```
 
 ## Entries and wildcards
 

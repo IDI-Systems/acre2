@@ -55,3 +55,7 @@ switch (_action) do {
         [format [localize LSTRING(infantryPhoneSwitched), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
 };
+
+// Hook for third party mods with actions when picking returning infantry phone
+private _event = _vehicle getVariable [QGVAR(eventInfantryPhone), FUNC(noApiFunction)];
+[_vehicle, _unit, _action] call (missionNamespace getVariable [_event, FUNC(noApiFunction)]);

@@ -48,6 +48,7 @@ class CfgVehicles {
         acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 1;
         acre_infantryPhoneIntercom[] = {};
+        acre_eventInfantryPhone = QFUNC(noApiFunction);
         acre_hasPassengerIntercom = 0;
         acre_passengerIntercomPositions[] = {};
         acre_passengerIntercomExceptions[] = {};
