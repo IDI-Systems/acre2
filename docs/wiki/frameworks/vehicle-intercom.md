@@ -135,11 +135,9 @@ ACRE2 provides helper functions for retrieving the position and quickly making s
 
 An entry is provided in order to be able to execute a custom function if the infantry phone is picked up, put back, given to another unit or the intercom network is switched. By default a dummy function is called, but any other function could be defined instead on a class basis. This can be useful if the vehicle has a hatch that gets opened when the infantry phone is picked up for example. The arguments passed to this function are:
 
-
-* 0: Vehicle with infantry phone <OBJECT>
-* 1: Infantry phone unit <OBJECT>
-* 2: Infantry phone action (1: return, 2: pick-up, 3: give, 4: switch network) <NUMBER>
-
+* 0: Vehicle with infantry phone (OBJECT)
+* 1: Infantry phone unit (OBJECT)
+* 2: Infantry phone action (1: return, 2: pick-up, 3: give, 4: switch network) (NUMBER)
 
 The following configuration would execute, in a call enviroment, `myCustomFunction`:
 
