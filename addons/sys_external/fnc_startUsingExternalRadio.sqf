@@ -26,6 +26,7 @@ ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
 // Set it as active radio.
 [_radioId] call EFUNC(api,setCurrentRadio);
 
-_owner =
+private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
+private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
 
-[format [localize LSTRING(hintTake), [_radioId] call EFUNC(api,getBaseClass), [_radioId] call FUNC(getExternalRadioOwner)]] call EFUNC(sys_core,displayNotification);
+[format [localize LSTRING(hintTake), _displayName, name ([_radioId] call FUNC(getExternalRadioOwner))]] call EFUNC(sys_core,displayNotification);

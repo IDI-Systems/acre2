@@ -29,7 +29,9 @@ if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
 ACRE_ACTIVE_EXTERNAL_RADIOS = ACRE_ACTIVE_EXTERNAL_RADIOS - [_radioId];
 [1] call EFUNC(sys_list,cycleRadios); // Change active radio
 
-[format [localize LSTRING(hintReturn), [_radioId] call EFUNC(api,getBaseClass), _owner]] call EFUNC(sys_core,displayNotification);
+private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
+private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
+[format [localize LSTRING(hintReturn), _displayName, name _owner]] call EFUNC(sys_core,displayNotification);
 
 if (_target == _owner) then {
     // Give radio back to the owner
