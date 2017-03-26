@@ -33,6 +33,9 @@ switch (_action) do {
         // Stop using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
+        if (_intercomNetwork == PASSENGER_INTERCOM) then {
+            [_vehicle, _unit, 0] call FUNC(updatePassengerIntercomStatus);
+        };
         [format [localize LSTRING(infantryPhoneDisconnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
     case 1: {

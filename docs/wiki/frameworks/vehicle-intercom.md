@@ -2,6 +2,8 @@
 title: Vehicle Intercom
 ---
 
+{% include important.html content="API still WIP. May change in the future!" %}
+
 Both features are currently supported only for `Car_F` and `Tank` classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
 ## Vehicle crew intercom
