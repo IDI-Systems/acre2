@@ -6,7 +6,7 @@
  * 0: Unit to be evaluated <OBJECT>
  *
  * Return Value:
- * Is other unit speaking on intercom <Boolean>
+ * Is other unit speaking on intercom <BOOL>
  *
  * Example:
  * [unit] call acre_sys_attenuate_fnc_isPassengerIntercomAttenuate
@@ -16,6 +16,7 @@
 #include "script_component.hpp"
 
 params ["_unit"];
+
 private _ret = false;
 
 // Get the vehicle

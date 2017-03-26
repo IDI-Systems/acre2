@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [cursorTarget, acre_player] call acre_sys_intercom_unitInPassengerIntercom
+ * [cursorTarget, acre_player] call acre_sys_intercom_isInPassengerIntercom
  *
  * Public: No
  */

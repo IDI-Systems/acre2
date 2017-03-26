@@ -67,5 +67,5 @@ private _exceptionsCrewIntercomPos = [];
     };
 } forEach _temp;
 
-_vehicle setVariable [QGVAR(crewIntercomPositions), _availableCrewIntercomPos, true];
-_vehicle setVariable [QGVAR(crewIntercomExceptions), _exceptionsCrewIntercomPos, true];
+_vehicle setVariable [QGVAR(crewIntercomPositions), _availableCrewIntercomPos];
+_vehicle setVariable [QGVAR(crewIntercomExceptions), _exceptionsCrewIntercomPos];

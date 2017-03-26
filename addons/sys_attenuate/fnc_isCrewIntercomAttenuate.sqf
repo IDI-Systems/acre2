@@ -16,6 +16,7 @@
 #include "script_component.hpp"
 
 params ["_unit"];
+
 private _ret = false;
 
 // Get the vehicle

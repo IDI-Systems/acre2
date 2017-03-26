@@ -6,7 +6,7 @@ title: Vehicle Intercom
 
 Both features are currently supported only for `Car_F` and `Tank` classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
-## Vehicle crew intercom
+## Vehicle Crew intercom
 
 Vehicle crew intercom is the system where crew inside vehicle can easily communicate among each other without noise disturbances.
 
@@ -123,7 +123,7 @@ Additionally, infantry telephone interaction is put on the main interaction node
 class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
-        acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82}; // Coordinates in model space or a string with a *memory point*.
+        acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82}; // Coordinates in model space or a string with a memory point.
     };
 };
 ```
@@ -137,11 +137,11 @@ ACRE2 provides helper functions for retrieving the position and quickly making s
 
 An entry is provided in order to be able to execute a custom function if the infantry phone is picked up, put back, given to another unit or the intercom network is switched. By default a dummy function is called, but any other function could be defined instead on a class basis. This can be useful if the vehicle has a hatch that gets opened when the infantry phone is picked up for example. The arguments passed to this function are:
 
-* 0: Vehicle with infantry phone (OBJECT)
-* 1: Infantry phone unit (OBJECT)
-* 2: Infantry phone action (1: return, 2: pick-up, 3: give, 4: switch network) (NUMBER)
+- 0: Vehicle with infantry phone (OBJECT)
+- 1: Infantry phone unit (OBJECT)
+- 2: Infantry phone action (1: return, 2: pick-up, 3: give, 4: switch network) (NUMBER)
 
-The following configuration would execute, in a **call** enviroment, `myCustomFunction`:
+The following configuration would execute, in a **unscheduled enviroment**, `myCustomFunction`:
 
 ```cpp
 class CfgVehicles {

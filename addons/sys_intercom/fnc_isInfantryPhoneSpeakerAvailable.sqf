@@ -21,6 +21,4 @@ params ["_vehicle", "_unit"];
 if (!alive _unit) exitWith {false};
 
 // For the moment only those in crew intercom are entitled to infantry phone actions
-private _isPhoneAvailable = [_vehicle, _unit, CREW_INTERCOM] call FUNC(isIntercomAvailable);
-
-_isPhoneAvailable
+[_vehicle, _unit, CREW_INTERCOM] call FUNC(isIntercomAvailable)

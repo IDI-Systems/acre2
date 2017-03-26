@@ -83,6 +83,6 @@ if (_availablePassIntercomPos isEqualTo (_vehicle getVariable [QGVAR(crewInterco
     _availableConnections = 0;
 };
 
-_vehicle setVariable [QGVAR(passengerIntercomPositions), _availablePassIntercomPos, true];
-_vehicle setVariable [QGVAR(passengerIntercomExceptions), _exceptionsPassIntercomPos, true];
-_vehicle setVariable [QGVAR(availablePassIntercomConn), _availableConnections, true];
+_vehicle setVariable [QGVAR(passengerIntercomPositions), _availablePassIntercomPos];
+_vehicle setVariable [QGVAR(passengerIntercomExceptions), _exceptionsPassIntercomPos];
+_vehicle setVariable [QGVAR(availablePassIntercomConn), _availableConnections];

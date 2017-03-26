@@ -50,10 +50,10 @@ if (count _infantryPhoneIntercom ==  0) then {
     };
 };
 
-_vehicle setVariable [QGVAR(infantryPhoneIntercom), _infantryPhoneIntercom, true];
+_vehicle setVariable [QGVAR(infantryPhoneIntercom), _infantryPhoneIntercom];
 
 // Hook for third party mods with actions when picking returning infantry phone
 private _eventInfantryPhone = getText (configFile >> "CfgVehicles" >> _type >> "acre_eventInfantryPhone");
 if (_eventInfantryPhone != "") then {
-    _vehicle setVariable [QGVAR(eventInfantryPhone), _eventInfantryPhone, true];
+    _vehicle setVariable [QGVAR(eventInfantryPhone), _eventInfantryPhone];
 };
