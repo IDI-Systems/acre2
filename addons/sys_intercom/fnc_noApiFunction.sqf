@@ -17,5 +17,5 @@
  */
 #include "script_component.hpp"
 
-
-systemChat format ["This was the function"];
+// @todo Remove once API is stable
+//systemChat format ["This was the function"];
