@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Checks if a radio is flagged as being used by another unit
+ * Checks if a radio is flagged as being used by another unit.
  *
  * Arguments:
  * 0: Unique radio identity <STRING>
@@ -17,6 +17,4 @@
 
 params ["_radioId"];
 
-private _isUsedExternally = ([_radioId, "getState", "isUsedExternally"] call EFUNC(sys_data,dataEvent)) select 0;
-
-_isUsedExternally
+[_radioId, "getState", "isUsedExternally"] call EFUNC(sys_data,dataEvent) select 0

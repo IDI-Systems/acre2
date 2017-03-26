@@ -1,11 +1,11 @@
 /*
  * Author: ACRE2Team
  * Stop using an external radio, either returning it to the owner or giving it to another player. If target
- * is skipped, a default action to return to the owner is taken
+ * is skipped, a default action to return to the owner is taken.
  *
  * Arguments:
  * 0: Unique radio identity <STRING>
- * 1: New end user/original owner <OBJECT>(Optional)
+ * 1: New end user/original owner <OBJECT>
  *
  * Return Value:
  * None

@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Checks if a radio is shared to other players
+ * Checks if a radio is shared to other players.
  *
  * Arguments:
  * 0: Unique radio identity <STRING>
@@ -17,6 +17,4 @@
 
 params ["_radioId"];
 
-private _isShared = [_radioId, "getState", "isShared"] call EFUNC(sys_data,dataEvent);
-
-_isShared
+[_radioId, "getState", "isShared"] call EFUNC(sys_data,dataEvent)

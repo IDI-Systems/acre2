@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Returns a list of radios that are being shared by a unit
+ * Returns a list of radios that are being shared by a unit.
  *
  * Arguments:
  * 0: Unit <OBJECT>
@@ -22,6 +22,4 @@ private _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
 
 if (!(alive _unit) || (captive _unit)) exitWith {_radioList};
 
-private _sharedRadios = _radioList select {[_x, "getState", "isShared"] call EFUNC(sys_data,dataEvent)};
-
-_sharedRadios;
+_radioList select {[_x, "getState", "isShared"] call EFUNC(sys_data,dataEvent)}

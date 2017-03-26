@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Check if a given action is available for a specific radio external radio
+ * Check if a given action is available for a specific radio external radio.
  *
  * Arguments:
  * 1: Unique radio ID <STRING>
@@ -19,6 +19,4 @@ params ["_radioId"];
 
 if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS) exitWith {false};
 
-if (vehicle acre_player != acre_player) exitWith {false};
-
-true
+vehicle acre_player == acre_player

@@ -3,7 +3,7 @@ class CfgVehicles {
     class CAManBase: Man {
         class ACE_Actions {
             class ACE_MainActions {
-                class ACRE_Interact {
+                class ACRE_Interact_External {
                     displayName = CSTRING(externalRadios);
                     condition = QUOTE(_this call FUNC(isExternalActionAvailable));
                     exceptions[] = {"isNotInside", "isNotSitting"};

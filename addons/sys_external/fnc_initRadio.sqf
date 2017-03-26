@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Initialises a radio with the additional states: isShared and isUsedExternally
+ * Initialises a radio with the additional states: isShared and isUsedExternally.
  *
  * Arguments:
  * 0: Unique radio identity <STRING>

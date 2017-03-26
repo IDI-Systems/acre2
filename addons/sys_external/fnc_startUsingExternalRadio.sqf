@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Start using an external radio
+ * Start using an external radio.
  *
  * Arguments:
  * 0: Unique radio identity <STRING>

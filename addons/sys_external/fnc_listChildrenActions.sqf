@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Generates a list of actions for radios that are being shared by a unit
+ * Generates a list of actions for radios that are being shared by a unit.
  *
  * Arguments:
  * 0: Unit with a shared radio <OBJECT>
@@ -14,10 +14,6 @@
  * Public: No
  */
 #include "script_component.hpp"
-
-/* TODO:
- * - Implemented, needs testing: Action to return radio should not be available for other users other than the new "end user".
- */
 
 params ["_target"];
 

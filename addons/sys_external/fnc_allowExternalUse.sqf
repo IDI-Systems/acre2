@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Mark a radio in order to enable/disable to be used by other units (external use)
+ * Mark a radio in order to enable/disable to be used by other units (external use).
  *
  * Arguments:
  * 0: Unique radio identity <STRING>
