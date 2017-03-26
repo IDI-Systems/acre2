@@ -248,6 +248,7 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
         ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
         if (GetLastError() == ERROR_PIPE_CONNECTED) {    
             LOG("Client read connected");
+            CEngine::getInstance()->getClient()->updateShouldSwitchTS3Channel(false);
             CEngine::getInstance()->getClient()->unMuteAll();
             CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
             this->setConnectedRead(TRUE);
@@ -271,6 +272,12 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
                 this->setConnectedRead(FALSE);
                 break;
             }
+
+            //Run channel switch to server channel
+            if (CEngine::getInstance()->getClient()->shouldSwitchTS3Channel()) {
+                CEngine::getInstance()->getClient()->moveToServerTS3Channel();
+            }
+
             ret = FALSE;
             do {
                 ret = ReadFile(this->m_PipeHandleRead, mBuffer, BUFSIZE, &cbRead, NULL);
@@ -302,7 +309,9 @@ ACRE_RESULT CNamedPipeServer::readLoop() {
         this->setConnectedRead(FALSE);
         FlushFileBuffers(this->m_PipeHandleRead);
         ret = DisconnectNamedPipe(this->m_PipeHandleRead);
-        
+
+        //Run channel switch to original channel
+        CEngine::getInstance()->getClient()->moveToPreviousTS3Channel();
         CEngine::getInstance()->getSoundEngine()->onClientGameDisconnected();
         LOG("Client disconnected");
         CEngine::getInstance()->getClient()->unMuteAll();

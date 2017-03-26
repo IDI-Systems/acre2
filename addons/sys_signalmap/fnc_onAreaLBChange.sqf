@@ -17,7 +17,7 @@
 #include "script_component.hpp"
  
 with uiNamespace do {
-    if((count GVAR(rxAreas)) > 0) then {
+    if ((count GVAR(rxAreas)) > 0) then {
         {
             (_x select 1) setMarkerColorLocal "ColorYellow";
             (_x select 1) setMarkerBrushLocal "DiagGrid";

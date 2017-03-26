@@ -8,4 +8,3 @@ PREP(formatChannelValue);
 PREP(preset_information);
 
 PREP_FOLDER(menus);
-PREP_FOLDER(farris_menus);

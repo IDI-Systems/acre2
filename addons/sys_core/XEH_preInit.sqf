@@ -1,12 +1,13 @@
 #include "script_component.hpp"
 
-#include "initSettings.sqf" // CBA Settings
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
+
+// CBA Settings
+#include "initSettings.sqf"
 
 if (!hasInterface) exitWith {
     ADDON = true;

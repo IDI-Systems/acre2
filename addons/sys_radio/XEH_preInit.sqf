@@ -11,8 +11,6 @@ GVAR(radioUniqueCache) = HASH_CREATE;
 GVAR(radioBaseClassCache) = HASH_CREATE;
 GVAR(radioIsBaseClassCache) = HASH_CREATE;
 
-ADDON = true;
-
 if (hasInterface) then {
     //DGVAR(workingRadioList) = [];
     DGVAR(currentRadioList) = [];

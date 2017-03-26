@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.4.0.942/acre2_2.4.0.942.zip">
-        <img src="https://img.shields.io/badge/Version-2.4.0-blue.svg?style=flat-square" alt="ACRE2 Version">
+    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.4.1.947/acre2_2.4.1.947.zip">
+        <img src="https://img.shields.io/badge/Version-2.4.1-blue.svg?style=flat-square" alt="ACRE2 Version">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/issues">
         <img src="https://img.shields.io/github/issues-raw/IDI-Systems/acre2.svg?style=flat-square&label=Issues" alt="ACRE2 Issues">

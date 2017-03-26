@@ -1,22 +1,4 @@
-
 #include "script_component.hpp"
-#define PREP_MENU(menuType) [] call compile preprocessFileLineNumbers QPATHTOF(menus\types\menuType.sqf)
-
-
-// Menu hash stuff
-GVAR(Menus) = HASH_CREATE;
-
-PREP_MENU(Static);
-PREP_MENU(Display);
-PREP_MENU(List);
-
-PREP_MENU(ActionSeries);
-PREP_MENU(Selection);
-PREP_MENU(Alphanumeric);
-PREP_MENU(Number);
-PREP_MENU(Frequency);
-PREP_MENU(ChangeValueAck);
-
 
 PREP_MODULE(menus,onButtonPress);
 PREP_MODULE(menus,defaultButtonPress);

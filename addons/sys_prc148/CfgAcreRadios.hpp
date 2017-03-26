@@ -24,9 +24,9 @@ class CfgAcreComponents {
         };
 
         defaultComponents[] = {
-            {0, "ACRE_120CM_VHF_TNC"}
+            {0, "ACRE_100CM_VHF_TNC"}
         };
-        
+
         class InterfaceClasses {
             CfgAcreDataInterface = "DefaultRadioInterface";
             CfgAcreInteractInterface = "DefaultRadioInterface";

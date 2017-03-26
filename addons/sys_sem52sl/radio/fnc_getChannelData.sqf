@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function returns all specific data of the
  *  channel which number is parsed to the event.
