@@ -17,6 +17,9 @@
 
 params ["_target"];
 
+// Check first distance to the unit
+if ((_target distance acre_player) > EXTERNAL_RADIO_MAXDISTANCE) exitWith {false};
+
 // Action is available if the unit has shared radios.
 private _sharedRadios = [_target] call FUNC(getSharedExternalRadios);
 private _radiosInUse = _sharedRadios select {[_x] call FUNC(isExternalRadioUsed)};

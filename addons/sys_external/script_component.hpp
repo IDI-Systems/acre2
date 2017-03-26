@@ -15,3 +15,5 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+#define EXTERNAL_RADIO_MAXDISTANCE 2.0
