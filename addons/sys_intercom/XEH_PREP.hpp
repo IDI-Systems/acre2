@@ -1,5 +1,6 @@
 PREP(intercomConfig);
 PREP(isIntercomAvailable);
+PREP(noApiFunction);
 PREP(processConfigArray);
 PREP(vehicleCrewPFH);
 

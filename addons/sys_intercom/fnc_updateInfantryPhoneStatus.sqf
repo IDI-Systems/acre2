@@ -60,5 +60,10 @@ switch (_action) do {
 };
 
 // Hook for third party mods with actions when picking returning infantry phone
-private _event = _vehicle getVariable [QGVAR(eventInfantryPhone), {}];
-[_vehicle, _unit, _action] call (missionNamespace getVariable [_event, {}]);
+private _event = _vehicle getVariable [QGVAR(eventInfantryPhone), ""];
+if (_event != "") then {
+    _event = missionNamespace getVariable [_event, {}];
+    if !(_event isEqualTo {}) then {
+        [_vehicle, _unit, _action] call _event;
+    };
+};
