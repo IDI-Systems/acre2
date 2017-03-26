@@ -6,7 +6,7 @@
  * None
  *
  * Return Value:
- * Successful <BOOL>
+ * Successful Start <BOOL>
  *
  * Example:
  * [] call acre_sys_io_fnc_startServer

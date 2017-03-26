@@ -2,7 +2,7 @@
 
 if (!hasInterface) exitWith {};
 
-// Ensure the TeamSpeak plugin handler code is initialized first.
+// Ensure the TeamSpeak plugin handler code is initialized first
 [] call EFUNC(sys_io,startServer);
 
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);

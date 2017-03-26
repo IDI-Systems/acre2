@@ -6,7 +6,7 @@
  * 0: Message <STRING>
  *
  * Return Value:
- * Successful <BOOL>
+ * Successful Sending <BOOL>
  *
  * Example:
  * ["getPluginVersion:,"] call acre_sys_io_fnc_sendMessage
@@ -17,7 +17,7 @@
 
 if (GVAR(pipeCode) == "1") exitWith {
     private _ret = "ACRE2Arma" callExtension ("2" + _this);
-    true;
+    true
 };
 
-false;
+false

@@ -6,7 +6,7 @@
  * None
  *
  * Return Value:
- * Successful <BOOL>
+ * Successful Read <BOOL>
  *
  * Example:
  * [] call acre_sys_io_fnc_serverReadLoop
@@ -31,7 +31,7 @@ if (GVAR(pipeCode) == "1") then {
             "ACRE2Arma" callExtension "1";
             GVAR(pipeCode) = "0";
         };
-        
+
         if (_ret isEqualTo "_JERR_NOCONNECT" || _ret isEqualTo "_JERR_NULL") exitWith {};
 
         TRACE_1("got message", _ret);
