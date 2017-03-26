@@ -22,6 +22,3 @@ params ["_radioId", "_unit"];
 
 // Do not allow an external user to return the headset if the radio is in use
 !(_isUsedExternally && (_unit != _user))
-//if (_isUsedExternally && (_unit != _user)) exitWith { false };
-//
-//true
