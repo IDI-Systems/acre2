@@ -1,15 +1,15 @@
 /*
  * Author: ACRE2Team
- * Checks if the unit should be heard on vehicle intercom or not for the local player.
+ * Checks if the unit should be heard on the vehicle passenger intercom or not for the local player.
  *
  * Arguments:
  * 0: Unit to be evaluated <OBJECT>
  *
  * Return Value:
- * Is other unit speaking on intercom <Boolean>
+ * Is other unit speaking on intercom <BOOL>
  *
  * Example:
- * [unit] call acre_sys_attenuate_fnc_isCrewIntercomAttenuate
+ * [unit] call acre_sys_attenuate_fnc_isPassengerIntercomAttenuate
  *
  * Public: No
  */
@@ -30,14 +30,11 @@ if (_vehicle == _unit) then {
     };
 };
 
-if (_unit in ACRE_PLAYER_VEHICLE_CREW) then {
+if (_unit in ACRE_PLAYER_PASSENGER_INTERCOM) then {
     private _configIntercom = configFile >> "CfgVehicles" >> typeOf _vehicle;
-    private _hasIntercom = getNumber (_configIntercom >> "acre_hasCrewIntercom");
-    // Backwards compatibility @todo remove in 2.7.0
-    if (isNumber (_configIntercom >> "ACRE" >> "CVC" >> "hasCVC")) then {
-        _hasIntercom = getNumber (_configIntercom >> "ACRE" >> "CVC" >> "hasCVC");
-    };
-    if (_hasIntercom == 1) then {
+    private _hasPassengerIntercom = getNumber (_configIntercom >> "acre_hasPassengerIntercom");
+
+    if (_hasPassengerIntercom == 1) then {
         _ret = true;
     };
 };

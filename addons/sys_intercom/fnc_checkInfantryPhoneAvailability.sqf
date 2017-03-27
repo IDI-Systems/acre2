@@ -17,4 +17,4 @@
 
 params ["_player"];
 
-!isNull (_player getVariable [QGVAR(vehicleInfantryPhone), objNull])
+!isNull (_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, objNull]] select 0)

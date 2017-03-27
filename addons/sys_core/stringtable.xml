@@ -313,5 +313,8 @@
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
         </Key>
+        <Key ID="STR_ACRE_sys_core_crewAutoJoinPassengerIntercom">
+            <English>Crew Auto-Join Passenger Intercom</English>
+        </Key>
     </Package>
 </Project>
