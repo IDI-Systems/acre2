@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: ACRE2
-  version: v2.4.0
+  version: v2.4.1
   folders:
 
   - title:
@@ -55,6 +55,14 @@ entries:
 
     - title: Direct Speech
       url: /wiki/user/direct-speech
+      output: web, pdf
+
+    - title: External Radios
+      url: /wiki/user/external-radios
+      output: web, pdf
+
+    - title: Vehicle Intercom
+      url: /wiki/user/vehicle-intercom
       output: web, pdf
 
     - title: Radio Signal Loss
@@ -119,6 +127,10 @@ entries:
 
     - title: Vehicle Attenuation
       url: /wiki/frameworks/vehicle-attenuation
+      output: web, pdf
+
+    - title: Vehicle Intercom
+      url: /wiki/frameworks/vehicle-intercom
       output: web, pdf
 
     - title: Component System

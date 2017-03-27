@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Copies an array or an ACRE 2 hash entry inside an ACRE 2 hash
+ * Copies an array or an ACRE2 hash entry inside an ACRE 2 hash
  *
  * Arguments:
  * 0: ACRE 2 Hash to be copied <HASH>/<ARRAY>

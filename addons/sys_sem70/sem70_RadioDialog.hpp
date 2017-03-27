@@ -1,5 +1,3 @@
-#include "script_component.hpp"
-
 #define CODE_SPACING 0.0245
 
 #define CONTROL_SetRelativePos(xpos,ypos) x = H_OFFSET + (xpos * 0.001); y = H_OFFSET + (ypos * 0.001);

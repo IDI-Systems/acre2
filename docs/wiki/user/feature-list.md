@@ -26,11 +26,12 @@ This playtesting allows us to guarantee that ACRE2 supports, without glitches, 1
 * Babel feature & Radio configurations allows for immersive TVT and brings radios/communication in as a gameplay mechanic
 * Extensive and documented API and example set for easy use
 * Template setups for milsim community operations
-* All vehicles have realistic attenuation, meaning different positions hear inside/outside differently.
-* Vehicle intercom system; Vehicles with intercoms automatically have crew communicate with them
+* All vehicles have realistic attenuation, meaning different positions hear inside/outside differently
+* Vehicle intercom system; Vehicles with intercoms automatically have crew communicate with them. Additionally some vehicles like tanks and IFVs have Infantry Telephones
 * In-game speakers; you can put your radio on 'speaker' mode and everyone can listen. If you drop the radio, it keeps playing!
 * Multiple Push-To-Talk keys, for assigning different radios to different hotkeys
 * Preset naming and descriptions for radios that support it. Includes name showing in hints
+* External radios; radios in other player's inventory can be accessed and used.
 
 ### Radio Communications
 
@@ -45,7 +46,7 @@ This playtesting allows us to guarantee that ACRE2 supports, without glitches, 1
 * Babel (TVT Languages)
 * Distance and Scaling
 * Building/object Occlusion
-* Vehicle Intercoms
+* Vehicle Intercoms and Infantry Telephones
 * Vehicle Attenuation
 * AI Hears you
 

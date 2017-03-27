@@ -1,22 +1,20 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Starts the SQF code to maintain connectivity to the TeamSpeak plugin via the ACRE2Arma extension.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful Start <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_io_fnc_startServer
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-#define __INTERVAL 0.001
 GVAR(hasErrored) = false;
 GVAR(connectCount) = 15;
 
@@ -25,7 +23,7 @@ GVAR(connectCount) = 15;
 GVAR(runserver) = true;
 [] call FUNC(server);
 LOG("server started");
-GVAR(serverHandle) = ADDPFH(DFUNC(serverReadLoop), 0, []);
+ADDPFH(DFUNC(serverReadLoop), 0, []);
 [] call FUNC(ping);
 
 

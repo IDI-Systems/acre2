@@ -43,9 +43,8 @@ for "_i" from 0 to 10 do {
 
     if (_i < 10) then {
         HASH_SET(_channel,"networkID",_networkID);
-        HASH_SET(_channel,"frequencies",_basefrequency); // This just needs some default value
+        HASH_SET(_channel,"frequencies",_presetFrequencies param [_i]);
         HASH_SET(_channel,"frequencyTX",_basefrequency); // This just needs some default value
-        HASH_SET(_channel,"frequencyRX",_presetFrequencies param [_i]);
         HASH_SET(_channel,"mode","sem70AKW");
     } else {
         HASH_SET(_channel,"frequencyTX",_presetFrequencies param [_i]);
@@ -85,7 +84,6 @@ for "_i" from 0 to 10 do {
     if (_i < 10) then {
         HASH_SET(_channel,"networkID",_networkID);
         HASH_SET(_channel,"frequencies",_presetFrequencies param [_i]);
-        HASH_SET(_channel,"frequencies",_basefrequency); // This just needs some default value
         HASH_SET(_channel,"frequencyTX",_basefrequency); // This just needs some default value
         HASH_SET(_channel,"mode","sem70AKW");
     } else {
@@ -126,7 +124,6 @@ for "_i" from 0 to 10 do {
     if (_i < 10) then {
         HASH_SET(_channel,"networkID",_networkID);
         HASH_SET(_channel,"frequencies",_presetFrequencies param [_i]);
-        HASH_SET(_channel,"frequencies",_basefrequency); // This just needs some default value
         HASH_SET(_channel,"frequencyTX",_basefrequency); // This just needs some default value
         HASH_SET(_channel,"mode","sem70AKW");
     } else {
@@ -167,7 +164,6 @@ for "_i" from 0 to 10 do {
     if (_i < 10) then {
         HASH_SET(_channel,"networkID",_networkID);
         HASH_SET(_channel,"frequencies",_presetFrequencies param [_i]);
-        HASH_SET(_channel,"frequencies",_basefrequency); // This just needs some default value
         HASH_SET(_channel,"frequencyTX",_basefrequency); // This just needs some default value
         HASH_SET(_channel,"mode","sem70AKW");
     } else {

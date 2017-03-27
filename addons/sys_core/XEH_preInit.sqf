@@ -1,12 +1,13 @@
 #include "script_component.hpp"
 
-#include "initSettings.sqf" // CBA Settings
-
 ADDON = false;
 
 PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
+
+// CBA Settings
+#include "initSettings.sqf"
 
 if (!hasInterface) exitWith {
     ADDON = true;
@@ -76,6 +77,8 @@ DGVAR(languages) = [];
 
 DVAR(ACRE_TEST_OCCLUSION) = true;
 DVAR(ACRE_SIGNAL_DEBUGGING) = 0;
+
+DVAR(ACRE_ACTIVE_EXTERNAL_RADIOS) = [];
 
 DVAR(ACRE_ACTIVE_RACK_RADIOS) = []; // Extra radios that a player can use, should be used for radios that are racked.
 
