@@ -24,3 +24,5 @@
 #define NO_INTERCOM 0
 #define CREW_INTERCOM 1
 #define PASSENGER_INTERCOM 2
+
+#define CREW_STRING "str_a3_rscdisplaygarage_tab_crew"

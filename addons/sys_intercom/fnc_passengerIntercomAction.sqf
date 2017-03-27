@@ -29,7 +29,7 @@ GVAR(initializedPassengerIntercom) pushBack _type;
 // Passenger actions
 private _passengerIntercomAction = [
     QGVAR(passengerIntercom),
-    localize LSTRING(passengerIntercom),
+    format ["%1 %2", localize LSTRING(passenger), localize LSTRING(intercom)],
     ICON_RADIO_CALL,
     {true},
     {[_target, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable)},

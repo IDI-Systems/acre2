@@ -24,8 +24,8 @@ params ["_vehicle", "_unit", "_action", ["_intercomNetwork", CREW_INTERCOM], ["_
 
 private "_intercomText";
 switch (_intercomNetwork) do {
-    case CREW_INTERCOM: {_interComText = "(" + localize LSTRING(crewIntercom) + ")";};
-    case PASSENGER_INTERCOM: {_interComText = "(" + localize LSTRING(passengerIntercom) + ")";};
+    case CREW_INTERCOM: {_interComText = "(" + localize CREW_STRING + ")";};
+    case PASSENGER_INTERCOM: {_interComText = "(" + localize LSTRING(passenger) + ")";};
 };
 
 switch (_action) do {
