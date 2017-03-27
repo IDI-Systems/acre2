@@ -6,7 +6,7 @@ title: Vehicle Intercom
 
 Both features are currently supported only for `Car_F` and `Tank` classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
-## Vehicle Crew intercom
+## Vehicle crew intercom
 
 Vehicle crew intercom is the system where crew inside vehicle can easily communicate among each other without noise disturbances.
 
@@ -23,6 +23,7 @@ If you are inheriting from one of those classes, no extra configuration is requi
 
 The system can be further modified in orther to customise which positions have access to crew intercom. The following configuration entries illustrate some of the possibilities:
 
+{% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
@@ -36,9 +37,11 @@ class CfgVehicles {
     };
 };
 ```
+{% endraw %}
 
 The following example enables crew intercom for only driver and commander positions and the turret positions different from [1] and [2] as well as the commander's turn out turret position.
 
+{% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
@@ -51,6 +54,8 @@ class CfgVehicles {
     };
 };
 ```
+{% endraw %}
+
 ## Vehicle passenger Intercom
 
 Passenger intercom is the system where non crew members inside vehicle can easily communicate among each other without noise disturbances. Crew members can also be part of passenger intercom.
@@ -60,6 +65,7 @@ By default passenger intercom is disabled by default.
 
 The system can be enabled and configured using the following configuration entries:
 
+{% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
@@ -75,7 +81,9 @@ class CfgVehicles {
     };
 };
 ```
+{% endraw %}
 
+{% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
@@ -91,6 +99,7 @@ class CfgVehicles {
     };
 };
 ```
+{% endraw %}
 
 ## Infantry telephone
 
@@ -102,6 +111,7 @@ By default, infantry telephone is enabled only for `Tank` class and its children
 
 To add infantry telephone to a vehicle class and configure its properties, use the following config entry:
 
+{% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
@@ -114,6 +124,7 @@ class CfgVehicles {
     };
 };
 ```
+{% endraw %}
 
 ### Position
 
@@ -158,20 +169,23 @@ class CfgVehicles {
 
 The framework recognises the following entries and wildcards for the configuration files:
 
-* **Entries**: `"cargo"`, `"commander"`, `"driver"`, `"gunner"`, `"turret"` (non FFV) and `"ffv"` (FFV turrets).
-* **Wildcards**:
-  * `"crew"`: selects all crew members `"commander"`, `"driver"`, `"gunner"`, `"turret"` (non FFV) and it can be combined with other entries. For example `{"crew", {"cargo", 1}}`.
-  * `"all"` can be combined with  `"cargo"`, `"turret"` and `"ffv"` and selects all entries of this category. For example `{{"cargo", 1}, {"ffv", "all"}}`.
-  * `"default"` selects all crew members in `acre_crewIntercomPositions` or all the cargo entries if defined in `acre_passengerIntercomPositions`. It cannot be combined with any other entry.
+{% raw %}
+- **Entries**: `"cargo"`, `"commander"`, `"driver"`, `"gunner"`, `"turret"` (non FFV) and `"ffv"` (FFV turrets).
+- **Wildcards**:
+  - `"crew"`: selects all crew members `"commander"`, `"driver"`, `"gunner"`, `"turret"` (non FFV) and it can be combined with other entries. For example `{"crew", {"cargo", 1}}`.
+  - `"all"` can be combined with  `"cargo"`, `"turret"` and `"ffv"` and selects all entries of this category. For example `{{"cargo", 1}, {"ffv", "all"}}`.
+  - `"default"` selects all crew members in `acre_crewIntercomPositions` or all the cargo entries if defined in `acre_passengerIntercomPositions`. It cannot be combined with any other entry.
+{% endraw %}
 
 ## Configuration examples
 
 The following vehicle has crew and passenger intercom as well as infantry telephone.
 
-* Crew intercom is enabled for all the default crew positions (`"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets) with the exception of `"driver"` and `"commander"` FFV turret.
-* Passenger intercom is available for all the previously defined crew members plus all `"cargo"` positions and for the `"driver"` with the exception of the `"commander"`, `"cargo"` index 1 and all FFV turrets. Additionally only two non-crew units can connect simultaneously.
-* The infantry telephone that can have access to both crew and passenger intercom networks. Units can interact with the infantry telephone at  `{-1.1, -4.86, -0.82}` model space coordinates.
+- Crew intercom is enabled for all the default crew positions (`"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets) with the exception of `"driver"` and `"commander"` FFV turret.
+- Passenger intercom is available for all the previously defined crew members plus all `"cargo"` positions and for the `"driver"` with the exception of the `"commander"`, `"cargo"` index 1 and all FFV turrets. Additionally only two non-crew units can connect simultaneously.
+- The infantry telephone that can have access to both crew and passenger intercom networks. Units can interact with the infantry telephone at  `{-1.1, -4.86, -0.82}` model space coordinates.
 
+{% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
@@ -194,3 +208,4 @@ class CfgVehicles {
     };
 };
 ```
+{% endraw %}
