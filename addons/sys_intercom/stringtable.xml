@@ -56,7 +56,7 @@
             <English>Connected to Crew Intercom</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
-            <English>Passenger Intercom</English>
+            <English>Pax Intercom</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_connectPassengerIntercom">
             <English>Connect</English>
@@ -65,13 +65,13 @@
             <English>Disconnect</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
-            <English>Disconnected from Passenger Intercom</English>
+            <English>Disconnected from Pax Intercom</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomConnected">
-            <English>Connected to Passenger Intercom</English>
+            <English>Connected to Pax Intercom</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomNoConnections">
-            <English>No more connections for Passenger Intercom</English>
+            <English>No free connections for Pax Intercom</English>
         </Key>
     </Package>
 </Project>

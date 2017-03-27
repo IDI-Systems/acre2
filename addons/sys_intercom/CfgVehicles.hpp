@@ -16,6 +16,8 @@ class CfgVehicles {
          };
     };
 
+    //@todo remove default config entries before release 2.5.0
+
     class Car_F;
     class Wheeled_APC_F: Car_F {
         acre_hasCrewIntercom = 1;
