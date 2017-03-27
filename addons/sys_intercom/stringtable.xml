@@ -40,9 +40,6 @@
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneConnected">
             <English>Infantry Phone Connected %1</English>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_infantryPhoneSwitched">
-            <English>Intercom Switched %1</English>
-        </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
             <English>Infantry Phone Received %1</English>
         </Key>

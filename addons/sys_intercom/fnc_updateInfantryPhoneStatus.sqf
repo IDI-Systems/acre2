@@ -55,7 +55,6 @@ switch (_action) do {
         // Switch to another intercom network
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
-        [format [localize LSTRING(infantryPhoneSwitched), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
 };
 
