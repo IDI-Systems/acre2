@@ -51,7 +51,7 @@ API function example:
 
 `true` enables the full duplex mode.
 
-###  Ignore Antenna direction (New setting to be introduced in v2.2.0)
+###  Ignore Antenna direction (introduced in v2.2.0)
 
 This setting can be used to disable the simulation of antenna radiation patterns for both the transmitting and receiving radios. It will make all antennas act with perfect omni-directional behaviour.
 
