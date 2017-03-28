@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the language index from a language Id.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Language Key <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Language index <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["en"] call acre_sys_core_fnc_getLanguageId
  *
  * Public: No
  */

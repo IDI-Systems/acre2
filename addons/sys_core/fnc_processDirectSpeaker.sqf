@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calculates the information required by TeamSpeak for a direct speech speaker.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Parameters to send to TeamSpeak <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [unit] call acre_sys_core_fnc_processDirectSpeaker
  *
  * Public: No
  */
@@ -23,6 +22,7 @@ private _id = GET_TS3ID(_unit);
 
 private _bothSpectating = false;
 private _isCrewAttenuate = false;
+private _isPassengerAttenuate = false;
 private _directVolume = GVAR(globalVolume);
 private _speakingType = "d";
 
@@ -32,18 +32,19 @@ if (_id in ACRE_SPECTATORS_LIST && ACRE_IS_SPECTATOR) then {
     private _attenuate = [_unit] call EFUNC(sys_attenuate,getUnitAttenuate);
     _directVolume = GVAR(globalVolume) * (1-_attenuate);
     _isCrewAttenuate = [_unit] call EFUNC(sys_attenuate,isCrewIntercomAttenuate);
+    _isPassengerAttenuate = [_unit] call EFUNC(sys_attenuate,isPassengerIntercomAttenuate);
 };
 
 private _listenerPos = ACRE_LISTENER_POS;
 private _listenerDir = ACRE_LISTENER_DIR;
-if (_bothSpectating || _isCrewAttenuate) then {
+if (_bothSpectating || _isCrewAttenuate || _isPassengerAttenuate) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
     _emitterPos = (AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head"))); //; eyePos _unit;
     _emitterDir = eyeDirection _unit;
 };
-if (ACRE_TEST_OCCLUSION && !_bothSpectating && !_isCrewAttenuate) then {
+if (ACRE_TEST_OCCLUSION && !_bothSpectating && !(_isCrewAttenuate || _isPassengerAttenuate)) then {
     _args = [_emitterPos, _listenerPos, _unit];
     // acre_player sideChat format["args: %1", _args];
     // _startTime = diag_tickTime;
@@ -60,7 +61,7 @@ private _emitterHeight = _emitterPos param [2, 1];
 if (GVAR(isDeaf) || (_unit getVariable [QGVAR(isDisabled), false]) || (ACRE_LISTENER_DIVE == 1) || _emitterHeight < -0.2) then {
     _directVolume = 0.0;
 };
-if (_isCrewAttenuate) then {
+if (_isCrewAttenuate || _isPassengerAttenuate) then {
     _speakingType = "i";
     _directVolume = 1;
 };

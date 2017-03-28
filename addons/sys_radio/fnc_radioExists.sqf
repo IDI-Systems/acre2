@@ -19,7 +19,7 @@
 params ["_class"];
 
 private _ret = false;
-if (HASH_HASKEY(acre_sys_server_objectIdRelationTable, _class)) then {
+if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable), _class)) then {
     _ret = true;
 };
 _ret;

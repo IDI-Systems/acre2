@@ -15,7 +15,7 @@
 #undef _DEBUG_DIALOG
 
 
-#define PIPE_TIMEOUT 10000
+#define PIPE_TIMEOUT 5000
 #define PIPE_PING_TIMEOUT 15000
 #define PERSIST_VERSION_TIMER 5000
 #define BUFSIZE 10240
@@ -27,7 +27,7 @@
 
 #include "version.h"
 
-#define TS3_PLUGIN_API_VERSION 20
+#define TS3_PLUGIN_API_VERSION 21
 
 #define ACRE_NAME "ACRE2"
 #define ACRE_URL "ACRE2 Team - https://github.com/IDI-Systems/acre2"

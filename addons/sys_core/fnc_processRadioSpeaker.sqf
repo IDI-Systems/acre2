@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calculates the information required by TeamSpeak for a radio speaker.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit to process <OBJECT>
+ * 1: List of radio classnames <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Parameters to send to TeamSpeak  <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [unit,["ACRE_PRC343_ID_1"]] call acre_sys_core_fnc_processRadioSpeaker
  *
  * Public: No
  */
@@ -19,6 +19,7 @@ BEGIN_COUNTER(process_radio_speaker);
 private ["_okRadios", "_functionName"];
 
 params ["_unit","_playerRadios"];
+TRACE_2("",_unit,_playerRadios);
 
 private _radioId = _unit getVariable QGVAR(currentSpeakingRadio);
 if (_radioId == "") exitWith { false };
@@ -84,8 +85,8 @@ if ((count _okRadios) > 0) then {
         } else {
             _params = _unit getVariable ["ACRE_%1CachedSampleParams"+_x, []];
         };
-        if (!ACRE_FULL_DUPLEX || _x != _radioid) then {
-            PUSH(_returns, _params);
+        if (!GVAR(fullDuplex) || _x != _radioid) then {
+            _returns pushBack _params;
         };
     } forEach _okRadios;
     END_COUNTER(okradio_loop);

@@ -16,5 +16,5 @@
  */
 #include "script_component.hpp"
 
-acre_sys_radio_currentRadioDialog = "";
+EGVAR(sys_radio,currentRadioDialog) = "";
 nil;

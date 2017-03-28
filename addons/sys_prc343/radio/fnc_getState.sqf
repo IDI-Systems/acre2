@@ -1,21 +1,25 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Function to obtain the content of the radio data hash for the event data key
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING> (Unused)
+ * 1: Event: "getState" <STRING> (Unused)
+ * 2: Event data key <STRING>
+ * 3: Radio data <HASH>
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Radio data content for the event data key <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
- *
+ * ["ACRE_PRC343_ID_1", "getState", "radioOn", _radioData, false] call acre_sys_prc343_fnc_getState
+ * ["ACRE_PRC343_ID_1", "getState", "currentChannel", _radioData, false] call acre_sys_prc343_fnc_getState
+ * ["ACRE_PRC343_ID_1", "getState", "volume", _radioData, false] call acre_sys_prc343_fnc_getState
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId","_event", "_eventData", "_radioData"];
+params ["","", "_eventData", "_radioData", ""];
 
 HASH_GET(_radioData, _eventData);

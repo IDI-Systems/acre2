@@ -21,11 +21,11 @@ params ["_position", "_radius"];
 private _return = [];
 {
     private _radioId = _x;
-    private _object = HASH_GET(acre_sys_server_objectIdRelationTable, _radioId);
+    private _object = HASH_GET(EGVAR(sys_server,objectIdRelationTable), _radioId);
 
     if ((getPosASL (_object select 0)) distance _position <= _radius) then {
         PUSH(_return, _radioId);
     };
-} forEach HASH_KEYS(acre_sys_server_objectIdRelationTable);
+} forEach HASH_KEYS(EGVAR(sys_server,objectIdRelationTable));
 
 _return;

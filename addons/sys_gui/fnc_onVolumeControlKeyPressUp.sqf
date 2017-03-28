@@ -18,8 +18,8 @@
 
 if (!(alive acre_player)) exitWith { false };
 
-inGameUISetEventHandler ['PrevAction', 'false'];
-inGameUISetEventHandler ['NextAction', 'false'];
+inGameUISetEventHandler ["PrevAction", "false"];
+inGameUISetEventHandler ["NextAction", "false"];
 
 disableSerialization;
 GVAR(KeyBlock) = false;

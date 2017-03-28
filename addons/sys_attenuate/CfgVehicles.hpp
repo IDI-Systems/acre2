@@ -2,7 +2,7 @@ class CfgVehicles {
     class Air;
     class LandVehicle;
     class Ship;
-    class Car : LandVehicle {
+    class Car: LandVehicle {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -29,14 +29,11 @@ class CfgVehicles {
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-            };
-            class CVC {
-                hasCVC = false;
             };
         };
     };
-    class Car_F : Car {};
-    class Wheeled_APC_F : Car_F {
+    class Car_F: Car {};
+    class Wheeled_APC_F: Car_F {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -63,14 +60,11 @@ class CfgVehicles {
                     Compartment3 = 1;
                     Compartment4 = 1;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };
 
-    class Tank : LandVehicle {
+    class Tank: LandVehicle {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -97,14 +91,11 @@ class CfgVehicles {
                     Compartment3 = 1;
                     Compartment4 = 1;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };
 
-    class Helicopter : Air {
+    class Helicopter: Air {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -131,14 +122,11 @@ class CfgVehicles {
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };
 
-    class Plane : Air {
+    class Plane: Air {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -165,9 +153,6 @@ class CfgVehicles {
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };
@@ -200,13 +185,10 @@ class CfgVehicles {
                     Compartment4 = 0;
                 };
             };
-            class CVC {
-                hasCVC = true;
-            };
         };
     };
 
-    class Ship_F : Ship {
+    class Ship_F: Ship {
         class ACRE {
             class attenuation {
                 class Compartment1  {
@@ -234,13 +216,10 @@ class CfgVehicles {
                     Compartment4 = 0;
                 };
             };
-            class CVC {
-                hasCVC = false;
-            };
         };
     };
 
-    class Boat_F : Ship_F {};
+    class Boat_F: Ship_F {};
     class SDV_01_base_F: Boat_F {
         class ACRE {
             class attenuation {
@@ -268,9 +247,6 @@ class CfgVehicles {
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-            };
-            class CVC {
-                hasCVC = true;
             };
         };
     };

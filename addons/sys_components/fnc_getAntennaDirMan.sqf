@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calculates the antenna direction
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Object to calculate the antenna direction for <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Vector data for forward direction and upright direction <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_components_getAntennaDirMan
+ * [player] call acre_sys_components_getAntennaDirMan
  *
  * Public: No
  */
@@ -26,8 +25,8 @@
      _upP set [2, (_upP select 2) -90];
      _forwardV = _upP call cba_fnc_polar2vect;
 
-     _forwardV = (ATLtoASL (_obj modelToWorldVisual _spinePos)) vectorFromTo (ATLtoASL (_obj modelToWorldVisual (_spinePos vectorAdd _forwardV)));
-     _upV = (ATLtoASL (_obj modelToWorldVisual _spinePos)) vectorFromTo (ATLtoASL (_obj modelToWorldVisual (_spinePos vectorAdd _upV)));
+     _forwardV = (ATLtoASL (_obj modelToWorldVisual _spinePos)) vectorFromTo (ATLtoASL ((_obj modelToWorldVisual _spinePos) vectorAdd _forwardV));
+     _upV = (ATLtoASL (_obj modelToWorldVisual _spinePos)) vectorFromTo (ATLtoASL ((_obj modelToWorldVisual _spinePos) vectorAdd _upV));
  } else {
      _forwardV = vectorDir (vehicle _obj);
      _upV = vectorUp (vehicle _obj);

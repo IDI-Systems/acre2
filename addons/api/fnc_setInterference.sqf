@@ -3,7 +3,8 @@
  * Sets whether transmissions will interfere with each other. This, by default, causes signal loss when multiple people are transmitting on the same frequency.
  *
  * Arguments:
- * 0: True/false to set interference. <BOOLEAN>
+ * 0: Enable interference <BOOL>
+ * 1: CBA Settings Call <BOOL> (default: false)
  *
  * Return Value:
  * None
@@ -15,12 +16,21 @@
  */
 #include "script_component.hpp"
 
-INFO_2("%1 called with: %2",QFUNC(setInterference),_this);
-
 if (!hasInterface) exitWith {false};
 
-params ["_value"];
+// @todo remove backwards compatibility in 2.7.0 (including second argument) and move function to sys_core
+params ["_value", ["_CBASettingCall", false]];
 
-ACRE_INTERFERENCE = _value;
+// Backwards compatibility - block CBA settings if API function called directly
+if (_CBASettingCall && {!isNil QGVAR(interferenceBlockCBASetting)}) exitWith {};
 
-INFO_5("Difficulty changed. Interference: %1 - Duplex: %2 - Terrain Loss: %3 - Omni-directional: %4 - AI Hearing: %5",ACRE_INTERFERENCE,ACRE_FULL_DUPLEX,EGVAR(sys_signal,terrainScaling),EGVAR(sys_signal,omnidirectionalRadios),ACRE_AI_ENABLED);
+if (!_CBASettingCall) then {
+    GVAR(interferenceBlockCBASetting) = true;
+    ACRE_DEPRECATED(QFUNC(setInterference),"2.7.0","CBA Settings");
+    WARNING_1("%1 has been called directly and CBA Setting for it has been blocked!",QFUNC(setInterference));
+};
+
+// Set
+EGVAR(sys_core,interference) = _value;
+
+INFO_5("Difficulty changed. Interference: %1 - Duplex: %2 - Terrain Loss: %3 - Omni-directional: %4 - AI Hearing: %5",EGVAR(sys_core,interference),EGVAR(sys_core,fullDuplex),EGVAR(sys_signal,terrainScaling),EGVAR(sys_signal,omnidirectionalRadios),EGVAR(sys_core,revealToAI));

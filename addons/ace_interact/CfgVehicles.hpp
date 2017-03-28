@@ -4,12 +4,12 @@ class CfgVehicles {
         class ACE_SelfActions {
             class ACRE_Interact {
                 displayName = CSTRING(radios);
-                condition = "true";
+                condition = QUOTE(_player call EFUNC(api,hasRadio));
                 exceptions[] = {"isNotInside", "isNotSitting"};
                 statement = "true";
-                insertChildren = "_this call acre_ace_interact_fnc_radioListChildrenActions";
+                insertChildren = QUOTE(_this call FUNC(radioListChildrenActions));
                 priority = 0.1;
-                icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
+                icon = ICON_RADIO_CALL;
             };
         };
     };

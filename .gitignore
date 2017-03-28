@@ -8,3 +8,5 @@ texHeaders.bin
 Thumbs.db
 *.dll
 *.exe
+*.vscode*
+*.out

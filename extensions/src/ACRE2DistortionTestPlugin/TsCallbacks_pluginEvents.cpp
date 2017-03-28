@@ -12,16 +12,6 @@
 #include "TsCallbacks.h"
 
 
-//
-// Register the command engine
-//
-void ts3plugin_registerPluginID(const char* commandID) {
-    char *str;
-    
-    str = _strdup(commandID);
-    TRACE("Registered: [%s]", str);
-    ((CCommandServer *)CEngine::getInstance()->getExternalServer())->setCommandId(str);
-}
 
 //
 // Handle a command event

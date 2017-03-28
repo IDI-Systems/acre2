@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-NO_DEDICATED;
+if (!hasInterface) exitWith {};
 
 ADDPFH(DFUNC(_processQueue), 0, []);
 

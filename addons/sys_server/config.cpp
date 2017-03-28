@@ -15,11 +15,3 @@ class CfgPatches {
 
 #include "CfgEventhandlers.hpp"
 
-class CfgWeapons {
-    class FirstAidKit;
-    class ACRE_TestGearDesyncItem: FirstAidKit {
-        scopeCurator = 1;
-        scope = 1;
-        model = "";
-    };
-};

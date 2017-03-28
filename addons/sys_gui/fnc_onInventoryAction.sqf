@@ -69,7 +69,7 @@ switch _typeIndex do {
 };
 
 if (!isNil "_item") then {
-    _ret = [_item] call acre_api_fnc_isRadio;
+    _ret = [_item] call EFUNC(api,isRadio);
     if (_ret) then {
         private _object = acre_player;
         TRACE_3("Calling handler", _object, _container, _item);

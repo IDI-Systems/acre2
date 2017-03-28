@@ -3,10 +3,10 @@
  * Checks if the unit should be heard on vehicle intercom or not for the local player.
  *
  * Arguments:
- * 0: unit to be evaluated <OBJECT>
+ * 0: Unit to be evaluated <OBJECT>
  *
  * Return Value:
- * is other unit speaking on intercom <Boolean>
+ * Is other unit speaking on intercom <Boolean>
  *
  * Example:
  * [unit] call acre_sys_attenuate_fnc_isCrewIntercomAttenuate
@@ -16,11 +16,28 @@
 #include "script_component.hpp"
 
 params ["_unit"];
+
 private _ret = false;
 
-if ((_unit in ACRE_PLAYER_VEHICLE_CREW) and {vehicle acre_player != acre_player}) then {
-    _hasCVC = getNumber (configFile >> "CfgVehicles" >> typeOf (vehicle acre_player) >> "ACRE" >> "CVC" >> "hasCVC");
-    if (_hasCVC == 1) then {
+// Get the vehicle
+private _vehicle = vehicle _unit;
+
+// The player is not inside a vehicle. Check if it is using the intercom network externally
+if (_vehicle == _unit) then {
+    private _vehicleInfantryPhone = _unit getVariable [QEGVAR(sys_intercom,vehicleInfantryPhone), [objNull, objNull]] select 0;
+    if (!isNull _vehicleInfantryPhone) then {
+        _vehicle = _vehicleInfantryPhone;
+    };
+};
+
+if (_unit in ACRE_PLAYER_VEHICLE_CREW) then {
+    private _configIntercom = configFile >> "CfgVehicles" >> typeOf _vehicle;
+    private _hasIntercom = getNumber (_configIntercom >> "acre_hasCrewIntercom");
+    // Backwards compatibility @todo remove in 2.7.0
+    if (isNumber (_configIntercom >> "ACRE" >> "CVC" >> "hasCVC")) then {
+        _hasIntercom = getNumber (_configIntercom >> "ACRE" >> "CVC" >> "hasCVC");
+    };
+    if (_hasIntercom == 1) then {
         _ret = true;
     };
 };

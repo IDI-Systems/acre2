@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Calculates the direct speech occlusion between two positions. Intended to calculate attenuation between the local player and a target unit.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Start position <ARRAY>
+ * 1: End position <ARRAY>
+ * 2: Unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Occlusion <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [[0,0,0],[11,23,100],unit] call acre_sys_core_fnc_findOcclusion
  *
  * Public: No
  */

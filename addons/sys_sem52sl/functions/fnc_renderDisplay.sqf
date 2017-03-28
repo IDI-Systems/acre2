@@ -29,134 +29,134 @@ private _channelKnobPosition = GET_STATE("channelKnobPosition");
 if (_channelKnobPosition == 0) exitWith {}; // OFF
 
 _firstDigit = [
-    QUOTE(PATHTOF(data\display\1char_0.paa)),
-    QUOTE(PATHTOF(data\display\1char_4.paa)),
-    QUOTE(PATHTOF(data\display\1char_5.paa)),
-    QUOTE(PATHTOF(data\display\1char_6.paa)),
-    QUOTE(PATHTOF(data\display\1char_8.paa))
+    QPATHTOF(data\display\1char_0.paa),
+    QPATHTOF(data\display\1char_4.paa),
+    QPATHTOF(data\display\1char_5.paa),
+    QPATHTOF(data\display\1char_6.paa),
+    QPATHTOF(data\display\1char_8.paa)
 ];
 
 _secondDigit = [
-    QUOTE(PATHTOF(data\display\2char_0.paa)),
-    QUOTE(PATHTOF(data\display\2char_1.paa)),
-    QUOTE(PATHTOF(data\display\2char_2.paa)),
-    QUOTE(PATHTOF(data\display\2char_3.paa)),
-    QUOTE(PATHTOF(data\display\2char_4.paa)),
-    QUOTE(PATHTOF(data\display\2char_5.paa)),
-    QUOTE(PATHTOF(data\display\2char_6.paa)),
-    QUOTE(PATHTOF(data\display\2char_7.paa)),
-    QUOTE(PATHTOF(data\display\2char_8.paa)),
-    QUOTE(PATHTOF(data\display\2char_9.paa))
+    QPATHTOF(data\display\2char_0.paa),
+    QPATHTOF(data\display\2char_1.paa),
+    QPATHTOF(data\display\2char_2.paa),
+    QPATHTOF(data\display\2char_3.paa),
+    QPATHTOF(data\display\2char_4.paa),
+    QPATHTOF(data\display\2char_5.paa),
+    QPATHTOF(data\display\2char_6.paa),
+    QPATHTOF(data\display\2char_7.paa),
+    QPATHTOF(data\display\2char_8.paa),
+    QPATHTOF(data\display\2char_9.paa)
 ];
 
 _thirdDigit = [
-    QUOTE(PATHTOF(data\display\3char_0.paa)),
-    QUOTE(PATHTOF(data\display\3char_1.paa)),
-    QUOTE(PATHTOF(data\display\3char_2.paa)),
-    QUOTE(PATHTOF(data\display\3char_3.paa)),
-    QUOTE(PATHTOF(data\display\3char_4.paa)),
-    QUOTE(PATHTOF(data\display\3char_5.paa)),
-    QUOTE(PATHTOF(data\display\3char_6.paa)),
-    QUOTE(PATHTOF(data\display\3char_7.paa)),
-    QUOTE(PATHTOF(data\display\3char_8.paa)),
-    QUOTE(PATHTOF(data\display\3char_9.paa))
+    QPATHTOF(data\display\3char_0.paa),
+    QPATHTOF(data\display\3char_1.paa),
+    QPATHTOF(data\display\3char_2.paa),
+    QPATHTOF(data\display\3char_3.paa),
+    QPATHTOF(data\display\3char_4.paa),
+    QPATHTOF(data\display\3char_5.paa),
+    QPATHTOF(data\display\3char_6.paa),
+    QPATHTOF(data\display\3char_7.paa),
+    QPATHTOF(data\display\3char_8.paa),
+    QPATHTOF(data\display\3char_9.paa)
 ];
 
 _fourthDigit = [
-    QUOTE(PATHTOF(data\display\4char_0.paa)),
-    QUOTE(PATHTOF(data\display\4char_1.paa)),
-    QUOTE(PATHTOF(data\display\4char_2.paa)),
-    QUOTE(PATHTOF(data\display\4char_3.paa)),
-    QUOTE(PATHTOF(data\display\4char_4.paa)),
-    QUOTE(PATHTOF(data\display\4char_5.paa)),
-    QUOTE(PATHTOF(data\display\4char_6.paa)),
-    QUOTE(PATHTOF(data\display\4char_7.paa)),
-    QUOTE(PATHTOF(data\display\4char_8.paa)),
-    QUOTE(PATHTOF(data\display\4char_9.paa)),
-    QUOTE(PATHTOF(data\display\4char_H.paa))
+    QPATHTOF(data\display\4char_0.paa),
+    QPATHTOF(data\display\4char_1.paa),
+    QPATHTOF(data\display\4char_2.paa),
+    QPATHTOF(data\display\4char_3.paa),
+    QPATHTOF(data\display\4char_4.paa),
+    QPATHTOF(data\display\4char_5.paa),
+    QPATHTOF(data\display\4char_6.paa),
+    QPATHTOF(data\display\4char_7.paa),
+    QPATHTOF(data\display\4char_8.paa),
+    QPATHTOF(data\display\4char_9.paa),
+    QPATHTOF(data\display\4char_H.paa)
 ];
 
 _fifthDigit = [
-    QUOTE(PATHTOF(data\display\5char_0.paa)),
-    QUOTE(PATHTOF(data\display\5char_2.paa)),
-    QUOTE(PATHTOF(data\display\5char_5.paa)),
-    QUOTE(PATHTOF(data\display\5char_6.paa)),
-    QUOTE(PATHTOF(data\display\5char_8.paa))
+    QPATHTOF(data\display\5char_0.paa),
+    QPATHTOF(data\display\5char_2.paa),
+    QPATHTOF(data\display\5char_5.paa),
+    QPATHTOF(data\display\5char_6.paa),
+    QPATHTOF(data\display\5char_8.paa)
 ];
 
 _complete = [
-    QUOTE(PATHTOF(data\display\display_blank.paa)),
-    QUOTE(PATHTOF(data\display\noFr.paa)),
-    QUOTE(PATHTOF(data\display\preset_xx.paa)),
-    QUOTE(PATHTOF(data\display\preset_1x.paa))
+    QPATHTOF(data\display\display_blank.paa),
+    QPATHTOF(data\display\noFr.paa),
+    QPATHTOF(data\display\preset_xx.paa),
+    QPATHTOF(data\display\preset_1x.paa)
 ]; //Also a preset_1x.paa
 
 // Force  backlight
 if (GVAR(backlightOn)) then {
     //backlight underneath.
-    RADIO_CTRL(109) ctrlSetText QUOTE(PATHTOF(data\display\backlight\display_blank.paa));
+    RADIO_CTRL(109) ctrlSetText QPATHTOF(data\display\backlight\display_blank.paa);
     // Overwrite
      _firstDigit = [
-        QUOTE(PATHTOF(data\display\backlight\1char_0.paa)),
-        QUOTE(PATHTOF(data\display\backlight\1char_4.paa)),
-        QUOTE(PATHTOF(data\display\backlight\1char_5.paa)),
-        QUOTE(PATHTOF(data\display\backlight\1char_6.paa)),
-        QUOTE(PATHTOF(data\display\backlight\1char_8.paa))
+        QPATHTOF(data\display\backlight\1char_0.paa),
+        QPATHTOF(data\display\backlight\1char_4.paa),
+        QPATHTOF(data\display\backlight\1char_5.paa),
+        QPATHTOF(data\display\backlight\1char_6.paa),
+        QPATHTOF(data\display\backlight\1char_8.paa)
     ];
 
     _secondDigit = [
-        QUOTE(PATHTOF(data\display\backlight\2char_0.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_1.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_2.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_3.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_4.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_5.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_6.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_7.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_8.paa)),
-        QUOTE(PATHTOF(data\display\backlight\2char_9.paa))
+        QPATHTOF(data\display\backlight\2char_0.paa),
+        QPATHTOF(data\display\backlight\2char_1.paa),
+        QPATHTOF(data\display\backlight\2char_2.paa),
+        QPATHTOF(data\display\backlight\2char_3.paa),
+        QPATHTOF(data\display\backlight\2char_4.paa),
+        QPATHTOF(data\display\backlight\2char_5.paa),
+        QPATHTOF(data\display\backlight\2char_6.paa),
+        QPATHTOF(data\display\backlight\2char_7.paa),
+        QPATHTOF(data\display\backlight\2char_8.paa),
+        QPATHTOF(data\display\backlight\2char_9.paa)
     ];
 
     _thirdDigit = [
-        QUOTE(PATHTOF(data\display\backlight\3char_0.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_1.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_2.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_3.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_4.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_5.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_6.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_7.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_8.paa)),
-        QUOTE(PATHTOF(data\display\backlight\3char_9.paa))
+        QPATHTOF(data\display\backlight\3char_0.paa),
+        QPATHTOF(data\display\backlight\3char_1.paa),
+        QPATHTOF(data\display\backlight\3char_2.paa),
+        QPATHTOF(data\display\backlight\3char_3.paa),
+        QPATHTOF(data\display\backlight\3char_4.paa),
+        QPATHTOF(data\display\backlight\3char_5.paa),
+        QPATHTOF(data\display\backlight\3char_6.paa),
+        QPATHTOF(data\display\backlight\3char_7.paa),
+        QPATHTOF(data\display\backlight\3char_8.paa),
+        QPATHTOF(data\display\backlight\3char_9.paa)
     ];
 
     _fourthDigit = [
-        QUOTE(PATHTOF(data\display\backlight\4char_0.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_1.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_2.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_3.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_4.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_5.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_6.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_7.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_8.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_9.paa)),
-        QUOTE(PATHTOF(data\display\backlight\4char_H.paa))
+        QPATHTOF(data\display\backlight\4char_0.paa),
+        QPATHTOF(data\display\backlight\4char_1.paa),
+        QPATHTOF(data\display\backlight\4char_2.paa),
+        QPATHTOF(data\display\backlight\4char_3.paa),
+        QPATHTOF(data\display\backlight\4char_4.paa),
+        QPATHTOF(data\display\backlight\4char_5.paa),
+        QPATHTOF(data\display\backlight\4char_6.paa),
+        QPATHTOF(data\display\backlight\4char_7.paa),
+        QPATHTOF(data\display\backlight\4char_8.paa),
+        QPATHTOF(data\display\backlight\4char_9.paa),
+        QPATHTOF(data\display\backlight\4char_H.paa)
     ];
 
     _fifthDigit = [
-        QUOTE(PATHTOF(data\display\backlight\5char_0.paa)),
-        QUOTE(PATHTOF(data\display\backlight\5char_2.paa)),
-        QUOTE(PATHTOF(data\display\backlight\5char_5.paa)),
-        QUOTE(PATHTOF(data\display\backlight\5char_6.paa)),
-        QUOTE(PATHTOF(data\display\backlight\5char_8.paa))
+        QPATHTOF(data\display\backlight\5char_0.paa),
+        QPATHTOF(data\display\backlight\5char_2.paa),
+        QPATHTOF(data\display\backlight\5char_5.paa),
+        QPATHTOF(data\display\backlight\5char_6.paa),
+        QPATHTOF(data\display\backlight\5char_8.paa)
     ];
 
     _complete = [
-        QUOTE(PATHTOF(data\display\backlight\display_blank.paa)),
-        QUOTE(PATHTOF(data\display\backlight\noFr.paa)),
-        QUOTE(PATHTOF(data\display\backlight\preset_xx.paa)),
-        QUOTE(PATHTOF(data\display\backlight\preset_1x.paa))
+        QPATHTOF(data\display\backlight\display_blank.paa),
+        QPATHTOF(data\display\backlight\noFr.paa),
+        QPATHTOF(data\display\backlight\preset_xx.paa),
+        QPATHTOF(data\display\backlight\preset_1x.paa)
     ];
 };
 
