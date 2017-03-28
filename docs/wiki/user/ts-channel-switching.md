@@ -9,7 +9,6 @@ Dedicated TS3 channels need to be created for this to function. Channel names mu
 Channel names can contain all or part of the Arma 3 server name. If this is the case, the best matching channel name will be selected to switch to. This allows for multiple ACRE dedicated channels to be active at once for multiple Arma servers.
 Note: The name matching is considered fuzzy, meaning it will not always provide the exact result that may be expected.
 
-#
 ### Example
  - A default TS3 channel: "ACRE"
  - Server specific channel(s): "ACRE - My Community's Server", "ACRE: PVP"
