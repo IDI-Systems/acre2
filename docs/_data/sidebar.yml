@@ -69,6 +69,10 @@ entries:
       url: /wiki/user/radio-signal-loss
       output: web, pdf
 
+    - title: TeamSpeak Channel Switching
+      url: /wiki/user/ts-channel-switching
+      output: web, pdf
+
     - title: Class Names
       url: /wiki/class-names
       output: web, pdf
