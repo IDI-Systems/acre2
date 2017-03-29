@@ -31,6 +31,7 @@ This playtesting allows us to guarantee that ACRE2 supports, without glitches, 1
 * In-game speakers; you can put your radio on 'speaker' mode and everyone can listen. If you drop the radio, it keeps playing!
 * Multiple Push-To-Talk keys, for assigning different radios to different hotkeys
 * Preset naming and descriptions for radios that support it. Includes name showing in hints
+* Automatic TeamSpeak 3 Channel Switching
 
 ### Radio Communications
 
