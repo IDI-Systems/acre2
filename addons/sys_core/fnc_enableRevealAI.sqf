@@ -17,7 +17,7 @@
 
 #define ACRE_REVEAL_AMOUNT 1.6
 
-DFUNC(monitorAI_PFH) = {
+FUNC(monitorAI_PFH) = {
     //if (time < 10) exitWith {};
     if (!alive acre_player) exitWith {}; // alive returns false for objNull
     if (ACRE_IS_SPECTATOR) exitWith {};
@@ -72,4 +72,4 @@ DFUNC(monitorAI_PFH) = {
     };
 };
 
-GVAR(monitorAIHandle) = ADDPFH(DFUNC(monitorAI_PFH), 0.5, []);
+GVAR(monitorAIHandle) = ADDPFH(FUNC(monitorAI_PFH), 0.5, []);

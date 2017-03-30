@@ -17,11 +17,11 @@
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
 
-DFUNC(OffDisplay_Render) = {};
-DFUNC(OffDisplay_ESC) = {};
-DFUNC(OffDisplay_ENT) = { };
-DFUNC(OffDisplay_GR) = { };
-DFUNC(OffDisplay_MODE) = { };
-DFUNC(OffDisplay_DOWN) = { };
-DFUNC(OffDisplay_UP) = { };
-DFUNC(OffDisplay_ALT) = { };
+FUNC(OffDisplay_Render) = {};
+FUNC(OffDisplay_ESC) = {};
+FUNC(OffDisplay_ENT) = { };
+FUNC(OffDisplay_GR) = { };
+FUNC(OffDisplay_MODE) = { };
+FUNC(OffDisplay_DOWN) = { };
+FUNC(OffDisplay_UP) = { };
+FUNC(OffDisplay_ALT) = { };

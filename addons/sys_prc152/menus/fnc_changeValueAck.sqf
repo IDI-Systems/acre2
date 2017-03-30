@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-DFUNC(changeValueAck_End) = {
+FUNC(changeValueAck_End) = {
     params ["_radioId"];
 
     TRACE_1("",_this);
@@ -66,7 +66,7 @@ switch _valueType do {
         };
 
         GVAR(changeValueAckTimer) = diag_tickTime + 3.5;
-        [GVAR(currentRadioId), DFUNC(changeValueAck_End), 3.5] call DFUNC(delayFunction);
+        [GVAR(currentRadioId), FUNC(changeValueAck_End), 3.5] call FUNC(delayFunction);
 
         [GVAR(VOLUME)] call FUNC(changeMenu);
     };

@@ -30,7 +30,7 @@ GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
     [
         nil,nil,nil,
         {
-            [ICON_LOADING, true] call DFUNC(toggleIcon);
+            [ICON_LOADING, true] call FUNC(toggleIcon);
             private _volume = GET_STATE("volume");
 
             private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];

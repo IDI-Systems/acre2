@@ -36,7 +36,7 @@ ACREjips = "";
 
 GVAR(validStates) = HASH_CREATE;
 
-DFUNC(_hashSerialize) = {
+FUNC(_hashSerialize) = {
     private _hash = _this;
     private _vals = [];
     private _keys = (allVariables _hash) select {
@@ -57,7 +57,7 @@ DFUNC(_hashSerialize) = {
     ["ACRE_HASH", _keys, _vals];
 };
 
-DFUNC(_arraySerialize) = {
+FUNC(_arraySerialize) = {
     _this apply {
         if (IS_HASH(_x)) then {
             (_x call FUNC(_hashSerialize));
@@ -71,7 +71,7 @@ DFUNC(_arraySerialize) = {
     };
 };
 
-DFUNC(_hashDeserialize) = {
+FUNC(_hashDeserialize) = {
     params ["","_keys","_vals"];
 
     private _hash = HASH_CREATE;
@@ -89,7 +89,7 @@ DFUNC(_hashDeserialize) = {
     _hash;
 };
 
-DFUNC(_arrayDeserialize) = {
+FUNC(_arrayDeserialize) = {
     _this apply {
         if (IS_SERIALIZEDHASH(_x)) then {
             (_x call FUNC(_hashDeserialize));

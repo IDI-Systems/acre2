@@ -12,7 +12,7 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 if (!hasInterface) exitWith {};
 
-ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
+ADDPFH(FUNC(vehicleCrewPFH), 1.1, []);
 
 #ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {

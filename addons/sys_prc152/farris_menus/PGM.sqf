@@ -4,14 +4,14 @@
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 #define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
 
-DFUNC(CURRENT_RADIO_VALUE) = {
+FUNC(CURRENT_RADIO_VALUE) = {
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
     _channels = GET_STATE("channels");
     _channel = HASHLIST_SELECT(_channels, _channelNumber);
     _value = HASH_GET(_channel, (_this select 0));
     _value
 };
-DFUNC(CURRENT_RADIO_CHANNEL) = {
+FUNC(CURRENT_RADIO_CHANNEL) = {
     _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
     _channels = GET_STATE("channels");
     _channel = HASHLIST_SELECT(_channels, _channelNumber);

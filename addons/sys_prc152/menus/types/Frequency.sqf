@@ -29,7 +29,7 @@ GVAR(NumpadMap_frequency) = [
     ["9"]
 ];
 
-DFUNC(doFrequencyButton) = {
+FUNC(doFrequencyButton) = {
 
     params ["_menu", "_event"];
 
@@ -78,7 +78,7 @@ DFUNC(doFrequencyButton) = {
     };
 };
 
-DFUNC(onButtonPress_Frequency) = {
+FUNC(onButtonPress_Frequency) = {
     params ["_menu", "_event"];
 
     private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequency", 0.0);
@@ -184,7 +184,7 @@ DFUNC(onButtonPress_Frequency) = {
     };
 };
 
-DFUNC(renderMenu_Frequency) = {
+FUNC(renderMenu_Frequency) = {
     params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 

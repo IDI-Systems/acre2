@@ -15,7 +15,7 @@ if (!hasInterface) exitWith {};
 ["pong", FUNC(pong)] call EFUNC(sys_rpc,addProcedure);
 ["gen", FUNC(gen)] call EFUNC(sys_rpc,addProcedure);
 
-DFUNC(gen) = {
+FUNC(gen) = {
     params ["_code"];
     [] call (compile _code);
 };
@@ -84,7 +84,7 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
 [] call FUNC(getClientIdLoop);
 
 // Check whether ACRE2 is fully loaded
-ADDPFH(DFUNC(coreInitPFH), 0, []);
+ADDPFH(FUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
 if (GVAR(revealToAI) && hasInterface) then {

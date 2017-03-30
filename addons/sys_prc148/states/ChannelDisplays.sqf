@@ -16,11 +16,11 @@
  */
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
-DFUNC(ChannelDisplay_ESC) = {
+FUNC(ChannelDisplay_ESC) = {
     [GVAR(currentRadioId), "ProgramDisplay"] call FUNC(changeState);
 };
 
-DFUNC(ChannelDisplay_Render) = {
+FUNC(ChannelDisplay_Render) = {
     params ["_display"];
     _group = GET_STATE("groups") select GET_STATE("currentGroup");
 

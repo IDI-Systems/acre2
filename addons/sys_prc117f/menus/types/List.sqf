@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-DFUNC(onButtonPress_List) = {
+FUNC(onButtonPress_List) = {
 //    TRACE_1("onButtonPress_List", _this);
     params ["_menu", "_event"];
 
@@ -55,7 +55,7 @@ DFUNC(onButtonPress_List) = {
     false
 };
 
-DFUNC(renderMenu_List) = {
+FUNC(renderMenu_List) = {
     TRACE_1("renderMenu_List", _this);
     private ["_currentPage", "_currentSelectionIndex"];
     params ["_menu"]; // the menu to render is passed
@@ -107,7 +107,7 @@ DFUNC(renderMenu_List) = {
     };
 };
 
-DFUNC(drawCursor_List) = {
+FUNC(drawCursor_List) = {
     #include "script_component.hpp"
     TRACE_1("drawCursor_List", _this);
     private ["_row"];

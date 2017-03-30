@@ -16,14 +16,14 @@
  */
 #include "script_component.hpp"
 
-DFUNC(onButtonPress_Static) = {
+FUNC(onButtonPress_Static) = {
     TRACE_1("onButtonPress_Static", _this);
 
 
     false
 };
 
-DFUNC(renderMenu_Static) = {
+FUNC(renderMenu_Static) = {
     BEGIN_COUNTER(renderMenu_Static);
 
     TRACE_1("renderMenu_Static", _this);

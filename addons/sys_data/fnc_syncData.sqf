@@ -18,10 +18,10 @@
 
 if (isServer) exitWith { ACRE_DATA_SYNCED = true; };
 ACRE_DATA_SYNCED = false;
-DFUNC(syncDataPFH) = {
+FUNC(syncDataPFH) = {
     ACREjips = player;
     INFO("Data Sync Requested.");
     GVAR(dataSyncStart) = diag_tickTime;
     publicVariableServer "ACREjips";
 };
-[{!isNull player}, DFUNC(syncDataPFH)] call CBA_fnc_waitUntilAndExecute;
+[{!isNull player}, FUNC(syncDataPFH)] call CBA_fnc_waitUntilAndExecute;

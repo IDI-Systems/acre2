@@ -17,7 +17,7 @@
 
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
-DFUNC(GroupDisplay_Render) = {
+FUNC(GroupDisplay_Render) = {
     _groups = GET_STATE("groups");
     _options = [];
     _labels = [];
@@ -41,11 +41,11 @@ DFUNC(GroupDisplay_Render) = {
     [_display, GVAR(currentMenu)] call FUNC(showMenu);
 };
 
-DFUNC(GroupDisplay_ESC) = {
+FUNC(GroupDisplay_ESC) = {
     [GVAR(currentRadioId), "DefaultDisplay"] call FUNC(changeState);
 };
 
-DFUNC(GroupDisplay_Select) = {
+FUNC(GroupDisplay_Select) = {
     params ["_newValue", "_menuEntry"];
 
     //diag_log text format["new: %1", _newValue];

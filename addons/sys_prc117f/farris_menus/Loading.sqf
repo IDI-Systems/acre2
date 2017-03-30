@@ -16,17 +16,17 @@
  */
 #include "script_component.hpp"
 
-DFUNC(Loading_End) = {
+FUNC(Loading_End) = {
     params ["_radioId"];
     // Turn the radio on
     [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
 
     if (_radioId isEqualTo GVAR(currentRadioId)) then {
-        [GVAR(LOADING), ["0"]] call DFUNC(onButtonPress_Display);
+        [GVAR(LOADING), ["0"]] call FUNC(onButtonPress_Display);
     };
 };
 
-DFUNC(Loading_BarFill) = {
+FUNC(Loading_BarFill) = {
 
     if (isNil QGVAR(currentBarFill)) then { GVAR(currentBarFill) = 0.0; };
     GVAR(currentBarFill) = GVAR(currentBarFill) + 0.05;
@@ -38,7 +38,7 @@ DFUNC(Loading_BarFill) = {
     };
 };
 
-DFUNC(Loading_BarFill_end) = {
+FUNC(Loading_BarFill_end) = {
     params ["_radioId"];
     // Turn the radio on
     [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
@@ -66,13 +66,13 @@ GVAR(LOADING) = ["LOADING", "LOADING", "",
                     [_radioId, "setOnOffState", 0.5] call EFUNC(sys_data,dataEvent);
 
                     TRACE_1("Registering function","");
-                    [GVAR(currentRadioId), DFUNC(Loading_End), 3] call DFUNC(delayFunction);
+                    [GVAR(currentRadioId), FUNC(Loading_End), 3] call FUNC(delayFunction);
                 }, // onEntry
                 nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
                 { true },
                 {
                     TRACE_1("Rendering LOADING-STAGE-1","");
-                    [ICON_LOGO, true] call DFUNC(toggleIcon);
+                    [ICON_LOGO, true] call FUNC(toggleIcon);
                 }
             ]
         ],
@@ -91,14 +91,14 @@ GVAR(LOADING) = ["LOADING", "LOADING", "",
                 {
                     TRACE_1("Rendering LOADING-STAGE-2","");
                     GVAR(currentBarFill) = 0;
-                    [ICON_LOADING, true] call DFUNC(toggleIcon);
+                    [ICON_LOADING, true] call FUNC(toggleIcon);
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
                     if (!isNull _display) then {
                         (_display displayCtrl ICON_LOADING) progressSetPosition 0.0;
                         (_display displayCtrl ICON_LOADING) ctrlCommit 0;
                     };
-                    [GVAR(currentRadioId), DFUNC(Loading_BarFill_End), 5.25] call DFUNC(delayFunction);
-                    [GVAR(currentRadioId), DFUNC(Loading_BarFill), 0.25, 5] call DFUNC(timerFunction);
+                    [GVAR(currentRadioId), FUNC(Loading_BarFill_End), 5.25] call FUNC(delayFunction);
+                    [GVAR(currentRadioId), FUNC(Loading_BarFill), 0.25, 5] call FUNC(timerFunction);
                 }
             ]
         ]

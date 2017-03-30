@@ -20,7 +20,7 @@ TRACE_1("got ptt press", _this);
 if (ACRE_IS_SPECTATOR) exitWith { true };
 
 if ( GVAR(pttKeyDown) && ! isNil QGVAR(delayReleasePTT_Handle) ) then {
-    [[ACRE_BROADCASTING_RADIOID, true]] call DFUNC(doHandleMultiPttKeyPressUp);
+    [[ACRE_BROADCASTING_RADIOID, true]] call FUNC(doHandleMultiPttKeyPressUp);
 } else {
     if (GVAR(pttKeyDown)) exitWith { true };
 };

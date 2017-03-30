@@ -20,7 +20,7 @@ GVAR(lastKeyCount) = 0;
 
 
 
-DFUNC(speakingLoop) = {
+FUNC(speakingLoop) = {
     // private _startTime = diag_tickTime;
     // private _rstart = 0;
     // private _rend = 0;
@@ -280,5 +280,5 @@ DFUNC(speakingLoop) = {
     GVAR(speaking_cache_valid) = true;
 };
 
-GVAR(speakingHandle) = ADDPFH(DFUNC(speakingLoop), 0.06, []);
+GVAR(speakingHandle) = ADDPFH(FUNC(speakingLoop), 0.06, []);
 true

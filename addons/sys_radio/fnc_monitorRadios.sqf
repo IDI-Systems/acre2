@@ -20,7 +20,7 @@ GVAR(forceRecheck) = false;
 GVAR(requestingNewId) = false;
 
 LOG("Monitor Inventory Starting");
-DFUNC(monitorRadios_PFH) = {
+FUNC(monitorRadios_PFH) = {
     if (!alive acre_player) exitWith {};
     if ((side group acre_player) == sideLogic) exitWith {};
 

@@ -17,7 +17,7 @@
 
 GVAR(oldMute) = 0;
 GVAR(_waitTime) = 0;
-DFUNC(utility_aliveStatus) = {
+FUNC(utility_aliveStatus) = {
     private _isMuted = 0;
     if (IS_MUTED(acre_player)) then {
         _isMuted = 1;

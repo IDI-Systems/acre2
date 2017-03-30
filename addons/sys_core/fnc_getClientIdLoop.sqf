@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-DFUNC(getClientIdLoopFunc) = {
+FUNC(getClientIdLoopFunc) = {
     if (!isNull player) then {
         private _netId = netId acre_player;
         ["getClientID", [_netId, (getPlayerUID player)]] call EFUNC(sys_rpc,callRemoteProcedure);

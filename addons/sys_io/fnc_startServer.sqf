@@ -23,7 +23,7 @@ GVAR(connectCount) = 15;
 GVAR(runserver) = true;
 [] call FUNC(server);
 LOG("server started");
-ADDPFH(DFUNC(serverReadLoop), 0, []);
+ADDPFH(FUNC(serverReadLoop), 0, []);
 [] call FUNC(ping);
 
 
