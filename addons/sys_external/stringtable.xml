@@ -1,41 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_external">
         <Key ID="STR_ACRE_sys_external_externalRadios">
             <English>Shared Radios</English>
             <Spanish>Radios compartidas</Spanish>
             <German>Gemeinsame Funkgeräte</German>
+            <Russian>Общие рации</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_external_shareRadio">
             <English>Share Radio</English>
             <Spanish>Compartir radio</Spanish>
             <German>Radio teilen</German>
+            <Russian>Передать рацию</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_external_unshareRadio">
             <English>Unshare Radio</English>
             <Spanish>No compartir radio</Spanish>
             <German>Radio nicht teilen</German>
+            <Russian>Забрать рацию</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHeadset">
             <English>Take Headset</English>
             <Spanish>Coger transmisor</Spanish>
             <German>Headset abholen</German>
+            <Russian>Взять наушники</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHeadset">
             <English>Return Headset</English>
             <Spanish>Devolver transmisor</Spanish>
             <German>Headset zuruckgeben</German>
+            <Russian>Вернуть наушники</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHeadset">
             <English>Give Headset</English>
             <Spanish>Dar transmisor</Spanish>
             <German>Headset geben</German>
+            <Russian>Дать наушники</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTake">
             <English>Start using %1 from %2</English>
+            <Russian>Начать использовать %1 из %2</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturn">
             <English>Stop using %1 from %2</English>
+            <Russian>Перестать использовать %1 из %2</Russian>
         </Key>
     </Package>
 </Project>
