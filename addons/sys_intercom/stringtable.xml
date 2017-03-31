@@ -59,6 +59,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passenger">
             <English>Pax</English>
+            <Russian>Пассажирский интерком</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercomDisconnected">
             <English>Disconnected from Crew Intercom</English>
@@ -78,12 +79,15 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
             <English>Disconnected from Pax Intercom</English>
+            <Russian>Отключен от пассажирского интеркома</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomConnected">
             <English>Connected to Pax Intercom</English>
+            <Russian>Подключен к пассажирскому интеркому</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomNoConnections">
             <English>No free connections for Pax Intercom</English>
+            <Russian>Нет свободных соединений для пассажирского интеркома</Russian>
         </Key>
     </Package>
 </Project>
