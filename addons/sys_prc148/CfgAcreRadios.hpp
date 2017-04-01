@@ -93,8 +93,9 @@ class CfgAcreComponents {
     /*
     class ACRE_PRC148_UHF: ACRE_PRC148 {
         name = "AN/PRC-148 UHF";
-        defaultAntennas[] = { {0, "ACRE_14IN_UHF_TNC"}
-                            };
+        defaultAntennas[] = {
+            {0, "ACRE_14IN_UHF_TNC"}
+        };
     };
     */
 };

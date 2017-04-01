@@ -55,7 +55,7 @@ switch _channelType do {
         HASH_SET(_return, "frequencyTX", HASH_GET(_currentChannelData, "frequencyTX"));
         HASH_SET(_return, "frequencyRX", HASH_GET(_currentChannelData, "frequencyRX"));
         if (_powerSource == "BAT") then {
-            HASH_SET(_return, "power", HASH_GET(_channel, "power"));
+            HASH_SET(_return, "power", HASH_GET(_currentChannelData, "power"));
         } else { // RACK BOOST
             HASH_SET(_return, "power", 20000);
         };

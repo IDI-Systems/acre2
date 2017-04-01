@@ -34,7 +34,7 @@ class CfgAcreComponents {
 
     class ACRE_2HALFINCH_UHF_TNC: ACRE_BaseAntenna {
         name = "2.5 Inch UHF Antenna AN/PRC-343 ONLY";
-        shortName = "2.5 INCH UHF TNC";
+        shortName = "2.5 INCH UHF PRC343";
         connector = ACRE_CONNECTOR_TNC;
         height = 0.062457;
         binaryGainFile = QPATHTOF(binary\prc343_gain.aba);
@@ -42,7 +42,7 @@ class CfgAcreComponents {
 
     class ACRE_SEM52_SHORT_BNC: ACRE_BaseAntenna {
         name = "SEM52SL/SEM70 Antenna Short (0.4m)";
-        shortName = "Short SEM52SL/SEM70 VHF BNC";
+        shortName = "0.4M SEM52/SEM70";
         connector = ACRE_CONNECTOR_BNC;
         height = 0.4;
         binaryGainFile = QPATHTOF(binary\sem52_short_gain.aba);
@@ -50,7 +50,7 @@ class CfgAcreComponents {
 
     class ACRE_SEM52_LONG_BNC: ACRE_BaseAntenna {
         name = "SEM52SL Antenna long (0.9m)";
-        shortName = "Long SEM52SL VHF BNC";
+        shortName = "0.9M SEM52";
         connector = ACRE_CONNECTOR_BNC;
         height = 0.9;
         binaryGainFile = QPATHTOF(binary\sem52_long_gain.aba);
@@ -58,7 +58,7 @@ class CfgAcreComponents {
 
     class ACRE_SEM70_LONG_BNC: ACRE_BaseAntenna {
         name = "SEM70 Antenna long (1.03m)";
-        shortName = "Long SEM70 VHF BNC";
+        shortName = "1.03M SEM70";
         connector = ACRE_CONNECTOR_BNC;
         height = 1.03;
         binaryGainFile = QPATHTOF(binary\sem70_long_gain.aba);
@@ -66,7 +66,7 @@ class CfgAcreComponents {
 
     class ACRE_AT271_38: ACRE_BaseAntenna {
         name = "AT-271 Fishpole (PRC-77)";
-        shortName = "AT-271";
+        shortName  = "AT-271 PRC-77";
         connector = ACRE_CONNECTOR_3_8;
         height = 2.88;
         binaryGainFile = QPATHTOF(binary\AT-271_gain.aba);

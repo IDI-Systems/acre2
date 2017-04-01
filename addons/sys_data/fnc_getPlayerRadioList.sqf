@@ -27,7 +27,6 @@ if (!ACRE_IS_SPECTATOR) then {
         _radioList pushBackUnique _x;
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
 
-
     //Auxilary radios are for radios not in inventory like racked radios.
     {
         _radioList pushBackUnique _x;
