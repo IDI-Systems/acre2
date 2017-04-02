@@ -356,7 +356,7 @@ namespace acre {
             }
 
             void signal_map_chunk(std::vector<signal_map_result> *results, float start_y, float start_x, uint32_t y_offset, uint32_t length, uint32_t x_size, float sample_size,
-                float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, antenna_p &tx_antenna_, antenna_p &rx_antenna_, float frequency_, float power_, float sinad_, float omnidirectional_
+                float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, antenna_p &tx_antenna_, antenna_p &rx_antenna_, float frequency_, float power_, float sinad_, bool omnidirectional_
                 ) {
                 uint32_t y_val = 0;
                 for (uint32_t y = y_offset; y < y_offset+length; ++y) {
