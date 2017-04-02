@@ -239,6 +239,7 @@ namespace acre {
 
                 float lower_sensitivity = args_.as_float();
                 float upper_sensitivity = args_.as_float();
+                bool omnidirectional = args_.as_int();
 
                 float start_x = start_pos.x;
                 float start_y = start_pos.y;
@@ -295,13 +296,13 @@ namespace acre {
                     std::vector<signal_map_result> *result_entry = &result_sets[i];
                     result_entry->resize(y_chunk_size*count_x);
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*i, y_chunk_size, count_x, sample_size,
-                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
+                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
                 }
                 if (y_chunk_remainder) {
                     std::vector<signal_map_result> *result_entry = &result_sets[thread_count];
                     result_entry->resize(y_chunk_size*count_x);
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*thread_count, y_chunk_remainder, count_x, sample_size,
-                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
+                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
                 }
                 for (size_t c = 0; c < thread_pool.size(); ++c) {
                     thread_pool[c].join();
@@ -355,7 +356,7 @@ namespace acre {
             }
 
             void signal_map_chunk(std::vector<signal_map_result> *results, float start_y, float start_x, uint32_t y_offset, uint32_t length, uint32_t x_size, float sample_size,
-                float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, antenna_p &tx_antenna_, antenna_p &rx_antenna_, float frequency_, float power_, float sinad_
+                float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, antenna_p &tx_antenna_, antenna_p &rx_antenna_, float frequency_, float power_, float sinad_, float omnidirectional_
                 ) {
                 uint32_t y_val = 0;
                 for (uint32_t y = y_offset; y < y_offset+length; ++y) {
