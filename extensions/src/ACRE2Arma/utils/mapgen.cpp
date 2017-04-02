@@ -71,7 +71,7 @@ void signal_map_chunk(std::vector<signal_map_result_p> *results, float start_y, 
             signal_map_result_p result = std::make_shared<signal_map_result>();
             result->rx_pos = glm::vec3(rx_x_pos, rx_y_pos, z);
             result->tx_pos = glm::vec3(tx_pos_);
-            signal_processor->process(&result->result, tx_pos_, tx_dir_, result->rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 12.0f);
+            signal_processor->process(&result->result, tx_pos_, tx_dir_, result->rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 12.0f, true);//TODO Dehardcode last argument
             {
                 std::lock_guard<std::mutex> lock(signal_lock);
                 results->at(y * x_size + x) = result;

@@ -14,7 +14,7 @@
 extern TS3Functions ts3Functions;
 //
 // TS3 API Intializers
-// 
+//
 
 const char* ts3plugin_name() {
     return "ACRE2 Distortion Test";
@@ -51,7 +51,7 @@ void ts3plugin_registerPluginID(const char* commandID) {
 }
 
 
-// 
+//
 // Init
 //
 int ts3plugin_init() {
@@ -69,7 +69,7 @@ int ts3plugin_init() {
     return 0;
 }
 
-// 
+//
 // server connect/disconnect
 //
 void ts3plugin_currentServerConnectionChanged(uint64 serverConnectionHandlerID) {
@@ -79,9 +79,9 @@ void ts3plugin_currentServerConnectionChanged(uint64 serverConnectionHandlerID) 
 void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int err) {
 
     if (status == STATUS_CONNECTION_ESTABLISHED) {
-        
 
-        // 
+
+        //
         // set ID on every new connection
         ACRE_ID clientId = 0;
         ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), (anyID *)&clientId);
@@ -93,7 +93,7 @@ void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int er
             CEngine::getInstance()->getClient()->start((ACRE_ID)id);
         }
     } else if (status == STATUS_DISCONNECTED) {
-        if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED) {
+        if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED  && CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPING) {
             CEngine::getInstance()->getClient()->stop();
         }
     }
@@ -110,5 +110,5 @@ void ts3plugin_shutdown() {
     if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED && CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPING) {
         CEngine::getInstance()->getClient()->stop();
     }
+    CEngine::getInstance()->stop();
 }
-
