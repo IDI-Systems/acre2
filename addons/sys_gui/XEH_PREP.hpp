@@ -19,4 +19,5 @@ PREP(inventoryListMouseUp);
 PREP(uniqueArray);
 PREP(onInventoryAction);
 PREP(handleContextMenu);
+PREP(handleTake);
 PREP(inventoryMonitorPFH);

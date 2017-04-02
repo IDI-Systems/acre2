@@ -62,7 +62,7 @@ private _vehicleCrewPFH = {
         ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - _remove;
         if (ACRE_ACTIVE_RADIO in _remove) then { // If it is the active radio.
             // Check if radio is now in inventory
-            private _items = [acre_player] call EFUNC(core,getGear);
+            private _items = [acre_player] call EFUNC(sys_core,getGear);
             _items = _items apply {toLower _x};
             if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // no need to remove
             // Otherwise cleanup

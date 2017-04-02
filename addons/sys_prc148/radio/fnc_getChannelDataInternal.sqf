@@ -19,10 +19,12 @@
 params ["_channelNumber", "_radioData"];
 
 private _channels = HASH_GET(_radioData, "channels");
+private _powerSource = HASH_GET(_radioData, "powerSource");
 private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
 private _channelType = HASH_GET(_channel, "channelMode");
 private _return = HASH_CREATE;
+
 switch _channelType do {
     case "BASIC": {
         HASH_SET(_return, "mode", "singleChannel");

@@ -4,6 +4,7 @@ PREP(aliveMonitor);
 PREP(callExt);
 PREP(canUnderstand);
 PREP(cycleLanguage);
+PREP(displayNotification);
 PREP(findOcclusion);
 PREP(getAlive);
 PREP(getClientIdLoop);
@@ -48,11 +49,5 @@ PREP(disableRevealAI);
 PREP(enableRevealAI);
 PREP(onRevealUnit);
 
-
-PREP(fastHashCopy);
-PREP(fastHashCopyArray);
-//PREP(fastHashCreate);
-PREP(fastHashKeys);
-
 PREP(coreInitPFH);
-PREP(vehicleCrewPFH);
+//PREP(vehicleCrewPFH);

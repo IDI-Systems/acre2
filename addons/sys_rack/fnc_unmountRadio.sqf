@@ -25,7 +25,7 @@ if (_mountedRadio == "") exitWith {
 };
 
 if (_unit canAdd _mountedRadio) then {
-    [_unit, _mountedRadio] call EFUNC(core,addGear);
+    [_unit, _mountedRadio] call EFUNC(sys_core,addGear);
 
     SET_STATE_RACK(_rackId,"mountedRadio","");
     [_rackId,_mountedRadio] call EFUNC(sys_components,detachAllConnectorsFromComponent);

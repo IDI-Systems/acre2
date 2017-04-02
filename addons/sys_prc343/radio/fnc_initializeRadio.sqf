@@ -1,16 +1,20 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Initialises a radio by givint it a radio ID. This only happens once and the default
+ * preset (configuration) is copied.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Event: "initializeRadio" <STRING> (Unused)
+ * 2: Event data [baseclass, preset] <ARRAY>
+ * 3: Radio data <HASH>
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1", "initializeRadio", ["ACRE_PRC343_base", default1], [], false] call acre_sys_prc343_fnc_initializeRadio
  *
  * Public: No
  */
@@ -18,7 +22,7 @@
 
 TRACE_1("INITIALIZING RADIO 343", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData", ""];
 
 _eventData params ["_baseName", "_preset"];
 private _presetData = [_baseName, _preset] call EFUNC(sys_data,getPresetData);

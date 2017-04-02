@@ -132,7 +132,6 @@ namespace acre {
 
     protected:
         void monitor() {
-            _ready = false;
             while (!_stop) {
                 
                 bool empty = false;

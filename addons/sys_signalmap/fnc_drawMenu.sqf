@@ -71,8 +71,8 @@ with uiNamespace do {
     for "_i" from 0 to (count _components) - 1 do {
         _component = _components select _i;
         _type = getNumber(_component >> "type");
-        if(_type == ACRE_COMPONENT_ANTENNA) then {
-            if(getText(_component >> "binaryGainFile") != "") then {
+        if (_type == ACRE_COMPONENT_ANTENNA) then {
+            if (getText(_component >> "binaryGainFile") != "") then {
                 GVAR(txAntennaListBox) lbAdd (getText(_component >> "name"));
                 GVAR(txAntennaListBox) lbSetData [_c, (configName _component)];
                 diag_log text format["d: %1", GVAR(txAntennaListBox) lbData _c];
@@ -119,8 +119,8 @@ with uiNamespace do {
     for "_i" from 0 to (count _components) - 1 do {
         _component = _components select _i;
         _type = getNumber(_component >> "type");
-        if(_type == ACRE_COMPONENT_ANTENNA) then {
-            if(getText(_component >> "binaryGainFile") != "") then {
+        if (_type == ACRE_COMPONENT_ANTENNA) then {
+            if (getText(_component >> "binaryGainFile") != "") then {
                 GVAR(rxAntennaListBox) lbAdd (getText(_component >> "name"));
                 GVAR(rxAntennaListBox) lbSetData [_c, (configName _component)];
                 _c = _c + 1;
@@ -256,7 +256,7 @@ with uiNamespace do {
         GVAR(rxAreaList) lbSetData [_i, str _forEachIndex];
         _i = _i + 1;
     } forEach GVAR(rxAreas);
-    GVAR(rxAreaList) ctrlAddEventHandler ["LBSelChanged", QUOTE(_this call FUNC(onAreaLBChange))];
+    GVAR(rxAreaList) ctrlAddEventHandler ["LBSelChanged", {call FUNC(onAreaLBChange)}];
     GVAR(rxAreaList) lbSetCurSel 0;
     GVAR(rxAreaList) ctrlCommit 0;
 

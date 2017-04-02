@@ -35,7 +35,7 @@ if (_mountedRadio == "") then { // Empty
 } else {
     private _class = configFile >> "CfgWeapons" >> _mountedRadio;
     private _icon = getText(_class >> "picture");
-    
+
     if ([_rackClassName] call EFUNC(sys_rack,isRadioRemovable)) then {
         private _text = format ["Unmount Radio (%1)",getText(_class >> "displayName")];
         private _params = [_rackClassName,_mountedRadio];
@@ -48,7 +48,7 @@ if (_mountedRadio == "") then { // Empty
     } else {
         private _text = format ["Mounted radio (%1)",getText(_class >> "displayName")];
         private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-        _actions pushBack [_action, [], _target];    
+        _actions pushBack [_action, [], _target];
     };
     if ((toLower _mountedRadio) in ACRE_ACTIVE_RACK_RADIOS) then {
         // stop
@@ -57,24 +57,21 @@ if (_mountedRadio == "") then { // Empty
             _params call EFUNC(sys_rack,stopUsingMountedRadio);
         }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
-        
+
         private _pttAssign = [] call acre_api_fnc_getMultiPushToTalkAssignment;
         private _radioActions = [_target,_unit,[_mountedRadio,(_mountedRadio isEqualTo ACRE_ACTIVE_RADIO), _pttAssign]] call FUNC(radioChildrenActions);
-        _actions append _radioActions;    
+        _actions append _radioActions;
     } else {
         // Use
         private _action = ["acre_stopMountedRadio", "Use radio", "", {
             params ["_target","_unit","_params"];
             _params params ["_mountedRadio"];
-            ACRE_ACTIVE_RADIO = _mountedRadio;
+            ACRE_ACTIVE_RADIO = toLower _mountedRadio;
             ACRE_ACTIVE_RACK_RADIOS pushBackUnique (toLower _mountedRadio);
         }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
 };
-
-
-
 
 /* Connectors */
 if (GVAR(connectorsEnabled)) then {
@@ -83,4 +80,4 @@ if (GVAR(connectorsEnabled)) then {
 };
 
 
-_actions;
+_actions

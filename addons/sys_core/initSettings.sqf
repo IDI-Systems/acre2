@@ -38,6 +38,16 @@
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
 ] call CBA_Settings_fnc_init;
 
+[
+    QGVAR(ts3ChannelSwitch),
+    "CHECKBOX",
+    localize LSTRING(ts3ChannelSwitch_displayName),
+    "ACRE2",
+    true,
+    false,
+    {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
+] call CBA_Settings_fnc_init;
+
 // Difficulty settings
 // Interference
 [
@@ -94,6 +104,16 @@
     {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
+// Automatic connection to passenger intercom as crew member
+[
+    QGVAR(crewAutoJoinPassengerIntercom),
+    "CHECKBOX",
+    localize LSTRING(crewAutoJoinPassengerIntercom),
+    "ACRE2",
+    false,
+    true,
+    {}
+] call CBA_Settings_fnc_init;
 
 // @todo remove in 2.7.0
 // Module settings

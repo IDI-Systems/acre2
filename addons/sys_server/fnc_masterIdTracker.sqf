@@ -182,7 +182,7 @@ if (GVAR(doFullSearch)) then {
             private _baseRadio = [_key] call EFUNC(sys_radio,getRadioBaseClassname);
             //Only collect firstFound if there are non-player objects with IDs as well.
             if ({!((_x select 0) in _players)} count _duplicates > 0) then {
-                [(_firstFound select 0), _baseRadio, QEGVAR(sys_radio,currentRadioDialog), _key] call FUNC(onGetRadioId);
+                [(_firstFound select 0), _baseRadio, QEGVAR(sys_radio,returnRadioId), _key] call FUNC(onGetRadioId);
                 WARNING_2("Duplicate radio ID found! Attempting replace of (%1,%2)",name (_firstFound select 0),_key);
             };
 
@@ -190,7 +190,7 @@ if (GVAR(doFullSearch)) then {
             {
                private _data = _x;
                if ((_data select 0) in _players) then {
-                   [(_data select 0), _baseRadio, QEGVAR(sys_radio,currentRadioDialog), _key] call FUNC(onGetRadioId);
+                   [(_data select 0), _baseRadio, QEGVAR(sys_radio,returnRadioId), _key] call FUNC(onGetRadioId);
                    WARNING_2("Duplicate radio ID found! Attempting replace of (%1,%2)",name (_data select 0),_key);
                };
            } forEach _duplicates;

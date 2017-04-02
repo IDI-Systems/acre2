@@ -26,6 +26,11 @@ RPC_FUNCTION(setSetting) {
         if (CAcreSettings::getInstance()->getDisableUnmuteClients() != (value != 1)) {
             CAcreSettings::getInstance()->setDisableUnmuteClients(value != 1);
         }
+    } 
+    else if (name == "disableTS3ChannelSwitch") {
+        if (CAcreSettings::getInstance()->getDisableTS3ChannelSwitch() != (value != 1)) {
+            CAcreSettings::getInstance()->setDisableTS3ChannelSwitch(value != 1);
+        }
     }
     else {
         LOG("Setting [%s] failed to change to [%f]", name.c_str(), value);

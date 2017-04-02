@@ -15,7 +15,7 @@ class CfgWeapons {
 
 
 
-    class ACRE_PRC77 : ACRE_BaseRadio {
+    class ACRE_PRC77: ACRE_BaseRadio {
         displayName = "AN/PRC-77";
         useActionTitle = "AN/PRC-77";
         model = QPATHTOF(Data\models\prc_77.p3d);
@@ -34,8 +34,7 @@ class CfgWeapons {
             scope = 0;
          };
 
-        class Library
-        {
+        class Library {
             libTextDesc = "AN/PRC-77";
         };
     };

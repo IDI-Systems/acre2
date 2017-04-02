@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Retrieves a list of unique radio IDs that can be accessed by a player. This includes radios in the inventory that are not being
+ * used externally and those radios that are used externally.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of unique radio IDs <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_data_fnc_getPlayerRadioList
  *
  * Public: No
  */
@@ -20,7 +20,12 @@ private _radioList = [];
 
 if (!ACRE_IS_SPECTATOR) then {
     private _weapons = [acre_player] call EFUNC(sys_core,getGear);
-    _radioList = _weapons select {_x call EFUNC(sys_radio,isUniqueRadio)};
+    _radioList = _weapons select {_x call EFUNC(sys_radio,isUniqueRadio) && {!(_x call EFUNC(sys_external,isExternalRadioUsed))}};
+
+    // External radios not in the inventory of the player
+    {
+        _radioList pushBackUnique _x;
+    } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
 
     //Auxilary radios are for radios not in inventory like racked radios.
     {
