@@ -239,7 +239,7 @@ namespace acre {
 
                 float lower_sensitivity = args_.as_float();
                 float upper_sensitivity = args_.as_float();
-                bool omnidirectional = args_.as_int();
+                bool omnidirectional = args_.as_int() == 1;
 
                 float start_x = start_pos.x;
                 float start_y = start_pos.y;
