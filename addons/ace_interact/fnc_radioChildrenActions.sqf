@@ -59,9 +59,4 @@ if ((_idx > -1) and (_idx < 3)) then {
 _action = ["acre_mptt_assign", _txt, "", {}, {true}, {_this call FUNC(radioPTTChildrenActions);}, _params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
-if (GVAR(connectorsEnabled)) then {
-    _action = ["acre_connectors", "Connectors", "\idi\acre\addons\ace_interact\data\icons\connector4.paa", {}, {true}, {_this call FUNC(generateConnectors);}, _params] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
-};
-
-_actions;
+_actions
