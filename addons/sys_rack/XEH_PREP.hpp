@@ -1,3 +1,8 @@
+PREP(initActionVehicle);
+PREP(generateMountableRadioActions);
+PREP(rackChildrenActions);
+PREP(rackListChildrenActions);
+
 PREP(onReturnRackId);
 PREP(onReturnRadioId);
 PREP(addRack);

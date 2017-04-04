@@ -24,7 +24,7 @@ params ["_entity", "_class", "_returnIdNumber", "_replacementId"];
 
 private _dataHash = HASH_CREATE;
 
-// diag_log text format["acre_sys_data_radioData: %1", acre_sys_data_radioData];
+// diag_log text format ["acre_sys_data_radioData: %1", acre_sys_data_radioData];
 
 HASH_SET(EGVAR(sys_data,radioData), _class, _dataHash);
 _idRelation = [_entity, _entity];

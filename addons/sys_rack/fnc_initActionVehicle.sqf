@@ -33,7 +33,7 @@ private _condition = {
     //{[_player, _target, ["isNotInside"]] call ace_common_fnc_canInteractWith}
      //{[_player, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)}
      params ["_target","_unit"];
-     private _accessibleRacks = [_target,_unit] call EFUNC(sys_rack,getAccessibleVehicleRacks);
+     private _accessibleRacks = [_target,_unit] call FUNC(getAccessibleVehicleRacks);
      count _accessibleRacks > 0;
 };
 private _statement = {true};
