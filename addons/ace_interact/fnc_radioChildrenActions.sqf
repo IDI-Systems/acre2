@@ -37,13 +37,13 @@ if (_spatial == "RIGHT") then {
 
 private _action = ["acre_spatial_radio", _txt, "", {}, {true}, {_this call FUNC(generateSpatialChildrenActions);}, _params + [_spatial]] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
-_action = ["acre_open_radio", localize ELSTRING(sys_list,OpenRadio), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-_actions pushBack [_action, [], _target];
 _action = ["acre_make_active", localize LSTRING(setAsActive), "", {[(_this select 2) select 0] call EFUNC(api,setCurrentRadio)}, {!((_this select 2) select 1)}, {},_params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
 // External radios. Show only options to share/stop sharing the radio if you are the actual owner and not an external user
 if (!(_radio in ACRE_ACTIVE_EXTERNAL_RADIOS)) then {
+    _action = ["acre_open_radio", localize ELSTRING(sys_list,OpenRadio), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
     _action = ["acre_share_radio", localize ELSTRING(sys_external,shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params]  call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
     _action = ["acre_retrieve_radio", localize ELSTRING(sys_external,unshareRadio), "", {[(_this select 2) select 0, false] call EFUNC(sys_external,allowExternalUse)}, {[(_this select 2) select 0] call EFUNC(sys_external,isRadioShared)}, {}, _params]  call ace_interact_menu_fnc_createAction;
@@ -59,4 +59,9 @@ if ((_idx > -1) and (_idx < 3)) then {
 _action = ["acre_mptt_assign", _txt, "", {}, {true}, {_this call FUNC(radioPTTChildrenActions);}, _params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
-_actions
+if (GVAR(connectorsEnabled)) then {
+    _action = ["acre_connectors", "Connectors", "\idi\acre\addons\ace_interact\data\icons\connector4.paa", {}, {true}, {_this call FUNC(generateConnectors);}, _params] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
+};
+
+_actions;

@@ -45,5 +45,8 @@
             <English>Stop using %1 from %2</English>
             <Russian>Перестать использовать %1 из %2</Russian>
         </Key>
+        <Key ID="STR_ACRE_sys_external_noOpenGUI">
+            <English>Radio is used externally. Configuration must be made by the owner.</English>
+        </Key>
     </Package>
 </Project>

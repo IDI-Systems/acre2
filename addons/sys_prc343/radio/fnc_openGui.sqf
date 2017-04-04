@@ -24,9 +24,16 @@
 TRACE_1("OPENING GUI", _this);
 params ["_radioId", "", "", "", ""];
 
+// Prevent radio from being opened if it is externally used.
+if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS) exitWith {
+    [ELSTRING(sys_external,noOpenGUI), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+};
+
 disableSerialization;
 GVAR(currentRadioId) = _radioId;
 createDialog "PRC343_RadioDialog";
+
+
 
 
 true
