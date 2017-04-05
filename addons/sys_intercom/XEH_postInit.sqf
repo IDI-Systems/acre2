@@ -8,7 +8,7 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 ["Air", "init", FUNC(intercomConfig), nil, nil, true] call CBA_fnc_addClassEventHandler;
 ["Boat_F", "init", FUNC(intercomConfig), nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-[QGVAR(infPhoneEventCalling), {[FUNC(infantryPhoneRingingPFH), 1, _this] call CBA_fnc_addPerFrameHandler}] call CBA_fnc_addEventHandler;
+[QGVAR(infPhoneEventCalling), {[FUNC(infantryPhoneRingingPFH), 2.25, _this] call CBA_fnc_addPerFrameHandler}] call CBA_fnc_addEventHandler;
 
 if (!hasInterface) exitWith {};
 
