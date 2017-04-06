@@ -15,13 +15,11 @@ class CfgAcreComponents {
         isDeployable = 0;
 
         connectors[] = {
-            {"Antenna", ACRE_CONNECTOR_TNC},
+            {"Antenna", ACRE_CONNECTOR_3_8},
             {"Audio/Data", ACRE_CONNECTOR_U_283}
         };
         defaultComponents[] = {
-            { 0,"ACRE_120CM_VHF_TNC" }
-                                // {0, "ACRE_36INCH_AT892"}//,The new antennas need to be defined
-                                // {1, "ACRE_120INCH_AT271A"}
+            { 0,"ACRE_AT271_38" }
         };
 
         class InterfaceClasses {

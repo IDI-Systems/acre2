@@ -2,6 +2,7 @@
 
 if (!hasInterface) exitWith {};
 
+// Ensure the TeamSpeak plugin handler code is initialized first
 [] call EFUNC(sys_io,startServer);
 
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
@@ -97,7 +98,7 @@ if (GVAR(revealToAI) && hasInterface) then {
 
 //Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_VEHICLE_CREW = [];
-ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
+ACRE_PLAYER_PASSENGER_INTERCOM = [];
 
 // Disable positional audio whilst in briefing.
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)

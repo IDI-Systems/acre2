@@ -30,7 +30,7 @@ GVAR(NumpadMap_frequency) = [
 ];
 
 DFUNC(doFrequencyButton) = {
-    
+
     params ["_menu", "_event"];
 
     private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);

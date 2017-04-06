@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.4.0.942/acre2_2.4.0.942.zip">
-        <img src="https://img.shields.io/badge/Version-2.4.0-blue.svg?style=flat-square" alt="ACRE2 Version">
+    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.4.1.948/acre2_2.4.1.948.zip">
+        <img src="https://img.shields.io/badge/Version-2.4.1-blue.svg?style=flat-square" alt="ACRE2 Version">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/issues">
         <img src="https://img.shields.io/github/issues-raw/IDI-Systems/acre2.svg?style=flat-square&label=Issues" alt="ACRE2 Issues">
@@ -34,7 +34,7 @@
 
 ### A short list of some ACRE2 features
 
-- Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152, SEM 52 SL.
+- Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152, SEM 52 SL, SEM 70.
 - Real time voice occlusion for world objects, including buildings.
 - Babel language system that allows you to implement virtual languages on other players.
 - Multi-channel audio, allowing people on the radio to be heard locally as well.

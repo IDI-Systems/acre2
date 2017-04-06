@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="ace_interact">
         <Key ID="STR_ACRE_ace_interact_radios">
@@ -10,6 +10,8 @@
             <Italian>Radio</Italian>
             <French>Radios</French>
             <Korean>무전기</Korean>
+            <Polish>Radia</Polish>
+            <Russian>Рации</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelShort">
             <English>%1 Chn: %2</English>
@@ -20,6 +22,8 @@
             <Italian>%1 Chn: %2</Italian>
             <French>%1 Canal: %2</French>
             <Korean>%1 채널: %2</Korean>
+            <Polish>%1 Kanał: %2</Polish>
+            <Russian>%1 Канал: %2</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_lowerHeadset">
             <English>Lower Headset</English>
@@ -30,6 +34,8 @@
             <Italian>Togli Cuffia</Italian>
             <French>Baisser casque</French>
             <Korean>헤드셋 벗기</Korean>
+            <Polish>Zdejmij słuchawki</Polish>
+            <Russian>Опустить наушники</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_raiseHeadset">
             <English>Raise Headset</English>
@@ -40,6 +46,8 @@
             <Italian>Indossa Cuffia</Italian>
             <French>Mettre casque</French>
             <Korean>헤드셋 착용</Korean>
+            <Polish>Załóż słuchawki</Polish>
+            <Russian>Поднять наушники</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bothEars">
             <English>Both Ears</English>
@@ -50,6 +58,8 @@
             <Italian>Entrambe le orecchie</Italian>
             <French>Deux Oreilles</French>
             <Korean>양쪽 귀</Korean>
+            <Polish>Stereo</Polish>
+            <Russian>Оба уха</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_leftEar">
             <English>Left Ear</English>
@@ -60,6 +70,8 @@
             <Italian>Orecchio Sinistro</Italian>
             <French>Oreille gauche</French>
             <Korean>왼쪽 귀</Korean>
+            <Polish>Lewe ucho</Polish>
+            <Russian>Левое ухо</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_rightEar">
             <English>Right Ear</English>
@@ -70,6 +82,8 @@
             <Italian>Orecchio Destro</Italian>
             <French>Oreille droite</French>
             <Korean>오른쪽 귀</Korean>
+            <Polish>Prawe ucho</Polish>
+            <Russian>Правое ухо</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsActive">
             <English>Set as Active</English>
@@ -80,6 +94,8 @@
             <Italian>Imposta come Attivo</Italian>
             <French>Définir comme active</French>
             <Korean>주 무전기로 설정</Korean>
+            <Polish>Ustaw jako aktywne</Polish>
+            <Russian>Сделать активным</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bindMultiPushToTalk">
             <English>Bind Multi Push To Talk</English>
@@ -90,6 +106,8 @@
             <Italian>Imposta Multi-PTT</Italian>
             <French>Définir Multi Push To Talk</French>
             <Korean>멀티 PTT 설정</Korean>
+            <Polish>Ustaw klawisz PTT</Polish>
+            <Russian>Назначить общую ПТТ</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_multiPushToTalk">
             <English>Multi Push To Talk-%1</English>
@@ -100,6 +118,8 @@
             <Italian>Multi Push To Talk-%1</Italian>
             <French>Multi Push To Talk-%1</French>
             <Korean>멀티 PTT-%1</Korean>
+            <Polish>Klawisz PTT: %1</Polish>
+            <Russian>Общая ПТТ-%1</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsMultiPTT">
             <English>Set as Multi PTT %1</English>
@@ -110,6 +130,8 @@
             <Italian>Imposta Multi PTT %1</Italian>
             <French>Définir comme Multi PTT</French>
             <Korean>%1번 PTT로 설정</Korean>
+            <Polish>Ustaw Multi PTT %1</Polish>
+            <Russian>Назначить как общую ПТТ %1</Russian>
         </Key>
     </Package>
 </Project>

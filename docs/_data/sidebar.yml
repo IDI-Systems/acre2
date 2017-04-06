@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: ACRE2
-  version: v2.4.0
+  version: v2.4.1
   folders:
 
   - title:
@@ -57,8 +57,20 @@ entries:
       url: /wiki/user/direct-speech
       output: web, pdf
 
+    - title: External Radios
+      url: /wiki/user/external-radios
+      output: web, pdf
+
+    - title: Vehicle Intercom
+      url: /wiki/user/vehicle-intercom
+      output: web, pdf
+
     - title: Radio Signal Loss
       url: /wiki/user/radio-signal-loss
+      output: web, pdf
+
+    - title: TeamSpeak Channel Switching
+      url: /wiki/user/ts-channel-switching
       output: web, pdf
 
     - title: Class Names
@@ -121,12 +133,20 @@ entries:
       url: /wiki/frameworks/vehicle-attenuation
       output: web, pdf
 
+    - title: Vehicle Intercom
+      url: /wiki/frameworks/vehicle-intercom
+      output: web, pdf
+
     - title: Component System
       url: /wiki/frameworks/component-system
       output: web, pdf
 
     - title: Creating New Radio
       url: /wiki/frameworks/creating-new-radio
+      output: web, pdf
+
+    - title: Adding New Antenna
+      url: /wiki/frameworks/adding-new-antenna
       output: web, pdf
 
     - title: Radio Signal Debugging
