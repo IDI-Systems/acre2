@@ -1,16 +1,35 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles multiple transmissions in the "singleChannel" mode. In this mode, the following parameters
+ * are used:
+ *
+ *  - frequencyTX
+ *  - frequencyRX
+ *  - power
+ *  - mode
+ *  - CTCSSTx
+ *  - CTCSSRx
+ *  - modulation
+ *  - encryption
+ *  - TEK
+ *  - trafficRate
+ *  - syncLength
+ *
+ * Depending on this parameters, the function determines if a transmission is usable by the radio or if it
+ * is ignored.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Event: "handleMultipleTransmission" <STRING> (Unused)
+ * 2: Event data: transmitting radio IDs <ARRAY>
+ * 3: Radio data <HASH> (Unused)
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * List of usable transmissions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc77_fnc_handleMultipleTransmissions
+ * ["ACRE_PRC77_ID_1", "handleMultipleTransmissions", ["ACRE_PRC77_ID_2", "ACRE_PRC77_ID_3"], [], false] call acre_sys_prc77_fnc_handleMultipleTransmissions
  *
  * Public: No
  */

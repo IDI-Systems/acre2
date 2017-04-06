@@ -19,7 +19,7 @@
  */
 #include "script_component.hpp"
 
-TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!GET CURRENT CHANNEL", _this);
+TRACE_1("GET CURRENT CHANNEL", _this);
 
 params ["", "", "", "_radioData", ""];
 

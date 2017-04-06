@@ -16,7 +16,7 @@
  * List of usable transmissions <ARRAY>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "handleMultipleTransmissions", ["ACRE_PRC343_ID_2", "ACRE_PRC_343_ID_3"], [], false] call acre_sys_prc343_fnc_handleMultipleTransmissions
+ * ["ACRE_PRC343_ID_1", "handleMultipleTransmissions", ["ACRE_PRC343_ID_2", "ACRE_PRC343_ID_3"], [], false] call acre_sys_prc343_fnc_handleMultipleTransmissions
  *
  * Public: No
  */
