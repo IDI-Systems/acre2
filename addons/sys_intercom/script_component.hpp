@@ -19,7 +19,7 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 
 #define PHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
-#define PHONE_MAXDISTANCE_HULL 2
+#define PHONE_MAXDISTANCE_HULL 3
 
 #define NO_INTERCOM 0
 #define CREW_INTERCOM 1
