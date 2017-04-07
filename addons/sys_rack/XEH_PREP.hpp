@@ -8,6 +8,7 @@ PREP(onReturnRadioId);
 PREP(addRack);
 PREP(addRackOnReturn);
 PREP(initVehicle);
+PREP(configWiredIntercoms);
 PREP(getVehicleRacks);
 PREP(getVehicleFromRack);
 
@@ -20,6 +21,7 @@ PREP(initializeRack);
 PREP(getRackFromRadio);
 PREP(getMountableRadios);
 PREP(getMountedRadio);
+PREP(getWiredIntercoms);
 PREP(mountRadio);
 PREP(unmountRadio);
 PREP(stopUsingMountedRadio);

@@ -37,7 +37,7 @@ private _idx = -1;
         _x pushBack _vehicle;
         [_rackId, "initializeComponent", _x] call EFUNC(sys_data,dataEvent);
 
-        private _mountedRadio = _x select 4;
+        private _mountedRadio = _x select 5;
         if (_mountedRadio != "") then {
             if (getNumber(configFile >> "CfgWeapons" >> _mountedRadio >> "acre_hasUnique") == 1) then {
                 //Init the radio

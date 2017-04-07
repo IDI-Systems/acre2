@@ -40,8 +40,13 @@ private _processedArray = [];
                 _processedArray pushBackUnique ["turret", _x];
             } forEach allTurrets [_vehicle, false];
         } else {
-            // Position is of type commander, driver or gunners
-            _processedArray pushBackUnique [_x];
+            if (_x == "copilot") then {
+                private _copilot = (allTurrets [_vehicle, false]) select {getNumber ([_vehicle, _x] call CBA_fnc_getTurret >> "isCopilot") == 1};
+                _processedArray pushBackUnique ["turret", _copilot];
+            } else {
+                // Position is of type commander, driver or gunners
+                _processedArray pushBackUnique [_x];
+            };
         };
     } else {
         // Position is of type cargo, turret or ffv.
@@ -62,10 +67,12 @@ private _processedArray = [];
                 };
                 case "ffv": {
                     private _turretPositions = allTurrets [_vehicle, true] - allTurrets [_vehicle, false];
-                    _positionType = "turret";
                     {
-                        _processedArray pushBackUnique [_positionType, _x];
+                        _processedArray pushBackUnique ["turret", _x];
                     } forEach _turretPositions;
+                };
+                case "turnedOut": {
+                    _processedArray pushBackUnique ["turnedout", "all"];
                 };
             };
         } else {
