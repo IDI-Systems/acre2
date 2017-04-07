@@ -30,11 +30,11 @@ if (count _crew == 0) then {
 };
 
 if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && {!_noCrew}) then {
-    private _position = AGLToASL (_vehicle modelToWorld _infantryPhonePosition); // ACRE_LISTENER_POS is in ASL coordinates.
+    private _position = AGLToASL (_vehicle modelToWorld _infantryPhonePosition); // ACRE_LISTENER_POS is in ASL coordinates
     TRACE_4("Infantry Phone Calling PFH Check",_vehicle,acre_player,_position,_volume);
-    playSound3D ["idi\acre\addons\sys_intercom\sounds\Cellphone_Ring.wss", objNull, false, _position, 3.16, 1, 75];
+    playSound3D [QPATHTO_R(sounds\Cellphone_Ring.wss), objNull, false, _position, 3.16, 1, 75];
 } else {
-    // A unit picked up the phone. Reset isCalling variable.
+    // A unit picked up the phone. Reset isCalling variable
     if (_isCalling) then {
         _vehicle setVariable [QGVAR(isInfantryPhoneCalling), false, true];
     };
