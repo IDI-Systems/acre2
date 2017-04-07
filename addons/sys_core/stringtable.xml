@@ -334,10 +334,12 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetRaised">
             <English>Headset Raised</English>
+            <Japanese>ヘッドセットを上げた</Japanese>
             <Russian>Наушники были подняты</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
+            <Japanese>ヘッドセットを下げた</Japanese>
             <Russian>Наушники были опущены</Russian>
         </Key>
     </Package>
