@@ -105,7 +105,7 @@ namespace acre {
                 }
                 
                 int logging = args_.as_int(19);
-                bool omnidirectional = args_.as_int(20) == 1;
+                bool omnidirectional = args_.as_int(20);
 
                 std::string id = args_.as_string(0);
                 glm::vec3 tx_pos = glm::vec3(args_.as_float(1), args_.as_float(2), args_.as_float(3));
@@ -239,7 +239,7 @@ namespace acre {
 
                 float lower_sensitivity = args_.as_float();
                 float upper_sensitivity = args_.as_float();
-                bool omnidirectional = args_.as_int() == 1;
+                bool omnidirectional = args_.as_int();
 
                 float start_x = start_pos.x;
                 float start_y = start_pos.y;
@@ -371,7 +371,7 @@ namespace acre {
                         signal_map_result result;
                         result.rx_pos = glm::vec3(rx_x_pos, rx_y_pos, z);
                         result.tx_pos = glm::vec3(tx_pos_);
-                        _signal_processor.process(&result.result, tx_pos_, tx_dir_, result.rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 1.0f, false);
+                        _signal_processor.process(&result.result, tx_pos_, tx_dir_, result.rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 1.0f, omnidirectional_);
                         results->at(y_val * x_size + x) = result;
                     }
                     y_val++;
