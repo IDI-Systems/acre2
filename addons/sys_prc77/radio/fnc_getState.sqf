@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Function to obtain the content of the radio data hash for the event data key
+ * Function to obtain the content of the radio data hash for the event data key.
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
