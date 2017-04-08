@@ -103,7 +103,7 @@ namespace acre {
                     result = "[]";
                     return true;
                 }
-                
+
                 int logging = args_.as_int(19);
                 bool omnidirectional = args_.as_int(20);
 
@@ -133,7 +133,7 @@ namespace acre {
                 float f = args_.as_float(15);
                 float power = args_.as_float(16);
                 float scale = args_.as_float(17);
-                
+
                 acre::signal::result signal_result;
 
                 _signal_processor.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
@@ -146,7 +146,7 @@ namespace acre {
                 ss.precision(16);
                 ss << "[\"" << id << "\"," << std::fixed << signal_result.result_dbm << "," << std::fixed << signal_result.result_v << ",\"" << filename.str() << "\"]";
                 result = ss.str();
-#else    
+#else
                 std::stringstream ss;
                 ss.precision(16);
                 ss << "[\"" << id << "\"," << std::fixed << signal_result.result_dbm << "," << std::fixed << signal_result.result_v << "]";
@@ -157,7 +157,7 @@ namespace acre {
                 }
 
 #endif
-#ifdef DEBUG_OUTPUT            
+#ifdef DEBUG_OUTPUT
                 ss << ",[" << tx_pos.x << "," << tx_pos.y << "," << tx_pos.z << "],[" << rx_pos.x << "," << rx_pos.y << "," << rx_pos.z << "],[";
                 for (acre::signal::reflection reflection : signal_result.reflect_points) {
                     ss << "[" << "[" << reflection.point.x << "," << reflection.point.y << "," << reflection.point.z << "],"
@@ -168,7 +168,7 @@ namespace acre {
                 ss << "[]]";
                 demo_file << "[" << ss.str() << "]";
                 demo_file.close();
-#endif        
+#endif
                 return true;
             }
 
@@ -233,7 +233,7 @@ namespace acre {
                 std::string tx_antenna_name = args_.as_string();
                 std::string rx_antenna_name = args_.as_string();
 
-                
+
                 float f = args_.as_float();
                 float power = args_.as_float();
 
@@ -261,7 +261,7 @@ namespace acre {
 
                 _total_signal_map_steps = count_x * count_y;
 
-                
+
 
                 acre::signal::antenna_p tx_antenna;
                 acre::signal::antenna_p rx_antenna;
@@ -330,7 +330,7 @@ namespace acre {
                 state.encoder.auto_convert = false;
                 std::vector<unsigned char> png;
                 unsigned error = lodepng::encode(png, png_data, 4096, 4096, state);
-                
+
                 char path[FILENAME_MAX];
                 _getcwd(path, sizeof(path));
                 std::string output_path = std::string(path);
