@@ -1,24 +1,23 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the unique identity of the current channel.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Identity of the current channel <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC77_ID_1"] call acre_sys_prc77_fnc_getCurrentChannelInternal
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!GET CURRENT CHANNEL", _this);
+TRACE_1("GET CURRENT CHANNEL", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "", "", ""];
 
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
 if (isNil "_currentChannelId") then {
