@@ -117,7 +117,8 @@ with uiNamespace do {
             _frequency,
             _power,
             _lowerSensitivity,
-            _upperSensitivity
+            _upperSensitivity,
+            EGVAR(sys_signal,omnidirectionalRadios)
         ];
         GVAR(currentArgs) pushBack +_args;
         with missionNamespace do {

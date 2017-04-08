@@ -8,17 +8,25 @@
 #include "Shlwapi.h"
 #include "Log.h"
 #include <thread>
+#include <exception>
+#include <sstream>
+#include <string>
+#include <vector>
+
+#include "AcreSettings.h"
 
 #pragma comment(lib, "Shlwapi.lib")
 
-
+#define INVALID_TS3_CHANNEL -1
+#define DEFAULT_TS3_CHANNEL "ACRE"
 
 extern TS3Functions ts3Functions;
+typedef std::vector<std::string> Sentence;
 
 //TS3Functions CTS3Client::ts3Functions;
 
-ACRE_RESULT CTS3Client::initialize( void ) {
-    
+ACRE_RESULT CTS3Client::initialize(void) {
+    setPreviousTSChannel(INVALID_TS3_CHANNEL);
     return ACRE_OK;
 }
 
@@ -307,6 +315,22 @@ std::string CTS3Client::getUniqueId( ) {
     return serverUniqueId;
 }
 
+std::string CTS3Client::getConfigFilePath(void) {
+    char tempPath[MAX_PATH-14];
+    
+    ts3Functions.getConfigPath(tempPath, MAX_PATH-14);
+
+    std::string tempFolder = std::string(tempPath);
+    tempFolder += "\\acre";
+    if (!PathFileExistsA(tempFolder.c_str())) {
+        if (!CreateDirectoryA(tempFolder.c_str(), NULL)) {
+            LOG("ERROR: UNABLE TO CREATE TEMP DIR");
+        }
+    }
+
+    return tempFolder;
+}
+
 std::string CTS3Client::getTempFilePath( void ) {
     char tempPath[MAX_PATH-14];
     GetTempPathA(sizeof(tempPath), tempPath);
@@ -356,13 +380,11 @@ ACRE_RESULT CTS3Client::microphoneOpen(BOOL status) {
 ACRE_RESULT CTS3Client::unMuteAll( void ) {
     anyID clientId;
     anyID *clientList;
-    unsigned __int64 currentChannel;
     unsigned int res;
-    unsigned int x;
     uint32_t total_retries = 0;
     uint32_t total_intentional_runs = 0;
 
-    for (total_intentional_runs = 0; total_intentional_runs < 3; total_intentional_runs++) {
+    //for (total_intentional_runs = 0; total_intentional_runs < 3; total_intentional_runs++) {
         res = ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId);
         if (res == ERROR_ok) {
 
@@ -371,16 +393,16 @@ ACRE_RESULT CTS3Client::unMuteAll( void ) {
                 res = ts3Functions.getClientList(ts3Functions.getCurrentServerConnectionHandlerID(), &clientList);
                 if (res == ERROR_ok) {
                     res = ts3Functions.requestUnmuteClients(ts3Functions.getCurrentServerConnectionHandlerID(), clientList, NULL);
-                    if (res != ERROR_ok) {
-                        Sleep(500 * total_retries);
-                    }
+                    //if (res != ERROR_ok) {
+                    //    Sleep(500 * total_retries);
+                    //}
                     ts3Functions.freeMemory(clientList);
                 }
             }
-
+            
             /*
             /*    - This was the alternative method originally, but it was hitting the spam threshold */
-            
+            /* Disable this method
             res = ts3Functions.getClientList(ts3Functions.getCurrentServerConnectionHandlerID(), &clientList);
             if (res == ERROR_ok) {
                 for (x=0;clientList[x]!=0 && total_retries < 20;x++) {
@@ -400,8 +422,158 @@ ACRE_RESULT CTS3Client::unMuteAll( void ) {
                 }
                 ts3Functions.freeMemory(clientList);
             }
+            */
         }
-        Sleep(500);
+    //    Sleep(500);
+    //}
+    return ACRE_OK;
+}
+
+ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
+    //Only switch channel if enabled in settings
+    if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
+        anyID clientId;
+        std::string serverName = getServerName();
+
+        if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+            uint64 channelId = INVALID_TS3_CHANNEL;
+            uint64 currentChannelId = INVALID_TS3_CHANNEL;
+            //Get current channel and store
+            if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok && getPreviousTSChannel() == INVALID_TS3_CHANNEL) {
+                //LOG("Storing current channel: %d", currentChannelId);
+                setPreviousTSChannel(currentChannelId);
+            } else {
+                //LOG("Can't get current channel or is the same channel");
+            }
+
+            channelId = findChannelByName(serverName);
+            if (channelId != INVALID_TS3_CHANNEL) {
+                //LOG("Trying to move to channel: %d", channelId);
+                if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
+                    if (ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
+                        //LOG("Moved to channel: %d", channelId);
+                    } else {
+                        //LOG("Couldn't move to channel: %d", channelId);
+                    }
+                }
+            } else {
+                //LOG("Couldn't find channel contianing %s or a default channel", serverName);
+            }
+        }
+    }
+    setShouldSwitchTS3Channel(false);
+    return ACRE_OK;
+}
+
+ACRE_RESULT CTS3Client::moveToPreviousTS3Channel() {
+    if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
+        anyID clientId;
+        if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+            uint64 channelId = INVALID_TS3_CHANNEL;
+            uint64 currentChannelId = INVALID_TS3_CHANNEL;
+            if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok) {
+                channelId = getPreviousTSChannel();
+                if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
+                    //LOG("Trying to move to original channel: %d", channelId);
+                    if (ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
+                        //LOG("Moved to channel: %d", channelId);
+                    } else {
+                        //LOG("Couldn't move to channel: %d", channelId);
+                    }
+                } else {
+                    //LOG("Same channel or no original channel to switch to");
+                }
+            } else {
+                //LOG("Can't get current channel");
+            }
+        }
+        setPreviousTSChannel(INVALID_TS3_CHANNEL);
     }
     return ACRE_OK;
+}
+
+uint64 CTS3Client::findChannelByName(std::string name) {
+    uint64 *channelList;
+    uint64 channelId = INVALID_TS3_CHANNEL;
+    char* channelName;
+    std::map<uint64, std::string> channelMap;
+    int bestDistance = 40;
+    uint64 bestChannelId = INVALID_TS3_CHANNEL;
+
+    if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
+        while (*channelList) {
+            channelId = *channelList;
+            channelList++;
+            //LOG("Found channel: %d", channelId);
+            if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
+                std::string channelNameString = std::string(channelName);
+                if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1) {
+                    channelMap.emplace(channelId, channelNameString);
+                }
+            } else {
+                //LOG("Can't get channel name");
+            }
+        }
+
+        for (auto& element : channelMap) {
+            int distance = levenshteinDistance(split(element.second, ' '), split(name, ' ')) + levenshteinDistance(split(name, ' '), split(element.second, ' '));
+            //LOG("Combined istance between '%s' and '%s' is %d", element.second.c_str(), name.c_str(), distance);
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                bestChannelId = element.first;
+                //LOG("New best channel is '%s'", element.second.c_str());
+            }
+        }
+        return bestChannelId;
+    } else {
+        //LOG("Can't get channel list");
+    }
+    return INVALID_TS3_CHANNEL;
+}
+
+unsigned int CTS3Client::levenshteinDistance(const Sentence& string1, const Sentence& string2) {
+    const std::size_t len1 = string1.size(), len2 = string2.size();
+    std::vector<unsigned int> col(len2 + 1), prevCol(len2 + 1);
+
+    for (unsigned int i = 0; i < prevCol.size(); i++)
+        prevCol[i] = i;
+    for (unsigned int i = 0; i < len1; i++) {
+        col[0] = i + 1;
+        for (unsigned int j = 0; j < len2; j++)
+            col[j + 1] = std::min({prevCol[1 + j] + 1, col[j] + 1, prevCol[j] + (string1[i] == string2[j] ? 0 : 1)});
+        col.swap(prevCol);
+    }
+    return prevCol[len2];
+}
+
+Sentence CTS3Client::split(const std::string &s, char delim, Sentence &elems) {
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, delim)) {
+        elems.push_back(item);
+    }
+    return elems;
+}
+
+Sentence CTS3Client::split(const std::string &s, char delim) {
+    Sentence elems;
+    split(s, delim, elems);
+    return elems;
+}
+
+ACRE_RESULT CTS3Client::updateServerName(std::string name) {
+    setServerName(name);
+    if (name != "") {
+        updateShouldSwitchTS3Channel(true);
+    }
+    return ACRE_OK;
+}
+
+ACRE_RESULT CTS3Client::updateShouldSwitchTS3Channel(BOOL state) {
+    setShouldSwitchTS3Channel(state);
+    return ACRE_OK;
+}
+
+BOOL CTS3Client::shouldSwitchTS3Channel() {
+    return getShouldSwitchTS3Channel();
 }
