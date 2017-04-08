@@ -1,7 +1,7 @@
 /*
  * Author: ACRE2Team
- * For a AN/PRC 77 this function is the same as acre_sys_prc77_getChannelDescription,
- * and therefore it is called here. Used in the transmission hint on the lower right corner.
+ * For a AN/PRC 77 this function is the same fnc_getChannelDescription, and therefore it is called here.
+ * Used in the transmission hint on the lower right corner.
  *
  * Arguments:
  * 0: Radio ID <STRING>

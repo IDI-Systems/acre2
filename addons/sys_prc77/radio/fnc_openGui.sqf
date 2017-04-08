@@ -3,7 +3,6 @@
  * Opens the GUI of the radio. This is trigered by either double-click in the inventory,
  * through the ACE interact menu (if available) or through the keybinding "open radio".
  *
- *
  * Arguments:
  * 0: Radio ID <STRING>
  * 1: Event: "openGui" <STRING> (Unused)

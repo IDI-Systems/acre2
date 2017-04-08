@@ -32,27 +32,27 @@ private _currentPresets = GET_STATE("currentPreset");
 
 
 if (_fnc == 0) then {
-    //Select array according to preset handler (left,right) [x,y]
+    // Select array according to preset handler (left,right) [x,y]
     private _currentPreset = _currentPresets select _preset;
-    //Copy the new presetarray to the knobs position [x,y]
+    // Copy the new presetarray to the knobs position [x,y]
     private _newTuneKnobsPosition = + _currentPreset;
-    //Set the tuneknobsposition
+    // Set the tuneknobsposition
     ["setCurrentChannel", _newTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);
 
-    //Change the image and play click sound
+    // Change the image and play click sound
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
     [MAIN_DISPLAY] call CALLSTACK(FUNC(render));
 } else {
-    //Read out current TuneKnobsPosition
+    // Read out current TuneKnobsPosition
     private _currentTuneKnobsPosition = GET_STATE("currentChannel");
-    //Define new preset
+    // Define new preset
     private _newPreset = + _currentTuneKnobsPosition;
-    //Write in the presets array
+    // Write in the presets array
     private _newPresets = + _currentPresets;
     (_newPresets select _preset) set [0, _newPreset select 0];
     (_newPresets select _preset) set [1, _newPreset select 1];
     SET_STATE("currentPreset", _newPresets);
 
-    //Change the image and play click sound
+    // Change the image and play click sound
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
 };

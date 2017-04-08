@@ -1,7 +1,7 @@
 /*
  * Author: ACRE2Team
- * Handles the event of turning the function radio knob and selects the radio mode: off (0), on (1),
- * squelch (2), retrans (3) and lite (4).
+ * Handles the event of turning the function radio knob and selects the radio mode:
+ * off (0), on (1), squelch (2), retrans (3) and lite (4).
  *
  * Arguments:
  * 0: Control UI object <CONTROL>
