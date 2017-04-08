@@ -1,29 +1,28 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of turning the band selector radio knob: 32 to 50 MHz or 53-75 MHz.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unused <ANY>
+ * 1: Left or right click identifier <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["", 1] call acre_sys_prc77_fnc_onBandSelectorKnobPress
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-private _key = _this select 1;
+params ["", "_key"];
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
 private _dir = -1;
 if (_key == 0) then {
     _dir = 1;
 };
-
 
 //Read out the current Band via DataEvent
 private _currentBand = GET_STATE("band");
@@ -35,7 +34,6 @@ SET_STATE_CRIT("band", _newBand);
 
 //The setCurrentChannel Event shall be triggered as well!
 ["setCurrentChannel", _currentTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);
-
 
 //Play sound and render dialog
 ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
