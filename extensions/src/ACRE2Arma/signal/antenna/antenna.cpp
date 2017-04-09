@@ -76,8 +76,8 @@ float acre::signal::antenna::_get_gain(float f_, float dir_, float elev_)
     uint32_t dir_index_min = (uint32_t)std::floor(dir_ / _direction_step);
     uint32_t dir_index_max = (uint32_t)std::floor((dir_ + _direction_step) / _direction_step);
 
-    uint32_t elev_index_min = (uint32_t)std::floor(elev_ / _elevation_step) - 1;
-    uint32_t elev_index_max = (uint32_t)std::floor((elev_ + _elevation_step) / _elevation_step) - 1;
+    uint32_t elev_index_min = (uint32_t)std::floor(elev_ / _elevation_step);
+    uint32_t elev_index_max = (uint32_t)std::floor((elev_ + _elevation_step) / _elevation_step);
     if (dir_index_max > _height - 1) {
         dir_index_max = 0;
     }
