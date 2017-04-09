@@ -51,4 +51,3 @@
 If you installed ACRE2 but have trouble understanding how it all works, or where to start, read this first:
 - [Installation Instructions](http://acre2.idi-systems.com/wiki/user/installation)
 - [Documentation Home](http://acre2.idi-systems.com)
-
