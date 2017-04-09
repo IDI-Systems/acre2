@@ -35,6 +35,10 @@ if (_isManpack == 0) then {
         case ("ACRE_PRC152"): {
             _channel = (_channel + _dir) min 5;
         };
+        case ("ACRE_PRC148"): {
+            private _currentGroup = floor((_channel - 1) / 16);
+            _channel = ((_channel + _dir) max (_currentGroup*16 + 1)) min ((_currentGroup + 1)*16);
+        };
         default {
             _channel = _channel + _dir;
         };
