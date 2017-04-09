@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of turning the function radio knob and selects the radio mode:
+ * off (0), on (1), squelch (2), retrans (3) and lite (4).
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Control UI object <CONTROL>
+ * 1: Left or right click identifier <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [_this, 1] call acre_sys_prc77_fnc_onFunctionKnobPress
  *
  * Public: No
  */
@@ -18,20 +19,20 @@
 
 params ["_control", "_key"];
 
-//Read out the key pressed (left/right mousebutton) and define the function increase/decrease
+// Read out the key pressed (left/right mousebutton) and define the function increase/decrease
 private _dir = -1;
 if (_key == 0) then {
     _dir = 1;
 };
 
-//Read out the currentFunction via DataEvent
+// Read out the currentFunction via DataEvent
 private _currentFunction = GET_STATE("function");
 
-//Define and set new function
+// Define and set new function
 private _newFunction = ((_currentFunction + _dir) max 0) min 4;
 SET_STATE_CRIT("function", _newFunction);
 
-//Handle new function
+// Handle new function
 if (_newFunction != _currentFunction) then {
     ["setOnOffState", 1] call GUI_DATA_EVENT;
 

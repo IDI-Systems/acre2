@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Snaps the function knob one position backwards.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Control UI object <CONTROL>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [_this] call acre_sys_prc77_snapbackFunctionKnob
  *
  * Public: No
  */
@@ -19,20 +18,20 @@
 params ["_control"];
 //_key = _this select 1;
 
-//Read out the key pressed (left/right mousebutton) and define the function increase/decrease
+// Read out the key pressed (left/right mousebutton) and define the function increase/decrease
 private _dir = -1;
 //if (_key == 0) then {
 //    _dir = 1;
 //};
 
-//Read out the currentFunction via DataEvent
+// Read out the currentFunction via DataEvent
 private _currentFunction = GET_STATE("function");
 
-//Define and set new function
+// Define and set new function
 private _newFunction = ((_currentFunction + _dir) max 0) min 4;
 SET_STATE_CRIT("function", _newFunction);
 
-//Handle new function
+// Handle new function
 if (_newFunction != _currentFunction) then {
     _control ctrlRemoveAllEventHandlers "MouseButtonUp";
     //Play sound and render dialog
