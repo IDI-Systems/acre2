@@ -1,22 +1,26 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Function called when the radio transmission is ended. It manages the radio behaviour if there
+ * are more than one transmission.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Event: "handleEndTransmission" <STRING> (Unused)
+ * 2: Event data with transmitting ID <STRING>
+ * 3: Radio data <HASH> (Unused)
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * True <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC77_ID_1", "handleEndTransmission", "ACRE_PRC77_ID_2", [], false] call acre_sys_prc77_fnc_handleEndTransmission
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId", "_eventKind", "_eventData"];
+params ["_radioId", "", "_eventData", "", ""];
 
 private _txId = _eventData select 0;
 private _currentTransmissions = SCRATCH_GET(_radioId, "currentTransmissions");

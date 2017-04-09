@@ -61,7 +61,8 @@ void draw_square(std::vector<uint8_t> &image_, uint32_t image_size_x_, uint32_t 
 }
 
 void signal_map_chunk(std::vector<signal_map_result_p> *results, float start_y, float start_x, uint32_t y_offset, uint32_t length, uint32_t x_size, float sample_size,
-    float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, acre::signal::antenna_p &tx_antenna_, acre::signal::antenna_p &rx_antenna_, float frequency_, float power_, float sinad_
+    float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, acre::signal::antenna_p &tx_antenna_, acre::signal::antenna_p &rx_antenna_, float frequency_, float power_,
+    float sinad_, bool omnidirectional_
     ) {
     for (uint32_t y = y_offset; y < y_offset + length; ++y) {
         for (uint32_t x = 0; x < x_size; ++x) {
@@ -71,7 +72,7 @@ void signal_map_chunk(std::vector<signal_map_result_p> *results, float start_y, 
             signal_map_result_p result = std::make_shared<signal_map_result>();
             result->rx_pos = glm::vec3(rx_x_pos, rx_y_pos, z);
             result->tx_pos = glm::vec3(tx_pos_);
-            signal_processor->process(&result->result, tx_pos_, tx_dir_, result->rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 12.0f);
+            signal_processor->process(&result->result, tx_pos_, tx_dir_, result->rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 12.0f, omnidirectional_);
             {
                 std::lock_guard<std::mutex> lock(signal_lock);
                 results->at(y * x_size + x) = result;
@@ -357,6 +358,8 @@ int main(int argc, char **argv) {
     float lower_sensitivity = -116.0f;
     float upper_sensitivity = -50.0f;
 
+    bool omnidirectional = stof(config["omnidirectional"]);
+
     float start_x = start_pos.x;
     float start_y = start_pos.y;
 
@@ -394,11 +397,11 @@ int main(int argc, char **argv) {
 
     for (uint32_t i = 0; i < thread_count; ++i) {
         thread_pool.push_back(std::thread(&signal_map_chunk, &results, start_y, start_x, y_chunk_size*i, y_chunk_size, count_x, sample_size,
-            rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
+            rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
     }
     if (y_chunk_remainder) {
         thread_pool.push_back(std::thread(&signal_map_chunk, &results, start_y, start_x, y_chunk_size*thread_count, y_chunk_remainder, count_x, sample_size,
-            rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
+            rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
     }
     std::thread progress_thread = std::thread(&write_progress, count_x * count_y);
     for (int c = 0; c < thread_pool.size(); ++c) {

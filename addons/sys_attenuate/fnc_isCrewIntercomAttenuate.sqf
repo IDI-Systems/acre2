@@ -30,7 +30,7 @@ if (_vehicle == _unit) then {
     };
 };
 
-if (_unit in ACRE_PLAYER_VEHICLE_CREW) then {
+if (_unit in ACRE_PLAYER_CREW_INTERCOM) then {
     private _configIntercom = configFile >> "CfgVehicles" >> typeOf _vehicle;
     private _hasIntercom = getNumber (_configIntercom >> "acre_hasCrewIntercom");
     // Backwards compatibility @todo remove in 2.7.0

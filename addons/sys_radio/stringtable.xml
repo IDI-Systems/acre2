@@ -3,6 +3,7 @@
     <Package name="sys_radio">
         <Key ID="STR_ACRE_sys_radio_radioSupplyCrate">
             <English>[ACRE] Radio Supply Crate</English>
+            <Japanese>[ACRE] 無線機物資箱</Japanese>
             <Russian>[ACRE] Ящик с рациями</Russian>
         </Key>
     </Package>
