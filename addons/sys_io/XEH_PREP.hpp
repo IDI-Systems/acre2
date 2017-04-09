@@ -3,3 +3,4 @@ PREP(startServer);
 PREP(serverReadLoop);
 PREP(server);
 PREP(ping);
+PREP(ts3ChannelMove);

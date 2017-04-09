@@ -50,4 +50,4 @@ PREP(enableRevealAI);
 PREP(onRevealUnit);
 
 PREP(coreInitPFH);
-PREP(vehicleCrewPFH);
+//PREP(vehicleCrewPFH);

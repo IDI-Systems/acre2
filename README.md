@@ -34,7 +34,7 @@
 
 ### A short list of some ACRE2 features
 
-- Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152, SEM 52 SL.
+- Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152, SEM 52 SL, SEM 70.
 - Real time voice occlusion for world objects, including buildings.
 - Babel language system that allows you to implement virtual languages on other players.
 - Multi-channel audio, allowing people on the radio to be heard locally as well.

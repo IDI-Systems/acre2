@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
@@ -48,6 +48,9 @@
             <Korean>클라이언트 음소거 해제</Korean>
             <Polish>Odmutuj klientów</Polish>
             <Russian>Размьютить клиенты</Russian>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
+            <English>TeamSpeak Channel Switch</English>
+            <Russian>Смена ТимСпик канала</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -341,6 +344,10 @@
             <English>Headset Lowered</English>
             <Japanese>ヘッドセットを下げた</Japanese>
             <Russian>Наушники были опущены</Russian>
+        <Key ID="STR_ACRE_sys_core_crewAutoJoinPassengerIntercom">
+            <English>Crew Auto-Join Passenger Intercom</English>
+            <Japanese>乗員は自動でパッセンジャー インターコムに接続</Japanese>
+            <Russian>Авто-подключение пассажиров в внутреннюю связь</Russian>
         </Key>
     </Package>
 </Project>
