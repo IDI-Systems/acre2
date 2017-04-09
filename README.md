@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.4.1.949/acre2_2.4.1.949.zip">
+    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.4.1.951/acre2_2.4.1.951.zip">
         <img src="https://img.shields.io/badge/Version-2.4.1-blue.svg?style=flat-square" alt="ACRE2 Version">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/issues">
@@ -51,3 +51,4 @@
 If you installed ACRE2 but have trouble understanding how it all works, or where to start, read this first:
 - [Installation Instructions](http://acre2.idi-systems.com/wiki/user/installation)
 - [Documentation Home](http://acre2.idi-systems.com)
+
