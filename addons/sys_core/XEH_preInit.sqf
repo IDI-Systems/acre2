@@ -79,7 +79,9 @@ DVAR(ACRE_TEST_OCCLUSION) = true;
 DVAR(ACRE_SIGNAL_DEBUGGING) = 0;
 
 DVAR(ACRE_ACTIVE_EXTERNAL_RADIOS) = [];
+DVAR(ACRE_PASSIVE_EXTERNAL_RADIOS) = [];
 DVAR(ACRE_ACTIVE_RACK_RADIOS) = []; // Extra radios that a player can use, should be used for radios that are racked.
+DVAR(ACRE_PASSIVE_RACK_RADIOS) = []; // Extra rack radios that a player can receive but not transmit.
 
 acre_player = player;
 

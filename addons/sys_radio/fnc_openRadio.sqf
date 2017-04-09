@@ -18,7 +18,7 @@
 
 params ["_radioName"];
 
-if (_radioName != "" && GVAR(currentRadioDialog) == "") then {
+if (_radioName != "" && {GVAR(currentRadioDialog) == ""} && {[_radioName] call FUNC(canOpenRadio)}) then {
     [_radioName, "openGui"] call EFUNC(sys_data,interactEvent);
 } else {
     closeDialog 0;

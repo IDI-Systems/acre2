@@ -81,7 +81,7 @@ class CfgVehicles {
             class Rack_1 {
                 name = "Dash"; // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC103";
-                allowed[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+                allowed[] = {"driver", "commander"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";

@@ -32,6 +32,10 @@ if (!ACRE_IS_SPECTATOR) then {
         _radioList pushBackUnique _x;
     } forEach ACRE_ACTIVE_RACK_RADIOS;
 
+    {
+        _radioList pushBackUnique _x;
+    } forEach ACRE_PASSIVE_RACK_RADIOS;
+
     if (ACRE_ACTIVE_RADIO != "") then {
         _radioList pushBackUnique ACRE_ACTIVE_RADIO;
     };

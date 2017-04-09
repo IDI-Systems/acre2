@@ -32,3 +32,6 @@ PREP(setState);
 PREP_FOLDER(vrc103);
 PREP_FOLDER(vrc110);
 PREP_FOLDER(vrc111);
+
+PREP(getHearableVehicleRacks);
+PREP(isRackHearable);

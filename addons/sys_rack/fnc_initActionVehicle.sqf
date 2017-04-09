@@ -34,7 +34,8 @@ private _condition = {
      //{[_player, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)}
      params ["_target","_unit"];
      private _accessibleRacks = [_target,_unit] call FUNC(getAccessibleVehicleRacks);
-     count _accessibleRacks > 0;
+     private _hearableRacks = [_target,_unit] call FUNC(getHearableVehicleRacks);
+     (count _accessibleRacks > 0 || count _hearableRacks > 0)
 };
 private _statement = {true};
 private _text = "Racks";
