@@ -18,6 +18,8 @@
 params ["_rackId"];
 
 private _return = GET_STATE_RACK(_rackId,"vehicle");
-if (isNil "_return") then { _return = objNull; };
+if (isNil "_return") then {
+    _return = objNull;
+};
 
-_return;
+_return

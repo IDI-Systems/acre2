@@ -20,11 +20,11 @@ params ["_target"];
 
 private _actions = [];
 
-private _racks = [_target,acre_player] call FUNC(getAccessibleVehicleRacks);
+private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
 
 {
     _racks pushBackUnique _x;
-} forEach ([_target,acre_player] call FUNC(getHearableVehicleRacks));
+} forEach ([_target, acre_player] call FUNC(getHearableVehicleRacks));
 
 {
     private _rackClassName = _x;

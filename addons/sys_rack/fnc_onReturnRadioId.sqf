@@ -22,14 +22,14 @@ private _dataHash = HASH_CREATE;
 
 HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
 _idRelation = [_rackObject, _rackObject];
-HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
+HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
 
 private _vehicle = _rackObject;
 if (!isNull (attachedTo _rackObject)) then { _vehicle = attachedTo _rackObject; };
  //TODO: test this works.
 private _crewPlayers = (crew _vehicle) select {isPlayer _x};
 private _condition = false;
-if ((count _crewPlayers > 0)) then {
+if (count _crewPlayers > 0) then {
     if (local (_crewPlayers select 0)) then {
         _condition = true;
     };

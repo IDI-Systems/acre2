@@ -49,34 +49,29 @@ private _vehicleCrewPFH = {
     };
 
     //Check we can still use the vehicle rack radios.
-    private _remove = [];
     {
         if (!([_x] call EFUNC(sys_radio,radioExists))) exitWith {_remove pushBack _x;};
         private _rack = [_x] call FUNC(getRackFromRadio);
         if (_rack == "") exitWith { _remove pushBack _x; }; // Radio is no longer stored in a rack.
         if (!(([_rack, acre_player] call FUNC(isRackAccessible)) || ([_rack, acre_player] call FUNC(isRackHearable)))) then {
-            _remove pushBack _x;
+            if (_x in ACRE_ACTIVE_RACK_RADIOS) then {
+                ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - [_x];
+            } else {
+                ACRE_PASSIVE_RACK_RADIOS = ACRE_PASSIVE_RACK_RADIOS - [_x];
+            };
+            if (ACRE_ACTIVE_RADIO isEqualTo _x) then { // If it is the active radio.
+                // Check if radio is now in inventory
+                private _items = [acre_player] call EFUNC(sys_core,getGear);
+                _items = _items apply {toLower _x};
+                if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // no need to remove
+                // Otherwise cleanup
+                if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
+                    // simulate a key up event to end the current transmission
+                    [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
+                };
+                [1] call EFUNC(sys_list,cycleRadios); // Change active radio
+            };
         };
     } forEach (ACRE_ACTIVE_RACK_RADIOS + ACRE_PASSIVE_RACK_RADIOS);
-    if (count _remove > 0) then {
-
-        if (_x in ACRE_ACTIVE_RACK_RADIOS) then {
-            ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - _remove;
-        } else {
-            ACRE_PASSIVE_RACK_RADIOS = ACRE_PASSIVE_RACK_RADIOS - _remove;
-        };
-        if (ACRE_ACTIVE_RADIO in _remove) then { // If it is the active radio.
-            // Check if radio is now in inventory
-            private _items = [acre_player] call EFUNC(sys_core,getGear);
-            _items = _items apply {toLower _x};
-            if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // no need to remove
-            // Otherwise cleanup
-            if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
-                // simulate a key up event to end the current transmission
-                [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
-            };
-            [1] call EFUNC(sys_list,cycleRadios); // Change active radio
-        };
-    };
 };
 ADDPFH(_vehicleCrewPFH, 0.91, []);

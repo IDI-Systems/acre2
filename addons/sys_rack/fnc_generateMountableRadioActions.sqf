@@ -22,22 +22,22 @@ _params params ["_rackClassName"];
 private _actions = [];
 
 private _radioList = [] call EFUNC(api,getCurrentRadioList);
-_radioList = [_rackClassName,_radioList] call FUNC(getMountableRadios);
+_radioList = [_rackClassName, _radioList] call FUNC(getMountableRadios);
 
 {
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
     private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
     private _displayName = getText (_item >> "displayName");
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
-    _displayName = format ["Mount %1 Chn: %2",_displayName, _currentChannel];
+    _displayName = format ["Mount %1 Chn: %2", _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
     private _isActive = _x isEqualTo _currentRadio;
 
     private _action = [_x, _displayName, _picture, {
         params ["_target","_unit","_params"];
         _params params ["_rackClassName","_radioId"];
-        [_rackClassName,_radioId,_unit] call FUNC(mountRadio);
-    }, {true}, {}, [_rackClassName,_x]] call ace_interact_menu_fnc_createAction;
+        [_rackClassName, _radioId, _unit] call FUNC(mountRadio);
+    }, {true}, {}, [_rackClassName, _x]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } forEach (_radioList);
 

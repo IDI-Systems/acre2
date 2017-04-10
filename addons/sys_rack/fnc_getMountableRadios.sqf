@@ -23,12 +23,11 @@ private _availableConnectors = [_rackId] call EFUNC(sys_components,getAllAvailab
 private _radios = [];
 
 {
-    private _connectable = [_rackId,"mountableRadio",_x] call EFUNC(sys_data,dataEvent);
+    private _connectable = [_rackId, "mountableRadio", _x] call EFUNC(sys_data,dataEvent);
 
     if (_connectable) then {
         _radios pushBack _x;
     };
 } forEach _radioList;
 
-
-_radios;
+_radios

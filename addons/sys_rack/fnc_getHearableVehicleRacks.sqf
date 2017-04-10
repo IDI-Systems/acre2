@@ -21,10 +21,10 @@ private _racks = [];
 {
     private _rackId = typeOf _x;
     if (_rackId isKindOf "ACRE_BaseRack") then {
-        if ([_rackId,_unit,_vehicle] call FUNC(isRackHearable)) then {
+        if ([_rackId, _unit, _vehicle] call FUNC(isRackHearable)) then {
             _racks pushBack _rackId;
         };
     };
 } forEach (attachedObjects _vehicle);
 
-_racks;
+_racks
