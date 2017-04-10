@@ -28,7 +28,7 @@ if (_radioId in ACRE_PASSIVE_RACK_RADIOS || _radioId in ACRE_PASSIVE_EXTERNAL_RA
     };
 };
 
-if (SCRATCH_GET(_radioId, "PTTDown")) then {
+if ((toLower _radioId) in ACRE_BLOCKED_TRANSMITTING_RADIOS) then {
     _canTransmit = false;
     ["Radio already transmitting.", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };
