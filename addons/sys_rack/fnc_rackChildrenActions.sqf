@@ -65,7 +65,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
         } else {
             // Use
             private _action = ["acre_stopMountedRadio", "Use radio", "", {
-                params ["_target","_unit","_params"];
+                params ["_target", "_unit", "_params"];
                 _params params ["_mountedRadio"];
                 ACRE_ACTIVE_RADIO = toLower _mountedRadio;
                 ACRE_ACTIVE_RACK_RADIOS pushBackUnique (toLower _mountedRadio);
@@ -75,14 +75,28 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
     };
 } else {
     if ([_rackClassName, _unit] call FUNC(isRackHearable)) then {
-        private _action = ["acre_hearMountedRadio", "Hear radio", "", {
-            params ["_target","_unit","_params"];
-            _params params ["_mountedRadio"];
-            systemChat format ["mounted radio %1", _mountedRadio];
-            ACRE_PASSIVE_RACK_RADIOS pushBackUnique (toLower _mountedRadio);
-            systemChat format ["mounted radio %1", ACRE_PASSIVE_RACK_RADIOS];
-        }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
+        // Radio type
+        private _class = configFile >> "CfgWeapons" >> _mountedRadio;
+        private _icon = getText (_class >> "picture");
+        private _text = format ["Mounted radio (%1)", getText (_class >> "displayName")];
+        private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
+
+        if ((toLower _mountedRadio) in ACRE_PASSIVE_RACK_RADIOS) then {
+            private _action = ["acre_disconnectMountedRadio", "Disconnect radio", "", {
+                params ["_target", "_unit", "_params"];
+                _params params ["_mountedRadio"];
+                ACRE_PASSIVE_RACK_RADIOS = ACRE_PASSIVE_RACK_RADIOS - [_mountedRadio];
+            }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        } else {
+            private _action = ["acre_hearMountedRadio", "Hear radio", "", {
+                params ["_target", "_unit", "_params"];
+                _params params ["_mountedRadio"];
+                ACRE_PASSIVE_RACK_RADIOS pushBackUnique (toLower _mountedRadio);
+            }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
     };
 };
 
