@@ -19,6 +19,11 @@ params ["_radioId"];
 
 private _canOpenRadio = true;
 
+if ((toLower _radioId) in ACRE_ACTIVE_RACK_RADIOS && {isTurnedOut acre_player}) then {
+    _canOpenRadio = false;
+    ["Radio rack not configurable while turned out.", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+};
+
 if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS || _radioId in ACRE_PASSIVE_RACK_RADIOS) then {
     _canOpenRadio = false;
     if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS) then {
