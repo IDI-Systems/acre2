@@ -17,6 +17,8 @@
 
 params ["_class"];
 
+_class = toLower _class;
+
 GVAR(radioIdMap) params ["_baseTypes","_radioIds"];
 
 private _mapIndex = _baseTypes find _class;
