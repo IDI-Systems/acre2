@@ -32,7 +32,7 @@ _speakingId = parseNumber _speakingId;
 
                 // Handle rack radios that are simultaneously in use.
                 if ((toLower _radioId) in ACRE_BLOCKED_TRANSMITTING_RADIOS) then {
-                    ACRE_BLOCKED_TRANSMITTING_RADIOS = ACRE_BLOCKED_TRANSMITTING_RADIOS - [(toLower _radioId)];
+                    ACRE_BLOCKED_TRANSMITTING_RADIOS deleteAt (find (toLower _radioId));
                 };
 
                 if (_unit in GVAR(keyedMicRadios)) then {
