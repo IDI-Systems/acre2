@@ -18,6 +18,8 @@
 
 params ["_radioId"];
 
+if (!([_radioId] call EFUNC(sys_radio,canUnitTransmit))) exitWith {};
+
 private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 private _channelData = [_radioId, _channelNumber] call FUNC(getChannelDataInternal);
 

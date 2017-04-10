@@ -42,6 +42,8 @@
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
+if (!([_radioId] call EFUNC(sys_radio,canUnitTransmit))) exitWith {};
+
 /*
  *  Insert code here if a radio can be only in receive
  *  mode or similar things. Return value shall
