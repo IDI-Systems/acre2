@@ -11,10 +11,13 @@ PREP(initVehicle);
 PREP(configWiredIntercoms);
 PREP(getVehicleRacks);
 PREP(getVehicleFromRack);
+PREP(vehicleCrewPFH);
 
 PREP(isRadioRemovable);
 PREP(isRackAccessible);
+PREP(isRackHearable);
 PREP(getAccessibleVehicleRacks);
+PREP(getHearableVehicleRacks);
 
 PREP(initializeRack);
 
@@ -32,6 +35,3 @@ PREP(setState);
 PREP_FOLDER(vrc103);
 PREP_FOLDER(vrc110);
 PREP_FOLDER(vrc111);
-
-PREP(getHearableVehicleRacks);
-PREP(isRackHearable);
