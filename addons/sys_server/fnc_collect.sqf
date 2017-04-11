@@ -19,10 +19,10 @@ params ["_radioId"];
 _radioId = toLower _radioId;
 private _baseRadio = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 private _idNumber = getNumber (configFile >> "CfgWeapons" >> _radioId >> "acre_uniqueId");
-private _keyIndex = (GVAR(radioIdMap) select 0) find _baseRadio;
+private _keyIndex = (GVAR(radioIdMap) select 0) find (toLower _baseRadio);
 if (_keyIndex != -1) then {
     private _newIds = ((GVAR(radioIdMap) select 1) select _keyIndex) - [_idNumber];
-    (GVAR(radioIdMap) select 1) set[_keyIndex, _newIds];
+    (GVAR(radioIdMap) select 1) set [_keyIndex, _newIds];
     GVAR(masterIdList) = GVAR(masterIdList) - [_radioId];
     HASH_REM(GVAR(markedForGC),_radio);
     [QGVAR(clientGCRadio), [_radioId]] call CALLSTACK(CBA_fnc_globalEvent);
