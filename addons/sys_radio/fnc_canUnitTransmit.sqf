@@ -22,15 +22,15 @@ private _canTransmit = true;
 if (_radioId in ACRE_PASSIVE_RACK_RADIOS || _radioId in ACRE_PASSIVE_EXTERNAL_RADIOS) then {
     _canTransmit = false;
     if (_radioId in ACRE_PASSIVE_EXTERNAL_RADIOS) then {
-        [LSTRING(noTransmitExternal), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [localize LSTRING(noTransmitExternal), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     } else {
-        [LSTRING(noTransmitSeat), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [localize LSTRING(noTransmitSeat), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
 };
 
 if (_canTransmit && {(toLower _radioId) in ACRE_BLOCKED_TRANSMITTING_RADIOS}) then {
     _canTransmit = false;
-    [LSTRING(alreadyTransmitting), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    [localize LSTRING(alreadyTransmitting), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };
 
 _canTransmit
