@@ -82,7 +82,7 @@ if (_target isKindOf "CAManBase") then {
                         format [localize LSTRING(switchInfantryPhone), "(" + localize LSTRING(passenger) + ")"],
                         "",
                         {[_target, _player, 3, PASSENGER_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
-                        {true},
+                        {!((_target getVariable [QGVAR(passengerIntercomPositions), []]) isEqualTo [])},  // This should only be available if the vehicle has passenger intercom
                         {},
                         {}
                     ] call ace_interact_menu_fnc_createAction;

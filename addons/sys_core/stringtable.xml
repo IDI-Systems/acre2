@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
@@ -338,14 +338,17 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetRaised">
             <English>Headset Raised</English>
+            <Japanese>ヘッドセットを上げた</Japanese>
             <Russian>Наушники были подняты</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
+            <Japanese>ヘッドセットを下げた</Japanese>
             <Russian>Наушники были опущены</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_crewAutoJoinPassengerIntercom">
             <English>Crew Auto-Join Passenger Intercom</English>
+            <Japanese>乗員は自動でパッセンジャー インターコムに接続</Japanese>
             <Russian>Авто-подключение пассажиров в внутреннюю связь</Russian>
         </Key>
     </Package>
