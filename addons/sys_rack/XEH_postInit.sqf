@@ -1,6 +1,12 @@
 #include "script_component.hpp"
 
 if (!hasInterface) exitWith {};
+if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
+
+["LandVehicle", "init", FUNC(initActionVehicle), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Air", "init", FUNC(initActionVehicle), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Ship_F", "init", FUNC(initActionVehicle), nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 
 // EH for vehicle racks
 
