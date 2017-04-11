@@ -53,5 +53,8 @@
             <Japanese>%1 を %2 から使用停止する</Japanese>
             <Russian>Перестать использовать %1 из %2</Russian>
         </Key>
+        <Key ID="STR_ACRE_sys_external_noOpenGUI">
+            <English>Radio used externally. Only owner may configure.</English>
+        </Key>
     </Package>
 </Project>

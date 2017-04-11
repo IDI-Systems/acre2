@@ -37,10 +37,16 @@
  *    Returned parameters:
  *        true
 */
+params ["_radioId", "", "", "", ""];
+
+// Prevent radio from being opened if it is externally used
+if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS) exitWith {
+    [ELSTRING(sys_external,noOpenGUI), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+};
 
 disableSerialization;
 //PARAMS_1(GVAR(currentRadioId))
-GVAR(currentRadioId) = _this select 0;
+GVAR(currentRadioId) = _radioId;
 GVAR(depressedPTT) = false;
 if (([GVAR(currentRadioId), "getState", "channelKnobPosition"] call EFUNC(sys_data,dataEvent)) == 15) then { // is programming
     GVAR(backlightOn) = true;
