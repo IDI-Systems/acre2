@@ -26,7 +26,7 @@ class CfgVehicles {
             class Rack_1 {
                 name = "Dashboard Upper"; // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC110";
-                allowed[] = {"inside"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+                allowed[] = {"driver", {"cargo", 0}}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};
                 defaultComponents[] = {}; // Use this to attach simple components like Antennas, they will first attempt to fill empty connectors but will overide existing connectors - ACRE_13IN_UHF_BNC
                 mountedRadio = "";
@@ -36,7 +36,7 @@ class CfgVehicles {
             class Rack_2 {
                 name = "Dashboard Lower"; // If you have multiple racks a text label helps identify the particular rack..
                 componentname = "ACRE_VRC103";
-                allowed[] = {"driver"};
+                allowed[] = {"driver", {"cargo", 0}};
                 disabled[] = {};
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
@@ -81,7 +81,7 @@ class CfgVehicles {
             class Rack_1 {
                 name = "Dash"; // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC103";
-                allowed[] = {"driver", "commander"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+                allowed[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";

@@ -71,7 +71,7 @@ private _processedArray = [];
                         _processedArray pushBackUnique ["turret", _x];
                     } forEach _turretPositions;
                 };
-                case "turnedOut": {
+                case "turnedout": {
                     _processedArray pushBackUnique ["turnedout", "all"];
                 };
             };
