@@ -33,4 +33,8 @@ if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS || _radioId in ACRE_PASSIVE_RACK_RAD
     };
 };
 
+if (!_canOpenRadio) then {
+    GVAR(currentRadioDialog) = "";  // Reset current radio gui that was initialised during the EFUNC(sys_data,interactEvent) call
+};
+
 _canOpenRadio

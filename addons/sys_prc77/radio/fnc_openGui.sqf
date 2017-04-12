@@ -19,6 +19,9 @@
 TRACE_1("OPENING GUI", _this);
 params ["_radioId", "", "", "", ""];
 
+// Prevent radio from being opened if it is externally used or it is not accessible
+if (!([_radioId] call EFUNC(sys_radio,canOpenRadio))) exitWith { false };
+
 disableSerialization;
 GVAR(currentRadioId) = _radioId;
 createDialog "PRC77_RadioDialog";
