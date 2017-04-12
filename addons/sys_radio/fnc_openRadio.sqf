@@ -18,8 +18,9 @@
 
 params ["_radioName"];
 
-if (_radioName != "" && {GVAR(currentRadioDialog) == ""}) then {
-    [_radioName, "openGui"] call EFUNC(sys_data,interactEvent);
+if (_radioName != "" && {GVAR(currentRadioDialog) == ""} && {[_radioName] call FUNC(canOpenRadio)}) then {
+    private _openGui = [_radioName, "openGui"] call EFUNC(sys_data,interactEvent);
+    //if (!_openGui) then {systemChat format ["cannot open GUI"]; closeDialog 0;};
 } else {
     closeDialog 0;
 };

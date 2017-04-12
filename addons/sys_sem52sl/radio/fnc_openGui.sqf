@@ -39,9 +39,6 @@
 */
 params ["_radioId", "", "", "", ""];
 
-// Prevent radio from being opened if it is externally used or it is not accessible
-if ([_radioId] call EFUNC(sys_radio,canOpenRadio)) exitWith { false };
-
 disableSerialization;
 //PARAMS_1(GVAR(currentRadioId))
 GVAR(currentRadioId) = _radioId;
