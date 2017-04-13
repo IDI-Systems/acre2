@@ -137,6 +137,10 @@ entries:
       url: /wiki/frameworks/vehicle-intercom
       output: web, pdf
 
+    - title: Vehicle Racks
+      url: /wiki/frameworks/vehicle-racks
+      output: web, pdf
+
     - title: Component System
       url: /wiki/frameworks/component-system
       output: web, pdf

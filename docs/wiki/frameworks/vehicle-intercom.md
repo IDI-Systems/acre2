@@ -21,7 +21,7 @@ By default, intercom is enabled for the following classes and their children:
 
 If you are inheriting from one of those classes, no extra configuration is required for vehicle intercom functionality. The default positions where crew intercom is enabled include `"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets.
 
-The system can be further modified in orther to customise which positions have access to crew intercom. The following configuration entries illustrate some of the possibilities:
+The system can be further modified in order to customise which positions have access to crew intercom. The following configuration entries illustrate some of the possibilities:
 
 {% raw %}
 ```cpp
