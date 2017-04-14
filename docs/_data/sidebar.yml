@@ -65,6 +65,10 @@ entries:
       url: /wiki/user/vehicle-intercom
       output: web, pdf
 
+    - title: Vehicle Racks
+      url: /wiki/user/vehicle-racks
+      output: web, pdf
+
     - title: Radio Signal Loss
       url: /wiki/user/radio-signal-loss
       output: web, pdf
@@ -135,6 +139,10 @@ entries:
 
     - title: Vehicle Intercom
       url: /wiki/frameworks/vehicle-intercom
+      output: web, pdf
+
+    - title: Vehicle Racks
+      url: /wiki/frameworks/vehicle-racks
       output: web, pdf
 
     - title: Component System

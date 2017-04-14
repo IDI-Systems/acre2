@@ -4,7 +4,7 @@ title: Vehicle Intercom
 
 {% include important.html content="API still WIP. May change in the future!" %}
 
-Both features are currently supported only for `Car_F` and `Tank` classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
+Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
 ## Vehicle crew intercom
 
@@ -21,7 +21,7 @@ By default, intercom is enabled for the following classes and their children:
 
 If you are inheriting from one of those classes, no extra configuration is required for vehicle intercom functionality. The default positions where crew intercom is enabled include `"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets.
 
-The system can be further modified in orther to customise which positions have access to crew intercom. The following configuration entries illustrate some of the possibilities:
+The system can be further modified in order to customise which positions have access to crew intercom. The following configuration entries illustrate some of the possibilities:
 
 {% raw %}
 ```cpp
@@ -91,8 +91,9 @@ class CfgVehicles {
         acre_hasPassengerIntercom = 1; // 1 - enabled, 0 - disabled
         // Units in crew intercom, in cargo positions 1 and 2 and all FFV turrets have access to the passenger intercom.
         acre_passengerIntercomPositions[] = {{"Cargo", 1, 2}, {"ffv", "all"}};
-        // Excludes unit in FFV turret [4] to access from accessing passenger intercom.
-        acre_passengerIntercomExceptions[] = {{"ffv", [4]}};
+        // Excludes unit in FFV turret [4] to access from accessing passenger intercom, as well as cargo index 1 and turret [1]
+        // when they are turned out.
+        acre_passengerIntercomExceptions[] = {{"ffv", [4]}, {"turnedOut", 1, [1]}};
         // -1 to set the number of connections equal to the amount of passenger intercom positions. A number greater
         // than 0 limits the number of available connections for passengers. Crew members do not use this number.
         acre_passengerIntercomConnections = 2; // Only two units with access to passenger intercom can connect simultaneously.
@@ -170,10 +171,11 @@ class CfgVehicles {
 The framework recognises the following entries and wildcards for the configuration files:
 
 {% raw %}
-- **Entries**: `"cargo"`, `"commander"`, `"driver"`, `"gunner"`, `"turret"` (non FFV) and `"ffv"` (FFV turrets).
+- **Entries**: `"cargo"`, `"commander"`, `"driver"`, `"gunner"`, `"copilot"` (only helicopters and planes), `"turret"` (non FFV), `"ffv"` (FFV turrets) and `"turnedOut"`. The `"turnedOut"` entry is only valid for the `exception` configuration array and it can be combined with any other entries (`"commander"`, `"driver"`, `"gunner"`, `"copilot"`), cargo indexes and turrets. For example `{{"turnedOut", 1, [3], "driver"}}` will prevent access to cargo index 1, driver and turret [3] when they are turned out.
 - **Wildcards**:
   - `"crew"`: selects all crew members `"commander"`, `"driver"`, `"gunner"`, `"turret"` (non FFV) and it can be combined with other entries. For example `{"crew", {"cargo", 1}}`.
-  - `"all"` can be combined with  `"cargo"`, `"turret"` and `"ffv"` and selects all entries of this category. For example `{{"cargo", 1}, {"ffv", "all"}}`.
+  - `"inside"`: selects all units inside a vehicle.
+  - `"all"` can be combined with  `"cargo"`, `"turret"`, `"ffv"` and `"turnedout"` and selects all entries of this category. For example `{{"cargo", 1}, {"ffv", "all"}}`.
   - `"default"` selects all crew members in `acre_crewIntercomPositions` or all the cargo entries if defined in `acre_passengerIntercomPositions`. It cannot be combined with any other entry.
 {% endraw %}
 
@@ -181,8 +183,8 @@ The framework recognises the following entries and wildcards for the configurati
 
 The following vehicle has crew and passenger intercom as well as infantry telephone.
 
-- Crew intercom is enabled for all the default crew positions (`"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets) with the exception of `"driver"` and `"commander"` FFV turret.
-- Passenger intercom is available for all the previously defined crew members plus all `"cargo"` positions and for the `"driver"` with the exception of the `"commander"`, `"cargo"` index 1 and all FFV turrets. Additionally only two non-crew units can connect simultaneously.
+- Crew intercom is enabled for all the default crew positions (`"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets) with the exception of `"driver"` and when player is turned out in all positions.
+- Passenger intercom is available for all the previously defined crew members plus all `"cargo"` positions and for the `"driver"` with the exception of the `"commander"`, `"cargo"` index 1, all FFV turrets and turned out positions in the `"driver"`, `"gunner"`, `"cargo"` index 2 and `"turrent"` [2]. Additionally only two non-crew units can connect simultaneously.
 - The infantry telephone that can have access to both crew and passenger intercom networks. Units can interact with the infantry telephone at  `{-1.1, -4.86, -0.82}` model space coordinates.
 
 {% raw %}
@@ -193,12 +195,12 @@ class CfgVehicles {
         // Crew Intercom
         acre_hasCrewIntercom = 1;
         acre_crewIntercomPositions[] = {"default"};
-        acre_crewIntercomExceptions[] = {"driver", {"turret", {0,0}}};
+        acre_crewIntercomExceptions[] = {"driver", {"turnedout", "all"}};
 
         // Passenger intercom
         acre_hasPassengerIntercom = 1;
         acre_passengerIntercomPositions[] = {{"cargo", "all"}, "driver"};
-        acre_passengerIntercomExceptions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}};
+        acre_passengerIntercomExceptions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}, {"turnedout", 2, "driver", "gunner", [2]}};
         acre_passengerIntercomConnections = 2;
 
         // Infantry Phone

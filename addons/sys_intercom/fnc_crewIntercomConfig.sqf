@@ -51,12 +51,12 @@ if (_default) then {
         _availableCrewIntercomPos pushBackUnique ["turret", _x];
     } forEach allTurrets [_vehicle, false];
 } else {
-    _availableCrewIntercomPos = [_vehicle, _crewIntercomPositions] call FUNC(processConfigArray);
+    _availableCrewIntercomPos = [_vehicle, _crewIntercomPositions] call EFUNC(sys_core,processConfigArray);
 };
 
 // Remove all exceptions
 private _crewIntercomExceptions = getArray (configFile >> "CfgVehicles" >> _type >> "acre_crewIntercomExceptions");
-private _temp = [_vehicle, _crewIntercomExceptions] call FUNC(processConfigArray);
+private _temp = [_vehicle, _crewIntercomExceptions] call EFUNC(sys_core,processConfigArray);
 private _exceptionsCrewIntercomPos = [];
 {
     if (_x in _availableCrewIntercomPos) then {

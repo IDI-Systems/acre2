@@ -19,6 +19,8 @@ params ["_rackClassName"];
 
 private _removable = GET_STATE_RACK(_rackClassName,"isRadioRemovable");
 
-if (isNil "_removable") then { _removable = false; };
+if (isNil "_removable") then {
+    _removable = false;
+};
 
-_removable;
+_removable

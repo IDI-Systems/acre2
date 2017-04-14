@@ -21,23 +21,93 @@ params ["_rackId", "_unit", ["_vehicle", objNull]];
 if (isNull _vehicle) then {
     _vehicle = [_rackId] call FUNC(getVehicleFromRack);
 };
-private _return = false;
+private _isRackAccessible = false;
 
 private _allowed = [_rackId, "getState", "allowed"] call EFUNC(sys_data,dataEvent);
 {
-    if (_return) exitWith {};
-    switch (_x) do{
-        case "driver":{ if (driver _vehicle == _unit) then { _return = true; }; };
-        case "gunner":{ if (gunner _vehicle == _unit) then { _return = true; }; };
-        case "commander":{ if (commander _vehicle == _unit) then { _return = true; }; };
-        case "inside":{ if (_vehicle == vehicle _unit) then { _return = true; }; };
-        case "copilot":{
-            private _crew = ((fullCrew _vehicle) select { getNumber ([_vehicle, _x select 3] call CBA_fnc_getTurret >> "isCopilot") == 1 }) apply {_x select 0};
-            if (_unit in _crew) then { _return = true; };
+    switch (_x select 0) do {
+        case "external": {
+            if (_vehicle != vehicle _unit) exitWith {_isRackAccessible = true;};
         };
-        case "external":{ if (_vehicle != vehicle _unit && {_vehicle distance _unit < 10}) then { _return = true; }; };
+        case "inside": {
+            if (_vehicle == vehicle _unit) exitWith {_isRackAccessible = true;};
+        };
+        case "driver": {
+            if (driver _vehicle == _unit) exitWith {_isRackAccessible = true;};
+        };
+        case "commander": {
+            if (commander _vehicle == _unit) exitWith {_isRackAccessible = true;};
+        };
+        case "gunner": {
+            if (gunner _vehicle == _unit) exitWith {_isRackAccessible = true;};
+        };
+        case "cargo": {
+            if (_vehicle getCargoIndex _unit == (_x select 1)) exitWith {_isRackAccessible = true;};
+        };
+        case "turret": {
+            if ((_vehicle turretUnit (_x select 1)) == _unit) exitWith {_isRackAccessible = true;};
+        };
     };
 } forEach _allowed;
 
+private _disabled = [_rackId, "getState", "disabled"] call EFUNC(sys_data,dataEvent);
+{
+    switch (_x select 0) do {
+        case "external": {
+            if (_vehicle != vehicle _unit) exitWith {_isRackAccessible = false;};
+        };
+        case "inside": {
+            if (_vehicle == vehicle _unit) exitWith {_isRackAccessible = false;};
+        };
+        case "turnedout": {
+            switch (typeName (_x select 1)) do {
+                case "STRING": {
+                    if ((_x select 1) isEqualTo "all") then {
+                        if (isTurnedOut _unit) then {_inIntercom = false;};
+                    } else {
+                        switch (_x select 1) do {
+                            case "driver": {
+                                if (driver _vehicle == _unit && {isTurnedOut _unit}) exitWith {_inIntercom = false;};
+                            };
+                            case "commander": {
+                                if (commander _vehicle == _unit && {isTurnedOut _unit}) exitWith {_inIntercom = false;};
+                            };
+                            case "gunner": {
+                                if (gunner _vehicle == _unit && {isTurnedOut _unit}) exitWith {_inIntercom = false;};
+                            };
+                            case "copilot": {
+                                private _turret = (allTurrets [_vehicle, false]) select {getNumber ([_vehicle, _x] call CBA_fnc_getTurret >> "isCopilot") == 1};
+                                {
+                                    if ((_vehicle turretUnit (_x select 1)) == _unit && {isTurnedOut (_vehicle turretUnit (_x select 1))}) exitWith {_inIntercom = false;};
+                                } forEach _turret;
+                            };
+                        };
+                    };
+                };
+                case "ARRAY": {
+                    if ((_vehicle turretUnit (_x select 1)) == _unit && {isTurnedOut (_vehicle turretUnit (_x select 1))}) exitWith {_inIntercom = false;};
+                };
+                case "SCALAR": {
+                    if (_vehicle getCargoIndex _unit == (_x select 1)) exitWith {_inIntercom = false;};
+                };
+            };
+        };
+        case "driver": {
+            if (driver _vehicle == _unit) exitWith {_isRackAccessible = false;};
+        };
+        case "commander": {
+            if (commander _vehicle == _unit) exitWith {_isRackAccessible = false;};
+        };
+        case "gunner": {
+            if (gunner _vehicle == _unit) exitWith {_isRackAccessible = false;};
+        };
+        case "cargo": {
+            if (_vehicle getCargoIndex _unit == (_x select 1)) exitWith {_isRackAccessible = false;};
+        };
+        case "turret": {
+            if ((_vehicle turretUnit (_x select 1)) == _unit) exitWith {_isRackAccessible = false;};
+        };
+    };
+} forEach _disabled;
 
-_return;
+_isRackAccessible

@@ -20,14 +20,18 @@ params ["_target"];
 
 private _actions = [];
 
-private _racks = [_target,acre_player] call EFUNC(sys_rack,getAccessibleVehicleRacks);
+private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
+
+{
+    _racks pushBackUnique _x;
+} forEach ([_target, acre_player] call FUNC(getHearableVehicleRacks));
 
 {
     private _rackClassName = _x;
     private _config = ConfigFile >> "CfgVehicles" >> _rackClassName;
-    private _displayName = getText(_config >> "displayName");
+    private _displayName = getText (_config >> "displayName");
     //private _currentChannel = [_x] call acre_api_fnc_getRadioChannel;
-    //_displayName = format["%1 Chn: %2",_displayName, _currentChannel];
+    //_displayName = format ["%1 Chn: %2",_displayName, _currentChannel];
     //private _isActive = _x isEqualTo _currentRadio;
 
 

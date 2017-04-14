@@ -27,3 +27,7 @@ PREP(playRadioSound);
 PREP(handleRadioSpatialKeyPressed);
 
 PREP(onPlayerKilled);
+
+PREP(canOpenRadio);
+PREP(canUnitTransmit);
+PREP(isManpackRadio);

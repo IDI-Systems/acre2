@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Returns the rack IDs for a specific vehicle that a player can access;
+ * Returns the rack IDs for a specific vehicle that a player can hear.
  *
  * Arguments:
  * 0: Target Vehicle <OBJECT>
@@ -9,7 +9,7 @@
  * Racks <ARRAY>
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_fnc_getAccessibleVehicleRacks;
+ * [cursorTarget] call acre_sys_rack_fnc_getHearableVehicleRacks;
  *
  * Public: No
  */
@@ -21,7 +21,7 @@ private _racks = [];
 {
     private _rackId = typeOf _x;
     if (_rackId isKindOf "ACRE_BaseRack") then {
-        if ([_rackId, _unit, _vehicle] call FUNC(isRackAccessible)) then {
+        if ([_rackId, _unit, _vehicle] call FUNC(isRackHearable)) then {
             _racks pushBack _rackId;
         };
     };

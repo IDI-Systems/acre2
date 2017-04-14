@@ -1,0 +1,66 @@
+/*
+ * Author: ACRE2Team
+ * Per frame execution. Sets if player is inside a vehicle and manages the access to rack radios.
+ *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * [] call acre_sys_rack_fnc_vehicleCrewPFH
+ *
+ * Public: No
+ */
+#include "script_component.hpp"
+
+private _vehicle = vehicle acre_player;
+if (_vehicle != acre_player) then {
+
+    private _initialized = _vehicle getVariable [QGVAR(initialized), false];
+    if (!_initialized) then {
+        //Only initialize if we are first in the crew array - This helps prevent multiple requests if multiple players enter a vehicle around the same time.
+        private _crew = crew _vehicle;
+        private _firstPlayer = objNull;
+        {
+            if (!isNull _firstPlayer) exitWith {};
+            if (isPlayer _x) exitWith {
+                _firstPlayer = _x;
+            };
+        } forEach _crew;
+        if (!isNull _firstPlayer) then {
+            if (acre_player == _firstPlayer) then {
+                [_vehicle] call FUNC(initVehicle);
+            };
+        } else { // No other players.
+            [_vehicle] call FUNC(initVehicle);
+        };
+    };
+};
+
+//Check we can still use the vehicle rack radios.
+{
+    if (!([_x] call EFUNC(sys_radio,radioExists))) exitWith {_remove pushBack _x;};
+    private _rack = [_x] call FUNC(getRackFromRadio);
+    if (_rack == "") exitWith { _remove pushBack _x; }; // Radio is no longer stored in a rack.
+    if (!(([_rack, acre_player] call FUNC(isRackAccessible)) || ([_rack, acre_player] call FUNC(isRackHearable)))) then {
+        if (_x in ACRE_ACTIVE_RACK_RADIOS) then {
+            ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - [_x];
+        } else {
+            ACRE_PASSIVE_RACK_RADIOS = ACRE_PASSIVE_RACK_RADIOS - [_x];
+        };
+        if (ACRE_ACTIVE_RADIO isEqualTo _x) then { // If it is the active radio.
+            // Check if radio is now in inventory
+            private _items = [acre_player] call EFUNC(sys_core,getGear);
+            _items = _items apply {toLower _x};
+            if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // no need to remove
+            // Otherwise cleanup
+            if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
+                // simulate a key up event to end the current transmission
+                [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
+            };
+            [1] call EFUNC(sys_list,cycleRadios); // Change active radio
+        };
+    };
+} forEach (ACRE_ACTIVE_RACK_RADIOS + ACRE_PASSIVE_RACK_RADIOS);

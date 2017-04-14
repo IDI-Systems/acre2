@@ -134,7 +134,6 @@ if (_vehicle != acre_player) then {
             ACRE_PLAYER_PASSENGER_INTERCOM = [];
         };
     };
-
 } else {
     private _vehicleCrewIntercom = acre_player getVariable [QGVAR(vehicleCrewIntercom), objNull];
     if (!isNull _vehicleCrewIntercom) then {
