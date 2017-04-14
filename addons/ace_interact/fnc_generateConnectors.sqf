@@ -10,7 +10,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_ace_interact_fnc_generateConnectors
  *
  * Public: No
  */
@@ -44,19 +44,19 @@ private _parentType = getNumber (_componentClass >> "type");
         if (_childDisplayName == "") then { _childDisplayName = getText (_config >> "name"); };
         private _type = getNumber (_config >> "type");
         call {
-            if (_type == ACRE_COMPONENT_ANTENNA) exitWith { _icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";};
-            if (_type == ACRE_COMPONENT_RACK) exitWith { _icon = "\idi\acre\addons\ace_interact\data\icons\racks.paa";};
-            if (_type == ACRE_COMPONENT_RADIO) exitWith { _icon = getText (configFile >> "CfgWeapons" >> configName (_config) >> "picture");  };
+            if (_type == ACRE_COMPONENT_ANTENNA) exitWith {_icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";};
+            if (_type == ACRE_COMPONENT_RACK) exitWith {_icon = "\idi\acre\addons\ace_interact\data\icons\racks.paa";};
+            if (_type == ACRE_COMPONENT_RADIO) exitWith {_icon = getText (configFile >> "CfgWeapons" >> configName (_config) >> "picture");};
         };
-        _childParams append [_type,_childDisplayName];
-        _displayName = format ["%1 (%2)",_displayName,_childDisplayName];
+        _childParams append [_type, _childDisplayName];
+        _displayName = format ["%1 (%2)", _displayName, _childDisplayName];
 
     } else { // No Component attached.
-        _displayName = format ["%1 (None)",_displayName];
+        _displayName = format ["%1 (None)", _displayName];
     };
 
 
-    _action = [format ["acre_connector_%1",_forEachIndex], _displayName, _icon, {1+1;}, {true}, {_this call FUNC(generateConnectorActions);}, _childParams] call ace_interact_menu_fnc_createAction;
+    _action = [format ["acre_connector_%1", _forEachIndex], _displayName, _icon, {1+1;}, {true}, {_this call FUNC(generateConnectorActions);}, _childParams] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 
 } forEach _connectors;

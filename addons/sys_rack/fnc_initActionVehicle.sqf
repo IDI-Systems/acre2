@@ -33,8 +33,8 @@ private _condition = {
     //{[_player, _target, ["isNotInside"]] call ace_common_fnc_canInteractWith}
      //{[_player, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)}
      params ["_target","_unit"];
-     private _accessibleRacks = [_target,_unit] call FUNC(getAccessibleVehicleRacks);
-     private _hearableRacks = [_target,_unit] call FUNC(getHearableVehicleRacks);
+     private _accessibleRacks = [_target, _unit] call FUNC(getAccessibleVehicleRacks);
+     private _hearableRacks = [_target, _unit] call FUNC(getHearableVehicleRacks);
      (count _accessibleRacks > 0 || count _hearableRacks > 0)
 };
 private _statement = {true};

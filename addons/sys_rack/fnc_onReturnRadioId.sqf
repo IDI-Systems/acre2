@@ -52,7 +52,7 @@ if (_condition) then {
         [_class, _preset] call EFUNC(sys_radio,initDefaultRadio);
 
         //Mount the radio into the rack.
-        [_rackId,_class] call FUNC(mountRadio);
+        [_rackId, _class] call FUNC(mountRadio);
     }  else {
         WARNING_3("Radio ID %1 for a vehicle rack was returned for a non-existent base class (%2).",_class,_baseRadio);
     };

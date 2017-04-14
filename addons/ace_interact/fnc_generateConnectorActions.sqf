@@ -10,7 +10,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_ace_interact_fnc_generateConnectorActions
  *
  * Public: No
  */
@@ -24,13 +24,13 @@ private _actions = [];
 switch (_connectorType) do {
     case ACRE_CONNECTOR_CONN_32PIN: {
         if (_connectedType != -1) then { // something connected.
-            private _name = format ["Unplug %1",_childDisplayName];
+            private _name = format ["Unplug %1", _childDisplayName];
 
-            private _action = [format ["acre_con_%1_action",_forEachIndex], _name, "", {
-                params ["_target","","_params"];
-                _params params["_parentComponentId", "_parentConnector"];
+            private _action = [format ["acre_con_%1_action", _forEachIndex], _name, "", {
+                params ["_target", "", "_params"];
+                _params params ["_parentComponentId", "_parentConnector"];
                 [_parentComponentId, _parentConnector] call EFUNC(sys_components,fnc_detachComponent);
-            }, {true}, {}, [_parentComponent,_connectorIndex]] call ace_interact_menu_fnc_createAction;
+            }, {true}, {}, [_parentComponent, _connectorIndex]] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {
             //TODO Allow linking radios?
@@ -50,17 +50,17 @@ switch (_connectorType) do {
                         private _baseClass = BASE_CLASS_CONFIG(_radioID);
                         private _name = format ["Connect to %1",getText (configFile >> "CfgAcreComponents" >> _baseClass >> "name")];
                         private _icon = getText (configFile >> "CfgWeapons" >> _baseClass >> "picture");
-                        _action = [format ["acre_con_%1_action",_forEachIndex], _name, _icon, {
+                        _action = [format ["acre_con_%1_action", _forEachIndex], _name, _icon, {
                             params ["_target","","_params"];
                             _params params ["_parentComponent","_connectorIndex","_radioId","_connectorRadioIdx"];
                             [_parentComponent, _connectorIndex, _radioId, _connectorRadioIdx, []] call EFUNC(sys_components,fnc_attachComplexComponent);
-                        }, {true}, {}, [_parentComponent,_connectorIndex,_radioId,_connectorRadioIdx]] call ace_interact_menu_fnc_createAction;
+                        }, {true}, {}, [_parentComponent, _connectorIndex, _radioId, _connectorRadioIdx]] call ace_interact_menu_fnc_createAction;
                         _actions pushBack [_action, [], _target];
                     };
                 } forEach _radioList;
             };
             if (_parentType == ACRE_COMPONENT_RADIO) then {
-                private _rackList = ([vehicle _target,_target] call EFUNC(sys_rack,getAccessibleVehicleRacks)) - [_parentComponent]; // Can't connect to self.
+                private _rackList = ([vehicle _target, _target] call EFUNC(sys_rack,getAccessibleVehicleRacks)) - [_parentComponent]; // Can't connect to self.
                 {
                     private _rackId = _x;
                     private _baseClass = BASE_CLASS_CONFIG(_rackId);
@@ -76,11 +76,11 @@ switch (_connectorType) do {
                     if (_connectorRackIdx != -1) then {
                         private _name = format ["Connect to %1",getText (configFile >> "CfgAcreComponents" >> _baseClass >> "name")];
                         private _icon = "\idi\acre\addons\ace_interact\data\icons\rack.paa";
-                        _action = [format ["acre_con_%1_action",_forEachIndex], _name, _icon, {
+                        _action = [format ["acre_con_%1_action", _forEachIndex], _name, _icon, {
                             params ["_target","","_params"];
                             _params params ["_parentComponent","_connectorIndex","_rackId","_connectorRackIdx"];
                             [_parentComponent, _connectorIndex, _rackId, _connectorRackIdx, []] call EFUNC(sys_components,fnc_attachComplexComponent);
-                        }, {true}, {}, [_rackId,_connectorRackIdx,_parentComponent,_connectorIndex]] call ace_interact_menu_fnc_createAction;
+                        }, {true}, {}, [_rackId, _connectorRackIdx, _parentComponent, _connectorIndex]] call ace_interact_menu_fnc_createAction;
                         _actions pushBack [_action, [], _target];
                     };
                 } forEach _rackList;

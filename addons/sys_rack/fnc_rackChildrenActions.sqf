@@ -39,11 +39,11 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
 
         if ([_rackClassName] call FUNC(isRadioRemovable)) then {
             private _text = format [localize LSTRING(unmountRadio), getText (_class >> "displayName")];
-            private _params = [_rackClassName,_mountedRadio];
+            private _params = [_rackClassName, _mountedRadio];
             private _action = ["acre_mountedRadio", _text, _icon, {
                 params ["_target","_unit","_params"];
                 _params params ["_rackClassName"];
-                [_rackClassName,_unit] call FUNC(unmountRadio);
+                [_rackClassName, _unit] call FUNC(unmountRadio);
             }, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {

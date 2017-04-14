@@ -36,7 +36,7 @@ private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
 
 
     private _name = [_rackClassName, "getState", "name"] call EFUNC(sys_data,dataEvent);
-    _displayName = format ["%1 (%2)",_name,_displayName];
+    _displayName = format ["%1 (%2)", _name, _displayName];
 
     private _action = [_rackClassName, _displayName, "\idi\acre\addons\ace_interact\data\icons\rack.paa", {true /*Statement/Action */}, {true}, {_this call FUNC(rackChildrenActions);}, [_rackClassName]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
