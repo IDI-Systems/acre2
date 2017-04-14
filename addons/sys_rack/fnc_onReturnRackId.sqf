@@ -27,10 +27,10 @@ private _dataHash = HASH_CREATE;
 // diag_log text format ["acre_sys_data_radioData: %1", acre_sys_data_radioData];
 
 HASH_SET(EGVAR(sys_data,radioData), _class, _dataHash);
-_idRelation = [_entity, _entity];
+private _idRelation = [_entity, _entity];
 HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
 if (_replacementId != "") then {
-    _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
+    private _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
     HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
 };
 

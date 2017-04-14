@@ -25,7 +25,6 @@ private _connectedComponents = [_radio] call EFUNC(sys_components,getAllConnecte
 private _componentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_radio);
 private _connectors = getArray (_componentClass >> "connectors");
 
-
 private _connectorData = _connectedComponents select _connectorIndex;
 
 if (!isNil "_connectorData") then { // Comomponent attached.

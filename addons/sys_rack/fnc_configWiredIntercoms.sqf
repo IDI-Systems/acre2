@@ -33,7 +33,6 @@ if (count _accessibleIntercoms ==  0) then {
         _accessibleIntercoms pushBack "passenger";
     };
 } else {
-
     _accessibleIntercoms = _accessibleIntercoms apply {toLower _x};
     // Check for a valid configuration
     if ("crew" in _accessibleIntercoms && (_hasCrewIntercom != 1)) then {

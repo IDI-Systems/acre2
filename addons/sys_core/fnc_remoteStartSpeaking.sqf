@@ -94,7 +94,6 @@ private _result = false;
         _unit setVariable [QGVAR(lastSpeakingEventTime), diag_tickTime, false];
         if (_onRadio == 1) then {
             if ([_radioId] call EFUNC(sys_radio,radioExists)) then {
-
                 // Handle rack radios that are simultaneously in use.
                 if ((toLower _radioId) in ACRE_ACTIVE_RACK_RADIOS) then {
                     ACRE_BLOCKED_TRANSMITTING_RADIOS pushBackUnique (toLower _radioId);

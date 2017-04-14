@@ -33,5 +33,5 @@ if (_unit canAdd _mountedRadio) then {
     //Trigger event
     [_rackId, "unmountRadio", _mountedRadio] call EFUNC(sys_data,dataEvent);
 } else {
-    systemChat "Unable to unmount radio as you have no inventory space";
+    [localize LSTRING(unableUnmount), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };

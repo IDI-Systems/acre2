@@ -24,7 +24,6 @@ private _actions = [];
 switch (_connectorType) do {
     case ACRE_CONNECTOR_CONN_32PIN: {
         if (_connectedType != -1) then { // something connected.
-
             private _name = format ["Unplug %1",_childDisplayName];
 
             private _action = [format ["acre_con_%1_action",_forEachIndex], _name, "", {

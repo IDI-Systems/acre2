@@ -25,4 +25,4 @@ private _baseClass = toLower (BASE_CLASS_CONFIG(_radioId));
 
 if (_baseClass in ["acre_prc148"]) then { _mountable = true; };
 
-_mountable;
+_mountable

@@ -21,7 +21,7 @@ params ["_rackObject", "_class", "_returnIdNumber"];
 private _dataHash = HASH_CREATE;
 
 HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
-_idRelation = [_rackObject, _rackObject];
+private _idRelation = [_rackObject, _rackObject];
 HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
 
 private _vehicle = _rackObject;
