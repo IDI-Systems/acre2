@@ -20,7 +20,7 @@ By default, vehicle racks are enabled for the following classes and their childr
 
 If you are inheriting from one of those classes, no extra configuration is required for vehicle racks functionality. The default positions where the racks can be configured and can be used for transmitting and receiving incoming transmissions include `"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets. Other seats in *crew intercom* will not be able to configure it and, for the time being will only be able to receive but not transmit. By default, turned out positions have the open radio GUI functionality disabled.
 
-The system can be further modified in order to customise the type of racks, the amount of them, which positions can open and configure the radio and to what intercoms the rack is connected to. The following configuration entries illustrate some of the possibilities. The first example configures two racks on an MRAP, a *VRC110* which allows mounting a *PRC148* or a *PRC152* for the `"driver"` and front seat passenger (`"cargo"` 0) and, a *VRC103* with a *PRC117F* mounted by default that cannot be removed accessible from `"driver"`, `"commander"` and `"gunner"` positions.
+The system can be further modified in order to customise the type of racks, the amount of them, which positions can open and configure the radio and to what intercoms the rack is connected to. The following configuration entries illustrate some of the possibilities. The first example configures two racks on an MRAP, a *VRC110* which allows mounting a *PRC152* for the `"driver"` and front seat passenger (`"cargo"` 0) and, a *VRC103* with a *PRC117F* mounted by default that cannot be removed accessible from `"driver"`, `"commander"` and `"gunner"` positions.
 
 {% raw %}
 ```cpp
@@ -30,7 +30,7 @@ class CfgVehicles {
         class AcreRacks {
             class Rack_1 {
                 name = "Dashboard Upper";             // Name displayed in the interaction menu.
-                componentname = "ACRE_VRC110";        // Able to mount a PRC148 or a PRC152.
+                componentname = "ACRE_VRC110";        // Able to mount a PRC152.
                 allowed[] = {"driver", {"cargo", 1}}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows Transmitting/receiving.
                 disabled[] = {};
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented.
@@ -94,7 +94,8 @@ The framework recognises the following entries and wildcards for the configurati
   - `"default"` selects all crew members in `acre_crewIntercomPositions` or all the cargo entries if defined in `acre_passengerIntercomPositions`. It cannot be combined with any other entry.
 - **Racks**:
   - `"ACRE_VRC103"`: Can mount a `"ACRE_PRC117F"`.
-  - `"ACRE_VRC110"`: Can mount a `"ACRE_PRC152"` or a `"ACRE_PRC148"`.
+  - `"ACRE_VRC110"`: Can mount a `"ACRE_PRC152"`.
+  - `"ACRE_VRC111"`: Can mount a `"ACRE_PRC148"` (20W version).
 {% endraw %}
 
 ## Configuration examples
@@ -128,7 +129,7 @@ class CfgVehicles {
         class AcreRacks {
             class Rack_1 {
                 name = "Dashboard Upper";             // Name displayed in the interaction menu.
-                componentname = "ACRE_VRC110";        // Able to mount a PRC148 or a PRC152.
+                componentname = "ACRE_VRC110";        // Able to mount a PRC152.
                 allowed[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows Transmitting/receiving.
                 disabled[] = {};
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented.
@@ -138,7 +139,7 @@ class CfgVehicles {
             };
             class Rack_2 {
                 name = "Dashboard Upper";             // Name displayed in the interaction menu.
-                componentname = "ACRE_VRC110";        // Able to mount a PRC148 or a PRC152.
+                componentname = "ACRE_VRC110";        // Able to mount a PRC152.
                 allowed[] = {{"cargo", "all"}};       // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows Transmitting/receiving.
                 disabled[] = {{"ffv", "all"}};
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented.
