@@ -3,9 +3,7 @@
 
 #include "Log.h"
 
-#include <string>
-
-BOOL CTextMessage::isValid(void) {
+bool CTextMessage::isValid(void) {
     return this->m_IsValid;
 }
 
@@ -15,18 +13,18 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
     this->m_RpcProcedureName = NULL;
     this->m_Data = NULL;
     memset(this->m_Parameters, 0x00, sizeof(this->m_Parameters));
-    this->m_IsValid = FALSE;
+    this->m_IsValid = false;
     this->m_ParameterCount = 0;
 
     if (!value){
-        this->m_IsValid = FALSE;
+        this->m_IsValid = false;
         return ACRE_OK;
     }
 
     // Check to make sure the entire chunk of data is a NULL terminated ascii string
     for (x=0;x<len;x++) {
         if (!__isascii(value[x]) && value[x] != 0x00) {
-            this->m_IsValid = FALSE;
+            this->m_IsValid = false;
             LOG("INVALID PACKET DETECTED l:%d", len);
             return ACRE_ERROR;
         }
@@ -36,11 +34,11 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
 
     length = (strlen(value)+1);
     if (length < 3)  {
-        this->m_IsValid = FALSE;
+        this->m_IsValid = false;
         return ACRE_ERROR;
     }
-    
-    this->m_DataPtr = (char *)LocalAlloc(0, length);
+
+    this->m_DataPtr = (char *) calloc((size_t) length, sizeof(char));
     memcpy(this->m_DataPtr, value, length);
     this->m_DataPtr[length-1] = 0x00;
 
@@ -53,7 +51,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
     x = this->m_Data->find_first_of(":");
     if (x < 2 || x > 1000000 || x == std::string::npos) {
         LOG("INVALID DATA");
-        this->m_IsValid = FALSE;
+        this->m_IsValid = false;
         return ACRE_ERROR;
     }
     std::string procedureName = this->m_Data->substr(0, x);
@@ -61,7 +59,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
 
     // now parse parameters..if there are any
     if (x == this->m_Data->length()-1) {
-        this->m_IsValid = TRUE;    
+        this->m_IsValid = true;
         return ACRE_OK;
     }
 
@@ -74,7 +72,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
             this->m_Parameters[x] = new std::string(t.substr(0, t.find(",")).c_str());
             pParamCount += 1;
         }  else if (t.find(",") == std::string::npos ) {
-            this->m_IsValid = TRUE;    
+            this->m_IsValid = true;
             this->m_Parameters[x] = new std::string(t.substr(0, t.length()));
             pParamCount += 1;
             break;
@@ -91,8 +89,8 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
     }
 
     this->m_ParameterCount = pParamCount;
-    this->m_IsValid = TRUE;
-    
+    this->m_IsValid = true;
+
     //this->setLength((unsigned int)this->m_Data->size());
 
     return ACRE_OK;
@@ -132,7 +130,7 @@ unsigned char *CTextMessage::getParameter(unsigned int index) {
     if (index > this->m_ParameterCount) {
         return NULL;
     } else {
-        if (this->m_Parameters[index] == NULL) 
+        if (this->m_Parameters[index] == NULL)
             return NULL;
         else
             return((unsigned char *)this->m_Parameters[index]->c_str());
@@ -154,7 +152,7 @@ CTextMessage::~CTextMessage(void)
     if (this->m_Data)
         delete this->m_Data;
     if (this->m_DataPtr)
-        LocalFree(this->m_DataPtr);
+        free(this->m_DataPtr);
 }
 char *CTextMessage::getProcedureName() {
     if (this->m_RpcProcedureName) {
@@ -176,21 +174,23 @@ IMessage *CTextMessage::formatNewMessage(char *procedureName, char *format, ... 
         LOG("procedureName was null");
         return NULL;
     }
-    
-    finalBuffer = (char *)LocalAlloc(LPTR, TEXTMESSAGE_BUFSIZE);
+
+    finalBuffer = (char *) calloc((size_t) TEXTMESSAGE_BUFSIZE, sizeof(char));
     if (!buffer) {
-        LOG("LocalAlloc() failed: %d", GetLastError());
+        // Windows routines
+        //LOG("calloc() failed: %d", GetLastError());
+        LOG("calloc() failed: %d", 0);
         return NULL;
     }
-    
+
     buffer[0] = 0x00;
-    _snprintf_s(finalBuffer, TEXTMESSAGE_BUFSIZE, TEXTMESSAGE_BUFSIZE-1, "%s:", procedureName); 
-    
+    snprintf(finalBuffer, TEXTMESSAGE_BUFSIZE, "%s:", procedureName);
+
     va_start(va, format);
-    vsprintf_s(buffer,sizeof(buffer), format, va);
+    vsnprintf(buffer,sizeof(buffer), format, va);
     va_end(va);
 
-    strcat_s(finalBuffer, TEXTMESSAGE_BUFSIZE, buffer);
+    strncat(finalBuffer, buffer, TEXTMESSAGE_BUFSIZE);
 
     msg = new CTextMessage(finalBuffer, strlen(finalBuffer)+1);
 
@@ -200,7 +200,7 @@ IMessage *CTextMessage::formatNewMessage(char *procedureName, char *format, ... 
         msg = NULL;
     }
 
-    LocalFree(finalBuffer);
+    free(finalBuffer);
 
     return((IMessage *)msg);
 }
@@ -216,38 +216,40 @@ IMessage *CTextMessage::createNewMessage(char *procedureName, ... ) {
         LOG("procedureName was null");
         return NULL;
     }
-    
-    buffer = (char *)LocalAlloc(LPTR, TEXTMESSAGE_BUFSIZE);
+
+    buffer = (char *) calloc ((size_t) TEXTMESSAGE_BUFSIZE, sizeof(char));
     if (!buffer) {
-        LOG("LocalAlloc() failed: %d", GetLastError());
+        // Windows routines
+        //LOG("calloc() failed: %d", GetLastError());
+        LOG("calloc() failed: %d", 0);
         return NULL;
     }
-    
+
     buffer[0] = 0x00;
-    _snprintf_s(buffer, TEXTMESSAGE_BUFSIZE, TEXTMESSAGE_BUFSIZE-1, "%s:", procedureName); 
-    
+    snprintf(buffer, TEXTMESSAGE_BUFSIZE, "%s:", procedureName);
+
     va_start(va, procedureName);
     ptr = va_arg( va, char * );
     while (ptr != NULL) {
-        strcat_s(buffer, TEXTMESSAGE_BUFSIZE, ptr);
-        strcat_s(buffer, TEXTMESSAGE_BUFSIZE, ",");
-        ptr = va_arg( va, char * );    
+        strncat(buffer, ptr, TEXTMESSAGE_BUFSIZE);
+        strncat(buffer, ",", TEXTMESSAGE_BUFSIZE);
+        ptr = va_arg( va, char * );
     }
     va_end(va);
 
-    buffer = (char *)LocalReAlloc(buffer, strlen(buffer)+1, LMEM_MOVEABLE);
+    buffer = (char *)realloc(buffer, strlen(buffer)+1);
     msg = new CTextMessage(buffer, strlen(buffer)+1);
-    
+
     if (!msg->isValid()) {
         LOG("ERR: msg was invalid");
         delete msg;
         msg = NULL;
     }
 
-    LocalFree(buffer);
+    free(buffer);
 
     return((IMessage *)msg);
 }
-unsigned int CTextMessage::getParameterCount() { 
+unsigned int CTextMessage::getParameterCount() {
     return (this->m_ParameterCount);
 }

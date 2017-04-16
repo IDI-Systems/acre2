@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+
 class CPlayer;
 class IServer;
 class IMessage;
@@ -85,4 +87,3 @@ typedef ACRE_RESULT (*ACRE_RPCFUNCTION)(IServer *, IMessage *);
 
 typedef ACRE_RESULT (*ACRE_CALLBACK_TALKING)(CPlayer *);
 */
-

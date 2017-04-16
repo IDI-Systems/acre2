@@ -40,14 +40,14 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
             } else {
                 if (status == STATUS_NOT_TALKING) {
                     if (!((CTS3Client *)(CEngine::getInstance()->getClient()))->getRadioPTTDown()) {
-                        ((CTS3Client *)(CEngine::getInstance()->getClient()))->setOnRadio(FALSE);
+                        ((CTS3Client *)(CEngine::getInstance()->getClient()))->setOnRadio(false);
                     } else {
                         if (!((CTS3Client *)(CEngine::getInstance()->getClient()))->getDirectFirst()) {
-                            ((CTS3Client *)(CEngine::getInstance()->getClient()))->microphoneOpen(TRUE);
+                            ((CTS3Client *)(CEngine::getInstance()->getClient()))->microphoneOpen(true);
                         } else {
-                            ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(FALSE);
+                            ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(false);
                             if (((CTS3Client *)(CEngine::getInstance()->getClient()))->getRadioPTTDown()) {
-                                ((CTS3Client *)(CEngine::getInstance()->getClient()))->microphoneOpen(TRUE);
+                                ((CTS3Client *)(CEngine::getInstance()->getClient()))->microphoneOpen(true);
                             }
                         }
                     }
@@ -60,12 +60,12 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
 
         
         if (status == STATUS_TALKING) {
-            ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(TRUE);
+            ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(true);
             CEngine::getInstance()->getClient()->localStartSpeaking(ACRE_SPEAKING_DIRECT);
         } else if (status == STATUS_NOT_TALKING)  {
-            ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(FALSE);
+            ((CTS3Client *)(CEngine::getInstance()->getClient()))->setDirectFirst(false);
             CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_DIRECT);
-            ((CTS3Client *)(CEngine::getInstance()->getClient()))->setMainPTTDown(FALSE);
+            ((CTS3Client *)(CEngine::getInstance()->getClient()))->setMainPTTDown(false);
         }
     }
 

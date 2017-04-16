@@ -19,7 +19,7 @@ option(USE_STATIC_LINKING "USE_STATIC_LINKING" ON)
 
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-    SET(CMAKE_CXX_FLAGS "-std=c++11 -march=i686 -m32 -O2 -s -fPIC -fpermissive")
+    SET(CMAKE_CXX_FLAGS "-march=i686 -m32 -O2 -s -std=c++11 -Wall -W -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wbad-function-cast -Wundef -Wconversion -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -Wnested-externs -Wstrict-overflow=5 -fshort-enums -fno-common -fPIC ")
     set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
     set(CMAKE_SHARED_LINKER_FLAGS "-static-libgcc -static-libstdc++")
 else()

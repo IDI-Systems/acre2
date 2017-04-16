@@ -23,9 +23,9 @@ ACRE_RESULT CKeyHandlerEngine::readKeyLoop() {
                 ACRE_KEY_ENTRY *keyEntry = it->second;
                 short currentKeyState = ACRE_KEY_UP;
                 if (GetAsyncKeyState(keyEntry->keyCode) & 0x8000) {
-                    BOOL shiftState = (GetAsyncKeyState(VK_SHIFT) & 0x8000);
-                    BOOL ctrlState = (GetAsyncKeyState(VK_CONTROL) & 0x8000);
-                    BOOL altState = (GetAsyncKeyState(VK_MENU) & 0x8000);
+                    bool shiftState = (GetAsyncKeyState(VK_SHIFT) & 0x8000);
+                    bool ctrlState = (GetAsyncKeyState(VK_CONTROL) & 0x8000);
+                    bool altState = (GetAsyncKeyState(VK_MENU) & 0x8000);
 
                     // This should check if modifiers are set/not set and also make sure if someone is using a modifier its ok.
                     if ((keyEntry->shift && !shiftState) || (!keyEntry->shift && shiftState && keyEntry->keyCode != VK_SHIFT)) {
@@ -74,7 +74,7 @@ ACRE_RESULT CKeyHandlerEngine::shutdown() {
     return ACRE_OK;
 }
 
-ACRE_RESULT CKeyHandlerEngine::setKeyBind(string eventName, int keyCode, BOOL shift, BOOL ctrl, BOOL alt) {
+ACRE_RESULT CKeyHandlerEngine::setKeyBind(string eventName, int keyCode, bool shift, bool ctrl, bool alt) {
     auto it = this->m_keyMap.find(eventName);
     if (it == this->m_keyMap.end()) {
         ACRE_KEY_ENTRY *newEntry = new ACRE_KEY_ENTRY();

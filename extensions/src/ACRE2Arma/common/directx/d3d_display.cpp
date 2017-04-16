@@ -12,7 +12,7 @@ using namespace  DirectX;
 namespace acre {
     namespace debug {
 
-        DWORD GetMainThreadId() {
+        uint32_t GetMainThreadId() {
             const std::shared_ptr<void> hThreadSnapshot(
                 CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0), CloseHandle);
             if (hThreadSnapshot.get() == INVALID_HANDLE_VALUE) {
@@ -20,9 +20,9 @@ namespace acre {
             }
             THREADENTRY32 tEntry;
             tEntry.dwSize = sizeof(THREADENTRY32);
-            DWORD result = 0;
-            DWORD currentPID = GetCurrentProcessId();
-            for (BOOL success = Thread32First(hThreadSnapshot.get(), &tEntry);
+            uint32_t result = 0;
+            uint32_t currentPID = GetCurrentProcessId();
+            for (bool success = Thread32First(hThreadSnapshot.get(), &tEntry);
             !result && success && GetLastError() != ERROR_NO_MORE_FILES;
                 success = Thread32Next(hThreadSnapshot.get(), &tEntry))
             {
@@ -107,7 +107,7 @@ namespace acre {
             sd.OutputWindow = _hWnd;
             sd.SampleDesc.Count = 1;
             sd.SampleDesc.Quality = 0;
-            sd.Windowed = _fullscreen ? FALSE : TRUE;
+            sd.Windowed = _fullscreen ? false : true;
 
             for (UINT driverTypeIndex = 0; driverTypeIndex < numDriverTypes; driverTypeIndex++)
             {
@@ -227,7 +227,7 @@ namespace acre {
             // Create window
             _hInst = (HINSTANCE)GetCurrentProcess();
             RECT rc = { 0, 0, (LONG)width, (LONG)height };
-            AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
+            AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, false);
             _hWnd = CreateWindowW(L"ACE3BaseDisplayClass", L"ACE3 D3D Render", WS_OVERLAPPEDWINDOW,
                 CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, _hInst,
                 nullptr);

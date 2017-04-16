@@ -4,7 +4,7 @@
 #include "Singleton.h"
 #include "Lockable.h"
 
-#include "SoundEngine.h"
+//#include "SoundEngine.h"
 #include "ini_reader.hpp"
 
 class CAcreSettings :

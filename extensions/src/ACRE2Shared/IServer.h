@@ -21,6 +21,6 @@ public:
     
     
     //DECLARE_INTERFACE_MEMBER(IServerCallback, RecvCallback);
-    DECLARE_INTERFACE_MEMBER(BOOL, Connected);
+    DECLARE_INTERFACE_MEMBER(bool, Connected);
     DECLARE_INTERFACE_MEMBER(ACRE_ID, Id);
 };

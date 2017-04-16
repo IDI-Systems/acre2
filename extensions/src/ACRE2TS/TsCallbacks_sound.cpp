@@ -97,7 +97,7 @@ void ts3plugin_onEditMixedPlaybackVoiceDataEvent(uint64 serverConnectionHandlerI
             }
             LOG("Speaker setup init: %08x [%dx%d] (2CH = %08x, 5.1CH = %08x/%08x, 7.1CH = %08x/%08x)", speakerMask, sampleCount, channels, SPEAKER_STEREO, SPEAKER_5POINT1, SPEAKER_5POINT1_SURROUND, SPEAKER_7POINT1, SPEAKER_7POINT1_SURROUND);
         }
-        ((CTS3Client *)(CEngine::getInstance()->getClient()))->setIsX3DInitialized(TRUE);
+        ((CTS3Client *)(CEngine::getInstance()->getClient()))->setIsX3DInitialized(true);
         ((CTS3Client *)(CEngine::getInstance()->getClient()))->setSpeakerMask(speakerMask);
     }
     else

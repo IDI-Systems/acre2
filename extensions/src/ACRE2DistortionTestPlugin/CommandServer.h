@@ -26,10 +26,10 @@ public:
 
     ACRE_RESULT release(void);
 
-    //DECLARE_MEMBER(BOOL, Connected);
+    //DECLARE_MEMBER(bool, Connected);
     //DECLARE_MEMBER(ACRE_ID, Id);
     DECLARE_MEMBER(char *, CommandId);
-    DECLARE_MEMBER(BOOL, Connected);
+    DECLARE_MEMBER(bool, Connected);
     DECLARE_MEMBER(ACRE_ID, Id);
 private:
     concurrency::concurrent_queue<IMessage *> mInboundMessages;

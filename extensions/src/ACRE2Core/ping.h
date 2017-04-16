@@ -7,7 +7,7 @@
 #include "Engine.h"
 #include "TextMessage.h"
 
-volatile DWORD g_pingTime;
+volatile uint32_t g_pingTime;
 
 RPC_FUNCTION(ping) {
     g_pingTime = clock() / CLOCKS_PER_SEC;

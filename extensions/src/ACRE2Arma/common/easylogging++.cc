@@ -688,7 +688,7 @@ bool File::pathExists(const char* path, bool considerFile) {
   struct stat st;
   return (stat(path, &st) == 0);
 #elif ELPP_OS_WINDOWS
-  DWORD fileType = GetFileAttributesA(path);
+  uint32_t fileType = GetFileAttributesA(path);
   if (fileType == INVALID_FILE_ATTRIBUTES) {
     return false;
   }
@@ -951,7 +951,7 @@ char* Str::wcharPtrToCharPtr(const wchar_t* line) {
 /// @param varname Variable name to get environment variable value for
 /// @return If variable exist the value of it otherwise nullptr
 const char* OS::getWindowsEnvironmentVariable(const char* varname) {
-  const DWORD bufferLen = 50;
+  const uint32_t bufferLen = 50;
   static char buffer[bufferLen];
   if (GetEnvironmentVariableA(varname, buffer, bufferLen)) {
     return buffer;

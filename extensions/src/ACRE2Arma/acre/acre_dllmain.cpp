@@ -5,9 +5,9 @@
 INITIALIZE_EASYLOGGINGPP
 
 BOOLEAN WINAPI DllMain(IN HINSTANCE hDllHandle,
-    IN DWORD     nReason,
+    IN uint32_t     nReason,
     IN LPVOID    Reserved) {
-    BOOLEAN bSuccess = TRUE;
+    BOOLEAN bSuccess = true;
     el::Configurations conf;
 
     switch (nReason) {

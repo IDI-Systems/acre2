@@ -15,8 +15,8 @@ CWave::CWave(void)
     m_dwSize = 0;
     m_hWaveout = NULL;
     memset(&m_WaveHeader, 0, sizeof(WAVEHDR));
-    m_bPaused = FALSE;
-    m_bStopped = TRUE;
+    m_bPaused = false;
+    m_bStopped = true;
 }
 
 CWave::~CWave(void)
@@ -31,16 +31,16 @@ CWave::~CWave(void)
     }
 }
 
-BOOL CWave::Load(std::string wavFile)
+bool CWave::Load(std::string wavFile)
 {
-    BOOL bResult = FALSE;
+    bool bResult = false;
 
 
 
     std::ifstream file;
     file.open(wavFile, std::fstream::in | std::fstream::binary);
     if (file.bad() || !file.is_open())
-        return FALSE;
+        return false;
 
     file.read((char *)this->m_Descriptor.riff, sizeof(this->m_Descriptor.riff));
     file.read((char *)&this->m_Descriptor.size, sizeof(this->m_Descriptor.size));
@@ -82,7 +82,7 @@ BOOL CWave::Load(std::string wavFile)
             memset(this->m_lpData, 0x00, this->m_dwSize*sizeof(BYTE));
             file.read((char *)this->m_lpData, this->m_dwSize);
             file.close();
-            bResult = TRUE;
+            bResult = true;
         }
     }
 

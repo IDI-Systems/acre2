@@ -47,7 +47,7 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         */
         X3DAudioInitialize(speakerMask, X3DAUDIO_SPEED_OF_SOUND, this->p_X3DInstance);
 
-        this->p_IsInitialized = TRUE;
+        this->p_IsInitialized = true;
     }
     
     if (CAcreSettings::getInstance()->getDisablePosition())
@@ -212,7 +212,7 @@ X3DAUDIO_VECTOR CFilterPosition::getUpVector(X3DAUDIO_VECTOR inVector) {
 CFilterPosition::CFilterPosition(void)
 {
     CoInitializeEx(NULL, NULL);
-    this->p_IsInitialized = FALSE;
+    this->p_IsInitialized = false;
 }
 
 CFilterPosition::~CFilterPosition(void) {

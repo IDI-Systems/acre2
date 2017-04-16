@@ -11,7 +11,7 @@ TS3Functions ts3Functions;
 [module(dll, name="acre2", version="1.0")];
 
 
-BOOL WINAPI DllMain(HINSTANCE hInst,DWORD reason,LPVOID) {
+bool WINAPI DllMain(HINSTANCE hInst,uint32_t reason,LPVOID) {
 
     if (reason == DLL_PROCESS_ATTACH){
         //g_Log = (Log *)new Log("acre.log");

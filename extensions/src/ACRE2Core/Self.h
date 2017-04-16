@@ -16,6 +16,6 @@ public:
         this->setCurrentLanguageId(0);
     };
     DECLARE_MEMBER(ACRE_CURVE_MODEL, CurveModel);
-    DECLARE_MEMBER(BOOL, Speaking);
+    DECLARE_MEMBER(bool, Speaking);
     DECLARE_MEMBER(int, CurrentLanguageId);
 };

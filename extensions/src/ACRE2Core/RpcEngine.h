@@ -19,7 +19,7 @@ public:
     ACRE_RESULT        removeProcedure(char * cmd);
     IRpcFunction    *findProcedure(char *cmd);
     ACRE_RESULT        runProcedure(IServer *serverInstance, IMessage *msg);
-    ACRE_RESULT        runProcedure(IServer *serverInstance, IMessage *msg, BOOL entrant);
+    ACRE_RESULT        runProcedure(IServer *serverInstance, IMessage *msg, bool entrant);
 
     ACRE_RESULT        exProcessItem(ACRE_RPCDATA *data);
 private:

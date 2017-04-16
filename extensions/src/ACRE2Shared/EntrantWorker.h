@@ -15,7 +15,7 @@ public:
         this->setRunning(false);
     }
     ~TEntrantWorker() {
-    
+
     }
     ACRE_RESULT startWorker(void) {
         LOCK(this);
@@ -37,7 +37,7 @@ public:
         this->m_processQueue.clear();
         UNLOCK(this);
         this->setShuttingDown(false);
-        
+
         return ACRE_OK;
     }
 
@@ -45,7 +45,7 @@ public:
         T item;
         while (!this->getShuttingDown()) {
             LOCK(this);
-            if (this->m_processQueue.try_pop(item)) {    
+            if (this->m_processQueue.try_pop(item)) {
                 this->exProcessItem(item);
             }
             UNLOCK(this);
@@ -55,8 +55,8 @@ public:
     }
 
     virtual ACRE_RESULT exProcessItem(T) = 0;
-    DECLARE_MEMBER(BOOL, ShuttingDown);
-    DECLARE_MEMBER(BOOL, Running);
+    DECLARE_MEMBER(bool, ShuttingDown);
+    DECLARE_MEMBER(bool, Running);
 protected:
     std::thread workerThread;
     Concurrency::concurrent_queue<T> m_processQueue;

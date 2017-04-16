@@ -30,7 +30,7 @@ ACRE_RESULT CTS3Client::initialize(void) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::setMuted(ACRE_ID id, BOOL muted) {
+ACRE_RESULT CTS3Client::setMuted(ACRE_ID id, bool muted) {
     anyID clientArray[2];
     
     clientArray[0] = (anyID)id;
@@ -46,7 +46,7 @@ ACRE_RESULT CTS3Client::setMuted(ACRE_ID id, BOOL muted) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::setMuted(std::list<ACRE_ID> idList, BOOL muted) {
+ACRE_RESULT CTS3Client::setMuted(std::list<ACRE_ID> idList, bool muted) {
 
     return ACRE_OK;
 }
@@ -71,14 +71,14 @@ ACRE_RESULT CTS3Client::stop() {
 
 ACRE_RESULT CTS3Client::start(ACRE_ID id) {
     CEngine::getInstance()->start(id);
-    this->setInputActive(FALSE);
-    this->setDirectFirst(FALSE);
-    this->setMainPTTDown(FALSE);
-    this->setRadioPTTDown(FALSE);
-    this->setHitTSSpeakingEvent(FALSE);
-    this->setOnRadio(FALSE);
+    this->setInputActive(false);
+    this->setDirectFirst(false);
+    this->setMainPTTDown(false);
+    this->setRadioPTTDown(false);
+    this->setHitTSSpeakingEvent(false);
+    this->setOnRadio(false);
     this->setState(ACRE_STATE_RUNNING);
-    this->setIsX3DInitialized(FALSE);
+    this->setIsX3DInitialized(false);
 
     this->m_versionThreadHandle = std::thread(&CTS3Client::exPersistVersion, this);
 
@@ -116,14 +116,14 @@ ACRE_RESULT CTS3Client::exPersistVersion( void ) {
     return false;
 }
 
-BOOL CTS3Client::getVAD() {
+bool CTS3Client::getVAD() {
     unsigned int res;
     char *data;
-    BOOL returnValue = FALSE;
+    bool returnValue = false;
     res = ts3Functions.getPreProcessorConfigValue(ts3Functions.getCurrentServerConnectionHandlerID(), "vad", &data);
     if (!res) {
         if (!strcmp(data, "true")) {
-            returnValue = TRUE;
+            returnValue = true;
         }
         ts3Functions.freeMemory(data);
     }
@@ -136,22 +136,22 @@ ACRE_RESULT CTS3Client::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType) {
 }
 
 ACRE_RESULT CTS3Client::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::string radioId) {
-    BOOL stopDirectSpeaking = FALSE;
+    bool stopDirectSpeaking = false;
     
 
     if (speakingType == ACRE_SPEAKING_RADIO) {
-        this->setRadioPTTDown(TRUE);
-        this->setOnRadio(TRUE);
+        this->setRadioPTTDown(true);
+        this->setOnRadio(true);
         if (!this->getVAD()) {
             if (!this->getDirectFirst()) {
-                this->microphoneOpen(TRUE);
+                this->microphoneOpen(true);
             }
             if (this->getDirectFirst()) {
-                stopDirectSpeaking = TRUE;
+                stopDirectSpeaking = true;
             }
         } else {
             if (this->getTsSpeakingState() == STATUS_TALKING) {
-                stopDirectSpeaking = TRUE;
+                stopDirectSpeaking = true;
             }
         }
     }
@@ -165,28 +165,28 @@ ACRE_RESULT CTS3Client::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std:
 
 
 ACRE_RESULT CTS3Client::localStopSpeaking(ACRE_SPEAKING_TYPE speakingType) {
-    BOOL resendDirectSpeaking = FALSE;
+    bool resendDirectSpeaking = false;
     if (speakingType == ACRE_SPEAKING_RADIO || speakingType == ACRE_SPEAKING_UNKNOWN) {
-        this->setRadioPTTDown(FALSE);
+        this->setRadioPTTDown(false);
     }
     
 
     if (this->getOnRadio()) {
         if (!this->getVAD()) {
             if (speakingType == ACRE_SPEAKING_RADIO && this->getDirectFirst()) {
-                this->setOnRadio(FALSE);
-                resendDirectSpeaking = TRUE;
+                this->setOnRadio(false);
+                resendDirectSpeaking = true;
             } else {
                 if (!((CTS3Client *)(CEngine::getInstance()->getClient()))->getMainPTTDown()) {
-                    this->microphoneOpen(FALSE);
+                    this->microphoneOpen(false);
                 } else {
                     resendDirectSpeaking = true;
                 }
             }
         } else {
-            this->setOnRadio(FALSE);
+            this->setOnRadio(false);
             if (this->getTsSpeakingState() == STATUS_TALKING) {
-                resendDirectSpeaking = TRUE;
+                resendDirectSpeaking = true;
             }
         }
     }
@@ -199,8 +199,8 @@ ACRE_RESULT CTS3Client::localStopSpeaking(ACRE_SPEAKING_TYPE speakingType) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::enableMicrophone(BOOL status) {
-    BOOL currentStatus = this->getInputStatus();
+ACRE_RESULT CTS3Client::enableMicrophone(bool status) {
+    bool currentStatus = this->getInputStatus();
     unsigned int res;
     if (currentStatus != status) {
         if (status) {
@@ -237,8 +237,8 @@ ACRE_RESULT CTS3Client::enableMicrophone(BOOL status) {
     return ACRE_OK;
 }
 
-BOOL CTS3Client::getInputStatus() {
-    BOOL status;
+bool CTS3Client::getInputStatus() {
+    bool status;
     unsigned int res, ret;
     res = ts3Functions.getClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_INPUT_MUTED, (int *)&ret);
     if (res != ERROR_ok) {
@@ -247,13 +247,13 @@ BOOL CTS3Client::getInputStatus() {
             LOG("Error querying microphone input status: %s\n", errorMsg);
             ts3Functions.freeMemory(errorMsg);
         }
-        return FALSE;
+        return false;
     }
 
     if (ret == MUTEINPUT_NONE)
-        status = TRUE;
+        status = true;
     else 
-        status = FALSE;
+        status = false;
 
     return status;
 }
@@ -345,15 +345,15 @@ std::string CTS3Client::getTempFilePath( void ) {
     return tempFolder;
 }
 
-ACRE_RESULT CTS3Client::microphoneOpen(BOOL status) {
+ACRE_RESULT CTS3Client::microphoneOpen(bool status) {
     unsigned int res;
     int micStatus;
     if (status) {
         micStatus = INPUT_ACTIVE;
-        this->setInputActive(TRUE);
+        this->setInputActive(true);
     } else {
         micStatus = INPUT_DEACTIVATED;
-        this->setInputActive(FALSE);
+        this->setInputActive(false);
     }
     res = ts3Functions.setClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_INPUT_DEACTIVATED, micStatus);
     if (res != ERROR_ok) {
@@ -602,11 +602,11 @@ ACRE_RESULT CTS3Client::updateTs3ChannelDetails(std::vector<std::string> details
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::updateShouldSwitchTS3Channel(const BOOL state) {
+ACRE_RESULT CTS3Client::updateShouldSwitchTS3Channel(const bool state) {
     setShouldSwitchTS3Channel(state);
     return ACRE_OK;
 }
 
-BOOL CTS3Client::shouldSwitchTS3Channel() {
+bool CTS3Client::shouldSwitchTS3Channel() {
     return getShouldSwitchTS3Channel();
 }

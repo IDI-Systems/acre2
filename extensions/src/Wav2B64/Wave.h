@@ -9,7 +9,7 @@
 typedef struct __WAVEDESCR
 {
     BYTE riff[4];
-    DWORD size;
+    uint32_t size;
     BYTE wave[4];
 
 } _WAVEDESCR, *_LPWAVEDESCR;
@@ -17,11 +17,11 @@ typedef struct __WAVEDESCR
 typedef struct __WAVEFORMAT
 {
     BYTE id[4];
-    DWORD size;
+    uint32_t size;
     SHORT format;
     SHORT channels;
-    DWORD sampleRate;
-    DWORD byteRate;
+    uint32_t sampleRate;
+    uint32_t byteRate;
     SHORT blockAlign;
     SHORT bitsPerSample;
 
@@ -37,12 +37,12 @@ public:
 
 public:
     // Public methods
-    BOOL Load(std::string wavFile);
-    BOOL IsValid()                {return (m_lpData != NULL);}
+    bool Load(std::string wavFile);
+    bool IsValid()                {return (m_lpData != NULL);}
     LPBYTE GetData()            {return m_lpData;}
-    DWORD GetSize()                {return m_dwSize;}
+    uint32_t GetSize()                {return m_dwSize;}
     SHORT GetChannels()            {return m_Format.channels;}
-    DWORD GetSampleRate()        {return m_Format.sampleRate;}
+    uint32_t GetSampleRate()        {return m_Format.sampleRate;}
     SHORT GetBitsPerSample()    {return m_Format.bitsPerSample;}
 
 private:
@@ -50,9 +50,9 @@ private:
     _WAVEDESCR m_Descriptor;
     _WAVEFORMAT m_Format;
     LPBYTE m_lpData;
-    DWORD m_dwSize;
+    uint32_t m_dwSize;
     HWAVEOUT m_hWaveout;
     WAVEHDR m_WaveHeader;
-    BOOL m_bStopped;
-    BOOL m_bPaused;
+    bool m_bStopped;
+    bool m_bPaused;
 };

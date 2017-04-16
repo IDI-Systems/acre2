@@ -23,12 +23,12 @@ public:
     virtual ARNE_RESULT set_Volume(ARNE_ID, float) = 0;
     virtual ARNE_RESULT get_Volume(ARNE_ID, float *) = 0;
 
-    virtual ARNE_RESULT set_Muted(CPlayer *, BOOL) = 0;
-    virtual ARNE_RESULT get_Muted(CPlayer *, BOOL *) = 0;
-    virtual ARNE_RESULT set_Muted(ARNE_ID, BOOL) = 0;
-    virtual ARNE_RESULT get_Muted(ARNE_ID, BOOL *) = 0;
+    virtual ARNE_RESULT set_Muted(CPlayer *, bool) = 0;
+    virtual ARNE_RESULT get_Muted(CPlayer *, bool *) = 0;
+    virtual ARNE_RESULT set_Muted(ARNE_ID, bool) = 0;
+    virtual ARNE_RESULT get_Muted(ARNE_ID, bool *) = 0;
 
-    virtual ARNE_RESULT set_AllMuted(BOOL) = 0;
+    virtual ARNE_RESULT set_AllMuted(bool) = 0;
     
     virtual ARNE_RESULT startSpeaking(void) = 0;
     virtual ARNE_RESULT stopSpeaking(void) = 0;
@@ -40,7 +40,7 @@ public:
 
     virtual ARNE_RESULT disableInput(void) = 0;
     virtual ARNE_RESULT enableInput(void) = 0;
-    virtual ARNE_RESULT get_InputStatus(BOOL *) = 0;
+    virtual ARNE_RESULT get_InputStatus(bool *) = 0;
 
     virtual ARNE_RESULT        get_SoundData(CPlayer *, VOID **) = 0;
     virtual VOID *            get_SoundData(CPlayer *) = 0;

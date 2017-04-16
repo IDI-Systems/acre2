@@ -98,8 +98,8 @@ void write_progress(uint32_t total_size) {
             ss << "Complete: " << percent << "%";
             std::string p = ss.str();
             const char *str = p.c_str();
-            DWORD len = strlen(str);
-            DWORD dwBytesWritten = 0;
+            uint32_t len = strlen(str);
+            uint32_t dwBytesWritten = 0;
             SetConsoleActiveScreenBuffer(hConsole_c);
             WriteConsoleOutputCharacter(hConsole_c, "                            ", 29, pos, &dwBytesWritten);
             WriteConsoleOutputCharacter(hConsole_c, str, len, pos, &dwBytesWritten);

@@ -10,12 +10,19 @@
 
 #pragma warning(disable : 4366)
 
-#define _WINSOCKAPI_ 
+#define _WINSOCKAPI_
 #define NOMINMAX
+
+#if WIN32
 #include <Windows.h>
 #include <winsock2.h>
-#include <stdio.h>
 #include <tchar.h>
+#else
+#include <sys/socket.h>
+#include <sys/time.h>
+#endif
+#include <stdio.h>
+
 #include <time.h>
 
 #ifdef _ACRE_DEBUG_HEAP
@@ -30,14 +37,14 @@
     #pragma comment(lib, "ws2_32.lib")
     #pragma comment(lib, "advapi32.lib")
 
-    #ifdef _WIN64 
+    #ifdef _WIN64
     #pragma comment(lib, "..\\..\\ACRE2Shared\\bin\\ACRE2Shared_x64.lib")
     #else
     #pragma comment(lib, "..\\..\\ACRE2Shared\\bin\\ACRE2Shared_x86.lib")
     #endif
 
 #ifndef _NOCORE
-    #ifdef _WIN64 
+    #ifdef _WIN64
     #pragma comment(lib, "..\\..\\ACRE2Core\\bin\\ACRE2Core_x64.lib")
     #else
     #pragma comment(lib, "..\\..\\ACRE2Core\\bin\\ACRE2Core_x86.lib")

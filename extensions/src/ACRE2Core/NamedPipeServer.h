@@ -27,28 +27,28 @@ public:
     ACRE_RESULT sendMessage( IMessage *message );
 
     ACRE_RESULT release( void ) { return ACRE_OK; };
-    
+
     ACRE_RESULT checkServer( void ); // DRM
 
     char *currentServerId;
 
     DECLARE_MEMBER(HANDLE, PipeHandleRead);
     DECLARE_MEMBER(HANDLE, PipeHandleWrite);
-    DECLARE_MEMBER(BOOL, ConnectedWrite);
-    DECLARE_MEMBER(BOOL, ConnectedRead)
+    DECLARE_MEMBER(bool, ConnectedWrite);
+    DECLARE_MEMBER(bool, ConnectedRead)
     DECLARE_MEMBER(ACRE_ID, Id);
-    DECLARE_MEMBER(BOOL, ShuttingDown);
+    DECLARE_MEMBER(bool, ShuttingDown);
     DECLARE_MEMBER(std::string, FromPipeName);
     DECLARE_MEMBER(std::string, ToPipeName);
 
 public:
-    BOOL getConnected() { return (this->getConnectedRead() && this->getConnectedWrite()); };
-    void setConnected(BOOL value) { this->setConnectedRead(value); this->setConnectedWrite(value); };
+    bool getConnected() { return (this->getConnectedRead() && this->getConnectedWrite()); };
+    void setConnected(bool value) { this->setConnectedRead(value); this->setConnectedWrite(value); };
 private:
     Concurrency::concurrent_queue<IMessage *> m_sendQueue;
     std::thread m_readThread;
     std::thread m_sendThread;
     PSECURITY_ATTRIBUTES m_PipeSecurity;
     std::set<std::string> validTSServers;
-    
+
 };

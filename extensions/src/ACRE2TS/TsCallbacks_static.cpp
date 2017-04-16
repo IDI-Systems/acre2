@@ -32,7 +32,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
     type = type;
     id = id;*/
 
-    BOOL noAcre = FALSE;
+    bool noAcre = false;
     char *metaData;
 
     switch(type) {
@@ -43,11 +43,11 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
         case PLUGIN_CLIENT:
             if (ts3Functions.getClientVariableAsString(serverConnectionHandlerID, (anyID)id, CLIENT_META_DATA, &metaData) == ERROR_ok) {
                 if (!metaData) { 
-                    noAcre = TRUE;
+                    noAcre = true;
                 }
                 int metaDataLength = strlen(metaData);
                 if (metaDataLength < 3 || metaDataLength > (INFODATA_BUFSIZE - 2)) {
-                    noAcre = TRUE;
+                    noAcre = true;
                 }
                 *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char)); 
                 if (!noAcre) {

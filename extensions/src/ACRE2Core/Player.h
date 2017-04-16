@@ -18,7 +18,7 @@ public:
 
     CPlayer(ACRE_ID id);
     CPlayer( void );
-    
+
     void clearSoundChannels();
     ~CPlayer( void ) {
         clearSoundChannels();
@@ -33,7 +33,7 @@ public:
     DECLARE_MEMBER(ACRE_VOLUME, PreviousVolume);
     DECLARE_MEMBER(ACRE_VOLUME, SignalQuality);
     DECLARE_MEMBER(char *, SignalModel);
-    DECLARE_MEMBER(BOOL, IsLoudSpeaker);
+    DECLARE_MEMBER(bool, IsLoudSpeaker);
 
     DECLARE_MEMBER(std::string, CurrentRadioId);
 

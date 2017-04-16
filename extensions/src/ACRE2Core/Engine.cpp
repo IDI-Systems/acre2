@@ -42,7 +42,7 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
     this->m_RpcEngine = new CRpcEngine();
     //this->m_KeyHandlerEngine = new CKeyHandlerEngine();
     this->m_SoundPlayback = new CSoundPlayback();
-    this->setSoundSystemOverride(FALSE);
+    this->setSoundSystemOverride(false);
 
     this->setSelf(new CSelf());
 
@@ -169,13 +169,13 @@ ACRE_RESULT CEngine::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::st
         )
     );
 
-    this->getSelf()->setSpeaking(TRUE);
+    this->getSelf()->setSpeaking(true);
     this->getSelf()->unlock();
     return ACRE_OK;
 }
 
 ACRE_RESULT CEngine::localStopSpeaking( void ) {
-    this->getSelf()->setSpeaking(FALSE);
+    this->getSelf()->setSpeaking(false);
     CEngine::getInstance()->getExternalServer()->sendMessage(
         CTextMessage::formatNewMessage("ext_remoteStopSpeaking",
             "%d,%s,",

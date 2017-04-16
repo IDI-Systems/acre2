@@ -66,7 +66,7 @@ CCommandServer::CCommandServer(ACRE_ID id) {
 }
 CCommandServer::CCommandServer(void) {
     this->setCommandId(NULL);
-    this->setConnected(TRUE);
+    this->setConnected(true);
 }
 CCommandServer::~CCommandServer() {
     

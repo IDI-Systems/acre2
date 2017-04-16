@@ -38,7 +38,7 @@ static inline std::string &trim(std::string &s) {
 #define STEAM_DO_COPY    2
 
 
-BOOL writeConnected, readConnected;
+bool writeConnected, readConnected;
 
 
 
@@ -148,8 +148,8 @@ std::string ReadRegValue(HKEY root, std::string key, std::string name) {
     if (RegOpenKeyExA(root, key.c_str(), 0, KEY_READ, &hkey) != ERROR_SUCCESS)
         return "";
 
-    DWORD type;
-    DWORD cbData;
+    uint32_t type;
+    uint32_t cbData;
     if (RegQueryValueExA(hkey, name.c_str(), NULL, &type, NULL, &cbData) != ERROR_SUCCESS) {
         RegCloseKey(hkey);
         return "";
@@ -180,8 +180,8 @@ std::string ReadRegValue64(HKEY root, std::string key, std::string name) {
     if (RegOpenKeyExA(root, key.c_str(), 0, KEY_READ | KEY_WOW64_64KEY, &hkey) != ERROR_SUCCESS)
         return "";
 
-    DWORD type;
-    DWORD cbData;
+    uint32_t type;
+    uint32_t cbData;
     if (RegQueryValueExA(hkey, name.c_str(), NULL, &type, NULL, &cbData) != ERROR_SUCCESS) {
         RegCloseKey(hkey);
         return "";
@@ -445,7 +445,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
 
                 // Skip directory if the folder the plugins folder should be in does not exist.
-                DWORD location_folder_attr = GetFileAttributes(location.c_str());
+                uint32_t location_folder_attr = GetFileAttributes(location.c_str());
                 if (location_folder_attr == INVALID_FILE_ATTRIBUTES) { continue; }
                 if (!(location_folder_attr & FILE_ATTRIBUTE_DIRECTORY)) { continue; }
 
@@ -460,7 +460,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                     updateRequired = true;
                     do {
                         if (!CopyFileA((LPCSTR)path_x86.c_str(), (LPCSTR)ts_path_x86.c_str(), false) || !CopyFileA((LPCSTR)path_x64.c_str(), (LPCSTR)ts_path_x64.c_str(), false)) {
-                            DWORD last_error = GetLastError();
+                            uint32_t last_error = GetLastError();
                             if (last_error == 32) {
                                 int result = MessageBoxA(NULL, "ACRE2 was unable to copy the TeamSpeak 3 plugin due to it being in use. Please close any instances of TeamSpeak 3 and click Retry.\n\nIf you would like to close Arma 3, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
                                 if (result == IDCANCEL) {
@@ -497,7 +497,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 std::string plugin_folder = location + "\\plugins";
 
                 // Skip directory if the plugins folder does not exist.
-                DWORD plugin_folder_attr = GetFileAttributes(plugin_folder.c_str());
+                uint32_t plugin_folder_attr = GetFileAttributes(plugin_folder.c_str());
                 if (plugin_folder_attr == INVALID_FILE_ATTRIBUTES) { continue; }
                 if (!(plugin_folder_attr & FILE_ATTRIBUTE_DIRECTORY)) { continue; }
 
@@ -513,7 +513,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                     bool try_delete = true;
                     {
                         if (!DeleteFileA(file.c_str())) {
-                            DWORD last_error = GetLastError();
+                            uint32_t last_error = GetLastError();
                             if (last_error != ERROR_FILE_NOT_FOUND) {
                                 updateRequired = true;
                                 if (last_error == FILE_SHARE_DELETE) { // File in use
@@ -606,8 +606,8 @@ void Cleanup(void) {
 }
 
 
-BOOL APIENTRY DllMain( HMODULE hModule,
-                       DWORD  ul_reason_for_call,
+bool APIENTRY DllMain( HMODULE hModule,
+                       uint32_t  ul_reason_for_call,
                        LPVOID lpReserved
                      )
 {
@@ -622,5 +622,5 @@ BOOL APIENTRY DllMain( HMODULE hModule,
         Cleanup();
         break;
     }
-    return TRUE;
+    return true;
 }

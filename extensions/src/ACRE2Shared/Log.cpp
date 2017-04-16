@@ -1,11 +1,11 @@
-
+// TODO: Remove comments that depend on windows routines
 #include "compat.h"
 #include "Log.h"
-
+#include <cstring>
 
 Log *g_Log = NULL;
 
-Log::Log(char *logFile) { 
+Log::Log(char *logFile) {
     InitializeCriticalSection(&this->m_CriticalSection);
 
     if (logFile == NULL) {
@@ -28,44 +28,60 @@ Log::~Log(void) {
     DeleteCriticalSection(&this->m_CriticalSection);
     CloseHandle(this->fileHandle);
 }
-size_t Log::Write(DWORD msgType, char *function, unsigned int line, const char *format, ...) {
+size_t Log::Write(uint32_t msgType, char *function, unsigned int line, const char *format, ...) {
     char buffer[4097], tbuffer[1024];
     va_list va;
     size_t ret;
-    DWORD count;
-    BOOL res;
+    uint32_t count;
+    bool res;
+#if WIN32
     SYSTEMTIME st;
+#else
+    struct timeval tv;
+    struct tm* ptm;
+    suseconds_t milliseconds;
+#endif
 
-    if (this == NULL)
+    if (this == NULL) {
         return 0xFFFFFFFF;
+    }
 
-    if (this->fileHandle == INVALID_HANDLE_VALUE) 
+    if (this->fileHandle == INVALID_HANDLE_VALUE) {
         return 0xFFFFFFFF;
+    }
 
     buffer[0] = 0x00;
 
+#if WIN32
     GetLocalTime(&st);
-    _snprintf_s(buffer, sizeof(buffer), sizeof(buffer)-1, "[%d:%d:%d.%d] ", st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
+    snprintf(buffer, sizeof(buffer), "[%d:%d:%d.%d] ", st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
+#else
+    gettimeofday(&tv, NULL);
+    ptm = localtime(&tv.tv_sec);
+    milliseconds = tv.tv_usec / 1000;
+    snprintf(buffer, sizeof(buffer), "[%d:%d:%d.%d] ", ptm->tm_hour, ptm->tm_min, ptm->tm_sec, (uint32_t) milliseconds);
+#endif
 
 #ifdef _TRACE
     tbuffer[0] = 0x00;
-    _snprintf_s(tbuffer, sizeof(tbuffer)-1, sizeof(tbuffer)-1, "(%s():%d) - ", function, line);
-    strcat_s(buffer, sizeof(buffer), tbuffer);
+    snprintf(tbuffer, sizeof(tbuffer)-1, "(%s():%d) - ", function, line);
+    strncat(buffer, tbuffer,  sizeof(buffer));
     tbuffer[0] = 0x00;
 #endif
 
     va_start(va, format);
-    ret = vsprintf_s(tbuffer,sizeof(tbuffer), format, va);
+    ret = vsnprintf(tbuffer,sizeof(tbuffer), format, va);
     va_end(va);
 
-    strcat_s(buffer, sizeof(buffer), tbuffer);
+    strncat(buffer, tbuffer, sizeof(buffer));
 
-    ret = strlen(buffer)+2;
-    strcat_s(buffer, sizeof(buffer), "\r\n");
+    ret = strlen(buffer) + 2;
+    strncat(buffer, "\r\n", sizeof(buffer));
 
+#if WIN32
     EnterCriticalSection(&this->m_CriticalSection);
-    res = WriteFile(this->fileHandle, (LPCVOID)buffer, (DWORD)ret, &count, NULL);
-    if (res == FALSE) {
+    res = WriteFile(this->fileHandle, (LPCVOID)buffer, (uint32_t) ret, &count, NULL);
+    if (res == false) {
         printf("Write file failed");
     }
     LeaveCriticalSection(&this->m_CriticalSection);
@@ -76,22 +92,25 @@ size_t Log::Write(DWORD msgType, char *function, unsigned int line, const char *
     if (msgType == LOGLEVEL_ERROR) {
         MessageBoxA(NULL, buffer, "CRITICAL ERROR", MB_OK);
     }
+#endif
 
     return(ret);
 }
-size_t Log::PopMessage(DWORD msgType, const char *format, ...) {
+size_t Log::PopMessage(uint32_t msgType, const char *format, ...) {
     char buffer[4097];
     va_list va;
     int ret;
-    
+
     msgType = msgType;
 
     memset(buffer, 0x00, sizeof(buffer));
     va_start(va, format);
-    ret = vsprintf_s(buffer,4096, format, va);
+    ret = vsnprintf(buffer,4096, format, va);
     va_end(va);
 
+#if WIN32
     ret = MessageBoxA(NULL, buffer, "Log Message", MB_ICONINFORMATION | MB_OK);
+#endif
 
-    return(ret);
+    return (ret);
 }

@@ -221,7 +221,7 @@ namespace acre {
 
                 /* Check if this handle belongs to the PID the user specified. */
                 if (handle.ProcessId != pid) {
-                    //LOG(INFO) << "PID MISMATCH: " << (DWORD)handle.ProcessId << " != " << (DWORD)pid;
+                    //LOG(INFO) << "PID MISMATCH: " << (uint32_t)handle.ProcessId << " != " << (uint32_t)pid;
                     continue;
                 }
                     

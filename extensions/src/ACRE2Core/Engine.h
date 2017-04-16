@@ -20,7 +20,7 @@ public:
     CEngine(void) { g_Log = nullptr; };
     ~CEngine(void) { LOG("* Destroying logging engine."); delete g_Log; };
 
-    
+
 
     ACRE_RESULT initialize(IClient * client, IServer * externalServer, std::string fromPipeName, std::string toPipeName);
     ACRE_RESULT initialize(IClient * client, IServer * externalServer, std::string fromPipeName, std::string toPipeName, std::string loggingPath);
@@ -44,14 +44,14 @@ public:
     //DECLARE_MEMBER(CKeyHandlerEngine *, KeyHandlerEngine);
     DECLARE_MEMBER(CSoundPlayback *, SoundPlayback);
 
-    DECLARE_MEMBER(BOOL, SoundSystemOverride);
+    DECLARE_MEMBER(bool, SoundSystemOverride);
 
     DECLARE_MEMBER(ACRE_STATE, State);
-    
+
     DECLARE_MEMBER(CSelf *, Self);
 
     DECLARE_MEMBER(IClient *, Client);
 
-    
-    
+
+
 };

@@ -2,7 +2,10 @@
 
 #include "compat.h"
 #include <list>
+
 #include <string>
+#include <cstring>
+
 #include "Macros.h"
 #include "Types.h"
 
@@ -21,18 +24,18 @@ public:
     ACRE_RESULT parse(char *data, size_t len);
 
     char *getProcedureName(void);
-    BOOL isValid();
+    bool isValid();
     unsigned char *getParameter(unsigned int index);
     int getParameterAsInt(unsigned int index);
     float getParameterAsFloat(unsigned int index);
     unsigned int getParameterCount(void);
-    
+
 
     static IMessage *createNewMessage(char *procedureName, ... );
     static IMessage *formatNewMessage(char *procedureName, char *format, ... );
 
-    unsigned char *getData() { 
-        return ((unsigned char *)this->m_DataPtr); 
+    unsigned char *getData() {
+        return ((unsigned char *)this->m_DataPtr);
     }
     ACRE_RESULT setData(unsigned char *data) {
         this->parse((char *)data, strlen((char*)data));
@@ -48,6 +51,6 @@ private:
     std::string *m_RpcProcedureName;
     std::string *m_Parameters[TEXTMESSAGE_MAX_PARAMETER_COUNT];
     unsigned int m_ParameterCount;
-    BOOL m_IsValid;
+    bool m_IsValid;
     char *m_DataPtr;
 };

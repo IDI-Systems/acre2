@@ -21,5 +21,5 @@ public:
 
 private:
     X3DAUDIO_HANDLE p_X3DInstance;
-    BOOL p_IsInitialized;
+    bool p_IsInitialized;
 };

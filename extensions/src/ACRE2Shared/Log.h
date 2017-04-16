@@ -1,6 +1,8 @@
 #pragma once
 
 #include "compat.h"
+#include <cstdint>
+#include <stdarg.h>
 
 #define LOGLEVEL_TRACE        0x00000001
 #define LOGLEVEL_DEBUG        0x00000002
@@ -12,7 +14,7 @@
     #define RUNNING_LOGLEVEL LOGLEVEL_TRACE
     #define TRACE(...) g_Log->Write(LOGLEVEL_TRACE, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
 #else
-    #define TRACE(...) 
+    #define TRACE(...)
 #endif
 
 #ifdef _REF_TRACE
@@ -26,7 +28,7 @@
         #define RUNNING_LOGLEVEL LOGLEVEL_DEBUG
         #define DEBUG(...) g_Log->Write(LOGLEVEL_DEBUG, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
     #else
-        #define DEBUG(...) 
+        #define DEBUG(...)
     #endif
 #else
 #define DEBUG(...)
@@ -50,7 +52,7 @@
     assert(1==2)
 #else
 #define ERR_ASSERT(...)                                                            \
-    g_Log->Write(LOGLEVEL_ERROR, __FUNCTION__, __LINE__, __VA_ARGS__, NULL); 
+    g_Log->Write(LOGLEVEL_ERROR, __FUNCTION__, __LINE__, __VA_ARGS__, NULL);
 #endif
 
 #define TRACE_FUNCTION(x) x  { TRACE("enter");
@@ -61,13 +63,12 @@ public:
     Log(char *logFile);
     ~Log(void);
 
-    size_t Write(DWORD msgType, char *function, unsigned int line, const char *format, ...);
-    size_t PopMessage(DWORD msgType, const char *format, ...);
+    size_t Write(uint32_t msgType, char *function, unsigned int line, const char *format, ...);
+    size_t PopMessage(uint32_t msgType, const char *format, ...);
 
     HANDLE fileHandle;
 
 private:
-    
     CRITICAL_SECTION m_CriticalSection;
 };
 
