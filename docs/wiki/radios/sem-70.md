@@ -16,7 +16,7 @@ The SEM 70 (Sender/Empfänger, mobil SEM 70) is a manpack radio for military pur
 
 ## Primer On Automatic Channel Mode (AKW)
 
-While in automatic channel mode, the operator can select from 10 Channels. Each channels combines 16 different frequencies, which can't be changed by the operator. While no transmission is active, every radio continously scans all 16 frequencies in a loop. If a transmission is initiated, the sending radio randomly selects a frequency on which all receiving radios lock on. IRL this usually takes about 0.7 Seconds, in ACRE2 there is no such delay.
+While in automatic channel mode, the operator can select from 10 Channels. Each channels combines 16 different frequencies, which can't be changed by the operator. While no transmission is active, every radio continously scans all 16 frequencies in a loop. If a transmission is initiated, the sending radio randomly selects a frequency on which all receiving radios lock on. IRL this usually takes about 0.7 Seconds, in ACRE2 there is no such delay (may be added at a later point).
 However, to establish a valid connection between two or more radios, the following parameters must be the same on all involved radios
 - Channel Setup (Channels/Frequencies must be identical for each radio)
 - Memory Slot (Channel)
@@ -38,7 +38,7 @@ The radio features two different power settings. On high power setting (_GR_) th
 
 ### Mode Selector Knob
 
-Currently the SEM 70 in ACRE2 features both manual channel (_HW_) and automatic channel (_AKW_) mode. All other settings will be ignored. The modes will be explained in detail later.
+Currently the SEM 70 in ACRE2 features both manual channel (_HW_) and automatic channel (_AKW_) mode. All other settings will be ignored at the moment.
 
 ### Frequency Knobs
 
