@@ -199,6 +199,18 @@ private _displayButtonImages = [
     QPATHTOF(data\knobs\display\anzeige_ein.paa)
 ];
 
+private _backgroundImages = [
+    QPATHTOF(data\ui\sem70ui_ca.paa),
+    QPATHTOF(data\ui\sem90ui_ca.paa)
+];
+
+
+private _isMounted = [GVAR(currentRadioId)] call EFUNC(sys_rack,getRackFromRadio);
+if (_isMounted == "") then {
+    RADIO_CTRL(300) ctrlSetText (_backgroundImages select 0);
+} else {
+    RADIO_CTRL(300) ctrlSetText (_backgroundImages select 1);
+};
 
 
 RADIO_CTRL(106) ctrlSetText (_volImages select _volumeKnobPosition);
