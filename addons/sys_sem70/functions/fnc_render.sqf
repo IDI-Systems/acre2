@@ -199,20 +199,6 @@ private _displayButtonImages = [
     QPATHTOF(data\knobs\display\anzeige_ein.paa)
 ];
 
-private _backgroundImages = [
-    QPATHTOF(data\ui\sem70ui_ca.paa),
-    QPATHTOF(data\ui\sem90ui_ca.paa)
-];
-
-
-private _isMounted = [GVAR(currentRadioId)] call EFUNC(sys_rack,getRackFromRadio);
-if (_isMounted == "") then {
-    RADIO_CTRL(300) ctrlSetText (_backgroundImages select 0);
-} else {
-    RADIO_CTRL(300) ctrlSetText (_backgroundImages select 1);
-};
-
-
 RADIO_CTRL(106) ctrlSetText (_volImages select _volumeKnobPosition);
 RADIO_CTRL(107) ctrlSetText (_mainImages select _mainKnobPosition);
 RADIO_CTRL(108) ctrlSetText (_functionImages select _functionKnobPosition);
@@ -228,8 +214,6 @@ RADIO_CTRL(114) ctrlSetText (_network1KnobImages select (_networkKnobPosition se
 RADIO_CTRL(115) ctrlSetText (_network2KnobImages select (_networkKnobPosition select 1));
 RADIO_CTRL(116) ctrlSetText (_network3KnobImages select (_networkKnobPosition select 2));
 
-
-
 //display
 if (GVAR(backlightOn) || GVAR(displayButtonPressed)) then {
     [_display] call FUNC(renderDisplay);
@@ -237,8 +221,12 @@ if (GVAR(backlightOn) || GVAR(displayButtonPressed)) then {
     [_display] call FUNC(clearDisplay);
 };
 
+//rack
+private _isMounted = [GVAR(currentRadioId)] call EFUNC(sys_rack,getRackFromRadio);
+if (_isMounted == "") then {
+    [_display,false] call FUNC(renderRack);
+} else {
+    [_display,true] call FUNC(renderRack);
+};
 
-//[_display] call FUNC(renderDisplay);
-
-//TRACE_3("rendering", _volumeKnobPosition, _, acre_sys_radio_currentRadioDialog);
 true
