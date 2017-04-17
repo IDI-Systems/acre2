@@ -32,7 +32,9 @@ if (ACRE_ACTIVE_RADIO == _radioId) then { // If it is the active radio.
         [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
     };
 
+    ACRE_ACTIVE_RADIO = ([] call acre_sys_data_fnc_getPlayerRadioList) select 0;
+
     // Switch active Radio
-    ACRE_ACTIVE_RADIO = "";
-    [1] call EFUNC(sys_list,cycleRadios); // Change active radio
+    //ACRE_ACTIVE_RADIO = "";
+    //[1] call EFUNC(sys_list,cycleRadios); // Change active radio
 };
