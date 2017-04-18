@@ -2,7 +2,7 @@
 title: SEM 70
 ---
 
-The SEM 70 (Sender/Empfänger, mobil SEM 70) is a manpack radio for military purposes in the German Army. It was issued in 1984. As a modern radio it can transmit voice and data. The frequency band is from 30 to 79,975 MHz. The channel spacing is 25 KHz by default. It features a manual channel (_Handwahl (HW)_) and an automatic channel (_Automatische Kanalwahl (AKW)_) mode. 
+The SEM 70 (Sender/Empfänger, mobil SEM 70) is a manpack radio for military purposes in the German Army. It was issued in 1984. As a modern radio it can transmit voice and data. The frequency band is from 30 to 79,975 MHz. The channel spacing is 25 KHz by default. It features a manual channel (`Handwahl (HW)`) and an automatic channel (`Automatische Kanalwahl (AKW)`) mode. 
 
 ## Technical Data
 
@@ -16,13 +16,13 @@ The SEM 70 (Sender/Empfänger, mobil SEM 70) is a manpack radio for military pur
 
 ## Primer On Automatic Channel Mode (AKW)
 
-While in automatic channel mode, the operator can select from 10 Channels. Each channels combines 16 different frequencies, which can't be changed by the operator. While no transmission is active, every radio continously scans all 16 frequencies in a loop. If a transmission is initiated, the sending radio randomly selects a frequency on which all receiving radios lock on. IRL this usually takes about 0.7 Seconds, in ACRE2 there is no such delay (may be added at a later point).
-However, to establish a valid connection between two or more radios, the following parameters must be the same on all involved radios
+While in automatic channel mode, the operator can select from 10 Channels. Each channels combines 16 different frequencies, which can't be changed by the operator. While no transmission is active, every radio continously scans all 16 frequencies in a loop. If a transmission is initiated, the sending radio randomly selects a frequency on which all receiving radios lock on. In real life this usually takes about 0.7 Seconds, in ACRE2 there is no such delay (may be added at a later point).
+However, to establish a valid connection between two or more radios, the following parameters must be the same on all involved radios:
 - Channel Setup (Channels/Frequencies must be identical for each radio)
 - Memory Slot (Channel)
 - Network Identifier (Three digit number)
 
-## Basic Operation:
+## Basic Operation
 
 ### Interface
 
@@ -34,11 +34,11 @@ Sets the overall volume of the radio, 6 settings are available.
 
 ### Power Knob
 
-The radio features two different power settings. On high power setting (_GR_) the output is 4 Watts and on low power setting (_KL_) the output is 0.4 Watts. If the knob is set to off (_AUS_), the radio can't transmit or receive anything.
+The radio features two different power settings. On high power setting (`GR`) the output is 4 Watts and on low power setting (`KL`) the output is 0.4 Watts. If the knob is set to off (`AUS`), the radio can't transmit or receive anything.
 
 ### Mode Selector Knob
 
-Currently the SEM 70 in ACRE2 features both manual channel (_HW_) and automatic channel (_AKW_) mode. All other settings will be ignored at the moment.
+Currently the SEM 70 in ACRE2 features both manual channel (`HW`) and automatic channel (`AKW`) mode. All other settings will be ignored at the moment.
 
 ### Frequency Knobs
 
