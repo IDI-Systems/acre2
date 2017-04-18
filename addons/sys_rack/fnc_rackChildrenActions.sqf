@@ -64,7 +64,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             _actions append _radioActions;
         } else {
             // Use
-            private _action = ["acre_stopMountedRadio", localize LSTRING(useRadio), "", {
+            private _action = ["acre_useMountedRadio", localize LSTRING(useRadio), "", {
                 params ["_target", "_unit", "_params"];
                 _params params ["_mountedRadio"];
                 ACRE_ACTIVE_RADIO = toLower _mountedRadio;
