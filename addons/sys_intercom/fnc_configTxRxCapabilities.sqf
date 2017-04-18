@@ -22,7 +22,7 @@ private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
 private _rackTxRxConfig = [];
 
 {
-    private _intercoms = [_x] call EFUNC(sys_rack, getWiredIntercoms);
+    private _intercoms = [_x] call EFUNC(sys_rack,getWiredIntercoms);
     private _intercomPos = [];
 
     // Get intercom positions
@@ -43,13 +43,11 @@ private _rackTxRxConfig = [];
     if (count _intercomPos > 0) then {
         private _rackFunctionality = [];
         {
-            _rackfunctionality pushBackUnique [_x, RACK_RX_AND_TX];
+            _rackfunctionality pushBackUnique [_x, RACK_NO_MONITOR];
         } forEach _intercomPos;
 
         _rackTxRxConfig pushBackUnique [_x, _rackFunctionality];
     };
 } forEach _racks;
-
-systemChat format ["%1", _rackTxRxConfig];
 
 _vehicle setVariable [QGVAR(rackTxRxConfig), _rackTxRxConfig, true];

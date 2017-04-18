@@ -21,7 +21,7 @@
 params ["_rackId", "_vehicle", "_unit", "_functionality"];
 
 private _found = false;
-private _vehicleConfiguration = _vehicle getVariable [QEGVAR(sys_intercom,rackTxRxConfig), []];
+private _vehicleConfiguration = _vehicle getVariable [QGVAR(rackTxRxConfig), []];
 _rackId = toLower _rackId;
 
 {
@@ -29,26 +29,26 @@ _rackId = toLower _rackId;
         private _radioTxRxConfig = _x select 1;
         {
             private _role = _x select 0;
+            systemChat format ["role %1", _forEachIndex];
             switch (_role select 0) do {
                 case "driver": {
-                    if (driver _vehicle == _unit) exitWith {_x set [_forEachIndex, _functionality]; _found = true;};
+                    if (driver _vehicle == _unit) then { _x set [1, _functionality]; _found = true;};
                 };
                 case "commander": {
-                    if (commander _vehicle == _unit) exitWith {_x set [_forEachIndex, _functionality]; _found = true;};
+                    if (commander _vehicle == _unit) then {_x set [1, _functionality]; _found = true;};
                 };
                 case "gunner": {
-                    if (gunner _vehicle == _unit) exitWith {_x set [_forEachIndex, _functionality]; _found = true;};
+                    if (gunner _vehicle == _unit) then {_x set [1, _functionality]; _found = true;};
                 };
                 case "cargo": {
-                    if (_vehicle getCargoIndex _unit == (_role select 1)) exitWith {_x set [_forEachIndex, _functionality]; _found = true;};
+                    if (_vehicle getCargoIndex _unit == (_role select 1)) then {_x set [1, _functionality]; _found = true;};
                 };
                 case "turret": {
-                    if ((_vehicle turretUnit (_role select 1)) == _unit) exitWith {_x set [_forEachIndex, _functionality]; _found = true;};
+                    if ((_vehicle turretUnit (_role select 1)) == _unit) then {_x set [1, _functionality]; _found = true;};
                 };
             };
+            if (_found) exitWith {};
         } forEach _radioTxRxConfig;
-
-        if (_found) exitWith {};
     };
 } forEach _vehicleConfiguration;
 

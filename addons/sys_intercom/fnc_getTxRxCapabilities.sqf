@@ -19,7 +19,7 @@
 
 params ["_rackId", "_vehicle", "_unit"];
 
-private _functionality = RACK_RX_AND_TX;
+private _functionality = RACK_NO_MONITOR;
 private _found = false;
 _rackId = toLower _rackId;
 
@@ -30,26 +30,27 @@ _rackId = toLower _rackId;
             private _role = _x select 0;
             switch (_role select 0) do {
                 case "driver": {
-                    if (driver _vehicle == _unit) exitWith {_functionality = _x select 1; _found = true;};
+                    if (driver _vehicle == _unit) then {_functionality = _x select 1; _found = true;};
                 };
                 case "commander": {
-                    if (commander _vehicle == _unit) exitWith {_functionality = _x select 1; _found = true;};
+                    if (commander _vehicle == _unit) then {_functionality = _x select 1; _found = true;};
                 };
                 case "gunner": {
-                    if (gunner _vehicle == _unit) exitWith {_functionality = _x select 1; _found = true;};
+                    if (gunner _vehicle == _unit) then {_functionality = _x select 1; _found = true;};
                 };
                 case "cargo": {
-                    if (_vehicle getCargoIndex _unit == (_role select 1)) exitWith {_functionality = _x select 1; _found = true;};
+                    if (_vehicle getCargoIndex _unit == (_role select 1)) then {_functionality = _x select 1; _found = true;};
                 };
                 case "turret": {
-                    if ((_vehicle turretUnit (_role select 1)) == _unit) exitWith {_functionality = _x select 1; _found = true;};
+                    if ((_vehicle turretUnit (_role select 1)) == _unit) then {_functionality = _x select 1; _found = true;};
                 };
             };
+            if (_found) exitWith {};
         } forEach _radioTxRxConfig;
 
         if (_found) exitWith {};
     };
-} forEach (_vehicle getVariable [QEGVAR(sys_intercom,rackTxRxConfig), []]);
+} forEach (_vehicle getVariable [QGVAR(rackTxRxConfig), []]);
 
 systemChat format ["functionality %1", _functionality];
 
