@@ -16,6 +16,11 @@ class CfgVehicles {
     };
     RADIO_ID_LIST(ACRE_VRC111)
 
+    class ACRE_SEM90 : ACRE_BaseRack {
+        displayName = "SEM90 Rack";
+    };
+    RADIO_ID_LIST(ACRE_SEM90)
+
     // Define which vehicles have racks.
     class All {
         class AcreRacks {};

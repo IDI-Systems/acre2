@@ -20,3 +20,4 @@
 #define ACRE_CONNECTOR_CONN_32PIN 6 // 32 Pin is the 152 side connector.
 #define ACRE_CONNECTOR_CONN_26PIN 7 // Harris 26 AIC pin - 117F to VRC103
 #define ACRE_CONNECTOR_CONN_18PIN 8 // 18pin for the 148 Side connector
+#define ACRE_CONNECTOR_CONN_57PIN 9 // 57pin is the SEM70/80/90 interconnecting connector
