@@ -1590,8 +1590,6 @@ See the make.cfg file for additional build options.
 
     # Make release
     if make_release_zip:
-        release_name = "{}_{}".format(zipPrefix, project_version)
-
         try:
             # Delete all log files
             for root, dirs, files in os.walk(os.path.join(release_dir, project, "addons")):
@@ -1605,6 +1603,7 @@ See the make.cfg file for additional build options.
                     os.remove(os.path.join(release_dir, file))
 
             # Create a zip with the contents of release folder in it
+            release_name = "{}_{}".format(zipPrefix, project_version)
             print_blue("\nMaking release: {}.zip ...".format(release_name))
             print("Packing...")
             release_zip = shutil.make_archive("{}".format(release_name), "zip", release_dir)
@@ -1612,6 +1611,17 @@ See the make.cfg file for additional build options.
             # Move release zip to release folder
             shutil.copy(release_zip, release_dir)
             os.remove(release_zip)
+
+            # Create a zip with symbols if symbols folder exists
+            if os.path.isdir(os.path.join(module_root_parent, "symbols")):
+                release_name_symbols = "{}_symbols".format(release_name)
+                print_blue("\nArchiving symbols: {}.zip ...".format(release_name_symbols))
+                print("Packing...")
+                symbols_zip = shutil.make_archive("{}".format(release_name_symbols), "zip", os.path.join(module_root_parent, "symbols"))
+
+                # Move symbols zip to release folder
+                shutil.copy(symbols_zip, release_dir)
+                os.remove(symbols_zip)
         except:
             raise
             print_error("Could not make release.")
