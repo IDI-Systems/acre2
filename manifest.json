@@ -30,6 +30,13 @@
                     "remote_path": "dev.idi-systems.com/release/acre2_{major}.{minor}.{patch}.{build}.zip"
                 },
                 {
+                    "type": "sftp",
+                    "cred_file": "acre_release_sftp.json",
+                    "hostname": "dev.idi-systems.com",
+                    "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}_symbols.zip",
+                    "remote_path": "dev.idi-systems.com/symbols/acre2_{major}.{minor}.{patch}.{build}_symbols.zip"
+                },
+                {
                     "type": "github",
                     "account": "IDI-Systems/acre2",
                     "tag_name": "v{major}.{minor}.{patch}.{build}",
@@ -61,6 +68,13 @@
                     "hostname": "dev.idi-systems.com",
                     "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}.zip",
                     "remote_path": "dev.idi-systems.com/dev/acre2_{major}.{minor}.{patch}.{build}.zip"
+                },
+                {
+                    "type": "sftp",
+                    "cred_file": "acre_release_sftp.json",
+                    "hostname": "dev.idi-systems.com",
+                    "local_path": "P:\\idi\\acre\\release\\acre2_{major}.{minor}.{patch}.{build}_symbols.zip",
+                    "remote_path": "dev.idi-systems.com/symbols/acre2_{major}.{minor}.{patch}.{build}_symbols.zip"
                 }
             ]
         }
