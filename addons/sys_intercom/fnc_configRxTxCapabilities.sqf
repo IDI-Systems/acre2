@@ -18,8 +18,8 @@
 
 params ["_vehicle"];
 
-private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
-private _rackTxRxConfig = [];
+private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks) apply {toLower _x};
+private _rackRxTxConfig = [];
 
 {
     private _intercoms = [_x] call EFUNC(sys_rack,getWiredIntercoms);
@@ -46,8 +46,8 @@ private _rackTxRxConfig = [];
             _rackfunctionality pushBackUnique [_x, RACK_NO_MONITOR];
         } forEach _intercomPos;
 
-        _rackTxRxConfig pushBackUnique [_x, _rackFunctionality];
+        _rackRxTxConfig pushBackUnique [_x, _rackFunctionality];
     };
 } forEach _racks;
 
-_vehicle setVariable [QGVAR(rackTxRxConfig), _rackTxRxConfig, true];
+_vehicle setVariable [QGVAR(rackRxTxConfig), _rackRxTxConfig, true];

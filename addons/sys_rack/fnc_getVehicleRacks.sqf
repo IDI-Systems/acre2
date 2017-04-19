@@ -9,7 +9,7 @@
  * Racks <ARRAY>
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_fnc_getVehicleRacks;
+ * [cursorTarget] call acre_sys_rack_fnc_getVehicleRacks
  *
  * Public: No
  */

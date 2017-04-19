@@ -16,6 +16,8 @@ PREP(vehicleCrewPFH);
 PREP(isRadioRemovable);
 PREP(isRackAccessible);
 PREP(isRackHearable);
+PREP(isRadioAccessible);
+PREP(isRadioHearable);
 PREP(getAccessibleVehicleRacks);
 PREP(getHearableVehicleRacks);
 

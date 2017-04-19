@@ -11,15 +11,11 @@
  * Array of actions <ARRAY>
  *
  * Example:
- * [acre_player, "", ["ACRE_PRC343_ID_1"]] call acre_ace_interact_fnc_externalRadioChildrenActions
+ * [acre_player, "", ["ACRE_PRC343_ID_1"]] call acre_ace_interact_fnc_radioChildrenActions
  *
  * Public: No
  */
 #include "script_component.hpp"
-
-/* TODO:
-* Implemented, to be tested: Option to share and not share radios should not be displayed for external radios.
-*/
 
 params ["_target","","_params"];
 _params params ["_radio", "", "_pttAssign"];
@@ -44,7 +40,7 @@ if (!((_radio in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) || (t
 _action = ["acre_make_active", localize LSTRING(setAsActive), "", {[(_this select 2) select 0] call EFUNC(api,setCurrentRadio)}, {!((_this select 2) select 1)}, {},_params] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
-// External radios. Show only options to share/stop sharing the radio if you are the actual owner and not an external user
+// External radios. Show only options to share/stop sharing the radio if you are the actual owner and not an external user.
 if (!(_radio in ACRE_ACTIVE_EXTERNAL_RADIOS || (toLower _radio) in ACRE_HEARABLE_RACK_RADIOS)) then {
     _action = ["acre_share_radio", localize ELSTRING(sys_external,shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
@@ -54,27 +50,27 @@ if (!(_radio in ACRE_ACTIVE_EXTERNAL_RADIOS || (toLower _radio) in ACRE_HEARABLE
 
 // Rack radios in intercom, RX/TX functionality
 if ((toLower _radio) in ACRE_ACCESSIBLE_RACK_RADIOS || (toLower _radio) in ACRE_ACCESSIBLE_RACK_RADIOS) then {
-    private _functionality = [_radioId] call EFUNC(sys_intercom,getRxTxCapabilities);
+    private _functionality = [_radio, vehicle acre_player, acre_player] call EFUNC(sys_intercom,getRxTxCapabilities);
     switch (_functionality) do {
-        case RADIO_NO_MONITOR: {
-            WARNING_1("Entered no monitor in ace interaction menu for radio %1", _radioId);
+        case RACK_NO_MONITOR: {
+            WARNING_1("Entered no monitor in ace interaction menu for radio %1", _radio);
         };
-        case RADIO_RX_ONLY: {
-            _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, _target, acre_player, RADIO_TX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+        case RACK_RX_ONLY: {
+            _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_TX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
-            _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, _target, acre_player, RADIO_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
-            _actions pushBack [_action, [], _target];
-        };
-        case RADIO_TX_ONLY: {
-            _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, _target, acre_player, RADIO_RX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
-            _actions pushBack [_action, [], _target];
-            _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, _target, acre_player, RADIO_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
-        case RADIO_RX_AND_TX: {
-            _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, _target, acre_player, RADIO_RX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+        case RACK_TX_ONLY: {
+            _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
-            _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, _target, acre_player, RADIO_TX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
+        case RACK_RX_AND_TX: {
+            _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+            _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_TX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
     };

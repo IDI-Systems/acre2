@@ -4,12 +4,13 @@
  *
  * Arguments:
  * 0: Target Vehicle <OBJECT>
+ * 1: Player <OBJECT>
  *
  * Return Value:
- * Racks <ARRAY>
+ * Hearable racks <ARRAY>
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_fnc_getHearableVehicleRacks;
+ * [vehicle acre_player, acre_player] call acre_sys_rack_fnc_getHearableVehicleRacks
  *
  * Public: No
  */

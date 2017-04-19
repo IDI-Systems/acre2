@@ -1,10 +1,11 @@
 /*
  * Author: ACRE2Team
- * Returns if an individual rack is accessible to a unit specific unit.
+ * Returns if an individual rack is accessible to a specific unit.
  *
  * Arguments:
- * 0: Rack ID <STRING>
+ * 0: Unque rack ID <STRING>
  * 1: Unit <OBJECT>
+ * 2: Vehicle <OBJECT><OPTIONAL>
  *
  * Return Value:
  * Accessible <BOOLEAN>

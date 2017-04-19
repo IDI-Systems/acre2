@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Generates a list of actions for using a radio in the player's inventory or externally used radios
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Vehicle with racks <OBJECT>
+ * 1: None <TYPE>
+ * 2: Array with additional parameters: rack class name <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of actions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [vehicle acre_player, "", ["ACRE_VRC103_ID_1"]] call acre_sys_rack_fnc_generateMountableRadioActions
  *
  * Public: No
  */

@@ -7,16 +7,14 @@
  * 1: Classname of rack (Without ID) <TYPE>
  * 2: Rackname - this is diplayed to the user. Ideally short <STRING>
  * 3: Is mounted radio removable <BOOLEAN>
- * 4: Access - Determines who can use the rack. Uses an array of text "inside" - for anyone, "external" - for outside, "driver" - for driver
- *    "gunner" and " Commander are also usable
- *    Default - "inside" <ARRAY>
+ * 4: Access - Determines who can use the rack <ARRAY>
  * 5: Stashed radio - Does the rack start with a radio in it - Default "" - None <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [vehicle1,"ACRE_VRC110","Dash",true,["driver","commander","gunner"],'ACRE_PRC152'] call acre_sys_rack_fnc_addRack;
+ * [vehicle1,"ACRE_VRC110","Dash",true,["driver","commander","gunner"],'ACRE_PRC152'] call acre_sys_rack_fnc_addRack
  *
  * Public: No
  */

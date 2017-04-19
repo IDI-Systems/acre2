@@ -41,15 +41,15 @@ if (_vehicle != acre_player) then {
 
 // Check if the player entered a position with a rack already active in intercom
 {
-    private _radioId = toLower ([_x] call FUNC(getRadioFromRack));
+    private _radioId = [_x] call FUNC(getRadioFromRack);
     if (_radioId != "") then {
         private _functionality = [_radioId, _vehicle, acre_player, _x] call EFUNC(sys_intercom,getRxTxCapabilities);
         // Add the radio to the active list since it is already active in the intercom system
-        if (_functionality > RADIO_NO_MONITOR) then {
+        if (_functionality > RACK_NO_MONITOR) then {
             if ([_x, acre_player] call FUNC(isRackAccessible)) then {
-                ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique _radioId;
+                ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique (toLower _radioId);
             } else {
-                ACRE_HEARABLE_RACK_RADIOS pushBackUnique _radioId;
+                ACRE_HEARABLE_RACK_RADIOS pushBackUnique (toLower _radioId);
             };
         };
     };

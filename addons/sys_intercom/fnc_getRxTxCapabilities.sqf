@@ -17,15 +17,16 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId", "_vehicle", "_unit", ["_rackId", objNull]];
+params ["_radioId", "_vehicle", "_unit", ["_rackId", ""]];
 
 private _functionality = RACK_NO_MONITOR;
 private _found = false;
 
-if (isNull _rackId) then {
-    private _rackId = toLower ([toLower _radioId] call EFUNC(sys_rack,getRackFromRadio));
+if (_rackId isEqualTo "") then {
+    _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
 };
 
+_rackId = toLower _rackId;
 {
     if (_x select 0 == _rackId) then {
         private _radioTxRxConfig = _x select 1;
@@ -53,8 +54,6 @@ if (isNull _rackId) then {
 
         if (_found) exitWith {};
     };
-} forEach (_vehicle getVariable [QGVAR(rackTxRxConfig), []]);
-
-systemChat format ["functionality %1", _functionality];
+} forEach (_vehicle getVariable [QGVAR(rackRxTxConfig), []]);
 
 _functionality

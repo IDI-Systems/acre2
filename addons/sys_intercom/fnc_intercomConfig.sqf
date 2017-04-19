@@ -18,11 +18,9 @@
 params ["_target"];
 
 private _type = typeOf _target;
-private _hasCrewIntercom = getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom") == 1;
-private _hasPassengerIntercom = getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") == 1;
 
 // Configure if the vehicle has crew intercom
-if (_hasCrewIntercom) then {
+if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom") == 1) then {
     [_target] call FUNC(crewIntercomConfig);
 };
 
@@ -30,15 +28,11 @@ if (_hasCrewIntercom) then {
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 // Exit if object has no passenger intercom
-if (_hasPassengerIntercom) then {
+if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") == 1) then {
     [_target] call FUNC(passengerIntercomConfig);
     if (hasInterface) then {
         [_target] call FUNC(passengerIntercomAction);
     };
-};
-
-if (_hasCrewIntercom || _hasPassengerIntercom) then {
-    [_target] call FUNC(configTxRxCapabilities);
 };
 
 // Exit if object has no infantry phone

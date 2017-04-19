@@ -18,21 +18,21 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId", "_vehicle", "_unit", "_functionality", ["_rackId", objNull]];
+params ["_radioId", "_vehicle", "_unit", "_functionality", ["_rackId", ""]];
 
 private _found = false;
-private _vehicleConfiguration = _vehicle getVariable [QGVAR(rackTxRxConfig), []];
+private _vehicleConfiguration = _vehicle getVariable [QGVAR(rackRxTxConfig), []];
 
-if (isNull _rackId) then {
-    private _rackId = toLower ([toLower _radioId] call EFUNC(sys_rack,getRackFromRadio));
+if (_rackId isEqualTo "") then {
+    _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
 };
 
+_rackId = toLower _rackId;
 {
     if (_x select 0 == _rackId) then {
         private _radioTxRxConfig = _x select 1;
         {
             private _role = _x select 0;
-            systemChat format ["role %1", _forEachIndex];
             switch (_role select 0) do {
                 case "driver": {
                     if (driver _vehicle == _unit) then { _x set [1, _functionality]; _found = true;};
@@ -55,4 +55,4 @@ if (isNull _rackId) then {
     };
 } forEach _vehicleConfiguration;
 
-_vehicle setVariable [QGVAR(rackTxRxConfig), _vehicleConfiguration, true];
+_vehicle setVariable [QGVAR(rackRxTxConfig), _vehicleConfiguration, true];

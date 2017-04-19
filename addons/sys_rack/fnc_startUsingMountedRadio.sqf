@@ -15,28 +15,27 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId"];
+params ["_vehicle", "_unit", "_radioId"];
 
-_radioId = toLower _radioId;
+private _isRadioAccessible = [_radioId, _unit] call FUNC(isRadioAccessible);
+private _isRadioHearable = [_radioId, _unit] call FUNC(isRadioHearable);
 
-private _rackId = toLower ([_radioId] call FUNC(getRackFromRadio));
-private _isRackAccessible = [_rackId, acre_player] call FUNC(isRackAccessible);
-private _isRackHearable = [_rackId, acre_player] call FUNC(isRackHearable);
-
-if (_isRackAccessible) then {
+if (_isRadioAccessible) then {
     ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique (toLower _radioId);
 };
 
-if (_isRackHearable && !_isRackAccessible) then {
+if (_isRadioHearable && !_isRadioAccessible) then {
     ACRE_HEARABLE_RACK_RADIOS pushBackUnique (toLower _radioId);
 };
 
-if (_isRackHearable) then {
+// Set active radio
+ACRE_ACTIVE_RADIO = _radioId;
+
+if (_isRadioHearable) then {
     // Check if the radio had already some functionality in order to avoid overwritting it.
-    private _vehicle = [_rackId] call FUNC(getVehicleFromRack);
-    private _functionality = [_radioId, _vehicle, acre_player, _rackId] call EFUNC(sys_intercom,getRxTxCapabilities);
-    if (_functionality == RADIO_NO_MONITOR) then {
+    private _functionality = [_radioId, _vehicle, _unit] call EFUNC(sys_intercom,getRxTxCapabilities);
+    if (_functionality == RACK_NO_MONITOR) then {
         // Set as default RX and TX functionality
-        [_radioId, _vehicle, acre_player, RADIO_RX_AND_TX, _rackId] call EFUNC(sys_intercom,setRxTxCapabilities);
+        [_radioId, _vehicle, _unit, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities);
     };
 };

@@ -1,16 +1,17 @@
 /*
  * Author: ACRE2Team
- * Returns if an individual rack is accessible to a unit specific unit.
+ * Returns if an individual rack is hearable (in intercom) to a specific unit.
  *
  * Arguments:
- * 0: Rack ID <STRING>
+ * 0: Unque rack ID <STRING>
  * 1: Unit <OBJECT>
+ * 2: Vehicle <OBJECT><OPTIONAL>
  *
  * Return Value:
  * Accessible <BOOLEAN>
  *
  * Example:
- * ["acre_vrc110_id_1",acre_player] call acre_sys_rack_fnc_isRackAccessible;
+ * ["acre_vrc110_id_1",acre_player] call acre_sys_rack_fnc_isRackHearable;
  *
  * Public: No
  */

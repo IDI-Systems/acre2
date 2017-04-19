@@ -9,7 +9,7 @@
  * Removable, true if so <BOOLEAN>
  *
  * Example:
- * ["acre_vrc110_id_1"] call acre_sys_rack_fnc_isRadioRemovable;
+ * ["acre_vrc110_id_1"] call acre_sys_rack_fnc_isRadioRemovable
  *
  * Public: No
  */

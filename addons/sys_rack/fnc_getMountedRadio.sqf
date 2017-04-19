@@ -9,7 +9,7 @@
  * Radio classname or ID, "" if nothing is stashed <STRING>
  *
  * Example:
- * ["ACRE_VRC110_ID_1"] call acre_sys_rack_fnc_getMountedRadio;
+ * ["ACRE_VRC110_ID_1"] call acre_sys_rack_fnc_getMountedRadio
  *
  * Public: No
  */

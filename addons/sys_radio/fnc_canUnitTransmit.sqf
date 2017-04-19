@@ -22,12 +22,11 @@ private _vehicle = vehicle acre_player;
 
 if (_vehicle != acre_player) then {
     if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS) then {
-        // Get rackID
-        private _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
+
         // Check if radio is in intercom.
-        if ([_rackId, acre_player, _vehicle] call EFUNC(sys_rack,isRackHearable)) then {
-            private _rackTxRxConfig = _vehicle getVariable [QEGVAR(sys_intercom,rackTxRxConfig), []];
-            private _functionality = [_radioId, _vehicle, acre_player, _rackId] call EFUNC(sys_intercom,getRxTxCapabilities);
+        if ([_radioId, acre_player, _vehicle] call EFUNC(sys_rack,isRadioHearable)) then {
+            private _rackRxTxConfig = _vehicle getVariable [QEGVAR(sys_intercom,rackRxTxConfig), []];
+            private _functionality = [_radioId, _vehicle, acre_player] call EFUNC(sys_intercom,getRxTxCapabilities);
             if (_functionality == RACK_NO_MONITOR || _functionality == RACK_RX_ONLY) then {
                 [localize LSTRING(noTransmitIntercom), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
                 _canTransmit = false;
