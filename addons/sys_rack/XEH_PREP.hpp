@@ -21,6 +21,7 @@ PREP(getHearableVehicleRacks);
 
 PREP(initializeRack);
 
+PREP(getRackBaseClassname);
 PREP(getRackFromRadio);
 PREP(getMountableRadios);
 PREP(getMountedRadio);
