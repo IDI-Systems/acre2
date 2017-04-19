@@ -4,6 +4,7 @@
  *
  * Arguments:
  * 0: Spatial mode (-1 = left, 0 = center, 1 = right) <NUMBER>
+ * 1: Radio ID (optional) <STRING>
  *
  * Return Value:
  * Handled <BOOL>
