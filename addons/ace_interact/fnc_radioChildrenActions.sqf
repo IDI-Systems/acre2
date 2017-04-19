@@ -37,7 +37,7 @@ if (_spatial == "RIGHT") then {
 
 private _action = ["acre_spatial_radio", _txt, "", {}, {true}, {_this call FUNC(generateSpatialChildrenActions);}, _params + [_spatial]] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
-if (!((_radio in ACRE_ACTIVE_RACK_RADIOS && {isTurnedOut acre_player}) || (toLower _radio) in ACRE_PASSIVE_RACK_RADIOS)) then {
+if (!((_radio in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) || (toLower _radio) in ACRE_HEARABLE_RACK_RADIOS)) then {
     _action = ["acre_open_radio", localize ELSTRING(sys_list,OpenRadio), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
@@ -45,11 +45,39 @@ _action = ["acre_make_active", localize LSTRING(setAsActive), "", {[(_this selec
 _actions pushBack [_action, [], _target];
 
 // External radios. Show only options to share/stop sharing the radio if you are the actual owner and not an external user
-if (!(_radio in ACRE_ACTIVE_EXTERNAL_RADIOS || (toLower _radio) in ACRE_PASSIVE_RACK_RADIOS)) then {
-    _action = ["acre_share_radio", localize ELSTRING(sys_external,shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params]  call ace_interact_menu_fnc_createAction;
+if (!(_radio in ACRE_ACTIVE_EXTERNAL_RADIOS || (toLower _radio) in ACRE_HEARABLE_RACK_RADIOS)) then {
+    _action = ["acre_share_radio", localize ELSTRING(sys_external,shareRadio), "", {[(_this select 2) select 0, true] call EFUNC(sys_external,allowExternalUse)}, {!([(_this select 2) select 0] call EFUNC(sys_external,isRadioShared))}, {}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
-    _action = ["acre_retrieve_radio", localize ELSTRING(sys_external,unshareRadio), "", {[(_this select 2) select 0, false] call EFUNC(sys_external,allowExternalUse)}, {[(_this select 2) select 0] call EFUNC(sys_external,isRadioShared)}, {}, _params]  call ace_interact_menu_fnc_createAction;
+    _action = ["acre_retrieve_radio", localize ELSTRING(sys_external,unshareRadio), "", {[(_this select 2) select 0, false] call EFUNC(sys_external,allowExternalUse)}, {[(_this select 2) select 0] call EFUNC(sys_external,isRadioShared)}, {}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
+};
+
+// Rack radios in intercom, RX/TX functionality
+if ((toLower _radio) in ACRE_ACCESSIBLE_RACK_RADIOS || (toLower _radio) in ACRE_ACCESSIBLE_RACK_RADIOS) then {
+    private _functionality = [_radioId] call EFUNC(sys_intercom,getRxTxCapabilities);
+    switch (_functionality) do {
+        case RADIO_NO_MONITOR: {
+            WARNING_1("Entered no monitor in ace interaction menu for radio %1", _radioId);
+        };
+        case RADIO_RX_ONLY: {
+            _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, _target, acre_player, RADIO_TX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+            _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, _target, acre_player, RADIO_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
+        case RADIO_TX_ONLY: {
+            _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, _target, acre_player, RADIO_RX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+            _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, _target, acre_player, RADIO_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
+        case RADIO_RX_AND_TX: {
+            _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, _target, acre_player, RADIO_RX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+            _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, _target, acre_player, RADIO_TX_ONLY] call EFUNC(sys_intercom,setRxTxCapabilities)}, {true}, {}, {}] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
+    };
 };
 
 private _idx = _pttAssign find _radio;

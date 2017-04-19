@@ -17,11 +17,14 @@
  */
 #include "script_component.hpp"
 
-params ["_rackId", "_vehicle", "_unit"];
+params ["_radioId", "_vehicle", "_unit", ["_rackId", objNull]];
 
 private _functionality = RACK_NO_MONITOR;
 private _found = false;
-_rackId = toLower _rackId;
+
+if (isNull _rackId) then {
+    private _rackId = toLower ([toLower _radioId] call EFUNC(sys_rack,getRackFromRadio));
+};
 
 {
     if (_x select 0 == _rackId) then {

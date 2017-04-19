@@ -39,16 +39,32 @@ if (_vehicle != acre_player) then {
     };
 };
 
+// Check if the player entered a position with a rack already active in intercom
+{
+    private _radioId = toLower ([_x] call FUNC(getRadioFromRack));
+    if (_radioId != "") then {
+        private _functionality = [_radioId, _vehicle, acre_player, _x] call EFUNC(sys_intercom,getRxTxCapabilities);
+        // Add the radio to the active list since it is already active in the intercom system
+        if (_functionality > RADIO_NO_MONITOR) then {
+            if ([_x, acre_player] call FUNC(isRackAccessible)) then {
+                ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique _radioId;
+            } else {
+                ACRE_HEARABLE_RACK_RADIOS pushBackUnique _radioId;
+            };
+        };
+    };
+} forEach ([_vehicle, acre_player] call FUNC(getHearableVehicleRacks));
+
 //Check we can still use the vehicle rack radios.
 {
     if (!([_x] call EFUNC(sys_radio,radioExists))) exitWith {_remove pushBack _x;};
     private _rack = [_x] call FUNC(getRackFromRadio);
     if (_rack == "") exitWith { _remove pushBack _x; }; // Radio is no longer stored in a rack.
     if (!(([_rack, acre_player] call FUNC(isRackAccessible)) || ([_rack, acre_player] call FUNC(isRackHearable)))) then {
-        if (_x in ACRE_ACTIVE_RACK_RADIOS) then {
-            ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - [_x];
+        if (_x in ACRE_ACCESSIBLE_RACK_RADIOS) then {
+            ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [_x];
         } else {
-            ACRE_PASSIVE_RACK_RADIOS = ACRE_PASSIVE_RACK_RADIOS - [_x];
+            ACRE_HEARABLE_RACK_RADIOS = ACRE_HEARABLE_RACK_RADIOS - [_x];
         };
         if (ACRE_ACTIVE_RADIO isEqualTo _x) then { // If it is the active radio.
             // Check if radio is now in inventory
@@ -63,4 +79,4 @@ if (_vehicle != acre_player) then {
             [1] call EFUNC(sys_list,cycleRadios); // Change active radio
         };
     };
-} forEach (ACRE_ACTIVE_RACK_RADIOS + ACRE_PASSIVE_RACK_RADIOS);
+} forEach (ACRE_ACCESSIBLE_RACK_RADIOS + ACRE_HEARABLE_RACK_RADIOS);

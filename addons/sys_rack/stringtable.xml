@@ -22,12 +22,6 @@
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use radio</English>
         </Key>
-        <Key ID="STR_ACRE_sys_rack_disconnectRadio">
-            <English>Disconnect radio</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_monitorRadio">
-            <English>Monitor radio</English>
-        </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
         </Key>

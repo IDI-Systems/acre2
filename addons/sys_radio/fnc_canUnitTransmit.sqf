@@ -21,28 +21,24 @@ private _canTransmit = true;
 private _vehicle = vehicle acre_player;
 
 if (_vehicle != acre_player) then {
-    if (_radioId in ACRE_ACTIVE_RACK_RADIOS || _radioId in ACRE_PASSIVE_RACK_RADIOS) then {
+    if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS) then {
         // Get rackID
         private _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
         // Check if radio is in intercom.
         if ([_rackId, acre_player, _vehicle] call EFUNC(sys_rack,isRackHearable)) then {
             private _rackTxRxConfig = _vehicle getVariable [QEGVAR(sys_intercom,rackTxRxConfig), []];
-            private _functionality = [_rackId, _vehicle, acre_player] call EFUNC(sys_intercom,getTxRxCapabilities);
+            private _functionality = [_radioId, _vehicle, acre_player, _rackId] call EFUNC(sys_intercom,getRxTxCapabilities);
             if (_functionality == RACK_NO_MONITOR || _functionality == RACK_RX_ONLY) then {
-                ["Transmition disabled", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+                [localize LSTRING(noTransmitIntercom), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
                 _canTransmit = false;
             };
         };
     };
 };
 
-if (_canTransmit && {_radioId in ACRE_PASSIVE_RACK_RADIOS || _radioId in ACRE_PASSIVE_EXTERNAL_RADIOS}) then {
+if (_canTransmit && {_radioId in ACRE_PASSIVE_EXTERNAL_RADIOS}) then {
     _canTransmit = false;
-    if (_radioId in ACRE_PASSIVE_EXTERNAL_RADIOS) then {
-        [localize LSTRING(noTransmitExternal), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-    } else {
-        [localize LSTRING(noTransmitSeat), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-    };
+    [localize LSTRING(noTransmitExternal), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };
 
 if (_canTransmit && {(toLower _radioId) in ACRE_BLOCKED_TRANSMITTING_RADIOS}) then {

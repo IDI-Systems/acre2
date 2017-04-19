@@ -18,7 +18,7 @@
 params ["_radioId"];
 
 _radioId = toLower _radioId;
-ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - [_radioId];
+ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [_radioId];
 if (ACRE_ACTIVE_RADIO == _radioId) then { // If it is the active radio.
     // Check if radio is now in inventory
     private _items = [acre_player] call EFUNC(sys_core,getGear);
@@ -33,6 +33,13 @@ if (ACRE_ACTIVE_RADIO == _radioId) then { // If it is the active radio.
     };
 
     ACRE_ACTIVE_RADIO = ([] call acre_sys_data_fnc_getPlayerRadioList) select 0;
+
+    // Set intercom configuration to no monitoring.
+    private _rackId = [_radioId] call FUNC(getRackFromRadio);
+    if ([_rackId, acre_player] call FUNC(isRackHearable)) then {
+        private _vehicle = [_rackId] call FUNC(getVehicleFromRack);
+        [_radioId, _vehicle, acre_player, RADIO_NO_MONITOR, _rackId] call EFUNC(sys_intercom,setRxTxCapabilities);
+    };
 
     // Switch active Radio
     //ACRE_ACTIVE_RADIO = "";

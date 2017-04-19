@@ -27,6 +27,7 @@ PREP(getMountedRadio);
 PREP(getWiredIntercoms);
 PREP(mountRadio);
 PREP(unmountRadio);
+PREP(startUsingMountedRadio);
 PREP(stopUsingMountedRadio);
 
 PREP(getState);

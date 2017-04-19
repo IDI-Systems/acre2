@@ -95,7 +95,7 @@ private _result = false;
         if (_onRadio == 1) then {
             if ([_radioId] call EFUNC(sys_radio,radioExists)) then {
                 // Handle rack radios that are simultaneously in use.
-                if ((toLower _radioId) in ACRE_ACTIVE_RACK_RADIOS) then {
+                if ((toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS) then {
                     ACRE_BLOCKED_TRANSMITTING_RADIOS pushBackUnique (toLower _radioId);
                 };
 
