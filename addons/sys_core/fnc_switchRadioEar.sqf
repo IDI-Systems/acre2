@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params ["_ear",["_radioId",ACRE_ACTIVE_RADIO,[""]]];
+params ["_ear",["_radioId", ACRE_ACTIVE_RADIO, [""]]];
 
 switch (_ear) do {
     case -1: {
