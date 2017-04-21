@@ -16,20 +16,21 @@
  */
 #include "script_component.hpp"
 
-params ["_target","","_params"];
-_params params ["","","","_spatial"];
-private _actions = [];
+params ["_target", "", "_params"];
+_params params ["_radioID", "", "", "_spatial"];
+
+private _actions  = [];
 
 if (_spatial != "RIGHT") then {
-    private _action = ["acre_audio_right", localize ELSTRING(sys_core,switchRadioEarRight), "", {[1] call EFUNC(sys_core,switchRadioEar)}, {true}] call ace_interact_menu_fnc_createAction;
+    private _action = ["acre_audio_right", localize ELSTRING(sys_core,switchRadioEarRight), "", {(_this select 2) call EFUNC(sys_core,switchRadioEar)}, {true}, {}, [1, _radioID]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 if (_spatial != "CENTER") then {
-    private _action = ["acre_audio_center", localize ELSTRING(sys_core,switchRadioEarBoth), "", {[0] call EFUNC(sys_core,switchRadioEar)}, {true}] call ace_interact_menu_fnc_createAction;
+    private _action = ["acre_audio_center", localize ELSTRING(sys_core,switchRadioEarBoth), "", {(_this select 2) call EFUNC(sys_core,switchRadioEar)}, {true}, {}, [0, _radioID]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 if (_spatial != "LEFT") then {
-    private _action = ["acre_audio_left", localize ELSTRING(sys_core,switchRadioEarLeft), "", {[-1] call EFUNC(sys_core,switchRadioEar)}, {true}] call ace_interact_menu_fnc_createAction;
+    private _action = ["acre_audio_left", localize ELSTRING(sys_core,switchRadioEarLeft), "", {(_this select 2) call EFUNC(sys_core,switchRadioEar)}, {true}, {}, [-1, _radioID]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 
