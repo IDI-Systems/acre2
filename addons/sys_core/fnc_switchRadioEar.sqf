@@ -18,8 +18,6 @@
 
 params ["_ear", ["_radioId", ACRE_ACTIVE_RADIO, [""]]];
 
-diag_log str _this;
-
 switch (_ear) do {
     case -1: {
         [localize LSTRING(switchRadioEarLeft), ICON_RADIO_CALL] call FUNC(displayNotification);

@@ -20,8 +20,6 @@
 params ["_target", "", "_params"];
 _params params ["_radioID", "", "", "_spatial"];
 
-diag_log str _params;
-
 private _actions  = [];
 
 if (_spatial != "RIGHT") then {
