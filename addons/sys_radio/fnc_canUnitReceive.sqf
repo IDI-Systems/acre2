@@ -29,7 +29,7 @@ if (_vehicle != acre_player) then {
             private _functionality = [_radioId, _vehicle, acre_player] call EFUNC(sys_intercom,getRxTxCapabilities);
             if (_functionality == RACK_NO_MONITOR || _functionality == RACK_TX_ONLY) then {
                 ["Receiving disabled", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-                _canTransmit = false;
+                _canReceive = false;
             };
         };
     };
