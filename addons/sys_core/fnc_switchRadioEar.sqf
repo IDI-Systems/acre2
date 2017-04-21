@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: Spatial mode (-1 = left, 0 = center, 1 = right) <NUMBER>
- * 1: Radio ID (optional) <STRING>
+ * 1: Radio ID <STRING> (default: ACRE_ACTIVE_RADIO)
  *
  * Return Value:
  * Handled <BOOL>
@@ -16,7 +16,9 @@
  */
 #include "script_component.hpp"
 
-params ["_ear",["_radioId", ACRE_ACTIVE_RADIO, [""]]];
+params ["_ear", ["_radioId", ACRE_ACTIVE_RADIO, [""]]];
+
+diag_log str _this;
 
 switch (_ear) do {
     case -1: {
