@@ -18,6 +18,6 @@
  */
 #include "script_component.hpp"
 
-params ["_rackId", "_event", "_eventData", "_rackData"];
+params ["", "", "_eventData", "_rackData"];
 
 HASH_GET(_radioData,_eventData);

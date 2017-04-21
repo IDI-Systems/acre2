@@ -18,7 +18,7 @@
  */
 #include "script_component.hpp"
 
-params ["_rackId", "_event", "_eventData", "_rackData"];
+params ["_rackId", "", "_eventData", "_rackData"];
 _eventData params ["_componentName", "_displayName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents", "_intercoms", "_vehicle"];
 
 

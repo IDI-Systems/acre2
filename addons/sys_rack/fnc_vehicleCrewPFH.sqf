@@ -39,22 +39,50 @@ if (_vehicle != acre_player) then {
     };
 };
 
-//Check we can still use the vehicle rack radios.
+// Check if the player entered a position with a rack already active in intercom
 {
-    if (!([_x] call EFUNC(sys_radio,radioExists))) exitWith {_remove pushBack _x;};
-    private _rack = [_x] call FUNC(getRackFromRadio);
-    if (_rack == "") exitWith { _remove pushBack _x; }; // Radio is no longer stored in a rack.
-    if (!(([_rack, acre_player] call FUNC(isRackAccessible)) || ([_rack, acre_player] call FUNC(isRackHearable)))) then {
-        if (_x in ACRE_ACTIVE_RACK_RADIOS) then {
-            ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - [_x];
-        } else {
-            ACRE_PASSIVE_RACK_RADIOS = ACRE_PASSIVE_RACK_RADIOS - [_x];
+    private _radioId = [_x] call FUNC(getMountedRadio);
+    if (_radioId != "" && {!(_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS)}) then {
+        private _functionality = [_radioId, _vehicle, acre_player, _x] call EFUNC(sys_intercom,getRxTxCapabilities);
+        // Add the radio to the active list since it is already active in the intercom system
+        if (_functionality > RACK_NO_MONITOR) then {
+            if ([_x, acre_player] call FUNC(isRackAccessible)) then {
+                ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+            } else {
+                ACRE_HEARABLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+            };
+            ACRE_ACTIVE_RADIO = _radioId;
         };
-        if (ACRE_ACTIVE_RADIO isEqualTo _x) then { // If it is the active radio.
-            // Check if radio is now in inventory
-            private _items = [acre_player] call EFUNC(sys_core,getGear);
-            _items = _items apply {toLower _x};
-            if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // no need to remove
+    };
+} forEach (([_vehicle, acre_player] call FUNC(getHearableVehicleRacks)) apply {toLower _x});
+
+//Check we can still use the vehicle rack radios.
+private _remove = [];
+{
+    if (!([_x] call EFUNC(sys_radio,radioExists))) then {_remove pushBackUnique _x;};
+    private _rack = [_x] call FUNC(getRackFromRadio);
+    if (_rack == "") then { _remove pushBackUnique _x; }; // Radio is no longer stored in a rack.
+
+    // Check only those radios connected on intercom systems
+    if (count ([_rack] call FUNC(getWiredIntercoms))> 0) then {
+        private _functionality = [_x, _vehicle, acre_player, toLower _rack] call EFUNC(sys_intercom,getRxTxCapabilities);
+        if (_functionality == RACK_NO_MONITOR) then {_remove pushBackUnique _x;};
+    };
+
+    if (!(([_rack, acre_player] call FUNC(isRackAccessible)) || ([_rack, acre_player] call FUNC(isRackHearable)))) then { _remove pushBackUnique _x; };
+} forEach (ACRE_ACCESSIBLE_RACK_RADIOS + ACRE_HEARABLE_RACK_RADIOS);
+
+{
+    if (_x in ACRE_ACCESSIBLE_RACK_RADIOS) then {
+        ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [_x];
+    } else {
+        ACRE_HEARABLE_RACK_RADIOS = ACRE_HEARABLE_RACK_RADIOS - [_x];
+    };
+    if (ACRE_ACTIVE_RADIO isEqualTo _x) then { // If it is the active radio.
+        // Check if radio is now in inventory
+        private _items = [acre_player] call EFUNC(sys_core,getGear);
+        _items = _items apply {toLower _x};
+        if (!((toLower ACRE_ACTIVE_RADIO) in _items)) then { // no need to remove
             // Otherwise cleanup
             if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
                 // simulate a key up event to end the current transmission
@@ -63,4 +91,4 @@ if (_vehicle != acre_player) then {
             [1] call EFUNC(sys_list,cycleRadios); // Change active radio
         };
     };
-} forEach (ACRE_ACTIVE_RACK_RADIOS + ACRE_PASSIVE_RACK_RADIOS);
+} forEach _remove;

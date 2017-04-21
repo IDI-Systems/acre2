@@ -18,8 +18,8 @@
         <Key ID="STR_ACRE_sys_radio_noTransmitExternal">
             <English>Radio used externally. Only external user may transmit.</English>
         </Key>
-        <Key ID="STR_ACRE_sys_radio_noTransmitSeat">
-            <English>Radio rack not accessible for transmitting from this seat.</English>
+        <Key ID="STR_ACRE_sys_radio_noTransmitIntercom">
+            <English>Radio rack disabled for transmitting in intercom.</English>
         </Key>
         <Key ID="STR_ACRE_sys_radio_alreadyTransmitting">
             <English>Radio already transmitting.</English>

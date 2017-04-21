@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main", "acre_sys_core", "acre_sys_antenna", "acre_sys_components", "acre_sys_data", "acre_sys_sounds"}; // TODO: setup
+        requiredAddons[] = {"acre_main", "acre_sys_core", "acre_sys_antenna", "acre_sys_components", "acre_sys_data", "acre_sys_intercom", "acre_sys_sounds"}; // TODO: setup
         author = ECSTRING(main,Author);
         authors[] = {"Snippers"};
         url = ECSTRING(main,URL);

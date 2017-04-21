@@ -38,80 +38,85 @@ private _inIntercom = false;
 {
     switch (_x select 0) do {
         case "inside": {
-            if (_vehicle == vehicle _unit) exitWith {_inIntercom = true;};
+            if (_vehicle == vehicle _unit) then {_inIntercom = true;};
         };
         case "driver": {
-            if (driver _vehicle == _unit) exitWith {_inIntercom = true;};
+            if (driver _vehicle == _unit) then {_inIntercom = true;};
         };
         case "commander": {
-            if (commander _vehicle == _unit) exitWith {_inIntercom = true;};
+            if (commander _vehicle == _unit) then {_inIntercom = true;};
         };
         case "gunner": {
-            if (gunner _vehicle == _unit) exitWith {_inIntercom = true;};
+            if (gunner _vehicle == _unit) then {_inIntercom = true;};
         };
         case "cargo": {
-            if (_vehicle getCargoIndex _unit == (_x select 1)) exitWith {_inIntercom = true;};
+            if (_vehicle getCargoIndex _unit == (_x select 1)) then {_inIntercom = true;};
         };
         case "turret": {
-            if ((_vehicle turretUnit (_x select 1)) == _unit) exitWith {_inIntercom = true;};
+            if ((_vehicle turretUnit (_x select 1)) == _unit) then {_inIntercom = true;};
         };
     };
+
+    if (_inIntercom) exitWith {};
 } forEach _availableIntercomPos;
 
-{
-    switch (_x select 0) do {
-        case "inside": {
-            if (_vehicle == vehicle _unit) exitWith {_inIntercom = false;};
-        };
-        case "turnedout": {
-            switch (typeName (_x select 1)) do {
-                case "STRING": {
-                    if ((_x select 1) isEqualTo "all") then {
-                        if (isTurnedOut _unit) then {_inIntercom = false;};
-                    } else {
-                        switch (_x select 1) do {
-                            case "driver": {
-                                if (driver _vehicle == _unit && {isTurnedOut _unit}) exitWith {_inIntercom = false;};
-                            };
-                            case "commander": {
-                                if (commander _vehicle == _unit && {isTurnedOut _unit}) exitWith {_inIntercom = false;};
-                            };
-                            case "gunner": {
-                                if (gunner _vehicle == _unit && {isTurnedOut _unit}) exitWith {_inIntercom = false;};
-                            };
-                            case "copilot": {
-                                private _turret = (allTurrets [_vehicle, false]) select {getNumber ([_vehicle, _x] call CBA_fnc_getTurret >> "isCopilot") == 1};
-                                {
-                                    if ((_vehicle turretUnit (_x select 1)) == _unit && {isTurnedOut (_vehicle turretUnit (_x select 1))}) exitWith {_inIntercom = false;};
-                                } forEach _turret;
+if (_inIntercom) then {
+    {
+        switch (_x select 0) do {
+            case "inside": {
+                if (_vehicle == vehicle _unit) then {_inIntercom = false;};
+            };
+            case "turnedout": {
+                switch (typeName (_x select 1)) do {
+                    case "STRING": {
+                        if ((_x select 1) isEqualTo "all") then {
+                            if (isTurnedOut _unit) then {_inIntercom = false;};
+                        } else {
+                            switch (_x select 1) do {
+                                case "driver": {
+                                    if (driver _vehicle == _unit && {isTurnedOut _unit}) then {_inIntercom = false;};
+                                };
+                                case "commander": {
+                                    if (commander _vehicle == _unit && {isTurnedOut _unit}) then {_inIntercom = false;};
+                                };
+                                case "gunner": {
+                                    if (gunner _vehicle == _unit && {isTurnedOut _unit}) then {_inIntercom = false;};
+                                };
+                                case "copilot": {
+                                    private _turret = (allTurrets [_vehicle, false]) select {getNumber ([_vehicle, _x] call CBA_fnc_getTurret >> "isCopilot") == 1};
+                                    {
+                                        if ((_vehicle turretUnit (_x select 1)) == _unit && {isTurnedOut (_vehicle turretUnit (_x select 1))}) then {_inIntercom = false;};
+                                    } forEach _turret;
+                                };
                             };
                         };
                     };
-                };
-                case "ARRAY": {
-                    if ((_vehicle turretUnit (_x select 1)) == _unit && {isTurnedOut (_vehicle turretUnit (_x select 1))}) exitWith {_inIntercom = false;};
-                };
-                case "SCALAR": {
-                    if (_vehicle getCargoIndex _unit == (_x select 1)) exitWith {_inIntercom = false;};
+                    case "ARRAY": {
+                        if ((_vehicle turretUnit (_x select 1)) == _unit && {isTurnedOut (_vehicle turretUnit (_x select 1))}) then {_inIntercom = false;};
+                    };
+                    case "SCALAR": {
+                        if (_vehicle getCargoIndex _unit == (_x select 1)) then {_inIntercom = false;};
+                    };
                 };
             };
+            case "driver": {
+                if (driver _vehicle == _unit) then {_inIntercom = false;};
+            };
+            case "commander": {
+                if (commander _vehicle == _unit) then {_inIntercom = false;};
+            };
+            case "gunner": {
+                if (gunner _vehicle == _unit) then {_inIntercom = false;};
+            };
+            case "cargo": {
+                if (_vehicle getCargoIndex _unit == (_x select 1)) then {_inIntercom = false;};
+            };
+            case "turret": {
+                if ((_vehicle turretUnit (_x select 1)) == _unit) then {_inIntercom = false;};
+            };
         };
-        case "driver": {
-            if (driver _vehicle == _unit) exitWith {_inIntercom = false;};
-        };
-        case "commander": {
-            if (commander _vehicle == _unit) exitWith {_inIntercom = false;};
-        };
-        case "gunner": {
-            if (gunner _vehicle == _unit) exitWith {_inIntercom = false;};
-        };
-        case "cargo": {
-            if (_vehicle getCargoIndex _unit == (_x select 1)) exitWith {_inIntercom = false;};
-        };
-        case "turret": {
-            if ((_vehicle turretUnit (_x select 1)) == _unit) exitWith {_inIntercom = false;};
-        };
-    };
-} forEach _exceptionsIntercomPos;
+        if (!_inIntercom) exitWith {};
+    } forEach _exceptionsIntercomPos;
+};
 
 _inIntercom

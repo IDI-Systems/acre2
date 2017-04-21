@@ -1,22 +1,23 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Generates a list of actions for using a vehicle rack radio
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Vehicle with racks <OBJECT>
+ * 1: None <TYPE>
+ * 2: Array with additional parameters: unique rack ID <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of actions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [vehicle acre_player, "", ["acre_vrc103_id_1"]] call acre_sys_rack_fnc_rackChildrenActions
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_target","_unit","_params"];
+params ["_target", "_unit", "_params"];
 _params params ["_rackClassName"];
 
 private _actions = [];
@@ -36,7 +37,6 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
     } else {
         private _class = configFile >> "CfgWeapons" >> _mountedRadio;
         private _icon = getText (_class >> "picture");
-
         if ([_rackClassName] call FUNC(isRadioRemovable)) then {
             private _text = format [localize LSTRING(unmountRadio), getText (_class >> "displayName")];
             private _params = [_rackClassName, _mountedRadio];
@@ -51,11 +51,12 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
-        if ((toLower _mountedRadio) in ACRE_ACTIVE_RACK_RADIOS) then {
+        if ((toLower _mountedRadio) in ACRE_ACCESSIBLE_RACK_RADIOS) then {
             // stop
             private _action = ["acre_stopMountedRadio", localize LSTRING(stopUsingRadio), "", {
                 params ["_target","_unit","_params"];
-                _params call FUNC(stopUsingMountedRadio);
+                _params params ["_mountedRadio"];
+                [_target, _unit, _mountedRadio] call FUNC(stopUsingMountedRadio);
             }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
 
@@ -64,38 +65,39 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             _actions append _radioActions;
         } else {
             // Use
-            private _action = ["acre_stopMountedRadio", localize LSTRING(useRadio), "", {
+            private _action = ["acre_useMountedRadio", localize LSTRING(useRadio), "", {
                 params ["_target", "_unit", "_params"];
                 _params params ["_mountedRadio"];
-                ACRE_ACTIVE_RADIO = toLower _mountedRadio;
-                ACRE_ACTIVE_RACK_RADIOS pushBackUnique (toLower _mountedRadio);
+                [_target, _unit, _mountedRadio] call FUNC(startUsingMountedRadio);
             }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
     };
 } else {
-    if ([_rackClassName, _unit] call FUNC(isRackHearable)) then {
-        // Radio type
-        private _class = configFile >> "CfgWeapons" >> _mountedRadio;
-        private _icon = getText (_class >> "picture");
-        private _text = format [localize LSTRING(mountedRadio), getText (_class >> "displayName")];
-        private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-        _actions pushBack [_action, [], _target];
+    if (_mountedRadio != "") then {
+        if ([_rackClassName, _unit] call FUNC(isRackHearable)) then {
+            // Radio type
+            private _class = configFile >> "CfgWeapons" >> _mountedRadio;
+            private _icon = getText (_class >> "picture");
+            private _text = format [localize LSTRING(mountedRadio), getText (_class >> "displayName")];
+            private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
 
-        if ((toLower _mountedRadio) in ACRE_PASSIVE_RACK_RADIOS) then {
-            private _action = ["acre_disconnectMountedRadio", localize LSTRING(disconnectRadio), "", {
-                params ["_target", "_unit", "_params"];
-                _params params ["_mountedRadio"];
-                ACRE_PASSIVE_RACK_RADIOS = ACRE_PASSIVE_RACK_RADIOS - [_mountedRadio];
-            }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
-            _actions pushBack [_action, [], _target];
-        } else {
-            private _action = ["acre_monitorMountedRadio", localize LSTRING(monitorRadio), "", {
-                params ["_target", "_unit", "_params"];
-                _params params ["_mountedRadio"];
-                ACRE_PASSIVE_RACK_RADIOS pushBackUnique (toLower _mountedRadio);
-            }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
-            _actions pushBack [_action, [], _target];
+            if ((toLower _mountedRadio) in ACRE_HEARABLE_RACK_RADIOS) then {
+                private _action = ["acre_stopMountedRadio", localize LSTRING(stopUsingRadio), "", {
+                    params ["_target", "_unit", "_params"];
+                    _params params ["_mountedRadio"];
+                    [_target, _unit, _mountedRadio] call FUNC(stopUsingMountedRadio);
+                }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
+                _actions pushBack [_action, [], _target];
+            } else {
+                private _action = ["acre_useMountedRadio", localize LSTRING(useRadio), "", {
+                    params ["_target", "_unit", "_params"];
+                    _params params ["_mountedRadio"];
+                    [_target, _unit, _mountedRadio] call FUNC(startUsingMountedRadio);
+                }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
+                _actions pushBack [_action, [], _target];
+            };
         };
     };
 };

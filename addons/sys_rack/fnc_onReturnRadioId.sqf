@@ -3,8 +3,9 @@
  * Used to catch the return for a radio being initialized in a Rack
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Rack object <OBJECT>
+ * 1: Rack class <STRING>
+ * 2: Unique ID number <NUMBER>
  *
  * Return Value:
  * None

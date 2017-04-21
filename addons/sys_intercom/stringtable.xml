@@ -108,5 +108,14 @@
             <Japanese>パックス インターコムに接続できる場所が無い</Japanese>
             <Russian>Нет свободных соединений для пассажирского интеркома</Russian>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_transOnly">
+            <English>Transmit only</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_recOnly">
+            <English>Receive only</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_recAndTrans">
+            <English>Receive and Transmit</English>
+        </Key>
     </Package>
 </Project>

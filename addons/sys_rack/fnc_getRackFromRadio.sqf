@@ -9,7 +9,7 @@
  * rack ID or "" if radio is not a rack <STRING>
  *
  * Example:
- * ["ACRE_PRC152_ID_1"] call acre_sys_rack_fnc_getRackFromRadio;
+ * ["ACRE_PRC152_ID_1"] call acre_sys_rack_fnc_getRackFromRadio
  *
  * Public: No
  */

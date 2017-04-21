@@ -16,6 +16,8 @@ PREP(vehicleCrewPFH);
 PREP(isRadioRemovable);
 PREP(isRackAccessible);
 PREP(isRackHearable);
+PREP(isRadioAccessible);
+PREP(isRadioHearable);
 PREP(getAccessibleVehicleRacks);
 PREP(getHearableVehicleRacks);
 
@@ -28,6 +30,7 @@ PREP(getMountedRadio);
 PREP(getWiredIntercoms);
 PREP(mountRadio);
 PREP(unmountRadio);
+PREP(startUsingMountedRadio);
 PREP(stopUsingMountedRadio);
 
 PREP(getState);

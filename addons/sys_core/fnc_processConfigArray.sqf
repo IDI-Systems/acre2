@@ -43,7 +43,9 @@ private _processedArray = [];
             };
             case "copilot": {
                 private _copilot = (allTurrets [_vehicle, false]) select {getNumber ([_vehicle, _x] call CBA_fnc_getTurret >> "isCopilot") == 1};
-                _processedArray pushBackUnique ["turret", _copilot];
+                {
+                    _processedArray pushBackUnique ["turret", _x];
+                } forEach _copilot;
             };
             default {
                 // Position is of type commander, driver, gunner, inside or external

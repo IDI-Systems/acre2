@@ -15,13 +15,12 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId"];
+params ["_vehicle", "_unit", "_radioId"];
 
-_radioId = toLower _radioId;
-ACRE_ACTIVE_RACK_RADIOS = ACRE_ACTIVE_RACK_RADIOS - [_radioId];
+ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [_radioId];
 if (ACRE_ACTIVE_RADIO == _radioId) then { // If it is the active radio.
     // Check if radio is now in inventory
-    private _items = [acre_player] call EFUNC(sys_core,getGear);
+    private _items = [_unit] call EFUNC(sys_core,getGear);
     _items = _items apply {toLower _x};
 
     if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // No need to proceed further as the radio is in player inventory.
@@ -33,6 +32,11 @@ if (ACRE_ACTIVE_RADIO == _radioId) then { // If it is the active radio.
     };
 
     ACRE_ACTIVE_RADIO = ([] call acre_sys_data_fnc_getPlayerRadioList) select 0;
+
+    // Set intercom configuration to no monitoring.
+    if ([_radioId, _unit] call FUNC(isRadioHearable)) then {
+        [_radioId, _vehicle, _unit, RACK_NO_MONITOR] call EFUNC(sys_intercom,setRxTxCapabilities);
+    };
 
     // Switch active Radio
     //ACRE_ACTIVE_RADIO = "";

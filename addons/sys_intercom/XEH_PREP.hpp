@@ -22,3 +22,8 @@ PREP(passengerIntercomChildrenActions);
 PREP(passengerIntercomConfig);
 PREP(isInPassengerIntercom);
 PREP(updatePassengerIntercomStatus);
+
+// Racks integration
+PREP(configRxTxCapabilities);
+PREP(getRxTxCapabilities);
+PREP(setRxTxCapabilities);

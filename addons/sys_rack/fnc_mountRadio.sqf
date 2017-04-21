@@ -3,13 +3,15 @@
  * Mount radio to a specified rack
  *
  * Arguments:
- * 0: Target Vehicle <OBJECT>
+ * 0: Unique rack ID <STRING>
+ * 1: Unique radio ID <STRING>
+ * 2: Unit <OBJECT><OPTIONAL>
  *
  * Return Value:
  * None
  *
  * Example:
- * ["ACRE_VRC103_ID_1","ACRE_PRC117F_ID_1"] call acre_sys_rack_fnc_mountRadio;
+ * ["ACRE_VRC103_ID_1","ACRE_PRC117F_ID_1"] call acre_sys_rack_fnc_mountRadio
  *
  * Public: No
  */

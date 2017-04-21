@@ -9,7 +9,7 @@
  * Vehicle <OBJECT>
  *
  * Example:
- * ["ACRE_VRC110_ID_1"] call acre_sys_rack_fnc_getVehicleFromRack;
+ * ["ACRE_VRC110_ID_1"] call acre_sys_rack_fnc_getVehicleFromRack
  *
  * Public: No
  */
