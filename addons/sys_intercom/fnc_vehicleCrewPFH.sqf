@@ -42,7 +42,7 @@ if (_vehicle != acre_player) then {
     };
 
     // The infantry phone can only be used externally
-    if (_usingInfantryPhone) then {
+    if (_usingInfantryPhone || {!_usingInfantryPhone && _unitInfantryPhone == acre_player}) then {
         (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
         _infantryPhonePosition = _vehicle modelToWorld _infantryPhonePosition;
         private _unitInfantryPhonePosition = ASLToAGL (getPosASL _unitInfantryPhone);
