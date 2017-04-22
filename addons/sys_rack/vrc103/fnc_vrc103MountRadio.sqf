@@ -6,16 +6,16 @@
  * 0: Target Vehicle <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <ARRAY>
+ * None
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_fnc_mountRadio103;
+ * [cursorTarget] call acre_sys_rack_fnc_vrc103MountRadio
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_rackId", "_event", "_eventData", "_radioData"];
+params ["_rackId", "", "_eventData", ""];
 
 private _radioId = _eventData;
 
