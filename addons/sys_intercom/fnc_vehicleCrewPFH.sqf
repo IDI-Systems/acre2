@@ -49,7 +49,6 @@ if (_vehicle != acre_player) then {
         TRACE_4("Infantry Phone PFH Check",_infantryPhonePosition,_unitInfantryPhonePosition,_infantryPhoneMaxDistance,_unitInfantryPhone distance _infantryPhonePosition);
         // Add an extra meter leeway due to 3d position check height differences and movement
         if (_unitInfantryPhonePosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
-            systemChat format ["Removing infantry phone"];
             if (_infantryPhoneNetwork == PASSENGER_INTERCOM) then {
                 [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
                 ACRE_PLAYER_PASSENGER_INTERCOM = [];
