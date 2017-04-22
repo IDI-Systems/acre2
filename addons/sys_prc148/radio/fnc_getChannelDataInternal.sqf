@@ -33,7 +33,7 @@ switch _channelType do {
         if (_powerSource == "BAT") then {
             HASH_SET(_return, "power", HASH_GET(_channel, "power"));
         } else { // RACK BOOST
-            HASH_SET(_return, "power", 20000);
+            HASH_SET(_return, "power", VRC111_RACK_POWER);
         };
         HASH_SET(_return, "CTCSSTx", HASH_GET(_channel, "CTCSSTx"));
         HASH_SET(_return, "CTCSSRx", HASH_GET(_channel, "CTCSSRx"));

@@ -54,7 +54,7 @@ switch _channelType do {
         HASH_SET(_return, "frequencyTX", HASH_GET(_currentChannelData, "frequencyTX"));
         HASH_SET(_return, "frequencyRX", HASH_GET(_currentChannelData, "frequencyRX"));
         if (HASH_GET(_radioData, "pgm_pa_mode") == "ON" && {HASH_GET(_radioData, "powerSource") == "VAU"}) then {
-            HASH_SET(_return, "power", 50000);
+            HASH_SET(_return, "power", VRC103_RACK_POWER);
         } else {
             HASH_SET(_return, "power", HASH_GET(_currentChannelData, "power"));
         };
