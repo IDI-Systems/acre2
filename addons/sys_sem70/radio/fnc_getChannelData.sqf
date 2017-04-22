@@ -75,7 +75,7 @@ if (_manualChannel isEqualTo 1) then {
     HASH_SET(_return, "encryption", HASH_GET(_radioData, "encryption"));
     HASH_SET(_return, "squelch", HASH_GET(_radioData, "squelch"));
     if (HASH_GET(_radioData, "powerSource") == "VAU") then {
-        HASH_SET(_return, "power", (HASH_GET(_radioData, "power") * 10));
+        HASH_SET(_return, "power", (HASH_GET(_radioData, "power") * SEM90_RACK_POWER_MULTIPLIER));
     } else {
         HASH_SET(_return, "power", HASH_GET(_radioData, "power"));
     };

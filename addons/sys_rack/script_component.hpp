@@ -19,5 +19,7 @@
 #define SET_STATE_RACK(rack, id, val)        ([rack, "setState", [id, val]] call EFUNC(sys_data,dataEvent))
 #define GET_STATE_RACK(rack, id)             ([rack, "getState", id] call EFUNC(sys_data,dataEvent))
 
+#include "script_acre_rack_defines.hpp"
+
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
 #include "\idi\acre\addons\sys_intercom\script_acre_rackIntercom_defines.hpp"
