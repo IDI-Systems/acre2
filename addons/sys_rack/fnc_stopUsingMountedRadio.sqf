@@ -17,8 +17,8 @@
 
 params ["_vehicle", "_unit", "_radioId"];
 
-ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [_radioId];
-if (ACRE_ACTIVE_RADIO == _radioId) then { // If it is the active radio.
+ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [toLower _radioId];
+if (ACRE_ACTIVE_RADIO == toLower _radioId) then { // If it is the active radio.
     // Check if radio is now in inventory
     private _items = [_unit] call EFUNC(sys_core,getGear);
     _items = _items apply {toLower _x};

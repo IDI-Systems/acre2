@@ -29,7 +29,7 @@ if (_isRadioHearable && !_isRadioAccessible) then {
 };
 
 // Set active radio
-ACRE_ACTIVE_RADIO = _radioId;
+ACRE_ACTIVE_RADIO = toLower _radioId;
 
 if (_isRadioHearable) then {
     // Check if the radio had already some functionality in order to avoid overwritting it.
