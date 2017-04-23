@@ -86,7 +86,7 @@ if (_manualChannel isEqualTo 1) then {
     HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
     HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
     if (HASH_GET(_radioData, "powerSource") == "VAU") then {
-        HASH_SET(_return, "power", (HASH_GET(_radioData, "power") * 10));
+        HASH_SET(_return, "power", (HASH_GET(_radioData, "power") * SEM90_RACK_POWER_MULTIPLIER));
     } else {
         HASH_SET(_return, "power", HASH_GET(_radioData, "power"));
     };
