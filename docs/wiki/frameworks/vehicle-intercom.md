@@ -118,7 +118,36 @@ class CfgVehicles {
     class MyVehicle: ParentVehicle {
         acre_hasInfantryPhone = 1; // 1 - enabled, 0 -
         // Intercom the infantry phone can connect to. If left empty, the infantry phone is able to connect to all available intercom networks. Supported entries are "crew" and "passenger".
+        acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available.
+        acre_infantryPhoneCustomRinging[] = {}; // An array used in order to override the default sound for the ringing functionality.
         acre_infantryPhoneIntercom[] = {"crew", "passenger"};
+        // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched.
+        acre_eventInfantryPhone = QFUNC(noApiFunction);
+    };
+};
+```
+{% endraw %}
+
+### Ringing and ringing sound
+
+The infantry phone has the ringing functionality configured by default. However, it can be disabled by setting `acre_infantryPhoneDisableRinging` to 1. In addition, the default ringing sound in ACRE2 can be also overwritten, on a class basis, through the `acre_infantryPhoneCustomRinging` entry. This entry consists of an array of five elements and it will do nothing if left blank. The five entries are mandatory in order for the function `playSound3D` to work as intended in ACRE2.
+
+- 0: Path to sound file <STRING>
+- 1: Duration (sound is a PFH so we need to specify a duration) <NUMBER>
+- 2: Volume the sound plays at <NUMBER>
+- 3: Sound pitch <NUMBER>
+- 4: How far the sound is audible <NUMBER>
+
+{% raw %}
+```cpp
+class CfgVehicles {
+    class ParentVehicle;
+    class MyVehicle: ParentVehicle {
+        acre_hasInfantryPhone = 1; // 1 - enabled, 0 -
+        // Intercom the infantry phone can connect to. If left empty, the infantry phone is able to connect to all available intercom networks. Supported entries are "crew" and "passenger".
+        acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available.
+        acre_infantryPhoneCustomRinging[] = "A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1.
+        acre_infantryPhoneIntercom[] = {"crew"};
         // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched.
         acre_eventInfantryPhone = QFUNC(noApiFunction);
     };
@@ -205,6 +234,8 @@ class CfgVehicles {
         acre_hasInfantryPhone = 1;
         acre_infantryPhoneIntercom[] = {"crew", "passenger"};
         acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82};
+        acre_infantryPhoneDisableRinging = 0; // If set to 1, the ringing funtionality will not be available.
+        acre_infantryPhoneCustomRinging[] = {"A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1.
     };
 };
 ```
