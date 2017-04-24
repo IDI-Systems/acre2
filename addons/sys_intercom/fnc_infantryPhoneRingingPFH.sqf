@@ -37,13 +37,13 @@ if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && {!_noCrew
     private _volume = 3.16;
     private _soundPitch = 1;
     private _distance = 75;
-    if (!isNil (_vehicle getVariable [QGVAR(infPhoneCustomRinging), nil])) then {
+    if (count (_vehicle getVariable [QGVAR(infPhoneCustomRinging), []]) > 0) then {
         _soundFile = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 0;
         _volume = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 2;
         _soundPitch = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 3;
         _distance = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 4;
     };
-    playSound3D [_soundFile, objNull, false, _position, _volume, _soundPitch, _distance];
+    playSound3D [_soundFile, objNull, false, _position, _volume*10, _soundPitch, _distance];
 } else {
     // A unit picked up the phone. Reset isCalling variable
     if (_isCalling) then {

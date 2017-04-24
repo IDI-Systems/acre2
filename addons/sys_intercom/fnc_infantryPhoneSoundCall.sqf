@@ -23,7 +23,7 @@ params ["_vehicle"];
 _vehicle setVariable [QGVAR(isInfantryPhoneCalling), true, true];
 
 private _duration = 2.25;
-if (!isNil (_vehicle getVariable [QGVAR(infPhoneCustomRinging), nil])) then {
+if (count (_vehicle getVariable [QGVAR(infPhoneCustomRinging), []]) > 0) then {
     _duration = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 1;
 };
 

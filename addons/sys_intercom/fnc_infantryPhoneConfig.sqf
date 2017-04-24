@@ -57,9 +57,14 @@ _vehicle setVariable [QGVAR(infPhoneDisableRinging), _infantryPhoneDisableRingin
 
 if (count _infantryPhoneCustomRinging > 0) then {
     if (_infantryPhoneDisableRinging) then {
-        WARNING_2("Vehiclye type %1 has the ringing functionality disabled despite having a custom ringing tone entry %2", _type, _infantryPhoneCustomRinging);
+        WARNING_2("Vehicle type %1 has the ringing functionality disabled despite having a custom ringing tone entry %2",_type,_infantryPhoneCustomRinging);
+    } else {
+        if (count _infantryPhoneCustomRinging != 5) then {
+            WARNING_2("Badly formatted entry acre_infantryPhoneCustomRinging for vehicle type %1. It should have 5 arguments but it has %2.",_type,count _infantryPhoneCustomRinging);
+        } else {
+            _vehicle setVariable [QGVAR(infPhoneCustomRinging), _infantryPhoneCustomRinging];
+        };
     };
-    _vehicle setVariable [QGVAR(infPhoneCustomRinging), _infantryPhoneCustomRinging];
 };
 
 // Hook for third party mods with actions when picking returning infantry phone

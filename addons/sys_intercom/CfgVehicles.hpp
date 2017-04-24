@@ -24,6 +24,8 @@ class CfgVehicles {
         acre_crewIntercomPositions[] = {};
         acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 0;
+        acre_infantryPhoneDisableRinging = 0;
+        acre_infantryPhoneCustomRinging[] = {};
         acre_infantryPhoneIntercom[] = {};
         acre_hasPassengerIntercom = 0;
         acre_passengerIntercomPositions[] = {};
@@ -36,6 +38,8 @@ class CfgVehicles {
         acre_crewIntercomPositions[] = {};
         acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 0;
+        acre_infantryPhoneDisableRinging = 0;
+        acre_infantryPhoneCustomRinging[] = {};
         acre_infantryPhoneIntercom[] = {};
         acre_hasPassengerIntercom = 0;
         acre_passengerIntercomPositions[] = {};
@@ -49,6 +53,8 @@ class CfgVehicles {
         acre_crewIntercomPositions[] = {"default"};
         acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 1;
+        acre_infantryPhoneDisableRinging = 0;
+        acre_infantryPhoneCustomRinging[] = {};
         acre_infantryPhoneIntercom[] = {};
         acre_eventInfantryPhone = QFUNC(noApiFunction);
         acre_hasPassengerIntercom = 0;
@@ -141,7 +147,9 @@ class CfgVehicles {
         acre_hasCrewIntercom = 1;
         acre_crewIntercomPositions[] = {};
         acre_crewIntercomExceptions[] = {};
-        acre_hasInfantryPhone = 0;
+        acre_hasInfantryPhone = 1;
+        acre_infantryPhoneDisableRinging = 1;
+        acre_infantryPhoneCustomRinging[] = {};
         acre_infantryPhoneIntercom[] = {};
         acre_hasPassengerIntercom = 0;
         acre_passengerIntercomPositions[] = {"default"};
@@ -198,7 +206,9 @@ class CfgVehicles {
         acre_hasCrewIntercom = 1;
         acre_crewIntercomPositions[] = {"default"};
         acre_crewIntercomExceptions[] = {};
-        acre_hasInfantryPhone = 0;
+        acre_hasInfantryPhone = 1;
+        acre_infantryPhoneDisableRinging = 1;
+        acre_infantryPhoneCustomRinging[] = {};
         acre_infantryPhoneIntercom[] = {};
         acre_hasPassengerIntercom = 0;
         acre_passengerIntercomPositions[] = {"default"};
@@ -231,6 +241,8 @@ class CfgVehicles {
         acre_crewIntercomPositions[] = {};
         acre_crewIntercomExceptions[] = {};
         acre_hasInfantryPhone = 0;
+        acre_infantryPhoneDisableRinging = 0;
+        acre_infantryPhoneCustomRinging[] = {};
         acre_infantryPhoneIntercom[] = {};
         acre_hasPassengerIntercom = 1;
         acre_passengerIntercomPositions[] = {};

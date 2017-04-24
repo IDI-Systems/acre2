@@ -135,7 +135,7 @@ if (_target isKindOf "CAManBase") then {
             ] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {
-            if (isNull _vehicleInfantryPhone) then {
+            if (isNull _vehicleInfantryPhone && {!(_target getVariable [QGVAR(infPhoneDisableRinging), false])}) then {
                 private _action = [
                     "acre_infantryTelephone_startCalling",
                     localize LSTRING(infantryPhone_startCalling),
