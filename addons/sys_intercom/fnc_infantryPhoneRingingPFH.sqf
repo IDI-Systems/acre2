@@ -33,15 +33,16 @@ if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && {!_noCrew
     private _position = AGLToASL (_vehicle modelToWorld _infantryPhonePosition); // ACRE_LISTENER_POS is in ASL coordinates
     TRACE_4("Infantry Phone Calling PFH Check",_vehicle,acre_player,_position,_volume);
 
-    private _soundFile = QPATHTO_R(sounds\Cellphone_Ring.wss);
-    private _volume = 3.16;
-    private _soundPitch = 1;
-    private _distance = 75;
-    if (count (_vehicle getVariable [QGVAR(infPhoneCustomRinging), []]) > 0) then {
-        _soundFile = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 0;
-        _volume = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 2;
-        _soundPitch = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 3;
-        _distance = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 4;
+    private _soundFile = INFANTRY_PHONE_SOUNDFILE;
+    private _volume = INFANTRY_PHONE_VOLUME;
+    private _soundPitch = INFANTRY_PHONE_SOUNDPITCH;
+    private _distance = INFANTRY_PHONE_MAX_DISTANCE;
+    private _customSound = _vehicle getVariable [QGVAR(infPhoneCustomRinging), []];
+    if (count _customSound > 0) then {
+        _soundFile = _customSound select 0;
+        _volume = _customSound select 2;
+        _soundPitch = _customSound select 3;
+        _distance = _customSound select 4;
     };
     playSound3D [_soundFile, objNull, false, _position, _volume*10, _soundPitch, _distance];
 } else {

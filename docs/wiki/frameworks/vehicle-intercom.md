@@ -234,7 +234,7 @@ class CfgVehicles {
         acre_hasInfantryPhone = 1;
         acre_infantryPhoneIntercom[] = {"crew", "passenger"};
         acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82};
-        acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available.
+        acre_infantryPhoneDisableRinging = 0; // If set to 1, the ringing funtionality will not be available.
         acre_infantryPhoneCustomRinging[] = {"A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1.
     };
 };
