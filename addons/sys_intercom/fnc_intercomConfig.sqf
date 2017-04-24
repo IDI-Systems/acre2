@@ -38,7 +38,7 @@ if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerInterco
 // Exit if object has no infantry phone
 if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasInfantryPhone") == 1) then {
     [_target] call FUNC(infantryPhoneConfig);
-    if (hasInterface) then {
+    if (hasInterface && {_target getVariable [QGVAR(infPhoneDisableRinging), false]}) then {
         [_target] call FUNC(infantryPhoneAction);
     };
 };
