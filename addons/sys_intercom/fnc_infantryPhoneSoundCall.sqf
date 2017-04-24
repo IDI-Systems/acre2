@@ -22,9 +22,10 @@ params ["_vehicle"];
 // The infantry phone of the vehicle is ringing
 _vehicle setVariable [QGVAR(isInfantryPhoneCalling), true, true];
 
-private _duration = 2.25;
-if (count (_vehicle getVariable [QGVAR(infPhoneCustomRinging), []]) > 0) then {
-    _duration = (_vehicle getVariable QGVAR(infPhoneCustomRinging)) select 1;
+private _duration = INFANTRY_PHONE_SOUND_PFH_DURATION;
+private _customSound = _vehicle getVariable [QGVAR(infPhoneCustomRinging), []];
+if (count _customSound > 0) then {
+    _duration = _customSound select 1;
 };
 
 [FUNC(infantryPhoneRingingPFH), _duration, [_vehicle, _infantryPhonePosition]] call CBA_fnc_addPerFrameHandler;

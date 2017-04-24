@@ -27,6 +27,7 @@
 
 // Infantry phone default configuration (fnc_infantryPhoneRingingPFH.sqf)
 #define INFANTRY_PHONE_SOUNDFILE QPATHTO_R(sounds\Cellphone_Ring.wss);
+#define INFANTRY_PHONE_SOUND_PFH_DURATION 2.25
 #define INFANTRY_PHONE_VOLUME 3.16
 #define INFANTRY_PHONE_SOUNDPITCH 1
 #define INFANTRY_PHONE_MAX_DISTANCE 75
