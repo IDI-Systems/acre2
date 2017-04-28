@@ -31,7 +31,16 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
 
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
     private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
-    private _displayName = getText (_item >> "displayName") + _owner;
+
+    private "_displayName";
+    if (_x in ACRE_ACCESSIBLE_RACK_RADIOS || _x in ACRE_HEARABLE_RACK_RADIOS) then {
+        private _radioRack = [_x] call EFUNC(sys_rack,getRackFromRadio);
+        private _radioClass = [_radioRack] call EFUNC(sys_rack,getRackBaseClassname);
+        _displayName = getText (configFile >> "CfgAcreComponents" >> _radioClass >> "name");
+    } else {
+        _displayName = getText (_item >> "displayName") + _owner;
+    };
+
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
     _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");

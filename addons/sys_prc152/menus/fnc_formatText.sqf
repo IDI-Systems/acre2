@@ -65,6 +65,10 @@ while { _result != -1 && _iter < 5} do {
     _result = [_text, "$ch"] call CBA_fnc_find;
 };
 
+_result = [_text, "$bat"] call CBA_fnc_find;
+if(_result != -1) then {
+    _text = [_text, "$bat", GET_STATE("powerSource")] call CBA_fnc_replace;
+};
 _result = [_text, "$transmitting"] call CBA_fnc_find;
 if (_result != -1) then {
     private _transText = "R";

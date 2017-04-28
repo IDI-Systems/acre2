@@ -20,3 +20,5 @@
 
 #define GET_UI_VAR(var1) uiNameSpace getVariable QUOTE(var1)
 #define SET_UI_VAR(var1,var2) uiNamespace setVariable [QUOTE(var1), var2]
+
+#include "\idi\acre\addons\sys_intercom\script_acre_rackIntercom_defines.hpp"

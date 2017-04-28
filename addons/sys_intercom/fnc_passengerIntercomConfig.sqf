@@ -38,7 +38,7 @@ if (_default) then {
         _availablePassIntercomPos pushBackUnique ["cargo", _x select 2];
     } forEach _cargoPositions;
 } else {
-    private _temp = [_vehicle, _passengerIntercomPositions] call FUNC(processConfigArray);
+    private _temp = [_vehicle, _passengerIntercomPositions] call EFUNC(sys_core,processConfigArray);
     {
         _availablePassIntercomPos pushBackUnique _x;
     } forEach _temp;
@@ -46,7 +46,7 @@ if (_default) then {
 
 // Remove all exceptions
 private _passengerIntercomExceptions = getArray (configFile >> "CfgVehicles" >> _type >> "acre_passengerIntercomExceptions");
-private _temp = [_vehicle, _passengerIntercomExceptions] call FUNC(processConfigArray);
+private _temp = [_vehicle, _passengerIntercomExceptions] call EFUNC(sys_core,processConfigArray);
 private _exceptionsPassIntercomPos = [];
 {
     if (_x in _availablePassIntercomPos) then {

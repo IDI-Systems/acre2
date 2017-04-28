@@ -16,7 +16,9 @@ class CfgAcreComponents {
 
         connectors[] =     {
             {"Antenna", ACRE_CONNECTOR_BNC},
-            {"Audio/Data", ACRE_CONNECTOR_U_283}
+            {"Audio/Data", ACRE_CONNECTOR_U_283},
+            {"Lower Accessory", ACRE_CONNECTOR_CONN_57PIN},
+            {"Upper Accessory", ACRE_CONNECTOR_CONN_57PIN}
         };
         defaultComponents[] = {
             {0, "ACRE_SEM70_LONG_BNC"}

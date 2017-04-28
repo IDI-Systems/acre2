@@ -26,6 +26,7 @@ PREP(localStopSpeaking);
 PREP(muting);
 PREP(onPlayerKilled);
 PREP(pong);
+PREP(processConfigArray);
 PREP(processDirectSpeaker);
 PREP(processRadioSpeaker);
 PREP(remoteStartSpeaking);

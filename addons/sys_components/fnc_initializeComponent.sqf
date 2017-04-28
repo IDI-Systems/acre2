@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Creates a complex component and will attaches all the default components.
+ * Creates a complex component and attaches all the default components.
  *
  * Arguments:
  * 0: Component ID <STRING>
@@ -22,16 +22,16 @@
 
 params["_radioId","_event","_data", "_radioData", "_eventKind", "_remote"];
 
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> ([_radioId] call EFUNC(sys_radio,getRadioBaseClassname));
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_radioId);
 
 private _connectorData = HASH_GET(_radioData, "acre_radioConnectionData");
-if(isNil "_connectorData") then {
+if (isNil "_connectorData") then {
     _connectorData = [];
     HASH_SET(_radioData, "acre_radioConnectionData", _connectorData);
 };
 {
     // diag_log text format["x: %1", _x];
-    _x params["_connector", "_component"];
+    _x params ["_connector", "_component"];
 
     private _attributes = HASH_CREATE;
     private _componentClass = configFile >> "CfgAcreComponents" >> _component;

@@ -17,6 +17,7 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
+#include "\idi\acre\addons\sys_rack\script_acre_rack_defines.hpp"
 
 #define BIG_LINE_1 50000
 #define BIG_LINE_2 51000

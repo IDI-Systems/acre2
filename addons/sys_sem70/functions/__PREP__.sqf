@@ -8,6 +8,7 @@
 
 PREP_MODULE(functions,presetInformation);
 PREP_MODULE(functions,render);
+PREP_MODULE(functions,renderRack);
 PREP_MODULE(functions,renderDisplay);
 PREP_MODULE(functions,clearDisplay);
 

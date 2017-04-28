@@ -18,7 +18,7 @@
 
 private _radioList = [];
 
-if (alive acre_player) then {
+if (!ACRE_IS_SPECTATOR) then {
     private _weapons = [acre_player] call EFUNC(sys_core,getGear);
     _radioList = _weapons select {_x call EFUNC(sys_radio,isUniqueRadio) && {!(_x call EFUNC(sys_external,isExternalRadioUsed))}};
 
@@ -26,6 +26,15 @@ if (alive acre_player) then {
     {
         _radioList pushBackUnique _x;
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
+
+    //Auxilary radios are for radios not in inventory like racked radios.
+    {
+        _radioList pushBackUnique _x;
+    } forEach ACRE_ACCESSIBLE_RACK_RADIOS;
+
+    {
+        _radioList pushBackUnique _x;
+    } forEach ACRE_HEARABLE_RACK_RADIOS;
 
     if (ACRE_ACTIVE_RADIO != "") then {
         _radioList pushBackUnique ACRE_ACTIVE_RADIO;
