@@ -9,7 +9,6 @@ PREP_RECOMPILE_END;
 // Define caches to save repetitive config lookups.
 GVAR(rackBaseClassCache) = HASH_CREATE;
 
-
 if (hasInterface) then {
     GVAR(initializedVehicleClasses) = [];
 };
