@@ -113,6 +113,10 @@ entries:
       url: /wiki/radios/sem-52-sl
       output: web, pdf
 
+    - title: SEM 70
+      url: /wiki/radios/sem-70
+      output: web, pdf
+
   - title: API / Frameworks
     output: web, pdf
     folderitems:
