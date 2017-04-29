@@ -27,3 +27,5 @@ if (_isUsedExternally && (_unit != _user)) exitWith {false};
 
 // Prevent from taking a radio that can be also heard through the intercom
 if ([_radioId, _unit] call EFUNC(sys_rack,isRadioHearable)) exitWith {false};
+
+_isAvailable

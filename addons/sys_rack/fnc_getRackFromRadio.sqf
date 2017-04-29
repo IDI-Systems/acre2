@@ -25,4 +25,4 @@ private _return = "";
     if (([_rackId] call FUNC(getMountedRadio)) == _radioId) exitWith {_return = _rackId;};
 } forEach (allMissionObjects "ACRE_baseRack");
 
-_return;
+_return
