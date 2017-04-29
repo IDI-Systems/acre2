@@ -285,7 +285,7 @@
             <German>Topografie-Signalverlustskoeffizienz</German>
             <Czech>Koeficient ztráty signálu způsobené terénem</Czech>
             <Korean>지형 손실 계수</Korean>
-            <Polish>Współczynnik utraty sygnału spowodowanej przez ukształtowanie terenu</Polish>
+            <Polish>Wpływ ukształtowania terenu</Polish>
             <Russian>Коэффициент потерь от местности</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
