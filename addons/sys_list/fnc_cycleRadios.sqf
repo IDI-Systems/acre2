@@ -34,7 +34,7 @@ if (!dialog) then {
         } else {
             _realRadio = [_radioRack] call EFUNC(sys_rack,getRackBaseClassname);
         };
-        private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");   
+        private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
         private _radio = [_typeName, _listInfo, _radioClass];
         TRACE_2("heh", _radioClass, ACRE_ACTIVE_RADIO);
         if (_radioClass == ACRE_ACTIVE_RADIO) then {
@@ -68,6 +68,8 @@ if (!dialog) then {
         //diag_log "GO GO GOGO";
         //diag_log text format["'%1'", _activateRadio];
         [(_activateRadio select 0), (_activateRadio select 1), "", 1] call FUNC(displayHint);
+    } else {
+        [""] call EFUNC(sys_radio,setActiveRadio);
     };
 };
 
