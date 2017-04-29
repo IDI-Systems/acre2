@@ -35,7 +35,6 @@ if (!_initialized) then {
 
         [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call FUNC(addRack);
     };
-
-    [_vehicle] call EFUNC(sys_intercom,configRxTxCapabilities);
+    
     _vehicle setVariable [QGVAR(initialized), true, true];
 };

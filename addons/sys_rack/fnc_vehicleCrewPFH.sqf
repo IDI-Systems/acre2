@@ -38,6 +38,18 @@ if (_vehicle != acre_player) then {
         } else { // No other players.
             [_vehicle] call FUNC(initVehicle);
         };
+    } else {
+        if (!(_vehicle getVariable [QGVAR(rackIntercomInitialised), false])) then {
+            private _racks = [_vehicle] call FUNC(getVehicleRacks);
+            {
+                private _intercoms = [_x] call FUNC(getWiredIntercoms);
+                private _rackRxTxConfig = _vehicle getVariable [QGVAR(rackRxTxConfig), []];
+                if (count _intercoms > 0 && {count _rackRxTxConfig == 0}) exitWith {
+                    [_vehicle] call EFUNC(sys_intercom,configRxTxCapabilities);
+                    _vehicle setVariable [QGVAR(rackIntercomInitialised), true, true];
+                };
+            } forEach _racks;
+        };
     };
 };
 
