@@ -2,7 +2,7 @@
 title: SEM 70
 ---
 
-The SEM 70 (Sender/Empfänger, mobil SEM 70) is a manpack radio for military purposes in the German Army. It was issued in 1984. As a modern radio it can transmit voice and data. The frequency band is from 30 to 79,975 MHz. The channel spacing is 25 KHz by default. It features a manual channel (`Handwahl (HW)`) and an automatic channel (`Automatische Kanalwahl (AKW)`) mode. 
+The SEM 70 (Sender/Empfänger, mobil SEM 70) is a manpack radio for military purposes in the German Army. It was issued in 1984. As a modern radio it can transmit voice and data. The frequency band is from 30 to 79,975 MHz. The channel spacing is 25 KHz by default. It features a manual channel (`Handwahl (HW)`) and an automatic channel (`Automatische Kanalwahl (AKW)`) mode.
 
 ## Technical Data
 
@@ -26,7 +26,7 @@ However, to establish a valid connection between two or more radios, the followi
 
 ### Interface
 
-{% include image.html file="radios/sem-70_interface.jpg" alt="SEM 70 Interface" %}
+{% include image.html file="radios/sem-70_interface.png" alt="SEM 70 Interface" %}
 
 ### Volume Knob
 
@@ -42,7 +42,7 @@ Currently the SEM 70 in ACRE2 features both manual channel (`HW`) and automatic 
 
 ### Frequency Knobs
 
-In manual channel mode, the frequency can be set to a fixed value. This is equivalent to other radios single channel mode. The MHz can be set with the knob on the left side of the display and the kHz with the knob on the right side. 
+In manual channel mode, the frequency can be set to a fixed value. This is equivalent to other radios single channel mode. The MHz can be set with the knob on the left side of the display and the kHz with the knob on the right side.
 
 ### Memory Slot Knob
 
