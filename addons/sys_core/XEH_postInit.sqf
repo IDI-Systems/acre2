@@ -97,8 +97,8 @@ if (GVAR(revealToAI) && hasInterface) then {
 [QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 //Store objects occupying crew seats, note this is empty if the player is not a crew member
-ACRE_PLAYER_VEHICLE_CREW = [];
-ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
+ACRE_PLAYER_CREW_INTERCOM = [];
+ACRE_PLAYER_PASSENGER_INTERCOM = [];
 
 // Disable positional audio whilst in briefing.
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)

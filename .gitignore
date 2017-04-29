@@ -1,4 +1,5 @@
 release/*
+symbols/*
 *.cache
 *.pbo
 texHeaders.bin

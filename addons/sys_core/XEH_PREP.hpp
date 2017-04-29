@@ -26,6 +26,7 @@ PREP(localStopSpeaking);
 PREP(muting);
 PREP(onPlayerKilled);
 PREP(pong);
+PREP(processConfigArray);
 PREP(processDirectSpeaker);
 PREP(processRadioSpeaker);
 PREP(remoteStartSpeaking);
@@ -50,4 +51,4 @@ PREP(enableRevealAI);
 PREP(onRevealUnit);
 
 PREP(coreInitPFH);
-PREP(vehicleCrewPFH);
+//PREP(vehicleCrewPFH);

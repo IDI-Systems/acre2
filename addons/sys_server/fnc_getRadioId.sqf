@@ -25,7 +25,7 @@ private _mapIndex = _baseTypes find _class;
 
 if (_mapIndex == -1) then {
     _mapIndex = _baseTypes pushBack _class;
-    _radioIds set[_mapIndex, []];
+    _radioIds set [_mapIndex, []];
 };
 
 private _takenIds = _radioIds select _mapIndex;

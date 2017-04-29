@@ -20,6 +20,7 @@ params ["_parentComponentId", "_parentConnector"];
 
 private _return = false;
 private _baseClass = [_parentComponentId] call EFUNC(sys_radio,getRadioBaseClassname);
+if (_baseClass == "") then {_baseClass = getText (configFile >> "CfgVehicles" >> _componentId >> "acre_baseClass");};
 
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> _baseClass;
 

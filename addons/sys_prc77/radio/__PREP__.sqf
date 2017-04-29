@@ -2,6 +2,8 @@
 #include "script_component.hpp"
 TRACE_1("enter", _this);
 
+PREP_MODULE(radio,initializeRadio);
+
 PREP_MODULE(radio,getChannelDescription);
 PREP_MODULE(radio,getCurrentChannel);
 PREP_MODULE(radio,getCurrentChannelData);
@@ -19,8 +21,12 @@ PREP_MODULE(radio,handlePTTDown);
 PREP_MODULE(radio,handlePTTUp);
 PREP_MODULE(radio,handleSignalData);
 PREP_MODULE(radio,isExternalAudio);
+
 PREP_MODULE(radio,setCurrentChannel);
 PREP_MODULE(radio,setOnOffState);
 PREP_MODULE(radio,setSpatial);
 PREP_MODULE(radio,setState);
 PREP_MODULE(radio,setVolume);
+
+PREP_MODULE(radio,closeGui);
+PREP_MODULE(radio,openGui);

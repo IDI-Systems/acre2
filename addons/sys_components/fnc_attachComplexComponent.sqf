@@ -24,8 +24,8 @@ params ["_parentComponentId", "_parentConnector", "_childComponentId", "_childCo
 
 private _return = false;
 
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> ([_parentComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
-private _childComponentClass = configFile >> "CfgAcreComponents" >> ([_childComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_parentComponentId);
+private _childComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_childComponentId);
 
 private _componentSimple = getNumber (_parentComponentClass >> "simple");
 if (_componentSimple == 1) exitWith {

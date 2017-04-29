@@ -22,7 +22,7 @@ private _return = nil;
 if(!isNil "_componentData") then {
     private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
     if(!isNil "_connectorData") then {
-        private _componentClass = configFile >> "CfgAcreComponents" >> ([_componentId] call EFUNC(sys_radio,getRadioBaseClassname));
+        private _componentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_componentId);
         private _connectors = getArray(_componentClass >> "connectors");
         _return = _connectors;
     };

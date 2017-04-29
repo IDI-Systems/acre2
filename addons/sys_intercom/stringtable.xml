@@ -1,44 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
             <English>Infantry Phone</English>
             <Spanish>Teléfono de infanteria</Spanish>
             <German>Außenbord Sprechanlage</German>
+            <Japanese>車外電話機</Japanese>
+            <Russian>Телефон пехоты</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_giveInfantryPhone">
             <English>Pass Infantry Phone</English>
             <Spanish>Dar teléfono de infanteria</Spanish>
             <German>Außenbord Sprechanlage geben</German>
+            <Japanese>車外電話機を渡す</Japanese>
+            <Russian>Передать телефон пехоты</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_takeInfantryPhone">
-            <English>Take Infantry Phone</English>
-            <Spanish>Coger teléfono de infanteria</Spanish>
-            <German>Außenbord Sprechanlage abnehmen</German>
+            <English>Take Infantry Phone %1</English>
+            <Spanish>Coger teléfono de infanteria %1</Spanish>
+            <German>Außenbord Sprechanlage abnehmen %1</German>
+            <Japanese>車外電話機 %1 を取る</Japanese>
+            <Russian>Взять телефон пехоты %1</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_switchInfantryPhone">
+            <English>Switch Network %1</English>
+            <Japanese>%1 ネットワークに切り替え</Japanese>
+            <Russian>Переключить сеть %1</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_returnInfantryPhone">
             <English>Return Infantry Phone</English>
             <Spanish>Colgar teléfono de infanteria</Spanish>
             <German>Außenbord Sprechanlage aufhängen</German>
+            <Japanese>車外電話機 %1 を戻す</Japanese>
+            <Russian>Вернуть телефон пехоты</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
             <English>Start calling</English>
             <Spanish>Llamar al exterior</Spanish>
             <German>Außenbord Sprechanlage (läutend)</German>
+            <Japanese>呼び出す</Japanese>
+            <Russian>Начать звонок</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_stopCalling">
             <English>Stop calling</English>
             <Spanish>Dejar de llamar</Spanish>
             <German>Außenbord Sprechanlage (läutend)</German>
+            <Japanese>呼び出しを止める</Japanese>
+            <Russian>Остановить звонок</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneDisconnected">
             <English>Infantry Phone Disconnected</English>
+            <Japanese>車外電話機を切断した</Japanese>
+            <Russian>Телефон пехоты был отключен</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneConnected">
-            <English>Infantry Phone Connected</English>
+            <English>Infantry Phone Connected %1</English>
+            <Japanese>車外電話機 %1 に切断した</Japanese>
+            <Russian>Телефон пехоты подключен %1</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
-            <English>Infantry Phone Received</English>
+            <English>Infantry Phone Received %1</English>
+            <Japanese>車外電話機 %1 に受信した</Japanese>
+            <Russian>Получен телефон пехоты %1</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercom">
+            <English>Intercom</English>
+            <Japanese>インターコム</Japanese>
+            <Russian>Внутренняя связь</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passenger">
+            <English>Pax</English>
+            <Japanese>パックス</Japanese>
+            <Russian>Пассажирский интерком</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_crewIntercomDisconnected">
+            <English>Disconnected from Crew Intercom</English>
+            <Japanese>乗員インターコムから切断した</Japanese>
+            <Russian>Отключен от внутренней связи экипажа</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_crewIntercomConnected">
+            <English>Connected to Crew Intercom</English>
+            <Japanese>乗員インターコムに接続した</Japanese>
+            <Russian>Подключен к внутренней связи экипажа</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_connectPassengerIntercom">
+            <English>Connect</English>
+            <Japanese>接続</Japanese>
+            <Russian>Подключен</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_disconnectPassengerIntercom">
+            <English>Disconnect</English>
+            <Japanese>切断</Japanese>
+            <Russian>Отключен</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
+            <English>Disconnected from Pax Intercom</English>
+            <Japanese>パックス インターコムから切断した</Japanese>
+            <Russian>Отключен от пассажирского интеркома</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercomConnected">
+            <English>Connected to Pax Intercom</English>
+            <Japanese>パックス インターコムに接続した</Japanese>
+            <Russian>Подключен к пассажирскому интеркому</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercomNoConnections">
+            <English>No free connections for Pax Intercom</English>
+            <Japanese>パックス インターコムに接続できる場所が無い</Japanese>
+            <Russian>Нет свободных соединений для пассажирского интеркома</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_transOnly">
+            <English>Transmit only</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_recOnly">
+            <English>Receive only</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_recAndTrans">
+            <English>Receive and Transmit</English>
         </Key>
     </Package>
 </Project>

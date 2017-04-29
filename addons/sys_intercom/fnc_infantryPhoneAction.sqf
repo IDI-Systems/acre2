@@ -24,7 +24,6 @@ if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasInfantryPhone") 
 
 // Exit if class already initialized
 if (_type in GVAR(initializedInfantryPhone)) exitWith {};
-
 GVAR(initializedInfantryPhone) pushBack _type;
 
 // Add action

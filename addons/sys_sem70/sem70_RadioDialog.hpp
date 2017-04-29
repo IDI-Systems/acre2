@@ -180,6 +180,39 @@ class SEM70_RadioDialog {
             text = QPATHTOF(Data\knobs\fk\fk3_0.paa);
         END_CONTROL
 
+        BEGIN_CONTROL(displayGP, SEM70_RscPicture, 117)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QPATHTOF(Data\display\gp80_display_0.paa);
+        END_CONTROL
+
+        BEGIN_CONTROL(ledBetr, SEM70_RscPicture, 118)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QPATHTOF(Data\knobs\led\led_betr_sp_an.paa);
+        END_CONTROL
+
+        BEGIN_CONTROL(ledGer2, SEM70_RscPicture, 119)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QPATHTOF(Data\knobs\led\led_ger2_aus.paa);
+        END_CONTROL
+
+        BEGIN_CONTROL(ledGer13, SEM70_RscPicture, 120)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QPATHTOF(Data\knobs\led\led_ger13_aus.paa);
+        END_CONTROL
+
+
 
 
         // Do the buttons last so they come on top.

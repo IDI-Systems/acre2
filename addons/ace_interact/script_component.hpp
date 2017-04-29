@@ -15,3 +15,7 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+#include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
+
+#include "\idi\acre\addons\sys_intercom\script_acre_rackIntercom_defines.hpp"
