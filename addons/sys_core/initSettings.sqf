@@ -88,7 +88,7 @@
     "SLIDER",
     localize LSTRING(terrainLoss_displayName),
     "ACRE2",
-    [0, 1, 1, 2],
+    [0, 1, 0.50, 2],
     true,
     {[_this, true] call EFUNC(api,setLossModelScale)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
