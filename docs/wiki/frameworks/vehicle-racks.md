@@ -1,5 +1,5 @@
 ---
-title: Vehicle Racks (WIP)
+title: Vehicle Racks
 ---
 
 {% include important.html content="API still WIP. May change in the future!" %}
