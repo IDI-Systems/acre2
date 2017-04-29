@@ -7,6 +7,7 @@
             <German>Gemeinsame Funkgeräte</German>
             <Japanese>無線機を共有</Japanese>
             <Russian>Общие рации</Russian>
+            <Polish>Udostępnione radia</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_external_shareRadio">
             <English>Share Radio</English>
@@ -14,6 +15,7 @@
             <German>Radio teilen</German>
             <Japanese>無線機の共有</Japanese>
             <Russian>Передать рацию</Russian>
+            <Polish>Udostępnij radio</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_external_unshareRadio">
             <English>Unshare Radio</English>
@@ -21,6 +23,7 @@
             <German>Radio nicht teilen</German>
             <Japanese>無線機の共有解除</Japanese>
             <Russian>Забрать рацию</Russian>
+            <Polish>Wył. udostępnianie</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHeadset">
             <English>Take Headset</English>
@@ -28,6 +31,7 @@
             <German>Headset abholen</German>
             <Japanese>ヘッドセットを取る</Japanese>
             <Russian>Взять наушники</Russian>
+            <Polish>Weź słuchawkę</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHeadset">
             <English>Return Headset</English>
@@ -35,6 +39,7 @@
             <German>Headset zuruckgeben</German>
             <Japanese>ヘッドセットを戻す</Japanese>
             <Russian>Вернуть наушники</Russian>
+            <Polish>Odłóż słuchawkę</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHeadset">
             <English>Give Headset</English>
@@ -42,16 +47,19 @@
             <German>Headset geben</German>
             <Japanese>ヘッドセットを渡す</Japanese>
             <Russian>Дать наушники</Russian>
+            <Polish>Podaj słuchawkę</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTake">
             <English>Start using %1 from %2</English>
             <Japanese>%1 を %2 から使用する</Japanese>
             <Russian>Начать использовать %1 из %2</Russian>
+            <Polish>Używasz %1 od %2</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturn">
             <English>Stop using %1 from %2</English>
             <Japanese>%1 を %2 から使用停止する</Japanese>
             <Russian>Перестать использовать %1 из %2</Russian>
+            <Polish>Przestałeś używać %1 od %2</Polish>
         </Key>
     </Package>
 </Project>
