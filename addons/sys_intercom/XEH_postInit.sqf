@@ -8,8 +8,6 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 ["Air", "init", FUNC(intercomConfig), nil, nil, true] call CBA_fnc_addClassEventHandler;
 ["Boat_F", "init", FUNC(intercomConfig), nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-GVAR(intercomConfigured) = true;
-
 if (!hasInterface) exitWith {};
 
 ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);

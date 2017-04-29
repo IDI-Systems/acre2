@@ -15,8 +15,6 @@
  */
 #include "script_component.hpp"
 
-if (!EGVAR(sys_intercom,intercomConfigured)) exitWith {};
-
 private _vehicle = vehicle acre_player;
 if (_vehicle != acre_player) then {
 
