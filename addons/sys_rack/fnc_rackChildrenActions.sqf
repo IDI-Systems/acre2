@@ -61,7 +61,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             _actions pushBack [_action, [], _target];
 
             private _pttAssign = [] call EFUNC(api,getMultiPushToTalkAssignment);
-            private _radioActions = [_target, _unit, [_mountedRadio, (_mountedRadio isEqualTo ACRE_ACTIVE_RADIO), _pttAssign]] call FUNC(radioChildrenActions);
+            private _radioActions = [_target, _unit, [_mountedRadio, (_mountedRadio isEqualTo ACRE_ACTIVE_RADIO), _pttAssign]] call EFUNC(ace_interact,radioChildrenActions);
             _actions append _radioActions;
         } else {
             // Use
