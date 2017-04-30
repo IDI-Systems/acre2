@@ -96,6 +96,7 @@ The framework recognises the following entries and wildcards for the configurati
   - `"ACRE_VRC103"`: Can mount a `"ACRE_PRC117F"`.
   - `"ACRE_VRC110"`: Can mount a `"ACRE_PRC152"`.
   - `"ACRE_VRC111"`: Can mount a `"ACRE_PRC148"` (20W version).
+  - `"ACRE_SEM90"`: Can mount a `"ACRE_SEM70"` (4W on low power and 40W on high).
 {% endraw %}
 
 ## Configuration examples
