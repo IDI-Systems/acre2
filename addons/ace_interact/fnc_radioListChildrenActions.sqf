@@ -53,10 +53,7 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
         {
             [(_this select 2) select 0] call EFUNC(sys_radio,openRadio)
         },
-        {
-            (_this select 2) params ["_radio"];
-            !((_radio in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) || (toLower _radio) in ACRE_HEARABLE_RACK_RADIOS)
-        },
+        {true},
         {_this call FUNC(radioChildrenActions)},
         [_x, _isActive, _pttAssign]
     ] call ace_interact_menu_fnc_createAction;
