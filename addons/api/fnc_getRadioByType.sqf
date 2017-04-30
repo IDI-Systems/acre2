@@ -24,17 +24,17 @@ private _array = [];
 private _ret = nil;
 
 if (_array isEqualType objNull) then {
-    _array = [_array] call EFUNC(lib,getGear);
+    _array = [_array] call EFUNC(sys_core,getGear);
 } else {
     _array = [] call FUNC(getCurrentRadioList);
 };
 
 {
     private _radioId = _x;
-    if( ([_radioId, _radioType] call FUNC(isKindOf) ) ) exitWith {
+    if ( ([_radioId, _radioType] call FUNC(isKindOf) ) ) exitWith {
         _ret = _radioId;
     };
 } forEach _array;
 
-if(isNil "_ret") exitWith { nil };
+if (isNil "_ret") exitWith { nil };
 _ret

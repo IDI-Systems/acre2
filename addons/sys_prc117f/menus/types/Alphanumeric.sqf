@@ -30,8 +30,7 @@ GVAR(NumpadMap) = [
 ];
 
 DFUNC(doAlphanumericButton) = {
-    //TRACE_1(QUOTE(FUNC(doNumberButton)), _this);
-    params["_menu", "_event"];
+    params ["_menu", "_event"];
 
     private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
 
@@ -44,13 +43,13 @@ DFUNC(doAlphanumericButton) = {
     private _key = _event select 0;
 
     private _lastButton = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaLastButton", _key);
-    if(_lastButton != _key) then {
+    if (_lastButton != _key) then {
         _editButtonPress = 0;
         [_menu, ['RIGHT']] call FUNC(onButtonPress_Alphanumeric);
     };
 
     TRACE_1("", _number);
-    if(_number > -1 && _number < 10) then {
+    if (_number > -1 && _number < 10) then {
 
         _arr = toArray _value;
         _character = _arr select _editIndex;
@@ -65,7 +64,7 @@ DFUNC(doAlphanumericButton) = {
         TRACE_1("New value", _value);
 
         // Increment the next character to use
-        if(_editButtonPress + 1 >= (count (GVAR(NumpadMap) select _number))) then {
+        if (_editButtonPress + 1 >= (count (GVAR(NumpadMap) select _number))) then {
             _editButtonPress = 0;
         } else {
             _editButtonPress = _editButtonPress + 1;
@@ -83,8 +82,7 @@ DFUNC(doAlphanumericButton) = {
 };
 
 DFUNC(onButtonPress_Alphanumeric) = {
-    //TRACE_1(QUOTE(FUNC(onButtonPress_Alphanumeric)), _this);
-    params["_menu", "_event"];
+    params ["_menu", "_event"];
 
     private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
 
@@ -103,7 +101,7 @@ DFUNC(onButtonPress_Alphanumeric) = {
         case 'LEFT': {
             _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
             _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
-            if(_editIndex > 0) then {
+            if (_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
                 _editIndex = _editDigits;
@@ -116,7 +114,7 @@ DFUNC(onButtonPress_Alphanumeric) = {
         case 'RIGHT': {
             _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
             _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
-            if(_editIndex+1 < _editDigits) then {
+            if (_editIndex+1 < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
                 _editIndex = 0;
@@ -169,18 +167,17 @@ DFUNC(onButtonPress_Alphanumeric) = {
 };
 
 DFUNC(renderMenu_Alphanumeric) = {
-    //TRACE_1(QUOTE(FUNC(renderMenu_Alphanumeric)), _this);
-    params["_menu"]; // the menu to render is passed
+    params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 
     private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
-    private _value =  SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
+    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
 
     private _valueHash = HASH_CREATE;
     HASH_SET(_valueHash, "1", _value);
 
     [] call FUNC(clearDisplay);
-    if(!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
+    if (!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
         {
             // Data selection row
             [(_x select 0),

@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Creates a PFH to monitor the ACRE2Arma extension's connection to the TeamSpeak plugin.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_io_fnc_server
  *
  * Public: No
  */
@@ -19,21 +18,20 @@
 GVAR(pipeCode) = "0";
 DFUNC(connectionFnc) = {
     LOG("~~~~~~~~~~~~~CONNNNNECTION FUNNNNNNCTION CALLED!!!!!!!!!!!!!!!!!");
-    if(GVAR(runServer)) then {
-        if(GVAR(pipeCode) != "1") then {
+    if (GVAR(runServer)) then {
+        if (GVAR(pipeCode) != "1") then {
             LOG("ATEEEMPTING TO OPEN PIPE!");
             // acre_player sideChat "OPEN PIPE";
             GVAR(pongTime) = diag_tickTime;
-            private _connectString = "0ts";
-            GVAR(pipeCode) = "ACRE2Arma" callExtension _connectString;
+            GVAR(pipeCode) = "ACRE2Arma" callExtension "0ts"; // Connect String
             // acre_player sideChat format["RESULT: %1", GVAR(pipeCode)];
-            if(GVAR(pipeCode) != "1") then {
-                if(time > 15) then {
-                    if(isMultiplayer) then {
+            if (GVAR(pipeCode) != "1") then {
+                if (time > 15) then {
+                    if (isMultiplayer) then {
                         private _warning = "WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!";
                         hintSilent _warning;
                         GVAR(connectCount) = GVAR(connectCount) + 1;
-                        if(GVAR(connectCount) > 15) then {
+                        if (GVAR(connectCount) > 15) then {
                             INFO_1("Pipe error: %1",GVAR(pipeCode));
                             GVAR(connectCount) = 0;
                         };
@@ -44,7 +42,7 @@ DFUNC(connectionFnc) = {
                 //diag_log text format["%1 ACRE: Pipe failed opening: %2", diag_tickTime, GVAR(pipeCode)];
             } else {
                 LOG("PIPE OPENED!");
-                if(GVAR(hasErrored) && isMultiplayer) then {
+                if (GVAR(hasErrored) && isMultiplayer) then {
                     hint "ACRE HAS RECOVERED FROM A CLOSED PIPE!";
                 } else {
                     hint "ACRE CONNECTED";
@@ -52,19 +50,26 @@ DFUNC(connectionFnc) = {
                 GVAR(hasErrored) = false;
                 INFO("Pipe opened.");
                 GVAR(serverStarted) = true;
+
+                // Move TeamSpeak 3 channel if already in-game (otherwise display XEH will take care of it)
+                if (!isNull (findDisplay 46)) then {
+                    call FUNC(ts3ChannelMove);
+                };
             };
         };
     } else {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     true
 };
-// CHANGE: Don't initialize ACRE in editor
+
 #ifndef DEBUG_MODE_FULL
-if(isMultiplayer) then {
+if (isMultiplayer) then {
+#endif
     [] call FUNC(connectionFnc);
     ADDPFH(DFUNC(connectionFnc), 1, []);
     GVAR(serverStarted) = true;
+#ifndef DEBUG_MODE_FULL
 };
 #endif
 

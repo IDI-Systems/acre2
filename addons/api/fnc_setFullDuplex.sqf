@@ -3,7 +3,8 @@
  * Sets the duplex of radio transmissions. If set to true, it means that you will receive transmissions even while talking and multiple people can speak at the same time.
  *
  * Arguments:
- * 0: True/false to set full duplex <BOOLEAN>
+ * 0: Enable full duplex <BOOL>
+ * 1: CBA Settings Call <BOOL> (default: false)
  *
  * Return Value:
  * None
@@ -15,10 +16,21 @@
  */
 #include "script_component.hpp"
 
-INFO_2("%1 called with: %2",QFUNC(setFullDuplex),_this);
+if (!hasInterface) exitWith {false};
 
-params ["_value"];
+// @todo remove backwards compatibility in 2.7.0 (including second argument) and move function to sys_core
+params ["_value", ["_CBASettingCall", false]];
 
-ACRE_FULL_DUPLEX = _value;
+// Backwards compatibility - block CBA settings if API function called directly
+if (_CBASettingCall && {!isNil QGVAR(fullDuplexBlockCBASetting)}) exitWith {};
 
-INFO_5("Difficulty changed. Interference: %1 - Duplex: %2 - Terrain Loss: %3 - Omni-directional: %4 - AI Hearing: %5",ACRE_INTERFERENCE,ACRE_FULL_DUPLEX,EGVAR(sys_signal,terrainScaling),EGVAR(sys_signal,omnidirectionalRadios),ACRE_AI_ENABLED);
+if (!_CBASettingCall) then {
+    GVAR(fullDuplexBlockCBASetting) = true;
+    ACRE_DEPRECATED(QFUNC(setFullDuplex),"2.7.0","CBA Settings");
+    WARNING_1("%1 has been called directly and CBA Setting for it has been blocked!",QFUNC(setFullDuplex));
+};
+
+// Set
+EGVAR(sys_core,fullDuplex) = _value;
+
+INFO_5("Difficulty changed. Interference: %1 - Duplex: %2 - Terrain Loss: %3 - Omni-directional: %4 - AI Hearing: %5",EGVAR(sys_core,interference),EGVAR(sys_core,fullDuplex),EGVAR(sys_signal,terrainScaling),EGVAR(sys_signal,omnidirectionalRadios),EGVAR(sys_core,revealToAI));

@@ -8,7 +8,7 @@
 #define CONTROL_SetRelativePos(xpos,ypos) x = H_OFFSET + (xpos * 0.001); y = H_OFFSET + (ypos * 0.001);
 #define CONTROL_SetDimensions(width, height) w = width * 0.001; h = height * 0.001;
 
-#define BEGIN_CONTROL(name, parent, idval) class name : parent { idc = idval;
+#define BEGIN_CONTROL(name, parent, idval) class name: parent { idc = idval;
 #define END_CONTROL        };
 
 #define BUTTON_W     0.037
@@ -127,8 +127,7 @@ class PRC148_RadioDialog {
     controlsBackground[] = {"PRC148Background"};
     objects[] = {};
 
-    class PRC148Background : Prc148_RscBackground
-    {
+    class PRC148Background: Prc148_RscBackground {
         type = CT_STATIC;
         idc = 999;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
@@ -203,7 +202,7 @@ class PRC148_RadioDialog {
         TEXT_ROW_LARGE(53, ROW_LARGE_X, ROW_LARGE_Y, 3, ROW_LARGE_W, ROW_LARGE_H, ROW_LARGE_OFFX, ROW_LARGE_OFFY, ROW_LARGE_FONT_SIZE, "EtelkaNarrowMediumPro")
 
 
-        class BatteryImage : Prc148_RscPicture {
+        class BatteryImage: Prc148_RscPicture {
             x = ((((((0.430)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = ((((((0.316)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = SCALE*0.05*SafeZoneH;
@@ -213,7 +212,7 @@ class PRC148_RadioDialog {
             idc = 12011;
         };
 
-        class BatteryStrength : Prc148_RscText {
+        class BatteryStrength: Prc148_RscText {
             x = ((((((0.4465)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = ((((((0.326)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = SCALE*0.0135*SafeZoneH;
@@ -224,7 +223,7 @@ class PRC148_RadioDialog {
             idc = 12010;
         };
 
-        class SquelchImage : Prc148_RscPicture {
+        class SquelchImage: Prc148_RscPicture {
             x = ((((((0.441)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = ((((((0.4145)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = SCALE*0.022*SafeZoneH;
@@ -233,7 +232,7 @@ class PRC148_RadioDialog {
             idc = 12012;
         };
 
-        class ExternalAudio : Prc148_RscPicture {
+        class ExternalAudio: Prc148_RscPicture {
             x = ((((((0.542)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = ((((((0.313)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = SCALE*0.008*SafeZoneH;
@@ -242,7 +241,7 @@ class PRC148_RadioDialog {
             idc = 12013;
         };
 
-        class SideConnector : Prc148_RscPicture {
+        class SideConnector: Prc148_RscPicture {
             x = ((((((0.546)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = ((((((0.314)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = SCALE*0.013*SafeZoneH;
@@ -251,7 +250,7 @@ class PRC148_RadioDialog {
             idc = 12014;
         };
 
-        class Cursor : Prc148_Cursor {
+        class Cursor: Prc148_Cursor {
             idc = 99212;
             w = 0;
             h = 0;
@@ -328,8 +327,8 @@ class PRC148_RadioDialog {
             colorDisabled[] = {ClrGray, 0};
             colorBackgroundDisabled[] = {ClrGray,0};
 
-            onMouseEnter  = "[_this, 'Volume'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
-            onMouseExit  = "[_this, 'Volume'] call acre_sys_prc148_fnc_onKnobMouseExit;";
+            onMouseEnter = "[_this, 'Volume'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
+            onMouseExit = "[_this, 'Volume'] call acre_sys_prc148_fnc_onKnobMouseExit;";
             onMouseButtonUp = "_this call acre_sys_prc148_fnc_onVolumeKnobPress;";
             toolTip = QUOTE(Current volume: 100%);
         END_CONTROL
@@ -350,8 +349,8 @@ class PRC148_RadioDialog {
             colorDisabled[] = {ClrGray, 0};
             colorBackgroundDisabled[] = {ClrGray,9};
 
-            onMouseEnter  = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
-            onMouseExit  = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseExit;";
+            onMouseEnter = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
+            onMouseExit = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseExit;";
             onMouseButtonUp = "_this call acre_sys_prc148_fnc_onChannelKnobPress;";
             toolTip = QUOTE(Change channel);
         END_CONTROL

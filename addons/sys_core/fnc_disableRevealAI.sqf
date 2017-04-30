@@ -1,24 +1,23 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function handles stopping the AI reveal check.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_disableRevealAI
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-if(isNil QGVAR(monitorAIHandle)) exitWith { false };
+if (isNil QGVAR(monitorAIHandle)) exitWith { false };
 
-if(GVAR(monitorAIHandle) > -1) then {
+if (GVAR(monitorAIHandle) > -1) then {
     [GVAR(monitorAIHandle)] call CBA_fnc_removePerFrameHandler;
 };
 

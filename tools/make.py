@@ -72,13 +72,15 @@ dssignfile = ""
 prefix = "acre"
 pbo_name_prefix = "acre_"
 signature_blacklist = []
-importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "ACRE2ArmA.dll"]
+importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "acre_x64.dll", "ACRE2Arma.dll", "ACRE2Arma_x64.dll", "ACRE2Steam.dll", "ACRE2Steam_x64.dll"]
 extrasFiles = ["examples", "Wav2B64.exe"]
 pluginFiles = ["acre2_win32.dll", "acre2_win64.dll"]
-steamFiles = ["extras\\ACRE2Steam.dll"]
-versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h"]
+versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h", "docs\\_data\\sidebar.yml"]
 extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
-extensions64 = ["ACRE2\\ACRE2TS"]
+extensions64 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS"]
+# be_cred_file expected to be in folder defined by enviorment variable CBA_PUBLISH_CREDENTIALS_PATH
+be_cred_filename = "acre_battleye_creds.json"
+
 
 ciBuild = False # Used for CI builds
 
@@ -339,27 +341,35 @@ def compile_extensions(extensions_root, force_build):
         print_blue("\nCompiling extensions in {}".format(extensions_root))
         joinstr = ":rebuild;" if force_build else ";"
 
-        # Prepare build dirs
-        vcproj32 = os.path.join(extensions_root,"vcproj")
-        vcproj64 = os.path.join(extensions_root,"vcproj64")
-        if not os.path.exists(vcproj32):
-            os.mkdir(vcproj32)
-        if not os.path.exists(vcproj64):
-            os.mkdir(vcproj64)
-
         # 32-bit
-        os.chdir(vcproj32)
-        subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF", "-G", "Visual Studio 14 2015"])
-        print()
-        extensions32_cmd = joinstr.join(extensions32)
-        subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
+        if extensions32:
+            # Prepare build dirs
+            vcproj32 = os.path.join(extensions_root,"vcproj")
+            if not os.path.exists(vcproj32):
+                os.mkdir(vcproj32)
+            # Build
+            os.chdir(vcproj32)
+            subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF", "-G", "Visual Studio 14 2015"])
+            print()
+            extensions32_cmd = joinstr.join(extensions32)
+            subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
+        else:
+            print("No 32-bit extensions found.")
 
         # 64-bit
-        os.chdir(vcproj64)
-        subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON", "-G", "Visual Studio 14 2015 Win64"])
-        print()
-        extensions64_cmd = joinstr.join(extensions64)
-        subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
+        if extensions64:
+            # Prepare build dirs
+            vcproj64 = os.path.join(extensions_root,"vcproj64")
+            if not os.path.exists(vcproj64):
+                os.mkdir(vcproj64)
+            # Build
+            os.chdir(vcproj64)
+            subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON", "-G", "Visual Studio 14 2015 Win64"])
+            print()
+            extensions64_cmd = joinstr.join(extensions64)
+            subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
+        else:
+            print("No 64-bit extensions found.")
     except:
         print_error("COMPILING EXTENSIONS.")
         raise
@@ -471,7 +481,6 @@ def copy_optionals_for_building(mod,pbos):
     finally:
         os.chdir(current_dir)
 
-    print("")
     try:
         for dir_name in src_directories:
             mod.append(dir_name)
@@ -616,14 +625,19 @@ def get_project_version(version_increments=[]):
                 patchText = re.search(r"#define PATCHLVL (.*\b)", hpptext).group(1)
                 buildText = re.search(r"#define BUILD (.*\b)", hpptext).group(1)
 
-                # Increment version
+                # Increment version (reset all below except build)
                 if version_increments != []:
                     if "major" in version_increments:
                         majorText = int(majorText) + 1
-                    if "minor" in version_increments:
+                        minorText = 0
+                        patchText = 0
+                    elif "minor" in version_increments:
                         minorText = int(minorText) + 1
-                    if "patch" in version_increments:
+                        patchText = 0
+                    elif "patch" in version_increments:
                         patchText = int(patchText) + 1
+
+                    # Always increment build
                     if "build" in version_increments:
                         buildText = int(buildText) + 1
 
@@ -705,9 +719,10 @@ def set_version_in_files():
                     for versionFound in versionsFound:
                         if versionFound:
                             # Use the same version length as the one found
-                            if len(versionFound) == len(newVersion):
+                            newVersionUsed = "" # In case undefined
+                            if versionFound.count(".") == newVersion.count("."):
                                 newVersionUsed = newVersion
-                            if len(versionFound) == len(newVersionShort):
+                            if versionFound.count(".") == newVersionShort.count("."):
                                 newVersionUsed = newVersionShort
 
                             # Print change and modify the file if changed
@@ -780,20 +795,47 @@ def get_commit_ID():
     # Get latest commit ID
     global make_root
     curDir = os.getcwd()
+    commit_id = ""
+
     try:
+        # Verify if Git repository
         gitpath = os.path.join(os.path.dirname(make_root), ".git")
         assert os.path.exists(gitpath)
-        os.chdir(make_root)
 
+        # Try to get commit ID through Git client
+        os.chdir(make_root)
         commit_id = subprocess.check_output(["git", "rev-parse", "HEAD"])
         commit_id = str(commit_id, "utf-8")[:8]
+    except FileNotFoundError:
+        # Try to get commit ID from git files (subprocess failed - eg. no Git client)
+        head_path = os.path.join(gitpath, "HEAD")
+        if os.path.exists(head_path):
+            with open(head_path, "r") as head_file:
+                branch_path = head_file.readline().split(": ")
+
+                # Commit ID is written in HEAD file directly when in detached state
+                if len(branch_path) == 1:
+                    commit_id = branch_path[0]
+                else:
+                    branch_path = branch_path[-1].strip()
+                    ref_path = os.path.join(gitpath, branch_path)
+                    if os.path.exists(ref_path):
+                        with open(ref_path, "r") as ref_file:
+                            commit_id = ref_file.readline()
+
+        if commit_id != "":
+            commit_id = commit_id.strip()[:8]
+        else:
+            raise
     except:
-        print_error("FAILED TO DETERMINE COMMIT ID.")
-        print_yellow("Verify that \GIT\BIN or \GIT\CMD is in your system path or user path.")
-        commit_id = "NOGIT"
-        raise
+        # All other exceptions (eg. AssertionException)
+        if commit_id == "":
+            raise
     finally:
         pass
+        if commit_id == "":
+            print_error("Failed to determine commit ID - folder is not a Git repository.")
+            commit_id = "NOGIT"
         os.chdir(curDir)
 
     print_yellow("COMMIT ID set to {}".format(commit_id))
@@ -1501,7 +1543,32 @@ See the make.cfg file for additional build options.
     finally:
         if compile_ext:
             compile_extensions(extensions_root, force_build)
+
         copy_important_files(module_root_parent,os.path.join(release_dir, project))
+
+        # Sign the extensions.
+        if("CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
+            credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
+            cred_file_path = os.path.join(credentials_path, be_cred_filename)
+            if os.path.isfile(cred_file_path):
+                print("Credential file found")
+                cred_file = json.load(open(cred_file_path))
+                dll_sign_path = os.path.join(release_dir, project)
+                sign_tool = cred_file["signtool"]
+                path_to_certificate = cred_file["certificate_path"]
+                certificate_password = cred_file["certificate_password"]
+                print("Signing dlls in folder: {}".format(dll_sign_path))
+                for file in os.listdir(dll_sign_path):
+                    if (file.endswith(".dll") and os.path.isfile(os.path.join(dll_sign_path,file))):
+                        fileToSignPath = os.path.join(dll_sign_path, file)
+                        print("Signing file {}".format(fileToSignPath))
+                        cmd = [sign_tool, "sign", "/f", path_to_certificate, "/p", certificate_password, "/t", "http://timestamp.digicert.com", fileToSignPath]
+                        subprocess.call(cmd)
+            else:
+                print("Credential file not found: {}".format(cred_file_path))
+        else:
+            print("Credential environment variable not found.")
+
         if (os.path.isdir(optionals_root)):
             cleanup_optionals(optionals_modules)
         if not version_update:
@@ -1523,9 +1590,6 @@ See the make.cfg file for additional build options.
 
     # Make release
     if make_release_zip:
-        release_name = "{}_{}".format(zipPrefix, project_version)
-        release_name_steam = "{}_steam".format(release_name)
-
         try:
             # Delete all log files
             for root, dirs, files in os.walk(os.path.join(release_dir, project, "addons")):
@@ -1539,25 +1603,25 @@ See the make.cfg file for additional build options.
                     os.remove(os.path.join(release_dir, file))
 
             # Create a zip with the contents of release folder in it
+            release_name = "{}_{}".format(zipPrefix, project_version)
             print_blue("\nMaking release: {}.zip ...".format(release_name))
             print("Packing...")
             release_zip = shutil.make_archive("{}".format(release_name), "zip", release_dir)
 
-            # Create a zip with Steam extension
-            print_blue("\nMaking release: {}.zip".format(release_name_steam))
-            for file in steamFiles:
-                steam_file = os.path.join(module_root_parent,file)
-                if os.path.exists(steam_file):
-                    print("Copying file => {}".format(steam_file))
-                    shutil.copy(steam_file, os.path.join(release_dir, project))
-            print("Packing...")
-            release_zip_steam = shutil.make_archive("{}".format(release_name_steam), "zip", release_dir)
-
             # Move release zip to release folder
             shutil.copy(release_zip, release_dir)
-            shutil.copy(release_zip_steam, release_dir)
             os.remove(release_zip)
-            os.remove(release_zip_steam)
+
+            # Create a zip with symbols if symbols folder exists
+            if os.path.isdir(os.path.join(module_root_parent, "symbols")):
+                release_name_symbols = "{}_symbols".format(release_name)
+                print_blue("\nArchiving symbols: {}.zip ...".format(release_name_symbols))
+                print("Packing...")
+                symbols_zip = shutil.make_archive("{}".format(release_name_symbols), "zip", os.path.join(module_root_parent, "symbols"))
+
+                # Move symbols zip to release folder
+                shutil.copy(symbols_zip, release_dir)
+                os.remove(symbols_zip)
         except:
             raise
             print_error("Could not make release.")

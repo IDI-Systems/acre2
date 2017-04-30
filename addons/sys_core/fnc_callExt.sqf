@@ -1,74 +1,51 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function is used to make calls in acre.dll.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Command <STRING>
+ * 1: Parameters <ANY>
+ * 2: Threaded call if so uses the following arguments to handle the return <BOOL> (optional)
+ * 3: Callback code <CODE> (optional)
+ * 4: Return arguments <ANY> (optional)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Return from call extension <ANY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["init",[]] call acre_sys_core_fnc_callExt
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-#define FORMAT_NUMBER(num) (num call FUNC(formatNumber))
-
 params ["_command", "_params", ["_threaded", false], ["_callBack",{}], ["_callBackArgs",[]]];
 
 private _paramsString = "";
 
-if(IS_ARRAY(_params)) then {
-    private _arrayParams = _params;
-    {
+if (IS_ARRAY(_params)) then {
+    private _array = _params apply {
         private _element = _x;
-        if(IS_ARRAY(_element)) then {
-            {
-                if(!IS_STRING(_x)) then {
-                    if(IS_BOOL(_x)) then {
-                        if(_x) then {
-                            _x = 1;
-                        } else {
-                            _x = 0;
-                        };
-                    };
-                    // if(IS_NUMBER(_x)) then {
-                        // _x = FORMAT_NUMBER(_x);
-                        // _paramsString = _paramsString + _x + ",";
-                    // } else {
-                        _paramsString = _paramsString + (str _x) + ",";
-                    // };
+        if (IS_ARRAY(_element)) then {
+            (_element apply {
+                if (IS_BOOL(_x)) then {
+                    parseNumber _x
                 } else {
-                    _paramsString = _paramsString + _x + ",";
+                    _x
                 };
-            } forEach _element;
+            }) joinString ",";
         } else {
-            if(!IS_STRING(_element)) then {
-                if(IS_BOOL(_element)) then {
-                    if(_element) then {
-                        _element = 1;
-                    } else {
-                        _element = 0;
-                    };
-                };
-
-                // if(IS_NUMBER(_element)) then {
-                    // _element = FORMAT_NUMBER(_element);
-                    // _paramsString = _paramsString + _element + ",";
-                // } else {
-                    _paramsString = _paramsString + (str _element) + ",";
-                // };
+            if (IS_BOOL(_element)) then {
+                parseNumber _element
             } else {
-                _paramsString = _paramsString + _element + ",";
+                _element
             };
         };
-
-    } forEach _arrayParams;
+    };
+    if (count _array > 0) then { _array pushBack ""; }; //Add empty element to add a trailing comma
+    _paramsString = _array joinString ",";
 };
+
 _command = format["%1:%2", _command, _paramsString];
 // diag_log text format["c: %1", _command];
 #ifdef USE_DEBUG_EXTENSIONS
@@ -77,7 +54,7 @@ _command = format["%1:%2", _command, _paramsString];
     private _res = "acre" callExtension _command;
 #endif
 _res = call compile _res;
-if(_threaded) then {
+if (_threaded) then {
     GVAR(threadedExtCalls) set[(_res select 1), [_callBackArgs, _callBack]];
 };
 

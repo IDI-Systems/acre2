@@ -44,7 +44,7 @@
 // Dependencies
 #include "../detail/setup.hpp"
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTC_reciprocal extension included")
 #endif
 

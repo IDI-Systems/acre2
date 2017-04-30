@@ -1,0 +1,10 @@
+PREP(doAddComponentCargo);
+PREP(getRadioId);
+PREP(setSpectator);
+PREP(masterIdTracker);
+PREP(collect);
+PREP(onGetRadioId);
+PREP(acknowledgeId);
+PREP(stopRadioGarbageCollect);
+PREP(sendIntentToGarbageCollect);
+PREP(removeGCQueue);

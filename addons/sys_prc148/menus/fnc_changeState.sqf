@@ -16,11 +16,11 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_state",["_menuPage",0],["_menuIndex",0],["_entryCursor",0],["_selectedEntry",-1]];
+params ["_radioId", "_state",["_menuPage",0],["_menuIndex",0],["_entryCursor",0],["_selectedEntry",-1]];
 
 private _editEntry = false;
 
-if((count _this) > 4) then {
+if ((count _this) > 4) then {
     _editEntry = true;
 };
 
@@ -35,7 +35,7 @@ private _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
 [_radioId, "setState", ["selectedEntry", _selectedEntry]] call EFUNC(sys_data,dataEvent);
 
 
-if(_radioId == acre_sys_radio_currentRadioDialog) then {
+if (_radioId == EGVAR(sys_radio,currentRadioDialog)) then {
     private _display = uiNamespace getVariable QGVAR(currentDisplay);
     [_display] call FUNC(render);
 };

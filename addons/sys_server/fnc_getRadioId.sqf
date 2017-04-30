@@ -1,40 +1,40 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Reserves a unique ID for a radio baseclass and returns it.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Base class <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Unique id for classname (-1 is returned if no more unique Ids are left) <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["acre_prc343"] call acre_sys_server_fnc_getRadioId
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_class"];
+params ["_class"];
+
+_class = toLower _class;
 
 GVAR(radioIdMap) params ["_baseTypes","_radioIds"];
 
 private _mapIndex = _baseTypes find _class;
 
-if(_mapIndex == -1) then {
-    _mapIndex = (count _baseTypes);
-    _baseTypes pushBack _class;
-    _radioIds set[_mapIndex, []];
+if (_mapIndex == -1) then {
+    _mapIndex = _baseTypes pushBack _class;
+    _radioIds set [_mapIndex, []];
 };
 
 private _takenIds = _radioIds select _mapIndex;
 
 private _ret = -1;
 for "_i" from 1 to 512 do {
-    if(!(_i in _takenIds)) exitWith {
+    if (!(_i in _takenIds)) exitWith {
         _ret = _i;
-        PUSH(_takenIds, _ret);
+        _takenIds pushBack _ret;
     };
 };
 

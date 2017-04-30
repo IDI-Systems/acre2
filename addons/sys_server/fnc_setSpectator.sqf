@@ -1,28 +1,31 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Updates the ACRE_SPECTATORS_LIST global variable.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: TeamSpeak ID <NUMBER>
+ * 1: Specatator status (1 = on, 0 = off) <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [23,1] call acre_sys_server_fnc_setSpectator
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-if(isServer) then {
-    if((_this select 1) == 1) then {
-        if(!((_this select 0) in ACRE_SPECTATORS_LIST)) then {
-            PUSH(ACRE_SPECTATORS_LIST, (_this select 0));
-        };
+if (isServer) then {
+    params ["_ts3Id","_tsStatus"];
+    private _preCount = count ACRE_SPECTATORS_LIST;
+    if (_tsStatus == 1) then {
+        ACRE_SPECTATORS_LIST pushBackUnique _ts3Id;
     } else {
-        ACRE_SPECTATORS_LIST = ACRE_SPECTATORS_LIST - [(_this select 0)];
+        ACRE_SPECTATORS_LIST = ACRE_SPECTATORS_LIST - [_ts3Id];
     };
-    publicVariable "ACRE_SPECTATORS_LIST";
+    // Only call publicVariable if array changes.
+    if ((count ACRE_SPECTATORS_LIST) != _preCount) then {
+        publicVariable "ACRE_SPECTATORS_LIST";
+    };
 };

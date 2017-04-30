@@ -1,0 +1,11 @@
+<figure>
+    <a class="no_icon" target="_blank" href="{% if include.url %}{{include.url}}{% else %}/images/{{include.file}}{% endif %}">
+        <img class="docimage" src="/images/{{include.file}}" alt="{{include.alt}}" {% if {{include.max-width}} %}style="max-width: {{include.max-width}}px"{% endif %} />
+    </a>
+
+    {% if {{include.caption}} %}
+    <figcaption>
+        {{include.caption}}
+    </figcaption>
+    {% endif %}
+</figure>

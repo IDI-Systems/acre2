@@ -22,7 +22,7 @@ GVAR(backlightOn) = true;
 GVAR(lastAction) = time;
 
 private _currentDirection = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     // left click
     _currentDirection = 1;
 };
@@ -31,7 +31,7 @@ private _knobPosition = ["getState", "channelKnobPosition"] call GUI_DATA_EVENT;
 private _newKnobPosition = ((_knobPosition + _currentDirection) max 0) min 15;
 
 
-if(_knobPosition != _newKnobPosition) then {
+if (_knobPosition != _newKnobPosition) then {
     ["setState", ["channelKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
     private _currentChannel = ["getState", "currentChannel"] call GUI_DATA_EVENT;
 
@@ -112,7 +112,7 @@ if(_knobPosition != _newKnobPosition) then {
                             private _floor = floor (GVAR(newFrequency));
                             private _dif = GVAR(newFrequency) - _floor;
                             _dif = _dif + GVAR(selectionDir)*0.025;
-                            if (_dif >= 1) then {
+                            if (_dif >= 0.999) then {
                                 _dif = 0;
                             };
                             if (_dif < 0) then {
@@ -182,6 +182,6 @@ if(_knobPosition != _newKnobPosition) then {
         };
     };
 
-    ["Acre_SEM52Knob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_SEMKnob", [0,0,0], [0,0,0], 0.3, false] call EFUNC(sys_sounds,playSound);
     [MAIN_DISPLAY] call FUNC(render);
 };

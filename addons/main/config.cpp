@@ -869,10 +869,13 @@ class CfgPatches {
             "cba_main",
             "cba_xeh"
         };
-        author = CSTRING(main,Author);
-        url = CSTRING(main,URL);
+        author = CSTRING(Author);
+        url = CSTRING(URL);
         VERSION_CONFIG;
     };
+
+    // Backwards compatibility
+    class acre_game: ADDON {}; // Component removed in 2.3.0
 };
 
 class CfgMods {
@@ -887,7 +890,6 @@ class CfgMods {
 };
 
 #include "CfgRscStd.hpp"
-#include "Dialog.hpp"
 #include "CfgSettings.hpp"
 
 #include "CfgEventHandlers.hpp"

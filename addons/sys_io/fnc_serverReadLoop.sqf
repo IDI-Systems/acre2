@@ -1,54 +1,41 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks if the ACRE2Arma extension has any pending messages (typically for return data from the TeamSpeak plugin). This is called on a per frame basis.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful Read <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_io_fnc_serverReadLoop
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-private _ret = nil;
-
-private _exit = false;
-private _count = 0;
-
-if(GVAR(pipeCode) == "1") then {
-    while {!_exit && _count < 50} do {
+if (GVAR(pipeCode) == "1") then {
+    for "_count" from 0 to 50 do {
         // diag_log text format["Trying pipe."];
-        _ret = "ACRE2Arma" callExtension "3";
+        private _ret = "ACRE2Arma" callExtension "3";
         // diag_log text format["Pipe Response: %1", _ret];
-        if(!(isNil "_ret")) then {
-            if(_ret != "_JERR_FALSE") then {
-                if(_ret != "_JERR_NULL" && _ret != "_JERR_NOCONNECT") then {
-                    TRACE_1("got message", _ret);
-                    _ret call CALLSTACK(GVAR(ioEventFnc));
-                } else {
-                    _exit = true;
-                };
-            } else {
-                GVAR(hasErrored) = true;
-                private _msg = "Experienced a pipe error! Closing!";
-                WARNING(_msg);
-                if (isMultiplayer) then {
-                    hint _msg;
-                };
-                "ACRE2Arma" callExtension "1";
-                GVAR(pipeCode) = "0";
-                _exit = true;
+        if (isNil "_ret") exitWith {};
+        if (_ret isEqualTo "_JERR_FALSE") exitWith {
+            GVAR(hasErrored) = true;
+            private _msg = "Experienced a pipe error! Closing!";
+            WARNING(_msg);
+            if (isMultiplayer) then {
+                hint _msg;
             };
-        } else {
-            _exit = true;
+            "ACRE2Arma" callExtension "1";
+            GVAR(pipeCode) = "0";
         };
-        _count = _count + 1;
+
+        if (_ret isEqualTo "_JERR_NOCONNECT" || _ret isEqualTo "_JERR_NULL") exitWith {};
+
+        TRACE_1("got message", _ret);
+        _ret call CALLSTACK(GVAR(ioEventFnc));
     };
     // diag_log text format["~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!! READ COUNT: %1", _count];
 };

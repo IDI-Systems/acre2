@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId"];
 
 _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 _channels = [_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent);

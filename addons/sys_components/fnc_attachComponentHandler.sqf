@@ -1,22 +1,24 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the receipt of an attachComponent message.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Event Name <STRING>
+ * 2: Data <ANY>
+ * 3: Radio data <HASH>
  *
  * Return Value:
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1","attachComponent",["ACRE_PRC343_ID_1",0,1,nil],acre_sys_data_radioData getVariable "ACRE_PRC343_ID_1"] call acre_sys_components_fnc_attachComponentHandler
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_radioId", "_event", "_data", "_radioData", "_eventKind"];
+params ["_radioId", "_event", "_data", "_radioData", "_eventKind"];
 
 _data params ["_componentId", "_childConnector", "_parentConnector", "_attributes"];
 //_childConnector - this is the connector on this event's device
@@ -24,7 +26,7 @@ _data params ["_componentId", "_childConnector", "_parentConnector", "_attribute
 
 
 private _connectorData = HASH_GET(_radioData, "acre_radioConnectionData");
-if(isNil "_connectorData") then {
+if (isNil "_connectorData") then {
     _connectorData = [];
     HASH_SET(_radioData, "acre_radioConnectionData", _connectorData);
 };

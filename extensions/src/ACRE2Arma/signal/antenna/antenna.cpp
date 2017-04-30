@@ -14,16 +14,14 @@ acre::signal::antenna::antenna(std::istream & stream_)
     stream_.read((char *)&_width, sizeof(uint32_t));
     stream_.read((char *)&_height, sizeof(uint32_t));
 
+    stream_.read((char *)&_elevation_step, sizeof(uint32_t));
+    stream_.read((char *)&_direction_step, sizeof(uint32_t));
+
     uint32_t map_size = _width * _height * _total_entries;
 
     _gain_map = new antenna_gain_entry[map_size];
 
     stream_.read((char *)_gain_map, sizeof(antenna_gain_entry)*map_size);
-
-    _elevation_step = 100.0f / (float)_width;
-    _direction_step = 360.0f / (float)_height;
-
-
 }
 
 float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 dir_signal_, const float f_)
@@ -32,35 +30,36 @@ float acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::vec3 
         return -1000.0f;
 
     glm::vec3 dir_antenna_v = glm::normalize(dir_antenna_);
-    float elev_antenna = asin(dir_antenna_v.z)*57.2957795f;
-    float dir_antenna = atan2(dir_antenna_v.x, dir_antenna_v.y)*57.2957795f;
+    float elev_antenna = asinf(dir_antenna_v.z)*57.2957795f;
+    float dir_antenna = atan2f(dir_antenna_v.x, dir_antenna_v.y)*57.2957795f;
 
     glm::vec3 dir_signal_v = glm::normalize(dir_signal_);
-    float elev_signal = asin(dir_signal_v.z)*57.2957795f;
-    float dir_signal = atan2(dir_signal_v.x, dir_signal_v.y)*57.2957795f;
+    float elev_signal = asinf(dir_signal_v.z)*57.2957795f;
+    float dir_signal = atan2f(dir_signal_v.x, dir_signal_v.y)*57.2957795f;
 
-    float dir = std::fmod(dir_antenna + dir_signal, 360.0f);
+    float dir = fmodf(dir_antenna + dir_signal, 360.0f);
     float elev = elev_antenna + elev_signal;
+
     if (elev > 90.0f || elev < -90.0f) {
-        dir = std::fmod(dir + 180.0f, 360.0f);
+        dir = fmodf(dir + 180.0f, 360.0f);
         if (elev < -90.0f) {
-            elev = -90 + (std::abs(elev) - 90.0f);
+            elev = -90.0f + (std::fabs(elev) - 90.0f);
         }
         else {
-            elev = 90 - (elev - 90.0f);
+            elev = 90.0f - (elev - 90.0f);
         }
     }
 
-    if (dir < 0) {
+    if (dir < 0.0f) {
         dir = dir + 360.0f;
     }
-    
-    elev = 90.0f - std::abs(elev);
+
+    elev = 90.0f - std::fabs(elev);
 
     float lower_freq_gain = _get_gain(f_, dir, elev);
     float upper_freq_gain = _get_gain(f_ + _frequency_step, dir, elev);
 
-    float lower_freq = f_ - fmod(f_, _frequency_step);
+    float lower_freq = f_ - fmodf(f_, _frequency_step);
     float upper_freq = lower_freq + _frequency_step;
 
     float total_gain = _interp(f_, lower_freq, upper_freq, lower_freq_gain, upper_freq_gain);
@@ -77,8 +76,8 @@ float acre::signal::antenna::_get_gain(float f_, float dir_, float elev_)
     uint32_t dir_index_min = (uint32_t)std::floor(dir_ / _direction_step);
     uint32_t dir_index_max = (uint32_t)std::floor((dir_ + _direction_step) / _direction_step);
 
-    uint32_t elev_index_min = (uint32_t)std::floor(elev_ / _elevation_step) - 1;
-    uint32_t elev_index_max = (uint32_t)std::floor((elev_ + _elevation_step) / _elevation_step) - 1;
+    uint32_t elev_index_min = (uint32_t)std::floor(elev_ / _elevation_step);
+    uint32_t elev_index_max = (uint32_t)std::floor((elev_ + _elevation_step) / _elevation_step);
     if (dir_index_max > _height - 1) {
         dir_index_max = 0;
     }
@@ -93,10 +92,10 @@ float acre::signal::antenna::_get_gain(float f_, float dir_, float elev_)
     float gain_d_max_e_min = _gain_map[f_index * (_width * _height) + (dir_index_max * _width) + elev_index_min].v;
     float gain_d_max_e_max = _gain_map[f_index * (_width * _height) + (dir_index_max * _width) + elev_index_max].v;
 
-    float dir_min = dir_ - fmod(dir_, _direction_step);
+    float dir_min = dir_ - fmodf(dir_, _direction_step);
     float dir_max = dir_min + _direction_step;
 
-    float elev_min = elev_ - fmod(elev_, _elevation_step);
+    float elev_min = elev_ - fmodf(elev_, _elevation_step);
     float elev_max = elev_min + _elevation_step;
 
     float elev_lower_gain = _interp(dir_, dir_min, dir_max, gain_d_min_e_min, gain_d_max_e_min);

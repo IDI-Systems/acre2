@@ -2,8 +2,8 @@
 
 class CfgAcreRadioModes {
     class singleChannel {
-        availability = QUOTE(DFUNC(sc_muting));
-        speaking = QUOTE(DFUNC(sc_speaking));
+        availability = QFUNC(sc_muting);
+        speaking = QFUNC(sc_speaking);
         channelHash[] = {
             "frequencyTX",
             "frequencyRX",
@@ -19,9 +19,22 @@ class CfgAcreRadioModes {
         };
     };
 
+    class sem70AKW {
+        availability = QFUNC(sem70akw_muting);
+        speaking = QFUNC(sem70akw_speaking);
+        channelHash[] = {
+            "frequencies",
+            "frequencyTX",
+            "frequencyRX",
+            "power",
+            "mode",
+            "networkID"
+        };
+    };
+
     class singleChannelPRR {
-        availability = QUOTE(DFUNC(sc_muting));
-        speaking = QUOTE(DFUNC(sc_speaking));
+        availability = QFUNC(sc_muting);
+        speaking = QFUNC(sc_speaking);
         channelHash[] = {
             "frequencyTX",
             "frequencyRX",

@@ -16,11 +16,11 @@
  */
 #include "script_component.hpp"
 
-params["_display", "_row", "_text", ["_align",0]];
+params ["_display", "_row", "_text", ["_align",0]];
 
 private _textArray = toArray(toUpper _text);
 private _size = 18;
-if(_row >= SMALL_LINE_1) then {
+if (_row >= SMALL_LINE_1) then {
     _size = 25;
 };
 switch _align do {

@@ -17,9 +17,9 @@
 #include "script_component.hpp"
 
 private _iconcontrol = 1000;
-private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
-if(!isNil "_display") then {
-    private _knobImageStr = QUOTE(PATHTOF(Data\Knobs\keypad\prc152c_ui_default.paa));
+private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
+if (!isNull _display) then {
+    private _knobImageStr = QPATHTOF(Data\Knobs\keypad\prc152c_ui_default.paa);
     (_display displayCtrl _iconcontrol) ctrlSetText _knobImageStr;
     SET_STATE("pressedButton",-1);
 };

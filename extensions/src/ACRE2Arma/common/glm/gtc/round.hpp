@@ -50,7 +50,7 @@
 #include "../common.hpp"
 #include <limits>
 
-#if(defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
+#if (defined(GLM_MESSAGES) && !defined(GLM_EXT_INCLUDED))
 #    pragma message("GLM: GLM_GTC_integer extension included")
 #endif
 

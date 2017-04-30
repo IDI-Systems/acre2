@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function is used to check the conditions to mute the local player to prevent the local player from chatting.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_aliveMonitor
  *
  * Public: No
  */
@@ -19,14 +18,11 @@
 GVAR(oldMute) = 0;
 GVAR(_waitTime) = 0;
 DFUNC(utility_aliveStatus) = {
-    // diag_log text format["%1 alive: %2 muted: %3, bis: %4", diag_tickTime, [acre_player] call FUNC(getAlive), IS_MUTED(acre_player), alive acre_player];
-    _isMutedBool = IS_MUTED(acre_player);
-
-    _isMuted = 0;
-    if(_isMutedBool) then {
+    private _isMuted = 0;
+    if (IS_MUTED(acre_player)) then {
         _isMuted = 1;
     };
-    if((_isMuted != GVAR(oldMute)) || (diag_tickTime > GVAR(_waitTime))) then {
+    if ((_isMuted != GVAR(oldMute)) || (diag_tickTime > GVAR(_waitTime))) then {
         GVAR(_waitTime) = diag_tickTime + 3;
         ["localMute", (str _isMuted)] call EFUNC(sys_rpc,callRemoteProcedure);
     };
@@ -34,5 +30,5 @@ DFUNC(utility_aliveStatus) = {
     GVAR(oldMute) = _isMuted;
 };
 GVAR(_waitTime) = diag_tickTime + 3;
-ADDPFH(DFUNC(utility_aliveStatus), 0, []);
+ADDPFH(FUNC(utility_aliveStatus), 0, []);
 true

@@ -13,6 +13,6 @@ class CfgPatches {
     };
 };
 
-#include "cfgEventhandlers.hpp"
+#include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
 #include "CfgSoundEffects.hpp"

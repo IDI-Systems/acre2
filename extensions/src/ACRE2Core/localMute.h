@@ -17,9 +17,9 @@ RPC_FUNCTION(localMute) {
 
     status = vMessage->getParameterAsInt(0);
 
-    if(status == 1) {
+    if (status == 1) {
         CEngine::getInstance()->getClient()->enableMicrophone(false);
-        if(CEngine::getInstance()->getSelf()->getSpeaking()) {
+        if (CEngine::getInstance()->getSelf()->getSpeaking()) {
             CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_UNKNOWN);
         }
     } else {

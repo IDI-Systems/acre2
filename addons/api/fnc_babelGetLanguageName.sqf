@@ -1,9 +1,9 @@
 /*
  * Author: ACRE2Team
- * Gets the babel language display name from the language key.
+ * Gets the babel language display name from the language ID.
  *
  * Arguments:
- * 0: Language key <STRING>
+ * 0: Language ID <STRING>
  *
  * Return Value:
  * Language display name <STRING>

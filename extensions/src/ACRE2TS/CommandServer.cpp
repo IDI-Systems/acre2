@@ -42,7 +42,7 @@ ACRE_RESULT CCommandServer::handleMessage(unsigned char *data){
     CTextMessage *msg;
     //LOG("recv: [%s]", data);
     msg = new CTextMessage((char *)data, strlen((char *)data));
-    if(CEngine::getInstance()->getRpcEngine() && msg) {
+    if (CEngine::getInstance()->getRpcEngine() && msg) {
         CEngine::getInstance()->getRpcEngine()->runProcedure((IServer *)this, (IMessage *)msg);
     }
     return ACRE_OK;
@@ -51,7 +51,7 @@ ACRE_RESULT CCommandServer::handleMessage(unsigned char *data){
 
 ACRE_RESULT CCommandServer::release(void) {
     
-    if(this->getCommandId())
+    if (this->getCommandId())
         free(this->getCommandId());
 
     return ACRE_OK;

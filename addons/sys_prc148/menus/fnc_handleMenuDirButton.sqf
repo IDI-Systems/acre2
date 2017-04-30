@@ -16,22 +16,22 @@
  */
 #include "script_component.hpp"
 
-params["_dir", "_params"];
+params ["_dir", "_params"];
 
 //acre_player sideChat format["p: %1", _params];
-if(GET_STATE("editEntry")) then {
+if (GET_STATE("editEntry")) then {
     private _alt = _params select 7;
     private _menuEntry = (GVAR(currentMenu) select (GVAR(entryMap) select 0)) select (GVAR(entryMap) select 1);
     _menuEntry params ["", "_value", "_row", "_range", "_type"];
 
-    if(_alt && _type != MENU_TYPE_LIST) then {
-        if(_type == MENU_TYPE_TEXT) then {
+    if (_alt && _type != MENU_TYPE_LIST) then {
+        if (_type == MENU_TYPE_TEXT) then {
             private _length = (_range select 1)-(_range select 0);
             private _newIndex = ENTRY_INDEX + _dir;
-            if(_newIndex < 0) then {
+            if (_newIndex < 0) then {
                 _newIndex = _length;
             };
-            if(_newIndex > _length) then {
+            if (_newIndex > _length) then {
                 _newIndex = 0;
             };
             SET_ENTRY_INDEX(_newIndex);
@@ -41,10 +41,10 @@ if(GET_STATE("editEntry")) then {
             private _length = (count (toArray _value))-1;
 
             private _newIndex = ENTRY_INDEX + _dir;
-            if(_newIndex < 0) then {
+            if (_newIndex < 0) then {
                 _newIndex = _length;
             };
-            if(_newIndex > _length) then {
+            if (_newIndex > _length) then {
                 _newIndex = 0;
             };
             SET_ENTRY_INDEX(_newIndex);
@@ -58,10 +58,10 @@ if(GET_STATE("editEntry")) then {
                 _index = _list find _value;
 
                 _index = _index + _dir;
-                if(_index < 0) then {
+                if (_index < 0) then {
                     _index = (count _list)-1;
                 };
-                if(_index > (count _list)-1) then {
+                if (_index > (count _list)-1) then {
                     _index = 0;
                 };
                 _value = _list select _index;
@@ -70,7 +70,7 @@ if(GET_STATE("editEntry")) then {
             case MENU_TYPE_TEXT: {
                 private _entryIndex = ENTRY_INDEX;
                 _value = GET_STATE("currentEditEntry");
-                if(isNil "_value") then {
+                if (isNil "_value") then {
                     _value = "";
                     for "_i" from 1 to (_range select 1) - (_range select 0) do {
                         _value = " " + _value;
@@ -81,10 +81,10 @@ if(GET_STATE("editEntry")) then {
                 private _currentCharValue = toString [_valArray select _entryIndex];
                 private _charIndex = GVAR(alphaNumeric) find _currentCharValue;
                 _charIndex = _charIndex + _dir;
-                if(_charIndex < 0) then {
+                if (_charIndex < 0) then {
                     _charIndex = (count GVAR(alphaNumeric)) - 1;
                 };
-                if(_charIndex >= (count GVAR(alphaNumeric))) then {
+                if (_charIndex >= (count GVAR(alphaNumeric))) then {
                     _charIndex = 0;
                 };
                 _valArray set[_entryIndex, (toArray (GVAR(alphaNumeric) select _charIndex)) select 0];
@@ -102,10 +102,10 @@ if(GET_STATE("editEntry")) then {
                 private _currentCharValue = toString [_valArray select _entryIndex];
                 private _charIndex = GVAR(numeric) find _currentCharValue;
                 _charIndex = _charIndex + _dir;
-                if(_charIndex < 0) then {
+                if (_charIndex < 0) then {
                     _charIndex = (count GVAR(numeric)) - 1;
                 };
-                if(_charIndex >= (count GVAR(numeric))) then {
+                if (_charIndex >= (count GVAR(numeric))) then {
                     _charIndex = 0;
                 };
                 _valArray set[_entryIndex, (toArray (GVAR(numeric) select _charIndex)) select 0];

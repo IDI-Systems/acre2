@@ -21,14 +21,14 @@ private _doDefault = true;
 
 if (!alive acre_player) exitWith {};
 
-if(!isNil "ACRE_CustomVolumeControl") then {
-    if((ACRE_CustomVolumeControl) isEqualType {}) then {
+if (!isNil "ACRE_CustomVolumeControl") then {
+    if ((ACRE_CustomVolumeControl) isEqualType {}) then {
         _factor = [GVAR(VolumeControl_Level)] call ACRE_CustomVolumeControl;
         _doDefault = false;
     };
 };
 
-if(_doDefault) then {
+if (_doDefault) then {
     switch (GVAR(VolumeControl_Level)) do {
         case -2:     {_factor = .1};
         //case -1.5:  {_factor = .3};
@@ -42,14 +42,14 @@ if(_doDefault) then {
     };
 };
 
-private _currentVolume = call acre_api_fnc_getSelectableVoiceCurve;
+private _currentVolume = call EFUNC(api,getSelectableVoiceCurve);
 if (!isNil "_currentVolume") then {
     #ifdef DEBUG_MODE_FULL
         acre_player sideChat format["Curv: %1  Fact: %2",_currentVolume,_factor];
     #endif
 
     if (_currentVolume != _factor) then  {
-        [_factor] call acre_api_fnc_setSelectableVoiceCurve;
+        [_factor] call EFUNC(api,setSelectableVoiceCurve);
         #ifdef DEBUG_MODE_FULL
             acre_player sideChat format["Set volume factor: %1",_factor];
         #endif

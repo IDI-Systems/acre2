@@ -34,10 +34,10 @@ public:
         short *tempSamples = new short[sampleCount];
         memcpy(tempSamples, samples, sizeof(short)*sampleCount);
         short maxAmp = 1;
-        for(int i = 0; i < sampleCount; ++i) {
+        for (int i = 0; i < sampleCount; ++i) {
             samples[i] = (short)(((float)tempSamples[i]*1.0f)*cos(((float)i/(sfreq/mfreq))*1.4*M_PI));
             //samples[i] += (short)(((float)tempSamples[i]*1.0f+offset)*cos(((float)i/(sfreq/500))*4*M_PI)+offset);
-            if(abs(samples[i]) > maxAmp)
+            if (abs(samples[i]) > maxAmp)
                 maxAmp = samples[i];
             buffer[i] = (float)samples[i]/(float)SHRT_MAX;
             //samples[i] = samples[i-1] + (short)(alpha*(tempSamples[i] - samples[i-1]));
@@ -49,7 +49,7 @@ public:
         lpFilter1.process(sampleCount, floatPointer);
         //lpFilter2.process(sampleCount, floatPointer);
     
-        for(int i = 0; i < sampleCount; ++i) {
+        for (int i = 0; i < sampleCount; ++i) {
             samples[i] = (short)((floatPointer[0][i]*SHRT_MAX)*1.0);
             //if(abs(samples[i]) < 200) {
             //    samples[i] = samples[i]*0.01;
@@ -61,10 +61,10 @@ public:
 
         short maxAmpPost = 1;
 
-        for(int i = 0; i < sampleCount; ++i) {
-            if(((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER) > SHRT_MAX) {
+        for (int i = 0; i < sampleCount; ++i) {
+            if (((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER) > SHRT_MAX) {
                 samples[i] = SHRT_MAX;
-            } else if(((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER) < SHRT_MIN) {
+            } else if (((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER) < SHRT_MIN) {
                 samples[i] = SHRT_MIN;
             } else {
                 samples[i] = (short)((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER);
@@ -72,7 +72,7 @@ public:
                 //    samples[i] = samples[i]*0.01;
                 //}
             };
-            if(abs(samples[i]) > maxAmpPost)
+            if (abs(samples[i]) > maxAmpPost)
                 maxAmpPost = samples[i];
         }
 

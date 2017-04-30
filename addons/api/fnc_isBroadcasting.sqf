@@ -15,9 +15,9 @@
  */
 #include "script_component.hpp"
 
-params["_unit"];
+params ["_unit"];
 
-if(_unit in acre_sys_core_keyedMicRadios) exitWith {
+if (_unit in EGVAR(sys_core,keyedMicRadios)) exitWith {
     true
 };
 false

@@ -1,0 +1,15 @@
+{% include custom/sidebarconfigs.html %}
+
+<ul>
+    {% for entry in sidebar %}
+        {% for folder in entry.folders %}
+            {% if folder.title == include.folder %}
+                {% for page in folder.folderitems %}
+                    {% unless page.title == "Overview" %}
+                    <li><a href="{{page.url}}">{{page.title}}</a></li>
+                    {% endunless %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</ul>

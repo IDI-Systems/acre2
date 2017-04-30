@@ -134,8 +134,7 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
         HASH_SET(_channel, "description", _channelDescription);
         //HASH_SET(_channel, "type", (["channelMode", _channelWaveform, 1] call FUNC(formatChannelValue)));
         HASH_SET(_channel, "type", "BASIC");
-        //TRACE_1("Setting", _channel);
-
+        
         HASHLIST_SET(_channels, _channelNumber, _channel);
         SET_STATE("channels", _channels);
 
@@ -207,7 +206,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 _channelType = GET_STATE("pgm_preset_type");
                 _channelDescription = GET_STATE("pgm_preset_description");
 
-                if(isNil "_channelType" || isNil "_channelDescription") exitWith {};
+                if (isNil "_channelType" || isNil "_channelDescription") exitWith {};
 
                 _channelDescription = [_channelDescription] call CBA_fnc_trim;
 
@@ -218,8 +217,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
 
                 HASH_SET(_channel, "description", _channelDescription);
                 HASH_SET(_channel, "type", _channelType);
-                //TRACE_1("Setting", _channel);
-
+                
                 HASHLIST_SET(_channels, _channelNumber, _channel);
                 SET_STATE("channels", _channels);
 
@@ -270,7 +268,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                             // Skip the rest of the menus
                             _menu = _this select 0;
                             _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_rx_only", "NO");
-                            if(_value == "YES") then {
+                            if (_value == "YES") then {
                                 //SCRATCH_SET(GVAR(currentRadioId), "pgm_tx_freq", 0.0);
                                 _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 2;
@@ -299,7 +297,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         {
                             _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_tx", "USE RX");
                             // If it is USE TX, we just skip the next menu action and it should finalize
-                            if(_value == "USE RX") then {
+                            if (_value == "USE RX") then {
                                 _rx = GET_STATE_DEF("pgm_rx_freq", "0");
                                 SET_STATE("pgm_tx_freq", _rx);
                                 _currentAction = GET_STATE("menuAction");
@@ -345,9 +343,9 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 _rx = GET_STATE("pgm_rx_freq");
                 _tx = GET_STATE("pgm_tx_freq");
                 _rxOnly = SCRATCH_GET(GVAR(currentRadioId), "pgm_rx_only");
-                if(_rxOnly == "YES") then { _rxOnly = true; } else { _rxOnly = false; };
+                if (_rxOnly == "YES") then { _rxOnly = true; } else { _rxOnly = false; };
 
-                if(isNil "_rx" || isNil "_tx") exitWith {};
+                if (isNil "_rx" || isNil "_tx") exitWith {};
 
                 _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                 _channels = GET_STATE("channels");
@@ -414,7 +412,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         {
                             // If we are not in user mode, just skip this menu item
                             _check = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_tx_select", "HIGH");
-                            if(_check != "USER") then {
+                            if (_check != "USER") then {
                                 _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 1;
                                 switch _check do {
@@ -470,7 +468,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 _channels = GET_STATE("channels");
                 _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
-                if(_power > 5000) then {
+                if (_power > 5000) then {
                     _power = 5000;
                 };
                 HASH_SET(_channel, "power", _power);
@@ -541,7 +539,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
 
                             _txTone = GET_RADIO_VALUE("CTCSSTx");
                             {
-                                if(_txTone == (parseNumber _x)) exitWith {
+                                if (_txTone == (parseNumber _x)) exitWith {
                                     SET_STATE("menuSelection", _forEachIndex);
                                 };
                             } forEach _options;
@@ -594,7 +592,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         {
                             _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
-                            if(_sqType != "CTCSS" && _sqType != "CDCSS") then {
+                            if (_sqType != "CTCSS" && _sqType != "CDCSS") then {
                                 _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 1;
                                 SET_STATE("menuAction", _currentAction);

@@ -1,32 +1,31 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function determines is used to check if the unit should be muted on TeamSpeak or not.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * should the unit be muted <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [acre_player] call acre_sys_core_fnc_isMuted
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_player"];
+params ["_player"];
 
-// if(_player in GVAR(muting)) exitWith {
+// if (_player in GVAR(muting)) exitWith {
     // true
 // };
 
 private _ret = false;
 
-if(!isNull _player) then {
+if (!isNull _player) then {
     private _alive = [_player] call FUNC(getAlive);
-    if(_alive != 1) then {
+    if (_alive != 1) then {
         _ret = true;
     };
 };

@@ -46,3 +46,14 @@ private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;
 // And write the new channel to the radioData hash
 private _newChannel = (0 max _eventData) min _channelCount;
 HASH_SET(_radioData,"currentChannel",_newChannel);
+
+private _channelKnobPosition = _newChannel+2; // position 0 is off, 1 is last channel, so offset by 2
+private _currentChannelKnobPosition = HASH_GET(_radioData,"channelKnobPosition");
+if (_currentChannelKnobPosition != 1) then { //If set to Ein channel don't update the knob position.
+    if (_currentChannelKnobPosition != _channelKnobPosition) then {
+        HASH_SET(_radioData,"channelKnobPosition",_channelKnobPosition);
+        if (!(GVAR(currentRadioId) isEqualTo -1)) then { // is dialog open.
+            [MAIN_DISPLAY] call FUNC(render);
+        };
+    };
+};

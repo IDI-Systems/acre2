@@ -31,7 +31,7 @@ GVAR(SQ_ONLY_AM) = ["SQ_ONLY_AM", "SQ_ONLY_AM", "",
         nil, // onExit
         {
             TRACE_1("ERROR_NOENTRY:onButtonPress", (_this select 1));
-            if(((_this select 1) select 0) == "ENT" || ((_this select 1) select 0) == "CLR") then {
+            if (((_this select 1) select 0) == "ENT" || ((_this select 1) select 0) == "CLR") then {
                 TRACE_1("BACK TO HOME", "");
                 _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
                 [_home] call FUNC(changeMenu);
@@ -84,7 +84,7 @@ GVAR(SQ) = ["SQ", "SQ", "Squelch Settings",
 
         SCRATCH_SET(GVAR(currentRadioID), "sq_select_digital", nil);
 
-        if(_selectDigital) exitwith {
+        if (_selectDigital) exitwith {
             ["NOT_IMPLEMENTED"] call FUNC(changeMenu);
             true
         };
@@ -114,7 +114,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                     TRACE_1("Entering ctcss value","");
                     _mode = "";
                     _ctcss = GET_RADIO_VALUE("CTCSSRx");
-                    _squelch  = GET_RADIO_VALUE("squelch");
+                    _squelch = GET_RADIO_VALUE("squelch");
                     SET_STATE("menuSelection", 0);
 
                     if (_ctcss > 0) then {
@@ -129,7 +129,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                     _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
                     {
                         _modeInt = _x;
-                        if(_modeInt == _mode) exitWith {
+                        if (_modeInt == _mode) exitWith {
                             TRACE_1("FOUND MATCH", _forEachIndex);
                             SET_STATE("menuSelection", _forEachIndex);
                         };
@@ -168,7 +168,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
             default {_selectAnalogSquelch = -1; };
         };
 
-        if(_selectAnalogSquelch < 0) exitWith {
+        if (_selectAnalogSquelch < 0) exitWith {
             ["ERROR_NOENTRY"] call FUNC(changeMenu);
         };
 
@@ -178,8 +178,8 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
 
         SCRATCH_SET(GVAR(currentRadioID), "sq_select_analog", nil);
 
-        if(_selectAnalogSquelch > 1) exitWith {
-            if(_selectAnalogSquelch > 2) exitWith {
+        if (_selectAnalogSquelch > 1) exitWith {
+            if (_selectAnalogSquelch > 2) exitWith {
                 if (_selectAnalogSquelch > 3) exitWith {
                     ["NOT_IMPLEMENTED"] call FUNC(changeMenu);
                     true
@@ -248,7 +248,7 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
             default {_selectSquelch = -1; };
         };
 
-        if(_selectSquelch < 0) exitWith {
+        if (_selectSquelch < 0) exitWith {
             ["ERROR_NOENTRY"] call FUNC(changeMenu);
         };
 
@@ -282,7 +282,7 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
                     {
                         _ctcssInt = (parseNumber _x);
                         TRACE_2("COMPARE", _ctcssInt, _ctcss);
-                        if(_ctcssInt == _ctcss) exitWith {
+                        if (_ctcssInt == _ctcss) exitWith {
                             TRACE_1("FOUND MATCH", _forEachIndex);
                             SET_STATE("menuSelection", _forEachIndex);
                         };

@@ -1,27 +1,28 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the event of turning the channel radio knob or changing the block. It essentially sets a new channel as active
+ * and plays the necessary sounds.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Array with the second entry identifying if it was a left or right click <ARRAY>
+ * 1: Is changing block <BOOL>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [["", 0], 0] call acre_sys_prc343_fnc_onChannelKnobPress
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_handlerarray", "_knob"];
+params ["_handlerarray", "_knob"];
 
 private _key = _handlerarray select 1;
 
 private _currentDirection = -1;
-if(_key == 0) then {
+if (_key == 0) then {
     // left click
     _currentDirection = 1;
 };
@@ -48,7 +49,7 @@ if (_knob == 1) then {
 
 private _newAbsChannel = _newBlock*16 + _newChannel;
 
-if(_newAbsChannel != _currentAbsChannel) then {
+if (_newAbsChannel != _currentAbsChannel) then {
     ["setCurrentChannel", _newAbsChannel] call GUI_DATA_EVENT;
 
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);

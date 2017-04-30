@@ -268,7 +268,7 @@ void acre::signal::model::multipath::process(result *result_, const glm::vec3 &t
 
     float total_signal;
 
-    if(scale_ >= 1.0f) {
+    if (scale_ >= 1.0f) {
         float best_signal_phase = signal_phases[best_signal_index];
         total_signal = best_signal;
 
@@ -312,7 +312,7 @@ void acre::signal::model::multipath::_get_peaks_spiral(float pos_x_, float pos_y
         if ((-x_ / 2 <= x) && (x <= x_ / 2) && (-y_ / 2 <= y) && (y <= y_ / 2)) {
             if (peak_grid_x + x >= 0 && peak_grid_x + x < peak_grid_size - 1 && peak_grid_y + y >= 0 && peak_grid_y + y < peak_grid_size - 1) {
                 int peak_index = (peak_grid_x + x) * peak_grid_size + peak_grid_y + y;
-                if(_peak_buckets[peak_index].size() > 0)
+                if (_peak_buckets[peak_index].size() > 0)
                     peaks_.insert(peaks_.end(), 
                         _peak_buckets[peak_index].begin(),
                         _peak_buckets[peak_index].end());

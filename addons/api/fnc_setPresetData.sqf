@@ -17,14 +17,14 @@
  */
 #include "script_component.hpp"
 
-params["_radioClass", "_preset", "_presetData"];
+params ["_radioClass", "_preset", "_presetData"];
 
 private _return = false;
 
 private _presetPointer = [_radioClass,_preset] call EFUNC(sys_data,getPresetData);
-if(!isNil "_presetPointer") then {
+if (!isNil "_presetPointer") then {
     {
-        if((_presetData select _forEachIndex) isEqualType []) then {
+        if ((_presetData select _forEachIndex) isEqualType []) then {
             _presetPointer set[_forEachIndex, +(_presetData select _forEachIndex)];
         } else {
             _presetPointer set[_forEachIndex, (_presetData select _forEachIndex)];

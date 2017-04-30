@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Retrieves the game object of a player from a TeamSpeak ID.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: TeamSpeak ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Player <OBJECT>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["1"] call acre_sys_core_fnc_ts3idToPlayer
  *
  * Public: No
  */
@@ -18,7 +17,7 @@
 
 params ["_id"];
 
-if(IS_STRING(_id)) then {
+if (IS_STRING(_id)) then {
     _id = parseNumber _id;
 };
 

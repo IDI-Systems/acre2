@@ -48,7 +48,7 @@ namespace acre {
                         for (uint32_t anim = 0; anim < anim_count; anim++) {
                             uint32_t anim_index;
                             stream_.read((char *)&anim_index, sizeof(uint32_t));
-                            if(std::find(skeleton->all_bones[x]->animations.begin(), skeleton->all_bones[x]->animations.end(), anim_index) == skeleton->all_bones[x]->animations.end()) {
+                            if (std::find(skeleton->all_bones[x]->animations.begin(), skeleton->all_bones[x]->animations.end(), anim_index) == skeleton->all_bones[x]->animations.end()) {
                                 skeleton->all_bones[x]->animations.push_back(anim_index);
                             }
                         };
@@ -109,7 +109,7 @@ namespace acre {
             }
         }
         model::~model() {
-            if(useFaceDefaults)
+            if (useFaceDefaults)
                 delete[] useFaceDefaults;
         }
     }

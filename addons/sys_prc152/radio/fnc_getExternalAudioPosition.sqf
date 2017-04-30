@@ -16,11 +16,11 @@
  */
 #include "script_component.hpp"
 
-params["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
 private _obj = [_radioId] call EFUNC(sys_radio,getRadioObject);
 private _pos = getPosASL _obj;
-if(_obj isKindOf "Man") then {
+if (_obj isKindOf "Man") then {
     _pos = ATLtoASL (_obj modelToWorld (_obj selectionPosition "RightShoulder"));
 };
 

@@ -1,22 +1,25 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the description of the currently selected channel. Used in the transmission hint.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Event: "getChannelDescription" <STRING> (Unused)
+ * 2: Event data <ARRAY> (Unused)
+ * 3: Radio data <HASH> (Unused)
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Description of the channel in the form "Block x - Channel y" <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC77_ID_1", "getChannelDescription", [], [], false] call acre_sys_prc77_fnc_getChannelDescription
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_radioId"];
+params ["_radioId", "",  "", "", ""];
 
 private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 

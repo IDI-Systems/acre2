@@ -28,6 +28,7 @@ HASH_SET(_radioData, "currentEditEntry", "");
 HASH_SET(_radioData, "volume", 1);
 HASH_SET(_radioData, "radioOn", 1);
 HASH_SET(_radioData, "audioPath", "TOPAUDIO");
+HASH_SET(_radioData, "powerSource", "BAT");
 
 _eventData params ["_baseName", "_preset"];
 private _presetData = [_baseName, _preset] call EFUNC(sys_data,getPresetData);
@@ -38,7 +39,7 @@ private _currentChannels = HASH_GET(_radioData,"channels");
 
 SCRATCH_SET(_radioId, "currentTransmissions", []);
 
-if(isNil "_currentChannels") then {
+if (isNil "_currentChannels") then {
     _currentChannels = HASH_COPY(_channels);
     HASH_SET(_radioData,"channels",_currentChannels);
 };

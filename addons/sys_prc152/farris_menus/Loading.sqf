@@ -2,7 +2,7 @@
 #include "script_component.hpp"
 
 DFUNC(Loading_End) = {
-    params["_radioId"];
+    params ["_radioId"];
     // Turn the radio on
     [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
 
@@ -13,21 +13,21 @@ DFUNC(Loading_End) = {
 
 DFUNC(Loading_BarFill) = {
 
-    if(isNil QGVAR(currentBarFill)) then { GVAR(currentBarFill) = 0.0; };
+    if (isNil QGVAR(currentBarFill)) then { GVAR(currentBarFill) = 0.0; };
     GVAR(currentBarFill) = GVAR(currentBarFill) + 0.05;
 
-    private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
-    if(!isNil "_display") then {
+    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
+    if (!isNull _display) then {
         (_display displayCtrl ICON_LOADING) progressSetPosition GVAR(currentBarFill);
         (_display displayCtrl ICON_LOADING) ctrlCommit 0;
     };
 };
 
 DFUNC(Loading_BarFill_end) = {
-    params["_radioId"];
+    params ["_radioId"];
     // Turn the radio on
     [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
-    if(_radioId isEqualTo GVAR(currentRadioId)) then {
+    if (_radioId isEqualTo GVAR(currentRadioId)) then {
         private _currentMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
         [_currentMenu] call FUNC(changeMenu);
     };
@@ -77,8 +77,8 @@ GVAR(LOADING) = ["LOADING", "LOADING", "",
                     TRACE_1("Rendering LOADING-STAGE-2","");
                     GVAR(currentBarFill) = 0;
                     [ICON_LOADING, true] call DFUNC(toggleIcon);
-                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), nil];
-                    if(!isNil "_display") then {
+                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
+                    if (!isNull _display) then {
                         (_display displayCtrl ICON_LOADING) progressSetPosition 0.0;
                         (_display displayCtrl ICON_LOADING) ctrlCommit 0;
                     };

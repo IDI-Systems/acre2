@@ -1,24 +1,23 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sends a message to the TeamSpeak plugin via the ACRE2Arma extension.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Message <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Successful Sending <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["getPluginVersion:,"] call acre_sys_io_fnc_sendMessage
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-if(GVAR(pipeCode) == "1") exitWith {
-    _ret = "ACRE2Arma" callExtension ("2" + _this);
-    true;
+if (GVAR(pipeCode) == "1") exitWith {
+    private _ret = "ACRE2Arma" callExtension ("2" + _this);
+    true
 };
 
-false;
+false

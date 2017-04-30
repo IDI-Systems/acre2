@@ -6,7 +6,7 @@ class Prc152_RadioDialog {
     controlsBackground[] = {Prc152Background};
     objects[] = {};
 
-    class Prc152Background : Prc152_RscBackground {
+    class Prc152Background: Prc152_RscBackground {
         type = CT_STATIC;
         idc = -1;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
@@ -18,18 +18,17 @@ class Prc152_RadioDialog {
         y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
         w = NEW_SCALE*safeZoneH;
         h = NEW_SCALE*safeZoneH;
-        text = QUOTE(PATHTOF(Data\prc152c_ui.paa));
+        text = QPATHTOF(Data\prc152c_ui.paa);
     };
     class controls {
-        class BatteryBar
-        {
+        class BatteryBar {
             idc = 99991;
             //(((TEXT_X - 0.5)*SCALE)+0.5)
 
             x = ((((((0.435+(0.0038*6))-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
-            y = ((((((0.415 + 0.0009)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
-            h = SCALE*0.00805*safeZoneH;
-            w = SCALE*(0.0038*5)*safeZoneH;
+            y = ((((((0.415 + 0.0004)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
+            h = SCALE*0.007*safeZoneH;
+            w = SCALE*(0.00438*6)*safeZoneH;
             type = 8;
             style = 0;
             colorFrame[] = {0.2, 0.2, 0.2, 1};
@@ -39,13 +38,12 @@ class Prc152_RadioDialog {
         };
 
 
-        class VolumeBar
-        {
+        class VolumeBar {
             idc = 99994;
             x = ((((((0.435+(0.0038*6))-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
-            y = ((((((0.415 + 0.0009)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
+            y = ((((((0.415 + 0.0004)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.0007
             h = SCALE*0.007*safeZoneH;
-            w = SCALE*(0.00438*3)*safeZoneH;
+            w = SCALE*(0.00438*6)*safeZoneH;
             type = 8;
             style = 0;
             colorFrame[] = {0.2, 0.2, 0.2, 1};
@@ -55,8 +53,7 @@ class Prc152_RadioDialog {
         };
 
 
-        class LoadingBar
-        {
+        class LoadingBar {
             idc = 99992;
             x = ((((((0.435+(0.0038*3))-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = ((((((0.415+ (0.01105*2.25))-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -72,7 +69,7 @@ class Prc152_RadioDialog {
 
 
 
-        class LogoIcon : Prc152_RscPicture {
+        class LogoIcon: Prc152_RscPicture {
             idc = 99993;
             x = ((((((0.435+(0.1254/2)-0.07)-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = ((((((0.415 +(0.02/2)-0.05)-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -82,7 +79,7 @@ class Prc152_RadioDialog {
             colorText[] = {1,1,1,1};
         };
 
-        class KnobImage : Prc152_RscPicture {
+        class KnobImage: Prc152_RscPicture {
             idc = 99901;
             x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
@@ -91,18 +88,33 @@ class Prc152_RadioDialog {
             text = PATHTOF(Data\Knobs\channelknob\prc152c_ui_knob_1.paa);
             colorText[] = {1,1,1, 1};
         };
+        class TransmitBar {
+            idc = 99995;
+            x = (((((0.496-0.5 + (0.0933/2.42))*SCALE)+0.5) * safeZoneH) + safeZoneY); // 2.55
+            y = (((((0.4211 + 0.005 -0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.005
+            w = SCALE*(0.0933/4.25)*safeZoneH; //4.22
+            h = SCALE*(0.00438*1.7)*safeZoneH; //0.01105, 3
+            type = 8;
+            style = 0;
+            colorFrame[] = {0.2, 0.2, 0.2,1};
+            colorBar[] = {0.2, 0.2, 0.2, 1};
+            texture = "#(argb,8,8,3)color(1,1,1,1)";
+            tooltip = "ST_HORIZONTAL";
+        };   
 
-        class TransmitIcon : Prc152_RscPicture {
+        // Lower down for render order.
+        class TransmitIcon: Prc152_RscPicture {
             idc = 99902;
-            x = (((((0.52-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
-            y = (((((0.426-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
-            w = SCALE*0.05*safeZoneH;
-            h = SCALE*0.01105*safeZoneH;
+            x = (((((0.496-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY); // 0.50 -> 0.49 -> 0.493
+            y = (((((0.4211-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY); // 0.426 -> 0.41 -> 0.42
+            w = SCALE*0.0933*safeZoneH; //0.05, 0.07
+            h = SCALE*(0.00438*4)*safeZoneH; //0.01105, 3
             colorText[] = { 0, 0, 0, 1 };
             text = PATHTOF(Data\icons\icon_transmit.paa);
-        };
+        };    
+     
 
-        class UpIcon : Prc152_RscPicture {
+        class UpIcon: Prc152_RscPicture {
             idc = 99903;
             x = (((((0.28-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = (((((0.6-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -113,7 +125,7 @@ class Prc152_RadioDialog {
             colorBackground[] = {1,1,1,0};
         };
 
-        class DownIcon : Prc152_RscPicture {
+        class DownIcon: Prc152_RscPicture {
             idc = 99904;
             x = (((((0.28-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = (((((0.6-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -123,7 +135,7 @@ class Prc152_RadioDialog {
             colorText[] = { 0, 0, 0, 1 };
         };
 
-        class UpDownIcon : Prc152_RscPicture {
+        class UpDownIcon: Prc152_RscPicture {
             idc = 99905;
             x = (((((0.2-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = (((((0.7-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -133,7 +145,7 @@ class Prc152_RadioDialog {
             colorText[] = { 0, 0, 0, 1 };
         };
 
-        class ScrollbarIcon : Prc152_RscPicture {
+        class ScrollbarIcon: Prc152_RscPicture {
             idc = 99906;
             x = ((((((0.556-0.0115)-0.5)*SCALE)+0.5) * safeZoneH) + safeZoneY);
             y = (((((0.425-0.5)*SCALE)+0.5) * safeZoneH)  + safeZoneY);
@@ -165,7 +177,7 @@ class Prc152_RadioDialog {
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
             colorText[] = {1,1,1,1};
-            text = QUOTE(PATHTOF(Data\Knobs\functionknob\prc152c_ui_swtch_0.paa));
+            text = QPATHTOF(Data\Knobs\functionknob\prc152c_ui_swtch_0.paa);
         END_CONTROL
 
         /*BEGIN_CONTROL(CHIPHER_KNOB, Prc152_RscButton, 222)
@@ -185,7 +197,7 @@ class Prc152_RadioDialog {
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
             colorText[] = {1,1,1,1};
-            text = QUOTE(PATHTOF(Data\Knobs\keypad\prc152c_ui_default.paa));
+            text = QPATHTOF(Data\Knobs\keypad\prc152c_ui_default.paa);
         END_CONTROL
 
         BEGIN_CONTROL(BUTTON_ONE, Prc152_RscButton, 99902+101)
@@ -354,10 +366,11 @@ class Prc152_RadioDialog {
             sizeEx = 0.014;
             color[] = {1,1,1,0};
             colorBackground[] = {1,1,1,0};
-            onMouseEnter  = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseEnter));
-            onMouseExit  = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseExit));
+            onMouseEnter = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseEnter));
+            onMouseExit = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseExit));
             onMouseButtonUp = QUOTE((['VOLUME'] + _this) call FUNC(onButtonPress));
             tooltip = QUOTE(Change volume);
         END_CONTROL
+
     };
 };

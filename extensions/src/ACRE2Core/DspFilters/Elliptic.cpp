@@ -203,7 +203,7 @@ void AnalogLowPass::calcfz2( int i )
   }
   m_c1[i] = 0;
   int j;
-  for(j = ji; j <= jf; j += 2)
+  for (j = ji; j <= jf; j += 2)
     m_c1[i] += m_a1[j]*(m_a1[i-j]*pow(10., m_m-i/2));
 }
 
@@ -211,7 +211,7 @@ void AnalogLowPass::calcfz2( int i )
 void AnalogLowPass::calcfz( void )
 {
   int i = 1;
-  if( m_nin == 1 )
+  if ( m_nin == 1 )
     m_s1[i++] = 1;
   for (; i <= m_nin+m_n2; i++)
     m_s1[i] = m_s1[i+m_n2] = m_z1[i-m_nin];
@@ -247,13 +247,13 @@ double AnalogLowPass::findfact(int t)
     m_a1[i] /= m_a1[0];
   m_a1[0] = m_b1[0] = m_c1[0] = 1;
   int i1 = 0;
-  for(;;)
+  for (;;)
   {
     if (t <= 2)
       break;
     double p0 = 0, q0 = 0;
     i1++;
-    for(;;)
+    for (;;)
     {
       m_b1[1] = m_a1[1] - p0;
       m_c1[1] = m_b1[1] - p0;

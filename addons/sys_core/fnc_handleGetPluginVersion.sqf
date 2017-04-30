@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles the return of the current plugin version from TeamSpeak. Displays messages to the player if any of the versions do not match.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: TeamSpeak plugin version <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["2.3.0.926"] call acre_sys_core_fnc_handleGetPluginVersion
  *
  * Public: No
  */
@@ -22,13 +21,13 @@ private _warn = false;
 private _isServer = false;
 private _isClient = false;
 
-if(!isNil "ACRE_FULL_SERVER_VERSION") then {
-    if(ACRE_FULL_SERVER_VERSION != QUOTE(VERSION)) then {
+if (!isNil "ACRE_FULL_SERVER_VERSION") then {
+    if (ACRE_FULL_SERVER_VERSION != QUOTE(VERSION)) then {
         _warn = true;
         _isServer = true;
     };
 };
-if(GVAR(pluginVersion) != QUOTE(VERSION_PLUGIN)) then {
+if (GVAR(pluginVersion) != QUOTE(VERSION_PLUGIN)) then {
     _warn = true;
     _isClient = true;
 };
@@ -38,11 +37,11 @@ if (!ACRE_SPIT_VERSION && {!isNil "ACRE_FULL_SERVER_VERSION"}) then {
     INFO_3("Version information. Plugin: %1 - Client: %1 - Server: %3",GVAR(pluginVersion),QUOTE(VERSION),ACRE_FULL_SERVER_VERSION);
 };
 
-if(_warn) then {
+if (_warn) then {
     ACRE_HAS_WARNED = true;
-    ERROR_3("Mismatched TeamSpeak plugin and mod versions!\nPlugin: %1\nMod: %2\nServer: %3",GVAR(pluginVersion), QUOTE(VERSION), ACRE_FULL_SERVER_VERSION);
+    ERROR_WITH_TITLE_3("Mismatched TeamSpeak plugin or mod versions!","\nTeamSpeak plugin version: %1\nYour version: %2\nServer version: %3",GVAR(pluginVersion),QUOTE(VERSION),ACRE_FULL_SERVER_VERSION);
 } else {
-    if(ACRE_HAS_WARNED) then {
+    if (ACRE_HAS_WARNED) then {
         ACRE_HAS_WARNED = false;
         titleFadeOut 0;
     };

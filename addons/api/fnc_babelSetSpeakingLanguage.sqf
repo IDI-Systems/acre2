@@ -3,10 +3,10 @@
  * Sets the language the player will speak in.
  *
  * Arguments:
- * 0: Language key <STRING>
+ * 0: Language ID <STRING>
  *
  * Return Value:
- * None
+ * Setup succesful <BOOL>
  *
  * Example:
  * ["en"] call acre_api_fnc_babelSetSpeakingLanguage;

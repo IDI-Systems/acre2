@@ -1,34 +1,32 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Changes the spatial mode of the active radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Spatial mode (-1 = left, 0 = center, 1 = right) <NUMBER>
+ * 1: Radio ID <STRING> (default: ACRE_ACTIVE_RADIO)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [0] call acre_sys_core_fnc_switchRadioEar
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_ear"];
+params ["_ear", ["_radioId", ACRE_ACTIVE_RADIO, [""]]];
 
-private _radioId = ACRE_ACTIVE_RADIO;
-
-switch _ear do {
+switch (_ear) do {
     case -1: {
-        hintSilent "LEFT EAR";
+        [localize LSTRING(switchRadioEarLeft), ICON_RADIO_CALL] call FUNC(displayNotification);
     };
     case 0: {
-        hintSilent "CENTER EAR";
+        [localize LSTRING(switchRadioEarBoth), ICON_RADIO_CALL] call FUNC(displayNotification);
     };
     case 1: {
-        hintSilent "RIGHT EAR";
+        [localize LSTRING(switchRadioEarRight), ICON_RADIO_CALL] call FUNC(displayNotification);
     };
 };
 //[_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _ear]] call EFUNC(sys_data,dataEvent);

@@ -18,8 +18,9 @@
 
 LOG("INITIALIZING DEFAULT RADIO");
 TRACE_1("", _this);
-params["_radioId", ["_preset", "default"]];
+params ["_radioId", ["_preset", "default"]];
 
 private _baseName = BASECLASS(_radioId);
 [_radioId, "initializeComponent", [_baseName, _preset]] call EFUNC(sys_data,dataEvent);
+[_radioId] call EFUNC(sys_external,initRadio);
 TRACE_1("", _baseName);

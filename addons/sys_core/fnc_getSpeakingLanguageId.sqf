@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the current speaking language.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Language Index <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_getSpeakingLanguageId
  *
  * Public: No
  */
@@ -18,7 +17,7 @@
 
 private _ret = ACRE_CURRENT_LANGUAGE_ID;
 
-if((count GVAR(languages)) == 0) then {
+if ((count GVAR(languages)) == 0) then {
     _ret = 0;
 };
 _ret;

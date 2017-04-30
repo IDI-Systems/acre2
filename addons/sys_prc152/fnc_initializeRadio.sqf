@@ -18,7 +18,7 @@
 
 TRACE_1("INITIALIZING RADIO PRC-152", _this);
 
-params["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
 _eventData params ["_baseName","_preset"];
 
@@ -28,7 +28,7 @@ private _currentChannels = HASH_GET(_radioData,"channels");
 
 SCRATCH_SET(_radioId, "currentTransmissions", []);
 
-if(isNil "_currentChannels") then {
+if (isNil "_currentChannels") then {
     _currentChannels = [];
     HASH_SET(_radioData,"channels",_currentChannels);
 };
@@ -41,4 +41,5 @@ for "_i" from 0 to (count _channels)-1 do {
 HASH_SET(_radioData,"volume",1);
 HASH_SET(_radioData,"currentChannel",0);
 HASH_SET(_radioData,"radioOn",1);
-HASH_SET(_radioData, "audioPath", "TOPAUDIO");
+HASH_SET(_radioData,"audioPath", "TOPAUDIO");
+HASH_SET(_radioData,"powerSource","BAT");

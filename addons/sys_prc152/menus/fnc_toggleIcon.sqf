@@ -10,25 +10,25 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc152_fnc_toggleIcon
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_iconId","_toggle"];
+params ["_iconId","_toggle"];
 
-private _display = uiNamespace getVariable QGVAR(currentDisplay);
-private _type = ctrlType (_display displayCtrl _iconId);
+private _ctrl = ((uiNamespace getVariable [QGVAR(currentDisplay), displayNull]) displayCtrl _iconId);
+private _type = ctrlType _ctrl;
 
-if((count _this) > 2) then {
+if ((count _this) > 2) then {
     private _newPosition = _this select 2;
-    (_display displayCtrl _iconId) ctrlSetPosition _toggle;
+    _ctrl ctrlSetPosition _toggle;
 };
 
-if(_type == 8) then {
-    (_display displayCtrl _iconId) progressSetPosition 0.85;
+if (_type isEqualTo 8) then {
+    _ctrl progressSetPosition 0.5;
 };
 
-(_display displayCtrl _iconId) ctrlShow _toggle;
-(_display displayCtrl _iconId) ctrlCommit 0;
+_ctrl ctrlShow _toggle;
+_ctrl ctrlCommit 0;

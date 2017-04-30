@@ -1,26 +1,27 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Helper function for revealing units to AI for non-local AI.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Player to reveal <OBJECT>
+ * 1: Unit to reveal to <OBJECT>
+ * 2: Reveal amount <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [player,unit,4.0] call acre_sys_core_fnc_onRevealUnit
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params["_player", "_unit", "_revealAmount"];
+params ["_player", "_unit", "_revealAmount"];
 
 TRACE_1("onRevealUnit", _this);
 
-if(!local _unit) exitWith { false };
+if (!local _unit) exitWith { false };
 
 _unit reveal [_player, _revealAmount];
 

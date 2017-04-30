@@ -1,29 +1,28 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Toggles the local player's headset mode (lowered or raised). In spectator this toggles the spectator mute.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_toggleHeadset
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 TRACE_1("enter", _this);
-if(!ACRE_IS_SPECTATOR) then {
-    if(GVAR(lowered) == 1) then {
+if (!ACRE_IS_SPECTATOR) then {
+    if (GVAR(lowered) == 1) then {
         GVAR(lowered) = 0;
-        hintSilent "Headset raised";
+        [localize LSTRING(headsetRaised)] call FUNC(displayNotification);
     } else {
         GVAR(lowered) = 1;
-        hintSilent "Headset lowered";
+        [localize LSTRING(headsetLowered)] call FUNC(displayNotification);
     };
 } else {
     ACRE_MUTE_SPECTATORS = !ACRE_MUTE_SPECTATORS;

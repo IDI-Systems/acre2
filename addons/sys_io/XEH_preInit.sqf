@@ -1,25 +1,20 @@
-NO_DEDICATED;
 #include "script_component.hpp"
 
 ADDON = false;
 
 LOG(MSG_INIT);
 
-PREP(sendMessage);
-PREP(restartServer);
-PREP(serverRunning);
-PREP(startServer);
-PREP(stopServer);
-PREP(serverReadLoop);
-PREP(server);
-PREP(ping);
+PREP_RECOMPILE_START;
+#include "XEH_PREP.hpp"
+PREP_RECOMPILE_END;
 
-
-DGVAR(pipeCode) = "0";
-DGVAR(ioEventFnc) = {};
-DGVAR(runserver) = false;
-DGVAR(serverStarted) = false;
-DGVAR(pongTime) = diag_tickTime;
-DGVAR(connectCount) = 15;
+if (hasInterface) then {
+    DGVAR(pipeCode) = "0";
+    DGVAR(ioEventFnc) = {};
+    DGVAR(runserver) = false;
+    DGVAR(serverStarted) = false;
+    DGVAR(pongTime) = diag_tickTime;
+    DGVAR(connectCount) = 15;
+};
 
 ADDON = true;

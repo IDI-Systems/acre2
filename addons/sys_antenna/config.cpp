@@ -14,4 +14,4 @@ class CfgPatches {
 };
 
 #include "CfgAcreComponents.hpp"
-#include "CfgEventhandlers.hpp"
+#include "CfgEventHandlers.hpp"

@@ -16,9 +16,9 @@
  */
 #include "script_component.hpp"
 
-params["_radioName"];
+params ["_radioName"];
 
-if(_radioName != "" && GVAR(currentRadioDialog) == "") then {
+if (_radioName != "" && {GVAR(currentRadioDialog) == ""}) then {
     [_radioName, "openGui"] call EFUNC(sys_data,interactEvent);
 } else {
     closeDialog 0;

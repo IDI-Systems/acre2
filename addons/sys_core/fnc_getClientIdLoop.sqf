@@ -1,26 +1,28 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * This function exists to setup the process for sending our object and player ID to other clients to associate with our TeamSpeak ID.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * None
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <Boolean>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_getClientIdLoop
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 DFUNC(getClientIdLoopFunc) = {
-    if(!isNull player) then {
+    if (!isNull player) then {
         private _netId = netId acre_player;
         ["getClientID", [_netId, (getPlayerUID player)]] call EFUNC(sys_rpc,callRemoteProcedure);
     };
 };
-ADDPFH(DFUNC(getClientIdLoopFunc), 3, []);
+ADDPFH(FUNC(getClientIdLoopFunc), 3, []); // Send on regular interval for JIP etc.
+
+["unit", {[] call FUNC(getClientIdLoopFunc);}] call CBA_fnc_addPlayerEventHandler; // Use EH for immediate sending on unit transfer
+
 true

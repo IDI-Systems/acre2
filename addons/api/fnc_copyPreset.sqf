@@ -20,7 +20,7 @@
 params ["_radioClass", "_srcPresetName", "_dstPresetName"];
 
 private _presetData = [_radioClass, _srcPresetName] call FUNC(getPresetData);
-if(isNil "_presetData") exitWith { false };
+if (isNil "_presetData") exitWith { false };
 
 private _presetCopy = HASH_COPY(_presetData);
 

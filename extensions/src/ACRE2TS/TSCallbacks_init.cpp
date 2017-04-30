@@ -14,7 +14,7 @@
 extern TS3Functions ts3Functions;
 //
 // TS3 API Intializers
-// 
+//
 
 const char* ts3plugin_name() {
     return ACRE_NAME;
@@ -35,13 +35,31 @@ void ts3plugin_setFunctionPointers(const struct TS3Functions funcs) {
     ts3Functions = funcs;
 }
 
-// 
+char *pluginID = NULL;
+//
+// Register the command engine - Seems to be called before ts3plugin_init in 3.1
+//
+void ts3plugin_registerPluginID(const char* commandID) {
+
+    pluginID = _strdup(commandID);
+    //LOG("Registered: [%s]", str);
+    if (CEngine::getInstance() != NULL) {
+        if (((CCommandServer *)CEngine::getInstance()->getExternalServer()) != NULL) {
+            ((CCommandServer *)CEngine::getInstance()->getExternalServer())->setCommandId(pluginID);
+        }
+    }
+}
+
+
+//
 // Init
 //
 int ts3plugin_init() {
     CEngine::getInstance()->initialize(new CTS3Client(), new CCommandServer(), FROM_PIPENAME, TO_PIPENAME);
 
-    if(ts3Functions.getCurrentServerConnectionHandlerID()) {
+    // if PluginID was already loaded.
+    if (pluginID != NULL) ((CCommandServer *)CEngine::getInstance()->getExternalServer())->setCommandId(pluginID);
+    if (ts3Functions.getCurrentServerConnectionHandlerID()) {
         // we are activating while connected, call it
         // virtualize a connect event
         ts3plugin_onConnectStatusChangeEvent(ts3Functions.getCurrentServerConnectionHandlerID(), STATUS_CONNECTION_ESTABLISHED, NULL);
@@ -51,7 +69,7 @@ int ts3plugin_init() {
     return 0;
 }
 
-// 
+//
 // server connect/disconnect
 //
 void ts3plugin_currentServerConnectionChanged(uint64 serverConnectionHandlerID) {
@@ -60,10 +78,10 @@ void ts3plugin_currentServerConnectionChanged(uint64 serverConnectionHandlerID) 
 
 void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int err) {
 
-    if(status == STATUS_CONNECTION_ESTABLISHED) {
-        
+    if (status == STATUS_CONNECTION_ESTABLISHED) {
 
-        // 
+
+        //
         // set ID on every new connection
         ACRE_ID clientId = 0;
         ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), (anyID *)&clientId);
@@ -71,11 +89,11 @@ void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int er
 
         // subscribe to all channels to receive event
         ts3Functions.requestChannelSubscribeAll(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
-        if(CEngine::getInstance()->getClient()->getState() != ACRE_STATE_RUNNING) {
+        if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_RUNNING) {
             CEngine::getInstance()->getClient()->start((ACRE_ID)id);
         }
     } else if (status == STATUS_DISCONNECTED) {
-        if(CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED  && CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPING) {
+        if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED  && CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPING) {
             CEngine::getInstance()->getClient()->stop();
         }
     }
@@ -89,9 +107,8 @@ void ts3plugin_onPlaybackShutdownCompleteEvent(uint64) {
 }
 
 void ts3plugin_shutdown() {
-    if(CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED && CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPING) {
+    if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPED && CEngine::getInstance()->getClient()->getState() != ACRE_STATE_STOPPING) {
         CEngine::getInstance()->getClient()->stop();
     }
     CEngine::getInstance()->stop();
 }
-

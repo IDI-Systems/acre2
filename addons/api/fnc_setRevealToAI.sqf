@@ -4,10 +4,11 @@
  * Effects are local.
  *
  * Arguments:
- * 0: Reveal players to AI that speak <BOOLEAN>
+ * 0: Reveal players to AI that speak <BOOL>
+ * 1: CBA Settings Call <BOOL> (default: false)
  *
  * Return Value:
- * Are players that speak revealed to AI <BOOLEAN>
+ * Are players that speak revealed to AI <BOOL>
  *
  * Example:
  * _status = [false] call acre_api_fnc_setRevealToAI
@@ -16,29 +17,33 @@
  */
 #include "script_component.hpp"
 
-INFO_2("%1 called with: %2",QFUNC(setRevealToAI),_this);
-
-params ["_var"];
-
 if (!hasInterface) exitWith {false};
 
-//if(!isServer) exitWith {
-//    WARNING_1("%1 called on client! Function is server-side only!",QFUNC(setRevealToAI));
-//};
+// @todo remove backwards compatibility in 2.7.0 (including second argument) and move function to sys_core
+params ["_var", ["_CBASettingCall", false]];
 
-if(!(_var isEqualType false)) exitWith { false };
+// Backwards compatibility - block CBA settings if API function called directly
+if (_CBASettingCall && {!isNil QGVAR(revealToAIBlockCBASetting)}) exitWith {};
 
+if (!_CBASettingCall) then {
+    GVAR(revealToAIBlockCBASetting) = true;
+    ACRE_DEPRECATED(QFUNC(setRevealToAI),"2.7.0","CBA Settings");
+    WARNING_1("%1 has been called directly and CBA Setting for it has been blocked!",QFUNC(setRevealToAI));
+};
 
-if( !ACRE_AI_ENABLED && _var ) then {
-    [] call acre_sys_core_fnc_enableRevealAI;
+// Set
+if !(_var isEqualType false) exitWith { false };
+
+if (!EGVAR(sys_core,revealToAI) && _var) then {
+    [] call EFUNC(sys_core,enableRevealAI);
 } else {
-    if( ACRE_AI_ENABLED && !_var ) then {
-        [] call acre_sys_core_fnc_disableRevealAI;
+    if (EGVAR(sys_core,revealToAI) && !_var) then {
+        [] call EFUNC(sys_core,disableRevealAI);
     };
 };
 
-ACRE_AI_ENABLED = _var;
+EGVAR(sys_core,revealToAI) = _var;
 
-INFO_5("Difficulty changed. Interference: %1 - Duplex: %2 - Terrain Loss: %3 - Omni-directional: %4 - AI Hearing: %5",ACRE_INTERFERENCE,ACRE_FULL_DUPLEX,EGVAR(sys_signal,terrainScaling),EGVAR(sys_signal,omnidirectionalRadios),ACRE_AI_ENABLED);
+INFO_5("Difficulty changed. Interference: %1 - Duplex: %2 - Terrain Loss: %3 - Omni-directional: %4 - AI Hearing: %5",EGVAR(sys_core,interference),EGVAR(sys_core,fullDuplex),EGVAR(sys_signal,terrainScaling),EGVAR(sys_signal,omnidirectionalRadios),EGVAR(sys_core,revealToAI));
 
 _var

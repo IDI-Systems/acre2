@@ -8,7 +8,7 @@ acre::simulation::vertex::vertex(vertex_table & _table, acre::vector3<float> _ve
 {
     this->original_vertex = _vertex;
     this->animated_vertex = _vertex;
-    if(reversed) {
+    if (reversed) {
         this->original_vertex.z(this->original_vertex.z()*-1);
         this->animated_vertex.z(this->animated_vertex.z()*-1);
         this->original_vertex.x(this->original_vertex.x()*-1);
@@ -34,7 +34,7 @@ acre::simulation::face::face(
             object_lod->vertices[vertex_id]->faces.push_back(this);
         }
     }
-    else if(type == 4) {
+    else if (type == 4) {
         this->vertices.push_back(object_lod->vertices[p3d_face->vertex_table[0]]);
         object_lod->vertices[p3d_face->vertex_table[0]]->faces.push_back(this);
 

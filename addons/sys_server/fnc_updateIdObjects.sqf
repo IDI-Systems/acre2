@@ -1,26 +1,25 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Client function to update the local copy of objectIdRelationTable.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Array of updates, format of update [key,value] <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [["acre_prc343_id_1",[acre_player,acre_player]]] call acre_sys_server_fnc_updateIdObjects
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 private _update = _this;
-if(ACRE_DATA_SYNCED) then {
+if (ACRE_DATA_SYNCED) then {
     {
         HASH_SET(GVAR(objectIdRelationTable), _x select 0, _x select 1);
     } forEach _update;
 } else {
-    PUSH(GVAR(pendingIdRelationUpdates), _update);
+    GVAR(pendingIdRelationUpdates) pushBack _update;
 };

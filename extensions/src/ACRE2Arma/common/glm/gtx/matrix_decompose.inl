@@ -47,7 +47,7 @@ namespace glm
     GLM_FUNC_QUALIFIER void v3Scale(tvec3<T, P> & v, T desiredLength)
     {
         T len = glm::length(v);
-        if(len != 0)
+        if (len != 0)
         {
             T l = desiredLength / len;
             v[0] *= l;
@@ -69,27 +69,27 @@ namespace glm
         tmat4x4<T, P> LocalMatrix(ModelMatrix);
 
         // Normalize the matrix.
-        if(LocalMatrix[3][3] == static_cast<T>(0))
+        if (LocalMatrix[3][3] == static_cast<T>(0))
             return false;
 
-        for(length_t i = 0; i < 4; ++i)
-        for(length_t j = 0; j < 4; ++j)
+        for (length_t i = 0; i < 4; ++i)
+        for (length_t j = 0; j < 4; ++j)
             LocalMatrix[i][j] /= LocalMatrix[3][3];
 
         // perspectiveMatrix is used to solve for perspective, but it also provides
         // an easy way to test for singularity of the upper 3x3 component.
         tmat4x4<T, P> PerspectiveMatrix(LocalMatrix);
 
-        for(length_t i = 0; i < 3; i++)
+        for (length_t i = 0; i < 3; i++)
             PerspectiveMatrix[i][3] = 0;
         PerspectiveMatrix[3][3] = 1;
 
         /// TODO: Fixme!
-        if(determinant(PerspectiveMatrix) == static_cast<T>(0))
+        if (determinant(PerspectiveMatrix) == static_cast<T>(0))
             return false;
 
         // First, isolate perspective.  This is the messiest.
-        if(LocalMatrix[0][3] != 0 || LocalMatrix[1][3] != 0 || LocalMatrix[2][3] != 0)
+        if (LocalMatrix[0][3] != 0 || LocalMatrix[1][3] != 0 || LocalMatrix[2][3] != 0)
         {
             // rightHandSide is the right hand side of the equation.
             tvec4<T, P> RightHandSide;
@@ -124,8 +124,8 @@ namespace glm
         tvec3<T, P> Row[3], Pdum3;
 
         // Now get scale and shear.
-        for(length_t i = 0; i < 3; ++i)
-            for(int j = 0; j < 3; ++j)
+        for (length_t i = 0; i < 3; ++i)
+            for (int j = 0; j < 3; ++j)
                 Row[i][j] = LocalMatrix[i][j];
 
         // Compute X scale factor and normalize first row.
@@ -158,9 +158,9 @@ namespace glm
         // Check for a coordinate system flip.  If the determinant
         // is -1, then negate the matrix and the scaling factors.
         Pdum3 = cross(Row[1], Row[2]); // v3Cross(row[1], row[2], Pdum3);
-        if(dot(Row[0], Pdum3) < 0)
+        if (dot(Row[0], Pdum3) < 0)
         {
-            for(length_t i = 0; i < 3; i++)
+            for (length_t i = 0; i < 3; i++)
             {
                 Scale.x *= static_cast<T>(-1);
                 Row[i] *= static_cast<T>(-1);
@@ -188,7 +188,7 @@ namespace glm
 
         t = Row[0][0] + Row[1][1] + Row[2][2] + 1.0;
 
-        if(t > 1e-4)
+        if (t > 1e-4)
         {
             s = 0.5 / sqrt(t);
             w = 0.25 / s;
@@ -196,7 +196,7 @@ namespace glm
             y = (Row[0][2] - Row[2][0]) * s;
             z = (Row[1][0] - Row[0][1]) * s;
         }
-        else if(Row[0][0] > Row[1][1] && Row[0][0] > Row[2][2])
+        else if (Row[0][0] > Row[1][1] && Row[0][0] > Row[2][2])
         { 
             s = sqrt (1.0 + Row[0][0] - Row[1][1] - Row[2][2]) * 2.0; // S=4*qx 
             x = 0.25 * s;
@@ -204,7 +204,7 @@ namespace glm
             z = (Row[0][2] + Row[2][0]) / s; 
             w = (Row[2][1] - Row[1][2]) / s;
         }
-        else if(Row[1][1] > Row[2][2])
+        else if (Row[1][1] > Row[2][2])
         { 
             s = sqrt (1.0 + Row[1][1] - Row[0][0] - Row[2][2]) * 2.0; // S=4*qy
             x = (Row[0][1] + Row[1][0]) / s; 

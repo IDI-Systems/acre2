@@ -43,7 +43,7 @@ namespace glm
         T epsilon = (T)0.01;
         T epsilon2 = (T)0.1;
 
-        if((abs(mat[1][0] - mat[0][1]) < epsilon) && (abs(mat[2][0] - mat[0][2]) < epsilon) && (abs(mat[2][1] - mat[1][2]) < epsilon))
+        if ((abs(mat[1][0] - mat[0][1]) < epsilon) && (abs(mat[2][0] - mat[0][2]) < epsilon) && (abs(mat[2][1] - mat[1][2]) < epsilon))
         {
             if ((abs(mat[1][0] + mat[0][1]) < epsilon2) && (abs(mat[2][0] + mat[0][2]) < epsilon2) && (abs(mat[2][1] + mat[1][2]) < epsilon2) && (abs(mat[0][0] + mat[1][1] + mat[2][2] - (T)3.0) < epsilon2))
             {
@@ -60,7 +60,7 @@ namespace glm
             T xy = (mat[1][0] + mat[0][1]) / (T)4.0;
             T xz = (mat[2][0] + mat[0][2]) / (T)4.0;
             T yz = (mat[2][1] + mat[1][2]) / (T)4.0;
-            if((xx > yy) && (xx > zz))
+            if ((xx > yy) && (xx > zz))
             {
                 if (xx < epsilon) {
                     axis.x = (T)0.0;

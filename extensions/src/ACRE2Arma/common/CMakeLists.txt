@@ -1,8 +1,8 @@
-file(GLOB_RECURSE ACRE_COMMON_SOURCES *.h *.hpp *.c *.cpp)
+file(GLOB_RECURSE ACRE_COMMON_SOURCES *.h *.hpp *.c *.cc *.cpp)
 acre_set_linker_options()
 
 
-file(GLOB ACRE_BASE_COMMON_SOURCES *.h *.hpp *.c *.cpp)
+file(GLOB ACRE_BASE_COMMON_SOURCES *.h *.hpp *.c *.cc *.cpp)
 file(GLOB ACRE_P3D_SOURCES  p3d/*.h p3d/*.hpp p3d/*.c p3d/*.cpp)
 file(GLOB ACRE_PBO_SOURCES  pbo/*.h pbo/*.hpp pbo/*.c pbo/*.cpp)
 file(GLOB ACRE_SIMULATION_SOURCES simulation/*.h simulation/*.hpp simulation/*.c simulation/*.cpp)

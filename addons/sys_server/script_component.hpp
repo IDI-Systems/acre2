@@ -16,5 +16,4 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
-#define DEFAULT_COLLECTION_TIME 350
 #define MAX_RADIO 512

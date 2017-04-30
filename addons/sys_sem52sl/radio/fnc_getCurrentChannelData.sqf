@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function returns all specific data of the
  *  current channel.

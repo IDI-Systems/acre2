@@ -30,7 +30,7 @@ public:
     ACRE_RESULT stopWorker(void) {
         this->setShuttingDown(true);
         this->setRunning(false);
-        if(this->workerThread.joinable()) {
+        if (this->workerThread.joinable()) {
             this->workerThread.join();
         }
         LOCK(this)
@@ -43,9 +43,9 @@ public:
 
     ACRE_RESULT exWorkerThread() {
         T item;
-        while(!this->getShuttingDown()) {
+        while (!this->getShuttingDown()) {
             LOCK(this);
-            if(this->m_processQueue.try_pop(item)) {    
+            if (this->m_processQueue.try_pop(item)) {    
                 this->exProcessItem(item);
             }
             UNLOCK(this);
