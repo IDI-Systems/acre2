@@ -3,27 +3,51 @@
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
             <English>Mount Radio</English>
+            <German>Funkgerät einschieben</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable (Locked)</English>
+            <German>Funkgerät fest verbaut</German>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiExternal">
             <English>Radio used externally. Only owner may configure.</English>
+            <German>Das Funkgerät wird extern benutzt. Nur der Besitzer kann es einstellen.</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount Radio (%1)</English>
+            <German>Entferne Funkgerät (%1)</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted radio (%1)</English>
+            <German>Eingeschobenes Funkgerät (%1)</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop using radio</English>
+            <English>Benutzung beenden</English>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use radio</English>
+            <English>Funkgerät nutzen</English>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
+            <English>Funkgerät kann nicht entfernt werden. Nicht genug Platz im Inventar vorhandne.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Racks">
+            <English>Racks</English>
+            <German>Funkgeräteschrank</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash">
+            <English>Dash</English>
+            <English>Steckplatz</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash_lower">
+            <English>Dashboard Lower</English>
+            <English>Unterer Steckplatz</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash_upper">
+            <English>Dashboard Upper</English>
+            <English>Oberer Steckplatz</English>
         </Key>
     </Package>
 </Project>
