@@ -3,7 +3,7 @@
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
             <English>Mount Radio</English>
-            <German>Funkgerät einschieben</German>
+            <German>Funkgerät einbauen</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable (Locked)</English>
@@ -19,7 +19,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted radio (%1)</English>
-            <German>Eingeschobenes Funkgerät (%1)</German>
+            <German>Eingebautes Funkgerät (%1)</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop using radio</English>
@@ -27,7 +27,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use radio</English>
-            <German>Funkgerät nutzen</German>
+            <German>Funkgerät verwenden</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
