@@ -23,15 +23,15 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop using radio</English>
-            <English>Benutzung beenden</English>
+            <German>Benutzung beenden</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use radio</English>
-            <English>Funkgerät nutzen</English>
+            <German>Funkgerät nutzen</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
-            <English>Funkgerät kann nicht entfernt werden. Nicht genug Platz im Inventar vorhandne.</English>
+            <German>Funkgerät kann nicht entfernt werden. Nicht genug Platz im Inventar vorhandne.</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
@@ -39,15 +39,15 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_Dash">
             <English>Dash</English>
-            <English>Steckplatz</English>
+            <German>Steckplatz</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Dash_lower">
             <English>Dashboard Lower</English>
-            <English>Unterer Steckplatz</English>
+            <German>Unterer Steckplatz</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Dash_upper">
             <English>Dashboard Upper</English>
-            <English>Oberer Steckplatz</English>
+            <German>Oberer Steckplatz</German>
         </Key>
     </Package>
 </Project>
