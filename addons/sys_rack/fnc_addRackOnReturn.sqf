@@ -25,7 +25,7 @@ if (isNull _rack) exitWith {
 
 private _vehicleRacks = _vehicle getVariable [QGVAR(vehicleRacks), []];
 _vehicleRacks pushBackUnique _rackId;
-_vehicle setVariable [QGVAR(vehicleRacks), _vehicleRacks];
+_vehicle setVariable [QGVAR(vehicleRacks), _vehicleRacks, true];
 _rack setVariable [QGVAR(rackVehicle), _vehicle, true];
 
 private _queue = _vehicle getVariable [QGVAR(queue),[]];
