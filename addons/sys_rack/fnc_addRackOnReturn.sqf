@@ -19,6 +19,7 @@
 params ["_vehicle", "_rackId"];
 
 private _rack = _rackId createVehicle [-1000,-1000,-1000];
+_rack enableSimulation false;
 if (isNull _rack) exitWith {
     WARNING_2("Error creating rack '%2' for vehicle %1",str _vehicle,_rackId);
 };
