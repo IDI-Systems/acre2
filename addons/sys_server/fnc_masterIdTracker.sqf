@@ -101,12 +101,12 @@ if (GVAR(doFullSearch)) then {
         private _rackId = typeOf _x;
 
         if (getNumber (_cfgVehicles >> _rackId >> "acre_isUnique") == 1) then {
-            private _attachedTo = attachedTo _x;
+            private _vehicle = _x getVariable [QEGVAR(sys_rack,rackVehicle), objNull];
             private _mainObject = _x;
-            if (isNull _attachedTo) then {
+            if (isNull _vehicle || {!alive _vehicle}) then {
                 deleteVehicle _x; // Acre racks should always be attached to something.
             } else {
-                _mainObject = _attachedTo;
+                _mainObject = _vehicle;
                 if (_idList pushBackUnique _rackId != -1) then { // Add to ID list and this condition returns true if it was not present in the _idList.
                     HASH_SET(_idTable, _rackId, [ARR_2(_mainObject,_x)]);
                 } else { // Already present in _idList
@@ -137,9 +137,8 @@ if (GVAR(doFullSearch)) then {
                 };
             };
         };
-
-
     } forEach (allMissionObjects "ACRE_BASERACK");
+
     {
         private _key = _x;
         if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {

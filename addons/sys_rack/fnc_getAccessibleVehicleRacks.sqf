@@ -20,12 +20,9 @@ params ["_vehicle", "_unit"];
 
 private _racks = [];
 {
-    private _rackId = typeOf _x;
-    if (_rackId isKindOf "ACRE_BaseRack") then {
-        if ([_rackId, _unit, _vehicle] call FUNC(isRackAccessible)) then {
-            _racks pushBack _rackId;
-        };
+    if (_x isKindOf "ACRE_BaseRack" && {[_x, _unit, _vehicle] call FUNC(isRackAccessible)}) then {
+        _racks pushBack _x;
     };
-} forEach (attachedObjects _vehicle);
+} forEach (_vehicle getVariable [QGVAR(vehicleRacks), []]);
 
 _racks

@@ -40,7 +40,7 @@ _radioList = [_rackClassName, _radioList] call FUNC(getMountableRadios);
         [_rackClassName, _radioId, _unit] call FUNC(mountRadio);
     }, {true}, {}, [_rackClassName, _x]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
-} forEach (_radioList);
+} forEach _radioList;
 
 
 _actions;
