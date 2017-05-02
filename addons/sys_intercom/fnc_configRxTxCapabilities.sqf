@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * Returns the configuration (No use, TX Ony, RX only or TX/RX) for the given unit of a radio that is connected to an intercom.
+ * Configures a the initial state (No use, TX Ony, RX only or TX/RX) of a rack that is connected to intercom.
  *
  * Arguments:
- * 0: Radio configuration <ARRAY>
- * 1: Unit <OBJECT>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * Can transmit throught the radio <BOOL>
+ * None
  *
  * Example:
- * [[[["driver"], 1], [["cargo", 1], 2]], acre_player] call acre_sys_intercom_fnc_getRxTxCapabilities
+ * [vehicle player] call acre_sys_intercom_fnc_configRxTxCapabilities
  *
  * Public: No
  */
@@ -27,16 +26,16 @@ private _rackRxTxConfig = [];
 
     // Get intercom positions
     if ("crew" in _intercoms) then {
-        _intercomPos = _vehicle getVariable [QGVAR(crewIntercomPositions), []];
+        _intercomPos = +(_vehicle getVariable [QGVAR(crewIntercomPositions), []]);
     };
 
     if ("passenger" in _intercoms) then {
         if (count _intercomPos > 0) then {
             {
                 _intercomPos pushBackUnique _x;
-            } forEach _vehicle getVariable [QGVAR(passengerIntercomPositions), []];
+            } forEach (_vehicle getVariable [QGVAR(passengerIntercomPositions), []]);
         } else {
-            _intercomPos = _vehicle getVariable [QGVAR(passengerIntercomPositions), []];
+            _intercomPos = +(_vehicle getVariable [QGVAR(passengerIntercomPositions), []]);
         };
     };
 

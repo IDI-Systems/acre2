@@ -48,7 +48,7 @@ if (_target isKindOf "CAManBase") then {
                 if ("crew" in _infantryPhoneIntercom) then {
                     private _action = [
                         "acre_take_infantryTelephoneCrew",
-                        format [localize LSTRING(takeInfantryPhone), "(" + localize CREW_STRING] + ")",
+                        format [localize LSTRING(takeInfantryPhone), "(" + localize CREW_STRING + ")"],
                         "",
                         {[_target, _player, 1, CREW_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
                         {true},
@@ -62,7 +62,7 @@ if (_target isKindOf "CAManBase") then {
                 private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), false];
                 if ("passenger" in _infantryPhoneIntercom && !_isCalling) then {
                     private _action = [
-                        "acre_take_infantryTelephoneCrew",
+                        "acre_take_infantryTelephonePassenger",
                         format [localize LSTRING(takeInfantryPhone), "(" + localize LSTRING(passenger) + ")"],
                         "",
                         {[_target, _player, 1, PASSENGER_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
@@ -99,7 +99,7 @@ if (_target isKindOf "CAManBase") then {
                 if (_infantryPhoneNetwork == PASSENGER_INTERCOM) then {
                     private _action = [
                         "acre_switch_infantryTelephoneCrew",
-                        format [localize LSTRING(switchInfantryPhone), "(" + localize CREW_STRING] + ")",
+                        format [localize LSTRING(switchInfantryPhone), "(" + localize CREW_STRING + ")"],
                         "",
                         {[_target, _player, 3, CREW_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
                         {true},
