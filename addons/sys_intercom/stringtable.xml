@@ -125,12 +125,15 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_transOnly">
             <English>Transmit only</English>
+            <Japanese>送信のみ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_recOnly">
             <English>Receive only</English>
+            <Japanese>受信のみ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_recAndTrans">
             <English>Receive and Transmit</English>
+            <Japanese>受信と送信</Japanese>
         </Key>
     </Package>
 </Project>
