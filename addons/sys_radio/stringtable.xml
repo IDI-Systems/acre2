@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_radio">
         <Key ID="STR_ACRE_sys_radio_radioSupplyCrate">
@@ -8,21 +8,27 @@
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiExternal">
             <English>Radio used externally. Only owner may configure.</English>
+            <Japanese>無線機は外部で使用されます。オーナーのみが設定可能です。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiTurnedOut">
             <English>Radio rack not configurable while turned out.</English>
+            <Japanese>無線機ラックは顔を外に出していると設定できません。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiSeat">
             <English>Radio rack not accessible for configuration from this seat.</English>
+            <Japanese>無線機ラックは現在の席から設定できません。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noTransmitExternal">
             <English>Radio used externally. Only external user may transmit.</English>
+            <Japanese>無線機は外部で使用されます。外にいる人のみ送信できます。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noTransmitIntercom">
             <English>Radio rack disabled for transmitting in intercom.</English>
+            <Japanese>無線機ラックはインターコム内の送信を無効化します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_alreadyTransmitting">
             <English>Radio already transmitting.</English>
+             <Japanese>無線機は既に送信中。</Japanese>
         </Key>
     </Package>
 </Project>
