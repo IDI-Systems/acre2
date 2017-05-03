@@ -1,29 +1,37 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
             <English>Mount Radio</English>
+            <Japanese>無線機の積載</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable (Locked)</English>
+            <Japanese>搭載不可 (ロック済)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiExternal">
             <English>Radio used externally. Only owner may configure.</English>
+            <Japanese>無線機は外部で使われています。オーナーのみが設定可能です。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount Radio (%1)</English>
+            <Japanese>無線機を降ろす (%1)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted radio (%1)</English>
+            <Japanese>無線機を乗せる (%1)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop using radio</English>
+            <Japanese>無線機の使用を止める</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use radio</English>
+            <Japanese>無線機を使う</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
+            <Japanese>インベントリに空きが無いため無線機を降ろせません。</Japanese>
         </Key>
     </Package>
 </Project>
