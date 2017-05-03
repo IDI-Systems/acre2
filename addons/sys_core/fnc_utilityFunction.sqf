@@ -15,16 +15,16 @@
  */
 #include "script_component.hpp"
 
-DFUNC(utilityFuncPFH) = {
+FUNC(utilityFuncPFH) = {
     ["setVoiceCurveModel", format["%1,%2,", ACRE_VOICE_CURVE_MODEL, ACRE_VOICE_CURVE_SCALE]] call EFUNC(sys_rpc,callRemoteProcedure);
 };
-ADDPFH(DFUNC(utilityFuncPFH), 5, []);
+ADDPFH(FUNC(utilityFuncPFH), 5, []);
 
 [] call FUNC(aliveMonitor);
 
 
-DFUNC(getPluginVersion) = {
+FUNC(getPluginVersion) = {
     ["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
 };
 ["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
-ADDPFH(DFUNC(getPluginVersion), 15, []);
+ADDPFH(FUNC(getPluginVersion), 15, []);

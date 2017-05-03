@@ -34,7 +34,7 @@ if (_direction == OUT) then {
     private _currentVolumeKnobState = round (_currentVolume * 5);
     private _animationhandler = [count GVAR(backgroundImages) - 1, 0, 3, _currentVolumeKnobState, _currentChannel];
 
-    DFUNC(zoomOut_PFH)=  {
+    FUNC(zoomOut_PFH)=  {
         // Extract all variables
         params ["_paramsarray", "_PFHid"];
         _paramsarray params ["_animationhandler", "_radioId"];
@@ -103,7 +103,7 @@ if (_direction == OUT) then {
     };
 
     private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
-    ADDPFH(DFUNC(zoomOut_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
+    ADDPFH(FUNC(zoomOut_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
 
 };
 
@@ -118,7 +118,7 @@ if (_direction == IN) then {
     private _animationhandler = [0, _currentChannel, _currentVolumeKnobState, _currentChannel]; //[30,currentchannel]
     ["setOnOffState", 0] call GUI_DATA_EVENT;
 
-    DFUNC(zoomIn_PFH) = {
+    FUNC(zoomIn_PFH) = {
         // Extract all variables
         params ["_paramsarray","_PFHid"];
         _paramsarray params ["_animationhandler", "_radioId"];
@@ -182,6 +182,6 @@ if (_direction == IN) then {
     };
 
     private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
-    ADDPFH(DFUNC(zoomIn_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
+    ADDPFH(FUNC(zoomIn_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
 
 };

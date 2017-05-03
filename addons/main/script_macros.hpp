@@ -76,9 +76,6 @@ Antenna Defines
 
 #define LOAD_SOUND(className) [QUOTE(className)] call EFUNC(sys_sounds,loadSound);
 
-#define DFUNC(var1) TRIPLES(ADDON,fnc,var1)
-#define DEFUNC(var1,var2) TRIPLES(DOUBLES(PREFIX,var1),fnc,var2)
-
 #define GET_STATE(id)            ([GVAR(currentRadioId), "getState", id] call EFUNC(sys_data,dataEvent))
 #define SET_STATE(id, val)        ([GVAR(currentRadioId), "setState", [id, val]] call EFUNC(sys_data,dataEvent))
 #define SET_STATE_CRIT(id, val)    ([GVAR(currentRadioId), "setStateCritical", [id, val]] call EFUNC(sys_data,dataEvent))
@@ -115,7 +112,7 @@ Antenna Defines
 
 // Dynamic sub-modules for systems
 #define PREP_FOLDER(folder) [] call compile preprocessFileLineNumbers QPATHTOF(folder\__PREP__.sqf)
-#define PREP_MODULE(module, fncName) DFUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(module\DOUBLES(fnc,fncName).sqf)
+#define PREP_MODULE(module, fncName) FUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(module\DOUBLES(fnc,fncName).sqf)
 #define PREP_STATE(stateFile) [] call compile preprocessFileLineNumbers format [QPATHTOF(states\%1.sqf), #stateFile]
 #define PREP_MENU(menuType) [] call compile preprocessFileLineNumbers QPATHTOF(menus\types\menuType.sqf)
 #define MENU_DEFINITION(folder,menu) [] call compile preprocessFileLineNumbers QPATHTOF(folder\menu.sqf);

@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 GVAR(pipeCode) = "0";
-DFUNC(connectionFnc) = {
+FUNC(connectionFnc) = {
     LOG("~~~~~~~~~~~~~CONNNNNECTION FUNNNNNNCTION CALLED!!!!!!!!!!!!!!!!!");
     if (GVAR(runServer)) then {
         if (GVAR(pipeCode) != "1") then {
@@ -67,7 +67,7 @@ DFUNC(connectionFnc) = {
 if (isMultiplayer) then {
 #endif
     [] call FUNC(connectionFnc);
-    ADDPFH(DFUNC(connectionFnc), 1, []);
+    ADDPFH(FUNC(connectionFnc), 1, []);
     GVAR(serverStarted) = true;
 #ifndef DEBUG_MODE_FULL
 };

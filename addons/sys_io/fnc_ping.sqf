@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-DFUNC(pingFunc) = {
+FUNC(pingFunc) = {
     if (GVAR(serverStarted)) then {
         LOG("ARMA2 TO TS3: PING!");
         // diag_log text format["%1 ACRE: ping!", diag_tickTime];
@@ -44,7 +44,7 @@ DFUNC(pingFunc) = {
 
 GVAR(pongTime) = diag_tickTime;
 [{!isNull player}, {
-    ADDPFH(DFUNC(pingFunc), 2, []);
+    ADDPFH(FUNC(pingFunc), 2, []);
 }] call CBA_fnc_waitUntilAndExecute;
 
 true

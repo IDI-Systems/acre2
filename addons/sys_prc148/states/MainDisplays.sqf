@@ -17,7 +17,7 @@
 
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
-DFUNC(DefaultDisplay_Render) = {
+FUNC(DefaultDisplay_Render) = {
     params ["_display"];
 
     [_display, ICON_BATTERY, true] call FUNC(showIcon);
@@ -71,11 +71,11 @@ DFUNC(DefaultDisplay_Render) = {
     // [_display, BIG_LINE_1, [11,15]] call FUNC(startFlashText);
 };
 
-DFUNC(DefaultDisplay_ENT) = {
+FUNC(DefaultDisplay_ENT) = {
     [GVAR(currentRadioId), "AlternateDisplay"] call FUNC(changeState);
 };
 
-DFUNC(AlternateDisplay_Render) = {
+FUNC(AlternateDisplay_Render) = {
     params ["_display"];
 
     _group = GET_STATE("groups") select GET_STATE("currentGroup");
@@ -120,10 +120,10 @@ DFUNC(AlternateDisplay_Render) = {
     };
 };
 
-DFUNC(AlternateDisplay_ESC) = {
+FUNC(AlternateDisplay_ESC) = {
     [GVAR(currentRadioId), "DefaultDisplay"] call FUNC(changeState);
 };
 
-DFUNC(AlternateDisplay_ENT) = {
+FUNC(AlternateDisplay_ENT) = {
     [GVAR(currentRadioId), "DefaultDisplay"] call FUNC(changeState);
 };

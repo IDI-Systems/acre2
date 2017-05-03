@@ -21,7 +21,7 @@ if (isNil QGVAR(startDrawing)) then {
         GVAR(mapDisplay) = (findDisplay 12);
         _mapCtrl = (GVAR(mapDisplay) displayCtrl 51);
         _mapCtrl ctrlAddEventHandler ["MouseButtonDown", {call FUNC(onMapClick)}];
-        _mapCtrl ctrlAddEventHandler ["Draw", {call DFUNC(drawSignalSamples)}];
+        _mapCtrl ctrlAddEventHandler ["Draw", {call FUNC(drawSignalSamples)}];
     };
     GVAR(startDrawing) = true;
     [{_this call FUNC(drawSignalMaps)}, 0, []] call cba_fnc_addPerFrameHandler;

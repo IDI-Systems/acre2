@@ -16,7 +16,7 @@
  */
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
-DFUNC(ProgrammingDisplay_Render) = {
+FUNC(ProgrammingDisplay_Render) = {
     params ["_display"];
 
     GVAR(currentMenu) =
@@ -35,6 +35,6 @@ DFUNC(ProgrammingDisplay_Render) = {
     [_display, GVAR(currentMenu)] call FUNC(showMenu);
 };
 
-DFUNC(ProgrammingDisplay_ESC) = {
+FUNC(ProgrammingDisplay_ESC) = {
     [GVAR(currentRadioId), "DefaultDisplay"] call FUNC(changeState);
 };

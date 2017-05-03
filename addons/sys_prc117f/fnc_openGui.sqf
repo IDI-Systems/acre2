@@ -36,10 +36,10 @@ if (_onState >= 1) then {
     [GVAR(LOADING)] call FUNC(changeMenu);
 };
 
-//[ICON_LOADING, true] call DFUNC(toggleIcon);
-//[ICON_LOGO, true] call DFUNC(toggleIcon);
-//[ICON_BATTERY, true] call DFUNC(toggleIcon);
-//[ICON_TRANSMIT, true] call DFUNC(toggleIcon);
+//[ICON_LOADING, true] call FUNC(toggleIcon);
+//[ICON_LOGO, true] call FUNC(toggleIcon);
+//[ICON_BATTERY, true] call FUNC(toggleIcon);
+//[ICON_TRANSMIT, true] call FUNC(toggleIcon);
 
 //[ROW_LARGE_1, "ABCDEFGHIJKLMNOPQRSTUVWXYZ1", ALIGN_LEFT] call FUNC(setRowText);
 //[ROW_LARGE_5, "YXWVUTSRQPONMLKJIHGFEDCBA01", ALIGN_LEFT] call FUNC(setRowText);

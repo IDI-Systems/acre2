@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-DFUNC(onButtonPress_Selection) = {
+FUNC(onButtonPress_Selection) = {
     TRACE_1("onButtonPress_Selection", _this);
     params ["_menu", "_event"];
 
@@ -74,7 +74,7 @@ DFUNC(onButtonPress_Selection) = {
         };
     };
 };
-DFUNC(renderMenu_Selection) = {
+FUNC(renderMenu_Selection) = {
     params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 

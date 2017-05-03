@@ -16,14 +16,14 @@
  */
 #include "script_component.hpp"
 
-DFUNC(onButtonPress_ActionSeries) = {
+FUNC(onButtonPress_ActionSeries) = {
     TRACE_1("onButtonPress_List", _this);
     params ["_menu", "_event"];
 
     WARNING("AN/PRC-152 Menu Error!, This should not have been reached!");
 };
 
-DFUNC(renderMenu_ActionSeries) = {
+FUNC(renderMenu_ActionSeries) = {
     TRACE_1("renderMenu_ActionSeries", _this);
     params ["_menu"];
 

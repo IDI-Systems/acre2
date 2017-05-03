@@ -25,7 +25,7 @@ GVAR(_fullListTime) = true;
 
 GVAR(oldPlayerIdList) = [];
 
-DFUNC(mutingPFHLoop) = {
+FUNC(mutingPFHLoop) = {
     if (diag_tickTime > GVAR(_waitFullSend)) then {
         GVAR(_fullListTime) = true;
     };

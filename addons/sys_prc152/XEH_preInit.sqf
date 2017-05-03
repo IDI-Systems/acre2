@@ -15,10 +15,10 @@ PREP_FOLDER(farris_menus); // Directly calls after compilation
 
 GVAR(currentRadioId) = -1;
 
-DFUNC(onKnobMouseEnter) = {
+FUNC(onKnobMouseEnter) = {
 
 };
-DFUNC(onKnobMouseExit) = {
+FUNC(onKnobMouseExit) = {
 
 };
 

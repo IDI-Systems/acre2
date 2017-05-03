@@ -17,7 +17,7 @@
 
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
-DFUNC(PostScreen_Render) = {
+FUNC(PostScreen_Render) = {
     params ["_display"];
 
     [_display, BIG_LINE_3, "TESTING", CENTER_ALIGN] call FUNC(displayLine);
@@ -26,7 +26,7 @@ DFUNC(PostScreen_Render) = {
 
 };
 
-DFUNC(PostScreen_Animation) = {
+FUNC(PostScreen_Animation) = {
     params ["_args","_id"];
 
     _step = SCRATCH_GET_DEF(GVAR(currentRadioId), "post_animation_step", 0);
@@ -52,7 +52,7 @@ DFUNC(PostScreen_Animation) = {
     };
 };
 
-DFUNC(PostScreen_End) = {
+FUNC(PostScreen_End) = {
     params ["_radioId"];
 
     _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
@@ -62,13 +62,13 @@ DFUNC(PostScreen_End) = {
     };
 };
 
-DFUNC(LogoScreen_Render) = {
+FUNC(LogoScreen_Render) = {
     [_display, BIG_LINE_2, "IDI-SYSTEMS", CENTER_ALIGN] call FUNC(displayLine);
     [_display, BIG_LINE_4, QUOTE(VERSION_PLUGIN), CENTER_ALIGN] call FUNC(displayLine);
     [FUNC(LogoScreen_Animation), []] call FUNC(addAnimation);
 };
 
-DFUNC(LogoScreen_Animation) = {
+FUNC(LogoScreen_Animation) = {
     params ["_args","_id"];
 
     _step = SCRATCH_GET_DEF(GVAR(currentRadioId), "logo_animation_step", 0);
@@ -112,7 +112,7 @@ DFUNC(LogoScreen_Animation) = {
 };
 
 
-DFUNC(LogoScreen_End) = {
+FUNC(LogoScreen_End) = {
     params ["_radioId"];
 
     _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
