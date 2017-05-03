@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_intercom_iIntercomAction
+ * [cursorTarget] call acre_sys_intercom_intercomAction
  *
  * Public: No
  */
@@ -20,7 +20,7 @@ params ["_target"];
 private _type = typeOf _target;
 
 // Exit if object has no intercom
-if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") != 1 && getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom") != 1) exitWith {};
+if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") != 1 && {getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom") != 1}) exitWith {};
 
 // Exit if class already initialized
 if (_type in GVAR(initializedIntercom)) exitWith {};

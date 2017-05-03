@@ -8,10 +8,10 @@
  *
  * Return Value:
  * Intercom connection status <NUMBER>
- *  0: no intercom
- *  1: crew intercom
- *  2: passenger intercom
- *  3: crew and passenger intercoms
+ *  - 0: no intercom
+ *  - 1: crew intercom
+ *  - 2: passenger intercom
+ *  - 3: crew and passenger intercoms
  *
  * Example:
  * [vehicle acre_player, acre_player] call acre_sys_intercom_getIntercomConnectionStatus

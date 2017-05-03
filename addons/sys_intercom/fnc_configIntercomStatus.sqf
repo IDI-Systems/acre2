@@ -4,8 +4,6 @@
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
- * 1: Positions with intercom <ARRAY>
- * 2: Intercom <STRING><OPTIONAL>
  *
  * Return Value:
  * None
