@@ -38,7 +38,9 @@ if (_vehicle != acre_player) then {
         _unitInfantryPhone = acre_player;
     } else {
         // The player is inside the vehicle. Check if a unit is using the intercom externally (infantry phone)
-        _unitInfantryPhone = (_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]]) select 0;
+        private _infantryPhone = _vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]];
+        _unitInfantryPhone = _infantryPhone select 0;
+        _infantryPhoneNetwork = _infantryPhone select 1;
     };
 
     // The infantry phone can only be used externally
@@ -48,19 +50,13 @@ if (_vehicle != acre_player) then {
         private _unitInfantryPhonePosition = ASLToAGL (getPosASL _unitInfantryPhone);
         TRACE_4("Infantry Phone PFH Check",_infantryPhonePosition,_unitInfantryPhonePosition,_infantryPhoneMaxDistance,_unitInfantryPhone distance _infantryPhonePosition);
         // Add an extra meter leeway due to 3d position check height differences and movement
-        if (_unitInfantryPhonePosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || (vehicle _unitInfantryPhone == _vehicle) || !(alive _unitInfantryPhone) || captive _unitInfantryPhone) then {
-            if (_infantryPhoneNetwork == CREWW_INTERCOM) then {
-                [_vehicle, acre_player, 0] call FUNC(updateCrewIntercomStatus);
-                ACRE_PLAYER_CREW_INTERCOM = [];
-            };
-
-            if (_infantryPhoneNetwork == PASSENGER_INTERCOM) then {
-                [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
-                ACRE_PLAYER_PASSENGER_INTERCOM = [];
-            };
-
-            _infantryPhoneNetwork = NO_INTERCOM;
+        if (_unitInfantryPhonePosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || {vehicle _unitInfantryPhone == _vehicle} || {!alive _unitInfantryPhone} || {captive _unitInfantryPhone}) then {
             [_vehicle, _unitInfantryPhone, 0, _infantryPhoneNetwork] call FUNC(updateInfantryPhoneStatus);
+
+            // Reset in case the infantry phone user is now inside the vehicle
+            _infantryPhoneNetwork = NO_INTERCOM;
+            _usingInfantryPhone = false;
+            _unitInfantryPhone = objNull;
         };
     };
 
@@ -125,10 +121,9 @@ if (_vehicle != acre_player) then {
         };
     };
 
-
     if (acre_player in _unitsCrewIntercom) then {
         // Check if the unit is in a valid intercom position
-        if ([_vehicle, acre_player, CREW_INTERCOM] call FUNC(isIntercomAvailable) || (_infantryPhoneNetwork == CREW_INTERCOM)) then {
+        if ([_vehicle, acre_player, CREW_INTERCOM] call FUNC(isIntercomAvailable) || (_unitInfantryPhone == acre_player && _infantryPhoneNetwork == CREW_INTERCOM)) then {
             ACRE_PLAYER_CREW_INTERCOM = _unitsCrewIntercom;
         } else {
             if (acre_player == _unitInfantryPhone) then {
@@ -138,7 +133,7 @@ if (_vehicle != acre_player) then {
             ACRE_PLAYER_CREW_INTERCOM = [];
         };
     } else {
-        if (_infantryPhoneNetwork == CREW_INTERCOM) then {
+        if (_unitInfantryPhone == acre_player && _infantryPhoneNetwork == CREW_INTERCOM) then {
             _unitsCrewIntercom pushBackUnique _unitInfantryPhone;
             ACRE_PLAYER_CREW_INTERCOM = _unitsCrewIntercom;
             _vehicle setVariable [QGVAR(unitsCrewIntercom), _unitsCrewIntercom, true];
@@ -149,47 +144,17 @@ if (_vehicle != acre_player) then {
 
     if (acre_player in _unitsPassengerIntercom) then {
         // Check if the unit is in a valid intercom position
-        if ([_vehicle, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable) || (_infantryPhoneNetwork == PASSENGER_INTERCOM)) then {
+        if ([_vehicle, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable) || (_unitInfantryPhone == acre_player && _infantryPhoneNetwork == PASSENGER_INTERCOM)) then {
             ACRE_PLAYER_PASSENGER_INTERCOM = _unitsPassengerIntercom;
-/*
-            // These actions are not for units with infantry phones
-            if (acre_player != _unitInfantryPhone) then {
-                // Crew members do not use passenger intercom slots. Activated if a unit was in a passenger seat, and moved to a "crew" position.
-                private _availableConnections = _vehicle getVariable [QGVAR(availablePassIntercomConn), 0];
-                if ((acre_player in _unitsCrewIntercom) && (acre_player getVariable [QGVAR(usesPassengerIntercomConnection), false])) then {
-                    acre_player setVariable [QGVAR(usesPassengerIntercomConnection), false, true];
-                    _vehicle setVariable [QGVAR(availablePassIntercomConn), _availableConnections + 1, true];
-                };
-
-                // Unit moved from a crew seat to a passenger seat and must use available connections
-                if (!(acre_player in _unitsCrewIntercom) && !(acre_player getVariable [QGVAR(usesPassengerIntercomConnection), false])) then {
-                    if (_availableConnections > 0) then {
-                        _vehicle setVariable [QGVAR(availablePassIntercomConn), _availableConnections - 1, true];
-                        acre_player setVariable [QGVAR(usesPassengerIntercomConnection), true, true];
-                    } else {
-                        // Remove unit from intercom
-                        [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
-                        ACRE_PLAYER_PASSENGER_INTERCOM = [];
-
-                        // Update intercom connection status
-                        [_vehicle, acre_player] call FUNC(setIntercomConnectionStatus);
-                    };
-                };
-            };*/
         } else {
             if (acre_player == _unitInfantryPhone) then {
                 [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
             };
-            // Position does not have passenger intercom. Removing unit from the list.
-            //[_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
-
-            // Update intercom connection status
-            //[_vehicle, acre_player] call FUNC(setIntercomConnectionStatus);
 
             ACRE_PLAYER_PASSENGER_INTERCOM = [];
         };
     } else {
-        if (_infantryPhoneNetwork == PASSENGER_INTERCOM) then {
+        if (_unitInfantryPhone == acre_player && _infantryPhoneNetwork == PASSENGER_INTERCOM) then {
             _unitsPassengerIntercom pushBackUnique _unitInfantryPhone;
             ACRE_PLAYER_PASSENGER_INTERCOM = _unitsPassengerIntercom;
             _vehicle setVariable [QGVAR(unitsPassengerIntercom), _unitsPassengerIntercom, true];

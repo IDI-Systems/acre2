@@ -36,7 +36,8 @@ if (_action == 0) then {
     _vehicle setVariable [QGVAR(unitsPassengerIntercom), _unitsPassengerIntercom, true];
     [localize LSTRING(passengerIntercomDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 
-    if (vehicle _unit != _unit) then {
+    // Do not update for infantry phone
+    if (_unit != ((_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]]) select 0)) then {
         // Update intercom connection status
         [_vehicle, _unit] call FUNC(setIntercomConnectionStatus);
     };
@@ -51,11 +52,11 @@ if (_action == 0) then {
             _unit setVariable [QGVAR(usesPassengerIntercomConnection), true, true];
         };
 
-        // Do not update for infantry phone
         _unit setVariable [QGVAR(vehiclePassengerIntercom), _vehicle, true];
         _vehicle setVariable [QGVAR(unitsPassengerIntercom), _unitsPassengerIntercom, true];
         [localize LSTRING(passengerIntercomConnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 
+        // Do not update for infantry phone
         if (_unit != ((_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]]) select 0)) then {
             // Update intercom connection status
             [_vehicle, acre_player] call FUNC(setIntercomConnectionStatus);
