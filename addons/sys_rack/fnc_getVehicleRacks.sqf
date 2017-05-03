@@ -17,12 +17,4 @@
 
 params ["_vehicle"];
 
-private _racks = [];
-
-{
-    if (_x isKindOf "ACRE_BaseRack") then {
-        _racks pushBack _x;
-    };
-} forEach (_vehicle getVariable [QGVAR(vehicleRacks), []]);
-
-_racks;
+_vehicle getVariable [QGVAR(vehicleRacks), []]

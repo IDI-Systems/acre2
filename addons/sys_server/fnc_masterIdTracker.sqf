@@ -137,7 +137,7 @@ if (GVAR(doFullSearch)) then {
                 };
             };
         };
-    } forEach ((ATLToASL [-1000,-1000,0]) nearObjects ["ACRE_baseRack", 1]);
+    } forEach ((ATLToASL [-1000,-1000,-1000]) nearObjects ["ACRE_baseRack", 1]);
 
     {
         private _key = _x;
