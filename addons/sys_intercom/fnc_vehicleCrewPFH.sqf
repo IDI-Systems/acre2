@@ -38,16 +38,11 @@ if (_vehicle != acre_player) then {
         _unitInfantryPhone = acre_player;
     } else {
         // The player is inside the vehicle. Check if a unit is using the intercom externally (infantry phone)
-        private _infantryPhone = _vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]];
-        _unitInfantryPhone = _infantryPhone select 0;
-        if (!isNull _unitInfantryPhone) then {
-            _infantryPhoneNetwork = _infantryPhone select 1;
-            _usingInfantryPhone = true;
-        };
+        _unitInfantryPhone = (_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]]) select 0;
     };
 
     // The infantry phone can only be used externally
-    if (_infantryPhoneNetwork > 0) then {
+    if (_usingInfantryPhone || {!_usingInfantryPhone && _unitInfantryPhone == acre_player}) then {
         (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
         _infantryPhonePosition = _vehicle modelToWorld _infantryPhonePosition;
         private _unitInfantryPhonePosition = ASLToAGL (getPosASL _unitInfantryPhone);
@@ -67,9 +62,9 @@ if (_vehicle != acre_player) then {
     if (acre_player in _unitsCrewIntercom) then {
         // Check if the unit is in a valid intercom position
         if ([_vehicle, acre_player, CREW_INTERCOM] call FUNC(isIntercomAvailable) || (_infantryPhoneNetwork == CREW_INTERCOM)) then {
-            ACRE_PLAYER_VEHICLE_CREW = _unitsCrewIntercom;
+            ACRE_PLAYER_CREW_INTERCOM = _unitsCrewIntercom;
         } else {
-            ACRE_PLAYER_VEHICLE_CREW = [];
+            ACRE_PLAYER_CREW_INTERCOM = [];
             _unitsCrewIntercom = _unitsCrewIntercom - [acre_player];
             _vehicle setVariable [QGVAR(unitsCrewIntercom), _unitsCrewIntercom, true];
             [localize LSTRING(crewIntercomDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
@@ -79,7 +74,7 @@ if (_vehicle != acre_player) then {
             // Add unit to intercom
             _unitsCrewIntercom pushBackUnique acre_player;
             _vehicle setVariable [QGVAR(unitsCrewIntercom), _unitsCrewIntercom, true];
-            ACRE_PLAYER_VEHICLE_CREW = _unitsCrewIntercom;
+            ACRE_PLAYER_CREW_INTERCOM = _unitsCrewIntercom;
             acre_player setVariable [QGVAR(vehicleCrewIntercom), _vehicle, true];
 
             if (acre_player != _unitInfantryPhone) then {
@@ -91,7 +86,7 @@ if (_vehicle != acre_player) then {
                 };
             };
         } else {
-            ACRE_PLAYER_VEHICLE_CREW = [];
+            ACRE_PLAYER_CREW_INTERCOM = [];
             if (!isNull (acre_player getVariable [QGVAR(vehicleCrewIntercom), objNull])) then {
                 // Player switchet to a non intercom position
                 acre_player setVariable [QGVAR(vehicleCrewIntercom), objNull, true];
@@ -139,7 +134,6 @@ if (_vehicle != acre_player) then {
             ACRE_PLAYER_PASSENGER_INTERCOM = [];
         };
     };
-
 } else {
     private _vehicleCrewIntercom = acre_player getVariable [QGVAR(vehicleCrewIntercom), objNull];
     if (!isNull _vehicleCrewIntercom) then {
@@ -150,7 +144,7 @@ if (_vehicle != acre_player) then {
         acre_player setVariable [QGVAR(vehicleCrewIntercom), objNull, true];
         [localize LSTRING(crewIntercomDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
-    ACRE_PLAYER_VEHICLE_CREW = [];
+    ACRE_PLAYER_CREW_INTERCOM = [];
 
     private _vehiclePassengerIntercom = acre_player getVariable [QGVAR(vehiclePassengerIntercom), objNull];
     if (!isNull _vehiclePassengerIntercom) then {

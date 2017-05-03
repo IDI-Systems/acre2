@@ -48,7 +48,7 @@ private _searchFunction = {
                             private _objectType = typeOf _componentObject;
                             private _antennaPos = getPosASL _componentObject;
                             if (!(_objectType isKindOf "CAManBase")) then {
-                                _antennaPos = _antennaPos vectorAdd [0,0,(boundingCenter _componentObject) select 2];
+                                _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
                             };
                             private _antennaDir = vectorDir _componentObject;
                             private _antennaDirUp = vectorUp _componentObject;

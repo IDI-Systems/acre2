@@ -29,6 +29,11 @@ _speakingId = parseNumber _speakingId;
         private _radioId = _unit getVariable [QGVAR(currentSpeakingRadio), ""];
         //if (ACRE_BROADCASTING_RADIOID != _radioId) then {
             if (_radioId != "") then {
+                // Handle rack radios that are simultaneously in use.
+                if ((toLower _radioId) in ACRE_BLOCKED_TRANSMITTING_RADIOS) then {
+                    ACRE_BLOCKED_TRANSMITTING_RADIOS deleteAt (ACRE_BLOCKED_TRANSMITTING_RADIOS find (toLower _radioId));
+                };
+
                 if (_unit in GVAR(keyedMicRadios)) then {
                     GVAR(speaking_cache_valid) = false;
                     // clear out their signal caches from sys_signal call backs.

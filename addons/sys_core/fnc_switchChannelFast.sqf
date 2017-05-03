@@ -28,11 +28,12 @@ if (_isManpack == 0) then {
     private _channel = [_radioId] call EFUNC(api,getRadioChannel);
 
     switch (_radioType) do {
-        case ("ACRE_PRC343"): {
+        case "ACRE_PRC343";
+        case "ACRE_PRC148": {
             private _currentBlock = floor((_channel-1) / 16);
             _channel = ((_channel + _dir) max (_currentBlock*16 + 1)) min ((_currentBlock + 1)*16);
         };
-        case ("ACRE_PRC152"): {
+        case "ACRE_PRC152": {
             _channel = (_channel + _dir) min 5;
         };
         default {

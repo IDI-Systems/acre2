@@ -94,6 +94,11 @@ private _result = false;
         _unit setVariable [QGVAR(lastSpeakingEventTime), diag_tickTime, false];
         if (_onRadio == 1) then {
             if ([_radioId] call EFUNC(sys_radio,radioExists)) then {
+                // Handle rack radios that are simultaneously in use.
+                if ((toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS || (toLower _radioId) in ACRE_HEARABLE_RACK_RADIOS) then {
+                    ACRE_BLOCKED_TRANSMITTING_RADIOS pushBackUnique (toLower _radioId);
+                };
+
                 GVAR(speakers) pushBack _unit;
                 private _val = [_netId, _speakingId];
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);

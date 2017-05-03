@@ -18,7 +18,14 @@
 
 params ["_radioId", "_unit"];
 
+private _isAvailable = true;
+
 ([_radioId] call FUNC(getExternalUseStatus)) params ["_isShared", "_isUsedExternally", "_owner", "_user"];
 
 // Do not allow an external user to return the headset if the radio is in use
-!(_isUsedExternally && (_unit != _user))
+if (_isUsedExternally && (_unit != _user)) exitWith {false};
+
+// Prevent from taking a radio that can be also heard through the intercom
+if ([_radioId, _unit] call EFUNC(sys_rack,isRadioHearable)) exitWith {false};
+
+_isAvailable

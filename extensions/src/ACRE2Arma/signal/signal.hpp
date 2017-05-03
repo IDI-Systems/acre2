@@ -103,9 +103,9 @@ namespace acre {
                     result = "[]";
                     return true;
                 }
-                
+
                 int logging = args_.as_int(19);
-                bool omnidirectional = args_.as_int(20) == 1;
+                bool omnidirectional = args_.as_int(20);
 
                 std::string id = args_.as_string(0);
                 glm::vec3 tx_pos = glm::vec3(args_.as_float(1), args_.as_float(2), args_.as_float(3));
@@ -133,7 +133,7 @@ namespace acre {
                 float f = args_.as_float(15);
                 float power = args_.as_float(16);
                 float scale = args_.as_float(17);
-                
+
                 acre::signal::result signal_result;
 
                 _signal_processor.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
@@ -146,7 +146,7 @@ namespace acre {
                 ss.precision(16);
                 ss << "[\"" << id << "\"," << std::fixed << signal_result.result_dbm << "," << std::fixed << signal_result.result_v << ",\"" << filename.str() << "\"]";
                 result = ss.str();
-#else    
+#else
                 std::stringstream ss;
                 ss.precision(16);
                 ss << "[\"" << id << "\"," << std::fixed << signal_result.result_dbm << "," << std::fixed << signal_result.result_v << "]";
@@ -157,7 +157,7 @@ namespace acre {
                 }
 
 #endif
-#ifdef DEBUG_OUTPUT            
+#ifdef DEBUG_OUTPUT
                 ss << ",[" << tx_pos.x << "," << tx_pos.y << "," << tx_pos.z << "],[" << rx_pos.x << "," << rx_pos.y << "," << rx_pos.z << "],[";
                 for (acre::signal::reflection reflection : signal_result.reflect_points) {
                     ss << "[" << "[" << reflection.point.x << "," << reflection.point.y << "," << reflection.point.z << "],"
@@ -168,7 +168,7 @@ namespace acre {
                 ss << "[]]";
                 demo_file << "[" << ss.str() << "]";
                 demo_file.close();
-#endif        
+#endif
                 return true;
             }
 
@@ -233,12 +233,13 @@ namespace acre {
                 std::string tx_antenna_name = args_.as_string();
                 std::string rx_antenna_name = args_.as_string();
 
-                
+
                 float f = args_.as_float();
                 float power = args_.as_float();
 
                 float lower_sensitivity = args_.as_float();
                 float upper_sensitivity = args_.as_float();
+                bool omnidirectional = args_.as_int();
 
                 float start_x = start_pos.x;
                 float start_y = start_pos.y;
@@ -260,7 +261,7 @@ namespace acre {
 
                 _total_signal_map_steps = count_x * count_y;
 
-                
+
 
                 acre::signal::antenna_p tx_antenna;
                 acre::signal::antenna_p rx_antenna;
@@ -295,13 +296,13 @@ namespace acre {
                     std::vector<signal_map_result> *result_entry = &result_sets[i];
                     result_entry->resize(y_chunk_size*count_x);
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*i, y_chunk_size, count_x, sample_size,
-                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
+                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
                 }
                 if (y_chunk_remainder) {
                     std::vector<signal_map_result> *result_entry = &result_sets[thread_count];
                     result_entry->resize(y_chunk_size*count_x);
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*thread_count, y_chunk_remainder, count_x, sample_size,
-                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f));
+                        rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
                 }
                 for (size_t c = 0; c < thread_pool.size(); ++c) {
                     thread_pool[c].join();
@@ -329,7 +330,7 @@ namespace acre {
                 state.encoder.auto_convert = false;
                 std::vector<unsigned char> png;
                 unsigned error = lodepng::encode(png, png_data, 4096, 4096, state);
-                
+
                 char path[FILENAME_MAX];
                 _getcwd(path, sizeof(path));
                 std::string output_path = std::string(path);
@@ -355,7 +356,7 @@ namespace acre {
             }
 
             void signal_map_chunk(std::vector<signal_map_result> *results, float start_y, float start_x, uint32_t y_offset, uint32_t length, uint32_t x_size, float sample_size,
-                float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, antenna_p &tx_antenna_, antenna_p &rx_antenna_, float frequency_, float power_, float sinad_
+                float rx_antenna_height, glm::vec3 tx_pos_, glm::vec3 tx_dir_, antenna_p &tx_antenna_, antenna_p &rx_antenna_, float frequency_, float power_, float sinad_, bool omnidirectional_
                 ) {
                 uint32_t y_val = 0;
                 for (uint32_t y = y_offset; y < y_offset+length; ++y) {
@@ -370,7 +371,7 @@ namespace acre {
                         signal_map_result result;
                         result.rx_pos = glm::vec3(rx_x_pos, rx_y_pos, z);
                         result.tx_pos = glm::vec3(tx_pos_);
-                        _signal_processor.process(&result.result, tx_pos_, tx_dir_, result.rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 1.0f, false);
+                        _signal_processor.process(&result.result, tx_pos_, tx_dir_, result.rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 1.0f, omnidirectional_);
                         results->at(y_val * x_size + x) = result;
                     }
                     y_val++;

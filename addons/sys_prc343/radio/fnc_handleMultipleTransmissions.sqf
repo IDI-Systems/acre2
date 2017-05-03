@@ -16,13 +16,15 @@
  * List of usable transmissions <ARRAY>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "handleMultipleTransmissions", ["ACRE_PRC343_ID_2", "ACRE_PRC_343_ID_3"], [], false] call acre_sys_prc343_fnc_handleMultipleTransmissions
+ * ["ACRE_PRC343_ID_1", "handleMultipleTransmissions", ["ACRE_PRC343_ID_2", "ACRE_PRC343_ID_3"], [], false] call acre_sys_prc343_fnc_handleMultipleTransmissions
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 params ["_radioId", "", "_radios", "", ""];
+
+if (!([_radioId] call EFUNC(sys_radio,canUnitReceive))) exitWith { [] };
 
 if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !EGVAR(sys_core,fullDuplex)) exitWith { [] };
 private _beeped = SCRATCH_GET(_radioId, "hasBeeped");

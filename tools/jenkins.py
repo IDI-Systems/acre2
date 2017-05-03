@@ -33,12 +33,16 @@ def get_project_version(version_file):
 
     return [majorText, minorText, patchText, buildText]
 
-def do_action(args, error_msg, error_handler=None, error_args=None):
+def do_action(args, error_msg, error_handler=None, error_args=None, ignore_failure=False):
     if(subprocess.call(args) != 0):
         print("Error: {}".format(error_msg))
         if(error_handler != None):
             error_handler(error_args)
-        sys.exit(1)
+        if(ignore_failure != False):
+            sys.exit(1)
+        else:
+            return False
+    return True
 
 def create_pull_request(args):
     repository = args[0]
@@ -89,9 +93,10 @@ do_action(["git", "commit", "-am", commit_message], "Failed to commit changes ba
 do_action(["git", "push", "origin", current_branch], "Failed to push changes back into branch 'origin/{}'".format(current_branch))
 do_action(["git", "checkout", target_branch], "Failed to checkout target branch '{}'".format(target_branch))
 do_action(["git", "pull", "origin", target_branch], "Failed to update target branch from 'origin/{}'".format(target_branch))
-do_action(["git", "merge", current_branch], "Failed to merge '{}' into '{}', conflict exists.".format(current_branch, target_branch), create_pull_request, [repository, current_branch, target_branch, github_token])
-do_action(["git", "diff"], "Diff failed to resolve '{}' and '{}' cleanly, conflict exists.".format(current_branch, target_branch))
-do_action(["git", "push", "origin", target_branch], "Failed to push changes back into branch 'origin/{}'".format(target_branch))
+status_ok = do_action(["git", "merge", current_branch], "Failed to merge '{}' into '{}', conflict exists.".format(current_branch, target_branch), create_pull_request, [repository, current_branch, target_branch, github_token], True)
+if(status_ok == True):
+    do_action(["git", "diff"], "Diff failed to resolve '{}' and '{}' cleanly, conflict exists.".format(current_branch, target_branch))
+    do_action(["git", "push", "origin", target_branch], "Failed to push changes back into branch 'origin/{}'".format(target_branch))
 do_action(["python", "-u", "publish.py", "..\\manifest.json", "-r", release_target], "Publish failed.")
 
 sys.exit(0)

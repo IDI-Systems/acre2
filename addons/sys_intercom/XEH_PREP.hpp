@@ -1,7 +1,6 @@
 PREP(intercomConfig);
 PREP(isIntercomAvailable);
 PREP(noApiFunction);
-PREP(processConfigArray);
 PREP(vehicleCrewPFH);
 
 // Crew intercom
@@ -23,3 +22,8 @@ PREP(passengerIntercomChildrenActions);
 PREP(passengerIntercomConfig);
 PREP(isInPassengerIntercom);
 PREP(updatePassengerIntercomStatus);
+
+// Racks integration
+PREP(configRxTxCapabilities);
+PREP(getRxTxCapabilities);
+PREP(setRxTxCapabilities);
