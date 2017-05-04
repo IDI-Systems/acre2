@@ -27,7 +27,7 @@ if (!([_radioId] call FUNC(isExternalRadioUsed))) then {
     [_radioId, "setState", ["isUsedExternally", [true, _endUser]]] call EFUNC(sys_data,dataEvent);
 
     // Manpack radios can also be used by the owner if they are not rack radios
-    if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) != "")) then {
+    if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) == "")) then {
         [
             [_owner, _displayName, _radioId],
             {

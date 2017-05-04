@@ -38,13 +38,13 @@ if (_target == _owner) then {
     [_radioId, "setState", ["isUsedExternally", [false, objNull]]] call EFUNC(sys_data,dataEvent);
 
     // Manpack radios can also be used by the owner if they are not rack radios
-    if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) != "")) then {
+    if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) == "")) then {
         [
             [_owner, _displayName, _radioId],
             {
                 params ["_owner", "_displayName", "_radioId"];
                 ACRE_EXTERNALLY_USED_MANPACK_RADIOS = ACRE_EXTERNALLY_USED_MANPACK_RADIOS - [_radioId];
-                [format [localize LSTRING(hintReturnOwner), name _owner, _displayName]] call EFUNC(sys_core,displayNotification);
+                [format [localize LSTRING(hintReturnOwner), name ([_radioId] call FUNC(getExternalRadioUser)), _displayName]] call EFUNC(sys_core,displayNotification);
             }
         ] remoteExecCall ["bis_fnc_call", _owner];
     };
