@@ -32,7 +32,6 @@ if (!([_radioId] call FUNC(isExternalRadioUsed))) then {
             [_owner, _displayName, _radioId],
             {
                 params ["_endUser", "_displayName", "_radioId"];
-                systemChat format ["RadioID %1", _radioId];
                 if (ACRE_ACTIVE_RADIO isEqualTo _radioId) then {    // If it is the active radio.
                     // Otherwise cleanup
                     if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
@@ -47,8 +46,25 @@ if (!([_radioId] call FUNC(isExternalRadioUsed))) then {
             }
         ] remoteExecCall ["bis_fnc_call", _owner];
     } else {
-        // Show a hint to the actual owner that the radio was given to another player
-        [format [localize LSTRING(hintTakeOwner), _endUser, _displayName]] remoteExecCall [QEFUNC(sys_core,displayNotification), _owner];
+        // Personal radios can only be opened. There are no RX/TX capabilities.
+        [
+            [_owner, _displayName, _radioId],
+            {
+                params ["_endUser", "_displayName", "_radioId"];
+                systemChat format ["RadioID %1", _radioId];
+                if (ACRE_ACTIVE_RADIO isEqualTo _radioId) then {    // If it is the active radio.
+                    // Otherwise cleanup
+                    if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
+                        // simulate a key up event to end the current transmission
+                        [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
+                    };
+                    [1] call EFUNC(sys_list,cycleRadios); // Change active radio
+                };
+
+                [format [localize LSTRING(hintTakeOwner), _endUser, _displayName]] call EFUNC(sys_core,displayNotification);
+                ACRE_EXTERNALLY_USED_PERSONAL_RADIOS pushBackUnique _radioId;
+            }
+        ] remoteExecCall ["bis_fnc_call", _owner];
     };
 };
 

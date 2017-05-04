@@ -47,6 +47,15 @@ if (_target == _owner) then {
                 [format [localize LSTRING(hintReturnOwner), name ([_radioId] call FUNC(getExternalRadioUser)), _displayName]] call EFUNC(sys_core,displayNotification);
             }
         ] remoteExecCall ["bis_fnc_call", _owner];
+    } else {
+        [
+            [_owner, _displayName, _radioId],
+            {
+                params ["_owner", "_displayName", "_radioId"];
+                ACRE_EXTERNALLY_USED_PERSONAL_RADIOS = ACRE_EXTERNALLY_USED_PERSONAL_RADIOS - [_radioId];
+                [format [localize LSTRING(hintReturnOwner), name ([_radioId] call FUNC(getExternalRadioUser)), _displayName]] call EFUNC(sys_core,displayNotification);
+            }
+        ] remoteExecCall ["bis_fnc_call", _owner];
     };
 } else {
     // Show a hint to the actual owner that the radio was given to another player

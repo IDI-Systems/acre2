@@ -34,4 +34,8 @@ if (_vehicle != acre_player) then {
     };
 };
 
+if (_canReceive && {_radioId in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS}) then {
+    _canReceive = false;
+};
+
 _canReceive

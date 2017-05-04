@@ -27,6 +27,11 @@ if (!ACRE_IS_SPECTATOR) then {
         _radioList pushBackUnique _x;
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
 
+    // Radios in the inventory of the player that are being used externally but cannot be used by the player (receive/transmit). They can still be configured, e.g. manpack radios
+    {
+        _radioList pushBackUnique _x;
+    } forEach ACRE_EXTERNALLY_USED_PERSONAL_RADIOS;
+
     // Radios in the inventory of the player that are being used externally but can still be used by the player, e.g. manpack radios
     {
         _radioList pushBackUnique _x;
