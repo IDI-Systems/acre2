@@ -65,59 +65,68 @@ if (_vehicle != acre_player) then {
 
     if (acre_player != _unitInfantryPhone) then {
         private _connectionStatus = [_vehicle, acre_player] call FUNC(getIntercomConnectionStatus);
-        private _changes = false;
+        private _changesCrew = false;
+        private _changesPassenger = false;
 
-        if (_connectionStatus == NO_INTERCOM) then {
-            if (acre_player in _unitsCrewIntercom) then {
-                [_vehicle, acre_player, 0] call FUNC(updateCrewIntercomStatus);
-                _changes = true;
+        switch (_connectionStatus) do {
+            case NO_INTERCOM: {
+                if (acre_player in _unitsCrewIntercom) then {
+                    [_vehicle, acre_player, 0] call FUNC(updateCrewIntercomStatus);
+                    _changesCrew = true;
+                };
+
+                if (acre_player in _unitsPassengerIntercom) then {
+                    [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
+                    _changesPassenger = true;
+                };
             };
+            case CREW_INTERCOM: {
+                if (!(acre_player in _unitsCrewIntercom)) then {
+                    [_vehicle, acre_player, 1] call FUNC(updateCrewIntercomStatus);
+                    _changesCrew = true;
+                };
 
-            if (acre_player in _unitsPassengerIntercom) then {
-                [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
-                _changes = true;
+                if (acre_player in _unitsPassengerIntercom) then {
+                    [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
+                    _changesPassenger = true;
+                };
             };
-        };
+            case PASSENGER_INTERCOM: {
+                if (acre_player in _unitsCrewIntercom) then {
+                    [_vehicle, acre_player, 0] call FUNC(updateCrewIntercomStatus);
+                    _changesCrew = true;
+                };
 
-        if (_connectionStatus == CREW_INTERCOM) then {
-            if (!(acre_player in _unitsCrewIntercom)) then {
-                [_vehicle, acre_player, 1] call FUNC(updateCrewIntercomStatus);
-                _changes = true;
+                if (!(acre_player in _unitsPassengerIntercom)) then {
+                    [_vehicle, acre_player, 1] call FUNC(updatePassengerIntercomStatus);
+                    _changesPassenger = true;
+                };
             };
+            case CREW_AND_PASSENGER_INTERCOM: {
+                if (!(acre_player in _unitsCrewIntercom)) then {
+                    [_vehicle, acre_player, 1] call FUNC(updateCrewIntercomStatus);
+                    _changesCrew = true;
+                };
 
-            if (acre_player in _unitsPassengerIntercom) then {
-                [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
-                _changes = true;
+                if (!(acre_player in _unitsPassengerIntercom)) then {
+                    [_vehicle, acre_player, 1] call FUNC(updatePassengerIntercomStatus);
+                    _changesPassenger = true;
+                };
             };
-        };
-
-        if (_connectionStatus == PASSENGER_INTERCOM) then {
-            if (acre_player in _unitsCrewIntercom) then {
-                [_vehicle, acre_player, 0] call FUNC(updateCrewIntercomStatus);
-                _changes = true;
-            };
-
-            if (!(acre_player in _unitsPassengerIntercom)) then {
-                [_vehicle, acre_player, 1] call FUNC(updatePassengerIntercomStatus);
-                _changes = true;
-            };
-        };
-
-        if (_connectionStatus == CREW_AND_PASSENGER_INTERCOM) then {
-            if (!(acre_player in _unitsCrewIntercom)) then {
-                [_vehicle, acre_player, 1] call FUNC(updateCrewIntercomStatus);
-                _changes = true;
-            };
-
-            if (!(acre_player in _unitsPassengerIntercom)) then {
-                [_vehicle, acre_player, 1] call FUNC(updatePassengerIntercomStatus);
-                _changes = true;
+            default {
+                WARNING_1("Invalid intercom connection status: %1",_connectionStatus);
             };
         };
 
         // Update intercom connection status
-        if (_changes) then {
+        if (_changesCrew || _changesPassenger) then {
             [_vehicle, acre_player] call FUNC(setIntercomConnectionStatus);
+
+            if (_changesCrew) then {
+                _unitsCrewIntercom = _vehicle getVariable [QGVAR(unitsCrewIntercom), []];
+            } else {
+                _unitsPassengerIntercom = _vehicle getVariable [QGVAR(unitsPassengerIntercom), []];
+            };
         };
     };
 
