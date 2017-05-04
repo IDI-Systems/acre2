@@ -51,7 +51,7 @@ if (!([_radioId] call FUNC(isExternalRadioUsed))) then {
             [_owner, _displayName, _radioId],
             {
                 params ["_endUser", "_displayName", "_radioId"];
-                systemChat format ["RadioID %1", _radioId];
+
                 if (ACRE_ACTIVE_RADIO isEqualTo _radioId) then {    // If it is the active radio.
                     // Otherwise cleanup
                     if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
