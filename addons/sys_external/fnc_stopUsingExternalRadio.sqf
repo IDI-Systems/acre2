@@ -36,7 +36,22 @@ private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "dis
 if (_target == _owner) then {
     // Give radio back to the owner
     [_radioId, "setState", ["isUsedExternally", [false, objNull]]] call EFUNC(sys_data,dataEvent);
+
+    // Manpack radios can also be used by the owner if they are not rack radios
+    if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) != "")) then {
+        [
+            [_owner, _displayName, _radioId],
+            {
+                params ["_owner", "_displayName", "_radioId"];
+                ACRE_EXTERNALLY_USED_MANPACK_RADIOS = ACRE_EXTERNALLY_USED_MANPACK_RADIOS - [_radioId];
+                [format [localize LSTRING(hintReturnOwner), name _owner, _displayName]] call EFUNC(sys_core,displayNotification);
+            }
+        ] remoteExecCall ["bis_fnc_call", _owner];
+    };
 } else {
+    // Show a hint to the actual owner that the radio was given to another player
+    [format [localize LSTRING(hintGiveOwner), name ([_radioId] call FUNC(getExternalRadioUser)), _displayName, name _target]] remoteExecCall [QEFUNC(sys_core,displayNotification), _owner];
+
     // Give radio to another player
     [_radioId, _target] remoteExecCall [QFUNC(startUsingExternalRadio), _target, false];
 };

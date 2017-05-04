@@ -26,7 +26,6 @@ private _sharedRadios = [_target] call FUNC(getSharedExternalRadios);
 } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
 
 // Add player's radios that are shared
-
 private _ownSharedRadios = [acre_player] call FUNC(getSharedExternalRadios);
 {
     _sharedRadios pushBackUnique _x;

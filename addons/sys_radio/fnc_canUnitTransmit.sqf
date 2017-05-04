@@ -34,11 +34,6 @@ if (_vehicle != acre_player) then {
     };
 };
 
-if (_canTransmit && {_radioId in ACRE_PASSIVE_EXTERNAL_RADIOS}) then {
-    _canTransmit = false;
-    [localize LSTRING(noTransmitExternal), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-};
-
 if (_canTransmit && {(toLower _radioId) in ACRE_BLOCKED_TRANSMITTING_RADIOS}) then {
     _canTransmit = false;
     [localize LSTRING(alreadyTransmitting), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
