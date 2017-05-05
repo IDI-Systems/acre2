@@ -23,6 +23,8 @@ if (isNull _vehicle) then {
     _vehicle = [_rackId] call FUNC(getVehicleFromRack);
 };
 
+if (!alive _vehicle) exitWith {false};
+
 private _wiredIntercoms = [_rackId] call FUNC(getWiredIntercoms);
 
 ("crew" in _wiredIntercoms && {_unit in ACRE_PLAYER_CREW_INTERCOM}) || ("passenger" in _wiredIntercoms && {_unit in ACRE_PLAYER_PASSENGER_INTERCOM})

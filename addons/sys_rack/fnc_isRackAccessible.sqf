@@ -24,11 +24,13 @@ if (isNull _vehicle) then {
 };
 private _isRackAccessible = false;
 
+if (!alive _vehicle) exitWith {_isRackAccessible};
+
 private _allowed = [_rackId, "getState", "allowed"] call EFUNC(sys_data,dataEvent);
 {
     switch (_x select 0) do {
         case "external": {
-            if (_vehicle != vehicle _unit) exitWith {_isRackAccessible = true;};
+            if (_vehicle != vehicle _unit && {_vehicle distance _unit <= MAX_EXTERNAL_RACK_DISTANCE}) exitWith {_isRackAccessible = true;};
         };
         case "inside": {
             if (_vehicle == vehicle _unit) exitWith {_isRackAccessible = true;};

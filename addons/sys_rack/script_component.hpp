@@ -19,6 +19,8 @@
 #define SET_STATE_RACK(rack, id, val)        ([rack, "setState", [id, val]] call EFUNC(sys_data,dataEvent))
 #define GET_STATE_RACK(rack, id)             ([rack, "getState", id] call EFUNC(sys_data,dataEvent))
 
+#define MAX_EXTERNAL_RACK_DISTANCE 10
+
 #include "script_acre_rack_defines.hpp"
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
