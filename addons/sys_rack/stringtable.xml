@@ -13,6 +13,9 @@
             <English>Radio used externally. Only owner may configure.</English>
             <Japanese>無線機は外部で使われています。オーナーのみが設定可能です。</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_alreadyOpenRadio">
+            <English>Radio interface is opened by another player.</English>
+        </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount Radio (%1)</English>
             <Japanese>無線機を降ろす (%1)</Japanese>

@@ -26,6 +26,7 @@ disableSerialization;
 
 GVAR(currentRadioId) = _radioId;
 createDialog "PRC152_RadioDialog";
+[_radioId, "setState", ["isGuiOpened", true]] call EFUNC(sys_data,dataEvent);
 
 _onState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
 
