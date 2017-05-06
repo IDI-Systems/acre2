@@ -31,7 +31,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
-            <German>Funkgerät kann nicht entfernt werden. Nicht genug Platz im Inventar vorhandne.</German>
+            <German>Funkgerät kann nicht entfernt werden. Nicht genug Platz im Inventar vorhanden.</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
