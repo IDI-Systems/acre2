@@ -4,57 +4,46 @@ ADDPFH(FUNC(externalRadioPFH), 0.91, []);
 
 if (!hasInterface) exitWith {};
 
-[
-    QGVAR(startUsingRadioLocal),
-    {
-        params ["_message", "_radioId"];
+[QGVAR(startUsingRadioLocal), {
+    params ["_message", "_radioId"];
 
-        if (ACRE_ACTIVE_RADIO isEqualTo _radioId) then {    // If it is the active radio.
-
-            // Otherwise cleanup
-            if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
-                // simulate a key up event to end the current transmission
-                [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
-            };
-
-            [1] call EFUNC(sys_list,cycleRadios); // Change active radio
+    // If it is the active radio
+    if (ACRE_ACTIVE_RADIO isEqualTo _radioId) then {
+        // Otherwise cleanup
+        if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
+            // Simulate a key up event to end the current transmission
+            [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
         };
+        // Change active radio
+        [1] call EFUNC(sys_list,cycleRadios);
+    };
 
-        // Manpack radios can also be used by the owner if they are not rack radios
-        if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) == "")) then {   
-            ACRE_EXTERNALLY_USED_MANPACK_RADIOS pushBackUnique _radioId; 
-        } else {
-            ACRE_EXTERNALLY_USED_PERSONAL_RADIOS pushBackUnique _radioId;
-        };
+    // Manpack radios can also be used by the owner if they are not rack radios
+    if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) == "")) then {
+        ACRE_EXTERNALLY_USED_MANPACK_RADIOS pushBackUnique _radioId;
+    } else {
+        ACRE_EXTERNALLY_USED_PERSONAL_RADIOS pushBackUnique _radioId;
+    };
 
-        [_message, ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-          
-    }
-] call CBA_fnc_addEventHandler;
+    [_message, ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+}] call CBA_fnc_addEventHandler;
 
-[
-    QGVAR(stopUsingRadioLocal),
-    {
-        params ["_message", "_radioId"];
-        
-        // Manpack radios can also be used by the owner if they are not rack radios
-        if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) == "")) then {
-            ACRE_EXTERNALLY_USED_MANPACK_RADIOS = ACRE_EXTERNALLY_USED_MANPACK_RADIOS - [_radioId];
-        } else {
-            ACRE_EXTERNALLY_USED_PERSONAL_RADIOS = ACRE_EXTERNALLY_USED_PERSONAL_RADIOS - [_radioId];
-        };
+[QGVAR(stopUsingRadioLocal), {
+    params ["_message", "_radioId"];
 
-        [_message, ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-    }
-] call CBA_fnc_addEventHandler;
+    // Manpack radios can also be used by the owner if they are not rack radios
+    if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) == "")) then {
+        ACRE_EXTERNALLY_USED_MANPACK_RADIOS = ACRE_EXTERNALLY_USED_MANPACK_RADIOS - [_radioId];
+    } else {
+        ACRE_EXTERNALLY_USED_PERSONAL_RADIOS = ACRE_EXTERNALLY_USED_PERSONAL_RADIOS - [_radioId];
+    };
 
-[
-    QGVAR(giveRadioLocal),
-    {
-        params ["_message"];
+    [_message, ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+}] call CBA_fnc_addEventHandler;
 
-        [_message, ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-    }
-] call CBA_fnc_addEventHandler;
+[QGVAR(giveRadioLocal), {
+    params ["_message"];
+    [_message, ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+}] call CBA_fnc_addEventHandler;
 
 [QGVAR(giveRadioAction), {_this call FUNC(startUsingExternalRadio)}] call CBA_fnc_addEventHandler;
