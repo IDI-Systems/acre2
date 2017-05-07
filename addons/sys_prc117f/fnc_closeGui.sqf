@@ -18,6 +18,8 @@
 
 TRACE_1("", _this);
 
+params ["_radioId", "", "", "", ""];
+[_radioId, "setState", ["isGuiOpened", false]] call EFUNC(sys_data,dataEvent);
 
 GVAR(currentRadioId) = -1;
 

@@ -10,6 +10,7 @@
             <English>Radio used externally. Only owner may configure.</English>
             <Japanese>無線機は外部で使用されます。オーナーのみが設定可能です。</Japanese>
         </Key>
+
         <Key ID="STR_ACRE_sys_radio_noGuiTurnedOut">
             <English>Radio rack not configurable while turned out.</English>
             <Japanese>無線機ラックは顔を外に出していると設定できません。</Japanese>
@@ -29,6 +30,9 @@
         <Key ID="STR_ACRE_sys_radio_alreadyTransmitting">
             <English>Radio already transmitting.</English>
              <Japanese>無線機は既に送信中。</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_alreadyOpenRadio">
+            <English>Radio is being configured by another player.</English>
         </Key>
     </Package>
 </Project>
