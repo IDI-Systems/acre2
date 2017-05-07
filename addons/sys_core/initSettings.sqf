@@ -104,17 +104,6 @@
     {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
-// Automatic connection to passenger intercom as crew member
-[
-    QGVAR(crewAutoJoinPassengerIntercom),
-    "CHECKBOX",
-    localize LSTRING(crewAutoJoinPassengerIntercom),
-    "ACRE2",
-    false,
-    true,
-    {}
-] call CBA_Settings_fnc_init;
-
 // @todo remove in 2.7.0
 // Module settings
 // Applies the difficulty module settings over CBA settings. If the module is not present, this function has no effect.
