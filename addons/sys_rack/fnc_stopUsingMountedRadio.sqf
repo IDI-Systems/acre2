@@ -17,28 +17,15 @@
 
 params ["_vehicle", "_unit", "_radioId"];
 
-ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [toLower _radioId];
-if (ACRE_ACTIVE_RADIO == toLower _radioId) then { // If it is the active radio.
-    // Check if radio is now in inventory
-    private _items = [_unit] call EFUNC(sys_core,getGear);
-    _items = _items apply {toLower _x};
-
-    if ((toLower ACRE_ACTIVE_RADIO) in _items) exitWith {}; // No need to proceed further as the radio is in player inventory.
-
-    // End transmission if broadcasting
-    if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
-        // simulate a key up event to end the current transmission
-        [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
-    };
-
-    ACRE_ACTIVE_RADIO = ([] call acre_sys_data_fnc_getPlayerRadioList) select 0;
-
-    // Set intercom configuration to no monitoring.
-    if ([_radioId, _unit] call FUNC(isRadioHearable)) then {
-        [_radioId, _vehicle, _unit, RACK_NO_MONITOR] call EFUNC(sys_intercom,setRxTxCapabilities);
-    };
-
-    // Switch active Radio
-    //ACRE_ACTIVE_RADIO = "";
-    //[1] call EFUNC(sys_list,cycleRadios); // Change active radio
+if ((toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS) then {
+    ACRE_ACCESSIBLE_RACK_RADIOS deleteAt (ACRE_ACCESSIBLE_RACK_RADIOS find (toLower _radioId));
+} else {
+    ACRE_HEARABLE_RACK_RADIOS deleteAt (ACRE_HEARABLE_RACK_RADIOS find (toLower _radioId));
 };
+
+// Set intercom configuration to no monitoring.
+if ([_radioId, _unit] call FUNC(isRadioHearable)) then {
+    [_radioId, _vehicle, _unit, RACK_NO_MONITOR] call EFUNC(sys_intercom,setRxTxCapabilities);
+};
+
+[_radioId] call EFUNC(sys_radio,stopUsingRadio);

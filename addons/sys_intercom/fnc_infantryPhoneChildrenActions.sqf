@@ -38,7 +38,7 @@ if (_target isKindOf "CAManBase") then {
     };
 } else {
     if (vehicle acre_player != _target) then {
-        _infantryPhoneIntercom = _target getVariable [QGVAR(infantryPhoneIntercom), []];
+        private _infantryPhoneIntercom = _target getVariable [QGVAR(infantryPhoneIntercom), []];
 
         // Pointing at a vehicle. Get or return the infantry telelphone
         if (isNull _vehicleInfantryPhone) then {

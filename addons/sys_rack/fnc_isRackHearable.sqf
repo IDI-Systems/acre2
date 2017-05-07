@@ -25,6 +25,9 @@ if (isNull _vehicle) then {
 
 if (!alive _vehicle) exitWith {false};
 
+// Infantry phone units are not allowed
+if (_unit isEqualTo ((_vehicle getVariable [QEGVAR(sys_intercom,unitInfantryPhone), [objNull, 0]]) select 0)) exitWith {false};
+
 private _wiredIntercoms = [_rackId] call FUNC(getWiredIntercoms);
 
 ("crew" in _wiredIntercoms && {_unit in ACRE_PLAYER_CREW_INTERCOM}) || ("passenger" in _wiredIntercoms && {_unit in ACRE_PLAYER_PASSENGER_INTERCOM})
