@@ -68,8 +68,6 @@ if (!dialog) then {
         //diag_log "GO GO GOGO";
         //diag_log text format["'%1'", _activateRadio];
         [(_activateRadio select 0), (_activateRadio select 1), "", 1] call FUNC(displayHint);
-    } else {
-        [""] call EFUNC(sys_radio,setActiveRadio);
     };
 };
 

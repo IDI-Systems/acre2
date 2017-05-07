@@ -32,3 +32,4 @@ PREP(canOpenRadio);
 PREP(canUnitReceive);
 PREP(canUnitTransmit);
 PREP(isManpackRadio);
+PREP(stopUsingRadio);

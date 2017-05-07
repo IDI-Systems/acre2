@@ -19,7 +19,7 @@ params ["_radioId"];
 
 private _return = "";
 
- //TODO: Optimize
+//TODO: Optimize
 {
     private _rackId = typeOf _x;
     if (([_rackId] call FUNC(getMountedRadio)) == _radioId) exitWith {_return = _rackId;};

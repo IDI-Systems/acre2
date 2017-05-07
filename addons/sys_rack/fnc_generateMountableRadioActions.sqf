@@ -32,7 +32,7 @@ _radioList = [_rackClassName, _radioList] call FUNC(getMountableRadios);
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
     _displayName = format ["Mount %1 Chn: %2", _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
-    private _isActive = _x isEqualTo _currentRadio;
+    //private _isActive = _x isEqualTo _currentRadio;
 
     private _action = [_x, _displayName, _picture, {
         params ["_target","_unit","_params"];
