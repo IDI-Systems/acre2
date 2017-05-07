@@ -26,46 +26,9 @@ private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "dis
 if (!([_radioId] call FUNC(isExternalRadioUsed))) then {
     [_radioId, "setState", ["isUsedExternally", [true, _endUser]]] call EFUNC(sys_data,dataEvent);
 
-    // Manpack radios can also be used by the owner if they are not rack radios
-    if ([_radioId] call EFUNC(sys_radio,isManpackRadio) && ([_radioId] call EFUNC(sys_rack,getRackFromRadio) == "")) then {
-        [
-            [_owner, _displayName, _radioId],
-            {
-                params ["_endUser", "_displayName", "_radioId"];
-                if (ACRE_ACTIVE_RADIO isEqualTo _radioId) then {    // If it is the active radio.
-                    // Otherwise cleanup
-                    if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
-                        // simulate a key up event to end the current transmission
-                        [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
-                    };
-                    [1] call EFUNC(sys_list,cycleRadios); // Change active radio
-                };
-
-                [format [localize LSTRING(hintTakeOwner), _endUser, _displayName]] call EFUNC(sys_core,displayNotification);
-                ACRE_EXTERNALLY_USED_MANPACK_RADIOS pushBackUnique _radioId;
-            }
-        ] remoteExecCall ["bis_fnc_call", _owner];
-    } else {
-        // Personal radios can only be opened. There are no RX/TX capabilities.
-        [
-            [_owner, _displayName, _radioId],
-            {
-                params ["_endUser", "_displayName", "_radioId"];
-
-                if (ACRE_ACTIVE_RADIO isEqualTo _radioId) then {    // If it is the active radio.
-                    // Otherwise cleanup
-                    if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
-                        // simulate a key up event to end the current transmission
-                        [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
-                    };
-                    [1] call EFUNC(sys_list,cycleRadios); // Change active radio
-                };
-
-                [format [localize LSTRING(hintTakeOwner), _endUser, _displayName]] call EFUNC(sys_core,displayNotification);
-                ACRE_EXTERNALLY_USED_PERSONAL_RADIOS pushBackUnique _radioId;
-            }
-        ] remoteExecCall ["bis_fnc_call", _owner];
-    };
+    // Handle remote owner
+    private _message = format [localize LSTRING(hintTakeOwner), _endUser, _displayName];
+    [QGVAR(startUsingRadioLocal), [_message, _radioId], _owner] call CBA_fnc_targetEvent;
 };
 
 // Add the radio to the player
@@ -74,4 +37,4 @@ ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
 // Set it as active radio.
 [_radioId] call EFUNC(api,setCurrentRadio);
 
-[format [localize LSTRING(hintTake), _displayName, name _owner]] call EFUNC(sys_core,displayNotification);
+[format [localize LSTRING(hintTake), _displayName, name _owner], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);

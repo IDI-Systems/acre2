@@ -37,7 +37,7 @@ if (!ACRE_IS_SPECTATOR) then {
         _radioList pushBackUnique _x;
     } forEach ACRE_EXTERNALLY_USED_MANPACK_RADIOS;
 
-    // Auxilary radios are for radios not in inventory like racked radios.
+    // Auxilary radios are for radios not in inventory like racked radios
     {
         _radioList pushBackUnique _x;
     } forEach ACRE_ACCESSIBLE_RACK_RADIOS;
