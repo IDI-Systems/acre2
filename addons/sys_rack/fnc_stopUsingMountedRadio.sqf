@@ -18,9 +18,9 @@
 params ["_vehicle", "_unit", "_radioId"];
 
 if ((toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS) then {
-    ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [toLower _radioId];
+    ACRE_ACCESSIBLE_RACK_RADIOS deleteAt (ACRE_ACCESSIBLE_RACK_RADIOS find (toLower _radioId));
 } else {
-    ACRE_HEARABLE_RACK_RADIOS = ACRE_HEARABLE_RACK_RADIOS - [toLower _radioId];
+    ACRE_HEARABLE_RACK_RADIOS deleteAt (ACRE_HEARABLE_RACK_RADIOS find (toLower _radioId));
 };
 
 // Set intercom configuration to no monitoring.

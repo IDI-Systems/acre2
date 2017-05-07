@@ -31,7 +31,7 @@ if ((toLower ACRE_ACTIVE_RADIO) isEqualTo _radioId) then {
             [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
         };
 
-        // Switch active radio, but first reset it.
+        // Switch active radio, but first reset it
         ACRE_ACTIVE_RADIO = "";
         ACRE_ACTIVE_RADIO = ([] call EFUNC(sys_data,getPlayerRadioList)) select 0;
     };
