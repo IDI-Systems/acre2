@@ -17,12 +17,4 @@
 
 params ["_vehicle"];
 
-private _racks = [];
-{
-    private _rackId = typeOf _x;
-    if (_rackId isKindOf "ACRE_BaseRack") then {
-        _racks pushBack _rackId;
-    };
-} forEach (attachedObjects _vehicle);
-
-_racks;
+_vehicle getVariable [QGVAR(vehicleRacks), []]
