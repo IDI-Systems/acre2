@@ -23,6 +23,6 @@ private _return = "";
 {
     private _rackId = typeOf _x;
     if (([_rackId] call FUNC(getMountedRadio)) == _radioId) exitWith {_return = _rackId;};
-} forEach ((ATLToASL [-1000,-1000,-1000]) nearObjects ["ACRE_baseRack", 1]);
+} forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
 
 _return
