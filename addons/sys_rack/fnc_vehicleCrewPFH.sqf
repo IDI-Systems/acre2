@@ -49,24 +49,24 @@ if (_vehicle != acre_player) then {
             } forEach _racks;
         };
     };
-};
 
-// Check if the player entered a position with a rack already active in intercom
-{
-    private _radioId = [_x] call FUNC(getMountedRadio);
-    if (_radioId != "" && {!(_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS)}) then {
-        private _functionality = [_radioId, _vehicle, acre_player, _x] call EFUNC(sys_intercom,getRxTxCapabilities);
-        // Add the radio to the active list since it is already active in the intercom system
-        if (_functionality > RACK_NO_MONITOR) then {
-            if ([_x, acre_player] call FUNC(isRackAccessible)) then {
-                ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique (toLower _radioId);
-            } else {
-                ACRE_HEARABLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+    // Check if the player entered a position with a rack already active in intercom
+    {
+        private _radioId = [_x] call FUNC(getMountedRadio);
+        if (_radioId != "" && {!(_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS)}) then {
+            private _functionality = [_radioId, _vehicle, acre_player, _x] call EFUNC(sys_intercom,getRxTxCapabilities);
+            // Add the radio to the active list since it is already active in the intercom system
+            if (_functionality > RACK_NO_MONITOR) then {
+                if ([_x, acre_player] call FUNC(isRackAccessible)) then {
+                    ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+                } else {
+                    ACRE_HEARABLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+                };
+                ACRE_ACTIVE_RADIO = _radioId;
             };
-            ACRE_ACTIVE_RADIO = _radioId;
         };
-    };
-} forEach (([_vehicle, acre_player] call FUNC(getHearableVehicleRacks)) apply {toLower _x});
+    } forEach (([_vehicle, acre_player] call FUNC(getHearableVehicleRacks)) apply {toLower _x});
+};
 
 //Check we can still use the vehicle rack radios.
 private _remove = [];

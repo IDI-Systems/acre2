@@ -41,6 +41,13 @@ if (!GVAR(doFullSearch)) then {
                 _items = [_object] call EFUNC(sys_core,getGear);
             } else {
                 _items = (itemCargo _object) select {(_x select [0, 4]) == "ACRE" || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged"};
+                {
+                    _items pushBack _x; // Add rack unique ID
+                    private _mountedRadio = [_x] call EFUNC(sys_rack,getMountedRadio);
+                    if (_mountedRadio != "") then {
+                        _items pushBack _mountedRadio; // Add mounted radio unique ID
+                    };
+                } forEach (_object getVariable [QEGVAR(sys_rack,vehicleRacks), []]);
             };
 
             {
@@ -48,7 +55,7 @@ if (!GVAR(doFullSearch)) then {
             } forEach _items;
             if (_found) exitWith {};
         } forEach _objects;
-        if (!_found) exitWith { GVAR(doFullSearch) = true; };
+        if (!_found) exitWith {GVAR(doFullSearch) = true; };
     } forEach _shortSearchList;
 };
 
