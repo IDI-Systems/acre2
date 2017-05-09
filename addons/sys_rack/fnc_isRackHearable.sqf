@@ -26,7 +26,7 @@ if (isNull _vehicle) then {
 if (!alive _vehicle) exitWith {false};
 
 // Infantry phone units are not allowed
-if (_unit isEqualTo (vehicle _unit)) exitWith {false};
+if (_unit == vehicle _unit) exitWith {false};
 
 private _wiredIntercoms = [_rackId] call FUNC(getWiredIntercoms);
 
