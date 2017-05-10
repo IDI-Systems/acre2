@@ -55,7 +55,7 @@ if (!GVAR(doFullSearch)) then {
             } forEach _items;
             if (_found) exitWith {};
         } forEach _objects;
-        if (!_found) exitWith {GVAR(doFullSearch) = true; };
+        if (!_found) exitWith {GVAR(doFullSearch) = true;};
     } forEach _shortSearchList;
 };
 
