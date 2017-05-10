@@ -33,7 +33,7 @@ if ((_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS && !([_radioId] call FUNC(isManpack
     };
 };
 
-if ([_radioId, "getState", "isGuiOpened"] call EFUNC(sys_data,dataEvent)) then {
+if ([_radioId, "getState", "radioGuiOpened"] call EFUNC(sys_data,dataEvent)) then {
     _canOpenRadio = false;
     [localize LSTRING(alreadyOpenRadio), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };
