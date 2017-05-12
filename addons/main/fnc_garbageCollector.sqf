@@ -77,7 +77,7 @@ if (ACRE_FAST_HASH_GC_INDEX >= ACRE_FAST_HASH_VAR_LENGTH && {(count ACRE_FAST_HA
     if (ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX < (count ACRE_FAST_HASH_CREATED_HASHES)) then {
         _init_time = diag_tickTime;
         while {diag_tickTime - _init_time < 0.001 && {ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX < (count ACRE_FAST_HASH_CREATED_HASHES)}} do {
-            _check = ACRE_FAST_HASH_CREATED_HASHES select ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX;
+            private _check = ACRE_FAST_HASH_CREATED_HASHES select ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX;
             ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX = ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX + 1;
             if (!(_check in ACRE_FAST_HASH_GC_CHECK_OBJECTS)) then {
                 ACRE_FAST_HASH_TO_DELETE pushBack _check;

@@ -16,6 +16,7 @@
 #include "script_component.hpp"
 
 GVAR(testResults) = [];
+private ["_test"];
 
 #define ASSERT_BOOL(val1,val2) (val1 == val2)
 #define ASSERT_STRING(val1,val2) (val1 == val2)

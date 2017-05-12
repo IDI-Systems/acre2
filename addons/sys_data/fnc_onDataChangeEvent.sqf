@@ -33,14 +33,14 @@ if (ACRE_DATA_SYNCED) then {
             };*/
             _data = _data call FUNC(deserialize);
             TRACE_1("NETWORK EVENT",_x);
-            _params = [_eventKind, _radioId, _event, _data, true];
+            private _params = [_eventKind, _radioId, _event, _data, true];
             TRACE_1("PARAMS 1", _params);
             _params call FUNC(processSysEvent);
             TRACE_1("PARAMS 2", _params);
             _params call FUNC(processRadioEvent);
             TRACE_1("PARAMS 3", _params);
             if (isServer) then {
-                _radio = HASH_GET(GVAR(currentRadioStates),_radioId);
+                private _radio = HASH_GET(GVAR(currentRadioStates),_radioId);
                 if (isNil "_radio") then {
                     _radio = HASH_CREATE;
                     HASH_SET(GVAR(currentRadioStates),_radioId,_radio);
