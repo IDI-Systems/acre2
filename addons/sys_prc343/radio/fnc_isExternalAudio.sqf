@@ -20,4 +20,4 @@
  */
 #include "script_component.hpp"
 
-false;
+false
