@@ -19,7 +19,7 @@ params ["_radioId"];
 
 private _canOpenRadio = true;
 
-if ((toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) then {
+if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) then {
     _canOpenRadio = false;
     [localize LSTRING(noGuiTurnedOut), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };

@@ -26,7 +26,7 @@ if (getNumber (configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0 &&
 
 private _ret = [_class] call FUNC(getRadioId);
 if (_ret != -1) then {
-    private _uniqueClass = format["%1_id_%2", tolower(_class), _ret];
+    private _uniqueClass = format["%1_ID_%2", _class, _ret];
 
     if (!(_uniqueClass in GVAR(masterIdList))) then {
         GVAR(masterIdList) pushBack _uniqueClass;
@@ -45,5 +45,5 @@ if (_ret != -1) then {
         // GVAR(waitingForIdAck) = true;
     };
 } else {
-    WARNING("All IDs for class %2 are taken!",_class);
+    WARNING("All IDs for class %1 are taken!",_class);
 };

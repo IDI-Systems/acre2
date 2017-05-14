@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 params ["_radioId"];
 
-_radioId = (toLower _radioId);
+_radioId = toLower _radioId;
 private _radioList = ([] call EFUNC(sys_data,getPlayerRadioList)) apply {toLower _x};
 
 if (_radioId in _radioList) then {

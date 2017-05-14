@@ -26,7 +26,6 @@ if (_rackId isEqualTo "") then {
     _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
 };
 
-_rackId = toLower _rackId;
 {
     if (_x select 0 == _rackId) then {
         private _radioTxRxConfig = _x select 1;

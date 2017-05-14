@@ -39,7 +39,7 @@ if (_canTransmit && {_radioId in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS}) then {
     [localize LSTRING(noTransmitExternal), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };
 
-if (_canTransmit && {(toLower _radioId) in ACRE_BLOCKED_TRANSMITTING_RADIOS}) then {
+if (_canTransmit && {_radioId in ACRE_BLOCKED_TRANSMITTING_RADIOS}) then {
     _canTransmit = false;
     [localize LSTRING(alreadyTransmitting), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };
