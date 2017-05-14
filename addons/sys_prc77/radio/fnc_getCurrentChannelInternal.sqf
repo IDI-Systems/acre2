@@ -4,6 +4,10 @@
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
+ * 1: Event: "getCurrentChannelInternal" <STRING> (Unused)
+ * 2: Event data <ARRAY> (Unused)
+ * 3: Radio data <HASH>
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
  * Identity of the current channel <NUMBER>
