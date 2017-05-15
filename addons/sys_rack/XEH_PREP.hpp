@@ -22,7 +22,9 @@ PREP(getAccessibleVehicleRacks);
 PREP(getHearableVehicleRacks);
 
 PREP(initializeRack);
-
+PREP(enableRacks);
+PREP(disableRacks);
+PREP(areRacksDisabled);
 PREP(getRackBaseClassname);
 PREP(getRackFromRadio);
 PREP(getMountableRadios);

@@ -1,0 +1,39 @@
+/*
+ * Author: ACRE2Team
+ * Sets the given radio as mounted
+ *
+ * Arguments:
+ * 0: Rack ID <STRING>
+ * 1: Radio to mount <STRING>
+ * 2: Unit with radio to mount <OBJECT><OPTIONAL>
+ *
+ * Return Value:
+ * Setup succesful <BOOL>
+ *
+ * Example:
+ * ["ACRE_VRC103_ID_1", "ACRE_PRC117F_ID_1", acre_player] call acre_api_fnc_mountRackRadio
+ *
+ * Public: Yes
+ */
+#include "script_component.hpp"
+
+params [["_rackId", ""], ["_radioId", ""], ["_unit", objNull]];
+
+private _return = false;
+
+if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
+    WARNING_1("Non existant rack ID provided",_rackId);
+    _return
+};
+
+if (!([_radioId] call EFUNC(sys_radio,radioExists))) exitWith {
+    WARNING_1("Non existant rack ID provided",_radioId);
+    _return
+};
+
+if (_radioId in ([_rackId, [_radioId]] call EFUNC(sys_rack,getMountableRadios))) then {
+    [_rackId, _radioId, _unit] call EFUNC(sys_rack,mountRadio);
+    _return = true;
+};
+
+_return

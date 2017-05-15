@@ -29,5 +29,11 @@
             <English>Unable to unmount radio as you have no inventory space.</English>
             <Japanese>インベントリに空きが無いため無線機を降ろせません。</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_rack_racksDisabled">
+            <English>Racks have been damaged!</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_racksEnabled">
+            <English>Racks have been repaired!</English>
+        </Key>
     </Package>
 </Project>
