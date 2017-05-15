@@ -21,6 +21,8 @@ params ["_vehicle", "_unit", "_intercomType"];
 
 if (_vehicle != vehicle _unit) exitWith {false};
 
+if ([_vehicle] call FUNC(areIntercomsDisabled)) exitWith {false};
+
 private _availableIntercomPos = [];
 private _exceptionsIntercomPos = [];
 switch (_intercomType) do {

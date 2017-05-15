@@ -47,6 +47,7 @@ private _infantryPhoneAction = [
          // Only manually check distance if under main node (not a custom position on hull)
          // Main interaction node is not shown on destroyed vehicle, so we only check that if not main node
         if !((_this select 2) isEqualTo [0, 0, 0]) exitWith {alive _target};
+        if (_this call FUNC(areIntercomsDisabled)) exitWith {false};
         _player distance _target < PHONE_MAXDISTANCE_DEFAULT
     },
     {_this call FUNC(infantryPhoneChildrenActions)},
@@ -70,7 +71,7 @@ private _infantryPhoneSpeakerAction = [
     localize LSTRING(infantryPhone),
     ICON_RADIO_CALL,
     {true},
-    {_this call FUNC(isInfantryPhoneSpeakerAvailable)},
+    {_this call FUNC(isInfantryPhoneSpeakerAvailable) && !(_this call FUNC(areIntercomsDisabled))},
     {_this call FUNC(infantryPhoneChildrenActions)},
     [],
     [0, 0, 0],

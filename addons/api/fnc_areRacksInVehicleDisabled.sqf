@@ -18,7 +18,7 @@
 params [["_vehicle", objNull]];
 
 if (isNull _vehicle) exitWith {
-    WARNING_1("Trying to enable racks in an undefined vehicle %1",format ["%1", _vehicle]);
+    WARNING_1("Trying to get rack status in an undefined vehicle %1",format ["%1", _vehicle]);
 };
 
 [_vehicle] call EFUNC(sys_rack,areRacksDisabled)

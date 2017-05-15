@@ -17,6 +17,10 @@
 
 params ["_vehicle", "_unit", "_radioId"];
 
+if ([_vehicle] call FUNC(areRacksDisabled)) exitWith {
+    [localize LSTRING(racksDisabled), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+};
+
 private _isRadioAccessible = [_radioId, _unit] call FUNC(isRadioAccessible);
 private _isRadioHearable = [_radioId, _unit] call FUNC(isRadioHearable);
 

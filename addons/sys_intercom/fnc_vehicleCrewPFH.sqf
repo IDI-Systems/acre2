@@ -43,6 +43,8 @@ if (_vehicle != acre_player) then {
         _infantryPhoneNetwork = _infantryPhone select 1;
     };
 
+    private _intercomsDisabled = [_vehicle] call EFUNC(areIntercomsDisabled);
+
     // The infantry phone can only be used externally
     if (_usingInfantryPhone || {!_usingInfantryPhone && _unitInfantryPhone == acre_player}) then {
         (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
@@ -50,7 +52,7 @@ if (_vehicle != acre_player) then {
         private _unitInfantryPhonePosition = ASLToAGL (getPosASL _unitInfantryPhone);
         TRACE_4("Infantry Phone PFH Check",_infantryPhonePosition,_unitInfantryPhonePosition,_infantryPhoneMaxDistance,_unitInfantryPhone distance _infantryPhonePosition);
         // Add an extra meter leeway due to 3d position check height differences and movement
-        if (_unitInfantryPhonePosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || {vehicle _unitInfantryPhone == _vehicle} || {!alive _unitInfantryPhone} || {captive _unitInfantryPhone}) then {
+        if (_unitInfantryPhonePosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || {vehicle _unitInfantryPhone == _vehicle} || {_intercomsDisabled} || {!alive _unitInfantryPhone} || {captive _unitInfantryPhone}) then {
             [_vehicle, _unitInfantryPhone, 0, _infantryPhoneNetwork] call FUNC(updateInfantryPhoneStatus);
 
             // Reset in case the infantry phone user is now inside the vehicle
@@ -84,6 +86,11 @@ if (_vehicle != acre_player) then {
                 if (!(acre_player in _unitsCrewIntercom)) then {
                     [_vehicle, acre_player, 1] call FUNC(updateCrewIntercomStatus);
                     _changesCrew = true;
+                } else {
+                    if (_intercomsDisabled) then {
+                        [_vehicle, acre_player, 0] call FUNC(updateCrewIntercomStatus);
+                        _changesCrew = true;
+                    };
                 };
 
                 if (acre_player in _unitsPassengerIntercom) then {
@@ -100,17 +107,32 @@ if (_vehicle != acre_player) then {
                 if (!(acre_player in _unitsPassengerIntercom)) then {
                     [_vehicle, acre_player, 1] call FUNC(updatePassengerIntercomStatus);
                     _changesPassenger = true;
+                } else {
+                    if (_intercomsDisabled) then {
+                        [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
+                        _changesPassenger = true;
+                    };
                 };
             };
             case CREW_AND_PASSENGER_INTERCOM: {
                 if (!(acre_player in _unitsCrewIntercom)) then {
                     [_vehicle, acre_player, 1] call FUNC(updateCrewIntercomStatus);
                     _changesCrew = true;
+                } else {
+                    if (_intercomsDisabled) then {
+                        [_vehicle, acre_player, 0] call FUNC(updateCrewIntercomStatus);
+                        _changesCrew = true;
+                    };
                 };
 
                 if (!(acre_player in _unitsPassengerIntercom)) then {
                     [_vehicle, acre_player, 1] call FUNC(updatePassengerIntercomStatus);
                     _changesPassenger = true;
+                } else {
+                    if (_intercomsDisabled) then {
+                        [_vehicle, acre_player, 0] call FUNC(updatePassengerIntercomStatus);
+                        _changesPassenger = true;
+                    };
                 };
             };
             default {

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -134,6 +134,12 @@
         <Key ID="STR_ACRE_sys_intercom_recAndTrans">
             <English>Receive and Transmit</English>
             <Japanese>受信と送信</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomsDisabled">
+            <English>Intercoms have been damaged!</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomsEnabled">
+            <English>Intercoms have been repaired!</English>
         </Key>
     </Package>
 </Project>

@@ -31,7 +31,7 @@ private _intercomAction = [
     QGVAR(intercomAction),
     format ["%1", localize LSTRING(intercom)],
     ICON_RADIO_CALL,
-    {true},
+    {if (_this call FUNC(areIntercomsDisabled)) exitWith {false}},
     {[_target, acre_player, CREW_INTERCOM] call FUNC(isIntercomAvailable) || [_target, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable)},
     {_this call FUNC(intercomChildrenActions)},
     [],

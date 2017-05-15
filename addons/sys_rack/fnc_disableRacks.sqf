@@ -19,4 +19,4 @@ params ["_vehicle"];
 
 _vehicle setVariable [QGVAR(disabledRacks), true, true];
 
-[localize LSTRING(sys_rack,racksDisabled), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+[localize LSTRING(racksDisabled), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
