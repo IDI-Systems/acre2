@@ -39,6 +39,11 @@ if (isNull _unit) exitWith {
 
 private _mountedRadio = [_rackId, "getState", "mountedRadio"] call EFUNC(sys_data,dataEvent);
 
+if (_mountedRadio != _radioId) exitWith {
+     WARNING_3("Trying to dismount %1 from Rack ID %1. However, the mounted radio is %3.",_radioId,_rackId,_mountedRadio);
+     _return
+};
+
 if (_mountedRadio == "") exitWith {
     WARNING_1("Attempting to unmount empty rack '%1'",_rackId);
 };

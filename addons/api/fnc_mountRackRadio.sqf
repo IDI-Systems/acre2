@@ -32,13 +32,21 @@ if (!([_radioId] call EFUNC(sys_radio,radioExists))) exitWith {
 };
 
 if (isNull _unit) exitWith {
-    WARNING("Null unit passed as argument");
+    WARNING("Null unit passed as argument.");
     _return
+};
+
+if ([_rackId] call FUNC(getMountedRackRadio) != "") exitWith {
+     WARNING_1("Rack ID %1 has already a radio mounted.",_rackId);
+     _return
 };
 
 if (_radioId in ([_rackId, [_radioId]] call EFUNC(sys_rack,getMountableRadios))) then {
     [_rackId, _radioId, _unit] call EFUNC(sys_rack,mountRadio);
     _return = true;
+} else {
+    WARNING_2("Cannot mount %1 into %2.",_radioId,_rackId);
+    _return
 };
 
 _return
