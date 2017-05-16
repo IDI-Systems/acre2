@@ -34,7 +34,7 @@ with uiNamespace do {
 
         _tile ctrlSetPosition _signalMapPos;
         _tile ctrlShow true;
-        _tile ctrlSetText "userconfig\" + _filename + ".paa";
+        _tile ctrlSetText ("userconfig\" + _filename + ".paa");
         _tile ctrlCommit 0;
     } forEach GVAR(completedAreas);
     {
