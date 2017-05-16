@@ -43,7 +43,7 @@ if (_vehicle != acre_player) then {
         _infantryPhoneNetwork = _infantryPhone select 1;
     };
 
-    private _intercomsDisabled = [_vehicle] call EFUNC(areIntercomsDisabled);
+    private _intercomsDisabled = [_vehicle] call FUNC(areIntercomsDisabled);
 
     // The infantry phone can only be used externally
     if (_usingInfantryPhone || {!_usingInfantryPhone && _unitInfantryPhone == acre_player}) then {

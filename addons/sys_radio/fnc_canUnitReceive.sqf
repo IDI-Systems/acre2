@@ -25,7 +25,7 @@ if (_vehicle != acre_player) then {
         _canReceive = false;
     };
 
-    if (_canReceive && (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS)) then {
+    if (_canReceive && ((_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS) && ([toLower _radioId, acre_player] call EFUNC(sys_rack,isRadioHearable)))) then {
         // Check if radio is in intercom.
         if ([_radioId, acre_player, _vehicle] call EFUNC(sys_rack,isRadioHearable)) then {
             private _rackRxTxConfig = _vehicle getVariable [QEGVAR(sys_intercom,rackRxTxConfig), []];

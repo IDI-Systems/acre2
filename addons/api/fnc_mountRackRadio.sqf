@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Rack ID <STRING>
  * 1: Radio to mount <STRING>
- * 2: Unit with radio to mount <OBJECT><OPTIONAL>
+ * 2: Unit with radio to mount <OBJECT>
  *
  * Return Value:
  * Setup succesful <BOOL>
@@ -22,12 +22,17 @@ params [["_rackId", ""], ["_radioId", ""], ["_unit", objNull]];
 private _return = false;
 
 if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
-    WARNING_1("Non existant rack ID provided",_rackId);
+    WARNING_1("Non existant rack ID provided: %1",_rackId);
     _return
 };
 
 if (!([_radioId] call EFUNC(sys_radio,radioExists))) exitWith {
-    WARNING_1("Non existant rack ID provided",_radioId);
+    WARNING_1("Non existant radio ID provided: %1",_radioId);
+    _return
+};
+
+if (isNull _unit) exitWith {
+    WARNING("Null unit passed as argument");
     _return
 };
 
