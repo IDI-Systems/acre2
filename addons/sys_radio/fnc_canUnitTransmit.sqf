@@ -21,7 +21,7 @@ private _canTransmit = true;
 private _vehicle = vehicle acre_player;
 
 if (_vehicle != acre_player) then {
-    if (_canTransmit && ((_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS) && ([toLower _radioId, acre_player] call EFUNC(sys_rack,isRadioHearable)))) then {
+    if ((_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS) && ([toLower _radioId, acre_player] call EFUNC(sys_rack,isRadioHearable))) then {
         // Check if radio is in intercom.
         if ([_radioId, acre_player, _vehicle] call EFUNC(sys_rack,isRadioHearable)) then {
             private _rackRxTxConfig = _vehicle getVariable [QEGVAR(sys_intercom,rackRxTxConfig), []];
@@ -30,15 +30,6 @@ if (_vehicle != acre_player) then {
                 [localize LSTRING(noTransmitIntercom), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
                 _canTransmit = false;
             };
-        };
-    };
-} else {
-    if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS) then {
-        private _rackId = [_radioId] call FUNC(getRackFromRadio);
-        _vehicle = [_rackId] call FUNC(getVehicleFromRack);
-        if (_vehicle getVariable [QEGVAR(sys_rack,disabledRacks), false]) then {
-            _canTransmit = false;
-            [localize ELSTRING(sys_rack,racksDisabled), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
         };
     };
 };
