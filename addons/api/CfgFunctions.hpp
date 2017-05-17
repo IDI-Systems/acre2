@@ -51,17 +51,8 @@ class CfgFunctions {
             PATHTO_FNC(getCurrentRadioChannelNumber);
         };
 
-        class Intercom {
-            PATHTO_FNC(areIntercomsInVehicleDisabled);
-            PATHTO_FNC(disableIntercomsInVehicle);
-            PATHTO_FNC(enableIntercomsInVehicle);
-        };
-
         class Racks {
             PATHTO_FNC(initVehicleRacks);
-            PATHTO_FNC(areRacksInVehicleDisabled);
-            PATHTO_FNC(enableRacksInVehicle);
-            PATHTO_FNC(disableRacksInVehicle);
             PATHTO_FNC(getMountedRackRadio);
             PATHTO_FNC(getVehicleRacks);
             PATHTO_FNC(mountRackRadio);

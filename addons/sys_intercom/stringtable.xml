@@ -135,11 +135,5 @@
             <English>Receive and Transmit</English>
             <Japanese>受信と送信</Japanese>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_intercomsDisabled">
-            <English>Intercoms have been damaged!</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_intercomsEnabled">
-            <English>Intercoms have been repaired!</English>
-        </Key>
     </Package>
 </Project>

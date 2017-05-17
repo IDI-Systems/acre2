@@ -1,6 +1,3 @@
-PREP(areIntercomsDisabled);
-PREP(disableIntercoms);
-PREP(enableIntercoms);
 PREP(intercomAction);
 PREP(intercomChildrenActions);
 PREP(intercomConfig);
