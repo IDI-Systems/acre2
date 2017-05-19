@@ -56,9 +56,8 @@
     "EDITBOX",
     localize LSTRING(ts3ChannelName_displayName),
     "ACRE2",
-    true,
-    false,
-    {["setTS3ChannelName", _this] call FUNC(setPluginSetting)}
+    "",
+    false
 ] call CBA_Settings_fnc_init;
 
 // Difficulty settings
