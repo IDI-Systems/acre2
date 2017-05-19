@@ -57,7 +57,8 @@
     localize LSTRING(ts3ChannelName_displayName),
     "ACRE2",
     "",
-    false
+    false,
+    {call EFUNC(sys_io,ts3ChannelMove)}
 ] call CBA_Settings_fnc_init;
 
 // Difficulty settings
