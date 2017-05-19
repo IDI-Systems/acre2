@@ -6,7 +6,7 @@
  * 0: Vehicle <OBJECT>
  *
  * Return Value:
- * Setup succesful <BOOL>
+ * Setup successful <BOOL>
  *
  * Example:
  * [cursorTarget] call acre_api_fnc_initVehicleRacks

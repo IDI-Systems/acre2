@@ -7,7 +7,7 @@
  * 1: Language display name <STRING>
  *
  * Return Value:
- * Setup succesful <BOOL>
+ * Setup successful <BOOL>
  *
  * Example:
  * ["en", "English"] call acre_api_fnc_babelAddLanguageType;

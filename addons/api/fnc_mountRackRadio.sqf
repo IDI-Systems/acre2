@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Sets the given radio as mounted
+ * Sets the given radio as mounted.
  *
  * Arguments:
  * 0: Rack ID <STRING>
@@ -8,7 +8,7 @@
  * 2: Unit with radio to mount <OBJECT>
  *
  * Return Value:
- * Setup succesful <BOOL>
+ * Setup successful <BOOL>
  *
  * Example:
  * ["ACRE_VRC103_ID_1", "ACRE_PRC117F_ID_1", acre_player] call acre_api_fnc_mountRackRadio

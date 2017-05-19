@@ -1,15 +1,15 @@
 /*
  * Author: ACRE2Team
- * Removes a mounted radio
+ * Removes a mounted radio.
  *
  * Arguments:
  * 0: Rack ID <STRING>
  * 1: Radio to unmount <STRING>
  * 2: Unit with radio to unmount <OBJECT>
- * 3: Remove radio after unmounting <BOOL><OPTIONAL>
+ * 3: Remove radio after unmounting <BOOL><OPTIONAL> (default: false)
  *
  * Return Value:
- * Setup succesful <BOOL>
+ * Setup successful <BOOL>
  *
  * Example:
  * ["ACRE_VRC103_ID_1", "ACRE_PRC117F_ID_1", acre_player] call acre_api_fnc_mountRackRadio
