@@ -476,10 +476,10 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> names) {
     std::map<uint64, std::string> channelMap;
     int bestDistance = 40;
     uint64 bestChannelId = INVALID_TS3_CHANNEL;
-    std::string name = names[1];
+    std::string name = names.at(1);
 
-    if (names[0] != "") {
-        name = names[0];
+    if (names.at(0) != "") {
+        name = names.at(0);
     }
 
     if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
