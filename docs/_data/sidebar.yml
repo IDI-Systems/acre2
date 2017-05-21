@@ -57,6 +57,10 @@ entries:
       url: /wiki/user/direct-speech
       output: web, pdf
 
+    - title: Babel
+      url: /wiki/user/babel
+      output: web, pdf
+
     - title: Radio Signal Loss
       url: /wiki/user/radio-signal-loss
       output: web, pdf
@@ -123,6 +127,10 @@ entries:
 
     - title: Mission Making Guide
       url: /wiki/frameworks/mission-making-guide
+      output: web, pdf
+
+    - title: Babel
+      url: /wiki/frameworks/babel
       output: web, pdf
 
     - title: Vehicle Attenuation
