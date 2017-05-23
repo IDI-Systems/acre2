@@ -52,6 +52,7 @@ class CfgFunctions {
         };
 
         class Racks {
+            PATHTO_FNC(areVehicleRacksInitialized);
             PATHTO_FNC(initVehicleRacks);
             PATHTO_FNC(getMountedRackRadio);
             PATHTO_FNC(getVehicleRacks);

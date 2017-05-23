@@ -22,6 +22,11 @@ if (isNull _vehicle) exitWith {
     false
 };
 
+if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
+    WARNING_1("Vehicle %1 is already initialised",format ["%1", _vehicle]);
+    false
+};
+
 [_vehicle] call EFUNC(sys_rack,initVehicle);
 
 // Some classes are initialised automatically. Only initialise ACE interaction if the vehicle does not belong to
@@ -35,7 +40,7 @@ private _automaticInitClasses = ["LandVehicle", "Air", "Ship_F"];
 } forEach _automaticInitClasses;
 
 if (!_found) then {
-    [_vehicle] call EFUNC(sys_rack,initActionVehicle);
+    [QGVAR(initVehicleRacks), [_vehicle]] call CBA_fnc_globalEventJIP;
 };
 
 true
