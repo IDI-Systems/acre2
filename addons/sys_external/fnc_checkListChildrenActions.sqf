@@ -25,7 +25,8 @@ private _isAvailable = true;
 // Do not allow an external user to return the headset if the radio is in use
 if (_isUsedExternally && (_unit != _user)) exitWith {false};
 
-// Prevent from taking a radio that can be also heard through the intercom
-if ([_radioId, _unit] call EFUNC(sys_rack,isRadioHearable)) exitWith {false};
+// Prevent from taking a radio that can be also heard through the intercom or directly accessible racks.
+if ([_radioId, _unit] call EFUNC(sys_rack,isRadioHearable) || [_radioId, _unit] call EFUNC(sys_rack,isRadioAccessible)) exitWith {false};
+
 
 _isAvailable
