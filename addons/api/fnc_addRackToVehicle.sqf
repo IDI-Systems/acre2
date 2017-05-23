@@ -27,8 +27,6 @@
 
 params [["_vehicle", objNull], "_rackConfiguration", ["_forceInitialisation", false]];
 
-private _success = true;
-
 if (isNull _vehicle) exitWith {
     WARNING_1("Trying to initialize undefined vehicle %1",format ["%1", _vehicle]);
     false
@@ -40,6 +38,8 @@ if (!_vehicleInitialized && !_forceInitialisation) exitWith {
     false
 };
 
+private _success = true;
+
 if (_forceInitialisation) then {
     if (_vehicleInitialized) then {
         WARNING_1("Vehicle %1 is already initialised but function forces it to initialise again",format ["%1", _vehicle]);
@@ -48,7 +48,7 @@ if (_forceInitialisation) then {
         _success = [_vehicle] call FUNC(initVehicleRacks);
     };
 };
-systemChat format ["Initialised %1", _success];
+
 if (!_success) exitWith {
     WARNING_1("Vehicle %1 failed to initialise",format ["%1", _vehicle]);
 };
@@ -65,5 +65,9 @@ private _disabled = [_vehicle, _disabledPos] call EFUNC(sys_core,processConfigAr
 _intercoms = _intercoms apply {toLower _x};
 
 [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call EFUNC(sys_rack,addRack);
+
+if (count _intercoms > 0) then {
+    [_vehicle] call EFUNC(sys_intercom,configRxTxCapabilities);
+};
 
 true

@@ -12,7 +12,7 @@
  * Setup successful <BOOL>
  *
  * Example:
- * ["ACRE_VRC103_ID_1", "ACRE_PRC117F_ID_1", acre_player] call acre_api_fnc_mountRackRadio
+ * ["ACRE_VRC103_ID_1", "ACRE_PRC117F_ID_1", acre_player] call acre_api_fnc_unmountRackRadio
  *
  * Public: Yes
  */
