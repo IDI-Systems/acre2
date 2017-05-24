@@ -18,5 +18,4 @@
 
 params ["_vehicle", "_unit"];
 
-
 (_vehicle getVariable [QGVAR(vehicleRacks), []]) select {[_x, _unit, _vehicle] call FUNC(isRackHearable)}
