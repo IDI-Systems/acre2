@@ -34,7 +34,6 @@ private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
     //_displayName = format ["%1 Chn: %2",_displayName, _currentChannel];
     //private _isActive = _x isEqualTo _currentRadio;
 
-
     private _name = [_rackClassName, "getState", "name"] call EFUNC(sys_data,dataEvent);
     _displayName = format ["%1 (%2)", _name, _displayName];
 
