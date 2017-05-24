@@ -15,10 +15,10 @@
  */
  #include "script_component.hpp"
 
- params [["_rackId",""]];
+params [["_rackId",""]];
 
- private _mountedRadio = GET_STATE_RACK(_rackId,"mountedRadio");
+private _mountedRadio = GET_STATE_RACK(_rackId,"mountedRadio");
 
- if (isNil "_mountedRadio") then { _mountedRadio = ""; };
+if (isNil "_mountedRadio") then { _mountedRadio = ""; };
 
- _mountedRadio;
+_mountedRadio;
