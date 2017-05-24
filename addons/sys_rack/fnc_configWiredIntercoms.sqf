@@ -4,7 +4,6 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Rack class <STRING>
  *
  * Return Value:
  * None
@@ -16,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_rack"];
+params ["_vehicle","_rack"];
 
 private _type = typeOf _vehicle;
 
@@ -30,7 +29,7 @@ if (count _accessibleIntercoms ==  0) then {
         _accessibleIntercoms = ["crew"];
     };
 
-    if ((_hasPassengerIntercom == 1) && count (_vehicle getVariable [QGVAR(passengerIntercomPositions), []]) > 0) then {
+    if ((_hasPassengerIntercom == 1) && count (_vehicle getVariable [QGVAR(crewIntercomPositions), []]) > 0) then {
         _accessibleIntercoms pushBack "passenger";
     };
 } else {
@@ -41,7 +40,7 @@ if (count _accessibleIntercoms ==  0) then {
         _accessibleIntercoms = _accessibleIntercoms - ["crew"];
     };
 
-    if ("passenger" in _accessibleIntercoms && ((_hasPassengerIntercom != 1) || count (_vehicle getVariable [QGVAR(passengerIntercomPositions), []]) == 0)) then {
+    if ("passenger" in _accessibleIntercoms && ((_hasPassengerIntercom != 1) || count (_vehicle getVariable [QGVAR(crewIntercomPositions), []]) > 0)) then {
         if (_hasPassengerIntercom != 1) then {
             WARNING_1("Vehicle type %1 does not have a passenger intercom but the rack %2 can have access to its network",_type,_rack);
         } else {

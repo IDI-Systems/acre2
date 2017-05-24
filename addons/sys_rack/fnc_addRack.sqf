@@ -8,16 +8,13 @@
  * 2: Rackname - this is diplayed to the user. Ideally short <STRING>
  * 3: Is mounted radio removable <BOOLEAN>
  * 4: Access - Determines who can use the rack <ARRAY>
- * 5: Disabled positions - Blacklist rack use positions <ARRAY>
- * 6: Stashed radio - Does the rack start with a radio in it - Default "" - None <STRING>
- * 7: Components <ARRAY>
- * 8: Connected intercoms <ARRAY>
+ * 5: Stashed radio - Does the rack start with a radio in it - Default "" - None <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [cursorTarget, "ACRE_VRC110", "Dash", true, [["driver"], ["commander"], ["gunner"]], [], "ACRE_PRC152", [], ["crew"]] call acre_sys_rack_fnc_addRack
+ * [vehicle1,"ACRE_VRC110","Dash",true,["driver","commander","gunner"],'ACRE_PRC152'] call acre_sys_rack_fnc_addRack
  *
  * Public: No
  */
