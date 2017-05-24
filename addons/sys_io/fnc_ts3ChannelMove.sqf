@@ -1,6 +1,6 @@
 /*
  * Author: Tim Beswick
- * Checks if main display is visible and sets server name, triggering TeamSpeak 3 channel move.
+ * Sends configured channel name and server name to TS plugin, triggering TeamSpeak 3 channel move.
  *
  * Arguments:
  * None
@@ -15,5 +15,6 @@
  */
 #include "script_component.hpp"
 
-TRACE_1("Moving TS3 Channel",serverName);
-CALL_RPC("setServerName",serverName);
+private _ts3ChannelNames = format ["%1,%2", EGVAR(sys_core,ts3ChannelName), serverName];
+TRACE_1("Moving TS3 Channel",_ts3ChannelNames);
+CALL_RPC("setTs3ChannelNames",_ts3ChannelNames);

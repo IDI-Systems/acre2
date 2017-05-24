@@ -22,7 +22,7 @@
 #include "updateSelf.h"
 #include "setSelectableVoiceCurve.h"
 #include "setSetting.h"
-#include "setServerName.h"
+#include "setTs3ChannelNames.h"
 
 
 ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
@@ -66,7 +66,7 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
     this->getRpcEngine()->addProcedure(new updateSelf());
     this->getRpcEngine()->addProcedure(new setSelectableVoiceCurve());
     this->getRpcEngine()->addProcedure(new setSetting());
-    this->getRpcEngine()->addProcedure(new setServerName());
+    this->getRpcEngine()->addProcedure(new setTs3ChannelNames());
 
     // Initialize the client, because it never was derp
     this->getClient()->initialize();

@@ -1,11 +1,10 @@
-#pragma once
+﻿#pragma once
 
 #include "IClient.h"
 #include "TsFunctions.h"
 #include <thread>
 #include <string>
 #include <vector>
-typedef std::vector<std::string> Sentence;
 
 class CTS3Client: public IClient {
 public:
@@ -50,11 +49,10 @@ public:
 
     ACRE_RESULT moveToServerTS3Channel();
     ACRE_RESULT moveToPreviousTS3Channel();
-    uint64 findChannelByName(std::string name);
-    unsigned int levenshteinDistance(const Sentence& string1, const Sentence& string2);
-    Sentence split(const std::string &s, char delim, Sentence &elems);
-    Sentence split(const std::string &s, char delim);
-    ACRE_RESULT updateServerName(std::string name);
+    uint64 findChannelByNames(std::vector<std::string> names);
+    unsigned int levenshteinDistance(const std::string& string1, const std::string& string2);
+    void removeSubstrings(std::string& string, std::string substring);
+    ACRE_RESULT updateTs3ChannelNames(std::vector<std::string> names);
     ACRE_RESULT updateShouldSwitchTS3Channel(BOOL state);
     BOOL shouldSwitchTS3Channel();
 
@@ -70,7 +68,7 @@ public:
     DECLARE_MEMBER(BOOL, IsX3DInitialized);
     DECLARE_MEMBER(UINT32, SpeakerMask);
     DECLARE_MEMBER(uint64, PreviousTSChannel);
-    DECLARE_MEMBER(std::string, ServerName);
+    DECLARE_MEMBER(std::vector<std::string>, Ts3ChannelNames);
     DECLARE_MEMBER(BOOL, ShouldSwitchTS3Channel)
 protected:
     std::thread m_versionThreadHandle;
