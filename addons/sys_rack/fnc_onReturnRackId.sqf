@@ -34,7 +34,9 @@ if (_replacementId != "") then {
     HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
 };
 
- //TODO: test this works.
+
+/*
+//TODO: test this works.
 private _crewPlayers = (crew _entity) select {isPlayer _x};
 private _condition = false;
 if (count _crewPlayers > 0) then {
@@ -47,11 +49,12 @@ if (count _crewPlayers > 0) then {
         _condition = true;
     };
 };
+*/
 
 
-if (_condition) then {
+//if (_condition) then {
     //Add to vehicle
     [_entity, _class] call FUNC(addRackOnReturn);
 
     ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_globalEvent);
-};
+//};

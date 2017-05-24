@@ -27,6 +27,11 @@
 
 params [["_vehicle", objNull], "_rackConfiguration", ["_forceInitialisation", false]];
 
+if (!isServer) exitWith {
+    WARNING("Function must be called on the server.");
+    false
+};
+
 if (isNull _vehicle) exitWith {
     WARNING_1("Trying to initialize undefined vehicle %1",format ["%1", _vehicle]);
     false
@@ -64,10 +69,16 @@ private _allowed = [_vehicle, _allowedPos] call EFUNC(sys_core,processConfigArra
 private _disabled = [_vehicle, _disabledPos] call EFUNC(sys_core,processConfigArray);
 _intercoms = _intercoms apply {toLower _x};
 
-[_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call EFUNC(sys_rack,addRack);
+if (isDedicated) then {
+    // Pick the first player:
+    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
+    [QGVAR(addVehicleRacks), [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms], _player] call CBA_fnc_targetEvent;
+} else {
+    [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call EFUNC(sys_rack,addRack);
 
-if (count _intercoms > 0) then {
-    [_vehicle] call EFUNC(sys_intercom,configRxTxCapabilities);
+    if (count _intercoms > 0) then {
+        _vehicle setVariable [QEGVAR(sys_rack,rackIntercomInitialised), false, true];
+    };
 };
 
 true

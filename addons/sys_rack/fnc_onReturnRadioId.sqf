@@ -28,6 +28,7 @@ HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
 private _vehicle = _rackObject;
 _vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
 
+/*
  //TODO: test this works.
 private _crewPlayers = (crew _vehicle) select {isPlayer _x};
 private _condition = false;
@@ -40,9 +41,9 @@ if (count _crewPlayers > 0) then {
     if (isServer) then {
         _condition = true;
     };
-};
+};*/
 
-if (_condition) then {
+//if (_condition) then {
     private _baseRadio = BASECLASS(_class);
     private _rackId = typeOf _rackObject;
     if (_baseRadio == GET_STATE_RACK(_rackId,"mountedRadio")) then {
@@ -60,4 +61,4 @@ if (_condition) then {
     };
 
     ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_globalEvent);
-};
+//};
