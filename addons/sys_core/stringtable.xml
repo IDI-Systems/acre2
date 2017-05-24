@@ -54,6 +54,9 @@
             <Russian>Смена ТимСпик канала</Russian>
             <Japanese>TeamSpeak チャンネル切り替え</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
+            <English>TeamSpeak Channel Name</English>
+        </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
             <Spanish>Desactiva la notificación de desincronización del equipaje</Spanish>

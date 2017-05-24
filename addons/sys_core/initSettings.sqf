@@ -38,6 +38,8 @@
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
 ] call CBA_Settings_fnc_init;
 
+// Teamspeak Channel Switching
+// Switch channels
 [
     QGVAR(ts3ChannelSwitch),
     "CHECKBOX",
@@ -46,6 +48,17 @@
     true,
     false,
     {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
+] call CBA_Settings_fnc_init;
+
+// Channel Name
+[
+    QGVAR(ts3ChannelName),
+    "EDITBOX",
+    localize LSTRING(ts3ChannelName_displayName),
+    "ACRE2",
+    "",
+    false,
+    {call EFUNC(sys_io,ts3ChannelMove)}
 ] call CBA_Settings_fnc_init;
 
 // Difficulty settings
