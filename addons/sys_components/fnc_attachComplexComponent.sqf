@@ -11,7 +11,7 @@
  * 5: Force - Permits replacing a pre-existing connection <BOOLEAN>
  *
  * Return Value:
- * Succesful <BOOLEAN>
+ * successful <BOOLEAN>
  *
  * Example:
  * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,[],false] call acre_sys_components_fnc_attachComplexComponent

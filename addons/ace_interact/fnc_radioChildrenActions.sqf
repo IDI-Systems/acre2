@@ -52,7 +52,7 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
     };
 
     // Rack radios in intercom, RX/TX functionality
-    if ((toLower _radio) in ACRE_ACCESSIBLE_RACK_RADIOS || (toLower _radio) in ACRE_ACCESSIBLE_RACK_RADIOS) then {
+    if (((toLower _radio) in ACRE_ACCESSIBLE_RACK_RADIOS || (toLower _radio) in ACRE_HEARABLE_RACK_RADIOS) && {[toLower _radio, acre_player] call EFUNC(sys_rack,isRadioHearable)}) then {
         private _functionality = [_radio, vehicle acre_player, acre_player] call EFUNC(sys_intercom,getRxTxCapabilities);
         switch (_functionality) do {
             case RACK_NO_MONITOR: {
@@ -93,7 +93,7 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
 };
 
 if (GVAR(connectorsEnabled)) then {
-    _action = ["acre_connectors", "Connectors", "\idi\acre\addons\ace_interact\data\icons\connector4.paa", {}, {true}, {_this call FUNC(generateConnectors);}, _params] call ace_interact_menu_fnc_createAction;
+    private _action = ["acre_connectors", "Connectors", "\idi\acre\addons\ace_interact\data\icons\connector4.paa", {}, {true}, {_this call FUNC(generateConnectors);}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 

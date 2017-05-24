@@ -34,6 +34,11 @@ if (count _accessibleIntercoms ==  0) then {
     };
 } else {
     _accessibleIntercoms = _accessibleIntercoms apply {toLower _x};
+
+    if ("none" in _accessibleIntercoms) then {
+        _accessibleIntercoms = [];
+    };
+
     // Check for a valid configuration
     if ("crew" in _accessibleIntercoms && (_hasCrewIntercom != 1)) then {
         WARNING_1("Vehicle type %1 does not have a crew intercom but the rack %2 can have access to its network",_type,_rack);
