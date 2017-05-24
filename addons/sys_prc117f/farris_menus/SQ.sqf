@@ -33,7 +33,7 @@ GVAR(SQ_ONLY_AM) = ["SQ_ONLY_AM", "SQ_ONLY_AM", "",
             TRACE_1("ERROR_NOENTRY:onButtonPress", (_this select 1));
             if (((_this select 1) select 0) == "ENT" || ((_this select 1) select 0) == "CLR") then {
                 TRACE_1("BACK TO HOME", "");
-                _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+                private _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
                 [_home] call FUNC(changeMenu);
             };
             true
@@ -74,7 +74,7 @@ GVAR(SQ) = ["SQ", "SQ", "Squelch Settings",
     ],
     {
         //Call on series completion
-        _selectDigital = SCRATCH_GET(GVAR(currentRadioID), "sq_select_digital");
+        private _selectDigital = SCRATCH_GET(GVAR(currentRadioID), "sq_select_digital");
 
         switch _selectDigital do {
             case 'ON': {_selectDigital = true; };
@@ -112,9 +112,9 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                 {
                     // Need to pull the current squelch type and set to selection correctly
                     TRACE_1("Entering ctcss value","");
-                    _mode = "";
-                    _ctcss = GET_RADIO_VALUE("CTCSSRx");
-                    _squelch = GET_RADIO_VALUE("squelch");
+                    private _mode = "";
+                    private _ctcss = GET_RADIO_VALUE("CTCSSRx");
+                    private _squelch = GET_RADIO_VALUE("squelch");
                     SET_STATE("menuSelection", 0);
 
                     if (_ctcss > 0) then {
@@ -126,9 +126,9 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                         _mode = "OFF";
                     };
 
-                    _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
+                    private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
                     {
-                        _modeInt = _x;
+                        private _modeInt = _x;
                         if (_modeInt == _mode) exitWith {
                             TRACE_1("FOUND MATCH", _forEachIndex);
                             SET_STATE("menuSelection", _forEachIndex);
@@ -153,11 +153,11 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
     ],
     {
         //Call on series completion
-        _selectAnalogSquelch = SCRATCH_GET(GVAR(currentRadioID), "sq_select_analog");
-        _channel = GET_CHANNEL_DATA();
-        _CTCSS = HASH_GET(_channel, "CTCSSRx");
-        _squelch = HASH_GET(_channel, "squelch");
-        _modulation = HASH_GET(_channel, "modulation");
+        private _selectAnalogSquelch = SCRATCH_GET(GVAR(currentRadioID), "sq_select_analog");
+        private _channel = GET_CHANNEL_DATA();
+        private _CTCSS = HASH_GET(_channel, "CTCSSRx");
+        private _squelch = HASH_GET(_channel, "squelch");
+        private _modulation = HASH_GET(_channel, "modulation");
 
         switch _selectAnalogSquelch do {
             case 'OFF': {_selectAnalogSquelch = 0; _CTCSS = 0; _squelch = 0; };
@@ -195,7 +195,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                 true
             };
         };
-        _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+        private _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
         [_home] call FUNC(changeMenu);
         true
     },
@@ -235,9 +235,9 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
     ],
     {
         //Call on series completion
-        _selectSquelch = SCRATCH_GET(GVAR(currentRadioID), "sq_select_squelch");
-        _channel = GET_CHANNEL_DATA();
-        _squelch = HASH_GET(_channel, "squelch");
+        private _selectSquelch = SCRATCH_GET(GVAR(currentRadioID), "sq_select_squelch");
+        private _channel = GET_CHANNEL_DATA();
+        private _squelch = HASH_GET(_channel, "squelch");
 
         switch _selectSquelch do {
             case 'LOW': {_selectSquelch = 1; };
@@ -275,12 +275,12 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
             [
                 {
                     TRACE_1("Entering ctcss value","");
-                    _ctcss = GET_RADIO_VALUE("CTCSSRx");
+                    private _ctcss = GET_RADIO_VALUE("CTCSSRx");
                     SET_STATE("menuSelection", 0);
 
-                    _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
+                    private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
                     {
-                        _ctcssInt = (parseNumber _x);
+                        private _ctcssInt = (parseNumber _x);
                         TRACE_2("COMPARE", _ctcssInt, _ctcss);
                         if (_ctcssInt == _ctcss) exitWith {
                             TRACE_1("FOUND MATCH", _forEachIndex);
@@ -305,9 +305,9 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
     ],
     {
         //Call on series completion
-        _selectctcss = SCRATCH_GET(GVAR(currentRadioID), "sq_select_ctcss");
-        _channel = GET_CHANNEL_DATA();
-        _ctcss = HASH_GET(_channel, "CTCSSRx");
+        private _selectctcss = SCRATCH_GET(GVAR(currentRadioID), "sq_select_ctcss");
+        private _channel = GET_CHANNEL_DATA();
+        private _ctcss = HASH_GET(_channel, "CTCSSRx");
 
         _ctcss = parseNumber _selectctcss;
 

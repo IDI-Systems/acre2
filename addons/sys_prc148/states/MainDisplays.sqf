@@ -31,14 +31,14 @@ DFUNC(DefaultDisplay_Render) = {
     //[_display, ICON_SIDECONNECTOR, true] call FUNC(showIcon);
 
 
-    _group = GET_STATE("groups") select GET_STATE("currentGroup");
+    private _group = GET_STATE("groups") select GET_STATE("currentGroup");
 
-    _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-    _groupLabel = _group select 0;
+    private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+    private _groupLabel = _group select 0;
 
-    _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
+    private _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
 
-    _channelLabel = HASH_GET(_channel, "label");
+    private _channelLabel = HASH_GET(_channel, "label");
 
     SET_TEXT(_groupLabel, SMALL_LINE_1, 6, 8);
     SET_TEXT(_channelLabel, SMALL_LINE_2, 6, 12);
@@ -51,10 +51,10 @@ DFUNC(DefaultDisplay_Render) = {
     } else {
         SET_TEXT("PT", SMALL_LINE_5, 9, 10);
     };
-    _channelMode = HASH_GET(_channel, "channelMode");
+    private _channelMode = HASH_GET(_channel, "channelMode");
     switch _channelMode do {
         case "BASIC": {
-            _modulation = HASH_GET(_channel, "modulation");
+            private _modulation = HASH_GET(_channel, "modulation");
             SET_TEXT(_modulation, SMALL_LINE_5, 14, 15);
         };
     };
@@ -78,25 +78,25 @@ DFUNC(DefaultDisplay_ENT) = {
 DFUNC(AlternateDisplay_Render) = {
     params ["_display"];
 
-    _group = GET_STATE("groups") select GET_STATE("currentGroup");
-    _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+    private _group = GET_STATE("groups") select GET_STATE("currentGroup");
+    private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
 
-    _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
+    private _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
 
-    _channelMode = HASH_GET(_channel, "channelMode");
+    private _channelMode = HASH_GET(_channel, "channelMode");
     switch _channelMode do {
         case "BASIC": {
 
-            _fTX = HASH_GET(_channel, "frequencyTX");
-            _fRX = HASH_GET(_channel, "frequencyRX");
+            private _fTX = HASH_GET(_channel, "frequencyTX");
+            private _fRX = HASH_GET(_channel, "frequencyRX");
             // _fTX = 167.5625;
             // _fRX = _fTX;
-            _cTX = HASH_GET(_channel, "CTCSSTx");
-            _cRX = HASH_GET(_channel, "CTCSSRx");
+            private _cTX = HASH_GET(_channel, "CTCSSTx");
+            private _cRX = HASH_GET(_channel, "CTCSSRx");
 
-            _modulation = HASH_GET(_channel, "modulation");
-            _trafficRate = HASH_GET(_channel, "trafficRate");
-            _TEK = HASH_GET(_channel, "TEK");
+            private _modulation = HASH_GET(_channel, "modulation");
+            private _trafficRate = HASH_GET(_channel, "trafficRate");
+            private _TEK = HASH_GET(_channel, "TEK");
             //acre_player sideChat format["_fTX: %1", _fTX];
             // [_display, SMALL_LINE_1, format[" RX = %1", ([_fRX] call FUNC(frequencyToString))], LEFT_ALIGN] call FUNC(displayLine);
             // [_display, SMALL_LINE_2, format[" TX = %1", ([_fRX] call FUNC(frequencyToString))], LEFT_ALIGN] call FUNC(displayLine);
@@ -106,8 +106,8 @@ DFUNC(AlternateDisplay_Render) = {
             [_display, SMALL_LINE_2, [7, 16], ([_fTX] call FUNC(frequencyToString)), "###.#####"] call FUNC(setText);
 
 
-            _cRxStr = format["R = %1", _cRX];
-            _cTxStr = format["T = %1", _cRX];
+            private _cRxStr = format["R = %1", _cRX];
+            private _cTxStr = format["T = %1", _cRX];
 
             SET_TEXT(_cRxStr, SMALL_LINE_3, 2, 10);
             SET_TEXT(_cTxStr, SMALL_LINE_3, 15, 23);

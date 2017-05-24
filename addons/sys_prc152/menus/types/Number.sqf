@@ -95,8 +95,8 @@ DFUNC(onButtonPress_Number) = {
         case '9': { _this call FUNC(doNumberButton); };
         case '0': { _this call FUNC(doNumberButton); };
         case 'LEFT': {
-            _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
-            _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
+            private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
             if (_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
@@ -104,7 +104,7 @@ DFUNC(onButtonPress_Number) = {
             };
 
             TRACE_3("Left hit, checking", _value, _editIndex, _editDigits);
-            _strValue = [_value, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
+            private _strValue = [_value, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
             if ( ((toArray _strValue) select _editIndex) == 46) then {
                 // recursively push a button again, since we want to skip it.
                 TRACE_1("Hit a digit, skipping", _editIndex);
@@ -119,8 +119,8 @@ DFUNC(onButtonPress_Number) = {
             [_menu] call FUNC(renderMenu_Number);
         };
         case 'RIGHT': {
-            _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
-            _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
+            private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuNumberCursor", 0);
             if (_editIndex+1 < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
@@ -128,7 +128,7 @@ DFUNC(onButtonPress_Number) = {
             };
 
             TRACE_3("Right hit, checking", _value, _editIndex, _editDigits);
-            _strValue = [_value, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
+            private _strValue = [_value, (MENU_SELECTION_DISPLAYSET(_menu) select 2)] call CBA_fnc_formatNumber;
             if ( ((toArray _strValue) select _editIndex) == 46) then {
                 // recursively push a button again, since we want to skip it.
                 TRACE_1("Hit a digit, skipping", _editIndex);
@@ -146,7 +146,7 @@ DFUNC(onButtonPress_Number) = {
             // swap to the parent
             TRACE_1("onButtonPress_Number: ENT hit", _value);
 
-            _saveName = MENU_SELECTION_VARIABLE(_menu);
+            private _saveName = MENU_SELECTION_VARIABLE(_menu);
             SET_STATE(_saveName, _value);
 
             SCRATCH_SET(GVAR(currentRadioId), "menuNumber", nil);

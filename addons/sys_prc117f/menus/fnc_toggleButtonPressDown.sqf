@@ -23,5 +23,5 @@ if (isNull _display) then {
     private _knobImageStr = QUOTE(\idi\acre\addons\sys_prc117f\Data\knobs\prc117f_ui_) + _button + QUOTE(.paa);
     (_display displayCtrl _iconcontrol) ctrlSetText _knobImageStr;
     SET_STATE("pressedButton",_button);
-    _ret = [GVAR(currentRadioId), FUNC(toggleButtonPressUp), 0.15] call FUNC(delayFunction);
+    private _ret = [GVAR(currentRadioId), FUNC(toggleButtonPressUp), 0.15] call FUNC(delayFunction);
 };

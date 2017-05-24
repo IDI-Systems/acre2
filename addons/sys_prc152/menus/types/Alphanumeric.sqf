@@ -51,8 +51,8 @@ DFUNC(doAlphanumericButton) = {
     TRACE_1("", _number);
     if (_number > -1 && _number < 10) then {
 
-        _arr = toArray _value;
-        _character = _arr select _editIndex;
+        private _arr = toArray _value;
+        private _character = _arr select _editIndex;
 
         _character = ( toArray ((GVAR(NumpadMap) select _number) select _editButtonPress) select 0);
         TRACE_4("Values", _character, _number, _editButtonPress, _arr);

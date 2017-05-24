@@ -20,6 +20,6 @@ params ["_radioId", "_event", "_eventData", "_radioData"];
 
 HASH_SET(_radioData, _eventData select 0, _eventData select 1);
 if (_radioId == EGVAR(sys_radio,currentRadioDialog)) then {
-    _display = uiNamespace getVariable QGVAR(currentDisplay);
+    private _display = uiNamespace getVariable QGVAR(currentDisplay);
     [_display] call FUNC(render);
 };

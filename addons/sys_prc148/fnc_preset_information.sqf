@@ -21,19 +21,17 @@ private _presetData = HASH_CREATE;
 private _channels = HASHLIST_CREATELIST(["power"]);
 
 for "_i" from 0 to 31 do {
-    _channel = HASHLIST_CREATEHASH(_channels);
-    _find = true;
-    _frequency = 0;
+    private _channel = HASHLIST_CREATEHASH(_channels);
+    private _frequency = 0;
     _frequency = (950+(_i*2))*0.0625;
     if (!(_frequency in _usedPresetFrequencies)) then {
-        _ok = true;
+        private _ok = true;
         {
             if (abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            _find = false;
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
@@ -56,7 +54,7 @@ for "_i" from 0 to 31 do {
     HASHLIST_PUSH(_channels, _channel);
 };
 HASH_SET(_presetData,"channels",_channels);
-_groups = [
+private _groups = [
         ["G01", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]],
         ["G02", [16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]],
         ["G03", []],
@@ -82,19 +80,17 @@ _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["power"]);
 
 for "_i" from 0 to 31 do {
-    _channel = HASHLIST_CREATEHASH(_channels);
-    _find = true;
-    _frequency = 0;
+    private _channel = HASHLIST_CREATEHASH(_channels);
+    private _frequency = 0;
     _frequency = (950+200+(_i*2))*0.0625;
     if (!(_frequency in _usedPresetFrequencies)) then {
-        _ok = true;
+        private _ok = true;
         {
             if (abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            _find = false;
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
@@ -143,19 +139,17 @@ _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["power"]);
 
 for "_i" from 0 to 31 do {
-    _channel = HASHLIST_CREATEHASH(_channels);
-    _find = true;
-    _frequency = 0;
+    private _channel = HASHLIST_CREATEHASH(_channels);
+    private _frequency = 0;
     _frequency = (950+400+(_i*2))*0.0625;
     if (!(_frequency in _usedPresetFrequencies)) then {
-        _ok = true;
+        private _ok = true;
         {
             if (abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            _find = false;
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
@@ -204,19 +198,17 @@ _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["power"]);
 
 for "_i" from 0 to 31 do {
-    _channel = HASHLIST_CREATEHASH(_channels);
-    _find = true;
-    _frequency = 0;
+    private _channel = HASHLIST_CREATEHASH(_channels);
+    private _frequency = 0;
     _frequency = (950+600+(_i*2))*0.0625;
     if (!(_frequency in _usedPresetFrequencies)) then {
-        _ok = true;
+        private _ok = true;
         {
             if (abs(_x-_frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            _find = false;
             PUSH(_usedPresetFrequencies, _frequency);
         };
     };
@@ -267,10 +259,10 @@ DGVAR(PFHId) = -1;
 DGVAR(alpha) = [];
 DGVAR(numeric) = [];
 
-_alpha = " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-_numeric = "1234567890";
+private _alpha = " ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+private _numeric = "1234567890";
 
-_array = toArray _alpha;
+private _array = toArray _alpha;
 {
     PUSH(GVAR(alpha), (toString [_x]));
 } forEach _array;
