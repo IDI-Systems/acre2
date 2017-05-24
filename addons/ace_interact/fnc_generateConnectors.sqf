@@ -56,7 +56,7 @@ private _parentType = getNumber (_componentClass >> "type");
     };
 
 
-    _action = [format ["acre_connector_%1", _forEachIndex], _displayName, _icon, {1+1;}, {true}, {_this call FUNC(generateConnectorActions);}, _childParams] call ace_interact_menu_fnc_createAction;
+    private _action = [format ["acre_connector_%1", _forEachIndex], _displayName, _icon, {1+1;}, {true}, {_this call FUNC(generateConnectorActions);}, _childParams] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 
 } forEach _connectors;

@@ -17,6 +17,8 @@
 
 params ["_vehicle"];
 
+private _type = typeOf _vehicle;
+
 private _intercomStatus = [];
 private _intercomPos = [];
 

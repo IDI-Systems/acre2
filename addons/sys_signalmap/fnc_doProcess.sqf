@@ -123,6 +123,7 @@ with uiNamespace do {
         ];
         GVAR(currentArgs) pushBack +_args;
         with missionNamespace do {
+            //IGNORE_PRIVATE_WARNING ["_args"];
             [
                 "signal_map",
                 _args,
@@ -154,12 +155,13 @@ with uiNamespace do {
         private _fnc = {
             with uiNamespace do {
                 if (GVAR(areaProgress) != (count GVAR(rxAreas))) then {
-                    _res = [1,1];
+                    private _res = [1,1];
                     with missionNamespace do {
+                        //IGNORE_PRIVATE_WARNING ["_res"];
                         _res = ["signal_map_progress", ""] call EFUNC(sys_core,callExt);
                     };
                     diag_log text format["res: %1", _res];
-                    _p = (_res select 0)/(_res select 1);
+                    private _p = (_res select 0)/(_res select 1);
                     GVAR(progressBar) progressSetPosition _p;
                     if (_p != 1) then {
                         GVAR(chunkProgressText) ctrlSetStructuredText (parseText format["<t align='center'>%1/%2</t>", _res select 0, _res select 1]);

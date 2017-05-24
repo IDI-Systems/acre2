@@ -33,7 +33,7 @@ if (!isNil "_connectorData") then { // Comomponent attached.
     _connectorChildData params ["_childComponentName"];
     private _childDisplayName = getText (configFile >> "CfgAcreComponents" >> _childComponentName >> "shortName");
 
-    private _action = [format ["acre_%1_connector_%2_component", _radio, _connectorIndex], _childDisplayName, "", {1 + 1;}, {true}, {}, _childParams] call ace_interact_menu_fnc_createAction;
+    private _action = [format ["acre_%1_connector_%2_component", _radio, _connectorIndex], _childDisplayName, "", {1 + 1;}, {true}, {}/*, _childParams*/] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 

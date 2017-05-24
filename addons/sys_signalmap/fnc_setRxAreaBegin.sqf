@@ -27,6 +27,7 @@ if (_this select 1 == 0) then {
     private _pos = ((findDisplay 12) displayCtrl 51) ctrlMapScreenToWorld [_x, _y];
     _pos set [2, 0];
     with uiNamespace do {
+        //IGNORE_PRIVATE_WARNING ["_pos"];
         GVAR(rxAreaStart) = _pos;
         deleteMarkerLocal QGVAR(rxAreaStartMarker);
         private _marker = createMarkerLocal [QGVAR(rxAreaStartMarker), _pos];

@@ -51,6 +51,7 @@ with uiNamespace do {
         private _args = [_id, _indexOffset select 0, _indexOffset select 1, _extents select 0, _extents select 1];
         private _result = [];
         with missionNamespace do {
+            //IGNORE_PRIVATE_WARNING ["_result", "_args"];
             _result = ["signal_map_get_sample_data", _args] call EFUNC(sys_core,callExt);
         };
         GVAR(sampleData) = [];

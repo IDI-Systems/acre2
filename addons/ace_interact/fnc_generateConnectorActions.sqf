@@ -26,7 +26,7 @@ switch (_connectorType) do {
         if (_connectedType != -1) then { // something connected.
             private _name = format ["Unplug %1", _childDisplayName];
 
-            private _action = [format ["acre_con_%1_action", _forEachIndex], _name, "", {
+            private _action = ["acre_con_action", _name, "", {
                 params ["_target", "", "_params"];
                 _params params ["_parentComponentId", "_parentConnector"];
                 [_parentComponentId, _parentConnector] call EFUNC(sys_components,fnc_detachComponent);
@@ -50,7 +50,7 @@ switch (_connectorType) do {
                         private _baseClass = BASE_CLASS_CONFIG(_radioID);
                         private _name = format ["Connect to %1",getText (configFile >> "CfgAcreComponents" >> _baseClass >> "name")];
                         private _icon = getText (configFile >> "CfgWeapons" >> _baseClass >> "picture");
-                        _action = [format ["acre_con_%1_action", _forEachIndex], _name, _icon, {
+                        private _action = [format ["acre_con_rack_%1_action", _forEachIndex], _name, _icon, {
                             params ["_target","","_params"];
                             _params params ["_parentComponent","_connectorIndex","_radioId","_connectorRadioIdx"];
                             [_parentComponent, _connectorIndex, _radioId, _connectorRadioIdx, []] call EFUNC(sys_components,fnc_attachComplexComponent);
@@ -76,7 +76,7 @@ switch (_connectorType) do {
                     if (_connectorRackIdx != -1) then {
                         private _name = format ["Connect to %1",getText (configFile >> "CfgAcreComponents" >> _baseClass >> "name")];
                         private _icon = "\idi\acre\addons\ace_interact\data\icons\rack.paa";
-                        _action = [format ["acre_con_%1_action", _forEachIndex], _name, _icon, {
+                        private _action = [format ["acre_con_radio_%1_action", _forEachIndex], _name, _icon, {
                             params ["_target","","_params"];
                             _params params ["_parentComponent","_connectorIndex","_rackId","_connectorRackIdx"];
                             [_parentComponent, _connectorIndex, _rackId, _connectorRackIdx, []] call EFUNC(sys_components,fnc_attachComplexComponent);
