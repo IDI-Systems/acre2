@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Initialises all racks in the vehicle.
+ * Initialises all racks in the vehicle. Must be executed in the server.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
