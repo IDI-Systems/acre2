@@ -20,7 +20,7 @@ params ["_vehicle", "_rack"];
 
 private _type = typeOf _vehicle;
 
-private _accessibleIntercoms = getArray (_rack >> "wiredIntercoms");
+private _accessibleIntercoms = getArray (_rack >> "intercom");
 private _hasCrewIntercom = getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom");
 private _hasPassengerIntercom = getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom");
 
