@@ -1,4 +1,4 @@
-#include "compat.h"
+﻿#include "compat.h"
 
 #include "TS3Client.h"
 #include "Engine.h"
@@ -12,6 +12,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <numeric>
 
 #include "AcreSettings.h"
 
@@ -21,7 +22,6 @@
 #define DEFAULT_TS3_CHANNEL "ACRE"
 
 extern TS3Functions ts3Functions;
-typedef std::vector<std::string> Sentence;
 
 //TS3Functions CTS3Client::ts3Functions;
 
@@ -430,34 +430,20 @@ ACRE_RESULT CTS3Client::unMuteAll( void ) {
 }
 
 ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
-    //Only switch channel if enabled in settings
     if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
         anyID clientId;
-        std::string serverName = getServerName();
+        std::vector<std::string> names = getTs3ChannelNames();
 
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
             uint64 channelId = INVALID_TS3_CHANNEL;
             uint64 currentChannelId = INVALID_TS3_CHANNEL;
-            //Get current channel and store
             if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok && getPreviousTSChannel() == INVALID_TS3_CHANNEL) {
-                //LOG("Storing current channel: %d", currentChannelId);
                 setPreviousTSChannel(currentChannelId);
-            } else {
-                //LOG("Can't get current channel or is the same channel");
             }
 
-            channelId = findChannelByName(serverName);
-            if (channelId != INVALID_TS3_CHANNEL) {
-                //LOG("Trying to move to channel: %d", channelId);
-                if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
-                    if (ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
-                        //LOG("Moved to channel: %d", channelId);
-                    } else {
-                        //LOG("Couldn't move to channel: %d", channelId);
-                    }
-                }
-            } else {
-                //LOG("Couldn't find channel contianing %s or a default channel", serverName);
+            channelId = findChannelByNames(names);
+            if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
+                ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL);
             }
         }
     }
@@ -474,17 +460,8 @@ ACRE_RESULT CTS3Client::moveToPreviousTS3Channel() {
             if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok) {
                 channelId = getPreviousTSChannel();
                 if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
-                    //LOG("Trying to move to original channel: %d", channelId);
-                    if (ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL) == ERROR_ok) {
-                        //LOG("Moved to channel: %d", channelId);
-                    } else {
-                        //LOG("Couldn't move to channel: %d", channelId);
-                    }
-                } else {
-                    //LOG("Same channel or no original channel to switch to");
+                    ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL);
                 }
-            } else {
-                //LOG("Can't get current channel");
             }
         }
         setPreviousTSChannel(INVALID_TS3_CHANNEL);
@@ -492,78 +469,86 @@ ACRE_RESULT CTS3Client::moveToPreviousTS3Channel() {
     return ACRE_OK;
 }
 
-uint64 CTS3Client::findChannelByName(std::string name) {
+uint64 CTS3Client::findChannelByNames(std::vector<std::string> names) {
     uint64 *channelList;
     uint64 channelId = INVALID_TS3_CHANNEL;
     char* channelName;
     std::map<uint64, std::string> channelMap;
     int bestDistance = 40;
     uint64 bestChannelId = INVALID_TS3_CHANNEL;
+    std::string name = names[1];
+
+    if (names[0] != "") {
+        name = names[0];
+    }
 
     if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
         while (*channelList) {
             channelId = *channelList;
             channelList++;
-            //LOG("Found channel: %d", channelId);
             if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
                 std::string channelNameString = std::string(channelName);
                 if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1) {
+                    if (channelNameString != DEFAULT_TS3_CHANNEL) {
+                        removeSubstrings(channelNameString, DEFAULT_TS3_CHANNEL);
+                    }
                     channelMap.emplace(channelId, channelNameString);
                 }
-            } else {
-                //LOG("Can't get channel name");
             }
         }
 
         for (auto& element : channelMap) {
-            int distance = levenshteinDistance(split(element.second, ' '), split(name, ' ')) + levenshteinDistance(split(name, ' '), split(element.second, ' '));
-            //LOG("Combined istance between '%s' and '%s' is %d", element.second.c_str(), name.c_str(), distance);
-            if (distance < bestDistance) {
+            std::string channelName = element.second;
+            int distance = (levenshteinDistance(channelName, name));
+            if (distance <= bestDistance) {
                 bestDistance = distance;
                 bestChannelId = element.first;
-                //LOG("New best channel is '%s'", element.second.c_str());
             }
         }
         return bestChannelId;
-    } else {
-        //LOG("Can't get channel list");
     }
     return INVALID_TS3_CHANNEL;
 }
 
-unsigned int CTS3Client::levenshteinDistance(const Sentence& string1, const Sentence& string2) {
-    const std::size_t len1 = string1.size(), len2 = string2.size();
-    std::vector<unsigned int> col(len2 + 1), prevCol(len2 + 1);
+unsigned int CTS3Client::levenshteinDistance(const std::string& string1, const std::string& string2) {
+    int length1 = string1.size();
+    int length2 = string2.size();
 
-    for (unsigned int i = 0; i < prevCol.size(); i++)
-        prevCol[i] = i;
-    for (unsigned int i = 0; i < len1; i++) {
-        col[0] = i + 1;
-        for (unsigned int j = 0; j < len2; j++)
-            col[j + 1] = std::min({prevCol[1 + j] + 1, col[j] + 1, prevCol[j] + (string1[i] == string2[j] ? 0 : 1)});
-        col.swap(prevCol);
+    auto columnStart = (decltype(length1))1;
+
+    auto column = new decltype(length1)[length1 + 1];
+    std::iota(column + columnStart, column + length1 + 1, columnStart);
+
+    for (auto x = columnStart; x <= length2; x++) {
+        column[0] = x;
+        auto lastDiagonal = x - columnStart;
+        for (auto y = columnStart; y <= length1; y++) {
+            auto oldDiagonal = column[y];
+            auto possibilities = {
+                column[y] + 1,
+                column[y - 1] + 1,
+                lastDiagonal + (string1[y - 1] == string2[x - 1] ? 0 : 1)
+            };
+            column[y] = std::min(possibilities);
+            lastDiagonal = oldDiagonal;
+        }
     }
-    return prevCol[len2];
+    auto result = column[length1];
+    delete[] column;
+    return result;
 }
 
-Sentence CTS3Client::split(const std::string &s, char delim, Sentence &elems) {
-    std::stringstream ss(s);
-    std::string item;
-    while (std::getline(ss, item, delim)) {
-        elems.push_back(item);
-    }
-    return elems;
+void CTS3Client::removeSubstrings(std::string& string, std::string substring) {
+    std::string::size_type substringLength = substring.length();
+    for (std::string::size_type iterator = string.find(substring);
+        iterator != std::string::npos;
+        iterator = string.find(substring))
+        string.erase(iterator, substringLength);
 }
 
-Sentence CTS3Client::split(const std::string &s, char delim) {
-    Sentence elems;
-    split(s, delim, elems);
-    return elems;
-}
-
-ACRE_RESULT CTS3Client::updateServerName(std::string name) {
-    setServerName(name);
-    if (name != "") {
+ACRE_RESULT CTS3Client::updateTs3ChannelNames(std::vector<std::string> names) {
+    setTs3ChannelNames(names);
+    if (!names.empty()) {
         updateShouldSwitchTS3Channel(true);
     }
     return ACRE_OK;
