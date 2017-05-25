@@ -43,15 +43,7 @@ if (isDedicated) then {
     _player = acre_player;
 };
 
-[QGVAR(removeVehicleRacks), [_vehicle, _rackId], _vehicle] call CBA_fnc_targetEvent;
-
-{
-    private _type = typeOf _x;
-
-    if (_type == (toLower _rackId)) exitWith {
-        deleteVehicle _x;
-    };
-} forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
+[QGVAR(removeVehicleRacks), [_vehicle, _rackId], _player] call CBA_fnc_targetEvent;
 
 true
 

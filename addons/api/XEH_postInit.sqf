@@ -47,7 +47,11 @@
     private _mountedRadio = [_rackId, "getState", "mountedRadio"] call EFUNC(sys_data,dataEvent);
 
     if (_mountedRadio != "") then {
-        [_rackId, _mountedRadio, _vehicle] call FUNC(unmountRackRadio);
+        [_rackId, "setState", ["mountedRadio", ""]] call EFUNC(sys_data,dataEvent);
+        [_rackId, _mountedRadio] call EFUNC(sys_components,detachAllConnectorsFromComponent);
+
+        // Trigger event
+        [_rackId, "unmountRadio", _mountedRadio] call EFUNC(sys_data,dataEvent);
     };
 
     // Delete intercom configuration if any
@@ -71,6 +75,14 @@
     private _racks = _vehicle getVariable [QEGVAR(sys_rack,vehicleRacks), []];
     _racks deleteAt (_racks find _rackId);
     _vehicle setVariable [QEGVAR(sys_rack,vehicleRacks), _racks, true];
+
+    {
+        private _type = typeOf _x;
+
+        if (_type == (toLower _rackId)) exitWith {
+            deleteVehicle _x;
+        };
+    } forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(mountRackRadio), {
@@ -86,6 +98,10 @@
 
     if ([_rackId] call FUNC(getMountedRackRadio) != "") exitWith {
         WARNING_1("Rack ID %1 has already a radio mounted.",_rackId);
+    };
+
+    if (!([_rackId] call EFUNC(sys_rack,isRadioRemovable))) exitWith {
+        WARNING_1("Radio cannot be mounted.",_rackId);
     };
 
     if (getNumber (configFile >> "CfgWeapons" >> _baseRadio >> "acre_hasUnique") == 1) then {
@@ -111,23 +127,23 @@
         WARNING_1("Non existant rack ID provided: %1",_rackId);
     };
 
+    if (!([_rackId] call EFUNC(sys_rack,isRadioRemovable))) exitWith {
+        WARNING_1("Radio cannot be dismounted.",_rackId);
+    };
+
     if (!([_radioId] call EFUNC(sys_radio,radioExists))) exitWith {
         WARNING_1("Non existant radio ID provided: %1",_radioId);
     };
 
     private _mountedRadio = [_rackId, "getState", "mountedRadio"] call EFUNC(sys_data,dataEvent);
 
+    if (_mountedRadio == "") exitWith {
+        WARNING_1("Attempting to unmount empty rack '%1'",_rackId);
+    };
+
     if (_mountedRadio != _radioId) exitWith {
          WARNING_3("Trying to dismount %1 from Rack ID %2. However, the mounted radio is %3.",_radioId,_rackId,_mountedRadio);
          false
-    };
-
-    if (_mountedRadio == "") exitWith {
-        WARNING_1("Attempting to unmount empty rack '%1'",_rackId);
-    };
-
-    if (_mountedRadio == "") exitWith {
-        WARNING_1("Attempting to unmount empty rack '%1'",_rackId);
     };
 
     [_rackId, "setState", ["mountedRadio", ""]] call EFUNC(sys_data,dataEvent);
