@@ -24,11 +24,11 @@ private _dataHash = HASH_CREATE;
 HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
 private _idRelation = [_rackObject, _rackObject];
 HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
-
+/*
 private _vehicle = _rackObject;
 _vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
 
-/*
+
  //TODO: test this works.
 private _crewPlayers = (crew _vehicle) select {isPlayer _x};
 private _condition = false;
@@ -46,6 +46,7 @@ if (count _crewPlayers > 0) then {
 //if (_condition) then {
     private _baseRadio = BASECLASS(_class);
     private _rackId = typeOf _rackObject;
+
     if (_baseRadio == GET_STATE_RACK(_rackId,"mountedRadio")) then {
         // Add a new radio based on the id we just got
         TRACE_2("Adding radio", _class, _baseRadio);

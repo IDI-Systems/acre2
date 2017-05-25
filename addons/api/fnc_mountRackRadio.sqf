@@ -4,49 +4,57 @@
  *
  * Arguments:
  * 0: Rack ID <STRING>
- * 1: Radio to mount <STRING>
- * 2: Unit with radio to mount <OBJECT>
+ * 1: Base radio to mount <STRING>
  *
  * Return Value:
  * Setup successful <BOOL>
  *
  * Example:
- * ["ACRE_VRC103_ID_1", "ACRE_PRC117F_ID_1", acre_player] call acre_api_fnc_mountRackRadio
+ * ["ACRE_VRC103_ID_1", "ACRE_PRC117F"] call acre_api_fnc_mountRackRadio
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-params [["_rackId", ""], ["_radioId", ""], ["_unit", objNull]];
+params [["_rackId", ""], ["_baseRadio", ""]];
 
-private _return = false;
-
-if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
-    WARNING_1("Non existant rack ID provided: %1",_rackId);
-    _return
+if (!isServer) exitWith {
+    WARNING("Function must be called on the server.");
+    false
 };
 
-if (!([_radioId] call EFUNC(sys_radio,radioExists))) exitWith {
-    WARNING_1("Non existant radio ID provided: %1",_radioId);
-    _return
-};
-
-if (isNull _unit) exitWith {
-    WARNING("Null unit passed as argument.");
-    _return
-};
-
-if ([_rackId] call FUNC(getMountedRackRadio) != "") exitWith {
-     WARNING_1("Rack ID %1 has already a radio mounted.",_rackId);
-     _return
-};
-
-if (_radioId in ([_rackId, [_radioId]] call EFUNC(sys_rack,getMountableRadios))) then {
-    [_rackId, _radioId, _unit] call EFUNC(sys_rack,mountRadio);
-    _return = true;
+if (isDedicated) then {
+    // Pick the first player
+    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
+    [QGVAR(mountRackRadio), [_rackId, _baseRadio], _player] call CBA_fnc_targetEvent;
 } else {
-    WARNING_2("Cannot mount %1 into %2.",_radioId,_rackId);
-    _return
+    if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
+        WARNING_1("Non existant rack ID provided: %1",_rackId);
+    };
+
+    if ([_baseRadio] call EFUNC(sys_radio,radioExists)) exitWith {
+        WARNING_1("Unique radio ID provided: %1",_baseRadio);
+    };
+
+    if ([_rackId] call FUNC(getMountedRackRadio) != "") exitWith {
+        WARNING_1("Rack ID %1 has already a radio mounted.",_rackId);
+    };
+
+    if (getNumber (configFile >> "CfgWeapons" >> _baseRadio >> "acre_hasUnique") == 1) then {
+
+        private "_rackObject";
+        {
+            private _type = typeOf _x;
+            if (_type == (toLower _rackId)) exitWith {
+                _rackObject = _x;
+            };
+        } forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
+
+        [_rackId, "setState", ["mountedRadio", _baseRadio]] call EFUNC(sys_data,dataEvent);
+
+        //Init the radio
+        ["acre_getRadioId", [_rackObject, _baseRadio, QEGVAR(sys_rack,returnRadioId)]] call CBA_fnc_globalEvent;
+    };
 };
 
-_return
+true
