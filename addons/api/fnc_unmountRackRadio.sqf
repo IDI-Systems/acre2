@@ -1,10 +1,10 @@
 /*
  * Author: ACRE2Team
- * Removes a mounted radio.
+ * Removes a mounted radio. Must be executed on the server.
  *
  * Arguments:
- * 0: Rack ID <STRING>
- * 1: Radio to unmount <STRING>
+ * 0: Rack ID <STRING> (default: "")
+ * 1: Radio to unmount <STRING> (default: "")
  *
  * Return Value:
  * Setup successful <BOOL>

@@ -1,10 +1,10 @@
 /*
  * Author: ACRE2Team
- * Sets the given radio as mounted.
+ * Sets the given radio as mounted. Must be executed on the server.
  *
  * Arguments:
- * 0: Rack ID <STRING>
- * 1: Base radio to mount <STRING>
+ * 0: Rack ID <STRING> (default: "")
+ * 1: Base radio to mount <STRING> (default: "")
  *
  * Return Value:
  * Setup successful <BOOL>
