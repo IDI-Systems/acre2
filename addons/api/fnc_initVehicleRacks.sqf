@@ -33,26 +33,16 @@ if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
 };
 
 // A player must do the action of initialising a rack
+private _player = objNull;
+
 if (isDedicated) then {
     // Pick the first player
-    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
-    [QGVAR(initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
+    _player = (allPlayers - entities "HeadlessClient_F") select 0;
 } else {
-    [_vehicle] call EFUNC(sys_rack,initVehicle);
-
-    // Some classes are initialised automatically. Only initialise ACE interaction if the vehicle does not belong to
-    // any of these classes
-    private _found = false;
-    private _automaticInitClasses = ["LandVehicle", "Air", "Ship_F"];
-    {
-        if (_vehicle isKindOf _x) exitWith {
-            _found = true;
-        };
-    } forEach _automaticInitClasses;
-
-    if (!_found) then {
-        [QGVAR(initVehicleRacksActions), [_vehicle]] call CBA_fnc_globalEventJIP;
-    };
+    _player = acre_player;
 };
+
+[QGVAR(initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
+
 
 true

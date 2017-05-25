@@ -3,7 +3,7 @@
  * Initialises all racks in the vehicle. Must be executed in the server.
  *
  * Arguments:
- * 0: Vehicle <OBJECT>
+ * 0: Vehicle <OBJECT> (default: objNull)
  * 1: Rack configuration <ARRAY>
  *   0: Display name <STRING>
  *   1: Rack base type <STRING>
@@ -69,16 +69,16 @@ private _allowed = [_vehicle, _allowedPos] call EFUNC(sys_core,processConfigArra
 private _disabled = [_vehicle, _disabledPos] call EFUNC(sys_core,processConfigArray);
 _intercoms = _intercoms apply {toLower _x};
 
-if (isDedicated) then {
-    // Pick the first player:
-    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
-    [QGVAR(addVehicleRacks), [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms], _player] call CBA_fnc_targetEvent;
-} else {
-    [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call EFUNC(sys_rack,addRack);
+// A player must do the action of adding a rack
+private _player = objNull;
 
-    if (count _intercoms > 0) then {
-        _vehicle setVariable [QEGVAR(sys_rack,rackIntercomInitialised), false, true];
-    };
+if (isDedicated) then {
+    // Pick the first player
+    _player = (allPlayers - entities "HeadlessClient_F") select 0;
+} else {
+    _player = acre_player;
 };
+
+[QGVAR(addVehicleRacks), [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms], _player] call CBA_fnc_targetEvent;
 
 true

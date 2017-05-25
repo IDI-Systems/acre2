@@ -18,47 +18,21 @@
 
 params [["_rackId", ""], ["_radioId", ""]];
 
-private _return = false;
-
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");
-    _return
+    false
 };
+
+// A player must do the action of unmounting a rack
+private _player = objNull;
 
 if (isDedicated) then {
     // Pick the first player
-    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
-    [QGVAR(unmountRackRadio), [_rackId, _radioId], _player] call CBA_fnc_targetEvent;
+    _player = (allPlayers - entities "HeadlessClient_F") select 0;
 } else {
-    if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
-        WARNING_1("Non existant rack ID provided: %1",_rackId);
-    };
-
-    if (!([_radioId] call EFUNC(sys_radio,radioExists))) exitWith {
-        WARNING_1("Non existant radio ID provided: %1",_radioId);
-    };
-
-    private _mountedRadio = [_rackId, "getState", "mountedRadio"] call EFUNC(sys_data,dataEvent);
-
-    if (_mountedRadio != _radioId) exitWith {
-        WARNING_3("Trying to dismount %1 from Rack ID %2. However, the mounted radio is %3.",_radioId,_rackId,_mountedRadio);
-    };
-
-    if (_mountedRadio == "") exitWith {
-        WARNING_1("Attempting to unmount empty rack '%1'",_rackId);
-    };
-
-    if (_mountedRadio == "") exitWith {
-        WARNING_1("Attempting to unmount empty rack '%1'",_rackId);
-    };
-
-    [_rackId, "setState", ["mountedRadio", ""]] call EFUNC(sys_data,dataEvent);
-    [_rackId, _mountedRadio] call EFUNC(sys_components,detachAllConnectorsFromComponent);
-
-    // Trigger event
-    [_rackId, "unmountRadio", _mountedRadio] call EFUNC(sys_data,dataEvent);
-
-    _return = true;
+    _player = acre_player;
 };
 
-_return
+[QGVAR(unmountRackRadio), [_rackId, _radioId], _player] call CBA_fnc_targetEvent;
+
+true
