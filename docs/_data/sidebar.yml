@@ -57,6 +57,10 @@ entries:
       url: /wiki/user/direct-speech
       output: web, pdf
 
+    - title: Babel
+      url: /wiki/user/babel
+      output: web, pdf
+
     - title: External Radios
       url: /wiki/user/external-radios
       output: web, pdf
@@ -135,6 +139,10 @@ entries:
 
     - title: Mission Making Guide
       url: /wiki/frameworks/mission-making-guide
+      output: web, pdf
+
+    - title: Babel
+      url: /wiki/frameworks/babel
       output: web, pdf
 
     - title: Vehicle Attenuation

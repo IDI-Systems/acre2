@@ -27,6 +27,8 @@ GVAR(currentRadioId) = _radioId;
 createDialog "Prc117f_RadioDialog";
 [] call FUNC(clearDisplay);
 
+[_radioId, "setState", ["isGuiOpened", true]] call EFUNC(sys_data,dataEvent);
+
 
 _onState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
 if (_onState >= 1) then {

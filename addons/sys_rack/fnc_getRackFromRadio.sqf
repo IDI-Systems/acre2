@@ -19,10 +19,10 @@ params ["_radioId"];
 
 private _return = "";
 
- //TODO: Optimize
+//TODO: Optimize
 {
     private _rackId = typeOf _x;
     if (([_rackId] call FUNC(getMountedRadio)) == _radioId) exitWith {_return = _rackId;};
-} forEach (allMissionObjects "ACRE_baseRack");
+} forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
 
 _return

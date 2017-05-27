@@ -48,6 +48,7 @@ disableSerialization;
 GVAR(currentRadioId) = _radioId;
 GVAR(lastAction) = time;
 createDialog "SEM70_RadioDialog";
+[_radioId, "setState", ["isGuiOpened", true]] call EFUNC(sys_data,dataEvent);
 
 TRACE_2("OpenGui",GVAR(currentRadioId),GVAR(lastAction));
 

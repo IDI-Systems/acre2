@@ -18,19 +18,27 @@
 params ["_radioId"];
 
 private _canOpenRadio = true;
+private _vehicle = vehicle acre_player;
 
-if ((toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) then {
-    _canOpenRadio = false;
-    [localize LSTRING(noGuiTurnedOut), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+if (_vehicle != acre_player) then {
+    if (_canOpenRadio && {(toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS} && {isTurnedOut acre_player}) then {
+        _canOpenRadio = false;
+        [localize LSTRING(noGuiTurnedOut), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    };
 };
 
-if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS) then {
+if ((_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS && !([_radioId] call FUNC(isManpackRadio))) || _radioId in ACRE_HEARABLE_RACK_RADIOS) then {
     _canOpenRadio = false;
     if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS) then {
         [localize LSTRING(noGuiExternal), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     } else {
         [localize LSTRING(noGuiSeat), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
+};
+
+if ([_radioId, "getState", "isGuiOpened"] call EFUNC(sys_data,dataEvent)) then {
+    _canOpenRadio = false;
+    [localize LSTRING(alreadyOpenRadio), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };
 
 if (!_canOpenRadio) then {

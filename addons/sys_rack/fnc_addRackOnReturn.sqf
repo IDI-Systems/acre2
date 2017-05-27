@@ -16,14 +16,18 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle","_rackId"];
+params ["_vehicle", "_rackId"];
 
-private _rack = _rackId createVehicle [0,0,0];
+private _rack = createVehicle [_rackId, [-1000,-1000,-1000], [], 0, "CAN_COLLIDE"];
+_rack enableSimulation false;
 if (isNull _rack) exitWith {
-    WARNING_2("Error creating rack '%2' for vehicle %1", str _vehicle, _rackId);
+    WARNING_2("Error creating rack '%2' for vehicle %1",str _vehicle,_rackId);
 };
 
-_rack attachTo [_vehicle,[0,0,0]];
+private _vehicleRacks = _vehicle getVariable [QGVAR(vehicleRacks), []];
+_vehicleRacks pushBackUnique _rackId;
+_vehicle setVariable [QGVAR(vehicleRacks), _vehicleRacks, true];
+_rack setVariable [QGVAR(rackVehicle), _vehicle, true];
 
 private _queue = _vehicle getVariable [QGVAR(queue),[]];
 private _baseRackName = configName (configFile >> "CfgAcreComponents" >> (getText (configFile >> "CfgVehicles" >> _rackId >> "acre_baseClass")));

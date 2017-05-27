@@ -26,7 +26,8 @@ private _idRelation = [_rackObject, _rackObject];
 HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
 
 private _vehicle = _rackObject;
-if (!isNull (attachedTo _rackObject)) then { _vehicle = attachedTo _rackObject; };
+_vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
+
  //TODO: test this works.
 private _crewPlayers = (crew _vehicle) select {isPlayer _x};
 private _condition = false;
