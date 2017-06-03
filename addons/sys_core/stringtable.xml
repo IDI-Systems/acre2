@@ -54,6 +54,10 @@
             <Russian>Смена ТимСпик канала</Russian>
             <Japanese>TeamSpeak チャンネル切り替え</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
+            <English>TeamSpeak Channel Name</English>
+            <Japanese>TeamSpeak チャンネル名</Japanese>
+        </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
             <Spanish>Desactiva la notificación de desincronización del equipaje</Spanish>
@@ -348,13 +352,6 @@
             <German>Headset abgesetzt</German>
             <Japanese>ヘッドセットを下げた</Japanese>
             <Russian>Наушники были опущены</Russian>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_crewAutoJoinPassengerIntercom">
-            <English>Crew Auto-Join Passenger Intercom</English>
-            <German>Besatzung verbindet automatisch mit dem Bordfunk</German>
-            <Japanese>乗員は自動でパッセンジャー インターコムに接続</Japanese>
-            <Russian>Авто-подключение пассажиров в внутреннюю связь</Russian>
-            <Polish>Aut. dołączenie do interkomu załogi.</Polish>
         </Key>
     </Package>
 </Project>

@@ -11,11 +11,6 @@
             <German>Funkgerät fest verbaut</German>
             <Japanese>搭載不可 (ロック済)</Japanese>
         </Key>
-        <Key ID="STR_ACRE_sys_radio_noGuiExternal">
-            <English>Radio used externally. Only owner may configure.</English>
-            <German>Das Funkgerät wird extern benutzt. Nur der Besitzer kann es einstellen.</German>
-            <Japanese>無線機は外部で使われています。オーナーのみが設定可能です。</Japanese>
-        </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount Radio (%1)</English>
             <German>Entferne Funkgerät (%1)</German>

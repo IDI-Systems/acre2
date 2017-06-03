@@ -32,7 +32,7 @@ _radioList = [_rackClassName, _radioList] call FUNC(getMountableRadios);
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
     _displayName = format ["Mount %1 Chn: %2", _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
-    private _isActive = _x isEqualTo _currentRadio;
+    //private _isActive = _x isEqualTo _currentRadio;
 
     private _action = [_x, _displayName, _picture, {
         params ["_target","_unit","_params"];
@@ -40,7 +40,7 @@ _radioList = [_rackClassName, _radioList] call FUNC(getMountableRadios);
         [_rackClassName, _radioId, _unit] call FUNC(mountRadio);
     }, {true}, {}, [_rackClassName, _x]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
-} forEach (_radioList);
+} forEach _radioList;
 
 
 _actions;

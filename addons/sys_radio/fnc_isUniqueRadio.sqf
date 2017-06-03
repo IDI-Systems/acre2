@@ -19,7 +19,7 @@ if (HASH_HASKEY(GVAR(radioUniqueCache),_this)) exitWith {
     HASH_GET(GVAR(radioUniqueCache),_this);
 };
 
-private _isUnique = getNumber(configFile >> "CfgWeapons" >> _this >> "acre_isUnique") == 1;
+private _isUnique = getNumber (configFile >> "CfgWeapons" >> _this >> "acre_isUnique") == 1;
 HASH_SET(GVAR(radioUniqueCache),_this,_isUnique);
 
 _isUnique

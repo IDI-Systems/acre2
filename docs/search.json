@@ -8,7 +8,7 @@ search: exclude
 {% for page in site.pages %}
 {% unless page.search == "exclude" %}
 {
-"title": "{{ page.title | escape }}",
+"title": "{{ page.title | escape }} ({{ page.dir | replace: '/', '' | replace: 'wiki', '' | capitalize}})",
 "url": "{{ page.url }}"
 }
 {% unless forloop.last and site.posts.size < 1 %},{% endunless %}
@@ -18,7 +18,7 @@ search: exclude
 {% for post in site.posts %}
 
 {
-"title": "{{ post.title | escape }}",
+"title": "{{ post.title | escape }} (Post)",
 "url": "{{ post.url }}",
 "summary": "{{post.summary | strip }}"
 }

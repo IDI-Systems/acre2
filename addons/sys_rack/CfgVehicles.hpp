@@ -25,6 +25,23 @@ class CfgVehicles {
     class All {
         class AcreRacks {};
     };
+
+    class Boat_F;
+    class Boat_Armed_01_base_F : Boat_F {
+        class AcreRacks {
+            class Rack_1 {
+                name = "Dash"; // If you have multiple racks a text label helps identify the particular rack..
+                componentname = "ACRE_VRC103";
+                allowed[] = {"driver"};
+                disabled[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {};
+            };
+        };
+    };
+
     class Car_F;
     class MRAP_01_base_F : Car_F {
         class AcreRacks {
@@ -121,7 +138,7 @@ class CfgVehicles {
     class VTOL_01_unarmed_base_F: VTOL_01_base_F {
         class AcreRacks {
             class Rack_1 {
-                name = "Dash"; // Name is displayed in the interaction menu.
+                name = "Rack 1"; // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC103";
                 allowed[] = {"driver", "copilot", {"turret", {1}, {2}}};
                 disabled[] = {};
@@ -129,6 +146,10 @@ class CfgVehicles {
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
                 intercom[] = {"crew"};
+            };
+
+            class Rack_2 : Rack_1 {
+                name = "Rack 2"; // Name is displayed in the interaction menu.
             };
         };
     };
@@ -138,6 +159,25 @@ class CfgVehicles {
         class AcreRacks {
             class Rack_1 {
                 name = CSTRING(Dash); // Name is displayed in the interaction menu.
+                componentname = "ACRE_VRC103";
+                allowed[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+                disabled[] = {};
+                defaultComponents[] = {};
+                mountedRadio = "ACRE_PRC117F";
+                isRadioRemovable = 0;
+                intercom[] = {"crew"};
+            };
+
+            class Rack_2 : Rack_1 {
+                name = "Rack 2"; // Name is displayed in the interaction menu.
+            };
+        };
+    };
+
+    class Plane_Civil_01_base_F : Plane_Base_F {
+        class AcreRacks {
+            class Rack_1 {
+                name = "Dash"; // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC103";
                 allowed[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};

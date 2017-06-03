@@ -35,10 +35,16 @@ if (_action == 0) then {
     _unit setVariable [QGVAR(vehiclePassengerIntercom), objNull, true];
     _vehicle setVariable [QGVAR(unitsPassengerIntercom), _unitsPassengerIntercom, true];
     [localize LSTRING(passengerIntercomDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+
+    // Do not update for infantry phone
+    if (_unit != ((_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]]) select 0)) then {
+        // Update intercom connection status
+        [_vehicle, _unit] call FUNC(setIntercomConnectionStatus);
+    };
 } else {
     // Connect to passenger intercom
     if ((_unit in _unitsCrewIntercom) || (!(_unit in _unitsCrewIntercom) && [_vehicle, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable) && _availableConnections > 0)) then {
-        _unitsPassengerIntercom pushBack _unit;
+        _unitsPassengerIntercom pushBackUnique _unit;
         if (!(_unit in _unitsCrewIntercom) && [_vehicle, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable) && (vehicle _unit == _vehicle)) then {
             _availableConnections = _availableConnections - 1;
             _vehicle setVariable [QGVAR(availablePassIntercomConn), _availableConnections, true];
@@ -49,9 +55,18 @@ if (_action == 0) then {
         _unit setVariable [QGVAR(vehiclePassengerIntercom), _vehicle, true];
         _vehicle setVariable [QGVAR(unitsPassengerIntercom), _unitsPassengerIntercom, true];
         [localize LSTRING(passengerIntercomConnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+
+        // Do not update for infantry phone
+        if (_unit != ((_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]]) select 0)) then {
+            // Update intercom connection status
+            [_vehicle, acre_player] call FUNC(setIntercomConnectionStatus);
+        };
     } else {
         if (_availableConnections == 0) then {
             [localize LSTRING(passengerIntercomNoConnections), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+
+            // Update intercom connection status
+            [_vehicle, acre_player] call FUNC(setIntercomConnectionStatus);
         };
     };
 };

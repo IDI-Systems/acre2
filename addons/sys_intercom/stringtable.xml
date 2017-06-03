@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -104,19 +104,19 @@
             <Russian>Подключен к внутренней связи экипажа</Russian>
             <Polish>Podłączony do interkomu</Polish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_connectPassengerIntercom">
-            <English>Connect</English>
+        <Key ID="STR_ACRE_sys_intercom_connect">
+            <English>Connect %1</English>
             <German>Verbunden</German>
-            <Japanese>接続</Japanese>
-            <Russian>Подключен</Russian>
-            <Polish>Połącz</Polish>
+            <Japanese>接続 %1</Japanese>
+            <Russian>Подключен %1</Russian>
+            <Polish>Połącz %1</Polish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_disconnectPassengerIntercom">
-            <English>Disconnect</English>
+        <Key ID="STR_ACRE_sys_intercom_disconnect">
+            <English>Disconnect %1</English>
             <German>Getrennt</German>
-            <Japanese>切断</Japanese>
-            <Russian>Отключен</Russian>
-            <Polish>Rozłącz</Polish>
+            <Japanese>切断 %1</Japanese>
+            <Russian>Отключен %1</Russian>
+            <Polish>Rozłącz %1</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
             <English>Disconnected from Pax Intercom</English>

@@ -12,6 +12,7 @@
             <German>Das Funkgerät wird extern benutzt. Nur der Besitzer kann es einstellen.</German>
             <Japanese>無線機は外部で使用されます。オーナーのみが設定可能です。</Japanese>
         </Key>
+
         <Key ID="STR_ACRE_sys_radio_noGuiTurnedOut">
             <English>Radio rack can't be reached from this position.</English>
             <German>Das Funkgerät kann von der aktuellen Position nicht erreicht werden.</German>
@@ -36,6 +37,10 @@
             <English>Radio already transmitting.</English>
             <German>Funkgerät bereits am senden.</German>
             <Japanese>無線機は既に送信中。</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_alreadyOpenRadio">
+            <English>Radio is being configured by another player.</English>
+            <Japanese>無線機は既に他プレイヤーによって設定されています。</Japanese>
         </Key>
     </Package>
 </Project>

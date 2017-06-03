@@ -41,6 +41,13 @@ if (!GVAR(doFullSearch)) then {
                 _items = [_object] call EFUNC(sys_core,getGear);
             } else {
                 _items = (itemCargo _object) select {(_x select [0, 4]) == "ACRE" || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged"};
+                {
+                    _items pushBack _x; // Add rack unique ID
+                    private _mountedRadio = [_x] call EFUNC(sys_rack,getMountedRadio);
+                    if (_mountedRadio != "") then {
+                        _items pushBack _mountedRadio; // Add mounted radio unique ID
+                    };
+                } forEach (_object getVariable [QEGVAR(sys_rack,vehicleRacks), []]);
             };
 
             {
@@ -48,7 +55,7 @@ if (!GVAR(doFullSearch)) then {
             } forEach _items;
             if (_found) exitWith {};
         } forEach _objects;
-        if (!_found) exitWith { GVAR(doFullSearch) = true; };
+        if (!_found) exitWith {GVAR(doFullSearch) = true;};
     } forEach _shortSearchList;
 };
 
@@ -101,12 +108,12 @@ if (GVAR(doFullSearch)) then {
         private _rackId = typeOf _x;
 
         if (getNumber (_cfgVehicles >> _rackId >> "acre_isUnique") == 1) then {
-            private _attachedTo = attachedTo _x;
+            private _vehicle = _x getVariable [QEGVAR(sys_rack,rackVehicle), objNull];
             private _mainObject = _x;
-            if (isNull _attachedTo) then {
+            if (isNull _vehicle || {!alive _vehicle}) then {
                 deleteVehicle _x; // Acre racks should always be attached to something.
             } else {
-                _mainObject = _attachedTo;
+                _mainObject = _vehicle;
                 if (_idList pushBackUnique _rackId != -1) then { // Add to ID list and this condition returns true if it was not present in the _idList.
                     HASH_SET(_idTable, _rackId, [ARR_2(_mainObject,_x)]);
                 } else { // Already present in _idList
@@ -137,9 +144,8 @@ if (GVAR(doFullSearch)) then {
                 };
             };
         };
+    } forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
 
-
-    } forEach (allMissionObjects "ACRE_BASERACK");
     {
         private _key = _x;
         if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {
