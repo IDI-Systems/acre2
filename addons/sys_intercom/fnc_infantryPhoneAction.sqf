@@ -44,8 +44,9 @@ private _infantryPhoneAction = [
     ICON_RADIO_CALL,
     {true},
     {
-         // Only manually check distance if under main node (not a custom position on hull)
-         // Main interaction node is not shown on destroyed vehicle, so we only check that if not main node
+        // Only manually check distance if under main node (not a custom position on hull)
+        // Main interaction node is not shown on destroyed vehicle, so we only check that if not main node
+        //USES_VARIABLES ["_target", "_player"];
         if !((_this select 2) isEqualTo [0, 0, 0]) exitWith {alive _target};
         _player distance _target < PHONE_MAXDISTANCE_DEFAULT
     },
