@@ -56,6 +56,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
+            <Japanese>TeamSpeak チャンネル名</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
