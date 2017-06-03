@@ -21,7 +21,7 @@ params ["_vehicle", "_configArray"];
 private _processedArray = [];
 
 {
-    if (_x isEqualType "STRING") then {
+    if (_x isEqualType "") then {
         switch (toLower _x) do {
             case "crew": {
                 // Add Standard configuration
@@ -55,7 +55,7 @@ private _processedArray = [];
     } else {
         // Position is of type cargo, turret or ffv.
         private _positionType = toLower (_x select 0);
-        if ((_x select 1) isEqualType "STRING" && {_x select 1 == "all"}) then {
+        if ((_x select 1) isEqualType "" && {_x select 1 == "all"}) then {
             switch (_positionType) do {
                 case "cargo": {
                     {

@@ -27,7 +27,7 @@ for "_i" from 0 to 31 do {
     if (!(_frequency in _usedPresetFrequencies)) then {
         private _ok = true;
         {
-            if (abs(_x-_frequency) <= 0.25) exitWith {
+            if (abs (_x - _frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
@@ -86,7 +86,7 @@ for "_i" from 0 to 31 do {
     if (!(_frequency in _usedPresetFrequencies)) then {
         private _ok = true;
         {
-            if (abs(_x-_frequency) <= 0.25) exitWith {
+            if (abs (_x - _frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
@@ -145,7 +145,7 @@ for "_i" from 0 to 31 do {
     if (!(_frequency in _usedPresetFrequencies)) then {
         private _ok = true;
         {
-            if (abs(_x-_frequency) <= 0.25) exitWith {
+            if (abs (_x - _frequency) <= 0.25) exitWith {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
