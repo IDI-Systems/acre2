@@ -19,3 +19,13 @@ title: Installation
 - Launch Arma 3.
 - ACRE2 will try to copy the plugins to your TeamSpeak 3 installation directory. If it can not it will warn you. If it is successful it will tell you.
 - Launch TeamSpeak 3 and enable the ACRE2 plugin in the `Settings -> Plugins` window.
+
+### Troubleshooting
+
+- **WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!**
+
+Make sure to launch both Arma 3 (Steam) and TeamSpeak 3 as admin, or neither.
+
+- **Radio beeps not audible on dedicated server**
+
+Make sure your `server.cfg` has `"b64"` whitelisted in `allowedLoadFileExtensions[]` and `allowedPreprocessFileExtensions[]` if you are using that. Let your server administrator know if you have no idea what this means.
