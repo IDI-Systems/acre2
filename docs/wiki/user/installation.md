@@ -22,10 +22,8 @@ title: Installation
 
 ### Troubleshooting
 
-- **WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!**
-
+- **WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!**  
 Make sure to launch both Arma 3 (Steam) and TeamSpeak 3 as admin, or neither.
 
-- **Radio beeps not audible on dedicated server**
-
+- **Radio beeps not audible on dedicated server**  
 Make sure your `server.cfg` has `"b64"` whitelisted in `allowedLoadFileExtensions[]` and `allowedPreprocessFileExtensions[]` if you are using that. Let your server administrator know if you have no idea what this means.
