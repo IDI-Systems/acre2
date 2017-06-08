@@ -28,6 +28,7 @@ HASH_SET(_radioData, "volume", _eventData);
 
 TRACE_3("VOLUME SET",_radioId, _vol, _radioData);
 
+//USES_VARIABLES ["_display"];
 if (!isNil "_display") then {
     (_display displayCtrl ICON_VOLUME) progressSetPosition _eventData;
     (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
