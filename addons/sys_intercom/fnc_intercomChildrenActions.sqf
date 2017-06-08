@@ -23,8 +23,14 @@ if ([_target, acre_player, CREW_INTERCOM] call FUNC(isIntercomAvailable)) then {
         "acre_connect_crewIntercom",
         format [localize LSTRING(connect), "(" + localize CREW_STRING + ")"],
         "",
-        {[_target, _player, 1] call FUNC(updateCrewIntercomStatus)},
-        {!([_target, _player] call FUNC(isInCrewIntercom))},
+        {
+            //USES_VARIABLES ["_target", "_player"];
+            [_target, _player, 1] call FUNC(updateCrewIntercomStatus)
+        },
+        {
+            //USES_VARIABLES ["_target", "_player"];
+            !([_target, _player] call FUNC(isInCrewIntercom))
+        },
         {},
         {}
     ] call ace_interact_menu_fnc_createAction;
@@ -34,8 +40,14 @@ if ([_target, acre_player, CREW_INTERCOM] call FUNC(isIntercomAvailable)) then {
         "acre_disconnect_crewIntercom",
         format [localize LSTRING(disconnect), "(" + localize CREW_STRING + ")"],
         "",
-        {[_target, _player, 0] call FUNC(updateCrewIntercomStatus)},
-        {[_target, _player] call FUNC(isInCrewIntercom)},
+        {
+            //USES_VARIABLES ["_target", "_player"];
+            [_target, _player, 0] call FUNC(updateCrewIntercomStatus)
+        },
+        {
+            //USES_VARIABLES ["_target", "_player"];
+            [_target, _player] call FUNC(isInCrewIntercom)
+        },
         {},
         {}
     ] call ace_interact_menu_fnc_createAction;
@@ -47,8 +59,14 @@ if ([_target, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable)) t
         "acre_connect_passengerIntercom",
         format [localize LSTRING(connect), "(" + localize LSTRING(passenger) + ")"],
         "",
-        {[_target, _player, 1] call FUNC(updatePassengerIntercomStatus)},
-        {!([_target, _player] call FUNC(isInPassengerIntercom))},
+        {
+            //USES_VARIABLES ["_target", "_player"];
+            [_target, _player, 1] call FUNC(updatePassengerIntercomStatus)
+        },
+        {
+            //USES_VARIABLES ["_target", "_player"];
+            !([_target, _player] call FUNC(isInPassengerIntercom))
+        },
         {},
         {}
     ] call ace_interact_menu_fnc_createAction;
@@ -58,8 +76,14 @@ if ([_target, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable)) t
         "acre_disconnect_passengerIntercom",
         format [localize LSTRING(disconnect), "(" + localize LSTRING(passenger) + ")"],
         "",
-        {[_target, _player, 0] call FUNC(updatePassengerIntercomStatus)},
-        {[_target, _player] call FUNC(isInPassengerIntercom)},
+        {
+            //USES_VARIABLES ["_target", "_player"];
+            [_target, _player, 0] call FUNC(updatePassengerIntercomStatus)
+        },
+        {
+            //USES_VARIABLES ["_target", "_player"];
+            [_target, _player] call FUNC(isInPassengerIntercom)
+        },
         {},
         {}
     ] call ace_interact_menu_fnc_createAction;

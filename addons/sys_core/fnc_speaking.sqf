@@ -72,7 +72,7 @@ DFUNC(speakingLoop) = {
                             _radios set[_keyIndex, _rxId];
                             _sources set[_keyIndex, []];
                         };
-                        _txRadios = _sources select _keyIndex;
+                        private _txRadios = _sources select _keyIndex; // _sources contains arrays - "passing" by reference
                         _txRadios pushBack [_unit,_txId,_signalData,_params];
                         if (EGVAR(sys_signal,showSignalHint)) then {
                             _signalHint = _signalHint + format["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
@@ -139,7 +139,7 @@ DFUNC(speakingLoop) = {
                     private _attenuate = 1;
                     if ([_recRadio, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                         _radioPos = [_recRadio, "getExternalAudioPosition"] call EFUNC(sys_data,physicalEvent);
-                        _args = [_radioPos, ACRE_LISTENER_POS, acre_player];
+                        private _args = [_radioPos, ACRE_LISTENER_POS, acre_player];
                         // there needs to be handling of vehicle attenuation too
                         private _recRadioObject = [_recRadio] call EFUNC(sys_radio,getRadioObject);
                         _attenuate = [_recRadioObject] call EFUNC(sys_attenuate,getUnitAttenuate);
@@ -170,7 +170,7 @@ DFUNC(speakingLoop) = {
                                 _params set[4, _radioPos];
                                 _params set[0, _radioVolume*_volumeModifier*_attenuate];
                             } else {
-                                _ear = [_recRadio, "getState", "ACRE_INTERNAL_RADIOSPATIALIZATION"] call EFUNC(sys_data,dataEvent);
+                                private _ear = [_recRadio, "getState", "ACRE_INTERNAL_RADIOSPATIALIZATION"] call EFUNC(sys_data,dataEvent);
                                 if (isNil "_ear") then {
                                     _ear = 0;
                                 };
@@ -208,9 +208,9 @@ DFUNC(speakingLoop) = {
             if (!isNull _unit) then {
                 _sentMicRadios pushBack _unit;
                 private _params = HASH_GET(_compiledParams, _x);
-                _count = (count _params);
-                _canUnderstand = [_unit] call FUNC(canUnderstand);
-                _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, _count];
+                private _count = count _params;
+                private _canUnderstand = [_unit] call FUNC(canUnderstand);
+                private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, _count];
                 {
                     _paramArray append _x;
                 } forEach _params;
@@ -258,8 +258,8 @@ DFUNC(speakingLoop) = {
     } forEach GVAR(speakers);
     if (ACRE_IS_SPECTATOR) then {
         {
-            _speakingId = _x;
-            _volume = GVAR(spectatorVolume);
+            private _speakingId = _x;
+            private _volume = GVAR(spectatorVolume);
             if (ACRE_MUTE_SPECTATORS) then {
                 _volume = 0;
             };

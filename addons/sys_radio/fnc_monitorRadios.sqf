@@ -68,7 +68,7 @@ DFUNC(monitorRadios_PFH) = {
         if (_isUnique) then {
             if (!([_radio] call EFUNC(sys_data,isRadioInitialized))) then {
                 WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
-                _baseRadio = BASECLASS(_radio);
+                private _baseRadio = BASECLASS(_radio);
                 [acre_player, _radio, _baseRadio] call EFUNC(sys_core,replaceGear);
                 _radio = _baseRadio;
             };

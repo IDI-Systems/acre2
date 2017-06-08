@@ -36,8 +36,7 @@ if (_setupPresets) then {
         [] spawn {
             waitUntil { !isNull acre_player };
 
-            _side = side acre_player;
-            switch _side do {
+            switch (side acre_player) do {
                 case east: {
                     ["ACRE_PRC343", "default2" ] call FUNC(setPreset);
                     ["ACRE_PRC77", "default2" ] call FUNC(setPreset);

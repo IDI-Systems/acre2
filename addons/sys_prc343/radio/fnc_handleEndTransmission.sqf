@@ -28,7 +28,7 @@ _currentTransmissions = _currentTransmissions - [_txId];
 
 if ((count _currentTransmissions) == 0) then {
     private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
-    _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
+    private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
     if (!_pttDown) then {
         if (!isNil "_beeped" && {_beeped}) then {
             private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);

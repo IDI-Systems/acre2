@@ -25,18 +25,18 @@ private _dataHash = HASH_CREATE;
 // diag_log text format["acre_sys_data_radioData: %1", acre_sys_data_radioData];
 
 HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
-_idRelation = [_player, _player];
+private _idRelation = [_player, _player];
 HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
 if (_replacementId != "") then {
-    _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
+    private _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
     HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
 };
 if (_player == acre_player) then {
-    _baseRadio = _replacementId;
+    private _baseRadio = _replacementId;
     if (_baseRadio == "") then {
         _baseRadio = BASECLASS(_class);
     };
-    _weapons = [acre_player] call EFUNC(sys_core,getGear);
+    private _weapons = [acre_player] call EFUNC(sys_core,getGear);
 
     //if (_baseRadio in _weapons || ("ItemRadio" in _weapons && _baseRadio == GVAR(defaultItemRadioType) ) ) then {
     TRACE_2("Check inventory", _baseRadio, _weapons);
@@ -46,7 +46,7 @@ if (_player == acre_player) then {
 
         if (_replacementId == "") then {
             // initialize the new radio
-            _preset = [BASECLASS(_class)] call EFUNC(sys_data,getRadioPresetName);
+            private _preset = [BASECLASS(_class)] call EFUNC(sys_data,getRadioPresetName);
             [_class, _preset] call FUNC(initDefaultRadio);
 
             [acre_player, _baseRadio, _class] call EFUNC(sys_core,replaceGear);
@@ -60,10 +60,9 @@ if (_player == acre_player) then {
                     // and Arma delays comitting gear changes till the next frame
                     // so currently, even though we removed the old radio, it will
                     // still show up in the gear list in this frame.
-                    _fnc = {
-                        [(_this select 0)] call EFUNC(sys_radio,setActiveRadio);
-                    };
-                    [_fnc, [_class]] call CBA_fnc_execNextFrame;
+                    [{
+                        [_this] call EFUNC(sys_radio,setActiveRadio);
+                    }, _class] call CBA_fnc_execNextFrame;
                 } else {
                     [_class] call EFUNC(sys_radio,setActiveRadio);
                 };
