@@ -7,7 +7,7 @@ acre_set_linker_options()
 
 file(GLOB_RECURSE SOURCES *.h *.hpp *.c *.cpp)
 
-add_library( ${ACRE_NAME} MODULE ${SOURCES})
+add_library( ${ACRE_NAME} MODULE ${SOURCES} ${GLOBAL_SOURCES})
 set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2Arma)
 
 
