@@ -19,13 +19,13 @@ _This is done automatically when doing a [release build](building#create-a-relea
 ### 32-bit
 
 - Navigate to the `extensions\vcproj` directory.
-- Run `cmake .. -G "Visual Studio 14 2015` (replace generator for any other 32-bit Visual Studio generator)
+- Run `cmake .. -G "Visual Studio 15 2017` (replace generator for any other 32-bit Visual Studio generator)
 - Compile projects.
 
 ### 64-bit
 
 - Navigate to the `extensions\vcproj64` directory.
-- Run `cmake .. -G "Visual Studio 14 2015 Win64"` (replace generator for any other 64-bit Visual Studio generator)
+- Run `cmake .. -G "Visual Studio 15 2017 Win64"` (replace generator for any other 64-bit Visual Studio generator)
 - Compile projects.
 
 Extensions files will also be copied to their appropriate locations automatically after compilation (ready for [test](building#create-a-test-build) and [release](building#create-a-release-build) builds).
