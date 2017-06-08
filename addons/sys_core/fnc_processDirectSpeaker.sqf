@@ -43,10 +43,10 @@ if (_bothSpectating || _isCrewAttenuate) then {
     _emitterDir = eyeDirection _unit;
 };
 if (ACRE_TEST_OCCLUSION && !_bothSpectating && !_isCrewAttenuate) then {
-    _args = [_emitterPos, _listenerPos, _unit];
+    private _args = [_emitterPos, _listenerPos, _unit];
     // acre_player sideChat format["args: %1", _args];
     // _startTime = diag_tickTime;
-    _result = _args call FUNC(findOcclusion);
+    private _result = _args call FUNC(findOcclusion);
     _unit setVariable ["ACRE_OCCLUSION_VAL", _result];
     // _endTime = diag_tickTime;
     // _unit setVariable [QGVAR(lastPathPos), _lastResult];
@@ -63,7 +63,7 @@ if (_isCrewAttenuate) then {
     _speakingType = "i";
     _directVolume = 1;
 };
-_canUnderstand = [_unit] call FUNC(canUnderstand);
+private _canUnderstand = [_unit] call FUNC(canUnderstand);
 private _params = [_speakingType, _id, !_canUnderstand, _directVolume^3, _emitterPos, _emitterDir];
 TRACE_1("SPEAKING UPDATE", _params);
 _params

@@ -29,9 +29,8 @@ DFUNC(onButtonPress_List) = {
         };
         case 'CLR': {
             // Back out of the menu back to the root menu of this menu...confusing right?
-            _homeDisplay = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+            private _homeDisplay = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
             [_homeDisplay] call FUNC(changeMenu);
-            _ret = true;
         };
         case '6': {
             TRACE_1("Enter 6", _currentSelection);

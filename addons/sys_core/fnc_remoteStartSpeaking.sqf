@@ -79,8 +79,7 @@ private _result = false;
     };
 
     if (isNull _unit) exitWith {
-        _msg = format ["START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, On Radio: %4", acre_player, _speakingId, _netId, _onRadio];
-        WARNING(_msg);
+        WARNING_4("START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, On Radio: %4",acre_player,_speakingId,_netId,_onRadio);
         false
     };
 
@@ -98,15 +97,15 @@ private _result = false;
                 private _val = [_netId, _speakingId];
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
                 _unit setVariable [QGVAR(currentSpeakingRadio), _radioId];
-                _speakerRadio = [];
-                _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
+                private _speakerRadio = [];
+                private _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
                 {
                     if ([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                         _speakerRadio pushBack _x;
                     };
                 } forEach _nearRadios;
                 GVAR(nearRadios) = _speakerRadio;
-                _personalRadioList = [] call EFUNC(sys_data,getPlayerRadioList);
+                private _personalRadioList = [] call EFUNC(sys_data,getPlayerRadioList);
                 if (_radioId in _personalRadioList && ACRE_BROADCASTING_RADIOID == "") then {
                     ACRE_BROADCASTING_RADIOID = _radioId;
                     // diag_log text format["ASSIGNED ACRE_BROADCASTING_RADIOID REMOTE START: %1", ACRE_BROADCASTING_RADIOID];

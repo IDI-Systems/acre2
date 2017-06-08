@@ -20,15 +20,15 @@ DFUNC(onButtonPress_Display) = {
     TRACE_1("onButtonPress_Display", _this);
     params ["_menu", "_event"];
 
-    _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
     switch (_event select 0) do {
         case 'PRE_UP': {     // OPT
             BEGIN_COUNTER(onButtonPress_Display_PRE_UP);
 
             BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
 
-            _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-            _channels = GET_STATE("channels");
+            private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+            private _channels = GET_STATE("channels");
             if (_channelNumber < 98) then {
                 _channelNumber = _channelNumber + 1;
             } else {
@@ -47,8 +47,8 @@ DFUNC(onButtonPress_Display) = {
 
             BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
 
-            _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-            _channels = GET_STATE("channels");
+            private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+            private _channels = GET_STATE("channels");
             if (_channelNumber > 0) then {
                 _channelNumber = _channelNumber - 1;
             } else {

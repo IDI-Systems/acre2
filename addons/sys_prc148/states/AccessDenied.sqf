@@ -30,7 +30,7 @@ DFUNC(AccessDeniedDisplay_Render) = {
 
 DFUNC(AccessDeniedDisplay_ESC) = {
     //acre_player sideChat format["fff"];
-    _lastState = ["getState", "lastState"] call GUI_DATA_EVENT;
+    private _lastState = ["getState", "lastState"] call GUI_DATA_EVENT;
     //acre_player sideChat format["ls: %1", _lastState];
     [GVAR(currentRadioId), _lastState select 0, _lastState select 1, _lastState select 2] call FUNC(changeState);
 };

@@ -105,7 +105,7 @@ DFUNC(onButtonPress_Frequency) = {
             };
 
             TRACE_3("Left hit, checking", _value, _editIndex, _editDigits);
-            _strValue = ["frequency", _value] call FUNC(formatChannelValue);
+            private _strValue = ["frequency", _value] call FUNC(formatChannelValue);
             if ( ((toArray _strValue) select _editIndex) == 46) then {
                 // recursively push a button again, since we want to skip it.
                 TRACE_1("Hit a digit, skipping", _editIndex);
@@ -129,7 +129,7 @@ DFUNC(onButtonPress_Frequency) = {
             };
 
             TRACE_3("Right hit, checking", _value, _editIndex, _editDigits);
-            _strValue = ["frequency", _value] call FUNC(formatChannelValue);
+            private _strValue = ["frequency", _value] call FUNC(formatChannelValue);
             if ( ((toArray _strValue) select _editIndex) == 46) then {
                 // recursively push a button again, since we want to skip it.
                 TRACE_1("Hit a digit, skipping", _editIndex);

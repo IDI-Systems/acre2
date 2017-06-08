@@ -14,13 +14,14 @@
  *
  * Public: No
  */
-
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
+//USES_VARIABLES ["_display"]
+
 DFUNC(GroupDisplay_Render) = {
-    _groups = GET_STATE("groups");
-    _options = [];
-    _labels = [];
+    private _groups = GET_STATE("groups");
+    private _options = [];
+    private _labels = [];
     SET_TEXT("GROUP =", BIG_LINE_3, 4, 10);
     {
         _x params ["_label", "_channels"];
@@ -49,11 +50,11 @@ DFUNC(GroupDisplay_Select) = {
     params ["_newValue", "_menuEntry"];
 
     //diag_log text format["new: %1", _newValue];
-    _newGroup = (_menuEntry select 7) select _newValue;
+    private _newGroup = (_menuEntry select 7) select _newValue;
     SET_STATE_CRIT("currentGroup", _newGroup);
 
-    _group = GET_STATE("groups") select GET_STATE("currentGroup");
-    _channelPosition = GET_STATE("channelKnobPosition");
+    private _group = GET_STATE("groups") select GET_STATE("currentGroup");
+    private _channelPosition = GET_STATE("channelKnobPosition");
 
 
 
@@ -63,7 +64,7 @@ DFUNC(GroupDisplay_Select) = {
 
 
 
-    _channelNumber = (_group select 1) select _channelPosition;
+    private _channelNumber = (_group select 1) select _channelPosition;
     ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
     [GVAR(currentRadioId), "DefaultDisplay"] call FUNC(changeState);
 };
