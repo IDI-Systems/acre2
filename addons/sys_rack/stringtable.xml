@@ -3,31 +3,54 @@
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
             <English>Mount Radio</English>
+            <German>Funkgerät einbauen</German>
             <Japanese>無線機の積載</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable (Locked)</English>
+            <German>Funkgerät fest verbaut</German>
             <Japanese>搭載不可 (ロック済)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount Radio (%1)</English>
+            <German>Entferne Funkgerät (%1)</German>
             <Japanese>無線機を降ろす (%1)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted radio (%1)</English>
+            <German>Eingebautes Funkgerät (%1)</German>
             <Japanese>無線機を乗せる (%1)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop using radio</English>
+            <German>Benutzung beenden</German>
             <Japanese>無線機の使用を止める</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use radio</English>
+            <German>Funkgerät verwenden</German>
             <Japanese>無線機を使う</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
+            <German>Funkgerät kann nicht entfernt werden. Nicht genug Platz im Inventar vorhanden.</German>
             <Japanese>インベントリに空きが無いため無線機を降ろせません。</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Racks">
+            <English>Racks</English>
+            <German>Funkgeräteschrank</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash">
+            <English>Dash</English>
+            <German>Steckplatz</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash_lower">
+            <English>Dashboard Lower</English>
+            <German>Unterer Steckplatz</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash_upper">
+            <English>Dashboard Upper</English>
+            <German>Oberer Steckplatz</German>
         </Key>
     </Package>
 </Project>
