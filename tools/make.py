@@ -337,8 +337,26 @@ def print_yellow(msg):
 def compile_extensions(extensions_root, force_build):
     originalDir = os.getcwd()
 
+    print_blue("\nCompiling extensions in {}".format(extensions_root))
+
+    if shutil.which("cmake") == None:
+        print_error("Failed to find CMake!")
+        return
+
+    generator = ""
+    msbuild_path = shutil.which("msbuild")
+    if msbuild_path == None:
+        print_error("Failed to find MSBuild!")
+        return
+    elif "15.0" in msbuild_path:
+        generator = "Visual Studio 15 2017"
+    elif "14.0" in msbuild_path:
+        generator = "Visual Studio 14 2015"
+    else:
+        print_error("Failed to find suitable generator!")
+        return
+
     try:
-        print_blue("\nCompiling extensions in {}".format(extensions_root))
         joinstr = ":rebuild;" if force_build else ";"
 
         # 32-bit
@@ -349,7 +367,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj32)
             # Build
             os.chdir(vcproj32)
-            subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF", "-G", "Visual Studio 14 2015"])
+            subprocess.call(["cmake", "..", "-G", generator])
             print()
             extensions32_cmd = joinstr.join(extensions32)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
@@ -364,7 +382,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj64)
             # Build
             os.chdir(vcproj64)
-            subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON", "-G", "Visual Studio 14 2015 Win64"])
+            subprocess.call(["cmake", "..", "-G", "{} Win64".format(generator)])
             print()
             extensions64_cmd = joinstr.join(extensions64)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
