@@ -255,7 +255,7 @@ def find_depbo_tools(regKey):
             winreg.CloseKey(k)
             print("Found pboproject.")
         except:
-            print_error("ERROR: Could not find pboProject.")
+            print_error("Could not find pboProject.")
 
         try:
             k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\rapify")
@@ -315,8 +315,11 @@ def color(color):
 
 def print_error(msg):
     color("red")
-    print ("ERROR: {}".format(msg))
+    print("ERROR: {}".format(msg))
     color("reset")
+    global printedErrors
+    printedErrors += 1
+
 
 def print_green(msg):
     color("green")
@@ -339,7 +342,7 @@ def compile_extensions(extensions_root, force_build):
 
     print_blue("\nCompiling extensions in {}".format(extensions_root))
 
-    if shutil.which("cmake") == None:
+    if shutil.which("cmake") != None:
         print_error("Failed to find CMake!")
         return
 
@@ -921,6 +924,10 @@ def main(argv):
     global pbo_name_prefix
     global ciBuild
     global missingFiles
+    global failedBuilds
+    global printedErrors
+
+    printedErrors = 0
 
     if sys.platform != "win32":
         print_error("Non-Windows platform (Cygwin?). Please re-run from cmd.")
@@ -1373,7 +1380,7 @@ See the make.cfg file for additional build options.
 
                 except:
                     raise
-                    print_error("ERROR: Could not copy module to work drive. Does the module exist?")
+                    print_error("Could not copy module to work drive. Does the module exist?")
                     input("Press Enter to continue...")
                     print("Resuming build...")
                     continue
@@ -1394,7 +1401,7 @@ See the make.cfg file for additional build options.
                         os.remove(f)
             except:
                 raise
-                print_error("ERROR: Could not copy module to work drive. Does the module exist?")
+                print_error("Could not copy module to work drive. Does the module exist?")
                 input("Press Enter to continue...")
                 print("Resuming build...")
                 continue
@@ -1604,7 +1611,7 @@ See the make.cfg file for additional build options.
         try:
             shutil.rmtree(os.path.join(release_dir, project, "temp"), True)
         except:
-            print_error("ERROR: Could not delete pboProject temp files.")
+            print_error("Could not delete pboProject temp files.")
 
     # Make release
     if make_release_zip:
@@ -1671,23 +1678,22 @@ See the make.cfg file for additional build options.
             except:
                 print_error("Could not copy files. Is Arma 3 running?")
 
-    if len(failedBuilds) > 0 or len(missingFiles) > 0:
+    tracedErrors = len(failedBuilds) + len(missingFiles)
+    allErrors = tracedErrors + printedErrors
+    if allErrors > 0:
+        printedOnlyErrors = printedErrors - tracedErrors
+        print()
+        print_error("Failed with {} errors.".format(allErrors))
         if len(failedBuilds) > 0:
-            print()
-            print_error("Build failed! {} PBOs failed!".format(len(failedBuilds)))
             for failedBuild in failedBuilds:
-                print("- {} failed.".format(failedBuild))
-
+                print_yellow("- {} build failed!".format(failedBuild))
         if len(missingFiles) > 0:
-            missingFiles = set(missingFiles)
-            print()
-            print_error("Missing files! {} files not found!".format(len(missingFiles)))
             for missingFile in missingFiles:
-                print("- {} failed.".format(missingFile))
-
-        sys.exit(1)
+                print_yellow("- {} not found!".format(missingFile))
+        print_yellow("- {} untraced error(s)!".format(printedOnlyErrors))
     else:
         print_green("\nCompleted with 0 errors.")
+
 
 if __name__ == "__main__":
     start_time = timeit.default_timer()
