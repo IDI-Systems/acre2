@@ -342,7 +342,7 @@ def compile_extensions(extensions_root, force_build):
 
     print_blue("\nCompiling extensions in {}".format(extensions_root))
 
-    if shutil.which("cmake") != None:
+    if shutil.which("cmake") == None:
         print_error("Failed to find CMake!")
         return
 
