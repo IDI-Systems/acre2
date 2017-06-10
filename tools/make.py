@@ -1679,18 +1679,18 @@ See the make.cfg file for additional build options.
                 print_error("Could not copy files. Is Arma 3 running?")
 
     tracedErrors = len(failedBuilds) + len(missingFiles)
-    allErrors = tracedErrors + printedErrors
-    if allErrors > 0:
+    if printedErrors > 0: # printedErrors includes tracedErrors
         printedOnlyErrors = printedErrors - tracedErrors
         print()
-        print_error("Failed with {} errors.".format(allErrors))
+        print_error("Failed with {} errors.".format(printedErrors))
         if len(failedBuilds) > 0:
             for failedBuild in failedBuilds:
-                print_yellow("- {} build failed!".format(failedBuild))
+                print("- {} build failed!".format(failedBuild))
         if len(missingFiles) > 0:
             for missingFile in missingFiles:
-                print_yellow("- {} not found!".format(missingFile))
-        print_yellow("- {} untraced error(s)!".format(printedOnlyErrors))
+                print("- {} not found!".format(missingFile))
+        if printedOnlyErrors > 0:
+            print_yellow("- {} untraced error(s)!".format(printedOnlyErrors))
     else:
         print_green("\nCompleted with 0 errors.")
 
