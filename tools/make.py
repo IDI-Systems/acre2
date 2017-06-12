@@ -320,7 +320,6 @@ def print_error(msg):
     global printedErrors
     printedErrors += 1
 
-
 def print_green(msg):
     color("green")
     print(msg)
@@ -478,7 +477,6 @@ def copy_optionals_for_building(mod,pbos):
 
     print_blue("\nChecking Optionals folder...")
     try:
-
         #special server.pbo processing
         files = glob.glob(os.path.join(release_dir, project, "optionals", "*.pbo"))
         for file in files:
