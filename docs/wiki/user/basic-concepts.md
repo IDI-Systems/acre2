@@ -19,7 +19,7 @@ All the radios currently included in ACRE 2 are what is commonly known as half-d
 
 If there are multiple speakers on the same frequency, they will interfere with eachother in such a way that you will only receive the strongest (usually closest) speaker.
 
-Half-duplex limitations can be turned off in missions by using the difficulty module or the [setFullDuplex](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#full-duplex) and [setInterference](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#Interference) API functions.
+Half-duplex limitations can be turned off in missions by using the difficulty module or the [setFullDuplex](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#full-duplex) and [setInterference](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#interference) API functions.
 
 ## Terrain and object interference
 
