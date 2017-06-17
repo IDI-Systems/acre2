@@ -21,7 +21,7 @@
         BEGIN
             BLOCK "040904E4"
             BEGIN
-                VALUE "CompanyName",          ACRE_TEAM
+                VALUE "CompanyName",          ACRE_COMPANY
                 VALUE "FileDescription",      ACRE_NAME
                 VALUE "FileVersion",          ACRE_VERSION
                 VALUE "ProductName",          ACRE_NAME

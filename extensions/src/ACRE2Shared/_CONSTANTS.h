@@ -37,6 +37,7 @@
 #define ACRE_URL "https://github.com/IDI-Systems/acre2"
 #define ACRE_TEAM_URL QUOTE(ACRE_TEAM - ACRE_URL)
 #define ACRE_DESC "This plugin handles realistic radio and direct communcations in Arma 3."
+#define ACRE_COMPANY "IDI-Systems"
 #define ACRE_COPYRIGHT "©2017 IDI-Systems"
 #define ACRE_COMMAND_KEYWORD "ACRE2"
 
