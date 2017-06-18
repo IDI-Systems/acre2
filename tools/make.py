@@ -30,7 +30,7 @@
 
 ###############################################################################
 
-__version__ = "0.8"
+__version__ = "0.9"
 
 import sys
 
@@ -255,7 +255,7 @@ def find_depbo_tools(regKey):
             winreg.CloseKey(k)
             print("Found pboproject.")
         except:
-            print_error("ERROR: Could not find pboProject.")
+            print_error("Could not find pboProject.")
 
         try:
             k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\rapify")
@@ -315,8 +315,10 @@ def color(color):
 
 def print_error(msg):
     color("red")
-    print ("ERROR: {}".format(msg))
+    print("ERROR: {}".format(msg))
     color("reset")
+    global printedErrors
+    printedErrors += 1
 
 def print_green(msg):
     color("green")
@@ -337,8 +339,26 @@ def print_yellow(msg):
 def compile_extensions(extensions_root, force_build):
     originalDir = os.getcwd()
 
+    print_blue("\nCompiling extensions in {}".format(extensions_root))
+
+    if shutil.which("cmake") == None:
+        print_error("Failed to find CMake!")
+        return
+
+    generator = ""
+    msbuild_path = shutil.which("msbuild")
+    if msbuild_path == None:
+        print_error("Failed to find MSBuild!")
+        return
+    elif "15.0" in msbuild_path:
+        generator = "Visual Studio 15 2017"
+    elif "14.0" in msbuild_path:
+        generator = "Visual Studio 14 2015"
+    else:
+        print_error("Failed to find suitable generator!")
+        return
+
     try:
-        print_blue("\nCompiling extensions in {}".format(extensions_root))
         joinstr = ":rebuild;" if force_build else ";"
 
         # 32-bit
@@ -349,7 +369,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj32)
             # Build
             os.chdir(vcproj32)
-            subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=OFF", "-G", "Visual Studio 14 2015"])
+            subprocess.call(["cmake", "..", "-G", generator])
             print()
             extensions32_cmd = joinstr.join(extensions32)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
@@ -364,7 +384,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj64)
             # Build
             os.chdir(vcproj64)
-            subprocess.call(["cmake", "..", "-DUSE_64BIT_BUILD=ON", "-G", "Visual Studio 14 2015 Win64"])
+            subprocess.call(["cmake", "..", "-G", "{} Win64".format(generator)])
             print()
             extensions64_cmd = joinstr.join(extensions64)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
@@ -457,7 +477,6 @@ def copy_optionals_for_building(mod,pbos):
 
     print_blue("\nChecking Optionals folder...")
     try:
-
         #special server.pbo processing
         files = glob.glob(os.path.join(release_dir, project, "optionals", "*.pbo"))
         for file in files:
@@ -903,6 +922,10 @@ def main(argv):
     global pbo_name_prefix
     global ciBuild
     global missingFiles
+    global failedBuilds
+    global printedErrors
+
+    printedErrors = 0
 
     if sys.platform != "win32":
         print_error("Non-Windows platform (Cygwin?). Please re-run from cmd.")
@@ -1355,7 +1378,7 @@ See the make.cfg file for additional build options.
 
                 except:
                     raise
-                    print_error("ERROR: Could not copy module to work drive. Does the module exist?")
+                    print_error("Could not copy module to work drive. Does the module exist?")
                     input("Press Enter to continue...")
                     print("Resuming build...")
                     continue
@@ -1376,7 +1399,7 @@ See the make.cfg file for additional build options.
                         os.remove(f)
             except:
                 raise
-                print_error("ERROR: Could not copy module to work drive. Does the module exist?")
+                print_error("Could not copy module to work drive. Does the module exist?")
                 input("Press Enter to continue...")
                 print("Resuming build...")
                 continue
@@ -1586,7 +1609,7 @@ See the make.cfg file for additional build options.
         try:
             shutil.rmtree(os.path.join(release_dir, project, "temp"), True)
         except:
-            print_error("ERROR: Could not delete pboProject temp files.")
+            print_error("Could not delete pboProject temp files.")
 
     # Make release
     if make_release_zip:
@@ -1653,23 +1676,22 @@ See the make.cfg file for additional build options.
             except:
                 print_error("Could not copy files. Is Arma 3 running?")
 
-    if len(failedBuilds) > 0 or len(missingFiles) > 0:
+    tracedErrors = len(failedBuilds) + len(missingFiles)
+    if printedErrors > 0: # printedErrors includes tracedErrors
+        printedOnlyErrors = printedErrors - tracedErrors
+        print()
+        print_error("Failed with {} errors.".format(printedErrors))
         if len(failedBuilds) > 0:
-            print()
-            print_error("Build failed! {} PBOs failed!".format(len(failedBuilds)))
             for failedBuild in failedBuilds:
-                print("- {} failed.".format(failedBuild))
-
+                print("- {} build failed!".format(failedBuild))
         if len(missingFiles) > 0:
-            missingFiles = set(missingFiles)
-            print()
-            print_error("Missing files! {} files not found!".format(len(missingFiles)))
             for missingFile in missingFiles:
-                print("- {} failed.".format(missingFile))
-
-        sys.exit(1)
+                print("- {} not found!".format(missingFile))
+        if printedOnlyErrors > 0:
+            print_yellow("- {} untraced error(s)!".format(printedOnlyErrors))
     else:
         print_green("\nCompleted with 0 errors.")
+
 
 if __name__ == "__main__":
     start_time = timeit.default_timer()

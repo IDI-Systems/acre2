@@ -4,6 +4,7 @@
 #include "dispatch.hpp"
 #include "arguments.hpp"
 
+typedef void (__stdcall *RVExtensionVersion)(char *output, int outputSize);
 typedef void (__stdcall *RVExtension)(char *output, int outputSize, const char *function);
 
 namespace acre {

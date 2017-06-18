@@ -1,5 +1,5 @@
 #ifdef _WIN32
-
+    #include "Macros.h"
     #include <windows.h>
 
     #ifndef DEBUG
@@ -9,8 +9,8 @@
     #endif
 
     VS_VERSION_INFO VERSIONINFO
-    FILEVERSION                @ACE_VERSION_MAJOR@, @ACE_VERSION_MINOR@, @ACE_VERSION_REVISION@
-    PRODUCTVERSION             @ACE_VERSION_MAJOR@, @ACE_VERSION_MINOR@, @ACE_VERSION_REVISION@
+    FILEVERSION                ACRE_VERSION_MAJOR, ACRE_VERSION_MINOR, ACRE_VERSION_SUBMINOR
+    PRODUCTVERSION             ACRE_VERSION_MAJOR, ACRE_VERSION_MINOR, ACRE_VERSION_SUBMINOR
     FILEFLAGSMASK              VS_FFI_FILEFLAGSMASK
     FILEFLAGS                  (VS_FF_PRIVATEBUILD|VS_FF_PRERELEASE|VER_DEBUG)
     FILEOS                     VOS__WINDOWS32
@@ -21,12 +21,13 @@
         BEGIN
             BLOCK "040904E4"
             BEGIN
-                VALUE "CompanyName",          "ACE3 Team"
-                VALUE "FileDescription",      "@ACE_VERSION_MAJOR@.@ACE_VERSION_MINOR@.@ACE_VERSION_REVISION@-@ACE_VERSION_BUILD@"
-                VALUE "FileVersion",          "@ACE_VERSION_MAJOR@.@ACE_VERSION_MINOR@.@ACE_VERSION_REVISION@-@ACE_VERSION_BUILD@"
-                VALUE "ProductName",          "ACE3"
-                VALUE "ProductVersion",       "@ACE_VERSION_MAJOR@.@ACE_VERSION_MINOR@.@ACE_VERSION_REVISION@-@ACE_VERSION_BUILD@"
-                VALUE "Build Date",         "@ACE_BUILDSTAMP@"
+                VALUE "CompanyName",          ACRE_COMPANY
+                VALUE "FileDescription",      ACRE_NAME
+                VALUE "FileVersion",          ACRE_VERSION
+                VALUE "ProductName",          ACRE_NAME
+                VALUE "ProductVersion",       ACRE_VERSION
+                VALUE "LegalCopyright",       ACRE_COPYRIGHT
+                VALUE "Build Date",           "@ACRE_BUILDSTAMP@"
             END
         END
 
@@ -43,5 +44,5 @@
 
         END
     END
-    
+
 #endif
