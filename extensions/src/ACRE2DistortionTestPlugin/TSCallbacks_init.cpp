@@ -26,7 +26,7 @@ int ts3plugin_apiVersion() {
     return TS3_PLUGIN_API_VERSION;
 }
 const char* ts3plugin_author() {
-    return ACRE_URL;
+    return ACRE_TEAM_URL;
 }
 const char* ts3plugin_description() {
     return ACRE_DESC;

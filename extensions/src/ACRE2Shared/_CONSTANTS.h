@@ -29,13 +29,17 @@
 
 #define TS3_PLUGIN_API_VERSION 21
 
-#define ACRE_NAME "ACRE2"
-#define ACRE_URL "ACRE2 Team - https://github.com/IDI-Systems/acre2"
-#define ACRE_DESC "This plugin handles realistic radio and direct communcations in Arma 3."
-#define ACRE_COMMAND_KEYWORD "ACRE2"
-
 #define QUOTE_(x) #x
 #define QUOTE(x) QUOTE_(x)
+
+#define ACRE_NAME "ACRE2"
+#define ACRE_TEAM "ACRE2 Team"
+#define ACRE_URL "https://github.com/IDI-Systems/acre2"
+#define ACRE_TEAM_URL QUOTE(ACRE_TEAM - ACRE_URL)
+#define ACRE_DESC "This plugin handles realistic radio and direct communcations in Arma 3."
+#define ACRE_COMPANY "IDI-Systems"
+#define ACRE_COPYRIGHT "©2017 IDI-Systems"
+#define ACRE_COMMAND_KEYWORD "ACRE2"
 
 #define ACRE_VERSION QUOTE(ACRE_VERSION_MAJOR.ACRE_VERSION_MINOR.ACRE_VERSION_SUBMINOR.ACRE_VERSION_BUILD)
 #define ACRE_VERSION_METADATA "Version: "QUOTE(ACRE_VERSION_MAJOR)"."QUOTE(ACRE_VERSION_MINOR)"."QUOTE(ACRE_VERSION_SUBMINOR)"."QUOTE(ACRE_VERSION_BUILD)

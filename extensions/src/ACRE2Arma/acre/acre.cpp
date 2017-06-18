@@ -4,6 +4,7 @@
 *
 */
 
+#include "Macros.h"
 #include "shared.hpp"
 #include "controller.hpp"
 #include "arguments.hpp"
@@ -11,11 +12,14 @@
 
 #ifndef _STATIC
 extern "C" {
+    __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
     __declspec (dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
 };
 #endif
 
-static char version[] = "1.0";
+void __stdcall RVExtensionVersion(char *output, int outputSize) {
+    sprintf_s(output, outputSize, "%s", ACRE_VERSION);
+}
 
 std::string get_command(const std::string & input) {
     size_t cmd_end;
@@ -51,7 +55,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
         return;
     }
     if (command == "version") {
-        result = version;
+        result = ACRE_VERSION;
     }
     else if (command == "echo") {
         result = function;

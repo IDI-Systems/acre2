@@ -7,7 +7,7 @@ acre_set_linker_options()
 
 SOURCE_GROUP("main" FILES ${DATA_SOURCES})
 
-add_library(acre_data_static STATIC ${DATA_SOURCES})
+add_library(acre_data_static STATIC ${DATA_SOURCES} ${GLOBAL_SOURCES})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 

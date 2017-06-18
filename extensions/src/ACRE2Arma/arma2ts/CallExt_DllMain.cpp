@@ -1,6 +1,6 @@
 #include "compat.h"
 //#include "Log.h"
-#include "macros.h"
+#include "Macros.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -52,10 +52,14 @@ BOOL writeConnected, readConnected;
 
 void ClosePipe();
 
-extern "C" 
-{
-  __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function); 
+extern "C" {
+    __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
+    __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function); 
 };
+
+void __stdcall RVExtensionVersion(char *output, int outputSize) {
+    sprintf_s(output, outputSize, "%s", ACRE_VERSION);
+}
 
 inline std::string get_path() {
     char moduleName[MAX_PATH];
