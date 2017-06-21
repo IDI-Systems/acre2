@@ -37,6 +37,6 @@ if (_radioId == EGVAR(sys_radio,currentRadioDialog)) then {
             HASH_SET(_radioData, "selectedEntry", 0);
         };
     };
-    _display = uiNamespace getVariable QGVAR(currentDisplay);
+    private _display = uiNamespace getVariable QGVAR(currentDisplay);
     [_display] call FUNC(render);
 };

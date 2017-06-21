@@ -51,8 +51,8 @@ DFUNC(doAlphanumericButton) = {
     TRACE_1("", _number);
     if (_number > -1 && _number < 10) then {
 
-        _arr = toArray _value;
-        _character = _arr select _editIndex;
+        private _arr = toArray _value;
+        private _character = _arr select _editIndex;
 
         _character = ( toArray ((GVAR(NumpadMap) select _number) select _editButtonPress) select 0);
         TRACE_4("Values", _character, _number, _editButtonPress, _arr);
@@ -99,8 +99,8 @@ DFUNC(onButtonPress_Alphanumeric) = {
         case '9': { _this call FUNC(doAlphanumericButton); };
         case '0': { _this call FUNC(doAlphanumericButton); };
         case 'LEFT': {
-            _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
-            _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
+            private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
             if (_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
@@ -112,8 +112,8 @@ DFUNC(onButtonPress_Alphanumeric) = {
             [_menu] call FUNC(renderMenu_Alphanumeric);
         };
         case 'RIGHT': {
-            _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
-            _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
+            private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
             if (_editIndex+1 < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
@@ -128,7 +128,7 @@ DFUNC(onButtonPress_Alphanumeric) = {
             // swap to the parent
             TRACE_1("onButtonPress_Alphanumeric: ENT hit", _value);
 
-            _saveName = MENU_SELECTION_VARIABLE(_menu);
+            private _saveName = MENU_SELECTION_VARIABLE(_menu);
             SET_STATE(_saveName, _value);
 
             SCRATCH_SET(GVAR(currentRadioId), "menuString", nil);

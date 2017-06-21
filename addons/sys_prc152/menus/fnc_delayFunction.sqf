@@ -25,12 +25,12 @@ private _fnc = {
     params ["_args"];
     _args params ["_time", "_radioId", "_function", "_funcArgs"];
 
-    _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
+    private _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
     if (_onState < 0.2) then {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     if (diag_tickTime > _time) then {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;    // Remove the PFH first, in case the function errors
+        [_this select 1] call CBA_fnc_removePerFrameHandler;    // Remove the PFH first, in case the function errors
 
         [_radioId, _funcArgs] call _function;
     };

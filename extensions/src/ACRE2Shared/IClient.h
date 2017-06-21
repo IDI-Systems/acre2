@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "compat.h"
 
@@ -7,6 +7,7 @@
 #include "ACRE_VECTOR.h"
 #include <list>
 #include <string>
+#include <vector>
 
 class IClient {
 public:
@@ -40,7 +41,7 @@ public:
 
     virtual ACRE_RESULT moveToServerTS3Channel() = 0;
     virtual ACRE_RESULT moveToPreviousTS3Channel() = 0;
-    virtual ACRE_RESULT updateServerName(std::string name) = 0;
+    virtual ACRE_RESULT updateTs3ChannelNames(std::vector<std::string> names) = 0;
     virtual ACRE_RESULT updateShouldSwitchTS3Channel(BOOL state) = 0;
     virtual BOOL shouldSwitchTS3Channel() = 0;
 

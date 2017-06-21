@@ -46,7 +46,7 @@ class CfgVehicles {
     class MRAP_01_base_F : Car_F {
         class AcreRacks {
             class Rack_1 {
-                name = "Dashboard Upper"; // Name is displayed in the interaction menu.
+                name = CSTRING(Dash_upper); // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC110";
                 allowed[] = {"driver", {"cargo", 0}}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};
@@ -56,7 +56,7 @@ class CfgVehicles {
                 intercom[] = {};
             };
             class Rack_2 {
-                name = "Dashboard Lower"; // If you have multiple racks a text label helps identify the particular rack..
+                name = CSTRING(Dash_lower); // If you have multiple racks a text label helps identify the particular rack..
                 componentname = "ACRE_VRC103";
                 allowed[] = {"driver", {"cargo", 0}};
                 disabled[] = {};
@@ -122,7 +122,7 @@ class CfgVehicles {
     class Helicopter_Base_F : Helicopter {
         class AcreRacks {
             class Rack_1 {
-                name = "Rack 1"; // Name is displayed in the interaction menu.
+                name = CSTRING(Dash); // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC103";
                 allowed[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};
@@ -158,7 +158,7 @@ class CfgVehicles {
     class Plane_Base_F : Plane {
         class AcreRacks {
             class Rack_1 {
-                name = "Rack 1"; // Name is displayed in the interaction menu.
+                name = CSTRING(Dash); // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC103";
                 allowed[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};
@@ -193,7 +193,7 @@ class CfgVehicles {
     class Tank_F : Tank {
          class AcreRacks {
             class Rack_1 {
-                name = "Dash"; // Name is displayed in the interaction menu.
+                name = CSTRING(Dash); // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC103";
                 allowed[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};
@@ -209,7 +209,7 @@ class CfgVehicles {
     class Wheeled_APC_F : Car_F {
          class AcreRacks {
             class Rack_1 {
-                name = "Dash"; // Name is displayed in the interaction menu.
+                name = CSTRING(Dash); // Name is displayed in the interaction menu.
                 componentname = "ACRE_VRC103";
                 allowed[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabled[] = {};

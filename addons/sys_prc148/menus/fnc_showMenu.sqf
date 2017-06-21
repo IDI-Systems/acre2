@@ -92,7 +92,7 @@ private _currentPage = _menu select _pageIndex;
             private _list = _entry select 7;
             private _labels = _entry select 6;
             //acre_player sideChat format["value: %1", _labels];
-            _index = _list find _value;
+            private _index = _list find _value;
             if (_index == -1) then {
                 _index = 0;
             };

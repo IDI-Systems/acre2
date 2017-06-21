@@ -14,7 +14,7 @@ ACRE_CURRENT_FUNCTION = "";
 ACRE_DUMPSTACK_FNC = {
     diag_log text format["ACRE CALL STACK DUMP: %1:%2(%3) DEPTH: %4", _this select 0, _this select 1, ACRE_CURRENT_FUNCTION, ACRE_STACK_DEPTH];
     for "_x" from ACRE_STACK_DEPTH-1 to 0 step -1 do {
-        _stackEntry = ACRE_STACK_TRACE select _x;
+        private _stackEntry = ACRE_STACK_TRACE select _x;
         _stackEntry params ["_callTickTime", "_callFileName", "_callLineNumb", "_callFuncName", "_nextFuncName", "_nextFuncArgs"];
 
         if (_callFuncName == "") then {

@@ -22,6 +22,4 @@
 
 params ["_radioId",  "", "_eventData", "", ""];
 
-private _spatial = _eventData;
-
-[_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _spatial]] call EFUNC(sys_data,dataEvent);
+[_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _eventData]] call EFUNC(sys_data,dataEvent);

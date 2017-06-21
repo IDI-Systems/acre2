@@ -20,7 +20,7 @@ DFUNC(changeValueAck_End) = {
     params ["_radioId"];
     TRACE_1("",_this);
     if (diag_tickTime > GVAR(changeValueAckTimer)) then {
-        _lastMenu = SCRATCH_GET_DEF(_radioId, "lastMenu", nil);
+        private _lastMenu = SCRATCH_GET_DEF(_radioId, "lastMenu", nil);
         if (isNil "_lastMenu") then { _lastMenu = GVAR(VULOSHOME); };
 
         if (!isNil QEGVAR(sys_radio,currentRadioDialog)) then {
@@ -57,7 +57,7 @@ TRACE_2("ENTER", _valueType, _value);
 
 switch _valueType do {
     case 'VOLUME': {
-        _lastMenu = SCRATCH_GET_DEF(GVAR(currentRadioId), "lastMenu", nil);
+        private _lastMenu = SCRATCH_GET_DEF(GVAR(currentRadioId), "lastMenu", nil);
         if (isNil "_lastMenu") then {
             SCRATCH_SET(GVAR(currentRadioId), "lastMenu", _menu);
         };

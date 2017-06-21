@@ -76,8 +76,6 @@ if (diag_tickTime - _lastSortTime > 3) then {
     //};
 };
 
-
-
 if (_transmissionsChanged) then {
     private _areAllRadiosInitialized = true;
 
@@ -116,7 +114,6 @@ if (_transmissionsChanged) then {
     if (HASH_GET(_radioRxData, "mode") == "singleChannelPRR") then {
         private _hearableTransmissions = [];
         private _junkTransmissions = [];
-        _digital = false;
         {
             PUSH(_hearableTransmissions, _x);
         } forEach _sortedRadios;
@@ -151,15 +148,12 @@ if (_transmissionsChanged) then {
         };
     };
 
-
-
+    private _volume = 1;
     if ((count _okRadios) > 0) then {
         private _signalData = (_okRadios select 0) select 2;
         _signalData params ["_signalPercent","_signalDbM"];
-
         private _squelch = -100;
         if (_signalDbM < _squelch || !EGVAR(sys_core,interference)) then {
-
             if (EGVAR(sys_core,interference)) then {
                 _okRadios = [];
             };

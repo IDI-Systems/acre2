@@ -14,7 +14,7 @@ GVAR(OptRadioOptions) = ["RADIO_OPTIONS", "RADIO OPTIONS", "OPT-RADIO",
             ],
             [
                 {
-                    _value = GET_STATE("audioPath");
+                    private _value = GET_STATE("audioPath");
                     //diag_log text format["render: %1", _value];
                     if (_value == "INTAUDIO") then {
                         SCRATCH_SET(GVAR(currentRadioId), "opt_radio_speaker", "ON");
@@ -25,8 +25,8 @@ GVAR(OptRadioOptions) = ["RADIO_OPTIONS", "RADIO OPTIONS", "OPT-RADIO",
                     //diag_log text format["save!"];
                     // If its RX only, zero out the TX frequency and
                     // Skip the rest of the menus
-                    _menu = _this select 0;
-                    _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "opt_radio_speaker", "OFF");
+                    private _menu = _this select 0;
+                    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "opt_radio_speaker", "OFF");
                     if (_value == "ON") then {
                         //diag_log text format["ON!!!!!!!"];
                         SET_STATE("audioPath", "INTAUDIO");
