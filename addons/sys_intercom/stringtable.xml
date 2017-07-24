@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -8,6 +8,8 @@
             <Japanese>車外電話機</Japanese>
             <Russian>Телефон пехоты</Russian>
             <Polish>Telefon piechoty</Polish>
+            <Chinese>車外對講機</Chinese>
+            <Chinesesimp>车外对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_giveInfantryPhone">
             <English>Pass Infantry Phone</English>
@@ -16,6 +18,8 @@
             <Japanese>車外電話機を渡す</Japanese>
             <Russian>Передать телефон пехоты</Russian>
             <Polish>Podaj telefon piechoty</Polish>
+            <Chinese>轉讓車外對講機</Chinese>
+            <Chinesesimp>转让车外对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_takeInfantryPhone">
             <English>Take Infantry Phone %1</English>
@@ -24,6 +28,8 @@
             <Japanese>車外電話機 %1 を取る</Japanese>
             <Russian>Взять телефон пехоты %1</Russian>
             <Polish>Podnieś telefon piechoty %1</Polish>
+            <Chinese>拿起車外對講機 %1</Chinese>
+            <Chinesesimp>拿起车外对讲机 %1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_switchInfantryPhone">
             <English>Switch Network %1</English>
@@ -31,6 +37,8 @@
             <Japanese>%1 ネットワークに切り替え</Japanese>
             <Russian>Переключить сеть %1</Russian>
             <Polish>Przełącz sieć %1</Polish>
+            <Chinese>切換通訊網 %1</Chinese>
+            <Chinesesimp>切换通讯网 %1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_returnInfantryPhone">
             <English>Return Infantry Phone</English>
@@ -39,6 +47,8 @@
             <Japanese>車外電話機 %1 を戻す</Japanese>
             <Russian>Вернуть телефон пехоты</Russian>
             <Polish>Odłóż telefon</Polish>
+            <Chinese>放回車外對講機</Chinese>
+            <Chinesesimp>放回车外对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
             <English>Start calling</English>
@@ -47,6 +57,8 @@
             <Japanese>呼び出す</Japanese>
             <Russian>Начать звонок</Russian>
             <Polish>Zadzwoń</Polish>
+            <Chinese>開始呼叫</Chinese>
+            <Chinesesimp>开始呼叫</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_stopCalling">
             <English>Stop calling</English>
@@ -55,6 +67,8 @@
             <Japanese>呼び出しを止める</Japanese>
             <Russian>Остановить звонок</Russian>
             <Polish>Przestań dzwonić</Polish>
+            <Chinese>停止呼叫</Chinese>
+            <Chinesesimp>停止呼叫</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneDisconnected">
             <English>Infantry Phone Disconnected</English>
@@ -62,6 +76,8 @@
             <Japanese>車外電話機を切断した</Japanese>
             <Russian>Телефон пехоты был отключен</Russian>
             <Polish>Telefon odłączony</Polish>
+            <Chinese>車外對講機已斷開聯繫</Chinese>
+            <Chinesesimp>车外对讲机已断开联系</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneConnected">
             <English>Infantry Phone Connected %1</English>
@@ -69,6 +85,8 @@
             <Japanese>車外電話機 %1 に切断した</Japanese>
             <Russian>Телефон пехоты подключен %1</Russian>
             <Polish>Telefon podłączony %1</Polish>
+            <Chinese>車外對講機已連接 %1</Chinese>
+            <Chinesesimp>车外对讲机已连接 %1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
             <English>Infantry Phone Received %1</English>
@@ -76,6 +94,8 @@
             <Japanese>車外電話機 %1 に受信した</Japanese>
             <Russian>Получен телефон пехоты %1</Russian>
             <Polish>Odebrano telefon piechoty %1</Polish>
+            <Chinese>車外對講機已收到 %1</Chinese>
+            <Chinesesimp>车外对讲机已收到 %1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercom">
             <English>Intercom</English>
@@ -83,12 +103,16 @@
             <Japanese>インターコム</Japanese>
             <Russian>Внутренняя связь</Russian>
             <Polish>Interkom</Polish>
+            <Chinese>對講機</Chinese>
+            <Chinesesimp>对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passenger">
             <English>Pax</English>
             <German>Pax</German>
             <Japanese>パックス</Japanese>
             <Russian>Пассажирский интерком</Russian>
+            <Chinese>乘客對講機</Chinese>
+            <Chinesesimp>乘客对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercomDisconnected">
             <English>Disconnected from Crew Intercom</English>
@@ -96,6 +120,8 @@
             <Japanese>乗員インターコムから切断した</Japanese>
             <Russian>Отключен от внутренней связи экипажа</Russian>
             <Polish>Odłączony od interkomu</Polish>
+            <Chinese>已斷開聯繫機組員對講機</Chinese>
+            <Chinesesimp>已断开联系机组员对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercomConnected">
             <English>Connected to Crew Intercom</English>
@@ -103,6 +129,8 @@
             <Japanese>乗員インターコムに接続した</Japanese>
             <Russian>Подключен к внутренней связи экипажа</Russian>
             <Polish>Podłączony do interkomu</Polish>
+            <Chinese>已連接至機組員對講機</Chinese>
+            <Chinesesimp>已连接至机组员对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_connect">
             <English>Connect %1</English>
@@ -110,6 +138,8 @@
             <Japanese>接続 %1</Japanese>
             <Russian>Подключен %1</Russian>
             <Polish>Połącz %1</Polish>
+            <Chinese>連接至 %1</Chinese>
+            <Chinesesimp>连接至 %1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_disconnect">
             <English>Disconnect %1</English>
@@ -117,39 +147,53 @@
             <Japanese>切断 %1</Japanese>
             <Russian>Отключен %1</Russian>
             <Polish>Rozłącz %1</Polish>
+            <Chinese>斷開聯繫 %1</Chinese>
+            <Chinesesimp>断开联系 %1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
             <English>Disconnected from Pax Intercom</English>
             <German>Gegensprechen mit Passagieren beendet</German>
             <Japanese>パックス インターコムから切断した</Japanese>
             <Russian>Отключен от пассажирского интеркома</Russian>
+            <Chinese>已斷開聯繫乘客對講機</Chinese>
+            <Chinesesimp>已断开联系乘客对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomConnected">
             <English>Connected to Pax Intercom</English>
             <German>Gegensprechen mit Passagieren begonnen</German>
             <Japanese>パックス インターコムに接続した</Japanese>
             <Russian>Подключен к пассажирскому интеркому</Russian>
+            <Chinese>已連接至乘客對講機</Chinese>
+            <Chinesesimp>已连接至乘客对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomNoConnections">
             <English>No free connections for Pax Intercom</English>
             <German>Gegensprechanlage mit Passagieren ausgelastet</German>
             <Japanese>パックス インターコムに接続できる場所が無い</Japanese>
             <Russian>Нет свободных соединений для пассажирского интеркома</Russian>
+            <Chinese>已無可用的連接位置給乘客對講機</Chinese>
+            <Chinesesimp>已无可用的连接位置给乘客对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_transOnly">
             <English>Transmit only</English>
             <German>Nur Senden</German>
             <Japanese>送信のみ</Japanese>
+            <Chinese>只發送</Chinese>
+            <Chinesesimp>只发送</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_recOnly">
             <English>Receive only</English>
             <German>Nur Empfangen</German>
             <Japanese>受信のみ</Japanese>
+            <Chinese>只接收</Chinese>
+            <Chinesesimp>只接收</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_recAndTrans">
             <English>Receive and Transmit</English>
             <German>Senden und Empfangen</German>
             <Japanese>受信と送信</Japanese>
+            <Chinese>接收和發送</Chinese>
+            <Chinesesimp>接收和发送</Chinesesimp>
         </Key>
     </Package>
 </Project>
