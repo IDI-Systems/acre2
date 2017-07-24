@@ -53,8 +53,8 @@
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
             <German>Funkgeräteschrank</German>
-            <Chinese>架</Chinese>
-            <Chinesesimp>架</Chinesesimp>
+            <Chinese>架子</Chinese>
+            <Chinesesimp>架子</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Dash">
             <English>Dash</English>
