@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="Main">
         <Key ID="STR_ACRE_Main_Author">
@@ -13,6 +13,8 @@
             <French>ACRE2Team</French>
             <Korean>ACRE2Team</Korean>
             <Japanese>ACRE2Team</Japanese>
+            <Chinese>ACRE2製作組</Chinese>
+            <Chinesesimp>ACRE2制作组</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_Main_URL">
             <English>https://github.com/IDI-Systems/acre2</English>
@@ -26,6 +28,8 @@
             <French>https://github.com/IDI-Systems/acre2</French>
             <Korean>https://github.com/IDI-Systems/acre2</Korean>
             <Japanese>https://github.com/IDI-Systems/acre2</Japanese>
+            <Chinese>https://github.com/IDI-Systems/acre2</Chinese>
+            <Chinesesimp>https://github.com/IDI-Systems/acre2</Chinesesimp>
         </Key>
     </Package>
 </Project>

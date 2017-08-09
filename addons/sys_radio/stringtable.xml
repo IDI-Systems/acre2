@@ -6,6 +6,8 @@
             <German>[ACRE] Funkgerätekiste</German>
             <Japanese>[ACRE] 無線機物資箱</Japanese>
             <Russian>[ACRE] Ящик с рациями</Russian>
+            <Chinese>[ACRE] 無線電箱</Chinese>
+            <Chinesesimp>[ACRE] 无线电箱</Chinesesimp>
         </Key>
     </Package>
 </Project>
