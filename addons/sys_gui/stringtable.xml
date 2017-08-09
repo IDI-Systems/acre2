@@ -12,6 +12,8 @@
             <Korean>육성 음량 조절</Korean>
             <Polish>Głośność mowy bezpośredniej</Polish>
             <Russian>Громкость прямой речи</Russian>
+            <Chinese>語音音量控制</Chinese>
+            <Chinesesimp>语音音量控制</Chinesesimp>
         </Key>
     </Package>
 </Project>
