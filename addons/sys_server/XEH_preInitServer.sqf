@@ -12,6 +12,8 @@ GVAR(masterIdList) = [];
 GVAR(markedForGC) = HASH_CREATE; //Entry format key: radioId value: [time_last_recieved,time_last_gc_find,object]
 
 DVAR(ACRE_SPECTATORS_LIST) = [];
+// Below array is for keeping A3 client ideas.
+DVAR(ACRE_SPECTATORS_A3_CLIENT_ID_LIST) = [];
 
 GVAR(masterIdTable) = HASH_CREATE;
 GVAR(doFullSearch) = false;
@@ -22,3 +24,4 @@ GVAR(unacknowledgedIds) = [];
 GVAR(unacknowledgedTable) = HASH_CREATE;
 
 ADDON = true;
+
