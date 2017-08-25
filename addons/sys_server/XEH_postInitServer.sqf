@@ -21,4 +21,4 @@ ACRE_FULL_SERVER_VERSION = QUOTE(VERSION);
 publicVariable "ACRE_FULL_SERVER_VERSION";
 
 // Event handler to remove disconnected clients from the spectator teamspeak list.
-private _id = addMissionEventHandler ["PlayerDisconnected",{_this call FUNC(handlePlayerDisconnected);}];
+addMissionEventHandler ["PlayerDisconnected", {_this call FUNC(handlePlayerDisconnected);}];
