@@ -8,3 +8,4 @@ PREP(acknowledgeId);
 PREP(stopRadioGarbageCollect);
 PREP(sendIntentToGarbageCollect);
 PREP(removeGCQueue);
+PREP(handlePlayerDisconnected);
