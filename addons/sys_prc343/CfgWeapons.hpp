@@ -37,6 +37,5 @@ class CfgWeapons {
             libTextDesc = "AN/PRC-343";
         };
     };
-
     RADIO_ID_LIST(ACRE_PRC343)
 };
