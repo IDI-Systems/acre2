@@ -12,7 +12,7 @@ class CfgWeapons {
         scopeCurator = 2;
         scope = 2;
         class ItemInfo {
-             mass = 120;
+             mass = 166.9;								// 16.7 pounds with batteries
              allowedSlots[] = {901};
             type = 0;
             scope = 0;
