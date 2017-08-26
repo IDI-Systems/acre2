@@ -28,7 +28,7 @@ class CfgWeapons {
         simulation = "ItemMineDetector";
 
         class ItemInfo {
-            mass = 188.3;								// 8.03 kg with 72 cm antenna and handset and two batteries
+            mass = 188.3;								// 72 cm antenna and handset and two batteries
             allowedSlots[] = {901};
             type = 0;
             scope = 0;
