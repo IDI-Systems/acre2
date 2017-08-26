@@ -26,7 +26,7 @@ class CfgWeapons {
         type = 4096;
         simulation = "ItemMineDetector";
         class ItemInfo {
-            mass = 120;
+            mass = 176.2;
             allowedSlots[] = {901};
             type = 0;
             scope = 0;
