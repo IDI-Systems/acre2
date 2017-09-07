@@ -32,7 +32,7 @@ with uiNamespace do {
             _mapCtrl drawLine [_txPos, _point, [1, 0, 0, 1]];
             _mapCtrl drawArrow [_point, _rxPos, [0, 0, 1, 1]];
             _mapCtrl drawIcon [
-                '\a3\ui_f\data\IGUI\Cfg\Actions\clear_empty_ca.paa',
+                "\a3\ui_f\data\IGUI\Cfg\Actions\clear_empty_ca.paa",
                 [0,0,1,1],
                 _point,
                 5,
@@ -41,7 +41,7 @@ with uiNamespace do {
                 format["%1, %2, %3", deg(_reflection select 2), _reflection select 3, _reflection select 4],
                 0,
                 0.05,
-                'EtelkaNarrowMediumPro',
+                "PuristaSemibold", // EtelkaNarrowMediumPro broke with 1.72 hotfix, can revert back to that font if fixed
                 "center"
             ];
         } forEach _reflections;
