@@ -14,7 +14,7 @@ class CfgWeapons {
         type = 4096;
         simulation = "ItemMineDetector";
         class ItemInfo {
-            mass = 8;
+            mass = 19.1;
             type = 0;
             scope = 0;
         };

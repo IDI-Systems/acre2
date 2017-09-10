@@ -1,10 +1,10 @@
-#define WeaponNoSlot        0    // dummy weapon
-#define WeaponSlotPrimary    1    // primary weapon
-#define WeaponSlotHandGun    2    // handGun/sidearm
-#define WeaponSlotSecondary    4    // secondary weapon    // 4 in ArmA, not 16.
-#define WeaponSlotHandGunItem    16    // sidearm/GL magazines    // 16 in ArmA, not 32.
-#define WeaponSlotItem        256    // main magazines, items, explosives
-#define WeaponSlotBinocular    4096    // binocular, NVG, LD, equipment
+#define WeaponNoSlot        0           // dummy weapon
+#define WeaponSlotPrimary    1          // primary weapon
+#define WeaponSlotHandGun    2          // handGun/sidearm
+#define WeaponSlotSecondary    4        // secondary weapon    // 4 in ArmA, not 16.
+#define WeaponSlotHandGunItem    16     // sidearm/GL magazines    // 16 in ArmA, not 32.
+#define WeaponSlotItem        256       // main magazines, items, explosives
+#define WeaponSlotBinocular    4096     // binocular, NVG, LD, equipment
 #define WeaponHardMounted    65536
 #define WeaponSlotSmallItems    131072
 
@@ -28,11 +28,11 @@ class CfgWeapons {
         simulation = "ItemMineDetector";
 
         class ItemInfo {
-             mass = 120;
-             allowedSlots[] = {901};
+            mass = 188.3;                                // 72 cm antenna and handset and two batteries
+            allowedSlots[] = {901};
             type = 0;
             scope = 0;
-         };
+        };
 
         class Library {
             libTextDesc = "AN/PRC-77";

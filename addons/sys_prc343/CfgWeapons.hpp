@@ -28,7 +28,7 @@ class CfgWeapons {
         type = 4096;
         simulation = "ItemMineDetector";
         class ItemInfo {
-            mass = 8;
+            mass = 33;
             type = 0;
             scope = 0;
         };
@@ -37,6 +37,5 @@ class CfgWeapons {
             libTextDesc = "AN/PRC-343";
         };
     };
-
     RADIO_ID_LIST(ACRE_PRC343)
 };
