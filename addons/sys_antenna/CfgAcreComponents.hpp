@@ -79,4 +79,20 @@ class CfgAcreComponents {
         height = 1.23;
         binaryGainFile = QPATHTOF(binary\Harris_123cm_Whip_gain.aba);
     };
+
+    class ACRE_243CM_VHF_TNC: ACRE_BaseAntenna {
+        name = "2.43 Meter VHF Ground Spike Antenna";
+        shortName = "2.43M Ground Spike";
+        connector = ACRE_CONNECTOR_TNC;
+        height = 2.43;
+        binaryGainFile = QPATHTOF(binary\groundspike_2430cm_gain.aba);
+    };
+
+    class ACRE_643CM_VHF_TNC: ACRE_BaseAntenna {
+        name = "6.43 Meter VHF Ground Spike Antenna on Mast";
+        shortName = "6.43M Ground Spike";
+        connector = ACRE_CONNECTOR_TNC;
+        height = 6.43;
+        binaryGainFile = QPATHTOF(binary\groundspike_2430cm_mast_gain.aba);
+    };
 };
