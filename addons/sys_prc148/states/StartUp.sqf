@@ -14,8 +14,9 @@
  *
  * Public: No
  */
-
 #include "\idi\acre\addons\sys_prc148\script_component.hpp"
+
+//USES_VARIABLES ["_display"]
 
 DFUNC(PostScreen_Render) = {
     params ["_display"];
@@ -29,7 +30,7 @@ DFUNC(PostScreen_Render) = {
 DFUNC(PostScreen_Animation) = {
     params ["_args","_id"];
 
-    _step = SCRATCH_GET_DEF(GVAR(currentRadioId), "post_animation_step", 0);
+    private _step = SCRATCH_GET_DEF(GVAR(currentRadioId), "post_animation_step", 0);
     if (_step == 0) then {
         [_display, SMALL_LINE_1, [1,25], false] call FUNC(highlightText);
         [_display, SMALL_LINE_5, [1,25], false] call FUNC(highlightText);
@@ -37,11 +38,11 @@ DFUNC(PostScreen_Animation) = {
         [_display, SMALL_LINE_1, [12,13]] call FUNC(highlightText);
         [_display, SMALL_LINE_5, [12,13]] call FUNC(highlightText);
     } else {
-        _stepLeft = 12-(_step*2);
+        private _stepLeft = 12-(_step*2);
         [_display, SMALL_LINE_1, [_stepLeft,_stepLeft]] call FUNC(highlightText);
         [_display, SMALL_LINE_5, [_stepLeft,_stepLeft]] call FUNC(highlightText);
 
-        _stepRight = 13+(_step*2);
+        private _stepRight = 13+(_step*2);
         [_display, SMALL_LINE_1, [_stepRight,_stepRight]] call FUNC(highlightText);
         [_display, SMALL_LINE_5, [_stepRight,_stepRight]] call FUNC(highlightText);
     };
@@ -55,7 +56,7 @@ DFUNC(PostScreen_Animation) = {
 DFUNC(PostScreen_End) = {
     params ["_radioId"];
 
-    _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
+    private _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
     if (_onState > 0) then {
         [_radioId, "LogoScreen"] call FUNC(changeState);
         [_radioId, FUNC(LogoScreen_End), 3] call FUNC(delayFunction);
@@ -71,7 +72,7 @@ DFUNC(LogoScreen_Render) = {
 DFUNC(LogoScreen_Animation) = {
     params ["_args","_id"];
 
-    _step = SCRATCH_GET_DEF(GVAR(currentRadioId), "logo_animation_step", 0);
+    private _step = SCRATCH_GET_DEF(GVAR(currentRadioId), "logo_animation_step", 0);
     if (_step == 0) then {
         [_display, SMALL_LINE_1, [1,25], false] call FUNC(highlightText);
         [_display, SMALL_LINE_2, [1,25], false] call FUNC(highlightText);
@@ -115,7 +116,7 @@ DFUNC(LogoScreen_Animation) = {
 DFUNC(LogoScreen_End) = {
     params ["_radioId"];
 
-    _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
+    private _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
     if (_onState > 0) then {
         [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
         [_radioId, "DefaultDisplay"] call FUNC(changeState);

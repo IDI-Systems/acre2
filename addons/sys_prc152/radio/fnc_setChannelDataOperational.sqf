@@ -16,7 +16,7 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId", "channelId", "_key", "_value"];
+params ["_radioId", "_channelId", "_key", "_value"];
 
 private _optChannelId = [GVAR(currentRadioId), "getState", "optChannelId"] call EFUNC(sys_data,dataEvent);
 private _opt = [GVAR(currentRadioId), "getState", "optChannelData"] call EFUNC(sys_data,dataEvent);

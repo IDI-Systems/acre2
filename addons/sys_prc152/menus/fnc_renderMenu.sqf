@@ -26,7 +26,7 @@ if (!([_menu] call FUNC(verifyIsMenu)) ) exitWith {
     [_menu] call FUNC(changeMenu);
 };
 */
-_menuId = MENU_ID(_menu);
+private _menuId = MENU_ID(_menu);
 if (isNil "_menuId") then {
     SET_STATE("currentRenderMenu", _menu);
 } else {

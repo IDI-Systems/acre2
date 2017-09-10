@@ -26,7 +26,7 @@ disableSerialization;
 
 57701 cutRsc [QGVAR(VolumeControlDialog), "PLAIN"];
 
-_slider = (GVAR(VolumeControlDialog) select 0) displayCtrl 1900;
+private _slider = (GVAR(VolumeControlDialog) select 0) displayCtrl 1900;
 _slider sliderSetRange [-2, 2];
 
 _slider ctrlSetEventHandler ["SliderPosChanged", QUOTE(_this call FUNC(onVolumeControlSliderChanged))];

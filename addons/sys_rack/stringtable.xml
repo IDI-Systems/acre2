@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_rack">
+        <Key ID="STR_ACRE_sys_rack_mountRadio">
+            <English>Mount Radio</English>
+            <German>Funkgerät einbauen</German>
+            <Japanese>無線機の積載</Japanese>
+            <Chinese>裝載無線電</Chinese>
+            <Chinesesimp>装载无线电</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_unmountable">
+            <English>Unmountable (Locked)</English>
+            <German>Funkgerät fest verbaut</German>
+            <Japanese>搭載不可 (ロック済)</Japanese>
+            <Chinese>無法裝載 (已鎖定)</Chinese>
+            <Chinesesimp>无法装载 (已锁定)</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_unmountRadio">
+            <English>Unmount Radio (%1)</English>
+            <German>Entferne Funkgerät (%1)</German>
+            <Japanese>無線機を降ろす (%1)</Japanese>
+            <Chinese>卸載無線電 (%1)</Chinese>
+            <Chinesesimp>卸载无线电 (%1)</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_mountedRadio">
+            <English>Mounted radio (%1)</English>
+            <German>Eingebautes Funkgerät (%1)</German>
+            <Japanese>無線機を乗せる (%1)</Japanese>
+            <Chinese>裝載無線電 (%1)</Chinese>
+            <Chinesesimp>装载无线电 (%1)</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
+            <English>Stop using radio</English>
+            <German>Benutzung beenden</German>
+            <Japanese>無線機の使用を止める</Japanese>
+            <Chinese>停止使用無線電</Chinese>
+            <Chinesesimp>停止使用无线电</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_useRadio">
+            <English>Use radio</English>
+            <German>Funkgerät verwenden</German>
+            <Japanese>無線機を使う</Japanese>
+            <Chinese>使用無線電</Chinese>
+            <Chinesesimp>使用无线电</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_unableUnmount">
+            <English>Unable to unmount radio as you have no inventory space.</English>
+            <German>Funkgerät kann nicht entfernt werden. Nicht genug Platz im Inventar vorhanden.</German>
+            <Japanese>インベントリに空きが無いため無線機を降ろせません。</Japanese>
+            <Chinese>無法卸載無線電，因為你的物品欄已經沒有任何空間。</Chinese>
+            <Chinesesimp>无法卸载无线电，因为你的物品栏已经没有任何空间。</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Racks">
+            <English>Racks</English>
+            <German>Funkgeräteschrank</German>
+            <Chinese>架子</Chinese>
+            <Chinesesimp>架子</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash">
+            <English>Dash</English>
+            <German>Steckplatz</German>
+            <Chinese>儀錶板</Chinese>
+            <Chinesesimp>仪表板</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash_lower">
+            <English>Dashboard Lower</English>
+            <German>Unterer Steckplatz</German>
+            <Chinese>儀錶板下降</Chinese>
+            <Chinesesimp>仪表板下降</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_Dash_upper">
+            <English>Dashboard Upper</English>
+            <German>Oberer Steckplatz</German>
+            <Chinese>儀錶板上升</Chinese>
+            <Chinesesimp>仪表板上升</Chinesesimp>
+        </Key>
+    </Package>
+</Project>

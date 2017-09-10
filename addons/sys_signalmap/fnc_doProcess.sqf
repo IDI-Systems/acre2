@@ -17,40 +17,39 @@
 #include "script_component.hpp"
 
 with uiNamespace do {
-
-    _txAntennaName = GVAR(txAntennaListBox) lbData (lbCurSel GVAR(txAntennaListBox));
+    private _txAntennaName = GVAR(txAntennaListBox) lbData (lbCurSel GVAR(txAntennaListBox));
     GVAR(txAntennaListBoxValue) = lbCurSel GVAR(txAntennaListBox);
 
     GVAR(txHeightValue) = parseNumber (ctrlText GVAR(txHeight));
 
-    _txDir = [1, (parseNumber (ctrlText GVAR(txDir)))*-1, 0] call cba_fnc_polar2vect;
+    private _txDir = [1, (parseNumber (ctrlText GVAR(txDir)))*-1, 0] call cba_fnc_polar2vect;
     GVAR(txDirValue) = (parseNumber (ctrlText GVAR(txDir)));
 
-    _rxAntennaName = GVAR(rxAntennaListBox) lbData (lbCurSel GVAR(rxAntennaListBox));
+    private _rxAntennaName = GVAR(rxAntennaListBox) lbData (lbCurSel GVAR(rxAntennaListBox));
     GVAR(rxAntennaListBoxValue) = lbCurSel GVAR(rxAntennaListBox);
 
     GVAR(rxHeightValue) = parseNumber (ctrlText GVAR(rxHeight));
 
-    _sampleSize = floor (parseNumber (ctrlText GVAR(sampleSize)));
+    private _sampleSize = floor (parseNumber (ctrlText GVAR(sampleSize)));
     if (_sampleSize < 1) exitWith {
         hint format["The sample size must be equal to or larger than 1."];
     };
     GVAR(sampleSizeValue) = _sampleSize;
 
-    _frequency = parseNumber (ctrlText GVAR(txFreq));
+    private _frequency = parseNumber (ctrlText GVAR(txFreq));
     if (_frequency < 30) exitWith {
         hint format["The frequency must be equal to or larger than 30MHz."];
     };
     GVAR(txFreqValue) = _frequency;
 
-    _power = parseNumber (ctrlText GVAR(txPower));
+    private _power = parseNumber (ctrlText GVAR(txPower));
     if (_power <= 0) exitWith {
         hint format["The Tx power must be larger than 0mW."];
     };
     GVAR(txPowerValue) = _power;
 
-    _lowerSensitivity = parseNumber (ctrlText GVAR(rxSensitivity));
-    _upperSensitivity = parseNumber (ctrlText GVAR(rxSensitivityUpper));
+    private _lowerSensitivity = parseNumber (ctrlText GVAR(rxSensitivity));
+    private _upperSensitivity = parseNumber (ctrlText GVAR(rxSensitivityUpper));
 
     if (_lowerSensitivity > _upperSensitivity) exitWith {
         hint format["The upper sensitivity must be larger than the lower sensitivity."];
@@ -78,6 +77,8 @@ with uiNamespace do {
     GVAR(overlayMessageGrp) ctrlSetPosition [safezoneX + safezoneW - 0.5, safezoneY + safezoneH - 1, 0.5, 0.75];
     GVAR(overlayMessageGrp) ctrlCommit 0;
     ctrlSetFocus GVAR(overlayMessageGrp);
+
+    private ["_bg"];
     CTRLOVERLAY(_bg, "RscBackground");
     _bg ctrlSetPosition [0, 0, 0.5, 0.75];
     _bg ctrlCommit 0;
@@ -103,7 +104,7 @@ with uiNamespace do {
     GVAR(currentId) = format["%1_%2_%3_signalmap", worldName, floor diag_tickTime, _sampleSize];
     GVAR(currentArgs) = [];
     {
-        _args = [
+        private _args = [
             format["%1_%2", GVAR(currentId), _forEachIndex],
             _sampleSize,
             +((_x select 0) select 0),
@@ -122,6 +123,7 @@ with uiNamespace do {
         ];
         GVAR(currentArgs) pushBack +_args;
         with missionNamespace do {
+            //IGNORE_PRIVATE_WARNING ["_args"];
             [
                 "signal_map",
                 _args,
@@ -130,7 +132,7 @@ with uiNamespace do {
                     with uiNamespace do {
                         INFO_1("Completed area: %1",GVAR(areaProgress));
                         GVAR(completedAreas) pushBack +(GVAR(currentArgs) select GVAR(areaProgress));
-                        _marker = (GVAR(rxAreas) select GVAR(areaProgress)) select 1;
+                        private _marker = (GVAR(rxAreas) select GVAR(areaProgress)) select 1;
                         _marker setMarkerBrushLocal "Border";
                         // _marker setMarkerAlphaLocal 0;
 
@@ -150,15 +152,16 @@ with uiNamespace do {
 
     } forEach GVAR(rxAreas);
     with missionNamespace do {
-        _fnc = {
+        private _fnc = {
             with uiNamespace do {
                 if (GVAR(areaProgress) != (count GVAR(rxAreas))) then {
-                    _res = [1,1];
+                    private _res = [1,1];
                     with missionNamespace do {
+                        //IGNORE_PRIVATE_WARNING ["_res"];
                         _res = ["signal_map_progress", ""] call EFUNC(sys_core,callExt);
                     };
                     diag_log text format["res: %1", _res];
-                    _p = (_res select 0)/(_res select 1);
+                    private _p = (_res select 0)/(_res select 1);
                     GVAR(progressBar) progressSetPosition _p;
                     if (_p != 1) then {
                         GVAR(chunkProgressText) ctrlSetStructuredText (parseText format["<t align='center'>%1/%2</t>", _res select 0, _res select 1]);

@@ -29,7 +29,10 @@ if (_target isKindOf "CAManBase") then {
             "acre_give_infantryTelephone",
             localize LSTRING(giveInfantryPhone),
             "",
-            {[_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, NO_INTERCOM]] select 0, _target, 2, _infantryPhoneNetwork, _player] call FUNC(updateInfantryPhoneStatus)},
+            {
+                //USES_VARIABLES ["_target", "_player"];
+                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, NO_INTERCOM]] select 0, _target, 2, _infantryPhoneNetwork, _player] call FUNC(updateInfantryPhoneStatus)
+            },
             {true},
             {},
             {}
@@ -38,7 +41,7 @@ if (_target isKindOf "CAManBase") then {
     };
 } else {
     if (vehicle acre_player != _target) then {
-        _infantryPhoneIntercom = _target getVariable [QGVAR(infantryPhoneIntercom), []];
+        private _infantryPhoneIntercom = _target getVariable [QGVAR(infantryPhoneIntercom), []];
 
         // Pointing at a vehicle. Get or return the infantry telelphone
         if (isNull _vehicleInfantryPhone) then {
@@ -48,9 +51,12 @@ if (_target isKindOf "CAManBase") then {
                 if ("crew" in _infantryPhoneIntercom) then {
                     private _action = [
                         "acre_take_infantryTelephoneCrew",
-                        format [localize LSTRING(takeInfantryPhone), "(" + localize CREW_STRING] + ")",
+                        format [localize LSTRING(takeInfantryPhone), "(" + localize CREW_STRING + ")"],
                         "",
-                        {[_target, _player, 1, CREW_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
+                        {
+                            //USES_VARIABLES ["_target", "_player"];
+                            [_target, _player, 1, CREW_INTERCOM] call FUNC(updateInfantryPhoneStatus)
+                        },
                         {true},
                         {},
                         {}
@@ -62,10 +68,13 @@ if (_target isKindOf "CAManBase") then {
                 private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), false];
                 if ("passenger" in _infantryPhoneIntercom && !_isCalling) then {
                     private _action = [
-                        "acre_take_infantryTelephoneCrew",
+                        "acre_take_infantryTelephonePassenger",
                         format [localize LSTRING(takeInfantryPhone), "(" + localize LSTRING(passenger) + ")"],
                         "",
-                        {[_target, _player, 1, PASSENGER_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
+                        {
+                            //USES_VARIABLES ["_target", "_player"];
+                            [_target, _player, 1, PASSENGER_INTERCOM] call FUNC(updateInfantryPhoneStatus)
+                        },
                         {true},
                         {},
                         {}
@@ -81,7 +90,10 @@ if (_target isKindOf "CAManBase") then {
                         "acre_switch_infantryTelephonePassenger",
                         format [localize LSTRING(switchInfantryPhone), "(" + localize LSTRING(passenger) + ")"],
                         "",
-                        {[_target, _player, 3, PASSENGER_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
+                        {
+                            //USES_VARIABLES ["_target", "_player"];
+                            [_target, _player, 3, PASSENGER_INTERCOM] call FUNC(updateInfantryPhoneStatus)
+                        },
                         {!((_target getVariable [QGVAR(passengerIntercomPositions), []]) isEqualTo [])},  // This should only be available if the vehicle has passenger intercom
                         {},
                         {}
@@ -91,7 +103,10 @@ if (_target isKindOf "CAManBase") then {
                         "acre_return_infantryTelephoneCrew",
                         localize LSTRING(returnInfantryPhone),
                         "",
-                        {[_target, _player, 0, CREW_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
+                        {
+                            //USES_VARIABLES ["_target", "_player"];
+                            [_target, _player, 0, CREW_INTERCOM] call FUNC(updateInfantryPhoneStatus)
+                        },
                         {true}, {}, {}] call ace_interact_menu_fnc_createAction;
                     _actions pushBack [_action, [], _target];
                 };
@@ -99,9 +114,12 @@ if (_target isKindOf "CAManBase") then {
                 if (_infantryPhoneNetwork == PASSENGER_INTERCOM) then {
                     private _action = [
                         "acre_switch_infantryTelephoneCrew",
-                        format [localize LSTRING(switchInfantryPhone), "(" + localize CREW_STRING] + ")",
+                        format [localize LSTRING(switchInfantryPhone), "(" + localize CREW_STRING + ")"],
                         "",
-                        {[_target, _player, 3, CREW_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
+                        {
+                            //USES_VARIABLES ["_target", "_player"];
+                            [_target, _player, 3, CREW_INTERCOM] call FUNC(updateInfantryPhoneStatus)
+                        },
                         {true},
                         {},
                         {}
@@ -111,7 +129,10 @@ if (_target isKindOf "CAManBase") then {
                         "acre_return_infantryTelephoneCrew",
                         localize LSTRING(returnInfantryPhone),
                         "",
-                        {[_target, _player, 0, PASSENGER_INTERCOM] call FUNC(updateInfantryPhoneStatus)},
+                        {
+                            //USES_VARIABLES ["_target", "_player"];
+                            [_target, _player, 0, PASSENGER_INTERCOM] call FUNC(updateInfantryPhoneStatus)
+                        },
                         {true},
                         {},
                         {}
@@ -135,7 +156,7 @@ if (_target isKindOf "CAManBase") then {
             ] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {
-            if (isNull _vehicleInfantryPhone) then {
+            if (isNull _vehicleInfantryPhone && {!(_target getVariable [QGVAR(infPhoneDisableRinging), false])}) then {
                 private _action = [
                     "acre_infantryTelephone_startCalling",
                     localize LSTRING(infantryPhone_startCalling),

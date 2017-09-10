@@ -22,3 +22,4 @@
 #define MAIN_DISPLAY (findDisplay 31532)
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
+#include "\idi\acre\addons\sys_rack\script_acre_rack_defines.hpp"

@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: ACRE2
-  version: v2.4.1
+  version: v2.4.2
   folders:
 
   - title:
@@ -57,12 +57,20 @@ entries:
       url: /wiki/user/direct-speech
       output: web, pdf
 
+    - title: Babel
+      url: /wiki/user/babel
+      output: web, pdf
+
     - title: External Radios
       url: /wiki/user/external-radios
       output: web, pdf
 
     - title: Vehicle Intercom
       url: /wiki/user/vehicle-intercom
+      output: web, pdf
+
+    - title: Vehicle Racks
+      url: /wiki/user/vehicle-racks
       output: web, pdf
 
     - title: Radio Signal Loss
@@ -109,6 +117,10 @@ entries:
       url: /wiki/radios/sem-52-sl
       output: web, pdf
 
+    - title: SEM 70
+      url: /wiki/radios/sem-70
+      output: web, pdf
+
   - title: API / Frameworks
     output: web, pdf
     folderitems:
@@ -129,12 +141,20 @@ entries:
       url: /wiki/frameworks/mission-making-guide
       output: web, pdf
 
+    - title: Babel
+      url: /wiki/frameworks/babel
+      output: web, pdf
+
     - title: Vehicle Attenuation
       url: /wiki/frameworks/vehicle-attenuation
       output: web, pdf
 
     - title: Vehicle Intercom
       url: /wiki/frameworks/vehicle-intercom
+      output: web, pdf
+
+    - title: Vehicle Racks
+      url: /wiki/frameworks/vehicle-racks
       output: web, pdf
 
     - title: Component System

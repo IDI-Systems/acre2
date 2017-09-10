@@ -38,6 +38,8 @@
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
 ] call CBA_Settings_fnc_init;
 
+// Teamspeak Channel Switching
+// Switch channels
 [
     QGVAR(ts3ChannelSwitch),
     "CHECKBOX",
@@ -46,6 +48,17 @@
     true,
     false,
     {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
+] call CBA_Settings_fnc_init;
+
+// Channel Name
+[
+    QGVAR(ts3ChannelName),
+    "EDITBOX",
+    localize LSTRING(ts3ChannelName_displayName),
+    "ACRE2",
+    "",
+    false,
+    {call EFUNC(sys_io,ts3ChannelMove)}
 ] call CBA_Settings_fnc_init;
 
 // Difficulty settings
@@ -88,7 +101,7 @@
     "SLIDER",
     localize LSTRING(terrainLoss_displayName),
     "ACRE2",
-    [0, 1, 1, 2],
+    [0, 1, 0.50, 2],
     true,
     {[_this, true] call EFUNC(api,setLossModelScale)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
@@ -102,17 +115,6 @@
     true,
     true,
     {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;
-
-// Automatic connection to passenger intercom as crew member
-[
-    QGVAR(crewAutoJoinPassengerIntercom),
-    "CHECKBOX",
-    localize LSTRING(crewAutoJoinPassengerIntercom),
-    "ACRE2",
-    false,
-    true,
-    {}
 ] call CBA_Settings_fnc_init;
 
 // @todo remove in 2.7.0

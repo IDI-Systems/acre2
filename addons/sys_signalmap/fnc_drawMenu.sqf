@@ -41,7 +41,7 @@ with uiNamespace do {
 
     GVAR(mapTiles) = [];
     for "_i" from 1 to 50 do {
-        _tile = GVAR(mapDisplay) ctrlCreate ["RscPicture", 120101+_i];
+        private _tile = GVAR(mapDisplay) ctrlCreate ["RscPicture", 120101+_i];
         GVAR(mapTiles) pushBack _tile;
         GVAR(signal_debug) pushBack _tile;
     };
@@ -55,8 +55,8 @@ with uiNamespace do {
     GVAR(ctrlGroup) ctrlSetPosition [safezoneX + safezoneW - 0.5, safezoneY + safezoneH - 1, 0.5, 0.75];
     GVAR(ctrlGroup) ctrlCommit 0;
 
+    private ["_background"];
     CTRL(_background, "RscBackground");
-
 
     //_background ctrlSetBackgroundColor [0.8,0.75,0.35,0.75];
 
@@ -66,13 +66,13 @@ with uiNamespace do {
     CTRL(GVAR(txAntennaListBox), "RscCombo");
 
     GVAR(txAntennaListBox) ctrlSetPosition [0.15, 0, 0.35, 0.045];
-    _components = configFile >> "CfgAcreComponents";
-    _c = 0;
+    private _components = configFile >> "CfgAcreComponents";
+    private _c = 0;
     for "_i" from 0 to (count _components) - 1 do {
-        _component = _components select _i;
-        _type = getNumber(_component >> "type");
+        private _component = _components select _i;
+        private _type = getNumber (_component >> "type");
         if (_type == ACRE_COMPONENT_ANTENNA) then {
-            if (getText(_component >> "binaryGainFile") != "") then {
+            if (getText (_component >> "binaryGainFile") != "") then {
                 GVAR(txAntennaListBox) lbAdd (getText(_component >> "name"));
                 GVAR(txAntennaListBox) lbSetData [_c, (configName _component)];
                 diag_log text format["d: %1", GVAR(txAntennaListBox) lbData _c];
@@ -83,6 +83,7 @@ with uiNamespace do {
     GVAR(txAntennaListBox) lbSetCurSel (uiNamespace getVariable [QGVAR(txAntennaListBoxValue), 0]);
     GVAR(txAntennaListBox) ctrlCommit 0;
 
+    private ["_txAntText"];
     CTRL(_txAntText, "RscText");
     _txAntText ctrlSetPosition [0.0, 0, 0.35, 0.045];
     _txAntText ctrlSetText "Tx Antenna: ";
@@ -94,7 +95,8 @@ with uiNamespace do {
     GVAR(txHeight) ctrlSetText str (uiNamespace getVariable [QGVAR(txHeightValue), 2]);
     GVAR(txHeight) ctrlCommit 0;
 
-     CTRL(_txHeightTxt, "RscText");
+    private ["_txHeightTxt"];
+    CTRL(_txHeightTxt, "RscText");
     _txHeightTxt ctrlSetPosition [0.0, 0.055, 0.35, 0.045];
     _txHeightTxt ctrlSetText "Tx Height: ";
     _txHeightTxt ctrlCommit 0;
@@ -105,7 +107,8 @@ with uiNamespace do {
     GVAR(txDir) ctrlSetText str (uiNamespace getVariable [QGVAR(txDirValue), 0]);
     GVAR(txDir) ctrlCommit 0;
 
-     CTRL(_txDirTxt, "RscText");
+    private ["_txDirTxt"];
+    CTRL(_txDirTxt, "RscText");
     _txDirTxt ctrlSetPosition [0.26, 0.055, 0.35, 0.045];
     _txDirTxt ctrlSetText "Tx Dir: ";
     _txDirTxt ctrlCommit 0;
@@ -117,8 +120,8 @@ with uiNamespace do {
     _components = configFile >> "CfgAcreComponents";
     _c = 0;
     for "_i" from 0 to (count _components) - 1 do {
-        _component = _components select _i;
-        _type = getNumber(_component >> "type");
+        private _component = _components select _i;
+        private _type = getNumber(_component >> "type");
         if (_type == ACRE_COMPONENT_ANTENNA) then {
             if (getText(_component >> "binaryGainFile") != "") then {
                 GVAR(rxAntennaListBox) lbAdd (getText(_component >> "name"));
@@ -130,6 +133,7 @@ with uiNamespace do {
     GVAR(rxAntennaListBox) lbSetCurSel (uiNamespace getVariable [QGVAR(rxAntennaListBoxValue), 0]);
     GVAR(rxAntennaListBox) ctrlCommit 0;
 
+    private ["_rxAntText"];
     CTRL(_rxAntText, "RscText");
     _rxAntText ctrlSetPosition [0.0, 0.055*2, 0.35, 0.045];
     _rxAntText ctrlSetText "Rx Antenna: ";
@@ -141,7 +145,8 @@ with uiNamespace do {
     GVAR(rxHeight) ctrlSetText str (uiNamespace getVariable [QGVAR(rxHeightValue), 2]);
     GVAR(rxHeight) ctrlCommit 0;
 
-     CTRL(_rxHeightTxt, "RscText");
+    private ["_rxHeightTxt"];
+    CTRL(_rxHeightTxt, "RscText");
     _rxHeightTxt ctrlSetPosition [0.0, 0.055*3, 0.35, 0.045];
     _rxHeightTxt ctrlSetText "Rx Height: ";
     _rxHeightTxt ctrlCommit 0;
@@ -152,7 +157,8 @@ with uiNamespace do {
     GVAR(sampleSize) ctrlSetText str (uiNamespace getVariable [QGVAR(sampleSizeValue), 50]);
     GVAR(sampleSize) ctrlCommit 0;
 
-     CTRL(_txSampleSizeTxt, "RscText");
+    private ["_txSampleSizeTxt"];
+    CTRL(_txSampleSizeTxt, "RscText");
     _txSampleSizeTxt ctrlSetPosition [0.26, 0.055*3, 0.35, 0.045];
     _txSampleSizeTxt ctrlSetText "Sample Size: ";
     _txSampleSizeTxt ctrlCommit 0;
@@ -250,7 +256,7 @@ with uiNamespace do {
 
     GVAR(rxAreaList) ctrlSetPosition [0.05, 0.055*11, 0.3, 0.045];
     _components = configFile >> "CfgAcreComponents";
-    _i = 0;
+    private _i = 0;
     {
         GVAR(rxAreaList) lbAdd format["%1: %2", _forEachIndex + 1, (_x select 0)];
         GVAR(rxAreaList) lbSetData [_i, str _forEachIndex];

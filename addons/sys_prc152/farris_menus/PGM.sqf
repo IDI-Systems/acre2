@@ -5,16 +5,16 @@
 #define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
 
 DFUNC(CURRENT_RADIO_VALUE) = {
-    _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-    _channels = GET_STATE("channels");
-    _channel = HASHLIST_SELECT(_channels, _channelNumber);
-    _value = HASH_GET(_channel, (_this select 0));
+    private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+    private _channels = GET_STATE("channels");
+    private _channel = HASHLIST_SELECT(_channels, _channelNumber);
+    private _value = HASH_GET(_channel, (_this select 0));
     _value
 };
 DFUNC(CURRENT_RADIO_CHANNEL) = {
-    _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-    _channels = GET_STATE("channels");
-    _channel = HASHLIST_SELECT(_channels, _channelNumber);
+    private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+    private _channels = GET_STATE("channels");
+    private _channel = HASHLIST_SELECT(_channels, _channelNumber);
     _channel
 };
 
@@ -62,7 +62,7 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
             ],
             [
                 {
-                    _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+                    private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                     SCRATCH_SET(GVAR(currentRadioId), "menuNumber", _channelNumber+1);
                 }, // onEntry
                 nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
@@ -85,7 +85,7 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
             ],
             [
                 {
-                    _value = GET_RADIO_VALUE("description");
+                    private _value = GET_RADIO_VALUE("description");
                     SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                 },
                 nil,
@@ -122,19 +122,19 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
     {
         TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", _this);
         // Set the current channel to the edited preset, and save the so-far-edited values
-        _channelNumber = GET_STATE("pgm_preset_number") - 1;
-        _channelWaveform = GET_STATE("pgm_preset_waveform");
-        _channelDescription = GET_STATE("pgm_description");
+        private _channelNumber = GET_STATE("pgm_preset_number") - 1;
+        private _channelWaveform = GET_STATE("pgm_preset_waveform");
+        private _channelDescription = GET_STATE("pgm_description");
         _channelDescription = [_channelDescription] call CBA_fnc_trim;
         ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
-        _channels = GET_STATE("channels");
-        _channel = HASHLIST_SELECT(_channels, _channelNumber);
+        private _channels = GET_STATE("channels");
+        private _channel = HASHLIST_SELECT(_channels, _channelNumber);
         //TRACE_3("Retrieving radio information", _channelNumber, _channel, _channels);
 
         HASH_SET(_channel, "description", _channelDescription);
         //HASH_SET(_channel, "type", (["channelMode", _channelWaveform, 1] call FUNC(formatChannelValue)));
         HASH_SET(_channel, "type", "BASIC");
-        
+
         HASHLIST_SET(_channels, _channelNumber, _channel);
         SET_STATE("channels", _channels);
 
@@ -167,7 +167,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            _value = GET_RADIO_VALUE("description");
+                            private _value = GET_RADIO_VALUE("description");
                             SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                         }, // onEntry
                         nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
@@ -203,21 +203,21 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
              // This will get called on series completion
             {
                 // Set the current channel to the edited preset, and save the so-far-edited values
-                _channelType = GET_STATE("pgm_preset_type");
-                _channelDescription = GET_STATE("pgm_preset_description");
+                private _channelType = GET_STATE("pgm_preset_type");
+                private _channelDescription = GET_STATE("pgm_preset_description");
 
                 if (isNil "_channelType" || isNil "_channelDescription") exitWith {};
 
                 _channelDescription = [_channelDescription] call CBA_fnc_trim;
 
-                _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-                _channels = GET_STATE("channels");
-                _channel = HASHLIST_SELECT(_channels, _channelNumber);
+                private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+                private _channels = GET_STATE("channels");
+                private _channel = HASHLIST_SELECT(_channels, _channelNumber);
                 //TRACE_3("Retrieving radio information", _channelNumber, _channel, _channels);
 
                 HASH_SET(_channel, "description", _channelDescription);
                 HASH_SET(_channel, "type", _channelType);
-                
+
                 HASHLIST_SET(_channels, _channelNumber, _channel);
                 SET_STATE("channels", _channels);
 
@@ -237,7 +237,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            _value = GET_RADIO_VALUE("frequencyRX");
+                            private _value = GET_RADIO_VALUE("frequencyRX");
                             SCRATCH_SET(GVAR(currentRadioId), "menuFrequency", _value);
                         }, // onEntry
                         nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
@@ -266,11 +266,11 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         {
                             // If its RX only, zero out the TX frequency and
                             // Skip the rest of the menus
-                            _menu = _this select 0;
-                            _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_rx_only", "NO");
+                            private _menu = _this select 0;
+                            private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_rx_only", "NO");
                             if (_value == "YES") then {
                                 //SCRATCH_SET(GVAR(currentRadioId), "pgm_tx_freq", 0.0);
-                                _currentAction = GET_STATE("menuAction");
+                                private _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 2;
                                 SET_STATE("menuAction", _currentAction);
                             };
@@ -295,12 +295,12 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         nil,
                         nil,
                         {
-                            _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_tx", "USE RX");
+                            private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_tx", "USE RX");
                             // If it is USE TX, we just skip the next menu action and it should finalize
                             if (_value == "USE RX") then {
-                                _rx = GET_STATE_DEF("pgm_rx_freq", "0");
+                                private _rx = GET_STATE_DEF("pgm_rx_freq", "0");
                                 SET_STATE("pgm_tx_freq", _rx);
-                                _currentAction = GET_STATE("menuAction");
+                                private _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 1;
                                 SET_STATE("menuAction", _currentAction);
                             };
@@ -321,7 +321,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            _value = GET_RADIO_VALUE("frequencyTX");
+                            private _value = GET_RADIO_VALUE("frequencyTX");
                             SCRATCH_SET(GVAR(currentRadioId), "menuFrequency", _value);
                         }, // onEntry
                         nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
@@ -339,17 +339,17 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             [nil, nil],
             {
                 // Set the current channel to the edited preset, and save the so-far-edited values
-                _channelType = GET_STATE("pgm_preset_type");
-                _rx = GET_STATE("pgm_rx_freq");
-                _tx = GET_STATE("pgm_tx_freq");
-                _rxOnly = SCRATCH_GET(GVAR(currentRadioId), "pgm_rx_only");
+                private _channelType = GET_STATE("pgm_preset_type");
+                private _rx = GET_STATE("pgm_rx_freq");
+                private _tx = GET_STATE("pgm_tx_freq");
+                private _rxOnly = SCRATCH_GET(GVAR(currentRadioId), "pgm_rx_only");
                 if (_rxOnly == "YES") then { _rxOnly = true; } else { _rxOnly = false; };
 
                 if (isNil "_rx" || isNil "_tx") exitWith {};
 
-                _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-                _channels = GET_STATE("channels");
-                _channel = HASHLIST_SELECT(_channels, _channelNumber);
+                private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+                private _channels = GET_STATE("channels");
+                private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
                 TRACE_3("Retrieving radio information", _channelNumber, _channel, _channels);
                 TRACE_3("Saving", _rx, _tx, _rxOnly);
@@ -384,7 +384,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            _power = GET_RADIO_VALUE("power");
+                            private _power = GET_RADIO_VALUE("power");
 
                             SCRATCH_SET(GVAR(currentRadioId), "pgm_tx_power", _power);
                             switch _power do {
@@ -411,9 +411,9 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         nil,
                         {
                             // If we are not in user mode, just skip this menu item
-                            _check = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_tx_select", "HIGH");
+                            private _check = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_tx_select", "HIGH");
                             if (_check != "USER") then {
-                                _currentAction = GET_STATE("menuAction");
+                                private _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 1;
                                 switch _check do {
                                     case 'HIGH': {
@@ -445,7 +445,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            _value = GET_RADIO_VALUE("power");
+                            private _value = GET_RADIO_VALUE("power");
                             SCRATCH_SET(GVAR(currentRadioId), "menuNumber", _value);
                         },
                         nil
@@ -463,10 +463,10 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             nil],
             {
                 // Save the new power.
-                _power = GET_STATE_DEF("pgm_tx_power", 5000);
-                _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-                _channels = GET_STATE("channels");
-                _channel = HASHLIST_SELECT(_channels, _channelNumber);
+                private _power = GET_STATE_DEF("pgm_tx_power", 5000);
+                private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+                private _channels = GET_STATE("channels");
+                private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
                 if (_power > 5000) then {
                     _power = 5000;
@@ -492,7 +492,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            _sqType = GET_RADIO_VALUE("squelch");
+                            private _sqType = GET_RADIO_VALUE("squelch");
                             switch _sqType do {
                                 default {
 
@@ -507,10 +507,10 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         nil,
                         nil,
                         {
-                            _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
+                            private _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
                             switch _sqType do {
                                 default {        // Default is go to end, we only have 1 configurable SQ for now
-                                    _currentAction = GET_STATE("menuAction");
+                                    private _currentAction = GET_STATE("menuAction");
                                     _currentAction = _currentAction + 999;
                                     SET_STATE("menuAction", _currentAction);
                                 };
@@ -535,9 +535,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-
-                            _txTone = GET_RADIO_VALUE("CTCSSTx");
+                            private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
+                            private _txTone = GET_RADIO_VALUE("CTCSSTx");
                             {
                                 if (_txTone == (parseNumber _x)) exitWith {
                                     SET_STATE("menuSelection", _forEachIndex);
@@ -591,9 +590,9 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
+                            private _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
                             if (_sqType != "CTCSS" && _sqType != "CDCSS") then {
-                                _currentAction = GET_STATE("menuAction");
+                                private _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 1;
                                 SET_STATE("menuAction", _currentAction);
                             };
@@ -618,19 +617,19 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
             {
                 TRACE_1("Saving top level squelch information", "");
 
-                _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
+                private _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId), "pgm_sq_tx_select", "CTCSS");
                 TRACE_1("SQUELCH TYPE", _sqType);
                 switch _sqType do {
                     default { };
                     case 'CTCSS': {
-                        _sqToneStr = SCRATCH_GET(GVAR(currentRadioId), "pgm_sq_tx_ctcss_tone");
-                        _value = parseNumber _sqToneStr;
+                        private _sqToneStr = SCRATCH_GET(GVAR(currentRadioId), "pgm_sq_tx_ctcss_tone");
+                        private _value = parseNumber _sqToneStr;
                         TRACE_3("Set squelch", _sqType, _sqToneStr, _value);
 
 
-                        _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-                        _channels = GET_STATE("channels");
-                        _channel = HASHLIST_SELECT(_channels, _channelNumber);
+                        private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+                        private _channels = GET_STATE("channels");
+                        private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
                         HASH_SET(_channel, "squelch", 3);
                         HASH_SET(_channel, "CTCSSTx", _value);

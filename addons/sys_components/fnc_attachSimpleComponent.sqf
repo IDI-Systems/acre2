@@ -22,7 +22,7 @@
 params ["_parentComponentId", "_parentConnector", "_childComponentType", "_attributes", ["_force",false]];
 
 private _return = false;
-private _parentComponentClass = configFile >> "CfgAcreComponents" >> ([_parentComponentId] call EFUNC(sys_radio,getRadioBaseClassname));
+private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_parentComponentId);
 private _childComponentClass = configFile >> "CfgAcreComponents" >> _childComponentType;
 
 private _componentSimple = getNumber (_childComponentClass >> "simple");

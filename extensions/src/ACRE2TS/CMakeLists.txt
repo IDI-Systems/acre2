@@ -9,17 +9,21 @@ file(GLOB_RECURSE SOURCES *.h *.hpp *.c *.cpp inc/*)
 
 include_directories(inc)
 
-add_library( ${ACRE_NAME} MODULE ${SOURCES})
+add_library( ${ACRE_NAME} MODULE ${SOURCES} ${GLOBAL_SOURCES})
 target_link_libraries(${ACRE_NAME} ACRE2Core ACRE2Shared x3daudio)
 set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2)
 
-# Copy to plugin folder and rename
+
+# Copy and rename
 if(USE_64BIT_BUILD)
-    add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../plugin/acre2_win64.dll
-    )
+    set(FINAL_DLL_NAME acre2_win64.dll)
 else()
-    add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../plugin/acre2_win32.dll
-    )
+    set(FINAL_DLL_NAME acre2_win32.dll)
 endif()
+
+add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
+    # Copy DLL to plugins
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../plugin/${FINAL_DLL_NAME}
+    # Copy PDB to symbols
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE_DIR:${ACRE_NAME}>/${ACRE_NAME}.pdb ${PROJECT_SOURCE_DIR}/../symbols/${ACRE_ARCH}/${ACRE_NAME}.pdb
+)

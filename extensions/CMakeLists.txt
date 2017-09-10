@@ -9,7 +9,6 @@ option(USE_STATIC_LINKING "USE_STATIC_LINKING" ON)
 
 set(CMAKE_BUILD_TYPE "RelWithDebInfo")
 
-set(CMAKE_CL_64 ${USE_64BIT_BUILD})
 find_package(DirectX)
 if(DirectX_FOUND)
     message("Found DirectX")
@@ -25,7 +24,13 @@ else()
     set(ACRE_LINK_TYPE "dynamic")
 endif()
 
+if(CMAKE_GENERATOR MATCHES "Win64")
+    set(USE_64BIT_BUILD ON)
+endif()
+
 message("GENERATOR USED: ${CMAKE_GENERATOR}")
+
+set(CMAKE_CL_64 ${USE_64BIT_BUILD})
 
 if(USE_64BIT_BUILD)
     message("WARNING: Building 64-bit projects")
@@ -39,8 +44,19 @@ else()
     link_directories("${DirectX_ROOT_DIR}/lib/x86")
 endif()
 
-SET(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+# Windows file details
+if(MSVC)
+    string(TIMESTAMP ACRE_BUILDSTAMP "%Y-%m-%dT%H:%M:%SZ")
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/ACRE2Arma/common/acre_version_win32.rc.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/src/ACRE2Arma/common/acre_version_win32.rc"
+      @ONLY)
+    set(GLOBAL_RC ${CMAKE_CURRENT_BINARY_DIR}/src/ACRE2Arma/common/acre_version_win32.rc)
+    set(GLOBAL_SOURCES ${GLOBAL_RC})
+endif()
 
 include_directories(src/ACRE2Shared)
 include_directories(src/ACRE2Core)

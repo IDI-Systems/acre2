@@ -12,8 +12,8 @@ file(GLOB ACRE_SOURCES *.h *.hpp *.c *.cpp)
 
 SOURCE_GROUP("main" FILES ${ACRE_SOURCES})
 
-add_library( ${ACRE_EXTENSION_NAME} SHARED ${ACRE_SOURCES})
-add_library( ${ACRE_EXTENSION_NAME}_static STATIC ${ACRE_SOURCES})
+add_library( ${ACRE_EXTENSION_NAME} SHARED ${ACRE_SOURCES} ${GLOBAL_SOURCES})
+add_library( ${ACRE_EXTENSION_NAME}_static STATIC ${ACRE_SOURCES} ${GLOBAL_SOURCES})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 
@@ -34,13 +34,17 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     set_target_properties(${ACRE_EXTENSION_NAME}_static PROPERTIES LINK_SEARCH_END_STATIC 1)
 endif()
 
-# Copy to root
+
+# Copy and rename
 if(USE_64BIT_BUILD)
-    add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../${ACRE_NAME}_x64.dll
-    )
+    set(FINAL_DLL_NAME ${ACRE_NAME}_x64.dll)
 else()
-    add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../${ACRE_NAME}.dll
-    )
+    set(FINAL_DLL_NAME ${ACRE_NAME}.dll)
 endif()
+
+add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
+    # Copy DLL to root
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../${FINAL_DLL_NAME}
+    # Copy PDB to symbols
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE_DIR:${ACRE_NAME}>/${ACRE_NAME}.pdb ${PROJECT_SOURCE_DIR}/../symbols/${ACRE_ARCH}/${ACRE_NAME}.pdb
+)

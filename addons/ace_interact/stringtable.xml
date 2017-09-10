@@ -12,6 +12,8 @@
             <Korean>무전기</Korean>
             <Polish>Radia</Polish>
             <Russian>Рации</Russian>
+            <Chinese>無線電</Chinese>
+            <Chinesesimp>无线电</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelShort">
             <English>%1 Chn: %2</English>
@@ -24,6 +26,8 @@
             <Korean>%1 채널: %2</Korean>
             <Polish>%1 Kanał: %2</Polish>
             <Russian>%1 Канал: %2</Russian>
+            <Chinese>%1 頻道: %2</Chinese>
+            <Chinesesimp>%1 频道: %2</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_lowerHeadset">
             <English>Lower Headset</English>
@@ -36,6 +40,8 @@
             <Korean>헤드셋 벗기</Korean>
             <Polish>Zdejmij słuchawki</Polish>
             <Russian>Опустить наушники</Russian>
+            <Chinese>取下耳機</Chinese>
+            <Chinesesimp>取下耳机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_raiseHeadset">
             <English>Raise Headset</English>
@@ -48,6 +54,8 @@
             <Korean>헤드셋 착용</Korean>
             <Polish>Załóż słuchawki</Polish>
             <Russian>Поднять наушники</Russian>
+            <Chinese>戴上耳機</Chinese>
+            <Chinesesimp>戴上耳机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bothEars">
             <English>Both Ears</English>
@@ -60,6 +68,8 @@
             <Korean>양쪽 귀</Korean>
             <Polish>Stereo</Polish>
             <Russian>Оба уха</Russian>
+            <Chinese>雙耳模式</Chinese>
+            <Chinesesimp>双耳模式</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_leftEar">
             <English>Left Ear</English>
@@ -72,6 +82,8 @@
             <Korean>왼쪽 귀</Korean>
             <Polish>Lewe ucho</Polish>
             <Russian>Левое ухо</Russian>
+            <Chinese>左耳模式</Chinese>
+            <Chinesesimp>左耳模式</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_rightEar">
             <English>Right Ear</English>
@@ -84,6 +96,8 @@
             <Korean>오른쪽 귀</Korean>
             <Polish>Prawe ucho</Polish>
             <Russian>Правое ухо</Russian>
+            <Chinese>右耳模式</Chinese>
+            <Chinesesimp>右耳模式</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsActive">
             <English>Set as Active</English>
@@ -96,6 +110,8 @@
             <Korean>주 무전기로 설정</Korean>
             <Polish>Ustaw jako aktywne</Polish>
             <Russian>Сделать активным</Russian>
+            <Chinese>設為啟用</Chinese>
+            <Chinesesimp>设为启用</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bindMultiPushToTalk">
             <English>Bind Multi Push To Talk</English>
@@ -108,6 +124,8 @@
             <Korean>멀티 PTT 설정</Korean>
             <Polish>Ustaw klawisz PTT</Polish>
             <Russian>Назначить общую ПТТ</Russian>
+            <Chinese>綁定多個按鍵發話</Chinese>
+            <Chinesesimp>绑定多个按键发话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_multiPushToTalk">
             <English>Multi Push To Talk-%1</English>
@@ -120,6 +138,8 @@
             <Korean>멀티 PTT-%1</Korean>
             <Polish>Klawisz PTT: %1</Polish>
             <Russian>Общая ПТТ-%1</Russian>
+            <Chinese>多個發話-%1</Chinese>
+            <Chinesesimp>多个发话-%1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsMultiPTT">
             <English>Set as Multi PTT %1</English>
@@ -132,6 +152,8 @@
             <Korean>%1번 PTT로 설정</Korean>
             <Polish>Ustaw Multi PTT %1</Polish>
             <Russian>Назначить как общую ПТТ %1</Russian>
+            <Chinese>設定多個發話 %1</Chinese>
+            <Chinesesimp>设定多个发话 %1</Chinesesimp>
         </Key>
     </Package>
 </Project>

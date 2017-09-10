@@ -19,6 +19,7 @@
 params ["_unit"];
 private _vehicle = vehicle _unit;
 private _compartment = "";
+private _defaultCompartment = "";
 
 if (_vehicle != _unit) then {
     private _defaultCompartment = "Compartment1";
@@ -66,7 +67,7 @@ if (_vehicle != _unit) then {
         };
     };
 };
-if (!(typeName _compartment == "STRING")) then {
+if !(_compartment isEqualType "") then {
     _compartment = _defaultCompartment;
 };
 _compartment;

@@ -19,7 +19,7 @@
 if (isNil QGVAR(startDrawing)) then {
     with uiNamespace do {
         GVAR(mapDisplay) = (findDisplay 12);
-        _mapCtrl = (GVAR(mapDisplay) displayCtrl 51);
+        private _mapCtrl = (GVAR(mapDisplay) displayCtrl 51);
         _mapCtrl ctrlAddEventHandler ["MouseButtonDown", {call FUNC(onMapClick)}];
         _mapCtrl ctrlAddEventHandler ["Draw", {call DFUNC(drawSignalSamples)}];
     };

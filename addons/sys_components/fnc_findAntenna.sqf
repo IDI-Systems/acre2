@@ -48,7 +48,7 @@ private _searchFunction = {
                             private _objectType = typeOf _componentObject;
                             private _antennaPos = getPosASL _componentObject;
                             if (!(_objectType isKindOf "CAManBase")) then {
-                                _antennaPos = _antennaPos vectorAdd [0,0,(boundingCenter _componentObject) select 2];
+                                _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
                             };
                             private _antennaDir = vectorDir _componentObject;
                             private _antennaDirUp = vectorUp _componentObject;
@@ -71,12 +71,12 @@ private _searchFunction = {
 
                             } else {
                                 if (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaDirFnc") != "") then {
-                                    _antennaDirResults = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaDirFnc")));
+                                    private _antennaDirResults = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaDirFnc")));
                                     _antennaDir = _antennaDirResults select 0;
                                     _antennaDirUp = _antennaDirResults select 1;
                                 };
                             };
-                            _antennaPos2 = _antennaPos vectorAdd (_antennaDirUp vectorMultiply (getNumber (_componentClass >> "height")));
+                            private _antennaPos2 = _antennaPos vectorAdd (_antennaDirUp vectorMultiply (getNumber (_componentClass >> "height")));
                             private _foundAntenna = [_connectedComponent, _componentObject, _antennaPos2, _antennaDir];
                             PUSH(_foundAntennas, _foundAntenna);
                         };

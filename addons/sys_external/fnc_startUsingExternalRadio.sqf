@@ -18,7 +18,18 @@
 
 params ["_radioID", "_endUser"];
 
-[_radioId, "setState", ["isUsedExternally", [true, _endUser]]] call EFUNC(sys_data,dataEvent);
+private _owner = [_radioId] call FUNC(getExternalRadioOwner);
+private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
+private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
+
+// Do not flag as being externally used if it is already so (action give)
+if (!([_radioId] call FUNC(isExternalRadioUsed))) then {
+    [_radioId, "setState", ["isUsedExternally", [true, _endUser]]] call EFUNC(sys_data,dataEvent);
+
+    // Handle remote owner
+    private _message = format [localize LSTRING(hintTakeOwner), _endUser, _displayName];
+    [QGVAR(startUsingRadioLocal), [_message, _radioId], _owner] call CBA_fnc_targetEvent;
+};
 
 // Add the radio to the player
 ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
@@ -26,7 +37,4 @@ ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
 // Set it as active radio.
 [_radioId] call EFUNC(api,setCurrentRadio);
 
-private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
-private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
-
-[format [localize LSTRING(hintTake), _displayName, name ([_radioId] call FUNC(getExternalRadioOwner))]] call EFUNC(sys_core,displayNotification);
+[format [localize LSTRING(hintTake), _displayName, name _owner], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);

@@ -8,7 +8,7 @@ PREP_RECOMPILE_END;
 
 if (hasInterface) then {
     // Initialise intercom variables
-    GVAR(initializedPassengerIntercom) = [];
+    GVAR(initializedIntercom) = [];
     GVAR(initializedInfantryPhone) = [];
 };
 

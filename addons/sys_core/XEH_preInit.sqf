@@ -78,7 +78,12 @@ DGVAR(languages) = [];
 DVAR(ACRE_TEST_OCCLUSION) = true;
 DVAR(ACRE_SIGNAL_DEBUGGING) = 0;
 
-DVAR(ACRE_ACTIVE_EXTERNAL_RADIOS) = [];
+DVAR(ACRE_ACTIVE_EXTERNAL_RADIOS) = [];          // Radios not in player's inventory
+DVAR(ACRE_EXTERNALLY_USED_MANPACK_RADIOS) = [];  // Manpack radios in player's inventory that are being used externally
+DVAR(ACRE_EXTERNALLY_USED_PERSONAL_RADIOS) = []; // Personal radios in player's inventory that are being used externally
+DVAR(ACRE_ACCESSIBLE_RACK_RADIOS) = [];          // Extra radios that a player can use, should be used for radios that are racked
+DVAR(ACRE_HEARABLE_RACK_RADIOS) = [];            // Extra rack radios that a player can use
+DVAR(ACRE_BLOCKED_TRANSMITTING_RADIOS) = [];
 
 acre_player = player;
 

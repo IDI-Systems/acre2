@@ -19,17 +19,18 @@
 if (_this select 1 == 0) then {
     [] call FUNC(clearOverlayMessage);
     ["<t align='center'>Now, click elsewhere on the map to set the end of the Rx sampling area.</t>"] call FUNC(showOverlayMessage);
-    _ctrl = _this select 0;
+    private _ctrl = _this select 0;
     _ctrl ctrlRemoveEventHandler ["MouseButtonDown", GVAR(rxSetEH)];
 
-    _x = _this select 2;
-    _y = _this select 3;
-    _pos = ((findDisplay 12) displayCtrl 51) ctrlMapScreenToWorld [_x, _y];
-    _pos set[2, 0];
+    private _x = _this select 2;
+    private _y = _this select 3;
+    private _pos = ((findDisplay 12) displayCtrl 51) ctrlMapScreenToWorld [_x, _y];
+    _pos set [2, 0];
     with uiNamespace do {
+        //IGNORE_PRIVATE_WARNING ["_pos"];
         GVAR(rxAreaStart) = _pos;
         deleteMarkerLocal QGVAR(rxAreaStartMarker);
-        _marker = createMarkerLocal [QGVAR(rxAreaStartMarker), _pos];
+        private _marker = createMarkerLocal [QGVAR(rxAreaStartMarker), _pos];
         _marker setMarkerTypeLocal "mil_dot_noshadow";
         _marker setMarkerTextLocal "Rx Area Begin";
         _marker setMarkerColorLocal "ColorRed";

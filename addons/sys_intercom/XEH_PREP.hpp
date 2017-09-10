@@ -1,11 +1,14 @@
+PREP(intercomAction);
+PREP(intercomChildrenActions);
 PREP(intercomConfig);
 PREP(isIntercomAvailable);
 PREP(noApiFunction);
-PREP(processConfigArray);
 PREP(vehicleCrewPFH);
 
 // Crew intercom
 PREP(crewIntercomConfig);
+PREP(isInCrewIntercom);
+PREP(updateCrewIntercomStatus);
 
 // Infantry Phone
 PREP(checkInfantryPhoneAvailability);
@@ -18,8 +21,17 @@ PREP(isInfantryPhoneSpeakerAvailable);
 PREP(updateInfantryPhoneStatus);
 
 // Passenger intercom
-PREP(passengerIntercomAction);
-PREP(passengerIntercomChildrenActions);
 PREP(passengerIntercomConfig);
 PREP(isInPassengerIntercom);
 PREP(updatePassengerIntercomStatus);
+
+// Racks integration
+PREP(configRxTxCapabilities);
+PREP(getRxTxCapabilities);
+PREP(setRxTxCapabilities);
+
+PREP(configIntercomStatus);
+PREP(getIntercomConnectionStatus);
+PREP(getIntercomVolumeStatus);
+PREP(setIntercomConnectionStatus);
+PREP(setIntercomVolumeStatus);
