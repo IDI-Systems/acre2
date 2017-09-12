@@ -1,5 +1,6 @@
 class CfgWeapons {
     class ACRE_BaseRadio;
+    class CBA_MiscItem_ItemInfo;
 
     class ACRE_SEM70: ACRE_BaseRadio {
         displayName = "SEM 70";
