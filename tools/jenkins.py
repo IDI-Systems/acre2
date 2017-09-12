@@ -88,6 +88,10 @@ print(current_branch)
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
 do_action(make_args, "Make failed")
 
+# Get previous README.md if we are not building release (so GitHub front-page always has link to latest release)
+if current_branch != "release-build":
+    do_action(["git", "checkout", "README.md"], "Failed to checkout previous README.md version.")
+
 version = get_project_version("..\\addons\\\main\\script_version.hpp")
 version_str = "{}.{}.{}.{}".format(version[0],version[1],version[2],version[3])
 commit_message = "v{} - Build {}".format(version_str,os.environ["BUILD_NUMBER"])
