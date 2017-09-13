@@ -1,7 +1,6 @@
 class CfgWeapons {
-    class Default;
     class ACRE_BaseRadio;
-    class ItemCore;
+    class CBA_MiscItem_ItemInfo;
 
     class ACRE_PRC152: ACRE_BaseRadio {
         displayName = "AN/PRC-152";
@@ -12,11 +11,8 @@ class CfgWeapons {
         scopeCurator = 2;
         scope = 2;
 
-        type = 4096;
-        simulation = "ItemMineDetector";
-        class ItemInfo {
+        class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 8;
-            type = 0;
             scope = 0;
         };
 

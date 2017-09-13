@@ -38,10 +38,11 @@ def do_action(args, error_msg, error_handler=None, error_args=None, ignore_failu
         print("Error: {}".format(error_msg))
         if(error_handler != None):
             error_handler(error_args)
-        if(ignore_failure != False):
-            sys.exit(1)
-        else:
+        # Return if ignoring failure, otherwise terminate the build
+        if(ignore_failure):
             return False
+        else:
+            sys.exit(1)
     return True
 
 def create_pull_request(args):
@@ -51,12 +52,12 @@ def create_pull_request(args):
     token = args[3]
 
     pull = {
-        'title': 'Jenkins Automatic Merge Failure {} to {}!'.format(current, target), 
-        'head': current, 
-        'base': target, 
+        'title': 'Jenkins Automatic Merge Failure {} to {}!'.format(current, target),
+        'head': current,
+        'base': target,
         'body': "An automatic merge from the Jenkins build system has failed. This needs to be resolved as soon as possible."
         }
-    
+
     pull_string = json.dumps(pull, separators=(',',':')).replace('"','\\"')
 
     curl_string = ' '.join(["curl", '-H "Authorization: token {}"'.format(token), "--request POST", "--data \"{}\"".format(pull_string), "https://api.github.com/repos/{}/pulls".format(repository)])
@@ -78,7 +79,7 @@ current_branch = os.path.basename(args.current_branch)
 target_branch = args.target_branch
 release_target = args.release_target
 make_args = ["python", "-u", "make.py"]
-if(args.make_arg is not None):
+if(args.make_arg != None):
     make_args.extend(args.make_arg)
 
 github_token = os.environ["IDI_GITHUB_TOKEN"]
@@ -87,16 +88,25 @@ print(current_branch)
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
 do_action(make_args, "Make failed")
 
+# Get previous README.md if we are not building release (so GitHub front-page always has link to latest release)
+if current_branch != "release-build":
+    do_action(["git", "checkout", "README.md"], "Failed to checkout previous README.md version.")
+
 version = get_project_version("..\\addons\\\main\\script_version.hpp")
-commit_message = "v{}.{}.{}.{} - Build {}".format(version[0],version[1],version[2],version[3],os.environ["BUILD_NUMBER"])
+version_str = "{}.{}.{}.{}".format(version[0],version[1],version[2],version[3])
+commit_message = "v{} - Build {}".format(version_str,os.environ["BUILD_NUMBER"])
+
 do_action(["git", "commit", "-am", commit_message], "Failed to commit changes back into branch '{}'".format(current_branch))
 do_action(["git", "push", "origin", current_branch], "Failed to push changes back into branch 'origin/{}'".format(current_branch))
 do_action(["git", "checkout", target_branch], "Failed to checkout target branch '{}'".format(target_branch))
 do_action(["git", "pull", "origin", target_branch], "Failed to update target branch from 'origin/{}'".format(target_branch))
+
 status_ok = do_action(["git", "merge", current_branch], "Failed to merge '{}' into '{}', conflict exists.".format(current_branch, target_branch), create_pull_request, [repository, current_branch, target_branch, github_token], True)
-if(status_ok == True):
+if(status_ok): # Only diff and push if merge was successful
     do_action(["git", "diff"], "Diff failed to resolve '{}' and '{}' cleanly, conflict exists.".format(current_branch, target_branch))
     do_action(["git", "push", "origin", target_branch], "Failed to push changes back into branch 'origin/{}'".format(target_branch))
-do_action(["python", "-u", "publish.py", "..\\manifest.json", "-r", release_target], "Publish failed.")
+
+# Pass version in case merge failed above (publish.py would try to read pre-merge file)
+do_action(["python", "-u", "publish.py", "..\\manifest.json", "-r", release_target, "-v", version_str], "Publish failed.")
 
 sys.exit(0)
