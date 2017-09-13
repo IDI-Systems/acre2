@@ -90,7 +90,8 @@ do_action(make_args, "Make failed")
 
 # Get previous README.md if we are not building release (so GitHub front-page always has link to latest release)
 if current_branch != "release-build":
-    do_action(["git", "checkout", "README.md"], "Failed to checkout previous README.md version.")
+    print("Reverting README.md on non-release branch")
+    do_action(["git", "checkout", "../README.md"], "Failed to checkout previous README.md version.", None, None, True)
 
 version = get_project_version("..\\addons\\\main\\script_version.hpp")
 version_str = "{}.{}.{}.{}".format(version[0],version[1],version[2],version[3])
