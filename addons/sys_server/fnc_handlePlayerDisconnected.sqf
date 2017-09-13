@@ -1,13 +1,13 @@
 /*
  * Author: ACRE2Team
- * Handler for the player disconnected event handler. Inputs match the playerDisconnect event, only required parameter is the owner id.
+ * Handler for the player disconnected event handler. Inputs match the playerDisconnect event, only required parameter is the owner ID.
  *
  * Arguments:
  * 0: Unique DirectPlay ID <NUMBER>
  * 1: Steam player ID <STRING>
- * 2: profile name of leaving player <STRING>
+ * 2: Profile name of leaving player <STRING>
  * 3: Did JIP <BOOLEAN>
- * 4: Owner id of leaving client <NUMBER>
+ * 4: Owner ID of leaving client <NUMBER>
  *
  * Return Value:
  * None
