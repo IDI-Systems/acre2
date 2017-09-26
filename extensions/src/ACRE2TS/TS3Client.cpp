@@ -1,4 +1,4 @@
-﻿#include "compat.h"
+#include "compat.h"
 
 #include "TS3Client.h"
 #include "Engine.h"
@@ -474,8 +474,9 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> names) {
     uint64 channelId = INVALID_TS3_CHANNEL;
     char* channelName;
     std::map<uint64, std::string> channelMap;
-    int bestDistance = 40;
+    int bestDistance = 10;
     uint64 bestChannelId = INVALID_TS3_CHANNEL;
+    uint64 defaultChannelId = INVALID_TS3_CHANNEL;
     std::string name = names.at(1);
 
     if (names.at(0) != "") {
@@ -491,6 +492,8 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> names) {
                 if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1) {
                     if (channelNameString != DEFAULT_TS3_CHANNEL) {
                         removeSubstrings(channelNameString, DEFAULT_TS3_CHANNEL);
+                    } else {
+                        defaultChannelId = channelId;
                     }
                     channelMap.emplace(channelId, channelNameString);
                 }
@@ -503,6 +506,14 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> names) {
             if (distance <= bestDistance) {
                 bestDistance = distance;
                 bestChannelId = element.first;
+            }
+        }
+        if (bestChannelId == INVALID_TS3_CHANNEL) {
+            if (names.at(0) != "") {
+                names[0] = "";
+                bestChannelId = findChannelByNames(names);
+            } else if (defaultChannelId != INVALID_TS3_CHANNEL) {
+                bestChannelId = defaultChannelId;
             }
         }
         return bestChannelId;
