@@ -10,7 +10,7 @@ Dedicated TS3 channels need to be created for this to function. Channel names mu
 
 Channel names can contain all or part of the Arma 3 server name. If this is the case, the best matching channel name will be selected to switch to. This allows for multiple ACRE dedicated channels to be active at once for multiple Arma servers.
 
-It is also possible to set the name of the desired channel in the addon settings. When this is filled in, the best matching channel will be used. When empty, the Arma 3 server name will be used as above.
+It is also possible to set the name of the desired channel in the addon settings. When this is filled in, the best matching channel will be used. When empty, the Arma 3 server name will be used as above. When specifying a channel name to use, a password for the channel may also be specified. This will only be used if the specified channel can be found.
 
 Note: The name matching is considered fuzzy, meaning it will not always provide the exact result that may be expected.
 
@@ -39,3 +39,9 @@ Located in CBA settings for the 'ACRE2' addon.
 - Sets the name of the TeamSpeak channel to switch to
 - Default: `""`
 - When empty, the name of the server will be used when finding a TeamSpeak channel
+
+##### TeamSpeak Channel Password
+
+- Sets the password for the TeamSpeak channel name to switch to specified above
+- Default: `""`
+- This will only be used if the specified TeamSpeak channel is found
