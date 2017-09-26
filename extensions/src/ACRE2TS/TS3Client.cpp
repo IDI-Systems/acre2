@@ -443,7 +443,11 @@ ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
 
             channelId = findChannelByNames(details);
             if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
-                ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, details.at(1).c_str(), NULL);
+                std::string password = "";
+                if (details.at(1) != "" && details.at(0) != "") {
+                    password = details.at(1);
+                }
+                ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, password.c_str(), NULL);
             }
         }
     }
@@ -510,7 +514,7 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
         }
         if (bestChannelId == INVALID_TS3_CHANNEL) {
             if (details.at(0) != "") {
-                details[0] = "";
+                details.at(0) = "";
                 bestChannelId = findChannelByNames(details);
             } else if (defaultChannelId != INVALID_TS3_CHANNEL) {
                 bestChannelId = defaultChannelId;
