@@ -1,4 +1,4 @@
-﻿#include "compat.h"
+#include "compat.h"
 
 #include "TS3Client.h"
 #include "Engine.h"
@@ -432,7 +432,7 @@ ACRE_RESULT CTS3Client::unMuteAll( void ) {
 ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
     if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
         anyID clientId;
-        std::vector<std::string> names = getTs3ChannelNames();
+        std::vector<std::string> details = getTs3ChannelDetails();
 
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
             uint64 channelId = INVALID_TS3_CHANNEL;
@@ -441,7 +441,7 @@ ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
                 setPreviousTSChannel(currentChannelId);
             }
 
-            channelId = findChannelByNames(names);
+            channelId = findChannelByNames(details);
             if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
                 ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", NULL);
             }
@@ -474,12 +474,13 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> names) {
     uint64 channelId = INVALID_TS3_CHANNEL;
     char* channelName;
     std::map<uint64, std::string> channelMap;
-    int bestDistance = 40;
+    int bestDistance = 10;
     uint64 bestChannelId = INVALID_TS3_CHANNEL;
-    std::string name = names[1];
+    uint64 defaultChannelId = INVALID_TS3_CHANNEL;
+    std::string name = names.at(1);
 
-    if (names[0] != "") {
-        name = names[0];
+    if (names.at(0) != "") {
+        name = names.at(0);
     }
 
     if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
@@ -491,6 +492,8 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> names) {
                 if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1) {
                     if (channelNameString != DEFAULT_TS3_CHANNEL) {
                         removeSubstrings(channelNameString, DEFAULT_TS3_CHANNEL);
+                    } else {
+                        defaultChannelId = channelId;
                     }
                     channelMap.emplace(channelId, channelNameString);
                 }
@@ -503,6 +506,14 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> names) {
             if (distance <= bestDistance) {
                 bestDistance = distance;
                 bestChannelId = element.first;
+            }
+        }
+        if (bestChannelId == INVALID_TS3_CHANNEL) {
+            if (names.at(0) != "") {
+                names[0] = "";
+                bestChannelId = findChannelByNames(names);
+            } else if (defaultChannelId != INVALID_TS3_CHANNEL) {
+                bestChannelId = defaultChannelId;
             }
         }
         return bestChannelId;
@@ -546,9 +557,9 @@ void CTS3Client::removeSubstrings(std::string& string, std::string substring) {
         string.erase(iterator, substringLength);
 }
 
-ACRE_RESULT CTS3Client::updateTs3ChannelNames(std::vector<std::string> names) {
-    setTs3ChannelNames(names);
-    if (!names.empty()) {
+ACRE_RESULT CTS3Client::updateTs3ChannelDetails(std::vector<std::string> details) {
+    setTs3ChannelDetails(details);
+    if (!details.empty()) {
         updateShouldSwitchTS3Channel(true);
     }
     return ACRE_OK;
