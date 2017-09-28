@@ -58,7 +58,7 @@
     "ACRE2",
     "",
     false,
-    {call EFUNC(sys_io,ts3ChannelMove)}
+    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
 ] call CBA_Settings_fnc_init;
 
 // Channel Password
@@ -69,7 +69,7 @@
     "ACRE2",
     "",
     false,
-    {call EFUNC(sys_io,ts3ChannelMove)}
+    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
 ] call CBA_Settings_fnc_init;
 
 // Difficulty settings

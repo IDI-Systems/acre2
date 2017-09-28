@@ -493,7 +493,7 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
             channelList++;
             if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
                 std::string channelNameString = std::string(channelName);
-                if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1) {
+                if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1 || (details.at(0) != "" && channelNameString == name)) {
                     if (channelNameString != DEFAULT_TS3_CHANNEL) {
                         removeSubstrings(channelNameString, DEFAULT_TS3_CHANNEL);
                     } else {
