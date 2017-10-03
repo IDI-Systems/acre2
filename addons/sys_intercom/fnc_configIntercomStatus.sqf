@@ -22,23 +22,33 @@ private _type = typeOf _vehicle;
 private _intercomStatus = [];
 private _intercomPos = [];
 
-// Get intercom positions
-if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom") == 1) then {
-    _intercomPos = +(_vehicle getVariable [QGVAR(crewIntercomPositions), []]);
-};
-
-if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom") == 1) then {
-    if (count _intercomPos > 0) then {
-        {
-            _intercomPos pushBackUnique _x;
-        } forEach (_vehicle getVariable [QGVAR(passengerIntercomPositions), []]);
-    } else {
-        _intercomPos = +(_vehicle getVariable [QGVAR(passengerIntercomPositions), []]);
-    };
-};
+private _allowedPositions = _vehicle getVariable[QGVAR(allowedPositions), []];
+private _restrictedPositions = _vehicle getVariable[QGVAR(restrictedPositions), []];
+private _initialConfiguration = +(_vehicle getVariable[QGVAR(connectByDefault), []]);
 
 {
-    _intercomStatus pushBackUnique [_x, NO_INTERCOM, INTERCOM_DEFAULT_VOLUME];
+    private _pos = _x;
+    {
+        _intercomPos pushBackUnique _x;
+    } forEach _pos;
+} forEach (_allowedPositions + _restrictedPositions);
+
+{
+    // Make a hard copy of the array otherwise when modifying the array, all items in the parent array will be changed
+    private _temp = [];
+    private _pos = _x;
+    {
+        if (_pos  in (_allowedPositions select _forEachIndex)) then {
+            _temp pushBack _x;
+        } else {
+            _temp pushBack 0;
+        };
+
+    } forEach _initialConfiguration;
+
+    _intercomStatus pushBackUnique [_x, _temp, INTERCOM_DEFAULT_VOLUME];
+
+    _temp = []; // Reset the array
 } forEach _intercomPos;
 
 _vehicle setVariable [QGVAR(intercomStatus), _intercomStatus, true];

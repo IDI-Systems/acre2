@@ -25,21 +25,18 @@ private _vehicle = vehicle _unit;
 // The player is not inside a vehicle. Check if it is using the intercom network externally
 if (_vehicle == _unit) then {
     private _vehicleInfantryPhone = _unit getVariable [QEGVAR(sys_intercom,vehicleInfantryPhone), [objNull, objNull]] select 0;
-    if (!isNull _vehicleInfantryPhone) then {
-        _vehicle = _vehicleInfantryPhone;
-    };
+
+    // Return false if the unit is not using the infantry phone
+    if (isNull _vehicleInfantryPhone) exitWith {false};
+
+    // Unit is using the infantry phone
+    _vehicle = _vehicleInfantryPhone;
 };
 
-if (_unit in ACRE_PLAYER_CREW_INTERCOM) then {
-    private _configIntercom = configFile >> "CfgVehicles" >> typeOf _vehicle;
-    private _hasIntercom = getNumber (_configIntercom >> "acre_hasCrewIntercom");
-    // Backwards compatibility @todo remove in 2.7.0
-    if (isNumber (_configIntercom >> "ACRE" >> "CVC" >> "hasCVC")) then {
-        _hasIntercom = getNumber (_configIntercom >> "ACRE" >> "CVC" >> "hasCVC");
-    };
-    if (_hasIntercom == 1) then {
+{
+    if (_unit in _x) then {
         _ret = true;
-    };
-};
+    }
+} forEach ACRE_PLAYER_INTERCOM;
 
 _ret

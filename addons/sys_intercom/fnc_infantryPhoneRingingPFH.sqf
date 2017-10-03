@@ -20,16 +20,18 @@ params ["_args", "_pfhID"];
 _args params ["_vehicle", "_infantryPhonePosition"];
 
 (_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, objNull]]) params ["_unitInfantryPhone", ""];
-private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), false];
+private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), [false, NO_INTERCOM]];
 
-private _crew = crew _vehicle select {[_vehicle, _x] call FUNC(isInfantryPhoneSpeakerAvailable)};
+private _noCrew = true;
+{
+    private _unit = _x;
+    {
+        if ([_vehicle, _unit, _forEachIndex] call FUNC(isInfantryPhoneSpeakerAvailable)) exitWith {_noCrew = false;};
+    } forEach (_vehicle getVariable[QGVAR(intercomNames), []]);
+    if (!_noCrew) exitWith {};
+} forEach (crew _vehicle);
 
-private _noCrew = false;
-if (count _crew == 0) then {
-    _noCrew = true;
-};
-
-if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && {!_noCrew}) then {
+if ((isNull _unitInfantryPhone) && {_isCalling select 0} && {alive _vehicle} && {!_noCrew}) then {
     private _position = AGLToASL (_vehicle modelToWorld _infantryPhonePosition); // ACRE_LISTENER_POS is in ASL coordinates
     TRACE_4("Infantry Phone Calling PFH Check",_vehicle,acre_player,_position,_volume);
 
@@ -47,7 +49,7 @@ if ((isNull _unitInfantryPhone) && {_isCalling} && {alive _vehicle} && {!_noCrew
     playSound3D [_soundFile, objNull, false, _position, _volume*10, _soundPitch, _distance];
 } else {
     // A unit picked up the phone. Reset isCalling variable
-    if (_isCalling) then {
+    if (_isCalling select 0) then {
         _vehicle setVariable [QGVAR(isInfantryPhoneCalling), false, true];
     };
     [_pfhID] call CBA_fnc_removePerFrameHandler;

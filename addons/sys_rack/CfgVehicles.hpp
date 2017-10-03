@@ -200,7 +200,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"crew"};
+                intercom[] = {{"intercom_1", {"rx", 1, "tx", 1}}};
             };
         };
     };

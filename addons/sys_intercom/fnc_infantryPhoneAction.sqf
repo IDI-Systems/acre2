@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_intercom_infantryPhoneAction
+ * [cursorTarget] call acre_sys_intercom_fnc_infantryPhoneAction
  *
  * Public: No
  */
@@ -71,7 +71,16 @@ private _infantryPhoneSpeakerAction = [
     localize LSTRING(infantryPhone),
     ICON_RADIO_CALL,
     {true},
-    {_this call FUNC(isInfantryPhoneSpeakerAvailable)},
+    {
+        private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
+        private _intercomAvailable = false;
+        // Find if at least one intercom is available
+        {
+            _intercomAvailable = [_target, acre_player, _forEachIndex] call FUNC(isInfantryPhoneSpeakerAvailable);
+            if (_intercomAvailable) exitWith{};
+        } forEach _intercomNames;
+        _intercomAvailable
+    },//{_this call FUNC(isInfantryPhoneSpeakerAvailable)},
     {_this call FUNC(infantryPhoneChildrenActions)},
     [],
     [0, 0, 0],

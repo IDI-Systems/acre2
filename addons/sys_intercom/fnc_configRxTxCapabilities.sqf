@@ -20,24 +20,28 @@ params ["_vehicle"];
 private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks) apply {toLower _x};
 private _rackRxTxConfig = [];
 
+
+
 {
+
     private _intercoms = [_x] call EFUNC(sys_rack,getWiredIntercoms);
     private _intercomPos = [];
+    systemChat format ["Configured Rack radios"];
 
     // Get intercom positions
-    if ("crew" in _intercoms) then {
-        _intercomPos = +(_vehicle getVariable [QGVAR(crewIntercomPositions), []]);
-    };
+    {
+        systemChat format ["intercom pos %1", _forEachIndex];
 
-    if ("passenger" in _intercoms) then {
-        if (count _intercomPos > 0) then {
+        if (_x in _intercoms) then {
+            private _allowedPositions = (_vehicle getVariable [QGVAR(allowedPositions), []]) select _forEachIndex;
+            private _restrictedPositions = (_vehicle getVariable [QGVAR(restrictedPositions), []]) select _forEachIndex;
+
+            private _intPos = _x;
             {
                 _intercomPos pushBackUnique _x;
-            } forEach (_vehicle getVariable [QGVAR(passengerIntercomPositions), []]);
-        } else {
-            _intercomPos = +(_vehicle getVariable [QGVAR(passengerIntercomPositions), []]);
+            } forEach (_allowedPositions + _restrictedPositions);
         };
-    };
+    } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
 
     if (count _intercomPos > 0) then {
         private _rackFunctionality = [];

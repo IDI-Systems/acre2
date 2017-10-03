@@ -10,6 +10,7 @@ if (hasInterface) then {
     // Initialise intercom variables
     GVAR(initializedIntercom) = [];
     GVAR(initializedInfantryPhone) = [];
+    GVAR(crewPFH) = 0;
 };
 
 ADDON = true;

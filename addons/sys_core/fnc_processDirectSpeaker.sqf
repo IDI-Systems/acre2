@@ -21,8 +21,7 @@ params ["_unit"];
 private _id = GET_TS3ID(_unit);
 
 private _bothSpectating = false;
-private _isCrewAttenuate = false;
-private _isPassengerAttenuate = false;
+private _isIntercomAttenuate = false;
 private _directVolume = GVAR(globalVolume);
 private _speakingType = "d";
 
@@ -31,20 +30,19 @@ if (_id in ACRE_SPECTATORS_LIST && ACRE_IS_SPECTATOR) then {
 } else {
     private _attenuate = [_unit] call EFUNC(sys_attenuate,getUnitAttenuate);
     _directVolume = GVAR(globalVolume) * (1-_attenuate);
-    _isCrewAttenuate = [_unit] call EFUNC(sys_attenuate,isCrewIntercomAttenuate);
-    _isPassengerAttenuate = [_unit] call EFUNC(sys_attenuate,isPassengerIntercomAttenuate);
+    _isIntercomAttenuate = [_unit] call EFUNC(sys_attenuate,isIntercomAttenuate);
 };
 
 private _listenerPos = ACRE_LISTENER_POS;
 private _listenerDir = ACRE_LISTENER_DIR;
-if (_bothSpectating || _isCrewAttenuate || _isPassengerAttenuate) then {
+if (_bothSpectating || _isIntercomAttenuate) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
     _emitterPos = (AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head"))); //; eyePos _unit;
     _emitterDir = eyeDirection _unit;
 };
-if (ACRE_TEST_OCCLUSION && !_bothSpectating && !(_isCrewAttenuate || _isPassengerAttenuate)) then {
+if (ACRE_TEST_OCCLUSION && !_bothSpectating && !_isIntercomAttenuate) then {
     private _args = [_emitterPos, _listenerPos, _unit];
     // acre_player sideChat format["args: %1", _args];
     // _startTime = diag_tickTime;

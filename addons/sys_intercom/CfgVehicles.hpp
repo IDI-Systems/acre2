@@ -49,18 +49,30 @@ class CfgVehicles {
 
     class LandVehicle;
     class Tank: LandVehicle {
-        acre_hasCrewIntercom = 1;
-        acre_crewIntercomPositions[] = {"default"};
-        acre_crewIntercomExceptions[] = {};
+        class AcreIntercoms {
+            class Intercom_1 {
+                name = "intercom_1";
+                displayName = "Crew intercom";
+                allowedPositions[] = {"default"};
+                restrictedPositions[] = {{"cargo"}, 2};
+                disabledPositions[] = {};
+                connections = -1;
+                connectedByDefault = 1;
+            };
+            class Intercom_2: Intercom_1 {
+                name = "intercom_2";
+                displayName = "Pax intercom";
+                allowedPositions[] = {"driver", {"cargo", "all"}};
+                restrictedPositions[] = {};
+                connectedByDefault = 0;
+            };
+        };
         acre_hasInfantryPhone = 1;
         acre_infantryPhoneDisableRinging = 0;
         acre_infantryPhoneCustomRinging[] = {};
-        acre_infantryPhoneIntercom[] = {};
+        acre_infantryPhoneIntercom[] = {"all"};
+        acre_infantryPhoneControlActions[] = {"intercom_1"};
         acre_eventInfantryPhone = QFUNC(noApiFunction);
-        acre_hasPassengerIntercom = 0;
-        acre_passengerIntercomPositions[] = {};
-        acre_passengerIntercomExceptions[] = {};
-        acre_passengerIntercomConnections = -1;
     };
 
     // BLUFOR

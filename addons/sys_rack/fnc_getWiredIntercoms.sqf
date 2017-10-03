@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_getWiredIntercom
+ * [cursorTarget] call acre_sys_rack_fnc_getWiredIntercom
  *
  * Public: No
  */
@@ -18,7 +18,10 @@
 params [["_rackId",""]];
 
 private _intercom = GET_STATE_RACK(_rackId,"wiredIntercoms");
+private _wiredIntercoms = [];
 
-if (isNil "_intercom") then {_intercom = [];};
+{
+    _wiredIntercoms pushBack (_x select 0);
+} forEach _intercom;
 
-_intercom
+_wiredIntercoms

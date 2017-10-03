@@ -22,6 +22,9 @@
 #define PHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
 #define PHONE_MAXDISTANCE_HULL 3
 
+#define INTERCOM_DISCONNECTED 0
+#define INTERCOM_CONNECTED 1
+
 #define INTERCOM_DEFAULT_VOLUME 1
 #define NO_INTERCOM 0
 #define CREW_INTERCOM 1
