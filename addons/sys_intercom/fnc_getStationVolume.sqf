@@ -11,7 +11,7 @@
  * Intercom volume status <NUMBER>
  *
  * Example:
- * [vehicle acre_player, acre_player] call acre_sys_intercom_fnc_getIntercomVolumeStatus
+ * [vehicle acre_player, acre_player] call acre_sys_intercom_fnc_getStationVolume
  *
  * Public: No
  */

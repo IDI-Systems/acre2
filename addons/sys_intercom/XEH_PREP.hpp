@@ -7,7 +7,7 @@ PREP(vehicleCrewPFH);
 
 // Intercom
 PREP(configIntercom);
-PREP(configIntercomStatus);
+PREP(configIntercomStations);
 PREP(isInIntercom);
 PREP(isInRestrictedPosition);
 PREP(initVehicleIntercom);
@@ -27,7 +27,7 @@ PREP(configRxTxCapabilities);
 PREP(getRxTxCapabilities);
 PREP(setRxTxCapabilities);
 
-PREP(getSeatConnectionStatus);
-PREP(getSeatVolumeStatus);
-PREP(setSeatConnectionStatus);
-PREP(setSeatVolumeStatus);
+PREP(getStationConnectionStatus);
+PREP(getStationVolume);
+PREP(setStationConnectionStatus);
+PREP(setStationVolume);

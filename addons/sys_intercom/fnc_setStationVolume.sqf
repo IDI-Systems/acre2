@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [vehicle acre_player, acre_player] call acre_sys_intercom_fnc_setIntercomVolumeStatus
+ * [vehicle acre_player, acre_player] call acre_sys_intercom_fnc_setStationVolume
  *
  * Public: No
  */
