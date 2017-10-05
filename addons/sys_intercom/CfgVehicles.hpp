@@ -277,4 +277,46 @@ class CfgVehicles {
         acre_passengerIntercomExceptions[] = {};
         acre_passengerIntercomConnections = -1;
     };
+
+    class UAV_01_base_F: Helicopter_Base_F {
+        acre_hasCrewIntercom = 0;
+        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomExceptions[] = {};
+        acre_hasInfantryPhone = 0;
+        acre_infantryPhoneDisableRinging = 0;
+        acre_infantryPhoneCustomRinging[] = {};
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {};
+        acre_passengerIntercomConnections = 0;
+    };
+
+    class UAV: Plane {
+        acre_hasCrewIntercom = 0;
+        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomExceptions[] = {};
+        acre_hasInfantryPhone = 0;
+        acre_infantryPhoneDisableRinging = 0;
+        acre_infantryPhoneCustomRinging[] = {};
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {};
+        acre_passengerIntercomConnections = 0;
+    };
+
+    class UGV_01_base_F: Car_F {
+        acre_hasCrewIntercom = 0;
+        acre_crewIntercomPositions[] = {};
+        acre_crewIntercomExceptions[] = {};
+        acre_hasInfantryPhone = 0;
+        acre_infantryPhoneDisableRinging = 0;
+        acre_infantryPhoneCustomRinging[] = {};
+        acre_infantryPhoneIntercom[] = {};
+        acre_hasPassengerIntercom = 0;
+        acre_passengerIntercomPositions[] = {};
+        acre_passengerIntercomExceptions[] = {};
+        acre_passengerIntercomConnections = 0;
+    };
 };
