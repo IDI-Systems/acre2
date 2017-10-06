@@ -27,9 +27,6 @@
 
 #define INTERCOM_DEFAULT_VOLUME 1
 #define NO_INTERCOM 0
-#define CREW_INTERCOM 1
-#define PASSENGER_INTERCOM 2
-#define CREW_AND_PASSENGER_INTERCOM 3
 
 // Infantry phone default configuration (fnc_infantryPhoneRingingPFH.sqf)
 #define INFANTRY_PHONE_SOUNDFILE QPATHTO_R(sounds\Cellphone_Ring.wss);
