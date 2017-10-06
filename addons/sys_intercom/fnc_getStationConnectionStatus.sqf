@@ -11,7 +11,7 @@
  * True if connected to intercom network, false otherwise
  *
  * Example:
- * [vehicle acre_player, acre_player, 2] call acre_sys_intercom_fnc_getSeatConnectionStatus
+ * [vehicle acre_player, acre_player, 2] call acre_sys_intercom_fnc_getStationConnectionStatus
  *
  * Public: No
  */

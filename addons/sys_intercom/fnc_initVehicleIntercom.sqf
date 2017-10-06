@@ -23,7 +23,7 @@ private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms
 
 if (count _intercoms != 0) then {
     [_vehicle] call FUNC(configIntercom);
-    [_vehicle] call FUNC(configIntercomStatus);
+    [_vehicle] call FUNC(configIntercomStations);
 
     if (hasInterface && (isClass (configFile >> "CfgPatches" >> "ace_interact_menu"))) then {
         [_vehicle] call FUNC(intercomAction);

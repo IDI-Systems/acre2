@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [vehicle acre_player, acre_player, 1] call acre_sys_intercom_fnc_setSeatConnectionStatus
+ * [vehicle acre_player, acre_player, 1] call acre_sys_intercom_fnc_setStationConnectionStatus
  *
  * Public: No
  */

@@ -32,7 +32,7 @@ systemChat format ["numIntercoms %1: %2", count _intercomNames, _intercomDisplay
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
 
-                [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setSeatConnectionStatus)
+                [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setStationConnectionStatus)
             },
             {
                 //USES_VARIABLES ["_target", "_player"];
@@ -54,7 +54,7 @@ systemChat format ["numIntercoms %1: %2", count _intercomNames, _intercomDisplay
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
 
-                [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setSeatConnectionStatus)
+                [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setStationConnectionStatus)
             },
             {
                 //USES_VARIABLES ["_target", "_player"];

@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [vehicle player] call acre_sys_intercom_fnc_configIntercomStatus
+ * [vehicle player] call acre_sys_intercom_fnc_configIntercomStations
  *
  * Public: No
  */

@@ -30,7 +30,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     private _intercomUnits = +(_unitsIntercom select _i);
     private _changes = false;
     if (_player != _unitInfantryPhone) then {
-        private _connectionStatus = [_vehicle, _player, _i] call FUNC(getSeatConnectionStatus);
+        private _connectionStatus = [_vehicle, _player, _i] call FUNC(getStationConnectionStatus);
 
         switch (_connectionStatus) do {
             case INTERCOM_DISCONNECTED: {
