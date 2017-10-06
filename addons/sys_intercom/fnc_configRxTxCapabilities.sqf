@@ -26,12 +26,9 @@ private _rackRxTxConfig = [];
 
     private _intercoms = [_x] call EFUNC(sys_rack,getWiredIntercoms);
     private _intercomPos = [];
-    systemChat format ["Configured Rack radios"];
 
     // Get intercom positions
     {
-        systemChat format ["intercom pos %1", _forEachIndex];
-
         if (_x in _intercoms) then {
             private _allowedPositions = (_vehicle getVariable [QGVAR(allowedPositions), []]) select _forEachIndex;
             private _restrictedPositions = (_vehicle getVariable [QGVAR(restrictedPositions), []]) select _forEachIndex;

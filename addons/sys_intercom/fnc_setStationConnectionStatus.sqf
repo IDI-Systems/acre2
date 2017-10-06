@@ -22,8 +22,6 @@ params ["_vehicle", "_unit", "_intercomNetwork", "_connected"];
 private _found = false;
 private _intercomStatus = _vehicle getVariable [QGVAR(intercomStatus), []];
 
-systemChat format ["Intercom %1", _intercomNetwork];
-
 {
     private _position = _x select 0;
     switch (_position select 0) do {

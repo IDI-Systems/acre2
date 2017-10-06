@@ -24,7 +24,7 @@ params ["_vehicle", "_unit", "_action", ["_intercomNetwork", NO_INTERCOM], ["_gi
 
 private _intercomName = (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork;
 private _intercomText = "(" + _intercomName + ")";
-systemChat format ["update Infantry phone"];
+
 switch (_action) do {
     case 0: {
         // Stop using the intercom externally
@@ -46,7 +46,6 @@ switch (_action) do {
         [GVAR(infantryPhonePFH)] call CBA_fnc_removePerFrameHandler;
     };
     case 1: {
-        systemChat format ["Use Infantry phone"];
         // Start using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];

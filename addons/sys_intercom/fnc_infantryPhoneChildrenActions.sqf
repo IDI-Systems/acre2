@@ -58,9 +58,6 @@ if (_target isKindOf "CAManBase") then {
                     {
                         params ["_target", "_player", "_params"];
                         _params params ["_intercomNetwork"];
-                        //USES_VARIABLES ["_target", "_player"];
-                        systemChat format ["This is an action %1 %2 %3", _target, _player, _intercomNetwork];
-
                         [_target, _player, 1, _intercomNetwork] call FUNC(updateInfantryPhoneStatus)
                     },
                     {
@@ -123,7 +120,7 @@ if (_target isKindOf "CAManBase") then {
     } else {
         // Player is inside the vehicle.
         private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), [false, NO_INTERCOM]];
-        systemChat format ["%1", _isCalling];
+
         if (_isCalling select 0) then {
             private _action = [
                 "acre_infantryTelephone_stopCalling",

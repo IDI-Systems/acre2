@@ -22,7 +22,7 @@ private _type = typeOf _vehicle;
 
 private _intercoms = getArray (_rack >> "intercom");
 private _wiredIntercoms = [];
-systemChat format ["IntercomRacks %1", _intercoms];
+
 // Set by default to have access to all intercom networks if none was specified
 if (count _intercoms ==  0) then {
     {
@@ -33,7 +33,6 @@ if (count _intercoms ==  0) then {
         _wiredIntercoms = [];
     } else {
         {
-            systemChat format ["Each rack %1", _x];
             private _int = toLower (_x select 0);
             private _configuredIntercoms = _vehicle getVariable[QEGVAR(sys_intercom,intercomNames), []];
             if (_int in _configuredIntercoms) then {
@@ -45,5 +44,4 @@ if (count _intercoms ==  0) then {
     };
 };
 
-systemChat format ["wiredIntercoms %1", _wiredIntercoms];
 _wiredIntercoms

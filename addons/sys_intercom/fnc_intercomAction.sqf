@@ -27,8 +27,6 @@ if (count _intercomNames == 0) exitWith {};
 if (_type in GVAR(initializedIntercom)) exitWith {};
 GVAR(initializedIntercom) pushBack _type;
 
-systemChat format ["Configuring ace actions"];
-
 // Passenger actions
 private _intercomAction = [
     QGVAR(intercomAction),

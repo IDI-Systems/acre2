@@ -28,8 +28,6 @@ private _intercomNumRestricted = [];
 private _intercomConnectByDefault = [];
 private _unitsIntercom = [];
 
-systemChat format ["Config intercom"];
-
 for "_i" from 0 to ((count _intercoms) - 1) do {
     private _x = _intercoms select _i;
     private _name = toLower (getText (_x >> "name"));

@@ -45,7 +45,6 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
                 if (!(_player in _intercomUnits)) then {
                     // Player is still connected, make it disconnect since the seat has no active intercom connection
                     _intercomUnits pushBackUnique _player;
-                    systemChat format ["intercomUnits %1", _intercomUnits];
                     _changes = true;
                     [format ["Connected to %1", (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _i], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
                 };
@@ -87,7 +86,6 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     if (_player in _intercomUnits) then {
         ACRE_PLAYER_INTERCOM set[_i, _intercomUnits];
     } else {
-    systemChat format ["leaving intercom"];
         ACRE_PLAYER_INTERCOM set [_i, []];
     };
 

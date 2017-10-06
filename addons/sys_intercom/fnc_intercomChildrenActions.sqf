@@ -20,7 +20,7 @@ private _actions = [];
 
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
 private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames), []];
-systemChat format ["numIntercoms %1: %2", count _intercomNames, _intercomDisplayNames];
+
 {
     if ([_target, acre_player, _forEachIndex] call FUNC(isIntercomAvailable)) then {
         private _action = [
