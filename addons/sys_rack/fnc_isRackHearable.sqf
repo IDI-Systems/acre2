@@ -32,7 +32,7 @@ private _wiredIntercoms = [_rackId] call FUNC(getWiredIntercoms);
 
 private _isHearable = false;
 {
-    _isHearable = [_vehicle, _unit, _forEachIndex] call EFUNC(sys_intercom,isInIntercom);
+    _isHearable = [_vehicle, _unit, _forEachIndex] call EFUNC(sys_intercom,isInIntercom) && (_x ==  (_wiredIntercoms select _forEachIndex));
     if (_isHearable) exitWith{};
 } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);
 

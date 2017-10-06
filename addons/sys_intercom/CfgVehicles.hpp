@@ -62,7 +62,7 @@ class CfgVehicles {
             class Intercom_2: Intercom_1 {
                 name = "intercom_2";
                 displayName = "Pax intercom";
-                allowedPositions[] = {"driver", {"cargo", "all"}};
+                allowedPositions[] = {"crew", {"cargo", "all"}};
                 restrictedPositions[] = {};
                 connectedByDefault = 0;
             };
