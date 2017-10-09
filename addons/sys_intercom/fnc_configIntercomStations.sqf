@@ -23,7 +23,6 @@ private _intercomStatus = [];
 private _intercomPos = [];
 
 private _allowedPositions = _vehicle getVariable[QGVAR(allowedPositions), []];
-private _restrictedPositions = _vehicle getVariable[QGVAR(restrictedPositions), []];
 private _initialConfiguration = +(_vehicle getVariable[QGVAR(connectByDefault), []]);
 
 {
@@ -31,7 +30,7 @@ private _initialConfiguration = +(_vehicle getVariable[QGVAR(connectByDefault), 
     {
         _intercomPos pushBackUnique _x;
     } forEach _pos;
-} forEach (_allowedPositions + _restrictedPositions);
+} forEach _allowedPositions;
 
 {
     // Make a hard copy of the array otherwise when modifying the array, all items in the parent array will be changed

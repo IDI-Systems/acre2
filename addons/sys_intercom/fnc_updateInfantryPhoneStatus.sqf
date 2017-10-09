@@ -50,7 +50,7 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
         [format [localize LSTRING(infantryPhoneConnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-        GVAR(infantryPhonePFH) = [DFUNC(vehicleCrewPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
+        GVAR(infantryPhonePFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
     case 2: {
         // Give the intercom to another unit

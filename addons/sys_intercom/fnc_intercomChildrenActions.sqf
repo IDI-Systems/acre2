@@ -22,7 +22,7 @@ private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
 private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames), []];
 
 {
-    if ([_target, acre_player, _forEachIndex] call FUNC(isIntercomAvailable)) then {
+    if ([_target, acre_player, _forEachIndex] call FUNC(isIntercomAvailable) || [_target, acre_player, _forEachIndex] call FUNC(isInLimitedPosition)) then {
         private _action = [
             format ["acre_connect_%1", _x],
             format [localize LSTRING(connect), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
@@ -32,7 +32,12 @@ private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames)
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
 
-                [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setStationConnectionStatus)
+                if ([_target, acre_player, _intercomNetwork] call FUNC(isInLimitedPosition)) then {
+                    [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setLimitedConnectionStatus);
+                } else {
+                    [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setStationConnectionStatus);
+                    [_target, _player, _intercomNetwork] call acre_sys_intercom_fnc_setIntercomUnits;
+                };
             },
             {
                 //USES_VARIABLES ["_target", "_player"];
@@ -53,8 +58,12 @@ private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames)
                  //USES_VARIABLES ["_target", "_player"];
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
-
-                [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setStationConnectionStatus)
+                if ([_target, acre_player, _intercomNetwork] call FUNC(isInLimitedPosition)) then {
+                    [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setLimitedConnectionStatus);
+                } else {
+                    [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setStationConnectionStatus);
+                    [_target, _player, _intercomNetwork] call acre_sys_intercom_fnc_setIntercomUnits;
+                };
             },
             {
                 //USES_VARIABLES ["_target", "_player"];

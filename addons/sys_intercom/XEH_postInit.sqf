@@ -10,33 +10,63 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 if (!hasInterface) exitWith {};
 
-["vehicle",
-    {
-        params ["_player", "_newVehicle"];
+["vehicle", {
+    params ["_player", "_newVehicle"];
 
-        if (_player != _newVehicle) then {
-            _player setVariable[QGVAR(intercomVehicle), _newVehicle];
-            GVAR(crewPFH) = [DFUNC(vehicleCrewPFH), 1.1, [_player, _newVehicle]] call CBA_fnc_addPerFrameHandler;
-        } else {
-            [GVAR(crewPFH)] call CBA_fnc_removePerFrameHandler;
-            private _intercomVehicle = _player getVariable[QGVAR(intercomVehicle), objNull];
-            private _unitsIntercom = _intercomVehicle getVariable[QGVAR(unitsIntercom) , []];
-            private _disconnected = false;
-            {
-                private _temp = +_x;
-                if (_player in _temp) then {
-                    _temp = _temp - [_player];
-                    _unitsIntercom set [_forEachIndex, _temp];
-                    _disconnected = true;
+    if (_player != _newVehicle) then {
+        _player setVariable[QGVAR(intercomVehicle), _newVehicle];
+
+        // Configure the array for handling if a player is in a limited intercom position or not.
+         private _usingLimitedPosition = [];
+        {
+            _usingLimitedPosition pushBack false;
+        } forEach (_newVehicle getVariable [QGVAR(intercomNames), []]);
+        player setVariable [QGVAR(usingLimitedPosition), _usingLimitedPosition];
+
+        {
+            [_newVehicle, _player, _forEachIndex] call FUNC(seatSwitched);
+        } forEach (_newVehicle getVariable [QGVAR(intercomNames), []]);
+        GVAR(crewPFH) = [DFUNC(intercomPFH), 1.1, [_player, _newVehicle]] call CBA_fnc_addPerFrameHandler;
+    } else {
+        [GVAR(crewPFH)] call CBA_fnc_removePerFrameHandler;
+        private _intercomVehicle = _player getVariable[QGVAR(intercomVehicle), objNull];
+        private _unitsIntercom = _intercomVehicle getVariable[QGVAR(unitsIntercom) , []];
+        private _disconnected = false;
+        {
+            private _temp = +_x;
+            if (_player in _temp) then {
+                _temp = _temp - [_player];
+                _unitsIntercom set [_forEachIndex, _temp];
+                _disconnected = true;
+                private _usingLimitedPosition = _player getVariable [QGVAR(usingLimitedPosition), []];
+                if (_usingLimitedPosition select _forEachIndex) then {
+                    private _numLimitedPositions = _intercomVehicle getVariable [QGVAR(numLimitedPositions), []];
+                    private _num = _numLimitedPositions select _forEachIndex;
+
+                    _numLimitedPositions set [_forEachIndex, _num + 1];
+                    _intercomVehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions, true];
+
+                    _usingLimitedPosition set [_forEachIndex, false];
+                    _player setVariable [QGVAR(usingLimitedPosition), _usingLimitedPosition];
                 };
-            } forEach _unitsIntercom;
+            };
+        } forEach _unitsIntercom;
 
-            ["Disconnected from intercom system", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-            _intercomVehicle setVariable [QGVAR(unitsIntercom), _unitsIntercom, true];
-            ACRE_PLAYER_INTERCOM = [];
-        };
-    }
-] call CBA_fnc_addPlayerEventHandler;
+        // Reset variables
+        _player setVariable [QGVAR(usingLimitedPosition), []];
+        _intercomVehicle setVariable [QGVAR(unitsIntercom), _unitsIntercom, true];
+        _player setVariable[QGVAR(intercomVehicle), objNull];
+        ACRE_PLAYER_INTERCOM = [];
+
+        ["Disconnected from intercom system", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    };
+}] call CBA_fnc_addPlayerEventHandler;
+
+player addEventHandler ["seatSwitchedMan", {
+    params ["_unit1", "_unit2", "_vehicle"];
+
+    [_vehicle, _unit1] call FUNC(seatSwitched);
+}];
 
 [QGVAR(giveInfantryPhone), {
     params ["_vehicle", "_unit", "_action", ["_intercomNetwork", NO_INTERCOM]];

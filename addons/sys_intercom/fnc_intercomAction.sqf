@@ -39,6 +39,9 @@ private _intercomAction = [
         // Find if at least one intercom is available
         {
             _intercomAvailable = [_target, acre_player, _forEachIndex] call FUNC(isIntercomAvailable);
+            if (!_intercomAvailable) then {
+                _intercomAvailable = [_target, acre_player, _forEachIndex] call FUNC(isInLimitedPosition);
+            };
             if (_intercomAvailable) exitWith{};
         } forEach _intercomNames;
         _intercomAvailable

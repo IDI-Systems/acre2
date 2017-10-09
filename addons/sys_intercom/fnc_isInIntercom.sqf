@@ -3,7 +3,7 @@
  * Checks if a unit is in the given intercom network of a vehicle.
  *
  * Arguments:
- * 0: Vehicle with a passenger intercom action <OBJECT>
+ * 0: Vehicle with intercom <OBJECT>
  * 1: Unit to be checked <OBJECT>
  * 2: Intercom network <NUMBER>
  *

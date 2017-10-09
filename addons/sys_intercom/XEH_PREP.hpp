@@ -1,15 +1,14 @@
 PREP(intercomAction);
 PREP(intercomChildrenActions);
-
 PREP(isIntercomAvailable);
+PREP(isInLimitedPosition);
 PREP(noApiFunction);
-PREP(vehicleCrewPFH);
+PREP(intercomPFH);
 
 // Intercom
 PREP(configIntercom);
 PREP(configIntercomStations);
 PREP(isInIntercom);
-PREP(isInRestrictedPosition);
 PREP(initVehicleIntercom);
 
 // Infantry Phone
@@ -29,5 +28,8 @@ PREP(setRxTxCapabilities);
 
 PREP(getStationConnectionStatus);
 PREP(getStationVolume);
+PREP(seatSwitched);
+PREP(setIntercomUnits);
+PREP(setLimitedConnectionStatus);
 PREP(setStationConnectionStatus);
 PREP(setStationVolume);

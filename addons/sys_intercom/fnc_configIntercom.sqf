@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_intercom_fnc_intercomActions
+ * [cursorTarget] call acre_sys_intercom_fnc_configIntercom
  *
  * Public: No
  */
@@ -23,8 +23,8 @@ private _intercomNames = [];
 private _intercomDisplayNames = [];
 private _intercomPositions = [];
 private _intercomExceptions = [];
-private _intercomRestrictions = [];
-private _intercomNumRestricted = [];
+private _intercomLimitedPositions = [];
+private _numLimitedPositions = [];
 private _intercomConnectByDefault = [];
 private _unitsIntercom = [];
 
@@ -33,9 +33,9 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     private _name = toLower (getText (_x >> "name"));
     private _displayName = getText (_x >> "displayName");
     private _allowedPositions = getArray (_x >> "allowedPositions");
-    private _restrictedPositions = getArray ( _x >> "restrictedPositions");
     private _disabledPositions = getArray (_x >> "disabledPositions");
-    private _intercomConnections = getNumber (_x >> "connections");
+    private _limitedPositions = getArray (_x >> "limitedPositions");
+    private _numLimPositions = getNumber (_x >> "numLimitedPositions");
     private _connectedByDefault = getNumber (_x >> "connectedByDefault");
 
     // Check if the entry in allowed positions is the default one
@@ -71,36 +71,36 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
         _availabeIntercomPositions = [_vehicle, _allowedPositions] call EFUNC(sys_core,processConfigArray);
     };
 
-    private _restrictedIntercomPositions = [];
-    private _numRestrictedPositions = 0;
-
-    if (count _restrictedPositions > 0) then {
-        restrictedIntercomPositions = [_vehicle, _restrictedPositions select 0] call EFUNC(sys_core,processConfigArray);
-        numRestrictedPositions = _restrictedPositions select 1;
+    // Add limited positions. Positions in which non-intercom members can communicate temporarily
+    private _limitedIntercomPositions = [_vehicle, _limitedPositions] call EFUNC(sys_core,processConfigArray);
+    if (count _limitedIntercomPositions != 0 && _numLimPositions == 0) then {
+        //_limitedIntercomPositions = [];
+        WARNING_1("Vehicle type %1 has limited positions defined but no actual limit of simultaneous connections. Ignoring limited positions",_vehicle);
     };
 
     // Remove all exceptions
     private _temp = [_vehicle, _disabledPositions] call EFUNC(sys_core,processConfigArray);
     private _exceptionsIntercomPositions = [];
     {
-        if (_x in _availabeIntercomPositions || _x in _restrictedIntercomPositions) then {
-            if (_x in _availabeIntercomPositions) then {
-                _availabeIntercomPositions = _availabeIntercomPositions - [_x];
-            } else {
-                _restrictedIntercomPositions = _restrictedIntercomPositions - [_x];
-            }
+        if (_x in _availabeIntercomPositions) then {
+            _availabeIntercomPositions = _availabeIntercomPositions - [_x];
         } else {
             // This could be a FFV turret
             _exceptionsIntercomPositions pushBackUnique _x;
         };
     } forEach _temp;
 
+    // Check that limitied positions are not defined in available positions
+    {
+
+    } forEach _limitedIntercomPositions;
+
     _intercomNames pushBack _name;
     _intercomDisplayNames pushBack _displayName;
     _intercomPositions pushBack _availabeIntercomPositions;
     _intercomExceptions pushBack _exceptionsIntercomPositions;
-    _intercomRestrictions pushBack _restrictedIntercomPositions;
-    _intercomNumRestricted pushBack _numRestrictedPositions;
+    _intercomLimitedPositions pushBack _limitedIntercomPositions;
+    _numLimitedPositions pushBack _numLimPositions;
     _intercomConnectByDefault pushBack _connectedByDefault;
     _unitsIntercom pushBack [];
 };
@@ -109,7 +109,7 @@ _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
 _vehicle setVariable [QGVAR(intercomDisplayNames), _intercomDisplayNames];
 _vehicle setVariable [QGVAR(allowedPositions), _intercomPositions];
 _vehicle setVariable [QGVAR(forbiddenPositions), _intercomExceptions];
-_vehicle setVariable [QGVAR(restrictedPositions), _intercomRestrictions];
-_vehicle setVariable [QGVAR(numRestrictedPositions), _intercomNumRestricted];
+_vehicle setVariable [QGVAR(limitedPositions), _intercomLimitedPositions];
+_vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
 _vehicle setVariable [QGVAR(connectByDefault), _intercomConnectByDefault];
 _vehicle setVariable [QGVAR(unitsIntercom), _unitsIntercom];

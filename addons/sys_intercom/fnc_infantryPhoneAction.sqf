@@ -32,7 +32,7 @@ TRACE_1("Adding Infantry Phone Action",_type);
 private _positionConfig = configFile >> "CfgVehicles" >> _type >> "acre_infantryPhonePosition";
 private _position = [0, 0, 0]; // Default to main action point
 if (isText _positionConfig) then {
-    _position = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core vehicleCrewPFH checks
+    _position = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core intercomPFH checks
 };
 if (isArray _positionConfig) then {
     _position = getArray _positionConfig;

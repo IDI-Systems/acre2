@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Checks if a intercom network (crew or passenger) is available for a given position.
+ * Checks if an intercom network station is available for a given position.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [cursorTarget, player, CREW_INTERCOM] call acre_sys_intercom_fnc_isIntercomAvailable
+ * [cursorTarget, player, 0] call acre_sys_intercom_fnc_isIntercomAvailable
  *
  * Public: No
  */
@@ -23,7 +23,6 @@ if (_vehicle != vehicle _unit) exitWith {false};
 
 private _allowedPositions = (_vehicle getVariable [QGVAR(allowedPositions), []]) select _intercomType;
 private _forbiddenPositions = (_vehicle getVariable [QGVAR(forbiddenPositions), []]) select _intercomType;
-private _restrictedPositions = (_vehicle getVariable [QGVAR(restrictedPositions), []]) select _intercomType;
 
 private _intercomAvailable = false;
 {
@@ -49,7 +48,7 @@ private _intercomAvailable = false;
     };
 
     if (_intercomAvailable) exitWith {};
-} forEach (_allowedPositions + _restrictedPositions);
+} forEach _allowedPositions;
 
 if (_intercomAvailable) then {
     {
