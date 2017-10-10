@@ -6,9 +6,9 @@ title: Vehicle Intercom
 
 Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
-## Vehicle crew intercom
+## Vehicle intercom
 
-Vehicle crew intercom is the system where crew inside vehicle can easily communicate among each other without noise disturbances.
+Vehicle intercom is the system where units in a vehicle can easily communicate among each other without noise disturbances. In ACRE several intercoms can coexist in a vehicle.
 
 By default, intercom is enabled for the following classes and their children:
 
@@ -19,84 +19,86 @@ By default, intercom is enabled for the following classes and their children:
 - `Plane`
 - `SDV_01_base_F`
 
-If you are inheriting from one of those classes, no extra configuration is required for vehicle intercom functionality. The default positions where crew intercom is enabled include `"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets.
+If you are inheriting from one of those classes, no extra configuration is required for vehicle intercom functionality. The basic configuration includes an intercom network for crew members (`"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets) and another network for cargo positions or passengers in case they are present.
 
-The system can be further modified in order to customise which positions have access to crew intercom. The following configuration entries illustrate some of the possibilities:
+The system can be further modified in order to customise which positions have access to intercom. The following configuration entries illustrate some of the possibilities:
 
 {% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
-        acre_hasCrewIntercom = 1; // 1 - enabled, 0 - disabled
-        // The default configuration is used. Units in commander, driver, gunner and turret (excluding FFV) have access to crew intercom.
-        // If left empty it has the same effect.
-        acre_crewIntercomPositions[] = {"default"};
-        // In this case the commander turret does not have access to crew intercom (unit is "turned out"). This can be useful for historical vehicles.
-        acre_crewIntercomExceptions[] = {{"Turret", {0,0}}};
+        class AcreIntercoms {
+            class Intercom_1 {                             // Each entry defines a network
+                name = "intercom_1";                       // This is a unique identifier for the network
+                displayName = "Crew intercom";             // Name of the intercom network displayed to the players
+                // Seats with stations configured that have intercom acces. In this case, units in commander, driver, gunner and turret (excluding FFV) have access to this intercom.
+                // If left empty it has the same effect.
+                allowedPositions[] = {"crew"};
+                // In this case the commander turret does not have access to crew intercom (unit is "turned out"). This can be useful for historical vehicles.
+                disabledPositions[] = {{"Turret", {0,0}}};
+                // Despite not having regular access to the network, units in cargo positions can have limited connections to communicate with the crew.
+                limitedPositions[] = {{"cargo", "all"}};
+                // This is the number of simultaneous connections that units defined in the previous array can have.
+                numLimitedPositions = 1;
+                // The intercom initial configuration is enabled upon entering a vehicle.
+                connectedByDefault = 1;
+            };
+            class Intercom_2: Intercom_1 {
+                name = "intercom_2";
+                displayName = "Pax intercom";
+                // Both crew and cargo positions have access to passenger intercom
+                allowedPositions[] = {"crew", {"cargo", "all"}};
+                limitedPositions[] = {};
+                numLimitedPositions = 0;
+                // The intercom initial configuration is disabled upon entering a vehicle.
+                connectedByDefault = 0;
+            };
+        };
     };
 };
 ```
 {% endraw %}
 
-The following example enables crew intercom for only driver and commander positions and the turret positions different from [1] and [2] as well as the commander's turn out turret position.
+The following example enables an intercom network for only driver and commander positions and the turret positions different from [1] and [2] as well as the commander's turn out turret position. A second intercom network is enabled to all stations except for gunner, cargo index 1 and all FFV turrets, while a third intercom is available for some of the cargo positions.
 
 {% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
-        acre_hasCrewIntercom = 1; // 1 - enabled, 0 - disabled
-        // "all" is a wildcard that selects, in this case, all turrets (not including ffv).
-        acre_crewIntercomPositions[] = {"driver", "commander", {"turret", "all"}};
-        // Commander FFV turret and turret positions [1] and [2] do not have access to crew intercom.
-        acre_crewIntercomExceptions[] = {{"Turret", {0,0}, {1}, {2}}};
-    };
-};
-```
-{% endraw %}
-
-## Vehicle passenger Intercom
-
-Passenger intercom is the system where non crew members inside vehicle can easily communicate among each other without noise disturbances. Crew members can also be part of passenger intercom.
-By default passenger intercom is disabled by default.
-
-{% include important.html content="Requires ACE3 Interaction Menu!" %}
-
-The system can be enabled and configured using the following configuration entries:
-
-{% raw %}
-```cpp
-class CfgVehicles {
-    class ParentVehicle;
-    class MyVehicle: ParentVehicle {
-        acre_hasPassengerIntercom = 1; // 1 - enabled, 0 - disabled
-        // The default configuration is used. Units in crew intercom and in cargo positions have access to the passenger intercom. If left empty it has the same effect.
-        acre_passengerIntercomPositions[] = {"default"};
-        // Excludes units from accessing the passenger intercom. In this example, gunner, cargo index 1 and all FFV turrets do not have access to passenger intercom.
-        acre_passengerIntercomExceptions[] = {"gunner", {"cargo", 1}, {"ffv", "all"}};
-        // -1 to set the number of connections equal to the amount of passenger intercom positions. A number greater
-        // than 0 limits the number of available connections for passengers. Crew members do not use this number.
-        acre_passengerIntercomConnections = -1;
-    };
-};
-```
-{% endraw %}
-
-{% raw %}
-```cpp
-class CfgVehicles {
-    class ParentVehicle;
-    class MyVehicle: ParentVehicle {
-        acre_hasPassengerIntercom = 1; // 1 - enabled, 0 - disabled
-        // Units in crew intercom, in cargo positions 1 and 2 and all FFV turrets have access to the passenger intercom.
-        acre_passengerIntercomPositions[] = {{"Cargo", 1, 2}, {"ffv", "all"}};
-        // Excludes unit in FFV turret [4] to access from accessing passenger intercom, as well as cargo index 1 and turret [1]
-        // when they are turned out.
-        acre_passengerIntercomExceptions[] = {{"ffv", [4]}, {"turnedOut", 1, [1]}};
-        // -1 to set the number of connections equal to the amount of passenger intercom positions. A number greater
-        // than 0 limits the number of available connections for passengers. Crew members do not use this number.
-        acre_passengerIntercomConnections = 2; // Only two units with access to passenger intercom can connect simultaneously.
+        class AcreIntercoms {
+            class Intercom_1 {                             // Each entry defines a network
+                name = "intercom_1";                       // This is a unique identifier for the network
+                displayName = "Crew intercom";             // Name of the intercom network displayed to the players
+                // "all" is a wildcard that selects, in this case, all turrets (not including ffv).
+                allowedPositions[] = {"driver", "commander", {"turret", "all"}};
+                // Commander FFV turret and turret positions [1] and [2] do not have access to crew intercom.
+                disabledPositions[] = {{"Turret", {0,0}, {1}, {2}}};
+                // Noone else can have access to this intercom network
+                limitedPositions[] = {};
+                numLimitedPositions = 0;
+                connectedByDefault = 1;
+            };
+            class Intercom_2: Intercom 1 {
+                name = "intercom_2";
+                displayName = "Passenger intercom";
+                // Units in crew and in cargo positions have access to the passenger intercom.
+                allowedPositions[] = {"crew", {"cargo", all}};
+                // Excludes units from accessing the passenger intercom. In this example, gunner, cargo index 1 and all FFV turrets do not have access to passenger intercom.
+                disabledPositions[] = {"gunner", {"cargo", 1}, {"ffv", "all"}};
+                connectedByDefault = 0;
+            };
+            class Intercom_3: Intercom 2 {
+                name = "intercom_3";
+                displayName = "Cargo intercom";
+                // Units in cargo positions 1 and 2 and all FFV turrets have access to the passenger intercom.
+                allowedPositions[] = {{"cargo", 1, 2}, {"ffv", "all"}};
+                // Excludes unit in FFV turret [4] to access from accessing passenger intercom, as well as cargo index 1 and turret [1]
+                // when they are turned out.
+                disabledPositions[] = {{"ffv", [4]}, {"turnedOut", 1, [1]}};
+            }
+        };
     };
 };
 ```
@@ -104,7 +106,7 @@ class CfgVehicles {
 
 ## Infantry telephone
 
-Infantry telephone is the system where infantry can communicate with the crew inside tanks and IFVs using a telephone mounted on the outside of the vehicle.
+Infantry telephone is the system where infantry can communicate with units inside tanks and IFVs using a telephone mounted on the outside of the vehicle.
 
 {% include important.html content="Requires ACE3 Interaction Menu!" %}
 
@@ -117,11 +119,12 @@ To add infantry telephone to a vehicle class and configure its properties, use t
 class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
-        acre_hasInfantryPhone = 1; // 1 - enabled, 0 -
-        // Intercom the infantry phone can connect to. If left empty, the infantry phone is able to connect to all available intercom networks. Supported entries are "crew" and "passenger".
+        acre_hasInfantryPhone = 1; // 1 - enabled, 0 - disabled
         acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available.
         acre_infantryPhoneCustomRinging[] = {}; // An array used in order to override the default sound for the ringing functionality.
-        acre_infantryPhoneIntercom[] = {"crew", "passenger"};
+        // List of intercom names (intercom_1, intercom_2) or "all" in order to specify which intercom networks the phone can connect to.
+        acre_infantryPhoneIntercom[] = {"all"};
+        acre_infantryPhoneControlActions[] = {"intercom_1"}; // Only those units in "intercom_1" can have access to ringing functionality
         // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched.
         acre_eventInfantryPhone = QFUNC(noApiFunction);
     };
@@ -144,11 +147,11 @@ The infantry phone has the ringing functionality configured by default. However,
 class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
-        acre_hasInfantryPhone = 1; // 1 - enabled, 0 -
-        // Intercom the infantry phone can connect to. If left empty, the infantry phone is able to connect to all available intercom networks. Supported entries are "crew" and "passenger".
+        acre_hasInfantryPhone = 1; // 1 - enabled, 0 - disabled
         acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available.
         acre_infantryPhoneCustomRinging[] = "A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1.
-        acre_infantryPhoneIntercom[] = {"crew"};
+        acre_infantryPhoneIntercom[] = {"all"};
+        acre_infantryPhoneControlActions[] = {"intercom_1"}; // Only those units in "intercom_1" can have access to ringing functionality
         // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched.
         acre_eventInfantryPhone = QFUNC(noApiFunction);
     };
@@ -205,36 +208,46 @@ The framework recognises the following entries and wildcards for the configurati
   - `"crew"`: selects all crew members `"commander"`, `"driver"`, `"gunner"`, `"turret"` (non FFV) and it can be combined with other entries. For example `{"crew", {"cargo", 1}}`.
   - `"inside"`: selects all units inside a vehicle.
   - `"all"` can be combined with  `"cargo"`, `"turret"`, `"ffv"` and `"turnedout"` and selects all entries of this category. For example `{{"cargo", 1}, {"ffv", "all"}}`.
-  - `"default"` selects all crew members in `acre_crewIntercomPositions` or all the cargo entries if defined in `acre_passengerIntercomPositions`. It cannot be combined with any other entry.
 {% endraw %}
 
 ## Configuration examples
 
 The following vehicle has crew and passenger intercom as well as infantry telephone.
 
-- Crew intercom is enabled for all the default crew positions (`"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets) with the exception of `"driver"` and when player is turned out in all positions.
-- Passenger intercom is available for all the previously defined crew members plus all `"cargo"` positions and for the `"driver"` with the exception of the `"commander"`, `"cargo"` index 1, all FFV turrets and turned out positions in the `"driver"`, `"gunner"`, `"cargo"` index 2 and `"turrent"` [2]. Additionally only two non-crew units can connect simultaneously.
-- The infantry telephone that can have access to both crew and passenger intercom networks. Units can interact with the infantry telephone at  `{-1.1, -4.86, -0.82}` model space coordinates.
+- Crew intercom is enabled for all the default crew positions (`"commander"`, `"driver"`, `"gunner"` and those positions labelled as `"turret"` excluding firing from vehicle (FFV) turrets) with the exception of `"driver"` and when player is turned out in all positions. Units in cargo positions can access the intercom, but only two units simultaneously.
+- Passenger intercom is available for all the previously defined crew members plus all `"cargo"` positions and for the `"driver"` with the exception of the `"commander"`, `"cargo"` index 1, all FFV turrets and turned out positions in the `"driver"`, `"gunner"`, `"cargo"` index 2 and `"turrent"` [2].
+- The infantry telephone that can have access to both crew and passenger intercom networks. Units can interact with the infantry telephone at  `{-1.1, -4.86, -0.82}` model space coordinates. Only those units in the crew intercom can make the phone ring.
 
 {% raw %}
 ```cpp
 class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
-        // Crew Intercom
-        acre_hasCrewIntercom = 1;
-        acre_crewIntercomPositions[] = {"default"};
-        acre_crewIntercomExceptions[] = {"driver", {"turnedout", "all"}};
-
-        // Passenger intercom
-        acre_hasPassengerIntercom = 1;
-        acre_passengerIntercomPositions[] = {{"cargo", "all"}, "driver"};
-        acre_passengerIntercomExceptions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}, {"turnedout", 2, "driver", "gunner", [2]}};
-        acre_passengerIntercomConnections = 2;
+        class AcreIntercoms {
+            class Intercom_1 {
+                name = "intercom_1";
+                displayName = "Crew intercom";
+                allowedPositions[] = {"crew"};
+                disabledPositions[] = {"driver", {"turnedout", "all"}};
+                limitedPositions[] = {{"cargo", "all"}};
+                numLimitedPositions = 2;
+                connectedByDefault = 1;
+            };
+            class Intercom_2: Intercom 1 {
+                name = "intercom_2";
+                displayName = "Passenger intercom";
+                allowedPositions[] = {"crew", {"cargo", "all"}};
+                disabledPositions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}, {"turnedout", 2, "driver", "gunner", [2]}};
+                limitedPositions[] = {};
+                numLimitedPositions = 0;
+                connectedByDefault = 0;
+            };
+        };
 
         // Infantry Phone
         acre_hasInfantryPhone = 1;
-        acre_infantryPhoneIntercom[] = {"crew", "passenger"};
+        acre_infantryPhoneIntercom[] = {"all"};
+        acre_infantryPhoneControlActions[] = {"intercom_1"};
         acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82};
         acre_infantryPhoneDisableRinging = 0; // If set to 1, the ringing funtionality will not be available.
         acre_infantryPhoneCustomRinging[] = {"A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1.
