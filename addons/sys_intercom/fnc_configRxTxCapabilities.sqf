@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Configures the initial state (No use, TX Ony, RX only or TX/RX) of a rack that is connected to the intercom system.
+ * Configures the initial state (No use, TX Ony, RX only or TX/RX) of a rack that is connected to theintercom.
  *
  * Arguments:
  * 0: Unit <OBJECT>
