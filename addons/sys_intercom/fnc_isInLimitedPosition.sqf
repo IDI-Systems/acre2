@@ -8,7 +8,7 @@
  * 2: Intercom network <NUMBER>
  *
  * Return Value:
- * None
+ * True if the player is in a limited position, false otherwise
  *
  * Example:
  * [cursorTarget, player, 0] call acre_sys_intercom_fnc_isInLimitedPosition

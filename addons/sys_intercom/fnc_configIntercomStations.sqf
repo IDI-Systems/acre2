@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Configures the initial intercom connectivity (not connected, connected to crew intercom, connected to pax intercom or connected to both) for all allowed seats. *
+ * Configures the initial intercom connectivity (disconnected/connected) for all allowed seats. *
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>

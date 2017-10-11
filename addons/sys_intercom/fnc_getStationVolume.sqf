@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Gets the intercom volume status of the vehicle seat the unit is in.
+ * Gets the intercom volume status of the station the unit has access to.
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
@@ -8,7 +8,7 @@
  * 2: Intercom network <NUMBER>
  *
  * Return Value:
- * Intercom volume status <NUMBER>
+ * Intercom volume [0...1] <NUMBER>
  *
  * Example:
  * [vehicle acre_player, acre_player] call acre_sys_intercom_fnc_getStationVolume

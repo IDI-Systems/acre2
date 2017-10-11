@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Adds actions for using vehicle intercom externally and passenger intercom.
+ * Configures the intercom system of a vehicle.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>

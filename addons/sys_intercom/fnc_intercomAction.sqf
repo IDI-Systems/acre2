@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Adds an action for joining the intercom network of a vehicle.
+ * Adds an action for accessing the intercom network of a vehicle.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>

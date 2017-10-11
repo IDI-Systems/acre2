@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Gets the intercom connection status of the vehicle seat the unit is in.
+ * Gets the intercom connection status of the station the unit has access to.
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>

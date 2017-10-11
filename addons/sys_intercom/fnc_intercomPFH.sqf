@@ -4,13 +4,16 @@
  * Additionally it checks if a unit is using the vehicle's infantry phone.
  *
  * Arguments:
- * None
+ * 0: Array of arguments <ARRAY>
+ *  0: player unit <OBJECT>
+ *  1: vehicle with intercom <OBJECT>
+ * 1: PFH unique identifier <NUMBER>
  *
  * Return Value:
  * None
  *
  * Example:
- * [] call acre_sys_intercom_fnc_intercomPFH
+ * [[player, vehicle player], 12] call acre_sys_intercom_fnc_intercomPFH
  *
  * Public: No
  */
