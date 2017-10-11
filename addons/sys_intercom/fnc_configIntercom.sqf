@@ -37,20 +37,12 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     private _limitedPositions = getArray (_x >> "limitedPositions");
     private _numLimPositions = getNumber (_x >> "numLimitedPositions");
     private _connectedByDefault = getNumber (_x >> "connectedByDefault");
-
-    // Check if the entry in allowed positions is the default one
-    private _default = false;
-    if (count _allowedPositions == 0 || "default" in _allowedPositions) then {
-        _default = true;
-        if (count _allowedPositions > 1) then {
-            WARNING_1("Vehicle type %1 has the default entry followed by other options. This is not supported. Ignoring custom configuration for crew intercom.",_type);
-            _default = true;
-        };
-    };
-
     private _availabeIntercomPositions = [];
 
-    if (_default) then {
+    // Check if the entry in allowed positions is correct
+    if (count _allowedPositions == 0) then {
+        WARNING_2("Vehicle type %1 has no entry for allowed positions array. This is not supported. Defaulting to crew for intercom network %2.",_type,_name);
+
         // Use Standard configuration
         // Driver, commander and gunner positions. Only select thoses that are defined.
         {
@@ -75,7 +67,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     private _limitedIntercomPositions = [_vehicle, _limitedPositions] call EFUNC(sys_core,processConfigArray);
     if (count _limitedIntercomPositions != 0 && _numLimPositions == 0) then {
         //_limitedIntercomPositions = [];
-        WARNING_1("Vehicle type %1 has limited positions defined but no actual limit of simultaneous connections. Ignoring limited positions",_vehicle);
+        WARNING_2("Vehicle type %1 has limited positions defined but no actual limit of simultaneous connections. Ignoring limited positions for intercom network %2",_vehicle, _name);
     };
 
     // Remove all exceptions

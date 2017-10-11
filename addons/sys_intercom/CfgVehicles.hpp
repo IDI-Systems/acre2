@@ -24,7 +24,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -50,7 +50,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 numLimitedPositions = 1;
@@ -80,7 +80,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 numLimitedPositions = 1;
@@ -114,7 +114,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -143,7 +143,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -181,7 +181,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -206,7 +206,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -231,7 +231,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -252,7 +252,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -271,7 +271,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -290,7 +290,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -309,7 +309,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -327,7 +327,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -346,7 +346,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -365,7 +365,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -384,7 +384,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -402,7 +402,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -429,7 +429,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -447,7 +447,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -465,7 +465,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -483,7 +483,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {{"turret", {1}, {2}}};
                 connectedByDefault = 1;
             };
@@ -501,7 +501,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
@@ -520,7 +520,7 @@ class CfgVehicles {
             class Intercom_1 {
                 name = "intercom_1";
                 displayName = "Crew intercom";
-                allowedPositions[] = {"default"};
+                allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
                 connectedByDefault = 1;
             };
