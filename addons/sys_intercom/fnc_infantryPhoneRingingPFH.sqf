@@ -50,7 +50,7 @@ if ((isNull _unitInfantryPhone) && {_isCalling select 0} && {alive _vehicle} && 
 } else {
     // A unit picked up the phone. Reset isCalling variable
     if (_isCalling select 0) then {
-        _vehicle setVariable [QGVAR(isInfantryPhoneCalling), false, true];
+        _vehicle setVariable [QGVAR(isInfantryPhoneCalling), [false, NO_INTERCOM], true];
     };
     [_pfhID] call CBA_fnc_removePerFrameHandler;
 };
