@@ -90,5 +90,12 @@ private _searchFunction = {
         };
     };
 };
-[_radioId] call _searchFunction;
+
+private _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
+if (_rackId != "") then {
+    [_rackId] call _searchFunction;
+} else {
+    [_radioId] call _searchFunction;
+};
+
 _foundAntennas;
