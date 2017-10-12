@@ -43,6 +43,7 @@ For installation instructions and a bunch of good tutorials, please refer to the
 ### Setting up the antenna
 
 The first step after opening 4NEC2 is to create a model of the antenna. Usually it is more than sufficient to use a vertical wire and a simple ground setting. These models are stored in the `.nec` format which is basically a text file. The `.nec` files from all existing antennas could be found in the `extras/antenna` folder and a good practice is to simply take an existing file and change the parameters either in a text editor or directly in 4NEC2.
+
 **Ground Settings**: It is highly recommended to set the ground setting to `Perfect gnd` and check the `Connect wire(s) for Z=0 to ground` setting as well. Other ground settings may lead to more realistic results regardings the antenna gain field but in contrary to the real world, ACRE2 does not simulate ground effects like ground propagation. The end result in-game would be unexplainable transmission-losses even in perfect conditions.
 
 ### Calculating antenna gain
