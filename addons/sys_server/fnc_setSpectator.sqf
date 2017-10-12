@@ -5,6 +5,7 @@
  * Arguments:
  * 0: TeamSpeak ID <NUMBER>
  * 1: Specatator status (1 = on, 0 = off) <NUMBER>
+ * 2: Arma 3 Client ID <NUMBER>
  *
  * Return Value:
  * None
@@ -17,12 +18,19 @@
 #include "script_component.hpp"
 
 if (isServer) then {
-    params ["_ts3Id","_tsStatus"];
+    params ["_ts3Id","_tsStatus","_clientOwner"];
     private _preCount = count ACRE_SPECTATORS_LIST;
     if (_tsStatus == 1) then {
-        ACRE_SPECTATORS_LIST pushBackUnique _ts3Id;
+        if (ACRE_SPECTATORS_LIST pushBackUnique _ts3Id != -1) then {
+            ACRE_SPECTATORS_A3_CLIENT_ID_LIST pushBack _clientOwner;
+        };
     } else {
-        ACRE_SPECTATORS_LIST = ACRE_SPECTATORS_LIST - [_ts3Id];
+        private _idx = ACRE_SPECTATORS_LIST find _ts3Id;
+        while {_idx != -1} do {
+            ACRE_SPECTATORS_LIST deleteAt _idx;
+            ACRE_SPECTATORS_A3_CLIENT_ID_LIST deleteAt _idx;
+            _idx = ACRE_SPECTATORS_LIST find _ts3Id;
+        };
     };
     // Only call publicVariable if array changes.
     if ((count ACRE_SPECTATORS_LIST) != _preCount) then {

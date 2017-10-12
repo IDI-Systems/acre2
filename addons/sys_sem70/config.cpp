@@ -2,13 +2,15 @@
 
 class CfgPatches {
     class ADDON {
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = { RADIO_WEAPON_LIST_STR(ACRE_SEM70) };
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = { "acre_sys_radio" };
-        version = VERSION;
-        author[] = {"Raspu"};
-        authorUrl = URL;
+        author = ECSTRING(main,Author);
+        authors[] = {"Raspu"};
+        url = ECSTRING(main,URL);
+        VERSION_CONFIG;
     };
 };
 
