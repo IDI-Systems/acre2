@@ -29,6 +29,7 @@ FUNC(_channelNamesForPresets) = {
                 {
                     _x params ["_radioClass", "_presetName"];
 
+                    // Filter out preset channel if greater than supported channel (eg. ACRE_PRC77 only has 2 presets)
                     private _presetData = [_radioClass, _presetName] call EFUNC(sys_data,getPresetData);
                     if (!isNil "_presetData" && {count HASH_GET(_presetData,"channels") >= _channelNumber}) then {
                         // Example: ["ACRE_PRC117F", "default3", 10, "label", "SUPPORT"]
