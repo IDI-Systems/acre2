@@ -2,7 +2,6 @@
  * Author: ACRE2Team
  * Sets the value of a given channel field for the given radio preset.
  * This function must be called on all clients and the server to work properly.
- * Will only assign as many presets as the radio can take (eg. AN/PRC-77 only has 2).
  *
  * Arguments:
  * 0: Radio Base class <STRING>
@@ -64,7 +63,7 @@ TRACE_1("",_channels);
 
 // Exit if we ran out of available presets on the given radio
 if (count _channels < _channelNumber) exitWith {
-    TRACE_3("ran out of presets",_radioClass,count _channels,_channelNumber);
+    WARNING_3("Attempted to set channel preset field for a non-existent radio channel %1 for %2 (max %3)!",_channelNumber,_radioClass,count _channels);
     false
 };
 
