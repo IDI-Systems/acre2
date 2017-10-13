@@ -33,8 +33,6 @@ if (_id in ACRE_SPECTATORS_LIST && ACRE_IS_SPECTATOR) then {
     _isIntercomAttenuate = [_unit] call EFUNC(sys_attenuate,isIntercomAttenuate);
 };
 
-systemChat format ["intercom attenuate %1", _isIntercomAttenuate];
-
 private _listenerPos = ACRE_LISTENER_POS;
 private _listenerDir = ACRE_LISTENER_DIR;
 if (_bothSpectating || _isIntercomAttenuate) then {
@@ -45,7 +43,6 @@ if (_bothSpectating || _isIntercomAttenuate) then {
     _emitterDir = eyeDirection _unit;
 };
 
-systemChat format ["Occlusion Test %1", ACRE_TEST_OCCLUSION && !_bothSpectating && !_isIntercomAttenuate];
 if (ACRE_TEST_OCCLUSION && !_bothSpectating && !_isIntercomAttenuate) then {
     private _args = [_emitterPos, _listenerPos, _unit];
     // acre_player sideChat format["args: %1", _args];

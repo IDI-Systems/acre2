@@ -39,7 +39,6 @@ switch (_action) do {
                 _unitsIntercom set [_forEachIndex, _temp];
             };
         } forEach _unitsIntercom;
-        systemChat format ["Return phone"];
         _vehicle setVariable [QGVAR(unitsIntercom), _unitsIntercom, true];
         ACRE_PLAYER_INTERCOM = [];
         [format [localize LSTRING(infantryPhoneDisconnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
@@ -50,7 +49,6 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
         [format [localize LSTRING(infantryPhoneConnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-        systemChat format ["Pick  phone"];
         GVAR(infantryPhonePFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
     case 2: {

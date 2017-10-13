@@ -63,11 +63,8 @@ if (_target isKindOf "CAManBase") then {
                     {
                         params ["_target", "_player", "_params"];
                         _params params ["_intercomNetwork"];
-                        systemChat format ["%1", _intercomNetwork];
                         private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), [false, INTERCOM_DISCONNECTED]];
-                        systemChat format ["%1", _isCalling];
-                       // !(_isCalling select 0) || ((_isCalling select 0) && ((_isCalling select 1) == _intercomNetwork))
-                       true
+                        !(_isCalling select 0) || ((_isCalling select 0) && ((_isCalling select 1) == _intercomNetwork))
                     },
                     {},
                     _forEachIndex
