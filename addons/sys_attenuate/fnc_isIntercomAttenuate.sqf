@@ -9,7 +9,7 @@
  * Is other unit speaking on intercom <Boolean>
  *
  * Example:
- * [unit] call acre_sys_attenuate_fnc_isCrewIntercomAttenuate
+ * [unit] call acre_sys_attenuate_fnc_isIntercomAttenuate
  *
  * Public: No
  */
@@ -36,7 +36,8 @@ if (_vehicle == _unit) then {
 {
     if (_unit in _x) then {
         _ret = true;
-    }
+    };
+    if (_ret) exitWith {};
 } forEach ACRE_PLAYER_INTERCOM;
 
 _ret

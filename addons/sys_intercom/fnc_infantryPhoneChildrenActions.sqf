@@ -19,7 +19,7 @@ params ["_target"];
 
 private _actions = [];
 
-(acre_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, NO_INTERCOM]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
+(acre_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
 
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
 private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames), []];
@@ -37,7 +37,7 @@ if (_target isKindOf "CAManBase") then {
                 _params params ["_intercomNetwork"];
 
                 //USES_VARIABLES ["_target", "_player"];
-                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, NO_INTERCOM]] select 0, _target, 2, _intercomNetwork, _player] call FUNC(updateInfantryPhoneStatus)
+                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]] select 0, _target, 2, _intercomNetwork, _player] call FUNC(updateInfantryPhoneStatus)
             },
             {true},
             {},
@@ -63,8 +63,11 @@ if (_target isKindOf "CAManBase") then {
                     {
                         params ["_target", "_player", "_params"];
                         _params params ["_intercomNetwork"];
-                        private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), [false, NO_INTERCOM]];
-                        !(_isCalling select 0) || ((_isCalling select 0) && ((_isCalling select 1) == _intercomNetwork))
+                        systemChat format ["%1", _intercomNetwork];
+                        private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), [false, INTERCOM_DISCONNECTED]];
+                        systemChat format ["%1", _isCalling];
+                       // !(_isCalling select 0) || ((_isCalling select 0) && ((_isCalling select 1) == _intercomNetwork))
+                       true
                     },
                     {},
                     _forEachIndex
@@ -72,7 +75,7 @@ if (_target isKindOf "CAManBase") then {
                 _actions pushBack [_action, [], _target];
             } forEach _intercomNames;
         } else {
-            (_target getVariable [QGVAR(unitInfantryPhone), [acre_player, NO_INTERCOM]]) params ["_unitInfantryPhone", ""];
+            (_target getVariable [QGVAR(unitInfantryPhone), [acre_player, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", ""];
             if (_vehicleInfantryPhone == _target) then {
                 // Generate the action to return the infantry telephone
                 private _action = [
@@ -83,7 +86,7 @@ if (_target isKindOf "CAManBase") then {
                         params ["_target", "_player", "_params"];
                         _params params ["_intercomNetwork"];
                         //USES_VARIABLES ["_target", "_player"];
-                        [_target, _player, 0, NO_INTERCOM] call FUNC(updateInfantryPhoneStatus)
+                        [_target, _player, 0, INTERCOM_DISCONNECTED] call FUNC(updateInfantryPhoneStatus)
                     },
                     {true},
                     {},
@@ -119,7 +122,7 @@ if (_target isKindOf "CAManBase") then {
         };
     } else {
         // Player is inside the vehicle.
-        private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), [false, NO_INTERCOM]];
+        private _isCalling = _target getVariable [QGVAR(isInfantryPhoneCalling), [false, INTERCOM_DISCONNECTED]];
 
         if (_isCalling select 0) then {
             private _action = [

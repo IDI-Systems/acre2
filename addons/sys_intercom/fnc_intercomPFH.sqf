@@ -24,7 +24,7 @@ params ["_param", "_handle"];
 _param params ["_player", "_vehicle"];
 
 private _unitsIntercom = _vehicle getVariable [QGVAR(unitsIntercom), []];
-_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, NO_INTERCOM]] params ["_unitInfantryPhone", "_infantryPhoneNetwork"];
+_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, INTERCOM_DISCONNECTED]] params ["_unitInfantryPhone", "_infantryPhoneNetwork"];
 private _intercoms = _vehicle getVariable [QGVAR(intercomNames), []];
 
 for "_i" from 0 to ((count _intercoms) - 1) do {

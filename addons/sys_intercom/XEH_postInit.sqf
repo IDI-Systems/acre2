@@ -69,7 +69,7 @@ player addEventHandler ["seatSwitchedMan", {
 }];
 
 [QGVAR(giveInfantryPhone), {
-    params ["_vehicle", "_unit", "_action", ["_intercomNetwork", NO_INTERCOM]];
+    params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED]];
 
     [_vehicle, _unit, _action, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
 }] call CBA_fnc_addEventHandler;

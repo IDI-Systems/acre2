@@ -20,7 +20,7 @@ params ["_args", "_pfhID"];
 _args params ["_vehicle", "_infantryPhonePosition"];
 
 (_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, objNull]]) params ["_unitInfantryPhone", ""];
-private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), [false, NO_INTERCOM]];
+private _isCalling = _vehicle getVariable [QGVAR(isInfantryPhoneCalling), [false, INTERCOM_DISCONNECTED]];
 
 private _noCrew = true;
 {
@@ -50,7 +50,7 @@ if ((isNull _unitInfantryPhone) && {_isCalling select 0} && {alive _vehicle} && 
 } else {
     // A unit picked up the phone. Reset isCalling variable
     if (_isCalling select 0) then {
-        _vehicle setVariable [QGVAR(isInfantryPhoneCalling), [false, NO_INTERCOM], true];
+        _vehicle setVariable [QGVAR(isInfantryPhoneCalling), [false, INTERCOM_DISCONNECTED], true];
     };
     [_pfhID] call CBA_fnc_removePerFrameHandler;
 };
