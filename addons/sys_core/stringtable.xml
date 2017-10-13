@@ -72,6 +72,9 @@
             <Chinesesimp>Teamspeak频道名称</Chinesesimp>
             <Korean>팀스피크 채널 이름</Korean>
         </Key>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
+            <English>TeamSpeak Channel Password</English>
+        </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
             <Spanish>Desactiva la notificación de desincronización del equipaje</Spanish>

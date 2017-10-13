@@ -41,7 +41,7 @@ public:
 
     virtual ACRE_RESULT moveToServerTS3Channel() = 0;
     virtual ACRE_RESULT moveToPreviousTS3Channel() = 0;
-    virtual ACRE_RESULT updateTs3ChannelNames(std::vector<std::string> names) = 0;
+    virtual ACRE_RESULT updateTs3ChannelDetails(std::vector<std::string> details) = 0;
     virtual ACRE_RESULT updateShouldSwitchTS3Channel(BOOL state) = 0;
     virtual BOOL shouldSwitchTS3Channel() = 0;
 
