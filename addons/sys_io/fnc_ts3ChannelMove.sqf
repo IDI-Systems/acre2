@@ -15,6 +15,6 @@
  */
 #include "script_component.hpp"
 
-private _ts3ChannelNames = format ["%1,%2", EGVAR(sys_core,ts3ChannelName), serverName];
-TRACE_1("Moving TS3 Channel",_ts3ChannelNames);
-CALL_RPC("setTs3ChannelNames",_ts3ChannelNames);
+private _ts3ChannelDetails = format ["%1,%2,%3", EGVAR(sys_core,ts3ChannelName), EGVAR(sys_core,ts3ChannelPassword), serverName];
+TRACE_1("Moving TS3 Channel",_ts3ChannelDetails);
+CALL_RPC("setTs3ChannelDetails",_ts3ChannelDetails);
