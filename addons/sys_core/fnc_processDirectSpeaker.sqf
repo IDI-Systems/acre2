@@ -60,7 +60,7 @@ private _emitterHeight = _emitterPos param [2, 1];
 if (GVAR(isDeaf) || (_unit getVariable [QGVAR(isDisabled), false]) || (ACRE_LISTENER_DIVE == 1) || _emitterHeight < -0.2) then {
     _directVolume = 0.0;
 };
-if (_isCrewAttenuate || _isPassengerAttenuate) then {
+if (_isIntercomAttenuate) then {
     _speakingType = "i";
     _directVolume = 1;
 };
