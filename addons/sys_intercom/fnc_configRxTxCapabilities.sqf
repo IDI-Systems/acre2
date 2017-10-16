@@ -30,7 +30,6 @@ private _rackRxTxConfig = [];
         if (_x in _intercoms) then {
             private _allowedPositions = (_vehicle getVariable [QGVAR(allowedPositions), []]) select _forEachIndex;
 
-            private _intPos = _x;
             {
                 _intercomPos pushBackUnique _x;
             } forEach _allowedPositions;
