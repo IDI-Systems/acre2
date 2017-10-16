@@ -8,7 +8,7 @@
  * 2: Intercom network <NUMBER>
  *
  * Return Value:
- * True if intercom network is available, false otherwise
+ * True if intercom network is available, false otherwise <BOOL>
  *
  * Example:
  * [cursorTarget, player, 0] call acre_sys_intercom_fnc_isIntercomAvailable

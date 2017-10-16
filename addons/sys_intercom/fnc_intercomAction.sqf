@@ -21,7 +21,7 @@ private _type = typeOf _target;
 
 // Exit if object has no intercom
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
-if (count _intercomNames == 0) exitWith {};
+if (_intercomNames isEqualTo []) exitWith {};
 
 // Exit if class already initialized
 if (_type in GVAR(initializedIntercom)) exitWith {};
@@ -42,7 +42,7 @@ private _intercomAction = [
             if (!_intercomAvailable) then {
                 _intercomAvailable = [_target, acre_player, _forEachIndex] call FUNC(isInLimitedPosition);
             };
-            if (_intercomAvailable) exitWith{};
+            if (_intercomAvailable) exitWith {};
         } forEach _intercomNames;
         _intercomAvailable
     },

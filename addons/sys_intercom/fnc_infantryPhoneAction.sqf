@@ -76,8 +76,7 @@ private _infantryPhoneSpeakerAction = [
         private _intercomAvailable = false;
         // Find if at least one intercom is available
         {
-            _intercomAvailable = [_target, acre_player, _forEachIndex] call FUNC(isInfantryPhoneSpeakerAvailable);
-            if (_intercomAvailable) exitWith{};
+            if ([_target, acre_player, _forEachIndex] call FUNC(isInfantryPhoneSpeakerAvailable)) exitWith {true};
         } forEach _intercomNames;
         _intercomAvailable
     },//{_this call FUNC(isInfantryPhoneSpeakerAvailable)},

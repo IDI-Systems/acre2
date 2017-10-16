@@ -32,13 +32,13 @@ switch (_connectionStatus) do {
     case INTERCOM_DISCONNECTED: {
         if (_unit in _intercomUnits) then {
             // Player is still connected, make it disconnect since the seat has no active intercom connection
-            _intercomUnits = _intercomUnits - [_unit];
+            _intercomUnits deleteAt (_intercomUnits find _unit);
             _changes = true;
             [format ["Disconnected from %1", (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
         };
     };
     case INTERCOM_CONNECTED: {
-        if (!(_unit in _intercomUnits)) then {
+        if !(_unit in _intercomUnits) then {
             // Player is still connected, make it disconnect since the seat has no active intercom connection
             _intercomUnits pushBackUnique _unit;
             _changes = true;

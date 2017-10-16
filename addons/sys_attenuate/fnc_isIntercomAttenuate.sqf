@@ -19,25 +19,8 @@ params ["_unit"];
 
 private _ret = false;
 
-// Get the vehicle
-private _vehicle = vehicle _unit;
-
-// The player is not inside a vehicle. Check if it is using the intercom network externally
-if (_vehicle == _unit) then {
-    private _vehicleInfantryPhone = _unit getVariable [QEGVAR(sys_intercom,vehicleInfantryPhone), [objNull, objNull]] select 0;
-
-    // Return false if the unit is not using the infantry phone
-    if (isNull _vehicleInfantryPhone) exitWith {false};
-
-    // Unit is using the infantry phone
-    _vehicle = _vehicleInfantryPhone;
-};
-
 {
-    if (_unit in _x) then {
-        _ret = true;
-    };
-    if (_ret) exitWith {};
+    if (_unit in _x) exitWith { _ret =  true };
 } forEach ACRE_PLAYER_INTERCOM;
 
 _ret

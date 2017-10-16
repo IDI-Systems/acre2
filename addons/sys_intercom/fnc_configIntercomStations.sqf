@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Configures the initial intercom connectivity (disconnected/connected) for all allowed seats. *
+ * Configures the initial intercom connectivity (disconnected/connected) for all allowed seats.
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
@@ -26,10 +26,9 @@ private _allowedPositions = _vehicle getVariable[QGVAR(allowedPositions), []];
 private _initialConfiguration = +(_vehicle getVariable[QGVAR(connectByDefault), []]);
 
 {
-    private _pos = _x;
     {
         _intercomPos pushBackUnique _x;
-    } forEach _pos;
+    } forEach _x; // position
 } forEach _allowedPositions;
 
 {
@@ -37,7 +36,7 @@ private _initialConfiguration = +(_vehicle getVariable[QGVAR(connectByDefault), 
     private _temp = [];
     private _pos = _x;
     {
-        if (_pos  in (_allowedPositions select _forEachIndex)) then {
+        if (_pos in (_allowedPositions select _forEachIndex)) then {
             _temp pushBack _x;
         } else {
             _temp pushBack 0;

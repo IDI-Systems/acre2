@@ -23,7 +23,7 @@
 params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED], ["_givingUnit", objNull, [objNull]]];
 
 private _intercomName = (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork;
-private _intercomText = "(" + _intercomName + ")";
+private _intercomText = format ["( %1 )", _intercomName];
 
 switch (_action) do {
     case 0: {

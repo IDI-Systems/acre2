@@ -26,7 +26,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     private _isInLimitedPosition = [_vehicle, _unit, _i] call FUNC(isInLimitedPosition);
 
     // If switching from a limited connection to a non-limited seat
-    if (_isUsingLimitedPosition && !_isInLimitedPosition) then {
+    if (_isUsingLimitedPosition && {!_isInLimitedPosition}) then {
         private _numLimitedPositions = (_vehicle getVariable [QGVAR(numLimitedPositions), []]);
         private _num = _numLimitedPositions select _i;
 

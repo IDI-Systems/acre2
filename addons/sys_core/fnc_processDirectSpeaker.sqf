@@ -35,7 +35,7 @@ if (_id in ACRE_SPECTATORS_LIST && ACRE_IS_SPECTATOR) then {
 
 private _listenerPos = ACRE_LISTENER_POS;
 private _listenerDir = ACRE_LISTENER_DIR;
-if (_bothSpectating || _isIntercomAttenuate) then {
+if (_bothSpectating || {_isIntercomAttenuate}) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
@@ -43,7 +43,7 @@ if (_bothSpectating || _isIntercomAttenuate) then {
     _emitterDir = eyeDirection _unit;
 };
 
-if (ACRE_TEST_OCCLUSION && !_bothSpectating && !_isIntercomAttenuate) then {
+if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
     private _args = [_emitterPos, _listenerPos, _unit];
     // acre_player sideChat format["args: %1", _args];
     // _startTime = diag_tickTime;

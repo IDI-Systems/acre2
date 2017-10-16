@@ -32,7 +32,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     // Check if the seat configuration. If the seat has an active intercom connection, connect automatically to it. Disconnect otherwise.
     private _intercomUnits = +(_unitsIntercom select _i);
 
-    if (_player == _unitInfantryPhone && _infantryPhoneNetwork == _i) then {
+    if (_player == _unitInfantryPhone && {_infantryPhoneNetwork == _i}) then {
         (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
         _infantryPhonePosition = _vehicle modelToWorld _infantryPhonePosition;
         private _playerPosition = ASLToAGL (getPosASL _player);

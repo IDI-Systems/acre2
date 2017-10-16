@@ -40,7 +40,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     private _availabeIntercomPositions = [];
 
     // Check if the entry in allowed positions is correct
-    if (count _allowedPositions == 0) then {
+    if (_allowedPositions isEqualTo []) then {
         WARNING_2("Vehicle type %1 has no entry for allowed positions array. This is not supported. Defaulting to crew for intercom network %2.",_type,_name);
 
         // Use Standard configuration
@@ -65,7 +65,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
 
     // Add limited positions. Positions in which non-intercom members can communicate temporarily
     private _limitedIntercomPositions = [_vehicle, _limitedPositions] call EFUNC(sys_core,processConfigArray);
-    if (count _limitedIntercomPositions != 0 && _numLimPositions == 0) then {
+    if (!(_limitedIntercomPositions isEqualto []) && {_numLimPositions isEqualTo []}) then {
         //_limitedIntercomPositions = [];
         WARNING_2("Vehicle type %1 has limited positions defined but no actual limit of simultaneous connections. Ignoring limited positions for intercom network %2",_vehicle, _name);
     };
@@ -77,14 +77,14 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
         if (_x in _availabeIntercomPositions) then {
             _availabeIntercomPositions = _availabeIntercomPositions - [_x];
         } else {
-            // This could be a FFV turret
+            // This could be an FFV turret
             _exceptionsIntercomPositions pushBackUnique _x;
         };
     } forEach _temp;
 
     // Check that limitied positions are not defined in available positions
     {
-
+        // TODO: Implement check
     } forEach _limitedIntercomPositions;
 
     _intercomNames pushBack _name;

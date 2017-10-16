@@ -30,7 +30,7 @@ private _infantryPhoneCustomRinging = getArray (configFile >> "CfgVehicles" >> _
 private _configHelper = {
     params ["_type", "_configArray", "_configEntry"];
 
-    if (count _configArray ==  0) then {
+    if (_configArray isEqualTo []) then {
         WARNING_2("No intercom networks specified in %1 for vehicle type %2. Assuming all intercoms can be reached with the infantry phone",_type);
         {
             _configArray pushBack _x;

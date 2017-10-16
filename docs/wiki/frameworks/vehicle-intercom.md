@@ -8,7 +8,7 @@ Both features are currently supported only for vanilla classes and their childre
 
 ## Vehicle intercom
 
-Vehicle intercom is the system where units in a vehicle can easily communicate among each other without noise disturbances. In ACRE several intercoms can coexist in a vehicle.
+Vehicle intercom is the system where units in a vehicle can easily communicate among each other without noise disturbances. In ACRE2 several intercoms can coexist in a vehicle.
 
 By default, intercom is enabled for the following classes and their children:
 

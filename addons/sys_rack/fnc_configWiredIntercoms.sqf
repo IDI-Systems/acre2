@@ -24,7 +24,7 @@ private _intercoms = getArray (_rack >> "intercom");
 private _wiredIntercoms = [];
 
 // Set by default to have access to all intercom networks if none was specified
-if (count _intercoms ==  0) then {
+if (_intercoms isEqualTo []) then {
     {
         _wiredIntercoms pushBack _x;
     } forEach (_vehicle getVariable[QEGVAR(sys_intercom,intercomNames), []]);
@@ -38,7 +38,7 @@ if (count _intercoms ==  0) then {
             if (_int in _configuredIntercoms) then {
                 _wiredIntercoms pushBack _x;
             } else {
-                WARNING_3("Vehicle type %1 does not have the intercom %2 but the rack %3 can have access to its network. Not adding it.",_type,_int_rack)
+                WARNING_3("Vehicle type %1 does not have the intercom %2 but the rack %3 can have access to its network. Not adding it.",_type,_int,_rack)
             };
         } forEach _intercoms;
     };

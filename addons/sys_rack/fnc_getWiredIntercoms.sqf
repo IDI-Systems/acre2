@@ -19,6 +19,6 @@ params [["_rackId",""]];
 
 private _intercoms = GET_STATE_RACK(_rackId,"wiredIntercoms");
 
-if (isNil "_intercoms") then {_intercoms = [];};
+if (isNil "_intercoms") exitWith {[]};
 
 _intercoms

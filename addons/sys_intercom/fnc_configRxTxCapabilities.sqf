@@ -37,7 +37,7 @@ private _rackRxTxConfig = [];
         };
     } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
 
-    if (count _intercomPos > 0) then {
+    if !(_intercomPos isEqualTo 0) then {
         private _rackFunctionality = [];
         {
             _rackfunctionality pushBackUnique [_x, RACK_NO_MONITOR];

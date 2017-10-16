@@ -2,6 +2,7 @@
 title: Vehicle Racks
 ---
 
+{% include note.html content="Development Build only!" %}
 {% include important.html content="API still WIP. May change in the future!" %}
 
 Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
@@ -36,7 +37,7 @@ class CfgVehicles {
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented.
                 mountedRadio = "";                    // Predefined mounted radio.
                 isRadioRemovable = 1;                 // Radio can be removed.
-                intercom[] = {};                      // Radio not wired to any intercom. All units in intercom can receive/send transmittions (ACE interaction menu) but they cannot manipulate the radio (GUI interface).
+                intercom[] = {};                      // Radio not wired to any intercom. All units in intercom can receive/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface).
             };
             class Rack_2 {
                 name = "Dashboard Lower";             // Name displayed in the interaction menu
@@ -46,7 +47,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";        // Predefined mounted radio.
                 isRadioRemovable = 0;                 // Radio cannot be removed.
-                intercom[] = {};                      // Radio not wired to any intercom. All units in intercom can receive/send transmittions (ACE interaction menu) but they cannot manipulate the radio (GUI interface).
+                intercom[] = {};                      // Radio not wired to any intercom. All units in intercom can receive/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface).
             };
         };
     };
@@ -70,7 +71,7 @@ class CfgVehicles {
                defaultComponents[] = {};
                mountedRadio = "ACRE_PRC117F";                 // Predefined mounted radio
                isRadioRemovable = 0;
-               intercom[] = {"intercom_1"};                   // All units in intercom can receive/send transmittions (ACE interaction menu) but they cannot manipulate the radio (GUI interface).
+               intercom[] = {"intercom_1"};                   // All units in intercom can receive/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface).
            };
        }
     };
@@ -94,7 +95,7 @@ class CfgVehicles {
                defaultComponents[] = {};
                mountedRadio = "ACRE_PRC117F";                 // Predefined mounted radio
                isRadioRemovable = 0;
-               intercom[] = {"intercom_1"};                   // All units in intercom will be able to hear/send transmittions (ACE interaction menu) but they cannot manipulate the radio (GUI interface).
+               intercom[] = {"intercom_1"};                   // All units in intercom will be able to hear/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface).
            };
        }
     };
@@ -171,7 +172,7 @@ class CfgVehicles {
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented.
                 mountedRadio = "";                    // Predefined mounted radio.
                 isRadioRemovable = 1;                 // Radio can be removed.
-                intercom[] = {};                      // No access to intercoms. All units in intercom will be able to hear/send transmittions (ACE interaction menu) but they cannot manipulate the radio (GUI interface).
+                intercom[] = {};                      // No access to intercoms. All units in intercom will be able to hear/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface).
             };
             class Rack_2 {
                 name = "Dashboard Upper";             // Name displayed in the interaction menu.
@@ -181,7 +182,7 @@ class CfgVehicles {
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented.
                 mountedRadio = "";                    // Predefined mounted radio.
                 isRadioRemovable = 1;                 // Radio can be removed.
-                intercom[] = {};                      // No access to intercoms. All units in intercom will be able to hear/send transmittions (ACE interaction menu) but they cannot manipulate the radio (GUI interface).
+                intercom[] = {};                      // No access to intercoms. All units in intercom will be able to hear/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface).
             };
             class Rack_3 {
                 name = "Dashboard Lower";             // Name displayed in the interaction menu
@@ -191,7 +192,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";        // Predefined mounted radio.
                 isRadioRemovable = 0;                 // Radio cannot be removed.
-                intercom[] = {"intercom_1", "intercom_2"}; // All units in intercom will be able to hear/send transmittions (ACE interaction menu) but they cannot manipulate the radio (GUI interface).
+                intercom[] = {"intercom_1", "intercom_2"}; // All units in intercom will be able to hear/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface).
             };
         };
     };

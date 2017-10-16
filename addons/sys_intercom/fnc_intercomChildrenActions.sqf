@@ -69,7 +69,7 @@ private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames)
                 //USES_VARIABLES ["_target", "_player"];
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
-                ([_target, _player, _intercomNetwork] call FUNC(isInIntercom))
+                [_target, _player, _intercomNetwork] call FUNC(isInIntercom)
             },
             {},
             _forEachIndex

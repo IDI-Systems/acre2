@@ -8,7 +8,7 @@
  * 2: Intercom network <NUMBER>
  *
  * Return Value:
- * Unit is in the given intercom network
+ * Unit is in the given intercom network <BOOL>
  *
  * Example:
  * [cursorTarget, acre_player, 0] call acre_sys_intercom_fnc_isInIntercom
@@ -21,7 +21,7 @@ params ["_vehicle", "_unit", "_intercomNetwork"];
 
 private _unitsIntercom = _vehicle getVariable [QGVAR(unitsIntercom), []];
 
-if (count _unitsIntercom == 0) then {
+if (_unitsIntercom isEqualTo []) then {
     false
 } else {
     _unit in ((_vehicle getVariable [QGVAR(unitsIntercom), []]) select _intercomNetwork);

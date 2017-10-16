@@ -21,11 +21,11 @@ private _classname = typeOf _vehicle;
 
 private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms";
 
-if (count _intercoms != 0) then {
+if !(_intercoms isEqualTo []) then {
     [_vehicle] call FUNC(configIntercom);
     [_vehicle] call FUNC(configIntercomStations);
 
-    if (hasInterface && (isClass (configFile >> "CfgPatches" >> "ace_interact_menu"))) then {
+    if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")}) then {
         [_vehicle] call FUNC(intercomAction);
     };
 
@@ -33,7 +33,7 @@ if (count _intercoms != 0) then {
     if (getNumber (configFile >> "CfgVehicles" >> _classname >> "acre_hasInfantryPhone") == 1) then {
         [_vehicle] call FUNC(configInfantryPhone);
         // UAV units should not have infantry phones
-        if (hasInterface && !(unitIsUAV _vehicle)) then {
+        if (hasInterface && {!(unitIsUAV _vehicle)}) then {
             [_vehicle] call FUNC(infantryPhoneAction);
         };
     };
