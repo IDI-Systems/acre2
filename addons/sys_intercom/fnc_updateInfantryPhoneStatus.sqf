@@ -38,7 +38,7 @@ switch (_action) do {
 
         ACRE_PLAYER_INTERCOM = [];
         [format [localize LSTRING(infantryPhoneDisconnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-        [GVAR(infantryPhonePFH)] call CBA_fnc_removePerFrameHandler;
+        [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
     };
     case 1: {
         // Start using the intercom externally
@@ -48,12 +48,12 @@ switch (_action) do {
         [_vehicle, _unit, _intercomNetwork, INTERCOM_CONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
 
         [format [localize LSTRING(infantryPhoneConnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-        GVAR(infantryPhonePFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
+        GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
     case 2: {
         // Give the intercom to another unit
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
-        [GVAR(infantryPhonePFH)] call CBA_fnc_removePerFrameHandler;
+        [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
         [_vehicle, _unit, _intercomNetwork, INTERCOM_DISCONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
 
         [QGVAR(giveInfantryPhone), ["_vehicle", "_unit", 1, _intercomNetwork], _unit] call CBA_fnc_targetEvent;

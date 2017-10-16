@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Handles entering a vehicle
+ * Handles entering a vehicle.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -22,18 +22,16 @@ if (_unit != _vehicle) then {
     _unit setVariable [QGVAR(intercomVehicle), _vehicle];
 
     // Configure the array for handling if a player is in a limited intercom position or not.
-    private _usingLimitedPosition = [];
-    {
-        _usingLimitedPosition pushBack false;
-    } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
+    private _usingLimitedPosition = (_vehicle getVariable [QGVAR(intercomNames), []]) apply {false};
+
     _unit setVariable [QGVAR(usingLimitedPosition), _usingLimitedPosition];
 
     {
         [_vehicle, _unit, _forEachIndex] call FUNC(seatSwitched);
     } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
-    GVAR(crewPFH) = [DFUNC(intercomPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
+    GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
 } else {
-    [GVAR(crewPFH)] call CBA_fnc_removePerFrameHandler;
+    [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
     private _intercomVehicle = _unit getVariable [QGVAR(intercomVehicle), objNull];
     private _unitsIntercom = _intercomVehicle getVariable [QGVAR(unitsIntercom) , []];
     private _disconnected = false;

@@ -32,9 +32,7 @@ private _configHelper = {
 
     if (_configArray isEqualTo []) then {
         WARNING_2("No intercom networks specified in %1 for vehicle type %2. Assuming all intercoms can be reached with the infantry phone",_type);
-        {
-            _configArray pushBack _x;
-        } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
+        _configArray append (_vehicle getVariable [QGVAR(intercomNames), []]);
     } else {
         // Check for a valid configuration
         if ("all" in _configArray) then {
@@ -42,18 +40,18 @@ private _configHelper = {
                 WARNING_2("Vehicle type %1 has %2 entry with the all wildcard in combination with other entries. All intercoms will be made available",_type,_configEntry);
             };
 
-            {
-                _configArray pushBack _x;
-            } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
+            _configArray append (_vehicle getVariable [QGVAR(intercomNames), []]);
         } else {
             private _found = false;
             private _intercom = _vehicle getVariable [QGVAR(intercomNames), []];
             {
-                if (_x in _intercom) exitWith {_found = true};
+                if !(_x in _intercom) then {
+                    WARNING_3("Intercom %1 in %2 for vehicle type %3 is not found as a valid intercom identifier",_x,_configEntry,_type);
+                } else {
+                    _found = true;
+                };
+                if (_found) exitWith {};
             } forEach _configArray;
-            if (!_found) then {
-                WARNING_3("Intercom %1 in %2 for vehicle type %3 is not found as a valid intercom identifier",_x,_type);
-            };
         };
     };
 

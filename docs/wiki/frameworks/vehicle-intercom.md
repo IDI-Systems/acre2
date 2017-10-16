@@ -32,16 +32,16 @@ class CfgVehicles {
             class Intercom_1 {                             // Each entry defines a network
                 name = "intercom_1";                       // This is a unique identifier for the network
                 displayName = "Crew intercom";             // Name of the intercom network displayed to the players
-                // Seats with stations configured that have intercom acces. In this case, units in commander, driver, gunner and turret (excluding FFV) have access to this intercom.
-                // If left empty it has the same effect.
+                // Seats with stations configured that have intercom acces. In this case, units in commander, driver, gunner and turret (excluding FFV) have access to this intercom
+                // If left empty it has the same effect
                 allowedPositions[] = {"crew"};
-                // In this case the commander turret does not have access to crew intercom (unit is "turned out"). This can be useful for historical vehicles.
+                // In this case the commander turret does not have access to crew intercom (unit is "turned out"). This can be useful for historical vehicles
                 disabledPositions[] = {{"Turret", {0,0}}};
-                // Despite not having regular access to the network, units in cargo positions can have limited connections to communicate with the crew.
+                // Despite not having regular access to the network, units in cargo positions can have limited connections to communicate with the crew
                 limitedPositions[] = {{"cargo", "all"}};
-                // This is the number of simultaneous connections that units defined in the previous array can have.
+                // This is the number of simultaneous connections that units defined in the previous array can have
                 numLimitedPositions = 1;
-                // The intercom initial configuration is enabled upon entering a vehicle.
+                // The intercom initial configuration is enabled upon entering a vehicle
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
@@ -51,7 +51,7 @@ class CfgVehicles {
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
                 numLimitedPositions = 0;
-                // The intercom initial configuration is disabled upon entering a vehicle.
+                // The intercom initial configuration is disabled upon entering a vehicle
                 connectedByDefault = 0;
             };
         };
@@ -71,9 +71,9 @@ class CfgVehicles {
             class Intercom_1 {                             // Each entry defines a network
                 name = "intercom_1";                       // This is a unique identifier for the network
                 displayName = "Crew intercom";             // Name of the intercom network displayed to the players
-                // "all" is a wildcard that selects, in this case, all turrets (not including ffv).
+                // "all" is a wildcard that selects, in this case, all turrets (not including ffv)
                 allowedPositions[] = {"driver", "commander", {"turret", "all"}};
-                // Commander FFV turret and turret positions [1] and [2] do not have access to crew intercom.
+                // Commander FFV turret and turret positions [1] and [2] do not have access to crew intercom
                 disabledPositions[] = {{"Turret", {0,0}, {1}, {2}}};
                 // Noone else can have access to this intercom network
                 limitedPositions[] = {};
@@ -83,19 +83,19 @@ class CfgVehicles {
             class Intercom_2: Intercom 1 {
                 name = "intercom_2";
                 displayName = "Passenger intercom";
-                // Units in crew and in cargo positions have access to the passenger intercom.
+                // Units in crew and in cargo positions have access to the passenger intercom
                 allowedPositions[] = {"crew", {"cargo", all}};
-                // Excludes units from accessing the passenger intercom. In this example, gunner, cargo index 1 and all FFV turrets do not have access to passenger intercom.
+                // Excludes units from accessing the passenger intercom. In this example, gunner, cargo index 1 and all FFV turrets do not have access to passenger intercom
                 disabledPositions[] = {"gunner", {"cargo", 1}, {"ffv", "all"}};
                 connectedByDefault = 0;
             };
             class Intercom_3: Intercom 2 {
                 name = "intercom_3";
                 displayName = "Cargo intercom";
-                // Units in cargo positions 1 and 2 and all FFV turrets have access to the passenger intercom.
+                // Units in cargo positions 1 and 2 and all FFV turrets have access to the passenger intercom
                 allowedPositions[] = {{"cargo", 1, 2}, {"ffv", "all"}};
                 // Excludes unit in FFV turret [4] to access from accessing passenger intercom, as well as cargo index 1 and turret [1]
-                // when they are turned out.
+                // when they are turned out
                 disabledPositions[] = {{"ffv", [4]}, {"turnedOut", 1, [1]}};
             }
         };
@@ -120,12 +120,12 @@ class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
         acre_hasInfantryPhone = 1; // 1 - enabled, 0 - disabled
-        acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available.
-        acre_infantryPhoneCustomRinging[] = {}; // An array used in order to override the default sound for the ringing functionality.
-        // List of intercom names (intercom_1, intercom_2) or "all" in order to specify which intercom networks the phone can connect to.
+        acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available
+        acre_infantryPhoneCustomRinging[] = {}; // An array used in order to override the default sound for the ringing functionality
+        // List of intercom names (intercom_1, intercom_2) or "all" in order to specify which intercom networks the phone can connect to
         acre_infantryPhoneIntercom[] = {"all"};
         acre_infantryPhoneControlActions[] = {"intercom_1"}; // Only those units in "intercom_1" can have access to ringing functionality
-        // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched.
+        // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched
         acre_eventInfantryPhone = QFUNC(noApiFunction);
     };
 };
@@ -148,11 +148,11 @@ class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
         acre_hasInfantryPhone = 1; // 1 - enabled, 0 - disabled
-        acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available.
-        acre_infantryPhoneCustomRinging[] = "A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1.
+        acre_infantryPhoneDisableRinging = 0;   // If set to 1, the ringing funtionality will not be available
+        acre_infantryPhoneCustomRinging[] = "A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1
         acre_infantryPhoneIntercom[] = {"all"};
         acre_infantryPhoneControlActions[] = {"intercom_1"}; // Only those units in "intercom_1" can have access to ringing functionality
-        // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched.
+        // Here a custom function can be defined that is called when the infantry phone is picked up, put back, given to another unit or the intercom network is switched
         acre_eventInfantryPhone = QFUNC(noApiFunction);
     };
 };
@@ -249,8 +249,8 @@ class CfgVehicles {
         acre_infantryPhoneIntercom[] = {"all"};
         acre_infantryPhoneControlActions[] = {"intercom_1"};
         acre_infantryPhonePosition[] = {-1.1, -4.86, -0.82};
-        acre_infantryPhoneDisableRinging = 0; // If set to 1, the ringing funtionality will not be available.
-        acre_infantryPhoneCustomRinging[] = {"A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1.
+        acre_infantryPhoneDisableRinging = 0; // If set to 1, the ringing funtionality will not be available
+        acre_infantryPhoneCustomRinging[] = {"A3\Sounds_F\sfx\alarm_independent.wss", 5.0, 1.0, 1.0, 50}; // The alarm sound will be played every 5 seconds and will be audible until 50m. Volume and sound pitch are both set to 1
     };
 };
 ```
