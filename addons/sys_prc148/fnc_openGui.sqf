@@ -24,7 +24,7 @@ if (!([_radioId] call EFUNC(sys_radio,canOpenRadio))) exitWith { false };
 disableSerialization;
 GVAR(currentRadioId) = _radioId;
 createDialog "PRC148_RadioDialog";
-[_radioId, "setState", ["isGuiOpened", true]] call EFUNC(sys_data,dataEvent);
+[_radioId, "setState", ["radioGuiOpened", true]] call EFUNC(sys_data,dataEvent);
 
 GVAR(PFHId) = ADDPFH(DFUNC(PFH), 0.33, []);
 

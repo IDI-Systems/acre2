@@ -34,7 +34,7 @@ if (_target == _owner) then {
     [QGVAR(stopUsingRadioLocal), [_message, _radioId], _owner] call CBA_fnc_targetEvent;
 
     // Give radio back to the owner
-    [_radioId, "setState", ["isUsedExternally", [false, objNull]]] call EFUNC(sys_data,dataEvent);
+    [_radioId, "setState", ["radioUsedExternally", [false, objNull]]] call EFUNC(sys_data,dataEvent);
 } else {
     // Show a hint to the actual owner that the radio was given to another player
     private _message = format [localize LSTRING(hintGiveOwner), name ([_radioId] call FUNC(getExternalRadioUser)), _displayName, name _target];

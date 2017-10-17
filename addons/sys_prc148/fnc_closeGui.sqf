@@ -17,7 +17,7 @@
 #include "script_component.hpp"
 
 params ["_radioId", "", "", "", ""];
-[_radioId, "setState", ["isGuiOpened", false]] call EFUNC(sys_data,dataEvent);
+[_radioId, "setState", ["radioGuiOpened", false]] call EFUNC(sys_data,dataEvent);
 
 [GVAR(PFHId)] call CBA_fnc_removePerFrameHandler;
 GVAR(currentRadioId) = nil;

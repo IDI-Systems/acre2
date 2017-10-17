@@ -63,12 +63,17 @@
             <Japanese>TeamSpeak チャンネル切り替え</Japanese>
             <Chinese>Teamspeak頻道切換</Chinese>
             <Chinesesimp>Teamspeak频道切换</Chinesesimp>
+            <Korean>팀스피크 채널 변경</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
             <Japanese>TeamSpeak チャンネル名</Japanese>
             <Chinese>Teamspeak頻道名稱</Chinese>
             <Chinesesimp>Teamspeak频道名称</Chinesesimp>
+            <Korean>팀스피크 채널 이름</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
+            <English>TeamSpeak Channel Password</English>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -314,7 +319,7 @@
             <French>Radios Full Duplex</French>
             <German>Vollduplexbetrieb</German>
             <Czech>Režim plného duplexu vysílaček</Czech>
-            <Korean>전이중 무전기</Korean>
+            <Korean>풀 양방향 통신</Korean>
             <Polish>Ustaw pełny duplex</Polish>
             <Russian>Полный дуплекс раций</Russian>
             <Chinese>全雙工無線電台</Chinese>
@@ -340,7 +345,7 @@
             <French>Coefficient d'atténuation du terrain</French>
             <German>Topografie-Signalverlustskoeffizient</German>
             <Czech>Koeficient ztráty signálu způsobené terénem</Czech>
-            <Korean>지형 손실 계수</Korean>
+            <Korean>지형 방해 계수</Korean>
             <Polish>Wpływ ukształtowania terenu</Polish>
             <Russian>Коэффициент потерь от местности</Russian>
             <Chinese>地形干擾係數</Chinese>
@@ -408,6 +413,7 @@
             <Russian>Наушники были подняты</Russian>
             <Chinese>戴上耳機</Chinese>
             <Chinesesimp>戴上耳机</Chinesesimp>
+            <Korean>헤드셋 착용</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
@@ -416,6 +422,7 @@
             <Russian>Наушники были опущены</Russian>
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
+            <Korean>헤드셋 벗기</Korean>
         </Key>
     </Package>
 </Project>

@@ -11,7 +11,7 @@ class CfgAcreComponents {
                             {"Radio", ACRE_CONNECTOR_CONN_32PIN}
                         };
         defaultComponents[] = {
-                                /*{0, "ACRE_120CM_VHF_BNC"} no Antenna for now to avoid extr computation */
+                                {0, "ACRE_270CM_VEH_BNC"}
                             };
         class Interfaces {
             class CfgAcreDataInterface {
@@ -48,7 +48,7 @@ class CfgAcreComponents {
                             {"Control/Radio", ACRE_CONNECTOR_CONN_26PIN}
                         };
         defaultComponents[] = {
-                                /*{1, "ACRE_120CM_VHF_BNC"} no Antenna for now to avoid extr computation */
+                                {1, "ACRE_270CM_VEH_BNC"}
                             };
         class Interfaces {
             class CfgAcreDataInterface {
@@ -83,7 +83,7 @@ class CfgAcreComponents {
                             {"Control/Radio", ACRE_CONNECTOR_CONN_18PIN}
                         };
         defaultComponents[] = {
-                                /*{0, "ACRE_120CM_VHF_BNC"} no Antenna for now to avoid extr computation */
+                                {0, "ACRE_270CM_VEH_BNC"}
                             };
         class Interfaces {
             class CfgAcreDataInterface {
@@ -118,7 +118,7 @@ class CfgAcreComponents {
                             {"Control/Radio", ACRE_CONNECTOR_CONN_57PIN}
                         };
         defaultComponents[] = {
-                                /*{0, "ACRE_120CM_VHF_BNC"} no Antenna for now to avoid extr computation */
+                                {0, "ACRE_FA80_BNC"}
                             };
         class Interfaces {
             class CfgAcreDataInterface {
