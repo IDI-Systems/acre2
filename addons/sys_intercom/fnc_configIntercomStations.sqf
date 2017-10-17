@@ -33,20 +33,20 @@ private _initialConfiguration = +(_vehicle getVariable[QGVAR(connectByDefault), 
 
 {
     // Make a hard copy of the array otherwise when modifying the array, all items in the parent array will be changed
-    private _temp = [];
+    private _stationConnected = [];
     private _pos = _x;
     {
         if (_pos in (_allowedPositions select _forEachIndex)) then {
-            _temp pushBack _x;
+            _stationConnected pushBack _x;
         } else {
-            _temp pushBack 0;
+            _stationConnected pushBack 0;
         };
 
     } forEach _initialConfiguration;
 
-    _intercomStatus pushBackUnique [_x, _temp, INTERCOM_DEFAULT_VOLUME];
+    _intercomStatus pushBackUnique [_x, _stationConnected, INTERCOM_DEFAULT_VOLUME];
 
-    _temp = []; // Reset the array
+    _stationConnected = []; // Reset the array
 } forEach _intercomPos;
 
 _vehicle setVariable [QGVAR(intercomStatus), _intercomStatus, true];

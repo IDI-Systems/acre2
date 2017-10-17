@@ -25,9 +25,7 @@ private _wiredIntercoms = [];
 
 // Set by default to have access to all intercom networks if none was specified
 if (_intercoms isEqualTo []) then {
-    {
-        _wiredIntercoms pushBack _x;
-    } forEach (_vehicle getVariable[QEGVAR(sys_intercom,intercomNames), []]);
+    _wiredIntercoms append (_vehicle getVariable[QEGVAR(sys_intercom,intercomNames), []]);
 } else {
     if ("none" in _intercoms) then {
         _wiredIntercoms = [];

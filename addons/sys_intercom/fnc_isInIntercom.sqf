@@ -19,10 +19,4 @@
 
 params ["_vehicle", "_unit", "_intercomNetwork"];
 
-private _unitsIntercom = _vehicle getVariable [QGVAR(unitsIntercom), []];
-
-if (_unitsIntercom isEqualTo []) then {
-    false
-} else {
-    _unit in ((_vehicle getVariable [QGVAR(unitsIntercom), []]) select _intercomNetwork);
-};
+_unit in ((_vehicle getVariable [QGVAR(unitsIntercom), []]) param [_intercomNetwork,[]])

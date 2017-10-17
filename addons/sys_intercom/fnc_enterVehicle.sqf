@@ -36,10 +36,10 @@ if (_unit != _vehicle) then {
     private _unitsIntercom = _intercomVehicle getVariable [QGVAR(unitsIntercom) , []];
     private _disconnected = false;
     {
-        private _temp = +_x;
-        if (_unit in _temp) then {
-            _temp deleteAt (_temp find _unit);
-            _unitsIntercom set [_forEachIndex, _temp];
+        private _unitsOnIntercomX = +_x;
+        if (_unit in _unitsOnIntercomX) then {
+            _unitsOnIntercomX deleteAt (_unitsOnIntercomX find _unit);
+            _unitsIntercom set [_forEachIndex, _unitsOnIntercomX];
             _disconnected = true;
             private _usingLimitedPosition = _unit getVariable [QGVAR(usingLimitedPosition), []];
             if (_usingLimitedPosition select _forEachIndex) then {

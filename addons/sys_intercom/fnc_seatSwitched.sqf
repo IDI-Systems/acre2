@@ -19,9 +19,9 @@
 params ["_vehicle", "_unit"];
 
 private _intercoms = _vehicle getVariable [QGVAR(intercomNames), []];
+private _usingLimitedPosition = _unit getVariable [QGVAR(usingLimitedPosition), []];
 
 for "_i" from 0 to ((count _intercoms) - 1) do {
-    private _usingLimitedPosition = _unit getVariable [QGVAR(usingLimitedPosition), []];
     private _isUsingLimitedPosition = _usingLimitedPosition select _i;
     private _isInLimitedPosition = [_vehicle, _unit, _i] call FUNC(isInLimitedPosition);
 
