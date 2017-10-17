@@ -19,7 +19,8 @@ params ["_languageKey"];
 
 private _ret = false;
 {
-    if ((_x select 0) == _languageKey) exitWith {
+    _x params ["_language"];
+    if (_language isEqualType _languageKey && {_language == _languageKey}) exitWith {
         ACRE_CURRENT_LANGUAGE_ID = _forEachIndex;
         _ret = true;
     };
