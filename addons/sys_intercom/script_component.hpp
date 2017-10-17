@@ -32,5 +32,3 @@
 #define INFANTRY_PHONE_VOLUME 3.16
 #define INFANTRY_PHONE_SOUNDPITCH 1
 #define INFANTRY_PHONE_MAX_DISTANCE 75
-
-#define CREW_STRING "str_a3_rscdisplaygarage_tab_crew"
