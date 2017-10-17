@@ -84,7 +84,10 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
 
     // Check that limitied positions are not defined in available positions
     {
-        // TODO: Implement check
+        if (_x in _availabeIntercomPositions) exitWith {
+            _limitedIntercomPositions = [];
+            WARNING_2("Vehicle type %1 has limited positions defined that overlap with allowed positions. Ignoring limited positions for intercom network %2",_vehicle,_name);
+        };
     } forEach _limitedIntercomPositions;
 
     _intercomNames pushBack _name;
