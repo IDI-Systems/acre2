@@ -39,9 +39,9 @@ if (_connected == INTERCOM_CONNECTED) then {
         _usingLimitedPosition set [_intercomNetwork, true];
         _unit setVariable [QGVAR(usingLimitedPosition), _usingLimitedPosition];
 
-        [format ["Connected to %1", (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [format [localize LSTRING(connectedTo), (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     } else {
-        ["Cannot connect to intercom. Maximum connections reached", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [localize LSTRING(maxConnections), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
 } else {
     _numLimitedPositions set [_intercomNetwork, _num + 1];
@@ -54,5 +54,5 @@ if (_connected == INTERCOM_CONNECTED) then {
     _usingLimitedPosition set [_intercomNetwork, false];
     _unit setVariable [QGVAR(usingLimitedPosition), _usingLimitedPosition];
 
-    [format ["Disconnected from %1", (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    [format [localize LSTRING(disconnectedFrom), (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
 };
