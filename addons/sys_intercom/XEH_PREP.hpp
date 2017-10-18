@@ -1,37 +1,35 @@
+// Intercom
+PREP(configIntercom);
+PREP(configIntercomStations);
+PREP(enterVehicle);
+PREP(getStationConnectionStatus);
+PREP(getStationVolume);
+PREP(initVehicleIntercom);
 PREP(intercomAction);
 PREP(intercomChildrenActions);
-PREP(intercomConfig);
+PREP(intercomPFH);
+PREP(isInIntercom);
 PREP(isIntercomAvailable);
+PREP(isInLimitedPosition);
 PREP(noApiFunction);
-PREP(vehicleCrewPFH);
-
-// Crew intercom
-PREP(crewIntercomConfig);
-PREP(isInCrewIntercom);
-PREP(updateCrewIntercomStatus);
+PREP(seatSwitched);
+PREP(setIntercomUnits);
+PREP(setLimitedConnectionStatus);
+PREP(setStationConnectionStatus);
+PREP(setStationVolume);
 
 // Infantry Phone
 PREP(checkInfantryPhoneAvailability);
 PREP(infantryPhoneAction);
-PREP(infantryPhoneConfig);
+PREP(configInfantryPhone);
 PREP(infantryPhoneRingingPFH);
 PREP(infantryPhoneSoundCall);
 PREP(infantryPhoneChildrenActions);
 PREP(isInfantryPhoneSpeakerAvailable);
 PREP(updateInfantryPhoneStatus);
 
-// Passenger intercom
-PREP(passengerIntercomConfig);
-PREP(isInPassengerIntercom);
-PREP(updatePassengerIntercomStatus);
-
 // Racks integration
 PREP(configRxTxCapabilities);
 PREP(getRxTxCapabilities);
 PREP(setRxTxCapabilities);
 
-PREP(configIntercomStatus);
-PREP(getIntercomConnectionStatus);
-PREP(getIntercomVolumeStatus);
-PREP(setIntercomConnectionStatus);
-PREP(setIntercomVolumeStatus);

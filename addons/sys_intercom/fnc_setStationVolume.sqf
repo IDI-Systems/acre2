@@ -4,13 +4,14 @@
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
- * 1: Unit to be checked <OBJECT>
+ * 1: Unit <OBJECT>
+ * 2: Volume [0...1] <NUMBER>
  *
  * Return Value:
  * None
  *
  * Example:
- * [vehicle acre_player, acre_player] call acre_sys_intercom_fnc_setIntercomVolumeStatus
+ * [vehicle acre_player, 0.7] call acre_sys_intercom_fnc_setStationVolume
  *
  * Public: No
  */

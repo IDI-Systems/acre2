@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -117,34 +117,23 @@
             <Chinesesimp>对讲机</Chinesesimp>
             <Korean>인터콤</Korean>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_passenger">
-            <English>Pax</English>
-            <German>Pax</German>
-            <Japanese>パックス</Japanese>
-            <Russian>Пассажирский интерком</Russian>
-            <Chinese>乘客對講機</Chinese>
-            <Chinesesimp>乘客对讲机</Chinesesimp>
-            <Korean>펙스</Korean>
+        <Key ID="STR_ACRE_sys_intercom_connectedTo">
+            <English>Connected to %1</English>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_crewIntercomDisconnected">
-            <English>Disconnected from Crew Intercom</English>
-            <German>Gegensprechen mit Besatzung beendet</German>
-            <Japanese>乗員インターコムから切断した</Japanese>
-            <Russian>Отключен от внутренней связи экипажа</Russian>
-            <Polish>Odłączony od interkomu</Polish>
-            <Chinese>已斷開聯繫機組員對講機</Chinese>
-            <Chinesesimp>已断开联系机组员对讲机</Chinesesimp>
-            <Korean>승무원 인터콤에서 연결해제</Korean>
+        <Key ID="STR_ACRE_sys_intercom_disconnectedFrom">
+            <English>Disconnected from %1</English>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_crewIntercomConnected">
-            <English>Connected to Crew Intercom</English>
-            <German>Gegensprechen mit Besatzung begonnen</German>
-            <Japanese>乗員インターコムに接続した</Japanese>
-            <Russian>Подключен к внутренней связи экипажа</Russian>
-            <Polish>Podłączony do interkomu</Polish>
-            <Chinese>已連接至機組員對講機</Chinese>
-            <Chinesesimp>已连接至机组员对讲机</Chinesesimp>
-            <Korean>승무원 인터콤으로 연결</Korean>
+        <Key ID="STR_ACRE_sys_intercom_systemDisconnected">
+            <English>Disconnected from intercom system</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_maxConnections">
+            <English>Cannot connect to intercom. Maximum connections reached</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_crewIntercom">
+            <English>Crew intercom</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
+            <English>Pax intercom</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_connect">
             <English>Connect %1</English>

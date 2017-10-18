@@ -31,7 +31,7 @@ private _processedArray = [];
                     private _crew = fullCrew [_vehicle, _role, true];
                     {
                         if (_role == toLower (_x select 1)) then {
-                            _processedArray pushBackUnique [_x];
+                            _processedArray pushBackUnique [_role];
                         };
                     } forEach _crew;
                 } forEach ["driver", "commander", "gunner"];
