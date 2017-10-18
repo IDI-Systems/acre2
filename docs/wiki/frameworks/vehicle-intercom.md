@@ -31,7 +31,6 @@ class CfgVehicles {
     class MyVehicle: ParentVehicle {
         class AcreIntercoms {
             class Intercom_1 {                             // Each entry defines a network
-                name = "intercom_1";                       // This is a unique identifier for the network
                 displayName = "Crew intercom";             // Name of the intercom network displayed to the players
                 // Seats with stations configured that have intercom acces. In this case, units in commander, driver, gunner and turret (excluding FFV) have access to this intercom
                 // If left empty it has the same effect
@@ -46,7 +45,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = "Pax intercom";
                 // Both crew and cargo positions have access to passenger intercom
                 allowedPositions[] = {"crew", {"cargo", "all"}};
@@ -70,7 +68,6 @@ class CfgVehicles {
     class MyVehicle: ParentVehicle {
         class AcreIntercoms {
             class Intercom_1 {                             // Each entry defines a network
-                name = "intercom_1";                       // This is a unique identifier for the network
                 displayName = "Crew intercom";             // Name of the intercom network displayed to the players
                 // "all" is a wildcard that selects, in this case, all turrets (not including ffv)
                 allowedPositions[] = {"driver", "commander", {"turret", "all"}};
@@ -82,7 +79,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom 1 {
-                name = "intercom_2";
                 displayName = "Passenger intercom";
                 // Units in crew and in cargo positions have access to the passenger intercom
                 allowedPositions[] = {"crew", {"cargo", all}};
@@ -91,7 +87,6 @@ class CfgVehicles {
                 connectedByDefault = 0;
             };
             class Intercom_3: Intercom 2 {
-                name = "intercom_3";
                 displayName = "Cargo intercom";
                 // Units in cargo positions 1 and 2 and all FFV turrets have access to the passenger intercom
                 allowedPositions[] = {{"cargo", 1, 2}, {"ffv", "all"}};
@@ -226,7 +221,6 @@ class CfgVehicles {
     class MyVehicle: ParentVehicle {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = "Crew intercom";
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {"driver", {"turnedout", "all"}};
@@ -235,7 +229,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom 1 {
-                name = "intercom_2";
                 displayName = "Passenger intercom";
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 disabledPositions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}, {"turnedout", 2, "driver", "gunner", [2]}};

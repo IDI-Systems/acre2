@@ -30,7 +30,7 @@ private _unitsIntercom = [];
 
 for "_i" from 0 to ((count _intercoms) - 1) do {
     private _x = _intercoms select _i;
-    private _name = toLower (getText (_x >> "name"));
+    private _name = toLower (configName _x);
     private _displayName = getText (_x >> "displayName");
     private _allowedPositions = getArray (_x >> "allowedPositions");
     private _disabledPositions = getArray (_x >> "disabledPositions");

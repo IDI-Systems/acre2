@@ -22,7 +22,6 @@ class CfgVehicles {
     class Wheeled_APC_F: Car_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -48,7 +47,6 @@ class CfgVehicles {
     class Tank: LandVehicle {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -70,7 +68,6 @@ class CfgVehicles {
     class B_MBT_01_cannon_F: B_MBT_01_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -79,7 +76,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2 : Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -104,7 +100,6 @@ class CfgVehicles {
     class B_APC_Tracked_01_rcws_F: B_APC_Tracked_01_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -113,7 +108,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -137,7 +131,6 @@ class CfgVehicles {
     class B_APC_Wheeled_01_cannon_F :B_APC_Wheeled_01_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -146,7 +139,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -179,7 +171,6 @@ class CfgVehicles {
     class O_APC_Tracked_02_cannon_F: O_APC_Tracked_02_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -188,7 +179,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -208,7 +198,6 @@ class CfgVehicles {
     class O_APC_Wheeled_02_base_F: APC_Wheeled_02_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -217,7 +206,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -237,7 +225,6 @@ class CfgVehicles {
     class I_APC_tracked_03_cannon_F: I_APC_tracked_03_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -246,7 +233,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -262,7 +248,6 @@ class CfgVehicles {
     class I_APC_Wheeled_03_base_F: APC_Wheeled_03_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -271,7 +256,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -285,7 +269,6 @@ class CfgVehicles {
     class Helicopter: Air {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -304,7 +287,6 @@ class CfgVehicles {
     class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -313,7 +295,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -327,7 +308,6 @@ class CfgVehicles {
     class Heli_Transport_03_base_F: Helicopter_Base_H {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -336,7 +316,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}, {"ffv", "all"}};
                 limitedPositions[] = {};
@@ -349,7 +328,6 @@ class CfgVehicles {
     class Heli_Transport_01_base_F: Helicopter_Base_H {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -358,7 +336,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -372,7 +349,6 @@ class CfgVehicles {
     class Heli_Light_02_base_F: Helicopter_Base_H {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -381,7 +357,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -395,7 +370,6 @@ class CfgVehicles {
     class Heli_Attack_02_base_F: Helicopter_Base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -404,7 +378,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -418,7 +391,6 @@ class CfgVehicles {
     class O_Heli_Transport_04_medevac_F: Heli_Transport_04_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -427,7 +399,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -440,7 +411,6 @@ class CfgVehicles {
     class O_Heli_Transport_04_F: Heli_Transport_04_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -449,7 +419,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -471,7 +440,6 @@ class CfgVehicles {
     class Heli_Transport_02_base_F: Helicopter_Base_H {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -480,7 +448,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}, {"ffv", "all"}};
                 limitedPositions[] = {};
@@ -493,7 +460,6 @@ class CfgVehicles {
     class Heli_light_03_base_F: Helicopter_Base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -502,7 +468,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -515,7 +480,6 @@ class CfgVehicles {
     class Plane: Air {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -535,7 +499,6 @@ class CfgVehicles {
     class VTOL_01_infantry_base_F: VTOL_01_unarmed_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {{"turret", {1}, {2}}};
@@ -544,7 +507,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"},{"turret", "all"},{"ffv", "all"}};
                 limitedPositions[] = {};
@@ -557,7 +519,6 @@ class CfgVehicles {
     class VTOL_01_vehicle_base_F: VTOL_01_unarmed_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -566,7 +527,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"turret", "all"}};
                 limitedPositions[] = {};
@@ -580,7 +540,6 @@ class CfgVehicles {
     class VTOL_02_infantry_base_F: VTOL_02_base_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {};
@@ -589,7 +548,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom_1 {
-                name = "intercom_2";
                 displayName = CSTRING(passengerIntercom);
                 allowedPositions[] = {"crew", {"turret", "all"}, {"ffv", "all"}};
                 limitedPositions[] = {};
@@ -603,7 +561,6 @@ class CfgVehicles {
     class SDV_01_base_F: Boat_F {
         class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = CSTRING(crewIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 disabledPositions[] = {};
@@ -617,4 +574,3 @@ class CfgVehicles {
         acre_infantryPhoneControlActions[] = {};
     };
 };
-

@@ -24,10 +24,10 @@ if (!_initialized) then {
 
     for "_i" from 0 to ((count _racks) - 1) do {
         private _x = _racks select _i;
-        private _componentName = getText (_x >> "componentname");
-        private _displayName = getText (_x >> "name");
-        private _allowed = [_vehicle, getArray (_x >> "allowed")] call EFUNC(sys_core,processConfigArray);
-        private _disabled = [_vehicle, getArray (_x >> "disabled")] call EFUNC(sys_core,processConfigArray);
+        private _componentName = getText (_x >> "componentName");
+        private _displayName = getText (_x >> "displayName");
+        private _allowed = [_vehicle, getArray (_x >> "allowedPositions")] call EFUNC(sys_core,processConfigArray);
+        private _disabled = [_vehicle, getArray (_x >> "disabledPositions")] call EFUNC(sys_core,processConfigArray);
         private _components = getArray (_x >> "defaultComponents");
         private _mountedRadio = getText (_x >> "mountedRadio");
         private _isRadioRemovable = getNumber (_x >> "isRadioRemovable") == 1;
@@ -35,6 +35,6 @@ if (!_initialized) then {
 
         [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call FUNC(addRack);
     };
-    
+
     _vehicle setVariable [QGVAR(initialized), true, true];
 };

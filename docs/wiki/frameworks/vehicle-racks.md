@@ -30,20 +30,20 @@ class CfgVehicles {
     class MRAP_01_base_F : Car_F {
         class AcreRacks {
             class Rack_1 {
-                name = "Dashboard Upper";             // Name displayed in the interaction menu
-                componentname = "ACRE_VRC110";        // Able to mount a PRC152
-                allowed[] = {"driver", {"cargo", 1}}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
-                disabled[] = {};
+                displayName = "Dashboard Upper";      // Name displayed in the interaction menu
+                componentName = "ACRE_VRC110";        // Able to mount a PRC152
+                allowedPositions[] = {"driver", {"cargo", 1}}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
+                disabledPositions[] = {};
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented
                 mountedRadio = "";                    // Predefined mounted radio
                 isRadioRemovable = 1;                 // Radio can be removed
                 intercom[] = {};                      // Radio not wired to any intercom. All units in intercom can receive/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface)
             };
             class Rack_2 {
-                name = "Dashboard Lower";             // Name displayed in the interaction menu
-                componentname = "ACRE_VRC103";        // Rack type (able to mount a PRC117F)
-                allowed[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
-                disabled[] = {};
+                displayName = "Dashboard Lower";      // Name displayed in the interaction menu
+                componentName = "ACRE_VRC103";        // Rack type (able to mount a PRC117F)
+                allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
+                disabledPositions[] = {};
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";        // Predefined mounted radio
                 isRadioRemovable = 0;                 // Radio cannot be removed
@@ -64,10 +64,10 @@ class CfgVehicles {
     class MyVehicle: ParentVehicle {
         class AcreRacks {
            class Rack_1 {
-               name = "Dash"; // Name is displayed in the interaction menu.
-               componentname = "ACRE_VRC103";
-               allowed[] = {"driver", "commander", "gunner"}; // Who has access. "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
-               disabled[] = {};
+               displayName = "Dash"; // Name is displayed in the interaction menu.
+               componentName = "ACRE_VRC103";
+               allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access. "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+               disabledPositions[] = {};
                defaultComponents[] = {};
                mountedRadio = "ACRE_PRC117F";                 // Predefined mounted radio
                isRadioRemovable = 0;
@@ -88,10 +88,10 @@ class CfgVehicles {
     class MyVehicle: ParentVehicle {
         class AcreRacks {
            class Rack_1 {
-               name = "Dash"; // Name is displayed in the interaction menu.
-               componentname = "ACRE_VRC103";
-               allowed[] = {"driver", "copilot"}; // Who has access. "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
-               disabled[] = {};
+               displayName = "Dash"; // Name is displayed in the interaction menu.
+               componentName = "ACRE_VRC103";
+               allowedPositions[] = {"driver", "copilot"}; // Who has access. "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+               disabledPositions[] = {};
                defaultComponents[] = {};
                mountedRadio = "ACRE_PRC117F";                 // Predefined mounted radio
                isRadioRemovable = 0;
@@ -134,9 +134,8 @@ The following vehicle has crew and passenger intercom as well as infantry teleph
 class CfgVehicles {
     class ParentVehicle;
     class MyVehicle: ParentVehicle {
-                class AcreIntercoms {
+        class AcreIntercoms {
             class Intercom_1 {
-                name = "intercom_1";
                 displayName = "Crew intercom";
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {"driver", {"turnedout", "all"}};
@@ -145,7 +144,6 @@ class CfgVehicles {
                 connectedByDefault = 1;
             };
             class Intercom_2: Intercom 1 {
-                name = "intercom_2";
                 displayName = "Passenger intercom";
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 disabledPositions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}, {"turnedout", 2, "driver", "gunner", [2]}};
@@ -165,30 +163,30 @@ class CfgVehicles {
 
         class AcreRacks {
             class Rack_1 {
-                name = "Dashboard Upper";             // Name displayed in the interaction menu
-                componentname = "ACRE_VRC110";        // Able to mount a PRC152
-                allowed[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
-                disabled[] = {};
+                displayName = "Dashboard Upper";             // Name displayed in the interaction menu
+                componentName = "ACRE_VRC110";        // Able to mount a PRC152
+                allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
+                disabledPositions[] = {};
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented
                 mountedRadio = "";                    // Predefined mounted radio
                 isRadioRemovable = 1;                 // Radio can be removed
                 intercom[] = {};                      // No access to intercoms. All units in intercom will be able to hear/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface)
             };
             class Rack_2 {
-                name = "Dashboard Upper";             // Name displayed in the interaction menu
-                componentname = "ACRE_VRC110";        // Able to mount a PRC152
-                allowed[] = {{"cargo", "all"}};       // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
-                disabled[] = {{"ffv", "all"}};
+                displayName = "Dashboard Upper";             // Name displayed in the interaction menu
+                componentName = "ACRE_VRC110";        // Able to mount a PRC152
+                allowedPositions[] = {{"cargo", "all"}};       // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
+                disabledPositions[] = {{"ffv", "all"}};
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas. Not yet fully implemented
                 mountedRadio = "";                    // Predefined mounted radio
                 isRadioRemovable = 1;                 // Radio can be removed
                 intercom[] = {};                      // No access to intercoms. All units in intercom will be able to hear/send transmittions (ACE3 interaction menu) but they cannot manipulate the radio (GUI interface)
             };
             class Rack_3 {
-                name = "Dashboard Lower";             // Name displayed in the interaction menu
-                componentname = "ACRE_VRC103";        // Rack type (able to mount a PRC117F)
-                allowed[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
-                disabled[] = {};
+                displayName = "Dashboard Lower";             // Name displayed in the interaction menu
+                componentName = "ACRE_VRC103";        // Rack type (able to mount a PRC117F)
+                allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
+                disabledPositions[] = {};
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";        // Predefined mounted radio
                 isRadioRemovable = 0;                 // Radio cannot be removed
