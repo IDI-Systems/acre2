@@ -22,8 +22,7 @@ if (!_initialized) then {
     private _classname = typeOf _vehicle;
     private _racks = configFile >> "CfgVehicles" >> _classname >> "AcreRacks";
 
-    for "_i" from 0 to ((count _racks) - 1) do {
-        private _x = _racks select _i;
+    {
         private _componentName = getText (_x >> "componentName");
         private _displayName = getText (_x >> "displayName");
         private _allowed = [_vehicle, getArray (_x >> "allowedPositions")] call EFUNC(sys_core,processConfigArray);
@@ -34,7 +33,7 @@ if (!_initialized) then {
         private _intercoms = [_vehicle, _x] call FUNC(configWiredIntercoms);
 
         [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call FUNC(addRack);
-    };
+    } forEach (configProperties [_racks, "isClass _x", true]);
 
     _vehicle setVariable [QGVAR(initialized), true, true];
 };

@@ -28,8 +28,7 @@ private _numLimitedPositions = [];
 private _intercomConnectByDefault = [];
 private _unitsIntercom = [];
 
-for "_i" from 0 to ((count _intercoms) - 1) do {
-    private _x = _intercoms select _i;
+{
     private _name = toLower (configName _x);
     private _displayName = getText (_x >> "displayName");
     private _allowedPositions = getArray (_x >> "allowedPositions");
@@ -98,7 +97,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     _numLimitedPositions pushBack _numLimPositions;
     _intercomConnectByDefault pushBack _connectedByDefault;
     _unitsIntercom pushBack [];
-};
+} forEach (configProperties [_intercoms, "isClass _x", true]);
 
 _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
 _vehicle setVariable [QGVAR(intercomDisplayNames), _intercomDisplayNames];
