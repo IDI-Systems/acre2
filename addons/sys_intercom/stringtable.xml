@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -30,8 +30,8 @@
             <Japanese>車外電話機 %1 を取る</Japanese>
             <Russian>Взять телефон пехоты %1</Russian>
             <Polish>Podnieś telefon piechoty %1</Polish>
-            <Chinese>拿起車外對講機 %1</Chinese>
-            <Chinesesimp>拿起车外对讲机 %1</Chinesesimp>
+            <Chinese>拿起車外對講機%1</Chinese>
+            <Chinesesimp>拿起车外对讲机%1</Chinesesimp>
             <Korean>보병 전화 %1을 얻음</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_switchInfantryPhone">
@@ -40,8 +40,8 @@
             <Japanese>%1 ネットワークに切り替え</Japanese>
             <Russian>Переключить сеть %1</Russian>
             <Polish>Przełącz sieć %1</Polish>
-            <Chinese>切換通訊網 %1</Chinese>
-            <Chinesesimp>切换通讯网 %1</Chinesesimp>
+            <Chinese>切換通訊網%1</Chinese>
+            <Chinesesimp>切换通讯网%1</Chinesesimp>
             <Korean>네트워크 교체</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_returnInfantryPhone">
@@ -93,8 +93,8 @@
             <Japanese>車外電話機 %1 に切断した</Japanese>
             <Russian>Телефон пехоты подключен %1</Russian>
             <Polish>Telefon podłączony %1</Polish>
-            <Chinese>車外對講機已連接 %1</Chinese>
-            <Chinesesimp>车外对讲机已连接 %1</Chinesesimp>
+            <Chinese>車外對講機已連接%1</Chinese>
+            <Chinesesimp>车外对讲机已连接%1</Chinesesimp>
             <Korean>보병 전화 %1에 연결됨</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
@@ -103,8 +103,8 @@
             <Japanese>車外電話機 %1 に受信した</Japanese>
             <Russian>Получен телефон пехоты %1</Russian>
             <Polish>Odebrano telefon piechoty %1</Polish>
-            <Chinese>車外對講機已收到 %1</Chinese>
-            <Chinesesimp>车外对讲机已收到 %1</Chinesesimp>
+            <Chinese>車外對講機已收到%1</Chinese>
+            <Chinesesimp>车外对讲机已收到%1</Chinesesimp>
             <Korean>보병 전화 %1 수신</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercom">
@@ -119,21 +119,33 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_connectedTo">
             <English>Connected to %1</English>
+            <Chinese>已連線到%1</Chinese>
+            <Chinesesimp>已连线到%1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_disconnectedFrom">
             <English>Disconnected from %1</English>
+            <Chinese>已跟%1斷開連線</Chinese>
+            <Chinesesimp>已跟%1断开连线</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_systemDisconnected">
             <English>Disconnected from intercom system</English>
+            <Chinese>已跟對講機系統斷開連線</Chinese>
+            <Chinesesimp>已跟对讲机系统断开连线</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_maxConnections">
             <English>Cannot connect to intercom. Maximum connections reached</English>
+            <Chinese>對講機無法連線。已達到同時最大連線數量</Chinese>
+            <Chinesesimp>对讲机无法连线。已达到同时最大连线数量</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercom">
             <English>Crew intercom</English>
+            <Chinese>機組員對講機</Chinese>
+            <Chinesesimp>机组员对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
             <English>Pax intercom</English>
+            <Chinese>乘客對講機</Chinese>
+            <Chinesesimp>乘客对讲机</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_connect">
             <English>Connect %1</English>
@@ -141,8 +153,8 @@
             <Japanese>接続 %1</Japanese>
             <Russian>Подключен %1</Russian>
             <Polish>Połącz %1</Polish>
-            <Chinese>連接至 %1</Chinese>
-            <Chinesesimp>连接至 %1</Chinesesimp>
+            <Chinese>連接至%1</Chinese>
+            <Chinesesimp>连接至%1</Chinesesimp>
             <Korean>%1으로 연결</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_disconnect">
@@ -151,8 +163,8 @@
             <Japanese>切断 %1</Japanese>
             <Russian>Отключен %1</Russian>
             <Polish>Rozłącz %1</Polish>
-            <Chinese>斷開聯繫 %1</Chinese>
-            <Chinesesimp>断开联系 %1</Chinesesimp>
+            <Chinese>斷開聯繫%1</Chinese>
+            <Chinesesimp>断开联系%1</Chinesesimp>
             <Korean>%1 연결 해제</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
