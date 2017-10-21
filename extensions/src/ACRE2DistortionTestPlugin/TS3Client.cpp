@@ -497,20 +497,22 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
         }
 
         uint64 bestChannelId = INVALID_TS3_CHANNEL;
+        auto bestMatches = 0;
         auto bestDistance = 10;
         for (auto& element : channelMap) {
-            auto elementChannelName = element.second;
+            auto fullChannelName = element.second;
             // Full comparison
-            if (elementChannelName.compare(name) == 0) {
+            if (fullChannelName.compare(name) == 0) {
                 bestChannelId = element.first;
                 break;
             }
-            const auto cleanChannelName = removeSubstrings(elementChannelName, DEFAULT_TS3_CHANNEL);
+            const auto cleanChannelName = removeSubstrings(fullChannelName, DEFAULT_TS3_CHANNEL);
             // Word comparison
             const int matches = getWordMatches(cleanChannelName, name);
-            if (matches > 0) {
+            if (matches > bestMatches) {
+                bestMatches = matches;
                 bestChannelId = element.first;
-                break;
+                continue;
             }
             // Char comparison
             const int distance = levenshteinDistance(cleanChannelName, name);
