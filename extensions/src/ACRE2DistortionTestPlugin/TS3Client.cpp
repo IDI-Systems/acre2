@@ -432,7 +432,7 @@ ACRE_RESULT CTS3Client::unMuteAll( void ) {
 ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
     if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
         anyID clientId;
-        auto details = getTs3ChannelDetails();
+        std::vector<std::string> details = getTs3ChannelDetails();
 
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
             uint64 currentChannelId = INVALID_TS3_CHANNEL;
@@ -440,7 +440,7 @@ ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
                 setPreviousTSChannel(currentChannelId);
             }
 
-            const auto channelId = findChannelByNames(details);
+            const uint64 channelId = findChannelByNames(details);
             if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
                 std::string password = "";
                 if (details.at(1) != "" && details.at(0) != "") {
@@ -460,7 +460,7 @@ ACRE_RESULT CTS3Client::moveToPreviousTS3Channel() {
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
             uint64 currentChannelId = INVALID_TS3_CHANNEL;
             if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok) {
-                const auto channelId = getPreviousTSChannel();
+                const uint64 channelId = getPreviousTSChannel();
                 if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
                     ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", nullptr);
                 }
@@ -477,7 +477,7 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
         uint64 channelId = INVALID_TS3_CHANNEL;
         uint64 defaultChannelId = INVALID_TS3_CHANNEL;
         std::map<uint64, std::string> channelMap;
-        auto name = details.at(2);
+        std::string name = details.at(2);
         if (details.at(0) != "") {
             name = details.at(0);
         }
@@ -486,7 +486,7 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
             channelList++;
             char* channelName;
             if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
-                auto channelNameString = std::string(channelName);
+                std::string channelNameString = std::string(channelName);
                 if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1 || (details.at(0) != "" && channelNameString == name)) {
                     if (channelNameString == DEFAULT_TS3_CHANNEL) {
                         defaultChannelId = channelId;
@@ -497,16 +497,16 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
         }
 
         uint64 bestChannelId = INVALID_TS3_CHANNEL;
-        auto bestMatches = 0;
-        auto bestDistance = 10;
+        int bestMatches = 0;
+        int bestDistance = 10;
         for (auto& element : channelMap) {
-            auto fullChannelName = element.second;
+            std::string fullChannelName = element.second;
             // Full comparison
             if (fullChannelName.compare(name) == 0) {
                 bestChannelId = element.first;
                 break;
             }
-            const auto cleanChannelName = removeSubstrings(fullChannelName, DEFAULT_TS3_CHANNEL);
+            const std::string cleanChannelName = removeSubstrings(fullChannelName, DEFAULT_TS3_CHANNEL);
             // Word comparison
             const int matches = getWordMatches(cleanChannelName, name);
             if (matches > bestMatches) {
@@ -546,7 +546,7 @@ unsigned int CTS3Client::getWordMatches(const std::string& string1, const std::s
         words2.push_back(temp);
     }
 
-    auto matches = 0;
+    int matches = 0;
     for (auto& word1 : words1) {
         for (auto& word2 : words2) {
             if (word1 == word2) {
@@ -586,7 +586,7 @@ unsigned int CTS3Client::levenshteinDistance(const std::string& string1, const s
 }
 
 std::string CTS3Client::removeSubstrings(std::string string, std::string substring) {
-    const auto substringLength = substring.length();
+    const std::string::size_type substringLength = substring.length();
     for (auto iterator = string.find(substring);
          iterator != std::string::npos;
          iterator = string.find(substring))
