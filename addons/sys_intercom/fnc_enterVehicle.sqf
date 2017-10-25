@@ -61,5 +61,7 @@ if (_unit != _vehicle) then {
     _unit setVariable [QGVAR(intercomVehicle), objNull];
     ACRE_PLAYER_INTERCOM = [];
 
-    ["Disconnected from intercom system", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    if (_disconnected) then {
+        ["Disconnected from intercom system", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    };
 };
