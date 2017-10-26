@@ -59,18 +59,18 @@ private _unitsIntercom = [];
             _availabeIntercomPositions pushBackUnique ["turret", _x];
         } forEach allTurrets [_vehicle, false];
     } else {
-        _availabeIntercomPositions = [_vehicle, _allowedPositions] call EFUNC(sys_core,processConfigArray);
+        _availabeIntercomPositions = [_vehicle, _allowedPositions] call EFUNC(sys_core,processVehicleSystemAccessArray);
     };
 
     // Add limited positions. Positions in which non-intercom members can communicate temporarily
-    private _limitedIntercomPositions = [_vehicle, _limitedPositions] call EFUNC(sys_core,processConfigArray);
+    private _limitedIntercomPositions = [_vehicle, _limitedPositions] call EFUNC(sys_core,processVehicleSystemAccessArray);
     if (!(_limitedIntercomPositions isEqualto []) && {_numLimPositions isEqualTo []}) then {
         //_limitedIntercomPositions = [];
         WARNING_2("Vehicle type %1 has limited positions defined but no actual limit of simultaneous connections. Ignoring limited positions for intercom network %2",_vehicle, _name);
     };
 
     // Remove all exceptions
-    private _temp = [_vehicle, _disabledPositions] call EFUNC(sys_core,processConfigArray);
+    private _temp = [_vehicle, _disabledPositions] call EFUNC(sys_core,processVehicleSystemAccessArray);
     private _exceptionsIntercomPositions = [];
     {
         if (_x in _availabeIntercomPositions) then {
