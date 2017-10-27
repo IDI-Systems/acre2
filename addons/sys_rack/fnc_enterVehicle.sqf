@@ -31,29 +31,36 @@ if (_unit != _vehicle) then {
                 _firstPlayer = _x;
             };
         } forEach _crew;
+
         if (!isNull _firstPlayer) then {
             if (_unit == _firstPlayer) then {
-                [_vehicle] call FUNC(initVehicle);
+                [_vehicle] spawn {
+                    params ["_vehicle"];
+
+                    [_vehicle] call FUNC(initVehicle);
+
+                    // Give some time for the racks to initialise properly
+                    sleep 0.5;
+
+                    [_vehicle] call FUNC(configureRackIntercom);
+                };
             };
         } else { // No other players.
-            [_vehicle] call FUNC(initVehicle);
-        };
-    } else {
-        if (!(_vehicle getVariable [QGVAR(rackIntercomInitialised), false])) then {
-            private _racks = [_vehicle] call FUNC(getVehicleRacks);
-            {
-                private _intercoms = [_x] call FUNC(getWiredIntercoms);
-                private _rackRxTxConfig = _vehicle getVariable [QGVAR(rackRxTxConfig), []];
-                if (count _intercoms > 0 && {count _rackRxTxConfig == 0}) exitWith {
-                    [_vehicle] call EFUNC(sys_intercom,configRxTxCapabilities);
-                    _vehicle setVariable [QGVAR(rackIntercomInitialised), true, true];
-                };
-            } forEach _racks;
+            [_vehicle] spawn {
+                params ["_vehicle"];
+
+                [_vehicle] call FUNC(initVehicle);
+
+                // Give some time for the racks to initialise properly
+                sleep 0.5;
+
+                [_vehicle] call FUNC(configureRackIntercom);
+            };
         };
     };
 
     // Enable the PFH if it is not active. This can only happen if the unit is using an external radio before entering the vehicle
-    if (GVAR(rackPFH) != -1) then {
+    if (GVAR(rackPFH) == -1) then {
         GVAR(rackPFH) = [DFUNC(rackPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
 };
