@@ -24,7 +24,7 @@ private _racks = [_vehicle] call FUNC(getVehicleRacks);
 {
     private _intercoms = [_x] call FUNC(getWiredIntercoms);
     private _rackRxTxConfig = _vehicle getVariable [QGVAR(rackRxTxConfig), []];
-    if (count _intercoms > 0 && {count _rackRxTxConfig == 0}) exitWith {
+    if (count _intercoms > 0 && {count _rackRxTxConfig isEqualTo []}) exitWith {
         [_vehicle] call EFUNC(sys_intercom,configRxTxCapabilities);
     };
 } forEach _racks;
