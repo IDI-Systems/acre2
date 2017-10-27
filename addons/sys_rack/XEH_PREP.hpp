@@ -11,7 +11,7 @@ PREP(initVehicle);
 PREP(configWiredIntercoms);
 PREP(getVehicleRacks);
 PREP(getVehicleFromRack);
-PREP(vehicleCrewPFH);
+PREP(rackPFH);
 
 PREP(isRadioRemovable);
 PREP(isRackAccessible);

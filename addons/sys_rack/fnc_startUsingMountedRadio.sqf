@@ -39,3 +39,8 @@ if (_isRadioHearable) then {
         [_radioId, _vehicle, _unit, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities);
     };
 };
+
+// Start the rack PFH if not started already. This should only be used for externally accessible rack radios
+if (GVAR(rackPFH) != -1) then {
+    GVAR(rackPFH) = [DFUNC(rackPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
+};
