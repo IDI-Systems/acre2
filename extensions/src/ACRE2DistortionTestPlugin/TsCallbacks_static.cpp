@@ -43,7 +43,8 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
                 if (!metaData) { 
                     noAcre = TRUE;
                 }
-                if (strlen(metaData) < 3) {
+                int metaDataLength = strlen(metaData);
+                if (metaDataLength < 3 || metaDataLength > (INFODATA_BUFSIZE - 2)) {
                     noAcre = TRUE;
                 }
                 *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char)); 
