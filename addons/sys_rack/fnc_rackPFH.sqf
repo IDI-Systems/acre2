@@ -27,12 +27,12 @@ if (_vehicle != vehicle _player) then {
     {
         private _radioId = [_x] call FUNC(getMountedRadio);
         if (_radioId != "" && {!(_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS)}) then {
-            private _functionality = [_radioId, _vehicle, _unit, _x] call EFUNC(sys_intercom,getRxTxCapabilities);
+            private _functionality = [_radioId, _vehicle, _player, _x] call EFUNC(sys_intercom,getRxTxCapabilities);
 
             // Add the radio to the active list since it is already active in the intercom system
-            [_vehicle, _unit, _radioId] call FUNC(startUsingMountedRadio);
+            [_vehicle, _player, _radioId] call FUNC(startUsingMountedRadio);
         };
-    } forEach (([_vehicle, _unit] call FUNC(getHearableVehicleRacks)) apply {toLower _x});
+    } forEach (([_vehicle, _player] call FUNC(getHearableVehicleRacks)) apply {toLower _x});
 };
 
 // Check whether the vehicle rack radios can still be used
