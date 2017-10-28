@@ -17,9 +17,6 @@
 
 params ["_vehicle"];
 
-// Give some time for the rack to initialise
-sleep 0.5;
-
 private _racks = [_vehicle] call FUNC(getVehicleRacks);
 {
     private _intercoms = [_x] call FUNC(getWiredIntercoms);
