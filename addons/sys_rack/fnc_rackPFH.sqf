@@ -50,10 +50,10 @@ private _remove = [];
     if (count ([_rack] call FUNC(getWiredIntercoms)) > 0 && _isRackHearable) then {
         private _functionality = [_x, _vehicle, _player, toLower _rack] call EFUNC(sys_intercom,getRxTxCapabilities);
 
-        if (_functionality == RACK_NO_MONITOR) then {systemChat format ["removing no intercom"]; _remove pushBackUnique _x;};
+        if (_functionality == RACK_NO_MONITOR) then {_remove pushBackUnique _x;};
     };
 
-    if (!(_isRackAccessible || _isRackHearable)) then { systemChat format ["removing no hearable "];_remove pushBackUnique _x; };
+    if (!(_isRackAccessible || _isRackHearable)) then {_remove pushBackUnique _x; };
 } forEach (ACRE_ACCESSIBLE_RACK_RADIOS + ACRE_HEARABLE_RACK_RADIOS);
 
 {
