@@ -37,7 +37,6 @@ if (_isRadioHearable) then {
     if (_functionality == RACK_NO_MONITOR) then {
         // Set as default RX and TX functionality
         [_radioId, _vehicle, _unit, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities);
-        _functionality = [_radioId, _vehicle, _unit] call EFUNC(sys_intercom,getRxTxCapabilities);
     };
 };
 

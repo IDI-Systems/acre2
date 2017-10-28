@@ -38,10 +38,8 @@ if (_unit != _vehicle) then {
                     params ["_vehicle"];
 
                     [_vehicle] call FUNC(initVehicle);
-
                     // Give some time for the racks to initialise properly
                     sleep 0.5;
-
                     [_vehicle] call FUNC(configureRackIntercom);
                 };
             };
@@ -50,10 +48,8 @@ if (_unit != _vehicle) then {
                 params ["_vehicle"];
 
                 [_vehicle] call FUNC(initVehicle);
-
                 // Give some time for the racks to initialise properly
                 sleep 0.5;
-
                 [_vehicle] call FUNC(configureRackIntercom);
             };
         };

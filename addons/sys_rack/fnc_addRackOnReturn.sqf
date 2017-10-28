@@ -29,9 +29,6 @@ _vehicleRacks pushBackUnique _rackId;
 _vehicle setVariable [QGVAR(vehicleRacks), _vehicleRacks, true];
 _rack setVariable [QGVAR(rackVehicle), _vehicle, true];
 
-// Configure intercoms interaction
-[_vehicle, _rackId] call FUNC(configureRackIntercom);
-
 private _queue = _vehicle getVariable [QGVAR(queue),[]];
 private _baseRackName = configName (configFile >> "CfgAcreComponents" >> (getText (configFile >> "CfgVehicles" >> _rackId >> "acre_baseClass")));
 private _handled = false;

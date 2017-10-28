@@ -38,7 +38,6 @@ if (_player != vehicle _player) then {
 
 // Check whether the vehicle rack radios can still be used
 private _remove = [];
-
 {
     if (!([_x] call EFUNC(sys_radio,radioExists))) then {_remove pushBackUnique _x;};
     private _rack = [_x] call FUNC(getRackFromRadio);
