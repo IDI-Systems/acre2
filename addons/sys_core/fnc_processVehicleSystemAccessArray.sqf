@@ -23,8 +23,8 @@
  *
  * - Configuration array ["driver", ["cargo", 1, 2]] -> [["driver"], ["cargo", 1], ["cargo", 2]]
  * - Configuration array ["crew"] -> [["driver"], ["commander"], ["gunner"], ["turret", [0]], ["turret", [1]]
- * - Configuration array ["inside"] -> ["inside"]
- * - Configuration array ["cargo", "all"] -> [["cargo", 1], ["cargo", 2], ["cargo", 3], ... ["cargo", n]]
+ * - Configuration array ["inside"] -> [["driver"], ["commander"], ["gunner"], ["cargo", 1], ["cargo", 2], ..., ["cargo", n]]
+ * - Configuration array ["cargo", "all"] -> [["cargo", 1], ["cargo", 2], ["cargo", 3], ..., ["cargo", n]]
  * - Configuration array [["turret", [1], [2]], [[turnedOut, [3]]] -> [["turret", [1]], ["turret", [2]], ["turnedOut", [3]]]
  *
  * Arguments:
