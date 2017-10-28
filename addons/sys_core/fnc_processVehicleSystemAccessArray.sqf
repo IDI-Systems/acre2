@@ -73,19 +73,16 @@ private _processedArray = [];
                 } forEach _copilot;
             };
             case "inside": {
-                 {
-                    private _role = _x;
-                    private _fullCrew = fullCrew [_vehicle, _role, true];
-                    {
-                        if (_role == toLower (_x select 1)) then {
-                            if (_role in ["cargo", "turret"]) then {
-                                _processedArray pushBackUnique [_role, _x select 2];
-                            } else {
-                                _processedArray pushBackUnique [_role];
-                            };
-                        };
-                    } forEach _fullCrew;
-                } forEach ["driver", "commander", "gunner", "cargo", "turret"];
+                private _role = _x;
+                private _fullCrew = fullCrew [_vehicle, "", true];
+                {
+                    private _role = toLower (_x select 1);
+                    if (_role in ["cargo", "turret"]) then {
+                        _processedArray pushBackUnique [_role, _x select 2];
+                    } else {
+                        _processedArray pushBackUnique [_role];
+                    };
+                } forEach _fullCrew;
             };
             default {
                 // Position is of type commander, driver, gunner or external
