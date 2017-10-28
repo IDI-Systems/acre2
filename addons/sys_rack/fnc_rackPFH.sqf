@@ -4,8 +4,8 @@
  *
  * Arguments:
  * 0: Array of arguments <ARRAY>
- *  0: player unit <OBJECT>
- *  1: vehicle with intercom <OBJECT>
+ *  0: Player unit <OBJECT>
+ *  1: Vehicle with intercom <OBJECT>
  * 1: PFH unique identifier <NUMBER>
  *
  * Return Value:

@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Configures the interaction between racks and intercom systems
+ * Configures the interaction between racks and intercom systems.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -21,7 +21,7 @@ private _racks = [_vehicle] call FUNC(getVehicleRacks);
 {
     private _intercoms = [_x] call FUNC(getWiredIntercoms);
     private _rackRxTxConfig = _vehicle getVariable [QGVAR(rackRxTxConfig), []];
-    if (count _intercoms > 0 && {_rackRxTxConfig isEqualTo []}) exitWith {
+    if (!(_intercoms isEqualTo []) && {_rackRxTxConfig isEqualTo []}) exitWith {
         [_vehicle] call EFUNC(sys_intercom,configRxTxCapabilities);
     };
 } forEach _racks;
