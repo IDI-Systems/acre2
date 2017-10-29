@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Checks if the given unit can have acess to a vehicle system like intercom or vehicle racks.
+ * Checks if the given unit can have access to a vehicle system like intercom or vehicle racks.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>

@@ -35,7 +35,7 @@
  * Formatted array <ARRAY>
  *
  * Example:
- * [cursorTarget, ["driver", ["cargo", 1, 2]]] call acre_sys_intercom_processVehicleSystemAccessArray
+ * [cursorTarget, ["driver", ["cargo", 1, 2]]] call acre_sys_intercom_fnc_processVehicleSystemAccessArray
  *
  * Public: No
  */
