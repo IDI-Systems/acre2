@@ -102,8 +102,12 @@ DFUNC(monitorRadios_PFH) = {
                 acre_player assignItem "ItemRadioAcreFlagged";
             };
         } forEach _dif;
+
+        // Update the radio list
+        acre_player setVariable [QEGVAR(sys_data,radioIdList), _currentUniqueItems, true];
     };
     GVAR(oldUniqueItemList) = _currentUniqueItems;
+
     // if (!("ItemRadioAcreFlagged" in (assignedItems acre_player))) then { acre_player assignItem "ItemRadioAcreFlagged" };
 
 };
