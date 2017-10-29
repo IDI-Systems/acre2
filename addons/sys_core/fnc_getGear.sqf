@@ -27,4 +27,6 @@
  // The below is really slow and tends to worsen performance.
  //_gear = _gear select {(_x call EFUNC(api,getBaseRadio)) in (call EFUNC(api,getAllRadios) select 0) || {_x == "ItemRadio"} || {_x == "ItemRadioAcreFlagged"}};
 
+_gear = _gear apply {toLower _x};
+
  _gear;
