@@ -25,7 +25,7 @@ if ((toLower ACRE_ACTIVE_RADIO) isEqualTo _radioId) then {
     _items = _items apply {toLower _x};
 
     // Change only the active radio if it is not in the player's inventory
-    if (!((toLower ACRE_ACTIVE_RADIO) in _items)) then {
+    if (!(ACRE_ACTIVE_RADIO in _items)) then {
         if (ACRE_ACTIVE_RADIO == ACRE_BROADCASTING_RADIOID) then {
             // Simulate a key up event to end the current transmission
             [] call EFUNC(sys_core,handleMultiPttKeyPressUp);
