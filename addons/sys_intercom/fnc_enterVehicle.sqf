@@ -62,6 +62,6 @@ if (_unit != _vehicle) then {
     ACRE_PLAYER_INTERCOM = [];
 
     if (_disconnected) then {
-        ["Disconnected from intercom system", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [localize LSTRING(systemDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };
 };

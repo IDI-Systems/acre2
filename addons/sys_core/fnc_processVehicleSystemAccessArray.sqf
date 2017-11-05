@@ -7,7 +7,6 @@
  * code.
  *
  * The following keywords are supported:
- *
  * - crew: selects positions of driver, commander, gunner and all non-ffv turrets.
  * - copilot: selects the copilot seat
  * - all: can be used in combination with cargo, turret, ffv and turnedOut entries. Selects all entries that matches the
@@ -20,7 +19,6 @@
  * - inside: selects all seats inside the vehicle.
  *
  * The following cases are ilustrative examples of the outcome of this function:
- *
  * - Configuration array ["driver", ["cargo", 1, 2]] -> [["driver"], ["cargo", 1], ["cargo", 2]]
  * - Configuration array ["crew"] -> [["driver"], ["commander"], ["gunner"], ["turret", [0]], ["turret", [1]]
  * - Configuration array ["inside"] -> [["driver"], ["commander"], ["gunner"], ["cargo", 1], ["cargo", 2], ..., ["cargo", n]]

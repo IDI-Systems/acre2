@@ -7,7 +7,7 @@
  * 1: Unit <OBJECT>
  * 2: Allowed positions <ARRAY>
  * 3: Forbidden positions <ARRAY>
- * 4: Maximum distance for external use <NUMBER><OPTIONAL>
+ * 4: Maximum distance for external use <NUMBER> (default: 0)
  *
  * Return Value:
  * True if the system is available, false otherwise <BOOL>
