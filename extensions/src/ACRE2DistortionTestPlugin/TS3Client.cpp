@@ -561,17 +561,17 @@ unsigned int CTS3Client::levenshteinDistance(const std::string& string1, const s
     int length1 = string1.size();
     const int length2 = string2.size();
 
-    const auto columnStart = decltype(length1)(1);
+    const decltype(length1) columnStart = decltype(length1)(1);
 
-    const auto column = new decltype(length1)[length1 + 1];
+    decltype(length1)*const column = new decltype(length1)[length1 + 1];
     std::iota(column + columnStart, column + length1 + 1, columnStart);
 
     for (auto x = columnStart; x <= length2; x++) {
         column[0] = x;
-        auto lastDiagonal = x - columnStart;
+        int lastDiagonal = x - columnStart;
         for (auto y = columnStart; y <= length1; y++) {
-            const auto oldDiagonal = column[y];
-            const auto possibilities = {
+            const int oldDiagonal = column[y];
+            const std::initializer_list<int> possibilities = {
                 column[y] + 1,
                 column[y - 1] + 1,
                 lastDiagonal + (string1[y - 1] == string2[x - 1] ? 0 : 1)
@@ -580,7 +580,7 @@ unsigned int CTS3Client::levenshteinDistance(const std::string& string1, const s
             lastDiagonal = oldDiagonal;
         }
     }
-    const auto result = column[length1];
+    const int result = column[length1];
     delete[] column;
     return result;
 }
