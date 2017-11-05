@@ -21,3 +21,15 @@ class Extended_Killed_EventHandlers {
         ADDON = QUOTE(_this call FUNC(onPlayerKilled));
     };
 };
+
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayArsenal {
+        ADDON = QUOTE(GVAR(arsenalOpen) = true);
+    };
+};
+
+class Extended_DisplayUnload_EventHandlers {
+    class RscDisplayArsenal {
+        ADDON = QUOTE(GVAR(arsenalOpen) = false);
+    };
+};

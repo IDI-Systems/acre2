@@ -85,6 +85,8 @@ DVAR(ACRE_ACCESSIBLE_RACK_RADIOS) = [];          // Extra radios that a player c
 DVAR(ACRE_HEARABLE_RACK_RADIOS) = [];            // Extra rack radios that a player can use
 DVAR(ACRE_BLOCKED_TRANSMITTING_RADIOS) = [];
 
+DGVAR(arsenalOpen) = false;
+
 acre_player = player;
 
 GVAR(coreCache) = HASH_CREATE;
