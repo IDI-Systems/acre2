@@ -16,7 +16,12 @@
  */
 #include "script_component.hpp"
 
-if (!(alive acre_player) || GVAR(keyBlock) || time < 1) exitWith { false };
+if (!alive acre_player || time < 1 || GVAR(keyBlock) || dialog) exitWith {
+    if (!alive acre_player || dialog) then {
+        call FUNC(onVolumeControlKeyPressUp);
+    };
+    false
+};
 
 inGameUISetEventHandler ["PrevAction", "true"];
 inGameUISetEventHandler ["NextAction", "true"];
