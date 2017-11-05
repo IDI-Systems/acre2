@@ -27,3 +27,9 @@ class Extended_DisplayLoad_EventHandlers {
         ADDON = QUOTE(_this call COMPILE_FILE(XEH_spectatorEGDisplayLoad));
     };
 };
+
+class Extended_DisplayUnload_EventHandlers {
+    class RscDisplayEGSpectator {
+        ADDON = QUOTE(_this call COMPILE_FILE(XEH_spectatorEGDisplayUnload));
+    };
+};
