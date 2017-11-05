@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "IClient.h"
 #include "TsFunctions.h"
@@ -50,8 +50,9 @@ public:
     ACRE_RESULT moveToServerTS3Channel();
     ACRE_RESULT moveToPreviousTS3Channel();
     uint64 findChannelByNames(std::vector<std::string> details);
+    unsigned int getWordMatches(const std::string& string1, const std::string& string2);
     unsigned int levenshteinDistance(const std::string& string1, const std::string& string2);
-    void removeSubstrings(std::string& string, std::string substring);
+    std::string removeSubstrings(std::string string, std::string substring);
     ACRE_RESULT updateTs3ChannelDetails(std::vector<std::string> details);
     ACRE_RESULT updateShouldSwitchTS3Channel(BOOL state);
     BOOL shouldSwitchTS3Channel();
