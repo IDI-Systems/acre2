@@ -24,8 +24,8 @@ if (([_rackId] call FUNC(getMountedRadio)) != "") exitWith {false}; // If a radi
 
 private _mountable = false;
 private _radioId = _eventData;
-private _baseClass = toLower (BASE_CLASS_CONFIG(_radioId));
+private _baseClass = BASE_CLASS_CONFIG(_radioId);
 
-if (_baseClass in ["acre_sem70"]) then { _mountable = true; };
+if (_baseClass in ["ACRE_SEM70"]) then { _mountable = true; };
 
 _mountable

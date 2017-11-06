@@ -17,7 +17,6 @@
 
 private _vehicle = vehicle acre_player;
 if (_vehicle != acre_player) then {
-
     private _initialized = _vehicle getVariable [QGVAR(initialized), false];
     if (!_initialized) then {
         //Only initialize if we are first in the crew array - This helps prevent multiple requests if multiple players enter a vehicle around the same time.
@@ -58,14 +57,14 @@ if (_vehicle != acre_player) then {
             // Add the radio to the active list since it is already active in the intercom system
             if (_functionality > RACK_NO_MONITOR) then {
                 if ([_x, acre_player] call FUNC(isRackAccessible)) then {
-                    ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+                    ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique _radioId;
                 } else {
-                    ACRE_HEARABLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+                    ACRE_HEARABLE_RACK_RADIOS pushBackUnique _radioId;
                 };
                 ACRE_ACTIVE_RADIO = _radioId;
             };
         };
-    } forEach (([_vehicle, acre_player] call FUNC(getHearableVehicleRacks)) apply {toLower _x});
+    } forEach ([_vehicle, acre_player] call FUNC(getHearableVehicleRacks));
 };
 
 //Check we can still use the vehicle rack radios.
@@ -80,7 +79,7 @@ private _remove = [];
 
     // Check only those radios connected on intercom systems
     if (count ([_rack] call FUNC(getWiredIntercoms)) > 0 && _isRackHearable) then {
-        private _functionality = [_x, _vehicle, acre_player, toLower _rack] call EFUNC(sys_intercom,getRxTxCapabilities);
+        private _functionality = [_x, _vehicle, acre_player, _rack] call EFUNC(sys_intercom,getRxTxCapabilities);
         if (_functionality == RACK_NO_MONITOR) then {_remove pushBackUnique _x;};
     };
 

@@ -51,7 +51,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
-        if ((toLower _mountedRadio) in ACRE_ACCESSIBLE_RACK_RADIOS) then {
+        if (_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) then {
             // stop
             private _action = ["acre_stopMountedRadio", localize LSTRING(stopUsingRadio), "", {
                 params ["_target","_unit","_params"];
@@ -83,7 +83,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
 
-            if ((toLower _mountedRadio) in ACRE_HEARABLE_RACK_RADIOS) then {
+            if (_mountedRadio in ACRE_HEARABLE_RACK_RADIOS) then {
                 private _action = ["acre_stopMountedRadio", localize LSTRING(stopUsingRadio), "", {
                     params ["_target", "_unit", "_params"];
                     _params params ["_mountedRadio"];
