@@ -1,3 +1,4 @@
+PREP(addDisplayPassthroughKeys);
 PREP(addGear);
 PREP(addLanguageType);
 PREP(aliveMonitor);
@@ -20,13 +21,14 @@ PREP(handleGetHeadVector);
 PREP(handleGetPluginVersion);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
+PREP(hasAccessToVehicleSystem);
 PREP(isMuted);
 PREP(localStartSpeaking);
 PREP(localStopSpeaking);
 PREP(muting);
 PREP(onPlayerKilled);
 PREP(pong);
-PREP(processConfigArray);
+PREP(processVehicleSystemAccessArray);
 PREP(processDirectSpeaker);
 PREP(processRadioSpeaker);
 PREP(remoteStartSpeaking);
@@ -51,4 +53,3 @@ PREP(enableRevealAI);
 PREP(onRevealUnit);
 
 PREP(coreInitPFH);
-//PREP(vehicleCrewPFH);
