@@ -10,7 +10,7 @@
  * Successfully added passthrough key handling <BOOL>
  *
  * Example:
- * [display] call acre_api_fnc_addDisplayPassthroughKeys;
+ * [display] call acre_api_fnc_addDisplayPassthroughKeys
  *
  * Public: Yes
  */
