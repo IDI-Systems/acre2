@@ -9,7 +9,7 @@
  * Successfully added passthrough key handling <BOOL>
  *
  * Example:
- * [display] call acre_core_fnc_addDisplayPassthroughKeys
+ * [display] call acre_sys_core_fnc_addDisplayPassthroughKeys
  *
  * Public: Yes
  */
