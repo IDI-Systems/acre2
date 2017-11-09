@@ -58,16 +58,16 @@ private _remove = [];
 
 {
     if (_x in ACRE_ACCESSIBLE_RACK_RADIOS) then {
-        ACRE_ACCESSIBLE_RACK_RADIOS = ACRE_ACCESSIBLE_RACK_RADIOS - [_x];
+        ACRE_ACCESSIBLE_RACK_RADIOS deleteAt (ACRE_ACCESSIBLE_RACK_RADIOS find _x);
     } else {
-        ACRE_HEARABLE_RACK_RADIOS = ACRE_HEARABLE_RACK_RADIOS - [_x];
+        ACRE_HEARABLE_RACK_RADIOS deleteAt (ACRE_HEARABLE_RACK_RADIOS find _x);
     };
 
     // Handle active radio
     [_x] call EFUNC(sys_radio,stopUsingRadio);
 } forEach _remove;
 
-if ((_player == vehicle _player) && {ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []} && {ACRE_HEARABLE_RACK_RADIOS isEqualTo []}) then {
+if ((_player == vehicle _player) && (ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []) && (ACRE_HEARABLE_RACK_RADIOS isEqualTo [])) then {
     [GVAR(rackPFH)] call CBA_fnc_removePerFrameHandler;
     GVAR(rackPFH) = -1;
 };
