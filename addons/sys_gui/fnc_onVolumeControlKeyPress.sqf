@@ -16,8 +16,8 @@
  */
 #include "script_component.hpp"
 
-if (!alive acre_player || time < 1 || GVAR(keyBlock) || dialog) exitWith {
-    if (!alive acre_player || dialog) then {
+if (!alive acre_player || time < 1 || GVAR(keyBlock) || dialog || ACRE_IS_SPECTATOR) exitWith {
+    if (!GVAR(keyBlock)) then {
         call FUNC(onVolumeControlKeyPressUp);
     };
     false
