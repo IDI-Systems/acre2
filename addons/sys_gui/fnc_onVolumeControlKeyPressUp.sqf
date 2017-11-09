@@ -16,15 +16,15 @@
  */
 #include "script_component.hpp"
 
-if (!(alive acre_player)) exitWith { false };
+if (!GVAR(keyBlock)) exitWith {false};
 
 inGameUISetEventHandler ["PrevAction", "false"];
 inGameUISetEventHandler ["NextAction", "false"];
 
+GVAR(keyBlock) = false;
 disableSerialization;
-GVAR(KeyBlock) = false;
+
 57701 cutRsc [QGVAR(VolumeControlDialog_Close), "PLAIN"];
 call FUNC(closeVolumeControl);
-
 
 false
