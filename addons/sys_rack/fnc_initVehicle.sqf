@@ -25,8 +25,8 @@ if (!_initialized) then {
     {
         private _componentName = getText (_x >> "componentName");
         private _displayName = getText (_x >> "displayName");
-        private _allowed = [_vehicle, getArray (_x >> "allowedPositions")] call EFUNC(sys_core,processConfigArray);
-        private _disabled = [_vehicle, getArray (_x >> "disabledPositions")] call EFUNC(sys_core,processConfigArray);
+        private _allowed = [_vehicle, getArray (_x >> "allowedPositions")] call EFUNC(sys_core,processVehicleSystemAccessArray);
+        private _disabled = [_vehicle, getArray (_x >> "disabledPositions")] call EFUNC(sys_core,processVehicleSystemAccessArray);
         private _components = getArray (_x >> "defaultComponents");
         private _mountedRadio = getText (_x >> "mountedRadio");
         private _isRadioRemovable = getNumber (_x >> "isRadioRemovable") == 1;
