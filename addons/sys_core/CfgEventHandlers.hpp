@@ -21,3 +21,15 @@ class Extended_Killed_EventHandlers {
         ADDON = QUOTE(_this call FUNC(onPlayerKilled));
     };
 };
+
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayEGSpectator {
+        ADDON = QUOTE(_this call COMPILE_FILE(XEH_spectatorEGDisplayLoad));
+    };
+};
+
+class Extended_DisplayUnload_EventHandlers {
+    class RscDisplayEGSpectator {
+        ADDON = QUOTE(_this call COMPILE_FILE(XEH_spectatorEGDisplayUnload));
+    };
+};

@@ -1,3 +1,4 @@
+PREP(addDisplayPassthroughKeys);
 PREP(addGear);
 PREP(addLanguageType);
 PREP(aliveMonitor);
