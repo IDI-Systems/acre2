@@ -41,6 +41,13 @@ if (!GVAR(doFullSearch)) then {
                 _items = [_object] call EFUNC(sys_core,getGear);
             } else {
                 _items = (itemCargo _object) select {(_x select [0, 4]) == "ACRE" || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged"};
+                {
+                    _items pushBack _x; // Add rack unique ID
+                    private _mountedRadio = [_x] call EFUNC(sys_rack,getMountedRadio);
+                    if (_mountedRadio != "") then {
+                        _items pushBack _mountedRadio; // Add mounted radio unique ID
+                    };
+                } forEach (_object getVariable [QEGVAR(sys_rack,vehicleRacks), []]);
             };
 
             {
@@ -48,7 +55,7 @@ if (!GVAR(doFullSearch)) then {
             } forEach _items;
             if (_found) exitWith {};
         } forEach _objects;
-        if (!_found) exitWith { GVAR(doFullSearch) = true; };
+        if (!_found) exitWith {GVAR(doFullSearch) = true;};
     } forEach _shortSearchList;
 };
 
@@ -64,6 +71,8 @@ if (GVAR(doFullSearch)) then {
     private _searchObjects = allPlayers + allUnits + allDead + vehicles + (allMissionObjects "WeaponHolder"); // search players first
 
     _searchObjects = _searchObjects arrayIntersect _searchObjects; // Ensure nothing gets searched twice.
+    private _cfgWeapons = configFile >> "CfgWeapons";
+    private _cfgVehicles = configFile >> "CfgVehicles";
     {
         private _mainObject = _x;
         private _objects = [_mainObject];
@@ -94,6 +103,49 @@ if (GVAR(doFullSearch)) then {
             } forEach (_items select {_x call EFUNC(sys_radio,isUniqueRadio)});
         } forEach _objects;
     } forEach _searchObjects;
+    // VEHICLE RACKS
+    {
+        private _rackId = typeOf _x;
+
+        if (getNumber (_cfgVehicles >> _rackId >> "acre_isUnique") == 1) then {
+            private _vehicle = _x getVariable [QEGVAR(sys_rack,rackVehicle), objNull];
+            private _mainObject = _x;
+            if (isNull _vehicle || {!alive _vehicle}) then {
+                deleteVehicle _x; // Acre racks should always be attached to something.
+            } else {
+                _mainObject = _vehicle;
+                if (_idList pushBackUnique _rackId != -1) then { // Add to ID list and this condition returns true if it was not present in the _idList.
+                    HASH_SET(_idTable, _rackId, [ARR_2(_mainObject,_x)]);
+                } else { // Already present in _idList
+                    private _duplicateIdList = [];
+                    if (!HASH_HASKEY(_duplicateIdTable, _rackId)) then {
+                        HASH_SET(_duplicateIdTable, _rackId, _duplicateIdList);
+                    } else {
+                        HASH_GET(_duplicateIdTable, _rackId);
+                    };
+                    _duplicateIdList pushBack [_mainObject, _x];
+                };
+               //Mounted Radio
+                private _mountedRadio = [_rackId] call EFUNC(sys_rack,getMountedRadio);
+                if (_mountedRadio != "") then { // Radio is mounted.
+                    if (getNumber (_cfgWeapons >> _mountedRadio >> "acre_isUnique") == 1) then {
+                        if (_idList pushBackUnique _mountedRadio != -1) then { // Add to ID list and this condition returns true if it was not present in the _idList.
+                            HASH_SET(_idTable, _mountedRadio, [ARR_2(_mainObject,_x)]);
+                        } else { // Already present in _idList
+                            private _duplicateIdList = [];
+                            if (!HASH_HASKEY(_duplicateIdTable, _mountedRadio)) then {
+                                HASH_SET(_duplicateIdTable, _mountedRadio, _duplicateIdList);
+                            } else {
+                                HASH_GET(_duplicateIdTable, _mountedRadio);
+                            };
+                            _duplicateIdList pushBack [_mainObject, _x];
+                        };
+                    };
+                };
+            };
+        };
+    } forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
+
     {
         private _key = _x;
         if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {

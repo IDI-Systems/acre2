@@ -22,4 +22,8 @@ params ["_radioId", ["_preset", "default"]];
 
 private _baseName = BASECLASS(_radioId);
 [_radioId, "initializeComponent", [_baseName, _preset]] call EFUNC(sys_data,dataEvent);
+
+// External radio use
+[_radioId] call EFUNC(sys_external,initRadio);
+
 TRACE_1("", _baseName);

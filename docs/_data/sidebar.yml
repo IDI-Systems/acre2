@@ -61,6 +61,18 @@ entries:
       url: /wiki/user/babel
       output: web, pdf
 
+    - title: External Radios
+      url: /wiki/user/external-radios
+      output: web, pdf
+
+    - title: Vehicle Intercom
+      url: /wiki/user/vehicle-intercom
+      output: web, pdf
+
+    - title: Vehicle Racks
+      url: /wiki/user/vehicle-racks
+      output: web, pdf
+
     - title: Radio Signal Loss
       url: /wiki/user/radio-signal-loss
       output: web, pdf
@@ -135,6 +147,14 @@ entries:
 
     - title: Vehicle Attenuation
       url: /wiki/frameworks/vehicle-attenuation
+      output: web, pdf
+
+    - title: Vehicle Intercom
+      url: /wiki/frameworks/vehicle-intercom
+      output: web, pdf
+
+    - title: Vehicle Racks
+      url: /wiki/frameworks/vehicle-racks
       output: web, pdf
 
     - title: Component System

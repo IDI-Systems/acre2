@@ -24,6 +24,8 @@
 
 params ["_radioId", "", "_radios", "", ""];
 
+if (!([_radioId] call EFUNC(sys_radio,canUnitReceive))) exitWith { [] };
+
 if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !EGVAR(sys_core,fullDuplex)) exitWith { [] };
 private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
 private _found = false;

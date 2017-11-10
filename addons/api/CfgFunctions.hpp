@@ -52,6 +52,15 @@ class CfgFunctions {
             PATHTO_FNC(setCurrentRadioChannelNumber);
             PATHTO_FNC(getCurrentRadioChannelNumber);
         };
+
+        class Racks {
+            PATHTO_FNC(initVehicleRacks);
+            PATHTO_FNC(getMountedRackRadio);
+            PATHTO_FNC(getVehicleRacks);
+            PATHTO_FNC(mountRackRadio);
+            PATHTO_FNC(unmountRackRadio);
+        };
+
         class Presets {
             PATHTO_FNC(setPreset);
             PATHTO_FNC(getPreset);

@@ -37,6 +37,9 @@
  *      true
 */
 
+params ["_radioId", "", "", "", ""];
+[_radioId, "setState", ["radioGuiOpened", false]] call EFUNC(sys_data,dataEvent);
+
 GVAR(currentRadioId) = -1;
 
 true

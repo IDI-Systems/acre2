@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_external">
+        <Key ID="STR_ACRE_sys_external_externalRadios">
+            <English>Shared Radios</English>
+            <Spanish>Radios compartidas</Spanish>
+            <German>Gemeinsame Funkgeräte</German>
+            <Japanese>無線機を共有</Japanese>
+            <Russian>Общие рации</Russian>
+            <Polish>Udostępnione radia</Polish>
+            <Chinese>已共用無線電</Chinese>
+            <Chinesesimp>已共用无线电</Chinesesimp>
+            <Korean>무전기가 공유됨</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_shareRadio">
+            <English>Share Radio</English>
+            <Spanish>Compartir radio</Spanish>
+            <German>Radio teilen</German>
+            <Japanese>無線機の共有</Japanese>
+            <Russian>Передать рацию</Russian>
+            <Polish>Udostępnij radio</Polish>
+            <Chinese>共用無線電</Chinese>
+            <Chinesesimp>共用无线电</Chinesesimp>
+            <Korean>무전기 공유</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_unshareRadio">
+            <English>Unshare Radio</English>
+            <Spanish>No compartir radio</Spanish>
+            <German>Radio nicht teilen</German>
+            <Japanese>無線機の共有解除</Japanese>
+            <Russian>Забрать рацию</Russian>
+            <Polish>Wył. udostępnianie</Polish>
+            <Chinese>取消共用無線電</Chinese>
+            <Chinesesimp>取消共用无线电</Chinesesimp>
+            <Korean>무전기 공유 해제</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_takeHandset">
+            <English>Take Handset</English>
+            <Japanese>ヘッドセットを取る</Japanese>
+            <Chinese>拿起聽筒</Chinese>
+            <Chinesesimp>拿起听筒</Chinesesimp>
+            <Korean>헤드셋 얻기</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_takeHeadset">
+            <English>Take Headset</English>
+            <Spanish>Coger transmisor</Spanish>
+            <German>Headset abholen</German>
+            <Japanese>ヘッドセットを取る</Japanese>
+            <Russian>Взять наушники</Russian>
+            <Polish>Weź słuchawkę</Polish>
+            <Chinese>拿起耳機</Chinese>
+            <Chinesesimp>拿起耳机</Chinesesimp>
+            <Korean>헤드셋 얻기</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_returnHandset">
+            <English>Return Handset</English>
+            <Japanese>ヘッドセットを戻す</Japanese>
+            <Chinese>放回聽筒</Chinese>
+            <Chinesesimp>放回听筒</Chinesesimp>
+            <Korean>헤드셋 돌려놓기</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_returnHeadset">
+            <English>Return Headset</English>
+            <Spanish>Devolver transmisor</Spanish>
+            <German>Headset zuruckgeben</German>
+            <Japanese>ヘッドセットを戻す</Japanese>
+            <Russian>Вернуть наушники</Russian>
+            <Polish>Odłóż słuchawkę</Polish>
+            <Chinese>放回耳機</Chinese>
+            <Chinesesimp>放回耳机</Chinesesimp>
+            <Korean>헤드셋 돌려놓기</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_giveHandset">
+            <English>Give Handset</English>
+            <Japanese>ヘッドセットを渡す</Japanese>
+            <Chinese>給予聽筒</Chinese>
+            <Chinesesimp>给予听筒</Chinesesimp>
+            <Korean>헤드셋 주기</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_giveHeadset">
+            <English>Give Headset</English>
+            <Spanish>Dar transmisor</Spanish>
+            <German>Headset geben</German>
+            <Japanese>ヘッドセットを渡す</Japanese>
+            <Russian>Дать наушники</Russian>
+            <Polish>Podaj słuchawkę</Polish>
+            <Chinese>給予耳機</Chinese>
+            <Chinesesimp>给予耳机</Chinesesimp>
+            <Korean>헤드셋 주기</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_hintGiveOwner">
+            <English>%1 gave your %2 to %3</English>
+            <Japanese>%1 はあなたの %2 を %3 に渡す</Japanese>
+            <Chinese>%1把你的%2交給%3</Chinese>
+            <Chinesesimp>%1把你的%2交给%3</Chinesesimp>
+            <Korean>%1은 %3에게 %2를 주었다</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_hintReturn">
+            <English>Stop using %1 from %2</English>
+            <Japanese>%1 を %2 から使用停止する</Japanese>
+            <Russian>Перестать использовать %1 из %2</Russian>
+            <Polish>Przestałeś używać %1 od %2</Polish>
+            <Chinese>停止使用%2的%1</Chinese>
+            <Chinesesimp>停止使用%2的%1</Chinesesimp>
+            <Korean>%2의 %1을 사용중지</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_hintReturnOwner">
+            <English>%1 stopped using your %2</English>
+            <Japanese>%1 はあなたの %2 の使用を止めた</Japanese>
+            <Chinese>%1停止使用你的%2</Chinese>
+            <Chinesesimp>%1停止使用你的%2</Chinesesimp>
+            <Korean>%1가 %2의 사용을 중지함</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_hintTake">
+            <English>Start using %1 from %2</English>
+            <Japanese>%1 を %2 から使用する</Japanese>
+            <Russian>Начать использовать %1 из %2</Russian>
+            <Polish>Używasz %1 od %2</Polish>
+            <Chinese>開始使用%2的%1</Chinese>
+            <Chinesesimp>开始使用%2的%1</Chinesesimp>
+            <Korean>%2의 %1을 사용시작</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_hintTakeOwner">
+            <English>%1 started using your %2</English>
+            <Japanese>%1 はあなたの %2 を使い始めた</Japanese>
+            <Chinese>%1開始使用你的%2</Chinese>
+            <Chinesesimp>%1开始使用你的%2</Chinesesimp>
+            <Korean>%1가 %2의 사용을 시작함</Korean>
+        </Key>
+    </Package>
+</Project>

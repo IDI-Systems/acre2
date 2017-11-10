@@ -8,7 +8,7 @@
  * 2: Destination preset name <STRING>
  *
  * Return Value:
- * Copy preset succesful <BOOLEAN>
+ * Copy preset successful <BOOLEAN>
  *
  * Example:
  * [["ACRE_PRC152", "default2", "balls"] call acre_api_fnc_copyPreset;E

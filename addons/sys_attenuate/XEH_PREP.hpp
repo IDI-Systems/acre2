@@ -1,3 +1,3 @@
 PREP(getUnitAttenuate);
-PREP(isCrewIntercomAttenuate);
 PREP(getVehicleAttenuation);
+PREP(isIntercomAttenuate);

@@ -16,39 +16,41 @@ This playtesting allows us to guarantee that ACRE2 supports, without glitches, 1
 
 ### High-Level Summary
 
-* Provides realistic sounding radio and direct voice communications for ArmA3
-* Signal loss and degradation is done using REAL WORLD ITU Terrain loss modeling and signal propagation techniques. We model everything from mapping terrain and creating loss maps to the antenna's, power and frequencies of the radios
-* 'Regular' talking can travel over 100 meters in ideal terrain
-* Direct speaking occlusion, buildings and objects block your voice
-* AI direct speaking detection; AI can also hear you talking and alert to you
-* All radios are modeled and SIMULATED to their real world counterparts
-* Easy to use, only a few buttons are required to play
-* Babel feature & Radio configurations allows for immersive TVT and brings radios/communication in as a gameplay mechanic
-* Extensive and documented API and example set for easy use
-* Template setups for milsim community operations
-* All vehicles have realistic attenuation, meaning different positions hear inside/outside differently.
-* Vehicle intercom system; Vehicles with intercoms automatically have crew communicate with them
-* In-game speakers; you can put your radio on 'speaker' mode and everyone can listen. If you drop the radio, it keeps playing!
-* Multiple Push-To-Talk keys, for assigning different radios to different hotkeys
-* Preset naming and descriptions for radios that support it. Includes name showing in hints
-* Automatic TeamSpeak 3 Channel Switching
+- Provides realistic sounding radio and direct voice communications for ArmA3
+- Signal loss and degradation is done using REAL WORLD ITU Terrain loss modeling and signal propagation techniques. We model everything from mapping terrain and creating loss maps to the antenna's, power and frequencies of the radios
+- 'Regular' talking can travel over 100 meters in ideal terrain
+- Direct speaking occlusion, buildings and objects block your voice
+- AI direct speaking detection; AI can also hear you talking and alert to you
+- All radios are modeled and SIMULATED to their real world counterparts
+- Easy to use, only a few buttons are required to play
+- Babel feature & Radio configurations allows for immersive TVT and brings radios/communication in as a gameplay mechanic
+- Extensive and documented API and example set for easy use
+- Template setups for milsim community operations
+- All vehicles have realistic attenuation, meaning different positions hear inside/outside differently
+- Vehicle intercom system; Vehicles with intercoms automatically have crew communicate with them. Additionally some vehicles like tanks and IFVs have Infantry Telephones (dev-build only)
+- Vehicle racks; Vehicles can now have radio racks mounted that allow increasing the transmitting power of mounted radios. It is integrated into vehicle intercom functionality (dev-build only)
+- In-game speakers; you can put your radio on 'speaker' mode and everyone can listen. If you drop the radio, it keeps playing!
+- Multiple Push-To-Talk keys, for assigning different radios to different hotkeys
+- Preset naming and descriptions for radios that support it. Includes name showing in hints
+- External radios; radios in other player's inventory can be accessed and used (dev-build only)
+- Automatic TeamSpeak 3 Channel Switching
 
 ### Radio Communications
 
-* ITU Signal Loss and Terrain Modelling
-* Radio Interfaces
-* Easy to Use
-* API/Pre-programming for milsim groups
-* Antennas and Components
+- ITU Signal Loss and Terrain Modelling
+- Radio Interfaces
+- Easy to Use
+- API/Pre-programming for milsim groups
+- Antennas and Components
 
 ## Direct Communications
 
-* Babel (TVT Languages)
-* Distance and Scaling
-* Building/object Occlusion
-* Vehicle Intercoms
-* Vehicle Attenuation
-* AI Hears you
+- Babel (TVT Languages)
+- Distance and Scaling
+- Building/object Occlusion
+- Vehicle Intercoms and Infantry Telephones (dev-build only)
+- Vehicle Attenuation
+- AI Hears you
 
 ### TVT
 

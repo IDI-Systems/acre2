@@ -47,13 +47,18 @@ if (!(isNil "_optChannelId") && !(isNil "_opt")) then {
 };
 
 private _channelType = HASH_GET(_currentChannelData, "channelMode");
+private _powerSource = HASH_GET(_radioData, "powerSource");
 private _return = HASH_CREATE;
 switch _channelType do {
     case "BASIC": {
         HASH_SET(_return, "mode", "singleChannel");
         HASH_SET(_return, "frequencyTX", HASH_GET(_currentChannelData, "frequencyTX"));
         HASH_SET(_return, "frequencyRX", HASH_GET(_currentChannelData, "frequencyRX"));
-        HASH_SET(_return, "power", HASH_GET(_currentChannelData, "power"));
+        if (_powerSource == "BAT") then {
+            HASH_SET(_return, "power", HASH_GET(_currentChannelData, "power"));
+        } else { // RACK BOOST
+            HASH_SET(_return, "power", VRC110_RACK_POWER);
+        };
         HASH_SET(_return, "CTCSSTx", HASH_GET(_currentChannelData, "CTCSSTx"));
         HASH_SET(_return, "CTCSSRx", HASH_GET(_currentChannelData, "CTCSSRx"));
         HASH_SET(_return, "modulation", HASH_GET(_currentChannelData, "modulation"));

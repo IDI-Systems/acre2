@@ -6,7 +6,7 @@
  * 0: Language ID <STRING>
  *
  * Return Value:
- * Setup succesful <BOOL>
+ * Setup successful <BOOL>
  *
  * Example:
  * ["en"] call acre_api_fnc_babelSetSpeakingLanguage;

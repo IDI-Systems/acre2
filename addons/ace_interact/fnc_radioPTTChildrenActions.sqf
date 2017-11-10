@@ -16,8 +16,8 @@
  */
 #include "script_component.hpp"
 
-params ["_target","","_params"];
-_params params ["_radio","","_pttAssign"];
+params ["_target", "", "_params"];
+_params params ["_radio", "", "_pttAssign"];
 
 private _actions = [];
 private _idx = _pttAssign find _radio;

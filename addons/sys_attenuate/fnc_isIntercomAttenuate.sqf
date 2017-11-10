@@ -9,20 +9,18 @@
  * Is other unit speaking on intercom <Boolean>
  *
  * Example:
- * [unit] call acre_sys_attenuate_fnc_isCrewIntercomAttenuate
+ * [unit] call acre_sys_attenuate_fnc_isIntercomAttenuate
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 params ["_unit"];
+
 private _ret = false;
 
-if ((_unit in ACRE_PLAYER_VEHICLE_CREW) and {vehicle acre_player != acre_player}) then {
-    _hasCVC = getNumber (configFile >> "CfgVehicles" >> typeOf (vehicle acre_player) >> "ACRE" >> "CVC" >> "hasCVC");
-    if (_hasCVC == 1) then {
-        _ret = true;
-    };
-};
+{
+    if (_unit in _x) exitWith { _ret =  true };
+} forEach ACRE_PLAYER_INTERCOM;
 
 _ret

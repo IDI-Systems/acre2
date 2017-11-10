@@ -20,7 +20,8 @@ class CfgAcreComponents {
 
         connectors[] = {
             {"Antenna", ACRE_CONNECTOR_TNC},
-            {"Audio/Data", ACRE_CONNECTOR_U_283}
+            {"Audio/Data", ACRE_CONNECTOR_U_283},
+            {"Side Connector", ACRE_CONNECTOR_CONN_18PIN}
         };
 
         defaultComponents[] = {
@@ -92,8 +93,9 @@ class CfgAcreComponents {
     /*
     class ACRE_PRC148_UHF: ACRE_PRC148 {
         name = "AN/PRC-148 UHF";
-        defaultAntennas[] = { {0, "ACRE_14IN_UHF_TNC"}
-                            };
+        defaultAntennas[] = {
+            {0, "ACRE_14IN_UHF_TNC"}
+        };
     };
     */
 };
