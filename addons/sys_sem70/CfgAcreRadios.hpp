@@ -7,7 +7,7 @@ class CfgAcreComponents {
     };
 
     class ACRE_SEM70: ACRE_SEM70_base {
-        name = "SEM 70";
+        name = QUOTE(NAME_SEM70);
         sinadRating = -117;
         sensitivityMin = -117;
         sensitivityMax = -50;

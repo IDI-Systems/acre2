@@ -16,6 +16,8 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
+#define NAME_PRC343 AN/PRC-343
+
 #define GET_VAR(var1) acre_player getVariable QGVAR(var1)
 #define SET_VAR(var1,var2) acre_player setVariable [QGVAR(var1), var2]
 
