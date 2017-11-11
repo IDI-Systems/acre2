@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_radio">
         <Key ID="STR_ACRE_sys_radio_radioSupplyCrate">
@@ -64,6 +64,9 @@
             <Chinese>無線電正在被另一名玩家進行設置。</Chinese>
             <Chinesesimp>无线电正在被另一名玩家进行设置。</Chinesesimp>
             <Korean>다른 플레이어가 무전기를 설정중입니다.</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_radioJustOpened">
+            <English>Somebody beat you when trying to configure the radio and you respectfully step away.</English>
         </Key>
     </Package>
 </Project>

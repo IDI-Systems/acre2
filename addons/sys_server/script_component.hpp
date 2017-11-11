@@ -17,3 +17,4 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 
 #define MAX_RADIO 512
+#define RADIO_IS_NOT_OPENED -1

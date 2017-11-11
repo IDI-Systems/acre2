@@ -1,3 +1,5 @@
+PREP(openRadioCheckRequest);
+PREP(openRadioUpdateState);
 PREP(doAddComponentCargo);
 PREP(getRadioId);
 PREP(setSpectator);
