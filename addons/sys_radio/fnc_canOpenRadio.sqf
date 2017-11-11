@@ -51,7 +51,7 @@ if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || {_radioId in ACRE_ACTIVE_EXTERNAL
         /* Check if in the server, there is a radio registered as opened. This is done in order to prevent race conditions when two players try to
          * simultaneously open a radio. We do not want fights because of ACRE2.
          */
-         [QEGVAR(sys_server,openRadioCheck), [_radioId, owner acre_player]] call CBA_fnc_serverEvent;
+         [QEGVAR(sys_server,openRadioCheck), [_radioId, acre_player]] call CBA_fnc_serverEvent;
     };
 };
 

@@ -5,7 +5,11 @@ if (isServer) then {
     GVAR(playerDisconnected) = addMissionEventHandler ["HandleDisconnected", {
         params ["_unit", "", "", ""];
         {
-            [_x, "setState", ["radioGuiOpened", false]] call EFUNC(sys_data,dataEvent);
+            if ([_x, "getState", "radioGuiOpened"] call EFUNC(sys_data,dataEvent)) then {
+                [_x, "setState", ["radioGuiOpened", false]] call EFUNC(sys_data,dataEvent);
+
+                [QEGVAR(sys_server,openRadioUpdate), [_x, false, _unit]] call CBA_fnc_localEvent;
+            };
         } forEach (_unit getVariable [QEGVAR(sys_data,radioIdList), []]);
     }];
 };

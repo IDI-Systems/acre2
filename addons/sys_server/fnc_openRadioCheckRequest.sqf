@@ -3,27 +3,26 @@
  * Handles the request of a client checking if a radio is opened.
  *
  * Arguments:
- * 0: radio to check <STRING>
- * 1: Client ID <NUMBER>
+ * 0: Radio to check <STRING>
+ * 1: Unit <OBJECT>
  *
  * Return Value:
  * None
  *
  * Example:
- * ["acre_prc152_id_1", 1] call acre_sys_server_fnc_openRadioCheckRequest
+ * ["acre_prc152_id_1", acre_player] call acre_sys_server_fnc_openRadioCheckRequest
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_radioId", "_clientId"];
+params ["_radioId", "_unit"];
 
-private "_radioOpenedBy";
-call compile format ["_radioOpenedBy = %1", _radioId];
+// Check first if the radio is opened by somebody else
+private _radioOpenedBy = missionNamespace getVariable [_radioId, objNull];
 
-// A -1 is also returned if the radio is not opened by anybody
-if (isNil "_radioOpenedBy" || {_radioOpenedBy == RADIO_IS_NOT_OPENED}) then {
-    _radioOpenedBy = clientId;
+if (isNull _radioOpenedBy) then {
+    _radioOpenedBy = _unit;
 };
 
-[QGVAR(openRadioCheckResult), [_radioId, _radioOpenedBy], _clientId] call CBA_fnc_ownerEvent;
+[QGVAR(openRadioCheckResult), [_radioId, _radioOpenedBy], _unit] call CBA_fnc_targetEvent;
