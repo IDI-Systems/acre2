@@ -11,7 +11,7 @@ class CfgVehicles {
     class GVAR(basicMissionSetup): Module_F {
         scope = 2;
         displayName = "Basic Mission Setup";
-        author = "ACRE Team";
+        author = ECSTRING(main,Author);
         category = QGVAR(mission_setup);
 
         function = "AcreModules_fnc_basicMissionSetup";
@@ -122,7 +122,7 @@ class CfgVehicles {
     class GVAR(nameChannels): Module_F {
         scope = 2;
         displayName = "Name Channels";
-        author = "ACRE Team";
+        author = ECSTRING(main,Author);
         category = QGVAR(mission_setup);
 
         function = "AcreModules_fnc_nameChannels";
