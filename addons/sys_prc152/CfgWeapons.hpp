@@ -21,5 +21,5 @@ class CfgWeapons {
         };
     };
 
-    RADIO_ID_LIST(ACRE_PRC152,NAME_PRC152)
+    RADIO_ID_LIST(ACRE_PRC152)
 };

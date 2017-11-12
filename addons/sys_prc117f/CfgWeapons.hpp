@@ -22,5 +22,5 @@ class CfgWeapons {
         };
     };
 
-    RADIO_ID_LIST(ACRE_PRC117F,NAME_PRC117F)
+    RADIO_ID_LIST(ACRE_PRC117F)
 };

@@ -23,5 +23,5 @@ class CfgWeapons {
         };
     };
 
-    RADIO_ID_LIST(ACRE_SEM70,NAME_SEM70)
+    RADIO_ID_LIST(ACRE_SEM70)
 };
