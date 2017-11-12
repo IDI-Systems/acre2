@@ -23,12 +23,18 @@ class Extended_Killed_EventHandlers {
 };
 
 class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayArsenal {
+        ADDON = QUOTE(_this call FUNC(arsenalOpen));
+    };
     class RscDisplayEGSpectator {
         ADDON = QUOTE(_this call COMPILE_FILE(XEH_spectatorEGDisplayLoad));
     };
 };
 
 class Extended_DisplayUnload_EventHandlers {
+    class RscDisplayArsenal {
+        ADDON = QUOTE(_this call FUNC(arsenalClose));
+    };
     class RscDisplayEGSpectator {
         ADDON = QUOTE(_this call COMPILE_FILE(XEH_spectatorEGDisplayUnload));
     };

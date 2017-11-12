@@ -21,10 +21,9 @@ GVAR(requestingNewId) = false;
 
 LOG("Monitor Inventory Starting");
 DFUNC(monitorRadios_PFH) = {
-    if (!alive acre_player) exitWith {};
-    if ((side group acre_player) == sideLogic) exitWith {};
+    if (!alive acre_player || side group acre_player == sideLogic || EGVAR(sys_core,arsenalOpen)) exitWith {};
 
-        private _weapons = [acre_player] call EFUNC(sys_core,getGear);
+    private _weapons = [acre_player] call EFUNC(sys_core,getGear);
 
     // Handle ItemRadioAcreFlagged - This is a dummy ItemRadio that allows the player to continue using ingame text chat.
 
