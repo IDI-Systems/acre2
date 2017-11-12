@@ -20,10 +20,10 @@ params ["_vehicle"];
 private _type = typeOf _vehicle;
 
 // Configure what intercom networks the infantry phone has access to
-private _infantryPhoneIntercom = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneIntercom");
-private _infantryPhoneControlActions = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneControlActions");
+private _infantryPhoneIntercom = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneIntercom") apply {toLower _x};
+private _infantryPhoneControlActions = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneControlActions") apply {toLower _x};
 private _infantryPhoneDisableRinging = (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneDisableRinging")) == 1;
-private _infantryPhoneCustomRinging = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneCustomRinging");
+private _infantryPhoneCustomRinging = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneCustomRinging") apply {toLower _x};
 
 // Set by default to have access to all intercom networks if none was specified
 
