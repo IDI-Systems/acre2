@@ -18,7 +18,7 @@
 params ["_unit"];
 
 if (_unit == acre_player) then {
-    // All external radios in use are now returned to the owner.
+    // All external radios in use are now returned to the owner
     {
         private _owner = [_x] call FUNC(getExternalRadioOwner);
         [_x, _owner] call FUNC(stopUsingExternalRadio);
