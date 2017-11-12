@@ -78,6 +78,10 @@ DGVAR(languages) = [];
 DVAR(ACRE_TEST_OCCLUSION) = true;
 DVAR(ACRE_SIGNAL_DEBUGGING) = 0;
 
+DVAR(ACRE_ARSENAL_RADIOS) = [];                  // Radios that are 'stashed' while arsenal is open.
+
+DGVAR(arsenalOpen) = false;
+
 acre_player = player;
 
 GVAR(coreCache) = HASH_CREATE;

@@ -22,6 +22,11 @@ if (alive acre_player) then {
     private _weapons = [acre_player] call EFUNC(sys_core,getGear);
     _radioList = _weapons select {_x call EFUNC(sys_radio,isUniqueRadio)};
 
+    // If Arsenal is open radios are stashed in var until left
+    {
+        _radioList pushBackUnique _x;
+    } forEach ACRE_ARSENAL_RADIOS;
+
     if (ACRE_ACTIVE_RADIO != "") then {
         _radioList pushBackUnique ACRE_ACTIVE_RADIO;
     };
