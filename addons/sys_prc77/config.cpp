@@ -16,18 +16,8 @@ class CfgPatches {
 
 PRELOAD_ADDONS;
 
-class CfgVehicles {
-
-    class B_Kitbag_mcamo;
-    class ACRE_testBag: B_Kitbag_mcamo {
-        allowedSlots[] = {701, 801, 901};
-        displayName = "ACRE TEST BAG";
-    };
-};
-
 #include "CfgWeapons.hpp"
 #include "CfgAcreRadios.hpp"
-
 
 #include "CfgEventHandlers.hpp"
 #include "DialogDefines.hpp"
