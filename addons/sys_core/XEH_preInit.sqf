@@ -83,6 +83,7 @@ DVAR(ACRE_EXTERNALLY_USED_MANPACK_RADIOS) = [];  // Manpack radios in player's i
 DVAR(ACRE_EXTERNALLY_USED_PERSONAL_RADIOS) = []; // Personal radios in player's inventory that are being used externally
 DVAR(ACRE_ACCESSIBLE_RACK_RADIOS) = [];          // Extra radios that a player can use, should be used for radios that are racked
 DVAR(ACRE_HEARABLE_RACK_RADIOS) = [];            // Extra rack radios that a player can use
+DVAR(ACRE_ARSENAL_RADIOS) = [];                  // Radios that are 'stashed' while arsenal is open.
 DVAR(ACRE_BLOCKED_TRANSMITTING_RADIOS) = [];
 
 DGVAR(arsenalOpen) = false;

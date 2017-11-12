@@ -21,7 +21,7 @@ GVAR(requestingNewId) = false;
 
 LOG("Monitor Inventory Starting");
 DFUNC(monitorRadios_PFH) = {
-    if (!alive acre_player || side group acre_player == sideLogic || GVAR(arsenalOpen)) exitWith {};
+    if (!alive acre_player || side group acre_player == sideLogic || EGVAR(sys_core,arsenalOpen)) exitWith {};
 
     private _weapons = [acre_player] call EFUNC(sys_core,getGear);
 
