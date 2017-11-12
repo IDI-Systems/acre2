@@ -11,6 +11,7 @@ GVAR(rackBaseClassCache) = HASH_CREATE;
 
 if (hasInterface) then {
     GVAR(initializedVehicleClasses) = [];
+    GVAR(rackPFH) = -1;
 };
 
 ADDON = true;

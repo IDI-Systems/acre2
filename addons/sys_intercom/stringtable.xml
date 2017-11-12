@@ -56,15 +56,15 @@
             <Korean>보병 전화를 돌려놓기</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
-            <English>Start calling</English>
-            <Spanish>Llamar al exterior</Spanish>
-            <German>Läuten</German>
-            <Japanese>呼び出す</Japanese>
-            <Russian>Начать звонок</Russian>
-            <Polish>Zadzwoń</Polish>
-            <Chinese>開始呼叫</Chinese>
-            <Chinesesimp>开始呼叫</Chinesesimp>
-            <Korean>전화 시작</Korean>
+            <English>Start calling %1</English>
+            <Spanish>Llamar al exterior %1</Spanish>
+            <German>Läuten %1</German>
+            <Japanese>呼び出す %1</Japanese>
+            <Russian>Начать звонок %1</Russian>
+            <Polish>Zadzwoń %1</Polish>
+            <Chinese>開始呼叫 %1</Chinese>
+            <Chinesesimp>开始呼叫 %1</Chinesesimp>
+            <Korean>전화 시작 %1</Korean>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_stopCalling">
             <English>Stop calling</English>

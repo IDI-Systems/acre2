@@ -70,13 +70,13 @@ if (_target isKindOf "CAManBase") then {
                     _forEachIndex
                 ] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
-            } forEach _intercomNames;
+            } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
         } else {
             (_target getVariable [QGVAR(unitInfantryPhone), [acre_player, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", ""];
             if (_vehicleInfantryPhone == _target) then {
                 // Generate the action to return the infantry telephone
                 private _action = [
-                    format ["acre_return_infantryTelephone"],
+                    "acre_return_infantryTelephone",
                     format [localize LSTRING(returnInfantryPhone)],
                     "",
                     {
@@ -114,7 +114,7 @@ if (_target isKindOf "CAManBase") then {
                         [_forEachIndex, _infantryPhoneNetwork]
                     ] call ace_interact_menu_fnc_createAction;
                     _actions pushBack [_action, [], _target];
-                } forEach _intercomNames;
+                } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
             };
         };
     } else {
@@ -138,20 +138,22 @@ if (_target isKindOf "CAManBase") then {
             _actions pushBack [_action, [], _target];
         } else {
             if (isNull _vehicleInfantryPhone && {!(_target getVariable [QGVAR(infPhoneDisableRinging), false])}) then {
-                private _action = [
-                    "acre_infantryTelephone_startCalling",
-                    localize LSTRING(infantryPhone_startCalling),
-                    "",
-                    {
-                         params ["_target", "_player", "_params"];
-                        _params params ["_intercomNetwork"];
+                {
+                    private _action = [
+                        format ["acre_infantryTelephone_startCalling_%1", _x],
+                        format [localize LSTRING(infantryPhone_startCalling), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+                        "",
+                        {
+                             params ["_target", "_player", "_params"];
+                            _params params ["_intercomNetwork"];
 
-                        [_target, _intercomNetwork] call FUNC(infantryPhoneSoundCall)},
-                    {true},
-                    {},
-                    _isCalling select 1
-                ] call ace_interact_menu_fnc_createAction;
+                            [_target, _intercomNetwork] call FUNC(infantryPhoneSoundCall)},
+                        {true},
+                        {},
+                        _isCalling select 1
+                    ] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
+                } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
             };
         };
     };
