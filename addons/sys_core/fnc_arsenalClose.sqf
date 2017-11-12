@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Handles closing Aresnal
+ * Handles closing Arsenal.
  *
  * Arguments:
  * None
@@ -13,9 +13,9 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
+#include "script_component.hpp"
 
-if (is3DEN) exitWith {}; // Exit if Eden Arsenal.
+if (is3DEN) exitWith {}; // Exit if Eden Arsenal
 
 private _weapons = ([acre_player] call EFUNC(sys_core,getGear)) apply {toLower _x};
 

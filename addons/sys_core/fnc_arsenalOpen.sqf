@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Handles open Arsenal
+ * Handles open Arsenal.
  *
  * Arguments:
  * None
@@ -15,7 +15,7 @@
  */
 #include "script_component.hpp"
 
-if (is3DEN) exitWith {}; // Exit if Eden Arsenal.
+if (is3DEN) exitWith {}; // Exit if Eden Arsenal
 
 GVAR(arsenalOpen) = true;
 
