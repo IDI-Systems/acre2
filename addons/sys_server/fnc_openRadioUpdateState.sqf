@@ -28,5 +28,5 @@ if (isNull _radioOpenedBy || {_radioOpenedBy == _unit}) then {
     if (_radioIsOpened) then {
         _newState = _unit;
     };
-    missionNamespace setVariable [_radioId, _newState];
+    HASH_SET(GVAR(radioOpenedBy), _radioId, _newState);
 };

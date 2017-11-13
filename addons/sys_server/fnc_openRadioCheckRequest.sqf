@@ -19,7 +19,7 @@
 params ["_radioId", "_unit"];
 
 // Check first if the radio is opened by somebody else
-private _radioOpenedBy = missionNamespace getVariable [_radioId, objNull];
+private _radioOpenedBy = HASH_GET(GVAR(radioOpenedBy),_radioId);
 
 if (isNull _radioOpenedBy) then {
     _radioOpenedBy = _unit;

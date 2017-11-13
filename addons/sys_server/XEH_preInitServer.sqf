@@ -22,5 +22,7 @@ GVAR(nextSearchTime) = diag_tickTime + 5;
 GVAR(unacknowledgedIds) = [];
 GVAR(unacknowledgedTable) = HASH_CREATE;
 
+GVAR(radioOpenedBy) = HASH_CREATE;
+
 ADDON = true;
 
