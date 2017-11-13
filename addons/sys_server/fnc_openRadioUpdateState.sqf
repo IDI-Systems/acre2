@@ -3,8 +3,8 @@
  * Updates the open radio state.
  *
  * Arguments:
- * 0: radio to update <STRING>
- * 1: radio opened state <BOOL>
+ * 0: Radio to update <STRING>
+ * 1: Radio opened state <BOOL>
  * 2: Unit <OBJECT>
  *
  * Return Value:

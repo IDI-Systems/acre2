@@ -1,14 +1,14 @@
 #include "script_component.hpp"
 
 if (isServer) then {
-    // Close the radio if it was opened in case of disconnection in order to prevend dead lock state
+    // Close the radio if it was opened in case of disconnection in order to prevent dead lock state
     GVAR(playerDisconnected) = addMissionEventHandler ["HandleDisconnected", {
         /*
          * Arguments:
          * 0: Disconnected unit <OBJECT>
          * 1: Unique DirectPlay ID <NUMBER>
          * 2: Steam ID of the leaving player <NUMBER>
-         * 3: profile name of the leaving player <STRING>
+         * 3: Profile name of the leaving player <STRING>
          */
         params ["_unit", "", "", ""];
         {
