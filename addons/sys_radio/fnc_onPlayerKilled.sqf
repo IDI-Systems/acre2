@@ -24,7 +24,7 @@ if ((_this select 0) == acre_player) then {
         acre_player setVariable [_radioName, nil, false];
 
         // Make sure the GUI state is closed so that other players can open the radio
-        [_radioName, "setState", ["radioGuiOpened", false]] call EFUNC(sys_data,dataEvent);
+        [_radioName, false] call FUNC(setRadioOpenState);
     } foreach GVAR(currentRadioList);
     GVAR(currentRadioList) = [];
 
