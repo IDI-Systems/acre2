@@ -8,4 +8,9 @@ if (!hasInterface) exitWith {};
 acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
 
 // Register volume control key handlers
-["ACRE2", "VolumeControl", (localize LSTRING(VolumeControl)), FUNC(onVolumeControlKeyPress), FUNC(onVolumeControlKeyPressUp), [15, [false, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "VolumeControl", localize LSTRING(VolumeControl),
+    FUNC(onVolumeControlKeyPress),
+    FUNC(onVolumeControlKeyPressUp),
+[15, [false, false, false]], true] call CBA_fnc_addKeybind;
+
+["unit", FUNC(onVolumeControlKeyPressUp)] call CBA_fnc_addPlayerEventHandler;

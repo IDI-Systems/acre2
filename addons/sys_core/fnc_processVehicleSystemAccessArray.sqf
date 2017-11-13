@@ -1,6 +1,29 @@
 /*
  * Author: ACRE2Team
- * Parses the intercom configuration arrays and converts it to a usable format.
+ * Parses the intercom and racks configuration arrays and converts it to a usable format.
+ *
+ * The configuration arrays are used in order to determine seat functionality in a vehicle using high level entries like
+ * "all", "inside", "crew". This function converts these configuration arrays to a format that is more easy to parse in
+ * code.
+ *
+ * The following keywords are supported:
+ * - crew: selects positions of driver, commander, gunner and all non-ffv turrets.
+ * - copilot: selects the copilot seat
+ * - all: can be used in combination with cargo, turret, ffv and turnedOut entries. Selects all entries that matches the
+ *   vehicle role.
+ * - cargo: identifier for cargo positions. It must be followed by a valid cargo index or the "all" keyword.
+ * - turret: identifier for turret positions. It must be followed by a valid turret path or the "all" keyword.
+ * - ffv: identifier for turret positions of the type ffv. It must be followed by a valid turret path or the "all" keyword.
+ * - turnedOut: identifier for situations where the player is turned out of the vehicle. It must be followed by a valid
+ *   turret path or the "all" keyword.
+ * - inside: selects all seats inside the vehicle.
+ *
+ * The following cases are ilustrative examples of the outcome of this function:
+ * - Configuration array ["driver", ["cargo", 1, 2]] -> [["driver"], ["cargo", 1], ["cargo", 2]]
+ * - Configuration array ["crew"] -> [["driver"], ["commander"], ["gunner"], ["turret", [0]], ["turret", [1]]
+ * - Configuration array ["inside"] -> [["driver"], ["commander"], ["gunner"], ["cargo", 1], ["cargo", 2], ..., ["cargo", n]]
+ * - Configuration array ["cargo", "all"] -> [["cargo", 1], ["cargo", 2], ["cargo", 3], ..., ["cargo", n]]
+ * - Configuration array [["turret", [1], [2]], [[turnedOut, [3]]] -> [["turret", [1]], ["turret", [2]], ["turnedOut", [3]]]
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -10,7 +33,7 @@
  * Formatted array <ARRAY>
  *
  * Example:
- * [cursorTarget, ["driver", ["cargo", 1, 2]]] call acre_sys_intercom_processConfigArray
+ * [cursorTarget, ["driver", ["cargo", 1, 2]]] call acre_sys_intercom_fnc_processVehicleSystemAccessArray
  *
  * Public: No
  */
@@ -47,8 +70,20 @@ private _processedArray = [];
                     _processedArray pushBackUnique ["turret", _x];
                 } forEach _copilot;
             };
+            case "inside": {
+                private _role = _x;
+                private _fullCrew = fullCrew [_vehicle, "", true];
+                {
+                    private _role = toLower (_x select 1);
+                    if (_role in ["cargo", "turret"]) then {
+                        _processedArray pushBackUnique [_role, _x select 2];
+                    } else {
+                        _processedArray pushBackUnique [_role];
+                    };
+                } forEach _fullCrew;
+            };
             default {
-                // Position is of type commander, driver, gunner, inside or external
+                // Position is of type commander, driver, gunner or external
                 _processedArray pushBackUnique [_x];
             };
         };

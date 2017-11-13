@@ -7,12 +7,12 @@ class CfgVehicles {
     };
     class Thing;
     class ACRE_BaseRack : Thing {
-        author = "ACRE2 Team";// TODO: sort out
+        author = ECSTRING(main,Author);
         displayName = "ACRE Base Rack";
         scope = 0;
         mass = 0;
         vehicleClass = "";
-        
+
         acre_isRack = 1;
         acre_hasUnique = 1;
     };
