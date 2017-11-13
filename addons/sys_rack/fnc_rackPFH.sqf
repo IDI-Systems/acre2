@@ -33,7 +33,7 @@ if (_player != vehicle _player) then {
                 [_vehicle, _player, _radioId] call FUNC(startUsingMountedRadio);
             };
         };
-    } forEach (([_vehicle, _player] call FUNC(getHearableVehicleRacks)) apply {toLower _x});
+    } forEach ([_vehicle, _player] call FUNC(getHearableVehicleRacks));
 };
 
 // Check whether the vehicle rack radios can still be used
@@ -48,7 +48,7 @@ private _remove = [];
 
     // Check only those radios connected on intercom systems
     if (count ([_rack] call FUNC(getWiredIntercoms)) > 0 && _isRackHearable) then {
-        private _functionality = [_x, _vehicle, _player, toLower _rack] call EFUNC(sys_intercom,getRxTxCapabilities);
+        private _functionality = [_x, _vehicle, _player, _rack] call EFUNC(sys_intercom,getRxTxCapabilities);
 
         if (_functionality == RACK_NO_MONITOR) then {_remove pushBackUnique _x;};
     };
