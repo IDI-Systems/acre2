@@ -15,6 +15,9 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+#define NAME_PRC152 AN/PRC-152
+
 #include "\idi\acre\addons\sys_prc152\menus\script_menus.hpp"
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
