@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
@@ -76,9 +76,6 @@
             <English>TeamSpeak Channel Password</English>
             <Chinese>Teamspeak頻道密碼</Chinese>
             <Chinesesimp>Teamspeak频道密码</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
-            <English>TeamSpeak Channel Password</English>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
