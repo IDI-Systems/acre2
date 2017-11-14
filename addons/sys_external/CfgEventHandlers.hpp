@@ -20,4 +20,4 @@ class Extended_Killed_EventHandlers {
     class Man {
         ADDON = QUOTE(_this call FUNC(onPlayerKilled));
     };
-}
+};
