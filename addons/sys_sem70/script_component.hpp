@@ -16,6 +16,8 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
+#define NAME_SEM70 SEM 70
+
 #define GET_VAR(var1) acre_player getVariable QUOTE(GVAR(var1))
 #define SET_VAR(var1,var2) acre_player setVariable [QUOTE(GVAR(var1)), var2]
 

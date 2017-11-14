@@ -16,6 +16,9 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
+#define NAME_PRC148 AN/PRC-148
+//#define NAME_PRC148_UHF AN/PRC-148 UHF
+
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
 
 #define BIG_LINE_1 50000

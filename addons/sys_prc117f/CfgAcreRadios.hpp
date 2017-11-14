@@ -7,14 +7,14 @@ class CfgAcreComponents {
     };
 
     class ACRE_PRC117F: ACRE_PRC117F_base {
-        name = "AN/PRC-117F";
+        name = QUOTE(NAME_PRC117F);
         sinadRating = -118;
         sensitivityMin = -118;
         sensitivityMax = -50;
         isPackRadio = 1;
         isDeployable = 0;
 
-        connectors[] = { 
+        connectors[] = {
             {"Antenna", ACRE_CONNECTOR_TNC},
             {"Audio/Data", ACRE_CONNECTOR_U_283}
         };

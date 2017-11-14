@@ -7,7 +7,7 @@ class CfgAcreComponents {
     };
 
     class ACRE_PRC148: ACRE_PRC148_base {
-        name = "AN/PRC-148 VHF";
+        name = QUOTE(NAME_PRC148);
         sinadRating = -116; // SINAD rating for radio
         sensitivityMin = -116-7;
         sensitivityMax = -50;
@@ -91,9 +91,10 @@ class CfgAcreComponents {
     };
     /*
     class ACRE_PRC148_UHF: ACRE_PRC148 {
-        name = "AN/PRC-148 UHF";
-        defaultAntennas[] = { {0, "ACRE_14IN_UHF_TNC"}
-                            };
+        name = QUOTE(NAME_PRC148_UHF);
+        defaultAntennas[] = {
+            {0, "ACRE_14IN_UHF_TNC"}
+        };
     };
     */
 };
