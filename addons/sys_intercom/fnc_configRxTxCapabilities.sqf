@@ -18,8 +18,7 @@
 params ["_vehicle"];
 
 private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
-private _rackRxTxConfig = _vehicle getVariable [QGVAR(rackRxTxConfig), []];
-private _count = count _rackRxTxConfig;
+private _rackRxTxConfig = [];
 
 {
 
@@ -38,27 +37,12 @@ private _count = count _rackRxTxConfig;
     } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
 
     if !(_intercomPos isEqualTo 0) then {
-        private _rackId = _x;
         private _rackFunctionality = [];
         {
             _rackfunctionality pushBackUnique [_x, RACK_NO_MONITOR];
         } forEach _intercomPos;
 
-        if (_count > 0) then {
-            // Check if rack was already configured
-            private _found = false;
-            {
-                if (_x select 0 == _rackId) exitWith {
-                    _found = true;
-                };
-            } forEach _rackRxTxConfig;
-
-            if (!_found) then {
-                _rackRxTxConfig pushBackUnique [_x, _rackFunctionality];
-            };
-        } else {
-            _rackRxTxConfig pushBackUnique [_x, _rackFunctionality];
-        };
+        _rackRxTxConfig pushBackUnique [_x, _rackFunctionality];
     };
 } forEach _racks;
 
