@@ -16,7 +16,12 @@
  */
 #include "script_component.hpp"
 
-if (!(alive acre_player) || GVAR(keyBlock) || time < 1) exitWith { false };
+if (!alive acre_player || time < 1 || GVAR(keyBlock) || dialog || ACRE_IS_SPECTATOR) exitWith {
+    if (!GVAR(keyBlock)) then {
+        call FUNC(onVolumeControlKeyPressUp);
+    };
+    false
+};
 
 inGameUISetEventHandler ["PrevAction", "true"];
 inGameUISetEventHandler ["NextAction", "true"];
@@ -26,7 +31,7 @@ disableSerialization;
 
 57701 cutRsc [QGVAR(VolumeControlDialog), "PLAIN"];
 
-_slider = (GVAR(VolumeControlDialog) select 0) displayCtrl 1900;
+private _slider = (GVAR(VolumeControlDialog) select 0) displayCtrl 1900;
 _slider sliderSetRange [-2, 2];
 
 _slider ctrlSetEventHandler ["SliderPosChanged", QUOTE(_this call FUNC(onVolumeControlSliderChanged))];

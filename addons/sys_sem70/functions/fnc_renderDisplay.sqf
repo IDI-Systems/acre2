@@ -29,9 +29,9 @@ private _functionKnobPosition = GET_STATE("functionKnobPosition");
 private _manualChannelSelection = GET_STATE("manualChannelSelection");
 
 
-if (_channelKnobPosition == 0) exitWith {}; // OFF
+//if (_channelKnobPosition == 0) exitWith {}; // OFF
 
-_firstDigit = [
+private _firstDigit = [
     QPATHTOF(data\display\1char_0.paa),
     QPATHTOF(data\display\1char_1.paa),
     QPATHTOF(data\display\1char_2.paa),
@@ -44,7 +44,7 @@ _firstDigit = [
     QPATHTOF(data\display\1char_9.paa)
 ];
 
-_secondDigit = [
+private _secondDigit = [
     QPATHTOF(data\display\2char_0.paa),
     QPATHTOF(data\display\2char_1.paa),
     QPATHTOF(data\display\2char_2.paa),
@@ -57,7 +57,7 @@ _secondDigit = [
     QPATHTOF(data\display\2char_9.paa)
 ];
 
-_thirdDigit = [
+private _thirdDigit = [
     QPATHTOF(data\display\3char_0.paa),
     QPATHTOF(data\display\3char_1.paa),
     QPATHTOF(data\display\3char_2.paa),
@@ -70,7 +70,7 @@ _thirdDigit = [
     QPATHTOF(data\display\3char_9.paa)
 ];
 
-_fourthDigit = [
+private _fourthDigit = [
     QPATHTOF(data\display\4char_0.paa),
     QPATHTOF(data\display\4char_1.paa),
     QPATHTOF(data\display\4char_2.paa),
@@ -83,7 +83,7 @@ _fourthDigit = [
     QPATHTOF(data\display\4char_9.paa)
 ];
 
-_fifthDigit = [
+private _fifthDigit = [
     QPATHTOF(data\display\5char_0.paa),
     QPATHTOF(data\display\5char_1.paa),
     QPATHTOF(data\display\5char_2.paa),
@@ -96,7 +96,7 @@ _fifthDigit = [
     QPATHTOF(data\display\5char_9.paa)
 ];
 
-_dotDisplay = QPATHTOF(data\display\dot.paa);
+private _dotDisplay = QPATHTOF(data\display\dot.paa);
 
 
 

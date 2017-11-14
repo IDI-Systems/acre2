@@ -38,7 +38,7 @@ private _condition = {
      (count _accessibleRacks > 0 || count _hearableRacks > 0)
 };
 private _statement = {true};
-private _text = "Racks";
+private _text = localize LSTRING(Racks);
 private _icon = "\idi\acre\addons\ace_interact\data\icons\rack3.paa"; // "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa"; // ""
 
 private _children = {_this call FUNC(rackListChildrenActions);};

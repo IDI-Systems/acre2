@@ -21,10 +21,9 @@ GVAR(requestingNewId) = false;
 
 LOG("Monitor Inventory Starting");
 DFUNC(monitorRadios_PFH) = {
-    if (!alive acre_player) exitWith {};
-    if ((side group acre_player) == sideLogic) exitWith {};
+    if (!alive acre_player || side group acre_player == sideLogic || EGVAR(sys_core,arsenalOpen)) exitWith {};
 
-        private _weapons = [acre_player] call EFUNC(sys_core,getGear);
+    private _weapons = [acre_player] call EFUNC(sys_core,getGear);
 
     // Handle ItemRadioAcreFlagged - This is a dummy ItemRadio that allows the player to continue using ingame text chat.
 
@@ -68,7 +67,7 @@ DFUNC(monitorRadios_PFH) = {
         if (_isUnique) then {
             if (!([_radio] call EFUNC(sys_data,isRadioInitialized))) then {
                 WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
-                _baseRadio = BASECLASS(_radio);
+                private _baseRadio = BASECLASS(_radio);
                 [acre_player, _radio, _baseRadio] call EFUNC(sys_core,replaceGear);
                 _radio = _baseRadio;
             };
@@ -102,8 +101,12 @@ DFUNC(monitorRadios_PFH) = {
                 acre_player assignItem "ItemRadioAcreFlagged";
             };
         } forEach _dif;
+
+        // Update the radio list
+        acre_player setVariable [QEGVAR(sys_data,radioIdList), _currentUniqueItems, true];
     };
     GVAR(oldUniqueItemList) = _currentUniqueItems;
+
     // if (!("ItemRadioAcreFlagged" in (assignedItems acre_player))) then { acre_player assignItem "ItemRadioAcreFlagged" };
 
 };

@@ -71,12 +71,12 @@ private _searchFunction = {
 
                             } else {
                                 if (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaDirFnc") != "") then {
-                                    _antennaDirResults = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaDirFnc")));
+                                    private _antennaDirResults = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaDirFnc")));
                                     _antennaDir = _antennaDirResults select 0;
                                     _antennaDirUp = _antennaDirResults select 1;
                                 };
                             };
-                            _antennaPos2 = _antennaPos vectorAdd (_antennaDirUp vectorMultiply (getNumber (_componentClass >> "height")));
+                            private _antennaPos2 = _antennaPos vectorAdd (_antennaDirUp vectorMultiply (getNumber (_componentClass >> "height")));
                             private _foundAntenna = [_connectedComponent, _componentObject, _antennaPos2, _antennaDir];
                             PUSH(_foundAntennas, _foundAntenna);
                         };
@@ -90,5 +90,12 @@ private _searchFunction = {
         };
     };
 };
-[_radioId] call _searchFunction;
+
+private _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
+if (_rackId != "") then {
+    [_rackId] call _searchFunction;
+} else {
+    [_radioId] call _searchFunction;
+};
+
 _foundAntennas;

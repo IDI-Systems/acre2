@@ -21,15 +21,15 @@ private _isRadioAccessible = [_radioId, _unit] call FUNC(isRadioAccessible);
 private _isRadioHearable = [_radioId, _unit] call FUNC(isRadioHearable);
 
 if (_isRadioAccessible) then {
-    ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+    ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique _radioId;
 };
 
 if (_isRadioHearable && !_isRadioAccessible) then {
-    ACRE_HEARABLE_RACK_RADIOS pushBackUnique (toLower _radioId);
+    ACRE_HEARABLE_RACK_RADIOS pushBackUnique _radioId;
 };
 
 // Set active radio
-ACRE_ACTIVE_RADIO = toLower _radioId;
+ACRE_ACTIVE_RADIO = _radioId;
 
 if (_isRadioHearable) then {
     // Check if the radio had already some functionality in order to avoid overwritting it.
@@ -38,4 +38,9 @@ if (_isRadioHearable) then {
         // Set as default RX and TX functionality
         [_radioId, _vehicle, _unit, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRxTxCapabilities);
     };
+};
+
+// Start the rack PFH if not started already. This should only be used for externally accessible rack radios
+if (GVAR(rackPFH) == -1) then {
+    GVAR(rackPFH) = [DFUNC(rackPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
 };

@@ -31,7 +31,7 @@ private _manualChannelSelection = ["getState", "manualChannelSelection"] call GU
 if (_manualChannelSelection == 1) exitWith {};
 
 //Read out the key pressed (left/right mousebutton) and define the knob position increase/decrease
-_dir = -1;
+private _dir = -1;
 if (_key == 0) then {
     _dir = 1;
 };
@@ -40,7 +40,7 @@ private _knobPosition = ["getState", "NetworkKnobPosition"] call GUI_DATA_EVENT;
 
 switch (_ctrlIDC) do {
     case (209): {
-        _subPos = _knobPosition param [0];
+        private _subPos = _knobPosition param [0];
         _subPos = _subPos + _dir;
 
         if (_subPos > 9) then {
@@ -50,11 +50,11 @@ switch (_ctrlIDC) do {
             _subPos = 9;
         };
 
-        _knobPosition set [0,_subPos];
+        _knobPosition set [0, _subPos];
     };
 
     case (210): {
-        _subPos = _knobPosition param [1];
+        private _subPos = _knobPosition param [1];
         _subPos = _subPos + _dir;
 
         if (_subPos > 9) then {
@@ -64,11 +64,11 @@ switch (_ctrlIDC) do {
             _subPos = 9;
         };
 
-        _knobPosition set [1,_subPos];
+        _knobPosition set [1, _subPos];
     };
 
     case (211): {
-        _subPos = _knobPosition param [2];
+        private _subPos = _knobPosition param [2];
         _subPos = _subPos + _dir;
 
         if (_subPos > 9) then {
@@ -78,7 +78,7 @@ switch (_ctrlIDC) do {
             _subPos = 9;
         };
 
-        _knobPosition set [2,_subPos];
+        _knobPosition set [2, _subPos];
     };
 };
 

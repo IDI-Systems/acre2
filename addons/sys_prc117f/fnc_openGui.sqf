@@ -27,12 +27,12 @@ GVAR(currentRadioId) = _radioId;
 createDialog "Prc117f_RadioDialog";
 [] call FUNC(clearDisplay);
 
-[_radioId, "setState", ["isGuiOpened", true]] call EFUNC(sys_data,dataEvent);
+[_radioId, true] call EFUNC(sys_radio,setRadioOpenState);
 
 
-_onState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
+private _onState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
 if (_onState >= 1) then {
-    _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
+    private _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
     [_currentMenu] call FUNC(changeMenu);
 } else {
     [GVAR(LOADING)] call FUNC(changeMenu);

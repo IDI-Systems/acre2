@@ -14,6 +14,7 @@ PREP(setRadioVolume);
 PREP(isUniqueRadio);
 PREP(isBaseClassRadio);
 
+PREP(setRadioOpenState);
 PREP(setRadioSpatial);
 PREP(getRadioSpatial);
 

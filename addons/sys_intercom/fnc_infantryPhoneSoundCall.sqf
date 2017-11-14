@@ -4,6 +4,7 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
+ * 1: Intercom network <NUMBER>
  *
  * Return Value:
  * None
@@ -15,12 +16,12 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle"];
+params ["_vehicle", "_intercomNetwork"];
 
 (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", ""];
 
 // The infantry phone of the vehicle is ringing
-_vehicle setVariable [QGVAR(isInfantryPhoneCalling), true, true];
+_vehicle setVariable [QGVAR(isInfantryPhoneCalling), [true, _intercomNetwork], true];
 
 private _duration = INFANTRY_PHONE_SOUND_PFH_DURATION;
 private _customSound = _vehicle getVariable [QGVAR(infPhoneCustomRinging), []];

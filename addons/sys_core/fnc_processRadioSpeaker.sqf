@@ -59,7 +59,7 @@ if ((count _okRadios) > 0) then {
             private _returnData = [_unit, _radioid, acre_player, _x] call CALLSTACK_NAMED((missionNamespace getVariable _functionName), _functionName);
             // DATA STRUCTURE: _returnData = [txRadioId, rxRadioId, signalQuality, distortionModel]
             END_COUNTER(signal_mode_function);
-            _eventReturn = [_x, "handleSignalData", +_returnData] call EFUNC(sys_data,transEvent);
+            private _eventReturn = [_x, "handleSignalData", +_returnData] call EFUNC(sys_data,transEvent);
             if (!isNil "_eventReturn") then {
                 _returnData = _eventReturn;
             };

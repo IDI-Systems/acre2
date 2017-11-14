@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Generates a list of actions for passenger intercom.
+ * Generates a list of actions for the intercom network of a vehicle.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_intercom_passengerIntercomChildrenActions
+ * [cursorTarget] call acre_sys_intercom_fnc_childrenActions
  *
  * Public: No
  */
@@ -18,52 +18,64 @@
 params ["_target"];
 private _actions = [];
 
-if ([_target, acre_player, CREW_INTERCOM] call FUNC(isIntercomAvailable)) then {
-    private _action = [
-        "acre_connect_crewIntercom",
-        format [localize LSTRING(connect), "(" + localize CREW_STRING + ")"],
-        "",
-        {[_target, _player, 1] call FUNC(updateCrewIntercomStatus)},
-        {!([_target, _player] call FUNC(isInCrewIntercom))},
-        {},
-        {}
-    ] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
+private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
+private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames), []];
 
-    _action = [
-        "acre_disconnect_crewIntercom",
-        format [localize LSTRING(disconnect), "(" + localize CREW_STRING + ")"],
-        "",
-        {[_target, _player, 0] call FUNC(updateCrewIntercomStatus)},
-        {[_target, _player] call FUNC(isInCrewIntercom)},
-        {},
-        {}
-    ] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
-};
+{
+    if ([_target, acre_player, _forEachIndex] call FUNC(isIntercomAvailable) || [_target, acre_player, _forEachIndex] call FUNC(isInLimitedPosition)) then {
+        private _action = [
+            format ["acre_connect_%1", _x],
+            format [localize LSTRING(connect), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+            "",
+            {
+                //USES_VARIABLES ["_target", "_player"];
+                params ["_target", "_player", "_params"];
+                _params params ["_intercomNetwork"];
 
-if ([_target, acre_player, PASSENGER_INTERCOM] call FUNC(isIntercomAvailable)) then {
-    private _action = [
-        "acre_connect_passengerIntercom",
-        format [localize LSTRING(connect), "(" + localize LSTRING(passenger) + ")"],
-        "",
-        {[_target, _player, 1] call FUNC(updatePassengerIntercomStatus)},
-        {!([_target, _player] call FUNC(isInPassengerIntercom))},
-        {},
-        {}
-    ] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
+                if ([_target, acre_player, _intercomNetwork] call FUNC(isInLimitedPosition)) then {
+                    [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setLimitedConnectionStatus);
+                } else {
+                    [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setStationConnectionStatus);
+                    [_target, _player, _intercomNetwork] call acre_sys_intercom_fnc_setIntercomUnits;
+                };
+            },
+            {
+                //USES_VARIABLES ["_target", "_player"];
+                params ["_target", "_player", "_params"];
+                _params params ["_intercomNetwork"];
+                !([_target, _player, _intercomNetwork] call FUNC(isInIntercom))
+            },
+            {},
+            _forEachIndex
+        ] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
 
-    _action = [
-        "acre_disconnect_passengerIntercom",
-        format [localize LSTRING(disconnect), "(" + localize LSTRING(passenger) + ")"],
-        "",
-        {[_target, _player, 0] call FUNC(updatePassengerIntercomStatus)},
-        {[_target, _player] call FUNC(isInPassengerIntercom)},
-        {},
-        {}
-    ] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
-};
+        _action = [
+            format ["acre_disconnect_%1", _x],
+            format [localize LSTRING(disconnect), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+            "",
+            {
+                 //USES_VARIABLES ["_target", "_player"];
+                params ["_target", "_player", "_params"];
+                _params params ["_intercomNetwork"];
+                if ([_target, acre_player, _intercomNetwork] call FUNC(isInLimitedPosition)) then {
+                    [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setLimitedConnectionStatus);
+                } else {
+                    [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setStationConnectionStatus);
+                    [_target, _player, _intercomNetwork] call acre_sys_intercom_fnc_setIntercomUnits;
+                };
+            },
+            {
+                //USES_VARIABLES ["_target", "_player"];
+                params ["_target", "_player", "_params"];
+                _params params ["_intercomNetwork"];
+                [_target, _player, _intercomNetwork] call FUNC(isInIntercom)
+            },
+            {},
+            _forEachIndex
+        ] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    };
+} forEach _intercomNames;
 
 _actions

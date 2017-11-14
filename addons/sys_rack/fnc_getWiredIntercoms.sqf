@@ -3,13 +3,13 @@
  * Gets the connected intercoms.
  *
  * Arguments:
- * 0: Vehicle <OBJECT>
+ * 0: Unique rack ID <STRING>
  *
  * Return Value:
- * None
+ * Array of intercom unique names
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_getWiredIntercom
+ * [cursorTarget] call acre_sys_rack_fnc_getWiredIntercom
  *
  * Public: No
  */
@@ -17,8 +17,8 @@
 
 params [["_rackId",""]];
 
-private _intercom = GET_STATE_RACK(_rackId,"wiredIntercoms");
+private _intercoms = GET_STATE_RACK(_rackId,"wiredIntercoms");
 
-if (isNil "_intercom") then {_intercom = [];};
+if (isNil "_intercoms") exitWith {[]};
 
-_intercom
+_intercoms

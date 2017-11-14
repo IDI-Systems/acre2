@@ -7,14 +7,14 @@ class CfgAcreComponents {
     };
 
     class ACRE_PRC152: ACRE_PRC152_base {
-        name = "AN/PRC-152";
+        name = QUOTE(NAME_PRC152);
         sinadRating = -118;
         sensitivityMin = -118;
         sensitivityMax = -50;
         isPackRadio = 0;
         isDeployable = 0;
 
-        connectors[] = { 
+        connectors[] = {
             {"Antenna", ACRE_CONNECTOR_TNC},
             {"Audio/Data", ACRE_CONNECTOR_U_283},
             {"Side", ACRE_CONNECTOR_CONN_32PIN}

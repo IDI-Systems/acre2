@@ -1,3 +1,5 @@
+PREP(openRadioCheckRequest);
+PREP(openRadioUpdateState);
 PREP(doAddComponentCargo);
 PREP(getRadioId);
 PREP(setSpectator);
@@ -8,3 +10,4 @@ PREP(acknowledgeId);
 PREP(stopRadioGarbageCollect);
 PREP(sendIntentToGarbageCollect);
 PREP(removeGCQueue);
+PREP(handlePlayerDisconnected);

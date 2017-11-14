@@ -87,7 +87,7 @@ def start_steam_with_user(username, password):
                 for proc in psutil.process_iter():
                     if proc.name() == PROCNAME:
                         steam_running = True
-                    
+
             print("Steam shutdown.")
 
     print("Starting Steam...")
@@ -110,7 +110,7 @@ def close_steam():
                 for proc in psutil.process_iter():
                     if proc.name() == PROCNAME:
                         steam_running = True
-                    
+
             print("Steam shutdown.")
 
 def find_bi_publisher():
@@ -163,29 +163,32 @@ def main(argv):
         parser = argparse.ArgumentParser(description="Arma Automatic Publishing Script")
         parser.add_argument('manifest', type=argparse.FileType('r'), help='manifest json file')
         parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="release")
+        parser.add_argument('-v', '--version', type=str, help="the version of the release archive.", default="")
 
         args = parser.parse_args()
 
         manifest_file = args.manifest
         release_target = args.release_target
+        version = args.version.split(".")
 
         manifest = json.load(manifest_file)
-        version = get_project_version("..\\addons\\\main\\script_version.hpp")
+        if version == "":
+            version = get_project_version("..\\addons\\\main\\script_version.hpp")
 
         if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
             raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
 
         credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
-        
-        
+
+
         for destination in manifest['publish'][release_target]['destinations']:
-            
+
             if(destination["type"] == "steam"):
                 cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
                 if("username" in cred_file and "password" in cred_file):
                     steam_username = cred_file["username"]
                     steam_password = cred_file["password"]
-                    
+
                     start_steam_with_user(steam_username, steam_password)
                 else:
                     raise Exception("Credentials file did not specify a username and password for Steam login")
@@ -223,16 +226,16 @@ def main(argv):
                     raise Exception("SFTP Publish","No remote path was defined for the SFTP upload.")
                 remote_path = destination["remote_path"]
 
-                
+
                 cnopts = pysftp.CnOpts()
-                cnopts.hostkeys = None   
+                cnopts.hostkeys = None
                 sftp = pysftp.Connection(host=hostname, username=sftp_username, password=sftp_password, cnopts=cnopts)
 
                 local_path = local_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 remote_path = remote_path.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
-                
+
                 print("SFTP: Publishing {} to remote {}:{}".format(local_path, hostname, remote_path))
-                
+
                 sftp.put(local_path, remotepath=remote_path)
                 print("SFTP: Upload Complete!")
             if(destination["type"] == "github"):
@@ -245,7 +248,7 @@ def main(argv):
                 local_path = destination["local_path"]
                 prerelease = destination["prerelease"]
                 asset_name = destination["asset_name"]
-                
+
                 tag_name = tag_name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 name = name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 asset_name = asset_name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
@@ -302,7 +305,7 @@ def main(argv):
                     else:
                         print(response_json)
                         raise Exception("Github Publish","Failed to Attach Asset")
-                    
+
                 else:
                     print(response_json)
                     raise Exception("Github Publish","Failed to Create Release")

@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
  * 1: Event: "setVolume" <STRING> (Unused)
- * 2: Event data <NUMBER> (Unused)
+ * 2: Event data <NUMBER>
  * 3: Radio data <HASH>
  * 4: Remote <BOOL> (Unused)
  *
@@ -21,7 +21,7 @@
 
 TRACE_1("", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData", ""];
+params ["", "", "_eventData", "_radioData", ""];
 
 TRACE_1("SETTING CURRENT VOLUME",_this);
 HASH_SET(_radioData,"volume",_eventData);

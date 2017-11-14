@@ -62,7 +62,7 @@ GVAR(NoItems) = ["ERROR_NOENTRY", "ERROR_NOENTRY", "",
             TRACE_1("ERROR_NOENTRY:onButtonPress", (_this select 1));
             if (((_this select 1) select 0) == "ENT" || ((_this select 1) select 0) == "CLR") then {
                 TRACE_1("BACK TO HOME", "");
-                _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+                private _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
                 [_home] call FUNC(changeMenu);
             };
             true

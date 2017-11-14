@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_intercom_infantryPhoneAction
+ * [cursorTarget] call acre_sys_intercom_fnc_infantryPhoneAction
  *
  * Public: No
  */
@@ -32,7 +32,7 @@ TRACE_1("Adding Infantry Phone Action",_type);
 private _positionConfig = configFile >> "CfgVehicles" >> _type >> "acre_infantryPhonePosition";
 private _position = [0, 0, 0]; // Default to main action point
 if (isText _positionConfig) then {
-    _position = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core vehicleCrewPFH checks
+    _position = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core intercomPFH checks
 };
 if (isArray _positionConfig) then {
     _position = getArray _positionConfig;
@@ -44,8 +44,9 @@ private _infantryPhoneAction = [
     ICON_RADIO_CALL,
     {true},
     {
-         // Only manually check distance if under main node (not a custom position on hull)
-         // Main interaction node is not shown on destroyed vehicle, so we only check that if not main node
+        // Only manually check distance if under main node (not a custom position on hull)
+        // Main interaction node is not shown on destroyed vehicle, so we only check that if not main node
+        //USES_VARIABLES ["_target", "_player"];
         if !((_this select 2) isEqualTo [0, 0, 0]) exitWith {alive _target};
         _player distance _target < PHONE_MAXDISTANCE_DEFAULT
     },
@@ -70,7 +71,15 @@ private _infantryPhoneSpeakerAction = [
     localize LSTRING(infantryPhone),
     ICON_RADIO_CALL,
     {true},
-    {_this call FUNC(isInfantryPhoneSpeakerAvailable)},
+    {
+        private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
+        private _intercomAvailable = false;
+        // Find if at least one intercom is available
+        {
+            if ([_target, acre_player, _forEachIndex] call FUNC(isInfantryPhoneSpeakerAvailable)) exitWith {_intercomAvailable = true};
+        } forEach _intercomNames;
+        _intercomAvailable
+    },
     {_this call FUNC(infantryPhoneChildrenActions)},
     [],
     [0, 0, 0],

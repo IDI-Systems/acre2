@@ -17,4 +17,4 @@
 
 params ["_radioId"];
 
-[_radioId, "getState", "isShared"] call EFUNC(sys_data,dataEvent)
+[_radioId, "getState", "radioShared"] call EFUNC(sys_data,dataEvent)

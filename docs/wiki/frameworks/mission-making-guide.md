@@ -1,4 +1,3 @@
-
 ---
 title: Mission Making Guide
 ---

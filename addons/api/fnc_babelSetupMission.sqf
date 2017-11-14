@@ -42,8 +42,7 @@ _this spawn {
                 ["logic", "Zeus"] call FUNC(babelAddLanguageType);
                 //something acre_player
                 waitUntil { !isNull acre_player };
-                _side = side acre_player;
-                switch _side do {
+                switch (side acre_player) do {
                     case east: {
                         ["east"] call FUNC(babelSetSpokenLanguages);
                     };
@@ -74,14 +73,12 @@ _this spawn {
         private _curSide = _x select 0;
         private _sideLanguages = [];
         private _languageCount = (count _x);
-        for [{_i=1}, {_i < _languageCount}, {_i=_i+1}] do {
-            private _curLanguage = _x select _i;
-
-            if ((_languages pushBackUnique _curLanguage) != -1) then {
-                [_curLanguage, _curLanguage] call FUNC(babelAddLanguageType);
+        {
+            if ((_languages pushBackUnique _x) != -1) then {
+                [_x, _x] call FUNC(babelAddLanguageType);
             };
-            _sideLanguages pushBack _curLanguage;
-        };
+            _sideLanguages pushBack _x;
+        } forEach _x;
         //acre_player may not ready yet?
         if (_curSide == (side acre_player) ) then {
             _sideLanguages call FUNC(babelSetSpokenLanguages);
