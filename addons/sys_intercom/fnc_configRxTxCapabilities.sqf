@@ -17,7 +17,7 @@
 
 params ["_vehicle"];
 
-private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks) apply {toLower _x};
+private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
 private _rackRxTxConfig = [];
 
 {

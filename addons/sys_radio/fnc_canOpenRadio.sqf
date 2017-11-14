@@ -21,7 +21,7 @@ private _canOpenRadio = true;
 private _vehicle = vehicle acre_player;
 
 if (_vehicle != acre_player) then {
-    if (_canOpenRadio && {(toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS} && {isTurnedOut acre_player}) then {
+    if (_canOpenRadio && {_radioId in ACRE_ACCESSIBLE_RACK_RADIOS} && {isTurnedOut acre_player}) then {
         _canOpenRadio = false;
         [localize LSTRING(noGuiTurnedOut), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
     };

@@ -45,5 +45,5 @@ if (_ret != -1) then {
         // GVAR(waitingForIdAck) = true;
     };
 } else {
-    WARNING("All IDs for class %2 are taken!",_class);
+    WARNING_1("All IDs for class %1 are taken!",_class);
 };
