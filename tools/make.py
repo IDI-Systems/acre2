@@ -1689,6 +1689,7 @@ See the make.cfg file for additional build options.
                 print("- {} not found!".format(missingFile))
         if printedOnlyErrors > 0:
             print_yellow("- {} untraced error(s)!".format(printedOnlyErrors))
+        sys.exit(1)
     else:
         print_green("\nCompleted with 0 errors.")
 
