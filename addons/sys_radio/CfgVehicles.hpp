@@ -17,4 +17,12 @@ class CfgVehicles {
             MACRO_ADDITEM(ACRE_SEM70,5);
         };
     };
+
+    // Backwards compatibility
+    class B_Kitbag_mcamo;
+    class ACRE_testBag: B_Kitbag_mcamo {
+        scope = 1; // Hidden in 2.5.1
+        displayName = "ACRE TEST BAG";
+        allowedSlots[] = {701, 801, 901};
+    };
 };
