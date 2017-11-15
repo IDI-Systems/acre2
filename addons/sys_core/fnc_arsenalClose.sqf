@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_core_fnc_closeArsenal
+ * [] call acre_sys_core_fnc_arsenalClose
  *
  * Public: No
  */
@@ -17,7 +17,7 @@
 
 if (is3DEN) exitWith {}; // Exit if Eden Arsenal
 
-private _weapons = ([acre_player] call EFUNC(sys_core,getGear)) apply {toLower _x};
+private _weapons = [acre_player] call EFUNC(sys_core,getGear);
 
 {
     _x params ["_baseClass","_radio"];
