@@ -1,12 +1,12 @@
 /*
  * Author: ACRE2Team
- * Returns an array of ACRE gear in the passed unit
+ * Returns an array of ACRE gear in the passed unit.
  *
  * Arguments:
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Array of ACRE related gear <ARRAY>
+ * Array of ACRE related gear (all lower-case except "ItemRadio" and "ItemRadioAcreFlagged") <ARRAY>
  *
  * Example:
  * [player] call acre_sys_core_fnc_getGear
@@ -27,6 +27,6 @@ _gear = _gear select {(_x select [0, 4]) == "ACRE" || _x == "ItemRadio" || _x ==
 // The below is really slow and tends to worsen performance.
 //_gear = _gear select {(_x call EFUNC(api,getBaseRadio)) in (call EFUNC(api,getAllRadios) select 0) || {_x == "ItemRadio"} || {_x == "ItemRadioAcreFlagged"}};
 
-_gear = _gear apply {toLower _x};
+_gear = _gear apply { [_x, toLower _x] select (_x select [0, 4] == "ACRE") };
 
-_gear;
+_gear

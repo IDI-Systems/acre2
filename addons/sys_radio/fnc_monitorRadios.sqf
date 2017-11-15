@@ -41,7 +41,7 @@ DFUNC(monitorRadios_PFH) = {
 
         if (_flaggedCount > 1) then {
             for "_i" from 1 to (_flaggedCount - 1) do {
-                    [acre_player, "ItemRadioAcreFlagged"] call EFUNC(sys_core,removeGear);
+                [acre_player, "ItemRadioAcreFlagged"] call EFUNC(sys_core,removeGear);
             };
             acre_player assignItem "ItemRadioAcreFlagged";
         };
