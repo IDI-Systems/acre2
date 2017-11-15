@@ -21,5 +21,4 @@ if (_radioId == "") exitWith { -1 };
 private _channelNumber = [_radioId] call FUNC(getRadioChannel);
 
 if (isNil "_channelNumber") exitWith { -1 };
-_channelNumber = _channelNumber + 1;
 _channelNumber
