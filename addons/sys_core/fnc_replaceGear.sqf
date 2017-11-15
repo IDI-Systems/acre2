@@ -19,30 +19,36 @@
 
 params ["_unit", "_itemToReplace", "_itemReplaceWith"];
 
+_itemToReplace = toLower _itemToReplace;
+_itemReplaceWith = toLower _itemReplaceWith;
+
 private _uniform = (uniformContainer _unit);
-if (!isNull _uniform && {_itemToReplace in (itemCargo _uniform)}) exitWith {
+private _uniforCmargo = (itemCargo _uniform) apply {toLower _x};
+if (!isNull _uniform && {_itemToReplace in _uniforCmargo}) exitWith {
     _unit removeItem _itemToReplace;
     _uniform addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit
 };
 
 private _vest = (vestContainer _unit);
-if (!isNull _vest && {_itemToReplace in (itemCargo _vest)}) exitWith {
+private _vestCargo = (itemCargo _vest) apply {toLower _x};
+if (!isNull _vest && {_itemToReplace in _vestCargo}) exitWith {
     _unit removeItem _itemToReplace;
     _vest addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit
 };
 
 private _backpack = (backpackContainer _unit);
-if (!isNull _backpack && {_itemToReplace in (itemCargo _backpack)}) exitWith {
+private _backpackCargo = (itemCargo _backpack) apply {toLower _x};
+if (!isNull _backpack && {_itemToReplace in _backpackCargo}) exitWith {
     _unit removeItem _itemToReplace;
     _backpack addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit
 };
 
-private _assignedItems = assignedItems _unit;
+private _assignedItems = (assignedItems _unit) apply {toLower _x};
 if (_itemToReplace in _assignedItems) then {
     _unit unassignItem _itemToReplace;
 };
 
-private _weapons = weapons _unit;
+private _weapons = (weapons _unit) apply {toLower _x};
 if (_itemToReplace in _weapons) exitWith {
     _unit removeWeapon _itemToReplace;
     _unit addWeapon _itemReplaceWith;
