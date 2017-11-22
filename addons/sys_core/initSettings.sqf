@@ -67,7 +67,7 @@
     "EDITBOX",
     localize LSTRING(ts3ChannelPassword_displayName),
     "ACRE2",
-    "",
+    ["", true],
     false,
     {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
 ] call CBA_Settings_fnc_init;
