@@ -57,7 +57,7 @@
     localize LSTRING(ts3ChannelName_displayName),
     "ACRE2",
     "",
-    false,
+    true,
     {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
 ] call CBA_Settings_fnc_init;
 
@@ -68,7 +68,7 @@
     localize LSTRING(ts3ChannelPassword_displayName),
     "ACRE2",
     "",
-    false,
+    true,
     {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
 ] call CBA_Settings_fnc_init;
 
