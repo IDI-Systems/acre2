@@ -2,7 +2,7 @@
 
 if (isServer) then {
     // Close the radio if it was opened in case of disconnection in order to prevent dead lock state
-    GVAR(playerDisconnected) = addMissionEventHandler ["HandleDisconnected", {
+    GVAR(playerDisconnected) = addMissionEventHandler ["HandleDisconnect", {
         /*
          * Arguments:
          * 0: Disconnected unit <OBJECT>
