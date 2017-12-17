@@ -6,6 +6,7 @@ PREP(getStationVariableName);
 PREP(getStationConfiguration);
 PREP(initVehicleIntercom);
 PREP(intercomAction);
+PREP(intercomChildrenActions);
 PREP(intercomListChildrenActions);
 PREP(intercomPFH);
 PREP(isInIntercom);
