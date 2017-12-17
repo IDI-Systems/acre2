@@ -1,27 +1,44 @@
 /*
  * Author: ACRE2Team
- * Checks if an intercom network station is available for a given position.
+ * Configures the initial intercom connectivity (disconnected/connected) for all allowed seats.
  *
  * Arguments:
- * 0: Vehicle <OBJECT>
- * 1: Unit <OBJECT>
- * 2: Intercom network <NUMBER>
+ * 0: Vehicle with intercom <OBJECT>
+ * 1: Allowed positions <ARRAY>
+ * 2: Forbidden positions <ARRAY>
+ * 3: Positions with limited connectivity <ARRAY>
+ * 4: Initial intercom configuration
  *
  * Return Value:
- * True if intercom network is available, false otherwise <BOOL>
+ * None
  *
  * Example:
- * [cursorTarget, player, 0] call acre_sys_intercom_fnc_isIntercomAvailable
+ * [vehicle player] call acre_sys_intercom_fnc_isIntercomAvailable
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_unit", "_intercomType"];
+params ["_vehicle", "_unit", "_intercomNetwork"];
 
-if (_vehicle != vehicle _unit) exitWith {false};
+private _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
 
-private _allowedPositions = (_vehicle getVariable [QGVAR(allowedPositions), []]) select _intercomType;
-private _forbiddenPositions = (_vehicle getVariable [QGVAR(forbiddenPositions), []]) select _intercomType;
+private _isAvailable = true;
 
-[_vehicle, _unit, _allowedPositions, _forbiddenPositions] call EFUNC(sys_core,hasAccessToVehicleSystem)
+{
+    private _condition = [_vehicle, _unit, _intercomNetwork, _x] call FUNC(getStationConfiguration);
+    switch (_x) do {
+        case INTERCOM_STATIONSTATUS_HASINTERCOMACCESS: {
+            _isAvailable =  _condition;
+        };
+        case INTERCOM_STATIONSTATUS_CONNECTION: {
+            _isAvailable = _condition > INTERCOM_DISCONNECTED;
+        };
+        case INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED: {
+            _isAvailable = _condition && {isTurnedOut _unit};
+        };
+    };
+    if (!isAvailable) exitWith {};
+} forEach [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED];
+
+_isAvailable

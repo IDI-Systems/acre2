@@ -26,5 +26,4 @@ if (isNull _vehicle) then {
 private _allowedPositions = [_rackId, "getState", "allowed"] call EFUNC(sys_data,dataEvent);
 private _disabledPositions = [_rackId, "getState", "disabled"] call EFUNC(sys_data,dataEvent);
 
-[_vehicle, _unit, _allowedPositions, _forbiddenPositions, MAX_EXTERNAL_RACK_DISTANCE] call EFUNC(sys_core,hasAccessToVehicleSystem)
-
+[_vehicle, _unit, _allowedPositions, _disabledPositions, MAX_EXTERNAL_RACK_DISTANCE] call EFUNC(sys_core,hasAccessToVehicleSystem)

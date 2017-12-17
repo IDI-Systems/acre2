@@ -22,7 +22,6 @@ private _actions = [];
 (acre_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
 
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
-private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames), []];
 
 if (_target isKindOf "CAManBase") then {
     // Pointing at an infantry unit. Check if the infantry telelphone can be given

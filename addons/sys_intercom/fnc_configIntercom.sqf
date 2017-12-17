@@ -26,7 +26,6 @@ private _intercomExceptions = [];
 private _intercomLimitedPositions = [];
 private _numLimitedPositions = [];
 private _intercomConnectByDefault = [];
-private _unitsIntercom = [];
 
 {
     private _name = toLower (configName _x);
@@ -56,7 +55,7 @@ private _unitsIntercom = [];
 
         // Turrets excluding FFV turrets
         {
-            _availabeIntercomPositions pushBackUnique ["turret", _x];
+            _availabeIntercomPositions pushBackUnique (format ["turret_%1", _x]);
         } forEach allTurrets [_vehicle, false];
     } else {
         _availabeIntercomPositions = [_vehicle, _allowedPositions] call EFUNC(sys_core,processVehicleSystemAccessArray);
@@ -74,7 +73,7 @@ private _unitsIntercom = [];
     private _exceptionsIntercomPositions = [];
     {
         if (_x in _availabeIntercomPositions) then {
-            _availabeIntercomPositions = _availabeIntercomPositions - [_x];
+            _availabeIntercomPositions deleteAt (_availabeIntercomPositions find _x);
         } else {
             // This could be an FFV turret
             _exceptionsIntercomPositions pushBackUnique _x;
@@ -89,21 +88,15 @@ private _unitsIntercom = [];
         };
     } forEach _limitedIntercomPositions;
 
-    _intercomNames pushBack _name;
-    _intercomDisplayNames pushBack _displayName;
+    _intercomNames pushBack [_name, _displayName];
     _intercomPositions pushBack _availabeIntercomPositions;
     _intercomExceptions pushBack _exceptionsIntercomPositions;
     _intercomLimitedPositions pushBack _limitedIntercomPositions;
     _numLimitedPositions pushBack _numLimPositions;
     _intercomConnectByDefault pushBack _connectedByDefault;
-    _unitsIntercom pushBack [];
 } forEach (configProperties [_intercoms, "isClass _x", true]);
 
+[_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault] call FUNC(configIntercomStations);
+
 _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
-_vehicle setVariable [QGVAR(intercomDisplayNames), _intercomDisplayNames];
-_vehicle setVariable [QGVAR(allowedPositions), _intercomPositions];
-_vehicle setVariable [QGVAR(forbiddenPositions), _intercomExceptions];
-_vehicle setVariable [QGVAR(limitedPositions), _intercomLimitedPositions];
 _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
-_vehicle setVariable [QGVAR(connectByDefault), _intercomConnectByDefault];
-_vehicle setVariable [QGVAR(unitsIntercom), _unitsIntercom];

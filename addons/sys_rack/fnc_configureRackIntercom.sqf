@@ -20,8 +20,7 @@ params ["_vehicle"];
 private _racks = [_vehicle] call FUNC(getVehicleRacks);
 {
     private _intercoms = [_x] call FUNC(getWiredIntercoms);
-    private _rackRxTxConfig = _vehicle getVariable [QGVAR(rackRxTxConfig), []];
-    if (!(_intercoms isEqualTo []) && {_rackRxTxConfig isEqualTo []}) exitWith {
-        [_vehicle] call EFUNC(sys_intercom,configRxTxCapabilities);
+    if !(_intercoms isEqualTo []) exitWith {
+        [_vehicle] call EFUNC(sys_intercom,configRackRxTxCapabilities);
     };
 } forEach _racks;

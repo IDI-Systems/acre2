@@ -1,0 +1,36 @@
+/*
+ * Author: ACRE2Team
+ * Sets the intercom connection status of the vehicle seat the unit is in.
+ *
+ * Arguments:
+ * 0: Vehicle with intercom <OBJECT>
+ * 1: Unit to be checked <OBJECT>
+ * 2: Intercom network <NUMBER>
+ * 3: Intercom functionality <NUMBER>
+ * 4: Change forced status <BOOL> (default: false)
+ *
+ * Return Value:
+ * None
+ *
+ * Example:
+ * [vehicle acre_player, acre_player, 1] call acre_sys_intercom_fnc_setStationUnit
+ *
+ * Public: No
+ */
+#include "script_component.hpp"
+
+params ["_vehicle", "_unit", "_intercomNetwork", ["_varName", ""]];
+
+if (_varName isEqualTo "") then {
+    _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
+};
+
+if (_varName isEqualTo "") exitWith {
+    ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
+};
+
+private _intercomArray = _vehicle getVariable [_varName, []];
+private _intercomStatus = _intercomArray select _intercomNetwork;
+
+_intercomStatus set [STATION_INTERCOM_UNIT_INDEX, _unit];
+_vehicle setVariable [_varName, _intercomArray, true];

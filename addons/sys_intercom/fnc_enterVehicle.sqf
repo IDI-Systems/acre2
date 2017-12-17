@@ -19,49 +19,33 @@
 params ["_vehicle", "_unit"];
 
 if (_unit != _vehicle) then {
+    // Save current seat variable
+    private _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
+
+    // Save vehicle
     _unit setVariable [QGVAR(intercomVehicle), _vehicle];
 
-    // Configure the array for handling if a player is in a limited intercom position or not.
-    private _usingLimitedPosition = (_vehicle getVariable [QGVAR(intercomNames), []]) apply {false};
+    // Save current seat variable
+    private _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
+    _unit setVariable [QGVAR(role), _varName];
 
-    _unit setVariable [QGVAR(usingLimitedPosition), _usingLimitedPosition];
+    [_vehicle, _unit] call FUNC(seatSwitched);
 
-    {
-        [_vehicle, _unit, _forEachIndex] call FUNC(seatSwitched);
-    } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
+    // Start PFH
     GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
 } else {
     [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
-    private _intercomVehicle = _unit getVariable [QGVAR(intercomVehicle), objNull];
-    private _unitsIntercom = _intercomVehicle getVariable [QGVAR(unitsIntercom) , []];
-    private _disconnected = false;
-    {
-        private _unitsOnIntercomX = +_x;
-        if (_unit in _unitsOnIntercomX) then {
-            _unitsOnIntercomX deleteAt (_unitsOnIntercomX find _unit);
-            _unitsIntercom set [_forEachIndex, _unitsOnIntercomX];
-            _disconnected = true;
-            private _usingLimitedPosition = _unit getVariable [QGVAR(usingLimitedPosition), []];
-            if (_usingLimitedPosition select _forEachIndex) then {
-                private _numLimitedPositions = _intercomVehicle getVariable [QGVAR(numLimitedPositions), []];
-                private _num = _numLimitedPositions select _forEachIndex;
 
-                _numLimitedPositions set [_forEachIndex, _num + 1];
-                _intercomVehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions, true];
+    _vehicle = _unit getVariable [QGVAR(intercomVehicle), objNull];
+    // Handle the case of broadcasting or using a seat that uses limited connections
 
-                _usingLimitedPosition set [_forEachIndex, false];
-                _unit setVariable [QGVAR(usingLimitedPosition), _usingLimitedPosition];
-            };
-        };
-    } forEach _unitsIntercom;
+    [_vehicle, _unit] call FUNC(seatSwitched);
 
     // Reset variables
-    _unit setVariable [QGVAR(usingLimitedPosition), []];
-    _intercomVehicle setVariable [QGVAR(unitsIntercom), _unitsIntercom, true];
     _unit setVariable [QGVAR(intercomVehicle), objNull];
     ACRE_PLAYER_INTERCOM = [];
 
-    if (_disconnected) then {
-        [localize LSTRING(systemDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-    };
+//    if (_disconnected) then {
+//        [localize LSTRING(systemDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+//    };
 };

@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_intercom_fnc_childrenActions
+ * [cursorTarget] call acre_sys_intercom_fnc_intercomListchildrenActions
  *
  * Public: No
  */
@@ -19,31 +19,26 @@ params ["_target"];
 private _actions = [];
 
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
-private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames), []];
 
 {
-    if ([_target, acre_player, _forEachIndex] call FUNC(isIntercomAvailable) || [_target, acre_player, _forEachIndex] call FUNC(isInLimitedPosition)) then {
+    private _intercomDisplayName = (_intercomNames select _forEachIndex) select 1;
+    if ([_target, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS] call FUNC(getStationConfiguration)) then {
         private _action = [
             format ["acre_connect_%1", _x],
-            format [localize LSTRING(connect), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+            format [localize LSTRING(connect), "(" + _intercomDisplayName + ")"],
             "",
             {
                 //USES_VARIABLES ["_target", "_player"];
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
 
-                if ([_target, acre_player, _intercomNetwork] call FUNC(isInLimitedPosition)) then {
-                    [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setLimitedConnectionStatus);
-                } else {
-                    [_target, _player, _intercomNetwork, INTERCOM_CONNECTED] call FUNC(setStationConnectionStatus);
-                    [_target, _player, _intercomNetwork] call acre_sys_intercom_fnc_setIntercomUnits;
-                };
+                [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RECEIVE_AND_TRANSMIT] call FUNC(setStationConfiguration);
             },
             {
                 //USES_VARIABLES ["_target", "_player"];
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
-                !([_target, _player, _intercomNetwork] call FUNC(isInIntercom))
+                INTERCOM_DISCONNECTED == [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration)
             },
             {},
             _forEachIndex
@@ -52,24 +47,19 @@ private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames)
 
         _action = [
             format ["acre_disconnect_%1", _x],
-            format [localize LSTRING(disconnect), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+            format [localize LSTRING(disconnect), "(" + _intercomDisplayName + ")"],
             "",
             {
                  //USES_VARIABLES ["_target", "_player"];
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
-                if ([_target, acre_player, _intercomNetwork] call FUNC(isInLimitedPosition)) then {
-                    [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setLimitedConnectionStatus);
-                } else {
-                    [_target, _player, _intercomNetwork, INTERCOM_DISCONNECTED] call FUNC(setStationConnectionStatus);
-                    [_target, _player, _intercomNetwork] call acre_sys_intercom_fnc_setIntercomUnits;
-                };
+                [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_DISCONNECTED] call FUNC(setStationConfiguration)
             },
             {
                 //USES_VARIABLES ["_target", "_player"];
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
-                [_target, _player, _intercomNetwork] call FUNC(isInIntercom)
+                INTERCOM_DISCONNECTED < [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration)
             },
             {},
             _forEachIndex

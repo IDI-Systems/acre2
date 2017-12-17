@@ -54,20 +54,20 @@ private _processedArray = [];
                     private _crew = fullCrew [_vehicle, _role, true];
                     {
                         if (_role == toLower (_x select 1)) then {
-                            _processedArray pushBackUnique [_role];
+                            _processedArray pushBackUnique _role;
                         };
                     } forEach _crew;
                 } forEach ["driver", "commander", "gunner"];
 
-                // Turrets excluding FFV turrets
+                // Turrets excluding FFV turrets.
                 {
-                    _processedArray pushBackUnique ["turret", _x];
+                    _processedArray pushBackUnique (format ["turret_%1", _x]);
                 } forEach allTurrets [_vehicle, false];
             };
             case "copilot": {
                 private _copilot = (allTurrets [_vehicle, false]) select {getNumber ([_vehicle, _x] call CBA_fnc_getTurret >> "isCopilot") == 1};
                 {
-                    _processedArray pushBackUnique ["turret", _x];
+                    _processedArray pushBackUnique (format ["turret_%1", _x]);
                 } forEach _copilot;
             };
             case "inside": {
@@ -76,9 +76,9 @@ private _processedArray = [];
                 {
                     private _role = toLower (_x select 1);
                     if (_role in ["cargo", "turret"]) then {
-                        _processedArray pushBackUnique [_role, _x select 2];
+                        _processedArray pushBackUnique (format ["%1_%2", _role, _x select 2]);
                     } else {
-                        _processedArray pushBackUnique [_role];
+                        _processedArray pushBackUnique _role;
                     };
                 } forEach _fullCrew;
             };
@@ -94,27 +94,37 @@ private _processedArray = [];
             switch (_positionType) do {
                 case "cargo": {
                     {
-                        _processedArray pushBackUnique [_positionType, _x select 2];
+                        _processedArray pushBackUnique (format ["%1_%2", _positionType, _x select 2]);
                     } forEach fullCrew [_vehicle, _positionType, true];
                 };
                 case "turret": {
                     {
-                        _processedArray pushBackUnique [_positionType, _x];
+                        _processedArray pushBackUnique (format ["%1_%2", _positionType, _x]);
                     } forEach allTurrets [_vehicle, false];
                 };
                 case "ffv": {
                     {
-                        _processedArray pushBackUnique ["turret", _x];
+                        _processedArray pushBackUnique (format ["turret_%1", _x]);
                     } forEach (allTurrets [_vehicle, true] - allTurrets [_vehicle, false]);
                 };
                 case "turnedOut": {
-                    _processedArray pushBackUnique ["turnedout", "all"];
+                    _processedArray pushBackUnique "turnedout_all";
                 };
             };
         } else {
             if (_positionType == "ffv") then {_positionType = "turret";};
             for "_i" from 1 to (count _x - 1) do {
-                _processedArray pushBackUnique [_positionType, _x select _i];
+                if (_positionType isEqualTo "turnedout") then {
+                    if ((_x select i) isEqualType []) then {
+                        _processedArray pushBackUnique (format ["%1_turret_%2", _positionType, _x select _i]);
+                    };
+
+                    if ((_x select i) isEqualType 0) then {
+                        _processedArray pushBackUnique (format ["%1_cargo_%2", _positionType, _x select _i]);
+                    };
+                } else {
+                    _processedArray pushBackUnique (format ["%1_%2", _positionType, _x select _i]);
+                };
             };
         };
     };
