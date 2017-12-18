@@ -43,6 +43,7 @@ private _oldSeat = _unit getVariable [QGVAR(role), ""];
         if (_connectionStatus > INTERCOM_DISCONNECTED) then {
             [_vehicle, _unit, _forEachIndex] call FUNC(setStationUnit);
         };
+        [_vehicle, _unit] call FUNC(vehicleInfoLine);
     };
     _unit setVariable [QGVAR(role), [_vehicle, _unit] call FUNC(getStationVariableName)];
 } forEach _intercomNames;

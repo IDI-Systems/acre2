@@ -52,10 +52,8 @@ switch (_intercomFunctionality) do {
                 private _intercomDisplayName = ((_vehicle getVariable [QGVAR(intercomNames), []]) select _intercomNetwork) select 1;
                 if (_value > INTERCOM_DISCONNECTED) then {
                     _intercomStatus set [STATION_INTERCOM_UNIT_INDEX, _unit];
-                    [format [localize LSTRING(connectedTo), _intercomDisplayName], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
                 } else {
                     _intercomStatus set [STATION_INTERCOM_UNIT_INDEX, objNull];
-                    [format [localize LSTRING(disconnectedFrom), _intercomDisplayName], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
                 };
             };
         } else {
@@ -73,4 +71,5 @@ switch (_intercomFunctionality) do {
 if (_changed) then {
     (_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) set [_intercomFunctionality, _value];
     _vehicle setVariable [_varName, _intercomArray, true];
+    [_vehicle, _unit] call EFUNC(sys_intercom,vehicleInfoLine);
 };

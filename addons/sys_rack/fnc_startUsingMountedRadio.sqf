@@ -44,3 +44,6 @@ if (_isRadioHearable) then {
 if (GVAR(rackPFH) == -1) then {
     GVAR(rackPFH) = [DFUNC(rackPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
 };
+
+// Update the display
+[_vehicle, _unit] call EFUNC(sys_intercom,vehicleInfoLine);

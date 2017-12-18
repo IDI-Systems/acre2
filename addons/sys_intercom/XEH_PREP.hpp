@@ -32,3 +32,5 @@ PREP(configRackRxTxCapabilities);
 PREP(getRackRxTxCapabilities);
 PREP(setRackRxTxCapabilities);
 
+// Display
+PREP(vehicleInfoLine);

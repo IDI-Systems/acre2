@@ -21,3 +21,5 @@ PREP(onInventoryAction);
 PREP(handleContextMenu);
 PREP(handleTake);
 PREP(inventoryMonitorPFH);
+
+PREP(updateVehInfo);

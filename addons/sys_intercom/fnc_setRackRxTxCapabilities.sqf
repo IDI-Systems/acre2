@@ -40,3 +40,5 @@ if (_rackId isEqualTo "") then {
 } forEach _rackConfiguration;
 
 _vehicle setVariable [_varName, _rackConfiguration, true];
+
+[_vehicle, _unit] call FUNC(vehicleInfoLine);

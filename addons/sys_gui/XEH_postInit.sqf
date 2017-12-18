@@ -14,3 +14,16 @@ acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
 [15, [false, false, false]], true] call CBA_fnc_addKeybind;
 
 ["unit", FUNC(onVolumeControlKeyPressUp)] call CBA_fnc_addPlayerEventHandler;
+
+["vehicle", {
+    params ["_player"];
+    disableSerialization;
+
+    private _ctrl = ctrlParentControlsGroup (uiNamespace getVariable ["ACRE_VEH_INFO", controlNull]);
+
+    if (!isNull objectParent _player) then {
+        _ctrl ctrlShow true;
+    } else {
+        _ctrl ctrlShow false;
+    };
+}] call CBA_fnc_addPlayerEventHandler;
