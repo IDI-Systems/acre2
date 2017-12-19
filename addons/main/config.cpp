@@ -875,7 +875,7 @@ class CfgPatches {
     };
 
     // Backwards compatibility
-    class acre_game: ADDON {}; // Component removed in 2.3.0
+    class acre_game: ADDON {author = "";}; // Component removed in 2.3.0
 };
 
 class CfgMods {
