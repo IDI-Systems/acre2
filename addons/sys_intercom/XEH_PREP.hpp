@@ -9,6 +9,7 @@ PREP(intercomAction);
 PREP(intercomChildrenActions);
 PREP(intercomListChildrenActions);
 PREP(intercomPFH);
+PREP(isIntercomAvailable);
 PREP(isInIntercom);
 PREP(noApiFunction);
 PREP(seatSwitched);

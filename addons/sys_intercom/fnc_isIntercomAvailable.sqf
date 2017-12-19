@@ -24,21 +24,22 @@ params ["_vehicle", "_unit", "_intercomNetwork"];
 private _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
 
 private _isAvailable = true;
-
 {
     private _condition = [_vehicle, _unit, _intercomNetwork, _x] call FUNC(getStationConfiguration);
     switch (_x) do {
         case INTERCOM_STATIONSTATUS_HASINTERCOMACCESS: {
-            _isAvailable =  _condition;
+            _isAvailable = _condition;
         };
         case INTERCOM_STATIONSTATUS_CONNECTION: {
             _isAvailable = _condition > INTERCOM_DISCONNECTED;
         };
         case INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED: {
-            _isAvailable = _condition && {isTurnedOut _unit};
+            if (isTurnedOut _unit) then {
+                _isAvailable = _condition;
+            };
         };
     };
-    if (!isAvailable) exitWith {};
+    if (!_isAvailable) exitWith {};
 } forEach [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED];
 
 _isAvailable

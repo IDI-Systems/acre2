@@ -57,15 +57,15 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _i) params ["_isBroadcasting", "_broadcastingUnit"];
 
     if (_connectionStatus == INTERCOM_RECEIVE_ONLY || _connectionStatus == INTERCOM_RECEIVE_AND_TRANSMIT) then {
-        if (isBroadcasting) then {
+        if (_isBroadcasting) then {
             // Only the unit that is broadcasting will be on intercom. The rest of the units will be temporarily set to intercom
             _intercomUnits pushBack _broadcastingUnit;
         } else {
             // Gather all units connected to the intercom that can at least transmit
             {
-                private _stationConfig = _vehicle getVariable [_x, []] select _forEachIndex;
+                private _stationConfig = (_vehicle getVariable [_x, []]) select _i;
                 private _intercomConfig = (_stationConfig select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_CONNECTION;
-                if (_intercomConfig  == INTERCOM_RECEIVE_AND_TRANSMIT || _intercomConfig == INTERCOM_TRANSMIT_ONLY) then {
+                if (!isNull (_stationConfig select STATION_INTERCOM_UNIT_INDEX) && {_intercomConfig == INTERCOM_RECEIVE_AND_TRANSMIT || _intercomConfig == INTERCOM_TRANSMIT_ONLY}) then {
                     _intercomUnits pushBack (_stationConfig select STATION_INTERCOM_UNIT_INDEX);
                 };
             } forEach _intercomStations;
