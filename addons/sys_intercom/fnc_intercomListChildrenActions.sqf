@@ -31,7 +31,7 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
                 params ["_target", "_player", "_intercomNetwork"];
                 _intercomNetwork params ["_intercomNetwork"];
 
-                [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RECEIVE_AND_TRANSMIT] call FUNC(setStationConfiguration);
+                [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX] call FUNC(setStationConfiguration);
             },
             {true},
             {},
@@ -60,22 +60,22 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
             case INTERCOM_DISCONNECTED: {
                 WARNING_1("Entered no monitor in ace interaction menu for radio %1", _radio);
             };
-            case INTERCOM_RECEIVE_ONLY: {
-                _action = ["acre_trans_only", localize LSTRING(transOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_TRANSMIT_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+            case INTERCOM_RX_ONLY: {
+                _action = ["acre_trans_only", localize LSTRING(transOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_TX_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
-                _action = ["acre_rec_and_trans", localize LSTRING(recAndTrans), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RECEIVE_AND_TRANSMIT] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
-            };
-            case INTERCOM_TRANSMIT_ONLY: {
-                _action = ["acre_rec_only", localize LSTRING(recOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RECEIVE_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
-                _action = ["acre_rec_and_trans", localize LSTRING(recAndTrans), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RECEIVE_AND_TRANSMIT] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = ["acre_rec_and_trans", localize LSTRING(recAndTrans), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
             };
-            case INTERCOM_RECEIVE_AND_TRANSMIT: {
-                _action = ["acre_rec_only", localize LSTRING(recOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RECEIVE_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+            case INTERCOM_TX_ONLY: {
+                _action = ["acre_rec_only", localize LSTRING(recOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
-                _action = ["acre_trans_only", localize LSTRING(transOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_TRANSMIT_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = ["acre_rec_and_trans", localize LSTRING(recAndTrans), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _actions pushBack [_action, [], _target];
+            };
+            case INTERCOM_RX_AND_TX: {
+                _action = ["acre_rec_only", localize LSTRING(recOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _actions pushBack [_action, [], _target];
+                _action = ["acre_trans_only", localize LSTRING(transOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_TX_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
             };
         };

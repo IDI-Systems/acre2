@@ -30,15 +30,15 @@ private _shortNames = ["Crew", "Pax"];
         case INTERCOM_DISCONNECTED: {
             _color = "#737373";
         };
-        case INTERCOM_RECEIVE_ONLY: {
+        case INTERCOM_RX_ONLY: {
             _color = "#ffffff";
             _textStatus = "(R)";
         };
-        case INTERCOM_TRANSMIT_ONLY: {
+        case INTERCOM_TX_ONLY: {
             _color = "#ffffff";
             _textStatus = "(T)";
         };
-        case INTERCOM_RECEIVE_AND_TRANSMIT: {
+        case INTERCOM_RX_AND_TX: {
             _color = "#ffffff";
             _textStatus = "(R/T)";
         };
@@ -67,13 +67,13 @@ _infoLine = _infoLine + format ["<t font='PuristaBold' color='#737373' size='0.6
                     case RACK_NO_MONITOR: {
                         _textStatus = "";
                     };
-                    case RACK_R_ONLY: {
+                    case RACK_RX_ONLY: {
                         _textStatus = "(R)";
                     };
-                    case RACK_T_ONLY: {
+                    case RACK_TX_ONLY: {
                         _textStatus = "(T)";
                     };
-                    case RACK_R_AND_T: {
+                    case RACK_RX_AND_TX: {
                         _textStatus = "(R/T)";
                     };
                 };

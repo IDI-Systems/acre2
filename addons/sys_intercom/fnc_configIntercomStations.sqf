@@ -55,7 +55,7 @@ private _intercomStations = [];
             if (_role in _x && {!(_role in (_forbiddenPositions select _forEachIndex))}) then {
                 (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
                 if ((_initialConfiguration select _forEachIndex) == 1) then {
-                    (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RECEIVE_AND_TRANSMIT];
+                    (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX];
                 };
             };
 
