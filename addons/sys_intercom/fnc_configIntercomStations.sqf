@@ -19,7 +19,7 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_allowedPositions", "_forbiddenPositions", "_limitedPositions", "_initialConfiguration"];
+params ["_vehicle", "_allowedPositions", "_forbiddenPositions", "_limitedPositions", "_initialConfiguration", "_masterStation"];
 
 private _type = typeOf _vehicle;
 
@@ -46,8 +46,9 @@ private _intercomStations = [];
         //   4: Turned out is allowed <BOOL> (default: true)
         //   5: Forced connection status <NUMBER> (default: Status not forced)
         //   6: Continuous transmission <BOOL> (default: true)
+        //   7: This is a master station <BOOL> (default: false)
         // 1: Unit using intercom <OBJECT> (default: objNull)
-        private _intercomStatus = [[false, INTERCOM_DISCONNECTED, INTERCOM_DEFAULT_VOLUME, false, true, false, true], objNull];
+        private _intercomStatus = [[false, INTERCOM_DISCONNECTED, INTERCOM_DEFAULT_VOLUME, false, true, false, true, false], objNull];
 
         if (_role in (_forbiddenPositions select _forEachIndex)) then {
             (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, false];
@@ -67,6 +68,11 @@ private _intercomStations = [];
             if ("turnedout_all" in (_forbiddenPositions select _forEachIndex) || {("turnedout" + _role) in (_forbiddenPositions select _forEachIndex)}) then {
                 (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false];
             };
+
+            //systemChat format ["masterstation %1", _masterStation];
+            if ((_masterStation select _forEachIndex) isEqualTo _role) then {
+                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_MASTERSTATION, true];
+            }
 
             // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to
             // reduce network traffic.

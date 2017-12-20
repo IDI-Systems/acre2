@@ -79,6 +79,11 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
                 _actions pushBack [_action, [], _target];
             };
         };
+
+        if ([_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_MASTERSTATION] call FUNC(getStationConfiguration)) then {
+            _action = ["acre_broadcast", localize LSTRING(broadcast), "", {hint "broadcasting";}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
     };
 };
 

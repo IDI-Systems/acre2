@@ -142,10 +142,16 @@
             <Chinese>機組員對講機</Chinese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_shortCrewIntercom">
+            <English>Crew</English>
+        </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
             <English>Pax intercom</English>
             <Chinese>乘客對講機</Chinese>
             <Chinesesimp>乘客对讲机</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_shortPassengerIntercom">
+            <English>Pax</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_connect">
             <English>Connect</English>
@@ -217,6 +223,9 @@
             <Chinese>接收和發送</Chinese>
             <Chinesesimp>接收和发送</Chinesesimp>
             <Korean>송수신</Korean>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_broadcast">
+            <English>Broadcast</English>
         </Key>
     </Package>
 </Project>

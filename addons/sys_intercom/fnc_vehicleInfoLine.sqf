@@ -20,12 +20,11 @@ params ["_vehicle", "_unit"];
 
 private _intercomNames = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
 private _infoLine = "";
-private _shortNames = ["Crew", "Pax"];
 {
     private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call EFUNC(sys_intercom,getStationConfiguration);
     private _color = "";
     private _textStatus = "";
-    private _displayName = _shortNames select _forEachIndex;
+    private _displayName = _x select 2;
     switch (_connectionStatus) do {
         case INTERCOM_DISCONNECTED: {
             _color = "#737373";

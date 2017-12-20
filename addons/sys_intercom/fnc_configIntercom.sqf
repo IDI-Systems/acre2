@@ -21,20 +21,24 @@ private _classname = typeOf _vehicle;
 private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms";
 private _intercomNames = [];
 private _intercomDisplayNames = [];
+private _intercomShortNames = [];
 private _intercomPositions = [];
 private _intercomExceptions = [];
 private _intercomLimitedPositions = [];
+private _intercomMasterStation = [];
 private _numLimitedPositions = [];
 private _intercomConnectByDefault = [];
 
 {
     private _name = toLower (configName _x);
     private _displayName = getText (_x >> "displayName");
+    private _shortName = getText (_x >> "shortName");
     private _allowedPositions = getArray (_x >> "allowedPositions");
     private _disabledPositions = getArray (_x >> "disabledPositions");
     private _limitedPositions = getArray (_x >> "limitedPositions");
     private _numLimPositions = getNumber (_x >> "numLimitedPositions");
     private _connectedByDefault = getNumber (_x >> "connectedByDefault");
+    private _masterStation = getArray (_x >> "masterPosition");
     private _availabeIntercomPositions = [];
 
     // Check if the entry in allowed positions is correct
@@ -80,6 +84,28 @@ private _intercomConnectByDefault = [];
         };
     } forEach _temp;
 
+    // Master station
+    private _stationPosition = "";
+
+    if !(_masterStation isEqualTo []) then {
+        if (count _masterStation > 1) then {
+            WARNING_1("Vehicle type %1 has more than one master station defined. Only the first entry is going to be used.",_vehicle);
+        };
+        if ((_masterStation select 0) isEqualType "" || (_masterStation select 0) isEqualType []) then {
+            if ((_masterStation select 0) in _availabeIntercomPositions) then {
+                if ((_masterStation select 0) isEqualType "") then {
+                    _stationPosition = _masterStation select 0;
+                } else {
+                    _stationPosition = format ["%1_%2",(_masterStation select 0) select 0, (_masterStation select 0) select 1];
+                };
+            } else {
+                WARNING_1("Vehicle type %1 has a master station entry %2 that has no access to that intercom.",_vehicle,_masterStation select 0);
+            }
+        } else {
+            WARNING_1("Vehicle type %1 has an invalid master station entry. Expected array or string.",_vehicle);
+        };
+    };
+
     // Check that limitied positions are not defined in available positions
     {
         if (_x in _availabeIntercomPositions) exitWith {
@@ -88,15 +114,16 @@ private _intercomConnectByDefault = [];
         };
     } forEach _limitedIntercomPositions;
 
-    _intercomNames pushBack [_name, _displayName];
+    _intercomNames pushBack [_name, _displayName, _shortName];
     _intercomPositions pushBack _availabeIntercomPositions;
     _intercomExceptions pushBack _exceptionsIntercomPositions;
     _intercomLimitedPositions pushBack _limitedIntercomPositions;
     _numLimitedPositions pushBack _numLimPositions;
     _intercomConnectByDefault pushBack _connectedByDefault;
+    _intercomMasterStation pushBack _stationPosition;
 } forEach (configProperties [_intercoms, "isClass _x", true]);
 
-[_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault] call FUNC(configIntercomStations);
+[_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
 
 _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
 _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
