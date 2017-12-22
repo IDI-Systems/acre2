@@ -63,6 +63,7 @@
             <Chinese>架子</Chinese>
             <Chinesesimp>架子</Chinesesimp>
             <Korean>선반</Korean>
+            <Japanese>架台</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Dash">
             <English>Dash</English>
@@ -70,6 +71,7 @@
             <Chinese>儀錶板</Chinese>
             <Chinesesimp>仪表板</Chinesesimp>
             <Korean>대쉬보드</Korean>
+            <Japanese>ダッシュボード</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Dash_lower">
             <English>Dashboard Lower</English>
@@ -77,6 +79,7 @@
             <Chinese>儀錶板下降</Chinese>
             <Chinesesimp>仪表板下降</Chinesesimp>
             <Korean>대쉬보드 하단</Korean>
+            <Japanese>ダッシュボードを下げる</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Dash_upper">
             <English>Dashboard Upper</English>
@@ -84,6 +87,7 @@
             <Chinese>儀錶板上升</Chinese>
             <Chinesesimp>仪表板上升</Chinesesimp>
             <Korean>대쉬보드 상단</Korean>
+            <Japanese>ダッシュボードを上げる</Japanese>
         </Key>
     </Package>
 </Project>

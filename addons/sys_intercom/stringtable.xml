@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -121,31 +121,37 @@
             <English>Connected to %1</English>
             <Chinese>已連線到%1</Chinese>
             <Chinesesimp>已连线到%1</Chinesesimp>
+            <Japanese>%1 に接続した</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_disconnectedFrom">
             <English>Disconnected from %1</English>
             <Chinese>已跟%1斷開連線</Chinese>
             <Chinesesimp>已跟%1断开连线</Chinesesimp>
+            <Japanese>%1 と接続解除した</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_systemDisconnected">
             <English>Disconnected from intercom system</English>
             <Chinese>已跟對講機系統斷開連線</Chinese>
             <Chinesesimp>已跟对讲机系统断开连线</Chinesesimp>
+            <Japanese>インターコムと接続解除した</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_maxConnections">
             <English>Cannot connect to intercom. Maximum connections reached</English>
             <Chinese>對講機無法連線。已達到同時最大連線數量</Chinese>
             <Chinesesimp>对讲机无法连线。已达到同时最大连线数量</Chinesesimp>
+            <Japanese>インターコムに接続できない。最大接続数に到達</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercom">
             <English>Crew intercom</English>
             <Chinese>機組員對講機</Chinese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
+            <Japanese>クルー インターコム</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
             <English>Pax intercom</English>
             <Chinese>乘客對講機</Chinese>
             <Chinesesimp>乘客对讲机</Chinesesimp>
+            <Japanese>パックス インターコム</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_connect">
             <English>Connect %1</English>
