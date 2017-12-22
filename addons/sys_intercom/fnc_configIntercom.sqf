@@ -28,6 +28,7 @@ private _intercomLimitedPositions = [];
 private _intercomMasterStation = [];
 private _numLimitedPositions = [];
 private _intercomConnectByDefault = [];
+private _broadcasting = [];
 
 {
     private _name = toLower (configName _x);
@@ -121,9 +122,11 @@ private _intercomConnectByDefault = [];
     _numLimitedPositions pushBack _numLimPositions;
     _intercomConnectByDefault pushBack _connectedByDefault;
     _intercomMasterStation pushBack _stationPosition;
+    _broadcasting pushBack [false, objNull];
 } forEach (configProperties [_intercoms, "isClass _x", true]);
 
 [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
 
 _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
 _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
+_vehicle setVariable [QGVAR(broadcasting), _broadcasting];

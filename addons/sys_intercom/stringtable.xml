@@ -224,8 +224,11 @@
             <Chinesesimp>接收和发送</Chinesesimp>
             <Korean>송수신</Korean>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_broadcast">
-            <English>Broadcast</English>
+        <Key ID="STR_ACRE_sys_intercom_startBroadcast">
+            <English>Start broadcast</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
+            <English>Stop broadcast</English>
         </Key>
     </Package>
 </Project>

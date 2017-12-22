@@ -81,7 +81,12 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
         };
 
         if ([_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_MASTERSTATION] call FUNC(getStationConfiguration)) then {
-            _action = ["acre_broadcast", localize LSTRING(broadcast), "", {hint "broadcasting";}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+            ((_target getVariable [QGVAR(broadcasting), [false, objNull]]) select _intercomNetwork) params ["_isBroadcasting", "_broadcastingUnit"];
+            if (_isBroadcasting) then {
+                _action = ["acre_stopBroadcast", localize LSTRING(stopBroadcast), "", {[_target, _player, _this select 2, false] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+            } else {
+                _action = ["acre_startBroadcast", localize LSTRING(startBroadcast), "", {[_target, _player, _this select 2, true] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+            };
             _actions pushBack [_action, [], _target];
         };
     };

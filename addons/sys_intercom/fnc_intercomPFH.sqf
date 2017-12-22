@@ -55,7 +55,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
 
     // Get broadcasting variables
     ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _i) params ["_isBroadcasting", "_broadcastingUnit"];
-    _isBroadcasting = false;
+
     if (_connectionStatus == INTERCOM_RX_ONLY || _connectionStatus == INTERCOM_RX_AND_TX) then {
         if (_isBroadcasting) then {
             // Only the unit that is broadcasting will be on intercom. The rest of the units will be temporarily set to intercom
