@@ -31,6 +31,11 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     private _intercomUnits = [];
     private _connectionStatus = INTERCOM_DISCONNECTED;
 
+    // Check if the unit is connected to intercom only if the unit is inside a vehicle
+    if (_vehicle == vehicle _player && {[_vehicle, _player, _i] call FUNC(isIntercomAvailable)}) then {
+        _connectionStatus = [_vehicle, _player, _i, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
+    };
+
     if (_player == _unitInfantryPhone && {_infantryPhoneNetwork == _i}) then {
         (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
         _infantryPhonePosition = _vehicle modelToWorld _infantryPhonePosition;
@@ -44,13 +49,6 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
             // Infantry phones are receive and transmit positions
             _connectionStatus = INTERCOM_RX_AND_TX;
         };
-    };
-
-    // Check if the unit is connected to intercom only if the unit is inside a vehicle
-    if (_vehicle == vehicle _player && {[_vehicle, _player, _i] call FUNC(isIntercomAvailable)}) then {
-        _connectionStatus = [_vehicle, _player, _i, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
-    } else {
-        _connectionStatus = INTERCOM_DISCONNECTED;
     };
 
     // Get broadcasting variables
@@ -71,7 +69,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
             } forEach _intercomStations;
 
             // Add infantry phone unit
-            if (!isNull _unitInfantryPhone && {_player != _unitInfantryPhone} && {_infantryPhoneNetwork == _i}) then {
+            if (!isNull _unitInfantryPhone && {_infantryPhoneNetwork == _i}) then {
                 _intercomUnits pushBackUnique _unitInfantryPhone;
             };
         };

@@ -46,13 +46,12 @@ if (_target isKindOf "CAManBase") then {
     };
 } else {
     if (vehicle acre_player != _target) then {
-
         // Pointing at a vehicle. Get or return the infantry telelphone
         if (isNull _vehicleInfantryPhone) then {
             {
                 private _action = [
                     format ["acre_take_infantryTelephone_%1", _x],
-                    format [localize LSTRING(takeInfantryPhone), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+                    format [localize LSTRING(takeInfantryPhone), "(" + ((_intercomNames select _forEachIndex) select 1) + ")"],
                     "",
                     {
                         params ["_target", "_player", "_params"];
@@ -94,7 +93,7 @@ if (_target isKindOf "CAManBase") then {
                 {
                     _action = [
                         format ["acre_switch_infantryTelephone_%1", _x],
-                        format [localize LSTRING(switchInfantryPhone), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+                        format [localize LSTRING(switchInfantryPhone), "(" + ((_intercomNames select _forEachIndex) select 1) + ")"],
                         "",
                         {
                             params ["_target", "_player", "_params"];
@@ -140,7 +139,7 @@ if (_target isKindOf "CAManBase") then {
                 {
                     private _action = [
                         format ["acre_infantryTelephone_startCalling_%1", _x],
-                        format [localize LSTRING(infantryPhone_startCalling), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+                        format [localize LSTRING(infantryPhone_startCalling), "(" + ((_intercomNames select _forEachIndex) select 1) + ")"],
                         "",
                         {
                              params ["_target", "_player", "_params"];
