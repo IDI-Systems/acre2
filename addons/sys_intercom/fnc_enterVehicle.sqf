@@ -43,6 +43,7 @@ if (_unit != _vehicle) then {
 
     // Reset variables
     _unit setVariable [QGVAR(intercomVehicle), objNull];
+    _unit setVariable [QGVAR(intercomPTT), false, true];
     ACRE_PLAYER_INTERCOM = [];
 
 //    if (_disconnected) then {

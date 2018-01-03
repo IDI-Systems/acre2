@@ -64,7 +64,7 @@ switch (_intercomFunctionality) do {
     case INTERCOM_STATIONSTATUS_LIMITED: { _changed = true };
     case INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED: { _changed = true };
     case INTERCOM_STATIONSTATUS_FORCEDCONNECTION: { _changed = true };
-    case INTERCOM_STATIONSTATUS_CONTINUOUSTRANSMISSION: { _changed = true };
+    case INTERCOM_STATIONSTATUS_VOICEACTIVATION: { _changed = true };
     default {  /*...code...*/ };
 };
 

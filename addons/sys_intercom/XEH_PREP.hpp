@@ -15,6 +15,7 @@ PREP(noApiFunction);
 PREP(seatSwitched);
 PREP(handleBroadcasting);
 PREP(handleLimitedConnection);
+PREP(handleIntercomActivation);
 PREP(setStationConfiguration);
 PREP(setStationUnit);
 
@@ -35,3 +36,6 @@ PREP(setRackRxTxCapabilities);
 
 // Display
 PREP(vehicleInfoLine);
+
+// Keybinding
+PREP(switchIntercomFast);

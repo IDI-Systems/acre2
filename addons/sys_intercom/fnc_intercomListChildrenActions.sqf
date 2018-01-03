@@ -80,6 +80,14 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
             };
         };
 
+        private _voiceActivation = [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call FUNC(getStationConfiguration);
+        if (_voiceActivation) then {
+            _action = ["acre_pttActivation", localize LSTRING(pttActivation), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_VOICEACTIVATION, false] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+        } else {
+            _action = ["acre_pttActivation", localize LSTRING(voiceActivation), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_VOICEACTIVATION, true] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+        };
+        _actions pushBack [_action, [], _target];
+
         if ([_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_MASTERSTATION] call FUNC(getStationConfiguration)) then {
             ((_target getVariable [QGVAR(broadcasting), [false, objNull]]) select _intercomNetwork) params ["_isBroadcasting", "_broadcastingUnit"];
             if (_isBroadcasting) then {

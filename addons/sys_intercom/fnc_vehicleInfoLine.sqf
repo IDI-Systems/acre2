@@ -42,6 +42,9 @@ private _infoLine = "";
             _textStatus = "(R/T)";
         };
     };
+
+    private _voiceActivation = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call EFUNC(sys_intercom,getStationConfiguration);
+
     _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.8'>%2 </t>", _color, _displayName];
     _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.6'>%2 </t>", _color, _textStatus];
 } forEach _intercomNames;

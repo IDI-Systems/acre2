@@ -10,6 +10,13 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 if (!hasInterface) exitWith {};
 
+// CBA Keybindings
+["ACRE2", "PreviousIntercom", (localize LSTRING(previousIntercom)), "", {[-1, true] call FUNC(switchIntercomFast)}, [51, [true, false, false]]] call cba_fnc_addKeybind;
+["ACRE2", "NextIntercom", (localize LSTRING(nextIntercom)), "", {[1, true] call FUNC(switchIntercomFast)}, [51, [false, true, false]]] call cba_fnc_addKeybind;
+["ACRE2", "AddPreviousIntercom", (localize LSTRING(addPreviousIntercom)), "", {[-1, false] call FUNC(switchIntercomFast)}, [51, [true, false, true]]] call cba_fnc_addKeybind;
+["ACRE2", "AddNextIntercom", (localize LSTRING(addNextIntercom)), "", {[1, false] call FUNC(switchIntercomFast)}, [51, [false, true, true]]] call cba_fnc_addKeybind;
+
+// Intercom configuration
 ["vehicle", {
     params ["_player", "_newVehicle"];
     [_newVehicle, _player] call FUNC(enterVehicle);

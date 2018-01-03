@@ -230,5 +230,29 @@
         <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
             <English>Stop broadcast</English>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_pttActivation">
+            <English>PTT activation</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_voiceActivation">
+            <English>Voice activation</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
+            <English>Intercom PTT key</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
+            <English>PTT activation key for intercom transmission</English>
+        </Key>
+            <Key ID="STR_ACRE_sys_intercom_previousIntercom">
+            <English>Previous intercom network</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_nextIntercom">
+            <English>Next intercom network</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercom">
+            <English>Add the previous intercom network</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_addNextIntercom">
+            <English>Add the next intercom network</English>
+        </Key>
     </Package>
 </Project>

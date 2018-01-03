@@ -45,7 +45,7 @@ private _intercomStations = [];
         //   3: This is a seat with limited connectivity <BOOL> (default: false)
         //   4: Turned out is allowed <BOOL> (default: true)
         //   5: Forced connection status <NUMBER> (default: Status not forced)
-        //   6: Continuous transmission <BOOL> (default: true)
+        //   6: Voice activation active <BOOL> (default: true)
         //   7: This is a master station <BOOL> (default: false)
         // 1: Unit using intercom <OBJECT> (default: objNull)
         private _intercomStatus = [[false, INTERCOM_DISCONNECTED, INTERCOM_DEFAULT_VOLUME, false, true, false, true, false], objNull];
@@ -62,6 +62,9 @@ private _intercomStations = [];
 
             if (_role in (_limitedPositions select _forEachIndex)) then {
                 (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_LIMITED, true];
+
+                // Limited positions are by default configured without voice activation
+                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_VOICEACTIVATION, false];
             };
 
             // Handle turned out
@@ -69,7 +72,7 @@ private _intercomStations = [];
                 (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false];
             };
 
-            //systemChat format ["masterstation %1", _masterStation];
+            // Configure master station
             if ((_masterStation select _forEachIndex) isEqualTo _role) then {
                 (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_MASTERSTATION, true];
             }
