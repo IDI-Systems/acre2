@@ -10,16 +10,20 @@ Vehicle intercom consists of two separate networks depending on the vehicle type
 
 While *crew intercom* is limited to crew members and players in cargo positions cannot have access to it, *passenger intercom* can be accessed by both crew and passengers. This allows the crew to communicate with the passengers if such network exist. In order to connect to the *passenger intercom*, ACE3 Interaction Menu is needed: simply interact with the vehicle when being in a seat with access to *passenger intercom* and select connect. *Crew intercom* is automatically assigned to players in "crew" positions.
 
-Vehicle intercom system allows for an easier communication among crew members of a vehicle that has intercom functionality. It functions just like intercom in real life vehicles, giving the crew ability to speak to each other using a headset. Two operating modes are available through ACE self interaction menu:
+Vehicle intercom system allows for an easier communication among crew members of a vehicle that has intercom functionality. It functions just like intercom in real life vehicles, giving the crew ability to speak to each other using a headset. Each station has three configurations:
 
-  - *Voice activation*: the unit automatically uses intercom when starting speaking.
-  - *PTT activation*: the unit only transmit using the intercom when manually enabling it.
+  - *Receive*: the unit will only be able to hear incomming messages and all outgoing messages will not be transmitted through intercom. This configuration is displayed as **(R)** in the HUD.
+  - *Transmit*: the unit will only be able to transmit messages through intercom but it will not hear any incomming messages. This configuration is displayed as **(T)** in the HUD.
+  - *Receive and Transmit*: the unit can hear and send messages through the intercom system. This configuration is displayed as **(R/T)** in the HUD.
+
+In addition, two operating modes are available through ACE self interaction menu:
+
+  - *Voice activation*: the unit automatically uses intercom when starting speaking (**P** subsitutes the **T** entry in the HUD).
+  - *PTT activation*: the unit only transmit using the intercom when manually enabling it (**B** subsitutes the **T** entry in the HUD).
 
 Some vehicles have additionally, restrictions on the amount of connections available in order to join the *passenger intercom*. These positions are configured by default to be in *PTT activation* mode.
 
 Optionally, each network has a master station. Such stations can broadcast a message, temporarily disabling all transmit functionality in all stations.
-
-
 
 ## Infantry telephone
 
