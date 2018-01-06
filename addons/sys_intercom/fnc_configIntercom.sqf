@@ -39,7 +39,7 @@ private _broadcasting = [];
     private _limitedPositions = getArray (_x >> "limitedPositions");
     private _numLimPositions = getNumber (_x >> "numLimitedPositions");
     private _connectedByDefault = getNumber (_x >> "connectedByDefault");
-    private _masterStation = getArray (_x >> "masterPosition");
+    private _masterPositions = getArray (_x >> "masterPosition");
     private _availabeIntercomPositions = [];
 
     // Check if the entry in allowed positions is correct
@@ -86,32 +86,18 @@ private _broadcasting = [];
     } forEach _temp;
 
     // Master station
-    private _stationPosition = "";
-
-    if !(_masterStation isEqualTo []) then {
-        if (count _masterStation > 1) then {
-            WARNING_1("Vehicle type %1 has more than one master station defined. Only the first entry is going to be used.",_vehicle);
+    private _masterStationPositions = [_vehicle, _masterPositions] call EFUNC(sys_core,processVehicleSystemAccessArray);
+    {
+        if !(_x in _availabeIntercomPositions) exitWith {
+            WARNING_3("Vehicle type %1 has a master station entry (%2) that has no access to that intercom. Ignoring master positions for intercom network %3",_vehicle,_x,_name);
         };
-        if ((_masterStation select 0) isEqualType "" || (_masterStation select 0) isEqualType []) then {
-            if ((_masterStation select 0) in _availabeIntercomPositions) then {
-                if ((_masterStation select 0) isEqualType "") then {
-                    _stationPosition = _masterStation select 0;
-                } else {
-                    _stationPosition = format ["%1_%2",(_masterStation select 0) select 0, (_masterStation select 0) select 1];
-                };
-            } else {
-                WARNING_1("Vehicle type %1 has a master station entry %2 that has no access to that intercom.",_vehicle,_masterStation select 0);
-            }
-        } else {
-            WARNING_1("Vehicle type %1 has an invalid master station entry. Expected array or string.",_vehicle);
-        };
-    };
+    } forEach _masterStationPositions;
 
     // Check that limitied positions are not defined in available positions
     {
         if (_x in _availabeIntercomPositions) exitWith {
             _limitedIntercomPositions = [];
-            WARNING_2("Vehicle type %1 has limited positions defined that overlap with allowed positions. Ignoring limited positions for intercom network %2",_vehicle,_name);
+            WARNING_3("Vehicle type %1 has limited positions defined (%2) that overlap with allowed positions. Ignoring limited positions for intercom network %3",_vehicle,_x,_name);
         };
     } forEach _limitedIntercomPositions;
 
@@ -121,7 +107,7 @@ private _broadcasting = [];
     _intercomLimitedPositions pushBack _limitedIntercomPositions;
     _numLimitedPositions pushBack _numLimPositions;
     _intercomConnectByDefault pushBack _connectedByDefault;
-    _intercomMasterStation pushBack _stationPosition;
+    _intercomMasterStation pushBack _masterStationPositions;
     _broadcasting pushBack [false, objNull];
 } forEach (configProperties [_intercoms, "isClass _x", true]);
 

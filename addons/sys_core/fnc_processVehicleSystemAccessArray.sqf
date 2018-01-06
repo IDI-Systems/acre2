@@ -19,11 +19,11 @@
  * - inside: selects all seats inside the vehicle.
  *
  * The following cases are ilustrative examples of the outcome of this function:
- * - Configuration array ["driver", ["cargo", 1, 2]] -> [["driver"], ["cargo", 1], ["cargo", 2]]
- * - Configuration array ["crew"] -> [["driver"], ["commander"], ["gunner"], ["turret", [0]], ["turret", [1]]
- * - Configuration array ["inside"] -> [["driver"], ["commander"], ["gunner"], ["cargo", 1], ["cargo", 2], ..., ["cargo", n]]
- * - Configuration array ["cargo", "all"] -> [["cargo", 1], ["cargo", 2], ["cargo", 3], ..., ["cargo", n]]
- * - Configuration array [["turret", [1], [2]], [[turnedOut, [3]]] -> [["turret", [1]], ["turret", [2]], ["turnedOut", [3]]]
+ * - Configuration array ["driver", ["cargo", 1, 2]] -> ["driver", "cargo_1", "cargo_2"]
+ * - Configuration array ["crew"] -> ["driver", "commander", "gunner", "turret_[0]", "turret_[1]"]
+ * - Configuration array ["inside"] -> ["driver", "commander", "gunner", "cargo_1", "cargo_2", ..., "cargo_n"]
+ * - Configuration array ["cargo", "all"] -> [["cargo_1"], ["cargo_2"], "cargo_3", ..., "cargo_n"]
+ * - Configuration array [["turret", [1], [2]], [[turnedout, [3]]] -> ["turret_[1]", "turret_[2]", "turnedout_turret_[3]"]
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -84,7 +84,7 @@ private _processedArray = [];
             };
             default {
                 // Position is of type commander, driver, gunner or external
-                _processedArray pushBackUnique [_x];
+                _processedArray pushBackUnique _x;
             };
         };
     } else {
@@ -107,7 +107,7 @@ private _processedArray = [];
                         _processedArray pushBackUnique (format ["turret_%1", _x]);
                     } forEach (allTurrets [_vehicle, true] - allTurrets [_vehicle, false]);
                 };
-                case "turnedOut": {
+                case "turnedout": {
                     _processedArray pushBackUnique "turnedout_all";
                 };
             };

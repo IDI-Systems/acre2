@@ -74,9 +74,9 @@ private _intercomStations = [];
             };
 
             // Configure master station
-            if ((_masterStation select _forEachIndex) isEqualTo _role) then {
+            if (_role in (_masterStation select _forEachIndex)) then {
                 (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_MASTERSTATION, true];
-            }
+            };
 
             // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to
             // reduce network traffic.
