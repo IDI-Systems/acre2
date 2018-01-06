@@ -32,8 +32,10 @@ class CfgVehicles {
         class AcreIntercoms {
             class Intercom_1 {                             // Each entry defines a network
                 displayName = "Crew intercom";             // Name of the intercom network displayed to the players
+                shortName = "Crew";                        // Short name of the intercom network. Maximum 4 characters
                 // Seats with stations configured that have intercom access. In this case, units in commander, driver, gunner and turret (excluding FFV) have access to this intercom
                 // If left empty it has the same effect
+                shortName =
                 allowedPositions[] = {"crew"};
                 // In this case the commander turret does not have access to crew intercom (unit is "turned out"). This can be useful for historical vehicles
                 disabledPositions[] = {{"Turret", {0,0}}};
@@ -48,6 +50,7 @@ class CfgVehicles {
             };
             class Intercom_2: Intercom_1 {
                 displayName = "Pax intercom";
+                shortName = "Pax";
                 // Both crew and cargo positions have access to passenger intercom
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 limitedPositions[] = {};
@@ -71,6 +74,7 @@ class CfgVehicles {
         class AcreIntercoms {
             class Intercom_1 {                             // Each entry defines a network
                 displayName = "Crew intercom";             // Name of the intercom network displayed to the players
+                shortName = "Crew";
                 // "all" is a wildcard that selects, in this case, all turrets (not including ffv)
                 allowedPositions[] = {"driver", "commander", {"turret", "all"}};
                 // Commander FFV turret and turret positions [1] and [2] do not have access to crew intercom
@@ -83,6 +87,7 @@ class CfgVehicles {
             };
             class Intercom_2: Intercom 1 {
                 displayName = "Passenger intercom";
+                shortName = "Pax";
                 // Units in crew and in cargo positions have access to the passenger intercom
                 allowedPositions[] = {"crew", {"cargo", all}};
                 // Excludes units from accessing the passenger intercom. In this example, gunner, cargo index 1 and all FFV turrets do not have access to passenger intercom
@@ -91,6 +96,7 @@ class CfgVehicles {
             };
             class Intercom_3: Intercom 2 {
                 displayName = "Cargo intercom";
+                shortName = "Crg";
                 // Units in cargo positions 1 and 2 and all FFV turrets have access to the passenger intercom
                 allowedPositions[] = {{"cargo", 1, 2}, {"ffv", "all"}};
                 // Excludes unit in FFV turret [4] to access from accessing passenger intercom, as well as cargo index 1 and turret [1]
@@ -225,6 +231,7 @@ class CfgVehicles {
         class AcreIntercoms {
             class Intercom_1 {
                 displayName = "Crew intercom";
+                shortName = "Crew";
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {"driver", {"turnedout", "all"}};
                 limitedPositions[] = {{"cargo", "all"}};
@@ -234,6 +241,7 @@ class CfgVehicles {
             };
             class Intercom_2: Intercom 1 {
                 displayName = "Passenger intercom";
+                shortName = "Pax";
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 disabledPositions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}, {"turnedout", 2, "driver", "gunner", [2]}};
                 limitedPositions[] = {};
