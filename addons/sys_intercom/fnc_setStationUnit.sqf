@@ -6,7 +6,7 @@
  * 0: Vehicle with intercom <OBJECT>
  * 1: Unit to be checked <OBJECT>
  * 2: Intercom network <NUMBER>
- * 5: Variable name of of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
+ * 5: Variable name of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
  * None

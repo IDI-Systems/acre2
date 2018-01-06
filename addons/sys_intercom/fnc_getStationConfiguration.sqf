@@ -7,13 +7,13 @@
  * 1: Unit to be checked <OBJECT>. Default objNull.
  * 2: Intercom network <NUMBER>
  * 3: Intercom functionality to be retrieved <NUMBER>
- * 4: Variable name of of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
+ * 4: Variable name of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
  * Selected functionality state <VARIABLE>
  *
  * Example:
- * [vehicle acre_player, acre_player, 2] call acre_sys_intercom_fnc_getStationConnectionStatus
+ * [vehicle acre_player, acre_player, 2, INTERCOM_STATIONSTATUS_CONNECTION] call acre_sys_intercom_fnc_getStationConfiguration
  *
  * Public: No
  */

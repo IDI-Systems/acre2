@@ -62,7 +62,7 @@ if (GVAR(isDeaf) || (_unit getVariable [QGVAR(isDisabled), false]) || (ACRE_LIST
 };
 if (_isIntercomAttenuate) then {
     _speakingType = "i";
-    _directVolume = 1;
+    _directVolume = [_unit] call EFUNC(sys_core,getVolumeIntercomUnit);
 };
 private _canUnderstand = [_unit] call FUNC(canUnderstand);
 private _params = [_speakingType, _id, !_canUnderstand, _directVolume^3, _emitterPos, _emitterDir];

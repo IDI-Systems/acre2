@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_intercom_fnc_intercomListchildrenActions
+ * [cursorTarget] call acre_sys_intercom_fnc_intercomListChildrenActions
  *
  * Public: No
  */
@@ -99,6 +99,17 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
             };
             _actions pushBack [_action, [], _target];
         };
+
+        _action = [
+            format ["acre_intercom_%1_volume", _intercomName],
+            localize LSTRING(volume),
+            "",
+            {true},
+            {true},
+            {_this call FUNC(intercomListVolumeActions)},
+            _intercomNetwork
+        ] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
     };
 };
 

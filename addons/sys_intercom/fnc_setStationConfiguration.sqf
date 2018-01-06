@@ -8,14 +8,14 @@
  * 2: Intercom network <NUMBER>
  * 3: Intercom functionality <NUMBER>
  * 4: New value <VARIALBE TYPE>
- * 5: Variable name of of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
+ * 5: Variable name of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
  * None
  *
  * Example:
- * [vehicle acre_player, acre_player, INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false] call acre_sys_intercom_fnc_setStationConnectionStatus
- * [vehicle acre_player, acre_player, INTERCOM_STATIONSTATUS_CONNECTION, 1, "acre_sys_intercom_station_driver"] call acre_sys_intercom_fnc_setStationConnectionStatus
+ * [vehicle acre_player, acre_player, INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false] call acre_sys_intercom_fnc_setStationConfiguration
+ * [vehicle acre_player, acre_player, INTERCOM_STATIONSTATUS_CONNECTION, 1, "acre_sys_intercom_station_driver"] call acre_sys_intercom_fnc_setStationConfiguration
  *
  * Public: No
  */
