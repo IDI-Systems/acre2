@@ -17,7 +17,7 @@
  * Public: No
  */
 #include "script_component.hpp"
-systemChat format ["local start"];
+
 private _onRadio = parseNumber(_this select 2);
 private _radioId = _this select 3;
 TRACE_1("LOCAL START SPEAKING ENTER", _this);

@@ -48,7 +48,7 @@ private _processedArray = [];
         switch (toLower _x) do {
             case "crew": {
                 // Add Standard configuration
-                // Driver, commander and gunner positions. Only select thoses that are defined.
+                // Driver, commander and gunner positions. Only select thoses that are defined
                 {
                     private _role = _x;
                     private _crew = fullCrew [_vehicle, _role, true];
@@ -59,7 +59,7 @@ private _processedArray = [];
                     } forEach _crew;
                 } forEach ["driver", "commander", "gunner"];
 
-                // Turrets excluding FFV turrets.
+                // Turrets excluding FFV turrets
                 {
                     _processedArray pushBackUnique (format ["turret_%1", _x]);
                 } forEach allTurrets [_vehicle, false];
