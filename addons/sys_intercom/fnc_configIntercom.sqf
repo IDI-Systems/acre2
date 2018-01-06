@@ -39,7 +39,7 @@ private _broadcasting = [];
     private _limitedPositions = getArray (_x >> "limitedPositions");
     private _numLimPositions = getNumber (_x >> "numLimitedPositions");
     private _connectedByDefault = getNumber (_x >> "connectedByDefault");
-    private _masterPositions = getArray (_x >> "masterPosition");
+    private _masterPositions = getArray (_x >> "masterPositions");
     private _availabeIntercomPositions = [];
 
     // Check if the entry in allowed positions is correct

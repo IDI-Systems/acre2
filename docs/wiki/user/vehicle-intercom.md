@@ -10,9 +10,16 @@ Vehicle intercom consists of two separate networks depending on the vehicle type
 
 While *crew intercom* is limited to crew members and players in cargo positions cannot have access to it, *passenger intercom* can be accessed by both crew and passengers. This allows the crew to communicate with the passengers if such network exist. In order to connect to the *passenger intercom*, ACE3 Interaction Menu is needed: simply interact with the vehicle when being in a seat with access to *passenger intercom* and select connect. *Crew intercom* is automatically assigned to players in "crew" positions.
 
-Vehicle intercom system allows for an easier communication among crew members of a vehicle that has intercom functionality. It functions just like intercom in real life vehicles, giving the crew ability to speak to each other using a headset.
+Vehicle intercom system allows for an easier communication among crew members of a vehicle that has intercom functionality. It functions just like intercom in real life vehicles, giving the crew ability to speak to each other using a headset. Two operating modes are available through ACE self interaction menu:
 
-Some vehicles have additionally, restrictions on the amount of connections available in order to join the *passenger intercom*. Crew positions do not contribute towards this limit.
+  - *Voice activation*: the unit automatically uses intercom when starting speaking.
+  - *PTT activation*: the unit only transmit using the intercom when manually enabling it.
+
+Some vehicles have additionally, restrictions on the amount of connections available in order to join the *passenger intercom*. These positions are configured by default to be in *PTT activation* mode.
+
+Optionally, each network has a master station. Such stations can broadcast a message, temporarily disabling all transmit functionality in all stations.
+
+
 
 ## Infantry telephone
 
