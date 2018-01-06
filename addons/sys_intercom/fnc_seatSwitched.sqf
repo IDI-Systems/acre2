@@ -7,10 +7,10 @@
  * 1: Unit to be checked <OBJECT>
  *
  * Return Value:
- * Unit is in the given intercom network
+ * None
  *
  * Example:
- * [cursorTarget, acre_player] call acre_sys_forEachIndexntercom_fnc_seatSwitched
+ * [cursorTarget, acre_player] call acre_sys_intercom_fnc_seatSwitched
  *
  * Public: No
  */

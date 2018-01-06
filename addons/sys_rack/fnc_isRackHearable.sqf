@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Unque rack ID <STRING>
  * 1: Unit <OBJECT>
- * 2: Vehicle <OBJECT><OPTIONAL>
+ * 2: Vehicle <OBJECT><OPTIONAL> (default: objNull)
  *
  * Return Value:
  * Accessible <BOOLEAN>

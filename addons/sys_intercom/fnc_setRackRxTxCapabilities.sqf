@@ -7,6 +7,7 @@
  * 1: Vehicle where the radio rack is <OBJECT>
  * 2: Unit <OBJECT>
  * 3: Functionality: 0 (Not Monitoring), 1 (Receive only), 2 (Transmit only) and 3 (Receive and Transmit) <NUMBER>
+ * 4: Unique rack ID <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
  * None

@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Check if intercom option is available on infantry units.
+ * Updates the HUD display line in vehicles.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -22,6 +22,9 @@ private _intercomNames = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames
 private _infoLine = "";
 {
     private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call EFUNC(sys_intercom,getStationConfiguration);
+    private _isBroadcasting = ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _forEachIndex) params ["_isBroadcasting", "_broadcastingUnit"];
+    private _isVoiceActive = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call EFUNC(sys_intercom,getStationConfiguration);
+
     private _color = "";
     private _textStatus = "";
     private _displayName = _x select 2;
@@ -35,11 +38,27 @@ private _infoLine = "";
         };
         case INTERCOM_TX_ONLY: {
             _color = "#ffffff";
-            _textStatus = "(T)";
+            if (_isBroadcasting && {_broadcastingUnit == acre_player}) then {
+                _textStatus = "(B)";
+            } else {
+                if (_isVoiceActive) then {
+                    _textStatus = "(T)";
+                } else {
+                    _textStatus = "(P)";
+                };
+            };
         };
         case INTERCOM_RX_AND_TX: {
             _color = "#ffffff";
-            _textStatus = "(R/T)";
+            if (_isBroadcasting && {_broadcastingUnit == acre_player}) then {
+                _textStatus = "(R/B)";
+            } else {
+                if (_isVoiceActive) then {
+                    _textStatus = "(R/T)";
+                } else {
+                    _textStatus = "(R/P)";
+                };
+            };
         };
     };
 
@@ -49,7 +68,7 @@ private _infoLine = "";
     _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.6'>%2 </t>", _color, _textStatus];
 } forEach _intercomNames;
 
-_infoLine = _infoLine + format ["<t font='PuristaBold' color='#737373' size='0.6'>| </t>"];
+_infoLine = _infoLine + format ["<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>"];
 
 {
     if ([_x, _unit] call EFUNC(sys_rack,isRackAccessible) || [_x, _unit] call EFUNC(sys_rack,isRackHearable)) then {

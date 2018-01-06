@@ -3,9 +3,10 @@
  * Returns the configuration (No use, TX Ony, RX only or TX/RX) for the given unit of a rack that is connected to an intercom.
  *
  * Arguments:
- * 0: Unique rack ID <STRING>
+ * 0: Unique radio ID <STRING>
  * 1: Vehicle where the radio rack is <OBJECT>
  * 2: Unit <OBJECT>
+ * 3: Unique rack ID <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
  * Radio functionality: 0 (Not Monitoring), 1 (Receive only), 2 (Transmit only) and 3 (Receive and Transmit) <NUMBER>

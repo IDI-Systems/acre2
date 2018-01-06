@@ -242,7 +242,13 @@
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
             <English>PTT activation key for intercom transmission</English>
         </Key>
-            <Key ID="STR_ACRE_sys_intercom_previousIntercom">
+        <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
+            <English>Intercom broadcast key</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
+            <English>Broadcast activation key for intercom transmission</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_previousIntercom">
             <English>Previous intercom network</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercom">

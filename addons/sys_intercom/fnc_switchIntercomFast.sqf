@@ -10,7 +10,7 @@
  * Handled <BOOL>
  *
  * Example:
- * [1] call acre_sys_intercom_fnc_switchIntercomFast
+ * [1, true] call acre_sys_intercom_fnc_switchIntercomFast
  *
  * Public: No
  */
@@ -46,7 +46,7 @@ if (!_hasAccessibleIntercoms) exitWith {_return};
 
 private _valid = false;
 private _nextIntercom = _activeIntercom;
-systemChat format ["active intercom: %1", _activeIntercom];
+
 while {!_valid} do {
     _nextIntercom = _nextIntercom + _dir;
     if (_nextIntercom < 0 || _nextIntercom >= _intercomCount) then {
@@ -58,7 +58,6 @@ while {!_valid} do {
     };
 
     _valid = [_vehicle, acre_player, _nextIntercom, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS] call FUNC(getStationConfiguration);
-    systemChat format ["next intercom: %1 is %2", _nextIntercom, _valid];
 };
 
 // Disconnect the previous network and set the new to RX & TX
@@ -67,7 +66,6 @@ if (_nextIntercom != _activeIntercom) then {
     if (_disconnectOthers) then {
         {
             if (_forEachIndex != _nextIntercom) then {
-                systemChat format ["disconnecting network %1", _forEachIndex];
                 [_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_DISCONNECTED] call FUNC(setStationConfiguration);
             };
         } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);

@@ -39,3 +39,5 @@ PREP(vehicleInfoLine);
 
 // Keybinding
 PREP(switchIntercomFast);
+PREP(handlePttKeyPress);
+PREP(handlePttKeyPressUp);

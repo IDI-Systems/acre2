@@ -15,7 +15,7 @@ acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
 
 ["unit", FUNC(onVolumeControlKeyPressUp)] call CBA_fnc_addPlayerEventHandler;
 
-["vehicle", {
+DFUNC(enterVehicle) = {
     params ["_player"];
     disableSerialization;
 
@@ -26,4 +26,16 @@ acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
     } else {
         _ctrl ctrlShow false;
     };
+};
+
+// Handle showing the display at the very begining when unit is on foot
+[{
+    params ["_player"];
+    [_player] call FUNC(enterVehicle);
+}, [acre_player], 0.1] call CBA_fnc_waitAndExecute;
+
+// Add event handler
+["vehicle", {
+    params ["_player"];
+    [_player] call FUNC(enterVehicle);
 }] call CBA_fnc_addPlayerEventHandler;

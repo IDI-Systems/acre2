@@ -7,13 +7,15 @@
  * 1: Unit to be checked <OBJECT>
  * 2: Intercom network <NUMBER>
  * 3: Intercom functionality <NUMBER>
- * 4: Change forced status <BOOL> (default: false)
+ * 4: New value <VARIALBE TYPE>
+ * 5: Variable name of of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
  * None
  *
  * Example:
- * [vehicle acre_player, acre_player, 1] call acre_sys_intercom_fnc_setStationConnectionStatus
+ * [vehicle acre_player, acre_player, INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false] call acre_sys_intercom_fnc_setStationConnectionStatus
+ * [vehicle acre_player, acre_player, INTERCOM_STATIONSTATUS_CONNECTION, 1, "acre_sys_intercom_station_driver"] call acre_sys_intercom_fnc_setStationConnectionStatus
  *
  * Public: No
  */

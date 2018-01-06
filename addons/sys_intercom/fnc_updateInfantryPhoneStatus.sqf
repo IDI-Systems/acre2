@@ -7,7 +7,7 @@
  * 1: Unit using the infantry phone <OBJECT>
  * 2: Type of action <NUMBER>
  * 3: Intercom network <NUMBER>
- * 4: Unit giving the infantry phone <OBJECT> (default: objNull)
+ * 4: Unit giving the infantry phone <OBJECT><OPTIONAL> (default: objNull)
  *
  * Return Value:
  * None
@@ -20,7 +20,7 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED], ["_givingUnit", objNull, [objNull]]];
+params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]]];
 
 private _intercomName = ((_vehicle getVariable [QGVAR(intercomNames), []]) select _intercomNetwork) select 1;
 private _intercomText = format ["( %1 )", _intercomName];

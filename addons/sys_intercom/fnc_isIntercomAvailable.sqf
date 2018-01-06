@@ -1,19 +1,17 @@
 /*
  * Author: ACRE2Team
- * Configures the initial intercom connectivity (disconnected/connected) for all allowed seats.
+ * Checks if the seat the unit is in has intercom access.
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
- * 1: Allowed positions <ARRAY>
- * 2: Forbidden positions <ARRAY>
- * 3: Positions with limited connectivity <ARRAY>
- * 4: Initial intercom configuration
+ * 1: Unit <OBJECT>
+ * 2: Intercom network <NUMBER>
  *
  * Return Value:
- * None
+ * Intercom is available <BOOL>
  *
  * Example:
- * [vehicle player] call acre_sys_intercom_fnc_isIntercomAvailable
+ * [vehicle player, player, 0] call acre_sys_intercom_fnc_isIntercomAvailable
  *
  * Public: No
  */

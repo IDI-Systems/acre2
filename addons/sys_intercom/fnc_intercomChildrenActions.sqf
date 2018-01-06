@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Generates a list of actions for the intercom network of a vehicle.
+ * Generates a list of the intercom networks of a vehicle.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>

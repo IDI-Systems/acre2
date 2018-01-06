@@ -1,19 +1,20 @@
 /*
  * Author: ACRE2Team
- * Configures the initial intercom connectivity (disconnected/connected) for all allowed seats.
+ * Configures the initial intercom connectivity (disconnected/connected, ...) for all allowed seats.
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
  * 1: Allowed positions <ARRAY>
  * 2: Forbidden positions <ARRAY>
  * 3: Positions with limited connectivity <ARRAY>
- * 4: Initial intercom configuration
+ * 4: Initial intercom configuration <ARRAY>
+ * 5: Master station configuration <ARRAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * [vehicle player] call acre_sys_intercom_fnc_configIntercomStations
+ * [vehicle player, _allowedPositions, _forbiddenPositions, _initialConfiguration, _masterStation] call acre_sys_intercom_fnc_configIntercomStations
  *
  * Public: No
  */

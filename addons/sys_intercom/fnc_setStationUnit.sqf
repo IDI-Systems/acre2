@@ -6,8 +6,7 @@
  * 0: Vehicle with intercom <OBJECT>
  * 1: Unit to be checked <OBJECT>
  * 2: Intercom network <NUMBER>
- * 3: Intercom functionality <NUMBER>
- * 4: Change forced status <BOOL> (default: false)
+ * 5: Variable name of of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
  * None

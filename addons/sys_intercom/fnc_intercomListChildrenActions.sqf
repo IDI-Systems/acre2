@@ -4,6 +4,8 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
+ * 1: Unit <OBJECT>
+ * 2: Intercom network <NUMBER>
  *
  * Return Value:
  * None

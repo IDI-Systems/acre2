@@ -45,8 +45,4 @@ if (_unit != _vehicle) then {
     _unit setVariable [QGVAR(intercomVehicle), objNull];
     _unit setVariable [QGVAR(intercomPTT), false, true];
     ACRE_PLAYER_INTERCOM = [];
-
-//    if (_disconnected) then {
-//        [localize LSTRING(systemDisconnected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
-//    };
 };
