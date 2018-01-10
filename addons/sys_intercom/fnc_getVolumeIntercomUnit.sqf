@@ -29,7 +29,7 @@ if (isNull _vehicleInfantryPhone) then {
             private _volume = [vehicle acre_player, acre_player, _forEachIndex, 2] call FUNC(getStationConfiguration);
             if (_maxVolume < _volume) then {
                 _maxVolume = _volume;
-            }
+            };
         };
     } forEach ACRE_PLAYER_INTERCOM;
 } else {
