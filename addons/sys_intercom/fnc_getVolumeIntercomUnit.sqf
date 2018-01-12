@@ -21,9 +21,10 @@ params ["_unit"];
 private _maxVolume = 0.0;
 
 // Check if the player is infantry phone
-private _vehicleInfantryPhone = acre_player getVariable [QGVAR(vehicleInfantryPhone), objNull];
+private _vehicleInfantryPhone = (acre_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, 0]]) select 0;
 if (isNull _vehicleInfantryPhone) then {
     // player is inside a vehicle and not using the infantry phone.
+    ((vehicle acre_player) getVariable [QGVAR(unitInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", "_infantryPhoneNetwork"];
     {
         if (_unit in _x) then {
             private _volume = [vehicle acre_player, acre_player, _forEachIndex, 2] call FUNC(getStationConfiguration);
