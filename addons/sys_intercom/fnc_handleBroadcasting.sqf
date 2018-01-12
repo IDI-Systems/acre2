@@ -36,6 +36,6 @@ private _changes = false;
 
 // Only broadcast if changes have been made
 if (_changes) then {
-    [_vehicle, _unit] call EFUNC(sys_intercom,vehicleInfoLine);
+    [_vehicle, _unit] call FUNC(vehicleInfoLine);
     _vehicle setVariable [QGVAR(broadcasting), _broadcastConfig, true];
 };

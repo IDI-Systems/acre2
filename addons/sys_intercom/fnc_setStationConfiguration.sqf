@@ -73,5 +73,5 @@ switch (_intercomFunctionality) do {
 if (_changed) then {
     (_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) set [_intercomFunctionality, _value];
     _vehicle setVariable [_varName, _intercomArray, true];
-    [_vehicle, _unit] call EFUNC(sys_intercom,vehicleInfoLine);
+    [_vehicle, _unit] call FUNC(vehicleInfoLine);
 };

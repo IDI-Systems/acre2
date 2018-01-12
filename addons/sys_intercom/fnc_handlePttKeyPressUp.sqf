@@ -28,4 +28,6 @@ switch (_action) do {
     case 1 : { GVAR(broadcastKey) = false; [_vehicle, acre_player, ALL_INTERCOMS, false] call FUNC(handleBroadcasting); };
 };
 
+[_vehicle, acre_player] call FUNC(vehicleInfoLine);
+
 true

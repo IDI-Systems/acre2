@@ -34,29 +34,39 @@ private _infoLine = "";
         };
         case INTERCOM_RX_ONLY: {
             _color = "#ffffff";
-            _textStatus = "(R)";
+            _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R) </t>", _color];
         };
         case INTERCOM_TX_ONLY: {
             _color = "#ffffff";
             if (_isBroadcasting && {_broadcastingUnit == acre_player}) then {
-                _textStatus = "(B)";
+                _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(B) </t>", _color];
             } else {
                 if (_isVoiceActive) then {
-                    _textStatus = "(T)";
+                    _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(T) </t>", _color];
                 } else {
-                    _textStatus = "(P)";
+                    if (_unit getVariable [QGVAR(intercomPTT), false]) then {
+                        _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(P) </t>", _color];
+                    } else {
+                        _textStatus = format ["<t font='PuristaBold' color='#737373' size='0.6'>(P) </t>"];
+                    };
                 };
             };
         };
         case INTERCOM_RX_AND_TX: {
             _color = "#ffffff";
             if (_isBroadcasting && {_broadcastingUnit == acre_player}) then {
-                _textStatus = "(R/B)";
+                _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/B) </t>", _color];
             } else {
                 if (_isVoiceActive) then {
-                    _textStatus = "(R/T)";
+                    _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/T) </t>", _color];
                 } else {
-                    _textStatus = "(R/P)";
+                    if (_unit getVariable [QGVAR(intercomPTT), false]) then {
+                        _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/P) </t>", _color];
+                    } else {
+                        _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/</t>", _color];
+                        _textStatus = _textStatus + format ["<t font='PuristaBold' color='#737373' size='0.6'>P/</t>"];
+                        _textStatus = _textStatus + format ["<t font='PuristaBold' color='%1' size='0.6'>) </t>", _color];
+                    };
                 };
             };
         };
@@ -64,8 +74,7 @@ private _infoLine = "";
 
     private _voiceActivation = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call EFUNC(sys_intercom,getStationConfiguration);
 
-    _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.8'>%2 </t>", _color, _displayName];
-    _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.6'>%2 </t>", _color, _textStatus];
+    _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.8'>%2 </t>", _color, _displayName] + _textStatus;
 } forEach _intercomNames;
 
 _infoLine = _infoLine + format ["<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>"];
