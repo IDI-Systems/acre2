@@ -30,4 +30,10 @@ if (_unit == vehicle _unit) exitWith {false};
 
 private _wiredIntercoms = [_rackId] call FUNC(getWiredIntercoms);
 
-("crew" in _wiredIntercoms && {_unit in ACRE_PLAYER_CREW_INTERCOM}) || ("passenger" in _wiredIntercoms && {_unit in ACRE_PLAYER_PASSENGER_INTERCOM})
+private _isHearable = false;
+{
+    _isHearable = [_vehicle, _unit, _forEachIndex] call EFUNC(sys_intercom,isInIntercom) && (_x ==  (_wiredIntercoms select _forEachIndex));
+    if (_isHearable) exitWith{};
+} forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);
+
+_isHearable

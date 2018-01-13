@@ -80,6 +80,22 @@ class CfgAcreComponents {
         binaryGainFile = QPATHTOF(binary\Harris_123cm_Whip_gain.aba);
     };
 
+    class ACRE_270CM_VEH_BNC: ACRE_BaseAntenna {
+        name = "2.7 Meter Multiband Vehicular Whip Antenna BNC";
+        shortName = "2.7M MB VEH BNC";
+        connector = ACRE_CONNECTOR_BNC;
+        height = 2.7;
+        binaryGainFile = QPATHTOF(binary\RF_3183_AT0XX_gain.aba);
+    };
+
+    class ACRE_FA80_BNC: ACRE_BaseAntenna {
+        name = "FA80 Vehicular Antenna";
+        shortName = "FA80 VEH BNC";
+        connector = ACRE_CONNECTOR_BNC;
+        height = 1.66;
+        binaryGainFile = QPATHTOF(binary\FA_80_gain.aba);
+    };
+    
     class ACRE_243CM_VHF_TNC: ACRE_BaseAntenna {
         name = "2.43 Meter VHF Ground Spike Antenna";
         shortName = "2.43M Ground Spike";

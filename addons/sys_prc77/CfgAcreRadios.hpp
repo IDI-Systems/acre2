@@ -7,7 +7,7 @@ class CfgAcreComponents {
     };
 
     class ACRE_PRC77: ACRE_PRC77_base {
-        name = "AN/PRC-77";
+        name = QUOTE(NAME_PRC77);
         sinadRating = -118;
         sensitivityMin = -118;
         sensitivityMax = -50;

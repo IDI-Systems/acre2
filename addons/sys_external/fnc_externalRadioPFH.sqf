@@ -4,9 +4,9 @@
  *
  * - Disabled uses of external radios are:
  *   - Radio is in players inventory.
- *   - Player is dead. External radios are returned to the original owner.
  *   - Distance between owner and end user is greater than 2m.
  *   - Owner and end user are not in the same vehicle.
+ *   - Death of player is handled in fnc_onPlayerKilled.sqf.
  * - Radios in dead or captive units can always be accessed by other players.
  *
  * Arguments:
@@ -36,11 +36,5 @@ if (alive acre_player) then {
         if ((_x in _radios) || !_isExternalRadioAvailable) then {
             [_x, _owner] call FUNC(stopUsingExternalRadio);
         };
-    } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
-} else {
-    // All external radios in use are now returned to the owner.
-    {
-        private _owner = [_x] call FUNC(getExternalRadioOwner);
-        [_x, _owner] call FUNC(stopUsingExternalRadio);
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
 };

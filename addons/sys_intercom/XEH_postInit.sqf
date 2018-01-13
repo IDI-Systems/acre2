@@ -3,14 +3,27 @@
 // Exit if ACE3 not loaded
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
-["Tank", "init", FUNC(intercomConfig), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Car_F", "init", FUNC(intercomConfig), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Air", "init", FUNC(intercomConfig), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Boat_F", "init", FUNC(intercomConfig), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Air", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Boat_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 if (!hasInterface) exitWith {};
 
-ADDPFH(DFUNC(vehicleCrewPFH), 1.1, []);
+["vehicle", {
+    params ["_player", "_newVehicle"];
+    [_newVehicle, _player] call FUNC(enterVehicle);
+}] call CBA_fnc_addPlayerEventHandler;
+
+player addEventHandler ["seatSwitchedMan", {
+    params ["_unit1", "_unit2", "_vehicle"];
+    [_vehicle, _unit1] call FUNC(seatSwitched);
+}];
+
+[QGVAR(giveInfantryPhone), {
+    params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED]];
+    [_vehicle, _unit, _action, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
+}] call CBA_fnc_addEventHandler;
 
 #ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {

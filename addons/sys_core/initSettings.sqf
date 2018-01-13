@@ -57,8 +57,19 @@
     localize LSTRING(ts3ChannelName_displayName),
     "ACRE2",
     "",
-    false,
-    {call EFUNC(sys_io,ts3ChannelMove)}
+    true,
+    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
+] call CBA_Settings_fnc_init;
+
+// Channel Password
+[
+    QGVAR(ts3ChannelPassword),
+    "EDITBOX",
+    localize LSTRING(ts3ChannelPassword_displayName),
+    "ACRE2",
+    ["", true],
+    true,
+    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
 ] call CBA_Settings_fnc_init;
 
 // Difficulty settings

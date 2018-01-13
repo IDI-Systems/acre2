@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles death of unit, primarily for handling local player death.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [player] call acre_sys_radio_fnc_onPlayerKilled
  *
  * Public: No
  */
@@ -23,6 +22,9 @@ if ((_this select 0) == acre_player) then {
     {
         private _radioName = _x;
         acre_player setVariable [_radioName, nil, false];
+
+        // Make sure the GUI state is closed so that other players can open the radio
+        [_radioName, false] call FUNC(setRadioOpenState);
     } foreach GVAR(currentRadioList);
     GVAR(currentRadioList) = [];
 

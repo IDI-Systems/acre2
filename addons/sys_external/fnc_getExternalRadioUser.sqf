@@ -17,4 +17,4 @@
 
 params ["_radioId"];
 
-[_radioId, "getState", "isUsedExternally"] call EFUNC(sys_data,dataEvent) select 1
+[_radioId, "getState", "radioUsedExternally"] call EFUNC(sys_data,dataEvent) select 1

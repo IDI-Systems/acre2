@@ -47,6 +47,16 @@ if (!ACRE_IS_SPECTATOR) then {
         _radioList pushBackUnique _x;
     } forEach ACRE_HEARABLE_RACK_RADIOS;
 
+    // If Arsenal is open radios are stashed in var until left
+    {
+        _radioList pushBackUnique _x;
+    } forEach ACRE_ARSENAL_RADIOS;
+
+    // If Arsenal is open radios are stashed in var until left
+    {
+        _radioList pushBackUnique _x;
+    } forEach ACRE_ARSENAL_RADIOS;
+
     if (ACRE_ACTIVE_RADIO != "") then {
         _radioList pushBackUnique ACRE_ACTIVE_RADIO;
     };

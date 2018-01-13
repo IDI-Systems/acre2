@@ -18,4 +18,4 @@
 
 params ["_radioId", "_allowExternalUse"];
 
-[_radioId, "setState", ["isShared", _allowExternalUse]] call EFUNC(sys_data,dataEvent);
+[_radioId, "setState", ["radioShared", _allowExternalUse]] call EFUNC(sys_data,dataEvent);

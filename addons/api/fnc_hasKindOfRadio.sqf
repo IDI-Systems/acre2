@@ -18,6 +18,8 @@
 
 params ["_weaponArray", "_type"];
 
+_type = toLower _type;
+
 if (IS_OBJECT(_weaponArray)) then {
     _weaponArray = [_weaponArray] call EFUNC(sys_core,getGear);
 };

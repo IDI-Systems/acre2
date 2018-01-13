@@ -9,9 +9,10 @@ PREP(addRack);
 PREP(addRackOnReturn);
 PREP(initVehicle);
 PREP(configWiredIntercoms);
+PREP(enterVehicle);
 PREP(getVehicleRacks);
 PREP(getVehicleFromRack);
-PREP(vehicleCrewPFH);
+PREP(rackPFH);
 
 PREP(isRadioRemovable);
 PREP(isRackAccessible);
@@ -21,6 +22,7 @@ PREP(isRadioHearable);
 PREP(getAccessibleVehicleRacks);
 PREP(getHearableVehicleRacks);
 
+PREP(configureRackIntercom);
 PREP(initializeRack);
 PREP(getRackBaseClassname);
 PREP(getRackFromRadio);

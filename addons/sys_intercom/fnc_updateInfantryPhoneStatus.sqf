@@ -13,49 +13,59 @@
  * None
  *
  * Example:
- * [cursorTarget, player, 1, CREW_INTERCOM] call acre_sys_intercom_updateInfantryPhoneStatus
- * [cursorTarget, infantryUnit, 1, PASSENGER_INTERCOM, player] call acre_sys_intercom_updateInfantryPhoneStatus
+ * [cursorTarget, player, 1, 0] call acre_sys_intercom_fnc_updateInfantryPhoneStatus
+ * [cursorTarget, infantryUnit, 1, 0, player] call acre_sys_intercom_fnc_updateInfantryPhoneStatus
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_unit", "_action", ["_intercomNetwork", CREW_INTERCOM], ["_givingUnit", objNull, [objNull]]];
+params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED], ["_givingUnit", objNull, [objNull]]];
 
-private "_intercomText";
-switch (_intercomNetwork) do {
-    case CREW_INTERCOM: {_interComText = "(" + localize CREW_STRING + ")";};
-    case PASSENGER_INTERCOM: {_interComText = "(" + localize LSTRING(passenger) + ")";};
-};
+private _intercomName = (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork;
+private _intercomText = format ["( %1 )", _intercomName];
 
 switch (_action) do {
     case 0: {
-        if (_intercomNetwork == CREW_INTERCOM) then {
-            [_vehicle, _unit, 0] call FUNC(updateCrewIntercomStatus);
-        };
-        if (_intercomNetwork == PASSENGER_INTERCOM) then {
-            [_vehicle, _unit, 0] call FUNC(updatePassengerIntercomStatus);
-        };
         // Stop using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
+
+        private _unitsIntercom = _vehicle getVariable[QGVAR(unitsIntercom) , []];
+        {
+            [_vehicle, _unit, _intercomNetwork, INTERCOM_DISCONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
+        } forEach _unitsIntercom;
+
+        ACRE_PLAYER_INTERCOM = [];
         [format [localize LSTRING(infantryPhoneDisconnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
     };
     case 1: {
         // Start using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
+
+        [_vehicle, _unit, _intercomNetwork, INTERCOM_CONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
+
         [format [localize LSTRING(infantryPhoneConnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
     case 2: {
         // Give the intercom to another unit
-        _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
-        _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
+        [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
+        [_vehicle, _unit, _intercomNetwork, INTERCOM_DISCONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
+
+        [QGVAR(giveInfantryPhone), ["_vehicle", "_unit", 1, _intercomNetwork], _unit] call CBA_fnc_targetEvent;
         [format [localize LSTRING(infantryPhoneReceived), _intercomText], ICON_RADIO_CALL, nil, _unit] call EFUNC(sys_core,displayNotification);
     };
     case 3: {
+        private _previousIntercom = _vehicle getVariable [QGVAR(unitInfantryPhone), []] select 1;
+        [_vehicle, _unit, _previousIntercom, INTERCOM_DISCONNECTED, false] call acre_sys_intercom_fnc_setIntercomUnits;
+
         // Switch to another intercom network
+        [_vehicle, _unit, _intercomNetwork, INTERCOM_CONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
+
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
     };

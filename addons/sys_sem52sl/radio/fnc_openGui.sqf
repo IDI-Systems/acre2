@@ -53,7 +53,8 @@ if (([GVAR(currentRadioId), "getState", "channelKnobPosition"] call EFUNC(sys_da
 };
 GVAR(lastAction) = time;
 createDialog "SEM52SL_RadioDialog";
-[_radioId, "setState", ["isGuiOpened", true]] call EFUNC(sys_data,dataEvent);
+
+[_radioId, true] call EFUNC(sys_radio,setRadioOpenState);
 
 // Use this to turn off the backlight display//also to save last channel
 

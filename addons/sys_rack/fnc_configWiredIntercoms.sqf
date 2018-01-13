@@ -20,40 +20,26 @@ params ["_vehicle", "_rack"];
 
 private _type = typeOf _vehicle;
 
-private _accessibleIntercoms = getArray (_rack >> "intercom");
-private _hasCrewIntercom = getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasCrewIntercom");
-private _hasPassengerIntercom = getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasPassengerIntercom");
+private _intercoms = getArray (_rack >> "intercom");
+private _wiredIntercoms = [];
 
 // Set by default to have access to all intercom networks if none was specified
-if (count _accessibleIntercoms ==  0) then {
-    if (_hasCrewIntercom == 1) then {
-        _accessibleIntercoms = ["crew"];
-    };
-
-    if ((_hasPassengerIntercom == 1) && count (_vehicle getVariable [QEGVAR(sys_intercom,passengerIntercomPositions), []]) > 0) then {
-        _accessibleIntercoms pushBack "passenger";
-    };
+if (_intercoms isEqualTo []) then {
+    _wiredIntercoms append (_vehicle getVariable[QEGVAR(sys_intercom,intercomNames), []]);
 } else {
-    _accessibleIntercoms = _accessibleIntercoms apply {toLower _x};
-
-    if ("none" in _accessibleIntercoms) then {
-        _accessibleIntercoms = [];
-    };
-
-    // Check for a valid configuration
-    if ("crew" in _accessibleIntercoms && (_hasCrewIntercom != 1)) then {
-        WARNING_1("Vehicle type %1 does not have a crew intercom but the rack %2 can have access to its network",_type,_rack);
-        _accessibleIntercoms = _accessibleIntercoms - ["crew"];
-    };
-
-    if ("passenger" in _accessibleIntercoms && ((_hasPassengerIntercom != 1) || count (_vehicle getVariable [QEGVAR(sys_intercom,passengerIntercomPositions), []]) == 0)) then {
-        if (_hasPassengerIntercom != 1) then {
-            WARNING_1("Vehicle type %1 does not have a passenger intercom but the rack %2 can have access to its network",_type,_rack);
-        } else {
-            WARNING_1("Vehicle type %1 does not have a valid passenger intercom configuration. Disabling access of rack %2 to passenger intercom",_type);
-        };
-        _accessibleIntercoms = _accessibleIntercoms - ["passenger"];
+    if ("none" in _intercoms) then {
+        _wiredIntercoms = [];
+    } else {
+        {
+            private _int = toLower _x;
+            private _configuredIntercoms = _vehicle getVariable[QEGVAR(sys_intercom,intercomNames), []];
+            if (_int in _configuredIntercoms) then {
+                _wiredIntercoms pushBack _x;
+            } else {
+                WARNING_3("Vehicle type %1 does not have the intercom %2 but the rack %3 can have access to its network. Not adding it.",_type,_int,_rack)
+            };
+        } forEach _intercoms;
     };
 };
 
-_accessibleIntercoms
+_wiredIntercoms

@@ -7,7 +7,7 @@ class CfgAcreComponents {
     };
 
     class ACRE_SEM52SL: ACRE_SEM52SL_base {
-        name = "SEM 52 SL";
+        name = QUOTE(NAME_SEM52SL);
         sinadRating = -117;
         sensitivityMin = -117;
         sensitivityMax = -50;

@@ -94,8 +94,8 @@ private _result = false;
         if (_onRadio == 1) then {
             if ([_radioId] call EFUNC(sys_radio,radioExists)) then {
                 // Handle rack radios or shared manpack radios that are simultaneously in use.
-                if ((toLower _radioId) in ACRE_ACCESSIBLE_RACK_RADIOS || {(toLower _radioId) in ACRE_HEARABLE_RACK_RADIOS} || {_radioId in ACRE_EXTERNALLY_USED_MANPACK_RADIOS} || {_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS}) then {
-                    ACRE_BLOCKED_TRANSMITTING_RADIOS pushBackUnique (toLower _radioId);
+                if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || {_radioId in ACRE_HEARABLE_RACK_RADIOS} || {_radioId in ACRE_EXTERNALLY_USED_MANPACK_RADIOS} || {_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS}) then {
+                    ACRE_BLOCKED_TRANSMITTING_RADIOS pushBackUnique _radioId;
                 };
 
                 GVAR(speakers) pushBack _unit;
