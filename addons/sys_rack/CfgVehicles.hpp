@@ -30,7 +30,8 @@ class CfgVehicles {
     class Boat_Armed_01_base_F : Boat_F {
         class AcreRacks {
             class Rack_1 {
-                displayName = "Dash"; // If you have multiple racks a text label helps identify the particular rack..
+                displayName = CSTRING(dash); // If you have multiple racks a text label helps identify the particular rack.
+                shortName = CSTRING(dash);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver"};
                 disabledPositions[] = {};
@@ -46,7 +47,8 @@ class CfgVehicles {
     class MRAP_01_base_F : Car_F {
         class AcreRacks {
             class Rack_1 {
-                displayName = CSTRING(Dash_upper); // Name is displayed in the interaction menu.
+                displayName = CSTRING(dashUpper); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashUpperShort);
                 componentName = "ACRE_VRC110";
                 allowedPositions[] = {"driver", {"cargo", 0}}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
@@ -56,7 +58,8 @@ class CfgVehicles {
                 intercom[] = {"all"};
             };
             class Rack_2 {
-                displayName = CSTRING(Dash_lower); // If you have multiple racks a text label helps identify the particular rack..
+                displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
+                shortName = CSTRING(dashLowerShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", {"cargo", 0}};
                 disabledPositions[] = {};
@@ -71,7 +74,8 @@ class CfgVehicles {
     class MRAP_02_base_F: Car_F {
         class AcreRacks {
             class Rack_1 {
-                displayName = "Dashboard Upper"; // Name is displayed in the interaction menu.
+                displayName = CSTRING(dashUpper); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashUpperShort);
                 componentName = "ACRE_VRC110";
                 allowedPositions[] = {"driver", {"cargo", 0}}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
@@ -81,7 +85,8 @@ class CfgVehicles {
                 intercom[] = {"all"};
             };
             class Rack_2 {
-                displayName = "Dashboard Lower"; // If you have multiple racks a text label helps identify the particular rack..
+                displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
+                shortName = CSTRING(dashLowerShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", {"cargo", 0}};
                 disabledPositions[] = {};
@@ -96,7 +101,8 @@ class CfgVehicles {
     class MRAP_03_base_F: Car_F {
         class AcreRacks {
             class Rack_1 {
-                displayName = "Dashboard Upper"; // Name is displayed in the interaction menu.
+                displayName = CSTRING(dashUpper); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashUpperShort);
                 componentName = "ACRE_VRC110";
                 allowedPositions[] = {"driver", {"cargo", 0}}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
@@ -106,7 +112,8 @@ class CfgVehicles {
                 intercom[] = {"all"};
             };
             class Rack_2 {
-                displayName = "Dashboard Lower"; // If you have multiple racks a text label helps identify the particular rack..
+                displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
+                shortName = CSTRING(dashLowerShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", {"cargo", 0}};
                 disabledPositions[] = {};
@@ -122,7 +129,8 @@ class CfgVehicles {
     class Helicopter_Base_F : Helicopter {
         class AcreRacks {
             class Rack_1 {
-                displayName = CSTRING(Dash); // Name is displayed in the interaction menu.
+                displayName = CSTRING(dash); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
@@ -138,7 +146,8 @@ class CfgVehicles {
     class VTOL_01_unarmed_base_F: VTOL_01_base_F {
         class AcreRacks {
             class Rack_1 {
-                displayName = "Rack 1"; // Name is displayed in the interaction menu.
+                displayName = CSTRING(dashUpper); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashUpperShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "copilot", {"turret", {1}, {2}}};
                 disabledPositions[] = {};
@@ -149,7 +158,8 @@ class CfgVehicles {
             };
 
             class Rack_2 : Rack_1 {
-                displayName = "Rack 2"; // Name is displayed in the interaction menu.
+                displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
+                shortName = CSTRING(dashLowerShort);
             };
         };
     };
@@ -158,7 +168,8 @@ class CfgVehicles {
     class Plane_Base_F : Plane {
         class AcreRacks {
             class Rack_1 {
-                displayName = CSTRING(Dash); // Name is displayed in the interaction menu.
+                displayName = CSTRING(dash); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
@@ -177,7 +188,8 @@ class CfgVehicles {
     class Plane_Civil_01_base_F : Plane_Base_F {
         class AcreRacks {
             class Rack_1 {
-                displayName = "Dash"; // Name is displayed in the interaction menu.
+                displayName = CSTRING(dash); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
@@ -193,7 +205,8 @@ class CfgVehicles {
     class Tank_F : Tank {
          class AcreRacks {
             class Rack_1 {
-                displayName = CSTRING(Dash); // Name is displayed in the interaction menu.
+                displayName = CSTRING(dash); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
@@ -209,7 +222,8 @@ class CfgVehicles {
     class Wheeled_APC_F : Car_F {
          class AcreRacks {
             class Rack_1 {
-                displayName = CSTRING(Dash); // Name is displayed in the interaction menu.
+                displayName = CSTRING(dash); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashShort);
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
