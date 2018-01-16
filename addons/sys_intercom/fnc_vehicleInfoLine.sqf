@@ -83,7 +83,7 @@ _infoLine = _infoLine + format ["<t font='PuristaBold' color='#ffffff' size='0.8
     if ([_x, _unit] call EFUNC(sys_rack,isRackAccessible) || [_x, _unit] call EFUNC(sys_rack,isRackHearable)) then {
         private _rackClassName = _x;
         private _config = ConfigFile >> "CfgVehicles" >> _rackClassName;
-        private _displayName = [_rackClassName, "getState", "name"] call EFUNC(sys_data,dataEvent);
+        private _displayName = [_rackClassName, "getState", "shortName"] call EFUNC(sys_data,dataEvent);
         private _mountedRadio = [_rackClassName] call EFUNC(sys_rack,getMountedRadio);
         private _color = "#737373";
         private _textStatus = "";

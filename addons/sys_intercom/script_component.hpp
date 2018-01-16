@@ -18,32 +18,13 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 #include "script_acre_rackIntercom_defines.hpp"
+#include "script_acre_intercom_defines.hpp"
 
 #define PHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
 #define PHONE_MAXDISTANCE_HULL    3
 
-#define ALL_INTERCOMS          -1
-#define INTERCOM_DISCONNECTED   0
-#define INTERCOM_RX_ONLY        1
-#define INTERCOM_TX_ONLY        2
-#define INTERCOM_RX_AND_TX      3
-#define INTERCOM_DEFAULT_VOLUME 1
-
 #define PTT_ACTION       0
 #define BROADCAST_ACTION 1
-
-#define STATION_INTERCOM_CONFIGURATION_INDEX  0
-#define STATION_INTERCOM_UNIT_INDEX           1
-#define STATION_RACKS_CONFIGURATION_INDEX     2
-
-#define INTERCOM_STATIONSTATUS_HASINTERCOMACCESS  0
-#define INTERCOM_STATIONSTATUS_CONNECTION         1
-#define INTERCOM_STATIONSTATUS_VOLUME             2
-#define INTERCOM_STATIONSTATUS_LIMITED            3
-#define INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED   4
-#define INTERCOM_STATIONSTATUS_FORCEDCONNECTION   5
-#define INTERCOM_STATIONSTATUS_VOICEACTIVATION    6
-#define INTERCOM_STATIONSTATUS_MASTERSTATION      7
 
 // Infantry phone default configuration (fnc_infantryPhoneRingingPFH.sqf)
 #define INFANTRY_PHONE_SOUNDFILE QPATHTO_R(sounds\Cellphone_Ring.wss);

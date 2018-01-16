@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
- * 1: Unit to be checked <OBJECT>. Default objNull.
+ * 1: Unit to be checked <OBJECT>
  * 2: Intercom network <NUMBER>
  * 3: Intercom functionality to be retrieved <NUMBER>
  * 4: Variable name of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")

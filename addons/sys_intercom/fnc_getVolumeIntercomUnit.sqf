@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Get the volume of a unit in intercom. If a unit is transmitting simultaneously throuhg multiple intercoms, the maximum volume is returned.
+ * Get the volume of a unit in intercom. If a unit is transmitting simultaneously through multiple intercoms, the maximum volume is returned.
  *
  * Arguments:
  * 0: Unit to be evaluated <OBJECT>
