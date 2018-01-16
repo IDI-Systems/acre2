@@ -301,6 +301,14 @@
             <Chinese>切換耳機 / 切換觀戰</Chinese>
             <Chinesesimp>切换耳机 / 切换观战</Chinesesimp>
         </Key>
+        <Key ID="STR_ACRE_sys_core_AntennaUp">
+            <English>Antenna bent</English>
+            <German>Antenne gebogen</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AntennaDown">
+            <English>Antenna straight</English>
+            <German>Antenne gerade</German>
+        </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
             <Spanish>Modelar interferencias</Spanish>

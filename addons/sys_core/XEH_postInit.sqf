@@ -42,6 +42,9 @@ DFUNC(gen) = {
 
 ["ACRE2", "HeadSet", (localize LSTRING(HeadSet)), "", { [] call FUNC(toggleHeadset) }, [208, [true, true, false]]] call cba_fnc_addKeybind;
 
+["ACRE2", "AntennaUp", (localize LSTRING(AntennaUp)), "", { [1] call EFUNC(sys_components,toggleAntennaDir) }, [200, [false, true, true]]] call cba_fnc_addKeybind;
+["ACRE2", "AntennaDown", (localize LSTRING(AntennaDown)), "", { [0] call EFUNC(sys_components,toggleAntennaDir) }, [208, [false, true, true]]] call cba_fnc_addKeybind;
+
 ///////////////////////////////////
 ///////////////////////////////////
 

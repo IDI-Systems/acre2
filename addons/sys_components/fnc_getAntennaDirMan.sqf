@@ -22,12 +22,25 @@ params ["_obj"];
 if (vehicle _obj == _obj) then {
     private _spinePos = _obj modelToWorldVisual (_obj selectionPosition "Spine3");
     
+    drawIcon3D ["a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa", [1,1,1,1], _spinePos, 1, 1, 45, "Spine", 1, 0.05, "TahomaB"];
+
     _upV = _spinePos vectorFromTo (_obj modelToWorldVisual (_obj selectionPosition "Neck"));
-    if (EGVAR(sys_core,automaticAntennaDirection) || ) then {
+
+    private _upP = _upV call cba_fnc_vect2polar;
+    hint format ["%1\n%2", _upV, _upP];
+    
+    if (EGVAR(sys_core,automaticAntennaDirection)) then {
         private _upP = _upV call cba_fnc_vect2polar;
         _upP set [2, ((_upP select 2) max 55) min 90];
         _upV = _upP call cba_fnc_polar2vect; 
         hint format ["%1\n%2", _upV, _upP];
+    } else {
+        if (_obj getVariable [QEGVAR(sys_core,antennaDirUp), false]) then {
+            private _upP = _upV call cba_fnc_vect2polar;
+            _upP set [2, ((_upP select 2) + 50)];
+            _upV = _upP call cba_fnc_polar2vect; 
+            hint format ["%1\n%2", _upV, _upP];
+        };
     };
 
     private _forwardP = _upV call cba_fnc_vect2polar;
@@ -36,6 +49,10 @@ if (vehicle _obj == _obj) then {
 
     _forwardV = (ATLtoASL _spinePos) vectorFromTo (ATLtoASL (_spinePos vectorAdd _forwardV));
     _upV = (ATLtoASL _spinePos) vectorFromTo (ATLtoASL (_spinePos vectorAdd _upV));
+
+    drawLine3D [_spinePos, _spinePos vectorAdd _forwardV, [1,0,0,1]]; 
+    drawLine3D [_spinePos, _spinePos vectorAdd _upV, [0,0,1,1]]; 
+
 } else {
     _forwardV = vectorDir (vehicle _obj);
     _upV = vectorUp (vehicle _obj);

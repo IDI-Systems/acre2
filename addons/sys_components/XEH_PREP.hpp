@@ -15,3 +15,4 @@ PREP(getAllConnectors);
 PREP(getConnectorSpecification);
 PREP(connectorConnected);
 PREP(getComponentTree);
+PREP(toggleAntennaDir);

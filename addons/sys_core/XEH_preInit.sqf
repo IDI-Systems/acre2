@@ -20,6 +20,8 @@ if (!hasInterface) exitWith {
 */
 
 // globals
+//DGVAR(automaticAntennaDirection) = false;
+DGVAR(antennaDirUp) = false;
 DGVAR(lowered) = 0;
 DGVAR(muting) = [];
 DGVAR(speakers) = [];
