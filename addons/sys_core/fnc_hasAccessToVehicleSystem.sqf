@@ -23,6 +23,15 @@ params ["_vehicle", "_unit", "_allowedPositions", "_forbiddenPositions", ["_maxD
 private _systemAvailable = false;
 
 if (!alive _vehicle) exitWith {_systemAvailable};
+
+// Check external systems
+if ((vehicle _unit == _unit) && {"external" in _allowedPositions}) exitWith {
+    if (_vehicle distance _unit <= _maxDistance) then {
+        _systemAvailable = true
+    };
+    _systemAvailable
+};
+
 private _fullCrew = fullCrew [_vehicle, "", true];
 
 private "_role";
@@ -30,7 +39,11 @@ private "_role";
     if (_unit isEqualTo (_x select 0)) then {
         _role = toLower (_x select 1);
         if (_role in ["cargo", "turret"]) then {
-            _role = format ["%1_%2", _role, _x select 2];
+            if (_role isEqualTo "cargo") then {
+                _role = format ["%1_%2", _role, _x select 2];
+            } else {
+                _role = format ["%1_%2", _role, _x select 3];
+            };
         };
 
         if (isTurnedOut _unit) then {
