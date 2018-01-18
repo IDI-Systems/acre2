@@ -19,11 +19,10 @@
 
 params ["_rackId", "_unit", ["_vehicle", objNull]];
 
-systemChat format ["_vehicle %1", _vehicle];
 if (isNull _vehicle || {vehicle _unit == _unit}) then {
     _vehicle = [_rackId] call FUNC(getVehicleFromRack);
 };
-systemChat format ["_vehicle after %1", _vehicle];
+
 private _allowedPositions = [_rackId, "getState", "allowed"] call EFUNC(sys_data,dataEvent);
 private _disabledPositions = [_rackId, "getState", "disabled"] call EFUNC(sys_data,dataEvent);
 
