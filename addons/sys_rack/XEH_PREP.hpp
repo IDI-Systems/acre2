@@ -37,6 +37,7 @@ PREP(stopUsingMountedRadio);
 PREP(getState);
 PREP(setState);
 
+PREP_FOLDER(vrc64);
 PREP_FOLDER(vrc103);
 PREP_FOLDER(vrc110);
 PREP_FOLDER(vrc111);
