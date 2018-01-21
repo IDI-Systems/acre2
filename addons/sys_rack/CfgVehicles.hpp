@@ -199,7 +199,7 @@ class CfgVehicles {
          class AcreRacks {
             class Rack_1 {
                 displayName = CSTRING(Dash); // Name is displayed in the interaction menu.
-                componentName = "ACRE_VRC64";
+                componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
                 defaultComponents[] = {};
