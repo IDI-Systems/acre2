@@ -1,6 +1,11 @@
 class CfgVehicles {
     // Vehicle rack vehicle definitions
     class ACRE_BaseRack;
+    class ACRE_VRC64 : ACRE_BaseRack {
+        displayName = "AN/VRC-64 Rack";
+    };
+    RADIO_ID_LIST(ACRE_VRC64);
+
     class ACRE_VRC110 : ACRE_BaseRack {
         displayName = "AN/VRC-110 Rack";
     };
@@ -194,7 +199,7 @@ class CfgVehicles {
          class AcreRacks {
             class Rack_1 {
                 displayName = CSTRING(Dash); // Name is displayed in the interaction menu.
-                componentName = "ACRE_VRC103";
+                componentName = "ACRE_VRC64";
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 disabledPositions[] = {};
                 defaultComponents[] = {};
