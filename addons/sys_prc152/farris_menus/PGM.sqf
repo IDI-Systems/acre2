@@ -416,13 +416,13 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                                 private _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 1;
                                 switch _check do {
-                                    case 'HIGH': {
+                                    case "HIGH": {
                                         SET_STATE("pgm_tx_power", 5000);
                                     };
-                                    case 'MED': {
+                                    case "MED": {
                                         SET_STATE("pgm_tx_power", 2000);
                                     };
-                                    case 'LOW': {
+                                    case "LOW": {
                                         SET_STATE("pgm_tx_power", 250);
                                     };
                                 };
@@ -445,7 +445,10 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            private _value = GET_RADIO_VALUE("power");
+                            private _value = GET_STATE("pgm_tx_power");
+                            if (isNil "_value") then {
+                                _value = GET_RADIO_VALUE("power");
+                            };
                             SCRATCH_SET(GVAR(currentRadioId), "menuNumber", _value);
                         },
                         nil
