@@ -27,6 +27,7 @@ if (!hasInterface) exitWith {};
     },
     [52, [true, false, false]]
 ] call cba_fnc_addKeybind;
+
 [
     "ACRE2",
     "IntercomBroadcastKey",
@@ -41,6 +42,7 @@ if (!hasInterface) exitWith {};
     },
     [52, [true, false, false]]
 ] call cba_fnc_addKeybind;
+
 ["ACRE2", "PreviousIntercom", (localize LSTRING(previousIntercom)), "", { [-1, true] call FUNC(switchIntercomFast) }, [51, [true, false, false]]] call cba_fnc_addKeybind;
 ["ACRE2", "NextIntercom", (localize LSTRING(nextIntercom)), "", {[1, true] call FUNC(switchIntercomFast)}, [51, [false, true, false]]] call cba_fnc_addKeybind;
 ["ACRE2", "AddPreviousIntercom", (localize LSTRING(addPreviousIntercom)), "", {[-1, false] call FUNC(switchIntercomFast)}, [51, [true, false, true]]] call cba_fnc_addKeybind;

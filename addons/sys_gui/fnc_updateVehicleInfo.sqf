@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * ["ACRE"] call acre_sys_gui_fnc_updateVehInfo
+ * ["ACRE"] call acre_sys_gui_fnc_updateVehicleInfo
  *
  * Public: No
  */
@@ -17,6 +17,6 @@
 disableSerialization;
 params["_str"];
 
-private _ctrl = (uiNamespace getVariable ["ACRE_VEH_INFO", controlNull]);
+private _ctrl = (uiNamespace getVariable ["ACRE_VEHICLE_INFO", controlNull]);
 
 _ctrl ctrlSetStructuredText parseText _str;

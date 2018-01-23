@@ -22,4 +22,4 @@ PREP(handleContextMenu);
 PREP(handleTake);
 PREP(inventoryMonitorPFH);
 
-PREP(updateVehInfo);
+PREP(updateVehicleInfo);

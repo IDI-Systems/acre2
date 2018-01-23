@@ -19,7 +19,7 @@ DFUNC(enterVehicle) = {
     params ["_player"];
     disableSerialization;
 
-    private _ctrl = ctrlParentControlsGroup (uiNamespace getVariable ["ACRE_VEH_INFO", controlNull]);
+    private _ctrl = ctrlParentControlsGroup (uiNamespace getVariable ["ACRE_VEHICLE_INFO", controlNull]);
 
     if (!isNull objectParent _player) then {
         _ctrl ctrlShow true;

@@ -115,4 +115,4 @@ _infoLine = _infoLine + format ["<t font='PuristaBold' color='#ffffff' size='0.8
     };
 } forEach ([_vehicle] call EFUNC(sys_rack,getVehicleRacks));
 
-[_infoLine] call EFUNC(sys_gui,updateVehInfo);
+[_infoLine] call EFUNC(sys_gui,updateVehicleInfo);
