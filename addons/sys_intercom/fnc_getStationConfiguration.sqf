@@ -33,4 +33,3 @@ private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 
 (_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select _intercomFunctionality
-

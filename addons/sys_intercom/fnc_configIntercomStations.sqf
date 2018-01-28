@@ -62,6 +62,7 @@ private _intercomStations = [];
             };
 
             if (_role in (_limitedPositions select _forEachIndex)) then {
+                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
                 (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_LIMITED, true];
 
                 // Limited positions are by default configured without voice activation

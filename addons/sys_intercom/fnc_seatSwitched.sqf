@@ -25,6 +25,7 @@ private _oldSeat = _unit getVariable [QGVAR(role), ""];
 {
     if (_oldSeat != "") then {
         private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION, _oldSeat] call FUNC(getStationConfiguration);
+
         // Remove the unit from the old seat configuration
         if (_connectionStatus > INTERCOM_DISCONNECTED) then {
             private _inLimitedPosition = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_LIMITED, _oldSeat] call FUNC(getStationConfiguration);
@@ -45,5 +46,9 @@ private _oldSeat = _unit getVariable [QGVAR(role), ""];
         };
         [_vehicle, _unit] call FUNC(vehicleInfoLine);
     };
-    _unit setVariable [QGVAR(role), [_vehicle, _unit] call FUNC(getStationVariableName)];
 } forEach _intercomNames;
+
+// Save the new seat the unit is in if it is inside a vehicle
+if (vehicle _unit == _vehicle) then {
+    _unit setVariable [QGVAR(role), [_vehicle, _unit] call FUNC(getStationVariableName)];
+};

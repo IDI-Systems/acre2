@@ -33,6 +33,7 @@ private _varName = QGVAR(station_);
         };
         _found = true;
     };
+
     if (_found) exitWith {};
 } forEach (fullCrew [_vehicle, "", false]);
 

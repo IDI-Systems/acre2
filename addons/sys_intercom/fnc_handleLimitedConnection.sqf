@@ -11,7 +11,7 @@
  * Success <BOOL>
  *
  * Example:
- * [vehicle acre_player, acre_player, 1] call acre_sys_intercom_fnc_setLimitedConnectionStatus
+ * [vehicle acre_player, acre_player, 1] call acre_sys_intercom_fnc_handleLimitedConnection
  *
  * Public: No
  */

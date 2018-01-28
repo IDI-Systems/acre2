@@ -18,12 +18,14 @@
 
 params ["_vehicle", "_unit"];
 
+if (vehicle _unit == _unit) exitWith {};
+
 private _intercomNames = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
 private _infoLine = "";
 {
-    private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call EFUNC(sys_intercom,getStationConfiguration);
+    private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
     private _isBroadcasting = ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _forEachIndex) params ["_isBroadcasting", "_broadcastingUnit"];
-    private _isVoiceActive = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call EFUNC(sys_intercom,getStationConfiguration);
+    private _isVoiceActive = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call FUNC(getStationConfiguration);
 
     private _color = "";
     private _textStatus = "";
