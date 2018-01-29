@@ -22,7 +22,7 @@ private _found = false;
 private _varName = QGVAR(station_);
 {
     if (_unit isEqualTo (_x select 0)) then {
-        private _role = _x select 1;
+        private _role = toLower (_x select 1);
         _varName = _varName + _role;
         if (_role in ["cargo", "turret"]) then {
             if (_role isEqualTo "cargo") then {
