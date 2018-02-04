@@ -24,3 +24,9 @@ private _radioId = _eventData;
 
 // Switch back to battery mode.
 [_radioId, "setState", ["powerSource", "BAT"]] call EFUNC(sys_data,dataEvent);
+
+private _audioPath = [_radioId, "getState", "audioPath"] call EFUNC(sys_data,dataEvent);
+
+if (_audioPath == "RACKSPEAKER") then {
+    [_radioId, "setState", ["audioPath", "TOPAUDIO"]] call EFUNC(sys_data,dataEvent);
+};

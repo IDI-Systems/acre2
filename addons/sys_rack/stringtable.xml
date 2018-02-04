@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
@@ -99,6 +99,12 @@
             <Korean>대쉬보드 상단</Korean>
             <Japanese>ダッシュボードを上げる</Japanese>
             <Portuguese>Painel Superior</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_turnOnSpeaker">
+            <English>Turn On Speaker</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_turnOffSpeaker">
+            <English>Turn Off Speaker</English>
         </Key>
     </Package>
 </Project>

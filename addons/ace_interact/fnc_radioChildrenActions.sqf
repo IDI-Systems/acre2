@@ -38,6 +38,13 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
     if (!((_radio in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) || _radio in ACRE_HEARABLE_RACK_RADIOS)) then {
         _action = ["acre_open_radio", localize ELSTRING(sys_list,OpenRadio), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
+        if ([_radio, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
+            _action = ["acre_loudspeaker", localize ELSTRING(sys_rack,turnOffSpeaker), "", {[((_this select 2) select 0), false] call EFUNC(sys_rack,activateRackSpeaker)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        } else {
+            _action = ["acre_loudspeaker", localize ELSTRING(sys_rack,turnOnSpeaker), "", {[((_this select 2) select 0), true] call EFUNC(sys_rack,activateRackSpeaker)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        };
+
+        _actions pushBack [_action, [], _target];
     };
 
     _action = ["acre_make_active", localize LSTRING(setAsActive), "", {[(_this select 2) select 0] call EFUNC(api,setCurrentRadio)}, {!((_this select 2) select 1)}, {},_params] call ace_interact_menu_fnc_createAction;

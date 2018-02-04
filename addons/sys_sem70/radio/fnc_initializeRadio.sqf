@@ -82,8 +82,8 @@ HASH_SET(_radioData,"radioOn",1);
 HASH_SET(_radioData,"volume",1);
 HASH_SET(_radioData,"currentChannel",GVAR(manualChannel)); // Manual Channel
 //HASH_SET(_radioData,"lastActiveChannel",GVAR(manualChannel));
-HASH_SET(_radioData,"audioPath", "HEADSET");
-HASH_SET(_radioData,"powerSource", "BAT");
+HASH_SET(_radioData,"audioPath","HEADSET");
+HASH_SET(_radioData,"powerSource","BAT");
 
 // Channel
 //HASH_SET(_radioData,"mode","singleChannel"); // or "sem70AKW"

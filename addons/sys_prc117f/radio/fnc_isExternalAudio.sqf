@@ -16,4 +16,6 @@
  */
 #include "script_component.hpp"
 
-false
+params ["_radioId", "_event", "_eventData", "_radioData"];
+
+(HASH_GET(_radioData, "audioPath") == "RACKSPEAKER")
