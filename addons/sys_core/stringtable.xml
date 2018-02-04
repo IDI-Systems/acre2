@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
@@ -14,6 +14,7 @@
             <Russian>Громкость после смешивания</Russian>
             <Chinese>後期混音 全域音量</Chinese>
             <Chinesesimp>后期混音 全域音量</Chinesesimp>
+            <Portuguese>Volume Global Post-Mix</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
             <English>Pre-Mix Global Volume</English>
@@ -28,6 +29,7 @@
             <Russian>Громкость перед смешиванием</Russian>
             <Chinese>前期混音 全域音量</Chinese>
             <Chinesesimp>前期混音 全域音量</Chinesesimp>
+            <Portuguese>Volume Global Pre-Mix</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
@@ -42,6 +44,7 @@
             <Russian>Громкость спектаторов</Russian>
             <Chinese>觀戰模式音量</Chinese>
             <Chinesesimp>观战模式音量</Chinesesimp>
+            <Portuguese>Volume do Espectador</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
@@ -56,6 +59,7 @@
             <Russian>Размьютить клиенты</Russian>
             <Chinese>客戶端取消禁音</Chinese>
             <Chinesesimp>客户端取消禁音</Chinesesimp>
+            <Portuguese>Desmutar Clientes</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
             <English>TeamSpeak Channel Switch</English>
@@ -64,6 +68,7 @@
             <Chinese>Teamspeak頻道切換</Chinese>
             <Chinesesimp>Teamspeak频道切换</Chinesesimp>
             <Korean>팀스피크 채널 변경</Korean>
+            <Portuguese>Trocar de Canal do TeamSpeak</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
@@ -71,11 +76,13 @@
             <Chinese>Teamspeak頻道名稱</Chinese>
             <Chinesesimp>Teamspeak频道名称</Chinesesimp>
             <Korean>팀스피크 채널 이름</Korean>
+            <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
             <Chinese>Teamspeak頻道密碼</Chinese>
             <Chinesesimp>Teamspeak频道密码</Chinesesimp>
+            <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -90,6 +97,7 @@
             <Russian>Выключить подсказку о рассинхронизации инвентаря</Russian>
             <Chinese>關閉裝備不同步提示</Chinese>
             <Chinesesimp>关闭装备不同步提示</Chinesesimp>
+            <Portuguese>Desabilitar Dica de Dessincronização do Equipamento</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
             <English>Default Radio Key</English>
@@ -104,6 +112,7 @@
             <Russian>Стандартная радио кнопка</Russian>
             <Chinese>預設無線電按鍵</Chinese>
             <Chinesesimp>预设无线电按键</Chinesesimp>
+            <Portuguese>Tecla Padrão do Rádio</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
             <English>Use currently selected radio to talk.</English>
@@ -118,6 +127,7 @@
             <Russian>Использовать текущее радио для разговора.</Russian>
             <Chinese>使用目前選擇的無線電進行通話。</Chinese>
             <Chinesesimp>使用目前选择的无线电进行通话。</Chinesesimp>
+            <Portuguese>Usar o rádio atualmente selecionado para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
             <English>Alt Radio Key 1</English>
@@ -132,6 +142,7 @@
             <Russian>Альт. радио кнопка 1</Russian>
             <Chinese>設置備用無線電按鍵1</Chinese>
             <Chinesesimp>设置备用无线电按键1</Chinesesimp>
+            <Portuguese>Tecla do  Rádio Alternativa 1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2">
             <English>Alt Radio Key 2</English>
@@ -146,6 +157,7 @@
             <Russian>Альт. радио кнопка 2</Russian>
             <Chinese>設置備用無線電按鍵2</Chinese>
             <Chinesesimp>设置备用无线电按键2</Chinesesimp>
+            <Portuguese>Tecla do  Rádio Alternativa 2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3">
             <English>Alt Radio Key 3</English>
@@ -160,6 +172,7 @@
             <Russian>Альт. радио кнопка 3</Russian>
             <Chinese>設置備用無線電按鍵3</Chinese>
             <Chinesesimp>设置备用无线电按键3</Chinesesimp>
+            <Portuguese>Tecla do  Rádio Alternativa 3</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Use the first radio in your inventory to talk.</English>
@@ -174,6 +187,7 @@
             <Russian>Использовать первое радио из инвентаря.</Russian>
             <Chinese>使用物品欄內第一個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第一个无线电进行通话。</Chinesesimp>
+            <Portuguese>Usar o primeiro rádio do inventário para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Use the second radio in your inventory to talk.</English>
@@ -188,6 +202,7 @@
             <Russian>Использовать второе радио из инвентаря.</Russian>
             <Chinese>使用物品欄內第二個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第二个无线电进行通话。</Chinesesimp>
+            <Portuguese>Usar o segundo rádio do inventário para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Use the third radio in your inventory to talk.</English>
@@ -202,6 +217,7 @@
             <Russian>Использовать третье радио из инвентаря.</Russian>
             <Chinese>使用物品欄內第三個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第三个无线电进行通话。</Chinesesimp>
+            <Portuguese>Usar o terceiro rádio do inventário para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_PreviousChannel">
             <English>Previous Channel (Active Radio)</English>
@@ -216,6 +232,7 @@
             <Russian>Предыдущий канал (Активное радио)</Russian>
             <Chinese>上一個頻道 (目前使用的無線電)</Chinese>
             <Chinesesimp>上一个频道 (目前使用的无线电)</Chinesesimp>
+            <Portuguese>Canal Anterior (Rádio Ativo)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_NextChannel">
             <English>Next Channel (Active Radio)</English>
@@ -230,6 +247,7 @@
             <Russian>Следующий канал (Активное радио)</Russian>
             <Chinese>下一個頻道 (目前使用的無線電)</Chinese>
             <Chinesesimp>下一个频道 (目前使用的无线电)</Chinesesimp>
+            <Portuguese>Canal Posterior (Rádio Ativo)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_BabelCycleKey">
             <English>Babel Cycle Language</English>
@@ -244,6 +262,7 @@
             <Russian>Листать язык (Вавилон)</Russian>
             <Chinese>切換模擬多國語言</Chinese>
             <Chinesesimp>切换模拟多国语言</Chinesesimp>
+            <Portuguese>Mudar Idioma (Babel)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioLeftEar">
             <English>Radio Left Ear</English>
@@ -258,6 +277,7 @@
             <Russian>Радио левое ухо</Russian>
             <Chinese>用左耳收聽無線電</Chinese>
             <Chinesesimp>用左耳收听无线电</Chinesesimp>
+            <Portuguese>Rádio Orelha Esquerda</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioBothEars">
             <English>Radio Both Ears</English>
@@ -272,6 +292,7 @@
             <Russian>Радио оба уха</Russian>
             <Chinese>用雙耳收聽無線電</Chinese>
             <Chinesesimp>用双耳收听无线电</Chinesesimp>
+            <Portuguese>Rádio Ambas Orelhas</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RightRightEar">
             <English>Radio Right Ear</English>
@@ -286,6 +307,7 @@
             <Russian>Радио правое ухо</Russian>
             <Chinese>用右耳收聽無線電</Chinese>
             <Chinesesimp>用右耳收听无线电</Chinesesimp>
+            <Portuguese>Rádio Orelha Direita</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_HeadSet">
             <English>Toggle Headset/Toggle Spectators</English>
@@ -300,6 +322,7 @@
             <Russian>Переключить наушники/Переключить спектаторов</Russian>
             <Chinese>切換耳機 / 切換觀戰</Chinese>
             <Chinesesimp>切换耳机 / 切换观战</Chinesesimp>
+            <Portuguese>Alternar Fones/Espectadores</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -313,6 +336,7 @@
             <Russian>Модель помех</Russian>
             <Chinese>干擾模型</Chinese>
             <Chinesesimp>干扰模型</Chinesesimp>
+            <Portuguese>Interferência do Modelo</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
             <English>Full Duplex radios</English>
@@ -326,6 +350,7 @@
             <Russian>Полный дуплекс раций</Russian>
             <Chinese>全雙工無線電台</Chinese>
             <Chinesesimp>全双工无线电台</Chinesesimp>
+            <Portuguese>Rádios Full Duplex</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_antennaDirection_displayName">
             <English>Ignore Antenna Direction</English>
@@ -339,6 +364,7 @@
             <Russian>Игнорировать направление антенны</Russian>
             <Chinese>忽略天線方向</Chinese>
             <Chinesesimp>忽略天线方向</Chinesesimp>
+            <Portuguese>Ignorar Direção da Antena</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -352,6 +378,7 @@
             <Russian>Коэффициент потерь от местности</Russian>
             <Chinese>地形干擾係數</Chinese>
             <Chinesesimp>地形干扰系数</Chinesesimp>
+            <Portuguese>Coeficiente de perda do terreno (Sinal)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
             <English>AI Voice Detection</English>
@@ -365,6 +392,7 @@
             <Russian>АИ обнаружение голоса</Russian>
             <Chinese>AI偵測玩家語音</Chinese>
             <Chinesesimp>AI侦测玩家语音</Chinesesimp>
+            <Portuguese>Detecção de Voz de IA</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_switchRadioEarLeft">
             <English>Set to Left Ear</English>
@@ -379,6 +407,7 @@
             <Russian>Назначить на левое ухо</Russian>
             <Chinese>設置為左耳收聽</Chinese>
             <Chinesesimp>设置为左耳收听</Chinesesimp>
+            <Portuguese>Definir Para Orelha Esquerda</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_switchRadioEarBoth">
             <English>Set to Both Ears</English>
@@ -393,6 +422,7 @@
             <Russian>Назначить на оба уха</Russian>
             <Chinese>設置為雙耳收聽</Chinese>
             <Chinesesimp>设置为双耳收听</Chinesesimp>
+            <Portuguese>Definir Para Ambas Orelhas</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_switchRadioEarRight">
             <English>Set to Right Ear</English>
@@ -407,6 +437,7 @@
             <Russian>Назначить на правое ухо</Russian>
             <Chinese>設置為右耳收聽</Chinese>
             <Chinesesimp>设置为右耳收听</Chinesesimp>
+            <Portuguese>Definir Para Orelha Direita</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetRaised">
             <English>Headset Raised</English>
@@ -416,6 +447,7 @@
             <Chinese>戴上耳機</Chinese>
             <Chinesesimp>戴上耳机</Chinesesimp>
             <Korean>헤드셋 착용</Korean>
+            <Portuguese>Fones Abaixados</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
@@ -425,6 +457,7 @@
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
             <Korean>헤드셋 벗기</Korean>
+            <Portuguese>Fones Levantados</Portuguese>
         </Key>
     </Package>
 </Project>

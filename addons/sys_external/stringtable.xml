@@ -11,6 +11,7 @@
             <Chinese>已共用無線電</Chinese>
             <Chinesesimp>已共用无线电</Chinesesimp>
             <Korean>무전기가 공유됨</Korean>
+            <Portuguese>Rádios Compartilhados</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_shareRadio">
             <English>Share Radio</English>
@@ -22,6 +23,7 @@
             <Chinese>共用無線電</Chinese>
             <Chinesesimp>共用无线电</Chinesesimp>
             <Korean>무전기 공유</Korean>
+            <Portuguese>Compartilhar Rádios</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_unshareRadio">
             <English>Unshare Radio</English>
@@ -33,6 +35,7 @@
             <Chinese>取消共用無線電</Chinese>
             <Chinesesimp>取消共用无线电</Chinesesimp>
             <Korean>무전기 공유 해제</Korean>
+            <Portuguese>Descompartilhar Rádios</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHandset">
             <English>Take Handset</English>
@@ -40,6 +43,7 @@
             <Chinese>拿起聽筒</Chinese>
             <Chinesesimp>拿起听筒</Chinesesimp>
             <Korean>헤드셋 얻기</Korean>
+            <Portuguese>Pegar Aparelho</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHeadset">
             <English>Take Headset</English>
@@ -51,6 +55,7 @@
             <Chinese>拿起耳機</Chinese>
             <Chinesesimp>拿起耳机</Chinesesimp>
             <Korean>헤드셋 얻기</Korean>
+            <Portuguese>Pegar Fones</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHandset">
             <English>Return Handset</English>
@@ -58,6 +63,7 @@
             <Chinese>放回聽筒</Chinese>
             <Chinesesimp>放回听筒</Chinesesimp>
             <Korean>헤드셋 돌려놓기</Korean>
+            <Portuguese>Largar Aparelho</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHeadset">
             <English>Return Headset</English>
@@ -69,6 +75,7 @@
             <Chinese>放回耳機</Chinese>
             <Chinesesimp>放回耳机</Chinesesimp>
             <Korean>헤드셋 돌려놓기</Korean>
+            <Portuguese>Largar Fones</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHandset">
             <English>Give Handset</English>
@@ -76,6 +83,7 @@
             <Chinese>給予聽筒</Chinese>
             <Chinesesimp>给予听筒</Chinesesimp>
             <Korean>헤드셋 주기</Korean>
+            <Portuguese>Dar Aparelho</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHeadset">
             <English>Give Headset</English>
@@ -87,6 +95,7 @@
             <Chinese>給予耳機</Chinese>
             <Chinesesimp>给予耳机</Chinesesimp>
             <Korean>헤드셋 주기</Korean>
+            <Portuguese>Dar Fones</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintGiveOwner">
             <English>%1 gave your %2 to %3</English>
@@ -94,6 +103,7 @@
             <Chinese>%1把你的%2交給%3</Chinese>
             <Chinesesimp>%1把你的%2交给%3</Chinesesimp>
             <Korean>%1은 %3에게 %2를 주었다</Korean>
+            <Portuguese>%1 deu seu %2 para %3</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturn">
             <English>Stop using %1 from %2</English>
@@ -103,6 +113,7 @@
             <Chinese>停止使用%2的%1</Chinese>
             <Chinesesimp>停止使用%2的%1</Chinesesimp>
             <Korean>%2의 %1을 사용중지</Korean>
+            <Portuguese>Para de usar %1 de %2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturnOwner">
             <English>%1 stopped using your %2</English>
@@ -110,6 +121,7 @@
             <Chinese>%1停止使用你的%2</Chinese>
             <Chinesesimp>%1停止使用你的%2</Chinesesimp>
             <Korean>%1가 %2의 사용을 중지함</Korean>
+            <Portuguese>%1 parou de usar seu %2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTake">
             <English>Start using %1 from %2</English>
@@ -119,6 +131,7 @@
             <Chinese>開始使用%2的%1</Chinese>
             <Chinesesimp>开始使用%2的%1</Chinesesimp>
             <Korean>%2의 %1을 사용시작</Korean>
+            <Portuguese>Começar a usar %1 de %2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTakeOwner">
             <English>%1 started using your %2</English>
@@ -126,6 +139,7 @@
             <Chinese>%1開始使用你的%2</Chinese>
             <Chinesesimp>%1开始使用你的%2</Chinesesimp>
             <Korean>%1가 %2의 사용을 시작함</Korean>
+            <Portuguese>%1 começou a usar seu %2</Portuguese>
         </Key>
     </Package>
 </Project>
