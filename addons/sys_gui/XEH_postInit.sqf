@@ -38,4 +38,4 @@ DFUNC(enterVehicle) = {
 ["vehicle", {
     params ["_player"];
     [_player] call FUNC(enterVehicle);
-}] call CBA_fnc_addPlayerEventHandler;
+}, true] call CBA_fnc_addPlayerEventHandler;
