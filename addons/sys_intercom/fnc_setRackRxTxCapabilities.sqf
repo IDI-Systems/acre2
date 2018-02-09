@@ -21,7 +21,7 @@
 
 params ["_radioId", "_vehicle", "_unit", "_functionality", ["_rackId", ""]];
 
-private _varName = ([_vehicle, _unit] call FUNC(getStationVariableName)) + "_rack";
+private _varName = format ["%1_rack", [_vehicle, _unit] call FUNC(getStationVariableName)];
 
 if (_varName isEqualTo "_rack") exitWith {
     ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);

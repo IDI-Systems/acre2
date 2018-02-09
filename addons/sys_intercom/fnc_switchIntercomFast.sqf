@@ -62,7 +62,7 @@ while {!_valid} do {
 
 // Disconnect the previous network and set the new to RX & TX
 if (_nextIntercom != _activeIntercom) then {
-    // Disconnect other intercoms.
+    // Disconnect other intercoms
     if (_disconnectOthers) then {
         {
             if (_forEachIndex != _nextIntercom) then {
