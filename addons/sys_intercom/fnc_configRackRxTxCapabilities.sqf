@@ -33,5 +33,5 @@ private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
         } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
     } forEach _racks;
 
-    _vehicle setVariable [_x + "_rack", _rackRxTxConfig, true];
+    _vehicle setVariable [format ["%1_rack", _x], _rackRxTxConfig, true];
 } forEach (_vehicle getVariable [QGVAR(intercomStations), []]);

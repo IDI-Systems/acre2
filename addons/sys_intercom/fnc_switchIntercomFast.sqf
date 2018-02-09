@@ -41,7 +41,7 @@ private _hasAccessibleIntercoms = false;
     };
 } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
 
-// The seat has no accessible intercom networks.
+// The seat has no accessible intercom networks
 if (!_hasAccessibleIntercoms) exitWith {_return};
 
 private _valid = false;

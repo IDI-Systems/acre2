@@ -19,22 +19,20 @@
 params ["_vehicle", "_unit"];
 
 private _found = false;
-private _varName = QGVAR(station_);
+private _varName = "";
 {
-    if (_unit isEqualTo (_x select 0)) then {
+    if (_unit isEqualTo (_x select 0)) exitWith {
         private _role = toLower (_x select 1);
-        _varName = _varName + _role;
+        _varName = format [QGVAR(station_%1), _role];
         if (_role in ["cargo", "turret"]) then {
             if (_role isEqualTo "cargo") then {
-                _varName = _varName + format ["_%1", _x select 2];
+                _varName = format ["%1_%2", _varName, _x select 2];
             } else {
-                _varName = _varName + format ["_%1", _x select 3];
+                _varName = format ["%1_%2", _varName, _x select 3];
             };
         };
         _found = true;
     };
-
-    if (_found) exitWith {};
 } forEach (fullCrew [_vehicle, "", false]);
 
 if (!found) then {

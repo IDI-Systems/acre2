@@ -76,10 +76,10 @@ private _infoLine = "";
 
     private _voiceActivation = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call EFUNC(sys_intercom,getStationConfiguration);
 
-    _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.8'>%2 </t>", _color, _displayName] + _textStatus;
+    _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>", _infoLine, _color, _displayName] + _textStatus;
 } forEach _intercomNames;
 
-_infoLine = _infoLine + format ["<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>"];
+_infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>", _infoLine];
 
 {
     if ([_x, _unit] call EFUNC(sys_rack,isRackAccessible) || [_x, _unit] call EFUNC(sys_rack,isRackHearable)) then {
@@ -112,8 +112,8 @@ _infoLine = _infoLine + format ["<t font='PuristaBold' color='#ffffff' size='0.8
             };
         };
 
-        _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.8'>%2 </t>", _color, _displayName];
-        _infoLine = _infoLine + format ["<t font='PuristaBold' color='%1' size='0.6'>%2 </t>", _color, _textStatus];
+        _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>", _infoLine, _color, _displayName];
+        _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.6'>%3 </t>", _infoLine, _color, _textStatus];
     };
 } forEach ([_vehicle] call EFUNC(sys_rack,getVehicleRacks));
 

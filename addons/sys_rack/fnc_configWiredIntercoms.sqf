@@ -30,11 +30,11 @@ if (_intercoms isEqualTo [] || {"none" in _intercoms}) then {
     if ("all" in _intercoms) then {
         {
             _wiredIntercoms pushBack (_x select 0);
-        } forEach (_vehicle getVariable[QEGVAR(sys_intercom,intercomNames), []]);
+        } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);
     } else {
         {
             private _int = toLower _x;
-            private _configuredIntercoms = _vehicle getVariable[QEGVAR(sys_intercom,intercomNames), []];
+            private _configuredIntercoms = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
             if (_int in (_configuredIntercoms select 0)) then {
                 _wiredIntercoms pushBack _x;
             } else {

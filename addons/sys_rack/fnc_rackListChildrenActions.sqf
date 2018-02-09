@@ -40,7 +40,7 @@ private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
     private _action = [
         _rackClassName,
         _displayName,
-        "\idi\acre\addons\ace_interact\data\icons\rack.paa",
+        QPATHTOEF(ace_interact,data\icons\rack.paa),
         {true},
         {true},
         {_this call FUNC(rackChildrenActions);},

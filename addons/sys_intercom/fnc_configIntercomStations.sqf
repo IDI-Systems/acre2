@@ -85,8 +85,7 @@ private _intercomStations = [];
         _seatConfiguration set [_forEachIndex, _intercomStatus];
     } forEach _allowedPositions;
 
-    private _varName = QGVAR(station_);
-    _varName = _varName + _role;
+    private _varname = format [QGVAR(station_%1), _role];
     _intercomStations pushBack _varName;  // List of seat variable names
     _vehicle setVariable [_varName, _seatConfiguration];
 } forEach (fullCrew [_vehicle, "", true]);

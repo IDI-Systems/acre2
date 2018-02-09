@@ -31,15 +31,11 @@ if (_rackId isEqualTo "") then {
 };
 
 private _functionality = RACK_NO_MONITOR;
-private _found = false;
 
 {
-    if (_x select 0 == _rackId) then {
+    if (_x select 0 == _rackId) exitWith {
         _functionality = _x select 1;
-        _found = true;
     };
-
-    if (_found) exitWith {};
 } forEach (_vehicle getVariable [_varName, []]);
 
 _functionality

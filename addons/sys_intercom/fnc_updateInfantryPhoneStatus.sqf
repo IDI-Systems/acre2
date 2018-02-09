@@ -7,7 +7,7 @@
  * 1: Unit using the infantry phone <OBJECT>
  * 2: Type of action <NUMBER>
  * 3: Intercom network <NUMBER>
- * 4: Unit giving the infantry phone <OBJECT><OPTIONAL> (default: objNull)
+ * 4: Unit giving the infantry phone <OBJECT> (default: objNull)
  *
  * Return Value:
  * None
