@@ -70,7 +70,7 @@ private _intercomStations = [];
             };
 
             // Handle turned out
-            if ("turnedout_all" in (_forbiddenPositions select _forEachIndex) || {("turnedout" + _role) in (_forbiddenPositions select _forEachIndex)}) then {
+            if ("turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)}) then {
                 (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false];
             };
 

@@ -66,8 +66,8 @@ private _infoLine = "";
                         _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/P) </t>", _color];
                     } else {
                         _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/</t>", _color];
-                        _textStatus = _textStatus + format ["<t font='PuristaBold' color='#737373' size='0.6'>P/</t>"];
-                        _textStatus = _textStatus + format ["<t font='PuristaBold' color='%1' size='0.6'>) </t>", _color];
+                        _textStatus = format ["%1<t font='PuristaBold' color='#737373' size='0.6'>P/</t>", _textStatus];
+                        _textStatus = format ["%1<t font='PuristaBold' color='%2' size='0.6'>) </t>", _textStatus, _color];
                     };
                 };
             };
@@ -76,7 +76,7 @@ private _infoLine = "";
 
     private _voiceActivation = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call EFUNC(sys_intercom,getStationConfiguration);
 
-    _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>", _infoLine, _color, _displayName] + _textStatus;
+    _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>%4", _infoLine, _color, _displayName, _textStatus];
 } forEach _intercomNames;
 
 _infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>", _infoLine];

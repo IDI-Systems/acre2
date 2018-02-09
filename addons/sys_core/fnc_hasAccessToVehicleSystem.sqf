@@ -47,7 +47,7 @@ private "_role";
         };
 
         if (isTurnedOut _unit) then {
-            _role = "turnedout_" + _role;
+            _role = format ["turnedout_%1", _role];
         };
     };
 } forEach _fullCrew;
