@@ -66,7 +66,7 @@ private _infoLine = "";
                         _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/P) </t>", _color];
                     } else {
                         _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/</t>", _color];
-                        _textStatus = format ["%1<t font='PuristaBold' color='#737373' size='0.6'>P/</t>", _textStatus];
+                        _textStatus = format ["%1<t font='PuristaBold' color='#737373' size='0.6'>P</t>", _textStatus];
                         _textStatus = format ["%1<t font='PuristaBold' color='%2' size='0.6'>) </t>", _textStatus, _color];
                     };
                 };
