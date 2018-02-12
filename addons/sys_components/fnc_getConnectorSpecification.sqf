@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Returns an array with the specification of of the connectors for a component.
+ * Returns an array with the specification of the connectors for a component.
  *
  * Arguments:
  * 0: Component ID <STRING>

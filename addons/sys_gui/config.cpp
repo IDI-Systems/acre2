@@ -16,3 +16,4 @@ class CfgPatches {
 
 #include "CfgEventHandlers.hpp"
 #include "CfgVolumeControl.hpp"
+#include "AcreVehInfoControls.hpp"

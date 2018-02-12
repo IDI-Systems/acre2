@@ -22,7 +22,6 @@ private _actions = [];
 (acre_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
 
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
-private _intercomDisplayNames = _target getVariable [QGVAR(intercomDisplayNames), []];
 
 if (_target isKindOf "CAManBase") then {
     // Pointing at an infantry unit. Check if the infantry telelphone can be given
@@ -47,13 +46,12 @@ if (_target isKindOf "CAManBase") then {
     };
 } else {
     if (vehicle acre_player != _target) then {
-
         // Pointing at a vehicle. Get or return the infantry telelphone
         if (isNull _vehicleInfantryPhone) then {
             {
                 private _action = [
                     format ["acre_take_infantryTelephone_%1", _x],
-                    format [localize LSTRING(takeInfantryPhone), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+                    format [localize LSTRING(takeInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 1]],
                     "",
                     {
                         params ["_target", "_player", "_params"];
@@ -95,7 +93,7 @@ if (_target isKindOf "CAManBase") then {
                 {
                     _action = [
                         format ["acre_switch_infantryTelephone_%1", _x],
-                        format [localize LSTRING(switchInfantryPhone), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+                        format [localize LSTRING(switchInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 1]],
                         "",
                         {
                             params ["_target", "_player", "_params"];
@@ -141,7 +139,7 @@ if (_target isKindOf "CAManBase") then {
                 {
                     private _action = [
                         format ["acre_infantryTelephone_startCalling_%1", _x],
-                        format [localize LSTRING(infantryPhone_startCalling), "(" + (_intercomDisplayNames select _forEachIndex) + ")"],
+                        format [localize LSTRING(infantryPhone_startCalling), format["(%1)", (_intercomNames select _forEachIndex) select 1]],
                         "",
                         {
                              params ["_target", "_player", "_params"];

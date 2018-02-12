@@ -20,9 +20,9 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED], ["_givingUnit", objNull, [objNull]]];
+params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]]];
 
-private _intercomName = (_vehicle getVariable [QGVAR(intercomDisplayNames), []]) select _intercomNetwork;
+private _intercomName = ((_vehicle getVariable [QGVAR(intercomNames), []]) select _intercomNetwork) select 1;
 private _intercomText = format ["( %1 )", _intercomName];
 
 switch (_action) do {

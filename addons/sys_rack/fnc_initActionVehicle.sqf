@@ -35,7 +35,7 @@ private _condition = {
      params ["_target","_unit"];
      private _accessibleRacks = [_target, _unit] call FUNC(getAccessibleVehicleRacks);
      private _hearableRacks = [_target, _unit] call FUNC(getHearableVehicleRacks);
-     (count _accessibleRacks > 0 || count _hearableRacks > 0)
+     (count _accessibleRacks > 0 || {count _hearableRacks > 0})
 };
 private _statement = {true};
 private _text = localize LSTRING(Racks);

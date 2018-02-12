@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
@@ -73,7 +73,7 @@
             <Japanese>架台</Japanese>
             <Portuguese>Suporte</Portuguese>
         </Key>
-        <Key ID="STR_ACRE_sys_rack_Dash">
+        <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
             <German>Steckplatz</German>
             <Chinese>儀錶板</Chinese>
@@ -82,7 +82,10 @@
             <Japanese>ダッシュボード</Japanese>
             <Portuguese>Painel</Portuguese>
         </Key>
-        <Key ID="STR_ACRE_sys_rack_Dash_lower">
+        <Key ID="STR_ACRE_sys_rack_dashShort">
+            <English>Dash</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_dashLower">
             <English>Dashboard Lower</English>
             <German>Unterer Steckplatz</German>
             <Chinese>儀錶板下降</Chinese>
@@ -91,7 +94,10 @@
             <Japanese>ダッシュボードを下げる</Japanese>
             <Portuguese>Painel Inferior</Portuguese>
         </Key>
-        <Key ID="STR_ACRE_sys_rack_Dash_upper">
+        <Key ID="STR_ACRE_sys_rack_dashLowerShort">
+            <English>D.Low</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dashboard Upper</English>
             <German>Oberer Steckplatz</German>
             <Chinese>儀錶板上升</Chinese>
@@ -99,6 +105,9 @@
             <Korean>대쉬보드 상단</Korean>
             <Japanese>ダッシュボードを上げる</Japanese>
             <Portuguese>Painel Superior</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_dashUpperShort">
+            <English>D.Up</English>
         </Key>
     </Package>
 </Project>

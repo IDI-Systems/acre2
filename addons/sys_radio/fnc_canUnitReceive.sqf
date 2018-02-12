@@ -25,7 +25,7 @@ if (_vehicle != acre_player) then {
         // Check if radio is in intercom.
         if ([_radioId, acre_player, _vehicle] call EFUNC(sys_rack,isRadioHearable)) then {
             private _rackRxTxConfig = _vehicle getVariable [QEGVAR(sys_intercom,rackRxTxConfig), []];
-            private _functionality = [_radioId, _vehicle, acre_player] call EFUNC(sys_intercom,getRxTxCapabilities);
+            private _functionality = [_radioId, _vehicle, acre_player] call EFUNC(sys_intercom,getRackRxTxCapabilities);
             if (_functionality == RACK_NO_MONITOR || _functionality == RACK_TX_ONLY) then {
                 _canReceive = false;
             };

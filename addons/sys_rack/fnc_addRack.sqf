@@ -6,12 +6,13 @@
  * 0: Vehicle <OBJECt>
  * 1: Classname of rack (Without ID) <TYPE>
  * 2: Rackname - this is diplayed to the user. Ideally short <STRING>
- * 3: Is mounted radio removable <BOOLEAN> (default: true)
- * 4: Access - Determines who can use the rack <ARRAY> (default: ["inside"])
- * 5: Disabled positions - Blacklist rack use positions <ARRAY> (default: [])
- * 6: Stashed radio - Does the rack start with a radio in it <STRING> (default: "")
- * 7: Components <ARRAY> (default: [])
- * 8: Connected intercoms <ARRAY> (default: [])
+ * 3: Rack short name - displayed in GUI information. Max 4 characters <STRING>
+ * 4: Is mounted radio removable <BOOLEAN> (default: true)
+ * 5: Access - Determines who can use the rack <ARRAY> (default: ["inside"])
+ * 6: Disabled positions - Blacklist rack use positions <ARRAY> (default: [])
+ * 7: Stashed radio - Does the rack start with a radio in it <STRING> (default: "")
+ * 8: Components <ARRAY> (default: [])
+ * 9: Connected intercoms <ARRAY> (default: [])
  *
  * Return Value:
  * None
@@ -23,11 +24,11 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_rackClassname", "_rackName", ["_isRadioRemovable", true], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio",""], ["_defaultComponents", []], ["_intercoms",[]]];
+params ["_vehicle", "_rackClassname", "_rackName", "_rackShortName", ["_isRadioRemovable", true], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio",""], ["_defaultComponents", []], ["_intercoms",[]]];
 
 private _queue = _vehicle getVariable [QGVAR(queue), []];
 
-_queue pushBack [_rackClassname, _rackName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms];
+_queue pushBack [_rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms];
 _vehicle setVariable [QGVAR(queue), _queue];
 
 // Request RACK ID

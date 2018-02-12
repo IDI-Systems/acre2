@@ -163,6 +163,9 @@
             <Japanese>クルー インターコム</Japanese>
             <Portuguese>Intercom de Tripulação</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_shortCrewIntercom">
+            <English>Crew</English>
+        </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
             <English>Pax intercom</English>
             <Chinese>乘客對講機</Chinese>
@@ -170,26 +173,29 @@
             <Japanese>パックス インターコム</Japanese>
             <Portuguese>Intercom Pax</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_shortPassengerIntercom">
+            <English>Pax</English>
+        </Key>
         <Key ID="STR_ACRE_sys_intercom_connect">
-            <English>Connect %1</English>
+            <English>Connect</English>
             <German>Verbunden</German>
-            <Japanese>接続 %1</Japanese>
-            <Russian>Подключен %1</Russian>
-            <Polish>Połącz %1</Polish>
-            <Chinese>連接至%1</Chinese>
-            <Chinesesimp>连接至%1</Chinesesimp>
-            <Korean>%1으로 연결</Korean>
+            <Japanese>接続</Japanese>
+            <Russian>Подключен</Russian>
+            <Polish>Połącz</Polish>
+            <Chinese>連接至</Chinese>
+            <Chinesesimp>连接至</Chinesesimp>
+            <Korean>으로 연결</Korean>
             <Portuguese>Conectar %1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_disconnect">
-            <English>Disconnect %1</English>
+            <English>Disconnect</English>
             <German>Getrennt</German>
-            <Japanese>切断 %1</Japanese>
-            <Russian>Отключен %1</Russian>
-            <Polish>Rozłącz %1</Polish>
-            <Chinese>斷開聯繫%1</Chinese>
-            <Chinesesimp>断开联系%1</Chinesesimp>
-            <Korean>%1 연결 해제</Korean>
+            <Japanese>切断</Japanese>
+            <Russian>Отключен</Russian>
+            <Polish>Rozłącz</Polish>
+            <Chinese>斷開聯繫</Chinese>
+            <Chinesesimp>断开联系</Chinesesimp>
+            <Korean>연결 해제</Korean>
             <Portuguese>Desconectar %1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
@@ -248,6 +254,48 @@
             <Chinesesimp>接收和发送</Chinesesimp>
             <Korean>송수신</Korean>
             <Portuguese>Receber e Transmitir</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_volume">
+            <English>Volume</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_mute">
+            <English>Mute</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_startBroadcast">
+            <English>Start broadcast</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
+            <English>Stop broadcast</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_pttActivation">
+            <English>PTT activation</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_voiceActivation">
+            <English>Voice activation</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
+            <English>Intercom PTT key</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
+            <English>PTT activation key for intercom transmission</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
+            <English>Intercom broadcast key</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
+            <English>Broadcast activation key for intercom transmission</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_previousIntercom">
+            <English>Previous intercom network</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_nextIntercom">
+            <English>Next intercom network</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercom">
+            <English>Add the previous intercom network</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_addNextIntercom">
+            <English>Add the next intercom network</English>
         </Key>
     </Package>
 </Project>
