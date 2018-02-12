@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -274,28 +274,28 @@
             <English>Voice activation</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
-            <English>Intercom PTT key</English>
+            <English>Intercom Key</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
-            <English>PTT activation key for intercom transmission</English>
+            <English>Use the intercom station to talk.</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
-            <English>Intercom broadcast key</English>
+            <English>Intercom Broadcast Key</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
-            <English>Broadcast activation key for intercom transmission</English>
+            <English>Use the intercom station to broadcast a priority message.</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousIntercom">
-            <English>Previous intercom network</English>
+            <English>Previous Intercom Network</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercom">
-            <English>Next intercom network</English>
+            <English>Next Intercom Network</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercom">
-            <English>Add the previous intercom network</English>
+            <English>Add Previous Intercom Network</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercom">
-            <English>Add the next intercom network</English>
+            <English>Add Next Intercom Network</English>
         </Key>
     </Package>
 </Project>
