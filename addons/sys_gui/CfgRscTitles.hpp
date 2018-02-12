@@ -9,15 +9,11 @@ class RscTitles {
     class GVAR(VolumeControlDialog)  {
         idd = -1;
         movingEnable = 1;
-        enableSimulation = 1;
-        enableDisplay = 1;
-
-        onLoad = QUOTE(GVAR(VolumeControlDialog) = _this;);
-        onunLoad = QUOTE(GVAR(VolumeControlDialog) = _this;);
-
-        duration = 9999;
+        duration = 9999999;
         fadein = 0;
         fadeout = 0;
+        onLoad = QUOTE(GVAR(VolumeControlDialog) = _this;);
+        onunLoad = QUOTE(GVAR(VolumeControlDialog) = _this;);
 
         class controls {
             class RscSlider_1900: RscXSliderH {
@@ -57,8 +53,6 @@ class RscTitles {
     class GVAR(vehicleInfo) {
         idd = -1;
         movingEnable = 1;
-        enableSimulation = 1;
-        enableDisplay = 1;
         duration = 9999999;
         fadein = 0;
         fadeout = 0;
