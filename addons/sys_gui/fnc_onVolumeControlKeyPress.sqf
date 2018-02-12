@@ -29,7 +29,7 @@ inGameUISetEventHandler ["NextAction", "true"];
 GVAR(keyBlock) = true;
 disableSerialization;
 
-57701 cutRsc [QGVAR(VolumeControlDialog), "PLAIN"];
+(QGVAR(VolumeControlDialog) call BIS_fnc_rscLayer) cutRsc [QGVAR(VolumeControlDialog), "PLAIN"];
 
 private _slider = (GVAR(VolumeControlDialog) select 0) displayCtrl 1900;
 _slider sliderSetRange [-2, 2];

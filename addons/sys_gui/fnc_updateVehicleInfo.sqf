@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Updates the text on the ACRE vehicle INFO Bar.
+ * Updates the text on the Vehicle Info UI.
  *
  * Arguments:
  * 0: Structured text to show. <STRING>
@@ -14,9 +14,6 @@
  * Public: No
  */
 
-disableSerialization;
-params["_str"];
+params ["_str"];
 
-private _ctrl = (uiNamespace getVariable ["ACRE_VEHICLE_INFO", controlNull]);
-
-_ctrl ctrlSetStructuredText parseText _str;
+(uiNamespace getVariable ["ACRE_VehicleInfo", controlNull]) ctrlSetStructuredText parseText _str;

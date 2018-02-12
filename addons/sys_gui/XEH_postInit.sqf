@@ -17,14 +17,13 @@ acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
 
 DFUNC(enterVehicle) = {
     params ["_player"];
-    disableSerialization;
-
-    private _ctrl = ctrlParentControlsGroup (uiNamespace getVariable ["ACRE_VEHICLE_INFO", controlNull]);
 
     if (!isNull objectParent _player) then {
-        _ctrl ctrlShow true;
+        // Open vehicle info display
+        (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutRsc [QGVAR(vehicleInfo), "PLAIN", 0, false];
     } else {
-        _ctrl ctrlShow false;
+        // Close vehicle info display
+        (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
     };
 };
 

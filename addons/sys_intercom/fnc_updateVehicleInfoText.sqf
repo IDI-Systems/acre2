@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Updates the HUD display line in vehicles.
+ * Updates the Vehicle Info UI in vehicles.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -10,7 +10,7 @@
  * NONE
  *
  * Example:
- * [vehicle player, player] call acre_sys_intercom_fnc_vehicleInfoLine
+ * [vehicle player, player] call acre_sys_intercom_fnc_updateVehicleInfoText
  *
  * Public: No
  */
@@ -116,5 +116,23 @@ _infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>",
         _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.6'>%3 </t>", _infoLine, _color, _textStatus];
     };
 } forEach ([_vehicle] call EFUNC(sys_rack,getVehicleRacks));
+
+#ifdef DEBUG_VEHICLE_INFO
+private _color = "#ffffff";
+private _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/B) </t>", _color];
+_infoLine = "";
+
+{
+    _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>%4", _infoLine, _color, _x, _textStatus];
+} forEach ["Crew", "Crew", "Crew", "Crew", "Crew"];
+
+_infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>", _infoLine];
+
+{
+    _textStatus = "(R/T)";
+    _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>", _infoLine, _color, _x];
+    _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.6'>%3 </t>", _infoLine, _color, _textStatus];
+} forEach ["Dash", "Dash", "Dash", "Dash", "Dash"];
+#endif
 
 [_infoLine] call EFUNC(sys_gui,updateVehicleInfo);
