@@ -61,7 +61,7 @@
             <Portuguese>Largar Telefone de Infantaria</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
-            <English>Start calling %1</English>
+            <English>Start Calling %1</English>
             <Spanish>Llamar al exterior %1</Spanish>
             <German>Läuten %1</German>
             <Japanese>呼び出す %1</Japanese>
@@ -73,7 +73,7 @@
             <Portuguese>Iniciar Ligação %1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_stopCalling">
-            <English>Stop calling</English>
+            <English>Stop Calling</English>
             <Spanish>Dejar de llamar</Spanish>
             <German>Läuten beenden</German>
             <Japanese>呼び出しを止める</Japanese>
@@ -157,7 +157,7 @@
             <Portuguese>Impossível Conectar no Intercom. Máximo de Conexões alcansado</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercom">
-            <English>Crew intercom</English>
+            <English>Crew Intercom</English>
             <Chinese>機組員對講機</Chinese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
             <Japanese>クルー インターコム</Japanese>
@@ -167,7 +167,7 @@
             <English>Crew</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
-            <English>Pax intercom</English>
+            <English>Pax Intercom</English>
             <Chinese>乘客對講機</Chinese>
             <Chinesesimp>乘客对讲机</Chinesesimp>
             <Japanese>パックス インターコム</Japanese>
@@ -229,7 +229,7 @@
             <Portuguese>Sem conexões livres para Intercom Pax</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_transOnly">
-            <English>Transmit only</English>
+            <English>Transmit Only</English>
             <German>Nur Senden</German>
             <Japanese>送信のみ</Japanese>
             <Chinese>只發送</Chinese>
@@ -238,7 +238,7 @@
             <Portuguese>Apenas Transmitir</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_recOnly">
-            <English>Receive only</English>
+            <English>Receive Only</English>
             <German>Nur Empfangen</German>
             <Japanese>受信のみ</Japanese>
             <Chinese>只接收</Chinese>
@@ -262,16 +262,16 @@
             <English>Mute</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_startBroadcast">
-            <English>Start broadcast</English>
+            <English>Start Broadcast</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
-            <English>Stop broadcast</English>
+            <English>Stop Sroadcast</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_pttActivation">
-            <English>PTT activation</English>
+            <English>PTT Activation</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_voiceActivation">
-            <English>Voice activation</English>
+            <English>Voice Activation</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
             <English>Intercom Key</English>

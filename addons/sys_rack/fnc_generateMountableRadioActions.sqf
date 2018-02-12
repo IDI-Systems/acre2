@@ -30,7 +30,7 @@ _radioList = [_rackClassName, _radioList] call FUNC(getMountableRadios);
     private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
     private _displayName = getText (_item >> "displayName");
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
-    _displayName = format ["Mount %1 Chn: %2", _displayName, _currentChannel];
+    _displayName = format [localize ELSTRING(ace_interact,channelShort), _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
     //private _isActive = _x isEqualTo _currentRadio;
 

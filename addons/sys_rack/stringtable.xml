@@ -2,13 +2,13 @@
 <Project name="ACRE">
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
-            <English>Mount Radio</English>
-            <German>Funkgerät einbauen</German>
-            <Japanese>無線機の積載</Japanese>
-            <Chinese>裝載無線電</Chinese>
-            <Chinesesimp>装载无线电</Chinesesimp>
-            <Korean>무전기 설치</Korean>
-            <Portuguese>Montar Rádio</Portuguese>
+            <English>Mount</English>
+            <German>Einbauen</German>
+            <Japanese>積載</Japanese>
+            <Chinese>裝載</Chinese>
+            <Chinesesimp>装载</Chinesesimp>
+            <Korean>설치</Korean>
+            <Portuguese>Montar</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable (Locked)</English>
@@ -20,40 +20,40 @@
             <Portuguese>Não Montavél (Trancado)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
-            <English>Unmount Radio (%1)</English>
-            <German>Entferne Funkgerät (%1)</German>
-            <Japanese>無線機を降ろす (%1)</Japanese>
-            <Chinese>卸載無線電 (%1)</Chinese>
-            <Chinesesimp>卸载无线电 (%1)</Chinesesimp>
-            <Korean>무전기 분리 (%1)</Korean>
-            <Portuguese>Desmontar Rádio (%1)</Portuguese>
+            <English>Unmount (%1)</English>
+            <German>Entferne (%1)</German>
+            <Japanese>降ろす (%1)</Japanese>
+            <Chinese>卸載 (%1)</Chinese>
+            <Chinesesimp>卸载 (%1)</Chinesesimp>
+            <Korean>분리 (%1)</Korean>
+            <Portuguese>Desmontar (%1)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
-            <English>Mounted radio (%1)</English>
-            <German>Eingebautes Funkgerät (%1)</German>
-            <Japanese>無線機を乗せる (%1)</Japanese>
-            <Chinese>裝載無線電 (%1)</Chinese>
-            <Chinesesimp>装载无线电 (%1)</Chinesesimp>
-            <Korean>무전기 설치 (%1)</Korean>
-            <Portuguese>Rádio Montado (%1)</Portuguese>
+            <English>Mounted (%1)</English>
+            <German>Eingebautes (%1)</German>
+            <Japanese>乗せる (%1)</Japanese>
+            <Chinese>裝載 (%1)</Chinese>
+            <Chinesesimp>装载 (%1)</Chinesesimp>
+            <Korean>설치 (%1)</Korean>
+            <Portuguese>Montado (%1)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
-            <English>Stop using radio</English>
+            <English>Stop Using</English>
             <German>Benutzung beenden</German>
-            <Japanese>無線機の使用を止める</Japanese>
-            <Chinese>停止使用無線電</Chinese>
-            <Chinesesimp>停止使用无线电</Chinesesimp>
-            <Korean>무전기 사용 중지</Korean>
-            <Portuguese>Para de usar rádio</Portuguese>
+            <Japanese>使用を止める</Japanese>
+            <Chinese>停止使用</Chinese>
+            <Chinesesimp>停止使用</Chinesesimp>
+            <Korean>사용 중지</Korean>
+            <Portuguese>Para de usar</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
-            <English>Use radio</English>
-            <German>Funkgerät verwenden</German>
-            <Japanese>無線機を使う</Japanese>
-            <Chinese>使用無線電</Chinese>
-            <Chinesesimp>使用无线电</Chinesesimp>
-            <Korean>무전기 사용</Korean>
-            <Portuguese>Usar rádio</Portuguese>
+            <English>Use</English>
+            <German>Verwenden</German>
+            <Japanese>を使う</Japanese>
+            <Chinese>使用</Chinese>
+            <Chinesesimp>使用</Chinesesimp>
+            <Korean>사용</Korean>
+            <Portuguese>Usar</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
