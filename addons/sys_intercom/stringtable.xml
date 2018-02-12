@@ -292,10 +292,10 @@
             <English>Next Intercom Network</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercom">
-            <English>Add Previous Intercom Network</English>
+            <English>Connect Previous Intercom Network</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercom">
-            <English>Add Next Intercom Network</English>
+            <English>Connect Next Intercom Network</English>
         </Key>
     </Package>
 </Project>
