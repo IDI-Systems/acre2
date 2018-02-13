@@ -7,8 +7,9 @@ PREP_FOLDER(functions);
 
 [] call FUNC(presetInformation);
 
+GVAR(manualChannel) = 10;
+
 if (hasInterface) then {
-    GVAR(manualChannel) = 10;
     GVAR(currentRadioId) = -1;
 
     // UI Variables

@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Unique rack ID <STRING>
  * 1: Unique radio ID <STRING>
- * 2: Unit <OBJECT><OPTIONAL>
+ * 2: Unit <OBJECT><OPTIONAL> (default: objNull)
  *
  * Return Value:
  * None

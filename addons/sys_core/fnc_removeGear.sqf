@@ -18,11 +18,13 @@
 
 params ["_unit", "_item"];
 
+_item = toLower _item;
+
 /*_weapons = weapons _unit;
 _uniformItems = uniformItems _unit;
 _vestItems = vestItems _unit;
 _backpackItems = backpackitems _unit;*/
-private _assignedItems = assignedItems _unit;
+private _assignedItems = (assignedItems _unit) apply {toLower _x};
 
 if (_item in _assignedItems) then {
     _unit unassignitem _item;

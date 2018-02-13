@@ -11,6 +11,10 @@ if (hasInterface) then {
     GVAR(initializedIntercom) = [];
     GVAR(initializedInfantryPhone) = [];
     GVAR(intercomPFH) = -1;
+
+    // Todo: Change to key down/up
+    GVAR(broadcastKey) = false;
+    GVAR(intercomPttKey) = false;
 };
 
 ADDON = true;

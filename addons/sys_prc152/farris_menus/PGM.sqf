@@ -233,7 +233,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         [ROW_LARGE_2, ALIGN_CENTER, "RX FREQUENCY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
-                        [ROW_SMALL_5, ALIGN_CENTER, "ENTER FERQUENCY"]
+                        [ROW_SMALL_5, ALIGN_CENTER, "ENTER FREQUENCY"]
                     ],
                     [
                         {
@@ -317,7 +317,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         [ROW_LARGE_2, ALIGN_CENTER, "TX FREQUENCY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
-                        [ROW_SMALL_5, ALIGN_CENTER, "ENTER FERQUENCY"]
+                        [ROW_SMALL_5, ALIGN_CENTER, "ENTER FREQUENCY"]
                     ],
                     [
                         {

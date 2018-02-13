@@ -19,10 +19,11 @@
 #include "script_component.hpp"
 
 params ["_rackId", "", "_eventData", "_rackData"];
-_eventData params ["_componentName", "_displayName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents", "_intercoms", "_vehicle"];
+_eventData params ["_componentName", "_displayName", "_shortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents", "_intercoms", "_vehicle"];
 
 
 HASH_SET(_rackData,"name",_displayName);
+HASH_SET(_rackData,"shortName",_shortName);
 HASH_SET(_rackData,"allowed",_allowed);
 HASH_SET(_rackData,"disabled",_disabled);
 HASH_SET(_rackData,"mountedRadio",_mountedRadio);

@@ -40,7 +40,7 @@ if (_player == acre_player) then {
 
     //if (_baseRadio in _weapons || ("ItemRadio" in _weapons && _baseRadio == GVAR(defaultItemRadioType) ) ) then {
     TRACE_2("Check inventory", _baseRadio, _weapons);
-    if ((toLower _baseRadio) in (_weapons apply {toLower _x})) then {
+    if ((toLower _baseRadio) in _weapons) then {
         // Add a new radio based on the id we just got
         TRACE_3("Adding radio", _class, _baseRadio, _replacementId);
 
