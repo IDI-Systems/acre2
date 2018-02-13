@@ -22,6 +22,7 @@ if (vehicle _unit == _unit) exitWith {};
 
 private _intercomNames = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
 private _infoLine = "";
+private _elements = count _intercomNames;
 {
     private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
     private _isBroadcasting = ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _forEachIndex) params ["_isBroadcasting", "_broadcastingUnit"];
@@ -79,7 +80,9 @@ private _infoLine = "";
     _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>%4", _infoLine, _color, _displayName, _textStatus];
 } forEach _intercomNames;
 
-_infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>", _infoLine];
+if !(_intercomNames isEqualTo []) then {
+    _infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>", _infoLine];
+};
 
 {
     if ([_x, _unit] call EFUNC(sys_rack,isRackAccessible) || [_x, _unit] call EFUNC(sys_rack,isRackHearable)) then {
@@ -114,6 +117,8 @@ _infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>",
 
         _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>", _infoLine, _color, _displayName];
         _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.6'>%3 </t>", _infoLine, _color, _textStatus];
+
+        _elements = _elements + 1;
     };
 } forEach ([_vehicle] call EFUNC(sys_rack,getVehicleRacks));
 
@@ -124,7 +129,7 @@ _infoLine = "";
 
 {
     _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>%4", _infoLine, _color, _x, _textStatus];
-} forEach ["Crew", "Crew", "Crew", "Crew", "Crew"];
+} forEach ["Crew", "Crew", "Crew", "Crew", "Crew", "Crew", "Crew", "Crew", "Crew", "Crew"];
 
 _infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>", _infoLine];
 
@@ -132,7 +137,9 @@ _infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>",
     _textStatus = "(R/T)";
     _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.8'>%3 </t>", _infoLine, _color, _x];
     _infoLine = format ["%1<t font='PuristaBold' color='%2' size='0.6'>%3 </t>", _infoLine, _color, _textStatus];
-} forEach ["Dash", "Dash", "Dash", "Dash", "Dash"];
+} forEach ["Dash", "Dash", "Dash", "Dash", "Dash", "Dash", "Dash", "Dash", "Dash", "Dash"];
+
+_elements = 20;
 #endif
 
-[_infoLine] call EFUNC(sys_gui,updateVehicleInfo);
+[_infoLine, _elements] call EFUNC(sys_gui,updateVehicleInfo);

@@ -60,18 +60,17 @@ class RscTitles {
         class controls {
             class VehicleInfoControlsGroup: RscControlsGroupNoScrollbars {
                 idc = -1;
-                x = "profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_X', 0 * (((safezoneW / safezoneH) min 1.2) / 40) + (profileNamespace getVariable ['IGUI_GRID_VEHICLE_X', safezoneX + 0.5 * (((safezoneW / safezoneH) min 1.2) / 40)])]";
+                x = "profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_X', profileNamespace getVariable ['IGUI_GRID_VEHICLE_X', safezoneX + 0.5 * (((safezoneW / safezoneH) min 1.2) / 40)]]";
                 y = "profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_Y', 4.3 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (profileNamespace getVariable ['IGUI_GRID_VEHICLE_Y', safezoneY + 0.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)])]";
-                w = "profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_W', 10 * (((safezoneW / safezoneH) min 1.2) / 40)]";
-                h = "profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_H', 1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)]";
+                w = "10 * (((safezoneW / safezoneH) min 1.2) / 40)";
+                onLoad = "uiNamespace setVariable ['ACRE_VehicleInfo', _this select 0];";
 
                 class Controls {
                     class VehicleInfoBackground: RscText {
-                        idc = -1;
+                        idc = 1;
                         x = 0;
                         y = 0;
-                        w = "profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_W', 10 * (((safezoneW / safezoneH) min 1.2) / 40)]";
-                        h = "profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_H', 1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)]";
+                        w = "10 * (((safezoneW / safezoneH) min 1.2) / 40)";
                         colorBackground[] = {
                             "profileNamespace getVariable ['IGUI_BCG_RGB_R', 0]",
                             "profileNamespace getVariable ['IGUI_BCG_RGB_G', 1]",
@@ -80,12 +79,10 @@ class RscTitles {
                         };
                     };
                     class VehicleInfoText: RscStructuredText {
-                        idc = -1;
+                        idc = 2;
                         x = 0;
                         y = 0;
-                        w = "0.98 * (profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_W', ((safezoneW / safezoneH) min 1.2) / 40])";
-                        h = "0.8 * (profileNamespace getVariable ['IGUI_grid_ACRE_vehicleInfo_H', (((safezoneW / safezoneH) min 1.2) / 1.2) / 25])";
-                        onLoad = "uiNamespace setVariable ['ACRE_VehicleInfo', _this select 0];";
+                        w = "9.8 * (((safezoneW / safezoneH) min 1.2) / 40)";
                     };
                 };
             };

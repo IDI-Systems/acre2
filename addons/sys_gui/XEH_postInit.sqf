@@ -27,14 +27,11 @@ DFUNC(enterVehicle) = {
     };
 };
 
-// Handle showing the display at the very begining when unit is on foot
-[{
-    params ["_player"];
-    [_player] call FUNC(enterVehicle);
-}, [acre_player], 0.1] call CBA_fnc_waitAndExecute;
-
-// Add event handler
+// Show display when entering vehicle
 ["vehicle", {
     params ["_player"];
     [_player] call FUNC(enterVehicle);
 }, true] call CBA_fnc_addPlayerEventHandler;
+
+// Show display at the very begining
+[acre_player] call FUNC(enterVehicle);
