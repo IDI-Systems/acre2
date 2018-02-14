@@ -23,7 +23,7 @@ private _type = typeOf _vehicle;
 private _infantryPhoneIntercom = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneIntercom") apply {toLower _x};
 private _infantryPhoneControlActions = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneControlActions") apply {toLower _x};
 private _infantryPhoneDisableRinging = (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneDisableRinging")) == 1;
-private _infantryPhoneCustomRinging = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneCustomRinging") apply {toLower _x};
+private _infantryPhoneCustomRinging = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneCustomRinging") apply {if (_x isEqualType "") then {toLower _x;}};
 
 // Set by default to have access to all intercom networks if none was specified
 

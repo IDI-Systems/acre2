@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Unque rack ID <STRING>
  * 1: Unit <OBJECT>
- * 2: Vehicle <OBJECT><OPTIONAL>
+ * 2: Vehicle <OBJECT><OPTIONAL> (default: objNull)
  *
  * Return Value:
  * Accessible <BOOLEAN>
@@ -19,12 +19,11 @@
 
 params ["_rackId", "_unit", ["_vehicle", objNull]];
 
-if (isNull _vehicle) then {
+if (isNull _vehicle || {vehicle _unit == _unit}) then {
     _vehicle = [_rackId] call FUNC(getVehicleFromRack);
 };
 
 private _allowedPositions = [_rackId, "getState", "allowed"] call EFUNC(sys_data,dataEvent);
 private _disabledPositions = [_rackId, "getState", "disabled"] call EFUNC(sys_data,dataEvent);
 
-[_vehicle, _unit, _allowedPositions, _forbiddenPositions, MAX_EXTERNAL_RACK_DISTANCE] call EFUNC(sys_core,hasAccessToVehicleSystem)
-
+[_vehicle, _unit, _allowedPositions, _disabledPositions, MAX_EXTERNAL_RACK_DISTANCE] call EFUNC(sys_core,hasAccessToVehicleSystem)

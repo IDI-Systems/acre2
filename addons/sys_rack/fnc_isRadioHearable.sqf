@@ -10,7 +10,7 @@
  * Accessible <BOOLEAN>
  *
  * Example:
- * ["ACRE_PRC152_ID_1",acre_player] call acre_sys_rack_fnc_isRadioHearable;
+ * ["ACRE_PRC152_ID_1", acre_player] call acre_sys_rack_fnc_isRadioHearable;
  *
  * Public: No
  */
