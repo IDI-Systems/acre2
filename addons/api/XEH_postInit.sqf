@@ -42,7 +42,7 @@
     params ["_vehicle", "_rackId"];
 
     if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
-        [QGVAR(logOnServer), format ["Non existant rack ID provided: %1", _rackId]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Non existant rack ID provided: %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
@@ -65,10 +65,9 @@
             {
                 if ((_x select 0) isEqualTo _rackId) exitWith {
                     _rackIntercomConfig deleteAt _forEachIndex;
-                }
+                };
             } forEach _rackIntercomConfig;
-
-            _vehicle setVariable [format [QEGVAR(sys_intercom,%1_rack), _stationName], _rackIntercomConfig, true]);
+            _vehicle setVariable [format [QEGVAR(sys_intercom,%1_rack), _stationName], _rackIntercomConfig, true];
         } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomStations), []]);
     };
 
@@ -79,7 +78,7 @@
     {
         private _type = typeOf _x;
 
-        if (_type == (toLower _rackId)) exitWith {
+        if (_type == (toLower _rackId )) exitWith {
             deleteVehicle _x;
         };
     } forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
@@ -89,22 +88,22 @@
     params ["_rackId", "_baseRadio"];
 
     if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
-        [QGVAR(logOnServer), format ["Non existant rack ID provided: %1", _rackId]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Non existant rack ID provided: %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
     if ([_baseRadio] call EFUNC(sys_radio,radioExists)) exitWith {
-        [QGVAR(logOnServer), format ["Unique radio ID provided: %1", _baseRadio]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Unique radio ID provided: %1", _baseRadio]] call CBA_fnc_serverEvent;
         false
     };
 
     if ([_rackId] call FUNC(getMountedRackRadio) != "") exitWith {
-        [QGVAR(logOnServer), format ["Rack ID %1 has already a radio mounted.", _rackId]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Rack ID %1 has already a radio mounted.", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
     if (!([_rackId] call EFUNC(sys_rack,isRadioRemovable))) exitWith {
-        [QGVAR(logOnServer), format ["Radio cannot be mounted in rack %1", _rackId]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Radio cannot be mounted in rack %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
@@ -128,29 +127,29 @@
     params ["_rackId", "_radioId"];
 
     if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
-        [QGVAR(logOnServer), format ["Non existant rack ID provided: %1", _rackId]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Non existant rack ID provided: %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
     if (!([_rackId] call EFUNC(sys_rack,isRadioRemovable))) exitWith {
-        [QGVAR(logOnServer), format ["Radio cannot be dismounted from rack %1", _rackId]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Radio cannot be dismounted from rack %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
     if (!([_radioId] call EFUNC(sys_radio,radioExists))) exitWith {
-        [QGVAR(logOnServer), format ["Non existant radio ID provided: %1", _radioId]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Non existant radio ID provided: %1", _radioId]] call CBA_fnc_serverEvent;
         false
     };
 
     private _mountedRadio = [_rackId, "getState", "mountedRadio"] call EFUNC(sys_data,dataEvent);
 
     if (_mountedRadio == "") exitWith {
-        [QGVAR(logOnServer), format ["Attempting to unmount empty rack: %1", _rackId]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Attempting to unmount empty rack: %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
     if (_mountedRadio != _radioId) exitWith {
-        [QGVAR(logOnServer), format ["Trying to dismount %1 from Rack ID %2. However, the mounted radio is %3.", _radioId, _rackId, _mountedRadiod]] call CBA_fnc_serverEvent);
+        [QGVAR(logOnServer), format ["Trying to dismount %1 from Rack ID %2. However, the mounted radio is %3.", _radioId, _rackId, _mountedRadiod]] call CBA_fnc_serverEvent;
         false
     };
 
@@ -166,3 +165,4 @@
 
     WARNING(_text);
 }] call CBA_fnc_addEventHandler;
+
