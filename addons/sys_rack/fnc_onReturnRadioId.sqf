@@ -24,12 +24,12 @@ private _dataHash = HASH_CREATE;
 HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
 private _idRelation = [_rackObject, _rackObject];
 HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
-/*
+
 private _vehicle = _rackObject;
 _vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
 
 
- //TODO: test this works.
+// To further check. No isses found.
 private _crewPlayers = (crew _vehicle) select {isPlayer _x};
 private _condition = false;
 if (count _crewPlayers > 0) then {
@@ -41,9 +41,9 @@ if (count _crewPlayers > 0) then {
     if (isServer) then {
         _condition = true;
     };
-};*/
+};
 
-//if (_condition) then {
+if (_condition) then {
     private _baseRadio = BASECLASS(_class);
     private _rackId = typeOf _rackObject;
 
@@ -62,4 +62,4 @@ if (count _crewPlayers > 0) then {
     };
 
     ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_globalEvent);
-//};
+};

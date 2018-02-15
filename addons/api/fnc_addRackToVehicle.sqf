@@ -5,21 +5,22 @@
  * Arguments:
  * 0: Vehicle <OBJECT> (default: objNull)
  * 1: Rack configuration <ARRAY>
- *   0: Display name <STRING>
- *   1: Rack base type <STRING>
- *   2: Allowed positions <ARRAY>
- *   3: Disabled positions <ARRAY>
- *   4: Components <ARRAY>
- *   5: Mounted radio base type <STRING>
- *   6: Can radio be removed <BOOL>
- *   7: Connected intercoms <ARRAY>
- * 2: Force initialisation <BOOL><OPTIONAL> (default: false)
+ *   0: Base classname of the rack (Without ID) <STRING> (default: "")
+ *   1: Rackname - this is diplayed to the user. Ideally short <STRING> (default: "")
+ *   2: Rack short name - displayed in GUI information. Max 4 characters <STRING> (default: "")
+ *   3: Is mounted radio removable <BOOLEAN> (default: false)
+ *   5: Access - Determines who can use the rack <ARRAY> (default: ["inside"])
+ *   6: Disabled positions - Blacklist rack use positions <ARRAY> (default: [])
+ *   4: Base classname of the mounted radio (Without ID). Empty string for no radio <STRING> (default: "")
+ *   7: Components <ARRAY> (default: [])
+ *   8: Connected intercoms <ARRAY> (default: [])
+ * 2: Force initialisation <BOOL> (default: false)
  *
  * Return Value:
  * Rack added successfully <BOOL>
  *
  * Example:
- * [cursorTarget, ["Comm 1","ACRE_VRC103", ["external"], [], [], "ACRE_PRC117F", false, ["crew"]]] call acre_api_fnc_addRackToVehicle
+ * [cursorTarget, ["ACRE_VRC103", "ACRE_PRC117F", "Upper Dash", "Dash", false, ["external"], [], [], ["intercom_1"]]] call acre_api_fnc_addRackToVehicle
  *
  * Public: Yes
  */
@@ -33,13 +34,13 @@ if (!isServer) exitWith {
 };
 
 if (isNull _vehicle) exitWith {
-    WARNING_1("Trying to initialize undefined vehicle %1",format ["%1", _vehicle]);
+    WARNING_1("Trying to initialize undefined vehicle %1",_vehicle);
     false
 };
 
 private _vehicleInitialized = [_vehicle] call FUNC(areVehicleRacksInitialized);
 if (!_vehicleInitialized && !_forceInitialisation) exitWith {
-    WARNING_1("Vehicle %1 is not initialised. Rack is not being added.",format ["%1", _vehicle]);
+    WARNING_1("Vehicle %1 is not initialised. Rack is not being added.",_vehicle);
     false
 };
 
@@ -47,23 +48,38 @@ private _success = true;
 
 if (_forceInitialisation) then {
     if (_vehicleInitialized) then {
-        WARNING_1("Vehicle %1 is already initialised but function forces it to initialise again",format ["%1", _vehicle]);
+        WARNING_1("Vehicle %1 is already initialised but function forces it to initialise again",_vehicle);
     } else {
-        TRACE_1("Forcing initialisation of vehicle %1 in order to add a rack",format ["%1", _vehicle]);
+        TRACE_1("Forcing initialisation of vehicle %1 in order to add a rack",_vehicle);
         _success = [_vehicle] call FUNC(initVehicleRacks);
     };
 };
 
 if (!_success) exitWith {
-    WARNING_1("Vehicle %1 failed to initialise",format ["%1", _vehicle]);
+    WARNING_1("Vehicle %1 failed to initialise",_vehicle);
 };
 
-if (count _rackConfiguration != 8) exitWith {
-    WARNING_1("Invalid number of entries in the rack configuration array for vehicle: %1",format ["%1", _vehicle]);
+if (count _rackConfiguration != 9) exitWith {
+    WARNING_1("Invalid number of entries in the rack configuration array for vehicle: %1",_vehicle);
     false
 };
 
-_rackConfiguration params ["_displayName", "_componentName", "_allowedPos", "_disabledPos", "_components", "_mountedRadio", "_isRadioRemovable", "_intercoms"];
+_rackConfiguration params ["_displayName", ["_rackClassname", ""], ["_rackName", ""], ["_rackShortName", ""], ["_isRadioRemovable", false], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio", ""], ["_defaultComponents", []], ["_intercoms", []]];
+
+if (_rackClassname isEqualTo "") exitWith {
+    WARNING_1("No rack specified for vehicle %1",_vehicle);
+    false
+};
+
+if (_rackName isEqualTo "") exitWith {
+    WARNING_1("No valid rack specified for vehicle %1",_vehicle);
+    false
+};
+
+if (_rackShortName isEqualTo "") exitWith {
+    WARNING_1("No valid rack short name specified for vehicle %1 and rack %2",_vehicle,_rackName);
+    false
+};
 
 private _allowed = [_vehicle, _allowedPos] call EFUNC(sys_core,processConfigArray);
 private _disabled = [_vehicle, _disabledPos] call EFUNC(sys_core,processConfigArray);
@@ -79,6 +95,6 @@ if (isDedicated) then {
     _player = acre_player;
 };
 
-[QGVAR(addVehicleRacks), [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms], _player] call CBA_fnc_targetEvent;
+[QGVAR(addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
 
 true
