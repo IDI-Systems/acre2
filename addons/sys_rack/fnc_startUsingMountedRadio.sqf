@@ -46,4 +46,4 @@ if (GVAR(rackPFH) == -1) then {
 };
 
 // Update the display
-[_vehicle, _unit] call EFUNC(sys_intercom,vehicleInfoLine);
+[_vehicle, _unit] call EFUNC(sys_intercom,updateVehicleInfoText);

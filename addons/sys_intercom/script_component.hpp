@@ -2,8 +2,9 @@
 #define COMPONENT_BEAUTIFIED Vehicle Intercom
 #include "\idi\acre\addons\main\script_mod.hpp"
 
-// #define DRAW_INFANTRYPHONE_INFO
-// #define DRAW_CURSORPOS_INFO
+// #define DRAW_INFANTRYPHONE_INFO // Draws infantry phone position
+// #define DRAW_CURSORPOS_INFO // Draws cursor position and intersection with object
+// #define DEBUG_VEHICLE_INFO // Uses a long dummy vehicle info line
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS

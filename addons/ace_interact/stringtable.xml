@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="ace_interact">
         <Key ID="STR_ACRE_ace_interact_radios">
@@ -61,6 +61,21 @@
             <Chinesesimp>戴上耳机</Chinesesimp>
             <Portuguese>Levantar Fones</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_ace_interact_openRadio">
+            <English>Open</English>
+            <Czech>Otevřít</Czech>
+            <German>Öffnen</German>
+            <Russian>Открыть</Russian>
+            <Polish>Otwórz</Polish>
+            <Italian>Apri</Italian>
+            <Spanish>Abrir</Spanish>
+            <French>Ouvrir</French>
+            <Japanese>開く</Japanese>
+            <Chinese>打開</Chinese>
+            <Chinesesimp>打开</Chinesesimp>
+            <Korean>열기</Korean>
+            <Portuguese>Abrir</Portuguese>
+        </Key>
         <Key ID="STR_ACRE_ace_interact_bothEars">
             <English>Both Ears</English>
             <Spanish>Ambos auriculares</Spanish>
@@ -122,13 +137,13 @@
             <Portuguese>Difinir Como Ativo</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bindMultiPushToTalk">
-            <English>Bind Multi Push To Talk</English>
-            <Spanish>Definir como Multi Push To Talk</Spanish>
+            <English>Bind Multi PTT</English>
+            <Spanish>Definir como Multi PTT</Spanish>
             <German>Sprechtasten festlegen</German>
             <Japanese>マルチ プッシュ トークに割当</Japanese>
-            <Czech>Přiřadit klávesu pro Multi Push To Talk</Czech>
-            <Italian>Imposta Multi-PTT</Italian>
-            <French>Définir Multi Push To Talk</French>
+            <Czech>Přiřadit klávesu pro Multi PTT</Czech>
+            <Italian>Imposta Multi PTT</Italian>
+            <French>Définir Multi PTT</French>
             <Korean>멀티 PTT 설정</Korean>
             <Polish>Ustaw klawisz PTT</Polish>
             <Russian>Назначить общую ПТТ</Russian>
@@ -137,19 +152,19 @@
             <Portuguese>Ligar Multi PTT</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_multiPushToTalk">
-            <English>Multi Push To Talk-%1</English>
-            <Spanish>Multi Push To Talk-%1</Spanish>
+            <English>Multi PTT %1</English>
+            <Spanish>Multi PTT %1</Spanish>
             <German>Sprechtaste %1</German>
-            <Japanese>マルチ プッシュ トーク-%1</Japanese>
-            <Czech>Multi Push To Talk-%1</Czech>
-            <Italian>Multi Push To Talk-%1</Italian>
-            <French>Multi Push To Talk-%1</French>
-            <Korean>멀티 PTT-%1</Korean>
-            <Polish>Klawisz PTT: %1</Polish>
-            <Russian>Общая ПТТ-%1</Russian>
-            <Chinese>多個發話-%1</Chinese>
-            <Chinesesimp>多个发话-%1</Chinesesimp>
-            <Portuguese>Multi PTT - %1</Portuguese>
+            <Japanese>マルチ プッシュ トーク %1</Japanese>
+            <Czech>Multi PTT %1</Czech>
+            <Italian>Multi PTT %1</Italian>
+            <French>Multi PTT %1</French>
+            <Korean>멀티 PTT %1</Korean>
+            <Polish>Klawisz PTT %1</Polish>
+            <Russian>Общая ПТТ %1</Russian>
+            <Chinese>多個發話 %1</Chinese>
+            <Chinesesimp>多个发话 %1</Chinesesimp>
+            <Portuguese>Multi PTT %1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsMultiPTT">
             <English>Set as Multi PTT %1</English>

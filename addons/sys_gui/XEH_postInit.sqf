@@ -17,25 +17,21 @@ acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
 
 DFUNC(enterVehicle) = {
     params ["_player"];
-    disableSerialization;
-
-    private _ctrl = ctrlParentControlsGroup (uiNamespace getVariable ["ACRE_VEHICLE_INFO", controlNull]);
 
     if (!isNull objectParent _player) then {
-        _ctrl ctrlShow true;
+        // Open vehicle info display
+        (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutRsc [QGVAR(vehicleInfo), "PLAIN", 0, false];
     } else {
-        _ctrl ctrlShow false;
+        // Close vehicle info display
+        (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
     };
 };
 
-// Handle showing the display at the very begining when unit is on foot
-[{
-    params ["_player"];
-    [_player] call FUNC(enterVehicle);
-}, [acre_player], 0.1] call CBA_fnc_waitAndExecute;
-
-// Add event handler
+// Show display when entering vehicle
 ["vehicle", {
     params ["_player"];
     [_player] call FUNC(enterVehicle);
 }, true] call CBA_fnc_addPlayerEventHandler;
+
+// Show display at the very begining
+[acre_player] call FUNC(enterVehicle);

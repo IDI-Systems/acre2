@@ -37,7 +37,7 @@ PREP(getRackRxTxCapabilities);
 PREP(setRackRxTxCapabilities);
 
 // Display
-PREP(vehicleInfoLine);
+PREP(updateVehicleInfoText);
 
 // Keybinding
 PREP(switchIntercomFast);

@@ -28,7 +28,7 @@ private _mountedRadio = [_rackClassName] call FUNC(getMountedRadio);
 if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
     if (_mountedRadio == "") then { // Empty
         if ([_rackClassName] call FUNC(isRadioRemovable)) then {
-            private _action = ["acre_mountRadio", localize LSTRING(mountRadio), "\idi\acre\addons\ace_interact\data\icons\connector4.paa", {1+1;}, {true}, {_this call FUNC(generateMountableRadioActions);}, _params] call ace_interact_menu_fnc_createAction;
+            private _action = ["acre_mountRadio", localize LSTRING(mountRadio), QPATHTOEF(ace_interact,data\icons\connector4.paa), {1+1;}, {true}, {_this call FUNC(generateMountableRadioActions);}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {
              private _action = ["acre_mountRadio", localize LSTRING(unmountable), "", {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
@@ -104,7 +104,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
 
 /* Connectors */
 if (EGVAR(ace_interact,connectorsEnabled)) then {
-    private _action = ["acre_connectors", "Connectors", "\idi\acre\addons\ace_interact\data\icons\connector4.paa", {true /*Statement/Action*/}, {true}, { _this call EFUNC(ace_interact,generateConnectors);}, _params] call ace_interact_menu_fnc_createAction;
+    private _action = ["acre_connectors", "Connectors", QPATHTOEF(ace_interact,data\icons\connector4.paa), {true /*Statement/Action*/}, {true}, { _this call EFUNC(ace_interact,generateConnectors);}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 
