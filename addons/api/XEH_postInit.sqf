@@ -27,9 +27,9 @@
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(addVehicleRacks), {
-    params ["_vehicle", "_componentName", "_displayName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_components", "_intercoms"];
+    params ["_vehicle", "_rackClassname", "_displayName", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_components", "_intercoms"];
 
-    [_vehicle, _componentName, _displayName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call EFUNC(sys_rack,addRack);
+    [_vehicle, _rackClassname, _displayName, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call EFUNC(sys_rack,addRack);
 
     // Give some time for the racks to initialise properly
     [{
@@ -71,14 +71,14 @@
         } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomStations), []]);
     };
 
-    private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleFromRack);
+    private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
     _racks deleteAt (_racks find _rackId);
     _vehicle setVariable [QEGVAR(sys_rack,vehicleRacks), _racks, true];
 
     {
-        private _type = typeOf _x;
+        private _type = toLower (typeOf _x);
 
-        if (_type == (toLower _rackId )) exitWith {
+        if (_type == (toLower _rackId)) exitWith {
             deleteVehicle _x;
         };
     } forEach (nearestObjects [[-1000,-1000], ["ACRE_baseRack"], 1, true]);
@@ -149,7 +149,7 @@
     };
 
     if (_mountedRadio != _radioId) exitWith {
-        [QGVAR(logOnServer), format ["Trying to dismount %1 from Rack ID %2. However, the mounted radio is %3.", _radioId, _rackId, _mountedRadiod]] call CBA_fnc_serverEvent;
+        [QGVAR(logOnServer), format ["Trying to dismount %1 from Rack ID %2. However, the mounted radio is %3.", _radioId, _rackId, _mountedRadio]] call CBA_fnc_serverEvent;
         false
     };
 

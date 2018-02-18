@@ -37,8 +37,9 @@ if (count _crewPlayers > 0) then {
         _condition = true;
     };
 } else {
+    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
     // FallBack to server.
-    if (isServer) then {
+    if (local _player) then {
         _condition = true;
     };
 };

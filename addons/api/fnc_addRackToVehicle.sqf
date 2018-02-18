@@ -20,7 +20,7 @@
  * Rack added successfully <BOOL>
  *
  * Example:
- * [cursorTarget, ["ACRE_VRC103", "ACRE_PRC117F", "Upper Dash", "Dash", false, ["external"], [], [], ["intercom_1"]]] call acre_api_fnc_addRackToVehicle
+ * [cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]]] call acre_api_fnc_addRackToVehicle
  *
  * Public: Yes
  */
@@ -38,7 +38,7 @@ if (isNull _vehicle) exitWith {
     false
 };
 
-private _vehicleInitialized = [_vehicle] call FUNC(areVehicleRacksInitialized);
+private _vehicleInitialized = [_vehicle] call EFUNC(api,areVehicleRacksInitialized);
 if (!_vehicleInitialized && !_forceInitialisation) exitWith {
     WARNING_1("Vehicle %1 is not initialised. Rack is not being added.",_vehicle);
     false
@@ -51,7 +51,7 @@ if (_forceInitialisation) then {
         WARNING_1("Vehicle %1 is already initialised but function forces it to initialise again",_vehicle);
     } else {
         TRACE_1("Forcing initialisation of vehicle %1 in order to add a rack",_vehicle);
-        _success = [_vehicle] call FUNC(initVehicleRacks);
+        _success = [_vehicle] call EFUNC(api,initVehicleRacks);
     };
 };
 
@@ -64,7 +64,7 @@ if (count _rackConfiguration != 9) exitWith {
     false
 };
 
-_rackConfiguration params ["_displayName", ["_rackClassname", ""], ["_rackName", ""], ["_rackShortName", ""], ["_isRadioRemovable", false], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio", ""], ["_defaultComponents", []], ["_intercoms", []]];
+_rackConfiguration params [["_rackClassname", ""], ["_rackName", ""], ["_rackShortName", ""], ["_isRadioRemovable", false], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio", ""], ["_defaultComponents", []], ["_intercoms", []]];
 
 if (_rackClassname isEqualTo "") exitWith {
     WARNING_1("No rack specified for vehicle %1",_vehicle);
@@ -81,8 +81,8 @@ if (_rackShortName isEqualTo "") exitWith {
     false
 };
 
-private _allowed = [_vehicle, _allowedPos] call EFUNC(sys_core,processConfigArray);
-private _disabled = [_vehicle, _disabledPos] call EFUNC(sys_core,processConfigArray);
+private _allowed = [_vehicle, _allowed] call EFUNC(sys_core,processVehicleSystemAccessArray);
+private _disabled = [_vehicle, _disabled] call EFUNC(sys_core,processVehicleSystemAccessArray);
 _intercoms = _intercoms apply {toLower _x};
 
 // A player must do the action of adding a rack
@@ -95,6 +95,6 @@ if (isDedicated) then {
     _player = acre_player;
 };
 
-[QGVAR(addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
+[QEGVAR(api,addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
 
 true
