@@ -54,29 +54,23 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
     // Rack radios in intercom, RX/TX functionality
     if ((_radio in ACRE_ACCESSIBLE_RACK_RADIOS || _radio in ACRE_HEARABLE_RACK_RADIOS) && {[_radio, acre_player] call EFUNC(sys_rack,isRadioHearable)}) then {
         private _functionality = [_radio, vehicle acre_player, acre_player] call EFUNC(sys_intercom,getRackRxTxCapabilities);
+        private _displayText = "";
         switch (_functionality) do {
             case RACK_NO_MONITOR: {
                 WARNING_1("Entered no monitor in ace interaction menu for radio %1", _radio);
             };
             case RACK_RX_ONLY: {
-                _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_TX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
-                _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
+                _displayText = localize ELSTRING(sys_intercom,recOnly);
             };
             case RACK_TX_ONLY: {
-                _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
-                _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
+                _displayText = localize ELSTRING(sys_intercom,transOnly);
             };
             case RACK_RX_AND_TX: {
-                _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
-                _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_TX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
+                _displayText = localize ELSTRING(sys_intercom,recAndTrans);
             };
         };
+        private _action = ["acre_rxtx_functionality", _displayText, "", {}, {true}, {_this call FUNC(generateRxTxChildrenActions);}, _params + [_functionality]] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
     };
 
     private _idx = _pttAssign find _radio;

@@ -9,6 +9,7 @@ PREP(initVehicleIntercom);
 PREP(intercomAction);
 PREP(intercomChildrenActions);
 PREP(intercomListChildrenActions);
+PREP(intercomListRxTxActions);
 PREP(intercomListVolumeActions);
 PREP(intercomPFH);
 PREP(isIntercomAvailable);
