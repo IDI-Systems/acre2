@@ -61,7 +61,7 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
         private _displayText = "";
         switch (_functionality) do {
             case INTERCOM_DISCONNECTED: {
-                WARNING_1("Entered no monitor in ace interaction menu for radio %1", _radio);
+                WARNING_1("Entered disconnected state in ace interaction menu for intercom", _intercomNetwork);
             };
             case INTERCOM_RX_ONLY: {
                 _displayText = localize LSTRING(recOnly);
