@@ -30,7 +30,7 @@ if (_playerOwnsRadio) then {
         _string = localize LSTRING(giveHandset)
     };
     private _action = [
-        "acre_give_externalRadio",
+        QGVAR(giveRadio),
         _string,
         "",
         {[(_this select 2) select 0, _target] call FUNC(stopUsingExternalRadio)},
@@ -45,7 +45,7 @@ if (_playerOwnsRadio) then {
         _string =  localize LSTRING(takeHandset)
     };
     private _action = [
-        "acre_use_externalRadio",
+        QGVAR(useRadio),
         _string,
         "",
         {[(_this select 2) select 0, acre_player] call FUNC(startUsingExternalRadio)},
@@ -63,7 +63,7 @@ if ([(_this select 2) select 0, _target] call FUNC(checkReturnGive)) then {
         _string =  localize LSTRING(returnHandset)
     };
     private _action = [
-        "acre_return_externalRadio",
+        QGVAR(returnRadio),
         _string,
         "",
         {[(_this select 2) select 0, _target] call FUNC(stopUsingExternalRadio)},
@@ -78,7 +78,7 @@ if ([(_this select 2) select 0, _target] call FUNC(checkReturnGive)) then {
         _string = localize LSTRING(giveHandset)
     };
     private _action = [
-        "acre_give_externalRadio",
+        QGVAR(giveRadio),
         _string,
         "",
         {[(_this select 2) select 0, _target] call FUNC(stopUsingExternalRadio)},
