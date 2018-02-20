@@ -42,7 +42,7 @@ if (isDedicated) then {
     _player = acre_player;
 };
 
-[QGVAR(initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
+[QEGVAR(sys_rack,initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
 
 
 true

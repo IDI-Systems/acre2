@@ -33,6 +33,6 @@ if (isDedicated) then {
     _player = acre_player;
 };
 
-[QGVAR(unmountRackRadio), [_rackId, _radioId], _player] call CBA_fnc_targetEvent;
+[QEGVAR(sys_rack,unmountRackRadio), [_rackId, _radioId], _player] call CBA_fnc_targetEvent;
 
 true
