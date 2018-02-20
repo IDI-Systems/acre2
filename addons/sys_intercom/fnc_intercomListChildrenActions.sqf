@@ -25,7 +25,7 @@ private _actions = [];
 if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS] call FUNC(getStationConfiguration)) then {
     if (INTERCOM_DISCONNECTED == [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration)) then {
         private _action = [
-            format ["acre_connect_%1", _intercomName],
+            format [QGVAR(connect_%1), _intercomName],
             localize LSTRING(connect),
             "",
             {
@@ -42,7 +42,7 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
         _actions pushBack [_action, [], _target];
     } else {
         private _action = [
-            format ["acre_disconnect_%1", _intercomName],
+            format [QGVAR(disconnect_%1), _intercomName],
             localize LSTRING(disconnect),
             "",
             {
@@ -73,29 +73,29 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
                 _displayText = localize LSTRING(recAndTrans);
             };
         };
-        _action = ["acre_intercom_RxTxFunctionality", _displayText, "", {true}, {true}, {_this call FUNC(intercomListRxTxActions)}, [_intercomNetwork, _functionality]] call ace_interact_menu_fnc_createAction;
+        _action = [QGVAR(rxTxFunctionality), _displayText, "", {true}, {true}, {_this call FUNC(intercomListRxTxActions)}, [_intercomNetwork, _functionality]] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
 
         private _voiceActivation = [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call FUNC(getStationConfiguration);
         if (_voiceActivation) then {
-            _action = ["acre_pttActivation", localize LSTRING(pttActivation), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_VOICEACTIVATION, false] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+            _action = [QGVAR(pttActivation_false), localize LSTRING(pttActivation), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_VOICEACTIVATION, false] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
         } else {
-            _action = ["acre_pttActivation", localize LSTRING(voiceActivation), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_VOICEACTIVATION, true] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+            _action = [QGVAR(pttActivation_true), localize LSTRING(voiceActivation), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_VOICEACTIVATION, true] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
         };
         _actions pushBack [_action, [], _target];
 
         if ([_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_MASTERSTATION] call FUNC(getStationConfiguration)) then {
             ((_target getVariable [QGVAR(broadcasting), [false, objNull]]) select _intercomNetwork) params ["_isBroadcasting", "_broadcastingUnit"];
             if (_isBroadcasting) then {
-                _action = ["acre_stopBroadcast", localize LSTRING(stopBroadcast), "", {[_target, _player, _this select 2, false] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = [QGVAR(stopBroadcast), localize LSTRING(stopBroadcast), "", {[_target, _player, _this select 2, false] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
             } else {
-                _action = ["acre_startBroadcast", localize LSTRING(startBroadcast), "", {[_target, _player, _this select 2, true] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = [QGVAR(acre_startBroadcast), localize LSTRING(startBroadcast), "", {[_target, _player, _this select 2, true] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
             };
             _actions pushBack [_action, [], _target];
         };
 
         _action = [
-            format ["acre_intercom_%1_volume", _intercomName],
+            format [QGVAR(%1_volume), _intercomName],
             localize LSTRING(volume),
             "",
             {true},

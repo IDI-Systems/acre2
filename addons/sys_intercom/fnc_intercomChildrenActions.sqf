@@ -24,7 +24,7 @@ private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
 {
     (_intercomNames select _forEachIndex) params ["_intercomName", "", "_intercomShortName"];
     private _action = [
-        format ["acre_intercom_%1", _intercomName],
+        format [QGVAR(_intercom_%1), _intercomName],
         _intercomShortName,
         "",
         {true},
