@@ -28,7 +28,7 @@ HASH_SET(_channel,"frequencyTX",30);
 HASHLIST_PUSH(_channels,_channel);
 
 _channel = HASHLIST_CREATEHASH(_channels); // 2nd Preset button
-HASH_SET(_channel,"frequencyTX",30);
+HASH_SET(_channel,"frequencyTX",30.50);
 HASHLIST_PUSH(_channels,_channel);
 
 HASH_SET(_presetData,"channels",_channels);
