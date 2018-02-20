@@ -24,21 +24,21 @@ private _actions  = [];
 
 switch (_functionality) do {
     case RACK_RX_ONLY: {
-        private _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_TX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        private _action = [QGVAR(txOnly), localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_TX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
-        _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        _action = [QGVAR(rxAndTx), localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
     case RACK_TX_ONLY: {
-        private _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        private _action = [QGVAR(rxOnly), localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
-        _action = ["acre_rec_and_trans", localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        _action = [QGVAR(rxAndTx), localize ELSTRING(sys_intercom,recAndTrans), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
     case RACK_RX_AND_TX: {
-        private _action = ["acre_rec_only", localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        private _action = [QGVAR(rxOnly), localize ELSTRING(sys_intercom,recOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_RX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
-        _action = ["acre_trans_only", localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_TX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        _action = [QGVAR(txOnly), localize ELSTRING(sys_intercom,transOnly), "", {[(_this select 2) select 0, vehicle acre_player, acre_player, RACK_TX_ONLY] call EFUNC(sys_intercom,setRackRxTxCapabilities)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
 };
