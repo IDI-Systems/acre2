@@ -34,7 +34,7 @@ if (_replacementId != "") then {
     HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
 };
 
- //TODO: test this works.
+// To further check. No isses found.
 private _crewPlayers = (crew _entity) select {isPlayer _x};
 private _condition = false;
 if (count _crewPlayers > 0) then {
@@ -42,12 +42,12 @@ if (count _crewPlayers > 0) then {
         _condition = true;
     };
 } else {
+    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
     // FallBack to server.
-    if (isServer) then {
+    if (local _player) then {
         _condition = true;
     };
 };
-
 
 if (_condition) then {
     //Add to vehicle
