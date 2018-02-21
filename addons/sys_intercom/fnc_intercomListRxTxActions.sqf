@@ -34,7 +34,7 @@ switch (_functionality) do {
         _actions pushBack [_action, [], _target];
     };
     case INTERCOM_TX_ONLY: {
-        private _action = [QEGVAR(rxOnly), localize LSTRING(recOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+        private _action = [QGVAR(rxOnly), localize LSTRING(recOnly), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_ONLY] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
         _action = [QGVAR(rxAndTx), localize LSTRING(recAndTrans), "", {[_target, _player, _this select 2, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX] call FUNC(setStationConfiguration)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
