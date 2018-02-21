@@ -27,7 +27,7 @@ class Extended_DisplayLoad_EventHandlers {
         ADDON = QUOTE(_this call FUNC(arsenalOpen));
     };
     class RscDisplayEGSpectator {
-        ADDON = QUOTE(_this call COMPILE_FILE(XEH_spectatorEGDisplayLoad));
+        ADDON = QUOTE(_this call FUNC(spectatorEGDisplayLoad));
     };
 };
 
@@ -36,6 +36,6 @@ class Extended_DisplayUnload_EventHandlers {
         ADDON = QUOTE(_this call FUNC(arsenalClose));
     };
     class RscDisplayEGSpectator {
-        ADDON = QUOTE(_this call COMPILE_FILE(XEH_spectatorEGDisplayUnload));
+        ADDON = QUOTE(_this call FUNC(spectatorEGDisplayUnload));
     };
 };
