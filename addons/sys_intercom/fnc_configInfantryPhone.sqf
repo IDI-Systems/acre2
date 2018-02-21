@@ -45,12 +45,15 @@ private _configHelper = {
             private _found = false;
             private _intercom = _vehicle getVariable [QGVAR(intercomNames), []];
             {
-                if !(_x in _intercom) then {
+                private _entry = _x;
+                {
+                    if (_entry in _x) exitWith {
+                        _found = true;
+                    }
+                } forEach _intercom;
+                if (!found) then {
                     WARNING_3("Intercom %1 in %2 for vehicle type %3 is not found as a valid intercom identifier",_x,_configEntry,_type);
-                } else {
-                    _found = true;
                 };
-                if (_found) exitWith {};
             } forEach _configArray;
         };
     };
