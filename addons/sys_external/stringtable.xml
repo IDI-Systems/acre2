@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_external">
         <Key ID="STR_ACRE_sys_external_externalRadios">
@@ -14,28 +14,28 @@
             <Portuguese>Rádios Compartilhados</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_shareRadio">
-            <English>Share Radio</English>
-            <Spanish>Compartir radio</Spanish>
-            <German>Radio teilen</German>
-            <Japanese>無線機の共有</Japanese>
-            <Russian>Передать рацию</Russian>
-            <Polish>Udostępnij radio</Polish>
-            <Chinese>共用無線電</Chinese>
-            <Chinesesimp>共用无线电</Chinesesimp>
-            <Korean>무전기 공유</Korean>
-            <Portuguese>Compartilhar Rádios</Portuguese>
+            <English>Share</English>
+            <Spanish>Compartir</Spanish>
+            <German>Teilen</German>
+            <Japanese>共有</Japanese>
+            <Russian>Передать</Russian>
+            <Polish>Udostępnij</Polish>
+            <Chinese>共用</Chinese>
+            <Chinesesimp>共用</Chinesesimp>
+            <Korean>공유</Korean>
+            <Portuguese>Compartilhar</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_unshareRadio">
-            <English>Unshare Radio</English>
-            <Spanish>No compartir radio</Spanish>
-            <German>Radio nicht teilen</German>
-            <Japanese>無線機の共有解除</Japanese>
-            <Russian>Забрать рацию</Russian>
-            <Polish>Wył. udostępnianie</Polish>
-            <Chinese>取消共用無線電</Chinese>
-            <Chinesesimp>取消共用无线电</Chinesesimp>
-            <Korean>무전기 공유 해제</Korean>
-            <Portuguese>Descompartilhar Rádios</Portuguese>
+            <English>Unshare</English>
+            <Spanish>No compartir</Spanish>
+            <German>Nicht teilen</German>
+            <Japanese>共有解除</Japanese>
+            <Russian>Забрать</Russian>
+            <Polish>Wył.</Polish>
+            <Chinese>取消共用</Chinese>
+            <Chinesesimp>取消共用</Chinesesimp>
+            <Korean>공유 해제</Korean>
+            <Portuguese>Descompartilhar</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHandset">
             <English>Take Handset</English>

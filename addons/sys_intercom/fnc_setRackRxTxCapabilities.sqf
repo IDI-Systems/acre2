@@ -42,4 +42,4 @@ if (_rackId isEqualTo "") then {
 
 _vehicle setVariable [_varName, _rackConfiguration, true];
 
-[_vehicle, _unit] call FUNC(vehicleInfoLine);
+[_vehicle, _unit] call FUNC(updateVehicleInfoText);
