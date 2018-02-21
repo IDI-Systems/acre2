@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Initialize volume control and vehicle info UI.
+ * Initialize volume control UI.
  *
  * Arguments:
  * Display <DISPLAY>
