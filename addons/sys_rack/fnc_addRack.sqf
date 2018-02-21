@@ -4,7 +4,7 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECt>
- * 1: Classname of rack (Without ID) <TYPE>
+ * 1: Base classname of the rack (Without ID) <STRING>
  * 2: Rackname - this is diplayed to the user. Ideally short <STRING>
  * 3: Rack short name - displayed in GUI information. Max 4 characters <STRING>
  * 4: Is mounted radio removable <BOOLEAN> (default: true)

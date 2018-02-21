@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [vehicle] call acre_sys_ace_interact_fnc_initVehicle
+ * [vehicle] call acre_sys_rack_fnc_initActionVehicle
  *
  * Public: No
  */

@@ -28,7 +28,7 @@ if (_target isKindOf "CAManBase") then {
     if (!isNull _vehicleInfantryPhone) then {
         // Generate the action to give the intercom
         private _action = [
-            "acre_give_infantryTelephone",
+            QGVAR(giveInfantryPhone),
             localize LSTRING(giveInfantryPhone),
             "",
             {
@@ -50,8 +50,8 @@ if (_target isKindOf "CAManBase") then {
         if (isNull _vehicleInfantryPhone) then {
             {
                 private _action = [
-                    format ["acre_take_infantryTelephone_%1", _x],
-                    format [localize LSTRING(takeInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 1]],
+                    format [QGVAR(takeInfantryPhone_%1), _x],
+                    format [localize LSTRING(takeInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 2]],
                     "",
                     {
                         params ["_target", "_player", "_params"];
@@ -74,7 +74,7 @@ if (_target isKindOf "CAManBase") then {
             if (_vehicleInfantryPhone == _target) then {
                 // Generate the action to return the infantry telephone
                 private _action = [
-                    "acre_return_infantryTelephone",
+                    QGVAR(returnInfantryPhone),
                     format [localize LSTRING(returnInfantryPhone)],
                     "",
                     {
@@ -92,8 +92,8 @@ if (_target isKindOf "CAManBase") then {
                 // Generate actions to switch intercom
                 {
                     _action = [
-                        format ["acre_switch_infantryTelephone_%1", _x],
-                        format [localize LSTRING(switchInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 1]],
+                        format [QGVAR(switchInfantryPhone_%1), _x],
+                        format [localize LSTRING(switchInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 2]],
                         "",
                         {
                             params ["_target", "_player", "_params"];
@@ -121,7 +121,7 @@ if (_target isKindOf "CAManBase") then {
 
         if (_isCalling select 0) then {
             private _action = [
-                "acre_infantryTelephone_stopCalling",
+                QGVAR(infantryPhoneStopCalling),
                 localize LSTRING(infantryPhone_stopCalling),
                 "",
                 {
@@ -138,8 +138,8 @@ if (_target isKindOf "CAManBase") then {
             if (isNull _vehicleInfantryPhone && {!(_target getVariable [QGVAR(infPhoneDisableRinging), false])}) then {
                 {
                     private _action = [
-                        format ["acre_infantryTelephone_startCalling_%1", _x],
-                        format [localize LSTRING(infantryPhone_startCalling), format["(%1)", (_intercomNames select _forEachIndex) select 1]],
+                        format [QGVAR(infantryPhoneStopCalling_%1), _x],
+                        format [localize LSTRING(infantryPhone_startCalling), format["(%1)", (_intercomNames select _forEachIndex) select 2]],
                         "",
                         {
                              params ["_target", "_player", "_params"];

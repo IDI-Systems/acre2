@@ -7,22 +7,22 @@ class CfgVehicles {
     RADIO_ID_LIST(ACRE_VRC64)
 
     class ACRE_VRC110 : ACRE_BaseRack {
-        displayName = "AN/VRC-110 Rack";
+        displayName = "AN/VRC-110";
     };
     RADIO_ID_LIST(ACRE_VRC110)
 
     class ACRE_VRC103 : ACRE_BaseRack {
-        displayName = "AN/VRC-103 Rack";
+        displayName = "AN/VRC-103";
     };
     RADIO_ID_LIST(ACRE_VRC103)
 
     class ACRE_VRC111 : ACRE_BaseRack {
-        displayName = "AN/VRC-111 Rack";
+        displayName = "AN/VRC-111";
     };
     RADIO_ID_LIST(ACRE_VRC111)
 
     class ACRE_SEM90 : ACRE_BaseRack {
-        displayName = "SEM90 Rack";
+        displayName = "SEM90";
     };
     RADIO_ID_LIST(ACRE_SEM90)
 

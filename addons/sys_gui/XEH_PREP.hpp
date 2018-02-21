@@ -1,3 +1,5 @@
+PREP(missionDisplayLoad);
+
 // Volume control
 PREP(openVolumeControl);
 PREP(closeVolumeControl);

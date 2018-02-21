@@ -31,4 +31,4 @@ if ([_radioId, _unit] call FUNC(isRadioHearable)) then {
 [_radioId] call EFUNC(sys_radio,stopUsingRadio);
 
 // Update the display
-[_vehicle, _unit] call EFUNC(sys_intercom,vehicleInfoLine);
+[_vehicle, _unit] call EFUNC(sys_intercom,updateVehicleInfoText);
