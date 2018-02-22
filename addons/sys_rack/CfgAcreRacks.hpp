@@ -21,7 +21,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(vrc64MountRadio);
                 unmountRadio                = QFUNC(vrc64UnmountRadio);
@@ -57,7 +57,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(vrc110MountRadio);
                 unmountRadio                = QFUNC(vrc110UnmountRadio);
@@ -95,7 +95,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(vrc103MountRadio);
                 unmountRadio                = QFUNC(vrc103UnmountRadio);
@@ -131,7 +131,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(vrc111MountRadio);
                 unmountRadio                = QFUNC(vrc111UnmountRadio);
@@ -167,7 +167,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(sem90MountRadio);
                 unmountRadio                = QFUNC(sem90UnmountRadio);

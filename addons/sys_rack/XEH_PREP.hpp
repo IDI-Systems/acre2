@@ -1,3 +1,6 @@
+// Components
+PREP(attachComponent);
+
 PREP(initActionVehicle);
 PREP(generateMountableRadioActions);
 PREP(rackChildrenActions);
