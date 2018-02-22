@@ -1,0 +1,20 @@
+CM Antenna for AN/VRC-64 (AN/PRC-77 Rack)
+CM 
+CM 
+CM 
+CM 
+CM forw: 0, 0 ; back: 0, 180
+CE
+GW 1 9 0 0 0 0 0 0.362 .007
+GW 2 9 0 0 0.362 0 0 2.012 0.015
+GW 3 9 0 0 2.012 0 0 3.392 0.015
+GE 1
+LD 4 2 9 9 50
+LD 4 3 9 9 125
+GN 1
+EK
+EX 0 1 1 0 1 0 0
+FR 0 1 0 0 30 0
+XQ
+FR 0 56 0 0 30 1
+RP 0 37 73 1000 -90 0 5 5

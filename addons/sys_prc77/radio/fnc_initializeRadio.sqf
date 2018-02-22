@@ -71,7 +71,7 @@ HASH_SET(_radioData,"radioOn",1); //0 - OFF, 1 - ON
 HASH_SET(_radioData,"band",_band); //{0,1}
 HASH_SET(_radioData,"currentPreset",[ARR_2(_knobPositions,_secondPresetKnobPositions)]); //Array of Presetarrays (KnobPositions)
 HASH_SET(_radioData,"currentChannel",_knobPositions);
-
+HASH_SET(_radioData,"powerSource", "BAT");
 
 //Common Channel Settings
 HASH_SET(_radioData,"frequencyTX",_frequencyTx);
