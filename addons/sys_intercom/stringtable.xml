@@ -265,7 +265,7 @@
             <English>Start Broadcast</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
-            <English>Stop Sroadcast</English>
+            <English>Stop Broadcast</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_pttActivation">
             <English>PTT Activation</English>
