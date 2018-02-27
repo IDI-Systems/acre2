@@ -46,7 +46,7 @@ if (_target isKindOf "CAManBase") then {
     };
 } else {
     if (vehicle acre_player != _target) then {
-        // Pointing at a vehicle. Get or return the infantry telelphone
+        // Pointing at a vehicle. Get or return the infantry telephone
         if (isNull _vehicleInfantryPhone) then {
             {
                 private _action = [
@@ -138,7 +138,7 @@ if (_target isKindOf "CAManBase") then {
             if (isNull _vehicleInfantryPhone && {!(_target getVariable [QGVAR(infPhoneDisableRinging), false])}) then {
                 {
                     private _action = [
-                        format [QGVAR(infantryPhoneStopCalling_%1), _x],
+                        format [QGVAR(infantryPhoneStartCalling_%1), _x],
                         format [localize LSTRING(infantryPhone_startCalling), format["(%1)", (_intercomNames select _forEachIndex) select 2]],
                         "",
                         {
