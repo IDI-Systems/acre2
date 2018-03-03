@@ -17,11 +17,12 @@
 
 TRACE_1("enter", _this);
 
-params ["_dir"];
+//params ["_dir"];
 
-acre_player setVariable [QEGVAR(sys_core,antennaDirUp), true, true];
+private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
 
-
-if (_dir == 0) then {
-    acre_player setVariable [QEGVAR(sys_core,antennaDirUp), false, true];
+if (_dir) then {
+	acre_player setVariable [QEGVAR(sys_core,antennaDirUp), false, true];
+} else {
+	acre_player setVariable [QEGVAR(sys_core,antennaDirUp), true, true];
 };
