@@ -95,7 +95,7 @@ _intercoms = _intercoms apply {toLower _x};
     } else {
         _player = acre_player;
     };
-    systemChat format ["player %1", _player];
+
     !isNil "_player"
 }, {
     params ["_vehicle", "_rackClassname", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents","_intercoms"];
