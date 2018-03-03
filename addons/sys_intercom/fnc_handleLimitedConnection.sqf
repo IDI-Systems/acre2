@@ -17,20 +17,26 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle", "_intercomNetwork", "_connected"];
+params ["_vehicle", "_intercomNetwork", "_newConnectedStatus", "_oldConnectedStatus"];
 
 private _numLimitedPositions = (_vehicle getVariable [QGVAR(numLimitedPositions), []]);
 private _num = _numLimitedPositions select _intercomNetwork;
 
 private _success = false;
-if (_connected > INTERCOM_DISCONNECTED) then {
-    if (_num > 0) then {
-        _numLimitedPositions set [_intercomNetwork, _num - 1];
-        _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions, true];
-
-        _success = true;
+if (_newConnectedStatus > INTERCOM_DISCONNECTED) then {
+    if (_oldConnectedStatus > INTERCOM_DISCONNECTED) then {
+        // Unit is already connected
+        _success =  true;
     } else {
-        [localize LSTRING(maxConnections), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        // Unit is connecting. Check if there are still available connections
+        if (_num > 0) then {
+            _numLimitedPositions set [_intercomNetwork, _num - 1];
+            _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions, true];
+
+            _success = true;
+        } else {
+            [localize LSTRING(maxConnections), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        };
     };
 } else {
     _numLimitedPositions set [_intercomNetwork, _num + 1];
