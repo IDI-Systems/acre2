@@ -5,7 +5,8 @@
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
  * 1: Intercom network <NUMBER>
- * 2: Connected <BOOL>
+ * 2: Connection status <NUMBER>
+ * 3: Previous connection status <NUMBER>
  *
  * Return Value:
  * Success <BOOL>
