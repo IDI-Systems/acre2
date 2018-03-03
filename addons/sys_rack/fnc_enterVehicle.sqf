@@ -23,11 +23,10 @@ if (_unit != _vehicle) then {
 
     if (!_initialized) then {
         // Only initialize if we are first in the crew array - This helps prevent multiple requests if multiple players enter a vehicle around the same time.
-        private _crew = crew _vehicle;
+        private _crew = [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
         private _firstPlayer = objNull;
         {
-            if (!isNull _firstPlayer) exitWith {};
-            if (isPlayer _x) exitWith {
+            if (!isNull _x) exitWith {
                 _firstPlayer = _x;
             };
         } forEach _crew;
