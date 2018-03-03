@@ -15,4 +15,5 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgVolumeControl.hpp"
+#include "CfgRscTitles.hpp"
+#include "CfgUIGrids.hpp"

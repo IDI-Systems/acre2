@@ -2,8 +2,9 @@
 #define COMPONENT_BEAUTIFIED Vehicle Intercom
 #include "\idi\acre\addons\main\script_mod.hpp"
 
-// #define DRAW_INFANTRYPHONE_INFO
-// #define DRAW_CURSORPOS_INFO
+// #define DRAW_INFANTRYPHONE_INFO // Draws infantry phone position
+// #define DRAW_CURSORPOS_INFO // Draws cursor position and intersection with object
+// #define DEBUG_VEHICLE_INFO // Uses a long dummy vehicle info line
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
@@ -18,13 +19,13 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 #include "script_acre_rackIntercom_defines.hpp"
+#include "script_acre_intercom_defines.hpp"
 
 #define PHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
 #define PHONE_MAXDISTANCE_HULL    3
 
-#define INTERCOM_DISCONNECTED   0
-#define INTERCOM_CONNECTED      1
-#define INTERCOM_DEFAULT_VOLUME 1
+#define PTT_ACTION       0
+#define BROADCAST_ACTION 1
 
 // Infantry phone default configuration (fnc_infantryPhoneRingingPFH.sqf)
 #define INFANTRY_PHONE_SOUNDFILE QPATHTO_R(sounds\Cellphone_Ring.wss);

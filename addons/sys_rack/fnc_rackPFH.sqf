@@ -27,7 +27,7 @@ if (_player != vehicle _player) then {
     {
         private _radioId = [_x] call FUNC(getMountedRadio);
         if (_radioId != "" && {!(_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS)}) then {
-            private _functionality = [_radioId, _vehicle, _player, _x] call EFUNC(sys_intercom,getRxTxCapabilities);
+            private _functionality = [_radioId, _vehicle, _player, _x] call EFUNC(sys_intercom,getRackRxTxCapabilities);
             if (_functionality != RACK_NO_MONITOR) then {
                 // Add the radio to the active list since it is already active in the intercom system
                 [_vehicle, _player, _radioId] call FUNC(startUsingMountedRadio);
@@ -48,7 +48,7 @@ private _remove = [];
 
     // Check only those radios connected on intercom systems
     if (count ([_rack] call FUNC(getWiredIntercoms)) > 0 && _isRackHearable) then {
-        private _functionality = [_x, _vehicle, _player, _rack] call EFUNC(sys_intercom,getRxTxCapabilities);
+        private _functionality = [_x, _vehicle, _player, _rack] call EFUNC(sys_intercom,getRackRxTxCapabilities);
 
         if (_functionality == RACK_NO_MONITOR) then {_remove pushBackUnique _x;};
     };

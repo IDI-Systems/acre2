@@ -9,7 +9,7 @@
  * Array of intercom unique names
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_fnc_getWiredIntercom
+ * ["acre_vrc103_id_1"] call acre_sys_rack_fnc_getWiredIntercoms
  *
  * Public: No
  */

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="ace_interact">
         <Key ID="STR_ACRE_ace_interact_radios">
@@ -14,6 +14,7 @@
             <Russian>Рации</Russian>
             <Chinese>無線電</Chinese>
             <Chinesesimp>无线电</Chinesesimp>
+            <Portuguese>Rádios</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelShort">
             <English>%1 Chn: %2</English>
@@ -28,6 +29,7 @@
             <Russian>%1 Канал: %2</Russian>
             <Chinese>%1 頻道: %2</Chinese>
             <Chinesesimp>%1 频道: %2</Chinesesimp>
+            <Portuguese>%1 Cnl: %2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_lowerHeadset">
             <English>Lower Headset</English>
@@ -42,6 +44,7 @@
             <Russian>Опустить наушники</Russian>
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
+            <Portuguese>Abaixar Fones</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_raiseHeadset">
             <English>Raise Headset</English>
@@ -56,6 +59,22 @@
             <Russian>Поднять наушники</Russian>
             <Chinese>戴上耳機</Chinese>
             <Chinesesimp>戴上耳机</Chinesesimp>
+            <Portuguese>Levantar Fones</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_ace_interact_openRadio">
+            <English>Open</English>
+            <Czech>Otevřít</Czech>
+            <German>Öffnen</German>
+            <Russian>Открыть</Russian>
+            <Polish>Otwórz</Polish>
+            <Italian>Apri</Italian>
+            <Spanish>Abrir</Spanish>
+            <French>Ouvrir</French>
+            <Japanese>開く</Japanese>
+            <Chinese>打開</Chinese>
+            <Chinesesimp>打开</Chinesesimp>
+            <Korean>열기</Korean>
+            <Portuguese>Abrir</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bothEars">
             <English>Both Ears</English>
@@ -70,6 +89,7 @@
             <Russian>Оба уха</Russian>
             <Chinese>雙耳模式</Chinese>
             <Chinesesimp>双耳模式</Chinesesimp>
+            <Portuguese>Ambas Orelhas</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_leftEar">
             <English>Left Ear</English>
@@ -84,6 +104,7 @@
             <Russian>Левое ухо</Russian>
             <Chinese>左耳模式</Chinese>
             <Chinesesimp>左耳模式</Chinesesimp>
+            <Portuguese>Orelha Esquerda</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_rightEar">
             <English>Right Ear</English>
@@ -98,6 +119,7 @@
             <Russian>Правое ухо</Russian>
             <Chinese>右耳模式</Chinese>
             <Chinesesimp>右耳模式</Chinesesimp>
+            <Portuguese>Orelha Direita</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsActive">
             <English>Set as Active</English>
@@ -112,34 +134,37 @@
             <Russian>Сделать активным</Russian>
             <Chinese>設為啟用</Chinese>
             <Chinesesimp>设为启用</Chinesesimp>
+            <Portuguese>Difinir Como Ativo</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bindMultiPushToTalk">
-            <English>Bind Multi Push To Talk</English>
-            <Spanish>Definir como Multi Push To Talk</Spanish>
+            <English>Bind Multi PTT</English>
+            <Spanish>Definir como Multi PTT</Spanish>
             <German>Sprechtasten festlegen</German>
             <Japanese>マルチ プッシュ トークに割当</Japanese>
-            <Czech>Přiřadit klávesu pro Multi Push To Talk</Czech>
-            <Italian>Imposta Multi-PTT</Italian>
-            <French>Définir Multi Push To Talk</French>
+            <Czech>Přiřadit klávesu pro Multi PTT</Czech>
+            <Italian>Imposta Multi PTT</Italian>
+            <French>Définir Multi PTT</French>
             <Korean>멀티 PTT 설정</Korean>
             <Polish>Ustaw klawisz PTT</Polish>
             <Russian>Назначить общую ПТТ</Russian>
             <Chinese>綁定多個按鍵發話</Chinese>
             <Chinesesimp>绑定多个按键发话</Chinesesimp>
+            <Portuguese>Ligar Multi PTT</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_multiPushToTalk">
-            <English>Multi Push To Talk-%1</English>
-            <Spanish>Multi Push To Talk-%1</Spanish>
+            <English>Multi PTT %1</English>
+            <Spanish>Multi PTT %1</Spanish>
             <German>Sprechtaste %1</German>
-            <Japanese>マルチ プッシュ トーク-%1</Japanese>
-            <Czech>Multi Push To Talk-%1</Czech>
-            <Italian>Multi Push To Talk-%1</Italian>
-            <French>Multi Push To Talk-%1</French>
-            <Korean>멀티 PTT-%1</Korean>
-            <Polish>Klawisz PTT: %1</Polish>
-            <Russian>Общая ПТТ-%1</Russian>
-            <Chinese>多個發話-%1</Chinese>
-            <Chinesesimp>多个发话-%1</Chinesesimp>
+            <Japanese>マルチ プッシュ トーク %1</Japanese>
+            <Czech>Multi PTT %1</Czech>
+            <Italian>Multi PTT %1</Italian>
+            <French>Multi PTT %1</French>
+            <Korean>멀티 PTT %1</Korean>
+            <Polish>Klawisz PTT %1</Polish>
+            <Russian>Общая ПТТ %1</Russian>
+            <Chinese>多個發話 %1</Chinese>
+            <Chinesesimp>多个发话 %1</Chinesesimp>
+            <Portuguese>Multi PTT %1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsMultiPTT">
             <English>Set as Multi PTT %1</English>
@@ -154,6 +179,7 @@
             <Russian>Назначить как общую ПТТ %1</Russian>
             <Chinese>設定多個發話 %1</Chinese>
             <Chinesesimp>设定多个发话 %1</Chinesesimp>
+            <Portuguese>Definir Como Multi PTT %1</Portuguese>
         </Key>
     </Package>
 </Project>

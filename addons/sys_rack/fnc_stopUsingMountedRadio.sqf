@@ -25,7 +25,10 @@ if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS) then {
 
 // Set intercom configuration to no monitoring.
 if ([_radioId, _unit] call FUNC(isRadioHearable)) then {
-    [_radioId, _vehicle, _unit, RACK_NO_MONITOR] call EFUNC(sys_intercom,setRxTxCapabilities);
+    [_radioId, _vehicle, _unit, RACK_NO_MONITOR] call EFUNC(sys_intercom,setRackRxTxCapabilities);
 };
 
 [_radioId] call EFUNC(sys_radio,stopUsingRadio);
+
+// Update the display
+[_vehicle, _unit] call EFUNC(sys_intercom,updateVehicleInfoText);

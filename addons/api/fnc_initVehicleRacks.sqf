@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Initialises all racks in the vehicle.
+ * Initialises all racks in the vehicle. Must be executed in the server.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
@@ -17,25 +17,32 @@
 
 params [["_vehicle", objNull]];
 
+if (!isServer) exitWith {
+    WARNING("Function must be called on the server.");
+    false
+};
+
 if (isNull _vehicle) exitWith {
     WARNING_1("Trying to initialize undefined vehicle %1",format ["%1", _vehicle]);
     false
 };
 
-[_vehicle] call EFUNC(sys_rack,initVehicle);
-
-// Some classes are initialised automatically. Only initialise ACE interaction if the vehicle does not belong to
-// any of these classes
-private _found = false;
-private _automaticInitClasses = ["LandVehicle", "Air", "Ship_F"];
-{
-    if (_vehicle isKindOf _x) exitWith {
-        _found = true;
-    };
-} forEach _automaticInitClasses;
-
-if (!_found) then {
-    [_vehicle] call EFUNC(sys_rack,initActionVehicle);
+if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
+    WARNING_1("Vehicle %1 is already initialised",format ["%1", _vehicle]);
+    false
 };
+
+// A player must do the action of initialising a rack
+private _player = objNull;
+
+if (isDedicated) then {
+    // Pick the first player
+    _player = (allPlayers - entities "HeadlessClient_F") select 0;
+} else {
+    _player = acre_player;
+};
+
+[QEGVAR(sys_rack,initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
+
 
 true
