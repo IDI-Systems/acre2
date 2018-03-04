@@ -22,7 +22,7 @@ TRACE_1("enter", _this);
 private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
 
 if (_dir) then {
-	acre_player setVariable [QEGVAR(sys_core,antennaDirUp), false, true];
+    acre_player setVariable [QEGVAR(sys_core,antennaDirUp), false, true];
 } else {
-	acre_player setVariable [QEGVAR(sys_core,antennaDirUp), true, true];
+    acre_player setVariable [QEGVAR(sys_core,antennaDirUp), true, true];
 };
