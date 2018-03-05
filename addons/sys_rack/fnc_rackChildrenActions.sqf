@@ -30,9 +30,6 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
         if ([_rackClassName] call FUNC(isRadioRemovable)) then {
             private _action = [QGVAR(mountRadio), localize LSTRING(mountRadio), QPATHTOEF(ace_interact,data\icons\connector4.paa), {1+1;}, {true}, {_this call FUNC(generateMountableRadioActions);}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
-        } else {
-             private _action = [QGVAR(mountRadio), localize LSTRING(unmountable), "", {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-            _actions pushBack [_action, [], _target];
         };
     } else {
         private _class = configFile >> "CfgWeapons" >> _mountedRadio;
@@ -47,7 +44,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             }, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {
-            private _text = format [localize LSTRING(mountedRadio), getText (_class >> "displayName")];
+            private _text = format [localize LSTRING(unmountable), getText (_class >> "displayName")];
             private _action = [QGVAR(mountedRadio), _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
