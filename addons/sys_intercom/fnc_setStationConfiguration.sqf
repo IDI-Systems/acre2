@@ -45,7 +45,7 @@ switch (_intercomFunctionality) do {
     case INTERCOM_STATIONSTATUS_CONNECTION: {
         if !((_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_FORCEDCONNECTION) then {
             if ((_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_LIMITED) then {
-                _changed = [_vehicle, _intercomNetwork, _value] call FUNC(handleLimitedConnection);
+                _changed = [_vehicle, _intercomNetwork, _value, _oldValue] call FUNC(handleLimitedConnection);
             } else {
                 _changed = true;
             };
