@@ -85,16 +85,33 @@ private _allowed = [_vehicle, _allowed] call EFUNC(sys_core,processVehicleSystem
 private _disabled = [_vehicle, _disabled] call EFUNC(sys_core,processVehicleSystemAccessArray);
 _intercoms = _intercoms apply {toLower _x};
 
-// A player must do the action of adding a rack
-private _player = objNull;
+private _condition = {
+    // A player must do the action of adding a rack
+    private _player = objNull;
 
-if (isDedicated) then {
-    // Pick the first player
-    _player = (allPlayers - entities "HeadlessClient_F") select 0;
-} else {
-    _player = acre_player;
+    if (isDedicated) then {
+        // Pick the first player
+        _player = (allPlayers - entities "HeadlessClient_F") select 0;
+    } else {
+        _player = acre_player;
+    };
+
+    _player
 };
 
-[QEGVAR(sys_rack,addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
+[{
+    params ["_condition"];
+
+    private _player =  call _condition;
+
+    !isNil "_player"
+}, {
+    params ["_condition", "_vehicle", "_rackClassname", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents","_intercoms"];
+
+    // A player must do the action of adding a rack
+    private _player = call _condition;
+
+    [QEGVAR(sys_rack,addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
+}, [_condition, _vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms]] call CBA_fnc_waitUntilAndExecute;
 
 true

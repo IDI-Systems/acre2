@@ -28,9 +28,8 @@ HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
 private _vehicle = _rackObject;
 _vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
 
-
 // To further check. No isses found.
-private _crewPlayers = (crew _vehicle) select {isPlayer _x};
+private _crewPlayers =  [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
 private _condition = false;
 if (count _crewPlayers > 0) then {
     if (local (_crewPlayers select 0)) then {

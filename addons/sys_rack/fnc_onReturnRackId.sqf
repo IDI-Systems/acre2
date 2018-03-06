@@ -35,7 +35,7 @@ if (_replacementId != "") then {
 };
 
 // To further check. No isses found.
-private _crewPlayers = (crew _entity) select {isPlayer _x};
+private _crewPlayers = [_entity] call EFUNC(sys_core,getPlayersInVehicle);
 private _condition = false;
 if (count _crewPlayers > 0) then {
     if (local (_crewPlayers select 0)) then {
