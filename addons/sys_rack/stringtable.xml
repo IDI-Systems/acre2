@@ -11,13 +11,7 @@
             <Portuguese>Montar</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
-            <English>Unmountable (Locked)</English>
-            <German>Funkgerät fest verbaut</German>
-            <Japanese>搭載不可 (ロック済)</Japanese>
-            <Chinese>無法裝載 (已鎖定)</Chinese>
-            <Chinesesimp>无法装载 (已锁定)</Chinesesimp>
-            <Korean>분리불가(잠김)</Korean>
-            <Portuguese>Não Montavél (Trancado)</Portuguese>
+            <English>Unmountable (%1)</English>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount (%1)</English>
