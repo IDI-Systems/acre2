@@ -24,8 +24,7 @@ if (!hasInterface) exitWith {};
         } else {
             [PTT_ACTION] call FUNC(handlePttKeyPressUp);
         };
-    },
-    [52, [true, false, false]]
+    }
 ] call cba_fnc_addKeybind;
 
 [
@@ -39,8 +38,7 @@ if (!hasInterface) exitWith {};
         } else {
             [BROADCAST_ACTION] call FUNC(handlePttKeyPressUp);
         };
-    },
-    [52, [true, false, false]]
+    }
 ] call cba_fnc_addKeybind;
 
 ["ACRE2", "PreviousIntercom", (localize LSTRING(previousIntercom)), "", { [-1, true] call FUNC(switchIntercomFast) }, [51, [true, false, false]]] call cba_fnc_addKeybind;
