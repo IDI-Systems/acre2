@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
@@ -9,6 +9,7 @@
             <Chinesesimp>装载</Chinesesimp>
             <Korean>설치</Korean>
             <Portuguese>Montar</Portuguese>
+            <Polish>Zamontuj</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable (%1)</English>
@@ -21,6 +22,7 @@
             <Chinesesimp>卸载 (%1)</Chinesesimp>
             <Korean>분리 (%1)</Korean>
             <Portuguese>Desmontar (%1)</Portuguese>
+            <Polish>Wymontuj (%1)</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted (%1)</English>
@@ -30,6 +32,7 @@
             <Chinesesimp>装载 (%1)</Chinesesimp>
             <Korean>설치 (%1)</Korean>
             <Portuguese>Montado (%1)</Portuguese>
+            <Polish>Zamontowane (%1)</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop Using</English>
@@ -39,6 +42,7 @@
             <Chinesesimp>停止使用</Chinesesimp>
             <Korean>사용 중지</Korean>
             <Portuguese>Para de usar</Portuguese>
+            <Polish>Przestań używać</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use</English>
@@ -48,6 +52,7 @@
             <Chinesesimp>使用</Chinesesimp>
             <Korean>사용</Korean>
             <Portuguese>Usar</Portuguese>
+            <Polish>Użyj</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
@@ -57,6 +62,7 @@
             <Chinesesimp>无法卸载无线电，因为你的物品栏已经没有任何空间。</Chinesesimp>
             <Korean>인벤토리 공간이 없어 무전기를 분리 할 수 없습니다.</Korean>
             <Portuguese>Impossível desmontar o rádio, você não tem espaço no inventádio.</Portuguese>
+            <Polish>Nie można wymontować radia. Brak miejsca w ekwipunku.</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
@@ -66,6 +72,7 @@
             <Korean>선반</Korean>
             <Japanese>架台</Japanese>
             <Portuguese>Suporte</Portuguese>
+            <Polish>Szafa radiowa</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
@@ -75,6 +82,7 @@
             <Korean>대쉬보드</Korean>
             <Japanese>ダッシュボード</Japanese>
             <Portuguese>Painel</Portuguese>
+            <Polish>Panel</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
@@ -87,6 +95,7 @@
             <Korean>대쉬보드 하단</Korean>
             <Japanese>ダッシュボードを下げる</Japanese>
             <Portuguese>Painel Inferior</Portuguese>
+            <Polish>Dolny panel</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
@@ -99,6 +108,7 @@
             <Korean>대쉬보드 상단</Korean>
             <Japanese>ダッシュボードを上げる</Japanese>
             <Portuguese>Painel Superior</Portuguese>
+            <Polish>Górny panel</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_gui">
         <Key ID="STR_ACRE_sys_gui_VolumeControl">
@@ -18,9 +18,11 @@
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid">
             <English>ACRE2 - Vehicle Info</English>
+            <Polish>ACRE2 - Informacje o pojeździe</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGridDesc">
             <English>Status on available Intercoms and Racks in the vehicle.</English>
+            <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
         </Key>
     </Package>
 </Project>

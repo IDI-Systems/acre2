@@ -69,6 +69,7 @@
             <Chinesesimp>Teamspeak频道切换</Chinesesimp>
             <Korean>팀스피크 채널 변경</Korean>
             <Portuguese>Trocar de Canal do TeamSpeak</Portuguese>
+            <Polish>Zmiana kanału TeamSpeak</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
@@ -77,12 +78,14 @@
             <Chinesesimp>Teamspeak频道名称</Chinesesimp>
             <Korean>팀스피크 채널 이름</Korean>
             <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
+            <Polish>Nazwa kanału TeamSpeak</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
             <Chinese>Teamspeak頻道密碼</Chinese>
             <Chinesesimp>Teamspeak频道密码</Chinesesimp>
             <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
+            <Polish>Hasło kanału TeamSpeak</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -448,6 +451,7 @@
             <Chinesesimp>戴上耳机</Chinesesimp>
             <Korean>헤드셋 착용</Korean>
             <Portuguese>Fones Abaixados</Portuguese>
+            <Polish>Słuchawki założone</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
@@ -458,6 +462,7 @@
             <Chinesesimp>取下耳机</Chinesesimp>
             <Korean>헤드셋 벗기</Korean>
             <Portuguese>Fones Levantados</Portuguese>
+            <Polish>Słuchawki zdjęte</Polish>
         </Key>
     </Package>
 </Project>

@@ -10,6 +10,7 @@
             <Chinesesimp>[ACRE] 无线电箱</Chinesesimp>
             <Korean>[ACRE] 무전기 보급 상자</Korean>
             <Portuguese>[ACRE] Radio Supply Crate</Portuguese>
+            <Polish>[ACRE] Skrzynia z radiami</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiExternal">
             <English>Radio used externally. Only owner may configure.</English>
@@ -19,6 +20,7 @@
             <Chinesesimp>外部无线电。只有拥有者才能设定。</Chinesesimp>
             <Korean>무전기가 외부에서 사용되었습니다. 사용자만 설정 할 수 있습니다.</Korean>
             <Portuguese>Rádio usado externamente. Somente o proprietário pode configurar.</Portuguese>
+            <Polish>Radio używane na zewnątrz. Tylko właściciel może konfigurować.</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiTurnedOut">
             <English>Radio rack can't be reached from this position.</English>
@@ -28,6 +30,7 @@
             <Chinesesimp>无法从这个位置碰到无线电架。</Chinesesimp>
             <Korean>이 위치에서 무전기 선반에 닿지 않습니다.</Korean>
             <Portuguese>Não é possível alcançar o suporte de rádio desta posição.</Portuguese>
+            <Polish>Nie można dosięgnąć szafy radiowej z tej pozycji.</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiSeat">
             <English>Radio rack not accessible for configuration from this seat.</English>
@@ -37,6 +40,7 @@
             <Chinesesimp>无线电无法从这个座位进行设定。</Chinesesimp>
             <Korean>이 좌석에서 설정 할 수 없는 무전기 선반.</Korean>
             <Portuguese>O rack de rádio não é acessível para a configuração deste assento.</Portuguese>
+            <Polish>Nie można konfigurować szafy radiowej z tego siedzenia.</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noTransmitExternal">
             <English>Radio used externally. Only external user may transmit.</English>
@@ -46,6 +50,7 @@
             <Chinesesimp>外部无线电。只有外部使用者可以发送。</Chinesesimp>
             <Korean>무전기가 외부에서 사용되었습니다. 외부 사용자만 전송 할 수 있습니다.</Korean>
             <Portuguese>Rádio usado externamente. Somente o usuário externo pode transmitir.</Portuguese>
+            <Polish>Radio używane na zewnątrz. Tylko użytkownicy znajdujący się na zewnątrz mogą nadawać.</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noTransmitIntercom">
             <English>Radio rack disabled for transmitting in intercom.</English>
@@ -64,6 +69,7 @@
             <Chinesesimp>无线电已经在发送中。</Chinesesimp>
             <Korean>무전기가 이미 전송중 입니다.</Korean>
             <Portuguese>O rádio já está transmitindo.</Portuguese>
+            <Polish>Radio już nadaje.</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_alreadyOpenRadio">
             <English>Radio is being configured by another player.</English>
@@ -72,6 +78,7 @@
             <Chinesesimp>无线电正在被另一名玩家进行设置。</Chinesesimp>
             <Korean>다른 플레이어가 무전기를 설정중입니다.</Korean>
             <Portuguese>O rádio está sendo configurado por outro jogador.</Portuguese>
+            <Polish>Radio jest aktualnie konfigurowane przez innego gracza.</Polish>
         </Key>
     </Package>
 </Project>
