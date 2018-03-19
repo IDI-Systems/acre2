@@ -1,3 +1,4 @@
+PREP(missionDisplayLoad);
 PREP(sendMessage);
 PREP(startServer);
 PREP(serverReadLoop);

@@ -23,16 +23,16 @@ private _type = typeOf _vehicle;
 private _infantryPhoneIntercom = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneIntercom") apply {toLower _x};
 private _infantryPhoneControlActions = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneControlActions") apply {toLower _x};
 private _infantryPhoneDisableRinging = (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneDisableRinging")) == 1;
-private _infantryPhoneCustomRinging = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneCustomRinging") apply {toLower _x};
+private _infantryPhoneCustomRinging = getArray (configFile >> "CfgVehicles" >> _type >> "acre_infantryPhoneCustomRinging");
 
 // Set by default to have access to all intercom networks if none was specified
-
 private _configHelper = {
     params ["_type", "_configArray", "_configEntry"];
 
+    private _returnArray = [];
     if (_configArray isEqualTo []) then {
         WARNING_2("No intercom networks specified in %1 for vehicle type %2. Assuming all intercoms can be reached with the infantry phone",_type);
-        _configArray append (_vehicle getVariable [QGVAR(intercomNames), []]);
+        _returnArray pushBack (_vehicle getVariable [QGVAR(intercomNames), []]);
     } else {
         // Check for a valid configuration
         if ("all" in _configArray) then {
@@ -40,22 +40,26 @@ private _configHelper = {
                 WARNING_2("Vehicle type %1 has %2 entry with the all wildcard in combination with other entries. All intercoms will be made available",_type,_configEntry);
             };
 
-            _configArray append (_vehicle getVariable [QGVAR(intercomNames), []]);
+            _returnArray append (_vehicle getVariable [QGVAR(intercomNames), []]);
         } else {
             private _found = false;
             private _intercom = _vehicle getVariable [QGVAR(intercomNames), []];
             {
-                if !(_x in _intercom) then {
+                private _entry = _x;
+                {
+                    if (_entry in _x) exitWith {
+                        _returnArray pushBackUnique _x;
+                        _found = true;
+                    }
+                } forEach _intercom;
+                if (!found) then {
                     WARNING_3("Intercom %1 in %2 for vehicle type %3 is not found as a valid intercom identifier",_x,_configEntry,_type);
-                } else {
-                    _found = true;
                 };
-                if (_found) exitWith {};
             } forEach _configArray;
         };
     };
 
-    _configArray
+    _returnArray
 };
 
 _infantryPhoneIntercom = [_type, _infantryPhoneIntercom, "acre_infantryPhoneIntercom"] call _configHelper;

@@ -28,16 +28,17 @@ HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
 private _vehicle = _rackObject;
 _vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
 
- //TODO: test this works.
-private _crewPlayers = (crew _vehicle) select {isPlayer _x};
+// To further check. No isses found.
+private _crewPlayers =  [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
 private _condition = false;
 if (count _crewPlayers > 0) then {
     if (local (_crewPlayers select 0)) then {
         _condition = true;
     };
 } else {
+    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
     // FallBack to server.
-    if (isServer) then {
+    if (local _player) then {
         _condition = true;
     };
 };
@@ -45,6 +46,7 @@ if (count _crewPlayers > 0) then {
 if (_condition) then {
     private _baseRadio = BASECLASS(_class);
     private _rackId = typeOf _rackObject;
+
     if (_baseRadio == GET_STATE_RACK(_rackId,"mountedRadio")) then {
         // Add a new radio based on the id we just got
         TRACE_2("Adding radio", _class, _baseRadio);

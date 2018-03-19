@@ -23,7 +23,6 @@ private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms
 
 if !(_intercoms isEqualTo []) then {
     [_vehicle] call FUNC(configIntercom);
-    [_vehicle] call FUNC(configIntercomStations);
 
     if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")}) then {
         [_vehicle] call FUNC(intercomAction);

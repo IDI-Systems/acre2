@@ -95,7 +95,15 @@ class CfgAcreComponents {
         height = 1.66;
         binaryGainFile = QPATHTOF(binary\FA_80_gain.aba);
     };
-    
+
+    class ACRE_AS1729_38: ACRE_BaseAntenna {
+        name = "AS-1729/VRC Vehicular (VRC-64)";
+        shortName  = "AS-1729/VRC";
+        connector = ACRE_CONNECTOR_3_8;
+        height = 3.39;
+        binaryGainFile = QPATHTOF(binary\AS-1729_VRC_gain.aba);
+    };
+
     class ACRE_243CM_VHF_TNC: ACRE_BaseAntenna {
         name = "2.43 Meter VHF Ground Spike Antenna";
         shortName = "2.43M Ground Spike";

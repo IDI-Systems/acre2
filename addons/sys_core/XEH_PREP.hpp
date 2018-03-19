@@ -14,6 +14,7 @@ PREP(getHeadVector);
 PREP(getGear);
 PREP(getLanguageId);
 PREP(getLanguageName);
+PREP(getPlayersInVehicle);
 PREP(getSpeakingLanguageId);
 PREP(getSpokenLanguages);
 PREP(handleGetClientID);
@@ -56,3 +57,5 @@ PREP(coreInitPFH);
 
 PREP(arsenalOpen);
 PREP(arsenalClose);
+PREP(spectatorEGDisplayLoad);
+PREP(spectatorEGDisplayUnload);

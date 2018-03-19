@@ -4,6 +4,7 @@
  *
  * Arguments:
  * 0: Component ID <STRING>
+ * 1: Radio list <ARRAY> (default: [])
  *
  * Return Value:
  * Connectors <ARRAY>

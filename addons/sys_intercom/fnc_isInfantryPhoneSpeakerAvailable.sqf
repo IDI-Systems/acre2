@@ -11,7 +11,7 @@
  * Speaker action is available <BOOL>
  *
  * Example:
- * [cursorTarget] call acre_sys_intercom_fnc_isInfantryPhoneSpeakerAvailable
+ * [cursorTarget, player, 1] call acre_sys_intercom_fnc_isInfantryPhoneSpeakerAvailable
  *
  * Public: No
  */

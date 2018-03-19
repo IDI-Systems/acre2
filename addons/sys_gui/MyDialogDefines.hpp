@@ -70,7 +70,7 @@
 
 #define SL_TEXTURES       0x10
 
-// progress bar 
+// progress bar
 #define ST_VERTICAL       0x01
 #define ST_HORIZONTAL     0
 

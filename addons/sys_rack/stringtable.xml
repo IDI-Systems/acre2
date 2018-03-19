@@ -2,52 +2,57 @@
 <Project name="ACRE">
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
-            <English>Mount Radio</English>
-            <German>Funkgerät einbauen</German>
-            <Japanese>無線機の積載</Japanese>
-            <Chinese>裝載無線電</Chinese>
-            <Chinesesimp>装载无线电</Chinesesimp>
-            <Korean>무전기 설치</Korean>
+            <English>Mount</English>
+            <German>Einbauen</German>
+            <Japanese>積載</Japanese>
+            <Chinese>裝載</Chinese>
+            <Chinesesimp>装载</Chinesesimp>
+            <Korean>설치</Korean>
+            <Portuguese>Montar</Portuguese>
+            <Polish>Zamontuj</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
-            <English>Unmountable (Locked)</English>
-            <German>Funkgerät fest verbaut</German>
-            <Japanese>搭載不可 (ロック済)</Japanese>
-            <Chinese>無法裝載 (已鎖定)</Chinese>
-            <Chinesesimp>无法装载 (已锁定)</Chinesesimp>
-            <Korean>분리불가(잠김)</Korean>
+            <English>Unmountable (%1)</English>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
-            <English>Unmount Radio (%1)</English>
-            <German>Entferne Funkgerät (%1)</German>
-            <Japanese>無線機を降ろす (%1)</Japanese>
-            <Chinese>卸載無線電 (%1)</Chinese>
-            <Chinesesimp>卸载无线电 (%1)</Chinesesimp>
-            <Korean>무전기 분리 (%1)</Korean>
+            <English>Unmount (%1)</English>
+            <German>Entferne (%1)</German>
+            <Japanese>降ろす (%1)</Japanese>
+            <Chinese>卸載 (%1)</Chinese>
+            <Chinesesimp>卸载 (%1)</Chinesesimp>
+            <Korean>분리 (%1)</Korean>
+            <Portuguese>Desmontar (%1)</Portuguese>
+            <Polish>Wymontuj (%1)</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
-            <English>Mounted radio (%1)</English>
-            <German>Eingebautes Funkgerät (%1)</German>
-            <Japanese>無線機を乗せる (%1)</Japanese>
-            <Chinese>裝載無線電 (%1)</Chinese>
-            <Chinesesimp>装载无线电 (%1)</Chinesesimp>
-            <Korean>무전기 설치 (%1)</Korean>
+            <English>Mounted (%1)</English>
+            <German>Eingebautes (%1)</German>
+            <Japanese>乗せる (%1)</Japanese>
+            <Chinese>裝載 (%1)</Chinese>
+            <Chinesesimp>装载 (%1)</Chinesesimp>
+            <Korean>설치 (%1)</Korean>
+            <Portuguese>Montado (%1)</Portuguese>
+            <Polish>Zamontowane (%1)</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
-            <English>Stop using radio</English>
+            <English>Stop Using</English>
             <German>Benutzung beenden</German>
-            <Japanese>無線機の使用を止める</Japanese>
-            <Chinese>停止使用無線電</Chinese>
-            <Chinesesimp>停止使用无线电</Chinesesimp>
-            <Korean>무전기 사용 중지</Korean>
+            <Japanese>使用を止める</Japanese>
+            <Chinese>停止使用</Chinese>
+            <Chinesesimp>停止使用</Chinesesimp>
+            <Korean>사용 중지</Korean>
+            <Portuguese>Para de usar</Portuguese>
+            <Polish>Przestań używać</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
-            <English>Use radio</English>
-            <German>Funkgerät verwenden</German>
-            <Japanese>無線機を使う</Japanese>
-            <Chinese>使用無線電</Chinese>
-            <Chinesesimp>使用无线电</Chinesesimp>
-            <Korean>무전기 사용</Korean>
+            <English>Use</English>
+            <German>Verwenden</German>
+            <Japanese>を使う</Japanese>
+            <Chinese>使用</Chinese>
+            <Chinesesimp>使用</Chinesesimp>
+            <Korean>사용</Korean>
+            <Portuguese>Usar</Portuguese>
+            <Polish>Użyj</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
@@ -56,6 +61,8 @@
             <Chinese>無法卸載無線電，因為你的物品欄已經沒有任何空間。</Chinese>
             <Chinesesimp>无法卸载无线电，因为你的物品栏已经没有任何空间。</Chinesesimp>
             <Korean>인벤토리 공간이 없어 무전기를 분리 할 수 없습니다.</Korean>
+            <Portuguese>Impossível desmontar o rádio, você não tem espaço no inventádio.</Portuguese>
+            <Polish>Nie można wymontować radia. Brak miejsca w ekwipunku.</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
@@ -63,27 +70,48 @@
             <Chinese>架子</Chinese>
             <Chinesesimp>架子</Chinesesimp>
             <Korean>선반</Korean>
+            <Japanese>架台</Japanese>
+            <Portuguese>Suporte</Portuguese>
+            <Polish>Szafa radiowa</Polish>
         </Key>
-        <Key ID="STR_ACRE_sys_rack_Dash">
+        <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
             <German>Steckplatz</German>
             <Chinese>儀錶板</Chinese>
             <Chinesesimp>仪表板</Chinesesimp>
             <Korean>대쉬보드</Korean>
+            <Japanese>ダッシュボード</Japanese>
+            <Portuguese>Painel</Portuguese>
+            <Polish>Panel</Polish>
         </Key>
-        <Key ID="STR_ACRE_sys_rack_Dash_lower">
+        <Key ID="STR_ACRE_sys_rack_dashShort">
+            <English>Dash</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_dashLower">
             <English>Dashboard Lower</English>
             <German>Unterer Steckplatz</German>
             <Chinese>儀錶板下降</Chinese>
             <Chinesesimp>仪表板下降</Chinesesimp>
             <Korean>대쉬보드 하단</Korean>
+            <Japanese>ダッシュボードを下げる</Japanese>
+            <Portuguese>Painel Inferior</Portuguese>
+            <Polish>Dolny panel</Polish>
         </Key>
-        <Key ID="STR_ACRE_sys_rack_Dash_upper">
+        <Key ID="STR_ACRE_sys_rack_dashLowerShort">
+            <English>D.Low</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dashboard Upper</English>
             <German>Oberer Steckplatz</German>
             <Chinese>儀錶板上升</Chinese>
             <Chinesesimp>仪表板上升</Chinesesimp>
             <Korean>대쉬보드 상단</Korean>
+            <Japanese>ダッシュボードを上げる</Japanese>
+            <Portuguese>Painel Superior</Portuguese>
+            <Polish>Górny panel</Polish>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_dashUpperShort">
+            <English>D.Up</English>
         </Key>
     </Package>
 </Project>

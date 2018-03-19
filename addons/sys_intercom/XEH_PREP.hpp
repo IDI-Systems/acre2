@@ -2,21 +2,25 @@
 PREP(configIntercom);
 PREP(configIntercomStations);
 PREP(enterVehicle);
-PREP(getStationConnectionStatus);
-PREP(getStationVolume);
+PREP(getStationVariableName);
+PREP(getStationConfiguration);
+PREP(getVolumeIntercomUnit);
 PREP(initVehicleIntercom);
 PREP(intercomAction);
 PREP(intercomChildrenActions);
+PREP(intercomListChildrenActions);
+PREP(intercomListRxTxActions);
+PREP(intercomListVolumeActions);
 PREP(intercomPFH);
-PREP(isInIntercom);
 PREP(isIntercomAvailable);
-PREP(isInLimitedPosition);
+PREP(isInIntercom);
 PREP(noApiFunction);
 PREP(seatSwitched);
-PREP(setIntercomUnits);
-PREP(setLimitedConnectionStatus);
-PREP(setStationConnectionStatus);
-PREP(setStationVolume);
+PREP(handleBroadcasting);
+PREP(handleLimitedConnection);
+PREP(handleIntercomActivation);
+PREP(setStationConfiguration);
+PREP(setStationUnit);
 
 // Infantry Phone
 PREP(checkInfantryPhoneAvailability);
@@ -29,7 +33,14 @@ PREP(isInfantryPhoneSpeakerAvailable);
 PREP(updateInfantryPhoneStatus);
 
 // Racks integration
-PREP(configRxTxCapabilities);
-PREP(getRxTxCapabilities);
-PREP(setRxTxCapabilities);
+PREP(configRackRxTxCapabilities);
+PREP(getRackRxTxCapabilities);
+PREP(setRackRxTxCapabilities);
 
+// Display
+PREP(updateVehicleInfoText);
+
+// Keybinding
+PREP(switchIntercomFast);
+PREP(handlePttKeyPress);
+PREP(handlePttKeyPressUp);

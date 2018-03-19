@@ -14,6 +14,15 @@
             <Russian>Громкость прямой речи</Russian>
             <Chinese>語音音量控制</Chinese>
             <Chinesesimp>语音音量控制</Chinesesimp>
+            <Portuguese>Controle de Volume de Comunicação Direta</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid">
+            <English>ACRE2 - Vehicle Info</English>
+            <Polish>ACRE2 - Informacje o pojeździe</Polish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VehicleInfoGridDesc">
+            <English>Status on available Intercoms and Racks in the vehicle.</English>
+            <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
         </Key>
     </Package>
 </Project>

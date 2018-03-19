@@ -21,22 +21,30 @@ private _classname = typeOf _vehicle;
 private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms";
 private _intercomNames = [];
 private _intercomDisplayNames = [];
+private _intercomShortNames = [];
 private _intercomPositions = [];
 private _intercomExceptions = [];
 private _intercomLimitedPositions = [];
+private _intercomMasterStation = [];
 private _numLimitedPositions = [];
 private _intercomConnectByDefault = [];
-private _unitsIntercom = [];
+private _broadcasting = [];
 
 {
     private _name = toLower (configName _x);
     private _displayName = getText (_x >> "displayName");
+    private _shortName = getText (_x >> "shortName");
     private _allowedPositions = getArray (_x >> "allowedPositions");
     private _disabledPositions = getArray (_x >> "disabledPositions");
     private _limitedPositions = getArray (_x >> "limitedPositions");
     private _numLimPositions = getNumber (_x >> "numLimitedPositions");
     private _connectedByDefault = getNumber (_x >> "connectedByDefault");
+    private _masterPositions = getArray (_x >> "masterPositions");
     private _availabeIntercomPositions = [];
+
+    if (count _shortName > 4) then {
+        WARNING_2("Intercom short name %1 is longer than 4 characters for vehicle %2",_shortName,_vehicle);
+    };
 
     // Check if the entry in allowed positions is correct
     if (_allowedPositions isEqualTo []) then {
@@ -56,7 +64,7 @@ private _unitsIntercom = [];
 
         // Turrets excluding FFV turrets
         {
-            _availabeIntercomPositions pushBackUnique ["turret", _x];
+            _availabeIntercomPositions pushBackUnique (format ["turret_%1", _x]);
         } forEach allTurrets [_vehicle, false];
     } else {
         _availabeIntercomPositions = [_vehicle, _allowedPositions] call EFUNC(sys_core,processVehicleSystemAccessArray);
@@ -74,36 +82,41 @@ private _unitsIntercom = [];
     private _exceptionsIntercomPositions = [];
     {
         if (_x in _availabeIntercomPositions) then {
-            _availabeIntercomPositions = _availabeIntercomPositions - [_x];
+            _availabeIntercomPositions deleteAt (_availabeIntercomPositions find _x);
         } else {
             // This could be an FFV turret
             _exceptionsIntercomPositions pushBackUnique _x;
         };
     } forEach _temp;
 
+    // Master station
+    private _masterStationPositions = [_vehicle, _masterPositions] call EFUNC(sys_core,processVehicleSystemAccessArray);
+    {
+        if !(_x in _availabeIntercomPositions) exitWith {
+            WARNING_3("Vehicle type %1 has a master station entry (%2) that has no access to that intercom. Ignoring master positions for intercom network %3",_vehicle,_x,_name);
+        };
+    } forEach _masterStationPositions;
+
     // Check that limitied positions are not defined in available positions
     {
         if (_x in _availabeIntercomPositions) exitWith {
             _limitedIntercomPositions = [];
-            WARNING_2("Vehicle type %1 has limited positions defined that overlap with allowed positions. Ignoring limited positions for intercom network %2",_vehicle,_name);
+            WARNING_3("Vehicle type %1 has limited positions defined (%2) that overlap with allowed positions. Ignoring limited positions for intercom network %3",_vehicle,_x,_name);
         };
     } forEach _limitedIntercomPositions;
 
-    _intercomNames pushBack _name;
-    _intercomDisplayNames pushBack _displayName;
+    _intercomNames pushBack [_name, _displayName, _shortName];
     _intercomPositions pushBack _availabeIntercomPositions;
     _intercomExceptions pushBack _exceptionsIntercomPositions;
     _intercomLimitedPositions pushBack _limitedIntercomPositions;
     _numLimitedPositions pushBack _numLimPositions;
     _intercomConnectByDefault pushBack _connectedByDefault;
-    _unitsIntercom pushBack [];
+    _intercomMasterStation pushBack _masterStationPositions;
+    _broadcasting pushBack [false, objNull];
 } forEach (configProperties [_intercoms, "isClass _x", true]);
 
+[_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
+
 _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
-_vehicle setVariable [QGVAR(intercomDisplayNames), _intercomDisplayNames];
-_vehicle setVariable [QGVAR(allowedPositions), _intercomPositions];
-_vehicle setVariable [QGVAR(forbiddenPositions), _intercomExceptions];
-_vehicle setVariable [QGVAR(limitedPositions), _intercomLimitedPositions];
 _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
-_vehicle setVariable [QGVAR(connectByDefault), _intercomConnectByDefault];
-_vehicle setVariable [QGVAR(unitsIntercom), _unitsIntercom];
+_vehicle setVariable [QGVAR(broadcasting), _broadcasting];

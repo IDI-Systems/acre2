@@ -28,10 +28,7 @@ private _mountedRadio = [_rackClassName] call FUNC(getMountedRadio);
 if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
     if (_mountedRadio == "") then { // Empty
         if ([_rackClassName] call FUNC(isRadioRemovable)) then {
-            private _action = ["acre_mountRadio", localize LSTRING(mountRadio), "\idi\acre\addons\ace_interact\data\icons\connector4.paa", {1+1;}, {true}, {_this call FUNC(generateMountableRadioActions);}, _params] call ace_interact_menu_fnc_createAction;
-            _actions pushBack [_action, [], _target];
-        } else {
-             private _action = ["acre_mountRadio", localize LSTRING(unmountable), "", {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+            private _action = [QGVAR(mountRadio), localize LSTRING(mountRadio), QPATHTOEF(ace_interact,data\icons\connector4.paa), {1+1;}, {true}, {_this call FUNC(generateMountableRadioActions);}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
     } else {
@@ -40,20 +37,20 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
         if ([_rackClassName] call FUNC(isRadioRemovable)) then {
             private _text = format [localize LSTRING(unmountRadio), getText (_class >> "displayName")];
             private _params = [_rackClassName, _mountedRadio];
-            private _action = ["acre_mountedRadio", _text, _icon, {
+            private _action = [QGVAR(mountedRadio), _text, _icon, {
                 params ["_target","_unit","_params"];
                 _params params ["_rackClassName"];
                 [_rackClassName, _unit] call FUNC(unmountRadio);
             }, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {
-            private _text = format [localize LSTRING(mountedRadio), getText (_class >> "displayName")];
-            private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+            private _text = format [localize LSTRING(unmountable), getText (_class >> "displayName")];
+            private _action = [QGVAR(mountedRadio), _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
         if (_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) then {
             // stop
-            private _action = ["acre_stopMountedRadio", localize LSTRING(stopUsingRadio), "", {
+            private _action = [QGVAR(stopUsingMountedRadio), localize LSTRING(stopUsingRadio), "", {
                 params ["_target","_unit","_params"];
                 _params params ["_mountedRadio"];
                 [_target, _unit, _mountedRadio] call FUNC(stopUsingMountedRadio);
@@ -65,7 +62,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             _actions append _radioActions;
         } else {
             // Use
-            private _action = ["acre_useMountedRadio", localize LSTRING(useRadio), "", {
+            private _action = [QGVAR(useMountedRadio), localize LSTRING(useRadio), "", {
                 params ["_target", "_unit", "_params"];
                 _params params ["_mountedRadio"];
                 [_target, _unit, _mountedRadio] call FUNC(startUsingMountedRadio);
@@ -80,18 +77,18 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             private _class = configFile >> "CfgWeapons" >> _mountedRadio;
             private _icon = getText (_class >> "picture");
             private _text = format [localize LSTRING(mountedRadio), getText (_class >> "displayName")];
-            private _action = ["acre_mountedRadio", _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+            private _action = [QGVAR(mountedRadio), _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
 
             if (_mountedRadio in ACRE_HEARABLE_RACK_RADIOS) then {
-                private _action = ["acre_stopMountedRadio", localize LSTRING(stopUsingRadio), "", {
+                private _action = [QGVAR(stopUsingMountedRadio), localize LSTRING(stopUsingRadio), "", {
                     params ["_target", "_unit", "_params"];
                     _params params ["_mountedRadio"];
                     [_target, _unit, _mountedRadio] call FUNC(stopUsingMountedRadio);
                 }, {true}, {}, [_mountedRadio]] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
             } else {
-                private _action = ["acre_useMountedRadio", localize LSTRING(useRadio), "", {
+                private _action = [QGVAR(useMountedRadio), localize LSTRING(useRadio), "", {
                     params ["_target", "_unit", "_params"];
                     _params params ["_mountedRadio"];
                     [_target, _unit, _mountedRadio] call FUNC(startUsingMountedRadio);
@@ -104,7 +101,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
 
 /* Connectors */
 if (EGVAR(ace_interact,connectorsEnabled)) then {
-    private _action = ["acre_connectors", "Connectors", "\idi\acre\addons\ace_interact\data\icons\connector4.paa", {true /*Statement/Action*/}, {true}, { _this call EFUNC(ace_interact,generateConnectors);}, _params] call ace_interact_menu_fnc_createAction;
+    private _action = ["acre_connectors", "Connectors", QPATHTOEF(ace_interact,data\icons\connector4.paa), {true /*Statement/Action*/}, {true}, { _this call EFUNC(ace_interact,generateConnectors);}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 
