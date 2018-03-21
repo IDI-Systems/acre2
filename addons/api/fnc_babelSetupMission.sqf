@@ -70,8 +70,8 @@ _this spawn {
     waitUntil { !isNull acre_player };
     private _languages = [];
     {
-        // Delete the side information in order to add the languages to the unit if the side matches. Ohterwise
-        // it would be treated as a language.
+        // Delete the side information in order to add the languages to the unit if the side matches
+        // (used below). If not removed at this point, it would be treated as a language.
         private _curSide = _x deleteAt 0;
 
         private _sideLanguages = [];
