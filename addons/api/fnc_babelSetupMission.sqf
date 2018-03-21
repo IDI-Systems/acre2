@@ -70,7 +70,10 @@ _this spawn {
     waitUntil { !isNull acre_player };
     private _languages = [];
     {
+        // Delete the side information in order to add the languages to the unit if the side matches. Ohterwise
+        // it would be treated as a language.
         private _curSide = _x deleteAt 0;
+
         private _sideLanguages = [];
         private _languageCount = (count _x);
         {
@@ -80,7 +83,7 @@ _this spawn {
             _sideLanguages pushBack _x;
         } forEach _x;
 
-        //acre_player may not ready yet?
+        // acre_player may not ready yet?
         if (_curSide == (side acre_player) ) then {
             _sideLanguages call FUNC(babelSetSpokenLanguages);
         };
