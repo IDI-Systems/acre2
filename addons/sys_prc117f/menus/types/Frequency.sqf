@@ -57,7 +57,7 @@ DFUNC(doFrequencyButton) = {
         TRACE_2("Values 2", _editIndex, _character);
         TRACE_1("New value", _value);
 
-        if (_editIndex+1 < _editDigits) then {
+        if (_editIndex < _editDigits) then {
             _editIndex = _editIndex + 1;
         } else {
             _editIndex = 0;
@@ -98,6 +98,7 @@ DFUNC(onButtonPress_Frequency) = {
         case 'LEFT': {
             private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
             private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
+
             if (_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
@@ -122,7 +123,8 @@ DFUNC(onButtonPress_Frequency) = {
         case 'RIGHT': {
             private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
             private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
-            if (_editIndex+1 < _editDigits) then {
+
+            if (_editIndex < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
                 _editIndex = 0;
