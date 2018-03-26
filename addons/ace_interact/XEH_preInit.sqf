@@ -7,6 +7,6 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 // Show/Hide connectors
-GVAR(connectorsEnabled) = false;
+GVAR(connectorsEnabled) = true;
 
 ADDON = true;

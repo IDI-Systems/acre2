@@ -15,6 +15,10 @@ class CfgVehicles {
         editorPreview = "";
         vehicleClass = "Items";
 
+        class AcreComponents {
+            componentName = "ACRE_643CM_VHF_TNC";
+        };
+
         class ACE_Actions {
             class ACE_MainActions {
                 selection = "interaction_point";
@@ -73,6 +77,10 @@ class CfgVehicles {
         icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
         editorPreview = "";
         vehicleClass = "Items";
+
+        class AcreComponents {
+            componentName = "ACRE_243CM_VHF_TNC";
+        };
 
         class ACE_Actions {
             class ACE_MainActions {
