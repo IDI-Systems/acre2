@@ -18,7 +18,7 @@ extern TS3Functions ts3Functions;
 //
 // Handle move events for silencing
 //
-void ts3plugin_onClientMoveEvent(uint64 serverConnectionHandlerID, anyID clientID, uint64 oldChannelID, uint64 newChannelID, int visibility, const char* moveMessage) {
+void ts3plugin_onClientMoveEvent(const uint64_t serverConnectionHandlerID, anyID clientID, const uint64_t oldChannelID, const uint64_t newChannelID, int32_tvisibility, const int8_t* moveMessage) {
     
     // Only unmute if teamspeak is not linked to ARMA.
     if (!CAcreSettings::getInstance()->getDisableUnmuteClients() && !(CEngine::getInstance()->getGameServer()->getConnected())) {
@@ -50,7 +50,7 @@ void ts3plugin_onClientMoveEvent(uint64 serverConnectionHandlerID, anyID clientI
 
 }
 
-void ts3plugin_onClientMoveMovedEvent(uint64 serverConnectionHandlerID, anyID clientID, uint64 oldChannelID, uint64 newChannelID, int visibility, anyID moverID, const char* moverName, const char* moverUniqueIdentifier, const char* moveMessage) {
+void ts3plugin_onClientMoveMovedEvent(const uint64_t serverConnectionHandlerID, anyID clientID, const uint64_t oldChannelID, const uint64_t newChannelID, int32_tvisibility, anyID moverID, const int8_t* moverName, const int8_t* moverUniqueIdentifier, const int8_t* moveMessage) {
     // Only unmute if teamspeak is not linked to ARMA.
     if (!CAcreSettings::getInstance()->getDisableUnmuteClients() && !(CEngine::getInstance()->getGameServer()->getConnected())) {
 
@@ -81,6 +81,6 @@ void ts3plugin_onClientMoveMovedEvent(uint64 serverConnectionHandlerID, anyID cl
     }
 }
 
-void ts3plugin_onUpdateChannelEditedEvent(uint64 serverConnectionHandlerID, uint64 channelID, anyID invokerID, const char* invokerName, const char* invokerUniqueIdentifier) {
+void ts3plugin_onUpdateChannelEditedEvent(const uint64_t serverConnectionHandlerID, const uint64_t channelID, anyID invokerID, const int8_t* invokerName, const int8_t* invokerUniqueIdentifier) {
     CEngine::getInstance()->getClient()->updateShouldSwitchTS3Channel(true);
 }

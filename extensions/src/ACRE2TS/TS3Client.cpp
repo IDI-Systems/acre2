@@ -30,7 +30,7 @@ ACRE_RESULT CTS3Client::initialize(void) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::setMuted(ACRE_ID id, bool muted) {
+ACRE_RESULT CTS3Client::setMuted(ACRE_ID id, const bool muted) {
     anyID clientArray[2];
     
     clientArray[0] = (anyID)id;
@@ -99,7 +99,7 @@ ACRE_RESULT CTS3Client::exPersistVersion( void ) {
         
         delta = (clock() / CLOCKS_PER_SEC) - run;
         if (delta > (PERSIST_VERSION_TIMER / 1000) ) {
-            char selfVariableBuffer[4096];
+            int8_t selfVariableBuffer[4096];
             if (CEngine::getInstance()->getGameServer()->getConnected()) {
                 _snprintf_s(selfVariableBuffer, 4094, "%s\nArma Connected: Yes", ACRE_VERSION_METADATA);
             } else {
@@ -117,8 +117,8 @@ ACRE_RESULT CTS3Client::exPersistVersion( void ) {
 }
 
 bool CTS3Client::getVAD() {
-    unsigned int res;
-    char *data;
+    uint32_t res;
+    int8_t *data;
     bool returnValue = false;
     res = ts3Functions.getPreProcessorConfigValue(ts3Functions.getCurrentServerConnectionHandlerID(), "vad", &data);
     if (!res) {
@@ -199,14 +199,14 @@ ACRE_RESULT CTS3Client::localStopSpeaking(ACRE_SPEAKING_TYPE speakingType) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::enableMicrophone(bool status) {
+ACRE_RESULT CTS3Client::enableMicrophone(const bool status) {
     bool currentStatus = this->getInputStatus();
-    unsigned int res;
+    uint32_t res;
     if (currentStatus != status) {
         if (status) {
             res = ts3Functions.setClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_INPUT_MUTED, MUTEINPUT_NONE);
             if (res != ERROR_ok) {
-                char* errorMsg;
+                int8_t* errorMsg;
                 if (ts3Functions.getErrorMessage(res, &errorMsg) == ERROR_ok) {
                     LOG("Error toggling microphone enabled: %s\n", errorMsg);
                     ts3Functions.freeMemory(errorMsg);
@@ -216,7 +216,7 @@ ACRE_RESULT CTS3Client::enableMicrophone(bool status) {
         } else {
             res = ts3Functions.setClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_INPUT_MUTED, MUTEINPUT_MUTED);
             if (res != ERROR_ok) {
-                char* errorMsg;
+                int8_t* errorMsg;
                 if (ts3Functions.getErrorMessage(res, &errorMsg) == ERROR_ok) {
                     LOG("Error, failed to disable microphone input: %s\n", errorMsg);
                     ts3Functions.freeMemory(errorMsg);
@@ -226,7 +226,7 @@ ACRE_RESULT CTS3Client::enableMicrophone(bool status) {
         }
         res = ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
         if (!(res == ERROR_ok || res == ERROR_ok_no_update)) {
-            char* errorMsg;
+            int8_t* errorMsg;
             if (ts3Functions.getErrorMessage(res, &errorMsg) == ERROR_ok) {
                 LOG("STOP TALKING: Error flushing after toggling microphone muted: %s\n", errorMsg);
                 ts3Functions.freeMemory(errorMsg);
@@ -239,10 +239,10 @@ ACRE_RESULT CTS3Client::enableMicrophone(bool status) {
 
 bool CTS3Client::getInputStatus() {
     bool status;
-    unsigned int res, ret;
-    res = ts3Functions.getClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_INPUT_MUTED, (int *)&ret);
+    uint32_t res, ret;
+    res = ts3Functions.getClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_INPUT_MUTED, (int32_t *)&ret);
     if (res != ERROR_ok) {
-        char* errorMsg;
+        int8_t* errorMsg;
         if (ts3Functions.getErrorMessage(res, &errorMsg) == ERROR_ok) {
             LOG("Error querying microphone input status: %s\n", errorMsg);
             ts3Functions.freeMemory(errorMsg);
@@ -258,17 +258,17 @@ bool CTS3Client::getInputStatus() {
     return status;
 }
 
-ACRE_RESULT CTS3Client::playSound(std::string path, ACRE_VECTOR position, float volume, int looping) {
+ACRE_RESULT CTS3Client::playSound(std::string path, ACRE_VECTOR position, float volume, int32_t looping) {
     unsigned long long playHandle;
-    unsigned int ret, res;
+    uint32_t ret, res;
 
     if (!PathFileExistsA(path.c_str()))
         return ACRE_ERROR;
 
-    char soundpackDb[32];
-    res = ts3Functions.getClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_OUTPUT_MUTED, (int *)&ret);
+    int8_t soundpackDb[32];
+    res = ts3Functions.getClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_OUTPUT_MUTED, (int32_t *)&ret);
     if (res != ERROR_ok) {
-        char* errorMsg;
+        int8_t* errorMsg;
         if (ts3Functions.getErrorMessage(res, &errorMsg) == ERROR_ok) {
             LOG("Error checking playback status: %s\n", errorMsg);
             ts3Functions.freeMemory(errorMsg);
@@ -301,9 +301,9 @@ ACRE_RESULT CTS3Client::playSound(std::string path, ACRE_VECTOR position, float 
 }
 
 std::string CTS3Client::getUniqueId( ) {
-    char *uniqueId;
+    int8_t *uniqueId;
     std::string serverUniqueId = "";
-    unsigned int res;
+    uint32_t res;
 
     res = ts3Functions.getServerVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), VIRTUALSERVER_UNIQUE_IDENTIFIER, &uniqueId);
     if (res == ERROR_ok) {
@@ -316,7 +316,7 @@ std::string CTS3Client::getUniqueId( ) {
 }
 
 std::string CTS3Client::getConfigFilePath(void) {
-    char tempPath[MAX_PATH-14];
+    int8_t tempPath[MAX_PATH-14];
     
     ts3Functions.getConfigPath(tempPath, MAX_PATH-14);
 
@@ -332,7 +332,7 @@ std::string CTS3Client::getConfigFilePath(void) {
 }
 
 std::string CTS3Client::getTempFilePath( void ) {
-    char tempPath[MAX_PATH-14];
+    int8_t tempPath[MAX_PATH-14];
     GetTempPathA(sizeof(tempPath), tempPath);
     std::string tempFolder = std::string(tempPath);
     tempFolder += "\\acre";
@@ -346,8 +346,8 @@ std::string CTS3Client::getTempFilePath( void ) {
 }
 
 ACRE_RESULT CTS3Client::microphoneOpen(bool status) {
-    unsigned int res;
-    int micStatus;
+    uint32_t res;
+    int32_t micStatus;
     if (status) {
         micStatus = INPUT_ACTIVE;
         this->setInputActive(true);
@@ -357,7 +357,7 @@ ACRE_RESULT CTS3Client::microphoneOpen(bool status) {
     }
     res = ts3Functions.setClientSelfVariableAsInt(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_INPUT_DEACTIVATED, micStatus);
     if (res != ERROR_ok) {
-        char* errorMsg;
+        int8_t* errorMsg;
         if (ts3Functions.getErrorMessage(res, &errorMsg) == ERROR_ok) {
             LOG("STOP TALKING: Error toggling push-to-talk: %s\n", errorMsg);
             ts3Functions.freeMemory(errorMsg);
@@ -367,7 +367,7 @@ ACRE_RESULT CTS3Client::microphoneOpen(bool status) {
         
     res = ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
     if (!(res == ERROR_ok || res == ERROR_ok_no_update)) {
-        char* errorMsg;
+        int8_t* errorMsg;
         if (ts3Functions.getErrorMessage(res, &errorMsg) == ERROR_ok) {
             LOG("STOP TALKING: Error flushing after toggling push-to-talk: %s\n", errorMsg);
             ts3Functions.freeMemory(errorMsg);
@@ -380,7 +380,7 @@ ACRE_RESULT CTS3Client::microphoneOpen(bool status) {
 ACRE_RESULT CTS3Client::unMuteAll( void ) {
     anyID clientId;
     anyID *clientList;
-    unsigned int res;
+    uint32_t res;
     uint32_t total_retries = 0;
     uint32_t total_intentional_runs = 0;
 
@@ -435,12 +435,12 @@ ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
         std::vector<std::string> details = getTs3ChannelDetails();
 
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
-            uint64 currentChannelId = INVALID_TS3_CHANNEL;
+            uint64_t currentChannelId = INVALID_TS3_CHANNEL;
             if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok && getPreviousTSChannel() == INVALID_TS3_CHANNEL) {
                 setPreviousTSChannel(currentChannelId);
             }
 
-            const uint64 channelId = findChannelByNames(details);
+            const uint64_t channelId = findChannelByNames(details);
             if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
                 std::string password = "";
                 if (details.at(1) != "" && details.at(0) != "") {
@@ -458,9 +458,9 @@ ACRE_RESULT CTS3Client::moveToPreviousTS3Channel() {
     if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
         anyID clientId;
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
-            uint64 currentChannelId = INVALID_TS3_CHANNEL;
+            uint64_t currentChannelId = INVALID_TS3_CHANNEL;
             if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok) {
-                const uint64 channelId = getPreviousTSChannel();
+                const uint64_t channelId = getPreviousTSChannel();
                 if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
                     ts3Functions.requestClientMove(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, channelId, "", nullptr);
                 }
@@ -471,12 +471,12 @@ ACRE_RESULT CTS3Client::moveToPreviousTS3Channel() {
     return ACRE_OK;
 }
 
-uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
-    uint64 *channelList;
+uint64_t CTS3Client::findChannelByNames(std::vector<std::string> details) {
+    uint64_t *channelList;
     if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
-        uint64 channelId = INVALID_TS3_CHANNEL;
-        uint64 defaultChannelId = INVALID_TS3_CHANNEL;
-        std::map<uint64, std::string> channelMap;
+        uint64_t channelId = INVALID_TS3_CHANNEL;
+        uint64_t defaultChannelId = INVALID_TS3_CHANNEL;
+        std::map<uint64_t, std::string> channelMap;
         std::string name = details.at(2);
         if (details.at(0) != "") {
             name = details.at(0);
@@ -484,7 +484,7 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
         while (*channelList) {
             channelId = *channelList;
             channelList++;
-            char* channelName;
+            int8_t* channelName;
             if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
                 std::string channelNameString = std::string(channelName);
                 if (channelNameString.find(DEFAULT_TS3_CHANNEL) != -1 || (details.at(0) != "" && channelNameString == name)) {
@@ -496,9 +496,9 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
             }
         }
 
-        uint64 bestChannelId = INVALID_TS3_CHANNEL;
-        int bestMatches = 0;
-        int bestDistance = 10;
+        uint64_t bestChannelId = INVALID_TS3_CHANNEL;
+        int32_t bestMatches = 0;
+        int32_t bestDistance = 10;
         for (auto& element : channelMap) {
             std::string fullChannelName = element.second;
             // Full comparison
@@ -508,14 +508,14 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
             }
             const std::string cleanChannelName = removeSubstrings(fullChannelName, DEFAULT_TS3_CHANNEL);
             // Word comparison
-            const int matches = getWordMatches(cleanChannelName, name);
+            const int32_t matches = getWordMatches(cleanChannelName, name);
             if (matches > bestMatches) {
                 bestMatches = matches;
                 bestChannelId = element.first;
                 continue;
             }
-            // Char comparison
-            const int distance = levenshteinDistance(cleanChannelName, name);
+            // int8_t comparison
+            const int32_t distance = levenshteinDistance(cleanChannelName, name);
             if (distance <= bestDistance) {
                 bestDistance = distance;
                 bestChannelId = element.first;
@@ -534,7 +534,7 @@ uint64 CTS3Client::findChannelByNames(std::vector<std::string> details) {
     return INVALID_TS3_CHANNEL;
 }
 
-unsigned int CTS3Client::getWordMatches(const std::string& string1, const std::string& string2) {
+uint32_t CTS3Client::getWordMatches(const std::string& string1, const std::string& string2) {
     std::vector<std::string> words1, words2;
     std::string temp;
     std::stringstream stringstream1(string1);
@@ -546,7 +546,7 @@ unsigned int CTS3Client::getWordMatches(const std::string& string1, const std::s
         words2.push_back(temp);
     }
 
-    int matches = 0;
+    int32_t matches = 0;
     for (auto& word1 : words1) {
         for (auto& word2 : words2) {
             if (word1 == word2) {
@@ -557,9 +557,9 @@ unsigned int CTS3Client::getWordMatches(const std::string& string1, const std::s
     return matches;
 }
 
-unsigned int CTS3Client::levenshteinDistance(const std::string& string1, const std::string& string2) {
-    int length1 = string1.size();
-    const int length2 = string2.size();
+uint32_t CTS3Client::levenshteinDistance(const std::string& string1, const std::string& string2) {
+    int32_t length1 = string1.size();
+    const int32_t length2 = string2.size();
 
     const decltype(length1) columnStart = decltype(length1)(1);
 
@@ -568,9 +568,9 @@ unsigned int CTS3Client::levenshteinDistance(const std::string& string1, const s
 
     for (auto x = columnStart; x <= length2; x++) {
         column[0] = x;
-        int lastDiagonal = x - columnStart;
+        int32_t lastDiagonal = x - columnStart;
         for (auto y = columnStart; y <= length1; y++) {
-            const int oldDiagonal = column[y];
+            const int32_t oldDiagonal = column[y];
             const std::initializer_list<int> possibilities = {
                 column[y] + 1,
                 column[y - 1] + 1,
@@ -580,7 +580,7 @@ unsigned int CTS3Client::levenshteinDistance(const std::string& string1, const s
             lastDiagonal = oldDiagonal;
         }
     }
-    const int result = column[length1];
+    const int32_t result = column[length1];
     delete[] column;
     return result;
 }

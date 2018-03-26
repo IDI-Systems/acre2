@@ -16,13 +16,13 @@
 //
 // Handle a command event
 //
-void ts3plugin_onPluginCommandEvent(uint64 serverConnectionHandlerID, const char* pluginName, const char* pluginCommand) {
+void ts3plugin_onPluginCommandEvent(const uint64_t serverConnectionHandlerID, const int8_t* pluginName, const int8_t* pluginCommand) {
     //LOG("[%s], [%s]", pluginName, pluginCommand);
 
     if (pluginName && pluginCommand) {
         // this we pass to a custom TS3 IServer to handle the damn messages
         if (strstr(pluginName, "acre2") != NULL && CEngine::getInstance()->getExternalServer() ) {
-            CEngine::getInstance()->getExternalServer()->handleMessage((unsigned char *)pluginCommand);
+            CEngine::getInstance()->getExternalServer()->handleMessage((uint8_t *)pluginCommand);
         }
     }
 }

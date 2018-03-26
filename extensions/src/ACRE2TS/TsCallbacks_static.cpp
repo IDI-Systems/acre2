@@ -15,25 +15,25 @@
 
 extern TS3Functions ts3Functions;
 
-const char* ts3plugin_commandKeyword() {
+const int8_t* ts3plugin_commandKeyword() {
     return ACRE_COMMAND_KEYWORD;
 }
-int ts3plugin_requestAutoload() {
+int32_t ts3plugin_requestAutoload() {
     return 1; 
 }
 
-const char* ts3plugin_infoTitle() {
+const int8_t* ts3plugin_infoTitle() {
     return ACRE_NAME;
 }
 
-void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum PluginItemType type, char** data) {
+void ts3plugin_infoData(uint64_t serverConnectionHandlerID, uint64_t id, enum PluginItemType type, int8_t** data) {
     /*serverConnectionHandlerID = serverConnectionHandlerID;
     data = data;
     type = type;
     id = id;*/
 
     bool noAcre = false;
-    char *metaData;
+    int8_t *metaData;
 
     switch(type) {
         case PLUGIN_SERVER:
@@ -49,7 +49,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
                 if (metaDataLength < 3 || metaDataLength > (INFODATA_BUFSIZE - 2)) {
                     noAcre = true;
                 }
-                *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char)); 
+                *data = (int8_t*)malloc(INFODATA_BUFSIZE * sizeof(int8_t)); 
                 if (!noAcre) {
                     _snprintf_s(*data, INFODATA_BUFSIZE,INFODATA_BUFSIZE, "%s\n", metaData);
                     ts3Functions.freeMemory(metaData);
@@ -75,7 +75,7 @@ void ts3plugin_configure(void* handle, void* qParentWidget) {
 
 }
 
-int ts3plugin_onServerErrorEvent(uint64 serverConnectionHandlerID, const char* errorMessage, unsigned int error, const char* returnCode, const char* extraMessage) {
+int ts3plugin_onServerErrorEvent(uint64_t serverConnectionHandlerID, const int8_t* errorMessage, unsigned int error, const int8_t* returnCode, const int8_t* extraMessage) {
 
     return 0;  /* If no plugin return code was used, the return value of this function is ignored */
 }

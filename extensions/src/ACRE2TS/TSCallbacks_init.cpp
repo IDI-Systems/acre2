@@ -16,19 +16,19 @@ extern TS3Functions ts3Functions;
 // TS3 API Intializers
 //
 
-const char* ts3plugin_name() {
+const int8_t* ts3plugin_name() {
     return ACRE_NAME;
 }
-const char* ts3plugin_version() {
+const int8_t* ts3plugin_version() {
     return ACRE_VERSION;
 }
 int ts3plugin_apiVersion() {
     return TS3_PLUGIN_API_VERSION;
 }
-const char* ts3plugin_author() {
+const int8_t* ts3plugin_author() {
     return ACRE_TEAM_URL;
 }
-const char* ts3plugin_description() {
+const int8_t* ts3plugin_description() {
     return ACRE_DESC;
 }
 void ts3plugin_setFunctionPointers(const struct TS3Functions funcs) {
@@ -39,7 +39,7 @@ char *pluginID = NULL;
 //
 // Register the command engine - Seems to be called before ts3plugin_init in 3.1
 //
-void ts3plugin_registerPluginID(const char* commandID) {
+void ts3plugin_registerPluginID(const int8_t* commandID) {
 
     pluginID = _strdup(commandID);
     //LOG("Registered: [%s]", str);
@@ -76,7 +76,7 @@ void ts3plugin_currentServerConnectionChanged(uint64 serverConnectionHandlerID) 
     //TRACE("currentServerConnectionChanged %llu (%llu)", (long long unsigned int)serverConnectionHandlerID, (long long unsigned int)ts3Functions.getCurrentServerConnectionHandlerID());
 }
 
-void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int err) {
+void ts3plugin_onConnectStatusChangeEvent(uint64 id, int32_t status, uint32_t err) {
 
     if (status == STATUS_CONNECTION_ESTABLISHED) {
 
@@ -102,7 +102,7 @@ void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int er
 //
 // Shutdown
 //
-void ts3plugin_onPlaybackShutdownCompleteEvent(uint64) {
+void ts3plugin_onPlaybackShutdownCompleteEvent(uint64_t) {
 
 }
 

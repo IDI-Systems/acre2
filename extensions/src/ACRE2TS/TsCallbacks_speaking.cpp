@@ -18,7 +18,7 @@
 //
 // TS3  Speaking callbacks
 // 
-void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int status, int isReceivedWhisper, anyID clientID) {
+void ts3plugin_onTalkStatusChangeEvent(const uint64_t serverConnectionHandlerID,const int32_t status,const int32_t isReceivedWhisper, anyID clientID) {
 
     if ((ACRE_ID)clientID == CEngine::getInstance()->getSelf()->getId()) {     
         if (CEngine::getInstance()->getClient()->getState() != ACRE_STATE_RUNNING)
