@@ -30,7 +30,7 @@ class CfgVehicles {
                     displayName = CSTRING(pickUp);
                     distance = 10;
                     condition = "{systemChat format ['testing']; true";
-                    statement = //QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
+                    statement = "(true)";//QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -42,7 +42,7 @@ class CfgVehicles {
                     displayName = CSTRING(removeMast);
                     distance = 10;
                     condition = "{systemChat format ['testing']; true";
-                    statement = //QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
+                    statement = "(true)";//QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -55,7 +55,7 @@ class CfgVehicles {
                     distance = 10;
                     condition = "(true)";
                     //wait a frame to handle "Do When releasing action menu key" option:
-                    statement = //QUOTE([ARR_2({_this call FUNC(adjust)}, [ARR_2(_player,_target)])] call CBA_fnc_execNextFrame);
+                    statement = "(true)";//QUOTE([ARR_2({_this call FUNC(adjust)}, [ARR_2(_player,_target)])] call CBA_fnc_execNextFrame);
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -93,7 +93,7 @@ class CfgVehicles {
                     displayName = CSTRING(pickUp);
                     distance = 10;
                     condition = "{systemChat format ['testing']; true";
-                    statement = //QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
+                    statement = "(true)";//QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -105,7 +105,7 @@ class CfgVehicles {
                     displayName = CSTRING(mountMast);
                     distance = 10;
                     condition = "{systemChat format ['testing']; true";
-                    statement = //QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
+                    statement = "(true)";//QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -118,7 +118,7 @@ class CfgVehicles {
                     distance = 10;
                     condition = "(true)";
                     //wait a frame to handle "Do When releasing action menu key" option:
-                    statement = //QUOTE([ARR_2({_this call FUNC(adjust)}, [ARR_2(_player,_target)])] call CBA_fnc_execNextFrame);
+                    statement = "(true)";//QUOTE([ARR_2({_this call FUNC(adjust)}, [ARR_2(_player,_target)])] call CBA_fnc_execNextFrame);
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
