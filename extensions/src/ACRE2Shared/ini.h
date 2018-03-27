@@ -30,16 +30,16 @@ extern "C" {
    stop on first error), -1 on file open error, or -2 on memory allocation
    error (only when INI_USE_STACK is zero).
 */
-int ini_parse(const char* filename,
-              int (*handler)(void* user, const char* section,
-                             const char* name, const char* value),
+int32_t ini_parse(const int8_t * filename,
+              int32_t (*handler)(void* user, const int8_t * section,
+                             const int8_t * name, const int8_t * value),
               void* user);
 
 /* Same as ini_parse(), but takes a FILE* instead of filename. This doesn't
    close the file when it's finished -- the caller must do that. */
-int ini_parse_file(FILE* file,
-                   int (*handler)(void* user, const char* section,
-                                  const char* name, const char* value),
+int32_t ini_parse_file(FILE* file,
+                   int32_t (*handler)(void* user, const int8_t * section,
+                                  const int8_t * name, const int8_t * value),
                    void* user);
 
 /* Nonzero to allow multi-line value parsing, in the style of Python's

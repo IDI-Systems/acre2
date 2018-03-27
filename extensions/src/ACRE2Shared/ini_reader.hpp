@@ -21,18 +21,18 @@ public:
 
     // Return the result of ini_parse(), i.e., 0 on success, line number of
     // first error on parse error, or -1 on file open error.
-    int ParseError();
+    int32_t ParseError();
 
     // Get a string value from INI file, returning default_value if not found.
     std::string Get(std::string section, std::string name,
         std::string default_value);
 
-    // Get an integer (long) value from INI file, returning default_value if
+    // Get an integer (int32_t) value from INI file, returning default_value if
     // not found or not a valid integer (decimal "1234", "-1234", or hex "0x4d2").
-    long GetInteger(std::string section, std::string name, long default_value);
+    int32_t GetInteger(std::string section, std::string name, int32_t default_value);
 
-    // Get a real (floating point double) value from INI file, returning
-    // default_value if not found or not a valid floating point value
+    // Get a real (floating point32_t double) value from INI file, returning
+    // default_value if not found or not a valid floating point32_t value
     // according to strtod().
     double GetReal(std::string section, std::string name, double default_value);
 
@@ -42,10 +42,10 @@ public:
     bool GetBoolean(std::string section, std::string name, bool default_value);
 
 private:
-    int _error;
+    int32_t _error;
     std::map<std::string, std::string> _values;
     static std::string MakeKey(std::string section, std::string name);
-    static int ValueHandler(void* user, const char* section, const char* name,
-        const char* value);
+    static int32_t ValueHandler(void* user, const int8_t* section, const int8_t* name,
+        const int8_t* value);
 };
 #endif  // __ini_reader_H__

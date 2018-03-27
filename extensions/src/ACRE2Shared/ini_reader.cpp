@@ -11,13 +11,13 @@
 
 using std::string;
 static inline std::string &ltrim(std::string &s) {
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int32_t , int32_t>(std::isspace))));
     return s;
 }
 
 // trim from end
 static inline std::string &rtrim(std::string &s) {
-    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int32_t , int32_t>(std::isspace))).base(), s.end());
     return s;
 }
 
@@ -32,7 +32,7 @@ ini_reader::ini_reader(string filename)
     _error = ini_parse(filename.c_str(), ValueHandler, this);
 }
 
-int ini_reader::ParseError()
+int32_t ini_reader::ParseError()
 {
     return _error;
 }
@@ -46,16 +46,16 @@ string ini_reader::Get(string section, string name, string default_value)
     return _values.count(key) ? _values[key] : default_value;
 }
 
-long ini_reader::GetInteger(string section, string name, long default_value)
+int32_t ini_reader::GetInteger(string section, string name, int32_t default_value)
 {
     if (ParseError() < 0)
         return default_value;
 
     string valstr = Get(section, name, "");
-    const char* value = valstr.c_str();
-    char* end;
+    const int8_t* value = valstr.c_str();
+    int8_t* end;
     // This parses "1234" (decimal) and also "0x4D2" (hex)
-    long n = strtol(value, &end, 0);
+    int32_t n = strtol(value, &end, 0);
     return end > value ? n : default_value;
 }
 
@@ -65,8 +65,8 @@ double ini_reader::GetReal(string section, string name, double default_value)
         return default_value;
 
     string valstr = Get(section, name, "");
-    const char* value = valstr.c_str();
-    char* end;
+    const int8_t* value = valstr.c_str();
+    int8_t* end;
     double n = strtod(value, &end);
     return end > value ? n : default_value;
 }
@@ -97,8 +97,8 @@ string ini_reader::MakeKey(string section, string name)
     return key;
 }
 
-int ini_reader::ValueHandler(void* user, const char* section, const char* name,
-    const char* value)
+int32_t ini_reader::ValueHandler(void* user, const int8_t* section, const int8_t* name,
+    const int8_t* value)
 {
     ini_reader* reader = (ini_reader*)user;
     string key = MakeKey(section, name);

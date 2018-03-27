@@ -16,7 +16,7 @@ public:
     virtual ACRE_RESULT shutdown(void) = 0;
 
     virtual ACRE_RESULT sendMessage(IMessage *msg) = 0;
-    virtual ACRE_RESULT handleMessage(unsigned char *data) = 0;
+    virtual ACRE_RESULT handleMessage(uint8_t *data) = 0;
     virtual ACRE_RESULT release(void) = 0;
     
     

@@ -5,7 +5,7 @@
 
 Log *g_Log = NULL;
 
-Log::Log(char *logFile) {
+Log::Log(int8_t *logFile) {
     InitializeCriticalSection(&this->m_CriticalSection);
 
     if (logFile == NULL) {
@@ -28,8 +28,8 @@ Log::~Log(void) {
     DeleteCriticalSection(&this->m_CriticalSection);
     CloseHandle(this->fileHandle);
 }
-size_t Log::Write(uint32_t msgType, char *function, unsigned int line, const char *format, ...) {
-    char buffer[4097], tbuffer[1024];
+size_t Log::Write(uint32_t msgType, int8_t *function, uint32_t line, const int8_t *format, ...) {
+    int8_t buffer[4097], tbuffer[1024];
     va_list va;
     size_t ret;
     uint32_t count;
@@ -96,8 +96,8 @@ size_t Log::Write(uint32_t msgType, char *function, unsigned int line, const cha
 
     return(ret);
 }
-size_t Log::PopMessage(uint32_t msgType, const char *format, ...) {
-    char buffer[4097];
+size_t Log::PopMessage(uint32_t msgType, const int8_t *format, ...) {
+    int8_t buffer[4097];
     va_list va;
     int ret;
 

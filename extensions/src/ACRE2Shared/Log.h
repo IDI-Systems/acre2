@@ -60,11 +60,11 @@
 class Log
 {
 public:
-    Log(char *logFile);
+    Log(int8_t *logFile);
     ~Log(void);
 
-    size_t Write(uint32_t msgType, char *function, unsigned int line, const char *format, ...);
-    size_t PopMessage(uint32_t msgType, const char *format, ...);
+    size_t Write(uint32_t msgType, int8_t *function, unsigned int line, const int8_t *format, ...);
+    size_t PopMessage(uint32_t msgType, const int8_t *format, ...);
 
     HANDLE fileHandle;
 

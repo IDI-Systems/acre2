@@ -21,60 +21,60 @@ http://code.google.com/p/inih/
 #define MAX_SECTION 50
 #define MAX_NAME 50
 
-/* Strip whitespace chars off end of given string, in place. Return s. */
-static char* rstrip(char* s)
+/* Strip whitespace int8_ts off end of given string, in place. Return s. */
+static int8_t* rstrip(int8_t* s)
 {
-    char* p = s + strlen(s);
-    while (p > s && isspace((unsigned char)(*--p)))
+    int8_t* p = s + strlen(s);
+    while (p > s && isspace((uint8_t)(*--p)))
         *p = '\0';
     return s;
 }
 
-/* Return pointer to first non-whitespace char in given string. */
-static char* lskip(const char* s)
+/* Return pointer to first non-whitespace int8_t in given string. */
+static int8_t* lskip(const int8_t* s)
 {
-    while (*s && isspace((unsigned char)(*s)))
+    while (*s && isspace((uint8_t)(*s)))
         s++;
-    return (char*)s;
+    return (int8_t*)s;
 }
 
-/* Return pointer to first char c or ';' comment in given string, or pointer to
+/* Return pointer to first int8_t c or ';' comment in given string, or pointer to
    null at end of string if neither found. ';' must be prefixed by a whitespace
-   character to register as a comment. */
-static char* find_char_or_comment(const char* s, char c)
+   int8_tacter to register as a comment. */
+static int8_t* find_int8_t_or_comment(const int8_t* s, int8_t c)
 {
-    int was_whitespace = 0;
+    int32_t was_whitespace = 0;
     while (*s && *s != c && !(was_whitespace && *s == ';')) {
-        was_whitespace = isspace((unsigned char)(*s));
+        was_whitespace = isspace((uint8_t)(*s));
         s++;
     }
-    return (char*)s;
+    return (int8_t*)s;
 }
 
 /* See documentation in header file. */
-int ini_parse_file(FILE* file,
-                   int (*handler)(void*, const char*, const char*,
-                                  const char*),
+int32_t ini_parse_file(FILE* file,
+                   int32_t (*handler)(void*, const int8_t*, const int8_t*,
+                                  const int8_t*),
                    void* user)
 {
     /* Uses a fair bit of stack (use heap instead if you need to) */
 #if INI_USE_STACK
-    char line[INI_MAX_LINE];
+    int8_t line[INI_MAX_LINE];
 #else
-    char* line;
+    int8_t* line;
 #endif
-    char section[MAX_SECTION] = "";
-    char prev_name[MAX_NAME] = "";
+    int8_t section[MAX_SECTION] = "";
+    int8_t prev_name[MAX_NAME] = "";
 
-    char* start;
-    char* end;
-    char* name;
-    char* value;
-    int lineno = 0;
-    int error = 0;
+    int8_t* start;
+    int8_t* end;
+    int8_t* name;
+    int8_t* value;
+    int32_t lineno = 0;
+    int32_t error = 0;
 
 #if !INI_USE_STACK
-    line = (char*)malloc(INI_MAX_LINE);
+    line = (int8_t*)malloc(INI_MAX_LINE);
     if (!line) {
         return -2;
     }
@@ -86,9 +86,9 @@ int ini_parse_file(FILE* file,
 
         start = line;
 #if INI_ALLOW_BOM
-        if (lineno == 1 && (unsigned char)start[0] == 0xEF &&
-                           (unsigned char)start[1] == 0xBB &&
-                           (unsigned char)start[2] == 0xBF) {
+        if (lineno == 1 && (uint8_t)start[0] == 0xEF &&
+                           (uint8_t)start[1] == 0xBB &&
+                           (uint8_t)start[2] == 0xBF) {
             start += 3;
         }
 #endif
@@ -107,7 +107,7 @@ int ini_parse_file(FILE* file,
 #endif
         else if (*start == '[') {
             /* A "[section]" line */
-            end = find_char_or_comment(start + 1, ']');
+            end = find_int8_t_or_comment(start + 1, ']');
             if (*end == ']') {
                 *end = '\0';
                 strncpy(section, start + 1, sizeof(section));
@@ -120,15 +120,15 @@ int ini_parse_file(FILE* file,
         }
         else if (*start && *start != ';') {
             /* Not a comment, must be a name[=:]value pair */
-            end = find_char_or_comment(start, '=');
+            end = find_int8_t_or_comment(start, '=');
             if (*end != '=') {
-                end = find_char_or_comment(start, ':');
+                end = find_int8_t_or_comment(start, ':');
             }
             if (*end == '=' || *end == ':') {
                 *end = '\0';
                 name = rstrip(start);
                 value = lskip(end + 1);
-                end = find_char_or_comment(value, '\0');
+                end = find_int8_t_or_comment(value, '\0');
                 if (*end == ';')
                     *end = '\0';
                 rstrip(value);
@@ -158,12 +158,12 @@ int ini_parse_file(FILE* file,
 }
 
 /* See documentation in header file. */
-int ini_parse(const char* filename,
-              int (*handler)(void*, const char*, const char*, const char*),
+int32_t ini_parse(const int8_t* filename,
+              int32_t (*handler)(void*, const int8_t*, const int8_t*, const int8_t*),
               void* user)
 {
     FILE* file;
-    int error;
+    int32_t error;
     file = fopen(filename, "r");
     if (!file)
         return -1;

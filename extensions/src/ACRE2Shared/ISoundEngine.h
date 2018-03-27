@@ -54,8 +54,8 @@ public:
     virtual ARNE_RESULT        onClientGameDisconnected(void) = 0;
 
     
-    virtual int get_CurveModel() = 0;
-    virtual void set_CurveModel(int model) = 0;
+    virtual int32_t get_CurveModel() = 0;
+    virtual void set_CurveModel(int32_t model) = 0;
 
     virtual float get_CurveScale() = 0;
     virtual void set_CurveScale(float scale) = 0;
