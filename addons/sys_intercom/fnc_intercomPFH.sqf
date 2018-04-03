@@ -69,7 +69,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
                 if (!isNull _unit) then {
                     private _voiceActivation = (_stationConfig select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_VOICEACTIVATION;
                     // If the unit is not pressing the key to talk to intercom, treat it like not transmitting.
-                    if (!_voiceActivation && {_intercomConfig == INTERCOM_TX_ONLY || _intercomConfig == INTERCOM_RX_AND_TX} && {_unit getVariable [QGVAR(intercomPTT), false]}) then {
+                    if (!_voiceActivation && {_intercomConfig == INTERCOM_TX_ONLY || _intercomConfig == INTERCOM_RX_AND_TX} && {!(_unit getVariable [QGVAR(intercomPTT), false])}) then {
                         _intercomConfig = INTERCOM_RX_ONLY;
                     };
 
