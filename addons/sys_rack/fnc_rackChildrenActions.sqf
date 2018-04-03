@@ -48,7 +48,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             private _action = [QGVAR(mountedRadio), _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
-        if (_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) then {
+        if (_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS || {_mountedRadio in ACRE_HEARABLE_RACK_RADIOS}) then {
             // stop
             private _action = [QGVAR(stopUsingMountedRadio), localize LSTRING(stopUsingRadio), "", {
                 params ["_target","_unit","_params"];
@@ -80,7 +80,8 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             private _action = [QGVAR(mountedRadio), _text, _icon, {1+1;}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
 
-            if (_mountedRadio in ACRE_HEARABLE_RACK_RADIOS) then {
+            // Check as well if a unit has the radio already in use (Turned out/in etc)
+            if (_mountedRadio in ACRE_HEARABLE_RACK_RADIOS || {_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS}) then {
                 private _action = [QGVAR(stopUsingMountedRadio), localize LSTRING(stopUsingRadio), "", {
                     params ["_target", "_unit", "_params"];
                     _params params ["_mountedRadio"];
