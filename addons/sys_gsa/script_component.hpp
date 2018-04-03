@@ -7,7 +7,10 @@
 #endif
 
 #ifdef DEBUG_SETTINGS_SYS_GSA
-    #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_GSAA
+    #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_GSA
 #endif
 
+#define ANTENNA_MAXDISTANCE 10.0
+
 #include "\idi\acre\addons\main\script_macros.hpp"
+#include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"

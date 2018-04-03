@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_gsa">
+        <Key ID="STR_ACRE_sys_gsa_connected">
+            <English>Connected to GSA</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gsa_disconnected">
+            <English>Disconnected from GSA</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gsa_placeSpike">
+            <English>Place Spike</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gsa_placeSpikeMast">
+            <English>Place Spike w. Mast</English>
+        </Key>
         <Key ID="STR_ACRE_sys_gsa_pickup">
             <English>Pick up</English>
         </Key>

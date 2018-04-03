@@ -1,11 +1,35 @@
 class CBA_Extended_EventHandlers;
 
-class CfgVehicles {
+class CfgVehicles {/*
+    class Man;
+    class CAManBase: Man {
+        class ACE_SelfActions {
+            class ACE_Equipment {
+                class GVAR(placeSpike) {
+                    displayName = CSTRING(placeSpike);
+                    condition = QUOTE([ARR_2(_player,'acre2_vhf30108spike')] call EFUNC(core,hasItem) || [ARR_2(_player,'acre2_vhf30108')] call EFUNC(core,hasItem));
+                    statement = QUOTE([ARR_2(_player,'acre2_vhf30108spike', false)] call FUNC(deploy));
+                    showDisabled = 0;
+                    icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
+                };
+
+                class GVAR(placeSpikeMast) {
+                    displayName = CSTRING(placeSpikeMast);
+                    condition = QUOTE([ARR_2(_player,'acre2_vhf30108')] call EFUNC(core,hasItem));
+                    statement = QUOTE([ARR_2(_player,'acre2_vhf30108', true)] call FUNC(deploy));
+                    showDisabled = 0;
+                    icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
+                };
+            };
+        };
+    };*/
+
     class House;
     class vhf30108Item: House {
         class EventHandlers {
             class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers {};
         };
+
         scope = 2;
         scopeCurator = 2;
         scopeArsenal = 2;
@@ -17,32 +41,34 @@ class CfgVehicles {
 
         class AcreComponents {
             componentName = "ACRE_643CM_VHF_TNC";
+            mountedAntenna = "vhf30108spike";
+            mastMount[] = {};
         };
 
         class ACE_Actions {
             class ACE_MainActions {
                 selection = "interaction_point";
-                distance = 5;
+                distance  = 5;
                 condition = "(true)";
 
                 class ACRE_pickup {
                     selection = "";
                     displayName = CSTRING(pickUp);
                     distance = 10;
-                    condition = "{systemChat format ['testing']; true";
-                    statement = "(true)";//QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
+                    condition = "true";
+                    statement = QUOTE([ARR_2(_player,_target)] call DFUNC(pickUp));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
                     //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
                 };
 
-                class ACRE_mountMast {
+                class ACRE_removeMast {
                     selection = "";
                     displayName = CSTRING(removeMast);
                     distance = 10;
-                    condition = "{systemChat format ['testing']; true";
-                    statement = "(true)";//QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
+                    condition = "true";
+                    statement = QUOTE([ARR_3(_player,_target, false)] call DFUNC(handleMast));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -53,9 +79,21 @@ class CfgVehicles {
                     selection = "";
                     displayName = CSTRING(connect);
                     distance = 10;
-                    condition = "(true)";
-                    //wait a frame to handle "Do When releasing action menu key" option:
-                    statement = "(true)";//QUOTE([ARR_2({_this call FUNC(adjust)}, [ARR_2(_player,_target)])] call CBA_fnc_execNextFrame);
+                    condition = QUOTE(!([ARR_2(_player,_target)] call DFUNC(isAntennaConnected)));
+                    statement = QUOTE(true);
+                    insertChildren = QUOTE([ARR_2(_player,_target)] call DFUNC(connectChildrenActions));
+                    showDisabled = 0;
+                    exceptions[] = {};
+                    priority = 5;
+                    icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                };
+
+                class ACRE_disconnect {
+                    selection = "";
+                    displayName = CSTRING(disconnect);
+                    distance = 10;
+                    condition = QUOTE([ARR_2(_player,_target)] call DFUNC(isAntennaConnected));
+                    statement = QUOTE([ARR_2(_player,_target)] call DFUNC(disconnect));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -64,6 +102,7 @@ class CfgVehicles {
             };
         };
     };
+
     class vhf30108spike: House {
         class EventHandlers {
             class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers {};
@@ -80,20 +119,22 @@ class CfgVehicles {
 
         class AcreComponents {
             componentName = "ACRE_243CM_VHF_TNC";
+            mountedAntenna = "";
+            mastMount[] = {"vhf30108Item"};
         };
 
         class ACE_Actions {
             class ACE_MainActions {
                 selection = "interaction_point";
-                distance = 5;
+                distance = 10;
                 condition = "(true)";
 
                 class ACRE_pickup {
                     selection = "";
                     displayName = CSTRING(pickUp);
                     distance = 10;
-                    condition = "{systemChat format ['testing']; true";
-                    statement = "(true)";//QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
+                    condition = "true";
+                    statement = QUOTE([ARR_2(_player,_target)] call DFUNC(pickUp));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -104,8 +145,8 @@ class CfgVehicles {
                     selection = "";
                     displayName = CSTRING(mountMast);
                     distance = 10;
-                    condition = "{systemChat format ['testing']; true";
-                    statement = "(true)";//QUOTE([ARR_2(_player,_target)] call FUNC(pickup));
+                    condition = QUOTE([ARR_1(_player)] call DFUNC(hasItemMast));
+                    statement = QUOTE([ARR_3(_player,_target, true)] call DFUNC(handleMast));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -116,9 +157,21 @@ class CfgVehicles {
                     selection = "";
                     displayName = CSTRING(connect);
                     distance = 10;
-                    condition = "(true)";
-                    //wait a frame to handle "Do When releasing action menu key" option:
-                    statement = "(true)";//QUOTE([ARR_2({_this call FUNC(adjust)}, [ARR_2(_player,_target)])] call CBA_fnc_execNextFrame);
+                    condition = QUOTE(!([ARR_2(_player,_target)] call DFUNC(isAntennaConnected)));
+                    statement = QUOTE(true);
+                    insertChildren = QUOTE([ARR_2(_player,_target)] call DFUNC(connectChildrenActions));
+                    showDisabled = 0;
+                    exceptions[] = {};
+                    priority = 5;
+                    icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                };
+
+                class ACRE_disconnect {
+                    selection = "";
+                    displayName = CSTRING(disconnect);
+                    distance = 10;
+                    condition = QUOTE([ARR_2(_player,_target)] call DFUNC(isAntennaConnected));
+                    statement = QUOTE([ARR_2(_player,_target)] call DFUNC(disconnect));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;

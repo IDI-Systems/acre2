@@ -18,6 +18,6 @@
 
 params ["_gsa", "_radioId"];
 
-private _isCompatible = false;
+private _isCompatible = true;
 
 _isCompatible

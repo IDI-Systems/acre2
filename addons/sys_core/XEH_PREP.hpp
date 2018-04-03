@@ -23,6 +23,7 @@ PREP(handleGetPluginVersion);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
 PREP(hasAccessToVehicleSystem);
+PREP(hasItem);
 PREP(isMuted);
 PREP(localStartSpeaking);
 PREP(localStopSpeaking);

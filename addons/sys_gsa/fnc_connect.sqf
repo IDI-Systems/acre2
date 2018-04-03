@@ -18,9 +18,23 @@
 
 params ["_gsa", "_radioId"];
 
-//private _classname = typeOf _gsa;
-//private _componentName = configFile >> "CfgVehicles" >> _classname >> "AcreComponents";
-private _componentName = "ACRE_643CM_VHF_TNC";
-systemChat format ["_radioId %1 component %2", _radioId, _componentName];
+private _classname = typeOf _gsa;
+private _componentName = getText (configFile >> "CfgVehicles" >> _classname >> "AcreComponents" >> "componentName");
+
+// Check if the antenna was connected somewhere else
+private _connectedGsa = [_radioId, "getState", "externalAntennaConnected"] call EFUNC(sys_data,dataEvent);
+
+if (_connectedGsa select 0) then {
+    // Disconnect from antenna
+    [acre_player, _connectedGsa select 1] call FUNC(disconnect);
+};
+
 // Force attach the ground spike antenna
 [_radioId, 0, _componentName, [], true] call EFUNC(sys_components,attachSimpleComponent);
+
+_gsa setVariable [QGVAR(connectedRadio), _radioId, true];
+[_radioId, "setState", ["externalAntennaConnected", [true, _gsa]]] call EFUNC(sys_data,dataEvent);
+
+[localize LSTRING(connected), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+
+systemChat format ["conn. to %1", _gsa getVariable [QGVAR(connectedRadio), ""]];
