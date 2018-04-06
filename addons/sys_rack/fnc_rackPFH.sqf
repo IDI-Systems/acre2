@@ -50,7 +50,9 @@ private _remove = [];
     if (count ([_rack] call FUNC(getWiredIntercoms)) > 0 && _isRackHearable) then {
         private _functionality = [_x, _vehicle, _player, _rack] call EFUNC(sys_intercom,getRackRxTxCapabilities);
 
-        if (_functionality == RACK_NO_MONITOR) then {_remove pushBackUnique _x;};
+        if (_functionality == RACK_NO_MONITOR) then {
+            _remove pushBackUnique _x;
+        };
     };
 
     if (!(_isRackAccessible || _isRackHearable)) then {_remove pushBackUnique _x; };
@@ -61,11 +63,16 @@ private _remove = [];
         ACRE_ACCESSIBLE_RACK_RADIOS deleteAt (ACRE_ACCESSIBLE_RACK_RADIOS find _x);
     } else {
         ACRE_HEARABLE_RACK_RADIOS deleteAt (ACRE_HEARABLE_RACK_RADIOS find _x);
+        [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
     };
 
     // Handle active radio
     [_x] call EFUNC(sys_radio,stopUsingRadio);
 } forEach _remove;
+
+if !(_remove isEqualTo []) then {
+    [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
+};
 
 if ((_player == vehicle _player) && (ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []) && (ACRE_HEARABLE_RACK_RADIOS isEqualTo [])) then {
     [GVAR(rackPFH)] call CBA_fnc_removePerFrameHandler;
