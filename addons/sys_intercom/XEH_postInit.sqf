@@ -50,7 +50,7 @@ if (!hasInterface) exitWith {};
 ["vehicle", {
     params ["_player", "_newVehicle"];
     [_newVehicle, _player] call FUNC(enterVehicle);
-}] call CBA_fnc_addPlayerEventHandler;
+}, true] call CBA_fnc_addPlayerEventHandler;
 
 player addEventHandler ["seatSwitchedMan", {
     params ["_unit1", "_unit2", "_vehicle"];
@@ -61,11 +61,6 @@ player addEventHandler ["seatSwitchedMan", {
     params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED]];
     [_vehicle, _unit, _action, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
 }] call CBA_fnc_addEventHandler;
-
-// Handle the case of starting inside a vehicle
-if (vehicle acre_player != acre_player) then {
-    [vehicle acre_player, acre_player] call FUNC(enterVehicle);
-};
 
 #ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {

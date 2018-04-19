@@ -8,7 +8,8 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
     [_newVehicle, _player] call FUNC(enterVehicle);
 }] call CBA_fnc_addPlayerEventHandler;
 
-// Handle the case of starting inside a vehicle
+// Handle the case of starting inside a vehicle. addPlayerEventhandler retrospectively would not work
+// when initialising the racks since we have to execute it once radios are being initialised
 if (vehicle acre_player != acre_player) then {
     [{
         params ["_vehicle", "_player"];
