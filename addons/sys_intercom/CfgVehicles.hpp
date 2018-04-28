@@ -309,6 +309,11 @@ class CfgVehicles {
         acre_infantryPhoneControlActions[] = {"intercom_1"};
     };
 
+    class ParachuteBase : Helicopter {
+        acre_hasInfantryPhone = 0;
+        class AcreIntercoms {};
+    };
+
     // BLUFOR
     class Heli_Light_01_unarmed_base_F;
     class B_Heli_Light_01_F: Heli_Light_01_unarmed_base_F {
