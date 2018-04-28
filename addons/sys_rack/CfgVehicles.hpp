@@ -148,7 +148,7 @@ class CfgVehicles {
     };
 
     class ParachuteBase : Helicopter {
-        class AcreIntercoms {};
+        class AcreRacks {};
     };
 
     class VTOL_01_base_F;
