@@ -28,5 +28,5 @@ Make sure to launch both Arma 3 (Steam) and TeamSpeak 3 as admin, or neither.
 - **Radio beeps not audible on dedicated server**  
 Make sure your `server.cfg` has `"b64"` whitelisted in `allowedLoadFileExtensions[]` and `allowedPreprocessFileExtensions[]` if you are using that. Let your server administrator know if you have no idea what this means.
 
-- **insufficient client permissions (failed on i_channel_needed_subscribe_power)**  
-This does not affect ACRE. The ACRE teamspeak plugin will subscribe to all channels in the teamspeak server, and if the teamspeak server contains any channels which have a higher `i_channel_needed_subscribe_power` value than what the client is granted then teamspeak will flag an error.
+- **Insufficient client permissions `(failed on i_channel_needed_subscribe_power)`**
+This does not affect ACRE2's functionalities. The ACRE2 TeamSpeak plugin will subscribe to all channels in the TeamSpeak server, and if the TeamSpeak server contains any channels which have a higher `i_channel_needed_subscribe_power` value than what the client is granted then TeamSpeak will throw an error.
