@@ -32,7 +32,7 @@ deleteVehicle _gsa;
 
 // Create the new vehicle
 if (_mountMast) then {
-    _gsa = "vhf30108Item" createVehicle _pos;
+    _gsa = "vhf30108Item" createVehicle (_pos vectorAdd [0, 0, MAST_Z_OFFSET]);
 
     _player removeItem "acre2_vhf30108mast";
 } else {

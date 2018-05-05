@@ -38,17 +38,28 @@ private _searchFunction = {
                         private _componentType = getNumber (_componentClass >> "type");
                         if (_componentType == ACRE_COMPONENT_ANTENNA) then {
                             private _componentObject = _componentParentId;
+                            systemChat format ["Antenna object %1", _componentObject];
                             if (IS_STRING(_componentParentId)) then {
-                                if (HASH_HASKEY(_attributes, "worldObject")) then {
-                                    _componentObject = HASH_GET(_attributes, "worldObject");
+                                private _groundSpikeAntenna = [_componentParentId] call EFUNC(sys_gsa,getConnectedGsa);
+                                if (isNull _groundSpikeAntenna) then {
+                                    if (HASH_HASKEY(_attributes, "worldObject")) then {
+                                        _componentObject = HASH_GET(_attributes, "worldObject");
+                                    } else {
+                                        _componentObject = [_componentParentId] call EFUNC(sys_radio,getRadioObject);
+                                    };
                                 } else {
-                                    _componentObject = [_componentParentId] call EFUNC(sys_radio,getRadioObject);
+                                    _componentObject = _groundSpikeAntenna;
                                 };
                             };
                             private _objectType = typeOf _componentObject;
                             private _antennaPos = getPosASL _componentObject;
                             if (!(_objectType isKindOf "CAManBase")) then {
-                                _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
+                                if (_objectType isKindOf "House") then {
+                                    _antennaPos = _antennaPos vectorAdd [0, 0, -((boundingCenter _componentObject) select 2)];
+                                    systemChat format ["Antenna Pos %1", _antennaPos];
+                                } else {
+                                    _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
+                                };
                             };
                             private _antennaDir = vectorDir _componentObject;
                             private _antennaDirUp = vectorUp _componentObject;

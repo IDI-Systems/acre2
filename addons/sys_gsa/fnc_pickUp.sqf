@@ -39,6 +39,12 @@ switch (_classname) do {
     };
     case "vhf30108spike": {
         _item = "acre2_vhf30108spike";
+
+        // If the unit has a spike
+        if ([_unit, "acre2_vhf30108mast"] call EFUNC(sys_core,hasItem)) then {
+            _item = "acre2_vhf30108";
+        };
+
         if (_unit canAdd _item) then {
             _item = _item;
             _canDelete = true;

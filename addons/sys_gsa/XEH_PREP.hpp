@@ -3,6 +3,7 @@ PREP(connectChildrenActions);
 PREP(deploy);
 PREP(disconnect);
 PREP(externalAntennaPFH);
+PREP(getConnectedGsa);
 PREP(handleMast);
 PREP(hasItemMast);
 PREP(initGsa);

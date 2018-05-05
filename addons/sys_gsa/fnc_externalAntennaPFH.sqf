@@ -14,35 +14,30 @@
  * None
  *
  * Example:
- * [] call acre_sys_gsa_externalAntennaPFH
+ * [cursorTarget, "acre_prc152_id_1"] call acre_sys_gsa_externalAntennaPFH
  *
  * Public: No
  */
 #include "script_component.hpp"
 
-params ["_gsa"];
+params ["_params"];
+_params params ["_gsa", "_radioId"];
 
-if (!alive _gsa) then {
-    [acre_player, _gsa] call FUNC(disconnect);
+private _unit = objNull;
+if (_radioId != "") then {
+    _unit = [_radioId] call EFUNC(sys_radio,getRadioObject);
+};
+
+if (!alive _gsa || {!alive _unit} || {_unit isKindOf "CAManBase" && !(isPlayer _unit)} || {_radioId isEqualTo ""}) then {
+    [QGVAR(disconnectGsa), [_gsa, _unit]] call CBA_fnc_localEvent;
 } else {
-    private _radioId = _gsa getVariable [QGVAR(connectedRadio), ""];
+    private _connectedRadioId = _gsa getVariable [QGVAR(connectedRadio), ""];
 
-    if (_radioId != "") then {
-        // Check if this is a rack radio
-        private _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
-        private _unit = objNull;
-        if (_rackId != "") then {
-            _unit = [_rackId] call EFUNC(sys_rack,getVehicleFromRack);
-        } else {
-            if ([_radioId] call EFUNC(sys_external,isExternalRadioUsed)) then {
-                _unit = [_radioId] call EFUNC(sys_external,getExternalRadioOwner);
-            } else {
-                _unit = acre_player;
-            };
-        };
-
+    if (_connectedRadioId isEqualTo _radioId) then {
         if ((_unit distance _gsa) > ANTENNA_MAXDISTANCE) then {
-            [acre_player, _gsa] call FUNC(disconnect);
+            [QGVAR(disconnectGsa), [_gsa, _unit]] call CBA_fnc_localEvent;
         };
+    } else {
+        [QGVAR(disconnectGsa), [_gsa, _unit]] call CBA_fnc_localEvent;
     };
 };

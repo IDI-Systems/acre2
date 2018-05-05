@@ -1,28 +1,28 @@
 class CBA_Extended_EventHandlers;
 
-class CfgVehicles {/*
+class CfgVehicles {
     class Man;
     class CAManBase: Man {
         class ACE_SelfActions {
             class ACE_Equipment {
                 class GVAR(placeSpike) {
                     displayName = CSTRING(placeSpike);
-                    condition = QUOTE([ARR_2(_player,'acre2_vhf30108spike')] call EFUNC(core,hasItem) || [ARR_2(_player,'acre2_vhf30108')] call EFUNC(core,hasItem));
-                    statement = QUOTE([ARR_2(_player,'acre2_vhf30108spike', false)] call FUNC(deploy));
+                    condition = QUOTE([ARR_2(_player,'acre2_vhf30108spike')] call EFUNC(sys_core,hasItem) || [ARR_2(_player,'acre2_vhf30108')] call EFUNC(sys_core,hasItem));
+                    statement = QUOTE([ARR_3(_player,'acre2_vhf30108spike', false)] call FUNC(deploy));
                     showDisabled = 0;
                     icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
                 };
 
                 class GVAR(placeSpikeMast) {
                     displayName = CSTRING(placeSpikeMast);
-                    condition = QUOTE([ARR_2(_player,'acre2_vhf30108')] call EFUNC(core,hasItem));
-                    statement = QUOTE([ARR_2(_player,'acre2_vhf30108', true)] call FUNC(deploy));
+                    condition = QUOTE([ARR_2(_player,'acre2_vhf30108')] call EFUNC(sys_core,hasItem));
+                    statement = QUOTE([ARR_3(_player,'acre2_vhf30108', true)] call FUNC(deploy));
                     showDisabled = 0;
                     icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
                 };
             };
         };
-    };*/
+    };
 
     class House;
     class vhf30108Item: House {
