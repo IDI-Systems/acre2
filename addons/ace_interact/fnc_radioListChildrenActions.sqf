@@ -44,7 +44,7 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
     _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
     private _picture = getText (_item >> "picture");
-    private _isActive = _x isEqualTo _currentRadio;
+    private _isActive = _x isEqualTo _currentRadio; // Unused
 
     private _action = [
         _x,

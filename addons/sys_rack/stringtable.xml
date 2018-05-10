@@ -13,19 +13,19 @@
             <Italian>Monta</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
-            <English>Unmountable (%1)</English>
-            <Italian>Non montabile (%1)</Italian>
+            <English>Unmountable</English>
+            <Italian>Non montabile</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
-            <English>Unmount (%1)</English>
-            <German>Entferne (%1)</German>
-            <Japanese>降ろす (%1)</Japanese>
-            <Chinese>卸載 (%1)</Chinese>
-            <Chinesesimp>卸载 (%1)</Chinesesimp>
-            <Korean>분리 (%1)</Korean>
-            <Portuguese>Desmontar (%1)</Portuguese>
-            <Polish>Wymontuj (%1)</Polish>
-            <Italian>Smonta (%1)</Italian>
+            <English>Unmount</English>
+            <German>Entferne</German>
+            <Japanese>降ろす</Japanese>
+            <Chinese>卸載</Chinese>
+            <Chinesesimp>卸载</Chinesesimp>
+            <Korean>분리</Korean>
+            <Portuguese>Desmontar</Portuguese>
+            <Polish>Wymontuj</Polish>
+            <Italian>Smonta</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted (%1)</English>
