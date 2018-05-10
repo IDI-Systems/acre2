@@ -2,7 +2,7 @@ class CfgVehicles {
     // Vehicle rack vehicle definitions
     class ACRE_BaseRack;
     class ACRE_VRC64 : ACRE_BaseRack {
-        displayName = "AN/VRC-64 Rack";
+        displayName = "AN/VRC-64";
     };
     RADIO_ID_LIST(ACRE_VRC64)
 
