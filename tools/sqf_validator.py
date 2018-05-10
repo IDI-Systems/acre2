@@ -83,6 +83,8 @@ def check_sqf_syntax(filepath):
                         if (c == '"' or c == "'"):
                             isInString = True
                             inStringType = c
+                        elif (c == '#'):
+                            checkForSemiColumn = False
                         elif (c == '/'):
                             checkIfInComment = True
                         elif (c == '('):
