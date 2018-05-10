@@ -31,11 +31,6 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
 
-        private _unitsIntercom = _vehicle getVariable[QGVAR(unitsIntercom) , []];
-        {
-            [_vehicle, _unit, _intercomNetwork, INTERCOM_DISCONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
-        } forEach _unitsIntercom;
-
         ACRE_PLAYER_INTERCOM = [];
         [format [localize LSTRING(infantryPhoneDisconnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
@@ -45,8 +40,6 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
 
-        [_vehicle, _unit, _intercomNetwork, INTERCOM_CONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
-
         [format [localize LSTRING(infantryPhoneConnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
         GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
@@ -54,17 +47,12 @@ switch (_action) do {
         // Give the intercom to another unit
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
-        [_vehicle, _unit, _intercomNetwork, INTERCOM_DISCONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
 
         [QGVAR(giveInfantryPhone), ["_vehicle", "_unit", 1, _intercomNetwork], _unit] call CBA_fnc_targetEvent;
         [format [localize LSTRING(infantryPhoneReceived), _intercomText], ICON_RADIO_CALL, nil, _unit] call EFUNC(sys_core,displayNotification);
     };
     case 3: {
         private _previousIntercom = _vehicle getVariable [QGVAR(unitInfantryPhone), []] select 1;
-        [_vehicle, _unit, _previousIntercom, INTERCOM_DISCONNECTED, false] call acre_sys_intercom_fnc_setIntercomUnits;
-
-        // Switch to another intercom network
-        [_vehicle, _unit, _intercomNetwork, INTERCOM_CONNECTED] call acre_sys_intercom_fnc_setIntercomUnits;
 
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
