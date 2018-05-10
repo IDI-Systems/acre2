@@ -57,7 +57,7 @@ if (_unit != _vehicle) then {
     // Update the display
     [_vehicle, _unit] call EFUNC(sys_intercom,updateVehicleInfoText);
 
-    // Enable the PFH if it is not active. This can only happen if the unit is using an external radio before entering the vehicle
+    // Enable the PFH if it is not active (can only be active if the unit is using an external radio before entering the vehicle)
     if (GVAR(rackPFH) == -1) then {
         GVAR(rackPFH) = [DFUNC(rackPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
