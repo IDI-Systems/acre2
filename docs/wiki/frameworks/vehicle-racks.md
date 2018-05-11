@@ -31,6 +31,7 @@ class CfgVehicles {
         class AcreRacks {
             class Rack_1 {
                 displayName = "Dashboard Upper";      // Name displayed in the interaction menu
+                shortName = "D.Up";                   // Short name displayed on the HUD. Maximum of 5 characters
                 componentName = "ACRE_VRC110";        // Able to mount a PRC152
                 allowedPositions[] = {"driver", {"cargo", 1}}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {};
@@ -41,6 +42,7 @@ class CfgVehicles {
             };
             class Rack_2 {
                 displayName = "Dashboard Lower";      // Name displayed in the interaction menu
+                shortName = "D.Low";                  // Short name displayed on the HUD. Maximum of 5 characters
                 componentName = "ACRE_VRC103";        // Rack type (able to mount a PRC117F)
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {};
@@ -65,6 +67,7 @@ class CfgVehicles {
         class AcreRacks {
            class Rack_1 {
                displayName = "Dash"; // Name is displayed in the interaction menu.
+               shortName = "Dash";
                componentName = "ACRE_VRC103";
                allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access. "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                disabledPositions[] = {};
@@ -89,6 +92,7 @@ class CfgVehicles {
         class AcreRacks {
            class Rack_1 {
                displayName = "Dash"; // Name is displayed in the interaction menu.
+               shortName = "Dash";
                componentName = "ACRE_VRC103";
                allowedPositions[] = {"driver", "copilot"}; // Who has access. "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                disabledPositions[] = {};
@@ -137,14 +141,17 @@ class CfgVehicles {
         class AcreIntercoms {
             class Intercom_1 {
                 displayName = "Crew intercom";
+                shortName = "Crew";
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {"driver", {"turnedout", "all"}};
+                masterPositions[] = {"commander"};
                 limitedPositions[] = {{"cargo", "all"}};
                 numLimitedPositions = 2;
                 connectedByDefault = 1;
             };
-            class Intercom_2: Intercom 1 {
+            class Intercom_2: Intercom_1 {
                 displayName = "Passenger intercom";
+                shortName = "Pax";
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 disabledPositions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}, {"turnedout", 2, "driver", "gunner", [2]}};
                 limitedPositions[] = {};
@@ -164,6 +171,7 @@ class CfgVehicles {
         class AcreRacks {
             class Rack_1 {
                 displayName = "Dashboard Upper";             // Name displayed in the interaction menu
+                shortName = "D.Up";
                 componentName = "ACRE_VRC110";        // Able to mount a PRC152
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {};
@@ -174,6 +182,7 @@ class CfgVehicles {
             };
             class Rack_2 {
                 displayName = "Dashboard Upper";             // Name displayed in the interaction menu
+                shortName = "D.Up";
                 componentName = "ACRE_VRC110";        // Able to mount a PRC152
                 allowedPositions[] = {{"cargo", "all"}};       // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {{"ffv", "all"}};
@@ -184,6 +193,7 @@ class CfgVehicles {
             };
             class Rack_3 {
                 displayName = "Dashboard Lower";             // Name displayed in the interaction menu
+                shortName = "D.Low";
                 componentName = "ACRE_VRC103";        // Rack type (able to mount a PRC117F)
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {};

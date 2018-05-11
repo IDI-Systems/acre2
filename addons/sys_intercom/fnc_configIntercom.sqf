@@ -42,8 +42,8 @@ private _broadcasting = [];
     private _masterPositions = getArray (_x >> "masterPositions");
     private _availabeIntercomPositions = [];
 
-    if (count _shortName > 4) then {
-        WARNING_2("Intercom short name %1 is longer than 4 characters for vehicle %2",_shortName,_vehicle);
+    if (count _shortName > 5) then {
+        WARNING_2("Intercom short name %1 is longer than 5 characters for vehicle %2",_shortName,_vehicle);
     };
 
     // Check if the entry in allowed positions is correct

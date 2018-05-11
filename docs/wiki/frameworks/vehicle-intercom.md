@@ -32,10 +32,9 @@ class CfgVehicles {
         class AcreIntercoms {
             class Intercom_1 {                             // Each entry defines a network
                 displayName = "Crew intercom";             // Name of the intercom network displayed to the players
-                shortName = "Crew";                        // Short name of the intercom network. Maximum 4 characters
+                shortName = "Crew";                        // Short name of the intercom network. Maximum of 5 characters
                 // Seats with stations configured that have intercom access. In this case, units in commander, driver, gunner and turret (excluding FFV) have access to this intercom
                 // If left empty it has the same effect
-                shortName =
                 allowedPositions[] = {"crew"};
                 // In this case the commander turret does not have access to crew intercom (unit is "turned out"). This can be useful for historical vehicles
                 disabledPositions[] = {{"Turret", {0,0}}};
