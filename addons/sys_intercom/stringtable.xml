@@ -57,19 +57,19 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneDisconnected">
             <English>Infantry Phone Disconnected</English>
-            <Japanese>車外電話機を切断した</Japanese>
+            <Japanese>車外電話機を切断しました</Japanese>
             <Russian>Телефон пехоты был отключен</Russian>
             <Polish>Telefon odłączony</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneConnected">
             <English>Infantry Phone Connected %1</English>
-            <Japanese>車外電話機 %1 に切断した</Japanese>
+            <Japanese>車外電話機 %1 に接続しました</Japanese>
             <Russian>Телефон пехоты подключен %1</Russian>
             <Polish>Telefon podłączony %1</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
             <English>Infantry Phone Received %1</English>
-            <Japanese>車外電話機 %1 に受信した</Japanese>
+            <Japanese>車外電話機 %1 が受信されました</Japanese>
             <Russian>Получен телефон пехоты %1</Russian>
             <Polish>Odebrano telefon piechoty %1</Polish>
         </Key>
@@ -86,13 +86,13 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercomDisconnected">
             <English>Disconnected from Crew Intercom</English>
-            <Japanese>乗員インターコムから切断した</Japanese>
+            <Japanese>乗員インターコムから切断しました</Japanese>
             <Russian>Отключен от внутренней связи экипажа</Russian>
             <Polish>Odłączony od interkomu</Polish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercomConnected">
             <English>Connected to Crew Intercom</English>
-            <Japanese>乗員インターコムに接続した</Japanese>
+            <Japanese>乗員インターコムに接続しました</Japanese>
             <Russian>Подключен к внутренней связи экипажа</Russian>
             <Polish>Podłączony do interkomu</Polish>
         </Key>
@@ -110,17 +110,17 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomDisconnected">
             <English>Disconnected from Pax Intercom</English>
-            <Japanese>パックス インターコムから切断した</Japanese>
+            <Japanese>パックス インターコムから切断しました</Japanese>
             <Russian>Отключен от пассажирского интеркома</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomConnected">
             <English>Connected to Pax Intercom</English>
-            <Japanese>パックス インターコムに接続した</Japanese>
+            <Japanese>パックス インターコムに接続しました</Japanese>
             <Russian>Подключен к пассажирскому интеркому</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercomNoConnections">
             <English>No free connections for Pax Intercom</English>
-            <Japanese>パックス インターコムに接続できる場所が無い</Japanese>
+            <Japanese>パックス インターコムに接続できる場所がありません</Japanese>
             <Russian>Нет свободных соединений для пассажирского интеркома</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_transOnly">
