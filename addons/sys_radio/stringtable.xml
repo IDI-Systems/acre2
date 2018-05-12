@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_radio">
         <Key ID="STR_ACRE_sys_radio_radioSupplyCrate">
@@ -16,7 +16,7 @@
         <Key ID="STR_ACRE_sys_radio_noGuiExternal">
             <English>Radio used externally. Only owner may configure.</English>
             <German>Das Funkgerät wird extern benutzt. Nur der Besitzer kann es einstellen.</German>
-            <Japanese>無線機は外部で使用されます。オーナーのみが設定可能です。</Japanese>
+            <Japanese>無線機は外部で使用されます。オーナーのみ設定可能です。</Japanese>
             <Chinese>外部無線電。只有擁有者才能設定。</Chinese>
             <Chinesesimp>外部无线电。只有拥有者才能设定。</Chinesesimp>
             <Korean>무전기가 외부에서 사용되었습니다. 사용자만 설정 할 수 있습니다.</Korean>
@@ -27,7 +27,7 @@
         <Key ID="STR_ACRE_sys_radio_noGuiTurnedOut">
             <English>Radio rack can't be reached from this position.</English>
             <German>Das Funkgerät kann von der aktuellen Position nicht erreicht werden.</German>
-            <Japanese>無線機ラックは顔を外に出していると設定できません。</Japanese>
+            <Japanese>無線機ラックは身を外に出していると設定できません。</Japanese>
             <Chinese>無法從這個位置碰到無線電架。</Chinese>
             <Chinesesimp>无法从这个位置碰到无线电架。</Chinesesimp>
             <Korean>이 위치에서 무전기 선반에 닿지 않습니다.</Korean>
@@ -70,7 +70,7 @@
         <Key ID="STR_ACRE_sys_radio_alreadyTransmitting">
             <English>Radio already transmitting.</English>
             <German>Funkgerät bereits am senden.</German>
-            <Japanese>無線機は既に送信中。</Japanese>
+            <Japanese>無線機は既に送信中です。</Japanese>
             <Chinese>無線電已經在發送中。</Chinese>
             <Chinesesimp>无线电已经在发送中。</Chinesesimp>
             <Korean>무전기가 이미 전송중 입니다.</Korean>
@@ -80,7 +80,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_radio_alreadyOpenRadio">
             <English>Radio is being configured by another player.</English>
-            <Japanese>無線機は既に他プレイヤーによって設定されています。</Japanese>
+            <Japanese>無線機は他プレイヤーが設定中です。</Japanese>
             <Chinese>無線電正在被另一名玩家進行設置。</Chinese>
             <Chinesesimp>无线电正在被另一名玩家进行设置。</Chinesesimp>
             <Korean>다른 플레이어가 무전기를 설정중입니다.</Korean>
