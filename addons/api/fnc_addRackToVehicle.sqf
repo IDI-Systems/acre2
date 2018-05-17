@@ -1,6 +1,7 @@
 /*
  * Author: ACRE2Team
- * Initialises all racks in the vehicle. Must be executed in the server.
+ * Initialises all racks in the vehicle. Must be executed in the server. If no side is specified,
+ * the radio will be configured to match the side of the first player.
  *
  * Arguments:
  * 0: Vehicle <OBJECT> (default: objNull)
@@ -15,6 +16,7 @@
  *   7: Components <ARRAY> (default: [])
  *   8: Connected intercoms <ARRAY> (default: [])
  * 2: Force initialisation <BOOL> (default: false)
+ * 3: Side <STRING> (default: "")
  *
  * Return Value:
  * Rack added successfully <BOOL>
@@ -26,7 +28,7 @@
  */
 #include "script_component.hpp"
 
-params [["_vehicle", objNull], "_rackConfiguration", ["_forceInitialisation", false]];
+params [["_vehicle", objNull], "_rackConfiguration", ["_forceInitialisation", false], ["_side", ""]];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");
@@ -89,29 +91,38 @@ private _condition = {
     // A player must do the action of adding a rack
     private _player = objNull;
 
-    if (isDedicated) then {
-        // Pick the first player
+    if (_side isEqualTo "") then {
         _player = (allPlayers - entities "HeadlessClient_F") select 0;
     } else {
-        _player = acre_player;
+        // Pick the first player that matches side criteria
+        {
+            if (side _x isEqualTo _side) then {
+                _player = _x;
+            };
+        } forEach (allPlayers - entities "HeadlessClient_F");
+
+        if (isNull _player) then {
+            WARNING_1("No unit found for side %1, defaulting to first player",_side);
+            _player = (allPlayers - entities "HeadlessClient_F") select 0;
+        };
     };
 
     _player
 };
 
 [{
-    params ["_condition"];
+    params ["_condition", "_side"];
 
-    private _player =  call _condition;
+    private _player = call _condition;
 
     !isNil "_player"
 }, {
-    params ["_condition", "_vehicle", "_rackClassname", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents","_intercoms"];
+    params ["_condition", "_side", "_vehicle", "_rackClassname", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents","_intercoms"];
 
     // A player must do the action of adding a rack
     private _player = call _condition;
 
     [QEGVAR(sys_rack,addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
-}, [_condition, _vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms]] call CBA_fnc_waitUntilAndExecute;
+}, [_condition, _side, _vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms]] call CBA_fnc_waitUntilAndExecute;
 
 true
