@@ -53,7 +53,7 @@ if (_forceInitialisation) then {
         WARNING_1("Vehicle %1 is already initialised but function forces it to initialise again",_vehicle);
     } else {
         TRACE_1("Forcing initialisation of vehicle %1 in order to add a rack",_vehicle);
-        _success = [_vehicle] call EFUNC(api,initVehicleRacks);
+        _success = [_vehicle, _side] call EFUNC(api,initVehicleRacks);
     };
 };
 
