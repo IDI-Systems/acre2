@@ -16,19 +16,19 @@
  *   7: Components <ARRAY> (default: [])
  *   8: Connected intercoms <ARRAY> (default: [])
  * 2: Force initialisation <BOOL> (default: false)
- * 3: Side <STRING> (default: "")
+ * 3: Condition called with argument "_unit" <STRING> (default: "")
  *
  * Return Value:
  * Rack added successfully <BOOL>
  *
  * Example:
- * [cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]]] call acre_api_fnc_addRackToVehicle
+ * [cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]], false, "side _unit == west"] call acre_api_fnc_addRackToVehicle
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-params [["_vehicle", objNull], "_rackConfiguration", ["_forceInitialisation", false], ["_side", ""]];
+params [["_vehicle", objNull], "_rackConfiguration", ["_forceInitialisation", false], ["_condition", {}]];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");
@@ -53,7 +53,7 @@ if (_forceInitialisation) then {
         WARNING_1("Vehicle %1 is already initialised but function forces it to initialise again",_vehicle);
     } else {
         TRACE_1("Forcing initialisation of vehicle %1 in order to add a rack",_vehicle);
-        _success = [_vehicle, _side] call EFUNC(api,initVehicleRacks);
+        _success = [_vehicle, _condition] call EFUNC(api,initVehicleRacks);
     };
 };
 
@@ -87,23 +87,24 @@ private _allowed = [_vehicle, _allowed] call EFUNC(sys_core,processVehicleSystem
 private _disabled = [_vehicle, _disabled] call EFUNC(sys_core,processVehicleSystemAccessArray);
 _intercoms = _intercoms apply {toLower _x};
 
-private _condition = {
+private _selectPlayer = {
     // A player must do the action of adding a rack
     private _player = objNull;
 
-    if (_side isEqualTo "") then {
-        _player = (allPlayers - entities "HeadlessClient_F") select 0;
+    if (_condition isEqualTo "") then {
+        _player = ([] call CBA_fnc_players) select 0;
     } else {
         // Pick the first player that matches side criteria
         {
-            if (side _x isEqualTo _side) then {
-                _player = _x;
+            private _unit = _x;
+            if ([_unit] call compile _condition) then {
+                _player = _unit;
             };
         } forEach (allPlayers - entities "HeadlessClient_F");
 
         if (isNull _player) then {
             WARNING_1("No unit found for side %1, defaulting to first player",_side);
-            _player = (allPlayers - entities "HeadlessClient_F") select 0;
+            _player = ([] call CBA_fnc_players) select 0;
         };
     };
 
@@ -111,18 +112,18 @@ private _condition = {
 };
 
 [{
-    params ["_condition", "_side"];
+    params ["_selectPlayer", "_condition"];
 
-    private _player = call _condition;
+    private _player = call _selectPlayer;
 
     !isNil "_player"
 }, {
-    params ["_condition", "_side", "_vehicle", "_rackClassname", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents","_intercoms"];
+    params ["_selectPlayer", "_side", "_vehicle", "_rackClassname", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents","_intercoms"];
 
     // A player must do the action of adding a rack
-    private _player = call _condition;
+    private _player = call _selectPlayer;
 
     [QEGVAR(sys_rack,addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
-}, [_condition, _side, _vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms]] call CBA_fnc_waitUntilAndExecute;
+}, [_selectPlayer, _condition, _vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms]] call CBA_fnc_waitUntilAndExecute;
 
 true

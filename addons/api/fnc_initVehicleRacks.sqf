@@ -5,19 +5,19 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Side <STRING> (default: "")
+ * 1: Condition called with argument "_unit" <STRING> (default: "")
  *
  * Return Value:
  * Setup successful <BOOL>
  *
  * Example:
- * [cursorTarget] call acre_api_fnc_initVehicleRacks
+ * [cursorTarget, "side _unit == west"] call acre_api_fnc_initVehicleRacks
  *
  * Public: Yes
  */
 #include "script_component.hpp"
 
-params [["_vehicle", objNull], ["_side", ""]];
+params [["_vehicle", objNull], ["_condition", ""]];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");
@@ -37,19 +37,20 @@ if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
 // A player must do the action of initialising a rack
 private _player = objNull;
 
-if (_side isEqualTo "") then {
-    _player = (allPlayers - entities "HeadlessClient_F") select 0;
+if (_condition isEqualTo "") then {
+    _player = ([] call CBA_fnc_players) select 0;
 } else {
     // Pick the first player that matches side criteria
     {
-        if (side _x isEqualTo _side) then {
-            _player = _x;
+        private _unit = _x;
+        if ([_unit] call compile _condition) then {
+            _player = _unit;
         };
-    } forEach (allPlayers - entities "HeadlessClient_F");
+    } forEach ([] call CBA_fnc_players);
 
     if (isNull _player) then {
-        WARNING_1("No unit found for side %1, defaulting to first player",_side);
-        _player = (allPlayers - entities "HeadlessClient_F") select 0;
+        WARNING_1("No unit found for condition %1, defaulting to first player",_condition);
+        _player = ([] call CBA_fnc_players) select 0;
     };
 };
 
