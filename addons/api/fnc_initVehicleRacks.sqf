@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Condition called with argument "_unit" <STRING> (default: "")
+ * 1: Condition called with argument "_unit" <CODE> (default: {})
  *
  * Return Value:
  * Setup successful <BOOL>
@@ -17,7 +17,7 @@
  */
 #include "script_component.hpp"
 
-params [["_vehicle", objNull], ["_condition", ""]];
+params [["_vehicle", objNull], ["_condition", {}]];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");
@@ -37,14 +37,13 @@ if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
 // A player must do the action of initialising a rack
 private _player = objNull;
 
-if (_condition isEqualTo "") then {
+if (_condition isEqualTo {}) then {
     _player = ([] call CBA_fnc_players) select 0;
 } else {
     // Pick the first player that matches side criteria
     {
-        private _unit = _x;
-        if ([_unit] call compile _condition) then {
-            _player = _unit;
+        if ([_x] call _condition) exitWith {
+            _player = _x;
         };
     } forEach ([] call CBA_fnc_players);
 

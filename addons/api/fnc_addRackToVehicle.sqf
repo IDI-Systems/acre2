@@ -16,7 +16,7 @@
  *   7: Components <ARRAY> (default: [])
  *   8: Connected intercoms <ARRAY> (default: [])
  * 2: Force initialisation <BOOL> (default: false)
- * 3: Condition called with argument "_unit" <STRING> (default: "")
+ * 3: Condition called with argument "_unit" <CODE> (default: {})
  *
  * Return Value:
  * Rack added successfully <BOOL>
@@ -91,19 +91,18 @@ private _selectPlayer = {
     // A player must do the action of adding a rack
     private _player = objNull;
 
-    if (_condition isEqualTo "") then {
+    if (_condition isEqualTo {}) then {
         _player = ([] call CBA_fnc_players) select 0;
     } else {
         // Pick the first player that matches side criteria
         {
-            private _unit = _x;
-            if ([_unit] call compile _condition) then {
-                _player = _unit;
+            if ([_x] call _condition) exitWith {
+            _player = _x;
             };
-        } forEach (allPlayers - entities "HeadlessClient_F");
+        } forEach ([] call CBA_fnc_players);
 
         if (isNull _player) then {
-            WARNING_1("No unit found for side %1, defaulting to first player",_side);
+            WARNING_1("No unit found for condition %1, defaulting to first player",_condition);
             _player = ([] call CBA_fnc_players) select 0;
         };
     };
