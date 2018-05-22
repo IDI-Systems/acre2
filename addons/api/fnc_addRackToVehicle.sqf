@@ -1,7 +1,8 @@
 /*
  * Author: ACRE2Team
- * Initialises all racks in the vehicle. Must be executed in the server. If no side is specified,
- * the radio will be configured to match the side of the first player.
+ * Initialises all racks in the vehicle. Must be executed in the server. If no condition is specified,
+ * the radio will be configured to match the vehicle preset defined using acre_api_fnc_setVehicleRacksPreset
+ * or the preset of the first player that matches the given condition if the vehicle preset is not defined. 
  *
  * Arguments:
  * 0: Vehicle <OBJECT> (default: objNull)
@@ -16,13 +17,13 @@
  *   7: Components <ARRAY> (default: [])
  *   8: Connected intercoms <ARRAY> (default: [])
  * 2: Force initialisation <BOOL> (default: false)
- * 3: Condition called with argument "_unit" <STRING> (default: "")
+ * 3: Condition called with argument "_unit". If a longer function is given, it should be a precompiled <CODE> (default: "")
  *
  * Return Value:
  * Rack added successfully <BOOL>
  *
  * Example:
- * [cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]], false, "side _unit == west"] call acre_api_fnc_addRackToVehicle
+ * [cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]], false] call acre_api_fnc_addRackToVehicle
  *
  * Public: Yes
  */
@@ -91,7 +92,8 @@ private _selectPlayer = {
     // A player must do the action of adding a rack
     private _player = objNull;
 
-    if (_condition isEqualTo "") then {
+    private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
+    if (_condition isEqualTo "" && {_vehiclePresetName == ""}) then {
         _player = ([] call CBA_fnc_players) select 0;
     } else {
         // Pick the first player that matches side criteria
@@ -100,10 +102,10 @@ private _selectPlayer = {
             if ([_unit] call compile _condition) then {
                 _player = _unit;
             };
-        } forEach (allPlayers - entities "HeadlessClient_F");
+        } forEach ([] call CBA_fnc_players);
 
         if (isNull _player) then {
-            WARNING_1("No unit found for side %1, defaulting to first player",_side);
+            WARNING_1("No unit found for condition %1, defaulting to first player",_condition);
             _player = ([] call CBA_fnc_players) select 0;
         };
     };

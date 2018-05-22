@@ -52,7 +52,10 @@ if (_condition) then {
         TRACE_2("Adding radio", _class, _baseRadio);
 
         // initialize the new radio
-        private _preset = [BASECLASS(_class)] call EFUNC(sys_data,getRadioPresetName);
+        private _preset = _vehicle getVariable [QGVAR(vehicleRacksPreset), ""];
+        if (_preset isEqualTo "") then {
+            preset = [BASECLASS(_class)] call EFUNC(sys_data,getRadioPresetName);
+        }
         [_class, _preset] call EFUNC(sys_radio,initDefaultRadio);
 
         //Mount the radio into the rack.
