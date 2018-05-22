@@ -1,17 +1,18 @@
 /*
  * Author: ACRE2Team
- * Initialises all racks in the vehicle. Must be executed in the server. If no side is specified,
- * the radio will be configured to match the side of the first player.
+ * Initialises all racks in the vehicle. Must be executed in the server. If no condition is specified,
+ * the radio will be configured to match the vehicle preset defined using acre_api_fnc_setVehicleRacksPreset
+ * or the preset of the first player that matches the given condition if the vehicle preset is not defined. 
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Condition called with argument "_unit" <CODE> (default: {})
+ * 1: Condition called with argument "_unit". If a longer function is given, it should be a precompiled <CODE> (default: {})
  *
  * Return Value:
  * Setup successful <BOOL>
  *
  * Example:
- * [cursorTarget, "side _unit == west"] call acre_api_fnc_initVehicleRacks
+ * [cursorTarget, {}] call acre_api_fnc_initVehicleRacks
  *
  * Public: Yes
  */
@@ -37,7 +38,8 @@ if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
 // A player must do the action of initialising a rack
 private _player = objNull;
 
-if (_condition isEqualTo {}) then {
+private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
+if (_condition isEqualTo {} && {!(_vehiclePresetName isEqualTo "")}) then {
     _player = ([] call CBA_fnc_players) select 0;
 } else {
     // Pick the first player that matches side criteria
@@ -54,6 +56,5 @@ if (_condition isEqualTo {}) then {
 };
 
 [QEGVAR(sys_rack,initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
-
 
 true
