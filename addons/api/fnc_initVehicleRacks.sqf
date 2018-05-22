@@ -2,11 +2,11 @@
  * Author: ACRE2Team
  * Initialises all racks in the vehicle. Must be executed in the server. If no condition is specified,
  * the radio will be configured to match the vehicle preset defined using acre_api_fnc_setVehicleRacksPreset
- * or the preset of the first player that matches the given condition if the vehicle preset is not defined. 
+ * or the preset of the first player that matches the given condition if the vehicle preset is not defined.
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Condition called with argument "_unit". If a longer function is given, it should be a precompiled <CODE> (default: {})
+ * 1: Condition called with argument "_unit". If a longer function is given, it should be precompiled. <CODE> (default: {})
  *
  * Return Value:
  * Setup successful <BOOL>

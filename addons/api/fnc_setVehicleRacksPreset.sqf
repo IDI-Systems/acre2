@@ -3,8 +3,8 @@
  * Sets the preset name used for initialising the vehicle racks.
  *
  * Arguments:
- * 0: Vehicle <OBJECT> (Default: objNull)
- * 1: Preset name <STRING> (Default: "")
+ * 0: Vehicle <OBJECT> (default: objNull)
+ * 1: Preset name <STRING> (default: "")
  *
  * Return Value:
  * Successfully set the vehicle preset <BOOL>
@@ -19,12 +19,12 @@
 params [["_vehicle", objNull], ["_presetName", ""]];
 
 if (isNull _vehicle) exitWith {
-    ERROR("Vehicle is null");
+    WARNING("Vehicle is null");
     false
 };
 
 if (_presetName isEqualTo "") exitWith {
-    ERROR("Empty preset name introduced");
+    WARNING("Empty preset name introduced");
     false
 };
 

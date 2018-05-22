@@ -3,10 +3,10 @@
  * Gets the preset name used for initialising the vehicle racks.
  *
  * Arguments:
- * 0: Vehicle <OBJECT> (Default: objNull)
+ * 0: Vehicle <OBJECT> (default: objNull)
  *
  * Return Value:
- * Preset name. Empty string if not defined <STRING> 
+ * Preset name ("" if undefined) <STRING>
  *
  * Example:
  * [cursorTarget] call acre_api_fnc_getVehicleRacksPreset
@@ -18,7 +18,7 @@
 params [["_vehicle", objNull], ["_presetName", ""]];
 
 if (isNull _vehicle) exitWith {
-    ERROR("Vehicle is null");
+    WARNING("Vehicle is null");
     ""
 };
 
