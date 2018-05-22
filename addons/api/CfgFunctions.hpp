@@ -78,6 +78,9 @@ class CfgFunctions {
 
             PATHTO_FNC(setPresetChannelField);
             PATHTO_FNC(getPresetChannelField);
+
+            PATHTO_FNC(setVehicleRacksPreset);
+            PATHTO_FNC(getVehicleRacksPreset);
         };
         class Speaking {
             PATHTO_FNC(isBroadcasting);
