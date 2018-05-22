@@ -55,7 +55,7 @@ if (_condition) then {
         private _preset = _vehicle getVariable [QGVAR(vehicleRacksPreset), ""];
         if (_preset isEqualTo "") then {
             preset = [BASECLASS(_class)] call EFUNC(sys_data,getRadioPresetName);
-        }
+        };
         [_class, _preset] call EFUNC(sys_radio,initDefaultRadio);
 
         //Mount the radio into the rack.
