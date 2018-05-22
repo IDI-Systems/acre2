@@ -58,12 +58,10 @@ class CfgFunctions {
             PATHTO_FNC(areVehicleRacksInitialized);
             PATHTO_FNC(getMountedRackRadio);
             PATHTO_FNC(getVehicleRacks);
-            PATHTO_FNC(getVehicleRacksPreset);
             PATHTO_FNC(initVehicleRacks);
             PATHTO_FNC(isRackRadioRemovable);
             PATHTO_FNC(mountRackRadio);
             PATHTO_FNC(removeRackFromVehicle);
-            PATHTO_FNC(setVehicleRacksPreset);
             PATHTO_FNC(unmountRackRadio);
         };
 
@@ -80,6 +78,9 @@ class CfgFunctions {
 
             PATHTO_FNC(setPresetChannelField);
             PATHTO_FNC(getPresetChannelField);
+
+            PATHTO_FNC(setVehicleRacksPreset);
+            PATHTO_FNC(getVehicleRacksPreset);
         };
         class Speaking {
             PATHTO_FNC(isBroadcasting);

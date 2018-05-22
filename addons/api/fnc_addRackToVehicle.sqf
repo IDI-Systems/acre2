@@ -17,7 +17,7 @@
  *   7: Components <ARRAY> (default: [])
  *   8: Connected intercoms <ARRAY> (default: [])
  * 2: Force initialisation <BOOL> (default: false)
- * 3: Condition called with argument "_unit". If a longer function is given, it should be precompiled <CODE>. (default: {})
+ * 3: Condition called with argument "_unit". If a longer function is given, it should be precompiled. <CODE> (default: {})
  *
  * Return Value:
  * Rack added successfully <BOOL>
