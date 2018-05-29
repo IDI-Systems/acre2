@@ -94,12 +94,18 @@ private _selectPlayer = {
 
     private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
     if (_condition isEqualTo {} && {!(_vehiclePresetName isEqualTo "")}) then {
-        _player = ([] call CBA_fnc_players) select 0;
+        private _crewPlayers = [_entity] call EFUNC(sys_core,getPlayersInVehicle);
+
+        if !(crewPlayers isEqualTo []) then {
+            _player = _crewPlayers select 0;
+        } else {
+            _player = ([] call CBA_fnc_players) select 0;
+        }:
     } else {
         // Pick the first player that matches side criteria
         {
             if ([_x] call _condition) exitWith {
-            _player = _x;
+                _player = _x;
             };
         } forEach ([] call CBA_fnc_players);
 
@@ -123,6 +129,9 @@ private _selectPlayer = {
 
     // A player must do the action of adding a rack
     private _player = call _selectPlayer;
+    if (_player != _vehicle getVariable [QEGVAR(sys_rack,initPlayer), objNull]) then {
+        _vehicle setVariable [QEGVAR(sys_rack,initPlayer), _player, true];
+    };
 
     [QEGVAR(sys_rack,addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
 }, [_selectPlayer, _condition, _vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms]] call CBA_fnc_waitUntilAndExecute;

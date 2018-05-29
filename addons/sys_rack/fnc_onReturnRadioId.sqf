@@ -31,13 +31,18 @@ _vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
 // To further check. No isses found.
 private _crewPlayers =  [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
 private _condition = false;
-if (count _crewPlayers > 0) then {
+if !(crewPlayers isEqualTo []) then {
     if (local (_crewPlayers select 0)) then {
         _condition = true;
     };
 } else {
-    private _player = (allPlayers - entities "HeadlessClient_F") select 0;
-    // FallBack to server.
+    // Rack is initialised through an API function. Get the player that matched the condition
+    // in order to initialise the rack.
+    private _player = getVariable [QGVAR(initPlayer), objNull];
+    if (isNull _player) then {
+        _player = ([] call CBA_fnc_players) select 0;
+    };
+
     if (local _player) then {
         _condition = true;
     };
@@ -51,7 +56,7 @@ if (_condition) then {
         // Add a new radio based on the id we just got
         TRACE_2("Adding radio", _class, _baseRadio);
 
-        // initialize the new radio
+        // Initialize the new radio
         private _preset = _vehicle getVariable [QGVAR(vehicleRacksPreset), ""];
         if (_preset isEqualTo "") then {
             preset = [BASECLASS(_class)] call EFUNC(sys_data,getRadioPresetName);

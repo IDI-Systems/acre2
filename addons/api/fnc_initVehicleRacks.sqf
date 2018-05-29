@@ -55,6 +55,8 @@ if (_condition isEqualTo {} && {!(_vehiclePresetName isEqualTo "")}) then {
     };
 };
 
+_vehicle setVariable [QEGVAR(sys_rack,initPlayer), _player, true];
+
 [QEGVAR(sys_rack,initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
 
 true
