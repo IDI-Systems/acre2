@@ -96,7 +96,7 @@ private _selectPlayer = {
     if (_condition isEqualTo {} && {!(_vehiclePresetName isEqualTo "")}) then {
         private _crewPlayers = [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
 
-        if !(crewPlayers isEqualTo []) then {
+        if !(_crewPlayers isEqualTo []) then {
             _player = _crewPlayers select 0;
         } else {
             _player = ([] call CBA_fnc_players) select 0;
