@@ -94,13 +94,13 @@ private _selectPlayer = {
 
     private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
     if (_condition isEqualTo {} && {!(_vehiclePresetName isEqualTo "")}) then {
-        private _crewPlayers = [_entity] call EFUNC(sys_core,getPlayersInVehicle);
+        private _crewPlayers = [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
 
         if !(crewPlayers isEqualTo []) then {
             _player = _crewPlayers select 0;
         } else {
             _player = ([] call CBA_fnc_players) select 0;
-        }:
+        };
     } else {
         // Pick the first player that matches side criteria
         {

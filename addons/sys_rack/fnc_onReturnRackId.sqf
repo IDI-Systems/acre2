@@ -37,14 +37,15 @@ if (_replacementId != "") then {
 // To further check. No isses found.
 private _crewPlayers = [_entity] call EFUNC(sys_core,getPlayersInVehicle);
 private _condition = false;
-if !(crewPlayers isEqualTo []) then {
+
+if !(_crewPlayers isEqualTo []) then {
     if (local (_crewPlayers select 0)) then {
         _condition = true;
     };
 } else {
     // Rack is initialised through an API function. Get the player that matched the condition
     // in order to initialise the rack.
-    private _player = getVariable [QGVAR(initPlayer), objNull];
+    private _player = _entity getVariable [QGVAR(initPlayer), objNull];
     if (isNull _player) then {
         _player = ([] call CBA_fnc_players) select 0;
     };
