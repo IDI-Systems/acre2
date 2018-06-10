@@ -4,6 +4,7 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
+ * 1: Intercom Configs <ARRAY>
  *
  * Return Value:
  * None
@@ -15,10 +16,9 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle"];
+params ["_vehicle", "_intercoms"];
 
 private _classname = typeOf _vehicle;
-private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms";
 private _intercomNames = [];
 private _intercomDisplayNames = [];
 private _intercomShortNames = [];
@@ -113,7 +113,7 @@ private _broadcasting = [];
     _intercomConnectByDefault pushBack _connectedByDefault;
     _intercomMasterStation pushBack _masterStationPositions;
     _broadcasting pushBack [false, objNull];
-} forEach (configProperties [_intercoms, "isClass _x", true]);
+} forEach _intercoms;
 
 [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
 
