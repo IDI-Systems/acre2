@@ -19,10 +19,10 @@ params ["_vehicle"];
 
 private _classname = typeOf _vehicle;
 
-private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms";
+private _intercoms = configProperties [configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms", "isClass _x", true];
 
 if !(_intercoms isEqualTo []) then {
-    [_vehicle] call FUNC(configIntercom);
+    [_vehicle, _intercoms] call FUNC(configIntercom);
 
     if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")}) then {
         [_vehicle] call FUNC(intercomAction);
