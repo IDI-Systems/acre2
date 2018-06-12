@@ -128,6 +128,16 @@
     {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
+// Remember used rack radios
+[
+    QGVAR(rememberUsedRackRadios),
+    "CHECKBOX",
+    localize LSTRING(rememberUsedRackRadios_displayName),
+    "ACRE2",
+    true,
+    true
+] call CBA_Settings_fnc_init;
+
 // @todo remove in 2.7.0
 // Module settings
 // Applies the difficulty module settings over CBA settings. If the module is not present, this function has no effect.

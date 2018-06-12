@@ -17,6 +17,12 @@
 
 params ["_vehicle", "_unit", "_radioId"];
 
+if (EGVAR(sys_core,rememberUsedRackRadios)) then {
+    private _rackedRadiosInUse = _vehicle getVariable [QGVAR(rackedRadiosInUse), []];
+    _rackedRadiosInUse pushBackUnique _radioId;
+    _vehicle setVariable [QGVAR(rackedRadiosInUse), _rackedRadiosInUse];
+};
+
 private _isRadioAccessible = [_radioId, _unit] call FUNC(isRadioAccessible);
 private _isRadioHearable = [_radioId, _unit] call FUNC(isRadioHearable);
 

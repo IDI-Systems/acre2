@@ -17,6 +17,12 @@
 
 params ["_vehicle", "_unit", "_radioId"];
 
+if (EGVAR(sys_core,rememberUsedRackRadios)) then {
+    private _rackedRadiosInUse = _vehicle getVariable [QGVAR(rackedRadiosInUse), []];
+    _rackedRadiosInUse deleteAt (_rackedRadiosInUse find _radioId);
+    _vehicle setVariable [QGVAR(rackedRadiosInUse), _rackedRadiosInUse];
+};
+
 if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS) then {
     ACRE_ACCESSIBLE_RACK_RADIOS deleteAt (ACRE_ACCESSIBLE_RACK_RADIOS find _radioId);
 } else {

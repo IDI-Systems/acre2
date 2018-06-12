@@ -54,6 +54,22 @@ if (_unit != _vehicle) then {
         };
     };
 
+    if (EGVAR(sys_core,rememberUsedRackRadios)) then {
+        private _rackedRadiosInUse = _vehicle getVariable [QGVAR(rackedRadiosInUse), []];
+        if (count _rackedRadiosInUse > 0) then {
+            [{
+                params ["_vehicle", "_unit", "_rackedRadiosInUse"];
+
+                private _rackedRadios = ([_vehicle, _unit] call FUNC(getVehicleRacks)) apply {[_x] call FUNC(getMountedRadio)};
+                {
+                    if (_x in _rackedRadios) then {
+                        [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
+                    };
+                } forEach _rackedRadiosInUse;
+            }, [_vehicle, _unit, _rackedRadiosInUse]] call CBA_fnc_execNextFrame;
+        };
+    };
+
     // Update the display
     [_vehicle, _unit] call EFUNC(sys_intercom,updateVehicleInfoText);
 
