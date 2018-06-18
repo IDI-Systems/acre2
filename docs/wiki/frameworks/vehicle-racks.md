@@ -2,9 +2,6 @@
 title: Vehicle Racks
 ---
 
-{% include note.html content="Development Build only!" %}
-{% include important.html content="API still WIP. May change in the future!" %}
-
 Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
 ## Vehicle racks and intercom
