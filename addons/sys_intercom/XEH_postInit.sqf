@@ -49,7 +49,7 @@ if (!hasInterface) exitWith {};
 // Intercom configuration
 ["vehicle", {
     params ["_player", "_newVehicle"];
-    [_newVehicle, _player] call FUNC(enterVehicle);
+    [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 player addEventHandler ["seatSwitchedMan", {

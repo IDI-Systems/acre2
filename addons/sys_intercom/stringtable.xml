@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -96,7 +96,7 @@
             <English>Infantry Phone Disconnected</English>
             <Spanish>Colgar teléfono</Spanish>
             <German>Gegensprechen beendet</German>
-            <Japanese>車外電話機を切断した</Japanese>
+            <Japanese>車外電話機を切断しました</Japanese>
             <Russian>Телефон пехоты был отключен</Russian>
             <Polish>Telefon odłączony</Polish>
             <Chinese>車外對講機已斷開聯繫</Chinese>
@@ -109,7 +109,7 @@
             <English>Infantry Phone Connected %1</English>
             <Spanish>Teléfono connectado %1</Spanish>
             <German>Gegensprechen mit %1 begonnen</German>
-            <Japanese>車外電話機 %1 に切断した</Japanese>
+            <Japanese>車外電話機 %1 に接続しました</Japanese>
             <Russian>Телефон пехоты подключен %1</Russian>
             <Polish>Telefon podłączony %1</Polish>
             <Chinese>車外對講機已連接%1</Chinese>
@@ -122,7 +122,7 @@
             <English>Infantry Phone Received %1</English>
             <Spanish>Recibido teléfono connectado a %1</Spanish>
             <German>Hörer mit Verbindung zu %1 erhalten</German>
-            <Japanese>車外電話機 %1 に受信した</Japanese>
+            <Japanese>車外電話機 %1 が受信されました</Japanese>
             <Russian>Получен телефон пехоты %1</Russian>
             <Polish>Odebrano telefon piechoty %1</Polish>
             <Chinese>車外對講機已收到%1</Chinese>
@@ -134,7 +134,7 @@
         <Key ID="STR_ACRE_sys_intercom_intercom">
             <English>Intercom</English>
             <Spanish>Intercom</Spanish>
-            <German>Gegensprechanlage</German>
+            <German>Bordfunk</German>
             <Japanese>インターコム</Japanese>
             <Russian>Внутренняя связь</Russian>
             <Polish>Interkom</Polish>

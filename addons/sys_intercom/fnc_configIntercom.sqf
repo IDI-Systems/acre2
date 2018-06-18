@@ -4,6 +4,7 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
+ * 1: Intercom Configs <ARRAY>
  *
  * Return Value:
  * None
@@ -15,10 +16,9 @@
  */
 #include "script_component.hpp"
 
-params ["_vehicle"];
+params ["_vehicle", "_intercoms"];
 
 private _classname = typeOf _vehicle;
-private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms";
 private _intercomNames = [];
 private _intercomDisplayNames = [];
 private _intercomShortNames = [];
@@ -42,8 +42,8 @@ private _broadcasting = [];
     private _masterPositions = getArray (_x >> "masterPositions");
     private _availabeIntercomPositions = [];
 
-    if (count _shortName > 4) then {
-        WARNING_2("Intercom short name %1 is longer than 4 characters for vehicle %2",_shortName,_vehicle);
+    if (count _shortName > 5) then {
+        WARNING_2("Intercom short name %1 is longer than 5 characters for vehicle %2",_shortName,_vehicle);
     };
 
     // Check if the entry in allowed positions is correct
@@ -113,7 +113,7 @@ private _broadcasting = [];
     _intercomConnectByDefault pushBack _connectedByDefault;
     _intercomMasterStation pushBack _masterStationPositions;
     _broadcasting pushBack [false, objNull];
-} forEach (configProperties [_intercoms, "isClass _x", true]);
+} forEach _intercoms;
 
 [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
 
