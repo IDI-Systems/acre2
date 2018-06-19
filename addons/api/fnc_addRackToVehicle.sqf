@@ -89,6 +89,7 @@ private _disabled = [_vehicle, _disabled] call EFUNC(sys_core,processVehicleSyst
 _intercoms = _intercoms apply {toLower _x};
 
 private _selectPlayer = {
+    params ["_condition", "_vehicle"];
     // A player must do the action of adding a rack
     private _player = objNull;
 
@@ -119,16 +120,16 @@ private _selectPlayer = {
 };
 
 [{
-    params ["_selectPlayer", "_condition"];
+    params ["_selectPlayer", "_condition", "_vehicle"];
 
-    private _player = call _selectPlayer;
+    private _player = [_condition, _vehicle] call _selectPlayer;
 
     !isNil "_player"
 }, {
-    params ["_selectPlayer", "_side", "_vehicle", "_rackClassname", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents","_intercoms"];
+    params ["_selectPlayer", "_condition", "_vehicle", "_rackClassname", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents","_intercoms"];
 
     // A player must do the action of adding a rack
-    private _player = call _selectPlayer;
+    private _player = [_condition, _vehicle] call _selectPlayer;
     if (_player != _vehicle getVariable [QEGVAR(sys_rack,initPlayer), objNull]) then {
         _vehicle setVariable [QEGVAR(sys_rack,initPlayer), _player, true];
     };
