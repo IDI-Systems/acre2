@@ -47,9 +47,9 @@ private _action = [QGVAR(useAllRacks), localize LSTRING(useAllRacks), "", {
     params ["_vehicle", "_unit", "_radios"];
     {
         [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
-    } forEach (_radios select {!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || _x in ACRE_HEARABLE_RACK_RADIOS)});
+    } forEach (_radios select {!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS})});
 }, {
-    ({!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || _x in ACRE_HEARABLE_RACK_RADIOS)} count _this#2) > 0
+    ({!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS})} count _this#2) > 0
 }, {}, _radios] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
@@ -57,9 +57,9 @@ private _action = [QGVAR(stopUsingAllRacks), localize LSTRING(stopUsingAllRacks)
     params ["_vehicle", "_unit", "_radios"];
     {
         [_vehicle, _unit, _x] call FUNC(stopUsingMountedRadio);
-    } forEach (_radios select {_x in ACRE_ACCESSIBLE_RACK_RADIOS || _x in ACRE_HEARABLE_RACK_RADIOS});
+    } forEach (_radios select {_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}});
 }, {
-    ({_x in ACRE_ACCESSIBLE_RACK_RADIOS || _x in ACRE_HEARABLE_RACK_RADIOS} count _this#2) > 0
+    ({_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}} count _this#2) > 0
 }, {}, _radios] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
