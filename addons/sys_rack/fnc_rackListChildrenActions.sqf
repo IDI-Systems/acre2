@@ -23,7 +23,7 @@ private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
 {
     _racks pushBackUnique _x;
 } forEach ([_target, acre_player] call FUNC(getHearableVehicleRacks));
-private _radios = (_racks apply {[_x] call FUNC(getMountedRadio)}) select {_x != "" && {[_x, acre_player] call FUNC(isRadioAccessible)}};
+private _radios = (_racks apply {[_x] call FUNC(getMountedRadio)}) select {_x != ""};
 
 {
     // _x is rack classname
