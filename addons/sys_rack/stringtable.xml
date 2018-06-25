@@ -127,5 +127,11 @@
             <English>D.Up</English>
             <Italian>C. Alto</Italian>
         </Key>
+        <Key ID="STR_ACRE_sys_rack_useAllRacks">
+            <English>Use All</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_stopUsingAllRacks">
+            <English>Stop Using All</English>
+        </Key>
     </Package>
 </Project>
