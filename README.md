@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.6.0.990/acre2_2.6.0.990.zip">
+    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.6.0.991/acre2_2.6.0.991.zip">
         <img src="https://img.shields.io/badge/Version-2.6.0-blue.svg?style=flat-square" alt="ACRE2 Version">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/issues">
