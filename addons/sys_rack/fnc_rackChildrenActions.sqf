@@ -62,7 +62,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
                         QGVAR(unmount),
                         localize LSTRING(unmountRadio),
                         "",
-                        {[this#2, this#1] call FUNC(unmountRadio)},
+                        {[_this#2, _this#1] call FUNC(unmountRadio)},
                         {true},
                         {},
                         _rackClassName

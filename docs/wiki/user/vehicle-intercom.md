@@ -2,8 +2,6 @@
 title: Vehicle Intercom
 ---
 
-{% include note.html content="Development Build only!" %}
-
 ## Vehicle intercom
 
 Vehicle intercom consists of two separate networks depending on the vehicle type: crew and passenger intercom. Intercom gives the ability to speak to other players within the same network using a headset. This allows them to communicate without the disturbance of the vehicle's noise.
