@@ -20,11 +20,13 @@
             <English>ACRE2 - Vehicle Info</English>
             <Polish>ACRE2 - Informacje o pojeździe</Polish>
             <Italian>ACRE2 - Informazione veicolo</Italian>
+            <Japanese>ACRE2 - 車両情報</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGridDesc">
             <English>Status on available Intercoms and Racks in the vehicle.</English>
             <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
             <Italian>Status degli intercom e rack disponibili nel veicolo</Italian>
+            <Japanese>車両にある利用可能なインターコムと架台の状態を示します。</Japanese>
         </Key>
     </Package>
 </Project>
