@@ -89,6 +89,7 @@
             <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
             <Polish>Hasło kanału TeamSpeak</Polish>
             <Italian>Password canale Teamspeak</Italian>
+            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
