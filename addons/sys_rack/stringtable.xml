@@ -113,7 +113,7 @@
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
             <Italian>C. Basso</Italian>
-            <Japanese>ダッシュ下げる</Japanese>
+            <Japanese>D.下げ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dash Upper</English>
@@ -129,7 +129,7 @@
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
             <Italian>C. Alto</Italian>
-            <Japanese>ダッシュ上げる</Japanese>
+            <Japanese>D.上げ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useAllRacks">
             <English>Use All</English>
