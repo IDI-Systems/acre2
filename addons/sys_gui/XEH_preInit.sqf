@@ -14,6 +14,7 @@ if (hasInterface) then {
     DVAR(ACRE_CustomVolumeControl) = nil;
     GVAR(VolumeControl_Level) = 0; // range of -2 to +2
     GVAR(keyBlock) = false;
+    GVAR(stanceCache) = "";
 };
 
 ADDON = true;

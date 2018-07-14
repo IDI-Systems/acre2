@@ -50,8 +50,8 @@ if (vehicle _obj == _obj) then {
     _forwardV = (ATLtoASL _spinePos) vectorFromTo (ATLtoASL (_spinePos vectorAdd _forwardV));
     _upV = (ATLtoASL _spinePos) vectorFromTo (ATLtoASL (_spinePos vectorAdd _upV));
 
-    drawLine3D [_spinePos, _spinePos vectorAdd _forwardV, [1,0,0,1]]; 
-    drawLine3D [_spinePos, _spinePos vectorAdd _upV, [0,0,1,1]]; 
+    //drawLine3D [_spinePos, _spinePos vectorAdd _forwardV, [1,0,0,1]]; 
+    //drawLine3D [_spinePos, _spinePos vectorAdd _upV, [0,0,1,1]]; 
 
 } else {
     _forwardV = vectorDir (vehicle _obj);
