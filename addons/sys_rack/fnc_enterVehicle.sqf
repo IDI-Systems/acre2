@@ -23,11 +23,10 @@ if (_unit != _vehicle) then {
 
     if (!_initialized) then {
         // Only initialize if we are first in the crew array - This helps prevent multiple requests if multiple players enter a vehicle around the same time.
-        private _crew = crew _vehicle;
+        private _crew = [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
         private _firstPlayer = objNull;
         {
-            if (!isNull _firstPlayer) exitWith {};
-            if (isPlayer _x) exitWith {
+            if (!isNull _x) exitWith {
                 _firstPlayer = _x;
             };
         } forEach _crew;
@@ -58,7 +57,7 @@ if (_unit != _vehicle) then {
     // Update the display
     [_vehicle, _unit] call EFUNC(sys_intercom,updateVehicleInfoText);
 
-    // Enable the PFH if it is not active. This can only happen if the unit is using an external radio before entering the vehicle
+    // Enable the PFH if it is not active (can only be active if the unit is using an external radio before entering the vehicle)
     if (GVAR(rackPFH) == -1) then {
         GVAR(rackPFH) = [DFUNC(rackPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };

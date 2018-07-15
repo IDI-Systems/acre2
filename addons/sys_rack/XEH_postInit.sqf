@@ -5,15 +5,13 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 ["vehicle", {
     params ["_player", "_newVehicle"];
-    [_newVehicle, _player] call FUNC(enterVehicle);
+    [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 }] call CBA_fnc_addPlayerEventHandler;
 
-// Handle the case of starting inside a vehicle
+// Handle the case of starting inside a vehicle. addPlayerEventhandler retrospectively would not work
+// when initialising the racks since we have to execute it once radios are being initialised
 if (vehicle acre_player != acre_player) then {
-    [{
-        params ["_vehicle", "_player"];
-        [_vehicle, _player] call FUNC(enterVehicle)
-    }, [vehicle acre_player, acre_player]] call CBA_fnc_execNextFrame;
+    [FUNC(enterVehicle), [vehicle acre_player, acre_player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 };
 
 ["LandVehicle", "init", FUNC(initActionVehicle), nil, nil, true] call CBA_fnc_addClassEventHandler;

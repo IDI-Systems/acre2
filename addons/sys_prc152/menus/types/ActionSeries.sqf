@@ -47,6 +47,8 @@ DFUNC(renderMenu_ActionSeries) = {
             [_subMenu] call FUNC(changeMenu);
         };
 
+        // Get the last menuAction in case it was modified during menu operations (RX only, power level selection, ...)
+        _currentAction = GET_STATE_DEF("menuAction", 0);
         _currentAction = _currentAction + 1;
         SET_STATE("menuAction", _currentAction);
 

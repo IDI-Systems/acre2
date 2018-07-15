@@ -28,13 +28,13 @@ TRACE_1("Formatting", _this);
 
 switch _name do {
     case "frequency": {
-        _value = [_value, 3, 5] call CBA_fnc_formatNumber;
+        _value = [_value, 3, 4] call CBA_fnc_formatNumber;
     };
     case "frequencytx": {
-        _value = [_value, 3, 5] call CBA_fnc_formatNumber;
+        _value = [_value, 3, 4] call CBA_fnc_formatNumber;
     };
     case "frequencyrx": {
-        _value = [_value, 3, 5] call CBA_fnc_formatNumber;
+        _value = [_value, 3, 4] call CBA_fnc_formatNumber;
     };
     case "encryption": {
         if (_value > 1) then { _value = "CT"; } else { _value = "PT"; };

@@ -57,7 +57,7 @@ DFUNC(doFrequencyButton) = {
         TRACE_2("Values 2", _editIndex, _character);
         TRACE_1("New value", _value);
 
-        if (_editIndex+1 < _editDigits) then {
+        if (_editIndex < _editDigits) then {
             _editIndex = _editIndex + 1;
         } else {
             _editIndex = 0;
@@ -98,6 +98,7 @@ DFUNC(onButtonPress_Frequency) = {
         case 'LEFT': {
             private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
             private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
+
             if (_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
@@ -122,7 +123,8 @@ DFUNC(onButtonPress_Frequency) = {
         case 'RIGHT': {
             private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 2);
             private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuFrequencyCursor", 0);
-            if (_editIndex+1 < _editDigits) then {
+
+            if (_editIndex < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
                 _editIndex = 0;
@@ -196,8 +198,9 @@ DFUNC(renderMenu_Frequency) = {
 
     // Check the current digit. If its a dot, we should skip it.
     // Dot as a DEC value of 46
-    TRACE_1("Digit was a dot, moving forward", _editIndex);
     if ( ((toArray _value) select _editIndex) == 46) then {
+        TRACE_1("Digit was a dot, moving forward", _editIndex);
+
         _editIndex = _editIndex + 1;
     };
 

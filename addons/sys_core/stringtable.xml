@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
@@ -69,6 +69,8 @@
             <Chinesesimp>Teamspeak频道切换</Chinesesimp>
             <Korean>팀스피크 채널 변경</Korean>
             <Portuguese>Trocar de Canal do TeamSpeak</Portuguese>
+            <Polish>Zmiana kanału TeamSpeak</Polish>
+            <Italian>Cambio canale TeamSpeak</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
@@ -77,12 +79,17 @@
             <Chinesesimp>Teamspeak频道名称</Chinesesimp>
             <Korean>팀스피크 채널 이름</Korean>
             <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
+            <Polish>Nazwa kanału TeamSpeak</Polish>
+            <Italian>Nome canale Teamspeak</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
             <Chinese>Teamspeak頻道密碼</Chinese>
             <Chinesesimp>Teamspeak频道密码</Chinesesimp>
             <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
+            <Polish>Hasło kanału TeamSpeak</Polish>
+            <Italian>Password canale Teamspeak</Italian>
+            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -314,7 +321,7 @@
             <Spanish>Activar auriculares/Activar espectadores</Spanish>
             <Czech>Přepnout headset/Přepnout diváky</Czech>
             <German>Headset umschalten/Zuschauer umschalten</German>
-            <Japanese>ヘッドセットのトグル/スペクテイターのトグル</Japanese>
+            <Japanese>ヘッドセットの切り替え/スペクテイターの切り替え</Japanese>
             <Italian>Attiva/Disattiva Cuffia - Attiva/Disattiva Spettatori</Italian>
             <French>Alterner Casque/Spectateurs</French>
             <Korean>헤드셋 전환/관전자 전환</Korean>
@@ -345,6 +352,7 @@
             <Chinese>干擾模型</Chinese>
             <Chinesesimp>干扰模型</Chinesesimp>
             <Portuguese>Interferência do Modelo</Portuguese>
+            <Italian>Modello Interferenza</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
             <English>Full Duplex radios</English>
@@ -359,6 +367,7 @@
             <Chinese>全雙工無線電台</Chinese>
             <Chinesesimp>全双工无线电台</Chinesesimp>
             <Portuguese>Rádios Full Duplex</Portuguese>
+            <Italian>Radio Full Duplex</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_antennaDirection_displayName">
             <English>Ignore Antenna Direction</English>
@@ -373,6 +382,7 @@
             <Chinese>忽略天線方向</Chinese>
             <Chinesesimp>忽略天线方向</Chinesesimp>
             <Portuguese>Ignorar Direção da Antena</Portuguese>
+            <Italian>Ignora direzione antenna</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_autoAntennaDirection_displayName">
             <English>Automatically Adjust Antenna Direction</English>
@@ -391,6 +401,7 @@
             <Chinese>地形干擾係數</Chinese>
             <Chinesesimp>地形干扰系数</Chinesesimp>
             <Portuguese>Coeficiente de perda do terreno (Sinal)</Portuguese>
+            <Italian>Coefficiente di attenuazione del terreno</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
             <English>AI Voice Detection</English>
@@ -405,6 +416,7 @@
             <Chinese>AI偵測玩家語音</Chinese>
             <Chinesesimp>AI侦测玩家语音</Chinesesimp>
             <Portuguese>Detecção de Voz de IA</Portuguese>
+            <Italian>Rilevamento Voce IA</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_switchRadioEarLeft">
             <English>Set to Left Ear</English>
@@ -454,22 +466,26 @@
         <Key ID="STR_ACRE_sys_core_headsetRaised">
             <English>Headset Raised</English>
             <German>Headset aufgesetzt</German>
-            <Japanese>ヘッドセットを上げた</Japanese>
+            <Japanese>ヘッドセットを上げました</Japanese>
             <Russian>Наушники были подняты</Russian>
             <Chinese>戴上耳機</Chinese>
             <Chinesesimp>戴上耳机</Chinesesimp>
             <Korean>헤드셋 착용</Korean>
             <Portuguese>Fones Abaixados</Portuguese>
+            <Polish>Słuchawki założone</Polish>
+            <Italian>Alza cuffie</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
             <German>Headset abgesetzt</German>
-            <Japanese>ヘッドセットを下げた</Japanese>
+            <Japanese>ヘッドセットを下げました</Japanese>
             <Russian>Наушники были опущены</Russian>
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
             <Korean>헤드셋 벗기</Korean>
             <Portuguese>Fones Levantados</Portuguese>
+            <Polish>Słuchawki zdjęte</Polish>
+            <Italian>Abbassa cuffie</Italian>
         </Key>
     </Package>
 </Project>

@@ -2,9 +2,6 @@
 title: Vehicle Intercom
 ---
 
-{% include note.html content="Development Build only!" %}
-{% include important.html content="API still WIP. May change in the future!" %}
-
 Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
 ## Vehicle intercom
@@ -32,10 +29,9 @@ class CfgVehicles {
         class AcreIntercoms {
             class Intercom_1 {                             // Each entry defines a network
                 displayName = "Crew intercom";             // Name of the intercom network displayed to the players
-                shortName = "Crew";                        // Short name of the intercom network. Maximum 4 characters
+                shortName = "Crew";                        // Short name of the intercom network. Maximum of 5 characters
                 // Seats with stations configured that have intercom access. In this case, units in commander, driver, gunner and turret (excluding FFV) have access to this intercom
                 // If left empty it has the same effect
-                shortName =
                 allowedPositions[] = {"crew"};
                 // In this case the commander turret does not have access to crew intercom (unit is "turned out"). This can be useful for historical vehicles
                 disabledPositions[] = {{"Turret", {0,0}}};

@@ -2,7 +2,7 @@ class CfgVehicles {
     // Vehicle rack vehicle definitions
     class ACRE_BaseRack;
     class ACRE_VRC64 : ACRE_BaseRack {
-        displayName = "AN/VRC-64 Rack";
+        displayName = "AN/VRC-64";
     };
     RADIO_ID_LIST(ACRE_VRC64)
 
@@ -43,7 +43,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"all"};
+                intercom[] = {"intercom_1"};
             };
         };
     };
@@ -60,7 +60,7 @@ class CfgVehicles {
                 defaultComponents[] = {}; // Use this to attach simple components like Antennas, they will first attempt to fill empty connectors but will overide existing connectors - ACRE_13IN_UHF_BNC
                 mountedRadio = "";
                 isRadioRemovable = 1;
-                intercom[] = {"all"};
+                intercom[] = {"intercom_1"};
             };
             class Rack_2 {
                 displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
@@ -71,7 +71,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"all"};
+                intercom[] = {"intercom_1"};
             };
         };
     };
@@ -87,7 +87,7 @@ class CfgVehicles {
                 defaultComponents[] = {}; // Use this to attach simple components like Antennas, they will first attempt to fill empty connectors but will overide existing connectors - ACRE_13IN_UHF_BNC
                 mountedRadio = "";
                 isRadioRemovable = 1;
-                intercom[] = {"all"};
+                intercom[] = {"intercom_1"};
             };
             class Rack_2 {
                 displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
@@ -98,7 +98,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"all"};
+                intercom[] = {"intercom_1"};
             };
         };
     };
@@ -114,7 +114,7 @@ class CfgVehicles {
                 defaultComponents[] = {}; // Use this to attach simple components like Antennas, they will first attempt to fill empty connectors but will overide existing connectors - ACRE_13IN_UHF_BNC
                 mountedRadio = "";
                 isRadioRemovable = 1;
-                intercom[] = {"all"};
+                intercom[] = {"intercom_1"};
             };
             class Rack_2 {
                 displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
@@ -125,7 +125,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"all"};
+                intercom[] = {"intercom_1"};
             };
         };
     };
@@ -145,6 +145,10 @@ class CfgVehicles {
                 intercom[] = {"intercom_1"};
             };
         };
+    };
+
+    class ParachuteBase : Helicopter {
+        class AcreRacks {};
     };
 
     class VTOL_01_base_F;
