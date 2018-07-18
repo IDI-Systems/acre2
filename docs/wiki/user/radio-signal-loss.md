@@ -61,3 +61,13 @@ API function example:
 `[true] call acre_api_fnc_ignoreAntennaDirection;`
 
 `true` enables is used to ignore the antenna direction.
+
+###  Automatic Antenna direction (only in Dev-Build)
+
+This setting enables an automatic antenna alignment to improve signal strength e.g. when being prone. 
+
+Default value: Disabled (`false`) (Antenna needs to be aligned manually)
+
+The setting can be changed via CBA Settings Menu. 
+
+Hint: _If the antenna direction is ignored, this setting will have no effect._

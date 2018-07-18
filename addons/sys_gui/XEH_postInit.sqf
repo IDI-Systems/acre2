@@ -19,7 +19,7 @@ DFUNC(enterVehicle) = {
     params ["_player", "_newVehicle"];
 
     if (!isNull objectParent _player) then {
-        (QGVAR(antennaElevationInfo) call BIS_fnc_rscLayer) cutRsc ["", "PLAIN"];
+        //(QGVAR(antennaElevationInfo) call BIS_fnc_rscLayer) cutRsc ["", "PLAIN"];
         // Open vehicle info display when racks are initialised
         [{(_this select 1) getVariable [QEGVAR(sys_rack,initialized), false]}, {
             params ["_player", "_vehicle"];
@@ -42,7 +42,7 @@ DFUNC(enterVehicle) = {
     } else {
         // Close vehicle info display
         (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-        (QGVAR(antennaElevationInfo) call BIS_fnc_rscLayer) cutRsc [QGVAR(antennaElevationInfo), "PLAIN", 0, false];
+        //(QGVAR(antennaElevationInfo) call BIS_fnc_rscLayer) cutRsc [QGVAR(antennaElevationInfo), "PLAIN", 0, false];
     };
 };
 
@@ -66,8 +66,8 @@ DFUNC(antennaElevationDisplay) = {
     private _ctrlGroup = uiNamespace getVariable ["ACRE_AntennaElevationInfo", controlNull];
     if (isNull _ctrlGroup) exitWith {};
 
-    private _ctrlBackground = _ctrlGroup controlsGroupCtrl 1;
-    _ctrlBackground ctrlSetText "\idi\acre\addons\sys_gui\data\ui\" + _antennaStance + ".paa";
+    private _ctrl = _ctrlGroup controlsGroupCtrl 201;
+    _ctrl ctrlSetText "\idi\acre\addons\sys_gui\data\ui\" + _antennaStance + ".paa";
 };
 
 // Need to run this every frame. Otherwise there will be noticeable delays
