@@ -27,19 +27,19 @@ if (vehicle _obj == _obj) then {
     _upV = _spinePos vectorFromTo (_obj modelToWorldVisual (_obj selectionPosition "Neck"));
 
     private _upP = _upV call cba_fnc_vect2polar;
-    hint format ["%1\n%2", _upV, _upP];
+    //hint format ["%1\n%2", _upV, _upP];
     
     if (EGVAR(sys_core,automaticAntennaDirection)) then {
         private _upP = _upV call cba_fnc_vect2polar;
         _upP set [2, ((_upP select 2) max 55) min 90];
         _upV = _upP call cba_fnc_polar2vect; 
-        hint format ["%1\n%2", _upV, _upP];
+        //hint format ["%1\n%2", _upV, _upP];
     } else {
         if (_obj getVariable [QEGVAR(sys_core,antennaDirUp), false]) then {
             private _upP = _upV call cba_fnc_vect2polar;
             _upP set [2, ((_upP select 2) + 50)];
             _upV = _upP call cba_fnc_polar2vect; 
-            hint format ["%1\n%2", _upV, _upP];
+            //hint format ["%1\n%2", _upV, _upP];
         };
     };
 
