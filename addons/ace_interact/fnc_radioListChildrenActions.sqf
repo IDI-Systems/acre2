@@ -66,8 +66,8 @@ if (count _radioList > 0) then {
     private _action = [QGVAR(toggleHeadset), _text, "", {[] call EFUNC(sys_core,toggleHeadset)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 
-    if !(EGVAR(sys_core,automaticAntennaDirection)) then {
-        _text = "Bend Antenna upwards";
+    if (!EGVAR(sys_core,automaticAntennaDirection)) then {
+        _text = "Bend Antenna Upwards";
         private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
         if (_dir) then { _text = "Straighten Antenna";};
         _action = [QGVAR(antennaDirUp), _text, "", {[] call EFUNC(sys_components,toggleAntennaDir)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;

@@ -6,7 +6,7 @@
  * None
  *
  * Return Value:
- * -
+ * None
  *
  * Example:
  * [] call acre_sys_components_fnc_toggleAntennaDir
@@ -14,10 +14,6 @@
  * Public: No
  */
 #include "script_component.hpp"
-
-TRACE_1("enter", _this);
-
-//params ["_dir"];
 
 private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
 
