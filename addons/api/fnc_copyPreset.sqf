@@ -11,7 +11,7 @@
  * Copy preset successful <BOOLEAN>
  *
  * Example:
- * [["ACRE_PRC152", "default2", "balls"] call acre_api_fnc_copyPreset;E
+ * ["ACRE_PRC152", "default2", "balls"] call acre_api_fnc_copyPreset
  *
  * Public: Yes
  */

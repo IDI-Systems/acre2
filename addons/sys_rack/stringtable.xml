@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
@@ -13,24 +13,25 @@
             <Italian>Monta</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
-            <English>Unmountable (%1)</English>
-            <Italian>Non montabile (%1)</Italian>
+            <English>Unmountable</English>
+            <Italian>Non montabile</Italian>
+            <Japanese>積載不可</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
-            <English>Unmount (%1)</English>
-            <German>Entferne (%1)</German>
-            <Japanese>降ろす (%1)</Japanese>
-            <Chinese>卸載 (%1)</Chinese>
-            <Chinesesimp>卸载 (%1)</Chinesesimp>
-            <Korean>분리 (%1)</Korean>
-            <Portuguese>Desmontar (%1)</Portuguese>
-            <Polish>Wymontuj (%1)</Polish>
-            <Italian>Smonta (%1)</Italian>
+            <English>Unmount</English>
+            <German>Entferne</German>
+            <Japanese>降ろす</Japanese>
+            <Chinese>卸載</Chinese>
+            <Chinesesimp>卸载</Chinesesimp>
+            <Korean>분리</Korean>
+            <Portuguese>Desmontar</Portuguese>
+            <Polish>Wymontuj</Polish>
+            <Italian>Smonta</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted (%1)</English>
             <German>Eingebautes (%1)</German>
-            <Japanese>乗せる (%1)</Japanese>
+            <Japanese>積載した (%1)</Japanese>
             <Chinese>裝載 (%1)</Chinese>
             <Chinesesimp>装载 (%1)</Chinesesimp>
             <Korean>설치 (%1)</Korean>
@@ -96,9 +97,10 @@
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
             <Italian>Cruscotto</Italian>
+            <Japanese>ダッシュ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLower">
-            <English>Dashboard Lower</English>
+            <English>Dash Lower</English>
             <German>Unterer Steckplatz</German>
             <Chinese>儀錶板下降</Chinese>
             <Chinesesimp>仪表板下降</Chinesesimp>
@@ -111,9 +113,10 @@
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
             <Italian>C. Basso</Italian>
+            <Japanese>D.下げ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpper">
-            <English>Dashboard Upper</English>
+            <English>Dash Upper</English>
             <German>Oberer Steckplatz</German>
             <Chinese>儀錶板上升</Chinese>
             <Chinesesimp>仪表板上升</Chinesesimp>
@@ -126,6 +129,15 @@
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
             <Italian>C. Alto</Italian>
+            <Japanese>D.上げ</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_useAllRacks">
+            <English>Use All</English>
+            <Japanese>全て使用</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_stopUsingAllRacks">
+            <English>Stop Using All</English>
+            <Japanese>全ての使用を止める</Japanese>
         </Key>
     </Package>
 </Project>

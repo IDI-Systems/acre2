@@ -2,9 +2,6 @@
 title: Vehicle Racks
 ---
 
-{% include note.html content="Development Build only!" %}
-{% include important.html content="API still WIP. May change in the future!" %}
-
 Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
 ## Vehicle racks and intercom
@@ -31,6 +28,7 @@ class CfgVehicles {
         class AcreRacks {
             class Rack_1 {
                 displayName = "Dashboard Upper";      // Name displayed in the interaction menu
+                shortName = "D.Up";                   // Short name displayed on the HUD. Maximum of 5 characters
                 componentName = "ACRE_VRC110";        // Able to mount a PRC152
                 allowedPositions[] = {"driver", {"cargo", 1}}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {};
@@ -41,6 +39,7 @@ class CfgVehicles {
             };
             class Rack_2 {
                 displayName = "Dashboard Lower";      // Name displayed in the interaction menu
+                shortName = "D.Low";                  // Short name displayed on the HUD. Maximum of 5 characters
                 componentName = "ACRE_VRC103";        // Rack type (able to mount a PRC117F)
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {};
@@ -65,6 +64,7 @@ class CfgVehicles {
         class AcreRacks {
            class Rack_1 {
                displayName = "Dash"; // Name is displayed in the interaction menu.
+               shortName = "Dash";
                componentName = "ACRE_VRC103";
                allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access. "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                disabledPositions[] = {};
@@ -89,6 +89,7 @@ class CfgVehicles {
         class AcreRacks {
            class Rack_1 {
                displayName = "Dash"; // Name is displayed in the interaction menu.
+               shortName = "Dash";
                componentName = "ACRE_VRC103";
                allowedPositions[] = {"driver", "copilot"}; // Who has access. "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                disabledPositions[] = {};
@@ -137,14 +138,17 @@ class CfgVehicles {
         class AcreIntercoms {
             class Intercom_1 {
                 displayName = "Crew intercom";
+                shortName = "Crew";
                 allowedPositions[] = {"crew"};
                 disabledPositions[] = {"driver", {"turnedout", "all"}};
+                masterPositions[] = {"commander"};
                 limitedPositions[] = {{"cargo", "all"}};
                 numLimitedPositions = 2;
                 connectedByDefault = 1;
             };
-            class Intercom_2: Intercom 1 {
+            class Intercom_2: Intercom_1 {
                 displayName = "Passenger intercom";
+                shortName = "Pax";
                 allowedPositions[] = {"crew", {"cargo", "all"}};
                 disabledPositions[] = {"commander", {"Cargo", 1}, {"ffv", "all"}, {"turnedout", 2, "driver", "gunner", [2]}};
                 limitedPositions[] = {};
@@ -164,6 +168,7 @@ class CfgVehicles {
         class AcreRacks {
             class Rack_1 {
                 displayName = "Dashboard Upper";             // Name displayed in the interaction menu
+                shortName = "D.Up";
                 componentName = "ACRE_VRC110";        // Able to mount a PRC152
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {};
@@ -174,6 +179,7 @@ class CfgVehicles {
             };
             class Rack_2 {
                 displayName = "Dashboard Upper";             // Name displayed in the interaction menu
+                shortName = "D.Up";
                 componentName = "ACRE_VRC110";        // Able to mount a PRC152
                 allowedPositions[] = {{"cargo", "all"}};       // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {{"ffv", "all"}};
@@ -184,6 +190,7 @@ class CfgVehicles {
             };
             class Rack_3 {
                 displayName = "Dashboard Lower";             // Name displayed in the interaction menu
+                shortName = "D.Low";
                 componentName = "ACRE_VRC103";        // Rack type (able to mount a PRC117F)
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
                 disabledPositions[] = {};
@@ -197,3 +204,24 @@ class CfgVehicles {
 };
 ```
 {% endraw %}
+
+## Assigning presets to vehicle racks
+
+It is now possible to assign a specific radio preset to a racked radio. This can be done using the API function `acre_api_fnc_setVehicleRacksPreset` before racks are initialised or calling it in the init field in the editor: `[this, "myCustomPreset"] call acre_api_fnc_setVehicleRacksPreset`.
+
+## Assigning racks mid-mission or to non-enterable vehicles
+
+Racks can also be dynamically added, removed or initialised using API functions.
+
+- `acre_api_fnc_addRackToVehicle` allows adding a rack to the vehicle. The following line adds a AN/VRC-103 with an AN/PRC 117F connected to `intercom_1`. The rack can be accessed from outside only:
+
+{% raw %}
+```cpp
+[cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]], false, {}] call acre_api_fnc_addRackToVehicle
+```
+{% endraw %}
+
+It is possible through this API function to add and initialise a rack on non-enterable objects like drones or communication tables.
+
+- `acre_api_fnc_removeRackFromVehicle` allows removing a rack with a unique ID from a vehicle.
+- `acre_api_fnc_initVehicleRacks` initialises all racks in a vehicle. This API function can be used to initialise racks on non-enterable vehicles.

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
@@ -89,6 +89,7 @@
             <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
             <Polish>Hasło kanału TeamSpeak</Polish>
             <Italian>Password canale Teamspeak</Italian>
+            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -320,7 +321,7 @@
             <Spanish>Activar auriculares/Activar espectadores</Spanish>
             <Czech>Přepnout headset/Přepnout diváky</Czech>
             <German>Headset umschalten/Zuschauer umschalten</German>
-            <Japanese>ヘッドセットのトグル/スペクテイターのトグル</Japanese>
+            <Japanese>ヘッドセットの切り替え/スペクテイターの切り替え</Japanese>
             <Italian>Attiva/Disattiva Cuffia - Attiva/Disattiva Spettatori</Italian>
             <French>Alterner Casque/Spectateurs</French>
             <Korean>헤드셋 전환/관전자 전환</Korean>
@@ -453,7 +454,7 @@
         <Key ID="STR_ACRE_sys_core_headsetRaised">
             <English>Headset Raised</English>
             <German>Headset aufgesetzt</German>
-            <Japanese>ヘッドセットを上げた</Japanese>
+            <Japanese>ヘッドセットを上げました</Japanese>
             <Russian>Наушники были подняты</Russian>
             <Chinese>戴上耳機</Chinese>
             <Chinesesimp>戴上耳机</Chinesesimp>
@@ -465,7 +466,7 @@
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
             <German>Headset abgesetzt</German>
-            <Japanese>ヘッドセットを下げた</Japanese>
+            <Japanese>ヘッドセットを下げました</Japanese>
             <Russian>Наушники были опущены</Russian>
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
