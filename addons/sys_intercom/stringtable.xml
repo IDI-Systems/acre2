@@ -252,84 +252,98 @@
             <Spanish>Volumen</Spanish>
             <Polish>Głośność</Polish>
             <Italian>Volume</Italian>
+            <Japanese>音量</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_mute">
             <English>Mute</English>
             <Spanish>Mutear</Spanish>
             <Polish>Wycisz</Polish>
             <Italian>Muto</Italian>
+            <Japanese>消音</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_startBroadcast">
             <English>Start Broadcast</English>
             <Spanish>Enviar mensaje prioritario</Spanish>
             <Polish>Rozpocznij transmisję</Polish>
             <Italian>Incomincia trasmissione</Italian>
+            <Japanese>ブロードキャストを開始</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
             <English>Stop Broadcast</English>
             <Spanish>Detener mensaje prioritario</Spanish>
             <Polish>Zatrzymaj transmisję</Polish>
             <Italian>Termina trasmissione</Italian>
+            <Japanese>ブロードキャストを停止</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_pttActivation">
             <English>PTT Activation</English>
             <Spanish>Activación PTT</Spanish>
             <Polish>Aktywacja PTT</Polish>
             <Italian>Attiva PTT</Italian>
+            <Japanese>PTT で有効</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_voiceActivation">
             <English>Voice Activation</English>
             <Spanish>Activación por voz</Spanish>
             <Polish>Aktywacja głosowa</Polish>
             <Italian>Voice activation</Italian>
+            <Japanese>音声検知</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
             <English>Intercom Key</English>
             <Spanish>Tecla de intercom</Spanish>
             <Polish>Klawisz interkomu</Polish>
             <Italian>Pulsante intercom</Italian>
+            <Japanese>インターコム キー</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
             <English>Use the intercom station to talk.</English>
             <Spanish>Usa la estación de intercom para hablar.</Spanish>
             <Polish>Mów przez interkom</Polish>
             <Italian>Usa la stazione intercom per parlare.</Italian>
+            <Japanese>インターコム内で会話する為に使用します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
             <English>Intercom Broadcast Key</English>
             <Spanish>Tecla para mensaje prioritario</Spanish>
             <Polish>Klawisz nadawania interkomu</Polish>
             <Italian>Pulsante trasmissione intercom</Italian>
+            <Japanese>インターコムのブロードキャスト キー</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
             <English>Use the intercom station to broadcast a priority message.</English>
             <Spanish>Usa la estación de intercom para enviar un mensaje prioritario.</Spanish>
             <Polish>Użyj interkomu, aby wysłać wiadomość priorytetową.</Polish>
             <Italian>Usa la stazione intercom per trasmettere un messaggio prioritario</Italian>
+            <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousIntercom">
             <English>Previous Intercom Network</English>
             <Spanish>Red de intercom previa</Spanish>
             <Polish>Poprzednia sieć interkomu</Polish>
             <Italian>Rete Intercom precedente</Italian>
+            <Japanese>前のインターコム網</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercom">
             <English>Next Intercom Network</English>
             <Spanish>Siguiente red de intercom</Spanish>
             <Polish>Następna sieć interkomu</Polish>
             <Italian>Rete Intercom successiva</Italian>
+            <Japanese>次のインターコム網</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercom">
             <English>Connect Previous Intercom Network</English>
             <Spanish>Connectar a la anterior red de intercom</Spanish>
             <Polish>Połącz się z poprzednią siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Precedente</Italian>
+            <Japanese>前のインターコム網に接続</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercom">
             <English>Connect Next Intercom Network</English>
             <Spanish>Connectar a la siguiente red de intercom</Spanish>
             <Polish>Połącz się z następną siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Successiva</Italian>
+            <Japanese>次のインターコム網に接続</Japanese>
         </Key>
     </Package>
 </Project>

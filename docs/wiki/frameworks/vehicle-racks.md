@@ -2,9 +2,6 @@
 title: Vehicle Racks
 ---
 
-{% include note.html content="Development Build only!" %}
-{% include important.html content="API still WIP. May change in the future!" %}
-
 Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
 ## Vehicle racks and intercom
@@ -207,3 +204,24 @@ class CfgVehicles {
 };
 ```
 {% endraw %}
+
+## Assigning presets to vehicle racks
+
+It is now possible to assign a specific radio preset to a racked radio. This can be done using the API function `acre_api_fnc_setVehicleRacksPreset` before racks are initialised or calling it in the init field in the editor: `[this, "myCustomPreset"] call acre_api_fnc_setVehicleRacksPreset`.
+
+## Assigning racks mid-mission or to non-enterable vehicles
+
+Racks can also be dynamically added, removed or initialised using API functions.
+
+- `acre_api_fnc_addRackToVehicle` allows adding a rack to the vehicle. The following line adds a AN/VRC-103 with an AN/PRC 117F connected to `intercom_1`. The rack can be accessed from outside only:
+
+{% raw %}
+```cpp
+[cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]], false, {}] call acre_api_fnc_addRackToVehicle
+```
+{% endraw %}
+
+It is possible through this API function to add and initialise a rack on non-enterable objects like drones or communication tables.
+
+- `acre_api_fnc_removeRackFromVehicle` allows removing a rack with a unique ID from a vehicle.
+- `acre_api_fnc_initVehicleRacks` initialises all racks in a vehicle. This API function can be used to initialise racks on non-enterable vehicles.

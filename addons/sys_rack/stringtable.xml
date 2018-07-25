@@ -15,6 +15,7 @@
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable</English>
             <Italian>Non montabile</Italian>
+            <Japanese>積載不可</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount</English>
@@ -30,7 +31,7 @@
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted (%1)</English>
             <German>Eingebautes (%1)</German>
-            <Japanese>乗せる (%1)</Japanese>
+            <Japanese>積載した (%1)</Japanese>
             <Chinese>裝載 (%1)</Chinese>
             <Chinesesimp>装载 (%1)</Chinesesimp>
             <Korean>설치 (%1)</Korean>
@@ -96,6 +97,7 @@
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
             <Italian>Cruscotto</Italian>
+            <Japanese>ダッシュ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLower">
             <English>Dash Lower</English>
@@ -111,6 +113,7 @@
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
             <Italian>C. Basso</Italian>
+            <Japanese>D.下げ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dash Upper</English>
@@ -126,6 +129,15 @@
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
             <Italian>C. Alto</Italian>
+            <Japanese>D.上げ</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_useAllRacks">
+            <English>Use All</English>
+            <Japanese>全て使用</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_stopUsingAllRacks">
+            <English>Stop Using All</English>
+            <Japanese>全ての使用を止める</Japanese>
         </Key>
     </Package>
 </Project>

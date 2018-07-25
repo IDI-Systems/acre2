@@ -3,7 +3,7 @@
  * Checks if a radio is compatible with the ground spike antenna.
  *
  * Arguments:
- * 0: Vehicle <OBJECT>
+ * 0: Ground spike antenna <OBJECT>
  * 1: Unique Radio ID <STRING>
  *
  * Return Value:
@@ -18,6 +18,8 @@
 
 params ["_gsa", "_radioId"];
 
-private _isCompatible = true;
+private _baseClass = BASE_CLASS_CONFIG(_radioID);
+private _componentName = toLower (getText (configFile >> "CfgVehicles" >> typeOf _gsa >> "AcreComponents" >> "componentName"));
+private _compatibleRadios = (getArray (configFile > "CfgAcreComponents" > _componentName > "compatibleRadios")) apply {toLower _x};
 
-_isCompatible
+_baseClass in _compatibleRadios

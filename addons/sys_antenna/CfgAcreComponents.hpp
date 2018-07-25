@@ -14,6 +14,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_TNC;
         height = 1.2; //meters
         binaryGainFile = QPATHTOF(binary\Thales_100cm_Whip_gain.aba);
+        compatibleRadios[] = {};
     };
 
     class ACRE_100CM_VHF_TNC : ACRE_BaseAntenna {
@@ -22,6 +23,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_TNC;
         height = 1;
         binaryGainFile = QPATHTOF(binary\Thales_100cm_Whip_gain.aba);
+        compatibleRadios[] = {"ACRE_PRC148", "ACRE_PRC152"};
     };
 
     class ACRE_100CM_VHF_BNC : ACRE_BaseAntenna {
@@ -30,6 +32,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_BNC;
         height = 1;
         binaryGainFile = QPATHTOF(binary\Thales_100cm_Whip_gain.aba);
+        compatibleRadios[] = {"ACRE_PRC148", "ACRE_PRC152"};
     };
 
     class ACRE_2HALFINCH_UHF_TNC: ACRE_BaseAntenna {
@@ -38,6 +41,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_TNC;
         height = 0.062457;
         binaryGainFile = QPATHTOF(binary\prc343_gain.aba);
+        compatibleRadios[] = {"ACRE_PRC343"};
     };
 
     class ACRE_SEM52_SHORT_BNC: ACRE_BaseAntenna {
@@ -46,6 +50,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_BNC;
         height = 0.4;
         binaryGainFile = QPATHTOF(binary\sem52_short_gain.aba);
+        compatibleRadios[] = {"ACRE_SEM52SL"};
     };
 
     class ACRE_SEM52_LONG_BNC: ACRE_BaseAntenna {
@@ -54,6 +59,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_BNC;
         height = 0.9;
         binaryGainFile = QPATHTOF(binary\sem52_long_gain.aba);
+        compatibleRadios[] = {"ACRE_SEM52SL"};
     };
 
     class ACRE_SEM70_LONG_BNC: ACRE_BaseAntenna {
@@ -62,6 +68,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_BNC;
         height = 1.03;
         binaryGainFile = QPATHTOF(binary\sem70_long_gain.aba);
+        compatibleRadios[] = {"ACRE_SEM70"};
     };
 
     class ACRE_AT271_38: ACRE_BaseAntenna {
@@ -70,6 +77,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_3_8;
         height = 2.88;
         binaryGainFile = QPATHTOF(binary\AT-271_gain.aba);
+        compatibleRadios[] = {"ACRE_PRC77"};
     };
 
     class ACRE_123CM_VHF_TNC: ACRE_BaseAntenna {
@@ -78,6 +86,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_TNC;
         height = 1.23;
         binaryGainFile = QPATHTOF(binary\Harris_123cm_Whip_gain.aba);
+        compatibleRadios[] = {"ACRE_PRC117F"};
     };
 
     class ACRE_270CM_VEH_BNC: ACRE_BaseAntenna {
@@ -86,6 +95,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_BNC;
         height = 2.7;
         binaryGainFile = QPATHTOF(binary\RF_3183_AT0XX_gain.aba);
+        compatibleRadios[] = {"ACRE_VRC103", "ACRE_VRC110", "ACRE_VRC111"};
     };
 
     class ACRE_FA80_BNC: ACRE_BaseAntenna {
@@ -94,6 +104,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_BNC;
         height = 1.66;
         binaryGainFile = QPATHTOF(binary\FA_80_gain.aba);
+        compatibleRadios[] = {"ACRE_SEM90"};
     };
 
     class ACRE_AS1729_38: ACRE_BaseAntenna {
@@ -102,6 +113,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_3_8;
         height = 3.39;
         binaryGainFile = QPATHTOF(binary\AS-1729_VRC_gain.aba);
+        compatibleRadios[] = {"ACRE_VRC64"};
     };
 
     class ACRE_243CM_VHF_TNC: ACRE_BaseAntenna {
@@ -110,6 +122,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_TNC;
         height = 2.43;
         binaryGainFile = QPATHTOF(binary\groundspike_2430cm_gain.aba);
+        compatibleRadios[] = {"ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC117F", "ACRE_PRC77", "ACRE_SEM70"};
     };
 
     class ACRE_643CM_VHF_TNC: ACRE_BaseAntenna {
@@ -118,5 +131,6 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_TNC;
         height = 6.43;
         binaryGainFile = QPATHTOF(binary\groundspike_2430cm_mast_gain.aba);
+        compatibleRadios[] = {"ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC117F", "ACRE_PRC77", "ACRE_SEM70"};
     };
 };
