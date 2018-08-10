@@ -1,36 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
-	<Package name="sys_gui">
-		<Key ID="STR_ACRE_sys_gui_VolumeControl">
-			<English>Direct Speech Volume Control</English>
-			<Spanish>Control del volumen de comunicación directa</Spanish>
-			<Czech>Ovládání hlasitosti přímého mluvení</Czech>
-			<German>Lautstärke der Direktkommunikation</German>
-			<Japanese>直接会話の音量設定</Japanese>
-			<Italian>Regolazione Volume Diretto</Italian>
-			<French>Contrôle du volume de communication directe</French>
-			<Korean>육성 음량 조절</Korean>
-			<Polish>Głośność mowy bezpośredniej</Polish>
-			<Russian>Громкость прямой речи</Russian>
-			<Chinese>語音音量控制</Chinese>
-			<Chinesesimp>语音音量控制</Chinesesimp>
-			<Portuguese>Controle de Volume de Comunicação Direta</Portuguese>
-		</Key>
-		<Key ID="STR_ACRE_sys_gui_VehicleInfoGrid">
-			<English>ACRE2 - Vehicle Info</English>
-			<Polish>ACRE2 - Informacje o pojeździe</Polish>
-			<Italian>ACRE2 - Informazione veicolo</Italian>
-			<Japanese>ACRE2 - 車両情報</Japanese>
-			<Chinese>ACRE2 - 載具資訊</Chinese>
-			<Chinesesimp>ACRE2 - 载具资讯</Chinesesimp>
-		</Key>
-		<Key ID="STR_ACRE_sys_gui_VehicleInfoGridDesc">
-			<English>Status on available Intercoms and Racks in the vehicle.</English>
-			<Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
-			<Italian>Status degli intercom e rack disponibili nel veicolo</Italian>
-			<Japanese>車両にある利用可能なインターコムと架台の状態を示します。</Japanese>
-			<Chinese>載具內可用對講機及機架的狀態</Chinese>
-			<Chinesesimp>载具内可用对讲机及机架的状态</Chinesesimp>
-		</Key>
-	</Package>
+    <Package name="sys_gui">
+        <Key ID="STR_ACRE_sys_gui_VolumeControl">
+            <English>Direct Speech Volume Control</English>
+            <Spanish>Control del volumen de comunicación directa</Spanish>
+            <Czech>Ovládání hlasitosti přímého mluvení</Czech>
+            <German>Lautstärke der Direktkommunikation</German>
+            <Japanese>直接会話の音量設定</Japanese>
+            <Italian>Regolazione Volume Diretto</Italian>
+            <French>Contrôle du volume de communication directe</French>
+            <Korean>육성 음량 조절</Korean>
+            <Polish>Głośność mowy bezpośredniej</Polish>
+            <Russian>Громкость прямой речи</Russian>
+            <Chinese>語音音量控制</Chinese>
+            <Chinesesimp>语音音量控制</Chinesesimp>
+            <Portuguese>Controle de Volume de Comunicação Direta</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid">
+            <English>ACRE2 - Vehicle Info</English>
+            <Polish>ACRE2 - Informacje o pojeździe</Polish>
+            <Italian>ACRE2 - Informazione veicolo</Italian>
+            <Japanese>ACRE2 - 車両情報</Japanese>
+            <Chinese>ACRE2 - 載具資訊</Chinese>
+            <Chinesesimp>ACRE2 - 载具资讯</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VehicleInfoGridDesc">
+            <English>Status on available Intercoms and Racks in the vehicle.</English>
+            <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
+            <Italian>Status degli intercom e rack disponibili nel veicolo</Italian>
+            <Japanese>車両にある利用可能なインターコムと架台の状態を示します。</Japanese>
+            <Chinese>載具內可用對講機及機架的狀態</Chinese>
+            <Chinesesimp>载具内可用对讲机及机架的状态</Chinesesimp>
+        </Key>
+    </Package>
 </Project>
