@@ -13,14 +13,14 @@
 
 RPC_FUNCTION(setSoundSystemMasterOverride) {
 
-    int status;
+    int32_t status;
 
     status = vMessage->getParameterAsInt(0);
 
     if (status == 1) {
-        CEngine::getInstance()->setSoundSystemOverride(TRUE);
+        CEngine::getInstance()->setSoundSystemOverride(true);
     } else {
-        CEngine::getInstance()->setSoundSystemOverride(FALSE);
+        CEngine::getInstance()->setSoundSystemOverride(false);
     }
 
 

@@ -1,3 +1,3 @@
 #include "VolumeEffect.h"
 
-CFilterVolume CVolumeEffect::volumeFilter;
+CFilterVolume CVolumeEffect::m_volumeFilter;

@@ -13,7 +13,7 @@
 
 RPC_FUNCTION(localMute) {
 
-    int status;
+    int32_t status;
 
     status = vMessage->getParameterAsInt(0);
 

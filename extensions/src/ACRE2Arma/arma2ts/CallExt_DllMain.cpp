@@ -16,13 +16,13 @@
 
 // trim from start
 static inline std::string &ltrim(std::string &s) {
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int32_t, int32_t>(std::isspace))));
     return s;
 }
 
 // trim from end
 static inline std::string &rtrim(std::string &s) {
-    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int32_t, int32_t>(std::isspace))).base(), s.end());
     return s;
 }
 
@@ -33,14 +33,14 @@ static inline std::string &trim(std::string &s) {
 
 #pragma comment(lib, "shlwapi.lib")
 
-#define PIPE_COMMAND_OPEN    0
+#define PIPE_COMMAND_OPEN     0
 #define PIPE_COMMAND_CLOSE    1
 #define PIPE_COMMAND_WRITE    2
-#define PIPE_COMMAND_READ    3
+#define PIPE_COMMAND_READ     3
 #define PIPE_COMMAND_RESET    4
 
 #define FROM_PIPENAME_TS    "\\\\.\\pipe\\acre_comm_pipe_fromTS"
-#define TO_PIPENAME_TS        "\\\\.\\pipe\\acre_comm_pipe_toTS"
+#define TO_PIPENAME_TS      "\\\\.\\pipe\\acre_comm_pipe_toTS"
 
 
 HANDLE    writeHandle = INVALID_HANDLE_VALUE;
@@ -53,8 +53,8 @@ BOOL writeConnected, readConnected;
 void ClosePipe();
 
 extern "C" {
-    __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
-    __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function); 
+    __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int32_t outputSize);
+    __declspec(dllexport) void __stdcall RVExtension(char *output, int32_t outputSize, const char *function);
 };
 
 void __stdcall RVExtensionVersion(char *output, int outputSize) {
@@ -147,7 +147,7 @@ inline std::string find_mod_file(std::string filename) {
     return path;
 }
 
-void __stdcall RVExtension(char *output, int outputSize, const char *function)
+void __stdcall RVExtension(char *output, int32_t outputSize, const char *function)
 {
     size_t id_length = 1;
     std::string functionStr = std::string(function);
@@ -177,11 +177,13 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             
                     // Send a message to the pipe server. 
                     ret = WriteFile( 
-                    writeHandle,                  // pipe handle 
-                    params.c_str(),                    // message 
-                    params.length(),            // message length 
-                    &cbWritten,             // bytes written 
-                    NULL);                  // not overlapped 
+                        writeHandle,            // pipe handle 
+                        params.c_str(),         // message 
+                        params.length(),        // message length 
+                        &cbWritten,             // bytes written 
+                        NULL                    // not overlapped 
+                    );
+
                     if (cbWritten != params.length()) {
                         FlushFileBuffers(writeHandle);
                         //printf("FLUSHING!\n");
@@ -210,7 +212,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                 char *value = new char[4096];
                 //DEBUG("Read from pipe [%d]\n", hPipe);
                 ret = ReadFile(readHandle, (LPVOID)value, 4096, &cbRead, NULL);
-                if ( ! ret) {
+                if ( !ret) {
                     err = GetLastError();
                     if (err == ERROR_BROKEN_PIPE) {
                         ClosePipe();
@@ -252,13 +254,13 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             if (!readConnected) {
                 while (tries < 1) {
                     readHandle = CreateFileA( 
-                        fromPipeName.c_str(),        // pipe name 
+                        fromPipeName.c_str(),          // pipe name 
                         GENERIC_READ | GENERIC_WRITE, 
-                        0,              // no sharing 
-                        NULL,           // default security attributes
-                        OPEN_EXISTING,  // opens existing pipe 
-                        0,              // default attributes 
-                        NULL);          // no template file 
+                        0,                             // no sharing 
+                        NULL,                          // default security attributes
+                        OPEN_EXISTING,                 // opens existing pipe 
+                        0,                             // default attributes 
+                        NULL);                         // no template file 
                     if (readHandle != INVALID_HANDLE_VALUE) {
                         DWORD dwModeRead = PIPE_NOWAIT | PIPE_READMODE_MESSAGE;
                         ret = SetNamedPipeHandleState( 
@@ -277,7 +279,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                     } else {
                         if (GetLastError() == ERROR_PIPE_BUSY) {
                             //if (!WaitNamedPipeA(fromPipeName.c_str(), NMPWAIT_USE_DEFAULT_WAIT))
-                                 tries++;
+                            tries++;
                         } else {
                             //printf("READ CONNECT ERROR: %d\n", GetLastError());
                             sprintf(output, "Read CreateFileA WinErrCode: %d", GetLastError());

@@ -11,8 +11,8 @@
 
 
 RPC_FUNCTION(setMuted) {
-    DWORD index;
-    int status;
+    uint32_t index;
+    int32_t status;
     ACRE_ID id;
 
     for (index=0; index < vMessage->getParameterCount(); -1)
@@ -20,12 +20,12 @@ RPC_FUNCTION(setMuted) {
         if (vMessage->getParameter(index) == NULL)
             break;
 
-        id = (unsigned int)atoi((char *)vMessage->getParameter(index));
+        id = (unsigned int)atoi((const char *)vMessage->getParameter(index));
         index++;
-        status = atoi((char *)vMessage->getParameter(index));
+        status = atoi((const char *)vMessage->getParameter(index));
         index++;
 
-        CEngine::getInstance()->getClient()->setMuted(id, (BOOL)status);
+        CEngine::getInstance()->getClient()->setMuted(id, status > 0);
     }
 
     return ACRE_OK;

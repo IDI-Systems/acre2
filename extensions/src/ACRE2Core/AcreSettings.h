@@ -15,13 +15,13 @@ public:
 
     ACRE_RESULT save();
     ACRE_RESULT load();
-    ACRE_RESULT save(std::string filename);
-    ACRE_RESULT load(std::string filename);
+    ACRE_RESULT save(const std::string &filename) const;
+    ACRE_RESULT load(const std::string &filename);
 
     DECLARE_MEMBER(std::string, LastVersion);
 
-    DECLARE_MEMBER(float, GlobalVolume);
-    DECLARE_MEMBER(float, PremixGlobalVolume);
+    DECLARE_MEMBER(float32_t, GlobalVolume);
+    DECLARE_MEMBER(float32_t, PremixGlobalVolume);
 
     DECLARE_MEMBER(bool, DisablePosition);
     DECLARE_MEMBER(bool, DisableMuting);

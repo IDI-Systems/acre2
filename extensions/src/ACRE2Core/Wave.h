@@ -6,55 +6,55 @@
 #include <tchar.h>
 #include "Mmsystem.h"
 #include <string>
+#include "Types.h"
 
 
 typedef struct __WAVEDESCR
 {
-    BYTE riff[4];
-    DWORD size;
-    BYTE wave[4];
+    uint8_t riff[4];
+    uint32_t size;
+    uint8_t wave[4];
 
 } _WAVEDESCR, *_LPWAVEDESCR;
 
 typedef struct __WAVEFORMAT
 {
-    BYTE id[4];
-    DWORD size;
-    SHORT format;
-    SHORT channels;
-    DWORD sampleRate;
-    DWORD byteRate;
-    SHORT blockAlign;
-    SHORT bitsPerSample;
+    uint8_t id[4];
+    uint32_t size;
+    int16_t format;
+    int16_t channels;
+    uint32_t sampleRate;
+    uint32_t byteRate;
+    int16_t blockAlign;
+    int16_t bitsPerSample;
 
 } _WAVEFORMAT, *_LPWAVEFORMAT;
 
 
 
-class CWave
-{
+class CWave {
 public:
     CWave(void);
     virtual ~CWave(void);
 
 public:
     // Public methods
-    BOOL Load(std::string wavFile);
-    BOOL IsValid()                {return (m_lpData != NULL);}
-    LPBYTE GetData()            {return m_lpData;}
-    DWORD GetSize()                {return m_dwSize;}
-    SHORT GetChannels()            {return m_Format.channels;}
-    DWORD GetSampleRate()        {return m_Format.sampleRate;}
-    SHORT GetBitsPerSample()    {return m_Format.bitsPerSample;}
+    bool Load(const std::string &wavFile);
+    bool IsValid() const             {return m_lpData != NULL;}
+    uint8_t* GetData() const         {return m_lpData;}
+    uint32_t GetSize() const         {return m_dwSize;}
+    int16_t GetChannels() const      {return m_Format.channels;}
+    uint32_t GetSampleRate() const   {return m_Format.sampleRate;}
+    int16_t GetBitsPerSample() const {return m_Format.bitsPerSample;}
 
 private:
     // Private members
     _WAVEDESCR m_Descriptor;
     _WAVEFORMAT m_Format;
-    LPBYTE m_lpData;
-    DWORD m_dwSize;
+    uint8_t *m_lpData;
+    uint32_t m_dwSize;
     HWAVEOUT m_hWaveout;
     WAVEHDR m_WaveHeader;
-    BOOL m_bStopped;
-    BOOL m_bPaused;
+    bool m_bStopped;
+    bool m_bPaused;
 };

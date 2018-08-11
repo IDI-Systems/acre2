@@ -28,7 +28,7 @@ Log::~Log(void) {
     DeleteCriticalSection(&this->m_CriticalSection);
     CloseHandle(this->fileHandle);
 }
-size_t Log::Write(DWORD msgType, char *function, unsigned int line, const char *format, ...) {
+size_t Log::Write(DWORD msgType, char *function, const uint32_t ac_line, const char *format, ...) {
     char buffer[4097], tbuffer[1024];
     va_list va;
     size_t ret;

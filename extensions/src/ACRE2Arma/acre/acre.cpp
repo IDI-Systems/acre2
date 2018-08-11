@@ -12,12 +12,12 @@
 
 #ifndef _STATIC
 extern "C" {
-    __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
-    __declspec (dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
+    __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int32_t outputSize);
+    __declspec (dllexport) void __stdcall RVExtension(char *output, int32_t outputSize, const char *function);
 };
 #endif
 
-void __stdcall RVExtensionVersion(char *output, int outputSize) {
+void __stdcall RVExtensionVersion(char *output, int32_t outputSize) {
     sprintf_s(output, outputSize, "%s", ACRE_VERSION);
 }
 
@@ -35,7 +35,7 @@ std::string get_command(const std::string & input) {
 
 std::atomic_bool _threaded = false;
 
-void __stdcall RVExtension(char *output, int outputSize, const char *function) {
+void __stdcall RVExtension(char *output, int32_t outputSize, const char *function) {
     ZERO_OUTPUT();
 
     // Get the command, then the command args

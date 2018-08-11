@@ -2,11 +2,11 @@
 #include "Log.h"
 #include <fstream>
 
-ACRE_RESULT CAcreSettings::save(std::string filename) {
+ACRE_RESULT CAcreSettings::save(const std::string &ac_filename) const {
     // Write the shit out by hand for now
     std::ofstream iniFile;
 
-    iniFile.open(filename, std::ios::trunc);
+    iniFile.open(ac_filename, std::ios::trunc);
     if (!iniFile.is_open()) {
         return ACRE_ERROR;
     }
@@ -24,26 +24,26 @@ ACRE_RESULT CAcreSettings::save(std::string filename) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CAcreSettings::load(std::string filename) {
+ACRE_RESULT CAcreSettings::load(const std::string &ac_filename) {
     // Write the shit out by hand for now
-    ini_reader config(filename);
+    ini_reader config(ac_filename);
 
     if (config.ParseError() < 0) {
         LOG("Failed to load ACRE ini file. Using defaults...");
-        this->save(filename);
+        this->save(ac_filename);
         return ACRE_ERROR;
     } else {
         LOG("Successfully loaded ACRE ini file (any failures above can be ignored).");
     }
 
     this->m_LastVersion = config.Get("acre2", "lastVersion", ACRE_VERSION);
-    this->m_GlobalVolume = (float)config.GetReal("acre2", "globalVolume", 1.0f);
-    this->m_PremixGlobalVolume = (float)config.GetReal("acre2", "premixGlobalVolume", 1.0f);
+    this->m_GlobalVolume = (float32_t) config.GetReal("acre2", "globalVolume", 1.0f);
+    this->m_PremixGlobalVolume = (float32_t) config.GetReal("acre2", "premixGlobalVolume", 1.0f);
     this->m_DisableUnmuteClients = config.GetBoolean("acre2", "disableUnmuteClients", false);
     this->m_DisableTS3ChannelSwitch = config.GetBoolean("acre2", "disableTS3ChannelSwitch", false);
 
     //LOG("Config Load: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
-    this->m_Path = filename;
+    this->m_Path = ac_filename;
 
     return ACRE_OK;
 }

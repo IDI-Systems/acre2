@@ -6,111 +6,111 @@
 #include "PositionalMixdownEffect.h"
 #include "Log.h"
 
-void CSoundChannelMono::init( int length, bool singleShot ) {
-    for (int i = 0; i < 8; ++i) {
-        this->effects[i] = NULL;
-        this->mixdownEffects[i] = NULL;
+void CSoundChannelMono::init(const int32_t ac_length, const bool ac_singleShot ) {
+    for (int32_t i = 0; i < 8; ++i) {
+        this->m_effects[i] = NULL;
+        this->m_mixdownEffects[i] = NULL;
     }
-    this->bufferMaxSize = length;
-    this->bufferLength = 0;
-    this->buffer = new short[length];
-    this->bufferPos = 0;
-    this->oneShot = singleShot;
-    memset(this->buffer, 0x00, length*sizeof(short) );
+    this->m_bufferMaxSize = ac_length;
+    this->m_bufferLength = 0;
+    this->m_buffer = new int16_t[ac_length];
+    this->m_bufferPos = 0;
+    this->m_oneShot = ac_singleShot;
+    memset(this->m_buffer, 0x00, ac_length*sizeof(int16_t) );
 }
 
 CSoundChannelMono::CSoundChannelMono() {
     this->init(4800, false);
 }
 
-CSoundChannelMono::CSoundChannelMono( int length ) {
-    this->init(length, false);
+CSoundChannelMono::CSoundChannelMono(const int32_t ac_length ) {
+    this->init(ac_length, false);
 }
 
-CSoundChannelMono::CSoundChannelMono( int length, bool oneShot ) {
-    this->init(length, oneShot);
+CSoundChannelMono::CSoundChannelMono(const int32_t ac_length, bool ac_oneShot ) {
+    this->init(ac_length, ac_oneShot);
 }
 
 CSoundChannelMono::~CSoundChannelMono() {
-    if (this->buffer) {
-        delete this->buffer;
-        this->buffer = NULL;
+    if (this->m_buffer) {
+        delete this->m_buffer;
+        this->m_buffer = NULL;
     }
-    for (int i = 0; i < 8; ++i) {
-        if (effects[i])
-            delete effects[i];
-        if (mixdownEffects[i])
-            delete mixdownEffects[i];
+    for (int32_t i = 0; i < 8; ++i) {
+        if (m_effects[i])
+            delete m_effects[i];
+        if (m_mixdownEffects[i])
+            delete m_mixdownEffects[i];
     }
 }
 
-int CSoundChannelMono::In(short *samples, int sampleCount) {
-    //memset(samples, 0x00, sampleCount*sizeof(short));
-    if (this->bufferLength+sampleCount <= this->bufferMaxSize) {
-        memcpy(this->buffer+this->bufferLength, samples, sampleCount*sizeof(short));
-        this->bufferLength += sampleCount;
+int CSoundChannelMono::In(int16_t *const a_samples, const int32_t ac_sampleCount) {
+    //memset(samples, 0x00, sampleCount*sizeof(int16_t));
+    if (this->m_bufferLength + ac_sampleCount <= this->m_bufferMaxSize) {
+        memcpy(this->m_buffer+this->m_bufferLength, a_samples, ac_sampleCount*sizeof(int16_t));
+        this->m_bufferLength += ac_sampleCount;
     }
-    return this->bufferLength;
+    return this->m_bufferLength;
 }
 
-int CSoundChannelMono::Out(short *samples, int sampleCount) {
-    int outLength = 0;
-    if (this->bufferLength > 0) {
-        outLength = std::min(sampleCount, this->bufferLength);
-        memcpy(samples, this->buffer, outLength*sizeof(short));
-        this->bufferLength -= outLength;
-        if (this->bufferLength > 0) {
-            memmove(this->buffer, this->buffer+outLength, this->bufferLength*sizeof(short));
+int CSoundChannelMono::Out(int16_t *const a_samples, const int32_t ac_sampleCount) {
+    int32_t outLength = 0;
+    if (this->m_bufferLength > 0) {
+        outLength = std::min(ac_sampleCount, this->m_bufferLength);
+        memcpy(a_samples, this->m_buffer, outLength*sizeof(int16_t));
+        this->m_bufferLength -= outLength;
+        if (this->m_bufferLength > 0) {
+            memmove(this->m_buffer, this->m_buffer + outLength, this->m_bufferLength*sizeof(int16_t));
         }
         
     }
     return outLength;
 }
 
-CSoundMonoEffect * CSoundChannelMono::setEffectInsert(int index, std::string type) {
-    if (index > 7)
+CSoundMonoEffect * CSoundChannelMono::setEffectInsert(const int32_t ac_index, const std::string &ac_type) {
+    if (ac_index > 7)
         return NULL;
-    if (this->effects[index])
-        delete this->effects[index];
-    if (type == "acre_volume") {
-        this->effects[index] = new CVolumeEffect();
-        return this->effects[index];
-    } else if (type == "acre_radio") {
-        this->effects[index] = new CRadioEffect();
-        return this->effects[index];
-    } else if (type == "acre_babbel") {
-        this->effects[index] = new CBabbelEffect();
+    if (this->m_effects[ac_index])
+        delete this->m_effects[ac_index];
+    if (ac_type == "acre_volume") {
+        this->m_effects[ac_index] = new CVolumeEffect();
+        return this->m_effects[ac_index];
+    } else if (ac_type == "acre_radio") {
+        this->m_effects[ac_index] = new CRadioEffect();
+        return this->m_effects[ac_index];
+    } else if (ac_type == "acre_babbel") {
+        this->m_effects[ac_index] = new CBabbelEffect();
     }
     return NULL;
 }
 
-CSoundMonoEffect * CSoundChannelMono::getEffectInsert(int index) {
-    if (index > 7)
+CSoundMonoEffect * CSoundChannelMono::getEffectInsert(const int32_t ac_index) {
+    if (ac_index > 7)
         return NULL;
-    return this->effects[index];
+    return this->m_effects[ac_index];
 }
 
-void CSoundChannelMono::clearEffectInsert(int index) {
-    if (index > 7)
+void CSoundChannelMono::clearEffectInsert(const int32_t ac_index) {
+    if (ac_index > 7)
         return;
-    if (this->effects[index])
-        delete this->effects[index];
+    if (this->m_effects[ac_index])
+        delete this->m_effects[ac_index];
 }
 
-CSoundMixdownEffect * CSoundChannelMono::setMixdownEffectInsert(int index, std::string type) {
-    if (index > 7)
+CSoundMixdownEffect * CSoundChannelMono::setMixdownEffectInsert(const int32_t ac_index, const std::string &ac_type) {
+    if (ac_index > 7)
         return NULL;
-    if (this->mixdownEffects[index])
-        delete this->mixdownEffects[index];
-    if (type == "acre_positional") {
-        this->mixdownEffects[index] = new CPositionalMixdownEffect();
-        return this->mixdownEffects[index];
+    if (this->m_mixdownEffects[ac_index])
+        delete this->m_mixdownEffects[ac_index];
+    if (ac_type == "acre_positional") {
+        this->m_mixdownEffects[ac_index] = new CPositionalMixdownEffect();
+        return this->m_mixdownEffects[ac_index];
     }
     return NULL;
 }
 
-CSoundMixdownEffect * CSoundChannelMono::getMixdownEffectInsert(int index) {
-    if (index > 7)
+CSoundMixdownEffect * CSoundChannelMono::getMixdownEffectInsert(const int32_t ac_index) {
+    if (ac_index > 7)
         return NULL;
-    return this->mixdownEffects[index];
+    return this->m_mixdownEffects[ac_index];
 }

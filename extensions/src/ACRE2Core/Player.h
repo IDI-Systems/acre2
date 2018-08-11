@@ -12,11 +12,11 @@
 
 class CPlayer : public CLockable {
 protected:
-    void init(ACRE_ID id);
+    void init(const ACRE_ID ac_id);
 public:
-    std::array<CSoundChannelMono *, 32> channels;
+    std::array<CSoundChannelMono *, 32> m_channels;
 
-    CPlayer(ACRE_ID id);
+    CPlayer(const ACRE_ID ac_id);
     CPlayer( void );
     
     void clearSoundChannels();

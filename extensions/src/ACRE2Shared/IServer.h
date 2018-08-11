@@ -18,9 +18,10 @@ public:
     virtual ACRE_RESULT sendMessage(IMessage *msg) = 0;
     virtual ACRE_RESULT handleMessage(unsigned char *data) = 0;
     virtual ACRE_RESULT release(void) = 0;
-    
-    
-    //DECLARE_INTERFACE_MEMBER(IServerCallback, RecvCallback);
-    DECLARE_INTERFACE_MEMBER(BOOL, Connected);
-    DECLARE_INTERFACE_MEMBER(ACRE_ID, Id);
+
+    virtual void setConnected(const bool ac_value) = 0;
+    virtual bool getConnected() const = 0;
+
+    virtual void setId(const ACRE_ID ac_value) = 0;
+    virtual ACRE_ID getId() const = 0;
 };

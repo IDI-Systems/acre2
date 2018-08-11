@@ -5,56 +5,52 @@
 
 #define PI 3.14159265
 
-
-using namespace std;
-
-
-FFT::FFT(int n, bool inverse)
-    : n(n), inverse(inverse), result(vector<Complex>(n))
+FFT::FFT(const int32_t ac_n, const bool ac_inverse)
+    : m_n(ac_n), m_inverse(ac_inverse), m_result(std::vector<Complex>(ac_n))
 {
-    lgN = 0;
-    for (int i = n; i > 1; i >>= 1)
+    m_lgN = 0;
+    for (int32_t i = m_n; i > 1; i >>= 1)
     {
-        ++lgN;
+        ++m_lgN;
         assert((i & 1) == 0);
     }
-    omega.resize(lgN);
-    int m = 1;
-    for (int s = 0; s < lgN; ++s)
+    m_omega.resize(m_lgN);
+    int32_t m = 1;
+    for (int32_t s = 0; s < m_lgN; ++s)
     {
         m <<= 1;
-        if (inverse)
-            omega[s] = exp(Complex(0, 2.0 * PI / m));
+        if (m_inverse)
+            m_omega[s] = std::exp(Complex(0, 2.0 * PI / m));
         else
-            omega[s] = exp(Complex(0, -2.0 * PI / m));
+            m_omega[s] = std::exp(Complex(0, -2.0 * PI / m));
     }
 }
 
 
-std::vector<FFT::Complex> FFT::transform(const vector<Complex>& buf)
+std::vector<FFT::Complex> FFT::transform(const std::vector<Complex>& buf)
 {
-    bitReverseCopy(buf, result);
+    bitReverseCopy(buf, m_result);
     int m = 1;
-    for (int s = 0; s < lgN; ++s)
+    for (int s = 0; s < m_lgN; ++s)
     {
         m <<= 1;
-        for (int k = 0; k < n; k += m)
+        for (int k = 0; k < m_n; k += m)
         {
             Complex current_omega = 1;
             for (int j = 0; j < (m >> 1); ++j)
             {
-                Complex t = current_omega * result[k + j + (m >> 1)];
-                Complex u = result[k + j];
-                result[k + j] = u + t;
-                result[k + j + (m >> 1)] = u - t;
-                current_omega *= omega[s];
+                Complex t = current_omega * m_result[k + j + (m >> 1)];
+                Complex u = m_result[k + j];
+                m_result[k + j] = u + t;
+                m_result[k + j + (m >> 1)] = u - t;
+                current_omega *= m_omega[s];
             }
         }
     }
-    if (inverse == false)
-        for (int i = 0; i < n; ++i)
-            result[i] /= n;
-    return result;
+    if (m_inverse == false)
+        for (int32_t i = 0; i < m_n; ++i)
+            m_result[i] /= m_n;
+    return m_result;
 }
 
 
@@ -70,13 +66,12 @@ double FFT::getPhase(Complex c)
 }
 
 
-void FFT::bitReverseCopy(const vector<Complex>& src, vector<Complex>& dest)
-        const
+void FFT::bitReverseCopy(const std::vector<Complex>& src, std::vector<Complex>& dest) const
 {
-    for (int i = 0; i < n; ++i)
+    for (int32_t i = 0; i < m_n; ++i)
     {
-        int index = i, rev = 0;
-        for (int j = 0; j < lgN; ++j)
+        int32_t index = i, rev = 0;
+        for (int32_t j = 0; j < m_lgN; ++j)
         {
             rev = (rev << 1) | (index & 1);
             index >>= 1;

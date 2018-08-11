@@ -16,38 +16,38 @@ class CTextMessage : public IMessage
 {
 public:
     // create new message to send constructor
-    CTextMessage(char *data, size_t length);
+    CTextMessage(char *const data, const size_t ac_length);
     ~CTextMessage(void);
-    ACRE_RESULT parse(char *data, size_t len);
+    ACRE_RESULT parse(char *const data, const size_t ac_len);
 
     char *getProcedureName(void);
     BOOL isValid();
-    unsigned char *getParameter(unsigned int index);
-    int getParameterAsInt(unsigned int index);
-    float getParameterAsFloat(unsigned int index);
+    unsigned char *getParameter(const uint32_t ac_index);
+    int getParameterAsInt(const uint32_t ac_index);
+    float getParameterAsFloat(uint32_t index);
     unsigned int getParameterCount(void);
     
 
-    static IMessage *createNewMessage(char *procedureName, ... );
-    static IMessage *formatNewMessage(char *procedureName, char *format, ... );
+    static IMessage *createNewMessage(const char *const procedureName, ... );
+    static IMessage *formatNewMessage(const char *const  procedureName, char *format, ... );
 
     unsigned char *getData() { 
-        return ((unsigned char *)this->m_DataPtr); 
+        return (unsigned char *) this->m_DataPtr; 
     }
     ACRE_RESULT setData(unsigned char *data) {
-        this->parse((char *)data, strlen((char*)data));
+        this->parse((char *)data, strlen((char *) data));
         return ACRE_OK;
     }
 
-    unsigned int getLength() {
-        return this->m_Data->length();
+    uint32_t getLength() {
+        return (uint32_t) this->m_Data->length();
     }
 
 private:
     std::string *m_Data;
     std::string *m_RpcProcedureName;
     std::string *m_Parameters[TEXTMESSAGE_MAX_PARAMETER_COUNT];
-    unsigned int m_ParameterCount;
-    BOOL m_IsValid;
+    uint32_t m_ParameterCount;
+    bool m_IsValid;
     char *m_DataPtr;
 };

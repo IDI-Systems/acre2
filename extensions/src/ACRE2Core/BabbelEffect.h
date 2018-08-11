@@ -4,6 +4,7 @@
 
 #include "SoundMonoEffect.h"
 #include "FilterRadio.h"
+#include "Types.h"
 
 #define _USE_MATH_DEFINES
 
@@ -16,64 +17,62 @@ class CBabbelEffect : public CSoundMonoEffect {
 private:
     Dsp::SimpleFilter<Dsp::Butterworth::LowPass <4>, 1> lpFilter1;
     Dsp::SimpleFilter<Dsp::Butterworth::LowPass <4>, 1> lpFilter2;
-    float offset;
-    float sfreq;
-    float mfreq;
+    float32_t m_offset;
+    float32_t m_sfreq;
+    float32_t m_mfreq;
 public:
     CBabbelEffect() {
-        offset = 128;
-        sfreq = 48000;
-        mfreq = 5200;
-        lpFilter1.setup(4, sfreq, mfreq*0.3);
-        lpFilter2.setup(4, sfreq, mfreq*0.5);
+        m_offset = 128.0f;
+        m_sfreq = 48000.0f;
+        m_mfreq = 5200.0f;
+        lpFilter1.setup(4, (float64_t) m_sfreq, (float64_t) m_mfreq*0.3);
+        lpFilter2.setup(4, (float64_t) m_sfreq, (float64_t) m_mfreq*0.5);
     };
-    void process(short *samples, int sampleCount) {    
-        float *floatPointer[1], *buffer;
-        buffer = new float[sampleCount];
+    void process(int16_t *const a_samples, const int32_t ac_sampleCount) {
+        float32_t *floatPointer[1], *buffer;
+        buffer = new float32_t[ac_sampleCount];
         floatPointer[0] = buffer;
-        short *tempSamples = new short[sampleCount];
-        memcpy(tempSamples, samples, sizeof(short)*sampleCount);
-        short maxAmp = 1;
-        for (int i = 0; i < sampleCount; ++i) {
-            samples[i] = (short)(((float)tempSamples[i]*1.0f)*cos(((float)i/(sfreq/mfreq))*1.4*M_PI));
+        int16_t *tempSamples = new int16_t[ac_sampleCount];
+        memcpy(tempSamples, a_samples, sizeof(int16_t)*ac_sampleCount);
+        int16_t maxAmp = 1;
+        for (int32_t i = 0; i < ac_sampleCount; ++i) {
+            a_samples[i] = (int16_t)(((float32_t)tempSamples[i]*1.0f)*cosf(((float32_t)i/(m_sfreq/m_mfreq))*1.4f*(float32_t) M_PI));
             //samples[i] += (short)(((float)tempSamples[i]*1.0f+offset)*cos(((float)i/(sfreq/500))*4*M_PI)+offset);
-            if (abs(samples[i]) > maxAmp)
-                maxAmp = samples[i];
-            buffer[i] = (float)samples[i]/(float)SHRT_MAX;
+            if (abs(a_samples[i]) > maxAmp)
+                maxAmp = a_samples[i];
+            buffer[i] = (float32_t) a_samples[i]/(float32_t) SHRT_MAX;
             //samples[i] = samples[i-1] + (short)(alpha*(tempSamples[i] - samples[i-1]));
             //samples[i] = alpha * (samples[i-1] + tempSamples[i] - tempSamples[i-1]);
         }
 
-        
-
-        lpFilter1.process(sampleCount, floatPointer);
+        lpFilter1.process(ac_sampleCount, floatPointer);
         //lpFilter2.process(sampleCount, floatPointer);
     
-        for (int i = 0; i < sampleCount; ++i) {
-            samples[i] = (short)((floatPointer[0][i]*SHRT_MAX)*1.0);
+        for (int32_t i = 0; i < ac_sampleCount; ++i) {
+            a_samples[i] = (int16_t)(floatPointer[0][i]*SHRT_MAX);
             //if(abs(samples[i]) < 200) {
             //    samples[i] = samples[i]*0.01;
             //}
 
-            buffer[i] = (float)samples[i]/(float)SHRT_MAX;
+            buffer[i] = (float32_t)a_samples[i]/(float32_t)SHRT_MAX;
         }
-        lpFilter2.process(sampleCount, floatPointer);
+        lpFilter2.process(ac_sampleCount, floatPointer);
 
-        short maxAmpPost = 1;
+        int16_t maxAmpPost = 1;
 
-        for (int i = 0; i < sampleCount; ++i) {
+        for (int32_t i = 0; i < ac_sampleCount; ++i) {
             if (((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER) > SHRT_MAX) {
-                samples[i] = SHRT_MAX;
+                a_samples[i] = SHRT_MAX;
             } else if (((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER) < SHRT_MIN) {
-                samples[i] = SHRT_MIN;
+                a_samples[i] = SHRT_MIN;
             } else {
-                samples[i] = (short)((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER);
+                a_samples[i] = (short)((floatPointer[0][i]*SHRT_MAX)*VOLUME_MODIFIER);
                 //if(abs(samples[i]) < 50) {
                 //    samples[i] = samples[i]*0.01;
                 //}
             };
-            if (abs(samples[i]) > maxAmpPost)
-                maxAmpPost = samples[i];
+            if (abs(a_samples[i]) > maxAmpPost)
+                maxAmpPost = a_samples[i];
         }
 
         //float difference = (float)(maxAmp/maxAmpPost);

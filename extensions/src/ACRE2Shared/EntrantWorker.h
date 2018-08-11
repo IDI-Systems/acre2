@@ -55,8 +55,8 @@ public:
     }
 
     virtual ACRE_RESULT exProcessItem(T) = 0;
-    DECLARE_MEMBER(BOOL, ShuttingDown);
-    DECLARE_MEMBER(BOOL, Running);
+    DECLARE_MEMBER(bool, ShuttingDown);
+    DECLARE_MEMBER(bool, Running);
 protected:
     std::thread workerThread;
     Concurrency::concurrent_queue<T> m_processQueue;

@@ -1,3 +1,3 @@
 #include "PositionalMixdownEffect.h"
 
-CFilterPosition CPositionalMixdownEffect::positionFilter;
+CFilterPosition CPositionalMixdownEffect::m_positionFilter;

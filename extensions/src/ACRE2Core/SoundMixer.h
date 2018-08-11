@@ -7,6 +7,7 @@
 
 #include <set>
 #include <concurrent_unordered_set.h>
+#include "Types.h"
 
 class CSoundMixer : public CLockable {
 private:
@@ -15,10 +16,10 @@ public:
     CSoundMixer() { };
     ~CSoundMixer() { };
     bool acquireChannel(CSoundChannelMono **returnChannel);
-    bool acquireChannel(CSoundChannelMono **returnChannel, int bufferSize);
-    bool acquireChannel(CSoundChannelMono **returnChannel, int bufferSize, bool singleShot);
+    bool acquireChannel(CSoundChannelMono **returnChannel, const int32_t bufferSize);
+    bool acquireChannel(CSoundChannelMono **returnChannel, const int32_t bufferSize, const bool singleShot);
 
     bool releaseChannel(CSoundChannelMono *releaseChannel);
-    void mixDown(short* samples, int sampleCount, int channels, const unsigned int speakerMask);
+    void mixDown(int16_t *const samples, const int32_t sampleCount, const int32_t channels, const uint32_t speakerMask);
 
 };

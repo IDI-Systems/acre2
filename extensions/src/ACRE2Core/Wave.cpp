@@ -6,8 +6,7 @@
 #include <fstream>
 
 
-CWave::CWave(void)
-{
+CWave::CWave(void) {
     // Init members
     memset(&m_Descriptor, 0, sizeof(_WAVEDESCR));
     memset(&m_Format, 0, sizeof(_WAVEFORMAT));
@@ -15,12 +14,11 @@ CWave::CWave(void)
     m_dwSize = 0;
     m_hWaveout = NULL;
     memset(&m_WaveHeader, 0, sizeof(WAVEHDR));
-    m_bPaused = FALSE;
-    m_bStopped = TRUE;
+    m_bPaused = false;
+    m_bStopped = true;
 }
 
-CWave::~CWave(void)
-{
+CWave::~CWave(void) {
     // Close output device
     if (IsValid())
     {
@@ -31,16 +29,15 @@ CWave::~CWave(void)
     }
 }
 
-BOOL CWave::Load(std::string wavFile)
-{
-    BOOL bResult = FALSE;
+bool CWave::Load(const std::string &wavFile) {
+    bool bResult = false;
 
 
 
     std::ifstream file;
     file.open(wavFile, std::fstream::in | std::fstream::binary);
     if (file.bad() || !file.is_open())
-        return FALSE;
+        return false;
 
     file.read((char *)this->m_Descriptor.riff, sizeof(this->m_Descriptor.riff));
     file.read((char *)&this->m_Descriptor.size, sizeof(this->m_Descriptor.size));
@@ -49,7 +46,6 @@ BOOL CWave::Load(std::string wavFile)
     char testChunk[4];
 
     file.read(testChunk, 4);
-
 
     while (strncmp(testChunk, "fmt", 3) != 0 && !file.eof()) {
         file.read(testChunk, 4);
@@ -78,11 +74,11 @@ BOOL CWave::Load(std::string wavFile)
             if (this->m_dwSize%2 == 1) {
                 this->m_dwSize -= 1;
             }
-            this->m_lpData = new BYTE[this->m_dwSize];
-            memset(this->m_lpData, 0x00, this->m_dwSize*sizeof(BYTE));
+            this->m_lpData = new uint8_t[this->m_dwSize];
+            memset(this->m_lpData, 0x00, this->m_dwSize*sizeof(uint8_t));
             file.read((char *)this->m_lpData, this->m_dwSize);
             file.close();
-            bResult = TRUE;
+            bResult = true;
         }
     }
 

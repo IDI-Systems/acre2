@@ -17,7 +17,7 @@ RPC_FUNCTION(getClientID) {
     TRACE("enter");
     
     LOCK(CEngine::getInstance()->getSelf());
-    CEngine::getInstance()->getSelf()->setNetId(std::string((char *)vMessage->getParameter(0)));
+    CEngine::getInstance()->getSelf()->setNetId(std::string((const char *)vMessage->getParameter(0)));
     CEngine::getInstance()->getExternalServer()->sendMessage(
         CTextMessage::formatNewMessage("ext_handleGetClientID", 
             "%d,%s,",

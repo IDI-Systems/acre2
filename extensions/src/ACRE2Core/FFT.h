@@ -4,6 +4,7 @@
 
 #include <complex>
 #include <vector>
+#include "Types.h"
 
 
 class FFT
@@ -15,17 +16,16 @@ class FFT
         FFT(int n, bool inverse = false);
         /* Computes Discrete Fourier Transform of given buffer. */
         std::vector<Complex> transform(const std::vector<Complex>& buf);
-        static double getIntensity(Complex c);
-        static double getPhase(Complex c);
+        static float64_t getIntensity(Complex c);
+        static float64_t getPhase(Complex c);
         
     private:
-        int n, lgN;
-        bool inverse;
-        std::vector<Complex> omega;
-        std::vector<Complex> result;
+        int32_t m_n, m_lgN;
+        bool m_inverse;
+        std::vector<Complex> m_omega;
+        std::vector<Complex> m_result;
         
-        void bitReverseCopy(const std::vector<Complex>& src,
-                std::vector<Complex>& dest) const;
+        void bitReverseCopy(const std::vector<Complex>& src, std::vector<Complex>& dest) const;
 };
 
 

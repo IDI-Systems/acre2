@@ -27,7 +27,7 @@ CBabelFilter::~CBabelFilter( void ) {
 }
 
 
-ACRE_RESULT CBabelFilter::process(short* samples, int sampleCount, int channels, ACRE_ID id) {
+ACRE_RESULT CBabelFilter::process(int16_t *const a_samples, const int32_t ac_sampleCount, const int32_t channels, const ACRE_ID ac_id) {
     /*
     BabelStruct *speaker = this->getSpeaker(id);
     
@@ -90,7 +90,7 @@ ACRE_RESULT CBabelFilter::process(short* samples, int sampleCount, int channels,
     return ACRE_OK;
 }
 
-BabelStruct *CBabelFilter::getSpeaker(ACRE_ID id) {
+BabelStruct *CBabelFilter::getSpeaker(const ACRE_ID ac_id) {
     /*
     LOCK(this);
     BabelStruct *speaker;
