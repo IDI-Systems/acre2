@@ -6,53 +6,48 @@
 #include <string>
 
 
-typedef struct __WAVEDESCR
+typedef struct __waveDescr
 {
-    BYTE riff[4];
-    DWORD size;
-    BYTE wave[4];
+    uint8_t riff[4];
+    uint32_t size;
+    uint8_t wave[4];
 
-} _WAVEDESCR, *_LPWAVEDESCR;
+} waveDescr_t, *lpWaveDescr_t;
 
-typedef struct __WAVEFORMAT
+typedef struct __waveFormat
 {
-    BYTE id[4];
-    DWORD size;
-    SHORT format;
-    SHORT channels;
-    DWORD sampleRate;
-    DWORD byteRate;
-    SHORT blockAlign;
-    SHORT bitsPerSample;
+    uint8_t id[4];
+    uint32_t size;
+    int16_t format;
+    int16_t channels;
+    uint32_t sampleRate;
+    uint32_t byteRate;
+    int16_t blockAlign;
+    int16_t bitsPerSample;
+} waveFormat_t, *lpwaveformat_t;
 
-} _WAVEFORMAT, *_LPWAVEFORMAT;
-
-
-
-class CWave
-{
+class CWave {
 public:
     CWave(void);
     virtual ~CWave(void);
 
-public:
     // Public methods
-    BOOL Load(std::string wavFile);
-    BOOL IsValid()                {return (m_lpData != NULL);}
-    LPBYTE GetData()            {return m_lpData;}
-    DWORD GetSize()                {return m_dwSize;}
-    SHORT GetChannels()            {return m_Format.channels;}
-    DWORD GetSampleRate()        {return m_Format.sampleRate;}
-    SHORT GetBitsPerSample()    {return m_Format.bitsPerSample;}
+    bool     load(std::string wavFile);
+    bool     isValid() const          {return m_lpData != NULL;}
+    uint8_t* getData() const          {return m_lpData;}
+    uint32_t getSize() const          {return m_dwSize;}
+    int16_t  getChannels() const      {return m_format.channels;}
+    uint32_t getSampleRate() const    {return m_format.sampleRate;}
+    int16_t  getBitsPerSample() const {return m_format.bitsPerSample;}
 
 private:
     // Private members
-    _WAVEDESCR m_Descriptor;
-    _WAVEFORMAT m_Format;
-    LPBYTE m_lpData;
-    DWORD m_dwSize;
-    HWAVEOUT m_hWaveout;
-    WAVEHDR m_WaveHeader;
-    BOOL m_bStopped;
-    BOOL m_bPaused;
+    waveDescr_t  m_descriptor;
+    waveFormat_t m_format;
+    uint8_t*     m_lpData;
+    uint32_t     m_dwSize;
+    HWAVEOUT     m_hWaveout;
+    WAVEHDR      m_waveHeader;
+    bool         m_bStopped;
+    bool         m_bPaused;
 };
