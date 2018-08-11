@@ -28,8 +28,6 @@ typedef struct __waveFormat
     int16_t bitsPerSample;
 } waveFormat_t, *lpwaveformat_t;
 
-
-
 class CWave {
 public:
     CWave(void);
@@ -40,9 +38,9 @@ public:
     bool     isValid() const          {return m_lpData != NULL;}
     uint8_t* getData() const          {return m_lpData;}
     uint32_t getSize() const          {return m_dwSize;}
-    int16_t  getChannels() const      {return m_Format.channels;}
-    uint32_t getSampleRate() const    {return m_Format.sampleRate;}
-    int16_t  getBitsPerSample() const {return m_Format.bitsPerSample;}
+    int16_t  getChannels() const      {return m_format.channels;}
+    uint32_t getSampleRate() const    {return m_format.sampleRate;}
+    int16_t  getBitsPerSample() const {return m_format.bitsPerSample;}
 
 private:
     // Private members

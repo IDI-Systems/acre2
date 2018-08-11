@@ -22,7 +22,7 @@ ACRE_RESULT CCommandServer::shutdown(void) {
 }
 
 
-ACRE_RESULT CCommandServer::sendMessage(IMessage *msg){
+ACRE_RESULT CCommandServer::sendMessage(IMessage *const msg){
     LOCK(this);
     //LOG("Sending: %s", (const char *)msg->getData());
     ts3Functions.sendPluginCommand((unsigned __int64)ts3Functions.getCurrentServerConnectionHandlerID(),
@@ -38,7 +38,7 @@ ACRE_RESULT CCommandServer::sendMessage(IMessage *msg){
     return ACRE_OK;
 }
 
-ACRE_RESULT CCommandServer::handleMessage(unsigned char *data){
+ACRE_RESULT CCommandServer::handleMessage(unsigned char *const data){
     CTextMessage *msg;
     //LOG("recv: [%s]", data);
     msg = new CTextMessage((char *)data, strlen((char *)data));

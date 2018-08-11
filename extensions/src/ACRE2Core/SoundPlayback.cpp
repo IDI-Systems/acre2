@@ -55,10 +55,10 @@ ACRE_RESULT CSoundPlayback::playSound(const std::string &ac_id, const ACRE_VECTO
     tempPath += "\\";
     tempPath += ac_id;
     CWave waveFile;
-    if (waveFile.Load(tempPath)) {
+    if (waveFile.load(tempPath)) {
         CSoundChannelMono *tempChannel;
         CEngine::getInstance()->getSoundEngine()->getSoundMixer()->lock();
-        CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&tempChannel, waveFile.GetSize()/sizeof(int16_t), true);
+        CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&tempChannel, waveFile.getSize()/sizeof(int16_t), true);
         tempChannel->setEffectInsert(0, "acre_volume");
         tempChannel->getEffectInsert(0)->setParam("volume", ac_volume);
         tempChannel->setMixdownEffectInsert(0, "acre_positional");
@@ -78,7 +78,7 @@ ACRE_RESULT CSoundPlayback::playSound(const std::string &ac_id, const ACRE_VECTO
             tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000000);
         }
 
-        tempChannel->In((short *)waveFile.GetData(), waveFile.GetSize()/sizeof(short));
+        tempChannel->In((short *)waveFile.getData(), waveFile.getSize()/sizeof(short));
         CEngine::getInstance()->getSoundEngine()->getSoundMixer()->unlock();
         return ACRE_OK;
     }

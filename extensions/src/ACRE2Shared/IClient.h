@@ -45,6 +45,6 @@ public:
     virtual ACRE_RESULT updateShouldSwitchTS3Channel(const bool ac_state) = 0;
     virtual bool shouldSwitchTS3Channel() = 0;
 
-    DECLARE_INTERFACE_MEMBER(ACRE_STATE, State);
-
+    virtual void setState(const ACRE_STATE ac_value) = 0;
+    virtual ACRE_STATE getState() const = 0;
 };

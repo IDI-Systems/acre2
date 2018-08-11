@@ -15,8 +15,8 @@ public:
     virtual ACRE_RESULT initialize(void) = 0;
     virtual ACRE_RESULT shutdown(void) = 0;
 
-    virtual ACRE_RESULT sendMessage(IMessage *msg) = 0;
-    virtual ACRE_RESULT handleMessage(unsigned char *data) = 0;
+    virtual ACRE_RESULT sendMessage(IMessage *const msg) = 0;
+    virtual ACRE_RESULT handleMessage(unsigned char *const data) = 0;
     virtual ACRE_RESULT release(void) = 0;
 
     virtual void setConnected(const bool ac_value) = 0;

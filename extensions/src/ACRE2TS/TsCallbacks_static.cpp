@@ -32,7 +32,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
     type = type;
     id = id;*/
 
-    BOOL noAcre = FALSE;
+    bool noAcre = false;
     char *metaData;
 
     switch(type) {
@@ -45,7 +45,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
                 if (!metaData) { 
                     noAcre = TRUE;
                 }
-                int metaDataLength = strlen(metaData);
+                int32_t metaDataLength = (int32_t) strlen(metaData);
                 if (metaDataLength < 3 || metaDataLength > (INFODATA_BUFSIZE - 2)) {
                     noAcre = TRUE;
                 }
