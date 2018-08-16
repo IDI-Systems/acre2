@@ -113,6 +113,7 @@ private _broadcasting = [];
     _intercomConnectByDefault pushBack _connectedByDefault;
     _intercomMasterStation pushBack _masterStationPositions;
     _broadcasting pushBack [false, objNull];
+    _accent pushBack false;
 } forEach _intercoms;
 
 [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
@@ -120,3 +121,4 @@ private _broadcasting = [];
 _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
 _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
 _vehicle setVariable [QGVAR(broadcasting), _broadcasting];
+_vehicle setVariable [QGVAR(accent), _accent];

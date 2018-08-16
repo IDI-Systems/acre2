@@ -36,7 +36,7 @@ DFUNC(speakingLoop) = {
     };
 
     private _sentMicRadios = [];
-    if (count GVAR(keyedMicRadios) > 0) then {
+    if !(GVAR(keyedMicRadios) isEqualTo []) then {
         BEGIN_COUNTER(speaking_loop_with_transmissions);
 
         // if ((time >= GVAR(lastRadioTime) || {GVAR(lastKeyCount) != count GVAR(keyedMicRadios) })) then {
@@ -62,7 +62,7 @@ DFUNC(speakingLoop) = {
                 private _returnedRadios = [_unit, _playerRadios] call FUNC(processRadioSpeaker);
                 {
                     private _params = _x;
-                    if ((count _params) > 0) then {
+                    if !(_params isEqualTo []) then {
                         _params params ["_txId","_rxId","_signalData","_params"];
                         //_params = _params select 3;
                         _radioParamsSorted params ["_radios","_sources"];
