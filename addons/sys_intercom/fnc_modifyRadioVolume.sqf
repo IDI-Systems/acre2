@@ -28,7 +28,7 @@ if (_rackId isEqualTo "") then {
 
 if (_rackId != "") then {
     if (isNull _vehicle) then {
-        _vehicle = [_rackId] call EFUNC(sys_rack,getVehicleFromRack):
+        _vehicle = [_rackId] call EFUNC(sys_rack,getVehicleFromRack);
     };
 
     private _accentConfig = _vehicle getVariable [QGVAR(accent)];
@@ -44,12 +44,12 @@ if (_rackId != "") then {
             if ( (_intercomName in _connectedIntercoms ) && {[_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration)}) then {
                 _connected = true;
                 private _tempVolume = [_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_VOLUME] call FUNC(getStationConfiguration);
-                if (_accentConfig # _forEachIndex && {_intercomInUse}) exitWith {
+                if ((_accentConfig # _forEachIndex) && {_intercomInUse}) exitWith {
                     _tempVolume = _tempVolume * 0.8; // Reduce volume by 20% if intercom is active and there is an incomming radio transmission
                 };
 
-                if (_vol > _intercomVolume) then {
-                    _intercomVolume = _vol;
+                if (_tempVolume > _intercomVolume) then {
+                    _intercomVolume = _tempVolume;
                 };
             };
         } forEach GVAR(intercomUse);

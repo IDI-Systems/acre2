@@ -29,6 +29,7 @@ private _intercomMasterStation = [];
 private _numLimitedPositions = [];
 private _intercomConnectByDefault = [];
 private _broadcasting = [];
+private _accent = [];
 
 {
     private _name = toLower (configName _x);
