@@ -64,13 +64,13 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                         private _keyIndex = _radios find _rxId;
                         if (_keyIndex == -1) then {
                             _keyIndex = (count _radios);
-                            _radios set[_keyIndex, _rxId];
-                            _sources set[_keyIndex, []];
+                            _radios set [_keyIndex, _rxId];
+                            _sources set [_keyIndex, []];
                         };
                         private _txRadios = _sources select _keyIndex; // _sources contains arrays - "passing" by reference
                         _txRadios pushBack [_unit,_txId,_signalData,_params];
 
-                        _signalHint = _signalHint + format["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
+                        _signalHint = _signalHint + format ["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
                     };
                 } forEach _returnedRadios;
             };
