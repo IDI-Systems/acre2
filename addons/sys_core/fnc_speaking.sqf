@@ -59,17 +59,6 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                     private _params = _x;
                     if !(_params isEqualTo []) then {
                         _params params ["_txId","_rxId","_signalData","_params"];
-                        //_params = _params select 3;
-                        _radioParamsSorted params ["_radios","_sources"];
-                        private _keyIndex = _radios find _rxId;
-                        if (_keyIndex == -1) then {
-                            _keyIndex = (count _radios);
-                            _radios set [_keyIndex, _rxId];
-                            _sources set [_keyIndex, []];
-                        };
-                        private _txRadios = _sources select _keyIndex; // _sources contains arrays - "passing" by reference
-                        _txRadios pushBack [_unit,_txId,_signalData,_params];
-
                         _signalHint = _signalHint + format ["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
                     };
                 } forEach _returnedRadios;
@@ -82,7 +71,8 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
 
     END_COUNTER(signal_code);
 
-    _radioParamsSorted params ["_radios","_sources"];
+    private _radios = [];
+    private _sources = [];
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
         if !(_radios isEqualTo []) then {
@@ -93,7 +83,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     private _compiledParams = HASH_CREATE;
     {
         private _recRadio = _x;
-        if (_recRadio != ACRE_BROADCASTING_RADIOID || GVAR(fullDuplex)) then {
+        if (_recRadio != ACRE_BROADCASTING_RADIOID || {GVAR(fullDuplex)}) then {
             BEGIN_COUNTER(radio_loop_single_radio);
             private ["_radioVolume", "_volumeModifier", "_on"];
             if (!GVAR(speaking_cache_valid)) then {
@@ -188,7 +178,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     } forEach _radios;
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
-        if ( (count _radios) > 0) then {
+        if !(_radios) isEqualTo []) then {
             END_COUNTER(radio_loop);
         };
     #endif
@@ -238,8 +228,9 @@ BEGIN_COUNTER(muting);
             } else {
                 if (!(_unit in _sentMicRadios)) then {
                     private _params = ['m', GET_TS3ID(_unit), 0];
-                    CALL_RPC("updateSpeakingData", _params);                    };
+                    CALL_RPC("updateSpeakingData", _params);
                 };
+            };
         } else {
             if (_unit != acre_player) then {
                 private _params = ['m', GET_TS3ID(_unit), 0];

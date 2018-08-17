@@ -49,18 +49,18 @@ if (!GVAR(speaking_cache_valid)) then {
 };
 
 
-if ((count _okRadios) > 0) then {
+if !(_okRadios isEqualTo []) then {
     BEGIN_COUNTER(okradio_loop);
     {
         private _cachedSampleTime = _unit getVariable [format["ACRE_%1CachedSampleTime", _x], -1];
 
-        if (time > _cachedSampleTime || !GVAR(speaking_cache_valid)) then {
+        if (time > _cachedSampleTime || {!GVAR(speaking_cache_valid)}) then {
             BEGIN_COUNTER(signal_mode_function);
             private _returnData = [_unit, _radioid, acre_player, _x] call CALLSTACK_NAMED((missionNamespace getVariable _functionName), _functionName);
             // DATA STRUCTURE: _returnData = [txRadioId, rxRadioId, signalQuality, distortionModel]
             END_COUNTER(signal_mode_function);
             private _eventReturn = [_x, "handleSignalData", +_returnData] call EFUNC(sys_data,transEvent);
-            if (!isNil "_eventReturn") then {
+            if (!isNil "_eventReturnf") then {
                 _returnData = _eventReturn;
             };
             _unit setVariable [format["ACRE_%1CachedSampleData", _x], _returnData];
@@ -87,7 +87,7 @@ if ((count _okRadios) > 0) then {
         } else {
             _params = _unit getVariable ["ACRE_%1CachedSampleParams"+_x, []];
         };
-        if (!GVAR(fullDuplex) || _x != _radioid) then {
+        if (!GVAR(fullDuplex) || {_x != _radioid}) then {
             _returns pushBack _params;
         };
     } forEach _okRadios;
