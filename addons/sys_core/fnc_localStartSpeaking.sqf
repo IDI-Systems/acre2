@@ -18,11 +18,14 @@
  */
 #include "script_component.hpp"
 
-private _onRadio = parseNumber(_this select 2);
+private _onRadio = (parseNumber (_this select 2)) == 1;
 private _radioId = _this select 3;
 TRACE_1("LOCAL START SPEAKING ENTER", _this);
+
 ACRE_LOCAL_SPEAKING = true;
-if (_onRadio == 1) then {
+["acre_startedSpeaking", [acre_player, _onRadio == 1, _radioId]] call CBA_fnc_localEvent; // [unit, on radio, radio ID]
+
+if (_onRadio) then {
     ACRE_LOCAL_BROADCASTING = true;
 
     if (isNil "ACRE_CustomVolumeControl") then {
