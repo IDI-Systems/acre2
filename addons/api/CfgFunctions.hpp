@@ -13,7 +13,6 @@ class CfgFunctions {
             PATHTO_FNC(setPTTDelay);
             PATHTO_FNC(getPTTDelay);
 
-            PATHTO_FNC(setRevealToAI);
             PATHTO_FNC(getRevealToAI);
 
             PATHTO_FNC(setCustomSignalFunc);

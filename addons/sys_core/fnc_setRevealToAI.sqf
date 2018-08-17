@@ -23,10 +23,10 @@ params ["_var"];
 // Set
 if !(_var isEqualType false) exitWith { false };
 
-if (!EGVAR(sys_core,revealToAI) && _var) then {
-    [] call FUNC(,enableRevealAI);
+if (!GVAR(revealToAI) && _var) then {
+    [] call FUNC(enableRevealAI);
 } else {
-    if (EGVAR(sys_core,revealToAI) && !_var) then {
+    if (GVAR(revealToAI) && !_var) then {
         [] call FUNC(disableRevealAI);
     };
 };
