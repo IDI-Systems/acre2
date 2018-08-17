@@ -54,15 +54,25 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
         if (!IS_MUTED(_unit)) then {
             TRACE_1("Calling processRadioSpeaker", _unit);
             private _returnedRadios = [_unit, _playerRadios] call FUNC(processRadioSpeaker);
-            if (EGVAR(sys_signal,showSignalHint)) then {
-                {
-                    private _params = _x;
-                    if !(_params isEqualTo []) then {
-                        _params params ["_txId","_rxId","_signalData","_params"];
-                        _signalHint = _signalHint + format ["%1->%2:\n%3dBm (%4%5)\n", name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
+
+            {
+                private _params = _x;
+                if !(_params isEqualTo []) then {
+                    _params params ["_txId", "_rxId", "_signalData", "_params"];
+                    //_params = _params select 3;
+                    _radioParamsSorted params ["_radios", "_sources"];
+                    private _keyIndex = _radios find _rxId;
+                    if (_keyIndex == -1) then {
+                        _keyIndex = count _radios;
+                        _radios set [_keyIndex, _rxId];
+                        _sources set [_keyIndex, []];
                     };
-                } forEach _returnedRadios;
-            };
+
+                    if (EGVAR(sys_signal,showSignalHint)) then {
+                        signalHint = format ["%1%2->%3:\n%4dBm (%5%6)\n", _signalHint, name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
+                    };
+                };
+            } forEach _returnedRadios;
         };
     } forEach GVAR(keyedMicRadios);
     if (_signalHint != "") then {
@@ -71,8 +81,8 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
 
     END_COUNTER(signal_code);
 
-    private _radios = [];
-    private _sources = [];
+    // To Check: Are values passed by reference?
+    _radioParamsSorted params ["_radios","_sources"];
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
         if !(_radios isEqualTo []) then {
@@ -124,12 +134,11 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 private _attenuate = 1;
                 if ([_recRadio, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                     _radioPos = [_recRadio, "getExternalAudioPosition"] call EFUNC(sys_data,physicalEvent);
-                    private _args = [_radioPos, ACRE_LISTENER_POS, acre_player];
                     // there needs to be handling of vehicle attenuation too
                     private _recRadioObject = [_recRadio] call EFUNC(sys_radio,getRadioObject);
                     _attenuate = [_recRadioObject] call EFUNC(sys_attenuate,getUnitAttenuate);
                     _attenuate = (1 - _attenuate)^3;
-                    _volumeModifier = _args call FUNC(findOcclusion);
+                    _volumeModifier = [_radioPos, ACRE_LISTENER_POS, acre_player] call FUNC(findOcclusion);
                     _volumeModifier = _volumeModifier^3;
                 };
 
@@ -146,28 +155,28 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                             HASH_SET(_compiledParams, netId _unit, []);
                         };
                         private _speakingRadios = HASH_GET(_compiledParams, netId _unit);
-                        if ((_params select 3)) then {
+                        if (_params select 3) then {
                             // Possible sound fix: Always double the distance of the radio for hearing purposes
                             // on external speaker to make it 'distant' like a speaker.
                             // This should be moved to plugin probably.
                             //_radioPos = _radioPos * [2,2,2];
-                            _params set[4, _radioPos];
-                            _params set[0, _radioVolume*_volumeModifier*_attenuate];
+                            _params set [4, _radioPos];
+                            _params set [0, _radioVolume*_volumeModifier*_attenuate];
                         } else {
                             private _ear = [_recRadio, "getState", "ACRE_INTERNAL_RADIOSPATIALIZATION"] call EFUNC(sys_data,dataEvent);
                             if (isNil "_ear") then {
                                 _ear = 0;
                             };
-                            _params set[4, [_ear*2, 0, 0]];
+                            _params set [4, [_ear*2, 0, 0]];
 
                             // Scale radio volume for headset
                             // I'm not sure if this is the best way or place to do it. But Fuck your Life (tm), i'm doing it here.
                             if (GVAR(lowered) == 1) then {
                                 _radioVolume = _radioVolume * 0.15;
                             };
-                            _params set[0, _radioVolume];
+                            _params set [0, _radioVolume];
                         };
-                        _params set[1, (_signalData select 0)];
+                        _params set [1, _signalData select 0];
                         _speakingRadios pushBack _params;
                     };
                 } forEach _hearableRadios;
@@ -178,7 +187,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     } forEach _radios;
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
-        if !(_radios) isEqualTo []) then {
+        if !(_radios isEqualTo []) then {
             END_COUNTER(radio_loop);
         };
     #endif
@@ -191,9 +200,8 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
         if (!isNull _unit) then {
             _sentMicRadios pushBack _unit;
             private _params = HASH_GET(_compiledParams, _x);
-            private _count = count _params;
             private _canUnderstand = [_unit] call FUNC(canUnderstand);
-            private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, _count];
+            private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, count _params];
             {
                 _paramArray append _x;
             } forEach _params;
@@ -212,7 +220,7 @@ BEGIN_COUNTER(muting);
 {
     private _unit = _x;
     if (!isNull _unit) then {
-        if (!IS_MUTED(_unit) && _unit != acre_player) then {
+        if (!IS_MUTED(_unit) && {_unit != acre_player}) then {
             if ((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
                 TRACE_1("Calling processDirectSpeaker", _unit);
                 private _params = [_unit] call FUNC(processDirectSpeaker);
@@ -226,11 +234,10 @@ BEGIN_COUNTER(muting);
                     // };
                 // };
             } else {
-                if (!(_unit in _sentMicRadios)) then {
+                if !(_unit in _sentMicRadios) then {
                     private _params = ['m', GET_TS3ID(_unit), 0];
-                    CALL_RPC("updateSpeakingData", _params);
+                    CALL_RPC("updateSpeakingData", _params);                    };
                 };
-            };
         } else {
             if (_unit != acre_player) then {
                 private _params = ['m', GET_TS3ID(_unit), 0];
