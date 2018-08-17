@@ -23,7 +23,7 @@ private _radioId = _this select 3;
 TRACE_1("LOCAL START SPEAKING ENTER", _this);
 
 ACRE_LOCAL_SPEAKING = true;
-["acre_startedSpeaking", [acre_player, _onRadio == 1, _radioId]] call CBA_fnc_localEvent; // [unit, on radio, radio ID]
+["acre_startedSpeaking", [acre_player, _onRadio, _radioId]] call CBA_fnc_localEvent; // [unit, on radio, radio ID]
 
 if (_onRadio) then {
     ACRE_LOCAL_BROADCASTING = true;
