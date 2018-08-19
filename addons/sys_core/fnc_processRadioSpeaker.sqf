@@ -60,7 +60,7 @@ if !(_okRadios isEqualTo []) then {
             // DATA STRUCTURE: _returnData = [txRadioId, rxRadioId, signalQuality, distortionModel]
             END_COUNTER(signal_mode_function);
             private _eventReturn = [_x, "handleSignalData", +_returnData] call EFUNC(sys_data,transEvent);
-            if (!isNil "_eventReturnf") then {
+            if (!isNil "_eventReturn") then {
                 _returnData = _eventReturn;
             };
             _unit setVariable [format["ACRE_%1CachedSampleData", _x], _returnData];
