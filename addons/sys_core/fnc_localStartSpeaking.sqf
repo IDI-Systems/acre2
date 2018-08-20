@@ -3,8 +3,8 @@
  * Handles the local player start speaking event.
  *
  * Arguments:
- * 0: Speaking ID <STRING>
- * 1: Net id of local player object <STRING>
+ * 0: Speaking ID <STRING> (unused)
+ * 1: Net id of local player object <STRING> (unused)
  * 2: On radio ("0" for false, "1" for true) <STRING>
  * 3: Radio ID if talking on radio <STRING>
  *
@@ -18,11 +18,14 @@
  */
 #include "script_component.hpp"
 
-private _onRadio = parseNumber(_this select 2);
-private _radioId = _this select 3;
 TRACE_1("LOCAL START SPEAKING ENTER", _this);
+params ["", "", "_onRadio", ["_radioId", ""]];
+_onRadio = _onRadio == "1";
+
 ACRE_LOCAL_SPEAKING = true;
-if (_onRadio == 1) then {
+["acre_startedSpeaking", [acre_player, _onRadio, _radioId]] call CBA_fnc_localEvent; // [unit, on radio, radio ID]
+
+if (_onRadio) then {
     ACRE_LOCAL_BROADCASTING = true;
 
     if (isNil "ACRE_CustomVolumeControl") then {
@@ -47,14 +50,8 @@ if (_onRadio == 1) then {
 } else {
     ACRE_LOCAL_BROADCASTING = false;
 };
-/*
-_speakingId = parseNumber((_this select 0));
-_netId = _this select 1;
-_onRadio = parseNumber((_this select 2));
-_radioId = _this select 3;
-*/
 
-//Make all the present speakers on the radio net, volume go to 0
+// Make all the present speakers on the radio net, volume go to 0
 if (!GVAR(fullDuplex)) then {
     if (ACRE_BROADCASTING_RADIOID != "") then {
         GVAR(previousSortedParams) params ["_radios","_sources"];
