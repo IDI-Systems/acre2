@@ -28,23 +28,19 @@ ACRE_LOCAL_SPEAKING = true;
 if (_onRadio) then {
     ACRE_LOCAL_BROADCASTING = true;
 
-    if (isNil "ACRE_CustomVolumeControl") then {
-        if (alive player) then {
-            private _factor = .4;
-            // Shifted one lower.
-            switch (EGVAR(sys_gui,VolumeControl_Level)) do {
-                case -2:     {_factor = .1};
-                case -1:     {_factor = .1};
-                case 0:     {_factor = .4};
-                case 1:     {_factor = .7};
-                case 2:     {_factor = 1};
-            };
-            private _currentVolume = [] call EFUNC(api,getSelectableVoiceCurve);
-            if (!isNil "_currentVolume") then {
-                if (_currentVolume != _factor) then  {
-                    [_factor] call EFUNC(api,setSelectableVoiceCurve);
-                };
-            };
+    if (isNil "ACRE_CustomVolumeControl" && {alive player}) then {
+        private _factor = .4;
+        // Shifted one lower.
+        switch (EGVAR(sys_gui,VolumeControl_Level)) do {
+            case -2: {_factor = .1};
+            case -1: {_factor = .1};
+            case 0:  {_factor = .4};
+            case 1:  {_factor = .7};
+            case 2:  {_factor = 1};
+        };
+        private _currentVolume = [] call EFUNC(api,getSelectableVoiceCurve);
+        if (!isNil "_currentVolume" && {_currentVolume != _factor}) then  {
+            [_factor] call EFUNC(api,setSelectableVoiceCurve);
         };
     };
 } else {
@@ -52,24 +48,20 @@ if (_onRadio) then {
 };
 
 // Make all the present speakers on the radio net, volume go to 0
-if (!GVAR(fullDuplex)) then {
-    if (ACRE_BROADCASTING_RADIOID != "") then {
-        GVAR(previousSortedParams) params ["_radios","_sources"];
-        {
-            if (ACRE_BROADCASTING_RADIOID == _x) exitWith {
-                {
-                    private _unit = _x select 0;
-                    if (!isNull _unit) then {
-                        if (_unit != acre_player) then {
-                            private _canUnderstand = [_unit] call FUNC(canUnderstand);
-                            private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand,1,0,1,0,false,[0,0,0]];
-                            CALL_RPC("updateSpeakingData", _paramArray);
-                        };
-                    };
-                } forEach (_sources select _forEachIndex);
-            };
-        } forEach _radios;
-    };
+if (!GVAR(fullDuplex) && {ACRE_BROADCASTING_RADIOID != ""}) then {
+    GVAR(previousSortedParams) params ["_radios","_sources"];
+    {
+        if (ACRE_BROADCASTING_RADIOID == _x) exitWith {
+            {
+                private _unit = _x select 0;
+                if (!isNull _unit && {_unit != acre_player}) then {
+                    private _canUnderstand = [_unit] call FUNC(canUnderstand);
+                    private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand,1,0,1,0,false,[0,0,0]];
+                    CALL_RPC("updateSpeakingData", _paramArray);
+                };
+            } forEach (_sources select _forEachIndex);
+        };
+    } forEach _radios;
 };
 
 true
