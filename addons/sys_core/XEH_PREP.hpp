@@ -59,3 +59,9 @@ PREP(arsenalOpen);
 PREP(arsenalClose);
 PREP(spectatorEGDisplayLoad);
 PREP(spectatorEGDisplayUnload);
+
+PREP(setInterference);
+PREP(setFullDuplex);
+PREP(ignoreAntennaDirection);
+PREP(setLossModelScale);
+PREP(setRevealToAI);
