@@ -29,11 +29,11 @@ if (_onRadio == 1) then {
         private _factor = .4;
         // Shifted one lower.
         switch (EGVAR(sys_gui,VolumeControl_Level)) do {
-            case -2:     {_factor = .1};
-            case -1:     {_factor = .1};
-            case 0:      {_factor = .4};
-            case 1:      {_factor = .7};
-            case 2:      {_factor = 1};
+            case -2: {_factor = .1};
+            case -1: {_factor = .1};
+            case 0:  {_factor = .4};
+            case 1:  {_factor = .7};
+            case 2:  {_factor = 1};
         };
         private _currentVolume = [] call EFUNC(api,getSelectableVoiceCurve);
         if (!isNil "_currentVolume" && {_currentVolume != _factor}) then  {
