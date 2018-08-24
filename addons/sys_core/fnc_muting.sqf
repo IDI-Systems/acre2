@@ -63,7 +63,7 @@ DFUNC(mutingPFHLoop) = {
                         if (GVAR(_fullListTime)) then {
                             _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
                         } else {
-                            if ((_muted == 0 && {_remoteUser in GVAR(muting)}) || (_muted == 1 && {!(_remoteUser in GVAR(muting))})) then {
+                            if ((_muted == 0 && {_remoteUser in GVAR(muting)}) || {(_muted == 1 && {!(_remoteUser in GVAR(muting))})}) then {
                                 _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
                             };
                         };
@@ -75,12 +75,12 @@ DFUNC(mutingPFHLoop) = {
         };
     } forEach GVAR(playerList);
 
-    if (!ACRE_IS_SPECTATOR || GVAR(_fullListTime)) then {
+    if (!ACRE_IS_SPECTATOR || {GVAR(_fullListTime)}) then {
         private _newSpectators = ACRE_SPECTATORS_LIST - GVAR(oldSpectators);
         if (GVAR(_fullListTime)) then {
             _newSpectators = ACRE_SPECTATORS_LIST;
         };
-        if ((count _newSpectators) > 0) then {
+        if !(_newSpectators isEqualTo []) then {
             {
                 if (_x != GVAR(ts3id)) then {
                     _mutingParams = _mutingParams + format["%1,1,", _x];
@@ -103,7 +103,7 @@ DFUNC(mutingPFHLoop) = {
         };
     };
 
-    if (ACRE_IS_SPECTATOR && GVAR(_fullListTime)) then {
+    if (ACRE_IS_SPECTATOR && {GVAR(_fullListTime)}) then {
         {
             if (_x != GVAR(ts3id)) then {
                 _mutingParams = _mutingParams + format["%1,0,", _x];

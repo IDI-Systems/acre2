@@ -19,7 +19,7 @@ params ["_unit"];
 
 private _languageId = _unit getVariable [QGVAR(languageId), 0];
 private _ret = false;
-if (_languageId in ACRE_SPOKEN_LANGUAGES || count GVAR(languages) == 0) then {
+if (_languageId in ACRE_SPOKEN_LANGUAGES || {GVAR(languages) isEqualTo []}) then {
     _ret = true;
 };
 _ret;

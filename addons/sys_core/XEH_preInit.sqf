@@ -115,7 +115,7 @@ private _monitorFnc = {
         private _callBack = GVAR(threadedExtCalls) select _id;
         if (IS_ARRAY(_callBack)) then {
             private _args = (_res select 1);
-            if (count _args > 0) then {
+            if !(_args isEqualTo []) then {
                 _args = _args select 0;
             };
             [_callBack select 0, _args] call (_callBack select 1);
