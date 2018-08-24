@@ -20,7 +20,6 @@ DFUNC(enterVehicle) = {
     params ["_player", "_newVehicle"];
 
     if (!isNull objectParent _player) then {
-        //(QGVAR(antennaElevationInfo) call BIS_fnc_rscLayer) cutRsc ["", "PLAIN"];
         // Open vehicle info display when racks are initialised
         [{(_this select 1) getVariable [QEGVAR(sys_rack,initialized), false]}, {
             params ["_player", "_vehicle"];
@@ -43,7 +42,6 @@ DFUNC(enterVehicle) = {
     } else {
         // Close vehicle info display
         (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-        //(QGVAR(antennaElevationInfo) call BIS_fnc_rscLayer) cutRsc [QGVAR(antennaElevationInfo), "PLAIN", 0, false];
     };
 };
 

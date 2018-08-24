@@ -389,8 +389,8 @@
             <Italian>Ignora direzione antenna</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_core_autoAntennaDirection_displayName">
-            <English>Automatically Adjust Antenna Direction</English>
-            <German>Antennenausrichtung automatisch vornehmen</German>
+            <English>Automatic Antenna Direction</English>
+            <German>Automatische Antennenausrichtung</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>

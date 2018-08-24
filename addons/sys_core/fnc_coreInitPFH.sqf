@@ -1,4 +1,4 @@
- /*
+/*
  * Author: ACRE2Team
  * Informs, once all checks are passed, that all ACRE2 core components are properly loaded. It is executed
  * as a per frame handler until all core checks are successful.
