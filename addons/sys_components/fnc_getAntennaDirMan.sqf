@@ -50,9 +50,16 @@ if (vehicle _obj == _obj) then {
     _forwardV = (ATLtoASL _spinePos) vectorFromTo (ATLtoASL (_spinePos vectorAdd _forwardV));
     _upV = (ATLtoASL _spinePos) vectorFromTo (ATLtoASL (_spinePos vectorAdd _upV));
 
-    //drawLine3D [_spinePos, _spinePos vectorAdd _forwardV, [1,0,0,1]]; 
-    //drawLine3D [_spinePos, _spinePos vectorAdd _upV, [0,0,1,1]]; 
-
+    /*
+    * In order to debug and visualize the antenna direction this function needs to be called every frame.
+    * This can be done by a PerFrameHandler via Debug Console:
+    * ` [{[player] call acre_sys_components_getAntennaDirMan},0,[]] call CBA_fnc_addPerFrameHandler`
+    * In addition uncomment #define DRAW_ANTENNA_POS in the script_component.hpp
+    */
+    #ifdef DRAW_ANTENNA_POS
+        drawLine3D [_spinePos, _spinePos vectorAdd _forwardV, [1,0,0,1]]; 
+        drawLine3D [_spinePos, _spinePos vectorAdd _upV, [0,0,1,1]];
+    #endif
 } else {
     _forwardV = vectorDir (vehicle _obj);
     _upV = vectorUp (vehicle _obj);
