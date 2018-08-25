@@ -30,6 +30,6 @@ if (!isNil "_currentSide") then {
     if (_currentSide != _side) then {
         [ACRE_ACTIVE_RADIO, _side] call FUNC(setRadioSpatial);
 
-        hintSilent format["Radio set to %1", _side];
+        [format["Radio set to %1", _side]] call EFUNC(sys_core,displayNotification);
     };
 };
