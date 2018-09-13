@@ -27,6 +27,14 @@ _speakingId = parseNumber _speakingId;
         _unit setRandomLip false;
         REM(GVAR(speakers),_unit);
         private _radioId = _unit getVariable [QGVAR(currentSpeakingRadio), ""];
+
+        // Reason: When two players are using a rack simultaneously. It can happen when transmitting through a rack and quickly receiving a
+        // transmission, that the other users do not receive it since ACRE_BROADCASTING_RADIOID does not reset immediately. Adding these lines
+        // ensures that the ACRE_BROADCASTING_RADIOID is reset.
+        if (_radioId == ACRE_BROADCASTING_RADIOID) then {
+            ACRE_BROADCASTING_RADIOID = "";
+        };
+
         //if (ACRE_BROADCASTING_RADIOID != _radioId) then {
             if (_radioId != "") then {
                 // Handle rack radios that are simultaneously in use.
