@@ -27,14 +27,16 @@
 
 class RscTitles {
     class GVAR(radioCycleDisplayBG) {
-        idd = 19099;
+        idd = 19098;
         movingEnable = 0;
         name = QGVAR(radioCycleDisplayBG);
         duration = 0.15;
         fadein = 0;
+
+        onLoad = "[(_this select 0), 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox";
         class controlsBackground {
             class GVAR(CycleDialogBackgroundYellow) {
-                idc = -1;
+                idc = 19105;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 1 };
@@ -58,14 +60,14 @@ class RscTitles {
         idd = 19099;
         movingEnable = 0;
         name = QGVAR(radioCycleDisplay);
-        duration = 2;
+        duration = 60;
         fadein = 0;
 
         //onLoad = QGVAR(hintIDD) = (_this select 0);
-        onLoad = QUOTE([(_this select 0)] call FUNC(_showHintBox));
+        onLoad = "[(_this select 0), 1, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox";
         class controlsBackground {
             class GVAR(CycleDialogBackgroundYellow) {
-                idc = -1;
+                idc = 19105;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 1 };
@@ -79,7 +81,7 @@ class RscTitles {
                 text = "";
             };
             class GVAR(CycleDialogBackgroundBlack) {
-                idc = -1;
+                idc = 19106;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 0.25 };
