@@ -67,7 +67,7 @@ if (!dialog) then {
         [(_activateRadio select 2)] call EFUNC(sys_radio,setActiveRadio);
         //diag_log "GO GO GOGO";
         //diag_log text format["'%1'", _activateRadio];
-        [(_activateRadio select 0), (_activateRadio select 1), "", 1] call FUNC(displayHint);
+        [(_activateRadio select 0), (_activateRadio select 1), "", 1, [ACRE_NOTIFICATION_PURPLE]] call FUNC(displayHint);
     };
 };
 

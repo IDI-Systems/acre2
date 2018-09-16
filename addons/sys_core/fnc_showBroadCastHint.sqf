@@ -25,6 +25,6 @@ if ((count ([] call EFUNC(sys_data,getPlayerRadioList))) > 0) then {
     };
     private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
     private _line2 = [ACRE_ACTIVE_RADIO, "getChannelDescription"] call EFUNC(sys_data,dataEvent);
-    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line2, "", -1] call EFUNC(sys_list,displayHint);
+    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line2, "", -1, [ACRE_NOTIFICATION_YELLOW]] call EFUNC(sys_list,displayHint);
 };
 true
