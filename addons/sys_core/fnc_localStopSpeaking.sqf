@@ -17,8 +17,11 @@
 #include "script_component.hpp"
 
 TRACE_1("LOCAL STOP SPEAKING ENTER", _this);
+
+["acre_stoppedSpeaking", [acre_player, ACRE_LOCAL_BROADCASTING]] call CBA_fnc_localEvent; // [unit, on radio]
 ACRE_LOCAL_SPEAKING = false;
 ACRE_LOCAL_BROADCASTING = false;
+
 //ACRE_BROADCASTING_RADIOID = "";
 if (isNil "ACRE_CustomVolumeControl") then {
     [] call EFUNC(sys_gui,closeVolumeControl); // reset voice curve.

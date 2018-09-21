@@ -55,7 +55,7 @@ _command = format["%1:%2", _command, _paramsString];
 #endif
 _res = call compile _res;
 if (_threaded) then {
-    GVAR(threadedExtCalls) set[(_res select 1), [_callBackArgs, _callBack]];
+    GVAR(threadedExtCalls) set [(_res select 1), [_callBackArgs, _callBack]];
 };
 
 _res;
