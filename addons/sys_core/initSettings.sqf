@@ -129,7 +129,7 @@
 ] call CBA_Settings_fnc_init;
 
 // Notification Settings
-[
+/*[
     QGVAR(incomingTransmissionNotification),
     "CHECKBOX",
     localize LSTRING(incomingTransmissionNotification),
@@ -147,7 +147,7 @@
     false,
     true,
     {} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;
+] call CBA_Settings_fnc_init;*/
 
 // @todo remove in 2.7.0
 // Module settings
