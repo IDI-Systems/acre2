@@ -275,6 +275,12 @@
             <Italian>Termina trasmissione</Italian>
             <Japanese>ブロードキャストを停止</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_activateAccent">
+            <English>Activate Accent</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
+            <English>Deactivate Accent</English>
+        </Key>
         <Key ID="STR_ACRE_sys_intercom_pttActivation">
             <English>PTT Activation</English>
             <Spanish>Activación PTT</Spanish>

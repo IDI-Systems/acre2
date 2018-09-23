@@ -95,9 +95,9 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
 
             private _accentActive = (_target getariable [QGVAR(accent), [false]]) # _intercomNetwork;
             if (_accentActive) then {
-                _action = [QGVAR(deactivateAccent), localize LSTRING(stopBroadcast), "", {[_target, _player, _this select 2, false] call FUNC(handleAccent)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = [QGVAR(deactivateAccent), localize LSTRING(activateAccent), "", {[_target, _player, _this select 2, false] call FUNC(handleAccent)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
             } else {
-                _action = [QGVAR(activateAccent), localize LSTRING(stopBroadcast), "", {[_target, _player, _this select 2, false] call FUNC(handleAccent)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = [QGVAR(activateAccent), localize LSTRING(deactivateAccent), "", {[_target, _player, _this select 2, false] call FUNC(handleAccent)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
             };
         };
 
