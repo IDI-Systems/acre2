@@ -6,7 +6,7 @@
  * 0: Unique Radio ID <STRING>
  *
  * Return Value:
- * Radio opened <BOOLEAN>
+ * Radio opened <BOOL>
  *
  * Example:
  * ["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_openRadio
