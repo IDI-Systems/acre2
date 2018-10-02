@@ -49,10 +49,11 @@
             <Portuguese>Pegar Aparelho</Portuguese>
             <Polish>Weź słuchawkę</Polish>
             <Italian>Prendi cuffia</Italian>
+            <Spanish>Coger transmisor</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHeadset">
             <English>Take Headset</English>
-            <Spanish>Coger transmisor</Spanish>
+            <Spanish>Coger auriculares</Spanish>
             <German>Headset abholen</German>
             <Japanese>ヘッドセットを取る</Japanese>
             <Russian>Взять наушники</Russian>
@@ -72,10 +73,11 @@
             <Portuguese>Largar Aparelho</Portuguese>
             <Polish>Odłóż słuchawkę</Polish>
             <Italian>Restituisci cuffia</Italian>
+            <Spanish>Devolver transmisor</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHeadset">
             <English>Return Headset</English>
-            <Spanish>Devolver transmisor</Spanish>
+            <Spanish>Devolver auriculares</Spanish>
             <German>Headset zuruckgeben</German>
             <Japanese>ヘッドセットを戻す</Japanese>
             <Russian>Вернуть наушники</Russian>
@@ -95,10 +97,11 @@
             <Portuguese>Dar Aparelho</Portuguese>
             <Polish>Podaj słuchawkę</Polish>
             <Italian>Passa cuffie</Italian>
+            <Spanish>Dar transmisor</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHeadset">
             <English>Give Headset</English>
-            <Spanish>Dar transmisor</Spanish>
+            <Spanish>Dar auriculares</Spanish>
             <German>Headset geben</German>
             <Japanese>ヘッドセットを渡す</Japanese>
             <Russian>Дать наушники</Russian>
@@ -118,6 +121,7 @@
             <Portuguese>%1 deu seu %2 para %3</Portuguese>
             <Polish>%1 podał twoje %2 do %3</Polish>
             <Italian>%1 ha dato il tuo %2 a %3</Italian>
+            <Spanish>%1 ha dado tu %2 a %3</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturn">
             <English>Stop using %1 from %2</English>
@@ -129,6 +133,7 @@
             <Korean>%2의 %1을 사용중지</Korean>
             <Portuguese>Para de usar %1 de %2</Portuguese>
             <Italian>Smetti di usare %1 da %2</Italian>
+            <Spanish>Deja de usar %1 de %2</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturnOwner">
             <English>%1 stopped using your %2</English>
@@ -139,6 +144,7 @@
             <Portuguese>%1 parou de usar seu %2</Portuguese>
             <Polish>%1 przestał używać twojego %2</Polish>
             <Italian>%1 ha smesso di usare il tuo %2</Italian>
+            <Spanish>%1 ha dejado de usar tu %2</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTake">
             <English>Start using %1 from %2</English>
@@ -150,6 +156,7 @@
             <Korean>%2의 %1을 사용시작</Korean>
             <Portuguese>Começar a usar %1 de %2</Portuguese>
             <Italian>Inizia ad usare %1 da %2</Italian>
+            <Spanish>Usa %1 de %2</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTakeOwner">
             <English>%1 started using your %2</English>
@@ -160,6 +167,7 @@
             <Portuguese>%1 começou a usar seu %2</Portuguese>
             <Polish>%1 używa twojego %2</Polish>
             <Italian>%1 ha iniziato ad usare il tuo %2</Italian>
+            <Spanish>%1 está usando tu %2</Spanish>
         </Key>
     </Package>
 </Project>

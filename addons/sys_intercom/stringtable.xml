@@ -201,6 +201,7 @@
             <Korean>으로 연결</Korean>
             <Portuguese>Conectar %1</Portuguese>
             <Italian>Connetti</Italian>
+            <Spanish>Conectar</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_disconnect">
             <English>Disconnect</English>
