@@ -7,7 +7,7 @@
  * 1: Parent connector Index <NUMBER>
  * 2: Child component Id - Simple component <STRING>
  * 3: Attributes of connection <HASH>
- * 4: Force - Permits replacing a pre-existing connection <BOOLEAN> (Default: false)
+ * 4: Force - Permits replacing a pre-existing connection <BOOLEAN> (default: false)
  *
  * Return Value:
  * Successful <BOOLEAN>
