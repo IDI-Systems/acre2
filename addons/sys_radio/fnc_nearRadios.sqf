@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the radios within a certain distance.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Position in ASL <ARRAY>
+ * 1: Radius <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Array of near radios <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_nearRadioPos
  *
  * Public: No
  */

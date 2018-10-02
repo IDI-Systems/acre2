@@ -1,16 +1,16 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Initialisation function for default radios.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique Radio ID <STRING>
+ * 1: Radio preset <STRING> (default: "default")
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1", "default2"] call acre_sys_radio_fnc_initDefaultRadio
  *
  * Public: No
  */

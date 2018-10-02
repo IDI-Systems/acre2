@@ -16,8 +16,9 @@
 #include "script_component.hpp"
 
 TRACE_1("", _this);
+params ["_unit"];
 
-if ((_this select 0) == acre_player) then {
+if (_unit == acre_player) then {
     LOG("acre_player died. resetting all radio info");
     {
         private _radioName = _x;

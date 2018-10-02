@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Updates the active radio.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Active radio updated <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_setActiveRadio
  *
  * Public: No
  */
