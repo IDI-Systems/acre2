@@ -19,12 +19,12 @@ params["_componentId"];
 
 private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData),_componentId);
 private _return = nil;
-if(!isNil "_parentComponentData") then {
+if (!isNil "_parentComponentData") then {
     private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
-    if(!isNil "_parentConnectorData") then {
+    if (!isNil "_parentConnectorData") then {
         _return = [];
         {
-            if(!isNil "_x") then {
+            if (!isNil "_x") then {
                 _return pushBack [_forEachIndex,_x];
             };
         } forEach _parentConnectorData;

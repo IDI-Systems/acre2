@@ -34,7 +34,7 @@ if (!isNil "_parentComponentData") then {
             private _childComponentId = _parentConnectedComponentData select 0;
             private _config = configFile >> "CfgAcreComponents" >> _childComponentId;
 
-            if (isClass(_config)) then { // Is Simple component
+            if (isClass _config) then { // Is Simple component
                 if (count _parentConnectorData > _parentConnector) then {
                     private _test = _parentConnectorData select _parentConnector;
                     if (!isNil "_test") then {
