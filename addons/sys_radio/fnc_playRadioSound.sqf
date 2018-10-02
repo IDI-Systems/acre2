@@ -5,7 +5,7 @@
  * Arguments:
  * 0: Unique Radio ID <STRING>
  * 1: Sound classname <STRING>
- * 2: Position <ARRAY> (Not Used)
+ * 2: Position <ARRAY> (unused)
  * 3: Direction <ARRAY>
  * 4: Volume <NUMBER>
  *
