@@ -7,7 +7,7 @@
  * 1: Parent connector Index <NUMBER>
  * 2: Child component Id - Simple component <STRING>
  * 3: Attributes of connection <HASH>
- * 4: Force - Permits replacing a pre-existing connection <BOOLEAN>
+ * 4: Force - Permits replacing a pre-existing connection <BOOLEAN> (Default: false)
  *
  * Return Value:
  * Successful <BOOLEAN>
@@ -19,7 +19,7 @@
  */
 #include "script_component.hpp"
 
-params ["_parentComponentId", "_parentConnector", "_childComponentType", "_attributes", ["_force",false]];
+params ["_parentComponentId", "_parentConnector", "_childComponentType", "_attributes", ["_force", false]];
 
 private _return = false;
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_parentComponentId);

@@ -31,16 +31,16 @@ private _searchFunction = {
                 private _connector = _x;
                 private _connectorIndex = _forEachIndex;
                 if (!isNil "_connector") then {
-                    private _connectedComponent = _connector select 0;
-                    private _attributes = _connector select 2;
+                    _connector params ["_connectedComponent", "", "_attributes"];
+
                     private _componentClass = configFile >> "CfgAcreComponents" >> _connectedComponent;
                     private _componentSimple = getNumber (_componentClass >> "simple");
                     if (_componentSimple == 1) then {
-                        _returnTree pushBack [_connectedComponent,_connectorIndex,[]];
+                        _returnTree pushBack [_connectedComponent, _connectorIndex,[]];
                     } else {
-                        if (!(_connectedComponent in _searchedComponents)) then {
+                        if !(_connectedComponent in _searchedComponents) then {
                             private _ret = [_connectedComponent] call _searchFunction;
-                            _returnTree pushBack [_connectedComponent,_connectorIndex,_ret];
+                            _returnTree pushBack [_connectedComponent, _connectorIndex,_ret];
                         };
                     };
                 };

@@ -20,7 +20,7 @@
  */
 #include "script_component.hpp"
 
-params["_radioId","_event","_data", "_radioData", "_eventKind", "_remote"];
+params ["_radioId", "", "", "_radioData", "", ""];
 
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_radioId);
 
