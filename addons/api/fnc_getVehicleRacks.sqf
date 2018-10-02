@@ -15,7 +15,9 @@
  */
 #include "script_component.hpp"
 
-params [["_vehicle", objNull]];
+params [
+	["_vehicle", objNull, [objNull]]
+];
 
 if (isNull _vehicle) exitWith {
     WARNING_1("Vehicle %1 not defined.",format ["%1", _vehicle]);

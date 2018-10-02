@@ -15,7 +15,9 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId"];
+params [
+    ["_radioId", "", [""]]
+];
 
 TRACE_1("", _radioId);
 if ( ([_radioId] call FUNC(isBaseRadio)) ) exitWith {
@@ -26,6 +28,7 @@ private _parent = configName (inheritsFrom (configFile >> "CfgAcreComponents" >>
 if (_parent == "") then {
     _parent = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 };
+
 private _hasUnique = 0;
 while { _hasUnique != 1 && _parent != ""} do {
     _hasUnique = getNumber (configFile >> "CfgWeapons" >> _parent >> "acre_hasUnique");

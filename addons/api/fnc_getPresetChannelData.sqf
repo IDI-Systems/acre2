@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Base radio class <STRING>
  * 1: Preset name <STRING>
- * 2: Channel number <STRING>
+ * 2: Channel number <NUMBER>
  *
  * Return Value:
  * Hash containing all the channel preset information <HASH>
@@ -18,7 +18,11 @@
  */
 #include "script_component.hpp"
 
-params ["_radioClass", "_presetName", "_channelReference"];
+params [
+	["_radioClass", "", [""]],
+	["_presetName", "", [""]],
+	["_channelReference", 0, [0]]
+];
 
 if (!(_radioClass isEqualType "")) exitWith { nil };
 if (!(_presetName isEqualType "")) exitWith { nil };

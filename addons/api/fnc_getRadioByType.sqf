@@ -18,7 +18,10 @@
  */
 #include "script_component.hpp"
 
-params ["_radioType",["_array",[]]];
+params [
+	["_radioType", "", [""]],
+	["_array",[], [[]]]
+];
 
 private _array = [];
 private _ret = nil;

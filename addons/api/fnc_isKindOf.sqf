@@ -16,7 +16,10 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId", "_radioType"];
+params [
+    ["_radioId", "", []],
+    ["_radioType", "", []]
+];
 
 private _ret = false;
 private _parent = configName (inheritsFrom ( configFile >> "CfgAcreComponents" >> _radioId));

@@ -15,6 +15,8 @@
  */
 #include "script_component.hpp"
 
-params ["_weapon"];
+params [
+	["_weapon", "", [""]]
+];
 
 _weapon call EFUNC(sys_radio,isBaseClassRadio);

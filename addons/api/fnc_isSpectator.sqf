@@ -16,7 +16,9 @@
  */
 #include "script_component.hpp"
 
-params [["_unit", acre_player]];
+params [
+    ["_unit", acre_player, [objNull]]
+];
 
 if (_unit == acre_player) then {
     ACRE_IS_SPECTATOR

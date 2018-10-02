@@ -16,7 +16,12 @@
  */
 #include "script_component.hpp"
 
-params ["_weaponArray", "_type"];
+params [
+	["_weaponArray", objNull, [objNull, []]],
+	["_type", "", [""]]
+];
+
+if (_type isEqualTo "") exitWith {false};
 
 _type = toLower _type;
 

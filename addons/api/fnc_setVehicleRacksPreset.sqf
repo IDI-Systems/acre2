@@ -16,7 +16,10 @@
  */
 #include "script_component.hpp"
 
-params [["_vehicle", objNull], ["_presetName", ""]];
+params [
+	["_vehicle", objNull, [objNull]],
+	["_presetName", "", [""]]
+];
 
 if (isNull _vehicle) exitWith {
     WARNING("Vehicle is null");

@@ -15,7 +15,10 @@
  */
 #include "script_component.hpp"
 
-params [["_rackId", ""], ["_returnBaseClass", false]];
+params [
+    ["_rackId", "", [""]],
+    ["_returnBaseClass", false, [true]]
+];
 
 if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
     WARNING_1("Non existant rack ID provided: %1",_rackId);

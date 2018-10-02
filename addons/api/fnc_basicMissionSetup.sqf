@@ -17,7 +17,11 @@
  */
 #include "script_component.hpp"
 
-params ["_logic", "_units", "_activated"];
+params [
+    ["_logic", objNull, [objNull]],
+    ["_units", [], [[]]],
+    ["_activated", true, [true]]
+];
 
 // Run once
 if (!isNil QGVAR(basicMissionSetup) && {GVAR(basicMissionSetup)}) exitWith {};

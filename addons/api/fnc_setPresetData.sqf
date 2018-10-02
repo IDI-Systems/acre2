@@ -17,7 +17,11 @@
  */
 #include "script_component.hpp"
 
-params ["_radioClass", "_preset", "_presetData"];
+params [
+	["_radioClass", "", [""]],
+	["_preset", "", [""]],
+	["_presetData", [], [[]]]
+];
 
 private _return = false;
 
@@ -32,4 +36,5 @@ if (!isNil "_presetPointer") then {
     } forEach _presetData;
     _return = true;
 };
-true
+
+_return

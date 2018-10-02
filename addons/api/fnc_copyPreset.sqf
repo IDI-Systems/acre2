@@ -17,7 +17,13 @@
  */
 #include "script_component.hpp"
 
-params ["_radioClass", "_srcPresetName", "_dstPresetName"];
+params [
+    ["_radioClass", "", []],
+    ["_srcPresetName", "", []],
+    ["_dstPresetName", "", []]
+];
+
+if (_radioClass isEqualTo ""  || {_srcPresetName isEqualTo ""} || {_dstPresetName isEqualTo ""}) exitWith {false};
 
 private _presetData = [_radioClass, _srcPresetName] call FUNC(getPresetData);
 if (isNil "_presetData") exitWith { false };

@@ -18,7 +18,9 @@
  */
 #include "script_component.hpp"
 
-params ["_modelType"];
+params [
+    ["_modelType", "", [""]]
+];
 
 switch _modelType do {
     case "ACRE_CURVE_MODEL_ORIGINAL": {

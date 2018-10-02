@@ -18,7 +18,10 @@
  */
 #include "script_component.hpp"
 
-params [["_vehicle", objNull], ["_condition", {}]];
+params [
+    ["_vehicle", objNull, [objNull]],
+    ["_condition", {}, [{}]]
+];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");

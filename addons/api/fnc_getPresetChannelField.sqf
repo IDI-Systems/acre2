@@ -20,10 +20,12 @@
 
 //TODO: remove comments? and from setPresetChannelField
 
-private _ret = params [["_radioClass","",[""]],
+private _ret = params [
+    ["_radioClass","",[""]],
     ["_presetName","",[""]],
-    "_channelReference",
-    ["_fieldName","",[""]]];
+    ["_channelReference", 0, [0]],
+    ["_fieldName","",[""]]
+];
 
 if (!_ret) exitWith { nil };
 

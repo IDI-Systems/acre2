@@ -16,7 +16,10 @@
  */
 #include "script_component.hpp"
 
-params ["_radioId","_volume"];
+params [
+	["_radioId", "", [""]],
+	["_volume", 0, [0]]
+];
 
 _volume = ((_volume min 1) max 0);
 

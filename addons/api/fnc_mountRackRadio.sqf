@@ -16,7 +16,10 @@
  */
 #include "script_component.hpp"
 
-params [["_rackId", ""], ["_baseRadio", ""]];
+params [
+	["_rackId", "", [""]],
+	["_baseRadio", "", [""]]
+];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");

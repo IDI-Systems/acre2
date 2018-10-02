@@ -17,7 +17,9 @@
 
 if (!hasInterface) exitWith {false};
 
-params ["_spectVariable"];
+params [
+	["_spectVariable", false, [false]]
+];
 
 if (!IS_BOOL(_spectVariable)) exitWith { false };
 if (_spectVariable) then {
