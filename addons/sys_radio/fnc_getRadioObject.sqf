@@ -1,16 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returs the radio containing object.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Radio containing object <OBJECT>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_getRadioObject
  *
  * Public: No
  */
