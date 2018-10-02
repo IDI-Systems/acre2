@@ -68,12 +68,12 @@ class CfgVehicles {
         };
     };
 
+    // Unused, backwards compatibility only
     class GVAR(DifficultySettings): Module_F {
         scope = 1;
         displayName = "Difficulty Settings";
         category = QGVAR(mission_setup);
 
-        function = "AcreModules_fnc_difficultySettings";
         functionPriority = 20;
         isGlobal = 2;
         isTriggerActivated = 0;

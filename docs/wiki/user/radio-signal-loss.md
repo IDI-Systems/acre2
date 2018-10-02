@@ -16,48 +16,28 @@ Note: In the present simulation model buildings and terrain objects do not effec
 
 ## Configuration
 
-These can be setup either by placing the ACRE2 difficulty module in the mission or by using the API functions.
+These can be setup via [CBA Settings](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System).
 
 ### Terrain Loss
 
-This setting effects the signal loss that occurs due to terrain. In the module this can be enabled or disabled. The API functions can be used to change the simulation model on the fly and only effect the local client.
+This setting effects the signal loss that occurs due to terrain. The CBA Setting can be used to change the simulation model on the fly.
 
-*Default value*: Enabled (1)
-
-API function example:
-`[0.0] call acre_api_fnc_setLossModelScale;`
-
-The API function accepted values between 0 and 1. 1 represents enabled, 0 represents disabled. Intermediate values between 0 and 1 provide a allow a form of interpolation.
+Default value: Enabled (0.5)
 
 ### Interference
 
 Multiple transmissions on the same frequency can be destructive this setting allows you disable that interference allowing you to hear multiple speakers on the same frequency at once. Otherwise you will hear destructive interference if multiple people are transmitting on the same frequency (if both transmissions are received and one does not dominate the other).
 
-Default value: Enabled (`true`)
-
-API function example:
-`[false] call acre_api_fnc_setInterference;`
-
-`false` will disable the interference.
+Default value: Enabled
 
 ### Full Duplex
 
 This setting allows a radio to broadcast and receive transmissions at the same time. Allowing you to hear others speaker on the same frequency as you talk. It is recommended to disable interference if you enable full duplex.
 
-Default value: Disabled (`false`)
+Default value: Disabled
 
-API function example:
-`[true] call acre_api_fnc_setFullDuplex;`
-
-`true` enables the full duplex mode.
-
-###  Ignore Antenna direction (introduced in v2.2.0)
+### Ignore Antenna direction (introduced in v2.2.0)
 
 This setting can be used to disable the simulation of antenna radiation patterns for both the transmitting and receiving radios. It will make all antennas act with perfect omni-directional behaviour.
 
-Default value: Disabled (`false`) (Antenna direction is taken into account)
-
-API function example:
-`[true] call acre_api_fnc_ignoreAntennaDirection;`
-
-`true` enables is used to ignore the antenna direction.
+Default value: Disabled (antenna direction is taken into account)

@@ -28,8 +28,8 @@ DFUNC(connectionFnc) = {
             if (GVAR(pipeCode) != "1") then {
                 if (time > 15) then {
                     if (isMultiplayer) then {
-                        private _warning = "WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!";
-                        hintSilent _warning;
+                        private _warning = "<t color='#FF8021'>WARNING!</t><br />ACRE is not connected to Teamspeak!";
+                        [_warning, 3] call EFUNC(sys_core,displayNotification);
                         GVAR(connectCount) = GVAR(connectCount) + 1;
                         if (GVAR(connectCount) > 15) then {
                             INFO_1("Pipe error: %1",GVAR(pipeCode));
@@ -43,9 +43,9 @@ DFUNC(connectionFnc) = {
             } else {
                 LOG("PIPE OPENED!");
                 if (GVAR(hasErrored) && isMultiplayer) then {
-                    hint "ACRE HAS RECOVERED FROM A CLOSED PIPE!";
+                    ["<t color='#2B7319'>ACRE has recovered from a closed pipe!</t>", 3] call EFUNC(sys_core,displayNotification);
                 } else {
-                    hint "ACRE CONNECTED";
+                    ["<t color='#2B7319'>ACRE connected</t>"] call EFUNC(sys_core,displayNotification);
                 };
                 GVAR(hasErrored) = false;
                 INFO("Pipe opened.");

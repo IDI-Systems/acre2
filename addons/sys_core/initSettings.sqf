@@ -81,7 +81,7 @@
     "ACRE2",
     true,
     true,
-    {[_this, true] call EFUNC(api,setInterference)} // @todo remove second parameter in 2.7.0
+    {[_this] call EFUNC(api,setInterference)}
 ] call CBA_Settings_fnc_init;
 
 // Full duplex
@@ -92,7 +92,7 @@
     "ACRE2",
     false,
     true,
-    {[_this, true] call EFUNC(api,setFullDuplex)} // @todo remove second parameter in 2.7.0
+    {[_this] call EFUNC(api,setFullDuplex)}
 ] call CBA_Settings_fnc_init;
 
 // Antena direction
@@ -103,7 +103,7 @@
     "ACRE2",
     false,
     true,
-    {[_this, true] call EFUNC(api,ignoreAntennaDirection)} // @todo remove second parameter in 2.7.0
+    {[_this] call EFUNC(api,ignoreAntennaDirection)}
 ] call CBA_Settings_fnc_init;
 
 // Terrain loss
@@ -114,7 +114,7 @@
     "ACRE2",
     [0, 1, 0.50, 2],
     true,
-    {[_this, true] call EFUNC(api,setLossModelScale)} // @todo remove second parameter in 2.7.0
+    {[_this] call EFUNC(api,setLossModelScale)}
 ] call CBA_Settings_fnc_init;
 
 // Reveal to AI
@@ -125,24 +125,5 @@
     "ACRE2",
     true,
     true,
-    {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
+    {[_this] call EFUNC(api,setRevealToAI)}
 ] call CBA_Settings_fnc_init;
-
-// @todo remove in 2.7.0
-// Module settings
-// Applies the difficulty module settings over CBA settings. If the module is not present, this function has no effect.
-["CBA_beforeSettingsInitialized", {
-    private _missionModules = allMissionObjects "acre_api_DifficultySettings";
-    if (count _missionModules == 0) exitWith {};
-
-    private _fullDuplex = (_missionModules select 0) getVariable ["FullDuplex", false];
-    private _interference = (_missionModules select 0) getVariable ["Interference", true];
-    private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", false];
-    private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", true];
-
-    //@todo remove force when CBA issue fixed: https://github.com/CBATeam/CBA_A3/issues/580
-    ["CBA_settings_setSettingMission", [QGVAR(interference), _interference, true]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(fullDuplex), _fullDuplex, true]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(ignoreAntennaDirection), _ignoreAntennaDirection, true]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(terrainLoss), parseNumber _signalLoss, true]] call CBA_fnc_localEvent;
-}] call CBA_fnc_addEventHandler;
