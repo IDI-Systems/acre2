@@ -6,9 +6,8 @@
  * 0: Title String <STRING>
  * 1: Line 1 String <STRING>
  * 2: Line 2 String <STRING>
- * 3: Line 3 String <STRING>
- * 4: Optional display duration <NUMBER>(default: 1)
- * 5: Optional color in RGBA format <ARRAY>(default: [1, 0.8, 0, 1])
+ * 3: Optional display duration <NUMBER>(default: 1)
+ * 4: Optional color in RGBA format <ARRAY>(default: [1, 0.8, 0, 1])
  *
  * Return Value:
  * Name of cutRsc layer <STRING>
@@ -27,7 +26,7 @@ private _hintDuration = -1;
 if ((count _this) > 3) then {
     _hintDuration = _this select 3;
 };
-GVAR(hintColor) = [1, 0.8, 0, 1];
+GVAR(hintColor) = ACRE_NOTIFICATION_YELLOW;
 if ((count _this) > 4) then {
     GVAR(hintColor) = _this select 4;
 };

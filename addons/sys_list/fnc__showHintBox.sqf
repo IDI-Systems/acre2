@@ -22,36 +22,36 @@ params ["_hintIDD", "_type", "_bufferpointer"];
 if (_type == 0) then {
     private _color = GVAR(hintColor);
     _color set [3, 1];
-    (_hintIDD displayCtrl 19105) ctrlSetBackgroundColor _color;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR) ctrlSetBackgroundColor _color;
 
-    private _position = ctrlPosition (_hintIDD displayCtrl 19105);
+    private _position = ctrlPosition (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR);
 
     _position set [1, (_position select 1) - _bufferpointer * (_position select 3)];
-    (_hintIDD displayCtrl 19105) ctrlSetPosition _position;
-    (_hintIDD displayCtrl 19105) ctrlCommit 0;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR) ctrlSetPosition _position;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR) ctrlCommit 0;
 };
 
 if (_type == 1) then {
-    private _translateY = (ctrlPosition (_hintIDD displayCtrl 19105)) select 3; // May be replaced by MACRO
+    private _translateY = (ctrlPosition (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR)) select 3; // May be replaced by MACRO
 
-    private _position = ctrlPosition (_hintIDD displayCtrl 19105);
+    private _position = ctrlPosition (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR);
     _position set [1, (_position select 1) - _bufferpointer * _translateY];
-    (_hintIDD displayCtrl 19105) ctrlSetPosition _position;
-    (_hintIDD displayCtrl 19105) ctrlCommit 0;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR) ctrlSetPosition _position;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR) ctrlCommit 0;
 
-    _position = ctrlPosition (_hintIDD displayCtrl 19106);
+    _position = ctrlPosition (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK);
     _position set [1, (_position select 1) - _bufferpointer * _translateY];
-    (_hintIDD displayCtrl 19106) ctrlSetPosition _position;
-    (_hintIDD displayCtrl 19106) ctrlCommit 0;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlSetPosition _position;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlCommit 0;
 
     private _color = GVAR(hintColor);
     _color set [3, 0.2];
-    (_hintIDD displayCtrl 19105) ctrlSetBackgroundColor _color;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDCOLOR) ctrlSetBackgroundColor _color;
 
 
-    (_hintIDD displayCtrl 19100) ctrlSetText GVAR(hintTitle);
-    (_hintIDD displayCtrl 19101) ctrlSetText GVAR(hintLine1);
-    (_hintIDD displayCtrl 19102) ctrlSetText GVAR(hintLine2);
+    (_hintIDD displayCtrl IDC_CONTROLTITLE) ctrlSetText GVAR(hintTitle);
+    (_hintIDD displayCtrl IDC_CONTROLLINE1) ctrlSetText GVAR(hintLine1);
+    (_hintIDD displayCtrl IDC_CONTROLLINE2) ctrlSetText GVAR(hintLine2);
     {
         //private _color = GVAR(hintColor);
         _color set [3, 0.8];
@@ -62,5 +62,5 @@ if (_type == 1) then {
         
         (_hintIDD displayCtrl _x) ctrlSetPosition _position;
         (_hintIDD displayCtrl _x) ctrlCommit 0;
-    } forEach [19100, 19101, 19102];
+    } forEach [IDC_CONTROLTITLE, IDC_CONTROLLINE1, IDC_CONTROLLINE2];
 };

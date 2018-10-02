@@ -27,7 +27,7 @@
 
 class RscTitles {
     class GVAR(radioCycleDisplayBG) {
-        idd = 19098;
+        idd = IDD_DISPLAYBACKGROUND;
         movingEnable = 0;
         name = QGVAR(radioCycleDisplayBG);
         duration = 0.15;
@@ -35,8 +35,8 @@ class RscTitles {
 
         onLoad = "[(_this select 0), 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox";
         class controlsBackground {
-            class GVAR(CycleDialogBackgroundYellow) {
-                idc = 19105;
+            class GVAR(CycleDialogBackgroundColor) {
+                idc = IDC_CONTROLBACKGROUNDCOLOR;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 1 };
@@ -57,7 +57,7 @@ class RscTitles {
         //onLoad = QGVAR(hintIDD) = (_this select 0);
     };
     class GVAR(radioCycleDisplay) {
-        idd = 19099;
+        idd = IDD_DISPLAY;
         movingEnable = 0;
         name = QGVAR(radioCycleDisplay);
         duration = 60;
@@ -66,8 +66,8 @@ class RscTitles {
         //onLoad = QGVAR(hintIDD) = (_this select 0);
         onLoad = "[(_this select 0), 1, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox";
         class controlsBackground {
-            class GVAR(CycleDialogBackgroundYellow) {
-                idc = 19105;
+            class GVAR(CycleDialogBackgroundColor) {
+                idc = IDC_CONTROLBACKGROUNDCOLOR;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 1 };
@@ -81,7 +81,7 @@ class RscTitles {
                 text = "";
             };
             class GVAR(CycleDialogBackgroundBlack) {
-                idc = 19106;
+                idc = IDC_CONTROLBACKGROUNDBLACK;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 0.25 };
@@ -100,7 +100,7 @@ class RscTitles {
 
         class controls {
             class GVAR(CycleDialogTitle) {
-                idc = 19100;
+                idc = IDC_CONTROLTITLE;
                 type = CT_STATIC;  // defined constant
                 style = ST_LEFT;  // defined constant
                 colorText[] = { 1, 0.8, 0, 0.8 };
@@ -114,7 +114,7 @@ class RscTitles {
                 text = "";
             };
             class GVAR(CycleDialogLine1) {
-                idc = 19101;
+                idc = IDC_CONTROLLINE1;
                 type = CT_STATIC;  // defined constant
                 style = ST_LEFT;  // defined constant
                 colorText[] = { 1, 0.8, 0, 0.8 };
@@ -128,7 +128,7 @@ class RscTitles {
                 text = "";
             };
             class GVAR(CycleDialogLine2) {
-                idc = 19102;
+                idc = IDC_CONTROLLINE2;
                 type = CT_STATIC;  // defined constant
                 style = ST_LEFT;  // defined constant
                 colorText[] = { 1, 0.8, 0, 0.8 };
