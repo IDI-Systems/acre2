@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 params [
-	["_delay", 0, [0]]
+    ["_delay", 0, [0]]
 ];
 
 if (!( _delay isEqualType "SCALAR")) exitWith { false };

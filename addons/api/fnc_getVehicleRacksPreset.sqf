@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 params [
-	["_vehicle", objNull, [objNull]]
+    ["_vehicle", objNull, [objNull]]
 ];
 
 if (isNull _vehicle) exitWith {

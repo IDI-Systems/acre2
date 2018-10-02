@@ -19,8 +19,8 @@
 #include "script_component.hpp"
 
 params [
-	["_radioType", "", [""]],
-	["_array",[], [[]]]
+    ["_radioType", "", [""]],
+    ["_array",[], [[]]]
 ];
 
 private _array = [];

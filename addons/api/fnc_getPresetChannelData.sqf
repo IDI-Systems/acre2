@@ -19,9 +19,9 @@
 #include "script_component.hpp"
 
 params [
-	["_radioClass", "", [""]],
-	["_presetName", "", [""]],
-	["_channelReference", 0, [0]]
+    ["_radioClass", "", [""]],
+    ["_presetName", "", [""]],
+    ["_channelReference", 0, [0]]
 ];
 
 if (!(_radioClass isEqualType "")) exitWith { nil };

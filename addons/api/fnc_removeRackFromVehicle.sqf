@@ -17,8 +17,8 @@
 #include "script_component.hpp"
 
 params [
-	["_vehicle", objNull, [objNull]],
-	["_rackId", "", [""]]
+    ["_vehicle", objNull, [objNull]],
+    ["_rackId", "", [""]]
 ];
 
 if (!isServer) exitWith {
@@ -32,7 +32,7 @@ if (isNull _vehicle) exitWith {
 };
 
 if (_rackId isEqualTo "") exitWith {
-	WARNING_1("Empty rack name for vehicle %1",format ["%1", _vehicle]);
+    WARNING_1("Empty rack name for vehicle %1",format ["%1", _vehicle]);
     false
 };
 

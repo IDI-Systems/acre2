@@ -17,8 +17,8 @@
 #include "script_component.hpp"
 
 params [
-	["_baseClass", "", [""]],
-	["_presetName", "", [""]]
+    ["_baseClass", "", [""]],
+    ["_presetName", "", [""]]
 ];
 
 ACRE_DEPRECATED(QFUNC(setDefaultChannels),"2.5.0",QFUNC(setRadioPreset));

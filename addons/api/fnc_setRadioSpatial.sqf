@@ -17,8 +17,8 @@
 #include "script_component.hpp"
 
 params [
-	["_radio", "", [""]],
-	["_side", "", [""]]
+    ["_radio", "", [""]],
+    ["_side", "", [""]]
 ];
 
 if ( (isNil "_side") || (isNil "_radio") ) exitWith { false };

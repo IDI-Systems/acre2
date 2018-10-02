@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 params [
-	["_rackId", "", [""]]
+    ["_rackId", "", [""]]
 ];
 
 [_rackId] call EFUNC(sys_rack,isRadioRemovable)

@@ -16,8 +16,8 @@
 #include "script_component.hpp"
 
 if !(_this params [["_channelNumber", 0, [0]]]) exitWith {
-	ERROR("Function called with invalid argument.");
-	false;
+    ERROR("Function called with invalid argument.");
+    false;
 };
 
 private _radioId = [] call FUNC(getCurrentRadio);

@@ -18,9 +18,9 @@
 #include "script_component.hpp"
 
 params [
-	["_radioClass", "", [""]],
-	["_preset", "", [""]],
-	["_presetData", [], [[]]]
+    ["_radioClass", "", [""]],
+    ["_preset", "", [""]],
+    ["_presetData", [], [[]]]
 ];
 
 private _return = false;

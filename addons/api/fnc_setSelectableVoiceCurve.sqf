@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 params [
-	["_curveScale", 0, [0]]
+    ["_curveScale", 0, [0]]
 ];
 
 

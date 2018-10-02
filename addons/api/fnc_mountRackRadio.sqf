@@ -17,8 +17,8 @@
 #include "script_component.hpp"
 
 params [
-	["_rackId", "", [""]],
-	["_baseRadio", "", [""]]
+    ["_rackId", "", [""]],
+    ["_baseRadio", "", [""]]
 ];
 
 if (!isServer) exitWith {

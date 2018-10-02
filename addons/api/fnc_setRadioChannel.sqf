@@ -17,8 +17,8 @@
 #include "script_component.hpp"
 
 params [
-	["_radioId", "", [""]],
-	["_channelNumber", 0, [0]]
+    ["_radioId", "", [""]],
+    ["_channelNumber", 0, [0]]
 ];
 
 if ( !(_radioId isEqualType "")) exitWith { -1 };

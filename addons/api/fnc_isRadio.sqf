@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 params [
-	["_weapon", "", [""]]
+    ["_weapon", "", [""]]
 ];
 
 // check that it at least inherits from ACRE_BaseRadio *AND* has a unique ID

@@ -16,8 +16,8 @@
 #include "script_component.hpp"
 
 if !(_this params [["_curveScale", 0, [0]]]) exitWith {
-	ERROR("Function called with invalid argument.");
-	false;
+    ERROR("Function called with invalid argument.");
+    false;
 };
 
 if (_curveScale >= 0) then {

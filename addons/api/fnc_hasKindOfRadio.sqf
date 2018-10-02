@@ -17,8 +17,8 @@
 #include "script_component.hpp"
 
 params [
-	["_weaponArray", objNull, [objNull, []]],
-	["_type", "", [""]]
+    ["_weaponArray", objNull, [objNull, []]],
+    ["_type", "", [""]]
 ];
 
 if (_type isEqualTo "") exitWith {false};
