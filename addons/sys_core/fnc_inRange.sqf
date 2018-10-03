@@ -16,7 +16,7 @@
 #include "script_component.hpp"
 
 params [
-    ["_unit", [0, 0, 0], [[]]]
+    ["_unit", objNull, [objNull]]
 ];
 
 private _position = getPosASL _unit;
