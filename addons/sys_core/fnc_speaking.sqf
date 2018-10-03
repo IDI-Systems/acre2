@@ -249,7 +249,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     private _unit = _x;
     if (!isNull _unit) then {
         if (!IS_MUTED(_unit) && {_unit != acre_player}) then {
-            if ((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
+            if ([getPosASL _unit] call FUNC(inRange)) then {
                 TRACE_1("Calling processDirectSpeaker", _unit);
                 private _params = [_unit] call FUNC(processDirectSpeaker);
                 CALL_RPC("updateSpeakingData", _params);
@@ -264,8 +264,9 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
             } else {
                 if !(_unit in _sentMicRadios) then {
                     private _params = ['m', GET_TS3ID(_unit), 0];
-                    CALL_RPC("updateSpeakingData", _params);                    };
+                    CALL_RPC("updateSpeakingData", _params);
                 };
+            };
         } else {
             if (_unit != acre_player) then {
                 private _params = ['m', GET_TS3ID(_unit), 0];

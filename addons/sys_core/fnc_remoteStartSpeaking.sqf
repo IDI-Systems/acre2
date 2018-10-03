@@ -102,6 +102,9 @@ private _result = false;
                 _unit setVariable [QGVAR(currentSpeakingRadio), _radioId];
                 private _speakerRadio = [];
                 private _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
+                if (!isNull(findDisplay 312)) then { //Zeus
+                    _nearRadios = _nearRadios + [(getPosASL curatorCamera), 150] call EFUNC(sys_radio,nearRadios);
+                };
                 {
                     if ([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                         _speakerRadio pushBack _x;
@@ -134,7 +137,7 @@ private _result = false;
                 WARNING_1("Got start speaking event with non-existent radio id: %1",_radioId);
             };
         } else {
-            if ((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
+            if ([getPosASL _unit] call FUNC(inRange)) then {
                 GVAR(speakers) pushBack _unit;
             };
             TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));
