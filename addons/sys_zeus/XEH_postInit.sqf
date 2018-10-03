@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-private _category = format ["ACRE {}", localize "str_a3_cfghints_curator_curator_displayname"];
+private _category = format ["ACRE %1", localize "str_a3_cfghints_curator_curator_displayname"];
 
 [_category, "ZeusTalkFromCamera",  [(LLSTRING(SpeakFromCamera)), (LLSTRING(SpeakFromCamera_description))],
     { call FUNC(handleZeusSpeakPress) },

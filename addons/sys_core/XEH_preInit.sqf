@@ -108,7 +108,7 @@ acre_sys_io_ioEventFnc = {
     acre_current_player = (_this select 0);
     acre_player = (_this select 0);
     if !(acre_player isEqualTo player) then {
-        if ((_this select 0) getVariable [QEGVAR(zeus,usePlayer), GVAR(defaultZeusVoiceLocation)]) {
+        if ((_this select 0) getVariable [QEGVAR(sys_zeus,usePlayer), GVAR(defaultZeusVoiceLocation)]) then {
             acre_player = player;
         };
     };

@@ -26,7 +26,7 @@ if (!ACRE_IS_SPECTATOR) then {
     ACRE_LISTENER_POS = eyePos acre_player;
 } else {
     if !(acre_player isEqualTo acre_current_player) then {
-        ACRE_LISTENER_POS = eyePos player; // Less acurate than when not in RC
+        ACRE_LISTENER_POS = eyePos player; // Less accurate than when not in RC
     } else {
         ACRE_LISTENER_POS = _projectPos1;
     };
