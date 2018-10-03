@@ -1,7 +1,7 @@
 class CfgVehicles {
     class ACE_ZeusActions {
         class ACRE_ZeusEars {
-            displayName = CSTRINGS(acreEars);
+            displayName = "ACRE";
             condition = QUOTE(true);
             statment = "";
             class ACRE_SpectatorEars {
