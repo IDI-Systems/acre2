@@ -417,6 +417,9 @@
             <Portuguese>Detecção de Voz de IA</Portuguese>
             <Italian>Rilevamento Voce IA</Italian>
         </Key>
+        <Key ID="STR_ACRE_sys_core_DefaultZeusVoiceLocation_displayName">
+            <English>Default Zeus Voice Location</English>
+        </Key>
         <Key ID="STR_ACRE_sys_core_switchRadioEarLeft">
             <English>Set to Left Ear</English>
             <Spanish>Usar auricular izquierdo</Spanish>

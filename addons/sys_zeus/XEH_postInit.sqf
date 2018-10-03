@@ -7,7 +7,6 @@ private _category = format ["ACRE {}", localize "str_a3_cfghints_curator_curator
     { call FUNC(handleZeusSpeakPressUp) },
 [40, [false, false, false]]] call cba_fnc_addKeybind; //Default bound to `
 
-
 // There is no EH for opening the zeus interface
 (findDisplay 46) displayAddEventHandler ["KeyDown", {
     if (inputAction "CuratorInterface" > 0) then {

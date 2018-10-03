@@ -7,6 +7,12 @@
         <Key ID="STR_ACRE_sys_zeus_zeusEars">
             <English>Switch to Zeus</English>
         </Key>
+        <Key ID="STR_ACRE_sys_zeus_remote">
+            <English>Use Remote Controlled Voice</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_origin">
+            <English>Use Player Voice</English>
+        </Key>
 
         <Key ID="STR_ACRE_sys_zeus_ZeusSpeakFromCamera">
             <English>Speak through the Zeus Camera</English>

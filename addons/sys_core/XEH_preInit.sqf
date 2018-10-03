@@ -105,7 +105,13 @@ acre_sys_io_ioEventFnc = {
 };
 
 ["unit", {
+    acre_current_player = (_this select 0);
     acre_player = (_this select 0);
+    if !(acre_player isEqualTo player) then {
+        if ((_this select 0) getVariable [QEGVAR(zeus,usePlayer), GVAR(defaultZeusVoiceLocation)]) {
+            acre_player = player;
+        };
+    };
 }] call CBA_fnc_addPlayerEventHandler;
 
 #ifdef USE_DEBUG_EXTENSIONS

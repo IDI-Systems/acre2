@@ -25,7 +25,11 @@ ACRE_LISTENER_DIR = _projectPos2 vectorDiff _projectPos1;
 if (!ACRE_IS_SPECTATOR) then {
     ACRE_LISTENER_POS = eyePos acre_player;
 } else {
-    ACRE_LISTENER_POS = _projectPos1;
+    if !(acre_player isEqualTo acre_current_player) then {
+        ACRE_LISTENER_POS = eyePos player; // Less acurate than when not in RC
+    } else {
+        ACRE_LISTENER_POS = _projectPos1;
+    };
 };
 
 private _height = ACRE_LISTENER_POS param [2, 1];
