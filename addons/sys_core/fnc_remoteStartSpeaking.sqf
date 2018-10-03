@@ -102,8 +102,8 @@ private _result = false;
                 _unit setVariable [QGVAR(currentSpeakingRadio), _radioId];
                 private _speakerRadio = [];
                 private _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
-                if (!isNull(findDisplay 312)) then { //Zeus
-                    _nearRadios = _nearRadios + [(getPosASL curatorCamera), 150] call EFUNC(sys_radio,nearRadios);
+                if (call FUNC(inZeus)) then { //Zeus
+                    _nearRadios append [(getPosASL curatorCamera), 150] call EFUNC(sys_radio,nearRadios);
                 };
                 {
                     if ([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {

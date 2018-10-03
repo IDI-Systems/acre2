@@ -18,19 +18,13 @@
  */
 #include "script_component.hpp"
 
-//(getPosASL _unit) distance ACRE_LISTENER_POS < 300
-
 params [
     ["_position", [0, 0, 0], [[]]],
     ["_range", 300],
     ["_checkZeus", true]
 ];
 
-if (_position distance ACRE_LISTENER_POS < _range) exitWith { true };
-
-// check the zeus camera, only with the zeus interface is active
-if (_checkZeus && {!isNull(findDisplay 312)}) then {
-    if (_position distance (getPosASL curatorCamera) < _range) exitWith { true };
+if (_checkZeus && {call FUNC(inZeus)}) exitWith {
+    (_position distance (getPosASL curatorCamera) < _range)
 };
-
-false
+(_position distance ACRE_LISTENER_POS < _range)

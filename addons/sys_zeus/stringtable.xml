@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_zeus">
+        <Key ID="STR_ACRE_sys_zeus_acreEars">
+            <English>Spectator</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_spectatorEars">
+            <English>Spectator</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_zeusEars">
+            <English>Zeus</English>
+        </Key>
+    </Package>
+</Project>
