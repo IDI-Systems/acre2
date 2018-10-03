@@ -10,5 +10,12 @@
         <Key ID="STR_ACRE_sys_zeus_zeusEars">
             <English>Zeus</English>
         </Key>
+
+        <Key ID="STR_ACRE_sys_zeus_ZeusSpeakFromCamera">
+            <English>Speak through the Zeus Camera</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_ZeusSpeakFromCamera_description">
+            <English>Talk from the Zeus Camera's position instead of your unit's position.</English>
+        </Key>
     </Package>
 </Project>

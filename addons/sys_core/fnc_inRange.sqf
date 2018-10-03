@@ -1,30 +1,34 @@
 /*
  * Author: SynixeBrett
- * Returns true if a position is within range of the player's ears
- * returns true for both player's unit and zeus camera
+ * Returns true if a unit is within range of the player's ears
  *
  * Arguments:
- * 0: Position ASL <VECTOR>
- * 1: Range <NUMBER> (default: 300)
- * 2: Check Zeus <BOOLEAN> (default: true)
+ * 0: Unit <VECTOR>
  *
  * Return Value:
  * In range <BOOL>
  *
  * Example:
- * [getPosASL _unit, 300] call acre_sys_core_fnc_inRange
+ * _unit call acre_sys_core_fnc_inRange
  *
  * Public: No
  */
 #include "script_component.hpp"
 
 params [
-    ["_position", [0, 0, 0], [[]]],
-    ["_range", 300],
-    ["_checkZeus", true]
+    ["_unit", [0, 0, 0], [[]]]
 ];
 
-if (_checkZeus && {call FUNC(inZeus)}) exitWith {
-    (_position distance (getPosASL curatorCamera) < _range)
+private _position = getPosASL _unit;
+
+private _check = {
+    if (call FUNC(inZeus)) exitWith {
+        (_this distance (getPosASL curatorCamera) < 300)
+    };
+    (_this distance ACRE_LISTENER_POS < 300)
 };
-(_position distance ACRE_LISTENER_POS < _range)
+
+if (_unit getVariable [QEGVAR(zeus,inZeus), false]) exitWith {
+    ((_unit getVariable [QEGVAR(zeus,zeusPosition), [0,0,0]]) call _check)
+};
+(_position call _check)

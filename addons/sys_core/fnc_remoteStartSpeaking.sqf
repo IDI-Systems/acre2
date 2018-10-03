@@ -137,7 +137,7 @@ private _result = false;
                 WARNING_1("Got start speaking event with non-existent radio id: %1",_radioId);
             };
         } else {
-            if ([getPosASL _unit] call FUNC(inRange)) then {
+            if (_unit call FUNC(inRange)) then {
                 GVAR(speakers) pushBack _unit;
             };
             TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));

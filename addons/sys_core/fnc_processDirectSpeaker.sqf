@@ -38,8 +38,13 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
-    _emitterPos = (AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head"))); //; eyePos _unit;
-    _emitterDir = eyeDirection _unit;
+    if (_unit getVariable [QEGVAR(zeus,inZeus), false]) then {
+        _emitterPos = _unit getVariable [QEGVAR(zeus,zeusPosition), false];
+        _emitterDir = _unit getVariable [QEGVAR(zeus,zeusDir), false];
+    } else {
+        _emitterPos = (AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head"))); //; eyePos _unit;
+        _emitterDir = eyeDirection _unit;
+    };
 };
 
 if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
