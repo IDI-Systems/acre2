@@ -1,5 +1,5 @@
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
+//#define DEBUG_MODE_FULL
 
 
 GVAR(OFF) = ["OFF", "OFF", "", MENUTYPE_STATIC, [],[ nil,nil, nil ] ];

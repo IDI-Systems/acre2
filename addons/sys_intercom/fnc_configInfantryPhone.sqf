@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Configures infantry phone intercom network availability.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle"];
 

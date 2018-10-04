@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Per frame execution. Sets if player is inside a vehicle and manages the access to rack radios.
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_param", "_handle"];
 

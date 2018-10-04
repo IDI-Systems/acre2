@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns a unique radio ID of the given class.
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 LOG("HIT CALLBACK");
 

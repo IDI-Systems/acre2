@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params [["_hecto",-1],["_deca",-1],["_ones",-1]];
 private _knobPosition = ["getState", "NetworkKnobPosition"] call GUI_DATA_EVENT;

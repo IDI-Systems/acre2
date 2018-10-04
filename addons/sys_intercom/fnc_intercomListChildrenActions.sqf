@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Generates a list of actions for the intercom network of a vehicle.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target", "_player", "_intercomNetwork"];
 private _actions = [];

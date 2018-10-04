@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calculates the attenuation of a unit being heard externally from the vehicle.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params [["_unit",objNull]];
 private _vehicle = vehicle _unit;

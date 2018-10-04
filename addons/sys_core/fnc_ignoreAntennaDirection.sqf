@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Use this to enable/disable the ignoring of antenna direction in the radio signal simulation.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (!hasInterface) exitWith {false};
 

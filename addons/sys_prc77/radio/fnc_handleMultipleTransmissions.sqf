@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles multiple transmissions in the "singleChannel" mode. In this mode, the following parameters
@@ -33,7 +34,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId", "", "_radios", "", ""];
 

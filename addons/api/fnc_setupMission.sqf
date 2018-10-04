@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function generically sets up a mission so that each side will have their own radios as well as speak their own separate languages. Further API calls will be needed to allow them to speak to each other, or configure specific intermingling channels.
@@ -16,7 +17,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 // This function should setup the appropriate default babel as well as radio presets per side
 // [ setupBabel, setupPerSideRadios] call acre_api_fnc_setupMission;

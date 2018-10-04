@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles an intent to garbage collect message on the client side. Will create a PFH to monitor the local inventory and periodically send messages to the server to indiciate if the radio is still in use this will prevent it from being garbage collected.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId"];
 

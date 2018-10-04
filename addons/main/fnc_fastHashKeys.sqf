@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Retrieves a list of keys inside an ACRE 2 hash or variable names defined in an object.
@@ -15,6 +16,5 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 (allVariables _this) select {!(isNil {_this getVariable _x})};

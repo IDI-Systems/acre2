@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Updates the status of the infantry phone of a vehicle.
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]]];
 

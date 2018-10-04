@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /* just in case we get a bad menu or a bad value, lets verify its a valid menu! */
 private _ret = true;

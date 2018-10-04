@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the intercom connection status of the station the unit has access to.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_intercomNetwork", "_intercomFunctionality", ["_varName", ""]];
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Per frame execution. Sets if player is inside a vehicle and qualifies as vehicle crew or passenger.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_param", ""];
 

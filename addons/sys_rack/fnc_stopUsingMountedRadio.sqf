@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles a player when they opt to stop using a mounted radio. Safely handles off usage of the radio.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_radioId"];
 

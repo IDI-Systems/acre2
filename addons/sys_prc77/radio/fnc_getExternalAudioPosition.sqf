@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Only used if a radio has an internal speaker. Since the AN/PRC 77 has none, this function returns an
@@ -18,6 +19,5 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 [0,0,0];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 
 //["Acre_GenericClick", [0,0,0], [0,0,0], 0.2, false] call EFUNC(sys_sounds,playSound);

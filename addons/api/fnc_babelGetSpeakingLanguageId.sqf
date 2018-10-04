@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the ID of the language which is actively being spoken (set with babelSetSpeakingLanguage).
@@ -13,6 +14,5 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 [] call EFUNC(sys_core,getSpeakingLanguageId);

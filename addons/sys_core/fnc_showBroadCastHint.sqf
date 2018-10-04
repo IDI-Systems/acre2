@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Shows the transmitting hint. Intended for use when transmitting.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
     private _radioRack = [ACRE_ACTIVE_RADIO] call EFUNC(sys_rack,getRackFromRadio);

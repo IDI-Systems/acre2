@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialises all racks in the vehicle. Must be executed in the server. If no condition is specified,
@@ -27,7 +28,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params [["_vehicle", objNull], "_rackConfiguration", ["_forceInitialisation", false], ["_condition", {}]];
 
