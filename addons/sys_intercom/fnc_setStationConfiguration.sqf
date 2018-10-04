@@ -51,7 +51,6 @@ switch (_intercomFunctionality) do {
             };
 
             if (_changed) then {
-                private _intercomDisplayName = ((_vehicle getVariable [QGVAR(intercomNames), []]) select _intercomNetwork) select 1;
                 if (_value > INTERCOM_DISCONNECTED) then {
                     _intercomStatus set [STATION_INTERCOM_UNIT_INDEX, _unit];
                 } else {

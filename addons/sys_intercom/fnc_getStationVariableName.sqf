@@ -35,7 +35,7 @@ private _varName = "";
     };
 } forEach (fullCrew [_vehicle, "", false]);
 
-if (!found) then {
+if (!_found) then {
     _varName = "";
 };
 

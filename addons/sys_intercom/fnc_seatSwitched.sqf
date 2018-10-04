@@ -19,7 +19,6 @@
 params ["_vehicle", "_unit"];
 
 private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
-private _usingLimitedPosition = _unit getVariable [QGVAR(usingLimitedPosition), []];
 private _oldSeat = _unit getVariable [QGVAR(role), ""];
 
 {

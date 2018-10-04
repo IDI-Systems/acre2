@@ -52,7 +52,7 @@ private _configHelper = {
                         _found = true;
                     }
                 } forEach _intercom;
-                if (!found) then {
+                if (!_found) then {
                     WARNING_3("Intercom %1 in %2 for vehicle type %3 is not found as a valid intercom identifier",_x,_configEntry,_type);
                 };
             } forEach _configArray;
@@ -69,7 +69,7 @@ _vehicle setVariable [QGVAR(infantryPhoneIntercom), _infantryPhoneIntercom];
 _vehicle setVariable [QGVAR(infPhoneDisableRinging), _infantryPhoneDisableRinging];
 _vehicle setVariable [QGVAR(infantryPhoneControlActions), _infantryPhoneControlActions];
 
-if (count _infantryPhoneCustomRinging > 0) then {
+if !(_infantryPhoneCustomRinging isEqualTo []) then {
     if (_infantryPhoneDisableRinging) then {
         WARNING_2("Vehicle type %1 has the ringing functionality disabled despite having a custom ringing tone entry %2",_type,_infantryPhoneCustomRinging);
     } else {

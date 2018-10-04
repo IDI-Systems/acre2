@@ -70,7 +70,6 @@ if (_target isKindOf "CAManBase") then {
                 _actions pushBack [_action, [], _target];
             } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
         } else {
-            (_target getVariable [QGVAR(unitInfantryPhone), [acre_player, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", ""];
             if (_vehicleInfantryPhone == _target) then {
                 // Generate the action to return the infantry telephone
                 private _action = [
@@ -78,8 +77,7 @@ if (_target isKindOf "CAManBase") then {
                     format [localize LSTRING(returnInfantryPhone)],
                     "",
                     {
-                        params ["_target", "_player", "_params"];
-                        _params params ["_intercomNetwork"];
+                        params ["_target", "_player", ""];
                         //USES_VARIABLES ["_target", "_player"];
                         [_target, _player, 0, INTERCOM_DISCONNECTED] call FUNC(updateInfantryPhoneStatus)
                     },
@@ -125,7 +123,7 @@ if (_target isKindOf "CAManBase") then {
                 localize LSTRING(infantryPhone_stopCalling),
                 "",
                 {
-                    params ["_target", "_player", "_params"];
+                    params ["_target", "", "_params"];
                     _params params ["_intercomNetwork"];
 
                     _target setVariable [QGVAR(isInfantryPhoneCalling), [false, _intercomNetwork], true];},
@@ -142,7 +140,7 @@ if (_target isKindOf "CAManBase") then {
                         format [localize LSTRING(infantryPhone_startCalling), format["(%1)", (_intercomNames select _forEachIndex) select 2]],
                         "",
                         {
-                             params ["_target", "_player", "_params"];
+                             params ["_target", "", "_params"];
                             _params params ["_intercomNetwork"];
 
                             [_target, _intercomNetwork] call FUNC(infantryPhoneSoundCall)},
