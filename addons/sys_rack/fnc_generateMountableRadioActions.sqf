@@ -17,7 +17,7 @@
  */
 #include "script_component.hpp"
 
-params ["_target","","_params"];
+params ["_target", "", "_params"];
 _params params ["_rackClassName"];
 
 private _actions = [];

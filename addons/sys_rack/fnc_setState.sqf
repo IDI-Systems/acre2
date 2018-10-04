@@ -1,13 +1,15 @@
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Update the different rack states.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique Radio ID <STRING>
+ * 1: Event <STRING>
+ * 2: Event Data <ARRAY>
+ * 3: Radio Data <HASH>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
  * [ARGUMENTS] call acre_sys_rack_fnc_setState
