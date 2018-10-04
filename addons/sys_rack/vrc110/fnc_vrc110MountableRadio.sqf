@@ -20,7 +20,7 @@
 
 params ["_rackId", "", "_eventData", ""];
 
-if (([_rackId] call FUNC(getMountedRadio)) != "") exitWith {false}; // If a radio is already mounted we can't mount another.
+if !(([_rackId] call FUNC(getMountedRadio)) isEqualTo "") exitWith {false}; // If a radio is already mounted we can't mount another.
 
 private _mountable = false;
 private _radioId = _eventData;
