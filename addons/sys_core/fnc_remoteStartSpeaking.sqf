@@ -19,6 +19,8 @@
  * Public: No
  */
 
+#define NEAR_RADIO_RANGE 150
+
 ACRE_COUNTERS = [];
 CREATE_COUNTER(speaking_loop);
 CREATE_COUNTER(speaking_loop_with_transmissions);
@@ -101,9 +103,9 @@ private _result = false;
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
                 _unit setVariable [QGVAR(currentSpeakingRadio), _radioId];
                 private _speakerRadio = [];
-                private _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
+                private _nearRadios = [ACRE_LISTENER_POS, NEAR_RADIO_RANGE] call EFUNC(sys_radio,nearRadios);
                 if (call FUNC(inZeus)) then { //Zeus
-                    _nearRadios append [(getPosASL curatorCamera), 150] call EFUNC(sys_radio,nearRadios);
+                    _nearRadios append [(getPosASL curatorCamera), NEAR_RADIO_RANGE] call EFUNC(sys_radio,nearRadios);
                 };
                 {
                     if ([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {

@@ -11,4 +11,6 @@
  * Public: No
  */
 
-!isNull(findDisplay 312)
+#define ZEUS_INTERFACE_DISPLAY 312
+
+!isNull (findDisplay ZEUS_INTERFACE_DISPLAY)

@@ -6,7 +6,7 @@
  */
 #include "script_component.hpp"
 
-if (call EFUNC(sys_core,inZeus) && {!(ACRE_IS_SPECTATOR)}) then {
+if (call EFUNC(sys_core,inZeus) && {!ACRE_IS_SPECTATOR}) then {
     GVAR(speakFromZeusHandle) = [{
         player setVariable [QGVAR(inZeus), true, true];
         player setVariable [QGVAR(zeusPosition), getPosASL curatorCamera, true];

@@ -8,4 +8,3 @@
 
 player setVariable [QGVAR(inZeus), false, true];
 [GVAR(speakFromZeusHandle)] call CBA_fnc_removePerFrameHandler;
-GVAR(speakFromZeusHandle) = nil;

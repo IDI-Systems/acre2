@@ -105,10 +105,10 @@ acre_sys_io_ioEventFnc = {
 };
 
 ["unit", {
-    acre_current_player = (_this select 0);
-    acre_player = (_this select 0);
+    acre_current_player = _this select 0;
+    acre_player = acre_current_player;
     if !(acre_player isEqualTo player) then {
-        if ((_this select 0) getVariable [QEGVAR(sys_zeus,usePlayer), GVAR(defaultZeusVoiceLocation)]) then {
+        if (acre_current_player getVariable [QEGVAR(sys_zeus,usePlayer), GVAR(defaultZeusVoiceLocation)]) then {
             acre_player = player;
         };
     };

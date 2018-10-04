@@ -42,7 +42,7 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
         _emitterPos = _unit getVariable [QEGVAR(zeus,zeusPosition), false];
         _emitterDir = _unit getVariable [QEGVAR(zeus,zeusDir), false];
     } else {
-        _emitterPos = (AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head"))); //; eyePos _unit;
+        _emitterPos = AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head")); //; eyePos _unit;
         _emitterDir = eyeDirection _unit;
     };
 };

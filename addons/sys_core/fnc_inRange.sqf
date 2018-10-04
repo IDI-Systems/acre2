@@ -15,6 +15,8 @@
  */
 #include "script_component.hpp"
 
+#define MAX_DIRECT_RANGE 300
+
 params [
     ["_unit", objNull, [objNull]]
 ];
@@ -23,12 +25,12 @@ private _position = getPosASL _unit;
 
 private _check = {
     if (call FUNC(inZeus)) exitWith {
-        (_this distance (getPosASL curatorCamera) < 300)
+        (_this distance (getPosASL curatorCamera) < MAX_DIRECT_RANGE)
     };
-    (_this distance ACRE_LISTENER_POS < 300)
+    _this distance ACRE_LISTENER_POS < MAX_DIRECT_RANGE
 };
 
 if (_unit getVariable [QEGVAR(zeus,inZeus), false]) exitWith {
-    ((_unit getVariable [QEGVAR(zeus,zeusPosition), [0,0,0]]) call _check)
+    (_unit getVariable [QEGVAR(zeus,zeusPosition), [0,0,0]]) call _check
 };
-(_position call _check)
+_position call _check
