@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the receipt of an attachComponent message.
@@ -7,6 +8,7 @@
  * 1: Event Name <STRING>
  * 2: Data <ANY>
  * 3: Radio data <HASH>
+ * 4: Event Kind <STRING>
  *
  * Return Value:
  * RETURN VALUE <TYPE>
@@ -16,9 +18,8 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_radioId", "_event", "_data", "_radioData", "_eventKind"];
+params ["", "", "_data", "_radioData", ""];
 
 _data params ["_componentId", "_childConnector", "_parentConnector", "_attributes"];
 //_childConnector - this is the connector on this event's device

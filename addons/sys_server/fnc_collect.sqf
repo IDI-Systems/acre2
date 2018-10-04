@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Garbage collects a radio. Use only on server this will in turn send an event to garbage collect on all clients.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId"];
 _radioId = toLower _radioId;

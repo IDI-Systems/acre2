@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Copies all parameters of the source preset to a new destination preset name.
@@ -15,7 +16,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params ["_radioClass", "_srcPresetName", "_dstPresetName"];
 

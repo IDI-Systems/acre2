@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Function called from Extended_InventoryOpened_EventHandlers. Sets the to
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 
 uiNamespace setVariable [QGVAR(inventoryObject), _this select 0];

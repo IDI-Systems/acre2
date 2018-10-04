@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Function called when PTT key is pressed. The most important aspect is setting the PTTDown flag
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId", "", "", "", ""];
 

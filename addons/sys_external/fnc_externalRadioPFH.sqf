@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Eventhandler to monitor if external radios can be still used by a specific player.
@@ -20,7 +21,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /* TODO:
  * - Consider further corner cases.

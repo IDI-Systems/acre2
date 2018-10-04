@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Generates a list of actions for the intercom network of a vehicle.
@@ -15,12 +16,12 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target", "_player", "_intercomNetwork"];
 private _actions = [];
 
-(_target getVariable [QGVAR(intercomNames), []] select _intercomNetwork) params ["_intercomName", "_intercomDisplayName"];
+// Params _intercomNames and _intercomDisplayNames
+(_target getVariable [QGVAR(intercomNames), []] select _intercomNetwork) params ["_intercomName", ""];
 
 if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS] call FUNC(getStationConfiguration)) then {
     if (INTERCOM_DISCONNECTED == [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration)) then {
@@ -85,7 +86,8 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
         _actions pushBack [_action, [], _target];
 
         if ([_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_MASTERSTATION] call FUNC(getStationConfiguration)) then {
-            ((_target getVariable [QGVAR(broadcasting), [false, objNull]]) select _intercomNetwork) params ["_isBroadcasting", "_broadcastingUnit"];
+            // Params _isBroadcasting, _broadcastingUnit
+            ((_target getVariable [QGVAR(broadcasting), [false, objNull]]) select _intercomNetwork) params ["_isBroadcasting", ""];
             if (_isBroadcasting) then {
                 _action = [QGVAR(stopBroadcast), localize LSTRING(stopBroadcast), "", {[_target, _player, _this select 2, false] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
             } else {

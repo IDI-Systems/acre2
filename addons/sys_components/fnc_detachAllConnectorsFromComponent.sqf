@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Removes all connections between two components. This is particularly useful for racks and radios as they may have multiple connections.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_firstComponentId","_secondComponentId"];
 

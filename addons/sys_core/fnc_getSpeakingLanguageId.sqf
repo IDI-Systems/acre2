@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns the current speaking language.
@@ -13,11 +14,10 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _ret = ACRE_CURRENT_LANGUAGE_ID;
 
-if ((count GVAR(languages)) == 0) then {
+if (GVAR(languages) isEqualTo []) then {
     _ret = 0;
 };
 _ret;

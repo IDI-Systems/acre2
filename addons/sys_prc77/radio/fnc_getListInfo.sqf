@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * For a AN/PRC 77 this function is the same fnc_getChannelDescription, and therefore it is called here.
@@ -18,6 +19,5 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 _this call FUNC(getChannelDescription);

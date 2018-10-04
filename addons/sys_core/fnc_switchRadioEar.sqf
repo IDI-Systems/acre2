@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Changes the spatial mode of the active radio.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_ear", ["_radioId", ACRE_ACTIVE_RADIO, [""]]];
 

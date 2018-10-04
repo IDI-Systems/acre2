@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calls a procedure in the teamspeak plugin.
@@ -15,7 +16,6 @@
  * Public: No
  */
 
-#include "script_component.hpp"
 
 params ["_name","_params"];
 

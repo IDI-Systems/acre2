@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets what spatialization zone the specified radio ID is currently in. “LEFT”, “RIGHT” or “CENTER”
@@ -13,7 +14,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 private _ret = [(_this select 0)] call EFUNC(sys_radio,getRadioSpatial);
 

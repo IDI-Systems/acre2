@@ -1,22 +1,25 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Plays a radio sound.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique Radio ID <STRING>
+ * 1: Sound classname <STRING>
+ * 2: Position <ARRAY> (unused)
+ * 3: Direction <ARRAY>
+ * 4: Volume <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1", "Acre_GenericClickOff", [0,0,0], [0,1,0], 0.3] call acre_sys_radio_fnc_playRadioSound
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_radioId", "_className", "_position", "_direction", "_volume"];
+params ["_radioId", "_className", "", "_direction", "_volume"];
 
 private _isWorld = false;
 private _volumeModifier = 1;
@@ -25,6 +28,8 @@ if (_on == 0) then {
     _volumeModifier = 0;
 };
 private _attenuate = 1;
+private _position = [0, 0, 0];
+
 if ([_radioId, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
     _position = [_radioId, "getExternalAudioPosition"] call EFUNC(sys_data,physicalEvent);
     _isWorld = true;
@@ -41,4 +46,5 @@ if ([_radioId, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
     };
     _position = [_ear*2, 0, 0];
 };
+
 [_className, _position, _direction, _volume*_volumeModifier*_attenuate, _isWorld] call EFUNC(sys_sounds,playSound);
