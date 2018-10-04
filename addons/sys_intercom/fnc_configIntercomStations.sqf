@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Configures the initial intercom connectivity (disconnected/connected, ...) for all allowed seats.
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_allowedPositions", "_forbiddenPositions", "_limitedPositions", "_initialConfiguration", "_masterStation"];
 

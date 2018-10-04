@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Retrieves the scale of how far the local player's voice will be heard from.
@@ -13,6 +14,5 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 GVAR(selectableCurveScale)

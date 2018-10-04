@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function exists to setup the process for sending our object and player ID to other clients to associate with our TeamSpeak ID.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 DFUNC(getClientIdLoopFunc) = {
     if (!isNull player) then {

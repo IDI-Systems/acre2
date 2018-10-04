@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * For use by the ACRE API nameChannels module.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 FUNC(_channelNamesForPresets) = {
     params ["_channelNames", "_presetNames"];

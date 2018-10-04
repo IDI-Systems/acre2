@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the babel language key from the display name.
@@ -14,7 +15,6 @@
  * Public: Yes
  */
 
-#include "script_component.hpp"
 
 params ["_languageKey"];
 

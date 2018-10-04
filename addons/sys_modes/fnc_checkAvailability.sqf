@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calls the mode specific availability function and there checks if two list of radios are able to communicate with each other.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_list1", "_list2", ["_quick",true]];
 

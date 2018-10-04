@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Creates a PFH to monitor the ACRE2Arma extension's connection to the TeamSpeak plugin.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(pipeCode) = "0";
 DFUNC(connectionFnc) = {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -107,8 +108,7 @@ DFUNC(renderMenu_List) = {
 };
 
 DFUNC(drawCursor_List) = {
-    #include "script_component.hpp"
-    TRACE_1("drawCursor_List", _this);
+        TRACE_1("drawCursor_List", _this);
     private ["_row"];
     params ["_menu", "_currentSelection", "_currentSelectionIndex", "_data"];
 

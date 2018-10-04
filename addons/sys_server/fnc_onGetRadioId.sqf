@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function is used to start initializing a radio for the intended player. The callback is used to complete the process.
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params["_entity", "_class", "_callback", ["_replacementId",""]];
 

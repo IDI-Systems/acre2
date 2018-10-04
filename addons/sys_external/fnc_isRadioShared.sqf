@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks if a radio is shared to other players.
@@ -13,8 +14,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
-
+ 
 params ["_radioId"];
 
 [_radioId, "getState", "radioShared"] call EFUNC(sys_data,dataEvent)

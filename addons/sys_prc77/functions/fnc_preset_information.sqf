@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialises and registers the default presets with the initial values of transmitting and receiving frequencies for each of the channels.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // AN/PRC-77 
 // Frequency Range 30.00 to 75.95 Mhz

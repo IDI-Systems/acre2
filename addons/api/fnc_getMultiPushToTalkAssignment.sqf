@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns the current radios assigned to Multiple Push-to-Talk keys, or Alternate PTT keys.
@@ -13,7 +14,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 //Emulate behaviour of the handleMultiPttKeyPress algorithm
 

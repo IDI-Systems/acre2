@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles setting TeamSpeak plugin settings. Waits for pipe to open and then applies them.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // Can only be connected in multiplayer or in debug mode
 #ifndef DEBUG_MODE_FULL

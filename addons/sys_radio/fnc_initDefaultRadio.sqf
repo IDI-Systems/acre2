@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialisation function for default radios.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 LOG("INITIALIZING DEFAULT RADIO");
 TRACE_1("", _this);

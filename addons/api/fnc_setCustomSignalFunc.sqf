@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This overrides the signal calculation function in ACRE2 with a defined function.
@@ -17,7 +18,6 @@
  * [{}] call acre_api_fnc_setCustomSignalFunc
  *
  */
-#include "script_component.hpp"
 
 if !(_this params [["_code",{},[{}]]]) exitWith {
     ERROR("acre_api_fnc_setCustomSignalFunc called with invalid argument.");

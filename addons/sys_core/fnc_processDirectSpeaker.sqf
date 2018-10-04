@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calculates the information required by TeamSpeak for a direct speech speaker.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private ["_emitterPos", "_emitterDir"];
 params ["_unit"];

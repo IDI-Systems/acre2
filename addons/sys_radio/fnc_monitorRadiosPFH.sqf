@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * PFH to monitor the local player inventory for changes.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (!alive acre_player || side group acre_player == sideLogic || EGVAR(sys_core,arsenalOpen)) exitWith {};
 

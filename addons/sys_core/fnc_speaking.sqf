@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to TeamSpeak.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // private _startTime = diag_tickTime;
 // private _rstart = 0;

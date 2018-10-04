@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets up the per frame event handler for monitoring the local player inventory for changes.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(oldUniqueItemList) = [];
 GVAR(forceRecheck) = false;

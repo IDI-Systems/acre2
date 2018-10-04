@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the assignment order for the Multi-Push-To-Talk keys, also known as Alternate Push-to-Talk keys. These assign the keys 1-3, in order, to the ID’s provided in the array. All radios must be valid assigned ACRE radio id’s and must be present on the local player.
@@ -16,7 +17,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params ["_var"];
 

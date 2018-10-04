@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sends the current head direction vector to the TeamSpeak plugin.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // return the head vector of the current acre_player, or 0,0,0 if no vector
 private _vector = [] call FUNC(getHeadVector);

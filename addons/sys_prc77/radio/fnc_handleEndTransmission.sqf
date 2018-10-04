@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Function called when the radio transmission is ended. It manages the radio behaviour if there
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId", "", "_eventData", "", ""];
 

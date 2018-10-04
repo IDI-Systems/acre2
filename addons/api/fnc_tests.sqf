@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function is used to test the API functions. Test results will be outputted to the global variable acre_api_testResults.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(testResults) = [];
 private ["_test"];
