@@ -17,6 +17,14 @@
 
 params ["_usePlayer"];
 
+private _isTalking = ACRE_LOCAL_SPEAKING;
+
+[] call EFUNC(sys_core,localStopSpeaking);
+
 acre_player = if (_usePlayer) then { player } else { acre_current_player };
 // save the last used value for this unit
 acre_player setVariable [QGVAR(usePlayer), _usePlayer];
+
+if (_isTalking) then {
+    [] call EFUNC(sys_core,localStartSpeaking);
+};

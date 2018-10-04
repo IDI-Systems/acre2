@@ -38,16 +38,23 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
-    if (_unit getVariable [QEGVAR(zeus,inZeus), false]) then {
-        _emitterPos = _unit getVariable [QEGVAR(zeus,zeusPosition), false];
-        _emitterDir = _unit getVariable [QEGVAR(zeus,zeusDir), false];
+    if (_unit getVariable [QEGVAR(sys_zeus,inZeus), false]) then {
+        _emitterPos = _unit getVariable [QEGVAR(sys_zeus,zeusPosition), [0,0,0]];
+        _emitterDir = _unit getVariable [QEGVAR(sys_zeus,zeusDir), [0,0,0]];
     } else {
         _emitterPos = AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head")); //; eyePos _unit;
         _emitterDir = eyeDirection _unit;
     };
 };
+//Right now ACRE only supports one listener pos, use the closest position while in Zeus
+if (call FUNC(inZeus)) then {
+    private _zeusPos = getPosASL curatorCamera;
+    if ((_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos)) then {
+        _emitterPos = AGLtoASL (player getRelPos [abs (_zeusPos distance _emitterPos), (curatorCamera getRelDir _unit)]);
+    };
+};
 
-if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
+if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate} && {!(call FUNC(inZeus))}) then {
     private _args = [_emitterPos, _listenerPos, _unit];
     // acre_player sideChat format["args: %1", _args];
     // _startTime = diag_tickTime;
