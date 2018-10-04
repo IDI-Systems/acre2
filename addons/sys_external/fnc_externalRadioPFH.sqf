@@ -33,7 +33,7 @@ if (alive acre_player) then {
         // Remove radios that are in unit's inventory or match a certain criteria.
         private _owner = [_x] call FUNC(getExternalRadioOwner);
         private _isExternalRadioAvailable = [_x, _owner] call FUNC(isExternalRadioAvailable);
-        if ((_x in _radios) || !_isExternalRadioAvailable) then {
+        if (!_isExternalRadioAvailable || {_x in _radios}) then {
             [_x, _owner] call FUNC(stopUsingExternalRadio);
         };
     } forEach ACRE_ACTIVE_EXTERNAL_RADIOS;
