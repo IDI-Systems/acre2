@@ -57,7 +57,7 @@ if (_playerOwnsRadio) then {
 };
 
 // Check if we are giving or returning the headset
-if ([_this select 2, _target] call FUNC(checkReturnGive)) then {
+if ([_radio, _target] call FUNC(checkReturnGive)) then {
     private _string =  localize LSTRING(returnHeadset);
     if ([_radio] call EFUNC(sys_radio,isManpackRadio)) then {
         _string =  localize LSTRING(returnHandset)
