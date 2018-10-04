@@ -12,6 +12,7 @@
             <Polish>Zamontuj</Polish>
             <Italian>Monta</Italian>
             <Spanish>Montar</Spanish>
+            <French>Monter</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable</English>
@@ -20,6 +21,7 @@
             <Chinese>無法掛載</Chinese>
             <Chinesesimp>无法挂载</Chinesesimp>
             <Spanish>No montable</Spanish>
+            <French>Non montable</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount</English>
@@ -32,6 +34,7 @@
             <Polish>Wymontuj</Polish>
             <Italian>Smonta</Italian>
             <Spanish>Desmontar</Spanish>
+            <French>Démonter</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted (%1)</English>
@@ -44,6 +47,7 @@
             <Polish>Zamontowane (%1)</Polish>
             <Italian>Montata (%1)</Italian>
             <Spanish>Montada (%1)</Spanish>
+            <French>Monté (%1)</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop Using</English>
@@ -56,6 +60,7 @@
             <Polish>Przestań używać</Polish>
             <Italian>Termina uso</Italian>
             <Spanish>Deja de usar</Spanish>
+            <French>Arrêter d'utiliser</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use</English>
@@ -68,6 +73,7 @@
             <Polish>Użyj</Polish>
             <Italian>Usa</Italian>
             <Spanish>Usar</Spanish>
+            <French>Utiliser</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
@@ -80,6 +86,7 @@
             <Polish>Nie można wymontować radia. Brak miejsca w ekwipunku.</Polish>
             <Italian>Impossibile smontare radio. Inventario pieno.</Italian>
             <Spanish>Imposible desmontar la radio. Inventario lleno.</Spanish>
+            <French>Impossible de monter la radio car vous avez d'espace d'inventaire.</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
@@ -92,6 +99,7 @@
             <Polish>Szafa radiowa</Polish>
             <Italian>Racks</Italian>
             <Spanish>Racks</Spanish>
+            <French>Racks</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
@@ -104,6 +112,7 @@
             <Polish>Panel</Polish>
             <Italian>Cruscotto</Italian>
             <Spanish>Panel</Spanish>
+            <French>Tableau de bord</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
@@ -112,6 +121,7 @@
             <Chinese>儀錶板</Chinese>
             <Chinesesimp>仪表板</Chinesesimp>
             <Spanish>Panel</Spanish>
+            <French>Tableau</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLower">
             <English>Dash Lower</English>
@@ -124,6 +134,7 @@
             <Polish>Dolny panel</Polish>
             <Italian>Cruscotto Basso</Italian>
             <Spanish>Panel inferior</Spanish>
+            <French>Tableau inférieur</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
@@ -132,6 +143,7 @@
             <Chinese>儀錶板下降</Chinese>
             <Chinesesimp>仪表板下降</Chinesesimp>
             <Spanish>P.Inf</Spanish>
+            <French>T.Inf</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dash Upper</English>
@@ -144,6 +156,7 @@
             <Polish>Górny panel</Polish>
             <Italian>Cruscotto Alto</Italian>
             <Spanish>Panel superior</Spanish>
+            <French>Tableau suppérieur</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
@@ -152,6 +165,7 @@
             <Chinese>儀錶板上升</Chinese>
             <Chinesesimp>仪表板上升</Chinesesimp>
             <Spanish>P.Sup</Spanish>
+            <French>T.Sup</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useAllRacks">
             <English>Use All</English>
@@ -159,6 +173,7 @@
             <Chinese>使用全部</Chinese>
             <Chinesesimp>使用全部</Chinesesimp>
             <Spanish>Usar todas</Spanish>
+            <French>Tout utiliser</French>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingAllRacks">
             <English>Stop Using All</English>
@@ -166,6 +181,7 @@
             <Chinese>停止使用全部</Chinese>
             <Chinesesimp>停止使用全部</Chinesesimp>
             <Spanish>Dejar de usar todas</Spanish>
+            <French>Arrêter de tout utiliser</French>
         </Key>
     </Package>
 </Project>
