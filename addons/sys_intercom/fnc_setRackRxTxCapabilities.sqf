@@ -27,7 +27,6 @@ if (_varName isEqualTo "_rack") exitWith {
     ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
 };
 
-private _found = false;
 private _rackConfiguration = _vehicle getVariable [_varName, []];
 
 if (_rackId isEqualTo "") then {

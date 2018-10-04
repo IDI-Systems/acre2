@@ -18,10 +18,7 @@
 
 params ["_vehicle", "_intercoms"];
 
-private _classname = typeOf _vehicle;
 private _intercomNames = [];
-private _intercomDisplayNames = [];
-private _intercomShortNames = [];
 private _intercomPositions = [];
 private _intercomExceptions = [];
 private _intercomLimitedPositions = [];

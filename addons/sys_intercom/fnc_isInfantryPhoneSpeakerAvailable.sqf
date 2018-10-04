@@ -25,4 +25,4 @@ private _intercomName = (_vehicle getVariable [QGVAR(intercomNames), []]) select
 private _intercomControl = _vehicle getVariable [QGVAR(infantryPhoneControlActions), []];
 
 // Only those intercoms with control capabilities have access to it
-[_vehicle, _unit, _intercomNetwork] call FUNC(isIntercomAvailable) && (_intercomName in _intercomControl)
+([_vehicle, _unit, _intercomNetwork] call FUNC(isIntercomAvailable)) && {_intercomName in _intercomControl}

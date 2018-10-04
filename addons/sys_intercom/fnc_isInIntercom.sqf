@@ -23,4 +23,4 @@ private _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
 
 if (_varName isEqualTo "") exitWith { false };
 
-INTERCOM_DISCONNECTED < [_vehicle, _unit, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
+INTERCOM_DISCONNECTED < ([_vehicle, _unit, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration))

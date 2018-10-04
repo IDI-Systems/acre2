@@ -19,8 +19,6 @@
 
 params ["_vehicle", "_unit", "_intercomNetwork"];
 
-private _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
-
 private _isAvailable = true;
 {
     private _condition = [_vehicle, _unit, _intercomNetwork, _x] call FUNC(getStationConfiguration);
