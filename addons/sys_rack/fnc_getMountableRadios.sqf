@@ -18,8 +18,9 @@
 
 params ["_rackId",["_radioList",[]]];
 
-private _rackConnectors = [_rackId] call EFUNC(sys_components,getConnectorSpecification);
-private _availableConnectors = [_rackId] call EFUNC(sys_components,getAllAvailableConnectors);
+// TODO: Component system for racks
+// private _rackConnectors = [_rackId] call EFUNC(sys_components,getConnectorSpecification);
+// private _availableConnectors = [_rackId] call EFUNC(sys_components,getAllAvailableConnectors);
 private _radios = [];
 
 {
