@@ -17,7 +17,7 @@
  */
 #include "script_component.hpp"
 
-params ["_target","","_params"];
+params ["_target", "", "_params"];
 _params params ["_rackClassName"];
 
 private _actions = [];
@@ -35,7 +35,7 @@ _radioList = [_rackClassName, _radioList] call FUNC(getMountableRadios);
     //private _isActive = _x isEqualTo _currentRadio;
 
     private _action = [_x, _displayName, _picture, {
-        params ["_target","_unit","_params"];
+        params ["","_unit","_params"];
         _params params ["_rackClassName","_radioId"];
         [_rackClassName, _radioId, _unit] call FUNC(mountRadio);
     }, {true}, {}, [_rackClassName, _x]] call ace_interact_menu_fnc_createAction;
