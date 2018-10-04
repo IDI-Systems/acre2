@@ -32,7 +32,7 @@ private _takenIds = _radioIds select _mapIndex;
 
 private _ret = -1;
 for "_i" from 1 to 512 do {
-    if (!(_i in _takenIds)) exitWith {
+    if !(_i in _takenIds) exitWith {
         _ret = _i;
         _takenIds pushBack _ret;
     };
