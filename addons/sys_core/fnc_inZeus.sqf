@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: SynixeBrett
  * Checks if the local player is in the Zeus interface.

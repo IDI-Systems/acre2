@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: SynixeBrett
  * Handles the zeus interface being toggled.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 call FUNC(handleZeusSpeakPressUp);
 [false] call EFUNC(api,setSpectator);

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: SynixeBrett
  * Set if the player speaks through their player or the remote controlled player.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_usePlayer"];
 

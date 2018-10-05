@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: SynixeBrett
  * Checks if unit is within range of the player's ears.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params [["_unit", objNull, [objNull]]];
 
