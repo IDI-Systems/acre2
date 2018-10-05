@@ -15,7 +15,13 @@
  * Public: No
  */
 
-if (call EFUNC(sys_core,inZeus) && {!ACRE_IS_SPECTATOR}) then {
+// Save out of Zeus specator state and restore previous Zeus state
+private _wasSpectator = player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
+player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
+// Don't put Zeus back into spectator if they are no longer allowed to
+[_wasSpectator && {GVAR(zeusCanSpectate)}] call EFUNC(api,setSpectator);
+
+if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
     player setVariable [QGVAR(inZeus), true, true];
     GVAR(speakFromZeusHandle) = [{
         player setVariable [QGVAR(zeusPosition),

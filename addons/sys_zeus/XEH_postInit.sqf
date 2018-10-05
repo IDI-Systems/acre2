@@ -14,13 +14,13 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")
     private _spectatorEars = [
         "ACRE_SpectatorEars", LLSTRING(spectatorEars), "",
         { [true] call EFUNC(api,setSpectator) },
-        { !ACRE_IS_SPECTATOR }
+        { GVAR(zeusCanSpectate) && {!ACRE_IS_SPECTATOR} }
     ] call ace_interact_menu_fnc_createAction;
     [["ACE_ZeusActions", "ACRE_ZeusEars"], _spectatorEars] call ace_interact_menu_fnc_addActionToZeus;
     private _zeusEars = [
         "ACRE_ZeusEars", LLSTRING(zeusEars), "",
         { [false] call EFUNC(api,setSpectator) },
-        { ACRE_IS_SPECTATOR }
+        { GVAR(zeusCanSpectate) && {ACRE_IS_SPECTATOR} }
     ] call ace_interact_menu_fnc_createAction;
     [["ACE_ZeusActions", "ACRE_ZeusEars"], _zeusEars] call ace_interact_menu_fnc_addActionToZeus;
 };

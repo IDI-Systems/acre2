@@ -157,12 +157,3 @@
     true,
     {} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;*/
-
-// Default remote controlled voice location
-[
-    QGVAR(defaultZeusVoiceSource),
-    "LIST",
-    localize LSTRING(DefaultZeusVoiceSource_displayName),
-    "ACRE2",
-    [[false, true], ["str_a3_cfgvehicles_moduleremotecontrol_f", "STR_A3_Leaderboards_Header_Player"], 0]
-] call CBA_Settings_fnc_init;

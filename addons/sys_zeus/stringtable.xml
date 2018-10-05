@@ -15,10 +15,27 @@
         </Key>
 
         <Key ID="STR_ACRE_sys_zeus_ZeusSpeakFromCamera">
-            <English>Speak through the Zeus Camera</English>
+            <English>Speak through the Camera</English>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusSpeakFromCamera_description">
-            <English>Talk from the Zeus Camera's position instead of your unit's position.</English>
+            <English>Talk from the Zeus Interface's camera instead of your unit's position. Listen through camera must be enabled.</English>
+        </Key>
+
+
+        <Key ID="STR_ACRE_sys_core_ZeusDefaultVoiceSource_displayName">
+            <English>Default Zeus Voice Source</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ZeusListenViaCamera_displayName">
+            <English>Listen through camera</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ZeusListenViaCamera_description">
+            <English>Hear players in direct chat through the Zeus Interface's camera.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ZeusCanSpectate_displayName">
+            <English>Able to Join Spectators</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ZeusCanSpectate_description">
+            <English>Let Zeus join the specators while in the Zeus interface.</English>
         </Key>
     </Package>
 </Project>
