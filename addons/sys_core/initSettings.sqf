@@ -160,9 +160,9 @@
 
 // Default remote controlled voice location
 [
-    QGVAR(defaultZeusVoiceLocation),
+    QGVAR(defaultZeusVoiceSource),
     "LIST",
-    localize LSTRING(DefaultZeusVoiceLocation_displayName),
+    localize LSTRING(DefaultZeusVoiceSource_displayName),
     "ACRE2",
     [[false, true], ["str_a3_cfgvehicles_moduleremotecontrol_f", "STR_A3_Leaderboards_Header_Player"], 0]
 ] call CBA_Settings_fnc_init;

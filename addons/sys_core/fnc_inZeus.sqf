@@ -1,6 +1,6 @@
 /*
  * Author: SynixeBrett
- * Returns true if the local player is in the Zeus interface
+ * Checks if the local player is in the Zeus interface.
  *
  * Return Value:
  * In Zeus Interface <BOOL>
@@ -10,7 +10,5 @@
  *
  * Public: No
  */
-
-#define ZEUS_INTERFACE_DISPLAY 312
 
 !isNull (findDisplay ZEUS_INTERFACE_DISPLAY)

@@ -1,6 +1,6 @@
 /*
  * Author: SynixeBrett
- * Returns true if a unit is within range of the player's ears
+ * Checks if unit is within range of the player's ears.
  *
  * Arguments:
  * 0: Unit <VECTOR>
@@ -15,17 +15,13 @@
  */
 #include "script_component.hpp"
 
-#define MAX_DIRECT_RANGE 300
-
-params [
-    ["_unit", objNull, [objNull]]
-];
+params [["_unit", objNull, [objNull]]];
 
 private _position = getPosASL _unit;
 
 private _check = {
     if (call FUNC(inZeus)) exitWith {
-        (_this distance (getPosASL curatorCamera) < MAX_DIRECT_RANGE)
+        _this distance (getPosASL curatorCamera) < MAX_DIRECT_RANGE
     };
     _this distance ACRE_LISTENER_POS < MAX_DIRECT_RANGE
 };

@@ -1,15 +1,15 @@
 /*
  * Author: SynixeBrett
- * set if the player speaks through their player or the remote controlled player
+ * Set if the player speaks through their player or the remote controlled player.
  *
  * Arguments:
- * 0: true to speak through player, false for remote controlled <BOOLEAN>
+ * 0: Speak through player (true) or remote controlled unit (false) <BOOL>
  *
  * Return Value:
- * Nothing
+ * None
  *
  * Example:
- * [true] call acre_sys_zeus_fnc_setUsePlayer;
+ * [true] call acre_sys_zeus_fnc_setUsePlayer
  *
  * Public: No
  */

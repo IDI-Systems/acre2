@@ -7,11 +7,20 @@ private _category = format ["ACRE %1", localize "str_a3_cfghints_curator_curator
     { call FUNC(handleZeusSpeakPressUp) },
 [40, [false, false, false]]] call cba_fnc_addKeybind; //Default bound to `
 
-// There is no EH for opening the zeus interface
-(findDisplay 46) displayAddEventHandler ["KeyDown", {
-    if (inputAction "CuratorInterface" > 0) then {
-        call FUNC(handleZeusSpeakPressUp);
-        [false] call EFUNC(api,setSpectator);
-    };
-    false
-}];
+if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")}) then {
+    private _acreNode = ["ACRE_ZeusEars", "ACRE", "", {}, { true }] call ace_interact_menu_fnc_createAction;
+    [["ACE_ZeusActions"], _acreNode] call ace_interact_menu_fnc_addActionToZeus;
+
+    private _spectatorEars = [
+        "ACRE_SpectatorEars", LLSTRING(spectatorEars), "",
+        { [true] call EFUNC(api,setSpectator) },
+        { !ACRE_IS_SPECTATOR }
+    ] call ace_interact_menu_fnc_createAction;
+    [["ACE_ZeusActions", "ACRE_ZeusEars"], _spectatorEars] call ace_interact_menu_fnc_addActionToZeus;
+    private _zeusEars = [
+        "ACRE_ZeusEars", LLSTRING(zeusEars), "",
+        { [false] call EFUNC(api,setSpectator) },
+        { ACRE_IS_SPECTATOR }
+    ] call ace_interact_menu_fnc_createAction;
+    [["ACE_ZeusActions", "ACRE_ZeusEars"], _zeusEars] call ace_interact_menu_fnc_addActionToZeus;
+};

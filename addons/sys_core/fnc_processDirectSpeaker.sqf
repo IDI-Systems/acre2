@@ -46,7 +46,7 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
         _emitterDir = eyeDirection _unit;
     };
 };
-//Right now ACRE only supports one listener pos, use the closest position while in Zeus
+// Right now ACRE only supports one listener pos, use the closest position while in Zeus
 if (call FUNC(inZeus)) then {
     private _zeusPos = getPosASL curatorCamera;
     if ((_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos)) then {
