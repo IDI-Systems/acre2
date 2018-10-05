@@ -39,8 +39,9 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
     if (_unit getVariable [QEGVAR(sys_zeus,inZeus), false]) then {
-        _emitterPos = _unit getVariable [QEGVAR(sys_zeus,zeusPosition), [0,0,0]];
-        _emitterDir = _unit getVariable [QEGVAR(sys_zeus,zeusDir), [0,0,0]];
+        private _zeusPosition = _unit getVariable [QEGVAR(sys_zeus,zeusPosition), [[0,0,0],[0,0,0]]];
+        _emitterPos = _zeusPosition select 0;
+        _emitterDir = _zeusPosition select 1;
     } else {
         _emitterPos = AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head")); //; eyePos _unit;
         _emitterDir = eyeDirection _unit;
