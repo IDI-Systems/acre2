@@ -72,7 +72,7 @@ if !(_okRadios isEqualTo []) then {
 
 
             private _radioVolume = [_receivingRadioid, "getVolume"] call EFUNC(sys_data,dataEvent);
-            [_x, _radioVolume] call EFUNC(sys_intercom,modifyRadioVolume);
+            _radioVolume = [_x, _radioVolume] call EFUNC(sys_intercom,modifyRadioVolume);
             _radioVolume = _radioVolume * GVAR(globalVolume);
             // acre_player sideChat format["rv: %1", _radioVolume];
             private _isLoudspeaker = [_receivingRadioid, "isExternalAudio"] call EFUNC(sys_data,dataEvent);

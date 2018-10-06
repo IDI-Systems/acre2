@@ -28,7 +28,6 @@ if (_rackId isEqualTo "") then {
 
 if (_rackId == "") exitWith {_volume};
 
-
 if (isNull _vehicle) then {
     _vehicle = [_rackId] call EFUNC(sys_rack,getVehicleFromRack);
 };
