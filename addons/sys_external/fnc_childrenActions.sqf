@@ -33,10 +33,10 @@ if (_playerOwnsRadio) then {
         QGVAR(giveRadio),
         _string,
         "",
-        {[(_this select 2) select 0, _target] call FUNC(stopUsingExternalRadio)},
-        {!([(_this select 2) select 0] call FUNC(isExternalRadioUsed))},
+        {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
+        {!([_this select 2] call FUNC(isExternalRadioUsed))},
         {},
-        _params
+        _radio
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } else {
@@ -48,16 +48,16 @@ if (_playerOwnsRadio) then {
         QGVAR(useRadio),
         _string,
         "",
-        {[(_this select 2) select 0, acre_player] call FUNC(startUsingExternalRadio)},
-        {!([(_this select 2) select 0] call FUNC(isExternalRadioUsed))},
+        {[_this select 2, acre_player] call FUNC(startUsingExternalRadio)},
+        {!([_this select 2] call FUNC(isExternalRadioUsed))},
         {},
-        _params
+        _radio
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 
 // Check if we are giving or returning the headset
-if ([(_this select 2) select 0, _target] call FUNC(checkReturnGive)) then {
+if ([_radio, _target] call FUNC(checkReturnGive)) then {
     private _string =  localize LSTRING(returnHeadset);
     if ([_radio] call EFUNC(sys_radio,isManpackRadio)) then {
         _string =  localize LSTRING(returnHandset)
@@ -66,10 +66,10 @@ if ([(_this select 2) select 0, _target] call FUNC(checkReturnGive)) then {
         QGVAR(returnRadio),
         _string,
         "",
-        {[(_this select 2) select 0, _target] call FUNC(stopUsingExternalRadio)},
-        {[(_this select 2) select 0] call FUNC(isExternalRadioUsed)},
+        {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
+        {[_this select 2] call FUNC(isExternalRadioUsed)},
         {},
-        _params
+        _radio
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } else {
@@ -81,10 +81,10 @@ if ([(_this select 2) select 0, _target] call FUNC(checkReturnGive)) then {
         QGVAR(giveRadio),
         _string,
         "",
-        {[(_this select 2) select 0, _target] call FUNC(stopUsingExternalRadio)},
-        {[(_this select 2) select 0] call FUNC(isExternalRadioUsed)},
+        {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
+        {[_this select 2] call FUNC(isExternalRadioUsed)},
         {},
-        _params
+        _radio
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
