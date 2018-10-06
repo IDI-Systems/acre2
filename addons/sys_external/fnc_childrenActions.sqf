@@ -36,7 +36,7 @@ if (_playerOwnsRadio) then {
         {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
         {!([_this select 2] call FUNC(isExternalRadioUsed))},
         {},
-        _params
+        _radio
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } else {
@@ -51,7 +51,7 @@ if (_playerOwnsRadio) then {
         {[_this select 2, acre_player] call FUNC(startUsingExternalRadio)},
         {!([_this select 2] call FUNC(isExternalRadioUsed))},
         {},
-        _params
+        _radio
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
@@ -69,7 +69,7 @@ if ([_radio, _target] call FUNC(checkReturnGive)) then {
         {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
         {[_this select 2] call FUNC(isExternalRadioUsed)},
         {},
-        _params
+        _radio
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } else {
@@ -84,7 +84,7 @@ if ([_radio, _target] call FUNC(checkReturnGive)) then {
         {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
         {[_this select 2] call FUNC(isExternalRadioUsed)},
         {},
-        _params
+        _radio
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
