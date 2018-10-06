@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks if intercoms are in use. Used by intercom accent.
@@ -14,12 +15,11 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_intercoms", "_intercomNames"];
 
 private _intercomNanes = _vehicle getVariable [QGVAR(intercomNames), []];
 
 {
-    GVAR(intercomUse) set [_forEachIndex, [_intercomNames # _forEachIndex, (_x findIf {_x in EGVAR(sys_core,speakers)}) != -1]];
+    GVAR(intercomUse) set [_forEachIndex, [_intercomNames select _forEachIndex, (_x findIf {_x in EGVAR(sys_core,speakers)}) != -1]];
 } forEach _intercoms;
