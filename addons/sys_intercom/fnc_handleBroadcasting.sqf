@@ -27,8 +27,10 @@ private _changes = false;
     if ((_intercomNetwork == _forEachIndex || (_intercomNetwork == ALL_INTERCOMS)) && {_canBroadcast}) then {
         if (_isBroadcasting) then {
             _broadcastConfig set [_forEachIndex, [_isBroadcasting, _unit]];
+            ["startIntercomSpeaking"] call EFUNC(sys_rpc,callRemoteProcedure);
         } else {
             _broadcastConfig set [_forEachIndex, [_isBroadcasting, objNull]];
+            ["stopIntercomSpeaking"] call EFUNC(sys_rpc,callRemoteProcedure);
         };
         _changes = true;
     };

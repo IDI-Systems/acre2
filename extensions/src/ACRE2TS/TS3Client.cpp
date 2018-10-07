@@ -138,6 +138,7 @@ ACRE_RESULT CTS3Client::localStartSpeaking(const ACRE_SPEAKING_TYPE speakingType
 ACRE_RESULT CTS3Client::localStartSpeaking(const ACRE_SPEAKING_TYPE speakingType, std::string radioId) {
     bool stopDirectSpeaking = false;
     
+    //LOG(INFO) << "Local start speaking" << speakingType;
 
     if (speakingType == ACRE_SPEAKING_RADIO) {
         this->setRadioPTTDown(true);

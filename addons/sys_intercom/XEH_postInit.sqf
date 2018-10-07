@@ -10,35 +10,20 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 if (!hasInterface) exitWith {};
 
-// CBA Keybindings
-//["ACRE2", "IntercomPTTKey",  [(localize LSTRING(intercomPttKey)), (localize LSTRING(intercomPttKey_description))], { [PTT_ACTION] call FUNC(handlePttKeyPress) }, { [PTT_ACTION] call FUNC(handlePttKeyPressUp) }, [52, [true, false, false]]] call cba_fnc_addKeybind;
-//["ACRE2", "IntercomBroadcastKey",  [(localize LSTRING(intercomBroadcastKey)), (localize LSTRING(intercomBroadcastKey_description))], { [BROADCAST_ACTION] call FUNC(handlePttKeyPress) }, { [BROADCAST_ACTION] call FUNC(handlePttKeyPressUp) }, [52, [false, true, false]]] call cba_fnc_addKeybind;
 [
     "ACRE2",
     "IntercomPTTKey",
     [(localize LSTRING(intercomPttKey)), (localize LSTRING(intercomPttKey_description))],
-    "",
-    {
-        if(!GVAR(intercomPttKey)) then {
-            [PTT_ACTION] call FUNC(handlePttKeyPress);
-        } else {
-            [PTT_ACTION] call FUNC(handlePttKeyPressUp);
-        };
-    }
+    {[PTT_ACTION] call FUNC(handlePttKeyPress)},
+    {[PTT_ACTION] call FUNC(handlePttKeyPressUp)}
 ] call cba_fnc_addKeybind;
 
 [
     "ACRE2",
     "IntercomBroadcastKey",
     [(localize LSTRING(intercomBroadcastKey)), (localize LSTRING(intercomBroadcastKey_description))],
-    "",
-    {
-        if(!GVAR(broadcastKey)) then {
-            [BROADCAST_ACTION] call FUNC(handlePttKeyPress);
-        } else {
-            [BROADCAST_ACTION] call FUNC(handlePttKeyPressUp);
-        };
-    }
+    {[BROADCAST_ACTION] call FUNC(handlePttKeyPress)},
+    {[BROADCAST_ACTION] call FUNC(handlePttKeyPressUp)}
 ] call cba_fnc_addKeybind;
 
 ["ACRE2", "PreviousIntercom", (localize LSTRING(previousIntercom)), "", { [-1, true] call FUNC(switchIntercomFast) }, [51, [true, false, false]]] call cba_fnc_addKeybind;

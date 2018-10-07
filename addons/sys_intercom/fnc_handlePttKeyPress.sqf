@@ -24,8 +24,8 @@ private _vehicle = vehicle acre_player;
 if (_vehicle ==  acre_player) exitWith { true };
 
 switch (_action) do {
-    case 0 : { GVAR(intercomPttKey) = true; [acre_player, true] call FUNC(handleIntercomActivation); };
-    case 1 : { GVAR(broadcastKey) = true; [_vehicle, acre_player, ALL_INTERCOMS, true] call FUNC(handleBroadcasting); };
+    case 0 : {GVAR(intercomPttKey) = true; [acre_player, true] call FUNC(handleIntercomActivation); };
+    case 1 : {GVAR(broadcastKey) = true; [_vehicle, acre_player, ALL_INTERCOMS, true] call FUNC(handleBroadcasting); };
 };
 
 [_vehicle, acre_player] call FUNC(updateVehicleInfoText);
