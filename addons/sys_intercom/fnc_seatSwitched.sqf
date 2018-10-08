@@ -21,6 +21,16 @@ params ["_vehicle", "_unit"];
 private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
 private _oldSeat = _unit getVariable [QGVAR(role), ""];
 
+// If unit is transmitting through intercom, stop the transmittion during the seat switch
+if (GVAR(intercomPTT)) then {
+    [ACTION_INTERCOMPTT] call FUNC(handlePttKeyPressUp);
+};
+
+// Same for broadcast messages
+if (GVAR(broadcastKey)) then {
+    [ACTION_BROADCAST] call FUNC(handlePttKeyPressUp);
+};
+
 {
     if (_oldSeat != "") then {
         private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION, _oldSeat] call FUNC(getStationConfiguration);

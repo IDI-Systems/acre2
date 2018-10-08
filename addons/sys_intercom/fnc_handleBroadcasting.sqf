@@ -21,6 +21,8 @@
 params ["_vehicle", "_unit", "_intercomNetwork", "_isBroadcasting"];
 
 private _broadcastConfig = _vehicle getVariable [QGVAR(broadcasting), []];
+GVAR(broadcastKey) = _isBroadcasting;
+
 private _changes = false;
 {
     private _canBroadcast = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_MASTERSTATION] call FUNC(getStationConfiguration);
