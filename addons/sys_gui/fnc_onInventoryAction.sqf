@@ -30,24 +30,21 @@ private _container = nil;
 switch _typeIndex do {
     case "uniform": {
         _container = _typeIndex;
-        private _itemsArray = (uniformItems acre_player) + (uniformMagazines acre_player);
-        private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
+        private _uniqueItems = [acre_player, false, false, false, true, false] call CBA_fnc_uniqueUnitItems;
         if (_index < (count _uniqueItems) ) then {
             _item = _uniqueItems select _index;
         };
     };
     case "vest": {
         _container = _typeIndex;
-        private _itemsArray = (vestItems acre_player) + (vestMagazines acre_player);
-        private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
+        private _uniqueItems = [acre_player, false, false, true, false, false] call CBA_fnc_uniqueUnitItems;
         if (_index < (count _uniqueItems) ) then {
             _item = _uniqueItems select _index;
         };
     };
     case "backpack": {
         _container = _typeIndex;
-        private _itemsArray = (backpackItems acre_player) + (backpackMagazines acre_player);
-        private _uniqueItems = [_itemsArray] call FUNC(uniqueArray);
+        private _uniqueItems = [acre_player, false, true, false, false, false] call CBA_fnc_uniqueUnitItems;
         if (_index < (count _uniqueItems) ) then {
             _item = _uniqueItems select _index;
         };
