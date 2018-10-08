@@ -2,11 +2,11 @@
 #include "Log.h"
 #include <fstream>
 
-ACRE_RESULT CAcreSettings::save(const std::string &ac_filename) const {
+ACRE_RESULT CAcreSettings::save(const std::string &filename) const {
     // Write the shit out by hand for now
     std::ofstream iniFile;
 
-    iniFile.open(ac_filename, std::ios::trunc);
+    iniFile.open(filename, std::ios::trunc);
     if (!iniFile.is_open()) {
         return ACRE_ERROR;
     }
@@ -24,13 +24,13 @@ ACRE_RESULT CAcreSettings::save(const std::string &ac_filename) const {
     return ACRE_OK;
 }
 
-ACRE_RESULT CAcreSettings::load(const std::string &ac_filename) {
+ACRE_RESULT CAcreSettings::load(const std::string &filename) {
     // Write the shit out by hand for now
-    ini_reader config(ac_filename);
+    ini_reader config(filename);
 
     if (config.ParseError() < 0) {
         LOG("Failed to load ACRE ini file. Using defaults...");
-        this->save(ac_filename);
+        this->save(filename);
         return ACRE_ERROR;
     } else {
         LOG("Successfully loaded ACRE ini file (any failures above can be ignored).");
@@ -43,7 +43,7 @@ ACRE_RESULT CAcreSettings::load(const std::string &ac_filename) {
     this->m_DisableTS3ChannelSwitch = config.GetBoolean("acre2", "disableTS3ChannelSwitch", false);
 
     //LOG("Config Load: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
-    this->m_Path = ac_filename;
+    this->m_Path = filename;
 
     return ACRE_OK;
 }

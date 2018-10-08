@@ -16,23 +16,23 @@ class CTextMessage : public IMessage
 {
 public:
     // create new message to send constructor
-    CTextMessage(char *const data, const size_t ac_length);
+    CTextMessage(char *const data, const size_t length);
     ~CTextMessage(void);
-    ACRE_RESULT parse(char *const data, const size_t ac_len);
+    ACRE_RESULT parse(char *const data, const size_t len);
 
     char *getProcedureName(void);
     BOOL isValid();
-    unsigned char *getParameter(const uint32_t ac_index);
-    int getParameterAsInt(const uint32_t ac_index);
+    unsigned char *getParameter(const uint32_t index);
+    int getParameterAsInt(const uint32_t index);
     float getParameterAsFloat(uint32_t index);
     unsigned int getParameterCount(void);
-    
+
 
     static IMessage *createNewMessage(const char *const procedureName, ... );
     static IMessage *formatNewMessage(const char *const  procedureName, char *format, ... );
 
-    unsigned char *getData() { 
-        return (unsigned char *) this->m_DataPtr; 
+    unsigned char *getData() {
+        return (unsigned char *) this->m_DataPtr;
     }
     ACRE_RESULT setData(unsigned char *data) {
         this->parse((char *)data, strlen((char *) data));

@@ -45,14 +45,14 @@ static inline bool is_base64(uint8_t c) {
     return (isalnum(c) || (c == '+') || (c == '/'));
 }
 
-std::string base64_encode(uint8_t const* bytes_to_encode, const uint32_t ac_len) {
+std::string base64_encode(uint8_t const* bytes_to_encode, const uint32_t len) {
     std::string ret;
     int32_t i = 0;
     int32_t j = 0;
     uint8_t char_array_3[3];
     uint8_t char_array_4[4];
 
-    uint32_t len = ac_len;
+    uint32_t len = len;
 
     while (len--) {
         char_array_3[i++] = *(bytes_to_encode++);

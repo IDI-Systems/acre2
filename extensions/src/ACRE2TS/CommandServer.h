@@ -29,13 +29,13 @@ public:
     //DECLARE_MEMBER(BOOL, Connected);
     //DECLARE_MEMBER(ACRE_ID, Id);
 
-    virtual __inline void setCommandId(char *const ac_value) { this->m_commandId = ac_value; }
+    virtual __inline void setCommandId(char *const value) { this->m_commandId = value; }
     virtual __inline char * getCommandId() const { return this->m_commandId; }
 
-    virtual __inline void setConnected(const bool ac_value) { this->m_connected = ac_value; }
+    virtual __inline void setConnected(const bool value) { this->m_connected = value; }
     virtual __inline bool getConnected() const { return this->m_connected; }
 
-    virtual __inline void setId(const ACRE_ID ac_value) { this->m_id = ac_value; }
+    virtual __inline void setId(const ACRE_ID value) { this->m_id = value; }
     virtual __inline ACRE_ID getId() const { return this->m_id; }
 
 protected:

@@ -24,7 +24,7 @@ public:
         this->setParam("curveScale", 1.0f);
         this->setParam("speakingType", ACRE_SPEAKING_DIRECT);
     };
-    void process(int16_t *const a_samples, int32_t ac_sampleCount, int32_t ac_channels, const uint32_t ac_speakerMask) {
-        this->m_positionFilter.process(a_samples, ac_sampleCount, ac_channels, ac_speakerMask, this);
+    void process(int16_t *const samples, int32_t sampleCount, int32_t channels, const uint32_t speakerMask) {
+        this->m_positionFilter.process(samples, sampleCount, channels, speakerMask, this);
     };
 };

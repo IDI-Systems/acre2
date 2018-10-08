@@ -17,8 +17,8 @@ CPlayer::CPlayer() {
     this->init(0);
 }
 
-CPlayer::CPlayer(const ACRE_ID ac_id) {
-    this->init(ac_id);
+CPlayer::CPlayer(const ACRE_ID id) {
+    this->init(id);
 }
 
 void CPlayer::clearSoundChannels() {

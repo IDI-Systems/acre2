@@ -27,10 +27,10 @@ CBabelFilter::~CBabelFilter( void ) {
 }
 
 
-ACRE_RESULT CBabelFilter::process(int16_t *const a_samples, const int32_t ac_sampleCount, const int32_t channels, const ACRE_ID ac_id) {
+ACRE_RESULT CBabelFilter::process(int16_t *const samples, const int32_t sampleCount, const int32_t channels, const ACRE_ID id) {
     /*
     BabelStruct *speaker = this->getSpeaker(id);
-    
+
     float averageSum, currentSample, averageAmplitude;
     averageSum = 0;
     vector<FFT::Complex> buf_complex((sampleCount*channels)/2);
@@ -54,13 +54,13 @@ ACRE_RESULT CBabelFilter::process(int16_t *const a_samples, const int32_t ac_sam
 
 
 
-    
-    
+
+
 
     FFT dft(sampleCount*channels);
     vector<FFT::Complex> frequencies = dft.transform(buf_complex);
-    
-    
+
+
 
 
     short val;
@@ -68,7 +68,7 @@ ACRE_RESULT CBabelFilter::process(int16_t *const a_samples, const int32_t ac_sam
     for (int i = 0; i < sampleCount; i++){
         //val = sin((2*M_PI*440)/(TS_SAMPLE_RATE*speaker->period))*32768;
         val = 32760 * sin( (2.f*float(M_PI)*(440))/TS_SAMPLE_RATE * speaker->period );
-        
+
         val = multiplier*val;
         val = val * dft.getIntensity(frequencies[i >> 1]);
         if (val < 32760 && val > -32760) {
@@ -83,14 +83,14 @@ ACRE_RESULT CBabelFilter::process(int16_t *const a_samples, const int32_t ac_sam
 
 
         //printf("%d(%d) = %d > %d\r\n", id, speaker->period, samples[i], val);
-        
+
         speaker->period++;
     }
     */
     return ACRE_OK;
 }
 
-BabelStruct *CBabelFilter::getSpeaker(const ACRE_ID ac_id) {
+BabelStruct *CBabelFilter::getSpeaker(const ACRE_ID id) {
     /*
     LOCK(this);
     BabelStruct *speaker;

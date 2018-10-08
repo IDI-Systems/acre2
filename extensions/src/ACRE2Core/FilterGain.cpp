@@ -5,19 +5,19 @@
 
 #include <cmath>
 
-ACRE_RESULT CFilterGain::process(int16_t *const a_samples, const int32_t ac_sampleCount, const int32_t ac_channels, const float32_t ac_gain) {
+ACRE_RESULT CFilterGain::process(int16_t *const samples, const int32_t sampleCount, const int32_t channels, const float32_t gain) {
     float32_t gainSampleValue;
 
-    if (ac_gain >= 0.0f) {
-        for (int32_t i = 0; i < ac_sampleCount * ac_channels; i++) {
-            gainSampleValue = (float32_t) a_samples[i] * ac_gain;
+    if (gain >= 0.0f) {
+        for (int32_t i = 0; i < sampleCount * channels; i++) {
+            gainSampleValue = (float32_t) samples[i] * gain;
 
             if (gainSampleValue > MAXSHORT) {
                 gainSampleValue = MAXSHORT;
             } else if (gainSampleValue < -MINSHORT) {
                 gainSampleValue = -MINSHORT;
             }
-            a_samples[i] = (int16_t) gainSampleValue;
+            samples[i] = (int16_t) gainSampleValue;
         }
     }
     return ACRE_OK;

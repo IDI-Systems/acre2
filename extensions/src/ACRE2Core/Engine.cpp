@@ -25,19 +25,19 @@
 #include "setTs3ChannelDetails.h"
 
 
-ACRE_RESULT CEngine::initialize(IClient *const ac_client, IServer *const ac_externalServer, const std::string ac_fromPipeName, const std::string ac_toPipeName) {
+ACRE_RESULT CEngine::initialize(IClient *const client, IServer *const externalServer, const std::string fromPipeName, const std::string toPipeName) {
 
     if (!g_Log) {
         g_Log = (Log *)new Log("acre2.log");
         LOG("* Logging engine initialized.");
     }
-    LOG("Configuration Path: {%s\\acre2.ini}", ac_client->getConfigFilePath().c_str());
-    CAcreSettings::getInstance()->load(ac_client->getConfigFilePath() + "\\acre2.ini");
+    LOG("Configuration Path: {%s\\acre2.ini}", client->getConfigFilePath().c_str());
+    CAcreSettings::getInstance()->load(client->getConfigFilePath() + "\\acre2.ini");
 
-    this->setClient(ac_client);
-    this->setExternalServer(ac_externalServer);
+    this->setClient(client);
+    this->setExternalServer(externalServer);
 
-    this->m_gameServer = new CNamedPipeServer(ac_fromPipeName, ac_toPipeName);
+    this->m_gameServer = new CNamedPipeServer(fromPipeName, toPipeName);
     this->m_soundEngine = new CSoundEngine();
     this->m_rpcEngine = new CRpcEngine();
     //this->m_KeyHandlerEngine = new CKeyHandlerEngine();
@@ -74,15 +74,15 @@ ACRE_RESULT CEngine::initialize(IClient *const ac_client, IServer *const ac_exte
     return ACRE_OK;
 }
 
-ACRE_RESULT CEngine::initialize(IClient *const ac_client, IServer *const ac_externalServer, const std::string ac_fromPipeName, const std::string ac_toPipeName, const std::string ac_loggingPath) {
+ACRE_RESULT CEngine::initialize(IClient *const client, IServer *const externalServer, const std::string fromPipeName, const std::string toPipeName, const std::string loggingPath) {
 
-    g_Log = (Log *) new Log(const_cast<char *>(ac_loggingPath.c_str()));
+    g_Log = (Log *) new Log(const_cast<char *>(loggingPath.c_str()));
     LOG("* Logging engine initialized.");
 
-    return initialize(ac_client, ac_externalServer, ac_fromPipeName, ac_toPipeName);
+    return initialize(client, externalServer, fromPipeName, toPipeName);
 }
 
-ACRE_RESULT CEngine::start(const ACRE_ID ac_id) {
+ACRE_RESULT CEngine::start(const ACRE_ID id) {
     if (this->getExternalServer()) {
         this->getExternalServer()->initialize();
     } else {
@@ -139,11 +139,11 @@ ACRE_RESULT CEngine::localStartSpeaking(const ACRE_SPEAKING_TYPE speakingType) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CEngine::localStartSpeaking(const ACRE_SPEAKING_TYPE speakingType, const std::string &ac_radioId) {
+ACRE_RESULT CEngine::localStartSpeaking(const ACRE_SPEAKING_TYPE speakingType, const std::string &radioId) {
     // send a start speaking event to everyone
-    TRACE("Local START speaking: %d, %s", speakingType, ac_radioId.c_str());
+    TRACE("Local START speaking: %d, %s", speakingType, radioId.c_str());
     this->getSelf()->lock();
-    this->getSelf()->setCurrentRadioId(ac_radioId);
+    this->getSelf()->setCurrentRadioId(radioId);
     this->getSelf()->setSpeakingType(speakingType);
     this->getSelf()->clearSoundChannels();
 
@@ -196,37 +196,37 @@ ACRE_RESULT CEngine::localStopSpeaking( void ) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CEngine::remoteStartSpeaking(const ACRE_ID ac_remoteId, const int32_t ac_languageId, const std::string &ac_netId, const ACRE_SPEAKING_TYPE ac_speakingType, const std::string &ac_radioId, const ACRE_VOLUME ac_curveScale) {
-    TRACE("Remote Start Speaking Enter: %d, %d", ac_remoteId, ac_speakingType);
-    auto it = this->speakingList.find(ac_remoteId);
+ACRE_RESULT CEngine::remoteStartSpeaking(const ACRE_ID remoteId, const int32_t languageId, const std::string &netId, const ACRE_SPEAKING_TYPE speakingType, const std::string &radioId, const ACRE_VOLUME curveScale) {
+    TRACE("Remote Start Speaking Enter: %d, %d", remoteId, speakingType);
+    auto it = this->speakingList.find(remoteId);
     if (it != this->speakingList.end()) {
         //ghetto rig the remote players curveScale updates
-        it->second->setSelectableCurveScale(ac_curveScale);
+        it->second->setSelectableCurveScale(curveScale);
         return ACRE_OK;
     }
-    CPlayer *remotePlayer = new CPlayer(ac_remoteId);
-    this->speakingList.insert(std::pair<ACRE_ID, CPlayer *>(ac_remoteId, remotePlayer));
-    remotePlayer->setSpeakingType(ac_speakingType);
-    remotePlayer->setSelectableCurveScale(ac_curveScale);
-    remotePlayer->setCurrentRadioId(ac_radioId);
-    remotePlayer->setNetId(ac_netId);
+    CPlayer *remotePlayer = new CPlayer(remoteId);
+    this->speakingList.insert(std::pair<ACRE_ID, CPlayer *>(remoteId, remotePlayer));
+    remotePlayer->setSpeakingType(speakingType);
+    remotePlayer->setSelectableCurveScale(curveScale);
+    remotePlayer->setCurrentRadioId(radioId);
+    remotePlayer->setNetId(netId);
 
     CEngine::getInstance()->getGameServer()->sendMessage( CTextMessage::formatNewMessage("remoteStartSpeaking",
         "%d,%d,%s,%d,%s,",
-        ac_remoteId,
-        ac_languageId,
-        ac_netId.c_str(),
-        ac_speakingType,
-        ac_radioId.c_str()
+        remoteId,
+        languageId,
+        netId.c_str(),
+        speakingType,
+        radioId.c_str()
         )
     );
 
     return ACRE_OK;
 }
 
-ACRE_RESULT CEngine::remoteStopSpeaking(const ACRE_ID ac_remoteId) {
-    TRACE("Remote STOP Speaking Enter: %d", ac_remoteId);
-    auto it = this->speakingList.find(ac_remoteId);
+ACRE_RESULT CEngine::remoteStopSpeaking(const ACRE_ID remoteId) {
+    TRACE("Remote STOP Speaking Enter: %d", remoteId);
+    auto it = this->speakingList.find(remoteId);
     if (it != this->speakingList.end()) {
         CPlayer *remotePlayer = (CPlayer *)it->second;
 

@@ -6,43 +6,43 @@
 
 #include <ctime>
 
-ACRE_RESULT CFilterRadio::process(int16_t *const a_samples, const int32_t ac_sampleCount, const int32_t ac_channels, const ACRE_VOLUME ac_value, const bool ac_noise) {
+ACRE_RESULT CFilterRadio::process(int16_t *const samples, const int32_t sampleCount, const int32_t channels, const ACRE_VOLUME value, const bool noise) {
     float32_t buffer[4096], *floatPointer[1];
     int16_t *shortPointer[1];
 
     if (CAcreSettings::getInstance()->getDisableRadioFilter())
         return ACRE_OK;
 
-    if (ac_value > 0.0f) {
+    if (value > 0.0f) {
         floatPointer[0] = buffer;
-        shortPointer[0] = a_samples;
+        shortPointer[0] = samples;
         memset(floatPointer[0], 0x00, 4096 * sizeof(float32_t));
         const float32_t mul = 1.0f / 32768.0f;
-        for (int i = 0; i < ac_sampleCount; ++i) {
-            floatPointer[0][i] = static_cast<float32_t>(a_samples[i]) * mul;
+        for (int i = 0; i < sampleCount; ++i) {
+            floatPointer[0][i] = static_cast<float32_t>(samples[i]) * mul;
         }
 
         // Boost it
-        for (int32_t i = 0; i < ac_sampleCount*ac_channels; i++) {
+        for (int32_t i = 0; i < sampleCount*channels; i++) {
             floatPointer[0][i] = floatPointer[0][i] * 3.0f;
         }
-        if (ac_noise) {
-            this->mixPinkNoise(floatPointer[0], ac_sampleCount*ac_channels, ac_value);
-            this->mixWhiteNoise(floatPointer[0], ac_sampleCount*ac_channels, ac_value);
+        if (noise) {
+            this->mixPinkNoise(floatPointer[0], sampleCount*channels, value);
+            this->mixWhiteNoise(floatPointer[0], sampleCount*channels, value);
         }
 
         // Mix noise
-        this->m_RingModulate.mix(floatPointer[0], ac_sampleCount*ac_channels, ac_value);
+        this->m_RingModulate.mix(floatPointer[0], sampleCount*channels, value);
 
         // Fold back
-        Dsp::foldback(floatPointer[0], ac_sampleCount*ac_channels, ac_value);
+        Dsp::foldback(floatPointer[0], sampleCount*channels, value);
 
         // shelf it
-        this->m_LowPass.process(ac_sampleCount*ac_channels, floatPointer);
-        this->m_HighPass.process(ac_sampleCount*ac_channels, floatPointer);
+        this->m_LowPass.process(sampleCount*channels, floatPointer);
+        this->m_HighPass.process(sampleCount*channels, floatPointer);
 
         // Convert it back to shorts
-        for (int32_t i = 0; i < ac_sampleCount; ++i) {
+        for (int32_t i = 0; i < sampleCount; ++i) {
             if (floatPointer[0][i] > 1.0f) {
                 floatPointer[0][i] = 1.0f;
             }
@@ -53,32 +53,32 @@ ACRE_RESULT CFilterRadio::process(int16_t *const a_samples, const int32_t ac_sam
         }
 
     } else {
-        memset(a_samples, 0x00, (ac_sampleCount*ac_channels)*sizeof(int16_t));
+        memset(samples, 0x00, (sampleCount*channels)*sizeof(int16_t));
     }
 
     return ACRE_OK;
 }
 
-ACRE_RESULT CFilterRadio::mixPinkNoise(float32_t *const a_buffer, const int32_t ac_numSamples, const ACRE_VOLUME ac_value) {
-    
-    const float32_t inverse_value = 1.25f - ac_value;
+ACRE_RESULT CFilterRadio::mixPinkNoise(float32_t *const buffer, const int32_t numSamples, const ACRE_VOLUME value) {
 
-    for (int32_t i = 0; i < ac_numSamples; i++) {
+    const float32_t inverse_value = 1.25f - value;
+
+    for (int32_t i = 0; i < numSamples; i++) {
         const float32_t noise = this->m_PinkNoise.m_tick() * (0.35f * inverse_value);
-        a_buffer[i] = (a_buffer[i] + noise) - (noise * a_buffer[i]);
+        buffer[i] = (buffer[i] + noise) - (noise * buffer[i]);
     }
 
     return ACRE_OK;
 }
 
-ACRE_RESULT CFilterRadio::mixWhiteNoise(float32_t *const a_buffer, const int32_t ac_numSamples, const ACRE_VOLUME ac_value) {
+ACRE_RESULT CFilterRadio::mixWhiteNoise(float32_t *const buffer, const int32_t numSamples, const ACRE_VOLUME value) {
 
-    const float32_t inverse_value = 1.25f - ac_value;
-    for (int32_t i = 0; i < ac_numSamples; i++) {
+    const float32_t inverse_value = 1.25f - value;
+    for (int32_t i = 0; i < numSamples; i++) {
         const float32_t noise = Dsp::whitenoise() * (0.001f *inverse_value);
-        a_buffer[i] = a_buffer[i] + noise;
+        buffer[i] = buffer[i] + noise;
     }
-    
+
     return ACRE_OK;
 }
 

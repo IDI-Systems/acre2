@@ -5,8 +5,8 @@
 
 #define PI 3.14159265
 
-FFT::FFT(const int32_t ac_n, const bool ac_inverse)
-    : m_n(ac_n), m_inverse(ac_inverse), m_result(std::vector<Complex>(ac_n))
+FFT::FFT(const int32_t n, const bool inverse)
+    : m_n(n), m_inverse(inverse), m_result(std::vector<Complex>(n))
 {
     m_lgN = 0;
     for (int32_t i = m_n; i > 1; i >>= 1)

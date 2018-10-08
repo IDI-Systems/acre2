@@ -15,18 +15,18 @@ namespace Dsp {
         return noise;
     }
 
-    void foldback (float32_t *const a_samples, const int32_t ac_count, const float32_t ac_value) {
+    void foldback (float32_t *const samples, const int32_t count, const float32_t value) {
 
-        const float32_t divFloat = 256.0f*powf(ac_value, 4.0f) - 693.33f*powf(ac_value, 3.0f) + 648.0f*powf(ac_value, 2.0f) - 250.67f*ac_value + 40.0f;
+        const float32_t divFloat = 256.0f*powf(value, 4.0f) - 693.33f*powf(value, 3.0f) + 648.0f*powf(value, 2.0f) - 250.67f*value + 40.0f;
         int32_t divisor = (int32_t) divFloat;
 
         if (divisor < 5) {
             divisor = 5;
         }
 
-        for (int32_t i = 0; i < ac_count; i += divisor) {
-            for (int32_t x = 1; x < divisor && i + ac_value < ac_count; x++) {
-                a_samples[i + x] = a_samples[i];
+        for (int32_t i = 0; i < count; i += divisor) {
+            for (int32_t x = 1; x < divisor && i + value < count; x++) {
+                samples[i + x] = samples[i];
             }
         }
     }

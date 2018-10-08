@@ -12,5 +12,5 @@ private:
 public:
     CRadioEffect();
     ~CRadioEffect();
-    void process(int16_t *const a_samples, const int32_t ac_sampleCount);
+    void process(int16_t *const samples, const int32_t sampleCount);
 };

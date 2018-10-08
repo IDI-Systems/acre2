@@ -23,17 +23,17 @@ struct SoundItem {
 
 class CSoundPlayback : public CLockable {
 public:
-    CSoundPlayback() { 
-        m_base64_chars = 
+    CSoundPlayback() {
+        m_base64_chars =
              "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
              "abcdefghijklmnopqrstuvwxyz"
-             "0123456789+/"; 
+             "0123456789+/";
     };
     ~CSoundPlayback() { };
 
     ACRE_RESULT buildSound(std::string id, std::string content);
-    ACRE_RESULT loadSound(const std::string &ac_id);
-    ACRE_RESULT playSound(const std::string &ac_id, const ACRE_VECTOR ac_position, const ACRE_VECTOR ac_direction, const float32_t ac_volume, const bool ac_isWorld);
+    ACRE_RESULT loadSound(const std::string &id);
+    ACRE_RESULT playSound(const std::string &id, const ACRE_VECTOR position, const ACRE_VECTOR direction, const float32_t volume, const bool isWorld);
 
 private:
     std::map<std::string, SoundItem *> m_itemMap;

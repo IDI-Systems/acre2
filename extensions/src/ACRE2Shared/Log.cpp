@@ -5,7 +5,7 @@
 
 Log *g_Log = NULL;
 
-Log::Log(char *logFile) { 
+Log::Log(char *logFile) {
     InitializeCriticalSection(&this->m_CriticalSection);
 
     if (logFile == NULL) {
@@ -28,7 +28,7 @@ Log::~Log(void) {
     DeleteCriticalSection(&this->m_CriticalSection);
     CloseHandle(this->fileHandle);
 }
-size_t Log::Write(DWORD msgType, char *function, const uint32_t ac_line, const char *format, ...) {
+size_t Log::Write(DWORD msgType, char *function, const uint32_t line, const char *format, ...) {
     char buffer[4097], tbuffer[1024];
     va_list va;
     size_t ret;
@@ -39,7 +39,7 @@ size_t Log::Write(DWORD msgType, char *function, const uint32_t ac_line, const c
     if (this == NULL)
         return 0xFFFFFFFF;
 
-    if (this->fileHandle == INVALID_HANDLE_VALUE) 
+    if (this->fileHandle == INVALID_HANDLE_VALUE)
         return 0xFFFFFFFF;
 
     buffer[0] = 0x00;
@@ -83,7 +83,7 @@ size_t Log::PopMessage(DWORD msgType, const char *format, ...) {
     char buffer[4097];
     va_list va;
     int ret;
-    
+
     msgType = msgType;
 
     memset(buffer, 0x00, sizeof(buffer));

@@ -24,19 +24,19 @@ ACRE_RESULT CSoundPlayback::buildSound(std::string id, std::string content) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CSoundPlayback::loadSound(const std::string &ac_id) {
+ACRE_RESULT CSoundPlayback::loadSound(const std::string &id) {
     SoundItem *item;
-    if (m_itemMap.find(ac_id) == m_itemMap.end()) {
+    if (m_itemMap.find(id) == m_itemMap.end()) {
         return ACRE_ERROR;
     }
-    item = m_itemMap.find(ac_id)->second;
+    item = m_itemMap.find(id)->second;
 
     std::vector<int8_t> decoded = base64_decode(item->base64);
 
 
     std::string tempPath = CEngine::getInstance()->getClient()->getTempFilePath();
     tempPath += "\\";
-    tempPath += ac_id;
+    tempPath += id;
     std::ofstream out(tempPath, std::ios::out | std::ios::binary);
     if (!out.is_open()) {
         return ACRE_ERROR;
@@ -50,28 +50,28 @@ ACRE_RESULT CSoundPlayback::loadSound(const std::string &ac_id) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CSoundPlayback::playSound(const std::string &ac_id, const ACRE_VECTOR ac_position, const ACRE_VECTOR ac_direction, const float32_t ac_volume, const bool ac_isWorld) {
+ACRE_RESULT CSoundPlayback::playSound(const std::string &id, const ACRE_VECTOR position, const ACRE_VECTOR direction, const float32_t volume, const bool isWorld) {
     std::string tempPath = CEngine::getInstance()->getClient()->getTempFilePath();
     tempPath += "\\";
-    tempPath += ac_id;
+    tempPath += id;
     CWave waveFile;
     if (waveFile.load(tempPath)) {
         CSoundChannelMono *tempChannel;
         CEngine::getInstance()->getSoundEngine()->getSoundMixer()->lock();
         CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&tempChannel, waveFile.getSize()/sizeof(int16_t), true);
         tempChannel->setEffectInsert(0, "acre_volume");
-        tempChannel->getEffectInsert(0)->setParam("volume", ac_volume);
+        tempChannel->getEffectInsert(0)->setParam("volume", volume);
         tempChannel->setMixdownEffectInsert(0, "acre_positional");
 
-        tempChannel->getMixdownEffectInsert(0)->setParam("speakerPosX", ac_position.x);
-        tempChannel->getMixdownEffectInsert(0)->setParam("speakerPosY", ac_position.y);
-        tempChannel->getMixdownEffectInsert(0)->setParam("speakerPosZ", ac_position.z);
+        tempChannel->getMixdownEffectInsert(0)->setParam("speakerPosX", position.x);
+        tempChannel->getMixdownEffectInsert(0)->setParam("speakerPosY", position.y);
+        tempChannel->getMixdownEffectInsert(0)->setParam("speakerPosZ", position.z);
 
-        tempChannel->getMixdownEffectInsert(0)->setParam("headVectorX", ac_direction.x);
-        tempChannel->getMixdownEffectInsert(0)->setParam("headVectorY", ac_direction.y);
-        tempChannel->getMixdownEffectInsert(0)->setParam("headVectorZ", ac_direction.z);
+        tempChannel->getMixdownEffectInsert(0)->setParam("headVectorX", direction.x);
+        tempChannel->getMixdownEffectInsert(0)->setParam("headVectorY", direction.y);
+        tempChannel->getMixdownEffectInsert(0)->setParam("headVectorZ", direction.z);
 
-        if (ac_isWorld) {
+        if (isWorld) {
             tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000001);
             tempChannel->getMixdownEffectInsert(0)->setParam("speakingType", ACRE_SPEAKING_RADIO);
         } else {
@@ -98,7 +98,7 @@ std::vector<int8_t> CSoundPlayback::base64_decode(std::string const& encoded_str
     uint8_t char_array_4[4], char_array_3[3];
     //std::string ret;
     std::vector<int8_t> ret;
-  
+
 
     while (in_len-- && ( encoded_string[in_] != '=') && is_base64(encoded_string[in_])) {
         char_array_4[i++] = encoded_string[in_]; in_++;

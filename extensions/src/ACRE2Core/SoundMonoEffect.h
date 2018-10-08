@@ -13,11 +13,11 @@ private:
 public:
     CSoundMonoEffect() { };
     ~CSoundMonoEffect() { };
-    virtual void process(int16_t *const a_samples, const int32_t ac_sampleCount) = 0;
-    void setParam(const std::string &ac_paramName, const float32_t ac_value) { m_paramMap[ac_paramName] = ac_value; };
-    float32_t getParam(const std::string &ac_paramName) {
-        if (m_paramMap.find(ac_paramName) != m_paramMap.end()) {
-            return m_paramMap[ac_paramName];
+    virtual void process(int16_t *const samples, const int32_t sampleCount) = 0;
+    void setParam(const std::string &paramName, const float32_t value) { m_paramMap[paramName] = value; };
+    float32_t getParam(const std::string &paramName) {
+        if (m_paramMap.find(paramName) != m_paramMap.end()) {
+            return m_paramMap[paramName];
         } else {
             return 0.0f;
         }
