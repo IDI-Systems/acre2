@@ -69,9 +69,11 @@ if (GVAR(doFullSearch)) then {
     private _idList = [];
     private _duplicateIdTable = HASH_CREATE;
     private _searchObjects = [];
-    {
-        _searchObjects append _x;
-    } forEach [allPlayers, allUnits, allDead, vehicles, allMissionObjects "WeaponHolder"]; // search players first
+    _searchObjects append allPlayers;
+    _searchObjects append allUnits;
+    _searchObjects append allDead;
+    _searchObjects append vehicles;
+    _searchObjects append (allMissionObjects "WeaponHolder");
 
     _searchObjects = _searchObjects arrayIntersect _searchObjects; // Ensure nothing gets searched twice.
     private _cfgWeapons = configFile >> "CfgWeapons";
