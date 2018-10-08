@@ -26,6 +26,7 @@ PREP(hasAccessToVehicleSystem);
 PREP(isMuted);
 PREP(localStartSpeaking);
 PREP(localStopSpeaking);
+PREP(monitorAIPFH);
 PREP(muting);
 PREP(onPlayerKilled);
 PREP(pong);

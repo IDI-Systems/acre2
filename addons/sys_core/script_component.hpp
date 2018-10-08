@@ -16,3 +16,5 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+#define ACRE_REVEAL_AMOUNT 1.6
