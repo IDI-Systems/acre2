@@ -20,7 +20,7 @@ params ["_radioId"];
 private _canTransmit = true;
 private _vehicle = vehicle acre_player;
 
-if (acre_player getVariable [QGVAR(isDisabled), false]) exitWith {
+if (acre_player getVariable [QEGVAR(sys_core,isDisabled), false]) exitWith {
     false
 };
 
