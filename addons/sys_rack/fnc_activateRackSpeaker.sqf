@@ -1,3 +1,4 @@
+ #include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the mounted radio external audio to ON/OFF.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
 
 params ["_radioId", "_active", ["_rackId",""]];
 
