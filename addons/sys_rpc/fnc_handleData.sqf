@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the receipt of messages from the teamspeak plugin. Firstly by de-serializing the recieved message. It will then call any procedure handlers.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _message = _this;
 TRACE_1("RECEIEVED RPC DATA",_message);

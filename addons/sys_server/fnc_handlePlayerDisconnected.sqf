@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handler for the player disconnected event handler. Inputs match the playerDisconnect event, only required parameter is the owner ID.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _ownerId = param [4,-1];
 

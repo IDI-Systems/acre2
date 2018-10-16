@@ -133,6 +133,10 @@ entries:
       url: /wiki/frameworks/functions-list
       output: web, pdf
 
+    - title: Events List
+      url: /wiki/frameworks/events-list
+      output: web, pdf
+
     - title: Mission Making Intro
       url: /wiki/frameworks/mission-making-intro
       output: web, pdf

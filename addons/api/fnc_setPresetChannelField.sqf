@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the value of a given channel field for the given radio preset.
@@ -18,7 +19,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 private _ret = params [["_radioClass","",[""]],
     ["_presetName","",[""]],

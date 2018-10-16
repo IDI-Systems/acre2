@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Parses the intercom and racks configuration arrays and converts it to a usable format.
@@ -37,7 +38,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_configArray"];
 

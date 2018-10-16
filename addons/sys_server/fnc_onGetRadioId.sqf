@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function is used to start initializing a radio for the intended player. The callback is used to complete the process.
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params["_entity", "_class", "_callback", ["_replacementId",""]];
 
@@ -28,7 +28,7 @@ private _ret = [_class] call FUNC(getRadioId);
 if (_ret != -1) then {
     private _uniqueClass = format["%1_id_%2", tolower(_class), _ret];
 
-    if (!(_uniqueClass in GVAR(masterIdList))) then {
+    if !(_uniqueClass in GVAR(masterIdList)) then {
         GVAR(masterIdList) pushBack _uniqueClass;
         if (isServer) then {
             private _dataHash = HASH_CREATE;

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns a list of language ids understood by the local player.
@@ -13,6 +14,5 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 ACRE_SPOKEN_LANGUAGES apply {(GVAR(languages) select _x) select 0};

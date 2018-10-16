@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the current global output volume for all ACRE voices and radios.
@@ -13,7 +14,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 if (isNil QEGVAR(sys_core,globalVolume)) then {
     nil

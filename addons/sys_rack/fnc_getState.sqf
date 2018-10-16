@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Function for retrieving data from the data interface events
@@ -16,8 +17,7 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["", "", "_eventData", "_rackData"];
 
-HASH_GET(_radioData,_eventData);
+HASH_GET(_rackData,_eventData);

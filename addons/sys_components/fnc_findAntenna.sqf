@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Find all antennas connected to the specified radio.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId"];
 
@@ -53,7 +53,7 @@ private _searchFunction = {
                             };
                             private _objectType = typeOf _componentObject;
                             private _antennaPos = getPosASL _componentObject;
-                            if (!(_objectType isKindOf "CAManBase")) then {
+                            if !(_objectType isKindOf "CAManBase") then {
                                 if (_objectType isKindOf "House") then {
                                     _antennaPos = _antennaPos vectorAdd [0, 0, -((boundingCenter _componentObject) select 2)];
                                     systemChat format ["Antenna Pos %1", _antennaPos];
@@ -63,26 +63,27 @@ private _searchFunction = {
                             };
                             private _antennaDir = vectorDir _componentObject;
                             private _antennaDirUp = vectorUp _componentObject;
-                            if (isArray(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaMemoryPoints")) then {
-                                private _memoryPoints = getArray(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaMemoryPoints");
-                                _memoryPoints = _memoryPoints select (((count _memoryPoints)-1) min _connectorIndex);
-                                _antennaPos = ATLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 0)));
+                            private _configPath = configFile >> "CfgVehicles" >> _objectType;
+                            if (isArray (_configPath >> "acre_antennaMemoryPoints")) then {
+                                private _memoryPoints = getArray (_configPath >> "acre_antennaMemoryPoints");
+                                _memoryPoints = _memoryPoints select (((count _memoryPoints) - 1) min _connectorIndex);
+                                _antennaPos = ATLtoASL (_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 0)));
                             } else {
-                                if (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaPosFnc") != "") then {
-                                    _antennaPos = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaPosFnc")));
+                                if (getText (_configPath >> "acre_antennaPosFnc") != "") then {
+                                    _antennaPos = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText (_configPath >> "acre_antennaPosFnc")));
                                 };
                             };
-                            if (isArray(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaMemoryPointsDir")) then {
-                                private _memoryPoints = getArray(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaMemoryPointsDir");
-                                _memoryPoints = _memoryPoints select (((count _memoryPoints)-1) min _connectorIndex);
+                            if (isArray (_configPath >> "acre_antennaMemoryPointsDir")) then {
+                                private _memoryPoints = getArray (_configPath >> "acre_antennaMemoryPointsDir");
+                                _memoryPoints = _memoryPoints select (((count _memoryPoints) - 1) min _connectorIndex);
                                 _antennaDir = ATLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 0))) vectorFromTo
                                     ATLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 1)));
                                 _antennaDirUp = ATLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 2))) vectorFromTo
                                     ATLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 3)));
 
                             } else {
-                                if (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaDirFnc") != "") then {
-                                    private _antennaDirResults = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText(configFile >> "CfgVehicles" >> _objectType >> "acre_antennaDirFnc")));
+                                if (getText (_configPath >> "acre_antennaDirFnc") != "") then {
+                                    private _antennaDirResults = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText (_configPath >> "acre_antennaDirFnc")));
                                     _antennaDir = _antennaDirResults select 0;
                                     _antennaDirUp = _antennaDirResults select 1;
                                 };
@@ -92,7 +93,7 @@ private _searchFunction = {
                             PUSH(_foundAntennas, _foundAntenna);
                         };
                     } else {
-                        if (!(_connectedComponent in _searchedComponents)) then {
+                        if !(_connectedComponent in _searchedComponents) then {
                             [_connectedComponent] call _searchFunction;
                         };
                     };

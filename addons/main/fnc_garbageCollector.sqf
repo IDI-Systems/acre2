@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * ACRE2 garbage collector. Run as a per frame event handler.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (count ACRE_FAST_HASH_CREATED_HASHES_NEW < ((count ACRE_FAST_HASH_CREATED_HASHES)*0.1)/2) exitWith {};
 // diag_log text format["---------------------------------------------------"];
