@@ -5,7 +5,7 @@
  *
  * - Disabled uses of external radios are:
  *   - Antenna is destroyed.
- *   - Distance between the antenna and the player 10m.
+ *   - Distance between the antenna and the object holding the radio is greater than 10m.
  *   - Antenna is picked up.
  *
  * Arguments:

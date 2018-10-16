@@ -34,12 +34,12 @@ private _actions = [];
     private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
 
     private "_displayName";
-    if (_x in ACRE_ACCESSIBLE_RACK_RADIOS || _x in ACRE_HEARABLE_RACK_RADIOS) then {
+    if (_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}) then {
         private _radioRack = [_x] call EFUNC(sys_rack,getRackFromRadio);
         private _radioClass = [_radioRack] call EFUNC(sys_rack,getRackBaseClassname);
         _displayName = getText (configFile >> "CfgAcreComponents" >> _radioClass >> "name");
     } else {
-        _displayName = getText (_item >> "displayName") + _owner;
+        _displayName = format ["%1%2", getText (_item >> "displayName"), _owner];
     };
 
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
