@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Retrieves the compartment where the specified unit finds itself (driver, turret,...).
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_unit"];
 private _vehicle = vehicle _unit;
@@ -44,7 +44,7 @@ if (_vehicle != _unit) then {
         } else {
             if ((_assignedRole select 0) == "Cargo") then {
                 private _cargoCompartments = getArray (_cfg >> "cargoCompartments");
-                if ((count _cargoCompartments) > 0) then {
+                if !(_cargoCompartments isEqualTo []) then {
                     private _index = -1;
                     // if ((productVersion select 3) < 126064) then {
                         // _index = (count _attenuateCargo)-1; // wait for command to get cargo index

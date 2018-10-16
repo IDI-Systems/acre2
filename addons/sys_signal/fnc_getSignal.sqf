@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Wrapper function for calling the signal calculation (extension).
@@ -16,13 +17,12 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (!isNil QGVAR(customSignalFunc)) exitWith { _this call GVAR(customSignalFunc); };
 
 params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
-private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];
+private _count = (missionNamespace getVariable [_transmitterClass + "_running_count", 0]) max 0;
 if (_count == 0) then {
     private _rxAntennas = [_receiverClass] call EFUNC(sys_components,findAntenna);
     private _txAntennas = [_transmitterClass] call EFUNC(sys_components,findAntenna);

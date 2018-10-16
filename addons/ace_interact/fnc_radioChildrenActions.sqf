@@ -1,10 +1,11 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Generates a list of actions for using a radio in the player's inventory or externally used radios
  *
  * Arguments:
  * 0: Unit with ACRE2 radios <OBJECT>
- * 1: None <TYPE>
+ * 1: Active <BOOL>
  * 2: Array with additional parameters: unique radio ID <ARRAY>
  *
  * Return Value:
@@ -15,10 +16,9 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target","","_params"];
-_params params ["_radio", "", "_pttAssign"];
+_params params ["_radio", "_active", "_pttAssign"];
 
 private _actions = [];
 
@@ -40,7 +40,7 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
         _actions pushBack [_action, [], _target];
     };
 
-    _action = [QGVAR(makeActive), localize LSTRING(setAsActive), "", {[(_this select 2) select 0] call EFUNC(api,setCurrentRadio)}, {!((_this select 2) select 1)}, {},_params] call ace_interact_menu_fnc_createAction;
+    _action = [QGVAR(makeActive), localize LSTRING(setAsActive), "", {[(_this select 2) select 0] call EFUNC(api,setCurrentRadio)}, {!((_this select 2) select 1)}, {}, [_radio, _active]] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 
     // Loudspeakers

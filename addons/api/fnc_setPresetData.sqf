@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the full data set to be utilized for the specified preset name. Improper data will most likely break ACRE on all clients. This function must be called on all clients and the server to work properly.
@@ -15,7 +16,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params ["_radioClass", "_preset", "_presetData"];
 

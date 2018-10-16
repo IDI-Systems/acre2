@@ -11,7 +11,7 @@ class CfgAcreComponents {
                             {"Radio", ACRE_CONNECTOR_CONN_32PIN}
                         };
         defaultComponents[] = {
-                                {0, "ACRE_AT271_38"}
+                                {0, "ACRE_AS1729_38"}
                             };
         class Interfaces {
             class CfgAcreDataInterface {
@@ -21,11 +21,11 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
-                mountRadio                  = QFUNC(vrc110MountRadio);
-                unmountRadio                = QFUNC(vrc110UnmountRadio);
-                mountableRadio              = QFUNC(vrc110MountableRadio);
+                mountRadio                  = QFUNC(vrc64MountRadio);
+                unmountRadio                = QFUNC(vrc64UnmountRadio);
+                mountableRadio              = QFUNC(vrc64MountableRadio);
             };
         };
         class InterfaceClasses {
@@ -57,7 +57,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(vrc110MountRadio);
                 unmountRadio                = QFUNC(vrc110UnmountRadio);
@@ -95,7 +95,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(vrc103MountRadio);
                 unmountRadio                = QFUNC(vrc103UnmountRadio);
@@ -131,7 +131,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(vrc111MountRadio);
                 unmountRadio                = QFUNC(vrc111UnmountRadio);
@@ -167,7 +167,7 @@ class CfgAcreComponents {
 
                 initializeComponent         = QFUNC(initializeRack);
 
-                attachComponent             = QEFUNC(sys_data,noApiSystemFunction);
+                attachComponent             = QFUNC(attachComponent);
                 detachComponent             = QEFUNC(sys_data,noApiSystemFunction);
                 mountRadio                  = QFUNC(sem90MountRadio);
                 unmountRadio                = QFUNC(sem90UnmountRadio);

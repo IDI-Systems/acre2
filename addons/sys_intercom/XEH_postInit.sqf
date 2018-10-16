@@ -24,8 +24,7 @@ if (!hasInterface) exitWith {};
         } else {
             [PTT_ACTION] call FUNC(handlePttKeyPressUp);
         };
-    },
-    [52, [true, false, false]]
+    }
 ] call cba_fnc_addKeybind;
 
 [
@@ -39,8 +38,7 @@ if (!hasInterface) exitWith {};
         } else {
             [BROADCAST_ACTION] call FUNC(handlePttKeyPressUp);
         };
-    },
-    [52, [true, false, false]]
+    }
 ] call cba_fnc_addKeybind;
 
 ["ACRE2", "PreviousIntercom", (localize LSTRING(previousIntercom)), "", { [-1, true] call FUNC(switchIntercomFast) }, [51, [true, false, false]]] call cba_fnc_addKeybind;
@@ -51,8 +49,15 @@ if (!hasInterface) exitWith {};
 // Intercom configuration
 ["vehicle", {
     params ["_player", "_newVehicle"];
-    [_newVehicle, _player] call FUNC(enterVehicle);
-}] call CBA_fnc_addPlayerEventHandler;
+    [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
+}, true] call CBA_fnc_addPlayerEventHandler;
+
+["featureCamera", {
+    params ["_player", "_featureCamera"];
+    if (_featureCamera isEqualTo "") then {
+        [FUNC(enterVehicle), [vehicle _player, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
+    };
+}, true] call CBA_fnc_addPlayerEventHandler;
 
 player addEventHandler ["seatSwitchedMan", {
     params ["_unit1", "_unit2", "_vehicle"];
@@ -63,11 +68,6 @@ player addEventHandler ["seatSwitchedMan", {
     params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED]];
     [_vehicle, _unit, _action, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
 }] call CBA_fnc_addEventHandler;
-
-// Handle the case of starting inside a vehicle
-if (vehicle acre_player != acre_player) then {
-    [vehicle acre_player, acre_player] call FUNC(enterVehicle);
-};
 
 #ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {

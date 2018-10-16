@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 #define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
@@ -251,7 +251,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     [
                         0.0001,  // min number/start default
                         599.9999,  // Max number
-                        8,    // Digit count
+                        7,    // Digit count
                         [ROW_LARGE_3, 0, 1] // Highlighting cursor information
                     ],
                     "pgm_rx_freq"
@@ -273,8 +273,8 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     ],
                     [
                         1,  // min number/start default
-                        599999,  // Max number
-                        6,    // Digit count
+                        599.9999,  // Max number
+                        7,    // Digit count
                         [ROW_LARGE_3, 0, 1] // Highlighting cursor information
                     ],
                     "pgm_tx_freq"

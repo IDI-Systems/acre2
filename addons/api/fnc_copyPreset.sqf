@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Copies all parameters of the source preset to a new destination preset name.
@@ -11,11 +12,10 @@
  * Copy preset successful <BOOLEAN>
  *
  * Example:
- * [["ACRE_PRC152", "default2", "balls"] call acre_api_fnc_copyPreset;E
+ * ["ACRE_PRC152", "default2", "balls"] call acre_api_fnc_copyPreset
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params ["_radioClass", "_srcPresetName", "_dstPresetName"];
 

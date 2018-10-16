@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the return of the current plugin version from TeamSpeak. Displays messages to the player if any of the versions do not match.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 // for testing below...
 GVAR(pluginVersion) = _this select 0;
 

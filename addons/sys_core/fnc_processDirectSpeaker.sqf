@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calculates the information required by TeamSpeak for a direct speech speaker.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private ["_emitterPos", "_emitterDir"];
 params ["_unit"];
@@ -25,11 +25,11 @@ private _isIntercomAttenuate = false;
 private _directVolume = GVAR(globalVolume);
 private _speakingType = "d";
 
-if (_id in ACRE_SPECTATORS_LIST && ACRE_IS_SPECTATOR) then {
+if (_id in ACRE_SPECTATORS_LIST && {ACRE_IS_SPECTATOR}) then {
     _bothSpectating = true;
 } else {
     private _attenuate = [_unit] call EFUNC(sys_attenuate,getUnitAttenuate);
-    _directVolume = GVAR(globalVolume) * (1-_attenuate);
+    _directVolume = GVAR(globalVolume) * (1 - _attenuate);
     _isIntercomAttenuate = [_unit] call EFUNC(sys_attenuate,isIntercomAttenuate);
 };
 
@@ -57,7 +57,7 @@ if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
 
 private _emitterHeight = _emitterPos param [2, 1];
 
-if (GVAR(isDeaf) || (_unit getVariable [QGVAR(isDisabled), false]) || (ACRE_LISTENER_DIVE == 1) || _emitterHeight < -0.2) then {
+if (GVAR(isDeaf) || {_unit getVariable [QGVAR(isDisabled), false]} || {ACRE_LISTENER_DIVE == 1} || {_emitterHeight < -0.2}) then {
     _directVolume = 0.0;
 };
 if (_isIntercomAttenuate) then {

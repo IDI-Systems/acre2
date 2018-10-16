@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the intercom connection status of the vehicle seat the unit is in.
@@ -19,7 +20,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_intercomNetwork", "_intercomFunctionality", "_value", ["_varName", ""]];
 
@@ -45,13 +45,12 @@ switch (_intercomFunctionality) do {
     case INTERCOM_STATIONSTATUS_CONNECTION: {
         if !((_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_FORCEDCONNECTION) then {
             if ((_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_LIMITED) then {
-                _changed = [_vehicle, _intercomNetwork, _value] call FUNC(handleLimitedConnection);
+                _changed = [_vehicle, _intercomNetwork, _value, _oldValue] call FUNC(handleLimitedConnection);
             } else {
                 _changed = true;
             };
 
             if (_changed) then {
-                private _intercomDisplayName = ((_vehicle getVariable [QGVAR(intercomNames), []]) select _intercomNetwork) select 1;
                 if (_value > INTERCOM_DISCONNECTED) then {
                     _intercomStatus set [STATION_INTERCOM_UNIT_INDEX, _unit];
                 } else {

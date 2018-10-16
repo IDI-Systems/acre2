@@ -5,15 +5,20 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 ["vehicle", {
     params ["_player", "_newVehicle"];
-    [_newVehicle, _player] call FUNC(enterVehicle);
+    [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 }] call CBA_fnc_addPlayerEventHandler;
 
-// Handle the case of starting inside a vehicle
+["featureCamera", {
+    params ["_player", "_featureCamera"];
+    if (_featureCamera isEqualTo "") then {
+        [FUNC(enterVehicle), [vehicle _player, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
+    };
+}, true] call CBA_fnc_addPlayerEventHandler;
+
+// Handle the case of starting inside a vehicle. addPlayerEventhandler retrospectively would not work
+// when initialising the racks since we have to execute it once radios are being initialised
 if (vehicle acre_player != acre_player) then {
-    [{
-        params ["_vehicle", "_player"];
-        [_vehicle, _player] call FUNC(enterVehicle)
-    }, [vehicle acre_player, acre_player]] call CBA_fnc_execNextFrame;
+    [FUNC(enterVehicle), [vehicle acre_player, acre_player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 };
 
 ["LandVehicle", "init", FUNC(initActionVehicle), nil, nil, true] call CBA_fnc_addClassEventHandler;
@@ -112,7 +117,7 @@ if (vehicle acre_player != acre_player) then {
 [QGVAR(mountRackRadio), {
     params ["_rackId", "_baseRadio"];
 
-    if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
+    if !([_rackId] call EFUNC(sys_radio,radioExists)) exitWith {
         [QGVAR(logOnServer), format ["Non existant rack ID provided: %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
@@ -127,7 +132,7 @@ if (vehicle acre_player != acre_player) then {
         false
     };
 
-    if (!([_rackId] call FUNC(isRadioRemovable))) exitWith {
+    if !([_rackId] call FUNC(isRadioRemovable)) exitWith {
         [QGVAR(logOnServer), format ["Radio cannot be mounted in rack %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
@@ -151,17 +156,17 @@ if (vehicle acre_player != acre_player) then {
 [QGVAR(unmountRackRadio), {
     params ["_rackId", "_radioId"];
 
-    if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
+    if !([_rackId] call EFUNC(sys_radio,radioExists)) exitWith {
         [QGVAR(logOnServer), format ["Non existant rack ID provided: %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
-    if (!([_rackId] call FUNC(isRadioRemovable))) exitWith {
+    if !([_rackId] call FUNC(isRadioRemovable)) exitWith {
         [QGVAR(logOnServer), format ["Radio cannot be dismounted from rack %1", _rackId]] call CBA_fnc_serverEvent;
         false
     };
 
-    if (!([_radioId] call EFUNC(sys_radio,radioExists))) exitWith {
+    if !([_radioId] call EFUNC(sys_radio,radioExists)) exitWith {
         [QGVAR(logOnServer), format ["Non existant radio ID provided: %1", _radioId]] call CBA_fnc_serverEvent;
         false
     };

@@ -14,8 +14,9 @@
  * Public: No
  */
 
- private ["_forwardV", "_upV"];
  params ["_obj"];
+
+ private ["_forwardV", "_upV"];
 
  //@TODO: This is a hack fix for vehicles having funky up vectors when people are inside...
  if (vehicle _obj == _obj) then {

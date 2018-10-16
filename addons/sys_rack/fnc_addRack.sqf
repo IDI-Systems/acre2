@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This will add a rack to a vehicle.
@@ -22,7 +23,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_rackClassname", "_rackName", "_rackShortName", ["_isRadioRemovable", true], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio",""], ["_defaultComponents", []], ["_intercoms",[]], ["_rackPosition", [0, 0, 0]]];
 

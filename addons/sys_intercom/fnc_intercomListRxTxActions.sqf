@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Generates a list of modes for the intercom network of a vehicle: receive, transmit or receive and transmit.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target", "_player", "_args"];
 _args params ["_intercomNetwork", "_functionality"];

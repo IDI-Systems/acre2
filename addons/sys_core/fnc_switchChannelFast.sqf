@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the channel switching keybind.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_dir"];
 
@@ -23,8 +23,9 @@ private _radioId = ACRE_ACTIVE_RADIO;
 private _radioType = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 private _typeName = getText (configFile >> "CfgAcreComponents" >> _radioType >> "name");
 private _isManpack = getNumber (configFile >> "CfgAcreComponents" >> _radioType >> "isPackRadio");
+private _isRackRadio = (vehicle acre_player != acre_player) && {_radioId in (([vehicle acre_player] call EFUNC(api,getVehicleRacks)) apply {[_x] call EFUNC(api,getMountedRackRadio)})} && {[_radioId, acre_player] call EFUNC(sys_rack,isRadioAccessible)};
 
-if (_isManpack == 0) then {
+if (_isManpack == 0 || {_isRackRadio}) then {
     private _channel = [_radioId] call EFUNC(api,getRadioChannel);
 
     switch (_radioType) do {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Retrieves a list of unique radio IDs that can be accessed by a player. This includes radios in the inventory that are not being
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _radioList = [];
 

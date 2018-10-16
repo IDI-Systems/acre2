@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Parses the intercom and racks configuration arrays and converts it to a usable format.
@@ -37,7 +38,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_configArray"];
 
@@ -76,7 +76,11 @@ private _processedArray = [];
                 {
                     private _role = toLower (_x select 1);
                     if (_role in ["cargo", "turret"]) then {
-                        _processedArray pushBackUnique (format ["%1_%2", _role, _x select 2]);
+                        if (_role isEqualTo "cargo") then {
+                            _processedArray pushBackUnique (format ["%1_%2", _role, _x select 2]);
+                        } else {
+                            _processedArray pushBackUnique (format ["%1_%2", _role, _x select 3]);
+                        };
                     } else {
                         _processedArray pushBackUnique _role;
                     };

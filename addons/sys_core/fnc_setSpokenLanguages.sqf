@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the spoken languages of the local player.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _list = _this;
 private _languageIds = _list apply {[_x] call FUNC(getLanguageId)};

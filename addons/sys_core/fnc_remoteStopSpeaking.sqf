@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the event of other (remote) players stopping speaking.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_speakingId","_netId"];
 _speakingId = parseNumber _speakingId;
@@ -27,6 +27,14 @@ _speakingId = parseNumber _speakingId;
         _unit setRandomLip false;
         REM(GVAR(speakers),_unit);
         private _radioId = _unit getVariable [QGVAR(currentSpeakingRadio), ""];
+
+        // Reason: When two players are using a rack simultaneously. It can happen when transmitting through a rack and quickly receiving a
+        // transmission, that the other users do not receive it since ACRE_BROADCASTING_RADIOID does not reset immediately. Adding these lines
+        // ensures that the ACRE_BROADCASTING_RADIOID is reset.
+        if (_radioId == ACRE_BROADCASTING_RADIOID) then {
+            ACRE_BROADCASTING_RADIOID = "";
+        };
+
         //if (ACRE_BROADCASTING_RADIOID != _radioId) then {
             if (_radioId != "") then {
                 // Handle rack radios that are simultaneously in use.
@@ -41,7 +49,7 @@ _speakingId = parseNumber _speakingId;
                     missionNamespace setVariable [_radioId + "_best_px", 0];
                     missionNamespace setVariable [_radioId + "_best_ant", ""];
 
-                    if (_unit != acre_player && ACRE_SIGNAL_DEBUGGING > 0) then {
+                    if (_unit != acre_player && {ACRE_SIGNAL_DEBUGGING > 0}) then {
                         private _signalTrace = missionNamespace getVariable [_radioId + "_signal_trace", []];
                         private _signalStartTime = missionNamespace getVariable [_radioId + "_signal_startTime", diag_tickTime];
                         INFO_5("ACRE TX from %1 (on radio %2, distance at end: %3 m), duration %4s: %5",name _unit,_radioId,_unit distance acre_player,diag_tickTime-_signalStartTime,_signalTrace);
@@ -50,7 +58,7 @@ _speakingId = parseNumber _speakingId;
                     private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + GVAR(nearRadios), false] call EFUNC(sys_modes,checkAvailability);
                     _okRadios = (_okRadios select 0) select 1;
                     //_okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
-                    if ((count _okRadios) > 0) then {
+                    if !(_okRadios isEqualTo []) then {
                         {
                             [_x, "handleEndTransmission", [_radioId]] call EFUNC(sys_data,transEvent);
                         } forEach _okRadios;

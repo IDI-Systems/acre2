@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialises all intercoms in a vehicle, as well as the infantry phone.
@@ -13,16 +14,15 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle"];
 
 private _classname = typeOf _vehicle;
 
-private _intercoms = configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms";
+private _intercoms = configProperties [configFile >> "CfgVehicles" >> _classname >> "AcreIntercoms", "isClass _x", true];
 
 if !(_intercoms isEqualTo []) then {
-    [_vehicle] call FUNC(configIntercom);
+    [_vehicle, _intercoms] call FUNC(configIntercom);
 
     if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")}) then {
         [_vehicle] call FUNC(intercomAction);

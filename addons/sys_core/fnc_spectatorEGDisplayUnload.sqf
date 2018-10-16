@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Disables spectator mode on Vanilla Spectator (EG Spectator) display unload.
@@ -13,6 +14,5 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 [] call FUNC(spectatorOff);

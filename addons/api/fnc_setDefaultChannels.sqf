@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Deprecated
  */
-#include "script_component.hpp"
 
 params ["_baseClass","_presetName"];
 

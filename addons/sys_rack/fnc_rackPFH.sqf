@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Per frame execution. Sets if player is inside a vehicle and manages the access to rack radios.
@@ -6,7 +7,7 @@
  * 0: Array of arguments <ARRAY>
  *  0: Player unit <OBJECT>
  *  1: Vehicle with intercom <OBJECT>
- * 1: PFH unique identifier <NUMBER>
+ * 1: PFH unique identifier <NUMBER> (unused)
  *
  * Return Value:
  * None
@@ -16,9 +17,8 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_param", "_handle"];
+params ["_param", ""];
 
 _param params ["_player", "_vehicle"];
 
@@ -50,7 +50,9 @@ private _remove = [];
     if (count ([_rack] call FUNC(getWiredIntercoms)) > 0 && _isRackHearable) then {
         private _functionality = [_x, _vehicle, _player, _rack] call EFUNC(sys_intercom,getRackRxTxCapabilities);
 
-        if (_functionality == RACK_NO_MONITOR) then {_remove pushBackUnique _x;};
+        if (_functionality == RACK_NO_MONITOR) then {
+            _remove pushBackUnique _x;
+        };
     };
 
     if (!(_isRackAccessible || _isRackHearable)) then {_remove pushBackUnique _x; };
@@ -61,11 +63,16 @@ private _remove = [];
         ACRE_ACCESSIBLE_RACK_RADIOS deleteAt (ACRE_ACCESSIBLE_RACK_RADIOS find _x);
     } else {
         ACRE_HEARABLE_RACK_RADIOS deleteAt (ACRE_HEARABLE_RACK_RADIOS find _x);
+        [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
     };
 
     // Handle active radio
     [_x] call EFUNC(sys_radio,stopUsingRadio);
 } forEach _remove;
+
+if !(_remove isEqualTo []) then {
+    [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
+};
 
 if ((_player == vehicle _player) && (ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []) && (ACRE_HEARABLE_RACK_RADIOS isEqualTo [])) then {
     [GVAR(rackPFH)] call CBA_fnc_removePerFrameHandler;

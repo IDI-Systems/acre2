@@ -1,5 +1,5 @@
-//#define DEBUG_MODE_FULL
 #include "script_component.hpp"
+//#define DEBUG_MODE_FULL
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 #define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
@@ -246,7 +246,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         0.0001,  // min number/start default
                         599.9999,  // Max number
-                        8,    // Digit count
+                        7,    // Digit count
                         [ROW_LARGE_3, 0, 1] // Highlighting cursor information
                     ],
                     "pgm_rx_freq"
@@ -329,8 +329,8 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         1,  // min number/start default
-                        599999,  // Max number
-                        6,    // Digit count
+                        599.9999,  // Max number
+                        7,    // Digit count
                         [ROW_LARGE_3, 0, 1] // Highlighting cursor information
                     ],
                     "pgm_tx_freq"

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Per frame execution. Sets if player is inside a vehicle and qualifies as vehicle crew or passenger.
@@ -7,7 +8,7 @@
  * 0: Array of arguments <ARRAY>
  *  0: Player unit <OBJECT>
  *  1: Vehicle with intercom <OBJECT>
- * 1: PFH unique identifier <NUMBER>
+ * 1: PFH unique identifier <NUMBER> (unused)
  *
  * Return Value:
  * None
@@ -17,9 +18,8 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_param", "_handle"];
+params ["_param", ""];
 
 _param params ["_player", "_vehicle"];
 
@@ -54,7 +54,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     // Get broadcasting variables
     ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _i) params ["_isBroadcasting", "_broadcastingUnit"];
 
-    if (_connectionStatus == INTERCOM_RX_ONLY || _connectionStatus == INTERCOM_RX_AND_TX) then {
+    if (_connectionStatus == INTERCOM_RX_ONLY || {_connectionStatus == INTERCOM_RX_AND_TX}) then {
         if (_isBroadcasting) then {
             // Only the unit that is broadcasting will be on intercom. The rest of the units will be temporarily set to intercom
             _intercomUnits pushBack _broadcastingUnit;
@@ -69,12 +69,12 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
                 if (!isNull _unit) then {
                     private _voiceActivation = (_stationConfig select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_VOICEACTIVATION;
                     // If the unit is not pressing the key to talk to intercom, treat it like not transmitting.
-                    if (!_voiceActivation && {_intercomConfig == INTERCOM_TX_ONLY || _intercomConfig == INTERCOM_RX_AND_TX} && {_unit getVariable [QGVAR(intercomPTT), false]}) then {
+                    if (!_voiceActivation && {_intercomConfig == INTERCOM_TX_ONLY || {_intercomConfig == INTERCOM_RX_AND_TX}} && {!(_unit getVariable [QGVAR(intercomPTT), false])}) then {
                         _intercomConfig = INTERCOM_RX_ONLY;
                     };
 
                     // Add only those units with seat configuration with transmit capabilities
-                    if (_intercomConfig == INTERCOM_RX_AND_TX || _intercomConfig == INTERCOM_TX_ONLY) then {
+                    if (_intercomConfig == INTERCOM_RX_AND_TX || {_intercomConfig == INTERCOM_TX_ONLY}) then {
                         _intercomUnits pushBack (_stationConfig select STATION_INTERCOM_UNIT_INDEX);
                     };
                 };

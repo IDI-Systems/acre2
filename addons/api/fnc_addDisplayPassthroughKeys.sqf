@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Adds key handling compatibility to a custom display, which otherwise does not pass through CBA keybinds.
@@ -14,7 +15,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 if (!hasInterface) exitWith {};
 
