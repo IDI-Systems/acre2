@@ -19,17 +19,18 @@
  */
 #include "script_component.hpp"
 
-GVAR(hintTitle) = _this select 0;
-GVAR(hintLine1) = _this select 1;
-GVAR(hintLine2) = _this select 2;
-private _hintDuration = -1;
-if ((count _this) > 3) then {
-    _hintDuration = _this select 3;
-};
-GVAR(hintColor) = ACRE_NOTIFICATION_YELLOW;
-if ((count _this) > 4) then {
-    GVAR(hintColor) = _this select 4;
-};
+params [
+    "_hintTitle",
+    "_hintLine1",
+    "_hintLine2",
+    ["_hintDuration", -1],
+    ["_hintColor",[1, 0.8, 0, 1]]
+];
+
+GVAR(hintTitle) = _hintTitle;
+GVAR(hintLine1) = _hintLine1;
+GVAR(hintLine2) = _hintLine2;
+GVAR(hintColor) = _hintColor;
 
 GVAR(hintBufferPointer) = (GVAR(hintBuffer) find 0) max 0; 
 GVAR(hintBuffer) set [GVAR(hintBufferPointer), 1];
