@@ -13,7 +13,7 @@
 
 RPC_FUNCTION(startIntercomSpeaking) {
 
-    CEngine::getInstance()->getClient()->localStartSpeaking(ACRE_SPEAKING_RADIO);
+    CEngine::getInstance()->getClient()->localStartSpeaking(ACRE_SPEAKING_INTERCOM);
 
     return ACRE_OK;
 }

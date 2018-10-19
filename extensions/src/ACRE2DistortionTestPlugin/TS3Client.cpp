@@ -180,11 +180,11 @@ ACRE_RESULT CTS3Client::localStopSpeaking(const ACRE_SPEAKING_TYPE speakingType)
             this->setRadioPTTDown(false);
             break;
         case ACRE_SPEAKING_INTERCOM:
-            //this->setIntercomPTTDown(false);
+            this->setIntercomPTTDown(false);
             break;
         case ACRE_SPEAKING_UNKNOWN:
             this->setRadioPTTDown(false);
-            // this->setIntercomPTTDown(false);
+            this->setIntercomPTTDown(false);
             break;
         default:
             break;
