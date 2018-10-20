@@ -138,28 +138,26 @@ ACRE_RESULT CTS3Client::localStartSpeaking(const ACRE_SPEAKING_TYPE speakingType
 ACRE_RESULT CTS3Client::localStartSpeaking(const ACRE_SPEAKING_TYPE speakingType, std::string radioId) {
     bool stopDirectSpeaking = false;
 
+    //LOG(INFO) << "Local start speaking" << speakingType;
 
-    if (speakingType == ACRE_SPEAKING_RADIO) {
-        this->setRadioPTTDown(true);
-        this->setOnRadio(true);
-        if (!this->getVAD()) {
-            if (!this->getDirectFirst()) {
-                this->microphoneOpen(true);
-            } else {
-                stopDirectSpeaking = true;
-            }
+    if (speakingType == ACRE_SPEAKING_RADIO || speakingType == ACRE_SPEAKING_INTERCOM) {
+        if (speakingType == ACRE_SPEAKING_RADIO) {
+            this->setRadioPTTDown(true);
+            this->setOnRadio(true);
         } else {
-            if (this->getTsSpeakingState() == STATUS_TALKING) {
-                stopDirectSpeaking = true;
-            }
+            this->setIntercomPTTDown(true);
         }
-    } else if (speakingType == ACRE_SPEAKING_INTERCOM) {
-        this->setIntercomPTTDown(true);
         if (!this->getVAD()) {
-            this->microphoneOpen(true);
-        } else {
-            if (this->getTsSpeakingState() == STATUS_TALKING) {
-                stopDirectSpeaking = true;
+            if (!this->getVAD()) {
+                if (!this->getDirectFirst()) {
+                    this->microphoneOpen(true);
+                } else {
+                    stopDirectSpeaking = true;
+                }
+            } else {
+                if (this->getTsSpeakingState() == STATUS_TALKING) {
+                    stopDirectSpeaking = true;
+                }
             }
         }
     }
@@ -207,6 +205,16 @@ ACRE_RESULT CTS3Client::localStopSpeaking(const ACRE_SPEAKING_TYPE speakingType)
             if (this->getTsSpeakingState() == STATUS_TALKING) {
                 resendDirectSpeaking = true;
             }
+        }
+    } else if (speakingType == ACRE_SPEAKING_INTERCOM) {
+        if (!this->getVAD()) {
+            if (!((CTS3Client *) (CEngine::getInstance()->getClient()))->getIntercomPTTDown()) {
+                this->microphoneOpen(false);
+            } else {
+                resendDirectSpeaking = true;
+            }
+        } else if (this->getTsSpeakingState() == STATUS_TALKING) {
+            resendDirectSpeaking = true;
         }
     }
 
