@@ -16,6 +16,7 @@ PREP(isIntercomAvailable);
 PREP(isInIntercom);
 PREP(noApiFunction);
 PREP(seatSwitched);
+PREP(handleAccent);
 PREP(handleBroadcasting);
 PREP(handleLimitedConnection);
 PREP(handleIntercomActivation);
