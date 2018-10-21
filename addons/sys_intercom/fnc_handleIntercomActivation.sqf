@@ -24,7 +24,7 @@ _unit setVariable [QGVAR(intercomPTT), _voiceActivation, true];
 GVAR(intercomPttKey) = _voiceActivation;
 
 if (_voiceActivation) then {
-    systemChat format ["Start speaking intercom"];
+    ["startIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 } else {
-    systemChat format ["Stop speaking intercom"];
+    ["stopIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 };

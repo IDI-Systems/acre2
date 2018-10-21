@@ -29,10 +29,8 @@ private _changes = false;
     if ((_intercomNetwork == _forEachIndex || (_intercomNetwork == ALL_INTERCOMS)) && {_canBroadcast}) then {
         if (_isBroadcasting) then {
             _broadcastConfig set [_forEachIndex, [_isBroadcasting, _unit]];
-            ["startIntercomSpeaking"] call EFUNC(sys_rpc,callRemoteProcedure);
         } else {
             _broadcastConfig set [_forEachIndex, [_isBroadcasting, objNull]];
-            ["stopIntercomSpeaking"] call EFUNC(sys_rpc,callRemoteProcedure);
         };
         _changes = true;
     };
@@ -44,4 +42,10 @@ private _changes = false;
 if (_changes) then {
     [_vehicle, _unit] call FUNC(updateVehicleInfoText);
     _vehicle setVariable [QGVAR(broadcasting), _broadcastConfig, true];
+
+    if (_isBroadcasting) then {
+        ["startIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+    } else {
+        ["stopIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+    };
 };
