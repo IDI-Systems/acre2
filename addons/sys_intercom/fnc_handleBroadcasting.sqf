@@ -38,7 +38,9 @@ private _changes = false;
     };
 } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
 
-// Only broadcast if changes have been made
+// Only broadcast if changes have been made.
+// TODO: Remove synchronisation once intercom system has been converted to components and unique IDs.
+//       It will help in reduce the bandwith, since information will be exchanged through the TS plugin.
 if (_changes) then {
     [_vehicle, _unit] call FUNC(updateVehicleInfoText);
     _vehicle setVariable [QGVAR(broadcasting), _broadcastConfig, true];
