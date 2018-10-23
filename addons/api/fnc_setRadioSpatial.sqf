@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets what spatialization zone the specified radio ID should be in. “LEFT”, “RIGHT” or “CENTER”.
@@ -14,7 +15,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params [
     ["_radio", "", [""]],

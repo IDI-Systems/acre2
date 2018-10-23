@@ -1,8 +1,11 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * This function generically sets up a mission so that each side will have their own radios as well as speak their own separate languages. Further API calls will be needed to allow them to speak to each other, or configure specific intermingling channels.
- * This function should allow for the most basic and common TVT and gameplay setups; allowing for different radios that do not interfere, as well as different languages.
- * Call this on all clients.
+ * This function generically sets up a mission so that each side will have their own radios as well as
+ * speak their own separate languages. Further API calls will be needed to allow them to speak to each
+ * other, or configure specific intermingling channels.
+ * This function should allow for the most basic and common TVT and gameplay setups; allowing for different
+ * radios that do not interfere, as well as different languages. Call this on all clients.
  *
  * Arguments:
  * 0: Babel - true to set up a unique babel language for each side. <BOOLEAN>
@@ -16,11 +19,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
-
-// This function should setup the appropriate default babel as well as radio presets per side
-// [ setupBabel, setupPerSideRadios] call acre_api_fnc_setupMission;
-// [ true/false, true/false]
 
 params [
     ["_setupBabel", true, [true]],
@@ -31,15 +29,12 @@ if ((typeName _setupBabel) != "BOOL") exitWith { false };
 if ((typeName _setupPresets) != "BOOL") exitWith { false };
 
 if (_setupbabel) then {
-    [ true ] call FUNC(babelSetupMission);
+    [true] call FUNC(babelSetupMission);
 };
 
-if !(_setupPresets) exitWith {};
-if !(hasInterface) exitWith {};
+if !(_setupPresets && hasInterface) exitWith {};
 
-[] spawn {
-    waitUntil { !isNull acre_player };
-
+[{!isNull acre_player}, {
     switch (side acre_player) do {
         case east: {
             ["ACRE_PRC343", "default2" ] call FUNC(setPreset);
@@ -74,4 +69,4 @@ if !(hasInterface) exitWith {};
             ["ACRE_PRC77", "default" ] call FUNC(setPreset);
         };
     };
-};
+}] call CBA_fnc_waitUntilAndExecute;

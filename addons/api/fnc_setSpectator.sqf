@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Pass true or false to set the unit as a “spectator” or not. This will override current alive status, and join the player to dead channel regardless.
@@ -13,7 +14,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 if (!hasInterface) exitWith {false};
 

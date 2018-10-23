@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the selectable voice curve scale. This can be used to make the local player's voice travel further or lesser. Typically 0.1 is used for whispering and 1.3 is used for shouting.
@@ -13,7 +14,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params [
     ["_curveScale", 0, [0]]
