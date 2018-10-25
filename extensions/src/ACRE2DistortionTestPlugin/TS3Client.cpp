@@ -86,7 +86,7 @@ ACRE_RESULT CTS3Client::start(const ACRE_ID id_) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::exPersistVersion(void) {
+ACRE_RESULT CTS3Client::exPersistVersion( void ) {
 
     ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, ACRE_VERSION_METADATA);
     ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
@@ -99,7 +99,7 @@ ACRE_RESULT CTS3Client::exPersistVersion(void) {
     while (this->getState() == ACRE_STATE_RUNNING && CEngine::getInstance()->getExternalServer()) {
 
         delta = (clock() / CLOCKS_PER_SEC) - run;
-        if (delta > (PERSIST_VERSION_TIMER / 1000)) {
+        if (delta > (PERSIST_VERSION_TIMER / 1000) ) {
             char selfVariableBuffer[4096];
             if (CEngine::getInstance()->getGameServer()->getConnected()) {
                 _snprintf_s(selfVariableBuffer, 4094, "%s\nArma Connected: Yes", ACRE_VERSION_METADATA);
@@ -139,11 +139,11 @@ ACRE_RESULT CTS3Client::localStartSpeaking(const ACRE_SPEAKING_TYPE speakingType
     bool stopDirectSpeaking = false;
 
     /* Open or close the microphone. If the microphone is still active, stop direct speaking before
-    * starting the new PTT method: radio speaking. In theory this would not be needed for intercom since
-    * at the moment it is a direct speak with audio effect. However, it is planned to have intercoms converted
-    * to components and unique IDs.
-    */
-    if (speakingType_ == ACRE_SPEAKING_RADIO || speakingType_ == ACRE_SPEAKING_INTERCOM) {
+     * starting the new PTT method: radio speaking. In theory this would not be needed for intercom since
+     * at the moment it is a direct speak with audio effect. However, it is planned to have intercoms converted
+     * to components and unique IDs.
+     */
+    if ((speakingType_ == ACRE_SPEAKING_RADIO) || (speakingType_ == ACRE_SPEAKING_INTERCOM)) {
         if (speakingType_ == ACRE_SPEAKING_RADIO) {
             this->setRadioPTTDown(true);
             this->setOnRadio(true);
@@ -190,7 +190,7 @@ ACRE_RESULT CTS3Client::localStopSpeaking(const ACRE_SPEAKING_TYPE speakingType_
 
     if (this->getOnRadio()) {
         if (!this->getVAD()) {
-            if (speakingType_ == ACRE_SPEAKING_RADIO && this->getDirectFirst()) {
+            if ((speakingType_ == ACRE_SPEAKING_RADIO) && this->getDirectFirst()) {
                 this->setOnRadio(false);
                 resendDirectSpeaking = true;
             } else {
@@ -214,7 +214,7 @@ ACRE_RESULT CTS3Client::localStopSpeaking(const ACRE_SPEAKING_TYPE speakingType_
                 resendDirectSpeaking = true;
             }
         } else if (this->getTsSpeakingState() == STATUS_TALKING) {
-            resendDirectSpeaking = true;
+             resendDirectSpeaking = true;
         }
     }
 
@@ -253,7 +253,7 @@ ACRE_RESULT CTS3Client::enableMicrophone(const bool status_) {
             }
         }
         res = ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
-        if (!(res == ERROR_ok || res == ERROR_ok_no_update)) {
+        if (!((res == ERROR_ok) || (res == ERROR_ok_no_update))) {
             char* errorMsg;
             if (ts3Functions.getErrorMessage(res, &errorMsg) == ERROR_ok) {
                 LOG("STOP TALKING: Error flushing after toggling microphone muted: %s\n", errorMsg);
@@ -308,27 +308,27 @@ ACRE_RESULT CTS3Client::playSound(std::string path_, ACRE_VECTOR position_, cons
     }
 
     // create a volume ranged from -40 to 0dB change
-    _snprintf_s(soundpackDb, 32, "%f", (-40.0f + (40.0f * volume_)));
+    _snprintf_s(soundpackDb, 32, "%f", (-40.0f + (40.0f * volume_) ) );
     // change the soundpack volume for this squawks volume
     ts3Functions.setPlaybackConfigValue(ts3Functions.getCurrentServerConnectionHandlerID(),
-                                        "volume_factor_wave",
-                                        soundpackDb);
+        "volume_factor_wave",
+        soundpackDb);
 
-    TS3_VECTOR vector = { position_.x, position_.z, position_.y };
+    TS3_VECTOR vector = {position_.x, position_.z, position_.y};
 
     TRACE("HIT [%f,%f,%f]", vector.x, vector.z, vector.y);
     uint64_t playHandle;
     ret = ts3Functions.playWaveFileHandle(ts3Functions.getCurrentServerConnectionHandlerID(),
-                                          path_.c_str(),
-                                          looping_,
-                                          &playHandle);
+        path_.c_str(),
+        looping_,
+        &playHandle);
     ret = ts3Functions.set3DWaveAttributes(ts3Functions.getCurrentServerConnectionHandlerID(),
-                                           playHandle,
-                                           &vector);
+        playHandle,
+        &vector);
     return ACRE_OK;
 }
 
-std::string CTS3Client::getUniqueId() {
+std::string CTS3Client::getUniqueId( ) {
     char *uniqueId;
     std::string serverUniqueId = "";
 
@@ -358,7 +358,7 @@ std::string CTS3Client::getConfigFilePath(void) {
     return tempFolder;
 }
 
-std::string CTS3Client::getTempFilePath(void) {
+std::string CTS3Client::getTempFilePath( void ) {
     char tempPath[MAX_PATH - 14];
     GetTempPathA(sizeof(tempPath), tempPath);
     std::string tempFolder = std::string(tempPath);
@@ -403,7 +403,7 @@ ACRE_RESULT CTS3Client::microphoneOpen(bool status_) {
     return ACRE_OK;
 }
 
-ACRE_RESULT CTS3Client::unMuteAll(void) {
+ACRE_RESULT CTS3Client::unMuteAll( void ) {
     anyID clientId;
     anyID *clientList;
 
@@ -411,45 +411,45 @@ ACRE_RESULT CTS3Client::unMuteAll(void) {
     uint32_t total_intentional_runs = 0;
 
     //for (total_intentional_runs = 0; total_intentional_runs < 3; total_intentional_runs++) {
-    uint32_t res = ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId);
-    if (res == ERROR_ok) {
+        uint32_t res = ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId);
+        if (res == ERROR_ok) {
 
-        res = ERROR_undefined;
-        for (total_retries = 0; total_retries < 5 && res != ERROR_ok; total_retries++) {
+            res = ERROR_undefined;
+            for (total_retries = 0; (total_retries < 5) && (res != ERROR_ok); total_retries++) {
+                res = ts3Functions.getClientList(ts3Functions.getCurrentServerConnectionHandlerID(), &clientList);
+                if (res == ERROR_ok) {
+                    res = ts3Functions.requestUnmuteClients(ts3Functions.getCurrentServerConnectionHandlerID(), clientList, NULL);
+                    //if (res != ERROR_ok) {
+                    //    Sleep(500 * total_retries);
+                    //}
+                    ts3Functions.freeMemory(clientList);
+                }
+            }
+
+            /*
+            /*    - This was the alternative method originally, but it was hitting the spam threshold */
+            /* Disable this method
             res = ts3Functions.getClientList(ts3Functions.getCurrentServerConnectionHandlerID(), &clientList);
             if (res == ERROR_ok) {
-                res = ts3Functions.requestUnmuteClients(ts3Functions.getCurrentServerConnectionHandlerID(), clientList, NULL);
-                //if (res != ERROR_ok) {
-                //    Sleep(500 * total_retries);
-                //}
+                for (x=0;clientList[x]!=0 && total_retries < 20;x++) {
+                    anyID tempList[2];
+                    uint32_t tries_on_client;
+
+                    tempList[0] = (anyID)clientList[x];
+                    tempList[1] = 0x0000;
+
+                    res = ts3Functions.requestUnmuteClients(ts3Functions.getCurrentServerConnectionHandlerID(), clientList, NULL);
+                    for (tries_on_client = 0; tries_on_client < 5 && total_retries < 20 && res != ERROR_ok; tries_on_client++, total_retries++) {
+                            res = ts3Functions.requestUnmuteClients(ts3Functions.getCurrentServerConnectionHandlerID(), tempList, NULL);
+                            if (res != ERROR_ok) {
+                                Sleep(500 * tries_on_client);
+                            }
+                    }
+                }
                 ts3Functions.freeMemory(clientList);
             }
+            */
         }
-
-        /*
-        /*    - This was the alternative method originally, but it was hitting the spam threshold */
-        /* Disable this method
-        res = ts3Functions.getClientList(ts3Functions.getCurrentServerConnectionHandlerID(), &clientList);
-        if (res == ERROR_ok) {
-        for (x=0;clientList[x]!=0 && total_retries < 20;x++) {
-        anyID tempList[2];
-        uint32_t tries_on_client;
-
-        tempList[0] = (anyID)clientList[x];
-        tempList[1] = 0x0000;
-
-        res = ts3Functions.requestUnmuteClients(ts3Functions.getCurrentServerConnectionHandlerID(), clientList, NULL);
-        for (tries_on_client = 0; tries_on_client < 5 && total_retries < 20 && res != ERROR_ok; tries_on_client++, total_retries++) {
-        res = ts3Functions.requestUnmuteClients(ts3Functions.getCurrentServerConnectionHandlerID(), tempList, NULL);
-        if (res != ERROR_ok) {
-        Sleep(500 * tries_on_client);
-        }
-        }
-        }
-        ts3Functions.freeMemory(clientList);
-        }
-        */
-    }
     //    Sleep(500);
     //}
     return ACRE_OK;
@@ -467,7 +467,7 @@ ACRE_RESULT CTS3Client::moveToServerTS3Channel() {
             }
 
             const uint64_t channelId = findChannelByNames(details);
-            if (channelId != INVALID_TS3_CHANNEL && channelId != currentChannelId) {
+            if ((channelId != INVALID_TS3_CHANNEL) && (channelId != currentChannelId)) {
                 std::string password = "";
                 if (details.at(1) != "" && details.at(0) != "") {
                     password = details.at(1);
