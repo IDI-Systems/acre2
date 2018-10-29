@@ -32,28 +32,21 @@ if (isNull _vehicle) then {
     _vehicle = [_rackId] call EFUNC(sys_rack,getVehicleFromRack);
 };
 
-private _accentConfig = _vehicle getVariable [QGVAR(accent)];
+private _accentConfig = _vehicle getVariable [QGVAR(accent), [false]];
 private _connectedIntercoms = [_rackId] call EFUNC(sys_rack,getWiredIntercoms);
-
 if (_connectedIntercoms isEqualTo []) exitWith {_volume};
 
 private _modifiedVolume = 0;
 {
-    params ["_intercomName", "_intercomInUse"];
-
-    if ( (_intercomName in _connectedIntercoms) && {[_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration)}) then {
+    _x params ["_intercomName", "_intercomInUse"];
+    private _connected = ([_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration)) > 0;
+    if ((_intercomName in _connectedIntercoms) && {_connected}) then {
         private _intercomVolume = [_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_VOLUME] call FUNC(getStationConfiguration);
-        private _tempVolume = 0;
-
-        if (_intercomInUse) then {
-            if (_accentConfig select _forEachIndex) then {
-                _tempVolume = _intercomVolume * 0.8; // Reduce volume by 20% if intercom is active and there is an incomming radio transmission
-                if (_tempVolume < 0.1) then {
-                    _tempVolume = 0.1;
-                };
-            } else {
-                // Set the radio volume to the intercom volume
-                _tempVolume = _volume;
+        private _tempVolume = _intercomVolume;
+        if (_intercomInUse && {_accentConfig select _forEachIndex}) then {
+            _tempVolume = _intercomVolume * 0.8; // Reduce volume by 20% if intercom is active and there is an incomming radio transmission
+            if (_tempVolume < 0.1) then {
+                _tempVolume = 0.1;
             };
         };
 

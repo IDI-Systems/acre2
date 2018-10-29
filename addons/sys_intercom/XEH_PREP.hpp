@@ -14,6 +14,7 @@ PREP(intercomListVolumeActions);
 PREP(intercomPFH);
 PREP(isIntercomAvailable);
 PREP(isInIntercom);
+PREP(modifyRadioVolume);
 PREP(noApiFunction);
 PREP(seatSwitched);
 PREP(handleAccent);
@@ -22,6 +23,7 @@ PREP(handleLimitedConnection);
 PREP(handleIntercomActivation);
 PREP(setStationConfiguration);
 PREP(setStationUnit);
+PREP(updateIntercomUse);
 
 // Infantry Phone
 PREP(checkInfantryPhoneAvailability);
