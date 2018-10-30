@@ -10,7 +10,7 @@
  * Are players that speak revealed to AI <BOOL>
  *
  * Example:
- * _status = [false] call acre_sys_core_fnc_setRevealToAI
+ * [false] call acre_sys_core_fnc_setRevealToAI
  *
  * Public: No
  */
