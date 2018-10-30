@@ -15,7 +15,7 @@ RPC_FUNCTION(playLoadedSound) {
 
     std::string id;
     ACRE_VECTOR position, direction;
-    float volume;
+    float32_t volume;
     int32_t isWorld = 0;
 
 

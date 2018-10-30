@@ -38,37 +38,37 @@ RPC_FUNCTION(updateSpeakingData) {
         if (speakingType == "d" || speakingType == "i") {
             if ((speaker->getInitType() != "d" && speaker->getInitType() != "i") || speakingType != speaker->getInitType()) {
                 speaker->setInitType(speakingType);
-                if (speaker->channels[0]) {
-                    CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(speaker->channels[0]);
-                    speaker->channels[0] = NULL;
+                if (speaker->m_channels[0]) {
+                    CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(speaker->m_channels[0]);
+                    speaker->m_channels[0] = NULL;
                 }
-                CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->channels[0], 4800, false);
+                CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->m_channels[0], 4800, false);
                 if (speaksBabbel)
-                        speaker->channels[0]->setEffectInsert(0, "acre_babbel");
-                speaker->channels[0]->setMixdownEffectInsert(0, "acre_positional");
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakingType", ACRE_SPEAKING_DIRECT);
+                        speaker->m_channels[0]->setEffectInsert(0, "acre_babbel");
+                speaker->m_channels[0]->setMixdownEffectInsert(0, "acre_positional");
+                speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("speakingType", ACRE_SPEAKING_DIRECT);
                 speaker->setSpeakingType(ACRE_SPEAKING_DIRECT);
                 if (speakingType == "i") {
-                    speaker->channels[0]->setEffectInsert(2, "acre_radio");
-                    speaker->channels[0]->getEffectInsert(2)->setParam("disableNoise", TRUE);
-                    speaker->channels[0]->getEffectInsert(2)->setParam("signalQuality", 1.0f);
-                    speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakingType", ACRE_SPEAKING_INTERCOM);
+                    speaker->m_channels[0]->setEffectInsert(2, "acre_radio");
+                    speaker->m_channels[0]->getEffectInsert(2)->setParam("disableNoise", TRUE);
+                    speaker->m_channels[0]->getEffectInsert(2)->setParam("signalQuality", 1.0f);
+                    speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("speakingType", ACRE_SPEAKING_INTERCOM);
                     speaker->setSpeakingType(ACRE_SPEAKING_INTERCOM);
                 }
-                speaker->channels[0]->setEffectInsert(7, "acre_volume");
+                speaker->m_channels[0]->setEffectInsert(7, "acre_volume");
             }
-            if (speaker->channels[0]) {
-                speaker->channels[0]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(3));
+            if (speaker->m_channels[0]) {
+                speaker->m_channels[0]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(3));
             
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosX", vMessage->getParameterAsFloat(4));
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosZ", vMessage->getParameterAsFloat(5));
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosY", vMessage->getParameterAsFloat(6));
+                speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosX", vMessage->getParameterAsFloat(4));
+                speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosZ", vMessage->getParameterAsFloat(5));
+                speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosY", vMessage->getParameterAsFloat(6));
 
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("headVectorX", vMessage->getParameterAsFloat(7));
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("headVectorZ", vMessage->getParameterAsFloat(8));
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("headVectorY", vMessage->getParameterAsFloat(9));
+                speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("headVectorX", vMessage->getParameterAsFloat(7));
+                speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("headVectorZ", vMessage->getParameterAsFloat(8));
+                speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("headVectorY", vMessage->getParameterAsFloat(9));
 
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("curveScale", speaker->getSelectableCurveScale());
+                speaker->m_channels[0]->getMixdownEffectInsert(0)->setParam("curveScale", speaker->getSelectableCurveScale());
             }
         } else if (speakingType == "r") {
             // Unmute them here. Dynamically muting and unmuting them when they transmit on a radio
@@ -82,65 +82,65 @@ RPC_FUNCTION(updateSpeakingData) {
             }
             for (int i = 0; i < count; ++i) {
                 int channelId = i+1;
-                if (!speaker->channels[channelId]) {
-                    CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->channels[channelId], 4800, false);
+                if (!speaker->m_channels[channelId]) {
+                    CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->m_channels[channelId], 4800, false);
                     if (speaksBabbel)
-                        speaker->channels[channelId]->setEffectInsert(0, "acre_babbel");
-                    speaker->channels[channelId]->setEffectInsert(7, "acre_volume");
-                    speaker->channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4));
+                        speaker->m_channels[channelId]->setEffectInsert(0, "acre_babbel");
+                    speaker->m_channels[channelId]->setEffectInsert(7, "acre_volume");
+                    speaker->m_channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4));
 
-                    speaker->channels[channelId]->setEffectInsert(2, "acre_radio");
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", FALSE);
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5));
+                    speaker->m_channels[channelId]->setEffectInsert(2, "acre_radio");
+                    speaker->m_channels[channelId]->getEffectInsert(2)->setParam("disableNoise", FALSE);
+                    speaker->m_channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5));
 
-                    speaker->channels[channelId]->setMixdownEffectInsert(0, "acre_positional");
+                    speaker->m_channels[channelId]->setMixdownEffectInsert(0, "acre_positional");
                 }
                 
-                if (speaker->channels[channelId]) {
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakingType", ACRE_SPEAKING_RADIO);
+                if (speaker->m_channels[channelId]) {
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("speakingType", ACRE_SPEAKING_RADIO);
             
-                    speaker->channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4+(i*7)));
+                    speaker->m_channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4+(i*7)));
                     
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", FALSE);
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5+(i*7)));
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6+(i*7)));
+                    speaker->m_channels[channelId]->getEffectInsert(2)->setParam("disableNoise", FALSE);
+                    speaker->m_channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5+(i*7)));
+                    speaker->m_channels[channelId]->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6+(i*7)));
             
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isLoudSpeaker", vMessage->getParameterAsFloat(7+(i*7)));
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("isLoudSpeaker", vMessage->getParameterAsFloat(7+(i*7)));
                     if (vMessage->getParameterAsFloat(7+(i*7))) {
-                        speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000001);
+                        speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000001);
                     } else {
-                        speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000000);
+                        speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000000);
                     }
 
 
 
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosX", vMessage->getParameterAsFloat(8+(i*7)));
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosZ", vMessage->getParameterAsFloat(9+(i*7)));
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosY", vMessage->getParameterAsFloat(10+(i*7)));
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosX", vMessage->getParameterAsFloat(8+(i*7)));
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosZ", vMessage->getParameterAsFloat(9+(i*7)));
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosY", vMessage->getParameterAsFloat(10+(i*7)));
 
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("headVectorX", 0.0f);
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("headVectorZ", 1.0f);
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("headVectorY", 0.0f);
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("curveScale", speaker->getSelectableCurveScale());
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("headVectorX", 0.0f);
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("headVectorZ", 1.0f);
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("headVectorY", 0.0f);
+                    speaker->m_channels[channelId]->getMixdownEffectInsert(0)->setParam("curveScale", speaker->getSelectableCurveScale());
                 }
             }
 
         } else if (speakingType == "s") {
             if (speaker->getInitType() != "s" || speakingType != speaker->getInitType()) {
                 speaker->setInitType(speakingType);
-                if (speaker->channels[0]) {
-                    CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(speaker->channels[0]);
-                    speaker->channels[0] = NULL;
+                if (speaker->m_channels[0]) {
+                    CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(speaker->m_channels[0]);
+                    speaker->m_channels[0] = NULL;
                 }
-                CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->channels[0], 4800, false);
-                speaker->channels[0]->setEffectInsert(7, "acre_volume");
+                CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->m_channels[0], 4800, false);
+                speaker->m_channels[0]->setEffectInsert(7, "acre_volume");
             }
             speaker->setSpeakingType(ACRE_SPEAKING_SPECTATE);
             if (CEngine::getInstance()->getClient()->getMuted(playerId)) {
                 CEngine::getInstance()->getClient()->setMuted(playerId, false);
             }
-            if (speaker->channels[0]) {
-                speaker->channels[0]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(3));
+            if (speaker->m_channels[0]) {
+                speaker->m_channels[0]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(3));
             }
         } else {
             speaker->setSpeakingType(ACRE_SPEAKING_UNKNOWN);

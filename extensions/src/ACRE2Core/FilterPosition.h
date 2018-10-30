@@ -13,13 +13,13 @@ public:
     CFilterPosition(void);
     ~CFilterPosition(void);
 
-    ACRE_RESULT process(short* samples, int sampleCount, int channels, const unsigned int speakerMask, CSoundMixdownEffect *params);
+    ACRE_RESULT process(int16_t *const samples, const int32_t sampleCount, const int32_t channels, const uint32_t speakerMask, CSoundMixdownEffect *const params);
 
     X3DAUDIO_VECTOR getUpVector(X3DAUDIO_VECTOR inVector);
 
-    unsigned int getChannelMask(const unsigned int channelMask);
+    uint32_t getChannelMask(const uint32_t channelMask);
 
 private:
     X3DAUDIO_HANDLE p_X3DInstance;
-    BOOL p_IsInitialized;
+    bool p_IsInitialized;
 };

@@ -44,8 +44,7 @@ THE SOFTWARE.
 #  pragma warning (disable: 4100)
 #endif
 
-//#include <assert.h>
-#include <stdlib.h>
+#include <cstdlib>
 
 #include <cassert>
 #include <cfloat>
@@ -56,11 +55,6 @@ THE SOFTWARE.
 #include <limits>
 #include <vector>
 
-#ifdef _MSC_VER
-namespace tr1 = std::tr1;
-#else
 namespace tr1 = std;
-#endif
-
 
 #endif

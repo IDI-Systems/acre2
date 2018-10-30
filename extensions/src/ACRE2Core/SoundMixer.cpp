@@ -6,24 +6,24 @@
 
 #include "AcreSettings.h"
 
-bool CSoundMixer::acquireChannel(CSoundChannelMono **returnChannel) { 
-    return this->acquireChannel(returnChannel, 4800); 
+bool CSoundMixer::acquireChannel(CSoundChannelMono **returnChannel) {
+    return this->acquireChannel(returnChannel, 4800);
 }
 
-bool CSoundMixer::acquireChannel(CSoundChannelMono **returnChannel, int bufferSize) { 
-    return this->acquireChannel(returnChannel, bufferSize, true); 
+bool CSoundMixer::acquireChannel(CSoundChannelMono **returnChannel, const int32_t bufferSize) {
+    return this->acquireChannel(returnChannel, bufferSize, true);
 }
 
-bool CSoundMixer::acquireChannel(CSoundChannelMono **returnChannel, int bufferSize, bool singleShot) {
+bool CSoundMixer::acquireChannel(CSoundChannelMono **returnChannel, const int32_t bufferSize, const bool singleShot) {
     this->lock();
-    *returnChannel = new CSoundChannelMono(bufferSize, singleShot); 
-    this->channelList.insert(*returnChannel); 
+    *returnChannel = new CSoundChannelMono(bufferSize, singleShot);
+    this->channelList.insert(*returnChannel);
     this->unlock();
-    return true; 
+    return true;
 }
 
 
-void CSoundMixer::mixDown(short* samples, int sampleCount, int channels, const unsigned int speakerMask) {
+void CSoundMixer::mixDown(int16_t *const samples, const int32_t sampleCount, const int32_t channels, const uint32_t speakerMask) {
     short *monoSamples = new short[sampleCount];
     short *mixSamples = new short[sampleCount*channels];
     CSoundChannelMono *channel;
@@ -37,7 +37,7 @@ void CSoundMixer::mixDown(short* samples, int sampleCount, int channels, const u
         channel = (CSoundChannelMono *)*it;
         channel->lock();
         if (channel->GetCurrentBufferSize() > 0) {
-            
+
             channel->Out(monoSamples, sampleCount);
             for (int i = 0; i < 8; ++i) {
                 monoEffect = channel->getEffectInsert(i);
@@ -47,16 +47,16 @@ void CSoundMixer::mixDown(short* samples, int sampleCount, int channels, const u
                     monoEffect->unlock();
                 }
             }
-        
+
             int sourceSamplePos = 0;
-            for (int x = 0; x < sampleCount * channels; x+=channels) {
+            for (int x = 0; x < sampleCount * channels; x += channels) {
                 for (int i = 0; i < channels; i++) {
                     mixSamples[x+i] = monoSamples[sourceSamplePos];
-                            
+
                 }
                 sourceSamplePos++;
             }
-            
+
             for (int i = 0; i < 8; ++i) {
                 mixdownEffect = channel->getMixdownEffectInsert(i);
                 if (mixdownEffect) {
@@ -65,18 +65,18 @@ void CSoundMixer::mixDown(short* samples, int sampleCount, int channels, const u
                     mixdownEffect->unlock();
                 }
             }
-            
+
             for (int i = 0; i < sampleCount*channels; ++i) {
                 //mixSamples[i] = mixSamples[i]*1.75f;
                 if (samples[i]+mixSamples[i] >= SHRT_MAX) {
                     samples[i] = SHRT_MAX;
                     //LOG("CLIPPING!");
-                } else if (samples[i]+mixSamples[i] <= SHRT_MIN) {
+                } else if (samples[i] + mixSamples[i] <= SHRT_MIN) {
                     samples[i] = SHRT_MIN;
                     //LOG("CLIPPING!");
                 } else {
                     samples[i] += mixSamples[i];
-                }                        
+                }
             }
         } else {
             if (channel->IsOneShot()) {
@@ -95,14 +95,14 @@ void CSoundMixer::mixDown(short* samples, int sampleCount, int channels, const u
     this->unlock();
 }
 
-bool CSoundMixer::releaseChannel(CSoundChannelMono *releaseChannel) { 
+bool CSoundMixer::releaseChannel(CSoundChannelMono *releaseChannel) {
     this->lock();
     if (this->channelList.find(releaseChannel) != this->channelList.end()) {
-        this->channelList.unsafe_erase(releaseChannel); 
+        this->channelList.unsafe_erase(releaseChannel);
         if (releaseChannel)
             delete releaseChannel;
         releaseChannel = NULL;
     }
     this->unlock();
-    return true; 
+    return true;
 };

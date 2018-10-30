@@ -6,23 +6,21 @@
 #include <fstream>
 
 
-CWave::CWave(void)
-{
+CWave::CWave(void) {
     // Init members
-    memset(&m_Descriptor, 0, sizeof(_WAVEDESCR));
-    memset(&m_Format, 0, sizeof(_WAVEFORMAT));
+    memset(&m_descriptor, 0, sizeof(__waveDescr));
+    memset(&m_format, 0, sizeof(__waveFormat));
     m_lpData = NULL;
     m_dwSize = 0;
     m_hWaveout = NULL;
-    memset(&m_WaveHeader, 0, sizeof(WAVEHDR));
-    m_bPaused = FALSE;
-    m_bStopped = TRUE;
+    memset(&m_waveHeader, 0, sizeof(WAVEHDR));
+    m_bPaused = false;
+    m_bStopped = true;
 }
 
-CWave::~CWave(void)
-{
+CWave::~CWave(void) {
     // Close output device
-    if (IsValid())
+    if (isValid())
     {
         // Clear sound data buffer
         free(m_lpData);
@@ -31,40 +29,36 @@ CWave::~CWave(void)
     }
 }
 
-BOOL CWave::Load(std::string wavFile)
-{
-    BOOL bResult = FALSE;
-
-
+bool CWave::load(const std::string &wavFile) {
+    bool bResult = false;
 
     std::ifstream file;
     file.open(wavFile, std::fstream::in | std::fstream::binary);
     if (file.bad() || !file.is_open())
-        return FALSE;
+        return false;
 
-    file.read((char *)this->m_Descriptor.riff, sizeof(this->m_Descriptor.riff));
-    file.read((char *)&this->m_Descriptor.size, sizeof(this->m_Descriptor.size));
-    file.read((char *)this->m_Descriptor.wave, sizeof(this->m_Descriptor.wave));
+    file.read((char *)this->m_descriptor.riff, sizeof(this->m_descriptor.riff));
+    file.read((char *)&this->m_descriptor.size, sizeof(this->m_descriptor.size));
+    file.read((char *)this->m_descriptor.wave, sizeof(this->m_descriptor.wave));
 
     char testChunk[4];
 
     file.read(testChunk, 4);
 
-
     while (strncmp(testChunk, "fmt", 3) != 0 && !file.eof()) {
         file.read(testChunk, 4);
     }
     if (strncmp(testChunk, "fmt", 3) == 0) {
-        memcpy(this->m_Format.id, testChunk, sizeof(testChunk));
-        file.read((char *)&this->m_Format.size, sizeof(this->m_Format.size));
-        file.read((char *)&this->m_Format.format, sizeof(this->m_Format.format));
-        file.read((char *)&this->m_Format.channels, sizeof(this->m_Format.channels));
-        file.read((char *)&this->m_Format.sampleRate, sizeof(this->m_Format.sampleRate));
-        file.read((char *)&this->m_Format.byteRate, sizeof(this->m_Format.byteRate));
-        file.read((char *)&this->m_Format.blockAlign, sizeof(this->m_Format.blockAlign));
-        file.read((char *)&this->m_Format.bitsPerSample, sizeof(this->m_Format.bitsPerSample));
+        memcpy(this->m_format.id, testChunk, sizeof(testChunk));
+        file.read((char *)&this->m_format.size, sizeof(this->m_format.size));
+        file.read((char *)&this->m_format.format, sizeof(this->m_format.format));
+        file.read((char *)&this->m_format.channels, sizeof(this->m_format.channels));
+        file.read((char *)&this->m_format.sampleRate, sizeof(this->m_format.sampleRate));
+        file.read((char *)&this->m_format.byteRate, sizeof(this->m_format.byteRate));
+        file.read((char *)&this->m_format.blockAlign, sizeof(this->m_format.blockAlign));
+        file.read((char *)&this->m_format.bitsPerSample, sizeof(this->m_format.bitsPerSample));
 
-        if (this->m_Format.size == 18) {
+        if (this->m_format.size == 18) {
             file.seekg(2, std::ifstream::cur);
         }
 
@@ -78,15 +72,14 @@ BOOL CWave::Load(std::string wavFile)
             if (this->m_dwSize%2 == 1) {
                 this->m_dwSize -= 1;
             }
-            this->m_lpData = new BYTE[this->m_dwSize];
-            memset(this->m_lpData, 0x00, this->m_dwSize*sizeof(BYTE));
+            this->m_lpData = new uint8_t[this->m_dwSize];
+            memset(this->m_lpData, 0x00, this->m_dwSize*sizeof(uint8_t));
             file.read((char *)this->m_lpData, this->m_dwSize);
             file.close();
-            bResult = TRUE;
+            bResult = true;
         }
     }
 
-    
     return bResult;
 }
 

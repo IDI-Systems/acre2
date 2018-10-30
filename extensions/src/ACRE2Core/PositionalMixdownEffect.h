@@ -10,7 +10,7 @@
 
 class CPositionalMixdownEffect : public CSoundMixdownEffect {
 private:
-    static CFilterPosition positionFilter;
+    static CFilterPosition m_positionFilter;
 public:
     CPositionalMixdownEffect() {
         this->setParam("isWorld", POSITIONAL_EFFECT_ISWORLD);
@@ -24,7 +24,7 @@ public:
         this->setParam("curveScale", 1.0f);
         this->setParam("speakingType", ACRE_SPEAKING_DIRECT);
     };
-    void process(short* samples, int sampleCount, int channels, const unsigned int speakerMask) {
-        this->positionFilter.process(samples, sampleCount, channels, speakerMask, this);
+    void process(int16_t *const samples, int32_t sampleCount, int32_t channels, const uint32_t speakerMask) {
+        this->m_positionFilter.process(samples, sampleCount, channels, speakerMask, this);
     };
 };

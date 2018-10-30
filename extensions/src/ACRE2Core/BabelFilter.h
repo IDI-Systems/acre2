@@ -9,10 +9,10 @@
 #include <map>
 
 struct BabelStruct {
-    unsigned int id;
-    long long unsigned int period;
-    int attenCount;
-    float averageSum;
+    uint32_t id;
+    uint64_t period;
+    int32_t attenCount;
+    float32_t averageSum;
 };
 
 class CBabelFilter: CLockable {
@@ -20,10 +20,10 @@ public:
     CBabelFilter( void );
     ~CBabelFilter( void );
 
-    ACRE_RESULT process(short* samples, int sampleCount, int channels, ACRE_ID id);
+    ACRE_RESULT process(int16_t *const samples, const int32_t sampleCount, const int32_t channels, const ACRE_ID id);
 
-    BabelStruct *getSpeaker(ACRE_ID id);
+    BabelStruct *getSpeaker(const ACRE_ID id);
 
 protected:
-    std::map<ACRE_ID, BabelStruct *> babelSpeakers;
+    std::map<ACRE_ID, BabelStruct *> m_babelSpeakers;
 };

@@ -65,7 +65,6 @@ int ts3plugin_init() {
         ts3plugin_onConnectStatusChangeEvent(ts3Functions.getCurrentServerConnectionHandlerID(), STATUS_CONNECTION_ESTABLISHED, NULL);
     }
 
-
     return 0;
 }
 
@@ -79,8 +78,6 @@ void ts3plugin_currentServerConnectionChanged(uint64 serverConnectionHandlerID) 
 void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int err) {
 
     if (status == STATUS_CONNECTION_ESTABLISHED) {
-
-
         //
         // set ID on every new connection
         ACRE_ID clientId = 0;

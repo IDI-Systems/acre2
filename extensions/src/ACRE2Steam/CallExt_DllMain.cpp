@@ -33,14 +33,12 @@ static inline std::string &trim(std::string &s) {
 
 #pragma comment(lib, "shlwapi.lib")
 
-#define STEAM_CHECK        0
-#define STEAM_GET_PATH    1
+#define STEAM_CHECK      0
+#define STEAM_GET_PATH   1
 #define STEAM_DO_COPY    2
 
 
-BOOL writeConnected, readConnected;
-
-
+bool writeConnected, readConnected;
 
 void ClosePipe();
 

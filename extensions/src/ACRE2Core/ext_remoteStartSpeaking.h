@@ -22,11 +22,11 @@ RPC_FUNCTION(ext_remoteStartSpeaking) {
         ) */
 
     ACRE_ID id = (ACRE_ID)vMessage->getParameterAsInt(0);
-    int languageId = (ACRE_ID)vMessage->getParameterAsInt(1);
-    std::string netId = std::string((char *)vMessage->getParameter(2));
+    int32_t languageId = (ACRE_ID)vMessage->getParameterAsInt(1);
+    std::string netId = std::string((const char *)vMessage->getParameter(2));
     
     ACRE_SPEAKING_TYPE speakingType = (ACRE_SPEAKING_TYPE)vMessage->getParameterAsInt(3);
-    std::string radio_id = std::string((char *)vMessage->getParameter(4));
+    std::string radio_id = std::string((const char *)vMessage->getParameter(4));
     ACRE_VOLUME curveScale = vMessage->getParameterAsFloat(5);
 
     CEngine::getInstance()->remoteStartSpeaking(id, languageId, netId, speakingType, radio_id, curveScale);

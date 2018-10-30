@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "IRpcFunction.h"
 #include "Log.h"
@@ -9,9 +9,9 @@
 
 RPC_FUNCTION(setTs3ChannelDetails) {
     std::vector<std::string> details = {
-        std::string((char *)vMessage->getParameter(0)),
-        std::string((char *)vMessage->getParameter(1)),
-        std::string((char *)vMessage->getParameter(2))
+        std::string((const char *)vMessage->getParameter(0)),
+        std::string((const char *)vMessage->getParameter(1)),
+        std::string((const char *)vMessage->getParameter(2))
     };
 
     CEngine::getInstance()->getClient()->updateTs3ChannelDetails(details);

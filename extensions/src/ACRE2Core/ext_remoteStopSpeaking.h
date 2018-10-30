@@ -21,7 +21,7 @@ RPC_FUNCTION(ext_remoteStopSpeaking) {
             this->getSelf()->getCurveScale()
         ) */
 
-    ACRE_ID id = (ACRE_ID)vMessage->getParameterAsInt(0);
+    ACRE_ID id = (ACRE_ID) vMessage->getParameterAsInt(0);
 
     CEngine::getInstance()->remoteStopSpeaking(id);
 

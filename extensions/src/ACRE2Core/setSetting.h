@@ -6,7 +6,7 @@
 
 RPC_FUNCTION(setSetting) {
     std::string name;
-    float value = 1.0f;
+    float32_t value = 1.0f;
 
     name = std::string((char *)vMessage->getParameter(0));
     value = vMessage->getParameterAsFloat(1);

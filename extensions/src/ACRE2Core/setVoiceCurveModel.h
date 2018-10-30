@@ -3,10 +3,11 @@
 #include "Engine.h"
 #include "TextMessage.h"
 #include "Log.h"
+#include "Types.h"
 
 RPC_FUNCTION(setVoiceCurveModel) {
-    int voiceModel;
-    float voiceCurveScale;
+    int32_t voiceModel;
+    float32_t voiceCurveScale;
 
     voiceModel = vMessage->getParameterAsInt(0);
     voiceCurveScale = vMessage->getParameterAsFloat(1);

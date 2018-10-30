@@ -1,12 +1,13 @@
 #pragma once
 
 #include "compat.h"
+#include "Types.h"
 
-#define LOGLEVEL_TRACE        0x00000001
-#define LOGLEVEL_DEBUG        0x00000002
-#define LOGLEVEL_INFO        0x10000001
-#define LOGLEVEL_ERROR        0xF0000001
-#define LOGLEVEL_CRITICAL    0xFFFFFFFF
+#define LOGLEVEL_TRACE     0x00000001
+#define LOGLEVEL_DEBUG     0x00000002
+#define LOGLEVEL_INFO      0x10000001
+#define LOGLEVEL_ERROR     0xF0000001
+#define LOGLEVEL_CRITICAL  0xFFFFFFFF
 
 #ifdef _TRACE
     #define RUNNING_LOGLEVEL LOGLEVEL_TRACE
@@ -61,7 +62,7 @@ public:
     Log(char *logFile);
     ~Log(void);
 
-    size_t Write(DWORD msgType, char *function, unsigned int line, const char *format, ...);
+    size_t Write(DWORD msgType, char *function, const uint32_t line, const char *format, ...);
     size_t PopMessage(DWORD msgType, const char *format, ...);
 
     HANDLE fileHandle;

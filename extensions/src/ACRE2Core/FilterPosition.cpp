@@ -18,7 +18,7 @@ static const X3DAUDIO_DISTANCE_CURVE_POINT distanceCurvePoints[151] = { 0.000000
 static const X3DAUDIO_DISTANCE_CURVE       distanceCurve          = { (X3DAUDIO_DISTANCE_CURVE_POINT*)&distanceCurvePoints[0], 151 };
 
 //ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channels, CPlayer *player, const unsigned int* channelSpeakerArray, unsigned int *channelMask, ACRE_VOLUME volume) {
-ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channels, const unsigned int speakerMask, CSoundMixdownEffect *params) {
+ACRE_RESULT CFilterPosition::process(int16_t *const samples, const int32_t sampleCount, const int32_t channels, const uint32_t speakerMask, CSoundMixdownEffect *const params) {
     X3DAUDIO_LISTENER Listener = {};
     X3DAUDIO_EMITTER Emitter = {0};
     X3DAUDIO_DSP_SETTINGS DSPSettings = {0};
@@ -28,11 +28,11 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
     X3DAUDIO_VECTOR speaker_position;
     X3DAUDIO_VECTOR vector_listenerDirection;
     X3DAUDIO_VECTOR vector_speakerDirection;
-    
+
     //LOCK(player);
     //LOCK(CEngine::getInstance()->getSelf());
-    float killCoef;
-    float *Matrix = new float[1 * channels];
+    float32_t killCoef;
+    float32_t *Matrix = new float[1 * channels];
 
     //LOG("channels: %d", channels);
     if (!this->p_IsInitialized) {
@@ -47,9 +47,9 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         */
         X3DAudioInitialize(speakerMask, X3DAUDIO_SPEED_OF_SOUND, this->p_X3DInstance);
 
-        this->p_IsInitialized = TRUE;
+        this->p_IsInitialized = true;
     }
-    
+
     if (CAcreSettings::getInstance()->getDisablePosition())
         return ACRE_OK;
 
@@ -115,7 +115,7 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         Emitter.CurveDistanceScaler = 1.0f;
         Emitter.pVolumeCurve = (X3DAUDIO_DISTANCE_CURVE *)&distanceCurve;
     }
-    
+
     Emitter.DopplerScaler = 1.0f;
     Emitter.ChannelRadius = 1.0f;
 
@@ -127,9 +127,6 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
     Emitter.pCone = &emitterCone;
     //Listener.pCone = &emitterCone;
 
-    
-    
-
     Emitter.InnerRadius = 2.0f;
     Emitter.InnerRadiusAngle = X3DAUDIO_PI/4.0f;
 
@@ -140,10 +137,10 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
     Listener.OrientFront = vector_listenerDirection;
     Listener.OrientTop = listener_topVec;
     Listener.Position = listener_position;
-    
+
     //UNLOCK(CEngine::getInstance()->getSelf());
     //UNLOCK(player);
-    
+
 
     X3DAudioCalculate(this->p_X3DInstance, &Listener, &Emitter,
     X3DAUDIO_CALCULATE_MATRIX | X3DAUDIO_CALCULATE_EMITTER_ANGLE,
@@ -156,7 +153,7 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         sprintf(mAppend, "%f, ", Matrix[i]);
         matrixVals.append(std::string(mAppend));
     }
-    
+
     TRACE("MATRIX: %s", matrixVals.c_str());
     */
     TRACE("matrix: c:[%d], %f, %f, %f", channels, Matrix[0], Matrix[1], (Matrix[0] + Matrix[1]));// +Matrix[2] + Matrix[3] + Matrix[4] + Matrix[5]));
@@ -184,9 +181,9 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
         killCoef = 1;
     };
     //LOG("dis: %f kc: %f ac: %f", DSPSettings.EmitterToListenerDistance, killCoef, this->getPlayer()->getAmplitudeCoef());
-    for (int x = 0; x < sampleCount * channels; x+=channels) {
+    for (int x = 0; x < sampleCount * channels; x += channels) {
         for (int i = 0; i < channels; i++) {
-            samples[x+i] = (short)(samples[x+i] * Matrix[i] * killCoef);
+            samples[x+i] = (short)(samples[x + i] * Matrix[i] * killCoef);
         }
     }
 
@@ -197,8 +194,8 @@ ACRE_RESULT CFilterPosition::process(short* samples, int sampleCount, int channe
 }
 
 X3DAUDIO_VECTOR CFilterPosition::getUpVector(X3DAUDIO_VECTOR inVector) {
-    float elev = asin(inVector.y)+1.5707963268f;
-    float dir = atan2(inVector.x, inVector.z);
+    float32_t elev = asin(inVector.y) + 1.5707963268f;
+    float32_t dir = atan2(inVector.x, inVector.z);
 
     X3DAUDIO_VECTOR outVector;
 
@@ -240,100 +237,101 @@ CFilterPosition::~CFilterPosition(void) {
 #define TS_SPEAKER_TOP_BACK_RIGHT          0x20000
 */
 
-#define TS_SPEAKER_FRONT_LEFT              0x1
-#define TS_SPEAKER_FRONT_RIGHT             0x2
-#define TS_SPEAKER_FRONT_CENTER            0x4
-#define TS_SPEAKER_LOW_FREQUENCY           0x8
-#define TS_SPEAKER_BACK_LEFT               0x10
-#define TS_SPEAKER_BACK_RIGHT              0x20
-#define TS_SPEAKER_FRONT_LEFT_OF_CENTER    0x40
-#define TS_SPEAKER_FRONT_RIGHT_OF_CENTER   0x80
-#define TS_SPEAKER_BACK_CENTER             0x100
-#define TS_SPEAKER_SIDE_LEFT               0x200
-#define TS_SPEAKER_SIDE_RIGHT              0x400
-#define TS_SPEAKER_TOP_CENTER              0x800
-#define TS_SPEAKER_TOP_FRONT_LEFT          0x1000
-#define TS_SPEAKER_TOP_FRONT_CENTER        0x2000
-#define TS_SPEAKER_TOP_FRONT_RIGHT         0x4000
-#define TS_SPEAKER_TOP_BACK_LEFT           0x8000
-#define TS_SPEAKER_TOP_BACK_CENTER         0x10000
-#define TS_SPEAKER_TOP_BACK_RIGHT          0x20000
+#define TS_SPEAKER_FRONT_LEFT              ((uint32_t) 0x1)
+#define TS_SPEAKER_FRONT_RIGHT             ((uint32_t) 0x2)
+#define TS_SPEAKER_FRONT_CENTER            ((uint32_t) 0x4)
+#define TS_SPEAKER_LOW_FREQUENCY           ((uint32_t) 0x8)
+#define TS_SPEAKER_BACK_LEFT               ((uint32_t) 0x10)
+#define TS_SPEAKER_BACK_RIGHT              ((uint32_t) 0x20)
+#define TS_SPEAKER_FRONT_LEFT_OF_CENTER    ((uint32_t) 0x40)
+#define TS_SPEAKER_FRONT_RIGHT_OF_CENTER   ((uint32_t) 0x80)
+#define TS_SPEAKER_BACK_CENTER             ((uint32_t) 0x100)
+#define TS_SPEAKER_SIDE_LEFT               ((uint32_t) 0x200)
+#define TS_SPEAKER_SIDE_RIGHT              ((uint32_t) 0x400)
+#define TS_SPEAKER_TOP_CENTER              ((uint32_t) 0x800)
+#define TS_SPEAKER_TOP_FRONT_LEFT          ((uint32_t) 0x1000)
+#define TS_SPEAKER_TOP_FRONT_CENTER        ((uint32_t) 0x2000)
+#define TS_SPEAKER_TOP_FRONT_RIGHT         ((uint32_t) 0x4000)
+#define TS_SPEAKER_TOP_BACK_LEFT           ((uint32_t) 0x8000)
+#define TS_SPEAKER_TOP_BACK_CENTER         ((uint32_t) 0x10000)
+#define TS_SPEAKER_TOP_BACK_RIGHT          ((uint32_t) 0x20000)
 
-unsigned int CFilterPosition::getChannelMask(const unsigned int channelMask) {
-    unsigned int returnValue = 0x0;
+uint32_t CFilterPosition::getChannelMask(const uint32_t channelMask) {
+    uint32_t returnValue = 0x0;
+
     LOG("Mask Get: %08x %u %08x %d %d", channelMask, channelMask, TS_SPEAKER_FRONT_LEFT, TS_SPEAKER_FRONT_LEFT, channelMask == TS_SPEAKER_FRONT_LEFT);
     switch(channelMask) {
         case TS_SPEAKER_FRONT_LEFT:
             LOG("Found: %08x", SPEAKER_FRONT_LEFT);
-            returnValue = SPEAKER_FRONT_LEFT; 
+            returnValue = SPEAKER_FRONT_LEFT;
             break;
         case TS_SPEAKER_FRONT_RIGHT:
             LOG("Found: %08x", SPEAKER_FRONT_RIGHT);
-            returnValue = SPEAKER_FRONT_RIGHT; 
+            returnValue = SPEAKER_FRONT_RIGHT;
             break;
-        case TS_SPEAKER_FRONT_CENTER: 
+        case TS_SPEAKER_FRONT_CENTER:
             LOG("Found: %08x", SPEAKER_FRONT_CENTER);
-            returnValue = SPEAKER_FRONT_CENTER; 
+            returnValue = SPEAKER_FRONT_CENTER;
             break;
-        case TS_SPEAKER_LOW_FREQUENCY: 
+        case TS_SPEAKER_LOW_FREQUENCY:
             LOG("Found: %08x", SPEAKER_LOW_FREQUENCY);
-            returnValue = SPEAKER_LOW_FREQUENCY; 
+            returnValue = SPEAKER_LOW_FREQUENCY;
             break;
-        case TS_SPEAKER_BACK_LEFT: 
+        case TS_SPEAKER_BACK_LEFT:
             LOG("Found: %08x", SPEAKER_BACK_LEFT);
-            returnValue = SPEAKER_BACK_LEFT; 
+            returnValue = SPEAKER_BACK_LEFT;
             break;
-        case TS_SPEAKER_BACK_RIGHT: 
+        case TS_SPEAKER_BACK_RIGHT:
             LOG("Found: %08x", SPEAKER_BACK_RIGHT);
-            returnValue = SPEAKER_BACK_RIGHT; 
+            returnValue = SPEAKER_BACK_RIGHT;
             break;
-        case TS_SPEAKER_FRONT_LEFT_OF_CENTER: 
+        case TS_SPEAKER_FRONT_LEFT_OF_CENTER:
             LOG("Found: %08x", SPEAKER_FRONT_LEFT_OF_CENTER);
-            returnValue = SPEAKER_FRONT_LEFT_OF_CENTER; 
+            returnValue = SPEAKER_FRONT_LEFT_OF_CENTER;
             break;
-        case TS_SPEAKER_FRONT_RIGHT_OF_CENTER: 
+        case TS_SPEAKER_FRONT_RIGHT_OF_CENTER:
             LOG("Found: %08x", SPEAKER_FRONT_RIGHT_OF_CENTER);
-            returnValue = SPEAKER_FRONT_RIGHT_OF_CENTER; 
+            returnValue = SPEAKER_FRONT_RIGHT_OF_CENTER;
             break;
-        case TS_SPEAKER_BACK_CENTER: 
+        case TS_SPEAKER_BACK_CENTER:
             LOG("Found: %08x", SPEAKER_BACK_CENTER);
-            returnValue = SPEAKER_BACK_CENTER; 
+            returnValue = SPEAKER_BACK_CENTER;
             break;
-        case TS_SPEAKER_SIDE_LEFT: 
+        case TS_SPEAKER_SIDE_LEFT:
             LOG("Found: %08x", SPEAKER_SIDE_LEFT);
-            returnValue = SPEAKER_SIDE_LEFT; 
+            returnValue = SPEAKER_SIDE_LEFT;
             break;
-        case TS_SPEAKER_SIDE_RIGHT: 
+        case TS_SPEAKER_SIDE_RIGHT:
             LOG("Found: %08x", SPEAKER_SIDE_RIGHT);
-            returnValue = SPEAKER_SIDE_RIGHT; 
+            returnValue = SPEAKER_SIDE_RIGHT;
             break;
-        case TS_SPEAKER_TOP_CENTER: 
+        case TS_SPEAKER_TOP_CENTER:
             LOG("Found: %08x", SPEAKER_TOP_CENTER);
-            returnValue = SPEAKER_TOP_CENTER; 
+            returnValue = SPEAKER_TOP_CENTER;
             break;
-        case TS_SPEAKER_TOP_FRONT_LEFT: 
+        case TS_SPEAKER_TOP_FRONT_LEFT:
             LOG("Found: %08x", SPEAKER_TOP_FRONT_LEFT);
-            returnValue = SPEAKER_TOP_FRONT_LEFT; 
+            returnValue = SPEAKER_TOP_FRONT_LEFT;
             break;
-        case TS_SPEAKER_TOP_FRONT_CENTER: 
+        case TS_SPEAKER_TOP_FRONT_CENTER:
             LOG("Found: %08x", SPEAKER_TOP_FRONT_CENTER);
-            returnValue = SPEAKER_TOP_FRONT_CENTER; 
+            returnValue = SPEAKER_TOP_FRONT_CENTER;
             break;
-        case TS_SPEAKER_TOP_FRONT_RIGHT: 
+        case TS_SPEAKER_TOP_FRONT_RIGHT:
             LOG("Found: %08x", SPEAKER_TOP_FRONT_RIGHT);
-            returnValue = SPEAKER_TOP_FRONT_RIGHT; 
+            returnValue = SPEAKER_TOP_FRONT_RIGHT;
             break;
-        case TS_SPEAKER_TOP_BACK_LEFT: 
+        case TS_SPEAKER_TOP_BACK_LEFT:
             LOG("Found: %08x", SPEAKER_TOP_BACK_LEFT);
-            returnValue = SPEAKER_TOP_BACK_LEFT; 
+            returnValue = SPEAKER_TOP_BACK_LEFT;
             break;
-        case TS_SPEAKER_TOP_BACK_CENTER: 
+        case TS_SPEAKER_TOP_BACK_CENTER:
             LOG("Found: %08x", SPEAKER_TOP_BACK_CENTER);
-            returnValue = SPEAKER_TOP_BACK_CENTER; 
+            returnValue = SPEAKER_TOP_BACK_CENTER;
             break;
-        case TS_SPEAKER_TOP_BACK_RIGHT: 
+        case TS_SPEAKER_TOP_BACK_RIGHT:
             LOG("Found: %08x", SPEAKER_TOP_BACK_RIGHT);
-            returnValue = SPEAKER_TOP_BACK_RIGHT; 
+            returnValue = SPEAKER_TOP_BACK_RIGHT;
             break;
     }
     LOG("Mask Return: %08x", returnValue);

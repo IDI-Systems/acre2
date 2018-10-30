@@ -63,7 +63,7 @@ IRpcFunction *CRpcEngine::findProcedure(char *cmd) {
     return NULL;
 }
 ACRE_RESULT CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg) {
-    return this->runProcedure(serverInstance, msg, TRUE);
+    return this->runProcedure(serverInstance, msg, true);
 }
 ACRE_RESULT CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg, BOOL entrant) {
     IRpcFunction *ptr;

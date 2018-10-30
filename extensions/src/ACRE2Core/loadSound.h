@@ -14,7 +14,7 @@
 RPC_FUNCTION(loadSound) {
 
     std::string id;
-    int currentCount, totalCount;
+    int32_t currentCount, totalCount;
     std::string content;
 
 
