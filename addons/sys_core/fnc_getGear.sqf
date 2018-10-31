@@ -21,9 +21,11 @@ if (isNull _unit) exitWith {[]};
 
 // diag_log text format["Assigned Items: %1", (assignedItems _unit)];
 
-private _gear = weapons _unit;
-_gear append (items _unit);
-_gear append (assignedItems _unit);
+private _gear = weapons player;
+_gear append ((getItemCargo (uniformContainer player)) select 0);
+_gear append ((getItemCargo (vestContainer player)) select 0);
+_gear append ((getItemCargo (backpackContainer player)) select 0);
+_gear pushBack ((assignedItems player) select 3);
 
 _gear = _gear select {(_x select [0, 4]) == "ACRE" || {_x == "ItemRadio"} || {_x == "ItemRadioAcreFlagged"}}; // We are only interested in ACRE gear.
 // The below is really slow and tends to worsen performance.
