@@ -15,6 +15,13 @@
  * Public: Yes
  */
 
-params ["_unit"];
+params [
+    ["_unit", objNull, [objNull]]
+];
 
-_unit in EGVAR(sys_core,keyedMicRadios)
+if (isNull _unit) exitWith {false};
+
+if (_unit in EGVAR(sys_core,keyedMicRadios)) exitWith {
+    true
+};
+false

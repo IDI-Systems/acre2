@@ -40,7 +40,7 @@ if (!GVAR(doFullSearch)) then {
             if (_object isKindOf "Man") then {
                 _items = [_object] call EFUNC(sys_core,getGear);
             } else {
-                _items = ((getItemCargo _object) select 0) select {(_x select [0, 4]) == "ACRE" || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged"};
+                _items = ((getItemCargo _object) select 0) select {(_x select [0, 4]) == "ACRE" || {_x == "ItemRadio"} || {_x == "ItemRadioAcreFlagged"}};
                 {
                     _items pushBack _x; // Add rack unique ID
                     private _mountedRadio = [_x] call EFUNC(sys_rack,getMountedRadio);
@@ -68,7 +68,12 @@ if (GVAR(doFullSearch)) then {
     private _idTable = HASH_CREATE;
     private _idList = [];
     private _duplicateIdTable = HASH_CREATE;
-    private _searchObjects = allPlayers + allUnits + allDead + vehicles + (allMissionObjects "WeaponHolder"); // search players first
+    private _searchObjects = [];
+    _searchObjects append allPlayers;
+    _searchObjects append allUnits;
+    _searchObjects append allDead;
+    _searchObjects append vehicles;
+    _searchObjects append (allMissionObjects "WeaponHolder");
 
     _searchObjects = _searchObjects arrayIntersect _searchObjects; // Ensure nothing gets searched twice.
     private _cfgWeapons = configFile >> "CfgWeapons";
@@ -161,16 +166,17 @@ if (GVAR(doFullSearch)) then {
                 if (time > _time + 60) then { // Free up the ID after if it remains unclaimed after 60 seconds.
                     // Cleanup unacknowledge ID.
                     WARNING_1("Releasing unacknowledged key (%1)",_key);
-                    GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_key];
-                    GVAR(masterIdList) = GVAR(masterIdList) - [_key];
+                    GVAR(unacknowledgedIds) deleteAt (GVAR(unacknowledgedIds) find _key);
+                    GVAR(masterIdList) deleteAt (GVAR(masterIdList) find _key);
                     HASH_REM(GVAR(unacknowledgedTable), _key);
 
                     private _baseRadio = [_key] call EFUNC(sys_radio,getRadioBaseClassname);
                     private _idNumber = getNumber (configFile >> "CfgWeapons" >> _key >> "acre_uniqueId");
                     private _keyIndex = (GVAR(radioIdMap) select 0) find (toLower _baseRadio);
                     if (_keyIndex != -1) then {
-                        private _newIds = ((GVAR(radioIdMap) select 1) select _keyIndex) - [_idNumber];
-                        (GVAR(radioIdMap) select 1) set[_keyIndex, _newIds];
+                        private _newIds = (GVAR(radioIdMap) select 1) select _keyIndex;
+                        _newIds deleteAt (_newIds find _idNumber);
+                        (GVAR(radioIdMap) select 1) set [_keyIndex, _newIds];
                     };
                 };
             };
@@ -236,7 +242,7 @@ if (GVAR(doFullSearch)) then {
 
         if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {
             private _currentEntry = HASH_GET(GVAR(masterIdTable), _key);
-            if (!(_value isEqualTo _currentEntry)) then {
+            if !(_value isEqualTo _currentEntry) then {
                 _toUpdate pushBack [_key, _value];
             };
         } else {
@@ -247,7 +253,8 @@ if (GVAR(doFullSearch)) then {
             _toUpdate pushBack [_key, _value];
         };
     } forEach ((HASH_KEYS(_idTable)) - GVAR(unacknowledgedIds));
-    if ((count _toUpdate) > 0) then {
+
+    if !(_toUpdate isEqualTo []) then {
         #ifdef DEBUG_MODE_FULL
             TRACE_1("calling updateIdObjects", _toUpdate);
             acre_player sideChat "Calling updateIdObjects";

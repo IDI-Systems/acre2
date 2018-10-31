@@ -15,9 +15,10 @@
  * Public: Yes
  */
 
-params ["_channelNumber"];
-
-if ( !(_channelNumber isEqualType 0)) exitWith { false };
+if !(_this params [["_channelNumber", 0, [0]]]) exitWith {
+    ERROR("Function called with invalid argument.");
+    false;
+};
 
 private _radioId = [] call FUNC(getCurrentRadio);
 if (_radioId == "") exitWith { false };

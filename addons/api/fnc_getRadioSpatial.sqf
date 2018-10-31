@@ -10,11 +10,13 @@
  * "LEFT", "RIGHT" or "CENTER" <STRING>
  *
  * Example:
- * _spatial = ["ACRE_PRC148"] call acre_api_fnc_getRadioSpatial;
+ * ["ACRE_PRC148_ID_1"] call acre_api_fnc_getRadioSpatial;
  *
  * Public: Yes
  */
 
-private _ret = [(_this select 0)] call EFUNC(sys_radio,getRadioSpatial);
+params [
+    ["_radioId", "", [""]]
+];
 
-_ret
+[_radioId] call EFUNC(sys_radio,getRadioSpatial);

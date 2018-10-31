@@ -15,7 +15,10 @@
  * Public: Yes
  */
 
-params ["_curveScale"];
+params [
+    ["_curveScale", 0, [0]]
+];
+
 
 if (IS_NUMBER(_curveScale)) then {
     if (_curveScale >= 0) then {
