@@ -16,7 +16,10 @@
  * Public: Yes
  */
 
-params [["_rackId", ""], ["_radioId", ""]];
+params [
+    ["_rackId", "", [""]],
+    ["_radioId", "", [""]]
+];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");

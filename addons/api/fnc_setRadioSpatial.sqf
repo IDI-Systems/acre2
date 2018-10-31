@@ -16,7 +16,10 @@
  * Public: Yes
  */
 
-params ["_radio", "_side"];
+params [
+    ["_radio", "", [""]],
+    ["_side", "", [""]]
+];
 
 if ( (isNil "_side") || (isNil "_radio") ) exitWith { false };
 if ( !(_radio in ([] call EFUNC(sys_data,getPlayerRadioList))) ) exitWith { false };

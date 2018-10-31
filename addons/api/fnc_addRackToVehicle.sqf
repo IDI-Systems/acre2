@@ -29,7 +29,12 @@
  * Public: Yes
  */
 
-params [["_vehicle", objNull], "_rackConfiguration", ["_forceInitialisation", false], ["_condition", {}]];
+params [
+    ["_vehicle", objNull, [objNull]],
+    ["_rackConfiguration", [], [[]]],
+    ["_forceInitialisation", false, []],
+    ["_condition", {}, [{}]]
+];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");
@@ -38,6 +43,11 @@ if (!isServer) exitWith {
 
 if (isNull _vehicle) exitWith {
     WARNING_1("Trying to initialize undefined vehicle %1",_vehicle);
+    false
+};
+
+if (_rackConfiguration isEqualTo []) exitWith {
+    WARNING_1("Empty rack configuration for vehicle %1",_vehicle);
     false
 };
 

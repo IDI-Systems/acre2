@@ -4,8 +4,8 @@
  * SHORT DESCRIPTION
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio Base Class <STRING>
+ * 1: Preset Name <STRING>
  *
  * Return Value:
  * RETURN VALUE <TYPE>
@@ -16,7 +16,10 @@
  * Deprecated
  */
 
-params ["_baseClass","_presetName"];
+params [
+    ["_baseClass", "", [""]],
+    ["_presetName", "", [""]]
+];
 
 ACRE_DEPRECATED(QFUNC(setDefaultChannels),"2.5.0",QFUNC(setRadioPreset));
 
