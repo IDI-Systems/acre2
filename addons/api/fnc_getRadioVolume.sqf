@@ -7,10 +7,10 @@
  * 0: Radio ID <STRING>
  *
  * Return Value:
- * Volume value between 0 and 1, -1 if error <Number>
+ * Volume value between 0 and 1, -1 if error <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_api_fnc_getRadioVolume
+ * ["ACRE_PRC148_ID_1"] call acre_api_fnc_getRadioVolume
  *
  * Public: Yes
  */
