@@ -37,6 +37,13 @@ if (!hasInterface) exitWith {};
     [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 }, true] call CBA_fnc_addPlayerEventHandler;
 
+["featureCamera", {
+    params ["_player", "_featureCamera"];
+    if (_featureCamera isEqualTo "") then {
+        [FUNC(enterVehicle), [vehicle _player, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
+    };
+}, true] call CBA_fnc_addPlayerEventHandler;
+
 player addEventHandler ["seatSwitchedMan", {
     params ["_unit1", "_unit2", "_vehicle"];
     [_vehicle, _unit1] call FUNC(seatSwitched);

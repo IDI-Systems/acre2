@@ -27,9 +27,9 @@ private _radiosInUse = _sharedRadios select {[_x] call FUNC(isExternalRadioUsed)
 // Of those radios that are in use, only the ones used by the player count
 {
     if (acre_player != [_x] call FUNC(getExternalRadioUser))  then {
-        _sharedRadios = _sharedRadios - [_x];
+        _sharedRadios deleteAt (_sharedRadios find _x);
     };
 } forEach _radiosInUse;
 
 // If the player has external radios in use, the action to give or return radios should be also available
-count _sharedRadios > 0 || {count ACRE_ACTIVE_EXTERNAL_RADIOS > 0}
+!(_sharedRadios isEqualTo []) || {!(ACRE_ACTIVE_EXTERNAL_RADIOS isEqualTo [])}
