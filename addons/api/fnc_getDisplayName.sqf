@@ -15,7 +15,9 @@
  * Public: Yes
  */
 
-params ["_radioId"];
+params [
+    ["_radioId", "", [""]]
+];
 
 private _baseClass = BASE_CLASS_CONFIG(_radioId);
 private _typeName = getText (configFile >> "CfgAcreComponents" >> _baseClass >> "name");

@@ -15,7 +15,9 @@
  * Public: Yes
  */
 
-params ["_vehicle"];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 if (isNull _vehicle) exitWith {
     WARNING("Non-defined vehicle passed as argument.");
