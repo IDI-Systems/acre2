@@ -19,7 +19,10 @@
 
 params ["_vehicle", "_intercoms", "_intercomNames"];
 
-private _intercomNanes = _vehicle getVariable [QGVAR(intercomNames), []];
+private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
+
 {
-    GVAR(intercomUse) set [_forEachIndex, [(_intercomNames select _forEachIndex) select 0, (_x findIf {_x in EGVAR(sys_core,speakers)}) != -1]];
+	private _name = (_intercomNames select _forEachIndex) select 0;
+	private _inUse = (_x findIf {_x in EGVAR(sys_core,speakers)}) != -1;
+    GVAR(intercomUse) set [_forEachIndex, [_name, _inUse]];
 } forEach _intercoms;

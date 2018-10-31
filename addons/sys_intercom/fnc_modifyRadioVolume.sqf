@@ -44,9 +44,9 @@ private _modifiedVolume = 0;
         private _intercomVolume = [_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_VOLUME] call FUNC(getStationConfiguration);
         private _tempVolume = _intercomVolume;
         if (_intercomInUse && {_accentConfig select _forEachIndex}) then {
-            _tempVolume = _intercomVolume * 0.8; // Reduce volume by 20% if intercom is active and there is an incomming radio transmission
-            if (_tempVolume < 0.1) then {
-                _tempVolume = 0.1;
+            _tempVolume = _intercomVolume * INTERCOM_ACCENT_VOLUME_REDUCTION; // Reduce volume by 20% if intercom is active and there is an incomming radio transmission
+            if (_tempVolume < MINIMUM_INTERCOM_ACCENT_VOLUME) then {
+                _tempVolume = MINIMUM_INTERCOM_ACCENT_VOLUME;
             };
         };
 

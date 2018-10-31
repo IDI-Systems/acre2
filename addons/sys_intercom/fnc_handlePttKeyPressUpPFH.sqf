@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * MultiPttKeyPress PFH
+ * Handles multi push-to-talk keybind press (to be ran within PFH).
  *
  * Arguments:
  * 0: Arguments array <ARRAY>

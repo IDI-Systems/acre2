@@ -14,16 +14,16 @@ if (!hasInterface) exitWith {};
     "ACRE2",
     "IntercomPTTKey",
     [(localize LSTRING(intercomPttKey)), (localize LSTRING(intercomPttKey_description))],
-    {[PTT_ACTION] call FUNC(handlePttKeyPress)},
-    {[PTT_ACTION] call FUNC(handlePttKeyPressUp)}
+    {[ACTION_INTERCOMPTT] call FUNC(handlePttKeyPress)},
+    {[ACTION_INTERCOMPTT] call FUNC(handlePttKeyPressUp)}
 ] call cba_fnc_addKeybind;
 
 [
     "ACRE2",
     "IntercomBroadcastKey",
     [(localize LSTRING(intercomBroadcastKey)), (localize LSTRING(intercomBroadcastKey_description))],
-    {[BROADCAST_ACTION] call FUNC(handlePttKeyPress)},
-    {[BROADCAST_ACTION] call FUNC(handlePttKeyPressUp)}
+    {[ACTION_BROADCAST] call FUNC(handlePttKeyPress)},
+    {[ACTION_BROADCAST] call FUNC(handlePttKeyPressUp)}
 ] call cba_fnc_addKeybind;
 
 ["ACRE2", "PreviousIntercom", (localize LSTRING(previousIntercom)), "", { [-1, true] call FUNC(switchIntercomFast) }, [51, [true, false, false]]] call cba_fnc_addKeybind;

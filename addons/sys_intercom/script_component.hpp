@@ -24,9 +24,6 @@
 #define PHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
 #define PHONE_MAXDISTANCE_HULL    3
 
-#define PTT_ACTION       0
-#define BROADCAST_ACTION 1
-
 // Infantry phone default configuration (fnc_infantryPhoneRingingPFH.sqf)
 #define INFANTRY_PHONE_SOUNDFILE QPATHTO_R(sounds\Cellphone_Ring.wss);
 #define INFANTRY_PHONE_SOUND_PFH_DURATION 2.25
@@ -34,6 +31,7 @@
 #define INFANTRY_PHONE_SOUNDPITCH 1
 #define INFANTRY_PHONE_MAX_DISTANCE 75
 
-
 #define ACTION_INTERCOMPTT 0
 #define ACTION_BROADCAST   1
+#define INTERCOM_ACCENT_VOLUME_REDUCTION 0.8
+#define MINIMUM_INTERCOM_ACCENT_VOLUME   0.1

@@ -21,7 +21,7 @@ In addition, two operating modes are available through ACE self interaction menu
 
 Some vehicles have additionally, restrictions on the amount of connections available in order to join the *passenger intercom*. These positions are configured by default to be in *PTT activation* mode.
 
-Optionally, each network has a master station. Such stations can broadcast a message (activation through intercom broadcast PTT key), temporarily disabling all transmit functionality in all stations. One useful feature in the master station is the *accent feature*. When enabled, radio incoming transmitions will have their volume reduced by 20% if intercom is being used by any crew member at the same time. All intercom stations are affected by this behaviour.
+Optionally, each network has a master station. Such stations can broadcast a message (activation through intercom broadcast PTT key), temporarily disabling all transmit functionality in all stations. One useful feature in the master station is the *accent feature*. When enabled, radio incoming transmissions will have their volume reduced by 20% if intercom is being used by any crew member at the same time. All intercom stations are affected by this behaviour.
 
 ## Infantry telephone
 
