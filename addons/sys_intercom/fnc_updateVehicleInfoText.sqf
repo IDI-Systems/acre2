@@ -90,7 +90,13 @@ if !(_intercomNames isEqualTo []) then {
         private _color = "#737373";
         private _textStatus = "";
         if (_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS || {_mountedRadio in ACRE_HEARABLE_RACK_RADIOS}) then {
-            _color = "#ffffff";
+
+            if (_mountedRadio in ACRE_CURRENT_TRANSMITTING_RADIOS) then {
+                _color = "#16c020";
+            } else {
+                _color = "#ffffff";
+            };
+
             _textStatus = "(R/T)";
             if ([_x, _unit] call EFUNC(sys_rack,isRackHearable)) then {
 

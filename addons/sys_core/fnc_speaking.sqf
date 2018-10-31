@@ -95,6 +95,8 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
         };
     #endif
 
+    ACRE_CURRENT_TRANSMITTING_RADIOS = [];
+
     private _compiledParams = HASH_CREATE;
     {
         private _recRadio = _x;
@@ -122,6 +124,8 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 // if (!GVAR(speaking_cache_valid)) then {
                 private _sourceRadios = _sources select _forEachIndex;
                 private _hearableRadios = [_recRadio, "handleMultipleTransmissions", _sourceRadios] call EFUNC(sys_data,transEvent);
+                ACRE_CURRENT_TRANSMITTING_RADIOS pushBackUnique _recRadio;
+
                 if (GVAR(fullDuplex)) then {
                     _hearableRadios = _sourceRadios;
                 };
