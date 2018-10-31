@@ -15,7 +15,9 @@
  * Public: Yes
  */
 
-params ["_volume"];
+params [
+    ["_volume", 1, [1]]
+];
 
 _volume = ((_volume min 1) max 0);
 
