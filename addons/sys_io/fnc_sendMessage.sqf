@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sends a message to the TeamSpeak plugin via the ACRE2Arma extension.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (GVAR(pipeCode) == "1") exitWith {
     private _ret = "ACRE2Arma" callExtension ("2" + _this);

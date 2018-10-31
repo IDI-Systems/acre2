@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId), "animations", []);
 params ["_func", "_args"];

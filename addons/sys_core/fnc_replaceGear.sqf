@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Replaces an item in a unit with another one. It is not limited to ACRE 2 related items
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_unit", "_itemToReplace", "_itemReplaceWith"];
 

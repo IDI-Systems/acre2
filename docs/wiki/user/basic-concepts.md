@@ -19,7 +19,7 @@ All the radios currently included in ACRE 2 are what is commonly known as half-d
 
 If there are multiple speakers on the same frequency, they will interfere with eachother in such a way that you will only receive the strongest (usually closest) speaker.
 
-Half-duplex limitations can be turned off in missions by using the [Full Duplex](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#full-duplex) and [Interference](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#interference) CBA Settings.
+Half-duplex limitations can be turned off in missions by using the difficulty module or the [setFullDuplex](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#full-duplex) and [setInterference](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#interference) API functions.
 
 ## Terrain and object interference
 
@@ -29,4 +29,4 @@ Unlike light these radio waves can still penetrate things like walls to some ext
 
 Terrain will outright block VHF and UHF signals. Some waves can bleed through via scattering and reflection, but generally radios on these bands are considered to be Line of Sight (LOS) radios as far as terrain is concerned.
 
-The amount the signal is attenuated by objects and terrain can be reduced or removed using the [Loss Model Scale](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#terrain-loss) CBA Setting.
+The amount the signal is attenuated by objects and terrain can be reduced or removed using the difficulty module or the [setLossModelScale](http://acre2.idi-systems.com/wiki/user/radio-signal-loss#terrain-loss) API function.

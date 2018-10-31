@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Wrapper function for calling the signal calculation (extension).
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (!isNil QGVAR(customSignalFunc)) exitWith { _this call GVAR(customSignalFunc); };
 

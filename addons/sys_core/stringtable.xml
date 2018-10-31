@@ -71,6 +71,8 @@
             <Portuguese>Trocar de Canal do TeamSpeak</Portuguese>
             <Polish>Zmiana kanału TeamSpeak</Polish>
             <Italian>Cambio canale TeamSpeak</Italian>
+            <Spanish>Cambio de canal de TeamSpeak</Spanish>
+            <French>Changer de canal TeamSpeak</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
@@ -81,6 +83,8 @@
             <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
             <Polish>Nazwa kanału TeamSpeak</Polish>
             <Italian>Nome canale Teamspeak</Italian>
+            <Spanish>Nombre de canal de TeamSpeak</Spanish>
+            <French>Nom du canal TeamSpeak</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
@@ -90,6 +94,8 @@
             <Polish>Hasło kanału TeamSpeak</Polish>
             <Italian>Password canale Teamspeak</Italian>
             <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
+            <Spanish>Contraseña del canal de TeamSpeak</Spanish>
+            <French>Mot de passe du canal TeamSpeak</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -462,6 +468,8 @@
             <Portuguese>Fones Abaixados</Portuguese>
             <Polish>Słuchawki założone</Polish>
             <Italian>Alza cuffie</Italian>
+            <Spanish>Subir auriculares</Spanish>
+            <French>Casque mis</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
@@ -474,6 +482,8 @@
             <Portuguese>Fones Levantados</Portuguese>
             <Polish>Słuchawki zdjęte</Polish>
             <Italian>Abbassa cuffie</Italian>
+            <Spanish>Bajar auriculares</Spanish>
+            <French>Casque enlevé</French>
         </Key>
     </Package>
 </Project>

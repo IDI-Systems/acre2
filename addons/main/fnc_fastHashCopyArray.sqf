@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Copies an array or an ACRE2 hash entry inside an ACRE 2 hash
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 _this apply {
     if (IS_HASH(_x)) then {

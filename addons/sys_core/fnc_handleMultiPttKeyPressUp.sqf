@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Used to handle key up of multiPttKeyPress.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 DFUNC(doHandleMultiPttKeyPressUp) = {
     params ["_args"];

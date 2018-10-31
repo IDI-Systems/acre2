@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles deletion and creation of ACRE2 hashes.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (count ACRE_FAST_HASH_TO_DELETE > 0) then {
     private _init_time = diag_tickTime;

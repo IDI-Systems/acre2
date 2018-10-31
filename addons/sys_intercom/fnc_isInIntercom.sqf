@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks if a unit is in the given intercom network of a vehicle.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_intercomNetwork"];
 
@@ -23,4 +23,4 @@ private _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
 
 if (_varName isEqualTo "") exitWith { false };
 
-INTERCOM_DISCONNECTED < [_vehicle, _unit, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
+INTERCOM_DISCONNECTED < ([_vehicle, _unit, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration))

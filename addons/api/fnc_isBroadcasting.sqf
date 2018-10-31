@@ -21,4 +21,7 @@ params [
 
 if (isNull _unit) exitWith {false};
 
-_unit in EGVAR(sys_core,keyedMicRadios)
+if (_unit in EGVAR(sys_core,keyedMicRadios)) exitWith {
+    true
+};
+false

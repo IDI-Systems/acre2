@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Configures the intercom system of a vehicle.
@@ -14,14 +15,10 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_intercoms"];
 
-private _classname = typeOf _vehicle;
 private _intercomNames = [];
-private _intercomDisplayNames = [];
-private _intercomShortNames = [];
 private _intercomPositions = [];
 private _intercomExceptions = [];
 private _intercomLimitedPositions = [];

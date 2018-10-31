@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Function to send a b64 sound to the teamspeak plugin to be loaded. Once loaded the sound will always be available.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_className",["_returnFunction",nil],["_force",false]];
 

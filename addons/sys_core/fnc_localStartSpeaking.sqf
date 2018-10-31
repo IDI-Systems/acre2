@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the local player start speaking event.
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("LOCAL START SPEAKING ENTER", _this);
 params ["", "", "_onRadio", ["_radioId", ""]];

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the case of a unit switching seats in a vehicle with intercom.
@@ -14,12 +15,10 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit"];
 
 private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
-private _usingLimitedPosition = _unit getVariable [QGVAR(usingLimitedPosition), []];
 private _oldSeat = _unit getVariable [QGVAR(role), ""];
 
 {

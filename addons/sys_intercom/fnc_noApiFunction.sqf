@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Dummy function for creating actions on vehicles (open of hatches, lights, etc) once the infantry phone is picked up.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // @todo Remove once API is stable
 TRACE_1("This is the dummy function for infantry phone: %1",QFUNC(noApiFunction));
