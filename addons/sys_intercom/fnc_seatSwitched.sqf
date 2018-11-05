@@ -23,7 +23,7 @@ private _oldSeat = _unit getVariable [QGVAR(role), ""];
 
 // If unit is transmitting through intercom, stop the transmittion during the seat switch
 if (GVAR(intercomPTT)) then {
-    [ACTION_INTERCOMPTT] call FUNC(handlePttKeyPressUp);
+    [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPressUp);
 };
 
 // Same for broadcast messages

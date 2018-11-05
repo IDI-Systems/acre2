@@ -14,8 +14,8 @@ if (!hasInterface) exitWith {};
     "ACRE2",
     "IntercomPTTKey",
     [(localize LSTRING(intercomPttKey)), (localize LSTRING(intercomPttKey_description))],
-    {[ACTION_INTERCOMPTT] call FUNC(handlePttKeyPress)},
-    {[ACTION_INTERCOMPTT] call FUNC(handlePttKeyPressUp)}
+    {[ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPress)},
+    {[ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPressUp)}
 ] call cba_fnc_addKeybind;
 
 [
