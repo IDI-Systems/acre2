@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks if the ACRE2Arma extension has any pending messages (typically for return data from the TeamSpeak plugin). This is called on a per frame basis.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (GVAR(pipeCode) == "1") then {
     for "_count" from 0 to 50 do {

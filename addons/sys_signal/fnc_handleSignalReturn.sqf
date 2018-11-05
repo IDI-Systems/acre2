@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Return function for signal calculation. Will be called after signal has been calculated in the extension.
@@ -12,7 +13,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_args", "_result"];
 _args params ["_transmitterClass", "_receiverClass"];

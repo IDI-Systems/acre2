@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Toggles the local player's headset mode (lowered or raised). In spectator this toggles the spectator mute.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("enter", _this);
 if (!ACRE_IS_SPECTATOR) then {

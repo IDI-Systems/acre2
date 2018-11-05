@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2 Team
  * Initializes vehicle adds the ACE interact options on vehicles
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle"];
 

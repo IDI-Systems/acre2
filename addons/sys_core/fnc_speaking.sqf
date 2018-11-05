@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to TeamSpeak.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // private _startTime = diag_tickTime;
 // private _rstart = 0;
@@ -68,8 +68,13 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                         _sources set [_keyIndex, []];
                     };
 
+                    // NOTE: Since sources is an array, and afterwards, the selectedd element is modified, the original array _radioParamsSorted
+                    // is also modified. _sources is "passed" by reference
+                    private _txRadios = _sources select _keyIndex;
+                    _txRadios pushBack [_unit,_txId,_signalData,_params];
+
                     if (EGVAR(sys_signal,showSignalHint)) then {
-                        signalHint = format ["%1%2->%3:\n%4dBm (%5%6)\n", _signalHint, name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
+                        _signalHint = format ["%1%2->%3:\n%4dBm (%5%6)\n", _signalHint, name _unit, _rxId, _signalData select 1, round((_signalData select 0)*100), "%"];
                     };
                 };
             } forEach _returnedRadios;

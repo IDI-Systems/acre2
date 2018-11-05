@@ -1,20 +1,20 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the radio volume.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique Radio ID <STRING>
+ * 1: Volume between 0 and 1 <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_RPC343_ID_1", 0.8] call acre_sys_radio_fnc_setRadioVolume
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radio", "_volume"];
 

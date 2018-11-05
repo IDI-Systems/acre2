@@ -1,25 +1,20 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Checks if the given unique radio ID exits.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Radio exists? <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_radio_fnc_radioExits
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_class"];
 
-private _ret = false;
-if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable), _class)) then {
-    _ret = true;
-};
-_ret;
+HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable), _class)

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Acknowledges that a radio of with the ID has been created.
@@ -14,21 +15,21 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_class","_player"];
 _class = toLower _class;
 
-if ((GVAR(unacknowledgedIds) find _class) != -1) then {
+private _index = GVAR(unacknowledgedIds) find _class;
+if (_index != -1) then {
     if (hasInterface && {isServer && {acre_player == _player}}) then {
         private _fnc = {
             _class = _this;
-            GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];
+            GVAR(unacknowledgedIds) deleteAt (GVAR(unacknowledgedIds) find _class);
             HASH_REM(GVAR(unacknowledgedTable), _class);
         };
         [_fnc, _class] call CBA_fnc_execNextFrame;
     } else {
-        GVAR(unacknowledgedIds) = GVAR(unacknowledgedIds) - [_class];
+        GVAR(unacknowledgedIds) deleteAt _index;
         HASH_REM(GVAR(unacknowledgedTable), _class);
     };
 } else {

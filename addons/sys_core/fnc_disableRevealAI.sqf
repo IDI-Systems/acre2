@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function handles stopping the AI reveal check.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (isNil QGVAR(monitorAIHandle)) exitWith { false };
 

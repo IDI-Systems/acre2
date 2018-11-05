@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the event of other (remote) players stopping speaking.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_speakingId","_netId"];
 _speakingId = parseNumber _speakingId;

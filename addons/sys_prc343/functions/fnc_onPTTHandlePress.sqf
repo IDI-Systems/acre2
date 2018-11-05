@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the event of pressing the PTT handle. It triggers an animation and allows changing the actual block.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 #define IN 0
 #define OUT 1

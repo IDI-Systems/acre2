@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Updates the status of the infantry phone of a vehicle.
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]]];
 
@@ -52,8 +52,6 @@ switch (_action) do {
         [format [localize LSTRING(infantryPhoneReceived), _intercomText], ICON_RADIO_CALL, nil, _unit] call EFUNC(sys_core,displayNotification);
     };
     case 3: {
-        private _previousIntercom = _vehicle getVariable [QGVAR(unitInfantryPhone), []] select 1;
-
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
     };

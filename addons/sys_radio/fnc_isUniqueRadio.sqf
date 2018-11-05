@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns whether a classname has the property acre_isUnique. This function exists because it is used frequently and config lookup is expensive.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (HASH_HASKEY(GVAR(radioUniqueCache),_this)) exitWith {
     HASH_GET(GVAR(radioUniqueCache),_this);

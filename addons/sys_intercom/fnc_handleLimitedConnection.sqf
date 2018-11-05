@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the intercom connection status of a limited intercom station.
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_intercomNetwork", "_newConnectedStatus", "_oldConnectedStatus"];
 

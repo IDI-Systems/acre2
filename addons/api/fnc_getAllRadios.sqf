@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns all radios defined in CfgAcreRadios. Caches result for future calls.
@@ -14,7 +15,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 // Return cached if already ran
 if (!isNil QGVAR(allRadios)) exitWith {

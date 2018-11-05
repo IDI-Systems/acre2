@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the babel language key from the display name.
@@ -14,8 +15,11 @@
  * Public: Yes
  */
 
-#include "script_component.hpp"
 
-params ["_languageKey"];
+params [
+    ["_languageKey", "", [""]]
+];
+
+if (_languageKey isEqualTo "") exitWith {false};
 
 [_languageKey] call EFUNC(sys_core,getLanguageId);

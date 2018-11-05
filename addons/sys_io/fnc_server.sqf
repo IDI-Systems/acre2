@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Creates a PFH to monitor the ACRE2Arma extension's connection to the TeamSpeak plugin.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(pipeCode) = "0";
 DFUNC(connectionFnc) = {
@@ -28,8 +28,11 @@ DFUNC(connectionFnc) = {
             if (GVAR(pipeCode) != "1") then {
                 if (time > 15) then {
                     if (isMultiplayer) then {
-                        private _warning = "<t color='#FF8021'>WARNING!</t><br />ACRE is not connected to Teamspeak!";
-                        [_warning, 3] call EFUNC(sys_core,displayNotification);
+                        if ((missionNamespace getVariable [QGVAR(notConnectedTime), -15]) + 30 < time ) then {
+                            GVAR(notConnectedTime) = time;
+                            private _warning = "<t color='#FF8021'>WARNING!</t><br />ACRE is not connected to Teamspeak!";
+                            [_warning, 3] call EFUNC(sys_core,displayNotification);
+                        };
                         GVAR(connectCount) = GVAR(connectCount) + 1;
                         if (GVAR(connectCount) > 15) then {
                             INFO_1("Pipe error: %1",GVAR(pipeCode));

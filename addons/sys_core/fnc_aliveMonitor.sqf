@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function is used to check the conditions to mute the local player to prevent the local player from chatting.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(oldMute) = 0;
 GVAR(_waitTime) = 0;

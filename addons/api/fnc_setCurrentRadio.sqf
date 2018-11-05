@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the currently active radio by radio ID.
@@ -13,9 +14,10 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_radio"];
+params [
+    ["_radio", "", [""]]
+];
 
 if (isNil "_radio") exitWith { false };
 if ( !(_radio in ([] call EFUNC(sys_data,getPlayerRadioList))) ) exitWith { false };
