@@ -319,6 +319,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
             <English>Deactivate Accent</English>
+            <German>Bordfunkpriorität deaktivieren</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_pttActivation">
             <English>PTT Activation</English>
