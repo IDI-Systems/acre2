@@ -154,7 +154,6 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                         if (!HASH_HASKEY(_compiledParams, netId _unit)) then {
                             HASH_SET(_compiledParams, netId _unit, []);
                         };
-                        //[format ["RX: %1", _unit], "", "", 2, [ACRE_NOTIFICATION_YELLOW]] call EFUNC(sys_list,displayHint);
                         private _speakingRadios = HASH_GET(_compiledParams, netId _unit);
                         if (_params select 3) then {
                             // Possible sound fix: Always double the distance of the radio for hearing purposes
