@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * [_this select 0, 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox"
+ * [_this select 0, 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc_showHintBox"
  *
  * Public: No
  */

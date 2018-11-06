@@ -33,7 +33,7 @@ class RscTitles {
         duration = 0.15;
         fadein = 0;
 
-        onLoad = "[(_this select 0), 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox";
+        onLoad = "[(_this select 0), 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc_showHintBox";
         class controlsBackground {
             class GVAR(CycleDialogBackgroundColor) {
                 idc = IDC_CONTROLBACKGROUNDCOLOR;
@@ -64,7 +64,7 @@ class RscTitles {
         fadein = 0;
 
         //onLoad = QGVAR(hintIDD) = (_this select 0);
-        onLoad = "[(_this select 0), 1, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox";
+        onLoad = "[(_this select 0), 1, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc_showHintBox";
         class controlsBackground {
             class GVAR(CycleDialogBackgroundColor) {
                 idc = IDC_CONTROLBACKGROUNDCOLOR;
