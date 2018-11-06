@@ -43,8 +43,8 @@ class RscTitles {
                 colorBackground[] = { RGB_YELLOW };
                 font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.023;
-                x = SafeZoneX+SafeZoneW-.352;
-                y = SafeZoneY+SafeZoneH-.128;
+                x = "profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]";
+                y = "profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]";
                 w = .352;
                 h = .128;
                 text = "";
@@ -74,8 +74,8 @@ class RscTitles {
                 colorBackground[] = { 1, 0.8, 0, 0.2 };
                 font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.023;
-                x = SafeZoneX+SafeZoneW-.352;
-                y = SafeZoneY+SafeZoneH-.128;
+                x = "profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]";
+                y = "profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]";
                 w = .352;
                 h = .128;
                 text = "";
@@ -88,8 +88,8 @@ class RscTitles {
                 colorBackground[] = { 0, 0, 0, 0.8 };
                 font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.023;
-                x = SafeZoneX+SafeZoneW-.350;
-                y = SafeZoneY+SafeZoneH-.125;
+                x = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]) + .002";
+                y = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]) + .003";
                 w = .350;
                 h = .125;
                 text = "";
@@ -107,8 +107,8 @@ class RscTitles {
                 colorBackground[] = { 1,1,1,0 };
                 font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.06;
-                x = SafeZoneX+SafeZoneW-.350+0.004;
-                y = SafeZoneY+SafeZoneH-.125-0.004;
+                x = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]) + .002 + 0.004";
+                y = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]) + .003 - 0.004";
                 w = .350;
                 h = .063;
                 text = "";
@@ -121,8 +121,8 @@ class RscTitles {
                 colorBackground[] = { 1,1,1,0 };
                 font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.03;
-                x = SafeZoneX+SafeZoneW-.350+0.004;
-                y = SafeZoneY+SafeZoneH-.125+0.054;
+                x = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]) + .002 + 0.004";
+                y = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]) + .003 + 0.054";
                 w = .350;
                 h = .023;
                 text = "";
@@ -135,8 +135,8 @@ class RscTitles {
                 colorBackground[] = { 1,1,1,0 };
                 font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.03;
-                x = SafeZoneX+SafeZoneW-.350+0.004;
-                y = SafeZoneY+SafeZoneH-.125+0.084;
+                x = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]) + .002 + 0.004";
+                y = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]) + .003 + 0.084";
                 w = .350;
                 h = .023;
                 text = "";
