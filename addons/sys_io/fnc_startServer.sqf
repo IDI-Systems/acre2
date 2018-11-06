@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Starts the SQF code to maintain connectivity to the TeamSpeak plugin via the ACRE2Arma extension.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(hasErrored) = false;
 GVAR(connectCount) = 15;

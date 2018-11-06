@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (!alive acre_player || time < 1 || GVAR(keyBlock) || dialog || ACRE_IS_SPECTATOR) exitWith {
     if (!GVAR(keyBlock)) then {

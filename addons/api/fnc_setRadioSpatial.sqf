@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets what spatialization zone the specified radio ID should be in. “LEFT”, “RIGHT” or “CENTER”.
@@ -14,9 +15,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_radio", "_side"];
+params [
+    ["_radio", "", [""]],
+    ["_side", "", [""]]
+];
 
 if ( (isNil "_side") || (isNil "_radio") ) exitWith { false };
 if ( !(_radio in ([] call EFUNC(sys_data,getPlayerRadioList))) ) exitWith { false };

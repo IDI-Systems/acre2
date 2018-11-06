@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Set the radio type to replace "ItemRadio" in unit inventories. By default this is the "ACRE_PRC343"
@@ -13,7 +14,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 params ["_radioType"];
 

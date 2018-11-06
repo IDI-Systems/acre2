@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Function called when starting a transmission. For the PRC77 it does nothing.
@@ -17,6 +18,5 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 true

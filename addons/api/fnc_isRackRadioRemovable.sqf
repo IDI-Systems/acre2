@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks wether a rack can have its radios unmounted.
@@ -13,8 +14,9 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_rackId"];
+params [
+    ["_rackId", "", [""]]
+];
 
 [_rackId] call EFUNC(sys_rack,isRadioRemovable)

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks whether the provided unit has a radio of the specified radio type in their inventory.
@@ -14,9 +15,13 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_weaponArray", "_type"];
+params [
+    ["_weaponArray", objNull, [objNull, []]],
+    ["_type", "", [""]]
+];
+
+if (_type isEqualTo "") exitWith {false};
 
 _type = toLower _type;
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Ringing handler.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_args", "_pfhID"];
 _args params ["_vehicle", "_infantryPhonePosition"];
@@ -40,7 +40,7 @@ if ((isNull _unitInfantryPhone) && {_isCalling select 0} && {alive _vehicle} && 
     private _soundPitch = INFANTRY_PHONE_SOUNDPITCH;
     private _distance = INFANTRY_PHONE_MAX_DISTANCE;
     private _customSound = _vehicle getVariable [QGVAR(infPhoneCustomRinging), []];
-    if (count _customSound > 0) then {
+    if !(_customSound isEqualTo []) then {
         _soundFile = _customSound select 0;
         _volume = _customSound select 2;
         _soundPitch = _customSound select 3;

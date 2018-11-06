@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns the full ACRE2 channel Hash data of the specified preset name for the specified radio.
@@ -6,7 +7,7 @@
  * Arguments:
  * 0: Base radio class <STRING>
  * 1: Preset name <STRING>
- * 2: Channel number <STRING>
+ * 2: Channel number <NUMBER>
  *
  * Return Value:
  * Hash containing all the channel preset information <HASH>
@@ -16,9 +17,12 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_radioClass", "_presetName", "_channelReference"];
+params [
+    ["_radioClass", "", [""]],
+    ["_presetName", "", [""]],
+    ["_channelReference", 0, [0]]
+];
 
 if (!(_radioClass isEqualType "")) exitWith { nil };
 if (!(_presetName isEqualType "")) exitWith { nil };

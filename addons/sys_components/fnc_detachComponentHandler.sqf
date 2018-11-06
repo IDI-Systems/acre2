@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the detachment of a component.
@@ -7,6 +8,7 @@
  * 1: Event type <STRING>
  * 2: Data <ARRAY>
  * 3: Radio data for the specified radio <HASH>
+ * 4: Event kind <STRING>
  *
  * Return Value:
  * None
@@ -16,9 +18,8 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_radioId","_event", "_data", "_radioData", "_eventKind"];
+params ["", "", "_data", "_radioData", ""];
 
 private _childConnector = _data select 0; // this is the connector on this event's device
 

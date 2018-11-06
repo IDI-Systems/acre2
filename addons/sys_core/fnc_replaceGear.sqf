@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Replaces an item in a unit with another one. It is not limited to ACRE 2 related items
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_unit", "_itemToReplace", "_itemReplaceWith"];
 
@@ -23,21 +23,21 @@ _itemToReplace = toLower _itemToReplace;
 _itemReplaceWith = toLower _itemReplaceWith;
 
 private _uniform = uniformContainer _unit;
-private _uniforCmargo = (itemCargo _uniform) apply {toLower _x};
+private _uniforCmargo = ((getItemCargo _uniform) select 0) apply {toLower _x};
 if (!isNull _uniform && {_itemToReplace in _uniforCmargo}) exitWith {
     _unit removeItem _itemToReplace;
     _uniform addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit
 };
 
 private _vest = vestContainer _unit;
-private _vestCargo = (itemCargo _vest) apply {toLower _x};
+private _vestCargo = ((getitemCargo _vest) select 0) apply {toLower _x};
 if (!isNull _vest && {_itemToReplace in _vestCargo}) exitWith {
     _unit removeItem _itemToReplace;
     _vest addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit
 };
 
 private _backpack = backpackContainer _unit;
-private _backpackCargo = (itemCargo _backpack) apply {toLower _x};
+private _backpackCargo = ((getItemCargo _backpack) select 0) apply {toLower _x};
 if (!isNull _backpack && {_itemToReplace in _backpackCargo}) exitWith {
     _unit removeItem _itemToReplace;
     _backpack addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit

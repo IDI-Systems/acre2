@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Creates a new language to be used by the babel system.
@@ -14,11 +15,15 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 // Babel is not maintained on non-clients.
 if (!hasInterface) exitWith {};
 
-params ["_languageKey", "_languageName"];
+params [
+    ["_languageKey", "", [""]],
+    ["_languageName", "", [""]]
+];
+
+if (_languageKey isEqualTo "" || {"_languageName" isEqualTo ""}) exitWith {false};
 
 [_languageKey, _languageName] call EFUNC(sys_core,addLanguageType);

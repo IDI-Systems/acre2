@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Updates the ACRE_SPECTATORS_LIST global variable.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (isServer) then {
     params ["_ts3Id","_tsStatus","_clientOwner"];

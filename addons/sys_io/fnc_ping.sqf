@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Creates a loop to send periodic messages to the TeamSpeak plugin (via the ACRE2Arma extension) to indicate that the game is still connected.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 DFUNC(pingFunc) = {
     if (GVAR(serverStarted)) then {

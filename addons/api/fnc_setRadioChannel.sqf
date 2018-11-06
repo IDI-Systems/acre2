@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the channel number of the currently active channel on the provided radio ID.
@@ -14,9 +15,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_radioId", "_channelNumber"];
+params [
+    ["_radioId", "", [""]],
+    ["_channelNumber", 0, [0]]
+];
 
 if ( !(_radioId isEqualType "")) exitWith { -1 };
 

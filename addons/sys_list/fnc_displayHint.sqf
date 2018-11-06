@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Displays an ACRE notification in the lower left corner. Capable of holding three lines of text and configurable colors.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params [
     "_hintTitle",

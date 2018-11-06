@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Generates actions for controlling the spatial set-up of a radio
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target", "", "_params"];
 _params params ["_radioID", "", "", "_spatial"];

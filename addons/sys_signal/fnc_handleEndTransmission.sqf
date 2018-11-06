@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Function called when radio transmission is finished (see sys_data/CfgAcreInterface.hpp).
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["", "", "_data"];
 _data params ["_transmitterClass"];

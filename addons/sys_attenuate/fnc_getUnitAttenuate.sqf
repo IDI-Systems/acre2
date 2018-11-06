@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calculates the attenuation between the local player unit and the inputted unit.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // this function gets the attenuation value relative *from* the provided unit *to* the acre_player
 // e.g. what the local acre_player attenuation scale value is.
