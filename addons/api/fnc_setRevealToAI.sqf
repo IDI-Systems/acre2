@@ -4,14 +4,14 @@
  * Effects are local.
  *
  * Arguments:
- * 0: Reveal players to AI that speak <BOOL>
+ * 0: Reveal factor players to AI that speak <NUMBER>
  * 1: CBA Settings Call <BOOL> (default: false)
  *
  * Return Value:
- * Are players that speak revealed to AI <BOOL>
+ * Reveal factor for revealing players to AI <NUMBER>
  *
  * Example:
- * _status = [false] call acre_api_fnc_setRevealToAI
+ * _status = [0.5] call acre_api_fnc_setRevealToAI
  *
  * Public: Yes
  */
@@ -31,13 +31,10 @@ if (!_CBASettingCall) then {
     WARNING_1("%1 has been called directly and CBA Setting for it has been blocked!",QFUNC(setRevealToAI));
 };
 
-// Set
-if !(_var isEqualType false) exitWith { false };
-
-if (!EGVAR(sys_core,revealToAI) && _var) then {
+if (EGVAR(sys_core,revealToAI) isEqualTo 0 && _var > 0) then {
     [] call EFUNC(sys_core,enableRevealAI);
 } else {
-    if (EGVAR(sys_core,revealToAI) && !_var) then {
+    if ((EGVAR(sys_core,revealToAI) > 0) && _var isEqualTo 0) then {
         [] call EFUNC(sys_core,disableRevealAI);
     };
 };

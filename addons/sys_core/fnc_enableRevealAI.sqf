@@ -1,3 +1,4 @@
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
@@ -27,7 +28,7 @@ DFUNC(monitorAI_PFH) = {
 
     //soundFactor is how loud the local player is speaking.
     private _soundFactor = EGVAR(api,selectableCurveScale); // typically 0.1 -> 1.3
-    private _multiplier = 250*(_soundFactor^2);
+    private _multiplier = GVAR(revealToAI)*250*(_soundFactor^2);
 
     private _nearUnits = (getPosATL acre_player) nearEntities ["CAManBase", (130 * _soundFactor)];
     private _startTime = diag_tickTime;
@@ -67,7 +68,7 @@ DFUNC(monitorAI_PFH) = {
         };
     } forEach _nearUnits;
 
-    if (!GVAR(revealToAI)) then {
+    if (GVAR(revealToAI) isEqualTo 0) then {
         [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
 };

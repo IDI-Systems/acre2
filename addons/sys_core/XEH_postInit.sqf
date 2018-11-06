@@ -87,7 +87,7 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 // Call our setter to enable AI reveal if its been set here
-if (GVAR(revealToAI) && hasInterface) then {
+if ((GVAR(revealToAI) > 0) && hasInterface) then {
     INFO("AI Detection Activated.");
     [] call FUNC(enableRevealAI);
 } else {

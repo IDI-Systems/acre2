@@ -120,10 +120,10 @@
 // Reveal to AI
 [
     QGVAR(revealToAI),
-    "CHECKBOX",
+    "SLIDER",
     localize LSTRING(revealToAI_displayName),
     "ACRE2",
-    true,
+    [0, 1, 0.50, 2],
     true,
     {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
