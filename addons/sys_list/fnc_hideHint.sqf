@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Hides a given notification layer
+ * Hides a given notification layer.
  *
  * Arguments:
  * 0: Notification layer <STRING>
@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * ["acre_sys_list_hintLayer_0"] call acre_sys_list_fnc_hideHint;
+ * ["acre_sys_list_hintLayer_0"] call acre_sys_list_fnc_hideHint
  *
  * Public: No
  */

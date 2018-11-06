@@ -1,19 +1,19 @@
 /*
  * Author: ACRE2Team
- * Displays an ACRE notification in the lower left corner. Capable of holding three lines of text and configurable colors
+ * Displays an ACRE notification in the lower left corner. Capable of holding three lines of text and configurable colors.
  *
  * Arguments:
  * 0: Title String <STRING>
  * 1: Line 1 String <STRING>
  * 2: Line 2 String <STRING>
- * 3: Optional display duration <NUMBER>(default: 1)
- * 4: Optional color in RGBA format <ARRAY>(default: [1, 0.8, 0, 1])
+ * 3: Optional display duration <NUMBER> (default: 1)
+ * 4: Optional color in RGBA format <ARRAY> (default: [1, 0.8, 0, 1])
  *
  * Return Value:
  * Name of cutRsc layer <STRING>
  *
  * Example:
- * ["Title Line", "Line 1", "Line 2", 1, [1, 1, 1, 1]] call acre_sys_list_fnc_displayHint;
+ * ["Title Line", "Line 1", "Line 2", 1, [1, 1, 1, 1]] call acre_sys_list_fnc_displayHint
  *
  * Public: No
  */

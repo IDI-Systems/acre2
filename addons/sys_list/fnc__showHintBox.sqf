@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Handles the ACRE notification system
+ * Handles the ACRE notification system.
  *
  * Arguments:
  * 0: Display of CutRsc <DISPLAY>
@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [(_this select 0), 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox";
+ * [_this select 0, 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc__showHintBox"
  *
  * Public: No
  */
