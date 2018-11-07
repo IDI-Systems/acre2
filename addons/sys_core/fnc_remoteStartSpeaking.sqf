@@ -40,8 +40,6 @@ if (!(_languageId isEqualType 0)) then { _languageId = parseNumber _languageId; 
 if (!(_onRadio isEqualType 0)) then { _onRadio = parseNumber _onRadio; };
 
 
-
-
 private _result = false;
 //if (_onRadio != 1 || {_radioId != ACRE_BROADCASTING_RADIOID}) then {
     private _unit = objectFromNetId _netId; // will be objNull if not found.
@@ -111,7 +109,7 @@ private _result = false;
                 } forEach _nearRadios;
                 GVAR(nearRadios) = _speakerRadio;
                 private _personalRadioList = [] call EFUNC(sys_data,getPlayerRadioList);
-                if (_radioId in _personalRadioList && ACRE_BROADCASTING_RADIOID == "") then {
+                if (_radioId in _personalRadioList && {ACRE_BROADCASTING_RADIOID == ""}) then {
                     ACRE_BROADCASTING_RADIOID = _radioId;
                     // diag_log text format["ASSIGNED ACRE_BROADCASTING_RADIOID REMOTE START: %1", ACRE_BROADCASTING_RADIOID];
                 };
@@ -119,7 +117,7 @@ private _result = false;
                 _okRadios = (_okRadios select 0) select 1;
 
                 //_okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
-                if ((count _okRadios) > 0) then {
+                if !(_okRadios isEqualTo []) then {
                     missionNamespace setVariable [_radioId + "_signal_startTime", diag_tickTime];
                     _result = true;
                     GVAR(speaking_cache_valid) = false;

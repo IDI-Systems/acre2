@@ -13,13 +13,7 @@ class CfgFunctions {
             PATHTO_FNC(setPTTDelay);
             PATHTO_FNC(getPTTDelay);
 
-            PATHTO_FNC(setRevealToAI);
             PATHTO_FNC(getRevealToAI);
-
-            PATHTO_FNC(setLossModelScale);
-            PATHTO_FNC(setFullDuplex);
-            PATHTO_FNC(setInterference);
-            PATHTO_FNC(ignoreAntennaDirection);
 
             PATHTO_FNC(setCustomSignalFunc);
 
@@ -115,7 +109,6 @@ class CfgFunctions {
     class AcreModules {
         class GVAR(mission_setup) {
             PATHTO_FNC(basicMissionSetup);
-            PATHTO_FNC(difficultySettings);
             PATHTO_FNC(nameChannels);
         };
     };
