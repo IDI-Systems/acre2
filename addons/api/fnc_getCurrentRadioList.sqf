@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Retrieves the array of current unique radio IDs that are on the local player.
@@ -13,7 +14,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 private _ret = [] call EFUNC(sys_data,getPlayerRadioList);
 

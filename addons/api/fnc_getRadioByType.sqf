@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns the unique radio ID of the first radio the local player or unit possesses of a given type. This function does not compensate for units with multiple radios of the same type. There is no guarantee of which radio it will return.
@@ -16,9 +17,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_radioType",["_array",[]]];
+params [
+    ["_radioType", "", [""]],
+    ["_array",[], [[]]]
+];
 
 private _array = [];
 private _ret = nil;

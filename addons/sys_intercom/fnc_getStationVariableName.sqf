@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the variable name for accessing intercom configuration in the players position.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit"];
 
@@ -35,7 +35,7 @@ private _varName = "";
     };
 } forEach (fullCrew [_vehicle, "", false]);
 
-if (!found) then {
+if (!_found) then {
     _varName = "";
 };
 

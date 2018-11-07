@@ -1,20 +1,19 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the spatial radio configuration.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Spatial radio configuration <STRING>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_getRadioSpatial
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radio"];
 

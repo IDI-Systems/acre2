@@ -21,9 +21,6 @@ params ["_obj"];
 //@TODO: This is a hack fix for vehicles having funky up vectors when people are inside...
 if (vehicle _obj == _obj) then {
     private _spinePos = _obj modelToWorldVisual (_obj selectionPosition "Spine3");
-    // For Debugging
-    // drawIcon3D ["a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa", [1,1,1,1], _spinePos, 1, 1, 45, "Spine", 1, 0.05, "TahomaB"];
-
     _upV = _spinePos vectorFromTo (_obj modelToWorldVisual (_obj selectionPosition "Neck"));
     private _upP = _upV call cba_fnc_vect2polar;
     

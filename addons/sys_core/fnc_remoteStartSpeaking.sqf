@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the event of other (remote) players starting to speaking.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 ACRE_COUNTERS = [];
 CREATE_COUNTER(speaking_loop);

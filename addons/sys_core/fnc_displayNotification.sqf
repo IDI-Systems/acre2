@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Displays a notification, using ACE3 notification if available, otherwise a silent hint.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_text", ["_iconOrSize", -1]]; // -1 if not supplied, must set default value for isEqualType
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets all racks in a vehicle.
@@ -13,9 +14,10 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params [["_vehicle", objNull]];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 if (isNull _vehicle) exitWith {
     WARNING_1("Vehicle %1 not defined.",format ["%1", _vehicle]);

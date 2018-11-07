@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Configures the initial intercom connectivity (disconnected/connected, ...) for all allowed seats.
@@ -18,16 +19,12 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_allowedPositions", "_forbiddenPositions", "_limitedPositions", "_initialConfiguration", "_masterStation"];
-
-private _type = typeOf _vehicle;
 
 private _intercomStations = [];
 
 {
-    private _unit = _x select 0;
     private _role = toLower (_x select 1);
     if (_role in ["cargo", "turret"]) then {
         if (_role isEqualTo "cargo") then {
@@ -50,33 +47,33 @@ private _intercomStations = [];
         //   7: This is a master station <BOOL> (default: false)
         // 1: Unit using intercom <OBJECT> (default: objNull)
         private _intercomStatus = [[false, INTERCOM_DISCONNECTED, INTERCOM_DEFAULT_VOLUME, false, true, false, true, false], objNull];
-
+        private _configurationArray = _intercomStatus select 0;
         if (_role in (_forbiddenPositions select _forEachIndex)) then {
-            (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, false];
+            _configurationArray set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, false];
         } else {
             if (_role in _x && {!(_role in (_forbiddenPositions select _forEachIndex))}) then {
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
+                _configurationArray set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
                 if ((_initialConfiguration select _forEachIndex) == 1) then {
-                    (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX];
+                    _configurationArray set [INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX];
                 };
             };
 
             if (_role in (_limitedPositions select _forEachIndex)) then {
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_LIMITED, true];
+                _configurationArray set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
+                _configurationArray set [INTERCOM_STATIONSTATUS_LIMITED, true];
 
                 // Limited positions are by default configured without voice activation
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_VOICEACTIVATION, false];
+                _configurationArray set [INTERCOM_STATIONSTATUS_VOICEACTIVATION, false];
             };
 
             // Handle turned out
             if ("turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)}) then {
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false];
+                _configurationArray set [INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false];
             };
 
             // Configure master station
             if (_role in (_masterStation select _forEachIndex)) then {
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_MASTERSTATION, true];
+                _configurationArray set [INTERCOM_STATIONSTATUS_MASTERSTATION, true];
             };
 
             // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to

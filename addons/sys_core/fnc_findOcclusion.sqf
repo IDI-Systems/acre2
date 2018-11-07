@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calculates the direct speech occlusion between two positions. Intended to calculate attenuation between the local player and a target unit.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_startPos", "_endPos", "_unit"];
 
