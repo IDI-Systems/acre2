@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Calculates the upright direction depending on the Antenna Settings
+ * Calculates the upright direction depending on the Antenna Settings.
  *
  * Arguments:
  * 0: Object to calculate the antenna direction for <OBJECT>
@@ -16,9 +16,10 @@
  */
 #include "script_component.hpp"
 
-params ["_obj",
+params [
+    "_obj",
     ["_upV", [0,0,0], [], 3]
-    ];
+];
 
 if (EGVAR(sys_core,automaticAntennaDirection)) then {
     private _upP = _upV call cba_fnc_vect2polar;

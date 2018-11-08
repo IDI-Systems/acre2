@@ -1,6 +1,6 @@
 /*
  * Author: ACRE2Team
- * Handles the antenna indicator (bound to the A3 stance indicator)
+ * Handles the antenna indicator (bound to the A3 stance indicator).
  *
  * Arguments:
  * None
