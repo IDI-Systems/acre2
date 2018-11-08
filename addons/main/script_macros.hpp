@@ -21,6 +21,15 @@
 #define RGB_LIME 0, 1, 0, 1
 #define RGB_SILVER 0.75, 0.75, 0.75, 1
 
+#define ACRE_NOTIFICATION_WHITE 0.8, 0.8, 0.8, 1
+#define ACRE_NOTIFICATION_BLACK 0, 0, 0, 1
+#define ACRE_NOTIFICATION_YELLOW 1, 0.8, 0, 1
+#define ACRE_NOTIFICATION_RED 1, 0.29, 0.16, 1
+#define ACRE_NOTIFICATION_GREEN 0.13, 0.61, 0.12, 1
+#define ACRE_NOTIFICATION_BLUE 0.08, 0.71, 1, 1
+#define ACRE_NOTIFICATION_PURPLE 0.66, 0.05, 1, 1
+
+
 #define ACTIVE_RADIO "acre_active_radio"
 
 #define IS_MUTED(playerObj) ([playerObj] call EFUNC(sys_core,isMuted))

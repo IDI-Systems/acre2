@@ -3,7 +3,7 @@
     type = CT_BUTTON;
     style = ST_LEFT;
     default = false;
-    font = FontM;
+    font = "RobotoCondensed";
     sizeEx = 0.025;
     colorText[] = { 0, 0, 0, 1 };
     colorFocused[] = { 1, 0, 0, 1 };   // border color for focused state
@@ -27,22 +27,24 @@
 
 class RscTitles {
     class GVAR(radioCycleDisplayBG) {
-        idd = 19099;
+        idd = IDD_DISPLAYBACKGROUND;
         movingEnable = 0;
         name = QGVAR(radioCycleDisplayBG);
         duration = 0.15;
         fadein = 0;
+
+        onLoad = "[(_this select 0), 0, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc_showHintBox";
         class controlsBackground {
-            class GVAR(CycleDialogBackgroundYellow) {
-                idc = -1;
+            class GVAR(CycleDialogBackgroundColor) {
+                idc = IDC_CONTROLBACKGROUNDCOLOR;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 1 };
                 colorBackground[] = { RGB_YELLOW };
-                font = FontM;  // defined constant
+                font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.023;
-                x = SafeZoneX+SafeZoneW-.352;
-                y = SafeZoneY+SafeZoneH-.128;
+                x = "profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]";
+                y = "profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]";
                 w = .352;
                 h = .128;
                 text = "";
@@ -55,39 +57,39 @@ class RscTitles {
         //onLoad = QGVAR(hintIDD) = (_this select 0);
     };
     class GVAR(radioCycleDisplay) {
-        idd = 19099;
+        idd = IDD_DISPLAY;
         movingEnable = 0;
         name = QGVAR(radioCycleDisplay);
-        duration = 2;
+        duration = 60;
         fadein = 0;
 
         //onLoad = QGVAR(hintIDD) = (_this select 0);
-        onLoad = QUOTE([(_this select 0)] call FUNC(_showHintBox));
+        onLoad = "[(_this select 0), 1, acre_sys_list_hintBufferPointer] call acre_sys_list_fnc_showHintBox";
         class controlsBackground {
-            class GVAR(CycleDialogBackgroundYellow) {
-                idc = -1;
+            class GVAR(CycleDialogBackgroundColor) {
+                idc = IDC_CONTROLBACKGROUNDCOLOR;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 1 };
-                colorBackground[] = { 1, 1, 0, 0.2 };
-                font = FontM;  // defined constant
+                colorBackground[] = { 1, 0.8, 0, 0.2 };
+                font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.023;
-                x = SafeZoneX+SafeZoneW-.352;
-                y = SafeZoneY+SafeZoneH-.128;
+                x = "profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]";
+                y = "profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]";
                 w = .352;
                 h = .128;
                 text = "";
             };
             class GVAR(CycleDialogBackgroundBlack) {
-                idc = -1;
+                idc = IDC_CONTROLBACKGROUNDBLACK;
                 type = CT_STATIC;  // defined constant
                 style = ST_CENTER;  // defined constant
                 colorText[] = { 0, 0, 0, 0.25 };
-                colorBackground[] = { RGB_BLACK };
-                font = FontM;  // defined constant
+                colorBackground[] = { 0, 0, 0, 0.8 };
+                font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.023;
-                x = SafeZoneX+SafeZoneW-.350;
-                y = SafeZoneY+SafeZoneH-.125;
+                x = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]) + .002";
+                y = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]) + .003";
                 w = .350;
                 h = .125;
                 text = "";
@@ -98,43 +100,43 @@ class RscTitles {
 
         class controls {
             class GVAR(CycleDialogTitle) {
-                idc = 19100;
+                idc = IDC_CONTROLTITLE;
                 type = CT_STATIC;  // defined constant
                 style = ST_LEFT;  // defined constant
-                colorText[] = { RGB_YELLOW };
+                colorText[] = { 1, 0.8, 0, 0.8 };
                 colorBackground[] = { 1,1,1,0 };
-                font = FontM;  // defined constant
+                font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.06;
-                x = SafeZoneX+SafeZoneW-.350+0.004;
-                y = SafeZoneY+SafeZoneH-.125-0.004;
+                x = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]) + .002 + 0.004";
+                y = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]) + .003 - 0.004";
                 w = .350;
                 h = .063;
                 text = "";
             };
             class GVAR(CycleDialogLine1) {
-                idc = 19101;
+                idc = IDC_CONTROLLINE1;
                 type = CT_STATIC;  // defined constant
                 style = ST_LEFT;  // defined constant
-                colorText[] = { RGB_YELLOW };
+                colorText[] = { 1, 0.8, 0, 0.8 };
                 colorBackground[] = { 1,1,1,0 };
-                font = FontM;  // defined constant
+                font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.03;
-                x = SafeZoneX+SafeZoneW-.350+0.004;
-                y = SafeZoneY+SafeZoneH-.125+0.054;
+                x = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]) + .002 + 0.004";
+                y = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]) + .003 + 0.054";
                 w = .350;
                 h = .023;
                 text = "";
             };
             class GVAR(CycleDialogLine2) {
-                idc = 19102;
+                idc = IDC_CONTROLLINE2;
                 type = CT_STATIC;  // defined constant
                 style = ST_LEFT;  // defined constant
-                colorText[] = { RGB_YELLOW };
+                colorText[] = { 1, 0.8, 0, 0.8 };
                 colorBackground[] = { 1,1,1,0 };
-                font = FontM;  // defined constant
+                font = "RobotoCondensed";  // defined constant
                 sizeEx = 0.03;
-                x = SafeZoneX+SafeZoneW-.350+0.004;
-                y = SafeZoneY+SafeZoneH-.125+0.084;
+                x = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_X', SafeZoneX + SafeZoneW - .352]) + .002 + 0.004";
+                y = "(profileNamespace getVariable ['IGUI_grid_ACRE_notification_Y', SafeZoneY + SafeZoneH - .128]) + .003 + 0.084";
                 w = .350;
                 h = .023;
                 text = "";

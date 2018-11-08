@@ -15,3 +15,4 @@ class CfgPatches {
 
 #include "list_dialog.hpp"
 #include "CfgEventHandlers.hpp"
+#include "CfgUIGrids.hpp"

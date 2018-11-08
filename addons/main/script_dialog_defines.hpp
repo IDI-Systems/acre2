@@ -67,7 +67,7 @@
 #define ST_WITH_RECT      160
 #define ST_LINE           176
 
-#define FontM    "TahomaB"
+#define FontM    "RobotoCondensed"
 
 #define ST_SHADOW         0x100
 #define ST_NO_RECT        0x200

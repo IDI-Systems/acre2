@@ -128,6 +128,27 @@
     {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
+// Notification Settings
+/*[
+    QGVAR(incomingTransmissionNotification),
+    "CHECKBOX",
+    localize LSTRING(incomingTransmissionNotification),
+    "ACRE2",
+    false,
+    true,
+    {} // @todo remove second parameter in 2.7.0
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(rackTransmissionNotification),
+    "CHECKBOX",
+    localize LSTRING(rackTransmissionNotification),
+    "ACRE2",
+    false,
+    true,
+    {} // @todo remove second parameter in 2.7.0
+] call CBA_Settings_fnc_init;*/
+
 // @todo remove in 2.7.0
 // Module settings
 // Applies the difficulty module settings over CBA settings. If the module is not present, this function has no effect.

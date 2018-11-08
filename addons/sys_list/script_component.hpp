@@ -16,3 +16,4 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 #include "\idi\acre\addons\main\script_dialog_defines.hpp"
+#include "script_dialog_defines.hpp"

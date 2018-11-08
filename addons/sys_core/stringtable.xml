@@ -485,5 +485,13 @@
             <Spanish>Bajar auriculares</Spanish>
             <French>Casque enlevé</French>
         </Key>
+        <Key ID="STR_ACRE_sys_core_incomingTransmissionNotification">
+            <English>Show incoming transmissions</English>
+            <German>Eingehende Funksprüche anzeigen</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
+            <English>Show rack transmissions</English>
+            <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
+        </Key>
     </Package>
 </Project>
