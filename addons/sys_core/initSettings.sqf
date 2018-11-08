@@ -123,7 +123,7 @@
     "SLIDER",
     localize LSTRING(revealToAI_displayName),
     "ACRE2",
-    [0, 1, 1, 2],
+    [0, 2.50, 1, 2],
     true,
     {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
