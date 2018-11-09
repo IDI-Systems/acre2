@@ -337,6 +337,18 @@
             <Chinesesimp>切换耳机 / 切换观战</Chinesesimp>
             <Portuguese>Alternar Fones/Espectadores</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_sys_core_AntennaDirToggle">
+            <English>Antenna Direction Toggle</English>
+            <German>Antennenausrichtung wechseln</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
+            <English>Antenna straightened</English>
+            <German>Antenne gerade</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AntennaDirBent">
+            <English>Antenna bent</English>
+            <German>Antenne gebogen</German>
+        </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
             <Spanish>Modelar interferencias</Spanish>
@@ -381,6 +393,10 @@
             <Chinesesimp>忽略天线方向</Chinesesimp>
             <Portuguese>Ignorar Direção da Antena</Portuguese>
             <Italian>Ignora direzione antenna</Italian>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_autoAntennaDirection_displayName">
+            <English>Automatic Antenna Direction</English>
+            <German>Automatische Antennenausrichtung</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>

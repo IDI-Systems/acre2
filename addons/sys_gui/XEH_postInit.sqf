@@ -3,6 +3,7 @@
 if (!hasInterface) exitWith {};
 
 [] call FUNC(enableZeusOverlay);
+[] call FUNC(antennaElevationDisplay);
 
 // TODO - Look into this below.
 acre_player addEventHandler ["Take", {call FUNC(handleTake)}];

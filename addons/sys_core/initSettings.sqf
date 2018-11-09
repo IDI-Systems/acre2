@@ -106,6 +106,15 @@
     {[_this, true] call EFUNC(api,ignoreAntennaDirection)} // @todo remove second parameter in 2.7.0
 ] call CBA_Settings_fnc_init;
 
+// Antena direction
+[
+    QGVAR(automaticAntennaDirection),
+    "CHECKBOX",
+    localize LSTRING(autoAntennaDirection_displayName),
+    "ACRE2",
+    false
+] call CBA_Settings_fnc_init;
+
 // Terrain loss
 [
     QGVAR(terrainLoss),

@@ -10,6 +10,11 @@ Every radio also has its own transmission power which determines the initial str
 
 The antenna direction for infantry is simulated as being relative to the direction of their back. If radio antenna direction is not ignored (see below) this can be observed by having difficulties receiving transmissions from other players who are prone if you are standing and vice versa as the antennas will be out of alignment.
 
+(Only in Dev-Build): However it is possible to manually align the antenna by bending it in order to improve signal quality. To keep it as simple as possible, there are only two possible antenna alignments, the player can choose between the two via ACE Interaction Menu or Custom Keybind (default: `CTRL+ALT+UP`). In addition to the manual method, there is always the possibility to activate an automatic antenna alignment via CBA Settings (see below). The current alignment of the antenna is shown in the Arma 3 Stance Indicator. 
+
+{% include image.html file="user/antenna_indicator.png" alt="Antenna Alignment shown in Stance Indicator" %}
+
+
 The radios in ACRE2 by default are setup to use maximum transmission power and the frequencies their antennas are best suited for.
 
 Note: In the present simulation model buildings and terrain objects do not effect radio signals due to technical limitations but this may change in future versions of ACRE2.
@@ -61,3 +66,15 @@ API function example:
 `[true] call acre_api_fnc_ignoreAntennaDirection;`
 
 `true` enables is used to ignore the antenna direction.
+
+###  Automatic Antenna direction
+
+{% include note.html content="Development Build only!" %}
+
+This setting enables an automatic antenna alignment to improve signal strength e.g. when being prone. 
+
+Default value: Disabled (`false`) (Antenna needs to be aligned manually)
+
+The setting can be changed via CBA Settings Menu. 
+
+Hint: _If the antenna direction is ignored, this setting will have no effect._
