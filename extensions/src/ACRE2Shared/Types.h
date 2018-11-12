@@ -1,13 +1,22 @@
 #pragma once
 
+#include <cstdint>
+
 class CPlayer;
 class IServer;
 class IMessage;
 class IRpcFunction;
 class IServer;
-//
-// Macro type definitions
-//
+
+/*
+ * Basic type definitions
+ */
+typedef float float32_t;
+typedef double float64_t;
+
+/*
+ * Macro type definitions
+ */
 
 
 #define ACRE_OK 0
@@ -16,7 +25,7 @@ class IServer;
 #define ACRE_NOT_FOUND 0x00FF0000
 #define ACRE_INVALID_PLAYER 0x00000100
 #define ACRE_INVALID_PACKET 0xFF000000
-typedef unsigned int ACRE_RESULT;
+typedef uint32_t ACRE_RESULT;
 
 #define ACRE_STATE_RUNNING 1
 #define ACRE_STATE_INITIALIZING 2
@@ -24,7 +33,7 @@ typedef unsigned int ACRE_RESULT;
 #define ACRE_STATE_STARTING 4
 #define ACRE_STATE_READY 5
 #define ACRE_STATE_STOPPED 0xFFFFFFFF
-typedef unsigned int ACRE_STATE;
+typedef uint32_t ACRE_STATE;
 
 #define ACRE_SILENCE_OFF 0
 #define ACRE_SILENCE_ALWAYS 1
@@ -36,30 +45,30 @@ typedef unsigned int ACRE_STATE;
 #define ACRE_SILENCE_ALWAYS_ADMIN_STR "ACRE_SILENCE_ALWAYS_ADMIN"
 #define ACRE_SILENCE_INGAME_STR "ACRE_SILENCE_INGAME"
 #define ACRE_SILENCE_INGAME_ADMIN_STR "ACRE_SILENCE_INGAME_ADMIN"
-typedef unsigned int ACRE_SILENCE;
+typedef uint32_t ACRE_SILENCE;
 
-typedef unsigned int ACRE_ID;
+typedef uint32_t ACRE_ID;
 
-typedef unsigned int ACRE_FREQUENCY;
-typedef unsigned int ACRE_POWER;
-typedef float ACRE_VOLUME;
+typedef uint32_t ACRE_FREQUENCY;
+typedef uint32_t ACRE_POWER;
+typedef float32_t ACRE_VOLUME;
 
 #define ACRE_SQUAWK_ON  0x00000001
 #define ACRE_SQUAWK_OFF 0x00000002
-typedef unsigned int ACRE_SQUAWK;
+typedef uint32_t ACRE_SQUAWK;
 
 #define ACRE_SPEAKING_SPECTATE 0x00000004
 #define ACRE_SPEAKING_INTERCOM 0x00000003
 #define ACRE_SPEAKING_UNKNOWN 0x00000002
 #define ACRE_SPEAKING_RADIO 0x00000001
 #define ACRE_SPEAKING_DIRECT 0x00000000
-typedef unsigned int ACRE_SPEAKING_TYPE;
+typedef uint32_t ACRE_SPEAKING_TYPE;
 
 #define ACRE_CURVE_MODEL_ORIGINAL 0
 #define ACRE_CURVE_MODEL_AMPLITUDE 1
 #define ACRE_CURVE_MODEL_SELECTABLE_A 2
 #define ACRE_CURVE_MODEL_SELECTABLE_B 3
-typedef unsigned int ACRE_CURVE_MODEL;
+typedef uint32_t ACRE_CURVE_MODEL;
 
 typedef struct ACRE_RPCDATA {
     IRpcFunction *function;

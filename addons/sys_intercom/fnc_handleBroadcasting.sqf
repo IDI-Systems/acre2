@@ -21,6 +21,8 @@
 params ["_vehicle", "_unit", "_intercomNetwork", "_isBroadcasting"];
 
 private _broadcastConfig = _vehicle getVariable [QGVAR(broadcasting), []];
+GVAR(broadcastKey) = _isBroadcasting;
+
 private _changes = false;
 {
     private _canBroadcast = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_MASTERSTATION] call FUNC(getStationConfiguration);
@@ -34,8 +36,16 @@ private _changes = false;
     };
 } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
 
-// Only broadcast if changes have been made
+// Only broadcast if changes have been made.
+// TODO: Remove synchronisation once intercom system has been converted to components and unique IDs.
+//       It will help in reduce the bandwith, since information will be exchanged through the TS plugin.
 if (_changes) then {
     [_vehicle, _unit] call FUNC(updateVehicleInfoText);
     _vehicle setVariable [QGVAR(broadcasting), _broadcastConfig, true];
+
+    if (_isBroadcasting) then {
+        ["startIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+    } else {
+        ["stopIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+    };
 };

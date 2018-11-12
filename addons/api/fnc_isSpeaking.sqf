@@ -20,7 +20,4 @@ params [
 ];
 
 
-if (_unit in EGVAR(sys_core,speakers)) exitWith {
-    true
-};
-false
+_unit in EGVAR(sys_core,speakers)

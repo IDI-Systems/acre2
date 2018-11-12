@@ -7,7 +7,7 @@
  * 0: Radio ID <STRING>
  *
  * Return Value:
- * Volume value between 0 and 1 <NUMBER>
+ * Volume value between 0 and 1, -1 if error <NUMBER>
  *
  * Example:
  * ["ACRE_PRC148_ID_1"] call acre_api_fnc_getRadioVolume
@@ -16,5 +16,9 @@
  */
 
 params ["_radioId"];
+
+if (isNil "_radioId") exitWith { -1 };
+
+if (!([_radioId] call EFUNC(sys_data,isRadioInitialized))) exitWith { -1 };
 
 [_radioId] call EFUNC(sys_radio,getRadioVolume);

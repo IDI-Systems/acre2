@@ -13,11 +13,9 @@
 
 #include <string>
 
-RPC_FUNCTION(startRadioSpeaking) {
+RPC_FUNCTION(stopIntercomSpeaking) {
 
-    std::string radioId = std::string((char *)vMessage->getParameter(0));
-
-    CEngine::getInstance()->getClient()->localStartSpeaking(ACRE_SPEAKING_RADIO, radioId);
+    CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_INTERCOM);
 
     return ACRE_OK;
 }
