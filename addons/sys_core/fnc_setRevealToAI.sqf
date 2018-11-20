@@ -4,13 +4,13 @@
  * Effects are local.
  *
  * Arguments:
- * 0: Reveal players to AI that speak <BOOL>
+ * 0: Reveal factor players to AI that speak <NUMBER>
  *
  * Return Value:
- * Are players that speak revealed to AI <BOOL>
+ * Reveal factor for revealing players to AI <BOOL>
  *
  * Example:
- * [false] call acre_sys_core_fnc_setRevealToAI
+ * _status = [0.5] call acre_sys_core_fnc_setRevealToAI
  *
  * Public: No
  */
@@ -23,10 +23,10 @@ params ["_var"];
 // Set
 if !(_var isEqualType false) exitWith { false };
 
-if (!GVAR(revealToAI) && _var) then {
+if (GVAR(revealToAI) isEqualTo 0 && _var > 0) then {
     [] call FUNC(enableRevealAI);
 } else {
-    if (GVAR(revealToAI) && !_var) then {
+    if (GVAR(revealToAI) > 0 && _var isEqualTo 0) then {
         [] call FUNC(disableRevealAI);
     };
 };
