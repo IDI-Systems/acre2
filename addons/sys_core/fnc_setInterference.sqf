@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [true] call acre_sys_core_fnc_setInterference;
+ * [true] call acre_sys_core_fnc_setInterference
  *
  * Public: No
  */

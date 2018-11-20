@@ -9,7 +9,7 @@
  * None
  *
  * Example:
- * [true] call acre_sys_core_fnc_setFullDuplex;
+ * [true] call acre_sys_core_fnc_setFullDuplex
  *
  * Public: No
  */
