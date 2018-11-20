@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initializes the rack data.
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_rackId", "", "_eventData", "_rackData"];
 _eventData params ["_componentName", "_displayName", "_shortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_defaultComponents", "_intercoms", "_vehicle"];

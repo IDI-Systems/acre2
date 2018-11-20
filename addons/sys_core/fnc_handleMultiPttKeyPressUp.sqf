@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Used to handle key up of multiPttKeyPress.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 DFUNC(doHandleMultiPttKeyPressUp) = {
     params ["_args"];
@@ -25,6 +25,7 @@ DFUNC(doHandleMultiPttKeyPressUp) = {
             [(_args select 0), "handlePTTUp"] call EFUNC(sys_data,transEvent);
             ["stopRadioSpeaking", ","] call EFUNC(sys_rpc,callRemoteProcedure);
             GVAR(pttKeyDown) = false;
+            [ACRE_BROADCASTING_NOTIFICATION_LAYER] call EFUNC(sys_list,hideHint);
         };
     } else {
         _args set[1, true];

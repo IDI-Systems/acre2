@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target","","_params"];
 _params params ["_parentComponent","_connectorIndex","_connectorType","_parentType",["_connectedType",-1],["_childDisplayName",""]];

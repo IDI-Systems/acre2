@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialises a radio by givint it a radio ID. This only happens once and the default
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId", "", "_eventData", "_radioData", ""];
 TRACE_1("INITIALIZING RADIO 77", _this);

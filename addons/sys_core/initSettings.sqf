@@ -106,6 +106,15 @@
     {[_this] call EFUNC(api,ignoreAntennaDirection)}
 ] call CBA_Settings_fnc_init;
 
+// Antena direction
+[
+    QGVAR(automaticAntennaDirection),
+    "CHECKBOX",
+    localize LSTRING(autoAntennaDirection_displayName),
+    "ACRE2",
+    false
+] call CBA_Settings_fnc_init;
+
 // Terrain loss
 [
     QGVAR(terrainLoss),
@@ -120,10 +129,31 @@
 // Reveal to AI
 [
     QGVAR(revealToAI),
-    "CHECKBOX",
+    "SLIDER",
     localize LSTRING(revealToAI_displayName),
     "ACRE2",
-    true,
+    [0, 2.50, 1, 2],
     true,
     {[_this] call EFUNC(api,setRevealToAI)}
 ] call CBA_Settings_fnc_init;
+
+// Notification Settings
+/*[
+    QGVAR(incomingTransmissionNotification),
+    "CHECKBOX",
+    localize LSTRING(incomingTransmissionNotification),
+    "ACRE2",
+    false,
+    true,
+    {} // @todo remove second parameter in 2.7.0
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(rackTransmissionNotification),
+    "CHECKBOX",
+    localize LSTRING(rackTransmissionNotification),
+    "ACRE2",
+    false,
+    true,
+    {} // @todo remove second parameter in 2.7.0
+] call CBA_Settings_fnc_init;*/

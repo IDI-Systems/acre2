@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialises all racks in the vehicle. Must be executed in the server. If no condition is specified,
@@ -16,9 +17,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params [["_vehicle", objNull], ["_condition", {}]];
+params [
+    ["_vehicle", objNull, [objNull]],
+    ["_condition", {}, [{}]]
+];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");

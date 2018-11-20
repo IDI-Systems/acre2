@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks if a radio is externally available to the player.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /* TODO:
  * - Consider further corner cases.
@@ -23,7 +23,7 @@
 params ["_radioId", "_owner"];
 
 // Check if actual owner of the radio is less than 2.0m away.
-if ((_owner distance acre_player) > EXTERNAL_RADIO_MAXDISTANCE) exitWith {false};
+if (((_owner distance acre_player) > EXTERNAL_RADIO_MAXDISTANCE) && {vehicle _owner != vehicle acre_player}) exitWith {false};
 
 // Captive players are not allowed to use external radios
 if (captive acre_player) exitWith {false};

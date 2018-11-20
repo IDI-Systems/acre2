@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the configuration (No use, TX Ony, RX only or TX/RX) for the given unit of a rack that is connected to an intercom.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId", "_vehicle", "_unit", "_functionality", ["_rackId", ""]];
 
@@ -27,7 +27,6 @@ if (_varName isEqualTo "_rack") exitWith {
     ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
 };
 
-private _found = false;
 private _rackConfiguration = _vehicle getVariable [_varName, []];
 
 if (_rackId isEqualTo "") then {

@@ -20,6 +20,7 @@ if (!hasInterface) exitWith {
 */
 
 // globals
+DGVAR(antennaDirUp) = false;
 DGVAR(lowered) = 0;
 DGVAR(muting) = [];
 DGVAR(speakers) = [];
@@ -67,6 +68,7 @@ GVAR(delayReleasePTT_Handle) = nil;
 
 DVAR(ACRE_ACTIVE_PTTKEY) = -2;
 DVAR(ACRE_BROADCASTING_RADIOID) = "";
+DVAR(ACRE_BROADCASTING_NOTIFICATION_LAYER) = ""; // Name of the notification system layer where the current broadcast is displayed
 
 DVAR(ACRE_CURRENT_LANGUAGE_ID) = 0;
 DVAR(ACRE_SPOKEN_LANGUAGES) = [];
@@ -114,7 +116,7 @@ private _monitorFnc = {
         private _callBack = GVAR(threadedExtCalls) select _id;
         if (IS_ARRAY(_callBack)) then {
             private _args = (_res select 1);
-            if (count _args > 0) then {
+            if !(_args isEqualTo []) then {
                 _args = _args select 0;
             };
             [_callBack select 0, _args] call (_callBack select 1);

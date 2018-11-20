@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Creates an ACRE2 hash. This function can also be accessed through the macro HASH_CREATE.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (count ACRE_FAST_HASH_POOL > 0) exitWith {
     private _ret = (ACRE_FAST_HASH_POOL deleteAt 0);

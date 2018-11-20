@@ -1,20 +1,19 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handles pressing the spatial keybind.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Spatial configuration <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["LEFT"] call acre_sys_radio_fnc_handleRadioSpatialKeyPressed
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_side"];
 
@@ -30,6 +29,6 @@ if (!isNil "_currentSide") then {
     if (_currentSide != _side) then {
         [ACRE_ACTIVE_RADIO, _side] call FUNC(setRadioSpatial);
 
-        hintSilent format["Radio set to %1", _side];
+        [format ["Radio set to %1", _side]] call EFUNC(sys_core,displayNotification);
     };
 };

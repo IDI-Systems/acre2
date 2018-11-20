@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target"];
 
@@ -65,6 +65,14 @@ if (count _radioList > 0) then {
     if (EGVAR(sys_core,lowered) == 1) then { _text = localize LSTRING(raiseHeadset); };
     private _action = [QGVAR(toggleHeadset), _text, "", {[] call EFUNC(sys_core,toggleHeadset)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
+
+    if (!EGVAR(sys_core,automaticAntennaDirection)) then {
+        _text = localize LSTRING(bendAntenna);
+        private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
+        if (_dir) then { _text = localize LSTRING(straightenAntenna);};
+        _action = [QGVAR(antennaDirUp), _text, "", {[] call EFUNC(sys_components,toggleAntennaDir)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    };
 };
 
 _actions

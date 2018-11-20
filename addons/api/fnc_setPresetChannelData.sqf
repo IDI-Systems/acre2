@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the full data set to be utilized for the specified preset name. You should use the return value from getPresetChannelData to provide new data to this function. Improper data will most likely break ACRE on all clients.
@@ -18,4 +19,3 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"

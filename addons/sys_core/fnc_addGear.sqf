@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Adds the specified item to a unit.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_unit", "_item", ["_gearContainer",""]];
 
@@ -38,11 +38,11 @@ if (_gearContainer != "") then {
         _unit addItem _item;
     } else {
         // Attempt to force add Item.
-        private _uniform = (uniformContainer _unit);
+        private _uniform = uniformContainer _unit;
         if (!isNull _uniform) exitWith { _uniform addItemCargoGlobal [_item, 1];};
-        private _vest = (vestContainer _unit);
+        private _vest = vestContainer _unit;
         if (!isNull _vest) exitWith { _vest addItemCargoGlobal [_item, 1];};
-        private _backpack = (backpackContainer _unit);
+        private _backpack = backpackContainer _unit;
         if (!isNull _backpack) exitWith { _backpack addItemCargoGlobal [_item, 1];};
     };
 };

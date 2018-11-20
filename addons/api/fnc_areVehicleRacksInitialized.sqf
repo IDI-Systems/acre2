@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks whether the vehicle racks have been initialized for the given vehicle.
@@ -13,9 +14,10 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_vehicle"];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 if (isNull _vehicle) exitWith {
     WARNING("Non-defined vehicle passed as argument.");

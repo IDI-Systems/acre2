@@ -1,26 +1,21 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the radio volume.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique Radio ID <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Radio volume <NUMBER>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_getRadioVolume
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radio"];
-
-if (isNil "_radio") exitWith {};
-
-if (!([_radio] call EFUNC(sys_data,isRadioInitialized))) exitWith {};
 
 private _volume = [_radio, "getVolume"] call EFUNC(sys_data,dataEvent);
 

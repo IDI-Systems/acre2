@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the case of a unit switching seats in a vehicle with intercom.
@@ -14,13 +15,21 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit"];
 
 private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
-private _usingLimitedPosition = _unit getVariable [QGVAR(usingLimitedPosition), []];
 private _oldSeat = _unit getVariable [QGVAR(role), ""];
+
+// If unit is transmitting through intercom, stop the transmittion during the seat switch
+if (GVAR(intercomPTT)) then {
+    [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPressUp);
+};
+
+// Same for broadcast messages
+if (GVAR(broadcastKey)) then {
+    [ACTION_BROADCAST] call FUNC(handlePttKeyPressUp);
+};
 
 {
     if (_oldSeat != "") then {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("OPENING RADIO",_this);
 EGVAR(sys_radio,currentRadioDialog) = _this select 0;

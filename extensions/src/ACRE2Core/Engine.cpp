@@ -13,6 +13,8 @@
 #include "setMuted.h"
 #include "startRadioSpeaking.h"
 #include "stopRadioSpeaking.h"
+#include "startIntercomSpeaking.h"
+#include "stopIntercomSpeaking.h"
 #include "setPTTKeys.h"
 #include "loadSound.h"
 #include "playSound.h"
@@ -57,6 +59,8 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
     this->getRpcEngine()->addProcedure(new setMuted());
     this->getRpcEngine()->addProcedure(new startRadioSpeaking());
     this->getRpcEngine()->addProcedure(new stopRadioSpeaking());
+    this->getRpcEngine()->addProcedure(new startIntercomSpeaking());
+    this->getRpcEngine()->addProcedure(new stopIntercomSpeaking());
     this->getRpcEngine()->addProcedure(new setPTTKeys());
     this->getRpcEngine()->addProcedure(new loadSound());
     this->getRpcEngine()->addProcedure(new playLoadedSound());

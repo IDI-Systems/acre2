@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * For a AN/PRC 343 this function is the same as acre_sys_prc343_getChannelDescription,
@@ -18,6 +19,5 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 _this call FUNC(getChannelDescription);

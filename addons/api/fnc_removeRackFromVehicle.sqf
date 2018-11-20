@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialises all racks in the vehicle. Must be executed in the server.
@@ -14,9 +15,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params [["_vehicle", objNull], "_rackId"];
+params [
+    ["_vehicle", objNull, [objNull]],
+    ["_rackId", "", [""]]
+];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");
@@ -25,6 +28,11 @@ if (!isServer) exitWith {
 
 if (isNull _vehicle) exitWith {
     WARNING_1("Trying to remove a rack from an undefined vehicle %1",format ["%1", _vehicle]);
+    false
+};
+
+if (_rackId isEqualTo "") exitWith {
+    WARNING_1("Empty rack name for vehicle %1",format ["%1", _vehicle]);
     false
 };
 

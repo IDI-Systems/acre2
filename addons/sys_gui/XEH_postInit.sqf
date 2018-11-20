@@ -3,6 +3,7 @@
 if (!hasInterface) exitWith {};
 
 [] call FUNC(enableZeusOverlay);
+[] call FUNC(antennaElevationDisplay);
 
 // TODO - Look into this below.
 acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
@@ -47,6 +48,16 @@ DFUNC(enterVehicle) = {
 // Show display when entering vehicle
 ["vehicle", {
     params ["_player", "_newVehicle"];
-
     [_player, _newVehicle] call FUNC(enterVehicle);
+}, true] call CBA_fnc_addPlayerEventHandler;
+
+// Hide display when entering a feature camera
+["featureCamera", {
+    params ["_player", "_featureCamera"];
+
+    if (_featureCamera isEqualTo "") then {
+        [_player, vehicle _player] call FUNC(enterVehicle);
+    } else {
+        (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
+    };
 }, true] call CBA_fnc_addPlayerEventHandler;

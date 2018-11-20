@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Enables AI hearing of direct speech.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 #define ACRE_REVEAL_AMOUNT 1.6
 
@@ -27,7 +27,7 @@ DFUNC(monitorAI_PFH) = {
 
     //soundFactor is how loud the local player is speaking.
     private _soundFactor = EGVAR(api,selectableCurveScale); // typically 0.1 -> 1.3
-    private _multiplier = 250*(_soundFactor^2);
+    private _multiplier = GVAR(revealToAI) * 100 * (_soundFactor ^ 2);
 
     private _nearUnits = (getPosATL acre_player) nearEntities ["CAManBase", (130 * _soundFactor)];
     private _startTime = diag_tickTime;
@@ -46,7 +46,7 @@ DFUNC(monitorAI_PFH) = {
 
             // Cheaper approximation for AI
             private _intersectObjects = lineIntersectsObjs [eyePos _curUnit, ACRE_LISTENER_POS, _curUnit, acre_player, false, 6];
-            private _occlusion = ((0.1+_soundFactor)/2)^(count _intersectObjects); // - Occlusion make harsher the quieter the player is.
+            private _occlusion = ((0.1 + _soundFactor) / 2) ^ (count _intersectObjects); // - Occlusion make harsher the quieter the player is.
 
             // Calculate the probability of revealing.
             // y=\frac{250\cdot \left(\left(1.3\right)^2\right)}{\left(x\right)^2}
@@ -67,7 +67,7 @@ DFUNC(monitorAI_PFH) = {
         };
     } forEach _nearUnits;
 
-    if (!GVAR(revealToAI)) then {
+    if (GVAR(revealToAI) isEqualTo 0) then {
         [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
 };

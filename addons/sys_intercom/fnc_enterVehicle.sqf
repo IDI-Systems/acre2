@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles entering a vehicle.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit"];
 
@@ -43,7 +43,6 @@ if (_unit != _vehicle) then {
 
     // Reset variables
     _unit setVariable [QGVAR(intercomVehicle), objNull];
-    _unit setVariable [QGVAR(intercomPTT), false, true];
     _unit setVariable [QGVAR(role), ""];
     ACRE_PLAYER_INTERCOM = [];
 };

@@ -1,24 +1,24 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Sets the radio spatial configuration.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unique radio ID <STRING>
+ * 1: Spatial configuration <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Radio spatial successfully updated <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_radio_fnc_setRadioSpatial
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_radio","_side"];
+params ["_radio", "_side"];
 
-if ((isNil "_radio") || (isNil "_side")) exitWith {
+if ((isNil "_radio") || {isNil "_side"}) exitWith {
     false
 };
 

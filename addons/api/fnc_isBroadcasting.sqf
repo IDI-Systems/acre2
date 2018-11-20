@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks whether the provided unit is currently broadcasting on a radio.
@@ -13,8 +14,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_unit"];
+params [
+    ["_unit", objNull, [objNull]]
+];
+
+if (isNull _unit) exitWith {false};
 
 _unit in EGVAR(sys_core,keyedMicRadios)
