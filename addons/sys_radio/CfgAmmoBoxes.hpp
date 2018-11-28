@@ -12,7 +12,7 @@ class ACRE_RadioBox: ACRE_RadioBox_Base {
     displayName = "All Radio Crate";
 
     model = QPATHOF(data\models\acre_radiobox.p3d);
-    author[] = {"Ranta"};
+    author[] = {"RanTa"};
 
     class TransportWeapons {
     };
