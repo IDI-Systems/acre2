@@ -11,7 +11,8 @@ class ACRE_RadioBox: ACRE_RadioBox_Base {
     scope = 2;
     displayName = "All Radio Crate";
 
-    model = "\Ca\misc\Misc_cargo_cont_tiny";
+    model = QPATHOF(data\models\acre_radiobox.p3d);
+    author[] = {"Ranta"};
 
     class TransportWeapons {
     };
