@@ -10,7 +10,7 @@ class CfgVehicles {
                     condition = QUOTE([ARR_2(_player,'acre2_vhf30108spike')] call EFUNC(sys_core,hasItem) || [ARR_2(_player,'acre2_vhf30108')] call EFUNC(sys_core,hasItem));
                     statement = QUOTE([ARR_3(_player,'acre2_vhf30108spike', false)] call FUNC(deploy));
                     showDisabled = 0;
-                    icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
+                    icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
                 };
 
                 class GVAR(placeSpikeMast) {
@@ -18,7 +18,7 @@ class CfgVehicles {
                     condition = QUOTE([ARR_2(_player,'acre2_vhf30108')] call EFUNC(sys_core,hasItem));
                     statement = QUOTE([ARR_3(_player,'acre2_vhf30108', true)] call FUNC(deploy));
                     showDisabled = 0;
-                    icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
+                    icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
                 };
             };
         };
@@ -34,8 +34,8 @@ class CfgVehicles {
         scopeCurator = 2;
         scopeArsenal = 2;
         displayName = "ACRE VHF30108 GSM";
-        model = QPATHTOF(vhf30108\data\model\vhf30108.p3d);
-        icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
+        model = QPATHTOF(data\vhf30108\models\vhf30108.p3d);
+        icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
         editorPreview = "";
         vehicleClass = "Items";
 
@@ -112,8 +112,8 @@ class CfgVehicles {
         scopeCurator = 2;
         scopeArsenal = 2;
         displayName = "ACRE VHF30108 GS";
-        model = QPATHTOF(vhf30108\data\model\vhf30108spike.p3d);
-        icon = QPATHTOF(vhf30108\data\ui\icon_antenna_ca.paa);
+        model = QPATHTOF(data\vhf30108\models\vhf30108spike.p3d);
+        icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
         editorPreview = "";
         vehicleClass = "Items";
 
