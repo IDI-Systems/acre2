@@ -6,6 +6,8 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
+GVAR(keyDownWait) = false;
+
 private _zeusCategory = format ["ACRE %1", localize "str_a3_cfghints_curator_curator_displayname"];
 
 // Default remote controlled voice source
@@ -21,7 +23,7 @@ private _zeusCategory = format ["ACRE %1", localize "str_a3_cfghints_curator_cur
 [
     QGVAR(zeusListenViaCamera),
     "CHECKBOX",
-    localize LSTRING(ZeusListenVia_displayName),
+    localize LSTRING(ZeusListenViaCamera_displayName),
     _zeusCategory,
     true
 ] call CBA_Settings_fnc_init;

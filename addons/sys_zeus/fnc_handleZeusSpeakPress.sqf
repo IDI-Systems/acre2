@@ -15,17 +15,20 @@
  * Public: No
  */
 
-// Save out of Zeus specator state and restore previous Zeus state
-private _wasSpectator = player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
-player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
-// Don't put Zeus back into spectator if they are no longer allowed to
-[_wasSpectator && {GVAR(zeusCanSpectate)}] call EFUNC(api,setSpectator);
-
 if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
+    GVAR(keyDownWait) = true;
     player setVariable [QGVAR(inZeus), true, true];
+
+    // Save spectator state
+    player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
+    [false] call EFUNC(api,setSpectator);
+
+    // Update Zeus position
     GVAR(speakFromZeusHandle) = [{
         player setVariable [QGVAR(zeusPosition),
             [getPosASL curatorCamera, getCameraViewDirection curatorCamera],
         true];
-    }, 0.3] call CBA_fnc_addPerFrameHandler;
+    }, ZEUS_POSITION_FREQUENCY] call CBA_fnc_addPerFrameHandler;
 };
+
+GVAR(keyDownWait) = false;

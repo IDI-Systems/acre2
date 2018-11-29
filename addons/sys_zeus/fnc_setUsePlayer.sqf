@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: SynixeBrett
- * Set if the player speaks through their player or the remote controlled player.
+ * Set if the player speaks through their unit or the remote controlled unit.
  *
  * Arguments:
  * 0: Speak through player (true) or remote controlled unit (false) <BOOL>
