@@ -20,14 +20,13 @@ params ["_vehicle", "_rack"];
 
 private _type = typeOf _vehicle;
 
-private _intercoms = getArray (_rack >> "intercom");
+private _intercoms = (getArray (_rack >> "intercom")) apply {toLower _x};
 private _wiredIntercoms = [];
 
 // Set by default to have access to all intercom networks if none was specified
 if (_intercoms isEqualTo [] || {"none" in _intercoms}) then {
     _wiredIntercoms = [];
 } else {
-    _intercoms = _intercoms apply {toLower _x};
     if ("all" in _intercoms) then {
         {
             _wiredIntercoms pushBack (_x select 0);
