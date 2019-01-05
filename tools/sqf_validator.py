@@ -122,7 +122,7 @@ def check_sqf_syntax(filepath):
                             if (c not in [' ', '\t', '\n', '/']): # keep reading until no white space or comments
                                 checkForSemiColon = False
                                 if (c not in [']', ')', '}', ';', ',', '&', '!', '|', '='] and not validKeyWordAfterCode(content, indexOfCharacter)): # , 'f', 'd', 'c', 'e', 'a', 'n', 'i']):
-                                    print("ERROR: Possible missing semiColon ';' detected at {0} Line number: {1}".format(filepath,lineNumber))
+                                    print("ERROR: Possible missing semicolon ';' detected at {0} Line number: {1}".format(filepath,lineNumber))
                                     bad_count_file += 1
 
             else: # Look for the end of our comment block
