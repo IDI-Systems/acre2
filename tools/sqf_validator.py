@@ -86,7 +86,7 @@ def check_sqf_syntax(filepath):
                             isInString = True
                             inStringType = c
                         elif (c == '#' and onlyWhitespace):
-                            checkForSemiColon = False
+                            ignoreTillEndOfLine = False
                         elif (c == '/'):
                             checkIfInComment = True
                         elif (c == '('):
