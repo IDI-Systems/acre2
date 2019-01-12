@@ -14,10 +14,7 @@ class ACRE_RadioBox: ACRE_RadioBox_Base {
     model = QPATHOF(data\models\acre_radiobox.p3d);
     author[] = {"RanTa"};
 
-    class TransportWeapons {
-    };
-    class TransportMagazines {
-    };
+    class TransportWeapons {};
+    class TransportMagazines {};
 };
 
-// create
