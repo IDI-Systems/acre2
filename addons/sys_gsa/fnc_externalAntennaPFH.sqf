@@ -28,7 +28,7 @@ if (_radioId != "") then {
     _unit = [_radioId] call EFUNC(sys_radio,getRadioObject);
 };
 
-if (!alive _gsa || {!alive _unit} || {_unit isKindOf "CAManBase" && !(isPlayer _unit)} || {_radioId isEqualTo ""}) then {
+if (!alive _gsa || {!alive _unit} || {_unit isKindOf "CAManBase" && {!(isPlayer _unit)}} || {_radioId isEqualTo ""}) then {
     [QGVAR(disconnectGsa), [_gsa, _unit]] call CBA_fnc_localEvent;
 } else {
     private _connectedRadioId = _gsa getVariable [QGVAR(connectedRadio), ""];

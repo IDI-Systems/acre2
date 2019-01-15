@@ -53,11 +53,14 @@ private _actions = [];
         {
             params ["_gsa", "", "_params"];
             _params params ["_radioId"];
+
             [_gsa, _radioId] call FUNC(connect);
         },
         {
-            params ["_gsa"];
-            [_gsa] call FUNC(isRadioCompatible);
+            params ["_gsa", "", "_params"];
+            _params params ["_radioId"];
+
+            [_gsa, _radioId] call FUNC(isRadioCompatible);
         },
         {},
         [_x]
