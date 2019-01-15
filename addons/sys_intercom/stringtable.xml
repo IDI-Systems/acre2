@@ -423,5 +423,9 @@
             <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
             <French>Connecter le réseau d'interphone suivant</French>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_openGui">
+            <English>Opens Intercom GUI</English>
+            <Spanish>Abre la interfaz de Intercom</Spanish>
+        </Key>
     </Package>
 </Project>

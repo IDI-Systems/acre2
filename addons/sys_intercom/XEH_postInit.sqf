@@ -31,6 +31,14 @@ if (!hasInterface) exitWith {};
 ["ACRE2", "AddPreviousIntercom", (localize LSTRING(addPreviousIntercom)), "", {[-1, false] call FUNC(switchIntercomFast)}, [51, [true, false, true]]] call cba_fnc_addKeybind;
 ["ACRE2", "AddNextIntercom", (localize LSTRING(addNextIntercom)), "", {[1, false] call FUNC(switchIntercomFast)}, [51, [false, true, true]]] call cba_fnc_addKeybind;
 
+[
+    "ACRE2",
+    QGVAR(openGui),
+    localize LSTRING(openGui),
+    {[0] call FUNC(openGui)},
+    ""
+] call cba_fnc_addKeybind;
+
 // Intercom configuration
 ["vehicle", {
     params ["_player", "_newVehicle"];

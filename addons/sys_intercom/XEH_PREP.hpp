@@ -1,3 +1,5 @@
+PREP_FOLDER(vic3);
+
 // Intercom
 PREP(configIntercom);
 PREP(configIntercomStations);
