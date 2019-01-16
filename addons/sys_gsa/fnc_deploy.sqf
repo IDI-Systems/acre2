@@ -55,8 +55,8 @@ if (_canDeploy) then {
         };
         private _position = getPosASL _unit vectorAdd [2 * sin _direction, 2 * cos _direction, 0];
 
-         // Always make it vertical, we do not want to take the normal to the surface since that would result
-         // in suboptimal antenna direction
+        // Always make it vertical, we do not want to take the normal to the surface since that would result
+        // in suboptimal antenna direction
         private _vectorUp = [0, 0, 1];
         private _intersections = lineIntersectsSurfaces [_position vectorAdd [0, 0, 1.5], _position vectorDiff [0, 0, 1.5], _unit, objNull, true, 1, "GEOM", "FIRE"];
         if (_intersections isEqualTo []) then {

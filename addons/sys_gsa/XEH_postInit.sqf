@@ -57,6 +57,7 @@
 
     _gsa setVariable [QGVAR(connectedRadio), _radioId, true];
     [_radioId, "setState", ["externalAntennaConnected", [true, _gsa]]] call EFUNC(sys_data,dataEvent);
+    systemChat format ["connected"];
 
     [QGVAR(notifyPlayer), [localize LSTRING(connected)], _player] call CBA_fnc_targetEvent;
 
