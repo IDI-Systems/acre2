@@ -12,54 +12,52 @@ acre::signal::model::los_simple::~los_simple()
 
 }
 
-void acre::signal::model::los_simple::process(result *result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, float frequency_, float power_, float scale_, bool omnidirectional_)
+void acre::signal::model::los_simple::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, float frequency_, float power_, float scale_, bool omnidirectional_)
 {
-    float rx_gain, tx_gain, distance_3d;
+    const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
 
-    distance_3d = glm::distance(tx_pos_, rx_pos_);
+    const float32_t rx_gain = 0.0f;//rx_antenna_.gain(rx_pos_, tx_pos_);
+    const float32_t tx_gain = 0.0f;//tx_antenna_.gain(tx_pos_, rx_pos_);
 
-    rx_gain = 0.0f;//rx_antenna_.gain(rx_pos_, tx_pos_);
-    tx_gain = 0.0f;//tx_antenna_.gain(tx_pos_, rx_pos_);
+    const float32_t tx_power = 10.0f * (log10(power_ / 1000.0f)) + 30.0f;
 
-    float tx_power = 10.0f * (log10(power_ / 1000.0f)) + 30.0f;
-
-    float fspl = -27.55f + 20.0f * log10(frequency_) + 20.0f * log10(distance_3d);
+    const float32_t fspl = -27.55f + 20.0f * log10(frequency_) + 20.0f * log10(distance_3d);
 
     //_Lb = _Ptx + _transmitterGain - _Ltx - _Lfs - _Lm + _receiverGain - _Lrx;
-    float tx_internal_loss = 3;
-    float rx_internal_loss = 3;
+    const float32_t tx_internal_loss = 3.0f;
+    const float32_t rx_internal_loss = 3.0f;
 
-    float diffraction_loss = _diffraction_loss(tx_pos_, rx_pos_, frequency_);
+    const float32_t diffraction_loss = _diffraction_loss(tx_pos_, rx_pos_, frequency_);
 
-    float budget = tx_power + tx_gain - tx_internal_loss - fspl - diffraction_loss + rx_gain - rx_internal_loss;
+    const float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - diffraction_loss + rx_gain - rx_internal_loss;
     result_->result_v = _dbm_to_v(budget, 50.0f);
     result_->result_dbm = budget;
     //printf("budget: %fdBm", budget);
 
 }
 
-float acre::signal::model::los_simple::_diffraction_loss(glm::vec3 pos1_, glm::vec3 pos2_, float frequency_)
+float acre::signal::model::los_simple::_diffraction_loss(glm::vec3 pos1_, glm::vec3 pos2_, const float32_t frequency_)
 {
-    float sample_size = 7.5f;
-    std::vector<float> terrain_profile;
+    const float32_t sample_size = 7.5f;
+    std::vector<float32_t> terrain_profile;
     _map->terrain_profile(pos1_, pos2_, sample_size, terrain_profile);
 
     glm::vec3 dir = glm::normalize(pos2_ - pos1_)*sample_size;
 
-    float total_distance_2d = glm::distance(glm::vec2(pos1_.x, pos1_.y), glm::vec2(pos2_.x, pos2_.y));
+    const float32_t total_distance_2d = glm::distance(glm::vec2(pos1_.x, pos1_.y), glm::vec2(pos2_.x, pos2_.y));
     if (terrain_profile.size() < 4) {
         return 0.0f;
     }
-    float loss = 0.0f;
-    for (int c = 0; c < (int)terrain_profile.size() - 1; ++c) {
-        float sample = terrain_profile[c];
-        float last_sample = terrain_profile[std::max(c - 1, 0)];
-        float next_sample = terrain_profile[std::min((int)terrain_profile.size(), c + 1)];
+    float32_t loss = 0.0f;
+    for (int32_t c = 0; c < (int)terrain_profile.size() - 1; ++c) {
+        const float32_t sample = terrain_profile[c];
+        const float32_t last_sample = terrain_profile[std::max(c - 1, 0)];
+        const float32_t next_sample = terrain_profile[std::min((int)terrain_profile.size(), c + 1)];
         if (last_sample < sample && next_sample < sample) {
-            glm::vec3 peak_ray_pos = pos1_ + dir*(float)c;
+            glm::vec3 peak_ray_pos = pos1_ + dir*(float32_t)c;
 
-            float d1 = glm::distance(glm::vec2(pos1_.x, pos1_.y), glm::vec2(peak_ray_pos.x, peak_ray_pos.y));
-            float d2 = total_distance_2d - d1;
+            const float32_t d1 = glm::distance(glm::vec2(pos1_.x, pos1_.y), glm::vec2(peak_ray_pos.x, peak_ray_pos.y));
+            const float32_t d2 = total_distance_2d - d1;
             loss += _itu(peak_ray_pos.z - sample, d1 / 1000.0f, d2 / 1000.0f, frequency_ / 1000.0f);
         }
     }
@@ -67,13 +65,13 @@ float acre::signal::model::los_simple::_diffraction_loss(glm::vec3 pos1_, glm::v
     return loss;
 }
 
-float acre::signal::model::los_simple::_itu(float h, float d1_km_, float d2_km_, float f_ghz_)
+float acre::signal::model::los_simple::_itu(const float32_t h, const float32_t d1_km_, const float32_t d2_km_, const float32_t f_ghz_)
 {
-    float d = d1_km_ + d2_km_;
+    const float32_t d = d1_km_ + d2_km_;
 
-    float F1 = 17.3f * sqrt((d1_km_ * d2_km_) / (f_ghz_ * d));
+    const float32_t F1 = 17.3f * sqrtf((d1_km_ * d2_km_) / (f_ghz_ * d));
 
-    float A = -20.0f * h / F1 + 10.0f;
+    const float32_t A = -20.0f * h / F1 + 10.0f;
 
     if (A < 6.0f) return 0.0f;
 
@@ -82,11 +80,11 @@ float acre::signal::model::los_simple::_itu(float h, float d1_km_, float d2_km_,
 
 acre::signal::model::multipath::multipath(map_p map_) : los_simple(map_)
 {
-    uint32_t peak_grid_size = (uint32_t)std::ceil(_map->map_size()*_map->cell_size()/1000.0f);
-    _peak_buckets.resize((size_t)std::pow(peak_grid_size, (uint32_t)2));
+    uint32_t peak_grid_size = (uint32_t) std::ceil(_map->map_size()*_map->cell_size()/1000.0f);
+    _peak_buckets.resize((size_t) std::pow(peak_grid_size, 2u));
     for (auto peak : _map->peaks) {
-        int x = (int)std::floor(peak.x / 1000);
-        int y = (int)std::floor(peak.y / 1000);
+        const int32_t x = (int32_t) std::floor(peak.x / 1000);
+        const int32_t y = (int32_t) std::floor(peak.y / 1000);
         _peak_buckets[x * peak_grid_size + y].push_back(peak);
     }
 }
@@ -96,25 +94,25 @@ acre::signal::model::multipath::~multipath()
 
 }
 #define MAGIC 10.0f
-float acre::signal::model::multipath::_search_distance(float frequency_, float power_) {
+float acre::signal::model::multipath::_search_distance(const float32_t frequency_, const float32_t power_) {
     auto cache = _distance_cache.find(std::floor(frequency_));
     if (cache != _distance_cache.end()) {
         if (cache->second.find(std::floor(power_)) != cache->second.end()) {
             return cache->second.find(std::floor(power_))->second;
         }
     }
-    float test_fspl = 0;
+    float32_t test_fspl = 0.0f;
     int c = 0;
-    float search_distance = 0.0f;
-    float tx_power = 10.0f * log10(power_ / 1000.0f) + 30.0f;
+    float32_t search_distance = 0.0f;
+    float32_t tx_power = 10.0f * log10(power_ / 1000.0f) + 30.0f;
     while (test_fspl < 80.0f + tx_power) {
         search_distance = (c*250.0f);
         test_fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(search_distance)) + (MAGIC*3.0f);
         c++;
     }
-    
+
     if (cache == _distance_cache.end()) {
-        _distance_cache[std::floor(frequency_)] = std::map<float, float>();
+        _distance_cache[std::floor(frequency_)] = std::map<float32_t, float32_t>();
         cache = _distance_cache.find(std::floor(frequency_));
     }
     cache->second[std::floor(power_)] = search_distance;
@@ -131,7 +129,7 @@ void acre::signal::model::multipath::process(result *result_, const glm::vec3 &t
 
     float distance_2d = glm::distance(tx_pos_2d, rx_pos_2d);
     float distance_3d = glm::distance(tx_pos_, rx_pos_);
-    
+
     float search_distance = _search_distance(frequency_, power_);
 
     int search_size = (int)(search_distance * 2 / 1000.0f);//(int)(std::ceil(std::max(search_distance, distance_2d)) / 1000.0f);
@@ -147,7 +145,7 @@ void acre::signal::model::multipath::process(result *result_, const glm::vec3 &t
         _get_peaks_spiral(tx_pos_.x, tx_pos_.y, search_size, search_size, _cached_peaks);
         _cached_tx_pos = tx_pos_;
     }
-        
+
 
     std::vector<float> signals;
     std::vector<float> signal_phases;
@@ -168,12 +166,12 @@ void acre::signal::model::multipath::process(result *result_, const glm::vec3 &t
         glm::vec3 best_angle;
         float best_distance = 10000.0f;
 
-        
-        
 
-        
+
+
+
         float diffraction_loss = 0;
-        
+
         for (int i = 0; i <= 40; ++i) {
             glm::vec3 test_point = peak + v_mid*(float)i*(7.5f);
             glm::vec3 t_normal = _map->normal(test_point.x, test_point.y);
@@ -199,7 +197,7 @@ void acre::signal::model::multipath::process(result *result_, const glm::vec3 &t
 
             float path_distance = sqrt(glm::distance2(tx_pos_, best_angle) + glm::distance2(rx_pos_, best_angle));
             float fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(path_distance));
-            //float fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(tx_pos_, best_angle))) + 
+            //float fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(tx_pos_, best_angle))) +
             //    (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(rx_pos_, best_angle)));
 
             glm::vec3 best_angle_v = glm::normalize(rx_pos_ - best_angle);
@@ -222,7 +220,7 @@ void acre::signal::model::multipath::process(result *result_, const glm::vec3 &t
                     diffraction_loss += _diffraction_loss(best_angle, rx_pos_, frequency_)*scale_;
                     budget -= diffraction_loss;
 
-                    
+
                     if (budget > -200.0f) {
                         float budget_v = _dbm_to_v(budget, 50.0f);
                         signals.push_back(budget_v);
@@ -245,7 +243,7 @@ void acre::signal::model::multipath::process(result *result_, const glm::vec3 &t
     if (!omnidirectional_) rx_gain = rx_antenna_->gain(rx_dir_, tx_pos_ - rx_pos_, frequency_);
     float tx_gain = 0;
     if (!omnidirectional_) tx_gain = tx_antenna_->gain(tx_dir_, rx_pos_ - tx_pos_, frequency_);
-    
+
 
     float fspl = -27.55f + 20.0f * log10(frequency_) + 20.0f * log10(distance_3d);
 
@@ -313,7 +311,7 @@ void acre::signal::model::multipath::_get_peaks_spiral(float pos_x_, float pos_y
             if (peak_grid_x + x >= 0 && peak_grid_x + x < peak_grid_size - 1 && peak_grid_y + y >= 0 && peak_grid_y + y < peak_grid_size - 1) {
                 int peak_index = (peak_grid_x + x) * peak_grid_size + peak_grid_y + y;
                 if (_peak_buckets[peak_index].size() > 0)
-                    peaks_.insert(peaks_.end(), 
+                    peaks_.insert(peaks_.end(),
                         _peak_buckets[peak_index].begin(),
                         _peak_buckets[peak_index].end());
             }

@@ -12,7 +12,7 @@
 
     private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_radioId);
     {
-        _x params ["_connector", "_component"];
+        _x params ["", "_component"];
 
         private _componentType = getNumber (configFile >> "CfgAcreComponents" >> _component >> "type");
         if (_componentType == ACRE_COMPONENT_ANTENNA) then {

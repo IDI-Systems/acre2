@@ -4,17 +4,18 @@
  * Checks if the ground spike antenna is connected to a radio.
  *
  * Arguments:
- * 0: Ground Spike Antenna <OBJECT>
+ * 0: Unit <OBJECT> (Unused)
+ *^1: Ground spike antenna <OBJECT>
  *
  * Return Value:
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_gsa_fnc_isAntennaConnected
+ * [player, cursorObject] call acre_sys_gsa_fnc_isAntennaConnected
  *
  * Public: No
  */
 
-params ["_target", "_gsa"];
+params ["", "_gsa"];
 
 _gsa getVariable [QGVAR(connectedRadio), ""] != ""
