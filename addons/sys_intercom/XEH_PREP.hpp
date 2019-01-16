@@ -49,3 +49,6 @@ PREP(updateVehicleInfoText);
 PREP(switchIntercomFast);
 PREP(handlePttKeyPress);
 PREP(handlePttKeyPressUp);
+
+// Intercom GUI
+PREP(openGui);

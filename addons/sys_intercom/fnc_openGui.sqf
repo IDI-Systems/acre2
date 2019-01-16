@@ -18,6 +18,8 @@
 
 params ["_intercomNetwork", ["_openMasterStation", false]];
 
+if (vehicle acre_player isEqualTo acre_player) exitWith {};
+
 // Get the intercom type
 disableSerialization;
 
