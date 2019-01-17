@@ -4,8 +4,8 @@
  * Opens the intercom gui.
  *
  * Arguments:
- * 0: Intercom network <NUMBER>
- * 1: Open master statio <BOOL>
+ * 0: Intercom network <NUMBER> (default: -1)
+ * 1: Open master statio <BOOL> (default: false)
  *
  * Return Value:
  * GUI successfully opened <BOOL>
@@ -16,13 +16,46 @@
  * Public: No
  */
 
-params ["_intercomNetwork", ["_openMasterStation", false]];
+params [["_intercomNetwork", -1], ["_openMasterStation", false]];
 
-if (vehicle acre_player isEqualTo acre_player) exitWith {};
+private _vehicle = vehicle acre_player;
+if (_vehicle isEqualTo acre_player) exitWith {false};
 
-// Get the intercom type
+if (_intercomNetwork != -1) then {
+    GVAR(activeIntercom) = _intercomNetwork;
+} else {
+    private _getActiveIntercom = {
+        params ["_vehicle"];
+
+        private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
+        private _activeIntercom = -1;
+        {
+            private _connectionStatus = [_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
+            if (_connectionStatus > INTERCOM_DISCONNECTED) exitWith {
+                _activeIntercom = _forEachIndex;
+            }
+        } forEach _intercomNames;
+
+        _activeIntercom;
+    };
+
+    if (GVAR(activeIntercom) != -1) then {
+        private _connectionStatus = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
+        if (_connectionStatus == INTERCOM_DISCONNECTED) then {
+            GVAR(activeIntercom) = [_vehicle] call _getActiveIntercom;
+        };
+    } else {
+        GVAR(activeIntercom) = [_vehicle] call _getActiveIntercom;
+    };
+};
+
+if (GVAR(activeIntercom) == -1) exitWith {false};
+
+GVAR(guiOpened) = true;
+
 disableSerialization;
 
+// Get the intercom type
 if (!_openMasterStation) then {
     createDialog "VIC3FFCS_IntercomDialog";
 };

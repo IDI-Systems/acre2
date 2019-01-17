@@ -23,6 +23,7 @@ PREP(handleAccent);
 PREP(handleBroadcasting);
 PREP(handleLimitedConnection);
 PREP(handleIntercomActivation);
+PREP(saveStationConfiguration)
 PREP(setStationConfiguration);
 PREP(setStationUnit);
 PREP(updateIntercomUse);

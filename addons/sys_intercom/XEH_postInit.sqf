@@ -53,7 +53,8 @@ if (!hasInterface) exitWith {};
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 player addEventHandler ["seatSwitchedMan", {
-    params ["_unit1", "_unit2", "_vehicle"];
+    params ["_unit1", "", "_vehicle"];
+
     [_vehicle, _unit1] call FUNC(seatSwitched);
 }];
 

@@ -35,10 +35,6 @@ private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 private _oldValue = (_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select _intercomFunctionality;
 
-if (_oldValue isEqualTo _value) exitWith {
-    //DEBUG_1("Set the same value for intercom functionality %1",_intercomFunctionality);
-};
-
 private _changed = false;
 switch (_intercomFunctionality) do {
     case INTERCOM_STATIONSTATUS_HASINTERCOMACCESS: { _changed = true };
@@ -66,11 +62,13 @@ switch (_intercomFunctionality) do {
     case INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED: { _changed = true };
     case INTERCOM_STATIONSTATUS_FORCEDCONNECTION: { _changed = true };
     case INTERCOM_STATIONSTATUS_VOICEACTIVATION: { _changed = true };
-    default {  /*...code...*/ };
 };
 
 if (_changed) then {
-    (_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) set [_intercomFunctionality, _value];
-    _vehicle setVariable [_varName, _intercomArray, true];
-    [_vehicle, _unit] call FUNC(updateVehicleInfoText);
+    if (GVAR(guiOpened)) then {
+        // Save the configuration once the GUI closes
+        GVAR(configChanged) = true;
+    } else {
+        [_vehicle, _unit, _varName] call FUNC(saveStationConfiguration);
+    };
 };

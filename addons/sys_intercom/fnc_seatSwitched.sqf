@@ -35,6 +35,11 @@ if (GVAR(broadcastKey)) then {
     if (_oldSeat != "") then {
         private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION, _oldSeat] call FUNC(getStationConfiguration);
 
+        if (GVAR(configChanged) && {GVAR(guiOpened)}) then {
+            [_vehicle, _unit, _oldSeat] call FUNC(saveStationConfiguration);
+            [] call FUNC(closeGui);
+        };
+
         // Remove the unit from the old seat configuration
         if (_connectionStatus > INTERCOM_DISCONNECTED) then {
             private _inLimitedPosition = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_LIMITED, _oldSeat] call FUNC(getStationConfiguration);
