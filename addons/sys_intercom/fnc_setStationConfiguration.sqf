@@ -65,6 +65,7 @@ switch (_intercomFunctionality) do {
 };
 
 if (_changed) then {
+    (_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) set [_intercomFunctionality, _value];
     if (GVAR(guiOpened)) then {
         // Save the configuration once the GUI closes
         GVAR(configChanged) = true;

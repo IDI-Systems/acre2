@@ -23,7 +23,7 @@ PREP(handleAccent);
 PREP(handleBroadcasting);
 PREP(handleLimitedConnection);
 PREP(handleIntercomActivation);
-PREP(saveStationConfiguration)
+PREP(saveStationConfiguration);
 PREP(setStationConfiguration);
 PREP(setStationUnit);
 PREP(updateIntercomUse);
@@ -52,4 +52,5 @@ PREP(handlePttKeyPress);
 PREP(handlePttKeyPressUp);
 
 // Intercom GUI
+PREP(closeGui);
 PREP(openGui);

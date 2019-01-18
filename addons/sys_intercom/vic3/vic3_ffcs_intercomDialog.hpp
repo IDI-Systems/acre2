@@ -12,7 +12,7 @@
 class VIC3FFCS_IntercomDialog {
     idd = 31337;
     MovingEnable = 0;
-    //onUnload = QUOTE(['closeGui'] call GUI_INTERACT_EVENT);
+    onUnload = QUOTE(_this call FUNC(closeGui));
     onLoad = QUOTE(_this call FUNC(vic3ffcsRender));
     controlsBackground[] = {/*VIC3FFCSBackground*/};
     objects[] = {};
@@ -39,6 +39,46 @@ class VIC3FFCS_IntercomDialog {
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(vic3\data\ui\vic3_ffcs.paa);
+        END_CONTROL
+
+        BEGIN_CONTROL(WorkKnobButton, VIC3FFCS_RscButton, 201)
+            x=((((0.466-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
+            y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.35/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            text = "";
+            onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnWorkKnobPress));
+            toolTip = QUOTE(Select transmit radio/intercom);
+        END_CONTROL
+
+        BEGIN_CONTROL(MonitorKnobButton, VIC3FFCS_RscButton, 202)
+            x=((((0.466-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
+            y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.35/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            text = "";
+            onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnMonitorKnobPress));
+            toolTip = QUOTE(Change monitor radio);
+        END_CONTROL
+
+        BEGIN_CONTROL(VolumeKnobButton, VIC3FFCS_RscButton, 203)
+            x=((((0.466-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
+            y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.35/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            text = "";
+            onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnVolumeKnobPress));
+            toolTip = QUOTE(Change volume);
+        END_CONTROL
+
+        BEGIN_CONTROL(IntercomKnobButton, VIC3FFCS_RscButton, 204)
+            x=((((0.466-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
+            y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.35/0.8)*0.050*SafeZoneH;
+            h=(1.15/0.8)*0.050*SafeZoneH;
+            text = "";
+            onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnIntercomKnobPress));
+            toolTip = QUOTE(Change intercom activation);
         END_CONTROL
     };
 };
