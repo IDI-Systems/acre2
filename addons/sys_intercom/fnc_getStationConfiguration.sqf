@@ -7,7 +7,7 @@
  * 0: Vehicle with intercom <OBJECT>
  * 1: Unit to be checked <OBJECT>
  * 2: Intercom network <NUMBER>
- * 3: Intercom functionality to be retrieved <NUMBER>
+ * 3: Intercom functionality to be retrieved <STRING>
  * 4: Variable name of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
@@ -32,4 +32,4 @@ if (_varName isEqualTo "") exitWith {
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 
-(_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select _intercomFunctionality
+HASH_GET(_intercomStatus,_intercomFunctionality)

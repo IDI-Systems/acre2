@@ -31,5 +31,5 @@ if (_varName isEqualTo "") exitWith {
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 
-_intercomStatus set [STATION_INTERCOM_UNIT_INDEX, _unit];
+HASH_SET(_intercomStatus,"unit",_unit);
 _vehicle setVariable [_varName, _intercomArray, true];

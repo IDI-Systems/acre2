@@ -35,50 +35,51 @@ private _intercomStations = [];
     };
     private _seatConfiguration = [];
     {
-        // Array has the following format:
-        // 0: Configuration array
-        //   0: Has Intercom access <BOOL> (default: false)
-        //   1: Connection status <NUMBER> (default: disconnected)
-        //   2: Volume <NUMBER> (default: 1)
-        //   3: This is a seat with limited connectivity <BOOL> (default: false)
-        //   4: Turned out is allowed <BOOL> (default: true)
-        //   5: Forced connection status <NUMBER> (default: Status not forced)
-        //   6: Voice activation active <BOOL> (default: true)
-        //   7: This is a master station <BOOL> (default: false)
-        // 1: Unit using intercom <OBJECT> (default: objNull)
-        private _intercomStatus = [[false, INTERCOM_DISCONNECTED, INTERCOM_DEFAULT_VOLUME, false, true, false, true, false], objNull];
-        private _configurationArray = _intercomStatus select 0;
-        if (_role in (_forbiddenPositions select _forEachIndex)) then {
-            _configurationArray set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, false];
+        /* Hash has the following entries:
+         * - "hasAccess": Has Intercom access <BOOL> (default: false)
+         * - "connection": Connection status <NUMBER> (default: disconnected)
+         * - "volume": Volume <NUMBER> (default: 1)
+         * - "isLimited": This is a seat with limited connectivity <BOOL> (default: false)
+         * - "turnedOutAllowed": Turned out is allowed <BOOL> (default: true)
+         * - "forcedConnection": Forced connection status <NUMBER> (default: Status not forced)
+         * - "voiceActivation": Voice activation active <BOOL> (default: true)
+         * - "masterStation": This is a master station <BOOL> (default: false)
+         * - "unit": Unit using intercom <OBJECT> (default: objNull)
+         */
+        private _intercomStatus = HASH_CREATE;
+
+        // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to
+        // reduce network traffic.
+        HASH_SET(_intercomStatus, "unit", objNull);
+
+        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_VOLUME,INTERCOM_DEFAULT_VOLUME);
+
+        private _allowed = (_role in _x || {_role in (_limitedPositions select _forEachIndex)}) && {!(_role in (_forbiddenPositions select _forEachIndex))};
+        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_HASINTERCOMACCESS,_allowed);
+
+        if ((_initialConfiguration select _forEachIndex) == 1) then {
+            HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_CONNECTION,INTERCOM_RX_AND_TX);
         } else {
-            if (_role in _x && {!(_role in (_forbiddenPositions select _forEachIndex))}) then {
-                _configurationArray set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
-                if ((_initialConfiguration select _forEachIndex) == 1) then {
-                    _configurationArray set [INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX];
-                };
-            };
-
-            if (_role in (_limitedPositions select _forEachIndex)) then {
-                _configurationArray set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
-                _configurationArray set [INTERCOM_STATIONSTATUS_LIMITED, true];
-
-                // Limited positions are by default configured without voice activation
-                _configurationArray set [INTERCOM_STATIONSTATUS_VOICEACTIVATION, false];
-            };
-
-            // Handle turned out
-            if ("turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)}) then {
-                _configurationArray set [INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false];
-            };
-
-            // Configure master station
-            if (_role in (_masterStation select _forEachIndex)) then {
-                _configurationArray set [INTERCOM_STATIONSTATUS_MASTERSTATION, true];
-            };
-
-            // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to
-            // reduce network traffic.
+            HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_CONNECTION,INTERCOM_DISCONNECTED);
         };
+
+        _allowed = _role in (_limitedPositions select _forEachIndex);
+        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_LIMITED,_allowed);
+
+        // Limited positions are by default configured without voice activation
+        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_VOICEACTIVATION,!_allowed);
+
+        // Handle turned out
+        _allowed = "turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)};
+        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED,!_allowed);
+
+        // Default not forced
+        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_FORCEDCONNECTION,false);
+
+        // Configure master station
+        _allowed = _role in (_masterStation select _forEachIndex);
+        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_MASTERSTATION,_allowed);
+
         _seatConfiguration set [_forEachIndex, _intercomStatus];
     } forEach _allowedPositions;
 

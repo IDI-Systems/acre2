@@ -33,7 +33,7 @@ if (_varName isEqualTo "") exitWith {
 
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
-private _oldValue = (_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select _intercomFunctionality;
+private _oldValue = HASH_GET(_intercomStatus,_intercomFunctionality);
 
 if (_oldValue isEqualTo _value) exitWith {
     //DEBUG_1("Set the same value for intercom functionality %1",_intercomFunctionality);
@@ -43,8 +43,8 @@ private _changed = false;
 switch (_intercomFunctionality) do {
     case INTERCOM_STATIONSTATUS_HASINTERCOMACCESS: { _changed = true };
     case INTERCOM_STATIONSTATUS_CONNECTION: {
-        if !((_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_FORCEDCONNECTION) then {
-            if ((_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_LIMITED) then {
+        if !(HASH_GET(_intercomStatus,INTERCOM_STATIONSTATUS_FORCEDCONNECTION)) then {
+            if (HASH_GET(_intercomStatus,INTERCOM_STATIONSTATUS_LIMITED)) then {
                 _changed = [_vehicle, _intercomNetwork, _value, _oldValue] call FUNC(handleLimitedConnection);
             } else {
                 _changed = true;
@@ -52,9 +52,9 @@ switch (_intercomFunctionality) do {
 
             if (_changed) then {
                 if (_value > INTERCOM_DISCONNECTED) then {
-                    _intercomStatus set [STATION_INTERCOM_UNIT_INDEX, _unit];
+                    HASH_SET(_intercomStatus,"unit",_unit);
                 } else {
-                    _intercomStatus set [STATION_INTERCOM_UNIT_INDEX, objNull];
+                    HASH_SET(_intercomStatus,"unit",_unit);
                 };
             };
         } else {
@@ -66,11 +66,10 @@ switch (_intercomFunctionality) do {
     case INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED: { _changed = true };
     case INTERCOM_STATIONSTATUS_FORCEDCONNECTION: { _changed = true };
     case INTERCOM_STATIONSTATUS_VOICEACTIVATION: { _changed = true };
-    default {  /*...code...*/ };
 };
 
 if (_changed) then {
-    (_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) set [_intercomFunctionality, _value];
+    HASH_SET(_intercomStatus,_intercomFunctionality,_value);
     _vehicle setVariable [_varName, _intercomArray, true];
     [_vehicle, _unit] call FUNC(updateVehicleInfoText);
 };

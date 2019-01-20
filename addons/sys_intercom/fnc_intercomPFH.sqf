@@ -62,12 +62,12 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
             // Gather all units connected to the intercom that can at least transmit
             {
                 private _stationConfig = (_vehicle getVariable [_x, []]) select _i;
-                private _intercomConfig = (_stationConfig select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_CONNECTION;
+                private _intercomConfig = HASH_GET(_stationConfig,INTERCOM_STATIONSTATUS_CONNECTION);
 
                 // Handle voice/ptt activation
-                private _unit = _stationConfig select STATION_INTERCOM_UNIT_INDEX;
+                private _unit = HASH_GET(_stationConfig,"unit");
                 if (!isNull _unit) then {
-                    private _voiceActivation = (_stationConfig select STATION_INTERCOM_CONFIGURATION_INDEX) select INTERCOM_STATIONSTATUS_VOICEACTIVATION;
+                    private _voiceActivation = HASH_GET(_stationConfig,INTERCOM_STATIONSTATUS_VOICEACTIVATION);
                     // If the unit is not pressing the key to talk to intercom, treat it like not transmitting.
                     if (!_voiceActivation && {_intercomConfig == INTERCOM_TX_ONLY || {_intercomConfig == INTERCOM_RX_AND_TX}} && {!(_unit getVariable [QGVAR(intercomPTT), false])}) then {
                         _intercomConfig = INTERCOM_RX_ONLY;
@@ -75,7 +75,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
 
                     // Add only those units with seat configuration with transmit capabilities
                     if (_intercomConfig == INTERCOM_RX_AND_TX || {_intercomConfig == INTERCOM_TX_ONLY}) then {
-                        _intercomUnits pushBack (_stationConfig select STATION_INTERCOM_UNIT_INDEX);
+                        _intercomUnits pushBack _unit;
                     };
                 };
             } forEach _intercomStations;
