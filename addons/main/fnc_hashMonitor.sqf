@@ -17,7 +17,7 @@
 
 if (count ACRE_FAST_HASH_TO_DELETE > 0) then {
     private _init_time = diag_tickTime;
-    while {(diag_tickTime - _init_time) * 1000 < 2.0 && count ACRE_FAST_HASH_TO_DELETE > 0} do {
+    while {(diag_tickTime - _init_time) * 1000 < 2.0 && {!(ACRE_FAST_HASH_TO_DELETE isEqualTo [])}} do {
         deleteLocation (ACRE_FAST_HASH_TO_DELETE deleteAt 0);
         ACRE_FAST_HASH_POOL pushBack HASH_CREATE_NAMESPACE;
     };
