@@ -23,5 +23,4 @@ private _radioPresets = HASH_GET(GVAR(radioPresets),_radioType);
 
 if (isNil "_radioPresets") exitWith {nil};
 
-private _presetData = HASH_GET(_radioPresets,_presetName);
-_presetData
+HASH_GET(_radioPresets,_presetName);

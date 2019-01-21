@@ -16,7 +16,7 @@
  * Public: No
  */
 
-if ((count GVAR(eventQueue)) > 0 && ACRE_DATA_SYNCED) then {
+if (ACRE_DATA_SYNCED && {!(GVAR(eventQueue) isEqualTo [])}) then {
     private _newQueue = [];
     private _sendEvents = [];
     {
@@ -32,7 +32,7 @@ if ((count GVAR(eventQueue)) > 0 && ACRE_DATA_SYNCED) then {
         };
     } forEach GVAR(eventQueue);
     TRACE_1("SEND EVENT COUNT", (count _sendEvents));
-    if ((count _sendEvents) > 0) then {
+    if !(_sendEvents isEqualTo []) then {
         private _id = [] call FUNC(createEventMsgId);
         PUSH(GVAR(pendingNetworkEvents), _id);
         TRACE_2("SENDING NETWORK EVENT", _id, _sendEvents);

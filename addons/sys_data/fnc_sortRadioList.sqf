@@ -31,6 +31,6 @@ private _sortList = _currentRadioList + [];
 } forEach _prepend;
 { REM(_prepend, _x); } forEach _toRemove;
 
-private _return = _prepend + _sortList;
+private _return = _prepend append _sortList;
 
 [_prepend, _return]

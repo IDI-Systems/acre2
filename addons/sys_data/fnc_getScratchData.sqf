@@ -30,4 +30,5 @@ if (!HASH_HASKEY(_data, _id)) exitWith {
     HASH_SET(_data, _id, _default);
     _default
 };
-HASH_GET(_data, _id);
+
+HASH_GET(_data, _id)
