@@ -46,39 +46,39 @@ private _intercomStations = [];
          * - "masterStation": This is a master station <BOOL> (default: false)
          * - "unit": Unit using intercom <OBJECT> (default: objNull)
          */
-        private _intercomStatus = HASH_CREATE;
+        private _intercomStatus = [] call CBA_fnc_hashCreate;
 
         // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to
         // reduce network traffic.
-        HASH_SET(_intercomStatus, "unit", objNull);
+        [_intercomStatus, "unit", objNull] call CBA_fnc_hashSet;
 
-        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_VOLUME,INTERCOM_DEFAULT_VOLUME);
+        [_intercomStatus,INTERCOM_STATIONSTATUS_VOLUME,INTERCOM_DEFAULT_VOLUME] call CBA_fnc_hashSet;
 
         private _allowed = (_role in _x || {_role in (_limitedPositions select _forEachIndex)}) && {!(_role in (_forbiddenPositions select _forEachIndex))};
-        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_HASINTERCOMACCESS,_allowed);
+        [_intercomStatus,INTERCOM_STATIONSTATUS_HASINTERCOMACCESS,_allowed] call CBA_fnc_hashSet;
 
         if ((_initialConfiguration select _forEachIndex) == 1) then {
-            HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_CONNECTION,INTERCOM_RX_AND_TX);
+            [_intercomStatus,INTERCOM_STATIONSTATUS_CONNECTION,INTERCOM_RX_AND_TX] call CBA_fnc_hashSet;
         } else {
-            HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_CONNECTION,INTERCOM_DISCONNECTED);
+            [_intercomStatus,INTERCOM_STATIONSTATUS_CONNECTION,INTERCOM_DISCONNECTED] call CBA_fnc_hashSet;
         };
 
         _allowed = _role in (_limitedPositions select _forEachIndex);
-        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_LIMITED,_allowed);
+        [_intercomStatus,INTERCOM_STATIONSTATUS_LIMITED,_allowed] call CBA_fnc_hashSet;
 
         // Limited positions are by default configured without voice activation
-        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_VOICEACTIVATION,!_allowed);
+        [_intercomStatus,INTERCOM_STATIONSTATUS_VOICEACTIVATION,!_allowed] call CBA_fnc_hashSet;
 
         // Handle turned out
         _allowed = "turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)};
-        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED,!_allowed);
+        [_intercomStatus,INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED,!_allowed] call CBA_fnc_hashSet;
 
         // Default not forced
-        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_FORCEDCONNECTION,false);
+        [_intercomStatus,INTERCOM_STATIONSTATUS_FORCEDCONNECTION,false] call CBA_fnc_hashSet;
 
         // Configure master station
         _allowed = _role in (_masterStation select _forEachIndex);
-        HASH_SET(_intercomStatus,INTERCOM_STATIONSTATUS_MASTERSTATION,_allowed);
+        [_intercomStatus,INTERCOM_STATIONSTATUS_MASTERSTATION,_allowed] call CBA_fnc_hashSet;
 
         _seatConfiguration set [_forEachIndex, _intercomStatus];
     } forEach _allowedPositions;
