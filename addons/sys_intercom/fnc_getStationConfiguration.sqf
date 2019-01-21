@@ -32,4 +32,4 @@ if (_varName isEqualTo "") exitWith {
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 
-[_intercomStatus,_intercomFunctionality] call CBA_fnc_hashGet
+[_intercomStatus, _intercomFunctionality] call CBA_fnc_hashGet

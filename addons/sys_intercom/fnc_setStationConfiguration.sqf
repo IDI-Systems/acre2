@@ -33,7 +33,7 @@ if (_varName isEqualTo "") exitWith {
 
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
-private _oldValue = [_intercomStatus,_intercomFunctionality] call CBA_fnc_hashGet;
+private _oldValue = [_intercomStatus, _intercomFunctionality] call CBA_fnc_hashGet;
 if (_oldValue isEqualTo _value) exitWith {
     //DEBUG_1("Set the same value for intercom functionality %1",_intercomFunctionality);
 };
@@ -42,8 +42,8 @@ private _changed = false;
 switch (_intercomFunctionality) do {
     case INTERCOM_STATIONSTATUS_HASINTERCOMACCESS: { _changed = true };
     case INTERCOM_STATIONSTATUS_CONNECTION: {
-        if !([_intercomStatus,INTERCOM_STATIONSTATUS_FORCEDCONNECTION] call CBA_fnc_hashGet) then {
-            if ([_intercomStatus,INTERCOM_STATIONSTATUS_LIMITED] call CBA_fnc_hashGet) then {
+        if !([_intercomStatus, INTERCOM_STATIONSTATUS_FORCEDCONNECTION] call CBA_fnc_hashGet) then {
+            if ([_intercomStatus, INTERCOM_STATIONSTATUS_LIMITED] call CBA_fnc_hashGet) then {
                 _changed = [_vehicle, _intercomNetwork, _value, _oldValue] call FUNC(handleLimitedConnection);
             } else {
                 _changed = true;
@@ -51,9 +51,9 @@ switch (_intercomFunctionality) do {
 
             if (_changed) then {
                 if (_value > INTERCOM_DISCONNECTED) then {
-                    [_intercomStatus,"unit",_unit] call CBA_fnc_hashSet;
+                    [_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
                 } else {
-                    [_intercomStatus,"unit",_unit] call CBA_fnc_hashSet;
+                    [_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
                 };
             };
         } else {
@@ -68,7 +68,7 @@ switch (_intercomFunctionality) do {
 };
 
 if (_changed) then {
-    [_intercomStatus,_intercomFunctionality,_value] call CBA_fnc_hashSet;
+    [_intercomStatus, _intercomFunctionality, _value] call CBA_fnc_hashSet;
     _vehicle setVariable [_varName, _intercomArray, true];
     [_vehicle, _unit] call FUNC(updateVehicleInfoText);
 };
