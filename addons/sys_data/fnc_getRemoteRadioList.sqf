@@ -18,4 +18,4 @@
 
 params ["_user"];
 
-_user getVariable [QGVAR(radioIdList), []];
+_user getVariable [QGVAR(radioIdList), []]

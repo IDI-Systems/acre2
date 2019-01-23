@@ -16,7 +16,7 @@
  * Public: No
  */
 
-params ["_radioId", "_id", ["_default",nil]];
+params ["_radioId", "_id", ["_default", nil]];
 
 if (!HASH_HASKEY(GVAR(radioScratchData), _radioId)) exitWith {
     HASH_SET(GVAR(radioScratchData), _radioId, HASH_CREATE);

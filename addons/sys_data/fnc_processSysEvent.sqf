@@ -36,7 +36,7 @@ if (isNil "_handlerFunction") then {
     private _radioBaseClass = BASE_CLASS_CONFIG(_radioId);
 
     private _interfaceClass = getText (configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
-    if (_interfaceClass == "") then {
+    if (_interfaceClass isEqualTo "") then {
         _interfaceClass = "DefaultInterface";
     };
     _handlerFunction = getText (configFile >> _eventKind >> _interfaceClass >> _event >> "handler");
