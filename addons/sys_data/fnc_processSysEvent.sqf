@@ -36,14 +36,14 @@ if (isNil "_handlerFunction") then {
     private _radioBaseClass = BASE_CLASS_CONFIG(_radioId);
 
     private _interfaceClass = getText (configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
-    if (_interfaceClass isEqualTo "") then {
+    if (_interfaceClass == "") then {
         _interfaceClass = "DefaultInterface";
     };
     _handlerFunction = getText (configFile >> _eventKind >> _interfaceClass >> _event >> "handler");
     HASH_SET(GVAR(sysEventCache),_cachekey,_handlerFunction);
 };
 
-if !(_handlerFunction isEqualTo "") then {
+if !(_handlerFunction == "") then {
     _return = [_radioId, _event, _data, _radioData, _eventKind, _remote] call (missionNamespace getVariable [_handlerFunction, FUNC(noApiSystemFunction)]);
 };
 
