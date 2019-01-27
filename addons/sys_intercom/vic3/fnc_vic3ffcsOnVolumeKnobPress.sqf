@@ -20,7 +20,7 @@ params ["", "_key"];
 
 private _currentDirection = -0.1;
 if (_key == 0) then {
-    // left click
+    // Left click
     _currentDirection = 0.1;
 };
 

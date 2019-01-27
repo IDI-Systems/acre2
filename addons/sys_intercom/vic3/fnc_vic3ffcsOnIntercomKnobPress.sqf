@@ -18,18 +18,24 @@
 
 params ["", "_key"];
 
-private _currentDirection = -0.1;
+private _currentDirection = -1;
 if (_key == 0) then {
-    // left click
-    _currentDirection = 0.1;
+    // Left click
+    _currentDirection = 1;
 };
 
 private _vehicle = vehicle acre_player;
-private _currentVolume = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_VOLUME] call FUNC(getStationConfiguration);
-private _newVolume = ((_currentVolume + _currentDirection) max 0) min 3;
+private _intercomPos = [_vehicle, acre_player, GVAR(activeIntercom), "intercomKnob"] call FUNC(getStationConfiguration);
+private _newIntercomPos = ((_intercomPos + _currentDirection) max 0) min 3;
 
-if (_newVolume != _currentVolume) then {
-    [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_VOLUME, _newVolume] call FUNC(setStationConfiguration);
+if (_newIntercomPos != _intercomPos) then {
+    [_vehicle, acre_player, GVAR(activeIntercom), "intercomKnob", _newIntercomPos] call FUNC(setStationConfiguration);
+
+    if (_intercomPos > 1) then {
+        _intercomPos = 1;  // VOX and O/R are not supported at the moment in the UI. O/R is supported through keybind
+    };
+
+    [_vehicle, acre_player, GVAR(activeIntercom), "voiceActivation", _intercomPos == 1] call FUNC(setStationConfiguration);
 
     [MAIN_DISPLAY] call FUNC(vic3ffcsRender);
 };
