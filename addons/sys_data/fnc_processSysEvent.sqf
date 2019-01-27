@@ -43,7 +43,7 @@ if (isNil "_handlerFunction") then {
     HASH_SET(GVAR(sysEventCache),_cachekey,_handlerFunction);
 };
 
-if !(_handlerFunction == "") then {
+if (_handlerFunction != "") then {
     _return = [_radioId, _event, _data, _radioData, _eventKind, _remote] call (missionNamespace getVariable [_handlerFunction, FUNC(noApiSystemFunction)]);
 };
 
