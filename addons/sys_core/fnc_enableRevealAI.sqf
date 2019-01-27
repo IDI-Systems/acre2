@@ -52,7 +52,7 @@ DFUNC(monitorAI_PFH) = {
             // y=\frac{250\cdot \left(\left(1.3\right)^2\right)}{\left(x\right)^2}
             // 1.3 is standing in for the value of selectableCurveScale
 
-            private _chance = _occlusion * (_multiplier  / _distance);
+            private _chance = _occlusion * (_multiplier / _distance);
             TRACE_4("", _curUnit, _distance, _occlusion, _chance);
             if ((random 1) < _chance) then {
                 TRACE_2("REVEAL!", _curUnit, acre_player);
@@ -61,14 +61,14 @@ DFUNC(monitorAI_PFH) = {
                 if (_lastRevealed + 15 < time) then {
                     TRACE_2("Calling reveal event", _curUnit, _hasRevealed);
                     _curUnit setVariable [QGVAR(lastRevealed), time, false];
-                    [QGVAR(onRevealUnit), [acre_player, _curUnit, ACRE_REVEAL_AMOUNT ] ] call CALLSTACK(CBA_fnc_globalEvent);
+                    [QGVAR(onRevealUnit), [acre_player, _curUnit, ACRE_REVEAL_AMOUNT], _curUnit] call CALLSTACK(CBA_fnc_targetEvent);
                 };
             };
         };
     } forEach _nearUnits;
 
-    if (GVAR(revealToAI) isEqualTo 0) then {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+    if (GVAR(revealToAI) == 0) then {
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
 };
 

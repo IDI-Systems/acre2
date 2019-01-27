@@ -22,4 +22,5 @@ for "_i" from 1 to 8 do {
     _idString = _idString + selectRandom _valid;
 };
 _idString = (str diag_tickTime)+_idString;
-_idString;
+
+_idString

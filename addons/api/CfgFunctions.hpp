@@ -102,6 +102,12 @@ class CfgFunctions {
             PATHTO_FNC(babelSetSpeakingLanguage);
             PATHTO_FNC(babelAddLanguageType);
         };
+
+        class Spectator {
+            PATHTO_FNC(addSpectatorRadio);
+            PATHTO_FNC(removeAllSpectatorRadios);
+            PATHTO_FNC(removeSpectatorRadio);
+        };
     };
 
 
