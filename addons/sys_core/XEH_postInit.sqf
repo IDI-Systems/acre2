@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+[QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
+
 if (!hasInterface) exitWith {};
 
 // Ensure the TeamSpeak plugin handler code is initialized first
@@ -95,8 +97,6 @@ if ((GVAR(revealToAI) > 0) && hasInterface) then {
 } else {
     INFO("AI Detection Not Active.");
 };
-
-[QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 //Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_INTERCOM = [];
