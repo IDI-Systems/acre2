@@ -18,18 +18,14 @@
 GVAR(pluginVersion) = _this select 0;
 
 private _warn = false;
-private _isServer = false;
-private _isClient = false;
 
 if (!isNil "ACRE_FULL_SERVER_VERSION") then {
     if (ACRE_FULL_SERVER_VERSION != QUOTE(VERSION)) then {
         _warn = true;
-        _isServer = true;
     };
 };
 if (GVAR(pluginVersion) != QUOTE(VERSION_PLUGIN)) then {
     _warn = true;
-    _isClient = true;
 };
 
 if (!ACRE_SPIT_VERSION && {!isNil "ACRE_FULL_SERVER_VERSION"}) then {

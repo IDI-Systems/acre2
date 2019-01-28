@@ -71,7 +71,6 @@ private _processedArray = [];
                 } forEach _copilot;
             };
             case "inside": {
-                private _role = _x;
                 private _fullCrew = fullCrew [_vehicle, "", true];
                 {
                     private _role = toLower (_x select 1);

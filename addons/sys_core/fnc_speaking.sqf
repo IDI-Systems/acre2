@@ -155,7 +155,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                {
                     _on = [_x select 1, "getOnOffState"] call EFUNC(sys_data,dataEvent);
                     if (_on == 1) then {
-                        _x params ["_unit","","_signalData","_params"];
+                        _x params ["_unit", "", "_signalData", "_params"];
                         if (!HASH_HASKEY(_compiledParams, netId _unit)) then {
                             HASH_SET(_compiledParams, netId _unit, []);
                         };
