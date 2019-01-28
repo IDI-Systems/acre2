@@ -39,7 +39,7 @@ if ((count ACRE_SPOKEN_LANGUAGES) > 1) then {
 
         // Params are languageKey and languageName
         _language params ["","_languageName"];
-       [_languageName, "Now speaking", "", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
+        [_languageName, "Now speaking", "", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
     } else {
         ["No Babel Active", "", "", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
     };

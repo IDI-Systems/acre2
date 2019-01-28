@@ -7,7 +7,7 @@
  * 0: Reveal factor players to AI that speak <NUMBER>
  *
  * Return Value:
- * Reveal factor for revealing players to AI <BOOL>
+ * Reveal factor for revealing players to AI <NUMBER>
  *
  * Example:
  * _status = [0.5] call acre_sys_core_fnc_setRevealToAI
@@ -18,19 +18,23 @@
 
 if (!hasInterface) exitWith {false};
 
-params ["_var"];
+params [
+    ["_var", 0, [0]]
+];
 
-// Set
-if !(_var isEqualType false) exitWith { false };
+if (_var == GVAR(revealToAI)) exitWith {_var};
 
-if (GVAR(revealToAI) isEqualTo 0 && _var > 0) then {
-    [] call FUNC(enableRevealAI);
-} else {
-    if (GVAR(revealToAI) > 0 && _var isEqualTo 0) then {
-        [] call FUNC(disableRevealAI);
-    };
+GVAR(revealToAI) == _var;
+
+if ((GVAR(revealToAI) > 0) && {GVAR(monitorAIHandle) == -1}) then {
+    GVAR(monitorAIHandle) = ADDPFH(DFUNC(monitorAI_PFH), 0.5, []);
+    INFO("AI Detection Activated.");
 };
 
-GVAR(revealToAI) = _var;
+if (GVAR(revealToAI) == 0) then {
+    [GVAR(monitorAIHandle)] call CBA_fnc_removePerFrameHandler;
+    GVAR(monitorAIHandle) = -1;
+    INFO("AI Detection Not Active.");
+};
 
 _var

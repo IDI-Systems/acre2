@@ -68,7 +68,7 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
         [_wrpLocation],
         true,
         {
-            params ["_args", "_result"];
+            params ["", "_result"];
 
             if (_result < 0) then {
                 if (_result == -1) then {
@@ -89,14 +89,6 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
 
 // Check whether ACRE2 is fully loaded
 ADDPFH(DFUNC(coreInitPFH), 0, []);
-
-// Call our setter to enable AI reveal if its been set here
-if ((GVAR(revealToAI) > 0) && hasInterface) then {
-    INFO("AI Detection Activated.");
-    [] call FUNC(enableRevealAI);
-} else {
-    INFO("AI Detection Not Active.");
-};
 
 //Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_INTERCOM = [];
