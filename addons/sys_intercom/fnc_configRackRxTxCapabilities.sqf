@@ -18,19 +18,23 @@
 params ["_vehicle"];
 
 private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
+private _intercoms = (_vehicle getVariable [QGVAR(intercomNames), []]);
 
 {
     private _rackRxTxConfig = [];
     private _stationName = _x;
     {
-        private _rackId = _x;
-        {
-            private _seatHasIntercomAccess = [_vehicle, objNull, _forEachIndex, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _stationName] call FUNC(getStationConfiguration);
-            if (_seatHasIntercomAccess) exitWith {
-                _rackRxTxConfig pushBackUnique [_rackId, RACK_NO_MONITOR];
-            };
-        } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
-    } forEach _racks;
+        private _seatHasIntercomAccess = [_vehicle, objNull, _forEachIndex, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _stationName] call FUNC(getStationConfiguration);
+        private _rackStatus = if (_seatHasIntercomAccess) then {
+            RACK_NO_MONITOR
+        } else {
+            RACK_DISABLED
+        };
 
-    _vehicle setVariable [format ["%1_rack", _stationName], _rackRxTxConfig, true];
+        {
+            _rackRxTxConfig pushBack [_x, _rackStatus];
+        } forEach _racks;
+
+        [_vehicle, objNull, _forEachIndex, "wiredRacks", _rackRxTxConfig] call FUNC(setStationConfiguration);
+    } forEach _intercoms;
 } forEach (_vehicle getVariable [QGVAR(intercomStations), []]);

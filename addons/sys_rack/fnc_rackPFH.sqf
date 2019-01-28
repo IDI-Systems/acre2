@@ -26,9 +26,9 @@ _param params ["_player", "_vehicle"];
 if (_player != vehicle _player) then {
     {
         private _radioId = [_x] call FUNC(getMountedRadio);
-        if (_radioId != "" && {!(_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || _radioId in ACRE_HEARABLE_RACK_RADIOS)}) then {
+        if (_radioId != "" && {!(_radioId in ACRE_HEARABLE_RACK_RADIOS || {_radioId in ACRE_ACCESSIBLE_RACK_RADIOS})}) then {
             private _functionality = [_radioId, _vehicle, _player, _x] call EFUNC(sys_intercom,getRackRxTxCapabilities);
-            if (_functionality != RACK_NO_MONITOR) then {
+            if (_functionality > RACK_NO_MONITOR) then {
                 // Add the radio to the active list since it is already active in the intercom system
                 [_vehicle, _player, _radioId] call FUNC(startUsingMountedRadio);
             };
@@ -41,21 +41,21 @@ private _remove = [];
 {
     if (!([_x] call EFUNC(sys_radio,radioExists))) then {_remove pushBackUnique _x;};
     private _rack = [_x] call FUNC(getRackFromRadio);
-    if (_rack == "") then { _remove pushBackUnique _x; }; // Radio is no longer stored in a rack
+    if (_rack == "") then {_remove pushBackUnique _x;}; // Radio is no longer stored in a rack
 
     private _isRackHearable = [_rack, _player] call FUNC(isRackHearable);
     private _isRackAccessible = [_rack, _player] call FUNC(isRackAccessible);
 
     // Check only those radios connected on intercom systems
-    if (count ([_rack] call FUNC(getWiredIntercoms)) > 0 && _isRackHearable) then {
+    if (_isRackHearable && {!(([_rack] call FUNC(getWiredIntercoms)) isEqualTo [])}) then {
         private _functionality = [_x, _vehicle, _player, _rack] call EFUNC(sys_intercom,getRackRxTxCapabilities);
 
-        if (_functionality == RACK_NO_MONITOR) then {
+        if (_functionality <= RACK_NO_MONITOR) then {
             _remove pushBackUnique _x;
         };
     };
 
-    if (!(_isRackAccessible || _isRackHearable)) then {_remove pushBackUnique _x; };
+    if (!(_isRackAccessible || {_isRackHearable})) then {_remove pushBackUnique _x;};
 } forEach (ACRE_ACCESSIBLE_RACK_RADIOS + ACRE_HEARABLE_RACK_RADIOS);
 
 {
@@ -74,7 +74,7 @@ if !(_remove isEqualTo []) then {
     [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
 };
 
-if ((_player == vehicle _player) && (ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []) && (ACRE_HEARABLE_RACK_RADIOS isEqualTo [])) then {
+if ((_player == vehicle _player) && {ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []} && {ACRE_HEARABLE_RACK_RADIOS isEqualTo []}) then {
     [GVAR(rackPFH)] call CBA_fnc_removePerFrameHandler;
     GVAR(rackPFH) = -1;
 };

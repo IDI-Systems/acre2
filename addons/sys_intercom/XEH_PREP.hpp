@@ -41,7 +41,6 @@ PREP(updateInfantryPhoneStatus);
 // Racks integration
 PREP(configRackRxTxCapabilities);
 PREP(getRackRxTxCapabilities);
-PREP(setRackRxTxCapabilities);
 
 // Display
 PREP(updateVehicleInfoText);

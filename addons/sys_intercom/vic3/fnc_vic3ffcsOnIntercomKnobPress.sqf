@@ -29,13 +29,12 @@ private _intercomPos = [_vehicle, acre_player, GVAR(activeIntercom), "intercomKn
 private _newIntercomPos = ((_intercomPos + _currentDirection) max 0) min 3;
 
 if (_newIntercomPos != _intercomPos) then {
-    [_vehicle, acre_player, GVAR(activeIntercom), "intercomKnob", _newIntercomPos] call FUNC(setStationConfiguration);
-
     if (_intercomPos > 1) then {
         _intercomPos = 1;  // VOX and O/R are not supported at the moment in the UI. O/R is supported through keybind
     };
 
-    [_vehicle, acre_player, GVAR(activeIntercom), "voiceActivation", _intercomPos == 1] call FUNC(setStationConfiguration);
+    [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_VOICEACTIVATION, _intercomPos == 1] call FUNC(setStationConfiguration);
+    [_vehicle, acre_player, GVAR(activeIntercom), "intercomKnob", _newIntercomPos] call FUNC(setStationConfiguration);
 
     [MAIN_DISPLAY] call FUNC(vic3ffcsRender);
 };
