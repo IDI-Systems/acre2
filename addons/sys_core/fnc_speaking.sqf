@@ -152,7 +152,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 BEGIN_COUNTER(hearableRadios);
 
                 // acre_player sideChat format["_volumeModifier: %1 %2", _volumeModifier];
-                {
+               {
                     _on = [_x select 1, "getOnOffState"] call EFUNC(sys_data,dataEvent);
                     if (_on == 1) then {
                         _x params ["_unit","","_signalData","_params"];

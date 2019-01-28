@@ -50,7 +50,7 @@ if (_useCache && {_cachedTime < diag_tickTime}) then {
 if (_useCache) exitWith {
     private _cachedResultDis = -1;
     if (!isNil "_cachedPos") then {
-        _cachedResultDis = (_startPos distance _cachedPos)+(_endPos distance _cachedPos);
+        _cachedResultDis = (_startPos distance _cachedPos) + (_endPos distance _cachedPos);
     };
 
     //((_distance/_cachedResultDis) max 0) max (1-(_cachedThickness/MAX_THICKNESS));

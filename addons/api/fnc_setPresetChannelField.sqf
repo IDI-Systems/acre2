@@ -20,11 +20,13 @@
  * Public: Yes
  */
 
-private _ret = params [["_radioClass","",[""]],
-    ["_presetName","",[""]],
-    "_channelReference",
-    ["_fieldName","",[""]],
-    ["_value","",["",0,[]]]];
+private _ret = params [
+    ["_radioClass", "", [""]],
+    ["_presetName", "", [""]],
+    ["_channelReference", 0, [0, ""]],
+    ["_fieldName", "", [""]],
+    ["_value", "", ["", 0, []]]
+];
 
 if (!_ret) exitWith { false };
 
@@ -37,15 +39,11 @@ if (!_ret) exitWith { false };
 
 
 private _channelNumber = -1;
-if (_channelReference isEqualType []) then {
-    // its a group and channel
+if (_channelReference isEqualType "") then {
+    _channelNumber = parseNumber _channelReference;
 } else {
-    if (_channelReference isEqualType "") then {
-        _channelNumber = parseNumber _channelReference;
-    } else {
-        if (_channelReference isEqualType 0) then {
-            _channelNumber = _channelReference;
-        };
+    if (_channelReference isEqualType 0) then {
+        _channelNumber = _channelReference;
     };
 };
 

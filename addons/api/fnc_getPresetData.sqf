@@ -16,7 +16,10 @@
  * Public: Yes
  */
 
-params ["_radioClass", "_preset"];
+params [
+    ["_radioClass", "", []],
+    ["_preset", "", []]
+];
 
 //_preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
 private _presetData = [_radioClass, _preset] call EFUNC(sys_data,getPresetData);

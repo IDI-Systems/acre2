@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Setting it to 0 means the terrain loss model is disabled, 1 is default. Note this setting only effects loss caused by terrain, loss due to power dissipation over range will always occur.
@@ -14,6 +13,7 @@
  *
  * Public: No
  */
+#include "script_component.hpp"
 
 if (!hasInterface) exitWith {false};
 

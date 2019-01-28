@@ -15,9 +15,11 @@
  * Public: Yes
  */
 
-params ["_radioId"];
+params [
+    ["_radioId", "", [""]]
+];
 
-if (!(_radioId isEqualType "")) exitWith { -1 };
+if !(_radioId isEqualType "") exitWith { -1 };
 
 private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 

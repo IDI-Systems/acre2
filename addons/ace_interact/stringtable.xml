@@ -181,5 +181,13 @@
             <Chinesesimp>设定多个发话 %1</Chinesesimp>
             <Portuguese>Definir Como Multi PTT %1</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_ace_interact_straightenAntenna">
+            <English>Straighten antenna</English>
+            <German>Antenne gerade ausrichten</German>
+        </Key>
+        <Key ID="STR_ACRE_ace_interact_bendAntenna">
+            <English>Bend antenna upwards</English>
+            <German>Antenne biegen</German>
+        </Key>
     </Package>
 </Project>

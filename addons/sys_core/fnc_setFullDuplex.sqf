@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the duplex of radio transmissions. If set to true, it means that you will receive transmissions even while talking and multiple people can speak at the same time.
@@ -10,10 +9,11 @@
  * None
  *
  * Example:
- * [true] call acre_sys_core_fnc_setFullDuplex;
+ * [true] call acre_sys_core_fnc_setFullDuplex
  *
  * Public: No
  */
+#include "script_component.hpp"
 
 if (!hasInterface) exitWith {false};
 

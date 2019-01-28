@@ -25,3 +25,4 @@ PREP(handleTake);
 PREP(inventoryMonitorPFH);
 
 PREP(updateVehicleInfo);
+PREP(antennaElevationDisplay);

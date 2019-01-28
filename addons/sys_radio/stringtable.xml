@@ -104,5 +104,13 @@
             <Spanish>La radio está siendo configurada por otro jugador.</Spanish>
             <French>La radio est en cours de configuration par un autre joueur.</French>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_acreBaseBox">
+            <English>ACRE Base Box</English>
+            <Spanish>Caja base de ACRE</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_allRadioCrate">
+            <English>All Radio Crate</English>
+            <Spanish>Caja con todas las radios</Spanish>
+        </Key>
     </Package>
 </Project>

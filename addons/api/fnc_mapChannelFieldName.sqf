@@ -16,7 +16,10 @@
  * Public: No
  */
 
-params ["_radioId", "_fieldName"];
+params [
+    ["_radioId", "", [""]],
+    ["_fieldName", "", [""]]
+];
 
 TRACE_1("CALLING", "");
 private _baseRadio = [_radioId] call FUNC(getBaseRadio);

@@ -15,7 +15,9 @@
  * Public: Yes
  */
 
-params [["_vehicle", objNull], ["_presetName", ""]];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 if (isNull _vehicle) exitWith {
     WARNING("Vehicle is null");

@@ -1,4 +1,3 @@
-#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets whether transmissions will interfere with each other. This, by default, causes signal loss when multiple people are transmitting on the same frequency.
@@ -10,10 +9,11 @@
  * None
  *
  * Example:
- * [true] call acre_sys_core_fnc_setInterference;
+ * [true] call acre_sys_core_fnc_setInterference
  *
  * Public: No
  */
+#include "script_component.hpp"
 
 if (!hasInterface) exitWith {false};
 

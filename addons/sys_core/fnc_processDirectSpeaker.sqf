@@ -59,11 +59,13 @@ private _emitterHeight = _emitterPos param [2, 1];
 
 if (GVAR(isDeaf) || {_unit getVariable [QGVAR(isDisabled), false]} || {ACRE_LISTENER_DIVE == 1} || {_emitterHeight < -0.2}) then {
     _directVolume = 0.0;
+} else {
+    if (_isIntercomAttenuate) then {
+        _speakingType = "i";
+        _directVolume = [_unit] call EFUNC(sys_intercom,getVolumeIntercomUnit);
+    };
 };
-if (_isIntercomAttenuate) then {
-    _speakingType = "i";
-    _directVolume = [_unit] call EFUNC(sys_intercom,getVolumeIntercomUnit);
-};
+
 private _canUnderstand = [_unit] call FUNC(canUnderstand);
 private _params = [_speakingType, _id, !_canUnderstand, _directVolume^3, _emitterPos, _emitterDir];
 TRACE_1("SPEAKING UPDATE", _params);
