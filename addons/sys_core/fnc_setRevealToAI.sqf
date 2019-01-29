@@ -22,12 +22,12 @@ params [
     ["_var", 0, [0]]
 ];
 
-if (_var == GVAR(revealToAI)) exitWith {_var};
+if (_var == GVAR(revealToAI) && {GVAR(monitorAIHandle) != -1}) exitWith {_var};
 
 GVAR(revealToAI) == _var;
 
 if ((GVAR(revealToAI) > 0) && {GVAR(monitorAIHandle) == -1}) then {
-    GVAR(monitorAIHandle) = ADDPFH(DFUNC(monitorAI_PFH), 0.5, []);
+    GVAR(monitorAIHandle) = ADDPFH(DFUNC(monitorAiPFH), 0.5, []);
     INFO("AI Detection Activated.");
 };
 
