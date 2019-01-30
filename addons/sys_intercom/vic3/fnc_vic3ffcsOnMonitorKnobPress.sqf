@@ -36,7 +36,7 @@ if (_newMonitorPos != _monitorPos) then {
     // Set the previous rack to no monitor unless it is selected in the work knob
     if (_monitorPos == VIC3FFCS_MONITOR_KNOB_POSITIONS) then {
         {
-            if (_forEachIndex != (_workPos - 1) && {_x select 1 != RACK_DISABLED}) then {
+            if (_forEachIndex != (_workPos - 1) && {_x select 2}) then {
                 private _rackId = _x select 0;
                 private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 
@@ -48,8 +48,8 @@ if (_newMonitorPos != _monitorPos) then {
             };
         } forEach _wiredRacks;
     } else {
-        private _selectedRack = _wiredRacks select _monitorPos;
-        if ((_monitorPos < _rackCount) && {(_workPos - 1) != _monitorPos} && {_selectedRack select 1 != RACK_DISABLED}) then {
+        private _selectedRack = _wiredRacks select _monitorPos; // RackID, Functionality, Has Access
+        if ((_monitorPos < _rackCount) && {(_workPos - 1) != _monitorPos} && {_selectedRack select 2}) then {
             private _rackId = _selectedRack select 0;
             private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 
@@ -63,7 +63,7 @@ if (_newMonitorPos != _monitorPos) then {
 
     if (_newMonitorPos == VIC3FFCS_MONITOR_KNOB_POSITIONS) then {
         {
-            if (_x select 1 != RACK_DISABLED) then {
+            if (_x select 2) then {
                 private _rackId = _x select 0;
                 private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 
@@ -75,8 +75,8 @@ if (_newMonitorPos != _monitorPos) then {
             };
         } forEach _wiredRacks;
     } else {
-        private _selectedRack = _wiredRacks select _newMonitorPos;
-        if ((_newMonitorPos < _rackCount) && {_selectedRack select 1 != RACK_DISABLED}) then {
+        private _selectedRack = _wiredRacks select _newMonitorPos;  // RackID, Functionality, Has Access
+        if ((_newMonitorPos < _rackCount) && {_selectedRack select 2}) then {
             private _rackId = _selectedRack select 0;
             private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 

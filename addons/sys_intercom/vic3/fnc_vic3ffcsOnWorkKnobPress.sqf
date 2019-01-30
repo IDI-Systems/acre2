@@ -35,7 +35,7 @@ if (_newWorkPos != _workPos) then {
 
     // Set the previous rack to no monitor unless it is selected in the monitor knob
     private _selectedRack = _wiredRacks select _workPos;
-    if ((_workPos - 1 != _monitorPos) && {_monitorPos != VIC3FFCS_MONITOR_KNOB_POSITIONS} && {_workPos < _rackCount} && {(_selectedRack select 1) != RACK_DISABLED}) then {
+    if ((_workPos - 1 != _monitorPos) && {_monitorPos != VIC3FFCS_MONITOR_KNOB_POSITIONS} && {_workPos < _rackCount} && {_selectedRack select 2}) then {
         private _rackId = _selectedRack select 0;
         private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 
@@ -45,8 +45,8 @@ if (_newWorkPos != _workPos) then {
         };
     };
 
-    _selectedRack = _wiredRacks select _newWorkPos;
-    if ((_newWorkPos < _rackCount) && {(_selectedRack select 1) != RACK_DISABLED}) then {
+    _selectedRack = _wiredRacks select _newWorkPos; // RackID, Functionality, Has Access
+    if ((_newWorkPos < _rackCount) && {_selectedRack select 2}) then {
         private _rackId = _selectedRack select 0;
         private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
         _selectedRack set [1, RACK_RX_AND_TX];

@@ -25,14 +25,11 @@ private _intercoms = (_vehicle getVariable [QGVAR(intercomNames), []]);
     private _stationName = _x;
     {
         private _seatHasIntercomAccess = [_vehicle, objNull, _forEachIndex, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _stationName] call FUNC(getStationConfiguration);
-        private _rackStatus = if (_seatHasIntercomAccess) then {
-            RACK_NO_MONITOR
-        } else {
-            RACK_DISABLED
-        };
 
         {
-            _rackRxTxConfig pushBack [_x, _rackStatus];
+            // RackID, MONITOR STATUS, Has access to rack. By default if seat has intercom access, the unit sitting in it can use the rack. This can be
+            // changed using a master control station (MCS)
+            _rackRxTxConfig pushBack [_x, RACK_NO_MONITOR, _seatHasIntercomAccess];
         } forEach _racks;
 
         [_vehicle, objNull, _forEachIndex, "wiredRacks", _rackRxTxConfig] call FUNC(setStationConfiguration);

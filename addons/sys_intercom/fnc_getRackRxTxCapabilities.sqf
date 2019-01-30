@@ -25,15 +25,18 @@ if (_rackId isEqualTo "") then {
     _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
 };
 
-private _functionality = RACK_DISABLED;
+private _functionality = RACK_NO_MONITOR;
 
 {
     private _wiredRacks = [_vehicle, _unit, _forEachIndex, "wiredRacks"] call FUNC(getStationConfiguration);
     {
-        params ["_rack", "_func"];
-        // Only increase the functionality if it is greater (RACK_DISABLED < RACK_NO_MONITOR < RACK_RX_ONLY < RACK_TX_ONLY < RACK_RX_AND_TX)
-        if ((_rack == _rackId) && {_func > _functionality}) exitWith {
-            _functionality = _func;
+        params ["_rack", "_func", "_hasAccess"];
+
+        // Only increase the functionality if it is greater (RACK_NO_MONITOR < RACK_RX_ONLY < RACK_TX_ONLY < RACK_RX_AND_TX)
+        if (_rack == _rackId) exitWith {
+            if (_hasAccess && {_func > _functionality}) then {
+                _functionality = _func;
+            };
         };
     } forEach _wiredRacks;
 } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);

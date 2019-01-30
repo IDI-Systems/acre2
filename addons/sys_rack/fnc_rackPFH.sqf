@@ -39,7 +39,7 @@ if (_player != vehicle _player) then {
 // Check whether the vehicle rack radios can still be used
 private _remove = [];
 {
-    if (!([_x] call EFUNC(sys_radio,radioExists))) then {_remove pushBackUnique _x;};
+    if !([_x] call EFUNC(sys_radio,radioExists)) then {_remove pushBackUnique _x;};
     private _rack = [_x] call FUNC(getRackFromRadio);
     if (_rack == "") then {_remove pushBackUnique _x;}; // Radio is no longer stored in a rack
 
@@ -50,12 +50,12 @@ private _remove = [];
     if (_isRackHearable && {!(([_rack] call FUNC(getWiredIntercoms)) isEqualTo [])}) then {
         private _functionality = [_x, _vehicle, _player, _rack] call EFUNC(sys_intercom,getRackRxTxCapabilities);
 
-        if (_functionality <= RACK_NO_MONITOR) then {
+        if (_functionality == RACK_NO_MONITOR) then {
             _remove pushBackUnique _x;
         };
     };
 
-    if (!(_isRackAccessible || {_isRackHearable})) then {_remove pushBackUnique _x;};
+    if !(_isRackAccessible || {_isRackHearable}) then {_remove pushBackUnique _x;};
 } forEach (ACRE_ACCESSIBLE_RACK_RADIOS + ACRE_HEARABLE_RACK_RADIOS);
 
 {
@@ -63,7 +63,6 @@ private _remove = [];
         ACRE_ACCESSIBLE_RACK_RADIOS deleteAt (ACRE_ACCESSIBLE_RACK_RADIOS find _x);
     } else {
         ACRE_HEARABLE_RACK_RADIOS deleteAt (ACRE_HEARABLE_RACK_RADIOS find _x);
-        [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
     };
 
     // Handle active radio
