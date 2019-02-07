@@ -29,7 +29,7 @@ switch (_ear) do {
         [localize LSTRING(switchRadioEarRight), ICON_RADIO_CALL] call FUNC(displayNotification);
     };
 };
-//[_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _ear]] call EFUNC(sys_data,dataEvent);
+
 [_radioId, "setSpatial", _ear] call EFUNC(sys_data,dataEvent);
 
 true

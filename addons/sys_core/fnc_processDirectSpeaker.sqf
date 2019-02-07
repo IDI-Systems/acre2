@@ -34,7 +34,6 @@ if (_id in ACRE_SPECTATORS_LIST && {ACRE_IS_SPECTATOR}) then {
 };
 
 private _listenerPos = ACRE_LISTENER_POS;
-private _listenerDir = ACRE_LISTENER_DIR;
 if (_bothSpectating || {_isIntercomAttenuate}) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;

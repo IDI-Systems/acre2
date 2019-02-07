@@ -16,19 +16,19 @@
  */
 
 GVAR(oldMute) = 0;
-GVAR(_waitTime) = 0;
+GVAR(waitTime) = 0;
 DFUNC(utility_aliveStatus) = {
     private _isMuted = 0;
     if (IS_MUTED(acre_player)) then {
         _isMuted = 1;
     };
-    if ((_isMuted != GVAR(oldMute)) || (diag_tickTime > GVAR(_waitTime))) then {
-        GVAR(_waitTime) = diag_tickTime + 3;
+    if ((_isMuted != GVAR(oldMute)) || {diag_tickTime > GVAR(waitTime)}) then {
+        GVAR(waitTime) = diag_tickTime + 3;
         ["localMute", (str _isMuted)] call EFUNC(sys_rpc,callRemoteProcedure);
     };
 
     GVAR(oldMute) = _isMuted;
 };
-GVAR(_waitTime) = diag_tickTime + 3;
+GVAR(waitTime) = diag_tickTime + 3;
 ADDPFH(FUNC(utility_aliveStatus), 0, []);
 true
