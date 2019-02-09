@@ -25,17 +25,22 @@ if (time == 0) exitWith {};
 [] call FUNC(updateSelf);
 
 private _radioParamsSorted = [[],[]];
-if (GVAR(speaking_cache_valid)) then {
-    BEGIN_COUNTER(speaking_loop);
-};
+
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    if (GVAR(speaking_cache_valid)) then {
+        BEGIN_COUNTER(speaking_loop);
+    };
+#endif
 
 private _sentMicRadios = [];
 if !(GVAR(keyedMicRadios) isEqualTo []) then {
-    BEGIN_COUNTER(speaking_loop_with_transmissions);
+
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        BEGIN_COUNTER(speaking_loop_with_transmissions);
+        BEGIN_COUNTER(signal_code);
+    #endif
 
     // if ((time >= GVAR(lastRadioTime) || {GVAR(lastKeyCount) != count GVAR(keyedMicRadios) })) then {
-    BEGIN_COUNTER(signal_code);
-
     // GVAR(lastKeyCount) = count GVAR(keyedMicRadios);
     private ["_playerRadios"];
     if (!GVAR(speaking_cache_valid)) then {
@@ -84,7 +89,9 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
         hintSilent ("Current transmissions:\n\n" + _signalHint);
     };
 
-    END_COUNTER(signal_code);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        END_COUNTER(signal_code);
+    #endif
 
     // To Check: Are values passed by reference?
     _radioParamsSorted params ["_radios","_sources"];
@@ -99,7 +106,9 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     {
         private _recRadio = _x;
         if (_recRadio != ACRE_BROADCASTING_RADIOID || {GVAR(fullDuplex)}) then {
-            BEGIN_COUNTER(radio_loop_single_radio);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                BEGIN_COUNTER(radio_loop_single_radio);
+            #endif
             private ["_radioVolume", "_volumeModifier", "_on"];
             if (!GVAR(speaking_cache_valid)) then {
                 _radioVolume = [_recRadio, "getVolume"] call EFUNC(sys_data,dataEvent);
@@ -118,7 +127,9 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 _on = HASH_GET(GVAR(coreCache), "on" + _recRadio);
             };
             if (_on == 1) then {
-                BEGIN_COUNTER(handleMultipleTransmissions);
+                #ifdef ENABLE_PERFORMANCE_COUNTERS
+                    BEGIN_COUNTER(handleMultipleTransmissions);
+                #endif
                 // if (!GVAR(speaking_cache_valid)) then {
                 private _sourceRadios = _sources select _forEachIndex;
                 private _hearableRadios = [_recRadio, "handleMultipleTransmissions", _sourceRadios] call EFUNC(sys_data,transEvent);
@@ -129,9 +140,10 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 // } else {
                     // _hearableRadios = HASH_GET(GVAR(coreCache), _recRadio + "hmt_cache");
                 // };
-                END_COUNTER(handleMultipleTransmissions);
-
-                BEGIN_COUNTER(data_events);
+                #ifdef ENABLE_PERFORMANCE_COUNTERS
+                    END_COUNTER(handleMultipleTransmissions);
+                    BEGIN_COUNTER(data_events);
+                #endif
 
                 // _rstart = diag_tickTime;
 
@@ -147,9 +159,10 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                     _volumeModifier = _volumeModifier^3;
                 };
 
-                END_COUNTER(data_events);
-
-                BEGIN_COUNTER(hearableRadios);
+                #ifdef ENABLE_PERFORMANCE_COUNTERS
+                    END_COUNTER(data_events);
+                    BEGIN_COUNTER(hearableRadios);
+                #endif
 
                 // acre_player sideChat format["_volumeModifier: %1 %2", _volumeModifier];
                {
@@ -185,9 +198,15 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                         _speakingRadios pushBack _params;
                     };
                 } forEach _hearableRadios;
-                END_COUNTER(hearableRadios);
+
+                #ifdef ENABLE_PERFORMANCE_COUNTERS
+                    END_COUNTER(hearableRadios);
+                #endif
             };
-            END_COUNTER(radio_loop_single_radio);
+
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                END_COUNTER(radio_loop_single_radio);
+            #endif
         };
     } forEach _radios;
 
@@ -195,9 +214,9 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
         if !(_radios isEqualTo []) then {
             END_COUNTER(radio_loop);
         };
-    #endif
 
-    BEGIN_COUNTER(updateSpeakingData_loop);
+        BEGIN_COUNTER(updateSpeakingData_loop);
+    #endif
 
     // _rstart = diag_tickTime;
     {
@@ -215,12 +234,16 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     } forEach HASH_KEYS(_compiledParams);
     // _rend = diag_tickTime;
 
-    END_COUNTER(updateSpeakingData_loop);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        END_COUNTER(updateSpeakingData_loop);
 
-    END_COUNTER(speaking_loop_with_transmissions);
+        END_COUNTER(speaking_loop_with_transmissions);
+    #endif
 };
 
-BEGIN_COUNTER(muting);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    BEGIN_COUNTER(muting);
+#endif
 
 {
     private _unit = _x;
@@ -264,11 +287,13 @@ if (ACRE_IS_SPECTATOR) then {
     } forEach GVAR(spectatorSpeakers);
 };
 
-END_COUNTER(muting);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    END_COUNTER(muting);
 
-if (GVAR(speaking_cache_valid)) then {
-    END_COUNTER(speaking_loop);
-};
+    if (GVAR(speaking_cache_valid)) then {
+        END_COUNTER(speaking_loop);
+    };
+#endif
 
 // diag_log text format["t: %1", _rend-_rstart];
 // _end = diag_tickTime;

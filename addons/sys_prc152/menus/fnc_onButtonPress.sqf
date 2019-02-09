@@ -20,7 +20,9 @@ TRACE_1("enter", _this);
 
 //["Acre_GenericClick", [0,0,0], [0,0,0], 0.2, false] call EFUNC(sys_sounds,playSound);
 
-BEGIN_COUNTER(buttonPress);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    BEGIN_COUNTER(buttonPress);
+#endif
 
 private _control = ctrlIDC (_this select 1);
 
@@ -122,7 +124,8 @@ if (!isNil "_currentMenu") then {
     WARNING("Button press without a selected menu item!");
 };
 
-END_COUNTER(buttonPress);
-
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    END_COUNTER(buttonPress);
+#endif
 
 true
