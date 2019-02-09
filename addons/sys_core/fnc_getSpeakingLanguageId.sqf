@@ -17,7 +17,6 @@
 
 private _ret = ACRE_CURRENT_LANGUAGE_ID;
 
-if (GVAR(languages) isEqualTo []) then {
-    _ret = 0;
-};
+if (GVAR(languages) isEqualTo []) exitWith { 0 };
+
 _ret;

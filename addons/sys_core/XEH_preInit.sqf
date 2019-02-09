@@ -93,9 +93,13 @@ acre_player = player;
 GVAR(coreCache) = HASH_CREATE;
 
 acre_sys_io_ioEventFnc = {
-    BEGIN_COUNTER(ioEventFunction);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        BEGIN_COUNTER(ioEventFunction);
+    #endif
     _this call EFUNC(sys_rpc,handleData);
-    END_COUNTER(ioEventFunction);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        END_COUNTER(ioEventFunction);
+    #endif
 };
 
 ["unit", {

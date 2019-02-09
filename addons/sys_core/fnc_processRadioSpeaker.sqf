@@ -16,7 +16,9 @@
  * Public: No
  */
 
-BEGIN_COUNTER(process_radio_speaker);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    BEGIN_COUNTER(process_radio_speaker);
+#endif
 
 private ["_okRadios", "_functionName"];
 
@@ -29,11 +31,16 @@ if (_radioId == "") exitWith { false };
 //if (ACRE_LISTENER_DIVE == 1) exitWith { false };
 
 private _params = [];
-BEGIN_COUNTER(okradio_check);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    BEGIN_COUNTER(okradio_check);
+#endif
 private _returns = [];
 if (!GVAR(speaking_cache_valid)) then {
     _okRadios = [[_radioId], _playerRadios, false] call EFUNC(sys_modes,checkAvailability);
-    END_COUNTER(okradio_check);
+
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        END_COUNTER(okradio_check);
+    #endif
     // acre_player sideChat format["_okRadios: %1", _okRadios];
     _okRadios = (_okRadios select 0) select 1;
 
@@ -50,15 +57,21 @@ if (!GVAR(speaking_cache_valid)) then {
 
 
 if !(_okRadios isEqualTo []) then {
-    BEGIN_COUNTER(okradio_loop);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        BEGIN_COUNTER(okradio_loop);
+    #endif
     {
         private _cachedSampleTime = _unit getVariable [format["ACRE_%1CachedSampleTime", _x], -1];
 
         if (time > _cachedSampleTime || {!GVAR(speaking_cache_valid)}) then {
-            BEGIN_COUNTER(signal_mode_function);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                BEGIN_COUNTER(signal_mode_function);
+            #endif
             private _returnData = [_unit, _radioid, acre_player, _x] call CALLSTACK_NAMED((missionNamespace getVariable _functionName), _functionName);
             // DATA STRUCTURE: _returnData = [txRadioId, rxRadioId, signalQuality, distortionModel]
-            END_COUNTER(signal_mode_function);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                END_COUNTER(signal_mode_function);
+            #endif
             private _eventReturn = [_x, "handleSignalData", +_returnData] call EFUNC(sys_data,transEvent);
             if (!isNil "_eventReturn") then {
                 _returnData = _eventReturn;
@@ -91,8 +104,12 @@ if !(_okRadios isEqualTo []) then {
             _returns pushBack _params;
         };
     } forEach _okRadios;
-    END_COUNTER(okradio_loop);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        END_COUNTER(okradio_loop);
+    #endif
 };
-END_COUNTER(process_radio_speaker);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    END_COUNTER(process_radio_speaker);
+#endif
 // diag_log text format["_returns: %1", _returns];
 _returns
