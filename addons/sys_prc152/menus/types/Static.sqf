@@ -48,7 +48,7 @@ DFUNC(renderMenu_Static) = {
         BEGIN_COUNTER(renderMenu_Static_setText);
     #endif
 
-    if (!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {
+    if (!isNil "_displaySet" && {_displaySet isEqualType []} && {!(_displaySet isEqualTo [])}) then {
         {
             [
                 (_x select 0),
