@@ -23,9 +23,11 @@ DFUNC(onButtonPress_Display) = {
     private _currentSelection = GET_STATE_DEF("menuSelection", 0);
     switch (_event select 0) do {
         case 'PRE_UP': {     // OPT
-            BEGIN_COUNTER(onButtonPress_Display_PRE_UP);
 
-            BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                BEGIN_COUNTER(onButtonPress_Display_PRE_UP);
+                BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
+            #endif
 
             private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
             private _channels = GET_STATE("channels");
@@ -36,16 +38,21 @@ DFUNC(onButtonPress_Display) = {
             };
             ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
 
-            END_COUNTER(onButtonPress_Display_GuiEvents);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                END_COUNTER(onButtonPress_Display_GuiEvents);
+            #endif
 
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
 
-            END_COUNTER(onButtonPress_Display_PRE_UP);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                END_COUNTER(onButtonPress_Display_PRE_UP);
+            #endif
         };
         case 'PRE_DOWN': { // PGM
-            BEGIN_COUNTER(onButtonPress_Display_PRE_DOWN);
-
-            BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                BEGIN_COUNTER(onButtonPress_Display_PRE_DOWN);
+                BEGIN_COUNTER(onButtonPress_Display_GuiEvents);
+            #endif
 
             private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
             private _channels = GET_STATE("channels");
@@ -57,11 +64,15 @@ DFUNC(onButtonPress_Display) = {
             };
             ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
 
-            END_COUNTER(onButtonPress_Display_GuiEvents);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                END_COUNTER(onButtonPress_Display_GuiEvents);
+            #endif
 
             [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
 
-            END_COUNTER(onButtonPress_Display_PRE_DOWN);
+            #ifdef ENABLE_PERFORMANCE_COUNTERS
+                END_COUNTER(onButtonPress_Display_PRE_DOWN);
+            #endif
         };
         case '7': {     // OPT
             ["OPT"] call FUNC(changeMenu);
@@ -93,7 +104,9 @@ DFUNC(onButtonPress_Display) = {
 };
 
 DFUNC(renderMenu_Display) = {
-    BEGIN_COUNTER(renderMenu_Display);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        BEGIN_COUNTER(renderMenu_Display);
+    #endif
 
     TRACE_1("renderMenu_Display", _this);
     params ["_menu"]; // the menu to render is passed
@@ -112,5 +125,7 @@ DFUNC(renderMenu_Display) = {
 
     [_currentDisplay, _menu] call FUNC(renderMenu);
 
-    END_COUNTER(renderMenu_Display);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        END_COUNTER(renderMenu_Display);
+    #endif
 };
