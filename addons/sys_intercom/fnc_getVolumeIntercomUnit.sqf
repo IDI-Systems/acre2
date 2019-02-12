@@ -26,7 +26,7 @@ if (isNull _vehicleInfantryPhone) then {
     // player is inside a vehicle and not using the infantry phone.
     {
         if (_unit in _x) then {
-            private _volume = [vehicle acre_player, acre_player, _forEachIndex, 2] call FUNC(getStationConfiguration);
+            private _volume = [vehicle acre_player, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_VOLUME] call FUNC(getStationConfiguration);
             if (_maxVolume < _volume) then {
                 _maxVolume = _volume;
             };
