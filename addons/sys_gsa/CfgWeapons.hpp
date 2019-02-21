@@ -9,7 +9,7 @@ class CfgWeapons {
         scope = 2;
         displayName = "VHF30108 GSM";
         descriptionShort = "VHF30108 Ground Spike Antenna with Mast";
-        model = QPATHTOF(data\model\acre_antennaBag.p3d);
+        model = QPATHTOF(data\models\acre_antennaBag.p3d);
         //picture = QPATHTOF(data\icons\icon_rf3080.paa);
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 
@@ -22,7 +22,7 @@ class CfgWeapons {
         scope = 2;
         displayName = "VHF30108 GS";
         descriptionShort = "VHF30108 Ground Spike Antenna";
-        model = QPATHTOF(data\model\acre_antennaBag.p3d);
+        model = QPATHTOF(data\models\acre_antennaBag.p3d);
         //picture = QPATHTOF(data\icons\icon_rf3080.paa);
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 
@@ -36,7 +36,7 @@ class CfgWeapons {
         scope = 2;
         displayName = "VHF30108 Mast";
         descriptionShort = "VHF30108 Mast";
-        model = QPATHTOF(data\model\acre_antennaBag.p3d);
+        model = QPATHTOF(data\models\acre_antennaBag.p3d);
         //picture = QPATHTOF(data\icons\icon_rf3080.paa);
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 

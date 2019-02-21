@@ -11,7 +11,7 @@
 #endif
 
 #define ANTENNA_MAXDISTANCE 10.0
-#define MAST_Z_OFFSET 3.3
+#define MAST_Z_OFFSET 2.3
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"

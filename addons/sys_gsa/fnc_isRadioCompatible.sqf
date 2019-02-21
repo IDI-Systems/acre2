@@ -18,7 +18,7 @@
 
 params ["_gsa", "_radioId"];
 
-private _baseClass = BASE_CLASS_CONFIG(_radioID);
+private _baseClass = toLower BASE_CLASS_CONFIG(_radioID);
 private _componentName = toLower (getText (configFile >> "CfgVehicles" >> typeOf _gsa >> "AcreComponents" >> "componentName"));
 private _compatibleRadios = (getArray (configFile >> "CfgAcreComponents" >> _componentName >> "compatibleRadios")) apply {toLower _x};
 
