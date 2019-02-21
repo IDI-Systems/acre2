@@ -137,7 +137,7 @@ class CfgVehicles {
                 displayName = CSTRING(dash); // Name is displayed in the interaction menu.
                 shortName = CSTRING(dashShort);
                 componentName = "ACRE_VRC103";
-                allowedPositions[] = {"driver", "copilot"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+                allowedPositions[] = {"driver", "gunner", "copilot"}; // Attack helicopters have "gunner" copilots usually
                 disabledPositions[] = {};
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
