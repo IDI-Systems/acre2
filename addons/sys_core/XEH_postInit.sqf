@@ -47,7 +47,7 @@ DFUNC(gen) = {
     [-1] call FUNC(handleMultiPttKeyPress)
 }, {
     [-1] call FUNC(handleMultiPttKeyPressUp)
-}, [DIK_CAPSLOCK, [false, true, true]]] call CBA_fnc_addKeybind;
+}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
 
 // Keybinds - Channel Switch
 ["ACRE2", "PreviousChannel", localize LSTRING(PreviousChannel), "", {
