@@ -25,17 +25,11 @@ DFUNC(gen) = {
 
 
 // Keybinds - PTT
-["ACRE2", "DefaultPTTKey", [localize LSTRING(DefaultPTTKey), localize LSTRING(DefaultPTTKey_description)], {
-    [-1] call FUNC(handleMultiPttKeyPress)
-}, {
-    [-1] call FUNC(handleMultiPttKeyPressUp)
-}, [DIK_CAPSLOCK, [false, false, false]]] call CBA_fnc_addKeybind;
-
 ["ACRE2", "AltPTTKey1", [localize LSTRING(AltPTTKey1), localize LSTRING(AltPTTKey1_description)], {
     [0] call FUNC(handleMultiPttKeyPress)
 }, {
     [0] call FUNC(handleMultiPttKeyPressUp)
-}, [DIK_CAPSLOCK, [true, false, false]]] call CBA_fnc_addKeybind;
+}, [DIK_CAPSLOCK, [false, false, false]]] call CBA_fnc_addKeybind;
 
 ["ACRE2", "AltPTTKey2", [localize LSTRING(AltPTTKey2), localize LSTRING(AltPTTKey2_description)], {
     [1] call FUNC(handleMultiPttKeyPress)
@@ -48,6 +42,12 @@ DFUNC(gen) = {
 }, {
     [2] call FUNC(handleMultiPttKeyPressUp)
 }, [DIK_CAPSLOCK, [false, false, true]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "DefaultPTTKey", [localize LSTRING(DefaultPTTKey), localize LSTRING(DefaultPTTKey_description)], {
+    [-1] call FUNC(handleMultiPttKeyPress)
+}, {
+    [-1] call FUNC(handleMultiPttKeyPressUp)
+}, [DIK_CAPSLOCK, [false, true, true]]] call CBA_fnc_addKeybind;
 
 // Keybinds - Channel Switch
 ["ACRE2", "PreviousChannel", localize LSTRING(PreviousChannel), "", {
