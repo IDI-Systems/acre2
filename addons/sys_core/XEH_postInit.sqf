@@ -23,39 +23,67 @@ DFUNC(gen) = {
 };
 
 
-///////////////////////////////////
-//
-// CBA KEYBINDS
-///////////////////////////////////
+// CBA Keybinds
+["ACRE2", "DefaultPTTKey", [localize LSTRING(DefaultPTTKey), localize LSTRING(DefaultPTTKey_description)], {
+    [-1] call FUNC(handleMultiPttKeyPress)
+}, {
+    [-1] call FUNC(handleMultiPttKeyPressUp)
+}, [58, [false, false, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "DefaultPTTKey",  [(localize LSTRING(DefaultPTTKey)), (localize LSTRING(DefaultPTTKey_description))], { [-1] call FUNC(handleMultiPttKeyPress) }, { [-1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, false]]] call CBA_fnc_addKeybind;
-["ACRE2", "AltPTTKey1", [(localize LSTRING(AltPTTKey1)), (localize LSTRING(AltPTTKey1_description))], { [0] call FUNC(handleMultiPttKeyPress) }, { [0] call FUNC(handleMultiPttKeyPressUp) }, [58, [true, false, false]]] call CBA_fnc_addKeybind;
-["ACRE2", "AltPTTKey2", [(localize LSTRING(AltPTTKey2)), (localize LSTRING(AltPTTKey2_description))], { [1] call FUNC(handleMultiPttKeyPress) }, { [1] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, true, false]]] call CBA_fnc_addKeybind;
-["ACRE2", "AltPTTKey3", [(localize LSTRING(AltPTTKey3)), (localize LSTRING(AltPTTKey3_description))], { [2] call FUNC(handleMultiPttKeyPress) }, { [2] call FUNC(handleMultiPttKeyPressUp) }, [58, [false, false, true]]] call CBA_fnc_addKeybind;
+["ACRE2", "AltPTTKey1", [localize LSTRING(AltPTTKey1), localize LSTRING(AltPTTKey1_description)], {
+    [0] call FUNC(handleMultiPttKeyPress)
+}, {
+    [0] call FUNC(handleMultiPttKeyPressUp)
+}, [58, [true, false, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "PreviousChannel", (localize LSTRING(PreviousChannel)), "", { [-1] call FUNC(switchChannelFast) }, [208, [false, true, false]]] call CBA_fnc_addKeybind;
-["ACRE2", "NextChannel", (localize LSTRING(NextChannel)), "", { [1] call FUNC(switchChannelFast) }, [200, [false, true, false]]] call CBA_fnc_addKeybind;
+["ACRE2", "AltPTTKey2", [localize LSTRING(AltPTTKey2), localize LSTRING(AltPTTKey2_description)], {
+    [1] call FUNC(handleMultiPttKeyPress)
+}, {
+    [1] call FUNC(handleMultiPttKeyPressUp)
+}, [58, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "BabelCycleKey", (localize LSTRING(BabelCycleKey)), "", { [] call FUNC(cycleLanguage) }, [0xDB, [false, false, false]]] call CBA_fnc_addKeybind;
+["ACRE2", "AltPTTKey3", [localize LSTRING(AltPTTKey3), localize LSTRING(AltPTTKey3_description)], {
+    [2] call FUNC(handleMultiPttKeyPress)
+}, {
+    [2] call FUNC(handleMultiPttKeyPressUp)
+}, [58, [false, false, true]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "RadioLeftEar", (localize LSTRING(RadioLeftEar)), { [-1] call FUNC(switchRadioEar) }, "", [203, [true, true, false]]] call CBA_fnc_addKeybind;
-["ACRE2", "RadioCentertEar", (localize LSTRING(RadioBothEars)), { [0] call FUNC(switchRadioEar) }, "", [200, [true, true, false]]] call CBA_fnc_addKeybind;
-["ACRE2", "RightRightEar", (localize LSTRING(RightRightEar)), { [1] call FUNC(switchRadioEar) }, "", [205, [true, true, false]]] call CBA_fnc_addKeybind;
+["ACRE2", "PreviousChannel", localize LSTRING(PreviousChannel), "", {
+    [-1] call FUNC(switchChannelFast)
+}, [208, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "HeadSet", (localize LSTRING(HeadSet)), "", { [] call FUNC(toggleHeadset) }, [208, [true, true, false]]] call CBA_fnc_addKeybind;
+["ACRE2", "NextChannel", localize LSTRING(NextChannel), "", {
+    [1] call FUNC(switchChannelFast)
+}, [200, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "acre_AntennaDirToggle", (localize LSTRING(AntennaDirToggle)), "", { [] call EFUNC(sys_components,toggleAntennaDir) }, [200, [false, true, true]]] call CBA_fnc_addKeybind;
+["ACRE2", "BabelCycleKey", localize LSTRING(BabelCycleKey), "", {
+    [] call FUNC(cycleLanguage)
+}, [0xDB, [false, false, false]]] call CBA_fnc_addKeybind;
 
-///////////////////////////////////
-///////////////////////////////////
+["ACRE2", "RadioLeftEar", localize LSTRING(RadioLeftEar), {
+    [-1] call FUNC(switchRadioEar)
+}, "", [203, [true, true, false]]] call CBA_fnc_addKeybind;
 
+["ACRE2", "RadioCentertEar", localize LSTRING(RadioBothEars), {
+    [0] call FUNC(switchRadioEar)
+}, "", [200, [true, true, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "RightRightEar", localize LSTRING(RightRightEar), {
+    [1] call FUNC(switchRadioEar)
+}, "", [205, [true, true, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "HeadSet", localize LSTRING(HeadSet), "", {
+    [] call FUNC(toggleHeadset)
+}, [208, [true, true, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "acre_AntennaDirToggle", localize LSTRING(AntennaDirToggle), "", { [] call EFUNC(sys_components,toggleAntennaDir) }, [200, [false, true, true]]] call CBA_fnc_addKeybind;
+
+
+// Load map data
 ACRE_MAP_LOADED = false;
 // Do not load map in Main Menu, allDisplays only returns display 0 in main menu
 if (!([findDisplay 0] isEqualTo allDisplays)) then {
-    [
-        "init",
-        []
-    ] call FUNC(callExt);
+    ["init", []] call FUNC(callExt);
 
     private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
     if (_wrpLocation == "") then {
@@ -87,13 +115,14 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
 };
 [] call FUNC(getClientIdLoop);
 
+
 // Check whether ACRE2 is fully loaded
 ADDPFH(DFUNC(coreInitPFH), 0, []);
 
 //Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_INTERCOM = [];
 
-// Disable positional audio whilst in briefing.
+// Disable positional audio whilst in briefing
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
     ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
     [{
