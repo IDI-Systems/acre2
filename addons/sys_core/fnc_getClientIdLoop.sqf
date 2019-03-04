@@ -15,13 +15,12 @@
  * Public: No
  */
 
-DFUNC(getClientIdLoopFunc) = {
+[{
     if (!isNull player) then {
         private _netId = netId acre_player;
         ["getClientID", [_netId, (getPlayerUID player)]] call EFUNC(sys_rpc,callRemoteProcedure);
     };
-};
-ADDPFH(FUNC(getClientIdLoopFunc), 3, []); // Send on regular interval for JIP etc.
+}, 3, []] call CBA_fnc_addPerFrameHandler; // Send on regular interval for JIP etc.
 
 ["unit", {[] call FUNC(getClientIdLoopFunc);}] call CBA_fnc_addPlayerEventHandler; // Use EH for immediate sending on unit transfer
 

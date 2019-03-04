@@ -112,7 +112,7 @@ acre_sys_io_ioEventFnc = {
 "acre_dynload" callExtension format["load:%1", "idi\build\win32\Debug\acre.dll"];
 #endif
 
-private _monitorFnc = {
+[{
     private _res = ["fetch_result", ""] call FUNC(callExt);
     while {!isNil "_res"} do {
         // diag_log text format["RES: %1", _res];
@@ -127,8 +127,7 @@ private _monitorFnc = {
         };
         _res = ["fetch_result", ""] call FUNC(callExt);
     };
-};
-ADDPFH(_monitorFnc, 0, []);
+}, 0, []] call CBA_fnc_addPerFrameHandler;
 
 ACRE_TESTANGLES = [];
 private _m = 8;

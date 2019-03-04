@@ -34,7 +34,8 @@ if (_direction == OUT) then {
     private _currentVolumeKnobState = round (_currentVolume * 5);
     private _animationhandler = [count GVAR(backgroundImages) - 1, 0, 3, _currentVolumeKnobState, _currentChannel];
 
-    DFUNC(zoomOut_PFH)=  {
+    private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
+    [{
         // Extract all variables
         params ["_paramsarray", "_PFHid"];
         _paramsarray params ["_animationhandler", "_radioId"];
@@ -100,11 +101,7 @@ if (_direction == OUT) then {
             [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
             [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
-    };
-
-    private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
-    ADDPFH(DFUNC(zoomOut_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
-
+    }, 0.05, [_animationhandler, _tempRadioId]] call CBA_fnc_addPerFrameHandler;
 };
 
 
@@ -118,7 +115,8 @@ if (_direction == IN) then {
     private _animationhandler = [0, _currentChannel, _currentVolumeKnobState, _currentChannel]; //[30,currentchannel]
     ["setOnOffState", 0] call GUI_DATA_EVENT;
 
-    DFUNC(zoomIn_PFH) = {
+    private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
+    [{
         // Extract all variables
         params ["_paramsarray","_PFHid"];
         _paramsarray params ["_animationhandler", "_radioId"];
@@ -179,9 +177,6 @@ if (_direction == IN) then {
             SCRATCH_SET(_radioId,"animation",false);
             [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
-    };
-
-    private _tempRadioId = GVAR(currentRadioId); // make sure its a copy, not a reference
-    ADDPFH(DFUNC(zoomIn_PFH),0.05,[ARR_2(_animationhandler,_tempRadioId)])
+    }, 0.05, [_animationhandler, _tempRadioId]] call CBA_fnc_addPerFrameHandler;
 
 };

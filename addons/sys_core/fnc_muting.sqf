@@ -124,5 +124,5 @@ DFUNC(mutingPFHLoop) = {
 
 // Wait until time > 0, to save check in PFH
 [{time > 0},{
-    ADDPFH(FUNC(mutingPFHLoop), 0.25, []);
+    [FUNC(mutingPFHLoop), 0.25, []] call CBA_fnc_addPerFrameHandler;
 },[]] call CBA_fnc_waitUntilAndExecute;
