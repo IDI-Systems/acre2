@@ -2,34 +2,10 @@
 <Project name="ACRE">
     <Package name="sys_list">
         <Key ID="STR_ACRE_sys_list_CycleRadio">
-            <English>Cycle Radio</English>
-            <Spanish>Cambiar Radio</Spanish>
-            <Czech>Změnit rádio</Czech>
-            <German>Funkgeräte durchschalten</German>
-            <Japanese>無線機を切り替え</Japanese>
-            <Italian>Cambia Ricetrasmittente</Italian>
-            <French>Cycler radio</French>
-            <Korean>무전 채널 변경</Korean>
-            <Polish>Następne radio</Polish>
-            <Russian>Листать радио</Russian>
-            <Chinese>切換無線電</Chinese>
-            <Chinesesimp>切换无线电</Chinesesimp>
-            <Portuguese>Trocar Rádio</Portuguese>
+            <English>Cycle Radios</English>
         </Key>
         <Key ID="STR_ACRE_sys_list_OpenRadio">
-            <English>Open Radio</English>
-            <Spanish>Abrir radio</Spanish>
-            <Czech>Otevřít rádio</Czech>
-            <German>Funkgerät öffnen</German>
-            <Japanese>無線機を開く</Japanese>
-            <Italian>Apri Ricetrasmittente</Italian>
-            <French>Ouvrir radio</French>
-            <Korean>무전기 열기</Korean>
-            <Polish>Otwórz panel radia</Polish>
-            <Russian>Открыть радио</Russian>
-            <Chinese>打開無線電</Chinese>
-            <Chinesesimp>打开无线电</Chinesesimp>
-            <Portuguese>Abrir Rádio</Portuguese>
+            <English>Open Active Radio</English>
         </Key>
         <Key ID="STR_ACRE_sys_list_NotificationGrid">
             <English>ACRE2 - Radio Notifications</English>

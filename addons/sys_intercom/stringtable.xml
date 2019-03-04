@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
@@ -344,44 +344,16 @@
             <French>Activation de la voix</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
-            <English>Intercom Key</English>
-            <Spanish>Tecla de intercom</Spanish>
-            <Polish>Klawisz interkomu</Polish>
-            <Italian>Pulsante intercom</Italian>
-            <Japanese>インターコム キー</Japanese>
-            <Chinese>無線電按鍵</Chinese>
-            <Chinesesimp>无线电按键</Chinesesimp>
-            <French>Clé de l'interphone</French>
+            <English>Intercom PTT</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
-            <English>Use the intercom station to talk.</English>
-            <Spanish>Usa la estación de intercom para hablar.</Spanish>
-            <Polish>Mów przez interkom</Polish>
-            <Italian>Usa la stazione intercom per parlare.</Italian>
-            <Japanese>インターコム内で会話する為に使用します。</Japanese>
-            <Chinese>使用通訊機台來講話</Chinese>
-            <Chinesesimp>使用通讯机台来讲话</Chinesesimp>
-            <French>Utiliser le poste d'interphone pour parler.</French>
+            <English>Activate intercom station push-to-talk.</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
-            <English>Intercom Broadcast Key</English>
-            <Spanish>Tecla para mensaje prioritario</Spanish>
-            <Polish>Klawisz nadawania interkomu</Polish>
-            <Italian>Pulsante trasmissione intercom</Italian>
-            <Japanese>インターコムのブロードキャスト キー</Japanese>
-            <Chinese>無線電廣播按鍵</Chinese>
-            <Chinesesimp>无线电广播按键</Chinesesimp>
-            <French>Clé de diffusion de l'interphone</French>
+            <English>Intercom Broadcast PTT</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
-            <English>Use the intercom station to broadcast a priority message.</English>
-            <Spanish>Usa la estación de intercom para enviar un mensaje prioritario.</Spanish>
-            <Polish>Użyj interkomu, aby wysłać wiadomość priorytetową.</Polish>
-            <Italian>Usa la stazione intercom per trasmettere un messaggio prioritario</Italian>
-            <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
-            <Chinese>使用通訊機台來廣播重要訊息</Chinese>
-            <Chinesesimp>使用通讯机台来广播重要讯息</Chinesesimp>
-            <French>Utiliser le poste d'interphone pour diffuser un message prioritaire.</French>
+            <English>Activate intercom station broadcast push-to-talk (priority message).</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousIntercom">
             <English>Previous Intercom Network</English>

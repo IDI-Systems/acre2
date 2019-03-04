@@ -182,49 +182,13 @@
             <Portuguese>Mudar Idioma (Babel)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioLeftEar">
-            <English>Radio Left Ear</English>
-            <Spanish>Radio auricular izquierdo</Spanish>
-            <Czech>Rádio do levého ucha</Czech>
-            <German>Linker Ohrhörer</German>
-            <Japanese>音声を左側から</Japanese>
-            <Italian>Imposta Auricolare Sinistro</Italian>
-            <French>Radio oreille gauche</French>
-            <Korean>왼쪽 이어폰</Korean>
-            <Polish>Odsłuch tylko na lewym uchu</Polish>
-            <Russian>Радио левое ухо</Russian>
-            <Chinese>用左耳收聽無線電</Chinese>
-            <Chinesesimp>用左耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Orelha Esquerda</Portuguese>
+            <English>Radio Left Ear (Active Radio)</English>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioBothEars">
-            <English>Radio Both Ears</English>
-            <Spanish>Radio ambas auriculares</Spanish>
-            <Czech>Rádio do prostředního ucha</Czech>
-            <German>Beide Ohrhörer</German>
-            <Japanese>音声を両側から</Japanese>
-            <Italian>Centra gli Auricolari</Italian>
-            <French>Radio oreille centre</French>
-            <Korean>양쪽 이어폰</Korean>
-            <Polish>Odsłuch stereo</Polish>
-            <Russian>Радио оба уха</Russian>
-            <Chinese>用雙耳收聽無線電</Chinese>
-            <Chinesesimp>用双耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Ambas Orelhas</Portuguese>
+            <English>Radio Both Ears (Active Radio)</English>
         </Key>
         <Key ID="STR_ACRE_sys_core_RightRightEar">
-            <English>Radio Right Ear</English>
-            <Spanish>Radio auricular derecho</Spanish>
-            <Czech>Rádio do pravého ucha</Czech>
-            <German>Rechter Ohrhörer</German>
-            <Japanese>音声を右側から</Japanese>
-            <Italian>Imposta Auricolare Destro</Italian>
-            <French>Radio oreille droite</French>
-            <Korean>오른쪽 이어폰</Korean>
-            <Polish>Odsłuch tylko na prawym uchu</Polish>
-            <Russian>Радио правое ухо</Russian>
-            <Chinese>用右耳收聽無線電</Chinese>
-            <Chinesesimp>用右耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Orelha Direita</Portuguese>
+            <English>Radio Right Ear (Active Radio)</English>
         </Key>
         <Key ID="STR_ACRE_sys_core_HeadSet">
             <English>Toggle Headset/Toggle Spectators</English>
