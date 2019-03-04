@@ -94,5 +94,4 @@ _speakingId = parseNumber _speakingId;
     GVAR(keyedMicRadios) = GVAR(keyedMicRadios) - [objNull];
 
 // };
-DUMP_COUNTERS;
 true
