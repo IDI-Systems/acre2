@@ -2,9 +2,9 @@
 #include "glm\geometric.hpp"
 #include "glm\gtx\vector_angle.hpp"
 
-acre::signal::model::los_simple::los_simple(map_p map_) : _map(map_)
+acre::signal::model::los_simple::los_simple(map_p map_) // : _map(map_)
 {
-
+    _map = map_;
 }
 
 acre::signal::model::los_simple::~los_simple()
@@ -183,6 +183,7 @@ void acre::signal::model::multipath::process(result *result_, const glm::vec3 &t
                 best_angle = test_point;
             }
         }
+
         best_angle.z = _map->elevation(best_angle.x, best_angle.y);
 
         //float add_test_height = 20.0f * log10(frequency_) + 20.0f * log10(std::ceil(glm::distance(tx_pos_, best_angle)));

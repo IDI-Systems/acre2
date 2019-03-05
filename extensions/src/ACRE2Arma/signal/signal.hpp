@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #define NOMINMAX 1
 #include <algorithm>
 #include "shared.hpp"
@@ -111,7 +111,7 @@ namespace acre {
                     return true;
                 }
 
-                signalModel_t model = args_.as_int(0);
+                signalModel_t model = static_cast<signalModel_t>(args_.as_int(0));
 
                 int logging = args_.as_int(20);
                 bool omnidirectional = args_.as_int(21);
