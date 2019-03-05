@@ -129,30 +129,127 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
             <English>Activate currently selected radio's push-to-talk.</English>
+            <Spanish>Utilizar la radio seleccionada actualmente para hablar</Spanish>
+            <Czech>Použít právě zvolené rádio k mluvení.</Czech>
+            <German>Das ausgewählte Funkgerät zum Sprechen nutzen.</German>
+            <Japanese>選択している無線機を使って話します。</Japanese>
+            <Italian>Trasmetti sulla Radio selezionata.</Italian>
+            <French>Utiliser la radio actuellement sélectionnée pour parler.</French>
+            <Korean>현재 선택한 무전기 사용해 대화하세요.</Korean>
+            <Polish>Użyj aktualnie wybranego radia aby nadawać.</Polish>
+            <Russian>Использовать текущее радио для разговора.</Russian>
+            <Chinese>使用目前選擇的無線電進行通話。</Chinese>
+            <Chinesesimp>使用目前选择的无线电进行通话。</Chinesesimp>
+            <Portuguese>Usar o rádio atualmente selecionado para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
             <English>Radio 1 PTT</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_AltPTTKey2">
-            <English>Radio 2 PTT</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_AltPTTKey3">
-            <English>Radio 3 PTT</English>
+            <Spanish>Tecla de transmisión 1</Spanish>
+            <Czech>Klávesa rádia 1</Czech>
+            <German>Sprechtaste 1</German>
+            <Italian>Trasmetti sulla Radio n.1</Italian>
+            <French>Touche radio 1</French>
+            <Polish>Klawisz radia 1</Polish>
+            <Russian>радио кнопка 1</Russian>
+            <Portuguese>Tecla do Rádio 1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Select first radio and activate its push-to-talk.</English>
+            <Spanish>Utiliza la primera radio en el inventario para hablar</Spanish>
+            <Czech>Použít první rádio v inventáři k mluvení.</Czech>
+            <German>Das erste Funkgerät zum Sprechen verwenden.</German>
+            <Japanese>インベントリの1番目にある無線機を使って話します。</Japanese>
+            <Italian>Trasmetti sulla Prima Radio nel tuo equipaggiamento.</Italian>
+            <French>Utiliser la première radio dans l'inventaire pour parler.</French>
+            <Korean>인벤토리의 첫 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Polish>Użyj aby nadawać na pierwszym radiu z Twojego ekwipunku.</Polish>
+            <Russian>Использовать первое радио из инвентаря.</Russian>
+            <Chinese>使用物品欄內第一個無線電進行通話。</Chinese>
+            <Chinesesimp>使用物品栏内第一个无线电进行通话。</Chinesesimp>
+            <Portuguese>Usar o primeiro rádio do inventário para falar.</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey2">
+            <English>Radio 2 PTT</English>
+            <Spanish>Tecla de transmisión 2</Spanish>
+            <Czech>Klávesa rádia 2</Czech>
+            <German>Sprechtaste 2</German>
+            <Italian>Trasmetti sulla Radio n.2</Italian>
+            <French>Touche radio 2</French>
+            <Polish>Klawisz radia 2</Polish>
+            <Russian>радио кнопка 2</Russian>
+            <Portuguese>Tecla do Rádio 2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Select second radio and activate its push-to-talk.</English>
+            <Spanish>Utiliza la segunda radio en el inventario para hablar</Spanish>
+            <Czech>Použít druhé rádio v inventáři k mluvení.</Czech>
+            <German>Das zweite Funkgerät zum Sprechen verwenden.</German>
+            <Japanese>インベントリの2番目にある無線機を使って話します。</Japanese>
+            <Italian>Trasmetti sulla Seconda Radio nel tuo equipaggiamento.</Italian>
+            <French>Utiliser la seconde radio dans l'inventaire pour parler.</French>
+            <Korean>인벤토리의 두 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Polish>Użyj aby nadawać na drugim radiu z Twojego ekwipunku.</Polish>
+            <Russian>Использовать второе радио из инвентаря.</Russian>
+            <Chinese>使用物品欄內第二個無線電進行通話。</Chinese>
+            <Chinesesimp>使用物品栏内第二个无线电进行通话。</Chinesesimp>
+            <Portuguese>Usar o segundo rádio do inventário para falar.</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey3">
+            <English>Radio 3 PTT</English>
+            <Spanish>Tecla de transmisión 3</Spanish>
+            <Czech>Klávesa rádia 3</Czech>
+            <German>Sprechtaste 3</German>
+            <Italian>Trasmetti sulla Radio n.3</Italian>
+            <French>Touche radio 3</French>
+            <Polish>Klawisz radia 3</Polish>
+            <Russian>радио кнопка 3</Russian>
+            <Portuguese>Tecla do Rádio 3</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Select third radio and activate its push-to-talk.</English>
+            <English>Use the third radio in your inventory to talk.</English>
+            <Spanish>Utiliza la tercera radio en el inventario para hablar</Spanish>
+            <Czech>Použít třetí rádio v inventáři k mluvení.</Czech>
+            <German>Das dritte Funkgerät zum Sprechen verwenden.</German>
+            <Japanese>インベントリの3番目にある無線機を使って話します。</Japanese>
+            <Italian>Trasmetti sulla Terza Radio nel tuo equipaggiamento.</Italian>
+            <French>Utiliser la troisième radio dans l'inventaire pour parler.</French>
+            <Korean>인벤토리의 세 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Polish>Użyj aby nadawać na trzecim radiu z Twojego ekwipunku.</Polish>
+            <Russian>Использовать третье радио из инвентаря.</Russian>
+            <Chinese>使用物品欄內第三個無線電進行通話。</Chinese>
+            <Chinesesimp>使用物品栏内第三个无线电进行通话。</Chinesesimp>
+            <Portuguese>Usar o terceiro rádio do inventário para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_PreviousChannel">
             <English>Previous Channel (Selected Radio)</English>
+            <Spanish>Canal anterior (Radio activa)</Spanish>
+            <Czech>Předchozí kanál</Czech>
+            <German>Vorheriger Funkkanal (aktives Funkgerät)</German>
+            <Japanese>前のチャンネル (選択している無線機)</Japanese>
+            <Italian>Canale Precedente (Ricetrasmittente Attiva)</Italian>
+            <French>Canal précédent (radio active)</French>
+            <Korean>이전 채널 (활성화된 무전기)</Korean>
+            <Polish>Poprzedni kanał</Polish>
+            <Russian>Предыдущий канал (Активное радио)</Russian>
+            <Chinese>上一個頻道 (目前使用的無線電)</Chinese>
+            <Chinesesimp>上一个频道 (目前使用的无线电)</Chinesesimp>
+            <Portuguese>Canal Anterior (Rádio Ativo)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_NextChannel">
-            <English>Next Channel (Selected Radio)</English>
+            <English>Nexit Channel (Selected Radio)</English>
+            <Spanish>Siguiente canal (Radio activa)</Spanish>
+            <Czech>Další kanál</Czech>
+            <German>Nächster Funkkanal (aktives Funkgerät)</German>
+            <Japanese>次のチャンネル (選択している無線機)</Japanese>
+            <Italian>Canale Successivo (Ricetrasmittente Attiva)</Italian>
+            <French>Canal suivant (radio active)</French>
+            <Korean>다음 채널 (활성화된 무전기)</Korean>
+            <Polish>Następny kanał</Polish>
+            <Russian>Следующий канал (Активное радио)</Russian>
+            <Chinese>下一個頻道 (目前使用的無線電)</Chinese>
+            <Chinesesimp>下一个频道 (目前使用的无线电)</Chinesesimp>
+            <Portuguese>Canal Posterior (Rádio Ativo)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_BabelCycleKey">
             <English>Babel Cycle Language</English>
@@ -171,12 +268,48 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioLeftEar">
             <English>Radio Left Ear (Selected Radio)</English>
+            <Spanish>Radio auricular izquierdo</Spanish>
+            <Czech>Rádio do levého ucha</Czech>
+            <German>Linker Ohrhörer</German>
+            <Japanese>音声を左側から</Japanese>
+            <Italian>Imposta Auricolare Sinistro</Italian>
+            <French>Radio oreille gauche</French>
+            <Korean>왼쪽 이어폰</Korean>
+            <Polish>Odsłuch tylko na lewym uchu</Polish>
+            <Russian>Радио левое ухо</Russian>
+            <Chinese>用左耳收聽無線電</Chinese>
+            <Chinesesimp>用左耳收听无线电</Chinesesimp>
+            <Portuguese>Rádio Orelha Esquerda</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioBothEars">
             <English>Radio Both Ears (Selected Radio)</English>
+            <Spanish>Radio ambas auriculares</Spanish>
+            <Czech>Rádio do prostředního ucha</Czech>
+            <German>Beide Ohrhörer</German>
+            <Japanese>音声を両側から</Japanese>
+            <Italian>Centra gli Auricolari</Italian>
+            <French>Radio oreille centre</French>
+            <Korean>양쪽 이어폰</Korean>
+            <Polish>Odsłuch stereo</Polish>
+            <Russian>Радио оба уха</Russian>
+            <Chinese>用雙耳收聽無線電</Chinese>
+            <Chinesesimp>用双耳收听无线电</Chinesesimp>
+            <Portuguese>Rádio Ambas Orelhas</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RightRightEar">
             <English>Radio Right Ear (Selected Radio)</English>
+            <Spanish>Radio auricular derecho</Spanish>
+            <Czech>Rádio do pravého ucha</Czech>
+            <German>Rechter Ohrhörer</German>
+            <Japanese>音声を右側から</Japanese>
+            <Italian>Imposta Auricolare Destro</Italian>
+            <French>Radio oreille droite</French>
+            <Korean>오른쪽 이어폰</Korean>
+            <Polish>Odsłuch tylko na prawym uchu</Polish>
+            <Russian>Радио правое ухо</Russian>
+            <Chinese>用右耳收聽無線電</Chinese>
+            <Chinesesimp>用右耳收听无线电</Chinesesimp>
+            <Portuguese>Rádio Orelha Direita</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_HeadSet">
             <English>Toggle Headset/Spectators</English>
