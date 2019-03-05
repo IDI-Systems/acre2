@@ -14,6 +14,13 @@
 
 namespace acre {
     namespace signal {
+        typedef enum signalModel_ {
+           signalModel_arcade,
+           signalModel_losMultipath,
+           signalModel_underwater,
+           signalModel_longleyRice
+        } signalModel_t;
+
         struct signal_map_result {
             signal_map_result() { }
             signal_map_result(const signal_map_result &copy_) {
@@ -99,21 +106,23 @@ namespace acre {
             }
             //#define DEBUG_OUTPUT
             bool process(const arguments & args_, std::string & result) {
-                if (args_.size() != 21) {
+                if (args_.size() != 22) {
                     result = "[]";
                     return true;
                 }
 
-                int logging = args_.as_int(19);
-                bool omnidirectional = args_.as_int(20);
+                signalModel_t model = args_.as_int(0);
 
-                std::string id = args_.as_string(0);
-                glm::vec3 tx_pos = glm::vec3(args_.as_float(1), args_.as_float(2), args_.as_float(3));
-                glm::vec3 tx_dir = glm::vec3(args_.as_float(4), args_.as_float(5), args_.as_float(6));
-                std::string tx_antenna_name = args_.as_string(7);
-                glm::vec3 rx_pos = glm::vec3(args_.as_float(8), args_.as_float(9), args_.as_float(10));
-                glm::vec3 rx_dir = glm::vec3(args_.as_float(11), args_.as_float(12), args_.as_float(13));
-                std::string rx_antenna_name = args_.as_string(14);
+                int logging = args_.as_int(20);
+                bool omnidirectional = args_.as_int(21);
+
+                std::string id = args_.as_string(1);
+                glm::vec3 tx_pos = glm::vec3(args_.as_float(2), args_.as_float(3), args_.as_float(4));
+                glm::vec3 tx_dir = glm::vec3(args_.as_float(5), args_.as_float(6), args_.as_float(7));
+                std::string tx_antenna_name = args_.as_string(8);
+                glm::vec3 rx_pos = glm::vec3(args_.as_float(9), args_.as_float(10), args_.as_float(11));
+                glm::vec3 rx_dir = glm::vec3(args_.as_float(12), args_.as_float(13), args_.as_float(14));
+                std::string rx_antenna_name = args_.as_string(15);
 
                 acre::signal::antenna_p tx_antenna;
                 acre::signal::antenna_p rx_antenna;
@@ -130,13 +139,22 @@ namespace acre {
                     return true;
                 }
 
-                float f = args_.as_float(15);
-                float power = args_.as_float(16);
-                float scale = args_.as_float(17);
+                float f = args_.as_float(16);
+                float power = args_.as_float(17);
+                float scale = args_.as_float(18);
 
                 acre::signal::result signal_result;
 
-                _signal_processor.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                switch (model) {
+                  case signalModel_arcade:
+                  case signalModel_losMultipath: {
+                    _signal_processor.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                    break;
+                  }
+                  default:
+                    _signal_processor.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                }
+
 #ifdef DEBUG_OUTPUT
                 std::stringstream filename;
                 filename << "ref_" << _debug_id << ".sqf";
