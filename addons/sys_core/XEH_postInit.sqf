@@ -134,9 +134,9 @@ ACRE_PLAYER_INTERCOM = [];
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
     ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
     [{
-        if (getClientStateNumber > 9 && time > 0) then { // Briefing has been read AND Mission has started
+        if (getClientStateNumber > 9 && {CBA_missionTime > 0}) then { // Briefing has been read AND Mission has started
             ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
-            [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+            [_this select 1] call CBA_fnc_removePerFrameHandler;
         } else {
             // Keep calling incase ACRE is not connected to TeamSpeak
             ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
