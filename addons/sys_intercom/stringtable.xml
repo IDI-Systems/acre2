@@ -347,13 +347,13 @@
             <English>Intercom PTT</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
-            <English>Activate intercom station push-to-talk.</English>
+            <English>Activate intercom station's push-to-talk.</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
             <English>Intercom Broadcast PTT</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
-            <English>Activate intercom station broadcast push-to-talk (priority message).</English>
+            <English>Activate intercom station's broadcast push-to-talk (priority message).</English>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousIntercom">
             <English>Previous Intercom Network</English>
