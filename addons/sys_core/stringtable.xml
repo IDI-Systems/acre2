@@ -114,6 +114,18 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
             <English>Selected Radio PTT</English>
+            <Spanish>Tecla de radio seleccionada</Spanish>
+            <Czech>Vybrané klávesa rádia</Czech>
+            <German>Ausgewähltes Sprechtaste</German>
+            <Japanese>標準の無線送信キー</Japanese>
+            <Italian>Tasto Radio Selezionata</Italian>
+            <French>Touche radio sélectionnée</French>
+            <Korean>기본 무전 단축키</Korean>
+            <Polish>Wybrane klawisz nadawania</Polish>
+            <Russian>Bыбранное радио кнопка</Russian>
+            <Chinese>預設無線電按鍵</Chinese>
+            <Chinesesimp>预设无线电按键</Chinesesimp>
+            <Portuguese>Tecla Selecionado do Rádio</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
             <English>Activate currently selected radio's push-to-talk.</English>
