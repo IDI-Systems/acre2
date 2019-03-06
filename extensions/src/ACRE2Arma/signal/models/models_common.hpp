@@ -20,7 +20,7 @@ namespace acre {
                 path_budget_dbm = 0.0f;
                 path_budget_v = 0.0f;
             };
-            reflection(glm::vec3 point_, glm::vec3 normal_, float32_t phase_, float32_t reflect_coefficient_, float32_t path_budget_dbm_, float32_t path_budget_v_) : point(point_),
+            reflection(const glm::vec3 &point_, const glm::vec3 &normal_, const float32_t phase_, const float32_t reflect_coefficient_, const float32_t path_budget_dbm_, const float32_t path_budget_v_) : point(point_),
                     normal(normal_), phase(phase_), reflect_coefficient(reflect_coefficient_), path_budget_dbm(path_budget_dbm_), path_budget_v(path_budget_v_) { };
 
             reflection(const reflection &copy_) {
@@ -105,8 +105,8 @@ namespace acre {
 
         class SignalModel {
         public:
-            SignalModel();
-            ~SignalModel();
+            SignalModel() {}
+            ~SignalModel() {}
         protected:
             map_p _map;
             float32_t dbm_to_v(const float32_t dBm, const float32_t r) {

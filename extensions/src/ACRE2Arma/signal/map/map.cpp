@@ -417,8 +417,7 @@ namespace acre {
             }
         }
 
-        inline float map::_internal_elevation(int x_, int y_)
-        {
+        float map::_internal_elevation(const int x_, const int y_) {
             return _map_elevations[glm::max((glm::min(x_, (int)_map_size-1)), 0) + glm::max((glm::min(y_, (int)_map_size-1)), 0) * _map_size];
         }
 

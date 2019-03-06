@@ -329,10 +329,10 @@ void acre::signal::model::multipath::get_peaks_spiral(const float32_t pos_x, con
     }
 }
 
-float32_t phase(const float32_t path_distance, const float32_t f_Mhz) {
+float32_t acre::signal::model::multipath::phase(const float32_t path_distance, const float32_t f_Mhz) {
     const float32_t phase = PI*2.0f*path_distance / (300.0f / f_Mhz);
     return fmod(phase, PI * 2) - PI;
 }
-float32_t phase_amplitude(const float32_t a1, const float32_t a2, const float32_t phase) {
+float32_t acre::signal::model::multipath::phase_amplitude(const float32_t a1, const float32_t a2, const float32_t phase) {
     return sqrtf(powf(a1, 2.0f) + powf(a2, 2.0f) + 2.0f*a1*a2*cosf(phase));
 }
