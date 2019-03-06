@@ -4,9 +4,9 @@
 #include "shared.hpp"
 #include "controller.hpp"
 #include <sstream>
-#include "map\map.hpp"
-#include "models\los_simple.hpp"
-#include "antenna\antenna_library.hpp"
+#include "map/map.hpp"
+#include "models/los_simple.hpp"
+#include "antenna/antenna_library.hpp"
 #include "lodepng.h"
 #ifdef _WINDOWS
 #include <direct.h>

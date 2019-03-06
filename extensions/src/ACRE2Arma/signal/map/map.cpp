@@ -4,9 +4,9 @@
 #include <sstream>
 #include <regex>
 
-#include "glm\geometric.hpp"
-#include "glm\gtx\intersect.hpp"
-#include "glm\gtx\normal.hpp"
+#include <glm/geometric.hpp>
+#include <glm/gtx/intersect.hpp>
+#include <glm/gtx/normal.hpp>
 
 #define POINT(y,x) points.push_back(glm::vec2((x)*_cell_size, (y)*_cell_size))
 

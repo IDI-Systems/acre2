@@ -1,13 +1,13 @@
 #pragma once
 
 #include "shared.hpp"
-#include "glm\vec3.hpp"
-#include "glm\vec2.hpp"
+#include "glm/vec3.hpp"
+#include "glm/vec2.hpp"
 #include "singleton.hpp"
-#include "pbo\search.hpp"
+#include "pbo/search.hpp"
 #include "membuf.hpp"
-#include "wrp\landscape.hpp"
-#include "pbo\fileloader.hpp"
+#include "wrp/landscape.hpp"
+#include "pbo/fileloader.hpp"
 
 namespace acre {
     namespace signal {
