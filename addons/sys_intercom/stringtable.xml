@@ -344,7 +344,7 @@
             <French>Activation de la voix</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
-            <English>Intercom PTT</English>
+            <English>Intercom Transmit</English>
             <Spanish>Tecla de intercom</Spanish>
             <Polish>Klawisz interkomu</Polish>
             <Italian>Pulsante intercom</Italian>
@@ -354,7 +354,7 @@
             <French>Clé de l'interphone</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
-            <English>Activate intercom station's push-to-talk.</English>
+            <English>Transmit on intercom station.</English>
             <Spanish>Usa la estación de intercom para hablar.</Spanish>
             <Polish>Mów przez interkom</Polish>
             <Italian>Usa la stazione intercom per parlare.</Italian>
@@ -364,7 +364,7 @@
             <French>Utiliser le poste d'interphone pour parler.</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
-            <English>Intercom Broadcast PTT</English>
+            <English>Intercom Broadcast</English>
             <Spanish>Tecla para mensaje prioritario</Spanish>
             <Polish>Klawisz nadawania interkomu</Polish>
             <Italian>Pulsante trasmissione intercom</Italian>
@@ -374,7 +374,7 @@
             <French>Clé de diffusion de l'interphone</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
-            <English>Activate intercom station's broadcast push-to-talk (priority message).</English>
+            <English>Transmit a priority message on intercom station.</English>
             <Spanish>Usa la estación de intercom para enviar un mensaje prioritario.</Spanish>
             <Polish>Użyj interkomu, aby wysłać wiadomość priorytetową.</Polish>
             <Italian>Usa la stazione intercom per trasmettere un messaggio prioritario</Italian>

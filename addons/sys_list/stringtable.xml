@@ -17,19 +17,19 @@
             <Portuguese>Trocar Rádio</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_list_OpenRadio">
-            <English>Open Selected Radio</English>
-            <Spanish>Abrir radio seleccionadai</Spanish>
-            <Czech>Otevřít vybrané rádio</Czech>
-            <German>Ausgewähltes funkgerät öffnen</German>
+            <English>Open Active Radio</English>
+            <Spanish>Abrir radio</Spanish>
+            <Czech>Otevřít aktivní rádio</Czech>
+            <German>Funkgerät öffnen</German>
             <Japanese>無線機を開く</Japanese>
-            <Italian>Apri Ricetrasmittente Selezionata</Italian>
-            <French>Ouvrir radio sélectionnée</French>
+            <Italian>Apri Ricetrasmittente Attiva</Italian>
+            <French>Ouvrir radio active</French>
             <Korean>무전기 열기</Korean>
-            <Polish>Otwórz panel wybrane radia</Polish>
-            <Russian>Oткрыто pеадио</Russian>
+            <Polish>Otwórz panel aktywne radia</Polish>
+            <Russian>Открыть радио</Russian>
             <Chinese>打開無線電</Chinese>
             <Chinesesimp>打开无线电</Chinesesimp>
-            <Portuguese>Abrir Rádio Selecionado</Portuguese>
+            <Portuguese>Abrir Rádio</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_list_NotificationGrid">
             <English>ACRE2 - Radio Notifications</English>
