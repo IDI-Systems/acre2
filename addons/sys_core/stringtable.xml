@@ -237,7 +237,7 @@
             <Portuguese>Canal Anterior (Rádio Ativo)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_NextChannel">
-            <English>Nexit Channel (Active Radio)</English>
+            <English>Next Channel (Active Radio)</English>
             <Spanish>Siguiente canal (Radio activa)</Spanish>
             <Czech>Další kanál</Czech>
             <German>Nächster Funkkanal (aktives Funkgerät)</German>
