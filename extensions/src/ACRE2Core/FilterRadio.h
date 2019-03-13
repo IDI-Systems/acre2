@@ -14,13 +14,13 @@ public:
     CFilterRadio(void);
     ~CFilterRadio(void);
 
-    ACRE_RESULT process(short* samples, int sampleCount, int channels, ACRE_VOLUME value, bool noise);
+    acre_result_t process(short* samples, int sampleCount, int channels, acre_volume_t value, bool noise);
 
     Dsp::SimpleFilter<Dsp::RBJ::HighPass, 1> m_HighPass;
     Dsp::SimpleFilter<Dsp::RBJ::LowPass, 1> m_LowPass;
     Dsp::PinkNoise m_PinkNoise;
     Dsp::RingModulate m_RingModulate;
 protected:
-    ACRE_RESULT mixWhiteNoise(float *buffer, int numSamples, ACRE_VOLUME signal);
-    ACRE_RESULT mixPinkNoise(float *buffer, int numSamples, ACRE_VOLUME signal);
+    acre_result_t mixWhiteNoise(float *buffer, int numSamples, acre_volume_t signal);
+    acre_result_t mixPinkNoise(float *buffer, int numSamples, acre_volume_t signal);
 };

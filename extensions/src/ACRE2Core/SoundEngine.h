@@ -15,17 +15,17 @@ protected:
 public:
     CSoundEngine( void );
     ~CSoundEngine();
-    ACRE_RESULT onClientGameConnected( void ) { this->setIsRunning(true); return ACRE_OK; };
-    ACRE_RESULT onClientGameDisconnected( void ) { this->setIsRunning(false); return ACRE_OK; };
+    acre_result_t onClientGameConnected( void ) { this->setIsRunning(true); return acre_result_ok; };
+    acre_result_t onClientGameDisconnected( void ) { this->setIsRunning(false); return acre_result_ok; };
 
-    ACRE_RESULT onEditPlaybackVoiceDataEvent(ACRE_ID id, short* samples, int sampleCount, int channels);
-    ACRE_RESULT onEditPostProcessVoiceDataEvent(ACRE_ID id, short* samples, int sampleCount, int channels, const unsigned int* channelSpeakerArray, unsigned int* channelFillMask);
-    ACRE_RESULT onEditMixedPlaybackVoiceDataEvent(short* samples, int sampleCount, int channels, const unsigned int speakerMask);
+    acre_result_t onEditPlaybackVoiceDataEvent(acre_id_t id, short* samples, int sampleCount, int channels);
+    acre_result_t onEditPostProcessVoiceDataEvent(acre_id_t id, short* samples, int sampleCount, int channels, const unsigned int* channelSpeakerArray, unsigned int* channelFillMask);
+    acre_result_t onEditMixedPlaybackVoiceDataEvent(short* samples, int sampleCount, int channels, const unsigned int speakerMask);
 
-    ACRE_RESULT onEditCapturedVoiceDataEvent(short* samples, int sampleCount, int channels);
+    acre_result_t onEditCapturedVoiceDataEvent(short* samples, int sampleCount, int channels);
     CSoundMixer * getSoundMixer() { return this->soundMixer; };
     DECLARE_MEMBER(BOOL, IsRunning);
-    DECLARE_MEMBER(ACRE_CURVE_MODEL, CurveModel);
+    DECLARE_MEMBER(acre_curveModel_t, CurveModel);
     DECLARE_MEMBER(float, CurveScale);
     DECLARE_MEMBER(int, ChannelCount);
 };
