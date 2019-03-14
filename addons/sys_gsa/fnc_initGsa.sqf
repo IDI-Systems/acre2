@@ -17,9 +17,8 @@
 
 params ["_gsa"];
 
-systemChat format ["gsa %1", _gsa];
 if (!hasInterface) exitWith {};
-if (!isClass (configFile >> "CfgPatches" >> "ace_interaction")) exitWith {}; // No ACE exit.
+if (!isClass (configFile >> "CfgPatches" >> "ace_interaction")) exitWith {}; // No ACE exit
 
 private _type = typeOf _gsa;
 

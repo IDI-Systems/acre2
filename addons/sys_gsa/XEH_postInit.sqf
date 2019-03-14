@@ -22,7 +22,11 @@
                 _gsa setVariable [QGVAR(connectedRadio), "", true];
                 [_radioId, "setState", ["externalAntennaConnected", [false, objNull]]] call EFUNC(sys_data,dataEvent);
 
-                call compile format [QUOTE([ARR_1(GVAR(%1))] call CBA_fnc_removePerFrameHandler;), _radioId];
+                // Support for having several radios connected to GSA
+                private _pfh = [GVAR(gsaPFH), _radioId, _pfh] call CBA_fnc_hashGSet;
+                if !(isNil "_pfh") then {
+                    [_pfh] call CBA_fnc_removePerFrameHandler;
+                };
 
                 if (_unit isKindOf "CAManBase" || {!(crew _unit isEqualTo [])}) then {
                     if (_unit isKindOf "CAManBase") then {
@@ -57,11 +61,12 @@
 
     _gsa setVariable [QGVAR(connectedRadio), _radioId, true];
     [_radioId, "setState", ["externalAntennaConnected", [true, _gsa]]] call EFUNC(sys_data,dataEvent);
-    systemChat format ["connected"];
 
     [QGVAR(notifyPlayer), [localize LSTRING(connected)], _player] call CBA_fnc_targetEvent;
 
-    call compile format [QUOTE(GVAR(%1) = [ARR_3(DFUNC(externalAntennaPFH), 1.0, [ARR_2(_gsa, _radioId)])] call CBA_fnc_addPerFrameHandler;), _radioId];
+    // Support for having several radios connected to GSA
+    private _pfh = [DFUNC(externalAntennaPFH), 1.0, [_gsa, _radioId]] call CBA_fnc_addPerFrameHandler;
+    [GVAR(gsaPFH), _radioId, _pfh] call CBA_fnc_hashSet;
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(notifyPlayer), {

@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: Unit <OBJECT> (Unused)
- *^1: Ground spike antenna <OBJECT>
+ * 1: Ground spike antenna <OBJECT>
  *
  * Return Value:
  * None
