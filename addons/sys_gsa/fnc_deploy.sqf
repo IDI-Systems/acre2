@@ -21,11 +21,11 @@ private _gsa = objNull;
 private _canDeploy = false;
 
 switch (_gsaItem) do {
-    case "acre2_vhf30108": {
+    case "ACRE_VHF30108": {
         _gsa = "vhf30108Item";
         _canDeploy = true;
     };
-    case "acre2_vhf30108spike" : {
+    case "ACRE_VHF30108SPIKE" : {
         _gsa = "vhf30108spike";
         _canDeploy = true;
     };
@@ -33,9 +33,9 @@ switch (_gsaItem) do {
 
 if (_canDeploy) then {
     // Remove item from backpack
-    if (_gsaItem isEqualTo "acre2_vhf30108spike" && {!_withMast} && {[_unit, "acre2_vhf30108"] call EFUNC(sys_core,hasItem)}) then {
-        _unit removeItem "acre2_vhf30108";
-        _unit addItemToBackpack "acre2_vhf30108mast";
+    if (_gsaItem isEqualTo "ACRE_VHF30108SPIKE" && {!_withMast} && {[_unit, "ACRE_VHF30108"] call EFUNC(sys_core,hasItem)}) then {
+        _unit removeItem "ACRE_VHF30108";
+        _unit addItemToBackpack "ACRE_VHF30108MAST";
     } else {
         _unit removeItem _gsaItem;
     };

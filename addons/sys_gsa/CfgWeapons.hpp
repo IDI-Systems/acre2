@@ -4,7 +4,7 @@ class CfgWeapons {
     class CBA_MiscItem;
     class CBA_MiscItem_ItemInfo;
 
-    class acre2_vhf30108: CBA_MiscItem {
+    class ACRE_VHF30108: CBA_MiscItem {
         author[] = {"RanTa"};
         scope = 2;
         displayName = "VHF30108 GSM";
@@ -17,7 +17,7 @@ class CfgWeapons {
             mass = 58;
         };
     };
-    class acre2_vhf30108spike: CBA_MiscItem {
+    class ACRE_VHF30108SPIKE: CBA_MiscItem {
         author[] = {"RanTa"};
         scope = 2;
         displayName = "VHF30108 GS";
@@ -31,7 +31,7 @@ class CfgWeapons {
         };
     };
 
-    class acre2_vhf30108mast: CBA_MiscItem {
+    class ACRE_VHF30108MAST: CBA_MiscItem {
         author[] = {"RanTa"};
         scope = 2;
         displayName = "VHF30108 Mast";

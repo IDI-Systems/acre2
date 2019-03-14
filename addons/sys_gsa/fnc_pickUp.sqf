@@ -31,18 +31,18 @@ private _canDelete = false;
 
 switch (_classname) do {
     case "vhf30108Item": {
-        _item = "acre2_vhf30108";
+        _item = "ACRE_VHF30108";
         if (_unit canAdd _item) then {
             _item = _item;
             _canDelete = true;
         };
     };
     case "vhf30108spike": {
-        _item = "acre2_vhf30108spike";
+        _item = "ACRE_VHF30108SPIKE";
 
         // If the unit has a spike
-        if ([_unit, "acre2_vhf30108mast"] call EFUNC(sys_core,hasItem)) then {
-            _item = "acre2_vhf30108";
+        if ([_unit, "ACRE_VHF30108MAST"] call EFUNC(sys_core,hasItem)) then {
+            _item = "ACRE_VHF30108";
         };
 
         if (_unit canAdd _item) then {

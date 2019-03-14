@@ -7,16 +7,16 @@ class CfgVehicles {
             class ACE_Equipment {
                 class GVAR(placeSpike) {
                     displayName = CSTRING(placeSpike);
-                    condition = QUOTE([ARR_2(_player,'acre2_vhf30108spike')] call EFUNC(sys_core,hasItem) || [ARR_2(_player,'acre2_vhf30108')] call EFUNC(sys_core,hasItem));
-                    statement = QUOTE([ARR_3(_player,'acre2_vhf30108spike', false)] call FUNC(deploy));
+                    condition = QUOTE([ARR_2(_player,'ACRE_VHF30108SPIKE')] call EFUNC(sys_core,hasItem) || [ARR_2(_player,'ACRE_VHF30108')] call EFUNC(sys_core,hasItem));
+                    statement = QUOTE([ARR_3(_player,'ACRE_VHF30108SPIKE', false)] call FUNC(deploy));
                     showDisabled = 0;
                     icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
                 };
 
                 class GVAR(placeSpikeMast) {
                     displayName = CSTRING(placeSpikeMast);
-                    condition = QUOTE([ARR_2(_player,'acre2_vhf30108')] call EFUNC(sys_core,hasItem));
-                    statement = QUOTE([ARR_3(_player,'acre2_vhf30108', true)] call FUNC(deploy));
+                    condition = QUOTE([ARR_2(_player,'ACRE_VHF30108')] call EFUNC(sys_core,hasItem));
+                    statement = QUOTE([ARR_3(_player,'ACRE_VHF30108', true)] call FUNC(deploy));
                     showDisabled = 0;
                     icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
                 };

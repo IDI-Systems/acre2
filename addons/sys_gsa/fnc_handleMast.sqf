@@ -34,12 +34,12 @@ deleteVehicle _gsa;
 if (_mountMast) then {
     _gsa = "vhf30108Item" createVehicle (_pos vectorAdd [0, 0, MAST_Z_OFFSET]);
 
-    _player removeItem "acre2_vhf30108mast";
+    _player removeItem "ACRE_VHF30108MAST";
 } else {
     _gsa = "vhf30108spike" createVehicle _pos;
 
-    if (_player canAdd "acre2_vhf30108mast") then {
-        _player addItem "acre2_vhf30108mast";
+    if (_player canAdd "ACRE_VHF30108MAST") then {
+        _player addItem "ACRE_VHF30108MAST";
     } else {
         // Create the mast as an item on the floor
     };

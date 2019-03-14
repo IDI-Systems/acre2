@@ -21,7 +21,7 @@ params ["_unit"];
 private _hasItemMast = false;
 
 {
-    if (_x isEqualTo "acre2_vhf30108mast") exitWith {
+    if (_x isEqualTo "ACRE_VHF30108MAST") exitWith {
         _hasItemMast = true;
     };
 } forEach (items _unit);
