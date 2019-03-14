@@ -15,9 +15,9 @@
 
 RPC_FUNCTION(stopRadioSpeaking) {
     
-    CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_RADIO);
+    CEngine::getInstance()->getClient()->localStopSpeaking(acre_speaking_radio);
 
-    return ACRE_OK;
+    return acre_result_ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

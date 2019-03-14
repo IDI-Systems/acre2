@@ -15,22 +15,22 @@ class CCommandServer : public IServer, public CLockable
 {
 public:
     CCommandServer(void);
-    CCommandServer(ACRE_ID id);
+    CCommandServer(acre_id_t id);
     ~CCommandServer(void);
 
-    ACRE_RESULT initialize(void);
-    ACRE_RESULT shutdown(void);
+    acre_result_t initialize(void);
+    acre_result_t shutdown(void);
 
-    ACRE_RESULT sendMessage(IMessage *msg);
-    ACRE_RESULT handleMessage(unsigned char *msg);
+    acre_result_t sendMessage(IMessage *msg);
+    acre_result_t handleMessage(unsigned char *msg);
 
-    ACRE_RESULT release(void);
+    acre_result_t release(void);
 
     //DECLARE_MEMBER(BOOL, Connected);
-    //DECLARE_MEMBER(ACRE_ID, Id);
+    //DECLARE_MEMBER(acre_id_t, Id);
     DECLARE_MEMBER(char *, CommandId);
     DECLARE_MEMBER(BOOL, Connected);
-    DECLARE_MEMBER(ACRE_ID, Id);
+    DECLARE_MEMBER(acre_id_t, Id);
 private:
     concurrency::concurrent_queue<IMessage *> mInboundMessages;
 };
