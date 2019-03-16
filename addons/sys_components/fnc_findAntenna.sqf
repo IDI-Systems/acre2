@@ -38,7 +38,6 @@ private _searchFunction = {
                         private _componentType = getNumber (_componentClass >> "type");
                         if (_componentType == ACRE_COMPONENT_ANTENNA) then {
                             private _componentObject = _componentParentId;
-                            systemChat format ["Antenna object %1", _componentObject];
                             if (IS_STRING(_componentParentId)) then {
                                 private _groundSpikeAntenna = [_componentParentId] call EFUNC(sys_gsa,getConnectedGsa);
                                 if (isNull _groundSpikeAntenna) then {
@@ -56,7 +55,6 @@ private _searchFunction = {
                             if !(_objectType isKindOf "CAManBase") then {
                                 if (_objectType isKindOf "House") then {
                                     _antennaPos = _antennaPos vectorAdd [0, 0, -((boundingCenter _componentObject) select 2)];
-                                    systemChat format ["Antenna Pos %1", _antennaPos];
                                 } else {
                                     _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
                                 };
