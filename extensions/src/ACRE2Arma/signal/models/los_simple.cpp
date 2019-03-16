@@ -8,18 +8,15 @@
 static const float32_t PI = 3.14159265f;
 static const float32_t magic = 10.0f;
 
-acre::signal::model::los_simple::los_simple(map_p map_) : SignalModel()
-{
+acre::signal::model::los_simple::los_simple(map_p map_) : SignalModel() {
     _map = map_;
 }
 
-acre::signal::model::los_simple::~los_simple()
-{
+acre::signal::model::los_simple::~los_simple() {
 
 }
 
-void acre::signal::model::los_simple::process(result *const result, const glm::vec3 &tx_pos, const glm::vec3 &tx_dir, const glm::vec3 &rx_pos, const glm::vec3 &rx_dir, const antenna_p &tx_antenna, const antenna_p &rx_antenna, const float32_t frequency, const float32_t power, const float32_t scale, const bool omnidirectional)
-{
+void acre::signal::model::los_simple::process(result *const result, const glm::vec3 &tx_pos, const glm::vec3 &tx_dir, const glm::vec3 &rx_pos, const glm::vec3 &rx_dir, const antenna_p &tx_antenna, const antenna_p &rx_antenna, const float32_t frequency, const float32_t power, const float32_t scale, const bool omnidirectional) {
     // Unused variables
     (void) tx_dir;
     (void) rx_dir;
@@ -46,8 +43,7 @@ void acre::signal::model::los_simple::process(result *const result, const glm::v
     result->result_dbm = budget;
 }
 
-float32_t acre::signal::model::los_simple::diffraction_loss(const glm::vec3 &pos1, const glm::vec3 &pos2, const float32_t frequency)
-{
+float32_t acre::signal::model::los_simple::diffraction_loss(const glm::vec3 &pos1, const glm::vec3 &pos2, const float32_t frequency) {
     const float32_t sample_size = 7.5f;
     std::vector<float32_t> terrain_profile;
     _map->terrain_profile(pos1, pos2, sample_size, terrain_profile);
@@ -75,8 +71,7 @@ float32_t acre::signal::model::los_simple::diffraction_loss(const glm::vec3 &pos
     return loss;
 }
 
-float32_t acre::signal::model::los_simple::itu(const float32_t h, const float32_t d1_km, float32_t d2_km, float32_t f_GHz)
-{
+float32_t acre::signal::model::los_simple::itu(const float32_t h, const float32_t d1_km, float32_t d2_km, float32_t f_GHz) {
     const float32_t d = d1_km + d2_km;
     const float32_t F1 = 17.3f * sqrtf((d1_km * d2_km) / (f_GHz * d));
     const float32_t A = -20.0f * h / F1 + 10.0f;
@@ -88,8 +83,7 @@ float32_t acre::signal::model::los_simple::itu(const float32_t h, const float32_
     return A;
 }
 
-acre::signal::model::multipath::multipath(map_p map_) : los_simple(map_)
-{
+acre::signal::model::multipath::multipath(map_p map_) : los_simple(map_) {
     const uint32_t peak_grid_size = static_cast<uint32_t>(ceilf(_map->map_size()*_map->cell_size()/1000.0f));
     _peak_buckets.resize((size_t)std::pow(peak_grid_size, 2u));
     for (auto peak : _map->peaks) {
@@ -99,8 +93,7 @@ acre::signal::model::multipath::multipath(map_p map_) : los_simple(map_)
     }
 }
 
-acre::signal::model::multipath::~multipath()
-{
+acre::signal::model::multipath::~multipath() {
 
 }
 
@@ -129,8 +122,7 @@ float32_t acre::signal::model::multipath::search_distance(const float32_t freque
     return searchDistance;
 }
 
-void acre::signal::model::multipath::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, const float32_t frequency_, const float32_t power_, const float32_t scale_, const bool omnidirectional_)
-{
+void acre::signal::model::multipath::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, const float32_t frequency_, const float32_t power_, const float32_t scale_, const bool omnidirectional_) {
     const float32_t tx_power = 10.0f * log10f(power_ / 1000.0f) + 30.0f;
     const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
     const float32_t searchDistance = search_distance(frequency_, power_);
@@ -328,6 +320,7 @@ float32_t acre::signal::model::multipath::phase(const float32_t path_distance, c
     const float32_t phase = PI*2.0f*path_distance / (300.0f / f_Mhz);
     return fmod(phase, PI * 2) - PI;
 }
+
 float32_t acre::signal::model::multipath::phase_amplitude(const float32_t a1, const float32_t a2, const float32_t phase) {
     return sqrtf(powf(a1, 2.0f) + powf(a2, 2.0f) + 2.0f*a1*a2*cosf(phase));
 }
