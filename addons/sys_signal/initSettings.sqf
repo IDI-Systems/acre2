@@ -1,7 +1,7 @@
 // Signal model
 [
     QGVAR(signalModel),
-    "SLIDER",
+    "LIST",
     localize LSTRING(signalModel_displayName),
     "ACRE2",
     [

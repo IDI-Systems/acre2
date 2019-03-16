@@ -30,7 +30,7 @@ void acre::signal::model::Arcade::process(result *const result_, const glm::vec3
     const float32_t lossRx = 3.0f; /* Receiver */
 
     /* Loss from fading, obstruction, noise, etc (including ITU model) */
-    const float32_t lossModel = _ituLoss + (static_cast<float32_t>(rand()) / (static_cast<float>(RAND_MAX) + 1.0f) - 0.5f);
+    const float32_t lossModel = _ituLoss + (static_cast<float32_t>(rand()) / (static_cast<float32_t>(RAND_MAX) + 1.0f) - 0.5f);
 
     /* Total Link Budget - SIGNAL STRENGTH */
     const float32_t _linkBudget = tx_power - lossTx - lossFreeSpace - lossModel - lossRx; /* Assume antenna gain is 0 for both*/

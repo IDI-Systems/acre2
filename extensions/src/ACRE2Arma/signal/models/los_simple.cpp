@@ -132,9 +132,7 @@ float32_t acre::signal::model::multipath::search_distance(const float32_t freque
 void acre::signal::model::multipath::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, const float32_t frequency_, const float32_t power_, const float32_t scale_, const bool omnidirectional_)
 {
     const float32_t tx_power = 10.0f * log10f(power_ / 1000.0f) + 30.0f;
-
     const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
-
     const float32_t searchDistance = search_distance(frequency_, power_);
 
     int32_t search_size = static_cast<int32_t>(searchDistance * 2.0f / 1000.0f);//(int)(std::ceil(std::max(search_distance, distance_2d)) / 1000.0f);
@@ -148,7 +146,6 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
         _cached_tx_pos = tx_pos_;
     }
 
-
     std::vector<float32_t> signals;
     std::vector<float32_t> signal_phases;
     int32_t good_count = 0;
@@ -157,7 +154,6 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
     size_t best_signal_index = 0;
 
     for (auto peak : _cached_peaks) {
-
         const glm::vec3 v_tx = tx_pos_ - peak;
         const glm::vec3 v_rx = rx_pos_ - peak;
         if (glm::distance(glm::normalize(v_tx), glm::normalize(v_rx)) > 1.41421f) {
@@ -168,7 +164,6 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
 
         glm::vec3 best_angle;
         float32_t best_distance = 10000.0f;
-
         float32_t diffractionLoss = 0.0f;
 
         for (int32_t i = 0; i <= 40; ++i) {
@@ -188,7 +183,6 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
         //if (!_map->ground_intersect(test_pos, glm::normalize(test_pos - best_angle), std::ceil(glm::distance(test_pos, best_angle)))) {
         const float32_t tx_internal_loss = 3.0f;
         const float32_t rx_internal_loss = 3.0f;
-
 
         float32_t rx_gain = 0;
         if (!omnidirectional_) rx_gain = rx_antenna_->gain(rx_dir_, best_angle - rx_pos_, frequency_);
@@ -234,8 +228,9 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
             }
         }
         //}
-    if (good_count >= 10)
-        break;
+        if (good_count >= 10) {
+            break;
+        }
     }
     float32_t rx_gain = 0.0f;
     if (!omnidirectional_) {

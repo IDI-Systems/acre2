@@ -1,5 +1,5 @@
 #pragma once
-#define NOMINMAX 1
+
 #include <algorithm>
 #include "shared.hpp"
 #include "controller.hpp"
@@ -9,6 +9,7 @@
 #include "models/arcade.hpp"
 #include "antenna/antenna_library.hpp"
 #include "lodepng.h"
+
 #ifdef _WINDOWS
 #include <direct.h>
 #endif
@@ -95,12 +96,10 @@ namespace acre {
                         LOG(INFO) << "Adding signal processing to map...";
                         _signalProcessor_multipath = acre::signal::model::multipath(_map);
                         LOG(INFO) << "Finished adding signal processor to map.";
-                    }
-                    else {
+                    } else {
                         LOG(INFO) << "Reloaded current map.";
                     }
-                }
-                else {
+                } else {
                     LOG(INFO) << "ERROR Map Loading, Error Code: " << map_load_result;
                 }
                 result = std::to_string(map_load_result);
@@ -257,7 +256,6 @@ namespace acre {
                 const std::string tx_antenna_name = args_.as_string();
                 const std::string rx_antenna_name = args_.as_string();
 
-
                 const float32_t f = args_.as_float();
                 const float32_t power = args_.as_float();
 
@@ -271,7 +269,6 @@ namespace acre {
                 float32_t width = (end_pos.x - start_pos.x);
                 float32_t height = (end_pos.y - start_pos.y);
 
-
                 if (start_x + width > _map->cell_size()*_map->map_size()) {
                     width = width - ((_map->cell_size()*_map->map_size()) - (start_x + width));
                 }
@@ -280,8 +277,8 @@ namespace acre {
                     height = height - ((_map->cell_size()*_map->map_size()) - (start_y + height));
                 }
 
-                const uint32_t count_x = (int)std::floor(width / sample_size);
-                const uint32_t count_y = (int)std::floor(height / sample_size);
+                const uint32_t count_x = (int32_t)std::floor(width / sample_size);
+                const uint32_t count_y = (int32_t)std::floor(height / sample_size);
 
                 _total_signal_map_steps = count_x * count_y;
 
@@ -319,12 +316,14 @@ namespace acre {
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*i, y_chunk_size, count_x, sample_size,
                         rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
                 }
+
                 if (y_chunk_remainder) {
                     std::vector<signal_map_result> *result_entry = &result_sets[thread_count];
                     result_entry->resize(y_chunk_size*count_x);
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*thread_count, y_chunk_remainder, count_x, sample_size,
                         rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
                 }
+
                 for (size_t c = 0; c < thread_pool.size(); ++c) {
                     thread_pool[c].join();
                 }

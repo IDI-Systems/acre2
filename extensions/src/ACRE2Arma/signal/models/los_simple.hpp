@@ -19,7 +19,6 @@ namespace acre {
 
                 float32_t itu(const float32_t h, const float32_t d1_km, float32_t d2_km, float32_t f_GHz);
                 float32_t diffraction_loss(const glm::vec3 &pos1, const glm::vec3 &pos2, const float32_t frequency);
-
             };
 
             class multipath : public los_simple {
