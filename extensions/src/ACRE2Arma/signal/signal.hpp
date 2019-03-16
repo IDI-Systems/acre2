@@ -73,6 +73,32 @@ namespace acre {
                 return (std::min)((std::max)(((s_ - min_) / (max_ - min_)), 0.0f), 1.0f);
             }
         public:
+            typedef enum {
+                acre_signalArgument_signalModel,
+                acre_signalArgument_id,
+                acre_signalArgument_txPositionX,
+                acre_signalArgument_txPositionY,
+                acre_signalArgument_txPositionZ,
+                acre_signalArgument_txDirectionX,
+                acre_signalArgument_txDirectionY,
+                acre_signalArgument_txDirectionZ,
+                acre_signalArgument_txAntennaName,
+                acre_signalArgument_rxPositionX,
+                acre_signalArgument_rxPositionY,
+                acre_signalArgument_rxPositionZ,
+                acre_signalArgument_rxDirectionX,
+                acre_signalArgument_rxDirectionY,
+                acre_signalArgument_rxDirectionZ,
+                acre_signalArgument_rxAntennaName,
+                acre_signalArgument_frequency,
+                acre_signalArgument_power,
+                acre_signalArgument_terrainScaling,
+                acre_signalArgument_tickTime,
+                acre_signalArgument_debugEnabled,
+                acre_signalArgument_omnidirectionalRadios,
+                acre_signalArgument_numArguments
+            } acre_signalArgument_t;
+
             controller() {
                 acre::controller::get().add("load_map", std::bind(&controller::load, this, std::placeholders::_1, std::placeholders::_2));
                 acre::controller::get().add("process_signal", std::bind(&controller::process, this, std::placeholders::_1, std::placeholders::_2));
@@ -107,23 +133,31 @@ namespace acre {
             }
             //#define DEBUG_OUTPUT
             bool process(const arguments & args_, std::string & result) {
-                if (args_.size() != 22) {
+                if (args_.size() != acre_signalArgument_numArguments) {
                     result = "[]";
                     return true;
                 }
 
                 const acre_signalModel_t model = static_cast<acre_signalModel_t>(args_.as_int(0));
 
-                const int32_t logging = args_.as_int(20);
-                const bool omnidirectional = args_.as_int(21);
+                const int32_t logging = args_.as_int(acre_signalArgument_debugEnabled);
+                const bool omnidirectional = args_.as_int(acre_signalArgument_omnidirectionalRadios);
 
-                const std::string id = args_.as_string(1);
-                const glm::vec3 tx_pos = glm::vec3(args_.as_float(2), args_.as_float(3), args_.as_float(4));
-                const glm::vec3 tx_dir = glm::vec3(args_.as_float(5), args_.as_float(6), args_.as_float(7));
-                const std::string tx_antenna_name = args_.as_string(8);
-                const glm::vec3 rx_pos = glm::vec3(args_.as_float(9), args_.as_float(10), args_.as_float(11));
-                const glm::vec3 rx_dir = glm::vec3(args_.as_float(12), args_.as_float(13), args_.as_float(14));
-                const std::string rx_antenna_name = args_.as_string(15);
+                const std::string id = args_.as_string(acre_signalArgument_id);
+                const glm::vec3 tx_pos = glm::vec3(args_.as_float(acre_signalArgument_txPositionX),
+                                                   args_.as_float(acre_signalArgument_txPositionY),
+                                                   args_.as_float(acre_signalArgument_txPositionZ));
+                const glm::vec3 tx_dir = glm::vec3(args_.as_float(acre_signalArgument_txDirectionX),
+                                                   args_.as_float(acre_signalArgument_txDirectionY),
+                                                   args_.as_float(acre_signalArgument_txDirectionZ));
+                const std::string tx_antenna_name = args_.as_string(acre_signalArgument_txAntennaName);
+                const glm::vec3 rx_pos = glm::vec3(args_.as_float(acre_signalArgument_rxPositionX),
+                                                   args_.as_float(acre_signalArgument_rxPositionY),
+                                                   args_.as_float(acre_signalArgument_rxPositionZ));
+                const glm::vec3 rx_dir = glm::vec3(args_.as_float(acre_signalArgument_rxDirectionX),
+                                                   args_.as_float(acre_signalArgument_rxDirectionY),
+                                                   args_.as_float(acre_signalArgument_rxDirectionZ));
+                const std::string rx_antenna_name = args_.as_string(acre_signalArgument_rxAntennaName);
 
                 acre::signal::antenna_p tx_antenna;
                 acre::signal::antenna_p rx_antenna;
@@ -140,9 +174,9 @@ namespace acre {
                     return true;
                 }
 
-                const float32_t f = args_.as_float(16);
-                const float32_t power = args_.as_float(17);
-                const float32_t scale = args_.as_float(18);
+                const float32_t f = args_.as_float(acre_signalArgument_frequency);
+                const float32_t power = args_.as_float(acre_signalArgument_power);
+                const float32_t scale = args_.as_float(acre_signalArgument_terrainScaling);
 
                 acre::signal::result signal_result;
 
