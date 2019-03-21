@@ -1,13 +1,13 @@
 #pragma once
 
 #include "shared.hpp"
-#include "glm\vec3.hpp"
-#include "glm\vec2.hpp"
+#include "glm/vec3.hpp"
+#include "glm/vec2.hpp"
 #include "singleton.hpp"
-#include "pbo\search.hpp"
+#include "pbo/search.hpp"
 #include "membuf.hpp"
-#include "wrp\landscape.hpp"
-#include "pbo\fileloader.hpp"
+#include "wrp/landscape.hpp"
+#include "pbo/fileloader.hpp"
 
 namespace acre {
     namespace signal {
@@ -83,7 +83,7 @@ namespace acre {
 
             void _generate_peaks();
 
-            float _internal_elevation(int, int);
+            float _internal_elevation(const int, const int);
             std::vector<glm::vec2> _grids_on_line(float, float, float, float);
             float _max_grid_height(int, int);
             bool _is_peak(int, int);
