@@ -5,8 +5,11 @@
 #include "controller.hpp"
 #include <sstream>
 #include "map/map.hpp"
-#include "models/los_simple.hpp"
+
 #include "models/arcade.hpp"
+#include "models/longleyRice.hpp"
+#include "models/los_simple.hpp"
+
 #include "antenna/antenna_library.hpp"
 #include "lodepng.h"
 
@@ -18,9 +21,10 @@ namespace acre {
     namespace signal {
         typedef enum acre_signalModel_ {
            acre_signalModel_arcade,
+           acre_signalModel_los,
            acre_signalModel_losMultipath,
-           acre_signalModel_underwater,
-           acre_signalModel_longleyRice
+           acre_signalModel_longleyRice,
+           acre_signalModel_underwater           
         } acre_signalModel_t;
 
         struct signal_map_result {
@@ -61,8 +65,12 @@ namespace acre {
         protected:
             uint32_t _debug_id;
             acre::signal::map_p _map;
-            acre::signal::model::multipath _signalProcessor_multipath;
-            acre::signal::model::Arcade    _signalProcessor_arcade;
+
+            acre::signal::model::Arcade      _signalProcessor_arcade;
+            acre::signal::model::los_simple  _signalProcessor_los;
+            acre::signal::model::multipath   _signalProcessor_multipath;
+            acre::signal::model::longleyRice _signalProcessor_longleyRice;
+
             uint32_t _total_signal_map_steps;
             volatile uint32_t _signal_map_progress;
             std::mutex _signal_lock;
@@ -185,8 +193,16 @@ namespace acre {
                         _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, f, power);
                         break;
                     }
+                    case acre_signalModel_los: {
+                        _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                        break;
+                    }
                     case acre_signalModel_losMultipath: {
                         _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                        break;
+                    }
+                    case acre_signalModel_longleyRice: {
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional, true);
                         break;
                     }
                     default: {

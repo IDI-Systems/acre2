@@ -69,7 +69,6 @@ namespace acre {
             float elevation(float, float, float *, float *);
             float elevation(float, float);
 
-
             float elevation_raw(int x_, int y_) { return _internal_elevation(x_, y_); };
             //float elevation_fast(float, float);
             glm::vec3 normal(float, float);
@@ -91,8 +90,6 @@ namespace acre {
             float _cell_size;
             float _inv_cell_size;
 
-
-
             void _generate_peaks();
 
             float _internal_elevation(const int, const int);
@@ -100,7 +97,5 @@ namespace acre {
             float _max_grid_height(int, int);
             bool _is_peak(int, int);
         };
-
-
     }
 }

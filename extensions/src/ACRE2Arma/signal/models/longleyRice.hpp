@@ -1,5 +1,5 @@
-#ifndef ACRE2ARMA_SIGNAL_MODELS_ITM_HPP_
-#define ACRE2ARMA_SIGNAL_MODELS_ITM_HPP_
+#ifndef ACRE2ARMA_SIGNAL_MODELS_LONGLEYRICE_HPP_
+#define ACRE2ARMA_SIGNAL_MODELS_LONGLEYRICE_HPP_
 
 #include <cmath>
 #include <complex>
@@ -14,11 +14,11 @@
 namespace acre {
     namespace signal {
         namespace model {
-            class itm : public SignalModel {
+            class longleyRice : public SignalModel {
             public:
-                itm() {};
-                itm(map_p map);
-                ~itm();
+                longleyRice() {};
+                longleyRice(map_p map);
+                ~longleyRice();
 
                 void process(result *const result, const glm::vec3 &tx_pos, const glm::vec3 &tx_dir, const glm::vec3 &rx_pos, const glm::vec3 &rx_dir, const antenna_p &tx_antenna, const antenna_p &rx_antenna, const float32_t frequency, const float32_t power, const float32_t scale, const bool omnidirectional, const bool useClutterAttenuation);
             protected:
@@ -32,4 +32,4 @@ namespace acre {
     }
 }
 
-#endif /* ACRE2ARMA_SIGNAL_MODELS_ITM_HPP_ */
+#endif /* ACRE2ARMA_SIGNAL_MODELS_LONGLEYRICE_HPP_ */

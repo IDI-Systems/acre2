@@ -7,7 +7,6 @@
 
 namespace acre {
     namespace signal {
-
         typedef enum {
             acre_antennaPolarization_horizontal,
             acre_antennaPolarization_vertical,
