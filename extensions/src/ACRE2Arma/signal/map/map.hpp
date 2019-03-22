@@ -11,6 +11,18 @@
 
 namespace acre {
     namespace signal {
+
+        typedef enum {
+            acre_mapClimate_equatorial = 1,
+            acre_mapClimate_continentalSubropical,
+            acre_mapClimate_maritimeTropical,
+            acre_mapClimate_desert,
+            acre_mapClimate_continentalTemperate,
+            acre_mapClimate_maritimeTemperate,
+            acre_mapClimate_overLand,
+            acre_mapClimate_maritimeTemerateOverSea
+        } acre_mapClimate_t;
+
         class map;
         typedef std::shared_ptr<map> map_p;
 
@@ -20,7 +32,7 @@ namespace acre {
             ~map_loader() {};
             int32_t get_map(const std::string wrp_path_, map_p &result_, bool &loaded_) {
                 //Return 0 = OKAY, -1 RECOVERD, -2 FAILURE
-                if (wrp_path_ == _current_map && _map != nullptr) { 
+                if (wrp_path_ == _current_map && _map != nullptr) {
                     result_ = _map;
                     loaded_ = true;
                     return 0;
@@ -56,7 +68,7 @@ namespace acre {
 
             float elevation(float, float, float *, float *);
             float elevation(float, float);
-            
+
 
             float elevation_raw(int x_, int y_) { return _internal_elevation(x_, y_); };
             //float elevation_fast(float, float);
@@ -79,7 +91,7 @@ namespace acre {
             float _cell_size;
             float _inv_cell_size;
 
-            
+
 
             void _generate_peaks();
 
@@ -89,6 +101,6 @@ namespace acre {
             bool _is_peak(int, int);
         };
 
-        
+
     }
 }

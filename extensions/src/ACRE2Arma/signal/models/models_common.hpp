@@ -115,6 +115,10 @@ namespace acre {
             float32_t v_to_dbm(const float32_t v, const float32_t r) {
                 return 10.0f * log10f((v*v) / (r * 0.001f)) / 2.3025f;
             }
+
+            float32_t mW_to_dbm (const float32_t power_mW) {
+                return 10.0f*log10f(power_mW/1000.0f) + 30.0f;
+            }
         };
     }
 }

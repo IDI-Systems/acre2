@@ -8,6 +8,12 @@
 namespace acre {
     namespace signal {
 
+        typedef enum {
+            acre_antennaPolarization_horizontal,
+            acre_antennaPolarization_vertical,
+            acre_antennaPolarization_num
+        } acre_antennaPolarization_t;
+
         struct antenna_gain_entry {
             antenna_gain_entry() : v(0.0f), h(0.0f) {};
             float v, h;
