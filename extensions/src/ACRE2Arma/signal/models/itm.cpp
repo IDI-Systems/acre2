@@ -1,8 +1,7 @@
 #include "itm.hpp"
 
-#define WITH_POINT_TO_POINT 1
+#define WITH_POINT_TO_POINT
 #include "itmCalc.cpp"
-
 
 acre::signal::model::itm::itm(map_p map_) : SignalModel()
 {
@@ -29,7 +28,9 @@ void acre::signal::model::itm::process(
 
     if ((frequency_MHz < 20.0f) || (frequency_MHz > 20000.0f)) {
         // Frequency out of range
-        return;// frequency out of recommended range
+        result->result_v = dbm_to_v(-999, 50.0f);
+        result->result_dbm = -999;
+        return;
     }
 
     // TODO: Make it map dependent
@@ -47,11 +48,11 @@ void acre::signal::model::itm::process(
     float64_t rx_gain = 0.0;
     float64_t tx_gain = 0.0;
     if (!omnidirectional) {
-        rx_gain = rx_antenna->gain(rx_dir, tx_pos - rx_pos, frequency_MHz);
-        tx_gain = tx_antenna->gain(tx_dir, rx_pos - tx_pos, frequency_MHz);
+        rx_gain = static_cast<float64_t>(rx_antenna->gain(rx_dir, tx_pos - rx_pos, frequency_MHz));
+        tx_gain = static_cast<float64_t>(tx_antenna->gain(tx_dir, rx_pos - tx_pos, frequency_MHz));
     }
 
-    const float64_t tx_power = mW_to_dbm(power_mW);
+    const float64_t tx_power = static_cast<float64_t>(mW_to_dbm(power_mW));
     const float64_t linkBudget = tx_power + tx_gain - tx_internal_loss + rx_gain - rx_internal_loss;
 
     float64_t conf = 0.90; // 90% of situations and time, take into account speed
@@ -81,6 +82,5 @@ void acre::signal::model::itm::process(
 
     result->result_v = dbm_to_v(signalStrength, 50.0f);
     result->result_dbm = signalStrength;
-
 }
 

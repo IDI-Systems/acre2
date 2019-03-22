@@ -40,10 +40,11 @@
 
 #define _USE_MATH_DEFINES
 
-#include <cmath>
+#include <math.h>
 #include <complex>
 #include <cassert>
 #include <algorithm>
+#include <limits>
 
 namespace acre {
     namespace signal {
@@ -86,6 +87,41 @@ namespace acre {
                     double d_L;        // d_Lj[] accumulated
                     double theta_e;    // theta_ej[] accumulated, total bending angle
                 };
+
+                static
+                    int mymin(const int &i, const int &j) {
+                    if (i < j)
+                        return i;
+                    else
+                        return j;
+                }
+
+
+                static
+                    int mymax(const int &i, const int &j) {
+                    if (i > j)
+                        return i;
+                    else
+                        return j;
+                }
+
+
+                static
+                    double mymin(const double &a, const double &b) {
+                    if (a < b)
+                        return a;
+                    else
+                        return b;
+                }
+
+
+                static
+                    double mymax(const double &a, const double &b) {
+                    if (a > b)
+                        return a;
+                    else
+                        return b;
+                }
 
                 static
                     double FORTRAN_DIM(const double &x, const double &y) {
@@ -251,7 +287,7 @@ namespace acre {
                         q *= 0.78 * exp(-pow(q / H, 0.25));
 
                         // A_fo is the "clutter factor"
-                        A_fo = std::min(15.0, 2.171 * log(1.0 + ALPHA * prop.h_g[0] * prop.h_g[1] * prop.k * q)); // [Alg 4.10]
+                        A_fo = mymin(15.0, 2.171 * log(1.0 + ALPHA * prop.h_g[0] * prop.h_g[1] * prop.k * q)); // [Alg 4.10]
                         // qk is part of the K_j calculation from [Alg 4.17]
                         qk = 1.0 / abs(prop_zgnd);
                         aht = 20.0; // 20 dB approximation for C_1(K) from [Alg 6.7], see also [Alg 4.25]
@@ -299,7 +335,7 @@ namespace acre {
                     // note that G(x) should be "0.05751 * x - 10 * log(q)"
                     A_r = 0.05751 * q - 4.343 * log(q) - aht;
                     // I'm very unsure if this has anything to do with [Alg 4.9] or not
-                    q = (wd1 + xd1 / s) * std::min(((1.0 - 0.8 * exp(-s / 50e3)) * prop.delta_h * prop.k), 6283.2);
+                    q = (wd1 + xd1 / s) * mymin(((1.0 - 0.8 * exp(-s / 50e3)) * prop.delta_h * prop.k), 6283.2);
                     // XXX this is NOT the same as the weighting factor from [Alg 4.9]
                     w = 25.1 / (25.1 + sqrt(q));
                     // [Alg 4.11]
@@ -357,18 +393,18 @@ namespace acre {
                         // XXX not like [Alg 4.65]
                         ss = (s - ad) / (s + ad);
                         q = rr / ss;
-                        ss = std::max(0.1, ss);
-                        q = std::min(std::max(0.1, q), 10.0);
+                        ss = mymax(0.1, ss);
+                        q = mymin(mymax(0.1, q), 10.0);
                         // XXX not like [Alg 4.66]
                         z0 = (s - ad) * (s + ad) * theta_tick * 0.25 / s;
                         // [Alg 4.67]
-                        temp = std::min(1.7, z0 / 8.0e3);
+                        temp = mymin(1.7, z0 / 8.0e3);
                         temp = temp * temp * temp * temp * temp * temp;
                         et = (etq * exp(-temp) + 1.0) * z0 / 1.7556e3;
 
-                        ett = std::max(et, 1.0);
+                        ett = mymax(et, 1.0);
                         h0 = (H_0(r1, ett) + H_0(r2, ett)) * 0.5;  // [Alg 6.12]
-                        h0 += std::min(h0, (1.38 - log(ett)) * log(ss) * log(q) * 0.49);  // [Alg 6.10 and 6.11]
+                        h0 += mymin(h0, (1.38 - log(ett)) * log(ss) * log(q) * 0.49);  // [Alg 6.10 and 6.11]
                         h0 = FORTRAN_DIM(h0, 0.0);
 
                         if (et < 1.0)
@@ -414,7 +450,7 @@ namespace acre {
                         const double D2 = 10e3; // 10 km  from [Alg 4.43]
                         const double D1R = 1 / D1;
                         // weighting factor w
-                        wls = D1R / (D1R + prop.k * prop.delta_h / std::max(D2, prop.d_Ls)); // [Alg 4.43]
+                        wls = D1R / (D1R + prop.k * prop.delta_h / mymax(D2, prop.d_Ls)); // [Alg 4.43]
                         return 0;
                     }
 
@@ -429,7 +465,7 @@ namespace acre {
                     s = 0.78 * q * exp(-pow(q / H, 0.25));       // \sigma_h(d), [Alg 3.10]
                     q = prop.h_e[0] + prop.h_e[1];
                     sps = q / sqrt(d * d + q * q);               // sin(\psi), [Alg 4.46]
-                    r = (sps - prop_zgnd) / (sps + prop_zgnd) * exp(-std::min(10.0, prop.k * s * sps)); // [Alg 4.47]
+                    r = (sps - prop_zgnd) / (sps + prop_zgnd) * exp(-mymin(10.0, prop.k * s * sps)); // [Alg 4.47]
                     q = abq_alos(r);
 
                     if (q < 0.25 || q < sps)                     // [Alg 4.48]
@@ -477,7 +513,7 @@ namespace acre {
                         // [Alg 3.7]
                         prop.d_L = prop.d_Lj[0] + prop.d_Lj[1];
                         // [Alg 3.8]
-                        prop.theta_e = std::max(prop.theta_ej[0] + prop.theta_ej[1], -prop.d_L * prop.gamma_e);
+                        prop.theta_e = mymax(prop.theta_ej[0] + prop.theta_ej[1], -prop.d_L * prop.gamma_e);
                         wlos = false;
                         wscat = false;
 
@@ -492,7 +528,7 @@ namespace acre {
                         // 0.838 => 40 MHz, 210 => 10 GHz
                         if (prop.k < 0.838 || prop.k > 210.0) {
                             set_warn("Frequency not optimal", 1);
-                            prop.kwx = std::max(prop.kwx, 1);
+                            prop.kwx = mymax(prop.kwx, 1);
                         }
 
                         // Surface refractivity, see [Alg 1.2]
@@ -519,13 +555,13 @@ namespace acre {
                                             // Antenna structural height should be between 1 and 1000 m
                                             if (prop.h_g[j] < 1.0 || prop.h_g[j] > 1000.0) {
                                                 set_warn("Antenna height not optimal", 1);
-                                                prop.kwx = std::max(prop.kwx, 1);
+                                                prop.kwx = mymax(prop.kwx, 1);
                                             }
 
                                             // Horizon elevation angle
                                             if (abs(prop.theta_ej[j]) > 200e-3) {
                                                 set_warn("Horizon elevation weird", 3);
-                                                prop.kwx = std::max(prop.kwx, 3);
+                                                prop.kwx = mymax(prop.kwx, 3);
                                             }
 
                                             // Horizon distance dl,
@@ -533,7 +569,7 @@ namespace acre {
                                             if (prop.d_Lj[j] < 0.1 * prop.d_Lsj[j] ||
                                                 prop.d_Lj[j] > 3.0 * prop.d_Lsj[j]) {
                                                 set_warn("Horizon distance weird", 3);
-                                                prop.kwx = std::max(prop.kwx, 3);
+                                                prop.kwx = mymax(prop.kwx, 3);
                                             }
                                             // Antenna structural height must between  0.5 and 3000 m
                                             if (prop.h_g[j] < 0.5 || prop.h_g[j] > 3000.0) {
@@ -553,7 +589,7 @@ namespace acre {
                                      */
                                     q = adiff(0.0, prop);
                                     xae = pow(prop.k * prop.gamma_e * prop.gamma_e, -THIRD);  // [Alg 4.2]
-                                    d3 = std::max(prop.d_Ls, 1.3787 * xae + prop.d_L);    // [Alg 4.3]
+                                    d3 = mymax(prop.d_Ls, 1.3787 * xae + prop.d_L);    // [Alg 4.3]
                                     d4 = d3 + 2.7574 * xae;                            // [Alg 4.4]
                                     a3 = adiff(d3, prop);                              // [Alg 4.5]
                                     a4 = adiff(d4, prop);                              // [Alg 4.7]
@@ -573,13 +609,13 @@ namespace acre {
                         // Distance above 1000 km is guessing
                         if (prop.d > 1000e3) {
                             set_warn("Distance not optimal", 1);
-                            prop.kwx = std::max(prop.kwx, 1);
+                            prop.kwx = mymax(prop.kwx, 1);
                         }
 
                         // Distance too small, use some indoor algorithm :-)
                         if (prop.d < dmin) {
                             set_warn("Distance too small", 3);
-                            prop.kwx = std::max(prop.kwx, 3);
+                            prop.kwx = mymax(prop.kwx, 3);
                         }
 
                         // Distance above 2000 km is really bad, don't do that
@@ -599,10 +635,10 @@ namespace acre {
                             d0 = 1.908 * prop.k * prop.h_e[0] * prop.h_e[1];                // [Alg 4.38]
 
                             if (prop.aed >= 0.0) {
-                                d0 = std::min(d0, 0.5 * prop.d_L);                       // [Alg 4.28]
+                                d0 = mymin(d0, 0.5 * prop.d_L);                       // [Alg 4.28]
                                 d1 = d0 + 0.25 * (prop.d_L - d0);                     // [Alg 4.29]
                             } else {
-                                d1 = std::max(-prop.aed / prop.emd, 0.25 * prop.d_L);  // [Alg 4.39]
+                                d1 = mymax(-prop.aed / prop.emd, 0.25 * prop.d_L);  // [Alg 4.39]
                             }
 
                             a1 = A_los(d1, prop);  // [Alg 4.31]
@@ -611,7 +647,7 @@ namespace acre {
                             if (d0 < d1) {
                                 a0 = A_los(d0, prop); // [Alg 4.30]
                                 q = log(d2 / d0);
-                                prop.ak2 = std::max(0.0, ((d2 - d0) * (a1 - a0) - (d1 - d0) * (a2 - a0)) / ((d2 - d0) * log(d1 / d0) - (d1 - d0) * q)); // [Alg 4.32]
+                                prop.ak2 = mymax(0.0, ((d2 - d0) * (a1 - a0) - (d1 - d0) * (a2 - a0)) / ((d2 - d0) * log(d1 / d0) - (d1 - d0) * q)); // [Alg 4.32]
                                 wq = prop.aed >= 0.0 || prop.ak2 > 0.0;
 
                                 if (wq) {
@@ -662,8 +698,8 @@ namespace acre {
 
                             if (a5 < 1000.0) {
                                 prop.ems = (a6 - a5) / DS;   // [Alg 4.57]
-                                prop.dx = std::max(prop.d_Ls,   // [Alg 4.58]
-                                                std::max(prop.d_L + 0.3 * xae * log(HS * prop.k),
+                                prop.dx = mymax(prop.d_Ls,   // [Alg 4.58]
+                                                mymax(prop.d_L + 0.3 * xae * log(HS * prop.k),
                                                 (a5 - prop.aed - prop.ems * d5) / (prop.emd - prop.ems)));
                                 prop.aes = (prop.emd - prop.ems) * prop.dx + prop.aed; // [Alg 4.59]
                             } else {
@@ -681,7 +717,7 @@ namespace acre {
                             prop.A_ref = prop.aed + prop.emd * prop.d;  // diffraction region
                     }
 
-                    prop.A_ref = std::max(prop.A_ref, 0.0);
+                    prop.A_ref = mymax(prop.A_ref, 0.0);
                 }
 
 
@@ -734,23 +770,23 @@ namespace acre {
                             if (prop.h_g[j] < 5.0)
                                 q *= sin(0.3141593 * prop.h_g[j]);
 
-                            prop.h_e[j] = prop.h_g[j] + (1.0 + q) * exp(-std::min(20.0, 2.0 * prop.h_g[j] / std::max(1e-3, prop.delta_h)));
+                            prop.h_e[j] = prop.h_g[j] + (1.0 + q) * exp(-mymin(20.0, 2.0 * prop.h_g[j] / mymax(1e-3, prop.delta_h)));
                         }
 
                         // [Alg 3.3], upper function. q is d_Ls_j
                         const double H_3 = 5; // 5m from [Alg 3.3]
                         q = sqrt(2.0 * prop.h_e[j] / prop.gamma_e);
-                        prop.d_Lj[j] = q * exp(-0.07 * sqrt(prop.delta_h / std::max(prop.h_e[j], H_3)));
+                        prop.d_Lj[j] = q * exp(-0.07 * sqrt(prop.delta_h / mymax(prop.h_e[j], H_3)));
                         // [Alg 3.4]
                         prop.theta_ej[j] = (0.65 * prop.delta_h * (q / prop.d_Lj[j] - 1.0) - 2.0 * prop.h_e[j]) / q;
                     }
 
                     prop.mdp = 1;
-                    propv.lvar = std::max(propv.lvar, 3);
+                    propv.lvar = mymax(propv.lvar, 3);
 
                     if (mdvarx >= 0) {
                         propv.mdvar = mdvarx;
-                        propv.lvar = std::max(propv.lvar, 4);
+                        propv.lvar = mymax(propv.lvar, 4);
                     }
 
                     if (klimx > 0) {
@@ -779,7 +815,7 @@ namespace acre {
                     const double d3 = 0.001308;
 
                     x = 0.5 - q;
-                    t = std::max(0.5 - fabs(x), 0.000001);
+                    t = mymax(0.5 - fabs(x), 0.000001);
                     t = sqrt(-2.0 * log(t));
                     v = t - ((c2 * t + c1) * t + c0) / (((d3 * t + d2) * t + d1) * t + 1.0);
 
@@ -914,7 +950,7 @@ namespace acre {
                                 // and set error indicator
                                 if (propv.klim <= 0 || propv.klim > 7) {
                                     propv.klim = 5;
-                                    prop.kwx = std::max(prop.kwx, 2);
+                                    prop.kwx = mymax(prop.kwx, 2);
                                     set_warn("Climate index set to continental", 2);
                                 }
 
@@ -967,7 +1003,7 @@ namespace acre {
                                 if (kdv < 0 || kdv > 3) {
                                     kdv = 0;
                                     set_warn("kdv set to 0", 2);
-                                    prop.kwx = std::max(prop.kwx, 2);
+                                    prop.kwx = mymax(prop.kwx, 2);
                                 }
 
                                 // fall throught
@@ -1081,7 +1117,7 @@ namespace acre {
                     }
                     if (fabs(zt) > 3.1 || fabs(zl) > 3.1 || fabs(zc) > 3.1) {
                         set_warn("Situations variables not optimal", 1);
-                        prop.kwx = std::max(prop.kwx, 1);
+                        prop.kwx = mymax(prop.kwx, 1);
                     }
 
 
@@ -1229,7 +1265,7 @@ namespace acre {
 
                     m = 0;
                     n = nn;
-                    k = std::min(std::max(0, ir), n);
+                    k = mymin(mymax(0, ir), n);
 
                     while (!done) {
                         if (goto10) {
@@ -1328,7 +1364,7 @@ namespace acre {
                         return dlthxv;
 
                     ka = (int) (0.1 * (xb - xa + 8.0));
-                    ka = std::min(std::max(4, ka), 25);
+                    ka = mymin(mymax(4, ka), 25);
                     n = 10 * ka - 5;
                     kb = n - ka + 1;
                     sn = n - 1;
@@ -1392,7 +1428,7 @@ namespace acre {
                     // :44: determine horizons and dh from pfl, page 23
                     hzns(pfl, prop);
                     for (j = 0; j < 2; j++)
-                        xl[j] = std::min(15.0 * prop.h_g[j], 0.1 * prop.d_Lj[j]);
+                        xl[j] = mymin(15.0 * prop.h_g[j], 0.1 * prop.d_Lj[j]);
 
                     xl[1] = prop.d - xl[1];
                     prop.delta_h = dlthx(pfl, xl[0], xl[1]);
@@ -1410,7 +1446,7 @@ namespace acre {
                         prop.h_e[1] = prop.h_g[1] + FORTRAN_DIM(pfl[np + 2], zb);
 
                         for (j = 0; j < 2; j++)
-                            prop.d_Lj[j] = sqrt(2.0 * prop.h_e[j] / prop.gamma_e) * exp(-0.07 * sqrt(prop.delta_h / std::max(prop.h_e[j], 5.0)));
+                            prop.d_Lj[j] = sqrt(2.0 * prop.h_e[j] / prop.gamma_e) * exp(-0.07 * sqrt(prop.delta_h / mymax(prop.h_e[j], 5.0)));
 
                         q = prop.d_Lj[0] + prop.d_Lj[1];
 
@@ -1419,7 +1455,7 @@ namespace acre {
 
                             for (j = 0; j < 2; j++) {
                                 prop.h_e[j] *= q;
-                                prop.d_Lj[j] = sqrt(2.0 * prop.h_e[j] / prop.gamma_e) * exp(-0.07 * sqrt(prop.delta_h / std::max(prop.h_e[j], 5.0)));
+                                prop.d_Lj[j] = sqrt(2.0 * prop.h_e[j] / prop.gamma_e) * exp(-0.07 * sqrt(prop.delta_h / mymax(prop.h_e[j], 5.0)));
                             }
                         }
 
@@ -1436,11 +1472,11 @@ namespace acre {
                     }
 
                     prop.mdp = -1;
-                    propv.lvar = std::max(propv.lvar, 3);
+                    propv.lvar = mymax(propv.lvar, 3);
 
                     if (mdvarx >= 0) {
                         propv.mdvar = mdvarx;
-                        propv.lvar = std::max(propv.lvar, 4);
+                        propv.lvar = mymax(propv.lvar, 4);
                     }
 
                     if (klimx > 0) {
