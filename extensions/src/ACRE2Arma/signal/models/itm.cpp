@@ -1,5 +1,9 @@
 #include "itm.hpp"
 
+#define WITH_POINT_TO_POINT 1
+#include "itmCalc.cpp"
+
+
 acre::signal::model::itm::itm(map_p map_) : SignalModel()
 {
     _map = map_;
@@ -62,7 +66,7 @@ void acre::signal::model::itm::process(
     // Get elevation data
     std::vector<float64_t> elevation;
 
-    acre::signal::model::itm::point_to_point(elevation.data(), static_cast<float64_t>(rx_pos.z), static_cast<float64_t>(tx_pos.z),
+    acre::signal::model::itmCalc::point_to_point(elevation.data(), static_cast<float64_t>(rx_pos.z), static_cast<float64_t>(tx_pos.z),
             eps_dielect, sgm_conductivity, eno, static_cast<float64_t>(frequency_MHz), static_cast<int32_t>(radioClimate),
             static_cast<int32_t>(polarization), conf, rel, dbloss, strmode, p_mode, horizons, errnum);
 
