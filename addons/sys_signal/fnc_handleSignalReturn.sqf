@@ -26,7 +26,7 @@ if (count _result > 0) then {
     private _maxSignal = missionNamespace getVariable [_bestSignalStr , -992];
     private _currentAntenna = missionNamespace getVariable [_bestAntStr, ""];
 
-    // TODO: Remove before release 2.7.0
+    // TODO: Remove debug before release 2.7.0
     TRACE_4("%1: %2 ----- %3: %4",_bestSignalStr,_maxSignal,_bestAntStr,_currentAntenna);
 
     if ((_id == _currentAntenna) || {(_id != _currentAntenna) && {_signal > _maxSignal}}) then {
