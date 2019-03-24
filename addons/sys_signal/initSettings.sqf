@@ -9,6 +9,6 @@
         ["Arcade", "LOS Multipath"],
         1
     ],
-    false,
+    true,
     {} // TODO: Do not allow changing after signal map is loaded.
 ] call CBA_Settings_fnc_init;
