@@ -27,7 +27,7 @@ if (count _result > 0) then {
     private _currentAntenna = missionNamespace getVariable [_bestAntStr, ""];
 
     // TODO: Remove before release 2.7.0
-    diag_log format ["ACRE2 Debug: %1_best_signal: %2 --- %1_best_ant: %3", _transmitterClass, _maxSignal, _currentAntenna];
+    TRACE_4("%1: %2 ----- %3: %4",_bestSignalStr,_maxSignal,_bestAntStr,_currentAntenna);
 
     if ((_id == _currentAntenna) || {(_id != _currentAntenna) && {_signal > _maxSignal}}) then {
         missionNamespace setVariable [_bestSignalStr, _signal];
