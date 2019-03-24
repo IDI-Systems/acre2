@@ -11,11 +11,11 @@
 
 int iter = 0;
 
-ACRE_RESULT CAmplitudeAttenuation::processAmplitudes(void) {
-    return ACRE_OK;
+acre_result_t CAmplitudeAttenuation::processAmplitudes(void) {
+    return acre_result_ok;
 }
 
-ACRE_RESULT CAmplitudeAttenuation::process(short* samples, int sampleCount, int channels, CPlayer * player) {
+acre_result_t CAmplitudeAttenuation::process(short* samples, int sampleCount, int channels, CPlayer * player) {
     float averageSum, currentSample, averageAmplitude, ampCoef;
     averageSum = 0;
     for (int i = 0; i < sampleCount*channels && i < 4095; i++, iter++) {
@@ -50,13 +50,13 @@ ACRE_RESULT CAmplitudeAttenuation::process(short* samples, int sampleCount, int 
     // process the new sample into the curves and globals
     //this->processAmplitudes();
 
-    return ACRE_OK;
+    return acre_result_ok;
 }
 
-ACRE_RESULT CAmplitudeAttenuation::reset(void) {
+acre_result_t CAmplitudeAttenuation::reset(void) {
 
 
-    return ACRE_OK;
+    return acre_result_ok;
 }
 
 CAmplitudeAttenuation::CAmplitudeAttenuation(void) {

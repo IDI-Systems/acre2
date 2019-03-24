@@ -13,13 +13,7 @@ class CfgFunctions {
             PATHTO_FNC(setPTTDelay);
             PATHTO_FNC(getPTTDelay);
 
-            PATHTO_FNC(setRevealToAI);
             PATHTO_FNC(getRevealToAI);
-
-            PATHTO_FNC(setLossModelScale);
-            PATHTO_FNC(setFullDuplex);
-            PATHTO_FNC(setInterference);
-            PATHTO_FNC(ignoreAntennaDirection);
 
             PATHTO_FNC(setCustomSignalFunc);
 
@@ -48,6 +42,9 @@ class CfgFunctions {
 
             PATHTO_FNC(setRadioChannel);
             PATHTO_FNC(getRadioChannel);
+
+            PATHTO_FNC(setRadioVolume);
+            PATHTO_FNC(getRadioVolume);
 
             PATHTO_FNC(setCurrentRadioChannelNumber);
             PATHTO_FNC(getCurrentRadioChannelNumber);
@@ -108,6 +105,12 @@ class CfgFunctions {
             PATHTO_FNC(babelSetSpeakingLanguage);
             PATHTO_FNC(babelAddLanguageType);
         };
+
+        class Spectator {
+            PATHTO_FNC(addSpectatorRadio);
+            PATHTO_FNC(removeAllSpectatorRadios);
+            PATHTO_FNC(removeSpectatorRadio);
+        };
     };
 
 
@@ -115,7 +118,6 @@ class CfgFunctions {
     class AcreModules {
         class GVAR(mission_setup) {
             PATHTO_FNC(basicMissionSetup);
-            PATHTO_FNC(difficultySettings);
             PATHTO_FNC(nameChannels);
         };
     };

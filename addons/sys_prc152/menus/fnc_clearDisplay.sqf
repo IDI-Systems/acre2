@@ -16,7 +16,10 @@
  * Public: No
  */
 
-BEGIN_COUNTER(clearDisplay);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    BEGIN_COUNTER(clearDisplay);
+#endif
+
 private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
 
 FUNC(_internalClearDisplay) = {
@@ -60,4 +63,6 @@ FUNC(_internalClearDisplay) = {
 [ICON_UPDOWN, false] call FUNC(toggleIcon);
 [ICON_SCROLLBAR, false] call FUNC(toggleIcon);
 
-END_COUNTER(clearDisplay);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    END_COUNTER(clearDisplay);
+#endif

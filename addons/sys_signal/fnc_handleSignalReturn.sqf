@@ -19,20 +19,30 @@ _args params ["_transmitterClass", "_receiverClass"];
 
 if (count _result > 0) then {
     _result params ["_id", "_signal"];
-    private _maxSignal = missionNamespace getVariable [_transmitterClass + "_best_signal", -992];
-    private _currentAntenna = missionNamespace getVariable [_transmitterClass + "_best_ant", ""];
-    if (_id == _currentAntenna || {(_id != _currentAntenna && {_signal > _maxSignal})}) then {
-        missionNamespace setVariable [_transmitterClass + "_best_signal", _signal];
-        missionNamespace setVariable [_transmitterClass + "_best_ant", _id];
+
+    private _bestSignalStr = format ["%1_best_signal", _transmitterClass];
+    private _bestAntStr = format ["%1_best_ant", _transmitterClass];
+
+    private _maxSignal = missionNamespace getVariable [_bestSignalStr , -992];
+    private _currentAntenna = missionNamespace getVariable [_bestAntStr, ""];
+
+    // TODO: Remove before release 2.7.0
+    TRACE_4("%1: %2 ----- %3: %4",_bestSignalStr,_maxSignal,_bestAntStr,_currentAntenna);
+
+    if ((_id == _currentAntenna) || {(_id != _currentAntenna) && {_signal > _maxSignal}}) then {
+        missionNamespace setVariable [_bestSignalStr, _signal];
+        missionNamespace setVariable [_bestAntStr, _id];
+
+        private _bestPxStr = format ["%1_best_px", _transmitterClass];
         if (_maxSignal >= -500) then {
             private _realRadioRx = [_receiverClass] call EFUNC(sys_radio,getRadioBaseClassname);
             private _min = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMin");
             private _max = getNumber (configFile >> "CfgAcreComponents" >> _realRadioRx >> "sensitivityMax");
 
             private _Px = (((_maxSignal - _min) / (_max - _min)) max 0.0) min 1.0;
-            missionNamespace setVariable [_transmitterClass + "_best_px", _Px];
+            missionNamespace setVariable [_bestPxStr, _Px];
         } else {
-            missionNamespace setVariable [_transmitterClass + "_best_px", 0];
+            missionNamespace setVariable [_bestPxStr, 0];
         };
         if (count _result > 3) then {
             ACRE_DEBUG_SIGNAL_FILE = _result select 3;
@@ -40,5 +50,6 @@ if (count _result > 0) then {
     };
 };
 
-private _count = missionNamespace getVariable [_transmitterClass + "_running_count", 0];
-missionNamespace setVariable [_transmitterClass + "_running_count", _count - 1];
+private _runningCountStr = format ["%1_running_count", _transmitterClass];
+private _count = missionNamespace getVariable [_runningCountStr, 0];
+missionNamespace setVariable [_runningCountStr, _count - 1];

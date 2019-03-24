@@ -21,17 +21,17 @@ RPC_FUNCTION(ext_remoteStartSpeaking) {
             this->getSelf()->getCurveScale()
         ) */
 
-    ACRE_ID id = (ACRE_ID)vMessage->getParameterAsInt(0);
-    int languageId = (ACRE_ID)vMessage->getParameterAsInt(1);
+    acre_id_t id = (acre_id_t)vMessage->getParameterAsInt(0);
+    int languageId = (acre_id_t)vMessage->getParameterAsInt(1);
     std::string netId = std::string((char *)vMessage->getParameter(2));
     
-    ACRE_SPEAKING_TYPE speakingType = (ACRE_SPEAKING_TYPE)vMessage->getParameterAsInt(3);
+    acre_speaking_t speakingType = (acre_speaking_t)vMessage->getParameterAsInt(3);
     std::string radio_id = std::string((char *)vMessage->getParameter(4));
-    ACRE_VOLUME curveScale = vMessage->getParameterAsFloat(5);
+    acre_volume_t curveScale = vMessage->getParameterAsFloat(5);
 
     CEngine::getInstance()->remoteStartSpeaking(id, languageId, netId, speakingType, radio_id, curveScale);
 
-    return ACRE_OK;
+    return acre_result_ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

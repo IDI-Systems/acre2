@@ -27,15 +27,15 @@ RPC_FUNCTION(loadSound) {
     if (content != "") {
         CEngine::getInstance()->getSoundPlayback()->buildSound(id, content);
     } else {
-        ACRE_RESULT ret = CEngine::getInstance()->getSoundPlayback()->loadSound(id);
-        if (ret == ACRE_OK) {
+        acre_result_t ret = CEngine::getInstance()->getSoundPlayback()->loadSound(id);
+        if (ret == acre_result_ok) {
             vServer->sendMessage(CTextMessage::formatNewMessage("handleLoadedSound", "%s,%s", id.c_str(), "1"));
         } else {
             vServer->sendMessage(CTextMessage::formatNewMessage("handleLoadedSound", "%s,%s", id.c_str(), "0"));
         }
     }
 
-    return ACRE_OK;
+    return acre_result_ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

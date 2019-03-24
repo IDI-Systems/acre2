@@ -1,8 +1,8 @@
 #include "antenna.hpp"
 
-#include "glm\geometric.hpp"
-#include "glm\gtx\intersect.hpp"
-#include "glm\gtx\normal.hpp"
+#include <glm/geometric.hpp>
+#include <glm/gtx/intersect.hpp>
+#include <glm/gtx/normal.hpp>
 
 acre::signal::antenna::antenna(std::istream & stream_)
 {

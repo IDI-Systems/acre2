@@ -36,4 +36,9 @@ if (_height < 0) then {
 };
 
 private _additionalValues = [([] call FUNC(getSpeakingLanguageId))];
-CALL_RPC("updateSelf", ACRE_LISTENER_POS + ACRE_LISTENER_DIR + _additionalValues);
+private _updateSelf = [];
+_updateSelf append ACRE_LISTENER_POS;
+_updateSelf append ACRE_LISTENER_DIR;
+_updateSelf append _additionalValues;
+
+CALL_RPC("updateSelf", _updateSelf);
