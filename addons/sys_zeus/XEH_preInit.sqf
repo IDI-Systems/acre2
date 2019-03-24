@@ -8,7 +8,7 @@ PREP_RECOMPILE_END;
 
 GVAR(keyDownWait) = false;
 
-private _zeusCategory = format ["ACRE %1", localize "str_a3_cfghints_curator_curator_displayname"];
+private _zeusCategory = format ["ACRE2 %1", localize "str_a3_cfghints_curator_curator_displayname"];
 
 // Default remote controlled voice source
 [
