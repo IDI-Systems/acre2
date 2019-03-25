@@ -91,4 +91,3 @@ void acre::signal::model::longleyRice::process(
     result->result_v = dbm_to_v(signalStrength, 50.0f);
     result->result_dbm = signalStrength;
 }
-

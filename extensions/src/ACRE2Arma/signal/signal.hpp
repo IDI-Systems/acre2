@@ -129,6 +129,8 @@ namespace acre {
                     if (!loaded) {
                         LOG(INFO) << "Adding signal processing to map...";
                         _signalProcessor_multipath = acre::signal::model::multipath(_map);
+                        _signalProcessor_los = acre::signal::model::los_simple(_map);
+                        _signalProcessor_longleyRice = acre::signal::model::longleyRice(_map);
                         LOG(INFO) << "Finished adding signal processor to map.";
                     } else {
                         LOG(INFO) << "Reloaded current map.";
@@ -146,7 +148,7 @@ namespace acre {
                     return true;
                 }
 
-                const acre_signalModel_t model = static_cast<acre_signalModel_t>(args_.as_int(0));
+                const acre_signalModel_t model = static_cast<acre_signalModel_t>(args_.as_int(acre_signalArgument_signalModel));
 
                 const int32_t logging = args_.as_int(acre_signalArgument_debugEnabled);
                 const bool omnidirectional = args_.as_int(acre_signalArgument_omnidirectionalRadios);
