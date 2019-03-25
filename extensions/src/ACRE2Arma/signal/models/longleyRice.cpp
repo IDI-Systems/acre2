@@ -39,8 +39,8 @@ void acre::signal::model::longleyRice::process(
     const float64_t eno = 301.0;               // TODO: Make it map dependent?
 
     const acre_antennaPolarization_t polarization = tx_antenna->getPolarization();
-    const float64_t rxInternalLoss = rx_antenna->getInternalLoss_dBm();
-    const float64_t txInternalLoss = tx_antenna->getInternalLoss_dBm();
+    const float64_t rxInternalLoss = static_cast<float64_t>(rx_antenna->getInternalLoss_dBm());
+    const float64_t txInternalLoss = static_cast<float64_t>(tx_antenna->getInternalLoss_dBm());
 
     float64_t rxGain = 0.0;
     float64_t txGain = 0.0;
@@ -58,7 +58,7 @@ void acre::signal::model::longleyRice::process(
     float64_t dbloss = 0.0;
     char strmode[150];
     int32_t p_mode = static_cast<int32_t>(acre_itmPropagation_los);
-    float64_t horizons[2] = {0.0, 0,0};
+    float64_t horizons[2] = {0.0, 0.0};
     int32_t errnum = 0;
 
     // Get elevation data and prepare it as ITM format
@@ -77,6 +77,11 @@ void acre::signal::model::longleyRice::process(
     float64_t clutterLoss = 0.0;
     if (useClutterAttenuation) {
         // TODO: Add clutter loss
+        // Vegetation: ITU-R  P.833-7 (https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.833-7-201202-S!!PDF-E.pdf)
+        // Urban Loss 1: https://www.itu.int/dms_pub/itu-r/opb/rep/R-REP-P.2402-2017-PDF-E.pdf
+        // Urban Loss 300Mhz > https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.1411-6-201202-S!!PDF-E.pdf
+        // Urban Loss. building entering (>100 MHz 343): https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.2040-1-201507-I!!PDF-E.pdf
+        // 30 MHz to 3GHz (Point-to-Area) https://www.itu.int/dms_pubrec/itu-r/rec/p/R-REC-P.1411-6-201202-S!!PDF-E.pdf
     }
 
     float64_t polarisationLoss = 0.0; // TODO: Add polarisation loss?

@@ -77,7 +77,7 @@ namespace acre {
             uint32_t map_size() const { return _map_size; };
 
             bool ground_intersect(const glm::vec3 &origin_, const glm::vec3 dir_, const float32_t max_distance_);
-            bool ground_intersect(const glm::vec3 &origin_, const glm::vec3 dir_, const float32_t max_distance_, glm::vec3 &result_)
+            bool ground_intersect(const glm::vec3 &origin_, const glm::vec3 dir_, const float32_t max_distance_, glm::vec3 &result_);
 
             void terrain_profile(const glm::vec3 &start_pos_, const glm::vec3 &end_pos_, const float32_t precision_, std::vector<float32_t> &profile_);
             void terrain_profile(const glm::vec3 &start_pos_, const glm::vec3 &end_pos_, const float32_t precision_, std::vector<float64_t> &profile_);

@@ -1,5 +1,6 @@
 #include "antenna.hpp"
 
+#include <algorithm>
 #include <glm/geometric.hpp>
 #include <glm/gtx/intersect.hpp>
 #include <glm/gtx/normal.hpp>
@@ -68,7 +69,7 @@ float32_t acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::v
     return total_gain;
 }
 
-acre_antennaPolarization_t acre::signal::antenna::getPolarization() {
+acre::signal::acre_antennaPolarization_t acre::signal::antenna::getPolarization() {
     return this->_polarization;
 }
 void acre::signal::antenna::setPolarization(const acre_antennaPolarization_t polarization_) {
@@ -80,13 +81,6 @@ float32_t acre::signal::antenna::getInternalLoss_dBm() {
 }
 void acre::signal::antenna::setInternalLoss_dBm(const float32_t internalLos_dBm_) {
     this->_internalLos_dBm = internalLos_dBm_;
-}
-
-float64_t acre::signal::antenna::getInternalLoss_dBm() {
-    return static_cast<float64_t>(this->_internalLos_dBm);
-}
-void acre::signal::antenna::setInternalLoss_dBm(const float64_t internalLos_dBm_) {
-    this->_internalLos_dBm = static_cast<float32_t>(internalLos_dBm_);
 }
 
 float32_t acre::signal::antenna::_get_gain(const float32_t f_, const float32_t dir_, const float32_t elev_)

@@ -42,9 +42,6 @@ namespace acre {
             float32_t getInternalLoss_dBm();
             void setInternalLoss_dBm(const float32_t internalLos_dBm_);
 
-            float64_t getInternalLoss_dBm();
-            void setInternalLoss_dBm(const float64_t internalLos_dBm_);
-
         protected:
             float32_t _min_frequency, _max_frequency, _frequency_step, _elevation_step, _direction_step;
             uint32_t _total_entries, _width, _height;

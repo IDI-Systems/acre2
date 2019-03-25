@@ -395,15 +395,15 @@ void acre::signal::map::_generate_peaks() {
     }
 
     for (auto filtered_peak : filtered_max_peaks) {
-        const int32_t elev = _internal_elevation(static_cast<int32_t>(filtered_peak.x), static_cast<int32_t>(filtered_peak.y));
+        const float32_t elev = _internal_elevation(static_cast<int32_t>(filtered_peak.x), static_cast<int32_t>(filtered_peak.y));
         peaks.push_back(glm::vec3(filtered_peak.x * _cell_size, filtered_peak.y * _cell_size, elev));
     }
 }
 
-inline float32_t acre::signal::map::_internal_elevation(const int32_t x_, const int32_t y_) {
+float32_t acre::signal::map::_internal_elevation(const int32_t x_, const int32_t y_) {
     return _map_elevations[glm::max((glm::min(x_, static_cast<int32_t>(_map_size - 1u))), 0)
-    + glm::max((glm::min(y_, static_cast<int32_t>(_map_size - 1u))), 0)
-    * _map_size];
+        + glm::max((glm::min(y_, static_cast<int32_t>(_map_size - 1u))), 0)
+        * _map_size];
 }
 
 std::vector<glm::vec2> acre::signal::map::_grids_on_line(const float32_t x1_, const float32_t y1_, const float32_t x2_, const float32_t y2_) {
@@ -534,12 +534,10 @@ bool acre::signal::map::_is_peak(const int32_t x_, const int32_t y_) {
     }
 }
 
-acre_mapClimate_t acre::signal::map::getMapClimate() {
+acre::signal::acre_mapClimate_t acre::signal::map::getMapClimate() {
     return this->_mapClimate;
 }
 
 void acre::signal::map::setMapClimate(const acre_mapClimate_t mapClimate) {
     this->_mapClimate = mapClimate;
 }
-
-

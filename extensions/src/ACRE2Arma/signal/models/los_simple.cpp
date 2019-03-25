@@ -34,7 +34,7 @@ void acre::signal::model::los_simple::process(result *const result, const glm::v
 
     //_Lb = _Ptx + _transmitterGain - _Ltx - _Lfs - _Lm + _receiverGain - _Lrx;
     const float32_t tx_internal_loss = tx_antenna->getInternalLoss_dBm();
-    const float32_t rx_internal_loss = rx_antenna->getInternalLoss_dBm()
+    const float32_t rx_internal_loss = rx_antenna->getInternalLoss_dBm();
 
     const float32_t diffractionLoss = diffraction_loss(tx_pos, rx_pos, frequency);
 
