@@ -28,32 +28,29 @@ void acre::signal::model::longleyRice::process(
 
     if ((frequency_MHz < 20.0f) || (frequency_MHz > 20000.0f)) {
         // Frequency out of range
-        result->result_v = dbm_to_v(-999, 50.0f);
-        result->result_dbm = -999;
+        result->result_v = dbm_to_v(-999.0f, 50.0f);
+        result->result_dbm = -999.0f;
         return;
     }
 
-    // TODO: Make it map dependent
-    const acre_mapClimate_t radioClimate = acre_mapClimate_continentalTemperate;
-    const float64_t eps_dielect= 15.0;
-    const float64_t sgm_conductivity = 0.005;
-    const float64_t eno = 301.0;
+    const acre_mapClimate_t radioClimate = _map->getMapClimate();
+    const float64_t eps_dielect= 15.0;         // TODO: Make it map dependent?
+    const float64_t sgm_conductivity = 0.005;  // TODO: Make it map dependent?
+    const float64_t eno = 301.0;               // TODO: Make it map dependent?
 
+    const acre_antennaPolarization_t polarization = tx_antenna->getPolarization();
+    const float64_t rxInternalLoss = rx_antenna->getInternalLoss_dBm();
+    const float64_t txInternalLoss = tx_antenna->getInternalLoss_dBm();
 
-    // TODO: Make it antenna dependent
-    const acre_antennaPolarization_t polarization = acre_antennaPolarization_vertical;
-    const float64_t tx_internal_loss = 3.0;
-    const float64_t rx_internal_loss = 3.0;
-
-    float64_t rx_gain = 0.0;
-    float64_t tx_gain = 0.0;
+    float64_t rxGain = 0.0;
+    float64_t txGain = 0.0;
     if (!omnidirectional) {
-        rx_gain = static_cast<float64_t>(rx_antenna->gain(rx_dir, tx_pos - rx_pos, frequency_MHz));
-        tx_gain = static_cast<float64_t>(tx_antenna->gain(tx_dir, rx_pos - tx_pos, frequency_MHz));
+        rxGain = static_cast<float64_t>(rx_antenna->gain(rx_dir, tx_pos - rx_pos, frequency_MHz));
+        txGain = static_cast<float64_t>(tx_antenna->gain(tx_dir, rx_pos - tx_pos, frequency_MHz));
     }
 
-    const float64_t tx_power = static_cast<float64_t>(mW_to_dbm(power_mW));
-    const float64_t linkBudget = tx_power + tx_gain - tx_internal_loss + rx_gain - rx_internal_loss;
+    const float64_t txPower = static_cast<float64_t>(mW_to_dbm(power_mW));
+    const float64_t linkBudget = txPower + txGain - txInternalLoss + rxGain - rxInternalLoss;
 
     float64_t conf = 0.90; // 90% of situations and time, take into account speed
     float64_t rel = 0.90;
@@ -61,13 +58,19 @@ void acre::signal::model::longleyRice::process(
     float64_t dbloss = 0.0;
     char strmode[150];
     int32_t p_mode = static_cast<int32_t>(acre_itmPropagation_los);
-    float64_t horizons[2];
-    int32_t errnum;
+    float64_t horizons[2] = {0.0, 0,0};
+    int32_t errnum = 0;
 
-    // Get elevation data
-    std::vector<float64_t> elevation;
+    // Get elevation data and prepare it as ITM format
+    std::vector<float64_t> itmElevations;
+    const float32_t sampleSize = 7.5f;
 
-    acre::signal::model::itm::point_to_point(elevation.data(), static_cast<float64_t>(rx_pos.z), static_cast<float64_t>(tx_pos.z),
+    itmElevations.push_back(0.0);                                          // ITM: Number of points in the data - 1
+    itmElevations.push_back(static_cast<float64_t>(sampleSize));           // ITM: Distance between points
+    _map->terrain_profile(tx_pos, rx_pos, sampleSize, itmElevations);      // Get Terrain elevations
+    itmElevations[0] = static_cast<float64_t>(itmElevations.size() - 1u);  // ITM: Update the number of points
+
+    acre::signal::model::itm::point_to_point(itmElevations.data(), static_cast<float64_t>(rx_pos.z), static_cast<float64_t>(tx_pos.z),
             eps_dielect, sgm_conductivity, eno, static_cast<float64_t>(frequency_MHz), static_cast<int32_t>(radioClimate),
             static_cast<int32_t>(polarization), conf, rel, dbloss, strmode, p_mode, horizons, errnum);
 
@@ -78,7 +81,7 @@ void acre::signal::model::longleyRice::process(
 
     float64_t polarisationLoss = 0.0; // TODO: Add polarisation loss?
 
-    const float32_t signalStrength = linkBudget - dbloss - clutterLoss + polarisationLoss;
+    const float32_t signalStrength = static_cast<float32_t>(linkBudget - dbloss - clutterLoss - polarisationLoss);
 
     result->result_v = dbm_to_v(signalStrength, 50.0f);
     result->result_dbm = signalStrength;
