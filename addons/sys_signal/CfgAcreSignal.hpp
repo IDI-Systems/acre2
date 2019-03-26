@@ -23,7 +23,7 @@ class CfgAcreSignal {
             }
         };
         continentalTemperate[] = {5, {}}; // All undefined maps fall into this category
-        maritimeTemperateOverland[] = {6. {
+        maritimeTemperateOverland[] = {6, {
                 "altis",
                 "abel",
                 "chernarus",
@@ -31,6 +31,6 @@ class CfgAcreSignal {
                 "stratis"
             }
         };
-        maritimeTemperateOversea[] = {7. {}};
+        maritimeTemperateOversea[] = {7, {}};
     };
 };

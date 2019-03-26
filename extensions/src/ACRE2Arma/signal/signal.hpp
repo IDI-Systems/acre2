@@ -128,6 +128,8 @@ namespace acre {
                     LOG(INFO) << "Map Loaded, Error Status: " << map_load_result;
                     if (!loaded) {
                         LOG(INFO) << "Adding signal processing to map...";
+                        _map->setMapClimate(static_cast<acre::signal::acre_mapClimate_t>(args_.as_int(1)));
+
                         _signalProcessor_multipath = acre::signal::model::multipath(_map);
                         _signalProcessor_los = acre::signal::model::los_simple(_map);
                         _signalProcessor_longleyRice = acre::signal::model::longleyRice(_map);
