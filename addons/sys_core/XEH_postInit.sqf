@@ -96,7 +96,6 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
     private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
     if (_wrpLocation == "") then {
         _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
-        systemChat format ["Loading world: %1", _wrpLocation];
     };
     private _radioSignalCode = [worldName] call EFUNC(sys_signal,getRadioClimateCode);
     INFO_2("Loading Map: %1 with radio signal code %2",_wrpLocation,_radioSignalCode);
