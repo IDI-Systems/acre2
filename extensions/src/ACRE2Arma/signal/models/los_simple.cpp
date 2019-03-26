@@ -17,26 +17,23 @@ acre::signal::model::los_simple::~los_simple() {
 }
 
 void acre::signal::model::los_simple::process(result *const result, const glm::vec3 &tx_pos, const glm::vec3 &tx_dir, const glm::vec3 &rx_pos, const glm::vec3 &rx_dir, const antenna_p &tx_antenna, const antenna_p &rx_antenna, const float32_t frequency, const float32_t power, const float32_t scale, const bool omnidirectional) {
-    // Unused variables
-    (void) tx_dir;
-    (void) rx_dir;
-    (void) tx_antenna;
-    (void) rx_antenna;
-    (void) scale;
-    (void) omnidirectional;
-
     const float32_t distance_3d = glm::distance(tx_pos, rx_pos);
 
-    const float32_t rx_gain = 0.0f;//rx_antenna_.gain(rx_pos_, tx_pos_);
-    const float32_t tx_gain = 0.0f;//tx_antenna_.gain(tx_pos_, rx_pos_);
     const float32_t tx_power = 10.0f * (log10f(power / 1000.0f)) + 30.0f;
     const float32_t fspl = -27.55f + 20.0f * log10f(frequency) + 20.0f * log10f(distance_3d);
+
+    float32_t rx_gain = 0.0f;
+    float32_t tx_gain = 0.0f;
+    if (!omnidirectional) {
+        rx_gain = rx_antenna->gain(rx_dir, tx_pos - rx_pos, frequency);
+        tx_gain = tx_antenna->gain(tx_dir, rx_pos - tx_pos, frequency);
+    }
 
     //_Lb = _Ptx + _transmitterGain - _Ltx - _Lfs - _Lm + _receiverGain - _Lrx;
     const float32_t tx_internal_loss = tx_antenna->getInternalLoss_dBm();
     const float32_t rx_internal_loss = rx_antenna->getInternalLoss_dBm();
 
-    const float32_t diffractionLoss = diffraction_loss(tx_pos, rx_pos, frequency);
+    const float32_t diffractionLoss = diffraction_loss(tx_pos, rx_pos, frequency)*scale;
 
     const float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - diffractionLoss + rx_gain - rx_internal_loss;
     result->result_v = dbm_to_v(budget, 50.0f);

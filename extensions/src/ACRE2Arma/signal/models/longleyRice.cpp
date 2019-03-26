@@ -33,6 +33,8 @@ void acre::signal::model::longleyRice::process(
         return;
     }
 
+    (void) scale;
+
     const acre_mapClimate_t radioClimate = _map->getMapClimate();
     const float64_t eps_dielect= 15.0;         // TODO: Make it map dependent?
     const float64_t sgm_conductivity = 0.005;  // TODO: Make it map dependent?
