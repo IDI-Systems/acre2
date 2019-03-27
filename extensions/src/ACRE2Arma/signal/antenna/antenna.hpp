@@ -13,6 +13,7 @@ namespace acre {
         typedef enum {
             acre_antennaPolarization_horizontal,
             acre_antennaPolarization_vertical,
+            acre_antennaPolarization_circular,
             acre_antennaPolarization_num
         } acre_antennaPolarization_t;
 

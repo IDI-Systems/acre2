@@ -23,8 +23,9 @@ namespace acre {
            acre_signalModel_arcade,
            acre_signalModel_los,
            acre_signalModel_losMultipath,
-           acre_signalModel_longleyRice,
-           acre_signalModel_underwater           
+           acre_signalModel_longleyRice_ITM,
+           acre_signalModel_longleyRice_ITWOM,
+           acre_signalModel_underwater
         } acre_signalModel_t;
 
         struct signal_map_result {
@@ -205,8 +206,12 @@ namespace acre {
                         _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
                         break;
                     }
-                    case acre_signalModel_longleyRice: {
-                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional, true);
+                    case acre_signalModel_longleyRice_ITM: {
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, false, omnidirectional, true);
+                        break;
+                    }
+                    case acre_signalModel_longleyRice_ITWOM: {
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, true, omnidirectional, true);
                         break;
                     }
                     default: {
