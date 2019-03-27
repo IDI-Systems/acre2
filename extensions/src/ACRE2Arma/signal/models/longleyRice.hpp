@@ -20,7 +20,7 @@ namespace acre {
                 longleyRice(map_p map);
                 ~longleyRice();
 
-                void process(result *const result, const glm::vec3 &tx_pos, const glm::vec3 &tx_dir, const glm::vec3 &rx_pos, const glm::vec3 &rx_dir, const antenna_p &tx_antenna, const antenna_p &rx_antenna, const float32_t frequency, const float32_t power, const bool useITWOM,, const bool omnidirectional, const bool useClutterAttenuation);
+                void process(result *const result, const glm::vec3 &tx_pos, const glm::vec3 &tx_dir, const glm::vec3 &rx_pos, const glm::vec3 &rx_dir, const antenna_p &tx_antenna, const antenna_p &rx_antenna, const float32_t frequency, const float32_t power, const bool useITWOM, const bool omnidirectional, const bool useClutterAttenuation);
             protected:
                 typedef enum {
                     acre_itmPropagation_los,
