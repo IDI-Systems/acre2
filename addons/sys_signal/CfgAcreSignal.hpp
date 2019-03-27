@@ -2,7 +2,7 @@ class CfgAcreSignal {
     class LongleyRiceRadioClimate {
         /*
          * Definition of radio climates are the following:
-         *  - Equatiorial: Africa, along the equator
+         *  - Equatorial: Africa, along the equator
          * -  Continental Subtropical: Sudan region
          *  - Maritime tropical: a.k.a. Maritime Subtropical (West Coast of Africa
          *  - Desert: Death Valley, NV; Sahara

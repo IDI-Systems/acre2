@@ -17,8 +17,6 @@
 
 params [["_map", ""]];
 
-if (_map == "") exitWith {MAP_CLIMATE_CONTINENTAL_TEMPERATE};
-
 _map = toLower _map;
 
 private _config = configProperties [configFile >> "CfgAcreSignal" >> "LongleyRiceRadioClimate", "isArray _x", true];
