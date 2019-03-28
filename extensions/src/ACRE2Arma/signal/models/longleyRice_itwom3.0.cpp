@@ -1056,7 +1056,7 @@ namespace acre {
                 }
 
 
-                static static void lrprop (double d, prop_type &prop, propa_type &propa)
+                static void lrprop (double d, prop_type &prop, propa_type &propa)
                 {
                     /* PaulM_lrprop used for ITM */
                     static bool wlos, wscat;
@@ -2048,7 +2048,7 @@ namespace acre {
                     n=10*ka-5;
                     kb=n-ka+1;
                     sn=n-1;
-                    assert((s=new double[n+2])!=0);
+                    s=new double[n+2];
                     s[0]=sn;
                     s[1]=1.0;
                     xb=(xb-xa)/sn;
@@ -2104,7 +2104,7 @@ namespace acre {
                     n=10*ka-5;
                     kb=n-ka+1;
                     sn=n-1;
-                    assert((s=new double[n+2])!=0);
+                    s = new double[n + 2];
                     s[0]=sn;
                     s[1]=1.0;
                     xb=(xb-xa)/sn;
