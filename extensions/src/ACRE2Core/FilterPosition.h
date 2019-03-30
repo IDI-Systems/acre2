@@ -13,7 +13,7 @@ public:
     CFilterPosition(void);
     ~CFilterPosition(void);
 
-    ACRE_RESULT process(short* samples, int sampleCount, int channels, const unsigned int speakerMask, CSoundMixdownEffect *params);
+    acre_result_t process(short* samples, int sampleCount, int channels, const unsigned int speakerMask, CSoundMixdownEffect *params);
 
     X3DAUDIO_VECTOR getUpVector(X3DAUDIO_VECTOR inVector);
 

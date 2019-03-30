@@ -54,11 +54,11 @@ void ts3plugin_onEditPlaybackVoiceDataEvent(uint64 server, anyID id, short* samp
         samples[c] = (short)(result);
     }
 
-    CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent((ACRE_ID)id, samples, sampleCount, channels);
+    CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent((acre_id_t)id, samples, sampleCount, channels);
 }
 
 void ts3plugin_onEditPostProcessVoiceDataEvent(uint64 server, anyID id, short* samples, int sampleCount, int channels, const unsigned int* channelSpeakerArray, unsigned int* channelFillMask) {
-    //CEngine::getInstance()->getSoundEngine()->onEditPostProcessVoiceDataEvent((ACRE_ID)id, samples, sampleCount, channels, channelSpeakerArray, channelFillMask);
+    //CEngine::getInstance()->getSoundEngine()->onEditPostProcessVoiceDataEvent((acre_id_t)id, samples, sampleCount, channels, channelSpeakerArray, channelFillMask);
     //memset(samples, 0x00, (sampleCount*channels)*sizeof(short) );
     //*channelFillMask = (1<<channels)-1;
 }

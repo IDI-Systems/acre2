@@ -2,7 +2,7 @@
 #define COMPONENT_BEAUTIFIED Signal
 #include "\idi\acre\addons\main\script_mod.hpp"
 
-// #define DEBUG_MODE_FULL
+#define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
 
@@ -15,3 +15,6 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+#define SIGNAL_MODEL_ARCADE        0
+#define SIGNAL_MODEL_LOS_MULTIPATH 1

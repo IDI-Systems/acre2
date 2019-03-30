@@ -81,7 +81,7 @@
     "ACRE2",
     true,
     true,
-    {[_this] call EFUNC(api,setInterference)}
+    {[_this] call FUNC(setInterference)}
 ] call CBA_Settings_fnc_init;
 
 // Full duplex
@@ -103,7 +103,7 @@
     "ACRE2",
     false,
     true,
-    {[_this] call EFUNC(api,ignoreAntennaDirection)}
+    {[_this] call FUNC(ignoreAntennaDirection)}
 ] call CBA_Settings_fnc_init;
 
 // Antena direction
@@ -123,7 +123,7 @@
     "ACRE2",
     [0, 1, 0.50, 2],
     true,
-    {[_this] call EFUNC(api,setLossModelScale)}
+    {[_this] call FUNC(setLossModelScale)}
 ] call CBA_Settings_fnc_init;
 
 // Reveal to AI
@@ -134,7 +134,7 @@
     "ACRE2",
     [0, 2.50, 1, 2],
     true,
-    {[_this] call EFUNC(api,setRevealToAI)}
+    {[_this] call FUNC(setRevealToAI)}
 ] call CBA_Settings_fnc_init;
 
 // Notification Settings

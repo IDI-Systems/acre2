@@ -16,7 +16,9 @@
  * Public: No
  */
 
-BEGIN_COUNTER(JIPSync_Total);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    BEGIN_COUNTER(JIPSync_Total);
+#endif
 
 private _data = _this;
 INFO_2("Data Sync Received: %1KB (%2s).",(count (toArray (str GVAR(radioData))))/1024,diag_tickTime-GVAR(dataSyncStart));
@@ -32,4 +34,6 @@ INFO_2("Data Processing. %1 pending events, %2 pending data updates.", count GVA
 } forEach EGVAR(sys_server,pendingIdRelationUpdates);
 INFO("Data Sync Complete.");
 
-END_COUNTER(JIPSync_Total);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    END_COUNTER(JIPSync_Total);
+#endif

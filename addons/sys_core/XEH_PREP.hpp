@@ -26,6 +26,7 @@ PREP(hasAccessToVehicleSystem);
 PREP(isMuted);
 PREP(localStartSpeaking);
 PREP(localStopSpeaking);
+PREP(monitorAiPFH);
 PREP(muting);
 PREP(onPlayerKilled);
 PREP(pong);
@@ -49,8 +50,6 @@ PREP(toggleHeadset);
 PREP(updateSelf);
 PREP(utilityFunction);
 
-PREP(disableRevealAI);
-PREP(enableRevealAI);
 PREP(onRevealUnit);
 
 PREP(coreInitPFH);

@@ -16,7 +16,9 @@
  * Public: No
  */
 
-BEGIN_COUNTER(setRowText);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    BEGIN_COUNTER(setRowText);
+#endif
 
 TRACE_1("setRowText", _this);
 private _display = uiNamespace getVariable QGVAR(currentDisplay);
@@ -71,4 +73,6 @@ for "_i" from _start to ((_rowCount -1) min (_start+_length-1)) do {
     _ctrl ctrlCommit 0;
 };
 
-END_COUNTER(setRowText);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    END_COUNTER(setRowText);
+#endif

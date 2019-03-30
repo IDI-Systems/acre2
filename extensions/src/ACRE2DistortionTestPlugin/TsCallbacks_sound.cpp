@@ -38,16 +38,16 @@ short maxSampleAft = 0;
 CFilterRadio g_RadioFilter;
 
 void ts3plugin_onEditPlaybackVoiceDataEvent(uint64 server, anyID id, short* samples, int sampleCount, int channels) {
-    //CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent((ACRE_ID)id, samples, sampleCount, channels);
+    //CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent((acre_id_t)id, samples, sampleCount, channels);
     //maxSample = std::max(maxSample, samples[0]);
     //LOG("MAX BEFORE: %d", maxSample);
     LOG("ENTER: ts3plugin_onEditPlaybackVoiceDataEvent: sampleCount=%d,channels=%d", sampleCount, channels);
-    g_RadioFilter.process(samples, sampleCount, channels, 0.9, false);
+    g_RadioFilter.process(samples, sampleCount, channels, 0.9f, false);
 
 }
 
 void ts3plugin_onEditPostProcessVoiceDataEvent(uint64 server, anyID id, short* samples, int sampleCount, int channels, const unsigned int* channelSpeakerArray, unsigned int* channelFillMask) {
-    //CEngine::getInstance()->getSoundEngine()->onEditPostProcessVoiceDataEvent((ACRE_ID)id, samples, sampleCount, channels, channelSpeakerArray, channelFillMask);
+    //CEngine::getInstance()->getSoundEngine()->onEditPostProcessVoiceDataEvent((acre_id_t)id, samples, sampleCount, channels, channelSpeakerArray, channelFillMask);
     //memset(samples, 0x00, (sampleCount*channels)*sizeof(short) );
     //*channelFillMask = (1<<channels)-1;
 }

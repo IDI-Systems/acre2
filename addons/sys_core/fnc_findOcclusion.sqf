@@ -154,7 +154,7 @@ if !(_intersectObjects isEqualTo []) then { // do occlusion
             //_cc = _cc + 1;
             if (lineIntersects [_testPos, _startPos, _vehicleUnit, _vehiclePlayer]) exitWith { };
             //_cc = _cc + 1;
-            if (!(lineIntersects [_testPos, _endPos, _vehicleUnit, _vehiclePlayer])) exitWith {
+            if !(lineIntersects [_testPos, _endPos, _vehicleUnit, _vehiclePlayer]) exitWith {
                 _distance = (_testPos distance _startPos)+(_testPos distance _endPos);
                 if ((_distance*2) < _resultDis) then {
                     _foundPos = _testPos;

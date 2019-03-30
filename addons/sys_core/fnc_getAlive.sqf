@@ -19,7 +19,7 @@ params ["_unit"];
 
 private _ret = 0;
 if (_unit isEqualTo acre_player) then {
-    if (ACRE_IS_SPECTATOR || alive acre_player) then {
+    if (ACRE_IS_SPECTATOR || {alive acre_player}) then {
         _ret = 1;
     };
 } else {
