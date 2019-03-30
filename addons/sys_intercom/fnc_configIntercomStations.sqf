@@ -52,10 +52,8 @@ private _intercomStations = [];
         // reduce network traffic.
         [_intercomStatus, "unit", objNull] call CBA_fnc_hashSet;
 
-        [_intercomStatus, INTERCOM_STATIONSTATUS_VOLUME, INTERCOM_DEFAULT_VOLUME] call CBA_fnc_hashSet;
-
         private _allowed = (_role in _x || {_role in (_limitedPositions select _forEachIndex)}) && {!(_role in (_forbiddenPositions select _forEachIndex))};
-        [_intercomStatus, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS,_allowed] call CBA_fnc_hashSet;
+        [_intercomStatus, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _allowed] call CBA_fnc_hashSet;
 
         if ((_initialConfiguration select _forEachIndex) == 1) then {
             [_intercomStatus, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX] call CBA_fnc_hashSet;
@@ -63,11 +61,8 @@ private _intercomStations = [];
             [_intercomStatus, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_DISCONNECTED] call CBA_fnc_hashSet;
         };
 
-        _allowed = _role in (_limitedPositions select _forEachIndex);
+        private _pttActivation = _role in (_limitedPositions select _forEachIndex);
         [_intercomStatus, INTERCOM_STATIONSTATUS_LIMITED, _allowed] call CBA_fnc_hashSet;
-
-        // Limited positions are by default configured without voice activation
-        [_intercomStatus, INTERCOM_STATIONSTATUS_VOICEACTIVATION, !_allowed] call CBA_fnc_hashSet;
 
         // Handle turned out
         _allowed = "turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)};
@@ -79,6 +74,10 @@ private _intercomStations = [];
         // Configure master station
         _allowed = _role in (_masterStation select _forEachIndex);
         [_intercomStatus, INTERCOM_STATIONSTATUS_MASTERSTATION, _allowed] call CBA_fnc_hashSet;
+
+        private _monitorRack = 0;
+        private _workRack = 0;
+        _intercomStatus = [_intercomStatus, [INTERCOM_DEFAULT_VOLUME, _monitorRack, _workRack, _pttActivation], _vehicle] call FUNC(vic3ffcsConfig);
 
         _seatConfiguration set [_forEachIndex, _intercomStatus];
     } forEach _allowedPositions;

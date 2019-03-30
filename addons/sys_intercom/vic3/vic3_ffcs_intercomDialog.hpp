@@ -33,7 +33,7 @@ class VIC3FFCS_IntercomDialog {
     };*/
 
     class controls {
-        BEGIN_CONTROL(Vic3ffcsBackground, VIC3FFCS_RscPicture,300)
+        BEGIN_CONTROL(Vic3ffcsBackground, VIC3FFCS_RscPicture, 100)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
@@ -41,45 +41,77 @@ class VIC3FFCS_IntercomDialog {
             text = QPATHTOF(vic3\data\ui\vic3_ffcs.paa);
         END_CONTROL
 
-        BEGIN_CONTROL(IntercomKnobButton, VIC3FFCS_RscButton, 301)
-            x=((((0.466-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
-            y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
-            w=(1.35/0.8)*0.050*SafeZoneH;
+        BEGIN_CONTROL(IntercomKnob, VIC3FFCS_RscPicture, 101)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QPATHTOF(vic3\data\knobs\intercom\intercom_0.paa);
+        END_CONTROL
+
+        BEGIN_CONTROL(MonitorKnob, VIC3FFCS_RscPicture, 102)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QPATHTOF(vic3\data\knobs\monitor\monitor_0.paa);
+        END_CONTROL
+
+        BEGIN_CONTROL(VolumeKnob, VIC3FFCS_RscPicture, 103)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QPATHTOF(vic3\data\knobs\volume\volume_10.paa);
+        END_CONTROL
+
+        BEGIN_CONTROL(WorkKnob, VIC3FFCS_RscPicture, 104)
+            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
+            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            w=NEW_SCALE * SafeZoneH;
+            h=NEW_SCALE * SafeZoneH;
+            text = QPATHTOF(vic3\data\knobs\work\work_0.paa);
+        END_CONTROL
+
+        // Do the buttons last so they come on top.
+        BEGIN_CONTROL(IntercomKnobButton, VIC3FFCS_RscButton, 201)
+            x=((((0.466-0.44)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
+            y=((((0.595-0.515)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.15/0.8)*0.050*SafeZoneH;
             h=(1.15/0.8)*0.050*SafeZoneH;
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnIntercomKnobPress));
             toolTip = QUOTE(Change intercom activation);
         END_CONTROL
 
-            BEGIN_CONTROL(MonitorKnobButton, VIC3FFCS_RscButton, 302)
-            x=((((0.466-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
-            y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
-            w=(1.35/0.8)*0.050*SafeZoneH;
+        BEGIN_CONTROL(MonitorKnobButton, VIC3FFCS_RscButton, 202)
+            x=((((0.466-0.44)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
+            y=((((0.595-0.65)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.15/0.8)*0.050*SafeZoneH;
             h=(1.15/0.8)*0.050*SafeZoneH;
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnMonitorKnobPress));
-            toolTip = QUOTE(Change monitor radio);
+            toolTip = QUOTE(Change monitored radio);
         END_CONTROL
 
-        BEGIN_CONTROL(VolumeKnobButton, VIC3FFCS_RscButton, 303)
-            x=((((0.466-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
-            y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
-            w=(1.35/0.8)*0.050*SafeZoneH;
+        BEGIN_CONTROL(VolumeKnobButton, VIC3FFCS_RscButton, 203)
+            x=((((0.466-0.587)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
+            y=((((0.595-0.515)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.15/0.8)*0.050*SafeZoneH * 4/3;
             h=(1.15/0.8)*0.050*SafeZoneH;
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnVolumeKnobPress));
             toolTip = QUOTE(Change volume);
         END_CONTROL
 
-        BEGIN_CONTROL(WorkKnobButton, VIC3FFCS_RscButton, 304)
-            x=((((0.466-0.487)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
-            y=((((0.595-0.5)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
-            w=(1.35/0.8)*0.050*SafeZoneH;
+        BEGIN_CONTROL(WorkKnobButton, VIC3FFCS_RscButton, 204)
+            x=((((0.466-0.587)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY + (1/24 * safeZoneH);
+            y=((((0.595-0.65)*(1.15/0.8))+0.5) * SafeZoneH) + SafeZoneY;
+            w=(1.15/0.8)*0.050*SafeZoneH * 4/3;
             h=(1.15/0.8)*0.050*SafeZoneH;
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnWorkKnobPress));
-            toolTip = QUOTE(Select transmit radio/intercom);
+            toolTip = QUOTE(Select transmitting radio);
         END_CONTROL
-
     };
 };

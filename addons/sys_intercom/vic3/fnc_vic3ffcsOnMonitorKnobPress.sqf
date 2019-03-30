@@ -25,12 +25,12 @@ if (_key == 0) then {
 };
 
 private _vehicle = vehicle acre_player;
-private _monitorPos = [_vehicle, acre_player, GVAR(activeIntercom), "monitorKnob"] call FUNC(getStationConfiguration);
+private _monitorPos = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_MONITORKNOB] call FUNC(getStationConfiguration);
 private _newMonitorPos = ((_monitorPos + _currentDirection) max 0) min VIC3FFCS_MONITOR_KNOB_POSITIONS;
 
 if (_newMonitorPos != _monitorPos) then {
     private _wiredRacks = [_vehicle, acre_player, GVAR(activeIntercom), "wiredRacks"] call FUNC(getStationConfiguration);
-    private _workPos = [_vehicle, acre_player, GVAR(activeIntercom), "workKnob"] call FUNC(getStationConfiguration);
+    private _workPos = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_WORKKNOB] call FUNC(getStationConfiguration);
     private _rackCount = count _wiredRacks;
 
     // Set the previous rack to no monitor unless it is selected in the work knob
@@ -88,7 +88,7 @@ if (_newMonitorPos != _monitorPos) then {
         };
     };
 
-    [_vehicle, acre_player, GVAR(activeIntercom), "monitorKnob", _newMonitorPos] call FUNC(setStationConfiguration);
+    [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_MONITORKNOB, _newMonitorPos] call FUNC(setStationConfiguration);
     [MAIN_DISPLAY, _vehicle] call FUNC(vic3ffcsRender);
 };
 

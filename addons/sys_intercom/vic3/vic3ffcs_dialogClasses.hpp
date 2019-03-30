@@ -8,19 +8,6 @@ class VIC3FFCS_RscBackground {
     sizeEx = 0.04;
 };
 
-// Text
-class VIC3FFCS_RscText {
-    idc = -1;
-    type = CT_STATIC;
-    style = ST_LEFT + ST_KEEP_ASPECT_RATIO;
-    font = EtelkaMonospaceProBold;
-    colorText[] = {1,1,1,1};
-    colorBackground[] = {0, 0, 0, 0};
-    sizeEx = 0.024;
-    w = 0.2;
-    h = 0.03;
-};
-
 class VIC3FFCS_RscButton {
     type = CT_BUTTON;
     idc = -1;

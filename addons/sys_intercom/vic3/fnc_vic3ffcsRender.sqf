@@ -16,12 +16,15 @@
  */
 
 #define INTERCOM_CTRL(var1) (_display displayCtrl var1)
-params ["_display", "_vehicle"];
-systemChat format ["Render: %1", _display];
-private _intercomKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), "intercomKnob"] call FUNC(getStationConfiguration);
-private _monitorKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), "monitorKnob"] call FUNC(getStationConfiguration);
-private _volumeKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), "volumeKnob"] call FUNC(getStationConfiguration);
-private _workKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), "workKnob"] call FUNC(getStationConfiguration);
+params ["_display", ["_vehicle", objNull]];
+
+if (isNull _vehicle) then {_vehicle = vehicle acre_player};
+
+systemChat format ["Active %1", GVAR(activeIntercom)];
+private _intercomKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_INTERCOMKNOB] call FUNC(getStationConfiguration);
+private _monitorKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_MONITORKNOB] call FUNC(getStationConfiguration);
+private _volumeKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_VOLUMEKNOB] call FUNC(getStationConfiguration);
+private _workKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_WORKKNOB] call FUNC(getStationConfiguration);
 
 // Intercom
 private _intercomImages = [
@@ -69,9 +72,9 @@ private _workImages = [
     QPATHTOF(vic3\data\knobs\work\work_6.paa)
 ];
 
-INTERCOM_CTRL(201) ctrlSetText (_intercomImages select 2);//_intercomKnobPosition);
-INTERCOM_CTRL(202) ctrlSetText (_monitor select 3);//_monitorKnobPosition);
-INTERCOM_CTRL(203) ctrlSetText (_volumeImages select 7);//_volumeKnobPosition);
-INTERCOM_CTRL(204) ctrlSetText (_workImages select 1);//_workKnobPosition);
+INTERCOM_CTRL(101) ctrlSetText (_intercomImages select _intercomKnobPosition);
+INTERCOM_CTRL(102) ctrlSetText (_monitor select _monitorKnobPosition);
+INTERCOM_CTRL(103) ctrlSetText (_volumeImages select _volumeKnobPosition);
+INTERCOM_CTRL(104) ctrlSetText (_workImages select _workKnobPosition);
 
 true

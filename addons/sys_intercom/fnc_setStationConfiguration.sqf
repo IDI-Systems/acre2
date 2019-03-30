@@ -40,7 +40,6 @@ if (_oldValue isEqualTo _value) exitWith {
 
 private _changed = false;
 switch (_intercomFunctionality) do {
-    case INTERCOM_STATIONSTATUS_HASINTERCOMACCESS: { _changed = true };
     case INTERCOM_STATIONSTATUS_CONNECTION: {
         if !([_intercomStatus, INTERCOM_STATIONSTATUS_FORCEDCONNECTION] call CBA_fnc_hashGet) then {
             if ([_intercomStatus, INTERCOM_STATIONSTATUS_LIMITED] call CBA_fnc_hashGet) then {
@@ -60,11 +59,9 @@ switch (_intercomFunctionality) do {
             ["Intercom status is being forced. Cannot change configuration.", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
         };
     };
-    case INTERCOM_STATIONSTATUS_VOLUME: { _changed = true };
-    case INTERCOM_STATIONSTATUS_LIMITED: { _changed = true };
-    case INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED: { _changed = true };
-    case INTERCOM_STATIONSTATUS_FORCEDCONNECTION: { _changed = true };
-    case INTERCOM_STATIONSTATUS_VOICEACTIVATION: { _changed = true };
+    default {
+        _changed = true;
+    };
 };
 
 if (_changed) then {
