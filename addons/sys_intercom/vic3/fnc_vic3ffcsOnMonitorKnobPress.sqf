@@ -89,6 +89,6 @@ if (_newMonitorPos != _monitorPos) then {
     };
 
     [_vehicle, acre_player, GVAR(activeIntercom), "monitorKnob", _newMonitorPos] call FUNC(setStationConfiguration);
-    [MAIN_DISPLAY] call FUNC(vic3ffcsRender);
+    [MAIN_DISPLAY, _vehicle] call FUNC(vic3ffcsRender);
 };
 

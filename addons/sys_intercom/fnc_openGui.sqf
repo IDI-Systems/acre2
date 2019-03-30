@@ -18,7 +18,6 @@
 
 params [["_intercomNetwork", -1], ["_openMasterStation", false]];
 
-systemChat format ["opening"];
 private _vehicle = vehicle acre_player;
 if (_vehicle isEqualTo acre_player) exitWith {false};
 
