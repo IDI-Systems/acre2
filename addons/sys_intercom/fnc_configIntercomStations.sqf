@@ -51,7 +51,6 @@ private _intercomStations = [];
         // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to
         // reduce network traffic.
         [_intercomStatus, "unit", objNull] call CBA_fnc_hashSet;
-
         private _allowed = (_role in _x || {_role in (_limitedPositions select _forEachIndex)}) && {!(_role in (_forbiddenPositions select _forEachIndex))};
         [_intercomStatus, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _allowed] call CBA_fnc_hashSet;
 
@@ -61,8 +60,8 @@ private _intercomStations = [];
             [_intercomStatus, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_DISCONNECTED] call CBA_fnc_hashSet;
         };
 
-        private _pttActivation = _role in (_limitedPositions select _forEachIndex);
-        [_intercomStatus, INTERCOM_STATIONSTATUS_LIMITED, _allowed] call CBA_fnc_hashSet;
+        private _inLimited = _role in (_limitedPositions select _forEachIndex);
+        [_intercomStatus, INTERCOM_STATIONSTATUS_LIMITED, _inLimited] call CBA_fnc_hashSet;
 
         // Handle turned out
         _allowed = "turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)};
@@ -77,7 +76,7 @@ private _intercomStations = [];
 
         private _monitorRack = 0;
         private _workRack = 0;
-        _intercomStatus = [_intercomStatus, [INTERCOM_DEFAULT_VOLUME, _monitorRack, _workRack, _pttActivation], _vehicle] call FUNC(vic3ffcsConfig);
+        _intercomStatus = [_intercomStatus, [INTERCOM_DEFAULT_VOLUME, _monitorRack, _workRack, !_inLimited], _vehicle] call FUNC(vic3ffcsConfig);
 
         _seatConfiguration set [_forEachIndex, _intercomStatus];
     } forEach _allowedPositions;

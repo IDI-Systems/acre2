@@ -44,7 +44,7 @@ private _elements = count _intercomNames;
             if (_isBroadcasting && {_broadcastingUnit == acre_player}) then {
                 _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(B) </t>", _color];
             } else {
-                if (_isVoiceActive) then {
+                if (_isVoiceActive) then { // PTT activation
                     _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(T) </t>", _color];
                 } else {
                     if (_unit getVariable [QGVAR(intercomPTT), false]) then {
@@ -60,7 +60,7 @@ private _elements = count _intercomNames;
             if (_isBroadcasting && {_broadcastingUnit == acre_player}) then {
                 _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/B) </t>", _color];
             } else {
-                if (_isVoiceActive) then {
+                if (_isVoiceActive) then { // PTT activation
                     _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/T) </t>", _color];
                 } else {
                     if (_unit getVariable [QGVAR(intercomPTT), false]) then {

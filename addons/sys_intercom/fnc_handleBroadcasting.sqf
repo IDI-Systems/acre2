@@ -25,8 +25,7 @@ GVAR(broadcastKey) = _isBroadcasting;
 
 private _changes = false;
 {
-    private _canBroadcast = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_MASTERSTATION] call FUNC(getStationConfiguration);
-    if (_canBroadcast && {(_intercomNetwork == _forEachIndex || {_intercomNetwork == ALL_INTERCOMS})}) then {
+    if ((_intercomNetwork == _forEachIndex || {_intercomNetwork == ALL_INTERCOMS})) then {
         if (_isBroadcasting) then {
             _broadcastConfig set [_forEachIndex, [_isBroadcasting, _unit]];
         } else {
