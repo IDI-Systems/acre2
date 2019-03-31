@@ -15,7 +15,6 @@
  * Public: No
  */
 
-systemChat format ["Closing"];
 // The case of a player exiting a vehicle with UI opened is handled in the vehicle CBA EH
 if (vehicle acre_player isEqualTo acre_player) exitWith {};
 

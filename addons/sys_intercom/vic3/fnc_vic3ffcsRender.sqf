@@ -20,7 +20,6 @@ params ["_display", ["_vehicle", objNull]];
 
 if (isNull _vehicle) then {_vehicle = vehicle acre_player};
 
-systemChat format ["Active %1", GVAR(activeIntercom)];
 private _intercomKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_INTERCOMKNOB] call FUNC(getStationConfiguration);
 private _monitorKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_MONITORKNOB] call FUNC(getStationConfiguration);
 private _volumeKnobPosition = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_VOLUMEKNOB] call FUNC(getStationConfiguration);

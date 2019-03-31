@@ -28,29 +28,30 @@ private _vehicle = vehicle acre_player;
 private _monitorPos = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_MONITORKNOB] call FUNC(getStationConfiguration);
 private _newMonitorPos = ((_monitorPos + _currentDirection) max 0) min VIC3FFCS_MONITOR_KNOB_POSITIONS;
 
-if (_newMonitorPos != _monitorPos) then {
-    private _wiredRacks = [_vehicle, acre_player, GVAR(activeIntercom), "wiredRacks"] call FUNC(getStationConfiguration);
-    private _workPos = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_WORKKNOB] call FUNC(getStationConfiguration);
-    private _rackCount = count _wiredRacks;
+if (_newMonitorPos == _monitorPos) exitWith {};
 
-    // Set the previous rack to no monitor unless it is selected in the work knob
-    if (_monitorPos == VIC3FFCS_MONITOR_KNOB_POSITIONS) then {
-        {
-            if (_forEachIndex != (_workPos - 1) && {_x select 2}) then {
-                private _rackId = _x select 0;
-                private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
+private _wiredRacks = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_WIREDRACKS] call FUNC(getStationConfiguration);
+private _workPos = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_WORKKNOB] call FUNC(getStationConfiguration);
 
-                _x set [1, RACK_NO_MONITOR];
+// Set the previous rack to no monitor unless it is selected in the work knob
+if (_monitorPos == VIC3FFCS_MONITOR_KNOB_POSITIONS) then {
+    {
+        private _rackId = _x select 0;
+        if ((_rackId != "") && {(_forEachIndex + 1) != _workPos} && {_x select 2}) then {
+            private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 
-                if (_radioId != "") then {
-                    [_vehicle, acre_player, _radioId] call EFUNC(sys_rack,stopUsingMountedRadio);
-                };
+            _x set [1, RACK_NO_MONITOR];
+
+            if (_radioId != "") then {
+                [_vehicle, acre_player, _radioId] call EFUNC(sys_rack,stopUsingMountedRadio);
             };
-        } forEach _wiredRacks;
-    } else {
-        private _selectedRack = _wiredRacks select _monitorPos; // RackID, Functionality, Has Access
-        if ((_monitorPos < _rackCount) && {(_workPos - 1) != _monitorPos} && {_selectedRack select 2}) then {
-            private _rackId = _selectedRack select 0;
+        };
+    } forEach _wiredRacks;
+} else {
+    if (_monitorPos != 0) then {
+        private _selectedRack = _wiredRacks select (_monitorPos - 1); // RackID, Functionality, Has Access
+        private _rackId = _selectedRack select 0;
+        if (_rackId != "" && {_workPos != _monitorPos} && {_selectedRack select 2}) then {
             private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 
             _selectedRack set [1, RACK_NO_MONITOR];
@@ -60,35 +61,36 @@ if (_newMonitorPos != _monitorPos) then {
             };
         };
     };
+};
 
-    if (_newMonitorPos == VIC3FFCS_MONITOR_KNOB_POSITIONS) then {
-        {
-            if (_x select 2) then {
-                private _rackId = _x select 0;
-                private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
-
-                _x set [1, RACK_RX_ONLY];
-
-                if (_radioId != "") then {
-                    [_vehicle, acre_player, _radioId] call EFUNC(sys_rack,startUsingMountedRadio);
-                };
-            };
-        } forEach _wiredRacks;
-    } else {
-        private _selectedRack = _wiredRacks select _newMonitorPos;  // RackID, Functionality, Has Access
-        if ((_newMonitorPos < _rackCount) && {_selectedRack select 2}) then {
-            private _rackId = _selectedRack select 0;
+if (_newMonitorPos == VIC3FFCS_MONITOR_KNOB_POSITIONS) then {
+    {
+        private _rackId = _x select 0;
+        if (_rackId != "" && {_x select 2} && ((_workPos != _forEachIndex + 1))) then {
             private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 
-            _selectedRack set [1, RACK_RX_ONLY];
+            _x set [1, RACK_RX_ONLY];
 
-            if (((_newMonitorPos - 1) != _workPos) && {_radioId != ""}) then {
+            if (_radioId != "") then {
+                [_vehicle, acre_player, _radioId] call EFUNC(sys_rack,startUsingMountedRadio);
+            };
+        };
+    } forEach _wiredRacks;
+} else {
+    if (_newMonitorPos != 0) then {
+        private _selectedRack = _wiredRacks select (_newMonitorPos - 1);  // RackID, Functionality, Has Access
+        private _rackId = _selectedRack select 0;
+        if (_rackId != "" && {_selectedRack select 2}) then {
+            _rackId = _selectedRack select 0;
+            private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
+
+            if ((_newMonitorPos != _workPos) && {_radioId != ""}) then {
+                _selectedRack set [1, RACK_RX_ONLY];
                 [_vehicle, acre_player, _radioId] call EFUNC(sys_rack,startUsingMountedRadio);
             };
         };
     };
-
-    [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_MONITORKNOB, _newMonitorPos] call FUNC(setStationConfiguration);
-    [MAIN_DISPLAY, _vehicle] call FUNC(vic3ffcsRender);
 };
 
+[_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_MONITORKNOB, _newMonitorPos] call FUNC(setStationConfiguration);
+[MAIN_DISPLAY, _vehicle] call FUNC(vic3ffcsRender);

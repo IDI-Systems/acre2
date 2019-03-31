@@ -24,7 +24,7 @@ if (_isRadioAccessible) then {
     ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique _radioId;
 };
 
-if (_isRadioHearable && !_isRadioAccessible) then {
+if (_isRadioHearable && {!_isRadioAccessible}) then {
     ACRE_HEARABLE_RACK_RADIOS pushBackUnique _radioId;
 };
 

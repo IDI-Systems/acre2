@@ -29,7 +29,6 @@ private _currentVolume = [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_
 private _newVolume = ((_currentVolume + _currentDirection) max 0) min 1;
 
 if (_newVolume != _currentVolume) then {
-    systemChat format ["Current volume %1, New volume %2", _currentVolume, _newVolume];
     [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_VOLUME, _newVolume] call FUNC(setStationConfiguration);
     [_vehicle, acre_player, GVAR(activeIntercom), INTERCOM_STATIONSTATUS_VOLUMEKNOB, _newVolume*10] call FUNC(setStationConfiguration);
     [MAIN_DISPLAY, _vehicle] call FUNC(vic3ffcsRender);

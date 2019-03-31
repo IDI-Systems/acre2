@@ -65,4 +65,11 @@ if (_voiceActivation) then {
 // Work
 [_intercomStatus, INTERCOM_STATIONSTATUS_WORKKNOB, _workRack] call CBA_fnc_hashSet;
 
+// Racks
+private _racks = [];
+for "_i" from 0 to VIC3FFCS_WORK_KNOB_POSITIONS do {
+    _racks pushBack ["", RACK_NO_MONITOR, false];
+};
+[_intercomStatus, INTERCOM_STATIONSTATUS_WIREDRACKS, _racks] call CBA_fnc_hashSet;
+
 _intercomStatus

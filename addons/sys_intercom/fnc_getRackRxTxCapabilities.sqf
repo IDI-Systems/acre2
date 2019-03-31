@@ -28,9 +28,9 @@ if (_rackId isEqualTo "") then {
 private _functionality = RACK_NO_MONITOR;
 
 {
-    private _wiredRacks = [_vehicle, _unit, _forEachIndex, "wiredRacks"] call FUNC(getStationConfiguration);
+    private _wiredRacks = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_WIREDRACKS] call FUNC(getStationConfiguration);
     {
-        params ["_rack", "_func", "_hasAccess"];
+        _x params ["_rack", "_func", "_hasAccess"];
 
         // Only increase the functionality if it is greater (RACK_NO_MONITOR < RACK_RX_ONLY < RACK_TX_ONLY < RACK_RX_AND_TX)
         if (_rack == _rackId) exitWith {

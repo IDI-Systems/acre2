@@ -18,7 +18,6 @@
 
 params ["", "_key"];
 
-systemChat format ["Button pressed"];
 private _currentDirection = -1;
 if (_key == 0) then {
     // Left click
