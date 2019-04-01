@@ -71,7 +71,6 @@ private _processedArray = [];
                 } forEach _copilot;
             };
             case "inside": {
-                private _role = _x;
                 private _fullCrew = fullCrew [_vehicle, "", true];
                 {
                     private _role = toLower (_x select 1);
@@ -119,11 +118,11 @@ private _processedArray = [];
             if (_positionType == "ffv") then {_positionType = "turret";};
             for "_i" from 1 to (count _x - 1) do {
                 if (_positionType isEqualTo "turnedout") then {
-                    if ((_x select i) isEqualType []) then {
+                    if ((_x select _i) isEqualType []) then {
                         _processedArray pushBackUnique (format ["%1_turret_%2", _positionType, _x select _i]);
                     };
 
-                    if ((_x select i) isEqualType 0) then {
+                    if ((_x select _i) isEqualType 0) then {
                         _processedArray pushBackUnique (format ["%1_cargo_%2", _positionType, _x select _i]);
                     };
                 } else {

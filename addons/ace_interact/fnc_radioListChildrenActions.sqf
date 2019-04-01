@@ -43,6 +43,13 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
 
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
     _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
+
+    // Display radio keys in front of those which are bound
+    private _radiokey = (_pttAssign find _x) + 1;
+    if (_radiokey <= 3) then {
+        _displayName = format ["%1: %2", _radiokey, _displayName, _currentChannel];
+    };
+
     private _picture = getText (_item >> "picture");
     private _isActive = _x isEqualTo _currentRadio;
 
@@ -65,6 +72,14 @@ if (count _radioList > 0) then {
     if (EGVAR(sys_core,lowered) == 1) then { _text = localize LSTRING(raiseHeadset); };
     private _action = [QGVAR(toggleHeadset), _text, "", {[] call EFUNC(sys_core,toggleHeadset)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
+
+    if (!EGVAR(sys_core,automaticAntennaDirection)) then {
+        _text = localize LSTRING(bendAntenna);
+        private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
+        if (_dir) then { _text = localize LSTRING(straightenAntenna);};
+        _action = [QGVAR(antennaDirUp), _text, "", {[] call EFUNC(sys_components,toggleAntennaDir)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    };
 };
 
 _actions

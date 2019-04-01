@@ -16,6 +16,10 @@
  */
 
 
-params ["_languageKey"];
+params [
+    ["_languageKey", "", [""]]
+];
+
+if (_languageKey isEqualTo "") exitWith {false};
 
 [_languageKey] call EFUNC(sys_core,getLanguageId);

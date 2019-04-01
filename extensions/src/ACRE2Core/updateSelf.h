@@ -33,7 +33,7 @@ RPC_FUNCTION(updateSelf) {
     CEngine::getInstance()->getSelf()->setCurrentLanguageId(vMessage->getParameterAsInt(6));
 
     UNLOCK(CEngine::getInstance()->getSelf());
-    return ACRE_OK;
+    return acre_result_ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

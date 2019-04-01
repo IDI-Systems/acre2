@@ -7,7 +7,7 @@
  * None
  *
  * Return Value:
- * AI enabled <BOOLEAN>
+ * AI enabled <NUMBER>
  *
  * Example:
  * [] call acre_api_fnc_getRevealToAI;

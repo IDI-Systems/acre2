@@ -18,7 +18,9 @@
  * Public: Yes
  */
 
-params ["_var"];
+params [
+    ["_var", [], [[]]]
+];
 
 private _invalid = false;
 if (!(_var isEqualType [])) exitWith { false };

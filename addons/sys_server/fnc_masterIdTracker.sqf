@@ -40,7 +40,7 @@ if (!GVAR(doFullSearch)) then {
             if (_object isKindOf "Man") then {
                 _items = [_object] call EFUNC(sys_core,getGear);
             } else {
-                _items = (itemCargo _object) select {(_x select [0, 4]) == "ACRE" || {_x == "ItemRadio"} || {_x == "ItemRadioAcreFlagged"}};
+                _items = ((getItemCargo _object) select 0) select {(_x select [0, 4]) == "ACRE" || {_x == "ItemRadio"} || {_x == "ItemRadioAcreFlagged"}};
                 {
                     _items pushBack _x; // Add rack unique ID
                     private _mountedRadio = [_x] call EFUNC(sys_rack,getMountedRadio);
@@ -89,7 +89,7 @@ if (GVAR(doFullSearch)) then {
             if (_object isKindOf "Man") then {
                 _items = [_object] call EFUNC(sys_core,getGear);
             } else {
-                _items = (itemCargo _object) select {(_x select [0, 4]) == "ACRE"}; /* || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged" // Only interested in unique IDs*/
+                _items = ((getItemCargo _object) select 0) select {(_x select [0, 4]) == "ACRE"}; /* || _x == "ItemRadio" || _x == "ItemRadioAcreFlagged" // Only interested in unique IDs*/
             };
 
             {

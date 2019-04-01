@@ -18,7 +18,7 @@ public:
     // create new message to send constructor
     CTextMessage(char *data, size_t length);
     ~CTextMessage(void);
-    ACRE_RESULT parse(char *data, size_t len);
+    acre_result_t parse(char *data, size_t len);
 
     char *getProcedureName(void);
     BOOL isValid();
@@ -34,9 +34,9 @@ public:
     unsigned char *getData() { 
         return ((unsigned char *)this->m_DataPtr); 
     }
-    ACRE_RESULT setData(unsigned char *data) {
+    acre_result_t setData(unsigned char *data) {
         this->parse((char *)data, strlen((char*)data));
-        return ACRE_OK;
+        return acre_result_ok;
     }
 
     unsigned int getLength() {

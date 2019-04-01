@@ -16,7 +16,10 @@
  * Public: Yes
  */
 
-params ["_baseClass","_presetName"];
+params [
+    ["_baseClass", "", [""]],
+    ["_presetName", "", [""]]
+];
 
 [_baseClass, _presetName] call EFUNC(sys_data,assignRadioPreset);
 

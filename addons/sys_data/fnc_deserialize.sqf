@@ -26,4 +26,5 @@ if (IS_SERIALIZEDHASH(_this)) then {
         _ret = _this;
     };
 };
-_ret;
+
+_ret

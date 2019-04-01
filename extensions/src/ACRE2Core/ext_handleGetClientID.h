@@ -19,7 +19,7 @@ RPC_FUNCTION(ext_handleGetClientID) {
             vMessage->getParameter(1)
         )
     );
-    return ACRE_OK;
+    return acre_result_ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

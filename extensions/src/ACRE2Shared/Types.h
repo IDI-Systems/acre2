@@ -1,65 +1,66 @@
 #pragma once
 
+#include <cstdint>
+
 class CPlayer;
 class IServer;
 class IMessage;
 class IRpcFunction;
 class IServer;
-//
-// Macro type definitions
-//
 
+/*
+ * Basic type definitions
+ */
+typedef float float32_t;
+typedef double float64_t;
 
-#define ACRE_OK 0
-#define ACRE_NOT_IMPL 0xFFFFFFF0
-#define ACRE_ERROR 0xFFFFFFFF
-#define ACRE_NOT_FOUND 0x00FF0000
-#define ACRE_INVALID_PLAYER 0x00000100
-#define ACRE_INVALID_PACKET 0xFF000000
-typedef unsigned int ACRE_RESULT;
+/*
+ * ACRE type definitions
+ */
 
-#define ACRE_STATE_RUNNING 1
-#define ACRE_STATE_INITIALIZING 2
-#define ACRE_STATE_STOPPING 3
-#define ACRE_STATE_STARTING 4
-#define ACRE_STATE_READY 5
-#define ACRE_STATE_STOPPED 0xFFFFFFFF
-typedef unsigned int ACRE_STATE;
+typedef uint32_t acre_id_t;
+typedef float32_t acre_volume_t;
 
-#define ACRE_SILENCE_OFF 0
-#define ACRE_SILENCE_ALWAYS 1
-#define ACRE_SILENCE_ALWAYS_ADMIN 2
-#define ACRE_SILENCE_INGAME 3
-#define ACRE_SILENCE_INGAME_ADMIN 4
-#define ACRE_SILENCE_OFF_STR "ACRE_SILENCE_OFF"
-#define ACRE_SILENCE_ALWAYS_STR "ACRE_SILENCE_ALWAYS"
-#define ACRE_SILENCE_ALWAYS_ADMIN_STR "ACRE_SILENCE_ALWAYS_ADMIN"
-#define ACRE_SILENCE_INGAME_STR "ACRE_SILENCE_INGAME"
-#define ACRE_SILENCE_INGAME_ADMIN_STR "ACRE_SILENCE_INGAME_ADMIN"
-typedef unsigned int ACRE_SILENCE;
+typedef enum {
+    acre_result_ok,
+    acre_result_invalidPlayer = 0x00000100,
+    acre_result_notFound = 0x00FF0000,
+    acre_result_invalidPacket = 0xFF000000,
+    acre_result_notImplemented = 0xFFFFFFF0,
+    acre_result_error = 0xFFFFFFFF
+} acre_result_t;
 
-typedef unsigned int ACRE_ID;
+typedef enum {
+    acre_state_running = 1,
+    acre_state_initializing,
+    acre_state_stopping,
+    acre_state_starting,
+    acre_state_ready,
+    acre_state_stopped = 0xFFFFFFFF
+} acre_state_t;
 
-typedef unsigned int ACRE_FREQUENCY;
-typedef unsigned int ACRE_POWER;
-typedef float ACRE_VOLUME;
+typedef enum {
+    acre_silence_off,
+    acre_silence_always,
+    acre_silence_alwaysAdmin,
+    acre_silence_ingame,
+    acre_silence_ingameAdmin
+} acre_silence_t;
 
-#define ACRE_SQUAWK_ON  0x00000001
-#define ACRE_SQUAWK_OFF 0x00000002
-typedef unsigned int ACRE_SQUAWK;
+typedef enum {
+    acre_speaking_direct,
+    acre_speaking_radio,
+    acre_speaking_unknown,
+    acre_speaking_intercom,
+    acre_speaking_spectate
+} acre_speaking_t;
 
-#define ACRE_SPEAKING_SPECTATE 0x00000004
-#define ACRE_SPEAKING_INTERCOM 0x00000003
-#define ACRE_SPEAKING_UNKNOWN 0x00000002
-#define ACRE_SPEAKING_RADIO 0x00000001
-#define ACRE_SPEAKING_DIRECT 0x00000000
-typedef unsigned int ACRE_SPEAKING_TYPE;
-
-#define ACRE_CURVE_MODEL_ORIGINAL 0
-#define ACRE_CURVE_MODEL_AMPLITUDE 1
-#define ACRE_CURVE_MODEL_SELECTABLE_A 2
-#define ACRE_CURVE_MODEL_SELECTABLE_B 3
-typedef unsigned int ACRE_CURVE_MODEL;
+typedef enum {
+    acre_curveModel_original,
+    acre_curveModel_amplitude,
+    acre_curveModel_selectableA,
+    acre_curveModel_selectableB
+} acre_curveModel_t;
 
 typedef struct ACRE_RPCDATA {
     IRpcFunction *function;
@@ -79,10 +80,10 @@ typedef BYTE ACRE_KEY;
 #include "ACRE_KEYBIND.h"
 #include "ACRE_ADDR.h"
 
-typedef ACRE_RESULT (*ACRE_RPCFUNCTION)(IServer *, IMessage *);
+typedef acre_result_t (*ACRE_RPCFUNCTION)(IServer *, IMessage *);
 
 
 
-typedef ACRE_RESULT (*ACRE_CALLBACK_TALKING)(CPlayer *);
+typedef acre_result_t (*ACRE_CALLBACK_TALKING)(CPlayer *);
 */
 

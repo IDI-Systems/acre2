@@ -21,11 +21,11 @@ RPC_FUNCTION(ext_remoteStopSpeaking) {
             this->getSelf()->getCurveScale()
         ) */
 
-    ACRE_ID id = (ACRE_ID)vMessage->getParameterAsInt(0);
+    acre_id_t id = (acre_id_t)vMessage->getParameterAsInt(0);
 
     CEngine::getInstance()->remoteStopSpeaking(id);
 
-    return ACRE_OK;
+    return acre_result_ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

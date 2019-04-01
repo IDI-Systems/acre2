@@ -67,10 +67,10 @@ if (_priority > ACRE_DATA_NETPRIORITY_NONE) then {
     {
         private _qEvent = _x;
         _found = false;
-        if ((_qEvent select 1) == _radioId && (_qEvent select 2) == _event) then {
+        if ((_qEvent select 1) == _radioId && {(_qEvent select 2) == _event}) then {
             _found = true;
         };
-        if (_hasUniqueDataKey == 1 && _found) then {
+        if (_hasUniqueDataKey == 1 && {_found}) then {
             if (((_qEvent select 3) select 0) == _data select 0) then {
                 _found = true;
             } else {

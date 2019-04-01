@@ -20,7 +20,7 @@ params ["_vehicle", "_rack"];
 
 private _type = typeOf _vehicle;
 
-private _intercoms = getArray (_rack >> "intercom");
+private _intercoms = (getArray (_rack >> "intercom")) apply {toLower _x};
 private _wiredIntercoms = [];
 
 // Set by default to have access to all intercom networks if none was specified
@@ -33,7 +33,7 @@ if (_intercoms isEqualTo [] || {"none" in _intercoms}) then {
         } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);
     } else {
         {
-            private _int = toLower _x;
+            private _int = _x;
             private _configuredIntercoms = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
             if (_int in (_configuredIntercoms select 0)) then {
                 _wiredIntercoms pushBack _x;

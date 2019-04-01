@@ -1,319 +1,309 @@
 #include "los_simple.hpp"
-#include "glm\geometric.hpp"
-#include "glm\gtx\vector_angle.hpp"
 
-acre::signal::model::los_simple::los_simple(map_p map_) : _map(map_)
-{
+#include <glm/geometric.hpp>
+#include <glm/gtx/vector_angle.hpp>
+
+#include <cmath>
+
+static const float32_t PI = 3.14159265f;
+static const float32_t magic = 10.0f;
+
+acre::signal::model::los_simple::los_simple(map_p map_) : SignalModel() {
+    _map = map_;
+}
+
+acre::signal::model::los_simple::~los_simple() {
 
 }
 
-acre::signal::model::los_simple::~los_simple()
-{
+void acre::signal::model::los_simple::process(result *const result, const glm::vec3 &tx_pos, const glm::vec3 &tx_dir, const glm::vec3 &rx_pos, const glm::vec3 &rx_dir, const antenna_p &tx_antenna, const antenna_p &rx_antenna, const float32_t frequency, const float32_t power, const float32_t scale, const bool omnidirectional) {
+    // Unused variables
+    (void) tx_dir;
+    (void) rx_dir;
+    (void) tx_antenna;
+    (void) rx_antenna;
+    (void) scale;
+    (void) omnidirectional;
 
-}
-
-void acre::signal::model::los_simple::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, float frequency_, float power_, float scale_, bool omnidirectional_)
-{
-    const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
+    const float32_t distance_3d = glm::distance(tx_pos, rx_pos);
 
     const float32_t rx_gain = 0.0f;//rx_antenna_.gain(rx_pos_, tx_pos_);
     const float32_t tx_gain = 0.0f;//tx_antenna_.gain(tx_pos_, rx_pos_);
-
-    const float32_t tx_power = 10.0f * (log10(power_ / 1000.0f)) + 30.0f;
-
-    const float32_t fspl = -27.55f + 20.0f * log10(frequency_) + 20.0f * log10(distance_3d);
+    const float32_t tx_power = 10.0f * (log10f(power / 1000.0f)) + 30.0f;
+    const float32_t fspl = -27.55f + 20.0f * log10f(frequency) + 20.0f * log10f(distance_3d);
 
     //_Lb = _Ptx + _transmitterGain - _Ltx - _Lfs - _Lm + _receiverGain - _Lrx;
     const float32_t tx_internal_loss = 3.0f;
     const float32_t rx_internal_loss = 3.0f;
 
-    const float32_t diffraction_loss = _diffraction_loss(tx_pos_, rx_pos_, frequency_);
+    const float32_t diffractionLoss = diffraction_loss(tx_pos, rx_pos, frequency);
 
-    const float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - diffraction_loss + rx_gain - rx_internal_loss;
-    result_->result_v = _dbm_to_v(budget, 50.0f);
-    result_->result_dbm = budget;
-    //printf("budget: %fdBm", budget);
-
+    const float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - diffractionLoss + rx_gain - rx_internal_loss;
+    result->result_v = dbm_to_v(budget, 50.0f);
+    result->result_dbm = budget;
 }
 
-float acre::signal::model::los_simple::_diffraction_loss(glm::vec3 pos1_, glm::vec3 pos2_, const float32_t frequency_)
-{
+float32_t acre::signal::model::los_simple::diffraction_loss(const glm::vec3 &pos1, const glm::vec3 &pos2, const float32_t frequency) {
     const float32_t sample_size = 7.5f;
     std::vector<float32_t> terrain_profile;
-    _map->terrain_profile(pos1_, pos2_, sample_size, terrain_profile);
+    _map->terrain_profile(pos1, pos2, sample_size, terrain_profile);
 
-    glm::vec3 dir = glm::normalize(pos2_ - pos1_)*sample_size;
+    const glm::vec3 dir = glm::normalize(pos2 - pos1)*sample_size;
 
-    const float32_t total_distance_2d = glm::distance(glm::vec2(pos1_.x, pos1_.y), glm::vec2(pos2_.x, pos2_.y));
+    const float32_t total_distance_2d = glm::distance(glm::vec2(pos1.x, pos1.y), glm::vec2(pos2.x, pos2.y));
     if (terrain_profile.size() < 4) {
         return 0.0f;
     }
     float32_t loss = 0.0f;
-    for (int32_t c = 0; c < (int)terrain_profile.size() - 1; ++c) {
-        const float32_t sample = terrain_profile[c];
-        const float32_t last_sample = terrain_profile[std::max(c - 1, 0)];
-        const float32_t next_sample = terrain_profile[std::min((int)terrain_profile.size(), c + 1)];
+    for (int32_t c = 0; c < (int32_t) terrain_profile.size() - 1; ++c) {
+        float32_t sample = terrain_profile[c];
+        float32_t last_sample = terrain_profile[std::max(c - 1, 0)];
+        float32_t next_sample = terrain_profile[std::min((int32_t)terrain_profile.size(), c + 1)];
         if (last_sample < sample && next_sample < sample) {
-            glm::vec3 peak_ray_pos = pos1_ + dir*(float32_t)c;
+            const glm::vec3 peak_ray_pos = pos1 + dir*(float)c;
 
-            const float32_t d1 = glm::distance(glm::vec2(pos1_.x, pos1_.y), glm::vec2(peak_ray_pos.x, peak_ray_pos.y));
+            const float32_t d1 = glm::distance(glm::vec2(pos1.x, pos1.y), glm::vec2(peak_ray_pos.x, peak_ray_pos.y));
             const float32_t d2 = total_distance_2d - d1;
-            loss += _itu(peak_ray_pos.z - sample, d1 / 1000.0f, d2 / 1000.0f, frequency_ / 1000.0f);
+            loss += itu(peak_ray_pos.z - sample, d1 / 1000.0f, d2 / 1000.0f, frequency / 1000.0f);
         }
     }
 
     return loss;
 }
 
-float acre::signal::model::los_simple::_itu(const float32_t h, const float32_t d1_km_, const float32_t d2_km_, const float32_t f_ghz_)
-{
-    const float32_t d = d1_km_ + d2_km_;
-
-    const float32_t F1 = 17.3f * sqrtf((d1_km_ * d2_km_) / (f_ghz_ * d));
-
+float32_t acre::signal::model::los_simple::itu(const float32_t h, const float32_t d1_km, float32_t d2_km, float32_t f_GHz) {
+    const float32_t d = d1_km + d2_km;
+    const float32_t F1 = 17.3f * sqrtf((d1_km * d2_km) / (f_GHz * d));
     const float32_t A = -20.0f * h / F1 + 10.0f;
 
-    if (A < 6.0f) return 0.0f;
+    if (A < 6.0f) {
+        return 0.0f;
+    }
 
     return A;
 }
 
-acre::signal::model::multipath::multipath(map_p map_) : los_simple(map_)
-{
-    uint32_t peak_grid_size = (uint32_t) std::ceil(_map->map_size()*_map->cell_size()/1000.0f);
-    _peak_buckets.resize((size_t) std::pow(peak_grid_size, 2u));
+acre::signal::model::multipath::multipath(map_p map_) : los_simple(map_) {
+    const uint32_t peak_grid_size = static_cast<uint32_t>(ceilf(_map->map_size()*_map->cell_size()/1000.0f));
+    _peak_buckets.resize((size_t)std::pow(peak_grid_size, 2u));
     for (auto peak : _map->peaks) {
-        const int32_t x = (int32_t) std::floor(peak.x / 1000);
-        const int32_t y = (int32_t) std::floor(peak.y / 1000);
+        int x = (int)floorf(peak.x / 1000);
+        int y = (int)floorf(peak.y / 1000);
         _peak_buckets[x * peak_grid_size + y].push_back(peak);
     }
 }
 
-acre::signal::model::multipath::~multipath()
-{
+acre::signal::model::multipath::~multipath() {
 
 }
-#define MAGIC 10.0f
-float acre::signal::model::multipath::_search_distance(const float32_t frequency_, const float32_t power_) {
-    auto cache = _distance_cache.find(std::floor(frequency_));
+
+float32_t acre::signal::model::multipath::search_distance(const float32_t frequency_Hz, const float32_t power_mW) {
+    auto cache = _distance_cache.find(floorf(frequency_Hz));
     if (cache != _distance_cache.end()) {
-        if (cache->second.find(std::floor(power_)) != cache->second.end()) {
-            return cache->second.find(std::floor(power_))->second;
+        if (cache->second.find(floorf(power_mW)) != cache->second.end()) {
+            return cache->second.find(floorf(power_mW))->second;
         }
     }
-    float32_t test_fspl = 0.0f;
+    float32_t test_fspl = 0;
     int c = 0;
-    float32_t search_distance = 0.0f;
-    float32_t tx_power = 10.0f * log10(power_ / 1000.0f) + 30.0f;
-    while (test_fspl < 80.0f + tx_power) {
-        search_distance = (c*250.0f);
-        test_fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(search_distance)) + (MAGIC*3.0f);
+    float32_t searchDistance = 0.0f;
+    const float32_t tx_power = 10.0f * log10f(power_mW / 1000.0f) + 30.0f;
+    while (test_fspl < (80.0f + tx_power)) {
+        searchDistance = static_cast<float32_t>(c)*250.0f;
+        test_fspl = (-27.55f + 20.0f * log10f(frequency_Hz) + 20.0f * log10f(searchDistance)) + (magic*3.0f);
         c++;
     }
 
     if (cache == _distance_cache.end()) {
-        _distance_cache[std::floor(frequency_)] = std::map<float32_t, float32_t>();
-        cache = _distance_cache.find(std::floor(frequency_));
+        _distance_cache[floorf(frequency_Hz)] = std::map<float32_t, float32_t>();
+        cache = _distance_cache.find(floorf(frequency_Hz));
     }
-    cache->second[std::floor(power_)] = search_distance;
-    return search_distance;
+    cache->second[floorf(power_mW)] = searchDistance;
+    return searchDistance;
 }
 
-void acre::signal::model::multipath::process(result *result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, float frequency_, float power_, float scale_, bool omnidirectional_)
-{
-    glm::vec2 tx_pos_2d, rx_pos_2d;
-    tx_pos_2d = glm::vec2(tx_pos_.x, tx_pos_.y);
-    rx_pos_2d = glm::vec2(rx_pos_.x, rx_pos_.y);
+void acre::signal::model::multipath::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, const float32_t frequency_, const float32_t power_, const float32_t scale_, const bool omnidirectional_) {
+    const float32_t tx_power = 10.0f * log10f(power_ / 1000.0f) + 30.0f;
+    const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
+    const float32_t searchDistance = search_distance(frequency_, power_);
 
-    float tx_power = 10.0f * log10(power_ / 1000.0f) + 30.0f;
-
-    float distance_2d = glm::distance(tx_pos_2d, rx_pos_2d);
-    float distance_3d = glm::distance(tx_pos_, rx_pos_);
-
-    float search_distance = _search_distance(frequency_, power_);
-
-    int search_size = (int)(search_distance * 2 / 1000.0f);//(int)(std::ceil(std::max(search_distance, distance_2d)) / 1000.0f);
+    int32_t search_size = static_cast<int32_t>(searchDistance * 2.0f / 1000.0f);//(int)(std::ceil(std::max(search_distance, distance_2d)) / 1000.0f);
 
     if (search_size % 2 == 0) {
         search_size++;
     }
 
-    glm::vec2 center_pos = tx_pos_2d + glm::normalize(rx_pos_2d - tx_pos_2d)*(distance_2d*0.5f);
-    //search_size = (int)std::ceil(_map->map_size()*_map->cell_size() / 1000.0f);
-
-    if (tx_pos_.x != _cached_tx_pos.x || tx_pos_.y != _cached_tx_pos.y) {
-        _get_peaks_spiral(tx_pos_.x, tx_pos_.y, search_size, search_size, _cached_peaks);
+    if ((tx_pos_.x != _cached_tx_pos.x) || (tx_pos_.y != _cached_tx_pos.y)) {
+        get_peaks_spiral(tx_pos_.x, tx_pos_.y, search_size, search_size, _cached_peaks);
         _cached_tx_pos = tx_pos_;
     }
 
+    std::vector<float32_t> signals;
+    std::vector<float32_t> signal_phases;
+    int32_t good_count = 0;
 
-    std::vector<float> signals;
-    std::vector<float> signal_phases;
-    int good_count = 0;
-
-    float best_signal = 0.0f;
-    int best_signal_index = 0;
+    float32_t best_signal = 0.0f;
+    size_t best_signal_index = 0;
 
     for (auto peak : _cached_peaks) {
-        glm::vec3 v_tx, v_rx, v_mid;
-        v_tx = tx_pos_ - peak;
-        v_rx = rx_pos_ - peak;
-        if (glm::distance(glm::normalize(v_tx), glm::normalize(v_rx)) > 1.41421f)
+        const glm::vec3 v_tx = tx_pos_ - peak;
+        const glm::vec3 v_rx = rx_pos_ - peak;
+        if (glm::distance(glm::normalize(v_tx), glm::normalize(v_rx)) > 1.41421f) {
             continue;
+        }
 
-        v_mid = glm::normalize(v_tx + v_rx);
+        const glm::vec3 v_mid = glm::normalize(v_tx + v_rx);
 
         glm::vec3 best_angle;
-        float best_distance = 10000.0f;
+        float32_t best_distance = 10000.0f;
+        float32_t diffractionLoss = 0.0f;
 
-
-
-
-
-        float diffraction_loss = 0;
-
-        for (int i = 0; i <= 40; ++i) {
-            glm::vec3 test_point = peak + v_mid*(float)i*(7.5f);
+        for (int32_t i = 0; i <= 40; ++i) {
+            glm::vec3 test_point = peak + v_mid*static_cast<float32_t>(i)*7.5f;
             glm::vec3 t_normal = _map->normal(test_point.x, test_point.y);
-            float distance = glm::distance2(t_normal, v_mid);
+            const float32_t distance = glm::distance2(t_normal, v_mid);
             if (distance < best_distance) {
                 best_distance = distance;
                 best_angle = test_point;
             }
         }
+
         best_angle.z = _map->elevation(best_angle.x, best_angle.y);
 
-        //float add_test_height = 20.0f * log10(frequency_) + 20.0f * log10(std::ceil(glm::distance(tx_pos_, best_angle)));
+        //float32_t add_test_height = 20.0f * log10(frequency_) + 20.0f * log10(std::ceil(glm::distance(tx_pos_, best_angle)));
         //glm::vec3 test_pos = tx_pos_ + glm::vec3(0, 0, add_test_height);
         //if (!_map->ground_intersect(test_pos, glm::normalize(test_pos - best_angle), std::ceil(glm::distance(test_pos, best_angle)))) {
-            float tx_internal_loss = 3.0f;
-            float rx_internal_loss = 3.0f;
+        const float32_t tx_internal_loss = 3.0f;
+        const float32_t rx_internal_loss = 3.0f;
 
+        float32_t rx_gain = 0;
+        if (!omnidirectional_) rx_gain = rx_antenna_->gain(rx_dir_, best_angle - rx_pos_, frequency_);
+        float32_t tx_gain = 0;
+        if (!omnidirectional_) tx_gain = tx_antenna_->gain(tx_dir_, best_angle - tx_pos_, frequency_);
 
-            float rx_gain = 0;
-            if (!omnidirectional_) rx_gain = rx_antenna_->gain(rx_dir_, best_angle - rx_pos_, frequency_);
-            float tx_gain = 0;
-            if (!omnidirectional_) tx_gain = tx_antenna_->gain(tx_dir_, best_angle - tx_pos_, frequency_);
+        float32_t path_distance = sqrtf(glm::distance2(tx_pos_, best_angle) + glm::distance2(rx_pos_, best_angle));
+        float32_t fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(path_distance));
+        //float32_t fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(tx_pos_, best_angle))) +
+        //    (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(rx_pos_, best_angle)));
 
-            float path_distance = sqrt(glm::distance2(tx_pos_, best_angle) + glm::distance2(rx_pos_, best_angle));
-            float fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(path_distance));
-            //float fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(tx_pos_, best_angle))) +
-            //    (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(rx_pos_, best_angle)));
+        const glm::vec3 best_angle_v = glm::normalize(rx_pos_ - best_angle);
+        const glm::vec3 terrain_normal = _map->normal(best_angle.x, best_angle.y);
+        /*
+            float32_t baz = asin(terrain_normal.z);
+            float32_t bav = asin(glm::normalize(best_angle_v).z);
+            float32_t bt = baz - bav;
+            float32_t reflection_ratio = std::cos(bt);
+         */
+        const float32_t reflection_ratio = glm::dot(terrain_normal, glm::normalize(best_angle_v));
+        const float32_t tx_power = 10.0f * log10((power_ * reflection_ratio) / 1000.0f) + 30.0f;
+        float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - ((-27.55f + 20.0f * log10(frequency_))) + rx_gain - rx_internal_loss;
 
-            glm::vec3 best_angle_v = glm::normalize(rx_pos_ - best_angle);
-            glm::vec3 terrain_normal = _map->normal(best_angle.x, best_angle.y);
-            /*
-            float baz = asin(terrain_normal.z);
-            float bav = asin(glm::normalize(best_angle_v).z);
-            float bt = baz - bav;
-            float reflection_ratio = std::cos(bt);
-            */
-            float reflection_ratio = glm::dot(terrain_normal, glm::normalize(best_angle_v));
+        if (budget > -200.0f) {
+            diffractionLoss = diffraction_loss(tx_pos_, best_angle, frequency_)*scale_;
+            if (budget - diffractionLoss > -200.0f) {
+                diffractionLoss += diffraction_loss(best_angle, rx_pos_, frequency_)*scale_;
+                budget -= diffractionLoss;
 
-            float tx_power = 10.0f * log10((power_ * reflection_ratio) / 1000.0f) + 30.0f;
+                if (budget > -200.0f) {
+                    const float32_t budget_v = dbm_to_v(budget, 50.0f);
+                    signals.push_back(budget_v);
 
-            float budget = tx_power + tx_gain - tx_internal_loss - fspl - ((-27.55f + 20.0f * log10(frequency_))) + rx_gain - rx_internal_loss;
-
-            if (budget > -200.0f) {
-                diffraction_loss = _diffraction_loss(tx_pos_, best_angle, frequency_)*scale_;
-                if (budget - diffraction_loss > -200.0f) {
-                    diffraction_loss += _diffraction_loss(best_angle, rx_pos_, frequency_)*scale_;
-                    budget -= diffraction_loss;
-
-
-                    if (budget > -200.0f) {
-                        float budget_v = _dbm_to_v(budget, 50.0f);
-                        signals.push_back(budget_v);
-                        float phase = _phase(path_distance, frequency_) + PI;
-                        signal_phases.push_back(phase);
-                        result_->reflect_points.push_back(reflection(best_angle, terrain_normal, phase, reflection_ratio, budget, budget_v));
-                        if (budget_v > best_signal) {
-                            best_signal = budget_v;
-                            best_signal_index = signals.size()-1;
-                        }
-                        ++good_count;
+                    const float32_t signalPhase = phase(path_distance, frequency_) + PI;
+                    signal_phases.push_back(signalPhase);
+                    result_->reflect_points.push_back(reflection(best_angle, terrain_normal, signalPhase, reflection_ratio, budget, budget_v));
+                    if (budget_v > best_signal) {
+                        best_signal = budget_v;
+                        best_signal_index = signals.size() - 1;
                     }
+                    ++good_count;
                 }
             }
+        }
         //}
-        if (good_count >= 10)
+        if (good_count >= 10) {
             break;
+        }
     }
-    float rx_gain = 0;
-    if (!omnidirectional_) rx_gain = rx_antenna_->gain(rx_dir_, tx_pos_ - rx_pos_, frequency_);
-    float tx_gain = 0;
-    if (!omnidirectional_) tx_gain = tx_antenna_->gain(tx_dir_, rx_pos_ - tx_pos_, frequency_);
+    float32_t rx_gain = 0.0f;
+    if (!omnidirectional_) {
+        rx_gain = rx_antenna_->gain(rx_dir_, tx_pos_ - rx_pos_, frequency_);
+    }
+    float32_t tx_gain = 0.0f;
+    if (!omnidirectional_){
+        tx_gain = tx_antenna_->gain(tx_dir_, rx_pos_ - tx_pos_, frequency_);
+    }
 
-
-    float fspl = -27.55f + 20.0f * log10(frequency_) + 20.0f * log10(distance_3d);
+    const float32_t fspl = -27.55f + 20.0f * log10f(frequency_) + 20.0f * log10f(distance_3d);
 
     //_Lb = _Ptx + _transmitterGain - _Ltx - _Lfs - _Lm + _receiverGain - _Lrx;
-    float tx_internal_loss = 3.0f;
-    float rx_internal_loss = 3.0f;
+    const float32_t tx_internal_loss = 3.0f;
+    const float32_t rx_internal_loss = 3.0f;
 
-    float diffraction_loss = _diffraction_loss(tx_pos_, rx_pos_, frequency_)*scale_;
+    const float32_t diffractionLoss = diffraction_loss(tx_pos_, rx_pos_, frequency_)*scale_;
 
-    float budget = tx_power + tx_gain - tx_internal_loss - fspl - (MAGIC*1.0f) - diffraction_loss + rx_gain - rx_internal_loss;
-    float budget_v = _dbm_to_v(budget, 50.0f);
+    const float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - (magic*1.0f) - diffractionLoss + rx_gain - rx_internal_loss;
+    const float32_t budget_v = dbm_to_v(budget, 50.0f);
 
     signals.push_back(budget_v);
-    signal_phases.push_back(_phase(distance_3d, frequency_));
+    signal_phases.push_back(phase(distance_3d, frequency_));
 
     if (budget_v > best_signal) {
         best_signal = budget_v;
         best_signal_index = signals.size() - 1;
     }
 
-    float total_signal;
+    float32_t total_signal = 0.0f;
 
     if (scale_ >= 1.0f) {
-        float best_signal_phase = signal_phases[best_signal_index];
+        float32_t best_signal_phase = signal_phases[best_signal_index];
         total_signal = best_signal;
 
         for (size_t c = 0; c <= signals.size() - 1; ++c) {
             if (c != best_signal_index) {
-                float signal_level = signals[c];
-                float phase = signal_phases[c] - best_signal_phase;
-                if (phase > PI)
-                    phase -= PI*2;
-                else if (phase < -PI)
-                    phase += PI*2;
-                total_signal = _phase_amplitude(total_signal, signal_level, phase);
+                const float32_t signal_level = signals[c];
+                float32_t singalPhase = signal_phases[c] - best_signal_phase;
+                if (singalPhase > PI) {
+                    singalPhase -= PI*2.0f;
+                } else if (singalPhase < -PI) {
+                    singalPhase += PI*2.0f;
+                }
+                total_signal = phase_amplitude(total_signal, signal_level, singalPhase);
             }
         }
-    }
-    else {
+    } else {
         total_signal = best_signal;
     }
+
     if (total_signal > 0.0f) {
         result_->result_v = total_signal;
-        result_->result_dbm = _v_to_dbm(total_signal, 50.0f);
-    }
-    else {
+        result_->result_dbm = v_to_dbm(total_signal, 50.0f);
+    } else {
         result_->result_v = 0.0f;
         result_->result_dbm = -1000.0f;
     }
 }
 
-void acre::signal::model::multipath::_get_peaks_spiral(float pos_x_, float pos_y_, int x_, int y_, std::vector<glm::vec3> &peaks_) {
-    int peak_grid_size = (int)std::ceil(_map->map_size()*_map->cell_size() / 1000.0f);
-    int peak_grid_x, peak_grid_y;
-    peak_grid_x = (int)std::floor(pos_x_ / 1000.0f);
-    peak_grid_y = (int)std::floor(pos_y_ / 1000.0f);
+void acre::signal::model::multipath::get_peaks_spiral(const float32_t pos_x, const float32_t pos_y, const int32_t size_x, const int32_t size_y, std::vector<glm::vec3> &peaks) {
+    const int32_t peak_grid_size = static_cast<int32_t>(ceilf(_map->map_size()*_map->cell_size() / 1000.0f));
+    const int32_t peak_grid_x = static_cast<int32_t>(floorf(pos_x / 1000.0f));
+    const int32_t peak_grid_y = static_cast<int32_t>(floorf(pos_y / 1000.0f));
 
-    int x, y, dx, dy;
+    int32_t x, y, dx, dy;
     x = y = dx = 0;
     dy = -1;
-    int t = std::max(x_, y_);
-    int max_i = t*t;
-    for (int i = 0; i < max_i; i++) {
-        if ((-x_ / 2 <= x) && (x <= x_ / 2) && (-y_ / 2 <= y) && (y <= y_ / 2)) {
-            if (peak_grid_x + x >= 0 && peak_grid_x + x < peak_grid_size - 1 && peak_grid_y + y >= 0 && peak_grid_y + y < peak_grid_size - 1) {
-                int peak_index = (peak_grid_x + x) * peak_grid_size + peak_grid_y + y;
-                if (_peak_buckets[peak_index].size() > 0)
-                    peaks_.insert(peaks_.end(),
-                        _peak_buckets[peak_index].begin(),
-                        _peak_buckets[peak_index].end());
+
+    int32_t t = std::max(size_x, size_y);
+    const int32_t max_i = t*t;
+    for (int32_t i = 0; i < max_i; i++) {
+        if ((-size_x / 2 <= x) && (x <= size_x / 2) && (-size_y / 2 <= y) && (y <= size_y / 2)) {
+            if (((peak_grid_x + x) >= 0)
+                    && ((peak_grid_x + x) < (peak_grid_size - 1))
+                    && ((peak_grid_y + y) >= 0)
+                    && ((peak_grid_y + y) < (peak_grid_size - 1))) {
+                const int32_t peak_index = (peak_grid_x + x) * peak_grid_size + peak_grid_y + y;
+                if (_peak_buckets[peak_index].size() > 0) {
+                    peaks.insert(peaks.end(), _peak_buckets[peak_index].begin(), _peak_buckets[peak_index].end());
+                }
             }
         }
         if ((x == y) || ((x < 0) && (x == -y)) || ((x > 0) && (x == 1 - y))) {
@@ -324,4 +314,13 @@ void acre::signal::model::multipath::_get_peaks_spiral(float pos_x_, float pos_y
         x += dx;
         y += dy;
     }
+}
+
+float32_t acre::signal::model::multipath::phase(const float32_t path_distance, const float32_t f_Mhz) {
+    const float32_t phase = PI*2.0f*path_distance / (300.0f / f_Mhz);
+    return fmod(phase, PI * 2) - PI;
+}
+
+float32_t acre::signal::model::multipath::phase_amplitude(const float32_t a1, const float32_t a2, const float32_t phase) {
+    return sqrtf(powf(a1, 2.0f) + powf(a2, 2.0f) + 2.0f*a1*a2*cosf(phase));
 }

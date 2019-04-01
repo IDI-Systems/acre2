@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Engine.h"
 
-void CPlayer::init(ACRE_ID id) {
+void CPlayer::init(acre_id_t id) {
     this->setId(id);
     this->setInitType("");
     this->setAttenAverageSum(0);
@@ -17,7 +17,7 @@ CPlayer::CPlayer() {
     this->init(0);
 }
 
-CPlayer::CPlayer(ACRE_ID id) {
+CPlayer::CPlayer(acre_id_t id) {
     this->init(id);
 }
 
