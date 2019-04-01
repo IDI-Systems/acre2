@@ -10,7 +10,7 @@ RPC_FUNCTION(setSelectableVoiceCurve) {
     voiceCurveScale = vMessage->getParameterAsFloat(0);
     //LOG("VOICE MODEL: %d VOICE CURVE: %f", voiceModel, voiceCurveScale);
     if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return acre_result_ok;
+        return AcreResult::ok;
 
     if (CEngine::getInstance()->getSelf()) {
         LOCK(CEngine::getInstance()->getSelf());
@@ -31,7 +31,7 @@ RPC_FUNCTION(setSelectableVoiceCurve) {
         UNLOCK(CEngine::getInstance()->getSelf());
     }
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

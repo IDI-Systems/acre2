@@ -21,46 +21,46 @@ typedef double float64_t;
 typedef uint32_t acre_id_t;
 typedef float32_t acre_volume_t;
 
-typedef enum {
-    acre_result_ok,
-    acre_result_invalidPlayer = 0x00000100,
-    acre_result_notFound = 0x00FF0000,
-    acre_result_invalidPacket = 0xFF000000,
-    acre_result_notImplemented = 0xFFFFFFF0,
-    acre_result_error = 0xFFFFFFFF
-} acre_result_t;
+enum class AcreResult : uint32_t {
+    ok,
+    invalidPlayer = 0x00000100,
+    notFound = 0x00FF0000,
+    invalidPacket = 0xFF000000,
+    notImplemented = 0xFFFFFFF0,
+    error = 0xFFFFFFFF
+};
 
-typedef enum {
-    acre_state_running = 1,
-    acre_state_initializing,
-    acre_state_stopping,
-    acre_state_starting,
-    acre_state_ready,
-    acre_state_stopped = 0xFFFFFFFF
-} acre_state_t;
+enum class AcreState : uint32_t {
+    running = 1,
+    initializing,
+    stopping,
+    starting,
+    ready,
+    stopped = 0xFFFFFFFF
+};
 
-typedef enum {
-    acre_silence_off,
-    acre_silence_always,
-    acre_silence_alwaysAdmin,
-    acre_silence_ingame,
-    acre_silence_ingameAdmin
-} acre_silence_t;
+enum class AcreSilence {
+    off,
+    always,
+    alwaysAdmin,
+    ingame,
+    ingameAdmin
+};
 
-typedef enum {
-    acre_speaking_direct,
-    acre_speaking_radio,
-    acre_speaking_unknown,
-    acre_speaking_intercom,
-    acre_speaking_spectate
-} acre_speaking_t;
+enum class AcreSpeaking {
+    direct,
+    radio,
+    unknown,
+    intercom,
+    spectate
+};
 
-typedef enum {
-    acre_curveModel_original,
-    acre_curveModel_amplitude,
-    acre_curveModel_selectableA,
-    acre_curveModel_selectableB
-} acre_curveModel_t;
+enum class AcreCurveModel {
+    original,
+    amplitude,
+    selectableA,
+    selectableB
+};
 
 typedef struct ACRE_RPCDATA {
     IRpcFunction *function;
@@ -80,10 +80,10 @@ typedef BYTE ACRE_KEY;
 #include "ACRE_KEYBIND.h"
 #include "ACRE_ADDR.h"
 
-typedef acre_result_t (*ACRE_RPCFUNCTION)(IServer *, IMessage *);
+typedef AcreResult (*ACRE_RPCFUNCTION)(IServer *, IMessage *);
 
 
 
-typedef acre_result_t (*ACRE_CALLBACK_TALKING)(CPlayer *);
+typedef AcreResult (*ACRE_CALLBACK_TALKING)(CPlayer *);
 */
 

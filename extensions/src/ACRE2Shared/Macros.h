@@ -94,7 +94,7 @@ public:                                                \
 public:                                                                        \
     name##(){ this->m_Name = STR(name); }                                    \
     ~##name(){ }                                                            \
-    acre_result_t call(IServer *vServer, IMessage *vMessage)                    
+    AcreResult call(IServer *vServer, IMessage *vMessage)                    
 
 
 #define CREATE_ITERATOR(type, name, from)                \

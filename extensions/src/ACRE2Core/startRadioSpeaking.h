@@ -17,9 +17,9 @@ RPC_FUNCTION(startRadioSpeaking) {
 
     std::string radioId = std::string((char *)vMessage->getParameter(0));
 
-    CEngine::getInstance()->getClient()->localStartSpeaking(acre_speaking_radio, radioId);
+    CEngine::getInstance()->getClient()->localStartSpeaking(AcreSpeaking::radio, radioId);
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

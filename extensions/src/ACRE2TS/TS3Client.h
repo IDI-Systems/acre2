@@ -14,19 +14,19 @@ public:
     CTS3Client() { };
     ~CTS3Client() { };
 
-    acre_result_t initialize( void );
+    AcreResult initialize( void );
 
-    acre_result_t setMuted(const acre_id_t id_, const bool muted_);
-    acre_result_t setMuted(std::list<acre_id_t> idList_, const bool muted_);
+    AcreResult setMuted(const acre_id_t id_, const bool muted_);
+    AcreResult setMuted(std::list<acre_id_t> idList_, const bool muted_);
 
-    acre_result_t getMuted(const acre_id_t id_);
+    AcreResult getMuted(const acre_id_t id_);
 
-    acre_result_t stop();
-    acre_result_t start(const acre_id_t id_);
+    AcreResult stop();
+    AcreResult start(const acre_id_t id_);
 
-    acre_result_t exPersistVersion( void );
+    AcreResult exPersistVersion( void );
 
-    acre_result_t enableMicrophone(const bool status_);
+    AcreResult enableMicrophone(const bool status_);
 
     bool getInputStatus();
 
@@ -35,9 +35,9 @@ public:
     *
     * \param[in]    speakingType_    ACRE speaking type
     *
-    * \return       acre_result_ok if operation successful
+    * \return       AcreResult::ok if operation successful
     */
-    acre_result_t localStartSpeaking(const acre_speaking_t speakingType_);
+    AcreResult localStartSpeaking(const AcreSpeaking speakingType_);
 
     /*!
     * \brief Handles local player starting speaking.
@@ -45,45 +45,45 @@ public:
     * \param[in]    speakingType_    ACRE speaking type
     * \param[in]    radioId_         Unique radio ideintifier
     *
-    * \return       acre_result_ok if operation successful
+    * \return       AcreResult::ok if operation successful
     */
-    acre_result_t localStartSpeaking(const acre_speaking_t speakingType_, std::string radioId_);
+    AcreResult localStartSpeaking(const AcreSpeaking speakingType_, std::string radioId_);
 
     /*!
      * \brief Handles local player stopping speaking.
      *
      * \param[in]    speakingType_    ACRE speaking type
      *
-     * \return       acre_result_ok if operation successful
+     * \return       AcreResult::ok if operation successful
      */
-    acre_result_t localStopSpeaking(const acre_speaking_t speakingType_ );
+    AcreResult localStopSpeaking(const AcreSpeaking speakingType_ );
 
     std::string getTempFilePath( void );
     std::string getConfigFilePath(void);
     
-    acre_result_t playSound(std::string path_, ACRE_VECTOR position_, const float32_t volume_, const int32_t looping_);
+    AcreResult playSound(std::string path_, ACRE_VECTOR position_, const float32_t volume_, const int32_t looping_);
 
     std::string getUniqueId( );
 
     bool getVAD();
 
-    acre_result_t microphoneOpen(const bool status_);
+    AcreResult microphoneOpen(const bool status_);
 
-    acre_result_t unMuteAll( void );
+    AcreResult unMuteAll( void );
 
-    acre_result_t moveToServerTS3Channel();
-    acre_result_t moveToPreviousTS3Channel();
+    AcreResult moveToServerTS3Channel();
+    AcreResult moveToPreviousTS3Channel();
     uint64 findChannelByNames(std::vector<std::string> details_);
     uint32_t getWordMatches(const std::string& string1_, const std::string& string2_);
     uint32_t levenshteinDistance(const std::string& string1_, const std::string& string2_);
     std::string removeSubstrings(std::string string_, std::string substring_);
-    acre_result_t updateTs3ChannelDetails(std::vector<std::string> details_);
-    acre_result_t updateShouldSwitchTS3Channel(const bool state_);
+    AcreResult updateTs3ChannelDetails(std::vector<std::string> details_);
+    AcreResult updateShouldSwitchTS3Channel(const bool state_);
     BOOL shouldSwitchTS3Channel();
     
     DECLARE_MEMBER(bool, hadVAD);
     DECLARE_MEMBER(bool, InputActive);
-    DECLARE_MEMBER(acre_state_t, State);
+    DECLARE_MEMBER(AcreState, State);
     DECLARE_MEMBER(bool, OnRadio);
     DECLARE_MEMBER(int32_t, TsSpeakingState);
     DECLARE_MEMBER(bool, RadioPTTDown);

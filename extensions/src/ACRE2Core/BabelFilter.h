@@ -20,7 +20,7 @@ public:
     CBabelFilter( void );
     ~CBabelFilter( void );
 
-    acre_result_t process(short* samples, int sampleCount, int channels, acre_id_t id);
+    AcreResult process(short* samples, int sampleCount, int channels, acre_id_t id);
 
     BabelStruct *getSpeaker(acre_id_t id);
 
