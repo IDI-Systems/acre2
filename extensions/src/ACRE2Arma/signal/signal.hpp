@@ -16,12 +16,12 @@
 
 namespace acre {
     namespace signal {
-        typedef enum acre_signalModel_ {
-           acre_signalModel_arcade,
-           acre_signalModel_losMultipath,
-           acre_signalModel_underwater,
-           acre_signalModel_longleyRice
-        } acre_signalModel_t;
+        enum class PropagationModel {
+           arcade,
+           losMultipath,
+           longleyRice,
+           underwater           
+        };
 
         struct signal_map_result {
             signal_map_result() { }
@@ -74,7 +74,7 @@ namespace acre {
             }
         public:
             typedef enum {
-                acre_signalArgument_signalModel,
+                acre_signalArgument_signalPropagationModel,
                 acre_signalArgument_id,
                 acre_signalArgument_txPositionX,
                 acre_signalArgument_txPositionY,
@@ -138,7 +138,7 @@ namespace acre {
                     return true;
                 }
 
-                const acre_signalModel_t model = static_cast<acre_signalModel_t>(args_.as_int(0));
+                const PropagationModel model = static_cast<PropagationModel>(args_.as_int(acre_signalArgument_signalPropagationModel));
 
                 const int32_t logging = args_.as_int(acre_signalArgument_debugEnabled);
                 const bool omnidirectional = args_.as_int(acre_signalArgument_omnidirectionalRadios);
@@ -181,11 +181,11 @@ namespace acre {
                 acre::signal::result signal_result;
 
                 switch (model) {
-                    case acre_signalModel_arcade: {
+                    case PropagationModel::arcade: {
                         _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, f, power);
                         break;
                     }
-                    case acre_signalModel_losMultipath: {
+                    case PropagationModel::losMultipath: {
                         _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
                         break;
                     }
