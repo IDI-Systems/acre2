@@ -20,8 +20,8 @@ params ["_unit", "_gsa"];
 
 private _radioId = _gsa getVariable [QGVAR(connectedRadio), ""];
 
-if (_radioId !=  "") then {
-    ["_unit", "_gsa"] call FUNC(disconnect);
+if (_radioId != "") then {
+    [_unit, _gsa] call FUNC(disconnect);
 };
 
 // Add it to the inventory
@@ -53,6 +53,11 @@ switch (_classname) do {
 };
 
 if (_canDelete) then {
+    // Remove the ground spike antenna
+    if (stance _unit == "STAND") then {
+        [_unit, "AmovPercMstpSrasWrflDnon_diary"] call ace_common_fnc_doAnimation;
+    };
+
     _unit addItem _item;
     deleteVehicle _gsa;
 };

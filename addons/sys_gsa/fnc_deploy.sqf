@@ -50,9 +50,7 @@ if (_canDeploy) then {
 
         private _direction = getDir _unit;
         private _zOffset = 0.0;
-        if (_gsa isEqualTo "vhf30108Item") then {
-            _zOffset = MAST_Z_OFFSET;
-        };
+
         private _position = getPosASL _unit vectorAdd [2 * sin _direction, 2 * cos _direction, 0];
 
         // Always make it vertical, we do not want to take the normal to the surface since that would result

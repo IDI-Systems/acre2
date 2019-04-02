@@ -16,8 +16,7 @@
 
         private _componentType = getNumber (configFile >> "CfgAcreComponents" >> _component >> "type");
         if (_componentType == ACRE_COMPONENT_ANTENNA) then {
-
-            _success = [_radioId, 0, _component, [], true] call EFUNC(sys_components,attachSimpleComponent);
+            _success = [_radioId, 0, _component, HASH_CREATE, true] call EFUNC(sys_components,attachSimpleComponent);
             if (_success) exitWith {
                 _gsa setVariable [QGVAR(connectedRadio), "", true];
                 [_radioId, "setState", ["externalAntennaConnected", [false, objNull]]] call EFUNC(sys_data,dataEvent);
@@ -57,7 +56,7 @@
     };
 
     // Force attach the ground spike antenna
-    [_radioId, 0, _componentName, [], true] call EFUNC(sys_components,attachSimpleComponent);
+    [_radioId, 0, _componentName, HASH_CREATE, true] call EFUNC(sys_components,attachSimpleComponent);
 
     _gsa setVariable [QGVAR(connectedRadio), _radioId, true];
     [_radioId, "setState", ["externalAntennaConnected", [true, _gsa]]] call EFUNC(sys_data,dataEvent);

@@ -14,7 +14,7 @@ class CfgWeapons {
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 58;
+            mass = 160;
         };
     };
     class ACRE_VHF30108SPIKE: CBA_MiscItem {
@@ -27,7 +27,7 @@ class CfgWeapons {
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 58;
+            mass = 60;
         };
     };
 
@@ -41,7 +41,7 @@ class CfgWeapons {
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 58;
+            mass = 100;
         };
     };
 };

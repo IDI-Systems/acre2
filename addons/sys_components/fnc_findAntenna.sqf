@@ -52,12 +52,8 @@ private _searchFunction = {
                             };
                             private _objectType = typeOf _componentObject;
                             private _antennaPos = getPosASL _componentObject;
-                            if !(_objectType isKindOf "CAManBase") then {
-                                if (_objectType isKindOf "House") then {
-                                    _antennaPos = _antennaPos vectorAdd [0, 0, -((boundingCenter _componentObject) select 2)];
-                                } else {
-                                    _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
-                                };
+                            if (!(_objectType isKindOf "CAManBase") && {!(_objectType isKindOf "House")}) then { // Do not add bounding center to GSA
+                                _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
                             };
                             private _antennaDir = vectorDir _componentObject;
                             private _antennaDirUp = vectorUp _componentObject;
