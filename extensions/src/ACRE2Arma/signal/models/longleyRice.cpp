@@ -33,8 +33,8 @@ void acre::signal::model::longleyRice::process(
         return;
     }
 
-    const acre_antennaPolarization_t polarization = tx_antenna->getPolarization();
-    if (((polarization == acre_antennaPolarization_circular) && !useITWOM) || (polarization >= acre_antennaPolarization_num)) {
+    const AntennaPolarization polarization = tx_antenna->getPolarization();
+    if (((polarization == AntennaPolarization::circular) && !useITWOM)) {
         // Antenna polarization not supported
         result->result_v = dbm_to_v(-999.0f, 50.0f);
         result->result_dbm = -999.0f;
@@ -53,7 +53,7 @@ void acre::signal::model::longleyRice::process(
     const float64_t txPower = static_cast<float64_t>(mW_to_dbm(power_mW));
     const float64_t linkBudget = txPower + txGain - txInternalLoss + rxGain - rxInternalLoss;
 
-    const acre_mapClimate_t radioClimate = _map->getMapClimate();
+    const MapClimate radioClimate = _map->getMapClimate();
     const float64_t eps_dielect = 15.0;         // TODO: Make it map dependent?
     const float64_t sgm_conductivity = 0.005;  // TODO: Make it map dependent?
     const float64_t eno = 301.0;               // TODO: Make it map dependent?

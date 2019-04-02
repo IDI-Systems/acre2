@@ -13,15 +13,15 @@ namespace acre {
     namespace signal {
 
         typedef enum {
-            acre_mapClimate_equatorial = 1,
-            acre_mapClimate_continentalSubropical,
-            acre_mapClimate_maritimeTropical,
-            acre_mapClimate_desert,
-            acre_mapClimate_continentalTemperate,
-            acre_mapClimate_maritimeTemperate,
-            acre_mapClimate_overLand,
-            acre_mapClimate_maritimeTemerateOverSea
-        } acre_mapClimate_t;
+            equatorial = 1,
+            continentalSubropical,
+            maritimeTropical,
+            desert,
+            continentalTemperate,
+            maritimeTemperate,
+            overLand,
+            maritimeTemerateOverSea
+        } MapClimate;
 
         class map;
         typedef std::shared_ptr<map> map_p;
@@ -58,8 +58,8 @@ namespace acre {
         class map {
         public:
             map();
-            map(const std::string xyz_path_, const uint32_t map_size_, const float32_t cell_size_, acre_mapClimate_t mapClimate_);
-            map(const std::string xyz_path_, const uint32_t map_size_, const float32_t cell_size_) : map(xyz_path_, map_size_, cell_size_, acre_mapClimate_continentalTemperate) {}
+            map(const std::string xyz_path_, const uint32_t map_size_, const float32_t cell_size_, MapClimate mapClimate_);
+            map(const std::string xyz_path_, const uint32_t map_size_, const float32_t cell_size_) : map(xyz_path_, map_size_, cell_size_, MapClimate::continentalTemperate) {}
             map(const std::string bin_path_);
             map(const std::string asc_path_, const bool use_degrees_);
             map(const acre::wrp::landscape_p);
@@ -82,8 +82,8 @@ namespace acre {
             void terrain_profile(const glm::vec3 &start_pos_, const glm::vec3 &end_pos_, const float32_t precision_, std::vector<float32_t> &profile_);
             void terrain_profile(const glm::vec3 &start_pos_, const glm::vec3 &end_pos_, const float32_t precision_, std::vector<float64_t> &profile_);
 
-            acre_mapClimate_t getMapClimate();
-            void setMapClimate(const acre_mapClimate_t mapClimate);
+            MapClimate getMapClimate();
+            void setMapClimate(const MapClimate mapClimate);
 
             void write_cache(const std::string &bin_path_);
             std::unordered_map<std::string, float64_t> asc_header;
@@ -93,7 +93,7 @@ namespace acre {
             uint32_t          _map_size;
             float32_t         _cell_size;
             float32_t         _inv_cell_size;
-            acre_mapClimate_t _mapClimate;
+            MapClimate _mapClimate;
 
             void _generate_peaks();
 

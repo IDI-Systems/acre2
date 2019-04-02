@@ -10,7 +10,7 @@
 #include <glm/gtx/intersect.hpp>
 #include <glm/gtx/normal.hpp>
 
-acre::signal::map::map(const std::string xyz_path_, const uint32_t map_size_, const float32_t cell_size_, acre_mapClimate_t mapClimate_)
+acre::signal::map::map(const std::string xyz_path_, const uint32_t map_size_, const float32_t cell_size_, MapClimate mapClimate_)
 : _mapClimate(mapClimate_) {
     this->_map_elevations = new float32_t[_map_size * _map_size];
     this->_inv_cell_size = 1.0f / _cell_size;
@@ -36,7 +36,7 @@ acre::signal::map::map(const std::string xyz_path_, const uint32_t map_size_, co
     _generate_peaks();
 }
 
-acre::signal::map::map(const std::string bin_path_) : _mapClimate(acre_mapClimate_continentalTemperate) {
+acre::signal::map::map(const std::string bin_path_) : _mapClimate(MapClimate::continentalTemperate) {
     std::ifstream bin_file(bin_path_, std::ifstream::binary);
 
     if (!bin_file.is_open()){
@@ -108,7 +108,7 @@ acre::signal::map::map(const std::string asc_path_, const bool use_degrees_) {
             this->_map_size = static_cast<uint32_t>(asc_header["ncols"]);
         }
 
-        this->_mapClimate = acre_mapClimate_continentalTemperate;
+        this->_mapClimate = MapClimate::continentalTemperate;
         this->_cell_size = 10.0f;
         this->_inv_cell_size = 1.0f / _cell_size;
         this->_map_elevations = new float32_t[this->_map_size * this->_map_size];
@@ -150,7 +150,7 @@ acre::signal::map::map(const std::string asc_path_, const bool use_degrees_) {
     _generate_peaks();
 }
 acre::signal::map::map(const acre::wrp::landscape_p wrp_) {
-    this->_mapClimate = acre_mapClimate_continentalTemperate;
+    this->_mapClimate = MapClimate::continentalTemperate;
     this->_map_size = wrp_->map_size_x;
     this->_cell_size = wrp_->map_grid_size;
     this->_inv_cell_size = 1 / this->_cell_size;
@@ -534,10 +534,10 @@ bool acre::signal::map::_is_peak(const int32_t x_, const int32_t y_) {
     }
 }
 
-acre::signal::acre_mapClimate_t acre::signal::map::getMapClimate() {
+acre::signal::MapClimate acre::signal::map::getMapClimate() {
     return this->_mapClimate;
 }
 
-void acre::signal::map::setMapClimate(const acre_mapClimate_t mapClimate) {
+void acre::signal::map::setMapClimate(const MapClimate mapClimate) {
     this->_mapClimate = mapClimate;
 }

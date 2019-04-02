@@ -5,7 +5,7 @@
 #include <glm/gtx/intersect.hpp>
 #include <glm/gtx/normal.hpp>
 
-acre::signal::antenna::antenna(std::istream & stream_, const acre_antennaPolarization_t polarization_, const float32_t internalLoss_dBm_ )
+acre::signal::antenna::antenna(std::istream & stream_, const AntennaPolarization polarization_, const float32_t internalLoss_dBm_ )
 : _polarization(polarization_), _internalLos_dBm(internalLoss_dBm_){
     stream_.read((char *)&_min_frequency, sizeof(float32_t ));
     stream_.read((char *)&_max_frequency, sizeof(float32_t ));
@@ -69,10 +69,11 @@ float32_t acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::v
     return total_gain;
 }
 
-acre::signal::acre_antennaPolarization_t acre::signal::antenna::getPolarization() {
+acre::signal::AntennaPolarization acre::signal::antenna::getPolarization() {
     return this->_polarization;
 }
-void acre::signal::antenna::setPolarization(const acre_antennaPolarization_t polarization_) {
+
+void acre::signal::antenna::setPolarization(const AntennaPolarization polarization_) {
     this->_polarization = polarization_;
 }
 
