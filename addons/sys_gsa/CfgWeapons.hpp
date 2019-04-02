@@ -10,20 +10,16 @@ class CfgWeapons {
         displayName = "VHF30108 GSM";
         descriptionShort = "VHF30108 Ground Spike Antenna with Mast";
         model = QPATHTOF(data\models\acre_antennaBag.p3d);
-        //picture = QPATHTOF(data\icons\icon_rf3080.paa);
+        picture = QPATHTOF(data\ui\acre_antennabag_icon.paa);
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 160;
         };
     };
-    class ACRE_VHF30108SPIKE: CBA_MiscItem {
-        author[] = {"RanTa"};
-        scope = 2;
+    class ACRE_VHF30108SPIKE: ACRE_VHF30108 {
         displayName = "VHF30108 GS";
         descriptionShort = "VHF30108 Ground Spike Antenna";
-        model = QPATHTOF(data\models\acre_antennaBag.p3d);
-        //picture = QPATHTOF(data\icons\icon_rf3080.paa);
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
@@ -31,13 +27,9 @@ class CfgWeapons {
         };
     };
 
-    class ACRE_VHF30108MAST: CBA_MiscItem {
-        author[] = {"RanTa"};
-        scope = 2;
+    class ACRE_VHF30108MAST: ACRE_VHF30108 {
         displayName = "VHF30108 Mast";
         descriptionShort = "VHF30108 Mast";
-        model = QPATHTOF(data\models\acre_antennaBag.p3d);
-        //picture = QPATHTOF(data\icons\icon_rf3080.paa);
         //editorPreview = QPATHTOF(data\icons\icon_rf3080.paa);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {

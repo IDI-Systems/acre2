@@ -36,7 +36,7 @@ class CfgVehicles {
         displayName = "ACRE VHF30108 GSM";
         model = QPATHTOF(data\vhf30108\models\vhf30108.p3d);
         icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
-        editorPreview = "";
+        editorPreview = QPATHTOF(data\vhf30108\ui\spikeMast.jpg);
         vehicleClass = "Items";
 
         class AcreComponents {
@@ -114,7 +114,7 @@ class CfgVehicles {
         displayName = "ACRE VHF30108 GS";
         model = QPATHTOF(data\vhf30108\models\vhf30108spike.p3d);
         icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
-        editorPreview = "";
+        editorPreview = QPATHTOF(data\vhf30108\ui\spike.jpg);
         vehicleClass = "Items";
 
         class AcreComponents {
