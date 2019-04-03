@@ -145,7 +145,7 @@ class CfgVehicles {
                     selection = "";
                     displayName = CSTRING(mountMast);
                     distance = 10;
-                    condition = QUOTE([ARR_2(_player,'ACRE_VHF30108MAST')] call DEFUNC(sys_core,hasItem));
+                    condition = QUOTE([ARR_2(_player,'ACRE_VHF30108MAST')] call DEFUNC(sys_core,hasItem) || [ARR_2(_player,'ACRE_VHF30108')] call DEFUNC(sys_core,hasItem));
                     statement = QUOTE([ARR_3(_player,_target,true)] call DFUNC(handleMast));
                     showDisabled = 0;
                     exceptions[] = {};
