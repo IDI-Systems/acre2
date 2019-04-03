@@ -3,33 +3,55 @@
     <Package name="sys_gsa">
         <Key ID="STR_ACRE_sys_gsa_connected">
             <English>Connected to GSA</English>
+            <Spanish>Conectar a la antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnected">
             <English>Disconnected from GSA</English>
+            <Spanish>Desconectar de la antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpike">
             <English>Place Spike</English>
+            <Spanish>Clavar antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpikeMast">
             <English>Place Spike w. Mast</English>
+            <Spanish>Clavar antena con mástil</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_pickup">
             <English>Pick up</English>
+            <Spanish>Recoger</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_removeMast">
             <English>Remove mast</English>
+            <Spanish>Coger mástil</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_mountMast">
             <English>Mount mast</English>
+            <Spanish>Recoger mástil</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_alreadyConnected">
             <English>GSA already in use</English>
+            <Spanish>Antena en uso</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_connect">
             <English>Connect</English>
+            <Spanish>Conectar</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnect">
             <English>Disconnect</English>
+            <Spanish>Desconectar<Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gsa_gsaWithMast_description">
+            <English>VHF30108 Ground Spike Antenna with Mast</English>
+            <Spanish>Antena VHF30108 con mástil</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gsa_gsaWithoutMast_description">
+            <English>VHF30108 Ground Spike Antenna</English>
+            <Spanish>Antena VHF30108</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gsa_gsaMast_description">
+            <English>VHF30108 Mast</English>
+            <Spanish>Mastil de la antena VHF30108</Spanish>
         </Key>
     </Package>
 </Project>

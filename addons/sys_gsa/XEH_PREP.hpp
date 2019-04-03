@@ -5,7 +5,6 @@ PREP(disconnect);
 PREP(externalAntennaPFH);
 PREP(getConnectedGsa);
 PREP(handleMast);
-PREP(hasItemMast);
 PREP(initGsa);
 PREP(initRadio);
 PREP(isAntennaConnected);

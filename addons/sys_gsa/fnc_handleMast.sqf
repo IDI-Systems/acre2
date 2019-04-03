@@ -21,7 +21,7 @@ if (_connectedRadio isEqualTo "") then {
     _connectedRadio = _gsa getVariable [QGVAR(connectedRadio), ""];
 };
 
-// Temporarily disconnect the GSA from the radio.
+// Temporarily disconnect the GSA from the radio
 if (_connectedRadio != "") then {
     [_player, _gsa, _connectedRadio] call FUNC(disconnect);
 };
@@ -32,7 +32,7 @@ deleteVehicle _gsa;
 
 // Create the new vehicle
 if (_mountMast) then {
-    _gsa = "vhf30108Item" createVehicle (_pos vectorAdd [0, 0, MAST_Z_OFFSET]);
+    _gsa = "vhf30108Item" createVehicle _pos;
 
     _player removeItem "ACRE_VHF30108MAST";
 } else {
@@ -40,8 +40,6 @@ if (_mountMast) then {
 
     if (_player canAdd "ACRE_VHF30108MAST") then {
         _player addItem "ACRE_VHF30108MAST";
-    } else {
-        // Create the mast as an item on the floor
     };
 };
 

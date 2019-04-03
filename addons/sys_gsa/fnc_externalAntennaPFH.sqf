@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Eventhandler to monitor if external radios can be still used by a specific player.
+ * Event handler to monitor if external radios can be still used by a specific player.
  *
  * - Disabled uses of external radios are:
  *   - Antenna is destroyed.

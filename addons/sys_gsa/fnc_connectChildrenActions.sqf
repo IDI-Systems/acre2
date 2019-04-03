@@ -19,8 +19,6 @@
 
 params ["_unit", "_target"];
 
-//if (_unit != acre_player) exitWith {};
-
 private _radioList = [] call EFUNC(sys_data,getPlayerRadioList);
 private _actions = [];
 
