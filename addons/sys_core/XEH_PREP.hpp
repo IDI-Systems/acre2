@@ -49,6 +49,7 @@ PREP(switchChannelFast);
 PREP(switchRadioEar);
 PREP(toggleHeadset);
 PREP(updateSelf);
+PREP(uniqueItems);
 PREP(utilityFunction);
 
 PREP(onRevealUnit);

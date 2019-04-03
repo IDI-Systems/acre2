@@ -23,6 +23,13 @@ DFUNC(gen) = {
     [] call (compile _code);
 };
 
+GVAR(aceLoaded) = isClass (configFile >> "CfgPatches" >> "ace_common");
+// Do not use ACRE2 unique items if ACE3 is loaded.
+if (!GVAR(aceLoaded)) then {
+    ["loadout", {
+        GVAR(uniqueItemsCache) = nil;
+    }] call CBA_fnc_addPlayerEventHandler;
+};
 
 // Keybinds - PTT
 ["ACRE2", "AltPTTKey1", [localize LSTRING(AltPTTKey1), localize LSTRING(AltPTTKey1_description)], {
