@@ -8,7 +8,7 @@ class CfgVehicles {
                 class GVAR(placeSpike) {
                     displayName = CSTRING(placeSpike);
                     condition = QUOTE([ARR_2(_player,'ACRE_VHF30108SPIKE')] call EFUNC(sys_core,hasItem) || [ARR_2(_player,'ACRE_VHF30108')] call EFUNC(sys_core,hasItem));
-                    statement = QUOTE([ARR_3(_player,'ACRE_VHF30108SPIKE', false)] call FUNC(deploy));
+                    statement = QUOTE([ARR_3(_player,'ACRE_VHF30108SPIKE',false)] call FUNC(deploy));
                     showDisabled = 0;
                     icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
                 };
@@ -16,7 +16,7 @@ class CfgVehicles {
                 class GVAR(placeSpikeMast) {
                     displayName = CSTRING(placeSpikeMast);
                     condition = QUOTE([ARR_2(_player,'ACRE_VHF30108')] call EFUNC(sys_core,hasItem));
-                    statement = QUOTE([ARR_3(_player,'ACRE_VHF30108', true)] call FUNC(deploy));
+                    statement = QUOTE([ARR_3(_player,'ACRE_VHF30108',true)] call FUNC(deploy));
                     showDisabled = 0;
                     icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
                 };
@@ -68,7 +68,7 @@ class CfgVehicles {
                     displayName = CSTRING(removeMast);
                     distance = 10;
                     condition = "true";
-                    statement = QUOTE([ARR_3(_player,_target, false)] call DFUNC(handleMast));
+                    statement = QUOTE([ARR_3(_player,_target,false)] call DFUNC(handleMast));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
@@ -145,8 +145,8 @@ class CfgVehicles {
                     selection = "";
                     displayName = CSTRING(mountMast);
                     distance = 10;
-                    condition = QUOTE([ARR_2(_player), "ACRE_VHF30108MAST"] call DEFUNC(sys_core,hasItem));
-                    statement = QUOTE([ARR_3(_player,_target, true)] call DFUNC(handleMast));
+                    condition = QUOTE([ARR_2(_player,'ACRE_VHF30108MAST')] call DEFUNC(sys_core,hasItem));
+                    statement = QUOTE([ARR_3(_player,_target,true)] call DFUNC(handleMast));
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
