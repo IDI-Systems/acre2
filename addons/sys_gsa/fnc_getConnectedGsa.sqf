@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Returns the connected ground spike antenna object
+ * Returns the connected ground spike antenna object.
  *
  * Arguments:
  * 0: Unique Radio ID <STRING>

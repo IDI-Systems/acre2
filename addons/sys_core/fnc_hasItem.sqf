@@ -21,5 +21,5 @@ params [["_unit", objNull], ["_item", ""]];
 if (!GVAR(aceLoaded)) then {
     _item in ([_unit] call FUNC(uniqueItems))
 } else {
-    _item in ([_unit] call ace_common_fnc_uniqueItems);
+    _item in ([_unit] call ace_common_fnc_uniqueItems)
 }
