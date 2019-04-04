@@ -13,9 +13,9 @@
 
 RPC_FUNCTION(ext_handleGetClientID) {
     CEngine::getInstance()->getGameServer()->sendMessage(
-        CTextMessage::formatNewMessage("handleGetClientID", 
-            "%d,%s,", 
-            vMessage->getParameterAsInt(0), 
+        CTextMessage::formatNewMessage("handleGetClientID",
+            "%d,%s,",
+            vMessage->getParameterAsInt(0),
             vMessage->getParameter(1)
         )
     );

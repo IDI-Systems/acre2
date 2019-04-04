@@ -14,7 +14,7 @@
 #include <string>
 
 RPC_FUNCTION(stopRadioSpeaking) {
-    
+
     CEngine::getInstance()->getClient()->localStopSpeaking(AcreSpeaking::radio);
 
     return AcreResult::ok;

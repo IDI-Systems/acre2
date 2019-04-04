@@ -17,7 +17,7 @@ RPC_FUNCTION(setSelectableVoiceCurve) {
         CEngine::getInstance()->getSelf()->setSelectableCurveScale(voiceCurveScale);
         if (CEngine::getInstance()->getSelf()->getSpeaking()) {
             CEngine::getInstance()->getExternalServer()->sendMessage(
-                CTextMessage::formatNewMessage("ext_remoteStartSpeaking", 
+                CTextMessage::formatNewMessage("ext_remoteStartSpeaking",
                     "%d,%d,%s,%d,%s,%f,",
                     CEngine::getInstance()->getSelf()->getId(),
                     CEngine::getInstance()->getSelf()->getCurrentLanguageId(),
@@ -25,7 +25,7 @@ RPC_FUNCTION(setSelectableVoiceCurve) {
                     CEngine::getInstance()->getSelf()->getSpeakingType(),
                     CEngine::getInstance()->getSelf()->getCurrentRadioId().c_str(),
                     CEngine::getInstance()->getSelf()->getSelectableCurveScale()
-                ) 
+                )
             );
         }
         UNLOCK(CEngine::getInstance()->getSelf());

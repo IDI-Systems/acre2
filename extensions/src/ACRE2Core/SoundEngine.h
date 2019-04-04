@@ -29,4 +29,3 @@ public:
     DECLARE_MEMBER(float, CurveScale);
     DECLARE_MEMBER(int, ChannelCount);
 };
-

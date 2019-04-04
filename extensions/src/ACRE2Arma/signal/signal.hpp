@@ -20,7 +20,7 @@ namespace acre {
            arcade,
            losMultipath,
            longleyRice,
-           underwater           
+           underwater
         };
 
         struct signal_map_result {
