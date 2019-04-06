@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 
-private _category = format ["ACRE %1", localize "str_a3_cfghints_curator_curator_displayname"];
+private _category = format ["ACRE2 %1", localize "str_a3_cfghints_curator_curator_displayname"];
 
 [_category, "ZeusTalkFromCamera",  [(LLSTRING(SpeakFromCamera)), (LLSTRING(SpeakFromCamera_description))],
     { call FUNC(handleZeusSpeakPress) },
-    { call FUNC(handleZeusSpeakPressUp) },
+    { spawn FUNC(handleZeusSpeakPressUp) },
 [41, [false, false, false]]] call CBA_fnc_addKeybind; //Default bound to `
 
 if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")}) then {
