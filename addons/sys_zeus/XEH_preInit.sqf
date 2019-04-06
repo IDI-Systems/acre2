@@ -9,4 +9,6 @@ PREP_RECOMPILE_END;
 // CBA Settings
 #include "initSettings.sqf"
 
+GVAR(keyDownWait) = false;
+
 ADDON = true;

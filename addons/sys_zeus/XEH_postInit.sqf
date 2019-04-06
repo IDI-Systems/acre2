@@ -4,7 +4,7 @@ private _category = format ["ACRE2 %1", localize "str_a3_cfghints_curator_curato
 
 [_category, "ZeusTalkFromCamera",  [(LLSTRING(SpeakFromCamera)), (LLSTRING(SpeakFromCamera_description))],
     { call FUNC(handleZeusSpeakPress) },
-    { spawn FUNC(handleZeusSpeakPressUp) },
+    { call FUNC(handleZeusSpeakPressUp) },
 [41, [false, false, false]]] call CBA_fnc_addKeybind; //Default bound to `
 
 if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")}) then {

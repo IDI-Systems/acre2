@@ -15,13 +15,12 @@
  * Public: No
  */
 
-if (!canSuspend) exitWith {0 spawn FUNC(handleZeusSpeakPressUp)};
+[{!(GVAR(keyDownWait))}, {
+    player setVariable [QGVAR(inZeus), false, true];
 
-sleep 0.5;
-player setVariable [QGVAR(inZeus), false, true];
+    // Restore previous out of Zeus state
+    [player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR]] call EFUNC(api,setSpectator);
 
-// Restore previous out of Zeus state
-[player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR]] call EFUNC(api,setSpectator);
-
-// Stop updating Zeus position
-[GVAR(speakFromZeusHandle)] call CBA_fnc_removePerFrameHandler;
+    // Stop updating Zeus position
+    [GVAR(speakFromZeusHandle)] call CBA_fnc_removePerFrameHandler;
+}] call CBA_fnc_waitUntilAndExecute;
