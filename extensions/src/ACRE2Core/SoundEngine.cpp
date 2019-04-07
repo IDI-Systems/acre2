@@ -20,10 +20,10 @@ AcreResult CSoundEngine::onEditPlaybackVoiceDataEvent(acre_id_t id, short* sampl
     for (int x = 0; x < sampleCount * channels; x += channels) {
         for (int i = 0; i < channels; i++) {
             float result = static_cast<float>(samples[x + i]) * CAcreSettings::getInstance()->getPremixGlobalVolume();
-            
+
             if (result > LIMITER::max()) result = LIMITER::max();
             else if (result < LIMITER::min()) result = LIMITER::min();
-            
+
             samples[x + i] = static_cast<short>(result);
         }
     }
@@ -55,7 +55,7 @@ AcreResult CSoundEngine::onEditPlaybackVoiceDataEvent(acre_id_t id, short* sampl
 }
 
 AcreResult CSoundEngine::onEditPostProcessVoiceDataEvent(acre_id_t id, short* samples, int sampleCount, int channels, const unsigned int* channelSpeakerArray, unsigned int* channelFillMask) {
-    
+
     if (CEngine::getInstance()->getSoundSystemOverride())
         return AcreResult::ok;
     if (!CEngine::getInstance()->getGameServer())
