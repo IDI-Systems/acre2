@@ -42,7 +42,7 @@ if ((_monitoringRack < 0) || {_monitoringRack > VIC3FFCS_MONITOR_KNOB_POSITIONS}
     _monitoringRack = VIC3FFCS_MONITOR_KNOB_POSITIONS;
 };
 
-if ((_workRack < 0) || {_workRack < VIC3FFCS_WORK_KNOB_POSITIONS}) then {
+if ((_workRack < 0) || {_workRack > VIC3FFCS_WORK_KNOB_POSITIONS}) then {
     ERROR_1("Work rack entry out of range for %1",_vehicle);
     _workRack = 0;
 };
