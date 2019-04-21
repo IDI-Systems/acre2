@@ -202,7 +202,7 @@ namespace acre {
                         _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
                         break;
                     }
-                    case PropagationModel::losMultipath
+                    case PropagationModel::losMultipath: {
                         _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
                         break;
                     }
