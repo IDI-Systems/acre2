@@ -22,11 +22,11 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
 
     if ((acre_id_t) clientID != CEngine::getInstance()->getSelf()->getId()) {
         return;
-    } else if (CEngine::getInstance()->getClient()->getState() != acre_state_running) {
+    } else if (CEngine::getInstance()->getClient()->getState() != AcreState::running) {
         return;
     } else if (!CEngine::getInstance()->getGameServer()) {
         return;
-    } else if (CEngine::getInstance()->getState() != acre_state_running) {
+    } else if (CEngine::getInstance()->getState() != AcreState::running) {
         return;
     } else if (!CEngine::getInstance()->getGameServer()->getConnected()) {
         return;
@@ -61,10 +61,10 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
 
     if (status == STATUS_TALKING) {
         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setDirectFirst(true);
-        CEngine::getInstance()->getClient()->localStartSpeaking(acre_speaking_direct);
+        CEngine::getInstance()->getClient()->localStartSpeaking(AcreSpeaking::direct);
     } else if (status == STATUS_NOT_TALKING) {
         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setDirectFirst(false);
-        CEngine::getInstance()->getClient()->localStopSpeaking(acre_speaking_direct);
+        CEngine::getInstance()->getClient()->localStopSpeaking(AcreSpeaking::direct);
         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setMainPTTDown(false);
     }
 }

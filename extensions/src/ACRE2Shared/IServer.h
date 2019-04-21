@@ -5,19 +5,19 @@
 #include "compat.h"
 #include "Types.h"
 
-//typedef acre_result_t (*IServerCallback)(IServer *, IMessage *msg, void *data);
+//typedef AcreResult (*IServerCallback)(IServer *, IMessage *msg, void *data);
 
 class IServer
 {
 public:
     virtual ~IServer(){}
     
-    virtual acre_result_t initialize(void) = 0;
-    virtual acre_result_t shutdown(void) = 0;
+    virtual AcreResult initialize(void) = 0;
+    virtual AcreResult shutdown(void) = 0;
 
-    virtual acre_result_t sendMessage(IMessage *msg) = 0;
-    virtual acre_result_t handleMessage(unsigned char *data) = 0;
-    virtual acre_result_t release(void) = 0;
+    virtual AcreResult sendMessage(IMessage *msg) = 0;
+    virtual AcreResult handleMessage(unsigned char *data) = 0;
+    virtual AcreResult release(void) = 0;
     
     
     //DECLARE_INTERFACE_MEMBER(IServerCallback, RecvCallback);

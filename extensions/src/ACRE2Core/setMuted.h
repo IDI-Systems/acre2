@@ -28,7 +28,7 @@ RPC_FUNCTION(setMuted) {
         CEngine::getInstance()->getClient()->setMuted(id, (BOOL)status);
     }
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

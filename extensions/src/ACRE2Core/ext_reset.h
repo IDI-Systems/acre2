@@ -16,16 +16,16 @@ RPC_FUNCTION(ext_reset) {
     // We don't care if a person disconnects and they unmute all their shit, this doesn't break the "mute other people not in game" issue, because they mute this person.
     //
     //if(id == CEngine::getInstance()->getSelf()->getId())
-    //    return acre_result_ok;
+    //    return AcreResult::ok;
     //if(!CEngine::getInstance()->getGameServer()->getConnected())
-    //    return acre_result_ok;
+    //    return AcreResult::ok;
     //CEngine::getInstance()->getClient()->setMuted(id, FALSE);
 
     // We should be calling this, but the named pipe function already calls this too
     // We leave this here so SQF can force a full unmute, though.
     CEngine::getInstance()->getClient()->unMuteAll();
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };
