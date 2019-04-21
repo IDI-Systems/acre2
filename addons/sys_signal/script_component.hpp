@@ -16,7 +16,7 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
-#define SIGNAL_MODEL_ARCADE        0
+#define SIGNAL_MODEL_CASUAL        0
 #define SIGNAL_MODEL_LOS_SIMPLE    1
 #define SIGNAL_MODEL_LOS_MULTIPATH 2
 #define SIGNAL_MODEL_ITM           3

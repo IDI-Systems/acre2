@@ -1,5 +1,5 @@
-#ifndef MODELS_ARCADE_HPP_
-#define MODELS_ARCADE_HPP_
+#ifndef MODELS_CASUAL_HPP_
+#define MODELS_CASUAL_HPP_
 
 #include "models_common.hpp"
 
@@ -8,10 +8,10 @@
 namespace acre {
     namespace signal {
         namespace model {
-            class Arcade : public SignalModel {
+            class Casual : public SignalModel {
             public:
-                Arcade();
-                ~Arcade();
+                Casual();
+                ~Casual();
 
                 void process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &rx_pos_, const std::string &rx_antenna_name, const float32_t frequency_Hz, const float32_t power_mW);
             };
@@ -19,4 +19,4 @@ namespace acre {
     }
 }
 
-#endif /* MODELS_ARCADE_HPP_ */
+#endif /* MODELS_CASUAL_HPP_ */
