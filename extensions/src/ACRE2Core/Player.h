@@ -27,7 +27,7 @@ public:
     DECLARE_MEMBER(acre_id_t, Id);
     DECLARE_MEMBER(ACRE_VECTOR, WorldPosition);
     DECLARE_MEMBER(ACRE_VECTOR, HeadVector);
-    DECLARE_MEMBER(acre_speaking_t, SpeakingType);
+    DECLARE_MEMBER(AcreSpeaking, SpeakingType);
 
     DECLARE_MEMBER(acre_volume_t, Volume);
     DECLARE_MEMBER(acre_volume_t, PreviousVolume);

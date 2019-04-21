@@ -89,11 +89,11 @@ void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int er
 
         // subscribe to all channels to receive event
         ts3Functions.requestChannelSubscribeAll(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
-        if (CEngine::getInstance()->getClient()->getState() != acre_state_running) {
+        if (CEngine::getInstance()->getClient()->getState() != AcreState::running) {
             CEngine::getInstance()->getClient()->start((acre_id_t)id);
         }
     } else if (status == STATUS_DISCONNECTED) {
-        if (CEngine::getInstance()->getClient()->getState() != acre_state_stopped  && CEngine::getInstance()->getClient()->getState() != acre_state_stopping) {
+        if (CEngine::getInstance()->getClient()->getState() != AcreState::stopped  && CEngine::getInstance()->getClient()->getState() != AcreState::stopping) {
             CEngine::getInstance()->getClient()->stop();
         }
     }
@@ -107,7 +107,7 @@ void ts3plugin_onPlaybackShutdownCompleteEvent(uint64) {
 }
 
 void ts3plugin_shutdown() {
-    if (CEngine::getInstance()->getClient()->getState() != acre_state_stopped && CEngine::getInstance()->getClient()->getState() != acre_state_stopping) {
+    if (CEngine::getInstance()->getClient()->getState() != AcreState::stopped && CEngine::getInstance()->getClient()->getState() != AcreState::stopping) {
         CEngine::getInstance()->getClient()->stop();
     }
     CEngine::getInstance()->stop();

@@ -10,13 +10,13 @@ CKeyHandlerEngine::~CKeyHandlerEngine() {
     this->shutdown();
 }
 
-acre_result_t CKeyHandlerEngine::initialize() {
+AcreResult CKeyHandlerEngine::initialize() {
     LOG("Starting Keyboard Handler...");
     this->m_keyboardReadThread = std::thread(&CKeyHandlerEngine::readKeyLoop, this);
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
-acre_result_t CKeyHandlerEngine::readKeyLoop() {
+AcreResult CKeyHandlerEngine::readKeyLoop() {
     while (!this->getShuttingDown()) {
         if (CEngine::getInstance()->getGameServer() && CEngine::getInstance()->getGameServer()->getConnected()) { 
             for (auto it = this->m_keyMap.begin(); it != this->m_keyMap.end(); ++it) {
@@ -62,19 +62,19 @@ acre_result_t CKeyHandlerEngine::readKeyLoop() {
             Sleep(1000);
         }
     }
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
-acre_result_t CKeyHandlerEngine::shutdown() {
+AcreResult CKeyHandlerEngine::shutdown() {
     this->setShuttingDown(true);
     if (this->m_keyboardReadThread.joinable()) {
         this->m_keyboardReadThread.join();
     }
     this->setShuttingDown(false);
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
-acre_result_t CKeyHandlerEngine::setKeyBind(string eventName, int keyCode, BOOL shift, BOOL ctrl, BOOL alt) {
+AcreResult CKeyHandlerEngine::setKeyBind(string eventName, int keyCode, BOOL shift, BOOL ctrl, BOOL alt) {
     auto it = this->m_keyMap.find(eventName);
     if (it == this->m_keyMap.end()) {
         ACRE_KEY_ENTRY *newEntry = new ACRE_KEY_ENTRY();
@@ -102,10 +102,10 @@ acre_result_t CKeyHandlerEngine::setKeyBind(string eventName, int keyCode, BOOL 
                 existingEntry->alt = alt;
         }
     }
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
-acre_result_t CKeyHandlerEngine::removeKeyBind(string eventName) {
+AcreResult CKeyHandlerEngine::removeKeyBind(string eventName) {
     this->lock();
     auto it = this->m_keyMap.find(eventName);
     if (it != this->m_keyMap.end()) {
@@ -113,13 +113,13 @@ acre_result_t CKeyHandlerEngine::removeKeyBind(string eventName) {
     }
     this->unlock();
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
-acre_result_t CKeyHandlerEngine::clearKeybinds( void ) {
+AcreResult CKeyHandlerEngine::clearKeybinds( void ) {
     this->lock();
     this->m_keyMap.clear();
     this->unlock();
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 */

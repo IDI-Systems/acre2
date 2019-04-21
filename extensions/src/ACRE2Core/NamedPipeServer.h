@@ -16,19 +16,19 @@ public:
     CNamedPipeServer(std::string fromPipeName, std::string toPipeName);
     ~CNamedPipeServer(void);
 
-    acre_result_t readLoop();
-    acre_result_t sendLoop();
+    AcreResult readLoop();
+    AcreResult sendLoop();
 
-    acre_result_t initialize( void );
-    acre_result_t shutdown( void );
+    AcreResult initialize( void );
+    AcreResult shutdown( void );
 
-    acre_result_t handleMessage(unsigned char *data) { data=data;return acre_result_notImplemented; }
+    AcreResult handleMessage(unsigned char *data) { data=data;return AcreResult::notImplemented; }
 
-    acre_result_t sendMessage( IMessage *message );
+    AcreResult sendMessage( IMessage *message );
 
-    acre_result_t release( void ) { return acre_result_ok; };
+    AcreResult release( void ) { return AcreResult::ok; };
     
-    acre_result_t checkServer( void ); // DRM
+    AcreResult checkServer( void ); // DRM
 
     char *currentServerId;
 

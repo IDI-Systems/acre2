@@ -19,14 +19,14 @@
 
 namespace acre {
     namespace signal {
-        typedef enum acre_signalModel_ {
-           acre_signalModel_arcade,
-           acre_signalModel_los,
-           acre_signalModel_losMultipath,
-           acre_signalModel_longleyRice_ITM,
-           acre_signalModel_longleyRice_ITWOM,
-           acre_signalModel_underwater
-        } acre_signalModel_t;
+        enum class PropagationModel {
+           arcade,
+           los,
+           losMultipath,
+           longleyRice_itm,
+           longleyRice_itwom,
+           underwater
+        };
 
         struct signal_map_result {
             signal_map_result() { }
@@ -83,7 +83,7 @@ namespace acre {
             }
         public:
             typedef enum {
-                acre_signalArgument_signalModel,
+                acre_signalArgument_signalPropagationModel,
                 acre_signalArgument_id,
                 acre_signalArgument_txPositionX,
                 acre_signalArgument_txPositionY,
@@ -151,7 +151,7 @@ namespace acre {
                     return true;
                 }
 
-                const acre_signalModel_t model = static_cast<acre_signalModel_t>(args_.as_int(acre_signalArgument_signalModel));
+                const PropagationModel model = static_cast<PropagationModel>(args_.as_int(acre_signalArgument_signalPropagationModel));
 
                 const int32_t logging = args_.as_int(acre_signalArgument_debugEnabled);
                 const bool omnidirectional = args_.as_int(acre_signalArgument_omnidirectionalRadios);
@@ -194,23 +194,23 @@ namespace acre {
                 acre::signal::result signal_result;
 
                 switch (model) {
-                    case acre_signalModel_arcade: {
+                    case PropagationModel::arcade: {
                         _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, f, power);
                         break;
                     }
-                    case acre_signalModel_los: {
+                    case PropagationModel::los: {
                         _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
                         break;
                     }
-                    case acre_signalModel_losMultipath: {
+                    case PropagationModel::losMultipath
                         _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
                         break;
                     }
-                    case acre_signalModel_longleyRice_ITM: {
+                    case PropagationModel::longleyRice_itm: {
                         _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, false, omnidirectional, true);
                         break;
                     }
-                    case acre_signalModel_longleyRice_ITWOM: {
+                    case PropagationModel::longleyRice_itwom: {
                         _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, true, omnidirectional, true);
                         break;
                     }

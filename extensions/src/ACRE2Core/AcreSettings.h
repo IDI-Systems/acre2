@@ -13,10 +13,10 @@ public:
     CAcreSettings();
     ~CAcreSettings();
 
-    acre_result_t save();
-    acre_result_t load();
-    acre_result_t save(std::string filename);
-    acre_result_t load(std::string filename);
+    AcreResult save();
+    AcreResult load();
+    AcreResult save(std::string filename);
+    AcreResult load(std::string filename);
 
     DECLARE_MEMBER(std::string, LastVersion);
 

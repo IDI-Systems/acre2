@@ -9,7 +9,7 @@
 
 #define TS_SAMPLE_RATE 48000
 
-acre_result_t CFilterVolume::process(short* samples, int sampleCount, int channels, acre_volume_t volume, acre_volume_t previousVolume) {
+AcreResult CFilterVolume::process(short* samples, int sampleCount, int channels, acre_volume_t volume, acre_volume_t previousVolume) {
     if (volume > 0.001f) {
         float dif;
         float v;
@@ -30,7 +30,7 @@ acre_result_t CFilterVolume::process(short* samples, int sampleCount, int channe
     } else {
         memset(samples, 0x00, (sampleCount*channels)*sizeof(short) );
     }
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
 CFilterVolume::CFilterVolume(void)

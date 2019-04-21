@@ -9,7 +9,7 @@
 #define TS_SAMPLE_RATE 48000
 #define CUTTOFF_FREQ    15000
 
-acre_result_t CFilterOcclusion::process(short* samples, int sampleCount, int channels, acre_volume_t volume, Dsp::Filter *&filter) {
+AcreResult CFilterOcclusion::process(short* samples, int sampleCount, int channels, acre_volume_t volume, Dsp::Filter *&filter) {
     float buffer[4096], *floatPointer[1];
     short *shortPointer[1];
     if (channels != this->getChannelCount() || !filter) {
@@ -58,7 +58,7 @@ acre_result_t CFilterOcclusion::process(short* samples, int sampleCount, int cha
 
 
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
 CFilterOcclusion::CFilterOcclusion(void)
