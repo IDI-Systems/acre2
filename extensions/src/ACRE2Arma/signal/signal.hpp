@@ -187,35 +187,35 @@ namespace acre {
                     return true;
                 }
 
-                const float32_t f = args_.as_float(acre_signalArgument_frequency);
-                const float32_t power = args_.as_float(acre_signalArgument_power);
+                const float32_t frequency_MHz = args_.as_float(acre_signalArgument_frequency);
+                const float32_t power_mW = args_.as_float(acre_signalArgument_power);
                 const float32_t scale = args_.as_float(acre_signalArgument_terrainScaling);
 
                 acre::signal::result signal_result;
 
                 switch (model) {
                     case PropagationModel::arcade: {
-                        _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, f, power);
+                        _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, frequency_MHz, power_mW);
                         break;
                     }
                     case PropagationModel::los: {
-                        _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                        _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
                         break;
                     }
                     case PropagationModel::losMultipath: {
-                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
                         break;
                     }
                     case PropagationModel::longleyRice_itm: {
-                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, false, omnidirectional, true);
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, false, omnidirectional, true);
                         break;
                     }
                     case PropagationModel::longleyRice_itwom: {
-                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, true, omnidirectional, true);
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, true, omnidirectional, true);
                         break;
                     }
                     default: {
-                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
                     }
                 }
 
