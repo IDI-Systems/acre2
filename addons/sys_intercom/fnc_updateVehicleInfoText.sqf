@@ -18,11 +18,26 @@
 
 params ["_vehicle", "_unit"];
 
+#define GRAY  "#737373"
+#define WHITE "#ffffff"
+#define GREEN "#008000"
+
 if (vehicle _unit == _unit) exitWith {};
 
 private _intercomNames = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
 private _infoLine = "";
 private _elements = count _intercomNames;
+private _colorfnc = {
+    params ["_idx"];
+
+    private _color = WHITE;
+    if (GVAR(activeIntercom) == _idx && {GVAR(guiOpened)}) then {
+        _color = GREEN;
+    };
+
+    _color
+};
+
 {
     private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
     private _isBroadcasting = ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _forEachIndex) params ["_isBroadcasting", "_broadcastingUnit"];
@@ -33,14 +48,14 @@ private _elements = count _intercomNames;
     private _displayName = _x select 2;
     switch (_connectionStatus) do {
         case INTERCOM_DISCONNECTED: {
-            _color = "#737373";
+            _color = GRAY;
         };
         case INTERCOM_RX_ONLY: {
-            _color = "#ffffff";
+            _color = [_forEachIndex] call _colorfnc;
             _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R) </t>", _color];
         };
         case INTERCOM_TX_ONLY: {
-            _color = "#ffffff";
+            _color = [_forEachIndex] call _colorfnc;
             if (_isBroadcasting && {_broadcastingUnit == acre_player}) then {
                 _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(B) </t>", _color];
             } else {
@@ -56,7 +71,7 @@ private _elements = count _intercomNames;
             };
         };
         case INTERCOM_RX_AND_TX: {
-            _color = "#ffffff";
+            _color = [_forEachIndex] call _colorfnc;
             if (_isBroadcasting && {_broadcastingUnit == acre_player}) then {
                 _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/B) </t>", _color];
             } else {
@@ -87,10 +102,10 @@ if !(_intercomNames isEqualTo []) then {
         private _rackClassName = _x;
         private _displayName = [_rackClassName, "getState", "shortName"] call EFUNC(sys_data,dataEvent);
         private _mountedRadio = [_rackClassName] call EFUNC(sys_rack,getMountedRadio);
-        private _color = "#737373";
+        private _color = GRAY;
         private _textStatus = "";
         if (_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS || {_mountedRadio in ACRE_HEARABLE_RACK_RADIOS}) then {
-            _color = "#ffffff";
+            _color = WHITE;
             _textStatus = "(R/T)";
             if ([_x, _unit] call EFUNC(sys_rack,isRackHearable)) then {
 
@@ -120,7 +135,7 @@ if !(_intercomNames isEqualTo []) then {
 } forEach ([_vehicle] call EFUNC(sys_rack,getVehicleRacks));
 
 #ifdef DEBUG_VEHICLE_INFO
-private _color = "#ffffff";
+private _color = WHITE;
 private _textStatus = format ["<t font='PuristaBold' color='%1' size='0.6'>(R/B) </t>", _color];
 _infoLine = "";
 

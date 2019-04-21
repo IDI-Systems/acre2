@@ -53,6 +53,8 @@ if (GVAR(activeIntercom) == -1) exitWith {false};
 
 GVAR(guiOpened) = true;
 
+[_vehicle, acre_player] call FUNC(updateVehicleInfoText);
+
 disableSerialization;
 
 // Get the intercom type

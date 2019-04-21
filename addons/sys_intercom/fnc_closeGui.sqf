@@ -21,8 +21,10 @@ if (vehicle acre_player isEqualTo acre_player) exitWith {};
 GVAR(guiOpened) = false;
 GVAR(activeIntercom) = -1;
 
+[vehicle acre_player, acre_player] call FUNC(updateVehicleInfoText);
+
 if (GVAR(configChanged)) then {
-    [vehicle acre_player, player] call FUNC(saveStationConfiguration);
+    [vehicle acre_player, acre_player] call FUNC(saveStationConfiguration);
 };
 
 true

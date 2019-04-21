@@ -28,6 +28,8 @@ if (_varName isEqualTo "") exitWith {
     ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
 };
 
-private _intercomArray = _vehicle getVariable [_varName, []];
-_vehicle setVariable [_varName, _intercomArray, true];
-[_vehicle, _unit] call FUNC(updateVehicleInfoText);
+// Only make public if GUI is not opened
+if (!GVAR(guiOpened) && {GVAR(configChanged)}) then {
+    GVAR(configChanged) = false;
+    publicVariable _varName;
+};

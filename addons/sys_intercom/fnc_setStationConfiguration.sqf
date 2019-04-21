@@ -65,7 +65,12 @@ switch (_intercomFunctionality) do {
 };
 
 if (_changed) then {
+    GVAR(configChanged) = true;
+
     [_intercomStatus, _intercomFunctionality, _value] call CBA_fnc_hashSet;
-    _vehicle setVariable [_varName, _intercomArray, true];
+    _vehicle setVariable [_varName, _intercomArray];
+
+    [_vehicle, _unit, _varName] call FUNC(saveStationConfiguration);
+
     [_vehicle, _unit] call FUNC(updateVehicleInfoText);
 };
