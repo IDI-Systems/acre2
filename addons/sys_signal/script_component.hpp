@@ -20,4 +20,4 @@
 #define SIGNAL_MODEL_LOS_SIMPLE    1
 #define SIGNAL_MODEL_LOS_MULTIPATH 2
 #define SIGNAL_MODEL_ITM           3
-#define SIGNAL_MODEL_ITWOM         4
+#define SIGNAL_MODEL_ITWOM         4  // This model is for now disabled.
