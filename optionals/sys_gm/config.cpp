@@ -6,9 +6,9 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main", "acre_sys_core"};
+        requiredAddons[] = {"acre_main"};
         author = ECSTRING(main,Author);
-        authors[] = {"GlobalMobilization"};
+        authors[] = {"Vertexmacht"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
@@ -19,5 +19,5 @@ class CfgAcreWorlds {
         wrp = "\idi\acre\addons\sys_gm\gm_weferlingen.fakewrp";
     };
 
-    class gm_weferlingen_winter : gm_weferlingen_summer {};
+    class gm_weferlingen_winter: gm_weferlingen_summer {};
 };
