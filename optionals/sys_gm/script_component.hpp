@@ -1,5 +1,5 @@
 #define COMPONENT sys_gm
-#define COMPONENT_BEAUTIFIED Global Mobilization Compatibility Patch
+#define COMPONENT_BEAUTIFIED Global Mobilization Compatibility
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_GM
