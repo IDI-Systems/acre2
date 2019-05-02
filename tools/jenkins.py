@@ -70,6 +70,7 @@ parser.add_argument('current_branch', type=str, help='the name of the current br
 parser.add_argument('-t', '--target_branch', type=str, help="the targeted branch for merging changes during build, defaults to 'master'", default="master")
 parser.add_argument('-r', '--release_target', type=str, help="the name of the release target in the manifest file.", default="release")
 parser.add_argument('-m', '--make_arg', help="a list of args for make", action="append")
+parser.add_argument('-p', '--publish', action="store_true", help="publish or not to publish")
 
 
 args = parser.parse_args()
@@ -107,7 +108,8 @@ if(status_ok): # Only diff and push if merge was successful
     do_action(["git", "diff"], "Diff failed to resolve '{}' and '{}' cleanly, conflict exists.".format(current_branch, target_branch))
     do_action(["git", "push", "origin", target_branch], "Failed to push changes back into branch 'origin/{}'".format(target_branch))
 
-# Pass version in case merge failed above (publish.py would try to read pre-merge file)
-do_action(["python", "-u", "publish.py", "..\\manifest.json", "-r", release_target, "-v", version_str], "Publish failed.")
+if args.publish:
+    # Pass version in case merge failed above (publish.py would try to read pre-merge file)
+    do_action(["python", "-u", "publish.py", "..\\manifest.json", "-r", release_target, "-v", version_str], "Publish failed.")
 
 sys.exit(0)
