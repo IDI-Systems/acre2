@@ -8,7 +8,7 @@
  * 1: Key direction. O: left, 1: right <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
  * [idc, 0] call acre_sys_intercom_fnc_vic3ffcsOnWorkKnobPress

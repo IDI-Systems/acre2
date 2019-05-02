@@ -8,7 +8,7 @@
  * 1: Intercom configuration <ARRAY>
  *  0: Intercom volume <NUMBER>
  *  1: Monitoring rack <NUMBER>
- *  2: Actively used rack <NUBMER>
+ *  2: Actively used rack <NUMBER>
  *  3: Voice activation <BOOL>
  * 2: Vehicle <OBJECT>
  *
