@@ -4,11 +4,11 @@
  * Handles turning the intercom knob.
  *
  * Arguments:
- * 0: Unused
+ * 0: What it actually is <TYPE> (unused)
  * 1: Key direction. O: left, 1: right <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
  * [idc, 0] call acre_sys_intercom_fnc_vic3ffcsOnIntercomKnobPress

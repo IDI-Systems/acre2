@@ -4,7 +4,7 @@
  * Handles turning the work knob.
  *
  * Arguments:
- * 0: Unused
+ * 0: What it actually is <TYPE> (unused)
  * 1: Key direction. O: left, 1: right <NUMBER>
  *
  * Return Value:
