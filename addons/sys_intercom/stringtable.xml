@@ -206,6 +206,21 @@
             <Chinesesimp>乘客</Chinesesimp>
             <French>Pax</French>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_open">
+            <English>Open</English>
+            <Czech>Otevřít</Czech>
+            <German>Öffnen</German>
+            <Russian>Открыть</Russian>
+            <Polish>Otwórz</Polish>
+            <Italian>Apri</Italian>
+            <Spanish>Abrir</Spanish>
+            <French>Ouvrir</French>
+            <Japanese>開く</Japanese>
+            <Chinese>打開</Chinese>
+            <Chinesesimp>打开</Chinesesimp>
+            <Korean>열기</Korean>
+            <Portuguese>Abrir</Portuguese>
+        </Key>
         <Key ID="STR_ACRE_sys_intercom_connect">
             <English>Connect</English>
             <German>Verbunden</German>
@@ -273,16 +288,6 @@
             <Italian>Ricevi e trasmetti</Italian>
             <French>Recevoir et transmettre</French>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_volume">
-            <English>Volume</English>
-            <Spanish>Volumen</Spanish>
-            <Polish>Głośność</Polish>
-            <Italian>Volume</Italian>
-            <Japanese>音量</Japanese>
-            <Chinese>音量</Chinese>
-            <Chinesesimp>音量</Chinesesimp>
-            <French>Volume</French>
-        </Key>
         <Key ID="STR_ACRE_sys_intercom_mute">
             <English>Mute</English>
             <Spanish>Mutear</Spanish>
@@ -322,26 +327,6 @@
             <English>Deactivate Accent</English>
             <German>Bordfunkpriorität deaktivieren</German>
             <Spanish>Desactivar prioridad de intercom</Spanish>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_pttActivation">
-            <English>PTT Activation</English>
-            <Spanish>Activación PTT</Spanish>
-            <Polish>Aktywacja PTT</Polish>
-            <Italian>Attiva PTT</Italian>
-            <Japanese>PTT で有効</Japanese>
-            <Chinese>按鍵發話啟用</Chinese>
-            <Chinesesimp>按键发话启用</Chinesesimp>
-            <French>Activation PPT</French>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_voiceActivation">
-            <English>Voice Activation</English>
-            <Spanish>Activación por voz</Spanish>
-            <Polish>Aktywacja głosowa</Polish>
-            <Italian>Voice activation</Italian>
-            <Japanese>音声検知</Japanese>
-            <Chinese>語音啟用</Chinese>
-            <Chinesesimp>语音启用</Chinesesimp>
-            <French>Activation de la voix</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
             <English>Intercom Transmit</English>
@@ -422,6 +407,10 @@
             <Chinese>連接至下一個內部通訊網路</Chinese>
             <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
             <French>Connecter le réseau d'interphone suivant</French>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_openGui">
+            <English>Opens Intercom GUI</English>
+            <Spanish>Abre la interfaz de Intercom</Spanish>
         </Key>
     </Package>
 </Project>

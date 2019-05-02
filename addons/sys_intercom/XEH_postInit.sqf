@@ -40,6 +40,10 @@ if (!hasInterface) exitWith {};
     [1, false] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [false, true, true]]] call CBA_fnc_addKeybind;
 
+["ACRE2", QGVAR(openGui), localize LSTRING(openGui), {
+    [0] call FUNC(openGui)
+}, ""] call CBA_fnc_addKeybind;
+
 // Intercom configuration
 ["vehicle", {
     params ["_player", "_newVehicle"];
@@ -54,7 +58,8 @@ if (!hasInterface) exitWith {};
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 player addEventHandler ["seatSwitchedMan", {
-    params ["_unit1", "_unit2", "_vehicle"];
+    params ["_unit1", "", "_vehicle"];
+
     [_vehicle, _unit1] call FUNC(seatSwitched);
 }];
 

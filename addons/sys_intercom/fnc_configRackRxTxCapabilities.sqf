@@ -18,19 +18,23 @@
 params ["_vehicle"];
 
 private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
+private _intercoms = (_vehicle getVariable [QGVAR(intercomNames), []]);
 
 {
-    private _rackRxTxConfig = [];
+
     private _stationName = _x;
     {
-        private _rackId = _x;
-        {
-            private _seatHasIntercomAccess = [_vehicle, objNull, _forEachIndex, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _stationName] call FUNC(getStationConfiguration);
-            if (_seatHasIntercomAccess) exitWith {
-                _rackRxTxConfig pushBackUnique [_rackId, RACK_NO_MONITOR];
-            };
-        } forEach (_vehicle getVariable [QGVAR(intercomNames), []]);
-    } forEach _racks;
+        private _seatHasIntercomAccess = [_vehicle, objNull, _forEachIndex, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _stationName] call FUNC(getStationConfiguration);
 
-    _vehicle setVariable [format ["%1_rack", _stationName], _rackRxTxConfig, true];
+        private _intercomStatus = (_vehicle getVariable [_stationName, [] call CBA_fnc_hashCreate]) select _forEachIndex;
+        private _rackRxTxConfig = [_intercomStatus, INTERCOM_STATIONSTATUS_WIREDRACKS] call CBA_fnc_hashGet;
+
+        {
+            // RackID, MONITOR STATUS, Has access to rack. By default if seat has intercom access, the unit sitting in it can use the rack. This can be
+            // changed using a master control station (MCS)
+            _rackRxTxConfig set [_forEachIndex, [_x, RACK_NO_MONITOR, _seatHasIntercomAccess]];
+        } forEach _racks;
+
+        [_intercomStatus, INTERCOM_STATIONSTATUS_WIREDRACKS, _rackRxTxConfig] call CBA_fnc_hashSet;
+    } forEach _intercoms;
 } forEach (_vehicle getVariable [QGVAR(intercomStations), []]);
