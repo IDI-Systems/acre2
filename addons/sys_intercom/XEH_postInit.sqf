@@ -46,7 +46,7 @@ if (!hasInterface) exitWith {};
     localize LSTRING(openGui),
     {[0] call FUNC(openGui)},
     ""
-] call cba_fnc_addKeybind;
+] call CBA_fnc_addKeybind;
 
 // Intercom configuration
 ["vehicle", {
