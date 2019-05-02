@@ -100,7 +100,7 @@ class Prc152_RadioDialog {
             colorBar[] = {0.2, 0.2, 0.2, 1};
             texture = "#(argb,8,8,3)color(1,1,1,1)";
             tooltip = "ST_HORIZONTAL";
-        };   
+        };
 
         // Lower down for render order.
         class TransmitIcon: Prc152_RscPicture {
@@ -111,8 +111,8 @@ class Prc152_RadioDialog {
             h = SCALE*(0.00438*4)*safeZoneH; //0.01105, 3
             colorText[] = { 0, 0, 0, 1 };
             text = PATHTOF(Data\icons\icon_transmit.paa);
-        };    
-     
+        };
+
 
         class UpIcon: Prc152_RscPicture {
             idc = 99903;
