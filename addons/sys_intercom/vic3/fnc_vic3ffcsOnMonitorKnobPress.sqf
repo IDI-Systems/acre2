@@ -4,7 +4,7 @@
  * Handles turning the monitor knob.
  *
  * Arguments:
- * 0: What it actually is <TYPE> (unused)
+ * 0: IDC <NUMBER> (unused)
  * 1: Key direction. O: left, 1: right <NUMBER>
  *
  * Return Value:
