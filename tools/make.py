@@ -334,6 +334,8 @@ def compile_extensions(extensions_root, force_build):
     if msbuild_path == None:
         print_error("Failed to find MSBuild!")
         return
+    elif "16.0" in msbuild_path:
+        generator = "Visual Studio 16 2019"
     elif "15.0" in msbuild_path:
         generator = "Visual Studio 15 2017"
     elif "14.0" in msbuild_path:
