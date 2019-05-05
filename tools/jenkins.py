@@ -64,6 +64,8 @@ def create_pull_request(args):
     print(curl_string)
     subprocess.call(curl_string)
 
+
+# Arguments
 parser = argparse.ArgumentParser(description="Jenkins CI System for Arma Projects Will execute a build and commit changes back into the current and target branches.")
 parser.add_argument('repository', type=str, help='repository name in format owner/repo')
 parser.add_argument('current_branch', type=str, help='the name of the current branch, can be supplied with a remote, ie: origin/release')
@@ -83,13 +85,19 @@ make_args = ["python", "-u", "make.py"]
 if(args.make_arg != None):
     make_args.extend(args.make_arg)
 
+# Credentials
+if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
+    raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
+
 credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
+
 cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
 if("github_oauth_token" in cred_file):
     github_token = destination["github_oauth_token"]
 else:
     raise Exception("Credentials file did not specify a username and password for SFTP login")
 
+# Actions
 print(current_branch)
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
 do_action(make_args, "Make failed")
