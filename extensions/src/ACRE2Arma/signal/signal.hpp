@@ -6,7 +6,7 @@
 #include <sstream>
 #include "map/map.hpp"
 
-#include "models/casual.hpp"
+#include "models/arcade.hpp"
 #include "models/longleyRice.hpp"
 #include "models/los_simple.hpp"
 
@@ -20,12 +20,12 @@
 namespace acre {
     namespace signal {
         enum class PropagationModel {
-           casual,
-           los,
-           losMultipath,
-           longleyRice_itm,
-           longleyRice_itwom,
-           underwater
+             arcade,
+             los,
+             losMultipath,
+             longleyRice_itm,
+             longleyRice_itwom,
+             underwater
         };
 
         struct signal_map_result {
@@ -67,7 +67,7 @@ namespace acre {
             uint32_t _debug_id;
             acre::signal::map_p _map;
 
-            acre::signal::model::Casual      _signalProcessor_casual;
+            acre::signal::model::Arcade      _signalProcessor_arcade;
             acre::signal::model::los_simple  _signalProcessor_los;
             acre::signal::model::multipath   _signalProcessor_multipath;
             acre::signal::model::longleyRice _signalProcessor_longleyRice;
@@ -194,8 +194,8 @@ namespace acre {
                 acre::signal::result signal_result;
 
                 switch (model) {
-                    case PropagationModel::casual: {
-                        _signalProcessor_casual.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, frequency_MHz, power_mW);
+                    case PropagationModel::arcade: {
+                        _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, frequency_MHz, power_mW);
                         break;
                     }
                     case PropagationModel::los: {

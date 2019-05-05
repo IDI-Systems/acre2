@@ -1,15 +1,15 @@
-#include "casual.hpp"
+#include "arcade.hpp"
 #include <glm/geometric.hpp>
 
-acre::signal::model::Casual::Casual() : SignalModel() {
+acre::signal::model::Arcade::Arcade() : SignalModel() {
 
 }
 
-acre::signal::model::Casual::~Casual() {
+acre::signal::model::Arcade::~Arcade() {
 
 }
 
-void acre::signal::model::Casual::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &rx_pos_, const std::string &rx_antenna_name, const float32_t frequency_Hz, const float32_t power_mW) {
+void acre::signal::model::Arcade::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &rx_pos_, const std::string &rx_antenna_name, const float32_t frequency_Hz, const float32_t power_mW) {
     const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
 
     // Free Space Path Loss model
