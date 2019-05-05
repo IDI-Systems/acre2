@@ -23,6 +23,31 @@ Some vehicles have additionally, restrictions on the amount of connections avail
 
 Optionally, each network has a master station. Such stations can broadcast a message (activation through intercom broadcast PTT key), temporarily disabling all transmit functionality in all stations. One useful feature in the master station is the *accent feature*. When enabled, incoming radio transmissions will have their volume reduced by 20% if intercom is being used by any crew member at the same time. All intercom stations are affected by this behaviour.
 
+### Full Functional Crew Station (FFCS)
+
+{% include note.html content="Development Build only!" %}
+
+{% include image.html file="intercom/anvic3_ffcs_interface.png" alt="AN/VIC3 FFCS" %}
+
+This interface can be opened using the ACE Interaction menu or through a shortcut (defaults to: CTRL + SHIFT + TAB). The opened intercom will be displayed in green in the HUD.
+
+#### Volume Knob
+
+Sets the overall volume of the intercom and monitored/active radios. Red frange boosts the volume for noisy environments.
+
+#### Monitor Knob
+
+Monitors the selected or all radios. Radios in this configuration are set to receive only.
+
+#### Work Knob
+
+The selected radio is capable of receiving and transmitting.
+
+#### Intercom Knob
+
+It has 4 positions. When at PTT, the intercom will behave as *PTT activation* mode, LIVE and VOX is the equivalent of *Voice activation* and O/R allows the FFCS to transmit a priority message by temporarily disabling all other FFCS stations.
+
+
 ## Infantry telephone
 
 {% include important.html content="Requires ACE3 Interaction Menu!" %}
