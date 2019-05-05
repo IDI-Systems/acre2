@@ -91,7 +91,9 @@ if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
     raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
 credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
 
-manifest = json.load("..\\manifest.json")
+with open("..\\manifest.json") as manifest_file:
+    manifest = json.load(manifest_file)
+
 for destination in manifest['publish']['release']['destinations']:
     if(destination["type"] == "github"):
         cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
