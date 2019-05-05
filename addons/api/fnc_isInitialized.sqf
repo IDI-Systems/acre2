@@ -23,5 +23,5 @@ params [
 
 // Is initialized if the unit has no base radio, hasBaseRadio also can not return nil
 // and also check that we don't return true if the unit has an ItemRadio as ItemRadio is also a base radio
-!isNull _unit && {!([_unit] call FUNC(hasBaseRadio))} && {!([_unit, "ItemRadio"] call EFUNC(sys_core,hasItem))};
+!isNull _unit && {!([_unit] call FUNC(hasBaseRadio))} && {!([_unit, "ItemRadio"] call EFUNC(sys_core,hasItem))}
 
