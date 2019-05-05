@@ -91,14 +91,13 @@ if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
     raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
 credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
 
-with open("..\\manifest.json") as manifest_file:
-    manifest = json.load(manifest_file)
+manifest = json.load(open("..\\manifest.json"))
 
 for destination in manifest['publish']['release']['destinations']:
     if(destination["type"] == "github"):
         cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
         if("github_oauth_token" in cred_file):
-            github_token = destination["github_oauth_token"]
+            github_token = cred_file["github_oauth_token"]
         else:
             raise Exception("Credentials file did not specify a username and password for SFTP login")
 

@@ -241,7 +241,7 @@ def main(argv):
             if(destination["type"] == "github"):
                 cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
                 if("github_oauth_token" in cred_file):
-                    github_token = destination["github_oauth_token"]
+                    github_token = cred_file["github_oauth_token"]
                 else:
                     raise Exception("Credentials file did not specify a username and password for SFTP login")
 
@@ -253,7 +253,7 @@ def main(argv):
                 local_path = destination["local_path"]
                 prerelease = destination["prerelease"]
                 asset_name = destination["asset_name"]
-                
+
 
                 tag_name = tag_name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 name = name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
