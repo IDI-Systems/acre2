@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main", "acre_sys_core", "acre_sys_components"};
+        requiredAddons[] = {"acre_sys_components"};
         author = ECSTRING(main,Author);
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
