@@ -151,13 +151,4 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
     }, 0, []] call CBA_fnc_addPerFrameHandler;
 };
 
-[{
-    params ["", "_pfhId"];
-
-    if (ACRE_MAP_LOADED && {[] call EFUNC(api,isInitialized)}) then {
-        [_pfhId] call CBA_fnc_removePerFrameHandler;
-        ["acre_initialized"] call CBA_fnc_localEvent;
-    };
-}, 0, []] call CBA_fnc_addPerFrameHandler;
-
 true
