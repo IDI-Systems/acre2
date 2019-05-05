@@ -26,11 +26,11 @@ import timeit
 import re
 import fnmatch
 import argparse
-import psutil
-import pysftp
+import psutil  # pip
+import pysftp  # pip
 import tempfile
 
-from uritemplate import URITemplate, expand
+from uritemplate import URITemplate, expand  # pip
 
 if sys.platform == "win32":
     import winreg
