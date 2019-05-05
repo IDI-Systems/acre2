@@ -239,6 +239,11 @@ def main(argv):
                 sftp.put(local_path, remotepath=remote_path)
                 print("SFTP: Upload Complete!")
             if(destination["type"] == "github"):
+                cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
+                if("github_oauth_token" in cred_file):
+                    github_token = destination["github_oauth_token"]
+                else:
+                    raise Exception("Credentials file did not specify a username and password for SFTP login")
 
                 account = destination["account"]
                 tag_name = destination["tag_name"]
@@ -248,6 +253,7 @@ def main(argv):
                 local_path = destination["local_path"]
                 prerelease = destination["prerelease"]
                 asset_name = destination["asset_name"]
+                
 
                 tag_name = tag_name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
                 name = name.format(major=version[0], minor=version[1], patch=version[2], build=version[3])
@@ -267,8 +273,6 @@ def main(argv):
                     "draft": False,
                     "prerelease": prerelease
                 }
-
-                github_token = os.environ["IDI_GITHUB_TOKEN"]
 
                 release_string = json.dumps(create_request, separators=(',',':'))
 
