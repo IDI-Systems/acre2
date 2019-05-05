@@ -83,7 +83,12 @@ make_args = ["python", "-u", "make.py"]
 if(args.make_arg != None):
     make_args.extend(args.make_arg)
 
-github_token = os.environ["IDI_GITHUB_TOKEN"]
+credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
+cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
+if("github_oauth_token" in cred_file):
+    github_token = destination["github_oauth_token"]
+else:
+    raise Exception("Credentials file did not specify a username and password for SFTP login")
 
 print(current_branch)
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
