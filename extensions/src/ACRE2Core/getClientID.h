@@ -29,7 +29,7 @@ RPC_FUNCTION(getClientID) {
 
     UNLOCK(CEngine::getInstance()->getSelf());
     
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

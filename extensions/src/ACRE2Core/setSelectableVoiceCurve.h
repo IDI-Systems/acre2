@@ -10,14 +10,14 @@ RPC_FUNCTION(setSelectableVoiceCurve) {
     voiceCurveScale = vMessage->getParameterAsFloat(0);
     //LOG("VOICE MODEL: %d VOICE CURVE: %f", voiceModel, voiceCurveScale);
     if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return acre_result_ok;
+        return AcreResult::ok;
 
     if (CEngine::getInstance()->getSelf()) {
         LOCK(CEngine::getInstance()->getSelf());
         CEngine::getInstance()->getSelf()->setSelectableCurveScale(voiceCurveScale);
         if (CEngine::getInstance()->getSelf()->getSpeaking()) {
             CEngine::getInstance()->getExternalServer()->sendMessage(
-                CTextMessage::formatNewMessage("ext_remoteStartSpeaking", 
+                CTextMessage::formatNewMessage("ext_remoteStartSpeaking",
                     "%d,%d,%s,%d,%s,%f,",
                     CEngine::getInstance()->getSelf()->getId(),
                     CEngine::getInstance()->getSelf()->getCurrentLanguageId(),
@@ -25,13 +25,13 @@ RPC_FUNCTION(setSelectableVoiceCurve) {
                     CEngine::getInstance()->getSelf()->getSpeakingType(),
                     CEngine::getInstance()->getSelf()->getCurrentRadioId().c_str(),
                     CEngine::getInstance()->getSelf()->getSelectableCurveScale()
-                ) 
+                )
             );
         }
         UNLOCK(CEngine::getInstance()->getSelf());
     }
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

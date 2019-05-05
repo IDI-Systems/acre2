@@ -7,7 +7,7 @@
 #include <string>
 
 
-acre_result_t CSoundPlayback::buildSound(std::string id, std::string content) {
+AcreResult CSoundPlayback::buildSound(std::string id, std::string content) {
     SoundItem *item;
     if (itemMap.find(id) == itemMap.end()) {
         item = new SoundItem();
@@ -21,13 +21,13 @@ acre_result_t CSoundPlayback::buildSound(std::string id, std::string content) {
         item->base64 += content;
     }
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
-acre_result_t CSoundPlayback::loadSound(std::string id) {
+AcreResult CSoundPlayback::loadSound(std::string id) {
     SoundItem *item;
     if (itemMap.find(id) == itemMap.end()) {
-        return acre_result_error;
+        return AcreResult::error;
     }
     item = itemMap.find(id)->second;
 
@@ -39,7 +39,7 @@ acre_result_t CSoundPlayback::loadSound(std::string id) {
     tempPath += id;
     std::ofstream out(tempPath, std::ios::out | std::ios::binary);
     if (!out.is_open()) {
-        return acre_result_error;
+        return AcreResult::error;
     }
     out.write(&decoded[0], decoded.size());
     out.close();
@@ -47,10 +47,10 @@ acre_result_t CSoundPlayback::loadSound(std::string id) {
     item->base64 = "";
     item->tempPath = tempPath;
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 
-acre_result_t CSoundPlayback::playSound(std::string id, ACRE_VECTOR position, ACRE_VECTOR direction, float volume, bool isWorld) {
+AcreResult CSoundPlayback::playSound(std::string id, ACRE_VECTOR position, ACRE_VECTOR direction, float volume, bool isWorld) {
     std::string tempPath = CEngine::getInstance()->getClient()->getTempFilePath();
     tempPath += "\\";
     tempPath += id;
@@ -73,16 +73,16 @@ acre_result_t CSoundPlayback::playSound(std::string id, ACRE_VECTOR position, AC
 
         if (isWorld) {
             tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000001);
-            tempChannel->getMixdownEffectInsert(0)->setParam("speakingType", acre_speaking_radio);
+            tempChannel->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(AcreSpeaking::radio));
         } else {
             tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000000);
         }
 
         tempChannel->In((short *)waveFile.GetData(), waveFile.GetSize()/sizeof(short));
         CEngine::getInstance()->getSoundEngine()->getSoundMixer()->unlock();
-        return acre_result_ok;
+        return AcreResult::ok;
     }
-    return acre_result_error;
+    return AcreResult::error;
 }
 
 bool CSoundPlayback::is_base64(unsigned char c) {

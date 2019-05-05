@@ -33,12 +33,12 @@ RPC_FUNCTION(playLoadedSound) {
 
     isWorld = vMessage->getParameterAsInt(8);
 
-    acre_result_t res = CEngine::getInstance()->getSoundPlayback()->playSound(id, position, direction, volume, isWorld == 1);
-    if (res == acre_result_error) {
+    AcreResult res = CEngine::getInstance()->getSoundPlayback()->playSound(id, position, direction, volume, isWorld == 1);
+    if (res == AcreResult::error) {
         vServer->sendMessage(CTextMessage::formatNewMessage("handleSoundError", "%s,", id.c_str()));
     }
 
-    return acre_result_ok;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };
