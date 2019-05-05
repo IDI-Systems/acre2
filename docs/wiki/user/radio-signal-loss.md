@@ -10,7 +10,7 @@ Every radio also has its own transmission power which determines the initial str
 
 The antenna direction for infantry is simulated as being relative to the direction of their back. If radio antenna direction is not ignored (see below) this can be observed by having difficulties receiving transmissions from other players who are prone if you are standing and vice versa as the antennas will be out of alignment.
 
-(Only in Dev-Build): However it is possible to manually align the antenna by bending it in order to improve signal quality. To keep it as simple as possible, there are only two possible antenna alignments, the player can choose between the two via ACE Interaction Menu or Custom Keybind (default: `CTRL+ALT+UP`). In addition to the manual method, there is always the possibility to activate an automatic antenna alignment via CBA Settings (see below). The current alignment of the antenna is shown in the Arma 3 Stance Indicator. 
+(Only in Dev-Build): However it is possible to manually align the antenna by bending it in order to improve signal quality. To keep it as simple as possible, there are only two possible antenna alignments, the player can choose between the two via ACE Interaction Menu or Custom Keybind (default: `CTRL+ALT+UP`). In addition to the manual method, there is always the possibility to activate an automatic antenna alignment via CBA Settings (see below). The current alignment of the antenna is shown in the Arma 3 Stance Indicator.
 
 {% include image.html file="user/antenna_indicator.png" alt="Antenna Alignment shown in Stance Indicator" %}
 
@@ -51,8 +51,21 @@ Default value: Disabled (antenna direction is taken into account)
 
 {% include note.html content="Development Build only!" %}
 
-This setting enables an automatic antenna alignment to improve signal strength e.g. when being prone. 
+This setting enables an automatic antenna alignment to improve signal strength e.g. when being prone.
 
 Default value: Disabled (antenna needs to be aligned manually)
 
 Note: _If the antenna direction is ignored, this setting will have no effect._
+
+###  Radio Wave Propagation Models
+
+{% include note.html content="Development Build only!" %}
+
+This setting allows selecting the propagation model and it can be changed mid-mission with a global effect. For the moment the following models are supported:
+
+- *Arcade*: This model is the simplest and it is targeted for a casual gameplay. It is a largely based on [free-space path loss](https://en.wikipedia.org/wiki/Free-space_path_loss) over the distance which does not take into account terrain. It is also provides a bit of a boost to the signal strength of the AN/PRC-343: the range of a AN/PRC-343 is around 500m and virtually all other radios will have no problems with Arma terrains (40km+). The terrain loss and antenna direction settings will have no effect in this model.
+- *LOS Simple*: This model is based on free-space path loss but without multi-path capabilities.
+- *LOS Multipath*: Is the default model in ACRE2.
+- *Longley-Rice (ITM)*: also known as the [irregular terrain model (ITM)](https://en.wikipedia.org/wiki/Longley%E2%80%93Rice_model) is as of 2.7.0 an experimental model in ACRE2. It is a model valid for radio waves between 20MHz and 20GHz. The terrain loss and antenna direction settings will have no effect in this model.
+
+Default value: LOS Multipath.

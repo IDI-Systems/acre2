@@ -5,8 +5,11 @@
 #include "controller.hpp"
 #include <sstream>
 #include "map/map.hpp"
-#include "models/los_simple.hpp"
+
 #include "models/arcade.hpp"
+#include "models/longleyRice.hpp"
+#include "models/los_simple.hpp"
+
 #include "antenna/antenna_library.hpp"
 #include "lodepng.h"
 
@@ -17,10 +20,12 @@
 namespace acre {
     namespace signal {
         enum class PropagationModel {
-           arcade,
-           losMultipath,
-           longleyRice,
-           underwater
+             arcade,
+             los,
+             losMultipath,
+             longleyRice_itm,
+             longleyRice_itwom,
+             underwater
         };
 
         struct signal_map_result {
@@ -61,8 +66,12 @@ namespace acre {
         protected:
             uint32_t _debug_id;
             acre::signal::map_p _map;
-            acre::signal::model::multipath _signalProcessor_multipath;
-            acre::signal::model::Arcade    _signalProcessor_arcade;
+
+            acre::signal::model::Arcade      _signalProcessor_arcade;
+            acre::signal::model::los_simple  _signalProcessor_los;
+            acre::signal::model::multipath   _signalProcessor_multipath;
+            acre::signal::model::longleyRice _signalProcessor_longleyRice;
+
             uint32_t _total_signal_map_steps;
             volatile uint32_t _signal_map_progress;
             std::mutex _signal_lock;
@@ -120,7 +129,11 @@ namespace acre {
                     LOG(INFO) << "Map Loaded, Error Status: " << map_load_result;
                     if (!loaded) {
                         LOG(INFO) << "Adding signal processing to map...";
+                        _map->setMapClimate(static_cast<acre::signal::MapClimate>(args_.as_int(1)));
+
                         _signalProcessor_multipath = acre::signal::model::multipath(_map);
+                        _signalProcessor_los = acre::signal::model::los_simple(_map);
+                        _signalProcessor_longleyRice = acre::signal::model::longleyRice(_map);
                         LOG(INFO) << "Finished adding signal processor to map.";
                     } else {
                         LOG(INFO) << "Reloaded current map.";
@@ -174,23 +187,35 @@ namespace acre {
                     return true;
                 }
 
-                const float32_t f = args_.as_float(acre_signalArgument_frequency);
-                const float32_t power = args_.as_float(acre_signalArgument_power);
+                const float32_t frequency_MHz = args_.as_float(acre_signalArgument_frequency);
+                const float32_t power_mW = args_.as_float(acre_signalArgument_power);
                 const float32_t scale = args_.as_float(acre_signalArgument_terrainScaling);
 
                 acre::signal::result signal_result;
 
                 switch (model) {
                     case PropagationModel::arcade: {
-                        _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, f, power);
+                        _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, frequency_MHz, power_mW);
+                        break;
+                    }
+                    case PropagationModel::los: {
+                        _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
                         break;
                     }
                     case PropagationModel::losMultipath: {
-                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
+                        break;
+                    }
+                    case PropagationModel::longleyRice_itm: {
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, false, omnidirectional, true);
+                        break;
+                    }
+                    case PropagationModel::longleyRice_itwom: {
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, true, omnidirectional, true);
                         break;
                     }
                     default: {
-                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, f, power, scale, omnidirectional);
+                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
                     }
                 }
 
