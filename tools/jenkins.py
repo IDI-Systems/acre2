@@ -85,17 +85,23 @@ make_args = ["python", "-u", "make.py"]
 if(args.make_arg != None):
     make_args.extend(args.make_arg)
 
-# Credentials
+# Credentials (GitHub OAuth token)
+# TODO Improve flow, this is copy from publish.py (bad!)
 if(not "CBA_PUBLISH_CREDENTIALS_PATH" in os.environ):
     raise Exception("CBA_PUBLISH_CREDENTIALS_PATH is not set in the environment")
-
 credentials_path = os.environ["CBA_PUBLISH_CREDENTIALS_PATH"]
 
-cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
-if("github_oauth_token" in cred_file):
-    github_token = destination["github_oauth_token"]
-else:
-    raise Exception("Credentials file did not specify a username and password for SFTP login")
+manifest = json.load("..\\manifest.json")
+for destination in manifest['publish']['release']['destinations']:
+    if(destination["type"] == "github"):
+        cred_file = json.load(open(os.path.join(credentials_path, destination["cred_file"])))
+        if("github_oauth_token" in cred_file):
+            github_token = destination["github_oauth_token"]
+        else:
+            raise Exception("Credentials file did not specify a username and password for SFTP login")
+
+if github_token is None:
+    raise Exception("GitHub OAuth Token not found!")
 
 # Actions
 print(current_branch)
