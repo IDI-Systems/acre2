@@ -1,5 +1,5 @@
-#ifndef MODELS_ARCADE_HPP_
-#define MODELS_ARCADE_HPP_
+#ifndef MODELS_CASUAL_HPP_
+#define MODELS_CASUAL_HPP_
 
 #include "models_common.hpp"
 
@@ -19,4 +19,4 @@ namespace acre {
     }
 }
 
-#endif /* MODELS_ARCADE_HPP_ */
+#endif /* MODELS_CASUAL_HPP_ */
