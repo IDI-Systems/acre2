@@ -329,21 +329,21 @@ def compile_extensions(extensions_root, force_build):
         print_error("Failed to find CMake!")
         return
 
-    generator32 = ""
-    generator64 = ""
+    generator32 = []
+    generator64 = []
     msbuild_path = shutil.which("msbuild")
     if msbuild_path == None:
         print_error("Failed to find MSBuild!")
         return
     elif "16.0" in msbuild_path or "2019" in msbuild_path:
-        generator32 = "Visual Studio 16 2019 -A Win32"
-        generator64 = "Visual Studio 16 2019 -A x64"
+        generator32 = ["Visual Studio 16 2019", "-A", "Win32"]
+        generator64 = ["Visual Studio 16 2019", "-A", "x64"]
     elif "15.0" in msbuild_path:
-        generator32 = "Visual Studio 15 2017"
-        generator64 = "Visual Studio 15 2017 Win64"
+        generator32 = ["Visual Studio 15 2017"]
+        generator64 = ["Visual Studio 15 2017 Win64"]
     elif "14.0" in msbuild_path:
-        generator32 = "Visual Studio 14 2015"
-        generator64 = "Visual Studio 14 2015 Win64"
+        generator32 = ["Visual Studio 14 2015"]
+        generator64 = ["Visual Studio 14 2015 Win64"]
     else:
         print_error("Failed to find suitable generator!")
         return
@@ -359,7 +359,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj32)
             # Build
             os.chdir(vcproj32)
-            subprocess.call(["cmake", "..", "-G", generator32])
+            subprocess.call(["cmake", "..", "-G"] + generator32)
             print()
             extensions32_cmd = joinstr.join(extensions32)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
@@ -374,7 +374,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj64)
             # Build
             os.chdir(vcproj64)
-            subprocess.call(["cmake", "..", "-G", generator64])
+            subprocess.call(["cmake", "..", "-G"] + generator64)
             print()
             extensions64_cmd = joinstr.join(extensions64)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
