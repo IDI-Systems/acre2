@@ -38,6 +38,7 @@
                 },
                 {
                     "type": "github",
+                    "cred_file": "acre_release_github.json",
                     "account": "IDI-Systems/acre2",
                     "tag_name": "v{major}.{minor}.{patch}.{build}",
                     "branch": "release-build",
