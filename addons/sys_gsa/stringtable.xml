@@ -39,7 +39,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnect">
             <English>Disconnect</English>
-            <Spanish>Desconectar<Spanish>
+            <Spanish>Desconectar</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_gsaWithMast_description">
             <English>VHF30108 Ground Spike Antenna with Mast</English>
