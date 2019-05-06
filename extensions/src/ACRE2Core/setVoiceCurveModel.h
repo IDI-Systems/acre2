@@ -5,14 +5,14 @@
 #include "Log.h"
 
 RPC_FUNCTION(setVoiceCurveModel) {
-    int voiceModel;
+    AcreCurveModel voiceModel;
     float voiceCurveScale;
 
-    voiceModel = vMessage->getParameterAsInt(0);
+    voiceModel = static_cast<AcreCurveModel>(vMessage->getParameterAsInt(0));
     voiceCurveScale = vMessage->getParameterAsFloat(1);
 
     if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return ACRE_OK;
+        return AcreResult::ok;
 
     LOCK(CEngine::getInstance()->getSelf());
     CEngine::getInstance()->getSelf()->setCurveModel(voiceModel);
@@ -20,7 +20,7 @@ RPC_FUNCTION(setVoiceCurveModel) {
     //CEngine::getInstance()->getSelf()->setSelectableCurveScale(voiceCurveScale);
     UNLOCK(CEngine::getInstance()->getSelf());
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

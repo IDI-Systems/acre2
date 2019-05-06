@@ -16,19 +16,19 @@ public:
     CNamedPipeServer(std::string fromPipeName, std::string toPipeName);
     ~CNamedPipeServer(void);
 
-    ACRE_RESULT readLoop();
-    ACRE_RESULT sendLoop();
+    AcreResult readLoop();
+    AcreResult sendLoop();
 
-    ACRE_RESULT initialize( void );
-    ACRE_RESULT shutdown( void );
+    AcreResult initialize( void );
+    AcreResult shutdown( void );
 
-    ACRE_RESULT handleMessage(unsigned char *data) { data=data;return ACRE_NOT_IMPL; }
+    AcreResult handleMessage(unsigned char *data) { data=data;return AcreResult::notImplemented; }
 
-    ACRE_RESULT sendMessage( IMessage *message );
+    AcreResult sendMessage( IMessage *message );
 
-    ACRE_RESULT release( void ) { return ACRE_OK; };
+    AcreResult release( void ) { return AcreResult::ok; };
     
-    ACRE_RESULT checkServer( void ); // DRM
+    AcreResult checkServer( void ); // DRM
 
     char *currentServerId;
 
@@ -36,7 +36,7 @@ public:
     DECLARE_MEMBER(HANDLE, PipeHandleWrite);
     DECLARE_MEMBER(BOOL, ConnectedWrite);
     DECLARE_MEMBER(BOOL, ConnectedRead)
-    DECLARE_MEMBER(ACRE_ID, Id);
+    DECLARE_MEMBER(acre_id_t, Id);
     DECLARE_MEMBER(BOOL, ShuttingDown);
     DECLARE_MEMBER(std::string, FromPipeName);
     DECLARE_MEMBER(std::string, ToPipeName);

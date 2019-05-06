@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Exit if ACE3 not loaded
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
@@ -10,26 +11,38 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 if (!hasInterface) exitWith {};
 
-[
-    "ACRE2",
-    "IntercomPTTKey",
-    [(localize LSTRING(intercomPttKey)), (localize LSTRING(intercomPttKey_description))],
-    {[ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPress)},
-    {[ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPressUp)}
-] call cba_fnc_addKeybind;
+// Keybinds - Intercom
+["ACRE2", "IntercomPTTKey", [localize LSTRING(intercomPttKey), localize LSTRING(intercomPttKey_description)], {
+    [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPress)
+}, {
+    [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPressUp)
+}] call CBA_fnc_addKeybind;
 
-[
-    "ACRE2",
-    "IntercomBroadcastKey",
-    [(localize LSTRING(intercomBroadcastKey)), (localize LSTRING(intercomBroadcastKey_description))],
-    {[ACTION_BROADCAST] call FUNC(handlePttKeyPress)},
-    {[ACTION_BROADCAST] call FUNC(handlePttKeyPressUp)}
-] call cba_fnc_addKeybind;
+["ACRE2", "IntercomBroadcastKey", [localize LSTRING(intercomBroadcastKey), localize LSTRING(intercomBroadcastKey_description)], {
+    [ACTION_BROADCAST] call FUNC(handlePttKeyPress)
+}, {
+    [ACTION_BROADCAST] call FUNC(handlePttKeyPressUp)
+}] call CBA_fnc_addKeybind;
 
-["ACRE2", "PreviousIntercom", (localize LSTRING(previousIntercom)), "", { [-1, true] call FUNC(switchIntercomFast) }, [51, [true, false, false]]] call cba_fnc_addKeybind;
-["ACRE2", "NextIntercom", (localize LSTRING(nextIntercom)), "", {[1, true] call FUNC(switchIntercomFast)}, [51, [false, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "AddPreviousIntercom", (localize LSTRING(addPreviousIntercom)), "", {[-1, false] call FUNC(switchIntercomFast)}, [51, [true, false, true]]] call cba_fnc_addKeybind;
-["ACRE2", "AddNextIntercom", (localize LSTRING(addNextIntercom)), "", {[1, false] call FUNC(switchIntercomFast)}, [51, [false, true, true]]] call cba_fnc_addKeybind;
+["ACRE2", "PreviousIntercom", localize LSTRING(previousIntercom), "", {
+    [-1, true] call FUNC(switchIntercomFast)
+}, [DIK_COMMA, [true, false, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "NextIntercom", localize LSTRING(nextIntercom), "", {
+    [1, true] call FUNC(switchIntercomFast)
+}, [DIK_COMMA, [false, true, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "AddPreviousIntercom", localize LSTRING(addPreviousIntercom), "", {
+    [-1, false] call FUNC(switchIntercomFast)
+}, [DIK_COMMA, [true, false, true]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "AddNextIntercom", localize LSTRING(addNextIntercom), "", {
+    [1, false] call FUNC(switchIntercomFast)
+}, [DIK_COMMA, [false, true, true]]] call CBA_fnc_addKeybind;
+
+["ACRE2", QGVAR(openGui), localize LSTRING(openGui), {
+    [0] call FUNC(openGui)
+}, ""] call CBA_fnc_addKeybind;
 
 // Intercom configuration
 ["vehicle", {
@@ -45,7 +58,8 @@ if (!hasInterface) exitWith {};
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 player addEventHandler ["seatSwitchedMan", {
-    params ["_unit1", "_unit2", "_vehicle"];
+    params ["_unit1", "", "_vehicle"];
+
     [_vehicle, _unit1] call FUNC(seatSwitched);
 }];
 

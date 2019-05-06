@@ -54,7 +54,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     // Get broadcasting variables
     ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _i) params ["_isBroadcasting", "_broadcastingUnit"];
 
-    if (_connectionStatus == INTERCOM_RX_ONLY || {_connectionStatus == INTERCOM_RX_AND_TX}) then {
+    if (_connectionStatus == INTERCOM_RX_AND_TX || {_connectionStatus == INTERCOM_RX_ONLY}) then {
         if (_isBroadcasting) then {
             // Only the unit that is broadcasting will be on intercom. The rest of the units will be temporarily set to intercom
             _intercomUnits pushBack _broadcastingUnit;
@@ -69,7 +69,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
                 if (!isNull _unit) then {
                     private _voiceActivation = [_stationConfig, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call CBA_fnc_hashGet;
                     // If the unit is not pressing the key to talk to intercom, treat it like not transmitting.
-                    if (!_voiceActivation && {_intercomConfig == INTERCOM_TX_ONLY || {_intercomConfig == INTERCOM_RX_AND_TX}} && {!(_unit getVariable [QGVAR(intercomPTT), false])}) then {
+                    if (!_voiceActivation && {_intercomConfig == INTERCOM_RX_AND_TX || {_intercomConfig == INTERCOM_TX_ONLY}} && {!(_unit getVariable [QGVAR(intercomPTT), false])}) then {
                         _intercomConfig = INTERCOM_RX_ONLY;
                     };
 

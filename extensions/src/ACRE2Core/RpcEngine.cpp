@@ -15,39 +15,39 @@
 //
 // Entrant worker, weee
 //
-ACRE_RESULT CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
+AcreResult CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
     if (data->function) {
         data->function->call(data->server, data->message);
     }
     delete data->message;
     free(data);
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 
 //
 // Proc functions
 // 
-ACRE_RESULT CRpcEngine::addProcedure(IRpcFunction *cmd) {
+AcreResult CRpcEngine::addProcedure(IRpcFunction *cmd) {
     LOCK(this);
     this->m_FunctionList.insert(std::pair<std::string, IRpcFunction *>(std::string(cmd->getName()), cmd));
     UNLOCK(this);
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
-ACRE_RESULT CRpcEngine::removeProcedure(IRpcFunction *cmd) {
+AcreResult CRpcEngine::removeProcedure(IRpcFunction *cmd) {
     LOCK(this);
     this->m_FunctionList.erase(cmd->getName());
     UNLOCK(this);
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
-ACRE_RESULT CRpcEngine::removeProcedure(char * cmd) {
+AcreResult CRpcEngine::removeProcedure(char * cmd) {
     LOCK(this);
     this->m_FunctionList.erase(cmd);
     UNLOCK(this);
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 IRpcFunction *CRpcEngine::findProcedure(char *cmd) {
     
@@ -62,17 +62,17 @@ IRpcFunction *CRpcEngine::findProcedure(char *cmd) {
 
     return NULL;
 }
-ACRE_RESULT CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg) {
+AcreResult CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg) {
     return this->runProcedure(serverInstance, msg, TRUE);
 }
-ACRE_RESULT CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg, BOOL entrant) {
+AcreResult CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg, BOOL entrant) {
     IRpcFunction *ptr;
     ACRE_RPCDATA *data;
     
     if (msg) {
         if (!msg->getProcedureName()) {
             delete msg;
-            return FALSE;
+            return AcreResult::error;
         }
 
         ptr = this->findProcedure(msg->getProcedureName());
@@ -98,9 +98,9 @@ ACRE_RESULT CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg, BOO
             // No procedure, delete the message to stop memory leak
             delete msg;
         }
-        return ACRE_OK;
+        return AcreResult::ok;
     } else {
-        return ACRE_ERROR;
+        return AcreResult::error;
     }
 }
 //

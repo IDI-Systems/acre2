@@ -16,6 +16,10 @@ if (hasInterface) then {
     GVAR(broadcastKey) = false;
     GVAR(intercomPttKey) = false;
     GVAR(intercomUse) = [];
+
+    GVAR(guiOpened) = false;
+    GVAR(configChanged) = false;
+    GVAR(activeIntercom) = -1;
 };
 
 ADDON = true;

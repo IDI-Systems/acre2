@@ -6,7 +6,7 @@ ACRE2 allows replacing its default signal strength calculator with a custom sign
 
 The default signal calculator is sophisticated and complex and as such is largely calculated in the C++ extension. However this signal model doesn't always appeal to every community and it doesn't always afford possibilites for various mission mechanics such as radio jammers. This function is intended to be used by communities seeking a specific signal experience or for highly ambitious mission makers.
 
-For the time being this command is highly experimental and is included as of dev-build 940. 
+For the time being this command is highly experimental and is included as of dev-build 940.
 
 ## Function Usage
 
@@ -15,7 +15,7 @@ You can see the default function [here](https://github.com/IDI-Systems/acre2/blo
 ### Input
 
 The input to your custom function will be of the format: `[30, 5000, "ACRE_PRC343_ID_1", "ACRE_PRC343_ID_2"]`
-- The first element is the frequency (megahertz) e.g. `30`. 
+- The first element is the frequency (megahertz) e.g. `30`.
 - The second element is the power of the transmitter (milliwatts) e.g. `5000`.
 - Then the classname of the recieving radio e.g. `"ACRE_PRC343_ID_1"`.
 - Lastly the classname of the broadcasting radio e.g. `"ACRE_PRC343_ID_2"`.
@@ -30,7 +30,7 @@ The decibel signal strength value value is used to determine if the specific rad
 
 ### Helper functions
 
-The provided inputs are a bit lacking as they don't provide the position or any antenna information there are some handy functions you can use to retrieve these. Note these are internal functions and are subject to change. 
+The provided inputs are a bit lacking as they don't provide the position or any antenna information there are some handy functions you can use to retrieve these. Note these are internal functions and are subject to change.
 
 - `acre_sys_radio_fnc_getRadioObject` - In ACRE2 every radio is typically associated with a game object this returns the associated object. e.g. `["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_getRadioObject;`
 - `acre_sys_radio_fnc_getRadioPos` - This will return the position (ASL) of a radio e.g. `["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_getRadioPos;`
@@ -40,6 +40,10 @@ The provided inputs are a bit lacking as they don't provide the position or any 
 
 ### Simple calculation
 Below is an example of a simple calculation that is based on how ACRE1 calculated signal loss. It is a largely based on [free-space path loss](https://en.wikipedia.org/wiki/Free-space_path_loss) over the distance which does not take into account terrain. It is also provides a bit of a boost to the signal strength of the AN/PRC-343. In this example the range of a AN/PRC-343 is around 500m and virtually all other radios will have no problems with Arma terrains (40km+).
+
+{% include note.html content="Development Build only!" %}
+
+As of 2.7.0 this model has been implemented in C++ and it can be selected using the Arcade Mode in CBA_settings.
 
 ```js
 MY_CUSTOM_ACRE_FUNC = {
@@ -56,7 +60,7 @@ MY_CUSTOM_ACRE_FUNC = {
     private _Ptx = 10 * (log ((_mW)/1000)) + 30; /* Transmitter Power (mW to dBm) */
 
     if (_realRadioRx isEqualTo "acre_prc343") then { // AN/PRC-343
-        _Lfs = _Lfs - 17; // 17 dB boost.                   
+        _Lfs = _Lfs - 17; // 17 dB boost.
     };
 
     private _ituLoss = 36; /* base loss level (based on empirical testing...) */
@@ -78,7 +82,7 @@ MY_CUSTOM_ACRE_FUNC = {
     /* Signal Percentage equation based on the dB value */
     private _bottom = _sinadRating - (_Sl*_Slp);
     private _Snd = abs ((_bottom - (_Lb max _bottom))/_Sl);
-    private _Px = 100 min (0 max (_Snd*100)); 
+    private _Px = 100 min (0 max (_Snd*100));
     _Px = _Px/100;
 
     private _signal = _Lb;

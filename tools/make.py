@@ -329,17 +329,8 @@ def compile_extensions(extensions_root, force_build):
         print_error("Failed to find CMake!")
         return
 
-    generator = ""
-    msbuild_path = shutil.which("msbuild")
-    if msbuild_path == None:
+    if shutil.which("msbuild") == None:
         print_error("Failed to find MSBuild!")
-        return
-    elif "15.0" in msbuild_path:
-        generator = "Visual Studio 15 2017"
-    elif "14.0" in msbuild_path:
-        generator = "Visual Studio 14 2015"
-    else:
-        print_error("Failed to find suitable generator!")
         return
 
     try:
@@ -353,7 +344,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj32)
             # Build
             os.chdir(vcproj32)
-            subprocess.call(["cmake", "..", "-G", generator])
+            subprocess.call(["cmake", "..", "-A", "Win32"])
             print()
             extensions32_cmd = joinstr.join(extensions32)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
@@ -368,7 +359,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj64)
             # Build
             os.chdir(vcproj64)
-            subprocess.call(["cmake", "..", "-G", "{} Win64".format(generator)])
+            subprocess.call(["cmake", "..", "-A", "x64"])
             print()
             extensions64_cmd = joinstr.join(extensions64)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
@@ -522,12 +513,13 @@ def cleanup_optionals(mod):
 
             try:
                 file_name = "{}{}.pbo".format(pbo_name_prefix,dir_name)
+                folder= "@{}{}".format(pbo_name_prefix,dir_name)
                 src_file_path = os.path.join(release_dir, project, "addons", file_name)
-                dst_file_path = os.path.join(release_dir, project, "optionals", file_name)
+                dst_file_path = os.path.join(release_dir, project, "optionals",folder,"addons",file_name)
 
                 sigFile_name = "{}.{}.bisign".format(file_name,key_name)
                 src_sig_path = os.path.join(release_dir, project, "addons", sigFile_name)
-                dst_sig_path = os.path.join(release_dir, project, "optionals", sigFile_name)
+                dst_sig_path = os.path.join(release_dir, project, "optionals",folder,"addons", sigFile_name)
 
                 if (os.path.isfile(src_file_path)):
                     #print("Preserving {}".format(file_name))

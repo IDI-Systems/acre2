@@ -32,7 +32,9 @@
 
 **ACRE2** is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications through Teamspeak 3.
 
-### A short list of some ACRE2 features
+The project is entirely **open-source** and all contributions are welcome. Core project is licensed under GNU General Public License ([GPLv3](https://github.com/IDI-Systems/acre2/blob/master/LICENSE)). Some folders may contain a separate LICENSE file, specifying differently licensed items.
+
+### Features
 
 - Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152, SEM 52 SL, SEM 70.
 - Vehicle racks AN/VRC-103, AN/VRC-110, AN/VRC-111, SEM90.
@@ -50,7 +52,7 @@
 - Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (As an example see the ACRE2 implementation in the [F3 framework](https://github.com/ferstaberinde/F3)).
 - Enhanced and easily configurable vehicle sound occlusion.
 
-### Guides & how-tos
+### Guides
 
 If you installed ACRE2 but have trouble understanding how it all works, or where to start, read this first:
 - [Installation Instructions](http://acre2.idi-systems.com/wiki/user/installation)

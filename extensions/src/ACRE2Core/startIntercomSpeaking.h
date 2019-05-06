@@ -13,9 +13,9 @@
 
 RPC_FUNCTION(startIntercomSpeaking) {
 
-    CEngine::getInstance()->getClient()->localStartSpeaking(ACRE_SPEAKING_INTERCOM);
+    CEngine::getInstance()->getClient()->localStartSpeaking(AcreSpeaking::intercom);
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

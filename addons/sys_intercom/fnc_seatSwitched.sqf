@@ -50,6 +50,7 @@ if (GVAR(broadcastKey)) then {
     // Handle the new seat if the player is inside the vehicle
     if (vehicle _unit == _vehicle) then {
         private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
+
         if (_connectionStatus > INTERCOM_DISCONNECTED) then {
             [_vehicle, _unit, _forEachIndex] call FUNC(setStationUnit);
         };
