@@ -23,6 +23,7 @@ PREP(handleGetPluginVersion);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
 PREP(hasAccessToVehicleSystem);
+PREP(hasItem);
 PREP(inRange);
 PREP(inZeus);
 PREP(isMuted);
@@ -50,6 +51,7 @@ PREP(switchChannelFast);
 PREP(switchRadioEar);
 PREP(toggleHeadset);
 PREP(updateSelf);
+PREP(uniqueItems);
 PREP(utilityFunction);
 
 PREP(onRevealUnit);

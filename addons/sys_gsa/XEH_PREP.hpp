@@ -1,0 +1,12 @@
+PREP(connect);
+PREP(connectChildrenActions);
+PREP(deploy);
+PREP(disconnect);
+PREP(externalAntennaPFH);
+PREP(getConnectedGsa);
+PREP(handleMast);
+PREP(initGsa);
+PREP(initRadio);
+PREP(isAntennaConnected);
+PREP(isRadioCompatible);
+PREP(pickUp);

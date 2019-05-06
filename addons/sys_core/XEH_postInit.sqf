@@ -23,6 +23,13 @@ DFUNC(gen) = {
     [] call (compile _code);
 };
 
+GVAR(aceLoaded) = isClass (configFile >> "CfgPatches" >> "ace_common");
+// Do not use ACRE2 unique items if ACE3 is loaded.
+if (!GVAR(aceLoaded)) then {
+    ["loadout", {
+        GVAR(uniqueItemsCache) = nil;
+    }] call CBA_fnc_addPlayerEventHandler;
+};
 
 // Keybinds - PTT
 ["ACRE2", "AltPTTKey1", [localize LSTRING(AltPTTKey1), localize LSTRING(AltPTTKey1_description)], {
@@ -97,11 +104,12 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
     if (_wrpLocation == "") then {
         _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
     };
-    INFO_1("Loading Map: %1",_wrpLocation);
+    private _radioSignalCode = [worldName] call EFUNC(sys_signal,getRadioClimateCode);
+    INFO_2("Loading Map: %1 with radio signal code %2",_wrpLocation,_radioSignalCode);
 
     [
         "load_map",
-        [_wrpLocation],
+        [_wrpLocation, _radioSignalCode],
         true,
         {
             params ["", "_result"];
@@ -113,7 +121,7 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
                     ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
                 };
             } else {
-                INFO_1("Map Load Complete: %1",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                INFO_2("Map Load Complete: %1 with radio signal code %2",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"),[worldName] call EFUNC(sys_signal,getRadioClimateCode));
             };
 
             ACRE_MAP_LOADED = true;

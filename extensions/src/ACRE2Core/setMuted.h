@@ -13,7 +13,7 @@
 RPC_FUNCTION(setMuted) {
     DWORD index;
     int status;
-    ACRE_ID id;
+    acre_id_t id;
 
     for (index=0; index < vMessage->getParameterCount(); -1)
     {
@@ -28,7 +28,7 @@ RPC_FUNCTION(setMuted) {
         CEngine::getInstance()->getClient()->setMuted(id, (BOOL)status);
     }
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

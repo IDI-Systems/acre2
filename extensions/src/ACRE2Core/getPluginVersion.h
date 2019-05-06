@@ -7,7 +7,7 @@ RPC_FUNCTION(getPluginVersion) {
 
     vServer->sendMessage(CTextMessage::formatNewMessage("handleGetPluginVersion", "%s", ACRE_VERSION));
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

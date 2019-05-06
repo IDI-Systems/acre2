@@ -16,7 +16,7 @@ RPC_FUNCTION(setPTTKeys) {
 
         */
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };
