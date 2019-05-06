@@ -21,7 +21,7 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
 
     // Save spectator state
     player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
-    [false] call EFUNC(api,setSpectator);
+    call EFUNC(sys_core,spectatorOff);
 
     // Update Zeus position
     GVAR(speakFromZeusHandle) = [{

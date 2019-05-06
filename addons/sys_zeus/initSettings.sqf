@@ -4,25 +4,29 @@ private _zeusCategory = format ["ACRE2 %1", localize "str_a3_cfghints_curator_cu
 [
     QGVAR(zeusDefaultVoiceSource),
     "LIST",
-    localize LSTRING(ZeusDefaultVoiceSource_displayName),
+    LLSTRING(ZeusDefaultVoiceSource_DisplayName),
     _zeusCategory,
-    [[false, true], ["str_a3_cfgvehicles_moduleremotecontrol_f", "STR_A3_Leaderboards_Header_Player"], 0]
-] call CBA_Settings_fnc_init;
+    [
+        [false, true],
+        ["str_a3_cfgvehicles_moduleremotecontrol_f", "STR_A3_Leaderboards_Header_Player"],
+        0
+    ]
+] call CBA_fnc_addSetting;
 
 // Ability to hear through the Zeus camera
 [
     QGVAR(zeusListenViaCamera),
     "CHECKBOX",
-    localize LSTRING(ZeusListenViaCamera_displayName),
+    LLSTRING(ZeusListenViaCamera_DisplayName),
     _zeusCategory,
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Ability to join the spectator chat
 [
     QGVAR(zeusCanSpectate),
     "CHECKBOX",
-    localize LSTRING(ZeusCanSpectate_displayName),
+    LLSTRING(ZeusCanSpectate_DisplayName),
     _zeusCategory,
     true
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;

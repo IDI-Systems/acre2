@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_zeus">
-        <Key ID="STR_ACRE_sys_zeus_spectatorEars">
+        <Key ID="STR_ACRE_sys_zeus_SpectatorEars">
             <English>Switch to Spectator</English>
         </Key>
-        <Key ID="STR_ACRE_sys_zeus_zeusEars">
+        <Key ID="STR_ACRE_sys_zeus_ZeusEars">
             <English>Switch to Zeus</English>
         </Key>
-        <Key ID="STR_ACRE_sys_zeus_remote">
+        <Key ID="STR_ACRE_sys_zeus_Remote">
             <English>Use Remote Controlled Voice</English>
         </Key>
-        <Key ID="STR_ACRE_sys_zeus_player">
+        <Key ID="STR_ACRE_sys_zeus_Player">
             <English>Use Player Voice</English>
         </Key>
 
         <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera">
             <English>Speak through the Camera</English>
         </Key>
-        <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera_description">
+        <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera_Description">
             <English>Talk from the Zeus Interface's camera instead of your unit's position. Listen through camera must be enabled.</English>
         </Key>
 
-        <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_displayName">
+        <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_DisplayName">
             <English>Default Zeus Voice Source</English>
         </Key>
-        <Key ID="STR_ACRE_sys_zeus_ZeusListenViaCamera_displayName">
+        <Key ID="STR_ACRE_sys_zeus_ZeusListenViaCamera_DisplayName">
             <English>Listen through camera</English>
         </Key>
-        <Key ID="STR_ACRE_sys_zeus_ZeusListenViaCamera_description">
+        <Key ID="STR_ACRE_sys_zeus_ZeusListenViaCamera_Description">
             <English>Hear players in direct chat through the Zeus Interface's camera.</English>
         </Key>
-        <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_displayName">
+        <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_DisplayName">
             <English>Able to Join Spectators</English>
         </Key>
-        <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_description">
+        <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_Description">
             <English>Let Zeus join the specators while in the Zeus interface.</English>
         </Key>
     </Package>

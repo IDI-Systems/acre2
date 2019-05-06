@@ -16,4 +16,4 @@
  */
 
 call FUNC(handleZeusSpeakPressUp);
-[false] call EFUNC(api,setSpectator);
+call EFUNC(sys_core,spectatorOff);

@@ -19,7 +19,11 @@
     player setVariable [QGVAR(inZeus), false, true];
 
     // Restore previous out of Zeus state
-    [player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR]] call EFUNC(api,setSpectator);
+    if (player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR]) then {
+        call EFUNC(sys_core,spectatorOn);
+    } else {
+        call EFUNC(sys_core,spectatorOff);
+    };
 
     // Stop updating Zeus position
     [GVAR(speakFromZeusHandle)] call CBA_fnc_removePerFrameHandler;
