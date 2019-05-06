@@ -18,3 +18,8 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 
 #define ACRE_REVEAL_AMOUNT 1.6
+
+#define MAX_DIRECT_RANGE 300
+#define NEAR_RADIO_RANGE 150
+
+#define ZEUS_INTERFACE_DISPLAY 312
