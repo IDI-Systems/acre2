@@ -322,18 +322,20 @@
             <English>Activate Accent</English>
             <German>Bordfunkpriorität aktivieren</German>
             <Spanish>Activar prioridad de intercom</Spanish>
+            <Japanese>抑揚を有効化</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
             <English>Deactivate Accent</English>
             <German>Bordfunkpriorität deaktivieren</German>
             <Spanish>Desactivar prioridad de intercom</Spanish>
+            <Japanese>抑揚を無効化化</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
             <English>Intercom Transmit</English>
             <Spanish>Tecla de intercom</Spanish>
             <Polish>Klawisz interkomu</Polish>
             <Italian>Pulsante intercom</Italian>
-            <Japanese>インターコム キー</Japanese>
+            <Japanese>インターコム送信キー</Japanese>
             <Chinese>無線電按鍵</Chinese>
             <Chinesesimp>无线电按键</Chinesesimp>
             <French>Clé de l'interphone</French>
@@ -353,7 +355,7 @@
             <Spanish>Tecla para mensaje prioritario</Spanish>
             <Polish>Klawisz nadawania interkomu</Polish>
             <Italian>Pulsante trasmissione intercom</Italian>
-            <Japanese>インターコムのブロードキャスト キー</Japanese>
+            <Japanese>インターコムのブロードキャスト</Japanese>
             <Chinese>無線電廣播按鍵</Chinese>
             <Chinesesimp>无线电广播按键</Chinesesimp>
             <French>Clé de diffusion de l'interphone</French>
@@ -411,6 +413,7 @@
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Opens Intercom GUI</English>
             <Spanish>Abre la interfaz de Intercom</Spanish>
+            <Japanese>インターコムの GUI を開く</Japanese>
         </Key>
     </Package>
 </Project>
