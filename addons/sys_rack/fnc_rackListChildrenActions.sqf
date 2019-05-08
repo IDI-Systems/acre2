@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Generates a list of actions for a vehicle rack.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target"];
 
@@ -49,7 +49,7 @@ private _action = [QGVAR(useAllRacks), localize LSTRING(useAllRacks), "", {
         [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
     } forEach (_radios select {!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS})});
 }, {
-    ({!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS})} count _this#2) > 0
+    ({!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS})} count (_this select 2)) > 0
 }, {}, _radios] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
@@ -59,7 +59,7 @@ private _action = [QGVAR(stopUsingAllRacks), localize LSTRING(stopUsingAllRacks)
         [_vehicle, _unit, _x] call FUNC(stopUsingMountedRadio);
     } forEach (_radios select {_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}});
 }, {
-    ({_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}} count _this#2) > 0
+    ({_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}} count (_this select 2)) > 0
 }, {}, _radios] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 

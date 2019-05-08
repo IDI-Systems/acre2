@@ -10,54 +10,62 @@ Every radio also has its own transmission power which determines the initial str
 
 The antenna direction for infantry is simulated as being relative to the direction of their back. If radio antenna direction is not ignored (see below) this can be observed by having difficulties receiving transmissions from other players who are prone if you are standing and vice versa as the antennas will be out of alignment.
 
+(Only in Dev-Build): However it is possible to manually align the antenna by bending it in order to improve signal quality. To keep it as simple as possible, there are only two possible antenna alignments, the player can choose between the two via ACE Interaction Menu or Custom Keybind (default: `CTRL+ALT+UP`). In addition to the manual method, there is always the possibility to activate an automatic antenna alignment via CBA Settings (see below). The current alignment of the antenna is shown in the Arma 3 Stance Indicator.
+
+{% include image.html file="user/antenna_indicator.png" alt="Antenna Alignment shown in Stance Indicator" %}
+
+
 The radios in ACRE2 by default are setup to use maximum transmission power and the frequencies their antennas are best suited for.
 
 Note: In the present simulation model buildings and terrain objects do not effect radio signals due to technical limitations but this may change in future versions of ACRE2.
 
 ## Configuration
 
-These can be setup either by placing the ACRE2 difficulty module in the mission or by using the API functions.
+These can be setup via [CBA Settings](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System).
 
 ### Terrain Loss
 
-This setting effects the signal loss that occurs due to terrain. In the module this can be enabled or disabled. The API functions can be used to change the simulation model on the fly and only effect the local client.
+This setting effects the signal loss that occurs due to terrain. The CBA Setting can be used to change the simulation model on the fly.
 
-*Default value*: Enabled (1)
-
-API function example:
-`[0.0] call acre_api_fnc_setLossModelScale;`
-
-The API function accepted values between 0 and 1. 1 represents enabled, 0 represents disabled. Intermediate values between 0 and 1 provide a allow a form of interpolation.
+Default value: Enabled (0.5)
 
 ### Interference
 
 Multiple transmissions on the same frequency can be destructive this setting allows you disable that interference allowing you to hear multiple speakers on the same frequency at once. Otherwise you will hear destructive interference if multiple people are transmitting on the same frequency (if both transmissions are received and one does not dominate the other).
 
-Default value: Enabled (`true`)
-
-API function example:
-`[false] call acre_api_fnc_setInterference;`
-
-`false` will disable the interference.
+Default value: Enabled
 
 ### Full Duplex
 
 This setting allows a radio to broadcast and receive transmissions at the same time. Allowing you to hear others speaker on the same frequency as you talk. It is recommended to disable interference if you enable full duplex.
 
-Default value: Disabled (`false`)
+Default value: Disabled
 
-API function example:
-`[true] call acre_api_fnc_setFullDuplex;`
-
-`true` enables the full duplex mode.
-
-###  Ignore Antenna direction (introduced in v2.2.0)
+### Ignore Antenna direction (introduced in v2.2.0)
 
 This setting can be used to disable the simulation of antenna radiation patterns for both the transmitting and receiving radios. It will make all antennas act with perfect omni-directional behaviour.
 
-Default value: Disabled (`false`) (Antenna direction is taken into account)
+Default value: Disabled (antenna direction is taken into account)
 
-API function example:
-`[true] call acre_api_fnc_ignoreAntennaDirection;`
+###  Automatic Antenna direction
 
-`true` enables is used to ignore the antenna direction.
+{% include note.html content="Development Build only!" %}
+
+This setting enables an automatic antenna alignment to improve signal strength e.g. when being prone.
+
+Default value: Disabled (antenna needs to be aligned manually)
+
+Note: _If the antenna direction is ignored, this setting will have no effect._
+
+###  Radio Wave Propagation Models
+
+{% include note.html content="Development Build only!" %}
+
+This setting allows selecting the propagation model and it can be changed mid-mission with a global effect. For the moment the following models are supported:
+
+- *Arcade*: This model is the simplest and it is targeted for a casual gameplay. It is a largely based on [free-space path loss](https://en.wikipedia.org/wiki/Free-space_path_loss) over the distance which does not take into account terrain. It is also provides a bit of a boost to the signal strength of the AN/PRC-343: the range of a AN/PRC-343 is around 500m and virtually all other radios will have no problems with Arma terrains (40km+). The terrain loss and antenna direction settings will have no effect in this model.
+- *LOS Simple*: This model is based on free-space path loss but without multi-path capabilities.
+- *LOS Multipath*: Is the default model in ACRE2.
+- *Longley-Rice (ITM)*: also known as the [irregular terrain model (ITM)](https://en.wikipedia.org/wiki/Longley%E2%80%93Rice_model) is as of 2.7.0 an experimental model in ACRE2. It is a model valid for radio waves between 20MHz and 20GHz. The terrain loss and antenna direction settings will have no effect in this model.
+
+Default value: LOS Multipath.

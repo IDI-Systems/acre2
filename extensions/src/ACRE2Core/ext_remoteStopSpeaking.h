@@ -13,7 +13,7 @@
 
 RPC_FUNCTION(ext_remoteStopSpeaking) {
 
-    /*CTextMessage::formatNewMessage("ext_remoteStartSpeaking", 
+    /*CTextMessage::formatNewMessage("ext_remoteStartSpeaking",
             "%d,%d,%s,%f,",
             this->getSelf()->getId(),
             this->getSelf()->getCurrentSpeakingType(),
@@ -21,11 +21,11 @@ RPC_FUNCTION(ext_remoteStopSpeaking) {
             this->getSelf()->getCurveScale()
         ) */
 
-    ACRE_ID id = (ACRE_ID)vMessage->getParameterAsInt(0);
+    acre_id_t id = (acre_id_t)vMessage->getParameterAsInt(0);
 
     CEngine::getInstance()->remoteStopSpeaking(id);
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

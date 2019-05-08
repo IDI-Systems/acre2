@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the spatial configuration of the radio. Possible values are -1 (left), 0 (center) and 1 (right).
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId", "", "_eventData", "", ""];
 

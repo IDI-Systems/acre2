@@ -4,12 +4,13 @@
 #include "Log.h"
 
 #include <string>
+#include <limits.h>
 
 BOOL CTextMessage::isValid(void) {
     return this->m_IsValid;
 }
 
-ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
+AcreResult CTextMessage::parse(char *value, size_t len) {
     size_t x;
     size_t length;
     this->m_RpcProcedureName = NULL;
@@ -20,7 +21,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
 
     if (!value){
         this->m_IsValid = FALSE;
-        return ACRE_OK;
+        return AcreResult::ok;
     }
 
     // Check to make sure the entire chunk of data is a NULL terminated ascii string
@@ -28,7 +29,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
         if (!__isascii(value[x]) && value[x] != 0x00) {
             this->m_IsValid = FALSE;
             LOG("INVALID PACKET DETECTED l:%d", len);
-            return ACRE_ERROR;
+            return AcreResult::error;
         }
         if (value[x] == 0x00)    // null terminate, bail
             break;
@@ -37,7 +38,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
     length = (strlen(value)+1);
     if (length < 3)  {
         this->m_IsValid = FALSE;
-        return ACRE_ERROR;
+        return AcreResult::error;
     }
     
     this->m_DataPtr = (char *)LocalAlloc(0, length);
@@ -54,7 +55,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
     if (x < 2 || x > 1000000 || x == std::string::npos) {
         LOG("INVALID DATA");
         this->m_IsValid = FALSE;
-        return ACRE_ERROR;
+        return AcreResult::error;
     }
     std::string procedureName = this->m_Data->substr(0, x);
     this->m_RpcProcedureName = new std::string(procedureName.c_str());
@@ -62,7 +63,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
     // now parse parameters..if there are any
     if (x == this->m_Data->length()-1) {
         this->m_IsValid = TRUE;    
-        return ACRE_OK;
+        return AcreResult::ok;
     }
 
     std::string t( this->m_Data->substr(this->m_Data->find_first_of(":")+1 , (this->m_Data->length() - this->m_Data->find_first_of(":")+1) ).c_str() );
@@ -95,7 +96,7 @@ ACRE_RESULT CTextMessage::parse(char *value, size_t len) {
     
     //this->setLength((unsigned int)this->m_Data->size());
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 
 CTextMessage::CTextMessage(char *value, size_t len)
@@ -113,7 +114,7 @@ int CTextMessage::getParameterAsInt(unsigned int index) {
     if (value) {
         return((int)atoi((char*)value));
     } else {
-        return ACRE_ERROR;
+        return std::numeric_limits<int32_t>::max();
     }
 }
 
@@ -124,7 +125,7 @@ float CTextMessage::getParameterAsFloat(unsigned int index) {
     if (value) {
         return((float)atof((char*)value));
     } else {
-        return (float)ACRE_ERROR;
+        return (float)AcreResult::error;
     }
 }
 

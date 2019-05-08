@@ -20,14 +20,14 @@ RPC_FUNCTION(localMute) {
     if (status == 1) {
         CEngine::getInstance()->getClient()->enableMicrophone(false);
         if (CEngine::getInstance()->getSelf()->getSpeaking()) {
-            CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_UNKNOWN);
+            CEngine::getInstance()->getClient()->localStopSpeaking(AcreSpeaking::unknown);
         }
     } else {
         CEngine::getInstance()->getClient()->enableMicrophone(true);
     }
 
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

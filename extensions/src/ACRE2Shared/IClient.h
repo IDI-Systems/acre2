@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "compat.h"
 
@@ -12,39 +12,39 @@
 class IClient {
 public:
 
-    virtual ACRE_RESULT initialize( void ) = 0;
+    virtual AcreResult initialize( void ) = 0;
 
-    virtual ACRE_RESULT setMuted(ACRE_ID id, BOOL muted) = 0;
-    virtual ACRE_RESULT setMuted(std::list<ACRE_ID> idList, BOOL muted) = 0;
+    virtual AcreResult setMuted(const acre_id_t id, bool muted) = 0;
+    virtual AcreResult setMuted(std::list<acre_id_t> idList, const bool muted) = 0;
 
-    virtual ACRE_RESULT getMuted(ACRE_ID id) = 0;
+    virtual AcreResult getMuted(const acre_id_t id) = 0;
 
-    virtual ACRE_RESULT stop() = 0;
-    virtual ACRE_RESULT start(ACRE_ID id) = 0;
+    virtual AcreResult stop() = 0;
+    virtual AcreResult start(const acre_id_t id) = 0;
 
-    virtual ACRE_RESULT enableMicrophone(BOOL status) = 0;
+    virtual AcreResult enableMicrophone(const bool status) = 0;
 
-    virtual ACRE_RESULT microphoneOpen(BOOL status) = 0;
+    virtual AcreResult microphoneOpen(const bool status) = 0;
 
-    virtual ACRE_RESULT localStartSpeaking(ACRE_SPEAKING_TYPE speakingType) = 0;
-    virtual ACRE_RESULT localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::string radioId) = 0;
-    virtual ACRE_RESULT localStopSpeaking(ACRE_SPEAKING_TYPE speakingType) = 0;
+    virtual AcreResult localStartSpeaking(const AcreSpeaking speakingType) = 0;
+    virtual AcreResult localStartSpeaking(const AcreSpeaking speakingType, std::string radioId) = 0;
+    virtual AcreResult localStopSpeaking(const AcreSpeaking speakingType) = 0;
 
     virtual std::string getTempFilePath( void ) = 0;
     virtual std::string getConfigFilePath(void) = 0;
 
     virtual std::string getUniqueId() = 0;
 
-    virtual ACRE_RESULT playSound(std::string path, ACRE_VECTOR position, float volume, int looping) = 0;
+    virtual AcreResult playSound(std::string path, ACRE_VECTOR position, const float32_t volume, const int32_t looping) = 0;
 
-    virtual ACRE_RESULT unMuteAll( void ) = 0;
+    virtual AcreResult unMuteAll( void ) = 0;
 
-    virtual ACRE_RESULT moveToServerTS3Channel() = 0;
-    virtual ACRE_RESULT moveToPreviousTS3Channel() = 0;
-    virtual ACRE_RESULT updateTs3ChannelDetails(std::vector<std::string> details) = 0;
-    virtual ACRE_RESULT updateShouldSwitchTS3Channel(BOOL state) = 0;
+    virtual AcreResult moveToServerTS3Channel() = 0;
+    virtual AcreResult moveToPreviousTS3Channel() = 0;
+    virtual AcreResult updateTs3ChannelDetails(std::vector<std::string> details) = 0;
+    virtual AcreResult updateShouldSwitchTS3Channel(const bool state) = 0;
     virtual BOOL shouldSwitchTS3Channel() = 0;
 
-    DECLARE_INTERFACE_MEMBER(ACRE_STATE, State);
+    DECLARE_INTERFACE_MEMBER(AcreState, State);
 
 };

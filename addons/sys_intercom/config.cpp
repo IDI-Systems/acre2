@@ -16,3 +16,7 @@ class CfgPatches {
 
 #include "CfgVehicles.hpp"
 #include "CfgEventHandlers.hpp"
+
+#include "DialogDefines.hpp"
+#include "vic3_dialogClasses.hpp"
+#include "vic3_intercomDialogs.hpp"

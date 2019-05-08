@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Wrapper function for calling the signal calculation (extension).
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (!isNil QGVAR(customSignalFunc)) exitWith { _this call GVAR(customSignalFunc); };
 
@@ -31,11 +31,15 @@ if (_count == 0) then {
         private _txAntenna = _x;
         {
             private _rxAntenna = _x;
+            private _model = GVAR(signalModel); // TODO: Change models on the fly if compatible (underwater, better frequency matching)
+            if (_model == SIGNAL_MODEL_ITWOM) then {_model = SIGNAL_MODEL_ITM;}; // Make sure ITWOM is not used for the moment
+
             _count = _count + 1;
-            private _id = format["%1_%2_%3_%4", _transmitterClass, (_txAntenna select 0), _receiverClass, (_rxAntenna select 0)];
+            private _id = format ["%1_%2_%3_%4", _transmitterClass, (_txAntenna select 0), _receiverClass, (_rxAntenna select 0)];
             [
                 "process_signal",
                 [
+                    _model,
                     _id,
                     (_txAntenna select 2),
                     (_txAntenna select 3),

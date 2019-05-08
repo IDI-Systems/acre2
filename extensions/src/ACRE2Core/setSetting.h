@@ -34,12 +34,12 @@ RPC_FUNCTION(setSetting) {
     }
     else {
         LOG("Setting [%s] failed to change to [%f]", name.c_str(), value);
-        return ACRE_ERROR;
+        return AcreResult::error;
     }
 
     LOG("Setting [%s] set to [%f]", name.c_str(), value);
     CAcreSettings::getInstance()->save();
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

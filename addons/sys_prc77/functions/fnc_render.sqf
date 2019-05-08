@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Renders the radio when opened.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 #define RADIO_CTRL(var1) (_display displayCtrl var1)
 params ["_display"];

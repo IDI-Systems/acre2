@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the channel data. On a AN/PRC 343 this cannot be changed.
@@ -17,6 +18,5 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("", _this);

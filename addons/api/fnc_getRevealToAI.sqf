@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns whether the player reveal to AI direct speech system is enabled. Return value is only valid on a player client.
@@ -6,14 +7,13 @@
  * None
  *
  * Return Value:
- * AI enabled <BOOLEAN>
+ * AI enabled <NUMBER>
  *
  * Example:
  * [] call acre_api_fnc_getRevealToAI;
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 if (!isNil QEGVAR(sys_core,revealToAI)) exitWith {
     EGVAR(sys_core,revealToAI)

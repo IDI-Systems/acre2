@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the intercom connection status of the station the unit has access to.
@@ -6,7 +7,7 @@
  * 0: Vehicle with intercom <OBJECT>
  * 1: Unit to be checked <OBJECT>
  * 2: Intercom network <NUMBER>
- * 3: Intercom functionality to be retrieved <NUMBER>
+ * 3: Intercom functionality to be retrieved <STRING>
  * 4: Variable name of the vehicle seat the unit is in <STRING><OPTIONAL> (default: "")
  *
  * Return Value:
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_intercomNetwork", "_intercomFunctionality", ["_varName", ""]];
 
@@ -32,4 +32,4 @@ if (_varName isEqualTo "") exitWith {
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 
-(_intercomStatus select STATION_INTERCOM_CONFIGURATION_INDEX) select _intercomFunctionality
+[_intercomStatus, _intercomFunctionality] call CBA_fnc_hashGet

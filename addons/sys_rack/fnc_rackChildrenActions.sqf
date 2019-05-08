@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Generates a list of actions for using a vehicle rack radio
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_target", "_unit", "_params"];
 _params params ["_rackClassName"];
@@ -50,10 +50,10 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
             QGVAR(mountedRadio),
             _displayName,
             _icon,
-            {[_this#2#1] call EFUNC(sys_radio,openRadio)},
+            {[(_this select 2) select 1] call EFUNC(sys_radio,openRadio)},
             {true},
             {
-                _this#2 params ["_rackClassName", "_mountedRadio"];
+                (_this select 2) params ["_rackClassName", "_mountedRadio"];
 
                 // Mounting options
                 if ([_rackClassName] call FUNC(isRadioRemovable)) then {
@@ -62,7 +62,7 @@ if ([_rackClassName, _unit] call FUNC(isRackAccessible)) then {
                         QGVAR(unmount),
                         localize LSTRING(unmountRadio),
                         "",
-                        {[_this#2, _this#1] call FUNC(unmountRadio)},
+                        {[_this select 2, _this select 1] call FUNC(unmountRadio)},
                         {true},
                         {},
                         _rackClassName

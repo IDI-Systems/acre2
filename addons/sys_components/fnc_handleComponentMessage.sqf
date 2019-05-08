@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handler for recieving a component message.
@@ -16,9 +17,9 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_radioId","_event", "_data", "_radioData", "_eventKind", "_remote"];
+params ["", "", "_data", "", "", ""];
+
 _data params ["_componentId", "_childConnector", "_parentConnector", "_attributes"];
 //_childConnector - this is the connector on this event's device
 //_parentConnector -  this is the connector on the device being connected

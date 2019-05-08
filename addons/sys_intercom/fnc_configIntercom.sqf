@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Configures the intercom system of a vehicle.
@@ -14,14 +15,10 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_intercoms"];
 
-private _classname = typeOf _vehicle;
 private _intercomNames = [];
-private _intercomDisplayNames = [];
-private _intercomShortNames = [];
 private _intercomPositions = [];
 private _intercomExceptions = [];
 private _intercomLimitedPositions = [];
@@ -29,6 +26,7 @@ private _intercomMasterStation = [];
 private _numLimitedPositions = [];
 private _intercomConnectByDefault = [];
 private _broadcasting = [];
+private _accent = [];
 
 {
     private _name = toLower (configName _x);
@@ -113,6 +111,7 @@ private _broadcasting = [];
     _intercomConnectByDefault pushBack _connectedByDefault;
     _intercomMasterStation pushBack _masterStationPositions;
     _broadcasting pushBack [false, objNull];
+    _accent pushBack false;
 } forEach _intercoms;
 
 [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
@@ -120,3 +119,4 @@ private _broadcasting = [];
 _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
 _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
 _vehicle setVariable [QGVAR(broadcasting), _broadcasting];
+_vehicle setVariable [QGVAR(accent), _accent];

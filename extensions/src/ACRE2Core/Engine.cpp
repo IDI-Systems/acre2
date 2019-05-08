@@ -13,6 +13,8 @@
 #include "setMuted.h"
 #include "startRadioSpeaking.h"
 #include "stopRadioSpeaking.h"
+#include "startIntercomSpeaking.h"
+#include "stopIntercomSpeaking.h"
 #include "setPTTKeys.h"
 #include "loadSound.h"
 #include "playSound.h"
@@ -25,7 +27,7 @@
 #include "setTs3ChannelDetails.h"
 
 
-ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
+AcreResult CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
 
     if (!g_Log) {
         g_Log = (Log *)new Log("acre2.log");
@@ -57,6 +59,8 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
     this->getRpcEngine()->addProcedure(new setMuted());
     this->getRpcEngine()->addProcedure(new startRadioSpeaking());
     this->getRpcEngine()->addProcedure(new stopRadioSpeaking());
+    this->getRpcEngine()->addProcedure(new startIntercomSpeaking());
+    this->getRpcEngine()->addProcedure(new stopIntercomSpeaking());
     this->getRpcEngine()->addProcedure(new setPTTKeys());
     this->getRpcEngine()->addProcedure(new loadSound());
     this->getRpcEngine()->addProcedure(new playLoadedSound());
@@ -71,10 +75,10 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
     // Initialize the client, because it never was derp
     this->getClient()->initialize();
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 
-ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName, std::string loggingPath) {
+AcreResult CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName, std::string loggingPath) {
 
     g_Log = (Log *)new Log(const_cast<char *>(loggingPath.c_str()));
     LOG("* Logging engine initialized.");
@@ -82,33 +86,33 @@ ACRE_RESULT CEngine::initialize(IClient *client, IServer *externalServer, std::s
     return initialize(client, externalServer, fromPipeName, toPipeName);
 }
 
-ACRE_RESULT CEngine::start(ACRE_ID id) {
+AcreResult CEngine::start(acre_id_t id) {
     if (this->getExternalServer()) {
         this->getExternalServer()->initialize();
     } else {
-        return ACRE_ERROR;
+        return AcreResult::error;
     }
 
     if (this->getGameServer()) {
         this->getGameServer()->initialize();
     } else {
-        return ACRE_ERROR;
+        return AcreResult::error;
     }
     /*
     if (this->getKeyHandlerEngine()) {
         this->getKeyHandlerEngine()->initialize();
     } else {
-        return ACRE_ERROR;
+        return AcreResult::error;
     }
     */
     this->getClient()->unMuteAll();
-    this->setState(ACRE_STATE_RUNNING);
-    return ACRE_OK;
+    this->setState(AcreState::running);
+    return AcreResult::ok;
 }
 
-ACRE_RESULT CEngine::stop() {
+AcreResult CEngine::stop() {
     LOG("Engine Shutting Down");
-    this->setState(ACRE_STATE_STOPPING);
+    this->setState(AcreState::stopping);
 
     if (this->getClient()) {
         this->getClient()->enableMicrophone(true);        // unmute local microphone on stopping
@@ -129,17 +133,17 @@ ACRE_RESULT CEngine::stop() {
 
     CAcreSettings::getInstance()->save();
 
-    this->setState(ACRE_STATE_STOPPED);
+    this->setState(AcreState::stopped);
     LOG("Engine Shutdown Complete");
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 
-ACRE_RESULT CEngine::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType) {
+AcreResult CEngine::localStartSpeaking(AcreSpeaking speakingType) {
     this->localStartSpeaking(speakingType, "");
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 
-ACRE_RESULT CEngine::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::string radioId) {
+AcreResult CEngine::localStartSpeaking(AcreSpeaking speakingType, std::string radioId) {
     // send a start speaking event to everyone
     TRACE("Local START speaking: %d, %s", speakingType, radioId.c_str());
     this->getSelf()->lock();
@@ -171,10 +175,10 @@ ACRE_RESULT CEngine::localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::st
 
     this->getSelf()->setSpeaking(TRUE);
     this->getSelf()->unlock();
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 
-ACRE_RESULT CEngine::localStopSpeaking( void ) {
+AcreResult CEngine::localStopSpeaking( void ) {
     this->getSelf()->setSpeaking(FALSE);
     CEngine::getInstance()->getExternalServer()->sendMessage(
         CTextMessage::formatNewMessage("ext_remoteStopSpeaking",
@@ -193,19 +197,19 @@ ACRE_RESULT CEngine::localStopSpeaking( void ) {
     );
 
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 
-ACRE_RESULT CEngine::remoteStartSpeaking(ACRE_ID remoteId, int languageId, std::string netId, ACRE_SPEAKING_TYPE speakingType, std::string radioId, ACRE_VOLUME curveScale) {
+AcreResult CEngine::remoteStartSpeaking(acre_id_t remoteId, int languageId, std::string netId, AcreSpeaking speakingType, std::string radioId, acre_volume_t curveScale) {
     TRACE("Remote Start Speaking Enter: %d, %d", remoteId, speakingType);
     auto it = this->speakingList.find(remoteId);
     if (it != this->speakingList.end()) {
         //ghetto rig the remote players curveScale updates
         it->second->setSelectableCurveScale(curveScale);
-        return ACRE_OK;
+        return AcreResult::ok;
     }
     CPlayer *remotePlayer = new CPlayer(remoteId);
-    this->speakingList.insert(std::pair<ACRE_ID, CPlayer *>(remoteId, remotePlayer));
+    this->speakingList.insert(std::pair<acre_id_t, CPlayer *>(remoteId, remotePlayer));
     remotePlayer->setSpeakingType(speakingType);
     remotePlayer->setSelectableCurveScale(curveScale);
     remotePlayer->setCurrentRadioId(radioId);
@@ -223,10 +227,10 @@ ACRE_RESULT CEngine::remoteStartSpeaking(ACRE_ID remoteId, int languageId, std::
         )
     );
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 
-ACRE_RESULT CEngine::remoteStopSpeaking(ACRE_ID remoteId) {
+AcreResult CEngine::remoteStopSpeaking(acre_id_t remoteId) {
     TRACE("Remote STOP Speaking Enter: %d", remoteId);
     auto it = this->speakingList.find(remoteId);
     if (it != this->speakingList.end()) {
@@ -245,5 +249,5 @@ ACRE_RESULT CEngine::remoteStopSpeaking(ACRE_ID remoteId) {
         if (remotePlayer)
             delete remotePlayer;
     }
-    return ACRE_OK;
+    return AcreResult::ok;
 }

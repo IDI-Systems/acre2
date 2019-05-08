@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks whether the provided weapon/item is the specified ACRE radio type.
@@ -14,9 +15,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_radioId", "_radioType"];
+params [
+    ["_radioId", "", []],
+    ["_radioType", "", []]
+];
 
 private _ret = false;
 private _parent = configName (inheritsFrom ( configFile >> "CfgAcreComponents" >> _radioId));

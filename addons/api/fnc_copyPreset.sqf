@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Copies all parameters of the source preset to a new destination preset name.
@@ -15,9 +16,14 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_radioClass", "_srcPresetName", "_dstPresetName"];
+params [
+    ["_radioClass", "", []],
+    ["_srcPresetName", "", []],
+    ["_dstPresetName", "", []]
+];
+
+if (_radioClass isEqualTo ""  || {_srcPresetName isEqualTo ""} || {_dstPresetName isEqualTo ""}) exitWith {false};
 
 private _presetData = [_radioClass, _srcPresetName] call FUNC(getPresetData);
 if (isNil "_presetData") exitWith { false };

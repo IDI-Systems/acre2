@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the preset name to utilize on the provided radio class during initialization.
@@ -14,9 +15,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_baseClass","_presetName"];
+params [
+    ["_baseClass", "", [""]],
+    ["_presetName", "", [""]]
+];
 
 [_baseClass, _presetName] call EFUNC(sys_data,assignRadioPreset);
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Used to get the correct channel field name for a particular radio type. As the field names can differ between radio IDs.
@@ -14,9 +15,11 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_radioId", "_fieldName"];
+params [
+    ["_radioId", "", [""]],
+    ["_fieldName", "", [""]]
+];
 
 TRACE_1("CALLING", "");
 private _baseRadio = [_radioId] call FUNC(getBaseRadio);

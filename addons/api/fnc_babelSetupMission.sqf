@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Provides functionality to allow for easy setup of side-specific languages.
@@ -17,7 +18,6 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
 // Variables are provided as
 // [ [side, languages], [side, languages] ] call acre_api_fnc_babelSetupMission;

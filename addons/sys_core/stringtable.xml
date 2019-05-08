@@ -71,6 +71,8 @@
             <Portuguese>Trocar de Canal do TeamSpeak</Portuguese>
             <Polish>Zmiana kanału TeamSpeak</Polish>
             <Italian>Cambio canale TeamSpeak</Italian>
+            <Spanish>Cambio de canal de TeamSpeak</Spanish>
+            <French>Changer de canal TeamSpeak</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
@@ -81,6 +83,8 @@
             <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
             <Polish>Nazwa kanału TeamSpeak</Polish>
             <Italian>Nome canale Teamspeak</Italian>
+            <Spanish>Nombre de canal de TeamSpeak</Spanish>
+            <French>Nom du canal TeamSpeak</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
@@ -89,6 +93,9 @@
             <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
             <Polish>Hasło kanału TeamSpeak</Polish>
             <Italian>Password canale Teamspeak</Italian>
+            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
+            <Spanish>Contraseña del canal de TeamSpeak</Spanish>
+            <French>Mot de passe du canal TeamSpeak</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -106,22 +113,22 @@
             <Portuguese>Desabilitar Dica de Dessincronização do Equipamento</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
-            <English>Default Radio Key</English>
-            <Spanish>Tecla de radio predeterminada</Spanish>
-            <Czech>Defaultní klávesa rádia</Czech>
-            <German>Standard Sprechtaste</German>
+            <English>Active Radio Transmit</English>
+            <Spanish>Tecla de radio activa</Spanish>
+            <Czech>Aktivní klávesa rádia</Czech>
+            <German>Aktives Sprechtaste</German>
             <Japanese>標準の無線送信キー</Japanese>
-            <Italian>Tasto Radio Standard</Italian>
-            <French>Touche radio par défaut</French>
+            <Italian>Tasto Radio Attiva</Italian>
+            <French>Touche radio active</French>
             <Korean>기본 무전 단축키</Korean>
-            <Polish>Domyślny klawisz nadawania</Polish>
-            <Russian>Стандартная радио кнопка</Russian>
+            <Polish>Aktywne klawisz nadawania</Polish>
+            <Russian>активное радио кнопка</Russian>
             <Chinese>預設無線電按鍵</Chinese>
             <Chinesesimp>预设无线电按键</Chinesesimp>
-            <Portuguese>Tecla Padrão do Rádio</Portuguese>
+            <Portuguese>Tecla Activo do Rádio</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
-            <English>Use currently selected radio to talk.</English>
+            <English>Transmit on currently active radio.</English>
             <Spanish>Utilizar la radio seleccionada actualmente para hablar</Spanish>
             <Czech>Použít právě zvolené rádio k mluvení.</Czech>
             <German>Das ausgewählte Funkgerät zum Sprechen nutzen.</German>
@@ -136,52 +143,18 @@
             <Portuguese>Usar o rádio atualmente selecionado para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
-            <English>Alt Radio Key 1</English>
-            <Spanish>Tecla de transmisión alternativa 1</Spanish>
-            <Czech>Alternativní klávesa rádia 1</Czech>
-            <German>Alternative Sprechtaste 1</German>
-            <Japanese>代替無線キー 1</Japanese>
-            <Italian>Trasmetti sulla Radio alternativa n.1</Italian>
-            <French>Touche radio alternative 1</French>
-            <Korean>대체 무전 단축키 1</Korean>
-            <Polish>Dodatkowy klawisz radia 1</Polish>
-            <Russian>Альт. радио кнопка 1</Russian>
-            <Chinese>設置備用無線電按鍵1</Chinese>
-            <Chinesesimp>设置备用无线电按键1</Chinesesimp>
-            <Portuguese>Tecla do  Rádio Alternativa 1</Portuguese>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_AltPTTKey2">
-            <English>Alt Radio Key 2</English>
-            <Spanish>Tecla de transmisión alternativa 2</Spanish>
-            <Czech>Alternativní klávesa rádia 2</Czech>
-            <German>Alternative Sprechtaste 2</German>
-            <Japanese>代替無線キー 2</Japanese>
-            <Italian>Trasmetti sulla Radio alternativa n.2</Italian>
-            <French>Touche radio alternative 2</French>
-            <Korean>대체 무전 단축키 2</Korean>
-            <Polish>Dodatkowy klawisz radia 2</Polish>
-            <Russian>Альт. радио кнопка 2</Russian>
-            <Chinese>設置備用無線電按鍵2</Chinese>
-            <Chinesesimp>设置备用无线电按键2</Chinesesimp>
-            <Portuguese>Tecla do  Rádio Alternativa 2</Portuguese>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_AltPTTKey3">
-            <English>Alt Radio Key 3</English>
-            <Spanish>Tecla de transmisión alternativa 3</Spanish>
-            <Czech>Alternativní klávesa rádia 3</Czech>
-            <German>Alternative Sprechtaste 3</German>
-            <Japanese>代替無線キー 3</Japanese>
-            <Italian>Trasmetti sulla Radio alternativa n.3</Italian>
-            <French>Touche radio alternative 3</French>
-            <Korean>대체 무전 단축키 3</Korean>
-            <Polish>Dodatkowy klawisz radia 3</Polish>
-            <Russian>Альт. радио кнопка 3</Russian>
-            <Chinese>設置備用無線電按鍵3</Chinese>
-            <Chinesesimp>设置备用无线电按键3</Chinesesimp>
-            <Portuguese>Tecla do  Rádio Alternativa 3</Portuguese>
+            <English>Radio 1 Transmit (PTT 1)</English>
+            <Spanish>Tecla de transmisión 1</Spanish>
+            <Czech>Klávesa rádia 1</Czech>
+            <German>Sprechtaste 1</German>
+            <Italian>Trasmetti sulla Radio n.1</Italian>
+            <French>Touche radio 1</French>
+            <Polish>Klawisz radia 1</Polish>
+            <Russian>радио кнопка 1</Russian>
+            <Portuguese>Tecla do Rádio 1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
-            <English>Use the first radio in your inventory to talk.</English>
+            <English>Transmit on first radio and set it as active.</English>
             <Spanish>Utiliza la primera radio en el inventario para hablar</Spanish>
             <Czech>Použít první rádio v inventáři k mluvení.</Czech>
             <German>Das erste Funkgerät zum Sprechen verwenden.</German>
@@ -195,8 +168,19 @@
             <Chinesesimp>使用物品栏内第一个无线电进行通话。</Chinesesimp>
             <Portuguese>Usar o primeiro rádio do inventário para falar.</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey2">
+            <English>Radio 2 Transmit (PTT 2)</English>
+            <Spanish>Tecla de transmisión 2</Spanish>
+            <Czech>Klávesa rádia 2</Czech>
+            <German>Sprechtaste 2</German>
+            <Italian>Trasmetti sulla Radio n.2</Italian>
+            <French>Touche radio 2</French>
+            <Polish>Klawisz radia 2</Polish>
+            <Russian>радио кнопка 2</Russian>
+            <Portuguese>Tecla do Rádio 2</Portuguese>
+        </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
-            <English>Use the second radio in your inventory to talk.</English>
+            <English>Transmit on second radio and set it as active.</English>
             <Spanish>Utiliza la segunda radio en el inventario para hablar</Spanish>
             <Czech>Použít druhé rádio v inventáři k mluvení.</Czech>
             <German>Das zweite Funkgerät zum Sprechen verwenden.</German>
@@ -210,7 +194,19 @@
             <Chinesesimp>使用物品栏内第二个无线电进行通话。</Chinesesimp>
             <Portuguese>Usar o segundo rádio do inventário para falar.</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_sys_core_AltPTTKey3">
+            <English>Radio 3 Transmit (PTT 3)</English>
+            <Spanish>Tecla de transmisión 3</Spanish>
+            <Czech>Klávesa rádia 3</Czech>
+            <German>Sprechtaste 3</German>
+            <Italian>Trasmetti sulla Radio n.3</Italian>
+            <French>Touche radio 3</French>
+            <Polish>Klawisz radia 3</Polish>
+            <Russian>радио кнопка 3</Russian>
+            <Portuguese>Tecla do Rádio 3</Portuguese>
+        </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
+            <English>Transmit on third radio and set it as active.</English>
             <English>Use the third radio in your inventory to talk.</English>
             <Spanish>Utiliza la tercera radio en el inventario para hablar</Spanish>
             <Czech>Použít třetí rádio v inventáři k mluvení.</Czech>
@@ -271,7 +267,7 @@
             <Portuguese>Mudar Idioma (Babel)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioLeftEar">
-            <English>Radio Left Ear</English>
+            <English>Radio Left Ear (Active Radio)</English>
             <Spanish>Radio auricular izquierdo</Spanish>
             <Czech>Rádio do levého ucha</Czech>
             <German>Linker Ohrhörer</German>
@@ -286,7 +282,7 @@
             <Portuguese>Rádio Orelha Esquerda</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioBothEars">
-            <English>Radio Both Ears</English>
+            <English>Radio Both Ears (Active Radio)</English>
             <Spanish>Radio ambas auriculares</Spanish>
             <Czech>Rádio do prostředního ucha</Czech>
             <German>Beide Ohrhörer</German>
@@ -301,7 +297,7 @@
             <Portuguese>Rádio Ambas Orelhas</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RightRightEar">
-            <English>Radio Right Ear</English>
+            <English>Radio Right Ear (Active Radio)</English>
             <Spanish>Radio auricular derecho</Spanish>
             <Czech>Rádio do pravého ucha</Czech>
             <German>Rechter Ohrhörer</German>
@@ -316,19 +312,31 @@
             <Portuguese>Rádio Orelha Direita</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_HeadSet">
-            <English>Toggle Headset/Toggle Spectators</English>
-            <Spanish>Activar auriculares/Activar espectadores</Spanish>
-            <Czech>Přepnout headset/Přepnout diváky</Czech>
-            <German>Headset umschalten/Zuschauer umschalten</German>
-            <Japanese>ヘッドセットの切り替え/スペクテイターの切り替え</Japanese>
-            <Italian>Attiva/Disattiva Cuffia - Attiva/Disattiva Spettatori</Italian>
+            <English>Toggle Headset/Spectators</English>
+            <Spanish>Activar auriculares/espectadores</Spanish>
+            <Czech>Přepnout headset/diváky</Czech>
+            <German>Headset umschalten / Zuschauer umschalten</German>
+            <Japanese>ヘッドセットの切り替え / スペクテイターの切り替え</Japanese>
+            <Italian>Attiva/Disattiva Cuffia/Spettatori</Italian>
             <French>Alterner Casque/Spectateurs</French>
-            <Korean>헤드셋 전환/관전자 전환</Korean>
+            <Korean>헤드셋 전환 / 관전자 전환</Korean>
             <Polish>Zdejmij/załóż słuchawki. / Wł/wył widzów.</Polish>
-            <Russian>Переключить наушники/Переключить спектаторов</Russian>
+            <Russian>Переключить наушники/спектаторов</Russian>
             <Chinese>切換耳機 / 切換觀戰</Chinese>
             <Chinesesimp>切换耳机 / 切换观战</Chinesesimp>
             <Portuguese>Alternar Fones/Espectadores</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AntennaDirToggle">
+            <English>Antenna Direction Toggle</English>
+            <German>Antennenausrichtung wechseln</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
+            <English>Antenna straightened</English>
+            <German>Antenne gerade</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_AntennaDirBent">
+            <English>Antenna bent</English>
+            <German>Antenne gebogen</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -374,6 +382,10 @@
             <Chinesesimp>忽略天线方向</Chinesesimp>
             <Portuguese>Ignorar Direção da Antena</Portuguese>
             <Italian>Ignora direzione antenna</Italian>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_autoAntennaDirection_displayName">
+            <English>Automatic Antenna Direction</English>
+            <German>Automatische Antennenausrichtung</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -461,6 +473,8 @@
             <Portuguese>Fones Abaixados</Portuguese>
             <Polish>Słuchawki założone</Polish>
             <Italian>Alza cuffie</Italian>
+            <Spanish>Subir auriculares</Spanish>
+            <French>Casque mis</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
@@ -473,6 +487,16 @@
             <Portuguese>Fones Levantados</Portuguese>
             <Polish>Słuchawki zdjęte</Polish>
             <Italian>Abbassa cuffie</Italian>
+            <Spanish>Bajar auriculares</Spanish>
+            <French>Casque enlevé</French>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_incomingTransmissionNotification">
+            <English>Show incoming transmissions</English>
+            <German>Eingehende Funksprüche anzeigen</German>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
+            <English>Show rack transmissions</English>
+            <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
         </Key>
     </Package>
 </Project>

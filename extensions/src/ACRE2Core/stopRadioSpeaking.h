@@ -14,10 +14,10 @@
 #include <string>
 
 RPC_FUNCTION(stopRadioSpeaking) {
-    
-    CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_RADIO);
 
-    return ACRE_OK;
+    CEngine::getInstance()->getClient()->localStopSpeaking(AcreSpeaking::radio);
+
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

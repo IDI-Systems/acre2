@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the given radio as mounted. Must be executed on the server.
@@ -14,9 +15,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params [["_rackId", ""], ["_baseRadio", ""]];
+params [
+    ["_rackId", "", [""]],
+    ["_baseRadio", "", [""]]
+];
 
 if (!isServer) exitWith {
     WARNING("Function must be called on the server.");

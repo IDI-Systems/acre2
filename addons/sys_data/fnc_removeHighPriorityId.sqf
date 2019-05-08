@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,11 +15,10 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_id"];
 
 private _index = GVAR(forceHighPriorityIds) find _id;
 if (_index != -1) then {
-    GVAR(forceHighPriorityIds) set[_index, nil];
+    GVAR(forceHighPriorityIds) set [_index, nil];
 };

@@ -4,6 +4,7 @@ class CfgVehicles {
         model = QPATHTOF(data\models\acre_oe303.p3d);
         displayName = "ACRE OE-303 Antenna";
         icon = QPATHTOF(data\ui\icon_antenna_ca.paa);
+        editorPreview = QPATHTOF(data\ui\oe303.jpg);
         mapSize = 5;
         scope = 2;
         armor = 150;

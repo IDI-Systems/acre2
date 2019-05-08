@@ -15,6 +15,11 @@ if (hasInterface) then {
     // Todo: Change to key down/up
     GVAR(broadcastKey) = false;
     GVAR(intercomPttKey) = false;
+    GVAR(intercomUse) = [];
+
+    GVAR(guiOpened) = false;
+    GVAR(configChanged) = false;
+    GVAR(activeIntercom) = -1;
 };
 
 ADDON = true;

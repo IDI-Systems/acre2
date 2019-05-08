@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,13 +15,12 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 #define DEBUG_MODE_REBUILD
 
 TRACE_1("SYSTEM EVENT ENTER", _this);
 
-params ["_eventKind","_radioId","_event",["_data",[]],["_remote",false]];
+params ["_eventKind", "_radioId", "_event", ["_data", []], ["_remote", false]];
 private _return = nil;
 
 if (!HASH_HASKEY(GVAR(radioData), _radioId)) exitWith {
@@ -30,16 +30,16 @@ if (!HASH_HASKEY(GVAR(radioData), _radioId)) exitWith {
 
 private _radioData = HASH_GET(GVAR(radioData), _radioId);
 
-private _cachekey = _eventKind+":"+_radioId+":"+_event;
+private _cachekey = format ["%1:%2:%3", _eventKind, _radioId, _event];
 private _handlerFunction = HASH_GET(GVAR(sysEventCache),_cacheKey);
 if (isNil "_handlerFunction") then {
     private _radioBaseClass = BASE_CLASS_CONFIG(_radioId);
 
-    private _interfaceClass = getText(configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
+    private _interfaceClass = getText (configFile >> "CfgAcreComponents" >> _radioBaseClass >> "InterfaceClasses" >> _eventKind);
     if (_interfaceClass == "") then {
         _interfaceClass = "DefaultInterface";
     };
-    _handlerFunction = getText(configFile >> _eventKind >> _interfaceClass >> _event >> "handler");
+    _handlerFunction = getText (configFile >> _eventKind >> _interfaceClass >> _event >> "handler");
     HASH_SET(GVAR(sysEventCache),_cachekey,_handlerFunction);
 };
 

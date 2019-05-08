@@ -15,7 +15,7 @@ RPC_FUNCTION(setTs3ChannelDetails) {
     };
 
     CEngine::getInstance()->getClient()->updateTs3ChannelDetails(details);
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

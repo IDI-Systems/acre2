@@ -17,17 +17,17 @@ public:
     ~TEntrantWorker() {
     
     }
-    ACRE_RESULT startWorker(void) {
+    AcreResult startWorker(void) {
         LOCK(this);
         this->setShuttingDown(false);
         this->m_processQueue.clear();
         this->workerThread = std::thread(&TEntrantWorker::exWorkerThread, this);
         this->setRunning(true);
         UNLOCK(this);
-        return ACRE_OK;
+        return AcreResult::ok;
     }
 
-    ACRE_RESULT stopWorker(void) {
+    AcreResult stopWorker(void) {
         this->setShuttingDown(true);
         this->setRunning(false);
         if (this->workerThread.joinable()) {
@@ -38,10 +38,10 @@ public:
         UNLOCK(this);
         this->setShuttingDown(false);
         
-        return ACRE_OK;
+        return AcreResult::ok;
     }
 
-    ACRE_RESULT exWorkerThread() {
+    AcreResult exWorkerThread() {
         T item;
         while (!this->getShuttingDown()) {
             LOCK(this);
@@ -51,10 +51,10 @@ public:
             UNLOCK(this);
             Sleep(1);
         }
-        return ACRE_OK;
+        return AcreResult::ok;
     }
 
-    virtual ACRE_RESULT exProcessItem(T) = 0;
+    virtual AcreResult exProcessItem(T) = 0;
     DECLARE_MEMBER(BOOL, ShuttingDown);
     DECLARE_MEMBER(BOOL, Running);
 protected:

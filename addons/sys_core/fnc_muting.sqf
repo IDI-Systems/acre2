@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets up the per frame event handler to mute and unmute clients on TeamSpeak. The muting occurs to optimize TeamSpeak bandwidth as voice data is not sent for muted clients.
@@ -13,21 +14,20 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 #define FULL_SEND_INTERVAL 5
 
 
 GVAR(oldSpectators) = [];
 GVAR(lastSpectate) = false;
-GVAR(_waitFullSend) = diag_tickTime;
-GVAR(_fullListTime) = true;
+GVAR(waitFullSend) = diag_tickTime;
+GVAR(fullListTime) = true;
 
 GVAR(oldPlayerIdList) = [];
 
 DFUNC(mutingPFHLoop) = {
-    if (diag_tickTime > GVAR(_waitFullSend)) then {
-        GVAR(_fullListTime) = true;
+    if (diag_tickTime > GVAR(waitFullSend)) then {
+        GVAR(fullListTime) = true;
     };
     private _mutingParams = "";
     private _muting = [];
@@ -44,7 +44,7 @@ DFUNC(mutingPFHLoop) = {
             private _muted = 0;
             //private _remoteTs3Id = (_remoteUser getVariable QGVAR(ts3id));
             //if (!(isNil "_remoteTs3Id")) then {
-                if (!(_remoteTs3Id in ACRE_SPECTATORS_LIST)) then {
+                if !(_remoteTs3Id in ACRE_SPECTATORS_LIST) then {
                     private _isRemotePlayerAlive = [_remoteUser] call FUNC(getAlive);
                     if (_isRemotePlayerAlive == 1) then {
                         //_playerIdList pushBack _remoteTs3Id;
@@ -60,10 +60,10 @@ DFUNC(mutingPFHLoop) = {
                             };
                         };
 
-                        if (GVAR(_fullListTime)) then {
+                        if (GVAR(fullListTime)) then {
                             _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
                         } else {
-                            if ((_muted == 0 && {_remoteUser in GVAR(muting)}) || (_muted == 1 && {!(_remoteUser in GVAR(muting))})) then {
+                            if ((_muted == 0 && {_remoteUser in GVAR(muting)}) || {(_muted == 1 && {!(_remoteUser in GVAR(muting))})}) then {
                                 _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
                             };
                         };
@@ -75,18 +75,18 @@ DFUNC(mutingPFHLoop) = {
         };
     } forEach GVAR(playerList);
 
-    if (!ACRE_IS_SPECTATOR || GVAR(_fullListTime)) then {
+    if (!ACRE_IS_SPECTATOR || {GVAR(fullListTime)}) then {
         private _newSpectators = ACRE_SPECTATORS_LIST - GVAR(oldSpectators);
-        if (GVAR(_fullListTime)) then {
+        if (GVAR(fullListTime)) then {
             _newSpectators = ACRE_SPECTATORS_LIST;
         };
-        if ((count _newSpectators) > 0) then {
+        if !(_newSpectators isEqualTo []) then {
             {
                 if (_x != GVAR(ts3id)) then {
                     _mutingParams = _mutingParams + format["%1,1,", _x];
                 };
             } forEach _newSpectators;
-            if (!GVAR(_fullListTime)) then {
+            if (!GVAR(fullListTime)) then {
                 GVAR(oldSpectators) = +ACRE_SPECTATORS_LIST;
             };
         };
@@ -103,7 +103,7 @@ DFUNC(mutingPFHLoop) = {
         };
     };
 
-    if (ACRE_IS_SPECTATOR && GVAR(_fullListTime)) then {
+    if (ACRE_IS_SPECTATOR && {GVAR(fullListTime)}) then {
         {
             if (_x != GVAR(ts3id)) then {
                 _mutingParams = _mutingParams + format["%1,0,", _x];
@@ -112,9 +112,9 @@ DFUNC(mutingPFHLoop) = {
     };
 
     GVAR(muting) = _muting;
-    if (GVAR(_fullListTime)) then {
-        GVAR(_waitFullSend) = diag_tickTime + FULL_SEND_INTERVAL;
-        GVAR(_fullListTime) = false;
+    if (GVAR(fullListTime)) then {
+        GVAR(waitFullSend) = diag_tickTime + FULL_SEND_INTERVAL;
+        GVAR(fullListTime) = false;
     };
     if (_mutingParams != "") then {
         CALL_RPC("setMuted",_mutingParams);

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioType", "_presetName"];
 
@@ -23,5 +23,4 @@ private _radioPresets = HASH_GET(GVAR(radioPresets),_radioType);
 
 if (isNil "_radioPresets") exitWith {nil};
 
-private _presetData = HASH_GET(_radioPresets,_presetName);
-_presetData
+HASH_GET(_radioPresets,_presetName)

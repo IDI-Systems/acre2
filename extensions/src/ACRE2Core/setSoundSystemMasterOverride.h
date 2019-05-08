@@ -24,7 +24,7 @@ RPC_FUNCTION(setSoundSystemMasterOverride) {
     }
 
 
-    return ACRE_OK;
+    return AcreResult::ok;
 }
 DECLARE_MEMBER(char *, Name);
 };

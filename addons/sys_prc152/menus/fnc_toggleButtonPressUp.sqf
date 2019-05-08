@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _iconcontrol = 1000;
 private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];

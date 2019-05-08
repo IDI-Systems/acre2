@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Used to handle a keypress of multiPttKeyPress.
@@ -13,13 +14,12 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("got ptt press", _this);
 
 if (ACRE_IS_SPECTATOR) exitWith { true };
 
-if ( GVAR(pttKeyDown) && ! isNil QGVAR(delayReleasePTT_Handle) ) then {
+if ( GVAR(pttKeyDown) && {!isNil QGVAR(delayReleasePTT_Handle)} ) then {
     [[ACRE_BROADCASTING_RADIOID, true]] call DFUNC(doHandleMultiPttKeyPressUp);
 } else {
     if (GVAR(pttKeyDown)) exitWith { true };
@@ -33,7 +33,7 @@ if (ACRE_ACTIVE_PTTKEY == -2) then {
         _sendRadio = ACRE_ACTIVE_RADIO;
     } else {
         private _radioList = [] call EFUNC(sys_data,getPlayerRadioList);
-        if (ACRE_ACTIVE_PTTKEY <= (count _radioList)-1) then {
+        if (ACRE_ACTIVE_PTTKEY <= (count _radioList) - 1) then {
             if ( (count ACRE_ASSIGNED_PTT_RADIOS) > 0) then {
                 private _sortList = [ACRE_ASSIGNED_PTT_RADIOS, _radioList] call EFUNC(sys_data,sortRadioList);
                 // This will handle cleanup automatically too

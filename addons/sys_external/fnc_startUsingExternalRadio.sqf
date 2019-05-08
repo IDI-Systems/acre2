@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Start using an external radio.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioID", "_endUser"];
 
@@ -23,7 +23,7 @@ private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
 private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
 
 // Do not flag as being externally used if it is already so (action give)
-if (!([_radioId] call FUNC(isExternalRadioUsed))) then {
+if !([_radioId] call FUNC(isExternalRadioUsed)) then {
     [_radioId, "setState", ["radioUsedExternally", [true, _endUser]]] call EFUNC(sys_data,dataEvent);
 
     // Handle remote owner

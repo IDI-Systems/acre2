@@ -22,7 +22,7 @@ class CfgUIGrids {
                 displayName = CSTRING(VehicleInfoGrid);
                 description = CSTRING(VehicleInfoGridDesc);
                 preview = QPATHTOF(data\ui\IGUI_vehicleInfo_preview_ca.paa);
-                saveToProfile[] = {0,1,2,3};
+                saveToProfile[] = {0, 1, 2, 3};
                 canResize = 0;
             };
         };

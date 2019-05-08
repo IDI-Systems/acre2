@@ -5,8 +5,9 @@ class CfgVehicles {
         scopeCurator = 2;
         accuracy = 1000;
         displayName = CSTRING(radioSupplyCrate);
-        model = "\A3\weapons_F\AmmoBoxes\AmmoBox_F";
-        author = ECSTRING(main,Author);
+        model = QPATHTOF(data\models\acre_radiobox.p3d);
+        editorPreview = QPATHTOF(data\ui\acreRadioBox.jpg);
+        author = "RanTa";
         class TransportItems {
             MACRO_ADDITEM(ACRE_PRC77,5);
             MACRO_ADDITEM(ACRE_PRC117F,5);

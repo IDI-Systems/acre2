@@ -137,49 +137,57 @@
             <Portuguese>Difinir Como Ativo</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bindMultiPushToTalk">
-            <English>Bind Multi PTT</English>
-            <Spanish>Definir como Multi PTT</Spanish>
+            <English>Bind PTT</English>
+            <Spanish>Definir como PTT</Spanish>
             <German>Sprechtasten festlegen</German>
             <Japanese>マルチ プッシュ トークに割当</Japanese>
-            <Czech>Přiřadit klávesu pro Multi PTT</Czech>
-            <Italian>Imposta Multi PTT</Italian>
-            <French>Définir Multi PTT</French>
+            <Czech>Přiřadit klávesu pro PTT</Czech>
+            <Italian>Imposta PTT</Italian>
+            <French>Définir PTT</French>
             <Korean>멀티 PTT 설정</Korean>
             <Polish>Ustaw klawisz PTT</Polish>
             <Russian>Назначить общую ПТТ</Russian>
             <Chinese>綁定多個按鍵發話</Chinese>
             <Chinesesimp>绑定多个按键发话</Chinesesimp>
-            <Portuguese>Ligar Multi PTT</Portuguese>
+            <Portuguese>Ligar PTT</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_multiPushToTalk">
-            <English>Multi PTT %1</English>
-            <Spanish>Multi PTT %1</Spanish>
+            <English>PTT %1</English>
+            <Spanish>PTT %1</Spanish>
             <German>Sprechtaste %1</German>
             <Japanese>マルチ プッシュ トーク %1</Japanese>
-            <Czech>Multi PTT %1</Czech>
-            <Italian>Multi PTT %1</Italian>
-            <French>Multi PTT %1</French>
+            <Czech>PTT %1</Czech>
+            <Italian>PTT %1</Italian>
+            <French>PTT %1</French>
             <Korean>멀티 PTT %1</Korean>
-            <Polish>Klawisz PTT %1</Polish>
+            <Polish>PTT %1</Polish>
             <Russian>Общая ПТТ %1</Russian>
             <Chinese>多個發話 %1</Chinese>
             <Chinesesimp>多个发话 %1</Chinesesimp>
-            <Portuguese>Multi PTT %1</Portuguese>
+            <Portuguese>PTT %1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsMultiPTT">
-            <English>Set as Multi PTT %1</English>
-            <Spanish>Definir como Multi PTT %1</Spanish>
+            <English>Set as PTT %1</English>
+            <Spanish>Definir como PTT %1</Spanish>
             <German>Als Sprechtaste %1 festlegen</German>
             <Japanese>%1をマルチ プッシュ トークに</Japanese>
-            <Czech>Nastavit jako Multi PTT</Czech>
-            <Italian>Imposta Multi PTT %1</Italian>
-            <French>Définir comme Multi PTT</French>
+            <Czech>Nastavit jako PTT</Czech>
+            <Italian>Imposta PTT %1</Italian>
+            <French>Définir comme PTT</French>
             <Korean>%1번 PTT로 설정</Korean>
-            <Polish>Ustaw Multi PTT %1</Polish>
+            <Polish>Ustaw PTT %1</Polish>
             <Russian>Назначить как общую ПТТ %1</Russian>
             <Chinese>設定多個發話 %1</Chinese>
             <Chinesesimp>设定多个发话 %1</Chinesesimp>
-            <Portuguese>Definir Como Multi PTT %1</Portuguese>
+            <Portuguese>Definir Como PTT %1</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_ace_interact_straightenAntenna">
+            <English>Straighten antenna</English>
+            <German>Antenne gerade ausrichten</German>
+        </Key>
+        <Key ID="STR_ACRE_ace_interact_bendAntenna">
+            <English>Bend antenna upwards</English>
+            <German>Antenne biegen</German>
         </Key>
     </Package>
 </Project>

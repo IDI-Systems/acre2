@@ -235,57 +235,41 @@ def find_bi_tools(work_drive):
         raise Exception("BadTools","Arma 3 Tools are not installed correctly or the P: drive needs to be created.")
 
 
-def find_depbo_tools(regKey):
+def find_depbo_tools():
     """Use registry entries to find DePBO-based tools."""
-    stop = False
+    requiredToolPaths = {"pboProject": None, "rapify": None, "MakePbo": None}
+    failed = False
 
-    if regKey == "HKCU":
-        reg = winreg.ConnectRegistry(None, winreg.HKEY_CURRENT_USER)
-        stop = True
-    else:
-        reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
-
-    try:
+    for tool in requiredToolPaths:
         try:
-            k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\pboProject")
+            try:
+                k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Mikero\{}".format(tool))
+                path = winreg.QueryValueEx(k, "exe")[0]
+            except FileNotFoundError:
+                try:
+                    k = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"Software\Mikero\{}".format(tool))
+                    path = winreg.QueryValueEx(k, "exe")[0]
+                except FileNotFoundError:
+                    try:
+                        k = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Wow6432Node\Mikero\{}".format(tool))
+                        path = winreg.QueryValueEx(k, "exe")[0]
+                    except FileNotFoundError:
+                        k = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"Software\Wow6432Node\Mikero\{}".format(tool))
+                        path = winreg.QueryValueEx(k, "exe")[0]
         except FileNotFoundError:
-            k = winreg.OpenKey(reg, r"Software\Mikero\pboProject")
-        try:
-            pboproject_path = winreg.QueryValueEx(k, "exe")[0]
+            print_error("Could not find {}".format(tool))
+            failed = True
+        else:
+            #Strip any quotations from the path due to a MikeRo tool bug which leaves a trailing space in some of its registry paths.
+            requiredToolPaths[tool] = path.strip('"')
+            print_green("Found {}.".format(tool))
+        finally:
             winreg.CloseKey(k)
-            print("Found pboproject.")
-        except:
-            print_error("Could not find pboProject.")
 
-        try:
-            k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\rapify")
-        except FileNotFoundError:
-            k = winreg.OpenKey(reg, r"Software\Mikero\rapify")
-        try:
-            rapify_path = winreg.QueryValueEx(k, "exe")[0]
-            winreg.CloseKey(k)
-            print("Found rapify.")
-        except:
-            print_error("Could not find rapify.")
+    if failed:
+        raise Exception("BadDePBO", "DePBO tools not installed correctly")
 
-        try:
-            k = winreg.OpenKey(reg, r"Software\Wow6432Node\Mikero\MakePbo")
-        except FileNotFoundError:
-            k = winreg.OpenKey(reg, r"Software\Mikero\MakePbo")
-        try:
-            makepbo_path = winreg.QueryValueEx(k, "exe")[0]
-            winreg.CloseKey(k)
-            print("Found makepbo.")
-        except:
-            print_error("Could not find makepbo.")
-    except:
-        if stop == True:
-            raise Exception("BadDePBO", "DePBO tools not installed correctly")
-        return -1
-
-
-    #Strip any quotations from the path due to a MikeRo tool bug which leaves a trailing space in some of its registry paths.
-    return [pboproject_path.strip('"'),rapify_path.strip('"'),makepbo_path.strip('"')]
+    return requiredToolPaths
 
 
 def color(color):
@@ -345,17 +329,8 @@ def compile_extensions(extensions_root, force_build):
         print_error("Failed to find CMake!")
         return
 
-    generator = ""
-    msbuild_path = shutil.which("msbuild")
-    if msbuild_path == None:
+    if shutil.which("msbuild") == None:
         print_error("Failed to find MSBuild!")
-        return
-    elif "15.0" in msbuild_path:
-        generator = "Visual Studio 15 2017"
-    elif "14.0" in msbuild_path:
-        generator = "Visual Studio 14 2015"
-    else:
-        print_error("Failed to find suitable generator!")
         return
 
     try:
@@ -369,7 +344,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj32)
             # Build
             os.chdir(vcproj32)
-            subprocess.call(["cmake", "..", "-G", generator])
+            subprocess.call(["cmake", "..", "-A", "Win32"])
             print()
             extensions32_cmd = joinstr.join(extensions32)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
@@ -384,7 +359,7 @@ def compile_extensions(extensions_root, force_build):
                 os.mkdir(vcproj64)
             # Build
             os.chdir(vcproj64)
-            subprocess.call(["cmake", "..", "-G", "{} Win64".format(generator)])
+            subprocess.call(["cmake", "..", "-A", "x64"])
             print()
             extensions64_cmd = joinstr.join(extensions64)
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
@@ -538,12 +513,13 @@ def cleanup_optionals(mod):
 
             try:
                 file_name = "{}{}.pbo".format(pbo_name_prefix,dir_name)
+                folder= "@{}{}".format(pbo_name_prefix,dir_name)
                 src_file_path = os.path.join(release_dir, project, "addons", file_name)
-                dst_file_path = os.path.join(release_dir, project, "optionals", file_name)
+                dst_file_path = os.path.join(release_dir, project, "optionals",folder,"addons",file_name)
 
                 sigFile_name = "{}.{}.bisign".format(file_name,key_name)
                 src_sig_path = os.path.join(release_dir, project, "addons", sigFile_name)
-                dst_sig_path = os.path.join(release_dir, project, "optionals", sigFile_name)
+                dst_sig_path = os.path.join(release_dir, project, "optionals",folder,"addons", sigFile_name)
 
                 if (os.path.isfile(src_file_path)):
                     #print("Preserving {}".format(file_name))
@@ -1155,12 +1131,11 @@ See the make.cfg file for additional build options.
 
     if build_tool == "pboproject":
         try:
-            depbo_tools = find_depbo_tools("HKLM")
-            if depbo_tools == -1:
-                depbo_tools = find_depbo_tools("HKCU")
-            pboproject = depbo_tools[0]
-            rapifyTool = depbo_tools[1]
-            makepboTool = depbo_tools[2]
+            depbo_tools = find_depbo_tools()
+
+            pboproject = depbo_tools["pboProject"]
+            rapifyTool = depbo_tools["rapify"]
+            makepboTool = depbo_tools["MakePbo"]
         except:
             raise
             print_error("Could not find dePBO tools. Download the needed tools from: https://dev.withsix.com/projects/mikero-pbodll/files")
@@ -1426,7 +1401,7 @@ See the make.cfg file for additional build options.
 
                     if os.path.isfile(nobinFilePath):
                         print_green("$NOBIN$ Found. Proceeding with non-binarizing!")
-                        cmd = [makepboTool, "-P","-A","-L","-G","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
+                        cmd = [makepboTool, "-P","-A","-G","-N","-X=*.backup", os.path.join(work_drive, prefix, module),os.path.join(module_root, release_dir, project,"addons")]
 
                     else:
                         if check_external:

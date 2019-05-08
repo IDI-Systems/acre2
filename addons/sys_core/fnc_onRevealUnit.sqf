@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Helper function for revealing units to AI for non-local AI.
@@ -11,17 +12,16 @@
  * Handled <BOOL>
  *
  * Example:
- * [player,unit,4.0] call acre_sys_core_fnc_onRevealUnit
+ * [player, unit, 4.0] call acre_sys_core_fnc_onRevealUnit
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_player", "_unit", "_revealAmount"];
 
 TRACE_1("onRevealUnit", _this);
 
-if (!local _unit) exitWith { false };
+if (!local _unit) exitWith {false};
 
 _unit reveal [_player, _revealAmount];
 

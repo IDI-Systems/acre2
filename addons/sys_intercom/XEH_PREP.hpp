@@ -1,3 +1,5 @@
+PREP_FOLDER(vic3);
+
 // Intercom
 PREP(configIntercom);
 PREP(configIntercomStations);
@@ -9,18 +11,20 @@ PREP(initVehicleIntercom);
 PREP(intercomAction);
 PREP(intercomChildrenActions);
 PREP(intercomListChildrenActions);
-PREP(intercomListRxTxActions);
-PREP(intercomListVolumeActions);
 PREP(intercomPFH);
 PREP(isIntercomAvailable);
 PREP(isInIntercom);
+PREP(modifyRadioVolume);
 PREP(noApiFunction);
 PREP(seatSwitched);
+PREP(handleAccent);
 PREP(handleBroadcasting);
 PREP(handleLimitedConnection);
 PREP(handleIntercomActivation);
+PREP(saveStationConfiguration);
 PREP(setStationConfiguration);
 PREP(setStationUnit);
+PREP(updateIntercomUse);
 
 // Infantry Phone
 PREP(checkInfantryPhoneAvailability);
@@ -35,7 +39,6 @@ PREP(updateInfantryPhoneStatus);
 // Racks integration
 PREP(configRackRxTxCapabilities);
 PREP(getRackRxTxCapabilities);
-PREP(setRackRxTxCapabilities);
 
 // Display
 PREP(updateVehicleInfoText);
@@ -44,3 +47,7 @@ PREP(updateVehicleInfoText);
 PREP(switchIntercomFast);
 PREP(handlePttKeyPress);
 PREP(handlePttKeyPressUp);
+
+// Intercom GUI
+PREP(closeGui);
+PREP(openGui);

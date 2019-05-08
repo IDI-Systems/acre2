@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initiates the signal calculation function for a transmission between two radios in sem70AKW mode. This is done on the receiving client
@@ -16,7 +17,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_tx", "_txRadioId", "_rx", "_rxRadioId"];
 

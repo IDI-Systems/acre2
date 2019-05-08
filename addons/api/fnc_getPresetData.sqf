@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns the full preset data of the specified preset name for the specified radio.
@@ -14,9 +15,11 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params ["_radioClass", "_preset"];
+params [
+    ["_radioClass", "", []],
+    ["_preset", "", []]
+];
 
 //_preset = [_radioClass] call EFUNC(sys_data,getRadioPresetName);
 private _presetData = [_radioClass, _preset] call EFUNC(sys_data,getPresetData);

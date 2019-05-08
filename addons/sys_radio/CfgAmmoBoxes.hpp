@@ -3,20 +3,17 @@
 class ReammoBox;
 class ACRE_RadioBox_Base: ReammoBox {
     scope = 1;
-    displayName = "ACRE Base Box";
+    displayName = CSTRING(acreBaseBox);
     vehicleClass = "ACRE_Radio_Box";
 };
 
 class ACRE_RadioBox: ACRE_RadioBox_Base {
     scope = 2;
-    displayName = "All Radio Crate";
+    displayName = CSTRING(allRadioCrate);
 
-    model = "\Ca\misc\Misc_cargo_cont_tiny";
+    model = QPATHOF(data\models\acre_radiobox.p3d);
+    author[] = {"RanTa"};
 
-    class TransportWeapons {
-    };
-    class TransportMagazines {
-    };
+    class TransportWeapons {};
+    class TransportMagazines {};
 };
-
-// create

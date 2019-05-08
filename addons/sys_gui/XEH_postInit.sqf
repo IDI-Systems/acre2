@@ -1,17 +1,19 @@
 #include "script_component.hpp"
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 if (!hasInterface) exitWith {};
 
 [] call FUNC(enableZeusOverlay);
+[] call FUNC(antennaElevationDisplay);
 
 // TODO - Look into this below.
 acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
 
-// Register volume control key handlers
+// Keybinds - Volume Control
 ["ACRE2", "VolumeControl", localize LSTRING(VolumeControl),
     FUNC(onVolumeControlKeyPress),
     FUNC(onVolumeControlKeyPressUp),
-[15, [false, false, false]], true] call CBA_fnc_addKeybind;
+[DIK_TAB, [false, false, false]], true] call CBA_fnc_addKeybind;
 
 ["unit", FUNC(onVolumeControlKeyPressUp)] call CBA_fnc_addPlayerEventHandler;
 
@@ -47,6 +49,16 @@ DFUNC(enterVehicle) = {
 // Show display when entering vehicle
 ["vehicle", {
     params ["_player", "_newVehicle"];
-
     [_player, _newVehicle] call FUNC(enterVehicle);
+}, true] call CBA_fnc_addPlayerEventHandler;
+
+// Hide display when entering a feature camera
+["featureCamera", {
+    params ["_player", "_featureCamera"];
+
+    if (_featureCamera isEqualTo "") then {
+        [_player, vehicle _player] call FUNC(enterVehicle);
+    } else {
+        (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
+    };
 }, true] call CBA_fnc_addPlayerEventHandler;
