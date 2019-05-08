@@ -140,7 +140,7 @@
             <English>Bind PTT</English>
             <Spanish>Definir como PTT</Spanish>
             <German>Sprechtasten festlegen</German>
-            <Japanese>マルチ プッシュ トークに割当</Japanese>
+            <Japanese>プッシュ トークに割当</Japanese>
             <Czech>Přiřadit klávesu pro PTT</Czech>
             <Italian>Imposta PTT</Italian>
             <French>Définir PTT</French>
@@ -155,7 +155,7 @@
             <English>PTT %1</English>
             <Spanish>PTT %1</Spanish>
             <German>Sprechtaste %1</German>
-            <Japanese>マルチ プッシュ トーク %1</Japanese>
+            <Japanese>プッシュ トーク %1</Japanese>
             <Czech>PTT %1</Czech>
             <Italian>PTT %1</Italian>
             <French>PTT %1</French>
@@ -170,7 +170,7 @@
             <English>Set as PTT %1</English>
             <Spanish>Definir como PTT %1</Spanish>
             <German>Als Sprechtaste %1 festlegen</German>
-            <Japanese>%1をマルチ プッシュ トークに</Japanese>
+            <Japanese>%1をプッシュ トークに</Japanese>
             <Czech>Nastavit jako PTT</Czech>
             <Italian>Imposta PTT %1</Italian>
             <French>Définir comme PTT</French>
