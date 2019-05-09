@@ -3,38 +3,49 @@
     <Package name="sys_zeus">
         <Key ID="STR_ACRE_sys_zeus_SpectatorEars">
             <English>Switch to Spectator</English>
+            <Japanese>スペクテイターに切り替え</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusEars">
             <English>Switch to Zeus</English>
+            <Japanese>Zeus に切り替え</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_Remote">
             <English>Use Remote Controlled Voice</English>
+            <Japanese>遠隔操作ユニットの声を使用</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_Player">
             <English>Use Player Voice</English>
+            <Japanese>プレイヤーの声を使用</Japanese>
         </Key>
 
         <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera">
             <English>Speak through the Camera</English>
+            <Japanese>カメラを通じて話す</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera_Description">
             <English>Talk from the Zeus Interface's camera instead of your unit's position. Listen through camera must be enabled.</English>
+            <Japanese>Zeus 画面のカメラから話すようになります。"カメラを通じて聞く" が有効になっている必要があります。</Japanese>
         </Key>
 
         <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_DisplayName">
             <English>Default Zeus Voice Source</English>
+            <Japanese>Zeus の音源</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusListenViaCamera_DisplayName">
             <English>Listen through camera</English>
+            <Japanese>カメラを通じて聞く</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusListenViaCamera_Description">
             <English>Hear players in direct chat through the Zeus Interface's camera.</English>
+            <Japanese>Zeus 画面のカメラを通じてプレイヤーの会話を聞こえるようにします。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_DisplayName">
             <English>Able to Join Spectators</English>
+            <Japanese>スペクテイターへ参加可能に</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_Description">
             <English>Let Zeus join the specators while in the Zeus interface.</English>
+            <Japanese>Zeus が Zeus 画面のままスペクテイターへの参加を可能にします。</Japanese>
         </Key>
     </Package>
 </Project>
