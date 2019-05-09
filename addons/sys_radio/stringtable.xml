@@ -107,10 +107,12 @@
         <Key ID="STR_ACRE_sys_radio_acreBaseBox">
             <English>ACRE Base Box</English>
             <Spanish>Caja base de ACRE</Spanish>
+            <Japanese>ACRE 基本物資箱</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_allRadioCrate">
             <English>All Radio Crate</English>
             <Spanish>Caja con todas las radios</Spanish>
+            <Japanese>全無線機物資箱</Japanese>
         </Key>
     </Package>
 </Project>
