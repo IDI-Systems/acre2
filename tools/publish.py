@@ -243,7 +243,7 @@ def main(argv):
                 if("github_oauth_token" in cred_file):
                     github_token = cred_file["github_oauth_token"]
                 else:
-                    raise Exception("Credentials file did not specify a username and password for SFTP login")
+                    raise Exception("Credentials file did not specify a username and password or OAuth token for GitHub login")
 
                 account = destination["account"]
                 tag_name = destination["tag_name"]
