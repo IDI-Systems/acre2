@@ -30,7 +30,7 @@
     <sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.<br/></strong></sub>
 </p>
 
-**ACRE2** is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications through Teamspeak 3.
+**ACRE2** is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications through TeamSpeak 3.
 
 The project is entirely **open-source** and all contributions are welcome. Core project is licensed under GNU General Public License ([GPLv3](https://github.com/IDI-Systems/acre2/blob/master/LICENSE)). Some folders may contain a separate LICENSE file, specifying differently licensed items.
 
@@ -49,7 +49,7 @@ The project is entirely **open-source** and all contributions are welcome. Core 
 - A highly customizable and documented framework for implementing intercom systems (crew and passenger intercoms) and infantry phones.
 - A highly customizable and documented framework for implementing vehicle racks and their integration into the intercom system.
 - Customizable sound configs that allow traditional patching of sounds played in ACRE via Arma addons.
-- Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (As an example see the ACRE2 implementation in the [F3 framework](https://github.com/ferstaberinde/F3)).
+- Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (as an example see the ACRE2 implementation in the [TMF](https://github.com/TMF3/TMF)).
 - Enhanced and easily configurable vehicle sound occlusion.
 
 ### Guides
