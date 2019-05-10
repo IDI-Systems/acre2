@@ -49,7 +49,7 @@ The project is entirely **open-source** and all contributions are welcome. Core 
 - A highly customizable and documented framework for implementing intercom systems (crew and passenger intercoms) and infantry phones.
 - A highly customizable and documented framework for implementing vehicle racks and their integration into the intercom system.
 - Customizable sound configs that allow traditional patching of sounds played in ACRE via Arma addons.
-- Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (as an example see the ACRE2 implementation in the [F3 framework](https://github.com/ferstaberinde/F3)).
+- Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (as an example see the ACRE2 implementation in the [TMF](https://github.com/TMF3/TMF)).
 - Enhanced and easily configurable vehicle sound occlusion.
 
 ### Guides
