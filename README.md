@@ -30,7 +30,7 @@
     <sup><strong>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.<br/></strong></sub>
 </p>
 
-**ACRE2** is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications through Teamspeak 3.
+**ACRE2** is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications through TeamSpeak 3.
 
 The project is entirely **open-source** and all contributions are welcome. Core project is licensed under GNU General Public License ([GPLv3](https://github.com/IDI-Systems/acre2/blob/master/LICENSE)). Some folders may contain a separate LICENSE file, specifying differently licensed items.
 
