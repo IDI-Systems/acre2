@@ -415,5 +415,9 @@
             <Spanish>Abre la interfaz de Intercom</Spanish>
             <Japanese>インターコムの GUI を開く</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_forcedStatus">
+            <English>Intercom status is being forced. Cannot change configuration.</English>
+            <Spanish>La funcionalidad del intercom es forzada. No se puede cambiar la configuración.</Spanish>
+        </Key>
     </Package>
 </Project>

@@ -33,5 +33,5 @@ if (_unit canAdd _mountedRadio) then {
     //Trigger event
     [_rackId, "unmountRadio", _mountedRadio] call EFUNC(sys_data,dataEvent);
 } else {
-    [[localize LSTRING(unableUnmount)], [ICON_RADIO_CALL]] call CBA_fnc_notify;
+    [[ICON_RADIO_CALL], [localize LSTRING(unableUnmount)]] call CBA_fnc_notify;
 };

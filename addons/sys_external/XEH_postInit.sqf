@@ -26,7 +26,7 @@ if (!hasInterface) exitWith {};
         ACRE_EXTERNALLY_USED_PERSONAL_RADIOS pushBackUnique _radioId;
     };
 
-    [[_message], [ICON_RADIO_CALL]] call CBA_fnc_notify;
+    [[ICON_RADIO_CALL], [_message]] call CBA_fnc_notify;
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(stopUsingRadioLocal), {
@@ -39,12 +39,12 @@ if (!hasInterface) exitWith {};
         ACRE_EXTERNALLY_USED_PERSONAL_RADIOS = ACRE_EXTERNALLY_USED_PERSONAL_RADIOS - [_radioId];
     };
 
-    [[_message], [ICON_RADIO_CALL]] call CBA_fnc_notify;
+    [[ICON_RADIO_CALL], [_message]] call CBA_fnc_notify;
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(giveRadioLocal), {
     params ["_message"];
-    [[_message], [ICON_RADIO_CALL]] call CBA_fnc_notify;
+    [[ICON_RADIO_CALL], [_message]] call CBA_fnc_notify;
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(giveRadioAction), {_this call FUNC(startUsingExternalRadio)}] call CBA_fnc_addEventHandler;

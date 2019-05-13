@@ -20,13 +20,13 @@ params ["_ear", ["_radioId", ACRE_ACTIVE_RADIO, [""]]];
 
 switch (_ear) do {
     case -1: {
-        [[localize LSTRING(switchRadioEarLeft)], [ICON_RADIO_CALL]] call CBA_fnc_notify;
+        [[ICON_RADIO_CALL], [localize LSTRING(switchRadioEarLeft)]] call CBA_fnc_notify;
     };
     case 0: {
-        [[localize LSTRING(switchRadioEarBoth)], [ICON_RADIO_CALL]] call CBA_fnc_notify;
+        [[ICON_RADIO_CALL], [localize LSTRING(switchRadioEarBoth)]] call CBA_fnc_notify;
     };
     case 1: {
-        [[localize LSTRING(switchRadioEarRight)], [ICON_RADIO_CALL]] call CBA_fnc_notify;
+        [[ICON_RADIO_CALL], [localize LSTRING(switchRadioEarRight)]] call CBA_fnc_notify;
     };
 };
 

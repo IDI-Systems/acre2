@@ -36,7 +36,7 @@ if (_newConnectedStatus > INTERCOM_DISCONNECTED) then {
 
             _success = true;
         } else {
-            [[localize LSTRING(maxConnections)], [ICON_RADIO_CALL]] call CBA_fnc_notify;
+            [[ICON_RADIO_CALL], [localize LSTRING(maxConnections)]] call CBA_fnc_notify;
         };
     };
 } else {
