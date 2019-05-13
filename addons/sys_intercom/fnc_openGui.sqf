@@ -18,8 +18,12 @@
 
 params [["_intercomNetwork", -1], ["_openMasterStation", false]];
 
+if (GVAR(guiOpened)) exitWith {false};
+
 private _vehicle = vehicle acre_player;
-if (_vehicle isEqualTo acre_player) exitWith {false};
+private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
+
+if (_vehicle isEqualTo acre_player || {_intercomNames isEqualTo []}) exitWith {false};
 
 if (_intercomNetwork != -1) then {
     GVAR(activeIntercom) = _intercomNetwork;
@@ -27,7 +31,6 @@ if (_intercomNetwork != -1) then {
     private _getActiveIntercom = {
         params ["_vehicle"];
 
-        private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
         private _activeIntercom = -1;
         {
             private _connectionStatus = [_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
