@@ -26,7 +26,7 @@ ACRE_ACTIVE_EXTERNAL_RADIOS = ACRE_ACTIVE_EXTERNAL_RADIOS - [_radioId];
 
 private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
 private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
-[format [localize LSTRING(hintReturn), _displayName, name _owner], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+[[format [localize LSTRING(hintReturn), _displayName, name _owner]], [ICON_RADIO_CALL]] call CBA_fnc_notify;
 
 if (_target == _owner) then {
     // Handle remote owner

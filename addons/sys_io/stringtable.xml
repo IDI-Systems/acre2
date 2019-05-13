@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_io">
+        <Key ID="STR_ACRE_sys_io_noPingReturn">
+            <English>ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.</English>
+            <Spanish>ACRE ERROR TUBERÍA: Sin ping de retorno, intentando recuperar la tubería</Spanish>
+        </Key>
+    </Package>
+</Project>

@@ -5,7 +5,6 @@ PREP(aliveMonitor);
 PREP(callExt);
 PREP(canUnderstand);
 PREP(cycleLanguage);
-PREP(displayNotification);
 PREP(findOcclusion);
 PREP(getAlive);
 PREP(getClientIdLoop);

@@ -114,5 +114,9 @@
             <Spanish>Caja con todas las radios</Spanish>
             <Japanese>全無線機物資箱</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_radioSetTo">
+            <English>Radio set to %1</English>
+            <Spanish>Radio configurada a %1</Spanish>
+        </Key>
     </Package>
 </Project>

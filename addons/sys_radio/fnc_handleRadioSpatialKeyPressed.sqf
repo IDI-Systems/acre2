@@ -29,6 +29,6 @@ if (!isNil "_currentSide") then {
     if (_currentSide != _side) then {
         [ACRE_ACTIVE_RADIO, _side] call FUNC(setRadioSpatial);
 
-        [format ["Radio set to %1", _side]] call EFUNC(sys_core,displayNotification);
+        [format [localize LSTRING(radioSet), _side]] call CBA_fnc_notify;
     };
 };

@@ -26,7 +26,7 @@ if (GVAR(pipeCode) == "1") then {
             private _msg = "Experienced a pipe error! Closing!";
             WARNING(_msg);
             if (isMultiplayer) then {
-                [_msg] call EFUNC(sys_core,displayNotification);
+                [_msg] call CBA_fnc_notify;
             };
             "ACRE2Arma" callExtension "1";
             GVAR(pipeCode) = "0";
