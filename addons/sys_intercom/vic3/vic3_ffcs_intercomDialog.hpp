@@ -16,7 +16,7 @@ class VIC3FFCS_IntercomDialog {
     onLoad = QUOTE(_this call FUNC(vic3ffcsRender));
     controlsBackground[] = {/*VIC3FFCSBackground*/};
     objects[] = {};
-    /*
+/*
     class VIC3FFCSBackground {
         type = CT_STATIC;
         idc = 99999;
