@@ -14,24 +14,10 @@ class VIC3FFCS_IntercomDialog {
     MovingEnable = 0;
     onUnload = QUOTE(_this call FUNC(closeGui));
     onLoad = QUOTE(_this call FUNC(vic3ffcsRender));
-    controlsBackground[] = {VIC3FFCSBackground};
+    controlsBackground[] = {/*VIC3FFCSBackground*/};
     objects[] = {};
 
-    class VIC3FFCSBackground: VIC3FFCS_RscBackground {
-        type = CT_STATIC;
-        idc = 100;
-        style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
-        colorBackground[] = {0, 0, 0, 0};
-        colorText[] = {1, 1, 1, 1};
-        font = "PixelSplitterBold";
-        sizeEx = 0.03;
-        x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-        y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
-        w=NEW_SCALE * SafeZoneH;
-        h=NEW_SCALE * SafeZoneH;
-        text = QPATHTOF(vic3\data\ui\vic3_ffcs.paa)
-    };
-/*
+    /*
     class VIC3FFCSBackground {
         type = CT_STATIC;
         idc = 99999;
@@ -47,14 +33,14 @@ class VIC3FFCS_IntercomDialog {
         text = QPATHTOF(vic3\data\ui\vic3_ffcs.paa);
     };*/
 
-    class controls {/*
+    class controls {
         BEGIN_CONTROL(Vic3ffcsBackground, VIC3FFCS_RscPicture, 100)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
             y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(vic3\data\ui\vic3_ffcs.paa);
-        END_CONTROL*/
+        END_CONTROL
 
         BEGIN_CONTROL(IntercomKnob, VIC3FFCS_RscPicture, 101)
             x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
