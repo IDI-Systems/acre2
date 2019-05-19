@@ -85,7 +85,7 @@ void acre::signal::model::longleyRice::process(
                                                  static_cast<int32_t>(polarization), conf, rel, dbloss, strmode, p_mode, horizons, errnum);
     }
 
-    LOG(INFO) << "ITWOM error code " << errnum;
+    //LOG(INFO) << "ITWOM error code " << errnum;
 
     float64_t clutterLoss = 0.0;
     if (useClutterAttenuation) {
