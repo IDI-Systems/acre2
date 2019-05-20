@@ -15,9 +15,9 @@
  *
  * Public: No
  */
- 
+
 with uiNamespace do {
-    if ((count GVAR(rxAreas)) > 0) then {
+    if !(GVAR(rxAreas) isEqualTo []) then {
         {
             (_x select 1) setMarkerColorLocal "ColorYellow";
             (_x select 1) setMarkerBrushLocal "DiagGrid";
@@ -27,7 +27,5 @@ with uiNamespace do {
         ((GVAR(rxAreas) select (_this select 1)) select 1) setMarkerColorLocal "ColorRed";
         ((GVAR(rxAreas) select (_this select 1)) select 1) setMarkerBrushLocal "Solid";
         ((GVAR(rxAreas) select (_this select 1)) select 1) setMarkerAlphaLocal 1;
-
-
     };
 };

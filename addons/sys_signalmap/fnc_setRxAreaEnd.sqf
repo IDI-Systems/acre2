@@ -49,20 +49,15 @@ if (_this select 1 == 0) then {
             _size = GVAR(rxAreaEnd) vectorDiff GVAR(rxAreaStart);
         };
 
-        private _width = _size select 0;
-        private _height = _size select 1;
-
-
+        _size params ["_width", "_height"];
         private _sampleSize = floor (parseNumber (ctrlText GVAR(sampleSize)));
 
-        if (_width < _sampleSize || _height < _sampleSize) exitWith {
+        if ((_width < _sampleSize) || {_height < _sampleSize}) exitWith {
             hintSilent "Indvidual Rx areas must be larger than the sample size in both directions!";
         };
 
         private _xTiles = ceil (_width / TILE_SIZE);
         private _yTiles = ceil  (_height / TILE_SIZE);
-
-
 
         for "_x" from 0 to _xTiles-1 do {
             private _xScale = ((_width / TILE_SIZE)-(_x)) min 1;
@@ -75,18 +70,17 @@ if (_this select 1 == 0) then {
 
                 private _markerPos = [(_start select 0) + ((TILE_SIZE * _xScale) / 2), (_start select 1) + ((TILE_SIZE * _yScale) / 2)];
 
-                private _marker = createMarkerLocal [format["rxarea_%1", (count GVAR(rxAreas))], _markerPos];
+                private _marker = createMarkerLocal [format ["rxarea_%1", (count GVAR(rxAreas))], _markerPos];
                 _marker setMarkerSizeLocal [(TILE_SIZE * _xScale) / 2, (TILE_SIZE * _yScale) / 2];
                 _marker setMarkerShapeLocal "RECTANGLE";
                 _marker setMarkerColorLocal "ColorRed";
 
-
-
                 GVAR(rxAreas) pushBack [[+_start, +_end], _marker];
 
-                GVAR(rxAreaList) lbAdd format["%1: [%2, %3]", (count GVAR(rxAreas)), _markerPos select 0, _markerPos select 1];
-                GVAR(rxAreaList) lbSetData [(count GVAR(rxAreas)) - 1, str ((count GVAR(rxAreas)) - 1)];
-                GVAR(rxAreaList) lbSetCurSel ((count GVAR(rxAreas)) - 1);
+                private _countRxAreas = count GVAR(rxAreas);
+                GVAR(rxAreaList) lbAdd format ["%1: [%2, %3]", _countRxAreas, _markerPos select 0, _markerPos select 1];
+                GVAR(rxAreaList) lbSetData [_countRxAreas - 1, str (_countRxAreas - 1)];
+                GVAR(rxAreaList) lbSetCurSel (_countRxAreas - 1);
                 GVAR(rxAreaList) ctrlCommit 0;
             };
         };

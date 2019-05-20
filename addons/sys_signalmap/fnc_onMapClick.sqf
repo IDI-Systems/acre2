@@ -26,8 +26,8 @@ with uiNamespace do {
     {
         private _startPos = _x select 2;
         private _endPos = _x select 3;
-        if (_clickPos select 0 >= _startPos select 0 && _clickPos select 1 >= _startPos select 1 &&
-            _clickPos select 0 <= _endPos select 0 && _clickPos select 1 <= _endPos select 1) exitWith {
+        if ((_clickPos select 0 >= _startPos select 0) && {_clickPos select 1 >= _startPos select 1} &&
+           { _clickPos select 0 <= _endPos select 0} && {_clickPos select 1 <= _endPos select 1}) exitWith {
                 _foundArea = _x;
         };
     } forEach GVAR(completedAreas);
@@ -45,7 +45,7 @@ with uiNamespace do {
     private _indexOffset = [floor ((_offset select 0)/_sampleSize), floor ((_offset select 1)/_sampleSize)];
     private _extents = [floor ((_size select 0)/_sampleSize), floor ((_size select 1)/_sampleSize)];
 
-    if (_indexOffset select 0 < _extents select 0 && _indexOffset select 1 < _extents select 1) then {
+    if ((_indexOffset select 0 < _extents select 0) && {_indexOffset select 1 < _extents select 1}) then {
         // player sideChat format["found: %1", _indexOffset];
 
         private _args = [_id, _indexOffset select 0, _indexOffset select 1, _extents select 0, _extents select 1];
@@ -56,7 +56,7 @@ with uiNamespace do {
         };
         GVAR(sampleData) = [];
         if (!isNil "_result") then {
-            if ((count _result) > 0) then {
+            if !(_result isEqualTo []) then {
                 // player sideChat format["res: %1", _result select 2];
                 GVAR(sampleData) pushBack _result;
             };

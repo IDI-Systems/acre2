@@ -18,15 +18,15 @@
 
 with uiNamespace do {
     private _mapCtrl = GVAR(mapDisplay) displayCtrl 51;
-    private _pos1 = _mapCtrl ctrlMapWorldToScreen [4096,0,0];
-    private _pos2 = _mapCtrl ctrlMapWorldToScreen [0,4096,0];
+    private _pos1 = _mapCtrl ctrlMapWorldToScreen [4096, 0, 0];
+    private _pos2 = _mapCtrl ctrlMapWorldToScreen [0, 4096, 0];
 
-    private _width = (_pos1 select 0)-(_pos2 select 0);
-    private _height = (_pos1 select 1)-(_pos2 select 1);
+    private _width = (_pos1 select 0) - (_pos2 select 0);
+    private _height = (_pos1 select 1) - (_pos2 select 1);
     {
         private _tile = GVAR(mapTiles) select _forEachIndex;
-        private _filename = _x select 0;
-        private _startPos = _x select 2;
+        private _filename = _x select 1;
+        private _startPos = _x select 3;
 
         private _mapStartPos = _mapCtrl ctrlMapWorldToScreen _startPos;
 
@@ -38,14 +38,10 @@ with uiNamespace do {
         _tile ctrlCommit 0;
     } forEach GVAR(completedAreas);
     {
-        private _sample = _x;
-        // player sideChat format["%1 %2", _x select 0, _x select 1];
-        private _txPos = _sample select 0;
-        private _rxPos = _sample select 1;
+        _x params ["_txPos", "_rxPos", "", "_reflections"];
         drawLine3D [ASLtoATL _txPos, ASLtoATL _rxPos, [0, 1, 0, 1]];
-        private _reflections = _sample select 3;
         {
-            if (count _x == 0) exitWith {};
+            if (_x isEqualTo []) exitWith {};
             private _point = _x select 0;
             drawLine3D [ASLtoATL _txPos, ASLtoATL _point, [1, 0, 0, 1]];
             drawLine3D [ASLtoATL _point, ASLtoATL _rxPos, [0, 0, 1, 1]];

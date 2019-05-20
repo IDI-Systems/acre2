@@ -27,7 +27,7 @@ if (_this select 1 == 0) then {
     _pos set [2, getTerrainHeightASL _pos];
     with uiNamespace do {
         //IGNORE_PRIVATE_WARNING ["_pos"];
-        GVAR(txPositionTxt) ctrlSetText format["%1,%2,%3", (_pos select 0) call FUNC(formatNumber), (_pos select 1) call FUNC(formatNumber), (_pos select 2) call FUNC(formatNumber)];
+        GVAR(txPositionTxt) ctrlSetText format ["%1,%2,%3", (_pos select 0) call FUNC(formatNumber), (_pos select 1) call FUNC(formatNumber), (_pos select 2) call FUNC(formatNumber)];
         GVAR(txPositionTxt) ctrlCommit 0;
         GVAR(txPosition) = _pos;
         deleteMarkerLocal QGVAR(txPosMarker);

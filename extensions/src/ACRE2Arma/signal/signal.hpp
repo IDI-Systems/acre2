@@ -282,52 +282,54 @@ namespace acre {
             }
 
             bool signal_map(arguments &args_, std::string &result) {
-                _signal_map_progress = 0;
+                _signal_map_progress = 0u;
 
-                const std::string id = args_.as_string();
-                const float32_t sample_size = (std::max)(std::floor(args_.as_float()), 1.0f);
+                const PropagationModel model = static_cast<PropagationModel>(args_.as_int(0));
 
-                float32_t x = args_.as_float();
-                float32_t y = args_.as_float();
-                float32_t z = args_.as_float();
+                const std::string id = args_.as_string(1);
+                const float32_t sample_size = (std::max)(std::floor(args_.as_float(2)), 1.0f);
+
+                float32_t x = args_.as_float(3);
+                float32_t y = args_.as_float(4);
+                float32_t z = args_.as_float(5);
                 glm::vec3 start_pos = glm::vec3(x, y, z);
 
-                x = args_.as_float();
-                y = args_.as_float();
-                z = args_.as_float();
+                x = args_.as_float(6);
+                y = args_.as_float(7);
+                z = args_.as_float(8);
                 glm::vec3 end_pos = glm::vec3(x, y, z);
 
-                x = args_.as_float();
-                y = args_.as_float();
-                z = args_.as_float();
+                x = args_.as_float(9);
+                y = args_.as_float(10);
+                z = args_.as_float(11);
                 glm::vec3 tx_pos = glm::vec3(x, y, z);
 
-                x = args_.as_float();
-                y = args_.as_float();
-                z = args_.as_float();
+                x = args_.as_float(12);
+                y = args_.as_float(13);
+                z = args_.as_float(14);
                 glm::vec3 tx_dir = glm::vec3(x, y, z);
 
-                const float32_t tx_antenna_height = args_.as_float();
-                const float32_t rx_antenna_height = args_.as_float();
+                const float32_t tx_antenna_height = args_.as_float(15);
+                const float32_t rx_antenna_height = args_.as_float(16);
 
                 tx_pos.z += tx_antenna_height;
 
-                const std::string tx_antenna_name = args_.as_string();
-                const std::string rx_antenna_name = args_.as_string();
+                const std::string tx_antenna_name = args_.as_string(17);
+                const std::string rx_antenna_name = args_.as_string(18);
 
-                const float32_t f = args_.as_float();
-                const float32_t power = args_.as_float();
+                const float32_t f = args_.as_float(19);
+                const float32_t power = args_.as_float(20);
 
-                const float32_t lower_sensitivity = args_.as_float();
-                const float32_t upper_sensitivity = args_.as_float();
-                const bool omnidirectional = args_.as_int();
+                const float32_t lower_sensitivity = args_.as_float(21);
+                const float32_t upper_sensitivity = args_.as_float(22);
+                const bool omnidirectional = args_.as_int(23);
 
                 const float32_t start_x = start_pos.x;
                 const float32_t start_y = start_pos.y;
 
-                float32_t width = (end_pos.x - start_pos.x);
-                float32_t height = (end_pos.y - start_pos.y);
-
+                float32_t width = std::abs(end_pos.x - start_pos.x);
+                float32_t height = std::abs(end_pos.y - start_pos.y);
+                
                 if (start_x + width > _map->cell_size()*_map->map_size()) {
                     width = width - ((_map->cell_size()*_map->map_size()) - (start_x + width));
                 }
@@ -336,8 +338,8 @@ namespace acre {
                     height = height - ((_map->cell_size()*_map->map_size()) - (start_y + height));
                 }
 
-                const uint32_t count_x = (int32_t)std::floor(width / sample_size);
-                const uint32_t count_y = (int32_t)std::floor(height / sample_size);
+                const uint32_t count_x = static_cast<uint32_t>(std::floor(width / sample_size));
+                const uint32_t count_y = static_cast<uint32_t>(std::floor(height / sample_size));
 
                 _total_signal_map_steps = count_x * count_y;
 
@@ -354,24 +356,24 @@ namespace acre {
                     return true;
                 }
 
-                uint32_t thread_count = 6;
+                uint32_t thread_count = 6u;
 
                 uint32_t y_chunk_size, y_chunk_remainder;
                 if (count_y > thread_count) {
-                    y_chunk_size = (uint32_t)std::floor(count_y / thread_count);
+                    y_chunk_size = static_cast<uint32_t>(std::floor(count_y / thread_count));
                     y_chunk_remainder = count_y % thread_count;
                 } else {
-                    y_chunk_size = 1;
+                    y_chunk_size = 1u;
                     thread_count = count_y;
-                    y_chunk_remainder = 0;
+                    y_chunk_remainder = 0u;
                 }
                 std::vector<std::thread> thread_pool;
                 std::vector<std::vector<signal_map_result>> result_sets;
-                result_sets.resize(thread_count+1);
+                result_sets.resize(thread_count + 1);
 
-                for (uint32_t i = 0; i < thread_count; ++i) {
+                for (uint32_t i = 0u; i < thread_count; ++i) {
                     std::vector<signal_map_result> *result_entry = &result_sets[i];
-                    result_entry->resize(y_chunk_size*count_x);
+                    result_entry->resize(y_chunk_size * count_x);
                     thread_pool.push_back(std::thread(&acre::signal::controller::signal_map_chunk, this, result_entry, start_y, start_x, y_chunk_size*i, y_chunk_size, count_x, sample_size,
                         rx_antenna_height, tx_pos, tx_dir, tx_antenna, rx_antenna, f, power, 12.0f, omnidirectional));
                 }
@@ -390,10 +392,10 @@ namespace acre {
                 std::vector<uint8_t> png_data;
                 png_data.resize(4096 * 4096 * 4);
                 std::fill(png_data.begin(), png_data.end(), 0);
-                int32_t c = 0;
+                uint32_t c = 0;
                 std::vector<signal_map_result> total_results;
                 for (auto results : result_sets) {
-                    int32_t y_count = 0;
+                    uint32_t y_count = 0u;
                     for (uint32_t y = (c * y_chunk_size); y < (c * y_chunk_size) + y_chunk_size - 1; ++y) {
                         for (uint32_t x = 0; x < count_x; ++x) {
                             const float32_t s = results.at(y_count * count_x + x).result.result_dbm;
@@ -474,11 +476,11 @@ namespace acre {
             }
 
             bool signal_map_get_sample_data(arguments &args_, std::string &result_) {
-                const std::string id = args_.as_string();
-                const uint32_t x = args_.as_uint32();
-                const uint32_t y = args_.as_uint32();
-                const uint32_t x_size = args_.as_uint32();
-                const uint32_t y_size = args_.as_uint32();
+                const std::string id = args_.as_string(0);
+                const uint32_t x = args_.as_uint32(1);
+                const uint32_t y = args_.as_uint32(2);
+                const uint32_t x_size = args_.as_uint32(3);
+                const uint32_t y_size = args_.as_uint32(4);
 
                 result_ = "[]";
                 if (_signal_map_areas.find(id) != _signal_map_areas.end()) {

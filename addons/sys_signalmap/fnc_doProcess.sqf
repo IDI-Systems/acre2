@@ -62,13 +62,11 @@ with uiNamespace do {
         hint format["Please set the Tx position."];
     };
 
-    if (count GVAR(rxAreas) == 0) exitWith {
+    if (GVAR(rxAreas) isEqualTo []) exitWith {
         hint format["Please set at least one Rx area."];
     };
     GVAR(completedAreas) = [];
     GVAR(areaProgress) = 0;
-
-
 
     GVAR(ctrlGroup) ctrlShow false;
     GVAR(ctrlGroup) ctrlCommit 0;
@@ -105,7 +103,8 @@ with uiNamespace do {
     GVAR(currentArgs) = [];
     {
         private _args = [
-            format["%1_%2", GVAR(currentId), _forEachIndex],
+            EGVAR(sys_signal,signalModel),
+            format ["%1_%2", GVAR(currentId), _forEachIndex],
             _sampleSize,
             +((_x select 0) select 0),
             +((_x select 0) select 1),
@@ -155,7 +154,7 @@ with uiNamespace do {
         private _fnc = {
             with uiNamespace do {
                 if (GVAR(areaProgress) != (count GVAR(rxAreas))) then {
-                    private _res = [1,1];
+                    private _res = [1, 1];
                     with missionNamespace do {
                         //IGNORE_PRIVATE_WARNING ["_res"];
                         _res = ["signal_map_progress", ""] call EFUNC(sys_core,callExt);
@@ -175,14 +174,14 @@ with uiNamespace do {
                     } forEach GVAR(rxAreas);
                     CTRLOVERLAY(GVAR(modifyButton), "RscButton");
                     GVAR(modifyButton) ctrlSetPosition [0.05, 0.055*10, 0.4, 0.045];
-                    GVAR(modifyButton) ctrlSetBackgroundColor [0,0,0,0.25];
+                    GVAR(modifyButton) ctrlSetBackgroundColor [0, 0, 0, 0.25];
                     GVAR(modifyButton) ctrlSetText "Modify";
                     GVAR(modifyButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE([] call FUNC(modify))];
                     GVAR(modifyButton) ctrlCommit 0;
 
                     CTRLOVERLAY(GVAR(clearButton), "RscButton");
                     GVAR(clearButton) ctrlSetPosition [0.05, 0.055*11, 0.4, 0.045];
-                    GVAR(clearButton) ctrlSetBackgroundColor [0,0,0,0.25];
+                    GVAR(clearButton) ctrlSetBackgroundColor [0, 0, 0, 0.25];
                     GVAR(clearButton) ctrlSetText "Clear";
                     GVAR(clearButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE([] call FUNC(clear))];
                     GVAR(clearButton) ctrlCommit 0;
