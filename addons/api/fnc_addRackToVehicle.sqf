@@ -17,6 +17,7 @@
  *   4: Base classname of the mounted radio (Without ID). Empty string for no radio <STRING> (default: "")
  *   7: Components <ARRAY> (default: [])
  *   8: Connected intercoms <ARRAY> (default: [])
+ *   9: Speaker position <ARRAY> (default: [0,0,0])
  * 2: Force initialisation <BOOL> (default: false)
  * 3: Condition called with argument "_unit". If a longer function is given, it should be precompiled. <CODE> (default: {})
  *
@@ -24,7 +25,7 @@
  * Rack added successfully <BOOL>
  *
  * Example:
- * [cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]], false] call acre_api_fnc_addRackToVehicle
+ * [cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"], [-1.0, 2.0, 0.0]]] call acre_api_fnc_addRackToVehicle
  *
  * Public: Yes
  */
@@ -77,7 +78,7 @@ if (count _rackConfiguration != 9) exitWith {
     false
 };
 
-_rackConfiguration params [["_rackClassname", ""], ["_rackName", ""], ["_rackShortName", ""], ["_isRadioRemovable", false], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio", ""], ["_defaultComponents", []], ["_intercoms", []]];
+_rackConfiguration params [["_rackClassname", ""], ["_rackName", ""], ["_rackShortName", ""], ["_isRadioRemovable", false], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio", ""], ["_defaultComponents", []], ["_intercoms", []], ["_speakerPosition", [0, 0, 0]]];
 
 if (_rackClassname isEqualTo "") exitWith {
     WARNING_1("No rack specified for vehicle %1",_vehicle);
@@ -144,7 +145,7 @@ private _selectPlayer = {
         _vehicle setVariable [QEGVAR(sys_rack,initPlayer), _player, true];
     };
 
-    [QEGVAR(sys_rack,addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms], _player] call CBA_fnc_targetEvent;
+    [QEGVAR(sys_rack,addVehicleRacks), [_vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms, _speakerPosition], _player] call CBA_fnc_targetEvent;
 }, [_selectPlayer, _condition, _vehicle, _rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms]] call CBA_fnc_waitUntilAndExecute;
 
 true

@@ -20,4 +20,6 @@
  * Public: No
  */
 
-false;
+params ["_radioId", "_event", "_eventData", "_radioData"];
+
+(HASH_GET(_radioData, "audioPath") == "RACKSPEAKER")

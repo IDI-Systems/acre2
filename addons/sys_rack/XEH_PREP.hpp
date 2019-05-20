@@ -8,6 +8,7 @@ PREP(rackListChildrenActions);
 
 PREP(onReturnRackId);
 PREP(onReturnRadioId);
+PREP(activateRackSpeaker);
 PREP(addRack);
 PREP(addRackOnReturn);
 PREP(initVehicle);

@@ -37,7 +37,17 @@ if (!_initialized) then {
             WARNING_2("Rack short name %1 is longer than 4 characters for vehicle %2",_shortName,_vehicle);
         };
 
-        [_vehicle, _componentName, _displayName, _shortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call FUNC(addRack);
+        // Speaker
+        private _positionConfig = _x >> "rackPosition";
+        private _speakerPosition = [0, 0, 0]; // Default to main action point
+        if (isText _positionConfig) then {
+            _speakerPosition = _vehicle selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core intercomPFH checks
+        };
+        if (isArray _positionConfig) then {
+            _speakerPosition = getArray _positionConfig;
+        };
+
+        [_vehicle, _componentName, _displayName, _shortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms, _positionConfig] call FUNC(addRack);
     } forEach (configProperties [_racks, "isClass _x", true]);
 
     _vehicle setVariable [QGVAR(initialized), true, true];

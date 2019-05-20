@@ -24,11 +24,11 @@
  * Public: No
  */
 
-params ["_vehicle", "_rackClassname", "_rackName", "_rackShortName", ["_isRadioRemovable", true], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio",""], ["_defaultComponents", []], ["_intercoms",[]]];
+params ["_vehicle", "_rackClassname", "_rackName", "_rackShortName", ["_isRadioRemovable", true], ["_allowed", ["inside"]], ["_disabled", []], ["_mountedRadio",""], ["_defaultComponents", []], ["_intercoms",[]], ["_rackPosition", [0, 0, 0]]];
 
 private _queue = _vehicle getVariable [QGVAR(queue), []];
 
-_queue pushBack [_rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms];
+_queue pushBack [_rackClassname, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _defaultComponents, _intercoms, _rackPosition];
 _vehicle setVariable [QGVAR(queue), _queue];
 
 // Request RACK ID

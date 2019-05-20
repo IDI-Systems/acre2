@@ -83,4 +83,4 @@ HASH_SET(_radioData,"channelKnobPosition", 2); // Channel 1 (after on/off option
 HASH_SET(_radioData,"volumeKnobPosition", 0);// mid-way
 HASH_SET(_radioData,"programmingStep", 0);
 HASH_SET(_radioData,"lastActiveChannel",0);
-HASH_SET(_radioData,"audioPath", "HEADSET");
+HASH_SET(_radioData,"audioPath","HEADSET");

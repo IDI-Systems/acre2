@@ -57,9 +57,9 @@ if (vehicle acre_player != acre_player) then {
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(addVehicleRacks), {
-    params ["_vehicle", "_rackClassname", "_displayName", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_components", "_intercoms"];
+    params ["_vehicle", "_rackClassname", "_displayName", "_rackName", "_rackShortName", "_isRadioRemovable", "_allowed", "_disabled", "_mountedRadio", "_components", "_intercoms", "_speakerPosition"];
 
-    [_vehicle, _rackClassname, _displayName, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call FUNC(addRack);
+    [_vehicle, _rackClassname, _displayName, _rackName, _rackShortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms, _speakerPosition] call FUNC(addRack);
 
     // Give some time for the racks to initialise properly
     [{

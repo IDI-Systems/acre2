@@ -24,3 +24,4 @@ private _radioId = _eventData;
 
 //Enable VAA Mode.
 [_radioId, "setState", ["powerSource", "BAT"]] call EFUNC(sys_data,dataEvent);
+[_radioId, "setState", ["audioPath", "HEADSET"]] call EFUNC(sys_data,dataEvent);

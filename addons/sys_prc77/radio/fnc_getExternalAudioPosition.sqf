@@ -20,4 +20,20 @@
  * Public: No
  */
 
-[0,0,0];
+params ["_radioId", "_event", "_eventData", "_radioData"];
+
+private _obj = [_radioId] call EFUNC(sys_radio,getRadioObject);
+private _pos = getPosASL _obj;
+
+private _rackId = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
+if (_rackId isEqualTo "") then {
+    _pos = [0,0,0];
+} else {
+    private _vehicle = [_radioId] call EFUNC(sys_rack,getVehicleFromRack);
+    private _position = [_rackId, _vehicle] call EFUNC(sys_rack,getRackPosition);
+    if !(_position isEqualTo [0, 0, 0]) then {
+        _pos = ATLtoASL (_vehicle modelToWorld _position);
+    };
+};
+
+_pos

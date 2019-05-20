@@ -40,5 +40,6 @@ HASH_SET(_radioData,"volume",1);
 HASH_SET(_radioData,"currentChannel",0);
 HASH_SET(_radioData,"radioOn", 1);
 HASH_SET(_radioData,"pressedButton", -1);
-HASH_SET(_radioData,"powerSource", "BAT");
+HASH_SET(_radioData,"powerSource","BAT");
 HASH_SET(_radioData,"pgm_pa_mode", "ON");
+HASH_SET(_radioData,"audioPath","HEADSET");
