@@ -19,4 +19,4 @@
 params ["_id"];
 
 private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId), "animations", []);
-_animations set[_id, []];
+_animations set [_id, []];

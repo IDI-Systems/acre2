@@ -37,7 +37,7 @@ if (_channelPosition < 0) then {
     _channelPosition = 0;
 };
 if (_channelPositionOld != _channelPosition) then {
-    ["Acre_GenericClick", [0,0,0], [0,0,0], 0.6, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], 0.6, false] call EFUNC(sys_sounds,playSound);
     SET_STATE_CRIT("channelKnobPosition", _channelPosition);
 
 

@@ -16,6 +16,4 @@
  * Public: No
  */
 
-params ["_radioId", "_eventKind", "_eventData"];
-
 true;
