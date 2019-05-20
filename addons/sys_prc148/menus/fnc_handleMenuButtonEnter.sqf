@@ -46,7 +46,7 @@ if (!GET_STATE("editEntry")) then {
                 };
             };
             //acre_player sideChat format["VAL: '%1'", _value];
-            private _length = (count (toArray _value))-1;
+            private _length = (count (toArray _value)) - 1;
             SET_ENTRY_INDEX(_length);
             SET_STATE("currentEditEntry", _value);
         };
