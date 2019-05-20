@@ -1,3 +1,4 @@
+#include "\idi\acre\addons\sys_prc148\script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,8 +15,6 @@
  *
  * Public: No
  */
-
-#include "\idi\acre\addons\sys_prc148\script_component.hpp"
 
 DFUNC(DefaultDisplay_Render) = {
     params ["_display"];
