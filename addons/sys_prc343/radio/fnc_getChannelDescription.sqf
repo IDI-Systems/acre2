@@ -22,7 +22,7 @@
 params ["_radioId", "",  "", "", ""];
 
 private _currentAbsChannel = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
-private _currentBlock = floor(_currentAbsChannel / 16);
+private _currentBlock = floor (_currentAbsChannel / 16);
 private _currentChannel = _currentAbsChannel - _currentBlock*16;
 
 private _description = format ["Block %1 - Channel %2", _currentBlock + 1, _currentChannel + 1];

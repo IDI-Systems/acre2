@@ -59,7 +59,7 @@ if (diag_tickTime - _lastSortTime > 3) then {
     // Don't resort if we already resorted within the past second
     // If its been a second, lets check to see if the transmitters changed.
     //if (diag_tickTime - _lastSortTime > 1) then {
-        if (count _radioCache > 0) then {
+        if !(_radioCache isEqualTo []) then {
             // Compare BOTH arrays.
             {
                 if (!(_x in _radioCache)) exitWith { _transmissionsChanged = true; };
@@ -101,7 +101,7 @@ if (_transmissionsChanged) then {
     };
 
     private _dif = _transmissions - _currentTransmissions;
-    if ((count _dif) != 0) then {
+    if !(_dif isEqualTo []) then {
         _currentTransmissions = _transmissions;
         SCRATCH_SET(_radioId, "currentTransmissions", _currentTransmissions);
     };
@@ -119,14 +119,14 @@ if (_transmissionsChanged) then {
         } forEach _sortedRadios;
 
         if (EGVAR(sys_core,interference)) then {
-            if ((count _hearableTransmissions) > 0) then {
+            if !(_hearableTransmissions isEqualTo []) then {
                 _junkTransmissions append _hearableTransmissions;
                 _hearableTransmissions params ["_bestSignal"];
                 (_bestSignal select 2) params ["_highestSignal", "_dbm"];
                 private _newSignal = _highestSignal;
                 for "_i" from 1 to (count _junkTransmissions)-1 do {
                     private _data = _junkTransmissions select _i;
-                    _data params ["","_txId","_signalData"];
+                    _data params ["", "", "_signalData"];
                     _signalData params ["_signal"];
                     if (_newSignal <= 0) exitWith {
                         _newSignal = 0;
@@ -138,7 +138,7 @@ if (_transmissionsChanged) then {
                 };
                 if (_newSignal > 0) then {
                     _okRadios = [_bestSignal];
-                    _bestSignal set[2, [_newSignal, _dbm+_dbm*(1-_newSignal/_highestSignal)]];
+                    _bestSignal set [2, [_newSignal, _dbm + (_dbm * (1 - _newSignal / _highestSignal))]];
                 } else {
                     _okRadios = [];
                 };
@@ -148,36 +148,35 @@ if (_transmissionsChanged) then {
         };
     };
 
-    private _volume = 1;
-    if ((count _okRadios) > 0) then {
+    if !(_okRadios isEqualTo []) then {
         private _signalData = (_okRadios select 0) select 2;
-        _signalData params ["_signalPercent","_signalDbM"];
+        _signalData params ["", "_signalDbM"];  // Parameters are signalPercentage and signalDbm
         private _squelch = -100;
-        if (_signalDbM < _squelch || !EGVAR(sys_core,interference)) then {
+        if ((_signalDbM < _squelch) || {!EGVAR(sys_core,interference)}) then {
             if (EGVAR(sys_core,interference)) then {
                 _okRadios = [];
             };
             private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
             if (!_pttDown) then {
                 if (!isNil "_beeped" && {_beeped}) then {
-                    _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-                    [_radioId, "Acre_GenericClickOff", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
+                    private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
+                    [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
                 };
             };
             SCRATCH_SET(_radioId, "hasBeeped", false);
         } else {
             if (isNil "_beeped" || {!_beeped}) then {
                 SCRATCH_SET(_radioId, "hasBeeped", true);
-                _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-                [_radioId, "Acre_GenericClickOn", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
+                private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
+                [_radioId, "Acre_GenericClickOn", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
             };
         };
     } else {
         private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
         if (!_pttDown) then {
             if (!isNil "_beeped" && {_beeped}) then {
-                _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-                [_radioId, "Acre_GenericClickOff", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
+                private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
+                [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
             };
         };
         SCRATCH_SET(_radioId, "hasBeeped", false);
