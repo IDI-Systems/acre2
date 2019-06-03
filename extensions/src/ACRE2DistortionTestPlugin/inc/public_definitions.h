@@ -362,6 +362,10 @@ struct FileTransferCallbackExport{
 /*define for file transfer bandwith limits*/
 #define BANDWIDTH_LIMIT_UNLIMITED 0xFFFFFFFFFFFFFFFFll
 
+/*define for metadata tags*/
+#define START_DATA "<ACRE>"
+#define END_DATA "</ACRE>"
+
 
 /*defines for speaker locations used by some sound callbacks*/
 /* Comment due to these interfering with DirectX library

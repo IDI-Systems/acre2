@@ -29,6 +29,11 @@ public:
 
 	acre::Result exPersistVersion( void );
 
+	std::string getSelfVariable(anyID clientId);
+	AcreResult setSelfVariable(char * data);
+
+	AcreResult exPersistVersion( void );
+
     acre::Result enableMicrophone(const bool status_);
 
     bool getInputStatus();
