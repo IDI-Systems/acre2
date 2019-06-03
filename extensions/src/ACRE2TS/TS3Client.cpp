@@ -87,21 +87,21 @@ AcreResult CTS3Client::start(const acre_id_t id_) {
 }
 
 AcreResult CTS3Client::setSelfVariable(char* data) {
-    char* clientInfo;
+    char* currentData;
     anyID myID;
     ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &myID);
-    ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), myID, CLIENT_META_DATA, &clientInfo);
-	std::string to_set;
-	std::string sharedMsg = clientInfo;
-	if ((sharedMsg.find(START_DATA) == std::string::npos) || (sharedMsg.find(END_DATA) == std::string::npos)) {
-		to_set = to_set + START_DATA + data + END_DATA;
+    ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), myID, CLIENT_META_DATA, &currentData);
+	std::string newData;
+	const std::string curString = currentData;
+	if ((curString.find(START_DATA) == std::string::npos) || (curString.find(END_DATA) == std::string::npos)) {
+		newData = newData + START_DATA + data + END_DATA;
 	} else {
-		const std::string before = sharedMsg.substr(0, sharedMsg.find(START_DATA));
-		const std::string after = sharedMsg.substr(sharedMsg.find(END_DATA) + strlen(END_DATA), std::string::npos);
-		to_set = before + START_DATA + data + END_DATA + after;
+		const std::string before = curString.substr(0, curString.find(START_DATA));
+		const std::string after = curString.substr(curString.find(END_DATA) + strlen(END_DATA), std::string::npos);
+		newData = before + START_DATA + data + END_DATA + after;
 	}
-    ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, to_set.c_str());
-	ts3Functions.freeMemory(clientInfo);
+    ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, newData.c_str());
+	ts3Functions.freeMemory(currentData);
 	ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
     return AcreResult::ok;
 }
