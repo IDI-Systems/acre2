@@ -95,6 +95,10 @@ int main(int argc, char **argv) {
 
     if (config["task"] == "convert") {
         wrpOut.parse(config["input_file"]);
+
+        if (strcmp(wrpOut.filetype, "8WVR") == 0) {
+            calculatePeaks(wrpOut);
+        }
     } else {
         generateWrpFile(wrpOut, config);
     }
