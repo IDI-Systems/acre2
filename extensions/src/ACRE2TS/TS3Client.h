@@ -30,9 +30,9 @@ public:
 	acre::Result exPersistVersion( void );
 
 	std::string getSelfVariable(anyID clientId);
-	AcreResult setSelfVariable(char * data);
+	acre::Result setSelfVariable(char * data);
 
-	AcreResult exPersistVersion( void );
+	acre::Result exPersistVersion( void );
 
     acre::Result enableMicrophone(const bool status_);
 
