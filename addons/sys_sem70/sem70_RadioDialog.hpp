@@ -36,8 +36,8 @@ class SEM70_RadioDialog {
     class controls {
 
         BEGIN_CONTROL(RadioBackground, SEM70_RscPicture, 300)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(data\ui\sem70ui_ca.paa);
@@ -52,40 +52,40 @@ class SEM70_RadioDialog {
         END_CONTROL*/
 
         BEGIN_CONTROL(Display1, SEM70_RscPicture, 301)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
 
         BEGIN_CONTROL(Display2, SEM70_RscPicture, 302)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
 
         BEGIN_CONTROL(Display3, SEM70_RscPicture, 303)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
 
         BEGIN_CONTROL(Display4, SEM70_RscPicture, 304)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = "";
         END_CONTROL
 
         BEGIN_CONTROL(Display5, SEM70_RscPicture, 305)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = "";
@@ -93,120 +93,120 @@ class SEM70_RadioDialog {
 
 
         BEGIN_CONTROL(VolumeKnob, SEM70_RscPicture, 106)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(data\knobs\volume\vol_100.paa);
         END_CONTROL
 
         BEGIN_CONTROL(MainKnob, SEM70_RscPicture, 107)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\main\lstg_gr.paa);
         END_CONTROL
 
         BEGIN_CONTROL(FunctionKnob, SEM70_RscPicture, 108)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\function\bs_hw.paa);
         END_CONTROL
 
         BEGIN_CONTROL(ChannelStepKnob, SEM70_RscPicture, 109)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\cs\ka_25mhz.paa);
         END_CONTROL
 
         BEGIN_CONTROL(khzKnob, SEM70_RscPicture, 110)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\khz\khz_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(mhzKnob, SEM70_RscPicture, 111)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\mhz\mhz_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(displayKnob, SEM70_RscPicture, 112)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\display\anzeige_aus.paa);
         END_CONTROL
 
         BEGIN_CONTROL(memorySlotKnob, SEM70_RscPicture, 113)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\sp\sp_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(network1Knob, SEM70_RscPicture, 114)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\fk\fk1_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(network2Knob, SEM70_RscPicture, 115)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\fk\fk2_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(network3Knob, SEM70_RscPicture, 116)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\fk\fk3_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(displayGP, SEM70_RscPicture, 117)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\display\gp80_display_0.paa);
         END_CONTROL
 
         BEGIN_CONTROL(ledBetr, SEM70_RscPicture, 118)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\led\led_betr_sp_an.paa);
         END_CONTROL
 
         BEGIN_CONTROL(ledGer2, SEM70_RscPicture, 119)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\led\led_ger2_aus.paa);
         END_CONTROL
 
         BEGIN_CONTROL(ledGer13, SEM70_RscPicture, 120)
-            x=safeZoneX + safeZoneW - NEW_SCALE * SafeZoneH + 1/32 * safeZoneW;
-            y=SafeZoneY + SafeZoneH - NEW_SCALE * SafeZoneH + 1/8 * safeZoneW;
+            x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
+            y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w=NEW_SCALE * SafeZoneH;
             h=NEW_SCALE * SafeZoneH;
             text = QPATHTOF(Data\knobs\led\led_ger13_aus.paa);
