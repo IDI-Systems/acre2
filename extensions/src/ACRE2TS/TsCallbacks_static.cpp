@@ -43,13 +43,12 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
         case PLUGIN_CHANNEL:
             break;
         case PLUGIN_CLIENT:
-            // Some code used from https://github.com/michail-nikolaev/task-force-arma-3-radio under APL-SA
             if (ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), (anyID)id, CLIENT_META_DATA, &metaData) == ERROR_ok) {
                 if (!metaData) {
                     noAcre = TRUE;
                 } else {
                     sharedMsg = metaData;
-                    if (sharedMsg.find(START_DATA) == std::string::npos || sharedMsg.find(END_DATA) == std::string::npos) {
+                    if ((sharedMsg.find(START_DATA) == std::string::npos) || (sharedMsg.find(END_DATA) == std::string::npos)) {
                         noAcre = TRUE;
                     } else {
                         result = sharedMsg.substr(sharedMsg.find(START_DATA) + strlen(START_DATA), sharedMsg.find(END_DATA) - sharedMsg.find(START_DATA) - strlen(START_DATA));
