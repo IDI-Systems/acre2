@@ -56,7 +56,7 @@ switch (_intercomFunctionality) do {
                 };
             };
         } else {
-            ["Intercom status is being forced. Cannot change configuration.", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+            [[ICON_RADIO_CALL], [localize LSTRING(forcedStatus)]] call CBA_fnc_notify;
         };
     };
     default {
