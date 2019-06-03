@@ -37,8 +37,12 @@ for "_y" from 0 to (_mapSize - _interval) step _interval do {
 #include "Types.h"
 #include "glm/glm.hpp"
 
-static bool generateWrpFile(acre::wrp::landscape &wrpOut, std::unordered_map<std::string, std::string> &config);
-static void calculatePeaks(std::vector<acre::vector3<float32_t>> peaks);
+static bool generateWrpFile(acre::wrp::landscape &wrpOut_, std::unordered_map<std::string, std::string> &config_);
+static bool readHeightFile(float32_t *const heightmap_, const uint32_t maxSize, std::string &filename_);
+
+static void calculatePeaks(acre::wrp::landscape &wrp_);
+static float32_t internal_elevation(const int32_t x_, const int32_t y_, const acre::wrp::landscape &wrp_);
+static bool is_peak(const int32_t x_, const int32_t y_, const acre::wrp::landscape &wrp_);
 
 struct membuf : std::streambuf {
     membuf(char* begin, char* end) {
@@ -118,34 +122,36 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-static bool generateWrpFile(acre::wrp::landscape &wrpOut, std::unordered_map<std::string, std::string> &config) {
-    wrpOut.layer_size_x = static_cast<uint32_t>(std::stoul(config["layer_size_x"]));
-    wrpOut.layer_size_y = static_cast<uint32_t>(std::stoul(config["layer_size_y"]));
+static bool generateWrpFile(acre::wrp::landscape &wrpOut_, std::unordered_map<std::string, std::string> &config_) {
+    wrpOut_.layer_size_x = static_cast<uint32_t>(std::stoul(config_["layer_size_x"]));
+    wrpOut_.layer_size_y = static_cast<uint32_t>(std::stoul(config_["layer_size_y"]));
 
-    wrpOut.map_size_x = static_cast<uint32_t>(std::stoul(config["map_size_x"]));
-    wrpOut.map_size_y = static_cast<uint32_t>(std::stoul(config["map_size_y"]));
+    wrpOut_.map_size_x = static_cast<uint32_t>(std::stoul(config_["map_size_x"]));
+    wrpOut_.map_size_y = static_cast<uint32_t>(std::stoul(config_["map_size_y"]));
 
-    wrpOut.version = static_cast<uint32_t>(std::stoul(config["version"]));
-    wrpOut.cell_size = std::stof(config["cell_size"]);
+    wrpOut_.version = static_cast<uint32_t>(std::stoul(config_["version"]));
+    wrpOut_.cell_size = std::stof(config_["cell_size"]);
 
     // Elevations
-    float32_t *heightmap = new float32_t[wrpOut.map_size_x * wrpOut.map_size_y];
-    if (!readHeightFile(heightmap, wrpOut.map_size_x * wrpOut.map_size_y, config["input_file"])) {
+    float32_t *heightmap = new float32_t[wrpOut_.map_size_x * wrpOut_.map_size_y];
+    if (!readHeightFile(heightmap, wrpOut_.map_size_x * wrpOut_.map_size_y, config_["input_file"])) {
         return false;
     }
 
     membuf sbuf((char *) heightmap, (char *) heightmap + sizeof(heightmap));
     std::istream stream(&sbuf);
-    wrpOut.elevations = acre::wrp::compressed<float32_t>(stream, wrpOut.map_size_x * wrpOut.map_size_y, false, false, wrpOut.version);
+    wrpOut_.elevations = acre::wrp::compressed<float32_t>(stream, wrpOut_.map_size_x * wrpOut_.map_size_y, false, false, wrpOut_.version);
 
     // Peaks
-    calculatePeaks(wrpOut.peaks);
+    calculatePeaks(wrpOut_);
+
+    return true;
 }
 
 static bool readHeightFile(float32_t *const heightmap_, const uint32_t maxSize, std::string &filename_) {
     std::ifstream inFile(filename_);
 
-    if (!inFile.is_open) {
+    if (!inFile.is_open()) {
         return false;
     }
 
@@ -164,6 +170,7 @@ static bool readHeightFile(float32_t *const heightmap_, const uint32_t maxSize, 
     return true;
 }
 
+// Shamelessly use the code in map.cpp
 static void calculatePeaks(acre::wrp::landscape &wrpOut) {
     std::vector<glm::vec2> first_pass_peaks;
 
@@ -178,7 +185,7 @@ static void calculatePeaks(acre::wrp::landscape &wrpOut) {
         }
     }
 
-    const float32_t filter_distance = 150.0f;
+    const float32_t filter_distance = 30.0f;  // Original value 150.0f
     std::vector<glm::vec2> filtered_max_peaks;
     int32_t distance = static_cast<int32_t>(ceilf(filter_distance / wrpOut.cell_size));
 
@@ -229,12 +236,13 @@ static void calculatePeaks(acre::wrp::landscape &wrpOut) {
 
     for (auto filtered_peak : filtered_max_peaks) {
         const float32_t elev = internal_elevation(static_cast<int32_t>(filtered_peak.x), static_cast<int32_t>(filtered_peak.y), wrpOut);
-        wrpOut.peaks.push_back(glm::vec3(filtered_peak.x * wrpOut.cell_size, filtered_peak.y * wrpOut.cell_size, elev));
+        const acre::vector3<float32_t> peak(filtered_peak.x * wrpOut.cell_size, filtered_peak.y * wrpOut.cell_size, elev);
+        wrpOut.peaks.push_back(peak);
     }
 }
 
-static float32_t  internal_elevation(const int32_t x_, const int32_t y_, const acre::wrp::landscape &wrp_) {
-    return _map_elevations[glm::max((glm::min(x_, static_cast<int32_t>(wrp_.map_size_x - 1u))), 0)
+static float32_t internal_elevation(const int32_t x_, const int32_t y_, const acre::wrp::landscape &wrp_) {
+    return wrp_.elevations.data[glm::max((glm::min(x_, static_cast<int32_t>(wrp_.map_size_x - 1u))), 0)
         + glm::max((glm::min(y_, static_cast<int32_t>(wrp_.map_size_x - 1u))), 0)
         * wrp_.map_size_x];
 }
