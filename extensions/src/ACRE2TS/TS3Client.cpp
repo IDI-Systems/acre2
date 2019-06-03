@@ -86,10 +86,29 @@ AcreResult CTS3Client::start(const acre_id_t id_) {
     return AcreResult::ok;
 }
 
-AcreResult CTS3Client::exPersistVersion( void ) {
+// Some code used from https://github.com/michail-nikolaev/task-force-arma-3-radio under APL-SA
+AcreResult CTS3Client::setSelfVariable(char* data) {
+    char* clientInfo;
+    anyID myID;
+    ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &myID);
+    ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), myID, CLIENT_META_DATA, &clientInfo);
+	std::string to_set;
+	std::string sharedMsg = clientInfo;
+	if (sharedMsg.find(START_DATA) == std::string::npos || sharedMsg.find(END_DATA) == std::string::npos) {
+		to_set = to_set + START_DATA + data + END_DATA;
+	} else {
+		std::string before = sharedMsg.substr(0, sharedMsg.find(START_DATA));
+		std::string after = sharedMsg.substr(sharedMsg.find(END_DATA) + strlen(END_DATA), std::string::npos);
+		to_set = before + START_DATA + data + END_DATA + after;
+	}
+    ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, to_set.c_str());
+	ts3Functions.freeMemory(clientInfo);
+	ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
+    return AcreResult::ok;
+}
 
-    ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, ACRE_VERSION_METADATA);
-    ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
+AcreResult CTS3Client::exPersistVersion( void ) {
+    CTS3Client::setSelfVariable(ACRE_VERSION_METADATA);
 
     ts3Functions.printMessageToCurrentTab("ACRE2 loaded and initialized");
     ts3Functions.printMessageToCurrentTab(ACRE_VERSION_METADATA);
@@ -106,8 +125,7 @@ AcreResult CTS3Client::exPersistVersion( void ) {
             } else {
                 _snprintf_s(selfVariableBuffer, 4094, "%s\nArma Connected: No", ACRE_VERSION_METADATA);
             }
-            ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, selfVariableBuffer);
-            ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
+            CTS3Client::setSelfVariable(selfVariableBuffer);
             run = clock() / CLOCKS_PER_SEC;
         }
 

@@ -19,7 +19,7 @@ const char* ts3plugin_commandKeyword() {
     return ACRE_COMMAND_KEYWORD;
 }
 int ts3plugin_requestAutoload() {
-    return 1; 
+    return 1;
 }
 
 const char* ts3plugin_infoTitle() {
@@ -34,6 +34,8 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
 
     BOOL noAcre = FALSE;
     char *metaData;
+    std::string result;
+    std::string sharedMsg;
 
     switch(type) {
         case PLUGIN_SERVER:
@@ -41,20 +43,24 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
         case PLUGIN_CHANNEL:
             break;
         case PLUGIN_CLIENT:
-            if (ts3Functions.getClientVariableAsString(serverConnectionHandlerID, (anyID)id, CLIENT_META_DATA, &metaData) == ERROR_ok) {
-                if (!metaData) { 
+            // Some code used from https://github.com/michail-nikolaev/task-force-arma-3-radio under APL-SA
+            if (ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), (anyID)id, CLIENT_META_DATA, &metaData) == ERROR_ok) {
+                if (!metaData) {
                     noAcre = TRUE;
+                } else {
+                    sharedMsg = metaData;
+                    if (sharedMsg.find(START_DATA) == std::string::npos || sharedMsg.find(END_DATA) == std::string::npos) {
+                        noAcre = TRUE;
+                    } else {
+                        result = sharedMsg.substr(sharedMsg.find(START_DATA) + strlen(START_DATA), sharedMsg.find(END_DATA) - sharedMsg.find(START_DATA) - strlen(START_DATA));
+                    }
                 }
-                int metaDataLength = strlen(metaData);
-                if (metaDataLength < 3 || metaDataLength > (INFODATA_BUFSIZE - 2)) {
-                    noAcre = TRUE;
-                }
-                *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char)); 
+                *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char));
                 if (!noAcre) {
-                    _snprintf_s(*data, INFODATA_BUFSIZE,INFODATA_BUFSIZE, "%s\n", metaData);
+                    _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "%s\n", result.c_str());
                     ts3Functions.freeMemory(metaData);
                 } else {
-                    _snprintf_s(*data, INFODATA_BUFSIZE,INFODATA_BUFSIZE, "NO ACRE");
+                    _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "NO ACRE");
                     ts3Functions.freeMemory(metaData);
                 }
             }

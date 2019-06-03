@@ -249,7 +249,7 @@ enum GroupWhisperTargetMode {
     GROUPWHISPERTARGETMODE_ENDMARKER,
 };
 
-enum MonoSoundDestination{ 
+enum MonoSoundDestination{
   MONO_SOUND_DESTINATION_ALL                  =0, /* Send mono sound to all available speakers */
   MONO_SOUND_DESTINATION_FRONT_CENTER         =1, /* Send mono sound to front center speaker if available */
   MONO_SOUND_DESTINATION_FRONT_LEFT_AND_RIGHT =2  /* Send mono sound to front left/right speakers if available */
@@ -358,6 +358,10 @@ struct FileTransferCallbackExport{
 
 /*define for file transfer bandwith limits*/
 #define BANDWIDTH_LIMIT_UNLIMITED 0xFFFFFFFFFFFFFFFFll
+
+/*define for metadata tags*/
+#define START_DATA "<ACRE>"
+#define END_DATA "</ACRE>"
 
 
 /*defines for speaker locations used by some sound callbacks*/
