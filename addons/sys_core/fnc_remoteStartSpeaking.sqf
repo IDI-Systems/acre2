@@ -82,25 +82,6 @@ private _result = false;
     };
 
     _unit setVariable [QGVAR(ts3id), _speakingId];
-
-    if (_languageId in (call FUNC(getSpokenLanguages))) then {
-        private _previousLanguage = _unit getVariable [QGVAR(languageId), -1];
-        if (_previousLanguage == -1) then {
-            if (ACRE_CURRENT_LANGUAGE_ID != _languageId) then {
-                // notify if a person is speaking a different language than the player on first encounter
-                private _language = GVAR(languages) select _languageId;
-                _language params ["","_languageName"];
-                [name _unit, _languageName, "Speaking", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
-            };
-        } else {
-            if (_languageId != _previousLanguage) then {
-                // notify if a person is speaking a different language than previously heard
-                private _language = GVAR(languages) select _languageId;
-                _language params ["","_languageName"];
-                [name _unit, _languageName, "Now Speaking", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
-            };
-        };
-    };
     _unit setVariable [QGVAR(languageId), _languageId];
 
     TRACE_1("unit pos", getPosASL _unit);
@@ -159,6 +140,26 @@ private _result = false;
         } else {
             if (_unit call FUNC(inRange)) then {
                 GVAR(speakers) pushBack _unit;
+
+                if (!(_unit isEqualTo acre_player) && {_languageId in ACRE_SPOKEN_LANGUAGES}) then {
+                    private _previousLanguage = _unit getVariable [QGVAR(lastLanguage), -1];
+                    if (_previousLanguage == -1) then {
+                        if (ACRE_CURRENT_LANGUAGE_ID != _languageId) then {
+                            // notify if a person is speaking a different language than the player on first encounter
+                            private _language = GVAR(languages) select _languageId;
+                            _language params ["","_languageName"];
+                            [_languageName, name _unit, "Speaking", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
+                        };
+                    } else {
+                        if (_languageId != _previousLanguage) then {
+                            // notify if a person is speaking a different language than previously heard
+                            private _language = GVAR(languages) select _languageId;
+                            _language params ["","_languageName"];
+                            [_languageName, name _unit, "Speaking", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
+                        };
+                    };
+                    _unit setVariable [QGVAR(lastLanguage), _languageId];
+                };
             };
             TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));
             REM(GVAR(keyedMicRadios),_unit);
