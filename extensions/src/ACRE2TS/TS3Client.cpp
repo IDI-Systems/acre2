@@ -94,7 +94,7 @@ AcreResult CTS3Client::setSelfVariable(char* data) {
 	std::string newData;
 	const std::string curString = currentData;
 	if ((curString.find(START_DATA) == std::string::npos) || (curString.find(END_DATA) == std::string::npos)) {
-		newData = before + START_DATA + data + END_DATA;
+		newData = curString + START_DATA + data + END_DATA;
 	} else {
 		const std::string before = curString.substr(0, curString.find(START_DATA));
 		const std::string after = curString.substr(curString.find(END_DATA) + strlen(END_DATA), std::string::npos);
