@@ -102,7 +102,7 @@ AcreResult CTS3Client::setSelfVariable(char* data) {
 	}
     ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, newData.c_str());
 	ts3Functions.freeMemory(currentData);
-	ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
+	ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), nullptr);
     return AcreResult::ok;
 }
 
