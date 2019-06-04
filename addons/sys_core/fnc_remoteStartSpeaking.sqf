@@ -83,8 +83,8 @@ private _result = false;
 
     _unit setVariable [QGVAR(ts3id), _speakingId];
 
-    private _previousLanguage = _unit getVariable [QGVAR(languageId), -1];
     if (_languageId in (call FUNC(getSpokenLanguages))) then {
+        private _previousLanguage = _unit getVariable [QGVAR(languageId), -1];
         if (_previousLanguage == -1) then {
             if (ACRE_CURRENT_LANGUAGE_ID != _previousLanguage) then {
                 // notify if a person is speaking a different language than the player on first encounter
