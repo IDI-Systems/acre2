@@ -86,7 +86,7 @@ private _result = false;
     if (_languageId in (call FUNC(getSpokenLanguages))) then {
         private _previousLanguage = _unit getVariable [QGVAR(languageId), -1];
         if (_previousLanguage == -1) then {
-            if (ACRE_CURRENT_LANGUAGE_ID != _previousLanguage) then {
+            if (ACRE_CURRENT_LANGUAGE_ID != _languageId) then {
                 // notify if a person is speaking a different language than the player on first encounter
                 private _language = GVAR(languages) select _languageId;
                 _language params ["","_languageName"];
