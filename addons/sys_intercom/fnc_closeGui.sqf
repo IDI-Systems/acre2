@@ -10,7 +10,7 @@
  * GUI successfully closed <BOOL>
  *
  * Example:
- * [1, true] call acre_sysIntercom_fnc_openGui
+ * [1, true] call acre_sysIntercom_fnc_closeGui
  *
  * Public: No
  */
