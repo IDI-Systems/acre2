@@ -12,6 +12,11 @@
 #define TO_PIPENAME        "\\\\.\\pipe\\acre_comm_pipe_toTS"
 
 extern TS3Functions ts3Functions;
+
+extern "C" {
+    char onPluginCommandEvent_v23; // <23 API or >=23 API
+}
+
 //
 // TS3 API Intializers
 //
