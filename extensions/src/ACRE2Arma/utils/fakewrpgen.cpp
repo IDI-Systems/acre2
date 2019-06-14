@@ -103,22 +103,17 @@ int main(int argc, char **argv) {
         generateWrpFile(wrpOut, config);
     }
     
-    std::ofstream wrpOutput(outputFile, std::ios::binary);
+    std::ofstream wrpOutput(config["output_file"], std::ios::binary);
 
     if (!wrpOutput.is_open()) {
-        std::cerr << "Could not open: " << outputFile << std::endl;
+        std::cerr << "Could not open: " << config["output_file"] << std::endl;
         return 0;
     }
 
-    std::string elevationsFile;
-    std::ifstream inputElev(elevationsFile);
-
-    wrpOut.elevations = acre::wrp::compressed<float32_t>(inputElev, wrpOut.map_size_x*wrpOut.map_size_y);
-    wrpOut.generateAcreWrp(wrpOutput);
     AcreResult result = wrpOut.generateAcreWrp(wrpOutput);
 
     if (result != AcreResult::ok) {
-        std::cerr << "Error writing to: " << outputFile << std::endl;
+        std::cerr << "Error writing to: " << config["output_file"] << std::endl;
     }
     
     wrpOutput.close();
