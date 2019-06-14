@@ -5,6 +5,7 @@
 #include "TS3Client.h"
 #include "CommandServer.h"
 #include "TS3Client.h"
+#include "helpers.h"
 
 #include "TsFunctions.h"
 
@@ -12,6 +13,13 @@
 #define TO_PIPENAME        "\\\\.\\pipe\\acre_comm_pipe_toTS"
 
 extern TS3Functions ts3Functions;
+
+extern "C" {
+    // API Compatibility
+    // v23
+    char onPluginCommandEvent_v23;
+}
+
 //
 // TS3 API Intializers
 //
@@ -23,7 +31,16 @@ const char* ts3plugin_version() {
     return ACRE_VERSION;
 }
 int ts3plugin_apiVersion() {
-    return TS3_PLUGIN_API_VERSION;
+    int api = getTSAPIVersion();
+
+    // API Compatibility
+    onPluginCommandEvent_v23 = 1;
+    // v23
+    if (api < 23) {
+        onPluginCommandEvent_v23 = 0;
+    }
+
+    return api;
 }
 const char* ts3plugin_author() {
     return ACRE_TEAM_URL;

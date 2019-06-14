@@ -5,8 +5,8 @@
 extern "C" {
 #endif
 
-#include "clientlib_publicdefinitions.h"
-#include "public_definitions.h"
+#include "teamspeak/clientlib_publicdefinitions.h"
+#include "teamspeak/public_definitions.h"
 #include "plugin_definitions.h"
 
 /* Functions exported to plugin from main binary */
@@ -120,7 +120,7 @@ struct TS3Functions {
     unsigned int (*getClientVariableAsInt)(uint64 serverConnectionHandlerID, anyID clientID, size_t flag, int* result);
     unsigned int (*getClientVariableAsUInt64)(uint64 serverConnectionHandlerID, anyID clientID, size_t flag, uint64* result);
     unsigned int (*getClientVariableAsString)(uint64 serverConnectionHandlerID, anyID clientID, size_t flag, char** result);
-    unsigned int (*getClientList)(uint64 serverConnectionHandlerID, anyID** result); 
+    unsigned int (*getClientList)(uint64 serverConnectionHandlerID, anyID** result);
     unsigned int (*getChannelOfClient)(uint64 serverConnectionHandlerID, anyID clientID, uint64* result);
 
     /* Channel info */
@@ -194,11 +194,11 @@ struct TS3Functions {
 
     /* Interacting with the server - banning */
     unsigned int (*banclient)(uint64 serverConnectionHandlerID, anyID clientID, uint64 timeInSeconds, const char* banReason, const char* returnCode);
-    unsigned int (*banadd)(uint64 serverConnectionHandlerID, const char* ipRegExp, const char* nameRegexp, const char* uniqueIdentity, uint64 timeInSeconds, const char* banReason, const char* returnCode);
+    unsigned int (*banadd)(uint64 serverConnectionHandlerID, const char* ipRegExp, const char* nameRegexp, const char* uniqueIdentity, const char* mytsID, uint64 timeInSeconds, const char* banReason, const char* returnCode);
     unsigned int (*banclientdbid)(uint64 serverConnectionHandlerID, uint64 clientDBID, uint64 timeInSeconds, const char* banReason, const char* returnCode);
     unsigned int (*bandel)(uint64 serverConnectionHandlerID, uint64 banID, const char* returnCode);
     unsigned int (*bandelall)(uint64 serverConnectionHandlerID, const char* returnCode);
-    unsigned int (*requestBanList)(uint64 serverConnectionHandlerID, const char* returnCode);
+    unsigned int (*requestBanList)(uint64 serverConnectionHandlerID, uint64 start, unsigned int duration, const char* returnCode);
 
     /* Interacting with the server - complain */
     unsigned int (*requestComplainAdd)(uint64 serverConnectionHandlerID, uint64 targetClientDatabaseID, const char* complainReason, const char* returnCode);
@@ -273,6 +273,7 @@ struct TS3Functions {
     unsigned int (*createBookmark)(const char* bookmarkuuid, const char* serverLabel, const char* serverAddress, const char* serverPassword, const char* nickname, const char* channel, const char* channelPassword, const char* captureProfile, const char* playbackProfile, const char* hotkeyProfile, const char* soundProfile, const char* uniqueUserId, const char* oneTimeKey, const char* phoneticName);
     unsigned int (*getPermissionIDByName)(uint64 serverConnectionHandlerID, const char* permissionName, unsigned int* result);
     unsigned int (*getClientNeededPermission)(uint64 serverConnectionHandlerID, const char* permissionName, int* result);
+    void(*notifyKeyEvent)(const char *pluginID, const char *keyIdentifier, int up_down);
 };
 
 #ifdef __cplusplus
