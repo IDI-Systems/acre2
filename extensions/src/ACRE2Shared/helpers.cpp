@@ -4,15 +4,15 @@
 bool getModuleVersion(short &major, short &minor, short &patch) {
 #ifdef _WIN32
     // Module version info code donated by dedmen on 2019-06-14
-    char* fileName[_MAX_PATH];
-    auto size = GetModuleFileName(nullptr, *fileName, _MAX_PATH);
+    char fileName[_MAX_PATH];
+    auto size = GetModuleFileName(nullptr, fileName, _MAX_PATH);
 
     fileName[size] = NULL;
     unsigned long handle = 0;
-    size = GetFileVersionInfoSize(*fileName, &handle);
+    size = GetFileVersionInfoSize(fileName, &handle);
 
     unsigned char* versionInfo = new unsigned char[size];
-    bool ret = GetFileVersionInfo(*fileName, handle, size, versionInfo);
+    bool ret = GetFileVersionInfo(fileName, handle, size, versionInfo);
 
     if (ret) {
         unsigned int len = 0;
@@ -43,7 +43,7 @@ int getTSAPIVersion() {
 
     // API matrix
     if (tsminor == 0) {
-        if (tspatch <= 13) api = 19;
+        if      (tspatch <= 13) api = 19;
         else if (tspatch <= 19) api = 20;
         else if (tspatch == 20) api = 21;
     }
