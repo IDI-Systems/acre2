@@ -1,10 +1,10 @@
 cmake_minimum_required (VERSION 3.0)
-
 set(ACRE_NAME "ACRE2TS")
 
 acre_set_build_output()
 acre_set_linker_options()
 
+enable_language(ASM_MASM)
 file(GLOB_RECURSE SOURCES *.h *.hpp *.c *.cpp *.asm inc/*)
 
 include_directories(inc)
