@@ -28,7 +28,7 @@ option casemap :none
 
 _TEXT    SEGMENT
 
-    EXTERN _ts3plugin_onPluginCommandEvent:          PROC;
+    EXTERN _ts3plugin_onPluginCommandEvent:         PROC;
     EXTERN _ts3plugin_onPluginCommandEvent_v23:     PROC;
     EXTERN _onPluginCommandEvent_v23:               BYTE;
 
