@@ -364,6 +364,7 @@ struct FileTransferCallbackExport{
 
 
 /*defines for speaker locations used by some sound callbacks*/
+/* Comment due to these interfering with DirectX library
 #ifndef SPEAKER_FRONT_LEFT
 #define SPEAKER_FRONT_LEFT              0x1
 #define SPEAKER_FRONT_RIGHT             0x2
@@ -387,5 +388,5 @@ struct FileTransferCallbackExport{
 #define SPEAKER_HEADPHONES_LEFT         0x10000000
 #define SPEAKER_HEADPHONES_RIGHT        0x20000000
 #define SPEAKER_MONO                    0x40000000
-
+*/
 #endif /*PUBLIC_DEFINITIONS_H*/
