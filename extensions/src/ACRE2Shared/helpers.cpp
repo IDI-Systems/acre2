@@ -5,14 +5,14 @@ bool getModuleVersion(short &major, short &minor, short &patch) {
 #ifdef _WIN32
     // Module version info code donated by dedmen on 2019-06-14
     char fileName[_MAX_PATH];
-    auto size = GetModuleFileName(nullptr, fileName, _MAX_PATH);
+    const unsigned long sizeFileName = GetModuleFileName(nullptr, fileName, _MAX_PATH);
+    fileName[sizeFileName] = NULL;
 
-    fileName[size] = NULL;
     unsigned long handle = 0;
-    size = GetFileVersionInfoSize(fileName, &handle);
+    const unsigned long sizeVersionInfo = GetFileVersionInfoSize(fileName, &handle);
 
-    unsigned char* versionInfo = new unsigned char[size];
-    bool ret = GetFileVersionInfo(fileName, handle, size, versionInfo);
+    unsigned char* versionInfo = new unsigned char[sizeVersionInfo];
+    const bool ret = GetFileVersionInfo(fileName, handle, sizeVersionInfo, versionInfo);
 
     if (ret) {
         unsigned int len = 0;
@@ -36,19 +36,27 @@ bool getModuleVersion(short &major, short &minor, short &patch) {
 int getTSAPIVersion() {
     int api = TS3_PLUGIN_API_VERSION;
 
-    short tsmajor, tsminor, tspatch;
+    short tsmajor = 0;
+    short tsminor = 0;
+    short tspatch = 0;
     if (!getModuleVersion(tsmajor, tsminor, tspatch)) {
         return api;
     }
 
     // API matrix
     if (tsminor == 0) {
-        if      (tspatch <= 13) api = 19;
-        else if (tspatch <= 19) api = 20;
-        else if (tspatch == 20) api = 21;
+        if (tspatch <= 13) {
+            api = 19;
+        } else if (tspatch <= 19) {
+            api = 20;
+        } else if (tspatch == 20) {
+            api = 21;
+        }
+    } else if (tsminor <= 2) {
+        api = 22;
+    } else {
+        api = 23;
     }
-    else if (tsminor <= 2) api = 22;
-    else if (tsminor >= 3) api = 23;
 
     return api;
 }

@@ -31,14 +31,11 @@ const char* ts3plugin_version() {
     return ACRE_VERSION;
 }
 int ts3plugin_apiVersion() {
-    int api = getTSAPIVersion();
+    const int32_t api = getTSAPIVersion();
 
     // API Compatibility
-    onPluginCommandEvent_v23 = 1;
     // v23
-    if (api < 23) {
-        onPluginCommandEvent_v23 = 0;
-    }
+    onPluginCommandEvent_v23 = (api < 23) ? 0 : 1;
 
     return api;
 }
