@@ -30,7 +30,7 @@ void ts3plugin_onPluginCommandEvent(uint64 serverConnectionHandlerID, const char
 // API Compatibility
 // v23
 void ts3plugin_onPluginCommandEvent_v23(uint64 serverConnectionHandlerID, const char* pluginName, const char* pluginCommand, anyID invokerClientID, const char* invokerName, const char* invokerUniqueIdentity) {
-    LOG("[%s], [%s]", invokerName, invokerUniqueIdentity);
+    //LOG("[%s], [%s]", invokerName, invokerUniqueIdentity);
 
     ts3plugin_onPluginCommandEvent(serverConnectionHandlerID, pluginName, pluginCommand);
 }
