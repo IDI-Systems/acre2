@@ -10,7 +10,7 @@ private _category = format ["ACRE2 %1", localize "str_a3_cfghints_curator_curato
 
 if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")}) then {
     private _acreNode = [
-        QGVAR(zeusEars),
+        "ACRE_ZeusEars",
         "ACRE",
         "",
         {},
