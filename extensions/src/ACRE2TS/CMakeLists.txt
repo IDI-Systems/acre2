@@ -12,7 +12,7 @@ include_directories(inc)
 
 add_library( ${ACRE_NAME} MODULE ${SOURCES} ${GLOBAL_SOURCES})
 target_link_libraries(${ACRE_NAME} ACRE2Core ACRE2Shared x3daudio)
-set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2)
+set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2 LINK_FLAGS -SAFESEH:NO)
 
 
 # Copy and rename
