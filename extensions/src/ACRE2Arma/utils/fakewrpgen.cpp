@@ -1,17 +1,8 @@
-/* SQF code
-sqf
-15360
-4096
+/************* SQF code
 
-// _mapsize can be read in CfgWorlds
-// gridSize 4096*4096 - 63mb for native float.
-//_interval = _mapSize / _gridSize; // 3.75
-
-
-// mapsize 15360;
-private _mapSize = worldSize;
-private _gridSize = 4096;
-private _interval = _mapSize / _gridSize;
+private _mapSize = worldSize;                // Read in CfgWorlds. For Tanoa 15360
+private _gridSize = 4096;                    // gridSize 4096*4096 - 63mb for native float.
+private _interval = _mapSize / _gridSize;    // For Tanoa: 3.75
 
 
 for "_y" from 0 to (_mapSize - _interval) step _interval do {
@@ -22,7 +13,8 @@ for "_y" from 0 to (_mapSize - _interval) step _interval do {
    "ace_clipboard" callExtension _heights;
 };
 
-"ace_clipboard" callExtension "--COMPLETE--"*/
+"ace_clipboard" callExtension "--COMPLETE--"
+*/
 
 #include <cstdint>
 #include <iostream>
@@ -38,7 +30,7 @@ for "_y" from 0 to (_mapSize - _interval) step _interval do {
 #include "glm/glm.hpp"
 
 static bool generateWrpFile(acre::wrp::landscape &wrpOut_, std::unordered_map<std::string, std::string> &config_);
-static bool readHeightFile(float32_t *const heightmap_, const uint32_t maxSize, std::string &filename_);
+static bool readHeightFile(float32_t *const heightmap_, const uint32_t maxSize, const std::string &filename_);
 
 static void calculatePeaks(acre::wrp::landscape &wrp_);
 static float32_t internal_elevation(const int32_t x_, const int32_t y_, const acre::wrp::landscape &wrp_);
@@ -70,7 +62,7 @@ int main(int argc, char **argv) {
      *  - map_size_x: Map size X direction
      *  - map_size_y: Map size Y direction
      *  - version: wrp layout version
-     *  - cell_size: Cell size
+     *  - world_size: World size
      */
 
     std::unordered_map<std::string, std::string> config;
@@ -129,7 +121,7 @@ static bool generateWrpFile(acre::wrp::landscape &wrpOut_, std::unordered_map<st
     wrpOut_.map_size_y = static_cast<uint32_t>(std::stoul(config_["map_size_y"]));
 
     wrpOut_.version = static_cast<uint32_t>(std::stoul(config_["version"]));
-    wrpOut_.cell_size = std::stof(config_["cell_size"]);
+    wrpOut_.cell_size = std::stof(config_["world_size"])/ wrpOut_.layer_size_x;
 
     // Elevations
     float32_t *heightmap = new float32_t[wrpOut_.map_size_x * wrpOut_.map_size_y];
@@ -147,7 +139,7 @@ static bool generateWrpFile(acre::wrp::landscape &wrpOut_, std::unordered_map<st
     return true;
 }
 
-static bool readHeightFile(float32_t *const heightmap_, const uint32_t maxSize, std::string &filename_) {
+static bool readHeightFile(float32_t *const heightmap_, const uint32_t maxSize_, const std::string &filename_) {
     std::ifstream inFile(filename_);
 
     if (!inFile.is_open()) {
@@ -155,12 +147,17 @@ static bool readHeightFile(float32_t *const heightmap_, const uint32_t maxSize, 
     }
 
     std::string line;
-    std::getline(inFile, line, ',');
-    size_t heightIdx = 0;
 
-    while (!inFile.eof() && (heightIdx < maxSize)) {
-        heightmap_[heightIdx] = std::stof(line, nullptr);
+    std::getline(inFile, line, ',');
+    line.erase(std::remove(line.begin(), line.end(), '\0'), line.end());
+    heightmap_[0] = std::stof(line, nullptr);
+
+    size_t heightIdx = 1;
+    while (!inFile.eof() && heightIdx < maxSize_) {
         std::getline(inFile, line, ',');
+        line.erase(std::remove(line.begin(), line.end(), '\0'), line.end());
+        heightmap_[heightIdx] = std::stof(line, nullptr);
+
         heightIdx++;
     }
 
@@ -248,7 +245,7 @@ static float32_t internal_elevation(const int32_t x_, const int32_t y_, const ac
 
 static bool is_peak(const int32_t x_, const int32_t y_, const acre::wrp::landscape &wrp_) {
     const float32_t height = internal_elevation(x_, y_, wrp_);
-    int32_t p = 0;
+    uint8_t p = 0;
 
     if (internal_elevation(x_ - 1, y_ - 1, wrp_) >= height) {
         p++;
