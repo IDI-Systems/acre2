@@ -5,7 +5,8 @@ set(ACRE_NAME "ACRE2DistortionTestPlugin")
 acre_set_build_output()
 acre_set_linker_options()
 
-file(GLOB_RECURSE SOURCES *.h *.hpp *.c *.cpp inc/*)
+enable_language(ASM_MASM)
+file(GLOB_RECURSE SOURCES *.h *.hpp *.c *.cpp *.asm inc/*)
 
 include_directories(inc)
 
