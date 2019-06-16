@@ -92,12 +92,24 @@ enum CommandLinePropertiesRare {
     COMMANDLINE_INIFILE,
     COMMANDLINE_LOGQUERYCOMMANDS,
     COMMANDLINE_DBCLIENTKEEPDAYS,
-    COMMANDLINE_THREADS_QUERY_TCP,
     COMMANDLINE_NO_PERMISSION_UPDATE,
     COMMANDLINE_OPEN_WIN_CONSOLE,
     COMMANDLINE_NO_PASSWORD_DIALOG,
     COMMANDLINE_LOGAPPEND,
     COMMANDLINE_QUERY_SKIPBRUTEFORCECHECK,
+    COMMANDLINE_QUERY_BUFFER_MB,
+    COMMANDLINE_HTTP_PROXY,
+    COMMANDLINE_LICENSE_ACCEPTED,
+    COMMANDLINE_SERVERQUERYDOCS_PATH,
+    COMMANDLINE_QUERY_SSH_IP,
+    COMMANDLINE_QUERY_SSH_PORT,
+    COMMANDLINE_QUERY_PROTOCOLS,
+    COMMANDLINE_QUERY_SSH_RSA_HOST_KEY,
+    COMMANDLINE_QUERY_TIMEOUT,
+    COMMANDLINE_VERSION,
+    COMMANDLINE_CRASHDUMPSPATH,
+    COMMANDLINE_DAEMON,
+    COMMANDLINE_PID_FILE,
 #endif
 #else
     COMMANDLINE_NOTHING=0,
@@ -122,12 +134,12 @@ enum ServerInstancePropertiesRare {
     SERVERINSTANCE_TEMPLATE_CHANNELDEFAULT_GROUP,
     SERVERINSTANCE_PERMISSIONS_VERSION,
     SERVERINSTANCE_PENDING_CONNECTIONS_PER_IP,
+    SERVERINSTANCE_SERVERQUERY_MAX_CONNECTIONS_PER_IP,
     SERVERINSTANCE_ENDMARKER_RARE,
 };
 
 enum VirtualServerPropertiesRare {
-    VIRTUALSERVER_DUMMY_0= VIRTUALSERVER_ENDMARKER,
-    VIRTUALSERVER_DUMMY_1,
+    VIRTUALSERVER_DUMMY_1 = VIRTUALSERVER_ENDMARKER,
     VIRTUALSERVER_DUMMY_2,
     VIRTUALSERVER_DUMMY_3,
     VIRTUALSERVER_DUMMY_4,
@@ -141,11 +153,11 @@ enum VirtualServerPropertiesRare {
     VIRTUALSERVER_FILEBASE,                                    //not available to clients, stores the folder used for file transfers
     VIRTUALSERVER_DEFAULT_SERVER_GROUP,                        //the client permissions server group that a new client gets assigned
     VIRTUALSERVER_DEFAULT_CHANNEL_GROUP,                       //the channel permissions group that a new client gets assigned when joining a channel
-    VIRTUALSERVER_FLAG_PASSWORD,                               //only available on request (=> requestServerVariables) 
+    VIRTUALSERVER_FLAG_PASSWORD,                               //only available on request (=> requestServerVariables)
     VIRTUALSERVER_DEFAULT_CHANNEL_ADMIN_GROUP,                 //the channel permissions group that a client gets assigned when creating a channel
     VIRTUALSERVER_MAX_DOWNLOAD_TOTAL_BANDWIDTH,                //only available on request (=> requestServerVariables)
     VIRTUALSERVER_MAX_UPLOAD_TOTAL_BANDWIDTH,                  //only available on request (=> requestServerVariables)
-    VIRTUALSERVER_HOSTBANNER_URL,                              //available when connected, always up-to-date 
+    VIRTUALSERVER_HOSTBANNER_URL,                              //available when connected, always up-to-date
     VIRTUALSERVER_HOSTBANNER_GFX_URL,                          //available when connected, always up-to-date
     VIRTUALSERVER_HOSTBANNER_GFX_INTERVAL,                     //available when connected, always up-to-date
     VIRTUALSERVER_COMPLAIN_AUTOBAN_COUNT,                      //only available on request (=> requestServerVariables)
@@ -159,9 +171,9 @@ enum VirtualServerPropertiesRare {
     VIRTUALSERVER_ANTIFLOOD_POINTS_NEEDED_IP_BLOCK,            //only available on request (=> requestServerVariables)
     VIRTUALSERVER_CLIENT_CONNECTIONS,                          //only available on request (=> requestServerVariables)
     VIRTUALSERVER_QUERY_CLIENT_CONNECTIONS,                    //only available on request (=> requestServerVariables)
-    VIRTUALSERVER_HOSTBUTTON_TOOLTIP,                          //available when connected, always up-to-date 
-    VIRTUALSERVER_HOSTBUTTON_URL,                              //available when connected, always up-to-date 
-    VIRTUALSERVER_HOSTBUTTON_GFX_URL,                          //available when connected, always up-to-date 
+    VIRTUALSERVER_HOSTBUTTON_TOOLTIP,                          //available when connected, always up-to-date
+    VIRTUALSERVER_HOSTBUTTON_URL,                              //available when connected, always up-to-date
+    VIRTUALSERVER_HOSTBUTTON_GFX_URL,                          //available when connected, always up-to-date
     VIRTUALSERVER_QUERYCLIENTS_ONLINE,                         //only available on request (=> requestServerVariables)
     VIRTUALSERVER_DOWNLOAD_QUOTA,                              //only available on request (=> requestServerVariables)
     VIRTUALSERVER_UPLOAD_QUOTA,                                //only available on request (=> requestServerVariables)
@@ -188,7 +200,7 @@ enum VirtualServerPropertiesRare {
     VIRTUALSERVER_TOTAL_PACKETLOSS_CONTROL,                    //only available on request (=> requestServerVariables)
     VIRTUALSERVER_TOTAL_PACKETLOSS_TOTAL,                      //only available on request (=> requestServerVariables)
     VIRTUALSERVER_TOTAL_PING,                                  //only available on request (=> requestServerVariables)
-    VIRTUALSERVER_IP,                                          //internal use | contains only ONE binded ip
+    VIRTUALSERVER_IP,                                          //internal use | contains comma separated ip list
     VIRTUALSERVER_WEBLIST_ENABLED,                             //only available on request (=> requestServerVariables)
     VIRTUALSERVER_AUTOGENERATED_PRIVILEGEKEY,                  //internal use
     VIRTUALSERVER_ASK_FOR_PRIVILEGEKEY,                        //available when connected
@@ -196,7 +208,11 @@ enum VirtualServerPropertiesRare {
     VIRTUALSERVER_CHANNEL_TEMP_DELETE_DELAY_DEFAULT,           //available when connected, always up-to-date
     VIRTUALSERVER_MIN_ANDROID_VERSION,                         //only available on request (=> requestServerVariables)
     VIRTUALSERVER_MIN_IOS_VERSION,                             //only available on request (=> requestServerVariables)
-    VIRTUALSERVER_MIN_WINPHONE_VERSION,                           //only available on request (=> requestServerVariables)
+    VIRTUALSERVER_MIN_WINPHONE_VERSION,                        //only available on request (=> requestServerVariables)
+    VIRTUALSERVER_NICKNAME,                                    //available when connected, always up-to-date
+    VIRTUALSERVER_ACCOUNTING_TOKEN,                            //internal use | contains base64 encoded token data
+    VIRTUALSERVER_PROTOCOL_VERIFY_KEYPAIR,                     //internal use
+    VIRTUALSERVER_ANTIFLOOD_POINTS_NEEDED_PLUGIN_BLOCK,        //only available on request (=> requestServerVariables)
     VIRTUALSERVER_ENDMARKER_RARE
 };
 
@@ -216,13 +232,14 @@ enum ChannelPropertiesRare {
     CHANNEL_FORCED_SILENCE,                 //Available for all channels that are "in view", always up-to-date
     CHANNEL_NAME_PHONETIC,                  //Available for all channels that are "in view", always up-to-date
     CHANNEL_ICON_ID,                        //Available for all channels that are "in view", always up-to-date
-    CHANNEL_FLAG_PRIVATE,                   //Available for all channels that are "in view", always up-to-date
-    CHANNEL_ENDMARKER_RARE
+    CHANNEL_BANNER_GFX_URL,                 //Available for all channels that are "in view", always up-to-date
+    CHANNEL_BANNER_MODE,                    //Available for all channels that are "in view", always up-to-date
+    CHANNEL_ENDMARKER_RARE,
+    CHANNEL_DELETE_DELAY_DEADLINE = 127     //(for clientlibv2) expected delete time in monotonic clock seconds or 0 if nothing is expected
 };
 
 enum ClientPropertiesRare {
-    CLIENT_DUMMY_3= CLIENT_ENDMARKER,
-    CLIENT_DUMMY_4,
+    CLIENT_DUMMY_4 = CLIENT_ENDMARKER,
     CLIENT_DUMMY_5,
     CLIENT_DUMMY_6,
     CLIENT_DUMMY_7,
@@ -261,7 +278,13 @@ enum ClientPropertiesRare {
     CLIENT_COUNTRY,                         //automatically up-to-date for any client "in view"
     CLIENT_CHANNEL_GROUP_INHERITED_CHANNEL_ID, //automatically up-to-date for any client "in view", only valid with PERMISSION feature, contains channel_id where the channel_group_id is set from
     CLIENT_BADGES,                          //automatically up-to-date for any client "in view", stores icons for partner badges
+    CLIENT_MYTEAMSPEAK_ID,                  //automatically up-to-date for any client "in view", stores myteamspeak id
+    CLIENT_INTEGRATIONS,                    //automatically up-to-date for any client "in view", stores integrations
+    CLIENT_ACTIVE_INTEGRATIONS_INFO,        //stores info from the myts server and contains the subscription info
+    CLIENT_MYTS_AVATAR,
+    CLIENT_SIGNED_BADGES,
     CLIENT_ENDMARKER_RARE,
+    CLIENT_HW_ID = 127                      //(for clientlibv2) unique hardware id
 };
 
 enum ConnectionPropertiesRare {
@@ -280,12 +303,6 @@ enum ConnectionPropertiesRare {
     CONNECTION_FILETRANSFER_BYTES_RECEIVED_TOTAL,               //how many bytes we received in total through file transfers
     CONNECTION_FILETRANSFER_BYTES_SENT_TOTAL,                   //how many bytes we sent in total through file transfers
     CONNECTION_ENDMARKER_RARE,
-};
-
-enum LicenseViolationType {
-    NO_VIOLATION = 0,
-    SLOT_VIOLATION,
-    SLOT_SUSPICION
 };
 
 enum BBCodeTags {
@@ -321,6 +338,19 @@ enum BBCodeTags {
     BBCodeTag_def_simple     = BBCodeTag_B | BBCodeTag_I | BBCodeTag_U | BBCodeTag_S | BBCodeTag_SUP | BBCodeTag_SUB |BBCodeTag_COLOR | BBCodeTag_URL,
     BBCodeTag_def_simple_Img = BBCodeTag_def_simple | BBCodeTag_IMAGE,
     BBCodeTag_def_extended   = BBCodeTag_group_text | BBCodeTag_group_align | BBCodeTag_URL | BBCodeTag_IMAGE | BBCodeTag_HR | BBCodeTag_group_list | BBCodeTag_group_table,
+};
+
+enum LicenseIssue {
+    Blacklisted = 0,
+    Greylisted
+};
+
+enum MytsDataUnsetFlags {
+    MytsDataUnsetFlag_None   = 0,
+    MytsDataUnsetFlag_Badges = 1,
+    MytsDataUnsetFlag_Avatar = 1 << 1,
+
+    MytsDataUnsetFlag_All = MytsDataUnsetFlag_Badges | MytsDataUnsetFlag_Avatar // make sure "all" really contains all flags
 };
 
 typedef int(*ExtraBBCodeValidator)(void* userparam, const char* tag, const char* paramValue, int paramValueSize, const char* childValue, int childValueSize);

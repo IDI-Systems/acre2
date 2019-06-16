@@ -366,7 +366,6 @@ struct FileTransferCallbackExport{
 #define START_DATA "<ACRE>"
 #define END_DATA "</ACRE>"
 
-
 /*defines for speaker locations used by some sound callbacks*/
 /* Comment due to these interfering with DirectX library
 #ifndef SPEAKER_FRONT_LEFT
