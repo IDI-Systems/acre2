@@ -3,7 +3,7 @@
 #pragma comment (lib, "version.lib")
 bool getModuleVersion(int16_t *major, int16_t *minor, int16_t *patch) {
 #ifdef _WIN32
-    // Module version info code donated by dedmen on 2019-06-14
+    // Module version info code originally donated by dedmen on 2019-06-14
     char fileName[_MAX_PATH];
     const uint64_t sizeFileName = GetModuleFileName(nullptr, fileName, _MAX_PATH);
     fileName[sizeFileName] = NULL;
