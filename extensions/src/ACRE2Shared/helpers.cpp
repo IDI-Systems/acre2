@@ -1,27 +1,27 @@
 #include "helpers.h"
 
 #pragma comment (lib, "version.lib")
-bool getModuleVersion(short &major, short &minor, short &patch) {
+bool getModuleVersion(int16_t *major, int16_t *minor, int16_t *patch) {
 #ifdef _WIN32
     // Module version info code donated by dedmen on 2019-06-14
     char fileName[_MAX_PATH];
-    const unsigned long sizeFileName = GetModuleFileName(nullptr, fileName, _MAX_PATH);
+    const uint64_t sizeFileName = GetModuleFileName(nullptr, fileName, _MAX_PATH);
     fileName[sizeFileName] = NULL;
 
     unsigned long handle = 0;
-    const unsigned long sizeVersionInfo = GetFileVersionInfoSize(fileName, &handle);
+    const uint64_t sizeVersionInfo = GetFileVersionInfoSize(fileName, &handle);
 
-    unsigned char* versionInfo = new unsigned char[sizeVersionInfo];
+    uint8_t* versionInfo = new uint8_t[sizeVersionInfo];
     const bool ret = GetFileVersionInfo(fileName, handle, sizeVersionInfo, versionInfo);
 
     if (ret) {
-        unsigned int len = 0;
+        uint32_t len = 0;
         VS_FIXEDFILEINFO* vsfi = nullptr;
         VerQueryValueW(versionInfo, L"\\", reinterpret_cast<void**>(&vsfi), &len);
 
-        major = HIWORD(vsfi->dwFileVersionMS);
-        minor = LOWORD(vsfi->dwFileVersionMS);
-        patch = HIWORD(vsfi->dwFileVersionLS);
+        *major = HIWORD(vsfi->dwFileVersionMS);
+        *minor = LOWORD(vsfi->dwFileVersionMS);
+        *patch = HIWORD(vsfi->dwFileVersionLS);
     }
 
     delete[] versionInfo;
@@ -33,13 +33,13 @@ bool getModuleVersion(short &major, short &minor, short &patch) {
 #endif
 }
 
-int getTSAPIVersion() {
-    int api = TS3_PLUGIN_API_VERSION;
+int32_t getTSAPIVersion() {
+    int32_t api = TS3_PLUGIN_API_VERSION;
 
-    short tsmajor = 0;
-    short tsminor = 0;
-    short tspatch = 0;
-    if (!getModuleVersion(tsmajor, tsminor, tspatch)) {
+    int16_t tsmajor = 0;
+    int16_t tsminor = 0;
+    int16_t tspatch = 0;
+    if (!getModuleVersion(&tsmajor, &tsminor, &tspatch)) {
         return api;
     }
 

@@ -7,6 +7,8 @@
 #ifndef PLUGIN_H
 #define PLUGIN_H
 
+#include <cstdint>
+
 #ifdef WIN32
 #define PLUGINS_EXPORTDLL __declspec(dllexport)
 #else
@@ -145,7 +147,7 @@ PLUGINS_EXPORTDLL void ts3plugin_onClientDisplayNameChanged(uint64 serverConnect
 // API Compatibility
 // v23
 PLUGINS_EXPORTDLL void ts3plugin_onPluginCommandEventH();
-extern char onPluginCommandEvent_v23;
+extern uint8_t onPluginCommandEvent_v23;
 
 #ifdef __cplusplus
 }

@@ -17,7 +17,7 @@ extern TS3Functions ts3Functions;
 extern "C" {
     // API Compatibility
     // v23
-    char onPluginCommandEvent_v23;
+    uint8_t onPluginCommandEvent_v23;
 }
 
 //
