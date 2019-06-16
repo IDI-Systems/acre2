@@ -27,7 +27,7 @@
 
 #include "version.h"
 
-#define TS3_PLUGIN_API_VERSION 21
+#define TS3_PLUGIN_API_VERSION 23
 
 #define QUOTE_(x) #x
 #define QUOTE(x) QUOTE_(x)
