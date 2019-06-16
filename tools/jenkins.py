@@ -123,16 +123,7 @@ if args.publish:
     do_action(["git", "commit", "-am", commit_message], "Failed to commit changes back into branch '{}'".format(current_branch))
     do_action(["git", "push", "origin", current_branch], "Failed to push changes back into branch 'origin/{}'".format(current_branch))
     do_action(["git", "checkout", target_branch], "Failed to checkout target branch '{}'".format(target_branch))
-
-    # DEBUG
-    do_action(["git", "status"], "Debug 1 error")
-    do_action(["git", "branch"], "Debug 2 error")
-    do_action(["git", "log", "--oneline", "-n20"], "Debug 3 error")
-
-    do_action(["git", "pull"], "Failed to update target branch from 'origin/{}'".format(target_branch))
-
-    # DEBUG
-    do_action(["git", "status"], "Debug 4 error")
+    do_action(["git", "pull"], "Failed to update target branch from '{}'".format(target_branch))
 
     status_ok = do_action(["git", "merge", current_branch], "Failed to merge '{}' into '{}', conflict exists.".format(current_branch, target_branch), create_pull_request, [repository, current_branch, target_branch, github_token], True)
     if(status_ok): # Only diff and push if merge was successful
