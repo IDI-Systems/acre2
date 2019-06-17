@@ -28,3 +28,5 @@
     // Stop updating Zeus position
     [GVAR(speakFromZeusHandle)] call CBA_fnc_removePerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
+
+true
