@@ -41,26 +41,44 @@ private _radios = (_racks apply {[_x] call FUNC(getMountedRadio)}) select {_x !=
         [_x]
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
-} forEach _racks;
+} forEach (_racks select {!([_x, acre_player] call FUNC(isRackHearable))});
 
-private _action = [QGVAR(useAllRacks), localize LSTRING(useAllRacks), "", {
-    params ["_vehicle", "_unit", "_radios"];
+// Exclude all intercom radios
+private _action = [
+    QGVAR(useAllRacks),
+    localize LSTRING(useAllRacks),
+    "",
     {
-        [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
-    } forEach (_radios select {!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS})});
-}, {
-    ({!(_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS})} count (_this select 2)) > 0
-}, {}, _radios] call ace_interact_menu_fnc_createAction;
+        params ["_vehicle", "_unit", "_radios"];
+        {
+            [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
+        } forEach (_radios select {!(_x in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_x, acre_player] call FUNC(isRadioHearable))}});
+    },
+    {
+        ({!(_x in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_x, acre_player] call FUNC(isRadioHearable))}} count (_this select 2)) > 0
+    },
+    {},
+    _radios
+] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
-private _action = [QGVAR(stopUsingAllRacks), localize LSTRING(stopUsingAllRacks), "", {
-    params ["_vehicle", "_unit", "_radios"];
+// Exclude all intercom radios
+_action = [
+    QGVAR(stopUsingAllRacks),
+    localize LSTRING(stopUsingAllRacks),
+    "",
     {
-        [_vehicle, _unit, _x] call FUNC(stopUsingMountedRadio);
-    } forEach (_radios select {_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}});
-}, {
-    ({_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}} count (_this select 2)) > 0
-}, {}, _radios] call ace_interact_menu_fnc_createAction;
+        params ["_vehicle", "_unit", "_radios"];
+        {
+            [_vehicle, _unit, _x] call FUNC(stopUsingMountedRadio);
+        } forEach (_radios select {(_x in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_x, acre_player] call FUNC(isRadioHearable))}});
+    },
+    {
+        ({(_x in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_x, acre_player] call FUNC(isRadioHearable))}} count (_this select 2)) > 0
+    },
+    {},
+    _radios
+] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
 _actions
