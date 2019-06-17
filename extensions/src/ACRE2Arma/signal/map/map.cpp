@@ -498,7 +498,7 @@ float32_t acre::signal::map::_max_grid_height(const int32_t x_, const int32_t y_
 }
 bool acre::signal::map::_is_peak(const int32_t x_, const int32_t y_) {
     const float32_t height = _internal_elevation(x_, y_);
-    int32_t p = 0;
+    uint8_t p = 0;
 
     if (_internal_elevation(x_ - 1, y_ - 1) >= height) {
         p++;
