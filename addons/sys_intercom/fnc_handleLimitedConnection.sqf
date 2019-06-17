@@ -27,7 +27,7 @@ private _success = false;
 if (_newConnectedStatus > INTERCOM_DISCONNECTED) then {
     if (_oldConnectedStatus > INTERCOM_DISCONNECTED) then {
         // Unit is already connected
-        _success =  true;
+        _success = true;
     } else {
         // Unit is connecting. Check if there are still available connections
         if (_num > 0) then {
