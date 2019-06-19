@@ -146,7 +146,6 @@ PLUGINS_EXPORTDLL void ts3plugin_onClientDisplayNameChanged(uint64 serverConnect
 
 // API Compatibility
 // v23
-PLUGINS_EXPORTDLL void ts3plugin_onPluginCommandEventH();
 extern uint8_t onPluginCommandEvent_v23;
 
 #ifdef __cplusplus
