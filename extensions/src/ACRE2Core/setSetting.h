@@ -5,41 +5,39 @@
 #include "AcreSettings.h"
 
 RPC_FUNCTION(setSetting) {
-    std::string name;
-    float value = 1.0f;
-
-    name = std::string((char *)vMessage->getParameter(0));
-    value = vMessage->getParameterAsFloat(1);
-    value = round(value * 100) / 100;
+    const std::string name = std::string((char *)vMessage->getParameter(0));
+    float32_t value = vMessage->getParameterAsFloat(1);
+    value = round(value * 100.0f) / 100.0f;
 
     if (name == "globalVolume") {
         if (CAcreSettings::getInstance()->getGlobalVolume() != value) {
             CAcreSettings::getInstance()->setGlobalVolume(value);
         }
-    }
-    else if (name == "premixGlobalVolume") {
+    } else if (name == "premixGlobalVolume") {
         if (CAcreSettings::getInstance()->getPremixGlobalVolume() != value) {
             CAcreSettings::getInstance()->setPremixGlobalVolume(value);
         }
-    }
-    else if (name == "disableUnmuteClients") {
+    } else if (name == "disableUnmuteClients") {
         if (CAcreSettings::getInstance()->getDisableUnmuteClients() != (value != 1)) {
             CAcreSettings::getInstance()->setDisableUnmuteClients(value != 1);
         }
-    } 
-    else if (name == "disableTS3ChannelSwitch") {
+    } else if (name == "disableTS3ChannelSwitch") {
         if (CAcreSettings::getInstance()->getDisableTS3ChannelSwitch() != (value != 1)) {
             CAcreSettings::getInstance()->setDisableTS3ChannelSwitch(value != 1);
         }
-    }
-    else {
+    } else {
         LOG("Setting [%s] failed to change to [%f]", name.c_str(), value);
-        return AcreResult::error;
+        return acre::Result::error;
     }
 
     LOG("Setting [%s] set to [%f]", name.c_str(), value);
     CAcreSettings::getInstance()->save();
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

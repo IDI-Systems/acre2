@@ -14,14 +14,14 @@ public:
     CRpcEngine();
     ~CRpcEngine();
 
-    AcreResult        addProcedure(IRpcFunction *cmd);
-    AcreResult        removeProcedure(IRpcFunction *cmd);
-    AcreResult        removeProcedure(char * cmd);
+    acre::Result        addProcedure(IRpcFunction *cmd);
+    acre::Result        removeProcedure(IRpcFunction *cmd);
+    acre::Result        removeProcedure(char * cmd);
     IRpcFunction    *findProcedure(char *cmd);
-    AcreResult        runProcedure(IServer *serverInstance, IMessage *msg);
-    AcreResult        runProcedure(IServer *serverInstance, IMessage *msg, BOOL entrant);
+    acre::Result        runProcedure(IServer *serverInstance, IMessage *msg);
+    acre::Result        runProcedure(IServer *serverInstance, IMessage *msg, BOOL entrant);
 
-    AcreResult        exProcessItem(ACRE_RPCDATA *data);
+    acre::Result        exProcessItem(ACRE_RPCDATA *data);
 private:
     std::map<std::string, IRpcFunction *> m_FunctionList;
 };

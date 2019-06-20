@@ -102,9 +102,9 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-    AcreResult result = wrpOut.generateAcreWrp(wrpOutput);
+    acre::Result result = wrpOut.generateAcreWrp(wrpOutput);
 
-    if (result != AcreResult::ok) {
+    if (result != acre::Result::ok) {
         std::cerr << "Error writing to: " << config["output_file"] << std::endl;
     }
     

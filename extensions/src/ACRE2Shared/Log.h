@@ -55,8 +55,7 @@
 
 #define TRACE_FUNCTION(x) x  { TRACE("enter");
 
-class Log
-{
+class Log {
 public:
     Log(char *logFile);
     ~Log(void);

@@ -11,56 +11,57 @@ class IServer;
 /*
  * Basic type definitions
  */
-typedef float float32_t;
-typedef double float64_t;
+using float32_t = float;
+using float64_t = double;
 
 /*
  * ACRE type definitions
  */
+namespace acre {
+    using id_t = uint32_t;
+    using volume_t = float32_t;
 
-typedef uint32_t acre_id_t;
-typedef float32_t acre_volume_t;
+    enum class Result : uint32_t {
+        ok,
+        invalidPlayer = 0x00000100,
+        notFound = 0x00FF0000,
+        invalidPacket = 0xFF000000,
+        notImplemented = 0xFFFFFFF0,
+        error = 0xFFFFFFFF
+    };
 
-enum class AcreResult : uint32_t {
-    ok,
-    invalidPlayer = 0x00000100,
-    notFound = 0x00FF0000,
-    invalidPacket = 0xFF000000,
-    notImplemented = 0xFFFFFFF0,
-    error = 0xFFFFFFFF
-};
+    enum class State : uint32_t {
+        running = 1,
+        initializing,
+        stopping,
+        starting,
+        ready,
+        stopped = 0xFFFFFFFF
+    };
 
-enum class AcreState : uint32_t {
-    running = 1,
-    initializing,
-    stopping,
-    starting,
-    ready,
-    stopped = 0xFFFFFFFF
-};
+    enum class Silence : uint8_t {
+        off,
+        always,
+        alwaysAdmin,
+        ingame,
+        ingameAdmin
+    };
 
-enum class AcreSilence {
-    off,
-    always,
-    alwaysAdmin,
-    ingame,
-    ingameAdmin
-};
+    enum class Speaking : uint8_t {
+        direct,
+        radio,
+        unknown,
+        intercom,
+        spectate
+    };
 
-enum class AcreSpeaking {
-    direct,
-    radio,
-    unknown,
-    intercom,
-    spectate
-};
-
-enum class AcreCurveModel {
-    original,
-    amplitude,
-    selectableA,
-    selectableB
-};
+    enum class CurveModel : uint8_t {
+        original,
+        amplitude,
+        selectableA,
+        selectableB
+    };
+} /* namespace acre */
 
 typedef struct ACRE_RPCDATA {
     IRpcFunction *function;
@@ -80,10 +81,10 @@ typedef BYTE ACRE_KEY;
 #include "ACRE_KEYBIND.h"
 #include "ACRE_ADDR.h"
 
-typedef AcreResult (*ACRE_RPCFUNCTION)(IServer *, IMessage *);
+typedef acre::Result (*ACRE_RPCFUNCTION)(IServer *, IMessage *);
 
 
 
-typedef AcreResult (*ACRE_CALLBACK_TALKING)(CPlayer *);
+typedef acre::Result (*ACRE_CALLBACK_TALKING)(CPlayer *);
 */
 

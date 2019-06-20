@@ -93,21 +93,19 @@ void ts3plugin_currentServerConnectionChanged(uint64 serverConnectionHandlerID) 
 void ts3plugin_onConnectStatusChangeEvent(uint64 id, int status, unsigned int err) {
 
     if (status == STATUS_CONNECTION_ESTABLISHED) {
-
-
         //
         // set ID on every new connection
-        acre_id_t clientId = 0;
+        acre::id_t clientId = 0;
         ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), (anyID *)&clientId);
-        CEngine::getInstance()->getSelf()->setId((acre_id_t)clientId);
+        CEngine::getInstance()->getSelf()->setId(clientId);
 
         // subscribe to all channels to receive event
         ts3Functions.requestChannelSubscribeAll(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
-        if (CEngine::getInstance()->getClient()->getState() != AcreState::running) {
-            CEngine::getInstance()->getClient()->start((acre_id_t)id);
+        if (CEngine::getInstance()->getClient()->getState() != acre::State::running) {
+            CEngine::getInstance()->getClient()->start(static_cast<acre::id_t>(id));
         }
     } else if (status == STATUS_DISCONNECTED) {
-        if (CEngine::getInstance()->getClient()->getState() != AcreState::stopped  && CEngine::getInstance()->getClient()->getState() != AcreState::stopping) {
+        if (CEngine::getInstance()->getClient()->getState() != acre::State::stopped  && CEngine::getInstance()->getClient()->getState() != acre::State::stopping) {
             CEngine::getInstance()->getClient()->stop();
         }
     }
@@ -121,7 +119,7 @@ void ts3plugin_onPlaybackShutdownCompleteEvent(uint64) {
 }
 
 void ts3plugin_shutdown() {
-    if (CEngine::getInstance()->getClient()->getState() != AcreState::stopped && CEngine::getInstance()->getClient()->getState() != AcreState::stopping) {
+    if (CEngine::getInstance()->getClient()->getState() != acre::State::stopped && CEngine::getInstance()->getClient()->getState() != acre::State::stopping) {
         CEngine::getInstance()->getClient()->stop();
     }
     CEngine::getInstance()->stop();

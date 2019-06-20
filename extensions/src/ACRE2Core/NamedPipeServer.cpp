@@ -24,7 +24,7 @@ CNamedPipeServer::~CNamedPipeServer( void ) {
     this->shutdown();
 }
 
-AcreResult CNamedPipeServer::initialize() {
+acre::Result CNamedPipeServer::initialize() {
     HANDLE writeHandle, readHandle;
 
     //SECURITY_DESCRIPTOR SDWrite;
@@ -117,10 +117,10 @@ AcreResult CNamedPipeServer::initialize() {
 
     this->m_sendThread = std::thread(&CNamedPipeServer::sendLoop, this);
     this->m_readThread = std::thread(&CNamedPipeServer::readLoop, this);
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CNamedPipeServer::shutdown(void) {
+acre::Result CNamedPipeServer::shutdown(void) {
     HANDLE hPipe;
 
     this->setShuttingDown(true);
@@ -154,10 +154,10 @@ AcreResult CNamedPipeServer::shutdown(void) {
 
     this->setShuttingDown(false);
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CNamedPipeServer::sendLoop() {
+acre::Result CNamedPipeServer::sendLoop() {
     DWORD cbWritten, size;
     IMessage *msg;
     BOOL ret;
@@ -225,10 +225,10 @@ AcreResult CNamedPipeServer::sendLoop() {
     }
     TRACE("Sending thread terminating");
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CNamedPipeServer::readLoop() {
+acre::Result CNamedPipeServer::readLoop() {
     DWORD cbRead;
     IMessage *msg;
     BOOL ret;
@@ -336,24 +336,24 @@ AcreResult CNamedPipeServer::readLoop() {
 
     TRACE("Receiving thread terminating");
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CNamedPipeServer::sendMessage( IMessage *message ) {
+acre::Result CNamedPipeServer::sendMessage( IMessage *message ) {
     if (message) {
         TRACE("sending [%s]", message->getData());
         this->m_sendQueue.push(message);
-        return AcreResult::ok;
+        return acre::Result::ok;
     } else {
-        return AcreResult::error;
+        return acre::Result::error;
     }
 }
 
-AcreResult CNamedPipeServer::checkServer( void ) {
+acre::Result CNamedPipeServer::checkServer( void ) {
     std::string uniqueId = CEngine::getInstance()->getClient()->getUniqueId();
     if (uniqueId != "" && this->validTSServers.find(uniqueId) == this->validTSServers.end()) {
         MessageBoxA(NULL, "This server is NOT registered for ACRE2 testing! Please remove the plugin! Teamspeak will now close.", "ACRE Error", MB_OK | MB_ICONEXCLAMATION);
         TerminateProcess(GetCurrentProcess(), 0);
     }
-    return AcreResult::ok;
+    return acre::Result::ok;
 }

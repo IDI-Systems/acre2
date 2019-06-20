@@ -8,13 +8,12 @@ class IMessage
 public:
     virtual ~IMessage(){}
 
-    virtual unsigned char *getData(void) = 0;
-    virtual unsigned int getLength(void) = 0;
-    virtual char *getProcedureName(void) = 0;
+    virtual const unsigned char* getData(void) = 0;
+    virtual size_t getLength(void) const = 0;
+    virtual const char* getProcedureName(void) const = 0;
 
-    virtual unsigned char *getParameter(unsigned int) = 0;
-    virtual int getParameterAsInt(unsigned int) = 0;
-    virtual float getParameterAsFloat(unsigned int) = 0;
-    virtual unsigned int getParameterCount(void) = 0;
-    
+    virtual const unsigned char* getParameter(const uint32_t index) const = 0;
+    virtual int32_t getParameterAsInt(const uint32_t index) const = 0;
+    virtual float32_t getParameterAsFloat(uint32_t index) const = 0;
+    virtual uint32_t getParameterCount(void) const = 0;
 };
