@@ -100,7 +100,7 @@ acre::Result CTextMessage::parse(char *const value, const size_t len) {
     return acre::Result::ok;
 }
 
-CTextMessage::CTextMessage(char *value, size_t len)
+CTextMessage::CTextMessage(char *const value, const size_t len)
 {
     this->m_ParameterCount = 0;
     this->m_RpcProcedureName = nullptr;
@@ -129,7 +129,7 @@ float32_t CTextMessage::getParameterAsFloat(const uint32_t index) const {
     }
 }
 
-const unsigned char *CTextMessage::getParameter(uint32_t index) const {
+const unsigned char *const CTextMessage::getParameter(uint32_t index) const {
     if (index > this->m_ParameterCount) {
         return nullptr;
     } else {
@@ -160,7 +160,7 @@ CTextMessage::~CTextMessage(void) {
     }
 }
 
-const char* CTextMessage::getProcedureName() const {
+const char *const CTextMessage::getProcedureName() const {
     if (this->m_RpcProcedureName) {
         return (char *)this->m_RpcProcedureName->c_str();
     } else {

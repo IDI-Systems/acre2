@@ -67,8 +67,8 @@ typedef struct ACRE_RPCDATA {
     IRpcFunction *function;
     IServer *server;
     IMessage *message;
-    ACRE_RPCDATA(IRpcFunction *func, IServer *serv, IMessage *msg) { function=func;server=serv;message=msg;}
-    ACRE_RPCDATA() {function=NULL;server=NULL;message=NULL; }
+    ACRE_RPCDATA(IRpcFunction *func, IServer *serv, IMessage *msg) : function(func), server(serv), message(msg) {}
+    ACRE_RPCDATA() {function = nullptr; server = nullptr; message= nullptr; }
 } ACRE_RPCDATA, *PACRE_RPCDATA;
 
 /*

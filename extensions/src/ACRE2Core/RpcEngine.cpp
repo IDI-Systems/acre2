@@ -16,7 +16,7 @@
 // Entrant worker, weee
 //
 acre::Result CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
-    if (data->function) {
+    if (data->function != nullptr) {
         data->function->call(data->server, data->message);
     }
     delete data->message;
@@ -28,80 +28,78 @@ acre::Result CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
 //
 // Proc functions
 // 
-acre::Result CRpcEngine::addProcedure(IRpcFunction *cmd) {
+acre::Result CRpcEngine::addProcedure(IRpcFunction *const cmd) {
     LOCK(this);
     this->m_FunctionList.insert(std::pair<std::string, IRpcFunction *>(std::string(cmd->getName()), cmd));
     UNLOCK(this);
 
     return acre::Result::ok;
 }
-acre::Result CRpcEngine::removeProcedure(IRpcFunction *cmd) {
+acre::Result CRpcEngine::removeProcedure(IRpcFunction *const cmd) {
     LOCK(this);
     this->m_FunctionList.erase(cmd->getName());
     UNLOCK(this);
 
     return acre::Result::ok;
 }
-acre::Result CRpcEngine::removeProcedure(char * cmd) {
+acre::Result CRpcEngine::removeProcedure(char *const cmd) {
     LOCK(this);
     this->m_FunctionList.erase(cmd);
     UNLOCK(this);
 
     return acre::Result::ok;
 }
-IRpcFunction *CRpcEngine::findProcedure(char *cmd) {
+IRpcFunction *CRpcEngine::findProcedure(char *const cmd) {
     
-    std::map<std::string, IRpcFunction *>::iterator it;
+    if (this->getShuttingDown()) {
+        return nullptr;
+    }
 
-    if (this->getShuttingDown())
-        return NULL;
-
-    it = this->m_FunctionList.find(std::string((char *)cmd));
-    if (it != this->m_FunctionList.end())
+    auto it = this->m_FunctionList.find(std::string((char *)cmd));
+    if (it != this->m_FunctionList.end()) {
         return (IRpcFunction *)it->second;
+    }
 
-    return NULL;
+    return nullptr;
 }
-acre::Result CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg) {
+acre::Result CRpcEngine::runProcedure(IServer *const serverInstance, IMessage *msg) {
     return this->runProcedure(serverInstance, msg, TRUE);
 }
-acre::Result CRpcEngine::runProcedure(IServer *serverInstance, IMessage *msg, BOOL entrant) {
-    IRpcFunction *ptr;
-    ACRE_RPCDATA *data;
-    
-    if (msg) {
-        if (!msg->getProcedureName()) {
-            delete msg;
-            return acre::Result::error;
-        }
 
-        ptr = this->findProcedure((char *) msg->getProcedureName());
-        if (ptr) {
-            if (!entrant) {
-                LOCK(this);
-                ptr->call(serverInstance, msg);
-                delete msg;
-                UNLOCK(this);
-            } else {
-                if (!this->getRunning()) {
-                    this->startWorker();
-                }
-                data = (ACRE_RPCDATA *)malloc(sizeof(ACRE_RPCDATA));
-                data->function = ptr;
-                data->server = serverInstance;
-                data->message = msg;
-                LOCK(this);
-                this->m_processQueue.push(data);
-                UNLOCK(this);
-            }
-        } else {
-            // No procedure, delete the message to stop memory leak
-            delete msg;
-        }
-        return acre::Result::ok;
-    } else {
+acre::Result CRpcEngine::runProcedure(IServer *const serverInstance, IMessage *msg, const bool entrant) {
+    
+    if (msg == nullptr) {
+        return acre::Result::error;
+    } else if (msg->getProcedureName() == nullptr) {
+        delete msg;
         return acre::Result::error;
     }
+
+    IRpcFunction *const ptr = this->findProcedure((char *) msg->getProcedureName());
+    if (ptr != nullptr) {
+        if (!entrant) {
+            LOCK(this);
+            ptr->call(serverInstance, msg);
+            delete msg;
+            UNLOCK(this);
+        } else {
+            if (!this->getRunning()) {
+                this->startWorker();
+            }
+            ACRE_RPCDATA *const data = (ACRE_RPCDATA *)malloc(sizeof(ACRE_RPCDATA));
+            data->function = ptr;
+            data->server = serverInstance;
+            data->message = msg;
+
+            LOCK(this);
+            this->m_processQueue.push(data);
+            UNLOCK(this);
+        }
+    } else {
+        // No procedure, delete the message to stop memory leak
+        delete msg;
+    }
+    return acre::Result::ok;
 }
 //
 // Constructor // Destructor

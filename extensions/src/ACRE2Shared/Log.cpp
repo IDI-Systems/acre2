@@ -3,12 +3,12 @@
 #include "Log.h"
 
 
-Log *g_Log = NULL;
+Log *g_Log = nullptr;
 
 Log::Log(char *logFile) { 
     InitializeCriticalSection(&this->m_CriticalSection);
 
-    if (logFile == NULL) {
+    if (logFile == nullptr) {
         this->fileHandle = GetStdHandle(STD_OUTPUT_HANDLE);
         return;
     }

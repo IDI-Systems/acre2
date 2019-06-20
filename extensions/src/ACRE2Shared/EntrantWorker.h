@@ -5,7 +5,7 @@
 #include "Lockable.h"
 #include "Macros.h"
 
-#include <concurrent_queue.h>
+#include <queue>
 #include <thread>
 
 template<typename T> class TEntrantWorker : public CLockable {
@@ -16,10 +16,11 @@ public:
     ~TEntrantWorker() {
     
     }
+
     acre::Result startWorker(void) {
         LOCK(this);
         setShuttingDown(false);
-        m_processQueue.clear();
+        std::queue<T>().swap(m_processQueue); // Clear the queue
         m_workerThread = std::thread(&TEntrantWorker::exWorkerThread, this);
         setRunning(true);
         UNLOCK(this);
@@ -33,7 +34,7 @@ public:
             m_workerThread.join();
         }
         LOCK(this)
-        m_processQueue.clear();
+        std::queue<T>().swap(m_processQueue); // Clear the queue
         UNLOCK(this);
         setShuttingDown(false);
         
@@ -41,10 +42,11 @@ public:
     }
 
     acre::Result exWorkerThread() {
-        T item;
         while (!getShuttingDown()) {
             LOCK(this);
-            if (m_processQueue.try_pop(item)) {    
+            if (!m_processQueue.empty()) {
+                const T item = m_processQueue.front();
+                m_processQueue.pop();
                 exProcessItem(item);
             }
             UNLOCK(this);
@@ -62,7 +64,7 @@ public:
 
 protected:
     std::thread m_workerThread;
-    Concurrency::concurrent_queue<T> m_processQueue;
+    std::queue<T> m_processQueue;
 
     bool m_shuttingDown;
     bool m_running;
