@@ -9,8 +9,6 @@
 #include "Engine.h"
 #include "Lockable.h"
 
-#include <concurrent_queue.h>
-
 class CCommandServer : public IServer, public CLockable {
 public:
     CCommandServer(void);
@@ -38,7 +36,4 @@ public:
 protected:
     acre::id_t m_id;
     bool m_connected;
-
-private:
-    concurrency::concurrent_queue<IMessage *> mInboundMessages;
 };
