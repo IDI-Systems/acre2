@@ -9,11 +9,11 @@
     
 
 CNamedPipeServer::CNamedPipeServer(std::string fromPipeName, std::string toPipeName) {
-    this->setConnectedWrite(FALSE);
-    this->setConnectedRead(FALSE);
+    this->setConnectedWrite(false);
+    this->setConnectedRead(false);
     this->setPipeHandleWrite(INVALID_HANDLE_VALUE);
     this->setPipeHandleRead(INVALID_HANDLE_VALUE);
-    this->setShuttingDown(FALSE);
+    this->setShuttingDown(false);
 
     this->setFromPipeName(fromPipeName);
     this->setToPipeName(toPipeName);
@@ -29,24 +29,24 @@ acre::Result CNamedPipeServer::initialize() {
 
     //SECURITY_DESCRIPTOR SDWrite;
     //InitializeSecurityDescriptor(&SDWrite, SECURITY_DESCRIPTOR_REVISION);
-    //SetSecurityDescriptorDacl(&SDWrite, TRUE, NULL, FALSE);
+    //SetSecurityDescriptorDacl(&SDWrite, true, NULL, false);
     //SECURITY_ATTRIBUTES SAWrite;
     //SAWrite.nLength = sizeof(SAWrite);
     //SAWrite.lpSecurityDescriptor = &SDWrite;
-    //SAWrite.bInheritHandle = TRUE;
+    //SAWrite.bInheritHandle = true;
 
     // Generate a low integrity access DACL
     SECURITY_ATTRIBUTES saWrite = { 0 };
     SECURITY_ATTRIBUTES *psaWrite = 0; psaWrite = &saWrite;
     saWrite.nLength = sizeof(SECURITY_ATTRIBUTES);
-    saWrite.bInheritHandle = TRUE;
+    saWrite.bInheritHandle = true;
     ConvertStringSecurityDescriptorToSecurityDescriptor(
         TEXT("S:(ML;;NWNR;;;LW)"), SDDL_REVISION_1, &saWrite.lpSecurityDescriptor, NULL);
 
     // open our pipe handle, then kick up a thread to monitor it and add shit to our queue
     // this end LISTENS and CREATES the pipe
     LOG("Opening game pipe...");
-    BOOL tryAgain = TRUE;
+    bool tryAgain = true;
 
     while (tryAgain) {
         writeHandle = CreateNamedPipeA(
@@ -66,11 +66,11 @@ acre::Result CNamedPipeServer::initialize() {
             _snprintf_s(errstr, sizeof(errstr), "Conflicting game write pipe detected, could not create pipe!\nERROR CODE: %d", GetLastError());
             int ret = MessageBoxA(NULL, errstr, "ACRE Error", MB_RETRYCANCEL | MB_ICONEXCLAMATION);
             if (ret != IDRETRY) {
-                tryAgain = FALSE;
+                tryAgain = false;
                 TerminateProcess(GetCurrentProcess(), 0);
             }
         } else {
-            tryAgain = FALSE;
+            tryAgain = false;
         }
     }
 
@@ -78,11 +78,11 @@ acre::Result CNamedPipeServer::initialize() {
     SECURITY_ATTRIBUTES saRead = { 0 };
     SECURITY_ATTRIBUTES *psaRead = 0; psaRead = &saRead;
     saRead.nLength = sizeof(SECURITY_ATTRIBUTES);
-    saRead.bInheritHandle = TRUE;
+    saRead.bInheritHandle = true;
     ConvertStringSecurityDescriptorToSecurityDescriptor(
         TEXT("S:(ML;;NWNR;;;LW)"), SDDL_REVISION_1, &saRead.lpSecurityDescriptor, NULL);
 
-    tryAgain = TRUE;
+    tryAgain = true;
     while (tryAgain) {
         readHandle = CreateNamedPipeA(
                 this->getToPipeName().c_str(), // name of the pipe
@@ -102,11 +102,11 @@ acre::Result CNamedPipeServer::initialize() {
             _snprintf_s(errstr, sizeof(errstr), "Conflicting game read pipe detected, could not create pipe!\nERROR CODE: %d", GetLastError());
             int ret = MessageBoxA(NULL, errstr, "ACRE Error", MB_RETRYCANCEL | MB_ICONEXCLAMATION);
             if (ret != IDRETRY) {
-                tryAgain = FALSE;
+                tryAgain = false;
                 TerminateProcess(GetCurrentProcess(), 0);
             }
         } else {
-            tryAgain = FALSE;
+            tryAgain = false;
         }
     }
 
@@ -125,8 +125,8 @@ acre::Result CNamedPipeServer::shutdown(void) {
 
     this->setShuttingDown(true);
 
-    this->setConnectedWrite(FALSE);
-    this->setConnectedRead(FALSE);
+    this->setConnectedWrite(false);
+    this->setConnectedRead(false);
     
     //Wake the synchronous named pipe
     //Called from the same process but from a different thread
@@ -158,11 +158,6 @@ acre::Result CNamedPipeServer::shutdown(void) {
 }
 
 acre::Result CNamedPipeServer::sendLoop() {
-    DWORD cbWritten, size;
-    IMessage *msg;
-    BOOL ret;
-    clock_t lastTick, tick;
-
     while (!this->getShuttingDown()) {
         
         do {
@@ -170,35 +165,37 @@ acre::Result CNamedPipeServer::sendLoop() {
             if (GetLastError() == ERROR_PIPE_CONNECTED) {    
                 LOG("Client write connected");
                 CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
-                this->setConnectedWrite(TRUE);
+                this->setConnectedWrite(true);
                 break;
             } else {
-                this->setConnectedWrite(FALSE);
+                this->setConnectedWrite(false);
                 Sleep(1);
             }
         } while (!this->getConnectedWrite() && !this->getShuttingDown());
 
-        lastTick = clock() / CLOCKS_PER_SEC;
+        clock_t lastTick = clock() / CLOCKS_PER_SEC;
         while (this->getConnectedWrite()) {
             if (this->getShuttingDown())
                 break;
 
-            tick = clock() / CLOCKS_PER_SEC;
+            clock_t tick = clock() / CLOCKS_PER_SEC;
             if (tick - lastTick > (PIPE_TIMEOUT / 1000)) {
                 LOG("No send message for %d seconds, disconnecting", (PIPE_TIMEOUT / 1000));
-                this->setConnectedWrite(FALSE);
+                this->setConnectedWrite(false);
                 break;
             }
 
+            IMessage *msg = nullptr;
             if (this->m_sendQueue.try_pop(msg)) {
-                if (msg) {
+                if (msg != nullptr) {
                     lastTick = clock() / CLOCKS_PER_SEC;
-                    size = (DWORD)strlen((char *)msg->getData())+1;
+                    const DWORD size = (DWORD)strlen((char *)msg->getData()) + 1;
                     if (size > 3) {
+                        DWORD cbWritten = 0;
                         // send it and free it
                         //LOCK(this);
                         this->lock();
-                        ret = WriteFile( 
+                        const bool ret = WriteFile( 
                             this->m_PipeHandleWrite,     // pipe handle 
                             msg->getData(),                    // message 
                             size,                    // message length 
@@ -206,10 +203,10 @@ acre::Result CNamedPipeServer::sendLoop() {
                             NULL);                  // not overlapped 
                         this->unlock();
 
-                        if ( ! ret) {
+                        if (!ret) {
                             LOG("WriteFile failed, [%d]", GetLastError());
                             if (GetLastError() == ERROR_BROKEN_PIPE) {
-                                this->setConnectedWrite(FALSE);
+                                this->setConnectedWrite(false);
                             }
                         }
                     }
@@ -220,7 +217,7 @@ acre::Result CNamedPipeServer::sendLoop() {
         }
         LOG("Write loop disconnected");
         FlushFileBuffers(this->m_PipeHandleWrite);
-        ret = DisconnectNamedPipe(this->m_PipeHandleWrite);
+        const bool ret = DisconnectNamedPipe(this->m_PipeHandleWrite);
         Sleep(1);
     }
     TRACE("Sending thread terminating");
@@ -230,14 +227,9 @@ acre::Result CNamedPipeServer::sendLoop() {
 
 acre::Result CNamedPipeServer::readLoop() {
     DWORD cbRead;
-    IMessage *msg;
-    BOOL ret;
-    clock_t lastTick, tick;
-    char *mBuffer;
 
-
-    mBuffer = (char *)LocalAlloc(LMEM_FIXED, BUFSIZE);
-    if (!mBuffer) {
+    char *mBuffer = (char *)LocalAlloc(LMEM_FIXED, BUFSIZE);
+    if (mBuffer == nullptr) {
         LOG("LocalAlloc() failed: %d", GetLastError());
     }
     /*
@@ -245,31 +237,32 @@ acre::Result CNamedPipeServer::readLoop() {
     */
     while (!this->getShuttingDown()) {
         //this->checkServer();
-        ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
+        bool ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
         if (GetLastError() == ERROR_PIPE_CONNECTED) {    
             LOG("Client read connected");
             CEngine::getInstance()->getClient()->updateShouldSwitchTS3Channel(false);
             CEngine::getInstance()->getClient()->unMuteAll();
             CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
-            this->setConnectedRead(TRUE);
+            this->setConnectedRead(true);
         } else {
-            this->setConnectedRead(FALSE);
+            this->setConnectedRead(false);
             Sleep(1);
 
             continue;
         }
-        lastTick = clock() / CLOCKS_PER_SEC;
+        clock_t lastTick = clock() / CLOCKS_PER_SEC;
         while (this->getConnectedRead()) {
             //this->checkServer();
-            if (this->getShuttingDown())
+            if (this->getShuttingDown()) {
                 break;
+            }
 
-            tick = clock() / CLOCKS_PER_SEC;
+            const clock_t tick = clock() / CLOCKS_PER_SEC;
             //LOG("[%d] - [%d] = [%d] vs. [%d]", tick, lastTick, (tick - lastTick),(PIPE_TIMEOUT / 1000));
             if (tick - lastTick > (PIPE_TIMEOUT / 1000)) {
                 LOG("No read message for %d seconds, disconnecting", (PIPE_TIMEOUT / 1000));
-                this->setConnectedWrite(FALSE);
-                this->setConnectedRead(FALSE);
+                this->setConnectedWrite(false);
+                this->setConnectedRead(false);
                 break;
             }
 
@@ -278,22 +271,23 @@ acre::Result CNamedPipeServer::readLoop() {
                 CEngine::getInstance()->getClient()->moveToServerTS3Channel();
             }
 
-            ret = FALSE;
+            ret = false;
             do {
                 ret = ReadFile(this->m_PipeHandleRead, mBuffer, BUFSIZE, &cbRead, NULL);
                 if (!ret && GetLastError() != ERROR_MORE_DATA) {
                     break;
                 } else if (!ret && GetLastError() == ERROR_BROKEN_PIPE) {
-                    this->setConnectedRead(FALSE);
+                    this->setConnectedRead(false);
                     break;
                 }
                 // handle the packet and run it
                 mBuffer[cbRead]=0x00;
                 //LOG("READ: %s", (char *)mBuffer);
-                msg = new CTextMessage((char *)mBuffer, cbRead);    
+                IMessage *const msg = new CTextMessage((char *)mBuffer, cbRead);
                 //TRACE("got and parsed message [%s]", msg->getData());
-                if (msg && msg->getProcedureName()) {
-                    
+                if (msg != nullptr && msg->getProcedureName()) {
+
+                    // Do not free msg, this is deleted inside runProcedure()
                     CEngine::getInstance()->getRpcEngine()->runProcedure(this, msg);
 
                     lastTick = clock() / CLOCKS_PER_SEC;
@@ -305,8 +299,8 @@ acre::Result CNamedPipeServer::readLoop() {
             Sleep(1);
         }
         // Kill the write pipe along with ourselves, because we master shutdown/startup
-        this->setConnectedWrite(FALSE);
-        this->setConnectedRead(FALSE);
+        this->setConnectedWrite(false);
+        this->setConnectedRead(false);
         FlushFileBuffers(this->m_PipeHandleRead);
         ret = DisconnectNamedPipe(this->m_PipeHandleRead);
 

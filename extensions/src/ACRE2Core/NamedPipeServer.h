@@ -22,7 +22,7 @@ public:
     acre::Result initialize( void );
     acre::Result shutdown( void );
 
-    acre::Result handleMessage(unsigned char *data) { data=data;return acre::Result::notImplemented; }
+    acre::Result handleMessage(unsigned char *data) { (void) data; return acre::Result::notImplemented; }
 
     acre::Result sendMessage( IMessage *message );
 
@@ -34,7 +34,6 @@ public:
 
     DECLARE_MEMBER(HANDLE, PipeHandleRead);
     DECLARE_MEMBER(HANDLE, PipeHandleWrite);
-    DECLARE_MEMBER(BOOL, ShuttingDown);
     DECLARE_MEMBER(std::string, FromPipeName);
     DECLARE_MEMBER(std::string, ToPipeName);
 
@@ -43,6 +42,9 @@ public:
 
     __inline void setConnectedRead(const bool value) { m_connectedRead = value; }
     __inline bool getConnectedRead() const { return m_connectedRead; }
+
+    __inline void setShuttingDown(const bool value) { m_shuttingDown = value; }
+    __inline bool getShuttingDown() const { return m_shuttingDown; }
 
     __inline void setId(const acre::id_t value) final { m_id = value; }
     __inline acre::id_t getId() const final { return m_id; }
@@ -54,6 +56,7 @@ protected:
     acre::id_t m_id;
     bool       m_connectedWrite;
     bool       m_connectedRead;
+    bool       m_shuttingDown;
 
 private:
     Concurrency::concurrent_queue<IMessage *> m_sendQueue;
