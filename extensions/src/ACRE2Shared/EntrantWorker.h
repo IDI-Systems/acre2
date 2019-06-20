@@ -1,6 +1,5 @@
 #pragma once
 
-#include "compat.h"
 #include "Types.h"
 #include "Lockable.h"
 #include "Macros.h"
