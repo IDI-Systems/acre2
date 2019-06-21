@@ -502,26 +502,19 @@ bool acre::signal::map::_is_peak(const int32_t x_, const int32_t y_) {
 
     if (_internal_elevation(x_ - 1, y_ - 1) >= height) {
         return false;
-    }
-    if (_internal_elevation(x_ - 1, y_) >= height) {
+    } else if (_internal_elevation(x_ - 1, y_) >= height) {
         return false;
-    }
-    if (_internal_elevation(x_ - 1, y_ + 1) >= height) {
+    } else if (_internal_elevation(x_ - 1, y_ + 1) >= height) {
         return false;
-    }
-    if (_internal_elevation(x_ + 1, y_ - 1) >= height) {
+    } else if (_internal_elevation(x_ + 1, y_ - 1) >= height) {
         return false;
-    }
-    if (_internal_elevation(x_ + 1, y_) >= height) {
+    } else if (_internal_elevation(x_ + 1, y_) >= height) {
         return false;
-    }
-    if (_internal_elevation(x_ + 1, y_ + 1) >= height) {
+    } else if (_internal_elevation(x_ + 1, y_ + 1) >= height) {
         return false;
-    }
-    if (_internal_elevation(x_, y_ - 1) >= height) {
+    } else if (_internal_elevation(x_, y_ - 1) >= height) {
         return false;
-    }
-    if (_internal_elevation(x_, y_ + 1) >= height) {
+    } else if (_internal_elevation(x_, y_ + 1) >= height) {
         return false;
     }
 
