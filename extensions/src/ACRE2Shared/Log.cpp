@@ -6,39 +6,32 @@
 
 Log *g_Log = nullptr;
 
-Log::Log(char *logFile) { 
-    InitializeCriticalSection(&this->m_CriticalSection);
-
+Log::Log(char *logFile) {
+   
     if (logFile == nullptr) {
-        this->fileHandle = GetStdHandle(STD_OUTPUT_HANDLE);
         return;
     }
 
-    this->fileHandle = CreateFileA(logFile, GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, 0);
-    if (this->fileHandle != INVALID_HANDLE_VALUE) {
-        SetFilePointer(this->fileHandle, 0, NULL, FILE_END);
-
-    } else {
-        this->fileHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-        return;
-    }
+    this->logOutput.open(logFile, std::ios_base::out | std::ios_base::app);
 }
 
 Log::~Log(void) {
-    EnterCriticalSection(&this->m_CriticalSection);
-    DeleteCriticalSection(&this->m_CriticalSection);
-    CloseHandle(this->fileHandle);
+    std::unique_lock<std::mutex> lock(m_criticalMutex, std::defer_lock);
+    lock.lock();
+    lock.unlock();
+    if (logOutput.is_open()) {
+        logOutput.close();
+    }
 }
 size_t Log::Write(const acre::LogLevel msgType, char *function, const uint32_t line, const char *format, ...) {
     char buffer[4097], tbuffer[1024];
     va_list va;
-    DWORD count;
 
     if (this == NULL) {
         return static_cast<size_t>(acre::LogLevel::Error);
     }
 
-    if (this->fileHandle == INVALID_HANDLE_VALUE) {
+    if (!this->logOutput.is_open()) {
         return static_cast<size_t>(acre::LogLevel::Error);
     }
 
@@ -62,7 +55,7 @@ size_t Log::Write(const acre::LogLevel msgType, char *function, const uint32_t l
 #endif
 
     va_start(va, format);
-    size_t ret = vsnprintf(tbuffer,sizeof(tbuffer), format, va);
+    size_t ret = vsnprintf(tbuffer, sizeof(tbuffer), format, va);
     va_end(va);
 
     strncat(buffer, tbuffer, sizeof(buffer));
@@ -70,13 +63,11 @@ size_t Log::Write(const acre::LogLevel msgType, char *function, const uint32_t l
     ret = strlen(buffer) + 2;
     strncat(buffer, "\r\n", sizeof(buffer));
 
-    EnterCriticalSection(&this->m_CriticalSection);
-    const bool res = WriteFile(this->fileHandle, (LPCVOID)buffer, (DWORD)ret, &count, NULL);
-    if (!res) {
-        printf("Write file failed");
-    }
-    LeaveCriticalSection(&this->m_CriticalSection);
-
+    std::unique_lock<std::mutex> lock(m_criticalMutex, std::defer_lock);
+    lock.lock();
+    this->logOutput.write(buffer, ret);
+    lock.unlock();
+   
     // test debug, print it too
     printf("%s", buffer);
 

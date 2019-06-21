@@ -2,6 +2,8 @@
 
 #include "compat.h"
 #include <cstdint>
+#include <mutex>
+#include <fstream>
 
 namespace acre {
     enum class LogLevel : uint32_t {
@@ -68,11 +70,10 @@ public:
     size_t Write(const acre::LogLevel msgType, char *function, const uint32_t line, const char *format, ...);
     size_t PopMessage(const acre::LogLevel msgType, const char *format, ...);
 
-    HANDLE fileHandle;
+    std::ofstream logOutput;
 
 private:
-    
-    CRITICAL_SECTION m_CriticalSection;
+    std::mutex m_criticalMutex;
 };
 
 extern Log *g_Log;
