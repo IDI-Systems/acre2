@@ -24,7 +24,7 @@
  *                                                                           *
  *  More C++ improvements.                                                   *
  *                                                                           *
- * TheMagnetar                                                               *
+ * Ferran "Magnetar" Obón                                                    *
 \*****************************************************************************/
 
 
@@ -45,93 +45,58 @@
 #include <cassert>
 #include <algorithm>
 #include <limits>
+#include "Types.h"
 
 namespace acre {
     namespace signal {
         namespace model {
             namespace itm {
 
-                static const double THIRD = (1.0 / 3.0);
-                static const double f_0 = 47.7; // 47.7 MHz from [Alg 1.1], to convert frequency into wavenumber and vica versa
-
+                static const float64_t THIRD = (1.0 / 3.0);
+                static const float64_t f_0 = 47.7; // 47.7 MHz from [Alg 1.1], to convert frequency into wavenumber and vica versa
 
                 struct prop_type {
                     // General input
-                    double d;          // distance between the two terminals
-                    double h_g[2];     // antenna structural heights (above ground)
-                    double k;          // wave number (= radio frequency)
-                    double delta_h;    // terrain irregularity parameter
-                    double N_s;        // minimum monthly surface refractivity, n-Units
-                    double gamma_e;    // earth's effective curvature
-                    double Z_g_real;   // surface transfer impedance of the ground
-                    double Z_g_imag;
+                    float64_t d;          // distance between the two terminals
+                    float64_t h_g[2];     // antenna structural heights (above ground)
+                    float64_t k;          // wave number (= radio frequency)
+                    float64_t delta_h;    // terrain irregularity parameter
+                    float64_t N_s;        // minimum monthly surface refractivity, n-Units
+                    float64_t gamma_e;    // earth's effective curvature
+                    float64_t Z_g_real;   // surface transfer impedance of the ground
+                    float64_t Z_g_imag;
                     // Additional input for point-to-point mode
-                    double h_e[2];     // antenna effective heights
-                    double d_Lj[2];    // horizon distances
-                    double theta_ej[2];// horizontal elevation angles
+                    float64_t h_e[2];     // antenna effective heights
+                    float64_t d_Lj[2];    // horizon distances
+                    float64_t theta_ej[2];// horizontal elevation angles
                     int mdp;           // controlling mode: -1: point to point, 1 start of area, 0 area continuation
                         // Output
                     int kwx;           // error indicator
-                    double A_ref;      // reference attenuation
+                    float64_t A_ref;      // reference attenuation
                     // used to be propa_type, computed in lrprop()
-                    double dx;         // scatter distance
-                    double ael;        // line-of-sight coefficients
-                    double ak1;        // dito
-                    double ak2;        // dito
-                    double aed;        // diffraction coefficients
-                    double emd;        // dito
-                    double aes;        // scatter coefficients
-                    double ems;        // dito
-                    double d_Lsj[2];   // smooth earth horizon distances
-                    double d_Ls;       // d_Lsj[] accumulated
-                    double d_L;        // d_Lj[] accumulated
-                    double theta_e;    // theta_ej[] accumulated, total bending angle
+                    float64_t dx;         // scatter distance
+                    float64_t ael;        // line-of-sight coefficients
+                    float64_t ak1;        // dito
+                    float64_t ak2;        // dito
+                    float64_t aed;        // diffraction coefficients
+                    float64_t emd;        // dito
+                    float64_t aes;        // scatter coefficients
+                    float64_t ems;        // dito
+                    float64_t d_Lsj[2];   // smooth earth horizon distances
+                    float64_t d_Ls;       // d_Lsj[] accumulated
+                    float64_t d_L;        // d_Lj[] accumulated
+                    float64_t theta_e;    // theta_ej[] accumulated, total bending angle
                 };
 
-                static
-                    int mymin(const int &i, const int &j) {
-                    if (i < j)
-                        return i;
-                    else
-                        return j;
-                }
-
-
-                static
-                    int mymax(const int &i, const int &j) {
-                    if (i > j)
-                        return i;
-                    else
-                        return j;
-                }
-
-
-                static
-                    double mymin(const double &a, const double &b) {
-                    if (a < b)
-                        return a;
-                    else
-                        return b;
-                }
-
-
-                static
-                    double mymax(const double &a, const double &b) {
-                    if (a > b)
-                        return a;
-                    else
-                        return b;
-                }
-
-                static
-                    double FORTRAN_DIM(const double &x, const double &y) {
+                static float64_t FORTRAN_DIM(const float64_t &x, const float64_t &y) {
                     // This performs the FORTRAN DIM function.
                     // result is x-y if x is greater than y; otherwise result is 0.0
 
-                    if (x > y)
+                    if (x > y) {
                         return x - y;
-                    else
+                    } else {
                         return 0.0;
+                    }
                 }
 
                 //#define set_warn(txt, err) printf("%s:%d %s\n", __func__, __LINE__, txt);
@@ -151,15 +116,15 @@ namespace acre {
  *
  * Note that the arguments to this function aren't v, but v^2
  */
-                static
-                    double Fn(const double &v_square) {
-                    double a;
+                static float64_t Fn(const float64_t &v_square) {
+                    float64_t a = 0.0;
 
                     // [Alg 6.1]
-                    if (v_square <= 5.76)  // this is the 2.40 from the text, but squared
-                        a = 6.02 + 9.11 * sqrt(v_square) - 1.27 * v_square;
-                    else
-                        a = 12.953 + 4.343 * log(v_square);
+                    if (v_square <= 5.76) { // this is the 2.40 from the text, but squared
+                        a = 6.02 + (9.11 * std::sqrt(v_square)) - (1.27 * v_square);
+                    } else {
+                        a = 12.953 + (4.343 * std::log(v_square));
+                    }
 
                     return a;
                 }
@@ -170,33 +135,34 @@ namespace acre {
                  * The heigh-gain over a smooth spherical earth -- to be used in the "three
                  * radii" mode. The approximation is that given in in [Alg 6.4ff].
                  */
-                static
-                    double F(const double& x, const double& K) {
-                    double w, fhtv;
+                static float64_t F(const float64_t& x, const float64_t& K) {
+                    float64_t fhtv = 0.0;
+
                     if (x <= 200.0) {
                         // F = F_2(x, L), which is defined in [Alg 6.6]
 
-                        w = -log(K);
+                        float64_t w = -log(K);
 
                         // XXX the text says "or x * w^3 > 450"
-                        if (K < 1e-5 || (x * w * w * w) > 5495.0) {
+                        if ((K < 1e-5) || ((x * w * w * w) > 5495.0)) {
                             // F_2(x, k) = F_1(x), which is defined in [Alg 6.5]
                             // XXX but this isn't the same as in itm_alg.pdf
                             fhtv = -117.0;
-                            if (x > 1.0)
-                                fhtv = 17.372 * log(x) + fhtv;
+                            if (x > 1.0) {
+                                fhtv = 17.372 * std::log(x) + fhtv;
+                            }
                         } else {
                             // [Alg 6.6], lower part
-                            fhtv = 2.5e-5 * x * x / K - 8.686 * w - 15.0;
+                            fhtv = (2.5e-5 * x * x / K) - (8.686 * w) - 15.0;
                         }
                     } else {
                         // [Alg 6.3] and [Alg 6.4], lower part, which is G(x)
-                        fhtv = 0.05751 * x - 4.343 * log(x);
+                        fhtv = (0.05751 * x) - (4.343 * std::log(x));
 
                         // [Alg 6.4], middle part, but again XXX this doesn't match totally
                         if (x < 2000.0) {
-                            w = 0.0134 * x * exp(-0.005 * x);
-                            fhtv = (1.0 - w) * fhtv + w * (17.372 * log(x) - 117.0);
+                            float64_t w = 0.0134 * x * exp(-0.005 * x);
+                            fhtv = ((1.0 - w) * fhtv) + (w * (17.372 * std::log(x) - 117.0));
                         }
                     }
 
@@ -205,96 +171,93 @@ namespace acre {
 
 
                 // :25: Tropospheric scatter frequency gain, [Alg 6.10ff], page 12
-                static
-                    double H_0(double r, double et) {
+                static float64_t H_0(const float64_t r, const float64_t et) {
                     // constants from [Alg 6.13]
-                    const double a[5] = { 25.0, 80.0, 177.0, 395.0, 705.0 };
-                    const double b[5] = { 24.0, 45.0,  68.0,  80.0, 105.0 };
-                    double q, x;
-                    int it;
-                    double h0fv;
+                    const float64_t a[5] = { 25.0, 80.0, 177.0, 395.0, 705.0 };
+                    const float64_t b[5] = { 24.0, 45.0,  68.0,  80.0, 105.0 };
+                    int32_t it = static_cast<int32_t>(et);
 
-                    it = (int) et;
-
+                    float64_t q = 0.0;
                     if (it <= 0) {
                         it = 1;
-                        q = 0.0;
-                    } else
+                    } else {
                         if (it >= 4) {
                             it = 4;
-                            q = 0.0;
                         } else {
                             q = et - it;
                         }
+                    }
 
-                    x = (1.0 / r);
+                    float64_t x = 1.0 / r;
                     x *= x;
                     // [Alg 6.13], calculates something like H_01(r,j), but not really XXX
-                    h0fv = 4.343 * log((1.0 + a[it - 1] * x + b[it - 1]) * x);
+                    float64_t h0fv = 4.343 * std::log((1.0 + (a[it - 1] * x) + b[it - 1]) * x);
 
                     // XXX not sure what this means
-                    if (q != 0.0)
-                        h0fv = (1.0 - q) * h0fv + q * 4.343 * log((a[it] * x + b[it]) * x + 1.0);
+                    if (q != 0.0) {
+                        h0fv = ((1.0 - q) * h0fv) + (q * 4.343 * std::log((((a[it] * x) + b[it]) * x) + 1.0));
+                    }
 
                     return h0fv;
                 }
 
 
                 // :25: This is the F(\Theta d) function for scatter fields, page 12
-                static
-                    double F_0(double td) {
+                static float64_t F_0(float64_t td) {
                     // [Alg 6.9]
-                    if (td <= 10e3) // below 10 km
-                        return 133.4 + 104.6    * td + 71.8     * log(td);
-                    else
-                        if (td <= 70e3) // between 10 km and 70 km
-                            return 0.332e-3 + 0.212e-3 * td + 0.157e-3 * log(td);
-                        else // above 70 km
-                            return-4.343 + -1.086   * td + 2.171    * log(td);
+                    if (td <= 10e3) {// below 10 km
+                        return 133.4 + (104.6 * td) + (71.8 * std::log(td));
+                    } else {
+                        if (td <= 70e3) {// between 10 km and 70 km
+                            return 0.332e-3 + (0.212e-3 * td) + (0.157e-3 * std::log(td));
+                        } else {// above 70 km
+                            return -4.343 + (-1.086 * td) + (2.171 * std::log(td));
+                        }
+                    }
                 }
 
 
                 // :10: Diffraction attenuation, page 4
-                static
-                    double  adiff(double s, prop_type &prop) {
+                static float64_t adiff(float64_t s, prop_type &prop) {
                     /*
                      * The function adiff finds the "Diffraction attenuation" at the
                      * distance s. It uses a convex combination of smooth earth
                      * diffraction and knife-edge diffraction.
                      */
-                    static double wd1, xd1, A_fo, qk, aht, xht;
-                    const double A = 151.03;      // dimensionles constant from [Alg 4.20]
-                    const double D = 50e3;        // 50 km from [Alg 3.9], scale distance for \delta_h(s)
-                    const double H = 16;          // 16 m  from [Alg 3.10]
-                    const double ALPHA = 4.77e-4; // from [Alg 4.10]
+                    static float64_t wd1, xd1, A_fo, qk, aht, xht;
+                    const float64_t A = 151.03;      // dimensionles constant from [Alg 4.20]
+                    const float64_t D = 50e3;        // 50 km from [Alg 3.9], scale distance for \delta_h(s)
+                    const float64_t H = 16;          // 16 m  from [Alg 3.10]
+                    const float64_t ALPHA = 4.77e-4; // from [Alg 4.10]
 
                     if (s == 0.0) {
-                        std::complex<double> prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
+                        std::complex<float64_t> prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
 
                         // :11: Prepare initial diffraction constants, page 5
-                        double q = prop.h_g[0] * prop.h_g[1];
-                        double qk = prop.h_e[0] * prop.h_e[1] - q;
+                        float64_t q = prop.h_g[0] * prop.h_g[1];
+                        float64_t qk = (prop.h_e[0] * prop.h_e[1]) - q;
 
-                        if (prop.mdp < 0.0)
+                        if (prop.mdp < 0.0) {
                             q += 10.0; // "C" from [Alg 4.9]
+                        }
 
                         // wd1 and xd1 are parts of Q in [Alg 4.10], but I cannot find this there
-                        wd1 = sqrt(1.0 + qk / q);
-                        xd1 = prop.d_L + prop.theta_e / prop.gamma_e;  // [Alg 4.9] upper right
+                        wd1 = std::sqrt(1.0 + (qk / q));
+                        xd1 = prop.d_L + (prop.theta_e / prop.gamma_e);  // [Alg 4.9] upper right
                         // \delta_h(s), [Alg 3.9]
                         q = (1.0 - 0.8 * exp(-prop.d_Ls / D)) * prop.delta_h;
                         // \sigma_h(s), [Alg 3.10]
                         q *= 0.78 * exp(-pow(q / H, 0.25));
 
                         // A_fo is the "clutter factor"
-                        A_fo = mymin(15.0, 2.171 * log(1.0 + ALPHA * prop.h_g[0] * prop.h_g[1] * prop.k * q)); // [Alg 4.10]
+                        A_fo = std::min(15.0, 2.171 * std::log(1.0 + ALPHA * prop.h_g[0] * prop.h_g[1] * prop.k * q)); // [Alg 4.10]
                         // qk is part of the K_j calculation from [Alg 4.17]
                         qk = 1.0 / abs(prop_zgnd);
                         aht = 20.0; // 20 dB approximation for C_1(K) from [Alg 6.7], see also [Alg 4.25]
                         xht = 0.0;
 
-                        for (int j = 0; j < 2; ++j) {
-                            double gamma_j_recip, alpha, K;
+                        for (int32_t j = 0; j < 2; ++j) {
+                            float64_t gamma_j_recip, alpha, K;
                             // [Alg 4.15], a is reciproke of gamma_j
                             gamma_j_recip = 0.5 * (prop.d_Lj[j] * prop.d_Lj[j]) / prop.h_e[j];
                             // [Alg 4.16]
@@ -311,35 +274,33 @@ namespace acre {
                         return 0.0;
                     }
 
-                    double gamma_o_recip, q, K, ds, theta, alpha, A_r, w;
-
                     // :12: Compute diffraction attenuation, page 5
                     // [Alg 4.12]
-                    theta = prop.theta_e + s * prop.gamma_e;
+                    const float64_t theta = prop.theta_e + s * prop.gamma_e;
                     // XXX this is not [Alg 4.13]
-                    ds = s - prop.d_L;
-                    q = 0.0795775 * prop.k * ds * theta * theta;
-                    // [Alg 4.14], double knife edge attenuation
+                    const float64_t ds = s - prop.d_L;
+                    float64_t q = 0.0795775 * prop.k * ds * theta * theta;
+                    // [Alg 4.14], float64_t knife edge attenuation
                     // Note that the arguments to Fn() are not v, but v^2
-                    double A_k = Fn(q * prop.d_Lj[0] / (ds + prop.d_Lj[0])) +
+                    const float64_t A_k = Fn(q * prop.d_Lj[0] / (ds + prop.d_Lj[0])) +
                         Fn(q * prop.d_Lj[1] / (ds + prop.d_Lj[1]));
                     // kinda [Alg 4.15], just so that gamma_o is 1/a
-                    gamma_o_recip = ds / theta;
+                    const float64_t gamma_o_recip = ds / theta;
                     // [Alg 4.16]
-                    alpha = pow(gamma_o_recip * prop.k, THIRD);
+                    const float64_t alpha = pow(gamma_o_recip * prop.k, THIRD);
                     // [Alg 4.17], note that qk is "1.0 / abs(prop_zgnd)" from above
-                    K = qk / alpha;
+                    const float64_t K = qk / alpha;
                     // [Alg 4.19], q is now X_o
                     q = A * (1.607 - K) * alpha * theta + xht;
                     // looks a bit like [Alg 4.20], rounded earth attenuation, or??
-                    // note that G(x) should be "0.05751 * x - 10 * log(q)"
-                    A_r = 0.05751 * q - 4.343 * log(q) - aht;
+                    // note that G(x) should be "0.05751 * x - 10 * std::log(q)"
+                    const float64_t A_r = 0.05751 * q - 4.343 * std::log(q) - aht;
                     // I'm very unsure if this has anything to do with [Alg 4.9] or not
-                    q = (wd1 + xd1 / s) * mymin(((1.0 - 0.8 * exp(-s / 50e3)) * prop.delta_h * prop.k), 6283.2);
+                    q = (wd1 + xd1 / s) * std::min(((1.0 - 0.8 * exp(-s / 50e3)) * prop.delta_h * prop.k), 6283.2);
                     // XXX this is NOT the same as the weighting factor from [Alg 4.9]
-                    w = 25.1 / (25.1 + sqrt(q));
+                    const float64_t w = 25.1 / (25.1 + std::sqrt(q));
                     // [Alg 4.11]
-                    return (1.0 - w) * A_k + w * A_r + A_fo;
+                    return ((1.0 - w) * A_k) + (w * A_r) + A_fo;
                 }
 
 
@@ -354,9 +315,8 @@ namespace acre {
                  *
                  * One needs to get TN101, especially chaper 9, to understand this function.
                  */
-                static
-                    double A_scat(double s, prop_type &prop) {
-                    static double ad, rr, etq, h0s;
+                static float64_t A_scat(float64_t s, prop_type &prop) {
+                    static float64_t ad, rr, etq, h0s;
 
                     if (s == 0.0) {
                         // :23: Prepare initial scatter constants, page 10
@@ -373,63 +333,64 @@ namespace acre {
                         return 0.0;
                     }
 
-                    double h0, r1, r2, z0, ss, et, ett, theta_tick, q, temp;
+                    float64_t h0 = 0.0;
 
                     // :24: Compute scatter attenuation, page 11
-                    if (h0s > 15.0)
+                    if (h0s > 15.0) {
                         h0 = h0s;
-                    else {
+                    } else {
                         // [Alg 4.61]
-                        theta_tick = prop.theta_ej[0] + prop.theta_ej[1] + prop.gamma_e * s;
+                        const float64_t theta_tick = prop.theta_ej[0] + prop.theta_ej[1] + prop.gamma_e * s;
                         // [Alg 4.62]
-                        r2 = 2.0 * prop.k * theta_tick;
-                        r1 = r2 * prop.h_e[0];
+                        float64_t r2 = 2.0 * prop.k * theta_tick;
+                        float64_t r1 = r2 * prop.h_e[0];
                         r2 *= prop.h_e[1];
 
-                        if (r1 < 0.2 && r2 < 0.2)
+                        if ((r1 < 0.2) && (r2 < 0.2)) {
                             // The function is undefined
                             return 1001.0;
+                        }
 
                         // XXX not like [Alg 4.65]
-                        ss = (s - ad) / (s + ad);
-                        q = rr / ss;
-                        ss = mymax(0.1, ss);
-                        q = mymin(mymax(0.1, q), 10.0);
+                        float64_t ss = (s - ad) / (s + ad);
+                        float64_t q = rr / ss;
+                        ss = std::max(0.1, ss);
+                        q = std::min(std::max(0.1, q), 10.0);
                         // XXX not like [Alg 4.66]
-                        z0 = (s - ad) * (s + ad) * theta_tick * 0.25 / s;
+                        const float64_t z0 = (s - ad) * (s + ad) * theta_tick * 0.25 / s;
                         // [Alg 4.67]
-                        temp = mymin(1.7, z0 / 8.0e3);
-                        temp = temp * temp * temp * temp * temp * temp;
-                        et = (etq * exp(-temp) + 1.0) * z0 / 1.7556e3;
+                        float64_t temp = std::min(1.7, z0 / 8.0e3);
+                        temp = std::pow(temp, 6);
+                        const float64_t et = (etq * exp(-temp) + 1.0) * z0 / 1.7556e3;
 
-                        ett = mymax(et, 1.0);
+                        const float64_t ett = std::max(et, 1.0);
                         h0 = (H_0(r1, ett) + H_0(r2, ett)) * 0.5;  // [Alg 6.12]
-                        h0 += mymin(h0, (1.38 - log(ett)) * log(ss) * log(q) * 0.49);  // [Alg 6.10 and 6.11]
+                        h0 += std::min(h0, (1.38 - std::log(ett)) * std::log(ss) * std::log(q) * 0.49);  // [Alg 6.10 and 6.11]
                         h0 = FORTRAN_DIM(h0, 0.0);
 
-                        if (et < 1.0)
+                        if (et < 1.0) {
                             // [Alg 6.14]
-                            h0 = et * h0 + (1.0 - et) * 4.343 * log(pow((1.0 + 1.4142 / r1) * (1.0 + 1.4142 / r2), 2.0) * (r1 + r2) / (r1 + r2 + 2.8284));
-
-                        if (h0 > 15.0 && h0s >= 0.0)
+                            h0 = et * h0 + (1.0 - et) * 4.343 * std::log(std::pow((1.0 + 1.4142 / r1) * (1.0 + 1.4142 / r2), 2.0) * (r1 + r2) / (r1 + r2 + 2.8284));
+                        }
+                        if (h0 > 15.0 && h0s >= 0.0) {
                             h0 = h0s;
+                        }
                     }
 
                     h0s = h0;
-                    double theta = prop.theta_e + s * prop.gamma_e;  // [Alg 4.60]
+                    const float64_t theta = prop.theta_e + s * prop.gamma_e;  // [Alg 4.60]
                     // [Alg 4.63 and 6.8]
-                    const double D_0 = 40e3; // 40 km from [Alg 6.8]
-                    const double H = 47.7;   // 47.7 m from [Alg 4.63]
-                    return 4.343 * log(prop.k * H * theta * theta * theta * theta)
+                    const float64_t D_0 = 40e3; // 40 km from [Alg 6.8]
+                    const float64_t H = 47.7;   // 47.7 m from [Alg 4.63]
+                    return 4.343 * std::log(prop.k * H * std::pow(theta, 4.0))
                         + F_0(theta * s)
                         - 0.1 * (prop.N_s - 301.0) * exp(-theta * s / D_0)
                         + h0;
                 }
 
 
-                static
-                    double abq_alos(std::complex<double> r) {
-                    return r.real() * r.real() + r.imag() * r.imag();
+                static float64_t abq_alos(const std::complex<float64_t> &r) {
+                    return std::pow(r.real(), 2) + std::pow(r.imag(), 2);
                 }
 
 
@@ -440,46 +401,45 @@ namespace acre {
                  * d. It uses a convex combination of plane earth fields and diffracted
                  * fields. A call with d=0 sets up initial constants.
                  */
-                static
-                    double A_los(double d, prop_type &prop) {
-                    static double wls;
+                static float64_t A_los(float64_t d, prop_type &prop) {
+                    static float64_t wls;
 
                     if (d == 0.0) {
                         // :18: prepare initial line-of-sight constants, page 8
-                        const double D1 = 47.7; // 47.7 m from [Alg 4.43]
-                        const double D2 = 10e3; // 10 km  from [Alg 4.43]
-                        const double D1R = 1 / D1;
+                        const float64_t D1 = 47.7; // 47.7 m from [Alg 4.43]
+                        const float64_t D2 = 10e3; // 10 km  from [Alg 4.43]
+                        const float64_t D1R = 1 / D1;
                         // weighting factor w
-                        wls = D1R / (D1R + prop.k * prop.delta_h / mymax(D2, prop.d_Ls)); // [Alg 4.43]
+                        wls = D1R / (D1R + prop.k * prop.delta_h / std::max(D2, prop.d_Ls)); // [Alg 4.43]
                         return 0;
                     }
 
-                    std::complex<double> prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
-                    std::complex<double> r;
-                    double s, sps, q;
+                    std::complex<float64_t> prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
 
                     // :19: compute line of sight attentuation, page 8
-                    const double D = 50e3; // 50 km from [Alg 3.9]
-                    const double H = 16.0; // 16 m  from [Alg 3.10]
-                    q = (1.0 - 0.8 * exp(-d / D)) * prop.delta_h;     // \Delta h(d), [Alg 3.9]
-                    s = 0.78 * q * exp(-pow(q / H, 0.25));       // \sigma_h(d), [Alg 3.10]
+                    const float64_t D = 50e3; // 50 km from [Alg 3.9]
+                    const float64_t H = 16.0; // 16 m  from [Alg 3.10]
+                    float64_t q = (1.0 - 0.8 * exp(-d / D)) * prop.delta_h;     // \Delta h(d), [Alg 3.9]
+                    const float64_t s = 0.78 * q * exp(-pow(q / H, 0.25));       // \sigma_h(d), [Alg 3.10]
                     q = prop.h_e[0] + prop.h_e[1];
-                    sps = q / sqrt(d * d + q * q);               // sin(\psi), [Alg 4.46]
-                    r = (sps - prop_zgnd) / (sps + prop_zgnd) * exp(-mymin(10.0, prop.k * s * sps)); // [Alg 4.47]
+                    const float64_t sps = q / std::sqrt(d * d + q * q);               // sin(\psi), [Alg 4.46]
+                    std::complex<float64_t> r = (sps - prop_zgnd) / (sps + prop_zgnd) * exp(-std::min(10.0, prop.k * s * sps)); // [Alg 4.47]
                     q = abq_alos(r);
 
-                    if (q < 0.25 || q < sps)                     // [Alg 4.48]
-                        r = r * sqrt(sps / q);
+                    if ((q < 0.25) || (q < sps)) {                    // [Alg 4.48]
+                        r = r * std::sqrt(sps / q);
+                    }
 
-                    double alosv = prop.emd * d + prop.aed;    // [Alg 4.45]
+                    const float64_t alosv = prop.emd * d + prop.aed;    // [Alg 4.45]
                     q = prop.k * prop.h_e[0] * prop.h_e[1] * 2.0 / d; // [Alg 4.49]
 
                     // M_PI is pi, M_PI_2 is pi/2
-                    if (q > M_PI_2)                              // [Alg 4.50]
+                    if (q > M_PI_2) {                             // [Alg 4.50]
                         q = M_PI - (M_PI_2 * M_PI_2) / q;
+                    }
 
                     // [Alg 4.51 and 4.44]
-                    return (-4.343 * log(abq_alos(std::complex<double>(cos(q), -sin(q)) + r)) - alosv) * wls + alosv;
+                    return (-4.343 * std::log(abq_alos(std::complex<float64_t>(cos(q), -sin(q)) + r)) - alosv) * wls + alosv;
                 }
 
 
@@ -490,30 +450,30 @@ namespace acre {
                  * we are continuing the area mode. The assumption is that when one uses the
                  * area mode, one will want a sequence of results for varying distances.
                  */
-                static
-                    void lrprop(double d, prop_type &prop) {
+                static void lrprop(float64_t d, prop_type &prop) {
                     static bool wlos, wscat;
-                    static double dmin, xae;
-                    std::complex<double> prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
-                    double a0, a1, a2, a3, a4, a5, a6;
-                    double d0, d1, d2, d3, d4, d5, d6;
+                    static float64_t dmin, xae;
+                    std::complex<float64_t> prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
+                    float64_t a0, a1, a2, a3, a4, a5, a6;
+                    float64_t d0, d1, d2, d3, d4, d5, d6;
                     bool wq;
-                    double q;
+                    float64_t q;
                     int j;
 
 
                     if (prop.mdp != 0) {
                         // :6: Do secondary parameters, page 3
                         // [Alg 3.5]
-                        for (j = 0; j < 2; j++)
-                            prop.d_Lsj[j] = sqrt(2.0 * prop.h_e[j] / prop.gamma_e);
+                        for (j = 0; j < 2; j++) {
+                            prop.d_Lsj[j] = std::sqrt(2.0 * prop.h_e[j] / prop.gamma_e);
+                        }
 
                         // [Alg 3.6]
                         prop.d_Ls = prop.d_Lsj[0] + prop.d_Lsj[1];
                         // [Alg 3.7]
                         prop.d_L = prop.d_Lj[0] + prop.d_Lj[1];
                         // [Alg 3.8]
-                        prop.theta_e = mymax(prop.theta_ej[0] + prop.theta_ej[1], -prop.d_L * prop.gamma_e);
+                        prop.theta_e = std::max(prop.theta_ej[0] + prop.theta_ej[1], -prop.d_L * prop.gamma_e);
                         wlos = false;
                         wscat = false;
 
@@ -526,42 +486,42 @@ namespace acre {
                         // Frequency must be between 40 MHz and 10 GHz
                         // Wave number (wn) = 2 * M_PI / lambda, or f/f0, where f0 = 47.7 MHz*m;
                         // 0.838 => 40 MHz, 210 => 10 GHz
-                        if (prop.k < 0.838 || prop.k > 210.0) {
+                        if ((prop.k < 0.838) || (prop.k > 210.0)) {
                             set_warn("Frequency not optimal", 1);
-                            prop.kwx = mymax(prop.kwx, 1);
+                            prop.kwx = std::max(prop.kwx, 1);
                         }
 
                         // Surface refractivity, see [Alg 1.2]
-                        if (prop.N_s < 250.0 || prop.N_s > 400.0) {
+                        if ((prop.N_s < 250.0) || (prop.N_s > 400.0)) {
                             set_warn("Surface refractivity out-of-bounds", 4);
                             prop.kwx = 4;
-                        } else
+                        } else {
                             // Earth's effective curvature, see [Alg 1.3]
                             if (prop.gamma_e < 75e-9 || prop.gamma_e > 250e-9) {
                                 set_warn("Earth's curvature out-of-bounds", 4);
                                 prop.kwx = 4;
-                            } else
+                            } else {
                                 // Surface transfer impedance, see [Alg 1.4]
                                 if (prop_zgnd.real() <= abs(prop_zgnd.imag())) {
                                     set_warn("Surface transfer impedance out-of-bounds", 4);
                                     prop.kwx = 4;
-                                } else
+                                } else {
                                     // Calulating outside of 20 MHz to 40 GHz is really bad
                                     if (prop.k < 0.419 || prop.k > 420.0) {
                                         set_warn("Frequency out-of-bounds", 4);
                                         prop.kwx = 4;
-                                    } else
+                                    } else {
                                         for (j = 0; j < 2; j++) {
                                             // Antenna structural height should be between 1 and 1000 m
                                             if (prop.h_g[j] < 1.0 || prop.h_g[j] > 1000.0) {
                                                 set_warn("Antenna height not optimal", 1);
-                                                prop.kwx = mymax(prop.kwx, 1);
+                                                prop.kwx = std::max(prop.kwx, 1);
                                             }
 
                                             // Horizon elevation angle
                                             if (abs(prop.theta_ej[j]) > 200e-3) {
                                                 set_warn("Horizon elevation weird", 3);
-                                                prop.kwx = mymax(prop.kwx, 3);
+                                                prop.kwx = std::max(prop.kwx, 3);
                                             }
 
                                             // Horizon distance dl,
@@ -569,7 +529,7 @@ namespace acre {
                                             if (prop.d_Lj[j] < 0.1 * prop.d_Lsj[j] ||
                                                 prop.d_Lj[j] > 3.0 * prop.d_Lsj[j]) {
                                                 set_warn("Horizon distance weird", 3);
-                                                prop.kwx = mymax(prop.kwx, 3);
+                                                prop.kwx = std::max(prop.kwx, 3);
                                             }
                                             // Antenna structural height must between  0.5 and 3000 m
                                             if (prop.h_g[j] < 0.5 || prop.h_g[j] > 3000.0) {
@@ -577,25 +537,29 @@ namespace acre {
                                                 prop.kwx = 4;
                                             }
                                         }
+                                    }
+                                }
+                            }
+                        }
 
-                                    dmin = abs(prop.h_e[0] - prop.h_e[1]) / 200e-3;
+                        dmin = abs(prop.h_e[0] - prop.h_e[1]) / 200e-3;
 
-                                    // :9: Diffraction coefficients, page 4
-                                    /*
-                                     * This is the region beyond the smooth-earth horizon at
-                                     * D_Lsa and short of where isotropic scatter takes over. It
-                                     * is a key to central region and associated coefficients
-                                     * must always be computed.
-                                     */
-                                    q = adiff(0.0, prop);
-                                    xae = pow(prop.k * prop.gamma_e * prop.gamma_e, -THIRD);  // [Alg 4.2]
-                                    d3 = mymax(prop.d_Ls, 1.3787 * xae + prop.d_L);    // [Alg 4.3]
-                                    d4 = d3 + 2.7574 * xae;                            // [Alg 4.4]
-                                    a3 = adiff(d3, prop);                              // [Alg 4.5]
-                                    a4 = adiff(d4, prop);                              // [Alg 4.7]
+                        // :9: Diffraction coefficients, page 4
+                        /*
+                         * This is the region beyond the smooth-earth horizon at
+                         * D_Lsa and short of where isotropic scatter takes over. It
+                         * is a key to central region and associated coefficients
+                         * must always be computed.
+                         */
+                        q = adiff(0.0, prop);
+                        xae = pow(prop.k * prop.gamma_e * prop.gamma_e, -THIRD);  // [Alg 4.2]
+                        d3 = std::max(prop.d_Ls, 1.3787 * xae + prop.d_L);    // [Alg 4.3]
+                        d4 = d3 + 2.7574 * xae;                            // [Alg 4.4]
+                        a3 = adiff(d3, prop);                              // [Alg 4.5]
+                        a4 = adiff(d4, prop);                              // [Alg 4.7]
 
-                                    prop.emd = (a4 - a3) / (d4 - d3);                  // [Alg 4.8]
-                                    prop.aed = a3 - prop.emd * d3;
+                        prop.emd = (a4 - a3) / (d4 - d3);                  // [Alg 4.8]
+                        prop.aed = a3 - prop.emd * d3;
                     }
 
                     if (prop.mdp >= 0) {
@@ -609,13 +573,13 @@ namespace acre {
                         // Distance above 1000 km is guessing
                         if (prop.d > 1000e3) {
                             set_warn("Distance not optimal", 1);
-                            prop.kwx = mymax(prop.kwx, 1);
+                            prop.kwx = std::max(prop.kwx, 1);
                         }
 
                         // Distance too small, use some indoor algorithm :-)
                         if (prop.d < dmin) {
                             set_warn("Distance too small", 3);
-                            prop.kwx = mymax(prop.kwx, 3);
+                            prop.kwx = std::max(prop.kwx, 3);
                         }
 
                         // Distance above 2000 km is really bad, don't do that
@@ -635,10 +599,10 @@ namespace acre {
                             d0 = 1.908 * prop.k * prop.h_e[0] * prop.h_e[1];                // [Alg 4.38]
 
                             if (prop.aed >= 0.0) {
-                                d0 = mymin(d0, 0.5 * prop.d_L);                       // [Alg 4.28]
+                                d0 = std::min(d0, 0.5 * prop.d_L);                       // [Alg 4.28]
                                 d1 = d0 + 0.25 * (prop.d_L - d0);                     // [Alg 4.29]
                             } else {
-                                d1 = mymax(-prop.aed / prop.emd, 0.25 * prop.d_L);  // [Alg 4.39]
+                                d1 = std::max(-prop.aed / prop.emd, 0.25 * prop.d_L);  // [Alg 4.39]
                             }
 
                             a1 = A_los(d1, prop);  // [Alg 4.31]
@@ -646,8 +610,8 @@ namespace acre {
 
                             if (d0 < d1) {
                                 a0 = A_los(d0, prop); // [Alg 4.30]
-                                q = log(d2 / d0);
-                                prop.ak2 = mymax(0.0, ((d2 - d0) * (a1 - a0) - (d1 - d0) * (a2 - a0)) / ((d2 - d0) * log(d1 / d0) - (d1 - d0) * q)); // [Alg 4.32]
+                                q = std::log(d2 / d0);
+                                prop.ak2 = std::max(0.0, ((d2 - d0) * (a1 - a0) - (d1 - d0) * (a2 - a0)) / ((d2 - d0) * std::log(d1 / d0) - (d1 - d0) * q)); // [Alg 4.32]
                                 wq = prop.aed >= 0.0 || prop.ak2 > 0.0;
 
                                 if (wq) {
@@ -657,8 +621,9 @@ namespace acre {
                                         prop.ak1 = 0.0;                      // [Alg 4.36]
                                         prop.ak2 = FORTRAN_DIM(a2, a0) / q;  // [Alg 4.35]
 
-                                        if (prop.ak2 == 0.0)                 // [Alg 4.37]
+                                        if (prop.ak2 == 0.0) {                // [Alg 4.37]
                                             prop.ak1 = prop.emd;
+                                        }
                                     }
                                 }
                             }
@@ -671,7 +636,7 @@ namespace acre {
                                     prop.ak1 = prop.emd;
                             }
 
-                            prop.ael = a2 - prop.ak1 * d2 - prop.ak2 * log(d2); // [Alg 4.42]
+                            prop.ael = a2 - prop.ak1 * d2 - prop.ak2 * std::log(d2); // [Alg 4.42]
                             wlos = true;
                         }
 
@@ -681,15 +646,15 @@ namespace acre {
                              * The reference attenuation is determined as a function of the distance
                              * d from 3 piecewise formulatios. This is part one.
                              */
-                            prop.A_ref = prop.ael + prop.ak1 * prop.d + prop.ak2 * log(prop.d);
+                            prop.A_ref = prop.ael + prop.ak1 * prop.d + prop.ak2 * std::log(prop.d);
                     }
 
-                    if (prop.d <= 0.0 || prop.d >= prop.d_Ls) {
+                    if ((prop.d <= 0.0) || (prop.d >= prop.d_Ls)) {
                         // :20: Troposcatter calculations, page 9
                         if (!wscat) {
                             // :21: Troposcatter coefficients
-                            const double DS = 200e3;             // 200 km from [Alg 4.53]
-                            const double HS = 47.7;              // 47.7 m from [Alg 4.59]
+                            const float64_t DS = 200e3;             // 200 km from [Alg 4.53]
+                            const float64_t HS = 47.7;              // 47.7 m from [Alg 4.59]
                             q = A_scat(0.0, prop);
                             d5 = prop.d_L + DS;                  // [Alg 4.52]
                             d6 = d5 + DS;                        // [Alg 4.53]
@@ -698,8 +663,8 @@ namespace acre {
 
                             if (a5 < 1000.0) {
                                 prop.ems = (a6 - a5) / DS;   // [Alg 4.57]
-                                prop.dx = mymax(prop.d_Ls,   // [Alg 4.58]
-                                                mymax(prop.d_L + 0.3 * xae * log(HS * prop.k),
+                                prop.dx = std::max(prop.d_Ls,   // [Alg 4.58]
+                                                std::max(prop.d_L + 0.3 * xae * std::log(HS * prop.k),
                                                 (a5 - prop.aed - prop.ems * d5) / (prop.emd - prop.ems)));
                                 prop.aes = (prop.emd - prop.ems) * prop.dx + prop.aed; // [Alg 4.59]
                             } else {
@@ -711,13 +676,14 @@ namespace acre {
                         }
 
                         // [Alg 4.1], part two and three.
-                        if (prop.d > prop.dx)
+                        if (prop.d > prop.dx) {
                             prop.A_ref = prop.aes + prop.ems * prop.d;  // scatter region
-                        else
+                        } else {
                             prop.A_ref = prop.aed + prop.emd * prop.d;  // diffraction region
+                        }
                     }
 
-                    prop.A_ref = mymax(prop.A_ref, 0.0);
+                    prop.A_ref = std::max(prop.A_ref, 0.0);
                 }
 
 
@@ -727,17 +693,17 @@ namespace acre {
 
                 struct propv_type {
                     // Input:
-                    int lvar;    // control switch for initialisation and/or recalculation
-                                 // 0: no recalculations needed
-                                 // 1: distance changed
-                                 // 2: antenna heights changed
-                                 // 3: frequency changed
-                                 // 4: mdvar changed
-                                 // 5: climate changed, or initialize everything
-                    int mdvar;   // desired mode of variability
-                    int klim;    // climate indicator
+                    int32_t lvar;    // control switch for initialisation and/or recalculation
+                                     // 0: no recalculations needed
+                                     // 1: distance changed
+                                     // 2: antenna heights changed
+                                     // 3: frequency changed
+                                     // 4: mdvar changed
+                                     // 5: climate changed, or initialize everything
+                    int32_t mdvar;   // desired mode of variability
+                    int32_t klim;    // climate indicator
                     // Output
-                    double sgc;  // standard deviation of situation variability (confidence)
+                    float64_t sgc;  // standard deviation of situation variability (confidence)
                 };
 
 
@@ -755,7 +721,7 @@ namespace acre {
                  */
                 static
                     void qlra(int kst[], int klimx, int mdvarx, prop_type &prop, propv_type &propv) {
-                    double q;
+                    float64_t q;
 
                     for (int j = 0; j < 2; ++j) {
                         if (kst[j] <= 0)
@@ -770,23 +736,23 @@ namespace acre {
                             if (prop.h_g[j] < 5.0)
                                 q *= sin(0.3141593 * prop.h_g[j]);
 
-                            prop.h_e[j] = prop.h_g[j] + (1.0 + q) * exp(-mymin(20.0, 2.0 * prop.h_g[j] / mymax(1e-3, prop.delta_h)));
+                            prop.h_e[j] = prop.h_g[j] + (1.0 + q) * exp(-std::min(20.0, 2.0 * prop.h_g[j] / std::max(1e-3, prop.delta_h)));
                         }
 
                         // [Alg 3.3], upper function. q is d_Ls_j
-                        const double H_3 = 5; // 5m from [Alg 3.3]
-                        q = sqrt(2.0 * prop.h_e[j] / prop.gamma_e);
-                        prop.d_Lj[j] = q * exp(-0.07 * sqrt(prop.delta_h / mymax(prop.h_e[j], H_3)));
+                        const float64_t H_3 = 5; // 5m from [Alg 3.3]
+                        q = std::sqrt(2.0 * prop.h_e[j] / prop.gamma_e);
+                        prop.d_Lj[j] = q * exp(-0.07 * std::sqrt(prop.delta_h / std::max(prop.h_e[j], H_3)));
                         // [Alg 3.4]
                         prop.theta_ej[j] = (0.65 * prop.delta_h * (q / prop.d_Lj[j] - 1.0) - 2.0 * prop.h_e[j]) / q;
                     }
 
                     prop.mdp = 1;
-                    propv.lvar = mymax(propv.lvar, 3);
+                    propv.lvar = std::max(propv.lvar, 3);
 
                     if (mdvarx >= 0) {
                         propv.mdvar = mdvarx;
-                        propv.lvar = mymax(propv.lvar, 4);
+                        propv.lvar = std::max(propv.lvar, 4);
                     }
 
                     if (klimx > 0) {
@@ -805,18 +771,18 @@ namespace acre {
                  */
 #if 1
                 static
-                    double qerfi(double q) {
-                    double x, t, v;
-                    const double c0 = 2.515516698;
-                    const double c1 = 0.802853;
-                    const double c2 = 0.010328;
-                    const double d1 = 1.432788;
-                    const double d2 = 0.189269;
-                    const double d3 = 0.001308;
+                    float64_t qerfi(float64_t q) {
+                    float64_t x, t, v;
+                    const float64_t c0 = 2.515516698;
+                    const float64_t c1 = 0.802853;
+                    const float64_t c2 = 0.010328;
+                    const float64_t d1 = 1.432788;
+                    const float64_t d2 = 0.189269;
+                    const float64_t d3 = 0.001308;
 
                     x = 0.5 - q;
-                    t = mymax(0.5 - fabs(x), 0.000001);
-                    t = sqrt(-2.0 * log(t));
+                    t = std::max(0.5 - fabs(x), 0.000001);
+                    t = std::sqrt(-2.0 * std::log(t));
                     v = t - ((c2 * t + c1) * t + c0) / (((d3 * t + d2) * t + d1) * t + 1.0);
 
                     if (x < 0.0)
@@ -843,13 +809,13 @@ namespace acre {
                  */
 #if 1
                 static
-                    void qlrps(double fmhz, double zsys, double en0, int ipol, double eps, double sgm, prop_type &prop)
+                    void qlrps(float64_t fmhz, float64_t zsys, float64_t en0, int ipol, float64_t eps, float64_t sgm, prop_type &prop)
 
                 {
-                    const double Z_1 = 9.46e3; // 9.46 km       from [Alg 1.2]
-                    const double gma = 157e-9; // 157e-9 1/m    from [Alg 1.3]
-                    const double N_1 = 179.3;  // 179.3 N-units from [Alg 1.3]
-                    const double Z_0 = 376.62; // 376.62 Ohm    from [Alg 1.5]
+                    const float64_t Z_1 = 9.46e3; // 9.46 km       from [Alg 1.2]
+                    const float64_t gma = 157e-9; // 157e-9 1/m    from [Alg 1.3]
+                    const float64_t N_1 = 179.3;  // 179.3 N-units from [Alg 1.3]
+                    const float64_t Z_0 = 376.62; // 376.62 Ohm    from [Alg 1.5]
 
                     // Frequecy -> Wave number
                     prop.k = fmhz / f_0;                                      // [Alg 1.1]
@@ -863,9 +829,9 @@ namespace acre {
                     prop.gamma_e = gma * (1.0 - 0.04665 * exp(prop.N_s / N_1));    // [Alg 1.3]
 
                     // Surface transfer impedance
-                    std::complex<double> zq, prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
-                    zq = std::complex<double>(eps, Z_0 * sgm / prop.k);        // [Alg 1.5]
-                    prop_zgnd = sqrt(zq - 1.0);
+                    std::complex<float64_t> zq, prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
+                    zq = std::complex<float64_t>(eps, Z_0 * sgm / prop.k);        // [Alg 1.5]
+                    prop_zgnd = std::sqrt(zq - 1.0);
 
                     // adjust surface transfer impedance for Polarization
                     if (ipol != 0.0)
@@ -878,12 +844,9 @@ namespace acre {
 
 
                 // :30: Function curv, page 15
-                static
-                    double curve(double const &c1, double const &c2, double const &x1, double const &x2, double const &x3, double const &de) {
-                    double temp1, temp2;
-
-                    temp1 = (de - x2) / x3;
-                    temp2 = de / x1;
+                static float64_t curve(float64_t const &c1, float64_t const &c2, float64_t const &x1, float64_t const &x2, float64_t const &x3, float64_t const &de) {
+                    float64_t temp1 = (de - x2) / x3;
+                    float64_t temp2 = de / x1;
 
                     temp1 *= temp1;
                     temp2 *= temp2;
@@ -894,10 +857,9 @@ namespace acre {
 
                 // :28: Area variablity, page 14
 #if 1
-                static
-                    double avar(double zzt, double zzl, double zzc, prop_type &prop, propv_type &propv) {
-                    static int kdv;
-                    static double dexa, de, vmd, vs0, sgl, sgtm, sgtp, sgtd, tgtd, gm, gp, cv1, cv2, yv1, yv2, yv3, csm1, csm2, ysm1, ysm2, ysm3, csp1, csp2, ysp1, ysp2, ysp3, csd1, zd, cfm1, cfm2, cfm3, cfp1, cfp2, cfp3;
+                static float64_t avar(float64_t zzt, float64_t zzl, float64_t zzc, prop_type &prop, propv_type &propv) {
+                    static int32_t kdv;
+                    static float64_t dexa, de, vmd, vs0, sgl, sgtm, sgtp, sgtd, tgtd, gm, gp, cv1, cv2, yv1, yv2, yv3, csm1, csm2, ysm1, ysm2, ysm3, csp1, csp2, ysp1, ysp2, ysp3, csd1, zd, cfm1, cfm2, cfm3, cfp1, cfp2, cfp3;
 
                     // :29: Climatic constants, page 15
                     // Indexes are:
@@ -909,36 +871,36 @@ namespace acre {
                     //   5: maritime over land
                     //   6: maritime over sea
                     //                      equator  contsup maritsup   desert conttemp mariland  marisea
-                    const double bv1[7] = { -9.67,   -0.62,    1.26,   -9.21,   -0.62,   -0.39,    3.15 };
-                    const double bv2[7] = { 12.7,    9.19,    15.5,    9.05,    9.19,    2.86,   857.9 };
-                    const double xv1[7] = { 144.9e3, 228.9e3, 262.6e3,  84.1e3, 228.9e3, 141.7e3, 2222.e3 };
-                    const double xv2[7] = { 190.3e3, 205.2e3, 185.2e3, 101.1e3, 205.2e3, 315.9e3, 164.8e3 };
-                    const double xv3[7] = { 133.8e3, 143.6e3,  99.8e3,  98.6e3, 143.6e3, 167.4e3, 116.3e3 };
-                    const double bsm1[7] = { 2.13,    2.66,    6.11,    1.98,    2.68,    6.86,    8.51 };
-                    const double bsm2[7] = { 159.5,    7.67,    6.65,   13.11,    7.16,   10.38,   169.8 };
-                    const double xsm1[7] = { 762.2e3, 100.4e3, 138.2e3, 139.1e3,  93.7e3, 187.8e3, 609.8e3 };
-                    const double xsm2[7] = { 123.6e3, 172.5e3, 242.2e3, 132.7e3, 186.8e3, 169.6e3, 119.9e3 };
-                    const double xsm3[7] = { 94.5e3, 136.4e3, 178.6e3, 193.5e3, 133.5e3, 108.9e3, 106.6e3 };
-                    const double bsp1[7] = { 2.11,    6.87,   10.08,    3.68,    4.75,    8.58,    8.43 };
-                    const double bsp2[7] = { 102.3,   15.53,    9.60,   159.3,    8.12,   13.97,    8.19 };
-                    const double xsp1[7] = { 636.9e3, 138.7e3, 165.3e3, 464.4e3,  93.2e3, 216.0e3, 136.2e3 };
-                    const double xsp2[7] = { 134.8e3, 143.7e3, 225.7e3,  93.1e3, 135.9e3, 152.0e3, 188.5e3 };
-                    const double xsp3[7] = { 95.6e3,  98.6e3, 129.7e3,  94.2e3, 113.4e3, 122.7e3, 122.9e3 };
+                    const float64_t bv1[7] = { -9.67,   -0.62,    1.26,   -9.21,   -0.62,   -0.39,    3.15 };
+                    const float64_t bv2[7] = { 12.7,    9.19,    15.5,    9.05,    9.19,    2.86,   857.9 };
+                    const float64_t xv1[7] = { 144.9e3, 228.9e3, 262.6e3,  84.1e3, 228.9e3, 141.7e3, 2222.e3 };
+                    const float64_t xv2[7] = { 190.3e3, 205.2e3, 185.2e3, 101.1e3, 205.2e3, 315.9e3, 164.8e3 };
+                    const float64_t xv3[7] = { 133.8e3, 143.6e3,  99.8e3,  98.6e3, 143.6e3, 167.4e3, 116.3e3 };
+                    const float64_t bsm1[7] = { 2.13,    2.66,    6.11,    1.98,    2.68,    6.86,    8.51 };
+                    const float64_t bsm2[7] = { 159.5,    7.67,    6.65,   13.11,    7.16,   10.38,   169.8 };
+                    const float64_t xsm1[7] = { 762.2e3, 100.4e3, 138.2e3, 139.1e3,  93.7e3, 187.8e3, 609.8e3 };
+                    const float64_t xsm2[7] = { 123.6e3, 172.5e3, 242.2e3, 132.7e3, 186.8e3, 169.6e3, 119.9e3 };
+                    const float64_t xsm3[7] = { 94.5e3, 136.4e3, 178.6e3, 193.5e3, 133.5e3, 108.9e3, 106.6e3 };
+                    const float64_t bsp1[7] = { 2.11,    6.87,   10.08,    3.68,    4.75,    8.58,    8.43 };
+                    const float64_t bsp2[7] = { 102.3,   15.53,    9.60,   159.3,    8.12,   13.97,    8.19 };
+                    const float64_t xsp1[7] = { 636.9e3, 138.7e3, 165.3e3, 464.4e3,  93.2e3, 216.0e3, 136.2e3 };
+                    const float64_t xsp2[7] = { 134.8e3, 143.7e3, 225.7e3,  93.1e3, 135.9e3, 152.0e3, 188.5e3 };
+                    const float64_t xsp3[7] = { 95.6e3,  98.6e3, 129.7e3,  94.2e3, 113.4e3, 122.7e3, 122.9e3 };
                     // bds1 -> is similar to C_D from table 5.1 at [Alg 5.8]
                     // bzd1 -> is similar to z_D from table 5.1 at [Alg 5.8]
-                    const double bsd1[7] = { 1.224,   0.801,   1.380,   1.000,   1.224,   1.518,   1.518 };
-                    const double bzd1[7] = { 1.282,   2.161,   1.282,    20.0,   1.282,   1.282,   1.282 };
-                    const double bfm1[7] = { 1.0,     1.0,     1.0,     1.0,    0.92,     1.0,    1.0 };
-                    const double bfm2[7] = { 0.0,     0.0,     0.0,     0.0,    0.25,     0.0,    0.0 };
-                    const double bfm3[7] = { 0.0,     0.0,     0.0,     0.0,    1.77,     0.0,    0.0 };
-                    const double bfp1[7] = { 1.0,    0.93,     1.0,    0.93,    0.93,     1.0,    1.0 };
-                    const double bfp2[7] = { 0.0,    0.31,     0.0,    0.19,    0.31,     0.0,    0.0 };
-                    const double bfp3[7] = { 0.0,    2.00,     0.0,    1.79,    2.00,     0.0,    0.0 };
-                    const double rt = 7.8, rl = 24.0;
+                    const float64_t bsd1[7] = { 1.224,   0.801,   1.380,   1.000,   1.224,   1.518,   1.518 };
+                    const float64_t bzd1[7] = { 1.282,   2.161,   1.282,    20.0,   1.282,   1.282,   1.282 };
+                    const float64_t bfm1[7] = { 1.0,     1.0,     1.0,     1.0,    0.92,     1.0,    1.0 };
+                    const float64_t bfm2[7] = { 0.0,     0.0,     0.0,     0.0,    0.25,     0.0,    0.0 };
+                    const float64_t bfm3[7] = { 0.0,     0.0,     0.0,     0.0,    1.77,     0.0,    0.0 };
+                    const float64_t bfp1[7] = { 1.0,    0.93,     1.0,    0.93,    0.93,     1.0,    1.0 };
+                    const float64_t bfp2[7] = { 0.0,    0.31,     0.0,    0.19,    0.31,     0.0,    0.0 };
+                    const float64_t bfp3[7] = { 0.0,    2.00,     0.0,    1.79,    2.00,     0.0,    0.0 };
+                    const float64_t rt = 7.8, rl = 24.0;
                     static bool no_location_variability, no_situation_variability;
-                    double avarv, q, vs, zt, zl, zc;
-                    double sgt, yr;
-                    int temp_klim;
+                    float64_t avarv, q, vs, zt, zl, zc;
+                    float64_t sgt, yr;
+                    int32_t temp_klim;
 
                     if (propv.lvar > 0) {
                         // :31: Setup variablity constants, page 16
@@ -950,7 +912,7 @@ namespace acre {
                                 // and set error indicator
                                 if (propv.klim <= 0 || propv.klim > 7) {
                                     propv.klim = 5;
-                                    prop.kwx = mymax(prop.kwx, 2);
+                                    prop.kwx = std::max(prop.kwx, 2);
                                     set_warn("Climate index set to continental", 2);
                                 }
 
@@ -1003,41 +965,41 @@ namespace acre {
                                 if (kdv < 0 || kdv > 3) {
                                     kdv = 0;
                                     set_warn("kdv set to 0", 2);
-                                    prop.kwx = mymax(prop.kwx, 2);
+                                    prop.kwx = std::max(prop.kwx, 2);
                                 }
 
                                 // fall throught
 
                             case 3:
                                 // :34: Frequency coefficients, page 18
-                                q = log(0.133 * prop.k);
+                                q = std::log(0.133 * prop.k);
                                 gm = cfm1 + cfm2 / ((cfm3 * q * cfm3 * q) + 1.0);
                                 gp = cfp1 + cfp2 / ((cfp3 * q * cfp3 * q) + 1.0);
                                 // fall throught
 
                             case 2:
+                            {
                                 // :35: System coefficients, page 18
                                 // [Alg 5.3], effective distance
-                            {
-                                const double a_1 = 9000e3; // 9000 km from [[Alg 5.3]
+
+                                const float64_t a_1 = 9000e3; // 9000 km from [[Alg 5.3]
                                 //XXX I don't have any idea how they made up the third summand,
                                 //XXX text says    a_1 * pow(k * D_1, -THIRD)
-                                //XXX with const double D_1 = 1266; // 1266 km
-                                dexa = sqrt(2 * a_1 * prop.h_e[0]) +
-                                    sqrt(2 * a_1 * prop.h_e[1]) +
-                                    pow((575.7e12 / prop.k), THIRD);
+                                //XXX with const float64_t D_1 = 1266; // 1266 km
+                                dexa = std::sqrt(2 * a_1 * prop.h_e[0]) + std::sqrt(2 * a_1 * prop.h_e[1]) + pow((575.7e12 / prop.k), THIRD);
                             }
                             // fall throught
 
                             case 1:
-                                // :36: Distance coefficients, page 18
                             {
+                                // :36: Distance coefficients, page 18
                                 // [Alg 5.4]
-                                const double D_0 = 130e3; // 130 km from [Alg 5.4]
-                                if (prop.d < dexa)
+                                const float64_t D_0 = 130e3; // 130 km from [Alg 5.4]
+                                if (prop.d < dexa) {
                                     de = D_0 * prop.d / dexa;
-                                else
+                                } else {
                                     de = D_0 + prop.d - dexa;
+                                }
                             }
                         }
                         /*
@@ -1075,7 +1037,7 @@ namespace acre {
                         if (no_situation_variability) {
                             vs0 = 0.0;
                         } else {
-                            const double D = 100e3; // 100 km
+                            const float64_t D = 100e3; // 100 km
                             vs0 = (5.0 + 3.0 * exp(-de / D));         // [Alg 5.10]
                             vs0 *= vs0;
                         }
@@ -1117,18 +1079,20 @@ namespace acre {
                     }
                     if (fabs(zt) > 3.1 || fabs(zl) > 3.1 || fabs(zc) > 3.1) {
                         set_warn("Situations variables not optimal", 1);
-                        prop.kwx = mymax(prop.kwx, 1);
+                        prop.kwx = std::max(prop.kwx, 1);
                     }
 
 
                     // :38: Resolve standard deviations, page 19
-                    if (zt < 0.0)
+                    if (zt < 0.0) {
                         sgt = sgtm;
-                    else
-                        if (zt <= zd)
+                    } else {
+                        if (zt <= zd) {
                             sgt = sgtp;
-                        else
+                        } else {
                             sgt = sgtd + tgtd / zt;
+                        }
+                    }
                     // [Alg 5.11], situation variability
                     vs = vs0 + (sgt * zt * sgt * zt) / (rt + zc * zc) + (sgl * zl * sgl * zl) / (rl + zc * zc);
 
@@ -1136,28 +1100,30 @@ namespace acre {
                     // :39: Resolve deviations, page 19
                     if (kdv == 0) {
                         yr = 0.0;
-                        propv.sgc = sqrt(sgt * sgt + sgl * sgl + vs);
-                    } else
+                        propv.sgc = std::sqrt(sgt * sgt + sgl * sgl + vs);
+                    } else {
                         if (kdv == 1) {
                             yr = sgt * zt;
-                            propv.sgc = sqrt(sgl * sgl + vs);
-                        } else
+                            propv.sgc = std::sqrt(sgl * sgl + vs);
+                        } else {
                             if (kdv == 2) {
-                                yr = sqrt(sgt * sgt + sgl * sgl) * zt;
-                                propv.sgc = sqrt(vs);
+                                yr = std::sqrt(sgt * sgt + sgl * sgl) * zt;
+                                propv.sgc = std::sqrt(vs);
                             } else {
                                 yr = sgt * zt + sgl * zl;
-                                propv.sgc = sqrt(vs);
+                                propv.sgc = std::sqrt(vs);
                             }
+                        }
+                    }
 
-                        // [Alg 5.1], area variability
-                        avarv = prop.A_ref - vmd - yr - propv.sgc * zc;
+                    // [Alg 5.1], area variability
+                    avarv = prop.A_ref - vmd - yr - propv.sgc * zc;
 
-                        // [Alg 5.2]
-                        if (avarv < 0.0)
-                            avarv = avarv * (29.0 - avarv) / (29.0 - 10.0 * avarv);
+                    // [Alg 5.2]
+                    if (avarv < 0.0)
+                        avarv = avarv * (29.0 - avarv) / (29.0 - 10.0 * avarv);
 
-                        return avarv;
+                    return avarv;
                 }
 #endif
 
@@ -1168,18 +1134,17 @@ namespace acre {
                  * @the. If the path is line-of-sight, the routine sets both horizon
                  * distances equal to @dist.
                  */
-                static
-                    void hzns(double pfl[], prop_type &prop) {
+                static void hzns(float64_t pfl[], prop_type &prop) {
                     bool wq;
-                    int np;
-                    double xi, za, zb, qc, q, sb, sa;
+                    float64_t sb = 0.0;
+                    float64_t sa = 0.0;
 
-                    np = (int) pfl[0];
-                    xi = pfl[1];
-                    za = pfl[2] + prop.h_g[0];
-                    zb = pfl[np + 2] + prop.h_g[1];
-                    qc = 0.5 * prop.gamma_e;
-                    q = qc * prop.d;
+                    int32_t np = static_cast<int32_t>(pfl[0]);
+                    float64_t xi = pfl[1];
+                    float64_t za = pfl[2] + prop.h_g[0];
+                    float64_t zb = pfl[np + 2] + prop.h_g[1];
+                    float64_t qc = 0.5 * prop.gamma_e;
+                    float64_t q = qc * prop.d;
                     prop.theta_ej[1] = (zb - za) / prop.d;
                     prop.theta_ej[0] = prop.theta_ej[1] - q;
                     prop.theta_ej[1] = -prop.theta_ej[1] - q;
@@ -1191,7 +1156,7 @@ namespace acre {
                         sb = prop.d;
                         wq = true;
 
-                        for (int i = 1; i < np; i++) {
+                        for (int32_t i = 1; i < np; i++) {
                             sa += xi;
                             sb -= xi;
                             q = pfl[i + 2] - (qc * sa + prop.theta_ej[0]) * sa - za;
@@ -1216,32 +1181,26 @@ namespace acre {
 
 
                 // :53: Linear least square fit, page 28
-                static
-                    void zlsq1(double z[], const double &x1, const double &x2, double& z0, double& zn)
-
-                {
-                    double xn, xa, xb, x, a, b;
-                    int n, ja, jb;
-
-                    xn = z[0];
-                    xa = int(FORTRAN_DIM(x1 / z[1], 0.0));
-                    xb = xn - int(FORTRAN_DIM(xn, x2 / z[1]));
+                static void zlsq1(float64_t z[], const float64_t &x1, const float64_t &x2, float64_t& z0, float64_t& zn) {
+                    float64_t xn = z[0];
+                    float64_t xa = int(FORTRAN_DIM(x1 / z[1], 0.0));
+                    float64_t xb = xn - int(FORTRAN_DIM(xn, x2 / z[1]));
 
                     if (xb <= xa) {
                         xa = FORTRAN_DIM(xa, 1.0);
                         xb = xn - FORTRAN_DIM(xn, xb + 1.0);
                     }
 
-                    ja = (int) xa;
-                    jb = (int) xb;
-                    n = jb - ja;
+                    int32_t ja = static_cast<int32_t>(xa);
+                    int32_t jb = static_cast<int32_t>(xb);
+                    const int32_t n = jb - ja;
                     xa = xb - xa;
-                    x = -0.5 * xa;
+                    float64_t x = -0.5 * xa;
                     xb += x;
-                    a = 0.5 * (z[ja + 2] + z[jb + 2]);
-                    b = 0.5 * (z[ja + 2] - z[jb + 2]) * x;
+                    float64_t a = 0.5 * (z[ja + 2] + z[jb + 2]);
+                    float64_t b = 0.5 * (z[ja + 2] - z[jb + 2]) * x;
 
-                    for (int i = 2; i <= n; ++i) {
+                    for (int32_t i = 2; i <= n; ++i) {
                         ++ja;
                         x += 1.0;
                         a += z[ja + 2];
@@ -1256,16 +1215,15 @@ namespace acre {
 
 
                 // :52: Provide a quantile and reorders array @a, page 27
-                static
-                    double qtile(const int &nn, double a[], const int &ir) {
-                    double q = 0.0, r;                   /* Initializations by KD2BD */
+                static float64_t qtile(const int &nn, float64_t a[], const int &ir) {
+                    float64_t q = 0.0, r;                   /* Initializations by KD2BD */
                     int m, n, i, j, j1 = 0, i0 = 0, k;   /* Initializations by KD2BD */
                     bool done = false;
                     bool goto10 = true;
 
                     m = 0;
                     n = nn;
-                    k = mymin(mymax(0, ir), n);
+                    k = std::min(std::max(0, ir), n);
 
                     while (!done) {
                         if (goto10) {
@@ -1276,18 +1234,23 @@ namespace acre {
 
                         i = i0;
 
-                        while (i <= n && a[i] >= q)
+                        while (i <= n && a[i] >= q) {
                             i++;
+                        }
 
-                        if (i > n)
+                        if (i > n) {
                             i = n;
+                        }
+
                         j = j1;
 
-                        while (j >= m && a[j] <= q)
+                        while (j >= m && a[j] <= q) {
                             j--;
+                        }
 
-                        if (j < m)
+                        if (j < m) {
                             j = m;
+                        }
 
                         if (i < j) {
                             r = a[i];
@@ -1296,13 +1259,13 @@ namespace acre {
                             i0 = i + 1;
                             j1 = j - 1;
                             goto10 = false;
-                        } else
+                        } else {
                             if (i < k) {
                                 a[k] = a[i];
                                 a[i] = q;
                                 m = i + 1;
                                 goto10 = true;
-                            } else
+                            } else {
                                 if (j > k) {
                                     a[k] = a[j];
                                     a[j] = q;
@@ -1311,6 +1274,8 @@ namespace acre {
                                 } else {
                                     done = true;
                                 }
+                            }
+                        }
                     }
 
                     return q;
@@ -1320,11 +1285,11 @@ namespace acre {
 #ifdef WITH_QERF
                 // :50: Standard normal complementary probability, page 26
                 static
-                    double qerf(const double &z) {
-                    const double b1 = 0.319381530, b2 = -0.356563782, b3 = 1.781477937;
-                    const double b4 = -1.821255987, b5 = 1.330274429;
-                    const double rp = 4.317008, rrt2pi = 0.398942280;
-                    double t, x, qerfv;
+                    float64_t qerf(const float64_t &z) {
+                    const float64_t b1 = 0.319381530, b2 = -0.356563782, b3 = 1.781477937;
+                    const float64_t b4 = -1.821255987, b5 = 1.330274429;
+                    const float64_t rp = 4.317008, rrt2pi = 0.398942280;
+                    float64_t t, x, qerfv;
 
                     x = z;
                     t = fabs(x);
@@ -1350,30 +1315,31 @@ namespace acre {
                  * elevations between the two points @x1 and @x2.
                  */
                 static
-                    double dlthx(double pfl[], const double &x1, const double &x2) {
-                    int np, ka, kb, n, k, j;
-                    double dlthxv, sn, xa, xb;
-                    double *s;
+                    float64_t dlthx(float64_t pfl[], const float64_t &x1, const float64_t &x2) {
+                    int32_t np, ka, kb, n, k, j;
+                    float64_t dlthxv, sn, xa, xb;
+                    float64_t *s;
 
-                    np = (int) pfl[0];
+                    np = static_cast<int32_t>(pfl[0]);
                     xa = x1 / pfl[1];
                     xb = x2 / pfl[1];
                     dlthxv = 0.0;
 
-                    if (xb - xa < 2.0) // exit out
+                    if (xb - xa < 2.0) {// exit out
                         return dlthxv;
+                    }
 
-                    ka = (int) (0.1 * (xb - xa + 8.0));
-                    ka = mymin(mymax(4, ka), 25);
+                    ka = static_cast<int32_t>(0.1 * (xb - xa + 8.0));
+                    ka = std::min(std::max(4, ka), 25);
                     n = 10 * ka - 5;
                     kb = n - ka + 1;
                     sn = n - 1;
-                    s = new double[n + 2];
+                    s = new float64_t[n + 2];
                     s[0] = sn;
                     s[1] = 1.0;
                     xb = (xb - xa) / sn;
-                    k = (int) (xa + 1.0);
-                    xa -= (double) k;
+                    k = (int)(xa + 1.0);
+                    xa -= (float64_t)k;
 
                     for (j = 0; j < n; j++) {
                         // Reduce
@@ -1417,18 +1383,18 @@ namespace acre {
                  *   pfl[1] = xi, the length of each increment
                 */
 #if 1
-                static
-                    void qlrpfl(double pfl[], int klimx, int mdvarx, prop_type &prop, propv_type &propv) {
-                    int np, j;
-                    double xl[2], q, za, zb;
+                static void qlrpfl(float64_t pfl[], int klimx, int mdvarx, prop_type &prop, propv_type &propv) {
+                    int32_t np, j;
+                    float64_t xl[2], q, za, zb;
 
                     prop.d = pfl[0] * pfl[1];
-                    np = (int) pfl[0];
+                    np = static_cast<int32_t>(pfl[0]);
 
                     // :44: determine horizons and dh from pfl, page 23
                     hzns(pfl, prop);
-                    for (j = 0; j < 2; j++)
-                        xl[j] = mymin(15.0 * prop.h_g[j], 0.1 * prop.d_Lj[j]);
+                    for (j = 0; j < 2; j++) {
+                        xl[j] = std::min(15.0 * prop.h_g[j], 0.1 * prop.d_Lj[j]);
+                    }
 
                     xl[1] = prop.d - xl[1];
                     prop.delta_h = dlthx(pfl, xl[0], xl[1]);
@@ -1445,8 +1411,9 @@ namespace acre {
                         prop.h_e[0] = prop.h_g[0] + FORTRAN_DIM(pfl[2], za);
                         prop.h_e[1] = prop.h_g[1] + FORTRAN_DIM(pfl[np + 2], zb);
 
-                        for (j = 0; j < 2; j++)
-                            prop.d_Lj[j] = sqrt(2.0 * prop.h_e[j] / prop.gamma_e) * exp(-0.07 * sqrt(prop.delta_h / mymax(prop.h_e[j], 5.0)));
+                        for (j = 0; j < 2; j++) {
+                            prop.d_Lj[j] = std::sqrt(2.0 * prop.h_e[j] / prop.gamma_e) * exp(-0.07 * std::sqrt(prop.delta_h / std::max(prop.h_e[j], 5.0)));
+                        }
 
                         q = prop.d_Lj[0] + prop.d_Lj[1];
 
@@ -1455,12 +1422,12 @@ namespace acre {
 
                             for (j = 0; j < 2; j++) {
                                 prop.h_e[j] *= q;
-                                prop.d_Lj[j] = sqrt(2.0 * prop.h_e[j] / prop.gamma_e) * exp(-0.07 * sqrt(prop.delta_h / mymax(prop.h_e[j], 5.0)));
+                                prop.d_Lj[j] = std::sqrt(2.0 * prop.h_e[j] / prop.gamma_e) * exp(-0.07 * std::sqrt(prop.delta_h / std::max(prop.h_e[j], 5.0)));
                             }
                         }
 
                         for (j = 0; j < 2; j++) {
-                            q = sqrt(2.0 * prop.h_e[j] / prop.gamma_e);
+                            q = std::sqrt(2.0 * prop.h_e[j] / prop.gamma_e);
                             prop.theta_ej[j] = (0.65 * prop.delta_h * (q / prop.d_Lj[j] - 1.0) - 2.0 * prop.h_e[j]) / q;
                         }
                     } else {
@@ -1472,11 +1439,11 @@ namespace acre {
                     }
 
                     prop.mdp = -1;
-                    propv.lvar = mymax(propv.lvar, 3);
+                    propv.lvar = std::max(propv.lvar, 3);
 
                     if (mdvarx >= 0) {
                         propv.mdvar = mdvarx;
-                        propv.lvar = mymax(propv.lvar, 4);
+                        propv.lvar = std::max(propv.lvar, 4);
                     }
 
                     if (klimx > 0) {
@@ -1497,21 +1464,21 @@ namespace acre {
 #ifdef WITH_POINT_TO_POINT
 #include <cstring>
                 static
-                    void point_to_point(double elev[],
-                                        double tht_m,              // Transceiver above ground level
-                                        double rht_m,              // Receiver above groud level
-                                        double eps_dielect,        // Earth dielectric constant (rel. permittivity)
-                                        double sgm_conductivity,   // Earth conductivity (Siemens/m)
-                                        double eno,                // Atmospheric bending const, n-Units
-                                        double frq_mhz,
+                    void point_to_point(float64_t elev[],
+                                        float64_t tht_m,              // Transceiver above ground level
+                                        float64_t rht_m,              // Receiver above groud level
+                                        float64_t eps_dielect,        // Earth dielectric constant (rel. permittivity)
+                                        float64_t sgm_conductivity,   // Earth conductivity (Siemens/m)
+                                        float64_t eno,                // Atmospheric bending const, n-Units
+                                        float64_t frq_mhz,
                                         int radio_climate,         // 1..7
                                         int pol,                   // 0 horizontal, 1 vertical
-                                        double conf,               // 0.01 .. .99, Fractions of situations
-                                        double rel,                // 0.01 .. .99, Fractions of time
-                                        double &dbloss,
+                                        float64_t conf,               // 0.01 .. .99, Fractions of situations
+                                        float64_t rel,                // 0.01 .. .99, Fractions of time
+                                        float64_t &dbloss,
                                         char *strmode,
                                         int &p_mode,				// propagation mode selector
-                                        double(&horizons)[2],			// horizon distances
+                                        float64_t(&horizons)[2],			// horizon distances
                                         int &errnum) {
                     // radio_climate: 1-Equatorial, 2-Continental Subtropical, 3-Maritime Tropical,
                     //                4-Desert, 5-Continental Temperate, 6-Maritime Temperate, Over Land,
@@ -1529,11 +1496,11 @@ namespace acre {
                     prop_type   prop;
                     propv_type  propv;
 
-                    double zsys = 0;
-                    double zc, zr;
-                    double q = eno;
+                    float64_t zsys = 0;
+                    float64_t zc, zr;
+                    float64_t q = eno;
                     long ja, jb, i, np;
-                    double fs;
+                    float64_t fs;
 
                     prop.h_g[0] = tht_m;          // Tx height above ground level
                     prop.h_g[1] = rht_m;          // Rx height above ground level
@@ -1543,13 +1510,13 @@ namespace acre {
                     prop.mdp = -1;               // point-to-point
                     zc = qerfi(conf);
                     zr = qerfi(rel);
-                    np = (long) elev[0];
+                    np = (long)elev[0];
 #if 0
-                    double dkm = (elev[1] * elev[0]) / 1000.0;
-                    double xkm = elev[1] / 1000.0;
+                    float64_t dkm = (elev[1] * elev[0]) / 1000.0;
+                    float64_t xkm = elev[1] / 1000.0;
 #endif
 
-                    ja = (long) (3.0 + 0.1 * elev[0]);
+                    ja = (long)(3.0 + 0.1 * elev[0]);
                     jb = np - ja + 6;
                     for (i = ja - 1; i < jb; ++i)
                         zsys += elev[i];
@@ -1575,7 +1542,7 @@ namespace acre {
 
                         else {
                             if (int(q) > 0.0) {
-                                strcpy(strmode, "Double Horizon");
+                                strcpy(strmode, "float64_t Horizon");
                                 horizons[0] = prop.d_Lj[0];
                                 horizons[1] = prop.d_Lj[1];
                                 p_mode = 1;
@@ -1603,7 +1570,7 @@ namespace acre {
 
 #ifdef WITH_POINT_TO_POINT_MDH
                 static
-                    void point_to_pointMDH(double elev[], double tht_m, double rht_m, double eps_dielect, double sgm_conductivity, double eno, double frq_mhz, int radio_climate, int pol, double timepct, double locpct, double confpct, double &dbloss, int &propmode, double &deltaH, int &errnum) {
+                    void point_to_pointMDH(float64_t elev[], float64_t tht_m, float64_t rht_m, float64_t eps_dielect, float64_t sgm_conductivity, float64_t eno, float64_t frq_mhz, int radio_climate, int pol, float64_t timepct, float64_t locpct, float64_t confpct, float64_t &dbloss, int &propmode, float64_t &deltaH, int &errnum) {
                     // pol: 0-Horizontal, 1-Vertical
                     // radio_climate: 1-Equatorial, 2-Continental Subtropical, 3-Maritime Tropical,
                     //                4-Desert, 5-Continental Temperate, 6-Maritime Temperate, Over Land,
@@ -1615,8 +1582,8 @@ namespace acre {
                     //              0     Line of Sight
                     //              5     Single Horizon, Diffraction
                     //              6     Single Horizon, Troposcatter
-                    //              9     Double Horizon, Diffraction
-                    //             10     Double Horizon, Troposcatter
+                    //              9     float64_t Horizon, Diffraction
+                    //             10     float64_t Horizon, Troposcatter
                     // errnum: 0- No Error.
                     //         1- Warning: Some parameters are nearly out of range.
                     //                     Results should be used with caution.
@@ -1629,12 +1596,12 @@ namespace acre {
                     prop_type   prop;
                     propv_type  propv;
                     propa_type  propa;
-                    double zsys = 0;
-                    double ztime, zloc, zconf;
-                    double q = eno;
+                    float64_t zsys = 0;
+                    float64_t ztime, zloc, zconf;
+                    float64_t q = eno;
                     long ja, jb, i, np;
-                    double dkm, xkm;
-                    double fs;
+                    float64_t dkm, xkm;
+                    float64_t fs;
 
                     propmode = -1; // mode is undefined
                     prop.h_g[0] = tht_m;
@@ -1647,11 +1614,11 @@ namespace acre {
                     zloc = qerfi(locpct);
                     zconf = qerfi(confpct);
 
-                    np = (long) elev[0];
+                    np = (long)elev[0];
                     dkm = (elev[1] * elev[0]) / 1000.0;
                     xkm = elev[1] / 1000.0;
 
-                    ja = (long) (3.0 + 0.1 * elev[0]);
+                    ja = (long)(3.0 + 0.1 * elev[0]);
                     jb = np - ja + 6;
                     for (i = ja - 1; i < jb; ++i)
                         zsys += elev[i];
@@ -1671,7 +1638,7 @@ namespace acre {
                             propmode = 4; // Single Horizon
                         else
                             if (int(q) > 0.0)
-                                propmode = 8; // Double Horizon
+                                propmode = 8; // float64_t Horizon
 
                         if (prop.d <= prop.d_Ls || prop.d <= prop.dx)
                             propmode += 1; // Diffraction Dominant
@@ -1689,7 +1656,7 @@ namespace acre {
 
 #ifdef WITH_POINT_TO_POINT_DH
                 static
-                    void point_to_pointDH(double elev[], double tht_m, double rht_m, double eps_dielect, double sgm_conductivity, double eno, double frq_mhz, int radio_climate, int pol, double conf, double rel, double &dbloss, double &deltaH, int &errnum) {
+                    void point_to_pointDH(float64_t elev[], float64_t tht_m, float64_t rht_m, float64_t eps_dielect, float64_t sgm_conductivity, float64_t eno, float64_t frq_mhz, int radio_climate, int pol, float64_t conf, float64_t rel, float64_t &dbloss, float64_t &deltaH, int &errnum) {
                     // pol: 0-Horizontal, 1-Vertical
                     // radio_climate: 1-Equatorial, 2-Continental Subtropical, 3-Maritime Tropical,
                     //                4-Desert, 5-Continental Temperate, 6-Maritime Temperate, Over Land,
@@ -1709,12 +1676,12 @@ namespace acre {
                     prop_type   prop;
                     propv_type  propv;
                     propa_type  propa;
-                    double zsys = 0;
-                    double zc, zr;
-                    double q = eno;
+                    float64_t zsys = 0;
+                    float64_t zc, zr;
+                    float64_t q = eno;
                     long ja, jb, i, np;
-                    double dkm, xkm;
-                    double fs;
+                    float64_t dkm, xkm;
+                    float64_t fs;
 
                     prop.h_g[0] = tht_m;
                     prop.h_g[1] = rht_m;
@@ -1724,11 +1691,11 @@ namespace acre {
                     prop.mdp = -1;
                     zc = qerfi(conf);
                     zr = qerfi(rel);
-                    np = (long) elev[0];
+                    np = (long)elev[0];
                     dkm = (elev[1] * elev[0]) / 1000.0;
                     xkm = elev[1] / 1000.0;
 
-                    ja = (long) (3.0 + 0.1 * elev[0]);
+                    ja = (long)(3.0 + 0.1 * elev[0]);
                     jb = np - ja + 6;
                     for (i = ja - 1; i < jb; ++i)
                         zsys += elev[i];
@@ -1749,7 +1716,7 @@ namespace acre {
 
                         else
                             if (int(q) > 0.0)
-                                strcpy(strmode, "Double Horizon");
+                                strcpy(strmode, "float64_t Horizon");
 
                         if (prop.d <= prop.d_Ls || prop.d <= prop.dx)
                             strcat(strmode, ", Diffraction Dominant");
@@ -1773,7 +1740,7 @@ namespace acre {
 
 #ifdef WITH_AREA
                 static
-                    void area(long ModVar, double deltaH, double tht_m, double rht_m, double dist_km, int TSiteCriteria, int RSiteCriteria, double eps_dielect, double sgm_conductivity, double eno, double frq_mhz, int radio_climate, int pol, double pctTime, double pctLoc, double pctConf, double &dbloss, int &errnum) {
+                    void area(long ModVar, float64_t deltaH, float64_t tht_m, float64_t rht_m, float64_t dist_km, int TSiteCriteria, int RSiteCriteria, float64_t eps_dielect, float64_t sgm_conductivity, float64_t eno, float64_t frq_mhz, int radio_climate, int pol, float64_t pctTime, float64_t pctLoc, float64_t pctConf, float64_t &dbloss, int &errnum) {
                     // pol: 0-Horizontal, 1-Vertical
                     // TSiteCriteria, RSiteCriteria:
                     //		   0 - random, 1 - careful, 2 - very careful
@@ -1798,15 +1765,15 @@ namespace acre {
                     prop_type prop;
                     propv_type propv;
                     propa_type propa;
-                    double zt, zl, zc, xlb;
-                    double fs;
+                    float64_t zt, zl, zc, xlb;
+                    float64_t fs;
                     long ivar;
-                    double eps, sgm;
+                    float64_t eps, sgm;
                     long ipol;
                     int kst[2];
 
-                    kst[0] = (int) TSiteCriteria;
-                    kst[1] = (int) RSiteCriteria;
+                    kst[0] = (int)TSiteCriteria;
+                    kst[1] = (int)RSiteCriteria;
                     zt = qerfi(pctTime);
                     zl = qerfi(pctLoc);
                     zc = qerfi(pctConf);
@@ -1815,11 +1782,11 @@ namespace acre {
                     prop.delta_h = deltaH;
                     prop.h_g[0] = tht_m;
                     prop.h_g[1] = rht_m;
-                    propv.klim = (long) radio_climate;
+                    propv.klim = (long)radio_climate;
                     prop.N_s = eno;
                     prop.kwx = 0;
-                    ivar = (long) ModVar;
-                    ipol = (long) pol;
+                    ivar = (long)ModVar;
+                    ipol = (long)pol;
                     qlrps(frq_mhz, 0.0, eno, ipol, eps, sgm, prop);
                     qlra(kst, propv.klim, ivar, prop, propv);
 
