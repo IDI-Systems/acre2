@@ -30,8 +30,8 @@ DFUNC(connectionFnc) = {
                     if (isMultiplayer) then {
                         if ((missionNamespace getVariable [QGVAR(notConnectedTime), -15]) + 30 < time ) then {
                             GVAR(notConnectedTime) = time;
-                            private _warning = "<t color='#FF8021'>WARNING!</t><br />ACRE is not connected to Teamspeak!";
-                            [_warning, 3] call EFUNC(sys_core,displayNotification);
+                            private _warning = format ["<t color='#FF8021'>WARNING!</t><br/> %1", localize LSTRING(acreNotConnected)];
+                            [[_warning, 2]] call CBA_fnc_notify;
                         };
                         GVAR(connectCount) = GVAR(connectCount) + 1;
                         if (GVAR(connectCount) > 15) then {
@@ -46,9 +46,9 @@ DFUNC(connectionFnc) = {
             } else {
                 LOG("PIPE OPENED!");
                 if (GVAR(hasErrored) && isMultiplayer) then {
-                    ["<t color='#2B7319'>ACRE has recovered from a closed pipe!</t>", 3] call EFUNC(sys_core,displayNotification);
+                    [[format ["<t color='#2B7319'>%1</t>", localize LSTRING(recoveredClosedPipe)], 2]] call CBA_fnc_notify;
                 } else {
-                    ["<t color='#2B7319'>ACRE connected</t>"] call EFUNC(sys_core,displayNotification);
+                    [format ["<t color='#2B7319'>%1</t>", localize LSTRING(acreConnected)]] call CBA_fnc_notify;
                 };
                 GVAR(hasErrored) = false;
                 INFO("Pipe opened.");

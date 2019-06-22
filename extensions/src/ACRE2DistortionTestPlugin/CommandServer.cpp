@@ -9,20 +9,20 @@
 
 extern TS3Functions ts3Functions;
 
-AcreResult CCommandServer::initialize(void){
+acre::Result CCommandServer::initialize(void){
     TRACE("enter");
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CCommandServer::shutdown(void) {
+acre::Result CCommandServer::shutdown(void) {
     TRACE("enter");
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
 
-AcreResult CCommandServer::sendMessage(IMessage *msg){
+acre::Result CCommandServer::sendMessage(IMessage *msg){
     LOCK(this);
     //LOG("Sending: %s", (const char *)msg->getData());
     ts3Functions.sendPluginCommand((unsigned __int64)ts3Functions.getCurrentServerConnectionHandlerID(),
@@ -35,38 +35,38 @@ AcreResult CCommandServer::sendMessage(IMessage *msg){
 
     UNLOCK(this);
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CCommandServer::handleMessage(unsigned char *data){
+acre::Result CCommandServer::handleMessage(unsigned char *data){
     CTextMessage *msg;
     //TRACE("recv: [%s]", data);
     msg = new CTextMessage((char *)data, strlen((char *)data));
     if (CEngine::getInstance()->getRpcEngine() && msg) {
         CEngine::getInstance()->getRpcEngine()->runProcedure((IServer *)this, (IMessage *)msg);
     }
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
 
-AcreResult CCommandServer::release(void) {
+acre::Result CCommandServer::release(void) {
     
     if (this->getCommandId())
         free(this->getCommandId());
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
 
 //
 // constructor/destructor foo
 // 
-CCommandServer::CCommandServer(acre_id_t id) {
+CCommandServer::CCommandServer(acre::id_t id) {
     this->setId(id);
 }
 CCommandServer::CCommandServer(void) {
     this->setCommandId(NULL);
-    this->setConnected(TRUE);
+    this->setConnected(true);
 }
 CCommandServer::~CCommandServer() {
     

@@ -19,6 +19,4 @@
 if (GET_STATE("editEntry")) then {
     SET_STATE("editEntry", false);
     SET_STATE("currentEditEntry", "");
-} else {
-
 };

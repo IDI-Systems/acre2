@@ -31,9 +31,9 @@ public:
     };
     ~CSoundPlayback() { };
 
-    AcreResult buildSound(std::string id, std::string content);
-    AcreResult loadSound(std::string id);
-    AcreResult playSound(std::string id, ACRE_VECTOR position, ACRE_VECTOR direction, float volume, bool isWorld);
+    acre::Result buildSound(std::string id, std::string content);
+    acre::Result loadSound(std::string id);
+    acre::Result playSound(std::string id, acre::Vector3_t position, acre::Vector3_t direction, float volume, bool isWorld);
 
 private:
     std::map<std::string, SoundItem *> itemMap;

@@ -20,10 +20,10 @@ public:
     CBabelFilter( void );
     ~CBabelFilter( void );
 
-    AcreResult process(short* samples, int sampleCount, int channels, acre_id_t id);
+    acre::Result process(short* samples, int sampleCount, int channels, acre::id_t id);
 
-    BabelStruct *getSpeaker(acre_id_t id);
+    BabelStruct *getSpeaker(acre::id_t id);
 
 protected:
-    std::map<acre_id_t, BabelStruct *> babelSpeakers;
+    std::map<acre::id_t, BabelStruct *> babelSpeakers;
 };

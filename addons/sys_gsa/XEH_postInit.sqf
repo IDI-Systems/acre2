@@ -71,5 +71,5 @@
 [QGVAR(notifyPlayer), {
     params ["_text"];
 
-    [_text, ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    [[ICON_RADIO_CALL], [_text]] call CBA_fnc_notify;
 }] call CBA_fnc_addEventHandler;

@@ -6,9 +6,7 @@
 #include "Engine.h"
 
 RPC_FUNCTION(ext_reset) {
-    acre_id_t id;
-
-    id = vMessage->getParameterAsInt(0);
+    const acre::id_t id = vMessage->getParameterAsInt(0);
 
     //
     // These checks were fucking up Because ext_reset is called on a named pipe disconnect, but this checked for a valid connection, and game, and that it was our valid ID.
@@ -16,16 +14,21 @@ RPC_FUNCTION(ext_reset) {
     // We don't care if a person disconnects and they unmute all their shit, this doesn't break the "mute other people not in game" issue, because they mute this person.
     //
     //if(id == CEngine::getInstance()->getSelf()->getId())
-    //    return AcreResult::ok;
+    //    return acre::Result::ok;
     //if(!CEngine::getInstance()->getGameServer()->getConnected())
-    //    return AcreResult::ok;
+    //    return acre::Result::ok;
     //CEngine::getInstance()->getClient()->setMuted(id, FALSE);
 
     // We should be calling this, but the named pipe function already calls this too
     // We leave this here so SQF can force a full unmute, though.
     CEngine::getInstance()->getClient()->unMuteAll();
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

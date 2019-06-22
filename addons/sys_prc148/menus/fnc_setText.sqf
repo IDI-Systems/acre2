@@ -47,7 +47,7 @@ if (_format == "") then {
         } else {
             _val = _formatChar;
         };
-        (_display displayCtrl (_row+_start+_count)) ctrlSetText _val;
+        (_display displayCtrl (_row + _start + _count)) ctrlSetText _val;
         _count = _count - 1;
     };
 };
