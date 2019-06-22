@@ -66,6 +66,7 @@ size_t Log::Write(const acre::LogLevel msgType, char *function, const uint32_t l
     std::unique_lock<std::mutex> lock(m_criticalMutex, std::defer_lock);
     lock.lock();
     this->logOutput.write(buffer, ret);
+    this->logOutput.flush();
     lock.unlock();
    
     // test debug, print it too
