@@ -7,7 +7,7 @@ namespace acre {
 
 
         lod::lod() {}
-        lod::lod(std::istream & stream_, uint32_t id_, uint32_t version = 68) : id(id_) {
+        lod::lod(std::istream & stream_, uint32_t id_, uint32_t version = 73) : id(id_) {
             uint32_t temp_count;
 
             // proxies
@@ -19,7 +19,7 @@ namespace acre {
             for (auto & proxy : proxies) {
                 LOG(DEBUG) << "\t" << proxy->name;
             }
-            
+
             compressed<uint32_t> item(stream_, false, false);
             items.resize(item.data.size());
             std::copy(item.data.begin(), item.data.end(), items.begin());
@@ -40,13 +40,9 @@ namespace acre {
             }
 
             stream_.read((char *)&point_count, sizeof(uint32_t));
-            stream_.read((char *)&u_float_1, sizeof(float));
-
-            // Derp, this was only TOH apparently!?
-            //point_flags = compressed<uint32_t>(stream_, true, true, version);
-
-            stream_.read((char *)&u_float_2, sizeof(float));
-            stream_.read((char *)&u_float_3, sizeof(float));
+            stream_.read((char *)&face_area, sizeof(float));
+            stream_.read((char *)&orHints, sizeof(uint32_t));
+            stream_.read((char *)&andHints, sizeof(uint32_t));
             
             min_pos = acre::vector3<float>(stream_);
             max_pos = acre::vector3<float>(stream_);
@@ -70,17 +66,18 @@ namespace acre {
                  materials.push_back(std::make_shared<material>(stream_, version));
             }
 
-            edges.mlod = compressed<uint16_t>(stream_, true, false, version).data;
-            edges.vertex = compressed<uint16_t>(stream_, true, false, version).data;
+            edges.mlod = compressed<uint32_t>(stream_, true, false, version).data;
+            edges.vertex = compressed<uint32_t>(stream_, true, false, version).data;
 
+            LOG(DEBUG) << "Finished reading material: " << stream_.tellg();
             // @TODO: THIS IS OFF WTF?!
             // The first face is coming up null, so we missed something
             // Faces magic
             stream_.read((char *)&temp_count, sizeof(uint32_t));
             stream_.read((char *)&faces_allocation_size, sizeof(uint32_t));
             
-            // WTF IS GOING ON!?
-            stream_.seekg(2, stream_.cur);
+            uint16_t dummyU16;
+            stream_.read((char *)&dummyU16, sizeof(uint16_t)); // It  should be always 0
 
             for (uint32_t x = 0; x < temp_count; x++) {
                 faces.push_back(std::make_shared<face>(stream_, version));
@@ -116,23 +113,26 @@ namespace acre {
             stream_.read((char *)&icon_color, sizeof(uint32_t));
             stream_.read((char *)&selected_color, sizeof(uint32_t));
             stream_.read((char *)&u_residue, sizeof(uint32_t));
-            stream_.read((char *)&u_byte_1, sizeof(uint8_t));
-            stream_.read((char *)&temp_count, sizeof(uint32_t));
+            //stream_.read((char *)&u_byte_1, sizeof(uint8_t));
+            bool vertexBoneIsSimple;
+            READ_BOOL(vertexBoneIsSimple);
+            uint32_t vertexTableSize;
+            stream_.read((char *)&vertexTableSize, sizeof(uint32_t));
 
             // Vertex Table starts here
-            vertices = std::make_shared<c_vertex_table>(stream_, temp_count, version);
+            vertices = std::make_shared<c_vertex_table>(stream_, vertexTableSize, version);
         }
 
         lod::~lod() {}
 
         uv::uv() {}
-        uv::uv(std::istream &stream_, uint32_t version = 68) {
+        uv::uv(std::istream &stream_, uint32_t version = 73) {
             stream_.read((char *)&uv_scale, sizeof(float) * 4);
             data = compressed<float>(stream_, true, true, version);
         }
 
         c_vertex_table::c_vertex_table() {}
-        c_vertex_table::c_vertex_table(std::istream &stream_, uint32_t size_, uint32_t version = 68) : size(size_) {
+        c_vertex_table::c_vertex_table(std::istream &stream_, uint32_t size_, uint32_t version = 73) : size(size_) {
             uint32_t temp_count;
 
             point_flags = compressed<uint32_t>(stream_, true, true, version);
@@ -151,18 +151,17 @@ namespace acre {
         }
 
         named_selection::named_selection() {}
-        named_selection::named_selection(std::istream &stream_, uint32_t version = 68) {
+        named_selection::named_selection(std::istream &stream_, uint32_t version = 73) {
 
             READ_STRING(name);
 
-            faces = compressed<uint16_t>(stream_, true, false, version);
+            faces = compressed<uint32_t>(stream_, true, false, version);
 
-            //face_weights = compressed<uint32_t>(stream_, true, false, version); // Face weights
-            face_weights = compressed<uint32_t>(stream_, true, false, version);
+            stream_.read((char *)&Always0Count, sizeof(uint32_t));
             READ_BOOL(is_sectional);
 
             sections = compressed<uint32_t>(stream_, true, false, version);
-            vertex_table = compressed<uint16_t>(stream_, true, false, version);
+            vertex_table = compressed<uint32_t>(stream_, true, false, version);
             texture_weights = compressed<uint8_t>(stream_, true, false, version);
 
             //stream_.read((char *)&junk, 4);
@@ -170,32 +169,34 @@ namespace acre {
 
 
         section::section() {}
-        section::section(std::istream &stream_, uint32_t version = 68) {
+        section::section(std::istream &stream_, uint32_t version = 73) : area_over_tex(nullptr) {
             stream_.read((char *)&face_offsets, sizeof(uint32_t) * 2);
-            stream_.read((char *)&material_offsets, sizeof(uint32_t) * 2);
-
-            stream_.read((char *)&common_points_user_value, sizeof(uint32_t));
-            stream_.read((char *)&common_texture, sizeof(uint16_t));
+            stream_.read((char *)&min_bone_index, sizeof(uint32_t));
+            stream_.read((char *)&bones_count, sizeof(uint32_t));
+            stream_.read((char *)&mat_dummy, sizeof(uint32_t));  // Should be always 0
+            stream_.read((char *)&common_texture_index, sizeof(uint16_t));
             stream_.read((char *)&common_face_flags, sizeof(uint32_t));
-
             stream_.read((char *)&material_index, sizeof(int32_t));
+
             if (material_index == -1) {
                 stream_.read((char *)&extra, sizeof(uint8_t));
             }
 
-            if (version >= 68) stream_.read((char *)&u_long_2, sizeof(uint32_t));
+            stream_.read((char *)&num_stages, sizeof(uint32_t));  // Should be 2?
+            area_over_tex = new float[num_stages];
+            for (uint32_t count = 0u; count < num_stages; count++) {
+                stream_.read((char *)&area_over_tex[count], sizeof(float));
+            }
             stream_.read((char *)&u_long_1, sizeof(uint32_t));
-            stream_.read((char *)&u_float_resolution_1, sizeof(float));
-            stream_.read((char *)&u_float_resolution_2, sizeof(float));
         }
 
         face::face() { }
-        face::face(std::istream & stream_, uint32_t version = 68) {
+        face::face(std::istream & stream_, uint32_t version = 73) {
             stream_.read((char *)&type, sizeof(uint8_t));
-            assert(type == 3 || type == 4);
+            //assert(type == 3 || type == 4);
             for (int x = 0; x < type; x++) {
-                uint16_t val;
-                stream_.read((char *)&val, sizeof(uint16_t));
+                uint32_t val;
+                stream_.read((char *)&val, sizeof(uint32_t));
                 vertex_table.push_back(val);
             }
         }
@@ -211,14 +212,12 @@ namespace acre {
             READ_STRING(file);
             stream_.read((char *)&transform_id, sizeof(uint32_t));
             if (type_ == 11) {
-                READ_BOOL(wtf);
+                READ_BOOL(useWorldEnvMap);
             }
         }
 
         material::material() { }
-        material::material(std::istream &stream_, uint32_t version = 68) {
-            uint32_t textures_count, transforms_count;
-
+        material::material(std::istream &stream_, uint32_t version = 73) {
             READ_STRING(name);
 
             stream_.read((char *)&type, sizeof(uint32_t));
@@ -233,15 +232,15 @@ namespace acre {
             stream_.read((char *)&specular_power, sizeof(float));
             stream_.read((char *)&pixel_shader, sizeof(uint32_t));
             stream_.read((char *)&vertex_shader, sizeof(uint32_t));
-            stream_.read((char *)&u_long_1, sizeof(uint32_t));
-            stream_.read((char *)&an_index, sizeof(uint32_t));
-            stream_.read((char *)&u_long_2, sizeof(uint32_t));
+            stream_.read((char *)&main_light, sizeof(uint32_t));
+            stream_.read((char *)&fog_mode, sizeof(uint32_t));
 
             READ_STRING(surface);
 
-            stream_.read((char *)&u_long_3, sizeof(uint32_t));
+            stream_.read((char *)&render_flags_size, sizeof(uint32_t));
             stream_.read((char *)&render_flags, sizeof(uint32_t));
 
+            uint32_t textures_count, transforms_count;
             stream_.read((char *)&textures_count, sizeof(uint32_t));
             stream_.read((char *)&transforms_count, sizeof(uint32_t));
 
@@ -249,7 +248,7 @@ namespace acre {
                 texture_stages.push_back(std::make_shared<stage_texture>(stream_, type));
             }
 
-            for (uint32_t x = 0; x < textures_count; x++) {
+            for (uint32_t x = 0; x < transforms_count; x++) {
                 uint32_t uv_source;
                 stream_.read((char *)&uv_source, sizeof(uint32_t));
                 transform_stages.push_back(std::pair<uint32_t, transform_matrix>(uv_source, transform_matrix(stream_)));
@@ -260,7 +259,7 @@ namespace acre {
         }
 
         frame::frame() {}
-        frame::frame(std::istream &stream_, uint32_t version = 68) {
+        frame::frame(std::istream &stream_, uint32_t version = 73) {
             uint32_t count;
 
             stream_.read((char *)&time, sizeof(float));
@@ -272,7 +271,7 @@ namespace acre {
         }
 
         proxy::proxy() { }
-        proxy::proxy(std::istream &stream_, uint32_t version = 68) {
+        proxy::proxy(std::istream &stream_, uint32_t version = 73) {
             READ_STRING(name);
             transform = acre::transform_matrix(stream_);
             stream_.read((char *)&sequence_id, sizeof(uint32_t));

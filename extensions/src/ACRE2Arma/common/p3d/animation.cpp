@@ -7,7 +7,7 @@
 namespace acre {
     namespace p3d {
         animation::animation() {}
-        animation::animation(std::istream &stream_, uint32_t version = 68) {
+        animation::animation(std::istream &stream_, uint32_t version = 73) {
             float tvalue = 0;
          
             stream_.read((char *)&type, sizeof(uint32_t));
@@ -68,5 +68,5 @@ namespace acre {
         
                 animation::~animation() {
         }
-    };
-};
+    }
+}

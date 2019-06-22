@@ -12,13 +12,23 @@ namespace acre {
         class face_settings {
         public:
             face_settings() {}
-            face_settings(std::istream &stream_, uint32_t version = 68) {
-                stream_.read((char *)&count, sizeof(uint32_t));
-                stream_.read((char *)&unknown, sizeof(uint8_t) * 21);
+            face_settings(std::istream &stream_, uint32_t version = 73) {
+                stream_.read((char *)&num_faces, sizeof(uint32_t));
+                stream_.read((char *)&icon_color, sizeof(uint32_t));
+                stream_.read((char *)&special, sizeof(uint32_t));
+                stream_.read((char *)&or_hint, sizeof(uint32_t));
+                READ_BOOL(skeletonToSubskeletonEmpty);
+                stream_.read((char *)&num_points, sizeof(uint32_t));
+                stream_.read((char *)&face_area, sizeof(uint32_t));
             }
 
-            uint32_t    count;
-            uint8_t     unknown[21];
+            uint32_t num_faces;
+            uint32_t icon_color;
+            uint32_t special;
+            uint32_t or_hint;
+            bool skeletonToSubskeletonEmpty;
+            uint32_t num_points;
+            uint32_t face_area;
         };
         typedef std::shared_ptr<face_settings> face_settings_p;
         
@@ -53,5 +63,5 @@ namespace acre {
 
         };
         typedef std::shared_ptr<model> model_p;
-    };
-};
+    }
+}

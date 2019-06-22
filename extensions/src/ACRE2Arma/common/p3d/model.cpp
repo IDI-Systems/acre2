@@ -14,12 +14,16 @@ namespace acre {
             stream_.seekg(0, std::ios::beg);
 
             // Parse header here
+            uint32_t appId;
             stream_.read((char *)&filetype, sizeof(uint32_t));
             stream_.read((char *)&version, sizeof(uint32_t));
-            if (version >= 48) {
+            stream_.read((char *)&appId, sizeof(uint32_t));
+
+             if (version >= 58) {
                 READ_STRING(prefix_name);
             }
-            stream_.seekg(4, std::ios_base::cur);
+            //stream_.seekg(4, std::ios_base::cur);
+
             stream_.read((char *)&lod_count, sizeof(uint32_t));
 
             // parse model info here
@@ -33,15 +37,16 @@ namespace acre {
                 for (uint32_t x = 0; x < animation_count; x++) {
                     animations.push_back(std::make_shared<animation>(stream_, version));
                 }
-           
 
                 // Now we re-walk, and association animations and bones
-                uint32_t bone_count, local_lod_count;
+                uint32_t local_lod_count;
                 stream_.read((char *)&local_lod_count, sizeof(uint32_t));
                 for (uint32_t lod = 0; lod < local_lod_count; lod++) {
-                    stream_.read((char *)&bone_count, sizeof(uint32_t));
+                    uint32_t num_bones;
+                    stream_.read((char *)&num_bones, sizeof(uint32_t));
+
                     std::vector<uint32_t> lod_bone2anim;
-                    for (uint32_t x = 0; x < bone_count; x++) {
+                    for (uint32_t x = 0; x < num_bones; x++) {
                         uint32_t anim_count;
                         stream_.read((char *)&anim_count, sizeof(uint32_t));
 
@@ -51,7 +56,7 @@ namespace acre {
                             if (std::find(skeleton->all_bones[x]->animations.begin(), skeleton->all_bones[x]->animations.end(), anim_index) == skeleton->all_bones[x]->animations.end()) {
                                 skeleton->all_bones[x]->animations.push_back(anim_index);
                             }
-                        };
+                        }
                     }
                 }
 
@@ -61,7 +66,7 @@ namespace acre {
                         animate_bone_p next = std::make_shared<animate_bone>();
                         next->lod = lod;
                         stream_.read((char *)&next->index, sizeof(int32_t));
-                        if (next->index != -1 && anim->type != 8 && anim->type != 9) {
+                        if (next->index != -1 && (anim->type != 8) && (anim->type != 9)) {
                             next->axis_position = acre::vector3<float>(stream_);
                             next->axis_direction = acre::vector3<float>(stream_);
                         }
@@ -100,7 +105,7 @@ namespace acre {
                 sprintf_s(buffer, "\t\t%08X",  info->resolutions[lod]);
                 LOG(DEBUG) << "LOD #" << lod << ", type: " << buffer;
                 #endif
-                //if (info->resolutions[lod] == LOD_TYPE_GEOMETRY_FIRE) {
+                //if (info->resolutions[lod] > 6000000000000000.0f && info->resolutions[lod] < 8000000000000000.0f) {//LOD_TYPE_GEOMETRY_FIRE) {
                 //    LOG(DEBUG) << "Found a desired geometry";
                     stream_.clear();
                     stream_.seekg(start_lod[lod], stream_.beg);

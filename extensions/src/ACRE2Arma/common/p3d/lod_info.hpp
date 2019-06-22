@@ -32,7 +32,7 @@ namespace acre {
             uint32_t    filter;
             std::string file;
             uint32_t    transform_id; 
-            bool        wtf;
+            bool        useWorldEnvMap;
         };
         typedef std::shared_ptr<stage_texture> stage_texture_p;
 
@@ -58,10 +58,9 @@ namespace acre {
             uint32_t    pixel_shader;
             uint32_t    vertex_shader;
 
-            uint32_t    u_long_1; 
-            uint32_t    an_index;
-            uint32_t    u_long_2;
-            uint32_t    u_long_3;
+            uint32_t    main_light; 
+            uint32_t    fog_mode;
+            uint32_t    render_flags_size;
             
             std::vector<stage_texture_p> texture_stages;
             std::vector<std::pair<uint32_t, transform_matrix>> transform_stages;
@@ -70,8 +69,8 @@ namespace acre {
 
         class edge_set {
         public:
-            std::vector<uint16_t> mlod;
-            std::vector<uint16_t> vertex;
+            std::vector<uint32_t> mlod;
+            std::vector<uint32_t> vertex;
         };
 
         class face {
@@ -82,7 +81,7 @@ namespace acre {
             uint32_t                         flags;            //ODOL7 ONLY see P3D Point and Face Flags
             uint16_t                         texture;         //ODOL7 ONLY
             uint8_t                          type;             // 3==Triangle or 4==Box
-            std::vector<uint16_t>            vertex_table;
+            std::vector<uint32_t>            vertex_table;
         };
         typedef std::shared_ptr<face> face_p;
 
@@ -92,23 +91,16 @@ namespace acre {
             section(std::istream &, uint32_t);
 
             uint32_t face_offsets[2];     // from / to region of LodFaces used
-            uint32_t material_offsets[2]; // ODOLV4x only
-            uint32_t common_points_user_value;  // see P3D Point and Face Flags
-                                          // 0xC9 -> LodPoints 0x0C90003F
-                                          // LodPointFlags are in a separate table for arma, and in the VertexTable for ofp (odol7)
-            uint16_t common_texture;     //
-            uint32_t common_face_flags;        // see P3D Point and Face Flags
-                                          ///////// // ODOLV4x only//////
+            uint32_t min_bone_index;
+            uint32_t bones_count;
+            uint32_t mat_dummy;           // Should be always 0?
+            uint16_t common_texture_index;
+            uint32_t common_face_flags;
             int32_t  material_index;
-            //if MaterialIndex == -1
-           // {
-            //    byte ExtraByte;
-            //}
-            uint8_t         extra;
-            uint32_t        u_long_1;             // ???? New in version 68!!!
-            uint32_t        u_long_2;             // generally 2
-            float           u_float_resolution_1;
-            float           u_float_resolution_2;     // generally 1000.0
+            float    *area_over_tex;
+            uint32_t num_stages;  // Should be 2?
+            uint32_t  u_long_1;
+            uint8_t  extra;      // Surface material?
         };
         typedef std::shared_ptr<section> section_p;
 
@@ -118,12 +110,11 @@ namespace acre {
             named_selection(std::istream &, uint32_t);
 
             std::string                    name;                       // "rightleg" or "neck" eg
-            compressed<uint16_t>           faces;             // indexing into the LodFaces Table
-            compressed<uint32_t>           face_weights;
+            compressed<uint32_t>           faces;             // indexing into the LodFaces Table
             uint32_t                       Always0Count;
             bool                           is_sectional;                       //Appears in the sections[]= list of a model.cfg
             compressed<uint32_t>           sections;          //IsSectional must be true. Indexes into the LodSections Table
-            compressed<uint16_t>           vertex_table;
+            compressed<uint32_t>           vertex_table;
             compressed<uint8_t>            texture_weights;  // if present they correspond to (are exentsions of) the VertexTableIndexes
         };
         typedef std::shared_ptr<named_selection> named_selection_p;
@@ -191,10 +182,10 @@ namespace acre {
             std::vector<uint32_t>               items;               // potentially compressed
             std::vector<std::vector<uint32_t>>  bone_links;
             uint32_t                            point_count;
-            uint32_t                            u_float_1;
+            uint32_t                            face_area;
+            uint32_t                            orHints;
+            uint32_t                            andHints;
             
-            float                               u_float_2;
-            float                               u_float_3;
             acre::vector3<float>                 min_pos;
             acre::vector3<float>                 max_pos;
             acre::vector3<float>                 autocenter_pos;
