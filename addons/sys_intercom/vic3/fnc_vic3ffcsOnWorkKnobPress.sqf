@@ -38,12 +38,16 @@ if (_workPos != 0) then {
     private _selectedRack = _wiredRacks select (_workPos - 1);
 
     private _rackId = _selectedRack select 0;
-    if ((_workPos != _monitorPos) && {_monitorPos != VIC3FFCS_MONITOR_KNOB_POSITIONS} && {_rackId != ""} && {_selectedRack select 2}) then {
+    if ((_workPos != _monitorPos) && {_rackId != ""} && {_selectedRack select 2}) then {
         private _radioId = [_rackId] call EFUNC(sys_rack,getMountedRadio);
 
-        _selectedRack set [1, RACK_NO_MONITOR];
-        if (_radioId != "") then {
-            [_vehicle, acre_player, _radioId] call EFUNC(sys_rack,stopUsingMountedRadio);
+        if (_monitorPos != VIC3FFCS_MONITOR_KNOB_POSITIONS) then {
+            _selectedRack set [1, RACK_NO_MONITOR];
+            if (_radioId != "") then {
+                [_vehicle, acre_player, _radioId] call EFUNC(sys_rack,stopUsingMountedRadio);
+            };
+        } else {
+            _selectedRack set [1, RACK_RX_ONLY];
         };
     };
 };
