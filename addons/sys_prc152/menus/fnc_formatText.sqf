@@ -54,12 +54,7 @@ while { _result != -1 && _iter < 5} do {
     _text = [
         _text,
         _replacementValue,
-        (
-            [
-                _key,
-                _value
-            ] call FUNC(formatChannelValue)
-        )
+        [_key, _value] call FUNC(formatChannelValue)
     ] call CBA_fnc_replace;
     TRACE_1("DONE", _text);
 
