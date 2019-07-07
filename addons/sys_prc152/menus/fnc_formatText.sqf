@@ -51,13 +51,15 @@ while { _result != -1 && _iter < 5} do {
 
     TRACE_2("channel data", _channelNumber, _channel);
     TRACE_3("Performing replacement", _text, _key, _value);
-    _text = [_text, _replacementValue,
-    (
-        [
-            _key,
-            _value
-        ] call FUNC(formatChannelValue)
-    )
+    _text = [
+        _text,
+        _replacementValue,
+        (
+            [
+                _key,
+                _value
+            ] call FUNC(formatChannelValue)
+        )
     ] call CBA_fnc_replace;
     TRACE_1("DONE", _text);
 
