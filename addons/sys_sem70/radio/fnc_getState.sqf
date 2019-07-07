@@ -38,7 +38,7 @@
  *      Hash Value
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 //TRACE_4("getState",_radioData,_event,_eventData,_radioData);
 
