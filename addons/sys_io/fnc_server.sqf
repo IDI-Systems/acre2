@@ -31,7 +31,7 @@ DFUNC(connectionFnc) = {
                         if ((missionNamespace getVariable [QGVAR(notConnectedTime), -15]) + 30 < time ) then {
                             GVAR(notConnectedTime) = time;
                             private _warning = format ["<t color='#FF8021'>WARNING!</t><br/> %1", localize LSTRING(acreNotConnected)];
-                            [[_warning, 1.5]] call CBA_fnc_notify;
+                            [[_warning, 2]] call CBA_fnc_notify;
                         };
                         GVAR(connectCount) = GVAR(connectCount) + 1;
                         if (GVAR(connectCount) > 15) then {
@@ -46,7 +46,7 @@ DFUNC(connectionFnc) = {
             } else {
                 LOG("PIPE OPENED!");
                 if (GVAR(hasErrored) && isMultiplayer) then {
-                    [[format ["<t color='#2B7319'>%1</t>", localize LSTRING(recoveredClosedPipe)], 1.5]] call CBA_fnc_notify;
+                    [[format ["<t color='#2B7319'>%1</t>", localize LSTRING(recoveredClosedPipe)], 2]] call CBA_fnc_notify;
                 } else {
                     [format ["<t color='#2B7319'>%1</t>", localize LSTRING(acreConnected)]] call CBA_fnc_notify;
                 };
