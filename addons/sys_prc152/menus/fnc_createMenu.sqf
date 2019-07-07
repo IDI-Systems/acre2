@@ -31,8 +31,8 @@ if (!isNil "_menu") then {
             private _subMenu_id = MENU_ID(_x);
             if (! isNil "_subMenu_id" ) then {
                 if (MENU_TYPE(_x) == MENUTYPE_DISPLAY ||
-                MENU_TYPE(_x) == MENUTYPE_LIST ||
-                MENU_TYPE(_x) == MENUTYPE_ACTIONSERIES) then {
+                {MENU_TYPE(_x) == MENUTYPE_LIST} ||
+                {MENU_TYPE(_x) == MENUTYPE_ACTIONSERIES}) then {
                     [_x, _menu] call FUNC(createMenu);
                 };
             };
