@@ -27,7 +27,7 @@ ADD_MENU(_menu);
 
 // Loop through the menu and add its children if it has ID's
 private _subMenuList = MENU_SUBMENUS(_menu);
-if (!isNil "_subMenuList") exitWith {};
+if (isNil "_subMenuList") exitWith {};
 
 // If there are submenus, loop
 {
