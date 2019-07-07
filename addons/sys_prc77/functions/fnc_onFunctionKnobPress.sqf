@@ -56,6 +56,6 @@ if (_newFunction != _currentFunction) then {
         private _eh = _control ctrlAddEventHandler ["MouseButtonUp", {call FUNC(snapbackFunctionKnob)}];
     };
     //Play sound and render dialog
-    ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], 1, false] call EFUNC(sys_sounds,playSound);
     [MAIN_DISPLAY] call CALLSTACK(FUNC(render));
 };
