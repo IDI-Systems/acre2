@@ -18,7 +18,7 @@
 
 TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!GET CURRENT CHANNEL", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
 if (isNil "_currentChannelId") then {

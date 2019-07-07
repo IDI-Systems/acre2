@@ -16,7 +16,7 @@
  * Public: No
  */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", "_radioData"];
 
 private _vol = _eventData;
 
