@@ -17,7 +17,7 @@
  */
 
 TRACE_1("", _this);
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 private _currentChannelId = HASH_GET(_radioData,"currentChannel");
 if (isNil "_currentChannelId") then {
@@ -35,15 +35,13 @@ private _opt = HASH_GET(_radioData,"optChannelData");
 
 TRACE_4("", _currentChannelId, _currentChannelData, _optChannelId, _opt);
 
-if (!(isNil "_optChannelId") && !(isNil "_opt")) then {
-    if (_optChannelId == _currentChannelId) then {
-        {
-            private _key = _x;
-            private _value = HASH_GET(_opt, _x);
+if (!(isNil "_optChannelId") && {!(isNil "_opt")} && {_optChannelId == _currentChannelId}) then {
+    {
+        private _key = _x;
+        private _value = HASH_GET(_opt, _x);
 
-            HASH_SET(_currentChannelData, _key, _value);
-        } forEach HASH_KEYS(_opt);
-    };
+        HASH_SET(_currentChannelData, _key, _value);
+    } forEach HASH_KEYS(_opt);
 };
 
 private _channelType = HASH_GET(_currentChannelData, "channelMode");
