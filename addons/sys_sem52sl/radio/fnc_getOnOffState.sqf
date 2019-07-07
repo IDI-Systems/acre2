@@ -39,6 +39,6 @@
  *      1 if the radio is on
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 HASH_GET(_radioData, "radioOn");

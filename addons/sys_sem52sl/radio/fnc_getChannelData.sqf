@@ -38,7 +38,7 @@
  *      Hash containing all data of parsed channel number
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 /*
  *  First step is to retreive the hash of the desired channel
