@@ -29,16 +29,16 @@ public:
     CKeyHandlerEngine();
     ~CKeyHandlerEngine();
 
-    AcreResult readKeyLoop();
+    acre::Result readKeyLoop();
 
-    AcreResult initialize( void );
-    AcreResult shutdown( void );
-    AcreResult release( void ) { return AcreResult::ok; };
+    acre::Result initialize( void );
+    acre::Result shutdown( void );
+    acre::Result release( void ) { return acre::Result::ok; };
 
-    AcreResult setKeyBind(string eventName, int keyCode, BOOL shift, BOOL ctrl, BOOL alt);
-    AcreResult removeKeyBind(string eventName);
+    acre::Result setKeyBind(string eventName, int keyCode, BOOL shift, BOOL ctrl, BOOL alt);
+    acre::Result removeKeyBind(string eventName);
 
-    AcreResult clearKeybinds( void );
+    acre::Result clearKeybinds( void );
 
     DECLARE_MEMBER(BOOL, ShuttingDown);
 

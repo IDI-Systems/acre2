@@ -185,7 +185,7 @@ bool acre::wrp::landscape::_process(std::istream &stream_) {
 }
 
 
-AcreResult acre::wrp::landscape::generateAcreWrp(std::ofstream &out) {
+acre::Result acre::wrp::landscape::generateAcreWrp(std::ofstream &out) {
 
     /*
      * Following the file format https://community.bistudio.com/wiki/Wrp_File_Format_-_OPRWv17_to_24
@@ -239,5 +239,5 @@ AcreResult acre::wrp::landscape::generateAcreWrp(std::ofstream &out) {
         out.write((char *) &elevations[elevIdx], sizeof(float32_t));
     }
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }

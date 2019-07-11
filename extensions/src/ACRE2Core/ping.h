@@ -12,7 +12,12 @@ volatile DWORD g_pingTime;
 RPC_FUNCTION(ping) {
     g_pingTime = clock() / CLOCKS_PER_SEC;
     vServer->sendMessage(CTextMessage::formatNewMessage("pong", "%f,", g_pingTime));
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

@@ -6,9 +6,7 @@
 #include "Lockable.h"
 
 
-class ISoundEngine :
-    public CLockable
-{
+class ISoundEngine : public CLockable {
 public:
     virtual ~ISoundEngine(){}
 

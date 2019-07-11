@@ -27,7 +27,7 @@ CBabelFilter::~CBabelFilter( void ) {
 }
 
 
-AcreResult CBabelFilter::process(short* samples, int sampleCount, int channels, acre_id_t id) {
+acre::Result CBabelFilter::process(short* samples, int sampleCount, int channels, acre::id_t id) {
     /*
     BabelStruct *speaker = this->getSpeaker(id);
     
@@ -87,10 +87,10 @@ AcreResult CBabelFilter::process(short* samples, int sampleCount, int channels, 
         speaker->period++;
     }
     */
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-BabelStruct *CBabelFilter::getSpeaker(acre_id_t id) {
+BabelStruct *CBabelFilter::getSpeaker(const acre::id_t id) {
     /*
     LOCK(this);
     BabelStruct *speaker;
@@ -99,7 +99,7 @@ BabelStruct *CBabelFilter::getSpeaker(acre_id_t id) {
         speaker = new BabelStruct();
         speaker->period = 0;
         speaker->attenCount = 0;
-        this->babelSpeakers.insert(std::pair<acre_id_t, BabelStruct *>(id, speaker));
+        this->babelSpeakers.insert(std::pair<acre::id_t, BabelStruct *>(id, speaker));
 
     } else {
         speaker = it->second;
@@ -107,5 +107,5 @@ BabelStruct *CBabelFilter::getSpeaker(acre_id_t id) {
     return speaker;
     UNLOCK(this);
     */
-    return NULL;
+    return nullptr;
 }

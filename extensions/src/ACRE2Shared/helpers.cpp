@@ -1,10 +1,13 @@
 #include "helpers.h"
 
 #pragma comment (lib, "version.lib")
-bool getModuleVersion(int16_t *major, int16_t *minor, int16_t *patch) {
+bool getModuleVersion(int16_t *const major, int16_t *const minor, int16_t *const patch) {
 #ifdef _WIN32
     // Module version info code originally donated by dedmen on 2019-06-14
     char fileName[_MAX_PATH];
+    if (fileName == nullptr) {
+        return false;
+    }
     const uint64_t sizeFileName = GetModuleFileName(nullptr, fileName, _MAX_PATH);
     fileName[sizeFileName] = NULL;
 
@@ -12,6 +15,9 @@ bool getModuleVersion(int16_t *major, int16_t *minor, int16_t *patch) {
     const uint64_t sizeVersionInfo = GetFileVersionInfoSize(fileName, &handle);
 
     uint8_t* versionInfo = new uint8_t[sizeVersionInfo];
+    if (versionInfo == nullptr) {
+        return false;
+    }
     const bool ret = GetFileVersionInfo(fileName, handle, sizeVersionInfo, versionInfo);
 
     if (ret) {
