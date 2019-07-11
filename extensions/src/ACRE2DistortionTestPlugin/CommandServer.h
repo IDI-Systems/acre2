@@ -12,7 +12,7 @@
 class CCommandServer : public IServer, public CLockable {
 public:
     CCommandServer(void);
-    CCommandServer(acre::id_t id);
+    CCommandServer(const acre::id_t id);
     ~CCommandServer(void);
 
     acre::Result initialize(void);
@@ -23,9 +23,8 @@ public:
 
     acre::Result release(void);
 
-    //DECLARE_MEMBER(BOOL, Connected);
-    //DECLARE_MEMBER(acre::id_t, Id);
-    DECLARE_MEMBER(char *, CommandId);
+    __inline void setCommandId(char *const value) { m_commandId = value; }
+    __inline char* getCommandId() const { return m_commandId; }
 
     __inline void setConnected(const bool value) final { m_connected = value; }
     __inline bool getConnected() const final { return m_connected; }
@@ -36,4 +35,5 @@ public:
 protected:
     acre::id_t m_id;
     bool m_connected;
+    char *m_commandId;
 };

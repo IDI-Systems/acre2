@@ -22,7 +22,7 @@ public:
 
     acre::Result process(short* samples, int sampleCount, int channels, acre::id_t id);
 
-    BabelStruct *getSpeaker(acre::id_t id);
+    BabelStruct *getSpeaker(const acre::id_t id);
 
 protected:
     std::map<acre::id_t, BabelStruct *> babelSpeakers;

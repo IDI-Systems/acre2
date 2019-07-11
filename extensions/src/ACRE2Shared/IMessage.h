@@ -14,6 +14,6 @@ public:
 
     virtual const unsigned char *const getParameter(const uint32_t index) const = 0;
     virtual int32_t getParameterAsInt(const uint32_t index) const = 0;
-    virtual float32_t getParameterAsFloat(uint32_t index) const = 0;
+    virtual float32_t getParameterAsFloat(const uint32_t index) const = 0;
     virtual uint32_t getParameterCount(void) const = 0;
 };

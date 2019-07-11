@@ -90,7 +90,7 @@ acre::Result CBabelFilter::process(short* samples, int sampleCount, int channels
     return acre::Result::ok;
 }
 
-BabelStruct *CBabelFilter::getSpeaker(acre::id_t id) {
+BabelStruct *CBabelFilter::getSpeaker(const acre::id_t id) {
     /*
     LOCK(this);
     BabelStruct *speaker;
@@ -107,5 +107,5 @@ BabelStruct *CBabelFilter::getSpeaker(acre::id_t id) {
     return speaker;
     UNLOCK(this);
     */
-    return NULL;
+    return nullptr;
 }

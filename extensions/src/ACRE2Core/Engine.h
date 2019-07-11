@@ -25,15 +25,15 @@ public:
     acre::Result initialize(IClient * client, IServer * externalServer, std::string fromPipeName, std::string toPipeName);
     acre::Result initialize(IClient * client, IServer * externalServer, std::string fromPipeName, std::string toPipeName, std::string loggingPath);
 
-    acre::Result start(acre::id_t id);
+    acre::Result start(const acre::id_t id);
     acre::Result stop();
 
-    acre::Result localStartSpeaking(acre::Speaking speakingType);
-    acre::Result localStartSpeaking(acre::Speaking speakingType, std::string radioId);
+    acre::Result localStartSpeaking(const acre::Speaking speakingType);
+    acre::Result localStartSpeaking(const acre::Speaking speakingType, const std::string radioId);
     acre::Result localStopSpeaking( void );
 
-    acre::Result remoteStartSpeaking(acre::id_t remoteId, int languageId, std::string netId, acre::Speaking speakingType, std::string radioId, acre::volume_t curveScale);
-    acre::Result remoteStopSpeaking(acre::id_t remoteId);
+    acre::Result remoteStartSpeaking(const acre::id_t remoteId, const int32_t languageId, const std::string netId, const acre::Speaking speakingType, const std::string radioId, const acre::volume_t curveScale);
+    acre::Result remoteStopSpeaking(const acre::id_t remoteId);
 
     std::map<acre::id_t, CPlayer *> speakingList;
 

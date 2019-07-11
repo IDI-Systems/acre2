@@ -25,7 +25,7 @@ RPC_FUNCTION(ext_remoteStartSpeaking) {
     const int32_t languageId = static_cast<acre::id_t>(vMessage->getParameterAsInt(1));
     const  std::string netId = std::string((char *)vMessage->getParameter(2));
 
-    const  acre::Speaking speakingType = (acre::Speaking)vMessage->getParameterAsInt(3);
+    const  acre::Speaking speakingType = static_cast<acre::Speaking>(vMessage->getParameterAsInt(3));
     const std::string radio_id = std::string((char *)vMessage->getParameter(4));
     const acre::volume_t curveScale = vMessage->getParameterAsFloat(5);
 

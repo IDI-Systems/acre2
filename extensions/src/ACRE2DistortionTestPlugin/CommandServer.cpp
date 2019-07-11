@@ -42,7 +42,7 @@ acre::Result CCommandServer::handleMessage(unsigned char *data){
     CTextMessage *msg;
     //TRACE("recv: [%s]", data);
     msg = new CTextMessage((char *)data, strlen((char *)data));
-    if (CEngine::getInstance()->getRpcEngine() && msg) {
+    if (CEngine::getInstance()->getRpcEngine() && (msg != nullptr)) {
         CEngine::getInstance()->getRpcEngine()->runProcedure((IServer *)this, (IMessage *)msg);
     }
     return acre::Result::ok;
@@ -61,11 +61,11 @@ acre::Result CCommandServer::release(void) {
 //
 // constructor/destructor foo
 // 
-CCommandServer::CCommandServer(acre::id_t id) {
+CCommandServer::CCommandServer(const acre::id_t id) {
     this->setId(id);
 }
 CCommandServer::CCommandServer(void) {
-    this->setCommandId(NULL);
+    this->setCommandId(nullptr);
     this->setConnected(true);
 }
 CCommandServer::~CCommandServer() {
