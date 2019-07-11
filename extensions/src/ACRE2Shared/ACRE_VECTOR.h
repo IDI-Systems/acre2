@@ -18,9 +18,9 @@ namespace acre {
         }
 
         Vector3(const float32_t x_, const float32_t y_, const float32_t z_) {
-            x = 0.0f;
-            y = 0.0f;
-            z = 0.0f;
+            x = x_;
+            y = y_;
+            z = z_;
         }
 
         // Operators
@@ -36,15 +36,15 @@ namespace acre {
         }
 
         // Math functions
-        const Vector3 operator+(Vector3 v) {
+        const Vector3 operator+(const Vector3 &v) {
             return Vector3((x + v.x), (y + v.y), (z + v.z));
         }
 
-        const Vector3 operator-(Vector3 v) {
+        const Vector3 operator-(const Vector3 &v) {
             return Vector3((x - v.x), (y - v.y), (z - v.z));
         }
 
-        const Vector3 operator*(float32_t w) {
+        const Vector3 operator*(const float32_t w) {
             return Vector3((x * w), (y * w), (z * w));
         }
 
@@ -52,13 +52,13 @@ namespace acre {
             return Vector3((x / w), (y / w), (z / w));
         }
         const float32_t length() {
-            return (float)sqrt((x * x) + (y * y) + (z * z));
+            return static_cast<float32_t>(sqrt((x * x) + (y * y) + (z * z)));
         }
         const float32_t distance(Vector3 a, Vector3 b) {
             Vector3 lineVector(a - b);
             return lineVector.length();
         }
-        const float32_t distance(Vector3 a) {
+        const float32_t distance(const Vector3 &a) {
             Vector3 lineVector;
             lineVector.x = x - a.x;
             lineVector.y = y - a.y;
