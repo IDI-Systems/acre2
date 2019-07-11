@@ -41,7 +41,7 @@
 params ["_radioId", "", "", "", ""];
 
 // Prevent radio from being opened if it is externally used or it is not accessible
-if (!([_radioId] call EFUNC(sys_radio,canOpenRadio))) exitWith { false };
+if !([_radioId] call EFUNC(sys_radio,canOpenRadio)) exitWith { false };
 
 disableSerialization;
 //PARAMS_1(GVAR(currentRadioId))
@@ -56,15 +56,15 @@ TRACE_2("OpenGui",GVAR(currentRadioId),GVAR(lastAction));
 // Use this to turn off the backlight display//also to save last channel
 
 [{
-    params ["_input","_pfhID"];
+    params ["_input", "_pfhID"];
 
-    if (GVAR(currentRadioId) isEqualTo -1) then {_input set [1,false]}; // Remove PFH on exit.
-    _input params ["_radioId","_open"];
-    if (_open) then { _input set [2,GVAR(lastAction)]; };
+    if (GVAR(currentRadioId) isEqualTo -1) then {_input set [1, false]}; // Remove PFH on exit.
+    _input params ["_radioId", "_open"];
+    if (_open) then { _input set [2, GVAR(lastAction)]; };
     private _lastAction = _input select 2;
 
-    if (_lastAction+5 < time) then {
-        if (GVAR(backlightOn) && !GVAR(displayButtonPressed)) then {
+    if ((_lastAction + 5) < time) then {
+        if (GVAR(backlightOn) && {!GVAR(displayButtonPressed)}) then {
             GVAR(backlightOn) = false;
 
             if (_open) then {
@@ -73,5 +73,5 @@ TRACE_2("OpenGui",GVAR(currentRadioId),GVAR(lastAction));
         };
         if (!_open) then { [_pfhID] call CBA_fnc_removePerFrameHandler; };
     };
-}, 1, [GVAR(currentRadioId),true,0]] call CBA_fnc_addPerFrameHandler;
+}, 1, [GVAR(currentRadioId), true, 0]] call CBA_fnc_addPerFrameHandler;
 true

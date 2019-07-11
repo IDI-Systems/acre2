@@ -14,13 +14,11 @@
 
 RPC_FUNCTION(updateSpeakingData) {
 
-    std::string speakingType;
-    acre_id_t playerId;
-    CPlayer *speaker = NULL;
+    CPlayer *speaker = nullptr;
 
-    speakingType = std::string((char *)vMessage->getParameter(0));
-    playerId = (acre_id_t)vMessage->getParameterAsInt(1);
-    int32_t speaksBabbel = vMessage->getParameterAsInt(2);
+    const std::string speakingType = std::string((char *)vMessage->getParameter(0));
+    const acre::id_t playerId = static_cast<acre::id_t>(vMessage->getParameterAsInt(1));
+    const bool speaksBabbel = vMessage->getParameterAsInt(2) == 1;
     if (playerId == CEngine::getInstance()->getSelf()->getId() && speakingType == "r") {
         //speaker = CEngine::getInstance()->getSelf();
     } else {
@@ -35,7 +33,7 @@ RPC_FUNCTION(updateSpeakingData) {
     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->lock();
     if (speaker) {
         LOCK(speaker);
-        if (speakingType == "d" || speakingType == "i") {
+        if ((speakingType == "d") || (speakingType == "i")) {
             if ((speaker->getInitType() != "d" && speaker->getInitType() != "i") || speakingType != speaker->getInitType()) {
                 speaker->setInitType(speakingType);
                 if (speaker->channels[0]) {
@@ -43,17 +41,18 @@ RPC_FUNCTION(updateSpeakingData) {
                     speaker->channels[0] = NULL;
                 }
                 CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->channels[0], 4800, false);
-                if (speaksBabbel)
-                        speaker->channels[0]->setEffectInsert(0, "acre_babbel");
+                if (speaksBabbel) {
+                    speaker->channels[0]->setEffectInsert(0, "acre_babbel");
+                }
                 speaker->channels[0]->setMixdownEffectInsert(0, "acre_positional");
-                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(AcreSpeaking::direct));
-                speaker->setSpeakingType(AcreSpeaking::direct);
+                speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(acre::Speaking::direct));
+                speaker->setSpeakingType(acre::Speaking::direct);
                 if (speakingType == "i") {
                     speaker->channels[0]->setEffectInsert(2, "acre_radio");
-                    speaker->channels[0]->getEffectInsert(2)->setParam("disableNoise", TRUE);
+                    speaker->channels[0]->getEffectInsert(2)->setParam("disableNoise", true);
                     speaker->channels[0]->getEffectInsert(2)->setParam("signalQuality", 1.0f);
-                    speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(AcreSpeaking::intercom));
-                    speaker->setSpeakingType(AcreSpeaking::intercom);
+                    speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(acre::Speaking::intercom));
+                    speaker->setSpeakingType(acre::Speaking::intercom);
                 }
                 speaker->channels[0]->setEffectInsert(7, "acre_volume");
             }
@@ -75,13 +74,13 @@ RPC_FUNCTION(updateSpeakingData) {
             // cuts down on bandwidth and complexity. Now there is no more need to transmit lists of
             // radios or transfer radio ownerships around. Speakers just use whatever radio ID they
             // want.
-            int count = vMessage->getParameterAsInt(3);
-            speaker->setSpeakingType(AcreSpeaking::radio);
-            if (CEngine::getInstance()->getClient()->getMuted(playerId) == AcreResult::ok ) {
+            const int32_t count = vMessage->getParameterAsInt(3);
+            speaker->setSpeakingType(acre::Speaking::radio);
+            if (CEngine::getInstance()->getClient()->getMuted(playerId) == acre::Result::ok ) {
                 CEngine::getInstance()->getClient()->setMuted(playerId, false);
             }
-            for (int i = 0; i < count; ++i) {
-                int channelId = i+1;
+            for (int32_t i = 0; i < count; ++i) {
+                const int32_t channelId = i + 1;
                 if (!speaker->channels[channelId]) {
                     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->channels[channelId], 4800, false);
                     if (speaksBabbel)
@@ -90,14 +89,14 @@ RPC_FUNCTION(updateSpeakingData) {
                     speaker->channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4));
 
                     speaker->channels[channelId]->setEffectInsert(2, "acre_radio");
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", FALSE);
+                    speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", false);
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5));
 
                     speaker->channels[channelId]->setMixdownEffectInsert(0, "acre_positional");
                 }
                 
                 if (speaker->channels[channelId]) {
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(AcreSpeaking::radio));
+                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(acre::Speaking::radio));
             
                     speaker->channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4+(i*7)));
                     
@@ -111,8 +110,6 @@ RPC_FUNCTION(updateSpeakingData) {
                     } else {
                         speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000000);
                     }
-
-
 
                     speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosX", vMessage->getParameterAsFloat(8+(i*7)));
                     speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosZ", vMessage->getParameterAsFloat(9+(i*7)));
@@ -135,20 +132,25 @@ RPC_FUNCTION(updateSpeakingData) {
                 CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->channels[0], 4800, false);
                 speaker->channels[0]->setEffectInsert(7, "acre_volume");
             }
-            speaker->setSpeakingType(AcreSpeaking::spectate);
-            if (CEngine::getInstance()->getClient()->getMuted(playerId) == AcreResult::ok) {
+            speaker->setSpeakingType(acre::Speaking::spectate);
+            if (CEngine::getInstance()->getClient()->getMuted(playerId) == acre::Result::ok) {
                 CEngine::getInstance()->getClient()->setMuted(playerId, false);
             }
             if (speaker->channels[0]) {
                 speaker->channels[0]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(3));
             }
         } else {
-            speaker->setSpeakingType(AcreSpeaking::unknown);
+            speaker->setSpeakingType(acre::Speaking::unknown);
         }
         UNLOCK(speaker);
     }
     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->unlock();
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

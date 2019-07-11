@@ -32,3 +32,5 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
 };
 
 GVAR(keyDownWait) = false;
+
+true

@@ -15,11 +15,16 @@
 
 RPC_FUNCTION(startRadioSpeaking) {
 
-    std::string radioId = std::string((char *)vMessage->getParameter(0));
+    const std::string radioId = std::string((char *)vMessage->getParameter(0));
 
-    CEngine::getInstance()->getClient()->localStartSpeaking(AcreSpeaking::radio, radioId);
+    CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::radio, radioId);
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

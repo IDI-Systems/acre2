@@ -47,7 +47,7 @@
  *  return value
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "", ""];
 
 private _obj = [_radioId] call EFUNC(sys_radio,getRadioObject);
 private _pos = getPosASL _obj;

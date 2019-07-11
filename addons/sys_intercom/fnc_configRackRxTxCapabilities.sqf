@@ -20,8 +20,8 @@ params ["_vehicle"];
 private _racks = [_vehicle] call EFUNC(sys_rack,getVehicleRacks);
 private _intercoms = (_vehicle getVariable [QGVAR(intercomNames), []]);
 
+private _intercomStations = _vehicle getVariable [QGVAR(intercomStations), []];
 {
-
     private _stationName = _x;
     {
         private _seatHasIntercomAccess = [_vehicle, objNull, _forEachIndex, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _stationName] call FUNC(getStationConfiguration);
@@ -37,4 +37,6 @@ private _intercoms = (_vehicle getVariable [QGVAR(intercomNames), []]);
 
         [_intercomStatus, INTERCOM_STATIONSTATUS_WIREDRACKS, _rackRxTxConfig] call CBA_fnc_hashSet;
     } forEach _intercoms;
-} forEach (_vehicle getVariable [QGVAR(intercomStations), []]);
+} forEach _intercomStations;
+
+_vehicle setVariable [QGVAR(intercomStations), _intercomStations, true];

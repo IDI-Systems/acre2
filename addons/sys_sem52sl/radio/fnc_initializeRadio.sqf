@@ -45,7 +45,7 @@
 
 TRACE_1("INITIALIZING ACRE_SEM52SL", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", "_radioData"];
 
 _eventData params ["_baseName", "_preset"];
 

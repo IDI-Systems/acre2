@@ -15,9 +15,14 @@
 
 RPC_FUNCTION(stopRadioSpeaking) {
 
-    CEngine::getInstance()->getClient()->localStopSpeaking(AcreSpeaking::radio);
+    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::radio);
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

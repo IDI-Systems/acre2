@@ -52,7 +52,7 @@ switch (_intercomFunctionality) do {
                 if (_value > INTERCOM_DISCONNECTED) then {
                     [_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
                 } else {
-                    [_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
+                    [_intercomStatus, "unit", objNull] call CBA_fnc_hashSet;
                 };
             };
         } else {
