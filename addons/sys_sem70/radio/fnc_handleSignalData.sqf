@@ -44,6 +44,6 @@
 */
 
 
-params ["","","_eventData"];
+params ["", "", "_eventData"];
 
 _eventData;

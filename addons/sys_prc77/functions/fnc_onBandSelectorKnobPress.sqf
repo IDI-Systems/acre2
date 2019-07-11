@@ -36,5 +36,5 @@ SET_STATE_CRIT("band", _newBand);
 ["setCurrentChannel", _currentTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);
 
 //Play sound and render dialog
-["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
+["Acre_GenericClick", [0, 0, 0], [0, 0, 0], 1, false] call EFUNC(sys_sounds,playSound);
 [MAIN_DISPLAY] call CALLSTACK(FUNC(render));

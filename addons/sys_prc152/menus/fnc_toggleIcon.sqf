@@ -18,7 +18,7 @@
 
 params ["_iconId","_toggle"];
 
-private _ctrl = ((uiNamespace getVariable [QGVAR(currentDisplay), displayNull]) displayCtrl _iconId);
+private _ctrl = (uiNamespace getVariable [QGVAR(currentDisplay), displayNull]) displayCtrl _iconId;
 private _type = ctrlType _ctrl;
 
 if ((count _this) > 2) then {

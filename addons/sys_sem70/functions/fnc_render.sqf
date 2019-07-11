@@ -215,7 +215,7 @@ RADIO_CTRL(115) ctrlSetText (_network2KnobImages select (_networkKnobPosition se
 RADIO_CTRL(116) ctrlSetText (_network3KnobImages select (_networkKnobPosition select 2));
 
 //display
-if (GVAR(backlightOn) || GVAR(displayButtonPressed)) then {
+if (GVAR(backlightOn) || {GVAR(displayButtonPressed)}) then {
     [_display] call FUNC(renderDisplay);
 } else {
     [_display] call FUNC(clearDisplay);
