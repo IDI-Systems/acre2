@@ -16,39 +16,52 @@ public:
     CNamedPipeServer(std::string fromPipeName, std::string toPipeName);
     ~CNamedPipeServer(void);
 
-    AcreResult readLoop();
-    AcreResult sendLoop();
+    acre::Result readLoop();
+    acre::Result sendLoop();
 
-    AcreResult initialize( void );
-    AcreResult shutdown( void );
+    acre::Result initialize( void );
+    acre::Result shutdown( void );
 
-    AcreResult handleMessage(unsigned char *data) { data=data;return AcreResult::notImplemented; }
+    acre::Result handleMessage(unsigned char *data) { (void) data; return acre::Result::notImplemented; }
 
-    AcreResult sendMessage( IMessage *message );
+    acre::Result sendMessage( IMessage *message );
 
-    AcreResult release( void ) { return AcreResult::ok; };
+    acre::Result release( void ) { return acre::Result::ok; };
     
-    AcreResult checkServer( void ); // DRM
+    acre::Result checkServer( void ); // DRM
 
     char *currentServerId;
 
     DECLARE_MEMBER(HANDLE, PipeHandleRead);
     DECLARE_MEMBER(HANDLE, PipeHandleWrite);
-    DECLARE_MEMBER(BOOL, ConnectedWrite);
-    DECLARE_MEMBER(BOOL, ConnectedRead)
-    DECLARE_MEMBER(acre_id_t, Id);
-    DECLARE_MEMBER(BOOL, ShuttingDown);
     DECLARE_MEMBER(std::string, FromPipeName);
     DECLARE_MEMBER(std::string, ToPipeName);
 
-public:
-    BOOL getConnected() { return (this->getConnectedRead() && this->getConnectedWrite()); };
-    void setConnected(BOOL value) { this->setConnectedRead(value); this->setConnectedWrite(value); };
+    __inline void setConnectedWrite(const bool value) { m_connectedWrite = value; }
+    __inline bool getConnectedWrite() const { return m_connectedWrite; }
+
+    __inline void setConnectedRead(const bool value) { m_connectedRead = value; }
+    __inline bool getConnectedRead() const { return m_connectedRead; }
+
+    __inline void setShuttingDown(const bool value) { m_shuttingDown = value; }
+    __inline bool getShuttingDown() const { return m_shuttingDown; }
+
+    __inline void setId(const acre::id_t value) final { m_id = value; }
+    __inline acre::id_t getId() const final { return m_id; }
+
+    bool getConnected() const final { return (getConnectedRead() && getConnectedWrite()); };
+    void setConnected(bool value) final { setConnectedRead(value); setConnectedWrite(value); };
+
+protected:
+    acre::id_t m_id;
+    bool       m_connectedWrite;
+    bool       m_connectedRead;
+    bool       m_shuttingDown;
+
 private:
     Concurrency::concurrent_queue<IMessage *> m_sendQueue;
     std::thread m_readThread;
     std::thread m_sendThread;
     PSECURITY_ATTRIBUTES m_PipeSecurity;
-    std::set<std::string> validTSServers;
-    
+    std::set<std::string> validTSServers;       
 };

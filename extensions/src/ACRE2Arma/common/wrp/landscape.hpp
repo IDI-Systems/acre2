@@ -167,7 +167,7 @@ namespace acre {
 
             LandscapeResult parse(const std::string &path_);
             LandscapeResult parse(std::istream &stream_);
-            AcreResult generateAcreWrp(std::ofstream &);
+            acre::Result generateAcreWrp(std::ofstream &);
         protected:
             bool _read_binary_tree_block(std::istream &stream, const uint32_t bit_length, const uint32_t block_size, const uint32_t cell_size, const uint32_t block_offset_x, const uint32_t block_offset_y);
             bool _process(std::istream &stream);

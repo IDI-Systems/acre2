@@ -10,6 +10,6 @@ public:
     CFilterGain(void);
     ~CFilterGain(void);
 
-    AcreResult process(short* samples, int sampleCount, int channels, float gain);
-    AcreResult reset(void) { return AcreResult::notImplemented; }
+    acre::Result process(short* samples, int sampleCount, int channels, float gain);
+    acre::Result reset(void) { return acre::Result::notImplemented; }
 };
