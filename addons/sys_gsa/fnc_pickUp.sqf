@@ -46,7 +46,6 @@ switch (_classname) do {
                 _unit removeItem "ACRE_VHF30108MAST";  // Delete the mast
                 if (_unit canAdd "ACRE_VHF30108") then {
                     _item = "ACRE_VHF30108";
-
                     _canDelete = true;
                 } else {
                     _unit addItem "ACRE_VHF30108MAST";  // Add the mast again since there is no space in the inventory
@@ -65,8 +64,12 @@ if (_canDelete) then {
         [_unit, "AmovPercMstpSrasWrflDnon_diary"] call ace_common_fnc_doAnimation;
     };
 
-    _unit addItem _item;
-    deleteVehicle _gsa;
+    [{
+        params ["_unit", "_item", "_gsa"];
+
+        _unit addItem _item;
+        deleteVehicle _gsa;
+    }, [_unit, _item, _gsa], 1] call CBA_fnc_waitAndExecute;
 } else {
     [[ICON_RADIO_CALL], [localize LSTRING(inventoryFull)]] call CBA_fnc_notify;
 };

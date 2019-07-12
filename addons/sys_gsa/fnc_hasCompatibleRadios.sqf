@@ -23,11 +23,4 @@ if (isNull _unit || {isNull _gsa}) exitWith {
 };
 
 private _radioList = [] call EFUNC(sys_data,getPlayerRadioList);
-private _hasCompatible = false;
-{
-    if ([_gsa, _x] call FUNC(isRadioCompatible)) exitWith {
-        _hasCompatible = true;
-    };
-} forEach _radioList;
-
-_hasCompatible
+_radioList findIf {[_gsa, _x] call FUNC(isRadioCompatible)} != -1
