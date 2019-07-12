@@ -33,7 +33,6 @@ class CfgMods {
     };
 };
 
-#include "CfgRscStd.hpp"
 #include "CfgSettings.hpp"
 
 #include "CfgEventHandlers.hpp"
