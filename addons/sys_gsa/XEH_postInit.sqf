@@ -10,6 +10,12 @@
         _success
     };
 
+    private _connectedUnit = [_radioId] call EFUNC(sys_radio,getRadioObject);
+    if (isNull _connectedUnit) exitWith {
+        ERROR("Null connected object returned");
+        _success
+    };
+
     private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_radioId);
     {
         _x params ["", "_component"];
@@ -27,14 +33,20 @@
                     [_pfh] call CBA_fnc_removePerFrameHandler;
                 };
 
-                if (_unit isKindOf "CAManBase" || {!(crew _unit isEqualTo [])}) then {
-                    if (_unit isKindOf "CAManBase") then {
-                        [QGVAR(notifyPlayer), [localize LSTRING(disconnected)], _unit] call CBA_fnc_targetEvent;
+                if (_connectedUnit isKindOf "CAManBase" || {!(crew _connectedUnit isEqualTo [])}) then {
+                    if (_connectedUnit isKindOf "CAManBase") then {
+                        [QGVAR(notifyPlayer), [localize LSTRING(disconnected)], _connectedUnit] call CBA_fnc_targetEvent;
                     } else {
                         {
-                            [QGVAR(notifyPlayer), [localize LSTRING(disconnected)], _unit] call CBA_fnc_targetEvent;
-                        } forEach (crew _unit);
+                            [QGVAR(notifyPlayer), [localize LSTRING(disconnected)], _connectedUnit] call CBA_fnc_targetEvent;
+                        } forEach (crew _connectedUnit);
                     };
+                };
+
+                if (_connectedUnit != _unit && {_connectedUnit isKindOf "CAManBase"}) then {
+                    // The unit that disconnected the antenna is different from the unit that was connected to it
+                    private _text = format [localize LSTRING(disconnectedUnit), name _unit];
+                    [QGVAR(notifyPlayer), [_text], _unit] call CBA_fnc_targetEvent;
                 };
             };
         };

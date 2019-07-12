@@ -11,6 +11,10 @@
             <Spanish>Desconectar de la antena</Spanish>
             <Japanese>地上アンテナから切断</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_gsa_disconnectedUnit">
+            <English>You disconnected %1 from GSA</English>
+            <Spanish>Has desconectado a %1 de la antena</Spanish>
+        </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpike">
             <English>Place Spike</English>
             <Spanish>Clavar antena</Spanish>
@@ -65,6 +69,10 @@
             <English>VHF30108 Mast</English>
             <Spanish>Mastil de la antena VHF30108</Spanish>
             <Japanese>VHF30108 マスト</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_gsa_inventoryFull">
+            <English>Inventory full</English>
+            <Spanish>Inventario lleno</Spanish>
         </Key>
     </Package>
 </Project>
