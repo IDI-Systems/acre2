@@ -25,8 +25,8 @@ public:
     };
 
     DECLARE_MEMBER(acre::id_t, Id);
-    DECLARE_MEMBER(acre::Vector3_t, WorldPosition);
-    DECLARE_MEMBER(acre::Vector3_t, HeadVector);
+    DECLARE_MEMBER(acre::Vector3<float32_t>, WorldPosition);
+    DECLARE_MEMBER(acre::Vector3<float32_t>, HeadVector);
     DECLARE_MEMBER(acre::Speaking, SpeakingType);
 
     DECLARE_MEMBER(acre::volume_t, Volume);

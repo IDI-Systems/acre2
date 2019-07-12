@@ -4,20 +4,21 @@
 #include "Types.h"
 
 namespace acre {
+    template <typename T>
     struct Vector3 {
         // Data
-        float32_t x;
-        float32_t y;
-        float32_t z;
+        T x;
+        T y;
+        T z;
 
         // Constructors and Destructors
         Vector3() {
-            x = 0.0f;
-            y = 0.0f;
-            z = 0.0f;
+            x = static_cast<T>(0);
+            y = static_cast<T>(0);
+            z = static_cast<T>(0);
         }
 
-        Vector3(const float32_t x_, const float32_t y_, const float32_t z_) {
+        Vector3(const T x_, const T y_, const T z_) {
             x = x_;
             y = y_;
             z = z_;
@@ -44,21 +45,21 @@ namespace acre {
             return Vector3((x - v.x), (y - v.y), (z - v.z));
         }
 
-        const Vector3 operator*(const float32_t w) {
+        const Vector3 operator*(const T w) {
             return Vector3((x * w), (y * w), (z * w));
         }
 
-        const Vector3 operator/(const float32_t w) {
+        const Vector3 operator/(const T w) {
             return Vector3((x / w), (y / w), (z / w));
         }
-        const float32_t length() {
-            return static_cast<float32_t>(sqrt((x * x) + (y * y) + (z * z)));
+        const T length() {
+            return static_cast<T>(std::sqrt((x * x) + (y * y) + (z * z)));
         }
-        const float32_t distance(Vector3 a, Vector3 b) {
+        const T distance(Vector3 a, Vector3 b) {
             Vector3 lineVector(a - b);
             return lineVector.length();
         }
-        const float32_t distance(const Vector3 &a) {
+        const T distance(const Vector3 &a) {
             Vector3 lineVector;
             lineVector.x = x - a.x;
             lineVector.y = y - a.y;
@@ -67,6 +68,4 @@ namespace acre {
             return lineVector.length();
         }
     };
-
-    using Vector3_t = Vector3;
 } /* namespace acre */

@@ -34,7 +34,7 @@ public:
 
     virtual std::string getUniqueId() = 0;
 
-    virtual acre::Result playSound(std::string path, acre::Vector3_t position, const float32_t volume, const int32_t looping) = 0;
+    virtual acre::Result playSound(std::string path, acre::Vector3<float32_t> position, const float32_t volume, const int32_t looping) = 0;
 
     virtual acre::Result unMuteAll( void ) = 0;
 
