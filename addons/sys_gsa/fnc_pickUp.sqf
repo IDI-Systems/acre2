@@ -33,7 +33,6 @@ switch (_classname) do {
     case "vhf30108Item": {
         _item = "ACRE_VHF30108";
         if (_unit canAdd _item) then {
-            _item = _item;
             _canDelete = true;
         };
     };
@@ -46,7 +45,6 @@ switch (_classname) do {
         };
 
         if (_unit canAdd _item) then {
-            _item = _item;
             _canDelete = true;
         };
     };
@@ -60,4 +58,6 @@ if (_canDelete) then {
 
     _unit addItem _item;
     deleteVehicle _gsa;
+} else {
+    [[ICON_RADIO_CALL], [localize LSTRING(inventoryFull)]] call CBA_fnc_notify;
 };
