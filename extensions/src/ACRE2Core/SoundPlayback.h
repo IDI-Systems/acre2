@@ -33,7 +33,7 @@ public:
 
     acre::Result buildSound(std::string id, std::string content);
     acre::Result loadSound(std::string id);
-    acre::Result playSound(std::string id, acre::Vector3<float32_t> position, acre::Vector3<float32_t> direction, float volume, bool isWorld);
+    acre::Result playSound(std::string id, acre::vec3_fp32_t position, acre::vec3_fp32_t direction, float volume, bool isWorld);
 
 private:
     std::map<std::string, SoundItem *> itemMap;

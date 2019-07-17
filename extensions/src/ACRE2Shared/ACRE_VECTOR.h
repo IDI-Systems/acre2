@@ -68,4 +68,7 @@ namespace acre {
             return lineVector.length();
         }
     };
+
+    using vec3_fp32_t = Vector3<float32_t>;
+    using vec3_fp64_t = Vector3<float64_t>;
 } /* namespace acre */

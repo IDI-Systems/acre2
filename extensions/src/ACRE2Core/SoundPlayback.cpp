@@ -50,7 +50,7 @@ acre::Result CSoundPlayback::loadSound(std::string id) {
     return acre::Result::ok;
 }
 
-acre::Result CSoundPlayback::playSound(std::string id, acre::Vector3<float32_t> position, acre::Vector3<float32_t> direction, float volume, bool isWorld) {
+acre::Result CSoundPlayback::playSound(std::string id, acre::vec3_fp32_t position, acre::vec3_fp32_t direction, float volume, bool isWorld) {
     std::string tempPath = CEngine::getInstance()->getClient()->getTempFilePath();
     tempPath += "\\";
     tempPath += id;
