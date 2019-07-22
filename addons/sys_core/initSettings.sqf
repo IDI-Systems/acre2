@@ -181,17 +181,6 @@
     {}
 ] call CBA_Settings_fnc_init;
 
-// Babel Color
-[
-    QGVAR(languageColor),
-    "COLOR",
-    localize LSTRING(languageColor_displayName),
-    "ACRE2 UI",
-    [ACRE_NOTIFICATION_RED],
-    false,
-    {}
-] call CBA_Settings_fnc_init;
-
 // Channel Switch Color
 [
     QGVAR(switchChannelColor),
@@ -225,6 +214,16 @@
     {}
 ] call CBA_Settings_fnc_init;
 
+// Babel Color
+[
+    QGVAR(languageColor),
+    "COLOR",
+    localize LSTRING(languageColor_displayName),
+    "ACRE2 UI",
+    [ACRE_NOTIFICATION_RED],
+    false,
+    {}
+] call CBA_Settings_fnc_init;
 
 // Hint Text Font
 [
