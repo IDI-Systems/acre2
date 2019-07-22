@@ -65,7 +65,7 @@ if (!dialog) then {
         private _activateRadio = _radios select _newRadioIndex;
         TRACE_1("Active is now", _activateRadio);
         [(_activateRadio select 2)] call EFUNC(sys_radio,setActiveRadio);
-        [(_activateRadio select 0), (_activateRadio select 1), "", 1, [EGVAR(sys_core,cycleRadiosColor)]] call FUNC(displayHint);
+        [(_activateRadio select 0), (_activateRadio select 1), "", 1, EGVAR(sys_core,cycleRadiosColor)] call FUNC(displayHint);
     };
 };
 
