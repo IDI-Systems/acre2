@@ -42,7 +42,9 @@ if (_type == 1) then {
     _position = ctrlPosition (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK);
     _position set [1, (_position select 1) - _bufferpointer * _translateY];
     (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlSetPosition _position;
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlSetBackgroundColor EGVAR(sys_core,hintBgColor);
     (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlCommit 0;
+
 
     private _color = GVAR(hintColor);
     _color set [3, 0.2];
@@ -59,7 +61,7 @@ if (_type == 1) then {
 
         _position = ctrlPosition (_hintIDD displayCtrl _x);
         _position set [1, (_position select 1) - _bufferpointer * _translateY];
-        
+
         (_hintIDD displayCtrl _x) ctrlSetPosition _position;
         (_hintIDD displayCtrl _x) ctrlCommit 0;
     } forEach [IDC_CONTROLTITLE, IDC_CONTROLLINE1, IDC_CONTROLLINE2];
