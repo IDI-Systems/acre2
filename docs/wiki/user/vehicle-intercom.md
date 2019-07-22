@@ -25,8 +25,6 @@ Optionally, each network has a master station. Such stations can broadcast a mes
 
 ### Full Functional Crew Station (FFCS)
 
-{% include note.html content="Development Build only!" %}
-
 {% include image.html file="intercom/anvic3_ffcs_interface.png" alt="AN/VIC3 FFCS" %}
 
 This interface can be opened using the ACE Interaction menu or through a shortcut (defaults to: CTRL + SHIFT + TAB). The opened intercom will be displayed in green in the HUD.
@@ -37,7 +35,7 @@ Sets the overall volume of the intercom and monitored/active radios. Red frange 
 
 #### Monitor Knob
 
-Monitors the selected or all radios. Radios in this configuration are set to receive only.
+Monitors the selected radio or all radios. Radios in this configuration are set to receive only.
 
 #### Work Knob
 

@@ -49,8 +49,6 @@ Default value: Disabled (antenna direction is taken into account)
 
 ###  Automatic Antenna direction
 
-{% include note.html content="Development Build only!" %}
-
 This setting enables an automatic antenna alignment to improve signal strength e.g. when being prone.
 
 Default value: Disabled (antenna needs to be aligned manually)
@@ -58,8 +56,6 @@ Default value: Disabled (antenna needs to be aligned manually)
 Note: _If the antenna direction is ignored, this setting will have no effect._
 
 ###  Radio Wave Propagation Models
-
-{% include note.html content="Development Build only!" %}
 
 This setting allows selecting the propagation model and it can be changed mid-mission with a global effect. For the moment the following models are supported:
 
