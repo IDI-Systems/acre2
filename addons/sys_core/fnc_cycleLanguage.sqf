@@ -25,7 +25,7 @@ if (_numSpokenLanguages > 1) then {
     private _language = GVAR(languages) select _languageId;
     _language params ["_languageKey","_languageName"];
     [_languageKey] call FUNC(setSpeakingLanguage);
-    [_languageName, "Now speaking", "", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
+    [_languageName, "Now speaking", "", 1, [EGVAR(sys_core,languageColor)]] call EFUNC(sys_list,displayHint);
     [] call FUNC(updateSelf);
     if (ACRE_LOCAL_SPEAKING) then {
         //@TODO: This is an uber hack, should probably be set up as a TS event.
@@ -40,9 +40,9 @@ if (_numSpokenLanguages > 1) then {
 
         // Params are languageKey and languageName
         _language params ["","_languageName"];
-        [_languageName, "Now speaking", "", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
+        [_languageName, "Now speaking", "", 1, [EGVAR(sys_core,languageColor)]] call EFUNC(sys_list,displayHint);
     } else {
-        ["No Babel Active", "", "", 1, [ACRE_NOTIFICATION_RED]] call EFUNC(sys_list,displayHint);
+        ["No Babel Active", "", "", 1, [EGVAR(sys_core,languageColor)]] call EFUNC(sys_list,displayHint);
     };
 };
 
