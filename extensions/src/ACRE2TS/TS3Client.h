@@ -24,18 +24,18 @@ public:
     acre::Result stop();
     acre::Result start(const acre::id_t id_);
 
-	std::string getSelfVariable(anyID clientId);
-	acre::Result setSelfVariable(char * data);
+	  acre::Result exPersistVersion( void );
 
-	acre::Result exPersistVersion( void );
+	  std::string getSelfVariable(anyID clientId);
+	  acre::Result setSelfVariable(char * data);
 
-	std::string getSelfVariable(anyID clientId);
-	acre::Result setSelfVariable(char * data);
+    acre::Result setMuted(const acre::id_t id_, const bool muted_);
+    acre::Result setMuted(std::list<acre::id_t> idList_, const bool muted_);
 
-	acre::Result exPersistVersion( void );
+    acre::Result getMuted(const acre::id_t id_);
 
-    std::string getSelfVariable(anyID clientId);
-	acre::Result setSelfVariable(char * data);
+    acre::Result stop();
+    acre::Result start(const acre::id_t id_);
 
     acre::Result enableMicrophone(const bool status_);
 

@@ -86,29 +86,7 @@ acre::Result CTS3Client::start(const acre::id_t id_) {
     return acre::Result::ok;
 }
 
-acre::Result CTS3Client::setSelfVariable(char* data) {
-    char* currentData;
-    anyID myID;
-    ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &myID);
-    ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), myID, CLIENT_META_DATA, &currentData);
-	std::string newData;
-	const std::string curString = currentData;
-    size_t start_pos = curString.find(START_DATA);
-    size_t end_pos = curString.find(END_DATA);
-	if ((start_pos == std::string::npos) || (end_pos == std::string::npos)) {
-		newData = curString + START_DATA + data + END_DATA;
-	} else {
-		const std::string before = curString.substr(0, start_pos);
-		const std::string after = curString.substr(end_pos + strlen(END_DATA), std::string::npos);
-		newData = before + START_DATA + data + END_DATA + after;
-	}
-    ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, newData.c_str());
-	ts3Functions.freeMemory(currentData);
-	ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), nullptr);
-    return acre::Result::ok;
-}
 
-<<<<<<< refs/remotes/origin/ts_tag
 acre::Result CTS3Client::setSelfVariable(char* data) {
     char* clientInfo;
     anyID myID;
@@ -132,8 +110,6 @@ acre::Result CTS3Client::setSelfVariable(char* data) {
 }
 
 acre::Result CTS3Client::exPersistVersion( void ) {
-=======
->>>>>>> local
     CTS3Client::setSelfVariable(ACRE_VERSION_METADATA);
 
     ts3Functions.printMessageToCurrentTab("ACRE2 loaded and initialized");
@@ -159,28 +135,6 @@ acre::Result CTS3Client::exPersistVersion( void ) {
     }
 
     return acre::Result::error;
-}
-
-acre::Result CTS3Client::setSelfVariable(char* data) {
-    char* clientInfo;
-    anyID myID;
-    ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &myID);
-    ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), myID, CLIENT_META_DATA, &clientInfo);
-	std::string to_set;
-	std::string sharedMsg = clientInfo;
-    size_t start_pos = sharedMsg.find(START_DATA);
-    size_t end_pos = sharedMsg.find(END_DATA)
-	if (start_pos == std::string::npos || end_data == std::string::npos) {
-		to_set = to_set + START_DATA + data + END_DATA;
-	} else {
-		std::string before = sharedMsg.substr(0, start_pos);
-		std::string after = sharedMsg.substr(end_data + strlen(END_DATA), std::string::npos);
-		to_set = before + START_DATA + data + END_DATA + after;
-	}
-    ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, to_set.c_str());
-	ts3Functions.freeMemory(clientInfo);
-	ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
-    return acre::Result::ok;
 }
 
 bool CTS3Client::getVAD() {
