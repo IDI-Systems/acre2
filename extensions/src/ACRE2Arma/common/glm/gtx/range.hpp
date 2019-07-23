@@ -15,7 +15,7 @@
 /// Restrictions:
 ///        By making use of the Software for military purposes, you choose to make
 ///        a Bunny unhappy.
-/// 
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -44,7 +44,7 @@
 #include "../detail/setup.hpp"
 
 #if !GLM_HAS_RANGE_FOR
-#    error "GLM_GTX_range requires C++11 suppport or 'range for'"
+#    error "GLM_GTX_range requires c++17 suppport or 'range for'"
 #endif
 
 #include "../gtc/type_ptr.hpp"

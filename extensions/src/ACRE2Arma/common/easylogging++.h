@@ -15,7 +15,7 @@
 //
 #ifndef EASYLOGGINGPP_H
 #define EASYLOGGINGPP_H
-// Compilers and C++0x/C++11 Evaluation
+// Compilers and C++0x/c++17 Evaluation
 #if __cplusplus >= 201103L
 #  define ELPP_CXX11 1
 #endif  // __cplusplus >= 201103L
@@ -320,7 +320,7 @@ ELPP_INTERNAL_DEBUGGING_OUT_INFO << ELPP_INTERNAL_DEBUGGING_MSG(internalInfoStre
 #  define ELPP_VERBOSE_LOG 0
 #endif  // (!defined(ELPP_DISABLE_VERBOSE_LOGS) && (ELPP_LOGGING_ENABLED))
 #if (!(ELPP_CXX0X || ELPP_CXX11))
-#   error "C++0x (or higher) support not detected! (Is `-std=c++11' missing?)"
+#   error "C++0x (or higher) support not detected! (Is `-std=c++17' missing?)"
 #endif  // (!(ELPP_CXX0X || ELPP_CXX11))
 // Headers
 #if defined(ELPP_SYSLOG)
@@ -896,7 +896,7 @@ safeDelete(T*& pointer) {
   delete pointer;
   pointer = nullptr;
 }
-/// @brief Bitwise operations for C++11 strong enum class. This casts e into Flag_T and returns value after bitwise operation
+/// @brief Bitwise operations for c++17 strong enum class. This casts e into Flag_T and returns value after bitwise operation
 /// Use these function as <pre>flag = bitwise::Or<MyEnum>(MyEnum::val1, flag);</pre>
 namespace bitwise {
 template <typename Enum>

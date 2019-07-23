@@ -15,7 +15,7 @@
 /// Restrictions:
 ///        By making use of the Software for military purposes, you choose to make
 ///        a Bunny unhappy.
-/// 
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -44,7 +44,7 @@
 #include "../detail/setup.hpp"
 
 #if !GLM_HAS_TEMPLATE_ALIASES && !(GLM_COMPILER & GLM_COMPILER_GCC)
-#    error "GLM_GTX_scalar_multiplication requires C++11 suppport or alias templates and if not support for GCC"
+#    error "GLM_GTX_scalar_multiplication requires c++17 suppport or alias templates and if not support for GCC"
 #endif
 
 #include "../vec2.hpp"
