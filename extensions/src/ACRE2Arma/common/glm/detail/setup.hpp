@@ -477,7 +477,7 @@
 #    elif GLM_LANG & GLM_LANG_CXX1Y_FLAG
 #        pragma message("GLM: C++1y")
 #    elif GLM_LANG & GLM_LANG_CXX11_FLAG
-#        pragma message("GLM: c++17")
+#        pragma message("GLM: C++11")
 #    elif GLM_LANG & GLM_LANG_CXX0X_FLAG
 #        pragma message("GLM: C++0x")
 #    elif GLM_LANG & GLM_LANG_CXX03_FLAG
