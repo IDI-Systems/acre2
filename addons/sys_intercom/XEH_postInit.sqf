@@ -42,7 +42,7 @@ if (!hasInterface) exitWith {};
 
 ["ACRE2", QGVAR(openGui), localize LSTRING(openGui), {
     [-1] call FUNC(openGui)
-}, ""] call CBA_fnc_addKeybind;
+}, "", [DIK_TAB, [true, true, false]] call CBA_fnc_addKeybind;
 
 // Intercom configuration
 ["vehicle", {
