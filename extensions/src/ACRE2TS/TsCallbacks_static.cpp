@@ -35,7 +35,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
     BOOL noAcre = FALSE;
     char *metaData;
     std::string result;
-    std::string sharedMsg;
+    std::string_view sharedMsg;
 
     switch(type) {
         case PLUGIN_SERVER:

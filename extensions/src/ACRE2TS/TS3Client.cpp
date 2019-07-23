@@ -15,7 +15,6 @@
 #include <numeric>
 
 #include "AcreSettings.h"
-#include <string_view>
 
 #pragma comment(lib, "Shlwapi.lib")
 
