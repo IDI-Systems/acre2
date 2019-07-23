@@ -88,7 +88,7 @@ acre::Result CTS3Client::start(const acre::id_t id_) {
 
 acre::Result CTS3Client::exPersistVersion( void ) {
 
-    CTS3Client::setSelfVariable(ACRE_VERSION_METADATA);
+    CTS3Client::setClientMetadata(ACRE_VERSION_METADATA);
 
     ts3Functions.printMessageToCurrentTab("ACRE2 loaded and initialized");
     ts3Functions.printMessageToCurrentTab(ACRE_VERSION_METADATA);
@@ -105,7 +105,7 @@ acre::Result CTS3Client::exPersistVersion( void ) {
             } else {
                 _snprintf_s(selfVariableBuffer, 4094, "%s\nArma Connected: No", ACRE_VERSION_METADATA);
             }
-            CTS3Client::setSelfVariable(selfVariableBuffer);
+            CTS3Client::setClientMetadata(selfVariableBuffer);
             run = clock() / CLOCKS_PER_SEC;
         }
 
@@ -115,7 +115,7 @@ acre::Result CTS3Client::exPersistVersion( void ) {
     return acre::Result::error;
 }
 
-acre::Result CTS3Client::setSelfVariable(const char *const data) {
+acre::Result CTS3Client::setClientMetadata(const char *const data) {
     char* clientInfo;
     anyID myID;
     ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &myID);

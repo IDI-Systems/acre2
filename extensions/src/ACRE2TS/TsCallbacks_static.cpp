@@ -61,8 +61,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
                     if (!noAcre) {
                         _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "%s\n", result.c_str());
                         ts3Functions.freeMemory(metaData);
-                    }
-                    else {
+                    } else {
                         _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "NO ACRE");
                         ts3Functions.freeMemory(metaData);
                     }

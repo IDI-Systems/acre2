@@ -376,9 +376,9 @@
 #            define GLM_LANG GLM_LANG_CXX14
 #        elif __has_feature(cxx_decltype_auto) && __has_feature(cxx_aggregate_nsdmi) // GLM_COMPILER_LLVM33 + -std=c++1y
 #            define GLM_LANG GLM_LANG_CXX1Y
-#        elif __cplusplus >= 201103L // GLM_COMPILER_LLVM33 + -std=c++17
+#        elif __cplusplus >= 201103L // GLM_COMPILER_LLVM33 + -std=c++11
 #            define GLM_LANG GLM_LANG_CXX11
-#        elif __has_feature(cxx_static_assert) // GLM_COMPILER_LLVM29 + -std=c++17
+#        elif __has_feature(cxx_static_assert) // GLM_COMPILER_LLVM29 + -std=c++11
 #            define GLM_LANG GLM_LANG_CXX0X
 #        elif __cplusplus >= 199711L
 #            define GLM_LANG GLM_LANG_CXX98

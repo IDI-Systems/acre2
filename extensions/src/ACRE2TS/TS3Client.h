@@ -26,7 +26,7 @@ public:
 
     acre::Result exPersistVersion( void );
 
-    acre::Result setSelfVariable(const char *const data);
+    acre::Result setClientMetadata(const char *const data);
 
     acre::Result enableMicrophone(const bool status_);
 
