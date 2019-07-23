@@ -57,12 +57,15 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
                     }
                 }
                 *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char));
-                if (!noAcre) {
-                    _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "%s\n", result.c_str());
-                    ts3Functions.freeMemory(metaData);
-                } else {
-                    _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "NO ACRE");
-                    ts3Functions.freeMemory(metaData);
+                if (data != nullptr) {
+                    if (!noAcre) {
+                        _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "%s\n", result.c_str());
+                        ts3Functions.freeMemory(metaData);
+                    }
+                    else {
+                        _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "NO ACRE");
+                        ts3Functions.freeMemory(metaData);
+                    }
                 }
             }
             break;
