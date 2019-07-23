@@ -11,9 +11,9 @@
 
 // Transmit Color
 [
-    QGVAR(broadcastColor),
+    QGVAR(transmissionColor),
     "COLOR",
-    localize LSTRING(broadcastColor_displayName),
+    localize LSTRING(transmissionColor_displayName),
     "ACRE2 UI",
     [ACRE_NOTIFICATION_YELLOW],
     false,
@@ -65,36 +65,14 @@
 ] call CBA_Settings_fnc_init;
 
 // Hint Text Font
+private _fontNames = ["Etelka Monospace Pro", "Etelka Monospace Pro Bold", "LCD14", "Purista Bold", "Purista Light", "Purista Medium", "Purista Semibold", "Roboto Condensed", "Roboto Condensed Bold", "Roboto Condensed Light", "TahomaB"];
+private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "PuristaBold", "PuristaLight", "PuristaMedium", "PuristaSemibold", "RobotoCondensed", "RobotoCondensedBold", "RobotoCondensedLight", "TahomaB"];
 [
     QGVAR(hintTxtFont),
     "LIST",
     localize LSTRING(hintTxtFont_displayName),
     "ACRE2 UI",
-    [
-    ["EtelkaMonospacePro",
-    "EtelkaMonospaceProBold",
-    "LCD14",
-    "PuristaBold",
-    "PuristaLight",
-    "PuristaMedium",
-    "PuristaSemibold",
-    "RobotoCondensed",
-    "RobotoCondensedBold",
-    "RobotoCondensedLight",
-    "TahomaB"],
-
-    ["EtelkaMonospacePro",
-    "EtelkaMonospaceProBold",
-    "LCD14",
-    "PuristaBold",
-    "PuristaLight",
-    "PuristaMedium",
-    "PuristaSemibold",
-    "RobotoCondensed",
-    "RobotoCondensedBold",
-    "RobotoCondensedLight",
-    "TahomaB"],
-    10],
+    [_fontNames, _fonts, 10],
     false,
     {}
 ] call CBA_Settings_fnc_init;
