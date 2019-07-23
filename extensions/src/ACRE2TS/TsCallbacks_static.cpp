@@ -48,10 +48,12 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
                     noAcre = TRUE;
                 } else {
                     sharedMsg = metaData;
-                    if ((sharedMsg.find(START_DATA) == std::string::npos) || (sharedMsg.find(END_DATA) == std::string::npos)) {
+                    size_t start_pos = sharedMsg.find(START_DATA);
+                    size_t end_pos = sharedMsg.find(END_DATA);
+                    if ((start_pos == std::string::npos) || (end_pos == std::string::npos)) {
                         noAcre = TRUE;
                     } else {
-                        result = sharedMsg.substr(sharedMsg.find(START_DATA) + strlen(START_DATA), sharedMsg.find(END_DATA) - sharedMsg.find(START_DATA) - strlen(START_DATA));
+                        result = sharedMsg.substr(start_pos + strlen(START_DATA), end_pos - start_pos - strlen(START_DATA));
                     }
                 }
                 *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char));
