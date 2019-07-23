@@ -26,6 +26,6 @@ if (!ACRE_IS_SPECTATOR) then {
     };
 } else {
     ACRE_MUTE_SPECTATORS = !ACRE_MUTE_SPECTATORS;
-    ["Mute Spectators", format["Muted: %1", ACRE_MUTE_SPECTATORS], "", 1, EGVAR(sys_core,toggleHeadsetColor)] call EFUNC(sys_list,displayHint);
+    ["Mute Spectators", format["Muted: %1", ACRE_MUTE_SPECTATORS], "", 1, GVAR(toggleHeadsetColor)] call EFUNC(sys_list,displayHint);
 };
 true

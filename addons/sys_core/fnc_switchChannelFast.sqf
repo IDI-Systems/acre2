@@ -45,7 +45,7 @@ if (_isManpack == 0 || {_isRackRadio}) then {
     _return = [_radioId,_channel] call EFUNC(api,setRadioChannel);
 
     private _listInfo = [_radioId, "getListInfo"] call EFUNC(sys_data,dataEvent);
-    [_typeName, _listInfo, "", 0.5, EGVAR(sys_core,switchChannelColor)] call EFUNC(sys_list,displayHint);
+    [_typeName, _listInfo, "", 0.5, GVAR(switchChannelColor)] call EFUNC(sys_list,displayHint);
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
 };
 
