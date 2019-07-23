@@ -124,11 +124,11 @@ acre::Result CTS3Client::setSelfVariable(char* data) {
 	std::string sharedMsg = clientInfo;
     size_t start_pos = sharedMsg.find(START_DATA);
     size_t end_pos = sharedMsg.find(END_DATA);
-	if (start_pos == std::string::npos || end_data == std::string::npos) {
+	if (start_pos == std::string::npos || end_pos == std::string::npos) {
 		to_set = to_set + START_DATA + data + END_DATA;
 	} else {
 		std::string before = sharedMsg.substr(0, start_pos);
-		std::string after = sharedMsg.substr(end_data + strlen(END_DATA), std::string::npos);
+		std::string after = sharedMsg.substr(end_pos + strlen(END_DATA), std::string::npos);
 		to_set = before + START_DATA + data + END_DATA + after;
 	}
     ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, to_set.c_str());
