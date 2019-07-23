@@ -65,7 +65,7 @@
 ] call CBA_Settings_fnc_init;
 
 // Hint Text Font
-private _fontNames = ["Etelka Monospace Pro", "Etelka Monospace Pro Bold", "LCD14", "Purista Bold", "Purista Light", "Purista Medium", "Purista Semibold", "Roboto Condensed", "Roboto Condensed Bold", "Roboto Condensed Light", "TahomaB"];
+private _fontNames = ["Etelka Monospace Pro", "Etelka Monospace Pro Bold", "LCD 14", "Purista Bold", "Purista Light", "Purista Medium", "Purista SemiBold", "Roboto Condensed", "Roboto Condensed Bold", "Roboto Condensed Light", "Tahoma B"];
 private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "PuristaBold", "PuristaLight", "PuristaMedium", "PuristaSemibold", "RobotoCondensed", "RobotoCondensedBold", "RobotoCondensedLight", "TahomaB"];
 [
     QGVAR(hintTxtFont),
