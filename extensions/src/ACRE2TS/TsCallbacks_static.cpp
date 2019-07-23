@@ -33,9 +33,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
     id = id;*/
 
     BOOL noAcre = FALSE;
-    char *metaData;
-    std::string result;
-    std::string_view sharedMsg;
+    char* metaData;
 
     switch(type) {
         case PLUGIN_SERVER:
@@ -44,14 +42,16 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
             break;
         case PLUGIN_CLIENT:
             if (ts3Functions.getClientVariableAsString(serverConnectionHandlerID, (anyID)id, CLIENT_META_DATA, &metaData) == ERROR_ok) {
+                std::string result;
+                std::string_view sharedMsg;
                 if (!metaData) {
-                    noAcre = TRUE;
+                    noAcre = true;
                 } else {
                     sharedMsg = metaData;
-                    size_t start_pos = sharedMsg.find(START_DATA);
-                    size_t end_pos = sharedMsg.find(END_DATA);
-                    if (start_pos == std::string::npos || end_pos == std::string::npos) {
-                        noAcre = TRUE;
+                    const size_t start_pos = sharedMsg.find(START_DATA);
+                    const size_t end_pos = sharedMsg.find(END_DATA);
+                    if ((start_pos == std::string::npos) || (end_pos == std::string::npos)) {
+                        noAcre = true;
                     } else {
                         result = sharedMsg.substr(start_pos + strlen(START_DATA), end_pos - start_pos - strlen(START_DATA));
                     }
