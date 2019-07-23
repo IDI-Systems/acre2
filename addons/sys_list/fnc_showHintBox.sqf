@@ -42,7 +42,7 @@ if (_type == 1) then {
     _position = ctrlPosition (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK);
     _position set [1, (_position select 1) - _bufferpointer * _translateY];
     (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlSetPosition _position;
-    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlSetBackgroundColor EGVAR(sys_core,hintBgColor);
+    (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlSetBackgroundColor GVAR(hintBgColor);
     (_hintIDD displayCtrl IDC_CONTROLBACKGROUNDBLACK) ctrlCommit 0;
 
 
@@ -54,9 +54,9 @@ if (_type == 1) then {
     (_hintIDD displayCtrl IDC_CONTROLTITLE) ctrlSetText GVAR(hintTitle);
     (_hintIDD displayCtrl IDC_CONTROLLINE1) ctrlSetText GVAR(hintLine1);
     (_hintIDD displayCtrl IDC_CONTROLLINE2) ctrlSetText GVAR(hintLine2);
-    (_hintIDD displayCtrl IDC_CONTROLTITLE) ctrlSetFont EGVAR(sys_core,hintTxtFont);
-    (_hintIDD displayCtrl IDC_CONTROLLINE1) ctrlSetFont EGVAR(sys_core,hintTxtFont);
-    (_hintIDD displayCtrl IDC_CONTROLLINE2) ctrlSetFont EGVAR(sys_core,hintTxtFont);
+    (_hintIDD displayCtrl IDC_CONTROLTITLE) ctrlSetFont GVAR(hintTxtFont);
+    (_hintIDD displayCtrl IDC_CONTROLLINE1) ctrlSetFont GVAR(hintTxtFont);
+    (_hintIDD displayCtrl IDC_CONTROLLINE2) ctrlSetFont GVAR(hintTxtFont);
     {
         //private _color = GVAR(hintColor);
         _color set [3, 0.8];

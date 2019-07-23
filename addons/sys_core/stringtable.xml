@@ -507,26 +507,5 @@
             <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
             <Japanese>ラックの通信を表示</Japanese>
         </Key>
-        <Key ID="STR_ACRE_sys_core_hintBgColor_displayName">
-            <English>Hint Background Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_broadcastColor_displayName">
-            <English>Transmitting Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_languageColor_displayName">
-            <English>Change Language Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_switchChannelColor_displayName">
-            <English>Switch Channel Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_toggleHeadsetColor_displayName">
-            <English>Toggle Headset Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_cycleRadiosColor_displayName">
-            <English>Change Radio Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_hintTxtFont_displayName">
-            <English>Hint Text Font</English>
-        </Key>
     </Package>
 </Project>
