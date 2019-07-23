@@ -8,7 +8,7 @@
 
 class CTS3Client: public IClient {
 public:
-    
+
     //static TS3Functions ts3Functions;
 
     CTS3Client() { };
@@ -25,6 +25,9 @@ public:
     acre::Result start(const acre::id_t id_);
 
     acre::Result exPersistVersion( void );
+
+    std::string getSelfVariable(anyID clientId);
+	acre::Result setSelfVariable(char * data);
 
     acre::Result enableMicrophone(const bool status_);
 
@@ -60,7 +63,7 @@ public:
 
     std::string getTempFilePath( void );
     std::string getConfigFilePath(void);
-    
+
     acre::Result playSound(std::string path_, acre::Vector3_t position_, const float32_t volume_, const int32_t looping_);
 
     std::string getUniqueId( );
