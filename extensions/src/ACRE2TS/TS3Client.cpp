@@ -93,11 +93,13 @@ acre::Result CTS3Client::setSelfVariable(char* data) {
     ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), myID, CLIENT_META_DATA, &currentData);
 	std::string newData;
 	const std::string curString = currentData;
-	if ((curString.find(START_DATA) == std::string::npos) || (curString.find(END_DATA) == std::string::npos)) {
+    size_t start_pos = curString.find(START_DATA);
+    size_t end_pos = curString.find(END_DATA);
+	if ((start_pos == std::string::npos) || (end_pos == std::string::npos)) {
 		newData = curString + START_DATA + data + END_DATA;
 	} else {
-		const std::string before = curString.substr(0, curString.find(START_DATA));
-		const std::string after = curString.substr(curString.find(END_DATA) + strlen(END_DATA), std::string::npos);
+		const std::string before = curString.substr(0, start_pos);
+		const std::string after = curString.substr(end_pos + strlen(END_DATA), std::string::npos);
 		newData = before + START_DATA + data + END_DATA + after;
 	}
     ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, newData.c_str());
@@ -106,7 +108,6 @@ acre::Result CTS3Client::setSelfVariable(char* data) {
     return acre::Result::ok;
 }
 
-// Some code used from https://github.com/michail-nikolaev/task-force-arma-3-radio under APL-SA
 acre::Result CTS3Client::setSelfVariable(char* data) {
     char* clientInfo;
     anyID myID;
