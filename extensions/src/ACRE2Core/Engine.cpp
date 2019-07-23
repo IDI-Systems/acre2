@@ -15,6 +15,8 @@
 #include "stopRadioSpeaking.h"
 #include "startIntercomSpeaking.h"
 #include "stopIntercomSpeaking.h"
+#include "startZeusSpeaking.h"
+#include "stopZeusSpeaking.h"
 #include "setPTTKeys.h"
 #include "loadSound.h"
 #include "playSound.h"
@@ -61,6 +63,8 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
     this->getRpcEngine()->addProcedure(new stopRadioSpeaking());
     this->getRpcEngine()->addProcedure(new startIntercomSpeaking());
     this->getRpcEngine()->addProcedure(new stopIntercomSpeaking());
+    this->getRpcEngine()->addProcedure(new startZeusSpeaking());
+    this->getRpcEngine()->addProcedure(new stopZeusSpeaking());
     this->getRpcEngine()->addProcedure(new setPTTKeys());
     this->getRpcEngine()->addProcedure(new loadSound());
     this->getRpcEngine()->addProcedure(new playLoadedSound());

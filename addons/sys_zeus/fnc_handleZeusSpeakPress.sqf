@@ -23,6 +23,9 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
     player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
     call EFUNC(sys_core,spectatorOff);
 
+    // Start speaking
+    ["startZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+
     // Update Zeus position
     GVAR(speakFromZeusHandle) = [{
         player setVariable [QGVAR(zeusPosition),
