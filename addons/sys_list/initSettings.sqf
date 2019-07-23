@@ -1,4 +1,3 @@
-//--------------------------- UI Customization
 // Hint Background Color
 [
     QGVAR(hintBgColor),
