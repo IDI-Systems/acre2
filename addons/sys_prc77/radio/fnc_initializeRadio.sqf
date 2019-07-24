@@ -65,7 +65,7 @@ private _secondPresetKnobPositions = ([_secondPresetFrequency] call _frequencyTo
 SCRATCH_SET(_radioId, "currentTransmissions", []);
 
 //Radio Settings
-HASH_SET(_radioData,"volume",1); //0-1
+HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume)); //0-1
 HASH_SET(_radioData,"function",2); //0 - OFF, 1 - ON, 2 - SQUELCH, 3 - RETRANS, 4 - LITE (Temp)
 HASH_SET(_radioData,"radioOn",1); //0 - OFF, 1 - ON
 HASH_SET(_radioData,"band",_band); //{0,1}
