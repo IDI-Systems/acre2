@@ -14,8 +14,8 @@
 RPC_FUNCTION(playLoadedSound) {
 
     const std::string id = std::string((char *)vMessage->getParameter(0));
-    const acre::Vector3_t position(vMessage->getParameterAsFloat(1), vMessage->getParameterAsFloat(2), vMessage->getParameterAsFloat(3));
-    const acre::Vector3_t direction(vMessage->getParameterAsFloat(4), vMessage->getParameterAsFloat(5), vMessage->getParameterAsFloat(6));
+    const acre::Vector3_t position(vMessage->getParameterAsFloat(1), vMessage->getParameterAsFloat(3), vMessage->getParameterAsFloat(2));
+    const acre::Vector3_t direction(vMessage->getParameterAsFloat(4), vMessage->getParameterAsFloat(6), vMessage->getParameterAsFloat(5));
     const float32_t volume = vMessage->getParameterAsFloat(7);
     const bool isWorld = vMessage->getParameterAsInt(8) == 1;
 

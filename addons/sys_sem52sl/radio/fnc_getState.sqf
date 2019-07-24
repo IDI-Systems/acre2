@@ -38,6 +38,6 @@
  *      Hash Value
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 HASH_GET(_radioData, _eventData);

@@ -22,7 +22,7 @@ params ["_display"];
 
 {
     RADIO_CTRL(_x) ctrlSetText "";
-} forEach [301,302,303,304,305,109]; // purge.
+} forEach [301, 302, 303, 304, 305, 109]; // purge.
 
 private _channelKnobPosition = GET_STATE("channelKnobPosition");
 

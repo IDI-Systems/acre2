@@ -14,5 +14,5 @@ void CRadioEffect::process(short *samples, int sampleCount) {
     if (this->getParam("disableNoise"))
         noise = false;
 
-    this->radioFilter->process(samples, sampleCount, 1, (acre::volume_t)this->getParam("signalQuality"), noise);
+    this->radioFilter->process(samples, sampleCount, 1, static_cast<acre::volume_t>(this->getParam("signalQuality")), noise);
 };

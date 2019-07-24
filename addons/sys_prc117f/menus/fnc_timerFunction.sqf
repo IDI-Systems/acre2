@@ -28,10 +28,10 @@ private _fnc = {
 
     private _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
     if (_onState < 0.2) then {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     if (diag_tickTime > _time) then {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     } else {
         if (diag_tickTime > GVAR(timerFunction_NextStep)) then {
             [_radioId, _step] call _function;

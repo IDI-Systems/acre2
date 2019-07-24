@@ -15,7 +15,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function returns the current channel
  *
@@ -37,7 +37,7 @@
  *      Number (zero-based) of current channel
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 private _channelNumber = HASH_GET(_radioData,"currentChannel");
 

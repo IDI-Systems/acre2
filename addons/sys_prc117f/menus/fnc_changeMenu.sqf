@@ -40,7 +40,6 @@ if (!isNil "_oldMenu") then {
         private _menuId = MENU_ID(_oldMenu);
         if (!isNil "_menuId") then { SET_STATE("lastMenu", _menuId); } else { SET_STATE("lastMenu", _oldMenu); };
     };
-
 };
 
 // Set the state
