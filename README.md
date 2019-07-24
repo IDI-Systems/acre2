@@ -38,15 +38,18 @@ The project is entirely **open-source** and all contributions are welcome. Core 
 
 - Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152, SEM 52 SL, SEM 70.
 - Vehicle racks AN/VRC-103, AN/VRC-110, AN/VRC-111, SEM90.
+- Deployable antennas.
 - Real time voice occlusion for world objects, including buildings.
 - Babel language system that allows you to implement virtual languages on other players.
 - Multi-channel audio, allowing people on the radio to be heard locally as well.
 - Radios with external speakers.
 - Possibility to share owned radios with other players.
 - Highly detailed radio signal simulation.
+- Zeus and spectator modes integration.
+- Multiple signal propagation models: Arcade, LOS Single path, LOS Multipath (default) and epxerimentally the Longley-Rice (ITM) model.
 - A highly customizable and documented framework for the creation of radios.
 - A highly customizable and documented framework for implementing different game modes (persistent world, replays, logging, external data storage, external radio control).
-- A highly customizable and documented framework for implementing intercom systems (crew and passenger intercoms) and infantry phones.
+- A highly customizable and documented framework for implementing intercom systems and infantry phones.
 - A highly customizable and documented framework for implementing vehicle racks and their integration into the intercom system.
 - Customizable sound configs that allow traditional patching of sounds played in ACRE via Arma addons.
 - Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (as an example see the ACRE2 implementation in the [TMF](https://github.com/TMF3/TMF)).
