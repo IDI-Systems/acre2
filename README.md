@@ -46,7 +46,7 @@ The project is entirely **open-source** and all contributions are welcome. Core 
 - Possibility to share owned radios with other players.
 - Highly detailed radio signal simulation.
 - Zeus and spectator modes integration.
-- Multiple signal propagation models: Arcade, LOS Single path, LOS Multipath (default) and epxerimentally the Longley-Rice (ITM) model.
+- Multiple signal propagation models: Arcade, LOS Single path, LOS Multipath (default) and, experimentally, the Longley-Rice (ITM) model.
 - A highly customizable and documented framework for the creation of radios.
 - A highly customizable and documented framework for implementing different game modes (persistent world, replays, logging, external data storage, external radio control).
 - A highly customizable and documented framework for implementing intercom systems and infantry phones.
