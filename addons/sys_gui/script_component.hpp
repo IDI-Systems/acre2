@@ -16,6 +16,37 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineCommonGrids.inc"
+
+#define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_CENTER_X)
+#define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_CENTER_Y)
+#define POS_W(N) ((N) * GUI_GRID_W)
+#define POS_H(N) ((N) * GUI_GRID_H)
+
+#define VOLUME_CONTROL_DEFAULT_X POS_X(14)
+#define VOLUME_CONTROL_DEFAULT_Y POS_Y(20)
+#define VOLUME_CONTROL_WIDTH     POS_W(12)
+#define VOLUME_CONTROL_HEIGHT    POS_H(0.9)
+
+#define VOLUME_CONTROL_LAYER (QGVAR(VolumeControl) call BIS_fnc_rscLayer)
+
+// Color scale for the volume control (white -> yellow -> orange -> red)
+#define VOLUME_COLOR_SCALE [ \
+    [1, 1, 1, 0.5], \
+    [1, 0.95, 0.58, 0.5], \
+    [1, 0.88, 0.39, 0.5], \
+    [1, 0.8, 0.26, 0.5], \
+    [1, 0.72, 0.17, 0.5], \
+    [1, 0.63, 0.09, 0.5], \
+    [1, 0.54, 0.02, 0.5], \
+    [1, 0.43, 0, 0.5], \
+    [1, 0.3, 0, 0.5], \
+    [1, 0, 0, 0.5] \
+]
+
+// Amount that the volume level changes on every scroll wheel action
+#define VOLUME_LEVEL_CHANGE 0.1
+
 #define INVENTORY_DISPLAY (findDisplay 602)
 
 #define IDC_FG_VEST_CONTAINER 638
