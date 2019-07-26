@@ -28,9 +28,9 @@ ACRE_LOCAL_SPEAKING = true;
 if (_onRadio) then {
     ACRE_LOCAL_BROADCASTING = true;
 
-    // Shift volume down by 20% when not using a custom voice curve
+    // Shift volume down by 25% (one step) when not using a custom voice curve
     if (isNil "ACRE_CustomVolumeControl") then {
-        [EGVAR(sys_gui,volumeLevel) - 0.2] call EFUNC(sys_gui,setVoiceCurveLevel);
+        [EGVAR(sys_gui,volumeLevel) - 0.25] call EFUNC(sys_gui,setVoiceCurveLevel);
     };
 } else {
     ACRE_LOCAL_BROADCASTING = false;

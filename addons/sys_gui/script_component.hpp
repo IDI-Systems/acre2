@@ -30,22 +30,17 @@
 
 #define VOLUME_CONTROL_LAYER (QGVAR(VolumeControl) call BIS_fnc_rscLayer)
 
-// Color scale for the volume control (white -> yellow -> orange -> red)
+// Color scale for the volume control (yellow -> orange -> red)
 #define VOLUME_COLOR_SCALE [ \
-    [1, 1, 1, 0.5], \
-    [1, 0.95, 0.58, 0.5], \
-    [1, 0.88, 0.39, 0.5], \
-    [1, 0.8, 0.26, 0.5], \
-    [1, 0.72, 0.17, 0.5], \
-    [1, 0.63, 0.09, 0.5], \
-    [1, 0.54, 0.02, 0.5], \
-    [1, 0.43, 0, 0.5], \
-    [1, 0.3, 0, 0.5], \
+    [1, 1, 0, 0.5], \
+    [1, 0.83, 0, 0.5], \
+    [1, 0.65, 0, 0.5], \
+    [1, 0.44, 0, 0.5], \
     [1, 0, 0, 0.5] \
 ]
 
 // Amount that the volume level changes on every scroll wheel action
-#define VOLUME_LEVEL_CHANGE 0.1
+#define VOLUME_LEVEL_CHANGE 0.25
 
 #define INVENTORY_DISPLAY (findDisplay 602)
 
