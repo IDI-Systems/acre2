@@ -26,7 +26,7 @@ ACRE_LOCAL_BROADCASTING = false;
 
 // Reset lowered voice curve level when not using a custom voice curve
 if (isNil "ACRE_CustomVolumeControl") then {
-    GVAR(volumeLevel) call EFUNC(sys_gui,setVoiceCurveLevel);
+    EGVAR(sys_gui,volumeLevel) call EFUNC(sys_gui,setVoiceCurveLevel);
 };
 
 //[str GVAR(ts3id), netId acre_player] call FUNC(remoteStopSpeaking);
