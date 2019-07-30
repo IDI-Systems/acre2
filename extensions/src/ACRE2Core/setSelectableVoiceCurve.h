@@ -5,12 +5,11 @@
 #include "Log.h"
 
 RPC_FUNCTION(setSelectableVoiceCurve) {
-    float voiceCurveScale;
-
-    voiceCurveScale = vMessage->getParameterAsFloat(0);
+    const float32_t voiceCurveScale = vMessage->getParameterAsFloat(0);
     //LOG("VOICE MODEL: %d VOICE CURVE: %f", voiceModel, voiceCurveScale);
-    if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return AcreResult::ok;
+    if (!CEngine::getInstance()->getGameServer()->getConnected()) {
+        return acre::Result::ok;
+    }
 
     if (CEngine::getInstance()->getSelf()) {
         LOCK(CEngine::getInstance()->getSelf());
@@ -31,7 +30,12 @@ RPC_FUNCTION(setSelectableVoiceCurve) {
         UNLOCK(CEngine::getInstance()->getSelf());
     }
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

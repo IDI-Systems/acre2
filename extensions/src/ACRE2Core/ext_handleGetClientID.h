@@ -19,7 +19,12 @@ RPC_FUNCTION(ext_handleGetClientID) {
             vMessage->getParameter(1)
         )
     );
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

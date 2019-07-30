@@ -8,12 +8,12 @@
 
 #define BASE_DISTORTION_LEVEL 0.43f
 
-AcreResult CFilterRadio::process(short* samples, int sampleCount, int channels, acre_volume_t value, bool noise) {
+acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels, acre::volume_t value, bool noise) {
     float buffer[4096], *floatPointer[1];
     short *shortPointer[1];
 
     if (CAcreSettings::getInstance()->getDisableRadioFilter())
-        return AcreResult::ok;
+        return acre::Result::ok;
 
     if (value > 0.0f) {
         floatPointer[0] = buffer;
@@ -59,10 +59,10 @@ AcreResult CFilterRadio::process(short* samples, int sampleCount, int channels, 
         memset(samples, 0x00, (sampleCount*channels)*sizeof(short) );
     }
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CFilterRadio::mixPinkNoise(float *buffer, int numSamples, acre_volume_t value) {
+acre::Result CFilterRadio::mixPinkNoise(float *buffer, int numSamples, acre::volume_t value) {
     
     float inverse_value = 1.25f - value;
     for (int i = 0; i < numSamples; i++) {
@@ -70,10 +70,10 @@ AcreResult CFilterRadio::mixPinkNoise(float *buffer, int numSamples, acre_volume
         buffer[i] = (buffer[i] + noise) - (noise * buffer[i]);
     }
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CFilterRadio::mixWhiteNoise(float *buffer, int numSamples, acre_volume_t value) {
+acre::Result CFilterRadio::mixWhiteNoise(float *buffer, int numSamples, acre::volume_t value) {
 
     float inverse_value = 1.25f - value;
     for (int i = 0; i < numSamples; i++) {
@@ -81,7 +81,7 @@ AcreResult CFilterRadio::mixWhiteNoise(float *buffer, int numSamples, acre_volum
         buffer[i] = buffer[i] + noise;
     }
     
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
 CFilterRadio::CFilterRadio(void)

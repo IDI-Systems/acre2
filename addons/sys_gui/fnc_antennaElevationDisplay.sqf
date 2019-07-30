@@ -17,13 +17,11 @@
 
 // Need to run this every frame. Otherwise there will be noticeable delays
 [{
-    if (EGVAR(sys_core,automaticAntennaDirection)) exitWith {};
-    
     // Collect data from stance and antenna direction
     private _stance = tolower (stance acre_player);
-    if (_stance == "" || _stance == "undefined") exitWith {};
+    if (_stance == "" || {_stance == "undefined"}) exitWith {};
     private _antennaDirection = "_straight";
-    if (acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false]) then {
+    if (acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false] || {EGVAR(sys_core,automaticAntennaDirection) && {_stance != "stand"}}) then {
         _antennaDirection = "_bend";
     };
 

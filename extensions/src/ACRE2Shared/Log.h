@@ -1,30 +1,37 @@
 #pragma once
 
 #include "compat.h"
+#include <cstdint>
+#include <mutex>
+#include <fstream>
 
-#define LOGLEVEL_TRACE        0x00000001
-#define LOGLEVEL_DEBUG        0x00000002
-#define LOGLEVEL_INFO        0x10000001
-#define LOGLEVEL_ERROR        0xF0000001
-#define LOGLEVEL_CRITICAL    0xFFFFFFFF
+namespace acre {
+    enum class LogLevel : uint32_t {
+        Trace = 0x00000001,
+        Debug = 0x00000002,
+        Info = 0x10000001,
+        Error = 0xF0000001,
+        Critical = 0xFFFFFFFF
+    };
+} /* namespace acre */
 
 #ifdef _TRACE
-    #define RUNNING_LOGLEVEL LOGLEVEL_TRACE
-    #define TRACE(...) g_Log->Write(LOGLEVEL_TRACE, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
+    #define RUNNING_LOGLEVEL acre::LogLevel::Trace
+    #define TRACE(...) g_Log->Write(acre::LogLevel::Trace, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
 #else
     #define TRACE(...) 
 #endif
 
 #ifdef _REF_TRACE
-    #define REF_TRACE(...) g_Log->Write(LOGLEVEL_TRACE, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
+    #define REF_TRACE(...) g_Log->Write(acre::LogLevel::Trace, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
 #else
     #define REF_TRACE(...)
 #endif
 
 #ifdef _DEBUG
     #ifndef _TRACE
-        #define RUNNING_LOGLEVEL LOGLEVEL_DEBUG
-        #define DEBUG(...) g_Log->Write(LOGLEVEL_DEBUG, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
+        #define RUNNING_LOGLEVEL acre::LogLevel::Debug
+        #define DEBUG(...) g_Log->Write(acre::LogLevel::Debug, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
     #else
         #define DEBUG(...) 
     #endif
@@ -39,36 +46,34 @@
 #endif
 
 #ifdef _TRACE
-    #define LOG(...) g_Log->Write(LOGLEVEL_INFO, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
+    #define LOG(...) g_Log->Write(acre::LogLevel::Info, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
 #else
-    #define LOG(...) g_Log->Write(LOGLEVEL_INFO, NULL, NULL, __VA_ARGS__, NULL)
+    #define LOG(...) g_Log->Write(acre::LogLevel::Info, NULL, NULL, __VA_ARGS__, NULL)
 #endif
 
 #ifdef _TRACE
 #define ERR_ASSERT(...)                                                            \
-    g_Log->Write(LOGLEVEL_ERROR, __FUNCTION__, __LINE__, __VA_ARGS__, NULL); \
+    g_Log->Write(acre::LogLevel::Error, __FUNCTION__, __LINE__, __VA_ARGS__, NULL); \
     assert(1==2)
 #else
 #define ERR_ASSERT(...)                                                            \
-    g_Log->Write(LOGLEVEL_ERROR, __FUNCTION__, __LINE__, __VA_ARGS__, NULL); 
+    g_Log->Write(acre::LogLevel::Error, __FUNCTION__, __LINE__, __VA_ARGS__, NULL); 
 #endif
 
 #define TRACE_FUNCTION(x) x  { TRACE("enter");
 
-class Log
-{
+class Log {
 public:
     Log(char *logFile);
     ~Log(void);
 
-    size_t Write(DWORD msgType, char *function, unsigned int line, const char *format, ...);
-    size_t PopMessage(DWORD msgType, const char *format, ...);
+    size_t Write(const acre::LogLevel msgType, char *function, const uint32_t line, const char *format, ...);
+    size_t PopMessage(const acre::LogLevel msgType, const char *format, ...);
 
-    HANDLE fileHandle;
+    std::ofstream logOutput;
 
 private:
-    
-    CRITICAL_SECTION m_CriticalSection;
+    std::mutex m_criticalMutex;
 };
 
 extern Log *g_Log;

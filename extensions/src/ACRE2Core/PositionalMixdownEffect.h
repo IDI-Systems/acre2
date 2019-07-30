@@ -22,7 +22,7 @@ public:
         this->setParam("headVectorY", 1.0f);
         this->setParam("headVectorZ", 0.0f);
         this->setParam("curveScale", 1.0f);
-        this->setParam("speakingType", static_cast<float32_t>(AcreSpeaking::direct));
+        this->setParam("speakingType", static_cast<float32_t>(acre::Speaking::direct));
     };
     void process(short* samples, int sampleCount, int channels, const unsigned int speakerMask) {
         this->positionFilter.process(samples, sampleCount, channels, speakerMask, this);

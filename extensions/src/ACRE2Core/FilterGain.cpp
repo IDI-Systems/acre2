@@ -5,7 +5,7 @@
 
 #include <cmath>
 
-AcreResult CFilterGain::process(short* samples, int sampleCount, int channels, float gain) {
+acre::Result CFilterGain::process(short* samples, int sampleCount, int channels, float gain) {
     float gainSampleValue;
     if (gain >= 0.0f) {
         for (int i = 0; i < sampleCount * channels; i++) {
@@ -19,7 +19,7 @@ AcreResult CFilterGain::process(short* samples, int sampleCount, int channels, f
             samples[i] = (short)gainSampleValue;
         }
     }
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
 CFilterGain::CFilterGain(void)

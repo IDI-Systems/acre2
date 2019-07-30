@@ -16,24 +16,20 @@ RPC_FUNCTION(updateSelf) {
 
     LOCK(CEngine::getInstance()->getSelf());
 
-    ACRE_VECTOR listenerPos;
-    listenerPos.x = vMessage->getParameterAsFloat(0);
-    listenerPos.z = vMessage->getParameterAsFloat(1);
-    listenerPos.y = vMessage->getParameterAsFloat(2);
+    const acre::vec3_fp32_t listenerPos(vMessage->getParameterAsFloat(0), vMessage->getParameterAsFloat(2), vMessage->getParameterAsFloat(1));
+    const acre::vec3_fp32_t listenerDir(vMessage->getParameterAsFloat(3), vMessage->getParameterAsFloat(5), vMessage->getParameterAsFloat(4));
 
     CEngine::getInstance()->getSelf()->setWorldPosition(listenerPos);
-
-    ACRE_VECTOR listenerDir;
-    listenerDir.x = vMessage->getParameterAsFloat(3);
-    listenerDir.z = vMessage->getParameterAsFloat(4);
-    listenerDir.y = vMessage->getParameterAsFloat(5);
-
     CEngine::getInstance()->getSelf()->setHeadVector(listenerDir);
-
     CEngine::getInstance()->getSelf()->setCurrentLanguageId(vMessage->getParameterAsInt(6));
 
     UNLOCK(CEngine::getInstance()->getSelf());
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

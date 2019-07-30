@@ -8,13 +8,13 @@ CSoundEngine::CSoundEngine( void ) {
     this->soundMixer = new CSoundMixer();
 }
 
-AcreResult CSoundEngine::onEditPlaybackVoiceDataEvent(acre_id_t id, short* samples, int sampleCount, int channels) {
+acre::Result CSoundEngine::onEditPlaybackVoiceDataEvent(acre::id_t id, short* samples, int sampleCount, int channels) {
     if (CEngine::getInstance()->getSoundSystemOverride())
-        return AcreResult::ok;
+        return acre::Result::ok;
     if (!CEngine::getInstance()->getGameServer())
-        return AcreResult::error;
+        return acre::Result::error;
     if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return AcreResult::error;
+        return acre::Result::error;
     CPlayer *player;
 
     for (int x = 0; x < sampleCount * channels; x += channels) {
@@ -33,7 +33,7 @@ AcreResult CSoundEngine::onEditPlaybackVoiceDataEvent(acre_id_t id, short* sampl
     if (it != CEngine::getInstance()->speakingList.end()) {
         player = (CPlayer *)it->second;
         LOCK(player);
-        if (player->getSpeakingType() != AcreSpeaking::unknown) {
+        if (player->getSpeakingType() != acre::Speaking::unknown) {
             for (size_t i = 0; i < player->channels.size(); ++i) {
                 if (player->channels[i]) {
                     player->channels[i]->lock();
@@ -51,29 +51,29 @@ AcreResult CSoundEngine::onEditPlaybackVoiceDataEvent(acre_id_t id, short* sampl
         memset(samples, 0x00, (sampleCount*channels)*sizeof(short) );
     }
     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->unlock();
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CSoundEngine::onEditPostProcessVoiceDataEvent(acre_id_t id, short* samples, int sampleCount, int channels, const unsigned int* channelSpeakerArray, unsigned int* channelFillMask) {
+acre::Result CSoundEngine::onEditPostProcessVoiceDataEvent(acre::id_t id, short* samples, int sampleCount, int channels, const unsigned int* channelSpeakerArray, unsigned int* channelFillMask) {
 
     if (CEngine::getInstance()->getSoundSystemOverride())
-        return AcreResult::ok;
+        return acre::Result::ok;
     if (!CEngine::getInstance()->getGameServer())
-        return AcreResult::error;
+        return acre::Result::error;
     if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return AcreResult::error;
+        return acre::Result::error;
     memset(samples, 0x00, (sampleCount*channels)*sizeof(short) );
     *channelFillMask = (1<<channels)-1;
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CSoundEngine::onEditMixedPlaybackVoiceDataEvent(short* samples, int sampleCount, int channels, const unsigned int speakerMask) {
+acre::Result CSoundEngine::onEditMixedPlaybackVoiceDataEvent(short* samples, int sampleCount, int channels, const unsigned int speakerMask) {
     if (CEngine::getInstance()->getSoundSystemOverride())
-        return AcreResult::ok;
+        return acre::Result::ok;
     if (!CEngine::getInstance()->getGameServer())
-        return AcreResult::error;
+        return acre::Result::error;
     if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return AcreResult::error;
+        return acre::Result::error;
     memset(samples, 0x00, (sampleCount*channels)*sizeof(short) );
     this->getSoundMixer()->mixDown(samples, sampleCount, channels, speakerMask);
 
@@ -88,16 +88,16 @@ AcreResult CSoundEngine::onEditMixedPlaybackVoiceDataEvent(short* samples, int s
         }
     }
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
 
-AcreResult CSoundEngine::onEditCapturedVoiceDataEvent(short* samples, int sampleCount, int channels) {
+acre::Result CSoundEngine::onEditCapturedVoiceDataEvent(short* samples, int sampleCount, int channels) {
     if (CEngine::getInstance()->getSoundSystemOverride())
-        return AcreResult::ok;
+        return acre::Result::ok;
     if (!CEngine::getInstance()->getGameServer())
-        return AcreResult::error;
+        return acre::Result::error;
     if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return AcreResult::error;
+        return acre::Result::error;
     /*
     if (CEngine::getInstance()->getSelf()) {
         if (CEngine::getInstance()->getSelf()->getSpeaking()) {
@@ -116,5 +116,5 @@ AcreResult CSoundEngine::onEditCapturedVoiceDataEvent(short* samples, int sample
         }
     }
     */
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
