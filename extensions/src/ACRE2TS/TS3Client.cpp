@@ -305,7 +305,7 @@ bool CTS3Client::getInputStatus() {
     return status;
 }
 
-acre::Result CTS3Client::playSound(std::string path_, acre::Vector3_t position_, const float32_t volume_, const int32_t looping_) {
+acre::Result CTS3Client::playSound(std::string path_, acre::vec3_fp32_t position_, const float32_t volume_, const int32_t looping_) {
 
     if (!PathFileExistsA(path_.c_str())) {
         return acre::Result::error;

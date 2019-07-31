@@ -23,7 +23,8 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
         [_radioRack] call EFUNC(sys_rack,getRackBaseClassname);
     };
     private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
-    private _line2 = [ACRE_ACTIVE_RADIO, "getChannelDescription"] call EFUNC(sys_data,dataEvent);
-    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line2, "", -1, [ACRE_NOTIFICATION_YELLOW]] call EFUNC(sys_list,displayHint);
+    private _line1 = [ACRE_ACTIVE_RADIO, "getChannelDescription"] call EFUNC(sys_data,dataEvent);
+    private _line2 = ["L", "C", "R"] select ([ACRE_ACTIVE_RADIO, "getSpatial"] call EFUNC(sys_data,dataEvent)) + 1;
+    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line1, _line2, -1, [ACRE_NOTIFICATION_YELLOW]] call EFUNC(sys_list,displayHint);
 };
 true
