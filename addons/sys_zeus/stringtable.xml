@@ -35,7 +35,7 @@
             <English>Communicate through camera</English>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_Description">
-            <English>Hear with players through the Zeus Interface's camera.</English>
+            <English>Hear and talk with players through the Zeus Interface's camera.</English>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_DisplayName">
             <English>Able to Join Spectators</English>
