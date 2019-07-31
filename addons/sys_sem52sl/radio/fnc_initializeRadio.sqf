@@ -77,7 +77,7 @@ for "_i" from 0 to (count _channels)-1 do {
 };
 
 private _volume = EGVAR(sys_core,defaultRadioVolume);
-_volume = 1 max (_volume + .125 - (_volume % .125));
+_volume = _volume + .125 - (_volume % .125);
 
 HASH_SET(_radioData,"volume",_volume);
 HASH_SET(_radioData,"radioOn",1);
