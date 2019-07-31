@@ -12,5 +12,7 @@ class CfgPatches {
         VERSION_CONFIG;
     };
 };
+
 #include "CfgEventHandlers.hpp"
+#include "ACE_ZeusActions.hpp"
 #include "CfgVehicles.hpp"
