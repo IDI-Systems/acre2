@@ -27,12 +27,11 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
     private _line2 = ["L", "C", "R"] select ([ACRE_ACTIVE_RADIO, "getSpatial"] call EFUNC(sys_data,dataEvent)) + 1;
     private _hintColor = EGVAR(sys_list,transmissionColor);
     if (EGVAR(sys_list,showPttColors)) then {
-        if (ACRE_ACTIVE_PTTKEY == 0) then { //PTT1
-            _hintColor = EGVAR(sys_list,ptt1Color);
-        } else if (ACRE_ACTIVE_PTTKEY == 1) then { //PTT2
-            _hintColor = EGVAR(sys_list,ptt2Color);
-        } else if (ACRE_ACTIVE_PTTKEY == 2) then { //PTT3
-            _hintColor = EGVAR(sys_list,ptt3Color);
+        switch (ACRE_ACTIVE_PTTKEY) do {
+            case 0: {_hintColor = EGVAR(sys_list,ptt1Color)};   //PTT1
+            case 1: {_hintColor = EGVAR(sys_list,ptt2Color)};   //PTT2
+            case 2: {_hintColor = EGVAR(sys_list,ptt3Color)};   //PTT3
+            default {_hintColor = EGVAR(sys_list,transmissionColor)};
         };
     };
     ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line1, _line2, -1, _hintColor] call EFUNC(sys_list,displayHint);
