@@ -10,7 +10,7 @@
  * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_showBroadCastHint
  *
  * Public: No
  */
@@ -24,6 +24,16 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
     };
     private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
     private _line2 = [ACRE_ACTIVE_RADIO, "getChannelDescription"] call EFUNC(sys_data,dataEvent);
-    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line2, "", -1, EGVAR(sys_list,transmissionColor)] call EFUNC(sys_list,displayHint);
+    private _hintColor = EGVAR(sys_list,transmissionColor);
+    if (EGVAR(sys_list,showPttColors)) then {
+        if (ACRE_ACTIVE_PTTKEY == 0) then { //PTT1
+            _hintColor = EGVAR(sys_list,ptt1Color);
+        } else if (ACRE_ACTIVE_PTTKEY == 1) then { //PTT2
+            _hintColor = EGVAR(sys_list,ptt2Color);
+        } else if (ACRE_ACTIVE_PTTKEY == 2) then { //PTT3
+            _hintColor = EGVAR(sys_list,ptt3Color);
+        };
+    };
+    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line2, "", -1, _hintColor] call EFUNC(sys_list,displayHint);
 };
 true
