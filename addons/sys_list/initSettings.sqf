@@ -27,6 +27,7 @@
     localize LSTRING(showPttColors_displayName),
     "ACRE2 UI",
     false,
+    false,
     {}
 ] call CBA_Settings_fnc_init;
 
