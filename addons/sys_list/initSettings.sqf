@@ -116,7 +116,7 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
     "LIST",
     localize LSTRING(hintTxtFont_displayName),
     "ACRE2 UI",
-    [_fontNames, _fonts, 10],
+    [_fonts, _fontNames, 10],
     false,
     {}
 ] call CBA_Settings_fnc_init;
