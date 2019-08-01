@@ -20,6 +20,49 @@
     {}
 ] call CBA_Settings_fnc_init;
 
+// Enable PTT color customization
+[
+    QGVAR(showPttColors),
+    "CHECKBOX",
+    localize LSTRING(showPttColors_displayName),
+    "ACRE2 UI",
+    false,
+    {}
+] call CBA_Settings_fnc_init;
+
+// PTT1 Color
+[
+    QGVAR(ptt1Color),
+    "COLOR",
+    localize LSTRING(ptt1Color_displayName),
+    "ACRE2 UI",
+    [ACRE_NOTIFICATION_YELLOW],
+    false,
+    {}
+] call CBA_Settings_fnc_init;
+
+// PTT2 Color
+[
+    QGVAR(ptt2Color),
+    "COLOR",
+    localize LSTRING(ptt2Color_displayName),
+    "ACRE2 UI",
+    [ACRE_NOTIFICATION_YELLOW],
+    false,
+    {}
+] call CBA_Settings_fnc_init;
+
+// PTT3 Color
+[
+    QGVAR(ptt3Color),
+    "COLOR",
+    localize LSTRING(ptt3Color_displayName),
+    "ACRE2 UI",
+    [ACRE_NOTIFICATION_YELLOW],
+    false,
+    {}
+] call CBA_Settings_fnc_init;
+
 // Channel Switch Color
 [
     QGVAR(switchChannelColor),

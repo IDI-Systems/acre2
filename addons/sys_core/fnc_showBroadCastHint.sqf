@@ -10,7 +10,7 @@
  * Handled <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [] call acre_sys_core_fnc_showBroadCastHint
  *
  * Public: No
  */
