@@ -79,7 +79,7 @@ class CfgVehicles {
                     selection = "";
                     displayName = CSTRING(connect);
                     distance = 10;
-                    condition = QUOTE(!([ARR_2(_player,_target)] call DFUNC(isAntennaConnected)));
+                    condition = QUOTE(!([ARR_2(_player,_target)] call DFUNC(isAntennaConnected)) && {[ARR_2(_player,_target)] call DFUNC(hasCompatibleRadios)});
                     statement = QUOTE(true);
                     insertChildren = QUOTE([ARR_2(_player,_target)] call DFUNC(connectChildrenActions));
                     showDisabled = 0;

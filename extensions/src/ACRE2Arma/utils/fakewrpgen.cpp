@@ -102,9 +102,9 @@ int main(int argc, char **argv) {
         return 0;
     }
 
-    AcreResult result = wrpOut.generateAcreWrp(wrpOutput);
+    acre::Result result = wrpOut.generateAcreWrp(wrpOutput);
 
-    if (result != AcreResult::ok) {
+    if (result != acre::Result::ok) {
         std::cerr << "Error writing to: " << config["output_file"] << std::endl;
     }
     
@@ -245,38 +245,24 @@ static float32_t internal_elevation(const int32_t x_, const int32_t y_, const ac
 
 static bool is_peak(const int32_t x_, const int32_t y_, const acre::wrp::landscape &wrp_) {
     const float32_t height = internal_elevation(x_, y_, wrp_);
-    uint8_t p = 0;
 
     if (internal_elevation(x_ - 1, y_ - 1, wrp_) >= height) {
-        p++;
-    }
-    if (internal_elevation(x_ - 1, y_, wrp_) >= height) {
-        p++;
-    }
-    if (internal_elevation(x_ - 1, y_ + 1, wrp_) >= height) {
-        p++;
-    }
-    if (internal_elevation(x_ + 1, y_ - 1, wrp_) >= height) {
-        p++;
-    }
-    if (internal_elevation(x_ + 1, y_, wrp_) >= height) {
-        p++;
-    }
-    if (internal_elevation(x_ + 1, y_ + 1, wrp_) >= height) {
-        p++;
-    }
-    if (internal_elevation(x_, y_ - 1, wrp_) >= height) {
-        p++;
-    }
-    if (internal_elevation(x_, y_ + 1, wrp_) >= height) {
-        p++;
+        return false;
+    } else if (internal_elevation(x_ - 1, y_, wrp_) >= height) {
+        return false;
+    } else if (internal_elevation(x_ - 1, y_ + 1, wrp_) >= height) {
+        return false;
+    } else if (internal_elevation(x_ + 1, y_ - 1, wrp_) >= height) {
+        return false;
+    } else if (internal_elevation(x_ + 1, y_, wrp_) >= height) {
+        return false;
+    } else if (internal_elevation(x_ + 1, y_ + 1, wrp_) >= height) {
+        return false;
+    } else if (internal_elevation(x_, y_ - 1, wrp_) >= height) {
+        return false;
+    } else if (internal_elevation(x_, y_ + 1, wrp_) >= height) {
+        return false;
     }
 
-    if (p == 8) {
-        return false;
-    } else if (p == 0) {
-        return true;
-    } else {
-        return false;
-    }
+    return true;
 }

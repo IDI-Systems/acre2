@@ -23,7 +23,8 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
         [_radioRack] call EFUNC(sys_rack,getRackBaseClassname);
     };
     private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
-    private _line2 = [ACRE_ACTIVE_RADIO, "getChannelDescription"] call EFUNC(sys_data,dataEvent);
+    private _line1 = [ACRE_ACTIVE_RADIO, "getChannelDescription"] call EFUNC(sys_data,dataEvent);
+    private _line2 = ["L", "C", "R"] select ([ACRE_ACTIVE_RADIO, "getSpatial"] call EFUNC(sys_data,dataEvent)) + 1;
     private _hintColor = EGVAR(sys_list,transmissionColor);
     if (EGVAR(sys_list,showPttColors)) then {
         if (ACRE_ACTIVE_PTTKEY == 0) then { //PTT1
@@ -34,6 +35,7 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
             _hintColor = EGVAR(sys_list,ptt3Color);
         };
     };
-    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line2, "", -1, _hintColor] call EFUNC(sys_list,displayHint);
+    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line1, _line2, -1, _hintColor] call EFUNC(sys_list,displayHint);
+
 };
 true

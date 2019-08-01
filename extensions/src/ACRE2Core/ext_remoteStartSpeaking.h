@@ -21,17 +21,22 @@ RPC_FUNCTION(ext_remoteStartSpeaking) {
             this->getSelf()->getCurveScale()
         ) */
 
-    acre_id_t id = (acre_id_t)vMessage->getParameterAsInt(0);
-    int languageId = (acre_id_t)vMessage->getParameterAsInt(1);
-    std::string netId = std::string((char *)vMessage->getParameter(2));
+    const acre::id_t id = static_cast<acre::id_t>(vMessage->getParameterAsInt(0));
+    const int32_t languageId = static_cast<acre::id_t>(vMessage->getParameterAsInt(1));
+    const  std::string netId = std::string((char *)vMessage->getParameter(2));
 
-    AcreSpeaking speakingType = (AcreSpeaking)vMessage->getParameterAsInt(3);
-    std::string radio_id = std::string((char *)vMessage->getParameter(4));
-    acre_volume_t curveScale = vMessage->getParameterAsFloat(5);
+    const  acre::Speaking speakingType = static_cast<acre::Speaking>(vMessage->getParameterAsInt(3));
+    const std::string radio_id = std::string((char *)vMessage->getParameter(4));
+    const acre::volume_t curveScale = vMessage->getParameterAsFloat(5);
 
     CEngine::getInstance()->remoteStartSpeaking(id, languageId, netId, speakingType, radio_id, curveScale);
 
-    return AcreResult::ok;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    __inline void setName(char *const value) final { m_Name = value; }
+    __inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

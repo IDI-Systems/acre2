@@ -27,11 +27,9 @@
 #endif
 
 namespace acre {
-    template< typename T >
-    struct array_deleter
-    {
-        void operator ()(T const * p)
-        {
+    template<typename T>
+    struct array_deleter {
+        void operator ()(T const * p) {
             delete[] p;
         }
     };
@@ -39,19 +37,19 @@ namespace acre {
     std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems);
     std::vector<std::string> split(const std::string &s, char delim);
 
-    // trim from start
+    // Trim from start
     static inline std::string &ltrim(std::string &s) {
-        s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+        s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int32_t c) { return !std::isspace(c); }));
         return s;
     }
 
-    // trim from end
+    // Trim from end
     static inline std::string &rtrim(std::string &s) {
-        s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+        s.erase(std::find_if(s.rbegin(), s.rend(), [](int32_t c) {return !std::isspace(c); }).base(), s.end());
         return s;
     }
 
-    // trim from both ends
+    // Trim from both ends
     static inline std::string &trim(std::string &s) {
         return ltrim(rtrim(s));
     }
@@ -60,14 +58,18 @@ namespace acre {
 
     struct exception {
         exception(const uint32_t code_, const std::string & text_) : code(code_), text(text_) {}
-        
-        exception & operator= (const exception& other) { code = other.code; text = other.text;  return *this; }
-        bool operator == (const exception &r) const { return ( code == r.code ); }
 
-        uint32_t        code;
-        std::string     text;
+        exception & operator= (const exception& other) {
+            code = other.code;
+            text = other.text;
+            return *this;
+        }
+        bool operator == (const exception &r) const { return code == r.code; }
+
+        uint32_t    code;
+        std::string text;
     };
-}
+} /* namespace acre */
 
 #ifdef _DEBUG
 #define ACRE_ASSERT assert()

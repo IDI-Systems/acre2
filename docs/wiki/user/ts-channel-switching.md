@@ -42,8 +42,6 @@ Located in CBA settings for the 'ACRE2' addon.
 
 ##### TeamSpeak Channel Password
 
-{% include note.html content="Development Build only!" %}
-
 - Sets the password for the TeamSpeak channel name to switch to specified above
 - Default: `""`
 - This will only be used if the specified TeamSpeak channel is found

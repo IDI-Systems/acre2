@@ -1,94 +1,90 @@
 
-#include "compat.h"
 #include "Log.h"
 
+#include <chrono>
+#include <ctime>
 
-Log *g_Log = NULL;
+Log *g_Log = nullptr;
 
-Log::Log(char *logFile) { 
-    InitializeCriticalSection(&this->m_CriticalSection);
-
-    if (logFile == NULL) {
-        this->fileHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+Log::Log(char *logFile) {
+   
+    if (logFile == nullptr) {
         return;
     }
 
-    this->fileHandle = CreateFileA(logFile, GENERIC_WRITE, FILE_SHARE_READ, NULL, OPEN_ALWAYS, 0, 0);
-    if (this->fileHandle != INVALID_HANDLE_VALUE) {
-        SetFilePointer(this->fileHandle, 0, NULL, FILE_END);
-
-    } else {
-        this->fileHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-        return;
-    }
+    this->logOutput.open(logFile, std::ios_base::out | std::ios_base::app);
 }
 
 Log::~Log(void) {
-    EnterCriticalSection(&this->m_CriticalSection);
-    DeleteCriticalSection(&this->m_CriticalSection);
-    CloseHandle(this->fileHandle);
+    std::unique_lock<std::mutex> lock(m_criticalMutex, std::defer_lock);
+    lock.lock();
+    lock.unlock();
+    if (logOutput.is_open()) {
+        logOutput.close();
+    }
 }
-size_t Log::Write(DWORD msgType, char *function, unsigned int line, const char *format, ...) {
+size_t Log::Write(const acre::LogLevel msgType, char *function, const uint32_t line, const char *format, ...) {
     char buffer[4097], tbuffer[1024];
     va_list va;
-    size_t ret;
-    DWORD count;
-    BOOL res;
-    SYSTEMTIME st;
 
-    if (this == NULL)
-        return 0xFFFFFFFF;
+    if (this == NULL) {
+        return static_cast<size_t>(acre::LogLevel::Error);
+    }
 
-    if (this->fileHandle == INVALID_HANDLE_VALUE) 
-        return 0xFFFFFFFF;
+    if (!this->logOutput.is_open()) {
+        return static_cast<size_t>(acre::LogLevel::Error);
+    }
 
     buffer[0] = 0x00;
 
-    GetLocalTime(&st);
-    _snprintf_s(buffer, sizeof(buffer), sizeof(buffer)-1, "[%d:%d:%d.%d] ", st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
+    const std::chrono::system_clock::time_point systemClock = std::chrono::system_clock::now();
+    const std::time_t logTime = std::chrono::system_clock::to_time_t(systemClock);
+    struct tm *localTime = localtime(&logTime);
+
+    // Get the milliseconds
+    const std::chrono::duration<double> timeSinceEpoch = systemClock.time_since_epoch();
+    std::chrono::seconds::rep milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(timeSinceEpoch).count() % 1000;
+
+    snprintf(buffer, sizeof(buffer) - 1, "[%d:%d:%d.%d] ", localTime->tm_hour, localTime->tm_min, localTime->tm_sec, milliseconds);
 
 #ifdef _TRACE
     tbuffer[0] = 0x00;
-    _snprintf_s(tbuffer, sizeof(tbuffer)-1, sizeof(tbuffer)-1, "(%s():%d) - ", function, line);
-    strcat_s(buffer, sizeof(buffer), tbuffer);
+    snprintf(tbuffer, sizeof(tbuffer) - 1, "(%s():%d) - ", function, line);
+    strncat(buffer, tbuffer, sizeof(tbuffer));
     tbuffer[0] = 0x00;
 #endif
 
     va_start(va, format);
-    ret = vsprintf_s(tbuffer,sizeof(tbuffer), format, va);
+    size_t ret = vsnprintf(tbuffer, sizeof(tbuffer), format, va);
     va_end(va);
 
-    strcat_s(buffer, sizeof(buffer), tbuffer);
+    strncat(buffer, tbuffer, sizeof(buffer));
 
-    ret = strlen(buffer)+2;
-    strcat_s(buffer, sizeof(buffer), "\r\n");
+    ret = strlen(buffer) + 2;
+    strncat(buffer, "\r\n", sizeof(buffer));
 
-    EnterCriticalSection(&this->m_CriticalSection);
-    res = WriteFile(this->fileHandle, (LPCVOID)buffer, (DWORD)ret, &count, NULL);
-    if (res == FALSE) {
-        printf("Write file failed");
-    }
-    LeaveCriticalSection(&this->m_CriticalSection);
-
+    std::unique_lock<std::mutex> lock(m_criticalMutex, std::defer_lock);
+    lock.lock();
+    this->logOutput.write(buffer, ret);
+    this->logOutput.flush();
+    lock.unlock();
+   
     // test debug, print it too
     printf("%s", buffer);
 
-    if (msgType == LOGLEVEL_ERROR) {
+    if (msgType == acre::LogLevel::Error) {
         MessageBoxA(NULL, buffer, "CRITICAL ERROR", MB_OK);
     }
 
     return(ret);
 }
-size_t Log::PopMessage(DWORD msgType, const char *format, ...) {
+size_t Log::PopMessage(const acre::LogLevel msgType, const char *format, ...) {
     char buffer[4097];
     va_list va;
-    int ret;
-    
-    msgType = msgType;
-
+        
     memset(buffer, 0x00, sizeof(buffer));
     va_start(va, format);
-    ret = vsprintf_s(buffer,4096, format, va);
+    int32_t ret = vsnprintf(buffer, 4096, format, va);
     va_end(va);
 
     ret = MessageBoxA(NULL, buffer, "Log Message", MB_ICONINFORMATION | MB_OK);

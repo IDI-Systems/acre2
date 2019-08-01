@@ -33,9 +33,12 @@ private _condition = {
     //{[_player, _target, ["isNotInside"]] call ace_common_fnc_canInteractWith}
      //{[_player, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)}
      params ["_target","_unit"];
-     private _accessibleRacks = [_target, _unit] call FUNC(getAccessibleVehicleRacks);
-     private _hearableRacks = [_target, _unit] call FUNC(getHearableVehicleRacks);
-     (count _accessibleRacks > 0 || {count _hearableRacks > 0})
+    private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
+    {
+        _racks pushBackUnique _x;
+    } forEach ([_target, acre_player] call FUNC(getHearableVehicleRacks));
+    _racks = _racks select {!([_x, acre_player] call FUNC(isRackHearable))};
+    !(_racks isEqualTo [])
 };
 private _statement = {true};
 private _text = localize LSTRING(Racks);
