@@ -142,7 +142,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"intercom_1"};
+                intercom[] = {};
             };
         };
     };
@@ -163,7 +163,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"intercom_1"};
+                intercom[] = {};
             };
 
             class Rack_2 : Rack_1 {
@@ -185,7 +185,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"intercom_1"};
+                intercom[] = {};
             };
 
             class Rack_2 : Rack_1 {
@@ -205,7 +205,7 @@ class CfgVehicles {
                 defaultComponents[] = {};
                 mountedRadio = "ACRE_PRC117F";
                 isRadioRemovable = 0;
-                intercom[] = {"intercom_1"};
+                intercom[] = {};
             };
         };
     };
