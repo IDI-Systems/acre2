@@ -2,7 +2,7 @@
 title: Vehicle Intercom
 ---
 
-## Vehicle intercom
+## Vehicle Intercom
 
 {% include important.html content="Requires ACE3 Interaction Menu!" %}
 
@@ -48,7 +48,7 @@ The selected radio is capable of receiving and transmitting.
 It has 4 positions. When at PTT, the intercom will behave as *PTT activation* mode, LIVE and VOX is the equivalent of *Voice activation* and O/R allows the FFCS to transmit a priority message by temporarily disabling all other FFCS stations.
 
 
-## Infantry telephone
+## Infantry Telephone
 
 {% include important.html content="Requires ACE3 Interaction Menu!" %}
 
