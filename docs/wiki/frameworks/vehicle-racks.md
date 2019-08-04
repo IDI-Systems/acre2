@@ -31,7 +31,7 @@ class CfgVehicles {
                 shortName = "D.Up";                   // Short name displayed on the HUD. Maximum of 5 characters
                 componentName = "ACRE_VRC110";        // Able to mount a PRC152
                 allowedPositions[] = {"driver", {"cargo", 1}}; // Who can configure the radio and open the radio GUI. Same wildcards as the intercom. It also allows transmitting/receiving
-                disabledPositions[] = {};             // Who can not access the radio (default: {})
+                disabledPositions[] = {};             // Who cannot access the radio (default: {})
                 defaultComponents[] = {};             // Use this to attach simple components like Antennas, they will first attempt to fill empty connectors but will overide existing connectors. Not yet fully implemented. (default: {})
                 mountedRadio = "";                    // Predefined mounted radio (default: "", meaning none)
                 isRadioRemovable = 1;                 // Radio can be removed (default: 0)
