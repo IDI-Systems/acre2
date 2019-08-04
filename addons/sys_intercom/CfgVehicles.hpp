@@ -23,7 +23,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 masterPositions[] = {"commander"};
                 connectedByDefault = 1;
             };
@@ -37,7 +36,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"commander"};
                 numLimitedPositions = 1;
@@ -59,7 +57,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"commander"};
                 numLimitedPositions = 1;
@@ -95,7 +92,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"commander"};
                 numLimitedPositions = 1;
@@ -129,7 +125,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"commander"};
                 numLimitedPositions = 1;
@@ -164,7 +159,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"commander"};
                 numLimitedPositions = 1;
@@ -194,7 +188,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"commander"};
                 numLimitedPositions = 1;
@@ -224,7 +217,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"commander"};
                 numLimitedPositions = 1;
@@ -250,7 +242,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"commander"};
                 numLimitedPositions = 1;
@@ -274,7 +265,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 masterPositions[] = {"driver"};
                 connectedByDefault = 1;
             };
@@ -299,7 +289,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -323,7 +312,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -346,7 +334,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -370,7 +357,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -394,7 +380,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver"};
                 numLimitedPositions = 1;
@@ -418,7 +403,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -441,7 +425,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -464,7 +447,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -488,7 +470,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -511,7 +492,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -534,10 +514,7 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
-                limitedPositions[] = {};
                 masterPositions[] = {"driver"};
-                numLimitedPositions = 0;
                 connectedByDefault = 1;
             };
         };
@@ -578,7 +555,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver"};
                 numLimitedPositions = 1;
@@ -602,7 +578,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -626,7 +601,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                disabledPositions[] = {};
                 limitedPositions[] = {{"cargo", "all"}};
                 masterPositions[] = {"driver", "copilot"};
                 numLimitedPositions = 1;
@@ -650,7 +624,6 @@ class CfgVehicles {
                 displayName = CSTRING(crewIntercom);
                 shortName = CSTRING(shortCrewIntercom);
                 allowedPositions[] = {"crew", {"cargo", "all"}};
-                disabledPositions[] = {};
                 masterPositions[] = {"driver"};
                 connectedByDefault = 1;
             };
