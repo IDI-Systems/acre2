@@ -2,9 +2,9 @@
 title: Vehicle Intercom
 ---
 
-## Vehicle Intercom
-
 {% include important.html content="Requires ACE3 Interaction Menu!" %}
+
+## Vehicle Intercom
 
 Vehicle intercom consists of two separate networks depending on the vehicle type: crew and passenger intercom. Intercom gives the ability to speak to other players within the same network using a headset. This allows them to communicate without the disturbance of the vehicle's noise.
 
@@ -49,8 +49,6 @@ It has 4 positions. When at PTT, the intercom will behave as *PTT activation* mo
 
 
 ## Infantry Telephone
-
-{% include important.html content="Requires ACE3 Interaction Menu!" %}
 
 Infantry also has the possibility, in vehicles like tanks or IFVs, to communicate with the crew and/or passengers without entering the vehicle. To do so, face the vehicle, interact with it and take the infantry telephone by selecting the appropriate network if it is not in use already. You can either put it back, give it to another player or switch networks.
 
