@@ -76,6 +76,7 @@ for "_i" from 0 to (count _channels)-1 do {
     PUSH(_currentChannels, _channelData);
 };
 
+// Rounds up 20/40/60/80/100 to the nearest valid value
 private _volume = EGVAR(sys_core,defaultRadioVolume);
 _volume = _volume + .125 - (_volume % .125);
 
