@@ -248,7 +248,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
         }
         case SteamCommand::DoCopy: {
             std::string current_version = params;
-            
+
             const std::string path_x86 = find_mod_file("plugin\\acre2_win32.dll");
             const std::string path_x64 = find_mod_file("plugin\\acre2_win64.dll");
             if ((path_x86 == "") || (path_x64 == "")) {
@@ -276,7 +276,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             /* 32 Bit - Machine */
             std::string rootkey = ReadRegValue(HKEY_LOCAL_MACHINE, "SOFTWARE\\TeamSpeak 3 Client", "");
             checkTsLocations(appData, rootkey, HKEY_LOCAL_MACHINE, ts_locations, ts_delete_locations);
-            
+
             /* 64 Bit - Machine */
             rootkey = ReadRegValue64(HKEY_LOCAL_MACHINE, "SOFTWARE\\TeamSpeak 3 Client", "");
             checkTsLocations(appData, rootkey, HKEY_LOCAL_MACHINE, ts_locations, ts_delete_locations);
@@ -284,7 +284,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             /* 32 Bit - User */
             rootkey = ReadRegValue(HKEY_CURRENT_USER, "Software\\TeamSpeak 3 Client", "");
             checkTsLocations(appData, rootkey, HKEY_CURRENT_USER, ts_locations, ts_delete_locations);
-            
+
             /* 64 Bit - User */
             rootkey = ReadRegValue64(HKEY_CURRENT_USER, "Software\\TeamSpeak 3 Client", "");
             checkTsLocations(appData, rootkey, HKEY_CURRENT_USER, ts_locations, ts_delete_locations);
@@ -360,7 +360,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                         if (!CopyFileA((LPCSTR)path_x86.c_str(), (LPCSTR)ts_path_x86.c_str(), false) || !CopyFileA((LPCSTR)path_x64.c_str(), (LPCSTR)ts_path_x64.c_str(), false)) {
                             DWORD last_error = GetLastError();
                             if (last_error == 32) {
-                                const int32_t result = MessageBoxA(nullptr, "ACRE2 was unable to copy the TeamSpeak 3 plugin due to it being in use. Please close any instances of TeamSpeak 3 and click Retry.\n\nIf you would like to close Arma 3, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
+                                const int32_t result = MessageBoxA(nullptr, "ACRE2 was unable to copy the TeamSpeak 3 plugin due to it being in use. Please close any instances of TeamSpeak 3 and click \"Try Again\".\n\nIf you would like to close Arma 3, click Cancel. Press Continue to launch Arma 3 regardless.", "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
                                 if (result == IDCANCEL) {
                                     TerminateProcess(GetCurrentProcess(), 0);
                                     return;
@@ -410,7 +410,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                             if (last_error != ERROR_FILE_NOT_FOUND) {
                                 updateRequired = true;
                                 if (last_error == FILE_SHARE_DELETE) { // File in use
-                                    const int32_t result = MessageBoxA(nullptr, "ACRE2 is unable to copy the TeamSpeak 3 plugin due to it being in use. Please close any instances of TeamSpeak 3 and click Retry.\n\nIf you would like to close Arma 3, click Cancel. Press Continue to launch Arma 3 regardless", "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
+                                    const int32_t result = MessageBoxA(nullptr, "ACRE2 is unable to copy the TeamSpeak 3 plugin due to it being in use. Please close any instances of TeamSpeak 3 and click \"Try Again\".\n\nIf you would like to close Arma 3, click Cancel. Press Continue to launch Arma 3 regardless.", "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
                                     if (result == IDCANCEL) {
                                         TerminateProcess(GetCurrentProcess(), 0);
                                         return;
