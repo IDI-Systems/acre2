@@ -6,7 +6,7 @@
     [0, 3, 1, 2],
     false,
     {["globalVolume", _this] call FUNC(setPluginSetting)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(premixGlobalVolume),
@@ -16,7 +16,7 @@
     [0, 3, 1, 2],
     false,
     {["premixGlobalVolume", _this] call FUNC(setPluginSetting)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(spectatorVolume),
@@ -26,7 +26,7 @@
     [0, 1, 1, 2],
     false,
     {}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(unmuteClients),
@@ -36,7 +36,7 @@
     true,
     false,
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Teamspeak Channel Switching
 // Switch channels
@@ -48,7 +48,7 @@
     true,
     false,
     {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Channel Name
 [
@@ -59,7 +59,7 @@
     "",
     true,
     {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Channel Password
 [
@@ -70,7 +70,7 @@
     ["", true],
     true,
     {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Difficulty settings
 // Interference
@@ -82,7 +82,7 @@
     true,
     true,
     {[_this] call FUNC(setInterference)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Full duplex
 [
@@ -93,7 +93,7 @@
     false,
     true,
     {[_this] call EFUNC(api,setFullDuplex)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Antena direction
 [
@@ -104,7 +104,7 @@
     false,
     true,
     {[_this] call FUNC(ignoreAntennaDirection)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Antena direction
 [
@@ -113,7 +113,7 @@
     localize LSTRING(autoAntennaDirection_displayName),
     "ACRE2",
     false
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Terrain loss
 [
@@ -124,7 +124,7 @@
     [0, 1, 0.50, 2],
     true,
     {[_this] call FUNC(setLossModelScale)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Reveal to AI
 [
@@ -135,9 +135,9 @@
     [0, 2.50, 1, 2],
     true,
     {[_this] call FUNC(setRevealToAI)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
-// Notification Settings
+// Notification Settings - not yet implemented
 /*[
     QGVAR(incomingTransmissionNotification),
     "CHECKBOX",
@@ -145,8 +145,8 @@
     "ACRE2",
     false,
     true,
-    {} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;
+    {}
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(rackTransmissionNotification),
@@ -155,5 +155,5 @@
     "ACRE2",
     false,
     true,
-    {} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;*/
+    {}
+] call CBA_fnc_addSetting;*/
