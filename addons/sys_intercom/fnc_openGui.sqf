@@ -18,7 +18,10 @@
 
 params [["_intercomNetwork", -1], ["_openMasterStation", false]];
 
-if (GVAR(guiOpened)) exitWith {false};
+if (GVAR(guiOpened)) exitWith {
+    closeDialog 0;
+    true
+};
 
 private _vehicle = vehicle acre_player;
 private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
