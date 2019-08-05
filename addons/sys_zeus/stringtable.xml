@@ -32,7 +32,7 @@
             <Japanese>Zeus の音源</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_DisplayName">
-            <English>Communicate through camera</English>
+            <English>Communicate Through Camera</English>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_Description">
             <English>Hear and talk with players through the Zeus Interface's camera.</English>
