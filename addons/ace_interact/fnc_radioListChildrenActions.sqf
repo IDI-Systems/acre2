@@ -42,7 +42,8 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
     };
 
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
-    if (/* TODO: max channels == 1*/ false) then {
+    private _maxChannelsCount = count ([_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent)) - 1;
+    if (_maxChannelsCount < 2) then {
         // Display frequency if single-channel radio (eg. AN/PRC-77)
         private _txData = [_x, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
         private _txFreq = HASH_GET(_txData, "frequencyTX");
