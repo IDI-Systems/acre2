@@ -24,14 +24,14 @@ public:
 
     acre::Result release(void);
 
-    __inline void setCommandId(char *const value) { m_commandId = value; }
-    __inline char* getCommandId() const { return m_commandId; }
+    inline void setCommandId(char *const value) { m_commandId = value; }
+    inline char* getCommandId() const { return m_commandId; }
 
-    __inline void setConnected(const bool value) final { m_connected = value; }
-    __inline bool getConnected() const final { return m_connected; }
+    inline void setConnected(const bool value) final { m_connected = value; }
+    inline bool getConnected() const final { return m_connected; }
 
-    __inline void setId(const acre::id_t value) final { m_id = value; }
-    __inline acre::id_t getId() const final { return m_id; }
+    inline void setId(const acre::id_t value) final { m_id = value; }
+    inline acre::id_t getId() const final { return m_id; }
 
 protected:
     acre::id_t m_id;
