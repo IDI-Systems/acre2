@@ -10,7 +10,6 @@ class RscTitles {
         fadeIn = 0;
         fadeOut = 0;
         duration = 999999;
-        movingEnable = 0;
         class controls {
             class Background: RscText {
                 idc = -1;
@@ -39,7 +38,6 @@ class RscTitles {
         fadeIn = 0;
         fadeOut = 0;
         duration = 999999;
-        movingEnable = 1;
         class controls {
             class VehicleInfoControlsGroup: RscControlsGroupNoScrollbars {
                 idc = -1;
