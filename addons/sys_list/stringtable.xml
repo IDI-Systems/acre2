@@ -41,7 +41,7 @@
             <German>Zeigt Benachrichtigungen für Funk und Funkgeräte.</German>
             <Japanese>無線機と送信に関する通知を表示します。</Japanese>
         </Key>
-        <Key ID="STR_ACRE_sys_list_ACREUI_displayName">
+        <Key ID="STR_ACRE_sys_list_Category">
             <English>ACRE2 - User Interface</English>
             <German>ACRE2 - Benutzeroberfläche</German>
             <Japanese>ACRE2 - ユーザー インターフェイス</Japanese>
