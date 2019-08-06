@@ -28,9 +28,9 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
     private _hintColor = EGVAR(sys_list,transmissionColor);
     if (EGVAR(sys_list,showPttColors)) then {
         switch (ACRE_ACTIVE_PTTKEY) do {
-            case 0: {_hintColor = EGVAR(sys_list,ptt1Color)};   //PTT1
-            case 1: {_hintColor = EGVAR(sys_list,ptt2Color)};   //PTT2
-            case 2: {_hintColor = EGVAR(sys_list,ptt3Color)};   //PTT3
+            case 0: {_hintColor = EGVAR(sys_list,ptt1Color)};
+            case 1: {_hintColor = EGVAR(sys_list,ptt2Color)};
+            case 2: {_hintColor = EGVAR(sys_list,ptt3Color)};
             default {_hintColor = EGVAR(sys_list,transmissionColor)};
         };
     };

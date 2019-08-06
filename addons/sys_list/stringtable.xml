@@ -41,6 +41,19 @@
             <German>Zeigt Benachrichtigungen für Funk und Funkgeräte.</German>
             <Japanese>無線機と送信に関する通知を表示します。</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_list_ACREUI_displayName">
+            <English>ACRE2 - User Interface</English>
+            <German>ACRE2 - Benutzeroberfläche</German>
+            <Japanese>ACRE2 - ユーザー インターフェイス</Japanese>
+            <Chinese>ACRE2 - 使用者介面</Chinese>
+            <Chinesesimp>ACRE2 - 使用者介面</Chinesesimp>
+            <Portuguese>ACRE2 - Interface ao Usuário</Portuguese>
+            <Russian>ACRE2 - Пользовательский Интерфейс</Russian>
+            <French>ACRE2 - Interface utilisateur</French>
+            <Polish>ACRE2 - Interfejs Użytkownika</Polish>
+            <Turkish>ACRE2 - Kullanıcı Arayüzü</Turkish>
+            <Italian>ACRE2 - Interfaccia utente</Italian>
+        </Key>
         <Key ID="STR_ACRE_sys_list_hintBgColor_displayName">
             <English>Notification Background Color</English>
         </Key>
@@ -49,18 +62,6 @@
         </Key>
         <Key ID="STR_ACRE_sys_list_transmissionColor_displayName">
             <English>Transmission Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_list_showPttColors_displayName">
-            <English>Separate PTT Colors</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_list_ptt1Color_displayName">
-            <English>PTT1 Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_list_ptt2Color_displayName">
-            <English>PTT2 Color</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_list_ptt3Color_displayName">
-            <English>PTT3 Color</English>
         </Key>
         <Key ID="STR_ACRE_sys_list_languageColor_displayName">
             <English>Change Language Color</English>
@@ -73,6 +74,21 @@
         </Key>
         <Key ID="STR_ACRE_sys_list_cycleRadiosColor_displayName">
             <English>Change Radio Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_showPttColors_displayName">
+            <English>Separate PTT Colors</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_pttColorsDesc_displayName">
+            <English>Requires Separate PTT Colors to be enabled</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_ptt1Color_displayName">
+            <English>PTT1 Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_ptt2Color_displayName">
+            <English>PTT2 Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_ptt3Color_displayName">
+            <English>PTT3 Color</English>
         </Key>
     </Package>
 </Project>
