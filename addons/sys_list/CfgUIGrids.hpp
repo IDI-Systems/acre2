@@ -22,7 +22,7 @@ class CfgUIGrids {
                 displayName = CSTRING(NotificationGrid);
                 description = CSTRING(NotificationGridDesc);
                 preview = QPATHTOF(data\ui\IGUI_notification_preview_ca.paa);
-                saveToProfile[] = {0,1,2,3};
+                saveToProfile[] = {0, 1};
                 canResize = 0;
             };
         };
