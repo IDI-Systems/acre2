@@ -4,7 +4,9 @@ title: Vehicle Intercom
 
 Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
-## Vehicle intercom
+{% include important.html content="Requires ACE3 Interaction Menu!" %}
+
+## Vehicle Intercom
 
 Vehicle intercom is the system where units in a vehicle can easily communicate among each other without noise disturbances. In ACRE2 several intercoms can coexist in a vehicle.
 
@@ -105,11 +107,9 @@ class CfgVehicles {
 ```
 {% endraw %}
 
-## Infantry telephone
+## Infantry Telephone
 
 Infantry telephone is the system where infantry can communicate with units inside tanks and IFVs using a telephone mounted on the outside of the vehicle.
-
-{% include important.html content="Requires ACE3 Interaction Menu!" %}
 
 By default, infantry telephone is enabled only for `Tank` class and its children.
 

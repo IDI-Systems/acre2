@@ -19,7 +19,7 @@ const char* ts3plugin_commandKeyword() {
     return ACRE_COMMAND_KEYWORD;
 }
 int ts3plugin_requestAutoload() {
-    return 1; 
+    return 1;
 }
 
 const char* ts3plugin_infoTitle() {
@@ -33,7 +33,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
     id = id;*/
 
     BOOL noAcre = FALSE;
-    char *metaData;
+    char* metaData;
 
     switch(type) {
         case PLUGIN_SERVER:
@@ -42,20 +42,29 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
             break;
         case PLUGIN_CLIENT:
             if (ts3Functions.getClientVariableAsString(serverConnectionHandlerID, (anyID)id, CLIENT_META_DATA, &metaData) == ERROR_ok) {
-                if (!metaData) { 
-                    noAcre = TRUE;
-                }
-                int metaDataLength = strlen(metaData);
-                if (metaDataLength < 3 || metaDataLength > (INFODATA_BUFSIZE - 2)) {
-                    noAcre = TRUE;
-                }
-                *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char)); 
-                if (!noAcre) {
-                    _snprintf_s(*data, INFODATA_BUFSIZE,INFODATA_BUFSIZE, "%s\n", metaData);
-                    ts3Functions.freeMemory(metaData);
+                std::string result;
+                std::string_view sharedMsg;
+                if (!metaData) {
+                    noAcre = true;
                 } else {
-                    _snprintf_s(*data, INFODATA_BUFSIZE,INFODATA_BUFSIZE, "NO ACRE");
-                    ts3Functions.freeMemory(metaData);
+                    sharedMsg = metaData;
+                    const size_t start_pos = sharedMsg.find(START_DATA);
+                    const size_t end_pos = sharedMsg.find(END_DATA);
+                    if ((start_pos == std::string::npos) || (end_pos == std::string::npos)) {
+                        noAcre = true;
+                    } else {
+                        result = sharedMsg.substr(start_pos + strlen(START_DATA), end_pos - start_pos - strlen(START_DATA));
+                    }
+                }
+                *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char));
+                if (data != nullptr) {
+                    if (!noAcre) {
+                        _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "%s\n", result.c_str());
+                        ts3Functions.freeMemory(metaData);
+                    } else {
+                        _snprintf_s(*data, INFODATA_BUFSIZE, INFODATA_BUFSIZE, "NO ACRE");
+                        ts3Functions.freeMemory(metaData);
+                    }
                 }
             }
             break;

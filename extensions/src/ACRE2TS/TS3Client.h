@@ -8,7 +8,7 @@
 
 class CTS3Client: public IClient {
 public:
-    
+
     //static TS3Functions ts3Functions;
 
     CTS3Client() { };
@@ -25,6 +25,8 @@ public:
     acre::Result start(const acre::id_t id_);
 
     acre::Result exPersistVersion( void );
+
+    acre::Result setClientMetadata(const char *const data);
 
     acre::Result enableMicrophone(const bool status_);
 
@@ -60,7 +62,7 @@ public:
 
     std::string getTempFilePath( void );
     std::string getConfigFilePath(void);
-    
+
     acre::Result playSound(std::string path_, acre::vec3_fp32_t position_, const float32_t volume_, const int32_t looping_);
 
     std::string getUniqueId( );
@@ -82,8 +84,8 @@ public:
     bool shouldSwitchTS3Channel();
 
 
-    __inline void setState(acre::State value) final { m_state = value; }
-    __inline acre::State getState() const final { return m_state; }
+    inline void setState(acre::State value) final { m_state = value; }
+    inline acre::State getState() const final { return m_state; }
 
     DECLARE_MEMBER(bool, hadVAD);
     DECLARE_MEMBER(bool, InputActive);

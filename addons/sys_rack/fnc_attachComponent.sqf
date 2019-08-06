@@ -13,4 +13,4 @@
  * Public: No
  */
 
- // TODO: Implement component system for 2.7
+ // TODO: Implement component system

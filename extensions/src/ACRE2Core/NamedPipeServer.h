@@ -27,7 +27,7 @@ public:
     acre::Result sendMessage( IMessage *message );
 
     acre::Result release( void ) { return acre::Result::ok; };
-    
+
     acre::Result checkServer( void ); // DRM
 
     char *currentServerId;
@@ -37,17 +37,17 @@ public:
     DECLARE_MEMBER(std::string, FromPipeName);
     DECLARE_MEMBER(std::string, ToPipeName);
 
-    __inline void setConnectedWrite(const bool value) { m_connectedWrite = value; }
-    __inline bool getConnectedWrite() const { return m_connectedWrite; }
+    inline void setConnectedWrite(const bool value) { m_connectedWrite = value; }
+    inline bool getConnectedWrite() const { return m_connectedWrite; }
 
-    __inline void setConnectedRead(const bool value) { m_connectedRead = value; }
-    __inline bool getConnectedRead() const { return m_connectedRead; }
+    inline void setConnectedRead(const bool value) { m_connectedRead = value; }
+    inline bool getConnectedRead() const { return m_connectedRead; }
 
-    __inline void setShuttingDown(const bool value) { m_shuttingDown = value; }
-    __inline bool getShuttingDown() const { return m_shuttingDown; }
+    inline void setShuttingDown(const bool value) { m_shuttingDown = value; }
+    inline bool getShuttingDown() const { return m_shuttingDown; }
 
-    __inline void setId(const acre::id_t value) final { m_id = value; }
-    __inline acre::id_t getId() const final { return m_id; }
+    inline void setId(const acre::id_t value) final { m_id = value; }
+    inline acre::id_t getId() const final { return m_id; }
 
     bool getConnected() const final { return (getConnectedRead() && getConnectedWrite()); };
     void setConnected(bool value) final { setConnectedRead(value); setConnectedWrite(value); };
@@ -63,5 +63,5 @@ private:
     std::thread m_readThread;
     std::thread m_sendThread;
     PSECURITY_ATTRIBUTES m_PipeSecurity;
-    std::set<std::string> validTSServers;       
+    std::set<std::string> validTSServers;
 };
