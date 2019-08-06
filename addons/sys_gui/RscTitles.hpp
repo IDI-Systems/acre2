@@ -1,9 +1,9 @@
 class RscTitles {
     #define VOLUME_CONTROL_POSITION \
-        x = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(volumeControl),X)', VOLUME_CONTROL_DEFAULT_X]; \
-        y = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(volumeControl),Y)', VOLUME_CONTROL_DEFAULT_Y]; \
-        w = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(volumeControl),W)', VOLUME_CONTROL_DEFAULT_W]; \
-        h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(volumeControl),H)', VOLUME_CONTROL_DEFAULT_H] \
+        x = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,GVAR(volumeControl),X)',VOLUME_CONTROL_DEFAULT_X)]); \
+        y = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,GVAR(volumeControl),Y)',VOLUME_CONTROL_DEFAULT_Y)]); \
+        w = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,GVAR(volumeControl),W)',VOLUME_CONTROL_DEFAULT_W)]); \
+        h = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,GVAR(volumeControl),H)',VOLUME_CONTROL_DEFAULT_H)]); \
 
     class GVAR(VolumeControl) {
         idd = -1;
@@ -15,7 +15,7 @@ class RscTitles {
             class Background: RscText {
                 idc = -1;
                 colorBackground[] = {1, 1, 1, 0.2};
-                VOLUME_CONTROL_POSITION;
+                VOLUME_CONTROL_POSITION
             };
             class Level: RscProgress {
                 idc = -1;
@@ -23,7 +23,7 @@ class RscTitles {
                 colorBar[] = {0, 0, 0, 0};
                 colorFrame[] = {0, 0, 0, 0};
                 texture = "#(argb,8,8,3)color(1,1,1,1)";
-                VOLUME_CONTROL_POSITION;
+                VOLUME_CONTROL_POSITION
             };
         };
     };
