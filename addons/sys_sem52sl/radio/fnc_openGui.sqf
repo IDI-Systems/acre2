@@ -42,7 +42,6 @@ params ["_radioId", "", "", "", ""];
 // Prevent radio from being opened if it is externally used or it is not accessible
 if !([_radioId] call EFUNC(sys_radio,canOpenRadio)) exitWith { false };
 
-disableSerialization;
 //PARAMS_1(GVAR(currentRadioId))
 GVAR(currentRadioId) = _radioId;
 GVAR(depressedPTT) = false;
@@ -53,6 +52,9 @@ if (([GVAR(currentRadioId), "getState", "channelKnobPosition"] call EFUNC(sys_da
 };
 GVAR(lastAction) = time;
 createDialog "SEM52SL_RadioDialog";
+
+// Support reserved keybinds on dialog (eg. Tab)
+MAIN_DISPLAY call (uiNamespace getVariable "CBA_events_fnc_initDisplayCurator");
 
 [_radioId, true] call EFUNC(sys_radio,setRadioOpenState);
 

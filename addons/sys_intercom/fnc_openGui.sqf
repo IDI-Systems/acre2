@@ -18,7 +18,10 @@
 
 params [["_intercomNetwork", -1], ["_openMasterStation", false]];
 
-if (GVAR(guiOpened)) exitWith {false};
+if (GVAR(guiOpened)) exitWith {
+    closeDialog 0;
+    true
+};
 
 private _vehicle = vehicle acre_player;
 private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
@@ -58,11 +61,12 @@ GVAR(guiOpened) = true;
 
 [_vehicle, acre_player] call FUNC(updateVehicleInfoText);
 
-disableSerialization;
-
 // Get the intercom type
 if (!_openMasterStation) then {
     createDialog "VIC3FFCS_IntercomDialog";
+
+    // Support reserved keybinds on dialog (eg. Tab)
+    MAIN_DISPLAY call (uiNamespace getVariable "CBA_events_fnc_initDisplayCurator");
 };
 
 true
