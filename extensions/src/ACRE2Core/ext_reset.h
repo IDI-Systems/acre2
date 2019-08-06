@@ -10,7 +10,7 @@ RPC_FUNCTION(ext_reset) {
 
     //
     // These checks were fucking up Because ext_reset is called on a named pipe disconnect, but this checked for a valid connection, and game, and that it was our valid ID.
-    // This should just be calling unmute on EVERYONE - because it was a pipe disconnect. Pipe disconnect at the end of game, or when having issues. 
+    // This should just be calling unmute on EVERYONE - because it was a pipe disconnect. Pipe disconnect at the end of game, or when having issues.
     // We don't care if a person disconnects and they unmute all their shit, this doesn't break the "mute other people not in game" issue, because they mute this person.
     //
     //if(id == CEngine::getInstance()->getSelf()->getId())
@@ -26,8 +26,8 @@ RPC_FUNCTION(ext_reset) {
     return acre::Result::ok;
 }
 public:
-    __inline void setName(char *const value) final { m_Name = value; }
-    __inline char* getName() const final { return m_Name; }
+    inline void setName(char *const value) final { m_Name = value; }
+    inline char* getName() const final { return m_Name; }
 
 protected:
     char* m_Name;
