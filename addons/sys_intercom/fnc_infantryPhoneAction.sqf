@@ -48,7 +48,7 @@ private _infantryPhoneAction = [
         // Main interaction node is not shown on destroyed vehicle, so we only check that if not main node
         //USES_VARIABLES ["_target", "_player"];
         if !((_this select 2) isEqualTo [0, 0, 0]) exitWith {alive _target};
-        _player distance _target < PHONE_MAXDISTANCE_DEFAULT
+        ([_player, _target] call ace_interaction_fnc_getInteractionDistance) < PHONE_MAXDISTANCE_DEFAULT
     },
     {_this call FUNC(infantryPhoneChildrenActions)},
     _position,
