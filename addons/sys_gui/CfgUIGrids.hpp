@@ -5,13 +5,13 @@ class CfgUIGrids {
                 class Variables {
                     grid_ACRE_vehicleInfo[] = {
                         {
-                            "profileNamespace getVariable ['IGUI_GRID_VEHICLE_X', safezoneX + 0.5 * (((safezoneW / safezoneH) min 1.2) / 40)]",
-                            "4.3 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + (profileNamespace getVariable ['IGUI_GRID_VEHICLE_Y', safezoneY + 0.5 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)])",
-                            "profileNamespace getVariable ['IGUI_GRID_VEHICLE_W', 10 * (((safezoneW / safezoneH) min 1.2) / 40)]",
-                            "(((safezoneW / safezoneH) min 1.2) / 1.2) / 25"
+                            VEHICLE_INFO_DEFAULT_X,
+                            VEHICLE_INFO_DEFAULT_Y,
+                            VEHICLE_INFO_DEFAULT_W,
+                            VEHICLE_INFO_DEFAULT_H
                         },
-                        "((safezoneW / safezoneH) min 1.2) / 40",
-                        "(((safezoneW / safezoneH) min 1.2) / 1.2) / 25"
+                        IGUI_GRID_VEHICLE_W,
+                        IGUI_GRID_VEHICLE_H
                     };
                 };
             };
@@ -22,7 +22,7 @@ class CfgUIGrids {
                 displayName = CSTRING(VehicleInfoGrid);
                 description = CSTRING(VehicleInfoGridDesc);
                 preview = QPATHTOF(data\ui\IGUI_vehicleInfo_preview_ca.paa);
-                saveToProfile[] = {0, 1, 2, 3};
+                saveToProfile[] = {0, 1};
                 canResize = 0;
             };
         };
