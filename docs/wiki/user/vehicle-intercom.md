@@ -27,7 +27,7 @@ Optionally, each network has a master station. Such stations can broadcast a mes
 
 {% include image.html file="intercom/anvic3_ffcs_interface.png" alt="AN/VIC3 FFCS" %}
 
-This interface can be opened using the ACE Interaction menu or through a shortcut (defaults to: CTRL + SHIFT + TAB). The opened intercom will be displayed in green in the HUD.
+This interface can be opened using the ACE Interaction menu or through a shortcut (default <kbd>⇧&nbsp;Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>Tab&nbsp;⇥</kbd>). The opened intercom will be displayed in green in the HUD.
 
 #### Volume Knob
 
