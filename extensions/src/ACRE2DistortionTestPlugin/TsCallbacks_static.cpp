@@ -17,7 +17,7 @@ const char* ts3plugin_commandKeyword() {
     return ACRE_COMMAND_KEYWORD;
 }
 int ts3plugin_requestAutoload() {
-    return 1; 
+    return 1;
 }
 
 const char* ts3plugin_infoTitle() {
@@ -40,14 +40,14 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
             break;
         case PLUGIN_CLIENT:
             if (ts3Functions.getClientVariableAsString(serverConnectionHandlerID, (anyID)id, CLIENT_META_DATA, &metaData) == ERROR_ok) {
-                if (!metaData) { 
+                if (!metaData) {
                     noAcre = TRUE;
                 }
                 int metaDataLength = strlen(metaData);
                 if (metaDataLength < 3 || metaDataLength > (INFODATA_BUFSIZE - 2)) {
                     noAcre = TRUE;
                 }
-                *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char)); 
+                *data = (char*)malloc(INFODATA_BUFSIZE * sizeof(char));
                 if (!noAcre) {
                     _snprintf_s(*data, INFODATA_BUFSIZE,INFODATA_BUFSIZE, "%s\n", metaData);
                     ts3Functions.freeMemory(metaData);

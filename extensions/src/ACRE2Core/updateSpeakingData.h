@@ -58,7 +58,7 @@ RPC_FUNCTION(updateSpeakingData) {
             }
             if (speaker->channels[0]) {
                 speaker->channels[0]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(3));
-            
+
                 speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosX", vMessage->getParameterAsFloat(4));
                 speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosZ", vMessage->getParameterAsFloat(5));
                 speaker->channels[0]->getMixdownEffectInsert(0)->setParam("speakerPosY", vMessage->getParameterAsFloat(6));
@@ -94,16 +94,16 @@ RPC_FUNCTION(updateSpeakingData) {
 
                     speaker->channels[channelId]->setMixdownEffectInsert(0, "acre_positional");
                 }
-                
+
                 if (speaker->channels[channelId]) {
                     speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(acre::Speaking::radio));
-            
+
                     speaker->channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4+(i*7)));
-                    
+
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", FALSE);
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5+(i*7)));
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6+(i*7)));
-            
+
                     speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isLoudSpeaker", vMessage->getParameterAsFloat(7+(i*7)));
                     if (vMessage->getParameterAsFloat(7+(i*7))) {
                         speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000001);
@@ -148,8 +148,8 @@ RPC_FUNCTION(updateSpeakingData) {
     return acre::Result::ok;
 }
 public:
-    __inline void setName(char *const value) final { m_Name = value; }
-    __inline char* getName() const final { return m_Name; }
+    inline void setName(char *const value) final { m_Name = value; }
+    inline char* getName() const final { return m_Name; }
 
 protected:
     char* m_Name;

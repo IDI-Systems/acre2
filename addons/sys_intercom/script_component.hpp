@@ -21,7 +21,7 @@
 #include "script_acre_rackIntercom_defines.hpp"
 #include "script_acre_intercom_defines.hpp"
 
-#define PHONE_MAXDISTANCE_DEFAULT 10 // @todo replace with ace_interaction_fnc_getInteractionDistance when ACE 3.9.1 releases
+#define PHONE_MAXDISTANCE_DEFAULT 10
 #define PHONE_MAXDISTANCE_HULL    3
 
 // Infantry phone default configuration (fnc_infantryPhoneRingingPFH.sqf)

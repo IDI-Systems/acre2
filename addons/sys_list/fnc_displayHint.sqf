@@ -32,7 +32,7 @@ GVAR(hintLine1) = _hintLine1;
 GVAR(hintLine2) = _hintLine2;
 GVAR(hintColor) = _hintColor;
 
-GVAR(hintBufferPointer) = (GVAR(hintBuffer) find 0) max 0; 
+GVAR(hintBufferPointer) = (GVAR(hintBuffer) find 0) max 0;
 GVAR(hintBuffer) set [GVAR(hintBufferPointer), 1];
 
 private _hintLayer = format [QGVAR(hintLayer) + '_%1', GVAR(hintBufferPointer)];

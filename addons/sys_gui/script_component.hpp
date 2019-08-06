@@ -42,6 +42,16 @@
 // Amount that the volume level changes on every scroll wheel action
 #define VOLUME_LEVEL_CHANGE 0.25
 
+#include "\a3\ui_f\hpp\defineCommonColors.inc"
+
+// Using base definitions due to UI grids using BIS_fnc_parseNumberSafe
+// which believes profileNamespace/getVariable are unsafe and defaults to 0
+// https://feedback.bistudio.com/T142860
+#define VEHICLE_INFO_DEFAULT_X IGUI_GRID_VEHICLE_XDef
+#define VEHICLE_INFO_DEFAULT_Y IGUI_GRID_VEHICLE_YDef + 4.3 * IGUI_GRID_VEHICLE_H
+#define VEHICLE_INFO_DEFAULT_W IGUI_GRID_VEHICLE_WAbs
+#define VEHICLE_INFO_DEFAULT_H IGUI_GRID_VEHICLE_H
+
 #define INVENTORY_DISPLAY (findDisplay 602)
 
 #define IDC_FG_VEST_CONTAINER 638
