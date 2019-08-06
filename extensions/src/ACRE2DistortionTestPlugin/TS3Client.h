@@ -81,8 +81,8 @@ public:
     acre::Result updateShouldSwitchTS3Channel(const bool state_);
     bool shouldSwitchTS3Channel();
 
-    __inline void setState(acre::State value) final { m_state = value; }
-    __inline acre::State getState() const final { return m_state; }
+    inline void setState(acre::State value) final { m_state = value; }
+    inline acre::State getState() const final { return m_state; }
 
     DECLARE_MEMBER(bool, hadVAD);
     DECLARE_MEMBER(bool, InputActive);

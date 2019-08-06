@@ -4,7 +4,9 @@ title: Vehicle Racks
 
 Both features are currently supported only for vanilla classes and their children to maximize performance. Support for other classes can be added per request on the [issue tracker](https://github.com/IDI-Systems/acre2/issues).
 
-## Vehicle racks and intercom
+{% include important.html content="Requires ACE3 Interaction Menu!" %}
+
+## Vehicle Racks and Intercom
 
 Vehicle racks is the system where units inside a vehicle can use mounted radios or mount personal radios in order to increase the transmission power.
 

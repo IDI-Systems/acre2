@@ -13,7 +13,7 @@ public:
         this->setRunning(false);
     }
     ~TEntrantWorker() {
-    
+
     }
 
     acre::Result startWorker(void) {
@@ -36,7 +36,7 @@ public:
         std::queue<T>().swap(m_processQueue); // Clear the queue
         UNLOCK(this);
         setShuttingDown(false);
-        
+
         return acre::Result::ok;
     }
 
@@ -56,10 +56,10 @@ public:
 
     virtual acre::Result exProcessItem(T) = 0;
 
-    virtual __inline void setShuttingDown(const bool value) { m_shuttingDown = value; }
-    virtual __inline bool getShuttingDown() const { return m_shuttingDown; }
-    virtual __inline void setRunning(const bool value) { m_running = value; }
-    virtual __inline bool getRunning() const { return m_running; }
+    virtual inline void setShuttingDown(const bool value) { m_shuttingDown = value; }
+    virtual inline bool getShuttingDown() const { return m_shuttingDown; }
+    virtual inline void setRunning(const bool value) { m_running = value; }
+    virtual inline bool getRunning() const { return m_running; }
 
 protected:
     std::thread m_workerThread;

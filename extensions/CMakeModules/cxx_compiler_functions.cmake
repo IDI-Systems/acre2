@@ -8,6 +8,8 @@ function (acre_set_linker_options)
             set(CMAKE_SHARED_LINKER_FLAGS "-static-libgcc -static-libstdc++")
         endif()
     elseif(MSVC)
+        add_definitions(-D_CRT_SECURE_NO_WARNINGS) # Disable MSVC *_s function warnings
+
         if(ACRE_LINK_TYPE STREQUAL "static")
             set(CMAKE_CXX_FLAGS_DEBUG "/D _DEBUG /MTd /Zi /Ob0 /Od /RTC1" PARENT_SCOPE)
             set(CMAKE_CXX_FLAGS_MINSIZEREL     "/MT /O1 /Ob1 /D NDEBUG" PARENT_SCOPE)
@@ -27,7 +29,7 @@ function (acre_set_linker_options)
     endif()
 endfunction()
 
-function (acre_set_build_output )
+function (acre_set_build_output)
     set(EXECUTABLE_OUTPUT_PATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}${ACRE_NAME}" PARENT_SCOPE)
     set(LIBRARY_OUTPUT_PATH  "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}${ACRE_NAME}" PARENT_SCOPE)
 endfunction()

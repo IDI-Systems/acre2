@@ -38,6 +38,7 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
+    // Hear remote Zeus
     if (_unit getVariable [QEGVAR(sys_zeus,inZeus), false]) then {
         private _zeusPosition = _unit getVariable [QEGVAR(sys_zeus,zeusPosition), [[0,0,0],[0,0,0]]];
         _emitterPos = _zeusPosition select 0;
@@ -47,8 +48,9 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
         _emitterDir = eyeDirection _unit;
     };
 };
+
 // Right now ACRE only supports one listener pos, use the closest position while in Zeus
-if (call FUNC(inZeus)) then {
+if (GVAR(zeusCommunicateViaCamera) && {call FUNC(inZeus)}) then {
     private _zeusPos = getPosASL curatorCamera;
     if ((_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos)) then {
         _emitterPos = AGLtoASL (player getRelPos [abs (_zeusPos distance _emitterPos), (curatorCamera getRelDir _unit)]);
