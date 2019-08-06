@@ -7,8 +7,8 @@ class CfgUIGrids {
                         {
                             VOLUME_CONTROL_DEFAULT_X,
                             VOLUME_CONTROL_DEFAULT_Y,
-                            VOLUME_CONTROL_WIDTH,
-                            VOLUME_CONTROL_HEIGHT
+                            VOLUME_CONTROL_DEFAULT_W,
+                            VOLUME_CONTROL_DEFAULT_H
                         },
                         POS_W(1),
                         POS_H(1)
@@ -31,8 +31,8 @@ class CfgUIGrids {
                 displayName = CSTRING(VolumeControlGrid_DisplayName);
                 description = CSTRING(VolumeControlGrid_Description);
                 preview = QPATHTOF(data\ui\volume_control_preview.paa);
-                saveToProfile[] = {0, 1};
-                canResize = 0;
+                saveToProfile[] = {0, 1, 2, 3};
+                canResize = 1;
             };
             class grid_ACRE_vehicleInfo {
                 displayName = CSTRING(VehicleInfoGrid_DisplayName);

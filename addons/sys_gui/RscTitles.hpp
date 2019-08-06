@@ -2,8 +2,8 @@ class RscTitles {
     #define VOLUME_CONTROL_POSITION \
         x = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(volumeControl),X)', VOLUME_CONTROL_DEFAULT_X]; \
         y = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(volumeControl),Y)', VOLUME_CONTROL_DEFAULT_Y]; \
-        w = VOLUME_CONTROL_WIDTH; \
-        h = VOLUME_CONTROL_HEIGHT
+        w = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(volumeControl),W)', VOLUME_CONTROL_DEFAULT_W]; \
+        h = profileNamespace getVariable ['TRIPLES(IGUI,GVAR(volumeControl),H)', VOLUME_CONTROL_DEFAULT_H] \
 
     class GVAR(VolumeControl) {
         idd = -1;
