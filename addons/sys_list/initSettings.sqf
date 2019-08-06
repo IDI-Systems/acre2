@@ -2,8 +2,8 @@
 [
     QGVAR(hintBgColor),
     "COLOR",
-    localize LSTRING(hintBgColor_displayName),
-    localize LSTRING(ACREUI_displayName),
+    localize LSTRING(HintBGColor_DisplayName),
+    localize LSTRING(Category),
     [ACRE_NOTIFICATION_BG_BLACK],
     false,
     {}
@@ -13,8 +13,8 @@
 [
     QGVAR(transmissionColor),
     "COLOR",
-    localize LSTRING(transmissionColor_displayName),
-    localize LSTRING(ACREUI_displayName),
+    localize LSTRING(TransmissionColor_DisplayName),
+    localize LSTRING(Category),
     [ACRE_NOTIFICATION_YELLOW],
     false,
     {}
@@ -24,8 +24,8 @@
 [
     QGVAR(switchChannelColor),
     "COLOR",
-    localize LSTRING(switchChannelColor_displayName),
-    localize LSTRING(ACREUI_displayName),
+    localize LSTRING(SwitchChannelColor_DisplayName),
+    localize LSTRING(Category),
     [ACRE_NOTIFICATION_PURPLE],
     false,
     {}
@@ -35,8 +35,8 @@
 [
     QGVAR(toggleHeadsetColor),
     "COLOR",
-    localize LSTRING(toggleHeadsetColor_displayName),
-    localize LSTRING(ACREUI_displayName),
+    localize LSTRING(ToggleHeadsetColor_DisplayName),
+    localize LSTRING(Category),
     [ACRE_NOTIFICATION_PURPLE],
     false,
     {}
@@ -46,8 +46,8 @@
 [
     QGVAR(cycleRadiosColor),
     "COLOR",
-    localize LSTRING(cycleRadiosColor_displayName),
-    localize LSTRING(ACREUI_displayName),
+    localize LSTRING(CycleRadiosColor_DisplayName),
+    localize LSTRING(Category),
     [ACRE_NOTIFICATION_PURPLE],
     false,
     {}
@@ -57,8 +57,8 @@
 [
     QGVAR(languageColor),
     "COLOR",
-    localize LSTRING(languageColor_displayName),
-    localize LSTRING(ACREUI_displayName),
+    localize LSTRING(LanguageColor_DisplayName),
+    localize LSTRING(Category),
     [ACRE_NOTIFICATION_RED],
     false,
     {}
@@ -70,8 +70,8 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(hintTxtFont),
     "LIST",
-    localize LSTRING(hintTxtFont_displayName),
-    localize LSTRING(ACREUI_displayName),
+    localize LSTRING(HintTxtFont_DisplayName),
+    localize LSTRING(Category),
     [_fonts, _fontNames, 10],
     false,
     {}
@@ -81,8 +81,8 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(showPttColors),
     "CHECKBOX",
-    localize LSTRING(showPttColors_displayName),
-    [localize LSTRING(ACREUI_displayName),"PTT"],
+    localize LSTRING(ShowPTTColors_DisplayName),
+    [localize LSTRING(Category), "PTT"],
     false,
     false,
     {}
@@ -92,8 +92,8 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(ptt1Color),
     "COLOR",
-    [localize LSTRING(ptt1Color_displayName),localize LSTRING(pttColorsDesc_displayName)],
-    [localize LSTRING(ACREUI_displayName),"PTT"],
+    [localize LSTRING(PTT1Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
+    [localize LSTRING(Category), "PTT"],
     [ACRE_NOTIFICATION_YELLOW],
     false,
     {}
@@ -103,8 +103,8 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(ptt2Color),
     "COLOR",
-    [localize LSTRING(ptt2Color_displayName),localize LSTRING(pttColorsDesc_displayName)],
-    [localize LSTRING(ACREUI_displayName),"PTT"],
+    [localize LSTRING(PTT2Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
+    [localize LSTRING(Category), "PTT"],
     [ACRE_NOTIFICATION_YELLOW],
     false,
     {}
@@ -114,8 +114,8 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(ptt3Color),
     "COLOR",
-    [localize LSTRING(ptt3Color_displayName),localize LSTRING(pttColorsDesc_displayName)],
-    [localize LSTRING(ACREUI_displayName),"PTT"],
+    [localize LSTRING(PTT3Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
+    [localize LSTRING(Category), "PTT"],
     [ACRE_NOTIFICATION_YELLOW],
     false,
     {}

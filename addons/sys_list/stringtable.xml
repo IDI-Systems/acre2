@@ -42,52 +42,48 @@
             <Japanese>無線機と送信に関する通知を表示します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_list_Category">
-            <English>ACRE2 - User Interface</English>
-            <German>ACRE2 - Benutzeroberfläche</German>
-            <Japanese>ACRE2 - ユーザー インターフェイス</Japanese>
-            <Chinese>ACRE2 - 使用者介面</Chinese>
-            <Chinesesimp>ACRE2 - 使用者介面</Chinesesimp>
-            <Portuguese>ACRE2 - Interface ao Usuário</Portuguese>
-            <Russian>ACRE2 - Пользовательский Интерфейс</Russian>
-            <French>ACRE2 - Interface utilisateur</French>
-            <Polish>ACRE2 - Interfejs Użytkownika</Polish>
-            <Turkish>ACRE2 - Kullanıcı Arayüzü</Turkish>
-            <Italian>ACRE2 - Interfaccia utente</Italian>
+            <English>ACRE2 UI</English>
+            <German>ACRE2 UI</German>
+            <Polish>ACRE2 UI</Polish>
+            <French>ACRE2 IU</French>
+            <Turkish>ACRE2 UI</Turkish>
+            <Japanese>ACRE2 UI</Japanese>
+            <Italian>ACRE2 IU</Italian>
         </Key>
-        <Key ID="STR_ACRE_sys_list_hintBgColor_displayName">
+        <Key ID="STR_ACRE_sys_list_HintBGColor_DisplayName">
             <English>Notification Background Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_hintTxtFont_displayName">
+        <Key ID="STR_ACRE_sys_list_HintTxtFont_DisplayName">
             <English>Notification Text Font</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_transmissionColor_displayName">
+        <Key ID="STR_ACRE_sys_list_TransmissionColor_DisplayName">
             <English>Transmission Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_languageColor_displayName">
+        <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
             <English>Change Language Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_switchChannelColor_displayName">
+        <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
             <English>Switch Channel Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_toggleHeadsetColor_displayName">
+        <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
             <English>Toggle Headset Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_cycleRadiosColor_displayName">
+        <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
             <English>Change Radio Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_showPttColors_displayName">
+        <Key ID="STR_ACRE_sys_list_ShowPTTColors_DisplayName">
             <English>Separate PTT Colors</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_pttColorsDesc_displayName">
-            <English>Requires Separate PTT Colors to be enabled</English>
+        <Key ID="STR_ACRE_sys_list_PTTColors_Description">
+            <English>Requires %1 to be enabled</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_ptt1Color_displayName">
+        <Key ID="STR_ACRE_sys_list_PTT1Color_DisplayName">
             <English>PTT1 Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_ptt2Color_displayName">
+        <Key ID="STR_ACRE_sys_list_PTT2Color_DisplayName">
             <English>PTT2 Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_ptt3Color_displayName">
+        <Key ID="STR_ACRE_sys_list_PTT3Color_DisplayName">
             <English>PTT3 Color</English>
         </Key>
     </Package>
