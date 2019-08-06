@@ -17,6 +17,7 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
+#include "\a3\ui_f\hpp\defineCommonColors.inc"
 
 #define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_CENTER_X)
 #define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_CENTER_Y)
@@ -41,8 +42,6 @@
 
 // Amount that the volume level changes on every scroll wheel action
 #define VOLUME_LEVEL_CHANGE 0.25
-
-#include "\a3\ui_f\hpp\defineCommonColors.inc"
 
 // Using base definitions due to UI grids using BIS_fnc_parseNumberSafe
 // which believes profileNamespace/getVariable are unsafe and defaults to 0
