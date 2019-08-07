@@ -262,7 +262,7 @@ namespace acre {
                      * distance s. It uses a convex combination of smooth earth
                      * diffraction and knife-edge diffraction.
                      */
-                    static double wd1, xd1, A_fo, qk, aht, xht;
+                    static thread_local double wd1, xd1, A_fo, qk, aht, xht;
                     const double A = 151.03;      // dimensionles constant from [Alg 4.20]
                     const double D = 50e3;        // 50 km from [Alg 3.9], scale distance for \delta_h(s)
                     const double H = 16;          // 16 m  from [Alg 3.10]
@@ -356,7 +356,7 @@ namespace acre {
                  */
                 static
                     double A_scat(double s, prop_type &prop) {
-                    static double ad, rr, etq, h0s;
+                    static thread_local double ad, rr, etq, h0s;
 
                     if (s == 0.0) {
                         // :23: Prepare initial scatter constants, page 10
@@ -442,7 +442,7 @@ namespace acre {
                  */
                 static
                     double A_los(double d, prop_type &prop) {
-                    static double wls;
+                    static thread_local double wls;
 
                     if (d == 0.0) {
                         // :18: prepare initial line-of-sight constants, page 8
@@ -492,8 +492,8 @@ namespace acre {
                  */
                 static
                     void lrprop(double d, prop_type &prop) {
-                    static bool wlos, wscat;
-                    static double dmin, xae;
+                    static thread_local bool wlos, wscat;
+                    static thread_local double dmin, xae;
                     std::complex<double> prop_zgnd(prop.Z_g_real, prop.Z_g_imag);
                     double a0, a1, a2, a3, a4, a5, a6;
                     double d0, d1, d2, d3, d4, d5, d6;
@@ -896,8 +896,8 @@ namespace acre {
 #if 1
                 static
                     double avar(double zzt, double zzl, double zzc, prop_type &prop, propv_type &propv) {
-                    static int kdv;
-                    static double dexa, de, vmd, vs0, sgl, sgtm, sgtp, sgtd, tgtd, gm, gp, cv1, cv2, yv1, yv2, yv3, csm1, csm2, ysm1, ysm2, ysm3, csp1, csp2, ysp1, ysp2, ysp3, csd1, zd, cfm1, cfm2, cfm3, cfp1, cfp2, cfp3;
+                    static thread_local int kdv;
+                    static thread_local double dexa, de, vmd, vs0, sgl, sgtm, sgtp, sgtd, tgtd, gm, gp, cv1, cv2, yv1, yv2, yv3, csm1, csm2, ysm1, ysm2, ysm3, csp1, csp2, ysp1, ysp2, ysp3, csd1, zd, cfm1, cfm2, cfm3, cfp1, cfp2, cfp3;
 
                     // :29: Climatic constants, page 15
                     // Indexes are:
@@ -935,7 +935,7 @@ namespace acre {
                     const double bfp2[7] = { 0.0,    0.31,     0.0,    0.19,    0.31,     0.0,    0.0 };
                     const double bfp3[7] = { 0.0,    2.00,     0.0,    1.79,    2.00,     0.0,    0.0 };
                     const double rt = 7.8, rl = 24.0;
-                    static bool no_location_variability, no_situation_variability;
+                    static thread_local bool no_location_variability, no_situation_variability;
                     double avarv, q, vs, zt, zl, zc;
                     double sgt, yr;
                     int temp_klim;
