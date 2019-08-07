@@ -25,13 +25,13 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
     private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
     private _line1 = [ACRE_ACTIVE_RADIO, "getChannelDescription"] call EFUNC(sys_data,dataEvent);
     private _line2 = ["L", "C", "R"] select ([ACRE_ACTIVE_RADIO, "getSpatial"] call EFUNC(sys_data,dataEvent)) + 1;
-    private _hintColor = EGVAR(sys_list,transmissionColor);
-    if (EGVAR(sys_list,showPttColors)) then {
+    private _hintColor = EGVAR(sys_list,TransmissionColor);
+    if (EGVAR(sys_list,ShowPTTColors)) then {
         switch (ACRE_ACTIVE_PTTKEY) do {
-            case 0: {_hintColor = EGVAR(sys_list,ptt1Color)};
+            case 0: {_hintColor = EGVAR(sys_list,PTT1Color)};
             case 1: {_hintColor = EGVAR(sys_list,ptt2Color)};
-            case 2: {_hintColor = EGVAR(sys_list,ptt3Color)};
-            default {_hintColor = EGVAR(sys_list,transmissionColor)};
+            case 2: {_hintColor = EGVAR(sys_list,PTT3Color)};
+            default {_hintColor = EGVAR(sys_list,TransmissionColor)};
         };
     };
     ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line1, _line2, -1, _hintColor] call EFUNC(sys_list,displayHint);

@@ -1,6 +1,6 @@
 // Hint Background Color
 [
-    QGVAR(hintBgColor),
+    QGVAR(HintBGColor),
     "COLOR",
     localize LSTRING(HintBGColor_DisplayName),
     localize LSTRING(Category),
@@ -11,7 +11,7 @@
 
 // Transmit Color
 [
-    QGVAR(transmissionColor),
+    QGVAR(TransmissionColor),
     "COLOR",
     localize LSTRING(TransmissionColor_DisplayName),
     localize LSTRING(Category),
@@ -22,7 +22,7 @@
 
 // Channel Switch Color
 [
-    QGVAR(switchChannelColor),
+    QGVAR(SwitchChannelColor),
     "COLOR",
     localize LSTRING(SwitchChannelColor_DisplayName),
     localize LSTRING(Category),
@@ -33,7 +33,7 @@
 
 // Toggle Headset Color
 [
-    QGVAR(toggleHeadsetColor),
+    QGVAR(ToggleHeadsetColor),
     "COLOR",
     localize LSTRING(ToggleHeadsetColor_DisplayName),
     localize LSTRING(Category),
@@ -44,7 +44,7 @@
 
 // Cycle Radios Color
 [
-    QGVAR(cycleRadiosColor),
+    QGVAR(CycleRadiosColor),
     "COLOR",
     localize LSTRING(CycleRadiosColor_DisplayName),
     localize LSTRING(Category),
@@ -55,7 +55,7 @@
 
 // Babel Color
 [
-    QGVAR(languageColor),
+    QGVAR(LanguageColor),
     "COLOR",
     localize LSTRING(LanguageColor_DisplayName),
     localize LSTRING(Category),
@@ -68,18 +68,18 @@
 private _fontNames = ["Etelka Monospace Pro", "Etelka Monospace Pro Bold", "LCD 14", "Purista Bold", "Purista Light", "Purista Medium", "Purista SemiBold", "Roboto Condensed", "Roboto Condensed Bold", "Roboto Condensed Light", "Tahoma B"];
 private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "PuristaBold", "PuristaLight", "PuristaMedium", "PuristaSemibold", "RobotoCondensed", "RobotoCondensedBold", "RobotoCondensedLight", "TahomaB"];
 [
-    QGVAR(hintTxtFont),
+    QGVAR(HintTxtFont),
     "LIST",
     localize LSTRING(HintTxtFont_DisplayName),
     localize LSTRING(Category),
-    [_fonts, _fontNames, 10],
+    [_fonts, _fontNames, 7],
     false,
     {}
 ] call CBA_fnc_addSetting;
 
 // Enable PTT color customization
 [
-    QGVAR(showPttColors),
+    QGVAR(ShowPTTColors),
     "CHECKBOX",
     localize LSTRING(ShowPTTColors_DisplayName),
     [localize LSTRING(Category), "PTT"],
@@ -90,7 +90,7 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 
 // PTT1 Color
 [
-    QGVAR(ptt1Color),
+    QGVAR(PTT1Color),
     "COLOR",
     [localize LSTRING(PTT1Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
     [localize LSTRING(Category), "PTT"],
@@ -101,22 +101,22 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 
 // PTT2 Color
 [
-    QGVAR(ptt2Color),
+    QGVAR(PTT2Color),
     "COLOR",
     [localize LSTRING(PTT2Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
     [localize LSTRING(Category), "PTT"],
-    [ACRE_NOTIFICATION_YELLOW],
+    [ACRE_NOTIFICATION_GREEN],
     false,
     {}
 ] call CBA_fnc_addSetting;
 
 // PTT3 Color
 [
-    QGVAR(ptt3Color),
+    QGVAR(PTT3Color),
     "COLOR",
     [localize LSTRING(PTT3Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
     [localize LSTRING(Category), "PTT"],
-    [ACRE_NOTIFICATION_YELLOW],
+    [ACRE_NOTIFICATION_BLUE],
     false,
     {}
 ] call CBA_fnc_addSetting;
