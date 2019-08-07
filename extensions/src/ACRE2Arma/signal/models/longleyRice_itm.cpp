@@ -273,7 +273,7 @@ namespace acre {
 
                         // :11: Prepare initial diffraction constants, page 5
                         double q = prop.h_g[0] * prop.h_g[1];
-                        double qk = prop.h_e[0] * prop.h_e[1] - q;
+                        qk = prop.h_e[0] * prop.h_e[1] - q;
 
                         if (prop.mdp < 0.0)
                             q += 10.0; // "C" from [Alg 4.9]
