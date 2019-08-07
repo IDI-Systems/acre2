@@ -1,8 +1,21 @@
+// Hint Text Font
+private _fontNames = ["Etelka Monospace Pro", "Etelka Monospace Pro Bold", "LCD 14", "Purista Bold", "Purista Light", "Purista Medium", "Purista SemiBold", "Roboto Condensed", "Roboto Condensed Bold", "Roboto Condensed Light", "Tahoma B"];
+private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "PuristaBold", "PuristaLight", "PuristaMedium", "PuristaSemibold", "RobotoCondensed", "RobotoCondensedBold", "RobotoCondensedLight", "TahomaB"];
+[
+    QGVAR(HintTextFont),
+    "LIST",
+    localize LSTRING(HintTextFont_DisplayName),
+    localize LSTRING(Category),
+    [_fonts, _fontNames, 7],
+    false,
+    {}
+] call CBA_fnc_addSetting;
+
 // Hint Background Color
 [
-    QGVAR(HintBGColor),
+    QGVAR(HintBackgroundColor),
     "COLOR",
-    localize LSTRING(HintBGColor_DisplayName),
+    localize LSTRING(HintBackgroundColor_DisplayName),
     localize LSTRING(Category),
     [ACRE_NOTIFICATION_BG_BLACK],
     false,
@@ -49,19 +62,6 @@
     localize LSTRING(LanguageColor_DisplayName),
     localize LSTRING(Category),
     [ACRE_NOTIFICATION_RED],
-    false,
-    {}
-] call CBA_fnc_addSetting;
-
-// Hint Text Font
-private _fontNames = ["Etelka Monospace Pro", "Etelka Monospace Pro Bold", "LCD 14", "Purista Bold", "Purista Light", "Purista Medium", "Purista SemiBold", "Roboto Condensed", "Roboto Condensed Bold", "Roboto Condensed Light", "Tahoma B"];
-private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "PuristaBold", "PuristaLight", "PuristaMedium", "PuristaSemibold", "RobotoCondensed", "RobotoCondensedBold", "RobotoCondensedLight", "TahomaB"];
-[
-    QGVAR(HintTxtFont),
-    "LIST",
-    localize LSTRING(HintTxtFont_DisplayName),
-    localize LSTRING(Category),
-    [_fonts, _fontNames, 7],
     false,
     {}
 ] call CBA_fnc_addSetting;
