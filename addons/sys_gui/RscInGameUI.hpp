@@ -1,13 +1,4 @@
-#include "MyDialogDefines.hpp"
-
-class RscXSliderH;
-class RscText;
-class RscStructuredText;
-class RscControlsGroupNoScrollbars;
-class RscPicture;
-class RscPictureKeepAspect;
-
-class RscIngameUI {
+class RscInGameUI {
     class RscStanceInfo {
         idd = 303;
         scriptName = "RscStanceInfo";
@@ -61,89 +52,6 @@ class RscIngameUI {
                         "profileNamespace getVariable ['IGUI_BCG_RGB_G', 1]",
                         "profileNamespace getVariable ['IGUI_BCG_RGB_B', 1]",
                         "profileNamespace getVariable ['IGUI_BCG_RGB_A', 0.8]"
-                    };
-                };
-            };
-        };
-    };
-};
-
-class RscTitles {
-    class GVAR(VolumeControlDialog)  {
-        idd = -1;
-        movingEnable = 1;
-        duration = 9999999;
-        fadein = 0;
-        fadeout = 0;
-        onLoad = QUOTE(GVAR(VolumeControlDialog) = _this;);
-        onunLoad = QUOTE(GVAR(VolumeControlDialog) = _this;);
-
-        class controls {
-            class RscSlider_1900: RscXSliderH {
-                idc = 1900;
-                x = 0.378232 * safezoneW + safezoneX;
-                y = 0.706242 * safezoneH + safezoneY;
-                w = 0.25695 * safezoneW;
-                h = 0.03 * safezoneH;
-            };
-            /*class RscText_1000: RscText {
-                idc = 1000;
-                text = "Shout";
-                x = 0.636093 * safezoneW + safezoneX;
-                y = 0.692493 * safezoneH + safezoneY;
-                w = 0.0458419 * safezoneW;
-                h = 0.0549979 * safezoneH;
-            };
-            class RscText_1001: RscText {
-                idc = 1001;
-                text = "Whisper";
-                x = 0.328093 * safezoneW + safezoneX;
-                y = 0.692493 * safezoneH + safezoneY;
-                w = 0.0458419 * safezoneW;
-                h = 0.0549979 * safezoneH;
-            };
-            class RscText_1002: RscText {
-                idc = 1002;
-                text = "Normal";
-                x = 0.478512 * safezoneW + safezoneX;
-                y = 0.719992 * safezoneH + safezoneY;
-                w = 0.0458419 * safezoneW;
-                h = 0.0549979 * safezoneH;
-            };*/
-        };
-    };
-
-    #define VEHICLE_INFO_POSITION \
-        x = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,grid_ACRE_vehicleInfo,X)',VEHICLE_INFO_DEFAULT_X)]); \
-        y = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,grid_ACRE_vehicleInfo,Y)',VEHICLE_INFO_DEFAULT_Y)]); \
-        w = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,grid_ACRE_vehicleInfo,W)',VEHICLE_INFO_DEFAULT_W)]); \
-        h = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,grid_ACRE_vehicleInfo,H)',VEHICLE_INFO_DEFAULT_H)]); \
-
-    class GVAR(vehicleInfo) {
-        idd = -1;
-        movingEnable = 1;
-        duration = 9999999;
-        fadein = 0;
-        fadeout = 0;
-
-        class controls {
-            class VehicleInfoControlsGroup: RscControlsGroupNoScrollbars {
-                idc = -1;
-                onLoad = QUOTE(with uiNamespace do {ACRE_VehicleInfo = _this select 0});
-                VEHICLE_INFO_POSITION
-
-                class Controls {
-                    class VehicleInfoBackground: RscText {
-                        idc = 1;
-                        colorBackground[] = {
-                            IGUI_BCG_RGB_R,
-                            IGUI_BCG_RGB_G,
-                            IGUI_BCG_RGB_B,
-                            IGUI_BCG_RGB_A
-                        };
-                    };
-                    class VehicleInfoText: RscStructuredText {
-                        idc = 2;
                     };
                 };
             };

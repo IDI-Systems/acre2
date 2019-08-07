@@ -19,6 +19,30 @@
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
 #include "\a3\ui_f\hpp\defineCommonColors.inc"
 
+#define POS_X(N) ((N) * GUI_GRID_W + GUI_GRID_CENTER_X)
+#define POS_Y(N) ((N) * GUI_GRID_H + GUI_GRID_CENTER_Y)
+#define POS_W(N) ((N) * GUI_GRID_W)
+#define POS_H(N) ((N) * GUI_GRID_H)
+
+#define VOLUME_CONTROL_DEFAULT_X POS_X(14)
+#define VOLUME_CONTROL_DEFAULT_Y POS_Y(20)
+#define VOLUME_CONTROL_DEFAULT_W POS_W(12)
+#define VOLUME_CONTROL_DEFAULT_H POS_H(0.9)
+
+#define VOLUME_CONTROL_LAYER (QGVAR(VolumeControl) call BIS_fnc_rscLayer)
+
+// Color scale for the volume control (yellow -> orange -> red)
+#define VOLUME_COLOR_SCALE [ \
+    [1, 1, 0, 0.5], \
+    [1, 0.83, 0, 0.5], \
+    [1, 0.65, 0, 0.5], \
+    [1, 0.44, 0, 0.5], \
+    [1, 0, 0, 0.5] \
+]
+
+// Amount that the volume level changes on every scroll wheel action
+#define VOLUME_LEVEL_CHANGE 0.25
+
 // Using base definitions due to UI grids using BIS_fnc_parseNumberSafe
 // which believes profileNamespace/getVariable are unsafe and defaults to 0
 // https://feedback.bistudio.com/T142860

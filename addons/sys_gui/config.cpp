@@ -15,5 +15,15 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgRscTitles.hpp"
+
+class RscText;
+class RscPicture;
+class RscXSliderH;
+class RscProgress;
+class RscStructuredText;
+class RscPictureKeepAspect;
+class RscControlsGroupNoScrollbars;
+
+#include "RscTitles.hpp"
+#include "RscInGameUI.hpp"
 #include "CfgUIGrids.hpp"
