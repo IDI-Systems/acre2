@@ -9,17 +9,6 @@
     {}
 ] call CBA_fnc_addSetting;
 
-// Transmit Color
-[
-    QGVAR(TransmissionColor),
-    "COLOR",
-    localize LSTRING(TransmissionColor_DisplayName),
-    localize LSTRING(Category),
-    [ACRE_NOTIFICATION_YELLOW],
-    false,
-    {}
-] call CBA_fnc_addSetting;
-
 // Channel Switch Color
 [
     QGVAR(SwitchChannelColor),
@@ -77,22 +66,11 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
     {}
 ] call CBA_fnc_addSetting;
 
-// Enable PTT color customization
-[
-    QGVAR(ShowPTTColors),
-    "CHECKBOX",
-    localize LSTRING(ShowPTTColors_DisplayName),
-    [localize LSTRING(Category), "PTT"],
-    false,
-    false,
-    {}
-] call CBA_fnc_addSetting;
-
 // PTT1 Color
 [
     QGVAR(PTT1Color),
     "COLOR",
-    [localize LSTRING(PTT1Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
+    localize LSTRING(PTT1Color_DisplayName)
     [localize LSTRING(Category), "PTT"],
     [ACRE_NOTIFICATION_YELLOW],
     false,
@@ -103,9 +81,9 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(PTT2Color),
     "COLOR",
-    [localize LSTRING(PTT2Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
+    localize LSTRING(PTT2Color_DisplayName),
     [localize LSTRING(Category), "PTT"],
-    [ACRE_NOTIFICATION_GREEN],
+    [ACRE_NOTIFICATION_YELLOW],
     false,
     {}
 ] call CBA_fnc_addSetting;
@@ -114,9 +92,20 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(PTT3Color),
     "COLOR",
-    [localize LSTRING(PTT3Color_DisplayName), format [localize LSTRING(PTTColors_Description), localize LSTRING(ShowPTTColors_DisplayName)]],
+    localize LSTRING(PTT3Color_DisplayName),
     [localize LSTRING(Category), "PTT"],
-    [ACRE_NOTIFICATION_BLUE],
+    [ACRE_NOTIFICATION_YELLOW],
+    false,
+    {}
+] call CBA_fnc_addSetting;
+
+// Default PTT Color
+[
+    QGVAR(DefaultPTTColor),
+    "COLOR",
+    localize LSTRING(DefaultPTTColor_DisplayName),
+    [localize LSTRING(Category), "PTT"],
+    [ACRE_NOTIFICATION_YELLOW],
     false,
     {}
 ] call CBA_fnc_addSetting;

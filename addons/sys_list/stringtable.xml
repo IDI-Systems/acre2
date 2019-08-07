@@ -56,9 +56,6 @@
         <Key ID="STR_ACRE_sys_list_HintTxtFont_DisplayName">
             <English>Notification Text Font</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_TransmissionColor_DisplayName">
-            <English>Transmission Color</English>
-        </Key>
         <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
             <English>Change Language Color</English>
         </Key>
@@ -71,12 +68,6 @@
         <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
             <English>Change Radio Color</English>
         </Key>
-        <Key ID="STR_ACRE_sys_list_ShowPTTColors_DisplayName">
-            <English>Separate PTT Colors</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_list_PTTColors_Description">
-            <English>Requires %1 to be enabled</English>
-        </Key>
         <Key ID="STR_ACRE_sys_list_PTT1Color_DisplayName">
             <English>PTT1 Color</English>
         </Key>
@@ -85,6 +76,9 @@
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT3Color_DisplayName">
             <English>PTT3 Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
+            <English>Default PTT Color</English>
         </Key>
     </Package>
 </Project>
