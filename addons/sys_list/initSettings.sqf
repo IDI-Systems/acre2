@@ -70,7 +70,7 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(PTT1Color),
     "COLOR",
-    localize LSTRING(PTT1Color_DisplayName)
+    localize LSTRING(PTT1Color_DisplayName),
     [localize LSTRING(Category), "PTT"],
     [ACRE_NOTIFICATION_YELLOW],
     false,
