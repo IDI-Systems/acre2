@@ -224,7 +224,7 @@ if (_transmissionsChanged) then {
             //diag_log text format["junk: %1", _junkTransmissions];
             //diag_log text format["ok: %1", _hearableTransmissions];
             if (EGVAR(sys_core,interference)) then {
-                if (_hearableTransmissions isEqualTo []) then {
+                if !(_hearableTransmissions isEqualTo []) then {
                     _junkTransmissions = _hearableTransmissions + _junkTransmissions;
                     _hearableTransmissions params ["_bestSignal"];
                     (_bestSignal select 2) params ["_highestSignal", "_dbm"];
