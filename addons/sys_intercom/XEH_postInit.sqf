@@ -24,19 +24,19 @@ if (!hasInterface) exitWith {};
     [ACTION_BROADCAST] call FUNC(handlePttKeyPressUp)
 }] call CBA_fnc_addKeybind;
 
-["ACRE2", "PreviousIntercom", localize LSTRING(previousIntercom), "", {
+["ACRE2", "PreviousIntercom", [localize LSTRING(previousIntercomKey), localize LSTRING(previousIntercomKey_description)], "", {
     [-1, true] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [true, false, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "NextIntercom", localize LSTRING(nextIntercom), "", {
+["ACRE2", "NextIntercom", [localize LSTRING(nextIntercomKey), localize LSTRING(nextIntercomKey_description)], "", {
     [1, true] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "AddPreviousIntercom", localize LSTRING(addPreviousIntercom), "", {
+["ACRE2", "AddPreviousIntercom", [localize LSTRING(addPreviousIntercomKey), localize LSTRING(addPreviousIntercomKey_description)], "", {
     [-1, false] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [true, false, true]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "AddNextIntercom", localize LSTRING(addNextIntercom), "", {
+["ACRE2", "AddNextIntercom", [localize LSTRING(addNextIntercomKey), localize LSTRING(addNextIntercomKey_description)], "", {
     [1, false] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [false, true, true]]] call CBA_fnc_addKeybind;
 

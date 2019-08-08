@@ -370,7 +370,7 @@
             <Chinesesimp>使用通讯机台来广播重要讯息</Chinesesimp>
             <French>Utiliser le poste d'interphone pour diffuser un message prioritaire.</French>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_previousIntercom">
+        <Key ID="STR_ACRE_sys_intercom_previousIntercomKey">
             <English>Previous Intercom Network</English>
             <Spanish>Red de intercom previa</Spanish>
             <Polish>Poprzednia sieć interkomu</Polish>
@@ -380,7 +380,11 @@
             <Chinesesimp>上一个通讯网路</Chinesesimp>
             <French>Réseau d'interphone précédent</French>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_nextIntercom">
+        <Key ID="STR_ACRE_sys_intercom_previousIntercomKey_description">
+            <English>Connects to the previous Intercom Network. Disconnects from others.</English>
+            <Spanish>Red the intercom previa. Desconecta las demás.</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_nextIntercomKey">
             <English>Next Intercom Network</English>
             <Spanish>Siguiente red de intercom</Spanish>
             <Polish>Następna sieć interkomu</Polish>
@@ -390,7 +394,11 @@
             <Chinesesimp>下一个通讯网路</Chinesesimp>
             <French>Réseau d'interphone suivant</French>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercom">
+        <Key ID="STR_ACRE_sys_intercom_nextIntercomKey_description">
+            <English>Connects to the next Intercom Network. Disconnects from others.</English>
+            <Spanish>Siguiente red the intercom. Desconecta las demás.</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
             <English>Connect Previous Intercom Network</English>
             <Spanish>Connectar a la anterior red de intercom</Spanish>
             <Polish>Połącz się z poprzednią siecią interkomu</Polish>
@@ -400,7 +408,11 @@
             <Chinesesimp>连接至上一个内部通讯网路</Chinesesimp>
             <French>Connecter le réseau d'interphone précédent</French>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_addNextIntercom">
+        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey_description">
+            <English>Connects to the previous Intercom Network while keeping the already connected ones.</English>
+            <Spanish>Conecta la red the intercom anterior manteniendo las demás.</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey">
             <English>Connect Next Intercom Network</English>
             <Spanish>Connectar a la siguiente red de intercom</Spanish>
             <Polish>Połącz się z następną siecią interkomu</Polish>
@@ -409,6 +421,10 @@
             <Chinese>連接至下一個內部通訊網路</Chinese>
             <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
             <French>Connecter le réseau d'interphone suivant</French>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey_description">
+            <English>Connects to the next Intercom Network while keeping the already connected ones.</English>
+            <Spanish>Conecta la siguiente red de intercom manteniendo las demás.</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Opens Intercom GUI</English>
