@@ -17,7 +17,7 @@
 params ["_args", "_result"];
 _args params ["_transmitterClass", "_receiverClass"];
 
-if (count _result > 0) then {
+if !(_result isEqualTo []) then {
     _result params ["_id", "_signal"];
 
     private _bestSignalStr = format ["%1_best_signal", _transmitterClass];
