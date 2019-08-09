@@ -17,11 +17,11 @@
 
 TRACE_1("enter", _this);
 if (!ACRE_IS_SPECTATOR) then {
-    if (GVAR(lowered) == 1) then {
-        GVAR(lowered) = 0;
+    if (GVAR(lowered)) then {
+        GVAR(lowered) = false;
         [[localize LSTRING(headsetRaised)], true] call CBA_fnc_notify;
     } else {
-        GVAR(lowered) = 1;
+        GVAR(lowered) = true;
         [[localize LSTRING(headsetLowered)], true] call CBA_fnc_notify;
     };
 } else {

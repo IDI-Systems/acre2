@@ -21,7 +21,7 @@ if (!hasInterface) exitWith {
 
 // globals
 DGVAR(antennaDirUp) = false;
-DGVAR(lowered) = 0;
+DGVAR(lowered) = false;
 DGVAR(muting) = [];
 DGVAR(speakers) = [];
 DGVAR(enableDistanceMuting) = true;
