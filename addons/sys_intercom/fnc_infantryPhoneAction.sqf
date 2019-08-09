@@ -79,8 +79,8 @@ private _infantryPhoneSpeakerAction = [
             if ([_target, acre_player, _forEachIndex] call FUNC(isInfantryPhoneSpeakerAvailable)) exitWith {_intercomAvailable = true};
         } forEach _intercomNames;
         private _ringingDisabled = _target getVariable [QGVAR(infPhoneDisableRinging), false];
-        _intercomAvailable && !_ringingDisabled  // For now, hide infantry phone action if there is no ringing since it is the only
-                                                 // functionality that is being provided.
+        _intercomAvailable && {!_ringingDisabled}  // For now, hide infantry phone action if there is no ringing since it is the only
+                                                   // functionality that is being provided.
     },
     {_this call FUNC(infantryPhoneChildrenActions)},
     [],
