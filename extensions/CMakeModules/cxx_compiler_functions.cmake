@@ -1,7 +1,7 @@
 function (acre_set_linker_options)
     if(CMAKE_COMPILER_IS_GNUCXX)
         # This target defaults to 32-bit on linux
-        SET(CMAKE_CXX_FLAGS "-std=c++11 -march=i686 -m32 -O2 -s -fPIC -fpermissive")
+        SET(CMAKE_CXX_FLAGS "-std=c++17 -march=i686 -m32 -O2 -s -fPIC -fpermissive")
 
         if(ACRE_LINK_TYPE STREQUAL "static")
             set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")

@@ -46,15 +46,11 @@ if (_vehicle != _unit) then {
             if (_roleType == "Cargo") then {
                 private _cargoCompartments = getArray (_cfg >> "cargoCompartments");
                 if !(_cargoCompartments isEqualTo []) then {
-                    private _index = -1;
-                    // if ((productVersion select 3) < 126064) then {
-                        // _index = (count _attenuateCargo)-1; // wait for command to get cargo index
-                    // } else {
-                        _index = _vehicle getCargoIndex _unit;
-                    // };
+                    private _index = _vehicle getCargoIndex _unit;
                     if (_index > -1) then {
-                        if (_index > (count _cargoCompartments) - 1) then {
-                            _index = (count _cargoCompartments) - 1;
+                        private _cargoCompartmentsMaxCount = (count _cargoCompartments) - 1;
+                        if (_index > _cargoCompartmentsMaxCount) then {
+                            _index = _cargoCompartmentsMaxCount;
                         };
 
                         _compartment = _cargoCompartments select _index;

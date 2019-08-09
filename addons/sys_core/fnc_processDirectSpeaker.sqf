@@ -38,6 +38,7 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
+    // Hear remote Zeus
     if (_unit getVariable [QEGVAR(sys_zeus,inZeus), false]) then {
         private _zeusPosition = _unit getVariable [QEGVAR(sys_zeus,zeusPosition), [[0,0,0],[0,0,0]]];
         _emitterPos = _zeusPosition select 0;
@@ -47,8 +48,9 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
         _emitterDir = eyeDirection _unit;
     };
 };
+
 // Right now ACRE only supports one listener pos, use the closest position while in Zeus
-if (call FUNC(inZeus)) then {
+if (GVAR(zeusCommunicateViaCamera) && {call FUNC(inZeus)}) then {
     private _zeusPos = getPosASL curatorCamera;
     if ((_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos)) then {
         _emitterPos = AGLtoASL (player getRelPos [abs (_zeusPos distance _emitterPos), (curatorCamera getRelDir _unit)]);
@@ -57,14 +59,9 @@ if (call FUNC(inZeus)) then {
 
 if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate} && {!(call FUNC(inZeus))}) then {
     private _args = [_emitterPos, _listenerPos, _unit];
-    // acre_player sideChat format["args: %1", _args];
-    // _startTime = diag_tickTime;
     private _result = _args call FUNC(findOcclusion);
     _unit setVariable ["ACRE_OCCLUSION_VAL", _result];
-    // _endTime = diag_tickTime;
-    // _unit setVariable [QGVAR(lastPathPos), _lastResult];
-    _directVolume = _directVolume*(_result);
-    // hintSilent format["vol: %1\nt: %2", _directVolume, _endTime-_startTime];
+    _directVolume = _directVolume * _result;
 };
 
 private _emitterHeight = _emitterPos param [2, 1];

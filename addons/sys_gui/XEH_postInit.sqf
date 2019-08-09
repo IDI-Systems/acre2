@@ -3,19 +3,19 @@
 
 if (!hasInterface) exitWith {};
 
-[] call FUNC(enableZeusOverlay);
+// Volume Control - keybind, unit change event, and scroll wheel EH
+["ACRE2", "VolumeControl", localize LSTRING(VolumeControl),
+    LINKFUNC(volumeKeyDown),
+    LINKFUNC(volumeKeyUp),
+[DIK_TAB, [false, false, false]], true] call CBA_fnc_addKeybind;
+
+["unit", LINKFUNC(volumeKeyUp)] call CBA_fnc_addPlayerEventHandler;
+["MouseZChanged", LINKFUNC(onMouseZChanged)] call CBA_fnc_addDisplayHandler;
+
 [] call FUNC(antennaElevationDisplay);
 
 // TODO - Look into this below.
 acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
-
-// Keybinds - Volume Control
-["ACRE2", "VolumeControl", localize LSTRING(VolumeControl),
-    FUNC(onVolumeControlKeyPress),
-    FUNC(onVolumeControlKeyPressUp),
-[DIK_TAB, [false, false, false]], true] call CBA_fnc_addKeybind;
-
-["unit", FUNC(onVolumeControlKeyPressUp)] call CBA_fnc_addPlayerEventHandler;
 
 DFUNC(enterVehicle) = {
     params ["_player", "_newVehicle"];

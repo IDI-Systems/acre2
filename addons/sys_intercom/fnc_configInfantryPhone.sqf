@@ -31,13 +31,13 @@ private _configHelper = {
 
     private _returnArray = [];
     if (_configArray isEqualTo []) then {
-        WARNING_2("No intercom networks specified in %1 for vehicle type %2. Assuming all intercoms can be reached with the infantry phone",_type);
+        WARNING_1("No intercom networks specified for %1 - assuming all intercoms can be reached with the infantry phone",_type);
         _returnArray pushBack (_vehicle getVariable [QGVAR(intercomNames), []]);
     } else {
         // Check for a valid configuration
         if ("all" in _configArray) then {
             if (count _configArray != 1) then {
-                WARNING_2("Vehicle type %1 has %2 entry with the all wildcard in combination with other entries. All intercoms will be made available",_type,_configEntry);
+                WARNING_2("%1 has %2 entry with the all wildcard in combination with other entries - all intercoms will be made available",_type,_configEntry);
             };
 
             _returnArray append (_vehicle getVariable [QGVAR(intercomNames), []]);
@@ -53,7 +53,7 @@ private _configHelper = {
                     }
                 } forEach _intercom;
                 if (!_found) then {
-                    WARNING_3("Intercom %1 in %2 for vehicle type %3 is not found as a valid intercom identifier",_x,_configEntry,_type);
+                    WARNING_3("Intercom %1 in %2 is not found as a valid intercom identifier for %3",_x,_configEntry,_type);
                 };
             } forEach _configArray;
         };
@@ -71,10 +71,10 @@ _vehicle setVariable [QGVAR(infantryPhoneControlActions), _infantryPhoneControlA
 
 if !(_infantryPhoneCustomRinging isEqualTo []) then {
     if (_infantryPhoneDisableRinging) then {
-        WARNING_2("Vehicle type %1 has the ringing functionality disabled despite having a custom ringing tone entry %2",_type,_infantryPhoneCustomRinging);
+        WARNING_2("Ringing functionality disabled despite having a custom ringing tone entry %1 for %2",_infantryPhoneCustomRinging,_type);
     } else {
         if (count _infantryPhoneCustomRinging != 5) then {
-            WARNING_2("Badly formatted entry acre_infantryPhoneCustomRinging for vehicle type %1. It should have 5 arguments but it has %2.",_type,count _infantryPhoneCustomRinging);
+            WARNING_2("Badly formatted entry acre_infantryPhoneCustomRinging for %1 - should have 5 arguments but has %2",_type,count _infantryPhoneCustomRinging);
         } else {
             _vehicle setVariable [QGVAR(infPhoneCustomRinging), _infantryPhoneCustomRinging];
         };

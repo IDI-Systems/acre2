@@ -26,6 +26,8 @@ public:
 
     acre::Result exPersistVersion( void );
 
+    acre::Result setClientMetadata(const char *const data);
+
     acre::Result enableMicrophone(const bool status_);
 
     bool getInputStatus();
@@ -60,7 +62,7 @@ public:
 
     std::string getTempFilePath( void );
     std::string getConfigFilePath(void);
-    
+
     acre::Result playSound(std::string path_, acre::vec3_fp32_t position_, const float32_t volume_, const int32_t looping_);
 
     std::string getUniqueId( );

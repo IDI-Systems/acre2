@@ -19,6 +19,14 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(defaultRadioVolume),
+    "LIST",
+    localize LSTRING(defaultRadioVolume_displayName),
+    "ACRE2",
+    [[0.2, 0.4, 0.6, 0.8, 1], ["20%", "40%", "60%", "80%", "100%"], 3]
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(spectatorVolume),
     "SLIDER",
     localize LSTRING(spectatorVolume_displayName),

@@ -17,7 +17,7 @@
 params ["_args", "_result"];
 _args params ["_transmitterClass", "_receiverClass"];
 
-if (count _result > 0) then {
+if !(_result isEqualTo []) then {
     _result params ["_id", "_signal"];
 
     private _bestSignalStr = format ["%1_best_signal", _transmitterClass];
@@ -26,7 +26,6 @@ if (count _result > 0) then {
     private _maxSignal = missionNamespace getVariable [_bestSignalStr , -992];
     private _currentAntenna = missionNamespace getVariable [_bestAntStr, ""];
 
-    // TODO: Remove debug before release 2.7.0
     TRACE_4("%1: %2 ----- %3: %4",_bestSignalStr,_maxSignal,_bestAntStr,_currentAntenna);
 
     if ((_id == _currentAntenna) || {(_id != _currentAntenna) && {_signal > _maxSignal}}) then {

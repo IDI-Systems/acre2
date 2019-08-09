@@ -34,7 +34,7 @@ DFUNC(pingFunc) = {
                 [] call FUNC(ping);
             };
         };
-        if (!(GVAR(runServer))) then {
+        if !(GVAR(runServer)) then {
             INFO("Server shutting down ping loop.");
             [(_this select 1)] call CBA_fnc_removePerFrameHandler;
         };

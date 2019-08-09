@@ -31,6 +31,9 @@
             <Chinesesimp>前期混音 全域音量</Chinesesimp>
             <Portuguese>Volume Global Pre-Mix</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_sys_core_defaultRadioVolume_displayName">
+            <English>Default Radio Volume</English>
+        </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
             <Spanish>Volumen de Espectador</Spanish>

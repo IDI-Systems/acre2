@@ -32,7 +32,7 @@ switch (_action) do {
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
 
         ACRE_PLAYER_INTERCOM = [];
-        [[ICON_RADIO_CALL], [format [localize LSTRING(infantryPhoneDisconnected), _intercomText]]] call CBA_fnc_notify;
+        [[ICON_RADIO_CALL], [format [localize LSTRING(infantryPhoneDisconnected), _intercomText]], true] call CBA_fnc_notify;
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
     };
     case 1: {
@@ -40,7 +40,7 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
 
-        [[ICON_RADIO_CALL], [format [localize LSTRING(infantryPhoneConnected), _intercomText]]] call CBA_fnc_notify;
+        [[ICON_RADIO_CALL], [format [localize LSTRING(infantryPhoneConnected), _intercomText]], true] call CBA_fnc_notify;
         GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
     case 2: {

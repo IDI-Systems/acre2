@@ -38,7 +38,7 @@ if (_intercoms isEqualTo [] || {"none" in _intercoms}) then {
             if (_int in (_configuredIntercoms select 0)) then {
                 _wiredIntercoms pushBack _x;
             } else {
-                WARNING_3("Vehicle type %1 does not have the intercom %2 but the rack %3 can have access to its network. Not adding it.",_type,_int,_rack)
+                WARNING_3("No intercom %1 defined but rack %2 can have access to its network for %3 - skipping",_int,_rack,_type)
             };
         } forEach _intercoms;
     };
