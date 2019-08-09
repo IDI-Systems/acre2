@@ -62,3 +62,18 @@ DFUNC(enterVehicle) = {
         (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
     };
 }, true] call CBA_fnc_addPlayerEventHandler;
+
+
+// Fix Vehicle Info UI wrong saved values from: 2.7.0 and Arma 3 v1.94 combination - remove in 2.9.0
+// https://feedback.bistudio.com/T142860
+// Only X and W entries were breaking
+private _vehicleInfoX = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfoX", 0];
+private _vehicleInfoW = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfoW", 0];
+TRACE_2("Fix Vehicle Info UI",_vehicleInfoX,_vehicleInfoW);
+
+// Both entries were set to 0 as a result of BIS_fnc_parseNumberSafe
+if (_vehicleInfoX == 0 && {_vehicleInfoW == 0}) then {
+    profileNamespace setVariable ["IGUI_grid_ACRE_vehicleInfo_X", VEHICLE_INFO_DEFAULT_X];
+    profileNamespace setVariable ["IGUI_grid_ACRE_vehicleInfo_W", VEHICLE_INFO_DEFAULT_W];
+    INFO("Vehicle Info UI fixed (2.7.0 and Arma 3 v1.94 buG).");
+};
