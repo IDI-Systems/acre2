@@ -15,10 +15,6 @@
  * Public: No
  */
 
-// private _startTime = diag_tickTime;
-// private _rstart = 0;
-// private _rend = 0;
-
 if (time == 0) exitWith {};
 
 // Call update self
@@ -64,7 +60,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 private _params = _x;
                 if !(_params isEqualTo []) then {
                     _params params ["_txId", "_rxId", "_signalData", "_params"];
-                    //_params = _params select 3;
+
                     _radioParamsSorted params ["_radios", "_sources"];
                     private _keyIndex = _radios find _rxId;
                     if (_keyIndex == -1) then {
@@ -93,7 +89,6 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
         END_COUNTER(signal_code);
     #endif
 
-    // To Check: Are values passed by reference?
     _radioParamsSorted params ["_radios","_sources"];
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
@@ -112,7 +107,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
             private ["_radioVolume", "_volumeModifier", "_on"];
             if (!GVAR(speaking_cache_valid)) then {
                 _radioVolume = [_recRadio, "getVolume"] call EFUNC(sys_data,dataEvent);
-                // _rend = diag_tickTime;
+
                 _volumeModifier = GVAR(globalVolume);
                 _on = [_recRadio, "getOnOffState"] call EFUNC(sys_data,dataEvent);
                 if (_on == 0) then {
@@ -145,8 +140,6 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                     BEGIN_COUNTER(data_events);
                 #endif
 
-                // _rstart = diag_tickTime;
-
                 private _radioPos = [0,0,0];
                 private _attenuate = 1;
                 if ([_recRadio, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
@@ -164,8 +157,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                     BEGIN_COUNTER(hearableRadios);
                 #endif
 
-                // acre_player sideChat format["_volumeModifier: %1 %2", _volumeModifier];
-               {
+                {
                     _on = [_x select 1, "getOnOffState"] call EFUNC(sys_data,dataEvent);
                     if (_on == 1) then {
                         _x params ["_unit", "", "_signalData", "_params"];
@@ -177,7 +169,6 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                             // Possible sound fix: Always double the distance of the radio for hearing purposes
                             // on external speaker to make it 'distant' like a speaker.
                             // This should be moved to plugin probably.
-                            //_radioPos = _radioPos * [2,2,2];
                             _params set [4, _radioPos];
                             _params set [0, _radioVolume*_volumeModifier*_attenuate];
                         } else {
@@ -218,7 +209,6 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
         BEGIN_COUNTER(updateSpeakingData_loop);
     #endif
 
-    // _rstart = diag_tickTime;
     {
         private _unit = objectFromNetId _x;
         if (!isNull _unit) then {
@@ -232,7 +222,6 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
             CALL_RPC("updateSpeakingData", _paramArray);
         };
     } forEach HASH_KEYS(_compiledParams);
-    // _rend = diag_tickTime;
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
         END_COUNTER(updateSpeakingData_loop);
@@ -253,14 +242,6 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 TRACE_1("Calling processDirectSpeaker", _unit);
                 private _params = [_unit] call FUNC(processDirectSpeaker);
                 CALL_RPC("updateSpeakingData", _params);
-
-                // if (!(_unit getVariable [QGVAR(isDisabled), false]) ) then {
-                    // _sayTime = _unit getVariable [QGVAR(sayTime), time-2];
-                    // if ((abs (time-_sayTime)) >= 1) then {
-                        // _unit say "acre_lip_sound";
-                        // _unit setVariable [QGVAR(sayTime), time, false];
-                    // };
-                // };
             } else {
                 if !(_unit in _sentMicRadios) then {
                     private _params = ['m', GET_TS3ID(_unit), 0];
@@ -296,7 +277,4 @@ if (ACRE_IS_SPECTATOR) then {
     };
 #endif
 
-// diag_log text format["t: %1", _rend-_rstart];
-// _end = diag_tickTime;
-// diag_log text format["t: %1ms", (_end-_startTime)*1000];
 GVAR(speaking_cache_valid) = true;

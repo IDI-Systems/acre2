@@ -36,7 +36,7 @@ DFUNC(mutingPFHLoop) = {
     // CHANGE: dynamically get muting distanced based on camera *OR* acre_player position
     private _dynamicPos = getPos acre_player;
     if (ACRE_IS_SPECTATOR) then {
-        _dynamicPos = positionCameraToWorld[0,0,0];
+        _dynamicPos = positionCameraToWorld [0, 0, 0];
     };
     {
         _x params ["_remoteTs3Id","_remoteUser"];
@@ -61,10 +61,10 @@ DFUNC(mutingPFHLoop) = {
                         };
 
                         if (GVAR(fullListTime)) then {
-                            _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
+                            _mutingParams = _mutingParams + format ["%1,%2,", _remoteTs3Id, _muted];
                         } else {
                             if ((_muted == 0 && {_remoteUser in GVAR(muting)}) || {(_muted == 1 && {!(_remoteUser in GVAR(muting))})}) then {
-                                _mutingParams = _mutingParams + format["%1,%2,", _remoteTs3Id, _muted];
+                                _mutingParams = _mutingParams + format ["%1,%2,", _remoteTs3Id, _muted];
                             };
                         };
                     };
@@ -83,7 +83,7 @@ DFUNC(mutingPFHLoop) = {
         if !(_newSpectators isEqualTo []) then {
             {
                 if (_x != GVAR(ts3id)) then {
-                    _mutingParams = _mutingParams + format["%1,1,", _x];
+                    _mutingParams = _mutingParams + format ["%1,1,", _x];
                 };
             } forEach _newSpectators;
             if (!GVAR(fullListTime)) then {
@@ -95,7 +95,7 @@ DFUNC(mutingPFHLoop) = {
             if (ACRE_IS_SPECTATOR) then {
                 {
                     if (_x != GVAR(ts3id)) then {
-                        _mutingParams = _mutingParams + format["%1,0,", _x];
+                        _mutingParams = _mutingParams + format ["%1,0,", _x];
                     };
                 } forEach ACRE_SPECTATORS_LIST;
             };
@@ -106,7 +106,7 @@ DFUNC(mutingPFHLoop) = {
     if (ACRE_IS_SPECTATOR && {GVAR(fullListTime)}) then {
         {
             if (_x != GVAR(ts3id)) then {
-                _mutingParams = _mutingParams + format["%1,0,", _x];
+                _mutingParams = _mutingParams + format ["%1,0,", _x];
             };
         } forEach ACRE_SPECTATORS_LIST;
     };
@@ -123,6 +123,6 @@ DFUNC(mutingPFHLoop) = {
 };
 
 // Wait until time > 0, to save check in PFH
-[{time > 0},{
+[{time > 0}, {
     ADDPFH(FUNC(mutingPFHLoop), 0.25, []);
-},[]] call CBA_fnc_waitUntilAndExecute;
+}, []] call CBA_fnc_waitUntilAndExecute;
