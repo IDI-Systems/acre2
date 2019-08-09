@@ -16,7 +16,7 @@
  * Public: No
  */
 
-params ["_radioId1","_radioId2"];
+params ["_radioId1", "_radioId2"];
 
 private _radioTxData = [_radioId1, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 private _radioRxData = [_radioId2, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);

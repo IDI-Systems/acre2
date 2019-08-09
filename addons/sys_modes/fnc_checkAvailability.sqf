@@ -17,7 +17,7 @@
  * Public: No
  */
 
-params ["_list1", "_list2", ["_quick",true]];
+params ["_list1", "_list2", ["_quick", true]];
 
 private _foundRadios = [];
 

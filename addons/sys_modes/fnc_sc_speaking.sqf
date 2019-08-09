@@ -18,7 +18,7 @@
  * Public: No
  */
 
-params ["_tx", "_txRadioId", "_rx", "_rxRadioId"];
+params ["", "_txRadioId", "", "_rxRadioId"];
 
 private _txData = [_txRadioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 private _txFreq = HASH_GET(_txData, "frequencyTX");
