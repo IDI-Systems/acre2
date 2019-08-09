@@ -427,7 +427,7 @@
             <Spanish>Conecta la siguiente red de intercom manteniendo las demás.</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
-            <English>Opens Intercom GUI</English>
+            <English>Open Intercom GUI</English>
             <Spanish>Abre la interfaz de Intercom</Spanish>
             <Japanese>インターコムの GUI を開く</Japanese>
         </Key>
