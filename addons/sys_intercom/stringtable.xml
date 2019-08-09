@@ -428,7 +428,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Open Intercom GUI</English>
-             <Spanish>Abrir la interfaz de Intercom</Spanish>
+            <Spanish>Abrir la interfaz de Intercom</Spanish>
             <Japanese>インターコムの GUI を開く</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_forcedStatus">
