@@ -38,7 +38,7 @@ class CfgUIGrids {
                 displayName = CSTRING(VehicleInfoGrid_DisplayName);
                 description = CSTRING(VehicleInfoGrid_Description);
                 preview = QPATHTOF(data\ui\IGUI_vehicleInfo_preview_ca.paa);
-                saveToProfile[] = {0, 1};
+                saveToProfile[] = {0, 1, 2, 3}; // Save W and H as well due to 1.94 bug setting W to 0
                 canResize = 0;
             };
         };

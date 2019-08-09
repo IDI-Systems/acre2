@@ -50,6 +50,7 @@ class RscTitles {
                     };
                     class VehicleInfoText: RscStructuredText {
                         idc = 2;
+                        w = QUOTE(10 * VEHICLE_INFO_DEFAULT_W); // Must be specifically widened
                     };
                 };
             };
