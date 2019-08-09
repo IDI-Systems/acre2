@@ -189,7 +189,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
 
                             // Scale radio volume for headset
                             // I'm not sure if this is the best way or place to do it. But Fuck your Life (tm), i'm doing it here.
-                            if (GVAR(lowered) == 1) then {
+                            if (GVAR(lowered)) then {
                                 _radioVolume = _radioVolume * 0.15;
                             };
                             _params set [0, _radioVolume];
