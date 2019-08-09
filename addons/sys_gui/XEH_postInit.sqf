@@ -66,11 +66,10 @@ DFUNC(enterVehicle) = {
 
 // Fix Vehicle Info UI wrong saved values from: <=2.7.0 and Arma 3 v1.94 - remove in 2.9.0
 // https://feedback.bistudio.com/T142860
-// Only X, Y and W entries were breaking - set to 0 as a result of BIS_fnc_parseNumberSafe
+// X, Y and W entries were breaking, but only X and W were to 0 as a result of BIS_fnc_parseNumberSafe
 private _vehicleInfoX = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfo_X", 0];
-private _vehicleInfoY = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfo_Y", 0];
-private _vehicleInfoW = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfo_w", 0];
-if (_vehicleInfoX == 0 && {_vehicleInfoY == 0} && {_vehicleInfoW == 0}) then {
+private _vehicleInfoW = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfo_W", 0];
+if (_vehicleInfoX == 0 && {_vehicleInfoW == 0}) then {
     // Reset all (H for redundancy)
     profileNamespace setVariable ["IGUI_grid_ACRE_vehicleInfo_X", VEHICLE_INFO_DEFAULT_X];
     profileNamespace setVariable ["IGUI_grid_ACRE_vehicleInfo_Y", VEHICLE_INFO_DEFAULT_Y];
