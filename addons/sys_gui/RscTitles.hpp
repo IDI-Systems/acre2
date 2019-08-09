@@ -47,11 +47,10 @@ class RscTitles {
                     class VehicleInfoBackground: RscText {
                         idc = 1;
                         colorBackground[] = IGUI_BCG_COLOR;
-                        w = QUOTE(10 * VEHICLE_INFO_DEFAULT_W);
                     };
                     class VehicleInfoText: RscStructuredText {
                         idc = 2;
-                        w = QUOTE(9.8 * VEHICLE_INFO_DEFAULT_W);
+                        w = QUOTE(10 * VEHICLE_INFO_DEFAULT_W); // Must be specifically widened
                     };
                 };
             };
