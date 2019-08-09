@@ -34,7 +34,7 @@ if (ACRE_ACTIVE_PTTKEY == -2) then {
     } else {
         private _radioList = [] call EFUNC(sys_data,getPlayerRadioList);
         if (ACRE_ACTIVE_PTTKEY <= (count _radioList) - 1) then {
-            if ( (count ACRE_ASSIGNED_PTT_RADIOS) > 0) then {
+            if ((count ACRE_ASSIGNED_PTT_RADIOS) > 0) then {
                 private _sortList = [ACRE_ASSIGNED_PTT_RADIOS, _radioList] call EFUNC(sys_data,sortRadioList);
                 // This will handle cleanup automatically too
                 ACRE_ASSIGNED_PTT_RADIOS = _sortList select 0;

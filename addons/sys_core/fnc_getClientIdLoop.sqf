@@ -18,7 +18,7 @@
 DFUNC(getClientIdLoopFunc) = {
     if (!isNull player) then {
         private _netId = netId acre_player;
-        ["getClientID", [_netId, (getPlayerUID player)]] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["getClientID", [_netId, getPlayerUID player]] call EFUNC(sys_rpc,callRemoteProcedure);
     };
 };
 ADDPFH(FUNC(getClientIdLoopFunc), 3, []); // Send on regular interval for JIP etc.

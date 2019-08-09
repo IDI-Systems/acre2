@@ -59,14 +59,9 @@ if (GVAR(zeusCommunicateViaCamera) && {call FUNC(inZeus)}) then {
 
 if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate} && {!(call FUNC(inZeus))}) then {
     private _args = [_emitterPos, _listenerPos, _unit];
-    // acre_player sideChat format["args: %1", _args];
-    // _startTime = diag_tickTime;
     private _result = _args call FUNC(findOcclusion);
     _unit setVariable ["ACRE_OCCLUSION_VAL", _result];
-    // _endTime = diag_tickTime;
-    // _unit setVariable [QGVAR(lastPathPos), _lastResult];
-    _directVolume = _directVolume*(_result);
-    // hintSilent format["vol: %1\nt: %2", _directVolume, _endTime-_startTime];
+    _directVolume = _directVolume * _result;
 };
 
 private _emitterHeight = _emitterPos param [2, 1];
