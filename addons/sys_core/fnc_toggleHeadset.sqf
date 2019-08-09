@@ -19,10 +19,10 @@ TRACE_1("enter", _this);
 if (!ACRE_IS_SPECTATOR) then {
     if (GVAR(lowered)) then {
         GVAR(lowered) = false;
-        [localize LSTRING(headsetRaised)] call CBA_fnc_notify;
+        [[localize LSTRING(headsetRaised)], true] call CBA_fnc_notify;
     } else {
         GVAR(lowered) = true;
-        [localize LSTRING(headsetLowered)] call CBA_fnc_notify;
+        [[localize LSTRING(headsetLowered)], true] call CBA_fnc_notify;
     };
 } else {
     ACRE_MUTE_SPECTATORS = !ACRE_MUTE_SPECTATORS;

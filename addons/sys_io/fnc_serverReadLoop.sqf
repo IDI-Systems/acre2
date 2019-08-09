@@ -32,7 +32,7 @@ if (GVAR(pipeCode) == "1") then {
             GVAR(pipeCode) = "0";
         };
 
-        if (_ret isEqualTo "_JERR_NOCONNECT" || _ret isEqualTo "_JERR_NULL") exitWith {};
+        if (_ret isEqualTo "_JERR_NOCONNECT" || {_ret isEqualTo "_JERR_NULL"}) exitWith {};
 
         TRACE_1("got message", _ret);
         _ret call CALLSTACK(GVAR(ioEventFnc));
