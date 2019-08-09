@@ -64,7 +64,7 @@ DFUNC(enterVehicle) = {
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 
-// Fix Vehicle Info UI wrong saved values from: 2.7.0 and Arma 3 v1.94 combination - remove in 2.9.0
+// Fix Vehicle Info UI wrong saved values from: <=2.7.0 and Arma 3 v1.94 - remove in 2.9.0
 // https://feedback.bistudio.com/T142860
 // Only X and W entries were breaking
 private _vehicleInfoX = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfoX", 0];
