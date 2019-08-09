@@ -70,7 +70,7 @@ DFUNC(enterVehicle) = {
 private _vehicleInfoX = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfo_X", 0];
 private _vehicleInfoY = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfo_Y", 0];
 private _vehicleInfoW = profileNamespace getVariable ["IGUI_grid_ACRE_vehicleInfo_w", 0];
-if (_vehicleInfoX == 0 && {_vehicleInfoY} && {_vehicleInfoW == 0}) then {
+if (_vehicleInfoX == 0 && {_vehicleInfoY == 0} && {_vehicleInfoW == 0}) then {
     // Reset all (H for redundancy)
     profileNamespace setVariable ["IGUI_grid_ACRE_vehicleInfo_X", VEHICLE_INFO_DEFAULT_X];
     profileNamespace setVariable ["IGUI_grid_ACRE_vehicleInfo_Y", VEHICLE_INFO_DEFAULT_Y];
