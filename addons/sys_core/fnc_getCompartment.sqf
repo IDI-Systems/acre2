@@ -48,7 +48,7 @@ if (_vehicle != _unit) then {
                 if !(_cargoCompartments isEqualTo []) then {
                     private _index = _vehicle getCargoIndex _unit;
                     if (_index > -1) then {
-                        private _cargoCompartmentsMaxCount = (count _cargoCompartments) - 1
+                        private _cargoCompartmentsMaxCount = (count _cargoCompartments) - 1;
                         if (_index > _cargoCompartmentsMaxCount) then {
                             _index = _cargoCompartmentsMaxCount;
                         };
