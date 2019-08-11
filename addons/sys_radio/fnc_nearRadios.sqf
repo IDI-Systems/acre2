@@ -22,10 +22,10 @@ private _return = [];
 {
     private _radioId = _x;
     if (_radioId isKindOf ["ACRE_BaseRadio", configFile >> "CfgWeapons"]) then {
-        private _object = HASH_GET(EGVAR(sys_server,objectIdRelationTable), _radioId);
+        private _object = HASH_GET(EGVAR(sys_server,objectIdRelationTable),_radioId);
 
         if ((getPosASL (_object select 0)) distance _position <= _radius) then {
-            PUSH(_return, _radioId);
+            PUSH(_return,_radioId);
         };
     };
 } forEach HASH_KEYS(EGVAR(sys_server,objectIdRelationTable));
