@@ -40,7 +40,7 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
 } else {
     // Hear remote Zeus
     if (_unit getVariable [QEGVAR(sys_zeus,inZeus), false]) then {
-        private _zeusPosition = _unit getVariable [QEGVAR(sys_zeus,zeusPosition), [[0,0,0],[0,0,0]]];
+        private _zeusPosition = _unit getVariable [QEGVAR(sys_zeus,zeusPosition), [[0, 0, 0], [0, 0, 0]]];
         _emitterPos = _zeusPosition select 0;
         _emitterDir = _zeusPosition select 1;
     } else {

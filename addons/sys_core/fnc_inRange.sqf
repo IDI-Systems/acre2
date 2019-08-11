@@ -26,5 +26,5 @@ private _check = {
 };
 
 // Check the position of the remote zeus camera and remote unit
-if (_unit getVariable [QEGVAR(sys_zeus,inZeus), false] && {((_unit getVariable [QEGVAR(sys_zeus,zeusPosition), [0,0,0]]) select 0) call _check}) exitWith { true };
+if (_unit getVariable [QEGVAR(sys_zeus,inZeus), false] && {((_unit getVariable [QEGVAR(sys_zeus,zeusPosition), [[0, 0, 0], [0, 0, 0]]]) select 0) call _check}) exitWith { true };
 _position call _check
