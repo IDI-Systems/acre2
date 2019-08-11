@@ -42,12 +42,21 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
     };
 
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
-    _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
+    private _maxChannelsCount = [_x, "getState", "channels"] call EFUNC(sys_data,dataEvent);
+    TRACE_2("channels",_x,_maxChannelsCount);
+    if (isNil "_maxChannelsCount") then {
+        // Display frequency if single-channel radio (eg. AN/PRC-77)
+        private _txData = [_x, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+        private _currentFreq = HASH_GET(_txData, "frequencyTX");
+        _displayName = format ["%1 %2 MHz", _displayName, _currentFreq];
+    } else {
+        _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
+    };
 
     // Display radio keys in front of those which are bound
     private _radiokey = (_pttAssign find _x) + 1;
     if (_radiokey <= 3) then {
-        _displayName = format ["%1: %2", _radiokey, _displayName, _currentChannel];
+        _displayName = format ["%1: %2", _radiokey, _displayName];
     };
 
     private _picture = getText (_item >> "picture");
