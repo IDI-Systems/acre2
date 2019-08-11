@@ -7,7 +7,6 @@
  * 0: Ground Spike Antenna <OBJECT>
  * 1: Player or unit <OBJECT>
  *
- *
  * Return Value:
  * None
  *
@@ -22,7 +21,7 @@ params ["_gsa", "_unit"];
 private _success = false;
 private _radioId = _gsa getVariable [QGVAR(connectedRadio), ""];
 if (_radioId isEqualTo "") exitWith {
-    ERROR("Emtpy unique radio ID");
+    ERROR("Empty unique radio ID");
     _success
 };
 
