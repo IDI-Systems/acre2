@@ -21,7 +21,7 @@ params ["_position", "_radius"];
 private _return = [];
 {
     private _radioId = _x;
-    if !(_radioId isKindOf "ACRE_BaseRack") then {
+    if (_radioId isKindOf ["ACRE_BaseRadio", configFile >> "CfgWeapons"]) then {
         private _object = HASH_GET(EGVAR(sys_server,objectIdRelationTable), _radioId);
 
         if ((getPosASL (_object select 0)) distance _position <= _radius) then {
