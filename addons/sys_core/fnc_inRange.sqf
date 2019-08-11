@@ -1,16 +1,16 @@
 #include "script_component.hpp"
 /*
- * Author: SynixeBrett
- * Checks if unit is within range of the player's ears.
+ * Author: SynixeBrett, ACRE2 Team
+ * Checks if a unit is within range of the player's ears.
  *
  * Arguments:
- * 0: Unit <VECTOR>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
  * In range <BOOL>
  *
  * Example:
- * _unit call acre_sys_core_fnc_inRange
+ * [_unit] call acre_sys_core_fnc_inRange
  *
  * Public: No
  */
