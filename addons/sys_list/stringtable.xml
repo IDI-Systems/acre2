@@ -57,7 +57,7 @@
             <English>Notification Text Font</English>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
-            <English>Switch Language Color</English>
+            <English>Babel Cycle Language Color</English>
         </Key>
         <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
             <English>Switch Channel Color</English>
@@ -66,7 +66,7 @@
             <English>Toggle Headset Color</English>
         </Key>
         <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
-            <English>Switch Radio Color</English>
+            <English>Cycle Radio Color</English>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT1Color_DisplayName">
             <English>Radio 1 (PTT 1) Transmit Color</English>
