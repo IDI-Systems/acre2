@@ -1,7 +1,9 @@
 PREP(connect);
 PREP(connectChildrenActions);
+PREP(connectServer);
 PREP(deploy);
 PREP(disconnect);
+PREP(disconnectServer);
 PREP(externalAntennaPFH);
 PREP(getConnectedGsa);
 PREP(handleMast);
