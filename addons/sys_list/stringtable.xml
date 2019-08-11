@@ -41,5 +41,44 @@
             <German>Zeigt Benachrichtigungen für Funk und Funkgeräte.</German>
             <Japanese>無線機と送信に関する通知を表示します。</Japanese>
         </Key>
+        <Key ID="STR_ACRE_sys_list_Category">
+            <English>ACRE2 UI</English>
+            <German>ACRE2 UI</German>
+            <Polish>ACRE2 UI</Polish>
+            <French>ACRE2 IU</French>
+            <Turkish>ACRE2 UI</Turkish>
+            <Japanese>ACRE2 UI</Japanese>
+            <Italian>ACRE2 IU</Italian>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_HintBackgroundColor_DisplayName">
+            <English>Notification Background Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_HintTextFont_DisplayName">
+            <English>Notification Text Font</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
+            <English>Babel Cycle Language Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
+            <English>Switch Channel Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
+            <English>Toggle Headset Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
+            <English>Cycle Radio Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_PTT1Color_DisplayName">
+            <English>Radio 1 (PTT 1) Transmit Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_PTT2Color_DisplayName">
+            <English>Radio 2 (PTT 2) Transmit Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_PTT3Color_DisplayName">
+            <English>Radio 3 (PTT 3) Transmit Color</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
+            <English>Active Radio Transmit Color</English>
+        </Key>
     </Package>
 </Project>
