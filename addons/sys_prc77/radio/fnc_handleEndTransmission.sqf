@@ -26,7 +26,7 @@ private _txId = _eventData select 0;
 private _currentTransmissions = SCRATCH_GET(_radioId, "currentTransmissions");
 _currentTransmissions = _currentTransmissions - [_txId];
 
-if (currentTransmissions isEqualTo []) then {
+if (_currentTransmissions isEqualTo []) then {
     private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
     private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
     if (!_pttDown && {!isNil "_beeped"} && {_beeped}) then {
