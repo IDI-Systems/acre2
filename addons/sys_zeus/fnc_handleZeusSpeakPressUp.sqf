@@ -15,7 +15,10 @@
  * Public: No
  */
 
-[{!(GVAR(keyDownWait))}, {
+DFUNC(doHandleZeusSpeakPressUp) = {
+    [GVAR(delayReleasePTT_Handle)] call CBA_fnc_removePerFrameHandler;
+    GVAR(delayReleasePTT_Handle) = nil;
+
     player setVariable [QGVAR(inZeus), false, true];
 
     // Stop speaking
@@ -30,6 +33,9 @@
 
     // Stop updating Zeus position
     [GVAR(speakFromZeusHandle)] call CBA_fnc_removePerFrameHandler;
-}] call CBA_fnc_waitUntilAndExecute;
+    GVAR(speakFromZeusHandle) = nil;
+};
+
+GVAR(delayReleasePTT_Handle) = ADDPFH(DFUNC(doHandleZeusSpeakPressUp), ACRE_PTT_RELEASE_DELAY, []);
 
 true

@@ -16,7 +16,6 @@
  */
 
 if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
-    GVAR(keyDownWait) = true;
     player setVariable [QGVAR(inZeus), true, true];
 
     // Save spectator state
@@ -33,7 +32,5 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
         true];
     }, ZEUS_POSITION_FREQUENCY] call CBA_fnc_addPerFrameHandler;
 };
-
-GVAR(keyDownWait) = false;
 
 true
