@@ -1,15 +1,15 @@
 #include "script_component.hpp"
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
+[QGVAR(initIntercom), FUNC(configIntercom)] call CBA_fnc_addEventHandler;
+
 // Exit if ACE3 not loaded
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
-if (!didJIP) then {
-    ["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-    ["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-    ["Air", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-    ["Boat_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-};
+["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Air", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+["Boat_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 if (!hasInterface) exitWith {};
 
