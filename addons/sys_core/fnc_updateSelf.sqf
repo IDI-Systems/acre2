@@ -22,7 +22,7 @@ private _projectPos2 = ATLtoASL positionCameraToWorld [0,0,1];
 
 ACRE_LISTENER_DIR = _projectPos2 vectorDiff _projectPos1;
 
-if (ACRE_IS_SPECTATOR || {call FUNC(inZeus)}) then {
+if (ACRE_IS_SPECTATOR) then {
     ACRE_LISTENER_POS = _projectPos1;
 } else {
     ACRE_LISTENER_POS = eyePos acre_player;
