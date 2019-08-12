@@ -16,8 +16,8 @@ RPC_FUNCTION(updateSelf) {
 
     LOCK(CEngine::getInstance()->getSelf());
 
-    const acre::Vector3_t listenerPos(vMessage->getParameterAsFloat(0), vMessage->getParameterAsFloat(2), vMessage->getParameterAsFloat(1));
-    const acre::Vector3_t listenerDir(vMessage->getParameterAsFloat(3), vMessage->getParameterAsFloat(5), vMessage->getParameterAsFloat(4));
+    const acre::vec3_fp32_t listenerPos(vMessage->getParameterAsFloat(0), vMessage->getParameterAsFloat(2), vMessage->getParameterAsFloat(1));
+    const acre::vec3_fp32_t listenerDir(vMessage->getParameterAsFloat(3), vMessage->getParameterAsFloat(5), vMessage->getParameterAsFloat(4));
 
     CEngine::getInstance()->getSelf()->setWorldPosition(listenerPos);
     CEngine::getInstance()->getSelf()->setHeadVector(listenerDir);
@@ -27,8 +27,8 @@ RPC_FUNCTION(updateSelf) {
     return acre::Result::ok;
 }
 public:
-    __inline void setName(char *const value) final { m_Name = value; }
-    __inline char* getName() const final { return m_Name; }
+    inline void setName(char *const value) final { m_Name = value; }
+    inline char* getName() const final { return m_Name; }
 
 protected:
     char* m_Name;

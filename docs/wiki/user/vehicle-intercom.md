@@ -2,7 +2,9 @@
 title: Vehicle Intercom
 ---
 
-## Vehicle intercom
+{% include important.html content="Requires ACE3 Interaction Menu!" %}
+
+## Vehicle Intercom
 
 Vehicle intercom consists of two separate networks depending on the vehicle type: crew and passenger intercom. Intercom gives the ability to speak to other players within the same network using a headset. This allows them to communicate without the disturbance of the vehicle's noise.
 
@@ -27,7 +29,7 @@ Optionally, each network has a master station. Such stations can broadcast a mes
 
 {% include image.html file="intercom/anvic3_ffcs_interface.png" alt="AN/VIC3 FFCS" %}
 
-This interface can be opened using the ACE Interaction menu or through a shortcut (defaults to: CTRL + SHIFT + TAB). The opened intercom will be displayed in green in the HUD.
+This interface can be opened using the ACE Interaction menu or through a shortcut (default <kbd>⇧&nbsp;Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>Tab&nbsp;⇥</kbd>). The opened intercom will be displayed in green in the HUD.
 
 #### Volume Knob
 
@@ -46,9 +48,7 @@ The selected radio is capable of receiving and transmitting.
 It has 4 positions. When at PTT, the intercom will behave as *PTT activation* mode, LIVE and VOX is the equivalent of *Voice activation* and O/R allows the FFCS to transmit a priority message by temporarily disabling all other FFCS stations.
 
 
-## Infantry telephone
-
-{% include important.html content="Requires ACE3 Interaction Menu!" %}
+## Infantry Telephone
 
 Infantry also has the possibility, in vehicles like tanks or IFVs, to communicate with the crew and/or passengers without entering the vehicle. To do so, face the vehicle, interact with it and take the infantry telephone by selecting the appropriate network if it is not in use already. You can either put it back, give it to another player or switch networks.
 

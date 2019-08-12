@@ -73,18 +73,18 @@ class CfgAcreComponents {
             };
         };
     };
-    
+
     class ACRE_BaseRack : ACRE_ComponentBase {
         type = ACRE_COMPONENT_RACK;
         isAcre = 1;
         name = "ACRE Rack";
-        
+
         // Amplification
         // Speaker
         // Antenna slots.
         connectors[] = {};
         defaultComponents[] = {};
-        
+
         class Interfaces {
             class CfgAcreDataInterface {
                 getState                    = "acre_sys_rack_fnc_getState";

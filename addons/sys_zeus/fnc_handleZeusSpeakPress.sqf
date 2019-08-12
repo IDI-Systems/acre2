@@ -15,7 +15,8 @@
  * Public: No
  */
 
-if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
+if (call EFUNC(sys_core,inZeus) && {GVAR(zeusCommunicateViaCamera)}) then {
+    GVAR(keyDownWait) = true;
     player setVariable [QGVAR(inZeus), true, true];
 
     // Save spectator state

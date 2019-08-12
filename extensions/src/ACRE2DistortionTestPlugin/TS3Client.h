@@ -61,7 +61,7 @@ public:
     std::string getTempFilePath(void);
     std::string getConfigFilePath(void);
 
-    acre::Result playSound(std::string path_, acre::Vector3_t position_, const float32_t volume_, const int32_t looping_);
+    acre::Result playSound(std::string path_, acre::vec3_fp32_t position_, const float32_t volume_, const int32_t looping_);
 
     std::string getUniqueId();
 
@@ -81,8 +81,8 @@ public:
     acre::Result updateShouldSwitchTS3Channel(const bool state_);
     bool shouldSwitchTS3Channel();
 
-    __inline void setState(acre::State value) final { m_state = value; }
-    __inline acre::State getState() const final { return m_state; }
+    inline void setState(acre::State value) final { m_state = value; }
+    inline acre::State getState() const final { return m_state; }
 
     DECLARE_MEMBER(bool, hadVAD);
     DECLARE_MEMBER(bool, InputActive);

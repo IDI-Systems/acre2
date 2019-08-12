@@ -28,20 +28,9 @@ ACRE_LOCAL_SPEAKING = true;
 if (_onRadio) then {
     ACRE_LOCAL_BROADCASTING = true;
 
-    if (isNil "ACRE_CustomVolumeControl" && {alive player}) then {
-        private _factor = .4;
-        // Shifted one lower.
-        switch (EGVAR(sys_gui,VolumeControl_Level)) do {
-            case -2: {_factor = .1};
-            case -1: {_factor = .1};
-            case 0:  {_factor = .4};
-            case 1:  {_factor = .7};
-            case 2:  {_factor = 1};
-        };
-        private _currentVolume = [] call EFUNC(api,getSelectableVoiceCurve);
-        if (!isNil "_currentVolume" && {_currentVolume != _factor}) then  {
-            [_factor] call EFUNC(api,setSelectableVoiceCurve);
-        };
+    // Shift volume down by 25% (one step) when not using a custom voice curve
+    if (isNil "ACRE_CustomVolumeControl") then {
+        [EGVAR(sys_gui,volumeLevel) - 0.25] call EFUNC(sys_gui,setVoiceCurveLevel);
     };
 } else {
     ACRE_LOCAL_BROADCASTING = false;

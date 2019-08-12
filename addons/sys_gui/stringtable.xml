@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_gui">
         <Key ID="STR_ACRE_sys_gui_VolumeControl">
@@ -16,7 +16,13 @@
             <Chinesesimp>语音音量控制</Chinesesimp>
             <Portuguese>Controle de Volume de Comunicação Direta</Portuguese>
         </Key>
-        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid">
+        <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_DisplayName">
+            <English>ACRE2 - Volume Control</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
+            <English>Indicates the current direct speech volume level.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>
             <Polish>ACRE2 - Informacje o pojeździe</Polish>
             <Italian>ACRE2 - Informazione veicolo</Italian>
@@ -26,7 +32,7 @@
             <Spanish>ACRE2 - Información del vehículo</Spanish>
             <French>ACRE2 - Informations du véhicule</French>
         </Key>
-        <Key ID="STR_ACRE_sys_gui_VehicleInfoGridDesc">
+        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_Description">
             <English>Status on available Intercoms and Racks in the vehicle.</English>
             <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
             <Italian>Status degli intercom e rack disponibili nel veicolo</Italian>

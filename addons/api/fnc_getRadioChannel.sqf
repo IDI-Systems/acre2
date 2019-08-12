@@ -23,6 +23,5 @@ if !(_radioId isEqualType "") exitWith { -1 };
 
 private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 
-if (isNil "_channelNumber") exitWith { nil };
-_channelNumber = _channelNumber + 1;
-_channelNumber
+if (isNil "_channelNumber") exitWith { -1 };
+_channelNumber + 1

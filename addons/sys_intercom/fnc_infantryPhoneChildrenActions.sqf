@@ -133,7 +133,7 @@ if (_target isKindOf "CAManBase") then {
             ] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {
-            if (isNull _vehicleInfantryPhone && {!(_target getVariable [QGVAR(infPhoneDisableRinging), false])}) then {
+            if (isNull _vehicleInfantryPhone) then {
                 {
                     private _action = [
                         format [QGVAR(infantryPhoneStartCalling_%1), _x],
@@ -148,7 +148,7 @@ if (_target isKindOf "CAManBase") then {
                         {},
                         _isCalling select 1
                     ] call ace_interact_menu_fnc_createAction;
-                _actions pushBack [_action, [], _target];
+                    _actions pushBack [_action, [], _target];
                 } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
             };
         };

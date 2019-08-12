@@ -426,7 +426,7 @@ namespace acre {
                 static double adiff(double d, prop_type &prop, propa_type &propa)
                 {
                     std::complex<double> prop_zgnd(prop.zgndreal,prop.zgndimag);
-                    static double wd1, xd1, afo, qk, aht, xht;
+                    static thread_local double wd1, xd1, afo, qk, aht, xht;
                     double a, q, pk, ds, th, wa, ar, wd, adiffv;
 
                     if (d==0)
@@ -483,7 +483,7 @@ namespace acre {
                 static double adiff2(double d, prop_type &prop, propa_type &propa)
                 {
                     std::complex<double> prop_zgnd(prop.zgndreal,prop.zgndimag);
-                    static double wd1, xd1, qk, aht, xht, toh, toho, roh, roho, dto, dto1, dtro, dro,
+                    static thread_local double wd1, xd1, qk, aht, xht, toh, toho, roh, roho, dto, dto1, dtro, dro,
                     dro2, drto, dtr, dhh1, dhh2, /* dhec, */ dtof, dto1f, drof, dro2f;
                     double a, q, pk, rd, ds, dsl, /* dfdh, */ th, wa, /* ar, wd, sf1, */ sf2, /* ec, */ vv, kedr=0.0, arp=0.0,
                             sdr=0.0, pd=0.0, srp=0.0, kem=0.0, csd=0.0, sdl=0.0, adiffv2=0.0, closs=0.0;
@@ -759,7 +759,7 @@ namespace acre {
 
                 static double ascat( double d, prop_type &prop, propa_type &propa)
                 {
-                    static double ad, rr, etq, h0s;
+                    static thread_local double ad, rr, etq, h0s;
                     double h0, r1, r2, z0, ss, et, ett, th, q;
                     double ascatv, temp;
 
@@ -877,7 +877,7 @@ namespace acre {
                 static double alos(double d, prop_type &prop, propa_type &propa)
                 {
                     std::complex<double> prop_zgnd(prop.zgndreal,prop.zgndimag);
-                    static double wls;
+                    static thread_local double wls;
                     std::complex<double> r;
                     double s, sps, q;
                     double alosv;
@@ -1059,8 +1059,8 @@ namespace acre {
                 static void lrprop (double d, prop_type &prop, propa_type &propa)
                 {
                     /* PaulM_lrprop used for ITM */
-                    static bool wlos, wscat;
-                    static double dmin, xae;
+                    static thread_local bool wlos, wscat;
+                    static thread_local double dmin, xae;
                     std::complex<double> prop_zgnd(prop.zgndreal,prop.zgndimag);
                     double a0, a1, a2, a3, a4, a5, a6;
                     double d0, d1, d2, d3, d4, d5, d6;
@@ -1239,8 +1239,8 @@ namespace acre {
                 static void lrprop2(double d, prop_type &prop, propa_type &propa)
                 {
                     /* ITWOM_lrprop2 */
-                    static bool wlos, wscat;
-                    static double dmin, xae;
+                    static thread_local bool wlos, wscat;
+                    static thread_local double dmin, xae;
                     std::complex<double> prop_zgnd(prop.zgndreal,prop.zgndimag);
                     double pd1;
                     double a0, a1, a2, a3, a4, a5, a6, iw;
@@ -1507,8 +1507,8 @@ namespace acre {
 
                 static double avar(double zzt, double zzl, double zzc, prop_type &prop, propv_type &propv)
                 {
-                    static    int kdv;
-                    static    double dexa, de, vmd, vs0, sgl, sgtm, sgtp, sgtd, tgtd,
+                    static thread_local int kdv;
+                    static thread_local double dexa, de, vmd, vs0, sgl, sgtm, sgtp, sgtd, tgtd,
                     gm, gp, cv1, cv2, yv1, yv2, yv3, csm1, csm2, ysm1, ysm2,
                     ysm3, csp1, csp2, ysp1, ysp2, ysp3, csd1, zd, cfm1, cfm2,
                     cfm3, cfp1, cfp2, cfp3;
@@ -1536,7 +1536,7 @@ namespace acre {
                     double bfp1[7]={1.0,0.93,1.0,0.93,0.93,1.0,1.0};
                     double bfp2[7]={0.0,0.31,0.0,0.19,0.31,0.0,0.0};
                     double bfp3[7]={0.0,2.00,0.0,1.79,2.00,0.0,0.0};
-                    static bool ws, w1;
+                    static thread_local bool ws, w1;
                     double rt=7.8, rl=24.0, avarv, q, vs, zt, zl, zc;
                     double sgt, yr, temp1, temp2;
                     int temp_klim=propv.klim-1;
