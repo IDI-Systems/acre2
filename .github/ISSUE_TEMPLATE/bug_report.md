@@ -27,8 +27,8 @@ A clear and concise description of what you expected to happen.
 - Dedicated / Self-Hosted Multiplayer / Singleplayer / Editor (Singleplayer) / Editor (Multiplayer) / Virtual Arsenal
 
 **Log Files:**
-- Add a link ([gist](https://gist.github.com) or [pastebin](http://pastebin.com)) to the client and/or server RPT file and extension log file. An instruction to find your RPT files can be found [here](https://community.bistudio.com/wiki/Crash_Files#Arma_3).
-- Extension log file can be found at `<Arma 3 directory>\logs\acre_dll.log`.
+- Link to ([gist](https://gist.github.com) or [pastebin](http://pastebin.com)) to the client and/or server RPT file. An instruction to find your RPT files can be found [here](https://community.bistudio.com/wiki/Crash_Files#Arma_3).
+- Link to ([gist](https://gist.github.com) or [pastebin](http://pastebin.com)) to the extension log file, which can be found at `<Arma 3 directory>\logs\acre_dll.log`.
 
 **Additional context:**
 Add any other context about the problem here.
