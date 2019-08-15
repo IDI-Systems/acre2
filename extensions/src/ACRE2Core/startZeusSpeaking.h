@@ -11,9 +11,9 @@
 
 #include "TextMessage.h"
 
-RPC_FUNCTION(stopRadioSpeaking) {
+RPC_FUNCTION(startZeusSpeaking) {
 
-    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::radio);
+    CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::direct);
 
     return acre::Result::ok;
 }
