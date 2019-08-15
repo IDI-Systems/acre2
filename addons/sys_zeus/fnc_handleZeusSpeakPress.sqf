@@ -23,6 +23,9 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusCommunicateViaCamera)}) then {
     player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
     call EFUNC(sys_core,spectatorOff);
 
+    // Start speaking
+    ["startZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+
     // Update Zeus position
     GVAR(speakFromZeusHandle) = [{
         player setVariable [QGVAR(zeusPosition),
@@ -30,7 +33,5 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusCommunicateViaCamera)}) then {
         true];
     }, ZEUS_POSITION_FREQUENCY] call CBA_fnc_addPerFrameHandler;
 };
-
-GVAR(keyDownWait) = false;
 
 true
