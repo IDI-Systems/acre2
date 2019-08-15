@@ -103,7 +103,7 @@ private _result = false;
                 private _speakerRadio = [];
                 private _nearRadios = [ACRE_LISTENER_POS, NEAR_RADIO_RANGE] call EFUNC(sys_radio,nearRadios);
                 if (EGVAR(sys_zeus,zeusCommunicateViaCamera) && {call FUNC(inZeus)}) then {
-                    _nearRadios append [(getPosASL curatorCamera), NEAR_RADIO_RANGE] call EFUNC(sys_radio,nearRadios);
+                    _nearRadios append ([getPosASL curatorCamera, NEAR_RADIO_RANGE] call EFUNC(sys_radio,nearRadios));
                     _nearRadios arrayIntersect _nearRadios;
                 };
                 {

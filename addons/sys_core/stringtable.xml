@@ -213,7 +213,6 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Transmit on third radio and set it as active.</English>
-            <English>Use the third radio in your inventory to talk.</English>
             <Spanish>Utiliza la tercera radio en el inventario para hablar</Spanish>
             <Czech>Použít třetí rádio v inventáři k mluvení.</Czech>
             <German>Das dritte Funkgerät zum Sprechen verwenden.</German>
