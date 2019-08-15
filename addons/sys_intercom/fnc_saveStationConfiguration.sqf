@@ -31,5 +31,6 @@ if (_varName isEqualTo "") then {
 // Only make public if GUI is not opened
 if (!GVAR(guiOpened) && {GVAR(configChanged)}) then {
     GVAR(configChanged) = false;
-    publicVariable _varName;
+    private _intercom = _vehicle getVariable [_varName, []];
+    _vehicle setVariable [_varName, _intercom, true];
 };
