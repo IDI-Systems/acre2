@@ -117,9 +117,34 @@ private _accent = [];
     _accent pushBack false;
 } forEach _intercoms;
 
-[_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
+if (didJIP) then {
+    // Do not configure the stations if the player is JIP and information is already there.
+    if ((_vehicle getVariable[QGVAR(station_driver), []]) isEqualTo []) then {
+        [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
+    };
 
-_vehicle setVariable [QGVAR(intercomNames), _intercomNames];
-_vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
-_vehicle setVariable [QGVAR(broadcasting), _broadcasting];
-_vehicle setVariable [QGVAR(accent), _accent];
+    if ((_vehicle getVariable [QGVAR(intercomNames), []]) isEqualTo []) then {
+        _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
+    };
+
+    if ((_vehicle getVariable [QGVAR(numLimitedPositions), []]) isEqualTo []) then {
+        _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
+    };
+
+    if ((_vehicle getVariable [QGVAR(broadcasting), []]) isEqualTo []) then {
+        _vehicle setVariable [QGVAR(broadcasting), _broadcasting];
+    };
+
+    if ((_vehicle getVariable [QGVAR(accent), []]) isEqualTo []) then {
+        _vehicle setVariable [QGVAR(accent), _accent];
+    };
+} else {
+    [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
+
+    _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
+    _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
+    _vehicle setVariable [QGVAR(broadcasting), _broadcasting];
+    _vehicle setVariable [QGVAR(accent), _accent];
+};
+
+

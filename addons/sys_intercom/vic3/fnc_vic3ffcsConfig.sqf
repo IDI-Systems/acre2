@@ -29,7 +29,7 @@ if ((_volume < 0) || {_volume > 1.0}) then {
     _volume = 1.0;
 };
 
-if (_monitoringRack isEqualType ""  ) then {
+if (_monitoringRack isEqualType "") then {
     if (_monitoringRack == "all") then {
         _monitoringRack = VIC3FFCS_MONITOR_KNOB_POSITIONS;
     } else {
