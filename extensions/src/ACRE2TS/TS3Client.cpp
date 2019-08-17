@@ -182,7 +182,7 @@ acre::Result CTS3Client::localStartSpeaking(const acre::Speaking speakingType_, 
         }
     }
 
-    if (speakingType_ == acre::Speaking::direct) {
+    if (!this->getVAD() && speakingType_ == acre::Speaking::direct) {
         this->microphoneOpen(true);
     }
 
@@ -197,7 +197,9 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
     bool resendDirectSpeaking = false;
     switch (speakingType_) {
         case acre::Speaking::direct:
-            this->microphoneOpen(false);
+            if (!this->getVAD()) {
+                this->microphoneOpen(false);
+            }
             break;
         case acre::Speaking::radio:
             this->setRadioPTTDown(false);
