@@ -22,7 +22,7 @@ title: Installation
 
 ### Configuration
 
-You can configure ACRE2 features to your needs. ACRE2 integrates fully into the [CBA_A3 Settings System](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System), accessible via the ingame configuration. This applies to [server side config](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#server-settings) as well to the client side.
+You can configure ACRE2 features to your needs. ACRE2 uses the [CBA Settings System](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System), accessible via the in-game configuration. This applies to [server settings](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#server-settings) as well as client settings.
 
 Especially for server admins on the shell level, you can get available settings by the configurations [export/import feature](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#export-and-import-function). The options then need to go into [CBA's userconfig](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#userconfig) file.
 
