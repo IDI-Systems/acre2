@@ -19,4 +19,4 @@ Configuring the vehicle rack (opening the radio GUI) is disabled for *turned out
 
 In addition, vehicle racks are integrated into the intercom system. A rack with access to *crew* or *passenger* intercom allows players without access to the rack to hear incoming transmissions. These players however, will not be able to configure the radio nor transmit through it in the current implementation.
 
-Radios that are connected to an intercom cannot be accessed using the ACE Interaction Menu. Instead, one must open the Intercom UI (Default to Ctrl + Shift + Tab) and select the desired radio(s) using the upper two knobs as described in the [intercom section](https://acre2.idi-systems.com/wiki/user/vehicle-intercom#full-functional-crew-station-ffcs)
+Radios that are connected to an intercom cannot be accessed using the ACE Interaction Menu. Instead, one must open the Intercom UI (default <kbd>⇧&nbsp;Shift</kbd>+<kbd>Ctrl</kbd>+<kbd>Tab&nbsp;⇥</kbd>) and select the desired radio(s) using the upper two knobs as described in the [intercom section](/wiki/user/vehicle-intercom#full-functional-crew-station-ffcs)
