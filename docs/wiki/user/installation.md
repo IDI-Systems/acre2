@@ -20,6 +20,11 @@ title: Installation
 - ACRE2 will try to copy the plugins to your TeamSpeak 3 installation directory. A pop-up will appear describing what the process did.
 - Launch TeamSpeak 3 and enable the ACRE2 plugin in the `Settings -> Plugins` window.
 
+### Configuration
+You can configure ACRE2 features to your needs. ACRE2 integrates fully into the [CBA_A3 Settings System](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System), accessible via the ingame configuration. This applies to [server side config](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#server-settings) as well to the client side.
+
+Especially for server admins on the shell level, you can get available settings by the configurations [export/import feature](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#export-and-import-function). The options then need to go into [CBA's userconfig](https://github.com/CBATeam/CBA_A3/wiki/CBA-Settings-System#userconfig) file.
+
 ### Troubleshooting
 
 - **WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!**  
