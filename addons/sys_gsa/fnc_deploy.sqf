@@ -1,16 +1,19 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Picks up a ground spike antenna and saves it in the inventory.
+ * Removes a ground spike antenna from the inventory and deploys it on the ground.
+ * Deployment is vertical for optimal antenna direction.
  *
  * Arguments:
- * 0: Ground Spike Antenna <OBJECT>
+ * 0: Unit <OBJECT>
+ * 1: Ground Spike Antenna classname <STRING>
+ * 2: Include Mast <BOOL> (default: false)
  *
  * Return Value:
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_gsa_fnc_pickUp
+ * [acre_player, "ACRE_VHF30108"] call acre_sys_gsa_fnc_deploy
  *
  * Public: No
  */
