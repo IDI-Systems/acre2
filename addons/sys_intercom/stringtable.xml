@@ -4,7 +4,7 @@
         <Key ID="STR_ACRE_sys_intercom_infantryPhone">
             <English>Infantry Phone</English>
             <Spanish>Teléfono de infantería</Spanish>
-            <German>Infanterietelefon</German>
+            <German>Gegensprechanlage</German>
             <Japanese>車外電話機</Japanese>
             <Russian>Телефон пехоты</Russian>
             <Polish>Telefon piechoty</Polish>
@@ -74,7 +74,7 @@
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
             <English>Start Calling %1</English>
             <Spanish>Llamar al exterior %1</Spanish>
-            <German>Läute Infanterietelefon %1</German>
+            <German>Läute %1</German>
             <Japanese>呼び出す %1</Japanese>
             <Russian>Начать звонок %1</Russian>
             <Polish>Zadzwoń %1</Polish>
@@ -102,7 +102,7 @@
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneDisconnected">
             <English>Infantry Phone Disconnected</English>
             <Spanish>Colgar teléfono</Spanish>
-            <German>Infanterietelefon aufgehängt</German>
+            <German>Gegensprechen beendet</German>
             <Japanese>車外電話機を切断しました</Japanese>
             <Russian>Телефон пехоты был отключен</Russian>
             <Polish>Telefon odłączony</Polish>
@@ -165,7 +165,7 @@
             <Polish>Nie można się połączyć do interkomu. Limit połączeń został osiągnięty.</Polish>
             <Italian>Impossibile connettersi all'intercom. Numero massimo di connessioni raggiunto.</Italian>
             <French>Connexion impossible à l'interphone. Nombre maximal de connexions atteint.</French>
-            <German>Maximale Anzahl an Verbindungen in Bordfunk erreicht. Verbindung kann nicht hergestellt werden!</German>
+            <German>Maximale Anzahl an Verbindungen im Bordfunk erreicht. Verbindung kann nicht hergestellt werden.</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercom">
             <English>Crew Intercom</English>
@@ -444,7 +444,7 @@
         <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey_description">
             <English>Connects to the next Intercom Network while keeping the already connected ones.</English>
             <Spanish>Conecta la siguiente red de intercom manteniendo las demás.</Spanish>
-            <German>Verbindet mit dem nächsten Bordfunknetzwerk während die bereits verbundenen beibehalten werden.</German>
+            <German>Verbindet mit dem nächsten Bordfunknetzwerk während die bereits verbundenen Netzwerke beibehalten werden.</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Open Intercom GUI</English>

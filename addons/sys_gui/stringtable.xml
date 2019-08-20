@@ -18,11 +18,11 @@
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_DisplayName">
             <English>ACRE2 - Volume Control</English>
-            <German>ACRE2 - Lautsträke</German>
+            <German>ACRE2 - Lautstärke</German>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
-            <German>Zeigt die momentane Lautstärke deiner Sprache an.</German>
+            <German>Zeigt die momentane Lautstärke deiner Charaktersprache an.</German>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>

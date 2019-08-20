@@ -29,7 +29,7 @@
         <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera_Description">
             <English>Talk from the Zeus Interface's camera instead of your unit's position. Listen through camera must be enabled.</English>
             <Japanese>Zeus 画面のカメラから話すようになります。"カメラを通じて聞く" が有効になっている必要があります。</Japanese>
-            <German>Spreche aus der ZEUS Kamera anstatt von der Position der Einheit. Hören durch ZEUS Kamera muss aktiviert sein!</German>
+            <German>Spreche aus der ZEUS Kamera anstatt von der Position der Einheit. Hören durch ZEUS Kamera muss aktiviert sein.</German>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_DisplayName">
             <English>Default Zeus Voice Source</English>
@@ -42,7 +42,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_Description">
             <English>Hear and talk with players through the Zeus Interface's camera.</English>
-            <German>Höre zu und Spreche mit Spielern durch die ZEUS Kamera</German>
+            <German>Höre zu und spreche mit Spielern durch die ZEUS Kamera</German>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_DisplayName">
             <English>Able to Join Spectators</English>
@@ -52,7 +52,7 @@
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_Description">
             <English>Let Zeus join the specators while in the Zeus interface.</English>
             <Japanese>Zeus が Zeus 画面のままスペクテイターへの参加を可能にします。</Japanese>
-            <German>Lasse ZEUS mit dem Zuschwern kommunizieren während die ZEUS Oberfläche genutzt wird.</German>
+            <German>Lasse ZEUS mit dem Zuschauern kommunizieren während die ZEUS Oberfläche genutzt wird.</German>
         </Key>
     </Package>
 </Project>

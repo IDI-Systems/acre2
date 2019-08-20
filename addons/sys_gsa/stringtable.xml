@@ -52,7 +52,7 @@
             <English>GSA already in use</English>
             <Spanish>Antena en uso</Spanish>
             <Japanese>地上アンテナは使用中</Japanese>
-            <German>BBA bereits in Benutzung!</German>
+            <German>BBA bereits in Benutzung</German>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_connect">
             <English>Connect</English>
