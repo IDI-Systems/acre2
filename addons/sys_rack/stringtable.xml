@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_rack">
         <Key ID="STR_ACRE_sys_rack_mountRadio">
             <English>Mount</English>
-            <German>Einbauen</German>
+            <German>Installiere</German>
             <Japanese>積載</Japanese>
             <Chinese>裝載</Chinese>
             <Chinesesimp>装载</Chinesesimp>
@@ -22,10 +22,11 @@
             <Chinesesimp>无法挂载</Chinesesimp>
             <Spanish>No montable</Spanish>
             <French>Non montable</French>
+            <German>Nicht installierbar</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount</English>
-            <German>Entferne</German>
+            <German>Deinstalliere</German>
             <Japanese>降ろす</Japanese>
             <Chinese>卸載</Chinese>
             <Chinesesimp>卸载</Chinesesimp>
@@ -38,7 +39,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted (%1)</English>
-            <German>Eingebautes (%1)</German>
+            <German>%1 installiert</German>
             <Japanese>積載した (%1)</Japanese>
             <Chinese>裝載 (%1)</Chinese>
             <Chinesesimp>装载 (%1)</Chinesesimp>
@@ -51,7 +52,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop Using</English>
-            <German>Benutzung beenden</German>
+            <German>Nicht mehr verwenden</German>
             <Japanese>使用を止める</Japanese>
             <Chinese>停止使用</Chinese>
             <Chinesesimp>停止使用</Chinesesimp>
@@ -77,7 +78,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
-            <German>Funkgerät kann nicht entfernt werden. Nicht genug Platz im Inventar vorhanden.</German>
+            <German>Funkgerät kann nicht deinstalliert werden. Nicht genug Platz im Inventar.</German>
             <Japanese>インベントリに空きが無いため無線機を降ろせません。</Japanese>
             <Chinese>無法卸載無線電，因為你的物品欄已經沒有任何空間。</Chinese>
             <Chinesesimp>无法卸载无线电，因为你的物品栏已经没有任何空间。</Chinesesimp>
@@ -90,7 +91,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
-            <German>Funkgeräteschrank</German>
+            <German>Anlage</German>
             <Chinese>架子</Chinese>
             <Chinesesimp>架子</Chinesesimp>
             <Korean>선반</Korean>
@@ -103,7 +104,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
-            <German>Steckplatz</German>
+            <German>Schacht</German>
             <Chinese>儀錶板</Chinese>
             <Chinesesimp>仪表板</Chinesesimp>
             <Korean>대쉬보드</Korean>
@@ -122,10 +123,11 @@
             <Chinesesimp>仪表板</Chinesesimp>
             <Spanish>Panel</Spanish>
             <French>Tableau</French>
+            <German>Anschluss</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLower">
             <English>Dash Lower</English>
-            <German>Unterer Steckplatz</German>
+            <German>Unterer</German>
             <Chinese>儀錶板下降</Chinese>
             <Chinesesimp>仪表板下降</Chinesesimp>
             <Korean>대쉬보드 하단</Korean>
@@ -144,10 +146,11 @@
             <Chinesesimp>仪表板下降</Chinesesimp>
             <Spanish>P.Inf</Spanish>
             <French>T.Inf</French>
+            <German>Unten</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dash Upper</English>
-            <German>Oberer Steckplatz</German>
+            <German>Oberer</German>
             <Chinese>儀錶板上升</Chinese>
             <Chinesesimp>仪表板上升</Chinesesimp>
             <Korean>대쉬보드 상단</Korean>
@@ -166,6 +169,7 @@
             <Chinesesimp>仪表板上升</Chinesesimp>
             <Spanish>P.Sup</Spanish>
             <French>T.Sup</French>
+            <German>Oben</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useAllRacks">
             <English>Use All</English>
@@ -174,6 +178,7 @@
             <Chinesesimp>使用全部</Chinesesimp>
             <Spanish>Usar todas</Spanish>
             <French>Tout utiliser</French>
+            <German>Verwende alle</German>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingAllRacks">
             <English>Stop Using All</English>
@@ -182,6 +187,7 @@
             <Chinesesimp>停止使用全部</Chinesesimp>
             <Spanish>Dejar de usar todas</Spanish>
             <French>Arrêter de tout utiliser</French>
+            <German>Nicht mehr alle verwenden</German>
         </Key>
     </Package>
 </Project>
