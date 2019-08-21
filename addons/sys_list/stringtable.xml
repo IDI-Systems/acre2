@@ -20,7 +20,7 @@
             <English>Open Active Radio</English>
             <Spanish>Abrir radio</Spanish>
             <Czech>Otevřít aktivní rádio</Czech>
-            <German>Funkgerät öffnen</German>
+            <German>Aktives Funkgerät öffnen</German>
             <Japanese>使用中の無線機を開く</Japanese>
             <Italian>Apri Ricetrasmittente Attiva</Italian>
             <French>Ouvrir radio active</French>
@@ -33,7 +33,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_list_NotificationGrid">
             <English>ACRE2 - Radio Notifications</English>
-            <German>ACRE2 - Funkbenachrichtigungen</German>
+            <German>ACRE2 - Visuelle Funkbenachrichtigungen</German>
             <Japanese>ACRE2 - 無線機の通知</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_list_NotificationGridDesc">
@@ -43,7 +43,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_list_Category">
             <English>ACRE2 UI</English>
-            <German>ACRE2 UI</German>
+            <German>ACRE2 Nutzeroberfläche</German>
             <Polish>ACRE2 UI</Polish>
             <French>ACRE2 IU</French>
             <Turkish>ACRE2 UI</Turkish>
@@ -52,33 +52,43 @@
         </Key>
         <Key ID="STR_ACRE_sys_list_HintBackgroundColor_DisplayName">
             <English>Notification Background Color</English>
+            <German>Hintergrundfarbe der visuellen Benachrichtigung</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_HintTextFont_DisplayName">
             <English>Notification Text Font</English>
+            <German>Schriftart der visuellen Benachrichtigung</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
             <English>Babel Cycle Language Color</English>
+            <German>Schriftfarbe während Babel Sprachwechsel</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
             <English>Switch Channel Color</English>
+            <German>Farbe bei Funkkanalwechsel</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
             <English>Toggle Headset Color</English>
+            <German>Farbe bei Auf- oder Absetzen der Kopfhörer</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
             <English>Cycle Radio Color</English>
+            <German>Farbe bei Funkgerätwechsel</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT1Color_DisplayName">
             <English>Radio 1 (PTT 1) Transmit Color</English>
+            <German>Farbe Sprechtaste 1</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT2Color_DisplayName">
             <English>Radio 2 (PTT 2) Transmit Color</English>
+            <German>Farbe Sprechtaste 2</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT3Color_DisplayName">
             <English>Radio 3 (PTT 3) Transmit Color</English>
+            <German>Farbe Sprechtaste 3</German>
         </Key>
         <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
             <English>Active Radio Transmit Color</English>
+            <German>Farbe für Standardsprechtaste</German>
         </Key>
     </Package>
 </Project>
