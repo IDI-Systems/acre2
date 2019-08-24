@@ -25,14 +25,12 @@ private _fnc_getItems = {
     _items arrayIntersect _items
 };
 
-// Use cached items list if unit is ACE_player
+// Use cached items list if unit is acre_player
 if (_unit isEqualTo acre_player) then {
-    private _items = GVAR(uniqueItemsCache);
-    if (isNil "_items") then {
-        _items = call _fnc_getItems;
-        GVAR(uniqueItemsCache) = _items;
+    if (isNil QGVAR(uniqueItemsCache)) then {
+        GVAR(uniqueItemsCache) = call _fnc_getItems;
     };
-    +_items
+    +GVAR(uniqueItemsCache)
 } else {
     call _fnc_getItems;
 };
