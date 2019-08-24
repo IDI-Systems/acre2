@@ -2,7 +2,7 @@
     QGVAR(volumeColorScale),
     "LIST",
     [LSTRING(VolumeColorScale_DisplayName), LSTRING(VolumeColorScale_Description)],
-    localize ELSTRING(sys_list,Category),
+    ELSTRING(sys_core,CategoryUI),
     [
         [
             VOLUME_COLOR_SCALE_YELLOW_ORANGE_RED,
