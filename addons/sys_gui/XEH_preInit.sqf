@@ -6,6 +6,8 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
+#include "initSettings.sqf"
+
 if (hasInterface) then {
     ACRE_HOLD_OFF_ITEMRADIO_CHECK = false;
 
