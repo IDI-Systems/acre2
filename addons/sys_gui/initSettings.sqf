@@ -2,7 +2,7 @@
     QGVAR(volumeColorScale),
     "LIST",
     [LSTRING(VolumeColorScale_DisplayName), LSTRING(VolumeColorScale_Description)],
-    "ACRE2",
+    localize ELSTRING(sys_list,Category),
     [
         [
             VOLUME_COLOR_SCALE_YELLOW_ORANGE_RED,
