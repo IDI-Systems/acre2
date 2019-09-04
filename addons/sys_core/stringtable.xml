@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
+        <Key ID="STR_ACRE_sys_core_CategoryUI">
+            <English>ACRE2 UI</English>
+            <German>ACRE2 Nutzeroberfläche</German>
+            <Polish>ACRE2 UI</Polish>
+            <French>ACRE2 IU</French>
+            <Turkish>ACRE2 UI</Turkish>
+            <Japanese>ACRE2 UI</Japanese>
+            <Czech>ACRE2 UI</Czech>
+            <Italian>ACRE2 IU</Italian>
+            <Spanish>ACRE2 Interfaz</Spanish>
+        </Key>
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
             <English>Post-Mix Global Volume</English>
             <Spanish>Volumen Global Post-Mix</Spanish>
