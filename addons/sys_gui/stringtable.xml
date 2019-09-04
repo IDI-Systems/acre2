@@ -46,5 +46,20 @@
             <French>Statut des interphones et des supports disponibles dans le véhicule.</French>
             <German>Informationen bezüglich verfügbarer Interkommunikations- oder Festfunkgeräte.</German>
         </Key>
+        <Key ID="STR_ACRE_sys_gui_VolumeColorScale_DisplayName">
+            <English>Volume Color Scale</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
+            <English>Color scale used by the Volume Control UI.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
+            <English>Yellow, Orange, Red</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
+            <English>Green, Orange, Red</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
+            <English>Blue, Magenta, Red</English>
+        </Key>
     </Package>
 </Project>
