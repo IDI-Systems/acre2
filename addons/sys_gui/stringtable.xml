@@ -19,10 +19,12 @@
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_DisplayName">
             <English>ACRE2 - Volume Control</English>
             <German>ACRE2 - Lautstärke</German>
+            <Russian>ACRE2 - громкость</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
             <German>Zeigt die momentane Lautstärke deiner Charaktersprache an.</German>
+            <Russian>Отображает текущую громкость прямой речи</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>
@@ -34,6 +36,7 @@
             <Spanish>ACRE2 - Información del vehículo</Spanish>
             <French>ACRE2 - Informations du véhicule</French>
             <German>ACRE2 - Fahrzeuginformation</German>
+            <Russian>ACRE2 - информация о технике</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_Description">
             <English>Status on available Intercoms and Racks in the vehicle.</English>
@@ -45,21 +48,27 @@
             <Spanish>Estado de los intercoms y racks del vehículo.</Spanish>
             <French>Statut des interphones et des supports disponibles dans le véhicule.</French>
             <German>Informationen bezüglich verfügbarer Interkommunikations- oder Festfunkgeräte.</German>
+            <Russian>Состояние на доступных Интеркомах и Подставках в технике</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_DisplayName">
             <English>Volume Color Scale</English>
+            <Russian>Цветовая гамма громкости</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
             <English>Color scale used by the Volume Control UI.</English>
+            <Russian>Цветовая гамма интефейса управления громкостью</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
             <English>Yellow, Orange, Red</English>
+            <Russian>Желтый, Оранжевый,Красный</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
             <English>Green, Orange, Red</English>
+            <Russian>Зеленый, Оранжевый, Красный</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
             <English>Blue, Magenta, Red</English>
+            <Russian>Синий,Пурпурный,Красный</Russian>
         </Key>
     </Package>
 </Project>
