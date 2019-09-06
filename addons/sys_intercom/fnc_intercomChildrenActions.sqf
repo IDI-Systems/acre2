@@ -27,8 +27,13 @@ private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
         format [QGVAR(_intercom_%1), _intercomName],
         _intercomShortName,
         "",
-        {true},
         {
+            //USES_VARIABLES ["_target", "_player"];
+            params ["", "", "_params"];
+            _params params ["_intercomNetwork"];
+            _intercomNetwork params ["_intercomNetwork"];
+            [_intercomNetwork, false] call FUNC(openGui);
+        }, {
             //USES_VARIABLES ["_target", "_player"];
             params ["_target", "_player", "_params"];
             _params params ["_intercomNetwork"];
