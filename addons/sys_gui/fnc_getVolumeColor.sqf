@@ -17,4 +17,4 @@
 
 params ["_level"];
 
-VOLUME_COLOR_SCALE select (0 max ceil (count VOLUME_COLOR_SCALE * (_level min 1) - 1))
+GVAR(volumeColorScale) select (0 max ceil (count GVAR(volumeColorScale) * (_level min 1) - 1));

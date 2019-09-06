@@ -4,18 +4,26 @@
         <Key ID="STR_ACRE_sys_io_noPingReturn">
             <English>ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.</English>
             <Spanish>ACRE ERROR TUBERÍA: Sin ping de retorno, intentando recuperar la tubería</Spanish>
+            <German>ACRE TUNNELFEHLER: Kein Ping empfangen, versuche Tunnel wieder zu verbinden.</German>
+            <Russian>ОШИБКА ТУННЕЛЯ ACRE: Нет ответного сигнала, попытка повторного подключения</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_io_recoveredClosedPipe">
             <English>ACRE has recovered from a closed pipe!</English>
             <Spanish>ACRE se ha recuperado de una tubería previamente rota</Spanish>
+            <German>ACRE hat sich wieder verbunden, weiter gehts.</German>
+            <Russian>ACRE проблема с туннелем устранена!</Russian>
         </Key>
-        <Key ID ="STR_ACRE_sys_io_acreNotConnected">
+        <Key ID="STR_ACRE_sys_io_acreNotConnected">
             <English>ACRE is not connected to TeamSpeak!</English>
             <Spanish>ACRE no está connectado al TeamSpeak!</Spanish>
+            <German>ACRE ist nicht mit TeamSpeak verbunden!</German>
+            <Russian>ACRE не подключен к TeamSpeak!</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_io_acreConnected">
             <English>ACRE connected</English>
             <Spanish>ACRE conectado</Spanish>
+            <German>ACRE verbunden</German>
+            <Russian>ACRE подключен</Russian>
         </Key>
     </Package>
 </Project>

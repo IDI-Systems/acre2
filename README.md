@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.7.0.1010/acre2_2.7.0.1010.zip">
-        <img src="https://img.shields.io/badge/Version-2.7.0-blue.svg?style=flat-square" alt="ACRE2 Version">
+    <a href="https://github.com/IDI-Systems/acre2/releases/download/v2.7.1.1016/acre2_2.7.1.1016.zip">
+        <img src="https://img.shields.io/badge/Version-2.7.1-blue.svg?style=flat-square" alt="ACRE2 Version">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/issues">
         <img src="https://img.shields.io/github/issues-raw/IDI-Systems/acre2.svg?style=flat-square&label=Issues" alt="ACRE2 Issues">
@@ -18,8 +18,8 @@
     <a href="http://acre2.idi-systems.com">
         <img src="https://img.shields.io/badge/Documentation-Home-lightgrey.svg?style=flat-square" alt="ACRE2 Wiki">
     </a>
-    <a href="http://slackin.idi-systems.com:3000">
-        <img src="http://slackin.idi-systems.com:3000/badge.svg?style=flat-square&label=Slack" alt="ACRE2 Slack">
+    <a href="http://slackin.idi-systems.com">
+        <img src="https://img.shields.io/badge/Slack-Join-darkviolet.svg?style=flat-square" alt="ACRE2 Slack">
     </a>
     <a href="https://travis-ci.org/IDI-Systems/acre2">
         <img src="https://img.shields.io/travis/IDI-Systems/acre2.svg?style=flat-square&label=Build" alt="ACRE2 Build Status">
