@@ -11,6 +11,7 @@
             <Czech>ACRE2 UI</Czech>
             <Italian>ACRE2 IU</Italian>
             <Spanish>ACRE2 Interfaz</Spanish>
+            <Russian>ACRE2 Интерфейс</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
             <English>Post-Mix Global Volume</English>
@@ -45,6 +46,7 @@
         <Key ID="STR_ACRE_sys_core_defaultRadioVolume_displayName">
             <English>Default Radio Volume</English>
             <German>Standardlautstärke Funkgerät</German>
+            <Russian>Громкость рации по умолчанию</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
@@ -102,6 +104,7 @@
             <Spanish>Nombre de canal de TeamSpeak</Spanish>
             <French>Nom du canal TeamSpeak</French>
             <German>TeamSpeak Kanalname</German>
+            <Russian>Имя ТимСпик канала</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
@@ -114,6 +117,7 @@
             <Spanish>Contraseña del canal de TeamSpeak</Spanish>
             <French>Mot de passe du canal TeamSpeak</French>
             <German>TeamSpeak Kanalpasswort</German>
+            <Russian>Пароль ТимСпик канала</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -350,16 +354,19 @@
             <English>Antenna Direction Toggle</English>
             <German>Antennenausrichtung wechseln</German>
             <Japanese>アンテナの方向切り替え</Japanese>
+            <Russian>Изменить направление антенны</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
             <German>Antenne gerade</German>
             <Japanese>アンテナを直立に</Japanese>
+            <Russian>Антенна выпрямлена</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
             <German>Antenne gebogen</German>
             <Japanese>アンテナを折り曲げ</Japanese>
+            <Russian>Антенна согнута</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -410,6 +417,7 @@
             <English>Automatic Antenna Direction</English>
             <German>Automatische Antennenausrichtung</German>
             <Japanese>アンテナの方向自動</Japanese>
+            <Russian>Авто направление антенны</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -518,11 +526,13 @@
             <English>Show incoming transmissions</English>
             <German>Eingehende Funksprüche anzeigen</German>
             <Japanese>受信中の通信を表示</Japanese>
+            <Russian>Показывать входящие передачи</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
             <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
             <Japanese>ラックの通信を表示</Japanese>
+            <Russian>Показывать передачи с раций на подставке</Russian>
         </Key>
     </Package>
 </Project>
