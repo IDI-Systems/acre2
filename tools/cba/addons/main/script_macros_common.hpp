@@ -51,8 +51,45 @@
     #define MAINLOGIC main
 #endif
 
+#define ADDON DOUBLES(PREFIX,COMPONENT)
+#define MAIN_ADDON DOUBLES(PREFIX,main)
+
+/* -------------------------------------------
+Macro: VERSION_CONFIG
+    Define CBA Versioning System config entries.
+
+    VERSION should be a floating-point number (1 separator).
+    VERSION_STR is a string representation of the version.
+    VERSION_AR is an array representation of the version.
+
+    VERSION must always be defined, otherwise it is 0.
+    VERSION_STR and VERSION_AR default to VERSION if undefined.
+
+Parameters:
+    None
+
+Example:
+    (begin example)
+        #define VERSION 1.0
+        #define VERSION_STR 1.0.1
+        #define VERSION_AR 1,0,1
+
+        class CfgPatches {
+            class MyMod_main {
+                VERSION_CONFIG;
+            };
+        };
+    (end)
+
+Author:
+    ?, Jonpas
+------------------------------------------- */
 #ifndef VERSION
     #define VERSION 0
+#endif
+
+#ifndef VERSION_STR
+    #define VERSION_STR VERSION
 #endif
 
 #ifndef VERSION_AR
@@ -60,11 +97,8 @@
 #endif
 
 #ifndef VERSION_CONFIG
-    #define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION); versionAr[] = {VERSION_AR}
+    #define VERSION_CONFIG version = VERSION; versionStr = QUOTE(VERSION_STR); versionAr[] = {VERSION_AR}
 #endif
-
-#define ADDON DOUBLES(PREFIX,COMPONENT)
-#define MAIN_ADDON DOUBLES(PREFIX,main)
 
 /* -------------------------------------------
 Group: Debugging
@@ -142,7 +176,7 @@ Author:
 #define LOG_SYS(LEVEL,MESSAGE) LOG_SYS_FORMAT(LEVEL,MESSAGE) call CBA_fnc_log
 #endif
 
-#define LOG_SYS_FILELINENUMBERS(LEVEL,MESSAGE) LOG_SYS(LEVEL,format [ARR_4('%1 File: %2 Line: %3',MESSAGE,__FILE__,__LINE__ + 1)])
+#define LOG_SYS_FILELINENUMBERS(LEVEL,MESSAGE) LOG_SYS(LEVEL,format [ARR_4('%1 %2:%3',MESSAGE,__FILE__,__LINE__ + 1)])
 
 /* -------------------------------------------
 Macro: LOG()
@@ -270,7 +304,7 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define ERROR(MESSAGE) ['PREFIX', 'COMPONENT', MESSAGE, nil, __FILE__, __LINE__ + 1] call CBA_fnc_error
+#define ERROR(MESSAGE) LOG_SYS_FILELINENUMBERS('ERROR',MESSAGE)
 #define ERROR_1(MESSAGE,ARG1) ERROR(FORMAT_1(MESSAGE,ARG1))
 #define ERROR_2(MESSAGE,ARG1,ARG2) ERROR(FORMAT_2(MESSAGE,ARG1,ARG2))
 #define ERROR_3(MESSAGE,ARG1,ARG2,ARG3) ERROR(FORMAT_3(MESSAGE,ARG1,ARG2,ARG3))
@@ -281,13 +315,38 @@ Author:
 #define ERROR_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) ERROR(FORMAT_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8))
 
 /* -------------------------------------------
+Macro: ERROR_MSG()
+    Record a critical error in the RPT log and display on screen error message.
+
+    Newlines (\n) in the MESSAGE will be put on separate lines.
+
+Parameters:
+    MESSAGE -  Message to record <STRING>
+
+Example:
+    (begin example)
+        ERROR_MSG("value of frog not found in config ...yada...yada...");
+    (end)
+
+Author:
+    commy2
+------------------------------------------- */
+#define ERROR_MSG(MESSAGE) ['PREFIX', 'COMPONENT', nil, MESSAGE, __FILE__, __LINE__ + 1] call CBA_fnc_error
+#define ERROR_MSG_1(MESSAGE,ARG1) ERROR_MSG(FORMAT_1(MESSAGE,ARG1))
+#define ERROR_MSG_2(MESSAGE,ARG1,ARG2) ERROR_MSG(FORMAT_2(MESSAGE,ARG1,ARG2))
+#define ERROR_MSG_3(MESSAGE,ARG1,ARG2,ARG3) ERROR_MSG(FORMAT_3(MESSAGE,ARG1,ARG2,ARG3))
+#define ERROR_MSG_4(MESSAGE,ARG1,ARG2,ARG3,ARG4) ERROR_MSG(FORMAT_4(MESSAGE,ARG1,ARG2,ARG3,ARG4))
+#define ERROR_MSG_5(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5) ERROR_MSG(FORMAT_5(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5))
+#define ERROR_MSG_6(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6) ERROR_MSG(FORMAT_6(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6))
+#define ERROR_MSG_7(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7) ERROR_MSG(FORMAT_7(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7))
+#define ERROR_MSG_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) ERROR_MSG(FORMAT_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8))
+
+/* -------------------------------------------
 Macro: ERROR_WITH_TITLE()
     Record a critical error in the RPT log.
 
     The title can be specified (in <ERROR()> the heading is always just "ERROR")
     Newlines (\n) in the MESSAGE will be put on separate lines.
-
-    TODO: Popup an error dialog & throw an exception.
 
 Parameters:
     TITLE - Title of error message <STRING>
@@ -302,6 +361,14 @@ Author:
     Spooner
 ------------------------------------------- */
 #define ERROR_WITH_TITLE(TITLE,MESSAGE) ['PREFIX', 'COMPONENT', TITLE, MESSAGE, __FILE__, __LINE__ + 1] call CBA_fnc_error
+#define ERROR_WITH_TITLE_1(TITLE,MESSAGE,ARG1) ERROR_WITH_TITLE(TITLE,FORMAT_1(MESSAGE,ARG1))
+#define ERROR_WITH_TITLE_2(TITLE,MESSAGE,ARG1,ARG2) ERROR_WITH_TITLE(TITLE,FORMAT_2(MESSAGE,ARG1,ARG2))
+#define ERROR_WITH_TITLE_3(TITLE,MESSAGE,ARG1,ARG2,ARG3) ERROR_WITH_TITLE(TITLE,FORMAT_3(MESSAGE,ARG1,ARG2,ARG3))
+#define ERROR_WITH_TITLE_4(TITLE,MESSAGE,ARG1,ARG2,ARG3,ARG4) ERROR_WITH_TITLE(TITLE,FORMAT_4(MESSAGE,ARG1,ARG2,ARG3,ARG4))
+#define ERROR_WITH_TITLE_5(TITLE,MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5) ERROR_WITH_TITLE(TITLE,FORMAT_5(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5))
+#define ERROR_WITH_TITLE_6(TITLE,MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6) ERROR_WITH_TITLE(TITLE,FORMAT_6(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6))
+#define ERROR_WITH_TITLE_7(TITLE,MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7) ERROR_WITH_TITLE(TITLE,FORMAT_7(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7))
+#define ERROR_WITH_TITLE_8(TITLE,MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8) ERROR_WITH_TITLE(TITLE,FORMAT_8(MESSAGE,ARG1,ARG2,ARG3,ARG4,ARG5,ARG6,ARG7,ARG8))
 
 /* -------------------------------------------
 Macro: MESSAGE_WITH_TITLE()
@@ -322,6 +389,27 @@ Author:
 #define MESSAGE_WITH_TITLE(TITLE,MESSAGE) LOG_SYS_FILELINENUMBERS(TITLE,MESSAGE)
 
 /* -------------------------------------------
+Macro: RETDEF()
+    If a variable is undefined, return the default value. Otherwise, return the
+    variable itself.
+
+Parameters:
+    VARIABLE - the variable to check
+    DEFAULT_VALUE - the default value to use if variable is undefined
+
+Example:
+    (begin example)
+        // _var is undefined
+        hintSilent format ["_var=%1", RETDEF(_var,5)]; // "_var=5"
+        _var = 7;
+        hintSilent format ["_var=%1", RETDEF(_var,5)]; // "_var=7"
+    (end example)
+Author:
+    654wak654
+------------------------------------------- */
+#define RETDEF(VARIABLE,DEFAULT_VALUE) (if (isNil {VARIABLE}) then [{DEFAULT_VALUE}, {VARIABLE}])
+
+/* -------------------------------------------
 Macro: RETNIL()
     If a variable is undefined, return the value nil. Otherwise, return the
     variable itself.
@@ -332,13 +420,13 @@ Parameters:
 Example:
     (begin example)
         // _var is undefined
-        hintSilent format ["_var=%1", RETNIL(_var) ]; // "_var=any"
+        hintSilent format ["_var=%1", RETNIL(_var)]; // "_var=any"
     (end example)
 
 Author:
     Alef (see CBA issue #8514)
 ------------------------------------------- */
-#define RETNIL(VARIABLE) if (isNil{VARIABLE}) then {nil} else {VARIABLE}
+#define RETNIL(VARIABLE) RETDEF(VARIABLE,nil)
 
 /* -------------------------------------------
 Macros: TRACE_n()
@@ -424,8 +512,8 @@ Group: General
 
 // *************************************
 // Internal Functions
-#define DOUBLES(var1,var2) ##var1##_##var2
-#define TRIPLES(var1,var2,var3) ##var1##_##var2##_##var3
+#define DOUBLES(var1,var2) var1##_##var2
+#define TRIPLES(var1,var2,var3) var1##_##var2##_##var3
 #define QUOTE(var1) #var1
 
 #ifdef MODULAR
@@ -679,29 +767,29 @@ Examples:
 Author:
     Sickboy
 ------------------------------------------- */
-#define ISNILS(VARIABLE,DEFAULT_VALUE) if (isNil #VARIABLE) then { ##VARIABLE = ##DEFAULT_VALUE }
+#define ISNILS(VARIABLE,DEFAULT_VALUE) if (isNil #VARIABLE) then { VARIABLE = DEFAULT_VALUE }
 #define ISNILS2(var1,var2,var3,var4) ISNILS(TRIPLES(var1,var2,var3),var4)
 #define ISNILS3(var1,var2,var3) ISNILS(DOUBLES(var1,var2),var3)
 #define ISNIL(var1,var2) ISNILS2(PREFIX,COMPONENT,var1,var2)
 #define ISNILMAIN(var1,var2) ISNILS3(PREFIX,var1,var2)
 
-#define CREATELOGICS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]
-#define CREATELOGICLOCALS(var1,var2) ##var1##_##var2## = "LOGIC" createVehicleLocal [0, 0, 0]
-#define CREATELOGICGLOBALS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]; publicVariable QUOTE(DOUBLES(var1,var2))
-#define CREATELOGICGLOBALTESTS(var1,var2) ##var1##_##var2## = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit [QUOTE(DOUBLES(ADDON,logic)), [0, 0, 0], [], 0, "NONE"]
+#define CREATELOGICS(var1,var2) var1##_##var2 = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]
+#define CREATELOGICLOCALS(var1,var2) var1##_##var2 = "LOGIC" createVehicleLocal [0, 0, 0]
+#define CREATELOGICGLOBALS(var1,var2) var1##_##var2 = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit ["LOGIC", [0, 0, 0], [], 0, "NONE"]; publicVariable QUOTE(DOUBLES(var1,var2))
+#define CREATELOGICGLOBALTESTS(var1,var2) var1##_##var2 = ([sideLogic] call CBA_fnc_getSharedGroup) createUnit [QUOTE(DOUBLES(ADDON,logic)), [0, 0, 0], [], 0, "NONE"]
 
-#define GETVARS(var1,var2,var3) (##var1##_##var2 getVariable #var3)
+#define GETVARS(var1,var2,var3) (var1##_##var2 getVariable #var3)
 #define GETVARMAINS(var1,var2) GETVARS(var1,MAINLOGIC,var2)
 
 #ifndef PATHTO_SYS
-    #define PATHTO_SYS(var1,var2,var3) \MAINPREFIX\##var1\SUBPREFIX\##var2\##var3.sqf
+    #define PATHTO_SYS(var1,var2,var3) \MAINPREFIX\var1\SUBPREFIX\var2\var3.sqf
 #endif
 #ifndef PATHTOF_SYS
-    #define PATHTOF_SYS(var1,var2,var3) \MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
+    #define PATHTOF_SYS(var1,var2,var3) \MAINPREFIX\var1\SUBPREFIX\var2\var3
 #endif
 
 #ifndef PATHTOF2_SYS
-    #define PATHTOF2_SYS(var1,var2,var3) MAINPREFIX\##var1\SUBPREFIX\##var2\##var3
+    #define PATHTOF2_SYS(var1,var2,var3) MAINPREFIX\var1\SUBPREFIX\var2\var3
 #endif
 
 #define PATHTO_R(var1) PATHTOF2_SYS(PREFIX,COMPONENT_C,var1)
@@ -721,28 +809,28 @@ Author:
 
 // This only works for binarized configs after recompiling the pbos
 // TODO: Reduce amount of calls / code..
-#define COMPILE_FILE2_CFG_SYS(var1) compile preProcessFileLineNumbers var1
+#define COMPILE_FILE2_CFG_SYS(var1) compile preprocessFileLineNumbers var1
 #define COMPILE_FILE2_SYS(var1) COMPILE_FILE2_CFG_SYS(var1)
 
 #define COMPILE_FILE_SYS(var1,var2,var3) COMPILE_FILE2_SYS('PATHTO_SYS(var1,var2,var3)')
 #define COMPILE_FILE_CFG_SYS(var1,var2,var3) COMPILE_FILE2_CFG_SYS('PATHTO_SYS(var1,var2,var3)')
 
-#define SETVARS(var1,var2) ##var1##_##var2 setVariable
+#define SETVARS(var1,var2) var1##_##var2 setVariable
 #define SETVARMAINS(var1) SETVARS(var1,MAINLOGIC)
-#define GVARMAINS(var1,var2) ##var1##_##var2##
+#define GVARMAINS(var1,var2) var1##_##var2
 #define CFGSETTINGSS(var1,var2) configFile >> "CfgSettings" >> #var1 >> #var2
-//#define SETGVARS(var1,var2,var3) ##var1##_##var2##_##var3 =
-//#define SETGVARMAINS(var1,var2) ##var1##_##var2 =
+//#define SETGVARS(var1,var2,var3) var1##_##var2##_##var3 =
+//#define SETGVARMAINS(var1,var2) var1##_##var2 =
 
 // Compile-Once, JIT: On first use.
-// #define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = { ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call ##var1##_fnc_##var3 } else { _this call ##var1##_fnc_##var3 } }
-// #define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = { ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call ##var1##_##var2##_fnc_##var3 } else { _this call ##var1##_##var2##_fnc_##var3 } }
-// #define PREP_SYS2(var1,var2,var3,var4) ##var1##_##var2##_fnc_##var4 = { ##var1##_##var2##_fnc_##var4 = COMPILE_FILE_SYS(var1,var3,DOUBLES(fnc,var4)); if (isNil "_this") then { call ##var1##_##var2##_fnc_##var4 } else { _this call ##var1##_##var2##_fnc_##var4 } }
+// #define PREPMAIN_SYS(var1,var2,var3) var1##_fnc_##var3 = { var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call var1##_fnc_##var3 } else { _this call var1##_fnc_##var3 } }
+// #define PREP_SYS(var1,var2,var3) var1##_##var2##_fnc_##var3 = { var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3)); if (isNil "_this") then { call var1##_##var2##_fnc_##var3 } else { _this call var1##_##var2##_fnc_##var3 } }
+// #define PREP_SYS2(var1,var2,var3,var4) var1##_##var2##_fnc_##var4 = { var1##_##var2##_fnc_##var4 = COMPILE_FILE_SYS(var1,var3,DOUBLES(fnc,var4)); if (isNil "_this") then { call var1##_##var2##_fnc_##var4 } else { _this call var1##_##var2##_fnc_##var4 } }
 
 // Compile-Once, at Macro. As opposed to Compile-Once, on first use.
-#define PREPMAIN_SYS(var1,var2,var3) ##var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
-#define PREP_SYS(var1,var2,var3) ##var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
-#define PREP_SYS2(var1,var2,var3,var4) ##var1##_##var2##_fnc_##var4 = COMPILE_FILE_SYS(var1,var3,DOUBLES(fnc,var4))
+#define PREPMAIN_SYS(var1,var2,var3) var1##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
+#define PREP_SYS(var1,var2,var3) var1##_##var2##_fnc_##var3 = COMPILE_FILE_SYS(var1,var2,DOUBLES(fnc,var3))
+#define PREP_SYS2(var1,var2,var3,var4) var1##_##var2##_fnc_##var4 = COMPILE_FILE_SYS(var1,var3,DOUBLES(fnc,var4))
 
 #define LSTR(var1) TRIPLES(ADDON,STR,var1)
 
@@ -834,8 +922,41 @@ Author:
 #define GETVAR(var1) GETVARS(PREFIX,COMPONENT,var1)
 #define SETVAR SETVARS(PREFIX,COMPONENT)
 #define SETVARMAIN SETVARMAINS(PREFIX)
-#define IFCOUNT(var1,var2,var3) if (count ##var1 > ##var2) then { ##var3 = ##var1 select ##var2 };
+#define IFCOUNT(var1,var2,var3) if (count var1 > var2) then { var3 = var1 select var2 };
 
+/* -------------------------------------------
+Macro: PREP()
+
+Description:
+    Defines a function.
+
+    Full file path:
+        '\MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_<FNC>.sqf'
+
+    Resulting function name:
+        'PREFIX_COMPONENT_<FNC>'
+
+    The PREP macro should be placed in a script run by a XEH preStart and XEH preInit event.
+
+    The PREP macro allows for CBA function caching, which drastically speeds up load times.
+    Beware though that function caching is enabled by default and as such to disable it, you need to
+    #define DISABLE_COMPILE_CACHE above your #include "script_components.hpp" include!
+
+    The function will be defined in ui and mission namespace. It can not be overwritten without
+    a mission restart.
+
+Parameters:
+    FUNCTION NAME - Name of the function, unquoted <STRING>
+
+Examples:
+    (begin example)
+        PREP(banana);
+        call FUNC(banana);
+    (end)
+
+Author:
+    dixon13
+ ------------------------------------------- */
 //#define PREP(var1) PREP_SYS(PREFIX,COMPONENT_F,var1)
 
 #ifdef DISABLE_COMPILE_CACHE
@@ -844,13 +965,6 @@ Author:
 #else
     #define PREP(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(ADDON,fnc,var1)'] call SLX_XEH_COMPILE_NEW
     #define PREPMAIN(var1) ['PATHTO_SYS(PREFIX,COMPONENT_F,DOUBLES(fnc,var1))', 'TRIPLES(PREFIX,fnc,var1)'] call SLX_XEH_COMPILE_NEW
-#endif
-
-#ifdef RECOMPILE
-    #undef RECOMPILE
-    #define RECOMPILE recompile = 1
-#else
-    #define RECOMPILE recompile = 0
 #endif
 
 /* -------------------------------------------
@@ -862,6 +976,7 @@ Description:
     Full file path in addons:
         '\MAINPREFIX\PREFIX\SUBPREFIX\COMPONENT\fnc_<FNC>.sqf'
     Define 'RECOMPILE' to enable recompiling.
+    Define 'SKIP_FUNCTION_HEADER' to skip adding function header.
 
 Parameters:
     FUNCTION NAME - Name of the function, unquoted <STRING>
@@ -882,8 +997,22 @@ Examples:
 Author:
     dixon13, commy2
  ------------------------------------------- */
+#ifdef RECOMPILE
+    #undef RECOMPILE
+    #define RECOMPILE recompile = 1
+#else
+    #define RECOMPILE recompile = 0
+#endif
+// Set function header type: -1 - no header; 0 - default header; 1 - system header.
+#ifdef SKIP_FUNCTION_HEADER
+    #define CFGFUNCTION_HEADER headerType = -1
+#else
+    #define CFGFUNCTION_HEADER headerType = 0
+#endif
+
 #define PATHTO_FNC(func) class func {\
     file = QPATHTOF(DOUBLES(fnc,func).sqf);\
+    CFGFUNCTION_HEADER;\
     RECOMPILE;\
 }
 
@@ -1006,7 +1135,7 @@ Parameters:
 Author:
     Spooner
 ------------------------------------------- */
-#define IS_META_SYS(VAR,TYPE) (if (isNil {VAR}) then { false } else { (VAR) isEqualType TYPE })
+#define IS_META_SYS(VAR,TYPE) (if (isNil {VAR}) then {false} else {(VAR) isEqualType TYPE})
 #define IS_ARRAY(VAR)    IS_META_SYS(VAR,[])
 #define IS_BOOL(VAR)     IS_META_SYS(VAR,false)
 #define IS_CODE(VAR)     IS_META_SYS(VAR,{})
@@ -1024,14 +1153,15 @@ Author:
 
 #define IS_BOOLEAN(VAR)  IS_BOOL(VAR)
 #define IS_FUNCTION(VAR) IS_CODE(VAR)
-#define IS_INTEGER(VAR)  if ( IS_SCALAR(VAR) ) then { (floor(VAR) == (VAR)) } else { false }
+#define IS_INTEGER(VAR)  (if (IS_SCALAR(VAR)) then {floor (VAR) == (VAR)} else {false})
 #define IS_NUMBER(VAR)   IS_SCALAR(VAR)
 
-#define FLOAT_TO_STRING(num)    (str parseNumber (str (_this%_this) + str floor abs _this) + "." + (str (abs _this-floor abs _this) select [2]) + "0")
+#define FLOAT_TO_STRING(num)    (if (_this == 0) then {"0"} else {str parseNumber (str (_this % _this) + str floor abs _this) + "." + (str (abs _this - floor abs _this) select [2]) + "0"})
 
 /* -------------------------------------------
 Macro: SCRIPT()
     Sets name of script (relies on PREFIX and COMPONENT values being #defined).
+    Define 'SKIP_SCRIPT_NAME' to skip adding scriptName.
 
 Parameters:
     NAME - Name of script [Indentifier]
@@ -1044,8 +1174,11 @@ Example:
 Author:
     Spooner
 ------------------------------------------- */
-#define SCRIPT(NAME) \
-    scriptName 'PREFIX\COMPONENT\NAME'
+#ifndef SKIP_SCRIPT_NAME
+    #define SCRIPT(NAME) scriptName 'PREFIX\COMPONENT\NAME'
+#else
+    #define SCRIPT(NAME) /* nope */
+#endif
 
 /* -------------------------------------------
 Macros: EXPLODE_n()
@@ -1140,6 +1273,9 @@ Author:
     #define ELSTRING(var1,var2) QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
     #define CSTRING(var1) QUOTE(TRIPLES($STR,ADDON,var1))
     #define ECSTRING(var1,var2) QUOTE(TRIPLES($STR,DOUBLES(PREFIX,var1),var2))
+
+    #define LLSTRING(var1) localize QUOTE(TRIPLES(STR,ADDON,var1))
+    #define LELSTRING(var1,var2) localize QUOTE(TRIPLES(STR,DOUBLES(PREFIX,var1),var2))
 #endif
 
 
@@ -1650,7 +1786,8 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define IS_ADMIN serverCommandAvailable "#kick"
+#define IS_ADMIN_SYS(x) x##kick
+#define IS_ADMIN serverCommandAvailable 'IS_ADMIN_SYS(#)'
 
 /* -------------------------------------------
 Macro: IS_ADMIN_LOGGED
@@ -1670,4 +1807,38 @@ Example:
 Author:
     commy2
 ------------------------------------------- */
-#define IS_ADMIN_LOGGED serverCommandAvailable "#shutdown"
+#define IS_ADMIN_LOGGED_SYS(x) x##shutdown
+#define IS_ADMIN_LOGGED serverCommandAvailable 'IS_ADMIN_LOGGED_SYS(#)'
+
+/* -------------------------------------------
+Macro: FILE_EXISTS
+    Check if a file exists on machines with interface
+
+    Reports "false" if the file does not exist and throws an error in RPT.
+
+Parameters:
+    FILE - Path to the file
+
+Example:
+    (begin example)
+        // print "true" if file exists
+        systemChat str FILE_EXISTS("\A3\ui_f\data\igui\cfg\cursors\weapon_ca.paa");
+    (end)
+
+Author:
+    commy2
+------------------------------------------- */
+#define FILE_EXISTS(FILE) (call {\
+    private _return = false;\
+    isNil {\
+        private _control = (uiNamespace getVariable ["RscDisplayMain", displayNull]) ctrlCreate ["RscHTML", -1];\
+        if (isNull _control) then {\
+            _return = loadFile (FILE) != "";\
+        } else {\
+            _control htmlLoad (FILE);\
+            _return = ctrlHTMLLoaded _control;\
+            ctrlDelete _control;\
+        };\
+    };\
+    _return\
+})
