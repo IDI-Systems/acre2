@@ -16,14 +16,16 @@
  */
 
 // ref bug: http://feedback.arma3.com/view.php?id=15580
-private _projectPos1 = ATLtoASL positionCameraToWorld [0,0,0];
+private _projectPos = ATLtoASL positionCameraToWorld [0,0,0];
 
-private _projectPos2 = ATLtoASL positionCameraToWorld [0,0,1];
-
-ACRE_LISTENER_DIR = _projectPos2 vectorDiff _projectPos1;
+if (EGVAR(sys_zeus,zeusCommunicateViaCamera) && {call FUNC(inZeus)}) then {
+    ACRE_LISTENER_DIR = eyeDirection player;
+} else {
+    ACRE_LISTENER_DIR = (ATLtoASL positionCameraToWorld [0,0,1]) vectorDiff _projectPos;
+};
 
 if (ACRE_IS_SPECTATOR) then {
-    ACRE_LISTENER_POS = _projectPos1;
+    ACRE_LISTENER_POS = _projectPos;
 } else {
     ACRE_LISTENER_POS = eyePos acre_player;
 };
