@@ -53,7 +53,7 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
 if (EGVAR(sys_zeus,zeusCommunicateViaCamera) && {call FUNC(inZeus)}) then {
     private _zeusPos = getPosASL curatorCamera;
     if ((_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos)) then {
-        _emitterPos = AGLtoASL (player getRelPos [abs (_zeusPos distance _emitterPos), (curatorCamera getRelDir _unit)]);
+        _emitterPos = AGLtoASL (player getRelPos [abs (_zeusPos distance _emitterPos), (curatorCamera getDir _unit)]);
     };
 };
 
