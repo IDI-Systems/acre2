@@ -63,7 +63,7 @@ _zeusAdjustments then {
     };
 };
 
-if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate} && {!(call FUNC(inZeus))}) then {
+if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
     private _args = [_emitterPos, _listenerPos, _unit];
     _zeusAdjustments then {
         _args = [_unitASL, getPosASL curatorCamera, _unit];
