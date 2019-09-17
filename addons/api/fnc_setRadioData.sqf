@@ -1,11 +1,11 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Set the internal state of a radio
+ * Set the internal state / de-serialize data of a radio.
  *
  * Arguments:
  * 0: Radio ID <STRING>
- * 1: Radio Data <ARRAY>
+ * 1: Radio Data (Serialized) <ARRAY>
  *
  * Return Value:
  * None
@@ -18,9 +18,10 @@
  */
 
 params ["_radioId", "_data"];
-_data params ["_radioType", "_radioData"];
+_data params ["_radioType", "_radioDataSerialized"];
 
 private _baseRadio = [_radioId] call EFUNC(api,getBaseRadio);
 if (_baseRadio isEqualTo _radioType) then {
-    HASH_SET(EGVAR(sys_data,radioData), _radioId, _radioData call EFUNC(sys_data,deserialize));
+    private _radioData = _radioDataSerialized call EFUNC(sys_data,deserialize);
+    HASH_SET(EGVAR(sys_data,radioData),_radioId,_radioData);
 };
