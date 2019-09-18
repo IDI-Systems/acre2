@@ -19,3 +19,5 @@
 params ["_languageKey", "_languageName"];
 
 GVAR(languages) pushBack [_languageKey, _languageName];
+
+["acre_babel_languageAdded", [_languageKey, _languageName]] call CBA_fnc_localEvent;
