@@ -49,11 +49,11 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
     };
 };
 
-private _zeusAdjustments = if (EGVAR(sys_zeus,zeusCommunicateViaCamera) && {call FUNC(inZeus)});
+private _zeusAdjustments = EGVAR(sys_zeus,zeusCommunicateViaCamera) && {call FUNC(inZeus)};
 private _unitASL = getPosASL _unit;
 
 // Right now ACRE only supports one listener pos, use the closest position while in Zeus
-_zeusAdjustments then {
+if (_zeusAdjustments) then {
     private _zeusPos = getPosASL curatorCamera;
     if ((_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos)) then {
         _emitterPos = player getRelPos [_zeusPos distance2D _emitterPos, curatorCamera getRelDir _unit];
@@ -65,7 +65,7 @@ _zeusAdjustments then {
 
 if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
     private _args = [_emitterPos, _listenerPos, _unit];
-    _zeusAdjustments then {
+    if (_zeusAdjustments) then {
         _args = [_unitASL, getPosASL curatorCamera, _unit];
     };
     private _result = _args call FUNC(findOcclusion);
