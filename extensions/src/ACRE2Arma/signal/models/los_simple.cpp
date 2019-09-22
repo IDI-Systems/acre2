@@ -231,7 +231,7 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
         tx_gain = tx_antenna_->gain(tx_dir_, rx_pos_ - tx_pos_, frequency_);
     }
 
-    fspl = -27.55f + 20.0f * log10f(frequency_) + 20.0f * log10f(distance_3d);
+    const float32_t fspl = -27.55f + 20.0f * log10f(frequency_) + 20.0f * log10f(distance_3d);
 
     //_Lb = _Ptx + _transmitterGain - _Ltx - _Lfs - _Lm + _receiverGain - _Lrx;
 
