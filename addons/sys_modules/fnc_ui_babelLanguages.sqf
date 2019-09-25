@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: ACRETeam
+ * Author: ACRE2Team
  * Initalizes the "Babel Languages" Zeus module display.
  *
  * Arguments:

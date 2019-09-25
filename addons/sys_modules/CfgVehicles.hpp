@@ -10,7 +10,7 @@ class CfgVehicles {
 
     class GVAR(Module_Base): Module_F {
         mapSize = 1;
-        author = "ACRETeam";
+        author = "ACRE2Team";
         vehicleClass = "Modules";
         category = "ACRE_BABEL";
 

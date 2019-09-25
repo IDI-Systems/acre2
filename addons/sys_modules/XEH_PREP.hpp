@@ -1,2 +1,2 @@
-PREP(babel_languages);
+PREP(ui_babelLanguages);
 PREP(zeusAttributes);

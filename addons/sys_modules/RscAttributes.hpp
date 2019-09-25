@@ -1,9 +1,7 @@
 class RscControlsGroup;
 class RscControlsGroupNoScrollbars;
 class RscEdit;
-
-class ctrlButton;
-class ctrlListNBox;
+class RscListNBox;
 
 class RscDisplayAttributes {
     class Controls {
@@ -25,15 +23,15 @@ class GVAR(RscBabelLanguages): RscDisplayAttributes {
         class Title: Title {};
         class Content: Content {
             class Controls {
-                class Languages: RscControlsGroupNoScrollbars {
-                    onSetFocus = QFUNC(babel_languages);
+                class babelLanguages: RscControlsGroupNoScrollbars {
+                    onSetFocus = QUOTE(_this call FUNC(ui_babelLanguages));
                     idc = IDC_LANGUAGES;
                     x = 0;
                     y = 0;
                     w = POS_W(18);
                     h = POS_H(14.3);
                     class controls {
-                        class List: ctrlListNBox {
+                        class List: RscListNBox {
                             idc = IDC_LIST;
                             x = 0;
                             y = 0;
