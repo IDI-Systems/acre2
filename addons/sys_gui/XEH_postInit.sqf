@@ -27,7 +27,7 @@ DFUNC(enterVehicle) = {
             private _numAccessibleRacks = [_vehicle, _player] call EFUNC(sys_rack,getAccessibleVehicleRacks);
             private _numIntercoms = 0;
             {
-                if ([_vehicle, _player, 0] call EFUNC(sys_intercom,isIntercomAvailable)) then {
+                if ([_vehicle, _player, _forEachIndex] call EFUNC(sys_intercom,isIntercomAvailable)) then {
                     _numIntercoms = _numIntercoms + 1;
                 };
             } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);
