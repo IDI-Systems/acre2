@@ -42,10 +42,11 @@ private _colorfnc = {
     private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
     private _isBroadcasting = ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _forEachIndex) params ["_isBroadcasting", "_broadcastingUnit"];
     private _isVoiceActive = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call FUNC(getStationConfiguration);
+    private _hasAccess = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS] call FUNC(getStationConfiguration);
 
     private _color = "";
     private _textStatus = "";
-    private _displayName = _x select 2;
+    private _displayName = if (_hasAccess) then {_x select 2} else {""};
     switch (_connectionStatus) do {
         case INTERCOM_DISCONNECTED: {
             _color = GRAY;
