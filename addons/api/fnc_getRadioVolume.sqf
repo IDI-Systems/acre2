@@ -21,4 +21,7 @@ if (isNil "_radioId") exitWith { -1 };
 
 if (!([_radioId] call EFUNC(sys_data,isRadioInitialized))) exitWith { -1 };
 
-[_radioId] call EFUNC(sys_radio,getRadioVolume);
+private _volume = [_radioId] call EFUNC(sys_radio,getRadioVolume);
+
+// Volume functions return _volume^3
+_volume ^ (1/3)
