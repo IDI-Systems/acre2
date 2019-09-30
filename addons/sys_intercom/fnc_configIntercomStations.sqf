@@ -54,7 +54,7 @@ private _intercomStations = [];
         private _allowed = (_role in _x || {_role in (_limitedPositions select _forEachIndex)}) && {!(_role in (_forbiddenPositions select _forEachIndex))};
         [_intercomStatus, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _allowed] call CBA_fnc_hashSet;
 
-        if ((_initialConfiguration select _forEachIndex) == 1) then {
+        if (_allowed && ((_initialConfiguration select _forEachIndex) == 1)) then {
             [_intercomStatus, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX] call CBA_fnc_hashSet;
         } else {
             [_intercomStatus, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_DISCONNECTED] call CBA_fnc_hashSet;
