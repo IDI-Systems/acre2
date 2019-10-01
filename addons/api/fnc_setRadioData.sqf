@@ -21,7 +21,7 @@ params ["_radioId", "_data"];
 _data params ["_radioType", "_radioDataSerialized"];
 
 private _baseRadio = [_radioId] call EFUNC(api,getBaseRadio);
-if (_baseRadio isEqualTo _radioType) then {
+if (_baseRadio == _radioType) then {
     private _radioData = _radioDataSerialized call EFUNC(sys_data,deserialize);
     HASH_SET(EGVAR(sys_data,radioData),_radioId,_radioData);
 };
