@@ -38,4 +38,4 @@ DFUNC(doHandleZeusSpeakPressUp) = {
 
 GVAR(delayReleasePTT_Handle) = ADDPFH(DFUNC(doHandleZeusSpeakPressUp), ACRE_PTT_RELEASE_DELAY, []);
 
-true
+false
