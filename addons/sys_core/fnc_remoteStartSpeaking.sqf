@@ -86,6 +86,9 @@ private _result = false;
     TRACE_1("unit pos", getPosASL _unit);
     private _isMuted = IS_MUTED(_unit);
     _unit setRandomLip true;
+
+    ["acre_remoteStartedSpeaking", [_unit, _onRadio, _radioId]] call CBA_fnc_localEvent; // [unit, on radio, radio ID]
+
     if (!_isMuted) then {
         TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_onRadio,(_unit distance acre_player));
         _unit setVariable [QGVAR(lastSpeakingEventTime), diag_tickTime, false];
