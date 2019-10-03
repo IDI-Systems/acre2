@@ -23,10 +23,10 @@ params ["_vehicle", "_unit", "_intercomNetwork", "_intercomFunctionality", ["_va
 
 if (_varName isEqualTo "") then {
     _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
-};
 
-if (_varName isEqualTo "") exitWith {
-    ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
+    if (_varName isEqualTo "") exitWith {
+        ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
+    };
 };
 
 private _intercomArray = _vehicle getVariable [_varName, []];
