@@ -57,7 +57,7 @@ if (_zeusAdjustments) then {
     private _zeusPos = getPosASL curatorCamera;
     if ((_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos)) then {
         _emitterPos = player getRelPos [_zeusPos distance2D _emitterPos, curatorCamera getRelDir _unit];
-        _emitterPos set [2, _listenerPos#2 - (_zeusPos#2 - _unitASL#2)];
+        _emitterPos set [2, (_listenerPos select 2) - ((_zeusPos select 2) - (_unitASL select 2))];
         private _azimuth = abs ((direction player) - (direction _unit));
         _emitterDir = [sin _azimuth, cos _azimuth, 0];
     };
