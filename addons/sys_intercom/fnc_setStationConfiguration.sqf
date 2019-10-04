@@ -35,7 +35,7 @@ private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 private _oldValue = [_intercomStatus, _intercomFunctionality] call CBA_fnc_hashGet;
 
-if (_oldValue isEqualTo _value) exitWith {
+if (_oldValue isEqualTo _value) exitWith { // Here it is better not to use == since oldValue may be of type null
     DEBUG_1("Set the same value for intercom functionality %1",_intercomFunctionality);
 };
 
