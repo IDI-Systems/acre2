@@ -130,6 +130,7 @@
             <Spanish>Radio configurada a %1</Spanish>
             <German>Funkgerät auf %1 gestellt</German>
             <Russian>Рация установлена на %1</Russian>
+            <Japanese>無線機を%1に設置</Japanese>
         </Key>
     </Package>
 </Project>
