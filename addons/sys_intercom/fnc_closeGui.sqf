@@ -10,21 +10,22 @@
  * GUI successfully closed <BOOL>
  *
  * Example:
- * [1, true] call acre_sysIntercom_fnc_openGui
+ * [1, true] call acre_sys_intercom_fnc_closeGui
  *
  * Public: No
  */
 
 // The case of a player exiting a vehicle with UI opened is handled in the vehicle CBA EH
-if (vehicle acre_player isEqualTo acre_player) exitWith {false};
+private _vehiclePlayer = vehicle acre_player;
+if (_vehiclePlayer isEqualTo acre_player) exitWith {false};
 
 GVAR(guiOpened) = false;
 GVAR(activeIntercom) = -1;
 
-[vehicle acre_player, acre_player] call FUNC(updateVehicleInfoText);
+[_vehiclePlayer, acre_player] call FUNC(updateVehicleInfoText);
 
 if (GVAR(configChanged)) then {
-    [vehicle acre_player, acre_player] call FUNC(saveStationConfiguration);
+    [_vehiclePlayer, acre_player] call FUNC(saveStationConfiguration);
 };
 
 true

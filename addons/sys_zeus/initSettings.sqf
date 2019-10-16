@@ -13,11 +13,11 @@ private _zeusCategory = format ["ACRE2 %1", localize "str_a3_cfghints_curator_cu
     ]
 ] call CBA_fnc_addSetting;
 
-// Ability to hear through the Zeus camera
+// Ability to communicate through the Zeus camera
 [
-    QGVAR(zeusListenViaCamera),
+    QGVAR(zeusCommunicateViaCamera),
     "CHECKBOX",
-    LLSTRING(ZeusListenViaCamera_DisplayName),
+    LLSTRING(ZeusCommunicateViaCamera_DisplayName),
     _zeusCategory,
     true
 ] call CBA_fnc_addSetting;

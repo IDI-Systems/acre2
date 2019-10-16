@@ -4,6 +4,9 @@
         <Key ID="STR_ACRE_sys_signal_signalModel_displayName">
             <English>Signal Propagation Model</English>
             <Spanish>Modelo de propagación de la señal</Spanish>
+            <Japanese>信号伝搬モデル</Japanese>
+            <German>Signalausbreitungsmodell</German>
+            <Russian>Модель распространения сигнала</Russian>
         </Key>
     </Package>
 </Project>

@@ -18,14 +18,13 @@
  * Public: No
  */
 
-params ["_tx", "_txRadioId", "_rx", "_rxRadioId"];
+params ["", "_txRadioId", "", "_rxRadioId"];
 
-// acre_player sideChat format["Radio speaking! %1", _this];
 private _txData = [_txRadioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 private _txFreq = HASH_GET(_txData, "frequencyTX");
 private _txPower = HASH_GET(_txData, "power");
 
-private _maxSignal = [0,-993];
+private _maxSignal = [0, -993];
 
 if (_rxRadioId != _txRadioId) then {
     _maxSignal = [_txFreq, _txPower, _rxRadioId, _txRadioId] call EFUNC(sys_signal,getSignal);

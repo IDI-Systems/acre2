@@ -11,7 +11,7 @@
  * Array of near radios <ARRAY>
  *
  * Example:
- * ["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_nearRadioPos
+ * [[0, 0, 0], 150] call acre_sys_radio_fnc_nearRadios
  *
  * Public: No
  */
@@ -21,10 +21,12 @@ params ["_position", "_radius"];
 private _return = [];
 {
     private _radioId = _x;
-    private _object = HASH_GET(EGVAR(sys_server,objectIdRelationTable), _radioId);
+    if (_radioId isKindOf ["ACRE_BaseRadio", configFile >> "CfgWeapons"]) then {
+        private _object = HASH_GET(EGVAR(sys_server,objectIdRelationTable),_radioId);
 
-    if ((getPosASL (_object select 0)) distance _position <= _radius) then {
-        PUSH(_return, _radioId);
+        if ((getPosASL (_object select 0)) distance _position <= _radius) then {
+            PUSH(_return,_radioId);
+        };
     };
 } forEach HASH_KEYS(EGVAR(sys_server,objectIdRelationTable));
 

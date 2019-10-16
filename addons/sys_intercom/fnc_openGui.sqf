@@ -11,15 +11,22 @@
  * GUI successfully opened <BOOL>
  *
  * Example:
- * [1, true] call acre_sysIntercom_fnc_openGui
+ * [1, true] call acre_sys_intercom_fnc_openGui
  *
  * Public: No
  */
 
 params [["_intercomNetwork", -1], ["_openMasterStation", false]];
 
+if (GVAR(guiOpened)) exitWith {
+    closeDialog 0;
+    true
+};
+
 private _vehicle = vehicle acre_player;
-if (_vehicle isEqualTo acre_player) exitWith {false};
+private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
+
+if (_vehicle isEqualTo acre_player || {_intercomNames isEqualTo []}) exitWith {false};
 
 if (_intercomNetwork != -1) then {
     GVAR(activeIntercom) = _intercomNetwork;
@@ -27,7 +34,6 @@ if (_intercomNetwork != -1) then {
     private _getActiveIntercom = {
         params ["_vehicle"];
 
-        private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
         private _activeIntercom = -1;
         {
             private _connectionStatus = [_vehicle, acre_player, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
@@ -55,11 +61,12 @@ GVAR(guiOpened) = true;
 
 [_vehicle, acre_player] call FUNC(updateVehicleInfoText);
 
-disableSerialization;
-
 // Get the intercom type
 if (!_openMasterStation) then {
     createDialog "VIC3FFCS_IntercomDialog";
+
+    // Support reserved keybinds on dialog (eg. Tab)
+    MAIN_DISPLAY call (uiNamespace getVariable "CBA_events_fnc_initDisplayCurator");
 };
 
 true

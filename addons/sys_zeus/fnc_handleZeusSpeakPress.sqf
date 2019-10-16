@@ -15,13 +15,16 @@
  * Public: No
  */
 
-if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
+if (call EFUNC(sys_core,inZeus) && {GVAR(zeusCommunicateViaCamera)}) then {
     GVAR(keyDownWait) = true;
     player setVariable [QGVAR(inZeus), true, true];
 
     // Save spectator state
     player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
     call EFUNC(sys_core,spectatorOff);
+
+    // Start speaking
+    ["startZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
     // Update Zeus position
     GVAR(speakFromZeusHandle) = [{
@@ -31,4 +34,4 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusListenViaCamera)}) then {
     }, ZEUS_POSITION_FREQUENCY] call CBA_fnc_addPerFrameHandler;
 };
 
-GVAR(keyDownWait) = false;
+false

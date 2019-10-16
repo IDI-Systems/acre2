@@ -3,19 +3,19 @@
 
 if (!hasInterface) exitWith {};
 
-[] call FUNC(enableZeusOverlay);
+// Volume Control - keybind, unit change event, and scroll wheel EH
+["ACRE2", "VolumeControl", localize LSTRING(VolumeControl),
+    LINKFUNC(volumeKeyDown),
+    LINKFUNC(volumeKeyUp),
+[DIK_TAB, [false, false, false]], true] call CBA_fnc_addKeybind;
+
+["unit", LINKFUNC(volumeKeyUp)] call CBA_fnc_addPlayerEventHandler;
+["MouseZChanged", LINKFUNC(onMouseZChanged)] call CBA_fnc_addDisplayHandler;
+
 [] call FUNC(antennaElevationDisplay);
 
 // TODO - Look into this below.
 acre_player addEventHandler ["Take", {call FUNC(handleTake)}];
-
-// Keybinds - Volume Control
-["ACRE2", "VolumeControl", localize LSTRING(VolumeControl),
-    FUNC(onVolumeControlKeyPress),
-    FUNC(onVolumeControlKeyPressUp),
-[DIK_TAB, [false, false, false]], true] call CBA_fnc_addKeybind;
-
-["unit", FUNC(onVolumeControlKeyPressUp)] call CBA_fnc_addPlayerEventHandler;
 
 DFUNC(enterVehicle) = {
     params ["_player", "_newVehicle"];
@@ -27,7 +27,7 @@ DFUNC(enterVehicle) = {
             private _numAccessibleRacks = [_vehicle, _player] call EFUNC(sys_rack,getAccessibleVehicleRacks);
             private _numIntercoms = 0;
             {
-                if ([_vehicle, _player, 0] call EFUNC(sys_intercom,isIntercomAvailable)) then {
+                if ([_vehicle, _player, _forEachIndex] call EFUNC(sys_intercom,isIntercomAvailable)) then {
                     _numIntercoms = _numIntercoms + 1;
                 };
             } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);

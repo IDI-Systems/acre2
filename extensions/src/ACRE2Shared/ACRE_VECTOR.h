@@ -1,84 +1,74 @@
 #pragma once
 
 #include <math.h>
+#include "Types.h"
 
-typedef struct ACRE_SIMPLE_VECTOR {
-    float x;
-    float y;
-    float z;
-} ACRE_SIMPLE_VECTOR, *PACRE_SIMPLE_VECTOR;
+namespace acre {
+    template <typename T>
+    struct Vector3 {
+        // Data
+        T x;
+        T y;
+        T z;
 
-typedef struct ACRE_VECTOR {
-    //
-    // Data
-    //
-    float x;
-    float y;
-    float z;
-    
-    //
-    // Constructors/Destructors
-    //
-    ACRE_VECTOR() { 
-        x=0;
-        y=0;
-        z=0;
-    }
-    ACRE_VECTOR(float in_x, float in_y, float in_z) { 
-        x=in_x;
-        y=in_y;
-        z=in_z; 
-    }
-    ACRE_VECTOR & operator=(const ACRE_VECTOR &o) { 
-        x = o.x; 
-        y = o.y; 
-        z = o.z; 
-        return *this; 
-    }
-    ACRE_VECTOR(const ACRE_VECTOR &o) { 
-        x = o.x; 
-        y = o.y; 
-        z = o.z; 
-    }
-    bool operator== (const ACRE_VECTOR& rhs ) const {
-        if (x == rhs.x && y == rhs.y && z == rhs.z)
-            return true;
-        else
-            return false;
-    }
+        // Constructors and Destructors
+        Vector3() {
+            x = static_cast<T>(0);
+            y = static_cast<T>(0);
+            z = static_cast<T>(0);
+        }
 
-    //
-    // math functions
-    //
-    const ACRE_VECTOR operator+(ACRE_VECTOR v) {
-        return ACRE_VECTOR((x + v.x), (y + v.y), (z + v.z));
-    }
+        Vector3(const T x_, const T y_, const T z_) {
+            x = x_;
+            y = y_;
+            z = z_;
+        }
 
-    const ACRE_VECTOR operator-(ACRE_VECTOR v) {
-        return ACRE_VECTOR((x - v.x), (y - v.y), (z - v.z));
-    }
+        // Operators
+        Vector3 &operator=(const Vector3 &v) {
+            x = v.x;
+            y = v.y;
+            z = v.z;
+            return *this;
+        }
 
-    const ACRE_VECTOR operator*(float w) {
-        return ACRE_VECTOR((x * w), (y * w), (z * w));
-    }
+        bool operator== (const Vector3 &rhs) const {
+            return (x == rhs.x) && (y == rhs.y) && (z == rhs.z);
+        }
 
-    const ACRE_VECTOR operator/(float w) {
-        return ACRE_VECTOR((x / w), (y / w), (z / w));
-    }
-    const float length() {
-        return (float)sqrt((x * x) + (y * y) + (z * z));
-    }
-    const float distance(ACRE_VECTOR a, ACRE_VECTOR b) {
-        ACRE_VECTOR lineVector;
-        lineVector = a - b;
-        return lineVector.length();
-    }
-    const float distance(ACRE_VECTOR a) {
-        ACRE_VECTOR lineVector;
-        lineVector.x = x - a.x;
-        lineVector.y = y - a.y;
-        lineVector.z = z - a.z;
+        // Math functions
+        const Vector3 operator+(const Vector3 &v) {
+            return Vector3((x + v.x), (y + v.y), (z + v.z));
+        }
 
-        return lineVector.length();
-    }
-} ACRE_VECTOR, *PACRE_VECTOR;
+        const Vector3 operator-(const Vector3 &v) {
+            return Vector3((x - v.x), (y - v.y), (z - v.z));
+        }
+
+        const Vector3 operator*(const T w) {
+            return Vector3((x * w), (y * w), (z * w));
+        }
+
+        const Vector3 operator/(const T w) {
+            return Vector3((x / w), (y / w), (z / w));
+        }
+        const T length() {
+            return static_cast<T>(std::sqrt((x * x) + (y * y) + (z * z)));
+        }
+        const T distance(Vector3 a, Vector3 b) {
+            Vector3 lineVector(a - b);
+            return lineVector.length();
+        }
+        const T distance(const Vector3 &a) {
+            Vector3 lineVector;
+            lineVector.x = x - a.x;
+            lineVector.y = y - a.y;
+            lineVector.z = z - a.z;
+
+            return lineVector.length();
+        }
+    };
+
+    using vec3_fp32_t = Vector3<float32_t>;
+    using vec3_fp64_t = Vector3<float64_t>;
+} /* namespace acre */

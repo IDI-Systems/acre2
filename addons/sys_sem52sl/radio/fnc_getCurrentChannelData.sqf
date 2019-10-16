@@ -38,7 +38,7 @@
  *      Hash containing all data of current channel
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 /*
  *  First step is to retreive the hash of the desired channel

@@ -9,28 +9,32 @@
 #include "Engine.h"
 #include "Lockable.h"
 
-#include <concurrent_queue.h>
-
 class CCommandServer : public IServer, public CLockable
 {
 public:
     CCommandServer(void);
-    CCommandServer(acre_id_t id);
+    CCommandServer(const acre::id_t id);
     ~CCommandServer(void);
 
-    AcreResult initialize(void);
-    AcreResult shutdown(void);
+    acre::Result initialize(void);
+    acre::Result shutdown(void);
 
-    AcreResult sendMessage(IMessage *msg);
-    AcreResult handleMessage(unsigned char *msg);
+    acre::Result sendMessage(IMessage *msg);
+    acre::Result handleMessage(unsigned char *msg);
 
-    AcreResult release(void);
+    acre::Result release(void);
 
-    //DECLARE_MEMBER(BOOL, Connected);
-    //DECLARE_MEMBER(acre_id_t, Id);
-    DECLARE_MEMBER(char *, CommandId);
-    DECLARE_MEMBER(BOOL, Connected);
-    DECLARE_MEMBER(acre_id_t, Id);
-private:
-    concurrency::concurrent_queue<IMessage *> mInboundMessages;
+    inline void setCommandId(char *const value) { m_commandId = value; }
+    inline char* getCommandId() const { return m_commandId; }
+
+    inline void setConnected(const bool value) final { m_connected = value; }
+    inline bool getConnected() const final { return m_connected; }
+
+    inline void setId(const acre::id_t value) final { m_id = value; }
+    inline acre::id_t getId() const final { return m_id; }
+
+protected:
+    acre::id_t m_id;
+    bool m_connected;
+    char *m_commandId;
 };

@@ -47,7 +47,7 @@ switch _name do {
     };
 };
 
-if (!(_value isEqualType "")) then {
+if !(_value isEqualType "") then {
     _value = format["%1", _value];
 };
 TRACE_1("Output", _value);

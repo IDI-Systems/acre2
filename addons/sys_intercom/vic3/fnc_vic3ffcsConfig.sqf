@@ -29,7 +29,7 @@ if ((_volume < 0) || {_volume > 1.0}) then {
     _volume = 1.0;
 };
 
-if (_monitoringRack isEqualType ""  ) then {
+if (_monitoringRack isEqualType "") then {
     if (_monitoringRack == "all") then {
         _monitoringRack = VIC3FFCS_MONITOR_KNOB_POSITIONS;
     } else {
@@ -60,7 +60,7 @@ if (_voiceActivation) then {
 
 // Volume
 [_intercomStatus, INTERCOM_STATIONSTATUS_VOLUME, INTERCOM_DEFAULT_VOLUME] call CBA_fnc_hashSet;
-[_intercomStatus, INTERCOM_STATIONSTATUS_VOLUMEKNOB, INTERCOM_DEFAULT_VOLUME*10] call CBA_fnc_hashSet;
+[_intercomStatus, INTERCOM_STATIONSTATUS_VOLUMEKNOB, INTERCOM_DEFAULT_VOLUME*100/12.5] call CBA_fnc_hashSet;
 
 // Work
 [_intercomStatus, INTERCOM_STATIONSTATUS_WORKKNOB, _workRack] call CBA_fnc_hashSet;

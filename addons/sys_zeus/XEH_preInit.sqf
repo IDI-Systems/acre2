@@ -8,6 +8,6 @@ PREP_RECOMPILE_END;
 
 #include "initSettings.sqf"
 
-GVAR(keyDownWait) = false;
+GVAR(delayReleasePTT_Handle) = nil;
 
 ADDON = true;

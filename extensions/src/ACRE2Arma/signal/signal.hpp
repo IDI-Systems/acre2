@@ -124,9 +124,9 @@ namespace acre {
             bool load(const arguments & args_, std::string & result) {
                 bool loaded = false;
                 LOG(INFO) << "Attempting to load map from PBO...";
-                int32_t map_load_result = acre::signal::map_loader::get().get_map(args_.as_string(0), _map, loaded);
-                if (map_load_result > -2) { //Return 0 = OKAY, -1 RECOVERD, -2 FAILURE
-                    LOG(INFO) << "Map Loaded, Error Status: " << map_load_result;
+                acre::wrp::LandscapeResult map_load_result = acre::signal::map_loader::get().get_map(args_.as_string(0), _map, loaded);
+                if (map_load_result > acre::wrp::LandscapeResult::Failure) { //Return 0 = OKAY, -1 RECOVERD, -2 FAILURE
+                    LOG(INFO) << "Map Loaded, Error Status: " << static_cast<int32_t>(map_load_result);
                     if (!loaded) {
                         LOG(INFO) << "Adding signal processing to map...";
                         _map->setMapClimate(static_cast<acre::signal::MapClimate>(args_.as_int(1)));
@@ -139,9 +139,9 @@ namespace acre {
                         LOG(INFO) << "Reloaded current map.";
                     }
                 } else {
-                    LOG(INFO) << "ERROR Map Loading, Error Code: " << map_load_result;
+                    LOG(INFO) << "ERROR Map Loading, Error Code: " << static_cast<int32_t>(map_load_result);
                 }
-                result = std::to_string(map_load_result);
+                result = std::to_string(static_cast<int32_t>(map_load_result));
                 return true;
             }
             //#define DEBUG_OUTPUT

@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
+        <Key ID="STR_ACRE_sys_core_CategoryUI">
+            <English>ACRE2 UI</English>
+            <German>ACRE2 Nutzeroberfläche</German>
+            <Polish>ACRE2 UI</Polish>
+            <French>ACRE2 IU</French>
+            <Turkish>ACRE2 UI</Turkish>
+            <Japanese>ACRE2 UI</Japanese>
+            <Czech>ACRE2 UI</Czech>
+            <Italian>ACRE2 IU</Italian>
+            <Spanish>ACRE2 Interfaz</Spanish>
+            <Russian>ACRE2 Интерфейс</Russian>
+        </Key>
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
             <English>Post-Mix Global Volume</English>
             <Spanish>Volumen Global Post-Mix</Spanish>
             <French>Volume Global Post-Mix</French>
             <Japanese>ポスト ミックスの全体音量</Japanese>
             <Czech>Hlasitost Post-Mixu</Czech>
-            <German>Post-Mix Lautstärke</German>
+            <German>Post-Mix Lautstärke (Global)</German>
             <Italian>Volume Globale Post-Mix</Italian>
             <Korean>Post-Mix 전체 음량</Korean>
             <Polish>Głośność Post-Mix</Polish>
@@ -22,7 +34,7 @@
             <French>Volume Global Pre-Mix</French>
             <Japanese>プレ ミックスの全体音量</Japanese>
             <Czech>Hlasitost Pre-Mixu</Czech>
-            <German>Pre-Mix Lautstärke</German>
+            <German>Pre-Mix Lautstärke (Global)</German>
             <Italian>Volume Globale Pre-Mix</Italian>
             <Korean>Pre-Mix 전체 음량</Korean>
             <Polish>Głośność Pre-Mix</Polish>
@@ -30,6 +42,11 @@
             <Chinese>前期混音 全域音量</Chinese>
             <Chinesesimp>前期混音 全域音量</Chinesesimp>
             <Portuguese>Volume Global Pre-Mix</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_defaultRadioVolume_displayName">
+            <English>Default Radio Volume</English>
+            <German>Standardlautstärke Funkgerät</German>
+            <Russian>Громкость рации по умолчанию</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
@@ -50,7 +67,7 @@
             <English>Unmute Clients</English>
             <Spanish>Activar sonido de los Clients</Spanish>
             <French>Démuter les clients</French>
-            <Japanese>クライアントを非ミュート化</Japanese>
+            <Japanese>クライアントの消音解除</Japanese>
             <Czech>Zrušit ztlumení diváků</Czech>
             <German>Stummschaltung der Clients aufheben</German>
             <Italian>Disattiva l'Audio dei Clients</Italian>
@@ -73,6 +90,7 @@
             <Italian>Cambio canale TeamSpeak</Italian>
             <Spanish>Cambio de canal de TeamSpeak</Spanish>
             <French>Changer de canal TeamSpeak</French>
+            <German>TeamSpeak Kanalwechsel</German>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
@@ -85,6 +103,8 @@
             <Italian>Nome canale Teamspeak</Italian>
             <Spanish>Nombre de canal de TeamSpeak</Spanish>
             <French>Nom du canal TeamSpeak</French>
+            <German>TeamSpeak Kanalname</German>
+            <Russian>Имя ТимСпик канала</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
@@ -96,6 +116,8 @@
             <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
             <Spanish>Contraseña del canal de TeamSpeak</Spanish>
             <French>Mot de passe du canal TeamSpeak</French>
+            <German>TeamSpeak Kanalpasswort</German>
+            <Russian>Пароль ТимСпик канала</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -116,8 +138,8 @@
             <English>Active Radio Transmit</English>
             <Spanish>Tecla de radio activa</Spanish>
             <Czech>Aktivní klávesa rádia</Czech>
-            <German>Aktives Sprechtaste</German>
-            <Japanese>標準の無線送信キー</Japanese>
+            <German>Standard Sprechtaste</German>
+            <Japanese>使用中の無線送信キー</Japanese>
             <Italian>Tasto Radio Attiva</Italian>
             <French>Touche radio active</French>
             <Korean>기본 무전 단축키</Korean>
@@ -131,8 +153,8 @@
             <English>Transmit on currently active radio.</English>
             <Spanish>Utilizar la radio seleccionada actualmente para hablar</Spanish>
             <Czech>Použít právě zvolené rádio k mluvení.</Czech>
-            <German>Das ausgewählte Funkgerät zum Sprechen nutzen.</German>
-            <Japanese>選択している無線機を使って話します。</Japanese>
+            <German>Auf aktivem Funkgerät übertragen.</German>
+            <Japanese>使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Radio selezionata.</Italian>
             <French>Utiliser la radio actuellement sélectionnée pour parler.</French>
             <Korean>현재 선택한 무전기 사용해 대화하세요.</Korean>
@@ -152,13 +174,14 @@
             <Polish>Klawisz radia 1</Polish>
             <Russian>радио кнопка 1</Russian>
             <Portuguese>Tecla do Rádio 1</Portuguese>
+            <Japanese>無線機 1 の送信 (PTT 1)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Transmit on first radio and set it as active.</English>
             <Spanish>Utiliza la primera radio en el inventario para hablar</Spanish>
             <Czech>Použít první rádio v inventáři k mluvení.</Czech>
-            <German>Das erste Funkgerät zum Sprechen verwenden.</German>
-            <Japanese>インベントリの1番目にある無線機を使って話します。</Japanese>
+            <German>Auf erstem Funkgerät übertragen und selbiges aktiv setzen.</German>
+            <Japanese>1 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Prima Radio nel tuo equipaggiamento.</Italian>
             <French>Utiliser la première radio dans l'inventaire pour parler.</French>
             <Korean>인벤토리의 첫 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
@@ -178,13 +201,14 @@
             <Polish>Klawisz radia 2</Polish>
             <Russian>радио кнопка 2</Russian>
             <Portuguese>Tecla do Rádio 2</Portuguese>
+            <Japanese>無線機 2 の送信 (PTT 2)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Transmit on second radio and set it as active.</English>
             <Spanish>Utiliza la segunda radio en el inventario para hablar</Spanish>
             <Czech>Použít druhé rádio v inventáři k mluvení.</Czech>
-            <German>Das zweite Funkgerät zum Sprechen verwenden.</German>
-            <Japanese>インベントリの2番目にある無線機を使って話します。</Japanese>
+            <German>Auf zweitem Funkgerät übertragen und selbiges aktiv setzen.</German>
+            <Japanese>2 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Seconda Radio nel tuo equipaggiamento.</Italian>
             <French>Utiliser la seconde radio dans l'inventaire pour parler.</French>
             <Korean>인벤토리의 두 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
@@ -204,14 +228,14 @@
             <Polish>Klawisz radia 3</Polish>
             <Russian>радио кнопка 3</Russian>
             <Portuguese>Tecla do Rádio 3</Portuguese>
+            <Japanese>無線機 3 の送信 (PTT 3)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Transmit on third radio and set it as active.</English>
-            <English>Use the third radio in your inventory to talk.</English>
             <Spanish>Utiliza la tercera radio en el inventario para hablar</Spanish>
             <Czech>Použít třetí rádio v inventáři k mluvení.</Czech>
-            <German>Das dritte Funkgerät zum Sprechen verwenden.</German>
-            <Japanese>インベントリの3番目にある無線機を使って話します。</Japanese>
+            <German>Auf drittem Funkgerät übertragen und selbiges aktiv setzen.</German>
+            <Japanese>3 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Terza Radio nel tuo equipaggiamento.</Italian>
             <French>Utiliser la troisième radio dans l'inventaire pour parler.</French>
             <Korean>인벤토리의 세 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
@@ -226,7 +250,7 @@
             <Spanish>Canal anterior (Radio activa)</Spanish>
             <Czech>Předchozí kanál</Czech>
             <German>Vorheriger Funkkanal (aktives Funkgerät)</German>
-            <Japanese>前のチャンネル (選択している無線機)</Japanese>
+            <Japanese>前のチャンネル (使用中の無線機)</Japanese>
             <Italian>Canale Precedente (Ricetrasmittente Attiva)</Italian>
             <French>Canal précédent (radio active)</French>
             <Korean>이전 채널 (활성화된 무전기)</Korean>
@@ -241,7 +265,7 @@
             <Spanish>Siguiente canal (Radio activa)</Spanish>
             <Czech>Další kanál</Czech>
             <German>Nächster Funkkanal (aktives Funkgerät)</German>
-            <Japanese>次のチャンネル (選択している無線機)</Japanese>
+            <Japanese>次のチャンネル (使用中の無線機)</Japanese>
             <Italian>Canale Successivo (Ricetrasmittente Attiva)</Italian>
             <French>Canal suivant (radio active)</French>
             <Korean>다음 채널 (활성화된 무전기)</Korean>
@@ -271,7 +295,7 @@
             <Spanish>Radio auricular izquierdo</Spanish>
             <Czech>Rádio do levého ucha</Czech>
             <German>Linker Ohrhörer</German>
-            <Japanese>音声を左側から</Japanese>
+            <Japanese>音声を左耳側から (使用中の無線機)</Japanese>
             <Italian>Imposta Auricolare Sinistro</Italian>
             <French>Radio oreille gauche</French>
             <Korean>왼쪽 이어폰</Korean>
@@ -286,7 +310,7 @@
             <Spanish>Radio ambas auriculares</Spanish>
             <Czech>Rádio do prostředního ucha</Czech>
             <German>Beide Ohrhörer</German>
-            <Japanese>音声を両側から</Japanese>
+            <Japanese>音声を両側から (使用中の無線機)</Japanese>
             <Italian>Centra gli Auricolari</Italian>
             <French>Radio oreille centre</French>
             <Korean>양쪽 이어폰</Korean>
@@ -301,7 +325,7 @@
             <Spanish>Radio auricular derecho</Spanish>
             <Czech>Rádio do pravého ucha</Czech>
             <German>Rechter Ohrhörer</German>
-            <Japanese>音声を右側から</Japanese>
+            <Japanese>音声を右耳側から (使用中の無線機)</Japanese>
             <Italian>Imposta Auricolare Destro</Italian>
             <French>Radio oreille droite</French>
             <Korean>오른쪽 이어폰</Korean>
@@ -315,8 +339,8 @@
             <English>Toggle Headset/Spectators</English>
             <Spanish>Activar auriculares/espectadores</Spanish>
             <Czech>Přepnout headset/diváky</Czech>
-            <German>Headset umschalten / Zuschauer umschalten</German>
-            <Japanese>ヘッドセットの切り替え / スペクテイターの切り替え</Japanese>
+            <German>Headset / Zuschauer umschalten</German>
+            <Japanese>ヘッドセット/スペクテイターの切り替え</Japanese>
             <Italian>Attiva/Disattiva Cuffia/Spettatori</Italian>
             <French>Alterner Casque/Spectateurs</French>
             <Korean>헤드셋 전환 / 관전자 전환</Korean>
@@ -329,21 +353,27 @@
         <Key ID="STR_ACRE_sys_core_AntennaDirToggle">
             <English>Antenna Direction Toggle</English>
             <German>Antennenausrichtung wechseln</German>
+            <Japanese>アンテナの方向切り替え</Japanese>
+            <Russian>Изменить направление антенны</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
             <German>Antenne gerade</German>
+            <Japanese>アンテナを直立に</Japanese>
+            <Russian>Антенна выпрямлена</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
             <German>Antenne gebogen</German>
+            <Japanese>アンテナを折り曲げ</Japanese>
+            <Russian>Антенна согнута</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
             <Spanish>Modelar interferencias</Spanish>
             <Japanese>モデル干渉</Japanese>
             <French>Modèle d'interférence</French>
-            <German>Interferenz Modul</German>
+            <German>Interferenz modellieren</German>
             <Czech>Interference radiových vln</Czech>
             <Korean>모델 간섭</Korean>
             <Polish>Interferencja fal radiowych</Polish>
@@ -386,6 +416,8 @@
         <Key ID="STR_ACRE_sys_core_autoAntennaDirection_displayName">
             <English>Automatic Antenna Direction</English>
             <German>Automatische Antennenausrichtung</German>
+            <Japanese>アンテナの方向自動</Japanese>
+            <Russian>Авто направление антенны</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -465,7 +497,7 @@
         <Key ID="STR_ACRE_sys_core_headsetRaised">
             <English>Headset Raised</English>
             <German>Headset aufgesetzt</German>
-            <Japanese>ヘッドセットを上げました</Japanese>
+            <Japanese>ヘッドセットを装着しました</Japanese>
             <Russian>Наушники были подняты</Russian>
             <Chinese>戴上耳機</Chinese>
             <Chinesesimp>戴上耳机</Chinesesimp>
@@ -479,7 +511,7 @@
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
             <German>Headset abgesetzt</German>
-            <Japanese>ヘッドセットを下げました</Japanese>
+            <Japanese>ヘッドセットを外しました</Japanese>
             <Russian>Наушники были опущены</Russian>
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
@@ -493,10 +525,14 @@
         <Key ID="STR_ACRE_sys_core_incomingTransmissionNotification">
             <English>Show incoming transmissions</English>
             <German>Eingehende Funksprüche anzeigen</German>
+            <Japanese>受信中の通信を表示</Japanese>
+            <Russian>Показывать входящие передачи</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
             <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
+            <Japanese>ラックの通信を表示</Japanese>
+            <Russian>Показывать передачи с раций на подставке</Russian>
         </Key>
     </Package>
 </Project>

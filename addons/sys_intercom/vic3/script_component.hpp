@@ -7,6 +7,3 @@
 #define INTERCOM_STATIONSTATUS_MONITORKNOB        "monitorKnob"
 #define INTERCOM_STATIONSTATUS_VOLUMEKNOB         "volumeKnob"
 #define INTERCOM_STATIONSTATUS_WORKKNOB           "workKnob"
-
-
-#define MAIN_DISPLAY (findDisplay 31337)

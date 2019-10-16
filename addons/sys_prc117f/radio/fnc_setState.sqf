@@ -16,6 +16,6 @@
  * Public: No
  */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", ""];
 
 HASH_SET(_radioData, _eventData select 0, _eventData select 1);

@@ -14,4 +14,4 @@
         private _signalModel = ["Arcade", "LOS Simple", "LOS Multipath", "Longley-Rice (ITM) Experimental"] select  GVAR(signalModel);
         INFO_1("Using radio propagation model: %1",_signalModel);
     } // TODO: Do not allow changing after signal map is loaded?
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;

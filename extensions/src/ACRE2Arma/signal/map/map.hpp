@@ -30,12 +30,12 @@ namespace acre {
         public:
             map_loader() {};
             ~map_loader() {};
-            int32_t get_map(const std::string wrp_path_, map_p &result_, bool &loaded_) {
+            acre::wrp::LandscapeResult get_map(const std::string wrp_path_, map_p &result_, bool &loaded_) {
                 //Return 0 = OKAY, -1 RECOVERD, -2 FAILURE
                 if (wrp_path_ == _current_map && _map != nullptr) {
                     result_ = _map;
                     loaded_ = true;
-                    return 0;
+                    return acre::wrp::LandscapeResult::Success;
                 }
                 loaded_ = false;
                 acre::pbo::file_entry_p wrp_file;
@@ -47,7 +47,7 @@ namespace acre {
                 }
 
                 LOG(ERROR) << "WRP unable to find wrp file: " << wrp_path_;
-                return -2;
+                return acre::wrp::LandscapeResult::Failure;
             };
 
         protected:

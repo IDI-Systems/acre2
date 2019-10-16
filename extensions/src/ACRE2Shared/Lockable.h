@@ -3,7 +3,6 @@
 
 #include <mutex>
 
-
 class CLockable {
 private:
     std::recursive_mutex m_lockable_mutex;

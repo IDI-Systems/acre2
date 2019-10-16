@@ -41,7 +41,6 @@ if (!GVAR(speaking_cache_valid)) then {
     #ifdef ENABLE_PERFORMANCE_COUNTERS
         END_COUNTER(okradio_check);
     #endif
-    // acre_player sideChat format["_okRadios: %1", _okRadios];
     _okRadios = (_okRadios select 0) select 1;
 
     private _transmittingRadioData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
@@ -112,5 +111,5 @@ if !(_okRadios isEqualTo []) then {
 #ifdef ENABLE_PERFORMANCE_COUNTERS
     END_COUNTER(process_radio_speaker);
 #endif
-// diag_log text format["_returns: %1", _returns];
+
 _returns

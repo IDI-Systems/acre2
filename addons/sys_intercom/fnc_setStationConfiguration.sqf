@@ -25,17 +25,18 @@ params ["_vehicle", "_unit", "_intercomNetwork", "_intercomFunctionality", "_val
 
 if (_varName isEqualTo "") then {
     _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
-};
 
-if (_varName isEqualTo "") exitWith {
-    ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
+    if (_varName isEqualTo "") exitWith {
+        ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
+    };
 };
 
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 private _oldValue = [_intercomStatus, _intercomFunctionality] call CBA_fnc_hashGet;
-if (_oldValue isEqualTo _value) exitWith {
-    //DEBUG_1("Set the same value for intercom functionality %1",_intercomFunctionality);
+
+if (_oldValue isEqualTo _value) exitWith { // Here it is better not to use == since oldValue may be of type null
+    TRACE_1("Set the same value for intercom functionality %1",_intercomFunctionality);
 };
 
 private _changed = false;
@@ -52,11 +53,11 @@ switch (_intercomFunctionality) do {
                 if (_value > INTERCOM_DISCONNECTED) then {
                     [_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
                 } else {
-                    [_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
+                    [_intercomStatus, "unit", objNull] call CBA_fnc_hashSet;
                 };
             };
         } else {
-            ["Intercom status is being forced. Cannot change configuration.", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+            [[ICON_RADIO_CALL], [localize LSTRING(forcedStatus)]] call CBA_fnc_notify;
         };
     };
     default {

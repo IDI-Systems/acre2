@@ -1,8 +1,8 @@
 #include "compat.h"
 
-#include "public_errors.h"
-#include "public_definitions.h"
-#include "public_rare_definitions.h"
+#include "teamspeak/public_errors.h"
+#include "teamspeak/public_definitions.h"
+#include "teamspeak/public_rare_definitions.h"
 #include "ts3_functions.h"
 
 #include "Types.h"
@@ -20,13 +20,13 @@
 // 
 void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int status, int isReceivedWhisper, anyID clientID) {
 
-    if ((acre_id_t) clientID != CEngine::getInstance()->getSelf()->getId()) {
+    if (static_cast<acre::id_t>(clientID) != CEngine::getInstance()->getSelf()->getId()) {
         return;
-    } else if (CEngine::getInstance()->getClient()->getState() != AcreState::running) {
+    } else if (CEngine::getInstance()->getClient()->getState() != acre::State::running) {
         return;
     } else if (!CEngine::getInstance()->getGameServer()) {
         return;
-    } else if (CEngine::getInstance()->getState() != AcreState::running) {
+    } else if (CEngine::getInstance()->getState() != acre::State::running) {
         return;
     } else if (!CEngine::getInstance()->getGameServer()->getConnected()) {
         return;
@@ -61,10 +61,10 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
 
     if (status == STATUS_TALKING) {
         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setDirectFirst(true);
-        CEngine::getInstance()->getClient()->localStartSpeaking(AcreSpeaking::direct);
+        CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::direct);
     } else if (status == STATUS_NOT_TALKING) {
         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setDirectFirst(false);
-        CEngine::getInstance()->getClient()->localStopSpeaking(AcreSpeaking::direct);
+        CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::direct);
         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setMainPTTDown(false);
     }
 }

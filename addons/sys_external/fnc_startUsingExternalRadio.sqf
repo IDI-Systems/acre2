@@ -37,4 +37,4 @@ ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
 // Set it as active radio.
 [_radioId] call EFUNC(api,setCurrentRadio);
 
-[format [localize LSTRING(hintTake), _displayName, name _owner], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+[[ICON_RADIO_CALL], [format [localize LSTRING(hintTake), _displayName, name _owner]], true] call CBA_fnc_notify;

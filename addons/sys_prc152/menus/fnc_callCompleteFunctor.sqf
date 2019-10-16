@@ -19,14 +19,13 @@
 private ["_ret"];
 params ["_menu"];
 
-if (!isNil "_menu") then {
-    if ((count _menu) > 5) then {
-        private _events = MENU_ACTION_EVENTS(_menu);
-        if (!isNil "_events" && _events isEqualType [] && count _events > 1) then {
-            private _onCompleteFunction = MENU_ACTION_ONCOMPLETE(_menu);
-            if (!isNil "_onCompleteFunction") then {
-                _ret = [_onCompleteFunction, _menu] call FUNC(dynamicCall);
-            };
+private _ret =  false;
+if ((!isNil "_menu") && {(count _menu) > 5}) then {
+    private _events = MENU_ACTION_EVENTS(_menu);
+    if (!isNil "_events" && {_events isEqualType []} && {count _events > 1}) then {
+        private _onCompleteFunction = MENU_ACTION_ONCOMPLETE(_menu);
+        if (!isNil "_onCompleteFunction") then {
+            _ret = [_onCompleteFunction, _menu] call FUNC(dynamicCall);
         };
     };
 };

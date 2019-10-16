@@ -4,10 +4,21 @@
 // Exit if ACE3 not loaded
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
-["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Air", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Boat_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+private _addClassEH = {
+    ["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["Air", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["Boat_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+};
+
+if (didJIP) then {
+    // Give some time for synchronisation
+    [{params ["_callFnc"]; [] call _callFnc;}, [_addClassEH], 3] call CBA_fnc_waitAndExecute;
+} else {
+    [] call _addClassEH;
+};
+
+// =================================== End Vehicle Initialisation
 
 if (!hasInterface) exitWith {};
 
@@ -24,25 +35,25 @@ if (!hasInterface) exitWith {};
     [ACTION_BROADCAST] call FUNC(handlePttKeyPressUp)
 }] call CBA_fnc_addKeybind;
 
-["ACRE2", "PreviousIntercom", localize LSTRING(previousIntercom), "", {
+["ACRE2", "PreviousIntercom", [localize LSTRING(previousIntercomKey), localize LSTRING(previousIntercomKey_description)], "", {
     [-1, true] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [true, false, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "NextIntercom", localize LSTRING(nextIntercom), "", {
+["ACRE2", "NextIntercom", [localize LSTRING(nextIntercomKey), localize LSTRING(nextIntercomKey_description)], "", {
     [1, true] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "AddPreviousIntercom", localize LSTRING(addPreviousIntercom), "", {
+["ACRE2", "AddPreviousIntercom", [localize LSTRING(addPreviousIntercomKey), localize LSTRING(addPreviousIntercomKey_description)], "", {
     [-1, false] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [true, false, true]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "AddNextIntercom", localize LSTRING(addNextIntercom), "", {
+["ACRE2", "AddNextIntercom", [localize LSTRING(addNextIntercomKey), localize LSTRING(addNextIntercomKey_description)], "", {
     [1, false] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [false, true, true]]] call CBA_fnc_addKeybind;
 
 ["ACRE2", QGVAR(openGui), localize LSTRING(openGui), {
-    [0] call FUNC(openGui)
-}, ""] call CBA_fnc_addKeybind;
+    [-1] call FUNC(openGui)
+}, "", [DIK_TAB, [true, true, false]]] call CBA_fnc_addKeybind;
 
 // Intercom configuration
 ["vehicle", {
@@ -64,7 +75,8 @@ player addEventHandler ["seatSwitchedMan", {
 }];
 
 [QGVAR(giveInfantryPhone), {
-    params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED]];
+    params ["_vehicle", "_unit", "_action", "_message", ["_intercomNetwork", INTERCOM_DISCONNECTED]];
+    [[ICON_RADIO_CALL], [_message]] call CBA_fnc_notify;
     [_vehicle, _unit, _action, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
 }] call CBA_fnc_addEventHandler;
 
