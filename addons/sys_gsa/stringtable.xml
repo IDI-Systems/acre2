@@ -20,6 +20,7 @@
             <Spanish>Has desconectado a %1 de la antena</Spanish>
             <German>Du hast %1 von BBA getrennt</German>
             <Russian>Вы отключили %1 от антенны</Russian>
+            <Japanese>地上アンテナの%1から切断しました</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpike">
             <English>Place Spike</English>
@@ -103,6 +104,7 @@
             <Spanish>Inventario lleno</Spanish>
             <German>Inventar voll!</German>
             <Russian>Инвентарь переполнен</Russian>
+            <Japanese>インベントリはいっぱいです</Japanese>
         </Key>
     </Package>
 </Project>
