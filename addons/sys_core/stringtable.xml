@@ -47,6 +47,7 @@
             <English>Default Radio Volume</English>
             <German>Standardlautstärke Funkgerät</German>
             <Russian>Громкость рации по умолчанию</Russian>
+            <Japanese>無線音量の標準</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>

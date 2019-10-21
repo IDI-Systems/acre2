@@ -47,11 +47,13 @@
             <English>Communicate Through Camera</English>
             <German>Kommuniziere durch Kamera</German>
             <Russian>Общаться через камеру</Russian>
+            <Japanese>カメラを通じて会話</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_Description">
             <English>Hear and talk with players through the Zeus Interface's camera.</English>
             <German>Höre zu und spreche mit Spielern durch die ZEUS Kamera</German>
             <Russian>Слышать и говорить с игроками через камеру в интерфейсе Zeus</Russian>
+            <Japanese>Zeus カメラを通じてプレイヤーを話せるようになります。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_DisplayName">
             <English>Able to Join Spectators</English>
