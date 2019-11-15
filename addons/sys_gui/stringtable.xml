@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_gui">
         <Key ID="STR_ACRE_sys_gui_VolumeControl">
@@ -21,12 +21,16 @@
             <Polish>ACRE2 - Informacje o pojeździe</Polish>
             <Italian>ACRE2 - Informazione veicolo</Italian>
             <Japanese>ACRE2 - 車両情報</Japanese>
+            <Chinese>ACRE2 - 載具資訊</Chinese>
+            <Chinesesimp>ACRE2 - 载具资讯</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGridDesc">
             <English>Status on available Intercoms and Racks in the vehicle.</English>
             <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
             <Italian>Status degli intercom e rack disponibili nel veicolo</Italian>
             <Japanese>車両にある利用可能なインターコムと架台の状態を示します。</Japanese>
+            <Chinese>車輛可使用的對講機即機架狀態</Chinese>
+            <Chinesesimp>车辆可使用的对讲机即机架状态</Chinesesimp>
         </Key>
     </Package>
 </Project>

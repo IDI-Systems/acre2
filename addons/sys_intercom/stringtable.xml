@@ -34,8 +34,8 @@
             <Japanese>車外電話機 %1 を取る</Japanese>
             <Russian>Взять телефон пехоты %1</Russian>
             <Polish>Podnieś telefon piechoty %1</Polish>
-            <Chinese>拿起車外對講機%1</Chinese>
-            <Chinesesimp>拿起车外对讲机%1</Chinesesimp>
+            <Chinese>拿起車外對講機 %1</Chinese>
+            <Chinesesimp>拿起车外对讲机 %1</Chinesesimp>
             <Korean>보병 전화 %1을 얻음</Korean>
             <Portuguese>Pegar Telefone de Infantaria %1</Portuguese>
             <Italian>Prendi telefono fanteria %1</Italian>
@@ -47,8 +47,8 @@
             <Japanese>%1 ネットワークに切り替え</Japanese>
             <Russian>Переключить сеть %1</Russian>
             <Polish>Przełącz sieć %1</Polish>
-            <Chinese>切換通訊網%1</Chinese>
-            <Chinesesimp>切换通讯网%1</Chinesesimp>
+            <Chinese>切換通訊網 %1</Chinese>
+            <Chinesesimp>切换通讯网 %1</Chinesesimp>
             <Korean>네트워크 교체</Korean>
             <Portuguese>Trocar Rede %1</Portuguese>
             <Italian>Cambia canale %1</Italian>
@@ -112,7 +112,7 @@
             <Japanese>車外電話機 %1 に接続しました</Japanese>
             <Russian>Телефон пехоты подключен %1</Russian>
             <Polish>Telefon podłączony %1</Polish>
-            <Chinese>車外對講機已連接%1</Chinese>
+            <Chinese>車外對講機已連接 %1</Chinese>
             <Chinesesimp>车外对讲机已连接%1</Chinesesimp>
             <Korean>보병 전화 %1에 연결됨</Korean>
             <Portuguese>Telefone de Infantaria Conectado %1</Portuguese>
@@ -125,7 +125,7 @@
             <Japanese>車外電話機 %1 が受信されました</Japanese>
             <Russian>Получен телефон пехоты %1</Russian>
             <Polish>Odebrano telefon piechoty %1</Polish>
-            <Chinese>車外對講機已收到%1</Chinese>
+            <Chinese>車外對講機已收到 %1</Chinese>
             <Chinesesimp>车外对讲机已收到%1</Chinesesimp>
             <Korean>보병 전화 %1 수신</Korean>
             <Portuguese>Telefone de Infantaria Recebendo %1</Portuguese>
@@ -169,6 +169,8 @@
             <Spanish>Tripulación</Spanish>
             <Polish>Załoga</Polish>
             <Italian>Equipaggio</Italian>
+            <Chinese>機組員</Chinese>
+            <Chinesesimp>机组员</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
             <English>Pax Intercom</English>
@@ -185,6 +187,8 @@
             <Spanish>Pasajeros</Spanish>
             <Polish>Pasażerowie</Polish>
             <Italian>Passeggero</Italian>
+            <Chinese>乘客</Chinese>
+            <Chinesesimp>乘客</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_connect">
             <English>Connect</English>
@@ -253,6 +257,8 @@
             <Polish>Głośność</Polish>
             <Italian>Volume</Italian>
             <Japanese>音量</Japanese>
+            <Chinese>音量</Chinese>
+            <Chinesesimp>音量</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_mute">
             <English>Mute</English>
@@ -260,6 +266,8 @@
             <Polish>Wycisz</Polish>
             <Italian>Muto</Italian>
             <Japanese>消音</Japanese>
+            <Chinese>禁音</Chinese>
+            <Chinesesimp>禁音</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_startBroadcast">
             <English>Start Broadcast</English>
@@ -267,6 +275,8 @@
             <Polish>Rozpocznij transmisję</Polish>
             <Italian>Incomincia trasmissione</Italian>
             <Japanese>ブロードキャストを開始</Japanese>
+            <Chinese>開始撥放</Chinese>
+            <Chinesesimp>开始播放</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
             <English>Stop Broadcast</English>
@@ -274,6 +284,8 @@
             <Polish>Zatrzymaj transmisję</Polish>
             <Italian>Termina trasmissione</Italian>
             <Japanese>ブロードキャストを停止</Japanese>
+            <Chinese>停止撥放</Chinese>
+            <Chinesesimp>停止播放</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_pttActivation">
             <English>PTT Activation</English>
@@ -281,6 +293,8 @@
             <Polish>Aktywacja PTT</Polish>
             <Italian>Attiva PTT</Italian>
             <Japanese>PTT で有効</Japanese>
+            <Chinese>PTT 啟用</Chinese>
+            <Chinesesimp>PTT 启用</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_voiceActivation">
             <English>Voice Activation</English>
@@ -288,6 +302,8 @@
             <Polish>Aktywacja głosowa</Polish>
             <Italian>Voice activation</Italian>
             <Japanese>音声検知</Japanese>
+            <Chinese>語音 啟用</Chinese>
+            <Chinesesimp>语音 启用</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
             <English>Intercom Key</English>
@@ -295,6 +311,8 @@
             <Polish>Klawisz interkomu</Polish>
             <Italian>Pulsante intercom</Italian>
             <Japanese>インターコム キー</Japanese>
+            <Chinese>對講機鍵</Chinese>
+            <Chinesesimp>对讲机键</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
             <English>Use the intercom station to talk.</English>
@@ -302,6 +320,8 @@
             <Polish>Mów przez interkom</Polish>
             <Italian>Usa la stazione intercom per parlare.</Italian>
             <Japanese>インターコム内で会話する為に使用します。</Japanese>
+            <Chinese>使用對講機通話</Chinese>
+            <Chinesesimp>使用对讲机通话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
             <English>Intercom Broadcast Key</English>
@@ -309,6 +329,8 @@
             <Polish>Klawisz nadawania interkomu</Polish>
             <Italian>Pulsante trasmissione intercom</Italian>
             <Japanese>インターコムのブロードキャスト キー</Japanese>
+            <Chinese>對講機廣播鍵</Chinese>
+            <Chinesesimp>对讲机广播键</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
             <English>Use the intercom station to broadcast a priority message.</English>
@@ -316,6 +338,8 @@
             <Polish>Użyj interkomu, aby wysłać wiadomość priorytetową.</Polish>
             <Italian>Usa la stazione intercom per trasmettere un messaggio prioritario</Italian>
             <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
+            <Chinese>使用內部對講機廣播優先訊息</Chinese>
+            <Chinesesimp>使用内部对讲机广播优先讯息</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousIntercom">
             <English>Previous Intercom Network</English>
@@ -323,6 +347,8 @@
             <Polish>Poprzednia sieć interkomu</Polish>
             <Italian>Rete Intercom precedente</Italian>
             <Japanese>前のインターコム網</Japanese>
+            <Chinese>上一個通訊網路</Chinese>
+            <Chinesesimp>上一个通讯网路</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercom">
             <English>Next Intercom Network</English>
@@ -330,6 +356,8 @@
             <Polish>Następna sieć interkomu</Polish>
             <Italian>Rete Intercom successiva</Italian>
             <Japanese>次のインターコム網</Japanese>
+            <Chinese>下一個通訊網路</Chinese>
+            <Chinesesimp>下一个通讯网路</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercom">
             <English>Connect Previous Intercom Network</English>
@@ -337,6 +365,8 @@
             <Polish>Połącz się z poprzednią siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Precedente</Italian>
             <Japanese>前のインターコム網に接続</Japanese>
+            <Chinese>連線上一個通訊網路</Chinese>
+            <Chinesesimp>连线上一个通讯网路</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercom">
             <English>Connect Next Intercom Network</English>
@@ -344,6 +374,8 @@
             <Polish>Połącz się z następną siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Successiva</Italian>
             <Japanese>次のインターコム網に接続</Japanese>
+            <Chinese>連線下一個通訊網路</Chinese>
+            <Chinesesimp>连线下一个通讯网路</Chinesesimp>
         </Key>
     </Package>
 </Project>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="Main">
         <Key ID="STR_ACRE_Main_Author">
@@ -13,7 +13,7 @@
             <French>ACRE2Team</French>
             <Korean>ACRE2Team</Korean>
             <Japanese>ACRE2Team</Japanese>
-            <Chinese>ACRE2製作組哈哈哈哈哈哈</Chinese>
+            <Chinese>ACRE2製作組</Chinese>
             <Chinesesimp>ACRE2制作组</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_Main_URL">
