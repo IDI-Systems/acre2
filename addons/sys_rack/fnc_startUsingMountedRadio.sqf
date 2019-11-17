@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles a player when they opt to start using a mounted radio.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_radioId"];
 
@@ -24,21 +24,12 @@ if (_isRadioAccessible) then {
     ACRE_ACCESSIBLE_RACK_RADIOS pushBackUnique _radioId;
 };
 
-if (_isRadioHearable && !_isRadioAccessible) then {
+if (_isRadioHearable && {!_isRadioAccessible}) then {
     ACRE_HEARABLE_RACK_RADIOS pushBackUnique _radioId;
 };
 
 // Set active radio
 ACRE_ACTIVE_RADIO = _radioId;
-
-if (_isRadioHearable) then {
-    // Check if the radio had already some functionality in order to avoid overwritting it.
-    private _functionality = [_radioId, _vehicle, _unit] call EFUNC(sys_intercom,getRackRxTxCapabilities);
-    if (_functionality == RACK_NO_MONITOR) then {
-        // Set as default RX and TX functionality
-        [_radioId, _vehicle, _unit, RACK_RX_AND_TX] call EFUNC(sys_intercom,setRackRxTxCapabilities);
-    };
-};
 
 // Start the rack PFH if not started already. This should only be used for externally accessible rack radios
 if (GVAR(rackPFH) == -1) then {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the event of turning the volume radio knob.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 //I am not using the API for getting the volume because that could
 //be different from what the internal value is based on the speaker
@@ -32,7 +32,7 @@ private _currentVolume = GET_STATE("volume"); //["getState", "volume"] call GUI_
 private _newVolume = ((_currentVolume + _currentDirection) max 0) min 1;
 
 if (_currentVolume != _newVolume) then {
-    ["Acre_GenericClick", [0,0,0], [0,0,0], _newVolume^3, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], _newVolume^3, false] call EFUNC(sys_sounds,playSound);
     ["setVolume", _newVolume] call GUI_DATA_EVENT;
 
 

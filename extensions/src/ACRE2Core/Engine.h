@@ -22,20 +22,20 @@ public:
 
     
 
-    ACRE_RESULT initialize(IClient * client, IServer * externalServer, std::string fromPipeName, std::string toPipeName);
-    ACRE_RESULT initialize(IClient * client, IServer * externalServer, std::string fromPipeName, std::string toPipeName, std::string loggingPath);
+    acre::Result initialize(IClient * client, IServer * externalServer, std::string fromPipeName, std::string toPipeName);
+    acre::Result initialize(IClient * client, IServer * externalServer, std::string fromPipeName, std::string toPipeName, std::string loggingPath);
 
-    ACRE_RESULT start(ACRE_ID id);
-    ACRE_RESULT stop();
+    acre::Result start(const acre::id_t id);
+    acre::Result stop();
 
-    ACRE_RESULT localStartSpeaking(ACRE_SPEAKING_TYPE speakingType);
-    ACRE_RESULT localStartSpeaking(ACRE_SPEAKING_TYPE speakingType, std::string radioId);
-    ACRE_RESULT localStopSpeaking( void );
+    acre::Result localStartSpeaking(const acre::Speaking speakingType);
+    acre::Result localStartSpeaking(const acre::Speaking speakingType, const std::string radioId);
+    acre::Result localStopSpeaking( void );
 
-    ACRE_RESULT remoteStartSpeaking(ACRE_ID remoteId, int languageId, std::string netId, ACRE_SPEAKING_TYPE speakingType, std::string radioId, ACRE_VOLUME curveScale);
-    ACRE_RESULT remoteStopSpeaking(ACRE_ID remoteId);
+    acre::Result remoteStartSpeaking(const acre::id_t remoteId, const int32_t languageId, const std::string netId, const acre::Speaking speakingType, const std::string radioId, const acre::volume_t curveScale);
+    acre::Result remoteStopSpeaking(const acre::id_t remoteId);
 
-    std::map<ACRE_ID, CPlayer *> speakingList;
+    std::map<acre::id_t, CPlayer *> speakingList;
 
     DECLARE_MEMBER(CSoundEngine *, SoundEngine);
     DECLARE_MEMBER(CRpcEngine *, RpcEngine);
@@ -46,7 +46,7 @@ public:
 
     DECLARE_MEMBER(BOOL, SoundSystemOverride);
 
-    DECLARE_MEMBER(ACRE_STATE, State);
+    DECLARE_MEMBER(acre::State, State);
     
     DECLARE_MEMBER(CSelf *, Self);
 

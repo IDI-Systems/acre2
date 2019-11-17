@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,8 +15,7 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_radioId","_event"];
+params ["_radioId", "_event"];
 
 WARNING_1("System event handler function %1 is not defined!",_event);

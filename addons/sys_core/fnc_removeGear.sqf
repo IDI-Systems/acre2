@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Removes the specified item from the given unit inventory
@@ -14,16 +15,11 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_unit", "_item"];
 
 _item = toLower _item;
 
-/*_weapons = weapons _unit;
-_uniformItems = uniformItems _unit;
-_vestItems = vestItems _unit;
-_backpackItems = backpackitems _unit;*/
 private _assignedItems = (assignedItems _unit) apply {toLower _x};
 
 if (_item in _assignedItems) then {
@@ -31,7 +27,3 @@ if (_item in _assignedItems) then {
 };
 _unit removeItem _item;
 _unit removeWeapon _item;
-// _gearCheck = [_unit] call FUNC(getGear);
-// if (_item in _gearCheck) then {
-
-// };

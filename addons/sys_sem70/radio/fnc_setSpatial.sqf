@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /*
  *  This function sets the spatialization state of
@@ -48,10 +48,10 @@
  *      nil
 */
 
-params ["_radioId",  "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", ""];
 
 private _spatial = _eventData;
 
-if (_spatial in [-1,0,1]) then {
+if (_spatial in [-1, 0, 1]) then {
     [_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _spatial]] call EFUNC(sys_data,dataEvent);
 };

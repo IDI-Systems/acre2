@@ -24,9 +24,3 @@ class Extended_InventoryOpened_EventHandlers {
         };
     };
 };
-
-class Extended_DisplayLoad_EventHandlers {
-    class RscDisplayMission {
-        ADDON = QUOTE(_this call FUNC(missionDisplayLoad));
-    };
-};

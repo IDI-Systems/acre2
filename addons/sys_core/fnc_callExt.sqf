@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function is used to make calls in acre.dll.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_command", "_params", ["_threaded", false], ["_callBack",{}], ["_callBackArgs",[]]];
 
@@ -42,7 +42,7 @@ if (IS_ARRAY(_params)) then {
             };
         };
     };
-    if (count _array > 0) then { _array pushBack ""; }; //Add empty element to add a trailing comma
+    if !(_array isEqualTo []) then { _array pushBack ""; }; //Add empty element to add a trailing comma
     _paramsString = _array joinString ",";
 };
 
@@ -55,7 +55,7 @@ _command = format["%1:%2", _command, _paramsString];
 #endif
 _res = call compile _res;
 if (_threaded) then {
-    GVAR(threadedExtCalls) set[(_res select 1), [_callBackArgs, _callBack]];
+    GVAR(threadedExtCalls) set [(_res select 1), [_callBackArgs, _callBack]];
 };
 
 _res;

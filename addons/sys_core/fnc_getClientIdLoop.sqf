@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function exists to setup the process for sending our object and player ID to other clients to associate with our TeamSpeak ID.
@@ -13,12 +14,11 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 DFUNC(getClientIdLoopFunc) = {
     if (!isNull player) then {
         private _netId = netId acre_player;
-        ["getClientID", [_netId, (getPlayerUID player)]] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["getClientID", [_netId, getPlayerUID player]] call EFUNC(sys_rpc,callRemoteProcedure);
     };
 };
 ADDPFH(FUNC(getClientIdLoopFunc), 3, []); // Send on regular interval for JIP etc.

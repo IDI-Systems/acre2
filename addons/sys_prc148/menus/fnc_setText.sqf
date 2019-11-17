@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_display", "_row", "_range", "_text", ["_format",""]];
 
@@ -47,7 +47,7 @@ if (_format == "") then {
         } else {
             _val = _formatChar;
         };
-        (_display displayCtrl (_row+_start+_count)) ctrlSetText _val;
+        (_display displayCtrl (_row + _start + _count)) ctrlSetText _val;
         _count = _count - 1;
     };
 };

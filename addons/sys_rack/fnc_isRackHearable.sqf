@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns if an individual rack is hearable (in intercom) to a specific unit.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_rackId", "_unit", ["_vehicle", objNull]];
 
@@ -33,7 +33,7 @@ private _wiredIntercoms = [_rackId] call FUNC(getWiredIntercoms);
 private _isHearable = false;
 {
     private _intercomName = _x select 0;
-    _isHearable = [_vehicle, _unit, _forEachIndex] call EFUNC(sys_intercom,isInIntercom) && (_intercomName in _wiredIntercoms);
+    _isHearable = [_vehicle, _unit, _forEachIndex] call EFUNC(sys_intercom,isInIntercom) && {_intercomName in _wiredIntercoms};
     if (_isHearable) exitWith{};
 } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);
 

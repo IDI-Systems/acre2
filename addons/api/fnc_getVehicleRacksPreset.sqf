@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the preset name used for initialising the vehicle racks.
@@ -13,9 +14,10 @@
  *
  * Public: Yes
  */
-#include "script_component.hpp"
 
-params [["_vehicle", objNull], ["_presetName", ""]];
+params [
+    ["_vehicle", objNull, [objNull]]
+];
 
 if (isNull _vehicle) exitWith {
     WARNING("Vehicle is null");

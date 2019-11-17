@@ -13,21 +13,24 @@
 
 RPC_FUNCTION(localMute) {
 
-    int status;
+    const bool status = vMessage->getParameterAsInt(0) == 1;
 
-    status = vMessage->getParameterAsInt(0);
-
-    if (status == 1) {
+    if (status) {
         CEngine::getInstance()->getClient()->enableMicrophone(false);
         if (CEngine::getInstance()->getSelf()->getSpeaking()) {
-            CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_UNKNOWN);
+            CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::unknown);
         }
     } else {
         CEngine::getInstance()->getClient()->enableMicrophone(true);
     }
 
 
-    return ACRE_OK;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    inline void setName(char *const value) final { m_Name = value; }
+    inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

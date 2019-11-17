@@ -13,18 +13,20 @@
 
 RPC_FUNCTION(setSoundSystemMasterOverride) {
 
-    int status;
+    const bool status = vMessage->getParameterAsInt(0) == 1;
 
-    status = vMessage->getParameterAsInt(0);
-
-    if (status == 1) {
-        CEngine::getInstance()->setSoundSystemOverride(TRUE);
+    if (status) {
+        CEngine::getInstance()->setSoundSystemOverride(true);
     } else {
-        CEngine::getInstance()->setSoundSystemOverride(FALSE);
+        CEngine::getInstance()->setSoundSystemOverride(false);
     }
 
-
-    return ACRE_OK;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    inline void setName(char *const value) final { m_Name = value; }
+    inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

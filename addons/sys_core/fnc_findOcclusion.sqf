@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calculates the direct speech occlusion between two positions. Intended to calculate attenuation between the local player and a target unit.
@@ -15,7 +16,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_startPos", "_endPos", "_unit"];
 
@@ -50,7 +50,7 @@ if (_useCache && {_cachedTime < diag_tickTime}) then {
 if (_useCache) exitWith {
     private _cachedResultDis = -1;
     if (!isNil "_cachedPos") then {
-        _cachedResultDis = (_startPos distance _cachedPos)+(_endPos distance _cachedPos);
+        _cachedResultDis = (_startPos distance _cachedPos) + (_endPos distance _cachedPos);
     };
 
     //((_distance/_cachedResultDis) max 0) max (1-(_cachedThickness/MAX_THICKNESS));
@@ -90,7 +90,7 @@ thicknessHits = [];
 debugIntersectPoints = [];
 checks = 0;*/
 private _directAttenuate = 1;
-if ((count _intersectObjects) > 0) then { // do occlusion
+if !(_intersectObjects isEqualTo []) then { // do occlusion
 
 // End Jaynus Additions
 
@@ -154,7 +154,7 @@ if ((count _intersectObjects) > 0) then { // do occlusion
             //_cc = _cc + 1;
             if (lineIntersects [_testPos, _startPos, _vehicleUnit, _vehiclePlayer]) exitWith { };
             //_cc = _cc + 1;
-            if (!(lineIntersects [_testPos, _endPos, _vehicleUnit, _vehiclePlayer])) exitWith {
+            if !(lineIntersects [_testPos, _endPos, _vehicleUnit, _vehiclePlayer]) exitWith {
                 _distance = (_testPos distance _startPos)+(_testPos distance _endPos);
                 if ((_distance*2) < _resultDis) then {
                     _foundPos = _testPos;

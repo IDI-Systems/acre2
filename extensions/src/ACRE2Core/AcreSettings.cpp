@@ -2,13 +2,13 @@
 #include "Log.h"
 #include <fstream>
 
-ACRE_RESULT CAcreSettings::save(std::string filename) {
+acre::Result CAcreSettings::save(std::string filename) {
     // Write the shit out by hand for now
     std::ofstream iniFile;
 
     iniFile.open(filename, std::ios::trunc);
     if (!iniFile.is_open()) {
-        return ACRE_ERROR;
+        return acre::Result::error;
     }
     iniFile << "[acre2]\n";
     iniFile << "lastVersion = " << ACRE_VERSION << ";\n";
@@ -21,17 +21,17 @@ ACRE_RESULT CAcreSettings::save(std::string filename) {
     iniFile.flush();
     iniFile.close();
 
-    return ACRE_OK;
+    return acre::Result::ok;
 }
 
-ACRE_RESULT CAcreSettings::load(std::string filename) {
+acre::Result CAcreSettings::load(std::string filename) {
     // Write the shit out by hand for now
     ini_reader config(filename);
 
     if (config.ParseError() < 0) {
         LOG("Failed to load ACRE ini file. Using defaults...");
         this->save(filename);
-        return ACRE_ERROR;
+        return acre::Result::error;
     } else {
         LOG("Successfully loaded ACRE ini file (any failures above can be ignored).");
     }
@@ -45,14 +45,14 @@ ACRE_RESULT CAcreSettings::load(std::string filename) {
     //LOG("Config Load: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
     this->m_Path = filename;
 
-    return ACRE_OK;
+    return acre::Result::ok;
 }
 
-ACRE_RESULT CAcreSettings::save() {
+acre::Result CAcreSettings::save() {
     // Write the shit out by hand for now
     return this->save(this->m_Path);
 }
-ACRE_RESULT CAcreSettings::load() {
+acre::Result CAcreSettings::load() {
     // Write the shit out by hand for now
     return load(this->m_Path);
 }

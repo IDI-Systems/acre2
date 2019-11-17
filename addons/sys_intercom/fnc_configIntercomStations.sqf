@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Configures the initial intercom connectivity (disconnected/connected, ...) for all allowed seats.
@@ -18,16 +19,12 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_allowedPositions", "_forbiddenPositions", "_limitedPositions", "_initialConfiguration", "_masterStation"];
-
-private _type = typeOf _vehicle;
 
 private _intercomStations = [];
 
 {
-    private _unit = _x select 0;
     private _role = toLower (_x select 1);
     if (_role in ["cargo", "turret"]) then {
         if (_role isEqualTo "cargo") then {
@@ -38,50 +35,49 @@ private _intercomStations = [];
     };
     private _seatConfiguration = [];
     {
-        // Array has the following format:
-        // 0: Configuration array
-        //   0: Has Intercom access <BOOL> (default: false)
-        //   1: Connection status <NUMBER> (default: disconnected)
-        //   2: Volume <NUMBER> (default: 1)
-        //   3: This is a seat with limited connectivity <BOOL> (default: false)
-        //   4: Turned out is allowed <BOOL> (default: true)
-        //   5: Forced connection status <NUMBER> (default: Status not forced)
-        //   6: Voice activation active <BOOL> (default: true)
-        //   7: This is a master station <BOOL> (default: false)
-        // 1: Unit using intercom <OBJECT> (default: objNull)
-        private _intercomStatus = [[false, INTERCOM_DISCONNECTED, INTERCOM_DEFAULT_VOLUME, false, true, false, true, false], objNull];
+        /* Hash has the following entries:
+         * - "hasAccess": Has Intercom access <BOOL> (default: false)
+         * - "connection": Connection status <NUMBER> (default: disconnected)
+         * - "volume": Volume <NUMBER> (default: 1)
+         * - "isLimited": This is a seat with limited connectivity <BOOL> (default: false)
+         * - "turnedOutAllowed": Turned out is allowed <BOOL> (default: true)
+         * - "forcedConnection": Forced connection status <NUMBER> (default: Status not forced)
+         * - "voiceActivation": Voice activation active <BOOL> (default: true)
+         * - "masterStation": This is a master station <BOOL> (default: false)
+         * - "unit": Unit using intercom <OBJECT> (default: objNull)
+         */
+        private _intercomStatus = [] call CBA_fnc_hashCreate;
 
-        if (_role in (_forbiddenPositions select _forEachIndex)) then {
-            (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, false];
+        // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to
+        // reduce network traffic.
+        [_intercomStatus, "unit", objNull] call CBA_fnc_hashSet;
+        private _allowed = (_role in _x || {_role in (_limitedPositions select _forEachIndex)}) && {!(_role in (_forbiddenPositions select _forEachIndex))};
+        [_intercomStatus, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, _allowed] call CBA_fnc_hashSet;
+
+        private _inLimited = _role in (_limitedPositions select _forEachIndex);
+        [_intercomStatus, INTERCOM_STATIONSTATUS_LIMITED, _inLimited] call CBA_fnc_hashSet;
+
+        if (_allowed && {!_inLimited} && ((_initialConfiguration select _forEachIndex) == 1)) then {
+            [_intercomStatus, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX] call CBA_fnc_hashSet;
         } else {
-            if (_role in _x && {!(_role in (_forbiddenPositions select _forEachIndex))}) then {
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
-                if ((_initialConfiguration select _forEachIndex) == 1) then {
-                    (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_RX_AND_TX];
-                };
-            };
-
-            if (_role in (_limitedPositions select _forEachIndex)) then {
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_HASINTERCOMACCESS, true];
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_LIMITED, true];
-
-                // Limited positions are by default configured without voice activation
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_VOICEACTIVATION, false];
-            };
-
-            // Handle turned out
-            if ("turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)}) then {
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, false];
-            };
-
-            // Configure master station
-            if (_role in (_masterStation select _forEachIndex)) then {
-                (_intercomStatus select 0) set [INTERCOM_STATIONSTATUS_MASTERSTATION, true];
-            };
-
-            // Unit is configured at a later stage in order to avoid race conditions since this code is run on every machine in order to
-            // reduce network traffic.
+            [_intercomStatus, INTERCOM_STATIONSTATUS_CONNECTION, INTERCOM_DISCONNECTED] call CBA_fnc_hashSet;
         };
+
+        // Handle turned out
+        _allowed = "turnedout_all" in (_forbiddenPositions select _forEachIndex) || {format ["turnedout_%1", _role] in (_forbiddenPositions select _forEachIndex)};
+        [_intercomStatus, INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED, !_allowed] call CBA_fnc_hashSet;
+
+        // Default not forced
+        [_intercomStatus, INTERCOM_STATIONSTATUS_FORCEDCONNECTION, false] call CBA_fnc_hashSet;
+
+        // Configure master station
+        _allowed = _role in (_masterStation select _forEachIndex);
+        [_intercomStatus, INTERCOM_STATIONSTATUS_MASTERSTATION, _allowed] call CBA_fnc_hashSet;
+
+        private _monitorRack = 0;
+        private _workRack = 0;
+        _intercomStatus = [_intercomStatus, [INTERCOM_DEFAULT_VOLUME, _monitorRack, _workRack, !_inLimited], _vehicle] call FUNC(vic3ffcsConfig);
+
         _seatConfiguration set [_forEachIndex, _intercomStatus];
     } forEach _allowedPositions;
 

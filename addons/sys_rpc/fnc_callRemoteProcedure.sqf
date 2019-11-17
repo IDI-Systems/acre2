@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calls a procedure in the teamspeak plugin.
@@ -15,7 +16,6 @@
  * Public: No
  */
 
-#include "script_component.hpp"
 
 params ["_name","_params"];
 
@@ -38,7 +38,7 @@ if (IS_ARRAY(_params)) then {
             };
         };
     };
-    if (count _array > 0) then { _array pushBack ""; }; //Add empty element to add a trailing comma
+    if !(_array isEqualTo []) then { _array pushBack ""; }; //Add empty element to add a trailing comma
     _params = _array joinString ",";
 };
 private _data = _name + ":" + _params;

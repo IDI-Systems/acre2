@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Attachs a complex component to another complex component.
@@ -14,11 +15,10 @@
  * successful <BOOLEAN>
  *
  * Example:
- * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,[],false] call acre_sys_components_fnc_attachComplexComponent
+ * ["ACRE_PRC152_ID_1",2,"ACRE_PRC152_ID_2",2,HASH_CREATE,false] call acre_sys_components_fnc_attachComplexComponent
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_parentComponentId", "_parentConnector", "_childComponentId", "_childConnector", "_attributes", ["_force",false]];
 

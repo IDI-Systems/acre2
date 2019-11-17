@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Unmounts the radio in the rack and places it on the unit.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_rackId", "_unit"];
 
@@ -33,5 +33,5 @@ if (_unit canAdd _mountedRadio) then {
     //Trigger event
     [_rackId, "unmountRadio", _mountedRadio] call EFUNC(sys_data,dataEvent);
 } else {
-    [localize LSTRING(unableUnmount), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    [[ICON_RADIO_CALL], [localize LSTRING(unableUnmount)]] call CBA_fnc_notify;
 };

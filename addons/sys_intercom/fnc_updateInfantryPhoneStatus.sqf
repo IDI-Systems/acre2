@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Updates the status of the infantry phone of a vehicle.
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]]];
 
@@ -32,7 +32,7 @@ switch (_action) do {
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
 
         ACRE_PLAYER_INTERCOM = [];
-        [format [localize LSTRING(infantryPhoneDisconnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [[ICON_RADIO_CALL], [format [localize LSTRING(infantryPhoneDisconnected), _intercomText]], true] call CBA_fnc_notify;
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
     };
     case 1: {
@@ -40,7 +40,7 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
 
-        [format [localize LSTRING(infantryPhoneConnected), _intercomText], ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [[ICON_RADIO_CALL], [format [localize LSTRING(infantryPhoneConnected), _intercomText]], true] call CBA_fnc_notify;
         GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
     case 2: {
@@ -48,12 +48,10 @@ switch (_action) do {
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
 
-        [QGVAR(giveInfantryPhone), ["_vehicle", "_unit", 1, _intercomNetwork], _unit] call CBA_fnc_targetEvent;
-        [format [localize LSTRING(infantryPhoneReceived), _intercomText], ICON_RADIO_CALL, nil, _unit] call EFUNC(sys_core,displayNotification);
+        private _message = format [localize LSTRING(infantryPhoneReceived), _intercomText];
+        [QGVAR(giveInfantryPhone), [_vehicle, _unit, 1, _message, _intercomNetwork], _unit] call CBA_fnc_targetEvent;
     };
     case 3: {
-        private _previousIntercom = _vehicle getVariable [QGVAR(unitInfantryPhone), []] select 1;
-
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
     };

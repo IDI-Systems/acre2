@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,10 +15,7 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_user"];
 
-private _return = _user getVariable [QGVAR(radioIdList), []];
-
-_return
+_user getVariable [QGVAR(radioIdList), []]

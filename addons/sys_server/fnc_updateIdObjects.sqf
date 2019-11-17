@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Client function to update the local copy of objectIdRelationTable.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _update = _this;
 if (ACRE_DATA_SYNCED) then {

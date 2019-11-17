@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calls the infantry phone.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_intercomNetwork"];
 
@@ -25,7 +25,7 @@ _vehicle setVariable [QGVAR(isInfantryPhoneCalling), [true, _intercomNetwork], t
 
 private _duration = INFANTRY_PHONE_SOUND_PFH_DURATION;
 private _customSound = _vehicle getVariable [QGVAR(infPhoneCustomRinging), []];
-if (count _customSound > 0) then {
+if !(_customSound isEqualTo []) then {
     _duration = _customSound select 1;
 };
 

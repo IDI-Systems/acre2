@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,33 +15,23 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /* just in case we get a bad menu or a bad value, lets verify its a valid menu! */
-private _ret = true;
 
 params ["_menu"];
 
 // Its an array with 5 variables at least
-if (typeName _menu != "ARRAY") exitWith { _ret = false; false };
-if ((count _menu) < 5) exitWith { _ret = false; false };
+if (typeName _menu != "ARRAY") exitWith { false };
+if ((count _menu) < 5) exitWith { false };
 
 // Verify the first 3 values are strings
 private _menuId = MENU_ID(_menu);
-if (!isNil "_menuId") then {
-    if ((typeName _menuId) != "STRING") exitWith { _ret = false; false };
-};
-if ( (typeName (_menu select 1) != "STRING" ) ||
-(typeName (_menu select 2) != "STRING" ) ) exitWith {
-    _ret = false; false
-};
+if (!isNil "_menuId" && {(typeName _menuId) != "STRING"}) exitWith { false };
+
+if ((typeName (_menu select 1) != "STRING") || {(typeName (_menu select 2) != "STRING")}) exitWith { false };
 
 private _subMenus = MENU_SUBMENUS(_menu);
 // Verify subitems is an array or at least nil
-if (!isNil "_subMenus") then {
-    if ((typeName _menuId) != "ARRAY") exitWith { _ret = false; false };
-};
+if (!isNil "_subMenus" && {(typeName _menuId) != "ARRAY"}) exitWith { false };
 
-
-
-_ret
+true

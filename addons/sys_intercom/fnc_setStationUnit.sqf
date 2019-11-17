@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets the intercom connection status of the vehicle seat the unit is in.
@@ -16,20 +17,19 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_unit", "_intercomNetwork", ["_varName", ""]];
 
 if (_varName isEqualTo "") then {
     _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
-};
 
-if (_varName isEqualTo "") exitWith {
-    ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
+    if (_varName isEqualTo "") exitWith {
+        ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
+    };
 };
 
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 
-_intercomStatus set [STATION_INTERCOM_UNIT_INDEX, _unit];
+[_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
 _vehicle setVariable [_varName, _intercomArray, true];

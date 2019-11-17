@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /*
  *  This function sets the current volume state of
@@ -47,7 +47,7 @@
  *      nil
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 private _vol = _eventData;
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,8 +15,7 @@
  *
  * Public: No
  */
- #include "script_component.hpp"
-
+ 
 if (_this select 1 == 0) then {
     ["<t align='center'>Click on the map to set the start of a Rx sampling area.</t>"] call FUNC(showOverlayMessage);
     GVAR(rxSetEH) = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["MouseButtonDown", {call DFUNC(setRxAreaBegin)}];

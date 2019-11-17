@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(serverNetworkIdCounter) = GVAR(serverNetworkIdCounter) + 1;
 ACREc = [GVAR(serverNetworkIdCounter), _this select 0, _this select 1];

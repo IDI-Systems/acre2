@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Configures rack intercom network availability.
@@ -14,13 +15,12 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_vehicle", "_rack"];
 
 private _type = typeOf _vehicle;
 
-private _intercoms = getArray (_rack >> "intercom");
+private _intercoms = (getArray (_rack >> "intercom")) apply {toLower _x};
 private _wiredIntercoms = [];
 
 // Set by default to have access to all intercom networks if none was specified
@@ -33,12 +33,12 @@ if (_intercoms isEqualTo [] || {"none" in _intercoms}) then {
         } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);
     } else {
         {
-            private _int = toLower _x;
+            private _int = _x;
             private _configuredIntercoms = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
             if (_int in (_configuredIntercoms select 0)) then {
                 _wiredIntercoms pushBack _x;
             } else {
-                WARNING_3("Vehicle type %1 does not have the intercom %2 but the rack %3 can have access to its network. Not adding it.",_type,_int,_rack)
+                WARNING_3("No intercom %1 defined but rack %2 can have access to its network for %3 - skipping",_int,_rack,_type)
             };
         } forEach _intercoms;
     };

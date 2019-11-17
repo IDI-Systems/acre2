@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Function to obtain the content of the radio data hash for the event data key
@@ -18,8 +19,7 @@
  * ["ACRE_PRC343_ID_1", "getState", "volume", _radioData, false] call acre_sys_prc343_fnc_getState
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["","", "_eventData", "_radioData", ""];
+params ["", "", "_eventData", "_radioData", ""];
 
 HASH_GET(_radioData, _eventData);

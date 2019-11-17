@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Snaps the function knob one position backwards.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_control"];
 //_key = _this select 1;
@@ -35,6 +35,6 @@ SET_STATE_CRIT("function", _newFunction);
 if (_newFunction != _currentFunction) then {
     _control ctrlRemoveAllEventHandlers "MouseButtonUp";
     //Play sound and render dialog
-    ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], 1, false] call EFUNC(sys_sounds,playSound);
     [MAIN_DISPLAY] call CALLSTACK(FUNC(render));
 };

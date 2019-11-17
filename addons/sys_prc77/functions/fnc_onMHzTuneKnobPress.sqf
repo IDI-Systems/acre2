@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the event of turning the MHz radio knob.
@@ -17,7 +18,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _key = _this select 1;
 private _shift = _this select 4;
@@ -53,5 +53,5 @@ _newTuneKnobsPosition set [0, _newMHzKnobPosition];
 ["setCurrentChannel", _newTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);
 
 // Change the image and play click sound
-["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
+["Acre_GenericClick", [0, 0, 0], [0, 0, 0], 1, false] call EFUNC(sys_sounds,playSound);
 [MAIN_DISPLAY] call CALLSTACK(FUNC(render));

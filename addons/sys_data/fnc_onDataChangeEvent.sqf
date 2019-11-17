@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("NETWORK DATA EVENT", _this);
 
@@ -22,7 +22,7 @@ EGVAR(sys_core,speaking_cache_valid) = false;
 
 if (ACRE_DATA_SYNCED) then {
     params ["_networkSequence", "_eventId"];
-    if (!(_eventId in GVAR(pendingNetworkEvents))) then {
+    if !(_eventId in GVAR(pendingNetworkEvents)) then {
         {
             _x params ["_unit", "_radioId", "_event", "_data", ["_eventKind", "CfgAcreDataInterface"]];
             /*_eventKind = "CfgAcreDataInterface";
@@ -45,7 +45,7 @@ if (ACRE_DATA_SYNCED) then {
                     _radio = HASH_CREATE;
                     HASH_SET(GVAR(currentRadioStates),_radioId,_radio);
                 };
-                HASH_SET(_radio,_event,[diag_tickTime,_data]);
+                HASH_SET(_radio,_event,[diag_tickTime, _data]);
             };
         } forEach (_this select 2);
     } else {

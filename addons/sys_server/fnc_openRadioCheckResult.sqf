@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the result of checking if a radio is opened.
@@ -14,11 +15,10 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId", "_radioOpenedBy"];
 
 if (_radioOpenedBy != acre_player) then {
     [_radioId, "closeGui"] call EFUNC(sys_data,interactEvent);
-    [localize ELSTRING(sys_radio,alreadyOpenRadio), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+    [[ICON_RADIO_CALL], [localize ELSTRING(sys_radio,alreadyOpenRadio)], true] call CBA_fnc_notify;
 };

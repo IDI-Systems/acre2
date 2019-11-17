@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Creates a loop to send periodic messages to the TeamSpeak plugin (via the ACRE2Arma extension) to indicate that the game is still connected.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 DFUNC(pingFunc) = {
     if (GVAR(serverStarted)) then {
@@ -21,7 +21,7 @@ DFUNC(pingFunc) = {
         // diag_log text format["%1 ACRE: ping!", diag_tickTime];
         private _ret = "ACRE2Arma" callExtension "2ping:";
         if (diag_tickTime - GVAR(pongTime) > 10) then {
-            hintSilent "ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.";
+            [[localize LSTRING(noPingReturn)]] call CBA_fnc_notify;
 
             _ret = "ACRE2Arma" callExtension "4";
             GVAR(runServer) = false;
@@ -34,7 +34,7 @@ DFUNC(pingFunc) = {
                 [] call FUNC(ping);
             };
         };
-        if (!(GVAR(runServer))) then {
+        if !(GVAR(runServer)) then {
             INFO("Server shutting down ping loop.");
             [(_this select 1)] call CBA_fnc_removePerFrameHandler;
         };

@@ -20,7 +20,8 @@ if (!hasInterface) exitWith {
 */
 
 // globals
-DGVAR(lowered) = 0;
+DGVAR(antennaDirUp) = false;
+DGVAR(lowered) = false;
 DGVAR(muting) = [];
 DGVAR(speakers) = [];
 DGVAR(enableDistanceMuting) = true;
@@ -67,6 +68,7 @@ GVAR(delayReleasePTT_Handle) = nil;
 
 DVAR(ACRE_ACTIVE_PTTKEY) = -2;
 DVAR(ACRE_BROADCASTING_RADIOID) = "";
+DVAR(ACRE_BROADCASTING_NOTIFICATION_LAYER) = ""; // Name of the notification system layer where the current broadcast is displayed
 
 DVAR(ACRE_CURRENT_LANGUAGE_ID) = 0;
 DVAR(ACRE_SPOKEN_LANGUAGES) = [];
@@ -93,13 +95,23 @@ acre_player = player;
 GVAR(coreCache) = HASH_CREATE;
 
 acre_sys_io_ioEventFnc = {
-    BEGIN_COUNTER(ioEventFunction);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        BEGIN_COUNTER(ioEventFunction);
+    #endif
     _this call EFUNC(sys_rpc,handleData);
-    END_COUNTER(ioEventFunction);
+    #ifdef ENABLE_PERFORMANCE_COUNTERS
+        END_COUNTER(ioEventFunction);
+    #endif
 };
 
 ["unit", {
-    acre_player = (_this select 0);
+    acre_current_player = _this select 0;
+    acre_player = acre_current_player;
+    if !(acre_player isEqualTo player) then {
+        if (acre_current_player getVariable [QEGVAR(sys_zeus,usePlayer), EGVAR(sys_zeus,zeusDefaultVoiceSource)]) then {
+            acre_player = player;
+        };
+    };
 }] call CBA_fnc_addPlayerEventHandler;
 
 #ifdef USE_DEBUG_EXTENSIONS
@@ -114,7 +126,7 @@ private _monitorFnc = {
         private _callBack = GVAR(threadedExtCalls) select _id;
         if (IS_ARRAY(_callBack)) then {
             private _args = (_res select 1);
-            if (count _args > 0) then {
+            if !(_args isEqualTo []) then {
                 _args = _args select 0;
             };
             [_callBack select 0, _args] call (_callBack select 1);

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,15 +15,14 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", "_radioData"];
 
 TRACE_1("SETTING CURRENT CHANNEL",_this);
 private _groups = HASH_GET(_radioData, "groups");
 private _group = _groups select HASH_GET(_radioData, "currentGroup");
 
-if (!(_eventData in (_group select 1))) then {
+if !(_eventData in (_group select 1)) then {
     {
         _x params ["","_channelNums"];
         private _groupIndex = _forEachIndex;

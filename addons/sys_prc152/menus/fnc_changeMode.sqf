@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("changeMode", _this);
 
@@ -30,7 +30,7 @@ if (_knobPosition == 0) then {
     private _onOffState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
     TRACE_2("State", _knobPosition, _onOffState);
     if (_onOffState >= 1) then {
-        ["setCurrentChannel", _knobPosition-1] call GUI_DATA_EVENT;
+        ["setCurrentChannel", _knobPosition - 1] call GUI_DATA_EVENT;
         private _currentMenu = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
         [_currentMenu] call FUNC(renderMenu);
     } else {

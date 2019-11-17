@@ -11,7 +11,7 @@ class CFilterOcclusion
 public:
     CFilterOcclusion(void);
     ~CFilterOcclusion(void);
-    ACRE_RESULT process(short* samples, int sampleCount, int channels, ACRE_VOLUME volume, Dsp::Filter *&filter);
+    acre::Result process(short* samples, int sampleCount, int channels, acre::volume_t volume, Dsp::Filter *&filter);
 
     DECLARE_MEMBER(int, ChannelCount);
 };

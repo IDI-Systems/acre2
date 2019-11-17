@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: ACRE2
-  version: v2.6.1
+  version: v2.7.1
   folders:
 
   - title:
@@ -131,6 +131,10 @@ entries:
 
     - title: Functions List
       url: /wiki/frameworks/functions-list
+      output: web, pdf
+
+    - title: Events List
+      url: /wiki/frameworks/events-list
       output: web, pdf
 
     - title: Mission Making Intro

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,14 +15,13 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _button = toLower (_this select 0);
 private _iconcontrol = 99901;
 private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
 if (!isNull _display) then {
     //if (GET_STATE("pressedButton") < 0) Then {
-        private _knobImageStr = QUOTE(\idi\acre\addons\sys_prc148\data\Knobs\keypad\prc148_ui_keys_) + _button + QUOTE(.paa);
+        private _knobImageStr = format ["%1%2%3", QUOTE(\idi\acre\addons\sys_prc148\data\Knobs\keypad\prc148_ui_keys_), _button, QUOTE(.paa)];
         (_display displayCtrl _iconcontrol) ctrlSetText _knobImageStr;
         SET_STATE("pressedButton",_button);
         private _ret = [GVAR(currentRadioId), FUNC(toggleButtonPressUp), 0.15] call FUNC(delayFunction);

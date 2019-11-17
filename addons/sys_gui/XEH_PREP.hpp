@@ -1,13 +1,8 @@
-PREP(missionDisplayLoad);
-
-// Volume control
-PREP(openVolumeControl);
-PREP(closeVolumeControl);
-PREP(onVolumeControlAdjust);
-PREP(onVolumeControlKeyPress);
-PREP(onVolumeControlKeyPressUp);
-PREP(onVolumeControlSliderChanged);
-PREP(setVolumeSliderColor);
+PREP(getVolumeColor);
+PREP(onMouseZChanged);
+PREP(setVoiceCurveLevel);
+PREP(volumeKeyDown);
+PREP(volumeKeyUp);
 
 PREP(openInventory);
 PREP(closeInventory);
@@ -25,3 +20,4 @@ PREP(handleTake);
 PREP(inventoryMonitorPFH);
 
 PREP(updateVehicleInfo);
+PREP(antennaElevationDisplay);

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /*
  *  This function returns if the radios internal
@@ -40,6 +40,6 @@
 */
 
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 (HASH_GET(_radioData, "audioPath") == "INTSPEAKER")

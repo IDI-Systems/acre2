@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function sets the current channel
  *
@@ -35,9 +36,8 @@
  *  Returned parameters:
  *      nothing
 */
-#include "script_component.hpp"
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 // First, we check how many channels are available in total
 private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;
@@ -49,11 +49,9 @@ HASH_SET(_radioData,"currentChannel",_newChannel);
 
 private _channelKnobPosition = _newChannel+2; // position 0 is off, 1 is last channel, so offset by 2
 private _currentChannelKnobPosition = HASH_GET(_radioData,"channelKnobPosition");
-if (_currentChannelKnobPosition != 1) then { //If set to Ein channel don't update the knob position.
-    if (_currentChannelKnobPosition != _channelKnobPosition) then {
-        HASH_SET(_radioData,"channelKnobPosition",_channelKnobPosition);
-        if (!(GVAR(currentRadioId) isEqualTo -1)) then { // is dialog open.
-            [MAIN_DISPLAY] call FUNC(render);
-        };
+if (_currentChannelKnobPosition != 1 && {_currentChannelKnobPosition != _channelKnobPosition}) then {
+    HASH_SET(_radioData,"channelKnobPosition",_channelKnobPosition);
+    if (!(GVAR(currentRadioId) isEqualTo -1)) then { // is dialog open.
+        [MAIN_DISPLAY] call FUNC(render);
     };
 };

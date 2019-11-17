@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Returns whether the radio can be opened.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId"];
 
@@ -23,7 +23,7 @@ private _vehicle = vehicle acre_player;
 if (_vehicle != acre_player) then {
     if (_canOpenRadio && {_radioId in ACRE_ACCESSIBLE_RACK_RADIOS} && {isTurnedOut acre_player}) then {
         _canOpenRadio = false;
-        [localize LSTRING(noGuiTurnedOut), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [[ICON_RADIO_CALL], [localize LSTRING(noGuiTurnedOut)]] call CBA_fnc_notify;
     };
 };
 
@@ -33,9 +33,9 @@ if (_vehicle != acre_player) then {
 if (_radioId in ACRE_HEARABLE_RACK_RADIOS || {_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS && !([_radioId] call FUNC(isManpackRadio))}) then {
     _canOpenRadio = false;
     if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS) then {
-        [localize LSTRING(noGuiExternal), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [[ICON_RADIO_CALL], [localize LSTRING(noGuiExternal)]] call CBA_fnc_notify;
     } else {
-        [localize LSTRING(noGuiSeat), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [[ICON_RADIO_CALL], [localize LSTRING(noGuiSeat)]] call CBA_fnc_notify;
     };
 };
 
@@ -46,7 +46,7 @@ if (_radioId in ACRE_HEARABLE_RACK_RADIOS || {_radioId in ACRE_ACTIVE_EXTERNAL_R
 if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || {_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS} || {_radioId in ACRE_EXTERNALLY_USED_MANPACK_RADIOS}) then {
     if ([_radioId, "getState", "radioGuiOpened"] call EFUNC(sys_data,dataEvent)) then {
         _canOpenRadio = false;
-        [localize LSTRING(alreadyOpenRadio), ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+        [[ICON_RADIO_CALL], [localize LSTRING(alreadyOpenRadio)]] call CBA_fnc_notify;
     } else {
         /* Check if in the server, there is a radio registered as opened. This is done in order to prevent race conditions when two players try to
          * simultaneously open a radio. We do not want fights because of ACRE2.

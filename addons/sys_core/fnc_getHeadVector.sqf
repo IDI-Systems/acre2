@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * This function returns the direction the local player is facing.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _position = positionCameraToWorld [0, 0, 0];
 private _viewPos = positionCameraToWorld [0, 0, 99999999];

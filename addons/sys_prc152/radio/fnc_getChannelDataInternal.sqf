@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("", _this);
 
@@ -30,7 +30,7 @@ if ((count _this) > 1) then {
     _currentChannelId = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 };
 
-if (!(isNil "_optChannelId") && !(isNil "_opt")) then {
+if (!(isNil "_optChannelId") && {!(isNil "_opt")}) then {
     if (_optChannelId != _currentChannelId) then {
         // The current channel is not the same as the operational channel so just return
         private _channel = HASHLIST_SELECT(_channels, _currentChannelId);
@@ -49,6 +49,6 @@ if (!(isNil "_optChannelId") && !(isNil "_opt")) then {
         _channel
     };
 } else {
-        private _channel = HASHLIST_SELECT(_channels, _currentChannelId);
-        _channel
+    private _channel = HASHLIST_SELECT(_channels, _currentChannelId);
+    _channel
 };

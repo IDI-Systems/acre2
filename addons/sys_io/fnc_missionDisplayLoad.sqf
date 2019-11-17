@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Move TeamSpeak 3 channel on main display load.
@@ -13,9 +14,8 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-if (GVAR(serverStarted) && isMultiplayer) then {
+if (GVAR(serverStarted) && {isMultiplayer}) then {
     // Move TeamSpeak 3 channel on display 46 (main display) initialization
     call FUNC(ts3ChannelMove);
 };

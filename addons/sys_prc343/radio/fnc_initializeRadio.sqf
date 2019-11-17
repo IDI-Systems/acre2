@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialises a radio by givint it a radio ID. This only happens once and the default
@@ -18,7 +19,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 TRACE_1("INITIALIZING RADIO 343", _this);
 
@@ -42,7 +42,7 @@ for "_i" from 0 to (count _channels)-1 do {
     PUSH(_currentChannels, _channelData);
 };
 
-HASH_SET(_radioData,"volume",1);
+HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume));
 HASH_SET(_radioData,"radioOn",1);
 HASH_SET(_radioData,"currentView",1);
 HASH_SET(_radioData,"currentChannel",0);

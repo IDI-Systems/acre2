@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 _eventData params ["_baseName", "_preset"];
@@ -36,7 +36,7 @@ for "_i" from 0 to (count _channels)-1 do {
     TRACE_1("Setting PRC-152 Init Channel Data", _channelData);
     PUSH(_currentChannels, _channelData);
 };
-HASH_SET(_radioData,"volume",1);
+HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume));
 HASH_SET(_radioData,"currentChannel",0);
 HASH_SET(_radioData,"radioOn", 1);
 HASH_SET(_radioData,"pressedButton", -1);

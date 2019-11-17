@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calls the mode specific availability function and there checks if two list of radios are able to communicate with each other.
@@ -15,9 +16,8 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_list1", "_list2", ["_quick",true]];
+params ["_list1", "_list2", ["_quick", true]];
 
 private _foundRadios = [];
 
@@ -28,7 +28,7 @@ private _foundRadios = [];
     PUSH(_foundRadios, [ARR_2(_radioId1,_matches)]);
     private _radio1Data = [_radioId1, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     private _mode1 = HASH_GET(_radio1Data, "mode");
-    private _functionName = getText(configFile >> "CfgAcreRadioModes" >> _mode1 >> "availability");
+    private _functionName = getText (configFile >> "CfgAcreRadioModes" >> _mode1 >> "availability");
     if (_functionName != "") then {
         private _function = missionNamespace getVariable _functionName;
         {
@@ -41,9 +41,9 @@ private _foundRadios = [];
                     PUSH(_matches, _radioId2);
                 };
             };
-            if (_isAvailable && _quick) exitWith {};
+            if (_isAvailable && {_quick}) exitWith {};
         } forEach _list2;
-        if ((count _matches) > 0) then {
+        if !(_matches isEqualTo []) then {
             if (_quick) then {
                 _exit = true;
             };

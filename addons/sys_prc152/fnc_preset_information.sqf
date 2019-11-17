@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // channels information
 private _presetData = HASH_CREATE;
@@ -161,7 +161,7 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private _frequency = 0;
     _frequency = (950+600+(_i*2))*0.0625;
-    if (!(_frequency in _usedPresetFrequencies)) then {
+    if !(_frequency in _usedPresetFrequencies) then {
         private _ok = true;
         {
             if (abs(_x-_frequency) <= 0.25) exitWith {

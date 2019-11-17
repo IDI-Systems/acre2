@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 DFUNC(changeValueAck_End) = {
     params ["_radioId"];
@@ -47,7 +47,7 @@ DFUNC(changeValueAck_End) = {
 params ["_menu","_valuePair"];
 _valuePair params ["_valueType","_value"];
 
-if (isNil QGVAR(currentRadioId) || isNil QEGVAR(sys_radio,currentRadioDialog) ) exitWith {
+if (isNil QGVAR(currentRadioId) || {isNil QEGVAR(sys_radio,currentRadioDialog)}) exitWith {
     false
 };
 if (EGVAR(sys_radio,currentRadioDialog) != GVAR(currentRadioId)) exitWith {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /*
  *  This function is basically a wrapper for setting the content
@@ -38,6 +38,6 @@
  *      nothing
 */
 
-params ["_radioId","_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 HASH_SET(_radioData, _eventData param [0], _eventData param [1]);

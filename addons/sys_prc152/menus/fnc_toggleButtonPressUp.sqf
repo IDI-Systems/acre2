@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,12 +15,11 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
+
+private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
+if (isNull _display) exitWith {};
 
 private _iconcontrol = 1000;
-private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
-if (!isNull _display) then {
-    private _knobImageStr = QPATHTOF(Data\Knobs\keypad\prc152c_ui_default.paa);
-    (_display displayCtrl _iconcontrol) ctrlSetText _knobImageStr;
-    SET_STATE("pressedButton",-1);
-};
+private _knobImageStr = QPATHTOF(Data\Knobs\keypad\prc152c_ui_default.paa);
+(_display displayCtrl _iconcontrol) ctrlSetText _knobImageStr;
+SET_STATE("pressedButton",-1);

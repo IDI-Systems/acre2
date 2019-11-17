@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /*
  *  This function returns the current spatial state of
@@ -40,7 +40,7 @@
  *      current spatial setting (Number)
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 private _spatial = HASH_GET(_radioData, "ACRE_INTERNAL_RADIOSPATIALIZATION");
 

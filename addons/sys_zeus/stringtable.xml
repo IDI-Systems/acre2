@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_zeus">
+        <Key ID="STR_ACRE_sys_zeus_SpectatorEars">
+            <English>Switch to Spectator</English>
+            <Japanese>スペクテイターに切り替え</Japanese>
+            <German>Wechsle zu Zuschauer</German>
+            <Russian>Переключиться на Спектатора</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_ZeusEars">
+            <English>Switch to Zeus</English>
+            <Japanese>Zeus に切り替え</Japanese>
+            <German>Wechsle zu ZEUS</German>
+            <Russian>Переключиться на Zeus</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_Remote">
+            <English>Use Remote Controlled Voice</English>
+            <Japanese>遠隔操作ユニットの声を使用</Japanese>
+            <German>Nutze Ferngesteuerte Stimme</German>
+            <Russian>Использовать удаленный разговор</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_Player">
+            <English>Use Player Voice</English>
+            <Japanese>プレイヤーの声を使用</Japanese>
+            <German>Nutze Spielerstimme</German>
+            <Russian>Использовать голос игрока</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera">
+            <English>Speak through the Camera</English>
+            <Japanese>カメラを通じて話す</Japanese>
+            <German>Spreche durch die Kamera</German>
+            <Russian>Говорить через камеру</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera_Description">
+            <English>Talk from the Zeus Interface's camera instead of your unit's position. Listen through camera must be enabled.</English>
+            <Japanese>Zeus 画面のカメラから話すようになります。"カメラを通じて聞く" が有効になっている必要があります。</Japanese>
+            <German>Spreche aus der ZEUS Kamera anstatt von der Position der Einheit. Hören durch ZEUS Kamera muss aktiviert sein.</German>
+            <Russian>Говорить через интерфейс Zeus вместо позиции вашего юнита. Должна быть включено прослушивание через камеру</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_DisplayName">
+            <English>Default Zeus Voice Source</English>
+            <Japanese>Zeus の音源</Japanese>
+            <German>Standard ZEUS Sprachquelle</German>
+            <Russian>Источник голоса Zeus по умолчанию</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_DisplayName">
+            <English>Communicate Through Camera</English>
+            <German>Kommuniziere durch Kamera</German>
+            <Russian>Общаться через камеру</Russian>
+            <Japanese>カメラを通じて会話</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_Description">
+            <English>Hear and talk with players through the Zeus Interface's camera.</English>
+            <German>Höre zu und spreche mit Spielern durch die ZEUS Kamera</German>
+            <Russian>Слышать и говорить с игроками через камеру в интерфейсе Zeus</Russian>
+            <Japanese>Zeus カメラを通じてプレイヤーを話せるようになります。</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_DisplayName">
+            <English>Able to Join Spectators</English>
+            <Japanese>スペクテイターへ参加可能に</Japanese>
+            <German>Kommunikation mit Zuschauern möglich</German>
+            <Russian>Возможно присоединиться к Спектаторам</Russian>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_Description">
+            <English>Let Zeus join the specators while in the Zeus interface.</English>
+            <Japanese>Zeus が Zeus 画面のままスペクテイターへの参加を可能にします。</Japanese>
+            <German>Lasse ZEUS mit dem Zuschauern kommunizieren während die ZEUS Oberfläche genutzt wird.</German>
+            <Russian>Дать Zeus возможность присоединяться к спектаторам,находясь в интерфейсе Zeus</Russian>
+        </Key>
+    </Package>
+</Project>

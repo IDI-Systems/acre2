@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /*
  *  This function is basically a wrapper for getting the content
@@ -38,7 +38,7 @@
  *      Hash Value
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 //TRACE_4("getState",_radioData,_event,_eventData,_radioData);
 

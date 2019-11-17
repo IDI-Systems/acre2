@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,9 +15,10 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-BEGIN_COUNTER(renderText);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    BEGIN_COUNTER(renderText);
+#endif
 
 TRACE_1("renderText", _this);
 
@@ -29,4 +31,6 @@ if ((count _this) > 3) then {
 
 [_row, _text, _alignment] call FUNC(setRowText);
 
-END_COUNTER(renderText);
+#ifdef ENABLE_PERFORMANCE_COUNTERS
+    END_COUNTER(renderText);
+#endif

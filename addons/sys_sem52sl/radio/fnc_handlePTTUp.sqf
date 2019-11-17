@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /*
  *  This function is called when a PTT key is released.
@@ -50,6 +50,6 @@ params ["_radioId"];
 */
 
 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-[_radioId, "Acre_GenericClickOff", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
+[_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
 SCRATCH_SET(_radioId, "PTTDown", false);
 true;

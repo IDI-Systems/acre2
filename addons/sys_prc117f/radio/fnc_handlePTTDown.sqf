@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,11 +15,10 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_radioId"];
 
-if (!([_radioId] call EFUNC(sys_radio,canUnitTransmit))) exitWith {false};
+if !([_radioId] call EFUNC(sys_radio,canUnitTransmit)) exitWith {false};
 
 private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 private _channelData = [_radioId, _channelNumber] call FUNC(getChannelDataInternal);
@@ -31,6 +31,6 @@ if (_rxOnly) exitWith {
 };
 
 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-[_radioId, "Acre_GenericBeep", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
+[_radioId, "Acre_GenericBeep", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
 SCRATCH_SET(_radioId, "PTTDown", true);
 true

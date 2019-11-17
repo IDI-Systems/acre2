@@ -6,7 +6,7 @@
     [0, 3, 1, 2],
     false,
     {["globalVolume", _this] call FUNC(setPluginSetting)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(premixGlobalVolume),
@@ -16,7 +16,15 @@
     [0, 3, 1, 2],
     false,
     {["premixGlobalVolume", _this] call FUNC(setPluginSetting)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(defaultRadioVolume),
+    "LIST",
+    localize LSTRING(defaultRadioVolume_displayName),
+    "ACRE2",
+    [[0.2, 0.4, 0.6, 0.8, 1], ["20%", "40%", "60%", "80%", "100%"], 3]
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(spectatorVolume),
@@ -26,7 +34,7 @@
     [0, 1, 1, 2],
     false,
     {}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 [
     QGVAR(unmuteClients),
@@ -36,7 +44,7 @@
     true,
     false,
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Teamspeak Channel Switching
 // Switch channels
@@ -48,7 +56,7 @@
     true,
     false,
     {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Channel Name
 [
@@ -59,7 +67,7 @@
     "",
     true,
     {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Channel Password
 [
@@ -70,7 +78,7 @@
     ["", true],
     true,
     {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
-] call CBA_Settings_fnc_init;
+] call CBA_fnc_addSetting;
 
 // Difficulty settings
 // Interference
@@ -81,8 +89,8 @@
     "ACRE2",
     true,
     true,
-    {[_this, true] call EFUNC(api,setInterference)} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;
+    {[_this] call FUNC(setInterference)}
+] call CBA_fnc_addSetting;
 
 // Full duplex
 [
@@ -92,8 +100,8 @@
     "ACRE2",
     false,
     true,
-    {[_this, true] call EFUNC(api,setFullDuplex)} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;
+    {[_this] call EFUNC(api,setFullDuplex)}
+] call CBA_fnc_addSetting;
 
 // Antena direction
 [
@@ -103,8 +111,17 @@
     "ACRE2",
     false,
     true,
-    {[_this, true] call EFUNC(api,ignoreAntennaDirection)} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;
+    {[_this] call FUNC(ignoreAntennaDirection)}
+] call CBA_fnc_addSetting;
+
+// Antena direction
+[
+    QGVAR(automaticAntennaDirection),
+    "CHECKBOX",
+    localize LSTRING(autoAntennaDirection_displayName),
+    "ACRE2",
+    false
+] call CBA_fnc_addSetting;
 
 // Terrain loss
 [
@@ -112,37 +129,39 @@
     "SLIDER",
     localize LSTRING(terrainLoss_displayName),
     "ACRE2",
-    [0, 1, 0.50, 2],
+    [0, 1, 1, 2],
     true,
-    {[_this, true] call EFUNC(api,setLossModelScale)} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;
+    {[_this] call FUNC(setLossModelScale)}
+] call CBA_fnc_addSetting;
 
 // Reveal to AI
 [
     QGVAR(revealToAI),
-    "CHECKBOX",
+    "SLIDER",
     localize LSTRING(revealToAI_displayName),
     "ACRE2",
+    [0, 2.50, 1, 2],
     true,
+    {[_this] call FUNC(setRevealToAI)}
+] call CBA_fnc_addSetting;
+
+// Notification Settings - not yet implemented
+/*[
+    QGVAR(incomingTransmissionNotification),
+    "CHECKBOX",
+    localize LSTRING(incomingTransmissionNotification),
+    "ACRE2",
+    false,
     true,
-    {[_this, true] call EFUNC(api,setRevealToAI)} // @todo remove second parameter in 2.7.0
-] call CBA_Settings_fnc_init;
+    {}
+] call CBA_fnc_addSetting;
 
-// @todo remove in 2.7.0
-// Module settings
-// Applies the difficulty module settings over CBA settings. If the module is not present, this function has no effect.
-["CBA_beforeSettingsInitialized", {
-    private _missionModules = allMissionObjects "acre_api_DifficultySettings";
-    if (count _missionModules == 0) exitWith {};
-
-    private _fullDuplex = (_missionModules select 0) getVariable ["FullDuplex", false];
-    private _interference = (_missionModules select 0) getVariable ["Interference", true];
-    private _ignoreAntennaDirection = (_missionModules select 0) getVariable ["IgnoreAntennaDirection", false];
-    private _signalLoss = (_missionModules select 0) getVariable ["SignalLoss", true];
-
-    //@todo remove force when CBA issue fixed: https://github.com/CBATeam/CBA_A3/issues/580
-    ["CBA_settings_setSettingMission", [QGVAR(interference), _interference, true]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(fullDuplex), _fullDuplex, true]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(ignoreAntennaDirection), _ignoreAntennaDirection, true]] call CBA_fnc_localEvent;
-    ["CBA_settings_setSettingMission", [QGVAR(terrainLoss), parseNumber _signalLoss, true]] call CBA_fnc_localEvent;
-}] call CBA_fnc_addEventHandler;
+[
+    QGVAR(rackTransmissionNotification),
+    "CHECKBOX",
+    localize LSTRING(rackTransmissionNotification),
+    "ACRE2",
+    false,
+    true,
+    {}
+] call CBA_fnc_addSetting;*/

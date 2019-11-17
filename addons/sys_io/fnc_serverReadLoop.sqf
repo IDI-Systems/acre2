@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Checks if the ACRE2Arma extension has any pending messages (typically for return data from the TeamSpeak plugin). This is called on a per frame basis.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (GVAR(pipeCode) == "1") then {
     for "_count" from 0 to 50 do {
@@ -26,13 +26,13 @@ if (GVAR(pipeCode) == "1") then {
             private _msg = "Experienced a pipe error! Closing!";
             WARNING(_msg);
             if (isMultiplayer) then {
-                hint _msg;
+                [_msg] call CBA_fnc_notify;
             };
             "ACRE2Arma" callExtension "1";
             GVAR(pipeCode) = "0";
         };
 
-        if (_ret isEqualTo "_JERR_NOCONNECT" || _ret isEqualTo "_JERR_NULL") exitWith {};
+        if (_ret isEqualTo "_JERR_NOCONNECT" || {_ret isEqualTo "_JERR_NULL"}) exitWith {};
 
         TRACE_1("got message", _ret);
         _ret call CALLSTACK(GVAR(ioEventFnc));

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Attaches a simple component to a complex component.
@@ -7,19 +8,18 @@
  * 1: Parent connector Index <NUMBER>
  * 2: Child component Id - Simple component <STRING>
  * 3: Attributes of connection <HASH>
- * 4: Force - Permits replacing a pre-existing connection <BOOLEAN>
+ * 4: Force - Permits replacing a pre-existing connection <BOOLEAN> (default: false)
  *
  * Return Value:
  * Successful <BOOLEAN>
  *
  * Example:
- * ["ACRE_PRC152_ID_1",0,"ACRE_120CM_VHF_TNC",[],false] call acre_sys_components_fnc_attachSimpleComponent
+ * ["ACRE_PRC152_ID_1",0,"ACRE_120CM_VHF_TNC",HASH_CREATE,false] call acre_sys_components_fnc_attachSimpleComponent
  *
  * Public: No
  */
-#include "script_component.hpp"
 
-params ["_parentComponentId", "_parentConnector", "_childComponentType", "_attributes", ["_force",false]];
+params ["_parentComponentId", "_parentConnector", "_childComponentType", "_attributes", ["_force", false]];
 
 private _return = false;
 private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_parentComponentId);

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Updates the position and viewing direction of the local player.
@@ -13,19 +14,20 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 // ref bug: http://feedback.arma3.com/view.php?id=15580
-private _projectPos1 = ATLtoASL positionCameraToWorld [0,0,0];
+private _projectPos = ATLtoASL positionCameraToWorld [0, 0, 0];
 
-private _projectPos2 = ATLtoASL positionCameraToWorld [0,0,1];
-
-ACRE_LISTENER_DIR = _projectPos2 vectorDiff _projectPos1;
-
-if (!ACRE_IS_SPECTATOR) then {
-    ACRE_LISTENER_POS = eyePos acre_player;
+if (EGVAR(sys_zeus,zeusCommunicateViaCamera) && {call FUNC(inZeus)}) then {
+    ACRE_LISTENER_DIR = eyeDirection player;
 } else {
-    ACRE_LISTENER_POS = _projectPos1;
+    ACRE_LISTENER_DIR = (ATLtoASL positionCameraToWorld [0, 0, 1]) vectorDiff _projectPos;
+};
+
+if (ACRE_IS_SPECTATOR) then {
+    ACRE_LISTENER_POS = _projectPos;
+} else {
+    ACRE_LISTENER_POS = eyePos acre_player;
 };
 
 private _height = ACRE_LISTENER_POS param [2, 1];
@@ -36,4 +38,9 @@ if (_height < 0) then {
 };
 
 private _additionalValues = [([] call FUNC(getSpeakingLanguageId))];
-CALL_RPC("updateSelf", ACRE_LISTENER_POS + ACRE_LISTENER_DIR + _additionalValues);
+private _updateSelf = [];
+_updateSelf append ACRE_LISTENER_POS;
+_updateSelf append ACRE_LISTENER_DIR;
+_updateSelf append _additionalValues;
+
+CALL_RPC("updateSelf", _updateSelf);

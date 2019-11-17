@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 /*
  *  This function is called when a radio transmission is initiated.
@@ -39,7 +39,7 @@
  *      true
 */
 
-params ["_radioId", "_eventKind", "_eventData"];
+params ["_radioId", "", ""];
 
 SCRATCH_SET(_radioId, "cachedTransmissions", false);
 

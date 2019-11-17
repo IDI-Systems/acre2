@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private ["_ret"];
 if (IS_SERIALIZEDHASH(_this)) then {
@@ -26,4 +26,5 @@ if (IS_SERIALIZEDHASH(_this)) then {
         _ret = _this;
     };
 };
-_ret;
+
+_ret

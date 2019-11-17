@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the return of the current plugin version from TeamSpeak. Displays messages to the player if any of the versions do not match.
@@ -13,23 +14,18 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 // for testing below...
 GVAR(pluginVersion) = _this select 0;
 
 private _warn = false;
-private _isServer = false;
-private _isClient = false;
 
 if (!isNil "ACRE_FULL_SERVER_VERSION") then {
     if (ACRE_FULL_SERVER_VERSION != QUOTE(VERSION)) then {
         _warn = true;
-        _isServer = true;
     };
 };
 if (GVAR(pluginVersion) != QUOTE(VERSION_PLUGIN)) then {
     _warn = true;
-    _isClient = true;
 };
 
 if (!ACRE_SPIT_VERSION && {!isNil "ACRE_FULL_SERVER_VERSION"}) then {

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * ACRE2 garbage collector. Run as a per frame event handler.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (count ACRE_FAST_HASH_CREATED_HASHES_NEW < ((count ACRE_FAST_HASH_CREATED_HASHES)*0.1)/2) exitWith {};
 // diag_log text format["---------------------------------------------------"];
@@ -38,7 +38,7 @@ while {diag_tickTime - _init_time < 0.001 && {ACRE_FAST_HASH_GC_INDEX < ACRE_FAS
 // diag_log text format["GC Objects Left: %1", ACRE_FAST_HASH_VAR_LENGTH - ACRE_FAST_HASH_GC_INDEX];
 
 _init_time = diag_tickTime;
-while {diag_tickTime - _init_time < 0.001 && {(count ACRE_FAST_HASH_GC_FOUND_ARRAYS) > 0}} do {
+while {diag_tickTime - _init_time < 0.001 && {!(ACRE_FAST_HASH_GC_FOUND_ARRAYS isEqualTo [])}} do {
     private _array = ACRE_FAST_HASH_GC_FOUND_ARRAYS deleteAt 0;
     {
         if (IS_HASH(_x)) then {
@@ -55,7 +55,7 @@ while {diag_tickTime - _init_time < 0.001 && {(count ACRE_FAST_HASH_GC_FOUND_ARR
 // diag_log text format["GC Arrays Left: %1", (count ACRE_FAST_HASH_GC_FOUND_ARRAYS)];
 
 _init_time = diag_tickTime;
-while {diag_tickTime - _init_time < 0.001 && {(count ACRE_FAST_HASH_GC_FOUND_OBJECTS) > 0}} do {
+while {diag_tickTime - _init_time < 0.001 && {!(ACRE_FAST_HASH_GC_FOUND_OBJECTS isEqualTo [])}} do {
     private _hash = ACRE_FAST_HASH_GC_FOUND_OBJECTS deleteAt 0;
     ACRE_FAST_HASH_GC_CHECK_OBJECTS pushBack _hash;
     private _array = allVariables _hash;
@@ -73,7 +73,7 @@ while {diag_tickTime - _init_time < 0.001 && {(count ACRE_FAST_HASH_GC_FOUND_OBJ
 };
 // diag_log text format["GC Hashes Left: %1", (count ACRE_FAST_HASH_GC_FOUND_OBJECTS)];
 
-if (ACRE_FAST_HASH_GC_INDEX >= ACRE_FAST_HASH_VAR_LENGTH && {(count ACRE_FAST_HASH_GC_FOUND_ARRAYS) <= 0} && {(count ACRE_FAST_HASH_GC_FOUND_OBJECTS) <= 0}) then {
+if (ACRE_FAST_HASH_GC_INDEX >= ACRE_FAST_HASH_VAR_LENGTH && {ACRE_FAST_HASH_GC_FOUND_ARRAYS isEqualTo []} && {ACRE_FAST_HASH_GC_FOUND_OBJECTS isEqualTo []}) then {
     if (ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX < (count ACRE_FAST_HASH_CREATED_HASHES)) then {
         _init_time = diag_tickTime;
         while {diag_tickTime - _init_time < 0.001 && {ACRE_FAST_HASH_GC_ORPHAN_CHECK_INDEX < (count ACRE_FAST_HASH_CREATED_HASHES)}} do {

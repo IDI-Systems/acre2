@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,7 @@
  *
  * Public: No
  */
- 
+
 /*
  *  This function shall provide data to the transmission hint function
  *  The returned string will represent the last line of the hint
@@ -36,11 +37,10 @@
  *  Returned parameters:
  *      String
 */
-#include "script_component.hpp"
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "", ""];
 
 private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
-private _description = format["Channel %1", ([(_channelNumber+1), 2] call CBA_fnc_formatNumber)];
+private _description = format ["Channel %1", ([(_channelNumber+1), 2] call CBA_fnc_formatNumber)];
 
 _description

@@ -1,50 +1,59 @@
 #include "script_component.hpp"
+#include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
 // Exit if ACE3 not loaded
 if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
-["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Air", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
-["Boat_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+private _addClassEH = {
+    ["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["Air", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+    ["Boat_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
+};
+
+if (didJIP) then {
+    // Give some time for synchronisation
+    [{params ["_callFnc"]; [] call _callFnc;}, [_addClassEH], 3] call CBA_fnc_waitAndExecute;
+} else {
+    [] call _addClassEH;
+};
+
+// =================================== End Vehicle Initialisation
 
 if (!hasInterface) exitWith {};
 
-// CBA Keybindings
-//["ACRE2", "IntercomPTTKey",  [(localize LSTRING(intercomPttKey)), (localize LSTRING(intercomPttKey_description))], { [PTT_ACTION] call FUNC(handlePttKeyPress) }, { [PTT_ACTION] call FUNC(handlePttKeyPressUp) }, [52, [true, false, false]]] call cba_fnc_addKeybind;
-//["ACRE2", "IntercomBroadcastKey",  [(localize LSTRING(intercomBroadcastKey)), (localize LSTRING(intercomBroadcastKey_description))], { [BROADCAST_ACTION] call FUNC(handlePttKeyPress) }, { [BROADCAST_ACTION] call FUNC(handlePttKeyPressUp) }, [52, [false, true, false]]] call cba_fnc_addKeybind;
-[
-    "ACRE2",
-    "IntercomPTTKey",
-    [(localize LSTRING(intercomPttKey)), (localize LSTRING(intercomPttKey_description))],
-    "",
-    {
-        if(!GVAR(intercomPttKey)) then {
-            [PTT_ACTION] call FUNC(handlePttKeyPress);
-        } else {
-            [PTT_ACTION] call FUNC(handlePttKeyPressUp);
-        };
-    }
-] call cba_fnc_addKeybind;
+// Keybinds - Intercom
+["ACRE2", "IntercomPTTKey", [localize LSTRING(intercomPttKey), localize LSTRING(intercomPttKey_description)], {
+    [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPress)
+}, {
+    [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPressUp)
+}] call CBA_fnc_addKeybind;
 
-[
-    "ACRE2",
-    "IntercomBroadcastKey",
-    [(localize LSTRING(intercomBroadcastKey)), (localize LSTRING(intercomBroadcastKey_description))],
-    "",
-    {
-        if(!GVAR(broadcastKey)) then {
-            [BROADCAST_ACTION] call FUNC(handlePttKeyPress);
-        } else {
-            [BROADCAST_ACTION] call FUNC(handlePttKeyPressUp);
-        };
-    }
-] call cba_fnc_addKeybind;
+["ACRE2", "IntercomBroadcastKey", [localize LSTRING(intercomBroadcastKey), localize LSTRING(intercomBroadcastKey_description)], {
+    [ACTION_BROADCAST] call FUNC(handlePttKeyPress)
+}, {
+    [ACTION_BROADCAST] call FUNC(handlePttKeyPressUp)
+}] call CBA_fnc_addKeybind;
 
-["ACRE2", "PreviousIntercom", (localize LSTRING(previousIntercom)), "", { [-1, true] call FUNC(switchIntercomFast) }, [51, [true, false, false]]] call cba_fnc_addKeybind;
-["ACRE2", "NextIntercom", (localize LSTRING(nextIntercom)), "", {[1, true] call FUNC(switchIntercomFast)}, [51, [false, true, false]]] call cba_fnc_addKeybind;
-["ACRE2", "AddPreviousIntercom", (localize LSTRING(addPreviousIntercom)), "", {[-1, false] call FUNC(switchIntercomFast)}, [51, [true, false, true]]] call cba_fnc_addKeybind;
-["ACRE2", "AddNextIntercom", (localize LSTRING(addNextIntercom)), "", {[1, false] call FUNC(switchIntercomFast)}, [51, [false, true, true]]] call cba_fnc_addKeybind;
+["ACRE2", "PreviousIntercom", [localize LSTRING(previousIntercomKey), localize LSTRING(previousIntercomKey_description)], "", {
+    [-1, true] call FUNC(switchIntercomFast)
+}, [DIK_COMMA, [true, false, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "NextIntercom", [localize LSTRING(nextIntercomKey), localize LSTRING(nextIntercomKey_description)], "", {
+    [1, true] call FUNC(switchIntercomFast)
+}, [DIK_COMMA, [false, true, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "AddPreviousIntercom", [localize LSTRING(addPreviousIntercomKey), localize LSTRING(addPreviousIntercomKey_description)], "", {
+    [-1, false] call FUNC(switchIntercomFast)
+}, [DIK_COMMA, [true, false, true]]] call CBA_fnc_addKeybind;
+
+["ACRE2", "AddNextIntercom", [localize LSTRING(addNextIntercomKey), localize LSTRING(addNextIntercomKey_description)], "", {
+    [1, false] call FUNC(switchIntercomFast)
+}, [DIK_COMMA, [false, true, true]]] call CBA_fnc_addKeybind;
+
+["ACRE2", QGVAR(openGui), localize LSTRING(openGui), {
+    [-1] call FUNC(openGui)
+}, "", [DIK_TAB, [true, true, false]]] call CBA_fnc_addKeybind;
 
 // Intercom configuration
 ["vehicle", {
@@ -52,13 +61,22 @@ if (!hasInterface) exitWith {};
     [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 }, true] call CBA_fnc_addPlayerEventHandler;
 
+["featureCamera", {
+    params ["_player", "_featureCamera"];
+    if (_featureCamera isEqualTo "") then {
+        [FUNC(enterVehicle), [vehicle _player, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
+    };
+}, true] call CBA_fnc_addPlayerEventHandler;
+
 player addEventHandler ["seatSwitchedMan", {
-    params ["_unit1", "_unit2", "_vehicle"];
+    params ["_unit1", "", "_vehicle"];
+
     [_vehicle, _unit1] call FUNC(seatSwitched);
 }];
 
 [QGVAR(giveInfantryPhone), {
-    params ["_vehicle", "_unit", "_action", ["_intercomNetwork", INTERCOM_DISCONNECTED]];
+    params ["_vehicle", "_unit", "_action", "_message", ["_intercomNetwork", INTERCOM_DISCONNECTED]];
+    [[ICON_RADIO_CALL], [_message]] call CBA_fnc_notify;
     [_vehicle, _unit, _action, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
 }] call CBA_fnc_addEventHandler;
 

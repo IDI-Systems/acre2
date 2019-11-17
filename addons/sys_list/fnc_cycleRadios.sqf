@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 LOG("HIT CYCLE RADIO");
 if (!dialog) then {
@@ -65,9 +65,7 @@ if (!dialog) then {
         private _activateRadio = _radios select _newRadioIndex;
         TRACE_1("Active is now", _activateRadio);
         [(_activateRadio select 2)] call EFUNC(sys_radio,setActiveRadio);
-        //diag_log "GO GO GOGO";
-        //diag_log text format["'%1'", _activateRadio];
-        [(_activateRadio select 0), (_activateRadio select 1), "", 1] call FUNC(displayHint);
+        [(_activateRadio select 0), (_activateRadio select 1), "", 1, GVAR(CycleRadiosColor)] call FUNC(displayHint);
     };
 };
 

@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -14,14 +15,13 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_newVal", "_entry"];
 _entry params ["_key", "_oldVal"];
 
 private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
 private _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
-if (_key == "frequencyRX" || _key == "frequencyTX") then {
+if (_key == "frequencyRX" || {_key == "frequencyTX"}) then {
     _oldVal = (parseNumber _oldVal)/100000;
     // //diag_log text format["new freq: %1", _newVal];
     _newVal = parseNumber _newVal;
@@ -37,7 +37,7 @@ if (_key == "frequencyRX" || _key == "frequencyTX") then {
         _newVal = _oldVal;
     } else {
         _newVal = _newVal/100000;
-        if (_newVal > 512 || _newVal < 30) then {
+        if (_newVal > 512 || {_newVal < 30}) then {
             if (_key != "frequencyTX" && _newVal != 0) then {
                 _newVal = _oldVal;
             };
@@ -56,7 +56,7 @@ switch _key do {
     case "modulation": {
         if (_newVal == "AM") then {
             private _power = HASH_GET(_channel, "power");
-            if (_power != 1000 && _power != 5000) then {
+            if (_power != 1000 && {_power != 5000}) then {
                 HASH_SET(_channel, "power", 1000);
             };
             HASH_SET(_channel,"CTCSSTx", 0);
