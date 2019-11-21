@@ -318,8 +318,6 @@
             <Polish>Wycisz</Polish>
             <Italian>Muto</Italian>
             <Japanese>消音</Japanese>
-            <Chinese>禁音</Chinese>
-            <Chinesesimp>禁音</Chinesesimp>
             <Chinese>靜音</Chinese>
             <Chinesesimp>静音</Chinesesimp>
             <French>Muet</French>
@@ -334,8 +332,6 @@
             <Japanese>ブロードキャストを開始</Japanese>
             <Chinese>開始撥放</Chinese>
             <Chinesesimp>开始播放</Chinesesimp>
-            <Chinese>開始廣播</Chinese>
-            <Chinesesimp>开始广播</Chinesesimp>
             <French>Commencer à diffuser</French>
             <German>Beginne Bordfunkübergreifende Übertragung</German>
             <Russian>Начать трансляцию</Russian>
@@ -366,8 +362,6 @@
             <Japanese>音声検知</Japanese>
             <Chinese>語音 啟用</Chinese>
             <Chinesesimp>语音 启用</Chinesesimp>
-            <Chinese>停止廣播</Chinese>
-            <Chinesesimp>停止广播</Chinesesimp>
             <French>Arrêter de diffuser</French>
             <German>Stoppe Bordfunkübergreifende Übertragung</German>
             <Russian>Остановить трансляцию</Russian>
@@ -395,8 +389,6 @@
             <Chinese>對講機鍵</Chinese>
             <Chinesesimp>对讲机键</Chinesesimp>
             <Japanese>インターコム送信キー</Japanese>
-            <Chinese>無線電按鍵</Chinese>
-            <Chinesesimp>无线电按键</Chinesesimp>
             <French>Clé de l'interphone</French>
             <German>Standard Bordfunksprechtaste</German>
             <Russian>Передача по Интеркому</Russian>
@@ -407,8 +399,6 @@
             <Polish>Mów przez interkom</Polish>
             <Italian>Usa la stazione intercom per parlare.</Italian>
             <Japanese>インターコム内で会話する為に使用します。</Japanese>
-            <Chinese>使用對講機通話</Chinese>
-            <Chinesesimp>使用对讲机通话</Chinesesimp>
             <Chinese>使用通訊機台來講話</Chinese>
             <Chinesesimp>使用通讯机台来讲话</Chinesesimp>
             <French>Utiliser le poste d'interphone pour parler.</French>
@@ -437,8 +427,6 @@
             <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
             <Chinese>使用內部對講機廣播優先訊息</Chinese>
             <Chinesesimp>使用内部对讲机广播优先讯息</Chinesesimp>
-            <Chinese>使用通訊機台來廣播重要訊息</Chinese>
-            <Chinesesimp>使用通讯机台来广播重要讯息</Chinesesimp>
             <French>Utiliser le poste d'interphone pour diffuser un message prioritaire.</French>
             <German>Sende Prioritätsmeldung über Bordfunk.</German>
             <Russian>Передавать важное сообщение на станцию Интеркома</Russian>
@@ -521,8 +509,6 @@
             <Polish>Połącz się z następną siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Successiva</Italian>
             <Japanese>次のインターコム網に接続</Japanese>
-            <Chinese>連線下一個通訊網路</Chinese>
-            <Chinesesimp>连线下一个通讯网路</Chinesesimp>
             <Japanese>次のインターコム ネットに接続</Japanese>
             <Chinese>連接至下一個內部通訊網路</Chinese>
             <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
