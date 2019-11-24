@@ -4,7 +4,7 @@ class CfgVehicles {
         class ACE_SelfActions {
             class ACRE_Interact {
                 displayName = CSTRING(radios);
-                condition = QUOTE(_player call EFUNC(api,hasRadio));
+                condition = QUOTE(!((_player call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []));
                 exceptions[] = {"isNotInside", "isNotSitting"};
                 statement = "true";
                 insertChildren = QUOTE(_this call FUNC(radioListChildrenActions));

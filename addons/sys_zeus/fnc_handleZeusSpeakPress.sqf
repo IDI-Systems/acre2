@@ -34,4 +34,4 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusCommunicateViaCamera)}) then {
     }, ZEUS_POSITION_FREQUENCY] call CBA_fnc_addPerFrameHandler;
 };
 
-true
+false

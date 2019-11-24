@@ -11,6 +11,7 @@ assignees: ''
 - **Arma 3:** `x.xx` [e.g. 1.00 stable, rc,  dev]
 - **CBA:** `3.x.x` [e.g. 3.0.0 stable, commit hash]
 - **ACRE2:** `2.x.x` [e.g. 2.0.0 stable, commit hash]
+_Make sure to reproduce the issue with only CBA, ACRE2 (and optionally ACE3) on a newly created mission!_
 
 **Description:**
 A clear and concise description of what the bug is.

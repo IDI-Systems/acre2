@@ -104,6 +104,9 @@ for destination in manifest['publish']['release']['destinations']:
 if github_token is None:
     raise Exception("GitHub OAuth Token not found!")
 
+# Prepare
+do_action(["git", "checkout", target_branch], "Failed to prepare checkout of target branch '{}'".format(target_branch))
+
 # Build
 do_action(["git", "checkout", current_branch], "Failed to checkout back into checked out branch '{}'".format(current_branch))
 do_action(make_args, "Make failed")

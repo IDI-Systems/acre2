@@ -185,11 +185,13 @@
             <English>Straighten antenna</English>
             <German>Antenne gerade ausrichten</German>
             <Japanese>アンテナを直立に伸ばす</Japanese>
+            <Russian>Выпрямить антенну</Russian>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bendAntenna">
             <English>Bend antenna upwards</English>
-            <German>Antenne biegen</German>
+            <German>Antenne hoch biegen</German>
             <Japanese>折り曲げたアンテナを上向きに</Japanese>
+            <Russian>Согнуть антенну</Russian>
         </Key>
     </Package>
 </Project>

@@ -90,4 +90,4 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     ACRE_PLAYER_INTERCOM set [_i, _intercomUnits];
 };
 
-[_vehicle, ACRE_PLAYER_INTERCOM, _intercoms] call FUNC(updateIntercomUse);
+[ACRE_PLAYER_INTERCOM, _intercoms] call FUNC(updateIntercomUse);
