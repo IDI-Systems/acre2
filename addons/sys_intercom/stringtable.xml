@@ -344,6 +344,7 @@
             <German>Bordfunkpriorität aktivieren</German>
             <Spanish>Activar prioridad de intercom</Spanish>
             <Japanese>強調を有効化</Japanese>
+            <Chinese>啟用強調</Chinese>
             <Russian>Активировать приоритет</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
@@ -351,6 +352,7 @@
             <German>Bordfunkpriorität deaktivieren</German>
             <Spanish>Desactivar prioridad de intercom</Spanish>
             <Japanese>強調を無効化化</Japanese>
+            <Chinese>禁用強調</Chinese>
             <Russian>Деактивировать приоритет</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
@@ -418,6 +420,7 @@
             <German>Verbindet mit dem vorheriger Bordfunknetzwerk.</German>
             <Russian>Подключается к предыдущей сети Интерком. Отключается от остальных.</Russian>
             <Japanese>前のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
+            <Chinese>從其他通訊網路斷開。並連接至上一個網路。</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercomKey">
             <English>Next Intercom Network</English>
@@ -437,6 +440,7 @@
             <German>Verbindet zu dem nächsten Bordfunknetzwerk.</German>
             <Russian>Подключает к следующей сети Интеркома. Отключает от остальных</Russian>
             <Japanese>次のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
+            <Chinese>從其他通訊網路斷開。並連接至下一個網路。</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
             <English>Connect Previous Intercom Network</English>
@@ -456,6 +460,7 @@
             <German>Verbindet mit dem vorherigen Bordfunknetzwerk während die bereits verbundenen beibehalten werden.</German>
             <Russian>Подключает к предыдущей сети Интеркома, сохраняя подключение к текущим</Russian>
             <Japanese>前のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
+            <Chinese>維持與其他通訊網路存在的連線。並連接至上一個網路。</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey">
             <English>Connect Next Intercom Network</English>
@@ -475,6 +480,7 @@
             <German>Verbindet mit dem nächsten Bordfunknetzwerk während die bereits verbundenen Netzwerke beibehalten werden.</German>
             <Russian>Подключает к след. сети Интеркома,сохраняя подключение к текущим</Russian>
             <Japanese>次のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
+            <Chinese>維持與其他通訊網路存在的連線。並連接至下一個網路。</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Open Intercom GUI</English>
@@ -482,6 +488,7 @@
             <Japanese>インターコムの GUI を開く</Japanese>
             <German>Öffne Bordfunknutzeroberfläche</German>
             <Russian>Открыть окно Интеркома</Russian>
+            <Chinese>開啟對講機界面。</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_forcedStatus">
             <English>Intercom status is being forced. Cannot change configuration.</English>
@@ -489,6 +496,7 @@
             <German>Bordfunkeinstellungen werden erzwungen! Konfiguration kann nicht geändert werden.</German>
             <Russian>Настройки интеркома применены принудительно. Невозможно изменить конфигурацию</Russian>
             <Japanese>インターコム状態が強制表示され、設定は変更できません。</Japanese>
+            <Chinese>對講機狀態以被強制。無法更改設置。</Chinese>
         </Key>
     </Package>
 </Project>
