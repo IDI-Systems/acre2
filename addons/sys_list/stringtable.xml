@@ -8,7 +8,7 @@
             <German>Funkgeräte durchschalten</German>
             <Japanese>無線機を切り替え</Japanese>
             <Italian>Cambia Ricetrasmittente</Italian>
-            <French>Cycler radio</French>
+            <French>Commuter radio suivante</French>
             <Korean>무전 채널 변경</Korean>
             <Polish>Następne radio</Polish>
             <Russian>Листать радио</Russian>
@@ -36,72 +36,84 @@
             <German>ACRE2 - Visuelle Funkbenachrichtigungen</German>
             <Japanese>ACRE2 - 無線機の通知</Japanese>
             <Russian>ACRE2 - Уведомления Раций</Russian>
+            <French>ACRE2 - Notifications radio</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_NotificationGridDesc">
             <English>Shows notifications regarding radios and transmissions.</English>
             <German>Zeigt Benachrichtigungen für Funk und Funkgeräte.</German>
             <Japanese>無線機と送信に関する通知を表示します。</Japanese>
             <Russian>Показывает уведомления с рациями и переговорами</Russian>
+            <French>Affiche les notifications concernant les radios et les transmissions.</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_HintBackgroundColor_DisplayName">
             <English>Notification Background Color</English>
             <German>Hintergrundfarbe der visuellen Benachrichtigung</German>
             <Russian>Цвет фона уведомления</Russian>
             <Japanese>通知の背景カラー</Japanese>
+            <French>Notifications - Couleur d'arrière-plan</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_HintTextFont_DisplayName">
             <English>Notification Text Font</English>
             <German>Schriftart der visuellen Benachrichtigung</German>
             <Russian>Шрифт текста уведомлений</Russian>
             <Japanese>通知テキストのフォント</Japanese>
+            <French>Notifications - Couleur de texte</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
             <English>Babel Cycle Language Color</English>
             <German>Schriftfarbe während Babel Sprachwechsel</German>
             <Russian>Цвет при изменении языка Babel</Russian>
             <Japanese>バベル サイクル言語カラー</Japanese>
+            <French>Couleur - Langage Babel</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
             <English>Switch Channel Color</English>
             <German>Farbe bei Funkkanalwechsel</German>
             <Russian>Цвет при смене каналов</Russian>
             <Japanese>チャンネル切り替えカラー</Japanese>
+            <French>Couleur - Changement de canal radio</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
             <English>Toggle Headset Color</English>
             <German>Farbe bei Auf- oder Absetzen der Kopfhörer</German>
             <Russian>Изменить цвет наушников</Russian>
             <Japanese>ヘッドセット切り替えカラー</Japanese>
+            <French>Couleur - Mettre / retirer écouteurs</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
             <English>Cycle Radio Color</English>
             <German>Farbe bei Funkgerätwechsel</German>
             <Russian>Цвет при смене рации</Russian>
             <Japanese>無線機切り替えカラー</Japanese>
+            <French>Couleur - Changement de radio</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT1Color_DisplayName">
             <English>Radio 1 (PTT 1) Transmit Color</English>
             <German>Farbe Sprechtaste 1</German>
             <Russian>Рация 1 (PTT 1) цвет передачи</Russian>
             <Japanese>無線機 1 (PTT 1) 送信カラー</Japanese>
+            <French>Couleur - Transmission Radio 1 (PTT 1)</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT2Color_DisplayName">
             <English>Radio 2 (PTT 2) Transmit Color</English>
             <German>Farbe Sprechtaste 2</German>
             <Russian>Рация 2 (PTT 1) цвет передачи</Russian>
             <Japanese>無線機 3 (PTT 2) 送信カラー</Japanese>
+            <French>Couleur - Transmission Radio 2 (PTT 2)</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT3Color_DisplayName">
             <English>Radio 3 (PTT 3) Transmit Color</English>
             <German>Farbe Sprechtaste 3</German>
             <Russian>Рация 3 (PTT 3) цвет передачи</Russian>
             <Japanese>無線機 3 (PTT 3) 送信カラー</Japanese>
+            <French>Couleur - Transmission Radio 3 (PTT 3)</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
             <English>Active Radio Transmit Color</English>
             <German>Farbe für Standardsprechtaste</German>
             <Russian>Цвет передачи активной рации</Russian>
             <Japanese>使用中無線機の送信カラー</Japanese>
+            <French>Couleur - Transmission Radio active</French>
         </Key>
     </Package>
 </Project>

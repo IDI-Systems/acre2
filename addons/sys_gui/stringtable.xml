@@ -8,7 +8,7 @@
             <German>Lautstärke der Charaktersprache</German>
             <Japanese>直接会話の音量設定</Japanese>
             <Italian>Regolazione Volume Diretto</Italian>
-            <French>Contrôle du volume de communication directe</French>
+            <French>Réglage du volume de voix</French>
             <Korean>육성 음량 조절</Korean>
             <Polish>Głośność mowy bezpośredniej</Polish>
             <Russian>Громкость прямой речи</Russian>
@@ -21,12 +21,14 @@
             <German>ACRE2 - Lautstärke</German>
             <Russian>ACRE2 - громкость</Russian>
             <Japanese>ACRE2 - 音量操作</Japanese>
+            <French>ACRE2 - Réglage du volume</French>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
             <German>Zeigt die momentane Lautstärke deiner Charaktersprache an.</German>
             <Russian>Отображает текущую громкость прямой речи</Russian>
             <Japanese>現在の直接会話音量を表示します。</Japanese>
+            <French>Indique le niveau actuel du volume de la voix.</French>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>
@@ -36,7 +38,7 @@
             <Chinese>ACRE2 - 載具資訊</Chinese>
             <Chinesesimp>ACRE2 - 载具资讯</Chinesesimp>
             <Spanish>ACRE2 - Información del vehículo</Spanish>
-            <French>ACRE2 - Informations du véhicule</French>
+            <French>ACRE2 - Informations véhicule</French>
             <German>ACRE2 - Fahrzeuginformation</German>
             <Russian>ACRE2 - информация о технике</Russian>
         </Key>
@@ -48,7 +50,7 @@
             <Chinese>載具內可用對講機及機架的狀態</Chinese>
             <Chinesesimp>载具内可用对讲机及机架的状态</Chinesesimp>
             <Spanish>Estado de los intercoms y racks del vehículo.</Spanish>
-            <French>Statut des interphones et des supports disponibles dans le véhicule.</French>
+            <French>Statut des interphones et des racks disponibles dans le véhicule.</French>
             <German>Informationen bezüglich verfügbarer Interkommunikations- oder Festfunkgeräte.</German>
             <Russian>Состояние на доступных Интеркомах и Подставках в технике</Russian>
         </Key>
@@ -56,26 +58,31 @@
             <English>Volume Color Scale</English>
             <Russian>Цветовая гамма громкости</Russian>
             <Japanese>音量カラー</Japanese>
+            <French>Volume - Gamme de couleurs</French>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
             <English>Color scale used by the Volume Control UI.</English>
             <Russian>Цветовая гамма интефейса управления громкостью</Russian>
             <Japanese>音量操作 UI に使う色を決定できます。</Japanese>
+            <French>Gamme de couleurs utilisée pour l'interface de contrôle du volume.</French>
         </Key>
         <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
             <English>Yellow, Orange, Red</English>
             <Russian>Желтый, Оранжевый,Красный</Russian>
             <Japanese>イエロー、オレンジ、レッド</Japanese>
+            <French>Jaune, Orange, Rouge</French>
         </Key>
         <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
             <English>Green, Orange, Red</English>
             <Russian>Зеленый, Оранжевый, Красный</Russian>
             <Japanese>グリーン、オレンジ、レッド</Japanese>
+            <French>Vert, Orange, Rouge</French>
         </Key>
         <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
             <English>Blue, Magenta, Red</English>
             <Russian>Синий,Пурпурный,Красный</Russian>
             <Japanese>ブルー、マゼンタ、レッド</Japanese>
+            <French>Bleu, Magenta, Rouge</French>
         </Key>
     </Package>
 </Project>
