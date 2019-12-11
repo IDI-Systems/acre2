@@ -375,7 +375,7 @@
             <Japanese>インターコム内で会話する為に使用します。</Japanese>
             <Chinese>使用通訊機台來講話</Chinese>
             <Chinesesimp>使用通讯机台来讲话</Chinesesimp>
-            <French>Parler via l'interphone.</French>
+            <French>Permet de parler via l'interphone.</French>
             <German>Im Bordfunk sprechen</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
@@ -398,7 +398,7 @@
             <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
             <Chinese>使用通訊機台來廣播重要訊息</Chinese>
             <Chinesesimp>使用通讯机台来广播重要讯息</Chinesesimp>
-            <French>Utiliser le poste d'interphone pour diffuser un message prioritaire.</French>
+            <French>Utilise le poste d'interphone pour diffuser un message prioritaire.</French>
             <German>Sende Prioritätsmeldung über Bordfunk.</German>
             <Russian>Передавать важное сообщение на станцию Интеркома</Russian>
         </Key>
@@ -420,7 +420,7 @@
             <German>Verbindet mit dem vorheriger Bordfunknetzwerk.</German>
             <Russian>Подключается к предыдущей сети Интерком. Отключается от остальных.</Russian>
             <Japanese>前のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
-            <French>Se connecter au réseau précédent d'interphone. Se déconnecte des autres réseaux.</French>
+            <French>Se connecte au réseau précédent d'interphone. Se déconnecte des autres réseaux.</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercomKey">
             <English>Next Intercom Network</English>
@@ -440,7 +440,7 @@
             <German>Verbindet zu dem nächsten Bordfunknetzwerk.</German>
             <Russian>Подключает к следующей сети Интеркома. Отключает от остальных</Russian>
             <Japanese>次のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
-            <French>Se connecter au réseau suivant d'interphone. Se déconnecte des autres réseaux.</French>
+            <French>Se connecte au réseau suivant d'interphone. Se déconnecte des autres réseaux.</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
             <English>Connect Previous Intercom Network</English>
@@ -488,7 +488,7 @@
             <Japanese>インターコムの GUI を開く</Japanese>
             <German>Öffne Bordfunknutzeroberfläche</German>
             <Russian>Открыть окно Интеркома</Russian>
-            <French>Ouvre l'interface graphique de l'interphone</French>
+            <French>Ouvrir l'interface graphique de l'interphone</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_forcedStatus">
             <English>Intercom status is being forced. Cannot change configuration.</English>

@@ -41,7 +41,7 @@
             <Korean>공유 해제</Korean>
             <Portuguese>Descompartilhar</Portuguese>
             <Italian>Non condividere</Italian>
-            <French>Ne pas partager</French>
+            <French>Ne plus partager</French>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHandset">
             <English>Take Handset</English>
@@ -137,7 +137,7 @@
             <Polish>%1 podał twoje %2 do %3</Polish>
             <Italian>%1 ha dato il tuo %2 a %3</Italian>
             <Spanish>%1 ha dado tu %2 a %3</Spanish>
-            <French>%1 a donné votre %2 à %3</French>
+            <French>%1 a donné votre %2 à %3.</French>
             <German>%1 gab dein %2 an %3</German>
             <Russian>%1 передал вашу %2 %3</Russian>
         </Key>
@@ -152,7 +152,7 @@
             <Portuguese>Para de usar %1 de %2</Portuguese>
             <Italian>Smetti di usare %1 da %2</Italian>
             <Spanish>Deja de usar %1 de %2</Spanish>
-            <French>Arrêter d'utiliser %1 de %2</French>
+            <French>Arrêter d'utiliser %1 de %2.</French>
             <German>%1 von %2 nicht länger benutzen</German>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturnOwner">
@@ -165,7 +165,7 @@
             <Polish>%1 przestał używać twojego %2</Polish>
             <Italian>%1 ha smesso di usare il tuo %2</Italian>
             <Spanish>%1 ha dejado de usar tu %2</Spanish>
-            <French>%1 a arrêté d'utiliser votre %2</French>
+            <French>%1 a arrêté d'utiliser votre %2.</French>
             <German>%1 hat aufgehört dein %2 zu nutzen</German>
             <Russian>%1 прекратил использовать вашу %2</Russian>
         </Key>
@@ -180,7 +180,7 @@
             <Portuguese>Começar a usar %1 de %2</Portuguese>
             <Italian>Inizia ad usare %1 da %2</Italian>
             <Spanish>Usa %1 de %2</Spanish>
-            <French>Commencer à utiliser %1 de %2</French>
+            <French>Commencer à utiliser %1 de %2.</French>
             <German>Beginne %1 von %2 zu nutzen</German>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTakeOwner">
@@ -193,7 +193,7 @@
             <Polish>%1 używa twojego %2</Polish>
             <Italian>%1 ha iniziato ad usare il tuo %2</Italian>
             <Spanish>%1 está usando tu %2</Spanish>
-            <French>%1 a commencé à utiliser votre %2</French>
+            <French>%1 a commencé à utiliser votre %2.</French>
             <German>%1 benutzt jetzt dein %2</German>
             <Russian>%1 начал использовать вашу %2</Russian>
         </Key>

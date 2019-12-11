@@ -7,7 +7,7 @@
             <Japanese>地上アンテナに接続</Japanese>
             <German>Mit BBA verbunden</German>
             <Russian>Подключен к антенне</Russian>
-            <French>Connecté à l'Antenne</French>
+            <French>Connecté à l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnected">
             <English>Disconnected from GSA</English>
@@ -15,7 +15,7 @@
             <Japanese>地上アンテナから切断</Japanese>
             <German>Von BBA getrennt</German>
             <Russian>Отключен от антенны</Russian>
-            <French>Déconnecté de l'Antenne</French>
+            <French>Déconnecté de l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnectedUnit">
             <English>You disconnected %1 from GSA</English>
@@ -23,7 +23,7 @@
             <German>Du hast %1 von BBA getrennt</German>
             <Russian>Вы отключили %1 от антенны</Russian>
             <Japanese>地上アンテナの%1から切断しました</Japanese>
-            <French>Vous avez déconnecté %1 de l'Antenne</French>
+            <French>Vous avez déconnecté %1 de l'antenne.</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpike">
             <English>Place Spike</English>
@@ -31,7 +31,7 @@
             <Japanese>スパイクを設置</Japanese>
             <German>Stichanker setzen</German>
             <Russian>Разместить антенну</Russian>
-            <French>Placer l'Antenne</French>
+            <French>Placer l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpikeMast">
             <English>Place Spike w. Mast</English>
@@ -39,7 +39,7 @@
             <Japanese>マストとスパイクを設置</Japanese>
             <German>Stichanker und Funkmast setzen</German>
             <Russian>Разместить антенну с мачтой</Russian>
-            <French>Placer l'Antenne et le Mât</French>
+            <French>Placer l'antenne et le mât</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_pickup">
             <English>Pick up</English>
@@ -71,7 +71,7 @@
             <Japanese>地上アンテナは使用中</Japanese>
             <German>BBA bereits in Benutzung</German>
             <Russian>Антенна уже занята</Russian>
-            <French>La GSA est déjà en cours d'utilisation</French>
+            <French>La GSA est déjà en cours d'utilisation.</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_connect">
             <English>Connect</English>
@@ -119,7 +119,7 @@
             <German>Inventar voll!</German>
             <Russian>Инвентарь переполнен</Russian>
             <Japanese>インベントリはいっぱいです</Japanese>
-            <French>L'inventaire est plein</French>
+            <French>L'inventaire est plein.</French>
         </Key>
     </Package>
 </Project>

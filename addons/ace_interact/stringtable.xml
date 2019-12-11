@@ -23,7 +23,7 @@
             <Japanese>%1 チャンネル: %2</Japanese>
             <Czech>%1 Chn: %2</Czech>
             <Italian>%1 Chn: %2</Italian>
-            <French>%1 Canal: %2</French>
+            <French>%1 Canal : %2</French>
             <Korean>%1 채널: %2</Korean>
             <Polish>%1 Kanał: %2</Polish>
             <Russian>%1 Канал: %2</Russian>
@@ -83,7 +83,7 @@
             <Japanese>両耳側から</Japanese>
             <Czech>Obě uši</Czech>
             <Italian>Entrambe le orecchie</Italian>
-            <French>Deux Oreilles</French>
+            <French>Deux oreilles</French>
             <Korean>양쪽 귀</Korean>
             <Polish>Stereo</Polish>
             <Russian>Оба уха</Russian>
@@ -173,7 +173,7 @@
             <Japanese>%1をプッシュ トークに</Japanese>
             <Czech>Nastavit jako PTT</Czech>
             <Italian>Imposta PTT %1</Italian>
-            <French>Définir comme PTT</French>
+            <French>Définir comme PTT %1</French>
             <Korean>%1번 PTT로 설정</Korean>
             <Polish>Ustaw PTT %1</Polish>
             <Russian>Назначить как общую ПТТ %1</Russian>

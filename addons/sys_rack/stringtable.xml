@@ -156,7 +156,7 @@
             <Chinese>儀錶板下降</Chinese>
             <Chinesesimp>仪表板下降</Chinesesimp>
             <Spanish>P.Inf</Spanish>
-            <French>T.Inf</French>
+            <French>T. inf</French>
             <German>Unten</German>
             <Russian>Н-я панель</Russian>
         </Key>
@@ -181,7 +181,7 @@
             <Chinese>儀錶板上升</Chinese>
             <Chinesesimp>仪表板上升</Chinesesimp>
             <Spanish>P.Sup</Spanish>
-            <French>T.Sup</French>
+            <French>T. sup</French>
             <German>Oben</German>
             <Russian>В-я панель</Russian>
         </Key>

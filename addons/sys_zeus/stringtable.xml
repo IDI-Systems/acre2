@@ -41,14 +41,14 @@
             <Japanese>Zeus 画面のカメラから話すようになります。"カメラを通じて聞く" が有効になっている必要があります。</Japanese>
             <German>Spreche aus der ZEUS Kamera anstatt von der Position der Einheit. Hören durch ZEUS Kamera muss aktiviert sein.</German>
             <Russian>Говорить через интерфейс Zeus вместо позиции вашего юнита. Должна быть включено прослушивание через камеру</Russian>
-            <French>Parler depuis la caméra de l'interface Zeus au lieu de la position de l'unité. L'option 'Communiquer à travers la caméra' doit être activée.</French>
+            <French>Permet de parler depuis la caméra de l'interface Zeus au lieu de la position de l'unité. L'option "Communiquer à travers la caméra" doit être active.</French>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_DisplayName">
             <English>Default Zeus Voice Source</English>
             <Japanese>Zeus の音源</Japanese>
             <German>Standard ZEUS Sprachquelle</German>
             <Russian>Источник голоса Zeus по умолчанию</Russian>
-            <French>Source vocale par défaut Zeus</French>
+            <French>Source vocale Seus par défaut</French>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_DisplayName">
             <English>Communicate Through Camera</English>
@@ -62,7 +62,7 @@
             <German>Höre zu und spreche mit Spielern durch die ZEUS Kamera</German>
             <Russian>Слышать и говорить с игроками через камеру в интерфейсе Zeus</Russian>
             <Japanese>Zeus カメラを通じてプレイヤーを話せるようになります。</Japanese>
-            <French>Écouter et discuter avec les joueurs grâce à la caméra de l'interface Zeus.</French>
+            <French>Permet d'écouter et de discuter avec les joueurs grâce à la caméra de l'interface Zeus.</French>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_DisplayName">
             <English>Able to Join Spectators</English>
@@ -76,7 +76,7 @@
             <Japanese>Zeus が Zeus 画面のままスペクテイターへの参加を可能にします。</Japanese>
             <German>Lasse ZEUS mit dem Zuschauern kommunizieren während die ZEUS Oberfläche genutzt wird.</German>
             <Russian>Дать Zeus возможность присоединяться к спектаторам,находясь в интерфейсе Zeus</Russian>
-            <French>Donnez à Zeus la possibilité de rejoindre les spectateurs durant l'usage de l'interface Zeus.</French>
+            <French>Donne la possibilité à Zeus de rejoindre les spectateurs durant l'usage de l'interface Zeus.</French>
         </Key>
     </Package>
 </Project>
