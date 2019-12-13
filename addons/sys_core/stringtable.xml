@@ -357,7 +357,7 @@
             <German>Antennenausrichtung wechseln</German>
             <Japanese>アンテナの方向切り替え</Japanese>
             <Russian>Изменить направление антенны</Russian>
-            <French>Changer la direction de l'antenne</French>
+            <French>Changer l'orientation de l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
@@ -423,7 +423,7 @@
             <German>Automatische Antennenausrichtung</German>
             <Japanese>アンテナの方向自動</Japanese>
             <Russian>Авто направление антенны</Russian>
-            <French>Direction automatique de l'antenne</French>
+            <French>Orientation automatique de l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
