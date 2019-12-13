@@ -133,7 +133,7 @@
             <German>Funkgerät auf %1 gestellt</German>
             <Russian>Рация установлена на %1</Russian>
             <Japanese>無線機を%1に設置</Japanese>
-            <French>Radio réglée sur %1</French>
+            <French>Radio réglée sur %1.</French>
         </Key>
     </Package>
 </Project>

@@ -143,7 +143,7 @@
             <German>Standard Sprechtaste</German>
             <Japanese>使用中の無線送信キー</Japanese>
             <Italian>Tasto Radio Attiva</Italian>
-            <French>Touche radio active</French>
+            <French>Transmettre sur radio active</French>
             <Korean>기본 무전 단축키</Korean>
             <Polish>Aktywne klawisz nadawania</Polish>
             <Russian>активное радио кнопка</Russian>
@@ -172,7 +172,7 @@
             <Czech>Klávesa rádia 1</Czech>
             <German>Sprechtaste 1</German>
             <Italian>Trasmetti sulla Radio n.1</Italian>
-            <French>Touche radio 1</French>
+            <French>Transmettre sur radio 1</French>
             <Polish>Klawisz radia 1</Polish>
             <Russian>радио кнопка 1</Russian>
             <Portuguese>Tecla do Rádio 1</Portuguese>
@@ -185,7 +185,7 @@
             <German>Auf erstem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>1 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Prima Radio nel tuo equipaggiamento.</Italian>
-            <French>Utilise la première radio dans l'inventaire pour parler.</French>
+            <French>Utilise la première radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 첫 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na pierwszym radiu z Twojego ekwipunku.</Polish>
             <Russian>Использовать первое радио из инвентаря.</Russian>
@@ -199,7 +199,7 @@
             <Czech>Klávesa rádia 2</Czech>
             <German>Sprechtaste 2</German>
             <Italian>Trasmetti sulla Radio n.2</Italian>
-            <French>Touche radio 2</French>
+            <French>Transmettre sur radio 2</French>
             <Polish>Klawisz radia 2</Polish>
             <Russian>радио кнопка 2</Russian>
             <Portuguese>Tecla do Rádio 2</Portuguese>
@@ -212,7 +212,7 @@
             <German>Auf zweitem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>2 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Seconda Radio nel tuo equipaggiamento.</Italian>
-            <French>Utilise la seconde radio dans l'inventaire pour parler.</French>
+            <French>Utilise la seconde radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 두 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na drugim radiu z Twojego ekwipunku.</Polish>
             <Russian>Использовать второе радио из инвентаря.</Russian>
@@ -226,7 +226,7 @@
             <Czech>Klávesa rádia 3</Czech>
             <German>Sprechtaste 3</German>
             <Italian>Trasmetti sulla Radio n.3</Italian>
-            <French>Touche radio 3</French>
+            <French>Transmettre sur radio 3</French>
             <Polish>Klawisz radia 3</Polish>
             <Russian>радио кнопка 3</Russian>
             <Portuguese>Tecla do Rádio 3</Portuguese>
@@ -239,7 +239,7 @@
             <German>Auf drittem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>3 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Terza Radio nel tuo equipaggiamento.</Italian>
-            <French>Utilise la troisième radio dans l'inventaire pour parler.</French>
+            <French>Utilise la troisième radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 세 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na trzecim radiu z Twojego ekwipunku.</Polish>
             <Russian>Использовать третье радио из инвентаря.</Russian>
@@ -299,7 +299,7 @@
             <German>Linker Ohrhörer</German>
             <Japanese>音声を左耳側から (使用中の無線機)</Japanese>
             <Italian>Imposta Auricolare Sinistro</Italian>
-            <French>Radio oreille gauche</French>
+            <French>Radio oreille gauche (radio active)</French>
             <Korean>왼쪽 이어폰</Korean>
             <Polish>Odsłuch tylko na lewym uchu</Polish>
             <Russian>Радио левое ухо</Russian>
