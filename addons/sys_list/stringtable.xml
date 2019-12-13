@@ -78,7 +78,7 @@
             <German>Farbe bei Auf- oder Absetzen der Kopfhörer</German>
             <Russian>Изменить цвет наушников</Russian>
             <Japanese>ヘッドセット切り替えカラー</Japanese>
-            <French>Couleur - Mettre/retirer les écouteurs</French>
+            <French>Couleur - Mettre/Retirer les écouteurs</French>
         </Key>
         <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
             <English>Cycle Radio Color</English>

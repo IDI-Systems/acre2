@@ -48,7 +48,7 @@
             <Japanese>Zeus の音源</Japanese>
             <German>Standard ZEUS Sprachquelle</German>
             <Russian>Источник голоса Zeus по умолчанию</Russian>
-            <French>Source vocale Seus par défaut</French>
+            <French>Source vocale Zeus par défaut</French>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_DisplayName">
             <English>Communicate Through Camera</English>
