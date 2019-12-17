@@ -12,27 +12,27 @@
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_DisplayName">
             <English>Channels Per Side</English>
-            <French>Canaux séparés par faction</French>
+            <French>Canaux séparés par camp</French>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_Description">
             <English>Set to true to have each side have different ACRE radio frequencies</English>
-            <French>Définit si chaque faction doit avoir des fréquences radio qui lui sont propres.</French>
+            <French>Définit si chaque camp doit avoir des fréquences radio qui lui sont propres.</French>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_DisplayName">
             <English>Babel Language Per Side</English>
-            <French>Langue Babel par faction</French>
+            <French>Langue Babel par camp</French>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_Description">
             <English>Select whether each side has its own language, and whether they also share a common tongue.</English>
-            <French>Définit si chaque faction a sa propre langue, ou si elles partagent également une langue commune.</French>
+            <French>Définit si chaque camp a sa propre langue, ou s'ils partagent également une langue commune.</French>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_AllDifferent">
             <English>Per-Side</English>
-            <French>Une langue par faction</French>
+            <French>Une langue par camp</French>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_SharingDifferent">
             <English>Per-Side /w Common</English>
-            <French>Une langue par faction/avec une langue commune</French>
+            <French>Une langue par camp/avec une langue commune</French>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_No">
             <English>No Babel</English>
@@ -61,31 +61,31 @@
         <!-- Name Channels Module-->
         <Key ID="STR_ACRE_api_nameChannels_Module_DisplayName">
             <English>Name Channels</English>
-            <French>Nom des canaux</French>
+            <French>Nommer les canaux</French>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Module_Description">
             <English>This module defines basic channel naming for a mission in ACRE</English>
-            <French>Ce module permet de définir le nommage de base des canaux radio ACRE pour la mission.</French>
+            <French>Ce module permet de nommer les canaux radio ACRE pour la mission.</French>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_DisplayName">
             <English>Side</English>
-            <French>Faction(s)</French>
+            <French>Camp(s)</French>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Description">
             <English>Select the side to name channels for</English>
-            <French>Choisir pour quelle(s) faction(s) nommer les canaux.</French>
+            <French>Choisir pour quel(s) camp(s) nommer les canaux.</French>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_All">
             <English>All</English>
-            <French>Toutes</French>
+            <French>Tous</French>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_West">
-            <English>West</English>
-            <French>Ouest</French>
+            <English>BLUFOR</English>
+            <French>BLUFOR</French>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_East">
-            <English>East</English>
-            <French>Est</French>
+            <English>OPFOR</English>
+            <French>OPFOR</French>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Ind">
             <English>Independent</English>
