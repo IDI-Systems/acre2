@@ -16,7 +16,7 @@
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
             <English>Post-Mix Global Volume</English>
             <Spanish>Volumen Global Post-Mix</Spanish>
-            <French>Volume Global Post-Mix</French>
+            <French>Volume global post-mix</French>
             <Japanese>ポスト ミックスの全体音量</Japanese>
             <Czech>Hlasitost Post-Mixu</Czech>
             <German>Post-Mix Lautstärke (Global)</German>
@@ -31,7 +31,7 @@
         <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
             <English>Pre-Mix Global Volume</English>
             <Spanish>Volumen Global Pre-Mix</Spanish>
-            <French>Volume Global Pre-Mix</French>
+            <French>Volume global pré-mix</French>
             <Japanese>プレ ミックスの全体音量</Japanese>
             <Czech>Hlasitost Pre-Mixu</Czech>
             <German>Pre-Mix Lautstärke (Global)</German>
@@ -48,11 +48,12 @@
             <German>Standardlautstärke Funkgerät</German>
             <Russian>Громкость рации по умолчанию</Russian>
             <Japanese>無線音量の標準</Japanese>
+            <French>Volume radio par défaut</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
             <Spanish>Volumen de Espectador</Spanish>
-            <French>Volume Spectateur</French>
+            <French>Volume spectateur</French>
             <Japanese>スペクテイター音量</Japanese>
             <Czech>Hlasitost diváků</Czech>
             <German>Lautstärke der Zuschauer</German>
@@ -142,7 +143,7 @@
             <German>Standard Sprechtaste</German>
             <Japanese>使用中の無線送信キー</Japanese>
             <Italian>Tasto Radio Attiva</Italian>
-            <French>Touche radio active</French>
+            <French>Transmettre sur radio active</French>
             <Korean>기본 무전 단축키</Korean>
             <Polish>Aktywne klawisz nadawania</Polish>
             <Russian>активное радио кнопка</Russian>
@@ -157,7 +158,7 @@
             <German>Auf aktivem Funkgerät übertragen.</German>
             <Japanese>使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Radio selezionata.</Italian>
-            <French>Utiliser la radio actuellement sélectionnée pour parler.</French>
+            <French>Utilise la radio actuellement sélectionnée pour transmettre.</French>
             <Korean>현재 선택한 무전기 사용해 대화하세요.</Korean>
             <Polish>Użyj aktualnie wybranego radia aby nadawać.</Polish>
             <Russian>Использовать текущее радио для разговора.</Russian>
@@ -171,7 +172,7 @@
             <Czech>Klávesa rádia 1</Czech>
             <German>Sprechtaste 1</German>
             <Italian>Trasmetti sulla Radio n.1</Italian>
-            <French>Touche radio 1</French>
+            <French>Transmettre sur radio 1</French>
             <Polish>Klawisz radia 1</Polish>
             <Russian>радио кнопка 1</Russian>
             <Portuguese>Tecla do Rádio 1</Portuguese>
@@ -184,7 +185,7 @@
             <German>Auf erstem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>1 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Prima Radio nel tuo equipaggiamento.</Italian>
-            <French>Utiliser la première radio dans l'inventaire pour parler.</French>
+            <French>Utilise la première radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 첫 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na pierwszym radiu z Twojego ekwipunku.</Polish>
             <Russian>Использовать первое радио из инвентаря.</Russian>
@@ -198,7 +199,7 @@
             <Czech>Klávesa rádia 2</Czech>
             <German>Sprechtaste 2</German>
             <Italian>Trasmetti sulla Radio n.2</Italian>
-            <French>Touche radio 2</French>
+            <French>Transmettre sur radio 2</French>
             <Polish>Klawisz radia 2</Polish>
             <Russian>радио кнопка 2</Russian>
             <Portuguese>Tecla do Rádio 2</Portuguese>
@@ -211,7 +212,7 @@
             <German>Auf zweitem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>2 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Seconda Radio nel tuo equipaggiamento.</Italian>
-            <French>Utiliser la seconde radio dans l'inventaire pour parler.</French>
+            <French>Utilise la seconde radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 두 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na drugim radiu z Twojego ekwipunku.</Polish>
             <Russian>Использовать второе радио из инвентаря.</Russian>
@@ -225,7 +226,7 @@
             <Czech>Klávesa rádia 3</Czech>
             <German>Sprechtaste 3</German>
             <Italian>Trasmetti sulla Radio n.3</Italian>
-            <French>Touche radio 3</French>
+            <French>Transmettre sur radio 3</French>
             <Polish>Klawisz radia 3</Polish>
             <Russian>радио кнопка 3</Russian>
             <Portuguese>Tecla do Rádio 3</Portuguese>
@@ -238,7 +239,7 @@
             <German>Auf drittem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>3 つ目の使用中の無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Terza Radio nel tuo equipaggiamento.</Italian>
-            <French>Utiliser la troisième radio dans l'inventaire pour parler.</French>
+            <French>Utilise la troisième radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 세 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na trzecim radiu z Twojego ekwipunku.</Polish>
             <Russian>Использовать третье радио из инвентаря.</Russian>
@@ -283,7 +284,7 @@
             <German>Babel Sprache wechseln</German>
             <Japanese>バベル言語の切り替え</Japanese>
             <Italian>Cambia Linguaggio (Babel)</Italian>
-            <French>Cycler langue Babel</French>
+            <French>Commuter langue Babel</French>
             <Korean>바벨 언어 전환</Korean>
             <Polish>Zmień język (Babel)</Polish>
             <Russian>Листать язык (Вавилон)</Russian>
@@ -298,7 +299,7 @@
             <German>Linker Ohrhörer</German>
             <Japanese>音声を左耳側から (使用中の無線機)</Japanese>
             <Italian>Imposta Auricolare Sinistro</Italian>
-            <French>Radio oreille gauche</French>
+            <French>Radio oreille gauche (radio active)</French>
             <Korean>왼쪽 이어폰</Korean>
             <Polish>Odsłuch tylko na lewym uchu</Polish>
             <Russian>Радио левое ухо</Russian>
@@ -313,7 +314,7 @@
             <German>Beide Ohrhörer</German>
             <Japanese>音声を両側から (使用中の無線機)</Japanese>
             <Italian>Centra gli Auricolari</Italian>
-            <French>Radio oreille centre</French>
+            <French>Radio deux oreilles (radio active)</French>
             <Korean>양쪽 이어폰</Korean>
             <Polish>Odsłuch stereo</Polish>
             <Russian>Радио оба уха</Russian>
@@ -328,7 +329,7 @@
             <German>Rechter Ohrhörer</German>
             <Japanese>音声を右耳側から (使用中の無線機)</Japanese>
             <Italian>Imposta Auricolare Destro</Italian>
-            <French>Radio oreille droite</French>
+            <French>Radio oreille droite (radio active)</French>
             <Korean>오른쪽 이어폰</Korean>
             <Polish>Odsłuch tylko na prawym uchu</Polish>
             <Russian>Радио правое ухо</Russian>
@@ -343,7 +344,7 @@
             <German>Headset / Zuschauer umschalten</German>
             <Japanese>ヘッドセット/スペクテイターの切り替え</Japanese>
             <Italian>Attiva/Disattiva Cuffia/Spettatori</Italian>
-            <French>Alterner Casque/Spectateurs</French>
+            <French>Alterner casque/haut-parleur</French>
             <Korean>헤드셋 전환 / 관전자 전환</Korean>
             <Polish>Zdejmij/załóż słuchawki. / Wł/wył widzów.</Polish>
             <Russian>Переключить наушники/спектаторов</Russian>
@@ -356,18 +357,21 @@
             <German>Antennenausrichtung wechseln</German>
             <Japanese>アンテナの方向切り替え</Japanese>
             <Russian>Изменить направление антенны</Russian>
+            <French>Changer l'orientation de l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
             <German>Antenne gerade</German>
             <Japanese>アンテナを直立に</Japanese>
             <Russian>Антенна выпрямлена</Russian>
+            <French>Antenne redressée</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
             <German>Antenne gebogen</German>
             <Japanese>アンテナを折り曲げ</Japanese>
             <Russian>Антенна согнута</Russian>
+            <French>Antenne courbée</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -388,7 +392,7 @@
             <English>Full Duplex radios</English>
             <Spanish>Radios Dúplex</Spanish>
             <Japanese>全二重通信ラジオ</Japanese>
-            <French>Radios Full Duplex</French>
+            <French>Radios full duplex</French>
             <German>Vollduplexbetrieb</German>
             <Czech>Režim plného duplexu vysílaček</Czech>
             <Korean>풀 양방향 통신</Korean>
@@ -419,6 +423,7 @@
             <German>Automatische Antennenausrichtung</German>
             <Japanese>アンテナの方向自動</Japanese>
             <Russian>Авто направление антенны</Russian>
+            <French>Orientation automatique de l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -457,7 +462,7 @@
             <Japanese>左耳側からに設定</Japanese>
             <Czech>Nastavit do levého ucha</Czech>
             <Italian>Imposta sull'Orecchio Sinistro</Italian>
-            <French>Régler sur oreille gauche</French>
+            <French>Régler sur l'oreille gauche</French>
             <Korean>왼쪽 귀로 설정</Korean>
             <Polish>Ustaw na lewe ucho</Polish>
             <Russian>Назначить на левое ухо</Russian>
@@ -487,7 +492,7 @@
             <Japanese>右耳側からに設定</Japanese>
             <Czech>Nastavit do pravého ucha</Czech>
             <Italian>Imposta sull'Orecchio Destro</Italian>
-            <French>Régler sur oreille droite</French>
+            <French>Régler sur l'oreille droite</French>
             <Korean>오른쪽 귀로 설정</Korean>
             <Polish>Ustaw na prawe ucho</Polish>
             <Russian>Назначить на правое ухо</Russian>
@@ -528,12 +533,14 @@
             <German>Eingehende Funksprüche anzeigen</German>
             <Japanese>受信中の通信を表示</Japanese>
             <Russian>Показывать входящие передачи</Russian>
+            <French>Afficher les transmissions entrantes</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
             <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
             <Japanese>ラックの通信を表示</Japanese>
             <Russian>Показывать передачи с раций на подставке</Russian>
+            <French>Afficher les transmissions du rack</French>
         </Key>
     </Package>
 </Project>

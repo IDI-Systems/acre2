@@ -38,7 +38,7 @@
             <Japanese>ヘッドセットを外す</Japanese>
             <Czech>Sundat headset</Czech>
             <Italian>Togli Cuffia</Italian>
-            <French>Baisser casque</French>
+            <French>Baisser le casque</French>
             <Korean>헤드셋 벗기</Korean>
             <Polish>Zdejmij słuchawki</Polish>
             <Russian>Опустить наушники</Russian>
@@ -53,7 +53,7 @@
             <Japanese>ヘッドセットを装着</Japanese>
             <Czech>Nasadit headset</Czech>
             <Italian>Indossa Cuffia</Italian>
-            <French>Mettre casque</French>
+            <French>Mettre le casque</French>
             <Korean>헤드셋 착용</Korean>
             <Polish>Załóż słuchawki</Polish>
             <Russian>Поднять наушники</Russian>
@@ -83,7 +83,7 @@
             <Japanese>両耳側から</Japanese>
             <Czech>Obě uši</Czech>
             <Italian>Entrambe le orecchie</Italian>
-            <French>Deux Oreilles</French>
+            <French>Deux oreilles</French>
             <Korean>양쪽 귀</Korean>
             <Polish>Stereo</Polish>
             <Russian>Оба уха</Russian>
@@ -173,7 +173,7 @@
             <Japanese>%1をプッシュ トークに</Japanese>
             <Czech>Nastavit jako PTT</Czech>
             <Italian>Imposta PTT %1</Italian>
-            <French>Définir comme PTT</French>
+            <French>Définir comme PTT %1</French>
             <Korean>%1번 PTT로 설정</Korean>
             <Polish>Ustaw PTT %1</Polish>
             <Russian>Назначить как общую ПТТ %1</Russian>
@@ -186,12 +186,14 @@
             <German>Antenne gerade ausrichten</German>
             <Japanese>アンテナを直立に伸ばす</Japanese>
             <Russian>Выпрямить антенну</Russian>
+            <French>Redresser l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bendAntenna">
             <English>Bend antenna upwards</English>
             <German>Antenne hoch biegen</German>
             <Japanese>折り曲げたアンテナを上向きに</Japanese>
             <Russian>Согнуть антенну</Russian>
+            <French>Courber l'antenne vers le haut</French>
         </Key>
     </Package>
 </Project>
