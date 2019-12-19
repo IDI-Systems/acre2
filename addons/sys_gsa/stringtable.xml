@@ -8,6 +8,7 @@
             <German>Mit BBA verbunden</German>
             <Russian>Подключен к антенне</Russian>
             <Chinese>已連接至地面天線</Chinese>
+            <French>Connecté à l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnected">
             <English>Disconnected from GSA</English>
@@ -16,6 +17,7 @@
             <German>Von BBA getrennt</German>
             <Russian>Отключен от антенны</Russian>
             <Chinese>從地面天線斷開</Chinese>
+            <French>Déconnecté de l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnectedUnit">
             <English>You disconnected %1 from GSA</English>
@@ -24,6 +26,7 @@
             <Russian>Вы отключили %1 от антенны</Russian>
             <Japanese>地上アンテナの%1から切断しました</Japanese>
             <Chinese>你已經把%1從地面天線斷開</Chinese>
+            <French>Vous avez déconnecté %1 de l'antenne.</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpike">
             <English>Place Spike</English>
@@ -32,6 +35,7 @@
             <German>Stichanker setzen</German>
             <Russian>Разместить антенну</Russian>
             <Chinese>設置尖波</Chinese>
+            <French>Installer l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpikeMast">
             <English>Place Spike w. Mast</English>
@@ -40,6 +44,7 @@
             <German>Stichanker und Funkmast setzen</German>
             <Russian>Разместить антенну с мачтой</Russian>
             <Chinese>設置尖波與桅杆</Chinese>
+            <French>Installer l'antenne et son mât</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_pickup">
             <English>Pick up</English>
@@ -48,6 +53,7 @@
             <German>Aufheben</German>
             <Russian>Подобрать</Russian>
             <Chinese>撿起</Chinese>
+            <French>Récupérer l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_removeMast">
             <English>Remove mast</English>
@@ -56,6 +62,7 @@
             <German>Entferne Funkmast</German>
             <Russian>Убрать мачту</Russian>
             <Chinese>移除桅杆</Chinese>
+            <French>Retirer le mât</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_mountMast">
             <English>Mount mast</English>
@@ -64,6 +71,7 @@
             <German>Installiere Funkmast</German>
             <Russian>Установить мачту</Russian>
             <Chinese>裝上桅杆</Chinese>
+            <French>Installer le mât</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_alreadyConnected">
             <English>GSA already in use</English>
@@ -72,6 +80,7 @@
             <German>BBA bereits in Benutzung</German>
             <Russian>Антенна уже занята</Russian>
             <Chinese>地面天線已經使用中</Chinese>
+            <French>La GSA est déjà en cours d'utilisation.</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_connect">
             <English>Connect</English>
@@ -80,6 +89,7 @@
             <German>Verbinde</German>
             <Russian>Подключиться</Russian>
             <Chinese>連接</Chinese>
+            <French>Connecter</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnect">
             <English>Disconnect</English>
@@ -88,6 +98,7 @@
             <German>Trenne</German>
             <Russian>Отключиться</Russian>
             <Chinese>斷開</Chinese>
+            <French>Déconnecter</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_gsaWithMast_description">
             <English>VHF30108 Ground Spike Antenna with Mast</English>
@@ -96,6 +107,7 @@
             <German>VHF30108 Bodenbefestigte Antenne mit Funkmast</German>
             <Russian>Наземная антенна VHF30108 с мачтой</Russian>
             <Chinese>VHF30108 地面突波天線含桅杆</Chinese>
+            <French>Antenne VHF30108 montée sur mât</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_gsaWithoutMast_description">
             <English>VHF30108 Ground Spike Antenna</English>
@@ -104,6 +116,7 @@
             <German>VHF30108 Bodenbefestigte Antenne</German>
             <Russian>Наземная антенна VHF30108</Russian>
             <Chinese>VHF30108 地面突波天線</Chinese>
+            <French>Antenne VHF30108</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_gsaMast_description">
             <English>VHF30108 Mast</English>
@@ -112,6 +125,7 @@
             <German>VHF30108 Funkmast</German>
             <Russian>Мачта для VHF30108</Russian>
             <Chinese>VHF30108 桅杆</Chinese>
+            <French>Mât pour antenne VHF30108</French>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_inventoryFull">
             <English>Inventory full</English>
@@ -120,6 +134,7 @@
             <Russian>Инвентарь переполнен</Russian>
             <Japanese>インベントリはいっぱいです</Japanese>
             <Chinese>物品欄已滿</Chinese>
+            <French>L'inventaire est plein.</French>
         </Key>
     </Package>
 </Project>
