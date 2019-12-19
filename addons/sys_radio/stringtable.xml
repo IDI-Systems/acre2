@@ -118,6 +118,7 @@
             <Japanese>ACRE 基本物資箱</Japanese>
             <Russian>ACRE Основное</Russian>
             <French>Caisse de base ACRE</French>
+            <Chinese>ACRE 基本物資箱</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_allRadioCrate">
             <English>All Radio Crate</English>
@@ -126,6 +127,7 @@
             <German>Sämtliche ACRE Funkgeräte</German>
             <Russian>Ящик со Всеми Рациями</Russian>
             <French>Caisse toutes radios ACRE</French>
+            <Chinese>全無線電機種供給箱</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_radioSetTo">
             <English>Radio set to %1</English>
@@ -134,6 +136,7 @@
             <Russian>Рация установлена на %1</Russian>
             <Japanese>無線機を%1に設置</Japanese>
             <French>Radio réglée sur %1.</French>
+            <Chinese>設定無線電為 %1</Chinese>
         </Key>
     </Package>
 </Project>
