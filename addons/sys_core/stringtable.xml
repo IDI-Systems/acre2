@@ -8,6 +8,7 @@
             <French>ACRE2 IU</French>
             <Turkish>ACRE2 UI</Turkish>
             <Japanese>ACRE2 UI</Japanese>
+            <Chinese>ACRE 2 界面</Chinese>
             <Czech>ACRE2 UI</Czech>
             <Italian>ACRE2 IU</Italian>
             <Spanish>ACRE2 Interfaz</Spanish>
@@ -48,6 +49,7 @@
             <German>Standardlautstärke Funkgerät</German>
             <Russian>Громкость рации по умолчанию</Russian>
             <Japanese>無線音量の標準</Japanese>
+            <Chinese>預設無線電音量</Chinese>
             <French>Volume radio par défaut</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
@@ -177,6 +179,7 @@
             <Russian>радио кнопка 1</Russian>
             <Portuguese>Tecla do Rádio 1</Portuguese>
             <Japanese>無線機 1 の送信 (PTT 1)</Japanese>
+            <Chinese>無線電 1 發話(隨按即說1)</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Transmit on first radio and set it as active.</English>
@@ -204,6 +207,7 @@
             <Russian>радио кнопка 2</Russian>
             <Portuguese>Tecla do Rádio 2</Portuguese>
             <Japanese>無線機 2 の送信 (PTT 2)</Japanese>
+            <Chinese>無線電 2 發話(隨按即說2)</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Transmit on second radio and set it as active.</English>
@@ -231,6 +235,7 @@
             <Russian>радио кнопка 3</Russian>
             <Portuguese>Tecla do Rádio 3</Portuguese>
             <Japanese>無線機 3 の送信 (PTT 3)</Japanese>
+            <Chinese>無線電 3 發話(隨按即說3)</Chinese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Transmit on third radio and set it as active.</English>
@@ -357,6 +362,7 @@
             <German>Antennenausrichtung wechseln</German>
             <Japanese>アンテナの方向切り替え</Japanese>
             <Russian>Изменить направление антенны</Russian>
+            <Chinese>天線方向切換</Chinese>
             <French>Changer l'orientation de l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
@@ -364,6 +370,7 @@
             <German>Antenne gerade</German>
             <Japanese>アンテナを直立に</Japanese>
             <Russian>Антенна выпрямлена</Russian>
+            <Chinese>天線拉直</Chinese>
             <French>Antenne redressée</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
@@ -371,6 +378,7 @@
             <German>Antenne gebogen</German>
             <Japanese>アンテナを折り曲げ</Japanese>
             <Russian>Антенна согнута</Russian>
+            <Chinese>彎曲天線</Chinese>
             <French>Antenne courbée</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
@@ -423,6 +431,7 @@
             <German>Automatische Antennenausrichtung</German>
             <Japanese>アンテナの方向自動</Japanese>
             <Russian>Авто направление антенны</Russian>
+            <Chinese>自動調整天線方向</Chinese>
             <French>Orientation automatique de l'antenne</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
@@ -533,6 +542,7 @@
             <German>Eingehende Funksprüche anzeigen</German>
             <Japanese>受信中の通信を表示</Japanese>
             <Russian>Показывать входящие передачи</Russian>
+            <Chinese>顯示接收中的通訊/Chinese>
             <French>Afficher les transmissions entrantes</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
@@ -540,6 +550,7 @@
             <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
             <Japanese>ラックの通信を表示</Japanese>
             <Russian>Показывать передачи с раций на подставке</Russian>
+            <Chinese>顯示架上通訊</Chinese>
             <French>Afficher les transmissions du rack</French>
         </Key>
     </Package>
