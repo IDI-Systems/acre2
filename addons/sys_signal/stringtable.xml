@@ -9,6 +9,7 @@
             <German>Signalausbreitungsmodell</German>
             <Russian>Модель распространения сигнала</Russian>
             <French>Modèle de propagation des ondes</French>
+            <Chinesesimp>讯号传递模型</Chinesesimp>
         </Key>
     </Package>
 </Project>

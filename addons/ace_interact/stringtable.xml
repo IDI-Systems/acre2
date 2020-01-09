@@ -188,6 +188,7 @@
             <Russian>Выпрямить антенну</Russian>
             <Chinese>把天線拉直</Chinese>
             <French>Redresser l'antenne</French>
+            <Chinesesimp>把天线拉直</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bendAntenna">
             <English>Bend antenna upwards</English>
@@ -196,6 +197,7 @@
             <Russian>Согнуть антенну</Russian>
             <Chinese>把天線往上彎曲</Chinese>
             <French>Courber l'antenne vers le haut</French>
+            <Chinesesimp>把天线往上弯曲</Chinesesimp>
         </Key>
     </Package>
 </Project>
