@@ -98,10 +98,9 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
-            <German>Funkgeräteschrank</German>
+            <German>Anlage</German>
             <Chinese>機架</Chinese>
             <Chinesesimp>机架</Chinesesimp>
-            <German>Anlage</German>
             <Korean>선반</Korean>
             <Japanese>架台</Japanese>
             <Portuguese>Suporte</Portuguese>
@@ -113,10 +112,9 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
-            <German>Steckplatz</German>
+            <German>Schacht</German>
             <Chinese>儀器版面</Chinese>
             <Chinesesimp>仪器版面</Chinesesimp>
-            <German>Schacht</German>
             <Korean>대쉬보드</Korean>
             <Japanese>ダッシュボード</Japanese>
             <Portuguese>Painel</Portuguese>
@@ -130,12 +128,6 @@
             <English>Dash</English>
             <Italian>Cruscotto</Italian>
             <Japanese>ダッシュ</Japanese>
-            <Chinese>儀器版面</Chinese>
-            <Chinesesimp>仪器版面</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_dashLower">
-            <English>Dash Lower</English>
-            <German>Unterer Steckplatz</German>
             <Chinese>儀器版面 下</Chinese>
             <Chinesesimp>仪器版面 下</Chinesesimp>
             <Spanish>Panel</Spanish>
@@ -163,12 +155,6 @@
             <Japanese>D.下げ</Japanese>
             <Chinese>儀器.下</Chinese>
             <Chinesesimp>仪器.下</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_dashUpper">
-            <English>Dash Upper</English>
-            <German>Oberer Steckplatz</German>
-            <Chinese>儀器版面 上</Chinese>
-            <Chinesesimp>仪器版面 上</Chinesesimp>
             <Spanish>P.Inf</Spanish>
             <French>T.Inf</French>
             <German>Unten</German>

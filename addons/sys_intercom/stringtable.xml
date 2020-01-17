@@ -300,15 +300,6 @@
             <Portuguese>Receber e Transmitir</Portuguese>
             <Polish>Nasłuchuj i nadawaj</Polish>
             <Italian>Ricevi e trasmetti</Italian>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_volume">
-            <English>Volume</English>
-            <Spanish>Volumen</Spanish>
-            <Polish>Głośność</Polish>
-            <Italian>Volume</Italian>
-            <Japanese>音量</Japanese>
-            <Chinese>音量</Chinese>
-            <Chinesesimp>音量</Chinesesimp>
             <French>Recevoir et transmettre</French>
             <Russian>Прием и передача</Russian>
         </Key>
@@ -344,24 +335,6 @@
             <Japanese>ブロードキャストを停止</Japanese>
             <Chinese>停止撥放</Chinese>
             <Chinesesimp>停止播放</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_pttActivation">
-            <English>PTT Activation</English>
-            <Spanish>Activación PTT</Spanish>
-            <Polish>Aktywacja PTT</Polish>
-            <Italian>Attiva PTT</Italian>
-            <Japanese>PTT で有効</Japanese>
-            <Chinese>PTT 啟用</Chinese>
-            <Chinesesimp>PTT 启用</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_voiceActivation">
-            <English>Voice Activation</English>
-            <Spanish>Activación por voz</Spanish>
-            <Polish>Aktywacja głosowa</Polish>
-            <Italian>Voice activation</Italian>
-            <Japanese>音声検知</Japanese>
-            <Chinese>語音 啟用</Chinese>
-            <Chinesesimp>语音 启用</Chinesesimp>
             <French>Arrêter de diffuser</French>
             <German>Stoppe Bordfunkübergreifende Übertragung</German>
             <Russian>Остановить трансляцию</Russian>
@@ -385,7 +358,6 @@
             <Spanish>Tecla de intercom</Spanish>
             <Polish>Klawisz interkomu</Polish>
             <Italian>Pulsante intercom</Italian>
-            <Japanese>インターコム キー</Japanese>
             <Chinese>對講機鍵</Chinese>
             <Chinesesimp>对讲机键</Chinesesimp>
             <Japanese>インターコム送信キー</Japanese>
@@ -409,7 +381,6 @@
             <Spanish>Tecla para mensaje prioritario</Spanish>
             <Polish>Klawisz nadawania interkomu</Polish>
             <Italian>Pulsante trasmissione intercom</Italian>
-            <Japanese>インターコムのブロードキャスト キー</Japanese>
             <Chinese>對講機廣播鍵</Chinese>
             <Chinesesimp>对讲机广播键</Chinesesimp>
             <Japanese>インターコムのブロードキャスト</Japanese>
@@ -434,11 +405,6 @@
             <Spanish>Red de intercom previa</Spanish>
             <Polish>Poprzednia sieć interkomu</Polish>
             <Italian>Rete Intercom precedente</Italian>
-            <Japanese>前のインターコム網</Japanese>
-            <Chinese>上一個通訊網路</Chinese>
-            <Chinesesimp>上一个通讯网路</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_nextIntercom">
             <Japanese>前のインターコム ネット</Japanese>
             <Chinese>上一個通訊網路</Chinese>
             <Chinesesimp>上一个通讯网路</Chinesesimp>
@@ -458,11 +424,6 @@
             <Spanish>Siguiente red de intercom</Spanish>
             <Polish>Następna sieć interkomu</Polish>
             <Italian>Rete Intercom successiva</Italian>
-            <Japanese>次のインターコム網</Japanese>
-            <Chinese>下一個通訊網路</Chinese>
-            <Chinesesimp>下一个通讯网路</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercom">
             <Japanese>次のインターコム ネット</Japanese>
             <Chinese>下一個通訊網路</Chinese>
             <Chinesesimp>下一个通讯网路</Chinesesimp>
@@ -506,7 +467,6 @@
             <Spanish>Connectar a la siguiente red de intercom</Spanish>
             <Polish>Połącz się z następną siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Successiva</Italian>
-            <Japanese>次のインターコム網に接続</Japanese>
             <Japanese>次のインターコム ネットに接続</Japanese>
             <Chinese>連接至下一個內部通訊網路</Chinese>
             <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
