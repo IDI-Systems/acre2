@@ -542,7 +542,7 @@
             <German>Eingehende Funksprüche anzeigen</German>
             <Japanese>受信中の通信を表示</Japanese>
             <Russian>Показывать входящие передачи</Russian>
-            <Chinese>顯示接收中的通訊/Chinese>
+            <Chinese>顯示接收中的通訊</Chinese>
             <French>Afficher les transmissions entrantes</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
