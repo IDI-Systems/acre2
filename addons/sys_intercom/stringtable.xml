@@ -443,14 +443,9 @@
             <Spanish>Connectar a la anterior red de intercom</Spanish>
             <Polish>Połącz się z poprzednią siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Precedente</Italian>
-            <Japanese>前のインターコム網に接続</Japanese>
             <Chinese>連線上一個通訊網路</Chinese>
             <Chinesesimp>连线上一个通讯网路</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_addNextIntercom">
             <Japanese>前のインターコム ネットに接続</Japanese>
-            <Chinese>連接至上一個內部通訊網路</Chinese>
-            <Chinesesimp>连接至上一个内部通讯网路</Chinesesimp>
             <French>Connecter le réseau d'interphone précédent</French>
             <German>Verbinde mit dem vorherigen Bordfunknetzwerk</German>
             <Russian>Подключиться к предыдущей сети Интеркома</Russian>
