@@ -45,4 +45,5 @@ if (_unit != _vehicle) then {
     _unit setVariable [QGVAR(intercomVehicle), objNull];
     _unit setVariable [QGVAR(role), ""];
     ACRE_PLAYER_INTERCOM = [];
+    GVAR(intercomUse) = [];
 };

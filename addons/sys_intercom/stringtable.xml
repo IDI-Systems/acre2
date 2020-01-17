@@ -344,14 +344,18 @@
             <German>Bordfunkpriorität aktivieren</German>
             <Spanish>Activar prioridad de intercom</Spanish>
             <Japanese>強調を有効化</Japanese>
+            <Chinese>啟用強調</Chinese>
             <Russian>Активировать приоритет</Russian>
+            <French>Activer la priorité</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
             <English>Deactivate Accent</English>
             <German>Bordfunkpriorität deaktivieren</German>
             <Spanish>Desactivar prioridad de intercom</Spanish>
             <Japanese>強調を無効化化</Japanese>
+            <Chinese>禁用強調</Chinese>
             <Russian>Деактивировать приоритет</Russian>
+            <French>Désactiver la priorité</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
             <English>Intercom Transmit</English>
@@ -361,7 +365,9 @@
             <Chinese>對講機鍵</Chinese>
             <Chinesesimp>对讲机键</Chinesesimp>
             <Japanese>インターコム送信キー</Japanese>
-            <French>Clé de l'interphone</French>
+            <Chinese>無線電按鍵</Chinese>
+            <Chinesesimp>无线电按键</Chinesesimp>
+            <French>Transmission interphone</French>
             <German>Standard Bordfunksprechtaste</German>
             <Russian>Передача по Интеркому</Russian>
         </Key>
@@ -373,7 +379,7 @@
             <Japanese>インターコム内で会話する為に使用します。</Japanese>
             <Chinese>使用通訊機台來講話</Chinese>
             <Chinesesimp>使用通讯机台来讲话</Chinesesimp>
-            <French>Utiliser le poste d'interphone pour parler.</French>
+            <French>Permet de parler via l'interphone.</French>
             <German>Im Bordfunk sprechen</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
@@ -381,10 +387,10 @@
             <Spanish>Tecla para mensaje prioritario</Spanish>
             <Polish>Klawisz nadawania interkomu</Polish>
             <Italian>Pulsante trasmissione intercom</Italian>
-            <Chinese>對講機廣播鍵</Chinese>
-            <Chinesesimp>对讲机广播键</Chinesesimp>
+            <Chinese>無線電廣播按鍵</Chinese>
+            <Chinesesimp>无线电广播按键</Chinesesimp>
             <Japanese>インターコムのブロードキャスト</Japanese>
-            <French>Clé de diffusion de l'interphone</French>
+            <French>Transmission inter-véhicules</French>
             <German>Bordfunkübergreifende Übertragung</German>
             <Russian>Трансляция с Интеркома</Russian>
         </Key>
@@ -396,7 +402,7 @@
             <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
             <Chinese>使用內部對講機廣播優先訊息</Chinese>
             <Chinesesimp>使用内部对讲机广播优先讯息</Chinesesimp>
-            <French>Utiliser le poste d'interphone pour diffuser un message prioritaire.</French>
+            <French>Utilise le poste d'interphone pour diffuser un message prioritaire.</French>
             <German>Sende Prioritätsmeldung über Bordfunk.</German>
             <Russian>Передавать важное сообщение на станцию Интеркома</Russian>
         </Key>
@@ -408,7 +414,7 @@
             <Japanese>前のインターコム ネット</Japanese>
             <Chinese>上一個通訊網路</Chinese>
             <Chinesesimp>上一个通讯网路</Chinesesimp>
-            <French>Réseau d'interphone précédent</French>
+            <French>Réseau d'interphonie précédent</French>
             <German>Vorheriges Bordfunknetzwerk auswählen</German>
             <Russian>Предыдущая сеть Интеркома</Russian>
         </Key>
@@ -418,6 +424,8 @@
             <German>Verbindet mit dem vorheriger Bordfunknetzwerk.</German>
             <Russian>Подключается к предыдущей сети Интерком. Отключается от остальных.</Russian>
             <Japanese>前のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
+            <Chinese>從其他通訊網路斷開。並連接至上一個網路。</Chinese>
+            <French>Se connecte au réseau précédent d'interphone. Se déconnecte des autres réseaux.</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercomKey">
             <English>Next Intercom Network</English>
@@ -427,7 +435,7 @@
             <Japanese>次のインターコム ネット</Japanese>
             <Chinese>下一個通訊網路</Chinese>
             <Chinesesimp>下一个通讯网路</Chinesesimp>
-            <French>Réseau d'interphone suivant</French>
+            <French>Réseau d'interphonie suivant</French>
             <German>Nächstes Bordfunknetzwerk auswählen</German>
             <Russian>Следующая сеть Интеркома</Russian>
         </Key>
@@ -437,6 +445,8 @@
             <German>Verbindet zu dem nächsten Bordfunknetzwerk.</German>
             <Russian>Подключает к следующей сети Интеркома. Отключает от остальных</Russian>
             <Japanese>次のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
+            <Chinese>從其他通訊網路斷開。並連接至下一個網路。</Chinese>
+            <French>Se connecte au réseau suivant d'interphone. Se déconnecte des autres réseaux.</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
             <English>Connect Previous Intercom Network</English>
@@ -446,7 +456,9 @@
             <Chinese>連線上一個通訊網路</Chinese>
             <Chinesesimp>连线上一个通讯网路</Chinesesimp>
             <Japanese>前のインターコム ネットに接続</Japanese>
-            <French>Connecter le réseau d'interphone précédent</French>
+            <Chinese>連接至上一個內部通訊網路</Chinese>
+            <Chinesesimp>连接至上一个内部通讯网路</Chinesesimp>
+            <French>Se connecter au réseau d'interphonie précédent</French>
             <German>Verbinde mit dem vorherigen Bordfunknetzwerk</German>
             <Russian>Подключиться к предыдущей сети Интеркома</Russian>
         </Key>
@@ -456,6 +468,8 @@
             <German>Verbindet mit dem vorherigen Bordfunknetzwerk während die bereits verbundenen beibehalten werden.</German>
             <Russian>Подключает к предыдущей сети Интеркома, сохраняя подключение к текущим</Russian>
             <Japanese>前のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
+            <Chinese>維持與其他通訊網路存在的連線。並連接至上一個網路。</Chinese>
+            <French>Se connecte au réseau d'interphonie précédent, tout en conservant les réseaux déjà connectés.</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey">
             <English>Connect Next Intercom Network</English>
@@ -465,7 +479,7 @@
             <Japanese>次のインターコム ネットに接続</Japanese>
             <Chinese>連接至下一個內部通訊網路</Chinese>
             <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
-            <French>Connecter le réseau d'interphone suivant</French>
+            <French>Se connecter au réseau d'interphonie suivant</French>
             <German>Verbinde nächstes Bordfunknetzwerk</German>
             <Russian>Подключиться к следующей сети Интеркома</Russian>
         </Key>
@@ -475,6 +489,8 @@
             <German>Verbindet mit dem nächsten Bordfunknetzwerk während die bereits verbundenen Netzwerke beibehalten werden.</German>
             <Russian>Подключает к след. сети Интеркома,сохраняя подключение к текущим</Russian>
             <Japanese>次のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
+            <Chinese>維持與其他通訊網路存在的連線。並連接至下一個網路。</Chinese>
+            <French>Se connecte au réseau d'interphonie suivant, tout en conservant les réseaux déjà connectés.</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Open Intercom GUI</English>
@@ -482,6 +498,8 @@
             <Japanese>インターコムの GUI を開く</Japanese>
             <German>Öffne Bordfunknutzeroberfläche</German>
             <Russian>Открыть окно Интеркома</Russian>
+            <Chinese>開啟對講機界面。</Chinese>
+            <French>Ouvrir l'interface graphique de l'interphone</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_forcedStatus">
             <English>Intercom status is being forced. Cannot change configuration.</English>
@@ -489,6 +507,8 @@
             <German>Bordfunkeinstellungen werden erzwungen! Konfiguration kann nicht geändert werden.</German>
             <Russian>Настройки интеркома применены принудительно. Невозможно изменить конфигурацию</Russian>
             <Japanese>インターコム状態が強制表示され、設定は変更できません。</Japanese>
+            <Chinese>對講機狀態以被強制。無法更改設置。</Chinese>
+            <French>L'état de l'interphone est forcé. Impossible de modifier la configuration.</French>
         </Key>
     </Package>
 </Project>

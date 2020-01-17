@@ -93,7 +93,7 @@
             <Polish>Nie można wymontować radia. Brak miejsca w ekwipunku.</Polish>
             <Italian>Impossibile smontare radio. Inventario pieno.</Italian>
             <Spanish>Imposible desmontar la radio. Inventario lleno.</Spanish>
-            <French>Impossible de monter la radio car vous avez d'espace d'inventaire.</French>
+            <French>Impossible de démonter la radio, car vous n'avez pas assez d'espace dans l'inventaire.</French>
             <Russian>Не вышло снять рацию - в инвентаре недостаточно места</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
@@ -131,7 +131,7 @@
             <Chinese>儀器版面 下</Chinese>
             <Chinesesimp>仪器版面 下</Chinesesimp>
             <Spanish>Panel</Spanish>
-            <French>Tableau</French>
+            <French>Tableau de bord</French>
             <German>Anschluss</German>
             <Russian>Панель</Russian>
         </Key>
@@ -156,7 +156,7 @@
             <Chinese>儀器.下</Chinese>
             <Chinesesimp>仪器.下</Chinesesimp>
             <Spanish>P.Inf</Spanish>
-            <French>T.Inf</French>
+            <French>T. inf</French>
             <German>Unten</German>
             <Russian>Н-я панель</Russian>
         </Key>
@@ -171,7 +171,7 @@
             <Polish>Górny panel</Polish>
             <Italian>Cruscotto Alto</Italian>
             <Spanish>Panel superior</Spanish>
-            <French>Tableau suppérieur</French>
+            <French>Tableau supérieur</French>
             <Russian>Верхняя панель</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
@@ -181,7 +181,7 @@
             <Chinese>儀器.上</Chinese>
             <Chinesesimp>仪器.上</Chinesesimp>
             <Spanish>P.Sup</Spanish>
-            <French>T.Sup</French>
+            <French>T. sup</French>
             <German>Oben</German>
             <Russian>В-я панель</Russian>
         </Key>

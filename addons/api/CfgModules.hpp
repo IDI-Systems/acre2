@@ -10,7 +10,7 @@ class CfgVehicles {
 
     class GVAR(basicMissionSetup): Module_F {
         scope = 2;
-        displayName = "Basic Mission Setup";
+        displayName = CSTRING(basicMissionSetup_Module_DisplayName);
         author = ECSTRING(main,Author);
         category = QGVAR(mission_setup);
 
@@ -25,45 +25,55 @@ class CfgVehicles {
         // Module arguments
         class Arguments {
             class RadioSetup {
-                displayName = "Channels Per Side";
-                description = "Set to true to have each side have different ACRE radio frequencies";
+                displayName = CSTRING(basicMissionSetup_RadioSetup_DisplayName);
+                description = CSTRING(basicMissionSetup_RadioSetup_Description);
                 typeName = "BOOL";
                 class values { };
             };
             class BabelSetup {
-                displayName = "Babel Language Per Side";
-                description = "Select whether each side has its own language, and whether they also share a common tongue.";
+                displayName = CSTRING(basicMissionSetup_BabelSetup_DisplayName);
+                description = CSTRING(basicMissionSetup_BabelSetup_Description);
                 typeName = "NUMBER";
                 class values {
-                    class AllDifferent    {name = "Per-Side";    value = 1; };
-                    class SharingDifferent    {name = "Per-Side /w Common"; value = 2; default = 2; };
-                    class No { name = "No Babel"; value = 0; };
+                    class AllDifferent {
+                        name = CSTRING(basicMissionSetup_BabelSetup_AllDifferent);
+                        value = 1;
+                    };
+                    class SharingDifferent {
+                        name = CSTRING(basicMissionSetup_BabelSetup_SharingDifferent);
+                        value = 2;
+                        default = 2;
+                    };
+                    class No {
+                        name = CSTRING(basicMissionSetup_BabelSetup_No);
+                        value = 0;
+                    };
                 };
             };
             class DefaultRadio {
-                displayName = "Default Radio 1";
-                description = "Default radio for ACRE to give player";
+                displayName = CSTRING(basicMissionSetup_DefaultRadio_DisplayName);
+                description = CSTRING(basicMissionSetup_DefaultRadio_Description);
                 defaultValue = "ACRE_PRC343";
             };
             class DefaultRadio_Two {
-                displayName = "Default Radio 2";
-                description = "Default radio for ACRE to give player";
+                displayName = CSTRING(basicMissionSetup_DefaultRadio_Two_DisplayName);
+                description = CSTRING(basicMissionSetup_DefaultRadio_Description);
                 defaultValue = "";
             };
             class DefaultRadio_Three {
-                displayName = "Default Radio 3";
-                description = "Default radio for ACRE to give player";
+                displayName = CSTRING(basicMissionSetup_DefaultRadio_Three_DisplayName);
+                description = CSTRING(basicMissionSetup_DefaultRadio_Description);
                 defaultValue = "";
             };
             class DefaultRadio_Four {
-                displayName = "Default Radio 4";
-                description = "Default radio for ACRE to give player";
+                displayName = CSTRING(basicMissionSetup_DefaultRadio_Four_DisplayName);
+                description = CSTRING(basicMissionSetup_DefaultRadio_Description);
                 defaultValue = "";
             };
         };
 
         class ModuleDescription: ModuleDescription {
-            description = "This module defines basic ACRE setup for a mission";
+            description = CSTRING(basicMissionSetup_Module_Description);
             sync[] = {};
         };
     };
@@ -121,7 +131,7 @@ class CfgVehicles {
 
     class GVAR(nameChannels): Module_F {
         scope = 2;
-        displayName = "Name Channels";
+        displayName = CSTRING(nameChannels_Module_DisplayName);
         author = ECSTRING(main,Author);
         category = QGVAR(mission_setup);
 
@@ -137,72 +147,88 @@ class CfgVehicles {
         class Arguments {
 
             class SideSelect {
-                displayName = "Side";
-                description = "Select the side to name channels for";
+                displayName = CSTRING(nameChannels_SideSelect_DisplayName);
+                description = CSTRING(nameChannels_SideSelect_Description);
                 typeName = "NUMBER";
                 class values {
-                    class All    {name = "All";    value = 1; default = 1;};
-                    class West    {name = "West"; value = 2;};
-                    class East    {name = "East"; value = 3;};
-                    class Ind    {name = "Independent"; value = 4;};
-                    class Civ    {name = "Civilian"; value = 5;};
+                    class All {
+                        name = CSTRING(nameChannels_SideSelect_All);
+                        value = 1;
+                        default = 1;
+                    };
+                    class West {
+                        name = CSTRING(nameChannels_SideSelect_West);
+                        value = 2;
+                    };
+                    class East {
+                        name = CSTRING(nameChannels_SideSelect_East);
+                        value = 3;
+                    };
+                    class Ind {
+                        name = CSTRING(nameChannels_SideSelect_Ind);
+                        value = 4;
+                    };
+                    class Civ {
+                        name = CSTRING(nameChannels_SideSelect_Civ);
+                        value = 5;
+                    };
                 };
             };
 
             class Channel_1 {
-                displayName = "Channel 1";
-                description = "Name of Channel 1";
+                displayName = CSTRING(nameChannels_Channel_1_DisplayName);
+                description = CSTRING(nameChannels_Channel_1_Description);
                 defaultValue = "PLTNET 1";
             };
             class Channel_2 {
-                displayName = "Channel 2";
-                description = "Name of Channel 2";
+                displayName = CSTRING(nameChannels_Channel_2_DisplayName);
+                description = CSTRING(nameChannels_Channel_2_Description);
                 defaultValue = "PLTNET 2";
             };
             class Channel_3 {
-                displayName = "Channel 3";
-                description = "Name of Channel 3";
+                displayName = CSTRING(nameChannels_Channel_3_DisplayName);
+                description = CSTRING(nameChannels_Channel_3_Description);
                 defaultValue = "PLTNET 3";
             };
             class Channel_4 {
-                displayName = "Channel 4";
-                description = "Name of Channel 4";
+                displayName = CSTRING(nameChannels_Channel_4_DisplayName);
+                description = CSTRING(nameChannels_Channel_4_Description);
                 defaultValue = "COYNET 1";
             };
             class Channel_5 {
-                displayName = "Channel 5";
-                description = "Name of Channel 5";
+                displayName = CSTRING(nameChannels_Channel_5_DisplayName);
+                description = CSTRING(nameChannels_Channel_5_Description);
                 defaultValue = "CASNET 1";
             };
             class Channel_6 {
-                displayName = "Channel 6";
-                description = "Name of Channel 6";
+                displayName = CSTRING(nameChannels_Channel_6_DisplayName);
+                description = CSTRING(nameChannels_Channel_6_Description);
                 defaultValue = "CASNET 2";
             };
             class Channel_7 {
-                displayName = "Channel 7";
-                description = "Name of Channel 7";
+                displayName = CSTRING(nameChannels_Channel_7_DisplayName);
+                description = CSTRING(nameChannels_Channel_7_Description);
                 defaultValue = "CASNET 3";
             };
             class Channel_8 {
-                displayName = "Channel 8";
-                description = "Name of Channel 8";
+                displayName = CSTRING(nameChannels_Channel_8_DisplayName);
+                description = CSTRING(nameChannels_Channel_8_Description);
                 defaultValue = "FIRES";
             };
             class Channel_9 {
-                displayName = "Channel 9";
-                description = "Name of Channel 9";
+                displayName = CSTRING(nameChannels_Channel_9_DisplayName);
+                description = CSTRING(nameChannels_Channel_9_Description);
                 defaultValue = "LOGISTICS";
             };
             class Channel_10 {
-                displayName = "Channel 10";
-                description = "Name of Channel 10";
+                displayName = CSTRING(nameChannels_Channel_10_DisplayName);
+                description = CSTRING(nameChannels_Channel_10_Description);
                 defaultValue = "SUPPORT";
             };
         };
 
         class ModuleDescription: ModuleDescription {
-            description = "This module defines basic channel naming for a mission in ACRE";
+            description = CSTRING(nameChannels_Module_Description);
             sync[] = {};
         };
     };

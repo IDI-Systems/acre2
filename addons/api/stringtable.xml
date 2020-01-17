@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="api">
+        <!-- Basic Mission Setup Module-->
+        <Key ID="STR_ACRE_api_basicMissionSetup_Module_DisplayName">
+            <English>Basic Mission Setup</English>
+            <French>Réglages de mission</French>
+            <Chinese>基本任務設置</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_Module_Description">
+            <English>This module defines basic ACRE setup for a mission</English>
+            <French>Ce module permet la configuration du module de base ACRE pour la mission.</French>
+            <Chinese>這個模塊為了任務定義基礎的ACRE 設定</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_DisplayName">
+            <English>Channels Per Side</English>
+            <French>Canaux séparés par camp</French>
+            <Chinese>各陣營不同頻率</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_Description">
+            <English>Set to true to have each side have different ACRE radio frequencies</English>
+            <French>Définit si chaque camp doit avoir des fréquences radio qui lui sont propres.</French>
+            <Chinese>設為是時會讓不同陣營的玩家有著不同的ACRE 無線電頻率</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_DisplayName">
+            <English>Babel Language Per Side</English>
+            <French>Langue Babel par camp</French>
+            <Chinese>各陣營多國語言</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_Description">
+            <English>Select whether each side has its own language, and whether they also share a common tongue.</English>
+            <French>Définit si chaque camp a sa propre langue, ou s'ils partagent également une langue commune.</French>
+            <Chinese>設定各陣營是否使用自己的母語，或者母語之外還有一個通用語言。</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_AllDifferent">
+            <English>Per-Side</English>
+            <French>Une langue par camp</French>
+            <Chinese>母語</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_SharingDifferent">
+            <English>Per-Side /w Common</English>
+            <French>Une langue par camp/avec une langue commune</French>
+            <Chinese>母語並外加通用語</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_No">
+            <English>No Babel</English>
+            <French>Ne pas utiliser Babel</French>
+            <Chinese>關閉母語</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_DisplayName">
+            <English>Default Radio 1</English>
+            <French>Radio par défaut 1</French>
+            <Chinese>預設無線電 1</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Two_DisplayName">
+            <English>Default Radio 2</English>
+            <French>Radio par défaut 2</French>
+            <Chinese>預設無線電 2</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Three_DisplayName">
+            <English>Default Radio 3</English>
+            <French>Radio par défaut 3</French>
+            <Chinese>預設無線電 3</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Four_DisplayName">
+            <English>Default Radio 4</English>
+            <French>Radio par défaut 4</French>
+            <Chinese>預設無線電 4</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Description">
+            <English>Default radio for ACRE to give player</English>
+            <French>Radio ACRE par défaut à donner au joueur.</French>
+            <Chinese>預設給於玩家的ACRE 無線電</Chinese>
+        </Key>
+        <!-- Name Channels Module-->
+        <Key ID="STR_ACRE_api_nameChannels_Module_DisplayName">
+            <English>Name Channels</English>
+            <French>Nommer les canaux</French>
+            <Chinese>頻道名</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Module_Description">
+            <English>This module defines basic channel naming for a mission in ACRE</English>
+            <French>Ce module permet de nommer les canaux radio ACRE pour la mission.</French>
+            <Chinese>這個模組為任務定義基礎的ACRE 頻道名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_SideSelect_DisplayName">
+            <English>Side</English>
+            <French>Camp(s)</French>
+            <Chinese>陣營選擇</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_SideSelect_Description">
+            <English>Select the side to name channels for</English>
+            <French>Choisir pour quel(s) camp(s) nommer les canaux.</French>
+            <Chinese>選擇哪方陣營使用頻道名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_SideSelect_All">
+            <English>All</English>
+            <French>Tous</French>
+            <Chinese>全部</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_SideSelect_West">
+            <English>BLUFOR</English>
+            <French>BLUFOR</French>
+            <Chinese>藍方</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_SideSelect_East">
+            <English>OPFOR</English>
+            <French>OPFOR</French>
+            <Chinese>對立方</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_SideSelect_Ind">
+            <English>Independent</English>
+            <French>Indépendants</French>
+            <Chinese>獨立方</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_SideSelect_Civ">
+            <English>Civilian</English>
+            <French>Civils</French>
+            <Chinese>市民</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_1_DisplayName">
+            <English>Channel 1</English>
+            <French>Canal 1</French>
+            <Chinese>頻道 1</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_1_Description">
+            <English>Name of Channel 1</English>
+            <French>Définit le nom du canal 1.</French>
+            <Chinese>頻道 1 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_2_DisplayName">
+            <English>Channel 2</English>
+            <French>Canal 2</French>
+            <Chinese>頻道 2</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_2_Description">
+            <English>Name of Channel 2</English>
+            <French>Définit le nom du canal 2.</French>
+            <Chinese>頻道 2 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_3_DisplayName">
+            <English>Channel 3</English>
+            <French>Canal 3</French>
+            <Chinese>頻道 3</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_3_Description">
+            <English>Name of Channel 3</English>
+            <French>Définit le nom du canal 3.</French>
+            <Chinese>頻道 3 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_4_DisplayName">
+            <English>Channel 4</English>
+            <French>Canal 4</French>
+            <Chinese>頻道 4</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_4_Description">
+            <English>Name of Channel 4</English>
+            <French>Définit le nom du canal 4.</French>
+            <Chinese>頻道 4 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_5_DisplayName">
+            <English>Channel 5</English>
+            <French>Canal 5</French>
+            <Chinese>頻道 5</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_5_Description">
+            <English>Name of Channel 5</English>
+            <French>Définit le nom du canal 5.</French>
+            <Chinese>頻道 5 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_6_DisplayName">
+            <English>Channel 6</English>
+            <French>Canal 6</French>
+            <Chinese>頻道 6</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_6_Description">
+            <English>Name of Channel 6</English>
+            <French>Définit le nom du canal 6.</French>
+            <Chinese>頻道 6 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_7_DisplayName">
+            <English>Channel 7</English>
+            <French>Canal 7</French>
+            <Chinese>頻道 7</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_7_Description">
+            <English>Name of Channel 7</English>
+            <French>Définit le nom du canal 7.</French>
+            <Chinese>頻道 7 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_8_DisplayName">
+            <English>Channel 8</English>
+            <French>Canal 8</French>
+            <Chinese>頻道 8</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_8_Description">
+            <English>Name of Channel 8</English>
+            <French>Définit le nom du canal 8.</French>
+            <Chinese>頻道 8 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_9_DisplayName">
+            <English>Channel 9</English>
+            <French>Canal 9</French>
+            <Chinese>頻道 9</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_9_Description">
+            <English>Name of Channel 9</English>
+            <French>Définit le nom du canal 9.</French>
+            <Chinese>頻道 9 名稱</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_10_DisplayName">
+            <English>Channel 10</English>
+            <French>Canal 10</French>
+            <Chinese>頻道 10</Chinese>
+        </Key>
+        <Key ID="STR_ACRE_api_nameChannels_Channel_10_Description">
+            <English>Name of Channel 10</English>
+            <French>Définit le nom du canal 10.</French>
+            <Chinese>頻道 10 名稱</Chinese>
+        </Key>
+    </Package>
+</Project>
