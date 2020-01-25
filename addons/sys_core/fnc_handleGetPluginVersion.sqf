@@ -20,7 +20,7 @@ GVAR(pluginVersion) = _this select 0;
 private _warn = false;
 
 if (!isNil "ACRE_FULL_SERVER_VERSION") then {
-    if (ACRE_FULL_SERVER_VERSION != QUOTE(VERSION)) then {
+    if (ACRE_FULL_SERVER_VERSION != QUOTE(VERSION_STR)) then {
         _warn = true;
     };
 };
@@ -30,12 +30,12 @@ if (GVAR(pluginVersion) != QUOTE(VERSION_PLUGIN)) then {
 
 if (!ACRE_SPIT_VERSION && {!isNil "ACRE_FULL_SERVER_VERSION"}) then {
     ACRE_SPIT_VERSION = true;
-    INFO_3("Version information. Plugin: %1 - Client: %1 - Server: %3",GVAR(pluginVersion),QUOTE(VERSION),ACRE_FULL_SERVER_VERSION);
+    INFO_3("Version information. Plugin: %1 - Client: %2 - Server: %3",GVAR(pluginVersion),QUOTE(VERSION_STR),ACRE_FULL_SERVER_VERSION);
 };
 
 if (_warn) then {
     ACRE_HAS_WARNED = true;
-    ERROR_WITH_TITLE_3("Mismatched TeamSpeak plugin or mod versions!","\nTeamSpeak plugin version: %1\nYour version: %2\nServer version: %3",GVAR(pluginVersion),QUOTE(VERSION),ACRE_FULL_SERVER_VERSION);
+    ERROR_WITH_TITLE_3("Mismatched TeamSpeak plugin or mod versions!","\nTeamSpeak plugin version: %1\nYour version: %2\nServer version: %3",GVAR(pluginVersion),QUOTE(VERSION_STR),ACRE_FULL_SERVER_VERSION);
 } else {
     if (ACRE_HAS_WARNED) then {
         ACRE_HAS_WARNED = false;
