@@ -111,7 +111,6 @@ inline std::string find_mod_file(std::string filename) {
 
         WIN32_FIND_DATAA data;
         std::string path("*");
-        std::string *name;
         HANDLE hFile = FindFirstFileA(path.c_str(), &data);
 
         if (hFile == INVALID_HANDLE_VALUE)
@@ -188,30 +187,34 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
         case PIPE_COMMAND_READ: {
             if (readConnected) {
                 DWORD cbRead;
-                DWORD err;
                 BOOL ret;
-                char *value = new char[4096];
+                char value[4097]; // Allocate on stack to delegate memory management to compiler,
+                // allows up to 4096 char string (+1 to ensure NUL terminated), like initial version
+
                 //DEBUG("Read from pipe [%d]\n", hPipe);
-                ret = ReadFile(readHandle, (LPVOID)value, 4096, &cbRead, NULL);
-                if ( ! ret) {
-                    err = GetLastError();
-                    if (err == ERROR_BROKEN_PIPE) {
-                        ClosePipe();
-                    }
+                ret = ReadFile(readHandle, (LPVOID)value, sizeof(value)-1, &cbRead, NULL);
+                if (!ret) {
+                    DWORD err = GetLastError();
                     //DEBUG("ReadFile failed, [%08x]\r\n", err);
-                }
-                if (cbRead != 0) {
-                    //DEBUG("Read data: %s\n", value);
-                    strncpy(output,value,cbRead);
-                } else {
-                    if (err == 232) {
-                        strncpy(output,"_JERR_NULL",outputSize);
+                    if (err == ERROR_NO_DATA) {
+                        strncpy(output, "_JERR_NULL", outputSize);
                     } else {
-                        //LOG("PIPE ERROR: %d\r\n", err);
-                        strncpy(output,"_JERR_FALSE",outputSize);
+                        if (err == ERROR_BROKEN_PIPE) {
+                            ClosePipe();
+                        }
+                        strncpy(output, "_JERR_FALSE", outputSize);
                     }
+                } else if (cbRead != 0) {
+                    //DEBUG("Read data: %s\n", value);
+
+                    // Ensure NUL terminated string (required by strncpy_s)
+                    value[cbRead] = '\0';
+
+                    strncpy_s(output, outputSize, value, _TRUNCATE);
+                } else {
+                    //DEBUG("No data read");
+                    strncpy(output,"_JERR_NULL",outputSize);
                 }
-                delete value;
             } else {
                 ClosePipe();
                 strncpy(output,"_JERR_NOCONNECT",outputSize);
