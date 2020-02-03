@@ -198,24 +198,28 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                     //DEBUG("ReadFile failed, [%08x]\r\n", err);
                     if (err == ERROR_NO_DATA) {
                         strncpy(output, "_JERR_NULL", outputSize);
-                    } else {
+                    }
+                    else {
                         if (err == ERROR_BROKEN_PIPE) {
                             ClosePipe();
                         }
                         strncpy(output, "_JERR_FALSE", outputSize);
                     }
-                } else if (cbRead != 0) {
+                }
+                else if (cbRead != 0) {
                     //DEBUG("Read data: %s\n", value);
 
                     // Ensure NUL terminated string (required by strncpy_s)
                     value[cbRead] = '\0';
 
                     strncpy_s(output, outputSize, value, _TRUNCATE);
-                } else {
+                }
+                else {
                     //DEBUG("No data read");
                     strncpy(output,"_JERR_NULL",outputSize);
                 }
-            } else {
+            }
+            else {
                 ClosePipe();
                 strncpy(output,"_JERR_NOCONNECT",outputSize);
             }
