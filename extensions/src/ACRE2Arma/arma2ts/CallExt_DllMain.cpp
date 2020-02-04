@@ -188,40 +188,42 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             if (readConnected) {
                 DWORD cbRead;
                 BOOL ret;
-                char value[4097]; // Allocate on stack to delegate memory management to compiler,
+                constexpr size_t read_length = 4097U;
+                char value[read_length]; // Allocate on stack to delegate memory management to compiler,
                 // allows up to 4096 char string (+1 to ensure NUL terminated), like initial version
 
                 //DEBUG("Read from pipe [%d]\n", hPipe);
-                ret = ReadFile(readHandle, (LPVOID)value, sizeof(value)-1, &cbRead, NULL);
+                ret = ReadFile(readHandle, (LPVOID)value, sizeof(char) * (read_length - 1U), &cbRead, NULL);
                 if (!ret) {
                     DWORD err = GetLastError();
                     //DEBUG("ReadFile failed, [%08x]\r\n", err);
                     if (err == ERROR_NO_DATA) {
                         strncpy(output, "_JERR_NULL", outputSize);
-                    }
-                    else {
+                    } else {
                         if (err == ERROR_BROKEN_PIPE) {
                             ClosePipe();
                         }
                         strncpy(output, "_JERR_FALSE", outputSize);
                     }
-                }
-                else if (cbRead != 0) {
+                } else if (cbRead != 0) {
                     //DEBUG("Read data: %s\n", value);
+
+                    if (cbRead >= (size_t)outputSize) {
+                        // Prevent buffer overflow
+                        cbRead = outputSize - 1U;
+                    }
 
                     // Ensure NUL terminated string (required by strncpy_s)
                     value[cbRead] = '\0';
 
-                    strncpy_s(output, outputSize, value, _TRUNCATE);
-                }
-                else {
+                    strncpy(output, value, cbRead);
+                } else {
                     //DEBUG("No data read");
-                    strncpy(output,"_JERR_NULL",outputSize);
+                    strncpy(output, "_JERR_NULL", outputSize);
                 }
-            }
-            else {
+            } else {
                 ClosePipe();
-                strncpy(output,"_JERR_NOCONNECT",outputSize);
+                strncpy(output, "_JERR_NOCONNECT", outputSize);
             }
             return;
         }
