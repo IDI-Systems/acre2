@@ -187,15 +187,14 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
         case PIPE_COMMAND_READ: {
             if (readConnected) {
                 DWORD cbRead;
-                BOOL ret;
                 constexpr size_t read_length = 4097U;
                 char value[read_length]; // Allocate on stack to delegate memory management to compiler,
                 // allows up to 4096 char string (+1 to ensure NUL terminated), like initial version
 
                 //DEBUG("Read from pipe [%d]\n", hPipe);
-                ret = ReadFile(readHandle, (LPVOID)value, sizeof(char) * (read_length - 1U), &cbRead, NULL);
+                const BOOL ret = ReadFile(readHandle, (LPVOID)value, sizeof(char) * (read_length - 1U), &cbRead, NULL);
                 if (!ret) {
-                    DWORD err = GetLastError();
+                    const DWORD err = GetLastError();
                     //DEBUG("ReadFile failed, [%08x]\r\n", err);
                     if (err == ERROR_NO_DATA) {
                         strncpy(output, "_JERR_NULL", outputSize);
@@ -213,7 +212,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                         cbRead = outputSize - 1U;
                     }
 
-                    // Ensure NUL terminated string (required by strncpy_s)
+                    // Ensure NUL terminated string (required by strncpy)
                     value[cbRead] = '\0';
 
                     strncpy(output, value, cbRead);
