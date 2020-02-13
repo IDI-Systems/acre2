@@ -12,7 +12,7 @@ feedback_disable: true
 
 exclude: [.idea/, pdfconfigs, .editorconfig, .gitignore, CNAME, docker-compose.yml, Dockerfile, Gemfile, Gemfile.lock, "*.sh", README.md]
 
-gems:
+plugins:
   - jekyll-redirect-from
 
 whitelist:

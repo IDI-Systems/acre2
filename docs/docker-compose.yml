@@ -1,8 +1,10 @@
-version: '2'
+version: '3'
 
 services:
   docs:
     build: .
+    environment:
+      JEKYLLARGS: --incremental
     restart: always
     ports:
       - "4000:4000"
