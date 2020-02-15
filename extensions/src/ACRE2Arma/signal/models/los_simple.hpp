@@ -1,5 +1,4 @@
-#ifndef MODELS_LOS_SIMPLE_HPP_
-#define MODELS_LOS_SIMPLE_HPP_
+#pragma once
 
 #include "models_common.hpp"
 #include "../antenna/antenna.hpp"
@@ -11,7 +10,7 @@ namespace acre {
         namespace model {
             class los_simple : public SignalModel {
             public:
-                los_simple() {};
+                los_simple() {}
                 los_simple(map_p);
                 ~los_simple();
 
@@ -23,7 +22,7 @@ namespace acre {
 
             class multipath : public los_simple {
             public:
-                multipath() {};
+                multipath() {}
                 multipath(map_p);
                 ~multipath();
 
@@ -43,5 +42,3 @@ namespace acre {
         }
     }
 }
-
-#endif /* MODELS_LOS_SIMPLE_HPP_ */
