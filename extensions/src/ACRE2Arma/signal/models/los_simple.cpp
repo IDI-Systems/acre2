@@ -120,7 +120,7 @@ float32_t acre::signal::model::multipath::search_distance(const float32_t freque
 }
 
 void acre::signal::model::multipath::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, const float32_t frequency_, const float32_t power_, const float32_t scale_, const bool omnidirectional_) {
-    float32_t tx_power = 10.0F * std::log10(power_ / 1000.0F) + 30.0F;
+    const float32_t tx_power = 10.0F * std::log10(power_ / 1000.0F) + 30.0F;
     const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
     const float32_t searchDistance = search_distance(frequency_, power_);
 
@@ -189,8 +189,8 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
             float32_t reflection_ratio = std::cos(bt);
          */
         const float32_t reflection_ratio = glm::dot(terrain_normal, glm::normalize(best_angle_v));
-        tx_power = (10.0F * std::log10((power_ * reflection_ratio) / 1000.0F)) + 30.0F;
-        float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - (-27.55F + (20.0F * std::log10(frequency_))) + rx_gain - rx_internal_loss;
+        const float32_t tx_power_reflected = (10.0F * std::log10((power_ * reflection_ratio) / 1000.0F)) + 30.0F;
+        float32_t budget = tx_power_reflected + tx_gain - tx_internal_loss - fspl - (-27.55F + (20.0F * std::log10(frequency_))) + rx_gain - rx_internal_loss;
 
         if (budget > -200.0F) {
             diffractionLoss = diffraction_loss(tx_pos_, best_angle, frequency_) * scale_;
@@ -198,8 +198,8 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
                 diffractionLoss += diffraction_loss(best_angle, rx_pos_, frequency_) * scale_;
                 budget -= diffractionLoss;
 
-                if (budget > -200.0f) {
-                    const float32_t budget_v = dbm_to_v(budget, 50.0f);
+                if (budget > -200.0F) {
+                    const float32_t budget_v = dbm_to_v(budget, 50.0F);
                     signals.push_back(budget_v);
 
                     const float32_t signalPhase = phase(path_distance, frequency_) + PI;
