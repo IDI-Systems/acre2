@@ -347,6 +347,7 @@
             <Chinese>啟用強調</Chinese>
             <Russian>Активировать приоритет</Russian>
             <French>Activer la priorité</French>
+            <Chinesesimp>启用强调</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
             <English>Deactivate Accent</English>
@@ -356,6 +357,7 @@
             <Chinese>禁用強調</Chinese>
             <Russian>Деактивировать приоритет</Russian>
             <French>Désactiver la priorité</French>
+            <Chinesesimp>禁用强调</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
             <English>Intercom Transmit</English>
@@ -426,6 +428,7 @@
             <Japanese>前のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
             <Chinese>從其他通訊網路斷開。並連接至上一個網路。</Chinese>
             <French>Se connecte au réseau précédent d'interphone. Se déconnecte des autres réseaux.</French>
+            <Chinesesimp>从其他通讯网路断开。并链接至上一个网路。</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercomKey">
             <English>Next Intercom Network</English>
@@ -447,6 +450,7 @@
             <Japanese>次のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
             <Chinese>從其他通訊網路斷開。並連接至下一個網路。</Chinese>
             <French>Se connecte au réseau suivant d'interphone. Se déconnecte des autres réseaux.</French>
+            <Chinesesimp>从其他通讯网路断开。并连接至下一个网路。</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
             <English>Connect Previous Intercom Network</English>
@@ -470,6 +474,7 @@
             <Japanese>前のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
             <Chinese>維持與其他通訊網路存在的連線。並連接至上一個網路。</Chinese>
             <French>Se connecte au réseau d'interphonie précédent, tout en conservant les réseaux déjà connectés.</French>
+            <Chinesesimp>维持与其他通讯网路存在的连线。并连接至上一个网路。</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey">
             <English>Connect Next Intercom Network</English>
@@ -491,6 +496,7 @@
             <Japanese>次のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
             <Chinese>維持與其他通訊網路存在的連線。並連接至下一個網路。</Chinese>
             <French>Se connecte au réseau d'interphonie suivant, tout en conservant les réseaux déjà connectés.</French>
+            <Chinesesimp>维持与其他通讯网路存在的连线。并连接至下一个网路。</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Open Intercom GUI</English>
@@ -500,6 +506,7 @@
             <Russian>Открыть окно Интеркома</Russian>
             <Chinese>開啟對講機界面。</Chinese>
             <French>Ouvrir l'interface graphique de l'interphone</French>
+            <Chinesesimp>开启对讲机界面。</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_forcedStatus">
             <English>Intercom status is being forced. Cannot change configuration.</English>
@@ -509,6 +516,7 @@
             <Japanese>インターコム状態が強制表示され、設定は変更できません。</Japanese>
             <Chinese>對講機狀態以被強制。無法更改設置。</Chinese>
             <French>L'état de l'interphone est forcé. Impossible de modifier la configuration.</French>
+            <Chinesesimp>对讲机状态已被强制。无法更改设置。</Chinesesimp>
         </Key>
     </Package>
 </Project>
