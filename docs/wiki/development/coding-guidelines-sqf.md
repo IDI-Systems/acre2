@@ -4,6 +4,8 @@ title: Coding Guidelines (SQF)
 
 _Disclaimer: Not all ACRE2's code complies with the below coding guidelines, we are working towards improving as much as we can!_
 
+ACRE2 uses [ACE3 Coding Guidelines](https://ace3mod.com/wiki/development/coding-guidelines.html) with changes and additions noted below.
+
 ## Naming Conventions
 
 ### Variable Names
