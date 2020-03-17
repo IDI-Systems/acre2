@@ -1,24 +1,21 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Returns getUnitLoadout with ACRE base radios
+ * Filters unitLoadout for ACRE ID classes and replacing them for base classes.
  *
  * Arguments:
- * 0: Unit <OBJECT> (default: acre_player)
+ * 0: Loadout <ARRAY> (default: getUnitLoadout acre_player)
  *
  * Return Value:
  * Loadout <ARRAY>
  *
  * Example:
- * _loadout = [unit] call acre_api_fnc_getUnitLoadout;
+ * _loadout = [_loadout] call acre_api_fnc_filterUnitLoadout;
  *
  * Public: Yes
  */
 
-params [["_unit", acre_player]];
-
-// Loadout
-private _loadout = getUnitLoadout _unit;
+params [["_loadout", getUnitLoadout acre_player, [[]]]];
 
 // Remove "ItemRadioAcreFlagged"
 if ((_loadout select 9) select 2 == "ItemRadioAcreFlagged") then {
