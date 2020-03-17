@@ -9,7 +9,7 @@ files = [
     "LICENSE",
     "acre_logo_medium_ca.paa",
     "meta.cpp",
-    "extras/Wav2B64.exe",
+    "extras/Wav2B64.exe/",
     "extras/examples/",
     "plugin"
 ]
