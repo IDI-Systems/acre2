@@ -31,6 +31,8 @@ exclude-labels:
 change-template: '- $TITLE (#$NUMBER)'
 template: |
   _Requires CBA version X.Y.Z or later and Arma 3 version X.Y or later._
+  DESCRIPTION HERE
+  If you're looking to chat with us be sure to join our public [Slack group](http://slackin.idi-systems.com)!
   ## Change Log Summary
   $CHANGES
 replacers:
