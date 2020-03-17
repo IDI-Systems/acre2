@@ -99,8 +99,8 @@
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
             <German>Anlage</German>
-            <Chinese>架子</Chinese>
-            <Chinesesimp>架子</Chinesesimp>
+            <Chinese>機架</Chinese>
+            <Chinesesimp>机架</Chinesesimp>
             <Korean>선반</Korean>
             <Japanese>架台</Japanese>
             <Portuguese>Suporte</Portuguese>
@@ -113,8 +113,8 @@
         <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
             <German>Schacht</German>
-            <Chinese>儀錶板</Chinese>
-            <Chinesesimp>仪表板</Chinesesimp>
+            <Chinese>儀器版面</Chinese>
+            <Chinesesimp>仪器版面</Chinesesimp>
             <Korean>대쉬보드</Korean>
             <Japanese>ダッシュボード</Japanese>
             <Portuguese>Painel</Portuguese>
@@ -128,8 +128,8 @@
             <English>Dash</English>
             <Italian>Cruscotto</Italian>
             <Japanese>ダッシュ</Japanese>
-            <Chinese>儀錶板</Chinese>
-            <Chinesesimp>仪表板</Chinesesimp>
+            <Chinese>儀器版面 下</Chinese>
+            <Chinesesimp>仪器版面 下</Chinesesimp>
             <Spanish>Panel</Spanish>
             <French>Tableau de bord</French>
             <German>Anschluss</German>
@@ -138,8 +138,8 @@
         <Key ID="STR_ACRE_sys_rack_dashLower">
             <English>Dash Lower</English>
             <German>Unterer</German>
-            <Chinese>儀錶板下降</Chinese>
-            <Chinesesimp>仪表板下降</Chinesesimp>
+            <Chinese>儀器版面下降</Chinese>
+            <Chinesesimp>仪器版面下降</Chinesesimp>
             <Korean>대쉬보드 하단</Korean>
             <Japanese>ダッシュボードを下げる</Japanese>
             <Portuguese>Painel Inferior</Portuguese>
@@ -153,8 +153,8 @@
             <English>D.Low</English>
             <Italian>C. Basso</Italian>
             <Japanese>D.下げ</Japanese>
-            <Chinese>儀錶板下降</Chinese>
-            <Chinesesimp>仪表板下降</Chinesesimp>
+            <Chinese>儀器.下</Chinese>
+            <Chinesesimp>仪器.下</Chinesesimp>
             <Spanish>P.Inf</Spanish>
             <French>T. inf</French>
             <German>Unten</German>
@@ -163,8 +163,8 @@
         <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dash Upper</English>
             <German>Oberer</German>
-            <Chinese>儀錶板上升</Chinese>
-            <Chinesesimp>仪表板上升</Chinesesimp>
+            <Chinese>儀器版面上升</Chinese>
+            <Chinesesimp>仪器版面上升</Chinesesimp>
             <Korean>대쉬보드 상단</Korean>
             <Japanese>ダッシュボードを上げる</Japanese>
             <Portuguese>Painel Superior</Portuguese>
@@ -178,8 +178,8 @@
             <English>D.Up</English>
             <Italian>C. Alto</Italian>
             <Japanese>D.上げ</Japanese>
-            <Chinese>儀錶板上升</Chinese>
-            <Chinesesimp>仪表板上升</Chinesesimp>
+            <Chinese>儀器.上</Chinese>
+            <Chinesesimp>仪器.上</Chinesesimp>
             <Spanish>P.Sup</Spanish>
             <French>T. sup</French>
             <German>Oben</German>

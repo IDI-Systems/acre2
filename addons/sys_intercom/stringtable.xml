@@ -36,8 +36,8 @@
             <Japanese>車外電話機 %1 を取る</Japanese>
             <Russian>Взять телефон пехоты %1</Russian>
             <Polish>Podnieś telefon piechoty %1</Polish>
-            <Chinese>拿起車外對講機%1</Chinese>
-            <Chinesesimp>拿起车外对讲机%1</Chinesesimp>
+            <Chinese>拿起車外對講機 %1</Chinese>
+            <Chinesesimp>拿起车外对讲机 %1</Chinesesimp>
             <Korean>보병 전화 %1을 얻음</Korean>
             <Portuguese>Pegar Telefone de Infantaria %1</Portuguese>
             <Italian>Prendi telefono fanteria %1</Italian>
@@ -50,8 +50,8 @@
             <Japanese>%1 ネットワークに切り替え</Japanese>
             <Russian>Переключить сеть %1</Russian>
             <Polish>Przełącz sieć %1</Polish>
-            <Chinese>切換通訊網%1</Chinese>
-            <Chinesesimp>切换通讯网%1</Chinesesimp>
+            <Chinese>切換通訊網 %1</Chinese>
+            <Chinesesimp>切换通讯网 %1</Chinesesimp>
             <Korean>네트워크 교체</Korean>
             <Portuguese>Trocar Rede %1</Portuguese>
             <Italian>Cambia canale %1</Italian>
@@ -120,7 +120,7 @@
             <Japanese>車外電話機 %1 に接続しました</Japanese>
             <Russian>Телефон пехоты подключен %1</Russian>
             <Polish>Telefon podłączony %1</Polish>
-            <Chinese>車外對講機已連接%1</Chinese>
+            <Chinese>車外對講機已連接 %1</Chinese>
             <Chinesesimp>车外对讲机已连接%1</Chinesesimp>
             <Korean>보병 전화 %1에 연결됨</Korean>
             <Portuguese>Telefone de Infantaria Conectado %1</Portuguese>
@@ -134,7 +134,7 @@
             <Japanese>車外電話機 %1 が受信されました</Japanese>
             <Russian>Получен телефон пехоты %1</Russian>
             <Polish>Odebrano telefon piechoty %1</Polish>
-            <Chinese>車外對講機已收到%1</Chinese>
+            <Chinese>車外對講機已收到 %1</Chinese>
             <Chinesesimp>车外对讲机已收到%1</Chinesesimp>
             <Korean>보병 전화 %1 수신</Korean>
             <Portuguese>Telefone de Infantaria Recebendo %1</Portuguese>
@@ -321,8 +321,8 @@
             <Polish>Rozpocznij transmisję</Polish>
             <Italian>Incomincia trasmissione</Italian>
             <Japanese>ブロードキャストを開始</Japanese>
-            <Chinese>開始廣播</Chinese>
-            <Chinesesimp>开始广播</Chinesesimp>
+            <Chinese>開始撥放</Chinese>
+            <Chinesesimp>开始播放</Chinesesimp>
             <French>Commencer à diffuser</French>
             <German>Beginne Bordfunkübergreifende Übertragung</German>
             <Russian>Начать трансляцию</Russian>
@@ -333,8 +333,8 @@
             <Polish>Zatrzymaj transmisję</Polish>
             <Italian>Termina trasmissione</Italian>
             <Japanese>ブロードキャストを停止</Japanese>
-            <Chinese>停止廣播</Chinese>
-            <Chinesesimp>停止广播</Chinesesimp>
+            <Chinese>停止撥放</Chinese>
+            <Chinesesimp>停止播放</Chinesesimp>
             <French>Arrêter de diffuser</French>
             <German>Stoppe Bordfunkübergreifende Übertragung</German>
             <Russian>Остановить трансляцию</Russian>
@@ -362,6 +362,8 @@
             <Spanish>Tecla de intercom</Spanish>
             <Polish>Klawisz interkomu</Polish>
             <Italian>Pulsante intercom</Italian>
+            <Chinese>對講機鍵</Chinese>
+            <Chinesesimp>对讲机键</Chinesesimp>
             <Japanese>インターコム送信キー</Japanese>
             <Chinese>無線電按鍵</Chinese>
             <Chinesesimp>无线电按键</Chinesesimp>
@@ -385,9 +387,9 @@
             <Spanish>Tecla para mensaje prioritario</Spanish>
             <Polish>Klawisz nadawania interkomu</Polish>
             <Italian>Pulsante trasmissione intercom</Italian>
-            <Japanese>インターコムのブロードキャスト</Japanese>
             <Chinese>無線電廣播按鍵</Chinese>
             <Chinesesimp>无线电广播按键</Chinesesimp>
+            <Japanese>インターコムのブロードキャスト</Japanese>
             <French>Transmission inter-véhicules</French>
             <German>Bordfunkübergreifende Übertragung</German>
             <Russian>Трансляция с Интеркома</Russian>
@@ -398,8 +400,8 @@
             <Polish>Użyj interkomu, aby wysłać wiadomość priorytetową.</Polish>
             <Italian>Usa la stazione intercom per trasmettere un messaggio prioritario</Italian>
             <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
-            <Chinese>使用通訊機台來廣播重要訊息</Chinese>
-            <Chinesesimp>使用通讯机台来广播重要讯息</Chinesesimp>
+            <Chinese>使用內部對講機廣播優先訊息</Chinese>
+            <Chinesesimp>使用内部对讲机广播优先讯息</Chinesesimp>
             <French>Utilise le poste d'interphone pour diffuser un message prioritaire.</French>
             <German>Sende Prioritätsmeldung über Bordfunk.</German>
             <Russian>Передавать важное сообщение на станцию Интеркома</Russian>
@@ -451,6 +453,8 @@
             <Spanish>Connectar a la anterior red de intercom</Spanish>
             <Polish>Połącz się z poprzednią siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Precedente</Italian>
+            <Chinese>連線上一個通訊網路</Chinese>
+            <Chinesesimp>连线上一个通讯网路</Chinesesimp>
             <Japanese>前のインターコム ネットに接続</Japanese>
             <Chinese>連接至上一個內部通訊網路</Chinese>
             <Chinesesimp>连接至上一个内部通讯网路</Chinesesimp>
