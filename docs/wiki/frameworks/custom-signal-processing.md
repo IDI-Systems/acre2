@@ -41,9 +41,7 @@ The provided inputs are a bit lacking as they don't provide the position or any 
 ### Simple calculation
 Below is an example of a simple calculation that is based on how ACRE1 calculated signal loss. It is a largely based on [free-space path loss](https://en.wikipedia.org/wiki/Free-space_path_loss) over the distance which does not take into account terrain. It is also provides a bit of a boost to the signal strength of the AN/PRC-343. In this example the range of a AN/PRC-343 is around 500m and virtually all other radios will have no problems with Arma terrains (40km+).
 
-{% include note.html content="Development Build only!" %}
-
-As of 2.7.0 this model has been implemented in C++ and it can be selected using the Arcade Mode in CBA_settings.
+As of 2.7.0 this model has been implemented in C++ and it can be selected using the Arcade Mode via CBA Settings.
 
 ```js
 MY_CUSTOM_ACRE_FUNC = {
