@@ -21,4 +21,4 @@ PRELOAD_ADDONS;
 #include "CfgEventHandlers.hpp"
 #include "DialogDefines.hpp"
 #include "RadioDialogClasses.hpp"
-#include "Prc117f_RadioDialog.hpp"
+#include "prc117f_RadioDialog.hpp"
