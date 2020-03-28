@@ -2,4 +2,6 @@
 
 #include "XEH_PREP.hpp"
 
-["init", []] call FUNC(callExt);
+if (!hasInterface) then {
+    ["init", []] call FUNC(callExt);
+};
