@@ -23,6 +23,7 @@
             <Japanese>ACRE2 - 音量操作</Japanese>
             <Chinese>ACRE2 - 音量控制</Chinese>
             <French>ACRE2 - Réglage du volume</French>
+            <Chinesesimp>ACRE2 - 音量控制</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
@@ -31,6 +32,7 @@
             <Japanese>現在の直接会話音量を表示します。</Japanese>
             <Chinese>顯示妳目前說話的音量</Chinese>
             <French>Indique le niveau actuel du volume de la voix.</French>
+            <Chinesesimp>显示你目前说话的音量</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>
@@ -49,8 +51,8 @@
             <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
             <Italian>Status degli intercom e rack disponibili nel veicolo</Italian>
             <Japanese>車両にある利用可能なインターコムとラックの状態を示します。</Japanese>
-            <Chinese>載具內可用對講機及機架的狀態</Chinese>
-            <Chinesesimp>载具内可用对讲机及机架的状态</Chinesesimp>
+            <Chinese>車輛可使用的對講機即機架狀態</Chinese>
+            <Chinesesimp>车辆可使用的对讲机即机架状态</Chinesesimp>
             <Spanish>Estado de los intercoms y racks del vehículo.</Spanish>
             <French>Statut des interphones et des racks disponibles dans le véhicule.</French>
             <German>Informationen bezüglich verfügbarer Interkommunikations- oder Festfunkgeräte.</German>
@@ -62,6 +64,7 @@
             <Japanese>音量カラー</Japanese>
             <Chinese>音量界面顏色化</Chinese>
             <French>Volume - Gamme de couleurs</French>
+            <Chinesesimp>音量界面颜色化</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
             <English>Color scale used by the Volume Control UI.</English>
@@ -69,6 +72,7 @@
             <Japanese>音量操作 UI に使う色を決定できます。</Japanese>
             <Chinese>在音量控制界面以顏色作為音量等級區分</Chinese>
             <French>Gamme de couleurs utilisée pour l'interface de contrôle du volume.</French>
+            <Chinesesimp>在音量控制界面以颜色作为音量等级区分</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
             <English>Yellow, Orange, Red</English>
@@ -76,6 +80,7 @@
             <Japanese>イエロー、オレンジ、レッド</Japanese>
             <Chinese>黃，橘，紅</Chinese>
             <French>Jaune, Orange, Rouge</French>
+            <Chinesesimp>黄，橘，红</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
             <English>Green, Orange, Red</English>
@@ -83,6 +88,7 @@
             <Japanese>グリーン、オレンジ、レッド</Japanese>
             <Chinese>綠，橘，紅</Chinese>
             <French>Vert, Orange, Rouge</French>
+            <Chinesesimp>绿，橘，红</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
             <English>Blue, Magenta, Red</English>
@@ -90,6 +96,7 @@
             <Japanese>ブルー、マゼンタ、レッド</Japanese>
             <Chinese>藍，洋紅色，紅色</Chinese>
             <French>Bleu, Magenta, Rouge</French>
+            <Chinesesimp>蓝，洋红，红</Chinesesimp>
         </Key>
     </Package>
 </Project>

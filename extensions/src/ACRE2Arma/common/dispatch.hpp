@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <thread>
 #include <mutex>
@@ -24,7 +24,7 @@ namespace acre {
         }
     protected:
         std::mutex _stop_lock;
-        
+
         bool _stopped;
     };
 
@@ -49,7 +49,7 @@ namespace acre {
 
             return true;
         }
-        
+
         bool ready() const { return _ready;  }
         void ready(bool r) { _ready.exchange(r); }
     protected:
@@ -75,10 +75,10 @@ namespace acre {
     class threaded_dispatcher : public dispatcher {
     public:
         threaded_dispatcher() : _stop(false), _worker(&acre::threaded_dispatcher::monitor, this), _message_id(0) {
- 
+
         }
         ~threaded_dispatcher() {}
-        
+
         bool call(const std::string & name_, arguments & args_, std::string & result_, bool threaded) {
             if (_methods.find(name_) == _methods.end()) {
                 // @TODO: Exceptions
@@ -87,7 +87,7 @@ namespace acre {
             if (threaded) {
                 std::lock_guard<std::mutex> lock(_messages_lock);
                 _messages.push(dispatch_message(name_, args_, _message_id));
-                
+
                 // @TODO: We should provide an interface for this serialization.
                 std::stringstream ss;
                 ss << "[\"result_id\", " << _message_id << "]";
@@ -133,7 +133,7 @@ namespace acre {
     protected:
         void monitor() {
             while (!_stop) {
-                
+
                 bool empty = false;
                 {
                     std::lock_guard<std::mutex> lock(_messages_lock);
@@ -166,7 +166,7 @@ namespace acre {
                             std::lock_guard<std::mutex> lock(_messages_lock);
                             empty = _messages.empty();
                         }
-                            
+
                     }
                 }
                 sleep(5);

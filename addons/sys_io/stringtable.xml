@@ -9,6 +9,7 @@
             <Japanese>ACRE パイプ エラー: 反応が無い為、命名済みパイプへ再接続を試みます。</Japanese>
             <Chinese>ACRE 管道錯誤：Ping沒有回應，試著掛接在命名的管道重試中。</Chinese>
             <French>ERREUR DE TUNNEL ACRE : Pas de retour ping, tentative de reconnection au tunnel.</French>
+            <Chineseimp>ACRE 通道错误：Ping没有回应，尝试挂接在命名的通道重试中。</Chineseimp>
         </Key>
         <Key ID="STR_ACRE_sys_io_recoveredClosedPipe">
             <English>ACRE has recovered from a closed pipe!</English>
@@ -18,6 +19,7 @@
             <Japanese>ACRE は閉鎖済みパイプから回復しました！</Japanese>
             <Chinese>ACRE 從封閉的管道恢復！</Chinese>
             <French>ACRE a pu se reconnecter !</French>
+            <Chineseimp>ACRE 从封闭的通道中恢复！</Chineseimp>
         </Key>
         <Key ID="STR_ACRE_sys_io_acreNotConnected">
             <English>ACRE is not connected to TeamSpeak!</English>
@@ -27,6 +29,7 @@
             <Japanese>ACRE が TeamSpeak に接続されていません！</Japanese>
             <Chinese>ACRE 尚未與TeamSpeak連接！</Chinese>
             <French>ACRE n'est pas connecté à TeamSpeak !</French>
+            <Chineseimp>ACRE 尚未与TeamSpeak连接！</Chineseimp>
         </Key>
         <Key ID="STR_ACRE_sys_io_acreConnected">
             <English>ACRE connected</English>
@@ -36,6 +39,7 @@
             <Japanese>ACRE 接続完了</Japanese>
             <Chinese>ACRE 已連接</Chinese>
             <French>ACRE connecté</French>
+            <Chineseimp>ACRE 已连接</Chineseimp>
         </Key>
     </Package>
 </Project>
