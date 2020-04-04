@@ -58,13 +58,12 @@ int32_t getTSAPIVersion() {
         } else if (tspatch == 20) {
             api = 21;
         }
-    }
-    else if (tsminor <= 2) {
-        api = 22;
-    } else if (tsminor <= 5) {
-        api = 23;
+    } else if (tsminor <= 2) {
+        api = 22; // 3.2.x
+    } else if (tsminor <= 3) {
+        api = 23; // 3.3.x
     } else {
-        api = 24;
+        api = 24; // 3.5.x
     }
 
     return api;
