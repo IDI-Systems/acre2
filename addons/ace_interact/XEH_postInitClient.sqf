@@ -39,7 +39,7 @@ if (!hasInterface) exitWith {};
 ["ace_respawn_saveGear", {
     params ["_unit"];
 
-    private _filteredLoadout = [getUnitLoadout _unit] call EFUNC(api,filterUnitLoadout);
+    private _filteredLoadout = [_unit] call EFUNC(api,filterUnitLoadout);
     _unit setVariable ["ace_respawn_unitGear", _filteredLoadout];
     TRACE_1("applied loadout filter on ace_respawn_saveGear",_filteredLoadout);
 }] call CBA_fnc_addEventHandler;
