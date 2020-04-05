@@ -4,18 +4,24 @@
  * Filters unitLoadout for ACRE ID classes and replacing them for base classes.
  *
  * Arguments:
- * 0: Loadout <ARRAY> (default: getUnitLoadout acre_player)
+ * 0: Loadout <ARRAY or OBJECT or STRING or CONFIG> (default: getUnitLoadout acre_player)
  *
  * Return Value:
  * Loadout <ARRAY>
  *
  * Example:
  * _loadout = [_loadout] call acre_api_fnc_filterUnitLoadout;
+ * _loadout = [getUnitLoadout _unit] call acre_api_fnc_filterUnitLoadout;
+ * _loadout = [player] call acre_api_fnc_filterUnitLoadout;
  *
  * Public: Yes
  */
 
-params [["_loadout", getUnitLoadout acre_player, [[]]]];
+params [["_loadout", getUnitLoadout acre_player, [[], objNull, "", configNull]]];
+
+if !(_loadout isEqualType []) then {
+    _loadout = getUnitLoadout _loadout;
+};
 
 // Remove "ItemRadioAcreFlagged"
 if ((_loadout select 9) select 2 == "ItemRadioAcreFlagged") then {
