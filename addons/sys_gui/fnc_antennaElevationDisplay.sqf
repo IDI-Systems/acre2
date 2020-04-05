@@ -19,7 +19,12 @@
 [{
     // Collect data from stance and antenna direction
     private _stance = tolower (stance acre_player);
-    if (_stance == "" || {_stance == "undefined"}) exitWith {};
+    if (_stance == "" || {_stance == "undefined"}) exitWith { // hide antenna display if not-applicable
+        private _ctrlGroup = uiNamespace getVariable ["ACRE_AntennaElevationInfo", controlNull];
+        if (isNull _ctrlGroup) exitWith {};
+        private _ctrl = _ctrlGroup controlsGroupCtrl 201;
+        _ctrl ctrlSetText "";
+    };
     private _antennaDirection = "_straight";
     if (acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false] || {EGVAR(sys_core,automaticAntennaDirection) && {_stance != "stand"}}) then {
         _antennaDirection = "_bend";
