@@ -61,21 +61,6 @@
             <Chinesesimp>戴上耳机</Chinesesimp>
             <Portuguese>Levantar Fones</Portuguese>
         </Key>
-        <Key ID="STR_ACRE_ace_interact_openRadio">
-            <English>Open</English>
-            <Czech>Otevřít</Czech>
-            <German>Öffnen</German>
-            <Russian>Открыть</Russian>
-            <Polish>Otwórz</Polish>
-            <Italian>Apri</Italian>
-            <Spanish>Abrir</Spanish>
-            <French>Ouvrir</French>
-            <Japanese>開く</Japanese>
-            <Chinese>打開</Chinese>
-            <Chinesesimp>打开</Chinesesimp>
-            <Korean>열기</Korean>
-            <Portuguese>Abrir</Portuguese>
-        </Key>
         <Key ID="STR_ACRE_ace_interact_bothEars">
             <English>Both Ears</English>
             <Spanish>Ambos auriculares</Spanish>

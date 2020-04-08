@@ -24,7 +24,7 @@ if (!hasInterface) exitWith {};
 }] call CBA_fnc_addClassEventHandler;
 ["CAManBase", "Take", {_this call FUNC(handleTake)}] call CBA_fnc_addClassEventHandler;
 
-["#Item", ["GROUND", "CARGO", "CONTAINER"], "Open Radio", [], ICON_RADIO_CALL,
+["#Item", ["GROUND", "CARGO", "CONTAINER"], LSTRING(Open), [], ICON_RADIO_CALL,
     [
         {true},
         {

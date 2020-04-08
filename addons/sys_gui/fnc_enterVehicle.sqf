@@ -37,7 +37,7 @@ if (!isNull objectParent _player) then {
             // No intercom nor rack system is available. Do not show anything.
             (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
         };
-    }, [acre_player, _newVehicle], 5, {}] call CBA_fnc_waitUntilAndExecute;
+    }, [_player, _newVehicle], 5, {}] call CBA_fnc_waitUntilAndExecute;
 } else {
     // Close vehicle info display
     (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
