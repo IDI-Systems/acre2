@@ -15,12 +15,3 @@ class Extended_PostInit_EventHandlers {
         clientInit = QUOTE(call COMPILE_FILE(XEH_postInit));
     };
 };
-
-// Begin inventory extensions
-class Extended_InventoryOpened_EventHandlers {
-    class CAManBase {
-        class ADDON {
-            clientInventoryOpened = QUOTE(_this call FUNC(openInventory));
-        };
-    };
-};

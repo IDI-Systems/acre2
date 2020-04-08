@@ -22,13 +22,11 @@ params ["_unit", "_container", "_itemType"];
 private _simulationType = getText (configFile >> "CfgWeapons" >> _itemType >> "simulation");
 
 if (_simulationType == "ItemRadio") then {
-    // _allowedSlots = getArray(configFile >> "CfgWeapons" >> _itemType >> "itemInfo" >> "allowedSlots");
-    // _unit sideChat format["this: %1", _unit canAdd _itemType];
+    TRACE_1("handleTake",_itemType);
     if (!(_unit canAdd _itemType)) then {
-        // _unit sideChat format["items: %1", items _unit];
         if (!(_itemType in (items _unit))) then {
-            _container addItemCargoGlobal [_itemType, 1];
+            //_container addItemCargoGlobal [_itemType, 1];
+            TRACE_1("handleTake add",_itemType);
         };
     };
-    // _unit assignItem "ItemRadioAcreFlagged";
 };

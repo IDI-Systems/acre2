@@ -1,21 +1,26 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Handle mouse up on inventory display, restarting "ItemRadio" check after possible inventory manipulation.
+ * Primary idea is to handle right-click movement of radios from ground or container into player's inventory.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Display Control <CONTROL>
+ * 1: Button <NUMBER>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * None
  *
  * Example:
- * [ARGUMENTS] call acre_sys_gui_fnc_inventoryListMouseUp;
+ * display ctrlAddEventHandler ["MouseButtonDown", {call acre_sys_gui_fnc_inventoryListMouseUp}];
  *
  * Public: No
  */
 
-if ((_this select 1) == 1) then {
+params ["", "_button"];
+
+// Right Mouse Button
+if (_button == 1) then {
+    LOG("inventoryListMouseUp");
     ACRE_HOLD_OFF_ITEMRADIO_CHECK = false;
 };

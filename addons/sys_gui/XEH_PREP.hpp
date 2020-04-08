@@ -4,20 +4,14 @@ PREP(setVoiceCurveLevel);
 PREP(volumeKeyDown);
 PREP(volumeKeyUp);
 
-PREP(openInventory);
-PREP(closeInventory);
-
-PREP(onInventoryRadioSelected);
-PREP(onInventoryRadioDoubleClick);
+PREP(openRadio);
 
 PREP(inventoryListMouseDown);
 PREP(inventoryListMouseUp);
 
-PREP(uniqueArray);
-PREP(onInventoryAction);
-PREP(handleContextMenu);
+PREP(handleInventoryOpened);
 PREP(handleTake);
-PREP(inventoryMonitorPFH);
 
 PREP(updateVehicleInfo);
 PREP(antennaElevationDisplay);
+PREP(enterVehicle);

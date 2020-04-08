@@ -7,6 +7,10 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
     params ["_player", "_newVehicle"];
     [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 }] call CBA_fnc_addPlayerEventHandler;
+["turret", {
+    params ["_player"];
+    [FUNC(enterVehicle), [vehicle _player, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
+}] call CBA_fnc_addPlayerEventHandler;
 
 ["featureCamera", {
     params ["_player", "_featureCamera"];

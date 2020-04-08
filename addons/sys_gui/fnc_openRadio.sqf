@@ -17,4 +17,9 @@
  */
 TRACE_1("enter", _this);
 
-params ["_object","_container","_radioId"];
+params ["_radioId"];
+
+// When a radio is opened set acre_player to the current player
+acre_player = acre_current_player;
+
+[_radioId] call EFUNC(sys_radio,openRadio);
