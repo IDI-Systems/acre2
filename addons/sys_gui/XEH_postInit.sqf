@@ -22,7 +22,6 @@ if (!hasInterface) exitWith {};
         !isNull INVENTORY_DISPLAY
     }, FUNC(handleInventoryOpened), [], 10] call CBA_fnc_waitUntilAndExecute; // Make sure inventory UI is created
 }] call CBA_fnc_addClassEventHandler;
-["CAManBase", "Take", {_this call FUNC(handleTake)}] call CBA_fnc_addClassEventHandler;
 
 ["#Item", ["GROUND", "CARGO", "CONTAINER"], LSTRING(Open), [], ICON_RADIO_CALL,
     [

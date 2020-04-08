@@ -24,6 +24,8 @@ if (_button == 1) then {
     ACRE_HOLD_OFF_ITEMRADIO_CHECK = true;
 
     // Remove existing ItemRadioAcreFlagged to make space for "ItemRadio" in case player is picking that up
+    // Will RPT log: 'Inventory item with given name: [ItemRadioAcreFlagged] not found'
+    // however that should not happen often
     acre_player unassignItem "ItemRadioAcreFlagged";
     acre_player removeItem "ItemRadioAcreFlagged";
     LOG("inventoryListMouseDown");

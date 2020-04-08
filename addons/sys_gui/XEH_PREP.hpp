@@ -1,17 +1,17 @@
+// Volume Control
 PREP(getVolumeColor);
 PREP(onMouseZChanged);
 PREP(setVoiceCurveLevel);
 PREP(volumeKeyDown);
 PREP(volumeKeyUp);
 
-PREP(openRadio);
-
+// Inventory
+PREP(handleInventoryOpened);
 PREP(inventoryListMouseDown);
 PREP(inventoryListMouseUp);
+PREP(openRadio);
 
-PREP(handleInventoryOpened);
-PREP(handleTake);
-
+// Vehicle Info
 PREP(updateVehicleInfo);
 PREP(antennaElevationDisplay);
 PREP(enterVehicle);
