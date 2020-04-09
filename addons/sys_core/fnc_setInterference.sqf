@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Sets whether transmissions will interfere with each other. This, by default, causes signal loss when multiple people are transmitting on the same frequency.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 if (!hasInterface) exitWith {false};
 

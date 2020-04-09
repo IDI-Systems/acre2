@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the antenna indicator (bound to the A3 stance indicator).
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 #define FNC_SETANTENNAELEVATIONTEXT(theText) \
     private _ctrlGroup = uiNamespace getVariable [ARR_2("ACRE_AntennaElevationInfo", controlNull)]; \
