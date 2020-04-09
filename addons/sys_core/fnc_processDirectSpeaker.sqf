@@ -74,7 +74,7 @@ if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
 };
 
 private _emitterHeight = _emitterPos param [2, 1];
-private _underwater = (ACRE_LISTENER_DIVE == 1) || {_emitterPos < -0.2};
+private _underwater = (ACRE_LISTENER_DIVE == 1) || {_emitterHeight < -0.2};
 
 if (_isIntercomAttenuate) then {
     _speakingType = "i";
