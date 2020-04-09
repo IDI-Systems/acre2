@@ -41,11 +41,7 @@ private _searchFunction = {
                             if (IS_STRING(_componentParentId)) then {
                                 private _groundSpikeAntenna = [_componentParentId] call EFUNC(sys_gsa,getConnectedGsa);
                                 if (isNull _groundSpikeAntenna) then {
-                                    if (HASH_HASKEY(_attributes,"worldObject")) then {
-                                        _componentObject = HASH_GET(_attributes,"worldObject");
-                                    } else {
-                                        _componentObject = [_componentParentId] call EFUNC(sys_radio,getRadioObject);
-                                    };
+                                    _componentObject = [_componentParentId] call EFUNC(sys_radio,getRadioObject);
                                 } else {
                                     _componentObject = _groundSpikeAntenna;
                                 };
