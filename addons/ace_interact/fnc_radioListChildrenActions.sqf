@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Adds child actions for self interaction
+ * Adds child actions for self-interaction. 
  *
  * Arguments:
  * 0: Interaction Target (player) <OBJECT>
  *
  * Return Value:
- * Ace Child Actions <ARRAY>
+ * ACE Child Actions <ARRAY>
  *
  * Example:
  * [player] call acre_ace_interact_fnc_radioListChildrenActions
