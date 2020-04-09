@@ -15,26 +15,19 @@
  */
 #include "script_component.hpp"
 
-private _fnc_setAntennaElevationText = {
-    private _ctrlGroup = uiNamespace getVariable ["ACRE_AntennaElevationInfo", controlNull];
-    if (isNull _ctrlGroup) exitWith {};
+#define FNC_SETANTENNAELEVATIONTEXT(theText) \
+    private _ctrlGroup = uiNamespace getVariable [ARR_2("ACRE_AntennaElevationInfo", controlNull)]; \
+    if (!isNull _ctrlGroup) then { (_ctrlGroup controlsGroupCtrl 201) ctrlSetText theText; };
 
-    params ["_text"];
-    private _ctrl = _ctrlGroup controlsGroupCtrl 201;
-    _ctrl ctrlSetText _text;
-};
 
 // Need to run this every frame. Otherwise there will be noticeable delays
 [{
-    params ["_args"];
-    _args params ["_fnc_setAntennaElevationText"];
-
     // Collect data from stance
     private _stance = tolower (stance acre_player);
 
     // Hide antenna display if not applicable (in vehicle or other invalid stance or no radio)
     if (_stance == "" || {_stance == "undefined"} || {ACRE_ACTIVE_RADIO == ""}) exitWith {
-        [""] call _fnc_setAntennaElevationText;
+        FNC_SETANTENNAELEVATIONTEXT("");
         GVAR(stanceCache) = "";
     };
 
@@ -50,5 +43,5 @@ private _fnc_setAntennaElevationText = {
     GVAR(stanceCache) = _antennaStance;
 
     // Change antenna icon to stance
-    ["\idi\acre\addons\sys_gui\data\ui\" + _antennaStance + ".paa"] call _fnc_setAntennaElevationText;
-}, 0, [_fnc_setAntennaElevationText]] call CBA_fnc_addPerFrameHandler;
+    FNC_SETANTENNAELEVATIONTEXT(("\idi\acre\addons\sys_gui\data\ui\" + _antennaStance + ".paa"));
+}, 0, []] call CBA_fnc_addPerFrameHandler;
