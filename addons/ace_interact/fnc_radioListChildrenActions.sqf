@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Adds child actions for self-interaction. 
+ * Adds child actions for self-interaction.
  *
  * Arguments:
  * 0: Interaction Target (player) <OBJECT>
