@@ -4,9 +4,9 @@ class CfgVehicles {
         class ACE_SelfActions {
             class ACRE_Interact {
                 displayName = CSTRING(radios);
-                condition = QUOTE(!((_player call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []));
+                condition = QUOTE(true);
                 exceptions[] = {"isNotInside", "isNotSitting"};
-                statement = "true";
+                statement = ""; // With no statement the action will only show if it has children
                 insertChildren = QUOTE(_this call FUNC(radioListChildrenActions));
                 priority = 0.1;
                 icon = ICON_RADIO_CALL;
