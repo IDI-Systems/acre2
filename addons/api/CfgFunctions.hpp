@@ -27,6 +27,8 @@ class CfgFunctions {
             PATHTO_FNC(hasBaseRadio);
             PATHTO_FNC(getRadioByType);
 
+            PATHTO_FNC(filterUnitLoadout);
+
             PATHTO_FNC(setItemRadioReplacement);
             PATHTO_FNC(getDisplayName);
 
