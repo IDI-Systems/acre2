@@ -19,11 +19,10 @@
 params ["_radioId"];
 
 if (acre_player != acre_current_player) then {
-    // Switch radio list to remote controlled unit upon opening that unit's radio from inventory
-    // Do not automatically switch on remote control as it is more often that quick control without radios is required
-    // Switch can also be done through ACE Interaction Menu
+    // Switch voice source to remote controlled unit upon opening that unit's radio from inventory
+    // otherwise undefined behaviour might happen due to uninitialized radios
     acre_player = acre_current_player;
-    [[ICON_RADIO_CALL], [localize LSTRING(SwitchRadioRemoteControl)]] call CBA_fnc_notify;
+    [[ICON_RADIO_CALL], [localize ELSTRING(sys_zeus,Remote)]] call CBA_fnc_notify;
 };
 
 [_radioId] call EFUNC(sys_radio,openRadio);
