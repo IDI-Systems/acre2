@@ -71,8 +71,4 @@ enum PluginConnectTab{
     PLUGIN_CONNECT_TAB_NEW_IF_CURRENT_CONNECTED
 };
 
-/* metadata tags */
-#define START_DATA "<ACRE>"
-#define END_DATA "</ACRE>"
-
 #endif

@@ -125,6 +125,7 @@ enum ChannelProperties {
     CHANNEL_CODEC_IS_UNENCRYPTED,           //Available for all channels that are "in view", always up-to-date
     CHANNEL_SECURITY_SALT,                  //Not available client side, not used in teamspeak, only SDK. Sets the options+salt for security hash.
     CHANNEL_DELETE_DELAY,                   //How many seconds to wait before deleting this channel
+    CHANNEL_UNIQUE_IDENTIFIER,              //Available for all channels that are "in view"
     CHANNEL_ENDMARKER,
 };
 

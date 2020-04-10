@@ -66,7 +66,7 @@ struct TS3Functions {
     unsigned int (*setPlaybackConfigValue)(uint64 serverConnectionHandlerID, const char* ident, const char* value);
     unsigned int (*setClientVolumeModifier)(uint64 serverConnectionHandlerID, anyID clientID, float value);
 
-    /* Recording */
+    /* Recording status */
     unsigned int (*startVoiceRecording)(uint64 serverConnectionHandlerID);
     unsigned int (*stopVoiceRecording)(uint64 serverConnectionHandlerID);
 
@@ -273,7 +273,29 @@ struct TS3Functions {
     unsigned int (*createBookmark)(const char* bookmarkuuid, const char* serverLabel, const char* serverAddress, const char* serverPassword, const char* nickname, const char* channel, const char* channelPassword, const char* captureProfile, const char* playbackProfile, const char* hotkeyProfile, const char* soundProfile, const char* uniqueUserId, const char* oneTimeKey, const char* phoneticName);
     unsigned int (*getPermissionIDByName)(uint64 serverConnectionHandlerID, const char* permissionName, unsigned int* result);
     unsigned int (*getClientNeededPermission)(uint64 serverConnectionHandlerID, const char* permissionName, int* result);
-    void(*notifyKeyEvent)(const char *pluginID, const char *keyIdentifier, int up_down);
+    void         (*notifyKeyEvent)(const char *pluginID, const char *keyIdentifier, int up_down);
+
+    /* Single-Track/Multi-Track recording */
+    unsigned int (*startRecording)(uint64 serverConnectionHandlerID, int multitrack, int noFileSelector, const char* path);
+    unsigned int (*stopRecording)(uint64 serverConnectionHandlerID);
+
+    /* Convenience functions */
+    unsigned int (*requestClientsMove)(uint64 serverConnectionHandlerID, const anyID* clientIDArray, uint64 newChannelID, const char* password, const char* returnCode);
+    unsigned int (*requestClientsKickFromChannel)(uint64 serverConnectionHandlerID, const anyID* clientIDArray, const char* kickReason, const char* returnCode);
+    unsigned int (*requestClientsKickFromServer)(uint64 serverConnectionHandlerID, const anyID* clientIDArray, const char* kickReason, const char* returnCode);
+    unsigned int (*requestMuteClientsTemporary)(uint64 serverConnectionHandlerID, const anyID* clientIDArray, const char* returnCode);
+    unsigned int (*requestUnmuteClientsTemporary)(uint64 serverConnectionHandlerID, const anyID* clientIDArray, const char* returnCode);
+    unsigned int (*getPermissionNameByID)(uint64 scHandlerID, unsigned int permissionID, char* result, size_t max_len);
+    unsigned int (*clientPropertyFlagToString)(size_t clientPropertyFlag, char** resultString);
+    unsigned int (*channelPropertyFlagToString)(size_t channelPropertyFlag, char** resultString);
+    unsigned int (*serverPropertyFlagToString)(size_t serverPropertyFlag, char** resultString);
+
+    /* Server editing */
+    unsigned int (*setServerVariableAsInt)(uint64 serverConnectionHandlerID, size_t flag, int value);
+    unsigned int (*setServerVariableAsUInt64)(uint64 serverConnectionHandlerID, size_t flag, uint64 value);
+    unsigned int (*setServerVariableAsDouble)(uint64 serverConnectionHandlerID, size_t flag, double value);
+    unsigned int (*setServerVariableAsString)(uint64 serverConnectionHandlerID, size_t flag, const char* value);
+    unsigned int (*flushServerUpdates)(uint64 serverConnectionHandlerID, const char* returnCode);
 };
 
 #ifdef __cplusplus
