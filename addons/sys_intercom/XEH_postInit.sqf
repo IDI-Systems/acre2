@@ -61,18 +61,15 @@ if (!hasInterface) exitWith {};
     [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 }, true] call CBA_fnc_addPlayerEventHandler;
 
+// Hide display when entering a feature camera
 ["featureCamera", {
     params ["_player", "_featureCamera"];
     if (_featureCamera isEqualTo "") then {
-        [FUNC(enterVehicle), [vehicle _player, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
+        [vehicle _player, _player] call FUNC(updateVehicleInfoText); // Update & Show
+    } else {
+        [false] call EFUNC(sys_gui,showVehicleInfo); // Hide
     };
 }, true] call CBA_fnc_addPlayerEventHandler;
-
-player addEventHandler ["seatSwitchedMan", {
-    params ["_unit1", "", "_vehicle"];
-
-    [_vehicle, _unit1] call FUNC(seatSwitched);
-}];
 
 [QGVAR(giveInfantryPhone), {
     params ["_vehicle", "_unit", "_action", "_message", ["_intercomNetwork", INTERCOM_DISCONNECTED]];

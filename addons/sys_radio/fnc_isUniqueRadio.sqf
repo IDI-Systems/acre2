@@ -15,11 +15,13 @@
  * Public: No
  */
 
-if (HASH_HASKEY(GVAR(radioUniqueCache),_this)) exitWith {
-    HASH_GET(GVAR(radioUniqueCache),_this);
+params ["_radioId"];
+
+if (HASH_HASKEY(GVAR(radioUniqueCache),_radioId)) exitWith {
+    HASH_GET(GVAR(radioUniqueCache),_radioId);
 };
 
-private _isUnique = getNumber (configFile >> "CfgWeapons" >> _this >> "acre_isUnique") == 1;
-HASH_SET(GVAR(radioUniqueCache),_this,_isUnique);
+private _isUnique = getNumber (configFile >> "CfgWeapons" >> _radioId >> "acre_isUnique") == 1;
+HASH_SET(GVAR(radioUniqueCache),_radioId,_isUnique);
 
 _isUnique

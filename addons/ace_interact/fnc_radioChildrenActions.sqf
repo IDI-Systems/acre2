@@ -36,7 +36,7 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
     _actions pushBack [_action, [], _target];
 
     if (!((_radio in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) || _radio in ACRE_HEARABLE_RACK_RADIOS)) then {
-        _action = [QGVAR(openRadio), localize LSTRING(openRadio), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+        _action = [QGVAR(openRadio), localize ELSTRING(sys_gui,Open), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
 
@@ -60,7 +60,7 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
     _action = [QGVAR(mpttAssign), _txt, "", {}, {true}, {_this call FUNC(radioPTTChildrenActions);}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } else {
-    private _action = [QGVAR(openRadio), localize LSTRING(openRadio), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
+    private _action = [QGVAR(openRadio), localize ELSTRING(sys_gui,Open), "", {[((_this select 2) select 0)] call EFUNC(sys_radio,openRadio)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 

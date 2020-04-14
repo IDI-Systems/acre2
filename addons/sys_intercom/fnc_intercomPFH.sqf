@@ -20,9 +20,9 @@
  */
 
 params ["_param", ""];
-
 _param params ["_player", "_vehicle"];
 
+// Process intercoms
 (_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", "_infantryPhoneNetwork"];
 private _intercoms = _vehicle getVariable [QGVAR(intercomNames), []];
 private _intercomStations = _vehicle getVariable [QGVAR(intercomStations), []];
@@ -91,3 +91,14 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
 };
 
 [ACRE_PLAYER_INTERCOM, _intercoms] call FUNC(updateIntercomUse);
+
+
+// Seat switch
+private _oldSeat = _player getVariable [QGVAR(role), ""];
+if (_oldSeat != [_vehicle, _player] call FUNC(getStationVariableName)) then {
+    [_vehicle, _player] call FUNC(seatSwitched);
+};
+
+if (isGamePaused) then {
+    [false] call EFUNC(sys_gui,showVehicleInfo); // Hide
+}
