@@ -83,20 +83,8 @@ if (_mountedRadio == "") then { // Empty
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 
-    // Using options: Stop
-    if (_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS && {!([_mountedRadio, acre_player] call FUNC(isRadioHearable))}) then {
-        // Stop
-        private _action = [
-            QGVAR(stopUsingMountedRadio),
-            localize LSTRING(stopUsingRadio),
-            "",
-            {_this call FUNC(stopUsingMountedRadio)},
-            {true},
-            {},
-            _mountedRadio
-        ] call ace_interact_menu_fnc_createAction;
-        _actions pushBack [_action, [], _target];
-
+    if (_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) then {
+        // User radio configuration (only if currently accessible)
         private _pttAssign = [] call EFUNC(api,getMultiPushToTalkAssignment);
         private _radioActions = [
             _target,
@@ -104,11 +92,24 @@ if (_mountedRadio == "") then { // Empty
             [_mountedRadio, _mountedRadio isEqualTo ACRE_ACTIVE_RADIO, _pttAssign]
         ] call EFUNC(ace_interact,radioChildrenActions);
         _actions append _radioActions;
+
+        // Stop using (only if not connected to intercom)
+        if !([_mountedRadio, acre_player] call FUNC(isRadioHearable)) then {
+            private _action = [
+                QGVAR(stopUsingMountedRadio),
+                localize LSTRING(stopUsingRadio),
+                "",
+                {_this call FUNC(stopUsingMountedRadio)},
+                {true},
+                {},
+                _mountedRadio
+            ] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
     };
 
-    // Using options: Start using
+    // Start using (only if not yet accessible and not connected to intercom)
     if (!(_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_mountedRadio, acre_player] call FUNC(isRadioHearable))}) then {
-        // Use
         private _action = [
             QGVAR(useMountedRadio),
             localize LSTRING(useRadio),
