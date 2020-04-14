@@ -43,6 +43,7 @@ enum Ts3RareErrorType {
     ERROR_server_modal_quit                      = 0x040c,
     ERROR_server_time_difference_too_large       = 0x040f,
     ERROR_server_blacklisted                     = 0x0410,
+    ERROR_server_shutdown                        = 0x0411,
 
     //messages
     ERROR_message_invalid_id                     = 0x0c00,
