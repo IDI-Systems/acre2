@@ -25,31 +25,18 @@ if (_type in GVAR(initializedVehicleClasses)) exitWith {};
 GVAR(initializedVehicleClasses) pushBack _type;
 
 if (!hasInterface) exitWith {};
-if (!isClass (configFile >> "CfgPatches" >> "ace_interaction")) exitWith {}; // No ACE exit.
+if (!isClass (configFile >> "CfgPatches" >> "ace_interaction")) exitWith {}; // No ACE exit
 
-////{alive _target} &&
-private _condition = {
-    //true
-    //{[_player, _target, ["isNotInside"]] call ace_common_fnc_canInteractWith}
-     //{[_player, _target, ["isNotSwimming"]] call EFUNC(common,canInteractWith)}
-     params ["_target","_unit"];
-    private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
-    {
-        _racks pushBackUnique _x;
-    } forEach ([_target, acre_player] call FUNC(getHearableVehicleRacks));
-    _racks = _racks select {!([_x, acre_player] call FUNC(isRackHearable))};
-    !(_racks isEqualTo [])
-};
-private _statement = {true};
+private _condition = {true};
+private _statement = {}; // With no statement the action will only show if it has children
 private _text = localize LSTRING(Racks);
-private _icon = "\idi\acre\addons\ace_interact\data\icons\rack3.paa"; // "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa"; // ""
-
+private _icon = "\idi\acre\addons\ace_interact\data\icons\rack3.paa";
 private _children = {_this call FUNC(rackListChildrenActions);};
 
 // Passenger action
 private _action = [QGVAR(racks), _text, _icon, _statement, _condition, _children, [], {[0,0,0]},2,[false, true, false, false, false]] call ace_interact_menu_fnc_createAction;
 [_type, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToClass;
 
-// External action.
+// External action
 private _action = [QGVAR(racks), _text, _icon, _statement, _condition, _children, [], {[0,0,0]},2,[false, true, false, false, false]] call ace_interact_menu_fnc_createAction;
 [_type, 0, ["ACE_MainActions"], _action] call ace_interact_menu_fnc_addActionToClass;

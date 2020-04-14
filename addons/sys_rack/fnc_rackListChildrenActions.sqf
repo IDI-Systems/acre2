@@ -19,11 +19,14 @@ params ["_target"];
 
 private _actions = [];
 
-private _racks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
-{
-    _racks pushBackUnique _x;
-} forEach ([_target, acre_player] call FUNC(getHearableVehicleRacks));
+private _accessibleRacks = [_target, acre_player] call FUNC(getAccessibleVehicleRacks);
+private _hearableRacks = [_target, acre_player] call FUNC(getHearableVehicleRacks);
+private _racks = _accessibleRacks + (_hearableRacks - (_accessibleRacks arrayIntersect _hearableRacks));
 private _radios = (_racks apply {[_x] call FUNC(getMountedRadio)}) select {_x != ""};
+private _usableRadios = _radios select {!([_x, acre_player] call FUNC(isRadioHearable))};
+private _usableInaccessibleRadios = _usableRadios select {!(_x in ACRE_ACCESSIBLE_RACK_RADIOS)};
+private _usableAccessibleRadios = _usableRadios select {_x in ACRE_ACCESSIBLE_RACK_RADIOS};
+TRACE_7("rack actions",_accessibleRacks,_hearableRacks,_racks,_radios,_usableRadios,_usableInaccessibleRadios,_usableAccessibleRadios);
 
 {
     // _x is rack classname
@@ -41,44 +44,42 @@ private _radios = (_racks apply {[_x] call FUNC(getMountedRadio)}) select {_x !=
         [_x]
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
-} forEach (_racks select {!([_x, acre_player] call FUNC(isRackHearable))});
+} forEach _accessibleRacks;
 
-// Exclude all intercom radios
-private _action = [
-    QGVAR(useAllRacks),
-    localize LSTRING(useAllRacks),
-    "",
-    {
-        params ["_vehicle", "_unit", "_radios"];
+if !(_usableInaccessibleRadios isEqualTo []) then {
+    private _action = [
+        QGVAR(useAllRacks),
+        localize LSTRING(useAllRacks),
+        "",
         {
-            [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
-        } forEach (_radios select {!(_x in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_x, acre_player] call FUNC(isRadioHearable))}});
-    },
-    {
-        ({!(_x in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_x, acre_player] call FUNC(isRadioHearable))}} count (_this select 2)) > 0
-    },
-    {},
-    _radios
-] call ace_interact_menu_fnc_createAction;
-_actions pushBack [_action, [], _target];
+            params ["_vehicle", "_unit", "_radios"];
+            {
+                [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
+            } forEach _radios;
+        },
+        {true},
+        {},
+        _usableInaccessibleRadios
+    ] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
+};
 
-// Exclude all intercom radios
-_action = [
-    QGVAR(stopUsingAllRacks),
-    localize LSTRING(stopUsingAllRacks),
-    "",
-    {
-        params ["_vehicle", "_unit", "_radios"];
+if !(_usableAccessibleRadios isEqualTo []) then {
+    _action = [
+        QGVAR(stopUsingAllRacks),
+        localize LSTRING(stopUsingAllRacks),
+        "",
         {
-            [_vehicle, _unit, _x] call FUNC(stopUsingMountedRadio);
-        } forEach (_radios select {(_x in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_x, acre_player] call FUNC(isRadioHearable))}});
-    },
-    {
-        ({(_x in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_x, acre_player] call FUNC(isRadioHearable))}} count (_this select 2)) > 0
-    },
-    {},
-    _radios
-] call ace_interact_menu_fnc_createAction;
-_actions pushBack [_action, [], _target];
+            params ["_vehicle", "_unit", "_radios"];
+            {
+                [_vehicle, _unit, _x] call FUNC(stopUsingMountedRadio);
+            } forEach _radios;
+        },
+        {true},
+        {},
+        _usableAccessibleRadios
+    ] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
+};
 
 _actions
