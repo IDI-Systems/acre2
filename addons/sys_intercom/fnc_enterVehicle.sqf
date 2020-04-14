@@ -28,7 +28,7 @@ if (_unit != _vehicle) then {
     [_vehicle, _unit] call FUNC(seatSwitched);
 
     // Start PFH
-    GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
+    GVAR(intercomPFH) = [DFUNC(intercomPFH), 1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
     TRACE_1("intercom PFH",GVAR(intercomPFH));
 } else {
     [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;

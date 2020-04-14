@@ -56,7 +56,7 @@ if (_unit != _vehicle) then {
 
     // Enable the PFH if it is not active (can only be active if the unit is using an external radio before entering the vehicle)
     if (GVAR(rackPFH) == -1) then {
-        GVAR(rackPFH) = [DFUNC(rackPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
+        GVAR(rackPFH) = [DFUNC(rackPFH), 1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
         TRACE_1("rack PFH",GVAR(rackPFH));
     };
 };
