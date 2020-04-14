@@ -53,9 +53,13 @@ _command = format["%1:%2", _command, _paramsString];
 #else
     private _res = "acre" callExtension _command;
 #endif
-_res = call compile _res;
+
 if (_threaded) then {
-    GVAR(threadedExtCalls) set [(_res select 1), [_callBackArgs, _callBack]];
+    (parseSimpleArray _res) params ["", "_index"];
+    GVAR(threadedExtCalls) set [_index, [_callBackArgs, _callBack]];
+    // TRACE_2("new thread",_res,_index);
+} else {
+    _res = call compile _res;
 };
 
 _res;

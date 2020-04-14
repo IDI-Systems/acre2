@@ -14,8 +14,18 @@
 extern "C" {
     __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
     __declspec (dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
+    __declspec (dllexport) void __stdcall RVExtensionRegisterCallback(int(*callbackProc)(char const* name, char const* function, char const* data));
 };
 #endif
+
+std::function<int(char const*, char const*, char const*)> callbackFunc = [](char const*, char const*, char const*) {
+    LOG(ERROR) << "RVExtensionRegisterCallback never called";
+    return -2;
+};
+void __stdcall RVExtensionRegisterCallback(int(*callbackProc)(char const* name, char const* function, char const* data)) {
+    LOG(INFO) << "RVExtensionRegisterCallback called";
+    callbackFunc = callbackProc;
+}
 
 void __stdcall RVExtensionVersion(char *output, int outputSize) {
     sprintf_s(output, outputSize, "%s", ACRE_VERSION);

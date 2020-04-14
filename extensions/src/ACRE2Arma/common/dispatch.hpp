@@ -9,7 +9,11 @@
 #include "arguments.hpp"
 #include "singleton.hpp"
 
+
+extern std::function<int(char const*, char const*, char const*)> callbackFunc;
+
 namespace acre {
+
     class controller_module {
     public:
         controller_module() : _stopped(false) { };
@@ -65,12 +69,6 @@ namespace acre {
         arguments args;
         uint64_t    id;
     };
-    struct dispatch_result {
-        dispatch_result() {}
-        dispatch_result(const std::string &res, const uint64_t id_) : message(res), id(id_) {}
-        std::string message;
-        uint64_t    id;
-    };
 
     class threaded_dispatcher : public dispatcher {
     public:
@@ -109,15 +107,6 @@ namespace acre {
             return call(name_, args_, result_, false);
         }
 
-        void push_result(const dispatch_result & result) {
-            std::lock_guard<std::mutex> lock(_results_lock);
-            _results.push(result);
-        }
-
-        void push_result(const std::string & result) {
-            push_result(dispatch_result(result, -1));
-        }
-
         void stop() {
             for (auto module : _modules) {
                 module->stop();
@@ -142,13 +131,10 @@ namespace acre {
                 while (!empty) {
                     if (_ready) {
                         _messages_lock.lock();
-                        dispatch_result result;
                         dispatch_message _message = std::move(_messages.front());
                         _messages.pop();
                         _messages_lock.unlock();
-
-                        result.id = _message.id;
-                        result.message.resize(4096);
+ 
 #ifdef _DEBUG
                         if (_message.command != "fetch_result") {
                             LOG(TRACE) << "dispatch[threaded]:\t[" << _message.command << "]";
@@ -157,24 +143,23 @@ namespace acre {
                             }
                         }
 #endif
-                        dispatcher::call(_message.command, _message.args, result.message);
-                        {
-                            std::lock_guard<std::mutex> lock(_results_lock);
-                            _results.push(result);
-                        }
-                        {
+                        std::string resultMessage;
+                        dispatcher::call(_message.command, _message.args, resultMessage);
+                        std::stringstream ss;
+                        ss << "[" << _message.id << ",[" << resultMessage << "]]";
+                        int ret = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
+                        // LOG(TRACE) << "sending id " << _message.id << " callback " << ret;
+
+                        { 
                             std::lock_guard<std::mutex> lock(_messages_lock);
                             empty = _messages.empty();
                         }
-
                     }
                 }
                 sleep(5);
             }
         }
         std::atomic_bool                _stop;
-        std::queue<dispatch_result>     _results;
-        std::mutex                      _results_lock;
 
         std::queue<dispatch_message>    _messages;
         std::mutex                      _messages_lock;
