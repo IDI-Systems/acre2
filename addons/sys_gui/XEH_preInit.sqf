@@ -16,6 +16,8 @@ if (hasInterface) then {
 
     GVAR(volumeLevel) = 0.5;
     GVAR(volumeOpen) = false;
+
+    GVAR(paused) = false;
 };
 
 ADDON = true;

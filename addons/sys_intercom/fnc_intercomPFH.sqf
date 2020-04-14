@@ -99,6 +99,13 @@ if (_oldSeat != [_vehicle, _player] call FUNC(getStationVariableName)) then {
     [_vehicle, _player] call FUNC(seatSwitched);
 };
 
+// Game pause/unpause
 if (isGamePaused) then {
     [false] call EFUNC(sys_gui,showVehicleInfo); // Hide
-}
+    EGVAR(sys_gui,paused) = true;
+} else {
+    if (EGVAR(sys_gui,paused)) then {
+        [true] call EFUNC(sys_gui,showVehicleInfo); // Show
+        EGVAR(sys_gui,paused) = false;
+    };
+};
