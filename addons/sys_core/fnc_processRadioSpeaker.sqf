@@ -30,7 +30,7 @@ if (_radioId == "") exitWith { false };
 
 // Debug #638
 if (isNil "_radioId") exitWith {
-    WARNING_1("reserved variable debug 1 - report on GitHub!",_radioId);
+    WARNING_1("reserved variable debug 1 - report on GitHub! [%1]",_radioId);
     false
 };
 
@@ -52,7 +52,7 @@ if (!GVAR(speaking_cache_valid)) then {
 
     // Debug #638
     if (isNil "_radioId") exitWith {
-        WARNING_3("reserved variable debug 2 - report on GitHub!",_radioId,_okRadios,_playerRadios);
+        WARNING_3("reserved variable debug 2 - report on GitHub! [%1-%2-%3]",_radioId,_okRadios,_playerRadios);
         false
     };
 
