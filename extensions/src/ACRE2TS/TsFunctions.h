@@ -6,7 +6,3 @@
 #include "ts3_functions.h"
 
 #include "TsCallbacks.h"
-
-/* Metadata tags */
-#define START_DATA "<ACRE>"
-#define END_DATA "</ACRE>"

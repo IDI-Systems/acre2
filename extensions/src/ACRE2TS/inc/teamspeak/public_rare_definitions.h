@@ -110,7 +110,6 @@ enum CommandLinePropertiesRare {
     COMMANDLINE_CRASHDUMPSPATH,
     COMMANDLINE_DAEMON,
     COMMANDLINE_PID_FILE,
-    COMMANDLINE_HINTS_ENABLED,
 #endif
 #else
     COMMANDLINE_NOTHING=0,
@@ -218,7 +217,8 @@ enum VirtualServerPropertiesRare {
 };
 
 enum ChannelPropertiesRare {
-    CHANNEL_DUMMY_3=CHANNEL_ENDMARKER,
+    CHANNEL_DUMMY_2= CHANNEL_ENDMARKER,
+    CHANNEL_DUMMY_3,
     CHANNEL_DUMMY_4,
     CHANNEL_DUMMY_5,
     CHANNEL_DUMMY_6,
@@ -234,7 +234,6 @@ enum ChannelPropertiesRare {
     CHANNEL_ICON_ID,                        //Available for all channels that are "in view", always up-to-date
     CHANNEL_BANNER_GFX_URL,                 //Available for all channels that are "in view", always up-to-date
     CHANNEL_BANNER_MODE,                    //Available for all channels that are "in view", always up-to-date
-    CHANNEL_PERMISSION_HINTS,
     CHANNEL_ENDMARKER_RARE,
     CHANNEL_DELETE_DELAY_DEADLINE = 127     //(for clientlibv2) expected delete time in monotonic clock seconds or 0 if nothing is expected
 };
@@ -284,7 +283,6 @@ enum ClientPropertiesRare {
     CLIENT_ACTIVE_INTEGRATIONS_INFO,        //stores info from the myts server and contains the subscription info
     CLIENT_MYTS_AVATAR,
     CLIENT_SIGNED_BADGES,
-    CLIENT_PERMISSION_HINTS,
     CLIENT_ENDMARKER_RARE,
     CLIENT_HW_ID = 127                      //(for clientlibv2) unique hardware id
 };
