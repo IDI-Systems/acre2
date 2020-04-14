@@ -65,7 +65,7 @@ if (!hasInterface) exitWith {};
 ["featureCamera", {
     params ["_player", "_featureCamera"];
     if (_featureCamera isEqualTo "") then {
-        [vehicle _player, _player] call FUNC(updateVehicleInfoText); // Update & Show
+        [vehicle _player, _player] call FUNC(updateVehicleInfoText); // Show & Update
     } else {
         [false] call EFUNC(sys_gui,showVehicleInfo); // Hide
     };

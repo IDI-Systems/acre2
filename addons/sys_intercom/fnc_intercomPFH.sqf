@@ -105,7 +105,7 @@ if (isGamePaused) then {
     EGVAR(sys_gui,paused) = true;
 } else {
     if (EGVAR(sys_gui,paused)) then {
-        [true] call EFUNC(sys_gui,showVehicleInfo); // Show
+        [_vehicle, _player] call FUNC(updateVehicleInfoText); // Show & Update
         EGVAR(sys_gui,paused) = false;
     };
 };
