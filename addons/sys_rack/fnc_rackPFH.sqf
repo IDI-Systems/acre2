@@ -19,7 +19,6 @@
  */
 
 params ["_param", ""];
-
 _param params ["_player", "_vehicle"];
 
 // Check if the player entered a position with a rack already active in intercom
@@ -75,5 +74,6 @@ if !(_remove isEqualTo []) then {
 
 if ((_player == vehicle _player) && {ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []} && {ACRE_HEARABLE_RACK_RADIOS isEqualTo []}) then {
     [GVAR(rackPFH)] call CBA_fnc_removePerFrameHandler;
+    TRACE_1("del rack PFH",GVAR(rackPFH));
     GVAR(rackPFH) = -1;
 };

@@ -12,6 +12,6 @@ PREP(inventoryListMouseUp);
 PREP(openRadio);
 
 // Vehicle Info
-PREP(updateVehicleInfo);
 PREP(antennaElevationDisplay);
-PREP(enterVehicle);
+PREP(showVehicleInfo);
+PREP(updateVehicleInfo);

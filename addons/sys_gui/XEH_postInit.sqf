@@ -36,26 +36,3 @@ if (!hasInterface) exitWith {};
         [_item] call FUNC(openRadio);
     }
 ] call CBA_fnc_addItemContextMenuOption;
-
-
-// Vehicle Info
-// Show display when entering vehicle or moving to different slot
-["vehicle", {
-    params ["_player", "_newVehicle"];
-    [_player, _newVehicle] call FUNC(enterVehicle);
-}, true] call CBA_fnc_addPlayerEventHandler;
-["turret", {
-    params ["_player"];
-    [_player, vehicle _player] call FUNC(enterVehicle);
-}, true] call CBA_fnc_addPlayerEventHandler;
-
-// Hide display when entering a feature camera
-["featureCamera", {
-    params ["_player", "_featureCamera"];
-
-    if (_featureCamera isEqualTo "") then {
-        [_player, vehicle _player] call FUNC(enterVehicle);
-    } else {
-        (QGVAR(vehicleInfo) call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
-    };
-}, true] call CBA_fnc_addPlayerEventHandler;

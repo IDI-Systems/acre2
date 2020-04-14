@@ -22,7 +22,9 @@ params ["_vehicle", "_unit"];
 #define WHITE "#ffffff"
 #define GREEN "#008000"
 
-if (vehicle _unit == _unit) exitWith {};
+if (vehicle _unit == _unit) exitWith {
+    [false] call EFUNC(sys_gui,showVehicleInfo); // Hide
+};
 
 private _intercomNames = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
 private _infoLine = "";
@@ -44,7 +46,7 @@ private _colorfnc = {
         private _connectionStatus = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
         private _isBroadcasting = ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _forEachIndex) params ["_isBroadcasting", "_broadcastingUnit"];
         private _isVoiceActive = [_vehicle, _unit, _forEachIndex, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call FUNC(getStationConfiguration);
-        
+
 
         private _color = "";
         private _textStatus = "";
@@ -158,4 +160,11 @@ _infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>",
 _elements = 20;
 #endif
 
-[_infoLine, _elements] call EFUNC(sys_gui,updateVehicleInfo);
+// Show or hide vehicle info UI based on available access (hide if nothing is accessible)
+if (_infoLine == "") then {
+    [false] call EFUNC(sys_gui,showVehicleInfo); // Hide
+} else {
+    TRACE_2("vehicle info text",_infoLine,_elements);
+    [true] call EFUNC(sys_gui,showVehicleInfo); // Show
+    [_infoLine, _elements] call EFUNC(sys_gui,updateVehicleInfo); // Must be visible first
+};

@@ -17,9 +17,11 @@
  */
 
 params ["_vehicle", "_unit"];
+TRACE_2("intercom seatSwitched",_vehicle,_unit);
 
 private _intercomNames = _vehicle getVariable [QGVAR(intercomNames), []];
 private _oldSeat = _unit getVariable [QGVAR(role), ""];
+private _newSeat = [_vehicle, _unit] call FUNC(getStationVariableName);
 
 // If unit is transmitting through intercom, stop the transmittion during the seat switch
 if (GVAR(intercomPTT)) then {
@@ -54,11 +56,9 @@ if (GVAR(broadcastKey)) then {
         if (_connectionStatus > INTERCOM_DISCONNECTED) then {
             [_vehicle, _unit, _forEachIndex] call FUNC(setStationUnit);
         };
-        [_vehicle, _unit] call FUNC(updateVehicleInfoText);
     };
 } forEach _intercomNames;
 
-// Save the new seat the unit is in if it is inside a vehicle
-if (vehicle _unit == _vehicle) then {
-    _unit setVariable [QGVAR(role), [_vehicle, _unit] call FUNC(getStationVariableName)];
-};
+// Save seat on the unit and update vehicle info text
+_unit setVariable [QGVAR(role), _newSeat];
+[_vehicle, _unit] call FUNC(updateVehicleInfoText);
