@@ -36,7 +36,8 @@ if (_onState >= 1) then {
     private _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
     [_currentMenu] call FUNC(changeMenu);
 } else {
-    [GVAR(LOADING)] call FUNC(changeMenu);
+    //[GVAR(LOADING)] call FUNC(changeMenu);
+    [GVAR(OFF)] call FUNC(changeMenu);
 };
 
 //[ICON_LOADING, true] call DFUNC(toggleIcon);
