@@ -49,7 +49,7 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
     };
 };
 
-private _zeusAdjustments = EGVAR(sys_zeus,zeusCommunicateViaCamera) && {call FUNC(inZeus)};
+private _zeusAdjustments = call FUNC(inZeus);
 private _unitASL = getPosASL _unit;
 
 // Right now ACRE only supports one listener pos, use the closest position while in Zeus
