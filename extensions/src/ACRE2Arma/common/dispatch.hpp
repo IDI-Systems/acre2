@@ -9,11 +9,9 @@
 #include "arguments.hpp"
 #include "singleton.hpp"
 
-
 extern std::function<int(char const*, char const*, char const*)> callbackFunc;
 
 namespace acre {
-
     class controller_module {
     public:
         controller_module() : _stopped(false) { };
@@ -147,10 +145,19 @@ namespace acre {
                         dispatcher::call(_message.command, _message.args, resultMessage);
                         std::stringstream ss;
                         ss << "[" << _message.id << ",[" << resultMessage << "]]";
-                        int ret = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
-                        // LOG(TRACE) << "sending id " << _message.id << " callback " << ret;
 
-                        { 
+                        bool cbRecieved = false; // call back buffer can only hold 100 messages a frame (doubt acre will ever hit this limit)
+                        while (!_stop && !cbRecieved) {
+                            int cbBufferRemaining = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
+                            // LOG(TRACE) << "sending id: " << _message.id << " callback buffer: " << cbBufferRemaining;
+                            if (cbBufferRemaining > -1) {
+                                cbRecieved = true;
+                            } else {
+                                sleep(5);
+                            }
+                        }
+
+                        {
                             std::lock_guard<std::mutex> lock(_messages_lock);
                             empty = _messages.empty();
                         }
