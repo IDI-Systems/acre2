@@ -18,6 +18,12 @@ class Extended_PostInit_EventHandlers {
 
 class Extended_DisplayLoad_EventHandlers {
     class RscDisplayCurator {
-        ADDON = QUOTE(_this call FUNC(handleZeusInterfaceToggle));
+        ADDON = QUOTE(_this call FUNC(handleZeusInterfaceLoad));
+    };
+};
+
+class Extended_DisplayUnload_EventHandlers {
+    class RscDisplayCurator {
+        ADDON = QUOTE(_this call FUNC(handleZeusInterfaceUnload));
     };
 };

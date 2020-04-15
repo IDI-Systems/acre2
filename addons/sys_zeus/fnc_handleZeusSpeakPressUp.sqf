@@ -1,10 +1,12 @@
 #include "script_component.hpp"
 /*
  * Author: SynixeBrett
- * Handles the speak from zeus camera press up.
+ * Handles the speak from Zeus camera press up.
+ * Restores spectator state at the end of speaking
+ * (should be disabled on exiting Zeus interface to prevent race conditions due to delays here).
  *
  * Arguments:
- * None
+ * 0: Restore spectator state <BOOL> (default: true)
  *
  * Return Value:
  * None
@@ -15,20 +17,25 @@
  * Public: No
  */
 
+params [["_restoreSpectator", true, [true]]];
+
 DFUNC(doHandleZeusSpeakPressUp) = {
-    [GVAR(delayReleasePTT_Handle)] call CBA_fnc_removePerFrameHandler;
-    GVAR(delayReleasePTT_Handle) = nil;
+    params ["_restoreSpectator", "_pfhID"];
+
+    [_pfhID] call CBA_fnc_removePerFrameHandler;
 
     player setVariable [QGVAR(inZeus), false, true];
 
     // Stop speaking
     ["stopZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
-    // Restore previous out of Zeus state
-    if (player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR]) then {
-        call EFUNC(sys_core,spectatorOn);
-    } else {
-        call EFUNC(sys_core,spectatorOff);
+    if (_restoreSpectator) then {
+        // Restore previous out of Zeus state
+        if (player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR]) then {
+            call EFUNC(sys_core,spectatorOn);
+        } else {
+            call EFUNC(sys_core,spectatorOff);
+        };
     };
 
     // Stop updating Zeus position
@@ -36,6 +43,6 @@ DFUNC(doHandleZeusSpeakPressUp) = {
     GVAR(speakFromZeusHandle) = nil;
 };
 
-GVAR(delayReleasePTT_Handle) = ADDPFH(DFUNC(doHandleZeusSpeakPressUp), ACRE_PTT_RELEASE_DELAY, []);
+ADDPFH(DFUNC(doHandleZeusSpeakPressUp), ACRE_PTT_RELEASE_DELAY, _restoreSpectator);
 
 false

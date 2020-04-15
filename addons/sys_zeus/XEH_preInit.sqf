@@ -8,6 +8,4 @@ PREP_RECOMPILE_END;
 
 #include "initSettings.sqf"
 
-GVAR(delayReleasePTT_Handle) = nil;
-
 ADDON = true;

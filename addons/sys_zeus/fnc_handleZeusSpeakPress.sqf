@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: SynixeBrett
- * Handles the speak from zeus camera press down.
+ * Handles the speak from Zeus camera press down.
  *
  * Arguments:
  * None
