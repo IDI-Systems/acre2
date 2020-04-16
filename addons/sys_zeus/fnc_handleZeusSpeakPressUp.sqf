@@ -2,11 +2,9 @@
 /*
  * Author: SynixeBrett
  * Handles the speak from Zeus camera press up.
- * Restores spectator state at the end of speaking
- * (should be disabled on exiting Zeus interface to prevent race conditions due to delays here).
  *
  * Arguments:
- * 0: Restore spectator state <BOOL> (default: true)
+ * None
  *
  * Return Value:
  * None
@@ -17,10 +15,8 @@
  * Public: No
  */
 
-params [["_restoreSpectator", true, [true]]];
-
 DFUNC(doHandleZeusSpeakPressUp) = {
-    params ["_restoreSpectator", "_pfhID"];
+    params ["", "_pfhID"];
 
     [_pfhID] call CBA_fnc_removePerFrameHandler;
 
@@ -29,14 +25,11 @@ DFUNC(doHandleZeusSpeakPressUp) = {
     // Stop speaking
     ["stopZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
-    if (_restoreSpectator) then {
-    };
-
     // Stop updating Zeus position
     [GVAR(speakFromZeusHandle)] call CBA_fnc_removePerFrameHandler;
     GVAR(speakFromZeusHandle) = nil;
 };
 
-ADDPFH(DFUNC(doHandleZeusSpeakPressUp), ACRE_PTT_RELEASE_DELAY, _restoreSpectator);
+ADDPFH(DFUNC(doHandleZeusSpeakPressUp), ACRE_PTT_RELEASE_DELAY, []);
 
 false

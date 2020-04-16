@@ -16,4 +16,4 @@
  */
 
 // Save spectator state for later reset on interface close
-player setVariable [QGVAR(wasSpectatorInterface), ACRE_IS_SPECTATOR];
+player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];

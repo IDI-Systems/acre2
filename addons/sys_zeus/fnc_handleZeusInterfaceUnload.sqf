@@ -16,10 +16,10 @@
  */
 
 // Stop speaking from camera
-[false] call FUNC(handleZeusSpeakPressUp);
+call FUNC(handleZeusSpeakPressUp);
 
 // Set spectator set as it was before interface open
-if (player getVariable [QGVAR(wasSpectatorInterface), ACRE_IS_SPECTATOR]) then {
+if (player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR]) then {
     call EFUNC(sys_core,spectatorOn);
 } else {
     call EFUNC(sys_core,spectatorOff);
