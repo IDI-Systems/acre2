@@ -17,5 +17,4 @@
  * Public: No
  */
 
-// @todo Remove once API is stable
 TRACE_1("This is the dummy function for infantry phone: %1",QFUNC(noApiFunction));
