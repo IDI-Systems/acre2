@@ -17,7 +17,7 @@
 
 
 if (ACRE_IS_SPECTATOR) exitWith {
-    [[ICON_RADIO_CALL], [localize LSTRING(NoCameraSpeakInSpectator)], true] call CBA_fnc_notify;
+    [LSTRING(NoCameraSpeakInSpectator)] call FUNC(showMessage);
     false
 };
 
