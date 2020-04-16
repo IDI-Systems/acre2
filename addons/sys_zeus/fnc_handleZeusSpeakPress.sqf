@@ -15,13 +15,15 @@
  * Public: No
  */
 
+
+if (ACRE_IS_SPECTATOR) exitWith {
+    [[ICON_RADIO_CALL], [localize LSTRING(NoCameraSpeakInSpectator)], true] call CBA_fnc_notify;
+    false
+};
+
 if (call EFUNC(sys_core,inZeus) && {GVAR(zeusCommunicateViaCamera)}) then {
     GVAR(keyDownWait) = true;
     player setVariable [QGVAR(inZeus), true, true];
-
-    // Save spectator state
-    player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
-    call EFUNC(sys_core,spectatorOff);
 
     // Start speaking
     ["startZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);

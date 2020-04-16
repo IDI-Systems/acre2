@@ -30,12 +30,6 @@ DFUNC(doHandleZeusSpeakPressUp) = {
     ["stopZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
     if (_restoreSpectator) then {
-        // Restore previous out of Zeus state
-        if (player getVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR]) then {
-            call EFUNC(sys_core,spectatorOn);
-        } else {
-            call EFUNC(sys_core,spectatorOff);
-        };
     };
 
     // Stop updating Zeus position
