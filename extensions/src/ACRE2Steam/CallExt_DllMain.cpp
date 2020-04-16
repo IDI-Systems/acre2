@@ -30,7 +30,7 @@ extern "C" {
 };
 
 void __stdcall RVExtensionVersion(char *output, int outputSize) {
-    sprintf_s(output, outputSize, "%s", ACRE_VERSION);
+    sprintf_s(output, outputSize - 1, "%s", ACRE_VERSION);
 }
 
 inline std::string get_path() {
