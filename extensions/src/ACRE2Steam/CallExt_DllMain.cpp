@@ -30,7 +30,7 @@ extern "C" {
 };
 
 void __stdcall RVExtensionVersion(char *output, int outputSize) {
-    sprintf_s(output, outputSize, "%s", ACRE_VERSION);
+    sprintf_s(output, outputSize - 1, "%s", ACRE_VERSION);
 }
 
 inline std::string get_path() {
@@ -204,6 +204,13 @@ bool compare_file(const std::string &pathA, const std::string &pathB) {
     return std::equal(beginA, std::istreambuf_iterator<char>(), beginB);
 }
 
+bool skip_plugin_copy() {
+    if (std::string::npos != get_cmdline().find("-skipAcrePluginCopy")) {
+        return true;
+    }
+    return false;
+}
+
 void checkTsLocations(const std::string &appData, const std::string &rootkey, const HKEY key, std::vector<std::string> &tsLocations, std::vector<std::string> &tsDeleteLocations) {
     if (rootkey != "") {
         const std::string configLocation = ReadRegValue64(key, "SOFTWARE\\TeamSpeak 3 Client", "ConfigLocation");
@@ -234,6 +241,10 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     }
 
     const SteamCommand command = static_cast<SteamCommand>(std::atoi(id.c_str()));
+
+    if (skip_plugin_copy()) {
+        return;
+    }
 
     switch(command) {
         case SteamCommand::Check: {
