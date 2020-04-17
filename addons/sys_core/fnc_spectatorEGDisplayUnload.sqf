@@ -15,4 +15,7 @@
  * Public: No
  */
 
-[] call FUNC(spectatorOff);
+// Do not switch the player out of spectator if the "MenuPosition" respawn template is in use
+if (!(missionNamespace getVariable ["BIS_RscRespawnControlsMap_shown", false]) AND !(missionNamespace getVariable ["BIS_RscRespawnControlsSpectate_shown", false])) then {
+	[] call FUNC(spectatorOff);
+};

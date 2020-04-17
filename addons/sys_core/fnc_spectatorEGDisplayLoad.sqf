@@ -20,4 +20,7 @@ params ["_display"];
 // Key handling compatibility for Vanilla Spectator (EG Spectator)
 [_display] call FUNC(addDisplayPassthroughKeys);
 
-[] call FUNC(spectatorOn);
+// Do not switch the player into spectator if the "MenuPosition" respawn template is in use
+if (!(missionNamespace getVariable ["BIS_RscRespawnControlsMap_shown", false]) AND !(missionNamespace getVariable ["BIS_RscRespawnControlsSpectate_shown", false])) then {
+	[] call FUNC(spectatorOn);
+};
