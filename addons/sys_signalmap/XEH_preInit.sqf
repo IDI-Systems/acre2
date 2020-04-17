@@ -7,8 +7,6 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 if (hasInterface) then {
-    #define TILE_SIZE 4000
-
     with uiNamespace do {
         GVAR(completedAreas) = [];
         GVAR(currentArgs) = [];

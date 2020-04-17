@@ -4,6 +4,10 @@
 #include <glm/gtx/vector_angle.hpp>
 
 #include <cmath>
+#include <mutex>
+#include <thread>
+
+std::mutex peak_mutex;
 
 static const float32_t PI = 3.14159265f;
 static const float32_t magic = 10.0f;
@@ -130,9 +134,12 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
         search_size++;
     }
 
-    if ((tx_pos_.x != _cached_tx_pos.x) || (tx_pos_.y != _cached_tx_pos.y)) {
-        get_peaks_spiral(tx_pos_.x, tx_pos_.y, search_size, search_size, _cached_peaks);
-        _cached_tx_pos = tx_pos_;
+    {
+        const std::lock_guard<std::mutex> lock(peak_mutex);
+        if ((tx_pos_.x != _cached_tx_pos.x) || (tx_pos_.y != _cached_tx_pos.y)) {
+            get_peaks_spiral(tx_pos_.x, tx_pos_.y, search_size, search_size, _cached_peaks);
+            _cached_tx_pos = tx_pos_;
+        }
     }
 
     std::vector<float32_t> signals;
