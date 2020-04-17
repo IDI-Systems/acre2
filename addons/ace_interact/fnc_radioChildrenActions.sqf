@@ -6,7 +6,10 @@
  * Arguments:
  * 0: Unit with ACRE2 radios <OBJECT>
  * 1: Active <BOOL>
- * 2: Array with additional parameters: unique radio ID <ARRAY>
+ * 2: Array with additional parameters <ARRAY>
+ *   0: Unique radio ID <STRING>
+ *   1: Is Active <BOOL>
+ *   2: PTT assigned radio IDs <ARRAY>
  *
  * Return Value:
  * Array of actions <ARRAY>
@@ -53,7 +56,7 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
 
     private _idx = _pttAssign find _radio;
     _txt = localize LSTRING(bindMultiPushToTalk);
-    if ((_idx > -1) and (_idx < 3)) then {
+    if ((_idx > -1) && (_idx < 3)) then {
         _txt = format [localize LSTRING(multiPushToTalk), (_idx + 1)];
     };
 
