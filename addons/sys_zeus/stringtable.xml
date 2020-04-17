@@ -47,13 +47,16 @@
             <Chineseimp>透过游戏内摄影机说话</Chineseimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera_Description">
-            <English>Talk from the Zeus Interface's camera instead of your unit's position. Listen through camera must be enabled.</English>
+            <English>Talk from the Zeus Interface's camera instead of your unit's position. Communicate Through Camera must be enabled.</English>
             <Japanese>Zeus 画面のカメラから話すようになります。"カメラを通じて聞く" が有効になっている必要があります。</Japanese>
             <Chinese>透過宙斯的界面攝影機說話而並非是你單位的位子。透過攝影機聆聽的選項必須啟用。</Chinese>
             <German>Spreche aus der ZEUS Kamera anstatt von der Position der Einheit. Hören durch ZEUS Kamera muss aktiviert sein.</German>
             <Russian>Говорить через интерфейс Zeus вместо позиции вашего юнита. Должна быть включено прослушивание через камеру</Russian>
             <French>Permet de parler depuis la caméra de l'interface Zeus au lieu de la position de l'unité. L'option "Communiquer à travers la caméra" doit être active.</French>
             <Chineseimp>透过宙斯的界面摄影机说话而并非是你单位的位子。透过摄影机聆听的选项必须启用。</Chineseimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_zeus_NoCameraSpeakInSpectator">
+            <English>Unable to speak from camera while in Spectator</English>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_DisplayName">
             <English>Default Zeus Voice Source</English>

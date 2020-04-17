@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: SynixeBrett
- * Handles the speak from zeus camera press down.
+ * Handles the speak from Zeus camera press down.
  *
  * Arguments:
  * None
@@ -15,13 +15,15 @@
  * Public: No
  */
 
+
+if (ACRE_IS_SPECTATOR) exitWith {
+    [LSTRING(NoCameraSpeakInSpectator)] call FUNC(showMessage);
+    false
+};
+
 if (call EFUNC(sys_core,inZeus) && {GVAR(zeusCommunicateViaCamera)}) then {
     GVAR(keyDownWait) = true;
     player setVariable [QGVAR(inZeus), true, true];
-
-    // Save spectator state
-    player setVariable [QGVAR(wasSpectator), ACRE_IS_SPECTATOR];
-    call EFUNC(sys_core,spectatorOff);
 
     // Start speaking
     ["startZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
