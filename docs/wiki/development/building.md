@@ -11,7 +11,7 @@ This page describes how you can setup your development environment for ACRE2, al
 - P-drive
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
 - [Python 3.x](https://www.python.org/)
-- [Mikero Tools](https://mikero.bytex.digital/Downloads): DePbo, DeOgg, Rapify, MakePbo, pboProject
+- [Mikero Tools](https://mikero.bytex.digital/Downloads): DePbo, DeTex DeOgg, Rapify, MakePbo, pboProject
   - `*.hpp` removed from PboProject's "Exclude From Pbo" list
   - `-F rebuild RequiredAddons` disabled
 - Python, Mikero Tools and Git in PATH environment variable
@@ -74,7 +74,7 @@ To create a complete build of ACRE2 that you can use without the source files yo
 
 When the requirements are met:
 
-- Execute `make.py version increment_build <other-increment-args> compile force checkexternal release` in the `tools` folder, replacing `<other-increment-args>` with the part of version you want to increment (options described below)
+- Execute `make.py version increment_build <other-increment-args> compile force release` in the `tools` folder, replacing `<other-increment-args>` with the part of version you want to increment (options described below)
 
 This will populate the `release` folder with binarized PBOs, compiled extensions, copied extras, bisigns and a bikey. Additionally, 2 archive files will also be created in the folder, one general and one for Steam which includes the required Steam extension. The folder and archives handle like those of any other mod.
 
@@ -87,7 +87,6 @@ Different `make.py` command line options include:
 - `increment_major` - increments _major_ version number and resets _minor_ and _patch_ version numbers to `0`
 - `compile` - compile extensions incrementally (leaving this out will simply copy extensions if already present)
 - `force` - force rebuild all PBOs, even those already present in the `release` directory (combined with `compile` it will also rebuild all extensions)
-- `checkexternal` - check external references (incompatible only with `<component1> <component2>` and `force <component1> <component2>`)
 - `release` - create release packages/archives
 - `<component1> <component2>` - build only specified component(s) (incompatible with `release`)
 - `force <component1> <component2>` - force rebuild specified component(s) (incompatible with `release`)
