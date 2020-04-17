@@ -56,7 +56,7 @@ Execute `setup.bat` in `tools` folder (Windows) or download [this HEMTT binary](
 
 _Not available on Linux as there is no officially supported Arma 3 client for Linux._
 
-You can use provided `setup.py` if you have a P-drive setup by following the same instructions below for Mikero Tools. **P-drive is not required for HEMTT or file patching!**
+You can use provided `setup.py` if you have a P-drive setup by following the [same instructions](#initial-setup-1) as for Mikero Tools. **P-drive is not required for HEMTT or file patching!**
 
 Otherwise navigate to `tools` folder in command line.
 ```bat
