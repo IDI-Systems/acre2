@@ -11,7 +11,7 @@ This page describes how you can setup your development environment for ACRE2, al
 - P-drive
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
 - [Python 3.x](https://www.python.org/)
-- [Mikero Tools](https://mikero.bytex.digital/Downloads): DePbo, DeTex DeOgg, Rapify, MakePbo, pboProject
+- [Mikero Tools](https://mikero.bytex.digital/Downloads): DePbo, DeTex, DeOgg, Rapify, MakePbo, pboProject
   - `*.hpp` removed from PboProject's "Exclude From Pbo" list
   - `-F rebuild RequiredAddons` disabled
 - Python, Mikero Tools and Git in PATH environment variable
