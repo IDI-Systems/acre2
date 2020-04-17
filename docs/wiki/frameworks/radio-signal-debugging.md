@@ -30,9 +30,7 @@ If this signal debugging mode is active. Acre.dll will also log the inputs which
 
 ### Signal map visualization debug tool
 
-_Currently not functioning._
-
-![Signal Map](images/dev/signal-map.png)
+{% include image.html file="dev/signal-map.png" alt="Signal Map" %}
 
 This tool allows you to render radio signal on the map. This requires having the arma 3 tools installed and mounting the work-drive. It can then be accessed by executing:
 `[] call acre_sys_signalmap_fnc_open;` Then just open your map and you should see the tool.
