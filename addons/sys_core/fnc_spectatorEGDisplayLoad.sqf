@@ -22,5 +22,5 @@ params ["_display"];
 
 // Do not switch the player into spectator if the "MenuPosition" respawn template is in use
 if (!(missionNamespace getVariable ["BIS_RscRespawnControlsMap_shown", false]) AND !(missionNamespace getVariable ["BIS_RscRespawnControlsSpectate_shown", false])) then {
-	[] call FUNC(spectatorOn);
+    [] call FUNC(spectatorOn);
 };
