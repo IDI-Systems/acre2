@@ -13,6 +13,7 @@
             <Italian>ACRE2 IU</Italian>
             <Spanish>ACRE2 Interfaz</Spanish>
             <Russian>ACRE2 Интерфейс</Russian>
+            <Portuguese>IU ACRE2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
             <English>Post-Mix Global Volume</English>
@@ -27,7 +28,7 @@
             <Russian>Громкость после смешивания</Russian>
             <Chinese>後期混音 全域音量</Chinese>
             <Chinesesimp>后期混音 全域音量</Chinesesimp>
-            <Portuguese>Volume Global Post-Mix</Portuguese>
+            <Portuguese>Volume Global Pós-Mix</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
             <English>Pre-Mix Global Volume</English>
@@ -42,7 +43,7 @@
             <Russian>Громкость перед смешиванием</Russian>
             <Chinese>前期混音 全域音量</Chinese>
             <Chinesesimp>前期混音 全域音量</Chinesesimp>
-            <Portuguese>Volume Global Pre-Mix</Portuguese>
+            <Portuguese>Volume Global Pré-Mix</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_defaultRadioVolume_displayName">
             <English>Default Radio Volume</English>
@@ -51,6 +52,7 @@
             <Japanese>無線音量の標準</Japanese>
             <Chinese>預設無線電音量</Chinese>
             <French>Volume radio par défaut</French>
+            <Portuguese>Volume padrão do rádio</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
@@ -89,7 +91,7 @@
             <Chinese>Teamspeak頻道切換</Chinese>
             <Chinesesimp>Teamspeak频道切换</Chinesesimp>
             <Korean>팀스피크 채널 변경</Korean>
-            <Portuguese>Trocar de Canal do TeamSpeak</Portuguese>
+            <Portuguese>Trocar para Canal do TeamSpeak</Portuguese>
             <Polish>Zmiana kanału TeamSpeak</Polish>
             <Italian>Cambio canale TeamSpeak</Italian>
             <Spanish>Cambio de canal de TeamSpeak</Spanish>
@@ -177,7 +179,7 @@
             <French>Transmettre sur radio 1</French>
             <Polish>Klawisz radia 1</Polish>
             <Russian>радио кнопка 1</Russian>
-            <Portuguese>Tecla do Rádio 1</Portuguese>
+            <Portuguese>Tecla de transmissão do Rádio 1 (PTT 1)</Portuguese>
             <Japanese>無線機 1 の送信 (PTT 1)</Japanese>
             <Chinese>無線電 1 發話(隨按即說1)</Chinese>
         </Key>
@@ -194,7 +196,7 @@
             <Russian>Использовать первое радио из инвентаря.</Russian>
             <Chinese>使用物品欄內第一個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第一个无线电进行通话。</Chinesesimp>
-            <Portuguese>Usar o primeiro rádio do inventário para falar.</Portuguese>
+            <Portuguese>Transmitir e usar o primeiro rádio do inventário para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2">
             <English>Radio 2 Transmit (PTT 2)</English>
@@ -205,7 +207,7 @@
             <French>Transmettre sur radio 2</French>
             <Polish>Klawisz radia 2</Polish>
             <Russian>радио кнопка 2</Russian>
-            <Portuguese>Tecla do Rádio 2</Portuguese>
+            <Portuguese>Tecla de transmissão do Rádio 2</Portuguese>
             <Japanese>無線機 2 の送信 (PTT 2)</Japanese>
             <Chinese>無線電 2 發話(隨按即說2)</Chinese>
         </Key>
@@ -222,7 +224,7 @@
             <Russian>Использовать второе радио из инвентаря.</Russian>
             <Chinese>使用物品欄內第二個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第二个无线电进行通话。</Chinesesimp>
-            <Portuguese>Usar o segundo rádio do inventário para falar.</Portuguese>
+            <Portuguese>Transmitir e usar o segundo rádio do inventário para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3">
             <English>Radio 3 Transmit (PTT 3)</English>
@@ -233,7 +235,7 @@
             <French>Transmettre sur radio 3</French>
             <Polish>Klawisz radia 3</Polish>
             <Russian>радио кнопка 3</Russian>
-            <Portuguese>Tecla do Rádio 3</Portuguese>
+            <Portuguese>Tecla de transmissão do Rádio 3</Portuguese>
             <Japanese>無線機 3 の送信 (PTT 3)</Japanese>
             <Chinese>無線電 3 發話(隨按即說3)</Chinese>
         </Key>
@@ -250,7 +252,7 @@
             <Russian>Использовать третье радио из инвентаря.</Russian>
             <Chinese>使用物品欄內第三個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第三个无线电进行通话。</Chinesesimp>
-            <Portuguese>Usar o terceiro rádio do inventário para falar.</Portuguese>
+            <Portuguese>Transmitir e usar o terceiro rádio do inventário para falar.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_PreviousChannel">
             <English>Previous Channel (Active Radio)</English>
@@ -310,7 +312,7 @@
             <Russian>Радио левое ухо</Russian>
             <Chinese>用左耳收聽無線電</Chinese>
             <Chinesesimp>用左耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Orelha Esquerda</Portuguese>
+            <Portuguese>Rádio Orelha Esquerda (ativo)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioBothEars">
             <English>Radio Both Ears (Active Radio)</English>
@@ -325,7 +327,7 @@
             <Russian>Радио оба уха</Russian>
             <Chinese>用雙耳收聽無線電</Chinese>
             <Chinesesimp>用双耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Ambas Orelhas</Portuguese>
+            <Portuguese>Rádio Ambas Orelhas (ativo)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_RightRightEar">
             <English>Radio Right Ear (Active Radio)</English>
@@ -340,7 +342,7 @@
             <Russian>Радио правое ухо</Russian>
             <Chinese>用右耳收聽無線電</Chinese>
             <Chinesesimp>用右耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Orelha Direita</Portuguese>
+            <Portuguese>Rádio Orelha Direita (ativo)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_HeadSet">
             <English>Toggle Headset/Spectators</English>
@@ -364,6 +366,7 @@
             <Russian>Изменить направление антенны</Russian>
             <Chinese>天線方向切換</Chinese>
             <French>Changer l'orientation de l'antenne</French>
+            <Portuguese>Alternar direção da antena</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
@@ -372,6 +375,7 @@
             <Russian>Антенна выпрямлена</Russian>
             <Chinese>天線拉直</Chinese>
             <French>Antenne redressée</French>
+            <Portuguese>Antena endireitada</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
@@ -380,6 +384,7 @@
             <Russian>Антенна согнута</Russian>
             <Chinese>彎曲天線</Chinese>
             <French>Antenne courbée</French>
+            <Portuguese>Antena dobrada</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -433,6 +438,7 @@
             <Russian>Авто направление антенны</Russian>
             <Chinese>自動調整天線方向</Chinese>
             <French>Orientation automatique de l'antenne</French>
+            <Portuguese>Direção automática da Antena</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -517,7 +523,7 @@
             <Chinese>戴上耳機</Chinese>
             <Chinesesimp>戴上耳机</Chinesesimp>
             <Korean>헤드셋 착용</Korean>
-            <Portuguese>Fones Abaixados</Portuguese>
+            <Portuguese>Fones Levantados</Portuguese>
             <Polish>Słuchawki założone</Polish>
             <Italian>Alza cuffie</Italian>
             <Spanish>Subir auriculares</Spanish>
@@ -531,7 +537,7 @@
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
             <Korean>헤드셋 벗기</Korean>
-            <Portuguese>Fones Levantados</Portuguese>
+            <Portuguese>Fones Abaixados</Portuguese>
             <Polish>Słuchawki zdjęte</Polish>
             <Italian>Abbassa cuffie</Italian>
             <Spanish>Bajar auriculares</Spanish>
@@ -544,6 +550,7 @@
             <Russian>Показывать входящие передачи</Russian>
             <Chinese>顯示接收中的通訊</Chinese>
             <French>Afficher les transmissions entrantes</French>
+            <Portuguese>Mostrar transmissões recebidas</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
@@ -552,6 +559,7 @@
             <Russian>Показывать передачи с раций на подставке</Russian>
             <Chinese>顯示架上通訊</Chinese>
             <French>Afficher les transmissions du rack</French>
+            <Portuguese>Mostras transmissões do raque</Portuguese>
         </Key>
     </Package>
 </Project>
