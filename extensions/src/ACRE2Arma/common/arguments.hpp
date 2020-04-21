@@ -39,10 +39,20 @@ namespace acre {
 
     class arguments {
     public:
-        arguments(const std::string & str) : _original(str), _internal_index(0) {
+        arguments(const std::string & str) : _internal_index(0) {
             _args = acre::split(str, ',');
             for (size_t i = 0; i < _args.size(); i++) {
                 _args[i] = trim(_args[i]);
+            }
+        }
+        arguments(const char** argv, int argc) : _internal_index(0) {
+            for (int i = 0; i < argc; i++) {
+                std::string arg_string(argv[i]);
+                if (arg_string.size() > 2 && arg_string.at(0) == '\"' && arg_string.at(arg_string.size() - 1) == '\"') {
+                    arg_string = arg_string.substr(1, arg_string.size() - 2);  // callExtensionArgs will add quotes to strings
+                } 
+                std::vector<std::string> arg_split = acre::split(arg_string, ',');
+                _args.insert(_args.end(), arg_split.begin(), arg_split.end());
             }
         }
 
@@ -72,8 +82,12 @@ namespace acre {
             return acre::vector3<float>(to_float(t[0]), to_float(t[1]), to_float(t[2]));
         }
 
-        const std::string & get() const {
-            return _original;
+        const std::string to_string() const { // For Debugging
+            std::stringstream ss;
+            for (int i = 0; i < _args.size(); i++) {
+                ss << _args[i] << ",";
+            }
+            return ss.str();
         }
 
         std::string create(const std::string & command) const {
@@ -97,7 +111,6 @@ namespace acre {
 
     protected:
         std::vector<std::string> _args;
-        const std::string        _original;
         uint32_t                 _internal_index;
     };
 }

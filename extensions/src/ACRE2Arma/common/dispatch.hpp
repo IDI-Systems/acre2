@@ -34,15 +34,15 @@ namespace acre {
     public:
         dispatcher() : _ready(true) { }
 
-        virtual bool call(const std::string & name_, arguments & args_, std::string & result_) {
+        virtual bool call(const std::string & name_, arguments & args_, std::string & result_string_, int & result_code_) {
             if (_methods.find(name_) == _methods.end()) {
                 // @TODO: Exceptions
                 return false;
             }
-            return _methods[name_](args_, result_);
+            return _methods[name_](args_, result_string_, result_code_);
         }
 
-        bool add(const std::string & name_, std::function<bool(arguments &, std::string &)> func_) {
+        bool add(const std::string & name_, std::function<bool(arguments &, std::string &, int &)> func_) {
             if (_methods.find(name_) != _methods.end()) {
                 // @TODO: Exceptions
                 return false;
@@ -55,7 +55,7 @@ namespace acre {
         bool ready() const { return _ready;  }
         void ready(bool r) { _ready.exchange(r); }
     protected:
-        std::unordered_map < std::string, std::function<bool(arguments &, std::string &)> > _methods;
+        std::unordered_map < std::string, std::function<bool(arguments &, std::string &, int &)> > _methods;
         std::atomic_bool _ready;
     };
 
@@ -75,7 +75,7 @@ namespace acre {
         }
         ~threaded_dispatcher() {}
 
-        bool call(const std::string & name_, arguments & args_, std::string & result_, bool threaded) {
+        bool call(const std::string & name_, arguments & args_, std::string & result_string_, int & result_code_, bool threaded) {
             if (_methods.find(name_) == _methods.end()) {
                 // @TODO: Exceptions
                 return false;
@@ -87,22 +87,19 @@ namespace acre {
                 // @TODO: We should provide an interface for this serialization.
                 std::stringstream ss;
                 ss << "[\"result_id\", " << _message_id << "]";
-                result_ = ss.str();
-
-                _message_id = _message_id + 1;
+                result_string_ = ss.str();
+                result_code_ = static_cast<int>(_message_id++);
             } else {
 #ifdef _DEBUG
-                if (name_ != "fetch_result") {
-                    LOG(TRACE) << "dispatch[immediate]:\t[" << name_ << "] { " << args_.get() << " }";
-                }
+                    LOG(TRACE) << "dispatch[immediate]:\t[" << name_ << "] { " << args_.to_string() << " }";
 #endif
-                return dispatcher::call(name_, args_, result_);
+                return dispatcher::call(name_, args_, result_string_, result_code_);
             }
 
             return true;
         }
-        bool call(const std::string & name_, arguments & args_, std::string & result_) override {
-            return call(name_, args_, result_, false);
+        bool call(const std::string & name_, arguments & args_, std::string & result_string_, int & result_code_) override {
+            return call(name_, args_, result_string_, result_code_, false);
         }
 
         void stop() {
@@ -134,22 +131,21 @@ namespace acre {
                         _messages_lock.unlock();
  
 #ifdef _DEBUG
-                        if (_message.command != "fetch_result") {
                             LOG(TRACE) << "dispatch[threaded]:\t[" << _message.command << "]";
                             if (_message.args.size() > 0) {
-                                //    LOG(TRACE) << "\t{ " << _messages.front().args.get() << " }";
+                                // LOG(TRACE) << "\t{ " << _message.args.to_string() << " }";
                             }
-                        }
 #endif
-                        std::string resultMessage;
-                        dispatcher::call(_message.command, _message.args, resultMessage);
+                        std::string result_message;
+                        int result_code = -1;
+                        dispatcher::call(_message.command, _message.args, result_message, result_code);
                         std::stringstream ss;
-                        ss << "[" << _message.id << ",[" << resultMessage << "]]";
+                        ss << "[" << _message.id << ",[" << result_message << "]]";
 
                         bool cbRecieved = false; // call back buffer can only hold 100 messages a frame (doubt acre will ever hit this limit)
                         while (!_stop && !cbRecieved) {
                             int cbBufferRemaining = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
-                            // LOG(TRACE) << "sending id: " << _message.id << " callback buffer: " << cbBufferRemaining;
+                            // LOG(TRACE) << "sending callback [id: " << _message.id << ", buffer: " << cbBufferRemaining << "]";
                             if (cbBufferRemaining > -1) {
                                 cbRecieved = true;
                             } else {

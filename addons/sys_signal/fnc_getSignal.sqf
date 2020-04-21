@@ -59,7 +59,7 @@ if (_count == 0) then {
                     ACRE_SIGNAL_DEBUGGING,
                     GVAR(omnidirectionalRadios)
                 ],
-                true,
+                2,
                 FUNC(handleSignalReturn),
                 [_transmitterClass, _receiverClass]
             ] call EFUNC(sys_core,callExt);

@@ -114,10 +114,6 @@ acre_sys_io_ioEventFnc = {
     };
 }] call CBA_fnc_addPlayerEventHandler;
 
-#ifdef USE_DEBUG_EXTENSIONS
-"acre_dynload" callExtension format["load:%1", "idi\build\win32\Debug\acre.dll"];
-#endif
-
 ACRE_TESTANGLES = [];
 private _m = 8;
 private _spread = 75;
@@ -134,7 +130,7 @@ addMissionEventHandler ["ExtensionCallback", {
     params ["_name", "_function", "_data"];
     if (_name != "ACRE_TR") exitWith {};
     (parseSimpleArray _data) params ["_id", "_args"];
-    TRACE_2("ExtensionCallback",_function,_id);
+    TRACE_3("ExtensionCallback",_function,_id,_data);
 
     private _callBack = GVAR(threadedExtCalls) select _id;
 
