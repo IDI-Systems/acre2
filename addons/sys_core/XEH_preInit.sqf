@@ -118,24 +118,6 @@ acre_sys_io_ioEventFnc = {
 "acre_dynload" callExtension format["load:%1", "idi\build\win32\Debug\acre.dll"];
 #endif
 
-private _monitorFnc = {
-    private _res = ["fetch_result", ""] call FUNC(callExt);
-    while {!isNil "_res"} do {
-        // diag_log text format["RES: %1", _res];
-        private _id = _res select 0;
-        private _callBack = GVAR(threadedExtCalls) select _id;
-        if (IS_ARRAY(_callBack)) then {
-            private _args = (_res select 1);
-            if !(_args isEqualTo []) then {
-                _args = _args select 0;
-            };
-            [_callBack select 0, _args] call (_callBack select 1);
-        };
-        _res = ["fetch_result", ""] call FUNC(callExt);
-    };
-};
-ADDPFH(_monitorFnc, 0, []);
-
 ACRE_TESTANGLES = [];
 private _m = 8;
 private _spread = 75;
@@ -147,6 +129,22 @@ for "_i" from 1 to (_m/2) do {
         ACRE_TESTANGLES pushBack _negative;
     };
 };
+
+addMissionEventHandler ["ExtensionCallback", {
+    params ["_name", "_function", "_data"];
+    if (_name != "ACRE_TR") exitWith {};
+    (parseSimpleArray _data) params ["_id", "_args"];
+    TRACE_2("ExtensionCallback",_function,_id);
+
+    private _callBack = GVAR(threadedExtCalls) select _id;
+
+    if (IS_ARRAY(_callBack)) then {
+        if !(_args isEqualTo []) then {
+            _args = _args select 0;
+        };
+        [_callBack select 0, _args] call (_callBack select 1);
+    };
+}];
 
 
 ADDON = true;

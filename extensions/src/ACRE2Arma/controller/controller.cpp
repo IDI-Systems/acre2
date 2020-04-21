@@ -16,8 +16,6 @@ namespace acre {
         add("reset", std::bind(&acre::controller::reset, this, std::placeholders::_1, std::placeholders::_2));
         add("ready", std::bind(&acre::controller::get_ready, this, std::placeholders::_1, std::placeholders::_2));
         add("stop", std::bind(&controller::do_stop, this, std::placeholders::_1, std::placeholders::_2));
-        // action results
-        add("fetch_result", std::bind(&acre::controller::fetch_result, this, std::placeholders::_1, std::placeholders::_2));
         _initiated = false;
         _ready = true;
     }
@@ -46,11 +44,7 @@ namespace acre {
 
 
         { 
-            std::lock_guard<std::mutex> lock_results(_results_lock);
-
-            while (!_results.empty()) {
-                _results.pop();
-            }
+            std::lock_guard<std::mutex> lock_results(_messages_lock);
 
             while (!_messages.empty()) {
                 _messages.pop();
@@ -59,19 +53,6 @@ namespace acre {
 
         _ready = true;
 
-        return true;
-    }
-
-    bool controller::fetch_result(const arguments &_args, std::string & result) {
-        result = "";
-        if (_results.size() > 0) {
-            std::lock_guard<std::mutex> _lock(_results_lock);
-            dispatch_result res = _results.front();
-            std::stringstream ss;
-            ss << "[" << res.id << ",[" << res.message << "]]";
-            result = ss.str();
-            _results.pop();
-        }
         return true;
     }
 }
