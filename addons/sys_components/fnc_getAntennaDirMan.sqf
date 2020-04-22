@@ -31,7 +31,7 @@ if (vehicle _obj == _obj) then {
     } else {
         if (_obj getVariable [QEGVAR(sys_core,antennaDirUp), false]) then {
             // rotate spine vector arround the shoulder vector
-            _spineMV = [_spineMV, _shoulderMV, 55] call CBA_fnc_vectRotate3D;
+            _spineMV = [_spineMV, _shoulderMV, 50] call CBA_fnc_vectRotate3D;
         };
     };
 
