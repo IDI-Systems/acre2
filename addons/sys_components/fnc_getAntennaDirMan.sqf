@@ -42,7 +42,7 @@ if (vehicle _obj == _obj) then {
     /*
     * In order to debug and visualize the antenna direction this function needs to be called every frame.
     * This can be done by a PerFrameHandler via Debug Console:
-    * ` [{[player] call acre_sys_components_getAntennaDirMan},0,[]] call CBA_fnc_addPerFrameHandler`
+    * ` [{[player] call acre_sys_components_fnc_getAntennaDirMan},0,[]] call CBA_fnc_addPerFrameHandler`
     * In addition uncomment #define DRAW_ANTENNA_POS in the script_component.hpp
     */
     #ifdef DRAW_ANTENNA_POS
