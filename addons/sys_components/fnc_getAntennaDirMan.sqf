@@ -10,7 +10,7 @@
  * Vector data for forward direction and upright direction <ARRAY>
  *
  * Example:
- * [player] call acre_sys_components_getAntennaDirMan
+ * [player] call acre_sys_components_fnc_getAntennaDirMan
  *
  * Public: No
  */
@@ -20,18 +20,24 @@ params ["_obj"];
 
 // This is a hack fix for vehicles having funky up vectors when people are inside...
 if (vehicle _obj == _obj) then {
-    private _spinePos = _obj modelToWorldVisual (_obj selectionPosition "Spine3");
-    _upV = _spinePos vectorFromTo (_obj modelToWorldVisual (_obj selectionPosition "Neck"));
-    private _upP = _upV call cba_fnc_vect2polar;
+    // These vectors are in model space (it is assumed these will never be parallel)
+    private _spineMV = (_obj selectionPosition "Spine3") vectorFromTo (_obj selectionPosition "Neck");
+    private _shoulderMV = (_obj selectionPosition "leftshoulder") vectorFromTo (_obj selectionPosition "rightshoulder");
 
-    _upV = [_obj, _upV] call FUNC(getAntennaUpVector);
+    if (EGVAR(sys_core,automaticAntennaDirection)) then {
+        private _spinePolar = _spineMV call cba_fnc_vect2polar;
+        _spinePolar set [2, ((_spinePolar select 2) max 55) min 90];
+        _spineMV = _spinePolar call cba_fnc_polar2vect;
+    } else {
+        if (_obj getVariable [QEGVAR(sys_core,antennaDirUp), false]) then {
+            // rotate spine vector arround the shoulder vector
+            _spineMV = [_spineMV, _shoulderMV, 55] call CBA_fnc_vectRotate3D;
+        };
+    };
 
-    private _forwardP = _upV call cba_fnc_vect2polar;
-    _forwardP set [2, (_forwardP select 2) - 90];
-    _forwardV = _forwardP call cba_fnc_polar2vect;
-
-    _forwardV = (ATLtoASL _spinePos) vectorFromTo (ATLtoASL (_spinePos vectorAdd _forwardV));
-    _upV = (ATLtoASL _spinePos) vectorFromTo (ATLtoASL (_spinePos vectorAdd _upV));
+    private _baseASL = AGLtoASL (_obj modelToWorld [0,0,0]);  // convert from model vector to world
+    _upV = _baseASL vectorFromTo AGLtoASL (_obj ModelToWorld _spineMV);
+    _forwardV = _baseASL vectorFromTo AGLtoASL (_obj ModelToWorld (_spineMV vectorCrossProduct _shoulderMV));
 
     /*
     * In order to debug and visualize the antenna direction this function needs to be called every frame.
@@ -40,8 +46,9 @@ if (vehicle _obj == _obj) then {
     * In addition uncomment #define DRAW_ANTENNA_POS in the script_component.hpp
     */
     #ifdef DRAW_ANTENNA_POS
-        drawLine3D [_spinePos, _spinePos vectorAdd _forwardV, [1,0,0,1]];
-        drawLine3D [_spinePos, _spinePos vectorAdd _upV, [0,0,1,1]];
+        private _spinePos = _obj modelToWorldVisual (_obj selectionPosition "Spine3");
+        drawLine3D [_spinePos, ASLtoAGL ((AGLtoASL _spinePos) vectorAdd _forwardV), [1,0,0,1]];
+        drawLine3D [_spinePos, ASLtoAGL ((AGLtoASL _spinePos) vectorAdd _upV), [0,0,1,1]];
     #endif
 } else {
     _forwardV = vectorDir (vehicle _obj);
