@@ -220,3 +220,7 @@ entries:
     - title: Documentation Guidelines
       url: /wiki/development/docs_guidelines
       output: web, pdf
+
+    - title: Tips and Tricks
+      url: /wiki/development/tips-and-tricks
+      output: web, pdf
