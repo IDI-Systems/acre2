@@ -64,6 +64,7 @@
         <Key ID="STR_ACRE_sys_zeus_NoCameraSpeakInSpectator">
             <English>Unable to speak from camera while in Spectator</English>
             <Portuguese>Não é possível falar por meio da Câmera enquanto Espectador</Portuguese>
+            <French>Impossible de parler à travers la caméra en mode spectateur</French>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_DisplayName">
             <English>Default Zeus Voice Source</English>
