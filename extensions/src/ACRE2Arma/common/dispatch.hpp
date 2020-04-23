@@ -133,7 +133,7 @@ namespace acre {
 #ifdef _DEBUG
                             LOG(TRACE) << "dispatch[threaded]:\t[" << _message.command << "]";
                             if (_message.args.size() > 0) {
-                                // LOG(TRACE) << "\t{ " << _message.args.to_string() << " }";
+                                LOG(TRACE) << "\t{ " << _message.args.to_string() << " }";
                             }
 #endif
                         std::string result_message;
@@ -142,12 +142,12 @@ namespace acre {
                         std::stringstream ss;
                         ss << "[" << _message.id << ",[" << result_message << "]]";
 
-                        bool cbRecieved = false; // call back buffer can only hold 100 messages a frame (doubt acre will ever hit this limit)
-                        while (!_stop && !cbRecieved) {
-                            int cbBufferRemaining = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
-                            // LOG(TRACE) << "sending callback [id: " << _message.id << ", buffer: " << cbBufferRemaining << "]";
-                            if (cbBufferRemaining > -1) {
-                                cbRecieved = true;
+                        bool callback_recieved = false; // call back buffer can only hold 100 messages a frame (doubt acre will ever hit this limit)
+                        while (!_stop && !callback_recieved) {
+                            int callback_buffer_remaining = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
+                            // LOG(TRACE) << "sending callback [id: " << _message.id << ", buffer: " << callback_buffer_remaining << "]";
+                            if (callback_buffer_remaining > -1) {
+                                callback_recieved = true;
                             } else {
                                 sleep(5);
                             }

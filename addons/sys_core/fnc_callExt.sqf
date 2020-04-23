@@ -11,7 +11,7 @@
  * 4: Return arguments <ANY> (optional)
  *
  * Return Value:
- * Return from call extension <ANY>
+ * Return from call extension (nil when using fast thread) <ANY>
  *
  * Example:
  * ["init",[]] call acre_sys_core_fnc_callExt

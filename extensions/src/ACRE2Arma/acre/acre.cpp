@@ -99,19 +99,17 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
 int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** argv, int argc) {
     ZERO_OUTPUT();
-    if (argc < 2) { EXTENSION_RETURN_VALUE(-2); } // callExtension ["calla", ["extension.dll", "func", ...]]
 
     std::string command(function);
     acre::arguments _args(argv, argc);
 
-    //LOG(INFO) << "RVExtensionArgs [" << function << " - " << _args.to_string() << "]";
     if (command != "process_signal") { EXTENSION_RETURN_VALUE(-3); } // only supported command for now
 
     std::string result_string;
     std::int32_t result_code = -4;
 
     acre::controller::get().call(command, _args, result_string, result_code, TRUE);
-    if (result_string.length() > 0) {
+    if (!result_string.empty()) {
         sprintf_s(output, outputSize, "%s", result_string.c_str());
     }
     EXTENSION_RETURN_VALUE(result_code);

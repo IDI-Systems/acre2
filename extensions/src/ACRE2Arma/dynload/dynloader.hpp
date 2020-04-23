@@ -191,9 +191,9 @@ namespace acre {
 
             result_code = _modules[extension_file].func_rvArgs((char*)result_string.c_str(), 4096, function.c_str(), cstrings.data(), static_cast<int>(cstrings.size()));
 #ifdef _DEBUG
-            //if (args_.as_string(0) != "ready") {
-            //    LOG(INFO) << "CalledArg [" << args_.as_string(0) << "], with {" << function << "} result={" << result_string << ", " << result_code << "}";
-            //}
+            if (args_.as_string(0) != "ready") {
+                LOG(INFO) << "CalledArg [" << args_.as_string(0) << "], with {" << function << "} result={" << result_string << ", " << result_code << "}";
+            }
 #endif
             return true;
         }
