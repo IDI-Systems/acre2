@@ -58,7 +58,7 @@ namespace acre {
                 LOG(ERROR) << "GetTempPath() failed, e=" << GetLastError();
                 return false;
             }
-            if (!GetTempFileNameA(tmpPath, "acre_dynload", FALSE, buffer)) { // get a unique temp filename each time
+            if (!GetTempFileNameA(tmpPath, "acre_dynload", false, buffer)) { // get a unique temp filename each time
                 LOG(ERROR) << "GetTempFileName() failed, e=" << GetLastError();
                 return false;
             }
@@ -149,7 +149,7 @@ namespace acre {
                 return false;
             }
 
-            result_string = "";
+            result_string.clear();
             result_string.resize(4096);
 
             std::string function_str;
@@ -180,7 +180,7 @@ namespace acre {
                 return false;
             }
 
-            result_string = "";
+            result_string.clear();
             result_string.resize(4096);
 
             std::string function = args_.as_string(1);

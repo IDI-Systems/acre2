@@ -34,7 +34,7 @@ namespace acre {
     public:
         dispatcher() : _ready(true) { }
 
-        virtual bool call(const std::string & name_, arguments & args_, std::string & result_string_, int & result_code_) {
+        virtual bool call(const std::string & name_, arguments & args_, std::string & result_string_, std::int32_t & result_code_) {
             if (_methods.find(name_) == _methods.end()) {
                 // @TODO: Exceptions
                 return false;
@@ -137,7 +137,7 @@ namespace acre {
                             }
 #endif
                         std::string result_message;
-                        int result_code = -1;
+                        std::int32_t result_code = -1;
                         dispatcher::call(_message.command, _message.args, result_message, result_code);
                         std::stringstream ss;
                         ss << "[" << _message.id << ",[" << result_message << "]]";

@@ -60,7 +60,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     acre::arguments _args(argument_str);
 
     std::string result_string = "-1";
-    int result_dummy = 0;
+    std::int32_t result_dummy = 0;
 
     _threaded = false;
     if (command.size() < 1) {
@@ -91,7 +91,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     }
 
     acre::controller::get().call(command, _args, result_string, result_dummy, _threaded);
-    if (result_string.length() > 0) {
+    if (!result_string.empty()) {
         sprintf_s(output, outputSize, "%s", result_string.c_str());
     }
     EXTENSION_RETURN();
@@ -107,8 +107,8 @@ int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function
     //LOG(INFO) << "RVExtensionArgs [" << function << " - " << _args.to_string() << "]";
     if (command != "process_signal") { EXTENSION_RETURN_VALUE(-3); } // only supported command for now
 
-    std::string result_string = "";
-    int result_code = -4;
+    std::string result_string;
+    std::int32_t result_code = -4;
 
     acre::controller::get().call(command, _args, result_string, result_code, TRUE);
     if (result_string.length() > 0) {

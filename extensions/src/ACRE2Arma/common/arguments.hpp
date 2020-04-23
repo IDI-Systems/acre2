@@ -46,7 +46,7 @@ namespace acre {
             }
         }
         arguments(const char** argv, int argc) : _internal_index(0) {
-            for (int i = 0; i < argc; i++) {
+            for (std::int32_t i = 0; i < argc; i++) {
                 std::string arg_string(argv[i]);
                 if (arg_string.size() > 2 && arg_string.at(0) == '\"' && arg_string.at(arg_string.size() - 1) == '\"') {
                     arg_string = arg_string.substr(1, arg_string.size() - 2);  // callExtensionArgs will add quotes to strings
@@ -84,7 +84,7 @@ namespace acre {
 
         const std::string to_string() const { // For Debugging
             std::stringstream ss;
-            for (int i = 0; i < _args.size(); i++) {
+            for (std::uint32_t i = 0U; i < _args.size(); i++) {
                 ss << _args[i] << ",";
             }
             return ss.str();
