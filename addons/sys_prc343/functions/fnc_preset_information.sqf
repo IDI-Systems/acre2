@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_prc343_fnc_presetInformation
+ * [] call acre_sys_prc343_fnc_preset_information
  *
  * Public: No
  */

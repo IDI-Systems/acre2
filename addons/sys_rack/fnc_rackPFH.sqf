@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [[player, vehicle player], 12] call acre_sys_intercom_fnc_intercomPFH
+ * [[player, vehicle player], 12] call acre_sys_rack_fnc_rackPFH
  *
  * Public: No
  */

@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_signalmap_fnc_shwoOverlayMessage;
+ * [ARGUMENTS] call acre_sys_signalmap_fnc_showOverlayMessage;
  *
  * Public: No
  */

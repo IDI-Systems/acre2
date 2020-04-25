@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc117f_fnc_renderMenu;
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_toggleIcon;
  *
  * Public: No
  */

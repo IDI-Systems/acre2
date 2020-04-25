@@ -10,7 +10,7 @@
  * Extracted array of values to be copied <ARRAY>
  *
  * Example:
- * [["foo1", "foo2"]] call acre_sys_core_fnc_fastHashCopyArray
+ * [["foo1", "foo2"]] call acre_main_fnc_fastHashCopyArray
  * [acreHash] call acre_sys_core_fnc_fastHashCopyArray
  *
  * Public: No
