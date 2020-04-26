@@ -42,18 +42,16 @@ PERFORMANCE COUNTERS
 //#define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef ENABLE_PERFORMANCE_COUNTERS
-    #define ADDPFH(function, timing, args) call { _ret = [function, timing, args] call CBA_fnc_addPerFrameHandler; if (isNil "ACRE_PFH" ) then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [function, timing, args]];  _ret }
-
+    #define CBA_fnc_addPerFrameHandler { _ret = [(_this select 0), (_this select 1), (_this select 2)] call CBA_fnc_addPerFrameHandler; if(isNil "ACRE_PFH") then { ACRE_PFH=[]; }; ACRE_PFH pushBack [[_ret, __FILE__, __LINE__], [(_this select 0), (_this select 1), (_this select 2)]];  _ret }
     #define CREATE_COUNTER(x) if (isNil "ACRE_COUNTERS" ) then { ACRE_COUNTERS=[]; }; GVAR(DOUBLES(x,counter))=[]; GVAR(DOUBLES(x,counter)) set[0, QGVAR(DOUBLES(x,counter))];  GVAR(DOUBLES(x,counter)) set[1, diag_tickTime]; ACRE_COUNTERS pushBack GVAR(DOUBLES(x,counter));
     #define BEGIN_COUNTER(x) if (isNil QGVAR(DOUBLES(x,counter))) then { CREATE_COUNTER(x) }; GVAR(DOUBLES(x,counter)) set[2, diag_tickTime];
     #define END_COUNTER(x) GVAR(DOUBLES(x,counter)) pushBack [(GVAR(DOUBLES(x,counter)) select 2), diag_tickTime];
-
-    #define DUMP_COUNTERS ([__FILE__, __LINE__] call ACRE_DUMPCOUNTERS_FNC)
+    #define DUMP_COUNTERS ([__FILE__, __LINE__] call acre_main_fnc_dumpPerformanceCounters)
 #else
-    #define ADDPFH(function, timing, args) [function, timing, args] call CBA_fnc_addPerFrameHandler
-
     #define CREATE_COUNTER(x) /* disabled */
     #define BEGIN_COUNTER(x) /* disabled */
     #define END_COUNTER(x) /* disabled */
     #define DUMP_COUNTERS  /* disabled */
 #endif
+
+#define ADDPFH(function, timing, args) [function, timing, args] call CBA_fnc_addPerFrameHandler
