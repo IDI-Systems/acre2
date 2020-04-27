@@ -99,8 +99,7 @@
     localize LSTRING(fullDuplex_displayName),
     "ACRE2",
     false,
-    true,
-    {[_this] call EFUNC(api,setFullDuplex)}
+    true
 ] call CBA_fnc_addSetting;
 
 // Antena direction
