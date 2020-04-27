@@ -61,6 +61,3 @@ PERFORMANCE COUNTERS
     #define END_COUNTER(x) /* disabled */
     #define DUMP_COUNTERS /* disabled */
 #endif
-
-// deprecated:
-#define ADDPFH(function, timing, args) [function, timing, args] call CBA_fnc_addPerFrameHandler

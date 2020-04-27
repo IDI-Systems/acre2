@@ -30,6 +30,6 @@ DFUNC(doHandleZeusSpeakPressUp) = {
     GVAR(speakFromZeusHandle) = nil;
 };
 
-ADDPFH(DFUNC(doHandleZeusSpeakPressUp), ACRE_PTT_RELEASE_DELAY, []);
+[DFUNC(doHandleZeusSpeakPressUp), ACRE_PTT_RELEASE_DELAY, []] call CBA_fnc_addPerFrameHandler;
 
 false
