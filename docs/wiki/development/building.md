@@ -63,10 +63,10 @@ Otherwise navigate to `tools` folder in command line.
 cd <path-to-cloned-repository>/tools
 ```
 
-Create the following links manually. First, create `x` folder in your Arma 3 directory. Then run the following command as admin, replacing the text in brackets with the appropriate paths:
+Create the following link manually. First, create a folder called `idi` in your Arma 3 directory. Then run the following command as admin, replacing the text in brackets with the appropriate paths:
 
 ```bat
-mklink /J "[Arma 3 installation folder]\x\cba" "[location of the ACRE2 project]"
+mklink /J "[Arma 3 installation folder]\idi\acre" "[location of the ACRE2 project]"
 ```
 
 ### Create a Test Build
