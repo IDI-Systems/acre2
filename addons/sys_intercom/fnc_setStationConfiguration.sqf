@@ -23,24 +23,20 @@
 
 params ["_vehicle", "_unit", "_intercomNetwork", "_intercomFunctionality", "_value", ["_varName", ""]];
 
-if (_varName isEqualTo "") then {
-    _varName = [_vehicle, _unit] call FUNC(getStationVariableName);
-};
-
-if (_varName isEqualTo "") exitWith {
-    ERROR_2("unit %1 not found in vehicle %2",_unit,_vehicle);
+if ((_varName isEqualTo "") && {_varName = [_vehicle, _unit] call FUNC(getStationVariableName); _varName isEqualTo ""})  exitWith {
+    ERROR_2("setStationConfiguration: unit %1 not found in vehicle %2",_unit,_vehicle);
 };
 
 private _intercomArray = _vehicle getVariable [_varName, []];
 private _intercomStatus = _intercomArray select _intercomNetwork;
 private _oldValue = [_intercomStatus, _intercomFunctionality] call CBA_fnc_hashGet;
-if (_oldValue isEqualTo _value) exitWith {
-    //DEBUG_1("Set the same value for intercom functionality %1",_intercomFunctionality);
+
+if (_oldValue isEqualTo _value) exitWith { // Here it is better not to use == since oldValue may be of type null
+    TRACE_1("Set the same value for intercom functionality %1",_intercomFunctionality);
 };
 
 private _changed = false;
 switch (_intercomFunctionality) do {
-    case INTERCOM_STATIONSTATUS_HASINTERCOMACCESS: { _changed = true };
     case INTERCOM_STATIONSTATUS_CONNECTION: {
         if !([_intercomStatus, INTERCOM_STATIONSTATUS_FORCEDCONNECTION] call CBA_fnc_hashGet) then {
             if ([_intercomStatus, INTERCOM_STATIONSTATUS_LIMITED] call CBA_fnc_hashGet) then {
@@ -53,22 +49,25 @@ switch (_intercomFunctionality) do {
                 if (_value > INTERCOM_DISCONNECTED) then {
                     [_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
                 } else {
-                    [_intercomStatus, "unit", _unit] call CBA_fnc_hashSet;
+                    [_intercomStatus, "unit", objNull] call CBA_fnc_hashSet;
                 };
             };
         } else {
-            ["Intercom status is being forced. Cannot change configuration.", ICON_RADIO_CALL] call EFUNC(sys_core,displayNotification);
+            [[ICON_RADIO_CALL], [localize LSTRING(forcedStatus)]] call CBA_fnc_notify;
         };
     };
-    case INTERCOM_STATIONSTATUS_VOLUME: { _changed = true };
-    case INTERCOM_STATIONSTATUS_LIMITED: { _changed = true };
-    case INTERCOM_STATIONSTATUS_TURNEDOUTALLOWED: { _changed = true };
-    case INTERCOM_STATIONSTATUS_FORCEDCONNECTION: { _changed = true };
-    case INTERCOM_STATIONSTATUS_VOICEACTIVATION: { _changed = true };
+    default {
+        _changed = true;
+    };
 };
 
 if (_changed) then {
+    GVAR(configChanged) = true;
+
     [_intercomStatus, _intercomFunctionality, _value] call CBA_fnc_hashSet;
-    _vehicle setVariable [_varName, _intercomArray, true];
+    _vehicle setVariable [_varName, _intercomArray];
+
+    [_vehicle, _unit, _varName] call FUNC(saveStationConfiguration);
+
     [_vehicle, _unit] call FUNC(updateVehicleInfoText);
 };

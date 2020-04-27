@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_delayFunction
  *
  * Public: No
  */
@@ -24,10 +24,10 @@ params ["_radioId", "_endFunction", "_time"];
 
     private _onState = [_radioId, "getOnOffState"] call EFUNC(sys_data,dataEvent);
     if (_onState < 0.2) then {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
     if (diag_tickTime > _time) then {
         [_radioId, _funcArgs] call _function;
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
 }, 0, [diag_tickTime + _time, EGVAR(sys_radio,currentRadioDialog), _endFunction]] call CBA_fnc_addPerFrameHandler;

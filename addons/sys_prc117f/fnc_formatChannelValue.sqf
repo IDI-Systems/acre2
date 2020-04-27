@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_formatChannelValue
  *
  * Public: No
  */
@@ -62,7 +62,7 @@ switch _name do {
     };
 };
 
-if (!(_value isEqualType "")) then {
+if !(_value isEqualType "") then {
     _value = format["%1", _value];
 };
 TRACE_1("Output", _value);

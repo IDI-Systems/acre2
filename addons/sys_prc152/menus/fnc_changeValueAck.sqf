@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc152_fnc_changeValueAck
  *
  * Public: No
  */
@@ -47,7 +47,7 @@ DFUNC(changeValueAck_End) = {
 params ["_menu","_valuePair"];
 _valuePair params ["_valueType","_value"];
 
-if (isNil QGVAR(currentRadioId) || isNil QEGVAR(sys_radio,currentRadioDialog) ) exitWith {
+if (isNil QGVAR(currentRadioId) || {isNil QEGVAR(sys_radio,currentRadioDialog)}) exitWith {
     false
 };
 if (EGVAR(sys_radio,currentRadioDialog) != GVAR(currentRadioId)) exitWith {

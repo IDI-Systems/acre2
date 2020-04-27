@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_getOnOffState
  *
  * Public: No
  */
@@ -39,6 +39,6 @@
  *      1 if the radio is on
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 HASH_GET(_radioData, "radioOn");

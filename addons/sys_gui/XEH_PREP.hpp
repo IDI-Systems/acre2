@@ -1,28 +1,17 @@
-PREP(missionDisplayLoad);
+// Volume Control
+PREP(getVolumeColor);
+PREP(onMouseZChanged);
+PREP(setVoiceCurveLevel);
+PREP(volumeKeyDown);
+PREP(volumeKeyUp);
 
-// Volume control
-PREP(openVolumeControl);
-PREP(closeVolumeControl);
-PREP(onVolumeControlAdjust);
-PREP(onVolumeControlKeyPress);
-PREP(onVolumeControlKeyPressUp);
-PREP(onVolumeControlSliderChanged);
-PREP(setVolumeSliderColor);
-
-PREP(openInventory);
-PREP(closeInventory);
-
-PREP(onInventoryRadioSelected);
-PREP(onInventoryRadioDoubleClick);
-
+// Inventory
+PREP(handleInventoryOpened);
 PREP(inventoryListMouseDown);
 PREP(inventoryListMouseUp);
+PREP(openRadio);
 
-PREP(uniqueArray);
-PREP(onInventoryAction);
-PREP(handleContextMenu);
-PREP(handleTake);
-PREP(inventoryMonitorPFH);
-
-PREP(updateVehicleInfo);
+// Vehicle Info
 PREP(antennaElevationDisplay);
+PREP(showVehicleInfo);
+PREP(updateVehicleInfo);

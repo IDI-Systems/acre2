@@ -39,15 +39,16 @@ private _searchFunction = {
                         if (_componentType == ACRE_COMPONENT_ANTENNA) then {
                             private _componentObject = _componentParentId;
                             if (IS_STRING(_componentParentId)) then {
-                                if (HASH_HASKEY(_attributes, "worldObject")) then {
-                                    _componentObject = HASH_GET(_attributes, "worldObject");
-                                } else {
+                                private _groundSpikeAntenna = [_componentParentId] call EFUNC(sys_gsa,getConnectedGsa);
+                                if (isNull _groundSpikeAntenna) then {
                                     _componentObject = [_componentParentId] call EFUNC(sys_radio,getRadioObject);
+                                } else {
+                                    _componentObject = _groundSpikeAntenna;
                                 };
                             };
                             private _objectType = typeOf _componentObject;
                             private _antennaPos = getPosASL _componentObject;
-                            if !(_objectType isKindOf "CAManBase") then {
+                            if (!(_objectType isKindOf "CAManBase") && {!(_objectType isKindOf "House")}) then { // Do not add bounding center to GSA
                                 _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
                             };
                             private _antennaDir = vectorDir _componentObject;

@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_handleMenuButtonEnter
  *
  * Public: No
  */
@@ -46,7 +46,7 @@ if (!GET_STATE("editEntry")) then {
                 };
             };
             //acre_player sideChat format["VAL: '%1'", _value];
-            private _length = (count (toArray _value))-1;
+            private _length = (count (toArray _value)) - 1;
             SET_ENTRY_INDEX(_length);
             SET_STATE("currentEditEntry", _value);
         };

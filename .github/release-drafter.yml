@@ -1,0 +1,46 @@
+branches:
+  - master
+  - release-drafter  # for testing edits to this configuration
+
+name-template: 'Version $NEXT_PATCH_VERSION'
+tag-template: 'v$NEXT_PATCH_VERSION'
+
+categories:
+  - title: '**ADDED:**'
+    labels:
+      - 'feature request'
+  - title: '**FIXED:**'
+    labels:
+      - 'bug fix'
+  - title: '**IMPROVED:**'
+    labels:
+      - 'enhancement'
+      - 'optimization'
+  - title: '**CHANGED:**'
+    labels:
+      - 'cleanup'
+      - 'compatibility'
+      - 'debug'
+  - title: '**TRANSLATIONS:**'
+    labels:
+      - 'translation'
+
+exclude-labels:
+  - 'ignore changelog'
+
+change-template: '- $TITLE (#$NUMBER)'
+template: |
+  _Requires CBA version X.Y.Z or later and Arma 3 version X.Y or later._
+
+  DESCRIPTION HERE
+
+  If you're looking to chat with us be sure to join our public [Slack group](http://slackin.idi-systems.com)!
+
+  ## Change Log Summary
+
+  $CHANGES
+
+replacers:
+  # Category titles
+  - search: '/\#\# (\*\*(ADDED|FIXED|IMPROVED|CHANGED|TRANSLATIONS):\*\*)/g'
+    replace: '$1'

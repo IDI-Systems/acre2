@@ -11,13 +11,16 @@
 
 #include "TextMessage.h"
 
-#include <string>
-
 RPC_FUNCTION(stopIntercomSpeaking) {
 
-    CEngine::getInstance()->getClient()->localStopSpeaking(ACRE_SPEAKING_INTERCOM);
+    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::intercom);
 
-    return ACRE_OK;
+    return acre::Result::ok;
 }
-DECLARE_MEMBER(char *, Name);
+public:
+    inline void setName(char *const value) final { m_Name = value; }
+    inline char* getName() const final { return m_Name; }
+
+protected:
+    char* m_Name;
 };

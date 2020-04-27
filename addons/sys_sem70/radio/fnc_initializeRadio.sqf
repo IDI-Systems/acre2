@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_initializeRadio
  *
  * Public: No
  */
@@ -45,7 +45,7 @@
 
 TRACE_1("INITIALIZING ACRE_SEM70", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", "_radioData"];
 
 _eventData params ["_baseName", "_preset"];
 
@@ -79,7 +79,7 @@ for "_i" from 0 to (count _channels)-1 do {
 
 // General
 HASH_SET(_radioData,"radioOn",1);
-HASH_SET(_radioData,"volume",1);
+HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume));
 HASH_SET(_radioData,"currentChannel",GVAR(manualChannel)); // Manual Channel
 //HASH_SET(_radioData,"lastActiveChannel",GVAR(manualChannel));
 HASH_SET(_radioData,"audioPath", "HEADSET");
@@ -100,7 +100,7 @@ HASH_SET(_radioData,"squelch",0);
 // Knobs
 HASH_SET(_radioData,"mainKnobPosition",2); // High Power Setting
 HASH_SET(_radioData,"functionKnobPosition",2); // Manual Frequency Selection (no Relais)
-HASH_SET(_radioData,"volumeKnobPosition", 5);
+HASH_SET(_radioData,"volumeKnobPosition",EGVAR(sys_core,defaultRadioVolume) * 5);
 HASH_SET(_radioData,"channelSpacingKnobPosition", 1); // 0-3
 HASH_SET(_radioData,"kHzKnobPosition",0);
 HASH_SET(_radioData,"MHzKnobPosition",0);

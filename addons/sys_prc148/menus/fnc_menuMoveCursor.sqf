@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_menuMoveCursor
  *
  * Public: No
  */
@@ -23,8 +23,8 @@ private _menuIndex = MENU_INDEX;
 private _entryIndex = ENTRY_INDEX;
 private _selectedEntry = SELECTED_ENTRY;
 
-if (_menuIndex + _direction > (count (_menu select _pageIndex))-1 || _menuIndex + _direction < 0) then {
-    if (_pageIndex + _direction <= ((count _menu)-1) && _pageIndex + _direction >= 0) then {
+if (_menuIndex + _direction > (count (_menu select _pageIndex))-1 || {_menuIndex + _direction < 0}) then {
+    if (_pageIndex + _direction <= ((count _menu)-1) && {_pageIndex + _direction >= 0}) then {
         if (_direction == -1) then {
             SET_MENU_INDEX((count (_menu select _pageIndex-1)-1));
         } else {

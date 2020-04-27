@@ -86,6 +86,9 @@ private _result = false;
     TRACE_1("unit pos", getPosASL _unit);
     private _isMuted = IS_MUTED(_unit);
     _unit setRandomLip true;
+
+    ["acre_remoteStartedSpeaking", [_unit, _onRadio, _radioId]] call CBA_fnc_localEvent; // [unit, on radio, radio ID]
+
     if (!_isMuted) then {
         TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_onRadio,(_unit distance acre_player));
         _unit setVariable [QGVAR(lastSpeakingEventTime), diag_tickTime, false];
@@ -101,7 +104,11 @@ private _result = false;
                 HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
                 _unit setVariable [QGVAR(currentSpeakingRadio), _radioId];
                 private _speakerRadio = [];
-                private _nearRadios = [ACRE_LISTENER_POS, 150] call EFUNC(sys_radio,nearRadios);
+                private _nearRadios = [ACRE_LISTENER_POS, NEAR_RADIO_RANGE] call EFUNC(sys_radio,nearRadios);
+                if (EGVAR(sys_zeus,zeusCommunicateViaCamera) && {call FUNC(inZeus)}) then {
+                    _nearRadios append ([getPosASL curatorCamera, NEAR_RADIO_RANGE] call EFUNC(sys_radio,nearRadios));
+                    _nearRadios = _nearRadios arrayIntersect _nearRadios;
+                };
                 {
                     if ([_x, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                         _speakerRadio pushBack _x;
@@ -134,7 +141,7 @@ private _result = false;
                 WARNING_1("Got start speaking event with non-existent radio id: %1",_radioId);
             };
         } else {
-            if ((getPosASL _unit) distance ACRE_LISTENER_POS < 300) then {
+            if (_unit call FUNC(inRange)) then {
                 GVAR(speakers) pushBack _unit;
             };
             TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));

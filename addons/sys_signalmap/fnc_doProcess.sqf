@@ -193,6 +193,6 @@ with uiNamespace do {
                 };
             };
         };
-        [_fnc, 0.1, []] call cba_fnc_addPerFrameHandler;
+        [_fnc, 0.1, []] call CBA_fnc_addPerFrameHandler;
     };
 };

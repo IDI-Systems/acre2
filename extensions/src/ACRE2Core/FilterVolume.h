@@ -11,7 +11,7 @@ class CFilterVolume
 public:
     CFilterVolume(void);
     ~CFilterVolume(void);
-    ACRE_RESULT process(short* samples, int sampleCount, int channels, ACRE_VOLUME volume, ACRE_VOLUME previousVolume);
+    acre::Result process(short* samples, int sampleCount, int channels, acre::volume_t volume, acre::volume_t previousVolume);
 
     DECLARE_MEMBER(int, ChannelCount);
 };

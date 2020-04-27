@@ -2,6 +2,7 @@
 /*
  * Author: ACRE2Team
  * Updates the text on the Vehicle Info UI.
+ * Vehicle Info UI must be visible!
  *
  * Arguments:
  * 0: Structured text to show <STRING>

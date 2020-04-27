@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_handleSignalData
  *
  * Public: No
  */
@@ -44,6 +44,6 @@
 */
 
 
-params ["","","_eventData"];
+params ["", "", "_eventData"];
 
 _eventData;

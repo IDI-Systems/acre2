@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_preset_information
  *
  * Public: No
  */
@@ -23,7 +23,7 @@ private _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private _frequency = 0;
     _frequency = (950+(_i*2))*0.0625;
-    if (!(_frequency in _usedPresetFrequencies)) then {
+    if !(_frequency in _usedPresetFrequencies) then {
         private _ok = true;
         {
             if (abs(_x-_frequency) <= 0.25) exitWith {
@@ -159,7 +159,7 @@ _usedPresetFrequencies = [];
 for "_i" from 0 to 99 do {
     private _frequency = 0;
     _frequency = (950+600+(_i*2))*0.0625;
-    if (!(_frequency in _usedPresetFrequencies)) then {
+    if !(_frequency in _usedPresetFrequencies) then {
         private _ok = true;
         {
             if (abs(_x-_frequency) <= 0.25) exitWith {

@@ -40,9 +40,6 @@ if (!ACRE_IS_SPECTATOR) then {
     // If Arsenal is open radios are stashed in var until left
     _radioList append ACRE_ARSENAL_RADIOS;
 
-    // If Arsenal is open radios are stashed in var until left
-    _radioList append ACRE_ARSENAL_RADIOS;
-
     if (ACRE_ACTIVE_RADIO != "") then {
         _radioList append [ACRE_ACTIVE_RADIO];
     };

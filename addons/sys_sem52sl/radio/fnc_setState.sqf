@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem52sl_fnc_setState
  *
  * Public: No
  */
@@ -38,6 +38,6 @@
  *      nothing
 */
 
-params ["_radioId","_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 HASH_SET(_radioData, _eventData param [0], _eventData param [1]);

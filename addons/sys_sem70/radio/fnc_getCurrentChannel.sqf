@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_getCurrentChannel
  *
  * Public: No
  */
@@ -37,7 +37,7 @@
  *      Number (zero-based) of current channel
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 private _channelNumber = HASH_GET(_radioData,"currentChannel");
 private _manualChannel = HASH_GET(_radioData,"manualChannelSelection");

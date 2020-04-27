@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_PFH
  *
  * Public: No
  */
@@ -19,9 +19,9 @@
 private _display = uiNamespace getVariable QGVAR(currentDisplay);
 private _flashingText = SCRATCH_GET_DEF(GVAR(currentRadioId), "flashingText", []);
 private _flashingState = SCRATCH_GET_DEF(GVAR(currentRadioId), "flashingTextState", false);
-private _color = [0,0,0,1];
+private _color = [0, 0, 0, 1];
 if (_flashingState) then {
-    _color = [123/255,179/255,118/255,1];
+    _color = [123/255, 179/255, 118/255, 1];
 };
 
 {

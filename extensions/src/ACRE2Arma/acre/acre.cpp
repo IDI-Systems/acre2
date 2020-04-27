@@ -18,7 +18,7 @@ extern "C" {
 #endif
 
 void __stdcall RVExtensionVersion(char *output, int outputSize) {
-    sprintf_s(output, outputSize, "%s", ACRE_VERSION);
+    sprintf_s(output, outputSize - 1, "%s", ACRE_VERSION);
 }
 
 std::string get_command(const std::string & input) {

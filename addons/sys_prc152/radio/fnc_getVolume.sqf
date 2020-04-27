@@ -11,14 +11,14 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc152_fnc_getVolume
  *
  * Public: No
  */
 
 TRACE_1("", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 private _volume = HASH_GET(_radioData,"volume");
 if (isNil "_volume") then {

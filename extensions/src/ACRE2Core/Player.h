@@ -12,11 +12,11 @@
 
 class CPlayer : public CLockable {
 protected:
-    void init(ACRE_ID id);
+    void init(acre::id_t id);
 public:
     std::array<CSoundChannelMono *, 32> channels;
 
-    CPlayer(ACRE_ID id);
+    CPlayer(acre::id_t id);
     CPlayer( void );
     
     void clearSoundChannels();
@@ -24,14 +24,14 @@ public:
         clearSoundChannels();
     };
 
-    DECLARE_MEMBER(ACRE_ID, Id);
-    DECLARE_MEMBER(ACRE_VECTOR, WorldPosition);
-    DECLARE_MEMBER(ACRE_VECTOR, HeadVector);
-    DECLARE_MEMBER(ACRE_SPEAKING_TYPE, SpeakingType);
+    DECLARE_MEMBER(acre::id_t, Id);
+    DECLARE_MEMBER(acre::vec3_fp32_t, WorldPosition);
+    DECLARE_MEMBER(acre::vec3_fp32_t, HeadVector);
+    DECLARE_MEMBER(acre::Speaking, SpeakingType);
 
-    DECLARE_MEMBER(ACRE_VOLUME, Volume);
-    DECLARE_MEMBER(ACRE_VOLUME, PreviousVolume);
-    DECLARE_MEMBER(ACRE_VOLUME, SignalQuality);
+    DECLARE_MEMBER(acre::volume_t, Volume);
+    DECLARE_MEMBER(acre::volume_t, PreviousVolume);
+    DECLARE_MEMBER(acre::volume_t, SignalQuality);
     DECLARE_MEMBER(char *, SignalModel);
     DECLARE_MEMBER(BOOL, IsLoudSpeaker);
 

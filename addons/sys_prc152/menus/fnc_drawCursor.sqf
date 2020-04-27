@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc152_fnc_drawCursor
  *
  * Public: No
  */
@@ -23,7 +23,7 @@ private _display = uiNamespace getVariable QGVAR(currentDisplay);
 
 params ["_row", "_range", ["_highlight", true], ["_alignment", ALIGN_LEFT]];
 
-private _id = (_row * 1000) +1;
+private _id = (_row * 1000) + 1;
 
 private _start = (_range select 0);
 if (_alignment != ALIGN_LEFT) then {

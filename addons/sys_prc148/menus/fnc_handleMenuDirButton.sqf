@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_handleMenuDirButton
  *
  * Public: No
  */
@@ -26,7 +26,7 @@ if (GET_STATE("editEntry")) then {
 
     if (_alt && _type != MENU_TYPE_LIST) then {
         if (_type == MENU_TYPE_TEXT) then {
-            private _length = (_range select 1)-(_range select 0);
+            private _length = (_range select 1) - (_range select 0);
             private _newIndex = ENTRY_INDEX + _dir;
             if (_newIndex < 0) then {
                 _newIndex = _length;
@@ -59,9 +59,9 @@ if (GET_STATE("editEntry")) then {
 
                 _index = _index + _dir;
                 if (_index < 0) then {
-                    _index = (count _list)-1;
+                    _index = (count _list) - 1;
                 };
-                if (_index > (count _list)-1) then {
+                if (_index > (count _list) - 1) then {
                     _index = 0;
                 };
                 _value = _list select _index;
@@ -108,7 +108,7 @@ if (GET_STATE("editEntry")) then {
                 if (_charIndex >= (count GVAR(numeric))) then {
                     _charIndex = 0;
                 };
-                _valArray set[_entryIndex, (toArray (GVAR(numeric) select _charIndex)) select 0];
+                _valArray set [_entryIndex, (toArray (GVAR(numeric) select _charIndex)) select 0];
                 //acre_player sideChat format["_valArray after: %1", _valArray];
                 _value = toString _valArray;
 

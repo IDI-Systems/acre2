@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_signal">
+        <Key ID="STR_ACRE_sys_signal_signalModel_displayName">
+            <English>Signal Propagation Model</English>
+            <Spanish>Modelo de propagación de la señal</Spanish>
+            <Japanese>信号伝搬モデル</Japanese>
+            <Chinese>訊號傳遞模型</Chinese>
+            <German>Signalausbreitungsmodell</German>
+            <Russian>Модель распространения сигнала</Russian>
+            <French>Modèle de propagation des ondes</French>
+            <Chinesesimp>讯号传递模型</Chinesesimp>
+            <Portuguese>Modelo de propagação de sinal</Portuguese>
+        </Key>
+    </Package>
+</Project>

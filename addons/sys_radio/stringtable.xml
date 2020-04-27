@@ -9,7 +9,7 @@
             <Chinese>[ACRE] 無線電箱</Chinese>
             <Chinesesimp>[ACRE] 无线电箱</Chinesesimp>
             <Korean>[ACRE] 무전기 보급 상자</Korean>
-            <Portuguese>[ACRE] Radio Supply Crate</Portuguese>
+            <Portuguese>[ACRE] Caixa de Provisionamento de Rádios</Portuguese>
             <Polish>[ACRE] Skrzynia z radiami</Polish>
             <Italian>[ACRE] Cassa Radio</Italian>
             <Spanish>[ACRE] Cajas con radios</Spanish>
@@ -26,7 +26,8 @@
             <Polish>Radio używane na zewnątrz. Tylko właściciel może konfigurować.</Polish>
             <Italian>Radio usata esternamente. Solo il proprietario puo' configurare</Italian>
             <Spanish>Radio usada externamente. Sólo el propietario puede configurarla</Spanish>
-            <French>Radio utilisée extérieurement. Seul le propriétaire peut la configurer.</French>
+            <French>Radio utilisée à l'extérieur. Seul le propriétaire peut la configurer.</French>
+            <Russian>Рация используется извне. Только владелец может изменять настройки</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiTurnedOut">
             <English>Radio rack can't be reached from this position.</English>
@@ -35,11 +36,12 @@
             <Chinese>無法從這個位置碰到無線電架。</Chinese>
             <Chinesesimp>无法从这个位置碰到无线电架。</Chinesesimp>
             <Korean>이 위치에서 무전기 선반에 닿지 않습니다.</Korean>
-            <Portuguese>Não é possível alcançar o suporte de rádio desta posição.</Portuguese>
+            <Portuguese>Não é possível alcançar o raque de rádio desta posição.</Portuguese>
             <Polish>Nie można dosięgnąć szafy radiowej z tej pozycji.</Polish>
             <Italian>Il rack non puo' essere raggiunto da questa posizione</Italian>
             <Spanish>No se puede acceder a la rack desde esta posición</Spanish>
-            <French>Le rack de la radio ne peut pas être atteinte à partir de la position actuelle.</French>
+            <French>Le rack radio ne peut pas être atteint depuis la position actuelle.</French>
+            <Russian>Подставка для рации недоступна с этой позиции</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiSeat">
             <English>Radio rack not accessible for configuration from this seat.</English>
@@ -48,11 +50,12 @@
             <Chinese>無線電無法從這個座位進行設定。</Chinese>
             <Chinesesimp>无线电无法从这个座位进行设定。</Chinesesimp>
             <Korean>이 좌석에서 설정 할 수 없는 무전기 선반.</Korean>
-            <Portuguese>O rack de rádio não é acessível para a configuração deste assento.</Portuguese>
+            <Portuguese>O raque de rádio não é acessível para a configuração deste assento.</Portuguese>
             <Polish>Nie można konfigurować szafy radiowej z tego siedzenia.</Polish>
             <Italian>Il rack non puo' essere configurato da questo sedile</Italian>
             <Spanish>La radio no se puede configurar desde esta posición</Spanish>
-            <French>Le rack de la radio n'est pas accessible depuis la configuration de ce siège.</French>
+            <French>Le rack radio n'est pas accessible pour la configuration depuis ce siège.</French>
+            <Russian>Подставку для раций нельзя изменять с этого места</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noTransmitExternal">
             <English>Radio used externally. Only external user may transmit.</English>
@@ -65,7 +68,8 @@
             <Polish>Radio używane na zewnątrz. Tylko użytkownicy znajdujący się na zewnątrz mogą nadawać.</Polish>
             <Italian>Radio usata esternamente. Solo l'utente esterno puo' trasmettere.</Italian>
             <Spanish>Radio usada externamente. Sólo el usuario externo puede transmitir.</Spanish>
-            <French>Radio utilisée extérieurmeent. Seul un utilisateur extérieur peur transmettre.</French>
+            <French>Radio utilisée à l'extérieur. Seul un utilisateur extérieur peut transmettre.</French>
+            <Russian>Рация используется извне. Только внешний пользователь может производить передачу</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noTransmitIntercom">
             <English>Radio rack disabled for transmitting in intercom.</English>
@@ -74,10 +78,11 @@
             <Chinese>使用對講機時停用無線電發送功能。</Chinese>
             <Chinesesimp>使用对讲机时停用无线电发送功能。</Chinesesimp>
             <Korean>인터콤의 송신을 위해 무전기 선반을 사용 할 수 없습니다.</Korean>
-            <Portuguese>Suporte de rádio desabilitado para transmissão no intercom.</Portuguese>
+            <Portuguese>Raque de rádio desabilitado para transmissão no intercom.</Portuguese>
             <Italian>Rack disabilitato per trasmissione in intercom.</Italian>
             <Spanish>Rack deshabilitada para transmitir por intercom.</Spanish>
-            <French>Le rack de la radio est désactivé pour la transmission par interphone.</French>
+            <French>Rack radio désactivé pour la transmission en interphonie.</French>
+            <Russian>Подставка для раций отключена из-за передачи по Интеркому</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_alreadyTransmitting">
             <English>Radio already transmitting.</English>
@@ -90,7 +95,8 @@
             <Polish>Radio już nadaje.</Polish>
             <Italian>Radio in trasmissione.</Italian>
             <Spanish>Radio transmitiendo.</Spanish>
-            <French>Radio déjà en cours de transmission.</French>
+            <French>Radio déjà en transmission.</French>
+            <Russian>Рация уже передает</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_alreadyOpenRadio">
             <English>Radio is being configured by another player.</English>
@@ -103,14 +109,40 @@
             <Italian>La radio sta venendo configurata da un altro giocatore.</Italian>
             <Spanish>La radio está siendo configurada por otro jugador.</Spanish>
             <French>La radio est en cours de configuration par un autre joueur.</French>
+            <German>Funkgerät wird von einem anderen Spieler konfiguriert.</German>
+            <Russian>Рацию настраивает другой игрок</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_acreBaseBox">
             <English>ACRE Base Box</English>
             <Spanish>Caja base de ACRE</Spanish>
+            <Japanese>ACRE 基本物資箱</Japanese>
+            <Russian>ACRE Основное</Russian>
+            <French>Caisse de base ACRE</French>
+            <Chinese>ACRE 基本物資箱</Chinese>
+            <Chinesesimp>ACRE 基本物资箱</Chinesesimp>
+            <Portuguese>Caixa-base ACRE</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_allRadioCrate">
             <English>All Radio Crate</English>
             <Spanish>Caja con todas las radios</Spanish>
+            <Japanese>全無線機物資箱</Japanese>
+            <German>Sämtliche ACRE Funkgeräte</German>
+            <Russian>Ящик со Всеми Рациями</Russian>
+            <French>Caisse toutes radios ACRE</French>
+            <Chinese>全無線電機種供給箱</Chinese>
+            <Chinesesimp>全无线电种类供给箱</Chinesesimp>
+            <Portuguese>Caixa de todos os rádios ACRE</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_radioSetTo">
+            <English>Radio set to %1</English>
+            <Spanish>Radio configurada a %1</Spanish>
+            <German>Funkgerät auf %1 gestellt</German>
+            <Russian>Рация установлена на %1</Russian>
+            <Japanese>無線機を%1に設置</Japanese>
+            <French>Radio réglée sur %1.</French>
+            <Chinese>設定無線電為 %1</Chinese>
+            <Chinesesimp>设定无线电为1%</Chinesesimp>
+            <Portuguese>Rádio configurado a %1</Portuguese>
         </Key>
     </Package>
 </Project>

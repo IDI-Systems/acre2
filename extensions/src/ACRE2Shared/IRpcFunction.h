@@ -9,7 +9,8 @@ class IRpcFunction
 public:
     virtual ~IRpcFunction(){}
 
-    virtual ACRE_RESULT call(IServer*, IMessage *) = 0;
+    virtual acre::Result call(IServer *const srv, IMessage *const msg) = 0;
 
-    DECLARE_INTERFACE_MEMBER(char *, Name);
+    virtual void setName(char *const value) = 0;
+    virtual char* getName() const = 0;
 };

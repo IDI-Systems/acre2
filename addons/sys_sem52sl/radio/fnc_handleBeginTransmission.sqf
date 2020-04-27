@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem52sl_fnc_handleBeginTransmission
  *
  * Public: No
  */
@@ -39,7 +39,7 @@
  *      true
 */
 
-params ["_radioId", "_eventKind", "_eventData"];
+params ["_radioId", "", ""];
 
 SCRATCH_SET(_radioId, "cachedTransmissions", false);
 

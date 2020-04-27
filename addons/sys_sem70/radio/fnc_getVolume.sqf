@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_getVolume
  *
  * Public: No
  */
@@ -39,7 +39,7 @@
  *        for cubic function)
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "", "_radioData"];
 
 private _volume = HASH_GET(_radioData,"volume");
 ISNILS(_volume,1);

@@ -20,9 +20,9 @@
  */
 
 params ["_param", ""];
-
 _param params ["_player", "_vehicle"];
 
+// Process intercoms
 (_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", "_infantryPhoneNetwork"];
 private _intercoms = _vehicle getVariable [QGVAR(intercomNames), []];
 private _intercomStations = _vehicle getVariable [QGVAR(intercomStations), []];
@@ -54,7 +54,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     // Get broadcasting variables
     ((_vehicle getVariable [QGVAR(broadcasting), [false, objNull]]) select _i) params ["_isBroadcasting", "_broadcastingUnit"];
 
-    if (_connectionStatus == INTERCOM_RX_ONLY || {_connectionStatus == INTERCOM_RX_AND_TX}) then {
+    if (_connectionStatus == INTERCOM_RX_AND_TX || {_connectionStatus == INTERCOM_RX_ONLY}) then {
         if (_isBroadcasting) then {
             // Only the unit that is broadcasting will be on intercom. The rest of the units will be temporarily set to intercom
             _intercomUnits pushBack _broadcastingUnit;
@@ -69,7 +69,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
                 if (!isNull _unit) then {
                     private _voiceActivation = [_stationConfig, INTERCOM_STATIONSTATUS_VOICEACTIVATION] call CBA_fnc_hashGet;
                     // If the unit is not pressing the key to talk to intercom, treat it like not transmitting.
-                    if (!_voiceActivation && {_intercomConfig == INTERCOM_TX_ONLY || {_intercomConfig == INTERCOM_RX_AND_TX}} && {!(_unit getVariable [QGVAR(intercomPTT), false])}) then {
+                    if (!_voiceActivation && {_intercomConfig == INTERCOM_RX_AND_TX || {_intercomConfig == INTERCOM_TX_ONLY}} && {!(_unit getVariable [QGVAR(intercomPTT), false])}) then {
                         _intercomConfig = INTERCOM_RX_ONLY;
                     };
 
@@ -90,4 +90,22 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
     ACRE_PLAYER_INTERCOM set [_i, _intercomUnits];
 };
 
-[_vehicle, ACRE_PLAYER_INTERCOM, _intercoms] call FUNC(updateIntercomUse);
+[ACRE_PLAYER_INTERCOM, _intercoms] call FUNC(updateIntercomUse);
+
+
+// Seat switch
+private _oldSeat = _player getVariable [QGVAR(role), ""];
+if (_oldSeat != [_vehicle, _player] call FUNC(getStationVariableName)) then {
+    [_vehicle, _player] call FUNC(seatSwitched);
+};
+
+// Game pause/unpause
+if (isGamePaused) then {
+    [false] call EFUNC(sys_gui,showVehicleInfo); // Hide
+    EGVAR(sys_gui,paused) = true;
+} else {
+    if (EGVAR(sys_gui,paused)) then {
+        [_vehicle, _player] call FUNC(updateVehicleInfoText); // Show & Update
+        EGVAR(sys_gui,paused) = false;
+    };
+};

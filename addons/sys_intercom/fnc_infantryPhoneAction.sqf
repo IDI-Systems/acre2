@@ -48,7 +48,7 @@ private _infantryPhoneAction = [
         // Main interaction node is not shown on destroyed vehicle, so we only check that if not main node
         //USES_VARIABLES ["_target", "_player"];
         if !((_this select 2) isEqualTo [0, 0, 0]) exitWith {alive _target};
-        _player distance _target < PHONE_MAXDISTANCE_DEFAULT
+        ([_player, _target] call ace_interaction_fnc_getInteractionDistance) < PHONE_MAXDISTANCE_DEFAULT
     },
     {_this call FUNC(infantryPhoneChildrenActions)},
     _position,
@@ -78,7 +78,9 @@ private _infantryPhoneSpeakerAction = [
         {
             if ([_target, acre_player, _forEachIndex] call FUNC(isInfantryPhoneSpeakerAvailable)) exitWith {_intercomAvailable = true};
         } forEach _intercomNames;
-        _intercomAvailable
+        private _ringingDisabled = _target getVariable [QGVAR(infPhoneDisableRinging), false];
+        _intercomAvailable && {!_ringingDisabled}  // For now, hide infantry phone action if there is no ringing since it is the only
+                                                   // functionality that is being provided.
     },
     {_this call FUNC(infantryPhoneChildrenActions)},
     [],

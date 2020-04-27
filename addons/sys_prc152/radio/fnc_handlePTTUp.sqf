@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc152_fnc_handlePTTUp
  *
  * Public: No
  */
@@ -29,4 +29,5 @@ if (_rxOnly) exitWith {
 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
 [_radioId, "Acre_GenericClickOff", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
 SCRATCH_SET(_radioId, "PTTDown", false);
-true;
+
+true

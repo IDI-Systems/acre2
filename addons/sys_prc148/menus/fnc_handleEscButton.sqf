@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_handleEscButton
  *
  * Public: No
  */
@@ -19,6 +19,4 @@
 if (GET_STATE("editEntry")) then {
     SET_STATE("editEntry", false);
     SET_STATE("currentEditEntry", "");
-} else {
-
 };

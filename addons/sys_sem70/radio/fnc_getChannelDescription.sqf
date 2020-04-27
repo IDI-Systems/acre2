@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_getChannelDescription
  *
  * Public: No
  */
@@ -38,11 +38,11 @@
  *      String
 */
 
-private "_description";
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "", "_radioData"];
 
 private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
 private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+private _description = "";
 if (_manualChannel isEqualTo 1) then {
     //private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     _description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];

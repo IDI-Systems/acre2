@@ -12,4 +12,7 @@ if (hasInterface) then {
     DGVAR(omnidirectionalRadios) = 0;
 };
 
+// CBA Settings
+#include "initSettings.sqf"
+
 ADDON = true;

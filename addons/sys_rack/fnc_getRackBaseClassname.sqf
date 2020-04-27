@@ -10,7 +10,7 @@
  * Is Unique <BOOL>
  *
  * Example:
- * ["acre_vrc111_id_1"] call acre_sys_radio_fnc_getRackBaseClassname
+ * ["acre_vrc111_id_1"] call acre_sys_rack_fnc_getRackBaseClassname
  *
  * Public: No
  */

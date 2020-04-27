@@ -11,14 +11,14 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_setCurrentChannel
  *
  * Public: No
  */
 
 TRACE_1("", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", "_radioData"];
 
 private _channelsCount = count ([_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent)) - 1;
 _eventData = (0 max _eventData) min _channelsCount;

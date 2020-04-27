@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc152_fnc_timerFunction
  *
  * Public: No
  */
@@ -30,7 +30,7 @@ GVAR(timerFunction_NextStep) = diag_tickTime + _step;
         [(_this select 1)] call CBA_fnc_removePerFrameHandler;
     };
     if (diag_tickTime > _time) then {
-        [(_this select 1)] call CBA_fnc_removePerFrameHandler;
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
     } else {
         if (diag_tickTime > GVAR(timerFunction_NextStep)) then {
 

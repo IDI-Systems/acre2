@@ -11,12 +11,12 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_changeState
  *
  * Public: No
  */
 
-params ["_radioId", "_state",["_menuPage",0],["_menuIndex",0],["_entryCursor",0],["_selectedEntry",-1]];
+params ["_radioId", "_state", ["_menuPage", 0], ["_menuIndex", 0], ["_entryCursor", 0], ["_selectedEntry", -1]];
 
 private _editEntry = false;
 

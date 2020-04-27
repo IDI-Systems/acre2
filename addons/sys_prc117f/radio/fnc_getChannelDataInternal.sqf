@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_getChannelDataInternal
  *
  * Public: No
  */
@@ -31,7 +31,7 @@ if ((count _this) > 1) then {
     _currentChannelId = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 };
 
-if (!(isNil "_optChannelId") && !(isNil "_opt")) then {
+if (!(isNil "_optChannelId") && {!(isNil "_opt")}) then {
     if (_optChannelId != _currentChannelId) then {
         // The current channel is not the same as the operational channel so just return
         private _channel = HASHLIST_SELECT(_channels, _currentChannelId);

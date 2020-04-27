@@ -35,8 +35,8 @@ GVAR(speakingHandle) = [DFUNC(speaking), 0.06, []] call CBA_fnc_addPerFrameHandl
 // =====
 
 // Set the speaking volume to normal
-[.7] call EFUNC(api,setSelectableVoiceCurve);
-EGVAR(sys_gui,VolumeControl_Level) = 0;
+[0.7] call EFUNC(api,setSelectableVoiceCurve);
+EGVAR(sys_gui,volumeLevel) = 0.5;
 
 ACRE_CORE_INIT = true;
 TRACE_1("ACRE CORE INIT", ACRE_CORE_INIT);

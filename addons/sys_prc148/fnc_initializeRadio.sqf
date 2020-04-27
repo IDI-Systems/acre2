@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_initializeRadio
  *
  * Public: No
  */
@@ -25,7 +25,7 @@ HASH_SET(_radioData, "entryCursor", 0);
 HASH_SET(_radioData, "selectedEntry", -1);
 HASH_SET(_radioData, "editEntry", false);
 HASH_SET(_radioData, "currentEditEntry", "");
-HASH_SET(_radioData, "volume", 1);
+HASH_SET(_radioData, "volume", EGVAR(sys_core,defaultRadioVolume));
 HASH_SET(_radioData, "radioOn", 1);
 HASH_SET(_radioData, "audioPath", "TOPAUDIO");
 HASH_SET(_radioData, "powerSource", "BAT");

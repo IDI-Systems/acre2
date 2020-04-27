@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Calculates the upright direction depending on the Antenna Settings.
@@ -14,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params [
     "_obj",
@@ -24,12 +24,12 @@ params [
 if (EGVAR(sys_core,automaticAntennaDirection)) then {
     private _upP = _upV call cba_fnc_vect2polar;
     _upP set [2, ((_upP select 2) max 55) min 90];
-    _upV = _upP call cba_fnc_polar2vect; 
+    _upV = _upP call cba_fnc_polar2vect;
 } else {
     if (_obj getVariable [QEGVAR(sys_core,antennaDirUp), false]) then {
         private _upP = _upV call cba_fnc_vect2polar;
         _upP set [2, ((_upP select 2) + 50)];
-        _upV = _upP call cba_fnc_polar2vect; 
+        _upV = _upP call cba_fnc_polar2vect;
     };
 };
 

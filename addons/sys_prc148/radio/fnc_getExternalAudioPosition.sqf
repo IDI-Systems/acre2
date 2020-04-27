@@ -11,12 +11,12 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_getExternalAudioPosition
  *
  * Public: No
  */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "", ""];
 
 private _obj = [_radioId] call EFUNC(sys_radio,getRadioObject);
 private _pos = getPosASL _obj;

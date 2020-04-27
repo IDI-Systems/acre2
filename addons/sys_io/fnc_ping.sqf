@@ -21,7 +21,7 @@ DFUNC(pingFunc) = {
         // diag_log text format["%1 ACRE: ping!", diag_tickTime];
         private _ret = "ACRE2Arma" callExtension "2ping:";
         if (diag_tickTime - GVAR(pongTime) > 10) then {
-            ["ACRE PIPE ERROR: No ping return, attempting to reattach named pipe."] call EFUNC(sys_core,displayNotification);
+            [[localize LSTRING(noPingReturn)]] call CBA_fnc_notify;
 
             _ret = "ACRE2Arma" callExtension "4";
             GVAR(runServer) = false;
@@ -34,7 +34,7 @@ DFUNC(pingFunc) = {
                 [] call FUNC(ping);
             };
         };
-        if (!(GVAR(runServer))) then {
+        if !(GVAR(runServer)) then {
             INFO("Server shutting down ping loop.");
             [(_this select 1)] call CBA_fnc_removePerFrameHandler;
         };

@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_dynamicCall
  *
  * Public: No
  */
@@ -22,7 +22,7 @@ params ["_funcName", "_var"];
 private _ret = nil;
 
 if (_funcName isEqualType "") then {
-    private _func = missionNamespace getVariable format["%1_fnc_%2", QUOTE(ADDON), _funcName];
+    private _func = missionNamespace getVariable format ["%1_fnc_%2", QUOTE(ADDON), _funcName];
     _ret = _var call CALLSTACK_NAMED(_func, _funcName);
 } else {
     if (_funcName isEqualType {}) then {

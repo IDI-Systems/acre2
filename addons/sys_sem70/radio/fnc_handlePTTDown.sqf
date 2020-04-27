@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_handlePTTDown
  *
  * Public: No
  */
@@ -40,9 +40,9 @@
  *      false if radio can't transmit
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "", "_radioData"];
 
-if (!([_radioId] call EFUNC(sys_radio,canUnitTransmit))) exitWith {false};
+if !([_radioId] call EFUNC(sys_radio,canUnitTransmit)) exitWith {false};
 
 /*
  *  Insert code here if a radio can be only in receive
@@ -67,6 +67,6 @@ if (_manualChannelSelection != 1) then {
 };
 
 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-[_radioId, "Acre_GenericBeep", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
+[_radioId, "Acre_GenericBeep", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
 SCRATCH_SET(_radioId, "PTTDown", true);
 true

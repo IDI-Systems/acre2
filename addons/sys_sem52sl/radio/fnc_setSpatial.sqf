@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem52sl_fnc_setSpatial
  *
  * Public: No
  */
@@ -48,10 +48,10 @@
  *      nil
 */
 
-params ["_radioId",  "_event", "_eventData", "_radioData"];
+params ["_radioId",  "", "_eventData", "_radioData"];
 
 private _spatial = _eventData;
 
-if (_spatial in [-1,0,1]) then {
+if (_spatial in [-1, 0, 1]) then {
     [_radioId, "setState", ["ACRE_INTERNAL_RADIOSPATIALIZATION", _spatial]] call EFUNC(sys_data,dataEvent);
 };

@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_onButtonPress
  *
  * Public: No
  */
@@ -21,7 +21,7 @@ params ["_button"];
 [_button] call FUNC(toggleButtonPressDown);
 
 private _currentState = ["getState", "currentState"] call GUI_DATA_EVENT;
-private _buttonFunction = QUOTE(ADDON) + "_fnc_" + _currentState + "_" + _button;
+private _buttonFunction = format ["%1_fnc_%2_%3", QUOTE(ADDON), _currentState, _button];
 //acre_player sideChat format["BUTTON: %1", _buttonFunction];
 //diag_log text format["EDIT: %1", GET_STATE("editEntry")];
 if (!GET_STATE("editEntry")) then {

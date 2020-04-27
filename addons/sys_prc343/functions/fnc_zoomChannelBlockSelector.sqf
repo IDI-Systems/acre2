@@ -53,7 +53,7 @@ if (_direction == OUT) then {
         if (GVAR(currentRadioId) == _radioId) then {
             TRACE_1("Radio Id Match", _radioId);
             if (_index < 0) then {
-                if (_channelindex < _currentChannel || (_currentVolume != 3 && _currentVolume != _volumeindex)) then {
+                if (_channelindex < _currentChannel || {_currentVolume != 3 && {_currentVolume != _volumeindex}}) then {
 
                     {
                         (MAIN_DISPLAY displayCtrl _x) ctrlSetFade 0;
@@ -138,7 +138,7 @@ if (_direction == IN) then {
 
                 [_PFHid] call CBA_fnc_removePerFrameHandler;
             } else {
-                if (_channelindex > 0 || _volumeindex != 3) then {
+                if (_channelindex > 0 || {_volumeindex != 3}) then {
 
                     {
                         (MAIN_DISPLAY displayCtrl _x) ctrlSetFade 0;

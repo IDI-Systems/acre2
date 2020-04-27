@@ -12,10 +12,10 @@ public:
     CAmplitudeAttenuation(void);
     ~CAmplitudeAttenuation(void);
 
-    ACRE_RESULT process(short* samples, int sampleCount, int channels, CPlayer *player);
-    ACRE_RESULT reset(void);
+    acre::Result process(short* samples, int sampleCount, int channels, CPlayer *player);
+    acre::Result reset(void);
 
-    ACRE_RESULT processAmplitudes(void); 
+    acre::Result processAmplitudes(void); 
 
 };
 

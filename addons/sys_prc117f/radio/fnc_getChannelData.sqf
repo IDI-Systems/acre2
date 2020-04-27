@@ -11,12 +11,12 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_getChannelData
  *
  * Public: No
  */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 private _channelNumber = _eventData;
 private _channels = HASH_GET(_radioData, "channels");

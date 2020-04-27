@@ -11,15 +11,15 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_setNetworkID
  *
  * Public: No
  */
 
-params [["_hecto",-1],["_deca",-1],["_ones",-1]];
+params [["_hecto", -1], ["_deca", -1], ["_ones", -1]];
 private _knobPosition = ["getState", "NetworkKnobPosition"] call GUI_DATA_EVENT;
 
-if (_hecto < 0 || _deca < 0 || _ones < 0) then {
+if (_hecto < 0 || {_deca < 0} || {_ones < 0}) then {
     _hecto = _knobPosition select 0;
     _deca = _knobPosition select 1;
     _ones = _knobPosition select 2;

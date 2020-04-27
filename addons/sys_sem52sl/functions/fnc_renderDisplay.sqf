@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem52sl_fnc_renderDisplay
  *
  * Public: No
  */
@@ -22,7 +22,7 @@ params ["_display"];
 
 {
     RADIO_CTRL(_x) ctrlSetText "";
-} forEach [301,302,303,304,305,109]; // purge.
+} forEach [301, 302, 303, 304, 305, 109]; // purge.
 
 private _channelKnobPosition = GET_STATE("channelKnobPosition");
 

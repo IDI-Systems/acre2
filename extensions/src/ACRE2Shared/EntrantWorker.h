@@ -1,64 +1,70 @@
 #pragma once
 
-#include "compat.h"
 #include "Types.h"
 #include "Lockable.h"
 #include "Macros.h"
 
-#include <concurrent_queue.h>
+#include <queue>
 #include <thread>
 
-template<typename T> class TEntrantWorker : public CLockable
-{
+template<typename T> class TEntrantWorker : public CLockable {
 public:
     TEntrantWorker() {
         this->setRunning(false);
     }
     ~TEntrantWorker() {
-    
-    }
-    ACRE_RESULT startWorker(void) {
-        LOCK(this);
-        this->setShuttingDown(false);
-        this->m_processQueue.clear();
-        this->workerThread = std::thread(&TEntrantWorker::exWorkerThread, this);
-        this->setRunning(true);
-        UNLOCK(this);
-        return ACRE_OK;
+
     }
 
-    ACRE_RESULT stopWorker(void) {
-        this->setShuttingDown(true);
-        this->setRunning(false);
-        if (this->workerThread.joinable()) {
-            this->workerThread.join();
+    acre::Result startWorker(void) {
+        LOCK(this);
+        setShuttingDown(false);
+        std::queue<T>().swap(m_processQueue); // Clear the queue
+        m_workerThread = std::thread(&TEntrantWorker::exWorkerThread, this);
+        setRunning(true);
+        UNLOCK(this);
+        return acre::Result::ok;
+    }
+
+    acre::Result stopWorker(void) {
+        setShuttingDown(true);
+        setRunning(false);
+        if (m_workerThread.joinable()) {
+            m_workerThread.join();
         }
         LOCK(this)
-        this->m_processQueue.clear();
+        std::queue<T>().swap(m_processQueue); // Clear the queue
         UNLOCK(this);
-        this->setShuttingDown(false);
-        
-        return ACRE_OK;
+        setShuttingDown(false);
+
+        return acre::Result::ok;
     }
 
-    ACRE_RESULT exWorkerThread() {
-        T item;
-        while (!this->getShuttingDown()) {
+    acre::Result exWorkerThread() {
+        while (!getShuttingDown()) {
             LOCK(this);
-            if (this->m_processQueue.try_pop(item)) {    
-                this->exProcessItem(item);
+            if (!m_processQueue.empty()) {
+                const T item = m_processQueue.front();
+                m_processQueue.pop();
+                exProcessItem(item);
             }
             UNLOCK(this);
             Sleep(1);
         }
-        return ACRE_OK;
+        return acre::Result::ok;
     }
 
-    virtual ACRE_RESULT exProcessItem(T) = 0;
-    DECLARE_MEMBER(BOOL, ShuttingDown);
-    DECLARE_MEMBER(BOOL, Running);
-protected:
-    std::thread workerThread;
-    Concurrency::concurrent_queue<T> m_processQueue;
+    virtual acre::Result exProcessItem(T) = 0;
 
+    virtual inline void setShuttingDown(const bool value) { m_shuttingDown = value; }
+    virtual inline bool getShuttingDown() const { return m_shuttingDown; }
+    virtual inline void setRunning(const bool value) { m_running = value; }
+    virtual inline bool getRunning() const { return m_running; }
+
+protected:
+    std::thread m_workerThread;
+    std::queue<T> m_processQueue;
+
+    bool m_shuttingDown;
+    bool m_running;
 };

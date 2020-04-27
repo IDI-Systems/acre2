@@ -19,5 +19,4 @@ params [
     ["_unit", objNull, [objNull]]
 ];
 
-
 _unit in EGVAR(sys_core,speakers)

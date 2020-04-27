@@ -26,4 +26,7 @@ private _baseName = BASECLASS(_radioId);
 // External radio use
 [_radioId] call EFUNC(sys_external,initRadio);
 
+// External antenna
+[_radioId] call EFUNC(sys_gsa,initRadio);
+
 TRACE_1("", _baseName);

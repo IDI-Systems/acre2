@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_removeAnimation
  *
  * Public: No
  */
@@ -19,4 +19,4 @@
 params ["_id"];
 
 private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId), "animations", []);
-_animations set[_id, []];
+_animations set [_id, []];

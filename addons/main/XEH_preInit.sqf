@@ -21,7 +21,7 @@ if (isNil "ACRE_FAST_HASH_POOL") then {
 };
 ACRE_FAST_HASH_TO_DELETE = [];
 
-[FUNC(hashMonitor), 0.33, []] call cba_fnc_addPerFrameHandler;
+[FUNC(hashMonitor), 0.33, []] call CBA_fnc_addPerFrameHandler;
 
 ACRE_FAST_HASH_CREATED_HASHES = [];
 ACRE_FAST_HASH_VAR_STATE = (allVariables missionNamespace);

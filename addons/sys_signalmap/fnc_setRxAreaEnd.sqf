@@ -75,7 +75,7 @@ if (_this select 1 == 0) then {
 
                 private _markerPos = [(_start select 0) + ((TILE_SIZE * _xScale) / 2), (_start select 1) + ((TILE_SIZE * _yScale) / 2)];
 
-                private _marker = createMarkerLocal [format["rxarea_%1", (count GVAR(rxAreas))], _markerPos];
+                private _marker = createMarkerLocal [format["rxarea%1", (count GVAR(rxAreas))], _markerPos];
                 _marker setMarkerSizeLocal [(TILE_SIZE * _xScale) / 2, (TILE_SIZE * _yScale) / 2];
                 _marker setMarkerShapeLocal "RECTANGLE";
                 _marker setMarkerColorLocal "ColorRed";

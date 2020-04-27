@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem52sl_fnc_initializeRadio
  *
  * Public: No
  */
@@ -45,7 +45,7 @@
 
 TRACE_1("INITIALIZING ACRE_SEM52SL", _this);
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", "_radioData"];
 
 _eventData params ["_baseName", "_preset"];
 
@@ -76,11 +76,15 @@ for "_i" from 0 to (count _channels)-1 do {
     PUSH(_currentChannels, _channelData);
 };
 
-HASH_SET(_radioData,"volume",1);
+// Rounds up 20/40/60/80/100 to the nearest valid value
+private _volume = EGVAR(sys_core,defaultRadioVolume);
+_volume = _volume + 0.125 - (_volume % 0.125);
+
+HASH_SET(_radioData,"volume",_volume);
 HASH_SET(_radioData,"radioOn",1);
 HASH_SET(_radioData,"currentChannel",0);
-HASH_SET(_radioData,"channelKnobPosition", 2); // Channel 1 (after on/off options)
-HASH_SET(_radioData,"volumeKnobPosition", 0);// mid-way
-HASH_SET(_radioData,"programmingStep", 0);
+HASH_SET(_radioData,"channelKnobPosition",2); // Channel 1 (after on/off options)
+HASH_SET(_radioData,"volumeKnobPosition",_volume / 0.125);
+HASH_SET(_radioData,"programmingStep",0);
 HASH_SET(_radioData,"lastActiveChannel",0);
-HASH_SET(_radioData,"audioPath", "HEADSET");
+HASH_SET(_radioData,"audioPath","HEADSET");

@@ -11,18 +11,18 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_setCurrentChannel
  *
  * Public: No
  */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", "_radioData"];
 
 TRACE_1("SETTING CURRENT CHANNEL",_this);
 private _groups = HASH_GET(_radioData, "groups");
 private _group = _groups select HASH_GET(_radioData, "currentGroup");
 
-if (!(_eventData in (_group select 1))) then {
+if !(_eventData in (_group select 1)) then {
     {
         _x params ["","_channelNums"];
         private _groupIndex = _forEachIndex;

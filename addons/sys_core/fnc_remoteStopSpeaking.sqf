@@ -25,6 +25,9 @@ _speakingId = parseNumber _speakingId;
 
         _found = true;
         _unit setRandomLip false;
+
+        ["acre_remoteStoppedSpeaking", [_unit]] call CBA_fnc_localEvent; // [unit]
+
         REM(GVAR(speakers),_unit);
         private _radioId = _unit getVariable [QGVAR(currentSpeakingRadio), ""];
 

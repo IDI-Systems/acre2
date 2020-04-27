@@ -11,22 +11,20 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc152_fnc_handleBeginTransmission
  *
  * Public: No
  */
 
-params ["_radioId", "_eventKind", "_eventData"];
+params ["_radioId", "", ""];
 
 if (_radioId isEqualTo GVAR(currentRadioId)) then {
     // If display is open
     private _currentMenu = GET_STATE_DEF("currentMenu", "");
-    if (_currentMenu isEqualType "") then {
-        if (_currentMenu != "") then {
-            private _tmpMenu = HASH_GET(GVAR(Menus), _currentMenu);
-            if (!isNil "_tmpMenu") then {
-                _currentMenu = _tmpMenu;
-            };
+    if ((_currentMenu isEqualType "") && {_currentMenu != ""}) then {
+        private _tmpMenu = HASH_GET(GVAR(Menus), _currentMenu);
+        if (!isNil "_tmpMenu") then {
+            _currentMenu = _tmpMenu;
         };
     };
 

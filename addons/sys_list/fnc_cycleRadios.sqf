@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_list_fnc_cycleRadios
  *
  * Public: No
  */
@@ -65,7 +65,7 @@ if (!dialog) then {
         private _activateRadio = _radios select _newRadioIndex;
         TRACE_1("Active is now", _activateRadio);
         [(_activateRadio select 2)] call EFUNC(sys_radio,setActiveRadio);
-        [(_activateRadio select 0), (_activateRadio select 1), "", 1, [ACRE_NOTIFICATION_PURPLE]] call FUNC(displayHint);
+        [(_activateRadio select 0), (_activateRadio select 1), "", 1, GVAR(CycleRadiosColor)] call FUNC(displayHint);
     };
 };
 

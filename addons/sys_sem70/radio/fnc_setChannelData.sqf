@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_setChannelData
  *
  * Public: No
  */
@@ -42,7 +42,7 @@
  *      nil
 */
 
-params ["_radioId",  "_event", "_eventData", "_radioData"];
+params ["", "", "_eventData", "_radioData"];
 
 TRACE_1("",_this);
 

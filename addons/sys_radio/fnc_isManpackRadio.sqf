@@ -10,7 +10,7 @@
  * Is manpack radio <BOOL>
  *
  * Example:
- * [1] call acre_sys_core_fnc_switchChannelFast
+ * [1] call acre_sys_radio_fnc_isManpackRadio
  *
  * Public: No
  */

@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_frequencyToString
  *
  * Public: No
  */
@@ -19,11 +19,11 @@
 params ["_frequency"];
 
 private _mhz = floor _frequency;
-private _khz = round((_frequency*100000)-((floor _frequency)*100000));
+private _khz = round ((_frequency*100000) - ((floor _frequency)*100000));
 //_khz = _khz*100;
 private _khzString = str _khz;
 private _khzArray = toArray _khzString;
-for "_i" from 1 to 5-(count _khzArray) do {
+for "_i" from 1 to 5 - (count _khzArray) do {
     _khzString = "0" + _khzString;
 };
 private _hz = (str _mhz) + _khzString;

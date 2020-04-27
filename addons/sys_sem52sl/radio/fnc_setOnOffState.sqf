@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem52sl_fnc_setOnOffState
  *
  * Public: No
  */
@@ -39,7 +39,7 @@
  *      nil
 */
 
-params ["_radioId", "_event", "_eventData", "_radioData"];
+params ["_radioId", "", "_eventData", "_radioData"];
 
 HASH_SET(_radioData, "radioOn", _eventData);
 if (_radioId == EGVAR(sys_radio,currentRadioDialog)) then {

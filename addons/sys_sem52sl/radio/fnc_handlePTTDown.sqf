@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem52sl_fnc_handlePTTDown
  *
  * Public: No
  */
@@ -49,9 +49,9 @@ params ["_radioId"];
  *  handled as if it is transmitting.
 */
 
-if (!([_radioId] call EFUNC(sys_radio,canUnitTransmit))) exitWith {false};
+if !([_radioId] call EFUNC(sys_radio,canUnitTransmit)) exitWith {false};
 
 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-[_radioId, "Acre_GenericBeep", [0,0,0], [0,1,0], _volume] call EFUNC(sys_radio,playRadioSound);
+[_radioId, "Acre_GenericBeep", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
 SCRATCH_SET(_radioId, "PTTDown", true);
 true

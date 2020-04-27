@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_sem70_fnc_renderDisplay
  *
  * Public: No
  */
@@ -98,13 +98,9 @@ private _fifthDigit = [
 
 private _dotDisplay = QPATHTOF(data\display\dot.paa);
 
-
-
-
 private _currentChannel = GET_STATE("currentChannel");
 private _channels = GET_STATE("channels");
 private _channel = _channels select _currentChannel;
-
 
 // Can't use CBA_fnc_formatNumber due to precision error - This will simply format a number into usable array.
 private _fnc_formatNumber = {

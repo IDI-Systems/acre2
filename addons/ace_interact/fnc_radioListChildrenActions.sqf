@@ -1,27 +1,28 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Adds child actions for self-interaction.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Interaction Target (player) <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * ACE Child Actions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [player] call acre_ace_interact_fnc_radioListChildrenActions
  *
  * Public: No
  */
 
 params ["_target"];
 
+private _radioList = [] call EFUNC(api,getCurrentRadioList);
+if (_radioList isEqualTo []) exitWith { [] }; // Quick exit if we have no radios
+
 private _actions = [];
 private _currentRadio = [] call EFUNC(api,getCurrentRadio);
 private _pttAssign = [] call EFUNC(api,getMultiPushToTalkAssignment);
-private _radioList = [] call EFUNC(api,getCurrentRadioList);
 
 {
     private _owner = "";
@@ -42,12 +43,21 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
     };
 
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
-    _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
+    private _maxChannelsCount = [_x, "getState", "channels"] call EFUNC(sys_data,dataEvent);
+    TRACE_2("channels",_x,_maxChannelsCount);
+    if (isNil "_maxChannelsCount") then {
+        // Display frequency if single-channel radio (eg. AN/PRC-77)
+        private _txData = [_x, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+        private _currentFreq = HASH_GET(_txData, "frequencyTX");
+        _displayName = format ["%1 %2 MHz", _displayName, _currentFreq];
+    } else {
+        _displayName = format [localize LSTRING(channelShort), _displayName, _currentChannel];
+    };
 
     // Display radio keys in front of those which are bound
     private _radiokey = (_pttAssign find _x) + 1;
     if (_radiokey <= 3) then {
-        _displayName = format ["%1: %2", _radiokey, _displayName, _currentChannel];
+        _displayName = format ["%1: %2", _radiokey, _displayName];
     };
 
     private _picture = getText (_item >> "picture");
@@ -67,19 +77,18 @@ private _radioList = [] call EFUNC(api,getCurrentRadioList);
     _actions pushBack [_action, [], _target];
 } forEach _radioList;
 
-if (count _radioList > 0) then {
-    private _text = localize LSTRING(lowerHeadset);
-    if (EGVAR(sys_core,lowered) == 1) then { _text = localize LSTRING(raiseHeadset); };
-    private _action = [QGVAR(toggleHeadset), _text, "", {[] call EFUNC(sys_core,toggleHeadset)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
 
-    if (!EGVAR(sys_core,automaticAntennaDirection)) then {
-        _text = localize LSTRING(bendAntenna);
-        private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
-        if (_dir) then { _text = localize LSTRING(straightenAntenna);};
-        _action = [QGVAR(antennaDirUp), _text, "", {[] call EFUNC(sys_components,toggleAntennaDir)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
-        _actions pushBack [_action, [], _target];
-    };
+private _text = localize LSTRING(lowerHeadset);
+if (EGVAR(sys_core,lowered)) then { _text = localize LSTRING(raiseHeadset); };
+private _action = [QGVAR(toggleHeadset), _text, "", {[] call EFUNC(sys_core,toggleHeadset)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
+_actions pushBack [_action, [], _target];
+
+if (!EGVAR(sys_core,automaticAntennaDirection)) then {
+    _text = localize LSTRING(bendAntenna);
+    private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
+    if (_dir) then { _text = localize LSTRING(straightenAntenna);};
+    _action = [QGVAR(antennaDirUp), _text, "", {[] call EFUNC(sys_components,toggleAntennaDir)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
+    _actions pushBack [_action, [], _target];
 };
 
 _actions

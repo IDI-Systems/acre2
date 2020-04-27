@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_formatText
  *
  * Public: No
  */
@@ -32,7 +32,7 @@ if (count _this > 1) then {
 // Check for channel number formats
 private _result = [_text, "$ch"] call CBA_fnc_find;
 private _iter = 0;
-while { _result != -1 && _iter < 5} do {
+while {_result != -1 && _iter < 5} do {
     TRACE_2("FOUND CHANNEL VALUE REPLACE", _text, _result);
 
     private _dash = [_text, "-", _result] call CBA_fnc_find;
@@ -51,13 +51,10 @@ while { _result != -1 && _iter < 5} do {
 
     TRACE_2("channel data", _channelNumber, _channel);
     TRACE_3("Performing replacement", _text, _key, _value);
-    _text = [_text, _replacementValue,
-    (
-        [
-            _key,
-            _value
-        ] call FUNC(formatChannelValue)
-    )
+    _text = [
+        _text,
+        _replacementValue,
+        [_key, _value] call FUNC(formatChannelValue)
     ] call CBA_fnc_replace;
     TRACE_1("DONE", _text);
 

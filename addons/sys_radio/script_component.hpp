@@ -16,7 +16,7 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
-#define RADIO(radioName,radioId) PREFIX_ItemRadio_#radioName_#radioId
+#define RADIO(radioName,radioId) PREFIX_ItemRadio_##radioName##_##radioId
 
 #define GET_UI_VAR(var1) uiNameSpace getVariable QUOTE(var1)
 #define SET_UI_VAR(var1,var2) uiNamespace setVariable [QUOTE(var1), var2]

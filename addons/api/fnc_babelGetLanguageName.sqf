@@ -10,7 +10,7 @@
  * Language display name <STRING>
  *
  * Example:
- * ["en"] call acre_api_fnc_babelSetSpeakingLanguage;
+ * ["en"] call acre_api_fnc_babelGetLanguageName;
  *
  * Public: Yes
  */

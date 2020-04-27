@@ -11,11 +11,9 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc148_fnc_handleBeginTransmission
  *
  * Public: No
  */
-
-params ["_radioId", "_eventKind", "_eventData"];
 
 true;

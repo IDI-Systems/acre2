@@ -53,5 +53,5 @@ _newTuneKnobsPosition set [0, _newMHzKnobPosition];
 ["setCurrentChannel", _newTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);
 
 // Change the image and play click sound
-["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
+["Acre_GenericClick", [0, 0, 0], [0, 0, 0], 1, false] call EFUNC(sys_sounds,playSound);
 [MAIN_DISPLAY] call CALLSTACK(FUNC(render));

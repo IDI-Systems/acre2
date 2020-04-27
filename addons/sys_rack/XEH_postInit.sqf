@@ -8,13 +8,6 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
     [FUNC(enterVehicle), [_newVehicle, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 }] call CBA_fnc_addPlayerEventHandler;
 
-["featureCamera", {
-    params ["_player", "_featureCamera"];
-    if (_featureCamera isEqualTo "") then {
-        [FUNC(enterVehicle), [vehicle _player, _player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
-    };
-}, true] call CBA_fnc_addPlayerEventHandler;
-
 // Handle the case of starting inside a vehicle. addPlayerEventhandler retrospectively would not work
 // when initialising the racks since we have to execute it once radios are being initialised
 if (vehicle acre_player != acre_player) then {
