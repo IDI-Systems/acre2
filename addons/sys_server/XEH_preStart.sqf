@@ -4,6 +4,4 @@ if (hasInterface) then {
     #include "XEH_PREPClient.hpp"
 };
 
-if (isServer) then {
-    #include "XEH_PREPServer.hpp"
-};
+#include "XEH_PREPServer.hpp"
