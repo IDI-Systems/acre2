@@ -119,7 +119,11 @@ private _accent = [];
 
 if (didJIP) then {
     // Do not configure the stations if the player is JIP and information is already there.
-    if ((_vehicle getVariable[QGVAR(station_driver), []]) isEqualTo []) then {
+    if (
+        (_vehicle getVariable [QGVAR(intercomNames), []]) findIf {
+            _vehicle getVariable [_x, []] isEqualTo []; 
+        } > -1
+    ) then {
         [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
     };
 
