@@ -42,8 +42,18 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    private _desc = format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
-    HASH_SET(_channel,"name",_desc);
+
+    private _name = [];
+    _name resize 20;
+    _name = _name apply { toArray " " select 0 };
+
+    private _desc = toArray format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+
+    for "_i" from 0 to count _desc -1 do {
+        _name set [_i, _desc select _i];
+    };
+
+    HASH_SET(_channel,"name", toString _name);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
     HASH_SET(_channel,"modulation","FM");
@@ -88,8 +98,18 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
-    HASH_SET(_channel,"name",_desc);
+
+    private _name = [];
+    _name resize 20;
+    _name = _name apply { toArray " " select 0 };
+
+    private _desc = toArray format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+
+    for "_i" from 0 to count _desc -1 do {
+        _name set [_i, _desc select _i];
+    };
+
+    HASH_SET(_channel,"name", toString _name);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
     HASH_SET(_channel,"modulation","FM");
@@ -133,8 +153,18 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
-    HASH_SET(_channel,"name",_desc);
+
+    private _name = [];
+    _name resize 20;
+    _name = _name apply { toArray " " select 0 };
+
+    private _desc = toArray format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+
+    for "_i" from 0 to count _desc -1 do {
+        _name set [_i, _desc select _i];
+    };
+
+    HASH_SET(_channel,"name", toString _name);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
     HASH_SET(_channel,"modulation","FM");
@@ -178,8 +208,18 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
-    HASH_SET(_channel,"name",_desc);
+
+    private _name = [];
+    _name resize 20;
+    _name = _name apply { toArray " " select 0 };
+
+    private _desc = toArray format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+
+    for "_i" from 0 to count _desc -1 do {
+        _name set [_i, _desc select _i];
+    };
+
+    HASH_SET(_channel,"name", toString _name);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
     HASH_SET(_channel,"modulation","FM");
