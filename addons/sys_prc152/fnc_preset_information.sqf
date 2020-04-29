@@ -16,6 +16,8 @@
  * Public: No
  */
 
+ #define CHANNEL_MAX_LENGTH 20
+
 // channels information
 private _presetData = HASH_CREATE;
 private _channels = HASHLIST_CREATELIST(["frequencyTX"]);
@@ -44,7 +46,7 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"channelMode", "BASIC");
 
     private _name = [];
-    _name resize 20;
+    _name resize CHANNEL_MAX_LENGTH;
     _name = _name apply { toArray " " select 0 };
 
     private _desc = toArray format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
@@ -100,7 +102,7 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"channelMode", "BASIC");
 
     private _name = [];
-    _name resize 20;
+    _name resize CHANNEL_MAX_LENGTH;
     _name = _name apply { toArray " " select 0 };
 
     private _desc = toArray format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
@@ -156,7 +158,7 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"channelMode", "BASIC");
 
     private _name = [];
-    _name resize 20;
+    _name resize CHANNEL_MAX_LENGTH;
     _name = _name apply { toArray " " select 0 };
 
     private _desc = toArray format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
@@ -212,7 +214,7 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"channelMode", "BASIC");
 
     private _name = [];
-    _name resize 20;
+    _name resize CHANNEL_MAX_LENGTH;
     _name = _name apply { toArray " " select 0 };
 
     private _desc = toArray format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
