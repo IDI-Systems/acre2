@@ -117,16 +117,9 @@ private _accent = [];
     _accent pushBack false;
 } forEach _intercoms;
 
-if (didJIP) then {
-    // Do not configure the stations if the player is JIP and information is already there.
-    if (
-        (_vehicle getVariable [QGVAR(intercomNames), []]) findIf {
-            _vehicle getVariable [_x, []] isEqualTo []; 
-        } > -1
-    ) then {
-        [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
-    };
+[_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
 
+if (didJIP) then {
     if ((_vehicle getVariable [QGVAR(intercomNames), []]) isEqualTo []) then {
         _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
     };
@@ -143,12 +136,8 @@ if (didJIP) then {
         _vehicle setVariable [QGVAR(accent), _accent];
     };
 } else {
-    [_vehicle, _intercomPositions, _intercomExceptions, _intercomLimitedPositions, _intercomConnectByDefault, _intercomMasterStation] call FUNC(configIntercomStations);
-
     _vehicle setVariable [QGVAR(intercomNames), _intercomNames];
     _vehicle setVariable [QGVAR(numLimitedPositions), _numLimitedPositions];
     _vehicle setVariable [QGVAR(broadcasting), _broadcasting];
     _vehicle setVariable [QGVAR(accent), _accent];
 };
-
-
