@@ -4,6 +4,9 @@
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 #define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
 
+#define CHANNELNAME_MAX_LEN 20
+#define SPACE_CHAR 32
+
 DFUNC(CURRENT_RADIO_VALUE) = {
     private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
     private _channels = GET_STATE("channels");
@@ -86,13 +89,21 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
             [
                 {
                     private _value = GET_RADIO_VALUE("description");
+                    private _valueLen = count _value;
+                    if (_valueLen < CHANNELNAME_MAX_LEN) then {
+                        TRACE_1("Resizing channel name", _valueLen);
+                        private _whitespace = [];
+                        _whitespace resize CHANNELNAME_MAX_LEN - _valueLen;
+                        _whitespace = _whitespace apply {SPACE_CHAR};
+                        _value = [_value, toString _whitespace] joinString "";
+                    };
                     SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                 },
                 nil,
                 nil
             ],
             [
-                20,    // Digit count
+                CHANNELNAME_MAX_LEN,    // Digit count
                 [ROW_LARGE_3, 0, -1] // Highlighting cursor information
             ],
             "pgm_description"
