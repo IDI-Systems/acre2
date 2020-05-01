@@ -43,9 +43,10 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_
             [_radioId, "setState", ["externalAntennaConnected", [false, objNull]]] call EFUNC(sys_data,dataEvent);
 
             // Support for having several radios connected to GSA
-            private _pfh = [GVAR(gsaPFH), _radioId, _pfh] call CBA_fnc_hashGSet;
+            private _pfh = [GVAR(gsaPFH), _radioId, _pfh] call CBA_fnc_hashGet;
             if !(isNil "_pfh") then {
                 [_pfh] call CBA_fnc_removePerFrameHandler;
+                [GVAR(gsaPFH), _radioId, nil] call CBA_fnc_hashSet;
             };
 
             if (_connectedUnit isKindOf "CAManBase" || {!(crew _connectedUnit isEqualTo [])}) then {
