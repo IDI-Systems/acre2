@@ -70,7 +70,7 @@ DFUNC(connectionFnc) = {
 if (isMultiplayer) then {
 #endif
     [] call FUNC(connectionFnc);
-    ADDPFH(DFUNC(connectionFnc), 1, []);
+    [DFUNC(connectionFnc), 1, []] call CBA_fnc_addPerFrameHandler;
     GVAR(serverStarted) = true;
 #ifndef DEBUG_MODE_FULL
 };

@@ -29,6 +29,6 @@ MAIN_DISPLAY call (uiNamespace getVariable "CBA_events_fnc_initDisplayCurator");
 
 [_radioId, true] call EFUNC(sys_radio,setRadioOpenState);
 
-GVAR(PFHId) = ADDPFH(DFUNC(PFH), 0.33, []);
+GVAR(PFHId) = [DFUNC(PFH), 0.33, []] call CBA_fnc_addPerFrameHandler;
 
 true

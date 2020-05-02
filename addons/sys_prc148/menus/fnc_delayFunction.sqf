@@ -18,7 +18,7 @@
 
 params ["_radioId", "_endFunction", "_time"];
 
-private _fnc = {
+[{
     params ["_args"];
     _args params ["_time", "_radioId", "_function", "_funcArgs"];
 
@@ -30,5 +30,4 @@ private _fnc = {
         [_radioId, _funcArgs] call _function;
         [_this select 1] call CBA_fnc_removePerFrameHandler;
     };
-};
-ADDPFH(_fnc, 0, [ARR_3(diag_tickTime+_time,EGVAR(sys_radio,currentRadioDialog),_endFunction)]);
+}, 0, [diag_tickTime + _time, EGVAR(sys_radio,currentRadioDialog), _endFunction]] call CBA_fnc_addPerFrameHandler;

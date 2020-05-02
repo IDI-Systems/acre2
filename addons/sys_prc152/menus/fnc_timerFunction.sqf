@@ -21,7 +21,7 @@ params ["_radioId","_endFunction", "_step", "_time"];
 TRACE_1("Registering a delayed function!", _this);
 GVAR(timerFunction_NextStep) = diag_tickTime + _step;
 
-private _fnc = {
+[{
     params ["_args"];
     _args params ["_time", "_radioId", "_function","_step"];
 
@@ -38,5 +38,4 @@ private _fnc = {
             GVAR(timerFunction_NextStep) = diag_tickTime + _step;
         }
     };
-};
-ADDPFH(_fnc, 0, [ARR_4(diag_tickTime+_time,EGVAR(sys_radio,currentRadioDialog),_endFunction,_step)]);
+}, 0, [diag_tickTime + _time, EGVAR(sys_radio,currentRadioDialog), _endFunction, _step]] call CBA_fnc_addPerFrameHandler;
