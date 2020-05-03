@@ -19,9 +19,6 @@
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 #define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
 
-#define CHANNELNAME_MAX_LEN 20
-#define SPACE_CHAR 32
-
 DFUNC(CURRENT_RADIO_VALUE) = {
     private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
     private _channels = GET_STATE("channels");
@@ -403,14 +400,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
             [
                 {
                     private _value = GET_RADIO_VALUE("name");
-                    private _valueLen = count _value;
-                    if (_valueLen < CHANNELNAME_MAX_LEN) then {
-                        TRACE_1("Resizing channel name", _valueLen);
-                        private _whitespace = [];
-                        _whitespace resize CHANNELNAME_MAX_LEN - _valueLen;
-                        _whitespace = _whitespace apply {SPACE_CHAR};
-                        _value = [_value, toString _whitespace] joinString "";
-                    };
+                    _value = (_value + CHANNEL_PADDING_STRING) select [0,CHANNEL_NAME_MAX_LENGTH]; // Make sure we have something at each editindex
                     SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                 },
                 {
@@ -431,7 +421,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 nil
             ],
             [
-                CHANNELNAME_MAX_LEN,    // Digit count
+                CHANNEL_NAME_MAX_LENGTH, // Editable digits
                 [ROW_LARGE_3, 0, -1] // Highlighting cursor information
             ],
             "pgm_name"

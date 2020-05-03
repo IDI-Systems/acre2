@@ -23,9 +23,6 @@ params ["_name","_value"];
 TRACE_1("Formatting", _this);
 
 switch _name do {
-    case "description": {
-        _value = _value call CBA_fnc_rightTrim;
-    };
     case "frequency": {
         _value = [_value, 3, 4] call CBA_fnc_formatNumber;
     };
