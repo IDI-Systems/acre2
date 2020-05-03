@@ -219,6 +219,7 @@ GVAR(PGM_NORM) = ["PGM_NORM", "PGM_NORM", "",
         SET_STATE("channels", _channels);
 
         SET_STATE("pgm_preset_number", 0);
+		SET_STATE("pgm_name", nil);
         SET_STATE("pgm_active_in_list", nil);
 
         ["PGM_NORM_LOS"] call FUNC(changeMenu);
