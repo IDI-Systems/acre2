@@ -4,9 +4,6 @@
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 #define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
 
-#define CHANNELNAME_MAX_LEN 20
-#define SPACE_CHAR 32
-
 DFUNC(CURRENT_RADIO_VALUE) = {
     private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
     private _channels = GET_STATE("channels");
