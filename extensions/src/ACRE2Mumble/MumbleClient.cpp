@@ -418,7 +418,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
         if (bestChannelId == INVALID_MUMBLE_CHANNEL) {
             if (!details_.at(0).empty()) {
                 details_.at(0) = "";
-                bestChannelId = findChannelByNames(details_);
+                bestChannelId = static_cast<mumble_channelid_t>(findChannelByNames(details_));
             } else if (defaultChannelId != INVALID_MUMBLE_CHANNEL) {
                 bestChannelId = defaultChannelId;
             }
