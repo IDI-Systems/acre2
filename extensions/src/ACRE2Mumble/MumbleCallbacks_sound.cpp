@@ -25,11 +25,11 @@ typedef std::numeric_limits<short int> LIMITER;
 //void ts3plugin_onEditPlaybackVoiceDataEvent(uint64 server, anyID id, short* samples, int sampleCount, int channels) {
 bool mumble_onAudioSourceFetched(float* outputPCM, uint32_t sampleCount, uint16_t channelCount, bool isSpeech, mumble_userid_t userID) {
     if (CEngine::getInstance()->getSoundSystemOverride())
-        return;
+        return false;
     if (!CEngine::getInstance()->getGameServer())
-        return;
+        return false;
     if (!CEngine::getInstance()->getGameServer()->getConnected())
-        return;
+        return false;
 
     // Make this faster
     short* mixdownSamples;

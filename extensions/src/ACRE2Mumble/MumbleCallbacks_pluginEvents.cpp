@@ -22,5 +22,5 @@ bool mumble_onReceiveData(mumble_connection_t connection, mumble_userid_t sender
             return true;
         }
     }
-    return false
+    return false;
 }

@@ -9,7 +9,7 @@
 
 extern MumbleAPI mumAPI;
 extern mumble_connection_t activeConnection;
-extern plugin_id_t pluginId;
+extern plugin_id_t pluginID;
 
 acre::Result CMumbleCommandServer::initialize(void){
     TRACE("enter");
@@ -32,8 +32,13 @@ acre::Result CMumbleCommandServer::sendMessage(IMessage *msg){
         (const char*)msg->getData(),
         PluginCommandTarget_CURRENT_CHANNEL, NULL, NULL);
         */
-
-    mumAPI.sendData(pluginId)
+    mumble_userid_t* channelUsers;
+    size_t userCount;
+    mumble_channelid_t currentChannel;
+    mumAPI.getChannelOfUser(pluginID, activeConnection, CEngine::getInstance()->getSelf()->getId(), &currentChannel);
+    mumAPI.getUsersInChannel(pluginID, activeConnection, currentChannel, &channelUsers, &userCount);
+    mumAPI.sendData(pluginID, activeConnection, channelUsers, userCount, (const char*)msg->getData(), msg->getLength(), "ACRE2");
+    mumAPI.freeMemory(pluginID, (void *)&channelUsers);
 
     delete msg;
 
@@ -58,8 +63,6 @@ acre::Result CMumbleCommandServer::handleMessage(unsigned char* data, size_t len
 
 
 acre::Result CMumbleCommandServer::release(void) {
-    
-
     return acre::Result::ok;
 }
 
