@@ -401,7 +401,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
             [
                 {
                     private _value = GET_RADIO_VALUE("name");
-                    _value = (_value + CHANNEL_PADDING_STRING) select [0,CHANNEL_NAME_MAX_LENGTH]; // Make sure we have something at each editindex
+                    _value = (_value + CHANNEL_PADDING_STRING) select [0, CHANNEL_NAME_MAX_LENGTH]; // Make sure we have something at each editindex
                     SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                 },
                 {
