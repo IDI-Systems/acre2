@@ -20,34 +20,37 @@
 #include "AcreDsp.h"
 
 
-typedef std::numeric_limits<short int> LIMITER;
+typedef std::numeric_limits<int16_t> LIMITER;
 
 //void ts3plugin_onEditPlaybackVoiceDataEvent(uint64 server, anyID id, short* samples, int sampleCount, int channels) {
 bool mumble_onAudioSourceFetched(float* outputPCM, uint32_t sampleCount, uint16_t channelCount, bool isSpeech, mumble_userid_t userID) {
-    if (CEngine::getInstance()->getSoundSystemOverride())
+    if (CEngine::getInstance()->getSoundSystemOverride()) {
         return false;
-    if (!CEngine::getInstance()->getGameServer())
+    }
+
+    if (!CEngine::getInstance()->getGameServer()) {
         return false;
-    if (!CEngine::getInstance()->getGameServer()->getConnected())
+    }
+
+    if (!CEngine::getInstance()->getGameServer()->getConnected()) {
         return false;
+    }
 
     // Make this faster
-    short* mixdownSamples;
-    uint32_t mixdownSampleLength = 0;
-
+    
     //if (mixdownSamples == NULL || sampleCount * channelCount > mixdownSampleLength) {
-    mixdownSampleLength = sampleCount * channelCount;
-    mixdownSamples = new short[mixdownSampleLength];
+    const std::uint32_t mixdownSampleLength = sampleCount * channelCount;
+    int16_t *mixdownSamples = new int16_t[mixdownSampleLength];
     //}
 
-    for (int c = 0; c <= mixdownSampleLength - 1; ++c) {
-        mixdownSamples[c] = static_cast<short>(outputPCM[c] / LIMITER::max());
+    for (std::int32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
+        mixdownSamples[c] = static_cast<int16_t>(outputPCM[c] / LIMITER::max());
     }
 
     CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent(static_cast<acre::id_t>(userID), mixdownSamples, sampleCount, channelCount);
 
-    for (int c = 0; c <= mixdownSampleLength - 1; ++c) {
-        float mixedSample;
+    for (std::int32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
+        float mixedSample = 0.0F;
         if (mixdownSamples[c] > 0) {
             mixedSample = static_cast<float>(mixdownSamples[c] * LIMITER::max());
         }
@@ -65,32 +68,36 @@ bool mumble_onAudioSourceFetched(float* outputPCM, uint32_t sampleCount, uint16_
 
 bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uint16_t channelCount) {
 
-    if (CEngine::getInstance()->getSoundSystemOverride())
+    if (CEngine::getInstance()->getSoundSystemOverride()) {
         return false;
-    if (!CEngine::getInstance()->getGameServer())
+    }
+
+    if (!CEngine::getInstance()->getGameServer()) {
         return false;
-    if (!CEngine::getInstance()->getGameServer()->getConnected())
+    }
+
+    if (!CEngine::getInstance()->getGameServer()->getConnected()) {
         return false;
-    UINT32 speakerMask = 0;
+    }
+        
+    uint32_t speakerMask = 0U;
     speakerMask = SPEAKER_STEREO;
 
     // Make this faster
-    short* mixdownSamples;
-    uint32_t mixdownSampleLength = 0;
 
     //if (mixdownSamples == NULL || sampleCount * channelCount > mixdownSampleLength) {
-        mixdownSampleLength = sampleCount * channelCount;
-        mixdownSamples = new short[mixdownSampleLength];
+    const uint32_t mixdownSampleLength = sampleCount * channelCount;
+    int16_t  *mixdownSamples = new int16_t[mixdownSampleLength];
     //}
 
-    for (int c = 0; c <= mixdownSampleLength - 1; ++c) {
+    for (int32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
         mixdownSamples[c] = static_cast<short>(outputPCM[c] / LIMITER::max());
     }
 
     CEngine::getInstance()->getSoundEngine()->onEditMixedPlaybackVoiceDataEvent(mixdownSamples, sampleCount, channelCount, speakerMask);
 
-    for (int c = 0; c <= mixdownSampleLength - 1; ++c) {
-        float mixedSample;
+    for (int32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
+        float mixedSample = 0.0F;
         if (mixdownSamples[c] > 0) {
             mixedSample = static_cast<float>(mixdownSamples[c] * LIMITER::max());
         }

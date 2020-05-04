@@ -52,7 +52,7 @@ acre::Result CMumbleCommandServer::handleMessage(unsigned char* data) {
 }
 
 acre::Result CMumbleCommandServer::handleMessage(unsigned char* data, size_t length) {
-    CTextMessage* msg;
+    CTextMessage* msg = nullptr;
     //TRACE("recv: [%s]", data);
     msg = new CTextMessage((char*)data, length);
     if (CEngine::getInstance()->getRpcEngine() && (msg != nullptr)) {
@@ -73,10 +73,12 @@ acre::Result CMumbleCommandServer::release(void) {
 CMumbleCommandServer::CMumbleCommandServer(const acre::id_t id) {
     this->setId(id);
 }
+
 CMumbleCommandServer::CMumbleCommandServer(void) {
     this->setCommandId(0);
     this->setConnected(true);
 }
+
 CMumbleCommandServer::~CMumbleCommandServer() {
     
 }

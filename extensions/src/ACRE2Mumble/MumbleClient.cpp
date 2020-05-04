@@ -43,7 +43,7 @@ acre::Result CMumbleClient::getMuted(acre::id_t id_) {
 }
 
 acre::Result CMumbleClient::stop() {
-    if (CEngine::getInstance() != NULL) {
+    if (CEngine::getInstance() != nullptr) {
         CEngine::getInstance()->stop();
         this->setState(acre::State::stopping);
         if (this->m_versionThreadHandle.joinable()) {
@@ -121,7 +121,7 @@ acre::Result CMumbleClient::setClientMetadata(const char *const data) {
     }
     ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, to_set.c_str());
     ts3Functions.freeMemory(clientInfo);
-    ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
+    ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), nullptr);
     return acre::Result::ok;
 }
 */
@@ -260,7 +260,7 @@ std::string CMumbleClient::getConfigFilePath(void) {
 
     std::string tempFolder = ".\\acre";
     if (!PathFileExistsA(tempFolder.c_str())) {
-        if (!CreateDirectoryA(tempFolder.c_str(), NULL)) {
+        if (!CreateDirectoryA(tempFolder.c_str(), nullptr)) {
             LOG("ERROR: UNABLE TO CREATE TEMP DIR");
         }
     }
@@ -274,7 +274,7 @@ std::string CMumbleClient::getTempFilePath( void ) {
     std::string tempFolder = std::string(tempPath);
     tempFolder += "\\acre";
     if (!PathFileExistsA(tempFolder.c_str())) {
-        if (!CreateDirectoryA(tempFolder.c_str(), NULL)) {
+        if (!CreateDirectoryA(tempFolder.c_str(), nullptr)) {
             LOG("ERROR: UNABLE TO CREATE TEMP DIR");
         }
     }

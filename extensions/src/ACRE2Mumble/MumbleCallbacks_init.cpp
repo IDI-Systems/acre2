@@ -44,10 +44,8 @@ void ts3plugin_setFunctionPointers(const struct TS3Functions funcs) {
 
 void mumble_registerPluginID(plugin_id_t id) {
     pluginID = id;
-    if (CEngine::getInstance() != NULL) {
-        if (((CMumbleCommandServer*)CEngine::getInstance()->getExternalServer()) != NULL) {
-            ((CMumbleCommandServer*)CEngine::getInstance()->getExternalServer())->setCommandId(pluginID);
-        }
+    if ((CEngine::getInstance() != nullptr) && (((CMumbleCommandServer*)CEngine::getInstance()->getExternalServer()) != nullptr)) {
+        ((CMumbleCommandServer*)CEngine::getInstance()->getExternalServer())->setCommandId(pluginID);
     }
 }
 
@@ -66,7 +64,10 @@ mumble_error_t mumble_init() {
     CEngine::getInstance()->initialize(new CMumbleClient(), new CMumbleCommandServer(), FROM_PIPENAME, TO_PIPENAME);
 
     // if PluginID was already loaded.
-    if (pluginID != -1) ((CMumbleCommandServer*)CEngine::getInstance()->getExternalServer())->setCommandId(pluginID);
+    if (pluginID != -1) {
+        ((CMumbleCommandServer*)CEngine::getInstance()->getExternalServer())->setCommandId(pluginID);
+    }
+
     if (activeConnection != -1) {
         // we are activating while connected, call it
         // virtualize a connect event
@@ -97,13 +98,13 @@ void mumble_onServerConnected(mumble_connection_t connection) {
 void mumble_onServerDisconnected(mumble_connection_t connection) {
     activeConnection = -1;
 
-    if (CEngine::getInstance()->getClient()->getState() != acre::State::stopped && CEngine::getInstance()->getClient()->getState() != acre::State::stopping) {
+    if ((CEngine::getInstance()->getClient()->getState() != acre::State::stopped) && (CEngine::getInstance()->getClient()->getState() != acre::State::stopping)) {
         CEngine::getInstance()->getClient()->stop();
     }
 }
 
 void mumble_shutdown() {
-    if (CEngine::getInstance()->getClient()->getState() != acre::State::stopped && CEngine::getInstance()->getClient()->getState() != acre::State::stopping) {
+    if ((CEngine::getInstance()->getClient()->getState() != acre::State::stopped) && (CEngine::getInstance()->getClient()->getState() != acre::State::stopping)) {
         CEngine::getInstance()->getClient()->stop();
     }
     CEngine::getInstance()->stop();
