@@ -171,7 +171,7 @@ acre::Result CTS3Client::localStartSpeaking(const acre::Speaking speakingType_, 
             } else {
                 stopDirectSpeaking = true;
             }
-        } else if (this->getVAD() && (this->getTsSpeakingState() == STATUS_TALKING)) {
+        } else if (this->getVAD() && (this->getSpeakingState() == STATUS_TALKING)) {
             stopDirectSpeaking = true;
         }
     }
@@ -223,7 +223,7 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
             }
         } else {
             this->setOnRadio(false);
-            if (this->getTsSpeakingState() == STATUS_TALKING) {
+            if (this->getSpeakingState() == STATUS_TALKING) {
                 resendDirectSpeaking = true;
             }
         }
@@ -234,7 +234,7 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
             } else {
                 resendDirectSpeaking = true;
             }
-        } else if (this->getTsSpeakingState() == STATUS_TALKING) {
+        } else if (this->getSpeakingState() == STATUS_TALKING) {
              resendDirectSpeaking = true;
         }
     }
@@ -477,7 +477,7 @@ acre::Result CTS3Client::unMuteAll( void ) {
 }
 
 acre::Result CTS3Client::moveToServerChannel() {
-    if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
+    if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         anyID clientId;
         std::vector<std::string> details = getChannelDetails();
 
@@ -502,7 +502,7 @@ acre::Result CTS3Client::moveToServerChannel() {
 }
 
 acre::Result CTS3Client::moveToPreviousChannel() {
-    if (!CAcreSettings::getInstance()->getDisableTS3ChannelSwitch()) {
+    if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         anyID clientId;
         if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
             uint64_t currentChannelId = INVALID_TS3_CHANNEL;
