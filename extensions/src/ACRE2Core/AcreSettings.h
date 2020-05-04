@@ -27,8 +27,8 @@ public:
     DECLARE_MEMBER(bool, DisableMuting);
     DECLARE_MEMBER(bool, DisableRadioFilter);
     DECLARE_MEMBER(bool, DisableUnmuteClients);
-    DECLARE_MEMBER(bool, DisableTS3ChannelSwitch);
 
+    DECLARE_MEMBER(bool, DisableChannelSwitch);
     DECLARE_MEMBER(bool, EnableAudioTest);
 
     DECLARE_MEMBER(std::string, Path);
