@@ -3,13 +3,13 @@
 #include "Log.h"
 #include "Engine.h"
 #include "MumbleClient.h"
-#include "CommandServer.h"
+#include "MumbleCommandServer.h"
 #include "helpers.h"
 
 #include "MumbleFunctions.h"
 
-#define FROM_PIPENAME   "\\\\.\\pipe\\acre_comm_pipe_fromTS"
-#define TO_PIPENAME     "\\\\.\\pipe\\acre_comm_pipe_toTS"
+#define FROM_PIPENAME   "\\\\.\\pipe\\acre_comm_pipe_fromMumble"
+#define TO_PIPENAME     "\\\\.\\pipe\\acre_comm_pipe_toMumble"
 
 extern MumbleAPI mumAPI;
 mumble_connection_t activeConnection = -1;
@@ -42,7 +42,7 @@ void ts3plugin_setFunctionPointers(const struct TS3Functions funcs) {
 */
 
 
-void registerPluginID(plugin_id_t id) {
+void mumble_registerPluginID(plugin_id_t id) {
     pluginID = id;
     if (CEngine::getInstance() != NULL) {
         if (((CMumbleCommandServer*)CEngine::getInstance()->getExternalServer()) != NULL) {
@@ -51,20 +51,18 @@ void registerPluginID(plugin_id_t id) {
     }
 }
 
-uint32_t getFeatures() {
+uint32_t mumble_getFeatures() {
     return FEATURE_AUDIO;
+}
+
+void mumble_registerAPIFunctions(struct MumbleAPI api) {
+    mumAPI = api;
 }
 
 //
 // Init
 //
-int ts3plugin_init() {
-
-
-    return 0;
-}
-
-mumble_error_t init() {
+mumble_error_t mumble_init() {
     CEngine::getInstance()->initialize(new CMumbleClient(), new CMumbleCommandServer(), FROM_PIPENAME, TO_PIPENAME);
 
     // if PluginID was already loaded.
@@ -72,14 +70,14 @@ mumble_error_t init() {
     if (activeConnection != -1) {
         // we are activating while connected, call it
         // virtualize a connect event
-        onServerConnected(activeConnection);
+        mumble_onServerConnected(activeConnection);
     }
 
     return STATUS_OK;
 }
 
 
-void onServerConnected(mumble_connection_t connection) {
+void mumble_onServerConnected(mumble_connection_t connection) {
     activeConnection = connection;
 
     //
@@ -92,11 +90,11 @@ void onServerConnected(mumble_connection_t connection) {
     // subscribe to all channels to receive event
     //ts3Functions.requestChannelSubscribeAll(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
     if (CEngine::getInstance()->getClient()->getState() != acre::State::running) {
-        CEngine::getInstance()->getClient()->start(static_cast<acre::id_t>(id));
+        CEngine::getInstance()->getClient()->start(static_cast<acre::id_t>(clientId));
     }
 }
 
-void onServerDisconnected(mumble_connection_t connection) {
+void mumble_onServerDisconnected(mumble_connection_t connection) {
     activeConnection = -1;
 
     if (CEngine::getInstance()->getClient()->getState() != acre::State::stopped && CEngine::getInstance()->getClient()->getState() != acre::State::stopping) {
@@ -104,7 +102,7 @@ void onServerDisconnected(mumble_connection_t connection) {
     }
 }
 
-void shutdown() {
+void mumble_shutdown() {
     if (CEngine::getInstance()->getClient()->getState() != acre::State::stopped && CEngine::getInstance()->getClient()->getState() != acre::State::stopping) {
         CEngine::getInstance()->getClient()->stop();
     }

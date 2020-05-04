@@ -16,6 +16,7 @@ public:
 
     virtual acre::Result sendMessage(IMessage *const msg) = 0;
     virtual acre::Result handleMessage(unsigned char *const data) = 0;
+    virtual acre::Result handleMessage(unsigned char* msg, size_t length) = 0;
     virtual acre::Result release(void) = 0;
     
     

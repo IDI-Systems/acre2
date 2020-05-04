@@ -22,7 +22,9 @@ public:
     acre::Result shutdown(void);
 
     acre::Result sendMessage(IMessage *msg);
-    acre::Result handleMessage(unsigned char *msg);
+    acre::Result handleMessage(unsigned char* msg);
+    acre::Result handleMessage(unsigned char* msg, size_t length);
+
 
     acre::Result release(void);
 

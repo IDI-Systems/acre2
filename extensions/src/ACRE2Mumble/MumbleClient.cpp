@@ -127,6 +127,14 @@ acre::Result CMumbleClient::setClientMetadata(const char *const data) {
 */
 
 bool CMumbleClient::getVAD() {
+    transmission_mode_t transmitMode;
+    mumble_error_t err = mumAPI.getLocalUserTransmissionMode(pluginID, &transmitMode);
+    if (err != ErrorCode::EC_OK) {
+        return false;
+    }
+    if (transmitMode == TransmissionMode::TM_VOICE_ACTIVATION) {
+        return true;
+    }
     return false;
 }
 
@@ -157,7 +165,7 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
             } else {
                 stopDirectSpeaking = true;
             }
-        } else if (this->getVAD() && (this->getTsSpeakingState() == 1)) {
+        } else if (this->getVAD() && (this->getSpeakingState() != TalkingState::PASSIVE && this->getSpeakingState() != TalkingState::INVALID)) {
             stopDirectSpeaking = true;
         }
     }
@@ -201,7 +209,7 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
                 this->setOnRadio(false);
                 resendDirectSpeaking = true;
             } else {
-                if (!((CMumbleClient *) (CEngine::getInstance()->getClient()))->getMainPTTDown()) {
+                if (!CEngine::getInstance()->getClient()->getMainPTTDown()) {
                     this->microphoneOpen(false);
                 } else {
                     resendDirectSpeaking = true;
@@ -209,18 +217,18 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
             }
         } else {
             this->setOnRadio(false);
-            if (this->getTsSpeakingState() == 1) {
+            if (this->getSpeakingState() == 1) {
                 resendDirectSpeaking = true;
             }
         }
     } else if (speakingType_ == acre::Speaking::intercom) {
         if (!this->getVAD()) {
-            if (!((CMumbleClient *) (CEngine::getInstance()->getClient()))->getIntercomPTTDown()) {
+            if (!CEngine::getInstance()->getClient()->getIntercomPTTDown()) {
                 this->microphoneOpen(false);
             } else {
                 resendDirectSpeaking = true;
             }
-        } else if (this->getTsSpeakingState() == 1) {
+        } else if (this->getSpeakingState() == 1) {
              resendDirectSpeaking = true;
         }
     }

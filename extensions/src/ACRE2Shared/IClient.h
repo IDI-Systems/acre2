@@ -49,6 +49,7 @@ public:
     virtual acre::Result updateChannelDetails(const std::vector<std::string> details) = 0;
     virtual acre::Result updateShouldSwitchChannel(const bool state) = 0;
     virtual bool shouldSwitchChannel() = 0;
+    virtual bool getVAD() = 0;
 
     virtual std::uint64_t findChannelByNames(std::vector<std::string> details_) = 0;
  
@@ -61,8 +62,8 @@ public:
     bool getOnRadio() const noexcept { return on_radio; }
     void setOnRadio(const bool value_) noexcept { on_radio = value_; }
 
-    std::int32_t getTsSpeakingState() const noexcept { return speaking_state; }
-    void setTsSpeakingState(const std::int32_t value_) noexcept { speaking_state = value_; }
+    std::int32_t getSpeakingState() const noexcept { return speaking_state; }
+    void setSpeakingState(const std::int32_t value_) noexcept { speaking_state = value_; }
 
     bool getRadioPTTDown() const noexcept { return radioPTTDown; }
     void setRadioPTTDown(const bool value_) noexcept { radioPTTDown = value_; }

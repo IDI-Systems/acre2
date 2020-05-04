@@ -1,18 +1,13 @@
 #include "compat.h"
 
-#include "teamspeak/public_errors.h"
-#include "teamspeak/public_definitions.h"
-#include "teamspeak/public_rare_definitions.h"
-#include "ts3_functions.h"
+
 
 #include "Log.h"
-
-#include "TsCallbacks.h"
 
 #include "Engine.h"
 #include "Types.h"
 #include "AcreSettings.h"
-
+/*
 extern TS3Functions ts3Functions;
 
 //
@@ -84,3 +79,4 @@ void ts3plugin_onClientMoveMovedEvent(uint64 serverConnectionHandlerID, anyID cl
 void ts3plugin_onUpdateChannelEditedEvent(uint64 serverConnectionHandlerID, uint64 channelID, anyID invokerID, const char* invokerName, const char* invokerUniqueIdentifier) {
     CEngine::getInstance()->getClient()->updateShouldSwitchChannel(true);
 }
+*/
