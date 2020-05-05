@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Ground Spike Antenna (could be null) <OBJECT>
  * 1: Player or unit <OBJECT>
- * 2: RadioID <STRING><OPTIONAL>
+ * 2: RadioID <STRING> (default: "")
  *
  * Return Value:
  * None
@@ -21,7 +21,9 @@ params ["_gsa", "_unit", ["_radioId", ""]];
 
 private _success = false;
 
-if (_radioId == "") then { _radioId = _gsa getVariable [QGVAR(connectedRadio), ""]; };
+if (_radioId == "") then {
+    _radioId = _gsa getVariable [QGVAR(connectedRadio), ""];
+};
 if (_radioId isEqualTo "") exitWith {
     ERROR_3("Empty unique radio ID %1:%2:%3",_gsa,_unit,_radioId);
     _success
