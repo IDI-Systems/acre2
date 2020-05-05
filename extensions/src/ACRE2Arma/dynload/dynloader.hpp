@@ -103,7 +103,7 @@ namespace acre {
 #ifdef _WIN64
             func_rvCallback = (RVExtensionRegisterCallback)GetProcAddress(dllHandle, "RVExtensionRegisterCallback");
 #else
-            func_rvCallback = (RVExtensionRegisterCallback)GetProcAddress(dllHandle, "???");
+            func_rvCallback = (RVExtensionRegisterCallback)GetProcAddress(dllHandle, "_RVExtensionRegisterCallback@4");
 #endif
             if (!func_rvCallback) {
                 LOG(INFO) << "-Extension does not support RVExtensionRegisterCallback, e=" << GetLastError() << " [" << args_.as_string(0) << "]";
