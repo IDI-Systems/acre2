@@ -39,7 +39,7 @@ void mumble_onChannelEntered(mumble_connection_t connection, mumble_userid_t use
                 // Unmute clients in the current channel. Not Supported in mumble.
                 // ts3Functions.requestUnmuteClients(serverConnectionHandlerID, clientsInChannel, NULL);
             }
-            mumAPI.freeMemory(pluginID, clientsInChannel);
+            mumAPI.freeMemory(pluginID, (void *) &clientsInChannel);
         } else {
             //Only unmute joining user when not current client.
             mumble_userid_t clientIDArray[2]; // List of clients to unmute.

@@ -9,7 +9,7 @@
 
 class IServer {
 public:
-    virtual ~IServer(){}
+    virtual ~IServer() = default;
     
     virtual acre::Result initialize(void) = 0;
     virtual acre::Result shutdown(void) = 0;

@@ -15,12 +15,9 @@ bool mumble_onReceiveData(mumble_connection_t connection, mumble_userid_t sender
     const char* dataID) {
     //LOG("[%s], [%s]", pluginName, pluginCommand);
 
-    if (dataLength > 0U) {
-        // this we pass to a custom TS3 IServer to handle the damn messages
-        if (CEngine::getInstance()->getExternalServer()) {
-            CEngine::getInstance()->getExternalServer()->handleMessage((unsigned char *)data, dataLength);
-            return true;
-        }
+    if ((dataLength > 0U) &&  CEngine::getInstance()->getExternalServer()) {
+        CEngine::getInstance()->getExternalServer()->handleMessage((unsigned char *)data, dataLength);
+        return true;
     }
     return false;
 }

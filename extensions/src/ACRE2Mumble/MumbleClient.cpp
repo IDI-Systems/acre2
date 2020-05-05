@@ -128,14 +128,12 @@ acre::Result CMumbleClient::setClientMetadata(const char *const data) {
 
 bool CMumbleClient::getVAD() {
     transmission_mode_t transmitMode;
-    mumble_error_t err = mumAPI.getLocalUserTransmissionMode(pluginID, &transmitMode);
+    const mumble_error_t err = mumAPI.getLocalUserTransmissionMode(pluginID, &transmitMode);
     if (err != ErrorCode::EC_OK) {
         return false;
     }
-    if (transmitMode == TransmissionMode::TM_VOICE_ACTIVATION) {
-        return true;
-    }
-    return false;
+
+    return transmitMode == TransmissionMode::TM_VOICE_ACTIVATION;
 }
 
 acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType_) {
@@ -242,7 +240,7 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
 }
 
 acre::Result CMumbleClient::enableMicrophone(const bool status_) {
-
+    (void)status_;
     return acre::Result::ok;
 }
 
@@ -256,13 +254,9 @@ std::string CMumbleClient::getUniqueId( ) {
 }
 
 std::string CMumbleClient::getConfigFilePath(void) {
-    char tempPath[MAX_PATH - 14];
-
     std::string tempFolder = ".\\acre";
-    if (!PathFileExistsA(tempFolder.c_str())) {
-        if (!CreateDirectoryA(tempFolder.c_str(), nullptr)) {
-            LOG("ERROR: UNABLE TO CREATE TEMP DIR");
-        }
+    if (!PathFileExistsA(tempFolder.c_str()) && !CreateDirectoryA(tempFolder.c_str(), nullptr)) {
+        LOG("ERROR: UNABLE TO CREATE TEMP DIR");
     }
 
     return tempFolder;
@@ -272,27 +266,24 @@ std::string CMumbleClient::getTempFilePath( void ) {
     char tempPath[MAX_PATH - 14];
     GetTempPathA(sizeof(tempPath), tempPath);
     std::string tempFolder = std::string(tempPath);
-    tempFolder += "\\acre";
-    if (!PathFileExistsA(tempFolder.c_str())) {
-        if (!CreateDirectoryA(tempFolder.c_str(), nullptr)) {
-            LOG("ERROR: UNABLE TO CREATE TEMP DIR");
-        }
+    tempFolder.append("\\acre");
+    if (!PathFileExistsA(tempFolder.c_str()) && !CreateDirectoryA(tempFolder.c_str(), nullptr)) {
+        LOG("ERROR: UNABLE TO CREATE TEMP DIR");
     }
 
     return tempFolder;
 }
 
 acre::Result CMumbleClient::microphoneOpen(bool status_) {
-    mumble_error_t res;
     if (status_) {
-        res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, true);
+        const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, true);
         if (res != ErrorCode::EC_OK) {
             LOG("Error toggling PTT Open\n");
             return acre::Result::error;
         }
         this->setInputActive(true);
     } else {
-        res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, false);
+        const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, false);
         if (res != ErrorCode::EC_OK) {
             LOG("Error toggling PTT Closed\n");
             return acre::Result::error;
@@ -303,7 +294,6 @@ acre::Result CMumbleClient::microphoneOpen(bool status_) {
 }
 
 acre::Result CMumbleClient::unMuteAll( void ) {
-
     return acre::Result::ok;
 }
 
@@ -363,7 +353,7 @@ acre::Result CMumbleClient::moveToPreviousChannel() {
 
 uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
     
-    mumble_channelid_t*channelList;
+    mumble_channelid_t*channelList = nullptr;
     std::size_t channelCount = 0U;
     //if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
     if (mumAPI.getAllChannels(pluginID, activeConnection, &channelList, &channelCount) == STATUS_OK) {
@@ -390,7 +380,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             }
         }
 
-        mumAPI.freeMemory(pluginID, channelList);
+        mumAPI.freeMemory(pluginID, (void *) &channelList);
 
         mumble_channelid_t bestChannelId = INVALID_MUMBLE_CHANNEL;
         int32_t bestMatches = 0;
