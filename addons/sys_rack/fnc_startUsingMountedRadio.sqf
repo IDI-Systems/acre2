@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * ["ACRE_PRC152_ID_1"] call acre_sys_rack_fnc_stopUsingMountedRadio
+ * ["ACRE_PRC152_ID_1"] call acre_sys_rack_fnc_startUsingMountedRadio
  *
  * Public: No
  */

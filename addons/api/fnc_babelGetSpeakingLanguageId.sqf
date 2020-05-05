@@ -10,7 +10,7 @@
  * Language ID <STRING>
  *
  * Example:
- * [] call acre_api_fnc_babelSetSpeakingLanguageId;
+ * [] call acre_api_fnc_babelGetSpeakingLanguageId;
  *
  * Public: Yes
  */

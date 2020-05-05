@@ -24,6 +24,7 @@
             <Chinese>ACRE2 - 音量控制</Chinese>
             <French>ACRE2 - Réglage du volume</French>
             <Chinesesimp>ACRE2 - 音量控制</Chinesesimp>
+            <Portuguese>ACRE2 - Controle de Volume</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
@@ -33,6 +34,7 @@
             <Chinese>顯示妳目前說話的音量</Chinese>
             <French>Indique le niveau actuel du volume de la voix.</French>
             <Chinesesimp>显示你目前说话的音量</Chinesesimp>
+            <Portuguese>Indica o volume atual da comunicação direta.</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>
@@ -45,6 +47,7 @@
             <French>ACRE2 - Informations véhicule</French>
             <German>ACRE2 - Fahrzeuginformation</German>
             <Russian>ACRE2 - информация о технике</Russian>
+            <Portuguese>ACRE2 - Informação do veículo</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_Description">
             <English>Status on available Intercoms and Racks in the vehicle.</English>
@@ -57,6 +60,7 @@
             <French>Statut des interphones et des racks disponibles dans le véhicule.</French>
             <German>Informationen bezüglich verfügbarer Interkommunikations- oder Festfunkgeräte.</German>
             <Russian>Состояние на доступных Интеркомах и Подставках в технике</Russian>
+            <Portuguese>Situação da intercomunicação e raques disponíveis no veículo</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_DisplayName">
             <English>Volume Color Scale</English>
@@ -65,6 +69,7 @@
             <Chinese>音量界面顏色化</Chinese>
             <French>Volume - Gamme de couleurs</French>
             <Chinesesimp>音量界面颜色化</Chinesesimp>
+            <Portuguese>Volume: Gama de cores</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
             <English>Color scale used by the Volume Control UI.</English>
@@ -73,6 +78,7 @@
             <Chinese>在音量控制界面以顏色作為音量等級區分</Chinese>
             <French>Gamme de couleurs utilisée pour l'interface de contrôle du volume.</French>
             <Chinesesimp>在音量控制界面以颜色作为音量等级区分</Chinesesimp>
+            <Portuguese>Gama de cores usadas na IU de controle do volume </Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
             <English>Yellow, Orange, Red</English>
@@ -81,6 +87,7 @@
             <Chinese>黃，橘，紅</Chinese>
             <French>Jaune, Orange, Rouge</French>
             <Chinesesimp>黄，橘，红</Chinesesimp>
+            <Portuguese>Amarelo, laranja e vermelho</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
             <English>Green, Orange, Red</English>
@@ -89,6 +96,7 @@
             <Chinese>綠，橘，紅</Chinese>
             <French>Vert, Orange, Rouge</French>
             <Chinesesimp>绿，橘，红</Chinesesimp>
+            <Portuguese>Verde, laranja e vermelho</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
             <English>Blue, Magenta, Red</English>
@@ -97,6 +105,7 @@
             <Chinese>藍，洋紅色，紅色</Chinese>
             <French>Bleu, Magenta, Rouge</French>
             <Chinesesimp>蓝，洋红，红</Chinesesimp>
+            <Portuguese>Azul, magenta e vermelho</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gui_Open">
             <English>Open</English>

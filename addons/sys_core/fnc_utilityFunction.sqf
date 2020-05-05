@@ -18,7 +18,7 @@
 DFUNC(utilityFuncPFH) = {
     ["setVoiceCurveModel", format["%1,%2,", ACRE_VOICE_CURVE_MODEL, ACRE_VOICE_CURVE_SCALE]] call EFUNC(sys_rpc,callRemoteProcedure);
 };
-ADDPFH(DFUNC(utilityFuncPFH), 5, []);
+[DFUNC(utilityFuncPFH), 5, []] call CBA_fnc_addPerFrameHandler;
 
 [] call FUNC(aliveMonitor);
 
@@ -27,4 +27,4 @@ DFUNC(getPluginVersion) = {
     ["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
 };
 ["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
-ADDPFH(DFUNC(getPluginVersion), 15, []);
+[DFUNC(getPluginVersion), 15, []] call CBA_fnc_addPerFrameHandler;

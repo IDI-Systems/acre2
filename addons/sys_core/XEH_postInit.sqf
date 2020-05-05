@@ -131,7 +131,7 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
 
 
 // Check whether ACRE2 is fully loaded
-ADDPFH(DFUNC(coreInitPFH), 0, []);
+[DFUNC(coreInitPFH), 0, []] call CBA_fnc_addPerFrameHandler;
 
 //Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_INTERCOM = [];

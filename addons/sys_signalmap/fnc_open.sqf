@@ -24,6 +24,6 @@ if (isNil QGVAR(startDrawing)) then {
         _mapCtrl ctrlAddEventHandler ["Draw", {call DFUNC(drawSignalSamples)}];
     };
     GVAR(startDrawing) = true;
-    [{_this call FUNC(drawSignalMaps)}, 0, []] call cba_fnc_addPerFrameHandler;
+    [{_this call FUNC(drawSignalMaps)}, 0, []] call CBA_fnc_addPerFrameHandler;
 };
 [] call FUNC(drawMenu);

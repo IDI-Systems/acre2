@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_core_fnc_monitorRadiosPFH
+ * [] call acre_sys_radio_fnc_monitorRadiosPFH
  *
  * Public: No
  */

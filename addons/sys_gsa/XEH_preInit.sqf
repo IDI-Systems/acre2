@@ -7,8 +7,11 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 if (hasInterface) then {
-    GVAR(gsaPFH) = [] call CBA_fnc_hashCreate;
     GVAR(initializedAntennas) = [];
+};
+
+if (isServer) then {
+    GVAR(gsaPFH) = [] call CBA_fnc_hashCreate;
 };
 
 ADDON = true;

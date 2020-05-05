@@ -44,7 +44,7 @@ DFUNC(pingFunc) = {
 
 GVAR(pongTime) = diag_tickTime;
 [{!isNull player}, {
-    ADDPFH(DFUNC(pingFunc), 2, []);
+    [DFUNC(pingFunc), 2, []] call CBA_fnc_addPerFrameHandler;
 }] call CBA_fnc_waitUntilAndExecute;
 
 true

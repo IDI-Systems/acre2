@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 
-ADDPFH(FUNC(externalRadioPFH), 0.91, []);
+[FUNC(externalRadioPFH), 0.91, []] call CBA_fnc_addPerFrameHandler;
 
 if (!hasInterface) exitWith {};
 

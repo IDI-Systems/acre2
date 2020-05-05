@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_gsa_fnc_initGsa
+ * [cursorTarget] call acre_sys_gsa_fnc_handleMast
  *
  * Public: No
  */

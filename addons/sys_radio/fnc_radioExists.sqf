@@ -10,7 +10,7 @@
  * Radio exists? <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_radio_fnc_radioExits
+ * [ARGUMENTS] call acre_sys_radio_fnc_radioExists
  *
  * Public: No
  */

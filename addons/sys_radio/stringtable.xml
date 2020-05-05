@@ -9,7 +9,7 @@
             <Chinese>[ACRE] 無線電箱</Chinese>
             <Chinesesimp>[ACRE] 无线电箱</Chinesesimp>
             <Korean>[ACRE] 무전기 보급 상자</Korean>
-            <Portuguese>[ACRE] Radio Supply Crate</Portuguese>
+            <Portuguese>[ACRE] Caixa de Provisionamento de Rádios</Portuguese>
             <Polish>[ACRE] Skrzynia z radiami</Polish>
             <Italian>[ACRE] Cassa Radio</Italian>
             <Spanish>[ACRE] Cajas con radios</Spanish>
@@ -36,7 +36,7 @@
             <Chinese>無法從這個位置碰到無線電架。</Chinese>
             <Chinesesimp>无法从这个位置碰到无线电架。</Chinesesimp>
             <Korean>이 위치에서 무전기 선반에 닿지 않습니다.</Korean>
-            <Portuguese>Não é possível alcançar o suporte de rádio desta posição.</Portuguese>
+            <Portuguese>Não é possível alcançar o raque de rádio desta posição.</Portuguese>
             <Polish>Nie można dosięgnąć szafy radiowej z tej pozycji.</Polish>
             <Italian>Il rack non puo' essere raggiunto da questa posizione</Italian>
             <Spanish>No se puede acceder a la rack desde esta posición</Spanish>
@@ -50,7 +50,7 @@
             <Chinese>無線電無法從這個座位進行設定。</Chinese>
             <Chinesesimp>无线电无法从这个座位进行设定。</Chinesesimp>
             <Korean>이 좌석에서 설정 할 수 없는 무전기 선반.</Korean>
-            <Portuguese>O rack de rádio não é acessível para a configuração deste assento.</Portuguese>
+            <Portuguese>O raque de rádio não é acessível para a configuração deste assento.</Portuguese>
             <Polish>Nie można konfigurować szafy radiowej z tego siedzenia.</Polish>
             <Italian>Il rack non puo' essere configurato da questo sedile</Italian>
             <Spanish>La radio no se puede configurar desde esta posición</Spanish>
@@ -78,7 +78,7 @@
             <Chinese>使用對講機時停用無線電發送功能。</Chinese>
             <Chinesesimp>使用对讲机时停用无线电发送功能。</Chinesesimp>
             <Korean>인터콤의 송신을 위해 무전기 선반을 사용 할 수 없습니다.</Korean>
-            <Portuguese>Suporte de rádio desabilitado para transmissão no intercom.</Portuguese>
+            <Portuguese>Raque de rádio desabilitado para transmissão no intercom.</Portuguese>
             <Italian>Rack disabilitato per trasmissione in intercom.</Italian>
             <Spanish>Rack deshabilitada para transmitir por intercom.</Spanish>
             <French>Rack radio désactivé pour la transmission en interphonie.</French>
@@ -120,6 +120,7 @@
             <French>Caisse de base ACRE</French>
             <Chinese>ACRE 基本物資箱</Chinese>
             <Chinesesimp>ACRE 基本物资箱</Chinesesimp>
+            <Portuguese>Caixa-base ACRE</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_allRadioCrate">
             <English>All Radio Crate</English>
@@ -130,6 +131,7 @@
             <French>Caisse toutes radios ACRE</French>
             <Chinese>全無線電機種供給箱</Chinese>
             <Chinesesimp>全无线电种类供给箱</Chinesesimp>
+            <Portuguese>Caixa de todos os rádios ACRE</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_radioSetTo">
             <English>Radio set to %1</English>
@@ -140,6 +142,7 @@
             <French>Radio réglée sur %1.</French>
             <Chinese>設定無線電為 %1</Chinese>
             <Chinesesimp>设定无线电为1%</Chinesesimp>
+            <Portuguese>Rádio configurado a %1</Portuguese>
         </Key>
     </Package>
 </Project>

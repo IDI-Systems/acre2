@@ -12,7 +12,7 @@
  * Array of actions <ARRAY>
  *
  * Example:
- * [acre_player, "", ["", "", "", "LEFT"]] call acre_ace_interact_fnc_externalRadioVehicleListChildrenActions
+ * [acre_player, "", ["", "", "", "LEFT"]] call acre_ace_interact_fnc_generateSpatialChildrenActions
  *
  * Public: No
  */
