@@ -17,7 +17,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_external_externalRadioPFH
+ * [] call acre_sys_external_fnc_externalRadioPFH
  *
  * Public: No
  */
