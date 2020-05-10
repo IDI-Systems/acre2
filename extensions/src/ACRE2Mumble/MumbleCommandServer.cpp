@@ -35,10 +35,27 @@ acre::Result CMumbleCommandServer::sendMessage(IMessage *msg){
     mumble_userid_t* channelUsers;
     size_t userCount;
     mumble_channelid_t currentChannel;
-    mumAPI.getChannelOfUser(pluginID, activeConnection, CEngine::getInstance()->getSelf()->getId(), &currentChannel);
-    mumAPI.getUsersInChannel(pluginID, activeConnection, currentChannel, &channelUsers, &userCount);
-    mumAPI.sendData(pluginID, activeConnection, channelUsers, userCount, (const char*)msg->getData(), msg->getLength(), "ACRE2");
-    mumAPI.freeMemory(pluginID, (void *)&channelUsers);
+    mumble_error_t err;
+    err = mumAPI.getChannelOfUser(pluginID, activeConnection, this->getId(), &currentChannel);
+    if (err != ErrorCode::EC_OK) {
+        LOG("ERROR, UNABLE TO GET CHANNEL OF USER: %d", err);
+        return acre::Result::error;
+    }
+    err = mumAPI.getUsersInChannel(pluginID, activeConnection, currentChannel, &channelUsers, &userCount);
+    if (err != ErrorCode::EC_OK) {
+        LOG("ERROR, UNABLE TO GET USERS IN CHANNEL: %d", err);
+        return acre::Result::error;
+    }
+    err = mumAPI.sendData(pluginID, activeConnection, channelUsers, userCount, (const char*)msg->getData(), msg->getLength(), "ACRE2");
+    if (err != ErrorCode::EC_OK) {
+        LOG("ERROR, UNABLE TO SEND MESSAGE DATA: %d", err);
+        return acre::Result::error;
+    }
+    err = mumAPI.freeMemory(pluginID, (void *)channelUsers);
+    if (err != ErrorCode::EC_OK) {
+        LOG("ERROR, UNABLE TO FREE CHANNEL USER LIST: %d", err);
+        return acre::Result::error;
+    }
 
     delete msg;
 

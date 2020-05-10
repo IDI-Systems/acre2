@@ -21,4 +21,6 @@ version_t mumble_getAPIVersion() {
     return MUMBLE_PLUGIN_API_VERSION;
 }
 
-
+version_t mumble_getVersion() {
+    return version_t{ ACRE_VERSION_MAJOR, ACRE_VERSION_MINOR, ACRE_VERSION_SUBMINOR };
+}

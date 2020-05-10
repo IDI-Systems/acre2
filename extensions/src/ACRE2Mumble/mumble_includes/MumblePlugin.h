@@ -34,8 +34,9 @@ extern "C" {
 	
 	/// Gets called right after loading the plugin in order to let the plugin initialize.
 	///
+	/// @param connection The ID of the server-connection this event is connected to, or its default value.
 	/// @returns The status of the initialization. If everything went fine, return STATUS_OK
-	PLUGIN_EXPORT mumble_error_t PLUGIN_CALLING_CONVENTION mumble_init();
+	PLUGIN_EXPORT mumble_error_t PLUGIN_CALLING_CONVENTION mumble_init(mumble_connection_t connection);
 	
 	/// Gets called when unloading the plugin in order to allow it to clean up after itself.
 	PLUGIN_EXPORT void PLUGIN_CALLING_CONVENTION mumble_shutdown();

@@ -49,10 +49,10 @@ bool mumble_onAudioSourceFetched(float* outputPCM, uint32_t sampleCount, uint16_
     for (int c = 0; c <= mixdownSampleLength - 1; ++c) {
         float mixedSample;
         if (mixdownSamples[c] > 0) {
-            mixedSample = static_cast<float>(mixdownSamples[c] * LIMITER::max());
+            mixedSample = static_cast<float>(mixdownSamples[c]) / LIMITER::max();
         }
         else {
-            mixedSample = -static_cast<float>(mixdownSamples[c] * LIMITER::min());
+            mixedSample = -static_cast<float>(mixdownSamples[c]) / LIMITER::min();
         }
         outputPCM[c] = mixedSample;
     }
@@ -92,10 +92,10 @@ bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uin
     for (int c = 0; c <= mixdownSampleLength - 1; ++c) {
         float mixedSample;
         if (mixdownSamples[c] > 0) {
-            mixedSample = static_cast<float>(mixdownSamples[c] * LIMITER::max());
+            mixedSample = static_cast<float>(mixdownSamples[c]) / LIMITER::max();
         }
         else {
-            mixedSample = -static_cast<float>(mixdownSamples[c] * LIMITER::min());
+            mixedSample = -static_cast<float>(mixdownSamples[c]) / LIMITER::min();
         }
         outputPCM[c] = mixedSample;
     }

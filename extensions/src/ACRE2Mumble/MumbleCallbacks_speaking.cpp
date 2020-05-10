@@ -14,7 +14,7 @@
 // TS3  Speaking callbacks
 // 
 void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_userid_t userID, talking_state_t status) {
-
+    LOG("mumble_onUserTalkingStateChanged ENTER: %d", status);
     if (static_cast<acre::id_t>(userID) != CEngine::getInstance()->getSelf()->getId()) {
         return;
     } else if (CEngine::getInstance()->getClient()->getState() != acre::State::running) {
@@ -37,7 +37,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
             if (status != TalkingState::PASSIVE && status != TalkingState::INVALID) {
                 if (!CEngine::getInstance()->getClient()->getRadioPTTDown()) {
                     CEngine::getInstance()->getClient()->setOnRadio(false);
-                } else {
+                } /*else {
                     if (!CEngine::getInstance()->getClient()->getDirectFirst()) {
                         CEngine::getInstance()->getClient()->microphoneOpen(true);
                     } else {
@@ -46,7 +46,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
                             CEngine::getInstance()->getClient()->microphoneOpen(true);
                         }
                     }
-                }
+                }*/
             }
             return;
         }
