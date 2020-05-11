@@ -88,7 +88,7 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+    private _desc = format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"name",_desc);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
@@ -133,7 +133,7 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+    private _desc = format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"name",_desc);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);
@@ -178,7 +178,7 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"power",20000);
     HASH_SET(_channel,"encryption",0);
     HASH_SET(_channel,"channelMode", "BASIC");
-    private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
+    private _desc = format["NET%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"name",_desc);
     HASH_SET(_channel,"CTCSSTx", 250.3);
     HASH_SET(_channel,"CTCSSRx", 250.3);

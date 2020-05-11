@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * ["ACRE_PRC343_ID_1", cursorTarget] call acre_sys_external_stopUsingExternalRadio
+ * ["ACRE_PRC343_ID_1", cursorTarget] call acre_sys_external_fnc_stopUsingExternalRadio
  *
  * Public: No
  */

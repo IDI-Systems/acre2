@@ -10,7 +10,7 @@
  * Radio is being externally used <BOOL>
  *
  * Example:
- * ["ACRE_PRC343_ID_1"] call acre_sys_external_isExternalRadioUsed
+ * ["ACRE_PRC343_ID_1"] call acre_sys_external_fnc_isExternalRadioUsed
  *
  * Public: No
  */

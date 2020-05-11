@@ -10,7 +10,7 @@
  * Radio owner (objNull if not in external use) <OBJECT>
  *
  * Example:
- * ["ACRE_PRC343_ID_1"] call acre_sys_external_getExternalRadioOwner
+ * ["ACRE_PRC343_ID_1"] call acre_sys_external_fnc_getExternalRadioOwner
  *
  * Public: No
  */
