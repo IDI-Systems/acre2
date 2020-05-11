@@ -21,6 +21,12 @@ public:
 
     acre::Result sendMessage(IMessage *msg);
     acre::Result handleMessage(unsigned char *msg);
+    acre::Result handleMessage(unsigned char* msg, size_t length) override {
+        (void)msg;
+        (void)length;
+
+        return acre::Result::notImplemented;
+    }
 
     acre::Result release(void);
 
@@ -31,7 +37,7 @@ public:
     inline bool getConnected() const final { return m_connected; }
 
     inline void setId(const acre::id_t value) final { m_id = value; }
-    inline acre::id_t getId() const final { return m_id; }
+    inline acre::id_t getId() const final { return m_id; }    
 
 protected:
     acre::id_t m_id;

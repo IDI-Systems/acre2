@@ -100,13 +100,13 @@ void mumble_onServerSynchronized(mumble_connection_t connection) {
 void mumble_onServerDisconnected(mumble_connection_t connection) {
     activeConnection = -1;
 
-    if (CEngine::getInstance()->getClient()->getState() != acre::State::stopped && CEngine::getInstance()->getClient()->getState() != acre::State::stopping) {
+    if ((CEngine::getInstance()->getClient()->getState() != acre::State::stopped) && (CEngine::getInstance()->getClient()->getState() != acre::State::stopping)) {
         CEngine::getInstance()->getClient()->stop();
     }
 }
 
 void mumble_shutdown() {
-    if (CEngine::getInstance()->getClient()->getState() != acre::State::stopped && CEngine::getInstance()->getClient()->getState() != acre::State::stopping) {
+    if ((CEngine::getInstance()->getClient()->getState() != acre::State::stopped) && (CEngine::getInstance()->getClient()->getState() != acre::State::stopping)) {
         CEngine::getInstance()->getClient()->stop();
     }
     CEngine::getInstance()->stop();

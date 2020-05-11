@@ -32,8 +32,8 @@ acre::Result CMumbleCommandServer::sendMessage(IMessage *msg){
         (const char*)msg->getData(),
         PluginCommandTarget_CURRENT_CHANNEL, NULL, NULL);
         */
-    mumble_userid_t* channelUsers;
-    size_t userCount;
+    mumble_userid_t* channelUsers = nullptr;
+    size_t userCount = 0U;
     mumble_channelid_t currentChannel;
     mumble_error_t err;
     err = mumAPI.getChannelOfUser(pluginID, activeConnection, this->getId(), &currentChannel);
@@ -69,9 +69,9 @@ acre::Result CMumbleCommandServer::handleMessage(unsigned char* data) {
 }
 
 acre::Result CMumbleCommandServer::handleMessage(unsigned char* data, size_t length) {
-    CTextMessage* msg;
+    CTextMessage* msg = nullptr;
     //TRACE("recv: [%s]", data);
-    msg = new CTextMessage((char*)data, length);
+    msg = new (std::nothrow) CTextMessage((char*)data, length);
     if (CEngine::getInstance()->getRpcEngine() && (msg != nullptr)) {
         CEngine::getInstance()->getRpcEngine()->runProcedure((IServer*)this, (IMessage*)msg);
     }
@@ -90,10 +90,8 @@ acre::Result CMumbleCommandServer::release(void) {
 CMumbleCommandServer::CMumbleCommandServer(const acre::id_t id) {
     this->setId(id);
 }
+
 CMumbleCommandServer::CMumbleCommandServer(void) {
     this->setCommandId(0);
     this->setConnected(true);
-}
-CMumbleCommandServer::~CMumbleCommandServer() {
-    
 }
