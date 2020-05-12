@@ -44,7 +44,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
         if (CEngine::getInstance()->getClient()->getVAD()) {
             return;
         } else {
-            if (status != TalkingState::PASSIVE && status != TalkingState::INVALID) {
+            if (status == TalkingState::PASSIVE || status == TalkingState::INVALID) {
                 if (!CEngine::getInstance()->getClient()->getRadioPTTDown()) {
                     CEngine::getInstance()->getClient()->setOnRadio(false);
                 }

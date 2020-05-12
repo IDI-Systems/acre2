@@ -44,7 +44,14 @@ bool mumble_onAudioSourceFetched(float* outputPCM, uint32_t sampleCount, uint16_
     //}
 
     for (std::int32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
-        mixdownSamples[c] = static_cast<int16_t>(outputPCM[c] / LIMITER::max());
+        float sample = outputPCM[c];
+        if (sample > 1.0) {
+            sample = 1.0;
+        }
+        else if (sample < -1.0) {
+            sample = -1.0;
+        }
+        mixdownSamples[c] = static_cast<short>(sample * LIMITER::max());
     }
 
     CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent(static_cast<acre::id_t>(userID), mixdownSamples, sampleCount, channelCount);
@@ -91,7 +98,14 @@ bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uin
     //}
 
     for (int32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
-        mixdownSamples[c] = static_cast<short>(outputPCM[c] / LIMITER::max());
+        float sample = outputPCM[c];
+        if (sample > 1.0) {
+            sample = 1.0;
+        }
+        else if (sample < -1.0) {
+            sample = -1.0;
+        }
+        mixdownSamples[c] = static_cast<short>(sample * LIMITER::max());
     }
 
     CEngine::getInstance()->getSoundEngine()->onEditMixedPlaybackVoiceDataEvent(mixdownSamples, sampleCount, channelCount, speakerMask);
