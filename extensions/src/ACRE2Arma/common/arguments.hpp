@@ -45,7 +45,7 @@ namespace acre {
                 _args[i] = trim(_args[i]);
             }
         }
-        arguments(const char** argv, int argc) : _internal_index(0) {
+        arguments(const char** argv, std::int32_t argc) : _internal_index(0) {
             for (std::int32_t i = 0; i < argc; i++) {
                 std::string arg_string(argv[i]);
                 if (arg_string.size() > 2 && arg_string.at(0) == '\"' && arg_string.at(arg_string.size() - 1) == '\"') {

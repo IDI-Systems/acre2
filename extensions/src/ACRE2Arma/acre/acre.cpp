@@ -106,9 +106,9 @@ int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function
     if (command != "process_signal") { EXTENSION_RETURN_VALUE(-3); } // only supported command for now
 
     std::string result_string;
-    std::int32_t result_code = -4;
+    std::int32_t result_code = 0;
 
-    acre::controller::get().call(command, _args, result_string, result_code, TRUE);
+    acre::controller::get().call(command, _args, result_string, result_code, true);
     if (!result_string.empty()) {
         sprintf_s(output, outputSize, "%s", result_string.c_str());
     }

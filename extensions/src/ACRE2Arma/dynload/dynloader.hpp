@@ -170,7 +170,8 @@ namespace acre {
             return true;
         }
 
-        bool callRVArgs(const arguments & args_, std::string & result_string, int & result_code) {
+        bool callRVArgs(const arguments & args_, std::string & result_string, std::int32_t & result_code) {
+            if (args_.size() < 2) { return false; } // callExtension ["calla", ["a.dll", "func", ...]]
             std::string extension_file = args_.as_string(0);
             if (_modules.find(extension_file) == _modules.end()) {
                 LOG(WARNING) << "callRVArgs could not find module [" << extension_file << "]";
@@ -185,7 +186,7 @@ namespace acre {
 
             std::string function = args_.as_string(1);
             std::vector<const char*> cstrings;
-            for (int i = 2; i < args_.size(); i++) {
+            for (std::uint32_t i = 2; i < args_.size(); i++) {
                 cstrings.push_back(args_.as_string(i).c_str());
             }
 

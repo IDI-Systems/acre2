@@ -83,13 +83,17 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
 int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** argv, int argc) {
     ZERO_OUTPUT();
-    if (argc < 2) { EXTENSION_RETURN_VALUE(-2); } // callExtension ["calla", ["extension.dll", "func", ...]]
 
     std::string command(function);
     acre::arguments _args(argv, argc);
 
     std::string result_string = "-1a";
-    int result_code = -1;
+    int32_t result_code = -1;
+
+    if (command == "echo") {
+        result_string = _args.to_string();
+        result_code = static_cast<int>(_args.size());
+    }
 
     //LOG(INFO) << "RVExtensionArgs [" << function << " - " << _args.to_string() << "]";
 

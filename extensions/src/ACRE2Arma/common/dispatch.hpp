@@ -42,7 +42,7 @@ namespace acre {
             return _methods[name_](args_, result_string_, result_code_);
         }
 
-        bool add(const std::string & name_, std::function<bool(arguments &, std::string &, int &)> func_) {
+        bool add(const std::string & name_, std::function<bool(arguments &, std::string &, std::int32_t &)> func_) {
             if (_methods.find(name_) != _methods.end()) {
                 // @TODO: Exceptions
                 return false;
@@ -55,7 +55,7 @@ namespace acre {
         bool ready() const { return _ready;  }
         void ready(bool r) { _ready.exchange(r); }
     protected:
-        std::unordered_map < std::string, std::function<bool(arguments &, std::string &, int &)> > _methods;
+        std::unordered_map < std::string, std::function<bool(arguments &, std::string &, std::int32_t &)> > _methods;
         std::atomic_bool _ready;
     };
 
@@ -75,7 +75,7 @@ namespace acre {
         }
         ~threaded_dispatcher() {}
 
-        bool call(const std::string & name_, arguments & args_, std::string & result_string_, int & result_code_, bool threaded) {
+        bool call(const std::string & name_, arguments & args_, std::string & result_string_, std::int32_t & result_code_, bool threaded) {
             if (_methods.find(name_) == _methods.end()) {
                 // @TODO: Exceptions
                 return false;
@@ -88,7 +88,7 @@ namespace acre {
                 std::stringstream ss;
                 ss << "[\"result_id\", " << _message_id << "]";
                 result_string_ = ss.str();
-                result_code_ = static_cast<int>(_message_id++);
+                result_code_ = static_cast<std::int32_t>(_message_id++);
             } else {
 #ifdef _DEBUG
                     LOG(TRACE) << "dispatch[immediate]:\t[" << name_ << "] { " << args_.to_string() << " }";
@@ -98,7 +98,7 @@ namespace acre {
 
             return true;
         }
-        bool call(const std::string & name_, arguments & args_, std::string & result_string_, int & result_code_) override {
+        bool call(const std::string & name_, arguments & args_, std::string & result_string_, std::int32_t & result_code_) override {
             return call(name_, args_, result_string_, result_code_, false);
         }
 
@@ -137,19 +137,19 @@ namespace acre {
                             }
 #endif
                         std::string result_message;
-                        std::int32_t result_code = -1;
-                        dispatcher::call(_message.command, _message.args, result_message, result_code);
+                        std::int32_t result_dummy = 0;
+                        dispatcher::call(_message.command, _message.args, result_message, result_dummy);
                         std::stringstream ss;
                         ss << "[" << _message.id << ",[" << result_message << "]]";
 
                         bool callback_recieved = false; // call back buffer can only hold 100 messages a frame (doubt acre will ever hit this limit)
                         while (!_stop && !callback_recieved) {
-                            int callback_buffer_remaining = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
+                            std::int32_t callback_buffer_remaining = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
                             // LOG(TRACE) << "sending callback [id: " << _message.id << ", buffer: " << callback_buffer_remaining << "]";
                             if (callback_buffer_remaining > -1) {
                                 callback_recieved = true;
                             } else {
-                                sleep(5);
+                                std::this_thread::sleep_for(std::chrono::milliseconds(5));
                             }
                         }
 
