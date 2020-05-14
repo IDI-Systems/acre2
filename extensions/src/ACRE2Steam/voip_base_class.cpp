@@ -17,6 +17,50 @@
 
 using ::idi::acre::VOIP_server;
 
+std::string idi::acre::find_mod_folder() {
+    char module_path[MAX_PATH];
+    GetModuleFileNameA((HINSTANCE)&__ImageBase, module_path, MAX_PATH);
+
+    char drive[_MAX_DRIVE];
+    char dir[_MAX_DIR];
+
+    _splitpath(
+        module_path,
+        drive,
+        dir,
+        NULL,
+        NULL
+    );
+
+    return (std::string(drive) + std::string(dir));
+}
+
+std::string idi::acre::find_mod_file(const std::string& filename) {
+    std::string path = find_mod_folder() + filename;
+    if (!PathFileExistsA(path.c_str())) {
+        // No mod path was set, it means they used the mod config. It *DOES* mean it relative to a folder in our path at least.
+        // So, we just search all the local folders
+
+        WIN32_FIND_DATAA data;
+        std::string path("");
+        HANDLE hFile = FindFirstFileA(path.c_str(), &data);
+
+        if (hFile == INVALID_HANDLE_VALUE)
+            return "";
+
+        while ((FindNextFile(hFile, &data) != 0) || (GetLastError() != ERROR_NO_MORE_FILES)) {
+            if (data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+                const std::string fullpath = std::string(data.cFileName) + filename;
+                if (PathFileExistsA(fullpath.c_str())) {
+                    path = fullpath;
+                    break;
+                }
+            }
+        }
+    }
+    return path;
+}
+
 std::string VOIP_server::read_reg_value(HKEY root_, const std::string &key_, const std::string &name_, const bool use_x64_) noexcept {
     REGSAM sam_key;
 

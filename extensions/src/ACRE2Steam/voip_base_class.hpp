@@ -20,6 +20,12 @@
 
 namespace idi::acre {
 
+    EXTERN_C IMAGE_DOS_HEADER __ImageBase;
+
+    std::string find_mod_folder();
+
+    std::string find_mod_file(const std::string& filename);
+
     enum class Update_code : std::uint8_t { update_not_necessary, update_ok, update_failed, other };
 
     class VOIP_server {
@@ -52,9 +58,8 @@ namespace idi::acre {
         std::string read_reg_value(HKEY root_, const std::string &key_, const std::string &name_, bool use_x64_) noexcept;
 
     protected:
-        bool get_skip_plugin() const noexcept { return skip_plugin; }
 
-        
+        bool get_skip_plugin() const noexcept { return skip_plugin; }
 
         bool compare_file(const std::string &path_a_, const std::string &path_b_) noexcept;
 

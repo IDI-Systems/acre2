@@ -18,7 +18,7 @@ namespace idi::acre {
     class Mumble_plugin final : public VOIP_server {
     public:
         explicit Mumble_plugin(bool skip_plugin_, std::string mumble_path_ = "") noexcept
-            : VOIP_server(skip_plugin_, "SOFTWARE\\Mumble\\Mumble", "plugin/acre2_win32.dll", "plugin/acre2_win64.dll"),
+            : VOIP_server(skip_plugin_, "SOFTWARE\\Mumble\\Mumble", find_mod_file("plugin/mumble/acre2_win32.dll"), find_mod_file("plugin/mumble/acre2_win64.dll")),
               mumble_path(std::move(mumble_path_)) {}
         ~Mumble_plugin() noexcept final = default;
 
