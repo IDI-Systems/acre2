@@ -28,8 +28,8 @@ std::string idi::acre::find_mod_folder() {
         module_path,
         drive,
         dir,
-        NULL,
-        NULL
+        nullptr,
+        nullptr
     );
 
     return (std::string(drive) + std::string(dir));
@@ -37,7 +37,7 @@ std::string idi::acre::find_mod_folder() {
 
 std::string idi::acre::find_mod_file(const std::string& filename) {
     std::string path = find_mod_folder() + filename;
-    if (!PathFileExistsA(path.c_str())) {
+    if (!std::filesystem::exists(path)) {
         // No mod path was set, it means they used the mod config. It *DOES* mean it relative to a folder in our path at least.
         // So, we just search all the local folders
 
@@ -45,13 +45,14 @@ std::string idi::acre::find_mod_file(const std::string& filename) {
         std::string path("");
         HANDLE hFile = FindFirstFileA(path.c_str(), &data);
 
-        if (hFile == INVALID_HANDLE_VALUE)
+        if (hFile == INVALID_HANDLE_VALUE) {
             return "";
+        }
 
         while ((FindNextFile(hFile, &data) != 0) || (GetLastError() != ERROR_NO_MORE_FILES)) {
             if (data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
                 const std::string fullpath = std::string(data.cFileName) + filename;
-                if (PathFileExistsA(fullpath.c_str())) {
+                if (std::filesystem::exists(fullpath)) {
                     path = fullpath;
                     break;
                 }
