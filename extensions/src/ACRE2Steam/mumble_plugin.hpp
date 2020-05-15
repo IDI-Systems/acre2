@@ -6,7 +6,7 @@
  * Mumble auto-plugin copy functionality.
  */
 #pragma once
-#include "voip_base_class.hpp"
+#include "voip_plugin.hpp"
 
 #include <algorithm>
 #include <array>
@@ -15,10 +15,10 @@
 
 
 namespace idi::acre {
-    class Mumble_plugin final : public VOIP_server {
+    class Mumble_plugin final : public VOIPPlugin {
     public:
         explicit Mumble_plugin(bool skip_plugin_, std::string mumble_path_ = "") noexcept
-            : VOIP_server(skip_plugin_, "SOFTWARE\\Mumble\\Mumble", find_mod_file("plugin/mumble/acre2_win32.dll"), find_mod_file("plugin/mumble/acre2_win64.dll")),
+            : VOIPPlugin(skip_plugin_, "SOFTWARE\\Mumble\\Mumble", find_mod_file("plugin/mumble/acre2_win32.dll"), find_mod_file("plugin/mumble/acre2_win64.dll")),
               mumble_path(std::move(mumble_path_)) {}
         ~Mumble_plugin() noexcept final = default;
 

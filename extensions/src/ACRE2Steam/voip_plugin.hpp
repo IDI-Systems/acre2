@@ -26,18 +26,18 @@ namespace idi::acre {
 
     std::string find_mod_file(const std::string& filename);
 
-    enum class Update_code : std::uint8_t { update_not_necessary, update_ok, update_failed, other };
+    enum class UpdateCode : std::uint8_t { update_not_necessary, update_ok, update_failed, other };
 
-    class VOIP_server {
+    class VOIPPlugin {
     public:
-        explicit VOIP_server(bool skip_plugin_,
+        explicit VOIPPlugin(bool skip_plugin_,
           std::string registry_key_,
           const std::string &x32_plugin_path_,
           const std::string &x64_plugin_path_) noexcept
             : skip_plugin(skip_plugin_), registry_key(std::move(registry_key_)), x32_acre_plugin(x32_plugin_path_),
               x64_acre_plugin(x64_plugin_path_) {}
 
-        virtual ~VOIP_server() noexcept = default;
+        virtual ~VOIPPlugin() noexcept = default;
 
         bool check_acre_installation() noexcept;
 
@@ -50,7 +50,7 @@ namespace idi::acre {
 
         virtual bool collect_plugin_locations() noexcept = 0;
 
-        Update_code handle_update_plugin() noexcept;
+        UpdateCode handle_update_plugin() noexcept;
 
         const std::vector<std::string> &get_updated_paths() const noexcept { return updated_paths; }
         const std::vector<std::string> &get_removed_paths() const noexcept { return removed_paths; }

@@ -8,14 +8,14 @@
  * Voice over IP auto-plugin copy functionality.
  */
 
-#include "voip_base_class.hpp"
+#include "voip_plugin.hpp"
 
 #include <algorithm>
 #include <array>
 #include <fstream>
 #include <utility>
 
-using ::idi::acre::VOIP_server;
+using ::idi::acre::VOIPPlugin;
 
 std::string idi::acre::find_mod_folder() {
     char module_path[MAX_PATH];
@@ -62,7 +62,7 @@ std::string idi::acre::find_mod_file(const std::string& filename) {
     return path;
 }
 
-std::string VOIP_server::read_reg_value(HKEY root_, const std::string &key_, const std::string &name_, const bool use_x64_) noexcept {
+std::string VOIPPlugin::read_reg_value(HKEY root_, const std::string &key_, const std::string &name_, const bool use_x64_) noexcept {
     REGSAM sam_key;
 
     if (use_x64_) {
@@ -104,7 +104,7 @@ std::string VOIP_server::read_reg_value(HKEY root_, const std::string &key_, con
     return value;
 }
 
-bool VOIP_server::compare_file(const std::string &path_a_, const std::string &path_b_) noexcept {
+bool VOIPPlugin::compare_file(const std::string &path_a_, const std::string &path_b_) noexcept {
     // Open both files ath the end to check their size
     std::ifstream fileA(path_a_, std::ifstream::ate | std::ifstream::binary);
     std::ifstream fileB(path_b_, std::ifstream::ate | std::ifstream::binary);
@@ -123,13 +123,13 @@ bool VOIP_server::compare_file(const std::string &path_a_, const std::string &pa
     return std::equal(beginA, std::istreambuf_iterator<char>(), beginB);
 }
 
-void VOIP_server::check_plugin_locations(const std::string &app_data_) noexcept {
+void VOIPPlugin::check_plugin_locations(const std::string &app_data_) noexcept {
     if (std::filesystem::exists(app_data_)) {
         plugin_locations.emplace_back(app_data_);
     }
 }
 
-void VOIP_server::check_plugin_locations(const std::string &app_data_, const std::string &root_key_, const HKEY key_) noexcept {
+void VOIPPlugin::check_plugin_locations(const std::string &app_data_, const std::string &root_key_, const HKEY key_) noexcept {
     if (root_key_.empty()) {
         return;
     }
@@ -155,7 +155,7 @@ void VOIP_server::check_plugin_locations(const std::string &app_data_, const std
     }
 }
 
-bool VOIP_server::check_acre_installation() noexcept {
+bool VOIPPlugin::check_acre_installation() noexcept {
     const bool x32_plugin_exist = std::filesystem::exists(x32_acre_plugin);
     const bool x64_plugin_exist = std::filesystem::exists(x64_acre_plugin);
 
@@ -170,12 +170,12 @@ bool VOIP_server::check_acre_installation() noexcept {
     return x32_plugin_exist && x64_plugin_exist;
 }
 
-idi::acre::Update_code VOIP_server::handle_update_plugin() noexcept {
+idi::acre::UpdateCode VOIPPlugin::handle_update_plugin() noexcept {
     if (skip_plugin) {
-        return Update_code::update_not_necessary;
+        return UpdateCode::update_not_necessary;
     }
 
-    Update_code update_status = Update_code::update_not_necessary;
+    UpdateCode update_status = UpdateCode::update_not_necessary;
 
     for (const auto &location : plugin_locations) {
         std::filesystem::path plugin_folder(location + "/plugins");
@@ -185,7 +185,7 @@ idi::acre::Update_code VOIP_server::handle_update_plugin() noexcept {
             last_error_msg.append(err_code.message());
             last_error = err_code;
 
-            return Update_code::other;
+            return UpdateCode::other;
         }
 
         std::array<std::pair<std::filesystem::path, std::filesystem::path>, 2> plugin_paths_array = {
@@ -200,11 +200,11 @@ idi::acre::Update_code VOIP_server::handle_update_plugin() noexcept {
                     last_error_msg.append(err_code.message());
                     last_error = err_code;
 
-                    return Update_code::update_failed;
+                    return UpdateCode::update_failed;
                 }
 
                 updated_paths.emplace_back(location);
-                update_status = Update_code::update_ok;
+                update_status = UpdateCode::update_ok;
             }
         }
     }
@@ -225,11 +225,11 @@ idi::acre::Update_code VOIP_server::handle_update_plugin() noexcept {
                 last_error_msg.append(err_code.message());
                 last_error = err_code;
 
-                return Update_code::update_failed;
+                return UpdateCode::update_failed;
             }
 
             removed_paths.emplace_back(location);
-            update_status = Update_code::update_ok;
+            update_status = UpdateCode::update_ok;
         }
     }
 

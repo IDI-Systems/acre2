@@ -101,7 +101,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     const bool skip_ts_plugin     = skip_ts_plugin_copy();
     const bool skip_mumble_plugin = skip_mumble_plugin_copy();
 
-    idi::acre::TS3_plugin ts3_plugin(skip_ts_plugin);
+    idi::acre::TS3Plugin ts3_plugin(skip_ts_plugin);
     idi::acre::Mumble_plugin mumble_plugin(skip_mumble_plugin, mumble_install_path());
 
     switch (command) {
@@ -161,16 +161,16 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             return;
         }
 
-        const idi::acre::Update_code update_ts3 = ts3_plugin.handle_update_plugin();
+        const idi::acre::UpdateCode update_ts3 = ts3_plugin.handle_update_plugin();
         std::string error_msg;
-        const bool update_ts3_ok = (update_ts3 != idi::acre::Update_code::update_failed) && (update_ts3 != idi::acre::Update_code::other);
+        const bool update_ts3_ok = (update_ts3 != idi::acre::UpdateCode::update_failed) && (update_ts3 != idi::acre::UpdateCode::other);
         if (!update_ts3_ok) {
             error_msg = ts3_plugin.get_last_error_message();
         }
 
-        const idi::acre::Update_code update_mumble = mumble_plugin.handle_update_plugin();
+        const idi::acre::UpdateCode update_mumble = mumble_plugin.handle_update_plugin();
         const bool update_mumble_ok =
-          (update_mumble != idi::acre::Update_code::update_failed) && (update_mumble != idi::acre::Update_code::other);
+          (update_mumble != idi::acre::UpdateCode::update_failed) && (update_mumble != idi::acre::UpdateCode::other);
         if (!update_mumble_ok) {
             error_msg = mumble_plugin.get_last_error_message();
         }
@@ -193,8 +193,8 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
         }
 
         // Update was not necessary.
-        if ((update_ts3 == idi::acre::Update_code::update_not_necessary) &&
-            (update_mumble == idi::acre::Update_code::update_not_necessary)) { // No update was copied etc.
+        if ((update_ts3 == idi::acre::UpdateCode::update_not_necessary) &&
+            (update_mumble == idi::acre::UpdateCode::update_not_necessary)) { // No update was copied etc.
             strncpy(output, "[0]", outputSize);
             return;
         }

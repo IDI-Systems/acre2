@@ -7,7 +7,7 @@
  *
  * TeamSpeak 3 auto-plugin copy functionality.
  */
-#include "voip_base_class.hpp"
+#include "voip_plugin.hpp"
 
 #include <algorithm>
 #include <codecvt>
@@ -15,11 +15,11 @@
 
 
 namespace idi::acre {
-    class TS3_plugin final : public VOIP_server {
+    class TS3Plugin final : public VOIPPlugin {
     public:
-        explicit TS3_plugin(bool skip_plugin_) noexcept
-            : VOIP_server(skip_plugin_, "SOFTWARE\\TeamSpeak 3 Client", find_mod_file("plugin/ts3/acre2_win32.dll"), find_mod_file("plugin/ts3/acre2_win64.dll")) {}
-        ~TS3_plugin() noexcept final = default;
+        explicit TS3Plugin(bool skip_plugin_) noexcept
+            : VOIPPlugin(skip_plugin_, "SOFTWARE\\TeamSpeak 3 Client", find_mod_file("plugin/ts3/acre2_win32.dll"), find_mod_file("plugin/ts3/acre2_win64.dll")) {}
+        ~TS3Plugin() noexcept final = default;
 
         bool collect_plugin_locations() noexcept final {
             if (get_skip_plugin()) {
