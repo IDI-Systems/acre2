@@ -21,7 +21,7 @@ RPC_FUNCTION(setSetting) {
         if (CAcreSettings::getInstance()->getDisableUnmuteClients() != (value != 1)) {
             CAcreSettings::getInstance()->setDisableUnmuteClients(value != 1);
         }
-    } else if (name == "disableChannelSwitch") {
+    } else if (name == "disableTS3ChannelSwitch") {
         if (CAcreSettings::getInstance()->getDisableChannelSwitch() != (value != 1)) {
             CAcreSettings::getInstance()->setDisableChannelSwitch(value != 1);
         }

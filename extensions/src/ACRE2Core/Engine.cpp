@@ -74,7 +74,7 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
     this->getRpcEngine()->addProcedure(new updateSelf());
     this->getRpcEngine()->addProcedure(new setSelectableVoiceCurve());
     this->getRpcEngine()->addProcedure(new setSetting());
-    this->getRpcEngine()->addProcedure(new setChannelDetails());
+    this->getRpcEngine()->addProcedure(new setTs3ChannelDetails());
 
     // Initialize the client, because it never was derp
     this->getClient()->initialize();

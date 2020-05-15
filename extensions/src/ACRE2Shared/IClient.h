@@ -181,7 +181,7 @@ private:
     std::uint64_t previous_channel = 0LU;
 
     std::vector<std::string> channel_details;
-    bool should_switch_channel = false;
+    bool should_switch_channel = true;
 
     acre::State state = acre::State::stopped;
 };
