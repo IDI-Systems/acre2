@@ -7,7 +7,7 @@
 
 #include <sstream>
 
-RPC_FUNCTION(setTs3ChannelDetails) {
+RPC_FUNCTION(setChannelDetails) {
     const  std::vector<std::string> details = {
         std::string((char *)vMessage->getParameter(0)),
         std::string((char *)vMessage->getParameter(1)),

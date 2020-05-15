@@ -56,7 +56,7 @@ DFUNC(connectionFnc) = {
 
                 // Move TeamSpeak 3 channel if already in-game (otherwise display XEH will take care of it)
                 if (!isNull (findDisplay 46)) then {
-                    call FUNC(ts3ChannelMove);
+                    call FUNC(voipChannelMove);
                 };
             };
         };
