@@ -30,24 +30,25 @@ namespace idi::acre {
             if (!mumble_path.empty()) {
                 check_plugin_locations(mumble_path);
             } else {
+                // TODO: 32 bits applications will not recognise FOLDERID_ProgramFilesX64
                 std::array<KNOWNFOLDERID, 2> folder_ids = {FOLDERID_ProgramFilesX86, FOLDERID_ProgramFilesX64};
                 for (const auto folder : folder_ids) {
-                    wchar_t *app_data_roaming = nullptr;
-                    SHGetKnownFolderPath(folder, 0, nullptr, &app_data_roaming);
+                    wchar_t *folder_path = nullptr;
+                    SHGetKnownFolderPath(folder, 0, nullptr, &folder_path);
 
-                    if (app_data_roaming == nullptr) {
+                    if (folder_path == nullptr) {
                         return false;
                     }
 
                     // TODO: Substitude it with WideCharToMultiByte from "Windows.h"
                     std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
-                    std::string app_data = conv.to_bytes(app_data_roaming);
+                    std::string app_data = conv.to_bytes(folder_path);
 
                     app_data.append("\\Mumble");
                     check_plugin_locations(app_data);
 
                     // Now do the same for x64
-                    CoTaskMemFree(app_data_roaming); // Free it up.
+                    CoTaskMemFree(folder_path); // Free it up.
                 }
             }
 
