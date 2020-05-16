@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sends a message to the TeamSpeak plugin via the ACRE2Arma extension.
+ * Sends a message to the Mumble/TeamSpeak plugin via the ACRE2Arma extension.
  *
  * Arguments:
  * 0: Message <STRING>

@@ -1,7 +1,8 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets up the per frame event handler to mute and unmute clients on TeamSpeak. The muting occurs to optimize TeamSpeak bandwidth as voice data is not sent for muted clients.
+ * Sets up the per frame event handler to mute and unmute clients on Mumble/TeamSpeak. The muting occurs to optimize Mumble/TeamSpeak
+ * bandwidth as voice data is not sent for muted clients.
  *
  * Arguments:
  * None
@@ -39,15 +40,15 @@ DFUNC(mutingPFHLoop) = {
         _dynamicPos = positionCameraToWorld [0, 0, 0];
     };
     {
-        _x params ["_remoteTs3Id","_remoteUser"];
+        _x params ["_remoteVoipId", "_remoteUser"];
         if (_remoteUser != acre_player) then {
             private _muted = 0;
-            //private _remoteTs3Id = (_remoteUser getVariable QGVAR(ts3id));
-            //if (!(isNil "_remoteTs3Id")) then {
-                if !(_remoteTs3Id in ACRE_SPECTATORS_LIST) then {
+            //private _remoteVoipId = (_remoteUser getVariable QGVAR(voipId));
+            //if (!(isNil "_remoteVoipId")) then {
+                if !(_remoteVoipId in ACRE_SPECTATORS_LIST) then {
                     private _isRemotePlayerAlive = [_remoteUser] call FUNC(getAlive);
                     if (_isRemotePlayerAlive == 1) then {
-                        //_playerIdList pushBack _remoteTs3Id;
+                        //_playerIdList pushBack _remoteVoipId;
 
                         // private _radioListRemote = [_remoteUser] call EFUNC(sys_data,getRemoteRadioList);
                         // private _radioListLocal = [] call EFUNC(sys_data,getPlayerRadioList);
@@ -61,10 +62,10 @@ DFUNC(mutingPFHLoop) = {
                         };
 
                         if (GVAR(fullListTime)) then {
-                            _mutingParams = _mutingParams + format ["%1,%2,", _remoteTs3Id, _muted];
+                            _mutingParams = _mutingParams + format ["%1,%2,", _remoteVoipId, _muted];
                         } else {
                             if ((_muted == 0 && {_remoteUser in GVAR(muting)}) || {(_muted == 1 && {!(_remoteUser in GVAR(muting))})}) then {
-                                _mutingParams = _mutingParams + format ["%1,%2,", _remoteTs3Id, _muted];
+                                _mutingParams = _mutingParams + format ["%1,%2,", _remoteVoipId, _muted];
                             };
                         };
                     };
@@ -82,7 +83,7 @@ DFUNC(mutingPFHLoop) = {
         };
         if !(_newSpectators isEqualTo []) then {
             {
-                if (_x != GVAR(ts3id)) then {
+                if (_x != GVAR(voipId)) then {
                     _mutingParams = _mutingParams + format ["%1,1,", _x];
                 };
             } forEach _newSpectators;
@@ -94,7 +95,7 @@ DFUNC(mutingPFHLoop) = {
         if ((str ACRE_IS_SPECTATOR) != (str GVAR(lastSpectate))) then {
             if (ACRE_IS_SPECTATOR) then {
                 {
-                    if (_x != GVAR(ts3id)) then {
+                    if (_x != GVAR(voipId)) then {
                         _mutingParams = _mutingParams + format ["%1,0,", _x];
                     };
                 } forEach ACRE_SPECTATORS_LIST;
@@ -105,7 +106,7 @@ DFUNC(mutingPFHLoop) = {
 
     if (ACRE_IS_SPECTATOR && {GVAR(fullListTime)}) then {
         {
-            if (_x != GVAR(ts3id)) then {
+            if (_x != GVAR(voipId)) then {
                 _mutingParams = _mutingParams + format ["%1,0,", _x];
             };
         } forEach ACRE_SPECTATORS_LIST;

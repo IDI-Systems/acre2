@@ -46,7 +46,7 @@
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
 ] call CBA_fnc_addSetting;
 
-// Mumble/Teamspeak Channel Switching
+// Mumble/TeamSpeak Channel Switching
 // Switch channels
 [
     QGVAR(voipChannelSwitch),

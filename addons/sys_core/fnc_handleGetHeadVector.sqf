@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sends the current head direction vector to the TeamSpeak plugin.
+ * Sends the current head direction vector to the Mumble/TeamSpeak plugin.
  *
  * Arguments:
  * None

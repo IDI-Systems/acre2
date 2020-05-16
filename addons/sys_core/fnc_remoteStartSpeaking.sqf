@@ -4,7 +4,7 @@
  * Handles the event of other (remote) players starting to speaking.
  *
  * Arguments:
- * 0: TeamSpeak ID of talking player <STRING>
+ * 0: Mumble/TeamSpeak ID of talking player <STRING>
  * 1: Language ID <STRING>
  * 2: Net ID of player object <STRING>
  * 3: On radio <STRING>
@@ -33,7 +33,7 @@ CREATE_COUNTER(hearableRadios);
 // PREP(processRadioSpeaker);
 
 TRACE_1("START SPEAKING ENTER", _this);
-params ["_speakingId","_languageId","_netId","_onRadio",["_radioId",","]];
+params ["_speakingId", "_languageId", "_netId", "_onRadio", ["_radioId", ","]];
 
 if (!(_speakingId isEqualType 0)) then { _speakingId = parseNumber _speakingId; };
 if (!(_languageId isEqualType 0)) then { _languageId = parseNumber _languageId; };
@@ -52,19 +52,19 @@ private _result = false;
     //Ensure the incoming ID is solid.
     private _found = false;
     {
-        _x params ["_remoteTs3Id","_remoteUser"];
-        if (_remoteTs3Id == _speakingId) exitWith {
+        _x params ["_remoteVoipId","_remoteUser"];
+        if (_remoteVoipId == _speakingId) exitWith {
             _found = true;
             if (_unit != _remoteUser) then {
                 GVAR(playerList) set [_forEachIndex, [_speakingId, _unit]];
                 REM(GVAR(speakers),_remoteUser);
-                REM(GVAR(spectatorSpeakers),_remoteTs3Id);
+                REM(GVAR(spectatorSpeakers),_remoteVoipId);
                 REM(GVAR(keyedMicRadios),_remoteUser);
-                /*if (_remoteTs3Id in ACRE_SPECTATORS_LIST) then {
-                    GVAR(spectatorSpeakers) pushBackUnique _remoteTs3Id;
+                /*if (_remoteVoipId in ACRE_SPECTATORS_LIST) then {
+                    GVAR(spectatorSpeakers) pushBackUnique _remoteVoipId;
                 };*/
             };
-            // Case where objects dont match but we found our TS ID.
+            // Case where objects dont match but we found our Mumble/TS ID.
         };
     } forEach (GVAR(playerList));
     if (!_found) then {
@@ -81,7 +81,7 @@ private _result = false;
         false
     };
 
-    _unit setVariable [QGVAR(ts3id), _speakingId];
+    _unit setVariable [QGVAR(voipId), _speakingId];
     _unit setVariable [QGVAR(languageId), _languageId];
     TRACE_1("unit pos", getPosASL _unit);
     private _isMuted = IS_MUTED(_unit);

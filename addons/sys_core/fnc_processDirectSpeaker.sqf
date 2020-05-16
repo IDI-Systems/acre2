@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Calculates the information required by TeamSpeak for a direct speech speaker.
+ * Calculates the information required by Mumble/TeamSpeak for a direct speech speaker.
  *
  * Arguments:
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Parameters to send to TeamSpeak <ARRAY>
+ * Parameters to send to Mumble/TeamSpeak <ARRAY>
  *
  * Example:
  * [unit] call acre_sys_core_fnc_processDirectSpeaker
@@ -18,7 +18,7 @@
 private ["_emitterPos", "_emitterDir"];
 params ["_unit"];
 
-private _id = GET_TS3ID(_unit);
+private _id = GET_VOIPID(_unit);
 
 private _bothSpectating = false;
 private _isIntercomAttenuate = false;

@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Move TeamSpeak 3 channel on main display load.
+ * Move Mumble/TeamSpeak 3 channel on main display load.
  *
  * Arguments:
  * None
@@ -16,6 +16,6 @@
  */
 
 if (GVAR(serverStarted) && {isMultiplayer}) then {
-    // Move TeamSpeak 3 channel on display 46 (main display) initialization
+    // Move Mumble/TeamSpeak 3 channel on display 46 (main display) initialization
     call FUNC(voipChannelMove);
 };

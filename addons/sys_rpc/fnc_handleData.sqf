@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles the receipt of messages from the teamspeak plugin. Firstly by de-serializing the recieved message. It will then call any procedure handlers.
+ * Handles the receipt of messages from the Mumble/TeamSpeak plugin. Firstly by de-serializing the recieved message. It will then call any procedure handlers.
  *
  * Arguments:
  * 0: Message <STRING>

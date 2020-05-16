@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to TeamSpeak.
+ * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to Mumble/TeamSpeak.
  *
  * Arguments:
  * None
@@ -215,7 +215,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
             _sentMicRadios pushBack _unit;
             private _params = HASH_GET(_compiledParams, _x);
             private _canUnderstand = [_unit] call FUNC(canUnderstand);
-            private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, count _params];
+            private _paramArray = ["r", GET_VOIPID(_unit), !_canUnderstand, count _params];
             {
                 _paramArray append _x;
             } forEach _params;
@@ -244,13 +244,13 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 CALL_RPC("updateSpeakingData", _params);
             } else {
                 if !(_unit in _sentMicRadios) then {
-                    private _params = ['m', GET_TS3ID(_unit), 0];
+                    private _params = ['m', GET_VOIPID(_unit), 0];
                     CALL_RPC("updateSpeakingData", _params);
                 };
             };
         } else {
             if (_unit != acre_player) then {
-                private _params = ['m', GET_TS3ID(_unit), 0];
+                private _params = ['m', GET_VOIPID(_unit), 0];
                 CALL_RPC("updateSpeakingData", _params);
             };
         };

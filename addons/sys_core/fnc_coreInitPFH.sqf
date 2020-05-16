@@ -19,9 +19,9 @@
 if (isNull player) exitWith {};
 acre_player = player;
 
-if (!ACRE_MAP_LOADED || {!ACRE_DATA_SYNCED} || {GVAR(ts3id) == -1}) exitWith {};
+if (!ACRE_MAP_LOADED || {!ACRE_DATA_SYNCED} || {GVAR(voipId) == -1}) exitWith {};
 
-TRACE_1("GOT TS3 ID", GVAR(ts3id));
+TRACE_1("GOT Mumble/TS3 ID", GVAR(voipId));
 
 [] call FUNC(utilityFunction); // OK
 [] call FUNC(muting);

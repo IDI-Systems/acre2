@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles the return of the current plugin version from TeamSpeak. Displays messages to the player if any of the versions do not match.
+ * Handles the return of the current plugin version from Mumble/TeamSpeak. Displays messages to the player if any of the versions do not match.
  *
  * Arguments:
- * 0: TeamSpeak plugin version <STRING>
+ * 0: Mumble/TeamSpeak plugin version <STRING>
  *
  * Return Value:
  * Handled <BOOL>
@@ -35,7 +35,7 @@ if (!ACRE_SPIT_VERSION && {!isNil "ACRE_FULL_SERVER_VERSION"}) then {
 
 if (_warn) then {
     ACRE_HAS_WARNED = true;
-    ERROR_WITH_TITLE_3("Mismatched TeamSpeak plugin or mod versions!","\nTeamSpeak plugin version: %1\nYour version: %2\nServer version: %3",GVAR(pluginVersion),QUOTE(VERSION_STR),ACRE_FULL_SERVER_VERSION);
+    ERROR_WITH_TITLE_3("Mismatched Mumble/TeamSpeak plugin or mod versions!","\nMumble/TeamSpeak plugin version: %1\nYour version: %2\nServer version: %3",GVAR(pluginVersion),QUOTE(VERSION_STR),ACRE_FULL_SERVER_VERSION);
 } else {
     if (ACRE_HAS_WARNED) then {
         ACRE_HAS_WARNED = false;

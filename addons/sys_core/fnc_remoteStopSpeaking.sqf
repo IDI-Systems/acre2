@@ -4,7 +4,7 @@
  * Handles the event of other (remote) players stopping speaking.
  *
  * Arguments:
- * 0: TeamSpeak ID of talking player <STRING>
+ * 0: Mumble/TeamSpeak ID of talking player <STRING>
  * 1: Net ID of player object <STRING>
  *
  * Return Value:
@@ -18,7 +18,7 @@
 
 params ["_speakingId","_netId"];
 _speakingId = parseNumber _speakingId;
-// if (_speakingId != GVAR(ts3id)) then {
+// if (_speakingId != GVAR(voipId)) then {
     private _found = false;
     private _unit = objectFromNetId _netId;
     if (!isNil "_unit") then {
