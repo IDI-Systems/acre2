@@ -360,9 +360,9 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
         if (details_.at(0) != "") {
             name = details_.at(0);
         }
-        while (*channelList) {
-            channelId = *channelList;
-            channelList++;
+
+        for (std::size_t idx = 0U; idx < channelCount; idx++) {
+            channelId = *channelList + idx;
             char* channelName = nullptr;
             //if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), channelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
             if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == STATUS_OK) {
