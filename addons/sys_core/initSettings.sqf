@@ -55,7 +55,7 @@
     "ACRE2",
     true,
     false,
-    {["disablevoipChannelSwitch", _this] call FUNC(setPluginSetting)}
+    {["disableVoipChannelSwitch", _this] call FUNC(setPluginSetting)}
 ] call CBA_fnc_addSetting;
 
 // Channel Name
