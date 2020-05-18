@@ -1,16 +1,16 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Retrieves the game object of a player from a TeamSpeak ID.
+ * Retrieves the game object of a player from a VOIP ID.
  *
  * Arguments:
- * 0: TeamSpeak ID <STRING>
+ * 0: VOIP ID <STRING>
  *
  * Return Value:
  * Player <OBJECT>
  *
  * Example:
- * ["1"] call acre_sys_core_fnc_ts3idToPlayer
+ * ["1"] call acre_sys_core_fnc_voipIdToPlayer
  *
  * Public: No
  */

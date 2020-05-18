@@ -82,45 +82,45 @@
             <Chinesesimp>客户端取消禁音</Chinesesimp>
             <Portuguese>Desmutar Clientes</Portuguese>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
-            <English>TeamSpeak Channel Switch</English>
+        <Key ID="STR_ACRE_sys_core_voipChannelSwitch_displayName">
+            <English>Mumble/TeamSpeak Channel Switch</English>
             <Russian>Смена ТимСпик канала</Russian>
-            <Japanese>TeamSpeak チャンネル切り替え</Japanese>
-            <Chinese>Teamspeak頻道切換</Chinese>
-            <Chinesesimp>Teamspeak频道切换</Chinesesimp>
+            <Japanese>Mumble/TeamSpeak チャンネル切り替え</Japanese>
+            <Chinese>Mumble/Teamspeak頻道切換</Chinese>
+            <Chinesesimp>Mumble/Teamspeak频道切换</Chinesesimp>
             <Korean>팀스피크 채널 변경</Korean>
-            <Portuguese>Trocar de Canal do TeamSpeak</Portuguese>
-            <Polish>Zmiana kanału TeamSpeak</Polish>
-            <Italian>Cambio canale TeamSpeak</Italian>
-            <Spanish>Cambio de canal de TeamSpeak</Spanish>
-            <French>Changer de canal TeamSpeak</French>
-            <German>TeamSpeak Kanalwechsel</German>
+            <Portuguese>Trocar de Canal do Mumble/TeamSpeak</Portuguese>
+            <Polish>Zmiana kanału Mumble/TeamSpeak</Polish>
+            <Italian>Cambio canale Mumble/TeamSpeak</Italian>
+            <Spanish>Cambio de canal de Mumble/TeamSpeak</Spanish>
+            <French>Changer de canal Mumble/TeamSpeak</French>
+            <German>Mumble/TeamSpeak Kanalwechsel</German>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
-            <English>TeamSpeak Channel Name</English>
-            <Japanese>TeamSpeak チャンネル名</Japanese>
-            <Chinese>Teamspeak頻道名稱</Chinese>
-            <Chinesesimp>Teamspeak频道名称</Chinesesimp>
+        <Key ID="STR_ACRE_sys_core_voipChannelName_displayName">
+            <English>Mumble/TeamSpeak Channel Name</English>
+            <Japanese>Mumble/TeamSpeak チャンネル名</Japanese>
+            <Chinese>Mumble/Teamspeak頻道名稱</Chinese>
+            <Chinesesimp>Mumble/Teamspeak频道名称</Chinesesimp>
             <Korean>팀스피크 채널 이름</Korean>
-            <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
-            <Polish>Nazwa kanału TeamSpeak</Polish>
-            <Italian>Nome canale Teamspeak</Italian>
-            <Spanish>Nombre de canal de TeamSpeak</Spanish>
-            <French>Nom du canal TeamSpeak</French>
-            <German>TeamSpeak Kanalname</German>
+            <Portuguese>Nome do Canal do Mumble/TeamSpeak</Portuguese>
+            <Polish>Nazwa kanału Mumble/TeamSpeak</Polish>
+            <Italian>Nome canale Mumble/Teamspeak</Italian>
+            <Spanish>Nombre de canal de Mumble/TeamSpeak</Spanish>
+            <French>Nom du canal Mumble/TeamSpeak</French>
+            <German>Mumble/TeamSpeak Kanalname</German>
             <Russian>Имя ТимСпик канала</Russian>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
-            <English>TeamSpeak Channel Password</English>
-            <Chinese>Teamspeak頻道密碼</Chinese>
-            <Chinesesimp>Teamspeak频道密码</Chinesesimp>
-            <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
-            <Polish>Hasło kanału TeamSpeak</Polish>
-            <Italian>Password canale Teamspeak</Italian>
-            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
-            <Spanish>Contraseña del canal de TeamSpeak</Spanish>
-            <French>Mot de passe du canal TeamSpeak</French>
-            <German>TeamSpeak Kanalpasswort</German>
+        <Key ID="STR_ACRE_sys_core_voipChannelPassword_displayName">
+            <English>Mumble/TeamSpeak Channel Password</English>
+            <Chinese>Mumble/Teamspeak頻道密碼</Chinese>
+            <Chinesesimp>Mumble/Teamspeak频道密码</Chinesesimp>
+            <Portuguese>Senha do Canal do Mumble/TeamSpeak</Portuguese>
+            <Polish>Hasło kanału Mumble/TeamSpeak</Polish>
+            <Italian>Password canale Mumble/Teamspeak</Italian>
+            <Japanese>Mumble/TeamSpeak チャンネルのパスワード</Japanese>
+            <Spanish>Contraseña del canal de Mumble/TeamSpeak</Spanish>
+            <French>Mot de passe du canal Mumble/TeamSpeak</French>
+            <German>Mumble/TeamSpeak Kanalpasswort</German>
             <Russian>Пароль ТимСпик канала</Russian>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">

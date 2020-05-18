@@ -1,7 +1,8 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * This is the callback function for recieving the event "handleLoadedSound" from teamspeak. It just ensures a sound is marked as loaded to prevent it from being loaded again. It will also call the callback function specified in the loadSound function if one exists.
+ * This is the callback function for recieving the event "handleLoadedSound" from VOIP plugin. It just ensures a sound is marked as
+ * loaded to prevent it from being loaded again. It will also call the callback function specified in the loadSound function if one exists.
  *
  * Arguments:
  * 0: Radio classname <STRING>
