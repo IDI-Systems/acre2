@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Calls a procedure in the Mumble/TeamSpeak plugin.
+ * Calls a procedure in the VOIP plugin.
  *
  * Arguments:
  * 0: Procedure name <STRING>

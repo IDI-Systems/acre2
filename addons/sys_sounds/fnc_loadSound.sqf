@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Function to send a b64 sound to the Mumble/TeamSpeak plugin to be loaded. Once loaded the sound will always be available.
+ * Function to send a b64 sound to the VOIP plugin to be loaded. Once loaded the sound will always be available.
  *
  * Arguments:
  * 0: Sound classname (in CfgAcreSounds) <STRING>
@@ -19,7 +19,7 @@
 
 params ["_className",["_returnFunction",nil],["_force",false]];
 
-// If Mumble/TeamSpeak is connected.
+// If VOIP plugin is connected.
 if (EGVAR(sys_core,voipId) != -1) then { 
     if (!(_className in GVAR(loadedSounds)) && {!_force}) then {
         private _fileName = getText(configFile >> "CfgAcreSounds" >> _className >> "sound");

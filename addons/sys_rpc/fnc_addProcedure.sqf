@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Adds a procedure for when a message is received from the Mumble/TeamSpeak plugin. Note only one callback exists
+ * Adds a procedure for when a message is received from the VOIP plugin. Note only one callback exists
  * before procedure this will override any previously setup callbacks for the specified procedure name.
  *
  * Arguments:

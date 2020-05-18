@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to Mumble/TeamSpeak.
+ * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to VOIP.
  *
  * Arguments:
  * None

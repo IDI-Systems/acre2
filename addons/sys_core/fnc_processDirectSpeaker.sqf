@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Calculates the information required by Mumble/TeamSpeak for a direct speech speaker.
+ * Calculates the information required by VOIP for a direct speech speaker.
  *
  * Arguments:
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Parameters to send to Mumble/TeamSpeak <ARRAY>
+ * Parameters to send to VOIP <ARRAY>
  *
  * Example:
  * [unit] call acre_sys_core_fnc_processDirectSpeaker

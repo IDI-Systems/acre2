@@ -4,7 +4,7 @@
  * Handles the event of other (remote) players stopping speaking.
  *
  * Arguments:
- * 0: Mumble/TeamSpeak ID of talking player <STRING>
+ * 0: VOIP ID of talking player <STRING>
  * 1: Net ID of player object <STRING>
  *
  * Return Value:

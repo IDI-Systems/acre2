@@ -21,7 +21,7 @@ acre_player = player;
 
 if (!ACRE_MAP_LOADED || {!ACRE_DATA_SYNCED} || {GVAR(voipId) == -1}) exitWith {};
 
-TRACE_1("GOT Mumble/TS3 ID", GVAR(voipId));
+TRACE_1("GOT VOIP ID", GVAR(voipId));
 
 [] call FUNC(utilityFunction); // OK
 [] call FUNC(muting);

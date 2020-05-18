@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Retrieves the game object of a player from a Mumble/TeamSpeak ID.
+ * Retrieves the game object of a player from a VOIP ID.
  *
  * Arguments:
- * 0: Mumble/TeamSpeak ID <STRING>
+ * 0: VOIP ID <STRING>
  *
  * Return Value:
  * Player <OBJECT>

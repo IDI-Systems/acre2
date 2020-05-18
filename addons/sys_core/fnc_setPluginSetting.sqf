@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles setting Mumble/TeamSpeak plugin settings. Waits for pipe to open and then applies them.
+ * Handles setting VOIP plugin settings. Waits for pipe to open and then applies them.
  *
  * Arguments:
  * 0: Setting Name <STRING>

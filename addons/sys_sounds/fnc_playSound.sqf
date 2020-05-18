@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Plays a loaded sound from Mumble/TeamSpeak.
+ * Plays a loaded sound from VOIP solution.
  *
  * Arguments:
  * 0: Sound classname <STRING> - Same classname as used in the loadSound function.

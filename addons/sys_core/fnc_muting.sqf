@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets up the per frame event handler to mute and unmute clients on Mumble/TeamSpeak. The muting occurs to optimize Mumble/TeamSpeak
+ * Sets up the per frame event handler to mute and unmute clients on ^VOIP. The muting occurs to optimize VOIP
  * bandwidth as voice data is not sent for muted clients.
  *
  * Arguments:

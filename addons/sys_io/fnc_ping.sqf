@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Creates a loop to send periodic messages to the Mumble/TeamSpeak plugin (via the ACRE2Arma extension) to indicate that the game is still connected.
+ * Creates a loop to send periodic messages to the VOIP plugin (via the ACRE2Arma extension) to indicate that the game is still connected.
  *
  * Arguments:
  * None
@@ -17,7 +17,7 @@
 
 DFUNC(pingFunc) = {
     if (GVAR(serverStarted)) then {
-        LOG("ARMA3 TO MUMBLE/TS3: PING!");
+        LOG("ARMA3 TO VOIP: PING!");
         // diag_log text format["%1 ACRE: ping!", diag_tickTime];
         private _ret = "ACRE2Arma" callExtension "2ping:";
         if (diag_tickTime - GVAR(pongTime) > 10) then {

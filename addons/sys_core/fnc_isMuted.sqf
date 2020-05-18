@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * This function determines is used to check if the unit should be muted on Mumble/TeamSpeak or not.
+ * This function determines is used to check if the unit should be muted on VOIP or not.
  *
  * Arguments:
  * 0: unit <OBJECT>

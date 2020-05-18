@@ -98,7 +98,7 @@ Antenna Defines
 #define SCRATCH_GET(radioId, key) ([radioId, key] call EFUNC(sys_data,getScratchData))
 #define SCRATCH_GET_DEF(radioId, key, defaultVal) ([radioId, key, defaultVal] call EFUNC(sys_data,getScratchData))
 
-#define GET_VOIPID(object) (object call { private _ret = (_this getVariable [QGVAR(voipId), -1]); if (_ret == -1) then { WARNING_1("%1 has no Mumble/TS3 ID",_this); }; _ret })
+#define GET_VOIPID(object) (object call { private _ret = (_this getVariable [QGVAR(voipId), -1]); if (_ret == -1) then { WARNING_1("%1 has no VOIP ID",_this); }; _ret })
 
 #define IS_HASH(hash) (hash isEqualType locationNull && {(type hash) isEqualTo "ACRE_FastHashNamespaceDummy"})
 

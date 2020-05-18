@@ -5,7 +5,7 @@
 
 if (!hasInterface) exitWith {};
 
-// Ensure the Mumble/TeamSpeak plugin handler code is initialized first
+// Ensure the VOIP plugin handler code is initialized first
 [] call EFUNC(sys_io,startServer);
 
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
@@ -144,7 +144,7 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
             ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
             [_this select 1] call CBA_fnc_removePerFrameHandler;
         } else {
-            // Keep calling incase ACRE is not connected to Mumble/TeamSpeak
+            // Keep calling incase ACRE is not connected to VOIP solution
             ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
         };
     }, 0, []] call CBA_fnc_addPerFrameHandler;

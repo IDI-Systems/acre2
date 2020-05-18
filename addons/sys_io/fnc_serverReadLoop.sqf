@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Checks if the ACRE2Arma extension has any pending messages (typically for return data from the Mumble/TeamSpeak plugin). This is called on a per frame basis.
+ * Checks if the ACRE2Arma extension has any pending messages (typically for return data from the VOIP plugin). This is called on a per frame basis.
  *
  * Arguments:
  * None
