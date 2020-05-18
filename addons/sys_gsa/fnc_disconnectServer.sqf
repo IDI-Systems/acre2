@@ -25,7 +25,7 @@ if (_radioId == "") then {
     _radioId = _gsa getVariable [QGVAR(connectedRadio), ""];
 };
 if (_radioId isEqualTo "") exitWith {
-    ERROR_3("Empty unique radio ID %1:%2:%3",_gsa,_unit,_radioId);
+    ERROR_2("Empty unique radio ID %1:%2",_gsa,_unit);
     _success
 };
 
