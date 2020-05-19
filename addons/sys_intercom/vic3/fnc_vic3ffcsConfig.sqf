@@ -16,7 +16,7 @@
  * Intercom status Hash <ARRAY>
  *
  * Example:
- * [[] call CBA_fnc_hashCreate, [0.9, 1, 0, true], vehicle acre_player] call acre_sys_intercom_fnc_vic3ffcsOnIntercomKnobPress
+ * [[] call CBA_fnc_hashCreate, [0.9, 1, 0, true], vehicle acre_player] call acre_sys_intercom_fnc_vic3ffcsConfig
  *
  * Public: No
  */

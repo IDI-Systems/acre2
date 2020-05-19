@@ -31,7 +31,7 @@ GVAR(persistAlive) = 1;
 GVAR(lastRadioTime) = time + 0.25;
 GVAR(lastKeyCount) = 0;
 
-GVAR(speakingHandle) = ADDPFH(DFUNC(speaking), 0.06, []);
+GVAR(speakingHandle) = [DFUNC(speaking), 0.06, []] call CBA_fnc_addPerFrameHandler;
 // =====
 
 // Set the speaking volume to normal

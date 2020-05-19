@@ -13,7 +13,7 @@
  * None
  *
  * Example:
- * [cursorTarget] call acre_sys_rack_fnc_se90UnmountRadio
+ * [cursorTarget] call acre_sys_rack_fnc_sem90UnmountRadio
  *
  * Public: No
  */

@@ -11,7 +11,7 @@
  * Radio is returned (true) or given (false) <BOOL>
  *
  * Example:
- * [cursorTarget] call acre_sys_external_fnc_externalRadioReturnGive
+ * [cursorTarget] call acre_sys_external_fnc_checkReturnGive
  *
  * Public: No
  */

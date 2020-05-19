@@ -7,7 +7,7 @@ LOG("Starting radio id handler events");
 [QGVAR(removeGCQueue), { _this call FUNC(removeGCQueue) }] call CALLSTACK(CBA_fnc_addEventHandler);
 [QGVAR(invalidGarbageCollect), { _this call FUNC(invalidGarbageCollect) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
-ADDPFH(FUNC(masterIdTracker), 1, []);
+[FUNC(masterIdTracker), 1, []] call CBA_fnc_addPerFrameHandler;
 
 ACRE_SERVER_INIT = true;
 

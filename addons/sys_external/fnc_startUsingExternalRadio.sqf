@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * ["ACRE_PRC343_ID_1", acre_player] call acre_sys_external_startUsingExternalRadio
+ * ["ACRE_PRC343_ID_1", acre_player] call acre_sys_external_fnc_startUsingExternalRadio
  *
  * Public: No
  */

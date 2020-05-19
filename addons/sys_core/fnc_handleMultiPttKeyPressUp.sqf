@@ -36,7 +36,7 @@ DFUNC(doHandleMultiPttKeyPressUp) = {
 if (ACRE_ACTIVE_PTTKEY != -2) then {
     ACRE_ACTIVE_PTTKEY = -2;
     if (ACRE_BROADCASTING_RADIOID != "") then {
-        GVAR(delayReleasePTT_Handle) = ADDPFH(DFUNC(doHandleMultiPttKeyPressUp), ACRE_PTT_RELEASE_DELAY, [ARR_2(ACRE_BROADCASTING_RADIOID,false)]);
+        GVAR(delayReleasePTT_Handle) = [DFUNC(doHandleMultiPttKeyPressUp), ACRE_PTT_RELEASE_DELAY, [ACRE_BROADCASTING_RADIOID, false]] call CBA_fnc_addPerFrameHandler;
     };
 };
 

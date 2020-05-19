@@ -11,7 +11,7 @@
  * TRUE if match <BOOL>
  *
  * Example:
- * ["_radioId1","_radioId2"] call acre_sys_modes_fnc_sc_muting
+ * ["_radioId1","_radioId2"] call acre_sys_modes_fnc_sem70akw_muting
  *
  * Public: No
  */

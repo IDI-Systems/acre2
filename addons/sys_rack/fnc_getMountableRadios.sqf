@@ -11,7 +11,7 @@
  * Connectors <ARRAY>
  *
  * Example:
- * ["ACRE_VRC110_ID_1",["ACRE_PRC152_ID_1"]] call acre_sys_components_fnc_getMountableRadios
+ * ["ACRE_VRC110_ID_1",["ACRE_PRC152_ID_1"]] call acre_sys_rack_fnc_getMountableRadios
  *
  * Public: No
  */
