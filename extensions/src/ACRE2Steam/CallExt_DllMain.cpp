@@ -33,14 +33,58 @@ void __stdcall RVExtensionVersion(char *output, int outputSize) {
     sprintf_s(output, outputSize - 1, "%s", ACRE_VERSION);
 }
 
+std::vector<std::string> split(const std::string &s, char delim) {
+    std::vector<std::string> elems;
+    std::stringstream ss(s);
+    std::string item;
+    while (std::getline(ss, item, delim)) {
+        elems.push_back(item);
+    }
+    return elems;
+}
+
 inline std::string get_path() {
     char moduleName[MAX_PATH];
     GetModuleFileNameA(nullptr, moduleName, MAX_PATH);
     return std::string(moduleName);
 }
 
-inline std::string get_cmdline() {
-    return std::string(GetCommandLineA());
+std::vector<std::string> get_cmdline() {
+    std::vector<std::string> cmdline(split(GetCommandLineA(), ' '));
+
+    std::string par_opt("-par=");
+    std::string par_path;
+    for (auto const& option : cmdline) {
+        if (option.rfind(par_opt, 0) != std::string::npos) {
+            par_path = option.substr(par_opt.length());
+            break;
+        }
+    }
+
+    // Append all options from parameter file
+    if (!par_path.empty()) {
+        std::ifstream par_file(par_path);
+
+        if (par_file.is_open()) {
+            std::string line;
+
+            std::getline(par_file, line);
+            if (line == "class Arg") { // ignore old format
+                par_file.close();
+                return cmdline;
+            }
+
+            par_file.seekg(0, par_file.beg);
+
+            while (std::getline(par_file, line)) {
+                cmdline.push_back(line);
+            }
+
+            par_file.close();
+        }
+    }
+
+    return cmdline;
 }
 
 inline std::string get_path(const std::string &filepath) {
@@ -205,9 +249,12 @@ bool compare_file(const std::string &pathA, const std::string &pathB) {
 }
 
 bool skip_plugin_copy() {
-    if (std::string::npos != get_cmdline().find("-skipAcrePluginCopy")) {
-        return true;
+    for (auto const& option : get_cmdline()) {
+        if (option == "-skipAcrePluginCopy") {
+            return true;
+        }
     }
+
     return false;
 }
 
