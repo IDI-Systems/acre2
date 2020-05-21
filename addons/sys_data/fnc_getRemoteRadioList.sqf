@@ -1,21 +1,20 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Returns the a list of radio IDs that the given unit has.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Unit <OBJECT>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Radio ID List <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [_unit] call acre_sys_data_fnc_getRemoteRadioList
  *
  * Public: No
  */
 
-params ["_user"];
+params ["_unit"];
 
-_user getVariable [QGVAR(radioIdList), []]
+_unit getVariable [QGVAR(radioIdList), []]
