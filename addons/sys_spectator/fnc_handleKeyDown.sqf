@@ -35,7 +35,7 @@ if ([_keyCode, [_shift, _ctrl, _alt]] in _keybinds) exitWith {
     };
 
     // Play sound to alert user
-    playSound ["3DEN_notificationWarning", true];
+    playSound "3DEN_notificationWarning";
 
     true // handled
 };
