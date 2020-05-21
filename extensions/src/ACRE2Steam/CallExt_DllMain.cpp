@@ -52,7 +52,7 @@ inline std::string get_path() {
 std::vector<std::string> get_cmdline() {
     std::vector<std::string> cmdline(split(GetCommandLineA(), ' '));
 
-    std::string par_opt("-par=");
+    const std::string par_opt("-par=");
     std::string par_path;
     for (auto const& option : cmdline) {
         if (option.rfind(par_opt, 0) != std::string::npos) {
