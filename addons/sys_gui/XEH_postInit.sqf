@@ -34,5 +34,6 @@ if (!hasInterface) exitWith {};
     {
         params ["", "", "_item"];
         [_item] call FUNC(openRadio);
+        false // Close menu
     }
 ] call CBA_fnc_addItemContextMenuOption;
