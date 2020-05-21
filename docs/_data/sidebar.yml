@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: ACRE2
-  version: v2.7.2
+  version: v2.7.3
   folders:
 
   - title:
@@ -219,4 +219,8 @@ entries:
 
     - title: Documentation Guidelines
       url: /wiki/development/docs_guidelines
+      output: web, pdf
+
+    - title: Tips and Tricks
+      url: /wiki/development/tips-and-tricks
       output: web, pdf

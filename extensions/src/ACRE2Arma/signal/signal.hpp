@@ -354,7 +354,7 @@ namespace acre {
                     return true;
                 }
 
-                uint32_t thread_count = 6;
+                uint32_t thread_count = 1;
 
                 uint32_t y_chunk_size, y_chunk_remainder;
                 if (count_y > thread_count) {
@@ -367,7 +367,7 @@ namespace acre {
                 }
                 std::vector<std::thread> thread_pool;
                 std::vector<std::vector<signal_map_result>> result_sets;
-                result_sets.resize(thread_count+1);
+                result_sets.resize(thread_count);
 
                 for (uint32_t i = 0; i < thread_count; ++i) {
                     std::vector<signal_map_result> *result_entry = &result_sets[i];
@@ -454,7 +454,10 @@ namespace acre {
                         result.rx_pos = glm::vec3(rx_x_pos, rx_y_pos, z);
                         result.tx_pos = glm::vec3(tx_pos_);
                         _signalProcessor_multipath.process(&result.result, tx_pos_, tx_dir_, result.rx_pos, glm::vec3(0.0f, 1.0f, 0.0f), tx_antenna_, rx_antenna_, frequency_, power_, 1.0f, omnidirectional_);
-                        results->at(y_val * x_size + x) = result;
+                        {
+                            std::lock_guard<std::mutex> lock(_signal_lock);
+                            results->at(y_val * x_size + x) = result;
+                        }
                     }
                     y_val++;
                     std::lock_guard<std::mutex> lock(_signal_lock);

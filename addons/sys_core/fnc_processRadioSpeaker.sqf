@@ -27,6 +27,13 @@ TRACE_2("",_unit,_playerRadios);
 
 private _radioId = _unit getVariable [QGVAR(currentSpeakingRadio), ""];
 if (_radioId == "") exitWith { false };
+
+// Debug #638
+if (isNil "_radioId") exitWith {
+    WARNING_1("reserved variable debug 1 - report on GitHub! [%1]",_radioId);
+    false
+};
+
 // @todo if Underwater Radios are implemented
 //if (ACRE_LISTENER_DIVE == 1) exitWith { false };
 
@@ -42,6 +49,12 @@ if (!GVAR(speaking_cache_valid)) then {
         END_COUNTER(okradio_check);
     #endif
     _okRadios = (_okRadios select 0) select 1;
+
+    // Debug #638
+    if (isNil "_radioId") exitWith {
+        WARNING_3("reserved variable debug 2 - report on GitHub! [%1-%2-%3]",_radioId,_okRadios,_playerRadios);
+        false
+    };
 
     private _transmittingRadioData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
     private _mode = HASH_GET(_transmittingRadioData, "mode");

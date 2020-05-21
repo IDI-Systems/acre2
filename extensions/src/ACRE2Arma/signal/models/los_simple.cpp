@@ -4,9 +4,13 @@
 #include <glm/gtx/vector_angle.hpp>
 
 #include <cmath>
+#include <mutex>
+#include <thread>
 
-static const float32_t PI = 3.14159265f;
-static const float32_t magic = 10.0f;
+std::mutex peak_mutex;
+
+static constexpr float32_t PI = 3.14159265f;
+static constexpr float32_t magic = 10.0f;
 
 acre::signal::model::los_simple::los_simple(map_p map_) : SignalModel() {
     _map = map_;
@@ -81,11 +85,11 @@ float32_t acre::signal::model::los_simple::itu(const float32_t h, const float32_
 }
 
 acre::signal::model::multipath::multipath(map_p map_) : los_simple(map_) {
-    const uint32_t peak_grid_size = static_cast<uint32_t>(ceilf(_map->map_size()*_map->cell_size()/1000.0f));
+    const uint32_t peak_grid_size = static_cast<uint32_t>(std::ceil(_map->map_size()*_map->cell_size()/1000.0F));
     _peak_buckets.resize(static_cast<size_t>(std::pow(peak_grid_size, 2u)));
     for (auto peak : _map->peaks) {
-        const int32_t x = static_cast<int32_t>(floorf(peak.x / 1000));
-        const int32_t y = static_cast<int32_t>(floorf(peak.y / 1000));
+        const int32_t x = static_cast<int32_t>(std::floor(peak.x / 1000.0F));
+        const int32_t y = static_cast<int32_t>(std::floor(peak.y / 1000.0F));
         _peak_buckets[x * peak_grid_size + y].push_back(peak);
     }
 }
@@ -95,52 +99,55 @@ acre::signal::model::multipath::~multipath() {
 }
 
 float32_t acre::signal::model::multipath::search_distance(const float32_t frequency_Hz, const float32_t power_mW) {
-    auto cache = _distance_cache.find(floorf(frequency_Hz));
+    auto cache = _distance_cache.find(std::floor(frequency_Hz));
     if (cache != _distance_cache.end()) {
-        if (cache->second.find(floorf(power_mW)) != cache->second.end()) {
-            return cache->second.find(floorf(power_mW))->second;
+        if (cache->second.find(std::floor(power_mW)) != cache->second.end()) {
+            return cache->second.find(std::floor(power_mW))->second;
         }
     }
-    float32_t test_fspl = 0;
+    float32_t test_fspl = 0.0F;
     int32_t c = 0;
-    float32_t searchDistance = 0.0f;
-    const float32_t tx_power = 10.0f * log10f(power_mW / 1000.0f) + 30.0f;
-    while (test_fspl < (80.0f + tx_power)) {
-        searchDistance = static_cast<float32_t>(c)*250.0f;
-        test_fspl = (-27.55f + 20.0f * log10f(frequency_Hz) + 20.0f * log10f(searchDistance)) + (magic*3.0f);
+    float32_t searchDistance = 0.0F;
+    const float32_t tx_power = 10.0F * std::log10(power_mW / 1000.0F) + 30.0F;
+    while (test_fspl < (80.0F + tx_power)) {
+        searchDistance = static_cast<float32_t>(c)*250.0F;
+        test_fspl = (-27.55F + (20.0F * std::log10(frequency_Hz)) + (20.0F * std::log10(searchDistance))) + (magic * 3.0F);
         c++;
     }
 
     if (cache == _distance_cache.end()) {
-        _distance_cache[floorf(frequency_Hz)] = std::map<float32_t, float32_t>();
-        cache = _distance_cache.find(floorf(frequency_Hz));
+        _distance_cache[std::floor(frequency_Hz)] = std::map<float32_t, float32_t>();
+        cache = _distance_cache.find(std::floor(frequency_Hz));
     }
-    cache->second[floorf(power_mW)] = searchDistance;
+    cache->second[std::floor(power_mW)] = searchDistance;
     return searchDistance;
 }
 
 void acre::signal::model::multipath::process(result *const result_, const glm::vec3 &tx_pos_, const glm::vec3 &tx_dir_, const glm::vec3 &rx_pos_, const glm::vec3 &rx_dir_, const antenna_p &tx_antenna_, const antenna_p &rx_antenna_, const float32_t frequency_, const float32_t power_, const float32_t scale_, const bool omnidirectional_) {
-    const float32_t tx_power = 10.0f * log10f(power_ / 1000.0f) + 30.0f;
+    const float32_t tx_power = 10.0F * std::log10(power_ / 1000.0F) + 30.0F;
     const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
     const float32_t searchDistance = search_distance(frequency_, power_);
 
-    int32_t search_size = static_cast<int32_t>(searchDistance * 2.0f / 1000.0f);//(int)(std::ceil(std::max(search_distance, distance_2d)) / 1000.0f);
+    int32_t search_size = static_cast<int32_t>(searchDistance * 2.0F / 1000.0F);
 
     if (search_size % 2 == 0) {
         search_size++;
     }
 
-    if ((tx_pos_.x != _cached_tx_pos.x) || (tx_pos_.y != _cached_tx_pos.y)) {
-        get_peaks_spiral(tx_pos_.x, tx_pos_.y, search_size, search_size, _cached_peaks);
-        _cached_tx_pos = tx_pos_;
+    {
+        const std::lock_guard<std::mutex> lock(peak_mutex);
+        if ((tx_pos_.x != _cached_tx_pos.x) || (tx_pos_.y != _cached_tx_pos.y)) {
+            get_peaks_spiral(tx_pos_.x, tx_pos_.y, search_size, search_size, _cached_peaks);
+            _cached_tx_pos = tx_pos_;
+        }
     }
 
     std::vector<float32_t> signals;
     std::vector<float32_t> signal_phases;
     int32_t good_count = 0;
 
-    float32_t best_signal = 0.0f;
-    size_t best_signal_index = 0;
+    float32_t best_signal = 0.0F;
+    size_t best_signal_index = 0U;
 
     const float32_t tx_internal_loss = tx_antenna_->getInternalLoss_dBm();
     const float32_t rx_internal_loss = rx_antenna_->getInternalLoss_dBm();
@@ -148,18 +155,18 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
     for (auto peak : _cached_peaks) {
         const glm::vec3 v_tx = tx_pos_ - peak;
         const glm::vec3 v_rx = rx_pos_ - peak;
-        if (glm::distance(glm::normalize(v_tx), glm::normalize(v_rx)) > 1.41421f) {
+        if (glm::distance(glm::normalize(v_tx), glm::normalize(v_rx)) > 1.41421F) {
             continue;
         }
 
         const glm::vec3 v_mid = glm::normalize(v_tx + v_rx);
 
         glm::vec3 best_angle;
-        float32_t best_distance = 10000.0f;
-        float32_t diffractionLoss = 0.0f;
+        float32_t best_distance = 10000.0F;
+        float32_t diffractionLoss = 0.0F;
 
         for (int32_t i = 0; i <= 40; ++i) {
-            glm::vec3 test_point = peak + v_mid*static_cast<float32_t>(i)*7.5f;
+            glm::vec3 test_point = peak + (v_mid * static_cast<float32_t>(i) * 7.5F);
             glm::vec3 t_normal = _map->normal(test_point.x, test_point.y);
             const float32_t distance = glm::distance2(t_normal, v_mid);
             if (distance < best_distance) {
@@ -170,22 +177,16 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
 
         best_angle.z = _map->elevation(best_angle.x, best_angle.y);
 
-        //float32_t add_test_height = 20.0f * log10(frequency_) + 20.0f * log10(std::ceil(glm::distance(tx_pos_, best_angle)));
-        //glm::vec3 test_pos = tx_pos_ + glm::vec3(0, 0, add_test_height);
-        //if (!_map->ground_intersect(test_pos, glm::normalize(test_pos - best_angle), std::ceil(glm::distance(test_pos, best_angle)))) {
-
-        float32_t rx_gain = 0;
-        float32_t tx_gain = 0;
+        float32_t rx_gain = 0.0F;
+        float32_t tx_gain = 0.0F;
         if (!omnidirectional_){
             rx_gain = rx_antenna_->gain(rx_dir_, best_angle - rx_pos_, frequency_);
             tx_gain = tx_antenna_->gain(tx_dir_, best_angle - tx_pos_, frequency_);
         }
 
-        float32_t path_distance = sqrtf(glm::distance2(tx_pos_, best_angle) + glm::distance2(rx_pos_, best_angle));
-        float32_t fspl = (-27.55f + 20.0f * log10f(frequency_) + 20.0f * log10f(path_distance));
-        //float32_t fspl = (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(tx_pos_, best_angle))) +
-        //    (-27.55f + 20.0f * log10(frequency_) + 20.0f * log10(glm::distance(rx_pos_, best_angle)));
-
+        float32_t path_distance = std::sqrt(glm::distance2(tx_pos_, best_angle) + glm::distance2(rx_pos_, best_angle));
+        float32_t fspl = -27.55F + (20.0F * std::log10(frequency_)) + (20.0F * std::log10(path_distance));
+        
         const glm::vec3 best_angle_v = glm::normalize(rx_pos_ - best_angle);
         const glm::vec3 terrain_normal = _map->normal(best_angle.x, best_angle.y);
         /*
@@ -195,17 +196,17 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
             float32_t reflection_ratio = std::cos(bt);
          */
         const float32_t reflection_ratio = glm::dot(terrain_normal, glm::normalize(best_angle_v));
-        const float32_t tx_power = 10.0f * log10f((power_ * reflection_ratio) / 1000.0f) + 30.0f;
-        float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - ((-27.55f + 20.0f * log10f(frequency_))) + rx_gain - rx_internal_loss;
+        const float32_t tx_power_reflected = (10.0F * std::log10((power_ * reflection_ratio) / 1000.0F)) + 30.0F;
+        float32_t budget = tx_power_reflected + tx_gain - tx_internal_loss - fspl - (-27.55F + (20.0F * std::log10(frequency_))) + rx_gain - rx_internal_loss;
 
-        if (budget > -200.0f) {
-            diffractionLoss = diffraction_loss(tx_pos_, best_angle, frequency_)*scale_;
-            if (budget - diffractionLoss > -200.0f) {
-                diffractionLoss += diffraction_loss(best_angle, rx_pos_, frequency_)*scale_;
+        if (budget > -200.0F) {
+            diffractionLoss = diffraction_loss(tx_pos_, best_angle, frequency_) * scale_;
+            if (budget - diffractionLoss > -200.0F) {
+                diffractionLoss += diffraction_loss(best_angle, rx_pos_, frequency_) * scale_;
                 budget -= diffractionLoss;
 
-                if (budget > -200.0f) {
-                    const float32_t budget_v = dbm_to_v(budget, 50.0f);
+                if (budget > -200.0F) {
+                    const float32_t budget_v = dbm_to_v(budget, 50.0F);
                     signals.push_back(budget_v);
 
                     const float32_t signalPhase = phase(path_distance, frequency_) + PI;
@@ -213,7 +214,7 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
                     result_->reflect_points.push_back(reflection(best_angle, terrain_normal, signalPhase, reflection_ratio, budget, budget_v));
                     if (budget_v > best_signal) {
                         best_signal = budget_v;
-                        best_signal_index = signals.size() - 1u;
+                        best_signal_index = signals.size() - 1U;
                     }
                     ++good_count;
                 }
@@ -224,44 +225,42 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
             break;
         }
     }
-    float32_t rx_gain = 0.0f;
-    float32_t tx_gain = 0.0f;
+
+    float32_t rx_gain = 0.0F;
+    float32_t tx_gain = 0.0F;
     if (!omnidirectional_) {
         rx_gain = rx_antenna_->gain(rx_dir_, tx_pos_ - rx_pos_, frequency_);
         tx_gain = tx_antenna_->gain(tx_dir_, rx_pos_ - tx_pos_, frequency_);
     }
 
-    const float32_t fspl = -27.55f + 20.0f * log10f(frequency_) + 20.0f * log10f(distance_3d);
-
-    //_Lb = _Ptx + _transmitterGain - _Ltx - _Lfs - _Lm + _receiverGain - _Lrx;
-
+    const float32_t fspl = -27.55F + (20.0F * std::log10(frequency_)) + (20.0F * std::log10(distance_3d));
     const float32_t diffractionLoss = diffraction_loss(tx_pos_, rx_pos_, frequency_)*scale_;
 
-    const float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - (magic*1.0f) - diffractionLoss + rx_gain - rx_internal_loss;
-    const float32_t budget_v = dbm_to_v(budget, 50.0f);
+    const float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - (magic * 1.0F) - diffractionLoss + rx_gain - rx_internal_loss;
+    const float32_t budget_v = dbm_to_v(budget, 50.0F);
 
     signals.push_back(budget_v);
     signal_phases.push_back(phase(distance_3d, frequency_));
 
     if (budget_v > best_signal) {
         best_signal = budget_v;
-        best_signal_index = signals.size() - 1u;
+        best_signal_index = signals.size() - 1U;
     }
 
-    float32_t total_signal = 0.0f;
+    float32_t total_signal = 0.0F;
 
-    if (scale_ >= 1.0f) {
+    if (scale_ >= 1.0F) {
         float32_t best_signal_phase = signal_phases[best_signal_index];
         total_signal = best_signal;
 
-        for (size_t c = 0; c <= signals.size() - 1; ++c) {
+        for (size_t c = 0U; c <= signals.size() - 1U; ++c) {
             if (c != best_signal_index) {
                 const float32_t signal_level = signals[c];
                 float32_t singalPhase = signal_phases[c] - best_signal_phase;
                 if (singalPhase > PI) {
-                    singalPhase -= PI*2.0f;
+                    singalPhase -= PI * 2.0F;
                 } else if (singalPhase < -PI) {
-                    singalPhase += PI*2.0f;
+                    singalPhase += PI * 2.0F;
                 }
                 total_signal = phase_amplitude(total_signal, signal_level, singalPhase);
             }
@@ -270,19 +269,19 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
         total_signal = best_signal;
     }
 
-    if (total_signal > 0.0f) {
+    if (total_signal > 0.0F) {
         result_->result_v = total_signal;
-        result_->result_dbm = v_to_dbm(total_signal, 50.0f);
+        result_->result_dbm = v_to_dbm(total_signal, 50.0F);
     } else {
-        result_->result_v = 0.0f;
-        result_->result_dbm = -1000.0f;
+        result_->result_v = 0.0F;
+        result_->result_dbm = -1000.0F;
     }
 }
 
 void acre::signal::model::multipath::get_peaks_spiral(const float32_t pos_x, const float32_t pos_y, const int32_t size_x, const int32_t size_y, std::vector<glm::vec3> &peaks) {
-    const int32_t peak_grid_size = static_cast<int32_t>(ceilf(_map->map_size()*_map->cell_size() / 1000.0f));
-    const int32_t peak_grid_x = static_cast<int32_t>(floorf(pos_x / 1000.0f));
-    const int32_t peak_grid_y = static_cast<int32_t>(floorf(pos_y / 1000.0f));
+    const int32_t peak_grid_size = static_cast<int32_t>(std::ceil(_map->map_size()*_map->cell_size() / 1000.0F));
+    const int32_t peak_grid_x = static_cast<int32_t>(std::floor(pos_x / 1000.0f));
+    const int32_t peak_grid_y = static_cast<int32_t>(std::floor(pos_y / 1000.0f));
 
     int32_t x = 0;
     int32_t y = 0;
@@ -314,10 +313,10 @@ void acre::signal::model::multipath::get_peaks_spiral(const float32_t pos_x, con
 }
 
 float32_t acre::signal::model::multipath::phase(const float32_t path_distance, const float32_t f_Mhz) {
-    const float32_t phase = PI*2.0f*path_distance / (300.0f / f_Mhz);
-    return fmod(phase, PI * 2.0f) - PI;
+    const float32_t phase = PI * 2.0F * path_distance / (300.0F / f_Mhz);
+    return fmod(phase, PI * 2.0F) - PI;
 }
 
 float32_t acre::signal::model::multipath::phase_amplitude(const float32_t a1, const float32_t a2, const float32_t phase) {
-    return sqrtf(powf(a1, 2.0f) + powf(a2, 2.0f) + 2.0f*a1*a2*cosf(phase));
+    return std::sqrt((a1 * a1) + (a2 * a2) + (2.0F * a1 * a2 * std::cos(phase)));
 }

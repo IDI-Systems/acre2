@@ -1,17 +1,21 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Opens the GUI of the radio. This is trigered by either double-click in the inventory,
+ * through the ACE interact menu (if available) or through the keybinding "open radio".
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Radio ID <STRING>
+ * 1: Event: "openGui" <STRING> (Unused)
+ * 2: Event data <ARRAY> (Unused)
+ * 3: Radio data <HASH> (Unused)
+ * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * Success <BOOL>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * ["ACRE_PRC117F_ID_1"] call acre_sys_prc117f_fnc_openGui
  *
  * Public: No
  */
@@ -36,7 +40,8 @@ if (_onState >= 1) then {
     private _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
     [_currentMenu] call FUNC(changeMenu);
 } else {
-    [GVAR(LOADING)] call FUNC(changeMenu);
+    //[GVAR(LOADING)] call FUNC(changeMenu);
+    [GVAR(OFF)] call FUNC(changeMenu);
 };
 
 //[ICON_LOADING, true] call DFUNC(toggleIcon);

@@ -7,8 +7,6 @@
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
 
-#define ZEUS_POSITION_FREQUENCY 0.2
-
 #ifdef DEBUG_ENABLED_SYS_ZEUS
     #define DEBUG_MODE_FULL
 #endif
@@ -18,3 +16,6 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+
+#define ZEUS_POSITION_FREQUENCY 0.2

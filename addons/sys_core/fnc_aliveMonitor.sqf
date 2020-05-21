@@ -16,8 +16,8 @@
  */
 
 GVAR(oldMute) = 0;
-GVAR(waitTime) = 0;
-DFUNC(utility_aliveStatus) = {
+GVAR(waitTime) = diag_tickTime + 3;
+[{
     private _isMuted = 0;
     if (IS_MUTED(acre_player)) then {
         _isMuted = 1;
@@ -28,7 +28,5 @@ DFUNC(utility_aliveStatus) = {
     };
 
     GVAR(oldMute) = _isMuted;
-};
-GVAR(waitTime) = diag_tickTime + 3;
-ADDPFH(FUNC(utility_aliveStatus), 0, []);
+}, 0, []] call CBA_fnc_addPerFrameHandler;
 true

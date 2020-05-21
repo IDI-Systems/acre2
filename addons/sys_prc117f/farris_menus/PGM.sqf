@@ -219,6 +219,7 @@ GVAR(PGM_NORM) = ["PGM_NORM", "PGM_NORM", "",
         SET_STATE("channels", _channels);
 
         SET_STATE("pgm_preset_number", 0);
+        SET_STATE("pgm_name", nil);
         SET_STATE("pgm_active_in_list", nil);
 
         ["PGM_NORM_LOS"] call FUNC(changeMenu);
@@ -399,8 +400,8 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
             ],
             [
                 {
-                    private _value = nil;
-                    _value = GET_RADIO_VALUE("name");
+                    private _value = GET_RADIO_VALUE("name");
+                    _value = (_value + CHANNEL_PADDING_STRING) select [0, CHANNEL_NAME_MAX_LENGTH]; // Make sure we have something at each editindex
                     SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                 },
                 {
@@ -421,7 +422,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 nil
             ],
             [
-                20,    // Digit count
+                CHANNEL_NAME_MAX_LENGTH, // Editable digits
                 [ROW_LARGE_3, 0, -1] // Highlighting cursor information
             ],
             "pgm_name"

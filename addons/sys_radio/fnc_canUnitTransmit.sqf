@@ -30,7 +30,7 @@ if (_vehicle != acre_player) then {
         if ([_radioId, acre_player, _vehicle] call EFUNC(sys_rack,isRadioHearable)) then {
             private _functionality = [_radioId, _vehicle, acre_player] call EFUNC(sys_intercom,getRackRxTxCapabilities);
             if (_functionality == RACK_NO_MONITOR || _functionality == RACK_RX_ONLY) then {
-                [[ICON_RADIO_CALL], [localize LSTRING(noTransmitIntercom)]] call CBA_fnc_notify;
+                [[ICON_RADIO_CALL], [localize LSTRING(noTransmitIntercom)], true] call CBA_fnc_notify;
                 _canTransmit = false;
             };
         };
@@ -38,12 +38,12 @@ if (_vehicle != acre_player) then {
 };
 
 if (_canTransmit && {_radioId in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS}) exitWith {
-    [[ICON_RADIO_CALL], [localize LSTRING(noTransmitExternal)]] call CBA_fnc_notify;
+    [[ICON_RADIO_CALL], [localize LSTRING(noTransmitExternal)], true] call CBA_fnc_notify;
     false
 };
 
 if (_canTransmit && {_radioId in ACRE_BLOCKED_TRANSMITTING_RADIOS}) exitWith {
-    [[ICON_RADIO_CALL], [localize LSTRING(alreadyTransmitting)]] call CBA_fnc_notify;
+    [[ICON_RADIO_CALL], [localize LSTRING(alreadyTransmitting)], true] call CBA_fnc_notify;
     false
 };
 

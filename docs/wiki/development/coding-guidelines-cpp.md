@@ -61,7 +61,7 @@ void some_function() {
 
 ## Namespaces
 
-All namespaces should be descendants of `intercept::`. Namespaces that are meant to hold internal or implementation specific code not exposed readily to end users should be prefixed with two (2) underscores `__`.
+All namespaces should be descendants of `acre::`. Namespaces that are meant to hold internal or implementation specific code not exposed readily to end users should be prefixed with two (2) underscores `__`.
 
 ```c++
 namespace acre {

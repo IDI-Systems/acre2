@@ -41,7 +41,7 @@ extern "C" {
 };
 
 void __stdcall RVExtensionVersion(char *output, int outputSize) {
-    sprintf_s(output, outputSize, "%s", ACRE_VERSION);
+    sprintf_s(output, outputSize - 1, "%s", ACRE_VERSION);
 }
 
 inline std::string get_path() {
@@ -111,7 +111,6 @@ inline std::string find_mod_file(std::string filename) {
 
         WIN32_FIND_DATAA data;
         std::string path("*");
-        std::string *name;
         HANDLE hFile = FindFirstFileA(path.c_str(), &data);
 
         if (hFile == INVALID_HANDLE_VALUE)
@@ -188,33 +187,42 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
         case PIPE_COMMAND_READ: {
             if (readConnected) {
                 DWORD cbRead;
-                DWORD err;
-                BOOL ret;
-                char *value = new char[4096];
+                constexpr size_t read_length = 4097U;
+                char value[read_length]; // Allocate on stack to delegate memory management to compiler,
+                // allows up to 4096 char string (+1 to ensure NUL terminated), like initial version
+
                 //DEBUG("Read from pipe [%d]\n", hPipe);
-                ret = ReadFile(readHandle, (LPVOID)value, 4096, &cbRead, NULL);
-                if ( ! ret) {
-                    err = GetLastError();
-                    if (err == ERROR_BROKEN_PIPE) {
-                        ClosePipe();
-                    }
+                const BOOL ret = ReadFile(readHandle, (LPVOID)value, sizeof(char) * (read_length - 1U), &cbRead, NULL);
+                if (!ret) {
+                    const DWORD err = GetLastError();
                     //DEBUG("ReadFile failed, [%08x]\r\n", err);
-                }
-                if (cbRead != 0) {
-                    //DEBUG("Read data: %s\n", value);
-                    strncpy(output,value,cbRead);
-                } else {
-                    if (err == 232) {
-                        strncpy(output,"_JERR_NULL",outputSize);
+                    if (err == ERROR_NO_DATA) {
+                        strncpy(output, "_JERR_NULL", outputSize);
                     } else {
-                        //LOG("PIPE ERROR: %d\r\n", err);
-                        strncpy(output,"_JERR_FALSE",outputSize);
+                        if (err == ERROR_BROKEN_PIPE) {
+                            ClosePipe();
+                        }
+                        strncpy(output, "_JERR_FALSE", outputSize);
                     }
+                } else if (cbRead != 0) {
+                    //DEBUG("Read data: %s\n", value);
+
+                    if (cbRead >= (size_t)outputSize) {
+                        // Prevent buffer overflow
+                        cbRead = outputSize - 1U;
+                    }
+
+                    // Ensure NUL terminated string (required by strncpy)
+                    value[cbRead] = '\0';
+
+                    strncpy(output, value, cbRead);
+                } else {
+                    //DEBUG("No data read");
+                    strncpy(output, "_JERR_NULL", outputSize);
                 }
-                delete value;
             } else {
                 ClosePipe();
-                strncpy(output,"_JERR_NOCONNECT",outputSize);
+                strncpy(output, "_JERR_NOCONNECT", outputSize);
             }
             return;
         }

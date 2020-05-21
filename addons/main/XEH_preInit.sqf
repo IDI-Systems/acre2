@@ -11,29 +11,6 @@ ACRE_STACK_TRACE = [];
 ACRE_STACK_DEPTH = 0;
 ACRE_CURRENT_FUNCTION = "";
 
-ACRE_DUMPSTACK_FNC = {
-    diag_log text format["ACRE CALL STACK DUMP: %1:%2(%3) DEPTH: %4", _this select 0, _this select 1, ACRE_CURRENT_FUNCTION, ACRE_STACK_DEPTH];
-    for "_x" from ACRE_STACK_DEPTH-1 to 0 step -1 do {
-        private _stackEntry = ACRE_STACK_TRACE select _x;
-        _stackEntry params ["_callTickTime", "_callFileName", "_callLineNumb", "_callFuncName", "_nextFuncName", "_nextFuncArgs"];
-
-        if (_callFuncName == "") then {
-            _callFuncName = "<root>";
-        };
-
-        diag_log text format ["%8%1:%2 | %3:%4(%5) => %6(%7)",
-            _x + 1,
-            _callTickTime,
-            _callFileName,
-            _callLineNumb,
-            _callFuncName,
-            _nextFuncName,
-            _nextFuncArgs,
-            toString [9]
-        ];
-    };
-};
-
 // Fast Hashes
 // All hash stuff must be in main to guarantee it is compiled and executed first for proper data handling.
 if (isNil "ACRE_FAST_HASH_POOL") then {
@@ -44,7 +21,7 @@ if (isNil "ACRE_FAST_HASH_POOL") then {
 };
 ACRE_FAST_HASH_TO_DELETE = [];
 
-[FUNC(hashMonitor), 0.33, []] call cba_fnc_addPerFrameHandler;
+[FUNC(hashMonitor), 0.33, []] call CBA_fnc_addPerFrameHandler;
 
 ACRE_FAST_HASH_CREATED_HASHES = [];
 ACRE_FAST_HASH_VAR_STATE = (allVariables missionNamespace);

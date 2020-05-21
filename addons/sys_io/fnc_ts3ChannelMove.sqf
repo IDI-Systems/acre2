@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_io_fnc_teamspeakChannelCheck
+ * [] call acre_sys_io_fnc_ts3ChannelMove
  *
  * Public: No
  */

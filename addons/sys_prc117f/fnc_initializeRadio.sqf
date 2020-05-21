@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_initializeRadio
  *
  * Public: No
  */
@@ -33,7 +33,7 @@ if (isNil "_currentChannels") then {
 
 for "_i" from 0 to (count _channels)-1 do {
     private _channelData = HASH_COPY((_channels select _i));
-    TRACE_1("Setting PRC-152 Init Channel Data", _channelData);
+    TRACE_1("Setting PRC-117F Init Channel Data", _channelData);
     PUSH(_currentChannels, _channelData);
 };
 HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume));

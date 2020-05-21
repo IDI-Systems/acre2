@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_COMPONENT_fnc_FUNCTIONNAME
+ * [ARGUMENTS] call acre_sys_prc117f_fnc_delayFunction
  *
  * Public: No
  */
@@ -20,7 +20,7 @@ params ["_radioId", "_endFunction", "_time"];
 
 TRACE_1("Registering a delayed function!", _this);
 
-private _fnc = {
+[{
     params ["_args"];
 
     _args params ["_time", "_radioId", "_function", "_funcArgs"];
@@ -33,5 +33,4 @@ private _fnc = {
 
         [_radioId, _funcArgs] call _function;
     };
-};
-ADDPFH(_fnc, 0, [ARR_3(diag_tickTime+_time,EGVAR(sys_radio,currentRadioDialog),_endFunction)]);
+}, 0, [diag_tickTime + _time, EGVAR(sys_radio,currentRadioDialog), _endFunction]] call CBA_fnc_addPerFrameHandler;
