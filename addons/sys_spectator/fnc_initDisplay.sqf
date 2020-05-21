@@ -27,4 +27,4 @@ private _ctrlList = _display displayCtrl IDC_RADIOS_LIST;
 _ctrlList ctrlAddEventHandler ["LBSelChanged", {call FUNC(handleListSelect)}];
 
 // Add PFH to update radios list based on the focused target's radios
-[LINKFUNC(handleUpdate), 0, [_display, _targetFunction, []]] call CBA_fnc_addPerFrameHandler;
+[LINKFUNC(handleUpdate), 0, [_display, _targetFunction]] call CBA_fnc_addPerFrameHandler;

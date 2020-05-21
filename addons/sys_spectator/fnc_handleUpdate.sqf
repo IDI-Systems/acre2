@@ -8,7 +8,6 @@
  * 0: Arguments <ARRAY>
  *   0: Display <DISPLAY>
  *   1: Target Function <CODE>
- *   2: Previous Radios <ARRAY>
  * 2: PFH Handle <NUMBER>
  *
  * Return Value:
@@ -21,21 +20,20 @@
  */
 
 params ["_args", "_pfhID"];
-_args params ["_display", "_targetFunction", "_previousRadios"];
+_args params ["_display", "_targetFunction"];
 
 // Exit if the spectator display is closed
 if (isNull _display) exitWith {
     [_pfhID] call CBA_fnc_removePerFrameHandler;
 };
 
-// Get the currently focused target's radios
+// Get the currently focused target
 private _target = [] call _targetFunction;
+if (isNull _target) exitWith {};
+
+// Refresh the list with the target's radios
 private _radios = _target call EFUNC(sys_data,getRemoteRadioList);
 
-// No change to target's radios, nothing to update
-if (_radios isEqualTo _previousRadios) exitWith {};
-
-// Radios changed, need to refresh list
 private _ctrlList = _display displayCtrl IDC_RADIOS_LIST;
 lbClear _ctrlList;
 
@@ -63,5 +61,3 @@ lbSort _ctrlList;
 // Show none text if target has no radios
 private _ctrlNone = _display displayCtrl IDC_RADIOS_NONE;
 _ctrlNone ctrlShow (_radios isEqualTo []);
-
-_args set [2, _radios];
