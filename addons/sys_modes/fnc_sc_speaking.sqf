@@ -28,6 +28,11 @@ private _maxSignal = [0, -993];
 
 if (_rxRadioId != _txRadioId) then {
     _maxSignal = [_txFreq, _txPower, _rxRadioId, _txRadioId] call EFUNC(sys_signal,getSignal);
+} else {
+    systemChat format ["%1, %2, %3", _rxRadioId, _txRadioId, (toLower _txRadioId) in ACRE_SPECTATOR_RADIOS];
+    if ((toLower _txRadioId) in ACRE_SPECTATOR_RADIOS) then {
+        _maxSignal = [1, 0];
+    };
 };
 
 private _return = [_txRadioId, _rxRadioId, _maxSignal select 0, _maxSignal select 1, 0];

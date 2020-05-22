@@ -1,3 +1,4 @@
+#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
@@ -100,7 +101,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     private _compiledParams = HASH_CREATE;
     {
         private _recRadio = _x;
-        if (_recRadio != ACRE_BROADCASTING_RADIOID || {GVAR(fullDuplex)}) then {
+        if (_recRadio != ACRE_BROADCASTING_RADIOID || {GVAR(fullDuplex)} || toLower(_recRadio) in ACRE_SPECTATOR_RADIOS) then {
             #ifdef ENABLE_PERFORMANCE_COUNTERS
                 BEGIN_COUNTER(radio_loop_single_radio);
             #endif
@@ -128,7 +129,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 // if (!GVAR(speaking_cache_valid)) then {
                 private _sourceRadios = _sources select _forEachIndex;
                 private _hearableRadios = [_recRadio, "handleMultipleTransmissions", _sourceRadios] call EFUNC(sys_data,transEvent);
-                if (GVAR(fullDuplex)) then {
+                if (GVAR(fullDuplex) || toLower(_recRadio) in ACRE_SPECTATOR_RADIOS) then {
                     _hearableRadios = _sourceRadios;
                 };
                 // HASH_SET(GVAR(coreCache), _recRadio + "hmt_cache", _hearableRadios);
@@ -210,15 +211,19 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     #endif
 
     {
+        diag_log format ["compiledParams: %1", _x];
         private _unit = objectFromNetId _x;
+        diag_log format ["Unit compiledParams: %1", _unit];
         if (!isNull _unit) then {
             _sentMicRadios pushBack _unit;
             private _params = HASH_GET(_compiledParams, _x);
+            diag_log format ["params %1", _params];
             private _canUnderstand = [_unit] call FUNC(canUnderstand);
             private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, count _params];
             {
                 _paramArray append _x;
             } forEach _params;
+            diag_log format ["paramArray %1", _paramArray];
             CALL_RPC("updateSpeakingData", _paramArray);
         };
     } forEach HASH_KEYS(_compiledParams);

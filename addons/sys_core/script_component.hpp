@@ -3,7 +3,7 @@
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 // #define USE_DEBUG_EXTENSIONS
-// #define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
 
