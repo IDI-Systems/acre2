@@ -100,7 +100,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     private _compiledParams = HASH_CREATE;
     {
         private _recRadio = _x;
-        if (_recRadio != ACRE_BROADCASTING_RADIOID || {GVAR(fullDuplex)} || {toLower(_recRadio) in ACRE_SPECTATOR_RADIOS}) then {
+        if (_recRadio != ACRE_BROADCASTING_RADIOID || {GVAR(fullDuplex)} || {(toLower _recRadio) in ACRE_SPECTATOR_RADIOS}) then {
             #ifdef ENABLE_PERFORMANCE_COUNTERS
                 BEGIN_COUNTER(radio_loop_single_radio);
             #endif
@@ -128,7 +128,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 // if (!GVAR(speaking_cache_valid)) then {
                 private _sourceRadios = _sources select _forEachIndex;
                 private _hearableRadios = [_recRadio, "handleMultipleTransmissions", _sourceRadios] call EFUNC(sys_data,transEvent);
-                if (GVAR(fullDuplex) || {toLower(_recRadio) in ACRE_SPECTATOR_RADIOS}) then {
+                if (GVAR(fullDuplex) || {(toLower _recRadio) in ACRE_SPECTATOR_RADIOS}) then {
                     _hearableRadios = _sourceRadios;
                 };
                 // HASH_SET(GVAR(coreCache), _recRadio + "hmt_cache", _hearableRadios);
