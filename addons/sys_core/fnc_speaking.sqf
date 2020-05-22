@@ -1,4 +1,3 @@
-#define DEBUG_MODE_FULL
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
@@ -211,19 +210,15 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     #endif
 
     {
-        diag_log format ["compiledParams: %1", _x];
         private _unit = objectFromNetId _x;
-        diag_log format ["Unit compiledParams: %1", _unit];
         if (!isNull _unit) then {
             _sentMicRadios pushBack _unit;
             private _params = HASH_GET(_compiledParams, _x);
-            diag_log format ["params %1", _params];
             private _canUnderstand = [_unit] call FUNC(canUnderstand);
             private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, count _params];
             {
                 _paramArray append _x;
             } forEach _params;
-            diag_log format ["paramArray %1", _paramArray];
             CALL_RPC("updateSpeakingData", _paramArray);
         };
     } forEach HASH_KEYS(_compiledParams);
