@@ -235,7 +235,7 @@ namespace acre {
                 result = ss.str();
 
                 if (logging >= 1) {
-                    LOG(INFO) << "SIGNAL: " << args_.get() << signal_result.result_dbm << "," << signal_result.result_v;
+                    LOG(INFO) << "SIGNAL: " << args_.to_string() << signal_result.result_dbm << "," << signal_result.result_v;
                 }
 
 #endif
