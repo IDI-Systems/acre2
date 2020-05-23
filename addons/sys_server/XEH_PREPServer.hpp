@@ -11,3 +11,4 @@ PREP(stopRadioGarbageCollect);
 PREP(sendIntentToGarbageCollect);
 PREP(removeGCQueue);
 PREP(handlePlayerDisconnected);
+PREP(invalidGarbageCollect);
