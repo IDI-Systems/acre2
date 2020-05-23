@@ -161,43 +161,50 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             return;
         }
 
-        const idi::acre::UpdateCode update_ts3 = ts3_plugin.handle_update_plugin();
-        std::string error_msg;
-        const bool update_ts3_ok = (update_ts3 != idi::acre::UpdateCode::update_failed) && (update_ts3 != idi::acre::UpdateCode::other);
-        if (!update_ts3_ok) {
-            error_msg = ts3_plugin.get_last_error_message();
-        }
+        bool try_copy = false;
 
-        const idi::acre::UpdateCode update_mumble = mumble_plugin.handle_update_plugin();
-        const bool update_mumble_ok =
-          (update_mumble != idi::acre::UpdateCode::update_failed) && (update_mumble != idi::acre::UpdateCode::other);
-        if (!update_mumble_ok) {
-            error_msg = mumble_plugin.get_last_error_message();
-        }
-
-        if (!update_ts3_ok || !update_mumble_ok) {
-            std::ostringstream oss;
-            oss << "ACRE2 was unable to copy the Mumble/TeamSpeak 3 plugin. Please check if you have write access to the plugin folder, "
-                << "close any instances of Mumble and/or TeamSpeak 3 and/or Mumble and click \"Try Again\".\n\nIf you would like to close Arma 3 "
-                << "click Cancel. Press Continue to launch Arma 3 regardless.\n\n"
-                << error_msg;
-            const int32_t result =
-              MessageBoxA(nullptr, (LPCSTR) oss.str().c_str(), "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
-            if (result == IDCANCEL) {
-                TerminateProcess(GetCurrentProcess(), 0);
-                return;
-            } else if (result == IDCONTINUE) {
-                sprintf(output, "[-4,true,%d %d]", ts3_plugin.get_last_error(), mumble_plugin.get_last_error());
-                return;
+        do {
+            const idi::acre::UpdateCode update_ts3 = ts3_plugin.handle_update_plugin();
+            std::string error_msg;
+            const bool update_ts3_ok = (update_ts3 != idi::acre::UpdateCode::update_failed) && (update_ts3 != idi::acre::UpdateCode::other);
+            if (!update_ts3_ok) {
+                error_msg = ts3_plugin.get_last_error_message();
             }
-        }
 
-        // Update was not necessary.
-        if ((update_ts3 == idi::acre::UpdateCode::update_not_necessary) &&
-            (update_mumble == idi::acre::UpdateCode::update_not_necessary)) { // No update was copied etc.
-            strncpy(output, "[0]", outputSize);
-            return;
-        }
+            const idi::acre::UpdateCode update_mumble = mumble_plugin.handle_update_plugin();
+            const bool update_mumble_ok =
+                (update_mumble != idi::acre::UpdateCode::update_failed) && (update_mumble != idi::acre::UpdateCode::other);
+            if (!update_mumble_ok) {
+                error_msg = mumble_plugin.get_last_error_message();
+            }
+
+            if (!update_ts3_ok || !update_mumble_ok) {
+                std::ostringstream oss;
+                oss << "ACRE2 was unable to copy the Mumble/TeamSpeak 3 plugin. Please check if you have write access to the plugin folder, "
+                    << "close any instances of Mumble and/or TeamSpeak 3 and/or Mumble and click \"Try Again\".\n\nIf you would like to close Arma 3 "
+                    << "click Cancel. Press Continue to launch Arma 3 regardless.\n\n"
+                    << error_msg;
+                const int32_t result =
+                    MessageBoxA(nullptr, (LPCSTR)oss.str().c_str(), "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
+                if (result == IDCANCEL) {
+                    TerminateProcess(GetCurrentProcess(), 0);
+                    return;
+                }
+                else if (result == IDCONTINUE) {
+                    sprintf(output, "[-4,true,%d %d]", ts3_plugin.get_last_error(), mumble_plugin.get_last_error());
+                    return;
+                }
+            } else {
+                try_copy = true;
+
+                // Update was not necessary.
+                if ((update_ts3 == idi::acre::UpdateCode::update_not_necessary) &&
+                    (update_mumble == idi::acre::UpdateCode::update_not_necessary)) { // No update was copied etc.
+                    strncpy(output, "[0]", outputSize);
+                    return;
+                }
+            }
+        } while (!try_copy);
 
         std::ostringstream oss;
         oss << "A new version of ACRE2 (" << current_version << ") has been installed!\n\n";
@@ -209,8 +216,10 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 oss << path << "\n";
                 found_paths.append(path + "\n");
             }
+
+            oss << "\n";
         }
-        oss << "\n";
+        
 
         if (!mumble_plugin.get_updated_paths().empty()) {
             oss << "The Mumble plugins have been copied to the following location(s):\n";
@@ -218,24 +227,30 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 oss << path << "\n";
                 found_paths.append(path + "\n");
             }
+
+            oss << "\n";
         }
-        oss << "\n";
+        
 
         if (!ts3_plugin.get_removed_paths().empty()) {
             oss << "The TeamSpeak 3 plugin has been removed from the following location(s):\n";
             for (const auto &path : ts3_plugin.get_removed_paths()) {
                 oss << path << "\n";
             }
+
+            oss << "\n";
         }
-        oss << "\n";
+        
 
         if (!mumble_plugin.get_removed_paths().empty()) {
             oss << "The Mumble plugin has been removed from the following location(s):\n";
             for (const auto &path : mumble_plugin.get_removed_paths()) {
                 oss << path << "\n";
             }
+
+            oss << "\n";
         }
-        oss << "\n";
+       
 
         oss << "If this is NOT valid, please uninstall all versions of Mumble and/or TeamSpeak 3 and reinstall both it and ACRE2 or copy the plugins "
             << "manually to your correct installation.\n\n";
