@@ -378,7 +378,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                         unique_ts_locations.push_back(location);
 
                         // If we are going to copy to a folder do not remove from the plugin from it.
-                        std::remove(unique_delete_ts_locations.begin(), unique_delete_ts_locations.end(), location);
+                        unique_delete_ts_locations.erase(std::remove(unique_delete_ts_locations.begin(), unique_delete_ts_locations.end(), location), unique_delete_ts_locations.end());
                     }
                 }
             }
