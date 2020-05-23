@@ -57,7 +57,7 @@ namespace idi::acre {
             std::vector<std::string> mumble_delete_locations = get_plugin_delete_locations();
 
             for (const auto& location : mumble_locations) {
-                (void)std::remove(mumble_delete_locations.begin(), mumble_delete_locations.end(), location);
+                mumble_delete_locations.erase(std::remove(mumble_delete_locations.begin(), mumble_delete_locations.end(), location), mumble_delete_locations.end());
             }
 
             // No locations to copy to.

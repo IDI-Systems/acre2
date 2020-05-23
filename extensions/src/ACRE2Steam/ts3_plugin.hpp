@@ -62,7 +62,7 @@ namespace idi::acre {
             std::vector<std::string> ts3_delete_locations = get_plugin_delete_locations();
 
             for (const auto &location : ts3_locations) {
-                (void) std::remove(ts3_delete_locations.begin(), ts3_delete_locations.end(), location);
+                ts3_delete_locations.erase(std::remove(ts3_delete_locations.begin(), ts3_delete_locations.end(), location), ts3_delete_locations.end());
             }
 
             // No locations to copy to.
