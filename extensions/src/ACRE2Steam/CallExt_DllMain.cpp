@@ -1,5 +1,6 @@
 /**
  * @author    Ferran Obón Santacana (Magnetar) <ferran@idi-systems.com>
+ * @author    Cliff Foster (Nou) <cliff@idi-systems.com>
  * @author    James Smith (snippers) <james@idi-systems.com>
  *
  * @copyright Copyright (c) 2020 International Development & Integration Systems LLC
@@ -14,6 +15,7 @@
 #include "mumble_plugin.hpp"
 #include "shlobj.h"
 #include "ts3_plugin.hpp"
+#include "command_options.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -40,42 +42,6 @@ void __stdcall RVExtensionVersion(char *output, int outputSize) {
     sprintf_s(output, outputSize - 1, "%s", ACRE_VERSION);
 }
 
-inline std::string get_cmdline() {
-    return std::string(GetCommandLineA());
-}
-
-bool skip_plugin_copy() {
-    return std::string::npos != get_cmdline().find("-skipAcrePluginCopy");
-}
-
-bool skip_ts_plugin_copy() {
-    return std::string::npos != get_cmdline().find("-skipAcreTSPluginCopy");
-}
-
-bool skip_mumble_plugin_copy() {
-    return std::string::npos != get_cmdline().find("-skipAcreMumblePluginCopy");
-}
-
-std::string mumble_install_path() {
-    const std::string option = "-mumblePath=";
-    size_t pos = get_cmdline().find(option);
-    if (pos == std::string::npos) {
-        return "";
-    }
-    size_t end_path_pos = get_cmdline().find_first_of(' ', pos);
-    if (end_path_pos == std::string::npos) {
-        // Check for end of line
-
-        end_path_pos = get_cmdline().find_first_of('\n', pos);
-
-        if (end_path_pos == std::string::npos) {
-            return "";
-        }
-    }
-    pos += option.length();
-    return get_cmdline().substr(pos, end_path_pos - pos);
-}
-
 void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     size_t id_length = 1;
     std::string functionStr(function);
@@ -94,15 +60,19 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
     const auto command = static_cast<SteamCommand>(std::atoi(id.c_str()));
 
-    if (skip_plugin_copy()) {
+    std::string cmd_line = std::string(GetCommandLineA());
+    idi::acre::Arguments cmd_args(cmd_line);
+    if (cmd_args.has_argument("-skipAcrePluginCopy")) {
         return;
     }
 
-    const bool skip_ts_plugin     = skip_ts_plugin_copy();
-    const bool skip_mumble_plugin = skip_mumble_plugin_copy();
+    const bool skip_ts_plugin = cmd_args.has_argument("-skipAcreTSPluginCopy");
+    const bool skip_mumble_plugin = cmd_args.has_argument("-skipAcreMumblePluginCopy");
+
+    std::string test = cmd_args.get_argument("-mumblePath");
 
     idi::acre::TS3Plugin ts3_plugin(skip_ts_plugin);
-    idi::acre::Mumble_plugin mumble_plugin(skip_mumble_plugin, mumble_install_path());
+    idi::acre::Mumble_plugin mumble_plugin(skip_mumble_plugin, cmd_args.get_argument("-mumblePath"));
 
     switch (command) {
     case SteamCommand::check: {
@@ -231,7 +201,6 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             oss << "\n";
         }
         
-
         if (!ts3_plugin.get_removed_paths().empty()) {
             oss << "The TeamSpeak 3 plugin has been removed from the following location(s):\n";
             for (const auto &path : ts3_plugin.get_removed_paths()) {
@@ -241,7 +210,6 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             oss << "\n";
         }
         
-
         if (!mumble_plugin.get_removed_paths().empty()) {
             oss << "The Mumble plugin has been removed from the following location(s):\n";
             for (const auto &path : mumble_plugin.get_removed_paths()) {
@@ -251,7 +219,6 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             oss << "\n";
         }
        
-
         oss << "If this is NOT valid, please uninstall all versions of Mumble and/or TeamSpeak 3 and reinstall both it and ACRE2 or copy the plugins "
             << "manually to your correct installation.\n\n";
         oss << "If this appears to be the correct folder(s) please remember to enable the plugin in Mumble and/or TeamSpeak 3!";
