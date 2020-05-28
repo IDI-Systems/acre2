@@ -59,6 +59,28 @@ namespace idi::acre {
 
     protected:
 
+        // Convert a wide Unicode string to an UTF8 string
+
+        /**
+         * Convert a wide Unicode string to an UTF8 string .
+         *
+         * @param[in] wide_str_  Wide unicode string
+         *
+         * @return std::string   UTF-8 encoded string
+         */
+        std::string wide_string_to_utf8(const std::wstring& wide_str_) {
+            if (wide_str_.empty()) {
+                return "";
+            }
+
+            const int32_t size_needed = WideCharToMultiByte(CP_UTF8, 0, &wide_str_[0], static_cast<int32_t>(wide_str_.size()), nullptr, 0, nullptr, nullptr);
+
+            std::string utf8_str(size_needed, 0);
+            WideCharToMultiByte(CP_UTF8, 0, &wide_str_[0], static_cast<int32_t>(wide_str_.size()), &utf8_str[0], size_needed, nullptr, nullptr);
+
+            return utf8_str;
+        }
+
         bool get_skip_plugin() const noexcept { return skip_plugin; }
 
         bool compare_file(const std::string &path_a_, const std::string &path_b_) noexcept;

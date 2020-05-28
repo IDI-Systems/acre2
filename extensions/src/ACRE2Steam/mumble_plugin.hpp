@@ -40,9 +40,8 @@ namespace idi::acre {
                         return false;
                     }
 
-                    // TODO: Substitude it with WideCharToMultiByte from "Windows.h"
-                    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
-                    std::string app_data = conv.to_bytes(folder_path);
+                    // Convert to UTF-8 string
+                    std::string app_data = wide_string_to_utf8(folder_path);
 
                     app_data.append("\\Mumble");
                     check_plugin_locations(app_data);

@@ -34,9 +34,8 @@ namespace idi::acre {
                 return false;
             }
 
-            // TODO: Substitude it with WideCharToMultiByte from "Windows.h"
-            std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>> conv;
-            std::string app_data = conv.to_bytes(app_data_roaming);
+            // Convert to UTF-8 string
+            std::string app_data = wide_string_to_utf8(app_data_roaming);
 
             app_data.append("\\TS3Client");
             CoTaskMemFree(app_data_roaming); // Free it up.
