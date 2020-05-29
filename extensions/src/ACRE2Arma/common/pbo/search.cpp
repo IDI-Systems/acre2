@@ -241,6 +241,14 @@ namespace acre {
                     continue;
                 }
 
+                /* Do not try to get the path of objects which are not disk
+                files. NtQueryObject and GetFinalPathNameByHandle will hang if
+                the specified handle is not of the type FILE_TYPE_DISK. */
+                if (GetFileType(dupHandle) != FILE_TYPE_DISK) {
+                    CloseHandle(dupHandle);
+                    continue;
+                }
+
                 /* Query the object type. */
                 objectTypeInfo = (POBJECT_TYPE_INFORMATION)malloc(0x1000);
                 if (!NT_SUCCESS(NtQueryObject(
@@ -309,17 +317,11 @@ namespace acre {
                     std::string object_name(tmp_name.begin(), tmp_name.end());
                     //LOG(INFO) << "File: " << object_name;
                     if (object_type == "File" && object_name.find(".pbo") != object_name.npos) {
+                        char buffer[MAX_PATH];
+                        GetFinalPathNameByHandle(dupHandle, buffer, sizeof(buffer), VOLUME_NAME_DOS);
 
-                        /* Do not try to get the path of objects which are not disk files. */
-                        /* The GetFinalPathNameByHandle function will hang if the specified handle is not of the type FILE_TYPE_DISK. */
-                        DWORD fileType = GetFileType(dupHandle);
-                        if (fileType == FILE_TYPE_DISK) {
-                            char buffer[MAX_PATH];
-                            GetFinalPathNameByHandle(dupHandle, buffer, sizeof(buffer), VOLUME_NAME_DOS);
-
-                            //LOG(INFO) << "Pbo: " << buffer;
-                            _active_pbo_list.push_back(std::string(buffer));
-                        }
+                        //LOG(INFO) << "Pbo: " << buffer;
+                        _active_pbo_list.push_back(std::string(buffer));
                     }
                 }
 
