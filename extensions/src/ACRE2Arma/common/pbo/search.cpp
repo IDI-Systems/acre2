@@ -138,8 +138,8 @@ namespace acre {
                 return { pbo_file_path, pbo_files_map };
             };
             acre::pbo::archive _archive(pbo_stream);
-            for (acre::pbo::entry_p& entry : _archive.entries) {
-                if (entry->filename != "") {
+            for (const acre::pbo::entry_p &entry : _archive.entries) {
+                if (!entry->filename.empty()) {
                     if (std::regex_match(entry->filename, txt_regex)) {
                         std::string full_virtual_path = _archive.info->header["prefix"] + "\\" + entry->filename;
                         std::transform(full_virtual_path.begin(), full_virtual_path.end(), full_virtual_path.begin(), ::tolower);
@@ -165,7 +165,7 @@ namespace acre {
                 std::string error_file_name;
                 std::unordered_map<std::string, std::string> result;
                 std::tie(error_file_name, result) = worker.get();
-                if (error_file_name.size()) {
+                if (!error_file_name.empty()) {
                     LOG(ERROR) << "Cannot open file - " << error_file_name;
                     continue;
                 };
