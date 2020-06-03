@@ -26,6 +26,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <future>
 
 #pragma comment(lib, "shlwapi.lib")
 
@@ -134,16 +135,20 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
         bool try_copy = false;
 
         do {
-            const idi::acre::UpdateCode update_ts3 = ts3_plugin.handle_update_plugin();
+            std::future<idi::acre::UpdateCode> update_ts3 = std::async(std::launch::async, [&]() {return ts3_plugin.handle_update_plugin(); });
+            std::future<idi::acre::UpdateCode> update_mumble = std::async(std::launch::async, [&]() {return mumble_plugin.handle_update_plugin(); });
+
+            const idi::acre::UpdateCode ts3_update_result = update_ts3.get();
+            const idi::acre::UpdateCode mumble_update_result = update_mumble.get();
+
             std::string error_msg;
-            const bool update_ts3_ok = (update_ts3 != idi::acre::UpdateCode::update_failed) && (update_ts3 != idi::acre::UpdateCode::other);
+            const bool update_ts3_ok = (ts3_update_result != idi::acre::UpdateCode::update_failed) && (ts3_update_result != idi::acre::UpdateCode::other);
             if (!update_ts3_ok) {
                 error_msg = ts3_plugin.get_last_error_message();
             }
 
-            const idi::acre::UpdateCode update_mumble = mumble_plugin.handle_update_plugin();
             const bool update_mumble_ok =
-                (update_mumble != idi::acre::UpdateCode::update_failed) && (update_mumble != idi::acre::UpdateCode::other);
+                (mumble_update_result != idi::acre::UpdateCode::update_failed) && (mumble_update_result != idi::acre::UpdateCode::other);
             if (!update_mumble_ok) {
                 error_msg = mumble_plugin.get_last_error_message();
             }
@@ -168,8 +173,8 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 try_copy = true;
 
                 // Update was not necessary.
-                if ((update_ts3 == idi::acre::UpdateCode::update_not_necessary) &&
-                    (update_mumble == idi::acre::UpdateCode::update_not_necessary)) { // No update was copied etc.
+                if ((ts3_update_result == idi::acre::UpdateCode::update_not_necessary) &&
+                    (mumble_update_result == idi::acre::UpdateCode::update_not_necessary)) { // No update was copied etc.
                     strncpy(output, "[0]", outputSize);
                     return;
                 }
