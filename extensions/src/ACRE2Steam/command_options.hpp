@@ -19,7 +19,7 @@ namespace idi::acre {
 
         ~Arguments() = default;
 
-        const std::string& get_argument(const std::string &key_) const noexcept;
+        std::string get_argument(const std::string &key_) const noexcept;
 
         bool has_argument(const std::string& key_) const noexcept;
 

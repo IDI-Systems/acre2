@@ -201,7 +201,9 @@ idi::acre::UpdateCode VOIPPlugin::handle_update_plugin() noexcept {
                     return UpdateCode::update_failed;
                 }
 
-                updated_paths.emplace_back(location);
+                if (updated_paths.cend() == std::find(updated_paths.cbegin(), updated_paths.cend(), location)) {
+                    updated_paths.emplace_back(location);
+                }
                 update_status = UpdateCode::update_ok;
             }
         }
@@ -226,7 +228,9 @@ idi::acre::UpdateCode VOIPPlugin::handle_update_plugin() noexcept {
                 return UpdateCode::update_failed;
             }
 
-            removed_paths.emplace_back(location);
+            if (removed_paths.cend() == std::find(removed_paths.cbegin(), removed_paths.cend(), location)) {
+                removed_paths.emplace_back(location);
+            }
             update_status = UpdateCode::update_ok;
         }
     }

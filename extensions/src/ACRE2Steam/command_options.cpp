@@ -14,7 +14,7 @@
 
 using ::idi::acre::Arguments;
 
-const std::string& Arguments::get_argument(const std::string& key_) const noexcept {
+std::string Arguments::get_argument(const std::string& key_) const noexcept {
     const auto it = arguments.find(key_);
 
     if (it == arguments.cend()) {
