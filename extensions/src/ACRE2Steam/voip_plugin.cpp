@@ -63,11 +63,9 @@ std::string idi::acre::find_mod_file(const std::string& filename) {
 }
 
 std::string VOIPPlugin::read_reg_value(HKEY root_, const std::string &key_, const std::string &name_, const bool use_x64_) noexcept {
-    REGSAM sam_key;
+    REGSAM sam_key = KEY_READ | KEY_WOW64_64KEY;
 
-    if (use_x64_) {
-        sam_key = KEY_READ | KEY_WOW64_64KEY;
-    } else {
+    if (!use_x64_) {
         sam_key = KEY_READ;
     }
 
@@ -124,7 +122,7 @@ bool VOIPPlugin::compare_file(const std::string &path_a_, const std::string &pat
 }
 
 void VOIPPlugin::check_plugin_locations(const std::string &app_data_) noexcept {
-    if (std::filesystem::exists(app_data_)) {
+    if (std::filesystem::exists(app_data_) && (plugin_locations.cend() == std::find(plugin_locations.cbegin(), plugin_locations.cend(), app_data_))) {
         plugin_locations.emplace_back(app_data_);
     }
 }

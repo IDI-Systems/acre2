@@ -70,10 +70,9 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     const bool skip_ts_plugin = cmd_args.has_argument("-skipAcreTSPluginCopy");
     const bool skip_mumble_plugin = cmd_args.has_argument("-skipAcreMumblePluginCopy");
 
-    std::string test = cmd_args.get_argument("-mumblePath");
-
     idi::acre::TS3Plugin ts3_plugin(skip_ts_plugin);
-    idi::acre::Mumble_plugin mumble_plugin(skip_mumble_plugin, cmd_args.get_argument("-mumblePath"));
+    idi::acre::Mumble_plugin mumble_plugin(skip_mumble_plugin, "");
+    //idi::acre::Mumble_plugin mumble_plugin(skip_mumble_plugin, cmd_args.get_argument("-mumblePath"));
 
     switch (command) {
     case SteamCommand::check: {
