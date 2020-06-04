@@ -15,3 +15,9 @@ class Extended_PostInit_EventHandlers {
         clientInit = QUOTE(call COMPILE_FILE(XEH_postInit));
     };
 };
+
+class Extended_DisplayLoad_EventHandlers {
+    class RscDisplayInventory {
+        ADDON = QUOTE(call FUNC(initDisplayInventory));
+    };
+};

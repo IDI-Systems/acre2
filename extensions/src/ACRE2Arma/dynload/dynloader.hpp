@@ -6,18 +6,23 @@
 
 typedef void (__stdcall *RVExtensionVersion)(char *output, int outputSize);
 typedef void (__stdcall *RVExtension)(char *output, int outputSize, const char *function);
+typedef int (__stdcall *RVExtensionArgs)(char *output, int outputSize, const char *function, const char** args, int argsCnt);
+typedef void(__stdcall* RVExtensionRegisterCallback)(int(*callbackProc)(const char* name, const char* function, const char* data));
+
+extern int(*callbackPtr)(char const* name, char const* function, char const* data);
 
 namespace acre {
 
     class module {
     public:
-        module() : handle(nullptr), function(nullptr), name("") {}
-        module(const std::string & name_, HMODULE handle_, RVExtension function_, const std::string & file_) : handle(handle_), function(function_), name(name_), temp_filename(file_) {}
+        module() : handle(nullptr), func_rv(nullptr), func_rvArgs(nullptr), name("") {}
+        module(const std::string & name_, HMODULE handle_, RVExtension func_rv_, RVExtensionArgs func_rvArgs_, const std::string & file_) : handle(handle_), func_rv(func_rv_), func_rvArgs(func_rvArgs_), name(name_), temp_filename(file_) {}
 
         std::string name;
         std::string temp_filename;
         HMODULE     handle;
-        RVExtension function;
+        RVExtension func_rv;
+        RVExtensionArgs func_rvArgs;
     };
 
     class dynloader : public singleton<dynloader> {
@@ -34,7 +39,9 @@ namespace acre {
 #ifdef _WINDOWS
         bool load(const arguments & args_, std::string & result) {
             HMODULE dllHandle;
-            RVExtension function;
+            RVExtension func_rv;
+            RVExtensionArgs func_rvArgs;
+            RVExtensionRegisterCallback func_rvCallback;
 
             LOG(INFO) << "Load requested [" << args_.as_string(0) << "]";
 
@@ -51,7 +58,7 @@ namespace acre {
                 LOG(ERROR) << "GetTempPath() failed, e=" << GetLastError();
                 return false;
             }
-            if (!GetTempFileNameA(tmpPath, "acre_dynload", TRUE, buffer)) {
+            if (!GetTempFileNameA(tmpPath, "acre_dynload", false, buffer)) { // get a unique temp filename each time
                 LOG(ERROR) << "GetTempFileName() failed, e=" << GetLastError();
                 return false;
             }
@@ -72,17 +79,42 @@ namespace acre {
                 LOG(ERROR) << "LoadLibrary() failed, e=" << GetLastError() << " [" << args_.as_string(0) << "]";
                 return false;
             }
-
-            function = (RVExtension)GetProcAddress(dllHandle, "_RVExtension@12");
-            if (!function) {
-                LOG(ERROR) << "GetProcAddress() failed, e=" << GetLastError() << " [" << args_.as_string(0) << "]";
+#ifdef _WIN64
+            func_rv = (RVExtension)GetProcAddress(dllHandle, "RVExtension");
+#else
+            func_rv = (RVExtension)GetProcAddress(dllHandle, "_RVExtension@12");
+#endif
+            if (!func_rv) {
+                LOG(ERROR) << "GetProcAddress() failed for RVExtension, e=" << GetLastError() << " [" << args_.as_string(0) << "]";
                 FreeLibrary(dllHandle);
                 return false;
+            }
+#ifdef _WIN64
+            func_rvArgs = (RVExtensionArgs)GetProcAddress(dllHandle, "RVExtensionArgs");
+#else
+            func_rv = (RVExtension)GetProcAddress(dllHandle, "_RVExtensionArgs@20");
+#endif
+            
+            if (!func_rvArgs) {
+                LOG(INFO) << "-Extension does not support RVExtensionArgs, e=" << GetLastError() << " [" << args_.as_string(0) << "]";
+            } else {
+                LOG(INFO) << "-Extension supports RVExtensionArgs";
+            }
+#ifdef _WIN64
+            func_rvCallback = (RVExtensionRegisterCallback)GetProcAddress(dllHandle, "RVExtensionRegisterCallback");
+#else
+            func_rvCallback = (RVExtensionRegisterCallback)GetProcAddress(dllHandle, "_RVExtensionRegisterCallback@4");
+#endif
+            if (!func_rvCallback) {
+                LOG(INFO) << "-Extension does not support RVExtensionRegisterCallback, e=" << GetLastError() << " [" << args_.as_string(0) << "]";
+            } else {
+                LOG(INFO) << "-Extension supports RVExtensionRegisterCallback";
+                func_rvCallback(callbackPtr); // Call it now
             }
 
             LOG(INFO) << "Load completed [" << args_.as_string(0) << "]";
 
-            _modules[args_.as_string(0)] = module(args_.as_string(0), dllHandle, function, temp_filename);
+            _modules[args_.as_string(0)] = module(args_.as_string(0), dllHandle, func_rv, func_rvArgs, temp_filename);
 
             return false;
         }
@@ -112,18 +144,16 @@ namespace acre {
         }
 #endif
 
-        bool call(const arguments & args_, std::string & result) {
-            //LOG(INFO) << "Calling [" << args_.as_string(0) << "]";
-
+        bool callRV(const arguments & args_, std::string & result_string) {
             if (_modules.find(args_.as_string(0)) == _modules.end()) {
                 return false;
             }
 
-            result = "";
-            result.resize(4096);
+            result_string.clear();
+            result_string.resize(4096);
 
             std::string function_str;
-            std::vector<std::string> temp = acre::split(args_.get(), ',');
+            std::vector<std::string> temp = acre::split(args_.to_string(), ',');
 
             if (temp.size() < 3) {
                 function_str = temp[1];
@@ -131,11 +161,40 @@ namespace acre {
                 for (int x = 1; x < temp.size(); x++)
                     function_str = function_str + temp[x] + ",";
             }
-            _modules[args_.as_string(0)].function((char *)result.c_str(), 4096, (const char *)function_str.c_str());
+            _modules[args_.as_string(0)].func_rv((char *)result_string.c_str(), 4096, (const char *)function_str.c_str());
 #ifdef _DEBUG
             //if (args_.as_string(0) != "fetch_result" && args_.as_string(0) != "ready") {
             //    LOG(INFO) << "Called [" << args_.as_string(0) << "], with {" << function_str << "} result={" << result << "}";
             //}
+#endif
+            return true;
+        }
+
+        bool callRVArgs(const arguments & args_, std::string & result_string, std::int32_t & result_code) {
+            if (args_.size() < 2) { return false; } // callExtension ["calla", ["a.dll", "func", ...]]
+            std::string extension_file = args_.as_string(0);
+            if (_modules.find(extension_file) == _modules.end()) {
+                LOG(WARNING) << "callRVArgs could not find module [" << extension_file << "]";
+                return false;
+            } else if (!_modules[extension_file].func_rvArgs) {
+                LOG(ERROR) << "module [" << extension_file << "] does not support CallExtensionArgs";
+                return false;
+            }
+
+            result_string.clear();
+            result_string.resize(4096);
+
+            std::string function = args_.as_string(1);
+            std::vector<const char*> cstrings;
+            for (std::uint32_t i = 2; i < args_.size(); i++) {
+                cstrings.push_back(args_.as_string(i).c_str());
+            }
+
+            result_code = _modules[extension_file].func_rvArgs((char*)result_string.c_str(), 4096, function.c_str(), cstrings.data(), static_cast<int>(cstrings.size()));
+#ifdef _DEBUG
+            if (args_.as_string(0) != "ready") {
+                LOG(INFO) << "CalledArg [" << args_.as_string(0) << "], with {" << function << "} result={" << result_string << ", " << result_code << "}";
+            }
 #endif
             return true;
         }
@@ -159,7 +218,8 @@ namespace acre {
             dispatch::get().add("list", std::bind(&acre::dynloader::list, this, std::placeholders::_1, std::placeholders::_2));
             dispatch::get().add("load", std::bind(&acre::dynloader::load, this, std::placeholders::_1, std::placeholders::_2));
             dispatch::get().add("unload", std::bind(&acre::dynloader::unload, this, std::placeholders::_1, std::placeholders::_2));
-            dispatch::get().add("call", std::bind(&acre::dynloader::call, this, std::placeholders::_1, std::placeholders::_2));
+            dispatch::get().add("call", std::bind(&acre::dynloader::callRV, this, std::placeholders::_1, std::placeholders::_2));
+            dispatch::get().add("calla", std::bind(&acre::dynloader::callRVArgs, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
             return true;
         }

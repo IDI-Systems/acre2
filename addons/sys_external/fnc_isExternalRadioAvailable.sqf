@@ -11,7 +11,7 @@
  * Radio is available for external use <BOOL>
  *
  * Example:
- * ["ACRE_PRC343_ID_1"] call acre_sys_external_isExternalRadioAvailable
+ * ["ACRE_PRC343_ID_1"] call acre_sys_external_fnc_isExternalRadioAvailable
  *
  * Public: No
  */

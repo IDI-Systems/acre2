@@ -4,8 +4,9 @@
  * Disconnects the ground spike antenna and re-connects the default radio antenna. Server Event.
  *
  * Arguments:
- * 0: Ground Spike Antenna <OBJECT>
+ * 0: Ground Spike Antenna (could be null) <OBJECT>
  * 1: Player or unit <OBJECT>
+ * 2: RadioID <STRING> (default: "")
  *
  * Return Value:
  * None
@@ -16,18 +17,30 @@
  * Public: No
  */
 
-params ["_gsa", "_unit"];
+params ["_gsa", "_unit", ["_radioId", ""]];
 
 private _success = false;
-private _radioId = _gsa getVariable [QGVAR(connectedRadio), ""];
+
+if (_radioId == "") then {
+    _radioId = _gsa getVariable [QGVAR(connectedRadio), ""];
+};
 if (_radioId isEqualTo "") exitWith {
-    ERROR("Empty unique radio ID");
+    ERROR_2("Empty unique radio ID %1:%2",_gsa,_unit);
     _success
 };
 
+private _fnc_removePFEH = {
+    private _pfh = [GVAR(gsaPFH), _radioId, _pfh] call CBA_fnc_hashGet;
+    if (!isNil "_pfh") then {
+        [_pfh] call CBA_fnc_removePerFrameHandler;
+        [GVAR(gsaPFH), _radioId, nil] call CBA_fnc_hashSet;
+    };
+};
+
 private _connectedUnit = [_radioId] call EFUNC(sys_radio,getRadioObject);
-if (isNull _connectedUnit) exitWith {
-    ERROR("Null connected object returned");
+if ((isNil "_connectedUnit") || {isNull _connectedUnit}) exitWith {
+    ERROR_3("Nil/Null connected object returned %1:%2:%3",_gsa,_unit,_radioId);
+    call _fnc_removePFEH;
     _success
 };
 
@@ -42,12 +55,7 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_
             _gsa setVariable [QGVAR(connectedRadio), "", true];
             [_radioId, "setState", ["externalAntennaConnected", [false, objNull]]] call EFUNC(sys_data,dataEvent);
 
-            // Support for having several radios connected to GSA
-            private _pfh = [GVAR(gsaPFH), _radioId, _pfh] call CBA_fnc_hashGet;
-            if !(isNil "_pfh") then {
-                [_pfh] call CBA_fnc_removePerFrameHandler;
-                [GVAR(gsaPFH), _radioId, nil] call CBA_fnc_hashSet;
-            };
+            call _fnc_removePFEH;
 
             if (_connectedUnit isKindOf "CAManBase" || {!(crew _connectedUnit isEqualTo [])}) then {
                 if (_connectedUnit isKindOf "CAManBase") then {

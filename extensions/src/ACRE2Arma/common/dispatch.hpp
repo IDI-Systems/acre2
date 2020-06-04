@@ -9,6 +9,8 @@
 #include "arguments.hpp"
 #include "singleton.hpp"
 
+extern std::function<int(char const*, char const*, char const*)> callbackFunc;
+
 namespace acre {
     class controller_module {
     public:
@@ -32,15 +34,15 @@ namespace acre {
     public:
         dispatcher() : _ready(true) { }
 
-        virtual bool call(const std::string & name_, arguments & args_, std::string & result_) {
+        virtual bool call(const std::string & name_, arguments & args_, std::string & result_string_, std::int32_t & result_code_) {
             if (_methods.find(name_) == _methods.end()) {
                 // @TODO: Exceptions
                 return false;
             }
-            return _methods[name_](args_, result_);
+            return _methods[name_](args_, result_string_, result_code_);
         }
 
-        bool add(const std::string & name_, std::function<bool(arguments &, std::string &)> func_) {
+        bool add(const std::string & name_, std::function<bool(arguments &, std::string &, std::int32_t &)> func_) {
             if (_methods.find(name_) != _methods.end()) {
                 // @TODO: Exceptions
                 return false;
@@ -53,7 +55,7 @@ namespace acre {
         bool ready() const { return _ready;  }
         void ready(bool r) { _ready.exchange(r); }
     protected:
-        std::unordered_map < std::string, std::function<bool(arguments &, std::string &)> > _methods;
+        std::unordered_map < std::string, std::function<bool(arguments &, std::string &, std::int32_t &)> > _methods;
         std::atomic_bool _ready;
     };
 
@@ -65,12 +67,6 @@ namespace acre {
         arguments args;
         uint64_t    id;
     };
-    struct dispatch_result {
-        dispatch_result() {}
-        dispatch_result(const std::string &res, const uint64_t id_) : message(res), id(id_) {}
-        std::string message;
-        uint64_t    id;
-    };
 
     class threaded_dispatcher : public dispatcher {
     public:
@@ -79,7 +75,7 @@ namespace acre {
         }
         ~threaded_dispatcher() {}
 
-        bool call(const std::string & name_, arguments & args_, std::string & result_, bool threaded) {
+        bool call(const std::string & name_, arguments & args_, std::string & result_string_, std::int32_t & result_code_, bool threaded) {
             if (_methods.find(name_) == _methods.end()) {
                 // @TODO: Exceptions
                 return false;
@@ -91,31 +87,19 @@ namespace acre {
                 // @TODO: We should provide an interface for this serialization.
                 std::stringstream ss;
                 ss << "[\"result_id\", " << _message_id << "]";
-                result_ = ss.str();
-
-                _message_id = _message_id + 1;
+                result_string_ = ss.str();
+                result_code_ = static_cast<std::int32_t>(_message_id++);
             } else {
 #ifdef _DEBUG
-                if (name_ != "fetch_result") {
-                    LOG(TRACE) << "dispatch[immediate]:\t[" << name_ << "] { " << args_.get() << " }";
-                }
+                    LOG(TRACE) << "dispatch[immediate]:\t[" << name_ << "] { " << args_.to_string() << " }";
 #endif
-                return dispatcher::call(name_, args_, result_);
+                return dispatcher::call(name_, args_, result_string_, result_code_);
             }
 
             return true;
         }
-        bool call(const std::string & name_, arguments & args_, std::string & result_) override {
-            return call(name_, args_, result_, false);
-        }
-
-        void push_result(const dispatch_result & result) {
-            std::lock_guard<std::mutex> lock(_results_lock);
-            _results.push(result);
-        }
-
-        void push_result(const std::string & result) {
-            push_result(dispatch_result(result, -1));
+        bool call(const std::string & name_, arguments & args_, std::string & result_string_, std::int32_t & result_code_) override {
+            return call(name_, args_, result_string_, result_code_, false);
         }
 
         void stop() {
@@ -142,39 +126,43 @@ namespace acre {
                 while (!empty) {
                     if (_ready) {
                         _messages_lock.lock();
-                        dispatch_result result;
                         dispatch_message _message = std::move(_messages.front());
                         _messages.pop();
                         _messages_lock.unlock();
-
-                        result.id = _message.id;
-                        result.message.resize(4096);
+ 
 #ifdef _DEBUG
-                        if (_message.command != "fetch_result") {
                             LOG(TRACE) << "dispatch[threaded]:\t[" << _message.command << "]";
                             if (_message.args.size() > 0) {
-                                //    LOG(TRACE) << "\t{ " << _messages.front().args.get() << " }";
+                                LOG(TRACE) << "\t{ " << _message.args.to_string() << " }";
+                            }
+#endif
+                        std::string result_message;
+                        std::int32_t result_dummy = 0;
+                        dispatcher::call(_message.command, _message.args, result_message, result_dummy);
+                        std::stringstream ss;
+                        ss << "[" << _message.id << ",[" << result_message << "]]";
+
+                        bool callback_recieved = false; // call back buffer can only hold 100 messages a frame (doubt acre will ever hit this limit)
+                        while (!_stop && !callback_recieved) {
+                            std::int32_t callback_buffer_remaining = callbackFunc("ACRE_TR", _message.command.c_str(), ss.str().c_str());
+                            // LOG(TRACE) << "sending callback [id: " << _message.id << ", buffer: " << callback_buffer_remaining << "]";
+                            if (callback_buffer_remaining > -1) {
+                                callback_recieved = true;
+                            } else {
+                                std::this_thread::sleep_for(std::chrono::milliseconds(5));
                             }
                         }
-#endif
-                        dispatcher::call(_message.command, _message.args, result.message);
-                        {
-                            std::lock_guard<std::mutex> lock(_results_lock);
-                            _results.push(result);
-                        }
+
                         {
                             std::lock_guard<std::mutex> lock(_messages_lock);
                             empty = _messages.empty();
                         }
-
                     }
                 }
                 sleep(5);
             }
         }
         std::atomic_bool                _stop;
-        std::queue<dispatch_result>     _results;
-        std::mutex                      _results_lock;
 
         std::queue<dispatch_message>    _messages;
         std::mutex                      _messages_lock;

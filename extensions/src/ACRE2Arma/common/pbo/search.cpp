@@ -3,6 +3,7 @@
 #include <iterator>
 #include <algorithm>
 #include <regex>
+#include <future>
 
 #define NT_SUCCESS(x) ((x) >= 0)
 #define STATUS_INFO_LENGTH_MISMATCH 0xc0000004
@@ -128,35 +129,50 @@ namespace acre {
             return index_files(".*");
         }
 
-        bool search::index_files(const std::string &filter) {
+        using pbo_worker_result = std::tuple<std::string, std::unordered_map<std::string, std::string>>;
+        pbo_worker_result get_files_in_pbo(const std::string& pbo_file_path, const std::regex& txt_regex) {
+            std::unordered_map<std::string, std::string> pbo_files_map;
             std::ifstream pbo_stream;
+            pbo_stream.open(pbo_file_path, std::ios::binary | std::ios::in);
+            if (!pbo_stream.good()) {
+                return { pbo_file_path, pbo_files_map };
+            };
+            acre::pbo::archive _archive(pbo_stream);
+            for (const acre::pbo::entry_p &entry : _archive.entries) {
+                if (!entry->filename.empty()) {
+                    if (std::regex_match(entry->filename, txt_regex)) {
+                        std::string full_virtual_path = _archive.info->header["prefix"] + "\\" + entry->filename;
+                        std::transform(full_virtual_path.begin(), full_virtual_path.end(), full_virtual_path.begin(), ::tolower);
+                        pbo_files_map[full_virtual_path] = pbo_file_path;
+                    }
+                }
+            }
+            pbo_stream.close();
+            return { "", pbo_files_map };
+        }
+
+        bool search::index_files(const std::string& filter) {
             std::regex txt_regex(filter);
 
             if (_active_pbo_list.size() < 1)
                 return false;
 
+            std::vector<std::future<pbo_worker_result>> fWorkers;
             for (auto & pbo_file_path : _active_pbo_list) {
-                pbo_stream.open(pbo_file_path, std::ios::binary | std::ios::in);
-                if (!pbo_stream.good()) {
-                    LOG(ERROR) << "Cannot open file - " << pbo_file_path;
+                fWorkers.emplace_back(std::async(std::launch::async, &get_files_in_pbo, pbo_file_path, txt_regex));
+            }
+            for (auto& worker : fWorkers) {
+                std::string error_file_name;
+                std::unordered_map<std::string, std::string> result;
+                std::tie(error_file_name, result) = worker.get();
+                if (!error_file_name.empty()) {
+                    LOG(ERROR) << "Cannot open file - " << error_file_name;
                     continue;
-                }
-
-                acre::pbo::archive _archive(pbo_stream);
-                for (acre::pbo::entry_p & entry : _archive.entries) {
-                    if (entry->filename != "") {
-                        if (std::regex_match(entry->filename, txt_regex)) {
-                            std::string full_virtual_path = _archive.info->header["prefix"] + "\\" + entry->filename;
-                            std::transform(full_virtual_path.begin(), full_virtual_path.end(), full_virtual_path.begin(), ::tolower);
-                            _file_pbo_index[full_virtual_path] = pbo_file_path;
-                            //LOG(DEBUG) << full_virtual_path << " = " << pbo_file_path;
-                        }
-                    }
-                }
-                pbo_stream.close();
+                };
+                _file_pbo_index.insert(result.begin(), result.end()); // swap to merge() in c++17
             }
 
-            LOG(INFO) << "PBO Index complete";
+            LOG(INFO) << "PBO Index complete [" << _active_pbo_list.size() << " PBOs] [" << _file_pbo_index.size() << " files]";
 
             return true;
         }
@@ -238,6 +254,14 @@ namespace acre {
                     )))
                 {
                     //LOG(INFO) << "FAILED TO DUPLICATE OJBECT";
+                    continue;
+                }
+
+                /* Do not try to get the path of objects which are not disk
+                files. NtQueryObject and GetFinalPathNameByHandle will hang if
+                the specified handle is not of the type FILE_TYPE_DISK. */
+                if (GetFileType(dupHandle) != FILE_TYPE_DISK) {
+                    CloseHandle(dupHandle);
                     continue;
                 }
 

@@ -17,9 +17,11 @@
 #ifdef _DEBUG
 #define ZERO_OUTPUT()    { memset(output, 0x00, outputSize); }
 #define EXTENSION_RETURN() {output[outputSize-1] = 0x00; } return;
+#define EXTENSION_RETURN_VALUE(VALUE) {output[outputSize-1] = 0x00; } return VALUE;
 #else
 #define ZERO_OUTPUT()
 #define EXTENSION_RETURN() return;
+#define EXTENSION_RETURN_VALUE(VALUE) return VALUE;
 #endif
 
 #ifdef _WINDOWS

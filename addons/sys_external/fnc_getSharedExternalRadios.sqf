@@ -10,7 +10,7 @@
  * Array of ACRE2 unique radio IDs that are flagged as shared <ARRAY>
  *
  * Example:
- * [cursorTarget] call acre_sys_external_getSharedExternalRadios
+ * [cursorTarget] call acre_sys_external_fnc_getSharedExternalRadios
  *
  * Public: No
  */

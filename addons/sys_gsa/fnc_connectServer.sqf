@@ -19,6 +19,8 @@
 
 params ["_gsa", "_radioId", "_player"];
 
+if (_radioId == "") exitWith { ERROR_3("connectServer - bad radioID %1:%2:%3",_gsa,_radioId,_player); };
+
 private _classname = typeOf _gsa;
 private _componentName = getText (configFile >> "CfgVehicles" >> _classname >> "AcreComponents" >> "componentName");
 
