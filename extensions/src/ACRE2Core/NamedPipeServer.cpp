@@ -27,9 +27,9 @@ acre::Result CNamedPipeServer::initialize() {
     HANDLE writeHandle, readHandle;
 
     SECURITY_DESCRIPTOR sd;
-    InitializeSecurityDescriptor(&sd, SECURITY_DESCRIPTOR_REVISION);
-    SetSecurityDescriptorDacl(&sd, TRUE, 0, FALSE);
-    SetSecurityDescriptorControl(&sd, SE_DACL_PROTECTED, SE_DACL_PROTECTED);
+    if (!InitializeSecurityDescriptor(&sd, SECURITY_DESCRIPTOR_REVISION)) { LOG("InitializeSecurityDescriptor Error : %u", GetLastError()); }
+    if (!SetSecurityDescriptorDacl(&sd, TRUE, nullptr, FALSE)) { LOG("SetSecurityDescriptorDacl Error : %u", GetLastError()); }
+    if (!SetSecurityDescriptorControl(&sd, SE_DACL_PROTECTED, SE_DACL_PROTECTED)) { LOG("SetSecurityDescriptorControl Error : %u", GetLastError()); }
     SECURITY_ATTRIBUTES sa = { sizeof(SECURITY_ATTRIBUTES), &sd, true };
 
     // open our pipe handle, then kick up a thread to monitor it and add shit to our queue
