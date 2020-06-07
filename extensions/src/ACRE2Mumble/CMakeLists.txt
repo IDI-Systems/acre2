@@ -27,5 +27,5 @@ add_custom_command(TARGET ${ACRE_NAME} POST_BUILD
     # Copy DLL to plugins
     COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${ACRE_NAME}> ${PROJECT_SOURCE_DIR}/../plugin/mumble/${FINAL_DLL_NAME}
     # Copy PDB to symbols
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE_DIR:${ACRE_NAME}>/${ACRE_NAME}.pdb ${PROJECT_SOURCE_DIR}/../symbols/mumble/${ACRE_ARCH}/${ACRE_NAME}.pdb
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE_DIR:${ACRE_NAME}>/${ACRE_NAME}.pdb ${PROJECT_SOURCE_DIR}/../symbols/${ACRE_ARCH}/${ACRE_NAME}.pdb
 )
