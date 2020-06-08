@@ -129,26 +129,33 @@ namespace acre {
             return index_files(".*");
         }
 
-        using pbo_worker_result = std::tuple<std::string, std::unordered_map<std::string, std::string>>;
-        pbo_worker_result get_files_in_pbo(const std::string& pbo_file_path, const std::regex& txt_regex) {
-            std::unordered_map<std::string, std::string> pbo_files_map;
+        const size_t pbo_worker_thread_count = 16;
+        using pbo_worker_result = std::tuple<std::vector<std::pair<std::string, std::string>>, std::vector<std::string>>;
+
+        pbo_worker_result pbo_worker_thread(const std::vector<std::string>& pbo_file_paths, const size_t offset, const std::regex& txt_regex) {
+            std::vector<std::pair<std::string, std::string>> filePairs;
+            std::vector<std::string> fileErrors;
+
             std::ifstream pbo_stream;
-            pbo_stream.open(pbo_file_path, std::ios::binary | std::ios::in);
-            if (!pbo_stream.good()) {
-                return { pbo_file_path, pbo_files_map };
-            };
-            acre::pbo::archive _archive(pbo_stream);
-            for (const acre::pbo::entry_p &entry : _archive.entries) {
-                if (!entry->filename.empty()) {
-                    if (std::regex_match(entry->filename, txt_regex)) {
-                        std::string full_virtual_path = _archive.info->header["prefix"] + "\\" + entry->filename;
-                        std::transform(full_virtual_path.begin(), full_virtual_path.end(), full_virtual_path.begin(), ::tolower);
-                        pbo_files_map[full_virtual_path] = pbo_file_path;
+            for (size_t pbo_index = offset; pbo_index < pbo_file_paths.size(); pbo_index += pbo_worker_thread_count) {
+                pbo_stream.open(pbo_file_paths[pbo_index], std::ios::binary | std::ios::in);
+                if (!pbo_stream.good()) {
+                    fileErrors.push_back(pbo_file_paths[pbo_index]);
+                } else {
+                    acre::pbo::archive _archive(pbo_stream);
+                    for (const acre::pbo::entry_p& entry : _archive.entries) {
+                        if (!entry->filename.empty()) {
+                            if (std::regex_match(entry->filename, txt_regex)) {
+                                std::string full_virtual_path = _archive.info->header["prefix"] + "\\" + entry->filename;
+                                std::transform(full_virtual_path.begin(), full_virtual_path.end(), full_virtual_path.begin(), ::tolower);
+                                filePairs.emplace_back(full_virtual_path, pbo_file_paths[pbo_index]);
+                            }
+                        }
                     }
-                }
+                };
+                pbo_stream.close();
             }
-            pbo_stream.close();
-            return { "", pbo_files_map };
+            return { filePairs, fileErrors };
         }
 
         bool search::index_files(const std::string& filter) {
@@ -158,18 +165,15 @@ namespace acre {
                 return false;
 
             std::vector<std::future<pbo_worker_result>> fWorkers;
-            for (auto & pbo_file_path : _active_pbo_list) {
-                fWorkers.emplace_back(std::async(std::launch::async, &get_files_in_pbo, pbo_file_path, txt_regex));
+            for (size_t workerIndex = 0; workerIndex < pbo_worker_thread_count; workerIndex++) {
+               fWorkers.emplace_back(std::async(std::launch::async, &pbo_worker_thread, _active_pbo_list, workerIndex, txt_regex));
             }
             for (auto& worker : fWorkers) {
-                std::string error_file_name;
-                std::unordered_map<std::string, std::string> result;
-                std::tie(error_file_name, result) = worker.get();
-                if (!error_file_name.empty()) {
-                    LOG(ERROR) << "Cannot open file - " << error_file_name;
-                    continue;
-                };
-                _file_pbo_index.insert(result.begin(), result.end()); // swap to merge() in c++17
+                std::vector<std::pair<std::string, std::string>> filePairs;
+                std::vector<std::string> fileErrors;
+                std::tie(filePairs, fileErrors) = worker.get();
+                for (const auto& error_file_name : fileErrors) { LOG(ERROR) << "Cannot open file - " << error_file_name; }
+                _file_pbo_index.insert(filePairs.begin(), filePairs.end());
             }
 
             LOG(INFO) << "PBO Index complete [" << _active_pbo_list.size() << " PBOs] [" << _file_pbo_index.size() << " files]";
