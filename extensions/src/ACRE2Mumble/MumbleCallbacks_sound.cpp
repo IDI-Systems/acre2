@@ -90,7 +90,7 @@ bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uin
     }
     //}
 
-    for (int32_t c = 0; c <= mixdownSampleLength - 1U; ++c) {
+    for (uint32_t c = 0; c <= mixdownSampleLength - 1U; ++c) {
         float sample = outputPCM[c];
         if (sample > 1.0F) {
             sample = 1.0F;
@@ -102,7 +102,7 @@ bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uin
 
     CEngine::getInstance()->getSoundEngine()->onEditMixedPlaybackVoiceDataEvent(mixdownSamples, sampleCount, channelCount, speakerMask);
 
-    for (int32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
+    for (uint32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
         float mixedSample = 0.0F;
         if (mixdownSamples[c] > 0) {
             mixedSample = static_cast<float>(mixdownSamples[c]) / LIMITER::max();
