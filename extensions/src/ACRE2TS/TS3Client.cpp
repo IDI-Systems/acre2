@@ -510,7 +510,7 @@ acre::Result CTS3Client::moveToPreviousChannel() {
     return acre::Result::ok;
 }
 
-uint64_t CTS3Client::findChannelByNames(std::vector<std::string> &details_) {
+uint64_t CTS3Client::findChannelByNames(std::vector<std::string> details_) {
     uint64_t *channelList;
     if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
         uint64_t channelId        = INVALID_TS3_CHANNEL;

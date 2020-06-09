@@ -33,7 +33,7 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
 
     // if (mixdownSamples == NULL || sampleCount * channelCount > mixdownSampleLength) {
     const std::uint32_t mixdownSampleLength = sampleCount * channelCount;
-    int16_t *mixdownSamples                 = new (nothrow) int16_t[mixdownSampleLength];
+    int16_t *mixdownSamples                 = new (std::nothrow) int16_t[mixdownSampleLength];
     if (mixdownSamples == nullptr) {
         return false;
     }
@@ -84,7 +84,7 @@ bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uin
 
     // if (mixdownSamples == NULL || sampleCount * channelCount > mixdownSampleLength) {
     const uint32_t mixdownSampleLength = sampleCount * channelCount;
-    int16_t *mixdownSamples            = new (nothrow) int16_t[mixdownSampleLength];
+    int16_t *mixdownSamples            = new (std::nothrow) int16_t[mixdownSampleLength];
     if (mixdownSamples == nullptr) {
         return false;
     }

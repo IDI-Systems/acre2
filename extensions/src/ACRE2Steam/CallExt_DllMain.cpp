@@ -73,7 +73,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     std::string test = cmd_args.get_argument("-mumblePath");
 
     idi::acre::TS3Plugin ts3_plugin(skip_ts_plugin);
-    idi::acre::Mumble_plugin mumble_plugin(skip_mumble_plugin, cmd_args.get_argument("-mumblePath"));
+    idi::acre::MumblePlugin mumble_plugin(skip_mumble_plugin, cmd_args.get_argument("-mumblePath"));
 
     switch (command) {
         case SteamCommand::check: {

@@ -10,7 +10,6 @@
 #include "voip_plugin.hpp"
 
 #include <algorithm>
-#include <codecvt>
 #include <sstream>
 
 namespace idi::acre {
@@ -23,52 +22,6 @@ namespace idi::acre {
                 find_mod_file("plugin/ts3/acre2_win64.dll")) {}
         ~TS3Plugin() noexcept final = default;
 
-        bool collect_plugin_locations() noexcept final {
-            if (get_skip_plugin()) {
-                return true;
-            }
-
-            // Teamspeak 3 location - Default location - Roaming Appdata.
-            wchar_t *app_data_roaming = nullptr;
-            SHGetKnownFolderPath(FOLDERID_RoamingAppData, 0, nullptr, &app_data_roaming);
-
-            if (app_data_roaming == nullptr) {
-                return false;
-            }
-
-            // Convert to UTF-8 string
-            std::string app_data = VOIPPlugin::wide_string_to_utf8(app_data_roaming);
-
-            app_data.append("\\TS3Client");
-            CoTaskMemFree(app_data_roaming); // Free it up.
-
-            // 32 Bit - Machine
-            std::string rootkey = read_reg_value(HKEY_LOCAL_MACHINE, get_registry_key().c_str(), "", false);
-            check_plugin_locations(app_data, rootkey, HKEY_LOCAL_MACHINE);
-
-            // 64 Bit - Machine
-            rootkey = read_reg_value(HKEY_LOCAL_MACHINE, get_registry_key().c_str(), "", true);
-            check_plugin_locations(app_data, rootkey, HKEY_LOCAL_MACHINE);
-
-            // 32 Bit - User
-            rootkey = read_reg_value(HKEY_CURRENT_USER, get_registry_key().c_str(), "", false);
-            check_plugin_locations(app_data, rootkey, HKEY_CURRENT_USER);
-
-            // 64 Bit - User
-            rootkey = read_reg_value(HKEY_CURRENT_USER, get_registry_key().c_str(), "", true);
-            check_plugin_locations(app_data, rootkey, HKEY_CURRENT_USER);
-
-            // Do not delete if we need to copy it
-            std::vector<std::string> ts3_locations        = get_plugin_locations();
-            std::vector<std::string> ts3_delete_locations = get_plugin_delete_locations();
-
-            for (const auto &location : ts3_locations) {
-                ts3_delete_locations.erase(
-                  std::remove(ts3_delete_locations.begin(), ts3_delete_locations.end(), location), ts3_delete_locations.end());
-            }
-
-            // No locations to copy to.
-            return !get_plugin_locations().empty();
-        }
+        bool collect_plugin_locations() noexcept final;
     };
 } // namespace idi::acre

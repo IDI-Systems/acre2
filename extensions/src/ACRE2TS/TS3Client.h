@@ -75,7 +75,7 @@ public:
 
     acre::Result moveToServerChannel() final;
     acre::Result moveToPreviousChannel() final;
-    uint64 findChannelByNames(std::vector<std::string> &details_) final;
+    uint64 findChannelByNames(std::vector<std::string> details_) final;
 
     acre::Result updateChannelDetails(std::vector<std::string> details_) final;
     acre::Result updateShouldSwitchChannel(const bool state_) final;
