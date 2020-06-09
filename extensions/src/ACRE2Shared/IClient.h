@@ -51,7 +51,7 @@ public:
     virtual bool shouldSwitchChannel()                                                = 0;
     virtual bool getVAD()                                                             = 0;
 
-    virtual std::uint64_t findChannelByNames(std::vector<std::string> details_) = 0;
+    virtual std::uint64_t findChannelByNames(std::vector<std::string> &details_) = 0;
 
     bool gethadVAD() const noexcept { return had_vad; }
     void sethadVAD(const bool value_) noexcept { had_vad = value_; }

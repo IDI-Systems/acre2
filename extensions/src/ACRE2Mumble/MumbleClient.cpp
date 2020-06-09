@@ -213,21 +213,18 @@ std::string CMumbleClient::getTempFilePath(void) {
 }
 
 acre::Result CMumbleClient::microphoneOpen(bool status_) {
-    if (status_) {
-        const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, true);
-        if (res != ErrorCode::EC_OK) {
+    const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, status_);
+    if (res != ErrorCode::EC_OK) {
+        if (status_) {
             LOG("Error toggling PTT Open\n");
-            return acre::Result::error;
-        }
-        this->setInputActive(true);
-    } else {
-        const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, false);
-        if (res != ErrorCode::EC_OK) {
+        } else {
             LOG("Error toggling PTT Closed\n");
-            return acre::Result::error;
         }
-        this->setInputActive(false);
+
+        return acre::Result::error;
     }
+
+    this->setInputActive(status_);
     return acre::Result::ok;
 }
 
@@ -252,7 +249,7 @@ acre::Result CMumbleClient::moveToServerChannel() {
             const mumble_channelid_t channelId = static_cast<mumble_channelid_t>(findChannelByNames(details));
             if ((channelId != invalid_mumble_channel) && (channelId != currentChannelId)) {
                 std::string password;
-                if (details.at(1) != "" && details.at(0) != "") {
+                if (!details.at(1).empty() && !details.at(0).empty()) {
                     password = details.at(1);
                 }
 
@@ -296,7 +293,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
         mumble_channelid_t defaultChannelId = invalid_mumble_channel;
         std::map<mumble_channelid_t, std::string> channelMap;
         std::string name = details_.at(2);
-        if (details_.at(0) != "") {
+        if (!details_.at(0).empty()) {
             name = details_.at(0);
         }
 
@@ -344,8 +341,8 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
         }
         if (bestChannelId == invalid_mumble_channel) {
             if (!details_.at(0).empty()) {
-                details_.at(0) = "";
-                bestChannelId  = static_cast<mumble_channelid_t>(findChannelByNames(details_));
+                details_.at(0).clear();
+                bestChannelId = static_cast<mumble_channelid_t>(findChannelByNames(details_));
             } else if (defaultChannelId != invalid_mumble_channel) {
                 bestChannelId = defaultChannelId;
             }

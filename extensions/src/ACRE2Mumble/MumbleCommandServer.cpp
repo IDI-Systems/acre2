@@ -23,20 +23,22 @@ acre::Result CMumbleCommandServer::shutdown() {
 acre::Result CMumbleCommandServer::sendMessage(IMessage *msg) {
     LOCK(this);
 
-    mumble_userid_t *channelUsers = nullptr;
-    size_t userCount              = 0U;
-    mumble_channelid_t currentChannel;
-    mumble_error_t err;
-    err = mumAPI.getChannelOfUser(pluginID, activeConnection, this->getId(), &currentChannel);
+    mumble_userid_t *channelUsers     = nullptr;
+    size_t userCount                  = 0U;
+    mumble_channelid_t currentChannel = 0;
+
+    mumble_error_t err = mumAPI.getChannelOfUser(pluginID, activeConnection, this->getId(), &currentChannel);
     if (err != ErrorCode::EC_OK) {
         LOG("ERROR, UNABLE TO GET CHANNEL OF USER: %d", err);
         return acre::Result::error;
     }
+
     err = mumAPI.getUsersInChannel(pluginID, activeConnection, currentChannel, &channelUsers, &userCount);
     if (err != ErrorCode::EC_OK) {
         LOG("ERROR, UNABLE TO GET USERS IN CHANNEL: %d", err);
         return acre::Result::error;
     }
+
     err = mumAPI.sendData(pluginID, activeConnection, channelUsers, userCount, (const char *) msg->getData(), msg->getLength(), "ACRE2");
     if (err != ErrorCode::EC_OK) {
         LOG("ERROR, UNABLE TO SEND MESSAGE DATA: %d", err);
