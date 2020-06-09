@@ -13,12 +13,14 @@
 #include <codecvt>
 #include <sstream>
 
-
 namespace idi::acre {
     class TS3Plugin final : public VOIPPlugin {
     public:
         explicit TS3Plugin(bool skip_plugin_) noexcept
-            : VOIPPlugin(skip_plugin_, "SOFTWARE\\TeamSpeak 3 Client", find_mod_file("plugin/ts3/acre2_win32.dll"), find_mod_file("plugin/ts3/acre2_win64.dll")) {}
+            : VOIPPlugin(skip_plugin_,
+                "SOFTWARE\\TeamSpeak 3 Client",
+                find_mod_file("plugin/ts3/acre2_win32.dll"),
+                find_mod_file("plugin/ts3/acre2_win64.dll")) {}
         ~TS3Plugin() noexcept final = default;
 
         bool collect_plugin_locations() noexcept final {
@@ -35,7 +37,7 @@ namespace idi::acre {
             }
 
             // Convert to UTF-8 string
-            std::string app_data = wide_string_to_utf8(app_data_roaming);
+            std::string app_data = VOIPPlugin::wide_string_to_utf8(app_data_roaming);
 
             app_data.append("\\TS3Client");
             CoTaskMemFree(app_data_roaming); // Free it up.
@@ -61,7 +63,8 @@ namespace idi::acre {
             std::vector<std::string> ts3_delete_locations = get_plugin_delete_locations();
 
             for (const auto &location : ts3_locations) {
-                ts3_delete_locations.erase(std::remove(ts3_delete_locations.begin(), ts3_delete_locations.end(), location), ts3_delete_locations.end());
+                ts3_delete_locations.erase(
+                  std::remove(ts3_delete_locations.begin(), ts3_delete_locations.end(), location), ts3_delete_locations.end());
             }
 
             // No locations to copy to.

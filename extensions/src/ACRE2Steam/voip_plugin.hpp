@@ -17,14 +17,13 @@
 #include <string>
 #include <vector>
 
-
 namespace idi::acre {
 
     EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
     std::string find_mod_folder();
 
-    std::string find_mod_file(const std::string& filename);
+    std::string find_mod_file(const std::string &filename);
 
     enum class UpdateCode : std::uint8_t { update_not_necessary, update_ok, update_failed, other };
 
@@ -54,11 +53,10 @@ namespace idi::acre {
 
         const std::vector<std::string> &get_updated_paths() const noexcept { return updated_paths; }
         const std::vector<std::string> &get_removed_paths() const noexcept { return removed_paths; }
-        
+
         std::string read_reg_value(HKEY root_, const std::string &key_, const std::string &name_, bool use_x64_) noexcept;
 
     protected:
-
         // Convert a wide Unicode string to an UTF8 string
 
         /**
@@ -68,15 +66,17 @@ namespace idi::acre {
          *
          * @return std::string   UTF-8 encoded string
          */
-        std::string wide_string_to_utf8(const std::wstring& wide_str_) {
+        static std::string wide_string_to_utf8(const std::wstring &wide_str_) {
             if (wide_str_.empty()) {
                 return "";
             }
 
-            const int32_t size_needed = WideCharToMultiByte(CP_UTF8, 0, &wide_str_[0], static_cast<int32_t>(wide_str_.size()), nullptr, 0, nullptr, nullptr);
+            const int32_t size_needed =
+              WideCharToMultiByte(CP_UTF8, 0, &wide_str_[0], static_cast<int32_t>(wide_str_.size()), nullptr, 0, nullptr, nullptr);
 
             std::string utf8_str(size_needed, 0);
-            WideCharToMultiByte(CP_UTF8, 0, &wide_str_[0], static_cast<int32_t>(wide_str_.size()), &utf8_str[0], size_needed, nullptr, nullptr);
+            WideCharToMultiByte(
+              CP_UTF8, 0, &wide_str_[0], static_cast<int32_t>(wide_str_.size()), &utf8_str[0], size_needed, nullptr, nullptr);
 
             return utf8_str;
         }

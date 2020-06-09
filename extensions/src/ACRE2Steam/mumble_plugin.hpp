@@ -13,12 +13,14 @@
 #include <codecvt>
 #include <sstream>
 
-
 namespace idi::acre {
     class Mumble_plugin final : public VOIPPlugin {
     public:
         explicit Mumble_plugin(bool skip_plugin_, std::string mumble_path_ = "") noexcept
-            : VOIPPlugin(skip_plugin_, "SOFTWARE\\Mumble\\Mumble\\plugins", find_mod_file("plugin/mumble/acre2_win32.dll"), find_mod_file("plugin/mumble/acre2_win64.dll")),
+            : VOIPPlugin(skip_plugin_,
+                "SOFTWARE\\Mumble\\Mumble\\plugins",
+                find_mod_file("plugin/mumble/acre2_win32.dll"),
+                find_mod_file("plugin/mumble/acre2_win64.dll")),
               mumble_path(std::move(mumble_path_)) {}
         ~Mumble_plugin() noexcept final = default;
 
@@ -34,9 +36,9 @@ namespace idi::acre {
                 parse_mumble_registry(true);  // 64 bits
 
                 // TODO: 32 bits applications will not recognise FOLDERID_ProgramFilesX64
-                std::array<KNOWNFOLDERID, 2> folder_ids = { FOLDERID_ProgramFilesX86, FOLDERID_ProgramFilesX64 };
+                std::array<KNOWNFOLDERID, 2> folder_ids = {FOLDERID_ProgramFilesX86, FOLDERID_ProgramFilesX64};
                 for (const auto folder : folder_ids) {
-                    wchar_t* folder_path = nullptr;
+                    wchar_t *folder_path = nullptr;
                     SHGetKnownFolderPath(folder, 0, nullptr, &folder_path);
 
                     if (folder_path == nullptr) {
@@ -44,7 +46,7 @@ namespace idi::acre {
                     }
 
                     // Convert to UTF-8 string
-                    std::string app_data = wide_string_to_utf8(folder_path);
+                    std::string app_data = VOIPPlugin::wide_string_to_utf8(folder_path);
 
                     app_data.append("\\Mumble");
                     check_plugin_locations(app_data);
@@ -55,11 +57,12 @@ namespace idi::acre {
             }
 
             // Do not delete if we need to copy it
-            std::vector<std::string> mumble_locations = get_plugin_locations();
+            std::vector<std::string> mumble_locations        = get_plugin_locations();
             std::vector<std::string> mumble_delete_locations = get_plugin_delete_locations();
 
-            for (const auto& location : mumble_locations) {
-                mumble_delete_locations.erase(std::remove(mumble_delete_locations.begin(), mumble_delete_locations.end(), location), mumble_delete_locations.end());
+            for (const auto &location : mumble_locations) {
+                mumble_delete_locations.erase(
+                  std::remove(mumble_delete_locations.begin(), mumble_delete_locations.end(), location), mumble_delete_locations.end());
             }
 
             // No locations to copy to.
@@ -80,17 +83,18 @@ namespace idi::acre {
             }
 
             DWORD num_subkeys = 0;
-            if (RegQueryInfoKey(registry_key, nullptr, nullptr, nullptr, &num_subkeys, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr) != ERROR_SUCCESS) {
+            if (RegQueryInfoKey(registry_key, nullptr, nullptr, nullptr, &num_subkeys, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr,
+                  nullptr) != ERROR_SUCCESS) {
                 RegCloseKey(registry_key);
                 return;
             }
 
             for (DWORD idx = 0; idx < num_subkeys; idx++) {
-                TCHAR    achKey[max_key_length];
-                DWORD    cbName = max_key_length;
+                TCHAR achKey[max_key_length];
+                DWORD cbName = max_key_length;
                 if (RegEnumKeyEx(registry_key, idx, achKey, &cbName, nullptr, nullptr, nullptr, nullptr) != ERROR_SUCCESS) {
                     continue;
-                }                
+                }
 
                 HKEY plugin_key;
                 std::string name = get_registry_key() + "\\" + std::string(achKey);
@@ -111,7 +115,8 @@ namespace idi::acre {
                 }
 
                 std::string file_path(cbData / sizeof(char), '\0');
-                if (RegQueryValueEx(plugin_key, "path", nullptr, nullptr, reinterpret_cast<LPBYTE>(&file_path[0]), &cbData) == ERROR_SUCCESS) {
+                if (RegQueryValueEx(plugin_key, "path", nullptr, nullptr, reinterpret_cast<LPBYTE>(&file_path[0]), &cbData) ==
+                    ERROR_SUCCESS) {
                     RegCloseKey(plugin_key);
 
                     size_t first_null = file_path.find_first_of('\0');
