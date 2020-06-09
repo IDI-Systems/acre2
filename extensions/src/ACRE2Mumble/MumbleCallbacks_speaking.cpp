@@ -1,17 +1,12 @@
+#include "Engine.h"
+#include "Log.h"
+#include "Macros.h"
+#include "MumbleClient.h"
+#include "Types.h"
 #include "compat.h"
 
-
-#include "Types.h"
-#include "Macros.h"
-
-#include "Engine.h"
-
-#include "Log.h"
-
-#include "MumbleClient.h"
-
 //
-// TS3  Speaking callbacks
+// Mumble Speaking callbacks
 //
 void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_userid_t userID, talking_state_t status) {
     LOG("mumble_onUserTalkingStateChanged ENTER: %d", status);
@@ -43,13 +38,14 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
     if (CEngine::getInstance()->getClient()->getOnRadio()) {
         if (CEngine::getInstance()->getClient()->getVAD()) {
             return;
-        } else {
-            if (status == TalkingState::PASSIVE || status == TalkingState::INVALID) {
-                if (!CEngine::getInstance()->getClient()->getRadioPTTDown()) {
-                    CEngine::getInstance()->getClient()->setOnRadio(false);
-                }
+        }
+
+        if (status == TalkingState::PASSIVE || status == TalkingState::INVALID) {
+            if (!CEngine::getInstance()->getClient()->getRadioPTTDown()) {
+                CEngine::getInstance()->getClient()->setOnRadio(false);
             }
         }
+
         return;
     }
     TRACE("enter: [%d],[%d]", clientID, status);

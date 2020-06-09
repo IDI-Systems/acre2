@@ -1,18 +1,15 @@
 #pragma once
 
-#include "compat.h"
-#include "Types.h"
-#include "Macros.h"
+#include "Engine.h"
 #include "IMessage.h"
 #include "IServer.h"
-
-#include "Engine.h"
 #include "Lockable.h"
-
+#include "Macros.h"
 #include "MumbleFunctions.h"
+#include "Types.h"
+#include "compat.h"
 
-class CMumbleCommandServer : public IServer, public CLockable
-{
+class CMumbleCommandServer : public IServer, public CLockable {
 public:
     CMumbleCommandServer(void);
     CMumbleCommandServer(const acre::id_t id);
@@ -22,14 +19,13 @@ public:
     acre::Result shutdown(void) final;
 
     acre::Result sendMessage(IMessage *msg) final;
-    acre::Result handleMessage(unsigned char* msg) final;
-    acre::Result handleMessage(unsigned char* msg, size_t length) final;
-
+    acre::Result handleMessage(unsigned char *msg) final;
+    acre::Result handleMessage(unsigned char *msg, size_t length) final;
 
     acre::Result release(void) final;
 
     inline void setCommandId(plugin_id_t value) noexcept { m_commandId = value; }
-    inline plugin_id_t getCommandId() const  noexcept { return m_commandId; }
+    inline plugin_id_t getCommandId() const noexcept { return m_commandId; }
 
     inline void setConnected(const bool value) final { m_connected = value; }
     inline bool getConnected() const final { return m_connected; }
