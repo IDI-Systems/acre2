@@ -10,15 +10,15 @@
 
 #pragma comment(lib, "Shlwapi.lib")
 
-#define INVALID_MUMBLE_CHANNEL -1
-#define DEFAULT_MUMBLE_CHANNEL "ACRE"
+static constexpr std::int32_t           = -1;
+constexpr char default_mumble_channel[] = "ACRE";
 
 extern MumbleAPI mumAPI;
 extern mumble_connection_t activeConnection;
 extern plugin_id_t pluginID;
 
-acre::Result CMumbleClient::initialize(void) {
-    setPreviousChannel(INVALID_MUMBLE_CHANNEL);
+acre::Result CMumbleClient::initialize() {
+    setPreviousChannel(invalid_mumble_channel);
     return acre::Result::ok;
 }
 
@@ -242,15 +242,15 @@ acre::Result CMumbleClient::moveToServerChannel() {
         std::vector<std::string> details = getChannelDetails();
 
         if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == STATUS_OK) {
-            mumble_channelid_t currentChannelId = INVALID_MUMBLE_CHANNEL;
+            mumble_channelid_t currentChannelId = invalid_mumble_channel;
 
             if ((mumAPI.getChannelOfUser(pluginID, activeConnection, clientId, &currentChannelId) == STATUS_OK) &&
-                (getPreviousChannel() == INVALID_MUMBLE_CHANNEL)) {
+                (getPreviousChannel() == invalid_mumble_channel)) {
                 setPreviousChannel(currentChannelId);
             }
 
             const mumble_channelid_t channelId = static_cast<mumble_channelid_t>(findChannelByNames(details));
-            if ((channelId != INVALID_MUMBLE_CHANNEL) && (channelId != currentChannelId)) {
+            if ((channelId != invalid_mumble_channel) && (channelId != currentChannelId)) {
                 std::string password;
                 if (details.at(1) != "" && details.at(0) != "") {
                     password = details.at(1);
@@ -271,16 +271,16 @@ acre::Result CMumbleClient::moveToPreviousChannel() {
         mumble_userid_t clientId = -1;
 
         if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == STATUS_OK) {
-            mumble_channelid_t currentChannelId = INVALID_MUMBLE_CHANNEL;
+            mumble_channelid_t currentChannelId = invalid_mumble_channel;
 
             if (mumAPI.getChannelOfUser(pluginID, activeConnection, clientId, &currentChannelId) == STATUS_OK) {
                 const mumble_channelid_t channelId = static_cast<mumble_channelid_t>(getPreviousChannel());
-                if (channelId != INVALID_MUMBLE_CHANNEL && channelId != currentChannelId) {
+                if (channelId != invalid_mumble_channel && channelId != currentChannelId) {
                     mumAPI.requestUserMove(pluginID, activeConnection, clientId, channelId, "");
                 }
             }
         }
-        setPreviousChannel(INVALID_MUMBLE_CHANNEL);
+        setPreviousChannel(invalid_mumble_channel);
     }
 
     return acre::Result::ok;
@@ -292,8 +292,8 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
     std::size_t channelCount        = 0U;
 
     if (mumAPI.getAllChannels(pluginID, activeConnection, &channelList, &channelCount) == STATUS_OK) {
-        mumble_channelid_t channelId        = INVALID_MUMBLE_CHANNEL;
-        mumble_channelid_t defaultChannelId = INVALID_MUMBLE_CHANNEL;
+        mumble_channelid_t channelId        = invalid_mumble_channel;
+        mumble_channelid_t defaultChannelId = invalid_mumble_channel;
         std::map<mumble_channelid_t, std::string> channelMap;
         std::string name = details_.at(2);
         if (details_.at(0) != "") {
@@ -306,8 +306,8 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
 
             if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == STATUS_OK) {
                 std::string channelNameString(channelName);
-                if (channelNameString.find(DEFAULT_MUMBLE_CHANNEL) != -1 || (!details_.at(0).empty() && channelNameString == name)) {
-                    if (channelNameString == DEFAULT_MUMBLE_CHANNEL) {
+                if (channelNameString.find(default_mumble_channel) != -1 || (!details_.at(0).empty() && channelNameString == name)) {
+                    if (channelNameString == default_mumble_channel) {
                         defaultChannelId = channelId;
                     }
                     channelMap.emplace(channelId, channelNameString);
@@ -317,7 +317,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
 
         mumAPI.freeMemory(pluginID, (void *) &channelList);
 
-        mumble_channelid_t bestChannelId = INVALID_MUMBLE_CHANNEL;
+        mumble_channelid_t bestChannelId = invalid_mumble_channel;
         int32_t bestMatches              = 0;
         int32_t bestDistance             = 10;
         for (auto &element : channelMap) {
@@ -327,7 +327,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
                 bestChannelId = element.first;
                 break;
             }
-            const std::string cleanChannelName = removeSubstrings(fullChannelName, DEFAULT_MUMBLE_CHANNEL);
+            const std::string cleanChannelName = removeSubstrings(fullChannelName, default_mumble_channel);
             // Word comparison
             const int32_t matches = getWordMatches(cleanChannelName, name);
             if (matches > bestMatches) {
@@ -342,11 +342,11 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
                 bestChannelId = element.first;
             }
         }
-        if (bestChannelId == INVALID_MUMBLE_CHANNEL) {
+        if (bestChannelId == invalid_mumble_channel) {
             if (!details_.at(0).empty()) {
                 details_.at(0) = "";
                 bestChannelId  = static_cast<mumble_channelid_t>(findChannelByNames(details_));
-            } else if (defaultChannelId != INVALID_MUMBLE_CHANNEL) {
+            } else if (defaultChannelId != invalid_mumble_channel) {
                 bestChannelId = defaultChannelId;
             }
         }
