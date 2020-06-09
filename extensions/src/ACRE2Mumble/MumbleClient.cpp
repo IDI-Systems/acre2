@@ -10,8 +10,8 @@
 
 #pragma comment(lib, "Shlwapi.lib")
 
-static constexpr std::int32_t           = -1;
-constexpr char default_mumble_channel[] = "ACRE";
+static constexpr std::int32_t invalid_mumble_channel = -1;
+constexpr char default_mumble_channel[]              = "ACRE";
 
 extern MumbleAPI mumAPI;
 extern mumble_connection_t activeConnection;
