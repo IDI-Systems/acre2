@@ -227,8 +227,8 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             }
 
             oss << "If this is NOT valid, please uninstall all versions of Mumble and/or TeamSpeak 3 and reinstall both it and ACRE2 or "
-                << "copy the plugins manually to your correct installation.\n\n";
-            oss << "If this appears to be the correct folder(s) please remember to enable the plugin in Mumble and/or TeamSpeak 3!";
+                << "copy the plugins manually to your correct installation.\n\n"
+                << "If this appears to be the correct folder(s) please remember to enable the plugin in Mumble and/or TeamSpeak 3!";
             const int32_t result =
               MessageBoxA(nullptr, (LPCSTR) oss.str().c_str(), "ACRE2 Installation Success", MB_OK | MB_ICONINFORMATION);
 
