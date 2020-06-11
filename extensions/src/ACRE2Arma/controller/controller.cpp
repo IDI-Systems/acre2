@@ -24,7 +24,7 @@ namespace acre {
     bool controller::init(const arguments &_args, std::string & result) {
         if (!_initiated) {
             _initiated = true;
-            acre::pbo::fileloader::get().poke();
+            acre::pbo::fileloader::get().poke(this);
             add_module(std::make_shared<acre::signal::controller>());
         }
         return true;

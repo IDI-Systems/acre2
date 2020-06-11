@@ -1,22 +1,24 @@
 #pragma once
 
+#include "controller.hpp"
 #include "archive.hpp"
 #include "search.hpp"
 #include "singleton.hpp"
 #include "membuf.hpp"
-
+#include <shlwapi.h>
+#pragma comment(lib, "shlwapi.lib")
 
 namespace acre {
     namespace pbo {
         class file_entry {
         public:
-            file_entry() {};
-            file_entry(file_p entry_) : _file(entry_) { 
+            file_entry() = delete;            
+            file_entry(file_p entry_) : _file(entry_) {
                 
                 
                 _memory_buffer = acre::membuf((char *)_file->data.get(), entry_->entry->storage_size);
                 _stream = new std::istream(&_memory_buffer);
-                
+
             };
             ~file_entry() { delete _stream; };
             std::istream & stream() { return *_stream; };
@@ -39,8 +41,49 @@ namespace acre {
 
             //@TODO: yea this is not the best way to do this...
             //Initialize the fileloader before threads start eating it.
-            void poke() {
+            void poke(acre::controller * ctrl) {
+                ctrl->add("copy_to_temp", std::bind(&acre::pbo::fileloader::copy_to_temp, this, std::placeholders::_1, std::placeholders::_2));
                 return;
+            }
+
+            // write wav files from pbo to temp folder
+            bool acre::pbo::fileloader::copy_to_temp(const arguments& _args, std::string& result) {
+                if (_args.size() < 2) {
+                    result = "Bad Arg count";
+                    return false;
+                }
+                std::string source_arma_path = _args.as_string(0);
+                std::string output_filename = _args.as_string(1);
+                LOG(INFO) << "copy_to_temp [" << source_arma_path << ", " << output_filename << "]";
+
+                file_entry_p fep;
+                if (!get_file(source_arma_path, "wav", fep)) {
+                    result = "File not found";
+                    return false;
+                }
+                std::istream& arma_filesys_is(fep->stream());
+
+                char tempPath[MAX_PATH - 14];
+                GetTempPathA(sizeof(tempPath), tempPath);
+                std::string tempFolder = std::string(tempPath);
+                tempFolder += "acre";
+                if (!PathFileExistsA(tempFolder.c_str())) {
+                    if (!CreateDirectoryA(tempFolder.c_str(), NULL)) {
+                        result = "Could not create temp folder";
+                        return false;
+                    }
+                }
+                std::ofstream temp_ofs(tempFolder + "\\" + output_filename, std::ios::out | std::ios::binary | std::ios::trunc);
+                if (!temp_ofs.is_open()) {
+                    result = "Could not open temp file";
+                    return false;
+                }
+
+                temp_ofs << arma_filesys_is.rdbuf();
+                temp_ofs.close();
+
+                result = "";
+                return true;
             }
 
             bool get_file(std::string path_, std::string _extension, file_entry_p &entry_) {

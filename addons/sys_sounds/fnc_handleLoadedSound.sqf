@@ -16,6 +16,8 @@
  * Public: No
  */
 
+if (true) exitWith { diag_log "removed?" };
+
 params ["_id","_okN"];
 
 _okN = parseNumber _okN;
