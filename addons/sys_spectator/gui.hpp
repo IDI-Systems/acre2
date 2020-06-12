@@ -5,7 +5,7 @@ class RscControlsGroupNoScrollbars;
 class GVAR(RscRadios): RscControlsGroupNoScrollbars {
     idc = IDC_RADIOS_GROUP;
     x = 0;
-    y = 0;
+    y = POS_H(3.6);
     w = POS_W(15.9);
     h = POS_H(3.5);
     class controls {
@@ -44,9 +44,7 @@ class RscDisplayEGSpectator {
             y = POS_Y(21);
             h = POS_H(7.1);
             class controls {
-                class GVAR(radios): GVAR(RscRadios) {
-                    y = POS_H(3.6);
-                };
+                class GVAR(radios): GVAR(RscRadios) {};
             };
         };
     };

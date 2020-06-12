@@ -30,5 +30,7 @@
 #define IDC_RADIOS_NONE 120
 #define IDC_RADIOS_LIST 130
 
+#define IDC_ACE_WIDGET 60030
+
 #define ICON_CHECKED "\a3\3den\data\controls\ctrlcheckbox\texturechecked_ca.paa"
 #define ICON_UNCHECKED "\a3\3den\data\controls\ctrlcheckbox\textureunchecked_ca.paa"
