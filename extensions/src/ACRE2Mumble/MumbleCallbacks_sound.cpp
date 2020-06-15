@@ -67,6 +67,8 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
         }
     }
 
+    // should always be channel count of 1 since everything is mono and mumble is ... using stereo
+    // dumb legacy crap.
     CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent(
       static_cast<acre::id_t>(userID), mixdownSamples, sampleCount, 1);
 
