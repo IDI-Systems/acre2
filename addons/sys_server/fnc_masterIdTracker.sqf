@@ -101,7 +101,7 @@ if (GVAR(doFullSearch)) then {
                     if (!HASH_HASKEY(_duplicateIdTable, _item)) then {
                         HASH_SET(_duplicateIdTable, _item, _duplicateIdList);
                     } else {
-                        HASH_GET(_duplicateIdTable, _item);
+                        _duplicateIdList = HASH_GET(_duplicateIdTable, _item);
                     };
                     _duplicateIdList pushBack [_mainObject, _object];
                 };
@@ -126,7 +126,7 @@ if (GVAR(doFullSearch)) then {
                     if (!HASH_HASKEY(_duplicateIdTable, _rackId)) then {
                         HASH_SET(_duplicateIdTable, _rackId, _duplicateIdList);
                     } else {
-                        HASH_GET(_duplicateIdTable, _rackId);
+                        _duplicateIdList = HASH_GET(_duplicateIdTable, _rackId);
                     };
                     _duplicateIdList pushBack [_mainObject, _x];
                 };
@@ -141,7 +141,7 @@ if (GVAR(doFullSearch)) then {
                             if (!HASH_HASKEY(_duplicateIdTable, _mountedRadio)) then {
                                 HASH_SET(_duplicateIdTable, _mountedRadio, _duplicateIdList);
                             } else {
-                                HASH_GET(_duplicateIdTable, _mountedRadio);
+                                _duplicateIdList = HASH_GET(_duplicateIdTable, _mountedRadio);
                             };
                             _duplicateIdList pushBack [_mainObject, _x];
                         };

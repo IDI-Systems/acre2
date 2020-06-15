@@ -29,6 +29,6 @@ if (!isNil "_currentSide") then {
     if (_currentSide != _side) then {
         [ACRE_ACTIVE_RADIO, _side] call FUNC(setRadioSpatial);
 
-        [format [localize LSTRING(radioSet), _side], true] call CBA_fnc_notify;
+        [[format [localize LSTRING(radioSetTo), _side]], true] call CBA_fnc_notify;
     };
 };
