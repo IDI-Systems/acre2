@@ -68,7 +68,7 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
     }
 
     CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent(
-      static_cast<acre::id_t>(userID), mixdownSamples, sampleCount, channelCount);
+      static_cast<acre::id_t>(userID), mixdownSamples, sampleCount, 1);
 
 
     if (channelCount > 1) {
