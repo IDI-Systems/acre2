@@ -30,36 +30,75 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
     }
 
     // Make this faster
-
-    // if (mixdownSamples == NULL || sampleCount * channelCount > mixdownSampleLength) {
-    const std::uint32_t mixdownSampleLength = sampleCount * channelCount;
+    const std::uint32_t mixdownSampleLength = sampleCount;
     int16_t *mixdownSamples                 = new (std::nothrow) int16_t[mixdownSampleLength];
     if (mixdownSamples == nullptr) {
         return false;
     }
-    //}
 
-    for (std::uint32_t c = 0; c <= mixdownSampleLength - 1U; ++c) {
-        float sample = outputPCM[c];
-        if (sample > 1.0F) {
-            sample = 1.0F;
-        } else if (sample < -1.0F) {
-            sample = -1.0F;
+    if (channelCount > 1) {
+        std::uint32_t c = 0;
+        for (std::uint32_t x = 0; x < sampleCount * channelCount; x += channelCount) {
+            float sample = 0.0F;
+            for (int i = 0; i < channelCount; i++) {
+                sample += outputPCM[x + i];
+            }
+            sample = sample / static_cast<float>(channelCount);
+            if (sample > 1.0F) {
+                sample = 1.0F;
+            }
+            else if (sample < -1.0F) {
+                sample = -1.0F;
+            }
+            mixdownSamples[c] = static_cast<short>(sample * LIMITER::max());
+            c++; // lulz
         }
-        mixdownSamples[c] = static_cast<short>(sample * LIMITER::max());
+    }
+    else {
+        for (std::uint32_t c = 0; c < mixdownSampleLength; ++c) {
+            float sample = outputPCM[c];
+            if (sample > 1.0F) {
+                sample = 1.0F;
+            }
+            else if (sample < -1.0F) {
+                sample = -1.0F;
+            }
+            mixdownSamples[c] = static_cast<short>(sample * LIMITER::max());
+        }
     }
 
     CEngine::getInstance()->getSoundEngine()->onEditPlaybackVoiceDataEvent(
       static_cast<acre::id_t>(userID), mixdownSamples, sampleCount, channelCount);
 
-    for (std::uint32_t c = 0; c <= mixdownSampleLength - 1; ++c) {
-        float mixedSample = 0.0F;
-        if (mixdownSamples[c] > 0) {
-            mixedSample = static_cast<float>(mixdownSamples[c]) / LIMITER::max();
-        } else {
-            mixedSample = -static_cast<float>(mixdownSamples[c]) / LIMITER::min();
+
+    if (channelCount > 1) {
+        std::uint32_t c = 0;
+        for (std::uint32_t x = 0; x < sampleCount * channelCount; x += channelCount) {
+            float mixedSample = 0.0F;
+            if (mixdownSamples[c] > 0) {
+                mixedSample = static_cast<float>(mixdownSamples[c]) / LIMITER::max();
+            }
+            else {
+                mixedSample = -static_cast<float>(mixdownSamples[c]) / LIMITER::min();
+            }
+            mixedSample = mixedSample / static_cast<float>(channelCount);
+            for (int i = 0; i < channelCount; i++) {
+                outputPCM[x + i] = mixedSample;
+            }
+            c++;
         }
-        outputPCM[c] = mixedSample;
+    }
+    else {
+        for (std::uint32_t c = 0; c < mixdownSampleLength; ++c) {
+            float mixedSample = 0.0F;
+            if (mixdownSamples[c] > 0) {
+                mixedSample = static_cast<float>(mixdownSamples[c]) / LIMITER::max();
+            }
+            else {
+                mixedSample = -static_cast<float>(mixdownSamples[c]) / LIMITER::min();
+            }
+            outputPCM[c] = mixedSample;
+        }
     }
     delete[] mixdownSamples;
     return true;
