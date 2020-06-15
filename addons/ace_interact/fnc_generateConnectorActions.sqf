@@ -29,7 +29,7 @@ switch (_connectorType) do {
             private _action = ["acre_con_action", _name, "", {
                 params ["_target", "", "_params"];
                 _params params ["_parentComponentId", "_parentConnector"];
-                [_parentComponentId, _parentConnector] call EFUNC(sys_components,fnc_detachComponent);
+                [_parentComponentId, _parentConnector] call EFUNC(sys_components,detachComponent);
             }, {true}, {}, [_parentComponent, _connectorIndex]] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         } else {
@@ -53,7 +53,7 @@ switch (_connectorType) do {
                         private _action = [format ["acre_con_rack_%1_action", _forEachIndex], _name, _icon, {
                             params ["_target","","_params"];
                             _params params ["_parentComponent","_connectorIndex","_radioId","_connectorRadioIdx"];
-                            [_parentComponent, _connectorIndex, _radioId, _connectorRadioIdx, HASH_CREATE] call EFUNC(sys_components,fnc_attachComplexComponent);
+                            [_parentComponent, _connectorIndex, _radioId, _connectorRadioIdx, HASH_CREATE] call EFUNC(sys_components,attachComplexComponent);
                         }, {true}, {}, [_parentComponent, _connectorIndex, _radioId, _connectorRadioIdx]] call ace_interact_menu_fnc_createAction;
                         _actions pushBack [_action, [], _target];
                     };
@@ -79,7 +79,7 @@ switch (_connectorType) do {
                         private _action = [format ["acre_con_radio_%1_action", _forEachIndex], _name, _icon, {
                             params ["_target","","_params"];
                             _params params ["_parentComponent","_connectorIndex","_rackId","_connectorRackIdx"];
-                            [_parentComponent, _connectorIndex, _rackId, _connectorRackIdx, HASH_CREATE] call EFUNC(sys_components,fnc_attachComplexComponent);
+                            [_parentComponent, _connectorIndex, _rackId, _connectorRackIdx, HASH_CREATE] call EFUNC(sys_components,attachComplexComponent);
                         }, {true}, {}, [_rackId, _connectorRackIdx, _parentComponent, _connectorIndex]] call ace_interact_menu_fnc_createAction;
                         _actions pushBack [_action, [], _target];
                     };

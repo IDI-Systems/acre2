@@ -6,7 +6,7 @@ PREP(volumeKeyDown);
 PREP(volumeKeyUp);
 
 // Inventory
-PREP(handleInventoryOpened);
+PREP(initDisplayInventory);
 PREP(inventoryListMouseDown);
 PREP(inventoryListMouseUp);
 PREP(openRadio);

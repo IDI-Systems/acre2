@@ -82,8 +82,10 @@ private _intercomStations = [];
     } forEach _allowedPositions;
 
     private _varname = format [QGVAR(station_%1), _role];
+    if (isNil {_vehicle getVariable _varname}) then {
+        _vehicle setVariable [_varName, _seatConfiguration];
+    };
     _intercomStations pushBack _varName;  // List of seat variable names
-    _vehicle setVariable [_varName, _seatConfiguration];
 } forEach (fullCrew [_vehicle, "", true]);
 
-_vehicle setVariable [QGVAR(intercomStations), _intercomStations, true];
+_vehicle setVariable [QGVAR(intercomStations), _intercomStations];

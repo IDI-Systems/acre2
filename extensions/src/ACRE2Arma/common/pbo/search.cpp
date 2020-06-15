@@ -3,6 +3,7 @@
 #include <iterator>
 #include <algorithm>
 #include <regex>
+#include <future>
 
 #define NT_SUCCESS(x) ((x) >= 0)
 #define STATUS_INFO_LENGTH_MISMATCH 0xc0000004
@@ -128,35 +129,54 @@ namespace acre {
             return index_files(".*");
         }
 
-        bool search::index_files(const std::string &filter) {
+        const size_t pbo_worker_thread_count = 16;
+        using pbo_worker_result = std::tuple<std::vector<std::pair<std::string, std::string>>, std::vector<std::string>>;
+
+        pbo_worker_result pbo_worker_thread(const std::vector<std::string>& pbo_file_paths, const size_t offset, const std::regex& txt_regex) {
+            std::vector<std::pair<std::string, std::string>> filePairs;
+            std::vector<std::string> fileErrors;
+
             std::ifstream pbo_stream;
+            for (size_t pbo_index = offset; pbo_index < pbo_file_paths.size(); pbo_index += pbo_worker_thread_count) {
+                pbo_stream.open(pbo_file_paths[pbo_index], std::ios::binary | std::ios::in);
+                if (!pbo_stream.good()) {
+                    fileErrors.push_back(pbo_file_paths[pbo_index]);
+                } else {
+                    acre::pbo::archive _archive(pbo_stream);
+                    for (const acre::pbo::entry_p& entry : _archive.entries) {
+                        if (!entry->filename.empty()) {
+                            if (std::regex_match(entry->filename, txt_regex)) {
+                                std::string full_virtual_path = _archive.info->header["prefix"] + "\\" + entry->filename;
+                                std::transform(full_virtual_path.begin(), full_virtual_path.end(), full_virtual_path.begin(), ::tolower);
+                                filePairs.emplace_back(full_virtual_path, pbo_file_paths[pbo_index]);
+                            }
+                        }
+                    }
+                };
+                pbo_stream.close();
+            }
+            return { filePairs, fileErrors };
+        }
+
+        bool search::index_files(const std::string& filter) {
             std::regex txt_regex(filter);
 
             if (_active_pbo_list.size() < 1)
                 return false;
 
-            for (auto & pbo_file_path : _active_pbo_list) {
-                pbo_stream.open(pbo_file_path, std::ios::binary | std::ios::in);
-                if (!pbo_stream.good()) {
-                    LOG(ERROR) << "Cannot open file - " << pbo_file_path;
-                    continue;
-                }
-
-                acre::pbo::archive _archive(pbo_stream);
-                for (acre::pbo::entry_p & entry : _archive.entries) {
-                    if (entry->filename != "") {
-                        if (std::regex_match(entry->filename, txt_regex)) {
-                            std::string full_virtual_path = _archive.info->header["prefix"] + "\\" + entry->filename;
-                            std::transform(full_virtual_path.begin(), full_virtual_path.end(), full_virtual_path.begin(), ::tolower);
-                            _file_pbo_index[full_virtual_path] = pbo_file_path;
-                            //LOG(DEBUG) << full_virtual_path << " = " << pbo_file_path;
-                        }
-                    }
-                }
-                pbo_stream.close();
+            std::vector<std::future<pbo_worker_result>> fWorkers;
+            for (size_t workerIndex = 0; workerIndex < pbo_worker_thread_count; workerIndex++) {
+               fWorkers.emplace_back(std::async(std::launch::async, &pbo_worker_thread, _active_pbo_list, workerIndex, txt_regex));
+            }
+            for (auto& worker : fWorkers) {
+                std::vector<std::pair<std::string, std::string>> filePairs;
+                std::vector<std::string> fileErrors;
+                std::tie(filePairs, fileErrors) = worker.get();
+                for (const auto& error_file_name : fileErrors) { LOG(ERROR) << "Cannot open file - " << error_file_name; }
+                _file_pbo_index.insert(filePairs.begin(), filePairs.end());
             }
 
-            LOG(INFO) << "PBO Index complete";
+            LOG(INFO) << "PBO Index complete [" << _active_pbo_list.size() << " PBOs] [" << _file_pbo_index.size() << " files]";
 
             return true;
         }
@@ -241,6 +261,14 @@ namespace acre {
                     continue;
                 }
 
+                /* Do not try to get the path of objects which are not disk
+                files. NtQueryObject and GetFinalPathNameByHandle will hang if
+                the specified handle is not of the type FILE_TYPE_DISK. */
+                if (GetFileType(dupHandle) != FILE_TYPE_DISK) {
+                    CloseHandle(dupHandle);
+                    continue;
+                }
+
                 /* Query the object type. */
                 objectTypeInfo = (POBJECT_TYPE_INFORMATION)malloc(0x1000);
                 if (!NT_SUCCESS(NtQueryObject(
@@ -309,17 +337,11 @@ namespace acre {
                     std::string object_name(tmp_name.begin(), tmp_name.end());
                     //LOG(INFO) << "File: " << object_name;
                     if (object_type == "File" && object_name.find(".pbo") != object_name.npos) {
+                        char buffer[MAX_PATH];
+                        GetFinalPathNameByHandle(dupHandle, buffer, sizeof(buffer), VOLUME_NAME_DOS);
 
-                        /* Do not try to get the path of objects which are not disk files. */
-                        /* The GetFinalPathNameByHandle function will hang if the specified handle is not of the type FILE_TYPE_DISK. */
-                        DWORD fileType = GetFileType(dupHandle);
-                        if (fileType == FILE_TYPE_DISK) {
-                            char buffer[MAX_PATH];
-                            GetFinalPathNameByHandle(dupHandle, buffer, sizeof(buffer), VOLUME_NAME_DOS);
-
-                            //LOG(INFO) << "Pbo: " << buffer;
-                            _active_pbo_list.push_back(std::string(buffer));
-                        }
+                        //LOG(INFO) << "Pbo: " << buffer;
+                        _active_pbo_list.push_back(std::string(buffer));
                     }
                 }
 

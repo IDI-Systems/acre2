@@ -16,6 +16,7 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
+#include "\a3\ui_f\hpp\defineResincl.inc"
 #include "\a3\ui_f\hpp\defineCommonGrids.inc"
 #include "\a3\ui_f\hpp\defineCommonColors.inc"
 
@@ -58,13 +59,6 @@
 
 // Amount that the volume level changes on every scroll wheel action
 #define VOLUME_LEVEL_CHANGE 0.25
-
-
-// Inventory
-#define INVENTORY_DISPLAY (findDisplay 602)
-#define IDC_RADIOSLOT 6214
-#define IDC_FG_GROUND_ITEMS 632
-#define IDC_FG_CHOSEN_CONTAINER 640
 
 
 // Using base definitions due to UI grids using BIS_fnc_parseNumberSafe

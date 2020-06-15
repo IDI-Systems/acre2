@@ -15,11 +15,19 @@ static char version[] = "1.0";
 extern "C" {
     __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
     __declspec (dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
+    __declspec(dllexport) int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** argv, int argc);
+    __declspec (dllexport) void __stdcall RVExtensionRegisterCallback(int(*callbackProc)(char const* name, char const* function, char const* data));
 };
 #endif
 
+int(*callbackPtr)(char const* name, char const* function, char const* data) = nullptr;
+
 void __stdcall RVExtensionVersion(char *output, int outputSize) {
     sprintf_s(output, outputSize - 1, "%s", ACRE_VERSION);
+}
+void __stdcall RVExtensionRegisterCallback(int(*callbackPtr_)(char const* name, char const* function, char const* data)) {
+    LOG(INFO) << "RVExtensionRegisterCallback called";
+    callbackPtr = callbackPtr_;
 }
 
 std::string get_command(const std::string & input) {
@@ -61,11 +69,38 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
         result = function;
     }
 
+    //LOG(INFO) << "RVExtension [" << function << " - " << _args.to_string() << "]";
+
     /*************************/
     // Real functionality goes here
-    acre::dispatch::get().call(command, _args, result);
+    int result_dummy = 0;
+    acre::dispatch::get().call(command, _args, result, result_dummy);
 
  
     sprintf_s(output, outputSize, "%s", result.c_str());
     EXTENSION_RETURN();
+}
+
+int __stdcall RVExtensionArgs(char* output, int outputSize, const char* function, const char** argv, int argc) {
+    ZERO_OUTPUT();
+
+    std::string command(function);
+    acre::arguments _args(argv, argc);
+
+    std::string result_string = "-1a";
+    int32_t result_code = -1;
+
+    if (command == "echo") {
+        result_string = _args.to_string();
+        result_code = static_cast<int>(_args.size());
+    }
+
+    //LOG(INFO) << "RVExtensionArgs [" << function << " - " << _args.to_string() << "]";
+
+    /*************************/
+    // Real functionality goes here
+    acre::dispatch::get().call(command, _args, result_string, result_code);
+
+    sprintf_s(output, outputSize, "%s", result_string.c_str());
+    EXTENSION_RETURN_VALUE(result_code);
 }

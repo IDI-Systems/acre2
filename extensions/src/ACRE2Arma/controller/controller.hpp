@@ -22,8 +22,6 @@ namespace acre {
         bool reset(const arguments &, std::string &);
         bool get_ready(const arguments &, std::string &);
 
-        bool fetch_result(const arguments &, std::string &);
-
         bool do_stop(const arguments &, std::string &) {
             stop();
             _worker.join();

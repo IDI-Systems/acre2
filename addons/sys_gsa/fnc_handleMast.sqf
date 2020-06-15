@@ -23,7 +23,7 @@ if (_connectedRadio isEqualTo "") then {
 
 // Temporarily disconnect the GSA from the radio
 if (_connectedRadio != "") then {
-    [_player, _gsa, _connectedRadio] call FUNC(disconnect);
+    [_player, _gsa] call FUNC(disconnect);
 };
 
 // Delete the antenna
@@ -38,9 +38,7 @@ if (_mountMast) then {
 } else {
     _gsa = "vhf30108spike" createVehicle _pos;
 
-    if (_player canAdd "ACRE_VHF30108MAST") then {
-        _player addItem "ACRE_VHF30108MAST";
-    };
+    [_player, "ACRE_VHF30108MAST", true] call CBA_fnc_addItem;
 };
 
 // Reconnect the GSA to the radio
