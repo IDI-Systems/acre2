@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Returns whether the baseclass name for a given radio classname.
+ * Returns the base classname for a given radio classname.
  *
  * Arguments:
  * 0: Classname <STRING>
