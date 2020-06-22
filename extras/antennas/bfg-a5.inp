@@ -1,0 +1,15 @@
+CM BF-888S Antenna 
+CM 
+CM 
+CM 
+CM 
+CE
+GW 1 9 0 0 0 0 0 0.12 .0015
+GE 1
+LD 4 1 9 9 50
+GN 1
+EK
+EX 0 1 1 0 1 0 0
+FR 0 84 0 0 400 1
+XQ
+EN

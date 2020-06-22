@@ -2,10 +2,10 @@
 #define COMPONENT_BEAUTIFIED Components
 #include "\idi\acre\addons\main\script_mod.hpp"
 
-// #define DEBUG_MODE_FULL
-// #define DISABLE_COMPILE_CACHE
+#define DEBUG_MODE_FULL
+#define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
-// #define DRAW_ANTENNA_POS
+#define DRAW_ANTENNA_POS
 
 #ifdef DEBUG_ENABLED_SYS_COMPONENTS
     #define DEBUG_MODE_FULL

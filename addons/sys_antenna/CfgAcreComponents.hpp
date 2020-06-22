@@ -133,4 +133,13 @@ class CfgAcreComponents {
         binaryGainFile = QPATHTOF(binary\groundspike_2430cm_mast_gain.aba);
         compatibleRadios[] = {"ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC117F", "ACRE_PRC77", "ACRE_SEM70"};
     };
+
+    class ACRE_12CM_UHF_SMA: ACRE_BaseAntenna {
+        name = "12CM BFG A-5 UHF Antenna";
+        shortName = "12CM UHF";
+        connector = ACRE_CONNECTOR_SMA;
+        height = 0.12;
+        binaryGainFile = QPATHTOF(binary\bfg-a5_gain.aba);
+        compatibleRadios[] = {"ACRE_BF888S"};
+    };
 };
