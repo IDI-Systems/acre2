@@ -46,21 +46,18 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
             sample = sample / static_cast<float>(channelCount);
             if (sample > 1.0F) {
                 sample = 1.0F;
-            }
-            else if (sample < -1.0F) {
+            } else if (sample < -1.0F) {
                 sample = -1.0F;
             }
             mixdownSamples[c] = static_cast<short>(sample * LIMITER::max());
             c++; // lulz
         }
-    }
-    else {
+    } else {
         for (std::uint32_t c = 0; c < mixdownSampleLength; ++c) {
             float sample = outputPCM[c];
             if (sample > 1.0F) {
                 sample = 1.0F;
-            }
-            else if (sample < -1.0F) {
+            } else if (sample < -1.0F) {
                 sample = -1.0F;
             }
             mixdownSamples[c] = static_cast<short>(sample * LIMITER::max());
@@ -79,24 +76,22 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
             float mixedSample = 0.0F;
             if (mixdownSamples[c] > 0) {
                 mixedSample = static_cast<float>(mixdownSamples[c]) / LIMITER::max();
-            }
-            else {
+            } else {
                 mixedSample = -static_cast<float>(mixdownSamples[c]) / LIMITER::min();
             }
+
             mixedSample = mixedSample / static_cast<float>(channelCount);
             for (int i = 0; i < channelCount; i++) {
                 outputPCM[x + i] = mixedSample;
             }
             c++;
         }
-    }
-    else {
+    } else {
         for (std::uint32_t c = 0; c < mixdownSampleLength; ++c) {
             float mixedSample = 0.0F;
             if (mixdownSamples[c] > 0) {
                 mixedSample = static_cast<float>(mixdownSamples[c]) / LIMITER::max();
-            }
-            else {
+            } else {
                 mixedSample = -static_cast<float>(mixdownSamples[c]) / LIMITER::min();
             }
             outputPCM[c] = mixedSample;
@@ -122,14 +117,11 @@ bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uin
     uint32_t speakerMask = SPEAKER_STEREO;
 
     // Make this faster
-
-    // if (mixdownSamples == NULL || sampleCount * channelCount > mixdownSampleLength) {
     const uint32_t mixdownSampleLength = sampleCount * channelCount;
     int16_t *mixdownSamples            = new (std::nothrow) int16_t[mixdownSampleLength];
     if (mixdownSamples == nullptr) {
         return false;
     }
-    //}
 
     for (uint32_t c = 0; c <= mixdownSampleLength - 1U; ++c) {
         float sample = outputPCM[c];
