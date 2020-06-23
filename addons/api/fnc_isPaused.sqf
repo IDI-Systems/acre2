@@ -16,4 +16,3 @@
  */
 
  [] call EFUNC(sys_core,isPaused);
- 
