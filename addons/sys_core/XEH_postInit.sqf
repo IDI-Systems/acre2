@@ -93,6 +93,9 @@ if (!GVAR(aceLoaded)) then {
     [] call EFUNC(sys_components,toggleAntennaDir)
 }, [DIK_UPARROW, [false, true, true]]] call CBA_fnc_addKeybind;
 
+// Setup chat commands
+["acre-enable", { [false] call FUNC(setPaused); }] call CBA_fnc_registerChatCommand;
+["acre-disable", { [true] call FUNC(setPaused); }] call CBA_fnc_registerChatCommand;
 
 // Load map data
 ACRE_MAP_LOADED = false;
