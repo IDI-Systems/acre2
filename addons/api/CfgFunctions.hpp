@@ -34,6 +34,9 @@ class CfgFunctions {
 
             PATHTO_FNC(setGlobalVolume);
             PATHTO_FNC(getGlobalVolume);
+
+            PATHTO_FNC(isPaused);
+            PATHTO_FNC(setPaused);
         };
 
         class Radios {

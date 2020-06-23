@@ -26,6 +26,7 @@ PREP(hasItem);
 PREP(inRange);
 PREP(inZeus);
 PREP(isMuted);
+PREP(isPaused);
 PREP(localStartSpeaking);
 PREP(localStopSpeaking);
 PREP(monitorAiPFH);
