@@ -39,6 +39,7 @@ PREP(remoteStartSpeaking);
 PREP(remoteStopSpeaking);
 PREP(removeGear);
 PREP(replaceGear);
+PREP(setPaused);
 PREP(setPluginSetting);
 PREP(setSpeakingLanguage);
 PREP(setSpokenLanguages);

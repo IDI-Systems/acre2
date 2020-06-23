@@ -12,6 +12,7 @@ LOG("Starting radio id handler events");
 ACRE_SERVER_INIT = true;
 
 [QGVAR(onSetSpector), { _this call FUNC(setSpectator) }] call CALLSTACK(CBA_fnc_addEventHandler);
+[QGVAR(onSetPaused), { _this call FUNC(setPaused) }] call CALLSTACK(CBA_fnc_addEventHandler);
 [QGVAR(doAddComponentCargo), { _this call FUNC(doAddComponentCargo) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
 [QGVAR(openRadioCheck), {_this call FUNC(openRadioCheckRequest)}] call CALLSTACK(CBA_fnc_addEventHandler);

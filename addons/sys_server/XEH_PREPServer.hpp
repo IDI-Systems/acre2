@@ -2,6 +2,7 @@ PREP(openRadioCheckRequest);
 PREP(openRadioUpdateState);
 PREP(doAddComponentCargo);
 PREP(getRadioId);
+PREP(setPaused);
 PREP(setSpectator);
 PREP(masterIdTracker);
 PREP(collect);
