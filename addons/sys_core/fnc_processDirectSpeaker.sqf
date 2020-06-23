@@ -25,7 +25,7 @@ private _isIntercomAttenuate = false;
 private _directVolume = GVAR(globalVolume);
 private _speakingType = "d";
 
-if (_id in ACRE_SPECTATORS_LIST && {ACRE_IS_SPECTATOR} || ACRE_IS_DISABLED) then {
+if (ACRE_IS_PAUSED || {_id in ACRE_SPECTATORS_LIST && {ACRE_IS_SPECTATOR}}) then {
     _bothSpectating = true;
 } else {
     private _attenuate = [_unit] call EFUNC(sys_attenuate,getUnitAttenuate);
