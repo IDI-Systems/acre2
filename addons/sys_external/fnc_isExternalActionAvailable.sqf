@@ -10,7 +10,7 @@
  * Can interact with external radios <BOOL>
  *
  * Example:
- * [cursorTarget] call acre_sys_external_isExternalRadioAvailable
+ * [cursorTarget] call acre_sys_external_fnc_isExternalRadioAvailable
  *
  * Public: No
  */

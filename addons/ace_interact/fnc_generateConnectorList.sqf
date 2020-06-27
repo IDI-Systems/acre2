@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_interact_fnc_generateConnectorList
+ * [ARGUMENTS] call acre_ace_interact_fnc_generateConnectorList
  *
  * Public: No
  */

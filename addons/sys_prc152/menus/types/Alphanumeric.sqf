@@ -104,7 +104,7 @@ DFUNC(onButtonPress_Alphanumeric) = {
             if (_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
-                _editIndex = _editDigits;
+                _editIndex = _editDigits -1;
             };
             SCRATCH_SET(GVAR(currentRadioId), "menuAlphaCursor", _editIndex);
             SCRATCH_SET(GVAR(currentRadioId), "menuAlphaCursorPress", 0);

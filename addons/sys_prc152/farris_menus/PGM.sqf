@@ -86,13 +86,14 @@ GVAR(PGM) = ["PGM", "PGM", "PGM",
             [
                 {
                     private _value = GET_RADIO_VALUE("description");
+                    _value = (_value + CHANNEL_PADDING_STRING) select [0, CHANNEL_NAME_MAX_LENGTH]; // Make sure we have something at each editindex
                     SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
                 },
                 nil,
                 nil
             ],
             [
-                20,    // Digit count
+                CHANNEL_NAME_MAX_LENGTH, // Editable digits
                 [ROW_LARGE_3, 0, -1] // Highlighting cursor information
             ],
             "pgm_description"

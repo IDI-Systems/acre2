@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Creates a PFH to monitor the ACRE2Arma extension's connection to the TeamSpeak plugin.
+ * Creates a PFH to monitor the ACRE2Arma extension's connection to the VOIP plugin.
  *
  * Arguments:
  * None
@@ -54,9 +54,9 @@ DFUNC(connectionFnc) = {
                 INFO("Pipe opened.");
                 GVAR(serverStarted) = true;
 
-                // Move TeamSpeak 3 channel if already in-game (otherwise display XEH will take care of it)
+                // Move VOIP channel if already in-game (otherwise display XEH will take care of it)
                 if (!isNull (findDisplay 46)) then {
-                    call FUNC(ts3ChannelMove);
+                    call FUNC(voipChannelMove);
                 };
             };
         };
@@ -70,7 +70,7 @@ DFUNC(connectionFnc) = {
 if (isMultiplayer) then {
 #endif
     [] call FUNC(connectionFnc);
-    ADDPFH(DFUNC(connectionFnc), 1, []);
+    [DFUNC(connectionFnc), 1, []] call CBA_fnc_addPerFrameHandler;
     GVAR(serverStarted) = true;
 #ifndef DEBUG_MODE_FULL
 };

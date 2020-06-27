@@ -74,10 +74,10 @@ pbo_name_prefix = "acre_"
 signature_blacklist = []
 importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "acre_x64.dll", "ACRE2Arma.dll", "ACRE2Arma_x64.dll", "ACRE2Steam.dll", "ACRE2Steam_x64.dll"]
 extrasFiles = ["examples", "Wav2B64.exe"]
-pluginFiles = ["acre2_win32.dll", "acre2_win64.dll"]
+pluginFiles = ["ts3", "mumble"]
 versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h", "docs\\_data\\sidebar.yml"]
-extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
-extensions64 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS"]
+extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "ACRE2\\ACRE2Mumble", "Extras\\Wav2B64"]
+extensions64 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "ACRE2\\ACRE2Mumble"]
 # be_cred_file expected to be in folder defined by enviorment variable CBA_PUBLISH_CREDENTIALS_PATH
 be_cred_filename = "acre_battleye_creds.json"
 
@@ -436,8 +436,12 @@ def copy_important_files(source_dir,destination_dir):
         for file in pluginFiles:
             filePath = os.path.join(source_plugin_dir, file)
             if os.path.exists(filePath):
-                print_green("Copying plugin dll => {}".format(filePath))
-                shutil.copy(filePath, destination_plugin_dir)
+                if os.path.isdir(filePath):
+                    print_green("Copying plugin directory => {}".format(filePath))
+                    shutil.copytree(filePath, os.path.join(destination_plugin_dir,file))
+                else:
+                    print_green("Copying plugin dll => {}".format(filePath))
+                    shutil.copy(filePath, destination_plugin_dir)
             else:
                 missingFiles.append("{}".format(filePath))
                 print_error("Failed copying plugin dll => {}".format(filePath))

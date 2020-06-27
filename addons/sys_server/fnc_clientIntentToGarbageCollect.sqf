@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * ["acre_prc152_id_1", 9] call acre_sys_server_fnc_clientIntentToGarabageCollect
+ * ["acre_prc152_id_1", 9] call acre_sys_server_fnc_clientIntentToGarbageCollect
  *
  * Public: No
  */

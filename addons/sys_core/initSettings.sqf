@@ -46,38 +46,38 @@
     {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
 ] call CBA_fnc_addSetting;
 
-// Teamspeak Channel Switching
+// VOIP Channel Switching
 // Switch channels
 [
-    QGVAR(ts3ChannelSwitch),
+    QGVAR(voipChannelSwitch),
     "CHECKBOX",
-    localize LSTRING(ts3ChannelSwitch_displayName),
+    localize LSTRING(voipChannelSwitch_displayName),
     "ACRE2",
     true,
     false,
-    {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
+    {["disableVoipChannelSwitch", _this] call FUNC(setPluginSetting)}
 ] call CBA_fnc_addSetting;
 
 // Channel Name
 [
-    QGVAR(ts3ChannelName),
+    QGVAR(voipChannelName),
     "EDITBOX",
-    localize LSTRING(ts3ChannelName_displayName),
+    localize LSTRING(voipChannelName_displayName),
     "ACRE2",
     "",
     true,
-    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
+    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,voipChannelMove)};}
 ] call CBA_fnc_addSetting;
 
 // Channel Password
 [
-    QGVAR(ts3ChannelPassword),
+    QGVAR(voipChannelPassword),
     "EDITBOX",
-    localize LSTRING(ts3ChannelPassword_displayName),
+    localize LSTRING(voipChannelPassword_displayName),
     "ACRE2",
     ["", true],
     true,
-    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
+    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,voipChannelMove)};}
 ] call CBA_fnc_addSetting;
 
 // Difficulty settings
@@ -99,8 +99,7 @@
     localize LSTRING(fullDuplex_displayName),
     "ACRE2",
     false,
-    true,
-    {[_this] call EFUNC(api,setFullDuplex)}
+    true
 ] call CBA_fnc_addSetting;
 
 // Antena direction

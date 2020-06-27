@@ -17,6 +17,8 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 
 #define NAME_PRC117F AN/PRC-117F
+#define CHANNEL_NAME_MAX_LENGTH 12
+#define CHANNEL_PADDING_STRING "            " // Should be same length as CHANNEL_NAME_MAX_LENGTH
 
 #include "\idi\acre\addons\sys_prc117f\menus\script_menus.hpp"
 

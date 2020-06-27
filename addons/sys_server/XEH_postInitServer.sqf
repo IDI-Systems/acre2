@@ -7,7 +7,7 @@ LOG("Starting radio id handler events");
 [QGVAR(removeGCQueue), { _this call FUNC(removeGCQueue) }] call CALLSTACK(CBA_fnc_addEventHandler);
 [QGVAR(invalidGarbageCollect), { _this call FUNC(invalidGarbageCollect) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
-ADDPFH(FUNC(masterIdTracker), 1, []);
+[FUNC(masterIdTracker), 1, []] call CBA_fnc_addPerFrameHandler;
 
 ACRE_SERVER_INIT = true;
 
@@ -23,5 +23,5 @@ ACRE_FULL_SERVER_VERSION = QUOTE(VERSION_STR);
 
 publicVariable "ACRE_FULL_SERVER_VERSION";
 
-// Event handler to remove disconnected clients from the spectator TeamSpeak list
+// Event handler to remove disconnected clients from the spectator VOIP list
 addMissionEventHandler ["PlayerDisconnected", {_this call FUNC(handlePlayerDisconnected);}];

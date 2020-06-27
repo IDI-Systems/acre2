@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_data_fnc_serialize;
+ * [ARGUMENTS] call acre_sys_data_fnc_deserialize;
  *
  * Public: No
  */

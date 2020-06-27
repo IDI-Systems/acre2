@@ -19,6 +19,7 @@ _args params ["_transmitterClass", "_receiverClass"];
 
 if !(_result isEqualTo []) then {
     _result params ["_id", "_signal"];
+    TRACE_2("",_id,_signal);
 
     private _bestSignalStr = format ["%1_best_signal", _transmitterClass];
     private _bestAntStr = format ["%1_best_ant", _transmitterClass];
@@ -26,7 +27,7 @@ if !(_result isEqualTo []) then {
     private _maxSignal = missionNamespace getVariable [_bestSignalStr , -992];
     private _currentAntenna = missionNamespace getVariable [_bestAntStr, ""];
 
-    TRACE_4("%1: %2 ----- %3: %4",_bestSignalStr,_maxSignal,_bestAntStr,_currentAntenna);
+    TRACE_4("",_bestSignalStr,_maxSignal,_bestAntStr,_currentAntenna);
 
     if ((_id == _currentAntenna) || {(_id != _currentAntenna) && {_signal > _maxSignal}}) then {
         missionNamespace setVariable [_bestSignalStr, _signal];

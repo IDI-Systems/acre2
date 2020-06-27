@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * ["ACRE_PRC343_ID_1", false] call acre_sys_external_allowExternalUse
+ * ["ACRE_PRC343_ID_1", false] call acre_sys_external_fnc_allowExternalUse
  *
  * Public: No
  */

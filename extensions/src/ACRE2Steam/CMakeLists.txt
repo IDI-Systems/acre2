@@ -9,7 +9,8 @@ file(GLOB_RECURSE SOURCES *.h *.hpp *.c *.cpp)
 
 add_library( ${ACRE_NAME} MODULE ${SOURCES} ${GLOBAL_SOURCES})
 set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2)
-
+target_compile_features(${ACRE_NAME} PRIVATE cxx_std_17)
+#set_target_properties(${ACRE_NAME} PRIVATE LINKER_LANGUAGE CXX)
 
 # Copy and rename
 if(USE_64BIT_BUILD)

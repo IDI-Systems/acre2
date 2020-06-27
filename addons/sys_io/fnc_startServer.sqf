@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Starts the SQF code to maintain connectivity to the TeamSpeak plugin via the ACRE2Arma extension.
+ * Starts the SQF code to maintain connectivity to the VOIP plugin via the ACRE2Arma extension.
  *
  * Arguments:
  * None
@@ -23,7 +23,7 @@ GVAR(connectCount) = 15;
 GVAR(runserver) = true;
 [] call FUNC(server);
 LOG("server started");
-ADDPFH(DFUNC(serverReadLoop), 0, []);
+[DFUNC(serverReadLoop), 0, []] call CBA_fnc_addPerFrameHandler;
 [] call FUNC(ping);
 
 

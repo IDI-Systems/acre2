@@ -19,9 +19,9 @@
 if (isNull player) exitWith {};
 acre_player = player;
 
-if (!ACRE_MAP_LOADED || {!ACRE_DATA_SYNCED} || {GVAR(ts3id) == -1}) exitWith {};
+if (!ACRE_MAP_LOADED || {!ACRE_DATA_SYNCED} || {GVAR(voipId) == -1}) exitWith {};
 
-TRACE_1("GOT TS3 ID", GVAR(ts3id));
+TRACE_1("GOT VOIP ID", GVAR(voipId));
 
 [] call FUNC(utilityFunction); // OK
 [] call FUNC(muting);
@@ -31,7 +31,7 @@ GVAR(persistAlive) = 1;
 GVAR(lastRadioTime) = time + 0.25;
 GVAR(lastKeyCount) = 0;
 
-GVAR(speakingHandle) = ADDPFH(DFUNC(speaking), 0.06, []);
+GVAR(speakingHandle) = [DFUNC(speaking), 0.06, []] call CBA_fnc_addPerFrameHandler;
 // =====
 
 // Set the speaking volume to normal

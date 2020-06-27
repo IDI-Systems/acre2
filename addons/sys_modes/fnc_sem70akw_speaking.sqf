@@ -13,7 +13,7 @@
  * Signal Calculation Paramteres <ARRAY>
  *
  * Example:
- * [unit1, "_txRadioId", acre_player, "_rxRadioId"] call acre_sys_modes_fnc_sc_speaking
+ * [unit1, "_txRadioId", acre_player, "_rxRadioId"] call acre_sys_modes_fnc_sem70akw_speaking
  *
  * Public: No
  */

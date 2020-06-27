@@ -45,7 +45,7 @@ if (!GVAR(fullDuplex) && {ACRE_BROADCASTING_RADIOID != ""}) then {
                 private _unit = _x select 0;
                 if (!isNull _unit && {_unit != acre_player}) then {
                     private _canUnderstand = [_unit] call FUNC(canUnderstand);
-                    private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand,1,0,1,0,false,[0,0,0]];
+                    private _paramArray = ["r", GET_VOIPID(_unit), !_canUnderstand,1,0,1,0,false,[0,0,0]];
                     CALL_RPC("updateSpeakingData", _paramArray);
                 };
             } forEach (_sources select _forEachIndex);

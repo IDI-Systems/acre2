@@ -120,7 +120,7 @@ if (vehicle acre_player != acre_player) then {
         false
     };
 
-    if ([_rackId] call FUNC(getMountedRackRadio) != "") exitWith {
+    if ([_rackId] call FUNC(getMountedRadio) != "") exitWith {
         [QGVAR(logOnServer), format ["Rack ID %1 has already a radio mounted.", _rackId]] call CBA_fnc_serverEvent;
         false
     };
