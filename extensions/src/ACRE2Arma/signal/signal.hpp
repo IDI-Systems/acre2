@@ -164,9 +164,13 @@ namespace acre {
                                                    args_.as_float(acre_signalArgument_txDirectionY),
                                                    args_.as_float(acre_signalArgument_txDirectionZ));
                 const std::string tx_antenna_name = args_.as_string(acre_signalArgument_txAntennaName);
-                const glm::vec3 rx_pos = glm::vec3(args_.as_float(acre_signalArgument_rxPositionX),
+                const glm::vec3 rx_pos_temp = glm::vec3(args_.as_float(acre_signalArgument_rxPositionX),
                                                    args_.as_float(acre_signalArgument_rxPositionY),
                                                    args_.as_float(acre_signalArgument_rxPositionZ));
+
+                // Handle TX and RX positions being the same by slightly shifting the RX position (prevents errors from distance being exactly 0)
+                const glm::vec3 rx_pos = (tx_pos != rx_pos_temp) ? rx_pos_temp : (rx_pos_temp + glm::vec3(0.00001, 0.00001, 0.00001));
+
                 const glm::vec3 rx_dir = glm::vec3(args_.as_float(acre_signalArgument_rxDirectionX),
                                                    args_.as_float(acre_signalArgument_rxDirectionY),
                                                    args_.as_float(acre_signalArgument_rxDirectionZ));
@@ -217,6 +221,13 @@ namespace acre {
                     default: {
                         _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
                     }
+                }
+                
+                // Sanatize numbers as arma will not be able to parse bad values (can remove if no more errors are reported)
+                if (!isfinite(signal_result.result_dbm) || !isfinite(signal_result.result_v)) {
+                    LOG(ERROR) << "Signal was NaN/infinite: " << args_.to_string() << ": " << signal_result.result_dbm << "," << signal_result.result_v;
+                    signal_result.result_dbm = 9000.0f; 
+                    signal_result.result_v = 9000.0f; // ouch - don't touch the antenna
                 }
 
 #ifdef DEBUG_OUTPUT
