@@ -170,6 +170,15 @@ idi::acre::UpdateCode VOIPPlugin::handle_update_plugin() noexcept {
 
     UpdateCode update_status = UpdateCode::update_not_necessary;
 
+    // Clean the error messages in case of retrying.
+    if (!last_error_msg.empty()) {
+        last_error_msg.clear();
+    }
+
+    if (!updated_paths.empty()) {
+        updated_paths.clear();
+    }
+
     for (const auto &location : plugin_locations) {
         std::filesystem::path plugin_folder(location + "/plugins");
 
