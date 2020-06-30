@@ -164,13 +164,9 @@ namespace acre {
                                                    args_.as_float(acre_signalArgument_txDirectionY),
                                                    args_.as_float(acre_signalArgument_txDirectionZ));
                 const std::string tx_antenna_name = args_.as_string(acre_signalArgument_txAntennaName);
-                const glm::vec3 rx_pos_temp = glm::vec3(args_.as_float(acre_signalArgument_rxPositionX),
+                const glm::vec3 rx_pos = glm::vec3(args_.as_float(acre_signalArgument_rxPositionX),
                                                    args_.as_float(acre_signalArgument_rxPositionY),
                                                    args_.as_float(acre_signalArgument_rxPositionZ));
-
-                // Handle TX and RX positions being the same by slightly shifting the RX position (prevents errors from distance being exactly 0)
-                const glm::vec3 rx_pos = (tx_pos != rx_pos_temp) ? rx_pos_temp : (rx_pos_temp + glm::vec3(0.00001, 0.00001, 0.00001));
-
                 const glm::vec3 rx_dir = glm::vec3(args_.as_float(acre_signalArgument_rxDirectionX),
                                                    args_.as_float(acre_signalArgument_rxDirectionY),
                                                    args_.as_float(acre_signalArgument_rxDirectionZ));
@@ -197,30 +193,36 @@ namespace acre {
 
                 acre::signal::result signal_result;
 
-                switch (model) {
-                    case PropagationModel::arcade: {
-                        _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, frequency_MHz, power_mW);
-                        break;
+                if (tx_pos != rx_pos) {
+                    switch (model) {
+                        case PropagationModel::arcade: {
+                            _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, frequency_MHz, power_mW);
+                            break;
+                        }
+                        case PropagationModel::los: {
+                            _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
+                            break;
+                        }
+                        case PropagationModel::losMultipath: {
+                            _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
+                            break;
+                        }
+                        case PropagationModel::longleyRice_itm: {
+                            _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, false, omnidirectional, true);
+                            break;
+                        }
+                        case PropagationModel::longleyRice_itwom: {
+                            _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, true, omnidirectional, true);
+                            break;
+                        }
+                        default: {
+                            _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
+                        }
                     }
-                    case PropagationModel::los: {
-                        _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
-                        break;
-                    }
-                    case PropagationModel::losMultipath: {
-                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
-                        break;
-                    }
-                    case PropagationModel::longleyRice_itm: {
-                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, false, omnidirectional, true);
-                        break;
-                    }
-                    case PropagationModel::longleyRice_itwom: {
-                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, true, omnidirectional, true);
-                        break;
-                    }
-                    default: {
-                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
-                    }
+                } else {
+                    // Handle TX and RX positions being the same by just returning a very high dBm, this avoids many calcs that will fail if distance == 0
+                    signal_result.result_dbm = 0.111f;
+                    signal_result.result_v = .223f;
                 }
                 
                 // Sanatize numbers as arma will not be able to parse bad values (can remove if no more errors are reported)
