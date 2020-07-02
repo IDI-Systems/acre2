@@ -193,36 +193,30 @@ namespace acre {
 
                 acre::signal::result signal_result;
 
-                if (tx_pos != rx_pos) {
-                    switch (model) {
-                        case PropagationModel::arcade: {
-                            _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, frequency_MHz, power_mW);
-                            break;
-                        }
-                        case PropagationModel::los: {
-                            _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
-                            break;
-                        }
-                        case PropagationModel::losMultipath: {
-                            _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
-                            break;
-                        }
-                        case PropagationModel::longleyRice_itm: {
-                            _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, false, omnidirectional, true);
-                            break;
-                        }
-                        case PropagationModel::longleyRice_itwom: {
-                            _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, true, omnidirectional, true);
-                            break;
-                        }
-                        default: {
-                            _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
-                        }
+                switch (model) {
+                    case PropagationModel::arcade: {
+                        _signalProcessor_arcade.process(&signal_result, tx_pos, rx_pos, rx_antenna_name, frequency_MHz, power_mW);
+                        break;
                     }
-                } else {
-                    // Handle TX and RX positions being the same by just returning a very high dBm, this avoids many calcs that will fail if distance == 0
-                    signal_result.result_dbm = 0.111f;
-                    signal_result.result_v = .223f;
+                    case PropagationModel::los: {
+                        _signalProcessor_los.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
+                        break;
+                    }
+                    case PropagationModel::losMultipath: {
+                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
+                        break;
+                    }
+                    case PropagationModel::longleyRice_itm: {
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, false, omnidirectional, true);
+                        break;
+                    }
+                    case PropagationModel::longleyRice_itwom: {
+                        _signalProcessor_longleyRice.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, true, omnidirectional, true);
+                        break;
+                    }
+                    default: {
+                        _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
+                    }
                 }
                 
                 // Sanatize numbers as arma will not be able to parse bad values (can remove if no more errors are reported)

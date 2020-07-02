@@ -30,6 +30,9 @@ float32_t acre::signal::antenna::gain(const glm::vec3 dir_antenna_, const glm::v
     if ((f_ < _min_frequency) || ((f_ + _frequency_step) > _max_frequency)){
         return -1000.0f;
     }
+    if (glm::length(dir_signal_) <= 0.0f) {
+        return 0.0f; // cannot get direction if antennas have same position
+    }
 
     const glm::vec3 dir_antenna_v = glm::normalize(dir_antenna_);
     const float32_t elev_antenna = asinf(dir_antenna_v.z)*57.2957795f;
