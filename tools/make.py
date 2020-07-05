@@ -334,8 +334,6 @@ def compile_extensions(extensions_root, force_build):
         return
 
     try:
-        joinstr = ":rebuild;" if force_build else ";"
-
         # 32-bit
         if extensions32:
             # Prepare build dirs
@@ -346,7 +344,7 @@ def compile_extensions(extensions_root, force_build):
             os.chdir(vcproj32)
             subprocess.call(["cmake", "..", "-A", "Win32"])
             print()
-            extensions32_cmd = joinstr.join(extensions32)
+            extensions32_cmd = ";".join([ext + ":rebuild" if force_build else ext for ext in extensions32])
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions32_cmd), "/p:Configuration=RelWithDebInfo"])
         else:
             print("No 32-bit extensions found.")
@@ -361,7 +359,7 @@ def compile_extensions(extensions_root, force_build):
             os.chdir(vcproj64)
             subprocess.call(["cmake", "..", "-A", "x64"])
             print()
-            extensions64_cmd = joinstr.join(extensions64)
+            extensions64_cmd = ";".join([ext + ":rebuild" if force_build else ext for ext in extensions64])
             subprocess.call(["msbuild", "ACRE.sln", "/m", "/t:{}".format(extensions64_cmd), "/p:Configuration=RelWithDebInfo"])
         else:
             print("No 64-bit extensions found.")
