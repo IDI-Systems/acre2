@@ -221,7 +221,7 @@ namespace acre {
                 
                 // Sanatize numbers as arma will not be able to parse bad values (can remove if no more errors are reported)
                 if (!isfinite(signal_result.result_dbm) || !isfinite(signal_result.result_v)) {
-                    LOG(ERROR) << "Signal was NaN/infinite: " << args_.to_string() << ": " << signal_result.result_dbm << "," << signal_result.result_v;
+                    if (logging >= 1) { LOG(ERROR) << "Signal was NaN/infinite: " << args_.to_string() << ": " << signal_result.result_dbm << "," << signal_result.result_v; }
                     signal_result.result_dbm = 9000.0f; 
                     signal_result.result_v = 9000.0f; // ouch - don't touch the antenna
                 }
