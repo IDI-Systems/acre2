@@ -18,26 +18,26 @@
  * Public: Yes
  */
 
- params [
-     ["_radioType", "", [""]],
-     ["_array", [], [[], objNull]]
- ];
+params [
+    ["_radioType", "", [""]],
+    ["_array", [], [[], objNull]]
+];
 
- private _ret = nil;
+private _ret = nil;
 
- if (_array isEqualType objNull) then {
-     _array = _array call EFUNC(sys_core,getGear);
- } else {
-     if (_array isEqualTo []) then {
-         _array = [] call FUNC(getCurrentRadioList);
-     };
- };
+if (_array isEqualType objNull) then {
+    _array = _array call EFUNC(sys_core,getGear);
+} else {
+    if (_array isEqualTo []) then {
+        _array = [] call FUNC(getCurrentRadioList);
+    };
+};
 
- {
-     private _radioId = _x;
-     if (([_radioId, _radioType] call FUNC(isKindOf))) exitWith {
-         _ret = _radioId;
-     };
- } forEach _array;
+{
+    private _radioId = _x;
+    if (([_radioId, _radioType] call FUNC(isKindOf))) exitWith {
+        _ret = _radioId;
+    };
+} forEach _array;
 
- _ret
+_ret
