@@ -25,8 +25,8 @@
 
  private _ret = nil;
 
- if (_units isEqualType objNull) then {
-     _array = _units call EFUNC(sys_core,getGear);
+ if (_array isEqualType objNull) then {
+     _array = _array call EFUNC(sys_core,getGear);
  } else {
      if (_array isEqualTo []) then {
          _array = [] call FUNC(getCurrentRadioList);
