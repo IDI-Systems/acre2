@@ -6,14 +6,14 @@
  *
  * Arguments:
  * 0: Radio type <STRING>
- * 1: Optional unit or List of String <ARRAY, OBJECT>(default: [])
+ * 1: Optional unit or List of String <ARRAY, OBJECT> (default: [])
  *
  * Return Value:
- * Radio ID <STRING>
+ * Array of Radio IDs <ARRAY>
  *
  * Example:
- * _radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadioByType;
- * _radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadioByType;
+ * _radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadioByType
+ * _radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadioByType
  *
  * Public: Yes
  */
