@@ -35,7 +35,7 @@ if (_array isEqualType objNull) then {
 
 {
     private _radioId = _x;
-    if (([_radioId, _radioType] call FUNC(isKindOf))) then {
+    if ([_radioId, _radioType] call FUNC(isKindOf)) then {
         _ret pushBackUnique _radioId;
     };
 } forEach _array;

@@ -35,7 +35,7 @@ if (_array isEqualType objNull) then {
 
 {
     private _radioId = _x;
-    if (([_radioId, _radioType] call FUNC(isKindOf))) exitWith {
+    if ([_radioId, _radioType] call FUNC(isKindOf)) exitWith {
         _ret = _radioId;
     };
 } forEach _array;
