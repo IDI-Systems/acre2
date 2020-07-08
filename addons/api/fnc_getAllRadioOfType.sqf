@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Returns the unique radio ID of the first radio the local player or unit possesses of a given type. This function does not compensate for units with multiple radios of the same type. There is no guarantee of which radio it will return.
+ * Returns a list of unique radio ID of local player or unit possesses of a given type.
  * In the case of a unit for the second parameter it will find the radio ID for that unit instead of the local player.
  *
  * Arguments:
@@ -9,11 +9,11 @@
  * 1: Optional unit or List of String <ARRAY, OBJECT> (default: [])
  *
  * Return Value:
- * Radio ID <STRING>
+ * Array of Radio IDs <ARRAY>
  *
  * Example:
- * _radioId = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType
- * _radioId = ["ACRE_PRC152", _unit] call acre_api_fnc_getRadioByType
+ * _radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadioByType
+ * _radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadioByType
  *
  * Public: Yes
  */
@@ -23,7 +23,7 @@ params [
     ["_array", [], [[], objNull]]
 ];
 
-private _ret = nil;
+private _ret = [];
 
 if (_array isEqualType objNull) then {
     _array = _array call EFUNC(sys_core,getGear);
@@ -35,8 +35,8 @@ if (_array isEqualType objNull) then {
 
 {
     private _radioId = _x;
-    if ([_radioId, _radioType] call FUNC(isKindOf)) exitWith {
-        _ret = _radioId;
+    if ([_radioId, _radioType] call FUNC(isKindOf)) then {
+        _ret pushBackUnique _radioId;
     };
 } forEach _array;
 
