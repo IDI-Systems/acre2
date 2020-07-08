@@ -9,6 +9,7 @@ PREP_MODULE(radio,getSpatial);
 PREP_MODULE(radio,setSpatial);
 PREP_MODULE(radio,setChannelData);
 PREP_MODULE(radio,getChannelData);
+PREP_MODULE(radio,getChannelDataInternal);
 PREP_MODULE(radio,getCurrentChannelData);
 PREP_MODULE(radio,getChannelDescription);
 PREP_MODULE(radio,getCurrentChannel);

@@ -20,16 +20,13 @@
  */
 
 TRACE_1("888S getChannelData", _this);
+params ["_radioId", "", "_eventData", "_radioData"];
 
-params ["", "", "_eventData", "_radioData", ""];
-
-private _channelNumber = _eventData;
-private _channels = HASH_GET(_radioData, "channels");
-private _channel = HASHLIST_SELECT(_channels, _channelNumber);
-
-private _return = HASH_CREATE;
-HASH_SET(_return, "mode", "singleChannelPRR");
-HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
-HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
-HASH_SET(_return, "power", 100);
-_return
+private _cachedChannels = SCRATCH_GET_DEF(_radioId, "cachedFullChannels", []);
+private _return = nil;
+if (_eventData < (count _cachedChannels)) then {
+    _return = _cachedChannels select _eventData;
+} else {
+    _return = [_eventData, _radioData] call FUNC(getChannelDataInternal);
+};
+_return;

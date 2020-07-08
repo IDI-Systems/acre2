@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_prc343_fnc_preset_information
+ * [] call acre_sys_bf888s_fnc_preset_information
  *
  * Public: No
  */
@@ -33,6 +33,11 @@ for "_i" from 0 to 15 do {
 
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
+    HASH_SET(_channel, "power", 5000);
+    HASH_SET(_channel, "CTCSSTx", 69.3);
+    HASH_SET(_channel, "CTCSSRx", 69.3);
+    HASH_SET(_channel, "modulation", "FM");
+    HASH_SET(_channel, "squelch", 3);
     //HASH_SET(_channel,"channelNumber",_i);
 
     HASHLIST_PUSH(_channels,_channel);
@@ -49,6 +54,11 @@ for "_i" from 0 to 79 do {
 
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
+    HASH_SET(_channel, "power", 5000);
+    HASH_SET(_channel, "CTCSSTx", 69.3);
+    HASH_SET(_channel, "CTCSSRx", 69.3);
+    HASH_SET(_channel, "modulation", "FM");
+    HASH_SET(_channel, "squelch", 3);
     //HASH_SET(_channel,"channelNumber",_i);
 
     HASHLIST_PUSH(_channels,_channel);
@@ -65,7 +75,11 @@ for "_i" from 80 to 159 do {
 
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
-    //HASH_SET(_channel,"channelNumber",_i);
+    HASH_SET(_channel, "power", 5000);
+    HASH_SET(_channel, "CTCSSTx", 69.3);
+    HASH_SET(_channel, "CTCSSRx", 69.3);
+    HASH_SET(_channel, "modulation", "FM");
+    HASH_SET(_channel, "squelch", 3);
 
     HASHLIST_PUSH(_channels,_channel);
 };
@@ -81,6 +95,11 @@ for "_i" from 160 to 239 do {
 
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
+    HASH_SET(_channel, "power", 5000);
+    HASH_SET(_channel, "CTCSSTx", 69.3);
+    HASH_SET(_channel, "CTCSSRx", 69.3);
+    HASH_SET(_channel, "modulation", "FM");
+    HASH_SET(_channel, "squelch", 3);
     //HASH_SET(_channel,"channelNumber",_i);
 
     HASHLIST_PUSH(_channels,_channel);

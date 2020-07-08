@@ -15,9 +15,9 @@ class BF888S_RadioDialog {
     MovingEnable = 0;
     onUnload = QUOTE(['closeGui'] call GUI_INTERACT_EVENT);
     onLoad = QUOTE(_this call FUNC(render));
-    controlsBackground[] = {PRC343Background};
+    controlsBackground[] = {BF888SBackground};
     objects[] = {};
-    class PRC343Background {
+    class BF888SBackground {
         type = CT_STATIC;
         idc = 99999;
         style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
@@ -43,12 +43,13 @@ class BF888S_RadioDialog {
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
-            text = QPATHTOF(Data\knobs\channel\prc343_ui_pre_1.paa);
+            text = QPATHTOF(Data\knobs\channel\bf888s_ui_pre_1.paa);
         END_CONTROL
 
+        // x 1048, y 927
         BEGIN_CONTROL(ChannelKnobButton, Prc343_RscButton, 201)
             x = (((((0.416+0.085)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
-            y = ((((0.28-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
+            y = ((((0.38-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
             w = SCALE*0.072*SafeZoneH;
             h = SCALE*0.1*SafeZoneH;
             colorBackground[] = {1, 0, 0, 0};
@@ -62,9 +63,10 @@ class BF888S_RadioDialog {
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w = NEW_SCALE*safeZoneH;
             h = NEW_SCALE*safeZoneH;
-            text = QPATHTOF(Data\knobs\volume\prc343_ui_vol_5.paa);
+            text = QPATHTOF(Data\knobs\volume\bf888s_ui_vol_5.paa);
         END_CONTROL
 
+        // x 1186, y 922
         BEGIN_CONTROL(VolumeKnobButton, Prc343_RscButton, 202)
             x = ((((0.416-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
             y = ((((0.28-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;

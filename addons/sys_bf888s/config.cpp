@@ -8,7 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_sys_radio"};
         author = ECSTRING(main,Author);
-        authors[] = {"Jsm"};
+        authors[] = {"Jsm","Clark"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };

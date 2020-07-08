@@ -16,8 +16,9 @@ class CfgAcreComponents {
 
         connectors[] = {
             {"Antenna", ACRE_CONNECTOR_SMA},
+            {"Antenna2", ACRE_CONNECTOR_TNC},
             {"Audio/Data", ACRE_CONNECTOR_U_283}
-        };
+            };
         defaultComponents[] = {
             {0, "ACRE_12CM_UHF_SMA"},
         };
