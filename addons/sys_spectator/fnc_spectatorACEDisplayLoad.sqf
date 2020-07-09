@@ -35,4 +35,11 @@ _ctrlRadios ctrlCommit 0;
     _ctrl ctrlCommit 0;
 } forEach [IDC_RADIOS_BACKGROUND, IDC_RADIOS_NONE, IDC_RADIOS_LIST];
 
-[_display, {missionNamespace getVariable ["ace_spectator_camFocus", objNull]}] call FUNC(initDisplay);
+// Create speaking list control
+_display ctrlCreate [QGVAR(RscSpeaking), IDC_SPEAKING];
+
+[
+    _display,
+    {missionNamespace getVariable ["ace_spectator_camFocus", objNull]},
+    {missionNamespace getVariable ["ace_spectator_uiVisible", true]}
+] call FUNC(initDisplay);

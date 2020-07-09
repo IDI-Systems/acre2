@@ -1,6 +1,9 @@
 PREP(handleKeyDown);
 PREP(handleListSelect);
+PREP(handleStartedSpeaking);
+PREP(handleStoppedSpeaking);
 PREP(handleUpdate);
 PREP(initDisplay);
+PREP(refreshSpeakingList);
 PREP(spectatorACEDisplayLoad);
 PREP(spectatorEGDisplayLoad);

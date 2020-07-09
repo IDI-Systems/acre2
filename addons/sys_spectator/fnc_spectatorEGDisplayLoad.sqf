@@ -17,4 +17,8 @@
 
 params ["_display"];
 
-[_display, {uiNamespace getVariable ["RscEGSpectator_focus", objNull]}] call FUNC(initDisplay);
+[
+    _display,
+    {uiNamespace getVariable ["RscEGSpectator_focus", objNull]},
+    {uiNamespace getVariable ["RscEGSpectator_interfaceVisible", true]}
+] call FUNC(initDisplay);
