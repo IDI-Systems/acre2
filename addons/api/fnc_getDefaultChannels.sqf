@@ -1,6 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
+ * DEPRECATED
  * Gets the preset data for a given radio base class.
  *
  * Arguments:
@@ -12,7 +13,7 @@
  * Example:
  * ["ACRE_PRC343"] call acre_api_fnc_getDefaultChannels
  *
- * Deprecated
+ * Public: No
  */
 
 ACRE_DEPRECATED(QFUNC(getDefaultChannels),"2.5.0",QFUNC(getPresetData));

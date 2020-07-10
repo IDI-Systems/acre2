@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Returns a list of unique radio ID of local player or unit possesses of a given type.
- * In the case of a unit for the second parameter it will find the radio ID for that unit instead of the local player.
+ * Returns a list of unique radio IDs of local player or unit possesses of a given type.
+ * In the case of a unit for the second parameter it will find the radio IDs for that unit instead of the local player.
  *
  * Arguments:
  * 0: Radio type <STRING>
@@ -12,8 +12,8 @@
  * Array of Radio IDs <ARRAY>
  *
  * Example:
- * _radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadioByType
- * _radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadioByType
+ * _radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadioOfType
+ * _radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadioOfType
  *
  * Public: Yes
  */
