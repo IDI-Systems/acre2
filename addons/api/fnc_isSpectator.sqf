@@ -4,10 +4,10 @@
  * Checks whether the provided unit (or by default local player) is spectating.
  *
  * Arguments:
- * 0: Unit <OBJECT>(default:acre_player)
+ * 0: Unit <OBJECT> (default: acre_player)
  *
  * Return Value:
- * Spectating <BOOLEAN>
+ * Spectating <BOOL>
  *
  * Example:
  *  _isSpectator = [] call acre_api_fnc_isSpectator;

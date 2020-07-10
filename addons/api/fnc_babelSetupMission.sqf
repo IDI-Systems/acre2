@@ -5,7 +5,7 @@
  * An array is provided for each configurable side which specifies the languages that side can speak.
  *
  * Arguments:
- * N: Array of sides and languages <ARRAY>
+ * Array of sides and languages <ARRAY>
  *   0: Side <SIDE>
  *   1: Language display name <STRING>
  *

@@ -161,16 +161,16 @@ class FunctionFile:
 
         arguments = []
         for argument in lines:
-            valid = re.match(r"^(\d+):\s(.+?)\<([\s\w]+?)\>(\s\(default: (.+)\))?$", argument)
+            valid = re.match(r"^((\d+):\s)?(.+?)\<([\s\w,]+?)\>(\s\(default: (.+)\))?$", argument)
 
             if valid:
-                arg_index = valid.group(1)
-                arg_name = valid.group(2)
-                arg_types = valid.group(3)
-                arg_default = valid.group(5)
+                arg_index = valid.group(2)
+                arg_name = valid.group(3)
+                arg_types = valid.group(4)
+                arg_default = valid.group(6)
                 arg_notes = []
 
-                if arg_index != str(len(arguments)):
+                if arg_index is not None and arg_index != str(len(arguments)):
                     self.feedback("Argument index {} does not match listed order".format(arg_index), 1)
 
                 if arg_default is None:
@@ -209,7 +209,7 @@ class FunctionFile:
         str_list = []
 
         # Title
-        str_list.append("\n## acre_{}_fnc_{}\n".format(component, os.path.basename(self.path)[4:-4]))
+        str_list.append("\n### acre_{}_fnc_{}\n".format(component, os.path.basename(self.path)[4:-4]))
         # Description
         str_list.append("__Description__\n\n" + self.description)
         # Arguments
@@ -227,10 +227,10 @@ class FunctionFile:
             str_list.append("__Return Value__\n\nNone\n\n")
         # Example
         str_list.append("__Example__\n\n```sqf\n{}\n```\n\n".format(self.example))
-        # Authors
-        str_list.append("\n__Authors__\n\n")
-        for author in self.authors:
-            str_list.append("- {}\n".format(author))
+        # Authors - ignore
+        # str_list.append("\n__Authors__\n\n")
+        # for author in self.authors:
+        #     str_list.append("- {}\n".format(author))
         # Horizontal rule
         str_list.append("\n---\n")
 
@@ -261,10 +261,10 @@ class FunctionFile:
 
 
 def document_functions(components):
-    os.makedirs('../wiki/functions/', exist_ok=True)
+    os.makedirs('../_includes/custom/', exist_ok=True)
 
     for component in components:
-        output = os.path.join('../wiki/functions/', component) + ".md"
+        output = os.path.join('../_includes/custom/', 'functions-list-' + component) + ".html"
         with open(output, "w") as file:
             for function in components[component]:
                 file.write(function.document(component))

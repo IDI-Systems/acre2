@@ -4,7 +4,7 @@
  * Sets the languages that the local player can speak.
  *
  * Arguments:
- * N: Language IDs <ARRAY>
+ * Language IDs <ARRAY>
  *
  * Return Value:
  * Setup successful <BOOL>

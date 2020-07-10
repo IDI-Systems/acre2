@@ -4,7 +4,7 @@
  * Checks whether the provided unit has a radio of the specified radio type in their inventory.
  *
  * Arguments:
- * 0: Unit or array of item classnames <OBJECT/ARRAY>
+ * 0: Unit or array of item classnames <OBJECT, ARRAY>
  * 1: Radio base type <STRING>
  *
  * Return Value:
