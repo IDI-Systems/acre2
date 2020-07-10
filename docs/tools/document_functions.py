@@ -289,7 +289,7 @@ def crawl_dir(directory, debug=False, lint_private=False):
 
                     if function.is_public() and not debug:
                         # Add functions to component key (initalise key if necessary)
-                        component = os.path.basename(os.path.dirname(root))
+                        component = os.path.basename(os.path.dirname(file_path))
                         components.setdefault(component, []).append(function)
 
                         function.feedback("Publicly documented")
@@ -316,15 +316,20 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('directory', nargs="?", type=str, default="api", help='only crawl specified module addon folder')
     parser.add_argument('--debug', action="store_true", help='only check for header debug messages')
+    parser.add_argument('--lint-private', action="store_true", help='lint private function headers as well')
     args = parser.parse_args()
 
-    # abspath is just used for the terminal output
-    prospective_dir = os.path.abspath(os.path.join('../../addons/', args.directory))
+    # Allow calling from anywhere and work our way to addons from this file
+    file_dir = os.path.abspath(__file__)
+    prospective_dir = os.path.abspath(os.path.join(file_dir, '../../../addons/', args.directory))
+
     if os.path.isdir(prospective_dir):
         print("Directory: {}".format(prospective_dir))
-        crawl_dir(prospective_dir, args.debug)
+        errors = crawl_dir(prospective_dir, args.debug, args.lint_private)
+        return 0 if errors == 0 else 1
     else:
         print("Invalid directory: {}".format(prospective_dir))
+        return 1
 
 
 if __name__ == "__main__":
