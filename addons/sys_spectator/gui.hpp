@@ -2,6 +2,10 @@ class RscText;
 class ctrlListbox;
 class RscControlsGroupNoScrollbars;
 
+class RscStructuredText {
+    class Attributes;
+};
+
 class GVAR(RscRadios): RscControlsGroupNoScrollbars {
     idc = IDC_RADIOS_GROUP;
     x = 0;
@@ -38,6 +42,18 @@ class GVAR(RscRadios): RscControlsGroupNoScrollbars {
     };
 };
 
+class GVAR(RscSpeaking): RscStructuredText {
+    idc = IDC_SPEAKING;
+    x = safeZoneX + safeZoneW - POS_W(25.1);
+    y = safeZoneY + POS_H(0.2);
+    w = POS_W(25);
+    h = safeZoneH - POS_H(12.2);
+    size = POS_H(0.85);
+    class Attributes: Attributes {
+        align = "right";
+    };
+};
+
 class RscDisplayEGSpectator {
     class Controls {
         class FocusInfo: RscControlsGroupNoScrollbars {
@@ -47,5 +63,6 @@ class RscDisplayEGSpectator {
                 class GVAR(radios): GVAR(RscRadios) {};
             };
         };
+        class GVAR(speaking): GVAR(RscSpeaking) {};
     };
 };

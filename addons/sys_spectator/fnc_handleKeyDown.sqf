@@ -34,6 +34,10 @@ if ([_keyCode, [_shift, _ctrl, _alt]] in _keybinds) exitWith {
         _ctrlList lbSetPicture [_index, ICON_UNCHECKED];
     };
 
+    // Remove all current speakers and refresh speaking list
+    _display setVariable [QGVAR(speakers), [] call CBA_fnc_hashCreate];
+    _display call FUNC(refreshSpeakingList);
+
     // Play sound to alert user
     playSound "3DEN_notificationWarning";
 
