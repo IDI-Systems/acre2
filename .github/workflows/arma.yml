@@ -16,6 +16,8 @@ jobs:
       run: python3 tools/sqf_validator.py
     - name: Validate Config
       run: python3 tools/config_style_checker.py
+    - name: Validate Headers
+      run: python3 docs/tools/document_functions.py . --debug
     - name: Check Strings
       run: python3 tools/check_strings.py
     - name: Check for BOM
