@@ -20,6 +20,7 @@ import sys
 import re
 import argparse
 
+
 class FunctionFile:
     def __init__(self, directory="."):
         self.directory = directory
@@ -165,7 +166,7 @@ class FunctionFile:
                 if arg_index != str(len(arguments)):
                     self.feedback("Argument index {} does not match listed order".format(arg_index), 1)
 
-                if arg_default == None:
+                if arg_default is None:
                     arg_default = ""
 
                 arguments.append([arg_index, arg_name, arg_types, arg_default, arg_notes])
@@ -193,7 +194,7 @@ class FunctionFile:
             return_types = valid.group(2)
         else:
             self.feedback("Malformed return value \"{}\"".format(return_value), 2)
-            return ["Malformed",""]
+            return ["Malformed", ""]
 
         return [return_name, return_types]
 
@@ -201,7 +202,7 @@ class FunctionFile:
         str_list = []
 
         # Title
-        str_list.append("\n## ace_{}_fnc_{}\n".format(component,os.path.basename(self.path)[4:-4]))
+        str_list.append("\n## acre_{}_fnc_{}\n".format(component, os.path.basename(self.path)[4:-4]))
         # Description
         str_list.append("__Description__\n\n" + self.description)
         # Arguments
@@ -238,7 +239,7 @@ class FunctionFile:
                 self.logged = True
 
     def feedback(self, message, level=0):
-        priority_str = ["Info","Warning","Error","Aborted"][level]
+        priority_str = ["Info", "Warning", "Error", "Aborted"][level]
 
         self.log_file(level > 0)
         self.write("{0}: {1}".format(priority_str, message))
@@ -248,14 +249,16 @@ class FunctionFile:
         to_print.append(message)
         print("".join(to_print))
 
+
 def document_functions(components):
     os.makedirs('../wiki/functions/', exist_ok=True)
 
     for component in components:
-        output = os.path.join('../wiki/functions/',component) + ".md"
+        output = os.path.join('../wiki/functions/', component) + ".md"
         with open(output, "w") as file:
             for function in components[component]:
                 file.write(function.document(component))
+
 
 def crawl_dir(directory, debug=False):
     components = {}
@@ -276,11 +279,12 @@ def crawl_dir(directory, debug=False):
                     if function.is_public() and not debug:
                         # Add functions to component key (initalise key if necessary)
                         component = os.path.basename(os.path.dirname(root))
-                        components.setdefault(component,[]).append(function)
+                        components.setdefault(component, []).append(function)
 
                         function.feedback("Publicly documented")
 
     document_functions(components)
+
 
 def main():
     print("""
@@ -290,17 +294,18 @@ def main():
     """)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('directory', nargs="?", type=str, default=".", help='only crawl specified module addon folder')
+    parser.add_argument('directory', nargs="?", type=str, default="api", help='only crawl specified module addon folder')
     parser.add_argument('--debug', action="store_true", help='only check for header debug messages')
     args = parser.parse_args()
 
     # abspath is just used for the terminal output
-    prospective_dir = os.path.abspath(os.path.join('../../addons/',args.directory))
+    prospective_dir = os.path.abspath(os.path.join('../../addons/', args.directory))
     if os.path.isdir(prospective_dir):
         print("Directory: {}".format(prospective_dir))
         crawl_dir(prospective_dir, args.debug)
     else:
         print("Invalid directory: {}".format(prospective_dir))
 
+
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
