@@ -27,6 +27,7 @@ class FunctionFile:
 
         # False unless specified in processing
         self.debug = False
+        self.lint_private = False
 
         # Empty until imported from file
         self.path = ""
@@ -43,13 +44,16 @@ class FunctionFile:
         # Filepath should only be logged once
         self.logged = False
 
+        # Count parse results
+        self.errors = 0
+
     def import_header(self, file_path):
         self.path = file_path
 
         with open(file_path) as file:
             code = file.read()
 
-        header_match = re.match(r"\s*/\*.+?\*/", code, re.S)
+        header_match = re.search(r"\s*/\*.+?\*/", code, re.S)
         if header_match:
             self.header = header_match.group(0)
         else:
@@ -58,9 +62,10 @@ class FunctionFile:
     def has_header(self):
         return bool(self.header)
 
-    def process_header(self, debug=False):
+    def process_header(self, debug=False, lint_private=False):
         # Detailed debugging occurs here so value is set
         self.debug = debug
+        self.lint_private = lint_private
 
         # Preemptively cut away the comment characters (and leading/trailing whitespace)
         self.header_text = "\n".join([x[3:].strip() for x in self.header.splitlines()])
@@ -72,15 +77,15 @@ class FunctionFile:
         public_raw = self.get_section("Public")
         if not public_raw:
             self.feedback("Public value undefined", 3)
-            return
+            return self.errors
 
         # Determine whether the header is public
         self.public = self.process_public(public_raw)
 
         # Don't bother to process the rest if private
         # Unless in debug mode
-        if not self.public and not self.debug:
-            return
+        if not self.public and not self.lint_private:
+            return self.errors
 
         # Retrieve the raw sections text for processing
         author_raw = self.get_section("Author")
@@ -103,6 +108,8 @@ class FunctionFile:
         # Process example
         if example_raw:
             self.example = example_raw.strip()
+
+        return self.errors
 
     def get_section(self, section_name):
         try:
@@ -244,6 +251,9 @@ class FunctionFile:
         self.log_file(level > 0)
         self.write("{0}: {1}".format(priority_str, message))
 
+        if priority_str in ["Error", "Aborted"]:
+            self.errors += 1
+
     def write(self, message, indent=2):
         to_print = ["  "]*indent
         to_print.append(message)
@@ -260,8 +270,9 @@ def document_functions(components):
                 file.write(function.document(component))
 
 
-def crawl_dir(directory, debug=False):
+def crawl_dir(directory, debug=False, lint_private=False):
     components = {}
+    errors = 0
 
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -274,7 +285,7 @@ def crawl_dir(directory, debug=False):
 
                 # Undergo data extraction and detailed debug
                 if function.has_header():
-                    function.process_header(debug)
+                    errors += function.process_header(debug, lint_private)
 
                     if function.is_public() and not debug:
                         # Add functions to component key (initalise key if necessary)
@@ -282,8 +293,17 @@ def crawl_dir(directory, debug=False):
                         components.setdefault(component, []).append(function)
 
                         function.feedback("Publicly documented")
+                else:
+                    errors += 1
 
     document_functions(components)
+
+    if errors != 0:
+        print("\n  Unclean!\n    {} errors".format(errors))
+    else:
+        print("\n  Clean!")
+
+    return errors
 
 
 def main():
