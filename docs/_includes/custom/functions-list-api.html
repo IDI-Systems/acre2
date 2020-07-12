@@ -113,35 +113,6 @@ __Example__
 
 ---
 
-### acre_api_fnc_getAllRadioOfType
-__Description__
-
-Returns a list of unique radio IDs of local player or unit possesses of a given type.
-In the case of a unit for the second parameter it will find the radio IDs for that unit instead of the local player.
-
-__Parameters__
-
-Index | Description | Datatype(s) | Default Value
---- | --- | --- | ---
-0 | Radio type  | STRING | 
-1 | Optional unit or List of String  | ARRAY, OBJECT | []
-
-__Return Value__
-
-Description | Datatype(s)
---- | ---
-Array of Radio IDs  | ARRAY
-
-__Example__
-
-```sqf
-_radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadioOfType
-_radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadioOfType
-```
-
-
----
-
 ### acre_api_fnc_setCurveModelScale
 __Description__
 
@@ -684,6 +655,35 @@ __Example__
 
 ```sqf
 [] call acre_api_fnc_getGlobalVolume;
+```
+
+
+---
+
+### acre_api_fnc_getAllRadiosByType
+__Description__
+
+Returns a list of unique radio IDs of local player or unit possesses of a given type.
+In the case of a unit for the second parameter it will find the radio IDs for that unit instead of the local player.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio type  | STRING | 
+1 | Optional unit or List of String  | ARRAY, OBJECT | []
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Array of Radio IDs  | ARRAY
+
+__Example__
+
+```sqf
+_radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType
+_radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadiosByType
 ```
 
 
