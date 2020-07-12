@@ -181,6 +181,10 @@ entries:
       url: /wiki/frameworks/custom-signal-processing
       output: web, pdf
 
+    - title: Spectator Displays
+      url: /wiki/frameworks/spectator-displays.md
+      output: web, pdf
+
   - title: Development
     output: web, pdf
     folderitems:
