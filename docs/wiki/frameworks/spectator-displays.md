@@ -14,7 +14,7 @@ Integrating the above functionality into custom spectator systems requires the `
 
 The `acre_sys_spectator_RscRadios` control should be added to the spectator display's focus info widget that shows information about the currently selected unit. The `acre_sys_spectator_RscSpeaking` control should be positioned in the top-right of the display.
 
-Next, the `acre_sys_spectator_fnc_initDisplay` function must be called to initialize the controls. The function adds the handling necessary for updating the controls as well as adding support for the "Clear Spectator Radios" keybind. The arguments for this function are as follows:
+Next, the `acre_sys_spectator_fnc_initDisplay` function must be called to initialize the controls. This function adds the handling necessary for updating the controls as well as adding support for the "Clear Spectator Radios" keybind. The arguments for this function are as follows:
 
 \#   | Description | Type
 :---: | ----------- | ----
