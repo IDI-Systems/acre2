@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_io_fnc_voipChannelCheck
+ * [] call acre_sys_io_fnc_voipChannelMove
  *
  * Public: No
  */
