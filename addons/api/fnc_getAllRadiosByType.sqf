@@ -12,8 +12,8 @@
  * Array of Radio IDs <ARRAY>
  *
  * Example:
- * _radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadioOfType
- * _radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadioOfType
+ * _radioIds = ["ACRE_PRC152"] call acre_api_fnc_getAllRadiosByType
+ * _radioIds = ["ACRE_PRC152", _unit] call acre_api_fnc_getAllRadiosByType
  *
  * Public: Yes
  */
