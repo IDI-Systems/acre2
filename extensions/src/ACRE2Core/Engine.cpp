@@ -26,7 +26,7 @@
 #include "updateSelf.h"
 #include "setSelectableVoiceCurve.h"
 #include "setSetting.h"
-#include "setTs3ChannelDetails.h"
+#include "setChannelDetails.h"
 
 
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
