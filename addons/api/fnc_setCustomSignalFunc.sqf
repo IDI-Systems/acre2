@@ -17,6 +17,7 @@
  * [mySignalFunc] call acre_api_fnc_setCustomSignalFunc
  * [{}] call acre_api_fnc_setCustomSignalFunc
  *
+ * Public: Yes
  */
 
 if !(_this params [["_code",{},[{}]]]) exitWith {

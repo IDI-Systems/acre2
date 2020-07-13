@@ -38,6 +38,7 @@ class CfgFunctions {
 
         class Radios {
             PATHTO_FNC(getAllRadios);
+            PATHTO_FNC(getAllRadiosByType);
             PATHTO_FNC(getCurrentRadio);
             PATHTO_FNC(setCurrentRadio);
             PATHTO_FNC(getCurrentRadioList);

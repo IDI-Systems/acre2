@@ -30,8 +30,11 @@ acre::wrp::landscape::~landscape() {
 
 bool acre::wrp::landscape::_read_binary_tree_block(std::istream &stream_, const uint32_t bit_length, const uint32_t block_size, const uint32_t cell_size, const uint32_t block_offset_x, const uint32_t block_offset_y)
 {
-    uint32_t blockSize = static_cast<uint32_t>(ceil((log10(block_size) / log10(2.0)) / 2.0));
-    blockSize = static_cast<uint32_t>(pow(2, 2.0 * blockSize));
+    uint32_t blockSize = 1;
+    if (block_size != 0) {
+        blockSize = static_cast<uint32_t>(ceil((log10(block_size) / log10(2.0)) / 2.0));
+        blockSize = static_cast<uint32_t>(pow(2, 2.0 * blockSize));
+    }
 
     const uint32_t current_block_size = blockSize / 4u;//256..64..16..1
 

@@ -19,6 +19,7 @@ PREP(setRadioSpatial);
 PREP(getRadioSpatial);
 
 PREP(getRadioBaseClassname);
+PREP(getRadioIdNumber);
 PREP(getRadioPos);
 PREP(getRadioObject);
 PREP(getRadioSubObject);
