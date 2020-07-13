@@ -24,7 +24,7 @@ void acre::signal::model::los_simple::process(result *const result, const glm::v
     const float32_t distance_3d = glm::distance(tx_pos, rx_pos);
 
     const float32_t tx_power = 10.0f * (log10f(power / 1000.0f)) + 30.0f;
-    const float32_t fspl = -27.55f + 20.0f * log10f(frequency) + 20.0f * log10f(distance_3d);
+    const float32_t fspl = -27.55f + 20.0f * log10f(frequency) + ((distance_3d > 0.0f) ? (20.0f * log10f(distance_3d)) : 0);
 
     float32_t rx_gain = 0.0f;
     float32_t tx_gain = 0.0f;
@@ -45,6 +45,7 @@ void acre::signal::model::los_simple::process(result *const result, const glm::v
 }
 
 float32_t acre::signal::model::los_simple::diffraction_loss(const glm::vec3 &pos1, const glm::vec3 &pos2, const float32_t frequency) {
+    if (glm::distance(pos1, pos2) <= 0.0f) { return 0.0f; } // assume 0 loss if positions are the same
     const float32_t sample_size = 7.5f;
     std::vector<float32_t> terrain_profile;
     _map->terrain_profile(pos1, pos2, sample_size, terrain_profile);
@@ -185,7 +186,7 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
         }
 
         float32_t path_distance = std::sqrt(glm::distance2(tx_pos_, best_angle) + glm::distance2(rx_pos_, best_angle));
-        float32_t fspl = -27.55F + (20.0F * std::log10(frequency_)) + (20.0F * std::log10(path_distance));
+        float32_t fspl = -27.55F + (20.0F * std::log10(frequency_)) + ((path_distance > 0) ? (20.0F * std::log10(path_distance)) : 0);
         
         const glm::vec3 best_angle_v = glm::normalize(rx_pos_ - best_angle);
         const glm::vec3 terrain_normal = _map->normal(best_angle.x, best_angle.y);
@@ -233,7 +234,7 @@ void acre::signal::model::multipath::process(result *const result_, const glm::v
         tx_gain = tx_antenna_->gain(tx_dir_, rx_pos_ - tx_pos_, frequency_);
     }
 
-    const float32_t fspl = -27.55F + (20.0F * std::log10(frequency_)) + (20.0F * std::log10(distance_3d));
+    const float32_t fspl = -27.55F + (20.0F * std::log10(frequency_)) + ((distance_3d > 0) ? (20.0F * std::log10(distance_3d)) : 0);
     const float32_t diffractionLoss = diffraction_loss(tx_pos_, rx_pos_, frequency_)*scale_;
 
     const float32_t budget = tx_power + tx_gain - tx_internal_loss - fspl - (magic * 1.0F) - diffractionLoss + rx_gain - rx_internal_loss;

@@ -13,7 +13,7 @@ void acre::signal::model::Arcade::process(result *const result_, const glm::vec3
     const float32_t distance_3d = glm::distance(tx_pos_, rx_pos_);
 
     // Free Space Path Loss model
-    float32_t lossFreeSpace = -27.55f + 20.0f*log10f(frequency_Hz) + 20.0f*log10f(distance_3d); /* Free Space Path Loss model */
+    float32_t lossFreeSpace = -27.55f + 20.0f*log10f(frequency_Hz) + ((distance_3d > 0.0f) ? (20.0f*log10f(distance_3d)) : 0); /* Free Space Path Loss model */
     const float32_t txPower = 10.0f*(log10f((power_mW) / 1000.0f)) + 30.0f; /* Transmitter Power (mW to dBm) */
 
     if (rx_antenna_name.find("ACRE_2HALFINCH_UHF_TNC") != std::string::npos) {
