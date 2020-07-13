@@ -182,7 +182,7 @@ entries:
       output: web, pdf
 
     - title: Spectator Displays
-      url: /wiki/frameworks/spectator-displays.md
+      url: /wiki/frameworks/spectator-displays
       output: web, pdf
 
   - title: Development
