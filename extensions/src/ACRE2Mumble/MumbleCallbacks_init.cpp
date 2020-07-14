@@ -38,7 +38,7 @@ void mumble_registerAPIFunctions(struct MumbleAPI api) {
     }
 }
 
-mumble_error_t mumble_init(uint32_t connection) {
+mumble_error_t mumble_init(mumble_connection_t connection) {
     if (connection != -1) {
         activeConnection = connection;
     }
