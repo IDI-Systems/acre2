@@ -13,6 +13,10 @@ extern MumbleAPI mumAPI;
 mumble_connection_t activeConnection = -1;
 plugin_id_t pluginID                 = -1;
 
+void mumble_registerPluginID(plugin_id_t id) {
+    pluginID = id;
+}
+
 uint32_t mumble_getFeatures() {
     return FEATURE_AUDIO;
 }
@@ -34,8 +38,10 @@ void mumble_registerAPIFunctions(struct MumbleAPI api) {
     }
 }
 
-mumble_error_t mumble_init(uint32_t id) {
-    pluginID = id;
+mumble_error_t mumble_init(uint32_t connection) {
+    if (connection != -1) {
+        activeConnection = connection;
+    }
 
     return STATUS_OK;
 }
@@ -52,12 +58,6 @@ void mumble_onServerSynchronized(mumble_connection_t connection) {
     // subscribe to all channels to receive event
     if (CEngine::getInstance()->getClient()->getState() != acre::State::running) {
         CEngine::getInstance()->getClient()->start(static_cast<acre::id_t>(clientId));
-    }
-}
-
-void mumble_onServerConnected(mumble_connection_t connection) {
-    if (connection != -1) {
-        activeConnection = connection;
     }
 }
 
