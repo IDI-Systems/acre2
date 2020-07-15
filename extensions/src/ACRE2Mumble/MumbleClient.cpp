@@ -237,7 +237,7 @@ acre::Result CMumbleClient::unMuteAll(void) {
 }
 
 acre::Result CMumbleClient::moveToServerChannel() {
-    LOG("moveToServerChannel ENTER");
+    TRACE("moveToServerChannel ENTER");
     if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         mumble_userid_t clientId;
         std::vector<std::string> details = getChannelDetails();
@@ -267,7 +267,7 @@ acre::Result CMumbleClient::moveToServerChannel() {
 }
 
 acre::Result CMumbleClient::moveToPreviousChannel() {
-    LOG("moveToPreviousChannel ENTER");
+    TRACE("moveToPreviousChannel ENTER");
     if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         mumble_userid_t clientId = -1;
 
@@ -288,7 +288,7 @@ acre::Result CMumbleClient::moveToPreviousChannel() {
 }
 
 uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
-    LOG("findChannelByNames ENTER");
+    TRACE("findChannelByNames ENTER");
     mumble_channelid_t *channelList = nullptr;
     std::size_t channelCount        = 0U;
 

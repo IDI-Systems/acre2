@@ -9,7 +9,7 @@
 // Mumble Speaking callbacks
 //
 void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_userid_t userID, talking_state_t status) {
-    LOG("mumble_onUserTalkingStateChanged ENTER: %d", status);
+    TRACE("mumble_onUserTalkingStateChanged ENTER: %d", status);
     if (static_cast<acre::id_t>(userID) != CEngine::getInstance()->getSelf()->getId()) {
         return;
     }
