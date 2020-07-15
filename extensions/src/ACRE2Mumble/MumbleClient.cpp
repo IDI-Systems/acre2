@@ -111,6 +111,10 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
         }
     }
 
+    if (!this->getVAD() && (speakingType_ == acre::Speaking::direct)) {
+        this->microphoneOpen(true);
+    }
+
     if (stopDirectSpeaking) {
         CEngine::getInstance()->localStopSpeaking();
     }
