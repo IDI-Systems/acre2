@@ -5,7 +5,6 @@
 #include "Engine.h"
 
 
-
     
 
 CNamedPipeServer::CNamedPipeServer(std::string fromPipeName, std::string toPipeName) {
@@ -27,21 +26,11 @@ CNamedPipeServer::~CNamedPipeServer( void ) {
 acre::Result CNamedPipeServer::initialize() {
     HANDLE writeHandle, readHandle;
 
-    //SECURITY_DESCRIPTOR SDWrite;
-    //InitializeSecurityDescriptor(&SDWrite, SECURITY_DESCRIPTOR_REVISION);
-    //SetSecurityDescriptorDacl(&SDWrite, true, NULL, false);
-    //SECURITY_ATTRIBUTES SAWrite;
-    //SAWrite.nLength = sizeof(SAWrite);
-    //SAWrite.lpSecurityDescriptor = &SDWrite;
-    //SAWrite.bInheritHandle = true;
-
-    // Generate a low integrity access DACL
-    SECURITY_ATTRIBUTES saWrite = { 0 };
-    SECURITY_ATTRIBUTES *psaWrite = 0; psaWrite = &saWrite;
-    saWrite.nLength = sizeof(SECURITY_ATTRIBUTES);
-    saWrite.bInheritHandle = true;
-    ConvertStringSecurityDescriptorToSecurityDescriptor(
-        TEXT("S:(ML;;NWNR;;;LW)"), SDDL_REVISION_1, &saWrite.lpSecurityDescriptor, NULL);
+    SECURITY_DESCRIPTOR sd;
+    if (!InitializeSecurityDescriptor(&sd, SECURITY_DESCRIPTOR_REVISION)) { LOG("InitializeSecurityDescriptor Error : %u", GetLastError()); }
+    if (!SetSecurityDescriptorDacl(&sd, TRUE, nullptr, FALSE)) { LOG("SetSecurityDescriptorDacl Error : %u", GetLastError()); }
+    if (!SetSecurityDescriptorControl(&sd, SE_DACL_PROTECTED, SE_DACL_PROTECTED)) { LOG("SetSecurityDescriptorControl Error : %u", GetLastError()); }
+    SECURITY_ATTRIBUTES sa = { sizeof(SECURITY_ATTRIBUTES), &sd, true };
 
     // open our pipe handle, then kick up a thread to monitor it and add shit to our queue
     // this end LISTENS and CREATES the pipe
@@ -58,7 +47,7 @@ acre::Result CNamedPipeServer::initialize() {
                 4096, // no outbound buffer
                 4096, // no inbound buffer
                 0, // use default wait time
-                psaWrite
+                &sa
             );
         if (writeHandle == INVALID_HANDLE_VALUE) {
             char errstr[1024];
@@ -74,13 +63,8 @@ acre::Result CNamedPipeServer::initialize() {
         }
     }
 
-    // Generate a low integrity access DACL
-    SECURITY_ATTRIBUTES saRead = { 0 };
-    SECURITY_ATTRIBUTES *psaRead = 0; psaRead = &saRead;
-    saRead.nLength = sizeof(SECURITY_ATTRIBUTES);
-    saRead.bInheritHandle = true;
-    ConvertStringSecurityDescriptorToSecurityDescriptor(
-        TEXT("S:(ML;;NWNR;;;LW)"), SDDL_REVISION_1, &saRead.lpSecurityDescriptor, NULL);
+
+
 
     tryAgain = true;
     while (tryAgain) {
@@ -94,7 +78,7 @@ acre::Result CNamedPipeServer::initialize() {
                 4096, // no outbound buffer
                 4096, // no inbound buffer
                 0, // use default wait time
-                psaRead // use default security attributes
+                &sa // use default security attributes
             );
         if (readHandle == INVALID_HANDLE_VALUE) {
             char errstr[1024];

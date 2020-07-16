@@ -1,19 +1,20 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * DEPRECATED
+ * Sets the preset data for a given radio base class.
  *
  * Arguments:
  * 0: Radio Base Class <STRING>
  * 1: Preset Name <STRING>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * True <BOOL>
  *
  * Example:
  * ["ACRE_PRC343","default"] call acre_api_fnc_setDefaultChannels;
  *
- * Deprecated
+ * Public: No
  */
 
 params [

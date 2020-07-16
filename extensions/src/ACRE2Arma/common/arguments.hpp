@@ -48,11 +48,19 @@ namespace acre {
         arguments(const char** argv, std::int32_t argc) : _internal_index(0) {
             for (std::int32_t i = 0; i < argc; i++) {
                 std::string arg_string(argv[i]);
-                if (arg_string.size() > 2 && arg_string.at(0) == '\"' && arg_string.at(arg_string.size() - 1) == '\"') {
-                    arg_string = arg_string.substr(1, arg_string.size() - 2);  // callExtensionArgs will add quotes to strings
-                } 
-                std::vector<std::string> arg_split = acre::split(arg_string, ',');
-                _args.insert(_args.end(), arg_split.begin(), arg_split.end());
+                if (arg_string.size() > 2) {
+                    if (arg_string.at(0) == '\"' && arg_string.at(arg_string.size() - 1) == '\"') {
+                        // String: stip quotes - callExtensionArgs will add quotes to strings
+                        _args.push_back(arg_string.substr(1, arg_string.size() - 2));
+                        continue;
+                    } else if (arg_string.at(0) == '[' && arg_string.at(arg_string.size() - 1) == ']') {
+                        // Array: strip [] and split on commas - for now this only handles 1-deep arrays
+                        std::vector<std::string> arg_split = acre::split(arg_string.substr(1, arg_string.size() - 2), ',');
+                        _args.insert(_args.end(), arg_split.begin(), arg_split.end());
+                        continue;
+                    }
+                }
+                _args.push_back(arg_string);
             }
         }
 
