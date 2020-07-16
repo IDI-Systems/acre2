@@ -86,6 +86,9 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
 acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType_, std::string radioId_) {
     bool stopDirectSpeaking = false;
 
+    const bool VADactive = this->getVAD();
+    const std::int32_t speakingState = this->getSpeakingState();
+
     /* Open or close the microphone. If the microphone is still active, stop direct speaking before
      * starting the new PTT method: radio speaking. In theory this would not be needed for intercom since
      * at the moment it is a direct speak with audio effect. However, it is planned to have intercoms converted
@@ -99,19 +102,18 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
             this->setIntercomPTTDown(true);
         }
 
-        if (!this->getVAD()) {
+        if (!VADactive) {
             if (!this->getDirectFirst()) {
                 this->microphoneOpen(true);
             } else {
                 stopDirectSpeaking = true;
             }
-        } else if (this->getVAD() &&
-                   (this->getSpeakingState() != TalkingState::PASSIVE && this->getSpeakingState() != TalkingState::INVALID)) {
+        } else if (VADactive && (speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
             stopDirectSpeaking = true;
         }
     }
 
-    if (!this->getVAD() && (speakingType_ == acre::Speaking::direct)) {
+    if (!VADactive && (speakingType_ == acre::Speaking::direct)) {
         this->microphoneOpen(true);
     }
 
@@ -124,9 +126,11 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
 
 acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_) {
     bool resendDirectSpeaking = false;
+
+    const bool VADactive = this->getVAD();
     switch (speakingType_) {
         case acre::Speaking::direct:
-            if (!this->getVAD()) {
+            if (!VADactive) {
                 this->microphoneOpen(false);
             }
             break;
@@ -145,7 +149,7 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
     }
 
     if (this->getOnRadio()) {
-        if (!this->getVAD()) {
+        if (!VADactive) {
             if ((speakingType_ == acre::Speaking::radio) && this->getDirectFirst()) {
                 this->setOnRadio(false);
                 resendDirectSpeaking = true;
@@ -158,18 +162,21 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
             }
         } else {
             this->setOnRadio(false);
-            if (this->getSpeakingState() == 1) {
+            const std::int32_t speakingState = this->getSpeakingState();
+            
+            if ((speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
                 resendDirectSpeaking = true;
             }
         }
     } else if (speakingType_ == acre::Speaking::intercom) {
-        if (!this->getVAD()) {
+        const std::int32_t speakingState = this->getSpeakingState();
+        if (!VADactive) {
             if (!CEngine::getInstance()->getClient()->getIntercomPTTDown()) {
                 this->microphoneOpen(false);
             } else {
                 resendDirectSpeaking = true;
             }
-        } else if (this->getSpeakingState() == 1) {
+        } else if ((speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
             resendDirectSpeaking = true;
         }
     }
