@@ -252,13 +252,3 @@ IMessage *CTextMessage::createNewMessage(char *procedureName, ... ) {
 uint32_t CTextMessage::getParameterCount() const { 
     return this->m_ParameterCount;
 }
-
-std::wstring stringToWstring(const std::string& str) {
-    int num_chars = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), str.length(), NULL, 0);
-    std::wstring wstrTo;
-    if (num_chars) {
-        wstrTo.resize(num_chars);
-        MultiByteToWideChar(CP_UTF8, 0, str.c_str(), str.length(), &wstrTo[0], num_chars);
-    }
-    return wstrTo;
-}
