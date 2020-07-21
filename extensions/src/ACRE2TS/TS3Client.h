@@ -75,14 +75,13 @@ public:
 
     acre::Result moveToServerTS3Channel();
     acre::Result moveToPreviousTS3Channel();
-    uint64 findChannelByNames(std::vector<std::string> details_);
-    uint32_t getWordMatches(const std::string& string1_, const std::string& string2_);
-    uint32_t levenshteinDistance(const std::string& string1_, const std::string& string2_);
-    std::string removeSubstrings(std::string string_, std::string substring_);
-    acre::Result updateTs3ChannelDetails(std::vector<std::string> details_);
+    uint64 findChannelByNames(std::vector<std::wstring> details_);
+    uint32_t getWordMatches(const std::wstring& string1_, const std::wstring& string2_);
+    uint32_t levenshteinDistance(const std::wstring& string1_, const std::wstring& string2_);
+    std::wstring removeSubstrings(std::wstring string_, std::wstring substring_);
+    acre::Result updateTs3ChannelDetails(std::vector<std::wstring> details_);
     acre::Result updateShouldSwitchTS3Channel(const bool state_);
     bool shouldSwitchTS3Channel();
-
 
     inline void setState(acre::State value) final { m_state = value; }
     inline acre::State getState() const final { return m_state; }
@@ -99,7 +98,7 @@ public:
     DECLARE_MEMBER(bool, IsX3DInitialized);
     DECLARE_MEMBER(uint32_t, SpeakerMask);
     DECLARE_MEMBER(uint64, PreviousTSChannel);
-    DECLARE_MEMBER(std::vector<std::string>, Ts3ChannelDetails);
+    DECLARE_MEMBER(std::vector<std::wstring>, Ts3ChannelDetails);
     DECLARE_MEMBER(bool, ShouldSwitchTS3Channel)
 protected:
     std::thread m_versionThreadHandle;

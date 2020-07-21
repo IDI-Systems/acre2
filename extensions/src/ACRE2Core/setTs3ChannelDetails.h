@@ -4,14 +4,16 @@
 #include "Log.h"
 #include "TextMessage.h"
 #include "Engine.h"
+#include "StringConversions.h"
+#include "String"
 
 #include <sstream>
 
 RPC_FUNCTION(setTs3ChannelDetails) {
-    const  std::vector<std::string> details = {
-        std::string((char *)vMessage->getParameter(0)),
-        std::string((char *)vMessage->getParameter(1)),
-        std::string((char *)vMessage->getParameter(2))
+    const  std::vector<std::wstring> details = {
+        StringConversions::stringToWstring(std::string((char *)vMessage->getParameter(0))),
+        StringConversions::stringToWstring(std::string((char *)vMessage->getParameter(1))),
+        StringConversions::stringToWstring(std::string((char *)vMessage->getParameter(2)))
     };
 
     CEngine::getInstance()->getClient()->updateTs3ChannelDetails(details);
@@ -24,3 +26,5 @@ public:
 protected:
     char* m_Name;
 };
+
+
