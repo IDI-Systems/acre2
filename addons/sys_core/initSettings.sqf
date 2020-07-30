@@ -154,9 +154,7 @@
     true,
     {
         private _uids = _this splitString ",; ";
-        {
-            _x = parseNumber _x;
-        } forEach _uids;
+        _uids = _uids apply {parseNumber _x};
 
         [_uids, 0] call EFUNC(sys_godMode,modifyAllowedUIDS);
     }
