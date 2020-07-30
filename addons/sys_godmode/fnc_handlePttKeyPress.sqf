@@ -24,12 +24,12 @@ switch (_action) do {
     case GODMODE_GROUP1: { GVAR(targetUnits) = (GVAR(groupPresets) select 0) select {alive _x}; };
     case GODMODE_GROUP2: { GVAR(targetUnits) = (GVAR(groupPresets) select 1) select {alive _x}; };
     case GODMODE_GROUP3: { GVAR(targetUnits) = (GVAR(groupPresets) select 2) select {alive _x}; };
-   	default { ERROR_1("Invalid action %1",_action); };
+    default { ERROR_1("Invalid action %1",_action); };
 };
 
 //if (GVAR(targetUnits) isEqualTo []) exitWith {
-//	WARNING("No units in the selected group.");
-//	false
+//    WARNING("No units in the selected group.");
+//    false
 //};
 
 [QGVAR(godModeStart), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;

@@ -8,7 +8,7 @@ if (!hasInterface) exitWith {};
 
     // Debug
     if (GVAR(speakingGods) find _speakingUnit != -1) then {
-    	ERROR_1("Tryied to add an already speaking God....",_speakingUnit);
+        ERROR_1("Tryied to add an already speaking God....",_speakingUnit);
     };
 
     GVAR(speakingGods) pushBackUnique _speakingUnit;
@@ -20,9 +20,9 @@ if (!hasInterface) exitWith {};
     params ["_speakingUnit"];
 
     // Debug
-   	if (GVAR(speakingGods) isEqualTo []) then {
-   		ERROR_1("Empty speaking Gods array while trying to delete %1!",_speakingUnit);
-   	};
+    if (GVAR(speakingGods) isEqualTo []) then {
+        ERROR_1("Empty speaking Gods array while trying to delete %1!",_speakingUnit);
+    };
 
     GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingUnit);
 
