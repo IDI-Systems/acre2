@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_godmode">
+        <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey">
+            <English>PTT - BI Current Channel</English>
+            <Spanish>PTT - Canal actual de BI</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey_description">
+            <English>PTT to send a message to all units matching the current BI channel.</English>
+            <Spanish>PTT para enviar un mensaje a todas las unidades en el canal actual de BI.</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group1PttKey">
+            <English>PTT - Group 1</English>
+            <Spanish>PTT - Grupo 1</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group1PttKey_description">
+            <English>PTT to send a message to all units in the Group 1 preset.</English>
+            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 1.</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group2PttKey">
+            <English>PTT - Group 2</English>
+            <Spanish>PTT - Grupo 2</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group2PttKey_description">
+            <English>PTT to send a message to all units in the Group 2 preset.</English>
+            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 2.</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group3PttKey">
+            <English>PTT - Group 3</English>
+            <Spanish>PTT - Grupo 3</Spanish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group3PttKey_description">
+            <English>PTT to send a message to all units in the Group 3 preset.</English>
+            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 3.</Spanish>
+        </Key>
+    </Package>
+</Project>

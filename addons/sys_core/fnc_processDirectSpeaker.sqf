@@ -34,7 +34,8 @@ if (_id in ACRE_SPECTATORS_LIST && {ACRE_IS_SPECTATOR}) then {
 };
 
 private _listenerPos = ACRE_LISTENER_POS;
-if (_bothSpectating || {_isIntercomAttenuate}) then {
+private _godModeUnit = _unit in EGVAR(sys_godmode,speakingGods);
+if (_bothSpectating || {_isIntercomAttenuate} || {_godModeUnit}) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
@@ -66,7 +67,7 @@ if (_zeusAdjustments) then {
     };
 };
 
-if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
+if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate} && {!_godModeUnit}) then {
     private _args = [_emitterPos, _listenerPos, _unit];
     if (_zeusDistancePriority) then {
         _args = [_unitPos, _zeusPos, _unit];

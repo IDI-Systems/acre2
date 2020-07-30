@@ -114,6 +114,12 @@ class CfgFunctions {
             PATHTO_FNC(removeAllSpectatorRadios);
             PATHTO_FNC(removeSpectatorRadio);
         };
+
+        class GodMode {
+            PATHTO_FNC(godModeModifyAllowedUIDS);
+            PATHTO_FNC(godModeModifyGroup);
+            PATHTO_FNC(godModeSendText)
+        };
     };
 
 

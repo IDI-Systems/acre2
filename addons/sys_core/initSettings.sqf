@@ -144,6 +144,24 @@
     {[_this] call FUNC(setRevealToAI)}
 ] call CBA_fnc_addSetting;
 
+// God Mode Acces
+[
+    QGVAR(godModePlayers),
+    "EDITBOX",
+    localize LSTRING(godModePlayers_displayName),
+    "ACRE2",
+    "",
+    true,
+    {
+        private _uids = _this splitString ",; ";
+        {
+            _x = parseNumber _x;
+        } forEach _uids;
+
+        [_uids, 0] call EFUNC(sys_godMode,modifyAllowedUIDS);
+    }
+] call CBA_fnc_addSetting;
+
 // Notification Settings - not yet implemented
 /*[
     QGVAR(incomingTransmissionNotification),
