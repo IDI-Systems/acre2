@@ -28,4 +28,7 @@ switch (currentChannel) do {
     default { _units = allPlayers select {alive _x}; };                   // Global, Command, Direct and Custom channels
 };
 
+// Remove local player
+_units deleteAt (_units find acre_player);
+
 _units
