@@ -21,7 +21,7 @@ if (!hasInterface) exitWith {};
 
     // Debug
     if (GVAR(speakingGods) isEqualTo []) then {
-        ERROR_1("Empty speaking Gods array while trying to delete %1!",_speakingUnit);
+        ERROR_1("Empty speaking Gods array while trying to delete God %1!",_speakingUnit);
     };
 
     GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingUnit);

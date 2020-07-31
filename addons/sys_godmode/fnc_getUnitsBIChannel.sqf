@@ -18,20 +18,24 @@
 private _units = [];
 
 switch (currentChannel) do {
-    case 0: { _units = allPlayers; };                                     // Global
-    case 1: {                                                             // Side
+    case 0: { _units = allPlayers; };    // Global
+    case 1: {                            // Side
         private _side = side acre_player;
-        _units = allPlayers select {(_side == (side _x)) && {alive _x}};
+        _units = allPlayers select {(_side == (side _x)) && {(alive _x) || {[_x] call acre_api_fnc_isSpectator}}};
     };
-    case 3: {                                                             // Group
+    case 3: {                            // Group
+        _units = (units group acre_player) select {(alive _x) || {[_x] call acre_api_fnc_isSpectator}};
+    };
+    case 4: {                            // Vehicle
         if ((vehicle acre_player) isEqualTo acre_player) then {
             _units = [];
         } else {
-            _units = (units group acre_player) select {alive _x};
+            _units = (units vehicle acre_player) select {(alive _x) || {[_x] call acre_api_fnc_isSpectator}};
         };
     };
-    case 4: { _units = (units vehicle acre_player) select {alive _x}; };  // Vehicle
-    default { _units = allPlayers select {alive _x}; };                   // Global, Command, Direct and Custom channels
+    default {                            // Global, Command, Direct and Custom channels
+        _units = allPlayers select {(alive _x) || {[_x] call acre_api_fnc_isSpectator}};
+    };                   
 };
 
 // Remove local player
