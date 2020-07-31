@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Unit or array of units <OJECT, ARRAY> (default: [])
  * 1: Group to effect (0-based index) <NUMBER> (default: 0)
- * 2: Action. 0 for set, 1 for add and 2 for substract <NUMBER> (default: 0)
+ * 2: Action. 0 for set, 1 for add and 2 for subtract <NUMBER> (default: 0)
  *
  * Return Value:
  * Text message sent successfully <BOOL>
@@ -28,8 +28,8 @@ if ((_group < 0) || {_group >= GODMODE_NUMBER_OF_GROUPS}) exitWith {
     false
 };
 
-if ((_action < GODMODE_ACTION_SET) || {_action > GODMODE_ACTION_SUBSTRACT}) exitWith {
-    ERROR_3("Invalid action %1. Valid values are %2 (set), %3 (add) and %4 (substract).",_action,GODMODE_ACTION_SET,GODMODE_ACTION_ADD,GODMODE_ACTION_SUBSTRACT);
+if ((_action < GODMODE_ACTION_SET) || {_action > GODMODE_ACTION_SUBTRACT}) exitWith {
+    ERROR_3("Invalid action %1. Valid values are %2 (set), %3 (add) and %4 (subtract).",_action,GODMODE_ACTION_SET,GODMODE_ACTION_ADD,GODMODE_ACTION_SUBTRACT);
     false
 };
 
