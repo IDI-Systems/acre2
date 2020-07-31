@@ -10,7 +10,7 @@
  * Handled <BOOL>
  *
  * Example:
- * [] call acre_sys_godMode_fnc_getUnitsBIChannel
+ * [] call acre_sys_godmode_fnc_getUnitsBIChannel
  *
  * Public: No
  */

@@ -10,7 +10,7 @@
  * Handled <BOOL>
  *
  * Example:
- * [1] call acre_sys_godMode_fnc_handlePttKeyPressUp
+ * [1] call acre_sys_godmode_fnc_handlePttKeyPressUp
  *
  * Public: No
  */

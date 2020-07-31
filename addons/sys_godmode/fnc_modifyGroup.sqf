@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * [[unit1, unit2], 0, 1] call acre_sys_godMode_fnc_modifyGroup
+ * [[unit1, unit2], 0, 1] call acre_sys_godmode_fnc_modifyGroup
  *
  * Public: No
  */

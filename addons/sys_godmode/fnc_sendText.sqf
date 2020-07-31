@@ -11,7 +11,7 @@
  * Handled <BOOL>
  *
  * Example:
- * ["text message", 0] call acre_sys_godMode_fnc_sendTextMessage
+ * ["text message", 0] call acre_sys_godmode_fnc_sendTextMessage
  *
  * Public: No
  */

@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [[getPlayerUID unit1, 789], 0] call acre_sys_godMode_fnc_modifyAllowedUIDS
+ * [[getPlayerUID unit1, 789], 0] call acre_sys_godmode_fnc_modifyAllowedUIDS
  *
  * Public: No
  */

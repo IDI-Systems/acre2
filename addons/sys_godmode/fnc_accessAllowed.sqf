@@ -10,7 +10,7 @@
  * True if the player has access to God Mode, false otherwise
  *
  * Example:
- * [0] call acre_sys_godMode_fnc_accessAllowed
+ * [0] call acre_sys_godmode_fnc_accessAllowed
  *
  * Public: No
  */
