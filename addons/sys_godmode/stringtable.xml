@@ -2,12 +2,12 @@
 <Project name="ACRE">
     <Package name="sys_godmode">
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey">
-            <English>PTT - BI Current Channel</English>
-            <Spanish>PTT - Canal actual de BI</Spanish>
+            <English>PTT - Current Chat Channel</English>
+            <Spanish>PTT - Canal actual de chat</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey_description">
-            <English>PTT to send a message to all units matching the current BI channel.</English>
-            <Spanish>PTT para enviar un mensaje a todas las unidades en el canal actual de BI.</Spanish>
+            <English>PTT to send a message to all units matching the current chat channel.</English>
+            <Spanish>PTT para enviar un mensaje a todas las unidades en el canal actual de chat.</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey">
             <English>PTT - Group 1</English>

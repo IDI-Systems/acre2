@@ -561,9 +561,5 @@
             <French>Afficher les transmissions du rack</French>
             <Portuguese>Mostras transmissões do raque</Portuguese>
         </Key>
-        <Key ID="STR_ACRE_sys_core_godModePlayers_displayName">
-            <English>God Mode: Allowed players</English>
-            <Spanish>Modo Dios: Jugadores permitidos</Spanish>
-        </Key>
     </Package>
 </Project>
