@@ -7,7 +7,7 @@ title: God Mode
 ACRE2 offers the possibility of sending voice and text messages to groups of players without attenuation effects. This functionality is known as God Mode and consists of:
 
 - Integration with Arma 3 Chat Channel: when pressing the corresponding Push-To-Talk (PTT), a voice message is going to be sent to those players matching the criteria of the current chat channel.
-- Group presets: up to three configurable group presets that can be acessed throuhg a PTT. When pressing it, a voice message without attenuation is going to be sent to those players, including those that are not alive but in spectator mode. The group presets can be modified through the API function `acre_api_fnc_godModeModifyGroup`.
+- Group presets: up to three configurable group presets that can be accessed through a PTT. When pressing it, a voice message without attenuation is going to be sent to those players, including those that are not alive but in spectator mode. The group presets can be modified through the API function `acre_api_fnc_godModeModifyGroup`.
 - Sending a text message to group presets by using `acre_api_fnc_godModeSendText` API function.
 
 By default, Administrators and players in Zeus can access God Mode functionality. Its access can be further customized through the API function `acre_api_fnc_godModeConfigureAccess`.
