@@ -17,7 +17,7 @@
 
 params ["_action"];
 
-if !([getPlayerUID acre_player] call FUNC(accessAllowed)) exitWith { false };
+if !([_action] call FUNC(accessAllowed)) exitWith { false };
 
 switch (_action) do {
     case GODMODE_CURRENTCHANNEL: { GVAR(targetUnits) = []  call FUNC(getUnitsBIChannel); };

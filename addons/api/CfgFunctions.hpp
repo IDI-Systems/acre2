@@ -116,7 +116,7 @@ class CfgFunctions {
         };
 
         class GodMode {
-            PATHTO_FNC(godModeModifyAllowedUIDS);
+            PATHTO_FNC(godModeConfigureAccess);
             PATHTO_FNC(godModeModifyGroup);
             PATHTO_FNC(godModeSendText)
         };

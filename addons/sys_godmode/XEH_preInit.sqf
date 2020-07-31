@@ -11,6 +11,7 @@ if (hasInterface) then {
     GVAR(targetUnits) = [];
     GVAR(groupPresets) = [[], [], []];
     GVAR(speakingGods) = [];
+    GVAR(accessAllowed) = [false, false];
 };
 
 ADDON = true;

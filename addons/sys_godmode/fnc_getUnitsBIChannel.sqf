@@ -23,7 +23,13 @@ switch (currentChannel) do {
         private _side = side acre_player;
         _units = allPlayers select {(_side == (side _x)) && {alive _x}};
     };
-    case 3: { _units = (units group acre_player) select {alive _x}; };    // Group
+    case 3: {                                                             // Group
+        if ((vehicle acre_player) isEqualTo acre_player) then {
+            _units = [];
+        } else {
+            _units = (units group acre_player) select {alive _x};
+        };
+    };
     case 4: { _units = (units vehicle acre_player) select {alive _x}; };  // Vehicle
     default { _units = allPlayers select {alive _x}; };                   // Global, Command, Direct and Custom channels
 };

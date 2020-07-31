@@ -18,7 +18,7 @@
 
 params ["_text", "_group"];
 
-if !([getPlayerUID acre_player] call FUNC(accessAllowed)) exitWith { false };
+if !([GODMODE_GROUP1] call FUNC(accessAllowed)) exitWith { false };
 
 private _targetUnits = (GVAR(groupPresets) select _group) select {alive _x};
 
