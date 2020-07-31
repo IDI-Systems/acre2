@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: List of player UIDs <ARRAY>
- * 1: Action. 0 for set, 1 for add and 2 for substract <NUMBER>
+ * 1: Action. 0 for set, 1 for add and 2 for subtract <NUMBER>
  *
  * Return Value:
  * None
@@ -27,7 +27,7 @@ switch (_action) do {
         } forEach _uids;
         missionNamespace setVariable[QGVAR(allowedUIDS), _allowedUIDS, true];
     };    
-    case GODMODE_ACTION_SUBSTRACT: {
+    case GODMODE_ACTION_SUBTRACT: {
         private _allowedUIDS = missionNamespace getVariable[QGVAR(allowedUIDS), []];
         {
             _allowedUIDS deleteAt (_allowedUIDS find _x);
@@ -35,6 +35,6 @@ switch (_action) do {
         missionNamespace setVariable[QGVAR(allowedUIDS), _allowedUIDS, true];
     };
     default {
-        ERROR_3("Invalid action %1. Valid values are %2 (set), %3 (add) and %4 (substract).",_action,GODMODE_ACTION_SET,GODMODE_ACTION_ADD,GODMODE_ACTION_SUBSTRACT);
+        ERROR_3("Invalid action %1. Valid values are %2 (set), %3 (add) and %4 (subtract).",_action,GODMODE_ACTION_SET,GODMODE_ACTION_ADD,GODMODE_ACTION_SUBTRACT);
     };
 };

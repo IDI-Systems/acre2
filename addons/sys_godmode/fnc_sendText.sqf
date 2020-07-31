@@ -22,6 +22,6 @@ if !([GODMODE_GROUP1] call FUNC(accessAllowed)) exitWith { false };
 
 private _targetUnits = (GVAR(groupPresets) select _group) select {alive _x};
 
-[QGVAR(godModeText), [_text], _targetUnits] call CBA_fnc_targetEvent;
+[QGVAR(showText), [_text], _targetUnits] call CBA_fnc_targetEvent;
 
 true

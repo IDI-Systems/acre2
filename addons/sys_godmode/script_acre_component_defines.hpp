@@ -8,8 +8,8 @@
 // Group operation defines
 #define GODMODE_ACTION_SET       0
 #define GODMODE_ACTION_ADD       1
-#define GODMODE_ACTION_SUBSTRACT 2
+#define GODMODE_ACTION_SUBTRACT  2
 
-// ARRAY INDEXES
+// Array indices
 #define GODMODE_ACCESS_ALLOWED_CHANNEL 0
 #define GODMODE_ACCESS_ALLOWED_GROUP   1

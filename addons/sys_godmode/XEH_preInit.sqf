@@ -7,7 +7,6 @@ PREP_RECOMPILE_START;
 PREP_RECOMPILE_END;
 
 if (hasInterface) then {
-    // Initialise intercom variables
     GVAR(targetUnits) = [];
     GVAR(groupPresets) = [[], [], []];
     GVAR(speakingGods) = [];

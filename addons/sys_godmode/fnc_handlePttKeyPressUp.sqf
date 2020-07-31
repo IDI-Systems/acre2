@@ -4,22 +4,27 @@
  * Used to handle a keypress for God Mode PTT transmission.
  *
  * Arguments:
- * None
+ * 0: Action <NUMBER>
  *
  * Return Value:
  * Handled <BOOL>
  *
  * Example:
- * [] call acre_sys_godMode_fnc_handlePttKeyPressUp
+ * [1] call acre_sys_godMode_fnc_handlePttKeyPressUp
  *
  * Public: No
  */
 
-if !([getPlayerUID acre_player] call FUNC(accessAllowed)) exitWith { false };
+params ["_action"];
 
-if (GVAR(targetUnits) isEqualTo []) exitWith { false };
+if !([_action] call FUNC(accessAllowed)) exitWith { false };
 
-[QGVAR(godModeStop), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;
+// Replace with exitWith after Debug
+if (GVAR(targetUnits) isEqualTo []) then { 
+    ERROR("Up key action with empty target array");
+};
+
+[QGVAR(stopSpeaking), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 
 GVAR(targetUnits) = [];
 

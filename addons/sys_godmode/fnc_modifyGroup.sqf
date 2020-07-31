@@ -5,8 +5,8 @@
  *
  * Arguments:
  * 0: Array of units <ARRAY>
- * 1: Group to effect (0-based index)
- * 2: Action. 0 for set, 1 for add and 2 for substract <NUMBER>
+ * 1: Group to effect (0-based index) <NUMBER>
+ * 2: Action. 0 for set, 1 for add and 2 for subtract <NUMBER>
  *
  * Return Value:
  * None
@@ -26,13 +26,13 @@ switch (_action) do {
             (GVAR(targetUnits) select _group) pushBackUnique _x;
         } forEach _units;
     };    
-    case GODMODE_ACTION_SUBSTRACT: {
+    case GODMODE_ACTION_SUBTRACT: {
         private _groupArray = GVAR(targetUnits) select _group;
         {
             _groupArray deleteAt (_groupArray find _x);
         } forEach _units;
     };
     default {
-        ERROR_3("Invalid action %1. Valid values are %2 (set), %3 (add) and %4 (substract).",_action,GODMODE_ACTION_SET,GODMODE_ACTION_ADD,GODMODE_ACTION_SUBSTRACT);
+        ERROR_3("Invalid action %1. Valid values are %2 (set), %3 (add) and %4 (subtract).",_action,GODMODE_ACTION_SET,GODMODE_ACTION_ADD,GODMODE_ACTION_SUBTRACT);
     };
 };

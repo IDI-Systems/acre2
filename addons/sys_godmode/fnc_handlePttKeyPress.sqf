@@ -27,12 +27,13 @@ switch (_action) do {
     default { ERROR_1("Invalid action %1",_action); };
 };
 
+// Enable after debug phase
 //if (GVAR(targetUnits) isEqualTo []) exitWith {
 //    WARNING("No units in the selected group.");
 //    false
 //};
 
-[QGVAR(godModeStart), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;
+[QGVAR(startSpeaking), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 
 // Give some time to process
 [EFUNC(sys_rpc,callRemoteProcedure), ["startGodModeSpeaking", ""]] call CBA_fnc_execNextFrame;

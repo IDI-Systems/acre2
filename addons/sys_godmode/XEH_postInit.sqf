@@ -3,7 +3,7 @@
 if (!hasInterface) exitWith {};
 
 // CBA Event Handlers
-[QGVAR(godModeStart), {
+[QGVAR(startSpeaking), {
     params ["_speakingUnit"];
 
     // Debug
@@ -16,7 +16,7 @@ if (!hasInterface) exitWith {};
     // [[ICON_RADIO_CALL], ["Receiving God message!"]] call CBA_fnc_notify;
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(godModeStop), {
+[QGVAR(stopSpeaking), {
     params ["_speakingUnit"];
 
     // Debug
@@ -29,7 +29,7 @@ if (!hasInterface) exitWith {};
     // [[ICON_RADIO_CALL], ["God message ended!"]] call CBA_fnc_notify;
 }] call CBA_fnc_addEventHandler;
 
-[QGVAR(godModeText), {
+[QGVAR(showText), {
     params ["_text"];
 
     private _notifyText = format ["God message: %1", _text];
@@ -38,26 +38,27 @@ if (!hasInterface) exitWith {};
 }] call CBA_fnc_addEventHandler;
 
 // Keybinds - God Mode
-["ACRE2", "GodModePTTKeyCurrentChannel", [localize LSTRING(currentChannelPttKey), localize LSTRING(currentChannelPttKey_description)], {
+private _category = format ["ACRE2 %1", localize LSTRING(godMode)];
+[_category, "GodModePTTKeyCurrentChannel", [localize LSTRING(currentChannelPttKey), localize LSTRING(currentChannelPttKey_description)], {
     [GODMODE_CURRENTCHANNEL] call FUNC(handlePttKeyPress)
 }, {
-    [] call FUNC(handlePttKeyPressUp)
+    [GODMODE_CURRENTCHANNEL] call FUNC(handlePttKeyPressUp)
 }] call CBA_fnc_addKeybind;
 
-["ACRE2", "GodModePTTKeyGroup1", [localize LSTRING(group1PttKey), localize LSTRING(group1PttKey_description)], {
+[_category, "GodModePTTKeyGroup1", [localize LSTRING(group1PttKey), localize LSTRING(group1PttKey_description)], {
     [GODMODE_GROUP1] call FUNC(handlePttKeyPress)
 }, {
-    [] call FUNC(handlePttKeyPressUp)
+    [GODMODE_GROUP1] call FUNC(handlePttKeyPressUp)
 }] call CBA_fnc_addKeybind;
 
-["ACRE2", "GodModePTTKeyGroup2", [localize LSTRING(group2PttKey), localize LSTRING(group2PttKey_description)], {
+[_category, "GodModePTTKeyGroup2", [localize LSTRING(group2PttKey), localize LSTRING(group2PttKey_description)], {
     [GODMODE_GROUP2] call FUNC(handlePttKeyPress)
 }, {
-    [] call FUNC(handlePttKeyPressUp)
+    [GODMODE_GROUP2] call FUNC(handlePttKeyPressUp)
 }] call CBA_fnc_addKeybind;
 
-["ACRE2", "GodModePTTKeyGroup3", [localize LSTRING(group3PttKey), localize LSTRING(group3PttKey_description)], {
+[_category, "GodModePTTKeyGroup3", [localize LSTRING(group3PttKey), localize LSTRING(group3PttKey_description)], {
     [GODMODE_GROUP3] call FUNC(handlePttKeyPress)
 }, {
-    [] call FUNC(handlePttKeyPressUp)
+    [GODMODE_GROUP3] call FUNC(handlePttKeyPressUp)
 }] call CBA_fnc_addKeybind;

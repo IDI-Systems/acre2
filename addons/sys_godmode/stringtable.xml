@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_godmode">
+        <Key ID="STR_ACRE_sys_godmode_godMode">
+            <English>God Mode</English>
+            <Spanish>Modo Dios</Spanish>
+        </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey">
             <English>PTT - Current Chat Channel</English>
             <Spanish>PTT - Canal actual de chat</Spanish>
