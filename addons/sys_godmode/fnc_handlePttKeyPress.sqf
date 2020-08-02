@@ -31,7 +31,7 @@ switch (_action) do {
             case 4: { localize "str_channel_vehicle" };
             default { localize "str_disp_other" };
         };
-        _channel = format ["%1 (%2)", localize LSTRING(currentChannel_display) _currentBIChannel];
+        _channel = format ["%1 (%2)", localize LSTRING(currentChannel_display), _currentBIChannel];
     };
     case GODMODE_GROUP1: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 0) select {alive _x};

@@ -41,9 +41,7 @@ if (!hasInterface) exitWith {};
 
 [QGVAR(showText), {
     params ["_text"];
-
-    private _fontColor = GVAR(notificationColor) call BIS_fnc_colorRGBAtoHTML;
-    systemChat (parseText format ["<font color='%1'>God:</font> %2", _fontColor, _text]);
+    systemChat format ["God: %1", _text];
 }] call CBA_fnc_addEventHandler;
 
 // Keybinds - God Mode
