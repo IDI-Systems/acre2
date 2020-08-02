@@ -22,8 +22,16 @@ if !([_action] call FUNC(accessAllowed)) exitWith { false };
 private _channel = "";
 switch (_action) do {
     case GODMODE_CURRENTCHANNEL: {
-        GVAR(targetUnits) = []  call FUNC(getUnitsBIChannel);
-        _channel = "Current Chat Channel"; // TODO Stringtable
+        GVAR(targetUnits) = [] call FUNC(getUnitsBIChannel);
+
+        private _currentBIChannel = switch (currentChannel) do {
+            case 0: { "Global" };
+            case 1: { "Side" };
+            case 3: { "Group" };
+            case 4: { "Vehicle" };
+            default { "Other" };
+        };
+        _channel = format ["Current Channel (%1)", _currentBIChannel]; // TODO Stringtable
     };
     case GODMODE_GROUP1: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 0) select {alive _x};

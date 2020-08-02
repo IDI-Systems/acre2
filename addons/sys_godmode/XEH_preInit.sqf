@@ -14,7 +14,7 @@ if (hasInterface) then {
     GVAR(speakingGods) = [];
     GVAR(accessAllowed) = [false, false];
     GVAR(txNotificationLayer) = ""; // Name of the notification system layer where the current God TX is displayed
-    GVAR(rxNotificationLayer) = ""; // Name of the notification system layer where the current God RX is displayed
+    GVAR(rxNotificationLayers) = call CBA_fnc_createNamespace; // Name of the notification system layer where the current God RX is displayed
 };
 
 ADDON = true;

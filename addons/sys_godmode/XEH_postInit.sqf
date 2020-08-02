@@ -8,13 +8,15 @@ if (!hasInterface) exitWith {};
 
     // Debug
     if (GVAR(speakingGods) find _speakingUnit != -1) then {
-        ERROR_1("Tryied to add an already speaking God....",_speakingUnit);
+        ERROR_1("Tried to add an already speaking God....",_speakingUnit);
     };
 
     GVAR(speakingGods) pushBackUnique _speakingUnit;
 
+    // Notification
     if (GVAR(rxNotification)) then {
-        GVAR(rxNotificationLayer) = [format ["RX: %1", localize LSTRING(god)], name _speakingUnit, "", -1, GVAR(notificationColor)] call EFUNC(sys_list,displayHint);
+        private _notificationLayer = [format ["RX: %1", localize LSTRING(god)], name _speakingUnit, "", -1, GVAR(notificationColor)] call EFUNC(sys_list,displayHint);
+        GVAR(rxNotificationLayers) setVariable [getPlayerUID _speakingUnit, _notificationLayer];
     };
 }] call CBA_fnc_addEventHandler;
 
@@ -28,10 +30,13 @@ if (!hasInterface) exitWith {};
 
     GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingUnit);
 
-    if (GVAR(rxNotificationLayer) != "") then {
-        [GVAR(rxNotificationLayer)] call EFUNC(sys_list,hideHint);
-        GVAR(rxNotificationLayer) = "";
-    };
+    // Notification
+    private _speakingUID = getPlayerUID _speakingUID;
+    private _notificationLayer = GVAR(rxNotificationLayers) getVariable [_speakingUID, ""];
+    if (_notificationLayer != "") then {
+        [_notificationLayer] call EFUNC(sys_list,hideHint);
+        GVAR(rxNotificationLayers) setVariable [_speakingUID, ""];
+    }
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(showText), {
