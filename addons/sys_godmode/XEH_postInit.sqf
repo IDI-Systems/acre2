@@ -13,7 +13,7 @@ if (!hasInterface) exitWith {};
 
     GVAR(speakingGods) pushBackUnique _speakingUnit;
 
-    // [[ICON_RADIO_CALL], ["Receiving God message!"]] call CBA_fnc_notify;
+    GVAR(notificationLayer) = [format ["RX: %1", name _speakingUnit], localize LSTRING(godMode), "", -1, [GVAR(PTTColor)]] call EFUNC(sys_list,displayHint);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(stopSpeaking), {
@@ -26,7 +26,7 @@ if (!hasInterface) exitWith {};
 
     GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingUnit);
 
-    // [[ICON_RADIO_CALL], ["God message ended!"]] call CBA_fnc_notify;
+    [GVAR(notificationLayer)] call EFUNC(sys_list,hideHint);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(showText), {
