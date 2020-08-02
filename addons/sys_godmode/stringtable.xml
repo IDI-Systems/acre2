@@ -37,14 +37,17 @@
             <English>PTT to send a message to all units in the Group 3 preset.</English>
             <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 3.</Spanish>
         </Key>
+        <Key ID="STR_ACRE_sys_godmode_god">
+            <English>God</English>
+        </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
             <English>Transmit Notification</English>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
             <English>Receive Notification</English>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_PTTColor_displayName">
-            <English>PTT Color</English>
+        <Key ID="STR_ACRE_sys_godmode_color_displayName">
+            <English>Notification Color</English>
         </Key>
     </Package>
 </Project>

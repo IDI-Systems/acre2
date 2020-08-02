@@ -38,4 +38,8 @@ switch (_action) do {
 // Give some time to process
 [EFUNC(sys_rpc,callRemoteProcedure), ["startGodModeSpeaking", ""]] call CBA_fnc_execNextFrame;
 
+if (GVAR(txNotification)) then {
+    GVAR(txNotificationLayer) = [format ["TX: %1", localize LSTRING(god)], "", "", -1, GVAR(notificationColor)] call EFUNC(sys_list,displayHint);
+};
+
 true

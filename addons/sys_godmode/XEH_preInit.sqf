@@ -13,7 +13,8 @@ if (hasInterface) then {
     GVAR(groupPresets) = [[], [], []];
     GVAR(speakingGods) = [];
     GVAR(accessAllowed) = [false, false];
-    GVAR(notificationLayer) = ""; // Name of the notification system layer where the current god mode is displayed
+    GVAR(txNotificationLayer) = ""; // Name of the notification system layer where the current God TX is displayed
+    GVAR(rxNotificationLayer) = ""; // Name of the notification system layer where the current God RX is displayed
 };
 
 ADDON = true;

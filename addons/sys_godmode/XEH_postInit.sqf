@@ -13,7 +13,9 @@ if (!hasInterface) exitWith {};
 
     GVAR(speakingGods) pushBackUnique _speakingUnit;
 
-    GVAR(notificationLayer) = [format ["RX: %1", name _speakingUnit], localize LSTRING(godMode), "", -1, [GVAR(PTTColor)]] call EFUNC(sys_list,displayHint);
+    if (GVAR(rxNotification)) then {
+        GVAR(rxNotificationLayer) = [format ["RX: %1", localize LSTRING(god)], name _speakingUnit, "", -1, GVAR(notificationColor)] call EFUNC(sys_list,displayHint);
+    };
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(stopSpeaking), {
@@ -26,15 +28,17 @@ if (!hasInterface) exitWith {};
 
     GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingUnit);
 
-    [GVAR(notificationLayer)] call EFUNC(sys_list,hideHint);
+    if (GVAR(rxNotificationLayer) != "") then {
+        [GVAR(rxNotificationLayer)] call EFUNC(sys_list,hideHint);
+        GVAR(rxNotificationLayer) = "";
+    };
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(showText), {
     params ["_text"];
 
-    private _notifyText = format ["God message: %1", _text];
-
-    [[ICON_RADIO_CALL], [_notifyText]] call CBA_fnc_notify;
+    private _fontColor = GVAR(notificationColor) call BIS_fnc_colorRGBAtoHTML;
+    systemChat format ["<font color='%1'>God:</font> %2", _fontColor, _text];
 }] call CBA_fnc_addEventHandler;
 
 // Keybinds - God Mode

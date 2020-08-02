@@ -20,7 +20,7 @@ params ["_action"];
 if !([_action] call FUNC(accessAllowed)) exitWith { false };
 
 // Replace with exitWith after Debug
-if (GVAR(targetUnits) isEqualTo []) then { 
+if (GVAR(targetUnits) isEqualTo []) then {
     ERROR("Up key action with empty target array");
 };
 
@@ -30,5 +30,10 @@ GVAR(targetUnits) = [];
 
 // Give some time to process
 [EFUNC(sys_rpc,callRemoteProcedure), ["stopGodModeSpeaking", ""]] call CBA_fnc_execNextFrame;
+
+if (GVAR(txNotificationLayer) != "") then {
+    [GVAR(txNotificationLayer)] call EFUNC(sys_list,hideHint);
+    GVAR(txNotificationLayer) = "";
+};
 
 true

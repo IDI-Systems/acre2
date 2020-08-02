@@ -18,11 +18,10 @@
     {}
 ] call CBA_fnc_addSetting;
 
-// PTT Color
 [
-    QGVAR(PTTColor),
+    QGVAR(notificationColor),
     "COLOR",
-    localize LSTRING(PTTColor_displayName),
+    localize LSTRING(color_displayName),
     [ELSTRING(sys_core,CategoryUI), localize LSTRING(godMode)],
     [ACRE_NOTIFICATION_WHITE],
     false,
