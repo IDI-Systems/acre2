@@ -20,14 +20,14 @@
 params ["_units", "_group", "_action"];
 
 switch (_action) do {
-    case GODMODE_ACTION_SET: { GVAR(targetUnits) set [_group, _units]; };
+    case GODMODE_ACTION_SET: { GVAR(groupPresets) set [_group, _units]; };
     case GODMODE_ACTION_ADD: {
         {
-            (GVAR(targetUnits) select _group) pushBackUnique _x;
+            (GVAR(groupPresets) select _group) pushBackUnique _x;
         } forEach _units;
-    };    
+    };
     case GODMODE_ACTION_SUBTRACT: {
-        private _groupArray = GVAR(targetUnits) select _group;
+        private _groupArray = GVAR(groupPresets) select _group;
         {
             _groupArray deleteAt (_groupArray find _x);
         } forEach _units;
