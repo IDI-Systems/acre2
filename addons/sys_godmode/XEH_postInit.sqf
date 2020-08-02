@@ -43,7 +43,7 @@ if (!hasInterface) exitWith {};
     params ["_text"];
 
     private _fontColor = GVAR(notificationColor) call BIS_fnc_colorRGBAtoHTML;
-    systemChat format ["<font color='%1'>God:</font> %2", _fontColor, _text];
+    systemChat (parseText format ["<font color='%1'>God:</font> %2", _fontColor, _text]);
 }] call CBA_fnc_addEventHandler;
 
 // Keybinds - God Mode

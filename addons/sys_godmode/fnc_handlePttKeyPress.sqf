@@ -25,25 +25,25 @@ switch (_action) do {
         GVAR(targetUnits) = [] call FUNC(getUnitsBIChannel);
 
         private _currentBIChannel = switch (currentChannel) do {
-            case 0: { "Global" };
-            case 1: { "Side" };
-            case 3: { "Group" };
-            case 4: { "Vehicle" };
-            default { "Other" };
+            case 0: { localize "str_channel_global" };
+            case 1: { localize "str_channel_side" };
+            case 3: { localize "str_channel_group" };
+            case 4: { localize "str_channel_vehicle" };
+            default { localize "str_disp_other" };
         };
-        _channel = format ["Current Channel (%1)", _currentBIChannel]; // TODO Stringtable
+        _channel = format ["%1 (%2)", localize LSTRING(currentChannel_display) _currentBIChannel];
     };
     case GODMODE_GROUP1: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 0) select {alive _x};
-        _channel = "Group 1"; // TODO Stringtable
+        _channel = localize LSTRING(group1);
     };
     case GODMODE_GROUP2: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 1) select {alive _x};
-        _channel = "Group 2"; // TODO Stringtable
+        _channel = localize LSTRING(group2);
     };
     case GODMODE_GROUP3: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 2) select {alive _x};
-        _channel = "Group 3"; // TODO Stringtable
+        _channel = localize LSTRING(group3);
     };
     default { ERROR_1("Invalid action %1",_action); };
 };
