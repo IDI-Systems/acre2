@@ -238,7 +238,8 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     private _unit = _x;
     if (!isNull _unit) then {
         if (!IS_MUTED(_unit) && {_unit != acre_player}) then {
-            if (_unit call FUNC(inRange)) then {
+            private _godModeUnit = _unit in EGVAR(sys_godmode,speakingGods);
+            if (_godModeUnit || {_unit call FUNC(inRange)}) then {
                 TRACE_1("Calling processDirectSpeaker", _unit);
                 private _params = [_unit] call FUNC(processDirectSpeaker);
                 CALL_RPC("updateSpeakingData", _params);
