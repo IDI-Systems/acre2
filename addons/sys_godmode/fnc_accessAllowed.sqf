@@ -18,7 +18,7 @@
 params ["_action"];
 
 // Administrators and curators can access God Mode
-if (IS_ADMIN || {[] call EFUNC(sys_core,inZeus)}) exitWith { true };
+if (IS_ADMIN || {isServer} || {[] call EFUNC(sys_core,inZeus)}) exitWith { true };
 
 private _allowed = false;
 if (_action == GODMODE_CURRENTCHANNEL) then {
