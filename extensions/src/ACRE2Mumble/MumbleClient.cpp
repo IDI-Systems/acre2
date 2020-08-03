@@ -113,9 +113,10 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
         }
     }
 
-    if (!VADactive && (speakingType_ == acre::Speaking::direct)) {
+    // TODO Fix - mumble_onUserTalkingStateChanged stops being thrown after microphoneOpen(true)
+    /*if (!VADactive && (speakingType_ == acre::Speaking::direct)) {
         this->microphoneOpen(true);
-    }
+    }*/
 
     if (stopDirectSpeaking) {
         CEngine::getInstance()->localStopSpeaking();
