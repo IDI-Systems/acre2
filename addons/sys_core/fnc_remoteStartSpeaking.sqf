@@ -149,10 +149,10 @@ private _result = false;
                 if (_unit call FUNC(inRange)) then {
                     GVAR(speakers) pushBack _unit;
                 };
-                TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));
-                REM(GVAR(keyedMicRadios),_unit);
-                HASH_REM(GVAR(keyedRadioIds), _radioId);
             };
+            TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));
+            REM(GVAR(keyedMicRadios),_unit);
+            HASH_REM(GVAR(keyedRadioIds), _radioId);
         };
     } else {
         TRACE_3("MUTED:", _unit, _isMuted, _netId);
