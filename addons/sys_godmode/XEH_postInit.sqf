@@ -31,7 +31,7 @@ if (!hasInterface) exitWith {};
     GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingUnit);
 
     // Notification
-    private _speakingUID = getPlayerUID _speakingUID;
+    private _speakingUID = getPlayerUID _speakingUnit;
     private _notificationLayer = GVAR(rxNotificationLayers) getVariable [_speakingUID, ""];
     if (_notificationLayer != "") then {
         [_notificationLayer] call EFUNC(sys_list,hideHint);
