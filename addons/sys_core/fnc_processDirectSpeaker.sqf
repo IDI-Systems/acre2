@@ -34,8 +34,7 @@ if (_id in ACRE_SPECTATORS_LIST && {ACRE_IS_SPECTATOR}) then {
 };
 
 private _listenerPos = ACRE_LISTENER_POS;
-private _godModeUnit = _unit in EGVAR(sys_godmode,speakingGods);
-if (_bothSpectating || {_isIntercomAttenuate} || {_godModeUnit}) then {
+if (_bothSpectating || {_isIntercomAttenuate}) then {
     _emitterPos = ACRE_LISTENER_POS;
     _emitterDir = ACRE_LISTENER_DIR;
 } else {
@@ -57,6 +56,7 @@ private _zeusDistancePriority = false;
 
 // Right now ACRE only supports one listener pos, use the closest position while in Zeus
 if (_zeusAdjustments) then {
+    _speakingType = "g";
     _zeusPos = getPosASL curatorCamera;
     _zeusDistancePriority = (_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos);
     if (_zeusDistancePriority) then {
@@ -67,7 +67,7 @@ if (_zeusAdjustments) then {
     };
 };
 
-if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate} && {!_godModeUnit}) then {
+if (ACRE_TEST_OCCLUSION && {!_bothSpectating} && {!_isIntercomAttenuate}) then {
     private _args = [_emitterPos, _listenerPos, _unit];
     if (_zeusDistancePriority) then {
         _args = [_unitPos, _zeusPos, _unit];

@@ -35,6 +35,7 @@ DGVAR(playerList) = []; // Paired array: [TS_ID, Object]
 DGVAR(isDeaf) = false;
 //DGVAR(playerListHash) = HASH_CREATE;
 DGVAR(spectatorSpeakers) = [];
+DGVAR(godSpeakers) = [];
 
 DGVAR(threadedExtCalls) = [];
 

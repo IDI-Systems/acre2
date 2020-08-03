@@ -6,14 +6,6 @@ if (!hasInterface) exitWith {};
 [QGVAR(startSpeaking), {
     params ["_speakingUnit"];
 
-    // Debug
-    if (GVAR(speakingGods) find _speakingUnit != -1) then {
-        ERROR_1("Tried to add an already speaking God....",_speakingUnit);
-    };
-
-    GVAR(speakingGods) pushBackUnique _speakingUnit;
-
-    // Notification
     if (GVAR(rxNotification)) then {
         private _notificationLayer = [format ["RX: %1", localize LSTRING(god)], name _speakingUnit, "", -1, GVAR(notificationColor)] call EFUNC(sys_list,displayHint);
         GVAR(rxNotificationLayers) setVariable [getPlayerUID _speakingUnit, _notificationLayer];
@@ -23,14 +15,6 @@ if (!hasInterface) exitWith {};
 [QGVAR(stopSpeaking), {
     params ["_speakingUnit"];
 
-    // Debug
-    if (GVAR(speakingGods) isEqualTo []) then {
-        ERROR_1("Empty speaking Gods array while trying to delete God %1!",_speakingUnit);
-    };
-
-    GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingUnit);
-
-    // Notification
     private _speakingUID = getPlayerUID _speakingUnit;
     private _notificationLayer = GVAR(rxNotificationLayers) getVariable [_speakingUID, ""];
     if (_notificationLayer != "") then {

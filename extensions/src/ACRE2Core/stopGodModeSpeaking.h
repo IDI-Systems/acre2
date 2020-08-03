@@ -13,7 +13,7 @@
 
 RPC_FUNCTION(stopGodModeSpeaking) {
 
-    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::direct);
+    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::god);
 
     return acre::Result::ok;
 }

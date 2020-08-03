@@ -22,7 +22,7 @@ private _position = getPosASL _unit;
 // Check if the position is in range of the unit or the camera
 private _check = {
     if (call FUNC(inZeus) && {_this distance (getPosASL curatorCamera) < MAX_DIRECT_RANGE}) exitWith { true };
-    _this distance ACRE_LISTENER_POS < MAX_DIRECT_RANGE || {_unit in EGVAR(sys_godmode,speakingGods)}
+    _this distance ACRE_LISTENER_POS < MAX_DIRECT_RANGE
 };
 
 // Check the position of the remote zeus camera and remote unit

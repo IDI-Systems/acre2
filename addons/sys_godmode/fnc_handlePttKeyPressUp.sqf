@@ -25,11 +25,9 @@ if (GVAR(targetUnits) isEqualTo []) then {
 };
 
 [QGVAR(stopSpeaking), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;
-
 GVAR(targetUnits) = [];
 
-// Give some time to process
-[EFUNC(sys_rpc,callRemoteProcedure), ["stopGodModeSpeaking", ""]] call CBA_fnc_execNextFrame;
+["stopGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
 if (GVAR(txNotificationLayer) != "") then {
     [GVAR(txNotificationLayer)] call EFUNC(sys_list,hideHint);

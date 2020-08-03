@@ -50,6 +50,7 @@ private _found = false;
             //If changed remove.
             REM(GVAR(speakers),_remoteUser);
             REM(GVAR(spectatorSpeakers),_remoteTs3Id);
+            REM(GVAR(godSpeakers),_remoteTs3Id);
             REM(GVAR(keyedMicRadios),_remoteUser);
         };
         // Case where objects dont match but we found our TS ID.

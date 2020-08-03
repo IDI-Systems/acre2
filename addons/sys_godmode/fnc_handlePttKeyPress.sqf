@@ -56,8 +56,7 @@ switch (_action) do {
 
 [QGVAR(startSpeaking), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 
-// Give some time to process
-[EFUNC(sys_rpc,callRemoteProcedure), ["startGodModeSpeaking", ""]] call CBA_fnc_execNextFrame;
+["startGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
 if (GVAR(txNotification)) then {
     GVAR(txNotificationLayer) = [format ["TX: %1", localize LSTRING(god)], _channel, "", -1, GVAR(notificationColor)] call EFUNC(sys_list,displayHint);
