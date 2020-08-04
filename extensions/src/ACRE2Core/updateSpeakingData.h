@@ -76,7 +76,7 @@ RPC_FUNCTION(updateSpeakingData) {
             // want.
             const int32_t count = vMessage->getParameterAsInt(3);
             speaker->setSpeakingType(acre::Speaking::radio);
-            if (CEngine::getInstance()->getClient()->getMuted(playerId) == acre::Result::ok ) {
+            if (CEngine::getInstance()->getClient()->getMuted(playerId) == acre::Result::ok) {
                 CEngine::getInstance()->getClient()->setMuted(playerId, false);
             }
             for (int32_t i = 0; i < count; ++i) {
@@ -98,22 +98,22 @@ RPC_FUNCTION(updateSpeakingData) {
                 if (speaker->channels[channelId]) {
                     speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(acre::Speaking::radio));
 
-                    speaker->channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4+(i*7)));
+                    speaker->channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4 + (i * 7)));
 
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", FALSE);
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5+(i*7)));
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6+(i*7)));
+                    speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5 + (i * 7)));
+                    speaker->channels[channelId]->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6 + (i * 7)));
 
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isLoudSpeaker", vMessage->getParameterAsFloat(7+(i*7)));
-                    if (vMessage->getParameterAsFloat(7+(i*7))) {
+                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isLoudSpeaker", vMessage->getParameterAsFloat(7 + (i * 7)));
+                    if (vMessage->getParameterAsFloat(7 + (i * 7))) {
                         speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000001);
                     } else {
                         speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000000);
                     }
 
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosX", vMessage->getParameterAsFloat(8+(i*7)));
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosZ", vMessage->getParameterAsFloat(9+(i*7)));
-                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosY", vMessage->getParameterAsFloat(10+(i*7)));
+                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosX", vMessage->getParameterAsFloat(8 + (i * 7)));
+                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosZ", vMessage->getParameterAsFloat(9 + (i * 7)));
+                    speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("speakerPosY", vMessage->getParameterAsFloat(10 + (i * 7)));
 
                     speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("headVectorX", 0.0f);
                     speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("headVectorZ", 1.0f);
@@ -121,9 +121,8 @@ RPC_FUNCTION(updateSpeakingData) {
                     speaker->channels[channelId]->getMixdownEffectInsert(0)->setParam("curveScale", speaker->getSelectableCurveScale());
                 }
             }
-
-        } else if (speakingType == "s") {
-            if (speaker->getInitType() != "s" || speakingType != speaker->getInitType()) {
+        } else if (speakingType == "s" || speakingType == "g") {
+            if ((speaker->getInitType() != "s" && speaker->getInitType() != "g") || speakingType != speaker->getInitType()) {
                 speaker->setInitType(speakingType);
                 if (speaker->channels[0]) {
                     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(speaker->channels[0]);
@@ -132,7 +131,11 @@ RPC_FUNCTION(updateSpeakingData) {
                 CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&speaker->channels[0], 4800, false);
                 speaker->channels[0]->setEffectInsert(7, "acre_volume");
             }
-            speaker->setSpeakingType(acre::Speaking::spectate);
+            if (speakingType == "s") {
+                speaker->setSpeakingType(acre::Speaking::spectate);
+            } else {
+                speaker->setSpeakingType(acre::Speaking::god);
+            }
             if (CEngine::getInstance()->getClient()->getMuted(playerId) == acre::Result::ok) {
                 CEngine::getInstance()->getClient()->setMuted(playerId, false);
             }
