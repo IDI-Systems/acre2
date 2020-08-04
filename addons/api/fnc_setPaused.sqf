@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: ACRE2Team
+ * Author: Thymo-
  * Ask server to pause ACRE globally
  *
  * Arguments:

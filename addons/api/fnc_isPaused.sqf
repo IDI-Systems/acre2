@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: ACRE2Team
+ * Author: Thymo-
  * Check if ACRE is paused
  *
  * Arguments:
