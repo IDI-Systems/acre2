@@ -19,11 +19,6 @@ params ["_action"];
 
 if !([_action] call FUNC(accessAllowed)) exitWith { false };
 
-// Replace with exitWith after Debug
-if (GVAR(targetUnits) isEqualTo []) then {
-    ERROR("Up key action with empty target array");
-};
-
 [QGVAR(stopSpeaking), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 GVAR(targetUnits) = [];
 
