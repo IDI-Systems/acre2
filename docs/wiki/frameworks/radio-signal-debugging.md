@@ -32,7 +32,13 @@ If this signal debugging mode is active. Acre.dll will also log the inputs which
 
 {% include image.html file="dev/signal-map.png" alt="Signal Map" %}
 
-This tool allows you to render radio signal on the map. This requires having the arma 3 tools installed and mounting the work-drive. It can then be accessed by executing:
-`[] call acre_sys_signalmap_fnc_open;` Then just open your map and you should see the tool.
+This tool allows you to render radio signals on the map. The tool renders squares as an approximate for radio signal strength for each cell (size controlled by 'sample size'). The colour and transparency of the cell transitions from bright green at full signal to red and transparent at minimum signal receivable strength. This range of colours is configured by the sensitivity min and max. Anything outside of the minimum range (or not receivable) will be fully transparent and the radio signal would not be received.
 
-Signal map images will be dumped in your `Arma 3/userconfig` folder.
+#### Prerequisites
+- Have Arma 3 Tools Installed.
+- Mount the work drive. Ensure `P:\TexView2\Pal2PacE.exe` exists. This may involve copying `TexView2` from the Arma 3 Tools installation folder or setting up a symlink (via `mklink`).
+- Ensure Arma 3 is running as Administrator to ensure write access for the tool to create textures (these will be dumped in your `Arma 3/userconfig` folder)
+
+#### Usage
+- Use debug console in a mission or editor preview and execute `[] call acre_sys_signalmap_fnc_open;`.
+- Open in-game map, the tool should now be visible on the right side. Use the buttons to select a TX (Transmit position) and an RX (Receiving) area and click 'Process' to generate the map. _Note: selecting very large areas will take some time to process._
