@@ -20,11 +20,11 @@ params ["_pause"];
 
 TRACE_2("setPaused", ACRE_IS_PAUSED, _pause);
 if !(ACRE_IS_PAUSED isEqualTo _pause) then {
-	if (!_pause) then {
-		systemChat "ACRE Enabled";
-	} else {
-		systemChat "ACRE Disabled";
-	};
+    if (!_pause) then {
+        systemChat "ACRE Enabled";
+    } else {
+        systemChat "ACRE Disabled";
+    };
 
-	[QEGVAR(sys_server,onSetPaused), [_pause]] call CALLSTACK(CBA_fnc_serverEvent);
+    [QEGVAR(sys_server,onSetPaused), [_pause]] call CALLSTACK(CBA_fnc_serverEvent);
 };

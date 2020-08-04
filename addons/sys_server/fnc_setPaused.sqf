@@ -17,11 +17,11 @@
 
 
 if (isServer) then {
-	params ["_pause"];
+    params ["_pause"];
 
-	TRACE_2("onSetPaused", ACRE_IS_PAUSED, _pause);
-	if !(ACRE_IS_PAUSED isEqualTo _pause) then {
-		ACRE_IS_PAUSED = _pause;
-		publicVariable "ACRE_IS_PAUSED";
-	};
+   TRACE_2("onSetPaused", ACRE_IS_PAUSED, _pause);
+    if !(ACRE_IS_PAUSED isEqualTo _pause) then {
+        ACRE_IS_PAUSED = _pause;
+        publicVariable "ACRE_IS_PAUSED";
+    };
 };
