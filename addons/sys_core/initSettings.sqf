@@ -37,6 +37,16 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(godVolume),
+    "SLIDER",
+    localize LSTRING(godVolume_displayName),
+    "ACRE2",
+    [0.2, 1, 1, 2], // Minimal value so it always stays hearable
+    false,
+    {}
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(unmuteClients),
     "CHECKBOX",
     localize LSTRING(unmuteClients_displayName),

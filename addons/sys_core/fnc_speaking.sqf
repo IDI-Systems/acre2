@@ -257,6 +257,12 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     };
 } forEach GVAR(speakers);
 
+{
+    private _speakingId = _x;
+    private _params = ["g", _speakingId, 0, GVAR(godVolume)];
+    CALL_RPC("updateSpeakingData", _params);
+} forEach GVAR(godSpeakers);
+
 if (ACRE_IS_SPECTATOR) then {
     {
         private _speakingId = _x;

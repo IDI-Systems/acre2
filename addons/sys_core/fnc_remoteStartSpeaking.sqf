@@ -47,6 +47,7 @@ private _result = false;
     //Ensure unit wasn't previously speaking
     REM(GVAR(speakers),_unit);
     REM(GVAR(spectatorSpeakers),_speakingId);
+    REM(GVAR(godSpeakers),_speakingId);
     REM(GVAR(keyedMicRadios),_unit);
 
     //Ensure the incoming ID is solid.
@@ -59,6 +60,7 @@ private _result = false;
                 GVAR(playerList) set [_forEachIndex, [_speakingId, _unit]];
                 REM(GVAR(speakers),_remoteUser);
                 REM(GVAR(spectatorSpeakers),_remoteVoipId);
+                REM(GVAR(godSpeakers),_remoteVoipId);
                 REM(GVAR(keyedMicRadios),_remoteUser);
                 /*if (_remoteVoipId in ACRE_SPECTATORS_LIST) then {
                     GVAR(spectatorSpeakers) pushBackUnique _remoteVoipId;
@@ -92,7 +94,7 @@ private _result = false;
     if (!_isMuted) then {
         TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_onRadio,(_unit distance acre_player));
         _unit setVariable [QGVAR(lastSpeakingEventTime), diag_tickTime, false];
-        if (_onRadio == 1) then {
+        if (_onRadio == 1) then { // Radio
             if ([_radioId] call EFUNC(sys_radio,radioExists)) then {
                 // Handle rack radios or shared manpack radios that are simultaneously in use.
                 if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || {_radioId in ACRE_HEARABLE_RACK_RADIOS} || {_radioId in ACRE_EXTERNALLY_USED_MANPACK_RADIOS} || {_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS}) then {
@@ -141,8 +143,12 @@ private _result = false;
                 WARNING_1("Got start speaking event with non-existent radio id: %1",_radioId);
             };
         } else {
-            if (_unit call FUNC(inRange)) then {
-                GVAR(speakers) pushBack _unit;
+            if (_onRadio == 5) then { // God Mode / Zeus
+                GVAR(godSpeakers) pushBack _speakingId;
+            } else { // Direct / Intercom / Spectate / Unknown
+                if (_unit call FUNC(inRange)) then {
+                    GVAR(speakers) pushBack _unit;
+                };
             };
             TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));
             REM(GVAR(keyedMicRadios),_unit);

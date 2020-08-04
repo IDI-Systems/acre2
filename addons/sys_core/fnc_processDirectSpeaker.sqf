@@ -56,6 +56,7 @@ private _zeusDistancePriority = false;
 
 // Right now ACRE only supports one listener pos, use the closest position while in Zeus
 if (_zeusAdjustments) then {
+    _speakingType = "g";
     _zeusPos = getPosASL curatorCamera;
     _zeusDistancePriority = (_zeusPos distance _emitterPos) < (_listenerPos distance _emitterPos);
     if (_zeusDistancePriority) then {
