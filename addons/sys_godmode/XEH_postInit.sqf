@@ -5,10 +5,21 @@ if (!hasInterface) exitWith {};
 
 // CBA Event Handlers
 [QGVAR(startSpeaking), {
-    params ["_speakingUnit"];
+    params ["_speakingUnit", "_channel", "_channelEx"];
 
     if (GVAR(rxNotification)) then {
-        private _notificationLayer = [format ["RX: %1", localize LSTRING(god)], name _speakingUnit, "", -1, GVAR(rxNotificationColor)] call EFUNC(sys_list,displayHint);
+        _channel = localize _channel;
+        if (_channelEx != "") then {
+            _channel = format ["%1 (%2)", _channel, localize _channelEx];
+        };
+
+        private _notificationLayer = [
+            format ["RX: %1", localize LSTRING(god)],
+            _channel,
+            name _speakingUnit,
+            -1,
+            GVAR(rxNotificationColor)
+        ] call EFUNC(sys_list,displayHint);
         GVAR(rxNotificationLayers) setVariable [getPlayerUID _speakingUnit, _notificationLayer];
     };
 }] call CBA_fnc_addEventHandler;
