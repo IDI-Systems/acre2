@@ -22,6 +22,6 @@ if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
 private _targetUnits = (GVAR(groupPresets) select _group) select {alive _x};
 
-[QGVAR(showText), [_text], _targetUnits] call CBA_fnc_targetEvent;
+[QGVAR(showText), [acre_player, _text], _targetUnits] call CBA_fnc_targetEvent;
 
 true

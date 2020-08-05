@@ -36,8 +36,8 @@ if (!hasInterface) exitWith {};
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(showText), {
-    params ["_text"];
-    systemChat format ["God: %1", _text];
+    params ["_speakingUnit", "_text"];
+    systemChat format ["God (%1): %2", name _speakingUnit, _text];
 }] call CBA_fnc_addEventHandler;
 
 // Keybinds - God Mode
