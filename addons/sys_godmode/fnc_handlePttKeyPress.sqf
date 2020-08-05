@@ -4,7 +4,7 @@
  * Used to handle a keypress for God Mode PTT transmission.
  *
  * Arguments:
- * 0: Action <NUMBER>
+ * 0: Group index (0-based index) <NUMBER>
  *
  * Return Value:
  * Handled <BOOL>
@@ -15,14 +15,14 @@
  * Public: No
  */
 
-params ["_action"];
+params ["_group"];
 
-if !([_action] call FUNC(accessAllowed)) exitWith { false };
+if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
 private _channel = "";
 private _channelEx = "";
 private _color = [ACRE_NOTIFICATION_WHITE];
-switch (_action) do {
+switch (_group) do {
     case GODMODE_CURRENTCHANNEL: {
         GVAR(targetUnits) = [] call FUNC(getUnitsBIChannel);
 
@@ -53,7 +53,7 @@ switch (_action) do {
         _channel = LSTRING(group3);
         _color = GVAR(txNotificationGroup3Color);
     };
-    default { ERROR_1("Invalid action %1",_action); };
+    default { ERROR_1("Invalid group %1",_group); };
 };
 
 if (GVAR(targetUnits) isEqualTo []) exitWith {
