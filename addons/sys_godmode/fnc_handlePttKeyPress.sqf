@@ -40,17 +40,17 @@ switch (_group) do {
     };
     case GODMODE_GROUP1: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 0) select {alive _x};
-        _channel = LSTRING(group1);
+        _channel = GVAR(groupNames) select 0;
         _color = GVAR(txNotificationGroup1Color);
     };
     case GODMODE_GROUP2: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 1) select {alive _x};
-        _channel = LSTRING(group2);
+        _channel = GVAR(groupNames) select 1;
         _color = GVAR(txNotificationGroup2Color);
     };
     case GODMODE_GROUP3: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 2) select {alive _x};
-        _channel = LSTRING(group3);
+        _channel = GVAR(groupNames) select 2;
         _color = GVAR(txNotificationGroup3Color);
     };
     default { ERROR_1("Invalid group %1",_group); };
