@@ -7,6 +7,8 @@ if (!hasInterface) exitWith {};
 [QGVAR(startSpeaking), {
     params ["_speakingUnit", "_channel", "_channelEx"];
 
+    GVAR(speakingGods) pushBackUnique _speakingUnit;
+
     if (GVAR(rxNotification)) then {
         _channel = localize _channel;
         if (_channelEx != "") then {
@@ -26,6 +28,8 @@ if (!hasInterface) exitWith {};
 
 [QGVAR(stopSpeaking), {
     params ["_speakingUnit"];
+
+    GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingUnit);
 
     private _speakingUID = getPlayerUID _speakingUnit;
     private _notificationLayer = GVAR(rxNotificationLayers) getVariable [_speakingUID, ""];
