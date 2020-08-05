@@ -18,8 +18,4 @@
 
 params ["_name", "_group"];
 
-if (isLocalized _name) then {
-    _name = localize _name;
-};
-
 GVAR(groupNames) set [_group, _name];

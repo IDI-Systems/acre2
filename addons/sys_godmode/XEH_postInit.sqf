@@ -10,9 +10,12 @@ if (!hasInterface) exitWith {};
     GVAR(speakingGods) pushBackUnique _speakingUnit;
 
     if (GVAR(rxNotification)) then {
-        _channel = localize _channel;
+        _channel = _channel;
         if (_channelEx != "") then {
-            _channel = format ["%1 (%2)", _channel, localize _channelEx];
+            if (isLocalized _channelEx) then {
+                _channelEx = localize _channelEx;
+            };
+            _channel = format ["%1 (%2)", _channel, _channelEx];
         };
 
         private _notificationLayer = [

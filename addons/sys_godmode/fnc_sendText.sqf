@@ -22,6 +22,13 @@ if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
 private _targetUnits = (GVAR(groupPresets) select _group) select {alive _x};
 
+#ifndef ALLOW_EMPTY_TARGETS
+if (GVAR(targetUnits) isEqualTo []) exitWith {
+    [[ICON_RADIO_CALL], [localize LSTRING(noTargets)], true] call CBA_fnc_notify;
+    false
+};
+#endif
+
 [QGVAR(showText), [acre_player, _text], _targetUnits] call CBA_fnc_targetEvent;
 
 true

@@ -11,7 +11,7 @@ PREP_RECOMPILE_END;
 if (hasInterface) then {
     GVAR(targetUnits) = [];
     GVAR(groupPresets) = [[], [], []];
-    GVAR(groupNames) = [localize LSTRING(group1), localize LSTRING(group2), localize LSTRING(group3)];
+    GVAR(groupNames) = ["", "", ""];
     GVAR(speakingGods) = [];
     GVAR(accessAllowed) = [false, false];
     GVAR(txNotificationLayer) = ""; // Name of the notification system layer where the current God TX is displayed

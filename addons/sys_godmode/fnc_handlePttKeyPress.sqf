@@ -33,33 +33,37 @@ switch (_group) do {
             case 4: { "str_channel_vehicle" };
             default { "str_disp_other" };
         };
-        //_channel = format ["%1 (%2)", localize LSTRING(currentChannel_display), _currentBIChannel];
         _channel = LSTRING(currentChannel_display);
         _channelEx = _currentBIChannel;
         _color = GVAR(txNotificationCurrentChatColor);
     };
     case GODMODE_GROUP1: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 0) select {alive _x};
-        _channel = GVAR(groupNames) select 0;
+        _channel = LSTRING(group1);
+        _channelEx = GVAR(groupNames) select 0;
         _color = GVAR(txNotificationGroup1Color);
     };
     case GODMODE_GROUP2: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 1) select {alive _x};
-        _channel = GVAR(groupNames) select 1;
+        _channel = LSTRING(group2);
+        _channelEx = GVAR(groupNames) select 1;
         _color = GVAR(txNotificationGroup2Color);
     };
     case GODMODE_GROUP3: {
         GVAR(targetUnits) = (GVAR(groupPresets) select 2) select {alive _x};
-        _channel = GVAR(groupNames) select 2;
+        _channel = LSTRING(group3);
+        _channelEx = GVAR(groupNames) select 2;
         _color = GVAR(txNotificationGroup3Color);
     };
     default { ERROR_1("Invalid group %1",_group); };
 };
 
+#ifndef ALLOW_EMPTY_TARGETS
 if (GVAR(targetUnits) isEqualTo []) exitWith {
     [[ICON_RADIO_CALL], [localize LSTRING(noTargets)], true] call CBA_fnc_notify;
     false
 };
+#endif
 
 [QGVAR(startSpeaking), [acre_player, _channel, _channelEx], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 
@@ -68,7 +72,10 @@ if (GVAR(targetUnits) isEqualTo []) exitWith {
 if (GVAR(txNotification)) then {
     _channel = localize _channel;
     if (_channelEx != "") then {
-        _channel = format ["%1 (%2)", _channel, localize _channelEx];
+        if (isLocalized _channelEx) then {
+            _channelEx = localize _channelEx;
+        };
+        _channel = format ["%1 (%2)", _channel, _channelEx];
     };
 
     GVAR(txNotificationLayer) = [
