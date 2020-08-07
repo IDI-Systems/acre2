@@ -61,11 +61,11 @@ void some_function() {
 
 ## Namespaces
 
-All namespaces should be descendants of `acre::`. Namespaces that are meant to hold internal or implementation specific code not exposed readily to end users should be prefixed with two (2) underscores `__`.
+All namespaces should be descendants of `acre::`. Namespaces that are meant to hold internal or implementation specific code not exposed readily to end users should be prefixed with `internal::`.
 
 ```c++
 namespace acre {
-    namespace __my_helpers {
+    namespace internal::my_helpers {
         // internal helper functions
     }
     namespace my_functionality {
@@ -80,7 +80,7 @@ All classes should strictly maintain separation between declarations and definit
 
 ### Protected/Private Members/Methods
 
-All protected/private members and methods should be prefixed with a single `_` to provide easy identification that the value is not in the public scope.
+All protected/private members and methods should use the same style as variable names.
 
 Example:
 
@@ -90,11 +90,11 @@ class test_class {
 public:
     test_class(uint32_t init_);
 protected:
-    uint32_t _val;
+    uint32_t val;
 };
 
 //test_class.cpp
-test_class::test_class(uint32_t init_) : _val(init_) {};
+test_class::test_class(uint32_t init_) : val(init_) {};
 ```
 
 ## Templates
