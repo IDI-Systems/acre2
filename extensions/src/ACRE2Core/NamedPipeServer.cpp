@@ -28,7 +28,7 @@ acre::Result CNamedPipeServer::initialize() {
 
     SECURITY_DESCRIPTOR sd;
     if (!InitializeSecurityDescriptor(&sd, SECURITY_DESCRIPTOR_REVISION)) { LOG("InitializeSecurityDescriptor Error : %u", GetLastError()); }
-    if (!SetSecurityDescriptorDacl(&sd, TRUE, nullptr, FALSE)) { LOG("SetSecurityDescriptorDacl Error : %u", GetLastError()); }
+    if (!SetSecurityDescriptorDacl(&sd, true, nullptr, false)) { LOG("SetSecurityDescriptorDacl Error : %u", GetLastError()); }
     if (!SetSecurityDescriptorControl(&sd, SE_DACL_PROTECTED, SE_DACL_PROTECTED)) { LOG("SetSecurityDescriptorControl Error : %u", GetLastError()); }
     SECURITY_ATTRIBUTES sa = { sizeof(SECURITY_ATTRIBUTES), &sd, true };
 

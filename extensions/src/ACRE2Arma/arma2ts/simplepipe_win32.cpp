@@ -29,7 +29,7 @@ HANDLE PipePair::OpenPipeServer(const wchar_t* name, bool low_integrity, bool bl
     if (is_integrity_supported && low_integrity) {
     psa = &sa;
     sa.nLength = sizeof(SECURITY_ATTRIBUTES);
-    sa.bInheritHandle = TRUE;
+    sa.bInheritHandle = true;
     if (!ConvertStringSecurityDescriptorToSecurityDescriptor(
         TEXT("S:(ML;;NWNR;;;LW)"), SDDL_REVISION_1, &sa.lpSecurityDescriptor, NULL)) 
         return INVALID_HANDLE_VALUE;
@@ -52,7 +52,7 @@ HANDLE PipePair::OpenPipeClient(const wchar_t* name, bool inherit, bool imperson
     std::wstring pipename(kPipePrefix);
     pipename.append(name);
 
-    SECURITY_ATTRIBUTES sa = {sizeof(sa), NULL, inherit ? TRUE : FALSE};
+    SECURITY_ATTRIBUTES sa = {sizeof(sa), NULL, inherit};
     for (;;) {
     DWORD attributes = impersonate ? 0 : SECURITY_SQOS_PRESENT | SECURITY_IDENTIFICATION;
     HANDLE pipe = ::CreateFileW(pipename.c_str(), GENERIC_READ | GENERIC_WRITE, 0, &sa,
@@ -131,7 +131,7 @@ bool PipeWin::OpenServer(HANDLE pipe, bool connect) {
 
 bool PipeWin::Write(const void* buf, size_t sz) {
     DWORD written = 0;
-    return (TRUE == ::WriteFile(pipe_, buf, sz, &written, NULL));
+    return (true == ::WriteFile(pipe_, buf, sz, &written, NULL));
 }
 
 bool PipeWin::CheckStatus() {

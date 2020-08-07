@@ -107,7 +107,7 @@ namespace acre {
             sd.OutputWindow = _hWnd;
             sd.SampleDesc.Count = 1;
             sd.SampleDesc.Quality = 0;
-            sd.Windowed = _fullscreen ? FALSE : TRUE;
+            sd.Windowed = !_fullscreen;
 
             for (UINT driverTypeIndex = 0; driverTypeIndex < numDriverTypes; driverTypeIndex++)
             {
@@ -227,7 +227,7 @@ namespace acre {
             // Create window
             _hInst = (HINSTANCE)GetCurrentProcess();
             RECT rc = { 0, 0, (LONG)width, (LONG)height };
-            AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
+            AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, false);
             _hWnd = CreateWindowW(L"ACE3BaseDisplayClass", L"ACE3 D3D Render", WS_OVERLAPPEDWINDOW,
                 CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, _hInst,
                 nullptr);
