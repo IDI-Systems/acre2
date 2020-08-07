@@ -1,5 +1,5 @@
 #pragma once
-#include "DspFilters\Dsp.h"
+#include "DspFilters/Dsp.h"
 
 #define PINK_NOISE_NUM_STAGES 3
 #define PI_2     1.57079632679489661923f

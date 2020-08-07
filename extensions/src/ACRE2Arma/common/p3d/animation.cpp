@@ -2,7 +2,7 @@
 
 #include "p3d/animation.hpp"
 #include "read_helpers.hpp"
-#include "..\simulation\object.hpp"
+#include "../simulation/object.hpp"
 
 namespace acre {
     namespace p3d {

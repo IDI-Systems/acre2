@@ -1,19 +1,19 @@
 #include "shared.hpp"
-#include "pbo\archive.hpp"
+#include "pbo/archive.hpp"
 #include "membuf.hpp"
 #include "logging.hpp"
-#include "map\map.hpp"
+#include "map/map.hpp"
 #include <iostream>
 #include <fstream>
 #include <thread>
 
-#include "antenna\antenna_library.hpp"
-#include "models\los_simple.hpp"
-#include "glm\geometric.hpp"
-#include "glm\gtx\vector_angle.hpp"
-#include "wrp\landscape.hpp"
+#include "antenna/antenna_library.hpp"
+#include "models/los_simple.hpp"
+#include "glm/geometric.hpp"
+#include "glm/gtx/vector_angle.hpp"
+#include "wrp/landscape.hpp"
 #include "bitmap_image.hpp"
-#include "glm\gtx\gradient_paint.hpp"
+#include "glm/gtx/gradient_paint.hpp"
 
 
 INITIALIZE_EASYLOGGINGPP
