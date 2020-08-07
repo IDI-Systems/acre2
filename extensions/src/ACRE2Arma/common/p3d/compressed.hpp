@@ -17,34 +17,34 @@ namespace acre {
             compressed() { }
             compressed(std::istream &stream_, bool compressed_ = false, bool fill_ = false, uint32_t version = 68) 
             {
-                stream_.read((char *)&size, sizeof(uint32_t));
+                stream_.read((char *)&this->size, sizeof(uint32_t));
                  
                // if (version <)
                 if (fill_)
-                    READ_BOOL(fill);
+                    READ_BOOL(this->fill);
 
                 assert(size < 4095 * 10);
-                if (size > 0) {
-                    if (fill) {
+                if (this->size > 0) {
+                    if (this->fill) {
                         T val;
                         stream_.read((char *)&val, sizeof(T));
-                        for (uint32_t x = 0; x < size; x++) {
-                            data.push_back(val);
+                        for (uint32_t x = 0; x < this->size; x++) {
+                            this->data.push_back(val);
                         }
                     }  else {
                         if (version >= 64 && compressed_) {
-                            READ_BOOL(flag);
+                            READ_BOOL(this->flag);
                         }
-                        if ( (size * sizeof(T) >= 1024 && compressed_  && version < 64) || (flag && compressed_)) {
-                            int32_t result = _decompress_safe(stream_, size * sizeof(T));
+                        if ( (this->size * sizeof(T) >= 1024 && compressed_  && version < 64) || (this->flag && compressed_)) {
+                            int32_t result = _decompress_safe(stream_, this->size * sizeof(T));
                             assert(result > 0);
-                            T * ptr = (T *)(_data.get());
-                            data.assign(ptr, ptr + size );
+                            T * ptr = (T *)(this->_data.get());
+                            this->data.assign(ptr, ptr + this->size );
                         } else {
-                            for (uint32_t x = 0; x < size; x++) {
+                            for (uint32_t x = 0; x < this->size; x++) {
                                 T val;
                                 stream_.read((char *)&val, sizeof(T));
-                                data.push_back(val);
+                                this->data.push_back(val);
                             }
                         }
                     }
@@ -60,36 +60,36 @@ namespace acre {
                 stream_.read((char *)&size, sizeof(uint32_t));
                 
                 if (fill_)
-                    READ_BOOL(fill);
+                    READ_BOOL(this->fill);
                 
-                if (fill) {
+                if (this->fill) {
                     acre::vector3<float> val(stream_);
-                    for (uint32_t x = 0; x < size; x++) {
-                        data.push_back(val);
+                    for (uint32_t x = 0; x < this->size; x++) {
+                        this->data.push_back(val);
                     }
                 }
                 else {
                     if (version >= 64) {
-                        READ_BOOL(flag);
+                        READ_BOOL(this->flag);
                     }
-                    if ((size * sizeof(float)*3 >= 1024 && compressed_  && version < 64) || (flag && compressed_)) {
+                    if ((this->size * sizeof(float)*3 >= 1024 && compressed_  && version < 64) || (this->flag && compressed_)) {
                         if (xyzCompressed) {
                             int32_t result = _decompress_safe(stream_, size * sizeof(float));
-                            uint32_t * ptr = (uint32_t *)(_data.get());
-                            for (uint32_t x = 0; x < size; x++) {
+                            uint32_t * ptr = (uint32_t *)(this->_data.get());
+                            for (uint32_t x = 0; x < this->size; x++) {
                                 uint32_t value = ptr[x];
-                                data.push_back(decode_xyz(value));
+                                this->data.push_back(decode_xyz(value));
                             }
                         } else {
                             int32_t result = _decompress_safe(stream_, size * sizeof(float) * 3);
                             float * ptr = (float *)(_data.get());
-                            for (uint32_t x = 0; x < size*3; x+=3) {
-                                data.push_back(acre::vector3<float>(ptr+x));
+                            for (uint32_t x = 0; x < this->size*3; x+=3) {
+                                this->data.push_back(acre::vector3<float>(ptr+x));
                             }
                         }
                     } else {
-                        for (uint32_t x = 0; x < size; x++) {
-                            data.push_back(acre::vector3<float>(stream_));
+                        for (uint32_t x = 0; x < this->size; x++) {
+                            this->data.push_back(acre::vector3<float>(stream_));
                         }
                     }
                 }
@@ -115,15 +115,15 @@ namespace acre {
         public:
             compressed() {}
             compressed(std::istream &stream_, bool compressed_ = false, bool fill_ = false, uint32_t version = 68) {
-                stream_.read((char *)&size, sizeof(uint32_t));
+                stream_.read((char *)&this->size, sizeof(uint32_t));
 
                 if (fill_)
-                    READ_BOOL(fill);
+                    READ_BOOL(this->fill);
 
                 if (fill) {
                     acre::pair<float> val(stream_);
                     for (uint32_t x = 0; x < size; x++) {
-                        data.push_back(val);
+                        this->data.push_back(val);
                     }
                 }
                 else {
@@ -133,14 +133,14 @@ namespace acre {
                     if ((size * sizeof(float)*2 >= 1024 && compressed_  && version < 64) || (flag && compressed_)) {
                         
                         int32_t result = _decompress_safe(stream_, size * sizeof(float) * 2);
-                        float * ptr = (float *)(_data.get());
+                        float * ptr = (float *)(this->_data.get());
                         for (uint32_t x = 0; x < size * 2; x += 2) {
-                            data.push_back(acre::pair<float>(ptr + x));
+                            this->data.push_back(acre::pair<float>(ptr + x));
                         }
                     }
                     else {
                         for (uint32_t x = 0; x < size; x++) {
-                            data.push_back(acre::pair<float>(stream_));
+                            this->data.push_back(acre::pair<float>(stream_));
                         }
                     }
                 }

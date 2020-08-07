@@ -15,31 +15,31 @@ namespace acre {
             compressed(std::istream &stream_, const uint32_t size_, const bool compressed_ = false, const bool fill_ = false, const uint32_t version = 25u) {
                 //assert(size_ < 4095 * 10);
                 if (size_ > 0) {
-                    if (fill) {
+                    if (this->fill) {
                         T val;
                         stream_.read((char *)&val, sizeof(T));
                         for (uint32_t x = 0u; x < size_; x++) {
-                            data.push_back(val);
+                            this->data.push_back(val);
                         }
                     } else {
                         if ((size_ * sizeof(T) >= 1024u && compressed_)) {
                             if (version >= 23) {
                                 const int32_t result = _decompress_safe(stream_, size_ * sizeof(T));
                                 assert(result > 0);
-                                T * ptr = (T *)(_data.get());
-                                data.assign(ptr, ptr + size_);
+                                T * ptr = (T *)(this->_data.get());
+                                this->data.assign(ptr, ptr + size_);
                             } else {
                                 const bool ok = _lzss_decompress(stream_, (size_) * sizeof(T));
                                 if (ok) {
-                                    T * ptr = (T *)(_data.get());
-                                    data.assign(ptr, ptr + size_);
+                                    T * ptr = (T *)(this->_data.get());
+                                    this->data.assign(ptr, ptr + size_);
                                 }
                             }
                         } else {
                             for (uint32_t x = 0u; x < size_; x++) {
                                 T val;
                                 stream_.read((char *)&val, sizeof(T));
-                                data.push_back(val);
+                                this->data.push_back(val);
                             }
                         }
                     }
@@ -53,30 +53,30 @@ namespace acre {
             compressed() {}
             compressed(std::istream &stream_, const uint32_t size_, const bool compressed_ = false, const bool fill_ = false, const bool xyzCompressed = false, const uint32_t version = 25u) {
 
-                if (fill) {
+                if (this->fill) {
                     const acre::vector3<float32_t> val(stream_);
                     for (uint32_t x = 0u; x < size_; x++) {
-                        data.push_back(val);
+                        this->data.push_back(val);
                     }
                 } else {
                     if ((size_ * sizeof(float32_t) * 3u >= 1024u && compressed_)) {
                         if (xyzCompressed) {
                             const int32_t result = _decompress_safe(stream_, size_ * sizeof(float32_t));
-                            uint32_t * ptr = (uint32_t *)(_data.get());
+                            uint32_t * ptr = (uint32_t *)(this->_data.get());
                             for (uint32_t x = 0; x < size_; x++) {
                                 const uint32_t value = ptr[x];
-                                data.push_back(decode_xyz(value));
+                                this->data.push_back(decode_xyz(value));
                             }
                         } else {
                             const int32_t result = _decompress_safe(stream_, size_ * sizeof(float32_t) * 3u);
-                            float32_t * ptr = (float32_t *)(_data.get());
+                            float32_t * ptr = (float32_t *)(this->_data.get());
                             for (uint32_t x = 0; x < size_ * 3; x += 3) {
-                                data.push_back(acre::vector3<float>(ptr + x));
+                                this->data.push_back(acre::vector3<float>(ptr + x));
                             }
                         }
                     } else {
                         for (uint32_t x = 0u; x < size_; x++) {
-                            data.push_back(acre::vector3<float>(stream_));
+                            this->data.push_back(acre::vector3<float>(stream_));
                         }
                     }
                 }
