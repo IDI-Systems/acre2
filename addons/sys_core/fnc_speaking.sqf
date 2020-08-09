@@ -258,9 +258,9 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
 } forEach GVAR(speakers);
 
 {
-    private _speakingUnit = objectFromNetId _x;
-    if (EGVAR(sys_godmode,speakingGods) find _speakingUnit != -1) then {
-        private _speakingId = _x;
+    _x params ["_speakingId", "_unit"];
+
+    if (EGVAR(sys_godmode,speakingGods) find _unit != -1) then {
         private _params = ["g", _speakingId, 0, GVAR(godVolume)];
         CALL_RPC("updateSpeakingData", _params);
     };

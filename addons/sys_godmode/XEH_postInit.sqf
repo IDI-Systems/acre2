@@ -7,6 +7,8 @@ if (!hasInterface) exitWith {};
 [QGVAR(startSpeaking), {
     params ["_speakingUnit", "_channel", "_channelEx"];
 
+    if (_speakingUnit == acre_player) exitWith {};
+
     GVAR(speakingGods) pushBackUnique _speakingUnit;
 
     if (GVAR(rxNotification)) then {
