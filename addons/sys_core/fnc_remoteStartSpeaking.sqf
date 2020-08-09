@@ -143,9 +143,9 @@ private _result = false;
                 WARNING_1("Got start speaking event with non-existent radio id: %1",_radioId);
             };
         } else {
-            if (_onRadio == 5) then { // God Mode / Zeus
+            if (_onRadio == 5) then { // God Mode
                 GVAR(godSpeakers) pushBack _speakingId;
-            } else { // Direct / Intercom / Spectate / Unknown
+            } else { // Direct / Intercom / Spectate / Zeus / Unknown
                 if (_unit call FUNC(inRange)) then {
                     GVAR(speakers) pushBack _unit;
                 };
