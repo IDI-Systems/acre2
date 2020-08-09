@@ -12,7 +12,7 @@ if (!hasInterface) exitWith {};
     GVAR(speakingGods) pushBackUnique _speakingUnit;
 
     if (GVAR(rxNotification)) then {
-        _channel = _channel;
+        _channel = localize _channel;
         if (_channelEx != "") then {
             if (isLocalized _channelEx) then {
                 _channelEx = localize _channelEx;
