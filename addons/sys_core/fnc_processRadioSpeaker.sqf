@@ -25,7 +25,7 @@ private ["_okRadios", "_functionName"];
 params ["_unit","_playerRadios"];
 TRACE_2("",_unit,_playerRadios);
 
-private _radioId = _unit getVariable QGVAR(currentSpeakingRadio);
+private _radioId = _unit getVariable [QGVAR(currentSpeakingRadio), ""];
 if (_radioId == "") exitWith { false };
 
 // Workaround #638 - _radioId is nil - TODO investigate further
