@@ -26,7 +26,11 @@ params ["_unit","_playerRadios"];
 TRACE_2("",_unit,_playerRadios);
 
 private _radioId = _unit getVariable QGVAR(currentSpeakingRadio);
-if (isNil "_radioId" || {_radioId == ""}) exitWith { false }; // #638 _radioId is nil
+if (_radioId == "") exitWith { false };
+
+// Workaround #638 - _radioId is nil - TODO investigate further
+// Probable source: https://github.com/IDI-Systems/acre2/blob/c03262be2190cd54c3cb5f27d7ca3eddf7270506/addons/sys_core/fnc_remoteStartSpeaking.sqf#L107
+if (isNil "_radioId") exitWith { false };
 
 // @todo if Underwater Radios are implemented
 //if (ACRE_LISTENER_DIVE == 1) exitWith { false };
