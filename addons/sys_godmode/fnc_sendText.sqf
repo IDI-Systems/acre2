@@ -20,7 +20,7 @@ params ["_text", "_group"];
 
 if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
-private _targetUnits = (GVAR(groupPresets) select _group) select {alive _x};
+private _targetUnits = GVAR(groupPresets) select _group;
 
 #ifndef ALLOW_EMPTY_TARGETS
 if (GVAR(targetUnits) isEqualTo []) exitWith {
@@ -28,6 +28,15 @@ if (GVAR(targetUnits) isEqualTo []) exitWith {
     false
 };
 #endif
+
+// Translate UIDs to units
+_targetUnits = _targetUnits apply {
+    if (_x isEqualType "") then {
+        [_x] call BIS_fnc_getUnitByUID
+    } else {
+        _x
+    };
+};
 
 [QGVAR(showText), [profileName, _text], _targetUnits] call CBA_fnc_targetEvent;
 

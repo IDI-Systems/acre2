@@ -38,19 +38,19 @@ switch (_group) do {
         _color = GVAR(txNotificationCurrentChatColor);
     };
     case GODMODE_GROUP1: {
-        GVAR(targetUnits) = (GVAR(groupPresets) select 0) select {alive _x};
+        GVAR(targetUnits) = GVAR(groupPresets) select 0;
         _channel = LSTRING(group1);
         _channelEx = GVAR(groupNames) select 0;
         _color = GVAR(txNotificationGroup1Color);
     };
     case GODMODE_GROUP2: {
-        GVAR(targetUnits) = (GVAR(groupPresets) select 1) select {alive _x};
+        GVAR(targetUnits) = GVAR(groupPresets) select 1;
         _channel = LSTRING(group2);
         _channelEx = GVAR(groupNames) select 1;
         _color = GVAR(txNotificationGroup2Color);
     };
     case GODMODE_GROUP3: {
-        GVAR(targetUnits) = (GVAR(groupPresets) select 2) select {alive _x};
+        GVAR(targetUnits) = GVAR(groupPresets) select 2;
         _channel = LSTRING(group3);
         _channelEx = GVAR(groupNames) select 2;
         _color = GVAR(txNotificationGroup3Color);
@@ -64,6 +64,15 @@ if (GVAR(targetUnits) isEqualTo []) exitWith {
     false
 };
 #endif
+
+// Translate UIDs to units
+GVAR(targetUnits) = GVAR(targetUnits) apply {
+    if (_x isEqualType "") then {
+        [_x] call BIS_fnc_getUnitByUID
+    } else {
+        _x
+    };
+};
 
 [QGVAR(startSpeaking), [EGVAR(sys_core,ts3id), profileName, _channel, _channelEx], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 

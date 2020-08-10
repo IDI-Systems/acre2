@@ -4,7 +4,7 @@
  * Modifies who can hear a message from God Mode.
  *
  * Arguments:
- * 0: Unit or array of units <OJECT, ARRAY> (default: [])
+ * 0: Unit or UID or array of either <OJECT, ARRAY> (default: [])
  * 1: Group to effect (0-based index) <NUMBER> (default: 0)
  * 2: Action. 0 for set, 1 for add and 2 for subtract <NUMBER> (default: 0)
  *
@@ -13,12 +13,13 @@
  *
  * Example:
  * [[unit1, unit2], 0, 1] call acre_api_fnc_godModeModifyGroup
+ * [["76561198040512062", "76561198046921073"], 0, 1] call acre_api_fnc_godModeModifyGroup
  *
  * Public: Yes
  */
 
 params [
-    ["_units", [], [objNull, []]],
+    ["_units", [], [objNull, "", []]],
     ["_group", 0, [0]],
     ["_action", 0, [0]]
 ];
