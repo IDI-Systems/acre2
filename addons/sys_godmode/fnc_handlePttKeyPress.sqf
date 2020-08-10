@@ -65,7 +65,7 @@ if (GVAR(targetUnits) isEqualTo []) exitWith {
 };
 #endif
 
-[QGVAR(startSpeaking), [acre_player, _channel, _channelEx], GVAR(targetUnits)] call CBA_fnc_targetEvent;
+[QGVAR(startSpeaking), [EGVAR(sys_core,ts3id), profileName, _channel, _channelEx], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 
 ["startGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 

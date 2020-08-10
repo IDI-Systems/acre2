@@ -29,6 +29,6 @@ if (GVAR(targetUnits) isEqualTo []) exitWith {
 };
 #endif
 
-[QGVAR(showText), [acre_player, _text], _targetUnits] call CBA_fnc_targetEvent;
+[QGVAR(showText), [profileName, _text], _targetUnits] call CBA_fnc_targetEvent;
 
 true

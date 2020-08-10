@@ -144,7 +144,7 @@ private _result = false;
             };
         } else {
             if (_onRadio == 5) then { // God Mode
-                GVAR(godSpeakers) pushBack [_speakingId, _unit];
+                GVAR(godSpeakers) pushBack _speakingId;
             } else { // Direct / Intercom / Spectate / Zeus / Unknown
                 if (_unit call FUNC(inRange)) then {
                     GVAR(speakers) pushBack _unit;

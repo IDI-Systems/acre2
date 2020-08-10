@@ -89,10 +89,9 @@ _speakingId = parseNumber _speakingId;
         REM(GVAR(spectatorSpeakers), _speakingId);
     };
 
-    private _foundGodSpeaker = GVAR(godSpeakers) findIf {_speakingId == _x select 0};
-    if (_foundGodSpeaker != -1) then {
+    if (_speakingId in GVAR(godSpeakers)) then {
         _found = true;
-        GVAR(godSpeakers) deleteAt _foundGodSpeaker;
+        REM(GVAR(godSpeakers), _speakingId);
     };
 
     if (!_found) then {
