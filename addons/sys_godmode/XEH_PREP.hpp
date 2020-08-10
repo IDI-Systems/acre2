@@ -1,4 +1,5 @@
 PREP(accessAllowed);
+PREP(addDisplayPassthroughKeys);
 PREP(getUnitsBIChannel);
 PREP(handlePttKeyPress);
 PREP(handlePttKeyPressUp);
