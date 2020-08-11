@@ -35,6 +35,16 @@ if ((_action < GODMODE_ACTION_SET) || {_action > GODMODE_ACTION_SUBTRACT}) exitW
     false
 };
 
+if ((_units isEqualType {}) && {_action != GODMODE_ACTION_SET}) exitWith {
+    ERROR_2("Invalid action %1. Only %2 (set) is supported for code argument.",_action,GODMODE_ACTION_SET);
+    false
+};
+
+if ((_units isEqualType {}) && {(EGVAR(sys_godmode,groupPresets) select _group) isEqualType {}}) exitWith {
+    ERROR_2("Invalid action %1. Only %2 (set) is supported when code exists in group.",_action,GODMODE_ACTION_SET);
+    false
+};
+
 if (!(_units isEqualType []) && {!(_units isEqualType {})}) then {
     _units = [_units];
 };
