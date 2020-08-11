@@ -1,0 +1,1 @@
+Checks:          -*,cppcoreguidelines-*,cert-*,clang-analyzer-core-*,clang-analyzer-cplusplus-*,clang-analyzer-security*,clang-analyzer-unix-*,performance-*,modernize-*,readability-*,hicpp-*,-modernize-use-trailing-return-type
