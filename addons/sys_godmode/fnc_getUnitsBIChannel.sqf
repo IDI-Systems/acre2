@@ -15,27 +15,24 @@
  * Public: No
  */
 
-private _units = [];
+private _units = allPlayers select {!(_x isKindOf "HeadlessClient_F")};
 
 switch (currentChannel) do {
-    case 0: { _units = allPlayers; };    // Global
-    case 1: {                            // Side
+    case 1: { // Side
         private _side = side player;
-        _units = allPlayers select {(_side == (side _x)) && {(alive _x) || {[_x] call acre_api_fnc_isSpectator}}};
+        _units = _units select {(_side == (side _x)) || {_x in ACRE_SPECTATORS_LIST}};
     };
-    case 3: {                            // Group
-        _units = (units group player) select {(alive _x) || {[_x] call acre_api_fnc_isSpectator}};
+    case 3: { // Group
+        _units = units (group player);
     };
-    case 4: {                            // Vehicle
+    case 4: { // Vehicle
         if ((vehicle player) isEqualTo player) then {
             _units = [];
         } else {
-            _units = (units vehicle player) select {(alive _x) || {[_x] call acre_api_fnc_isSpectator}};
+            _units = [vehicle player] call EFUNC(sys_core,getPlayersInVehicle);
         };
     };
-    default {                            // Global, Command, Direct and Custom channels
-        _units = allPlayers select {(alive _x) || {[_x] call acre_api_fnc_isSpectator}};
-    };
+    default {}; // Global (0), Command, Direct and Custom channels (not supported, they all acts global
 };
 
 // Remove local player
