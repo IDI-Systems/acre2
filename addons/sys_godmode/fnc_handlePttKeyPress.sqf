@@ -58,6 +58,11 @@ switch (_group) do {
     default { ERROR_1("Invalid group %1",_group); };
 };
 
+// Dynamic targets
+if (GVAR(targetUnits) isEqualType {}) then {
+    GVAR(targetUnits) = call GVAR(targetUnits);
+};
+
 #ifndef ALLOW_EMPTY_TARGETS
 if (GVAR(targetUnits) isEqualTo []) exitWith {
     [[ICON_RADIO_CALL], [localize LSTRING(noTargets)], true] call CBA_fnc_notify;

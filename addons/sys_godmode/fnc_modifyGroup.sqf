@@ -4,7 +4,7 @@
  * Operate on the target group units.
  *
  * Arguments:
- * 0: Array of units or UIDs <ARRAY>
+ * 0: Array of units or UIDs or code returning array of units <ARRAY, CODE>
  * 1: Group to effect (0-based index) <NUMBER>
  * 2: Action. 0 for set, 1 for add and 2 for subtract <NUMBER>
  *
@@ -14,6 +14,7 @@
  * Example:
  * [[unit1, unit2], 0, 1] call acre_sys_godmode_fnc_modifyGroup
  * [["76561198040512062", "76561198046921073"], 0, 1] call acre_sys_godmode_fnc_modifyGroup
+ * [{allUnits select {alive _x}}, 0, 1] call acre_sys_godmode_fnc_modifyGroup
  *
  * Public: No
  */

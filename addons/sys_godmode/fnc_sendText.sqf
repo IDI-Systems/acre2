@@ -22,6 +22,11 @@ if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
 private _targetUnits = GVAR(groupPresets) select _group;
 
+// Dynamic targets
+if (_targetUnits isEqualType {}) then {
+    _targetUnits = call _targetUnits;
+};
+
 #ifndef ALLOW_EMPTY_TARGETS
 if (GVAR(targetUnits) isEqualTo []) exitWith {
     [[ICON_RADIO_CALL], [localize LSTRING(noTargets)], true] call CBA_fnc_notify;
