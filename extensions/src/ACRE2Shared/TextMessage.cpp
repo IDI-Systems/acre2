@@ -26,7 +26,7 @@ acre::Result CTextMessage::parse(char *const value, const size_t len) {
     std::string text(value);
     if (text.find("setTs3ChannelDetails") == std::string::npos) {
         // Check to make sure the entire chunk of data is a NULL terminated ascii string
-        for (size_t x = 0; x < len; x++) {
+        for (size_t x = 0U; x < len; x++) {
             if (!__isascii(value[x]) && value[x] != 0x00) {
                 this->m_IsValid = false;
                 LOG("INVALID PACKET DETECTED l:%d", len);
