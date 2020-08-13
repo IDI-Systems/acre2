@@ -201,7 +201,7 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
         case acre::Speaking::direct:
             break;
         case acre::Speaking::god:
-            [[fallthrough]]
+            [[fallthrough]];
         case acre::Speaking::zeus:
             if (!this->getVAD()) {
                 this->microphoneOpen(false);
