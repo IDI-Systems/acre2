@@ -113,8 +113,10 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
         }
     }
 
-    if ((speakingType_ == acre::Speaking::god) && !VADactive) {
-        this->microphoneOpen(true);
+    if ((speakingType_ == acre::Speaking::god) || (speakingType_ == acre::Speaking::zeus)) {
+        if (!VADactive) {
+            this->microphoneOpen(true);
+        }
     }
 
     if (stopDirectSpeaking) {
@@ -132,6 +134,8 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
         case acre::Speaking::direct:
             break;
         case acre::Speaking::god:
+            [[fallthrough]];
+        case acre::Speaking::zeus:
             if (!VADactive) {
                 this->microphoneOpen(false);
             }
