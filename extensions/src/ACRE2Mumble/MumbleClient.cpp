@@ -11,7 +11,7 @@
 #pragma comment(lib, "Shlwapi.lib")
 
 static constexpr std::int32_t invalid_mumble_channel = -1;
-constexpr char default_mumble_channel[]              = "ACRE";
+const std::wstring default_mumble_channel        = L"ACRE";
 
 extern MumbleAPI mumAPI;
 extern mumble_connection_t activeConnection;
@@ -253,7 +253,7 @@ acre::Result CMumbleClient::moveToServerChannel() {
     TRACE("moveToServerChannel ENTER");
     if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         mumble_userid_t clientId;
-        std::vector<std::string> details = getChannelDetails();
+        std::vector<std::wstring> details = getChannelDetails();
 
         if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == STATUS_OK) {
             mumble_channelid_t currentChannelId = invalid_mumble_channel;
@@ -265,12 +265,12 @@ acre::Result CMumbleClient::moveToServerChannel() {
 
             const mumble_channelid_t channelId = static_cast<mumble_channelid_t>(findChannelByNames(details));
             if ((channelId != invalid_mumble_channel) && (channelId != currentChannelId)) {
-                std::string password;
+                std::wstring password = L"";
                 if (!details.at(1).empty() && !details.at(0).empty()) {
                     password = details.at(1);
                 }
 
-                mumAPI.requestUserMove(pluginID, activeConnection, clientId, channelId, password.c_str());
+                mumAPI.requestUserMove(pluginID, activeConnection, clientId, channelId, StringConversions::wStringToString(password).c_str());
             }
         }
     }
@@ -300,7 +300,7 @@ acre::Result CMumbleClient::moveToPreviousChannel() {
     return acre::Result::ok;
 }
 
-uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
+uint64_t CMumbleClient::findChannelByNames(std::vector<std::wstring> details_) {
     TRACE("findChannelByNames ENTER");
     mumble_channelid_t *channelList = nullptr;
     std::size_t channelCount        = 0U;
@@ -308,8 +308,8 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
     if (mumAPI.getAllChannels(pluginID, activeConnection, &channelList, &channelCount) == STATUS_OK) {
         mumble_channelid_t channelId        = invalid_mumble_channel;
         mumble_channelid_t defaultChannelId = invalid_mumble_channel;
-        std::map<mumble_channelid_t, std::string> channelMap;
-        std::string name = details_.at(2);
+        std::map<mumble_channelid_t, std::wstring> channelMap;
+        std::wstring name = details_.at(2);
         if (!details_.at(0).empty()) {
             name = details_.at(0);
         }
@@ -319,7 +319,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             char *channelName = nullptr;
 
             if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == STATUS_OK) {
-                std::string channelNameString(channelName);
+                std::wstring channelNameString = StringConversions::stringToWstring(std::string(channelName));
                 if (channelNameString.find(default_mumble_channel) != -1 || (!details_.at(0).empty() && channelNameString == name)) {
                     if (channelNameString == default_mumble_channel) {
                         defaultChannelId = channelId;
@@ -335,13 +335,13 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
         int32_t bestMatches              = 0;
         int32_t bestDistance             = 10;
         for (auto &element : channelMap) {
-            std::string fullChannelName = element.second;
+            std::wstring fullChannelName = element.second;
             // Full comparison
             if (fullChannelName.compare(name) == 0) {
                 bestChannelId = element.first;
                 break;
             }
-            const std::string cleanChannelName = removeSubstrings(fullChannelName, default_mumble_channel);
+            const std::wstring cleanChannelName = removeSubstrings(fullChannelName, default_mumble_channel);
             // Word comparison
             const int32_t matches = getWordMatches(cleanChannelName, name);
             if (matches > bestMatches) {
@@ -370,7 +370,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
     return 0;
 }
 
-acre::Result CMumbleClient::updateChannelDetails(std::vector<std::string> details_) {
+acre::Result CMumbleClient::updateChannelDetails(std::vector<std::wstring> details_) {
     setChannelDetails(details_);
     if (!details_.empty()) {
         updateShouldSwitchChannel(true);

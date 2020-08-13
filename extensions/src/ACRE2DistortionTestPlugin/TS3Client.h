@@ -2,16 +2,16 @@
 
 #include "IClient.h"
 #include "TsFunctions.h"
-#include <thread>
+
 #include <string>
+#include <thread>
 #include <vector>
 
 class CTS3Client : public IClient {
 public:
+    // static TS3Functions ts3Functions;
 
-    //static TS3Functions ts3Functions;
-
-    CTS3Client() = default;
+    CTS3Client()        = default;
     ~CTS3Client() final = default;
 
     acre::Result initialize(void) final;
@@ -26,7 +26,7 @@ public:
 
     acre::Result exPersistVersion(void);
 
-    acre::Result setClientMetadata(const char* const data);
+    acre::Result setClientMetadata(const char *const data);
 
     acre::Result enableMicrophone(const bool status_) final;
 
@@ -35,22 +35,22 @@ public:
     bool getVAD();
 
     /*!
-    * \brief Handles local player starting speaking.
-    *
-    * \param[in]    speakingType_    ACRE speaking type
-    *
-    * \return       acre::Result::ok if operation successful
-    */
+     * \brief Handles local player starting speaking.
+     *
+     * \param[in]    speakingType_    ACRE speaking type
+     *
+     * \return       acre::Result::ok if operation successful
+     */
     acre::Result localStartSpeaking(const acre::Speaking speakingType_) final;
 
     /*!
-    * \brief Handles local player starting speaking.
-    *
-    * \param[in]    speakingType_    ACRE speaking type
-    * \param[in]    radioId_         Unique radio ideintifier
-    *
-    * \return       acre::Result::ok if operation successful
-    */
+     * \brief Handles local player starting speaking.
+     *
+     * \param[in]    speakingType_    ACRE speaking type
+     * \param[in]    radioId_         Unique radio ideintifier
+     *
+     * \return       acre::Result::ok if operation successful
+     */
     acre::Result localStartSpeaking(const acre::Speaking speakingType_, std::string radioId_) final;
 
     /*!
@@ -75,13 +75,13 @@ public:
 
     acre::Result moveToServerChannel() final;
     acre::Result moveToPreviousChannel() final;
-    uint64 findChannelByNames(std::vector<std::string> details_) final;
+    uint64 findChannelByNames(std::vector<std::wstring> details_) final;
 
-    acre::Result updateChannelDetails(std::vector<std::string> details_) final;
+    acre::Result updateChannelDetails(std::vector<std::wstring> details_) final;
     acre::Result updateShouldSwitchChannel(const bool state_) final;
     bool shouldSwitchChannel() final;
 
 private:
     std::thread m_versionThreadHandle;
-    char* m_vadLevel = nullptr;
+    char *m_vadLevel = nullptr;
 };

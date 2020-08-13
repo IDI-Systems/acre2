@@ -10,6 +10,7 @@
 #include <numeric>
 #include <sstream>
 #include <string>
+#include <StringConversions.h>
 #include <vector>
 
 class IClient {
@@ -46,12 +47,12 @@ public:
 
     virtual acre::Result moveToServerChannel()                                        = 0;
     virtual acre::Result moveToPreviousChannel()                                      = 0;
-    virtual acre::Result updateChannelDetails(const std::vector<std::string> details) = 0;
+    virtual acre::Result updateChannelDetails(const std::vector<std::wstring> details) = 0;
     virtual acre::Result updateShouldSwitchChannel(const bool state)                  = 0;
     virtual bool shouldSwitchChannel()                                                = 0;
     virtual bool getVAD()                                                             = 0;
 
-    virtual std::uint64_t findChannelByNames(std::vector<std::string> details_) = 0;
+    virtual std::uint64_t findChannelByNames(std::vector<std::wstring> details_) = 0;
 
     bool gethadVAD() const noexcept { return had_vad; }
     void sethadVAD(const bool value_) noexcept { had_vad = value_; }
@@ -90,8 +91,8 @@ public:
     virtual std::uint64_t getPreviousChannel() const noexcept { return previous_channel; }
     virtual void setPreviousChannel(const std::uint64_t value_) noexcept { previous_channel = value_; }
 
-    virtual const std::vector<std::string> &getChannelDetails() const noexcept { return channel_details; }
-    virtual void setChannelDetails(const std::vector<std::string> &value_) noexcept { channel_details = value_; }
+    virtual const std::vector<std::wstring> &getChannelDetails() const noexcept { return channel_details; }
+    virtual void setChannelDetails(const std::vector<std::wstring> &value_) noexcept { channel_details = value_; }
 
     virtual bool getShouldSwitchChannel() const noexcept { return should_switch_channel; }
     virtual void setShouldSwitchChannel(const bool value_) noexcept { should_switch_channel = value_; }
@@ -100,17 +101,17 @@ public:
     void setState(acre::State value) noexcept { state = value; }
 
 protected:
-    virtual std::uint32_t getWordMatches(const std::string &string1_, const std::string &string2_) noexcept {
-        std::vector<std::string> words1;
-        std::vector<std::string> words2;
+    virtual std::uint32_t getWordMatches(const std::wstring &string1_, const std::wstring &string2_) noexcept {
+        std::vector<std::wstring> words1;
+        std::vector<std::wstring> words2;
 
-        std::string temp;
-        std::stringstream stringstream1(string1_);
+        std::wstring temp;
+        std::wstringstream stringstream1(string1_);
 
         while (stringstream1 >> temp) {
             words1.push_back(temp);
         }
-        std::stringstream stringstream2(string2_);
+        std::wstringstream stringstream2(string2_);
         while (stringstream2 >> temp) {
             words2.push_back(temp);
         }
@@ -126,7 +127,7 @@ protected:
         return matches;
     }
 
-    virtual std::uint32_t levenshteinDistance(const std::string &string1_, const std::string &string2_) noexcept {
+    virtual std::uint32_t levenshteinDistance(const std::wstring &string1_, const std::wstring &string2_) noexcept {
         std::int32_t length1       = string1_.size();
         const std::int32_t length2 = string2_.size();
 
@@ -151,9 +152,11 @@ protected:
         return result;
     }
 
-    virtual std::string removeSubstrings(std::string string_, std::string substring_) noexcept {
-        const std::string::size_type substringLength = substring_.length();
-        for (auto iterator = string_.find(substring_); iterator != std::string::npos; iterator = string_.find(substring_))
+    virtual std::wstring removeSubstrings(std::wstring string_, std::wstring substring_) noexcept {
+        const std::wstring::size_type substringLength = substring_.length();
+        for (auto iterator = string_.find(substring_);
+             iterator != std::wstring::npos;
+             iterator = string_.find(substring_))
             string_.erase(iterator, substringLength);
         return string_;
     }
@@ -175,7 +178,7 @@ private:
     std::uint32_t speaker_mask     = 0U;
     std::uint64_t previous_channel = 0LU;
 
-    std::vector<std::string> channel_details;
+    std::vector<std::wstring> channel_details;
     bool should_switch_channel = true;
 
     acre::State state = acre::State::stopped;
