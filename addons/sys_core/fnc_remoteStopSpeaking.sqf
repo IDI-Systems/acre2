@@ -83,10 +83,17 @@ _speakingId = parseNumber _speakingId;
             ACRE_BROADCASTING_RADIOID = "";
         };
     };
+
     if (_speakingId in ACRE_SPECTATORS_LIST) then {
         _found = true;
         REM(GVAR(spectatorSpeakers), _speakingId);
     };
+
+    if (_speakingId in GVAR(godSpeakers)) then {
+        _found = true;
+        REM(GVAR(godSpeakers), _speakingId);
+    };
+
     if (!_found) then {
         private _msg = format ["STOP SPEAKING: Player [%1] could not find a player with ID: %2 %3", acre_player, _speakingId, _netId];
         WARNING(_msg);

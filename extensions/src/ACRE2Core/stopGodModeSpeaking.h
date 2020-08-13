@@ -11,9 +11,9 @@
 
 #include "TextMessage.h"
 
-RPC_FUNCTION(stopZeusSpeaking) {
+RPC_FUNCTION(stopGodModeSpeaking) {
 
-    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::zeus);
+    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::god);
 
     return acre::Result::ok;
 }

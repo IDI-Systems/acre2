@@ -16,3 +16,4 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
+#include "\idi\acre\addons\sys_godmode\script_acre_component_defines.hpp"

@@ -81,6 +81,10 @@ entries:
       url: /wiki/user/ts-channel-switching
       output: web, pdf
 
+    - title: God Mode
+      url: /wiki/user/god-mode
+      output: web, pdf
+
     - title: Class Names
       url: /wiki/class-names
       output: web, pdf
@@ -183,6 +187,10 @@ entries:
 
     - title: Spectator Displays
       url: /wiki/frameworks/spectator-displays
+      output: web, pdf
+
+    - title: God Mode
+      url: /wiki/frameworks/god-mode
       output: web, pdf
 
   - title: Development

@@ -13,6 +13,8 @@
 #include "setMuted.h"
 #include "startRadioSpeaking.h"
 #include "stopRadioSpeaking.h"
+#include "startGodModeSpeaking.h"
+#include "stopGodModeSpeaking.h"
 #include "startIntercomSpeaking.h"
 #include "stopIntercomSpeaking.h"
 #include "startZeusSpeaking.h"
@@ -61,6 +63,8 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
     this->getRpcEngine()->addProcedure(new setMuted());
     this->getRpcEngine()->addProcedure(new startRadioSpeaking());
     this->getRpcEngine()->addProcedure(new stopRadioSpeaking());
+    this->getRpcEngine()->addProcedure(new startGodModeSpeaking());
+    this->getRpcEngine()->addProcedure(new stopGodModeSpeaking());
     this->getRpcEngine()->addProcedure(new startIntercomSpeaking());
     this->getRpcEngine()->addProcedure(new stopIntercomSpeaking());
     this->getRpcEngine()->addProcedure(new startZeusSpeaking());
