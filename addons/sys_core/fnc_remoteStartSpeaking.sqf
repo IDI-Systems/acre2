@@ -7,7 +7,7 @@
  * 0: TeamSpeak ID of talking player <STRING>
  * 1: Language ID <STRING>
  * 2: Net ID of player object <STRING>
- * 3: On radio <STRING>
+ * 3: Speaking Type <STRING>
  * 4: Radio ID (default: ',') <STRING>
  *
  * Return Value:
@@ -33,15 +33,15 @@ CREATE_COUNTER(hearableRadios);
 // PREP(processRadioSpeaker);
 
 TRACE_1("START SPEAKING ENTER", _this);
-params ["_speakingId","_languageId","_netId","_onRadio",["_radioId",","]];
+params ["_speakingId","_languageId","_netId","_speakingType",["_radioId",","]];
 
 if (!(_speakingId isEqualType 0)) then { _speakingId = parseNumber _speakingId; };
 if (!(_languageId isEqualType 0)) then { _languageId = parseNumber _languageId; };
-if (!(_onRadio isEqualType 0)) then { _onRadio = parseNumber _onRadio; };
+if (!(_speakingType isEqualType 0)) then { _speakingType = parseNumber _speakingType; };
 
 
 private _result = false;
-//if (_onRadio != 1 || {_radioId != ACRE_BROADCASTING_RADIOID}) then {
+//if (_speakingType != 1 || {_radioId != ACRE_BROADCASTING_RADIOID}) then {
     private _unit = objectFromNetId _netId; // will be objNull if not found.
 
     //Ensure unit wasn't previously speaking
@@ -79,7 +79,7 @@ private _result = false;
     };
 
     if (isNull _unit) exitWith {
-        WARNING_4("START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, On Radio: %4",acre_player,_speakingId,_netId,_onRadio);
+        WARNING_4("START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, Speaking Type: %4",acre_player,_speakingId,_netId,_speakingType);
         false
     };
 
@@ -89,12 +89,12 @@ private _result = false;
     private _isMuted = IS_MUTED(_unit);
     _unit setRandomLip true;
 
-    ["acre_remoteStartedSpeaking", [_unit, _onRadio, _radioId]] call CBA_fnc_localEvent; // [unit, on radio, radio ID]
+    ["acre_remoteStartedSpeaking", [_unit, _speakingType, _radioId]] call CBA_fnc_localEvent; // [unit, speaking type, radio ID]
 
     if (!_isMuted) then {
-        TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_onRadio,(_unit distance acre_player));
+        TRACE_3("REMOTE STARTED SPEAKING",_speakingId,_speakingType,(_unit distance acre_player));
         _unit setVariable [QGVAR(lastSpeakingEventTime), diag_tickTime, false];
-        if (_onRadio == 1) then { // Radio
+        if (_speakingType == SPEAKING_TYPE_RADIO) then { // Radio
             if ([_radioId] call EFUNC(sys_radio,radioExists)) then {
                 // Handle rack radios or shared manpack radios that are simultaneously in use.
                 if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || {_radioId in ACRE_HEARABLE_RACK_RADIOS} || {_radioId in ACRE_EXTERNALLY_USED_MANPACK_RADIOS} || {_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS}) then {
@@ -143,9 +143,9 @@ private _result = false;
                 WARNING_1("Got start speaking event with non-existent radio id: %1",_radioId);
             };
         } else {
-            if (_onRadio == 5) then { // God Mode / Zeus
+            if (_speakingType == SPEAKING_TYPE_GOD) then { // God Mode
                 GVAR(godSpeakers) pushBack _speakingId;
-            } else { // Direct / Intercom / Spectate / Unknown
+            } else { // Direct / Intercom / Spectate / Zeus / Unknown
                 if (_unit call FUNC(inRange)) then {
                     GVAR(speakers) pushBack _unit;
                 };

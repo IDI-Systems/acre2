@@ -18,10 +18,31 @@
 
 params ["_text", "_group"];
 
-if !([GODMODE_GROUP1] call FUNC(accessAllowed)) exitWith { false };
+if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
-private _targetUnits = (GVAR(groupPresets) select _group) select {alive _x};
+private _targetUnits = GVAR(groupPresets) select _group;
 
-[QGVAR(showText), [_text], _targetUnits] call CBA_fnc_targetEvent;
+// Dynamic targets
+if (_targetUnits isEqualType {}) then {
+    _targetUnits = call _targetUnits;
+};
+
+#ifndef ALLOW_EMPTY_TARGETS
+if (GVAR(targetUnits) isEqualTo []) exitWith {
+    [[ICON_RADIO_CALL], [localize LSTRING(noTargets)], true] call CBA_fnc_notify;
+    false
+};
+#endif
+
+// Translate UIDs to units
+_targetUnits = _targetUnits apply {
+    if (_x isEqualType "") then {
+        [_x] call BIS_fnc_getUnitByUID
+    } else {
+        _x
+    };
+};
+
+[QGVAR(showText), [profileName, _text], _targetUnits] call CBA_fnc_targetEvent;
 
 true
