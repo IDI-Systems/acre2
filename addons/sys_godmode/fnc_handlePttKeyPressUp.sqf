@@ -4,7 +4,7 @@
  * Used to handle a keypress for God Mode PTT transmission.
  *
  * Arguments:
- * 0: Action <NUMBER>
+ * 0: Group index (0-based index) <NUMBER>
  *
  * Return Value:
  * Handled <BOOL>
@@ -15,11 +15,11 @@
  * Public: No
  */
 
-params ["_action"];
+params ["_group"];
 
-if !([_action] call FUNC(accessAllowed)) exitWith { false };
+if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
-[QGVAR(stopSpeaking), [acre_player], GVAR(targetUnits)] call CBA_fnc_targetEvent;
+[QGVAR(stopSpeaking), [EGVAR(sys_core,ts3id)], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 GVAR(targetUnits) = [];
 
 ["stopGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);

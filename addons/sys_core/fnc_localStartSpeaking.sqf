@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Speaking ID <STRING> (unused)
  * 1: Net id of local player object <STRING> (unused)
- * 2: On radio ("0" for false, "1" for true) <STRING>
+ * 2: Speaking Type <STRING>
  * 3: Radio ID if talking on radio <STRING>
  *
  * Return Value:
@@ -19,11 +19,14 @@
  */
 
 TRACE_1("LOCAL START SPEAKING ENTER", _this);
-params ["", "", "_onRadio", ["_radioId", ""]];
-_onRadio = _onRadio == "1";
+params ["", "", "_speakingType", ["_radioId", ""]];
+
+if (!(_speakingType isEqualType 0)) then { _speakingType = parseNumber _speakingType; };
+
+private _onRadio = _speakingType == SPEAKING_TYPE_RADIO;
 
 ACRE_LOCAL_SPEAKING = true;
-["acre_startedSpeaking", [acre_player, _onRadio, _radioId]] call CBA_fnc_localEvent; // [unit, on radio, radio ID]
+["acre_startedSpeaking", [acre_player, _onRadio, _radioId, _speakingType]] call CBA_fnc_localEvent; // [unit, speaking type, radio ID]
 
 if (_onRadio) then {
     ACRE_LOCAL_BROADCASTING = true;

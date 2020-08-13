@@ -53,7 +53,8 @@ namespace acre {
         unknown,
         intercom,
         spectate,
-        god
+        god,
+        zeus
     };
 
     enum class CurveModel : uint8_t {

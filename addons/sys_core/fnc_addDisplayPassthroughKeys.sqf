@@ -22,10 +22,19 @@ if (isNull _display) exitWith {false};
 // Toggle Headset
 _display displayAddEventHandler ["KeyDown", {
     params ["", "_key", "_shift", "_ctrl", "_alt"];
+
     if ([_key, [_shift, _ctrl, _alt]] in ((["ACRE2", "HeadSet"] call CBA_fnc_getKeybind) select 8)) then {
         [] call FUNC(toggleHeadset);
     };
+
     false
 }];
 
-true
+private _return = true;
+
+// God Mode
+if (isClass (configFile >> "CfgPatches" >> "acre_sys_godmode")) then {
+    _return = [_display] call EFUNC(sys_godmode,addDisplayPassthroughKeys);
+};
+
+_return

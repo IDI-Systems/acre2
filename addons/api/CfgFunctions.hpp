@@ -118,7 +118,9 @@ class CfgFunctions {
         class GodMode {
             PATHTO_FNC(godModeConfigureAccess);
             PATHTO_FNC(godModeModifyGroup);
+            PATHTO_FNC(godModeNameGroup);
             PATHTO_FNC(godModeSendText);
+            PATHTO_FNC(godModeGetGroupTargets);
         };
     };
 

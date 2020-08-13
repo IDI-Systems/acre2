@@ -13,7 +13,8 @@ class CfgPatches {
             "acre_sys_prc148",
             "acre_sys_prc77",
             "acre_sys_prc343",
-            "acre_sys_core"
+            "acre_sys_core",
+            "acre_sys_godmode"
         };
         author = ECSTRING(main,Author);
         authors[] = {"Jaynus", "Nou"};

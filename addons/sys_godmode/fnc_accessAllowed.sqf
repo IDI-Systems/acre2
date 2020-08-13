@@ -4,7 +4,7 @@
  * Check if the player has access to God Mode.
  *
  * Arguments:
- * 0: Action <NUMBER>
+ * 0: Group index (0-based index) <NUMBER>
  *
  * Return Value:
  * True if the player has access to God Mode, false otherwise
@@ -15,13 +15,13 @@
  * Public: No
  */
 
-params ["_action"];
+params ["_group"];
 
 // Administrators and curators can access God Mode
 if (IS_ADMIN || {isServer} || {[] call EFUNC(sys_core,inZeus)}) exitWith { true };
 
 private _allowed = false;
-if (_action == GODMODE_CURRENTCHANNEL) then {
+if (_group == GODMODE_CURRENTCHANNEL) then {
     _allowed = GVAR(accessAllowed) select GODMODE_ACCESS_ALLOWED_CHANNEL;
 } else {
     _allowed = GVAR(accessAllowed) select GODMODE_ACCESS_ALLOWED_GROUP;

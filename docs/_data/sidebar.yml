@@ -189,6 +189,10 @@ entries:
       url: /wiki/frameworks/spectator-displays
       output: web, pdf
 
+    - title: God Mode
+      url: /wiki/frameworks/god-mode
+      output: web, pdf
+
   - title: Development
     output: web, pdf
     folderitems:

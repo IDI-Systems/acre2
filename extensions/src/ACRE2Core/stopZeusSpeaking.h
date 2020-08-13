@@ -13,7 +13,7 @@
 
 RPC_FUNCTION(stopZeusSpeaking) {
 
-    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::god);
+    CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::zeus);
 
     return acre::Result::ok;
 }

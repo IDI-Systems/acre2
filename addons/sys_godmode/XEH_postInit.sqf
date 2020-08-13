@@ -5,39 +5,49 @@ if (!hasInterface) exitWith {};
 
 // CBA Event Handlers
 [QGVAR(startSpeaking), {
-    params ["_speakingUnit", "_channel", "_channelEx"];
+    params ["_speakingId", "_speakingName", "_channel", "_channelEx"];
+
+    #ifndef ALLOW_SELF_RX
+    if (_speakingId == EGVAR(sys_core,ts3id)) exitWith {};
+    #endif
+
+    GVAR(speakingGods) pushBackUnique _speakingId;
 
     if (GVAR(rxNotification)) then {
         _channel = localize _channel;
         if (_channelEx != "") then {
-            _channel = format ["%1 (%2)", _channel, localize _channelEx];
+            if (isLocalized _channelEx) then {
+                _channelEx = localize _channelEx;
+            };
+            _channel = format ["%1 (%2)", _channel, _channelEx];
         };
 
         private _notificationLayer = [
             format ["RX: %1", localize LSTRING(god)],
             _channel,
-            name _speakingUnit,
+            _speakingName,
             -1,
             GVAR(rxNotificationColor)
         ] call EFUNC(sys_list,displayHint);
-        GVAR(rxNotificationLayers) setVariable [getPlayerUID _speakingUnit, _notificationLayer];
+        GVAR(rxNotificationLayers) setVariable [str _speakingId, _notificationLayer];
     };
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(stopSpeaking), {
-    params ["_speakingUnit"];
+    params ["_speakingId"];
 
-    private _speakingUID = getPlayerUID _speakingUnit;
-    private _notificationLayer = GVAR(rxNotificationLayers) getVariable [_speakingUID, ""];
+    GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingId);
+
+    private _notificationLayer = GVAR(rxNotificationLayers) getVariable [str _speakingId, ""];
     if (_notificationLayer != "") then {
         [_notificationLayer] call EFUNC(sys_list,hideHint);
-        GVAR(rxNotificationLayers) setVariable [_speakingUID, ""];
+        GVAR(rxNotificationLayers) setVariable [str _speakingId, ""];
     }
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(showText), {
-    params ["_text"];
-    systemChat format ["God: %1", _text];
+    params ["_speakingName", "_text"];
+    systemChat format ["God (%1): %2", _speakingName, _text];
 }] call CBA_fnc_addEventHandler;
 
 // Keybinds - God Mode

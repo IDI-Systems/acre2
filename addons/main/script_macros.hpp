@@ -63,6 +63,18 @@ Antenna Defines
 
 #define AVERAGE_MAN_HEIGHT 1.8288
 
+/*
+Speaking Type Defines
+SQF equivalent of extensions/src/ACRE2Shared/Types.h
+*/
+#define SPEAKING_TYPE_DIRECT    0
+#define SPEAKING_TYPE_RADIO     1
+#define SPEAKING_TYPE_UNKNOWN   2
+#define SPEAKING_TYPE_INTERCOM  3
+#define SPEAKING_TYPE_SPECTATE  4
+#define SPEAKING_TYPE_GOD       5
+#define SPEAKING_TYPE_ZEUS      6
+
 
 #define MACRO_ADDWEAPON(WEAPON,COUNT) class _xx_##WEAPON { \
     weapon = #WEAPON; \

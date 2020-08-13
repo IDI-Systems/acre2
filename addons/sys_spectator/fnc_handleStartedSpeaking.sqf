@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: Unit <OBJECT>
- * 1: On Radio <NUMBER>
+ * 1: Speaking Type <NUMBER>
  * 2: Radio ID <STRING>
  *
  * Return Value:
@@ -17,11 +17,11 @@
  * Public: No
  */
 
-params ["_unit", "_onRadio", "_radioId"];
+params ["_unit", "_speakingType", "_radioId"];
 _thisArgs params ["_display"];
 
 // Only need to handle radios
-if (_onRadio != 1) exitWith {};
+if (_speakingType != SPEAKING_TYPE_RADIO) exitWith {};
 
 // Add unit to current speakers if they are using a spectator radio
 if (_radioId in ACRE_SPECTATOR_RADIOS) then {
