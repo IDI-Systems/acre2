@@ -8,7 +8,7 @@ if (!hasInterface) exitWith {};
     params ["_speakingId", "_speakingName", "_channel", "_channelEx"];
 
     #ifndef ALLOW_SELF_RX
-    if (_speakingId == EGVAR(sys_core,ts3id)) exitWith {};
+    if (_speakingId == EGVAR(sys_core,voipId)) exitWith {};
     #endif
 
     GVAR(speakingGods) pushBackUnique _speakingId;

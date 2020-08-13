@@ -19,7 +19,7 @@ params ["_group"];
 
 if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
-[QGVAR(stopSpeaking), [EGVAR(sys_core,ts3id)], GVAR(targetUnits)] call CBA_fnc_targetEvent;
+[QGVAR(stopSpeaking), [EGVAR(sys_core,voipId)], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 GVAR(targetUnits) = [];
 
 ["stopGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);

@@ -79,7 +79,7 @@ GVAR(targetUnits) = GVAR(targetUnits) apply {
     };
 };
 
-[QGVAR(startSpeaking), [EGVAR(sys_core,ts3id), profileName, _channel, _channelEx], GVAR(targetUnits)] call CBA_fnc_targetEvent;
+[QGVAR(startSpeaking), [EGVAR(sys_core,voipId), profileName, _channel, _channelEx], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 
 ["startGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
