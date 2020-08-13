@@ -34,7 +34,7 @@ RPC_FUNCTION(updateSpeakingData) {
     if (speaker) {
         LOCK(speaker);
         if ((speakingType == "d") || (speakingType == "i") || (speakingType == "z")) {
-            if ((speaker->getInitType() != "d" && speaker->getInitType() != "i" && speaker->getInitType() != "z") || speakingType != speaker->getInitType()) {
+            if (((speaker->getInitType() != "d") && (speaker->getInitType() != "i") && (speaker->getInitType() != "z")) || speakingType != speaker->getInitType()) {
                 speaker->setInitType(speakingType);
                 if (speaker->channels[0]) {
                     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(speaker->channels[0]);

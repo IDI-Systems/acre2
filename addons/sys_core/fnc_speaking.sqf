@@ -261,7 +261,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     private _speakingId = _x;
 
     // Check speaking gods to only allow hearing by the god's target group
-    if (EGVAR(sys_godmode,speakingGods) find _speakingId != -1) then {
+    if ((EGVAR(sys_godmode,speakingGods) find _speakingId) != -1) then {
         private _params = ["g", _speakingId, 0, GVAR(godVolume)];
         CALL_RPC("updateSpeakingData", _params);
     };
