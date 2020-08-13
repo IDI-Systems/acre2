@@ -18,7 +18,7 @@ Current Chat Channel and Groups have separate access rights.
 
 ## Group Presets
 
-Group presets can be handled in various ways, from direct units, player UIDs, to dynamic evaluation.
+Group presets can be handled in various ways, from direct units, player UIDs, to a more advanced dynamic target selection (provided by caller code).
 
 Groups are handled on the basis of a unit. Because all configuration is local, it is important target units do not change their locality to reach the same physical machine.
 
@@ -32,7 +32,7 @@ Most simple configuration, very useful for mid-sized missions. Simply put down t
 [allPlayers, 2] call acre_api_fnc_godModeModifyGroup;     // Group 3
 ```
 
-It is also possible to add or remove units dynamically.
+It is also possible to add or remove units dynamically. This can be used in a custom unit selection dialog for example.
 
 ```js
 [[unit10, unit11], 0, 1] call acre_api_fnc_godModeModifyGroup; // Add units to Group 1
@@ -51,7 +51,9 @@ _Note: Using `getPlayerUID UNIT` will not work, as one player may load in before
 
 ### Dynamic
 
-It is also possible to provide target units dynamically, when the player presses his PTT button.
+It is also possible to provide target units dynamically, when the player presses his PTT button. This is achieved by passing target parameter as code which returns a list of target units that should receive transmission on that group.
+
+This is an advanced configuration, make sure code is fast, otherwise it can cause delays between pressing the PTT and the beginning of the transmission!
 
 ```js
 // Transmit to all alive units only
