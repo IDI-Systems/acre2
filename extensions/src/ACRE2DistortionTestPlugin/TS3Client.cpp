@@ -454,7 +454,7 @@ acre::Result CTS3Client::moveToServerChannel() {
             const uint64_t channelId = findChannelByNames(details);
             if ((channelId != INVALID_TS3_CHANNEL) && (channelId != currentChannelId)) {
                 std::wstring password = L"";
-                if (details.at(1) != L"" && details.at(0) != L"") {
+                if (!details.at(1).empty() && !details.at(0).empty()) {
                     password = details.at(1);
                 }
                 ts3Functions.requestClientMove(
@@ -485,7 +485,7 @@ acre::Result CTS3Client::moveToPreviousChannel() {
 }
 
 uint64_t CTS3Client::findChannelByNames(std::vector<std::wstring> details_) {
-    uint64_t* channelList;
+    uint64_t *channelList;
     if (ts3Functions.getChannelList(ts3Functions.getCurrentServerConnectionHandlerID(), &channelList) == ERROR_ok) {
         uint64_t channelId        = INVALID_TS3_CHANNEL;
         uint64_t defaultChannelId = INVALID_TS3_CHANNEL;
@@ -539,8 +539,7 @@ uint64_t CTS3Client::findChannelByNames(std::vector<std::wstring> details_) {
             if (!details_.at(0).empty()) {
                 details_.at(0).clear();
                 bestChannelId = findChannelByNames(details_);
-            }
-            else if (defaultChannelId != INVALID_TS3_CHANNEL) {
+            } else if (defaultChannelId != INVALID_TS3_CHANNEL) {
                 bestChannelId = defaultChannelId;
             }
         }

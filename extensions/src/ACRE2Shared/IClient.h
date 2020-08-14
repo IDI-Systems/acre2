@@ -154,9 +154,7 @@ protected:
 
     virtual std::wstring removeSubstrings(std::wstring string_, std::wstring substring_) noexcept {
         const std::wstring::size_type substringLength = substring_.length();
-        for (auto iterator = string_.find(substring_);
-             iterator != std::wstring::npos;
-             iterator = string_.find(substring_))
+        for (auto iterator = string_.find(substring_); iterator != std::wstring::npos; iterator = string_.find(substring_))
             string_.erase(iterator, substringLength);
         return string_;
     }

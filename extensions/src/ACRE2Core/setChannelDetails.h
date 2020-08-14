@@ -5,7 +5,6 @@
 #include "TextMessage.h"
 #include "Engine.h"
 #include "StringConversions.h"
-#include "String"
 
 #include <sstream>
 
@@ -26,5 +25,3 @@ public:
 protected:
     char* m_Name;
 };
-
-
