@@ -40,7 +40,7 @@ if ((_units isEqualType {}) && {_action != GODMODE_ACTION_SET}) exitWith {
     false
 };
 
-if ((_units isEqualType {}) && {(EGVAR(sys_godmode,groupPresets) select _group) isEqualType {}}) exitWith {
+if (((EGVAR(sys_godmode,groupPresets) select _group) isEqualType {}) && {_action != GODMODE_ACTION_SET}) exitWith {
     ERROR_2("Invalid action %1. Only %2 (set) is supported when code exists in group.",_action,GODMODE_ACTION_SET);
     false
 };
