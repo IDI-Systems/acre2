@@ -50,7 +50,7 @@ class FunctionFile:
     def import_header(self, file_path):
         self.path = file_path
 
-        with open(file_path) as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             code = file.read()
 
         header_match = re.search(r"\s*/\*.+?\*/", code, re.S)
@@ -265,7 +265,7 @@ def document_functions(components):
 
     for component in components:
         output = os.path.join('../_includes/custom/', 'functions-list-' + component) + ".html"
-        with open(output, "w") as file:
+        with open(output, "w", encoding="utf-8") as file:
             for function in components[component]:
                 file.write(function.document(component))
 
