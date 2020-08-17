@@ -50,8 +50,12 @@ private _currentUniqueItems = [];
 
         GVAR(requestingNewId) = true;
         if (_radio == "ItemRadio") then {
-            _radio = GVAR(defaultItemRadioType);
-            [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
+            if !(GVAR(defaultItemRadioType) isEqualTo "") then {
+                _radio = GVAR(defaultItemRadioType);
+                [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
+            } else {
+                [acre_player, "ItemRadio"] call CBA_fnc_removeItem;
+            };
         };
         TRACE_1("Getting ID for", _radio);
 

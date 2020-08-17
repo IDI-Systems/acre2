@@ -144,5 +144,11 @@
             <Chinesesimp>设定无线电为1%</Chinesesimp>
             <Portuguese>Rádio configurado a %1</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_DefaultItemRadioType_DisplayName">
+            <English>Vanilla radio item replacement</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_DefaultItemRadioType_Description">
+            <English>ItemRadio inventory items will be replaced with this type of radio.</English>
+        </Key>
     </Package>
 </Project>
