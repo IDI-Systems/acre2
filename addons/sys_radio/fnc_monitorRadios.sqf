@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets up the per frame event handler for monitoring the local player inventory for changes.
+ * Sets up the CBA loadout event handler for monitoring the local player inventory for changes.
  *
  * Arguments:
  * None

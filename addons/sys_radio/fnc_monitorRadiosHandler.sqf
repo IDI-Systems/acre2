@@ -46,23 +46,28 @@ private _currentUniqueItems = [];
     if (GVAR(requestingNewId)) exitWith { };
     private _radio = _x;
     private _hasUnique = _radio call EFUNC(sys_radio,isBaseClassRadio);
-    if (_hasUnique || {_radio == "ItemRadio"}) then {
 
-        GVAR(requestingNewId) = true;
-        if (_radio == "ItemRadio") then {
-            if !(GVAR(defaultItemRadioType) isEqualTo "") then {
-                _radio = GVAR(defaultItemRadioType);
-                [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
-            } else {
-                [acre_player, "ItemRadio"] call CBA_fnc_removeItem;
-            };
+    if (_radio == "ItemRadio") then {
+        if (GVAR(defaultItemRadioType) != "") then {
+            // Replace vanilla radio item
+            _radio = GVAR(defaultItemRadioType);
+            GVAR(requestingNewId) = true;
+            [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
+            ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
+            TRACE_1("Getting ID for", _radio);
+        } else {
+            // Vanilla radio item replacement disabled, simply remove it.
+            [acre_player, "ItemRadio"] call EFUNC(sys_core,removeGear);
         };
-        TRACE_1("Getting ID for", _radio);
-
-        ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
+    } else {
+        if (_hasUnique) then {
+            GVAR(requestingNewId) = true;
+            ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
+            TRACE_1("Getting ID for", _radio);
+        };
     };
-    private _isUnique = _radio call EFUNC(sys_radio,isUniqueRadio);
-    if (_isUnique) then {
+
+    if (_radio call EFUNC(sys_radio,isUniqueRadio)) then {
         if !([_radio] call EFUNC(sys_data,isRadioInitialized)) then {
             WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
             private _baseRadio = BASECLASS(_radio);
