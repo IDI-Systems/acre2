@@ -35,10 +35,6 @@ if (hasInterface) then {
 
     // this isn't used anymore i do not think?
     // acre_player setVariable [QGVAR(currentRadioList), []];
-
-    if (isNil QGVAR(defaultItemRadioType)) then {
-        GVAR(defaultItemRadioType) = "ACRE_PRC343";
-    };
 };
 
 ADDON = true;
