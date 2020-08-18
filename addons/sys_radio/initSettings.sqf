@@ -1,6 +1,6 @@
 private _allRadios = [] call EFUNC(api,getAllRadios);
 private _radioClasses = [""] + _allRadios # 0;
-private _radioNames = ["None"] + _allRadios # 1;
+private _radioNames = [localize "str_a3_cfgglasses_none0"] + _allRadios # 1;
 
 [
     QGVAR(defaultItemRadioType),
