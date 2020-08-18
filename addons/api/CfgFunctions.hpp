@@ -29,7 +29,6 @@ class CfgFunctions {
 
             PATHTO_FNC(filterUnitLoadout);
 
-            PATHTO_FNC(setItemRadioReplacement);
             PATHTO_FNC(getDisplayName);
 
             PATHTO_FNC(setGlobalVolume);
