@@ -83,15 +83,3 @@ if (ASSERT_TYPE(_test,"ARRAY")) then {
 } else {
     FAIL(acre_api_fnc_getCurrentRadioList);
 };
-
-/*
-acre_api_fnc_getDefaultChannels
-parameters: none
-return: array of radioIds
-*/
-_test = [] call EFUNC(api,getDefaultChannels);
-if (ASSERT_TYPE(_test,"ARRAY")) then {
-    PASS(acre_api_fnc_getDefaultChannels);
-} else {
-    FAIL(acre_api_fnc_getDefaultChannels);
-};
