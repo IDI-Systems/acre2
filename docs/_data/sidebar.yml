@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: ACRE2
-  version: v2.7.3
+  version: v2.7.4
   folders:
 
   - title:
@@ -79,6 +79,10 @@ entries:
 
     - title: TeamSpeak Channel Switching
       url: /wiki/user/ts-channel-switching
+      output: web, pdf
+
+    - title: God Mode
+      url: /wiki/user/god-mode
       output: web, pdf
 
     - title: Class Names
@@ -179,6 +183,14 @@ entries:
 
     - title: Custom Signal Processing
       url: /wiki/frameworks/custom-signal-processing
+      output: web, pdf
+
+    - title: Spectator Displays
+      url: /wiki/frameworks/spectator-displays
+      output: web, pdf
+
+    - title: God Mode
+      url: /wiki/frameworks/god-mode
       output: web, pdf
 
   - title: Development

@@ -100,7 +100,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     private _compiledParams = HASH_CREATE;
     {
         private _recRadio = _x;
-        if (_recRadio != ACRE_BROADCASTING_RADIOID || {GVAR(fullDuplex)}) then {
+        if (_recRadio != ACRE_BROADCASTING_RADIOID || {GVAR(fullDuplex)} || {(toLower _recRadio) in ACRE_SPECTATOR_RADIOS}) then {
             #ifdef ENABLE_PERFORMANCE_COUNTERS
                 BEGIN_COUNTER(radio_loop_single_radio);
             #endif
@@ -128,7 +128,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                 // if (!GVAR(speaking_cache_valid)) then {
                 private _sourceRadios = _sources select _forEachIndex;
                 private _hearableRadios = [_recRadio, "handleMultipleTransmissions", _sourceRadios] call EFUNC(sys_data,transEvent);
-                if (GVAR(fullDuplex)) then {
+                if (GVAR(fullDuplex) || {(toLower _recRadio) in ACRE_SPECTATOR_RADIOS}) then {
                     _hearableRadios = _sourceRadios;
                 };
                 // HASH_SET(GVAR(coreCache), _recRadio + "hmt_cache", _hearableRadios);
@@ -256,6 +256,16 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
         };
     };
 } forEach GVAR(speakers);
+
+{
+    private _speakingId = _x;
+
+    // Check speaking gods to only allow hearing by the god's target group
+    if ((EGVAR(sys_godmode,speakingGods) find _speakingId) != -1) then {
+        private _params = ["g", _speakingId, 0, GVAR(godVolume)];
+        CALL_RPC("updateSpeakingData", _params);
+    };
+} forEach GVAR(godSpeakers);
 
 if (ACRE_IS_SPECTATOR) then {
     {

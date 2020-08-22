@@ -37,6 +37,7 @@ class CfgFunctions {
 
         class Radios {
             PATHTO_FNC(getAllRadios);
+            PATHTO_FNC(getAllRadiosByType);
             PATHTO_FNC(getCurrentRadio);
             PATHTO_FNC(setCurrentRadio);
             PATHTO_FNC(getCurrentRadioList);
@@ -111,6 +112,14 @@ class CfgFunctions {
             PATHTO_FNC(addSpectatorRadio);
             PATHTO_FNC(removeAllSpectatorRadios);
             PATHTO_FNC(removeSpectatorRadio);
+        };
+
+        class GodMode {
+            PATHTO_FNC(godModeConfigureAccess);
+            PATHTO_FNC(godModeModifyGroup);
+            PATHTO_FNC(godModeNameGroup);
+            PATHTO_FNC(godModeSendText);
+            PATHTO_FNC(godModeGetGroupTargets);
         };
     };
 
