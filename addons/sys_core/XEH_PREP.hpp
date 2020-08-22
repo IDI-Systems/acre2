@@ -7,6 +7,7 @@ PREP(canUnderstand);
 PREP(cycleLanguage);
 PREP(findOcclusion);
 PREP(getAlive);
+PREP(getAllRadios);
 PREP(getClientIdLoop);
 PREP(getCompartment);
 PREP(getGear);
