@@ -17,6 +17,8 @@
  * Public: No
  */
 
+if (true) exitWith { diag_log "removed?" };
+
 params ["_className",["_returnFunction",nil],["_force",false]];
 
 // If teamspeak is connected.

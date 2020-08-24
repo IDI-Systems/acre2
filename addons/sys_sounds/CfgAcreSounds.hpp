@@ -2,33 +2,33 @@
 
 class CfgAcreSounds {
     class Acre_GenericClickOn {
-        sound = "\idi\acre\addons\sys_sounds\sounds\mic_click_new_on.b64";
+        file = "\idi\acre\addons\sys_sounds\sounds\Acre_GenericClickOn.wav";
     };
     class Acre_GenericClickOff {
-        sound = "\idi\acre\addons\sys_sounds\sounds\mic_click_new_off.b64";
+        file = "\idi\acre\addons\sys_sounds\sounds\Acre_GenericClickOff.wav";
     };
 
     class Acre_GenericBeep {
-        sound = "\idi\acre\addons\sys_sounds\sounds\beep.b64";
+        file = "\idi\acre\addons\sys_sounds\sounds\Acre_GenericBeep.wav";
     };
     class Acre_GenericBeepLow {
-        sound = "\idi\acre\addons\sys_sounds\sounds\beep-low.b64";
+        file = "\idi\acre\addons\sys_sounds\sounds\Acre_GenericBeepLow.wav";
     };
 
     class Acre_GenericSquawkOn {
-        sound = "\idi\acre\addons\sys_sounds\sounds\mic_click_other_on.b64";
+        file = "\idi\acre\addons\sys_sounds\sounds\Acre_GenericSquawkOn.wav";
     };
 
     class Acre_GenericSquawkOff {
-        sound = "\idi\acre\addons\sys_sounds\sounds\mic_click_other_off.b64";
+        file = "\idi\acre\addons\sys_sounds\sounds\Acre_GenericSquawkOff.wav";
     };
 
     class Acre_GenericClick {
-        sound = "\idi\acre\addons\sys_sounds\sounds\click.b64";
+        file = "\idi\acre\addons\sys_sounds\sounds\Acre_GenericClick.wav";
     };
 
     // sys_sem52sl and sem70
     class Acre_SEMKnob {
-        sound = "\idi\acre\addons\sys_sounds\sounds\semknob.b64";
+        file = "\idi\acre\addons\sys_sounds\sounds\Acre_SEMKnob.wav";
     };
 };
