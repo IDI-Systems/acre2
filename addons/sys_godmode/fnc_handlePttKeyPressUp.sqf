@@ -24,6 +24,10 @@ GVAR(targetUnits) = [];
 
 ["stopGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
+#ifndef ALLOW_SELF_RX
+["Acre_GenericClickOff", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
+#endif
+
 if (GVAR(txNotificationLayer) != "") then {
     [GVAR(txNotificationLayer)] call EFUNC(sys_list,hideHint);
     GVAR(txNotificationLayer) = "";
