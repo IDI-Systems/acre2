@@ -93,6 +93,8 @@ public:
     DECLARE_MEMBER(int32_t, TsSpeakingState);
     DECLARE_MEMBER(bool, RadioPTTDown);
     DECLARE_MEMBER(bool, IntercomPTTDown);
+    DECLARE_MEMBER(bool, GodPTTDown);
+    DECLARE_MEMBER(bool, ZeusPTTDown);
     DECLARE_MEMBER(bool, MainPTTDown);
     DECLARE_MEMBER(bool, DirectFirst);
     DECLARE_MEMBER(bool, HitTSSpeakingEvent);
