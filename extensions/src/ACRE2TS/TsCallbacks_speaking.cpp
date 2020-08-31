@@ -35,19 +35,23 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
     ((CTS3Client *) (CEngine::getInstance()->getClient()))->setTsSpeakingState(status);
     if (CEngine::getInstance()->getSoundSystemOverride()) {
         return;
-    } else if (((CTS3Client *) (CEngine::getInstance()->getClient()))->getOnRadio()) {
+    } else if ((((CTS3Client *) (CEngine::getInstance()->getClient()))->getOnRadio())) {
         if (((CTS3Client *) (CEngine::getInstance()->getClient()))->getVAD()) {
             return;
         } else {
             if (status == STATUS_NOT_TALKING) {
-                if (!((CTS3Client *) (CEngine::getInstance()->getClient()))->getRadioPTTDown()) {
+                if ((!((CTS3Client *) (CEngine::getInstance()->getClient()))->getRadioPTTDown())
+                      && (!((CTS3Client*)(CEngine::getInstance()->getClient()))->getGodPTTDown())
+                      && (!((CTS3Client*)(CEngine::getInstance()->getClient()))->getZeusPTTDown())) {
                     ((CTS3Client *) (CEngine::getInstance()->getClient()))->setOnRadio(false);
                 } else {
                     if (!((CTS3Client *) (CEngine::getInstance()->getClient()))->getDirectFirst()) {
                         ((CTS3Client *) (CEngine::getInstance()->getClient()))->microphoneOpen(true);
                     } else {
                         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setDirectFirst(false);
-                        if (((CTS3Client *) (CEngine::getInstance()->getClient()))->getRadioPTTDown()) {
+                        if ((((CTS3Client *) (CEngine::getInstance()->getClient()))->getRadioPTTDown())
+                              || (((CTS3Client*)(CEngine::getInstance()->getClient()))->getGodPTTDown())
+                              || (((CTS3Client*)(CEngine::getInstance()->getClient()))->getZeusPTTDown())) {
                             ((CTS3Client *) (CEngine::getInstance()->getClient()))->microphoneOpen(true);
                         }
                     }
@@ -66,5 +70,7 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setDirectFirst(false);
         CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::direct);
         ((CTS3Client *) (CEngine::getInstance()->getClient()))->setMainPTTDown(false);
+        ((CTS3Client*)(CEngine::getInstance()->getClient()))->setGodPTTDown(false);
+        ((CTS3Client*)(CEngine::getInstance()->getClient()))->setZeusPTTDown(false);
     }
 }

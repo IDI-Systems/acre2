@@ -76,6 +76,8 @@ acre::Result CTS3Client::start(const acre::id_t id_) {
     this->setMainPTTDown(false);
     this->setRadioPTTDown(false);
     this->setIntercomPTTDown(false);
+    this->setGodPTTDown(false);
+    this->setZeusPTTDown(false);
     this->setHitTSSpeakingEvent(false);
     this->setOnRadio(false);
     this->setState(acre::State::running);
@@ -171,8 +173,10 @@ acre::Result CTS3Client::localStartSpeaking(const acre::Speaking speakingType_, 
             this->setIntercomPTTDown(true);
         } else if (speakingType_ == acre::Speaking::god) {
             this->setGodPTTDown(true);
+            this->setOnRadio(true);
         } else if (speakingType_ == acre::Speaking::zeus) {
             this->setZeusPTTDown(true);
+            this->setOnRadio(true);
         }
 
         if (!this->getVAD()) {
@@ -222,11 +226,13 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
 
     if (this->getOnRadio()) {
         if (!this->getVAD()) {
-            if ((speakingType_ == acre::Speaking::radio) && this->getDirectFirst()) {
+            if (((speakingType_ == acre::Speaking::radio) || (speakingType_ == acre::Speaking::god) || (speakingType_ == acre::Speaking::zeus)) && this->getDirectFirst()) {
                 this->setOnRadio(false);
                 resendDirectSpeaking = true;
             } else {
-                if (!((CTS3Client *) (CEngine::getInstance()->getClient()))->getMainPTTDown()) {
+                if ((!((CTS3Client *) (CEngine::getInstance()->getClient()))->getMainPTTDown())
+                      && (!((CTS3Client*)(CEngine::getInstance()->getClient()))->getGodPTTDown())
+                      && (!((CTS3Client*)(CEngine::getInstance()->getClient()))->getZeusPTTDown())) {
                     this->microphoneOpen(false);
                 } else {
                     resendDirectSpeaking = true;
@@ -247,26 +253,6 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
             }
         } else if (this->getTsSpeakingState() == STATUS_TALKING) {
              resendDirectSpeaking = true;
-        }
-    } else if (speakingType_ == acre::Speaking::god) {
-        if (!this->getVAD()) {
-            if (!((CTS3Client*)(CEngine::getInstance()->getClient()))->getGodPTTDown()) {
-                this->microphoneOpen(false);
-            } else {
-                resendDirectSpeaking = true;
-            }
-        } else if (this->getTsSpeakingState() == STATUS_TALKING) {
-            resendDirectSpeaking = true;
-        }
-    } else if (speakingType_ == acre::Speaking::zeus) {
-        if (!this->getVAD()) {
-            if (!((CTS3Client*)(CEngine::getInstance()->getClient()))->getZeusPTTDown()) {
-                this->microphoneOpen(false);
-            } else {
-                resendDirectSpeaking = true;
-            }
-        } else if (this->getTsSpeakingState() == STATUS_TALKING) {
-            resendDirectSpeaking = true;
         }
     }
 
