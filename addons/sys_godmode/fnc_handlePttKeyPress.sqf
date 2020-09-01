@@ -83,7 +83,7 @@ GVAR(targetUnits) = GVAR(targetUnits) apply {
 
 ["startGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 
-#ifndef ALLOW_SELF_RX
+#ifndef TEST_SELF_RX
 ["Acre_GodBeep", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
 #endif
 
