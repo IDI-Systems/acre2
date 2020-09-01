@@ -71,6 +71,12 @@ public:
     bool getIntercomPTTDown() const noexcept { return intercom_ptt_down; }
     void setIntercomPTTDown(const bool value_) noexcept { intercom_ptt_down = value_; }
 
+    bool getGodPTTDown() const noexcept { return god_ptt_down; }
+    void setGodPTTDown(const bool value_) noexcept { god_ptt_down = value_; }
+
+    bool getZeusPTTDown() const noexcept { return zeus_ptt_down; }
+    void setZeusPTTDown(const bool value_) noexcept { zeus_ptt_down = value_; }
+
     bool getMainPTTDown() const noexcept { return main_ptt_down; }
     void setMainPTTDown(const bool value_) noexcept { main_ptt_down = value_; }
 
@@ -167,6 +173,8 @@ private:
 
     bool radioPTTDown       = false;
     bool intercom_ptt_down  = false;
+    bool god_ptt_down       = false;
+    bool zeus_ptt_down      = false;
     bool main_ptt_down      = false;
     bool direct_first       = false;
     bool hit_speaking_event = false;

@@ -58,6 +58,8 @@ acre::Result CMumbleClient::start(const acre::id_t id_) {
     this->setMainPTTDown(false);
     this->setRadioPTTDown(false);
     this->setIntercomPTTDown(false);
+    this->setGodPTTDown(false);
+    this->setZeusPTTDown(false);
     this->setHitTSSpeakingEvent(false);
     this->setOnRadio(false);
     this->setState(acre::State::running);
@@ -90,16 +92,22 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
     const std::int32_t speakingState = this->getSpeakingState();
 
     /* Open or close the microphone. If the microphone is still active, stop direct speaking before
-     * starting the new PTT method: radio speaking. In theory this would not be needed for intercom since
+     * starting the new PTT method: radio/god speaking. In theory this would not be needed for intercom since
      * at the moment it is a direct speak with audio effect. However, it is planned to have intercoms converted
      * to components and unique IDs.
      */
-    if ((speakingType_ == acre::Speaking::radio) || (speakingType_ == acre::Speaking::intercom)) {
+    if ((speakingType_ == acre::Speaking::radio) || (speakingType_ == acre::Speaking::intercom) || (speakingType_ == acre::Speaking::god) || (speakingType_ == acre::Speaking::zeus)) {
         if (speakingType_ == acre::Speaking::radio) {
             this->setRadioPTTDown(true);
             this->setOnRadio(true);
-        } else {
+        } else if (speakingType_ == acre::Speaking::intercom) {
             this->setIntercomPTTDown(true);
+        } else if (speakingType_ == acre::Speaking::god) {
+            this->setGodPTTDown(true);
+            this->setOnRadio(true);
+        } else if (speakingType_ == acre::Speaking::zeus) {
+            this->setZeusPTTDown(true);
+            this->setOnRadio(true);
         }
 
         if (!VADactive) {
@@ -110,12 +118,6 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
             }
         } else if (VADactive && (speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
             stopDirectSpeaking = true;
-        }
-    }
-
-    if ((speakingType_ == acre::Speaking::god) || (speakingType_ == acre::Speaking::zeus)) {
-        if (!VADactive) {
-            this->microphoneOpen(true);
         }
     }
 
@@ -134,11 +136,10 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
         case acre::Speaking::direct:
             break;
         case acre::Speaking::god:
-            [[fallthrough]];
+            this->setGodPTTDown(false);
+            break;
         case acre::Speaking::zeus:
-            if (!VADactive) {
-                this->microphoneOpen(false);
-            }
+            this->setZeusPTTDown(false);
             break;
         case acre::Speaking::radio:
             this->setRadioPTTDown(false);
@@ -149,6 +150,8 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
         case acre::Speaking::unknown:
             this->setRadioPTTDown(false);
             this->setIntercomPTTDown(false);
+            this->setGodPTTDown(false);
+            this->setZeusPTTDown(false);
             break;
         default:
             break;
@@ -156,11 +159,13 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
 
     if (this->getOnRadio()) {
         if (!VADactive) {
-            if ((speakingType_ == acre::Speaking::radio) && this->getDirectFirst()) {
+            if (((speakingType_ == acre::Speaking::radio) || (speakingType_ == acre::Speaking::god) || (speakingType_ == acre::Speaking::zeus)) && this->getDirectFirst()) {
                 this->setOnRadio(false);
                 resendDirectSpeaking = true;
             } else {
-                if (!CEngine::getInstance()->getClient()->getMainPTTDown()) {
+                if ((!CEngine::getInstance()->getClient()->getMainPTTDown())
+                      && (!CEngine::getInstance()->getClient()->getGodPTTDown())
+                      && (!CEngine::getInstance()->getClient()->getZeusPTTDown())) {
                     this->microphoneOpen(false);
                 } else {
                     resendDirectSpeaking = true;
@@ -169,7 +174,7 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
         } else {
             this->setOnRadio(false);
             const std::int32_t speakingState = this->getSpeakingState();
-            
+
             if ((speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
                 resendDirectSpeaking = true;
             }

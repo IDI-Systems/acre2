@@ -3,15 +3,21 @@
 
 if (!hasInterface) exitWith {};
 
+LOAD_SOUND(Acre_GodBeep);
+LOAD_SOUND(Acre_GodPingOn);
+LOAD_SOUND(Acre_GodPingOff);
+
 // CBA Event Handlers
 [QGVAR(startSpeaking), {
     params ["_speakingId", "_speakingName", "_channel", "_channelEx"];
 
-    #ifndef ALLOW_SELF_RX
+    #ifndef TEST_SELF_RX
     if (_speakingId == EGVAR(sys_core,voipId)) exitWith {};
     #endif
 
     GVAR(speakingGods) pushBackUnique _speakingId;
+
+    ["Acre_GodPingOn", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
 
     if (GVAR(rxNotification)) then {
         _channel = localize _channel;
@@ -37,6 +43,8 @@ if (!hasInterface) exitWith {};
     params ["_speakingId"];
 
     GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingId);
+
+    ["Acre_GodPingOff", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
 
     private _notificationLayer = GVAR(rxNotificationLayers) getVariable [str _speakingId, ""];
     if (_notificationLayer != "") then {

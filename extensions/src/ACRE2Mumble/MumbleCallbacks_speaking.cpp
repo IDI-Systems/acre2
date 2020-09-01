@@ -41,8 +41,21 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
         }
 
         if (status == TalkingState::PASSIVE || status == TalkingState::INVALID) {
-            if (!CEngine::getInstance()->getClient()->getRadioPTTDown()) {
+            if ((!CEngine::getInstance()->getClient()->getRadioPTTDown())
+                  && (!CEngine::getInstance()->getClient()->getGodPTTDown())
+                  && (!CEngine::getInstance()->getClient()->getZeusPTTDown())) {
                 CEngine::getInstance()->getClient()->setOnRadio(false);
+            } else {
+                if (!CEngine::getInstance()->getClient()->getDirectFirst()) {
+                    CEngine::getInstance()->getClient()->microphoneOpen(true);
+                } else {
+                    CEngine::getInstance()->getClient()->setDirectFirst(false);
+                    if ((CEngine::getInstance()->getClient()->getRadioPTTDown())
+                          || (CEngine::getInstance()->getClient()->getGodPTTDown())
+                          || (CEngine::getInstance()->getClient()->getZeusPTTDown())) {
+                        CEngine::getInstance()->getClient()->microphoneOpen(true);
+                    }
+                }
             }
         }
 
@@ -57,5 +70,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
         CEngine::getInstance()->getClient()->setDirectFirst(false);
         CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::direct);
         CEngine::getInstance()->getClient()->setMainPTTDown(false);
+        CEngine::getInstance()->getClient()->setGodPTTDown(false);
+        CEngine::getInstance()->getClient()->setZeusPTTDown(false);
     }
 }
