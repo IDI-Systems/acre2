@@ -2,33 +2,43 @@
 
 class CfgAcreSounds {
     class Acre_GenericClickOn {
-        sound = "\idi\acre\addons\sys_sounds\sounds\mic_click_new_on.b64";
+        sound = QPATHTOF(sounds\mic_click_new_on.b64);
     };
     class Acre_GenericClickOff {
-        sound = "\idi\acre\addons\sys_sounds\sounds\mic_click_new_off.b64";
+        sound = QPATHTOF(sounds\mic_click_new_off.b64);
     };
 
     class Acre_GenericBeep {
-        sound = "\idi\acre\addons\sys_sounds\sounds\beep.b64";
+        sound = QPATHTOF(sounds\beep.b64);
     };
     class Acre_GenericBeepLow {
-        sound = "\idi\acre\addons\sys_sounds\sounds\beep-low.b64";
+        sound = QPATHTOF(sounds\beep-low.b64);
     };
 
     class Acre_GenericSquawkOn {
-        sound = "\idi\acre\addons\sys_sounds\sounds\mic_click_other_on.b64";
+        sound = QPATHTOF(sounds\mic_click_other_on.b64);
     };
 
     class Acre_GenericSquawkOff {
-        sound = "\idi\acre\addons\sys_sounds\sounds\mic_click_other_off.b64";
+        sound = QPATHTOF(sounds\mic_click_other_off.b64);
     };
 
     class Acre_GenericClick {
-        sound = "\idi\acre\addons\sys_sounds\sounds\click.b64";
+        sound = QPATHTOF(sounds\click.b64);
+    };
+
+    class Acre_GodBeep {
+        sound = QPATHTOF(sounds\god_beep.b64);
+    };
+    class Acre_GodPingOn {
+        sound = QPATHTOF(sounds\god_ping_on.b64);
+    };
+    class Acre_GodPingOff {
+        sound = QPATHTOF(sounds\god_ping_off.b64);
     };
 
     // sys_sem52sl and sem70
     class Acre_SEMKnob {
-        sound = "\idi\acre\addons\sys_sounds\sounds\semknob.b64";
+        sound = QPATHTOF(sounds\semknob.b64);
     };
 };
