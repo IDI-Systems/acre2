@@ -9,10 +9,7 @@ PREP_RECOMPILE_END;
 // CBA Settings
 #include "initSettings.sqf"
 
-GVAR(hintTitle) = "";
-GVAR(hintLine1) = "";
-GVAR(hintLine2) = "";
-GVAR(hintColor) = [];
-GVAR(hintBuffer) = [0, 0, 0, 0, 0];
+GVAR(hintBuffer) = [[], [], [], [], []];
+GVAR(hintPreventCleanupCounters) = [-1, -1, -1, -1, -1];
 
 ADDON = true;

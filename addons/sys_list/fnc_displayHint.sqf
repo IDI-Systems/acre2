@@ -4,51 +4,56 @@
  * Displays an ACRE notification in the lower left corner. Capable of holding three lines of text and configurable colors.
  *
  * Arguments:
- * 0: Title String <STRING>
- * 1: Line 1 String <STRING>
- * 2: Line 2 String <STRING>
- * 3: Optional display duration <NUMBER> (default: 1)
- * 4: Optional color in RGBA format <ARRAY> (default: [1, 0.8, 0, 1])
+ * 0: Unique prefixed ID <STRING>
+ * 1: Title String <STRING>
+ * 2: Line 1 String <STRING>
+ * 3: Line 2 String <STRING>
+ * 4: Optional display duration <NUMBER> (default: -1)
+ * 5: Optional color in RGBA format <ARRAY> (default: [1, 0.8, 0, 1])
  *
  * Return Value:
- * Name of cutRsc layer <STRING>
+ * Notification data for direct use with acre_sys_list_fnc_hideHint <ARRAY>
  *
  * Example:
- * ["Title Line", "Line 1", "Line 2", 1, [1, 1, 1, 1]] call acre_sys_list_fnc_displayHint
+ * ["tag_x", "Title Line", "Line 1", "Line 2", 1, [1, 1, 1, 1]] call acre_sys_list_fnc_displayHint
  *
  * Public: No
  */
 
 params [
-    "_hintTitle",
-    "_hintLine1",
-    "_hintLine2",
-    ["_hintDuration", -1],
-    ["_hintColor", [1, 0.8, 0, 1]]
+    "_id",
+    "_title",
+    "_line1",
+    "_line2",
+    ["_duration", -1],
+    ["_color", [1, 0.8, 0, 1]]
 ];
 
-GVAR(hintTitle) = _hintTitle;
-GVAR(hintLine1) = _hintLine1;
-GVAR(hintLine2) = _hintLine2;
-GVAR(hintColor) = _hintColor;
-
-private _hintBufferPointer = (GVAR(hintBuffer) find 0) max 0;
-GVAR(hintBuffer) set [_hintBufferPointer, 1];
-
-// DEBUG
-private _hintIDD = 312; // Zeus
-if (isNull (findDisplay _hintIDD)) then {
-    _hintIDD = 46; // Main
-    diag_log "no Zeus";
-    if (isNull (findDisplay _hintIDD)) then {
-        diag_log "no display";
+// DEBUG - TODO Add API and active display getter
+private _displayID = 312; // Zeus
+if (isNull (findDisplay _displayID)) then {
+    _displayID = 46; // Main
+    if (isNull (findDisplay _displayID)) then {
     };
 };
+//call FUNC(getActiveDisplay);
 
-[_hintIDD, _hintBufferPointer] call FUNC(showHintBox);
-
-if (_hintDuration > 0) then {
-    [FUNC(hideHint), [_hintIDD, _hintBufferPointer], _hintDuration] call CBA_fnc_waitAndExecute;
+// Find same ID to overwrite
+private _bufferPointer = GVAR(hintBuffer) findIf {
+    !(_x isEqualTo []) && {_x select 0 == _id}
+};
+if (_bufferPointer == -1) then {
+    // Find first empty otherwise
+    _bufferPointer = (GVAR(hintBuffer) findIf {_x isEqualTo []}) max 0;
 };
 
-[_hintIDD, _hintBufferPointer]
+GVAR(hintBuffer) set [_bufferPointer, [_id, _displayID]];
+TRACE_2("display buffer",_bufferPointer,GVAR(hintBuffer));
+
+[_displayID, _bufferPointer, [_title, _line1, _line2, _color]] call FUNC(showHintBox);
+
+if (_duration > 0) then {
+    [FUNC(hideHint), _id, _duration] call CBA_fnc_waitAndExecute;
+};
+
+_id

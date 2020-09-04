@@ -29,6 +29,7 @@ LOAD_SOUND(Acre_GodPingOff);
         };
 
         private _notificationLayer = [
+            QGVAR(rx),
             format ["RX: %1", localize LSTRING(god)],
             _channel,
             _speakingName,

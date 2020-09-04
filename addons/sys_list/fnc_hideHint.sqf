@@ -4,30 +4,51 @@
  * Hides a given notification layer.
  *
  * Arguments:
- * 0: Notification display ID <NUMBER>
- * 1: Notification pointer <NUMBER>
+ * 0: Unique prefixed ID <STRING>
  *
  * Return Value:
  * None
  *
  * Example:
- * [46, 0] call acre_sys_list_fnc_hideHint
+ * ["tag_x"] call acre_sys_list_fnc_hideHint
  *
  * Public: No
  */
 
-params ["_hintIDD", "_bufferpointer"];
+params ["_id"];
 
-_hintIDD = findDisplay _hintIDD;
+private _bufferPointer = GVAR(hintBuffer) findIf {
+    !(_x isEqualTo []) && {_x select 0 == _id}
+};
 
-GVAR(hintBuffer) set [_bufferpointer, 0];
+// Early exit if another control overwrote this one (spam pressing)
+/*private _preventCleanup = GVAR(hintPreventCleanupCounters) select _bufferPointer;
+if (_preventCleanup > 0) exitWith {
+    GVAR(hintPreventCleanupCounters) set [_bufferPointer, (_preventCleanup - 1) max 0];
+};*/
 
-(_hintIDD displayCtrl (IDC_GROUP + _bufferpointer)) ctrlSetFade 1;
-(_hintIDD displayCtrl (IDC_GROUP + _bufferpointer)) ctrlCommit 0.5;
+TRACE_3("hide",_id,_bufferPointer,GVAR(hintBuffer));
+if (_bufferPointer == -1) exitWith {};
+
+private _displayID = (GVAR(hintBuffer) select _bufferPointer) select 1;
+GVAR(hintBuffer) set [_bufferPointer, []];
+
+private _display = findDisplay _displayID;
+if (isNull _display) exitWith {};
+
+(_display displayCtrl (IDC_GROUP + _bufferPointer)) ctrlSetFade 1;
+(_display displayCtrl (IDC_GROUP + _bufferPointer)) ctrlCommit 0.5;
 
 [{
-    params ["_hintIDD", "_bufferpointer"];
+    params ["_display", "_bufferPointer"];
 
-    ctrlDelete (_hintIDD displayCtrl (IDC_GROUP + _bufferpointer));
-    ctrlDelete (_hintIDD displayCtrl (IDC_FLASH_GROUP + _bufferpointer));
-}, [_hintIDD, _bufferpointer], 0.5] call CBA_fnc_waitAndExecute;
+    // Race condition check if another control overwrote this one while fading out
+    private _preventCleanup = GVAR(hintPreventCleanupCounters) select _bufferPointer;
+    GVAR(hintPreventCleanupCounters) set [_bufferPointer, (_preventCleanup - 1) max -1];
+    TRACE_1("cleanup counters",GVAR(hintPreventCleanupCounters));
+
+    if (_preventCleanup <= 0) then {
+        ctrlDelete (_display displayCtrl (IDC_GROUP + _bufferPointer));
+        ctrlDelete (_display displayCtrl (IDC_FLASH_GROUP + _bufferPointer));
+    };
+}, [_display, _bufferPointer], 0.5] call CBA_fnc_waitAndExecute;
