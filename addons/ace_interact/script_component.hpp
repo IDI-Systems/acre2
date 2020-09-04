@@ -19,3 +19,6 @@
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
 
 #include "\idi\acre\addons\sys_intercom\script_acre_rackIntercom_defines.hpp"
+
+#define IDD_SPEC_DISPLAY 60000
+#define IDD_ace_arsenal 1127001

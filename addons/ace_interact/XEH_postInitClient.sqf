@@ -45,3 +45,7 @@ if (!hasInterface) exitWith {};
     _unit setVariable ["ace_respawn_unitGear", _filteredLoadout];
     TRACE_1("applied loadout filter on ace_respawn_saveGear",_filteredLoadout);
 }] call CBA_fnc_addEventHandler;
+
+// Notification displays
+[IDD_SPEC_DISPLAY] call FUNC(addDisplaySupport);
+[IDD_ace_arsenal] call FUNC(addDisplaySupport);
