@@ -13,7 +13,8 @@ if (!hasInterface) exitWith {};
 
 // Notification displays
 [IDD_RSCDISPLAYCURATOR] call FUNC(addDisplaySupport);
-[IDD_AV_TERMINAL] call FUNC(addDisplaySupport);
+//[IDD_AV_TERMINAL] call FUNC(addDisplaySupport); // Text shows up as '-' for some reason
+[IDD_RSCDISPLAYEGSPECTATOR] call FUNC(addDisplaySupport);
 
 // Cleanup any remaining notification controls (eg. restart in editor)
 private _display = findDisplay 46;

@@ -9,6 +9,7 @@ PREP_RECOMPILE_END;
 #include "initSettings.sqf"
 
 if (hasInterface) then {
+    GVAR(speaking) = false;
     GVAR(targetUnits) = [];
     GVAR(groupPresets) = [[], [], []];
     GVAR(groupNames) = ["", "", ""];

@@ -17,7 +17,5 @@
 
 params ["_display"];
 
-diag_log "av terminal load";
-
 // Key handling compatibility for AV Terminal (UAV Terminal)
 [_display] call FUNC(addDisplayPassthroughKeys);

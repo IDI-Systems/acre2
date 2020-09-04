@@ -23,6 +23,7 @@ if !([_group] call FUNC(accessAllowed)) exitWith { false };
 GVAR(targetUnits) = [];
 
 ["stopGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+GVAR(speaking) = false;
 
 #ifndef ALLOW_EMPTY_TARGETS
 if !(GVAR(targetUnits) isEqualTo []) then {

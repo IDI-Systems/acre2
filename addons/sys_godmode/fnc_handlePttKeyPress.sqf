@@ -82,6 +82,7 @@ GVAR(targetUnits) = GVAR(targetUnits) apply {
 [QGVAR(startSpeaking), [EGVAR(sys_core,ts3id), profileName, _channel, _channelEx], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 
 ["startGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+GVAR(speaking) = true;
 
 #ifndef TEST_SELF_RX
 ["Acre_GodBeep", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
