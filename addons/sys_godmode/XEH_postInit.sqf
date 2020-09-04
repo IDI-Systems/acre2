@@ -46,10 +46,10 @@ LOAD_SOUND(Acre_GodPingOff);
 
     ["Acre_GodPingOff", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
 
-    private _notificationLayer = GVAR(rxNotificationLayers) getVariable [str _speakingId, ""];
-    if (_notificationLayer != "") then {
-        [_notificationLayer] call EFUNC(sys_list,hideHint);
-        GVAR(rxNotificationLayers) setVariable [str _speakingId, ""];
+    private _notificationLayer = GVAR(rxNotificationLayers) getVariable [str _speakingId, []];
+    if !(_notificationLayer isEqualTo []) then {
+        _notificationLayer call EFUNC(sys_list,hideHint);
+        GVAR(rxNotificationLayers) setVariable [str _speakingId, []];
     }
 }] call CBA_fnc_addEventHandler;
 

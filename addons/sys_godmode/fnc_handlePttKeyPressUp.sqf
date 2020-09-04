@@ -33,8 +33,7 @@ if !(GVAR(targetUnits) isEqualTo []) then {
 #endif
 
 if (GVAR(txNotificationLayer) != "") then {
-    [GVAR(txNotificationLayer)] call EFUNC(sys_list,hideHint);
-    GVAR(txNotificationLayer) = "";
+    GVAR(txNotificationLayer) call EFUNC(sys_list,hideHint);
 };
 
 true

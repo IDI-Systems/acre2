@@ -24,7 +24,7 @@ params [
     "_hintLine1",
     "_hintLine2",
     ["_hintDuration", -1],
-    ["_hintColor",[1, 0.8, 0, 1]]
+    ["_hintColor", [1, 0.8, 0, 1]]
 ];
 
 GVAR(hintTitle) = _hintTitle;
@@ -32,17 +32,23 @@ GVAR(hintLine1) = _hintLine1;
 GVAR(hintLine2) = _hintLine2;
 GVAR(hintColor) = _hintColor;
 
-GVAR(hintBufferPointer) = (GVAR(hintBuffer) find 0) max 0;
-GVAR(hintBuffer) set [GVAR(hintBufferPointer), 1];
+private _hintBufferPointer = (GVAR(hintBuffer) find 0) max 0;
+GVAR(hintBuffer) set [_hintBufferPointer, 1];
 
-private _hintLayer = format [QGVAR(hintLayer) + '_%1', GVAR(hintBufferPointer)];
-private _hintLayerBG = format [QGVAR(hintLayerBG) + '_%1', GVAR(hintBufferPointer)];
-
-_hintLayer cutRsc [QGVAR(radioCycleDisplay), "PLAIN", 1];
-_hintLayerBG cutRsc [QGVAR(radioCycleDisplayBG), "PLAIN", 0.15];
-
-if (_hintDuration > 0) then {
-    [FUNC(hideHint), [_hintLayer], _hintDuration] call CBA_fnc_waitAndExecute;
+// DEBUG
+private _hintIDD = 312; // Zeus
+if (isNull (findDisplay _hintIDD)) then {
+    _hintIDD = 46; // Main
+    diag_log "no Zeus";
+    if (isNull (findDisplay _hintIDD)) then {
+        diag_log "no display";
+    };
 };
 
-_hintLayer
+[_hintIDD, _hintBufferPointer] call FUNC(showHintBox);
+
+if (_hintDuration > 0) then {
+    [FUNC(hideHint), [_hintIDD, _hintBufferPointer], _hintDuration] call CBA_fnc_waitAndExecute;
+};
+
+[_hintIDD, _hintBufferPointer]
