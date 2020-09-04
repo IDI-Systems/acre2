@@ -29,14 +29,7 @@ params [
     ["_color", [1, 0.8, 0, 1]]
 ];
 
-// DEBUG - TODO Add API and active display getter
-private _displayID = 312; // Zeus
-if (isNull (findDisplay _displayID)) then {
-    _displayID = 46; // Main
-    if (isNull (findDisplay _displayID)) then {
-    };
-};
-//call FUNC(getActiveDisplay);
+private _displayId = call FUNC(getActiveDisplay);
 
 // Find same ID to overwrite
 private _bufferPointer = GVAR(hintBuffer) findIf {

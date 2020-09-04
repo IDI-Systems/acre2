@@ -17,34 +17,23 @@
  * Public: No
  */
 
-params ["_displayID", "_bufferPointer", "_config"];
+params ["_displayId", "_bufferPointer", "_config"];
 _config params ["_title", "_line1", "_line2", "_color"];
 
-private _display = findDisplay _displayID;
+private _display = findDisplay _displayId;
 
-private _ctrlFlash = _display displayCtrl (IDC_FLASH_GROUP + _bufferPointer);
-private _ctrl = _display displayCtrl (IDC_GROUP + _bufferPointer);
+// Recreate controls to reset fade and position
+ctrlDelete (_display displayCtrl (IDC_FLASH_GROUP + _bufferPointer));
+ctrlDelete (_display displayCtrl (IDC_GROUP + _bufferPointer));
 
-if (isNull _ctrlFlash) then {
-    _ctrlFlash = _display ctrlCreate [QGVAR(radioCycleDisplayFlash), IDC_FLASH_GROUP + _bufferPointer];
-};
-if (isNull _ctrl) then {
-    _ctrl = _display ctrlCreate [QGVAR(radioCycleDisplay), IDC_GROUP + _bufferPointer];
-};
+private _ctrlFlash = _display ctrlCreate [QGVAR(radioCycleDisplayFlash), IDC_FLASH_GROUP + _bufferPointer];
+private _ctrl = _display ctrlCreate [QGVAR(radioCycleDisplay), IDC_GROUP + _bufferPointer];
 
-// Position by buffer pointer and reset
+// Position by buffer pointer
 private _position = ctrlPosition _ctrl;
 _position set [1, (_position select 1) - _bufferPointer * (_position select 3)];
 
-_ctrlFlash ctrlSetPosition _position;
-_ctrlFlash ctrlCommit 0;
-
-(_ctrlFlash controlsGroupCtrl IDC_CONTROLFLASH) ctrlSetBackgroundColor [RGB_YELLOW];
-(_ctrlFlash controlsGroupCtrl IDC_CONTROLFLASH) ctrlSetFade 0;
-(_ctrlFlash controlsGroupCtrl IDC_CONTROLFLASH) ctrlCommit 0;
-
 _ctrl ctrlSetPosition _position;
-_ctrl ctrlSetFade 0;
 _ctrl ctrlCommit 0;
 
 // Flash

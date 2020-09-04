@@ -6,6 +6,7 @@ class CfgFunctions {
             PATHTO_FNC(setupMission);
 
             PATHTO_FNC(addDisplayPassthroughKeys);
+            PATHTO_FNC(addNotificationDisplay);
 
             PATHTO_FNC(getMultiPushToTalkAssignment);
             PATHTO_FNC(setMultiPushToTalkAssignment);

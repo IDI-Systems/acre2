@@ -9,6 +9,9 @@ PREP_RECOMPILE_END;
 // CBA Settings
 #include "initSettings.sqf"
 
-GVAR(hintBuffer) = [[], [], [], [], []];
+if (hasInterface) then {
+    GVAR(hintBuffer) = [[], [], [], [], []];
+    GVAR(hintDisplays) = [];
+};
 
 ADDON = true;

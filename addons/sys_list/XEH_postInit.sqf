@@ -18,3 +18,5 @@ for "_i" from 0 to 4 do {
     ctrlDelete (_display displayCtrl (IDC_GROUP + _i));
     ctrlDelete (_display displayCtrl (IDC_FLASH_GROUP + _i));
 };
+
+[IDD_RSCDISPLAYCURATOR] call FUNC(addDisplaySupport);
