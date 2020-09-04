@@ -40,10 +40,10 @@ if (_bufferPointer == -1) then {
     _bufferPointer = (GVAR(hintBuffer) findIf {_x isEqualTo []}) max 0;
 };
 
-GVAR(hintBuffer) set [_bufferPointer, [_id, _displayID]];
+GVAR(hintBuffer) set [_bufferPointer, [_id, _displayId]];
 TRACE_2("display buffer",_bufferPointer,GVAR(hintBuffer));
 
-[_displayID, _bufferPointer, [_title, _line1, _line2, _color]] call FUNC(showHintBox);
+[_displayId, _bufferPointer, [_title, _line1, _line2, _color]] call FUNC(showHintBox);
 
 if (_duration > 0) then {
     [FUNC(hideHint), _id, _duration] call CBA_fnc_waitAndExecute;

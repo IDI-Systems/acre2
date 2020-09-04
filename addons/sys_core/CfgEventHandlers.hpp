@@ -26,6 +26,9 @@ class Extended_DisplayLoad_EventHandlers {
     class RscDisplayArsenal {
         ADDON = QUOTE(_this call FUNC(arsenalOpen));
     };
+    class RscDisplayAVTerminal {
+        ADDON = QUOTE(_this call FUNC(avTerminalDisplayLoad));
+    };
     class RscDisplayEGSpectator {
         ADDON = QUOTE(_this call FUNC(spectatorEGDisplayLoad));
     };
