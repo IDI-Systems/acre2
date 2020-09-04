@@ -3,7 +3,9 @@
 if (!hasInterface) exitWith {};
 
 ["ace_arsenal_displayOpened", {
+    params ["_display"];
     EGVAR(sys_core,arsenalOpen) = true;
+    [_display] call EFUNC(sys_core,addDisplayPassthroughKeys);
 }] call CBA_fnc_addEventHandler;
 
 ["ace_arsenal_displayClosed", {
