@@ -12,7 +12,7 @@
  * 5: Optional color in RGBA format <ARRAY> (default: [1, 0.8, 0, 1])
  *
  * Return Value:
- * Notification data for direct use with acre_sys_list_fnc_hideHint <ARRAY>
+ * None
  *
  * Example:
  * ["tag_x", "Title Line", "Line 1", "Line 2", 1, [1, 1, 1, 1]] call acre_sys_list_fnc_displayHint
@@ -55,5 +55,3 @@ TRACE_2("display buffer",_bufferPointer,GVAR(hintBuffer));
 if (_duration > 0) then {
     [FUNC(hideHint), _id, _duration] call CBA_fnc_waitAndExecute;
 };
-
-_id

@@ -10,6 +10,5 @@ PREP_RECOMPILE_END;
 #include "initSettings.sqf"
 
 GVAR(hintBuffer) = [[], [], [], [], []];
-GVAR(hintPreventCleanupCounters) = [-1, -1, -1, -1, -1];
 
 ADDON = true;

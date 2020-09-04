@@ -34,7 +34,7 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
     };
 
     [
-        format ["acre_broadcast_%1", ACRE_BROADCASTING_RADIOID],
+        "acre_broadcast",
         format ["TX: %1", _typeName],
         _line1,
         _line2,

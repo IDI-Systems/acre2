@@ -32,8 +32,6 @@ if !(GVAR(targetUnits) isEqualTo []) then {
 };
 #endif
 
-if (GVAR(txNotificationLayer) != "") then {
-    GVAR(txNotificationLayer) call EFUNC(sys_list,hideHint);
-};
+[QGVAR(tx)] call EFUNC(sys_list,hideHint);
 
 true

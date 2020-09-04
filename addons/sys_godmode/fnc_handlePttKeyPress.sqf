@@ -96,7 +96,7 @@ if (GVAR(txNotification)) then {
         _channel = format ["%1 (%2)", _channel, _channelEx];
     };
 
-    GVAR(txNotificationLayer) = [
+    [
         QGVAR(tx),
         format ["TX: %1", localize LSTRING(god)],
         _channel,
