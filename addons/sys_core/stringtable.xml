@@ -71,6 +71,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_godVolume_displayName">
             <English>God Volume</English>
+            <French>Volume Dieu</French>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
