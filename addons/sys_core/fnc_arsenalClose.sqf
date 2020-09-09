@@ -4,13 +4,13 @@
  * Handles closing Arsenal.
  *
  * Arguments:
- * 0: Display <DISPLAY>
+ * None
  *
  * Return Value:
  * None
  *
  * Example:
- * [Display #1] call acre_sys_core_fnc_arsenalClose
+ * [] call acre_sys_core_fnc_arsenalClose
  *
  * Public: No
  */

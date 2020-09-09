@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [Display #1] call acre_sys_core_fnc_arsenalOpen
+ * [_display] call acre_sys_core_fnc_arsenalOpen
  *
  * Public: No
  */

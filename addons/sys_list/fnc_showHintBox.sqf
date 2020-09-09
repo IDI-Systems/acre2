@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * [Display #1, 0, ["Title", "L1", "L2", [1, 1, 1, 1]]] call acre_sys_list_fnc_showHintBox
+ * [_display, 0, ["Title", "L1", "L2", [1, 1, 1, 1]]] call acre_sys_list_fnc_showHintBox
  *
  * Public: No
  */
