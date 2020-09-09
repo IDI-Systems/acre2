@@ -3,12 +3,15 @@
     <Package name="Sys_Spectator">
         <Key ID="STR_ACRE_Sys_Spectator_ClearRadios">
             <English>Clear Spectator Radios</English>
+            <French>Spectateur - Réinitialisation des radios</French>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_ClearRadios_Description">
             <English>Clears all radios from the spectator radios list.</English>
+            <French>Décoche toutes les radios de la liste spectateur.</French>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_NoRadios">
             <English>No Radios</English>
+            <French>Aucune radio</French>
         </Key>
     </Package>
 </Project>

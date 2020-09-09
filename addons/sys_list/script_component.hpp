@@ -17,3 +17,6 @@
 #include "\idi\acre\addons\main\script_macros.hpp"
 #include "\idi\acre\addons\main\script_dialog_defines.hpp"
 #include "script_dialog_defines.hpp"
+
+#include "\a3\ui_f_curator\ui\defineResinclDesign.inc"
+#include "\a3\ui_f\hpp\defineResinclDesign.inc"

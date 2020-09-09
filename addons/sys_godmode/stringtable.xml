@@ -4,81 +4,103 @@
         <Key ID="STR_ACRE_sys_godmode_godMode">
             <English>God Mode</English>
             <Spanish>Modo Dios</Spanish>
+            <French>Mode Dieu</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannel_display">
             <English>Current Channel</English>
             <Spanish>Canal actual</Spanish>
+            <French>Canal actuel</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey">
             <English>PTT - Current Chat Channel</English>
             <Spanish>PTT - Canal actual de chat</Spanish>
+            <French>Transmettre au canal textuel</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey_description">
             <English>PTT to send a message to all units matching the current chat channel.</English>
             <Spanish>PTT para enviar un mensaje a todas las unidades en el canal actual de chat.</Spanish>
+            <French>Transmission d'un message à toutes les unités étant sur le même canal textuel (chat).</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1">
             <English>Group 1</English>
             <Spanish>Grupo 1</Spanish>
+            <French>Groupe 1</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey">
             <English>PTT - Group 1</English>
             <Spanish>PTT - Grupo 1</Spanish>
+            <French>Transmettre au groupe 1</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey_description">
             <English>PTT to send a message to all units in the Group 1 preset.</English>
             <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 1.</Spanish>
+            <French>Transmission d'un message à toutes les unités du groupe 1.</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2">
             <English>Group 2</English>
             <Spanish>Grupo 2</Spanish>
+            <French>Groupe 2</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2PttKey">
             <English>PTT - Group 2</English>
             <Spanish>PTT - Grupo 2</Spanish>
+            <French>Transmettre au groupe 2</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2PttKey_description">
             <English>PTT to send a message to all units in the Group 2 preset.</English>
             <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 2.</Spanish>
+            <French>Transmission d'un message à toutes les unités du groupe 2.</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3">
             <English>Group 3</English>
             <Spanish>Grupo 3</Spanish>
+            <French>Groupe 3</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3PttKey">
             <English>PTT - Group 3</English>
             <Spanish>PTT - Grupo 3</Spanish>
+            <French>Transmettre au groupe 3</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3PttKey_description">
             <English>PTT to send a message to all units in the Group 3 preset.</English>
             <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 3.</Spanish>
+            <French>Transmission d'un message à toutes les unités du groupe 3.</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_god">
             <English>God</English>
+            <French>Dieu</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
             <English>Receive Notification</English>
+            <French>Notifications de réception</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
             <English>Transmit Notification</English>
+            <French>Notifications d'émission</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotificationColor_displayName">
             <English>Receive Color</English>
+            <French>Couleur - Réception</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
             <English>Current Chat Channel Transmit Color</English>
+            <French>Couleur - Transmission canal textuel</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup1Color_displayName">
             <English>Group 1 Transmit Color</English>
+            <French>Couleur - Transmission groupe 1</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup2Color_displayName">
             <English>Group 2 Transmit Color</English>
+            <French>Couleur - Transmission groupe 2</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup3Color_displayName">
             <English>Group 3 Transmit Color</English>
+            <French>Couleur - Transmission groupe 3</French>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_noTargets">
             <English>No units in God group!</English>
+            <French>Aucune unité dans le groupe Dieu !</French>
         </Key>
     </Package>
 </Project>

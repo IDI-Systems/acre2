@@ -59,6 +59,7 @@ PREP(coreInitPFH);
 
 PREP(arsenalOpen);
 PREP(arsenalClose);
+PREP(avTerminalDisplayLoad);
 PREP(spectatorEGDisplayLoad);
 PREP(spectatorEGDisplayUnload);
 
