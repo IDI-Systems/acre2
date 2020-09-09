@@ -9,16 +9,25 @@
  * None
  *
  * Return Value:
- * Active Display ID <NUMBER>
+ * 0: Active Display <DISPLAY>
+ * 1: Active Display ID <NUMBER>
  *
  * Example:
- * private _displayId = call acre_sys_list_fnc_getActiveDisplay
+ * _displayData = call acre_sys_list_fnc_getActiveDisplay
  *
  * Public: No
  */
 
+private _displayOverride = uiNamespace getVariable [QGVAR(hintDisplayOverride), displayNull];
+if (!isNull _displayOverride) exitWith {
+    [_displayOverride, -1]
+};
+
 private _index = GVAR(hintDisplays) findIf {!isNull (findDisplay _x)};
 
-if (_index == -1) exitWith { IDD_MISSION };
+private _displayId = IDD_MISSION;
+if (_index != -1) then {
+    _displayId = GVAR(hintDisplays) select _index;
+};
 
-GVAR(hintDisplays) select _index
+[findDisplay _displayId, _displayId]

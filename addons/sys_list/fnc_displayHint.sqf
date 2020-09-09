@@ -29,7 +29,8 @@ params [
     ["_color", [1, 0.8, 0, 1]]
 ];
 
-private _displayId = call FUNC(getActiveDisplay);
+private _displayData = call FUNC(getActiveDisplay);
+_displayData params ["_display", "_displayId"];
 
 // Find same ID to overwrite
 private _bufferPointer = GVAR(hintBuffer) findIf {
@@ -43,7 +44,7 @@ if (_bufferPointer == -1) then {
 GVAR(hintBuffer) set [_bufferPointer, [_id, _displayId]];
 TRACE_2("display buffer",_bufferPointer,GVAR(hintBuffer));
 
-[_displayId, _bufferPointer, [_title, _line1, _line2, _color]] call FUNC(showHintBox);
+[_display, _bufferPointer, [_title, _line1, _line2, _color]] call FUNC(showHintBox);
 
 if (_duration > 0) then {
     [FUNC(hideHint), _id, _duration] call CBA_fnc_waitAndExecute;

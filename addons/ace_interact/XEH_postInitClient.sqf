@@ -23,7 +23,7 @@ if (!hasInterface) exitWith {};
 
     if (_leftPanelIDC in [IDC_buttonUniform, IDC_buttonVest, IDC_buttonBackpack] && {_rightPanelIDC == IDC_buttonMisc}) then {
         private _rightPanel = _display displayCtrl IDC_rightTabContentListnBox;
-        (lnbSize _rightPanel) params ["_rows", "_columns"];
+        (lnbSize _rightPanel) params ["_rows"];
 
         for "_r" from 0 to (_rows - 1) do {
             private _data = _rightPanel lnbData [_r, 0];
@@ -47,5 +47,5 @@ if (!hasInterface) exitWith {};
 }] call CBA_fnc_addEventHandler;
 
 // Notification displays
-[IDD_SPEC_DISPLAY] call FUNC(addDisplaySupport);
-[IDD_ace_arsenal] call FUNC(addDisplaySupport);
+[IDD_SPEC_DISPLAY] call EFUNC(api,addNotificationDisplay);
+[IDD_ace_arsenal] call EFUNC(api,addNotificationDisplay);

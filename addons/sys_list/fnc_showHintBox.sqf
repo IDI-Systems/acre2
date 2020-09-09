@@ -4,7 +4,7 @@
  * Handles the ACRE notification system.
  *
  * Arguments:
- * 0: Notification display ID <DISPLAY>
+ * 0: Notification display <DISPLAY>
  * 1: Buffer pointer (defines at which position the notification is shown) <NUMBER>
  * 2: Hint Configuration (see acre_sys_list_fnc_displayHint) <ARRAY>
  *
@@ -12,15 +12,13 @@
  * None
  *
  * Example:
- * [46, 0, ["Title", "L1", "L2", [1, 1, 1, 1]]] call acre_sys_list_fnc_showHintBox
+ * [Display #1, 0, ["Title", "L1", "L2", [1, 1, 1, 1]]] call acre_sys_list_fnc_showHintBox
  *
  * Public: No
  */
 
-params ["_displayId", "_bufferPointer", "_config"];
+params ["_display", "_bufferPointer", "_config"];
 _config params ["_title", "_line1", "_line2", "_color"];
-
-private _display = findDisplay _displayId;
 
 // Recreate controls to reset fade and position
 ctrlDelete (_display displayCtrl (IDC_FLASH_GROUP + _bufferPointer));

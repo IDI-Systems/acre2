@@ -4,16 +4,22 @@
  * Handles open Arsenal.
  *
  * Arguments:
- * None
+ * 0: Display <DISPLAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * [] call acre_sys_core_fnc_arsenalOpen
+ * [Display #1] call acre_sys_core_fnc_arsenalOpen
  *
  * Public: No
  */
+
+params ["_display"];
+
+// Key handling and notification display compatibility for Vanilla Arsenal
+[_display] call FUNC(addDisplayPassthroughKeys);
+uiNamespace setVariable [QEGVAR(sys_list,hintDisplayOverride), _display];
 
 if (is3DEN) exitWith {}; // Exit if Eden Arsenal
 

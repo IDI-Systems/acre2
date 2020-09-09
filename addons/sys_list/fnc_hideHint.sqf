@@ -26,7 +26,11 @@ TRACE_3("hide",_id,_bufferPointer,GVAR(hintBuffer));
 private _displayId = (GVAR(hintBuffer) select _bufferPointer) select 1;
 GVAR(hintBuffer) set [_bufferPointer, []];
 
-private _display = findDisplay _displayId;
+private _display = uiNamespace getVariable [QGVAR(hintDisplayOverride), displayNull];
+if (_displayId != -1) then {
+    _display = findDisplay _displayId;
+};
+
 if (!isNull _display) then {
     (_display displayCtrl (IDC_GROUP + _bufferPointer)) ctrlSetFade 1;
     (_display displayCtrl (IDC_GROUP + _bufferPointer)) ctrlCommit 0.5;

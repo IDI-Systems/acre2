@@ -4,16 +4,18 @@
  * Handles closing Arsenal.
  *
  * Arguments:
- * None
+ * 0: Display <DISPLAY>
  *
  * Return Value:
  * None
  *
  * Example:
- * [] call acre_sys_core_fnc_arsenalClose
+ * [Display #1] call acre_sys_core_fnc_arsenalClose
  *
  * Public: No
  */
+
+uiNamespace setVariable [QEGVAR(sys_list,hintDisplayOverride), displayNull];
 
 if (is3DEN) exitWith {}; // Exit if Eden Arsenal
 
