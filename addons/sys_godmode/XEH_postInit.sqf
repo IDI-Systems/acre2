@@ -28,14 +28,14 @@ LOAD_SOUND(Acre_GodPingOff);
             _channel = format ["%1 (%2)", _channel, _channelEx];
         };
 
-        private _notificationLayer = [
+        [
+            format [QGVAR(%1), _speakingId],
             format ["RX: %1", localize LSTRING(god)],
             _channel,
             _speakingName,
             -1,
             GVAR(rxNotificationColor)
         ] call EFUNC(sys_list,displayHint);
-        GVAR(rxNotificationLayers) setVariable [str _speakingId, _notificationLayer];
     };
 }] call CBA_fnc_addEventHandler;
 
@@ -46,11 +46,7 @@ LOAD_SOUND(Acre_GodPingOff);
 
     ["Acre_GodPingOff", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
 
-    private _notificationLayer = GVAR(rxNotificationLayers) getVariable [str _speakingId, ""];
-    if (_notificationLayer != "") then {
-        [_notificationLayer] call EFUNC(sys_list,hideHint);
-        GVAR(rxNotificationLayers) setVariable [str _speakingId, ""];
-    }
+    [format [QGVAR(%1), _speakingId]] call EFUNC(sys_list,hideHint);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(showText), {

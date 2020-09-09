@@ -32,7 +32,15 @@ if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
         case 2: {_hintColor = EGVAR(sys_list,PTT3Color)};
         default {_hintColor = EGVAR(sys_list,DefaultPTTColor)};
     };
-    ACRE_BROADCASTING_NOTIFICATION_LAYER = [format ["TX: %1", _typeName], _line1, _line2, -1, _hintColor] call EFUNC(sys_list,displayHint);
 
+    [
+        "acre_broadcast",
+        format ["TX: %1", _typeName],
+        _line1,
+        _line2,
+        -1,
+        _hintColor
+    ] call EFUNC(sys_list,displayHint);
 };
+
 true

@@ -15,6 +15,8 @@
  * Public: No
  */
 
+uiNamespace setVariable [QEGVAR(sys_list,hintDisplayOverride), displayNull];
+
 if (is3DEN) exitWith {}; // Exit if Eden Arsenal
 
 private _weapons = [acre_player] call EFUNC(sys_core,getGear);

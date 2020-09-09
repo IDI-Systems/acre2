@@ -17,15 +17,16 @@
 
 DFUNC(doHandleMultiPttKeyPressUp) = {
     params ["_args"];
-    if (_args select 1) then {
+    _args params ["_radioId", "_release"];
+    if (_release) then {
         [GVAR(delayReleasePTT_Handle)] call CBA_fnc_removePerFrameHandler;
         GVAR(delayReleasePTT_Handle) = nil;
 
         if (GVAR(pttKeyDown)) then {
-            [_args select 0, "handlePTTUp"] call EFUNC(sys_data,transEvent);
+            [_radioid, "handlePTTUp"] call EFUNC(sys_data,transEvent);
             ["stopRadioSpeaking", ","] call EFUNC(sys_rpc,callRemoteProcedure);
             GVAR(pttKeyDown) = false;
-            [ACRE_BROADCASTING_NOTIFICATION_LAYER] call EFUNC(sys_list,hideHint);
+            ["acre_broadcast"] call EFUNC(sys_list,hideHint);
         };
     } else {
         _args set [1, true];
