@@ -18,5 +18,6 @@
 #include "\idi\acre\addons\main\script_dialog_defines.hpp"
 #include "script_dialog_defines.hpp"
 
-#include "\a3\ui_f_curator\ui\defineResinclDesign.inc"
-#include "\a3\ui_f\hpp\defineResinclDesign.inc"
+#include "\a3\ui_f\hpp\defineResincl.inc"
+#define IDD_RSCDISPLAYEGSPECTATOR 60492 // \a3\ui_f\hpp\defineResinclDesign.inc has duplicates (pboProject no like)
+#define IDD_RSCDISPLAYCURATOR 312 // \a3\ui_f_curator\ui\defineResinclDesign.inc has duplicates (pboProject no like)
