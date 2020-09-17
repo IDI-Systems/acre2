@@ -2,8 +2,6 @@
 title: God Mode
 ---
 
-{% include important.html content="Dev-build only" %}
-
 All [God Mode](/wiki/user/god-mode) configuration only applies to the local machine. This allows great flexibility in configuration and different group presets for each player.
 
 ## Access
