@@ -798,6 +798,85 @@ _success = ["ACRE_PRC148_ID_7"] call acre_api_fnc_setCurrentRadio;
 
 ---
 
+### acre_api_fnc_addNotificationDisplay
+__Description__
+
+Adds notification system support to given display ID (IDD).
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Display ID  | NUMBER | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Display priority index  | NUMBER
+
+__Example__
+
+```sqf
+[3333] call acre_api_fnc_addNotificationDisplay
+```
+
+
+---
+
+### acre_api_fnc_godModeGetGroupTargets
+__Description__
+
+Returns given group's current targets.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+1 | Group (0-based index or -1 for current channel)  | NUMBER | 0
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Group targets  | ARRAY
+
+__Example__
+
+```sqf
+[0] call acre_api_fnc_godModeGetGroupTargets
+```
+
+
+---
+
+### acre_api_fnc_godModeConfigureAccess
+__Description__
+
+Configures the access to God Mode.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Access to the BI Chat Channel functionality  | BOOL | false
+1 | Access to Group presets functionality  | BOOL | false
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Handled  | BOOL
+
+__Example__
+
+```sqf
+[true, false] call acre_api_fnc_godModeConfigureAccess
+```
+
+
+---
+
 ### acre_api_fnc_getRadioSpatial
 __Description__
 
@@ -1691,6 +1770,33 @@ __Example__
 
 ---
 
+### acre_api_fnc_godModeNameGroup
+__Description__
+
+Sets a visible name for the given God Mode group.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Name  | STRING | 
+1 | Group to effect (0-based index)  | NUMBER | 0
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Group name set successfully  | BOOL
+
+__Example__
+
+```sqf
+["Admin", 0] call acre_api_fnc_godModeNameGroup
+```
+
+
+---
+
 ### acre_api_fnc_isSpeaking
 __Description__
 
@@ -1769,6 +1875,33 @@ _isRadio = ["NVGoggles"] call acre_api_fnc_isRadio;
 
 ---
 
+### acre_api_fnc_godModeSendText
+__Description__
+
+Sends a text message to the specified God Mode group.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Text  | STRING | ""
+1 | Group ID (0-based index)  | NUMBER | 0
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Text message sent successfully  | BOOL
+
+__Example__
+
+```sqf
+["sample text", 2] call acre_api_fnc_godModeSendText
+```
+
+
+---
+
 ### acre_api_fnc_babelGetLanguageName
 __Description__
 
@@ -1817,6 +1950,36 @@ __Example__
 
 ```sqf
 _success = ["ACRE_PRC148_ID_3", "LEFT" ] call acre_api_fnc_setRadioSpatial;
+```
+
+
+---
+
+### acre_api_fnc_godModeModifyGroup
+__Description__
+
+Modifies who can hear a message from God Mode.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Unit or UID or array of either or code returning array of units  | OBJECT, STRING, ARRAY, CODE | []
+1 | Group to effect (0-based index)  | NUMBER | 0
+2 | Action. 0 for set, 1 for add and 2 for subtract  | NUMBER | 0
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Group modified successfully  | BOOL
+
+__Example__
+
+```sqf
+[[unit1, unit2], 0, 1] call acre_api_fnc_godModeModifyGroup
+[["76561198040512062", "76561198046921073"], 0, 1] call acre_api_fnc_godModeModifyGroup
+[{allUnits select {alive _x}}, 0, 1] call acre_api_fnc_godModeModifyGroup
 ```
 
 
