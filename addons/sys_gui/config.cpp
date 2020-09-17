@@ -17,8 +17,6 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 
 class RscText;
-class RscPicture;
-class RscXSliderH;
 class RscProgress;
 class RscStructuredText;
 class RscPictureKeepAspect;
