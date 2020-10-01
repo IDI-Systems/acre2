@@ -28,7 +28,7 @@ if (_targetUnits isEqualType {}) then {
 };
 
 #ifndef ALLOW_EMPTY_TARGETS
-if (GVAR(targetUnits) isEqualTo []) exitWith {
+if (_targetUnits isEqualTo []) exitWith {
     [[ICON_RADIO_CALL], [localize LSTRING(noTargets)], true] call CBA_fnc_notify;
     false
 };
