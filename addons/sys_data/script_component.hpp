@@ -14,6 +14,6 @@
     #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_DATA
 #endif
 
-#define IS_SERIALIZEDHASH(array) (IS_ARRAY(array) && {!(array isEqualTo [])} && {(array select 0) isEqualTo "ACRE_HASH"})
+#define IS_SERIALIZEDHASH(array) (IS_ARRAY(array) && {array isNotEqualTo []} && {(array select 0) isEqualTo "ACRE_HASH"})
 
 #include "\idi\acre\addons\main\script_macros.hpp"

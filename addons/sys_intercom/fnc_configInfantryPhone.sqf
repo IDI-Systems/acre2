@@ -69,7 +69,7 @@ _vehicle setVariable [QGVAR(infantryPhoneIntercom), _infantryPhoneIntercom];
 _vehicle setVariable [QGVAR(infPhoneDisableRinging), _infantryPhoneDisableRinging];
 _vehicle setVariable [QGVAR(infantryPhoneControlActions), _infantryPhoneControlActions];
 
-if !(_infantryPhoneCustomRinging isEqualTo []) then {
+if (_infantryPhoneCustomRinging isNotEqualTo []) then {
     if (_infantryPhoneDisableRinging) then {
         WARNING_2("Ringing functionality disabled despite having a custom ringing tone entry %1 for %2",_infantryPhoneCustomRinging,_type);
     } else {

@@ -42,7 +42,7 @@ if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
 private _player = objNull;
 
 private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
-if (_condition isEqualTo {} && {!(_vehiclePresetName isEqualTo "")}) then {
+if (_condition isEqualTo {} && {_vehiclePresetName isNotEqualTo ""}) then {
     _player = ([] call CBA_fnc_players) select 0;
 } else {
     // Pick the first player that matches side criteria

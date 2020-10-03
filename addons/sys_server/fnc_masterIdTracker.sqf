@@ -242,7 +242,7 @@ if (GVAR(doFullSearch)) then {
 
         if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {
             private _currentEntry = HASH_GET(GVAR(masterIdTable), _key);
-            if !(_value isEqualTo _currentEntry) then {
+            if (_value isNotEqualTo _currentEntry) then {
                 _toUpdate pushBack [_key, _value];
             };
         } else {
@@ -254,7 +254,7 @@ if (GVAR(doFullSearch)) then {
         };
     } forEach ((HASH_KEYS(_idTable)) - GVAR(unacknowledgedIds));
 
-    if !(_toUpdate isEqualTo []) then {
+    if (_toUpdate isNotEqualTo []) then {
         #ifdef DEBUG_MODE_FULL
             TRACE_1("calling updateIdObjects", _toUpdate);
             acre_player sideChat "Calling updateIdObjects";

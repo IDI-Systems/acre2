@@ -21,7 +21,7 @@ FUNC(_channelNamesForPresets) = {
     params ["_channelNames", "_presetNames"];
 
     TRACE_1("enter", _this);
-    if !(_presetNames isEqualTo []) then {
+    if (_presetNames isNotEqualTo []) then {
         {
             if (_x != "") then {
                 private _channelName = _x;

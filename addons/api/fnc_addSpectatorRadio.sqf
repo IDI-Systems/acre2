@@ -40,7 +40,7 @@ if (isNull _unit || {!local _unit} || {!isPlayer _unit} || {!([_radioId] call EF
 
 // Get mounted radio if it is a rack
 private _id = [_radioId] call EFUNC(sys_rack,getMountedRadio);
-if !(_id isEqualTo "") then {
+if (_id isNotEqualTo "") then {
     _radioId = _id;
 };
 

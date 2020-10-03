@@ -90,7 +90,7 @@ addMissionEventHandler ["Draw3D", {
     drawIcon3D ["", [0.5, 0.5, 1, 1], _target modelToWorldVisual _position, 0.5, 0.5, 0, format ["%1 = %2", typeOf _target, _position], 0.5, 0.025, "TahomaB"];
 
     private _positionDynamic = _target getVariable ["acre_infantryPhone_positionDynamic", []];
-    if !(_positionDynamic isEqualTo []) then {
+    if (_positionDynamic isNotEqualTo []) then {
         drawIcon3D ["", [0.75, 0.25, 1, 1], _target modelToWorldVisual _positionDynamic, 0.5, 0.5, 0, format ["%1 = %2", typeOf _target, _positionDynamic], 0.5, 0.025, "TahomaB"];
     };
 }];

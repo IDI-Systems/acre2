@@ -81,7 +81,7 @@ if (vehicle acre_player != acre_player) then {
 
     // Delete intercom configuration if any
     private _wiredIntercoms = [_rackId] call FUNC(getWiredIntercoms);
-    if !(_wiredIntercoms isEqualTo []) then {
+    if (_wiredIntercoms isNotEqualTo []) then {
         {
             private _stationName = _x;
             private _rackIntercomConfig = +(_vehicle getVariable [format [QEGVAR(sys_intercom,%1_rack), _stationName], []]);

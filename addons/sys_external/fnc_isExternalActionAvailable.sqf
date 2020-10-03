@@ -32,4 +32,4 @@ private _radiosInUse = _sharedRadios select {[_x] call FUNC(isExternalRadioUsed)
 } forEach _radiosInUse;
 
 // If the player has external radios in use, the action to give or return radios should be also available
-!(_sharedRadios isEqualTo []) || {!(ACRE_ACTIVE_EXTERNAL_RADIOS isEqualTo [])}
+(_sharedRadios isNotEqualTo []) || {ACRE_ACTIVE_EXTERNAL_RADIOS isNotEqualTo []}

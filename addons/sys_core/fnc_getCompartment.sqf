@@ -45,7 +45,7 @@ if (_vehicle != _unit) then {
         } else {
             if (_roleType == "Cargo") then {
                 private _cargoCompartments = getArray (_cfg >> "cargoCompartments");
-                if !(_cargoCompartments isEqualTo []) then {
+                if (_cargoCompartments isNotEqualTo []) then {
                     private _index = _vehicle getCargoIndex _unit;
                     if (_index > -1) then {
                         private _cargoCompartmentsMaxCount = (count _cargoCompartments) - 1;

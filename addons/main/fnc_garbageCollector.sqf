@@ -38,7 +38,7 @@ while {diag_tickTime - _init_time < 0.001 && {ACRE_FAST_HASH_GC_INDEX < ACRE_FAS
 // diag_log text format["GC Objects Left: %1", ACRE_FAST_HASH_VAR_LENGTH - ACRE_FAST_HASH_GC_INDEX];
 
 _init_time = diag_tickTime;
-while {diag_tickTime - _init_time < 0.001 && {!(ACRE_FAST_HASH_GC_FOUND_ARRAYS isEqualTo [])}} do {
+while {diag_tickTime - _init_time < 0.001 && {ACRE_FAST_HASH_GC_FOUND_ARRAYS isNotEqualTo []}} do {
     private _array = ACRE_FAST_HASH_GC_FOUND_ARRAYS deleteAt 0;
     {
         if (IS_HASH(_x)) then {
@@ -55,7 +55,7 @@ while {diag_tickTime - _init_time < 0.001 && {!(ACRE_FAST_HASH_GC_FOUND_ARRAYS i
 // diag_log text format["GC Arrays Left: %1", (count ACRE_FAST_HASH_GC_FOUND_ARRAYS)];
 
 _init_time = diag_tickTime;
-while {diag_tickTime - _init_time < 0.001 && {!(ACRE_FAST_HASH_GC_FOUND_OBJECTS isEqualTo [])}} do {
+while {diag_tickTime - _init_time < 0.001 && {ACRE_FAST_HASH_GC_FOUND_OBJECTS isNotEqualTo []}} do {
     private _hash = ACRE_FAST_HASH_GC_FOUND_OBJECTS deleteAt 0;
     ACRE_FAST_HASH_GC_CHECK_OBJECTS pushBack _hash;
     private _array = allVariables _hash;

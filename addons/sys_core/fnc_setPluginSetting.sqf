@@ -29,7 +29,7 @@ if (EGVAR(sys_io,serverStarted)) exitWith {
 };
 
 // Already waiting for plugin initialization, add setting to delayed settings array
-if !(GVAR(delayedPluginSettings) isEqualTo []) exitWith {
+if (GVAR(delayedPluginSettings) isNotEqualTo []) exitWith {
     // Filter settings already set in case of prolonged wait where user can modify it multiple times
     GVAR(delayedPluginSettings) = GVAR(delayedPluginSettings) select {_x select 0 != _name};
     GVAR(delayedPluginSettings) pushBack _this;
