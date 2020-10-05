@@ -21,8 +21,8 @@ GVAR(headsetRadioArr) = call compile (GVAR(headsetRadios));
     if (!_hasVest && !_hasHeadgear) exitWith {};
 
     private _baseRadio = _radio call acre_api_fnc_getBaseRadio;
-    private _isVestRadio = (GVAR(vestRadioArr) findIf {_x isEqualTo _baseRadio}) != -1;
-    private _isHeadsetRadio = (GVAR(headsetRadioArr) findIf {_x isEqualTo _baseRadio}) != -1;
+    private _isVestRadio = _baseRadio in GVAR(vestRadioArr);
+    private _isHeadsetRadio = _baseRadio in GVAR(headsetRadioArr);
 
     if (_hasVest && _isVestRadio) then {
         _unit playActionNow "acre_radio_vest";
