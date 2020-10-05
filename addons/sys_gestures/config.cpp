@@ -13,5 +13,6 @@ class CfgPatches {
     };
 };
 
+#include "CfgEventHandlers.hpp"
 #include "CfgMovesBasic.hpp"
 #include "CfgGesturesMale.hpp"

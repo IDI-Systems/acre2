@@ -4,7 +4,7 @@
         <Key ID="STR_ACRE_sys_gestures_gestures">
             <English>Gestures</English>
         </Key>
-        <Key ID="STR_ACRE_sys_gestures_enableGestures_DisplayName">
+        <Key ID="STR_ACRE_sys_gestures_gestures_DisplayName">
             <English>Enable Gestures</English>
         </Key>
     </Package>

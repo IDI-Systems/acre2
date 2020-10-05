@@ -2,7 +2,7 @@
     QGVAR(gesturesEnabled),
     "CHECKBOX",
     localize LSTRING(enableGestures_DisplayName),
-    ["ACRE2",localize LSTRING(enableGestures)],
+    localize LSTRING(gestures),
     true,
     false,
     {},
