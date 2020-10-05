@@ -64,6 +64,7 @@ class CfgGesturesMale {
             enableBinocular = 1;
             enableMissile = 1;
             enableOptics = 1;
+            mask = "empty";
         };
     };
     class BlendAnims {
