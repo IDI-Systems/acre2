@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_gestures">
-        <Key ID="STR_ACRE_sys_gestures_gestures">
-            <English>Gestures</English>
+        <Key ID="STR_ACRE_sys_gestures_gesturesCategory">
+            <English>ACRE2 Gestures</English>
         </Key>
-        <Key ID="STR_ACRE_sys_gestures_gestures_DisplayName">
+        <Key ID="STR_ACRE_sys_gestures_gesturesEnabled">
             <English>Enable Gestures</English>
         </Key>
     </Package>

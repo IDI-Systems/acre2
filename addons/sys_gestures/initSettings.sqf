@@ -1,8 +1,8 @@
 [
     QGVAR(gesturesEnabled),
     "CHECKBOX",
-    localize LSTRING(enableGestures_DisplayName),
-    localize LSTRING(gestures),
+    localize LSTRING(gesturesEnabled),
+    localize LSTRING(gesturesCategory),
     true,
     false,
     {},
