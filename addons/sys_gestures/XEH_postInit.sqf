@@ -2,6 +2,9 @@
 if (is3DEN || {!hasInterface || {!(GVAR(gesturesEnabled))}}) exitWith {};
 if (!isClass (configFile >> "CfgPatches" >> "ace_common")) exitWith {}; // No ACE exit
 
+GVAR(vestRadioArr) = call compile (GVAR(vestRadios));
+GVAR(headsetRadioArr) = call compile (GVAR(headsetRadios));
+
 ["acre_startedSpeaking", {
     params ["_unit", "_onRadio", "_radio"];
 
@@ -17,16 +20,17 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_common")) exitWith {}; // No AC
     private _hasHeadgear = headgear _unit != "";
     if (!_hasVest && !_hasHeadgear) exitWith {};
 
-    private _shortRange = "343" in _radio;
+    private _baseRadio = _radio call acre_api_fnc_getBaseRadio;
+    private _isVestRadio = (GVAR(vestRadioArr) findIf {_x isEqualTo _baseRadio}) != -1;
+    private _isHeadsetRadio = (GVAR(headsetRadioArr) findIf {_x isEqualTo _baseRadio}) != -1;
 
-    // 343 is vest mounted
-    if (_hasVest && _shortRange) then {
+    if (_hasVest && _isVestRadio) then {
         _unit playActionNow "acre_radio_vest";
         _unit setVariable [QGVAR(onRadio), true];
     };
 
-    // 148/152 is ear piece
-    if (_hasHeadgear && !_shortRange) then {
+    if (_hasHeadgear && _isHeadsetRadio) then {
+        _unit playActionNow "acre_radio_helmet";
         _unit setVariable [QGVAR(onRadio), true];
     };
 }] call CBA_fnc_addEventHandler;
