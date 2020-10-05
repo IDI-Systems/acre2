@@ -8,7 +8,7 @@ PREP_RECOMPILE_END;
 
 if (hasInterface) then {
     GVAR(blackListAnims) = ["amovppnemstpsraswrfldnon","aadjppnemstpsraswrfldleft","aadjppnemstpsraswrfldright"];
-    GVAR(binoClasses) = "getText (_x >> 'simulation') == 'Binocular'" configClasses (configFile >> "CfgWeapons") apply {configName _x};
+    GVAR(binoClasses) = QUOTE(getNumber (_x >> 'type') == TYPE_BINOCULAR) configClasses (configFile >> "CfgWeapons") apply {configName _x};
 };
 
 #include "initSettings.sqf"

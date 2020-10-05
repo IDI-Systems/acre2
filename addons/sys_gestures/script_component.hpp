@@ -11,3 +11,5 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+#define TYPE_BINOCULAR 4096
