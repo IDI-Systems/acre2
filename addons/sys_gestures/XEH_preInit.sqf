@@ -9,6 +9,7 @@ PREP_RECOMPILE_END;
 if (hasInterface) then {
     GVAR(blackListAnims) = ["amovppnemstpsraswrfldnon","aadjppnemstpsraswrfldleft","aadjppnemstpsraswrfldright"];
     GVAR(binoClasses) = QUOTE(getNumber (_x >> 'type') == TYPE_BINOCULAR) configClasses (configFile >> "CfgWeapons") apply {configName _x};
+    GVAR(disallowedViews) = ["GUNNER","GROUP"];
 };
 
 #include "initSettings.sqf"

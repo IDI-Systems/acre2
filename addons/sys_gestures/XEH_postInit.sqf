@@ -5,12 +5,16 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_common")) exitWith {}; // No AC
 GVAR(vestRadioArr) = call compile (GVAR(vestRadios));
 GVAR(headsetRadioArr) = call compile (GVAR(headsetRadios));
 
+if (GVAR(stopADS)) then {
+    GVAR(disallowedViews) = ["GROUP"];
+};
+
 ["acre_startedSpeaking", {
     params ["_unit", "_onRadio", "_radio"];
 
     if (!_onRadio ||
         { !isNull objectParent _unit } ||
-        { !(cameraView in ["INTERNAL","EXTERNAL"]) } ||
+        { cameraView in GVAR(disallowedViews) } ||
         { ace_common_isReloading } ||
         { isWeaponDeployed _unit } ||
         { animationState _unit in GVAR(blackListAnims) } ||
@@ -25,12 +29,12 @@ GVAR(headsetRadioArr) = call compile (GVAR(headsetRadios));
     private _isHeadsetRadio = _baseRadio in GVAR(headsetRadioArr);
 
     if (_hasVest && _isVestRadio) then {
-        _unit playActionNow "acre_radio_vest";
+        _unit playActionNow (["acre_radio_vest", "acre_radio_vest_noADS"] select GVAR(stopADS));
         _unit setVariable [QGVAR(onRadio), true];
     };
 
     if (_hasHeadgear && _isHeadsetRadio) then {
-        _unit playActionNow "acre_radio_helmet";
+        _unit playActionNow (["acre_radio_helmet", "acre_radio_helmet_noADS"] select GVAR(stopADS));
         _unit setVariable [QGVAR(onRadio), true];
     };
 }] call CBA_fnc_addEventHandler;
