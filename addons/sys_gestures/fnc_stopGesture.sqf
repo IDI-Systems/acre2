@@ -17,7 +17,7 @@
 
 params ["_unit"];
 
-if (_unit getVariable [QGVAR(onRadio), false]) then {
-    _unit playActionNow "acre_radio_stop";
-    _unit setVariable [QGVAR(onRadio), false];
-};
+if !(_unit getVariable [QGVAR(onRadio), false]) exitWith {};
+
+_unit playActionNow "acre_radio_stop";
+_unit setVariable [QGVAR(onRadio), false];
