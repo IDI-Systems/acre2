@@ -2,7 +2,7 @@ class CfgGesturesMale {
     skeletonName = "OFP2_ManSkeleton";
     class Default;
     class States {
-        class acre_radio_base: Default {
+        class GVAR(base): Default {
             disableWeapons = 0;
             disableWeaponsLong = 0;
             enableOptics = 1;
@@ -19,25 +19,25 @@ class CfgGesturesMale {
             rightHandIKEnd = 1;
         };
 
-        class acre_radio_helmet: acre_radio_base {
+        class GVAR(helmet): GVAR(base) {
             file = "a3\anims_f_epa\data\anim\sdr\cts\custom\a_in\acts_listeningtoradioloop.rtm";
             minPlayTime = 2;
             mask = "acre_UpperBodyNoRArm";
         };
-        class acre_radio_helmet_noADS: acre_radio_helmet {
+        class GVAR(helmet_noADS): GVAR(helmet) {
             enableOptics = 0;
         };
 
-        class acre_radio_vest: acre_radio_base {
+        class GVAR(vest): GVAR(base) {
             file = "a3\anims_f_bootcamp\data\anim\sdr\cts\acts_kore_talkingoverradio_loop.rtm";
             mask = "acre_UpperBodyNoRArm";
         };
-        class acre_radio_vest_noADS: acre_radio_vest {
+        class GVAR(vest_noADS): GVAR(vest) {
             enableOptics = 0;
         };
 
         class GestureNod;
-        class acre_radio_stop: GestureNod {
+        class GVAR(stop): GestureNod {
             file = "a3\anims_f\data\anim\sdr\gst\gestureEmpty.rtm";
             disableWeapons = 0;
             disableWeaponsLong = 0;

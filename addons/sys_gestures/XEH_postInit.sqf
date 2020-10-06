@@ -29,12 +29,12 @@ if (GVAR(stopADS)) then {
     private _isHeadsetRadio = _baseRadio in GVAR(headsetRadioArr);
 
     if (_hasVest && _isVestRadio) then {
-        _unit playActionNow (["acre_radio_vest", "acre_radio_vest_noADS"] select GVAR(stopADS));
+        _unit playActionNow ([QGVAR(vest), QGVAR(vest_noADS)] select GVAR(stopADS));
         _unit setVariable [QGVAR(onRadio), true];
     };
 
     if (_hasHeadgear && _isHeadsetRadio) then {
-        _unit playActionNow (["acre_radio_helmet", "acre_radio_helmet_noADS"] select GVAR(stopADS));
+        _unit playActionNow ([QGVAR(helmet), QGVAR(helmet_noADS)] select GVAR(stopADS));
         _unit setVariable [QGVAR(onRadio), true];
     };
 }] call CBA_fnc_addEventHandler;

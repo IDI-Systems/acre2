@@ -1,20 +1,20 @@
 class CfgMovesBasic {
     class DefaultDie;
     class ManActions {
-        acre_radio_helmet = "acre_radio_helmet";
-        acre_radio_helmet_noADS = "acre_radio_helmet_noADS";
-        acre_radio_vest = "acre_radio_vest";
-        acre_radio_vest_noADS = "acre_radio_vest_noADS";
-        acre_radio_stop = "acre_radio_stop";
+        GVAR(helmet) = QGVAR(helmet);
+        GVAR(helmet_noADS) = QGVAR(helmet_noADS)
+        GVAR(vest) = QGVAR(vest)
+        GVAR(vest_noADS) = QGVAR(vest_noADS)
+        GVAR(stop) = QGVAR(stop)
     };
     class Actions {
         class Default;
         class NoActions: ManActions {
-            acre_radio_helmet[] = {"acre_radio_helmet","Gesture"};
-            acre_radio_helmet_noADS[] = {"acre_radio_helmet_noADS", "Gesture"};
-            acre_radio_vest[] = {"acre_radio_vest","Gesture"};
-            acre_radio_vest_noADS[] = {"acre_radio_vest_noADS", "Gesture"};
-            acre_radio_stop[] = {"acre_radio_stop","Gesture"};
+            GVAR(helmet)[] = {QGVAR(helmet),"Gesture"};
+            GVAR(helmet_noADS)[] = {QGVAR(helmet_noADS), "Gesture"};
+            GVAR(vest)[] = {QGVAR(vest),"Gesture"};
+            GVAR(vest_noADS)[] = {QGVAR(vest_noADS), "Gesture"};
+            GVAR(stop)[] = {QGVAR(stop),"Gesture"};
         };
     };
 };
