@@ -40,4 +40,6 @@ if (_array isEqualType objNull) then {
     };
 } forEach _array;
 
+if (isNil "_ret") exitWith { nil };
+
 _ret
