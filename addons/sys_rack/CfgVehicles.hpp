@@ -119,6 +119,16 @@ class CfgVehicles {
                 allowedPositions[] = {"driver", "gunner", "copilot"}; // Attack helicopters have "gunner" copilots usually
                 mountedRadio = "ACRE_PRC117F";
             };
+
+            class Rack_2: Rack_1 {
+                displayName = CSTRING(dash2);
+                shortName = CSTRING(dashShort);
+            };
+
+            class Rack_3: Rack_1 {
+                displayName = CSTRING(dash3);
+                shortName = CSTRING(dashShort);
+            };
         };
     };
 
@@ -156,7 +166,8 @@ class CfgVehicles {
             };
 
             class Rack_2: Rack_1 {
-                displayName = "Rack 2"; // Name is displayed in the interaction menu.
+                displayName = CSTRING(dash2); // Name is displayed in the interaction menu.
+                shortName = CSTRING(dashShort);
             };
         };
     };
