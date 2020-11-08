@@ -2,9 +2,9 @@
 title: Class Names
 ---
 
-{% include custom/class-names.html %}
 
 ### Radios
+
 - `ACRE_PRC117F` - AN/PRC-117F
 - `ACRE_PRC148` - AN/PRC-148
 - `ACRE_PRC152` - AN/PRC-152
@@ -14,6 +14,7 @@ title: Class Names
 - `ACRE_SEM70` - SEM 70
 
 ### Ground Spike Antennas
+
 - `ACRE_VHF30108SPIKE` - VHF30108 GS
 - `ACRE_VHF30108` - VHF30108 GSM
 - `ACRE_VHF30108MAST` - VHF30108 Mast
