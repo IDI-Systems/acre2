@@ -85,6 +85,10 @@ entries:
       url: /wiki/user/god-mode
       output: web, pdf
 
+    - title: Ground Spike Antenna
+      url: /wiki/user/ground-spike-antenna
+      output: web, pdf
+
     - title: Class Names
       url: /wiki/class-names
       output: web, pdf
