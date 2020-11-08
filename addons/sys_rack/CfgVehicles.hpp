@@ -124,11 +124,6 @@ class CfgVehicles {
                 displayName = CSTRING(dash2);
                 shortName = CSTRING(dashShort);
             };
-
-            class Rack_3: Rack_1 {
-                displayName = CSTRING(dash3);
-                shortName = CSTRING(dashShort);
-            };
         };
     };
 
