@@ -50,7 +50,7 @@ It has 4 positions. When at PTT, the intercom will behave as *PTT activation* mo
 
 ## Infantry Telephone
 
-Infantry also has the possibility, in vehicles like tanks or IFVs, to communicate with the crew and/or pax without entering the vehicle. To do so, face the vehicle, interact with it and take the infantry telephone by selecting the appropriate network if it is not in use already. You can either put it back, give it to another player or switch networks.
+Infantry also has the possibility, in vehicles like tanks or IFVs, to communicate with the crew and/or passengers without entering the vehicle. To do so, face the vehicle, interact with it and take the infantry telephone by selecting the appropriate network if it is not in use already. You can either put it back, give it to another player or switch networks.
 
 Telephone can be mounted on the hull of the vehicle or in the center of the vehicle. If mounted on the hull (requires config support), maximum distance is 1.5m, otherwise it is 10m. The telephone will automatically be returned if the distance exceeds the maximum, either by player movement or vehicle movement.
 
