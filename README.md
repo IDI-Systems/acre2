@@ -54,7 +54,7 @@ The project is entirely **open-source** and all contributions are welcome. Core 
 - Customizable sound configs that allow traditional patching of sounds played in ACRE via Arma addons.
 - Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (as an example see the ACRE2 implementation in the [TMF](https://github.com/TMF3/TMF)).
 - Enhanced and easily configurable vehicle sound occlusion.
-- Ground spike antenna for improved signal transmission.
+- Ground spike antenna for improved signal quality.
 
 ### Guides
 
