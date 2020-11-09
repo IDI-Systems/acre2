@@ -13,6 +13,13 @@ title: Class Names
 - `ACRE_SEM52SL` - SEM 52 SL
 - `ACRE_SEM70` - SEM 70
 
+### Vehicle Racks
+- `ACRE_VRC64` - AN/VRC-64
+- `ACRE_VRC110` - AN/VRC-110
+- `ACRE_VRC103` - AN/VRC-103
+- `ACRE_VRC111` - AN/VRC-111
+- `ACRE_SEM90` - SEM90
+
 ### Ground Spike Antennas
 
 - `ACRE_VHF30108SPIKE` - VHF30108 GS
