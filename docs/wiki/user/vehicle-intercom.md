@@ -6,7 +6,7 @@ title: Vehicle Intercom
 
 ## Vehicle Intercom
 
-Vehicle intercom consists of two separate networks depending on the vehicle type: crew and pax intercom. Intercom gives the ability to speak to other players within the same network using a headset. This allows them to communicate without the disturbance of the vehicle's noise.
+Vehicle intercom consists of two separate networks depending on the vehicle type: crew and passenger (pax) intercom. Intercom gives the ability to speak to other players within the same network using a headset. This allows them to communicate without the disturbance of the vehicle's noise.
 
 While *crew intercom* is limited to crew members and players in cargo positions cannot have access to it, *pax intercom* can be accessed by both crew and pax. This allows the crew to communicate with the pax if such network exist. In order to connect to the *pax intercom*, ACE3 Interaction Menu is needed: simply interact with the vehicle when being in a seat with access to *pax intercom* and select connect. *Crew intercom* is automatically assigned to players in "crew" positions.
 
