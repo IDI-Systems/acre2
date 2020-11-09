@@ -14,6 +14,7 @@ title: Class Names
 - `ACRE_SEM70` - SEM 70
 
 ### Vehicle Racks
+
 - `ACRE_VRC64` - AN/VRC-64
 - `ACRE_VRC110` - AN/VRC-110
 - `ACRE_VRC103` - AN/VRC-103
