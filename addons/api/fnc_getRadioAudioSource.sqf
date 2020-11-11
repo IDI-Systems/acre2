@@ -19,8 +19,6 @@ params [
     ["_radioId", "", [""]]
 ];
 
-if ( !(_radioId isEqualType "")) exitWith { -1 };
-
 private _audioSource = [_radioId, "getState", "audioPath"] call EFUNC(sys_data,dataEvent);
 
 _audioSource

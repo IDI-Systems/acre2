@@ -25,10 +25,7 @@ params [
     ["_audioSource", "", [""]]
 ];
 
-if ( !(_radioId isEqualType "")) exitWith { -1 };
-
 private _radioType = [_radioId] call acre_api_fnc_getBaseRadio;
-
 private _success = false;
 
 if (_radioType isEqualTo "ACRE_PRC148" && {_audioSource in ["INTAUDIO", "TOPAUDIO", "TOPSIDETON", "SIDEAUDIO", "SIDESIDETON"]}) then {
