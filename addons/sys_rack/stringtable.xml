@@ -125,6 +125,9 @@
             <French>Tableau de bord</French>
             <Russian>Панель</Russian>
         </Key>
+        <Key ID="STR_ACRE_sys_rack_dash2">
+            <English>Dash 2</English>
+        </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
             <Italian>Cruscotto</Italian>
