@@ -13,6 +13,7 @@ class CfgVehicles {
         displayName = CSTRING(basicMissionSetup_Module_DisplayName);
         author = ECSTRING(main,Author);
         category = QGVAR(mission_setup);
+        icon = "\a3\Modules_F_Curator\Data\iconRadio_ca.paa";
 
         function = "AcreModules_fnc_basicMissionSetup";
         functionPriority = 1;
@@ -134,6 +135,7 @@ class CfgVehicles {
         displayName = CSTRING(nameChannels_Module_DisplayName);
         author = ECSTRING(main,Author);
         category = QGVAR(mission_setup);
+        icon = "\a3\Modules_F_Curator\Data\iconRadio_ca.paa";
 
         function = "AcreModules_fnc_nameChannels";
         functionPriority = 10;
