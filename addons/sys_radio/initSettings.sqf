@@ -1,4 +1,3 @@
-
 private _allRadios = [] call EFUNC(sys_core,getAllRadios);
 private _radioClasses = [""] + _allRadios # 0;
 private _radioNames = [localize "str_a3_cfgglasses_none0"] + _allRadios # 1;
