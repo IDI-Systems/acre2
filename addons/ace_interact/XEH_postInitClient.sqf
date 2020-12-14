@@ -8,6 +8,7 @@ if (!hasInterface) exitWith {};
 
 ["ace_arsenal_displayClosed", {
     EGVAR(sys_core,arsenalOpen) = false;
+    [] call DFUNC(monitorRadiosHandler);
 }] call CBA_fnc_addEventHandler;
 
 ["ace_arsenal_rightPanelFilled", {
