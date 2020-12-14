@@ -148,7 +148,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
                     private _recRadioObject = [_recRadio] call EFUNC(sys_radio,getRadioObject);
                     _attenuate = [_recRadioObject] call EFUNC(sys_attenuate,getUnitAttenuate);
                     _attenuate = (1 - _attenuate)^3;
-                    _volumeModifier = [_radioPos, ACRE_LISTENER_POS, acre_player] call FUNC(findOcclusion);
+                    _volumeModifier = [_radioPos, ACRE_LISTENER_POS, _recRadioObject] call FUNC(findOcclusion);
                     _volumeModifier = _volumeModifier^3;
                 };
 
