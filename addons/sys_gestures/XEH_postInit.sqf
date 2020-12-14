@@ -2,8 +2,8 @@
 if (is3DEN || {!hasInterface || {!(GVAR(gesturesEnabled))}}) exitWith {};
 if (!isClass (configFile >> "CfgPatches" >> "ace_common")) exitWith {}; // No ACE exit
 
-GVAR(vestRadioArr) = call compile (GVAR(vestRadios));
-GVAR(headsetRadioArr) = call compile (GVAR(headsetRadios));
+GVAR(vestRadioArr) = parseSimpleArray (GVAR(vestRadios));
+GVAR(headsetRadioArr) = parseSimpleArray (GVAR(headsetRadios));
 
 if (GVAR(stopADS)) then {
     GVAR(disallowedViews) = ["GROUP"];
