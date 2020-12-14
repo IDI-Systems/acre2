@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles stopping the radio gesture
+ * Handles stopping the radio gesture.
  *
  * Arguments:
  * 0: Unit to stop gesture <OBJECT>

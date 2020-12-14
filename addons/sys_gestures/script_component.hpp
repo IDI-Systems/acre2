@@ -1,5 +1,5 @@
 #define COMPONENT sys_gestures
-#define COMPONENT_BEAUTIFIED Radio Gestures
+#define COMPONENT_BEAUTIFIED Gestures
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_GESTURES

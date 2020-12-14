@@ -10,11 +10,11 @@ class CfgMovesBasic {
     class Actions {
         class Default;
         class NoActions: ManActions {
-            GVAR(helmet)[] = {QGVAR(helmet),"Gesture"};
+            GVAR(helmet)[] = {QGVAR(helmet), "Gesture"};
             GVAR(helmet_noADS)[] = {QGVAR(helmet_noADS), "Gesture"};
-            GVAR(vest)[] = {QGVAR(vest),"Gesture"};
+            GVAR(vest)[] = {QGVAR(vest), "Gesture"};
             GVAR(vest_noADS)[] = {QGVAR(vest_noADS), "Gesture"};
-            GVAR(stop)[] = {QGVAR(stop),"Gesture"};
+            GVAR(stop)[] = {QGVAR(stop), "Gesture"};
         };
     };
 };
