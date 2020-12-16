@@ -4,7 +4,7 @@
  * Calculates the attenuation of a unit being heard externally from the vehicle.
  *
  * Arguments:
- * 0: Unit <Object>
+ * 0: Unit (or vehicle) <Object>
  *
  * Return Value:
  * Attenuation <NUMBER>
@@ -21,24 +21,22 @@ private _vehicle = vehicle _unit;
 if (isNull _vehicle) exitWith {};
 
 private _attenuation = 0;
-if (_unit != _vehicle) then {
-    private _effectType = getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "attenuationEffectType");
+private _effectType = getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "attenuationEffectType");
 
-    {
-        if (_unit == (_vehicle turretUnit _x)) exitWith {
-            private _config = [_vehicle, _x] call CBA_fnc_getTurret;
+private _turret = _vehicle unitTurret _unit;
+if (!(_turret in [[], [-1]])) then {
+    private _config = [_vehicle, _turret] call CBA_fnc_getTurret;
 
-            if ((getNumber (_config >> "disableSoundAttenuation")) == 1) then {
-                _effectType = "";
-            } else {
-                if (isText (_config >> "soundAttenuationTurret")) then {
-                    _effectType = getText (_config >> "soundAttenuationTurret");
-                };
-            };
+    if ((getNumber (_config >> "disableSoundAttenuation")) == 1) then {
+        _effectType = "";
+    } else {
+        if (isText (_config >> "soundAttenuationTurret")) then {
+            _effectType = getText (_config >> "soundAttenuationTurret");
         };
-    } forEach allTurrets [_vehicle, true];
+    };
+};
 
-    if (_effectType == "") exitWith {};
+if (_effectType != "") then {
     // CfgSoundEffects >> AttenuationsEffects
     private _value = HASH_GET(GVAR(attenuationCache), _effectType);
     if (isNil "_value") then {
@@ -53,7 +51,6 @@ if (_unit != _vehicle) then {
     } else {
         _attenuation = _value;
     };
-
 };
 
 _attenuation;
