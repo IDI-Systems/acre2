@@ -21,6 +21,10 @@
 
 private _listener = acre_player;
 params ["_speaker"];
+
+// If we are spectating and in first person on the speaker's vehicle (from ANY crew member's point of view) then assume no attenuation
+if (ACRE_IS_SPECTATOR && {cameraView == "INTERNAL"} && {(vehicle cameraOn) == (vehicle _speaker)}) exitWith { 0 };
+
 private _attenuate = 0;
 
 private _vehListener = vehicle _listener;
