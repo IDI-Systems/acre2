@@ -23,7 +23,7 @@
             <English>Radios that will play the vest animation.</English>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS">
-            <English>Radio broadcast stops ADS</English>
+            <English>Prevent Aim Down Sights</English>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS_description">
             <English>Keying your radio will prevent aiming down sights.</English>
