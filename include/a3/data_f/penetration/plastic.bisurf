@@ -1,0 +1,11 @@
+Density=1200;
+rough=0.1;
+dust=0;
+bulletPenetrability=160;
+soundEnviron="Empty";
+isWater="false";
+friction=0.69999999;
+restitution=0.30000001;
+impact="hitPlastic";
+soundHit="Plastic";
+deflection=0.2;
