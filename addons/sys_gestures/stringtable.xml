@@ -26,7 +26,7 @@
             <English>Radio broadcast stops ADS</English>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS_description">
-            <English>Keying your radio will take you off scope</English>
+            <English>Keying your radio will prevent aiming down sights.</English>
         </Key>
     </Package>
 </Project>
