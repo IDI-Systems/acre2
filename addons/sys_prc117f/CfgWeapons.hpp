@@ -20,6 +20,11 @@ class CfgWeapons {
         class Library {
             libTextDesc = QUOTE(NAME_PRC117F);
         };
+        
+        EGVAR(arsenalStats,frequencyMin) = 30e6;
+        EGVAR(arsenalStats,frequencyMax) = 512e6;
+        EGVAR(arsenalStats,transmitPower) = 20000;
+        EGVAR(arsenalStats,effectiveRange) = "20+km (10-20km)";
     };
 
     RADIO_ID_LIST(ACRE_PRC117F)
