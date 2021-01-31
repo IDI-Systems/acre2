@@ -90,7 +90,7 @@ if (_rackName isEqualTo "") exitWith {
 };
 
 if (_rackShortName isEqualTo "") exitWith {
-    WARNING_1("No valid rack short name specified for vehicle %1 and rack %2",_vehicle,_rackName);
+    WARNING_2("No valid rack short name specified for vehicle %1 and rack %2",_vehicle,_rackName);
     false
 };
 
