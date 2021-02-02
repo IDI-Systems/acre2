@@ -25,7 +25,7 @@ public:
     uint32_t getParameterCount(void) const final;
 
     static IMessage *createNewMessage(char *procedureName, ... );
-    static IMessage *formatNewMessage(char *procedureName, char *format, ... );
+    static IMessage *formatNewMessage(const char *const procedureName, const char *const format, ...);
 
     unsigned char *const getData() final { return ((unsigned char *const )this->m_DataPtr); }
     acre::Result setData(unsigned char *const data) {
