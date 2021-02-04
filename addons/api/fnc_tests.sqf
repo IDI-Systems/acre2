@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call acre_api_fnc_tests;
+ * call compile preprocessFileLineNumbers "idi\acre\addons\api\fnc_tests.sqf"
  *
  * Public: No
  */
@@ -21,8 +21,9 @@ private ["_test"];
 #define ASSERT_BOOL(val1,val2) (val1 isEqualTo val2)
 #define ASSERT_STRING(val1,val2) (val1 == val2)
 #define ASSERT_TYPE(val1,val2) (val2 isEqualType val1)
-#define PASS(fncName) PUSH(GVAR(testResults), [ARR_2(#fncName,true)])
-#define FAIL(fncName) PUSH(GVAR(testResults), [ARR_2(#fncName,false)])
+#define PASS(fncName) PUSH(GVAR(testResults), [ARR_2(QUOTE(fncName),true)])
+#define FAIL(fncName) PUSH(GVAR(testResults), [ARR_2(QUOTE(fncName),false)])
+
 
 /*
 acre_api_fnc_getBaseRadio
