@@ -62,7 +62,7 @@ class Prc343_RscButton {
   soundClick[] = {"", 0.2, 1};
   soundEscape[] = {"", 0.2, 1};
 
-  default = false;
+  default = 0;
   text = "";
   action = "";
 };

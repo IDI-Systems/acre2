@@ -4,6 +4,7 @@ class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
         units[] = {};
+        weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_main", "acre_sys_rpc", "acre_sys_core", "acre_sys_io"};
         author = ECSTRING(main,Author);
