@@ -263,7 +263,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                             return;
                         }
                         //printf("READ CONNECTED\n");
-                        readConnected = TRUE;
+                        readConnected = true;
                         break;
                     } else {
                         if (GetLastError() == ERROR_PIPE_BUSY) {
@@ -309,7 +309,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
                             sprintf(output, "Write SetNamedPipeHandleState WinErrCode: %d", GetLastError());
                             return;
                         }
-                        writeConnected = TRUE;
+                        writeConnected = true;
                         break;
                         //printf("WRITE CONNECTED\n");
                     } else {
@@ -365,16 +365,16 @@ void ClosePipe() {
         readHandle = INVALID_HANDLE_VALUE;
     }
 
-    writeConnected = FALSE;
-    readConnected = FALSE;
+    writeConnected = false;
+    readConnected = false;
 }
 
 
 void Init(void) {
     //g_Log = (Log *)new Log("ACRE2Arma.log");
     //LOG("* Logging engine initialized.");
-    writeConnected = FALSE;
-    readConnected = FALSE;
+    writeConnected = false;
+    readConnected = false;
 }
 
 void Cleanup(void) {

@@ -16,3 +16,5 @@ Thumbs.db
 *.exe
 *.vscode*
 *.out
+CMakeLists.txt.user*
+build*/

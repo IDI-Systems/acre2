@@ -100,7 +100,7 @@ RPC_FUNCTION(updateSpeakingData) {
 
                     speaker->channels[channelId]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(4 + (i * 7)));
 
-                    speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", FALSE);
+                    speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", false);
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5 + (i * 7)));
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6 + (i * 7)));
 

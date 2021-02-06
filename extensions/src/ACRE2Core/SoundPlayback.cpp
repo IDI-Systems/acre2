@@ -11,7 +11,7 @@ acre::Result CSoundPlayback::buildSound(std::string id, std::string content) {
     SoundItem *item;
     if (itemMap.find(id) == itemMap.end()) {
         item = new SoundItem();
-        item->loaded = FALSE;
+        item->loaded = false;
         item->id = id;
         itemMap.insert(std::pair<std::string, SoundItem *>(id, item));
     } else {

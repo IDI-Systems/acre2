@@ -1,6 +1,6 @@
 #include "controller.hpp"
 #include "simulation/object.hpp"
-#include "antenna\antenna_library.hpp"
+#include "antenna/antenna_library.hpp"
 #include "signal.hpp"
 #include <chrono>
 

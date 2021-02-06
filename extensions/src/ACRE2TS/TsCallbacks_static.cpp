@@ -32,7 +32,7 @@ void ts3plugin_infoData(uint64 serverConnectionHandlerID, uint64 id, enum Plugin
     type = type;
     id = id;*/
 
-    BOOL noAcre = FALSE;
+    BOOL noAcre = false;
     char* metaData;
 
     switch(type) {
