@@ -15,7 +15,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 DFUNC(onButtonPress_List) = {
 //    TRACE_1("onButtonPress_List", _this);
