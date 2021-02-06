@@ -24,8 +24,8 @@ if (_unit isEqualTo acre_player) then {
     };
 } else {
     if (!isNull _unit) then {
-        private _ts3id = GET_TS3ID(_unit);
-        if ((alive _unit && {!(_ts3id in ACRE_SPECTATORS_LIST)}) || {(ACRE_IS_SPECTATOR && {!ACRE_MUTE_SPECTATORS} && {_ts3id in ACRE_SPECTATORS_LIST})}) then {
+        private _voipId = GET_VOIPID(_unit);
+        if ((alive _unit && {!(_voipId in ACRE_SPECTATORS_LIST)}) || {(ACRE_IS_SPECTATOR && {!ACRE_MUTE_SPECTATORS} && {_voipId in ACRE_SPECTATORS_LIST})}) then {
             _ret = 1;
         };
     };

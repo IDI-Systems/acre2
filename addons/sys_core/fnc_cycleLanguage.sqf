@@ -28,7 +28,7 @@ if (_numSpokenLanguages > 1) then {
     ["acre_cycleLanguage", _languageName, "Now speaking", "", 1, EGVAR(sys_list,LanguageColor)] call EFUNC(sys_list,displayHint);
     [] call FUNC(updateSelf);
     if (ACRE_LOCAL_SPEAKING) then {
-        //@TODO: This is an uber hack, should probably be set up as a TS event.
+        //@TODO: This is an uber hack, should probably be set up as a Mumble/TS event.
         //Basically we update globally a locally set object variable from the
         //start speaking event when they cycle languages while talking.
         acre_player setVariable [QGVAR(languageId), _languageId, true];

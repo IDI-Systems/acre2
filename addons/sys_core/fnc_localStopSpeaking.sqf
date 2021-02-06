@@ -29,6 +29,6 @@ if (isNil "ACRE_CustomVolumeControl") then {
     EGVAR(sys_gui,volumeLevel) call EFUNC(sys_gui,setVoiceCurveLevel);
 };
 
-//[str GVAR(ts3id), netId acre_player] call FUNC(remoteStopSpeaking);
+//[str GVAR(voipId), netId acre_player] call FUNC(remoteStopSpeaking);
 
 true

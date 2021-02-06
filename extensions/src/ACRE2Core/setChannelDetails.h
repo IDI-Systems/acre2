@@ -7,14 +7,14 @@
 
 #include <sstream>
 
-RPC_FUNCTION(setTs3ChannelDetails) {
+RPC_FUNCTION(setChannelDetails) {
     const  std::vector<std::string> details = {
         std::string((char *)vMessage->getParameter(0)),
         std::string((char *)vMessage->getParameter(1)),
         std::string((char *)vMessage->getParameter(2))
     };
 
-    CEngine::getInstance()->getClient()->updateTs3ChannelDetails(details);
+    CEngine::getInstance()->getClient()->updateChannelDetails(details);
     return acre::Result::ok;
 }
 public:

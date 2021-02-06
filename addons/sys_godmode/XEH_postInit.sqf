@@ -12,7 +12,7 @@ LOAD_SOUND(Acre_GodPingOff);
     params ["_speakingId", "_speakingName", "_channel", "_channelEx"];
 
     #ifndef TEST_SELF_RX
-    if (_speakingId == EGVAR(sys_core,ts3id)) exitWith {};
+    if (_speakingId == EGVAR(sys_core,voipId)) exitWith {};
     #endif
 
     GVAR(speakingGods) pushBackUnique _speakingId;

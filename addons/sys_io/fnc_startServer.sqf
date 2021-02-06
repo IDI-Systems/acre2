@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Starts the SQF code to maintain connectivity to the TeamSpeak plugin via the ACRE2Arma extension.
+ * Starts the SQF code to maintain connectivity to the VOIP plugin via the ACRE2Arma extension.
  *
  * Arguments:
  * None

@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Function to send a b64 sound to the teamspeak plugin to be loaded. Once loaded the sound will always be available.
+ * Function to send a b64 sound to the VOIP plugin to be loaded. Once loaded the sound will always be available.
  *
  * Arguments:
  * 0: Sound classname (in CfgAcreSounds) <STRING>
@@ -19,8 +19,8 @@
 
 params ["_className",["_returnFunction",nil],["_force",false]];
 
-// If teamspeak is connected.
-if (EGVAR(sys_core,ts3id) != -1) then { 
+// If VOIP plugin is connected.
+if (EGVAR(sys_core,voipId) != -1) then { 
     if (!(_className in GVAR(loadedSounds)) && {!_force}) then {
         private _fileName = getText(configFile >> "CfgAcreSounds" >> _className >> "sound");
         if (_fileName != "") then {
@@ -42,7 +42,7 @@ if (EGVAR(sys_core,ts3id) != -1) then {
     //teamspeak is not connected store in a buffer.
     if (isNil QGVAR(soundLoadBuffer)) then {
         GVAR(soundLoadBuffer) = [_this];
-        [{EGVAR(sys_core,ts3id) != -1}, {
+        [{EGVAR(sys_core,voipId) != -1}, {
             {
                 _x call FUNC(loadSound);
             } forEach (GVAR(soundLoadBuffer));

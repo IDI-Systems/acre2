@@ -22,7 +22,9 @@ public:
     acre::Result initialize( void );
     acre::Result shutdown( void );
 
-    acre::Result handleMessage(unsigned char *data) { (void) data; return acre::Result::notImplemented; }
+    acre::Result handleMessage(unsigned char* data) { (void)data; return acre::Result::notImplemented; }
+    acre::Result handleMessage(unsigned char* data, size_t length) { (void)data; return acre::Result::notImplemented; }
+
 
     acre::Result sendMessage( IMessage *message );
 

@@ -20,6 +20,12 @@ public:
 
     acre::Result sendMessage(IMessage *msg);
     acre::Result handleMessage(unsigned char *msg);
+    acre::Result handleMessage(unsigned char* msg, size_t length) override {
+        (void)msg;
+        (void)length;
+
+        return acre::Result::notImplemented;
+    }
 
     acre::Result release(void);
 

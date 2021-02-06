@@ -82,5 +82,5 @@ void ts3plugin_onClientMoveMovedEvent(uint64 serverConnectionHandlerID, anyID cl
 }
 
 void ts3plugin_onUpdateChannelEditedEvent(uint64 serverConnectionHandlerID, uint64 channelID, anyID invokerID, const char* invokerName, const char* invokerUniqueIdentifier) {
-    CEngine::getInstance()->getClient()->updateShouldSwitchTS3Channel(true);
+    CEngine::getInstance()->getClient()->updateShouldSwitchChannel(true);
 }

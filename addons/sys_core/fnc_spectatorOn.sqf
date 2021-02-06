@@ -17,7 +17,7 @@
 
 if (!ACRE_IS_SPECTATOR) then {
     ACRE_IS_SPECTATOR = true;
-    [QEGVAR(sys_server,onSetSpector), [GVAR(ts3id), 1, clientOwner]] call CALLSTACK(CBA_fnc_serverEvent);
+    [QEGVAR(sys_server,onSetSpector), [GVAR(voipId), 1, clientOwner]] call CALLSTACK(CBA_fnc_serverEvent);
     TRACE_1("spectatorOn",ACRE_IS_SPECTATOR);
 };
 

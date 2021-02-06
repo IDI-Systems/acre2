@@ -11,24 +11,28 @@ public:
 
     //static TS3Functions ts3Functions;
 
-    CTS3Client() {};
-    ~CTS3Client() {};
+    CTS3Client() = default;
+    ~CTS3Client() final = default;
 
-    acre::Result initialize(void);
+    acre::Result initialize(void) final;
 
-    acre::Result setMuted(const acre::id_t id_, const bool muted_);
-    acre::Result setMuted(std::list<acre::id_t> idList_, const bool muted_);
+    acre::Result setMuted(const acre::id_t id_, const bool muted_) final;
+    acre::Result setMuted(std::list<acre::id_t> idList_, const bool muted_) final;
 
-    acre::Result getMuted(const acre::id_t id_);
+    acre::Result getMuted(const acre::id_t id_) final;
 
-    acre::Result stop();
-    acre::Result start(const acre::id_t id_);
+    acre::Result stop() final;
+    acre::Result start(const acre::id_t id_) final;
 
     acre::Result exPersistVersion(void);
 
-    acre::Result enableMicrophone(const bool status_);
+    acre::Result setClientMetadata(const char* const data);
+
+    acre::Result enableMicrophone(const bool status_) final;
 
     bool getInputStatus();
+
+    bool getVAD();
 
     /*!
     * \brief Handles local player starting speaking.
@@ -37,7 +41,7 @@ public:
     *
     * \return       acre::Result::ok if operation successful
     */
-    acre::Result localStartSpeaking(const acre::Speaking speakingType_);
+    acre::Result localStartSpeaking(const acre::Speaking speakingType_) final;
 
     /*!
     * \brief Handles local player starting speaking.
@@ -47,59 +51,37 @@ public:
     *
     * \return       acre::Result::ok if operation successful
     */
-    acre::Result localStartSpeaking(const acre::Speaking speakingType_, std::string radioId_);
+    acre::Result localStartSpeaking(const acre::Speaking speakingType_, std::string radioId_) final;
 
     /*!
-    * \brief Handles local player stopping speaking.
-    *
-    * \param[in]    speakingType_    ACRE speaking type
-    *
-    * \return       acre::Result::ok if operation successful
-    */
-    acre::Result localStopSpeaking(const acre::Speaking speakingType_);
+     * \brief Handles local player stopping speaking.
+     *
+     * \param[in]    speakingType_    ACRE speaking type
+     *
+     * \return       acre::Result::ok if operation successful
+     */
+    acre::Result localStopSpeaking(const acre::Speaking speakingType_) final;
 
-    std::string getTempFilePath(void);
-    std::string getConfigFilePath(void);
+    std::string getTempFilePath(void) final;
+    std::string getConfigFilePath(void) final;
 
-    acre::Result playSound(std::string path_, acre::vec3_fp32_t position_, const float32_t volume_, const int32_t looping_);
+    acre::Result playSound(std::string path_, acre::vec3_fp32_t position_, const float32_t volume_, const int32_t looping_) final;
 
-    std::string getUniqueId();
+    std::string getUniqueId() final;
 
-    bool getVAD();
+    acre::Result microphoneOpen(const bool status_) final;
 
-    acre::Result microphoneOpen(const bool status_);
+    acre::Result unMuteAll(void) final;
 
-    acre::Result unMuteAll(void);
+    acre::Result moveToServerChannel() final;
+    acre::Result moveToPreviousChannel() final;
+    uint64 findChannelByNames(std::vector<std::string> details_) final;
 
-    acre::Result moveToServerTS3Channel();
-    acre::Result moveToPreviousTS3Channel();
-    uint64 findChannelByNames(std::vector<std::string> details_);
-    uint32_t getWordMatches(const std::string& string1_, const std::string& string2_);
-    uint32_t levenshteinDistance(const std::string& string1_, const std::string& string2_);
-    std::string removeSubstrings(std::string string_, std::string substring_);
-    acre::Result updateTs3ChannelDetails(std::vector<std::string> details_);
-    acre::Result updateShouldSwitchTS3Channel(const bool state_);
-    bool shouldSwitchTS3Channel();
+    acre::Result updateChannelDetails(std::vector<std::string> details_) final;
+    acre::Result updateShouldSwitchChannel(const bool state_) final;
+    bool shouldSwitchChannel() final;
 
-    inline void setState(acre::State value) final { m_state = value; }
-    inline acre::State getState() const final { return m_state; }
-
-    DECLARE_MEMBER(bool, hadVAD);
-    DECLARE_MEMBER(bool, InputActive);
-    DECLARE_MEMBER(bool, OnRadio);
-    DECLARE_MEMBER(int32_t, TsSpeakingState);
-    DECLARE_MEMBER(bool, RadioPTTDown);
-    DECLARE_MEMBER(bool, IntercomPTTDown);
-    DECLARE_MEMBER(bool, MainPTTDown);
-    DECLARE_MEMBER(bool, DirectFirst);
-    DECLARE_MEMBER(bool, HitTSSpeakingEvent);
-    DECLARE_MEMBER(bool, IsX3DInitialized);
-    DECLARE_MEMBER(uint32_t, SpeakerMask);
-    DECLARE_MEMBER(uint64, PreviousTSChannel);
-    DECLARE_MEMBER(std::vector<std::string>, Ts3ChannelDetails);
-    DECLARE_MEMBER(bool, ShouldSwitchTS3Channel)
-protected:
+private:
     std::thread m_versionThreadHandle;
-    char *m_vadLevel;
-    acre::State m_state;
+    char* m_vadLevel = nullptr;
 };

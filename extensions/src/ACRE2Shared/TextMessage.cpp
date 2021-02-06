@@ -22,19 +22,7 @@ acre::Result CTextMessage::parse(char *const value, const size_t len) {
         return acre::Result::ok;
     }
 
-    // Check to make sure the entire chunk of data is a NULL terminated ascii string
-    for (size_t x = 0 ; x < len; x++) {
-        if (!__isascii(value[x]) && value[x] != 0x00) {
-            this->m_IsValid = false;
-            LOG("INVALID PACKET DETECTED l:%d", len);
-            return acre::Result::error;
-        }
-        if (value[x] == 0x00) {   // null terminate, bail
-            break;
-        }
-    }
-
-    const size_t length = strlen(value) + 1;
+    const size_t length = len + 1;
     if (length < 3)  {
         this->m_IsValid = false;
         return acre::Result::error;
