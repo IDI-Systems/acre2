@@ -5,7 +5,7 @@ class CfgAcreComponents {
 
     class ACRE_BaseAntenna: ACRE_ComponentBase {
         type = ACRE_COMPONENT_ANTENNA;
-        simple = true;
+        simple = 1;
         polarization = VERTICAL_POLARIZE;
         heightAG = AVERAGE_MAN_HEIGHT;
         orient = 90; // in degrees off of flat plane

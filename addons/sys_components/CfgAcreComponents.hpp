@@ -2,7 +2,7 @@ class CfgAcreComponents {
     class Default;
 
     class ACRE_ComponentBase {
-        simple = false;
+        simple = 0;
         type = ACRE_COMPONENT_GENERIC;
     };
 
