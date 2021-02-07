@@ -40,6 +40,18 @@ private _timeToSend = diag_tickTime;
     missionNamespace setVariable [_radioId+_event+"dataCache", nil];
 };*/
 
+// Directly send data now (because FUNC(_processQueue) is never run on dedicated)
+// ref: sys_gsa
+if (isDedicated) exitWith {
+    private _serializedData = _data call FUNC(serialize);
+    private _sendEvents = [[objNull, _radioId, _event, _serializedData, _eventKind]];
+    private _id = [] call FUNC(createEventMsgId);
+    PUSH(GVAR(pendingNetworkEvents), _id);
+    TRACE_2("SENDING dedicated NETWORK EVENT ", _id, _sendEvents);
+    [_id, _sendEvents] call FUNC(sendDataEvent);
+};
+
+
 if (isClass _eventClass) then {
     _priority = getNumber (_eventClass >> "priority");
     if (_radioId in GVAR(forceHighPriorityIds)) then {

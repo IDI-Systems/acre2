@@ -18,6 +18,15 @@
 params ["_class"];
 
 private _ret = nil;
+
+// On a dedicated server objectIdRelationTable will not be available
+if (isDedicated) exitWith { 
+    if (HASH_HASKEY(EGVAR(sys_server,masterIdTable), _class)) then {
+        _ret = (HASH_GET(EGVAR(sys_server,masterIdTable), _class) select 0);
+    };
+    _ret
+};
+
 if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable), _class)) then {
     _ret = (HASH_GET(EGVAR(sys_server,objectIdRelationTable), _class) select 0);
 };
