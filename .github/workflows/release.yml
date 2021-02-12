@@ -204,7 +204,7 @@ jobs:
       with:
         appId: '107410'
         itemId: '1740990569'  # Global Mobilization Compatibility
-        contentPath: '@acre2'
+        contentPath: '@acre2/optionals/@acre2_sys_gm'
         changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
       env:
         STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
