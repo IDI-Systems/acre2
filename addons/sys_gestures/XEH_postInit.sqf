@@ -24,7 +24,7 @@ if (GVAR(stopADS)) then {
     private _hasHeadgear = headgear _unit != "";
     if (!_hasVest && !_hasHeadgear) exitWith {};
 
-    private _baseRadio = _radio call acre_api_fnc_getBaseRadio;
+    private _baseRadio = _radio call EFUNC(api,getBaseRadio);
     private _isVestRadio = _baseRadio in GVAR(vestRadioArr);
     private _isHeadsetRadio = _baseRadio in GVAR(headsetRadioArr);
 
