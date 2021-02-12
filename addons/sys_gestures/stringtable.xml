@@ -19,7 +19,7 @@
         <Key ID="STR_ACRE_sys_gestures_vestRadios">
             <English>Vest Radios</English>
         </Key>
-        <Key ID="STR_ACRE_sys_gestures_vestRadios">
+        <Key ID="STR_ACRE_sys_gestures_vestRadios_description">
             <English>Radios that will play the vest animation.</English>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS">
