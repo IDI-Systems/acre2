@@ -148,7 +148,7 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: Publisher
         SLACK_ICON_EMOJI: ":package:"
-        SLACK_MESSAGE: 'Dev-Build uploaded! http://dev.idi-systems.com/dev/acre2_${{ needs.build.outputs.VERSION }}.zip'
+        SLACK_MESSAGE: 'Dev-Build uploaded! http://${{ secrets.FTP_SERVER }}/dev/acre2_${{ needs.build.outputs.VERSION }}.zip'
         SLACK_TITLE: Release Status
         MSG_MINIMAL: actions url
 
