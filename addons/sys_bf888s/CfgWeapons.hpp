@@ -8,7 +8,7 @@ class CfgWeapons {
         displayName = QUOTE(NAME_BF888S);
         useActionTitle = QUOTE(NAME_BF888S);
         picture = QPATHTOF(Data\static\bf888s_icon.paa);
-        model = QPATHTOF(Data\models\acre_prc343_model.p3d);
+        model = QPATHTOF(Data\models\acre_bf888s_model.p3d);
         descriptionShort = "Baofeng BF-888S UHF Radio";
 
         scopeCurator = 2;

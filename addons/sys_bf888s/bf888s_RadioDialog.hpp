@@ -48,9 +48,9 @@ class BF888S_RadioDialog {
 
         // x 1048, y 927
         BEGIN_CONTROL(ChannelKnobButton, Prc343_RscButton, 201)
-            x = (((((0.416+0.085)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
+            x = (((((0.410+0.085)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
             y = ((((0.38-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
-            w = SCALE*0.072*SafeZoneH;
+            w = SCALE*0.04*SafeZoneH;
             h = SCALE*0.1*SafeZoneH;
             colorBackground[] = {1, 0, 0, 0};
             text = "";
@@ -68,9 +68,9 @@ class BF888S_RadioDialog {
 
         // x 1186, y 922
         BEGIN_CONTROL(VolumeKnobButton, Prc343_RscButton, 202)
-            x = ((((0.416-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
-            y = ((((0.28-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
-            w = SCALE*0.072*SafeZoneH;
+            x = (((((0.450+0.085)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
+            y = ((((0.38-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
+            w = SCALE*0.04*SafeZoneH;
             h = SCALE*0.1*SafeZoneH;
             colorBackground[] = {0, 1, 0, 0};
             text = "";
