@@ -2,8 +2,7 @@
 
 ADDON = false;
 
-PREP_FOLDER(radio);
-PREP_FOLDER(functions);
+#include "XEH_PREP.hpp"
 
 [] call FUNC(presetInformation);
 
