@@ -1,8 +1,6 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Only used if a radio has an internal speaker. Since the AN/PRC 343 has none, this function returns an
- * array of zeros and does nothing.
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
@@ -20,4 +18,12 @@
  * Public: No
  */
 
-[0, 0, 0];
+params ["_radioId", "", "", ""];
+
+private _obj = [_radioId] call EFUNC(sys_radio,getRadioObject);
+private _pos = getPosASL _obj;
+if (_obj isKindOf "Man") then {
+    _pos = AGLtoASL (_obj modelToWorld (_obj selectionPosition "RightShoulder"));
+};
+
+_pos;
