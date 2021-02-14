@@ -68,3 +68,8 @@ acre_player addEventHandler ["WeaponDeployed", {
         _unit call FUNC(stopGesture);
     };
 }];
+
+["unit", {
+    params ["", "_oldUnit"];
+    _oldUnit call FUNC(stopGesture);
+}, true] call CBA_fnc_addPlayerEventHandler;
