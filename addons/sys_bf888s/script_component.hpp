@@ -2,9 +2,9 @@
 #define COMPONENT_BEAUTIFIED BF 888S
 #include "\idi\acre\addons\main\script_mod.hpp"
 
-#define DEBUG_MODE_FULL
-#define DISABLE_COMPILE_CACHE
-#define ENABLE_PERFORMANCE_COUNTERS
+//#define DEBUG_MODE_FULL
+//#define DISABLE_COMPILE_CACHE
+//#define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_SYS_BF888S
     #define DEBUG_MODE_FULL
