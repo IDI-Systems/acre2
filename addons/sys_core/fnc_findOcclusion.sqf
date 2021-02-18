@@ -24,6 +24,11 @@ if (_distance > 150) exitWith { 0; };
 if (!lineIntersects [_startPos, _endPos]) exitWith { 1; };
 private _vehicleUnit = vehicle _unit;
 private _vehiclePlayer = vehicle acre_player;
+// If spectating, use the spectating-target's vehicle for lineIntersects commands
+if (ACRE_IS_SPECTATOR) then {
+    _vehiclePlayer = vehicle cameraOn;
+};
+
 if (_vehicleUnit isEqualTo _vehiclePlayer) exitWith { 1; };
 
 private _cachedData = (_unit getVariable [QGVAR(occlusionCache), [nil,nil,-1]]);

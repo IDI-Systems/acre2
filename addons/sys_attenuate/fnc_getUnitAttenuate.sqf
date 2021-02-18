@@ -19,14 +19,23 @@
 // e.g. what the local acre_player attenuation scale value is.
 // returns 0-1
 
-private _listener = acre_player;
 params ["_speaker"];
+private _vehSpeaker = vehicle _speaker;
+private _listener = acre_player;
+private _vehListener = vehicle _listener;
+
+private _spectatingInsideVehicle = false;
+// If we are spectating and in first person view then use the spectating-target's vehicle for attenuation calcs
+if (ACRE_IS_SPECTATOR && {cameraView == "INTERNAL"} && {!(cameraOn isKindOf "CaManBase")}) then {
+    _listener = cameraOn; // note: cameraOn only provides the vehicle, not the specific unit
+    _vehListener = _listener;
+    _spectatingInsideVehicle = true;
+};
+
 private _attenuate = 0;
 
-private _vehListener = vehicle _listener;
-private _vehSpeaker = vehicle _speaker;
-
 if (_vehListener == _vehSpeaker) then {
+    if (_spectatingInsideVehicle) exitWith {}; // we won't be able to determine the specific compartment
     private _listenerTurnedOut = isTurnedOut _listener;
     private _speakerTurnedOut = isTurnedOut _speaker;
     if (!(_listenerTurnedOut && _speakerTurnedOut)) then {
@@ -43,7 +52,7 @@ if (_vehListener == _vehSpeaker) then {
         };
     };
 } else {
-    if (_vehListener != _listener) then {
+    if (_spectatingInsideVehicle || {_vehListener != _listener}) then {
         private _listenerTurnedOut = isTurnedOut _listener;
         if (!_listenerTurnedOut) then {
             // acre_player sideChat format["1 %1 %2", _attenuate, (1-(getNumber (configFile >> "CfgVehicles" >> (typeOf (vehicle _listener)) >> "insideSoundCoef")))];
