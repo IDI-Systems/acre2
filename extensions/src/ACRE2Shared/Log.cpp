@@ -6,7 +6,7 @@
 
 Log *g_Log = nullptr;
 
-Log::Log(char *logFile) {
+Log::Log(const char * const logFile) {
    
     if (logFile == nullptr) {
         return;
