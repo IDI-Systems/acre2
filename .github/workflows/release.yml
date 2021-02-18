@@ -1,0 +1,238 @@
+name: Release
+
+on:
+  push:
+    branches:
+    - development-build
+    - release-build
+
+jobs:
+  build:
+    if: github.repository == 'IDI-Systems/acre2' && ! contains(github.event.head_commit.message, '[ci skip]')
+    runs-on: windows-latest
+    outputs:
+      VERSION: ${{ env.VERSION }}
+      SHA_SHORT: ${{ env.SHA_SHORT }}
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@v2
+    - name: Setup Tools
+      run: |
+        C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
+        Expand-Archive acre2_tools.zip -DestinationPath ci
+        echo "Check HEMTT: $(Test-Path .\\ci\\hemtt.exe)"
+        echo "Check Binarize: $(Test-Path .\\ci\\binarize\\binarize_x64.exe)"
+        .\ci\hemtt.exe --version
+        echo "Install Binarize dependencies"
+        cp .\ci\binarize\X3DAudio1_7.dll,.\ci\binarize\XAPOFX1_5.dll C:\Windows\System32\
+        echo "::group::Set Binarize registry path"
+        New-Item "HKCU:\\Software\\Bohemia Interactive\\binarize" -Force | New-ItemProperty -Name path -Value "${{ github.workspace }}\ci\binarize"
+        echo "::endgroup::"
+        echo "VERSION=$(.\\ci\\hemtt.exe var version)" >> $env:GITHUB_ENV
+        echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $env:GITHUB_ENV
+    - name: Test Binarize
+      run: |
+        echo "::group::Run Binarize without arguments (look for missing DLLs)"
+        ./ci/binarize/binarize_x64.exe || true  # binarize exits with 1 if no file given
+        echo "::endgroup::"
+      shell: bash  # outputs missing dll information
+    - name: Build (HEMTT)
+      run: |
+        echo "ACRE2 v${{ env.VERSION }} (${{ env.SHA_SHORT }})"
+        .\ci\hemtt.exe build --release --ci --time
+      env:
+        BIOUTPUT: 1  # output binarize log
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: acre2
+        path: releases/${{ env.VERSION }}/*  # Upload folder to avoid double-zip artifacts
+        retention-days: 1
+
+  compile:
+    if: github.repository == 'IDI-Systems/acre2' && ! contains(github.event.head_commit.message, '[ci skip]')
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        arch: [x86, x64]
+    env:
+      DXSDK_DIR: "${{ github.workspace }}\\ci\\directx-sdk"  # CMake FindDirectX
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@v2
+    - name: Setup Tools
+      run: |
+        C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
+        Expand-Archive acre2_tools.zip -DestinationPath ci
+        echo "Check BattlEye: $(Test-Path .\\ci\\battleye\\signtool.exe,.\\ci\\battleye\\idi-systems.pfx)"
+        echo "Check DirectX SDK: $(Test-Path .\\ci\\directx-sdk\\Include,.\\ci\\directx-sdk\\Lib\\${{ matrix.arch }})"
+        echo "DXSDK_DIR: ${{ env.DXSDK_DIR }}"
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+    - name: Build Extensions (x86)
+      if: matrix.arch == 'x86'
+      run: |
+        cd extensions\\vcproj
+        cmake .. -A Win32
+        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Steam;ACRE2\ACRE2TS;Extras\Wav2B64' /p:Configuration=RelWithDebInfo
+    - name: Build Extensions (x64)
+      if: matrix.arch == 'x64'
+      run: |
+        cd extensions\\vcproj64
+        cmake .. -A x64
+        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Steam;ACRE2\ACRE2TS' /p:Configuration=RelWithDebInfo
+    - name: Sign (BattlEye)
+      run: |
+        .\ci\battleye\signtool.exe sign /f .\ci\battleye\idi-systems.pfx /p ${{ secrets.BE_CRED_PASSWORD }} /t http://timestamp.digicert.com *.dll
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: acre2-extensions-${{ matrix.arch }}
+        path: |
+          *.dll
+          plugin
+          symbols
+        retention-days: 1
+
+  publish-dev:
+    needs: [build, compile]
+    if: github.ref == 'refs/heads/development-build'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Artifacts
+      uses: actions/download-artifact@v2
+    - name: Prepare Archives
+      run: |
+        echo "Organize"
+        mv acre2/* .
+        mv acre2-extensions-*/*.dll @acre2/
+        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir symbols && mv acre2-extensions-*/symbols/* .
+        echo "::group::Archive build"
+        zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
+        echo "::endgroup::"
+        echo "::group::Archive symbols"
+        zip -r acre2_${{ needs.build.outputs.VERSION }}_symbols.zip x86 x64
+        echo "::endgroup::"
+        ls *.zip
+    - name: Upload to FTP (ACRE2)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        source: "acre2_${{ needs.build.outputs.VERSION }}.zip"
+        target: "${{ secrets.FTP_SERVER }}/dev"
+    - name: Upload to FTP (Symbols)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        source: "acre2_${{ needs.build.outputs.VERSION }}_symbols.zip"
+        target: "${{ secrets.FTP_SERVER }}/symbols"
+    - name: Upload to Steam (ACRE2 Dev Builds)
+      #if: false
+      uses: arma-actions/workshop-upload@v1
+      with:
+        appId: '107410'
+        itemId: '774084145'  # Dev Builds
+        contentPath: '@acre2'
+        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
+      env:
+        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_USERNAME: Publisher
+        SLACK_ICON_EMOJI: ":package:"
+        SLACK_MESSAGE: 'Dev-Build uploaded! http://${{ secrets.FTP_SERVER }}/dev/acre2_${{ needs.build.outputs.VERSION }}.zip'
+        SLACK_TITLE: Release Status
+        MSG_MINIMAL: actions url
+
+  publish-release:
+    needs: [build, compile]
+    if: github.ref == 'refs/heads/release-build'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Artifacts
+      uses: actions/download-artifact@v2
+    - name: Prepare Archives
+      run: |
+        echo "Organize"
+        mv acre2/* .
+        mv acre2-extensions-*/*.dll @acre2/
+        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir symbols && mv acre2-extensions-*/symbols/* .
+        echo "::group::Archive build"
+        zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
+        echo "::endgroup::"
+        echo "::group::Archive symbols"
+        zip -r acre2_${{ needs.build.outputs.VERSION }}_symbols.zip x86 x64
+        echo "::endgroup::"
+        ls *.zip
+    - name: Upload to FTP (ACRE2)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        source: "acre2_${{ needs.build.outputs.VERSION }}.zip"
+        target: "${{ secrets.FTP_SERVER }}/release"
+    - name: Upload to FTP (Symbols)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        source: "acre2_${{ needs.build.outputs.VERSION }}_symbols.zip"
+        target: "${{ secrets.FTP_SERVER }}/symbols"
+    - name: Upload to Steam (ACRE2)
+      uses: arma-actions/workshop-upload@v1
+      with:
+        appId: '107410'
+        itemId: '751965892'  # Release
+        contentPath: '@acre2'
+        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
+      env:
+        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+    - name: Upload to Steam (ACRE2 Global Mobilization Compatibility)
+      uses: arma-actions/workshop-upload@v1
+      with:
+        appId: '107410'
+        itemId: '1740990569'  # Global Mobilization Compatibility
+        contentPath: '@acre2/optionals/@acre2_sys_gm'
+        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
+      env:
+        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+    - name: Prepare GitHub
+      id: release_drafter
+      uses: release-drafter/release-drafter@v5
+      with:
+        name: ACRE2 v${{ needs.build.outputs.VERSION }}
+        tag: v${{ needs.build.outputs.VERSION }}
+        version: ${{ needs.build.outputs.VERSION }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload to GitHub
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.release_drafter.outputs.upload_url }}
+        asset_path: ./acre2_${{ needs.build.outputs.VERSION }}.zip
+        asset_name: acre2_${{ needs.build.outputs.VERSION }}.zip
+        asset_content_type: application/zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_USERNAME: Publisher
+        SLACK_ICON_EMOJI: ":package:"
+        SLACK_MESSAGE: 'Release uploaded and published! Go to ${{ steps.release_drafter.outputs.html_url }} to finalize release notes and publish on GitHub.'
+        SLACK_TITLE: Release Status
+        MSG_MINIMAL: actions url
