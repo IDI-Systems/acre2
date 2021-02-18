@@ -15,7 +15,7 @@
  * None
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "initializeRadio", ["ACRE_PRC343_base", default1], [], false] call acre_sys_prc343_fnc_initializeRadio
+ * ["ACRE_BF888S_ID_1", "initializeRadio", ["ACRE_BF888S_base", default1], [], false] call acre_sys_BF888S_fnc_initializeRadio
  *
  * Public: No
  */

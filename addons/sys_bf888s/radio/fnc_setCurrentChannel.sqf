@@ -14,7 +14,7 @@
  * None
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "setCurrentChannel", 5, _radioData, false] call acre_sys_prc343_fnc_setCurrentChannel
+ * ["ACRE_BF888S_ID_1", "setCurrentChannel", 5, _radioData, false] call acre_sys_BF888S_fnc_setCurrentChannel
  *
  * Public: No
  */

@@ -14,7 +14,7 @@
  * Array returning the modified signal data <ARRAY>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "handleSignalData", _eventData, [], false] call acre_sys_prc343_fnc_handleSignalData
+ * ["ACRE_BF888S_ID_1", "handleSignalData", _eventData, [], false] call acre_sys_BF888S_fnc_handleSignalData
  *
  * Public: No
  */

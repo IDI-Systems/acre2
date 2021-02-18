@@ -14,8 +14,8 @@
  * None
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "setState", ["volume", 0.8], _radioData, false] call acre_sys_prc343_fnc_setState
- * ["ACRE_PRC343_ID_1", "setState", ["currentChannel", 1], _radioData, false] call acre_sys_prc343_fnc_setState
+ * ["ACRE_BF888S_ID_1", "setState", ["volume", 0.8], _radioData, false] call acre_sys_BF888S_fnc_setState
+ * ["ACRE_BF888S_ID_1", "setState", ["currentChannel", 1], _radioData, false] call acre_sys_BF888S_fnc_setState
  *
  * Public: No
  */

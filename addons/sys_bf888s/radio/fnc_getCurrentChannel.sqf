@@ -14,7 +14,7 @@
  * Current channel id <NUMBER>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "getCurrentChannel", [], _radioData, false] call acre_sys_prc343_fnc_getCurrentChannel
+ * ["ACRE_PRC343_ID_1", "getCurrentChannel", [], _radioData, false] call acre_sys_bf888s_fnc_getCurrentChannel
  *
  * Public: No
  */

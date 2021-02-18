@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc148_fnc_isExternalAudio
+ * [ARGUMENTS] call acre_sys_bf888s_fnc_isExternalAudio
  *
  * Public: No
  */

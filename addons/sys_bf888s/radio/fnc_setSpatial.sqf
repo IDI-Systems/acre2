@@ -15,7 +15,7 @@
  * None
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "setSpatial", -1, [], false] call acre_sys_prc343_fnc_setSpatial
+ * ["ACRE_BF888S_ID_1", "setSpatial", -1, [], false] call acre_sys_BF888S_fnc_setSpatial
  *
  * Public: No
  */

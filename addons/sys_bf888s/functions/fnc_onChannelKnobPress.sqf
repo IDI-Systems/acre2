@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * [["", 0], 0] call acre_sys_prc343_fnc_onChannelKnobPress
+ * [["", 0], 0] call acre_sys_bf888s_fnc_onChannelKnobPress
  *
  * Public: No
  */

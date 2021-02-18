@@ -14,7 +14,7 @@
  * Mode, transmitting frequency, receiving frequency and power of the parsed channel <HASH>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "getChannelData", 2, _radioData, false] call acre_sys_prc343_fnc_getChannelData
+ * ["ACRE_PRC343_ID_1", "getChannelData", 2, _radioData, false] call acre_sys_bf888s_fnc_getChannelData
  *
  * Public: No
  */

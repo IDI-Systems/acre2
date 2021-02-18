@@ -15,7 +15,7 @@
  * True <BOOL>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "handleEndTransmission", "ACRE_PRC343_ID_2", [], false] call acre_sys_prc343_fnc_handleEndTransmission
+ * ["ACRE_BF888S_ID_1", "handleEndTransmission", "ACRE_BF888S_ID_2", [], false] call acre_sys_BF888S_fnc_handleEndTransmission
  *
  * Public: No
  */

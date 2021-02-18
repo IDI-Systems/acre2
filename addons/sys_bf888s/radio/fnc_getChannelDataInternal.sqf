@@ -11,7 +11,7 @@
  * RETURN VALUE <TYPE>
  *
  * Example:
- * [ARGUMENTS] call acre_sys_prc148_fnc_getChannelDataInternal
+ * [ARGUMENTS] call acre_sys_bf888s_fnc_getChannelDataInternal
  *
  * Public: No
  */

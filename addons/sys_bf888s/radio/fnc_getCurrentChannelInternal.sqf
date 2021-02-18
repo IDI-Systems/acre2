@@ -10,7 +10,7 @@
  * Identity of the current channel <NUMBER>
  *
  * Example:
- * ["ACRE_PRC343_ID_1"] call acre_sys_prc343_fnc_getCurrentChannelInternal
+ * ["ACRE_PRC343_ID_1"] call acre_sys_bf888s_fnc_getCurrentChannelInternal
  *
  * Public: No
  */

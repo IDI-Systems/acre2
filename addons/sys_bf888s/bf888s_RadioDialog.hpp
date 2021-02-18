@@ -77,7 +77,5 @@ class BF888S_RadioDialog {
             onMouseButtonUp = QUOTE(_this call FUNC(onVolumeKnobPress));
             toolTip = QUOTE(Change volume);
         END_CONTROL
-
-
     };
 };

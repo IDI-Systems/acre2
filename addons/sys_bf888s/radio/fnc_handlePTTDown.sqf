@@ -15,7 +15,7 @@
  * True <BOOL>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "handlePTTDown", [], [], false] call acre_sys_prc343_fnc_handlePTTDown
+ * ["ACRE_BF888S_ID_1", "handlePTTDown", [], [], false] call acre_sys_BF888S_fnc_handlePTTDown
  *
  * Public: No
  */

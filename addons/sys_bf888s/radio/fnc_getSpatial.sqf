@@ -14,7 +14,7 @@
  * Spatial setting: -1 (left) 0 (center) or 1 (right). Defaulting to 0.<NUMBER>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "getSpatial", [], _radioData, false] call acre_sys_prc343_fnc_getSpatial
+ * ["ACRE_PRC343_ID_1", "getSpatial", [], _radioData, false] call acre_sys_bf888s_fnc_getSpatial
  *
  * Public: No
  */

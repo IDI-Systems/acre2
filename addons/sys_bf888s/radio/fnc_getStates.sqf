@@ -14,7 +14,7 @@
  * None
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "getStates", [], [], false] call acre_sys_prc343_fnc_getState] call acre_sys_prc343_fnc_getStates
+ * ["ACRE_bf888s_ID_1", "getStates", [], [], false] call acre_sys_bf888s_fnc_getState] call acre_sys_bf888s_fnc_getStates
  *
  * Public: No
  */

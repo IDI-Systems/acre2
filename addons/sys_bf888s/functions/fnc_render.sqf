@@ -10,7 +10,7 @@
  * True <BOOL>
  *
  * Example:
- * [DisplayID] call acre_sys_prc343_fnc_render
+ * [DisplayID] call acre_sys_bf888s_fnc_render
  *
  * Public: No
  */

@@ -14,9 +14,9 @@
  * Radio data content for the event data key <ARRAY>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "getState", "radioOn", _radioData, false] call acre_sys_prc343_fnc_getState
- * ["ACRE_PRC343_ID_1", "getState", "currentChannel", _radioData, false] call acre_sys_prc343_fnc_getState
- * ["ACRE_PRC343_ID_1", "getState", "volume", _radioData, false] call acre_sys_prc343_fnc_getState
+ * ["ACRE_BF888S_ID_1", "getState", "radioOn", _radioData, false] call acre_sys_BF888S_fnc_getState
+ * ["ACRE_BF888S_ID_1", "getState", "currentChannel", _radioData, false] call acre_sys_BF888S_fnc_getState
+ * ["ACRE_BF888S_ID_1", "getState", "volume", _radioData, false] call acre_sys_BF888S_fnc_getState
  * Public: No
  */
 

@@ -14,7 +14,7 @@
  * True <BOOL>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "closeGui", [], [], false] call acre_sys_prc343_fnc_closeGui
+ * ["ACRE_PRC343_ID_1", "closeGui", [], [], false] call acre_sys_bf888s_fnc_closeGui
  *
  * Public: No
  */
