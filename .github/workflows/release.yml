@@ -132,13 +132,12 @@ jobs:
         source: "acre2_${{ needs.build.outputs.VERSION }}_symbols.zip"
         target: "${{ secrets.FTP_SERVER }}/symbols"
     - name: Upload to Steam (ACRE2 Dev Builds)
-      #if: false
       uses: arma-actions/workshop-upload@v1
       with:
         appId: '107410'
         itemId: '774084145'  # Dev Builds
         contentPath: '@acre2'
-        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
+        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/compare/release-build...development-build'
       env:
         STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
