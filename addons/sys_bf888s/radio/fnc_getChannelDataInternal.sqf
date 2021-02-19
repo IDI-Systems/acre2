@@ -30,6 +30,10 @@ HASH_SET(_return, "power", HASH_GET(_channel, "power"));
 HASH_SET(_return, "CTCSSTx", HASH_GET(_channel, "CTCSSTx"));
 HASH_SET(_return, "CTCSSRx", HASH_GET(_channel, "CTCSSRx"));
 HASH_SET(_return, "modulation", HASH_GET(_channel, "modulation"));
+HASH_SET(_return, "encryption", HASH_GET(_channel, "encryption"));
+HASH_SET(_return, "TEK", HASH_GET(_channel, "tek"));
+HASH_SET(_return, "trafficRate", HASH_GET(_channel, "trafficRate"));
+HASH_SET(_return, "syncLength", HASH_GET(_channel, "phase"));
 
 TRACE_2("THINGS: ",_return, _channel);
 

@@ -19,18 +19,23 @@
  * Public: No
  */
 
-params ["", "", "", "_radioData", ""];
+params ["_radioId", "_event", "_eventData", "_radioData"];
 
-private _currentChannelId = HASH_GET(_radioData,"currentChannel");
-if (isNil "_currentChannelId") then {
-    _currentChannelId = 0;
+private _channelNumber = HASH_GET(_radioData,"currentChannel");
+if (isNil "_channelNumber") then {
+    _channelNumber = 0;
 };
-private _radioChannels = HASH_GET(_radioData,"channels");
-private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
-
-private _return = HASH_CREATE;
-HASH_SET(_return, "mode", "singleChannelPRR");
-HASH_SET(_return, "frequencyTX", HASH_GET(_currentChannelData, "frequencyTX"));
-HASH_SET(_return, "frequencyRX", HASH_GET(_currentChannelData, "frequencyRX"));
-HASH_SET(_return, "power", 100);
-_return
+private _cachedChannels = SCRATCH_GET_DEF(_radioId, "cachedFullChannels", []);
+private _return = nil;
+if (_channelNumber < (count _cachedChannels)) then {
+    _return = _cachedChannels select _channelNumber;
+};
+if (isNil "_return") then {
+    // _istart = diag_tickTime;
+    _return = [_channelNumber, _radioData] call FUNC(getChannelDataInternal);
+    // _iend = diag_tickTime;
+    // diag_log text format["i: %1", _iend-_istart];
+    _cachedChannels set[_channelNumber, _return];
+    SCRATCH_SET(_radioId, "cachedFullChannels", _cachedChannels);
+};
+_return;

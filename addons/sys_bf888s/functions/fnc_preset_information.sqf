@@ -16,7 +16,7 @@
  */
 
 private _presetFrequencies = [];
-for "_i" from 0 to 64 do {
+for "_i" from 0 to 239 do {
     private _basefrequency = 400;
     private _frequencymodifier = _i * 0.01;
     private _frequency = _basefrequency + _frequencymodifier;
@@ -33,11 +33,18 @@ for "_i" from 0 to 15 do {
 
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
-    HASH_SET(_channel, "power", 5000);
-    HASH_SET(_channel, "CTCSSTx", 69.3);
-    HASH_SET(_channel, "CTCSSRx", 69.3);
-    HASH_SET(_channel, "modulation", "FM");
-    HASH_SET(_channel, "squelch", 3);
+    HASH_SET(_channel,"power",5000);
+    HASH_SET(_channel,"encryption",0);
+    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"CTCSSTx", 69.3);
+    HASH_SET(_channel,"CTCSSRx", 69.3);
+    HASH_SET(_channel,"modulation","FM");
+    HASH_SET(_channel,"trafficRate",16);
+    HASH_SET(_channel,"TEK",1);
+    HASH_SET(_channel,"RPTR",0.2);
+    HASH_SET(_channel,"fade",2);
+    HASH_SET(_channel,"phase",256);
+    HASH_SET(_channel,"squelch",3);
     //HASH_SET(_channel,"channelNumber",_i);
 
     HASHLIST_PUSH(_channels,_channel);
@@ -54,11 +61,18 @@ for "_i" from 0 to 79 do {
 
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
-    HASH_SET(_channel, "power", 5000);
-    HASH_SET(_channel, "CTCSSTx", 69.3);
-    HASH_SET(_channel, "CTCSSRx", 69.3);
-    HASH_SET(_channel, "modulation", "FM");
-    HASH_SET(_channel, "squelch", 3);
+    HASH_SET(_channel,"power",5000);
+    HASH_SET(_channel,"encryption",0);
+    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"CTCSSTx", 69.3);
+    HASH_SET(_channel,"CTCSSRx", 69.3);
+    HASH_SET(_channel,"modulation","FM");
+    HASH_SET(_channel,"trafficRate",16);
+    HASH_SET(_channel,"TEK",1);
+    HASH_SET(_channel,"RPTR",0.2);
+    HASH_SET(_channel,"fade",2);
+    HASH_SET(_channel,"phase",256);
+    HASH_SET(_channel,"squelch",3);
     //HASH_SET(_channel,"channelNumber",_i);
 
     HASHLIST_PUSH(_channels,_channel);
@@ -75,11 +89,18 @@ for "_i" from 80 to 159 do {
 
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
-    HASH_SET(_channel, "power", 5000);
-    HASH_SET(_channel, "CTCSSTx", 69.3);
-    HASH_SET(_channel, "CTCSSRx", 69.3);
-    HASH_SET(_channel, "modulation", "FM");
-    HASH_SET(_channel, "squelch", 3);
+    HASH_SET(_channel,"power",5000);
+    HASH_SET(_channel,"encryption",0);
+    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"CTCSSTx", 69.3);
+    HASH_SET(_channel,"CTCSSRx", 69.3);
+    HASH_SET(_channel,"modulation","FM");
+    HASH_SET(_channel,"trafficRate",16);
+    HASH_SET(_channel,"TEK",1);
+    HASH_SET(_channel,"RPTR",0.2);
+    HASH_SET(_channel,"fade",2);
+    HASH_SET(_channel,"phase",256);
+    HASH_SET(_channel,"squelch",3);
 
     HASHLIST_PUSH(_channels,_channel);
 };
@@ -95,14 +116,24 @@ for "_i" from 160 to 239 do {
 
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
-    HASH_SET(_channel, "power", 5000);
-    HASH_SET(_channel, "CTCSSTx", 69.3);
-    HASH_SET(_channel, "CTCSSRx", 69.3);
-    HASH_SET(_channel, "modulation", "FM");
-    HASH_SET(_channel, "squelch", 3);
+    HASH_SET(_channel,"power",5000);
+    HASH_SET(_channel,"encryption",0);
+    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"CTCSSTx", 69.3);
+    HASH_SET(_channel,"CTCSSRx", 69.3);
+    HASH_SET(_channel,"modulation","FM");
+    HASH_SET(_channel,"trafficRate",16);
+    HASH_SET(_channel,"TEK",1);
+    HASH_SET(_channel,"RPTR",0.2);
+    HASH_SET(_channel,"fade",2);
+    HASH_SET(_channel,"phase",256);
+    HASH_SET(_channel,"squelch",3);
     //HASH_SET(_channel,"channelNumber",_i);
 
     HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_BF888S","default4",_presetData] call EFUNC(sys_data,registerRadioPreset);
+
+
+
