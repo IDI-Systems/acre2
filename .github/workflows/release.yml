@@ -165,6 +165,7 @@ jobs:
         echo "Organize"
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
+        mv acre2-extensions-*/extras/*.exe @acre2/extras/
         mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
