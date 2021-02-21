@@ -69,7 +69,7 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_
 
             if (_connectedUnit != _unit && {_connectedUnit isKindOf "CAManBase"}) then {
                 // The unit that disconnected the antenna is different from the unit that was connected to it
-                private _text = format [localize LSTRING(disconnectedUnit), name _unit];
+                private _text = format [localize LSTRING(disconnectedUnit), name _connectedUnit];
                 [QGVAR(notifyPlayer), [_text], _unit] call CBA_fnc_targetEvent;
             };
         };
