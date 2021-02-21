@@ -90,6 +90,7 @@ jobs:
         name: acre2-extensions-${{ matrix.arch }}
         path: |
           *.dll
+          extras/*.exe
           plugin
           symbols
         retention-days: 1
@@ -106,6 +107,7 @@ jobs:
         echo "Organize"
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
+        mv acre2-extensions-*/extras/*.exe @acre2/extras/
         mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
@@ -163,6 +165,7 @@ jobs:
         echo "Organize"
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
+        mv acre2-extensions-*/extras/*.exe @acre2/extras/
         mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
