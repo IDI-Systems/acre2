@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Checks the unit isn't on radio and mid-reload then stops the gesture
+ * Checks the unit isn't on radio and mid-reload then stops the gesture.
  *
  * Arguments:
  * 0: Unit that stopped speaking <OBJECT>
