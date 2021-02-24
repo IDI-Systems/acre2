@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles stopping the radio gesture.
+ * Handles the started speaking event and plays gesture based on conditions
  *
  * Arguments:
  * 0: Unit that started speaking <OBJECT>
