@@ -17,8 +17,8 @@ if (GVAR(stopADS)) then {
         { animationState _unit in GVAR(blackListAnims) } ||
         { currentWeapon _unit in GVAR(binoClasses) } ) exitWith {};
 
-    private _hasVest = vest _unit isNotEqualTo "";
-    private _hasHeadgear = headgear _unit isNotEqualTo "";
+    private _hasVest = vest _unit != "";
+    private _hasHeadgear = headgear _unit != "";
     if (!_hasVest && !_hasHeadgear) exitWith {};
 
     private _isHeadset = (_radio call EFUNC(api,getBaseRadio)) call FUNC(isHeadsetRadio);
