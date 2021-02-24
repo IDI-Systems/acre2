@@ -12,7 +12,7 @@
  * None
  *
  * Example:
- * [acre_player,true,acre_prc343_id_1"] call acre_sys_gesture_fnc_startedSpeaking
+ * [acre_player, true, "acre_prc343_id_1"] call acre_sys_gesture_fnc_startedSpeaking
  *
  * Public: No
  */
