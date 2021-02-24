@@ -6,13 +6,14 @@ if (GVAR(stopADS)) then {
     GVAR(disallowedViews) = ["GROUP"];
 };
 
-["acre_startedSpeaking", {call FUNC(startedSpeaking))}] call CBA_fnc_addEventHandler;
+["acre_startedSpeaking", {call FUNC(startedSpeaking)}] call CBA_fnc_addEventHandler;
 ["acre_stoppedSpeaking", {call FUNC(stoppedSpeaking)}] call CBA_fnc_addEventHandler;
 
 ["unit", {
     params ["", "_oldUnit"];
     _oldUnit call FUNC(stopGesture);
 }, true] call CBA_fnc_addPlayerEventHandler;
+
 acre_player addEventHandler ["GetInMan", {
     params ["_unit"];
 
