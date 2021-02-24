@@ -2,6 +2,8 @@
 title: Gestures
 ---
 
+{% include important.html content="Requires ACE3 Common!" %}
+
 By default, ACRE2 plays a small animation when the player uses their radios. This is known as a gesture as it only impacts certain parts of the character and doesn't prohibit movement.
 
 To differentiate between using two types of radios, by default some radios will play a chest touching gesture, others will play an ear touching gesture. Currently, the radio lists are as follows:
