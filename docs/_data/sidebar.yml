@@ -81,6 +81,10 @@ entries:
       url: /wiki/user/ts-channel-switching
       output: web, pdf
 
+    - title: Gestures
+      url: /wiki/user/gestures
+      output: web, pdf
+
     - title: God Mode
       url: /wiki/user/god-mode
       output: web, pdf
