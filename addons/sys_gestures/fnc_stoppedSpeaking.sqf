@@ -11,7 +11,7 @@
  * None
  *
  * Example:
- * [acre_player,false] call acre_sys_gesture_fnc_stoppedSpeaking
+ * [acre_player, false] call acre_sys_gesture_fnc_stoppedSpeaking
  *
  * Public: No
  */
