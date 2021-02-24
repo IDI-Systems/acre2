@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Returns true is radio is for headset use, false for vest use
+ * Checks if radio is for headset use.
  *
  * Arguments:
  * 0: Base radio classname <STRING>
