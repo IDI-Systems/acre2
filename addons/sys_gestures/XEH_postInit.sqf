@@ -6,50 +6,13 @@ if (GVAR(stopADS)) then {
     GVAR(disallowedViews) = ["GROUP"];
 };
 
-["acre_startedSpeaking", {
-    params ["_unit", "_onRadio", "_radio"];
+["acre_startedSpeaking", {call FUNC(startedSpeaking))}] call CBA_fnc_addEventHandler;
+["acre_stoppedSpeaking", {call FUNC(stoppedSpeaking)}] call CBA_fnc_addEventHandler;
 
-    if (!_onRadio ||
-        { !isNull objectParent _unit } ||
-        { cameraView in GVAR(disallowedViews) } ||
-        { ace_common_isReloading } ||
-        { isWeaponDeployed _unit } ||
-        { animationState _unit in GVAR(blackListAnims) } ||
-        { currentWeapon _unit in GVAR(binoClasses) } ) exitWith {};
-
-    private _hasVest = vest _unit != "";
-    private _hasHeadgear = headgear _unit != "";
-    if (!_hasVest && !_hasHeadgear) exitWith {};
-
-    private _isHeadset = (_radio call EFUNC(api,getBaseRadio)) call FUNC(isHeadsetRadio);
-
-    if (_hasVest && !_isHeadset) then {
-        _unit playActionNow ([QGVAR(vest), QGVAR(vest_noADS)] select GVAR(stopADS));
-        _unit setVariable [QGVAR(onRadio), true];
-    };
-
-    if (_hasHeadgear && _isHeadset) then {
-        _unit playActionNow ([QGVAR(helmet), QGVAR(helmet_noADS)] select GVAR(stopADS));
-        _unit setVariable [QGVAR(onRadio), true];
-    };
-}] call CBA_fnc_addEventHandler;
-
-["acre_stoppedSpeaking", {
-    params ["_unit", "_onRadio"];
-
-    if (!_onRadio) exitWith {};
-
-    // If the unit started a reload while already talking, need to wait to finish to not delete a magazine
-    [
-        {!ace_common_isReloading},
-        {
-            // Wait 1 frame as mag doesn't report as loaded til events completed
-            [FUNC(stopGesture), _this] call CBA_fnc_execNextFrame;
-        },
-        _unit
-    ] call CBA_fnc_waitUntilAndExecute;
-}] call CBA_fnc_addEventHandler;
-
+["unit", {
+    params ["", "_oldUnit"];
+    _oldUnit call FUNC(stopGesture);
+}, true] call CBA_fnc_addPlayerEventHandler;
 acre_player addEventHandler ["GetInMan", {
     params ["_unit"];
 
@@ -63,8 +26,3 @@ acre_player addEventHandler ["WeaponDeployed", {
         _unit call FUNC(stopGesture);
     };
 }];
-
-["unit", {
-    params ["", "_oldUnit"];
-    _oldUnit call FUNC(stopGesture);
-}, true] call CBA_fnc_addPlayerEventHandler;
