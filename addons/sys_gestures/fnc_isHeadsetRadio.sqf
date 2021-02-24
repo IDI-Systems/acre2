@@ -7,7 +7,7 @@
  * 0: Base radio classname <STRING>
  *
  * Return Value:
- * None
+ * True if headset, false if vest <BOOL>
  *
  * Example:
  * ["ACRE_PRC343"] call acre_sys_gesture_fnc_isHeadsetRadio
