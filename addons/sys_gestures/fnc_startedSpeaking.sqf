@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles the started speaking event and plays gesture based on conditions
+ * Handles the started speaking event and plays gesture if possible (without interrupting other actions).
  *
  * Arguments:
  * 0: Unit that started speaking <OBJECT>
