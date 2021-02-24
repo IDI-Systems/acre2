@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-if (is3DEN || {!hasInterface || {!(GVAR(gesturesEnabled))}}) exitWith {};
+if (is3DEN || {!hasInterface || {!(GVAR(enabled))}}) exitWith {};
 if (!isClass (configFile >> "CfgPatches" >> "ace_common")) exitWith {}; // No ACE exit
 
 if (GVAR(stopADS)) then {
