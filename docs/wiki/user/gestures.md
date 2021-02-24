@@ -16,4 +16,6 @@ To differentiate between using two types of radios, by default some radios will 
 
 There are two settings in regards to this module. You can enable/disable the module as desired.
 
-The second setting, prevent aim down sights, aims to model a slightly more realistic environment. When this is enabled, if you're talking on the radio, you cannot aim down your sights, this is because you're using one hand to activate the radio. You can still fire one handed from this position but it's less than accurate. Is you're already aiming down your sights when you key the radio, it will take you off scope.
+There are two settings in regards to this component. You can enable/disable the overall functionality as well as prevent aim down sights.
+
+Goal of preventing aiming down sights is to model a slightly more realistic environment. When this is enabled, if you're talking on the radio, you cannot aim down your sights, this is because you're using one hand to activate the radio. You can still fire one handed from this position but it's less than accurate. Is you're already aiming down your sights when you key the radio, you will stop aiming down sights.
