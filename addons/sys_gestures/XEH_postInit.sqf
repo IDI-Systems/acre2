@@ -2,9 +2,6 @@
 if (is3DEN || {!hasInterface || {!(GVAR(gesturesEnabled))}}) exitWith {};
 if (!isClass (configFile >> "CfgPatches" >> "ace_common")) exitWith {}; // No ACE exit
 
-GVAR(vestRadioArr) = parseSimpleArray (GVAR(vestRadios));
-GVAR(headsetRadioArr) = parseSimpleArray (GVAR(headsetRadios));
-
 if (GVAR(stopADS)) then {
     GVAR(disallowedViews) = ["GROUP"];
 };
@@ -20,20 +17,18 @@ if (GVAR(stopADS)) then {
         { animationState _unit in GVAR(blackListAnims) } ||
         { currentWeapon _unit in GVAR(binoClasses) } ) exitWith {};
 
-    private _hasVest = vest _unit != "";
-    private _hasHeadgear = headgear _unit != "";
+    private _hasVest = vest _unit isNotEqualTo "";
+    private _hasHeadgear = headgear _unit isNotEqualTo "";
     if (!_hasVest && !_hasHeadgear) exitWith {};
 
-    private _baseRadio = _radio call EFUNC(api,getBaseRadio);
-    private _isVestRadio = _baseRadio in GVAR(vestRadioArr);
-    private _isHeadsetRadio = _baseRadio in GVAR(headsetRadioArr);
+    private _isHeadset = (_radio call EFUNC(api,getBaseRadio)) call FUNC(isHeadsetRadio);
 
-    if (_hasVest && _isVestRadio) then {
+    if (_hasVest && !_isHeadset) then {
         _unit playActionNow ([QGVAR(vest), QGVAR(vest_noADS)] select GVAR(stopADS));
         _unit setVariable [QGVAR(onRadio), true];
     };
 
-    if (_hasHeadgear && _isHeadsetRadio) then {
+    if (_hasHeadgear && _isHeadset) then {
         _unit playActionNow ([QGVAR(helmet), QGVAR(helmet_noADS)] select GVAR(stopADS));
         _unit setVariable [QGVAR(onRadio), true];
     };
