@@ -42,6 +42,7 @@ This playtesting allows us to guarantee that ACRE2 supports, without glitches, 1
 - Easy to Use
 - API/Pre-programming for milsim groups
 - Antennas and Components
+- Ground spike antenna
 
 ## Direct Communications
 

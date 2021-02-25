@@ -245,7 +245,8 @@ glm::vec3 acre::signal::map::normal(const float32_t x_, const float32_t y_) {
 }
 
 bool acre::signal::map::ground_intersect(const glm::vec3 &origin_, const glm::vec3 dir_, const float32_t max_distance_) {
-    return ground_intersect(origin_, dir_, max_distance_, glm::vec3());
+    glm::vec3 vec3_dummy{};
+    return ground_intersect(origin_, dir_, max_distance_, vec3_dummy);
 }
 
 bool acre::signal::map::ground_intersect(const glm::vec3 &origin_, const glm::vec3 dir_, const float32_t max_distance_, glm::vec3 &result_) {

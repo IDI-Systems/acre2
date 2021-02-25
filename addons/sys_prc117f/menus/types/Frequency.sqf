@@ -64,7 +64,7 @@ DFUNC(doFrequencyButton) = {
         };
         if ( ((toArray _value) select _editIndex) == 46) then {
             // recursively push a button again, since we want to skip it.
-            TRACE_1("Edit digit incrementing hit a dot, skip it"."");
+            TRACE_1("Edit digit incrementing hit a dot, skip it","");
             _editIndex = _editIndex + 1;
         };
 

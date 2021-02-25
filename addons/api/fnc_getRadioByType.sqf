@@ -40,4 +40,7 @@ if (_array isEqualType objNull) then {
     };
 } forEach _array;
 
+// Prevent script errors in the scheduler when the unit does not have a radio and `_ret = nil`
+if (isNil "_ret") exitWith { nil };
+
 _ret

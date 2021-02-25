@@ -68,7 +68,7 @@ if (!GVAR(aceLoaded)) then {
 // Keybinds - Babel
 ["ACRE2", "BabelCycleKey", localize LSTRING(BabelCycleKey), "", {
     [] call FUNC(cycleLanguage)
-}, [DIK_LWIN, [false, false, false]]] call CBA_fnc_addKeybind;
+}, [DIK_RALT, [false, false, false]]] call CBA_fnc_addKeybind;
 
 // Keybinds - Radio Ear
 ["ACRE2", "RadioLeftEar", localize LSTRING(RadioLeftEar), {

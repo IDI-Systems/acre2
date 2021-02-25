@@ -26,12 +26,12 @@ params [
 ];
 
 if ((_group < 0) || {_group >= GODMODE_NUMBER_OF_GROUPS}) exitWith {
-    ERROR_1("Invalid group ID. Group ID must be between 0 and %1, but %2 is entered.",GODMODE_NUMBER_OF_GROUPS-1,_group);
+    ERROR_2("Invalid group ID. Group ID must be between 0 and %1, but %2 is entered.",GODMODE_NUMBER_OF_GROUPS-1,_group);
     false
 };
 
 if ((_action < GODMODE_ACTION_SET) || {_action > GODMODE_ACTION_SUBTRACT}) exitWith {
-    ERROR_3("Invalid action %1. Valid values are %2 (set), %3 (add) and %4 (subtract).",_action,GODMODE_ACTION_SET,GODMODE_ACTION_ADD,GODMODE_ACTION_SUBTRACT);
+    ERROR_4("Invalid action %1. Valid values are %2 (set), %3 (add) and %4 (subtract).",_action,GODMODE_ACTION_SET,GODMODE_ACTION_ADD,GODMODE_ACTION_SUBTRACT);
     false
 };
 

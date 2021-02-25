@@ -92,7 +92,7 @@ public:                                                \
 
 #define RPC_FUNCTION(name) class name## : public IRpcFunction {                \
 public:                                                                        \
-    name##(){ this->m_Name = STR(name); }                                    \
+    name##() : m_Name(STR(name)) {}                                    \
     ~##name(){ }                                                            \
     acre::Result call(IServer *vServer, IMessage *vMessage)
 

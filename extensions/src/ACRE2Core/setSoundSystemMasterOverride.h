@@ -24,9 +24,9 @@ RPC_FUNCTION(setSoundSystemMasterOverride) {
     return acre::Result::ok;
 }
 public:
-    inline void setName(char *const value) final { m_Name = value; }
-    inline char* getName() const final { return m_Name; }
+    inline void setName(const char *const value) final { m_Name = value; }
+    inline const char* getName() const final { return m_Name; }
 
 protected:
-    char* m_Name;
+    const char* m_Name;
 };
