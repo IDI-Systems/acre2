@@ -1,6 +1,7 @@
 ---
 title: Gestures
 ---
+{% include important.html content="Dev-build only" %}
 
 {% include important.html content="Requires ACE3 Common!" %}
 
@@ -13,8 +14,6 @@ To differentiate between using two types of radios, by default some radios will 
 | ACRE_PRC77   | ACRE_PRC152  |
 | ACRE_SEM52SL | ACRE_PRC117F |
 |              | ACRE_SEM70   |
-
-There are two settings in regards to this module. You can enable/disable the module as desired.
 
 There are two settings in regards to this component. You can enable/disable the overall functionality as well as prevent aim down sights.
 
