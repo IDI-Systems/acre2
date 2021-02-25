@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="sys_gestures">
+        <Key ID="STR_ACRE_sys_gestures_category">
+            <English>ACRE2 Gestures</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gestures_enabled">
+            <English>Enable</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gestures_enabled_description">
+            <English>Animate players using radios.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gestures_stopADS">
+            <English>Prevent Aim Down Sights</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gestures_stopADS_description">
+            <English>Keying radios will prevent aiming down sights.</English>
+        </Key>
+    </Package>
+</Project>
