@@ -15,7 +15,7 @@
  * Success <BOOLEAN>
  *
  * Example:
- * _success = ["ACRE_PRC148_ID_123", "INTAUDIO"] call acre_api_fnc_setRadioAudioSource;
+ * _success = ["ACRE_PRC148_ID_123", "INTAUDIO"] call acre_api_fnc_setRadioAudioSource
  *
  * Public: Yes
  */
@@ -25,23 +25,22 @@ params [
     ["_audioSource", "", [""]]
 ];
 
-private _radioType = [_radioId] call acre_api_fnc_getBaseRadio;
-private _success = false;
+private _radioType = [_radioId] call FUNC(getBaseRadio);
 
-if (_radioType isEqualTo "ACRE_PRC148" && {_audioSource in ["INTAUDIO", "TOPAUDIO", "TOPSIDETON", "SIDEAUDIO", "SIDESIDETON"]}) then {
-    _success = [_radioId, "setState", ["audioPath", _audioSource]] call EFUNC(sys_data,dataEvent);
+if (_radioType isEqualTo "ACRE_PRC148" && {_audioSource in ["INTAUDIO", "TOPAUDIO", "TOPSIDETON", "SIDEAUDIO", "SIDESIDETON"]}) exitWith {
+    [_radioId, "setState", ["audioPath", _audioSource]] call EFUNC(sys_data,dataEvent)
 };
 
-if (_radioType isEqualTo "ACRE_PRC152" && {_audioSource in ["INTAUDIO", "TOPAUDIO"]}) then {
-    _success = [_radioId, "setState", ["audioPath", _audioSource]] call EFUNC(sys_data,dataEvent);
+if (_radioType isEqualTo "ACRE_PRC152" && {_audioSource in ["INTAUDIO", "TOPAUDIO"]}) exitWith {
+    [_radioId, "setState", ["audioPath", _audioSource]] call EFUNC(sys_data,dataEvent)
 };
 
-if (_radioType isEqualTo "ACRE_SEM52SL" && {_audioSource in ["INTSPEAKER", "HEADSET"]}) then {
-    _success = [_radioId, "setState", ["audioPath", _audioSource]] call EFUNC(sys_data,dataEvent);
+if (_radioType isEqualTo "ACRE_SEM52SL" && {_audioSource in ["INTSPEAKER", "HEADSET"]}) exitWith {
+    [_radioId, "setState", ["audioPath", _audioSource]] call EFUNC(sys_data,dataEvent)
 };
 
-if (_radioType isEqualTo "ACRE_SEM70" && {_audioSource in ["INTSPEAKER", "HEADSET"]}) then {
-    _success = [_radioId, "setState", ["audioPath", _audioSource]] call EFUNC(sys_data,dataEvent);
+if (_radioType isEqualTo "ACRE_SEM70" && {_audioSource in ["INTSPEAKER", "HEADSET"]}) exitWith {
+    [_radioId, "setState", ["audioPath", _audioSource]] call EFUNC(sys_data,dataEvent)
 };
 
-_success
+false

@@ -55,6 +55,8 @@ class CfgFunctions {
 
             PATHTO_FNC(setRadioAudioSource);
             PATHTO_FNC(getRadioAudioSource);
+            PATHTO_FNC(setRadioSpeaker);
+            PATHTO_FNC(isRadioSpeaker);
         };
 
         class Racks {
