@@ -18,7 +18,7 @@
 
 params ["_radioId", "_eventKind", "_eventData"];
 
-if !(_radioId isEqualTo GVAR(currentRadioId)) exitWith { true };
+if (_radioId isNotEqualTo GVAR(currentRadioId)) exitWith { true };
 
 // If display is open
 private _currentMenu = GET_STATE_DEF("currentMenu", "");

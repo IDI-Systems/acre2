@@ -126,7 +126,7 @@ private _result = false;
                 _okRadios = (_okRadios select 0) select 1;
 
                 //_okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
-                if !(_okRadios isEqualTo []) then {
+                if (_okRadios isNotEqualTo []) then {
                     missionNamespace setVariable [_radioId + "_signal_startTime", diag_tickTime];
                     _result = true;
                     GVAR(speaking_cache_valid) = false;

@@ -51,7 +51,7 @@ private _channelKnobPosition = _newChannel+2; // position 0 is off, 1 is last ch
 private _currentChannelKnobPosition = HASH_GET(_radioData,"channelKnobPosition");
 if (_currentChannelKnobPosition != 1 && {_currentChannelKnobPosition != _channelKnobPosition}) then {
     HASH_SET(_radioData,"channelKnobPosition",_channelKnobPosition);
-    if (!(GVAR(currentRadioId) isEqualTo -1)) then { // is dialog open.
+    if (GVAR(currentRadioId) isNotEqualTo -1) then { // is dialog open.
         [MAIN_DISPLAY] call FUNC(render);
     };
 };

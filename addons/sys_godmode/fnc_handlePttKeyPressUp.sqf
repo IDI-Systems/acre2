@@ -26,7 +26,7 @@ GVAR(targetUnits) = [];
 GVAR(speaking) = false;
 
 #ifndef ALLOW_EMPTY_TARGETS
-if !(GVAR(targetUnits) isEqualTo []) then {
+if (GVAR(targetUnits) isNotEqualTo []) then {
     #ifndef TEST_SELF_RX
     ["Acre_GodPingOff", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
     #endif

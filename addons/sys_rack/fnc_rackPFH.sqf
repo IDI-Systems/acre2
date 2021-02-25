@@ -46,7 +46,7 @@ private _remove = [];
     private _isRackAccessible = [_rack, _player] call FUNC(isRackAccessible);
 
     // Check only those radios connected on intercom systems
-    if (_isRackHearable && {!(([_rack] call FUNC(getWiredIntercoms)) isEqualTo [])}) then {
+    if (_isRackHearable && {([_rack] call FUNC(getWiredIntercoms)) isNotEqualTo []}) then {
         private _functionality = [_x, _vehicle, _player, _rack] call EFUNC(sys_intercom,getRackRxTxCapabilities);
 
         if (_functionality == RACK_NO_MONITOR) then {
@@ -68,7 +68,7 @@ private _remove = [];
     [_x] call EFUNC(sys_radio,stopUsingRadio);
 } forEach _remove;
 
-if !(_remove isEqualTo []) then {
+if (_remove isNotEqualTo []) then {
     [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
 };
 

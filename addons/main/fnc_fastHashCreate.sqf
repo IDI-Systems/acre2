@@ -15,7 +15,7 @@
  * Public: No
  */
 
-if !(ACRE_FAST_HASH_POOL isEqualTo []) exitWith {
+if (ACRE_FAST_HASH_POOL isNotEqualTo []) exitWith {
     private _ret = ACRE_FAST_HASH_POOL deleteAt 0;
     ACRE_FAST_HASH_CREATED_HASHES_NEW pushBack _ret;
     _ret

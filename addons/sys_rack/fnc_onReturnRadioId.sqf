@@ -32,7 +32,7 @@ _vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
 private _crewPlayers =  [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
 private _condition = false;
 
-if !(_crewPlayers isEqualTo []) then {
+if (_crewPlayers isNotEqualTo []) then {
     if (local (_crewPlayers select 0)) then {
         _condition = true;
     };

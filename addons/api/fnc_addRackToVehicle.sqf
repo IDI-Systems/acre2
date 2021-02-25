@@ -104,10 +104,10 @@ private _selectPlayer = {
     private _player = objNull;
 
     private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
-    if (_condition isEqualTo {} && {!(_vehiclePresetName isEqualTo "")}) then {
+    if (_condition isEqualTo {} && {_vehiclePresetName isNotEqualTo ""}) then {
         private _crewPlayers = [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
 
-        if !(_crewPlayers isEqualTo []) then {
+        if (_crewPlayers isNotEqualTo []) then {
             _player = _crewPlayers select 0;
         } else {
             _player = ([] call CBA_fnc_players) select 0;

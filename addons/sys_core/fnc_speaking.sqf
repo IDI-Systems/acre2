@@ -29,7 +29,7 @@ private _radioParamsSorted = [[],[]];
 #endif
 
 private _sentMicRadios = [];
-if !(GVAR(keyedMicRadios) isEqualTo []) then {
+if (GVAR(keyedMicRadios) isNotEqualTo []) then {
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
         BEGIN_COUNTER(speaking_loop_with_transmissions);
@@ -58,7 +58,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
 
             {
                 private _params = _x;
-                if !(_params isEqualTo []) then {
+                if (_params isNotEqualTo []) then {
                     _params params ["_txId", "_rxId", "_signalData", "_params"];
 
                     _radioParamsSorted params ["_radios", "_sources"];
@@ -92,7 +92,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     _radioParamsSorted params ["_radios","_sources"];
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
-        if !(_radios isEqualTo []) then {
+        if (_radios isNotEqualTo []) then {
             BEGIN_COUNTER(radio_loop);
         };
     #endif
@@ -202,7 +202,7 @@ if !(GVAR(keyedMicRadios) isEqualTo []) then {
     } forEach _radios;
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
-        if !(_radios isEqualTo []) then {
+        if (_radios isNotEqualTo []) then {
             END_COUNTER(radio_loop);
         };
 

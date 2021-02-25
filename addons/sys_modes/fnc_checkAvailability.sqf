@@ -43,7 +43,7 @@ private _foundRadios = [];
             };
             if (_isAvailable && {_quick}) exitWith {};
         } forEach _list2;
-        if !(_matches isEqualTo []) then {
+        if (_matches isNotEqualTo []) then {
             if (_quick) then {
                 _exit = true;
             };

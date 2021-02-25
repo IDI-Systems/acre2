@@ -36,13 +36,13 @@ private _replaceRadioAcre = {
         _this set [0, [_item] call FUNC(getBaseRadio)];
     };
 };
-if !((_loadout select 3) isEqualTo []) then {
+if ((_loadout select 3) isNotEqualTo []) then {
     {_x call _replaceRadioAcre} forEach ((_loadout select 3) select 1); // Uniform items
 };
-if !((_loadout select 4) isEqualTo []) then {
+if ((_loadout select 4) isNotEqualTo []) then {
     {_x call _replaceRadioAcre} forEach ((_loadout select 4) select 1); // Vest items
 };
-if !((_loadout select 5) isEqualTo []) then {
+if ((_loadout select 5) isNotEqualTo []) then {
     {_x call _replaceRadioAcre} forEach ((_loadout select 5) select 1); // Backpack items
 };
 

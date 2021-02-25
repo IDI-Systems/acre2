@@ -17,7 +17,7 @@
 params ["_args", "_result"];
 _args params ["_transmitterClass", "_receiverClass"];
 
-if !(_result isEqualTo []) then {
+if (_result isNotEqualTo []) then {
     _result params ["_id", "_signal"];
     TRACE_2("",_id,_signal);
 

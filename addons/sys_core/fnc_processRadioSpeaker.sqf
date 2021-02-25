@@ -60,7 +60,7 @@ if (!GVAR(speaking_cache_valid)) then {
 };
 
 
-if !(_okRadios isEqualTo []) then {
+if (_okRadios isNotEqualTo []) then {
     #ifdef ENABLE_PERFORMANCE_COUNTERS
         BEGIN_COUNTER(okradio_loop);
     #endif

@@ -95,7 +95,7 @@ thicknessHits = [];
 debugIntersectPoints = [];
 checks = 0;*/
 private _directAttenuate = 1;
-if !(_intersectObjects isEqualTo []) then { // do occlusion
+if (_intersectObjects isNotEqualTo []) then { // do occlusion
 
 // End Jaynus Additions
 
