@@ -10,20 +10,26 @@ if (GVAR(stopADS)) then {
 ["acre_stoppedSpeaking", {call FUNC(stoppedSpeaking)}] call CBA_fnc_addEventHandler;
 
 ["unit", {
-    params ["", "_oldUnit"];
+    params ["_newUnit", "_oldUnit"];
     _oldUnit call FUNC(stopGesture);
-}, true] call CBA_fnc_addPlayerEventHandler;
 
-acre_player addEventHandler ["GetInMan", {
-    params ["_unit"];
+    // Add EHs one time only (won't be re-added on respawn)
+    if (_newUnit getVariable [QGVAR(hasEHS), false]) exitWith {};
+    _newUnit setVariable [QGVAR(hasEHS), true];
 
-    _unit call FUNC(stopGesture);
-}];
+    _newUnit addEventHandler ["GetInMan", {
+        params ["_unit"];
+        TRACE_1("GetInMan",_unit);
 
-acre_player addEventHandler ["WeaponDeployed", {
-    params ["_unit", "_isDeployed"];
-
-    if (_isDeployed) then {
         _unit call FUNC(stopGesture);
-    };
-}];
+    }];
+
+    _newUnit addEventHandler ["WeaponDeployed", {
+        params ["_unit", "_isDeployed"];
+        TRACE_2("WeaponDeployed",_unit,_isDeployed);
+
+        if (_isDeployed) then {
+            _unit call FUNC(stopGesture);
+        };
+    }];
+}, true] call CBA_fnc_addPlayerEventHandler;
