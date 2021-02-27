@@ -2,14 +2,12 @@ class CfgWeapons {
     class ACRE_BaseRadio;
     class CBA_MiscItem_ItemInfo;
 
-    // replace ItemRadios icon with the 343 icon for stupid people
-
     class ACRE_BF888S: ACRE_BaseRadio {
         displayName = QUOTE(NAME_BF888S);
         useActionTitle = QUOTE(NAME_BF888S);
         picture = QPATHTOF(Data\static\bf888s_icon.paa);
         model = QPATHTOF(Data\models\acre_bf888s_model.p3d);
-        descriptionShort = "Baofeng BF-888S UHF Radio";
+        descriptionShort = "Beofeng BF-888S UHF Radio";
 
         scopeCurator = 2;
         scope = 2;
