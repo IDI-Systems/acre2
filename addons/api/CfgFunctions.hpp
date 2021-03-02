@@ -52,6 +52,9 @@ class CfgFunctions {
 
             PATHTO_FNC(setCurrentRadioChannelNumber);
             PATHTO_FNC(getCurrentRadioChannelNumber);
+
+            PATHTO_FNC(setRadioData);
+            PATHTO_FNC(getRadioData);
         };
 
         class Racks {
