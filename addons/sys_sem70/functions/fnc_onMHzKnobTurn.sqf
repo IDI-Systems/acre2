@@ -50,7 +50,7 @@ if (_knobPosition != _newKnobPosition) then {
     if (_newKnobPosition < 0) then {
         _newKnobPosition = 49;
     };
-    ["setState", ["MHzKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
+    ["setStateCritical", ["MHzKnobPosition",_newKnobPosition]] call GUI_DATA_EVENT;
 
     // We parse a 0 here, because we are in manual mode
     ["setCurrentChannel", GVAR(manualChannel)] call GUI_DATA_EVENT;
