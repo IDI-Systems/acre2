@@ -27,7 +27,7 @@ if (EGVAR(sys_zeus,zeusCommunicateViaCamera) && FUNC(inZeus)) then {
 if (ACRE_IS_SPECTATOR) then {
     ACRE_LISTENER_POS = _projectPos;
 } else {
-    ACRE_LISTENER_POS = acre_player modelToWorldVisualWorld (acre_player selectionPosition "head");
+    ACRE_LISTENER_POS = acre_player modelToWorldVisualWorld (acre_player selectionPosition "pilot");
 };
 
 private _height = ACRE_LISTENER_POS param [2, 1];
