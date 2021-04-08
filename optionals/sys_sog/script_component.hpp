@@ -1,5 +1,5 @@
-#define COMPONENT sys_vn
-#define COMPONENT_BEAUTIFIED Global Mobilization Compatibility
+#define COMPONENT sys_sog
+#define COMPONENT_BEAUTIFIED S.O.G. Prairie Fire Compatibility
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_VN
