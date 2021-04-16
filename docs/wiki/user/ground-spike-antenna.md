@@ -2,6 +2,8 @@
 title: Ground Spike Antenna
 ---
 
+{% include important.html content="Requires ACE3 Interaction Menu!" %}
+
 The GSA is a radio antenna which can be deployed in the field which allows for some radios to be connected. Doing so will increase the transmit power to 20 W and improves the quality of the transmission due to the increased height of the antenna, generally resulting in an improved quality over range.
 
 The ground spike antenna supports the following radios:
