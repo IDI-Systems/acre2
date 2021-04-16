@@ -33,6 +33,10 @@ entries:
       url: /news/latest
       output: web
 
+    - title: Team
+      url: /team
+      output: web
+
   - title: User Guides
     output: web, pdf
     folderitems:
