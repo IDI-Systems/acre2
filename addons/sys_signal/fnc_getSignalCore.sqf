@@ -74,5 +74,4 @@ if (ACRE_SIGNAL_DEBUGGING > 0) then {
     missionNamespace setVariable [_transmitterClass + "_signal_trace", _signalTrace];
 };
 
-
 [_Px, _maxSignal]
