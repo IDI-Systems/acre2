@@ -37,6 +37,7 @@ if (_player != vehicle _player) then {
 
 // Check whether the vehicle rack radios can still be used
 private _remove = [];
+private _readd = [];
 {
     if !([_x] call EFUNC(sys_radio,radioExists)) then {_remove pushBackUnique _x;};
     private _rack = [_x] call FUNC(getRackFromRadio);
@@ -55,6 +56,12 @@ private _remove = [];
     };
 
     if !(_isRackAccessible || {_isRackHearable}) then {_remove pushBackUnique _x;};
+
+    // Radio is in the wrong access-type array (e.g. seat-switching)
+    if ((!(_x in _remove)) && {_isRackAccessible isNotEqualTo (_x in ACRE_ACCESSIBLE_RACK_RADIOS)}) then {
+        _remove pushBackUnique _x;
+        _readd pushBackUnique _x;
+    };
 } forEach (ACRE_ACCESSIBLE_RACK_RADIOS + ACRE_HEARABLE_RACK_RADIOS);
 
 {
@@ -67,6 +74,9 @@ private _remove = [];
     // Handle active radio
     [_x] call EFUNC(sys_radio,stopUsingRadio);
 } forEach _remove;
+{
+    [_vehicle, _player, _x] call FUNC(startUsingMountedRadio);
+} forEach _readd;
 
 if (_remove isNotEqualTo []) then {
     [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
