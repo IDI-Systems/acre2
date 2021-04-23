@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Close radio GUI. Event raised by onUnload (PRC343_RadioDialog).
+ * Close radio GUI. Event raised by onUnload (BF888S_RadioDialog).
  *
  * Arguments:
  * 0: Radio ID <STRING>
@@ -14,7 +14,7 @@
  * True <BOOL>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "closeGui", [], [], false] call acre_sys_bf888s_fnc_closeGui
+ * ["ACRE_BF888S_ID_1", "closeGui", [], [], false] call acre_sys_bf888s_fnc_closeGui
  *
  * Public: No
  */

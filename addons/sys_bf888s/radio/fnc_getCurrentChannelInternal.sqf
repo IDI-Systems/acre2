@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Returns the unique identity of the current channel since the PRC343 has multiple blocks.
+ * Returns the unique identity of the current channel.
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
@@ -10,7 +10,7 @@
  * Identity of the current channel <NUMBER>
  *
  * Example:
- * ["ACRE_PRC343_ID_1"] call acre_sys_bf888s_fnc_getCurrentChannelInternal
+ * ["ACRE_BF888S_ID_1"] call acre_sys_bf888s_fnc_getCurrentChannelInternal
  *
  * Public: No
  */

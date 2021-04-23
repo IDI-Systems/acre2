@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Function called when starting a transmission. For the BF888S it does nothing.
+ * Function called when starting a transmission. For the BF-888S it does nothing.
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)
@@ -14,7 +14,7 @@
  * True <BOOL>
  *
  * Example:
- * ["ACRE_BF888S_ID_1", "handleBeginTransmission", [], [], false] call acre_sys_BF888S_fnc_handleBeginTransmission
+ * ["ACRE_BF888S_ID_1", "handleBeginTransmission", [], [], false] call acre_sys_bf888s_fnc_handleBeginTransmission
  *
  * Public: No
  */

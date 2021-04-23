@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * For a AN/PRC 343 this function is the same as acre_sys_prc343_getChannelDescription,
+ * For a BF-888S this function is the same as acre_sys_bf888s_getChannelDescription,
  * and therefore it is called here. Used in the transmission hint on the lower right corner.
  *
  * Arguments:
@@ -15,7 +15,7 @@
  * Description of the channel in the form "Block x - Channel y" <STRING>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "getListInfo", [], [], false] call acre_sys_bf888s_fnc_getListInfo
+ * ["ACRE_BF888S_ID_1", "getListInfo", [], [], false] call acre_sys_bf888s_fnc_getListInfo
  *
  * Public: No
  */

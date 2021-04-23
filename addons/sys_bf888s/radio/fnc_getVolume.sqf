@@ -13,7 +13,7 @@
  * Current radio volume to the power of 3 (for cubic function) <NUMBER>
  *
  * Example:
- * ["ACRE_bf888s_ID_1", "getVolume", [], _radioData, false] call acre_sys_bf888s_fnc_getVolume
+ * ["ACRE_BF888S_ID_1", "getVolume", [], _radioData, false] call acre_sys_bf888s_fnc_getVolume
  *
  * Public: No
  */

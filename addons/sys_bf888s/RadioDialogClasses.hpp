@@ -1,4 +1,4 @@
-class Prc343_RscBackground {
+class BF888S_RscBackground {
     type = CT_STATIC;
     idc = -1;
     style = ST_BACKGROUND + ST_KEEP_ASPECT_RATIO;
@@ -9,7 +9,7 @@ class Prc343_RscBackground {
 };
 
 // text
-class Prc343_RscText {
+class BF888S_RscText {
     idc = -1;
     type = CT_STATIC;
     style = ST_LEFT + ST_KEEP_ASPECT_RATIO;
@@ -21,7 +21,7 @@ class Prc343_RscText {
     h = 0.03;
 };
 
-class Prc343_RscButton {
+class BF888S_RscButton {
     type = CT_BUTTON;
     idc = -1;
     style = ST_CENTER + ST_KEEP_ASPECT_RATIO;
@@ -67,7 +67,7 @@ class Prc343_RscButton {
     action = "";
 };
 
-class Prc343_RscPicture : Prc343_RscButton {
+class BF888S_RscPicture : BF888S_RscButton {
     type = CT_STATIC;
     idc = -1;
     style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;

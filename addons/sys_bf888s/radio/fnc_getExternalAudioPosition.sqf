@@ -13,7 +13,7 @@
  * Array of zeros <ARRAY>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "getExternalAudioPosition", [], _radioData, false] call acre_sys_bf888s_fnc_getExternalAudioPosition
+ * ["ACRE_BF888S_ID_1", "getExternalAudioPosition", [], _radioData, false] call acre_sys_bf888s_fnc_getExternalAudioPosition
  *
  * Public: No
  */

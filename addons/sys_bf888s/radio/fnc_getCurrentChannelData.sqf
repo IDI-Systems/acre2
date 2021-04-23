@@ -14,7 +14,7 @@
  * Hash with mode, transmitting and receiving frequencies and power <HASH>
  *
  * Example:
- * ["ACRE_PRC343_ID_1", "getCurrentChannelData", [], _radioData, false] call acre_sys_bf888s_fnc_getCurrentChannelData
+ * ["ACRE_BF888S_ID_1", "getCurrentChannelData", [], _radioData, false] call acre_sys_bf888s_fnc_getCurrentChannelData
  *
  * Public: No
  */

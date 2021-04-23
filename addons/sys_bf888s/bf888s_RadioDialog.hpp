@@ -38,7 +38,7 @@ class BF888S_RadioDialog {
         text = QPATHTOF(Data\static\bf888s_ui_backplate.paa);
     };
     class controls {
-        BEGIN_CONTROL(ChannelKnob, Prc343_RscPicture, 106)
+        BEGIN_CONTROL(ChannelKnob, BF888S_RscPicture, 106)
             x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w = NEW_SCALE*safeZoneH;
@@ -47,7 +47,7 @@ class BF888S_RadioDialog {
         END_CONTROL
 
         // x 1048, y 927
-        BEGIN_CONTROL(ChannelKnobButton, Prc343_RscButton, 201)
+        BEGIN_CONTROL(ChannelKnobButton, BF888S_RscButton, 201)
             x = (((((0.410+0.085)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
             y = ((((0.38-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
             w = SCALE*0.04*SafeZoneH;
@@ -58,7 +58,7 @@ class BF888S_RadioDialog {
             toolTip = QUOTE(Change channel);
         END_CONTROL
 
-        BEGIN_CONTROL(VolumeKnob, Prc343_RscPicture, 107)
+        BEGIN_CONTROL(VolumeKnob, BF888S_RscPicture, 107)
             x = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             y = ((0.5-(NEW_SCALE*(safeZoneH)/2)));
             w = NEW_SCALE*safeZoneH;
@@ -67,7 +67,7 @@ class BF888S_RadioDialog {
         END_CONTROL
 
         // x 1186, y 922
-        BEGIN_CONTROL(VolumeKnobButton, Prc343_RscButton, 202)
+        BEGIN_CONTROL(VolumeKnobButton, BF888S_RscButton, 202)
             x = (((((0.450+0.085)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
             y = ((((0.38-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY;
             w = SCALE*0.04*SafeZoneH;
