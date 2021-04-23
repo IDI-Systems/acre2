@@ -16,7 +16,7 @@
  */
 
 private _presetFrequencies = [];
-for "_i" from 0 to 239 do {
+for "_i" from 0 to 63 do {
     private _basefrequency = 400;
     private _frequencymodifier = _i * 0.01;
     private _frequency = _basefrequency + _frequencymodifier;
@@ -55,7 +55,7 @@ HASH_SET(_presetData,"channels",_channels);
 ///Default2
 _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
-for "_i" from 0 to 79 do {
+for "_i" from 16 to 31 do {
     private _frequency = _presetFrequencies select _i;
     private _channel = HASHLIST_CREATEHASH(_channels);
 
@@ -83,7 +83,7 @@ HASH_SET(_presetData,"channels",_channels);
 ///Default3
 _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
-for "_i" from 80 to 159 do {
+for "_i" from 32 to 47 do {
     private _frequency = _presetFrequencies select _i;
     private _channel = HASHLIST_CREATEHASH(_channels);
 
@@ -110,7 +110,7 @@ HASH_SET(_presetData,"channels",_channels);
 ///Default4
 _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
-for "_i" from 160 to 239 do {
+for "_i" from 48 to 63 do {
     private _frequency = _presetFrequencies select _i;
     private _channel = HASHLIST_CREATEHASH(_channels);
 
@@ -134,6 +134,3 @@ for "_i" from 160 to 239 do {
 };
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_BF888S","default4",_presetData] call EFUNC(sys_data,registerRadioPreset);
-
-
-
