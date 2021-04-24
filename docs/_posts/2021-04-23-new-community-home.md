@@ -6,7 +6,7 @@ permalink: 2021-04-23-new-community-home.html
 
 [**Join ACE3 Slack here!**](http://slackin.idi-systems.com/)
 
-In light of [recent developments](https://idi-systems.com/news/2021/04/06/us-army-awards-idi-systems.html) in IDI-Systems and relatively low public activity on the ACRE2 Slack workspace, we have decided to fully internalize it. One of the goals is to consolidate the ACRE2 community together with ACE3, which already hosts majority of the ACRE2 users in a great knowledge-sharing environment.
+In light of [recent developments](https://idi-systems.com/news/2021/04/06/us-army-awards-idi-systems.html) in IDI-Systems and relatively low public activity on the ACRE2 Slack workspace, we have decided to fully internalize it. One of the goals is to consolidate the ACRE2 community together with ACE3, which shares a long history with us and already hosts majority of the ACRE2 users in a great knowledge-sharing environment.
 
 With this in mind, we expect most will not be impacted by this move. Old Slack will be locked and all external accounts deactivated **in 2 weeks** of this posting. Further collaboration talk in form of private channels will continue on the ACE3 Slack, currently active ones will transition as well.
 
