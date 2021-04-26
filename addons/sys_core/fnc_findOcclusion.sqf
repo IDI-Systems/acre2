@@ -74,7 +74,7 @@ private _intersectObjects = lineIntersectsObjs [_startPos, _endPos, _vehicleUnit
 
 
 {
-    if !(isNull _x) then {
+    if (!isNull _x) then {
 
         call {
             if (_x isKindOf "House") exitWith { _thicknessFactor = _thicknessFactor + 0.3; };
