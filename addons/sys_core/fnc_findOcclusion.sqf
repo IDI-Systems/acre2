@@ -74,12 +74,11 @@ private _intersectObjects = lineIntersectsObjs [_startPos, _endPos, _vehicleUnit
 
 
 {
-    private _typeString = typeOf _x;
-    if (_typeString != "") then {
+    if !(isNull _x) then {
 
         call {
-            if (_typeString isKindOf "House") exitWith { _thicknessFactor = _thicknessFactor + 0.3; };
-            if (_typeString isKindOf "LandVehicle") exitWith { _thicknessFactor = _thicknessFactor + 0.07; };
+            if (_x isKindOf "House") exitWith { _thicknessFactor = _thicknessFactor + 0.3; };
+            if (_x isKindOf "LandVehicle") exitWith { _thicknessFactor = _thicknessFactor + 0.07; };
             _thicknessFactor = _thicknessFactor + 0.05;
         };
 

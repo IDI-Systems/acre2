@@ -19,8 +19,7 @@ params ["_vehicle"];
 
 private _initialized = _vehicle getVariable [QGVAR(initialized), false];
 if (!_initialized) then {
-    private _classname = typeOf _vehicle;
-    private _racks = configFile >> "CfgVehicles" >> _classname >> "AcreRacks";
+    private _racks = configOf _vehicle >> "AcreRacks";
 
     {
         private _componentName = getText (_x >> "componentName");

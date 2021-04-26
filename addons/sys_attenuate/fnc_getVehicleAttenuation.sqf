@@ -21,7 +21,7 @@ private _vehicle = vehicle _unit;
 if (isNull _vehicle) exitWith {};
 
 private _attenuation = 0;
-private _effectType = getText (configFile >> "CfgVehicles" >> (typeOf _vehicle) >> "attenuationEffectType");
+private _effectType = getText (configOf _vehicle >> "attenuationEffectType");
 
 private _turret = _vehicle unitTurret _unit;
 if (!(_turret in [[], [-1]])) then {

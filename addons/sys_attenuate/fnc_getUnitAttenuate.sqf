@@ -44,7 +44,7 @@ if (_vehListener == _vehSpeaker) then {
         private _speakerCompartment = [_speaker] call EFUNC(sys_core,getCompartment);
         if (_speakerCompartment != _listenerCompartment) then {
             // acre_player sideChat format["1 lc: %1 sc: %2 %3", _listenerCompartment, _speakerCompartment, (getNumber (configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment))];
-            _attenuate = ((getNumber (configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment)));
+            _attenuate = ((getNumber (configOf _vehListener >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment)));
         };
         if (_speakerTurnedOut || _listenerTurnedOut) then {
             // acre_player sideChat format["2 lc: %1 sc: %2 %3", _listenerCompartment, _speakerCompartment, (getNumber (configFile >> "CfgVehicles" >> (typeOf _vehListener) >> "ACRE" >> "attenuation" >> _speakerCompartment >> _listenerCompartment))];
