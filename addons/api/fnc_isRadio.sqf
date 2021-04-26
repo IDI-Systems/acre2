@@ -22,5 +22,5 @@ params [
 
 private _config = configFile >> "CfgWeapons" >> _radio;
 
-getNumber (_config >> "acre_isRadio") == 1
+getNumber (_config >> "acre_uniqueId") != 0
 && {getNumber (_config >> "scope") == 1}
