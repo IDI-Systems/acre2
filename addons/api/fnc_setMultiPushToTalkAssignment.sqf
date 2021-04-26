@@ -21,7 +21,7 @@
 params [
     ["_var", [], [[]]]
 ];
-if !(_var isEqualType []) exitWith { false };
+if (!(_var isEqualType [])) exitWith { false };
 
 if (_var isEqualTo ACRE_ASSIGNED_PTT_RADIOS) exitWith {true};
 
