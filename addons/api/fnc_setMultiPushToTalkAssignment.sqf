@@ -21,25 +21,19 @@
 params [
     ["_var", [], [[]]]
 ];
+if !(_var isEqualType []) exitWith { false };
 
-private _invalid = false;
-if (!(_var isEqualType [])) exitWith { false };
+if (_var isEqualTo ACRE_ASSIGNED_PTT_RADIOS) exitWith {true};
 
 private _currentRadioList = [] call FUNC(getCurrentRadioList);
-{
-    if (!(_x isEqualType "")) exitWith {
-        _invalid = true;
-    };
-    private _isRadio = [_x] call FUNC(isRadio);
-    if (!_isRadio) exitWith {
-        _invalid = true;
-    };
-    if (!(_x in _currentRadioList)) exitWith {
-        _invalid = false;
-    };
-} forEach ACRE_ASSIGNED_PTT_RADIOS;
 
-if (_invalid) exitWith { false };
+private _index = _var findIf {
+    !(_x isEqualType "")
+    || {!([_x] call FUNC(isRadio))}
+    || {!(_x in _currentRadioList)}
+};
+
+if (_index != -1) exitWith { false };
 
 ACRE_ASSIGNED_PTT_RADIOS = _var;
 

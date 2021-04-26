@@ -23,8 +23,6 @@ params [
     ["_array", [], [[], objNull]]
 ];
 
-private _ret = [];
-
 if (_array isEqualType objNull) then {
     _array = _array call EFUNC(sys_core,getGear);
 } else {
@@ -33,11 +31,4 @@ if (_array isEqualType objNull) then {
     };
 };
 
-{
-    private _radioId = _x;
-    if ([_radioId, _radioType] call FUNC(isKindOf)) then {
-        _ret pushBackUnique _radioId;
-    };
-} forEach _array;
-
-_ret
+_array select {[_x, _radioType] call FUNC(isKindOf);};

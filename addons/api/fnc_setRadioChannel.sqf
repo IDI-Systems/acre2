@@ -21,7 +21,7 @@ params [
     ["_channelNumber", 0, [0]]
 ];
 
-if ( !(_radioId isEqualType "")) exitWith { -1 };
+if ( !(_radioId isEqualType "")) exitWith { false };
 
 if (_channelNumber isEqualType 0) then {
     _channelNumber = _channelNumber - 1;
