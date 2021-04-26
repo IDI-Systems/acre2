@@ -1,7 +1,8 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Returns true or false whether the provided weapon is a ACRE radio or not.
+ * Returns true or false whether the provided classname is a ACRE radio or not.
+ * This function returns false on Radio Base Classes.
  *
  * Arguments:
  * 0: Classname <STRING>
@@ -22,4 +23,4 @@ params [
 private _config = configFile >> "CfgWeapons" >> _radio;
 
 getNumber (_config >> "acre_isRadio") == 1
-&& {getNumber (_config >> "scope") >= 1}
+&& {getNumber (_config >> "scope") == 1}
