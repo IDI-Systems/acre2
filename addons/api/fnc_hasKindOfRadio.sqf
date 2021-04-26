@@ -33,4 +33,4 @@ if (_type in _array) exitWith {true};
 
 private _index = _array findIf {[_x, _type] call FUNC(isKindOf)};
 
-_index != -1;
+_index != -1

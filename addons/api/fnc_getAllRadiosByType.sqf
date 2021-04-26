@@ -31,4 +31,4 @@ if (_array isEqualType objNull) then {
     };
 };
 
-_array select {[_x, _radioType] call FUNC(isKindOf);};
+_array select {[_x, _radioType] call FUNC(isKindOf)}

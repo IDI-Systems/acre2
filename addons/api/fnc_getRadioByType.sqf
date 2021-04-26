@@ -35,4 +35,4 @@ private _index = _array findIf {
     [_x, _radioType] call FUNC(isKindOf);
 };
 if (_index == -1) exitWith {nil};
-_array select _index;
+_array select _index

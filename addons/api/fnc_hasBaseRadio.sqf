@@ -22,6 +22,6 @@ params [
 if (isNull _unit) exitWith {false};
 
 
-private _index = ([_unit] call EFUNC(sys_core,getGear)) findIf {_x call FUNC(isBaseRadio);};
+private _index = ([_unit] call EFUNC(sys_core,getGear)) findIf {_x call FUNC(isBaseRadio)};
 
-_index != -1;
+_index != -1
