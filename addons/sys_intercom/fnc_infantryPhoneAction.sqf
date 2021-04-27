@@ -17,10 +17,10 @@
 
 params ["_target"];
 
-private _type = typeOf _target;
-
 // Exit if object has no infantry phone
-if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasInfantryPhone") != 1) exitWith {};
+if (getNumber (configOf _target >> "acre_hasInfantryPhone") != 1) exitWith {};
+
+private _type = typeOf _target;
 
 // Exit if class already initialized
 if (_type in GVAR(initializedInfantryPhone)) exitWith {};

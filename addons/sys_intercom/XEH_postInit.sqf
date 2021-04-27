@@ -80,7 +80,7 @@ if (!hasInterface) exitWith {};
 #ifdef DRAW_INFANTRYPHONE_INFO
 addMissionEventHandler ["Draw3D", {
     private _target = cursorObject;
-    private _config = configFile >> "CfgVehicles" >> typeOf _target;
+    private _config = configOf _target;
     if (getNumber (_config >> "acre_hasInfantryPhone") != 1) exitWith {};
 
     private _positionConfig = _config >> "acre_infantryPhonePosition";

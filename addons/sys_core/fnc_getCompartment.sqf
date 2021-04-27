@@ -23,7 +23,7 @@ private _defaultCompartment = "";
 
 if (_vehicle != _unit) then {
     private _defaultCompartment = "Compartment1";
-    private _cfg = configFile >> "CfgVehicles" >> typeOf _vehicle;
+    private _cfg = configOf _vehicle;
     private _assignedRole = assignedVehicleRole _unit;
     private _roleType = _assignedRole select 0;
     if (_roleType == "Driver") then {
