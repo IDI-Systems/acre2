@@ -45,17 +45,14 @@ private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
 if (_condition isEqualTo {} && {_vehiclePresetName isNotEqualTo ""}) then {
     _player = ([] call CBA_fnc_players) select 0;
 } else {
-    // Pick the first player that matches side criteria
-    {
-        if ([_x] call _condition) exitWith {
-            _player = _x;
-        };
-    } forEach ([] call CBA_fnc_players);
+    private _players = [] call CBA_fnc_players;
+    private _index = _players findIf {[_x] call _condition};
 
-    if (isNull _player) then {
+    if (_index == -1) then {
         WARNING_1("No unit found for condition %1, defaulting to first player",_condition);
-        _player = ([] call CBA_fnc_players) select 0;
+        _index = 0;
     };
+    _player = _players select _index;
 };
 
 _vehicle setVariable [QEGVAR(sys_rack,initPlayer), _player, true];

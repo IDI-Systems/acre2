@@ -23,8 +23,6 @@ params [
     ["_array", [], [[], objNull]]
 ];
 
-private _ret = nil;
-
 if (_array isEqualType objNull) then {
     _array = _array call EFUNC(sys_core,getGear);
 } else {
@@ -33,14 +31,8 @@ if (_array isEqualType objNull) then {
     };
 };
 
-{
-    private _radioId = _x;
-    if ([_radioId, _radioType] call FUNC(isKindOf)) exitWith {
-        _ret = _radioId;
-    };
-} forEach _array;
-
-// Prevent script errors in the scheduler when the unit does not have a radio and `_ret = nil`
-if (isNil "_ret") exitWith { nil };
-
-_ret
+private _index = _array findIf {
+    [_x, _radioType] call FUNC(isKindOf);
+};
+if (_index == -1) exitWith {nil};
+_array select _index
