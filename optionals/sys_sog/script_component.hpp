@@ -11,3 +11,5 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+#define PRC77_BACKPACKS ["vn_b_pack_03", "vn_b_pack_03_02", "vn_b_pack_trp_04", "vn_b_pack_trp_04_02", "vn_b_pack_prc77_01", "vn_b_pack_lw_06"]
