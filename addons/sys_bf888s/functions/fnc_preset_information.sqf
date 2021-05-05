@@ -40,7 +40,7 @@ for "_i" from 0 to 15 do {
     HASH_SET(_channel,"CTCSSRx", 69.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"trafficRate",16);
-    HASH_SET(_channel,"TEK",1);
+    HASH_SET(_channel,"TEK","");
     HASH_SET(_channel,"RPTR",0.2);
     HASH_SET(_channel,"fade",2);
     HASH_SET(_channel,"phase",256);
@@ -68,7 +68,7 @@ for "_i" from 16 to 31 do {
     HASH_SET(_channel,"CTCSSRx", 69.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"trafficRate",16);
-    HASH_SET(_channel,"TEK",1);
+    HASH_SET(_channel,"TEK","");
     HASH_SET(_channel,"RPTR",0.2);
     HASH_SET(_channel,"fade",2);
     HASH_SET(_channel,"phase",256);
@@ -96,7 +96,7 @@ for "_i" from 32 to 47 do {
     HASH_SET(_channel,"CTCSSRx", 69.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"trafficRate",16);
-    HASH_SET(_channel,"TEK",1);
+    HASH_SET(_channel,"TEK","");
     HASH_SET(_channel,"RPTR",0.2);
     HASH_SET(_channel,"fade",2);
     HASH_SET(_channel,"phase",256);
@@ -123,7 +123,7 @@ for "_i" from 48 to 63 do {
     HASH_SET(_channel,"CTCSSRx", 69.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"trafficRate",16);
-    HASH_SET(_channel,"TEK",1);
+    HASH_SET(_channel,"TEK","");
     HASH_SET(_channel,"RPTR",0.2);
     HASH_SET(_channel,"fade",2);
     HASH_SET(_channel,"phase",256);
