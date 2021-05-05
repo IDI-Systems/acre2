@@ -1,7 +1,6 @@
 ---
 title: Gestures
 ---
-{% include important.html content="Dev-build only" %}
 
 {% include important.html content="Requires ACE3 Common!" %}
 

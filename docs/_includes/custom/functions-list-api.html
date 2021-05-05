@@ -26,6 +26,37 @@ __Example__
 
 ---
 
+### acre_api_fnc_setRadioAudioSource
+__Description__
+
+Sets the audio source on the provided radio ID.
+Possible Values for ACRE_PRC148: ["INTAUDIO", "TOPAUDIO", "TOPSIDETON", "SIDEAUDIO", "SIDESIDETON"]
+Possible Values for ACRE_PRC152: ["INTAUDIO", "TOPAUDIO"]
+Possible Values for ACRE_SEM52SL: ["INTSPEAKER", "HEADSET"]
+Possible Values for ACRE_SEM70: ["INTSPEAKER", "HEADSET"]
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio ID  | STRING | 
+1 | Audio Source  | STRING | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Success  | BOOLEAN
+
+__Example__
+
+```sqf
+_success = ["ACRE_PRC148_ID_123", "INTAUDIO"] call acre_api_fnc_setRadioAudioSource
+```
+
+
+---
+
 ### acre_api_fnc_setupMission
 __Description__
 
@@ -235,6 +266,34 @@ __Example__
 
 ```sqf
 _ret = [] call acre_api_fnc_getSelectableVoiceCurve;
+```
+
+
+---
+
+### acre_api_fnc_setRadioSpeaker
+__Description__
+
+Sets the audio source to speaker or back to default on the provided radio ID.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio ID  | STRING | 
+1 | Speaker  | BOOL | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Success  | BOOLEAN
+
+__Example__
+
+```sqf
+_success = ["ACRE_PRC148_ID_123", true] call acre_api_fnc_setRadioSpeaker
+_success = ["ACRE_PRC148_ID_123", false] call acre_api_fnc_setRadioSpeaker
 ```
 
 
@@ -1636,6 +1695,32 @@ __Example__
 
 ---
 
+### acre_api_fnc_getRadioAudioSource
+__Description__
+
+Gets the audio source currently selected on the provided radio ID.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio ID  | STRING | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Audio Source  | STRING
+
+__Example__
+
+```sqf
+_audioSource = ["ACRE_PRC148_ID_123"] call acre_api_fnc_getRadioAudioSource
+```
+
+
+---
+
 ### acre_api_fnc_copyPreset
 __Description__
 
@@ -1736,6 +1821,32 @@ __Example__
 
 ```sqf
 _result = ["ACRE_PRC343"] call acre_api_fnc_isBaseRadio;
+```
+
+
+---
+
+### acre_api_fnc_isRadioSpeaker
+__Description__
+
+Returns true or false whether the provided radio ID has audio source set to speaker or not.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio ID  | STRING | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Is Audio Source Speaker  | BOOL
+
+__Example__
+
+```sqf
+_isSpeaker = ["ACRE_PRC148_ID_123"] call acre_api_fnc_isRadioSpeaker
 ```
 
 
@@ -1852,7 +1963,8 @@ __Example__
 ### acre_api_fnc_isRadio
 __Description__
 
-Returns true or false whether the provided weapon is a ACRE radio or not.
+Returns true or false whether the provided classname is a ACRE radio or not.
+This function returns false on Radio Base Classes.
 
 __Parameters__
 
