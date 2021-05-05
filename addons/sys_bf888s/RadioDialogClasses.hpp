@@ -13,7 +13,7 @@ class BF888S_RscText {
     idc = -1;
     type = CT_STATIC;
     style = ST_LEFT + ST_KEEP_ASPECT_RATIO;
-    font = EtelkaMonospaceProBold;
+    font = "EtelkaMonospaceProBold";
     colorText[] = {1, 1, 1, 1};
     colorBackground[] = {0, 0, 0, 0};
     sizeEx = 0.024;
