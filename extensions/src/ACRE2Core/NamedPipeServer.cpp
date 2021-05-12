@@ -212,7 +212,7 @@ acre::Result CNamedPipeServer::sendLoop() {
 acre::Result CNamedPipeServer::readLoop() {
     DWORD cbRead;
 
-    char *mBuffer = (char *)LocalAlloc(LMEM_FIXED, BUFSIZE);
+    char *mBuffer = (char *)LocalAlloc(LMEM_FIXED, BUFSIZE + 1);
     if (mBuffer == nullptr) {
         LOG("LocalAlloc() failed: %d", GetLastError());
     }
