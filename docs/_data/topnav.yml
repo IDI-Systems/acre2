@@ -21,7 +21,7 @@ topnav_dropdowns:
     - title: Contact
       folderitems:
 
-        - title: Slack
+        - title: Slack (#acre2 channel)
           external_url: http://slackin.idi-systems.com
 
         - title: BI Forums
