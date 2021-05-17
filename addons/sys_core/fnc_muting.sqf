@@ -17,9 +17,6 @@
 
 #define FULL_SEND_INTERVAL 5
 
-
-GVAR(oldSpectators) = [];
-GVAR(lastSpectate) = false;
 GVAR(waitFullSend) = diag_tickTime;
 GVAR(fullListTime) = true;
 
