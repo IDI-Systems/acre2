@@ -674,3 +674,29 @@ acre::Result CTS3Client::updateShouldSwitchTS3Channel(const bool state_) {
 bool CTS3Client::shouldSwitchTS3Channel() {
     return getShouldSwitchTS3Channel();
 }
+
+acre::id_t CTS3Client::getClientIDByName(const std::string &targetClientName_) {
+    acre::id_t targetID{0}; // cliendID of 0 is considered invalid and indicates that target was not found
+
+    anyID clientId;
+    anyID *clientList;
+    uint32_t res = ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId);
+    if (res == ERROR_ok) {
+        res = ts3Functions.getClientList(ts3Functions.getCurrentServerConnectionHandlerID(), &clientList);
+        if (res == ERROR_ok) {
+            std::array<char, TS3_MAX_SIZE_CLIENT_NICKNAME_NONSDK> clientName{""};
+            size_t index = 0;
+            while ((targetID == 0) && (clientList[index] != 0)) { // "null terminated array of client ids like {10, 30, …, 0}"
+                res = ts3Functions.getClientDisplayName(ts3Functions.getCurrentServerConnectionHandlerID(), clientList[index], clientName.data(), clientName.size());
+                if (res == ERROR_ok) {
+                    if (targetClientName_ == std::string(clientName.data())) {
+                        targetID = clientList[index];
+                    }
+                }
+                index++;
+            }
+            ts3Functions.freeMemory(clientList); // "caller must free the array"
+        }
+    }
+    return targetID;
+}
