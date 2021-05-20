@@ -21,6 +21,8 @@ check = [
     "!version_set",
     "!binarizer_link"
 ]
+prebuild = ["!compile_sqf"]
+postbuild = ["!compile_sqf_cleanup"]
 releasebuild = [
     "@zip acre2_v{{version}}"
 ]
@@ -64,4 +66,20 @@ steps_linux = [
     "mkdir -p a3",
     "[ -d a3 ] || ln -sr include/a3 a3/"
 ]
+show_output = true
+
+[scripts.compile_sqf]
+steps_windows = [
+    "echo 'compile_sqf'",
+    "py tools/compile_sqf.py cleanup build"
+]
+only_release = true
+show_output = true
+
+[scripts.compile_sqf_cleanup]
+steps_windows = [
+    "echo 'compile_sqf_cleanup'",
+    "py tools/compile_sqf.py cleanup"
+]
+only_release = true
 show_output = true
