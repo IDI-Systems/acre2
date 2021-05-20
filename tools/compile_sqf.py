@@ -21,8 +21,9 @@ def cleanup():
 def build(verbose):
     compiler_exe = os.path.join(addon_base_path, "ArmaScriptCompiler.exe")
     if not os.path.isfile(compiler_exe):
-        print("Error: ArmaScriptCompiler.exe not found in base folder [{}]".format(compiler_exe))
-        raise FileNotFoundError("ArmaScriptCompiler not found")
+        print("Warning: ArmaScriptCompiler.exe not found in base folder - skipping compiling")
+        return
+        # raise FileNotFoundError("ArmaScriptCompiler not found")
     ret = subprocess.call([compiler_exe], cwd=addon_base_path, stdout=verbose)
     print("compiled [ret {}]".format(ret))
 
