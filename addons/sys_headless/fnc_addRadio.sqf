@@ -12,7 +12,7 @@
  * Added <BOOL>
  *
  * Example:
- * [q2, "acre_prc343"] call acre_sys_headless_fnc_add
+ * [q2, "acre_prc343"] call acre_sys_headless_fnc_addRadio
  *
  * Public: No
  */

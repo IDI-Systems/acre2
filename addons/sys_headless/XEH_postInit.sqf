@@ -13,7 +13,7 @@ if (hasInterface) then {
                     TRACE_1("RPC STOP: mission end",_x);
                     ["ext_remoteStopSpeaking", format ["%1,", _x]] call EFUNC(sys_rpc,callRemoteProcedure);
                 } forEach (missionNamespace getVariable [QGVAR(idsToCleanup), []])
-	        }];
+            }];
         }
     ] call CBA_fnc_waitUntilAndExecute;
 };
