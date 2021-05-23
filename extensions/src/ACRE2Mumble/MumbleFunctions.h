@@ -1,4 +1,4 @@
 #pragma once
 
-#include "MumbleAPI.h"
-#include "MumblePlugin.h"
+#include "MumbleAPI_v_1_0_x.h"
+#include "MumblePlugin_v_1_0_x.h"

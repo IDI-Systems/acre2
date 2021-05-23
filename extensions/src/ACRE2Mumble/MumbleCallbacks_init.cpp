@@ -9,20 +9,17 @@
 #define FROM_PIPENAME "\\\\.\\pipe\\acre_comm_pipe_fromTS"
 #define TO_PIPENAME   "\\\\.\\pipe\\acre_comm_pipe_toTS"
 
-extern MumbleAPI mumAPI;
+extern MumbleAPI_v_1_0_x mumAPI;
+// TODO: Should these special values be a named variable?
 mumble_connection_t activeConnection = -1;
 plugin_id_t pluginID                 = -1;
-
-void mumble_registerPluginID(plugin_id_t id) {
-    pluginID = id;
-}
 
 uint32_t mumble_getFeatures() {
     return FEATURE_AUDIO;
 }
 
-void mumble_registerAPIFunctions(struct MumbleAPI api) {
-    mumAPI = api;
+void mumble_registerAPIFunctions(void *apiStruct) {
+    mumAPI = MUMBLE_API_CAST(apiStruct);
     CEngine::getInstance()->initialize(new CMumbleClient(), new CMumbleCommandServer(), FROM_PIPENAME, TO_PIPENAME);
     if (CEngine::getInstance() != NULL) {
         if (((CMumbleCommandServer *) CEngine::getInstance()->getExternalServer()) != NULL) {
@@ -38,10 +35,11 @@ void mumble_registerAPIFunctions(struct MumbleAPI api) {
     }
 }
 
-mumble_error_t mumble_init(mumble_connection_t connection) {
-    if (connection != -1) {
-        activeConnection = connection;
-    }
+mumble_error_t mumble_init(mumble_plugin_id_t id) {
+	pluginID = id;
+	
+	// TODO: Is initializing the active server connection required at this point?
+	// If so it must be done via an API call
 
     return STATUS_OK;
 }
@@ -51,6 +49,7 @@ void mumble_onServerSynchronized(mumble_connection_t connection) {
 
     // set ID on every new connection
     acre::id_t clientId = 0;
+	// TODO: Missing error handling of API call
     mumAPI.getLocalUserID(pluginID, activeConnection, (mumble_userid_t *) &clientId);
     CEngine::getInstance()->getSelf()->setId(clientId);
     CEngine::getInstance()->getExternalServer()->setId(clientId);

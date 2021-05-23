@@ -13,9 +13,9 @@
 static constexpr std::int32_t invalid_mumble_channel = -1;
 constexpr char default_mumble_channel[]              = "ACRE";
 
-extern MumbleAPI mumAPI;
+extern MumbleAPI_v_1_0_x mumAPI;
 extern mumble_connection_t activeConnection;
-extern plugin_id_t pluginID;
+extern mumble_plugin_id_t pluginID;
 
 acre::Result CMumbleClient::initialize() {
     setPreviousChannel(invalid_mumble_channel);
@@ -71,12 +71,13 @@ acre::Result CMumbleClient::start(const acre::id_t id_) {
 }
 
 bool CMumbleClient::getVAD() {
-    transmission_mode_t transmitMode;
+    mumble_transmission_mode_t transmitMode;
     const mumble_error_t err = mumAPI.getLocalUserTransmissionMode(pluginID, &transmitMode);
     if (err != ErrorCode::EC_OK) {
         return false;
     }
 
+	// TODO: Is this enum defined somewhere in ACRE?
     return transmitMode == TransmissionMode::TM_VOICE_ACTIVATION;
 }
 
@@ -324,6 +325,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             char *channelName = nullptr;
 
             if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == STATUS_OK) {
+				// TODO: Does std::string take care of deleting the allocated name?
                 std::string channelNameString(channelName);
                 if (channelNameString.find(default_mumble_channel) != -1 || (!details_.at(0).empty() && channelNameString == name)) {
                     if (channelNameString == default_mumble_channel) {

@@ -5,7 +5,7 @@
 #include "Types.h"
 #include "compat.h"
 
-extern MumbleAPI mumAPI;
+extern MumbleAPI_v_1_0_x mumAPI;
 extern mumble_connection_t activeConnection;
 extern plugin_id_t pluginID;
 

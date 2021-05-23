@@ -39,7 +39,7 @@ acre::Result CMumbleCommandServer::sendMessage(IMessage *msg) {
         return acre::Result::error;
     }
 
-    err = mumAPI.sendData(pluginID, activeConnection, channelUsers, userCount, (const char *) msg->getData(), msg->getLength(), "ACRE2");
+    err = mumAPI.sendData(pluginID, activeConnection, channelUsers, userCount, (const uint8_t *) msg->getData(), msg->getLength(), "ACRE2");
     if (err != ErrorCode::EC_OK) {
         LOG("ERROR, UNABLE TO SEND MESSAGE DATA: %d", err);
         return acre::Result::error;

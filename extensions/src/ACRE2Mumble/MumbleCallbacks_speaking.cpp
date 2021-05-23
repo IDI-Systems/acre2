@@ -40,6 +40,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
             return;
         }
 
+		// TODO: Is the TalkingState enum defined somewhere in ACRE? 'cause it is not defined in Mumble
         if (status == TalkingState::PASSIVE || status == TalkingState::INVALID) {
             if ((!CEngine::getInstance()->getClient()->getRadioPTTDown())
                   && (!CEngine::getInstance()->getClient()->getGodPTTDown())
