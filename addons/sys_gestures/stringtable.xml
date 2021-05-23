@@ -3,18 +3,23 @@
     <Package name="sys_gestures">
         <Key ID="STR_ACRE_sys_gestures_category">
             <English>ACRE2 Gestures</English>
+            <French>ACRE2 Gestuelle</French>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled">
             <English>Enable</English>
+            <French>Activée</French>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled_description">
             <English>Animate players using radios.</English>
+            <French>L'avatar des joueurs est animé lorsqu'ils parlent à la radio.</French>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS">
             <English>Prevent Aim Down Sights</English>
+            <French>Empêcher la prise de visée</French>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS_description">
             <English>Keying radios will prevent aiming down sights.</English>
+            <French>Les joueurs ne peuvent plus utiliser les organes de visée de leurs armes lorsqu'ils parlent à la radio.</French>
         </Key>
     </Package>
 </Project>
