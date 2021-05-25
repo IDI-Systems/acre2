@@ -29,12 +29,17 @@
 #include "setSelectableVoiceCurve.h"
 #include "setSetting.h"
 #include "setTs3ChannelDetails.h"
-
+#include <shlobj.h>
 
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
 
     if (!g_Log) {
-        g_Log = (Log *)new Log("acre2.log");
+        std::string acrePluginLog{"acre2_plugin.log"};
+        std::array<char, MAX_PATH> appDataPath{""};
+        if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, appDataPath.data()))) {
+            acrePluginLog = std::string(appDataPath.data()) + "\\Arma 3\\" + acrePluginLog;
+        }
+        g_Log = (Log *) new Log(acrePluginLog.c_str());
         LOG("* Logging engine initialized.");
     }
     LOG("Configuration Path: {%s\\acre2.ini}", client->getConfigFilePath().c_str());
