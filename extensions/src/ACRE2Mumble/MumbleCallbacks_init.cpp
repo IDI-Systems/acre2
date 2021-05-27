@@ -20,6 +20,7 @@ uint32_t mumble_getFeatures() {
 
 void mumble_registerAPIFunctions(void *apiStruct) {
     mumAPI = MUMBLE_API_CAST(apiStruct);
+
     CEngine::getInstance()->initialize(new CMumbleClient(), new CMumbleCommandServer(), FROM_PIPENAME, TO_PIPENAME);
     if (CEngine::getInstance() != NULL) {
         if (((CMumbleCommandServer *) CEngine::getInstance()->getExternalServer()) != NULL) {
@@ -37,9 +38,10 @@ void mumble_registerAPIFunctions(void *apiStruct) {
 
 mumble_error_t mumble_init(mumble_plugin_id_t id) {
 	pluginID = id;
-	
-	// TODO: Is initializing the active server connection required at this point?
-	// If so it must be done via an API call
+
+    if (mumAPI.getActiveServerConnection(pluginID, &connection) != EC_OK) {
+        connection = -1;
+    }
 
     return STATUS_OK;
 }
