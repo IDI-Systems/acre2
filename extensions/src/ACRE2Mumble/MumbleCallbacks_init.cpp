@@ -12,7 +12,7 @@
 extern MumbleAPI_v_1_0_x mumAPI;
 // TODO: Should these special values be a named variable?
 mumble_connection_t activeConnection = -1;
-plugin_id_t pluginID                 = -1;
+mumble_plugin_id_t pluginID                 = -1;
 
 uint32_t mumble_getFeatures() {
     return FEATURE_AUDIO;

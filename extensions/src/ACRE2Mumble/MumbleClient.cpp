@@ -73,12 +73,11 @@ acre::Result CMumbleClient::start(const acre::id_t id_) {
 bool CMumbleClient::getVAD() {
     mumble_transmission_mode_t transmitMode;
     const mumble_error_t err = mumAPI.getLocalUserTransmissionMode(pluginID, &transmitMode);
-    if (err != ErrorCode::EC_OK) {
+    if (err != EC_OK) {
         return false;
     }
 
-	// TODO: Is this enum defined somewhere in ACRE?
-    return transmitMode == TransmissionMode::TM_VOICE_ACTIVATION;
+    return transmitMode == TM_VOICE_ACTIVATION;
 }
 
 acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType_) {
@@ -117,7 +116,7 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
             } else {
                 stopDirectSpeaking = true;
             }
-        } else if (VADactive && (speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
+        } else if (VADactive && (speakingState != PASSIVE) && (speakingState != INVALID)) {
             stopDirectSpeaking = true;
         }
     }
@@ -176,7 +175,7 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
             this->setOnRadio(false);
             const std::int32_t speakingState = this->getSpeakingState();
 
-            if ((speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
+            if ((speakingState != PASSIVE) && (speakingState != INVALID)) {
                 resendDirectSpeaking = true;
             }
         }
@@ -188,7 +187,7 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
             } else {
                 resendDirectSpeaking = true;
             }
-        } else if ((speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
+        } else if ((speakingState != PASSIVE) && (speakingState != INVALID)) {
             resendDirectSpeaking = true;
         }
     }
@@ -237,7 +236,7 @@ std::string CMumbleClient::getTempFilePath(void) {
 
 acre::Result CMumbleClient::microphoneOpen(bool status_) {
     const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, status_);
-    if (res != ErrorCode::EC_OK) {
+    if (res != EC_OK) {
         if (status_) {
             LOG("Error toggling PTT Open\n");
         } else {
@@ -322,11 +321,13 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
 
         for (std::size_t idx = 0U; idx < channelCount; idx++) {
             channelId         = *channelList + idx;
-            char *channelName = nullptr;
+            const char *channelName = nullptr;
 
             if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == STATUS_OK) {
-				// TODO: Does std::string take care of deleting the allocated name?
-                std::string channelNameString(channelName);
+                // Copy the channel name into a std::string and then get rid of the Mumble resource again
+				std::string channelNameString(channelName);
+				mumAPI.freeMemory(pluginID, (void *) channelName);
+
                 if (channelNameString.find(default_mumble_channel) != -1 || (!details_.at(0).empty() && channelNameString == name)) {
                     if (channelNameString == default_mumble_channel) {
                         defaultChannelId = channelId;

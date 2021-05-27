@@ -8,7 +8,7 @@
 //
 // Mumble Speaking callbacks
 //
-void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_userid_t userID, talking_state_t status) {
+void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_userid_t userID, mumble_talking_state_t status) {
     TRACE("mumble_onUserTalkingStateChanged ENTER: %d", status);
     if (static_cast<acre::id_t>(userID) != CEngine::getInstance()->getSelf()->getId()) {
         return;
@@ -40,8 +40,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
             return;
         }
 
-		// TODO: Is the TalkingState enum defined somewhere in ACRE? 'cause it is not defined in Mumble
-        if (status == TalkingState::PASSIVE || status == TalkingState::INVALID) {
+        if (status == PASSIVE || status == INVALID) {
             if ((!CEngine::getInstance()->getClient()->getRadioPTTDown())
                   && (!CEngine::getInstance()->getClient()->getGodPTTDown())
                   && (!CEngine::getInstance()->getClient()->getZeusPTTDown())) {
@@ -64,7 +63,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
     }
     TRACE("enter: [%d],[%d]", clientID, status);
 
-    if ((status != TalkingState::PASSIVE) && (status != TalkingState::INVALID)) {
+    if ((status != PASSIVE) && (status != INVALID)) {
         CEngine::getInstance()->getClient()->setDirectFirst(true);
         CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::direct);
     } else {
