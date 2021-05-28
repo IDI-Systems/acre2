@@ -78,7 +78,7 @@ acre::Result CSoundPlayback::playSound(std::string id, acre::vec3_fp32_t positio
             tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000000);
         }
 
-        tempChannel->In((short *)waveFile.GetData(), waveFile.GetSize()/sizeof(short));
+        tempChannel->In((short *)waveFile.GetData(), waveFile.GetSize()/sizeof(short), 1);
         CEngine::getInstance()->getSoundEngine()->getSoundMixer()->unlock();
         return acre::Result::ok;
     }

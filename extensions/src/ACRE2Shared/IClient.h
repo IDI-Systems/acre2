@@ -29,6 +29,8 @@ public:
     virtual acre::Result localStartSpeaking(const acre::Speaking speakingType, const std::string radioId) = 0;
     virtual acre::Result localStopSpeaking(const acre::Speaking speakingType) = 0;
 
+    virtual acre::id_t getClientIDByName(const std::string &targetClientName_) = 0;
+
     virtual std::string getTempFilePath( void ) = 0;
     virtual std::string getConfigFilePath(void) = 0;
 

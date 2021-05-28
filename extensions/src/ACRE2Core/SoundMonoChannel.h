@@ -27,7 +27,7 @@ public:
     CSoundChannelMono( int length, bool singleShot );
 
     ~CSoundChannelMono();
-    int In(short *samples, int sampleCount);
+    int In(short *samples, int sampleCount, const int channels_);
     int Out(short *samples, int sampleCount);
     int GetCurrentBufferSize() { return this->bufferLength-this->bufferPos; };
     bool IsOneShot() { return this->oneShot; };
