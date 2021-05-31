@@ -15,8 +15,9 @@ title: Installation
 - Download from the [latest version](https://github.com/IDI-Systems/acre2/releases/latest) and extract the `.zip` file to your hard drive.
 - Navigate to your Arma 3 installation folder.
 - Delete any current `@acre2` folder and then paste in the `@acre2` folder you from the extracted `.zip`.
-- Create a new shortcut for Arma 3, or edit an existing one, and add `@acre2` and `@CBA_A3` to the `-mod` parameter
-- Launch Arma 3 from the shortcut you created.
+- (option 1) Launch Arma 3 Launcher and add a local mod.
+- (option 2) Create a new shortcut for Arma 3, or edit an existing one, and add `@acre2` and `@CBA_A3` to the `-mod` parameter
+- Launch Arma 3 through Arma 3 Launcher (option 1) or the shortcut you created (option 2).
 - ACRE2 will try to copy the plugins to your TeamSpeak 3 installation directory. A pop-up will appear describing what the process did.
 - Launch TeamSpeak 3 and enable the ACRE2 plugin in the `Settings -> Plugins` window.
 
