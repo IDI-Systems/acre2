@@ -78,3 +78,8 @@ void mumble_shutdown() {
     }
     CEngine::getInstance()->stop();
 }
+
+void mumble_releaseResource(const void *) {
+    // Nothing to do here since we never pass allocated resourced to Mumble
+    // that needed freeing
+}
