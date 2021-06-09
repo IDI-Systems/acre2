@@ -20,6 +20,14 @@ uint32_t mumble_getFeatures() {
 
 void mumble_registerAPIFunctions(void *apiStruct) {
     mumAPI = MUMBLE_API_CAST(apiStruct);
+}
+
+mumble_error_t mumble_init(mumble_plugin_id_t id) {
+	pluginID = id;
+
+    if (mumAPI.getActiveServerConnection(pluginID, &activeConnection) != MUMBLE_STATUS_OK) {
+        activeConnection = -1;
+    }
 
     CEngine::getInstance()->initialize(new CMumbleClient(), new CMumbleCommandServer(), FROM_PIPENAME, TO_PIPENAME);
     if (CEngine::getInstance() != NULL) {
@@ -33,14 +41,6 @@ void mumble_registerAPIFunctions(void *apiStruct) {
             // virtualize a connect event
             mumble_onServerSynchronized(activeConnection);
         }
-    }
-}
-
-mumble_error_t mumble_init(mumble_plugin_id_t id) {
-	pluginID = id;
-
-    if (mumAPI.getActiveServerConnection(pluginID, &activeConnection) != MUMBLE_STATUS_OK) {
-        activeConnection = -1;
     }
 
     return MUMBLE_STATUS_OK;
