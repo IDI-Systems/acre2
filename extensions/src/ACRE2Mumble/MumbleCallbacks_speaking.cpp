@@ -40,7 +40,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
             return;
         }
 
-        if (status == PASSIVE || status == INVALID) {
+        if (status == MUMBLE_TS_PASSIVE || status == MUMBLE_TS_INVALID) {
             if ((!CEngine::getInstance()->getClient()->getRadioPTTDown())
                   && (!CEngine::getInstance()->getClient()->getGodPTTDown())
                   && (!CEngine::getInstance()->getClient()->getZeusPTTDown())) {
@@ -63,7 +63,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
     }
     TRACE("enter: [%d],[%d]", clientID, status);
 
-    if ((status != PASSIVE) && (status != INVALID)) {
+    if ((status != MUMBLE_TS_PASSIVE) && (status != MUMBLE_TS_INVALID)) {
         CEngine::getInstance()->getClient()->setDirectFirst(true);
         CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::direct);
     } else {

@@ -15,7 +15,7 @@ mumble_connection_t activeConnection = -1;
 mumble_plugin_id_t pluginID                 = -1;
 
 uint32_t mumble_getFeatures() {
-    return FEATURE_AUDIO;
+    return MUMBLE_FEATURE_AUDIO;
 }
 
 void mumble_registerAPIFunctions(void *apiStruct) {
@@ -39,11 +39,11 @@ void mumble_registerAPIFunctions(void *apiStruct) {
 mumble_error_t mumble_init(mumble_plugin_id_t id) {
 	pluginID = id;
 
-    if (mumAPI.getActiveServerConnection(pluginID, &connection) != EC_OK) {
-        connection = -1;
+    if (mumAPI.getActiveServerConnection(pluginID, &activeConnection) != MUMBLE_STATUS_OK) {
+        activeConnection = -1;
     }
 
-    return STATUS_OK;
+    return MUMBLE_STATUS_OK;
 }
 
 void mumble_onServerSynchronized(mumble_connection_t connection) {

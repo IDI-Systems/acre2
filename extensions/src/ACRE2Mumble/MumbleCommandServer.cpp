@@ -28,24 +28,24 @@ acre::Result CMumbleCommandServer::sendMessage(IMessage *msg) {
     mumble_channelid_t currentChannel = 0;
 
     mumble_error_t err = mumAPI.getChannelOfUser(pluginID, activeConnection, this->getId(), &currentChannel);
-    if (err != EC_OK) {
+    if (err != MUMBLE_STATUS_OK) {
         LOG("ERROR, UNABLE TO GET CHANNEL OF USER: %d", err);
         return acre::Result::error;
     }
 
     err = mumAPI.getUsersInChannel(pluginID, activeConnection, currentChannel, &channelUsers, &userCount);
-    if (err != EC_OK) {
+    if (err != MUMBLE_STATUS_OK) {
         LOG("ERROR, UNABLE TO GET USERS IN CHANNEL: %d", err);
         return acre::Result::error;
     }
 
     err = mumAPI.sendData(pluginID, activeConnection, channelUsers, userCount, (const uint8_t *) msg->getData(), msg->getLength(), "ACRE2");
-    if (err != EC_OK) {
+    if (err != MUMBLE_STATUS_OK) {
         LOG("ERROR, UNABLE TO SEND MESSAGE DATA: %d", err);
         return acre::Result::error;
     }
     err = mumAPI.freeMemory(pluginID, (void *) channelUsers);
-    if (err != EC_OK) {
+    if (err != MUMBLE_STATUS_OK) {
         LOG("ERROR, UNABLE TO FREE CHANNEL USER LIST: %d", err);
         return acre::Result::error;
     }
