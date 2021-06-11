@@ -22,7 +22,7 @@ jobs:
         Expand-Archive acre2_tools.zip -DestinationPath ci
         echo "Check HEMTT: $(Test-Path .\\ci\\hemtt.exe)"
         echo "Check Binarize: $(Test-Path .\\ci\\binarize\\binarize_x64.exe)"
-        # echo "Check ArmaScriptCompiler: $(Test-Path .\\ci\\ArmaScriptCompiler.exe)"
+        echo "Check ArmaScriptCompiler: $(Test-Path .\\ci\\ArmaScriptCompiler.exe)"
         .\ci\hemtt.exe --version
         echo "Install Binarize dependencies"
         cp .\ci\binarize\X3DAudio1_7.dll,.\ci\binarize\XAPOFX1_5.dll C:\Windows\System32\
