@@ -61,7 +61,7 @@ void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_use
 
         return;
     }
-    TRACE("enter: [%d],[%d]", clientID, status);
+    TRACE("enter: [%d],[%d]", userID, status);
 
     if ((status != MUMBLE_TS_PASSIVE) && (status != MUMBLE_TS_INVALID)) {
         CEngine::getInstance()->getClient()->setDirectFirst(true);
