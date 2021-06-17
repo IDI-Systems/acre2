@@ -41,6 +41,13 @@ switch _channelType do {
         HASH_SET(_return, "TEK", HASH_GET(_channel, "tek"));
         HASH_SET(_return, "trafficRate", HASH_GET(_channel, "trafficRate"));
         HASH_SET(_return, "syncLength", HASH_GET(_channel, "phase"));
+        HASH_SET(_return, "optioncode", HASH_GET(_channel, "optioncode"));
+        HASH_SET(_return, "active", HASH_GET(_channel, "active"));
+        HASH_SET(_return, "rxonly", HASH_GET(_channel, "rxonly"));
+        HASH_SET(_return, "squelch", HASH_GET(_channel, "squelch"));
+        HASH_SET(_return, "channelmode", HASH_GET(_channel, "channelmode"));
+        HASH_SET(_return, "deviation", HASH_GET(_channel, "deviation"));
+        HASH_SET(_reutrn, "name", HASH_GET(_channel, "name"));
     };
 };
 _return
