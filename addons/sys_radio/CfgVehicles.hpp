@@ -16,6 +16,7 @@ class CfgVehicles {
             MACRO_ADDITEM(ACRE_PRC343,10);
             MACRO_ADDITEM(ACRE_SEM52SL,10);
             MACRO_ADDITEM(ACRE_SEM70,5);
+            MACRO_ADDITEM(ACRE_BF888S,10);
         };
     };
 

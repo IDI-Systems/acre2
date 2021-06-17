@@ -1,4 +1,4 @@
-class CfgAcreComponents {    
+class CfgAcreComponents {
     class ACRE_BaseBattery {
 
     };

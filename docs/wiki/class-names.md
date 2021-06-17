@@ -11,6 +11,7 @@ title: Class Names
 - `ACRE_PRC343` - AN/PRC-343
 - `ACRE_SEM52SL` - SEM 52 SL
 - `ACRE_SEM70` - SEM 70
+- `ACRE_BF888S` - BF-888S
 
 ### Vehicle Racks
 
