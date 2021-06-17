@@ -156,3 +156,9 @@ SQF equivalent of extensions/src/ACRE2Shared/Types.h
 #define BASE_CLASS_CONFIG(configName) call { private _baseClass = getText(configFile >> "CfgWeapons" >> configName >> "acre_baseClass"); if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> configName >> "acre_baseClass"); }; _baseClass }
 
 #include "script_debug.hpp"
+
+
+// remove after cba 3.15.4 (update script_mod.hpp)
+#ifndef COMPILE_SCRIPT
+#define COMPILE_SCRIPT(var1) compileScript ['PATHTO_SYS(PREFIX,COMPONENT_F,var1)']
+#endif
