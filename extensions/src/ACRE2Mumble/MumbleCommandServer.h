@@ -24,8 +24,8 @@ public:
 
     acre::Result release(void) final;
 
-    inline void setCommandId(plugin_id_t value) noexcept { m_commandId = value; }
-    inline plugin_id_t getCommandId() const noexcept { return m_commandId; }
+    inline void setCommandId(mumble_plugin_id_t value) noexcept { m_commandId = value; }
+    inline mumble_plugin_id_t getCommandId() const noexcept { return m_commandId; }
 
     inline void setConnected(const bool value) final { m_connected = value; }
     inline bool getConnected() const final { return m_connected; }
@@ -36,5 +36,5 @@ public:
 private:
     acre::id_t m_id;
     bool m_connected;
-    plugin_id_t m_commandId;
+    mumble_plugin_id_t m_commandId;
 };

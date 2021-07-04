@@ -11,14 +11,21 @@
 
 #include "Log.h"
 
-const char *mumble_getName() {
-    return ACRE_NAME;
+struct MumbleStringWrapper mumble_getName() {
+	static const char *name = ACRE_NAME;
+
+	MumbleStringWrapper wrapper;
+	wrapper.data = name;
+	wrapper.size = strlen(name);
+	wrapper.needsReleasing = false;
+
+    return wrapper;
 }
 
-version_t mumble_getAPIVersion() {
+mumble_version_t mumble_getAPIVersion() {
     return MUMBLE_PLUGIN_API_VERSION;
 }
 
-version_t mumble_getVersion() {
-    return version_t{ACRE_VERSION_MAJOR, ACRE_VERSION_MINOR, ACRE_VERSION_SUBMINOR};
+mumble_version_t mumble_getVersion() {
+    return mumble_version_t{ACRE_VERSION_MAJOR, ACRE_VERSION_MINOR, ACRE_VERSION_SUBMINOR};
 }
