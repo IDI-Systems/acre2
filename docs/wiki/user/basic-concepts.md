@@ -36,9 +36,9 @@ The amount the signal is attenuated by objects and terrain can be reduced or rem
 
 ### Antennas
 
-Following table shows a list of all antennas implemented in ACRE2, with a video showcasing gain pattern over the supported range of frequencies.
+Following table shows a list of all antennas implemented in ACRE2. Currently, antennas cannot be swapped on the devices, default attached antennas are marked in bold.
 
-{% include note.html content="Currently, antennas cannot be swapped on the devices, default attached anntennas are marked in bold." %}
+Each antenna has a gain pattern (visualized in linked video), which is the signal pattern of the antenna over the supported range of frequencies. Gain patterns can be used to determine best frequencies to use in specific conditions with a given antenna. This is only relevant if using directional antennas (Ignore Antenna Direction setting disabled).
 
 | Antenna Name | Type | Compatible Devices |
 | ------------ | ---- | ------------------ |
