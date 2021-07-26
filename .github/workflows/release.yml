@@ -31,6 +31,11 @@ jobs:
         echo "::endgroup::"
         echo "VERSION=$(.\\ci\\hemtt.exe var version)" >> $env:GITHUB_ENV
         echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $env:GITHUB_ENV
+    - name: Setup P-Drive for ArmaScriptCompiler
+      run: |
+        echo "Creating p: and linking idi\acre\addons"
+        subst p: include
+        New-Item -ItemType Junction -Path "p:\idi\acre\addons" -Target "addons"
     - name: Test Binarize
       run: |
         echo "::group::Run Binarize without arguments (look for missing DLLs)"
