@@ -371,6 +371,7 @@
             <Chinese>天線方向切換</Chinese>
             <French>Changer l'orientation de l'antenne</French>
             <Portuguese>Alternar direção da antena</Portuguese>
+            <Spanish>Alternar dirección de antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
@@ -380,6 +381,7 @@
             <Chinese>天線拉直</Chinese>
             <French>Antenne redressée</French>
             <Portuguese>Antena endireitada</Portuguese>
+            <Spanish>Antena derecha</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
@@ -389,6 +391,7 @@
             <Chinese>彎曲天線</Chinese>
             <French>Antenne courbée</French>
             <Portuguese>Antena dobrada</Portuguese>
+            <Spanish>Antena doblada</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -443,6 +446,7 @@
             <Chinese>自動調整天線方向</Chinese>
             <French>Orientation automatique de l'antenne</French>
             <Portuguese>Direção automática da Antena</Portuguese>
+            <Spanish>Dirección automática de antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -555,6 +559,7 @@
             <Chinese>顯示接收中的通訊</Chinese>
             <French>Afficher les transmissions entrantes</French>
             <Portuguese>Mostrar transmissões recebidas</Portuguese>
+            <Spanish>Mostrar transmisiones entrantes</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
@@ -564,6 +569,7 @@
             <Chinese>顯示架上通訊</Chinese>
             <French>Afficher les transmissions du rack</French>
             <Portuguese>Mostras transmissões do raque</Portuguese>
+            <Spanish>Mostrar tráfico de radios integradas</Spanish>
         </Key>
     </Package>
 </Project>
