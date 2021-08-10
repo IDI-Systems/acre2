@@ -52,22 +52,7 @@ steps_windows = [
 only_release = true
 show_output = true
 
-# Binarizer file search compatibility
-[scripts.binarizer_link]
-steps_windows = [
-    "if not exist idi\\acre mkdir idi\\acre",
-    "if not exist idi\\acre\\addons mklink /j idi\\acre\\addons addons",
-    "if not exist a3 mklink /j a3 include\\a3"
-]
-steps_linux = [
-    # Preparation for Windows Binarizer (run once on Linux for network share compatibility)
-    "mkdir -p idi/acre",
-    "[ -d idi/acre/addons ] || ln -sr addons idi/acre/",
-    "mkdir -p a3",
-    "[ -d a3 ] || ln -sr include/a3 a3/"
-]
-show_output = true
-
+# SQF Compilation
 [scripts.compile_sqf]
 steps_windows = [
     "echo Compile SQF",
@@ -82,4 +67,20 @@ steps_windows = [
     "python tools/compile_sqf.py cleanup"
 ]
 only_release = true
+show_output = true
+
+# Binarizer file search compatibility
+[scripts.binarizer_link]
+steps_windows = [
+    "if not exist idi\\acre mkdir idi\\acre",
+    "if not exist idi\\acre\\addons mklink /j idi\\acre\\addons addons",
+    "if not exist a3 mklink /j a3 include\\a3"
+]
+steps_linux = [
+    # Preparation for Windows Binarizer (run once on Linux for network share compatibility)
+    "mkdir -p idi/acre",
+    "[ -d idi/acre/addons ] || ln -sr addons idi/acre/",
+    "mkdir -p a3",
+    "[ -d a3 ] || ln -sr include/a3 a3/"
+]
 show_output = true
