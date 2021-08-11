@@ -11,8 +11,16 @@ function Unzip {
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $client = New-Object Net.WebClient
 
-Write-Output "=> Downloading HEMTT (Windows) ...`n"
-$client.DownloadFile("https://ci.appveyor.com/api/buildjobs/9cpggqgd6qoe6enx/artifacts/target%2Fx86_64-pc-windows-msvc%2Frelease%2Fhemtt.exe", "..\hemtt.exe")
+Write-Output "=> Downloading tools ..."
+$client.DownloadFile("http://dev.idi-systems.com/tools/acre2_tools_user.zip", "acre2_tools_user.zip")
 $client.dispose()
 
-Write-Output "HEMTT successfully installed to project!`n"
+Write-Output "=> Cleaning old ..."
+Remove-Item "..\hemtt.exe"
+Remove-Item "..\ArmaScriptCompiler.exe"
+
+Write-Output "=> Extracting ..."
+Unzip "acre2_tools_user.zip" "..\."
+Remove-Item "acre2_tools_user.zip"
+
+Write-Output "Tools successfully installed to project!"
