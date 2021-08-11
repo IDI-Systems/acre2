@@ -5,7 +5,6 @@ on:
     branches:
     - development-build
     - release-build
-    - sqfc # test
 
 jobs:
   build:
