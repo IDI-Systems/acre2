@@ -21,6 +21,8 @@ check = [
     "!version_set",
     "!binarizer_link"
 ]
+prebuild = ["!compile_sqf"]
+postbuild = ["!compile_sqf_cleanup"]
 releasebuild = [
     "@zip acre2_v{{version}}"
 ]
@@ -46,6 +48,23 @@ steps_windows = [
     "powershell -Command '#define ACRE_VERSION_MINOR {{semver.minor}}' >> extensions/src/ACRE2Shared/version.h",
     "powershell -Command '#define ACRE_VERSION_SUBMINOR {{semver.patch}}' >> extensions/src/ACRE2Shared/version.h",
     "powershell -Command '#define ACRE_VERSION_BUILD {{semver.build}}' >> extensions/src/ACRE2Shared/version.h"
+]
+only_release = true
+show_output = true
+
+# SQF Compilation
+[scripts.compile_sqf]
+steps_windows = [
+    "echo Compile SQF",
+    "python tools/compile_sqf.py cleanup build"
+]
+only_release = true
+show_output = true
+
+[scripts.compile_sqf_cleanup]
+steps_windows = [
+    "echo Compile SQF Cleanup",
+    "python tools/compile_sqf.py cleanup"
 ]
 only_release = true
 show_output = true

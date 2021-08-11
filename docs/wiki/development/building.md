@@ -21,6 +21,7 @@ This page describes how you can setup your development environment for ACRE2, al
 
 **HEMTT:**
 - [Windows] PowerShell v3.0+ _(pre-installed on Windows 8 or newer)_
+- [Optional] ArmaScriptCompiler (for SQFC)
 
 
 ## Mikero Tools
@@ -50,7 +51,7 @@ If you just want to create a quick and dirty build, you can also directly downlo
 
 ### Initial Setup
 
-Execute `setup.bat` in `tools` folder (Windows) or download [this HEMTT binary](https://github.com/synixebrett/HEMTT/suites/531226151/artifacts/3094848) and place `hemtt` in project root (Linux).
+Execute `setup.bat` in `tools` folder (Windows) or download [tools](http://dev.idi-systems.com/tools/acre2_tools_user.zip) (HEMTT and ArmaScriptCompiler) and place the executables in project root (Windows and Linux - ArmaScriptCompiler supported only on Windows at this time).
 
 #### File Patching Setup
 
