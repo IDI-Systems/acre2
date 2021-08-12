@@ -25,6 +25,7 @@
             <French>ACRE2 - Réglage du volume</French>
             <Chinesesimp>ACRE2 - 音量控制</Chinesesimp>
             <Portuguese>ACRE2 - Controle de Volume</Portuguese>
+            <Spanish>ACRE2 - Control de volumen</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
@@ -35,6 +36,7 @@
             <French>Indique le niveau actuel du volume de la voix.</French>
             <Chinesesimp>显示你目前说话的音量</Chinesesimp>
             <Portuguese>Indica o volume atual da comunicação direta.</Portuguese>
+            <Spanish>Indica el volumen actual de comunicación directa</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>
@@ -70,6 +72,7 @@
             <French>Volume - Gamme de couleurs</French>
             <Chinesesimp>音量界面颜色化</Chinesesimp>
             <Portuguese>Volume: Gama de cores</Portuguese>
+            <Spanish>Volumen: Gama de colores</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
             <English>Color scale used by the Volume Control UI.</English>
@@ -79,6 +82,7 @@
             <French>Gamme de couleurs utilisée pour l'interface de contrôle du volume.</French>
             <Chinesesimp>在音量控制界面以颜色作为音量等级区分</Chinesesimp>
             <Portuguese>Gama de cores usadas na IU de controle do volume </Portuguese>
+            <Spanish>Gama de colores usada por la Interfaz de control de volumen</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
             <English>Yellow, Orange, Red</English>
@@ -88,6 +92,7 @@
             <French>Jaune, Orange, Rouge</French>
             <Chinesesimp>黄，橘，红</Chinesesimp>
             <Portuguese>Amarelo, laranja e vermelho</Portuguese>
+            <Spanish>Amarillo, Naranja y Rojo</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
             <English>Green, Orange, Red</English>
@@ -97,6 +102,7 @@
             <French>Vert, Orange, Rouge</French>
             <Chinesesimp>绿，橘，红</Chinesesimp>
             <Portuguese>Verde, laranja e vermelho</Portuguese>
+            <Spanish>Verde, Naranja y Rojo</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
             <English>Blue, Magenta, Red</English>
@@ -106,6 +112,7 @@
             <French>Bleu, Magenta, Rouge</French>
             <Chinesesimp>蓝，洋红，红</Chinesesimp>
             <Portuguese>Azul, magenta e vermelho</Portuguese>
+            <Spanish>Azul, Magenta y Rojo</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_Open">
             <English>Open</English>

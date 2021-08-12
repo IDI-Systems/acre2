@@ -128,6 +128,7 @@
         <Key ID="STR_ACRE_sys_rack_dash2">
             <English>Dash 2</English>
             <French>Panneau 2</French>
+            <Spanish>Panel 2</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>

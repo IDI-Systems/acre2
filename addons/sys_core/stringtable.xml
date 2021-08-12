@@ -17,7 +17,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
             <English>Post-Mix Global Volume</English>
-            <Spanish>Volumen Global Post-Mix</Spanish>
+            <Spanish>Volumen global Post-Mix</Spanish>
             <French>Volume global post-mix</French>
             <Japanese>ポスト ミックスの全体音量</Japanese>
             <Czech>Hlasitost Post-Mixu</Czech>
@@ -32,7 +32,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
             <English>Pre-Mix Global Volume</English>
-            <Spanish>Volumen Global Pre-Mix</Spanish>
+            <Spanish>Volumen global Pre-Mix</Spanish>
             <French>Volume global pré-mix</French>
             <Japanese>プレ ミックスの全体音量</Japanese>
             <Czech>Hlasitost Pre-Mixu</Czech>
@@ -53,10 +53,11 @@
             <Chinese>預設無線電音量</Chinese>
             <French>Volume radio par défaut</French>
             <Portuguese>Volume padrão do rádio</Portuguese>
+            <Spanish>Volumen de radio por defecto</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
-            <Spanish>Volumen de Espectador</Spanish>
+            <Spanish>Volumen de espectador</Spanish>
             <French>Volume spectateur</French>
             <Japanese>スペクテイター音量</Japanese>
             <Czech>Hlasitost diváků</Czech>
@@ -72,10 +73,11 @@
         <Key ID="STR_ACRE_sys_core_godVolume_displayName">
             <English>God Volume</English>
             <French>Volume Dieu</French>
+            <Spanish>Volumen de zeus</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
-            <Spanish>Activar sonido de los Clients</Spanish>
+            <Spanish>Desmutear clientes</Spanish>
             <French>Démuter les clients</French>
             <Japanese>クライアントの消音解除</Japanese>
             <Czech>Zrušit ztlumení diváků</Czech>
@@ -371,6 +373,7 @@
             <Chinese>天線方向切換</Chinese>
             <French>Changer l'orientation de l'antenne</French>
             <Portuguese>Alternar direção da antena</Portuguese>
+            <Spanish>Cambiar direccion de antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
@@ -380,6 +383,7 @@
             <Chinese>天線拉直</Chinese>
             <French>Antenne redressée</French>
             <Portuguese>Antena endireitada</Portuguese>
+            <Spanish>Antena derecha</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
@@ -389,6 +393,7 @@
             <Chinese>彎曲天線</Chinese>
             <French>Antenne courbée</French>
             <Portuguese>Antena dobrada</Portuguese>
+            <Spanish>Antena doblada</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -443,10 +448,11 @@
             <Chinese>自動調整天線方向</Chinese>
             <French>Orientation automatique de l'antenne</French>
             <Portuguese>Direção automática da Antena</Portuguese>
+            <Spanish>Dirección automática de antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
-            <Spanish>Coefficiente de pérdida de señal por terreno</Spanish>
+            <Spanish>Coeficiente de pérdida de señal por terreno</Spanish>
             <Japanese>地形による干渉係数</Japanese>
             <French>Coefficient d'atténuation du terrain</French>
             <German>Topografie-Signalverlustskoeffizient</German>
@@ -555,6 +561,7 @@
             <Chinese>顯示接收中的通訊</Chinese>
             <French>Afficher les transmissions entrantes</French>
             <Portuguese>Mostrar transmissões recebidas</Portuguese>
+            <Spanish>Mostrar transmisiones entrantes</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
@@ -564,6 +571,7 @@
             <Chinese>顯示架上通訊</Chinese>
             <French>Afficher les transmissions du rack</French>
             <Portuguese>Mostras transmissões do raque</Portuguese>
+            <Spanish>Mostrar transmisiones de radio vehicular</Spanish>
         </Key>
     </Package>
 </Project>
