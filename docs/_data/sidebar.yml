@@ -97,10 +97,6 @@ entries:
       url: /wiki/user/ground-spike-antenna
       output: web, pdf
 
-    - title: Class Names
-      url: /wiki/class-names
-      output: web, pdf
-
   - title: Radio Guides
     output: web, pdf
     folderitems:
@@ -143,6 +139,10 @@ entries:
 
     - title: Overview
       url: /wiki/frameworks/overview
+      output: web, pdf
+
+    - title: Class Names
+      url: /wiki/class-names
       output: web, pdf
 
     - title: Functions List
