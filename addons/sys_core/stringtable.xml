@@ -373,7 +373,7 @@
             <Chinese>天線方向切換</Chinese>
             <French>Changer l'orientation de l'antenne</French>
             <Portuguese>Alternar direção da antena</Portuguese>
-            <Spanish>Cambiar direccion de antena</Spanish>
+            <Spanish>Cambiar dirección de antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
