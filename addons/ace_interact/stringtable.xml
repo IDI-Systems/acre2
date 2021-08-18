@@ -175,6 +175,7 @@
             <French>Redresser l'antenne</French>
             <Chinesesimp>把天线拉直</Chinesesimp>
             <Portuguese>Endireitar antena</Portuguese>
+            <Spanish>Enderezar antena</Spanish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bendAntenna">
             <English>Bend antenna upwards</English>
@@ -185,22 +186,27 @@
             <French>Courber l'antenne vers le haut</French>
             <Chinesesimp>把天线往上弯曲</Chinesesimp>
             <Portuguese>Dobrar antena para cima</Portuguese>
+            <Spanish>Doblar antena hacia arriba</Spanish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_frequencyRange">
             <English>Frequency Range</English>
             <French>Bande de fréquences</French>
+            <Spanish>Rango de frecuencias</Spanish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_transmitPower">
             <English>Transmit Power</English>
             <French>Puissance d'émission</French>
+            <Spanish>Potencia de transmisión</Spanish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_effectiveRange">
             <English>Effective Range (Urban)</English>
             <French>Portée pratique (zone urbaine)</French>
+            <Spanish>Rango efectivo (Urbano)</Spanish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_externalSpeaker">
             <English>External Speaker</English>
             <French>Haut-parleur externe</French>
+            <Spanish>Altavoz externo</Spanish>
         </Key>
     </Package>
 </Project>

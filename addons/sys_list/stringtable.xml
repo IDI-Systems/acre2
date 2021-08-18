@@ -18,7 +18,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_list_OpenRadio">
             <English>Open Active Radio</English>
-            <Spanish>Abrir radio</Spanish>
+            <Spanish>Abrir Radio</Spanish>
             <Czech>Otevřít aktivní rádio</Czech>
             <German>Aktives Funkgerät öffnen</German>
             <Japanese>使用中の無線機を開く</Japanese>
@@ -40,6 +40,7 @@
             <French>ACRE2 - Notifications radio</French>
             <Chinesesimp>ACRE 2 -无线电通知</Chinesesimp>
             <Portuguese>ACRE2 - Notificações de Rádio</Portuguese>
+            <Spanish>Notificaciones de radio</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_NotificationGridDesc">
             <English>Shows notifications regarding radios and transmissions.</English>
@@ -60,6 +61,7 @@
             <French>Notifications - Couleur d'arrière-plan</French>
             <Chinesesimp>通知的背景颜色</Chinesesimp>
             <Portuguese>Cor de plano de fundo da Notificação</Portuguese>
+            <Spanish>Color de fondo de la notificación</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_HintTextFont_DisplayName">
             <English>Notification Text Font</English>
@@ -70,6 +72,7 @@
             <French>Notifications - Police de caractère</French>
             <Chinesesimp>通知的字形</Chinesesimp>
             <Portuguese>Fonte de texto da Notificação</Portuguese>
+            <Spanish>Fuente de la notificación</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
             <English>Babel Cycle Language Color</English>
@@ -120,6 +123,7 @@
             <French>Couleur - Transmission radio 1 (PTT 1)</French>
             <Chinesesimp>无线电1（随按即说1）通讯颜色</Chinesesimp>
             <Portuguese>Cor: Transmissão Rádio 1 (PTT 1)</Portuguese>
+            <Spanish>Color de transmisión de Radio 1 (PTT 1)</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT2Color_DisplayName">
             <English>Radio 2 (PTT 2) Transmit Color</English>
@@ -130,6 +134,7 @@
             <French>Couleur - Transmission radio 2 (PTT 2)</French>
             <Chinesesimp>无线电2（随按即说2）通讯颜色</Chinesesimp>
             <Portuguese>Cor: Transmissão Rádio 2 (PTT 2)</Portuguese>
+            <Spanish>Color de transmisión de Radio 2 (PTT 2)</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT3Color_DisplayName">
             <English>Radio 3 (PTT 3) Transmit Color</English>
@@ -140,6 +145,7 @@
             <French>Couleur - Transmission radio 3 (PTT 3)</French>
             <Chinesesimp>无线电3（随按即说3）通讯颜色</Chinesesimp>
             <Portuguese>Cor: Transmissão Rádio 3 (PTT 3)</Portuguese>
+            <Spanish>Color de transmisión de Radio 3 (PTT 3)</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
             <English>Active Radio Transmit Color</English>
@@ -150,6 +156,7 @@
             <French>Couleur - Transmission radio active</French>
             <Chinesesimp>使用中的无线电通讯颜色</Chinesesimp>
             <Portuguese>Cor: Transmissão do Rádio Ativo</Portuguese>
+            <Spanish>Color de transmisión de Radio activa</Spanish>
         </Key>
     </Package>
 </Project>

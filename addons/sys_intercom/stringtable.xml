@@ -432,7 +432,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousIntercomKey_description">
             <English>Connects to the previous Intercom Network. Disconnects from others.</English>
-            <Spanish>Red the intercom previa. Desconecta las demás.</Spanish>
+            <Spanish>Red de intercom previa. Desconecta las demás.</Spanish>
             <German>Verbindet mit dem vorheriger Bordfunknetzwerk.</German>
             <Russian>Подключается к предыдущей сети Интерком. Отключается от остальных.</Russian>
             <Japanese>前のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
@@ -456,7 +456,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercomKey_description">
             <English>Connects to the next Intercom Network. Disconnects from others.</English>
-            <Spanish>Siguiente red the intercom. Desconecta las demás.</Spanish>
+            <Spanish>Siguiente red de intercom. Desconecta las demás.</Spanish>
             <German>Verbindet zu dem nächsten Bordfunknetzwerk.</German>
             <Russian>Подключает к следующей сети Интеркома. Отключает от остальных</Russian>
             <Japanese>次のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
@@ -467,7 +467,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
             <English>Connect Previous Intercom Network</English>
-            <Spanish>Connectar a la anterior red de intercom</Spanish>
+            <Spanish>Conectar a la anterior red de intercom</Spanish>
             <Polish>Połącz się z poprzednią siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Precedente</Italian>
             <Chinese>連線上一個通訊網路</Chinese>
@@ -480,7 +480,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey_description">
             <English>Connects to the previous Intercom Network while keeping the already connected ones.</English>
-            <Spanish>Conecta la red the intercom anterior manteniendo las demás.</Spanish>
+            <Spanish>Conecta la red de intercom anterior manteniendo las demás.</Spanish>
             <German>Verbindet mit dem vorherigen Bordfunknetzwerk während die bereits verbundenen beibehalten werden.</German>
             <Russian>Подключает к предыдущей сети Интеркома, сохраняя подключение к текущим</Russian>
             <Japanese>前のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
@@ -491,7 +491,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey">
             <English>Connect Next Intercom Network</English>
-            <Spanish>Connectar a la siguiente red de intercom</Spanish>
+            <Spanish>Conectar a la siguiente red de intercom</Spanish>
             <Polish>Połącz się z następną siecią interkomu</Polish>
             <Italian>Connetti Rete Intercom Successiva</Italian>
             <Japanese>次のインターコム ネットに接続</Japanese>
