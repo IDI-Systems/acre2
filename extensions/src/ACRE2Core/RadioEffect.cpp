@@ -9,10 +9,15 @@ CRadioEffect::~CRadioEffect() {
     delete radioFilter;
 }
 void CRadioEffect::process(short *samples, int sampleCount) {
-    
     bool noise = true;
-    if (this->getParam("disableNoise"))
+    if (this->getParam<bool>("disableNoise")) {
         noise = false;
+    }
 
-    this->radioFilter->process(samples, sampleCount, 1, static_cast<acre::volume_t>(this->getParam("signalQuality")), noise);
+    this->radioFilter->process(
+        samples,
+        sampleCount,
+        1,
+        this->getParam<acre::volume_t>("signalQuality"),
+        noise);
 };

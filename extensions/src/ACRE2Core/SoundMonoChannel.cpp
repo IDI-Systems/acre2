@@ -7,8 +7,10 @@
 #include "Log.h"
 
 void CSoundChannelMono::init( int length, bool singleShot ) {
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < effects.size(); ++i) {
         this->effects[i] = NULL;
+    }
+    for (int i = 0; i < mixdownEffects.size(); ++i) {
         this->mixdownEffects[i] = NULL;
     }
     this->bufferMaxSize = length;
@@ -36,7 +38,7 @@ CSoundChannelMono::~CSoundChannelMono() {
         delete this->buffer;
         this->buffer = NULL;
     }
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < effects.size(); ++i) {
         if (effects[i])
             delete effects[i];
         if (mixdownEffects[i])
@@ -68,7 +70,7 @@ int CSoundChannelMono::Out(short *samples, int sampleCount) {
 }
 
 CSoundMonoEffect * CSoundChannelMono::setEffectInsert(int index, std::string type) {
-    if (index > 7)
+    if (index >= effects.size())
         return NULL;
     if (this->effects[index])
         delete this->effects[index];
@@ -85,20 +87,24 @@ CSoundMonoEffect * CSoundChannelMono::setEffectInsert(int index, std::string typ
 }
 
 CSoundMonoEffect * CSoundChannelMono::getEffectInsert(int index) {
-    if (index > 7)
+    if (index >= effects.size())
         return NULL;
     return this->effects[index];
 }
 
 void CSoundChannelMono::clearEffectInsert(int index) {
-    if (index > 7)
+    if (index >= effects.size())
         return;
     if (this->effects[index])
         delete this->effects[index];
 }
 
+std::size_t CSoundChannelMono::maxEffectInserts() {
+    return this->effects.size();
+}
+
 CSoundMixdownEffect * CSoundChannelMono::setMixdownEffectInsert(int index, std::string type) {
-    if (index > 7)
+    if (index >= mixdownEffects.size())
         return NULL;
     if (this->mixdownEffects[index])
         delete this->mixdownEffects[index];
@@ -110,7 +116,18 @@ CSoundMixdownEffect * CSoundChannelMono::setMixdownEffectInsert(int index, std::
 }
 
 CSoundMixdownEffect * CSoundChannelMono::getMixdownEffectInsert(int index) {
-    if (index > 7)
+    if (index >= mixdownEffects.size())
         return NULL;
     return this->mixdownEffects[index];
+}
+
+void CSoundChannelMono::clearMixdownEffectInsert(int index) {
+    if (index >= mixdownEffects.size())
+        return;
+    if (this->mixdownEffects[index])
+        delete this->mixdownEffects[index];
+}
+
+std::size_t CSoundChannelMono::maxMixdownEffectInserts() {
+    return this->mixdownEffects.size();
 }

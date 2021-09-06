@@ -72,10 +72,10 @@ acre::Result CSoundPlayback::playSound(std::string id, acre::vec3_fp32_t positio
         tempChannel->getMixdownEffectInsert(0)->setParam("headVectorZ", direction.z);
 
         if (isWorld) {
-            tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000001);
-            tempChannel->getMixdownEffectInsert(0)->setParam("speakingType", static_cast<float32_t>(acre::Speaking::radio));
+            tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", true);
+            tempChannel->getMixdownEffectInsert(0)->setParam("speakingType", acre::Speaking::radio);
         } else {
-            tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", 0x00000000);
+            tempChannel->getMixdownEffectInsert(0)->setParam("isWorld", false);
         }
 
         tempChannel->In((short *)waveFile.GetData(), waveFile.GetSize()/sizeof(short));

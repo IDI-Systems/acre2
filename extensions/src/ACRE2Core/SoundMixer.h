@@ -18,7 +18,7 @@ public:
     bool acquireChannel(CSoundChannelMono **returnChannel, int bufferSize);
     bool acquireChannel(CSoundChannelMono **returnChannel, int bufferSize, bool singleShot);
 
-    bool releaseChannel(CSoundChannelMono *releaseChannel);
+    bool releaseChannel(CSoundChannelMono **releaseChannel);
     void mixDown(short* samples, int sampleCount, int channels, const unsigned int speakerMask);
 
 };
