@@ -6,11 +6,11 @@
 #include "SoundMonoEffect.h"
 #include "FilterRadio.h"
 
-class CRadioEffect : public CSoundMonoEffect {
+class CRadioEffectAnalogue : public CSoundMonoEffect {
 private:
     CFilterRadio *radioFilter;
 public:
-    CRadioEffect();
-    ~CRadioEffect();
+    CRadioEffectAnalogue();
+    ~CRadioEffectAnalogue();
     void process(short *samples, int sampleCount);
 };

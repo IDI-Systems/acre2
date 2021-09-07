@@ -1,6 +1,7 @@
 #include "SoundMonoChannel.h"
 
-#include "RadioEffect.h"
+#include "RadioEffectAnalogue.h"
+#include "RadioEffectCVSD.h"
 #include "VolumeEffect.h"
 #include "BabbelEffect.h"
 #include "PositionalMixdownEffect.h"
@@ -77,8 +78,11 @@ CSoundMonoEffect * CSoundChannelMono::setEffectInsert(int index, std::string typ
     if (type == "acre_volume") {
         this->effects[index] = new CVolumeEffect();
         return this->effects[index];
-    } else if (type == "acre_radio") {
-        this->effects[index] = new CRadioEffect();
+    } else if (type == "acre_radio_analogue") {
+        this->effects[index] = new CRadioEffectAnalogue();
+        return this->effects[index];
+    } else if (type == "acre_radio_cvsd") {
+        this->effects[index] = new CRadioEffectCVSD();
         return this->effects[index];
     } else if (type == "acre_babbel") {
         this->effects[index] = new CBabbelEffect();

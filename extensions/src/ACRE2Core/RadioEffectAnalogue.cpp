@@ -1,14 +1,14 @@
-#include "RadioEffect.h"
+#include "RadioEffectAnalogue.h"
 
 
-CRadioEffect::CRadioEffect() {
+CRadioEffectAnalogue::CRadioEffectAnalogue() {
     radioFilter = new CFilterRadio();
     this->setParam("signalQuality", 0.0f);
 };
-CRadioEffect::~CRadioEffect() {
+CRadioEffectAnalogue::~CRadioEffectAnalogue() {
     delete radioFilter;
 }
-void CRadioEffect::process(short *samples, int sampleCount) {
+void CRadioEffectAnalogue::process(short *samples, int sampleCount) {
     bool noise = true;
     if (this->getParam<bool>("disableNoise")) {
         noise = false;

@@ -49,7 +49,7 @@ RPC_FUNCTION(updateSpeakingData) {
 
                 acre::Speaking speakingTypeEnum;
                 if (speakingType == "i") {
-                    channel->setEffectInsert(2, "acre_radio");
+                    channel->setEffectInsert(2, "acre_radio_analogue");
                     channel->getEffectInsert(2)->setParam("disableNoise", true);
                     channel->getEffectInsert(2)->setParam("signalQuality", 1.0f);
                     speakingTypeEnum = acre::Speaking::intercom;
@@ -99,9 +99,14 @@ RPC_FUNCTION(updateSpeakingData) {
                     channel->setEffectInsert(channel->maxEffectInserts() - 1, "acre_volume");
                     channel->getEffectInsert(channel->maxEffectInserts() - 1)->setParam("volume", volume);
 
-                    channel->setEffectInsert(2, "acre_radio");
-                    channel->getEffectInsert(2)->setParam("disableNoise", false);
-                    channel->getEffectInsert(2)->setParam("signalQuality", signalQuality);
+                    const std::string modulation = (char*) vMessage->getParameter(11 + i*8);
+                    if (modulation == "FM" || modulation == "AM" || modulation == "NB") {
+                        channel->setEffectInsert(2, "acre_radio_analogue");
+                        channel->getEffectInsert(2)->setParam("disableNoise", false);
+                        channel->getEffectInsert(2)->setParam("signalQuality", signalQuality);
+                    } else if (modulation == "CVSD") {
+                        channel->setEffectInsert(2, "acre_radio_cvsd");
+                    }
 
                     channel->setMixdownEffectInsert(0, "acre_positional");
                     channel->getMixdownEffectInsert(0)->setParam("speakingType", acre::Speaking::radio);
@@ -110,10 +115,14 @@ RPC_FUNCTION(updateSpeakingData) {
                 if (channel) {
                     channel->getEffectInsert(channel->maxEffectInserts() - 1)->setParam("volume", vMessage->getParameterAsFloat(4 + (i * 8)));
 
-                    channel->getEffectInsert(2)->setParam("disableNoise", false);
-                    channel->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5 + (i * 8)));
-                    channel->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6 + (i * 8)));
-                    channel->getEffectInsert(2)->setParam("modulation", vMessage->getParameter(11 + (i * 8)));
+                    const std::string modulation = (char*) vMessage->getParameter(11 + i*8);
+                    if (modulation == "FM" || modulation == "AM" || modulation == "NB") {
+                        channel->getEffectInsert(2)->setParam("disableNoise", false);
+                        channel->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5 + (i * 8)));
+                        channel->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6 + (i * 8)));
+                    } else if (modulation == "CVSD") {
+                        channel->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5 + (i * 8)));
+                    }
 
                     const bool isLoudSpeaker = vMessage->getParameterAsInt(7 + (i * 8));
                     channel->getMixdownEffectInsert(0)->setParam("isLoudSpeaker", isLoudSpeaker);
