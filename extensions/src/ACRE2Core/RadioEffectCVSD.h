@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <climits>
 
 #include "compat.h"
 
@@ -20,10 +21,11 @@ private:
     private:
         std::vector<bool> lookback_register;
         const std::size_t lookback = 3;
-        const short delta_min = 32;
-        const short delta_max = delta_min * 16;
-        const short delta_coef = 2;
-        const float decay = 0.95;
+        const short delta_min = 256;
+        const short delta_max = 16 * delta_min;
+        const short delta_step = delta_min;
+        const float delta_coef = std::exp(-1.0f / (5e-3 * CVSD_RATE));
+        const float decay = std::exp(-1.0f / (1e-3 * CVSD_RATE));
         
         short reference = 0;
         short delta = delta_min;
@@ -46,12 +48,12 @@ private:
 
     CVSDEncoder encoder;
     CVSDDecoder decoder;
-    Dsp::SimpleFilter<Dsp::ChebyshevII::LowPass<4>, 1> filter;
+    Dsp::SimpleFilter<Dsp::ChebyshevI::LowPass<8>, 1> input_filter;
+    Dsp::SimpleFilter<Dsp::ChebyshevI::LowPass<8>, 1> output_filter;
 
 public:
     CRadioEffectCVSD();
 
     static float quality_to_ber(float signalQuality);
-
     void process(short* samples, int sampleCount);
 };

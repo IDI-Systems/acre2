@@ -1,5 +1,3 @@
-#include <climits>
-
 #include "RadioEffectCVSD.h"
 
 CRadioEffectCVSD::CVSDDecoder::CVSDDecoder() {
@@ -28,9 +26,9 @@ short CRadioEffectCVSD::CVSDDecoder::decode(bool sample) {
             negative_run &= !val;
         }
         if (positive_run || negative_run) {
-            delta = std::min(delta *= delta_coef, delta_max);
+            delta = std::min(delta += delta_step, delta_max);
         } else {
-            delta = std::max(delta /= delta_coef, delta_min);
+            delta = std::max(delta *= delta_coef, delta_min);
         }
     }
 
@@ -59,25 +57,26 @@ bool CRadioEffectCVSD::CVSDEncoder::encode(short sample) {
 }
 
 CRadioEffectCVSD::CRadioEffectCVSD() {
-    filter.setup(4, TS_SAMPLE_RATE, CVSD_RATE / 2, 1);
+    input_filter.setup(8, TS_SAMPLE_RATE, CVSD_RATE/2, 1);
+    output_filter.setup(8, TS_SAMPLE_RATE, CVSD_RATE/4, 1);
 }
 
-// this is a somewhat arbitrary function derived empirically to match the intelligibility
+// this is an arbitrary function derived empirically to match the intelligibility
 // of the existing signalQuality metric at a variety of distances.
 float CRadioEffectCVSD::quality_to_ber(float signalQuality) {
-    return pow(0.4 * (signalQuality - 1), 2);
+    return 0.05 * std::pow((signalQuality - 1), 2);
 }
 
 void CRadioEffectCVSD::process(short *samples, int sampleCount) {
     // anti-aliasing LPF prior to downsampling
-    filter.process(sampleCount, &samples);
+    input_filter.process(sampleCount, &samples);
 
     for (std::size_t i = 0; i < sampleCount; i += TS_SAMPLE_RATE / CVSD_RATE) {
         bool coded = encoder.encode(samples[i]);
 
         // introduce bit errors
         const float bit_error_rate = quality_to_ber(getParam<float>("signalQuality"));
-        if ((float) rand() / RAND_MAX < bit_error_rate) {
+        if ((float) std::rand() / RAND_MAX < bit_error_rate) {
             coded ^= 1;
         }
 
@@ -96,5 +95,5 @@ void CRadioEffectCVSD::process(short *samples, int sampleCount) {
         }
     }
 
-    filter.process(sampleCount, &samples);
+    output_filter.process(sampleCount, &samples);
 }
