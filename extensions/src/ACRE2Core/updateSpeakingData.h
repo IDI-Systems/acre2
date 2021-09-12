@@ -89,6 +89,14 @@ RPC_FUNCTION(updateSpeakingData) {
                 const int32_t channelId = i + 1;
                 CSoundChannelMono *channel = speaker->channels[channelId];
 
+                std::string modulation;
+                if (vMessage->getParameter(11 + i*8)) {
+                    modulation = reinterpret_cast<const char*>(vMessage->getParameter(11 + i*8));
+                } else {
+                    modulation = "FM";
+                    DEBUG("Warning, no modulation type provided by ArmA plugin. Falling back to FM.");
+                }
+
                 if (!channel) {
                     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->acquireChannel(&(speaker->channels[channelId]), 4800, false);
                     channel = speaker->channels[channelId];
@@ -99,13 +107,16 @@ RPC_FUNCTION(updateSpeakingData) {
                     channel->setEffectInsert(channel->maxEffectInserts() - 1, "acre_volume");
                     channel->getEffectInsert(channel->maxEffectInserts() - 1)->setParam("volume", volume);
 
-                    const std::string modulation = (char*) vMessage->getParameter(11 + i*8);
-                    if (modulation == "FM" || modulation == "AM" || modulation == "NB") {
+                    if (modulation == "CVSD") {
+                        channel->setEffectInsert(2, "acre_radio_cvsd");
+                    } else {
                         channel->setEffectInsert(2, "acre_radio_analogue");
                         channel->getEffectInsert(2)->setParam("disableNoise", false);
                         channel->getEffectInsert(2)->setParam("signalQuality", signalQuality);
-                    } else if (modulation == "CVSD") {
-                        channel->setEffectInsert(2, "acre_radio_cvsd");
+
+                        if (modulation != "FM" && modulation != "AM" && modulation != "NB") {
+                            DEBUG("Warning, invalid modulation type provided. Falling back to analogue effect.");
+                        }
                     }
 
                     channel->setMixdownEffectInsert(0, "acre_positional");
@@ -115,13 +126,12 @@ RPC_FUNCTION(updateSpeakingData) {
                 if (channel) {
                     channel->getEffectInsert(channel->maxEffectInserts() - 1)->setParam("volume", vMessage->getParameterAsFloat(4 + (i * 8)));
 
-                    const std::string modulation = (char*) vMessage->getParameter(11 + i*8);
-                    if (modulation == "FM" || modulation == "AM" || modulation == "NB") {
+                    if (modulation == "CVSD") {
+                        channel->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5 + (i * 8)));
+                    } else {
                         channel->getEffectInsert(2)->setParam("disableNoise", false);
                         channel->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5 + (i * 8)));
                         channel->getEffectInsert(2)->setParam("signalModel", vMessage->getParameterAsFloat(6 + (i * 8)));
-                    } else if (modulation == "CVSD") {
-                        channel->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5 + (i * 8)));
                     }
 
                     const bool isLoudSpeaker = vMessage->getParameterAsInt(7 + (i * 8));

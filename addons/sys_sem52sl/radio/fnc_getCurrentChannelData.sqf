@@ -49,19 +49,6 @@ ISNILS(_channelNumber,0);
 private _channels = HASH_GET(_radioData, "channels");
 private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 
-/*
- *  All needed data from the channel hash can be extracted and
- *  consequently written to the _return hash.
- *
- *  Optional:
- *  Here we have the opportunity to add static data to the
- *  channel data hash. This can be useful if the radio has
- *  only one power setting. While this data can be stored in
- *  the _radioData -- channels hash it would only add unneccessary
- *  data as the value can't be changed ingame.
- *  For our example, we also got the "mode" parameter set to
- *  "singleChannel" for all channels.
-*/
 private _return = HASH_CREATE;
 HASH_SET(_return, "mode", GVAR(channelMode));
 HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));

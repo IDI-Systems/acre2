@@ -48,19 +48,6 @@ private _channelNumber = _eventData;
 private _channels = HASH_GET(_radioData, "channels");
 private _channel = HASHLIST_SELECT(_channels, _channelNumber);
 private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
-/*
- *  All needed data from the channel hash can be extracted and
- *  consequently written to the _return hash.
- *
- *  Optional:
- *  Here we have the opportunity to add static data to the
- *  channel data hash. This can be useful if the radio has
- *  only one power setting. While this data can be stored in
- *  the _radioData -- channels hash it would only add unneccessary
- *  data as the value can't be changed ingame.
- *  For our example, we also got the "mode" parameter set to
- *  "singleChannel" for all channels.
-*/
 
 private _return = HASH_CREATE;
 
@@ -85,6 +72,11 @@ if (_manualChannel isEqualTo 1) then {
     HASH_SET(_return, "frequencies", HASH_GET(_channel, "frequencies"));
     HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
     HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
+    HASH_SET(_return, "CTCSSTx", HASH_GET(_radioData, "CTCSS"));
+    HASH_SET(_return, "CTCSSRx", HASH_GET(_radioData, "CTCSS"));
+    HASH_SET(_return, "modulation", HASH_GET(_radioData, "modulation"));
+    HASH_SET(_return, "encryption", HASH_GET(_radioData, "encryption"));
+    HASH_SET(_return, "squelch", HASH_GET(_radioData, "squelch"));
     if (HASH_GET(_radioData, "powerSource") == "VAU") then {
         HASH_SET(_return, "power", (HASH_GET(_radioData, "power") * SEM90_RACK_POWER_MULTIPLIER));
     } else {

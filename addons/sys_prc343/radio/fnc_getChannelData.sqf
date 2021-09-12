@@ -31,5 +31,6 @@ private _return = HASH_CREATE;
 HASH_SET(_return, "mode", "singleChannelPRR");
 HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
 HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
+HASH_SET(_return, "modulation", "CVSD");
 HASH_SET(_return, "power", 100);
 _return
