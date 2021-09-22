@@ -20,4 +20,7 @@ class CfgAcreWorlds {
     class cam_lao_nam {
         wrp = "\idi\acre\addons\sys_sog\cam_lao_nam.fakewrp";
     };
+    class vn_khe_sanh {
+        wrp = "\idi\acre\addons\sys_sog\vn_khe_sanh.fakewrp";
+    };
 };
