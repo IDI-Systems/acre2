@@ -151,7 +151,7 @@ namespace acre {
                     return true;
                 }
 
-                const PropagationModel model = static_cast<PropagationModel>(args_.as_int(acre_signalArgument_signalPropagationModel));
+                const PropagationModel model = (_map) ? static_cast<PropagationModel>(args_.as_int(acre_signalArgument_signalPropagationModel)) : PropagationModel::arcade;
 
                 const int32_t logging = args_.as_int(acre_signalArgument_debugEnabled);
                 const bool omnidirectional = args_.as_int(acre_signalArgument_omnidirectionalRadios);
