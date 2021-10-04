@@ -6,7 +6,7 @@
             <German>ACRE2 Nutzeroberfläche</German>
             <Polish>ACRE2 UI</Polish>
             <French>ACRE2 IU</French>
-            <Turkish>ACRE2 UI</Turkish>
+            <Turkish>ACRE2 Arayüz</Turkish>
             <Japanese>ACRE2 UI</Japanese>
             <Chinese>ACRE 2 界面</Chinese>
             <Czech>ACRE2 UI</Czech>
@@ -29,6 +29,7 @@
             <Chinese>後期混音 全域音量</Chinese>
             <Chinesesimp>后期混音 全域音量</Chinesesimp>
             <Portuguese>Volume Global Pós-Mix</Portuguese>
+            <Turkish>Mix Sonrası Global Ses</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
             <English>Pre-Mix Global Volume</English>
@@ -44,6 +45,7 @@
             <Chinese>前期混音 全域音量</Chinese>
             <Chinesesimp>前期混音 全域音量</Chinesesimp>
             <Portuguese>Volume Global Pré-Mix</Portuguese>
+            <Turkish>Mix Öncesi Global Ses</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_defaultRadioVolume_displayName">
             <English>Default Radio Volume</English>
@@ -54,6 +56,7 @@
             <French>Volume radio par défaut</French>
             <Portuguese>Volume padrão do rádio</Portuguese>
             <Spanish>Volumen de radio por defecto</Spanish>
+            <Turkish>Varsayılan Radyo Sesi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
@@ -69,11 +72,13 @@
             <Chinese>觀戰模式音量</Chinese>
             <Chinesesimp>观战模式音量</Chinesesimp>
             <Portuguese>Volume do Espectador</Portuguese>
+            <Turkish>Spectator Sesi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_godVolume_displayName">
             <English>God Volume</English>
             <French>Volume Dieu</French>
             <Spanish>Volumen de Zeus</Spanish>
+            <Turkish>Tanrı Sesi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
@@ -89,6 +94,7 @@
             <Chinese>客戶端取消禁音</Chinese>
             <Chinesesimp>客户端取消禁音</Chinesesimp>
             <Portuguese>Desmutar Clientes</Portuguese>
+            <Turkish>Diğer Client'ları Susturma</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
             <English>TeamSpeak Channel Switch</English>
@@ -103,6 +109,7 @@
             <Spanish>Cambio de canal de TeamSpeak</Spanish>
             <French>Changer de canal TeamSpeak</French>
             <German>TeamSpeak Kanalwechsel</German>
+            <Turkish>TeamSpeak Kanal Değiştirmesi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
@@ -117,6 +124,7 @@
             <French>Nom du canal TeamSpeak</French>
             <German>TeamSpeak Kanalname</German>
             <Russian>Имя ТимСпик канала</Russian>
+            <Turkish>TeamSpeak Kanal İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
@@ -130,6 +138,7 @@
             <French>Mot de passe du canal TeamSpeak</French>
             <German>TeamSpeak Kanalpasswort</German>
             <Russian>Пароль ТимСпик канала</Russian>
+            <Turkish>Teamspeak Kanal Parolası</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -145,6 +154,7 @@
             <Chinese>關閉裝備不同步提示</Chinese>
             <Chinesesimp>关闭装备不同步提示</Chinesesimp>
             <Portuguese>Desabilitar Dica de Dessincronização do Equipamento</Portuguese>
+            <Turkish>Ekipman Desenkronize Uyarısını Gösterme</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
             <English>Active Radio Transmit</English>
@@ -160,6 +170,7 @@
             <Chinese>預設無線電按鍵</Chinese>
             <Chinesesimp>预设无线电按键</Chinesesimp>
             <Portuguese>Tecla Activo do Rádio</Portuguese>
+            <Turkish>Aktif Telsizde Konuşma</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
             <English>Transmit on currently active radio.</English>
@@ -175,6 +186,7 @@
             <Chinese>使用目前選擇的無線電進行通話。</Chinese>
             <Chinesesimp>使用目前选择的无线电进行通话。</Chinesesimp>
             <Portuguese>Usar o rádio atualmente selecionado para falar.</Portuguese>
+            <Turkish>Aktif olan telsizde konuşmak için</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
             <English>Radio 1 Transmit (PTT 1)</English>
@@ -188,6 +200,7 @@
             <Portuguese>Tecla de transmissão do Rádio 1 (PTT 1)</Portuguese>
             <Japanese>無線機 1 の送信 (PTT 1)</Japanese>
             <Chinese>無線電 1 發話(隨按即說1)</Chinese>
+            <Turkish>Telsiz 1'de Konuşma (Bas-Konuş 1)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Transmit on first radio and set it as active.</English>
@@ -203,6 +216,7 @@
             <Chinese>使用物品欄內第一個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第一个无线电进行通话。</Chinesesimp>
             <Portuguese>Transmitir e usar o primeiro rádio do inventário para falar.</Portuguese>
+            <Turkish>İlk telsizde konuş ve telsizi aktif olarak ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2">
             <English>Radio 2 Transmit (PTT 2)</English>
@@ -216,6 +230,7 @@
             <Portuguese>Tecla de transmissão do Rádio 2</Portuguese>
             <Japanese>無線機 2 の送信 (PTT 2)</Japanese>
             <Chinese>無線電 2 發話(隨按即說2)</Chinese>
+            <Turkish>Telsiz 2'de Konuşma (Bas-Konuş 2)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Transmit on second radio and set it as active.</English>
@@ -231,6 +246,7 @@
             <Chinese>使用物品欄內第二個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第二个无线电进行通话。</Chinesesimp>
             <Portuguese>Transmitir e usar o segundo rádio do inventário para falar.</Portuguese>
+            <Turkish>İkinci telsizde konuş ve telsizi aktif olarak ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3">
             <English>Radio 3 Transmit (PTT 3)</English>
@@ -244,6 +260,7 @@
             <Portuguese>Tecla de transmissão do Rádio 3</Portuguese>
             <Japanese>無線機 3 の送信 (PTT 3)</Japanese>
             <Chinese>無線電 3 發話(隨按即說3)</Chinese>
+            <Turkish>Telsiz 3'de Konuşma (Bas-Konuş 3)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Transmit on third radio and set it as active.</English>
@@ -259,6 +276,7 @@
             <Chinese>使用物品欄內第三個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第三个无线电进行通话。</Chinesesimp>
             <Portuguese>Transmitir e usar o terceiro rádio do inventário para falar.</Portuguese>
+            <Turkish>Üçüncü telsizde konuş ve telsizi aktif olarak ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_PreviousChannel">
             <English>Previous Channel (Active Radio)</English>
@@ -274,6 +292,7 @@
             <Chinese>上一個頻道 (目前使用的無線電)</Chinese>
             <Chinesesimp>上一个频道 (目前使用的无线电)</Chinesesimp>
             <Portuguese>Canal Anterior (Rádio Ativo)</Portuguese>
+            <Turkish>Önceki Kanal (Aktif Telsizde)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_NextChannel">
             <English>Next Channel (Active Radio)</English>
@@ -289,6 +308,7 @@
             <Chinese>下一個頻道 (目前使用的無線電)</Chinese>
             <Chinesesimp>下一个频道 (目前使用的无线电)</Chinesesimp>
             <Portuguese>Canal Posterior (Rádio Ativo)</Portuguese>
+            <Turkish>Sonraki Kanal (Aktif Telsizde)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_BabelCycleKey">
             <English>Babel Cycle Language</English>
@@ -304,6 +324,7 @@
             <Chinese>切換模擬多國語言</Chinese>
             <Chinesesimp>切换模拟多国语言</Chinesesimp>
             <Portuguese>Mudar Idioma (Babel)</Portuguese>
+            <Turkish>Babel Dil Değiştir</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioLeftEar">
             <English>Radio Left Ear (Active Radio)</English>
@@ -319,6 +340,7 @@
             <Chinese>用左耳收聽無線電</Chinese>
             <Chinesesimp>用左耳收听无线电</Chinesesimp>
             <Portuguese>Rádio Orelha Esquerda (ativo)</Portuguese>
+            <Turkish>Telsiz Sol Kulak (Aktif Telsiz)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_RadioBothEars">
             <English>Radio Both Ears (Active Radio)</English>
@@ -334,6 +356,7 @@
             <Chinese>用雙耳收聽無線電</Chinese>
             <Chinesesimp>用双耳收听无线电</Chinesesimp>
             <Portuguese>Rádio Ambas Orelhas (ativo)</Portuguese>
+            <Turkish>Telsiz Her İki Kulak (Aktif Telsiz)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_RightRightEar">
             <English>Radio Right Ear (Active Radio)</English>
@@ -349,6 +372,7 @@
             <Chinese>用右耳收聽無線電</Chinese>
             <Chinesesimp>用右耳收听无线电</Chinesesimp>
             <Portuguese>Rádio Orelha Direita (ativo)</Portuguese>
+            <Turkish>Telsiz Sağ Kulak (Aktif Telsiz)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_HeadSet">
             <English>Toggle Headset/Spectators</English>
@@ -364,6 +388,7 @@
             <Chinese>切換耳機 / 切換觀戰</Chinese>
             <Chinesesimp>切换耳机 / 切换观战</Chinesesimp>
             <Portuguese>Alternar Fones/Espectadores</Portuguese>
+            <Turkish>Kulaklık/Spectator Arasında Geçiş Yap</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirToggle">
             <English>Antenna Direction Toggle</English>
@@ -374,6 +399,7 @@
             <French>Changer l'orientation de l'antenne</French>
             <Portuguese>Alternar direção da antena</Portuguese>
             <Spanish>Cambiar dirección de antena</Spanish>
+            <Turkish>Anten Yönünü Değiştir</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
@@ -384,6 +410,7 @@
             <French>Antenne redressée</French>
             <Portuguese>Antena endireitada</Portuguese>
             <Spanish>Antena enderezada</Spanish>
+            <Turkish>Anten Düzleştirildi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
@@ -394,6 +421,7 @@
             <French>Antenne courbée</French>
             <Portuguese>Antena dobrada</Portuguese>
             <Spanish>Antena doblada</Spanish>
+            <Turkish>Anten Büküldü</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -409,6 +437,7 @@
             <Chinesesimp>干扰模型</Chinesesimp>
             <Portuguese>Interferência do Modelo</Portuguese>
             <Italian>Modello Interferenza</Italian>
+            <Turkish>Parazit Modeli</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
             <English>Full Duplex radios</English>
@@ -424,6 +453,7 @@
             <Chinesesimp>全双工无线电台</Chinesesimp>
             <Portuguese>Rádios Full Duplex</Portuguese>
             <Italian>Radio Full Duplex</Italian>
+            <Turkish>Tam Duplex Telsizler</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_antennaDirection_displayName">
             <English>Ignore Antenna Direction</English>
@@ -439,6 +469,7 @@
             <Chinesesimp>忽略天线方向</Chinesesimp>
             <Portuguese>Ignorar Direção da Antena</Portuguese>
             <Italian>Ignora direzione antenna</Italian>
+            <Turkish>Anten Yönünü Yoksay</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_autoAntennaDirection_displayName">
             <English>Automatic Antenna Direction</English>
@@ -449,6 +480,7 @@
             <French>Orientation automatique de l'antenne</French>
             <Portuguese>Direção automática da Antena</Portuguese>
             <Spanish>Dirección automática de antena</Spanish>
+            <Turkish>Otomatik Anten Yönü</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -464,6 +496,7 @@
             <Chinesesimp>地形干扰系数</Chinesesimp>
             <Portuguese>Coeficiente de perda do terreno (Sinal)</Portuguese>
             <Italian>Coefficiente di attenuazione del terreno</Italian>
+            <Turkish>Arasi Kaynaklı Parazit Katsayısı</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
             <English>AI Voice Detection</English>
@@ -479,6 +512,7 @@
             <Chinesesimp>AI侦测玩家语音</Chinesesimp>
             <Portuguese>Detecção de Voz de IA</Portuguese>
             <Italian>Rilevamento Voce IA</Italian>
+            <Turkish>Yapay Zeka Ses Fark Etmesi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_switchRadioEarLeft">
             <English>Set to Left Ear</English>
@@ -494,6 +528,7 @@
             <Chinese>設置為左耳收聽</Chinese>
             <Chinesesimp>设置为左耳收听</Chinesesimp>
             <Portuguese>Definir Para Orelha Esquerda</Portuguese>
+            <Turkish>Sol Kulağa Ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_switchRadioEarBoth">
             <English>Set to Both Ears</English>
@@ -509,6 +544,7 @@
             <Chinese>設置為雙耳收聽</Chinese>
             <Chinesesimp>设置为双耳收听</Chinesesimp>
             <Portuguese>Definir Para Ambas Orelhas</Portuguese>
+            <Turkish>Her İki Kulağa Ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_switchRadioEarRight">
             <English>Set to Right Ear</English>
@@ -524,6 +560,7 @@
             <Chinese>設置為右耳收聽</Chinese>
             <Chinesesimp>设置为右耳收听</Chinesesimp>
             <Portuguese>Definir Para Orelha Direita</Portuguese>
+            <Turkish>Sağ Kulağa Ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetRaised">
             <English>Headset Raised</English>
@@ -538,6 +575,7 @@
             <Italian>Alza cuffie</Italian>
             <Spanish>Subir auriculares</Spanish>
             <French>Casque mis</French>
+            <Turkish>Kulaklık Takıldı</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
@@ -552,6 +590,7 @@
             <Italian>Abbassa cuffie</Italian>
             <Spanish>Bajar auriculares</Spanish>
             <French>Casque enlevé</French>
+            <Turkish>Kulaklık İndirildi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_incomingTransmissionNotification">
             <English>Show incoming transmissions</English>
@@ -562,6 +601,7 @@
             <French>Afficher les transmissions entrantes</French>
             <Portuguese>Mostrar transmissões recebidas</Portuguese>
             <Spanish>Mostrar transmisiones entrantes</Spanish>
+            <Turkish>Gelen Mesajları Göster</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
@@ -572,6 +612,7 @@
             <French>Afficher les transmissions du rack</French>
             <Portuguese>Mostras transmissões do raque</Portuguese>
             <Spanish>Mostrar transmisiones de radio vehicular</Spanish>
+            <Turkish>Rafta Gelen Mesajları Göster</Turkish>
         </Key>
     </Package>
 </Project>
