@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project name="ACRE2">
+<Project name="ACRE">
     <Package name="Sys_Spectator">
         <Key ID="STR_ACRE_Sys_Spectator_ClearRadios">
             <English>Clear Spectator Radios</English>
