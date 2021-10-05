@@ -38,4 +38,4 @@ if (isNil "_return") then {
     _cachedChannels set[_channelNumber, _return];
     SCRATCH_SET(_radioId, "cachedFullChannels", _cachedChannels);
 };
-_return;
+_return

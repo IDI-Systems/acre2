@@ -19,4 +19,4 @@
  * Public: No
  */
 
-true;
+true

@@ -38,4 +38,4 @@ if (_currentTransmissions isEqualTo []) then {
     SCRATCH_SET(_radioId, "hasBeeped", false);
 };
 
-true;
+true

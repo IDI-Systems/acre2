@@ -26,4 +26,4 @@ if (_obj isKindOf "Man") then {
     _pos = AGLtoASL (_obj modelToWorld (_obj selectionPosition "RightShoulder"));
 };
 
-_pos;
+_pos

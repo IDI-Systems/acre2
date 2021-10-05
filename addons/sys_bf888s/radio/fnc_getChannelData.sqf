@@ -29,4 +29,4 @@ if (_eventData < (count _cachedChannels)) then {
 } else {
     _return = [_eventData, _radioData] call FUNC(getChannelDataInternal);
 };
-_return;
+_return

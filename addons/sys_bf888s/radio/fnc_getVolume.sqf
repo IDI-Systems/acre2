@@ -24,4 +24,4 @@ private _volume = HASH_GET(_radioData,"volume");
 if (isNil "_volume") then {
     _volume = 1;
 };
-_volume^3;
+_volume^3

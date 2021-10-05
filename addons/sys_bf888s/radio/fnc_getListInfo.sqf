@@ -20,4 +20,4 @@
  * Public: No
  */
 
-_this call FUNC(getChannelDescription);
+_this call FUNC(getChannelDescription)
