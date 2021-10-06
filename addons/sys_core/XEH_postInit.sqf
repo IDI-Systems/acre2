@@ -116,7 +116,7 @@ if ([findDisplay 0] isNotEqualTo allDisplays) then {
                 if (_result == -1) then {
                     WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
                 } else {
-                    ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                    ERROR_MSG_2("ACRE was unable to parse the map [%1] - ACRE will now use Arcade signal propagation model. Please file a ticket on our tracker: %2",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"),LELSTRING(Main,URL));
                 };
             } else {
                 INFO_2("Map Load Complete: %1 with radio signal code %2",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"),[worldName] call EFUNC(sys_signal,getRadioClimateCode));
