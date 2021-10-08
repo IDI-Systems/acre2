@@ -183,7 +183,7 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
                             if (GVAR(lowered)) then {
                                 _radioVolume = _radioVolume * 0.15;
                             };
-                            _params set [0, _radioVolume];
+                            _params set [0, _radioVolume*_volumeModifier];
                         };
                         _params set [1, _signalData select 0];
                         _speakingRadios pushBack _params;
