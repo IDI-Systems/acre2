@@ -57,22 +57,22 @@ acre::Result CFilterPosition::process(short* samples, int sampleCount, int chann
     DSPSettings.DstChannelCount = channels;
     DSPSettings.pMatrixCoefficients = Matrix;
 
-    speaker_position.x = params->getParam("speakerPosX");
-    speaker_position.y = params->getParam("speakerPosY");
-    speaker_position.z = params->getParam("speakerPosZ");
+    speaker_position.x = params->getParam<float>("speakerPosX");
+    speaker_position.y = params->getParam<float>("speakerPosY");
+    speaker_position.z = params->getParam<float>("speakerPosZ");
 
     Emitter.Position = speaker_position;
 
-    vector_speakerDirection.x = params->getParam("headVectorX");
-    vector_speakerDirection.y = params->getParam("headVectorY");
-    vector_speakerDirection.z = params->getParam("headVectorZ");
+    vector_speakerDirection.x = params->getParam<float>("headVectorX");
+    vector_speakerDirection.y = params->getParam<float>("headVectorY");
+    vector_speakerDirection.z = params->getParam<float>("headVectorZ");
 
     Emitter.OrientFront = vector_speakerDirection;
     Emitter.OrientTop = this->getUpVector(vector_speakerDirection);
     Emitter.Velocity = X3DAUDIO_VECTOR( 0, 0, 0 );
     Emitter.ChannelCount = 1;
 
-    if (params->getParam("isWorld") == POSITIONAL_EFFECT_ISWORLD) {
+    if (params->getParam<bool>("isWorld")) {
         listener_position.x = CEngine::getInstance()->getSelf()->getWorldPosition().x;
         listener_position.y = CEngine::getInstance()->getSelf()->getWorldPosition().y;
         listener_position.z = CEngine::getInstance()->getSelf()->getWorldPosition().z;
@@ -82,16 +82,16 @@ acre::Result CFilterPosition::process(short* samples, int sampleCount, int chann
         vector_listenerDirection.y = CEngine::getInstance()->getSelf()->getHeadVector().y;
         vector_listenerDirection.z = CEngine::getInstance()->getSelf()->getHeadVector().z;
 
-        if (params->getParam("speakingType") == static_cast<float32_t>(acre::Speaking::direct)) {
+        if (params->getParam<acre::Speaking>("speakingType") == acre::Speaking::direct) {
             /*if(CEngine::getInstance()->getSoundEngine()->getCurveModel() == acre::CurveModel::amplitude) {
                 Emitter.CurveDistanceScaler = (player->getAmplitudeCoef())*(CEngine::getInstance()->getSoundEngine()->getCurveScale());
                 Emitter.pVolumeCurve = NULL;
             } else */
             if (CEngine::getInstance()->getSoundEngine()->getCurveModel() == acre::CurveModel::selectableA) {
-                Emitter.CurveDistanceScaler = 1.0f*(params->getParam("curveScale"));
+                Emitter.CurveDistanceScaler = 1.0f * params->getParam<float>("curveScale");
                 Emitter.pVolumeCurve = NULL;
             } else if (CEngine::getInstance()->getSoundEngine()->getCurveModel() == acre::CurveModel::selectableB) {
-                Emitter.CurveDistanceScaler = 1.0f*(params->getParam("curveScale"));
+                Emitter.CurveDistanceScaler = 1.0f * params->getParam<float>("curveScale");
                 Emitter.pVolumeCurve = (X3DAUDIO_DISTANCE_CURVE *)&distanceCurve;
             } else {
                 Emitter.CurveDistanceScaler = 1.0f;

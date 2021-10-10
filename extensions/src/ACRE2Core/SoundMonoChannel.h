@@ -31,9 +31,14 @@ public:
     int Out(short *samples, int sampleCount);
     int GetCurrentBufferSize() { return this->bufferLength-this->bufferPos; };
     bool IsOneShot() { return this->oneShot; };
+
     CSoundMonoEffect * setEffectInsert(int index, std::string type);
     CSoundMonoEffect * getEffectInsert(int index);
+    void clearEffectInsert(int index);
+    std::size_t maxEffectInserts();
+
     CSoundMixdownEffect * setMixdownEffectInsert(int index, std::string type);
     CSoundMixdownEffect * getMixdownEffectInsert(int index);
-    void clearEffectInsert(int index);
+    void clearMixdownEffectInsert(int index);
+    std::size_t maxMixdownEffectInserts();
 };

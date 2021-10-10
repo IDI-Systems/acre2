@@ -26,7 +26,7 @@ void CPlayer::clearSoundChannels() {
     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->lock();
     for (size_t i = 0; i < channels.size(); ++i) {
         if (channels[i]) {
-            CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(channels[i]);
+            CEngine::getInstance()->getSoundEngine()->getSoundMixer()->releaseChannel(&channels[i]);
         }
     }
     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->unlock();

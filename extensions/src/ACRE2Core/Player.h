@@ -33,7 +33,7 @@ public:
     DECLARE_MEMBER(acre::volume_t, PreviousVolume);
     DECLARE_MEMBER(acre::volume_t, SignalQuality);
     DECLARE_MEMBER(char *, SignalModel);
-    DECLARE_MEMBER(BOOL, IsLoudSpeaker);
+    DECLARE_MEMBER(bool, IsLoudSpeaker);
 
     DECLARE_MEMBER(std::string, CurrentRadioId);
 

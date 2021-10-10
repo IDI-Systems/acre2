@@ -87,7 +87,7 @@ void CSoundMixer::mixDown(short* samples, int sampleCount, int channels, const u
     }
     if (cleanUp.size() > 0) {
         for (auto it = cleanUp.begin(); it != cleanUp.end(); ++it) {
-            this->releaseChannel((CSoundChannelMono *)*it);
+            this->releaseChannel((CSoundChannelMono **)*it);
         }
     }
     delete monoSamples;
@@ -95,13 +95,13 @@ void CSoundMixer::mixDown(short* samples, int sampleCount, int channels, const u
     this->unlock();
 }
 
-bool CSoundMixer::releaseChannel(CSoundChannelMono *releaseChannel) { 
+bool CSoundMixer::releaseChannel(CSoundChannelMono **releaseChannel) { 
     this->lock();
-    if (this->channelList.find(releaseChannel) != this->channelList.end()) {
-        this->channelList.unsafe_erase(releaseChannel); 
-        if (releaseChannel)
-            delete releaseChannel;
-        releaseChannel = NULL;
+    if (this->channelList.find(*releaseChannel) != this->channelList.end()) {
+        this->channelList.unsafe_erase(*releaseChannel); 
+        if (*releaseChannel)
+            delete *releaseChannel;
+        *releaseChannel = NULL;
     }
     this->unlock();
     return true; 

@@ -92,7 +92,12 @@ if (_okRadios isNotEqualTo []) then {
             _radioVolume = [_x, _radioVolume] call EFUNC(sys_intercom,modifyRadioVolume);
             _radioVolume = _radioVolume * GVAR(globalVolume);
             // acre_player sideChat format["rv: %1", _radioVolume];
+
+            private _channelData = [_receivingRadioid, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+            private _modulation = HASH_GET(_channelData, "modulation");
+
             private _isLoudspeaker = [_receivingRadioid, "isExternalAudio"] call EFUNC(sys_data,dataEvent);
+
             private _spatialArray = [0,0,0];
             if (!_isLoudspeaker) then {
                 private _spatial = [_receivingRadioid, "getSpatial"] call EFUNC(sys_data,dataEvent);
@@ -100,7 +105,7 @@ if (_okRadios isNotEqualTo []) then {
             };
             // FULL DUPLEX radios, shouldn't be able to hear themselves.
 
-            _params = [_transmittingRadioId, _receivingRadioid, [_signalQuality, _signalDb], [_radioVolume, _signalQuality, _signalModel, _isLoudspeaker, _spatialArray]];
+            _params = [_transmittingRadioId, _receivingRadioid, [_signalQuality, _signalDb], [_radioVolume, _signalQuality, _signalModel, _isLoudspeaker, _spatialArray, _modulation]];
             _unit setVariable ["ACRE_%1CachedSampleParams"+_x, _params];
         } else {
             _params = _unit getVariable ["ACRE_%1CachedSampleParams"+_x, []];

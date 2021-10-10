@@ -1,14 +1,17 @@
 #include "SoundMonoChannel.h"
 
-#include "RadioEffect.h"
+#include "RadioEffectAnalogue.h"
+#include "RadioEffectCVSD.h"
 #include "VolumeEffect.h"
 #include "BabbelEffect.h"
 #include "PositionalMixdownEffect.h"
 #include "Log.h"
 
 void CSoundChannelMono::init( int length, bool singleShot ) {
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < effects.size(); ++i) {
         this->effects[i] = NULL;
+    }
+    for (int i = 0; i < mixdownEffects.size(); ++i) {
         this->mixdownEffects[i] = NULL;
     }
     this->bufferMaxSize = length;
@@ -36,7 +39,7 @@ CSoundChannelMono::~CSoundChannelMono() {
         delete this->buffer;
         this->buffer = NULL;
     }
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < effects.size(); ++i) {
         if (effects[i])
             delete effects[i];
         if (mixdownEffects[i])
@@ -68,15 +71,18 @@ int CSoundChannelMono::Out(short *samples, int sampleCount) {
 }
 
 CSoundMonoEffect * CSoundChannelMono::setEffectInsert(int index, std::string type) {
-    if (index > 7)
+    if (index >= effects.size())
         return NULL;
     if (this->effects[index])
         delete this->effects[index];
     if (type == "acre_volume") {
         this->effects[index] = new CVolumeEffect();
         return this->effects[index];
-    } else if (type == "acre_radio") {
-        this->effects[index] = new CRadioEffect();
+    } else if (type == "acre_radio_analogue") {
+        this->effects[index] = new CRadioEffectAnalogue();
+        return this->effects[index];
+    } else if (type == "acre_radio_cvsd") {
+        this->effects[index] = new CRadioEffectCVSD();
         return this->effects[index];
     } else if (type == "acre_babbel") {
         this->effects[index] = new CBabbelEffect();
@@ -85,20 +91,24 @@ CSoundMonoEffect * CSoundChannelMono::setEffectInsert(int index, std::string typ
 }
 
 CSoundMonoEffect * CSoundChannelMono::getEffectInsert(int index) {
-    if (index > 7)
+    if (index >= effects.size())
         return NULL;
     return this->effects[index];
 }
 
 void CSoundChannelMono::clearEffectInsert(int index) {
-    if (index > 7)
+    if (index >= effects.size())
         return;
     if (this->effects[index])
         delete this->effects[index];
 }
 
+std::size_t CSoundChannelMono::maxEffectInserts() {
+    return this->effects.size();
+}
+
 CSoundMixdownEffect * CSoundChannelMono::setMixdownEffectInsert(int index, std::string type) {
-    if (index > 7)
+    if (index >= mixdownEffects.size())
         return NULL;
     if (this->mixdownEffects[index])
         delete this->mixdownEffects[index];
@@ -110,7 +120,18 @@ CSoundMixdownEffect * CSoundChannelMono::setMixdownEffectInsert(int index, std::
 }
 
 CSoundMixdownEffect * CSoundChannelMono::getMixdownEffectInsert(int index) {
-    if (index > 7)
+    if (index >= mixdownEffects.size())
         return NULL;
     return this->mixdownEffects[index];
+}
+
+void CSoundChannelMono::clearMixdownEffectInsert(int index) {
+    if (index >= mixdownEffects.size())
+        return;
+    if (this->mixdownEffects[index])
+        delete this->mixdownEffects[index];
+}
+
+std::size_t CSoundChannelMono::maxMixdownEffectInserts() {
+    return this->mixdownEffects.size();
 }

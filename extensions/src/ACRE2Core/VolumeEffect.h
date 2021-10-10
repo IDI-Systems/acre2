@@ -15,7 +15,13 @@ public:
     };
 
     void process(short *samples, int sampleCount) {
-        this->volumeFilter.process(samples, sampleCount, 1, static_cast<acre::volume_t>(this->getParam("volume")), static_cast<acre::volume_t>(this->getParam("previousVolume")));
-        this->setParam("previousVolume", this->getParam("volume"));
+        this->volumeFilter.process(
+            samples,
+            sampleCount,
+            1,
+            this->getParam<acre::volume_t>("volume"),
+            this->getParam<acre::volume_t>("previousVolume"));
+
+        this->setParam("previousVolume", this->getParam<acre::volume_t>("volume"));
     };
 };
