@@ -46,6 +46,8 @@ namespace acre {
                     return landscape.get()->failure;
                 }
 
+                _current_map = "";
+                result_      = nullptr;
                 LOG(ERROR) << "WRP unable to find wrp file: " << wrp_path_;
                 return acre::wrp::LandscapeResult::Failure;
             };
