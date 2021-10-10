@@ -22,14 +22,14 @@ private _id = GET_TS3ID(_unit);
 
 private _bothSpectating = false;
 private _isIntercomAttenuate = false;
-private _directVolume = GVAR(globalVolume);
+private _directVolume = 1;
 private _speakingType = "d";
 
 if (_id in ACRE_SPECTATORS_LIST && {ACRE_IS_SPECTATOR}) then {
     _bothSpectating = true;
 } else {
     private _attenuate = [_unit] call EFUNC(sys_attenuate,getUnitAttenuate);
-    _directVolume = GVAR(globalVolume) * (1 - _attenuate);
+    _directVolume = 1 - _attenuate;
     _isIntercomAttenuate = [_unit] call EFUNC(sys_attenuate,isIntercomAttenuate);
 };
 
@@ -82,7 +82,7 @@ private _underwater = (ACRE_LISTENER_DIVE == 1) || {_emitterHeight < -0.2};
 
 if (_isIntercomAttenuate) then {
     _speakingType = "i";
-    _directVolume = _directVolume * ([_unit] call EFUNC(sys_intercom,getVolumeIntercomUnit));
+    _directVolume = [_unit] call EFUNC(sys_intercom,getVolumeIntercomUnit);
     _underwater = false;
 };
 
@@ -91,6 +91,6 @@ if (GVAR(isDeaf) || {_unit getVariable [QGVAR(isDisabled), false]} || {_underwat
 };
 
 private _canUnderstand = [_unit] call FUNC(canUnderstand);
-private _params = [_speakingType, _id, !_canUnderstand, _directVolume^3, _emitterPos, _emitterDir];
+private _params = [_speakingType, _id, !_canUnderstand, (_directVolume * GVAR(globalVolume))^3, _emitterPos, _emitterDir];
 TRACE_1("SPEAKING UPDATE", _params);
 _params
