@@ -18,7 +18,7 @@
 
 TRACE_1("enter", _this);
 
-//["Acre_GenericClick", [0,0,0], [0,0,0], 0.2, false] call EFUNC(sys_sounds,playSound);
+//["Acre_GenericClick", [0,0,0], [0,0,0], 0.6, false] call EFUNC(sys_sounds,playSound);
 
 #ifdef ENABLE_PERFORMANCE_COUNTERS
     BEGIN_COUNTER(buttonPress);
@@ -29,7 +29,7 @@ private _control = ctrlIDC (_this select 1);
 if (_control != 222 && {_control != (99902 + 116)} && {_control != (99902 + 117)}) then {
     [_this select 0] call FUNC(toggleButtonPressDown);
 } else {
-    ["Acre_GenericClick", [0,0,0], [0,0,0], 0.2, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_GenericClick", [0,0,0], [0,0,0], 0.6, false] call EFUNC(sys_sounds,playSound);
 };
 
 
