@@ -82,7 +82,7 @@ private _underwater = (ACRE_LISTENER_DIVE == 1) || {_emitterHeight < -0.2};
 
 if (_isIntercomAttenuate) then {
     _speakingType = "i";
-    _directVolume = _directVolume * [_unit] call EFUNC(sys_intercom,getVolumeIntercomUnit);
+    _directVolume = _directVolume * ([_unit] call EFUNC(sys_intercom,getVolumeIntercomUnit));
     _underwater = false;
 };
 
