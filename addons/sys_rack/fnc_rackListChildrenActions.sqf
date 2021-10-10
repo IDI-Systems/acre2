@@ -65,7 +65,7 @@ if (_usableInaccessibleRadios isNotEqualTo []) then {
 };
 
 if (_usableAccessibleRadios isNotEqualTo []) then {
-    _action = [
+    private _action = [
         QGVAR(stopUsingAllRacks),
         localize LSTRING(stopUsingAllRacks),
         "",
