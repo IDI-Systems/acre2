@@ -76,15 +76,16 @@ for "_i" from 0 to (count _channels)-1 do {
     PUSH(_currentChannels, _channelData);
 };
 
-// Rounds up 20/40/60/80/100 to the nearest valid value
-private _volume = EGVAR(sys_core,defaultRadioVolume);
-_volume = _volume + 0.125 - (_volume % 0.125);
+// Map 20/40/60/80/100% volume setting to the nearest valid value and knob position
+private _defaultVolumeIndex = (EGVAR(sys_core,defaultRadioVolume) * 5) - 1;
+private _volume = [0.250, 0.375, 0.625, 0.750, 1] select _defaultVolumeIndex;
+private _volumeKnobIndex = [6, 5, 3, 2, 0] select _defaultVolumeIndex;
 
 HASH_SET(_radioData,"volume",_volume);
 HASH_SET(_radioData,"radioOn",1);
 HASH_SET(_radioData,"currentChannel",0);
 HASH_SET(_radioData,"channelKnobPosition",2); // Channel 1 (after on/off options)
-HASH_SET(_radioData,"volumeKnobPosition",_volume / 0.125);
+HASH_SET(_radioData,"volumeKnobPosition",_volumeKnobIndex);
 HASH_SET(_radioData,"programmingStep",0);
 HASH_SET(_radioData,"lastActiveChannel",0);
 HASH_SET(_radioData,"audioPath","HEADSET");
