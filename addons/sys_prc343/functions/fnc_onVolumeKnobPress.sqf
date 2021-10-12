@@ -32,7 +32,7 @@ private _currentVolume = GET_STATE("volume"); //["getState", "volume"] call GUI_
 private _newVolume = ((_currentVolume + _currentDirection) max 0) min 1;
 
 if (_currentVolume != _newVolume) then {
-    ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], _newVolume^3, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], _newVolume, false] call EFUNC(sys_sounds,playSound);
     ["setVolume", _newVolume] call GUI_DATA_EVENT;
 
 
