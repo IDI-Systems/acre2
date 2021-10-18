@@ -85,7 +85,7 @@ GVAR(targetUnits) = GVAR(targetUnits) apply {
 GVAR(speaking) = true;
 
 #ifndef TEST_SELF_RX
-["Acre_GodBeep", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false, false] call EFUNC(sys_sounds,playSound);
+["Acre_GodBeep", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false] call EFUNC(sys_sounds,playSound);
 #endif
 
 if (GVAR(txNotification)) then {
