@@ -15,7 +15,7 @@
  *
  * Public: No
  */
- 
+
  params ["","_key"];
 
   private _currentDirection = -1;
