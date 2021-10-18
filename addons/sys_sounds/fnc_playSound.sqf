@@ -29,4 +29,4 @@ if (_scaleGlobalVolume) then {
     _volume = _volume * EGVAR(sys_core,globalVolume);
 };
 
-["playLoadedSound", [_className, _position, _direction, _volume^3, _isWorld]] call EFUNC(sys_rpc,callRemoteProcedure);
+["playLoadedSound", [_className, _position, _direction, _volume, _isWorld]] call EFUNC(sys_rpc,callRemoteProcedure);

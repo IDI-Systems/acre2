@@ -17,12 +17,12 @@
  */
 
 
-//["Acre_GenericClick", [0,0,0], [0,0,0], 0.6, false] call EFUNC(sys_sounds,playSound);
+//["Acre_GenericClick", [0,0,0], [0,0,0], 0.2, false] call EFUNC(sys_sounds,playSound);
 private _control = ctrlIDC (_this select 1);
 if (_control != (99902 + 222)) then {
 [_this select 0] call FUNC(toggleButtonPressDown);
 } else {
-    ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], 0.6, false] call EFUNC(sys_sounds,playSound);
+    ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], 0.2, false] call EFUNC(sys_sounds,playSound);
 };
 
 
