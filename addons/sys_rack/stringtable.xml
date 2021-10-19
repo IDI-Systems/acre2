@@ -136,6 +136,8 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash2">
             <English>Dash 2</English>
+            <German>2. Schacht</German>
+            <Italian>Cruscotto 2</Italian>
             <French>Panneau 2</French>
             <Spanish>Panel 2</Spanish>
             <Turkish>Panel 2</Turkish>
@@ -217,6 +219,7 @@
             <Spanish>Usar todas</Spanish>
             <French>Tout utiliser</French>
             <German>Verwende alle</German>
+            <Italian>Usa tutto</Italian>
             <Russian>Использовать все</Russian>
             <Portuguese>Usar todos</Portuguese>
             <Turkish>Hepsini Kullan</Turkish>
@@ -229,6 +232,7 @@
             <Spanish>Dejar de usar todas</Spanish>
             <French>Ne rien utiliser</French>
             <German>Nicht mehr alle verwenden</German>
+            <Italian>Smetti di usare tutto</Italian>
             <Russian>Прекратить использовать все</Russian>
             <Portuguese>Todos: Parar de usar</Portuguese>
             <Turkish>Hepsini Kullanmayı Bırak</Turkish>
