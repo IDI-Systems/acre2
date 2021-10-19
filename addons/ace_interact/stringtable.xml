@@ -181,6 +181,7 @@
             <English>Straighten antenna</English>
             <German>Antenne gerade ausrichten</German>
             <Japanese>アンテナを直立に伸ばす</Japanese>
+            <Italian>Raddrizzare l'antenna</Italian>
             <Russian>Выпрямить антенну</Russian>
             <Chinese>把天線拉直</Chinese>
             <French>Redresser l'antenne</French>
@@ -193,6 +194,7 @@
             <English>Bend antenna upwards</English>
             <German>Antenne hoch biegen</German>
             <Japanese>折り曲げたアンテナを上向きに</Japanese>
+            <Italian>Piegare l'antenna verso l'alto</Italian>
             <Russian>Согнуть антенну</Russian>
             <Chinese>把天線往上彎曲</Chinese>
             <French>Courber l'antenne vers le haut</French>
@@ -203,24 +205,32 @@
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_frequencyRange">
             <English>Frequency Range</English>
+            <German>Frequenz Band</German>
+            <Italian>Intervallo di frequenze</Italian>
             <French>Bande de fréquences</French>
             <Spanish>Rango de frecuencias</Spanish>
             <Turkish>Frekans Aralığı</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_transmitPower">
             <English>Transmit Power</English>
+            <German>Sendeleistung</German>
+            <Italian>Potenza di trasmissione</Italian>
             <French>Puissance d'émission</French>
             <Spanish>Potencia de transmisión</Spanish>
             <Turkish>İletim Gücü</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_effectiveRange">
             <English>Effective Range (Urban)</English>
+            <German>Effektive Reichweite (Städte)</German>
+            <Italian>Portata effettiva (urbana)</Italian>
             <French>Portée pratique (zone urbaine)</French>
             <Spanish>Rango efectivo (Urbano)</Spanish>
             <Turkish>Gerçek Güç (Şehir İçi)</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_externalSpeaker">
             <English>External Speaker</English>
+            <German>Externer Lautsprecher</German>
+            <Italian>Altoparlante esterno</Italian>
             <French>Haut-parleur externe</French>
             <Spanish>Altavoz externo</Spanish>
             <Turkish>Dış Hoparlör</Turkish>
