@@ -20,6 +20,7 @@
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_DisplayName">
             <English>ACRE2 - Volume Control</English>
             <German>ACRE2 - Lautstärke</German>
+            <Italian>ACRE2 - Controllo del volume</Italian>
             <Russian>ACRE2 - громкость</Russian>
             <Japanese>ACRE2 - 音量操作</Japanese>
             <Chinese>ACRE2 - 音量控制</Chinese>
@@ -32,6 +33,7 @@
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
             <German>Zeigt die momentane Lautstärke deiner Charaktersprache an.</German>
+            <Italian>Indica l'attuale livello di volume del parlato diretto.</Italian>
             <Russian>Отображает текущую громкость прямой речи</Russian>
             <Japanese>現在の直接会話音量を表示します。</Japanese>
             <Chinese>顯示妳目前說話的音量</Chinese>
@@ -72,6 +74,8 @@
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_DisplayName">
             <English>Volume Color Scale</English>
             <Russian>Цветовая гамма громкости</Russian>
+            <German>Lautstärke Farbskala</German>
+            <Italian>Volume: Gamma di colori</Italian>
             <Japanese>音量カラー</Japanese>
             <Chinese>音量界面顏色化</Chinese>
             <French>Volume - Gamme de couleurs</French>
@@ -83,6 +87,8 @@
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
             <English>Color scale used by the Volume Control UI.</English>
             <Russian>Цветовая гамма интефейса управления громкостью</Russian>
+            <German>Farbskala die vom Lautstärke Kontrolle Benutzerinterface genutzt wird.</German>
+            <Italian>Gamma di colori utilizzata dall'interfaccia di controllo del volume.</Italian>
             <Japanese>音量操作 UI に使う色を決定できます。</Japanese>
             <Chinese>在音量控制界面以顏色作為音量等級區分</Chinese>
             <French>Gamme de couleurs utilisée pour l'interface de contrôle du volume.</French>
@@ -94,6 +100,8 @@
         <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
             <English>Yellow, Orange, Red</English>
             <Russian>Желтый, Оранжевый,Красный</Russian>
+            <German>Gelb, Orange, Rot</German>
+            <Italian>Giallo, Arancione, Rosso</Italian>
             <Japanese>イエロー、オレンジ、レッド</Japanese>
             <Chinese>黃，橘，紅</Chinese>
             <French>Jaune, Orange, Rouge</French>
@@ -105,6 +113,8 @@
         <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
             <English>Green, Orange, Red</English>
             <Russian>Зеленый, Оранжевый, Красный</Russian>
+            <German>Grün, Orange, Rot</German>
+            <Italian>Verde, Arancione, Rosso</Italian>
             <Japanese>グリーン、オレンジ、レッド</Japanese>
             <Chinese>綠，橘，紅</Chinese>
             <French>Vert, Orange, Rouge</French>
@@ -116,6 +126,8 @@
         <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
             <English>Blue, Magenta, Red</English>
             <Russian>Синий,Пурпурный,Красный</Russian>
+            <German>Blau, Magenta, Rot</German>
+            <Italian>Blu, Magenta, Rosso</Italian>
             <Japanese>ブルー、マゼンタ、レッド</Japanese>
             <Chinese>藍，洋紅色，紅色</Chinese>
             <French>Bleu, Magenta, Rouge</French>
