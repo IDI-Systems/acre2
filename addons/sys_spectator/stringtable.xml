@@ -6,18 +6,24 @@
             <French>Spectateur - Réinitialisation des radios</French>
             <Spanish>Restablecer radios de espectador</Spanish>
             <Turkish>Spectator Telsizlerini Temizle</Turkish>
+            <German>Entferne spectator Funkgeräte</German>
+            <Italian>Reimposta le radio degli spettatori</Italian>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_ClearRadios_Description">
             <English>Clears all radios from the spectator radios list.</English>
             <French>Décoche toutes les radios de la liste spectateur.</French>
             <Spanish>Elimina todas las radios de la lista de radios para espectadores.</Spanish>
             <Turkish>Spectator telsiz listesindeki bütün telsizleri temizler.</Turkish>
+            <German>Entferne alle Funkgeräte aus dem spectator.</German>
+            <Italian>Cancella tutte le radio dall'elenco delle radio degli spettatori.</Italian>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_NoRadios">
             <English>No Radios</English>
             <French>Aucune radio</French>
             <Spanish>Sin radios</Spanish>
             <Turkish>Telsiz Yok</Turkish>
+            <German>Keine Funkgeräte</German>
+            <Italian>Niente radio</Italian>
         </Key>
     </Package>
 </Project>
