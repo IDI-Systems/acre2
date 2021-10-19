@@ -5,6 +5,7 @@
             <English>Switch to Spectator</English>
             <Japanese>スペクテイターに切り替え</Japanese>
             <German>Wechsle zu Zuschauer</German>
+            <Italian>Passa a spettatore</Italian>
             <Russian>Переключиться на Спектатора</Russian>
             <Chinese>切換至觀戰者</Chinese>
             <French>Passer en spectateur</French>
@@ -17,6 +18,7 @@
             <English>Switch to Zeus</English>
             <Japanese>Zeus に切り替え</Japanese>
             <German>Wechsle zu ZEUS</German>
+            <Italian>Passa a Zeus</Italian>
             <Russian>Переключиться на Zeus</Russian>
             <Chinese>切換至宙斯</Chinese>
             <French>Passer en Zeus</French>
@@ -29,6 +31,7 @@
             <English>Use Remote Controlled Voice</English>
             <Japanese>遠隔操作ユニットの声を使用</Japanese>
             <German>Nutze Ferngesteuerte Stimme</German>
+            <Italian>Usa la voce telecomandata</Italian>
             <Russian>Использовать удаленный разговор</Russian>
             <Chinese>使用遠程操控語音</Chinese>
             <French>Utiliser la voix contrôlée à distance</French>
@@ -41,6 +44,7 @@
             <English>Use Player Voice</English>
             <Japanese>プレイヤーの声を使用</Japanese>
             <German>Nutze Spielerstimme</German>
+            <Italian>Usa la voce del giocatore</Italian>
             <Russian>Использовать голос игрока</Russian>
             <Chinese>使用玩家語音</Chinese>
             <French>Utiliser la voix du joueur</French>
@@ -53,6 +57,7 @@
             <English>Speak through the Camera</English>
             <Japanese>カメラを通じて話す</Japanese>
             <German>Spreche durch die Kamera</German>
+            <Italian>Parla attraverso la telecamera</Italian>
             <Russian>Говорить через камеру</Russian>
             <Chinese>透過遊戲內攝影機說話</Chinese>
             <French>Parler à travers la caméra</French>
@@ -66,6 +71,7 @@
             <Japanese>Zeus 画面のカメラから話すようになります。"カメラを通じて聞く" が有効になっている必要があります。</Japanese>
             <Chinese>透過宙斯的界面攝影機說話而並非是你單位的位子。透過攝影機聆聽的選項必須啟用。</Chinese>
             <German>Spreche aus der ZEUS Kamera anstatt von der Position der Einheit. Hören durch ZEUS Kamera muss aktiviert sein.</German>
+            <Italian>Parla dalla fotocamera dell'interfaccia Zeus invece che dalla posizione dell'unità. Comunica attraverso la fotocamera deve essere abilitato.</Italian>
             <Russian>Говорить через интерфейс Zeus вместо позиции вашего юнита. Должна быть включено прослушивание через камеру</Russian>
             <French>Permet de parler depuis la caméra de l'interface Zeus au lieu de la position de l'unité. L'option "Communiquer à travers la caméra" doit être active.</French>
             <Chineseimp>透过宙斯的界面摄影机说话而并非是你单位的位子。透过摄影机聆听的选项必须启用。</Chineseimp>
@@ -75,6 +81,8 @@
         </Key>
         <Key ID="STR_ACRE_sys_zeus_NoCameraSpeakInSpectator">
             <English>Unable to speak from camera while in Spectator</English>
+            <German>Im Zuschauermodus kann nicht von der Kamera aus gesprochen werden</German>
+            <Italian>Impossibile parlare dalla telecamera mentre si è in modalità Spettatore</Italian>
             <Portuguese>Não é possível falar por meio da Câmera enquanto Espectador</Portuguese>
             <French>Impossible de parler à travers la caméra en mode spectateur</French>
             <Spanish>Imposible hablar desde la cámara cuando se está en modo Espectador.</Spanish>
@@ -84,6 +92,7 @@
             <English>Default Zeus Voice Source</English>
             <Japanese>Zeus の音源</Japanese>
             <German>Standard ZEUS Sprachquelle</German>
+            <Italian>Sorgente vocale Zeus predefinita</Italian>
             <Russian>Источник голоса Zeus по умолчанию</Russian>
             <Chinese>宙斯的語音來源</Chinese>
             <French>Source vocale Zeus par défaut</French>
@@ -95,6 +104,7 @@
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_DisplayName">
             <English>Communicate Through Camera</English>
             <German>Kommuniziere durch Kamera</German>
+            <Italian>Comunicare attraverso la telecamera</Italian>
             <Russian>Общаться через камеру</Russian>
             <Japanese>カメラを通じて会話</Japanese>
             <Chinese>透過攝影機</Chinese>
@@ -106,7 +116,8 @@
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_Description">
             <English>Hear and talk with players through the Zeus Interface's camera.</English>
-            <German>Höre zu und spreche mit Spielern durch die ZEUS Kamera</German>
+            <German>Höre zu und spreche mit Spielern durch die ZEUS Kamera.</German>
+            <Italian>Ascolta e parla con i giocatori attraverso la telecamera dell'interfaccia Zeus.</Italian>
             <Russian>Слышать и говорить с игроками через камеру в интерфейсе Zeus</Russian>
             <Japanese>Zeus カメラを通じてプレイヤーを話せるようになります。</Japanese>
             <Chinese>透過宙斯界面的攝影機來聽見玩家並和玩家對話。</Chinese>
@@ -120,6 +131,7 @@
             <English>Able to Join Spectators</English>
             <Japanese>スペクテイターへ参加可能に</Japanese>
             <German>Kommunikation mit Zuschauern möglich</German>
+            <Italian>Comunicazione con gli spettatori possibile</Italian>
             <Russian>Возможно присоединиться к Спектаторам</Russian>
             <Chinese>可以加入觀戰者</Chinese>
             <French>Possibilité de joindre les spectateurs</French>
@@ -132,6 +144,7 @@
             <English>Let Zeus join the specators while in the Zeus interface.</English>
             <Japanese>Zeus が Zeus 画面のままスペクテイターへの参加を可能にします。</Japanese>
             <German>Lasse ZEUS mit dem Zuschauern kommunizieren während die ZEUS Oberfläche genutzt wird.</German>
+            <Italian>Lascia che ZEUS comunichi con il visualizzatore mentre viene utilizzata la superficie ZEUS.</Italian>
             <Russian>Дать Zeus возможность присоединяться к спектаторам,находясь в интерфейсе Zeus</Russian>
             <Chinese>讓在宙斯界面的宙斯可以加入觀戰者</Chinese>
             <French>Donne la possibilité à Zeus de rejoindre les spectateurs durant l'usage de l'interface Zeus.</French>
