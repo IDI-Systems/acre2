@@ -23,6 +23,9 @@ private _vehicle = vehicle acre_player;
 if (acre_player getVariable [QEGVAR(sys_core,isDisabled), false]) exitWith {
     false
 };
+if (acre_player getVariable [QEGVAR(sys_core,unableToUseRadio), false]) exitWith {
+    false
+};
 
 if (_vehicle != acre_player) then {
     if ((_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || {_radioId in ACRE_HEARABLE_RACK_RADIOS}) && {[_radioId, acre_player] call EFUNC(sys_rack,isRadioHearable)}) then {
