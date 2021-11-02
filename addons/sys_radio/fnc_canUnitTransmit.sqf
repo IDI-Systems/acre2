@@ -23,7 +23,7 @@ private _vehicle = vehicle acre_player;
 if (acre_player getVariable [QEGVAR(sys_core,isDisabled), false]) exitWith {
     false
 };
-if (acre_player getVariable [QEGVAR(sys_core,unableToUseRadio), false]) exitWith {
+if (acre_player getVariable [QEGVAR(sys_core,isDisabledRadio), false]) exitWith {
     false
 };
 
