@@ -52,7 +52,14 @@ namespace acre {
                 std::function<void()> currentFunc = std::move(m_queuedFunctions.front());
                 m_queuedFunctions.pop_front();
 
+                // Execute the current funtion. However, during the time this function is executing, there is no need to
+                // keep holding m_lock. By releasing it for that time, we allow further functions to be queued by other threads.
+                // This gets especially important if the called function will call a Mumble API function. This function will require
+                // to run in Mumble's main thread but if that thread is in turn waiting until a new event is queued (in one of the
+                // plugin callbacks in this plugin), we end up with a deadlock.
+                guard.unlock();
                 currentFunc();
+                guard.lock();
             }
 
             // Wait for something to happen. Note that during the waiting the lock is released and
