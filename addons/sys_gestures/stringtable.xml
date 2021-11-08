@@ -35,7 +35,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS_description">
             <English>Keying radios will prevent aiming down sights.</English>
-            <German>Das Eintasten von Funkgeräten verhindert das Anvisieren.</German>
+            <German>Verhindert das Anvisieren während ein Funkgerät bedient wird.</German>
             <Italian>La digitazione delle radio impedirà di mirare verso il basso.</Italian>
             <French>Les joueurs ne peuvent plus utiliser les organes de visée de leurs armes lorsqu'ils parlent à la radio.</French>
             <Spanish>No permite a los jugadores usar la mira de sus armas al usar la radio</Spanish>
