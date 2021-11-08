@@ -114,14 +114,14 @@
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
             <English>Receive Notification</English>
-            <German>Empfange Nachricht</German>
+            <German>Empfangsbenachrichtigung</German>
             <Italian>Ricevi messaggio</Italian>
             <French>Notifications de réception</French>
             <Turkish>Mesaj Al</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
             <English>Transmit Notification</English>
-            <German>Sende Nachricht</German>
+            <German>Sendebenachrichtigung</German>
             <Italian>Invia messaggio</Italian>
             <French>Notifications d'émission</French>
             <Turkish>Mesaj İlet</Turkish>
