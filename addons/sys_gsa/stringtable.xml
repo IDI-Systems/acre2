@@ -6,6 +6,7 @@
             <Spanish>Conectar a la antena</Spanish>
             <Japanese>地上アンテナに接続</Japanese>
             <German>Mit BBA verbunden</German>
+            <Italian>Collegato all'antenna</Italian>
             <Russian>Подключен к антенне</Russian>
             <Chinese>已連接至地面天線</Chinese>
             <French>Connecté à l'antenne</French>
@@ -18,6 +19,7 @@
             <Spanish>Desconectar de la antena</Spanish>
             <Japanese>地上アンテナから切断</Japanese>
             <German>Von BBA getrennt</German>
+            <Italian>Scollegato all'antenna</Italian>
             <Russian>Отключен от антенны</Russian>
             <Chinese>從地面天線斷開</Chinese>
             <French>Déconnecté de l'antenne</French>
@@ -29,6 +31,7 @@
             <English>You disconnected %1 from GSA</English>
             <Spanish>Has desconectado a %1 de la antena</Spanish>
             <German>Du hast %1 von BBA getrennt</German>
+            <Italian>Hai disconnesso %1 dall'antenna</Italian>
             <Russian>Вы отключили %1 от антенны</Russian>
             <Japanese>地上アンテナの%1から切断しました</Japanese>
             <Chinese>你已經把%1從地面天線斷開</Chinese>
@@ -42,6 +45,7 @@
             <Spanish>Clavar antena</Spanish>
             <Japanese>スパイクを設置</Japanese>
             <German>Stichanker setzen</German>
+            <Italian>Imposta le ancore di pugnalata</Italian>
             <Russian>Разместить антенну</Russian>
             <Chinese>設置尖波</Chinese>
             <French>Installer l'antenne</French>
@@ -54,6 +58,7 @@
             <Spanish>Clavar antena con mástil</Spanish>
             <Japanese>マストとスパイクを設置</Japanese>
             <German>Stichanker und Funkmast setzen</German>
+            <Italian>Imposta l'ancoraggio e l'albero della radio</Italian>
             <Russian>Разместить антенну с мачтой</Russian>
             <Chinese>設置尖波與桅杆</Chinese>
             <French>Installer l'antenne et son mât</French>
@@ -66,6 +71,7 @@
             <Spanish>Recoger</Spanish>
             <Japanese>拾う</Japanese>
             <German>Aufheben</German>
+            <Italian>Sollevamento</Italian>
             <Russian>Подобрать</Russian>
             <Chinese>撿起</Chinese>
             <French>Récupérer l'antenne</French>
@@ -78,6 +84,7 @@
             <Spanish>Coger mástil</Spanish>
             <Japanese>マストを除去</Japanese>
             <German>Entferne Funkmast</German>
+            <Italian>Rimuovere l'antenna radio</Italian>
             <Russian>Убрать мачту</Russian>
             <Chinese>移除桅杆</Chinese>
             <French>Retirer le mât</French>
@@ -90,6 +97,7 @@
             <Spanish>Recoger mástil</Spanish>
             <Japanese>マストを乗せる</Japanese>
             <German>Installiere Funkmast</German>
+            <Italian>Installa l'antenna radio</Italian>
             <Russian>Установить мачту</Russian>
             <Chinese>裝上桅杆</Chinese>
             <French>Installer le mât</French>
@@ -102,6 +110,7 @@
             <Spanish>Antena en uso</Spanish>
             <Japanese>地上アンテナは使用中</Japanese>
             <German>BBA bereits in Benutzung</German>
+            <Italian>Antenna già in uso</Italian>
             <Russian>Антенна уже занята</Russian>
             <Chinese>地面天線已經使用中</Chinese>
             <French>La GSA est déjà en cours d'utilisation.</French>
@@ -114,6 +123,7 @@
             <Spanish>Conectar</Spanish>
             <Japanese>接続</Japanese>
             <German>Verbinde</German>
+            <Italian>Collegare</Italian>
             <Russian>Подключиться</Russian>
             <Chinese>連接</Chinese>
             <French>Connecter</French>
@@ -126,6 +136,7 @@
             <Spanish>Desconectar</Spanish>
             <Japanese>切断</Japanese>
             <German>Trenne</German>
+            <Italian>Disconnetti</Italian>
             <Russian>Отключиться</Russian>
             <Chinese>斷開</Chinese>
             <French>Déconnecter</French>
@@ -138,6 +149,7 @@
             <Spanish>Antena VHF30108 con mástil</Spanish>
             <Japanese>マスト付きの VHF30108 地上アンテナ</Japanese>
             <German>VHF30108 Bodenbefestigte Antenne mit Funkmast</German>
+            <Italian>VHF30108 Antenna a pavimento con antenna radio</Italian>
             <Russian>Наземная антенна VHF30108 с мачтой</Russian>
             <Chinese>VHF30108 地面突波天線含桅杆</Chinese>
             <French>Antenne VHF30108 montée sur mât</French>
@@ -150,6 +162,7 @@
             <Spanish>Antena VHF30108</Spanish>
             <Japanese>VHF30108 地上アンテナ</Japanese>
             <German>VHF30108 Bodenbefestigte Antenne</German>
+            <Italian>VHF30108 Antenna per montaggio a pavimento</Italian>
             <Russian>Наземная антенна VHF30108</Russian>
             <Chinese>VHF30108 地面突波天線</Chinese>
             <French>Antenne VHF30108</French>
@@ -162,6 +175,7 @@
             <Spanish>Mastil de la antena VHF30108</Spanish>
             <Japanese>VHF30108 マスト</Japanese>
             <German>VHF30108 Funkmast</German>
+            <Italian>Antenna radio VHF30108</Italian>
             <Russian>Мачта для VHF30108</Russian>
             <Chinese>VHF30108 桅杆</Chinese>
             <French>Mât pour antenne VHF30108</French>
@@ -173,6 +187,7 @@
             <English>Inventory full</English>
             <Spanish>Inventario lleno</Spanish>
             <German>Inventar voll!</German>
+            <Italian>Inventario pieno!</Italian>
             <Russian>Инвентарь переполнен</Russian>
             <Japanese>インベントリはいっぱいです</Japanese>
             <Chinese>物品欄已滿</Chinese>

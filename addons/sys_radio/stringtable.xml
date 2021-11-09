@@ -122,6 +122,8 @@
         </Key>
         <Key ID="STR_ACRE_sys_radio_acreBaseBox">
             <English>ACRE Base Box</English>
+            <German>ACRE Basisbox</German>
+            <Italian>Scatola base ACRE</Italian>
             <Spanish>Caja base de ACRE</Spanish>
             <Japanese>ACRE 基本物資箱</Japanese>
             <Russian>ACRE Основное</Russian>
@@ -136,6 +138,7 @@
             <Spanish>Caja con todas las radios</Spanish>
             <Japanese>全無線機物資箱</Japanese>
             <German>Sämtliche ACRE Funkgeräte</German>
+            <Italian>Tutte le casse radio</Italian>
             <Russian>Ящик со Всеми Рациями</Russian>
             <French>Caisse toutes radios ACRE</French>
             <Chinese>全無線電機種供給箱</Chinese>
@@ -147,6 +150,7 @@
             <English>Radio set to %1</English>
             <Spanish>Radio configurada a %1</Spanish>
             <German>Funkgerät auf %1 gestellt</German>
+            <Italian>Radio impostata su %1</Italian>
             <Russian>Рация установлена на %1</Russian>
             <Japanese>無線機を%1に設置</Japanese>
             <French>Radio réglée sur %1.</French>
