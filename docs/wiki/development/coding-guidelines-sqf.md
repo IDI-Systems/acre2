@@ -231,7 +231,7 @@ class Something : Or {
 
 When using `if`/`else`, it is encouraged to put `else` on the same line as the closing brace to save space:
 
-```cpp
+```sqf
 if (alive player) then {
     player setDamage 1;
 } else {
@@ -257,7 +257,7 @@ Ever new scope should be on a new indent. This will make the code easier to unde
 
 Good:
 
-```cpp
+```sqf
 call {
     call {
         if (condition) then {
@@ -269,7 +269,7 @@ call {
 
 Bad:
 
-```cpp
+```sqf
 call {
         call {
         if (condition) then {
@@ -285,7 +285,7 @@ All command shall be separated from its parameters with a space.
 
 Good:
 
-```cpp
+```sqf
 params ["_player"];
 
 if (alive _player) then { hint ":)" };
@@ -295,7 +295,7 @@ private _config = getNumber (configFile >> "CfgWeapons" >> _parent >> "acre_hasU
 
 Bad:
 
-```
+```sqf
 params["_player"];
 
 if(alive _player) then { hint ":(" };
@@ -309,7 +309,7 @@ Inline comments should use `//`. Usage of `/* */` is allowed for larger comment 
 
 Example:
 
-```cpp
+```sqf
 //// Comment   // Incorrect
 // Comment     // Correct
 /* Comment */  // Correct
@@ -451,7 +451,7 @@ Declarations should be at the smallest feasible scope.
 
 Good:
 
-```js
+```sqf
 if (call FUNC(myCondition)) then {
    private _areAllAboveTen = true; // Smallest feasible scope
 
@@ -469,7 +469,7 @@ if (call FUNC(myCondition)) then {
 
 Bad:
 
-```js
+```sqf
 private _areAllAboveTen = true; // Bad because it can be initialized in the if statement
 if (call FUNC(myCondition)) then {
    {
@@ -490,7 +490,7 @@ Private variables will not be introduced until they can be initialized with mean
 
 Good:
 
-```js
+```sqf
 private _myVariable = 0; // Good because the value will be used
 {
     _x params ["_value", "_amount"];
@@ -502,7 +502,7 @@ private _myVariable = 0; // Good because the value will be used
 
 Bad:
 
-```js
+```sqf
 private _myvariable = 0; // Bad because it is initialized with a zero, but this value does not mean anything
 if (_condition) then {
     _myVariable = 1;
@@ -513,7 +513,7 @@ if (_condition) then {
 
 Good:
 
-```js
+```sqf
 private _myvariable = [1, 2] select _condition;
 ```
 
@@ -744,14 +744,14 @@ Where possible `[0, 0, 0]` position shall be used, except on `#` objects (e.g. `
 
 This code requires ~1.00ms and will be higher with more objects near wanted position:
 
-```js
+```sqf
 _vehicle = _type createVehicleLocal _posATL;
 _vehicle setposATL _posATL;
 ```
 
 While this one requires ~0.04ms:
 
-```js
+```sqf
 _vehicle = _type createVehicleLocal [0, 0, 0];
 _vehicle setposATL _posATL;
 ```

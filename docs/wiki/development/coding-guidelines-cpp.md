@@ -16,7 +16,7 @@ All variable names should follow `snake_formatting`, with all letters in lowerca
 
 Examples:
 
-```c++
+```cpp
 uint32_t my_number = 1;
 std::string test_string = "abc";
 ```
@@ -27,7 +27,7 @@ Arguments to any function, method, constructor, etc should be suffixed with a si
 
 Examples:
 
-```c++
+```cpp
 void some_function(uint32_t arg_);
 
 class test_class {
@@ -42,7 +42,7 @@ Opening braces should always be on the same line as their block identifier (such
 
 Examples:
 
-```c++
+```cpp
 if (test) {
     // do something
 }
@@ -63,7 +63,7 @@ void some_function() {
 
 All namespaces should be descendants of `acre::`. Namespaces that are meant to hold internal or implementation specific code not exposed readily to end users should be prefixed with `internal::`.
 
-```c++
+```cpp
 namespace acre {
     namespace internal::my_helpers {
         // internal helper functions
@@ -84,7 +84,7 @@ All protected/private members and methods should use the same style as variable 
 
 Example:
 
-```c++
+```cpp
 //test_class.hpp
 class test_class {
 public:
@@ -103,7 +103,7 @@ All templates should use capital letters or words that start with capital letter
 
 Example:
 
-```c++
+```cpp
 template<typename T, size_t Size>
 class stack_array {
 public:
