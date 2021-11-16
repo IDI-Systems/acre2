@@ -2,7 +2,7 @@
 title: Building
 ---
 
-This page describes how you can setup your development environment for ACRE2, allowing you to properly build ACRE2 and utilize file patching. ACRE2 currently supports **HEMTT** on Windows and Linux (recommended) and **Mikero Tools** on Windows.
+This page describes how you can setup your development environment for ACRE2, allowing you to properly build ACRE2 and utilize file patching. ACRE2 currently supports **HEMTT** (recommended) on Windows and Linux and **Mikero Tools** on Windows.
 
 ## Requirements
 
