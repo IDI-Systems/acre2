@@ -2,7 +2,7 @@
 title: Building
 ---
 
-This page describes how you can setup your development environment for ACRE2, allowing you to properly build ACRE2 and utilize file patching. ACRE2 currently supports **Mikero Tools** (Windows only) and **HEMTT** (Windows and Linux).
+This page describes how you can setup your development environment for ACRE2, allowing you to properly build ACRE2 and utilize file patching. ACRE2 currently supports **HEMTT** (recommended) on Windows and Linux and **Mikero Tools** on Windows.
 
 ## Requirements
 
@@ -12,6 +12,12 @@ This page describes how you can setup your development environment for ACRE2, al
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
 - [CBA](https://github.com/CBATeam/CBA_A3/releases/latest) mod (release or development version)
 
+**HEMTT:** _(recommended)_
+- [Windows] PowerShell v3.0+ _(pre-installed on Windows 8 or newer)_
+- Tools _(included in tools package, see [HEMTT Initial Setup](#initial-setup) below)_
+  - [HEMTT](https://github.com/BrettMayson/HEMTT) 
+  - [ArmaScriptCompiler](https://github.com/dedmen/ArmaScriptCompiler) (for SQFC)
+
 **Mikero Tools:**
 - [Python 3.x](https://www.python.org/)
 - [Mikero Tools](https://mikero.bytex.digital/Downloads): DePbo, DeTex, DeOgg, Rapify, MakePbo, pboProject
@@ -19,14 +25,8 @@ This page describes how you can setup your development environment for ACRE2, al
   - `-F rebuild RequiredAddons` disabled
 - Python, Mikero Tools and Git in PATH environment variable
 
-**HEMTT:**
-- [Windows] PowerShell v3.0+ _(pre-installed on Windows 8 or newer)_
-- [Optional] ArmaScriptCompiler (for SQFC)
 
-
-## Mikero Tools
-
-### Why so complicated?
+## Why so complicated?
 
 ACRE2 uses macros to simplify things and give the developer access to a better debug process, which requires a stricter build environment. The structure of this development environment also allows for [file patching](#file-patching), which is very useful for debugging.
 

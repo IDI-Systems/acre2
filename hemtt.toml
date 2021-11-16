@@ -18,6 +18,7 @@ key_name = "{{prefix}}_{{version}}"
 authority = "{{prefix}}_{{version}}-{{git \"id 8\"}}"
 
 check = [
+    "!check_release_os",
     "!version_set",
     "!binarizer_link"
 ]
@@ -29,6 +30,13 @@ releasebuild = [
 
 [header_exts]
 version = "{{git \"id 8\"}}"
+
+[scripts.check_release_os]
+steps_linux = [
+    'echo -e "\033[0;33m[WARN]\033[0m Linux release builds have broken keys and are not SQFC-optimized! Use only for local testing!"'
+]
+only_release = true
+show_output = true
 
 [scripts.version_set]
 steps_linux = [

@@ -27,18 +27,23 @@ def build(verbose):
         compiler_exe = os.path.join(addon_base_path, "ci", "ArmaScriptCompiler.exe")
         if not os.path.isfile(compiler_exe):
             print("Warning: ArmaScriptCompiler.exe not found - skipping compiling")
-            return
+            return 1
     print("ArmaScriptCompiler.exe found - starting compiling")
     ret = subprocess.call([compiler_exe], cwd=addon_base_path, stdout=verbose)
     print("compiled [ret {}]".format(ret))
+    return 0
 
 
 def main(argv):
+    ret = 0
+
     # print("compile_sqf.py [Base: {}]".format(addon_base_path))
     if ("cleanup" in argv) or (len(argv) < 2):
         cleanup()
     if ("build" in argv) or (len(argv) < 2):
-        build("verbose" in argv)
+        ret = build("verbose" in argv)
+
+    return ret
 
 
 if __name__ == "__main__":
