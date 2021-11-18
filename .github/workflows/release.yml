@@ -237,6 +237,16 @@ jobs:
       env:
         STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+    - name: Upload to Steam (ACRE2 Western Sahara Compatibility)
+      uses: arma-actions/workshop-upload@v1
+      with:
+        appId: '107410'
+        itemId: '2657862776'  # Western Sahara Compatibility
+        contentPath: '@acre2/optionals/@acre2_sys_ws'
+        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
+      env:
+        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
     - name: Prepare GitHub
       id: release_drafter
       uses: release-drafter/release-drafter@v5
