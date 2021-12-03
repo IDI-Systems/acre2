@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # PabstMirror - Overwrites all files in /include with updated version from a p-drive
 
 import os

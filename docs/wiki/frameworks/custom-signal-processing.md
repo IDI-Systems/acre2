@@ -43,7 +43,7 @@ Below is an example of a simple calculation that is based on how ACRE1 calculate
 
 As of 2.7.0 this model has been implemented in C++ and it can be selected using the Arcade Mode via CBA Settings.
 
-```js
+```sqf
 MY_CUSTOM_ACRE_FUNC = {
     params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
@@ -101,7 +101,7 @@ MY_CUSTOM_ACRE_FUNC = {
 
 To reset the signal handling to default simply call the function with empty code:
 
-```js
+```sqf
 [{}] call acre_api_fnc_setCustomSignalFunc;
 ```
 

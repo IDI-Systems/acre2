@@ -49,7 +49,7 @@ class RscDisplayEGSpectator {
 
 **Calling the Initialization Function:**
 
-```js
+```sqf
 [
     _display,
     {uiNamespace getVariable ["RscEGSpectator_focus", objNull]},
