@@ -8,7 +8,20 @@ namespace acre {
         return loop;
     }
 
-    MumbleEventLoop::MumbleEventLoop() : m_thread(&MumbleEventLoop::run, this) {
+    MumbleEventLoop::MumbleEventLoop() {
+    }
+
+    void MumbleEventLoop::start() {
+        if (m_thread.joinable()) {
+            throw std::runtime_error("ACRE2 - MumbleEventLoop: Attempted to start already-running event loop. Must call stop first.");
+        }
+
+        {
+            std::lock_guard<std::mutex> guard(m_lock);
+            m_keepRunning = true;
+        }
+
+        m_thread = std::thread(&MumbleEventLoop::run, this);
     }
 
     void MumbleEventLoop::stop() {
@@ -19,8 +32,10 @@ namespace acre {
 
         m_waiter.notify_all();
 
-        // Wait until the worker thread has finished
-        m_thread.join();
+        if (m_thread.joinable()) {
+            // Wait until the worker thread has finished
+            m_thread.join();
+        }
     }
 
     void MumbleEventLoop::queue(const std::function<void()>& callable) {

@@ -14,6 +14,7 @@ namespace acre {
 
         static MumbleEventLoop& getInstance();
 
+        void start();
         void stop();
 
         void queue(const std::function<void()>& callable);
