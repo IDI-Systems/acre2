@@ -29,3 +29,7 @@ mumble_version_t mumble_getAPIVersion() {
 mumble_version_t mumble_getVersion() {
     return mumble_version_t{ACRE_VERSION_MAJOR, ACRE_VERSION_MINOR, ACRE_VERSION_SUBMINOR};
 }
+
+mumble_version_t mumble_getPluginFunctionsVersion() {
+    return MUMBLE_PLUGIN_FUNCTIONS_VERSION;
+}
