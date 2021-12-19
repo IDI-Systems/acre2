@@ -47,7 +47,10 @@ acre::Result CMumbleClient::stop() {
             this->m_versionThreadHandle.join();
         }
         this->setState(acre::State::stopped);
+
+        mumAPI.log(pluginID, "stopped");
     }
+
     return acre::Result::ok;
 }
 
@@ -66,6 +69,8 @@ acre::Result CMumbleClient::start(const acre::id_t id_) {
     this->setIsX3DInitialized(false);
 
     // this->m_versionThreadHandle = std::thread(&CMumbleClient::exPersistVersion, this);
+
+    mumAPI.log(pluginID, "started");
 
     return acre::Result::ok;
 }
