@@ -28,9 +28,9 @@ namespace acre {
         {
             std::lock_guard<std::mutex> guard(m_lock);
             m_keepRunning = false;
-        }
 
-        m_waiter.notify_all();
+            m_waiter.notify_all();
+        }
 
         if (m_thread.joinable()) {
             // Wait until the worker thread has finished
@@ -39,21 +39,17 @@ namespace acre {
     }
 
     void MumbleEventLoop::queue(const std::function<void()>& callable) {
-        {
-            std::lock_guard<std::mutex> guard(m_lock);
+        std::lock_guard<std::mutex> guard(m_lock);
 
-            m_queuedFunctions.push_back(callable);
-        }
+        m_queuedFunctions.push_back(callable);
 
         m_waiter.notify_all();
     }
 
     void MumbleEventLoop::queue(std::function<void()>&& callable) {
-        {
-            std::unique_lock<std::mutex> guard(m_lock);
+        std::unique_lock<std::mutex> guard(m_lock);
 
-            m_queuedFunctions.push_back(std::move(callable));
-        }
+        m_queuedFunctions.push_back(std::move(callable));
 
         m_waiter.notify_all();
     }
@@ -75,6 +71,10 @@ namespace acre {
                 guard.unlock();
                 currentFunc();
                 guard.lock();
+            }
+
+            if (!m_keepRunning) {
+                break;
             }
 
             // Wait for something to happen. Note that during the waiting the lock is released and
