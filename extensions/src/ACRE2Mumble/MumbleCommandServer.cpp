@@ -4,6 +4,8 @@
 #include "MumbleFunctions.h"
 #include "TextMessage.h"
 
+#include <mutex>
+
 extern MumbleAPI_v_1_0_x mumAPI;
 extern mumble_connection_t activeConnection;
 extern mumble_plugin_id_t pluginID;
@@ -21,7 +23,7 @@ acre::Result CMumbleCommandServer::shutdown() {
 }
 
 acre::Result CMumbleCommandServer::sendMessage(IMessage *msg) {
-    LOCK(this);
+    std::lock_guard<CLockable> guard(*this);
 
     mumble_userid_t *channelUsers     = nullptr;
     size_t userCount                  = 0U;
@@ -51,8 +53,6 @@ acre::Result CMumbleCommandServer::sendMessage(IMessage *msg) {
     }
 
     delete msg;
-
-    UNLOCK(this);
 
     return acre::Result::ok;
 }
