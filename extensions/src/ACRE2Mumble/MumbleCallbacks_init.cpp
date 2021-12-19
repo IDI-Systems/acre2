@@ -25,6 +25,8 @@ void mumble_registerAPIFunctions(void *apiStruct) {
 mumble_error_t mumble_init(mumble_plugin_id_t id) {
 	pluginID = id;
 
+    acre::MumbleEventLoop::getInstance().start();
+
     if (mumAPI.getActiveServerConnection(pluginID, &activeConnection) != MUMBLE_STATUS_OK) {
         activeConnection = -1;
     }
