@@ -11,9 +11,8 @@
 #define TO_PIPENAME   "\\\\.\\pipe\\acre_comm_pipe_toTS"
 
 extern MumbleAPI_v_1_0_x mumAPI;
-// TODO: Should these special values be a named variable?
 mumble_connection_t activeConnection = -1;
-mumble_plugin_id_t pluginID                 = -1;
+mumble_plugin_id_t pluginID          = -1;
 
 uint32_t mumble_getFeatures() {
     return MUMBLE_FEATURE_AUDIO;
@@ -53,7 +52,6 @@ void mumble_onServerSynchronized(mumble_connection_t connection) {
 
         // set ID on every new connection
         acre::id_t clientId = 0;
-        // TODO: Missing error handling of API call
         mumAPI.getLocalUserID(pluginID, activeConnection, (mumble_userid_t*)&clientId);
         CEngine::getInstance()->getSelf()->setId(clientId);
         CEngine::getInstance()->getExternalServer()->setId(clientId);

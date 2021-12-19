@@ -17,7 +17,6 @@
 using LIMITER = std::numeric_limits<int16_t>;
 
 bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_t channelCount, uint32_t sampleRate, bool isSpeech, mumble_userid_t userID) {
-	// TODO: Do you need this for something?
 	(void) sampleRate;
 
     if (CEngine::getInstance()->getSoundSystemOverride()) {
