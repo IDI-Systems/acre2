@@ -89,4 +89,5 @@ void mumble_shutdown() {
 void mumble_releaseResource(const void *) {
     // Nothing to do here since we never pass allocated resourced to Mumble
     // that needed freeing
+    LOG("ERROR: Unexpectedly called mumble_releaseResource");
 }
