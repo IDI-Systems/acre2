@@ -342,7 +342,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             }
         }
 
-        mumAPI.freeMemory(pluginID, (void *) &channelList);
+        mumAPI.freeMemory(pluginID, channelList);
 
         mumble_channelid_t bestChannelId = invalid_mumble_channel;
         int32_t bestMatches              = 0;
