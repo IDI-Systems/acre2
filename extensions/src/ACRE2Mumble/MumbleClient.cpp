@@ -243,9 +243,9 @@ acre::Result CMumbleClient::microphoneOpen(bool status_) {
     const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, status_);
     if (res != MUMBLE_STATUS_OK) {
         if (status_) {
-            LOG("Error toggling PTT Open\n");
+            LOG("Error toggling PTT Open: %s (%d)\n", mumble_errorMessage(res), res);
         } else {
-            LOG("Error toggling PTT Closed\n");
+            LOG("Error toggling PTT Closed: %s (%d)\n", mumble_errorMessage(res), res);
         }
 
         return acre::Result::error;
