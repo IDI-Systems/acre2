@@ -31,7 +31,7 @@ mumble_version_t mumble_getVersion() {
 }
 
 struct MumbleStringWrapper mumble_getAuthor() {
-    static const char* author = "ACRE2 developers";
+    static const char* author = ACRE_TEAM;
 
     MumbleStringWrapper wrapper;
     wrapper.data = author;
@@ -42,7 +42,7 @@ struct MumbleStringWrapper mumble_getAuthor() {
 }
 
 struct MumbleStringWrapper mumble_getDescription() {
-    static const char* description = "ACRE2 is a full fledged communications suite for Arma 3, allowing realistic radio and voice communications.";
+    static const char* description = ACRE_DESC;
 
     MumbleStringWrapper wrapper;
     wrapper.data = description;
