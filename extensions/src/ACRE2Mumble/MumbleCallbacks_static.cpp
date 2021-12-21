@@ -12,12 +12,12 @@
 #include "Log.h"
 
 struct MumbleStringWrapper mumble_getName() {
-	static const char *name = ACRE_NAME;
+    static const char *name = ACRE_NAME;
 
-	MumbleStringWrapper wrapper;
-	wrapper.data = name;
-	wrapper.size = strlen(name);
-	wrapper.needsReleasing = false;
+    MumbleStringWrapper wrapper;
+    wrapper.data = name;
+    wrapper.size = strlen(name);
+    wrapper.needsReleasing = false;
 
     return wrapper;
 }

@@ -13,20 +13,20 @@
 #include <stdint.h>
 
 #ifdef __cplusplus
-#	include <string>
+#   include <string>
 #endif
 
 #if defined(QT_CORE_LIB) || defined(QT_VERSION)
-#	include <QString>
+#   include <QString>
 #endif
 
 // define the calling convention macro based on the compiler being used
 #if defined(_MSC_VER)
-#	define PLUGIN_CALLING_CONVENTION __cdecl
+#   define PLUGIN_CALLING_CONVENTION __cdecl
 #elif defined(__MINGW32__)
-#	define PLUGIN_CALLING_CONVENTION __attribute__((cdecl))
+#   define PLUGIN_CALLING_CONVENTION __attribute__((cdecl))
 #else
-#	define PLUGIN_CALLING_CONVENTION
+#   define PLUGIN_CALLING_CONVENTION
 #endif
 
 
@@ -301,11 +301,11 @@ struct MumbleVersion {
             + std::string(".") + std::to_string(this->patch);
     }
 
-#	if defined(QT_CORE_LIB) || defined(QT_VERSION)
+#   if defined(QT_CORE_LIB) || defined(QT_VERSION)
     operator QString() const {
         return QString::fromLatin1("v%0.%1.%2").arg(this->major).arg(this->minor).arg(this->patch);
     }
-#	endif
+#   endif
 #endif
 };
 

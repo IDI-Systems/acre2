@@ -330,8 +330,8 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
 
             if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == MUMBLE_STATUS_OK) {
                 // Copy the channel name into a std::string and then get rid of the Mumble resource again
-				std::string channelNameString(channelName);
-				mumAPI.freeMemory(pluginID, (void *) channelName);
+                std::string channelNameString(channelName);
+                mumAPI.freeMemory(pluginID, (void *) channelName);
 
                 if (channelNameString.find(default_mumble_channel) != -1 || (!details_.at(0).empty() && channelNameString == name)) {
                     if (channelNameString == default_mumble_channel) {

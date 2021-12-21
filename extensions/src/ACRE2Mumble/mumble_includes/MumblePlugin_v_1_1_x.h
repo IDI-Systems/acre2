@@ -14,13 +14,13 @@
 #include <stdint.h>
 
 #if defined(__GNUC__) && !defined(__MINGW32__) // GCC on Unix-like systems
-#	define PLUGIN_EXPORT __attribute__((visibility("default")))
+#   define PLUGIN_EXPORT __attribute__((visibility("default")))
 #elif defined(_MSC_VER)
-#	define PLUGIN_EXPORT __declspec(dllexport)
+#   define PLUGIN_EXPORT __declspec(dllexport)
 #elif defined(__MINGW32__)
-#	define PLUGIN_EXPORT __attribute__((dllexport))
+#   define PLUGIN_EXPORT __attribute__((dllexport))
 #else
-#	error No PLUGIN_EXPORT definition available
+#   error No PLUGIN_EXPORT definition available
 #endif
 
 
