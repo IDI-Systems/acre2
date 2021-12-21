@@ -52,7 +52,7 @@ if (diag_tickTime - _lastSortTime > 3) then {
     // Don't resort if we already resorted within the past second
     // If its been a second, lets check to see if the transmitters changed.
     //if (diag_tickTime - _lastSortTime > 1) then {
-        if !(_radioCache isEqualTo []) then {
+        if (_radioCache isNotEqualTo []) then {
             // Compare BOTH arrays.
             {
                 if !(_x in _radioCache) exitWith { _transmissionsChanged = true; };
@@ -96,7 +96,7 @@ if (_transmissionsChanged) then {
     };
 
     private _dif = _transmissions - _currentTransmissions;
-    if !(_dif isEqualTo []) then {
+    if (_dif isNotEqualTo []) then {
         _currentTransmissions = _transmissions;
         SCRATCH_SET(_radioId, "currentTransmissions", _currentTransmissions);
     };
@@ -157,7 +157,7 @@ if (_transmissionsChanged) then {
         //diag_log text format["junk: %1", _junkTransmissions];
         //diag_log text format["ok: %1", _hearableTransmissions];
         if (EGVAR(sys_core,interference)) then {
-            if !(_hearableTransmissions isEqualTo []) then {
+            if (_hearableTransmissions isNotEqualTo []) then {
                 _junkTransmissions = _hearableTransmissions + _junkTransmissions;
                 _hearableTransmissions params ["_bestSignal"];
                 (_bestSignal select 2) params ["_highestSignal", "_dbm"];
@@ -188,7 +188,7 @@ if (_transmissionsChanged) then {
         };
     };
 
-    if !(_okRadios isEqualTo []) then {
+    if (_okRadios isNotEqualTo []) then {
         private _signalData = (_okRadios select 0) select 2;
         _signalData params ["_signalPercent","_signalDbM"];
         private _channelNum = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);

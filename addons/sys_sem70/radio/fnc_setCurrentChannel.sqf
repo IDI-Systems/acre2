@@ -38,11 +38,10 @@
 */
 
 params ["_radioId", "", "_eventData", "_radioData"];
+TRACE_2("setCurrentChannel",_radioID,_eventData);
 
 private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
-
 TRACE_1("ManualChannel",_manualChannel);
-TRACE_1("NewChannel",_eventData);
 
 if (_manualChannel isEqualTo 1) then {
     private _currentMHzFrequency = HASH_GET(_radioData, "MHzKnobPosition");
@@ -56,6 +55,7 @@ if (_manualChannel isEqualTo 1) then {
 
     HASH_SET(_channel, "frequencyTX", _newFreq);
     HASH_SET(_channel, "frequencyRX", _newFreq);
+    TRACE_3("",_currentMHzFrequency,_currentkHzFrequency,_newFreq);
 
     [_radioID,"setChannelData", [GVAR(manualChannel), _channel]] call EFUNC(sys_data,dataEvent);
 

@@ -21,8 +21,7 @@ params ["_gsa", "_radioId", "_player"];
 
 if (_radioId == "") exitWith { ERROR_3("connectServer - bad radioID %1:%2:%3",_gsa,_radioId,_player); };
 
-private _classname = typeOf _gsa;
-private _componentName = getText (configFile >> "CfgVehicles" >> _classname >> "AcreComponents" >> "componentName");
+private _componentName = getText (configOf _gsa >> "AcreComponents" >> "componentName");
 
 // Check if the antenna was connected somewhere else
 private _connectedGsa = [_radioId, "getState", "externalAntennaConnected"] call EFUNC(sys_data,dataEvent);

@@ -15,7 +15,7 @@
  * Public: No
  */
 
-if !(([] call EFUNC(sys_data,getPlayerRadioList)) isEqualTo []) then {
+if (([] call EFUNC(sys_data,getPlayerRadioList)) isNotEqualTo []) then {
     private _radioRack = [ACRE_ACTIVE_RADIO] call EFUNC(sys_rack,getRackFromRadio);
     private _realRadio = if (_radioRack == "") then {
         [ACRE_ACTIVE_RADIO] call EFUNC(sys_radio,getRadioBaseClassname);

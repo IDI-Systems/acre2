@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="https://github.com/IDI-Systems/acre2/releases/latest">
-        <img src="https://img.shields.io/badge/Version-2.8.0-blue.svg?style=flat-square" alt="ACRE2 Version">
+        <img src="https://img.shields.io/badge/Version-2.9.1-blue.svg?style=flat-square" alt="ACRE2 Version">
     </a>
     <a href="https://github.com/IDI-Systems/acre2/issues">
         <img src="https://img.shields.io/github/issues-raw/IDI-Systems/acre2.svg?style=flat-square&label=Issues" alt="ACRE2 Issues">
@@ -19,7 +19,7 @@
         <img src="https://img.shields.io/badge/Documentation-Home-lightgrey.svg?style=flat-square" alt="ACRE2 Wiki">
     </a>
     <a href="http://slackin.idi-systems.com">
-        <img src="https://img.shields.io/badge/Slack-Join-darkviolet.svg?style=flat-square" alt="ACRE2 Slack">
+        <img src="https://img.shields.io/badge/Slack-Join%20%23acre2-darkviolet.svg?style=flat-square" alt="ACRE2 Slack">
     </a>
     <a href="https://travis-ci.org/IDI-Systems/acre2">
         <img src="https://img.shields.io/travis/IDI-Systems/acre2.svg?style=flat-square&label=Build" alt="ACRE2 Build Status">
@@ -54,9 +54,10 @@ The project is entirely **open-source** and all contributions are welcome. Core 
 - Customizable sound configs that allow traditional patching of sounds played in ACRE via Arma addons.
 - Customizable radio presets, allowing mission makers to define radio presets as well as an API to take advantage of (as an example see the ACRE2 implementation in the [TMF](https://github.com/TMF3/TMF)).
 - Enhanced and easily configurable vehicle sound occlusion.
+- Ground spike antenna for improved signal quality.
 
 ### Guides
 
 If you installed ACRE2 but have trouble understanding how it all works, or where to start, read this first:
-- [Installation Instructions](http://acre2.idi-systems.com/wiki/user/installation)
-- [Documentation Home](http://acre2.idi-systems.com)
+- [Installation Instructions](https://acre2.idi-systems.com/wiki/user/installation)
+- [Documentation Home](https://acre2.idi-systems.com)

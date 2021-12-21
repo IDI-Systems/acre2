@@ -14,6 +14,7 @@
             <Portuguese>Rádios Compartilhados</Portuguese>
             <Italian>Radio Condivise</Italian>
             <French>Radios partagées</French>
+            <Turkish>Paylaşılan Telsizler</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_shareRadio">
             <English>Share</English>
@@ -28,6 +29,7 @@
             <Portuguese>Compartilhar</Portuguese>
             <Italian>Condividi</Italian>
             <French>Partager</French>
+            <Turkish>Paylaş</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_unshareRadio">
             <English>Unshare</English>
@@ -42,6 +44,7 @@
             <Portuguese>Descompartilhar</Portuguese>
             <Italian>Non condividere</Italian>
             <French>Ne plus partager</French>
+            <Turkish>Paylaşmayı Bırak</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHandset">
             <English>Take Handset</English>
@@ -56,6 +59,7 @@
             <French>Prendre le combiné</French>
             <German>Handteil nehmen</German>
             <Russian>Взять трубку</Russian>
+            <Turkish>Ahizeyi Al</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHeadset">
             <English>Take Headset</English>
@@ -70,6 +74,7 @@
             <Portuguese>Pegar Fones</Portuguese>
             <Italian>Prendi cuffia</Italian>
             <French>Prendre le casque</French>
+            <Turkish>Kulaklığı Al</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHandset">
             <English>Return Handset</English>
@@ -84,6 +89,7 @@
             <French>Rendre le combiné</French>
             <German>Handteil zurückgeben</German>
             <Russian>Вернуть трубку</Russian>
+            <Turkish>Ahizeyi Bırak</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHeadset">
             <English>Return Headset</English>
@@ -98,6 +104,7 @@
             <Portuguese>Retornar Fones</Portuguese>
             <Italian>Restituisci cuffia</Italian>
             <French>Rendre le casque</French>
+            <Turkish>Kulaklığı Bırak</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHandset">
             <English>Give Handset</English>
@@ -112,6 +119,7 @@
             <French>Donner le combiné</French>
             <German>Handteil geben</German>
             <Russian>Дать трубку</Russian>
+            <Turkish>Ahizeyi Ver</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHeadset">
             <English>Give Headset</English>
@@ -126,6 +134,7 @@
             <Portuguese>Dar Fones</Portuguese>
             <Italian>Passa cuffie</Italian>
             <French>Donner le casque</French>
+            <Turkish>Kulaklığı Ver</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintGiveOwner">
             <English>%1 gave your %2 to %3</English>

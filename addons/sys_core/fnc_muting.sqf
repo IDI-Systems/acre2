@@ -81,7 +81,7 @@ DFUNC(mutingPFHLoop) = {
         if (GVAR(fullListTime)) then {
             _newSpectators = ACRE_SPECTATORS_LIST;
         };
-        if !(_newSpectators isEqualTo []) then {
+        if (_newSpectators isNotEqualTo []) then {
             {
                 if (_x != GVAR(voipId)) then {
                     _mutingParams = _mutingParams + format ["%1,1,", _x];

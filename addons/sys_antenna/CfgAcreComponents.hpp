@@ -5,7 +5,7 @@ class CfgAcreComponents {
 
     class ACRE_BaseAntenna: ACRE_ComponentBase {
         type = ACRE_COMPONENT_ANTENNA;
-        simple = true;
+        simple = 1;
         polarization = VERTICAL_POLARIZE;
         heightAG = AVERAGE_MAN_HEIGHT;
         orient = 90; // in degrees off of flat plane
@@ -86,7 +86,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_TNC;
         height = 1.23;
         binaryGainFile = QPATHTOF(binary\Harris_123cm_Whip_gain.aba);
-        compatibleRadios[] = {"ACRE_PRC117F"};
+        compatibleRadios[] = {"ACRE_PRC152", "ACRE_PRC117F"};
     };
 
     class ACRE_270CM_VEH_BNC: ACRE_BaseAntenna {

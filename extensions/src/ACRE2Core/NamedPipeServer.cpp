@@ -257,7 +257,7 @@ acre::Result CNamedPipeServer::readLoop() {
 
             ret = false;
             do {
-                ret = ReadFile(this->m_PipeHandleRead, mBuffer, BUFSIZE, &cbRead, NULL);
+                ret = ReadFile(this->m_PipeHandleRead, mBuffer, BUFSIZE - 1, &cbRead, NULL); // -1 for null-byte below
                 if (!ret && GetLastError() != ERROR_MORE_DATA) {
                     break;
                 } else if (!ret && GetLastError() == ERROR_BROKEN_PIPE) {
@@ -265,7 +265,7 @@ acre::Result CNamedPipeServer::readLoop() {
                     break;
                 }
                 // handle the packet and run it
-                mBuffer[cbRead]=0x00;
+                mBuffer[cbRead] = 0x00;
                 //LOG("READ: %s", (char *)mBuffer);
                 IMessage *const msg = new CTextMessage((char *)mBuffer, cbRead);
                 //TRACE("got and parsed message [%s]", msg->getData());

@@ -156,7 +156,7 @@ const char *const CTextMessage::getProcedureName() const {
     }
 }
 
-IMessage *CTextMessage::formatNewMessage(char *procedureName, char *format, ... ) {
+IMessage *CTextMessage::formatNewMessage(const char * const procedureName, const char * const format, ... ) {
     char buffer[TEXTMESSAGE_BUFSIZE];
     va_list va;
 

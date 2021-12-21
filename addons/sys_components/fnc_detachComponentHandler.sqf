@@ -19,7 +19,13 @@
  * Public: No
  */
 
-params ["", "", "_data", "_radioData", ""];
+params ["_radioID", "", "_data", "_radioData", ""];
+TRACE_3("detachComponentHandler",_radioID,_data,_radioData);
+
+// clear out their signal caches from sys_signal call backs.
+missionNamespace setVariable [_radioId + "_best_signal", -992];
+missionNamespace setVariable [_radioId + "_best_px", 0];
+missionNamespace setVariable [_radioId + "_best_ant", ""];
 
 private _childConnector = _data select 0; // this is the connector on this event's device
 

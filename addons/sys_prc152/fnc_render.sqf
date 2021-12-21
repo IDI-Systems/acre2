@@ -17,7 +17,7 @@
  */
 
 private ["_display"];
-if !(_this isEqualTo []) then {
+if (_this isNotEqualTo []) then {
     _display = _this select 0;
     uiNamespace setVariable [QGVAR(currentDisplay), _display];
 } else {

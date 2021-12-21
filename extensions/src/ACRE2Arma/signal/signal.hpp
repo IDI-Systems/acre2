@@ -151,7 +151,7 @@ namespace acre {
                     return true;
                 }
 
-                const PropagationModel model = static_cast<PropagationModel>(args_.as_int(acre_signalArgument_signalPropagationModel));
+                const PropagationModel model = (_map) ? static_cast<PropagationModel>(args_.as_int(acre_signalArgument_signalPropagationModel)) : PropagationModel::arcade;
 
                 const int32_t logging = args_.as_int(acre_signalArgument_debugEnabled);
                 const bool omnidirectional = args_.as_int(acre_signalArgument_omnidirectionalRadios);
@@ -218,11 +218,11 @@ namespace acre {
                         _signalProcessor_multipath.process(&signal_result, tx_pos, tx_dir, rx_pos, rx_dir, tx_antenna, rx_antenna, frequency_MHz, power_mW, scale, omnidirectional);
                     }
                 }
-                
+
                 // Sanatize numbers as arma will not be able to parse bad values (can remove if no more errors are reported)
                 if (!isfinite(signal_result.result_dbm) || !isfinite(signal_result.result_v)) {
                     if (logging >= 1) { LOG(ERROR) << "Signal was NaN/infinite: " << args_.to_string() << ": " << signal_result.result_dbm << "," << signal_result.result_v; }
-                    signal_result.result_dbm = 9000.0f; 
+                    signal_result.result_dbm = 9000.0f;
                     signal_result.result_v = 9000.0f; // ouch - don't touch the antenna
                 }
 

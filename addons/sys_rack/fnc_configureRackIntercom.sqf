@@ -20,7 +20,7 @@ params ["_vehicle"];
 private _racks = [_vehicle] call FUNC(getVehicleRacks);
 {
     private _intercoms = [_x] call FUNC(getWiredIntercoms);
-    if !(_intercoms isEqualTo []) exitWith {
+    if (_intercoms isNotEqualTo []) exitWith {
         [_vehicle] call EFUNC(sys_intercom,configRackRxTxCapabilities);
     };
 } forEach _racks;

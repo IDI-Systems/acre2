@@ -2,7 +2,7 @@
 title: Building
 ---
 
-This page describes how you can setup your development environment for ACRE2, allowing you to properly build ACRE2 and utilize file patching. ACRE2 currently supports **Mikero Tools** (Windows only) and **HEMTT** (Windows and Linux).
+This page describes how you can setup your development environment for ACRE2, allowing you to properly build ACRE2 and utilize file patching. ACRE2 currently supports **HEMTT** (recommended) on Windows and Linux and **Mikero Tools** on Windows.
 
 ## Requirements
 
@@ -12,6 +12,12 @@ This page describes how you can setup your development environment for ACRE2, al
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
 - [CBA](https://github.com/CBATeam/CBA_A3/releases/latest) mod (release or development version)
 
+**HEMTT:** _(recommended)_
+- [Windows] PowerShell v3.0+ _(pre-installed on Windows 8 or newer)_
+- Tools _(included in tools package, see [HEMTT Initial Setup](#initial-setup) below)_
+  - [HEMTT](https://github.com/BrettMayson/HEMTT) 
+  - [ArmaScriptCompiler](https://github.com/dedmen/ArmaScriptCompiler) (for SQFC)
+
 **Mikero Tools:**
 - [Python 3.x](https://www.python.org/)
 - [Mikero Tools](https://mikero.bytex.digital/Downloads): DePbo, DeTex, DeOgg, Rapify, MakePbo, pboProject
@@ -19,13 +25,8 @@ This page describes how you can setup your development environment for ACRE2, al
   - `-F rebuild RequiredAddons` disabled
 - Python, Mikero Tools and Git in PATH environment variable
 
-**HEMTT:**
-- [Windows] PowerShell v3.0+ _(pre-installed on Windows 8 or newer)_
 
-
-## Mikero Tools
-
-### Why so complicated?
+## Why so complicated?
 
 ACRE2 uses macros to simplify things and give the developer access to a better debug process, which requires a stricter build environment. The structure of this development environment also allows for [file patching](#file-patching), which is very useful for debugging.
 
@@ -39,7 +40,7 @@ Not offering executables for the Python scripts we use allows us to make easy ch
 To actually get the ACRE2 source code on your machine, it is recommended that you use Git. Tutorials for this are all around the web, and it allows you to track your changes and easily update your local copy.
 
 You can clone ACRE2 with any Git command line client using the following command:
-```
+```bat
 git clone https://github.com/IDI-Systems/acre2.git
 ```
 
@@ -50,7 +51,7 @@ If you just want to create a quick and dirty build, you can also directly downlo
 
 ### Initial Setup
 
-Execute `setup.bat` in `tools` folder (Windows) or download [this HEMTT binary](https://github.com/synixebrett/HEMTT/suites/531226151/artifacts/3094848) and place `hemtt` in project root (Linux).
+Execute `setup.bat` in `tools` folder (Windows) or download [tools](http://dev.idi-systems.com/tools/acre2_tools_user.zip) (HEMTT and ArmaScriptCompiler) and place the executables in project root (Windows and Linux - ArmaScriptCompiler supported only on Windows at this time).
 
 #### File Patching Setup
 
@@ -74,7 +75,7 @@ mklink /J "[Arma 3 installation folder]\idi\acre" "[location of the ACRE2 projec
 To create a development build to test changes or to debug something, execute `build.bat` (Windows) or run `$ hemtt build` (Linux) in the root folder. This will populate the `addons` folder with binarized PBOs. These PBOs still point to the source files in their respective folders however, which allows you to use [file patching](#file-patching). This also means that you cannot distribute this build to others.
 
 To start the game using this build, you can use the following modline:
-```js
+```bat
 -mod=@CBA_A3;idi\acre
 ```
 
@@ -88,7 +89,7 @@ To create a complete build that you can use without the source files, execute `b
 ### Initial Setup
 
 Navigate to `tools` folder in command line.
-```
+```bat
 cd <path-to-cloned-repository>\tools
 ```
 Execute `setup.py` to create symbolic links to P-drive and Arma 3 directory required for building.
@@ -107,7 +108,7 @@ Then, copy the `cba` folder from the `tools` folder to `P:\x\cba`. Create the `x
 To create a development build of ACRE2 to test changes or to debug something, execute `build.py` in the `tools` folder. This will populate the `addons` folder with binarized PBOs. These PBOs still point to the source files in their respective folders however, which allows you to use [file patching](#file-patching). This also means that you cannot distribute this build to others.
 
 To start the game using this build, you can use the following modline:
-```
+```bat
 -mod=@CBA_A3;idi\acre
 ```
 
@@ -156,7 +157,7 @@ By default CBA caches a compiled version of functions to reduce mission load tim
 - Load `cba_cache_disable.pbo` (included in CBA’s `optionals` folder - simply move it to `addons` folder for the time being)
 - Add the following to your test missions description.ext:
 
-```c++
+```cpp
 class CfgSettings {
     class CBA {
         class Caching {
@@ -170,7 +171,7 @@ class CfgSettings {
 
 - To only disable caching for a single module, hence greatly improving mission restart time, add the following line to the `script_component.hpp` file of said module:
 
-```c++
+```cpp
 #define DISABLE_COMPILE_CACHE
 ```
 

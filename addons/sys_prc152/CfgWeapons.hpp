@@ -19,6 +19,12 @@ class CfgWeapons {
         class Library {
             libTextDesc = QUOTE(NAME_PRC152);
         };
+
+        EGVAR(arsenalStats,frequencyMin) = 30e6;
+        EGVAR(arsenalStats,frequencyMax) = 512e6;
+        EGVAR(arsenalStats,transmitPower) = 5000;
+        EGVAR(arsenalStats,effectiveRange) = "5-7km (3-5km)";
+        EGVAR(arsenalStats,externalSpeaker) = 1;
     };
 
     RADIO_ID_LIST(ACRE_PRC152)
