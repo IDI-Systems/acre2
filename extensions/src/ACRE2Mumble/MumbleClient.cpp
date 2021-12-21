@@ -13,9 +13,9 @@
 static constexpr std::int32_t invalid_mumble_channel = -1;
 constexpr char default_mumble_channel[]              = "ACRE";
 
-extern MumbleAPI mumAPI;
+extern MumbleAPI_v_1_0_x mumAPI;
 extern mumble_connection_t activeConnection;
-extern plugin_id_t pluginID;
+extern mumble_plugin_id_t pluginID;
 
 acre::Result CMumbleClient::initialize() {
     setPreviousChannel(invalid_mumble_channel);
@@ -47,7 +47,10 @@ acre::Result CMumbleClient::stop() {
             this->m_versionThreadHandle.join();
         }
         this->setState(acre::State::stopped);
+
+        mumAPI.log(pluginID, "stopped");
     }
+
     return acre::Result::ok;
 }
 
@@ -67,17 +70,19 @@ acre::Result CMumbleClient::start(const acre::id_t id_) {
 
     // this->m_versionThreadHandle = std::thread(&CMumbleClient::exPersistVersion, this);
 
+    mumAPI.log(pluginID, "started");
+
     return acre::Result::ok;
 }
 
 bool CMumbleClient::getVAD() {
-    transmission_mode_t transmitMode;
+    mumble_transmission_mode_t transmitMode;
     const mumble_error_t err = mumAPI.getLocalUserTransmissionMode(pluginID, &transmitMode);
-    if (err != ErrorCode::EC_OK) {
+    if (err != MUMBLE_STATUS_OK) {
         return false;
     }
 
-    return transmitMode == TransmissionMode::TM_VOICE_ACTIVATION;
+    return transmitMode == MUMBLE_TM_VOICE_ACTIVATION;
 }
 
 acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType_) {
@@ -116,7 +121,7 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
             } else {
                 stopDirectSpeaking = true;
             }
-        } else if (VADactive && (speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
+        } else if (VADactive && (speakingState != MUMBLE_TS_PASSIVE) && (speakingState != MUMBLE_TS_INVALID)) {
             stopDirectSpeaking = true;
         }
     }
@@ -175,7 +180,7 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
             this->setOnRadio(false);
             const std::int32_t speakingState = this->getSpeakingState();
 
-            if ((speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
+            if ((speakingState != MUMBLE_TS_PASSIVE) && (speakingState != MUMBLE_TS_INVALID)) {
                 resendDirectSpeaking = true;
             }
         }
@@ -187,7 +192,7 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
             } else {
                 resendDirectSpeaking = true;
             }
-        } else if ((speakingState != TalkingState::PASSIVE) && (speakingState != TalkingState::INVALID)) {
+        } else if ((speakingState != MUMBLE_TS_PASSIVE) && (speakingState != MUMBLE_TS_INVALID)) {
             resendDirectSpeaking = true;
         }
     }
@@ -236,11 +241,11 @@ std::string CMumbleClient::getTempFilePath(void) {
 
 acre::Result CMumbleClient::microphoneOpen(bool status_) {
     const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, status_);
-    if (res != ErrorCode::EC_OK) {
+    if (res != MUMBLE_STATUS_OK) {
         if (status_) {
-            LOG("Error toggling PTT Open\n");
+            LOG("Error toggling PTT Open: %s (%d)\n", mumble_errorMessage(res), res);
         } else {
-            LOG("Error toggling PTT Closed\n");
+            LOG("Error toggling PTT Closed: %s (%d)\n", mumble_errorMessage(res), res);
         }
 
         return acre::Result::error;
@@ -260,10 +265,10 @@ acre::Result CMumbleClient::moveToServerChannel() {
         mumble_userid_t clientId;
         std::vector<std::string> details = getChannelDetails();
 
-        if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == STATUS_OK) {
+        if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == MUMBLE_STATUS_OK) {
             mumble_channelid_t currentChannelId = invalid_mumble_channel;
 
-            if ((mumAPI.getChannelOfUser(pluginID, activeConnection, clientId, &currentChannelId) == STATUS_OK) &&
+            if ((mumAPI.getChannelOfUser(pluginID, activeConnection, clientId, &currentChannelId) == MUMBLE_STATUS_OK) &&
                 (getPreviousChannel() == invalid_mumble_channel)) {
                 setPreviousChannel(currentChannelId);
             }
@@ -289,10 +294,10 @@ acre::Result CMumbleClient::moveToPreviousChannel() {
     if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         mumble_userid_t clientId = -1;
 
-        if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == STATUS_OK) {
+        if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == MUMBLE_STATUS_OK) {
             mumble_channelid_t currentChannelId = invalid_mumble_channel;
 
-            if (mumAPI.getChannelOfUser(pluginID, activeConnection, clientId, &currentChannelId) == STATUS_OK) {
+            if (mumAPI.getChannelOfUser(pluginID, activeConnection, clientId, &currentChannelId) == MUMBLE_STATUS_OK) {
                 const mumble_channelid_t channelId = static_cast<mumble_channelid_t>(getPreviousChannel());
                 if (channelId != invalid_mumble_channel && channelId != currentChannelId) {
                     mumAPI.requestUserMove(pluginID, activeConnection, clientId, channelId, "");
@@ -310,7 +315,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
     mumble_channelid_t *channelList = nullptr;
     std::size_t channelCount        = 0U;
 
-    if (mumAPI.getAllChannels(pluginID, activeConnection, &channelList, &channelCount) == STATUS_OK) {
+    if (mumAPI.getAllChannels(pluginID, activeConnection, &channelList, &channelCount) == MUMBLE_STATUS_OK) {
         mumble_channelid_t channelId        = invalid_mumble_channel;
         mumble_channelid_t defaultChannelId = invalid_mumble_channel;
         std::map<mumble_channelid_t, std::string> channelMap;
@@ -321,10 +326,13 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
 
         for (std::size_t idx = 0U; idx < channelCount; idx++) {
             channelId         = *channelList + idx;
-            char *channelName = nullptr;
+            const char *channelName = nullptr;
 
-            if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == STATUS_OK) {
+            if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == MUMBLE_STATUS_OK) {
+                // Copy the channel name into a std::string and then get rid of the Mumble resource again
                 std::string channelNameString(channelName);
+                mumAPI.freeMemory(pluginID, (void *) channelName);
+
                 if (channelNameString.find(default_mumble_channel) != -1 || (!details_.at(0).empty() && channelNameString == name)) {
                     if (channelNameString == default_mumble_channel) {
                         defaultChannelId = channelId;
@@ -334,7 +342,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             }
         }
 
-        mumAPI.freeMemory(pluginID, (void *) &channelList);
+        mumAPI.freeMemory(pluginID, channelList);
 
         mumble_channelid_t bestChannelId = invalid_mumble_channel;
         int32_t bestMatches              = 0;
