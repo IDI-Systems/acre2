@@ -17,6 +17,9 @@ if (!hasInterface) exitWith {};
 ["localStopSpeaking", FUNC(localStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["pong", FUNC(pong)] call EFUNC(sys_rpc,addProcedure);
 ["gen", FUNC(gen)] call EFUNC(sys_rpc,addProcedure);
+//["getTeamSpeakChannelName", FUNC(getTeamSpeakChannelName)] EFUNC(sys_rpc,addProcedure);
+["getServerName", FUNC(getServerName)] call EFUNC(sys_rpc,addProcedure);
+//["isTeamSpeakEnabled", FUNC(isTeamSpeakEnabled)] call EFUNC(sys_rpc,addProcedure);
 
 DFUNC(gen) = {
     params ["_code"];
