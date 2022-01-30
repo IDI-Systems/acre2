@@ -7,11 +7,11 @@
 #include <fstream>
 #include <string>
 
-RPC_FUNCTION(getServerName) {
+RPC_FUNCTION(getTeamSpeakChannelName) {
     std::ofstream MyFile("D:\\logs\\log.txt");
-    std::string id = CEngine::getInstance()->getClient()->getServerName();
+    std::string id = CEngine::getInstance()->getClient()->getChannelName();
     MyFile << "Begining "<< id << std::endl; 
-    vServer->sendMessage(CTextMessage::formatNewMessage("getServerName", "%s", id.c_str()));
+    vServer->sendMessage(CTextMessage::formatNewMessage("getTeamSpeakChannelName", "%s", id.c_str()));
     MyFile.close();
     return acre::Result::ok;
 }

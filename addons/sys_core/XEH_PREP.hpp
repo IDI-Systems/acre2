@@ -52,6 +52,8 @@ PREP(toggleHeadset);
 PREP(updateSelf);
 PREP(uniqueItems);
 PREP(utilityFunction);
+PREP(getServerName);
+PREP(getTeamSpeakChannelName);
 
 PREP(onRevealUnit);
 
