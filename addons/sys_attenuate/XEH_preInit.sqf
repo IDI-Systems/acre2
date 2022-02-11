@@ -8,6 +8,7 @@ PREP_RECOMPILE_END;
 
 if (hasInterface) then {
     GVAR(attenuationCache) = HASH_CREATE;
+    GVAR(turnedOutAttenuationCache) = HASH_CREATE;
 };
 
 ADDON = true;
