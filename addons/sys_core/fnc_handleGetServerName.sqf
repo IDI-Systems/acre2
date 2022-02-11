@@ -6,7 +6,7 @@
  * <string> teamspeak server name from the plugin
  *
  * Example:
- * [] call acre_sys_core_fnc_getServerName;
+ * ["Antistasi Offical"] call acre_sys_core_fnc_handleGetServerName;
  *
  * Public: [No]
  */

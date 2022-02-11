@@ -21,6 +21,8 @@ PREP(handleGetHeadVector);
 PREP(handleGetPluginVersion);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
+PREP(handleGetServerName);
+PREP(handleGetTeamSpeakChannelName);
 PREP(hasAccessToVehicleSystem);
 PREP(hasItem);
 PREP(inRange);

@@ -6,7 +6,7 @@
  * <string> teamspeak channel name from the plugin
  *
  * Example:
- * [] call acre_enf_fnc_getTeamSpeakChannelName;
+ * ["Chatroom 1"] call acre_sys_core_fnc_handleGetTeamSpeakChannelName;
  *
  * Public: [No]
  */
