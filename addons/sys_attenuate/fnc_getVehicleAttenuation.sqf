@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 /*
- * Author: ACRE2Team, Timi007
+ * Author: ACRE2Team
  * Calculates the attenuation of a unit being heard externally from the vehicle.
  *
  * Arguments:
- * 0: Unit (or vehicle) <Object>
+ * 0: Unit <Object>
  *
  * Return Value:
  * Attenuation <NUMBER>

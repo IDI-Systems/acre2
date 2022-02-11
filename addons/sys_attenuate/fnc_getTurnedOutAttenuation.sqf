@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: Timi007
+ * Author: ACRE2Team
  * Calculates the attenuation between players turned out and inside.
  *
  * Arguments:

@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: ACRE2Team, Timi007
+ * Author: ACRE2Team
  * Calculates the attenuation between the local player unit and the inputted unit.
  *
  * Arguments:

@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: ACRE2Team, Timi007
+ * Author: ACRE2Team
  * Gets the attenuation effect type for the vehicle of the given unit.
  *
  * Arguments:
