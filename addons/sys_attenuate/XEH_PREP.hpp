@@ -1,5 +1,5 @@
 PREP(getAttenuationEffectType);
-PREP(getTurnedOutAttenuation);
+PREP(getAttenuationTurnedOut);
 PREP(getUnitAttenuate);
 PREP(getVehicleAttenuation);
 PREP(isIntercomAttenuate);

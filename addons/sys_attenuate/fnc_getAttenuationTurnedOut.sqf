@@ -10,30 +10,30 @@
  * Attenuation between players turned out and inside. <NUMBER>
  *
  * Example:
- * [unit] call acre_sys_attenuate_fnc_getTurnedOutAttenuation
+ * [unit] call acre_sys_attenuate_fnc_getAttenuationTurnedOut
  *
  * Public: No
  */
 
 params [["_unit", objNull, [objNull]]];
 
-private _turnedOutAttenuation = 0;
+private _attenuationTurnedOut = 0;
 
 private _effectType = [_unit] call FUNC(getAttenuationEffectType);
-if (_effectType isEqualTo "") exitWith {_turnedOutAttenuation};
+if (_effectType isEqualTo "") exitWith {_attenuationTurnedOut};
 
-private _cachedAttenuation = HASH_GET(GVAR(turnedOutAttenuationCache), _effectType);
+private _cachedAttenuation = HASH_GET(GVAR(attenuationTurnedOutCache), _effectType);
 if (!isNil "_cachedAttenuation") exitWith {_cachedAttenuation};
 
 private _attenuationsEffectsCfg = configFile >> "CfgSoundEffects" >> "AttenuationsEffects";
 
-private _attenuationCfg = _attenuationsEffectsCfg >> _effectType >> "acreTurnedOutAttenuation";
+private _attenuationCfg = _attenuationsEffectsCfg >> _effectType >> "acreAttenuationTurnedOut";
 if (isNumber (_attenuationCfg)) then {
-    _turnedOutAttenuation = getNumber (_attenuationCfg);
+    _attenuationTurnedOut = getNumber (_attenuationCfg);
 } else {
-    _turnedOutAttenuation = getNumber (_attenuationsEffectsCfg >> "acreDefaultTurnedOutAttenuation");
+    _attenuationTurnedOut = getNumber (_attenuationsEffectsCfg >> "acreDefaultAttenuationTurnedOut");
 };
 
-HASH_SET(GVAR(turnedOutAttenuationCache), _effectType, _turnedOutAttenuation);
+HASH_SET(GVAR(attenuationTurnedOutCache), _effectType, _attenuationTurnedOut);
 
-_turnedOutAttenuation
+_attenuationTurnedOut

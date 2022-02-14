@@ -50,7 +50,7 @@ if (_vehListener isEqualTo _vehSpeaker) then {
         };
 
         if (_speakerTurnedOut || _listenerTurnedOut) then {
-            _attenuate = [_listener] call FUNC(getTurnedOutAttenuation);
+            _attenuate = [_listener] call FUNC(getAttenuationTurnedOut);
         };
     };
 } else {
