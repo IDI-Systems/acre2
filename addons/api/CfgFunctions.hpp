@@ -128,6 +128,12 @@ class CfgFunctions {
             PATHTO_FNC(godModeSendText);
             PATHTO_FNC(godModeGetGroupTargets);
         };
+
+        class VOIPInfo{
+            PATHTO_FNC(getChannelName);
+            PATHTO_FNC(getServerName);
+            PATHTO_FNC(getUID);
+        };
     };
 
 
