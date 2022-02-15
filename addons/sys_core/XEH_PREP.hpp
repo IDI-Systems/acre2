@@ -26,7 +26,7 @@ PREP(handleGetPluginVersion);
 PREP(handleGetServerName);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
-PREP(handleGetUID)
+PREP(handleGetUID);
 PREP(hasAccessToVehicleSystem);
 PREP(hasItem);
 PREP(inRange);
@@ -57,6 +57,7 @@ PREP(switchRadioEar);
 PREP(toggleHeadset);
 PREP(updateSelf);
 PREP(uniqueItems);
+PREP(updateServerInfo);
 PREP(utilityFunction);
 
 PREP(onRevealUnit);

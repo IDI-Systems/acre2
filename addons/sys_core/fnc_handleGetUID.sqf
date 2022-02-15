@@ -10,6 +10,7 @@
  *
  * Public: [No]
  */
+#include "script_component.hpp"
 
 params [["_uidName", "", [""]]];
 GVAR(iUIDName) = _uidName;

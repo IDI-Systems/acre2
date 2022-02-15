@@ -13,5 +13,6 @@
  *
  * Public: no
  */
+#include "script_component.hpp"
 
 GVAR(iServerName)

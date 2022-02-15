@@ -10,5 +10,7 @@
  *
  * Public: [No]
  */
+#include "script_component.hpp"
+
 params [["_channelName", "", [""]]];
 GVAR(iChannelName) = _channelName;
