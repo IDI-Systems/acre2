@@ -1,15 +1,15 @@
 /*
  * Author: Killerswin2
- * Returns the teamspeak channel name
+ * Returns the VOIP channel name
  *
  * Arguments:
  *  <none>
  *
  * Return Value:
- * 0. <string> TeamSpeak channel name
+ * 0. <string> VOIP channel name
  *
  * Example:
- * [] call acre_sys_core_fnc_GetTeamSpeakChannelName;
+ * [] call acre_sys_core_fnc_GetChannelName;
  *
  * Public: no
  */

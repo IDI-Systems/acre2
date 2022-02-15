@@ -1,9 +1,9 @@
 /*
  * Author: Killerswin2
- * Handler code the Team Speak servername 
+ * Handler code the VOIP servername 
  *
  * Arguments:
- * <string> teamspeak server name from the plugin
+ * <string> VOIP server name from the plugin
  *
  * Example:
  * ["Antistasi Offical"] call acre_sys_core_fnc_handleGetServerName;
