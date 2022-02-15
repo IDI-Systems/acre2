@@ -18,6 +18,7 @@ PREP(getPlayersInVehicle);
 PREP(getServerName);
 PREP(getSpeakingLanguageId);
 PREP(getSpokenLanguages);
+PREP(getUID);
 PREP(handleGetChannelName);
 PREP(handleGetClientID);
 PREP(handleGetHeadVector);
@@ -25,6 +26,7 @@ PREP(handleGetPluginVersion);
 PREP(handleGetServerName);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
+PREP(handleGetUID)
 PREP(hasAccessToVehicleSystem);
 PREP(hasItem);
 PREP(inRange);

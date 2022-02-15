@@ -31,6 +31,7 @@
 #include "setTs3ChannelDetails.h"
 #include "getServerName.h"
 #include "getChannelName.h"
+#include "getUID.h"
 #include <shlobj.h>
 
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
@@ -88,6 +89,7 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
     this->getRpcEngine()->addProcedure(new setTs3ChannelDetails());
     this->getRpcEngine()->addProcedure(new getServerName());
     this->getRpcEngine()->addProcedure(new getChannelName());
+    this->getRpcEngine()->addProcedure(new getUID());
 
     // Initialize the client, because it never was derp
     this->getClient()->initialize();

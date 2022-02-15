@@ -13,6 +13,7 @@ if (!hasInterface) exitWith {};
 ["handleGetPluginVersion", FUNC(handleGetPluginVersion)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetHeadVector", FUNC(handleGetHeadVector)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetServerName", FUNC(handleGetServerName)] call EFUNC(sys_rpc,addProcedure);
+["handleGetUID", FUNC(handleGetUID)] call EFUNC(sys_rpc,addProcedure);
 ["remoteStartSpeaking", FUNC(remoteStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["remoteStopSpeaking", FUNC(remoteStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["localStartSpeaking", FUNC(localStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
