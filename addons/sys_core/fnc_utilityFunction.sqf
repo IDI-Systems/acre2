@@ -28,3 +28,5 @@ DFUNC(getPluginVersion) = {
 };
 ["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
 [DFUNC(getPluginVersion), 15, []] call CBA_fnc_addPerFrameHandler;
+
+[DFUNC(updateServerInfo), 15, []] call CBA_fnc_addPerFrameHandler;
