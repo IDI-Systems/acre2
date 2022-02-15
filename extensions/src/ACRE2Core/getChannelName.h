@@ -5,9 +5,9 @@
 #include "Engine.h"
 #include <string>
 
-RPC_FUNCTION(getTeamSpeakChannelName) {
+RPC_FUNCTION(getChannelName) {
     std::string id = CEngine::getInstance()->getClient()->getChannelName();
-    vServer->sendMessage(CTextMessage::formatNewMessage("getTeamSpeakChannelName", "%s", id.c_str()));
+    vServer->sendMessage(CTextMessage::formatNewMessage("handleGetChannelName", "%s", id.c_str()));
     return acre::Result::ok;
 }
 public:

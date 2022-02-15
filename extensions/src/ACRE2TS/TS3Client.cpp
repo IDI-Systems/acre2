@@ -403,14 +403,14 @@ std::string CTS3Client::getChannelName( void ) {
     char *channelName;
 
     if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
-            if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok ) {
-                if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), currentChannelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
-                    channelNameString = std::string(channelName);
-                    if (channelName){
-                        ts3Functions.freeMemory(channelName);
-                    }
+        if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok ) {
+            if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), currentChannelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
+                channelNameString = std::string(channelName);
+                if (channelName){
+                    ts3Functions.freeMemory(channelName);
                 }
             }
+        }
     }
     return channelNameString;
 }

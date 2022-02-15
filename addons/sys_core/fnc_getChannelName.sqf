@@ -5,12 +5,12 @@
  * Arguments:
  *  <none>
  *
- * Return:
+ * Return Value:
  * 0. <string> TeamSpeak channel name
  *
  * Example:
- * [] call acre_sys_core_fnc_GetTeamSpeakChannelName;;
+ * [] call acre_sys_core_fnc_GetTeamSpeakChannelName;
  *
- * Public: [No]
+ * Public: no
  */
-GVAR( teamSpeakChannelName );
+GVAR(ichannelName)

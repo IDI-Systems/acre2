@@ -30,7 +30,7 @@
 #include "setSetting.h"
 #include "setTs3ChannelDetails.h"
 #include "getServerName.h"
-#include "getTeamSpeakChannelName.h"
+#include "getChannelName.h"
 #include <shlobj.h>
 
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
@@ -87,7 +87,7 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
     this->getRpcEngine()->addProcedure(new setSetting());
     this->getRpcEngine()->addProcedure(new setTs3ChannelDetails());
     this->getRpcEngine()->addProcedure(new getServerName());
-    this->getRpcEngine()->addProcedure(new getTeamSpeakChannelName());
+    this->getRpcEngine()->addProcedure(new getChannelName());
 
     // Initialize the client, because it never was derp
     this->getClient()->initialize();

@@ -11,7 +11,7 @@
  * Example:
  * [] call acre_sys_core_fnc_getServerName;
  *
- * Public: [No]
+ * Public: no
  */
 
-GVAR( teamSpeakServerName );
+GVAR(iServerName)

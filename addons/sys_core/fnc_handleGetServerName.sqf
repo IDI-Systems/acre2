@@ -11,5 +11,5 @@
  * Public: [No]
  */
 
-params [["_tsServerName", "", [""]]];
-GVAR( teamSpeakServerName ) = _tsServerName;
+params [["_serverName", "", [""]]];
+GVAR(iServerName) = _serverName;

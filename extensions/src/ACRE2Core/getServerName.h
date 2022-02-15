@@ -7,7 +7,7 @@
 
 RPC_FUNCTION(getServerName) {
     std::string id = CEngine::getInstance()->getClient()->getServerName();
-    vServer->sendMessage(CTextMessage::formatNewMessage("getServerName", "%s", id.c_str()));
+    vServer->sendMessage(CTextMessage::formatNewMessage("handleGetServerName", "%s", id.c_str()));
     return acre::Result::ok;
 }
 public:
