@@ -5,7 +5,7 @@
 #include "Engine.h"
 #include <string>
 
-RPC_FUNCTION(getServerName) {
+RPC_FUNCTION(getVOIPServerName) {
     std::string id = CEngine::getInstance()->getClient()->getServerName();
     vServer->sendMessage(CTextMessage::formatNewMessage("handleGetVOIPServerName", "%s", id.c_str()));
     return acre::Result::ok;
