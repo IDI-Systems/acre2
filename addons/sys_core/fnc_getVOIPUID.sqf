@@ -3,13 +3,13 @@
  * Returns the VOIP UID name
  *
  * Arguments:
- *  <none>
+ * None
  *
  * Return Value:
- * 0. <string> VOIP UID name
+ * 0: VOIP UID name <STRING>
  *
  * Example:
- * [] call acre_sys_core_fnc_GetUID;
+ * [] call acre_sys_core_fnc_GetVOIPUID;
  *
  * Public: no
  */

@@ -3,13 +3,13 @@
  * Returns the VOIP channel name
  *
  * Arguments:
- *  <none>
+ * None
  *
  * Return Value:
- * 0. <string> VOIP channel name
+ * 0: VOIP channel name <STRING>
  *
  * Example:
- * [] call acre_sys_core_fnc_GetChannelName;
+ * [] call acre_sys_core_fnc_GetVOIPChannelName;
  *
  * Public: no
  */

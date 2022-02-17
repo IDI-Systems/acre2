@@ -11,9 +11,9 @@
  * 0. VOIP server name <STRING>
  *
  * Example:
- * [] call acre_api_fnc_getServerName
+ * [] call acre_api_fnc_getVOIPServerName
  *
  * Public: Yes
  */
 
-[] call EFUNC(sys_core,getServerName)
+[] call EFUNC(sys_core,getVOIPServerName)

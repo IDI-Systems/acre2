@@ -6,10 +6,10 @@
  *  <none>
  *
  * Return:
- * 0. <string> VOIP server name
+ * 0: VOIP server name <STRING>
  *
  * Example:
- * [] call acre_sys_core_fnc_getServerName;
+ * [] call acre_sys_core_fnc_getVOIPServerName;
  *
  * Public: no
  */

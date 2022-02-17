@@ -3,7 +3,7 @@
  * Handler code for VOIP servername
  *
  * Arguments:
- * <string> VOIP channel name from the plugin
+ * 0: VOIP channel name from the plugin <STRING>
  *
  * Example:
  * ["Chatroom 1"] call acre_sys_core_fnc_handleGetChannelName;

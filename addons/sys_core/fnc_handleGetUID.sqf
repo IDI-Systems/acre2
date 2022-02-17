@@ -3,7 +3,7 @@
  * Handler code for the return from a rpc call about UIDs
  *
  * Arguments:
- * <string> VOIP UID name from the plugin
+ * 0: VOIP UID name from the plugin <STRING>
  *
  * Example:
  * ["u24m5t67&"] call acre_sys_core_fnc_handleGetUID;

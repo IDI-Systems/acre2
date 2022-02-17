@@ -11,9 +11,9 @@
  * 0: VOIP channel name <STRING>
  *
  * Example:
- * [] call acre_api_fnc_getChannelName
+ * [] call acre_api_fnc_getVOIPChannelName
  *
  * Public: Yes
  */
 
-[] call EFUNC(sys_core,getChannelName)
+[] call EFUNC(sys_core,getVOIPChannelName)

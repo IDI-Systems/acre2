@@ -130,9 +130,9 @@ class CfgFunctions {
         };
 
         class VOIPInfo{
-            PATHTO_FNC(getChannelName);
-            PATHTO_FNC(getServerName);
-            PATHTO_FNC(getUID);
+            PATHTO_FNC(getVOIPChannelName);
+            PATHTO_FNC(getVOIPServerName);
+            PATHTO_FNC(getVOIPUID);
         };
     };
 
