@@ -6,7 +6,7 @@
  * 0: VOIP server name from the plugin <STRING>
  *
  * Example:
- * ["Antistasi Offical"] call acre_sys_core_fnc_handleGetServerName;
+ * ["Antistasi Offical"] call acre_sys_core_fnc_handleGetVOIPServerName;
  *
  * Public: [No]
  */

@@ -8,12 +8,12 @@ if (!hasInterface) exitWith {};
 // Ensure the TeamSpeak plugin handler code is initialized first
 [] call EFUNC(sys_io,startServer);
 
-["handleGetChannelName", FUNC(handleGetChannelName)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetPluginVersion", FUNC(handleGetPluginVersion)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetHeadVector", FUNC(handleGetHeadVector)] call EFUNC(sys_rpc,addProcedure);
-["handleGetServerName", FUNC(handleGetServerName)] call EFUNC(sys_rpc,addProcedure);
-["handleGetUID", FUNC(handleGetUID)] call EFUNC(sys_rpc,addProcedure);
+["handleGetVOIPChannelName", FUNC(handleGetVOIPChannelName)] call EFUNC(sys_rpc,addProcedure);
+["handleGetVOIPServerName", FUNC(handleGetVOIPServerName)] call EFUNC(sys_rpc,addProcedure);
+["handleGetVOIPUID", FUNC(handleGetVOIPUID)] call EFUNC(sys_rpc,addProcedure);
 ["remoteStartSpeaking", FUNC(remoteStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["remoteStopSpeaking", FUNC(remoteStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["localStartSpeaking", FUNC(localStartSpeaking)] call EFUNC(sys_rpc,addProcedure);

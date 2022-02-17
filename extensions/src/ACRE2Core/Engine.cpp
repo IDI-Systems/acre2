@@ -29,9 +29,9 @@
 #include "setSelectableVoiceCurve.h"
 #include "setSetting.h"
 #include "setTs3ChannelDetails.h"
-#include "getServerName.h"
-#include "getChannelName.h"
-#include "getUID.h"
+#include "getVOIPServerName.h"
+#include "getVOIPChannelName.h"
+#include "getVOIPUID.h"
 #include <shlobj.h>
 
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
@@ -87,9 +87,9 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
     this->getRpcEngine()->addProcedure(new setSelectableVoiceCurve());
     this->getRpcEngine()->addProcedure(new setSetting());
     this->getRpcEngine()->addProcedure(new setTs3ChannelDetails());
-    this->getRpcEngine()->addProcedure(new getServerName());
-    this->getRpcEngine()->addProcedure(new getChannelName());
-    this->getRpcEngine()->addProcedure(new getUID());
+    this->getRpcEngine()->addProcedure(new getVOIPServerName());
+    this->getRpcEngine()->addProcedure(new getVOIPChannelName());
+    this->getRpcEngine()->addProcedure(new getVOIPUID());
 
     // Initialize the client, because it never was derp
     this->getClient()->initialize();

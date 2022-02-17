@@ -7,7 +7,7 @@
 
 RPC_FUNCTION(getUID) {
     std::string id = CEngine::getInstance()->getClient()->getUniqueId();
-    vServer->sendMessage(CTextMessage::formatNewMessage("handleGetUID", "%s", id.c_str()));
+    vServer->sendMessage(CTextMessage::formatNewMessage("handleGetVOIPUID", "%s", id.c_str()));
     return acre::Result::ok;
 }
 public:

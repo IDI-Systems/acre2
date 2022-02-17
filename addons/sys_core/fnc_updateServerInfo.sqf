@@ -14,6 +14,6 @@
  * Public: no
  */
 
-["getServerName", ","] call acre_sys_rpc_fnc_callRemoteProcedure;
-["getChannelName", ","] call acre_sys_rpc_fnc_callRemoteProcedure;
-["getUID", ","] call acre_sys_rpc_fnc_callRemoteProcedure;
+["getVOIPServerName", ","] call acre_sys_rpc_fnc_callRemoteProcedure;
+["getVOIPChannelName", ","] call acre_sys_rpc_fnc_callRemoteProcedure;
+["getVOIPUID", ","] call acre_sys_rpc_fnc_callRemoteProcedure;
