@@ -43,4 +43,4 @@ _updateSelf append ACRE_LISTENER_POS;
 _updateSelf append ACRE_LISTENER_DIR;
 _updateSelf append _additionalValues;
 
-CALL_RPC("updateSelf", _updateSelf);
+["updateSelf", _updateSelf] call EFUNC(sys_rpc,callRemoteProcedure);
