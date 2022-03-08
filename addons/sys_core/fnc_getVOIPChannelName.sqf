@@ -1,18 +1,18 @@
+#include "script_component.hpp"
 /*
  * Author: Killerswin2
- * Returns the VOIP channel name
+ * Returns the VOIP channel name.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * 0: VOIP channel name <STRING>
+ * 0: VOIP Channel Name <STRING>
  *
  * Example:
- * [] call acre_sys_core_fnc_GetVOIPChannelName;
+ * [] call acre_sys_core_fnc_getVOIPChannelName
  *
- * Public: no
+ * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(ichannelName)

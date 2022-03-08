@@ -1,14 +1,13 @@
 #include "script_component.hpp"
-
 /*
  * Author: Killerswin2
- * Get the VOIP server name
+ * Get the VOIP server name.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * 0. VOIP server name <STRING>
+ * VOIP Server Name <STRING>
  *
  * Example:
  * [] call acre_api_fnc_getVOIPServerName

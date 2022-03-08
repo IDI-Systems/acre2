@@ -1,14 +1,13 @@
 #include "script_component.hpp"
-
 /*
  * Author: Killerswin2
- * Get the VOIP UID name
+ * Get the VOIP UID.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * 0: VOIP UID name <STRING>
+ * VOIP UID <STRING>
  *
  * Example:
  * [] call acre_api_fnc_getUID
@@ -16,4 +15,4 @@
  * Public: Yes
  */
 
-[] call EFUNC(sys_core,getUID)
+[] call EFUNC(sys_core,getVOIPUID)

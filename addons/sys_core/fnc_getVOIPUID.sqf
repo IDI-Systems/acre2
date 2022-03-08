@@ -1,18 +1,18 @@
+#include "script_component.hpp"
 /*
  * Author: Killerswin2
- * Returns the VOIP UID name
+ * Returns the VOIP UID name.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * 0: VOIP UID name <STRING>
+ * VOIP UID <STRING>
  *
  * Example:
- * [] call acre_sys_core_fnc_GetVOIPUID;
+ * [] call acre_sys_core_fnc_getVOIPUID
  *
  * Public: no
  */
-#include "script_component.hpp"
 
 GVAR(iUIDName)

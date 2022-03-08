@@ -1,8 +1,10 @@
 #pragma once
+
 #include "IRpcFunction.h"
 #include "IServer.h"
 #include "TextMessage.h"
 #include "Engine.h"
+
 #include <string>
 
 RPC_FUNCTION(getVOIPUID) {

@@ -1,18 +1,18 @@
+#include "script_component.hpp"
 /*
  * Author: Killerswin2
- * Returns the VOIP server name
+ * Returns the VOIP server name.
  *
  * Arguments:
- *  <none>
+ * None
  *
  * Return:
- * 0: VOIP server name <STRING>
+ * VOIP Server Name <STRING>
  *
  * Example:
- * [] call acre_sys_core_fnc_getVOIPServerName;
+ * [] call acre_sys_core_fnc_getVOIPServerName
  *
- * Public: no
+ * Public: No
  */
-#include "script_component.hpp"
 
 GVAR(iServerName)

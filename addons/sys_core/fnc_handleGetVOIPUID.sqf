@@ -1,16 +1,16 @@
+#include "script_component.hpp"
 /*
  * Author: Killerswin2
- * Handler code for the return from a rpc call about UIDs
+ * Handler code for the VOIP UID.
  *
  * Arguments:
- * 0: VOIP UID name from the plugin <STRING>
+ * 0: VOIP UID from the plugin <STRING>
  *
  * Example:
- * ["u24m5t67&"] call acre_sys_core_fnc_handleGetVOIPUID;
+ * ["u24m5t67&"] call acre_sys_core_fnc_handleGetVOIPUID
  *
- * Public: [No]
+ * Public: No
  */
-#include "script_component.hpp"
 
 params [["_uidName", "", [""]]];
 GVAR(iUIDName) = _uidName;

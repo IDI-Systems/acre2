@@ -381,7 +381,7 @@ std::string CTS3Client::getUniqueId( ) {
     return serverUniqueId;
 }
 
-std::string CTS3Client::getServerName( void ) {
+std::string CTS3Client::getServerName(void) {
     char *serverName;
     std::string serverNameString = "";
 
@@ -395,7 +395,7 @@ std::string CTS3Client::getServerName( void ) {
     return serverNameString;
 }
 
-std::string CTS3Client::getChannelName( void ) {
+std::string CTS3Client::getChannelName(void) {
     anyID clientId;
     uint64_t currentChannelId = INVALID_TS3_CHANNEL;
 
@@ -405,8 +405,8 @@ std::string CTS3Client::getChannelName( void ) {
     if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
         if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok ) {
             if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), currentChannelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
-                channelNameString = std::string(channelName);
                 if (channelName){
+                    channelNameString = std::string(channelName);
                     ts3Functions.freeMemory(channelName);
                 }
             }

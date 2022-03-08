@@ -1,14 +1,13 @@
 #include "script_component.hpp"
-
 /*
  * Author: Killerswin2
- * Get the VOIP channel name
+ * Get the VOIP channel name.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * 0: VOIP channel name <STRING>
+ * VOIP Channel Name <STRING>
  *
  * Example:
  * [] call acre_api_fnc_getVOIPChannelName
