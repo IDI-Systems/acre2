@@ -94,7 +94,7 @@ CFilterRadio::CFilterRadio(void)
     srand((unsigned int)time(0));
     this->m_HighPass.setup (TS_SAMPLE_RATE, 750, 0.97);
     this->m_LowPass.setup (TS_SAMPLE_RATE, 4000, 2.0);
-    this->m_lowShelf.setup(TS_SAMPLE_RATE, 1000, -20, 1);
+    this->m_lowShelf.setup(TS_SAMPLE_RATE, 1000, -10, 1);
     this->m_PinkNoise.clear();
 }
 
