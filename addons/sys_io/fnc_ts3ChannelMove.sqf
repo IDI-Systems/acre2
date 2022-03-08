@@ -17,4 +17,4 @@
 
 private _ts3ChannelDetails = format ["%1,%2,%3", EGVAR(sys_core,ts3ChannelName), EGVAR(sys_core,ts3ChannelPassword), serverName];
 TRACE_1("Moving TS3 Channel",_ts3ChannelDetails);
-CALL_RPC("setTs3ChannelDetails",_ts3ChannelDetails);
+["setTs3ChannelDetails",_ts3ChannelDetails] call EFUNC(sys_rpc,callRemoteProcedure);
