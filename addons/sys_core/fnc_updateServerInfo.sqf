@@ -15,6 +15,6 @@
  * Public: No
  */
 
-CALL_RPC("getVOIPServerName","");
-CALL_RPC("getVOIPChannelName","");
-CALL_RPC("getVOIPUID","");
+["getVOIPServerName", ""] call EFUNC(sys_rpc,callRemoteProcedure);;
+["getVOIPChannelName", ""] call EFUNC(sys_rpc,callRemoteProcedure);;
+["getVOIPUID", ""] call EFUNC(sys_rpc,callRemoteProcedure);;
