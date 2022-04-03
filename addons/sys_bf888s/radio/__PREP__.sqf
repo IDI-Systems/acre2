@@ -21,7 +21,6 @@ PREP_MODULE(radio,getState);
 PREP_MODULE(radio,setState);
 PREP_MODULE(radio,getOnOffState);
 PREP_MODULE(radio,setOnOffState);
-//PREP_MODULE(radio,getListInfo);
 PREP_MODULE(radio,handleMultipleTransmissions);
 PREP_MODULE(radio,handleBeginTransmission);
 PREP_MODULE(radio,handleEndTransmission);
