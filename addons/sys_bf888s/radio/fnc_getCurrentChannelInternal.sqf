@@ -4,7 +4,7 @@
  * Returns the unique identity of the current channel.
  *
  * Arguments:
- * 0: Radio ID <STRING> (Unused)
+ * 0: Radio ID <STRING>
  *
  * Return Value:
  * Identity of the current channel <NUMBER>

@@ -3,7 +3,7 @@
  * Author: ACRE2Team
  *
  * Arguments:
- * 0: Radio ID <STRING> (Unused)
+ * 0: Radio ID <STRING>
  * 1: Event: "getExternalAudioPosition" <STRING> (Unused)
  * 2: Event data <ARRAY> (Unused)
  * 3: Radio data <HASH> (Unused)
