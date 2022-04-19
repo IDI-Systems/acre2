@@ -80,13 +80,13 @@ jobs:
       run: |
         cd extensions\\vcproj
         cmake .. -A Win32
-        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Steam;ACRE2\ACRE2TS;Extras\Wav2B64' /p:Configuration=RelWithDebInfo
+        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Mumble;ACRE2\ACRE2Steam;ACRE2\ACRE2TS;Extras\Wav2B64' /p:Configuration=RelWithDebInfo
     - name: Build Extensions (x64)
       if: matrix.arch == 'x64'
       run: |
         cd extensions\\vcproj64
         cmake .. -A x64
-        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Steam;ACRE2\ACRE2TS' /p:Configuration=RelWithDebInfo
+        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Mumble;ACRE2\ACRE2Steam;ACRE2\ACRE2TS' /p:Configuration=RelWithDebInfo
     - name: Sign (BattlEye)
       run: |
         .\ci\battleye\signtool.exe sign /f .\ci\battleye\idi-systems.pfx /p ${{ secrets.BE_CRED_PASSWORD }} /t http://timestamp.digicert.com *.dll
