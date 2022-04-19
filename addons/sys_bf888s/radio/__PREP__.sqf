@@ -1,6 +1,5 @@
 #include "script_component.hpp"
 
-
 PREP_MODULE(radio,initializeRadio);
 
 PREP_MODULE(radio,setVolume);
