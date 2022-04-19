@@ -1,8 +1,6 @@
 #define DEBUG_SYNCHRONOUS
 #include "\x\cba\addons\main\script_macros_common.hpp"
 
-#define CALL_RPC(proc,params) [proc, params] call EFUNC(sys_rpc,callRemoteProcedure);
-
 #define RGB_GREEN 0, 0.5, 0, 1
 #define RGB_BLUE 0, 0, 1, 1
 #define RGB_ORANGE 0.5, 0.5, 0, 1

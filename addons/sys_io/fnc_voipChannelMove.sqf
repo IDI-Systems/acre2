@@ -17,4 +17,4 @@
 
 private _channelDetails = format ["%1,%2,%3", EGVAR(sys_core,voipChannelName), EGVAR(sys_core,voipChannelPassword), serverName];
 TRACE_1("Moving VOIP Channel",_channelDetails);
-CALL_RPC("setChannelDetails",_channelDetails);
+["setChannelDetails",_channelDetails] call EFUNC(sys_rpc,callRemoteProcedure);
