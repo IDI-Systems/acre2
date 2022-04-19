@@ -50,7 +50,11 @@ if (_vehListener isEqualTo _vehSpeaker) then {
         };
 
         if (_speakerTurnedOut || _listenerTurnedOut) then {
-            _attenuate = [_listener] call FUNC(getAttenuationTurnedOut);
+            if (_speakerCompartment == _listenerCompartment) then {
+                _attenuate = [_listener] call FUNC(getAttenuationTurnedOut);
+            } else {
+                _attenuate = getNumber (configOf _vehListener >> "ACRE" >> "attenuationTurnedOut" >> _speakerCompartment >> _listenerCompartment);
+            };
         };
     };
 } else {
