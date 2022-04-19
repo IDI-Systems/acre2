@@ -160,7 +160,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 if (!update_ts3_ok || !update_mumble_ok) {
                     std::ostringstream oss;
                     oss << "ACRE2 was unable to copy the Mumble/TeamSpeak 3 plugin. Please check if you have write access to the plugin "
-                        << "folder, close any instances of Mumble and/or TeamSpeak 3 and/or Mumble and click \"Try Again\".\n\nIf you "
+                        << "folder, close any instances of TeamSpeak 3 and/or Mumble and click \"Try Again\".\n\nIf you "
                         << "would like to close Arma 3 click Cancel. Press Continue to launch Arma 3 regardless.\n\n"
                         << error_msg;
                     const int32_t result = MessageBoxA(
