@@ -68,9 +68,8 @@ acre::Result CMumbleClient::start(const acre::id_t id_) {
     this->setState(acre::State::running);
     this->setIsX3DInitialized(false);
 
-    // this->m_versionThreadHandle = std::thread(&CMumbleClient::exPersistVersion, this);
-
-    mumAPI.log(pluginID, "started");
+    mumAPI.log(pluginID, "Started");
+    mumAPI.log(pluginID, ACRE_VERSION_METADATA);
 
     return acre::Result::ok;
 }
@@ -324,7 +323,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             name = details_.at(0);
         }
 
-        for (std::size_t idx = 0U; idx < channelCount; idx++) {
+        for (std::int32_t idx = 0U; idx < channelCount; idx++) {
             channelId         = *channelList + idx;
             const char *channelName = nullptr;
 

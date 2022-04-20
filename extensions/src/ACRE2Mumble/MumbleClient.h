@@ -22,13 +22,7 @@ public:
     acre::Result stop() final;
     acre::Result start(const acre::id_t id_) final;
 
-    acre::Result exPersistVersion(void);
-
-    acre::Result setClientMetadata(const char *const data);
-
     acre::Result enableMicrophone(const bool status_) final;
-
-    bool getInputStatus();
 
     bool getVAD();
 
