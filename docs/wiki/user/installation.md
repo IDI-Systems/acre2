@@ -8,8 +8,8 @@ title: Installation
 
 - Subscribe to [ACRE2 on Steam](http://steamcommunity.com/sharedfiles/filedetails/?id=751965892) (make sure you are also subscribed to [CBA_A3](https://steamcommunity.com/sharedfiles/filedetails/?id=450814997)).
 - Launch Arma 3.
-- ACRE2 will try to copy the plugins to your TeamSpeak 3 installation directory. A pop-up will appear describing what the process did.
-- Launch TeamSpeak 3 and assure the ACRE2 plugin is enabled in the `Settings -> Plugins` window.
+- ACRE2 will try to copy the plugins to your Mumble/TeamSpeak 3 installation directory. A pop-up will appear describing what the process did.
+- Launch Mumble/TeamSpeak 3 and assure the ACRE2 plugin is enabled in the `Settings -> Plugins` window.
 
 
 ### Manual
@@ -25,15 +25,15 @@ title: Installation
 - In the dialogue that appears, navigate to your Arma 3 installation folder and select the `@acre2` folder.
 - Enable the mod.
 - Launch Arma 3 in the Launcher.
-- ACRE2 will try to copy the plugins to your TeamSpeak 3 installation directory. A pop-up will appear describing what the process did.
-- Launch TeamSpeak 3 and assure the ACRE2 plugin is enabled in the `Settings -> Plugins` window.
+- ACRE2 will try to copy the plugins to your Mumble/TeamSpeak 3 installation directory. A pop-up will appear describing what the process did.
+- Launch Mumble/TeamSpeak 3 and assure the ACRE2 plugin is enabled in the `Settings -> Plugins` window.
 
 #### Shortcut
 
 - Create a new shortcut for Arma 3, or edit an existing one, and add `@acre2` and `@CBA_A3` to the `-mod` parameter.
 - Launch Arma 3 through the shortcut you created.
-- ACRE2 will try to copy the plugins to your TeamSpeak 3 installation directory. A pop-up will appear describing what the process did.
-- Launch TeamSpeak 3 and assure the ACRE2 plugin is enabled in the `Settings -> Plugins` window.
+- ACRE2 will try to copy the plugins to your Mumble/TeamSpeak 3 installation directory. A pop-up will appear describing what the process did.
+- Launch Mumble/TeamSpeak 3 and assure the ACRE2 plugin is enabled in the `Settings -> Plugins` window.
 
 
 ### Configuration
@@ -45,8 +45,8 @@ Server administrators can get available settings using the [export/import featur
 
 ### Troubleshooting
 
-- **WARNING: ACRE IS NOT CONNECTED TO TEAMSPEAK!**  
-Make sure to launch both Arma 3 (Steam) and TeamSpeak 3 as admin, or neither.
+- **WARNING: ACRE is not connected to Mumble/TeamSpeak!**  
+Make sure to launch both Arma 3 (Steam) and Mumble/TeamSpeak 3 as admin, or neither.
 
 - **Radio beeps not audible on dedicated server**  
 Make sure your `server.cfg` has `"b64"` whitelisted in `allowedLoadFileExtensions[]` and `allowedPreprocessFileExtensions[]` if you are using that. Let your server administrator know if you have no idea what this means.
