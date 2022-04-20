@@ -17,10 +17,10 @@
 
 params ["_target"];
 
-private _type = typeOf _target;
-
 // Exit if object has no infantry phone
-if (getNumber (configFile >> "CfgVehicles" >> _type >> "acre_hasInfantryPhone") != 1) exitWith {};
+if (getNumber (configOf _target >> "acre_hasInfantryPhone") != 1) exitWith {};
+
+private _type = typeOf _target;
 
 // Exit if class already initialized
 if (_type in GVAR(initializedInfantryPhone)) exitWith {};
@@ -47,7 +47,7 @@ private _infantryPhoneAction = [
         // Only manually check distance if under main node (not a custom position on hull)
         // Main interaction node is not shown on destroyed vehicle, so we only check that if not main node
         //USES_VARIABLES ["_target", "_player"];
-        if !((_this select 2) isEqualTo [0, 0, 0]) exitWith {alive _target};
+        if ((_this select 2) isNotEqualTo [0, 0, 0]) exitWith {alive _target};
         ([_player, _target] call ace_interaction_fnc_getInteractionDistance) < PHONE_MAXDISTANCE_DEFAULT
     },
     {_this call FUNC(infantryPhoneChildrenActions)},

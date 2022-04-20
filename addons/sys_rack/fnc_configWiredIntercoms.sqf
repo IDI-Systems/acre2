@@ -18,8 +18,6 @@
 
 params ["_vehicle", "_rack"];
 
-private _type = typeOf _vehicle;
-
 private _intercoms = (getArray (_rack >> "intercom")) apply {toLower _x};
 private _wiredIntercoms = [];
 
@@ -38,7 +36,7 @@ if (_intercoms isEqualTo [] || {"none" in _intercoms}) then {
             if (_int in (_configuredIntercoms select 0)) then {
                 _wiredIntercoms pushBack _x;
             } else {
-                WARNING_3("No intercom %1 defined but rack %2 can have access to its network for %3 - skipping",_int,_rack,_type)
+                WARNING_3("No intercom %1 defined but rack %2 can have access to its network for %3 - skipping",_int,_rack,typeOf _vehicle)
             };
         } forEach _intercoms;
     };

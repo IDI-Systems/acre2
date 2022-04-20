@@ -17,7 +17,7 @@
  */
 
 params [
-    ["_weaponArray", objNull, [objNull, []]],
+    ["_array", objNull, [objNull, []]],
     ["_type", "", [""]]
 ];
 
@@ -25,19 +25,12 @@ if (_type isEqualTo "") exitWith {false};
 
 _type = toLower _type;
 
-if (IS_OBJECT(_weaponArray)) then {
-    _weaponArray = [_weaponArray] call EFUNC(sys_core,getGear);
+if (IS_OBJECT(_array)) then {
+    _array = [_array] call EFUNC(sys_core,getGear);
 };
 
-private _ret = false;
-if (_type in _weaponArray) then {
-    _ret = true;
-} else {
-    {
-        private _weapon = _x;
-        _ret = [_weapon, _type] call FUNC(isKindOf);
-        if (_ret) exitWith { };
-    } foreach _weaponArray;
-};
+if (_type in _array) exitWith {true};
 
-_ret
+private _index = _array findIf {[_x, _type] call FUNC(isKindOf)};
+
+_index != -1

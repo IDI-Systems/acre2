@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: ACRE2
-  version: v2.8.0
+  version: v2.9.1
   folders:
 
   - title:
@@ -31,6 +31,10 @@ entries:
 
     - title: News
       url: /news/latest
+      output: web
+
+    - title: Team
+      url: /team
       output: web
 
   - title: User Guides
@@ -81,16 +85,16 @@ entries:
       url: /wiki/user/ts-channel-switching
       output: web, pdf
 
+    - title: Gestures
+      url: /wiki/user/gestures
+      output: web, pdf
+
     - title: God Mode
       url: /wiki/user/god-mode
       output: web, pdf
 
     - title: Ground Spike Antenna
       url: /wiki/user/ground-spike-antenna
-      output: web, pdf
-
-    - title: Class Names
-      url: /wiki/class-names
       output: web, pdf
 
   - title: Radio Guides
@@ -139,6 +143,10 @@ entries:
 
     - title: Overview
       url: /wiki/frameworks/overview
+      output: web, pdf
+
+    - title: Class Names
+      url: /wiki/class-names
       output: web, pdf
 
     - title: Functions List

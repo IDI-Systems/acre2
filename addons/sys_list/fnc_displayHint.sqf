@@ -34,7 +34,7 @@ _displayData params ["_display", "_displayId"];
 
 // Find same ID to overwrite
 private _bufferPointer = GVAR(hintBuffer) findIf {
-    !(_x isEqualTo []) && {_x select 0 == _id}
+    (_x isNotEqualTo []) && {_x select 0 == _id}
 };
 if (_bufferPointer == -1) then {
     // Find first empty otherwise

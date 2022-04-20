@@ -91,6 +91,7 @@ RPC_FUNCTION(updateSpeakingData) {
                     speaker->channels[channelId]->setEffectInsert(2, "acre_radio");
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", false);
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5));
+                    speaker->channels[channelId]->getEffectInsert(2)->setParam("isLoudSpeaker", vMessage->getParameterAsFloat(7));
 
                     speaker->channels[channelId]->setMixdownEffectInsert(0, "acre_positional");
                 }
@@ -151,9 +152,9 @@ RPC_FUNCTION(updateSpeakingData) {
     return acre::Result::ok;
 }
 public:
-    inline void setName(char *const value) final { m_Name = value; }
-    inline char* getName() const final { return m_Name; }
+    inline void setName(const char *const value) final { m_Name = value; }
+    inline const char* getName() const final { return m_Name; }
 
 protected:
-    char* m_Name;
+    const char* m_Name;
 };

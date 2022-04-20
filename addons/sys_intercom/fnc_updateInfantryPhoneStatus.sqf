@@ -61,7 +61,7 @@ switch (_action) do {
 private _event = _vehicle getVariable [QGVAR(eventInfantryPhone), ""];
 if (_event != "") then {
     _event = missionNamespace getVariable [_event, {}];
-    if (_event isEqualType {} && !(_event isEqualTo {})) then {
+    if (_event isEqualType {} && (_event isNotEqualTo {})) then {
         [_vehicle, _unit, _action] call _event;
     };
 };

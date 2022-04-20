@@ -6,13 +6,14 @@ title: ACRE2 Documentation
 project_name: ACRE2
 description: "Documentation for Advanced Combat Radio Environment 2, an Arma 3 radio simulation mod."
 company_name: IDI-Systems
+company_url: https://idi-systems.com/
 
 github_editme_path: IDI-Systems/acre2/blob/master/docs
 feedback_disable: true
 
 exclude: [.idea/, pdfconfigs, .editorconfig, .gitignore, CNAME, docker-compose.yml, Dockerfile, Gemfile, Gemfile.lock, "*.sh", README.md]
 
-gems:
+plugins:
   - jekyll-redirect-from
 
 whitelist:

@@ -21,11 +21,14 @@ params [
     ["_channelNumber", 0, [0]]
 ];
 
-if ( !(_radioId isEqualType "")) exitWith { -1 };
+if !(_radioId isEqualType "") exitWith { false };
 
 if (_channelNumber isEqualType 0) then {
-    _channelNumber = _channelNumber - 1;
-    [_radioId, "setCurrentChannel", _channelNumber] call EFUNC(sys_data,dataEvent);
+    private _eventData = _channelNumber - 1;
+    if (([_radioId] call FUNC(getBaseRadio)) == "ACRE_PRC77") then {
+        _eventData = [_eventData, 0]; // ACRE_PRC77 expects an array of [mhzKnob, khzKnob]
+    };
+    [_radioId, "setCurrentChannel", _eventData] call EFUNC(sys_data,dataEvent);
 } else {
     // Should we handle a channel NAME and find it, and change it?!?
 

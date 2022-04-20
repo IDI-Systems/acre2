@@ -17,6 +17,24 @@
  */
 
 params ["_vehicle", "_unit"];
+TRACE_2("enterVehicle",typeOf _vehicle,typeOf _unit);
+
+if ((_unit == _vehicle) || {GVAR(intercomPFH) > -1}) then {
+    [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
+    TRACE_1("del intercom PFH",GVAR(intercomPFH));
+    GVAR(intercomPFH) = -1;
+
+    private _oldVehicle = _unit getVariable [QGVAR(intercomVehicle), objNull];
+
+    // Handle the case of broadcasting or using a seat that uses limited connections
+    [_oldVehicle, _unit] call FUNC(seatSwitched);
+
+    // Reset variables
+    _unit setVariable [QGVAR(intercomVehicle), objNull];
+    _unit setVariable [QGVAR(role), ""];
+    ACRE_PLAYER_INTERCOM = [];
+    GVAR(intercomUse) = [];
+};
 
 if (_unit != _vehicle) then {
     // Save current seat variable
@@ -29,19 +47,5 @@ if (_unit != _vehicle) then {
 
     // Start PFH
     GVAR(intercomPFH) = [DFUNC(intercomPFH), 1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
-    TRACE_1("intercom PFH",GVAR(intercomPFH));
-} else {
-    [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
-    TRACE_1("del intercom PFH",GVAR(intercomPFH));
-
-    _vehicle = _unit getVariable [QGVAR(intercomVehicle), objNull];
-
-    // Handle the case of broadcasting or using a seat that uses limited connections
-    [_vehicle, _unit] call FUNC(seatSwitched);
-
-    // Reset variables
-    _unit setVariable [QGVAR(intercomVehicle), objNull];
-    _unit setVariable [QGVAR(role), ""];
-    ACRE_PLAYER_INTERCOM = [];
-    GVAR(intercomUse) = [];
+    TRACE_1("add intercom PFH",GVAR(intercomPFH));
 };

@@ -46,7 +46,7 @@ TRACE_7("rack actions",_accessibleRacks,_hearableRacks,_racks,_radios,_usableRad
     _actions pushBack [_action, [], _target];
 } forEach _accessibleRacks;
 
-if !(_usableInaccessibleRadios isEqualTo []) then {
+if (_usableInaccessibleRadios isNotEqualTo []) then {
     private _action = [
         QGVAR(useAllRacks),
         localize LSTRING(useAllRacks),
@@ -64,8 +64,8 @@ if !(_usableInaccessibleRadios isEqualTo []) then {
     _actions pushBack [_action, [], _target];
 };
 
-if !(_usableAccessibleRadios isEqualTo []) then {
-    _action = [
+if (_usableAccessibleRadios isNotEqualTo []) then {
+    private _action = [
         QGVAR(stopUsingAllRacks),
         localize LSTRING(stopUsingAllRacks),
         "",

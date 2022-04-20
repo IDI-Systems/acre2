@@ -20,6 +20,12 @@ class CfgWeapons {
         class Library {
             libTextDesc = QUOTE(NAME_SEM52SL);
         };
+
+        EGVAR(arsenalStats,frequencyMin) = 46e3;
+        EGVAR(arsenalStats,frequencyMax) = 65.975e6;
+        EGVAR(arsenalStats,transmitPower) = 1000;
+        EGVAR(arsenalStats,effectiveRange) = "2-4km (1-2km)"; // not sure?
+        EGVAR(arsenalStats,externalSpeaker) = 1;
     };
 
     RADIO_ID_LIST(ACRE_SEM52SL)

@@ -27,7 +27,7 @@ if (EGVAR(sys_zeus,zeusCommunicateViaCamera) && FUNC(inZeus)) then {
 if (ACRE_IS_SPECTATOR) then {
     ACRE_LISTENER_POS = _projectPos;
 } else {
-    ACRE_LISTENER_POS = eyePos acre_player;
+    ACRE_LISTENER_POS = acre_player modelToWorldVisualWorld (acre_player selectionPosition "pilot");
 };
 
 private _height = ACRE_LISTENER_POS param [2, 1];
@@ -43,4 +43,4 @@ _updateSelf append ACRE_LISTENER_POS;
 _updateSelf append ACRE_LISTENER_DIR;
 _updateSelf append _additionalValues;
 
-CALL_RPC("updateSelf", _updateSelf);
+["updateSelf", _updateSelf] call EFUNC(sys_rpc,callRemoteProcedure);
