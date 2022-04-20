@@ -133,6 +133,10 @@ entries:
       url: /wiki/radios/sem-70
       output: web, pdf
 
+    - title: BF 888S 
+      url: /wiki/radios/bf-888s
+      output: web, pdf
+
   - title: API / Frameworks
     output: web, pdf
     folderitems:
