@@ -25,9 +25,6 @@ namespace idi::acre {
         bool collect_plugin_locations() noexcept final;
 
     private:
-        void parse_mumble_registry(const bool use_x64_) noexcept;
-
-        static constexpr std::uint8_t max_key_length = 255U;
         std::string mumble_path;
     };
 } // namespace idi::acre

@@ -70,10 +70,10 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
     const bool skip_ts_plugin     = cmd_args.has_argument("-skipAcreTSPluginCopy");
     const bool skip_mumble_plugin = cmd_args.has_argument("-skipAcreMumblePluginCopy");
 
-    std::string test = cmd_args.get_argument("-mumblePath");
+    const std::string mumble_path = cmd_args.get_argument("-mumblePath");
 
     idi::acre::TS3Plugin ts3_plugin(skip_ts_plugin);
-    idi::acre::MumblePlugin mumble_plugin(skip_mumble_plugin, cmd_args.get_argument("-mumblePath"));
+    idi::acre::MumblePlugin mumble_plugin(skip_mumble_plugin, mumble_path);
 
     switch (command) {
         case SteamCommand::check: {
@@ -102,7 +102,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                   std::end(mumble_plugin.get_missing_acre_plugins()));
 
                 std::ostringstream oss;
-                oss << "ACRE2 was unable to find ACRE 2 plugin files.\n\n";
+                oss << "ACRE2 was unable to find ACRE2 plugin files.\n\n";
                 for (const auto &missing : missing_plugins) {
                     oss << "\t" << missing << "\n";
                 }
@@ -120,7 +120,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
             if (!ts3_locations_success && !mumble_locations_success) {
                 const std::int32_t result = MessageBoxA(nullptr,
                   "ACRE2 was unable to find a TeamSpeak 3 or a Mumble installation. If you do have an installation please copy the plugins "
-                  "yourself or reinstall TeamSpeak 3.\n\nIf you are sure you have Mumble and/or TeamSpeak 3 installed and wish to "
+                  "yourself or reinstall TeamSpeak 3 or Mumble.\n\nIf you are sure you have TeamSpeak 3 and/or Mumble installed and wish to "
                   "prevent this message from appearing again remove ACRE2Steam.dll and ACRE2Steam_x64.dll from your @acre2 "
                   "folder.\n\nContinue anyway?",
                   "ACRE2 Installation Error", MB_YESNO | MB_ICONEXCLAMATION);
@@ -163,6 +163,8 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                         << "folder, close any instances of TeamSpeak 3 and/or Mumble and click \"Try Again\".\n\nIf you "
                         << "would like to close Arma 3 click Cancel. Press Continue to launch Arma 3 regardless.\n\n"
                         << error_msg;
+
+
                     const int32_t result = MessageBoxA(
                       nullptr, (LPCSTR) oss.str().c_str(), "ACRE2 Installation Error", MB_CANCELTRYCONTINUE | MB_ICONEXCLAMATION);
                     if (result == IDCANCEL) {
@@ -200,8 +202,16 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
             if (!mumble_plugin.get_updated_paths().empty()) {
                 oss << "The Mumble plugins have been copied to the following location(s):\n";
+
+                std::string arch_installed = "";
+                if (mumble_plugin.get_arch_to_install() == idi::acre::Architecture::x32) {
+                    arch_installed = " [32-bit only]";
+                } else if (mumble_plugin.get_arch_to_install() == idi::acre::Architecture::x64) {
+                    arch_installed = " [64-bit only]";
+                }
+
                 for (const auto &path : mumble_plugin.get_updated_paths()) {
-                    oss << path << "\n";
+                    oss << path << arch_installed << "\n";
                     found_paths.append(path + "\n");
                 }
 

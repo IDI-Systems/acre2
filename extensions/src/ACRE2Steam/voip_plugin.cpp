@@ -151,16 +151,18 @@ void VOIPPlugin::check_plugin_locations(const std::string &app_data_, const std:
 bool VOIPPlugin::check_acre_installation() noexcept {
     const bool x32_plugin_exist = std::filesystem::exists(x32_acre_plugin);
     const bool x64_plugin_exist = std::filesystem::exists(x64_acre_plugin);
+    const bool x32_install      = arch_to_install == Architecture::both || arch_to_install == Architecture::x32;
+    const bool x64_install      = arch_to_install == Architecture::both || arch_to_install == Architecture::x64;
 
-    if (!x32_plugin_exist) {
+    if (!x32_plugin_exist && x32_install) {
         missing_acre_plugins.emplace_back(x32_acre_plugin.filename().string());
     }
 
-    if (!x64_plugin_exist) {
+    if (!x64_plugin_exist && x64_install) {
         missing_acre_plugins.emplace_back(x64_acre_plugin.filename().string());
     }
 
-    return x32_plugin_exist && x64_plugin_exist;
+    return (x32_plugin_exist || !x32_install) && (x64_plugin_exist || !x64_install);
 }
 
 idi::acre::UpdateCode VOIPPlugin::handle_update_plugin() noexcept {
@@ -190,9 +192,13 @@ idi::acre::UpdateCode VOIPPlugin::handle_update_plugin() noexcept {
             return UpdateCode::other;
         }
 
-        std::array<std::pair<std::filesystem::path, std::filesystem::path>, 2> plugin_paths_array = {
-          std::make_pair(plugin_folder / "acre2_win32.dll", x32_acre_plugin),
-          std::make_pair(plugin_folder / "acre2_win64.dll", x64_acre_plugin)};
+        std::vector<std::pair<std::filesystem::path, std::filesystem::path>> plugin_paths_array;
+        if (arch_to_install == Architecture::both || arch_to_install == Architecture::x32) {
+            plugin_paths_array.push_back(std::make_pair(plugin_folder / "acre2_win32.dll", x32_acre_plugin));
+        }
+        if (arch_to_install == Architecture::both || arch_to_install == Architecture::x64) {
+            plugin_paths_array.push_back(std::make_pair(plugin_folder / "acre2_win64.dll", x64_acre_plugin));
+        }
 
         for (const auto &path : plugin_paths_array) {
             if (!compare_file(path.first.string(), path.second.string())) {

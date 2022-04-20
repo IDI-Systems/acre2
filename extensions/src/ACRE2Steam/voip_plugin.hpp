@@ -26,6 +26,7 @@ namespace idi::acre {
     std::string find_mod_file(const std::string &filename);
 
     enum class UpdateCode : std::uint8_t { update_not_necessary, update_ok, update_failed, other };
+    enum class Architecture : std::uint8_t { both, x32, x64 };
 
     class VOIPPlugin {
     public:
@@ -55,6 +56,8 @@ namespace idi::acre {
         const std::vector<std::string> &get_removed_paths() const noexcept { return removed_paths; }
 
         std::string read_reg_value(HKEY root_, const std::string &key_, const std::string &name_, bool use_x64_) noexcept;
+
+        const Architecture &get_arch_to_install() const noexcept { return arch_to_install; }
 
     protected:
         // Convert a wide Unicode string to an UTF8 string
@@ -94,20 +97,23 @@ namespace idi::acre {
         std::vector<std::string> &get_plugin_delete_locations() noexcept { return plugin_delete_locations; }
         void set_plugin_delete_locations(const std::vector<std::string> locations_) { plugin_delete_locations = locations_; }
 
+        void set_arch_to_install(Architecture arch_) { arch_to_install = arch_; }
+
     private:
         bool skip_plugin = false;
         std::string registry_key;
         std::string last_error_msg;
         std::error_code last_error;
 
-        std::vector<std::string> plugin_locations;        // Locations to copy the TS dll to.
-        std::vector<std::string> plugin_delete_locations; // Locations to remove the TS dll from.
+        std::vector<std::string> plugin_locations;        // Locations to copy the VOIP dll to.
+        std::vector<std::string> plugin_delete_locations; // Locations to remove the VOIP dll from.
 
         std::vector<std::string> updated_paths;
         std::vector<std::string> removed_paths;
 
         std::filesystem::path x32_acre_plugin;
         std::filesystem::path x64_acre_plugin;
+        Architecture arch_to_install = Architecture::both;
         std::vector<std::string> missing_acre_plugins;
     };
 } // namespace idi::acre
