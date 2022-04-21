@@ -117,7 +117,7 @@ DFUNC(mutingPFHLoop) = {
         GVAR(fullListTime) = false;
     };
     if (_mutingParams != "") then {
-        CALL_RPC("setMuted",_mutingParams);
+        ["setMuted", _mutingParams] call EFUNC(sys_rpc,callRemoteProcedure);
     };
     true
 };

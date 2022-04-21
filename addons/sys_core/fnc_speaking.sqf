@@ -219,10 +219,8 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
             private _params = HASH_GET(_compiledParams, _x);
             private _canUnderstand = [_unit] call FUNC(canUnderstand);
             private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, count _params];
-            {
-                _paramArray append _x;
-            } forEach _params;
-            CALL_RPC("updateSpeakingData", _paramArray);
+            _paramArray append (flatten _params);
+            ["updateSpeakingData", _paramArray] call EFUNC(sys_rpc,callRemoteProcedure);
         };
     } forEach HASH_KEYS(_compiledParams);
 
@@ -244,17 +242,15 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
             if (_unit call FUNC(inRange)) then {
                 TRACE_1("Calling processDirectSpeaker", _unit);
                 private _params = [_unit] call FUNC(processDirectSpeaker);
-                CALL_RPC("updateSpeakingData", _params);
+                ["updateSpeakingData", _params] call EFUNC(sys_rpc,callRemoteProcedure);
             } else {
                 if !(_unit in _sentMicRadios) then {
-                    private _params = ['m', GET_TS3ID(_unit), 0];
-                    CALL_RPC("updateSpeakingData", _params);
+                    ["updateSpeakingData", ["m", GET_TS3ID(_unit), 0]] call EFUNC(sys_rpc,callRemoteProcedure);
                 };
             };
         } else {
             if (_unit != acre_player) then {
-                private _params = ['m', GET_TS3ID(_unit), 0];
-                CALL_RPC("updateSpeakingData", _params);
+                ["updateSpeakingData", ['m', GET_TS3ID(_unit), 0]] call EFUNC(sys_rpc,callRemoteProcedure);
             };
         };
     };
@@ -265,8 +261,7 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
 
     // Check speaking gods to only allow hearing by the god's target group
     if ((EGVAR(sys_godmode,speakingGods) find _speakingId) != -1) then {
-        private _params = ["g", _speakingId, 0, GVAR(godVolume)];
-        CALL_RPC("updateSpeakingData", _params);
+        ["updateSpeakingData", ["g", _speakingId, 0, GVAR(godVolume)]] call EFUNC(sys_rpc,callRemoteProcedure);
     };
 } forEach GVAR(godSpeakers);
 
@@ -278,7 +273,7 @@ if (ACRE_IS_SPECTATOR) then {
             _volume = 0;
         };
         private _params = ["s", _speakingId, 0, _volume];
-        CALL_RPC("updateSpeakingData", _params);
+        ["updateSpeakingData", ["s", _speakingId, 0, _volume]] call EFUNC(sys_rpc,callRemoteProcedure);
     } forEach GVAR(spectatorSpeakers);
 };
 

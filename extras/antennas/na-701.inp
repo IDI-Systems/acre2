@@ -1,0 +1,17 @@
+CM NA-701 Antenna
+CM
+CM
+CM
+CM
+CM forw: 0, 0 ; back: 0, 180
+CE
+GW 1 9 0 0 0 0 0 0.22 .0015
+GE 1
+LD 4 1 9 9 50
+GN 1
+EK
+EX 0 1 1 0 1 0 0
+FR 0 1 0 0 400 0
+XQ
+FR 0 201 0 0 400 1
+RP 0 37 73 1000 -90 0 5 5

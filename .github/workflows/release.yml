@@ -5,6 +5,14 @@ on:
     branches:
     - development-build
     - release-build
+  workflow_dispatch:
+    inputs:
+      path:
+        description: 'Path of upload (after <ftp>/test/)'
+        required: true
+        default: 'acre2'
+      label:
+        description: 'Label to attach to the archive name (with leading underscore)'
 
 jobs:
   build:
@@ -101,6 +109,54 @@ jobs:
           symbols
         retention-days: 1
 
+  publish-test:
+    needs: [build, compile]
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Artifacts
+      uses: actions/download-artifact@v2
+    - name: Prepare Archives
+      run: |
+        echo "Organize"
+        mv acre2/* .
+        mv acre2-extensions-*/*.dll @acre2/
+        mv acre2-extensions-*/extras/*.exe @acre2/extras/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
+        mkdir symbols && mv acre2-extensions-*/symbols/* .
+        echo "::group::Archive build"
+        zip -r acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip @acre2
+        echo "::endgroup::"
+        echo "::group::Archive symbols"
+        zip -r acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}_symbols.zip x86 x64
+        echo "::endgroup::"
+        ls *.zip
+    - name: Upload to FTP (ACRE2)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        source: "acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip"
+        target: "${{ secrets.FTP_SERVER }}/test/${{ github.event.inputs.path }}"
+    - name: Upload to FTP (Symbols)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        source: "acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}_symbols.zip"
+        target: "${{ secrets.FTP_SERVER }}/test/${{ github.event.inputs.path }}"
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_USERNAME: Publisher
+        SLACK_ICON_EMOJI: ":package:"
+        SLACK_MESSAGE: 'Test-Build uploaded! http://${{ secrets.FTP_SERVER }}/dev/acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip'
+        SLACK_TITLE: Release Status
+        MSG_MINIMAL: actions url
+
   publish-dev:
     needs: [build, compile]
     if: github.ref == 'refs/heads/development-build'
@@ -114,7 +170,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
@@ -172,7 +228,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
