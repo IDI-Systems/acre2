@@ -9,26 +9,25 @@
 #include "Engine.h"
 #include "Lockable.h"
 
-class CCommandServer : public IServer, public CLockable
-{
+class CCommandServer : public IServer, public CLockable {
 public:
-    CCommandServer(void);
+    CCommandServer();
     CCommandServer(const acre::id_t id);
-    ~CCommandServer(void);
+    ~CCommandServer() = default;
 
-    acre::Result initialize(void);
-    acre::Result shutdown(void);
+    acre::Result initialize();
+    acre::Result shutdown();
 
     acre::Result sendMessage(IMessage *msg);
     acre::Result handleMessage(unsigned char *msg);
-    acre::Result handleMessage(unsigned char* msg, size_t length) override {
+    acre::Result handleMessage(unsigned char *msg, size_t length) override {
         (void)msg;
         (void)length;
 
         return acre::Result::notImplemented;
     }
 
-    acre::Result release(void);
+    acre::Result release();
 
     inline void setCommandId(char *const value) { m_commandId = value; }
     inline char* getCommandId() const { return m_commandId; }
@@ -37,7 +36,7 @@ public:
     inline bool getConnected() const final { return m_connected; }
 
     inline void setId(const acre::id_t value) final { m_id = value; }
-    inline acre::id_t getId() const final { return m_id; }    
+    inline acre::id_t getId() const final { return m_id; }
 
 protected:
     acre::id_t m_id;

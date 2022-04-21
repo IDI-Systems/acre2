@@ -16,8 +16,8 @@ BOOL WINAPI DllMain(HINSTANCE hInst,DWORD reason,LPVOID) {
     if (reason == DLL_PROCESS_ATTACH){
         //g_Log = (Log *)new Log("acre.log");
     }
-    if (reason == DLL_PROCESS_DETACH) { 
-        
+    if (reason == DLL_PROCESS_DETACH) {
+
     }
     return 1;
 }
