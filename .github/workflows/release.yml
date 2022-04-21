@@ -122,7 +122,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.name }}.zip @acre2
@@ -170,7 +170,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
@@ -228,7 +228,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
