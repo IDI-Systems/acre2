@@ -31,7 +31,7 @@ if (_keyIndex != -1) then {
 
     (GVAR(radioIdMap) select 1) set [_keyIndex, _newIds];
     GVAR(masterIdList) deleteAt (GVAR(masterIdList) find _radioId);
-    HASH_REM(GVAR(markedForGC),_radio);
+    HASH_REM(GVAR(markedForGC),_radioId);
     [QGVAR(clientGCRadio), [_radioId]] call CALLSTACK(CBA_fnc_globalEvent);
     HASH_SET(EGVAR(sys_data,radioData), _radioId, nil);
 } else {
