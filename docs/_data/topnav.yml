@@ -21,8 +21,8 @@ topnav_dropdowns:
     - title: Contact
       folderitems:
 
-        - title: Slack (#acre2 channel)
-          external_url: http://slackin.idi-systems.com
+        - title: ACE Discord
+          external_url: https://acemod.org/discord
 
         - title: BI Forums
           external_url: https://forums.bistudio.com/topic/193813-acre2-v22-stable-steam-workshop-release

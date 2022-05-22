@@ -18,8 +18,8 @@
     <a href="http://acre2.idi-systems.com">
         <img src="https://img.shields.io/badge/Documentation-Home-lightgrey.svg?style=flat-square" alt="ACRE2 Wiki">
     </a>
-    <a href="http://slackin.idi-systems.com">
-        <img src="https://img.shields.io/badge/Slack-Join%20%23acre2-darkviolet.svg?style=flat-square" alt="ACRE2 Slack">
+    <a href="https://acemod.org/discord">
+        <img src="https://img.shields.io/badge/Discord-Join%20%23acre2-darkviolet.svg?style=flat-square" alt="ACE Discord">
     </a>
     <a href="https://travis-ci.org/IDI-Systems/acre2">
         <img src="https://img.shields.io/travis/IDI-Systems/acre2.svg?style=flat-square&label=Build" alt="ACRE2 Build Status">
