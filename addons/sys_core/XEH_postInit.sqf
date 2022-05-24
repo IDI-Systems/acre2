@@ -151,4 +151,9 @@ if (getClientStateNumber < 10) then { // Check before game has started (in brief
     }, 0, []] call CBA_fnc_addPerFrameHandler;
 };
 
+["CBA_loadoutGet", {
+    params ["", "_loadout", ""];
+    [_loadout] call EFUNC(api,filterUnitLoadout);
+}] call CBA_fnc_addEventHandler;
+
 true
