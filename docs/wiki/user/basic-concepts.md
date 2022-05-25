@@ -21,6 +21,7 @@ Half-duplex limitations can be turned off in missions by using the [Full Duplex]
 | AN/PRC-77     | 4 W      | 1-3 km     | 3-5 km        |
 | SEM 52 SL     | 1 W      | 1-2 km     | 2-4 km        |
 | SEM 70        | 4 W      | 1-3 km     | 3-5 km        |
+| BF-888S       | 5 W      | 2-4 km     | 4-6 km        |
 
 _Classes can be found on the [Class Names](/wiki/class-names) page._
 
@@ -55,5 +56,6 @@ Each antenna has a gain pattern (visualized in linked video), which is the signa
 | [AS-1729/VRC](https://www.youtube.com/watch?v=3G_87lPpEMM) | 3/8" | **AN/VRC-64** |
 | [2.43M Ground Spike](https://www.youtube.com/watch?v=GDZLo0TkZyI) | TNC | AN/PRC-148, AN/PRC-152, AN/PRC-117F, AN/PRC-77, SEM 70 |
 | [6.43M Ground Spike](https://www.youtube.com/watch?v=0gCv0mSm5-w) | TNC | AN/PRC-148, AN/PRC-152, AN/PRC-117F, AN/PRC-77, SEM 70 |
+| 22CM NA-701 | SMA | **BF-888S** |
 
 _Classes can be found on the [Class Names](/wiki/class-names) page._
