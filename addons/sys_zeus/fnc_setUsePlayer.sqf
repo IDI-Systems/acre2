@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: SynixeBrett
+ * Author: Brett Mayson
  * Set if the player speaks through their unit or the remote controlled unit.
  *
  * Arguments:
