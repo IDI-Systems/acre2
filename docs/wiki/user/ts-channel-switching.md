@@ -14,7 +14,7 @@ It is also possible to set the name of the desired TS3 channel in the addon sett
 
 Note: The name matching is considered fuzzy, meaning it will not always provide the exact result that may be expected.
 
-Ensure the ArmA 3 Server Name does not contain any Non-ASCII characters like e.g. ä, á, à, â. Since ACRE currently will not be able to connect to the Teamspeak Server in that case.
+{% include warning.html content="Ensure the Arma 3 Server Name does **not contain any non-ASCII characters** e.g. `ä`, `á`, `à`, `â`. ACRE will currently not be able to connect to the TeamSpeak Server in that case." %}
 
 ### Example
 
