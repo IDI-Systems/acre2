@@ -8,6 +8,8 @@
 #include "compat.h"
 #include "shlobj.h"
 
+#include <Tracy.hpp>
+
 #pragma comment(lib, "Shlwapi.lib")
 
 static constexpr std::int32_t invalid_mumble_channel = -1;
@@ -18,28 +20,38 @@ extern mumble_connection_t activeConnection;
 extern mumble_plugin_id_t pluginID;
 
 acre::Result CMumbleClient::initialize() {
+    ZoneScoped;
+
     setPreviousChannel(invalid_mumble_channel);
     return acre::Result::ok;
 }
 
 acre::Result CMumbleClient::setMuted(const acre::id_t id_, const bool muted_) {
+    ZoneScoped;
+
     (void) id_;
     (void) muted_;
     return acre::Result::ok;
 }
 
 acre::Result CMumbleClient::setMuted(std::list<acre::id_t> idList_, bool muted_) {
+    ZoneScoped;
+
     (void) idList_;
     (void) muted_;
     return acre::Result::ok;
 }
 
 acre::Result CMumbleClient::getMuted(acre::id_t id_) {
+    ZoneScoped;
+
     (void) id_;
     return acre::Result::ok;
 }
 
 acre::Result CMumbleClient::stop() {
+    ZoneScoped;
+
     if (CEngine::getInstance() != nullptr) {
         CEngine::getInstance()->stop();
         this->setState(acre::State::stopping);
@@ -55,6 +67,8 @@ acre::Result CMumbleClient::stop() {
 }
 
 acre::Result CMumbleClient::start(const acre::id_t id_) {
+    ZoneScoped;
+
     CEngine::getInstance()->start(id_);
     this->setInputActive(false);
     this->setDirectFirst(false);
@@ -75,6 +89,8 @@ acre::Result CMumbleClient::start(const acre::id_t id_) {
 }
 
 bool CMumbleClient::getVAD() {
+    ZoneScoped;
+
     mumble_transmission_mode_t transmitMode;
     const mumble_error_t err = mumAPI.getLocalUserTransmissionMode(pluginID, &transmitMode);
     if (err != MUMBLE_STATUS_OK) {
@@ -85,11 +101,15 @@ bool CMumbleClient::getVAD() {
 }
 
 acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType_) {
+    ZoneScoped;
+
     this->localStartSpeaking(speakingType_, "");
     return acre::Result::ok;
 }
 
 acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType_, std::string radioId_) {
+    ZoneScoped;
+
     bool stopDirectSpeaking = false;
 
     const bool VADactive = this->getVAD();
@@ -133,6 +153,8 @@ acre::Result CMumbleClient::localStartSpeaking(const acre::Speaking speakingType
 }
 
 acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_) {
+    ZoneScoped;
+
     bool resendDirectSpeaking = false;
 
     const bool VADactive = this->getVAD();
@@ -205,11 +227,15 @@ acre::Result CMumbleClient::localStopSpeaking(const acre::Speaking speakingType_
 }
 
 acre::Result CMumbleClient::enableMicrophone(const bool status_) {
+    ZoneScoped;
+
     (void) status_;
     return acre::Result::ok;
 }
 
 acre::Result CMumbleClient::playSound(std::string path_, acre::vec3_fp32_t position_, const float32_t volume_, const int32_t looping_) {
+    ZoneScoped;
+
     return acre::Result::ok;
 }
 
@@ -239,6 +265,8 @@ std::string CMumbleClient::getTempFilePath(void) {
 }
 
 acre::Result CMumbleClient::microphoneOpen(bool status_) {
+    ZoneScoped;
+
     const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, status_);
     if (res != MUMBLE_STATUS_OK) {
         if (status_) {
@@ -255,10 +283,14 @@ acre::Result CMumbleClient::microphoneOpen(bool status_) {
 }
 
 acre::Result CMumbleClient::unMuteAll(void) {
+    ZoneScoped;
+
     return acre::Result::ok;
 }
 
 acre::Result CMumbleClient::moveToServerChannel() {
+    ZoneScoped;
+
     TRACE("moveToServerChannel ENTER");
     if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         mumble_userid_t clientId;
@@ -289,6 +321,8 @@ acre::Result CMumbleClient::moveToServerChannel() {
 }
 
 acre::Result CMumbleClient::moveToPreviousChannel() {
+    ZoneScoped;
+
     TRACE("moveToPreviousChannel ENTER");
     if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         mumble_userid_t clientId = -1;
@@ -310,6 +344,8 @@ acre::Result CMumbleClient::moveToPreviousChannel() {
 }
 
 uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
+    ZoneScoped;
+
     TRACE("findChannelByNames ENTER");
     mumble_channelid_t *channelList = nullptr;
     std::size_t channelCount        = 0U;
@@ -383,6 +419,8 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
 }
 
 acre::Result CMumbleClient::updateChannelDetails(std::vector<std::string> details_) {
+    ZoneScoped;
+
     setChannelDetails(details_);
     if (!details_.empty()) {
         updateShouldSwitchChannel(true);
@@ -391,10 +429,14 @@ acre::Result CMumbleClient::updateChannelDetails(std::vector<std::string> detail
 }
 
 acre::Result CMumbleClient::updateShouldSwitchChannel(const bool state_) {
+    ZoneScoped;
+
     setShouldSwitchChannel(state_);
     return acre::Result::ok;
 }
 
 bool CMumbleClient::shouldSwitchChannel() {
+    ZoneScoped;
+
     return getShouldSwitchChannel();
 }

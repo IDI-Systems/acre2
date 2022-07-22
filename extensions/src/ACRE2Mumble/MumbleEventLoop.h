@@ -42,6 +42,7 @@ namespace acre {
         std::mutex m_lock;
         std::condition_variable m_waiter;
         bool m_keepRunning = true;
+        bool m_drain       = false;
         std::deque<std::function<void()>> m_queuedFunctions;
         std::thread m_thread;
 
