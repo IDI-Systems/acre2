@@ -31,7 +31,10 @@
 #include "setChannelDetails.h"
 #include <shlobj.h>
 
+#include <Tracy.hpp>
+
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
+    ZoneScoped;
 
     if (!g_Log) {
         std::string acrePluginLog{"acre2_plugin.log"};
@@ -92,6 +95,7 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
 }
 
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName, std::string loggingPath) {
+    ZoneScoped;
 
     g_Log = (Log *)new Log(const_cast<char *>(loggingPath.c_str()));
     LOG("* Logging engine initialized.");
@@ -100,6 +104,8 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
 }
 
 acre::Result CEngine::start(const acre::id_t id) {
+    ZoneScoped;
+
     if (this->getExternalServer()) {
         this->getExternalServer()->initialize();
     } else {
@@ -124,6 +130,8 @@ acre::Result CEngine::start(const acre::id_t id) {
 }
 
 acre::Result CEngine::stop() {
+    ZoneScoped;
+
     LOG("Engine Shutting Down");
     this->setState(acre::State::stopping);
 
@@ -152,11 +160,15 @@ acre::Result CEngine::stop() {
 }
 
 acre::Result CEngine::localStartSpeaking(const acre::Speaking speakingType) {
+    ZoneScoped;
+
     this->localStartSpeaking(speakingType, "");
     return acre::Result::ok;
 }
 
 acre::Result CEngine::localStartSpeaking(const acre::Speaking speakingType, const std::string radioId) {
+    ZoneScoped;
+
     // send a start speaking event to everyone
     TRACE("Local START speaking: %d, %s", speakingType, radioId.c_str());
     this->getSelf()->lock();
@@ -192,6 +204,8 @@ acre::Result CEngine::localStartSpeaking(const acre::Speaking speakingType, cons
 }
 
 acre::Result CEngine::localStopSpeaking( void ) {
+    ZoneScoped;
+
     this->getSelf()->setSpeaking(false);
     CEngine::getInstance()->getExternalServer()->sendMessage(
         CTextMessage::formatNewMessage("ext_remoteStopSpeaking",
@@ -213,6 +227,8 @@ acre::Result CEngine::localStopSpeaking( void ) {
 }
 
 acre::Result CEngine::remoteStartSpeaking(const acre::id_t remoteId, const int32_t languageId, const std::string netId, const acre::Speaking speakingType, const std::string radioId, const acre::volume_t curveScale) {
+    ZoneScoped;
+
     TRACE("Remote Start Speaking Enter: %d, %d", remoteId, speakingType);
     auto it = this->speakingList.find(remoteId);
     if (it != this->speakingList.end()) {
@@ -241,6 +257,8 @@ acre::Result CEngine::remoteStartSpeaking(const acre::id_t remoteId, const int32
 }
 
 acre::Result CEngine::remoteStopSpeaking(const acre::id_t remoteId) {
+    ZoneScoped;
+
     TRACE("Remote STOP Speaking Enter: %d", remoteId);
     auto it = this->speakingList.find(remoteId);
     if (it != this->speakingList.end()) {

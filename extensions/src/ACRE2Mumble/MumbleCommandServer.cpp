@@ -4,6 +4,8 @@
 #include "MumbleFunctions.h"
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 #include <mutex>
 
 extern MumbleAPI_v_1_0_x mumAPI;
@@ -23,6 +25,8 @@ acre::Result CMumbleCommandServer::shutdown() {
 }
 
 acre::Result CMumbleCommandServer::sendMessage(IMessage *msg) {
+    ZoneScoped;
+
     std::lock_guard<CLockable> guard(*this);
 
     mumble_userid_t *channelUsers     = nullptr;
@@ -62,6 +66,8 @@ acre::Result CMumbleCommandServer::handleMessage(unsigned char *data) {
 }
 
 acre::Result CMumbleCommandServer::handleMessage(unsigned char *data, size_t length) {
+    ZoneScoped;
+
     CTextMessage *msg = nullptr;
     // TRACE("recv: [%s]", data);
     msg = new (std::nothrow) CTextMessage((char *) data, length);

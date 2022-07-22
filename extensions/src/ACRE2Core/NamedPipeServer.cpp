@@ -4,6 +4,7 @@
 #include "Log.h"
 #include "Engine.h"
 
+#include <Tracy.hpp>
 
     
 
@@ -24,6 +25,8 @@ CNamedPipeServer::~CNamedPipeServer( void ) {
 }
 
 acre::Result CNamedPipeServer::initialize() {
+    ZoneScoped;
+
     HANDLE writeHandle, readHandle;
 
     SECURITY_DESCRIPTOR sd;
@@ -105,6 +108,8 @@ acre::Result CNamedPipeServer::initialize() {
 }
 
 acre::Result CNamedPipeServer::shutdown(void) {
+    ZoneScoped;
+
     HANDLE hPipe;
 
     this->setShuttingDown(true);

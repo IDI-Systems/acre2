@@ -12,10 +12,14 @@
 #include "Log.h"
 #include <list>
 
+#include <Tracy.hpp>
+
 //
 // Entrant worker, weee
 //
 acre::Result CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
+    ZoneScoped;
+
     if (data->function != nullptr) {
         data->function->call(data->server, data->message);
     }
@@ -29,6 +33,8 @@ acre::Result CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
 // Proc functions
 // 
 acre::Result CRpcEngine::addProcedure(IRpcFunction *const cmd) {
+    ZoneScoped;
+
     LOCK(this);
     this->m_FunctionList.insert(std::pair<std::string, IRpcFunction *>(std::string(cmd->getName()), cmd));
     UNLOCK(this);
@@ -36,6 +42,8 @@ acre::Result CRpcEngine::addProcedure(IRpcFunction *const cmd) {
     return acre::Result::ok;
 }
 acre::Result CRpcEngine::removeProcedure(IRpcFunction *const cmd) {
+    ZoneScoped;
+
     LOCK(this);
     this->m_FunctionList.erase(cmd->getName());
     UNLOCK(this);
@@ -43,6 +51,8 @@ acre::Result CRpcEngine::removeProcedure(IRpcFunction *const cmd) {
     return acre::Result::ok;
 }
 acre::Result CRpcEngine::removeProcedure(char *const cmd) {
+    ZoneScoped;
+
     LOCK(this);
     this->m_FunctionList.erase(cmd);
     UNLOCK(this);
@@ -50,6 +60,8 @@ acre::Result CRpcEngine::removeProcedure(char *const cmd) {
     return acre::Result::ok;
 }
 IRpcFunction *CRpcEngine::findProcedure(char *const cmd) {
+    ZoneScoped;
+
     
     if (this->getShuttingDown()) {
         return nullptr;
@@ -62,11 +74,15 @@ IRpcFunction *CRpcEngine::findProcedure(char *const cmd) {
 
     return nullptr;
 }
+
 acre::Result CRpcEngine::runProcedure(IServer *const serverInstance, IMessage *msg) {
+    ZoneScoped;
+
     return this->runProcedure(serverInstance, msg, TRUE);
 }
 
 acre::Result CRpcEngine::runProcedure(IServer *const serverInstance, IMessage *msg, const bool entrant) {
+    ZoneScoped;
     
     if (msg == nullptr) {
         return acre::Result::error;
