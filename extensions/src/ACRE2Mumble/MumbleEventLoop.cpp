@@ -19,7 +19,7 @@ namespace acre {
         }
 
         {
-            std::lock_guard<std::mutex> guard(m_lock);
+            std::lock_guard<LockableBase(std::mutex)> guard(m_lock);
             m_keepRunning = true;
         }
 
@@ -30,7 +30,7 @@ namespace acre {
         ZoneScoped;
 
         {
-            std::lock_guard<std::mutex> guard(m_lock);
+            std::lock_guard<LockableBase(std::mutex)> guard(m_lock);
             m_keepRunning = false;
             m_drain       = true;
 
@@ -46,7 +46,7 @@ namespace acre {
     void MumbleEventLoop::queue(const std::function<void()>& callable) {
         ZoneScoped;
 
-        std::lock_guard<std::mutex> guard(m_lock);
+        std::lock_guard<LockableBase(std::mutex)> guard(m_lock);
 
         m_queuedFunctions.push_back(callable);
 
@@ -56,7 +56,7 @@ namespace acre {
     void MumbleEventLoop::queue(std::function<void()>&& callable) {
         ZoneScoped;
 
-        std::unique_lock<std::mutex> guard(m_lock);
+        std::unique_lock<LockableBase(std::mutex)> guard(m_lock);
 
         m_queuedFunctions.push_back(std::move(callable));
 
@@ -67,7 +67,7 @@ namespace acre {
         ZoneScoped;
         tracy::SetThreadName("ACRE2-Mumble-EventLoop");
 
-        std::unique_lock<std::mutex> guard(m_lock);
+        std::unique_lock<LockableBase(std::mutex)> guard(m_lock);
 
         while (m_keepRunning || m_drain) {
             {
