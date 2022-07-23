@@ -64,6 +64,7 @@ namespace acre {
     }
 
     void MumbleEventLoop::run() {
+        ZoneScoped;
         tracy::SetThreadName("ACRE2-Mumble-EventLoop");
 
         std::unique_lock<std::mutex> guard(m_lock);
