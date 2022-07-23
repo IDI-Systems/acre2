@@ -18,6 +18,8 @@ endif()
 
 set(TRACY_ENABLE ${USE_TRACY} CACHE BOOL "" FORCE)
 set(TRACY_ON_DEMAND OFF CACHE BOOL "" FORCE)
+# We require the delayed init mode to prevent freezes on unloading/shutdown of the (Mumble) plugin
+set(TRACY_DELAYED_INIT ON CACHE BOOL "" FORCE)
 add_subdirectory("tracy")
 
 target_link_libraries( ${ACRE_NAME} Tracy::TracyClient)
