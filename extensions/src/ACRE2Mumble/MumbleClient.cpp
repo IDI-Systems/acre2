@@ -244,7 +244,13 @@ std::string CMumbleClient::getUniqueId() {
 }
 
 std::string CMumbleClient::getConfigFilePath(void) {
-    std::string tempFolder = ".\\acre";
+    // For the time being Mumble doesn't expose a config file path via its API, so we just fall back
+    // to using a sub-directory in Arma 3's AppData directory
+    std::string tempFolder = "acre";
+    std::array<char, MAX_PATH> appDataPath{""};
+    if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, appDataPath.data()))) {
+        tempFolder = std::string(appDataPath.data()) + "\\Arma 3\\" + tempFolder;
+    }
     if (!PathFileExistsA(tempFolder.c_str()) && !CreateDirectoryA(tempFolder.c_str(), nullptr)) {
         LOG("ERROR: UNABLE TO CREATE TEMP DIR");
     }
