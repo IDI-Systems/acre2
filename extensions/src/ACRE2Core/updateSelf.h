@@ -12,7 +12,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(updateSelf) {
+    ZoneScoped;
 
     LOCK(CEngine::getInstance()->getSelf());
 

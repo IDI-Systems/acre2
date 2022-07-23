@@ -11,7 +11,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(setSoundSystemMasterOverride) {
+    ZoneScoped;
 
     const bool status = vMessage->getParameterAsInt(0) == 1;
 

@@ -11,7 +11,11 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(loadSound) {
+    ZoneScoped;
+
     const std::string id = std::string((char *)vMessage->getParameter(0));
     const int32_t currentCount = vMessage->getParameterAsInt(1);
     const int32_t totalCount = vMessage->getParameterAsInt(2);

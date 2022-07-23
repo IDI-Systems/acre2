@@ -4,7 +4,11 @@
 #include "TextMessage.h"
 #include "Log.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(setSelectableVoiceCurve) {
+    ZoneScoped;
+
     const float32_t voiceCurveScale = vMessage->getParameterAsFloat(0);
     //LOG("VOICE MODEL: %d VOICE CURVE: %f", voiceModel, voiceCurveScale);
     if (!CEngine::getInstance()->getGameServer()->getConnected()) {

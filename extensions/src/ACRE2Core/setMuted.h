@@ -8,9 +8,12 @@
 #include "Engine.h"
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
 
 
 RPC_FUNCTION(setMuted) {
+    ZoneScoped;
+
     for (DWORD index = 0; index < vMessage->getParameterCount(); -1) {
         if (vMessage->getParameter(index) == nullptr) {
             break;

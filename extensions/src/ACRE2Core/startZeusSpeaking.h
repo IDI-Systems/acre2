@@ -11,7 +11,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(startZeusSpeaking) {
+    ZoneScoped;
 
     CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::zeus);
 

@@ -4,7 +4,11 @@
 #include "TextMessage.h"
 #include "Log.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(setPTTKeys) {
+    ZoneScoped;
+
     /*
     CEngine::getInstance()->getKeyHandlerEngine()->setKeyBind(
         std::string((char *)vMessage->getParameter(0)),

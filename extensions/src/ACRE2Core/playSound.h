@@ -11,7 +11,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(playLoadedSound) {
+    ZoneScoped;
 
     const std::string id = std::string((char *)vMessage->getParameter(0));
     const acre::vec3_fp32_t position(vMessage->getParameterAsFloat(1), vMessage->getParameterAsFloat(3), vMessage->getParameterAsFloat(2));

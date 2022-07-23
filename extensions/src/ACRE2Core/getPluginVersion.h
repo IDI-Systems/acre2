@@ -3,7 +3,10 @@
 #include "IServer.h"
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(getPluginVersion) {
+    ZoneScoped;
 
     vServer->sendMessage(CTextMessage::formatNewMessage("handleGetPluginVersion", "%s", ACRE_VERSION));
 

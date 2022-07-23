@@ -11,7 +11,11 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(ext_handleGetClientID) {
+    ZoneScoped;
+
     CEngine::getInstance()->getGameServer()->sendMessage(
         CTextMessage::formatNewMessage("handleGetClientID",
             "%d,%s,",

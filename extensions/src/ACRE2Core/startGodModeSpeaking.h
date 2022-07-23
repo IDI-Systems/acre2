@@ -11,7 +11,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(startGodModeSpeaking) {
+    ZoneScoped;
 
     CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::god);
 

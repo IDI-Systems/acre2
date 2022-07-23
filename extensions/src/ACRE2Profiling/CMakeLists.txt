@@ -17,7 +17,7 @@ if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/tracy/CMakeLists.txt")
 endif()
 
 set(TRACY_ENABLE ${USE_TRACY} CACHE BOOL "" FORCE)
-set(TRACY_ON_DEMAND ON CACHE BOOL "" FORCE)
+set(TRACY_ON_DEMAND OFF CACHE BOOL "" FORCE)
 add_subdirectory("tracy")
 
 target_link_libraries( ${ACRE_NAME} Tracy::TracyClient)

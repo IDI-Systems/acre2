@@ -147,20 +147,26 @@ acre::Result CNamedPipeServer::shutdown(void) {
 }
 
 acre::Result CNamedPipeServer::sendLoop() {
+    ZoneScoped;
+    tracy::SetThreadName("NamedPipeServer::sendLoop");
+
     while (!this->getShuttingDown()) {
-        
-        do {
-            ConnectNamedPipe(this->m_PipeHandleWrite, NULL);
-            if (GetLastError() == ERROR_PIPE_CONNECTED) {    
-                LOG("Client write connected");
-                CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
-                this->setConnectedWrite(true);
-                break;
-            } else {
-                this->setConnectedWrite(false);
-                Sleep(1);
-            }
-        } while (!this->getConnectedWrite() && !this->getShuttingDown());
+        {
+            ZoneScopedN("CNamedPipeServer::sendLoop - connecting write pipe");
+
+            do {
+                ConnectNamedPipe(this->m_PipeHandleWrite, NULL);
+                if (GetLastError() == ERROR_PIPE_CONNECTED) {
+                    LOG("Client write connected");
+                    CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
+                    this->setConnectedWrite(true);
+                    break;
+                } else {
+                    this->setConnectedWrite(false);
+                    Sleep(1);
+                }
+            } while (!this->getConnectedWrite() && !this->getShuttingDown());
+        }
 
         clock_t lastTick = clock() / CLOCKS_PER_SEC;
         while (this->getConnectedWrite()) {
@@ -177,6 +183,8 @@ acre::Result CNamedPipeServer::sendLoop() {
             IMessage *msg = nullptr;
             if (this->m_sendQueue.try_pop(msg)) {
                 if (msg != nullptr) {
+                    ZoneScopedN("CNamedPipeServer::sendLoop - sending message");
+
                     lastTick = clock() / CLOCKS_PER_SEC;
                     const DWORD size = (DWORD)strlen((char *)msg->getData()) + 1;
                     if (size > 3) {
@@ -215,6 +223,9 @@ acre::Result CNamedPipeServer::sendLoop() {
 }
 
 acre::Result CNamedPipeServer::readLoop() {
+    ZoneScoped;
+    tracy::SetThreadName("NamedPipeServer::readLoop");
+
     DWORD cbRead;
 
     char *mBuffer = (char *)LocalAlloc(LMEM_FIXED, BUFSIZE);
@@ -225,20 +236,25 @@ acre::Result CNamedPipeServer::readLoop() {
     this->validTSServers.insert(std::string("enter a ts3 server id here")); 
     */
     while (!this->getShuttingDown()) {
-        //this->checkServer();
-        bool ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
-        if (GetLastError() == ERROR_PIPE_CONNECTED) {    
-            LOG("Client read connected");
-            CEngine::getInstance()->getClient()->updateShouldSwitchChannel(false);
-            CEngine::getInstance()->getClient()->unMuteAll();
-            CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
-            this->setConnectedRead(true);
-        } else {
-            this->setConnectedRead(false);
-            Sleep(1);
+        bool ret = false;
+        {
+            ZoneScopedN("CNamedPipeServer::readLoop - connecting read pipe");
+            // this->checkServer();
+            ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
+            if (GetLastError() == ERROR_PIPE_CONNECTED) {
+                LOG("Client read connected");
+                CEngine::getInstance()->getClient()->updateShouldSwitchChannel(false);
+                CEngine::getInstance()->getClient()->unMuteAll();
+                CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
+                this->setConnectedRead(true);
+            } else {
+                this->setConnectedRead(false);
+                Sleep(1);
 
-            continue;
+                continue;
+            }
         }
+
         clock_t lastTick = clock() / CLOCKS_PER_SEC;
         while (this->getConnectedRead()) {
             //this->checkServer();
@@ -261,29 +277,32 @@ acre::Result CNamedPipeServer::readLoop() {
             }
 
             ret = false;
-            do {
-                ret = ReadFile(this->m_PipeHandleRead, mBuffer, BUFSIZE - 1, &cbRead, NULL); // -1 for null-byte below
-                if (!ret && GetLastError() != ERROR_MORE_DATA) {
-                    break;
-                } else if (!ret && GetLastError() == ERROR_BROKEN_PIPE) {
-                    this->setConnectedRead(false);
-                    break;
-                }
-                // handle the packet and run it
-                mBuffer[cbRead] = 0x00;
-                //LOG("READ: %s", (char *)mBuffer);
-                IMessage *const msg = new CTextMessage((char *)mBuffer, cbRead);
-                //TRACE("got and parsed message [%s]", msg->getData());
-                if (msg != nullptr && msg->getProcedureName()) {
+            {
+                ZoneScopedN("CNamedPipeServer::readLoop - receiving messages");
 
-                    // Do not free msg, this is deleted inside runProcedure()
-                    CEngine::getInstance()->getRpcEngine()->runProcedure(this, msg);
+                do {
+                    ret = ReadFile(this->m_PipeHandleRead, mBuffer, BUFSIZE - 1, &cbRead, NULL); // -1 for null-byte below
+                    if (!ret && GetLastError() != ERROR_MORE_DATA) {
+                        break;
+                    } else if (!ret && GetLastError() == ERROR_BROKEN_PIPE) {
+                        this->setConnectedRead(false);
+                        break;
+                    }
+                    // handle the packet and run it
+                    mBuffer[cbRead] = 0x00;
+                    // LOG("READ: %s", (char *)mBuffer);
+                    IMessage *const msg = new CTextMessage((char *) mBuffer, cbRead);
+                    // TRACE("got and parsed message [%s]", msg->getData());
+                    if (msg != nullptr && msg->getProcedureName()) {
+                        // Do not free msg, this is deleted inside runProcedure()
+                        CEngine::getInstance()->getRpcEngine()->runProcedure(this, msg);
 
-                    lastTick = clock() / CLOCKS_PER_SEC;
-                    //TRACE("tick [%d], [%s]",lastTick, msg->getData());
-                }
-                // wait 1ms for new msg so we dont hog cpu cycles
-            } while (!ret);
+                        lastTick = clock() / CLOCKS_PER_SEC;
+                        // TRACE("tick [%d], [%s]",lastTick, msg->getData());
+                    }
+                    // wait 1ms for new msg so we dont hog cpu cycles
+                } while (!ret);
+            }
             //ret = ConnectNamedPipe(this->getPipeHandle(), NULL);    
             Sleep(1);
         }
