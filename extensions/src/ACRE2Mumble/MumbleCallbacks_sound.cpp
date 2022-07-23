@@ -19,8 +19,6 @@
 using LIMITER = std::numeric_limits<int16_t>;
 
 bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_t channelCount, uint32_t sampleRate, bool isSpeech, mumble_userid_t userID) {
-    ZoneScoped;
-
     (void) sampleRate;
 
     if (CEngine::getInstance()->getSoundSystemOverride()) {
@@ -34,6 +32,8 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
     if (!CEngine::getInstance()->getGameServer()->getConnected()) {
         return false;
     }
+
+    ZoneScoped;
 
     // Make this faster
     const std::uint32_t mixdownSampleLength = sampleCount;
@@ -108,8 +108,6 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
 }
 
 bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uint16_t channelCount, uint32_t sampleRate) {
-    ZoneScoped;
-
     (void) sampleRate;
 
     if (CEngine::getInstance()->getSoundSystemOverride()) {
@@ -123,6 +121,8 @@ bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uin
     if (!CEngine::getInstance()->getGameServer()->getConnected()) {
         return false;
     }
+
+    ZoneScoped;
 
     uint32_t speakerMask = SPEAKER_STEREO;
 
