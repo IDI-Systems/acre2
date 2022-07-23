@@ -19,6 +19,7 @@
 //
 acre::Result CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
     ZoneScoped;
+    tracy::SetThreadName("RPCEngine");
 
     if (data->function != nullptr) {
         data->function->call(data->server, data->message);

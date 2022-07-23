@@ -108,6 +108,8 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
 }
 
 bool mumble_onAudioOutputAboutToPlay(float *outputPCM, uint32_t sampleCount, uint16_t channelCount, uint32_t sampleRate) {
+    tracy::SetThreadName("Mumble audio output thread");
+
     (void) sampleRate;
 
     if (CEngine::getInstance()->getSoundSystemOverride()) {
