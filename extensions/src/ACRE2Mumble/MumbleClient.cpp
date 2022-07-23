@@ -60,7 +60,7 @@ acre::Result CMumbleClient::stop() {
         }
         this->setState(acre::State::stopped);
 
-        mumAPI.log(pluginID, "stopped");
+        API_CALL(log, pluginID, "stopped");
     }
 
     return acre::Result::ok;
@@ -82,8 +82,8 @@ acre::Result CMumbleClient::start(const acre::id_t id_) {
     this->setState(acre::State::running);
     this->setIsX3DInitialized(false);
 
-    mumAPI.log(pluginID, "Started");
-    mumAPI.log(pluginID, ACRE_VERSION_METADATA);
+    API_CALL(log, pluginID, "Started");
+    API_CALL(log, pluginID, ACRE_VERSION_METADATA);
 
     return acre::Result::ok;
 }
@@ -92,7 +92,7 @@ bool CMumbleClient::getVAD() {
     ZoneScoped;
 
     mumble_transmission_mode_t transmitMode;
-    const mumble_error_t err = mumAPI.getLocalUserTransmissionMode(pluginID, &transmitMode);
+    const mumble_error_t err = API_CALL(getLocalUserTransmissionMode, pluginID, &transmitMode);
     if (err != MUMBLE_STATUS_OK) {
         return false;
     }
@@ -273,7 +273,7 @@ std::string CMumbleClient::getTempFilePath(void) {
 acre::Result CMumbleClient::microphoneOpen(bool status_) {
     ZoneScoped;
 
-    const mumble_error_t res = mumAPI.requestMicrophoneActivationOvewrite(pluginID, status_);
+    const mumble_error_t res = API_CALL(requestMicrophoneActivationOvewrite, pluginID, status_);
     if (res != MUMBLE_STATUS_OK) {
         if (status_) {
             LOG("Error toggling PTT Open: %s (%d)\n", mumble_errorMessage(res), res);
@@ -302,10 +302,10 @@ acre::Result CMumbleClient::moveToServerChannel() {
         mumble_userid_t clientId;
         std::vector<std::string> details = getChannelDetails();
 
-        if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == MUMBLE_STATUS_OK) {
+        if (API_CALL(getLocalUserID, pluginID, activeConnection, &clientId) == MUMBLE_STATUS_OK) {
             mumble_channelid_t currentChannelId = invalid_mumble_channel;
 
-            if ((mumAPI.getChannelOfUser(pluginID, activeConnection, clientId, &currentChannelId) == MUMBLE_STATUS_OK) &&
+            if ((API_CALL(getChannelOfUser, pluginID, activeConnection, clientId, &currentChannelId) == MUMBLE_STATUS_OK) &&
                 (getPreviousChannel() == invalid_mumble_channel)) {
                 setPreviousChannel(currentChannelId);
             }
@@ -317,7 +317,7 @@ acre::Result CMumbleClient::moveToServerChannel() {
                     password = details.at(1);
                 }
 
-                mumAPI.requestUserMove(pluginID, activeConnection, clientId, channelId, password.c_str());
+                API_CALL(requestUserMove, pluginID, activeConnection, clientId, channelId, password.c_str());
             }
         }
     }
@@ -333,13 +333,13 @@ acre::Result CMumbleClient::moveToPreviousChannel() {
     if (!CAcreSettings::getInstance()->getDisableChannelSwitch()) {
         mumble_userid_t clientId = -1;
 
-        if (mumAPI.getLocalUserID(pluginID, activeConnection, &clientId) == MUMBLE_STATUS_OK) {
+        if (API_CALL(getLocalUserID, pluginID, activeConnection, &clientId) == MUMBLE_STATUS_OK) {
             mumble_channelid_t currentChannelId = invalid_mumble_channel;
 
-            if (mumAPI.getChannelOfUser(pluginID, activeConnection, clientId, &currentChannelId) == MUMBLE_STATUS_OK) {
+            if (API_CALL(getChannelOfUser, pluginID, activeConnection, clientId, &currentChannelId) == MUMBLE_STATUS_OK) {
                 const mumble_channelid_t channelId = static_cast<mumble_channelid_t>(getPreviousChannel());
                 if (channelId != invalid_mumble_channel && channelId != currentChannelId) {
-                    mumAPI.requestUserMove(pluginID, activeConnection, clientId, channelId, "");
+                    API_CALL(requestUserMove, pluginID, activeConnection, clientId, channelId, "");
                 }
             }
         }
@@ -356,7 +356,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
     mumble_channelid_t *channelList = nullptr;
     std::size_t channelCount        = 0U;
 
-    if (mumAPI.getAllChannels(pluginID, activeConnection, &channelList, &channelCount) == MUMBLE_STATUS_OK) {
+    if (API_CALL(getAllChannels, pluginID, activeConnection, &channelList, &channelCount) == MUMBLE_STATUS_OK) {
         mumble_channelid_t channelId        = invalid_mumble_channel;
         mumble_channelid_t defaultChannelId = invalid_mumble_channel;
         std::map<mumble_channelid_t, std::string> channelMap;
@@ -369,10 +369,10 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             channelId         = *channelList + idx;
             const char *channelName = nullptr;
 
-            if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == MUMBLE_STATUS_OK) {
+            if (API_CALL(getChannelName, pluginID, activeConnection, channelId, &channelName) == MUMBLE_STATUS_OK) {
                 // Copy the channel name into a std::string and then get rid of the Mumble resource again
                 std::string channelNameString(channelName);
-                mumAPI.freeMemory(pluginID, (void *) channelName);
+                API_CALL(freeMemory, pluginID, (void *) channelName);
 
                 if (channelNameString.find(default_mumble_channel) != -1 || (!details_.at(0).empty() && channelNameString == name)) {
                     if (channelNameString == default_mumble_channel) {
@@ -383,7 +383,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             }
         }
 
-        mumAPI.freeMemory(pluginID, channelList);
+        API_CALL(freeMemory, pluginID, channelList);
 
         mumble_channelid_t bestChannelId = invalid_mumble_channel;
         int32_t bestMatches              = 0;

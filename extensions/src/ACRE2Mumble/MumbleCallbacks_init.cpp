@@ -35,7 +35,7 @@ mumble_error_t mumble_init(mumble_plugin_id_t id) {
 
     acre::MumbleEventLoop::getInstance().start();
 
-    if (mumAPI.getActiveServerConnection(pluginID, &activeConnection) != MUMBLE_STATUS_OK) {
+    if (API_CALL(getActiveServerConnection, pluginID, &activeConnection) != MUMBLE_STATUS_OK) {
         activeConnection = -1;
     }
 
@@ -68,7 +68,7 @@ void mumble_onServerSynchronized(mumble_connection_t connection) {
 
         // set ID on every new connection
         acre::id_t clientId = 0;
-        mumAPI.getLocalUserID(pluginID, activeConnection, (mumble_userid_t*)&clientId);
+        API_CALL(getLocalUserID, pluginID, activeConnection, (mumble_userid_t*)&clientId);
         CEngine::getInstance()->getSelf()->setId(clientId);
         CEngine::getInstance()->getExternalServer()->setId(clientId);
 
