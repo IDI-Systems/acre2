@@ -11,7 +11,7 @@
 #define API_CALL(function, ...)             mumAPI.function(__VA_ARGS__)
 #else
 #define API_CALL(function, ...)                               \
-    [=]() mutable {                                           \
+    [&]() mutable {                                           \
         ZoneScopedN("Mumble API function \"" #function "\""); \
         return mumAPI.function(__VA_ARGS__);                  \
     }()
