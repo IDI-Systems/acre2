@@ -15,7 +15,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(updateSelf) {
-    ZoneScoped;
+    ZoneScopedN("RPC - updateSelf");
 
     LOCK(CEngine::getInstance()->getSelf());
 

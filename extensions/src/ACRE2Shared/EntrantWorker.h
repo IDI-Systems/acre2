@@ -47,13 +47,9 @@ public:
     }
 
     acre::Result exWorkerThread() {
-        ZoneScoped;
-
         while (!getShuttingDown()) {
             LOCK(this);
             if (!m_processQueue.empty()) {
-                ZoneScopedN("exWorkerThread - processing queue item");
-
                 const T item = m_processQueue.front();
                 m_processQueue.pop();
                 exProcessItem(item);

@@ -7,7 +7,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(setSelectableVoiceCurve) {
-    ZoneScoped;
+    ZoneScopedN("RPC - setSelectableVoiceCurve");
 
     const float32_t voiceCurveScale = vMessage->getParameterAsFloat(0);
     //LOG("VOICE MODEL: %d VOICE CURVE: %f", voiceModel, voiceCurveScale);

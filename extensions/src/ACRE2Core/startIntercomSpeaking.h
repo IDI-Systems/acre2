@@ -14,7 +14,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(startIntercomSpeaking) {
-    ZoneScoped;
+    ZoneScopedN("RPC - startIntercomSpeaking");
 
     CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::intercom);
 

@@ -433,8 +433,6 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
 }
 
 acre::Result CMumbleClient::updateChannelDetails(std::vector<std::string> details_) {
-    ZoneScoped;
-
     setChannelDetails(details_);
     if (!details_.empty()) {
         updateShouldSwitchChannel(true);
@@ -443,14 +441,10 @@ acre::Result CMumbleClient::updateChannelDetails(std::vector<std::string> detail
 }
 
 acre::Result CMumbleClient::updateShouldSwitchChannel(const bool state_) {
-    ZoneScoped;
-
     setShouldSwitchChannel(state_);
     return acre::Result::ok;
 }
 
 bool CMumbleClient::shouldSwitchChannel() {
-    ZoneScoped;
-
     return getShouldSwitchChannel();
 }

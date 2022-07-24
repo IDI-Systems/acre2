@@ -8,7 +8,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(ext_reset) {
-    ZoneScoped;
+    ZoneScopedN("RPC - ext_reset");
 
     const acre::id_t id = vMessage->getParameterAsInt(0);
 

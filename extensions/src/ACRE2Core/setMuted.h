@@ -12,7 +12,7 @@
 
 
 RPC_FUNCTION(setMuted) {
-    ZoneScoped;
+    ZoneScopedN("RPC - setMuted");
 
     for (DWORD index = 0; index < vMessage->getParameterCount(); -1) {
         if (vMessage->getParameter(index) == nullptr) {

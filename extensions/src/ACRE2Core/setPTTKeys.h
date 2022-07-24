@@ -7,7 +7,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(setPTTKeys) {
-    ZoneScoped;
+    ZoneScopedN("RPC - setPTTKeys");
 
     /*
     CEngine::getInstance()->getKeyHandlerEngine()->setKeyBind(

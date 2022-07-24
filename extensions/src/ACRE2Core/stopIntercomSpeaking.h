@@ -14,7 +14,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(stopIntercomSpeaking) {
-    ZoneScoped;
+    ZoneScopedN("RPC - stopIntercomSpeaking");
 
     CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::intercom);
 

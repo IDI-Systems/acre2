@@ -6,7 +6,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(getPluginVersion) {
-    ZoneScoped;
+    ZoneScopedN("RPC - getPluginVersion");
 
     vServer->sendMessage(CTextMessage::formatNewMessage("handleGetPluginVersion", "%s", ACRE_VERSION));
 

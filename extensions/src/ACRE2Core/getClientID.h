@@ -15,7 +15,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(getClientID) {
-    ZoneScoped;
+    ZoneScopedN("RPC - getClientID");
 
     TRACE("enter");
 

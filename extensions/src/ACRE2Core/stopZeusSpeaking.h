@@ -14,7 +14,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(stopZeusSpeaking) {
-    ZoneScoped;
+    ZoneScopedN("RPC - stopZeuSpeaking");
 
     CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::zeus);
 

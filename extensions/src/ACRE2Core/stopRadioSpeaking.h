@@ -14,7 +14,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(stopRadioSpeaking) {
-    ZoneScoped;
+    ZoneScopedN("RPC - stopRadioSpeaking");
 
     CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::radio);
 

@@ -10,7 +10,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(setChannelDetails) {
-    ZoneScoped;
+    ZoneScopedN("RPC - setChannelDetails");
 
     const  std::vector<std::string> details = {
         std::string((char *)vMessage->getParameter(0)),

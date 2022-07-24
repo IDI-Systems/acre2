@@ -15,7 +15,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(updateSpeakingData) {
-    ZoneScoped;
+    ZoneScopedN("RPC - updateSpeakingData");
 
     CPlayer *speaker = nullptr;
 

@@ -14,7 +14,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(startGodModeSpeaking) {
-    ZoneScoped;
+    ZoneScopedN("RPC - startGodModeSpeaking");
 
     CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::god);
 

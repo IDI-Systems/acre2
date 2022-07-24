@@ -16,7 +16,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(startRadioSpeaking) {
-    ZoneScoped;
+    ZoneScopedN("RPC - startRadioSpeaking");
 
     const std::string radioId = std::string((char *)vMessage->getParameter(0));
 

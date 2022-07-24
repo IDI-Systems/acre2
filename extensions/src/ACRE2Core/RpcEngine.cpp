@@ -14,18 +14,21 @@
 
 #include <Tracy.hpp>
 
-//
+const char *frameName = "RPCEngine";
+  //
 // Entrant worker, weee
 //
 acre::Result CRpcEngine::exProcessItem(ACRE_RPCDATA *data) {
-    ZoneScoped;
     tracy::SetThreadName("RPCEngine");
+    FrameMarkStart(frameName);
 
     if (data->function != nullptr) {
         data->function->call(data->server, data->message);
     }
     delete data->message;
     free(data);
+
+    FrameMarkEnd(frameName);
 
     return acre::Result::ok;
 }

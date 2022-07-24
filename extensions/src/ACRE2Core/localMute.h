@@ -14,7 +14,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(localMute) {
-    ZoneScoped;
+    ZoneScopedN("RPC - localMute");
 
     const bool status = vMessage->getParameterAsInt(0) == 1;
 

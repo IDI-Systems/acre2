@@ -14,7 +14,7 @@
 #include <Tracy.hpp>
 
 RPC_FUNCTION(stopGodModeSpeaking) {
-    ZoneScoped;
+    ZoneScopedN("RPC - stopGodModeSpeaking");
 
     CEngine::getInstance()->getClient()->localStopSpeaking(acre::Speaking::god);
 
