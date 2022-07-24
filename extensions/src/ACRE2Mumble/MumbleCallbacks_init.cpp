@@ -67,8 +67,12 @@ void mumble_onServerSynchronized(mumble_connection_t connection) {
         activeConnection = connection;
 
         // set ID on every new connection
-        acre::id_t clientId = 0;
-        API_CALL(getLocalUserID, pluginID, activeConnection, (mumble_userid_t*)&clientId);
+        acre::id_t clientId = 5;
+        mumble_error_t retCode = API_CALL(getLocalUserID, pluginID, activeConnection, (mumble_userid_t*)&clientId);
+        if (retCode != MUMBLE_STATUS_OK) {
+            LOG("ERROR, FAILED TO FETCH LOCAL USER'S ID: %s (%d)", mumble_errorMessage(retCode), retCode);
+        }
+        TRACE("Local user's ID is %d", clientId);
         CEngine::getInstance()->getSelf()->setId(clientId);
         CEngine::getInstance()->getExternalServer()->setId(clientId);
 
