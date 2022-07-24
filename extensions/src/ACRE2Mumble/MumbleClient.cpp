@@ -307,6 +307,7 @@ acre::Result CMumbleClient::moveToServerChannel() {
 
             if ((API_CALL(getChannelOfUser, pluginID, activeConnection, clientId, &currentChannelId) == MUMBLE_STATUS_OK) &&
                 (getPreviousChannel() == invalid_mumble_channel)) {
+                TRACE("Setting previous channel ID to %d", currentChannelId);
                 setPreviousChannel(currentChannelId);
             }
 
@@ -317,8 +318,11 @@ acre::Result CMumbleClient::moveToServerChannel() {
                     password = details.at(1);
                 }
 
+                TRACE("Requesting local user to be moved to channel %d", channelId);
                 API_CALL(requestUserMove, pluginID, activeConnection, clientId, channelId, password.c_str());
             }
+        } else {
+            LOG("ERROR, FAILED TO OBTAIN LOCAL USER'S ID");
         }
     }
     setShouldSwitchChannel(false);
@@ -364,6 +368,8 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
         if (!details_.at(0).empty()) {
             name = details_.at(0);
         }
+
+        TRACE("Searching for channel \"%s\"", name.c_str());
 
         for (std::int32_t idx = 0U; idx < channelCount; idx++) {
             channelId         = *channelList + idx;
@@ -419,6 +425,8 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
             }
         }
         return bestChannelId;
+    } else {
+        LOG("ERROR, FAILED TO GET CHANNEL LIST");
     }
 
     return 0;
