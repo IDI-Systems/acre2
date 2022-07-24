@@ -58,6 +58,9 @@ if(MSVC)
     set(GLOBAL_SOURCES ${GLOBAL_RC})
 endif()
 
+
+add_subdirectory(src/ACRE2Profiling)
+
 include_directories(src/ACRE2Shared)
 include_directories(src/ACRE2Core)
 
@@ -67,8 +70,6 @@ add_subdirectory(src/ACRE2Core)
 
 add_subdirectory(src/ACRE2Arma)
 add_subdirectory(src/ACRE2Steam)
-
-add_subdirectory(src/ACRE2Profiling)
 
 add_subdirectory(src/ACRE2TS)
 add_subdirectory(src/ACRE2Mumble)
