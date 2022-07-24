@@ -4,7 +4,11 @@
 #include "TextMessage.h"
 #include "Log.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(setVoiceCurveModel) {
+    ZoneScopedN("RPC - setVoiceCurveModel");
+
     const acre::CurveModel voiceModel = static_cast<acre::CurveModel>(vMessage->getParameterAsInt(0));
     const float32_t voiceCurveScale = vMessage->getParameterAsFloat(1);
 

@@ -11,7 +11,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(startIntercomSpeaking) {
+    ZoneScopedN("RPC - startIntercomSpeaking");
 
     CEngine::getInstance()->getClient()->localStartSpeaking(acre::Speaking::intercom);
 

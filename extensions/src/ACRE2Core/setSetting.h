@@ -4,7 +4,11 @@
 #include "Log.h"
 #include "AcreSettings.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(setSetting) {
+    ZoneScopedN("RPC - setSetting");
+
     const std::string name = std::string((char *)vMessage->getParameter(0));
     float32_t value = vMessage->getParameterAsFloat(1);
     value = round(value * 100.0f) / 100.0f;

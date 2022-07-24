@@ -12,7 +12,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(updateSpeakingData) {
+    ZoneScopedN("RPC - updateSpeakingData");
 
     CPlayer *speaker = nullptr;
 

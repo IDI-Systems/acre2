@@ -3,9 +3,11 @@
 
 #include <mutex>
 
+#include <Tracy.hpp>
+
 class CLockable {
 private:
-    std::recursive_mutex m_lockable_mutex;
+    TracyLockable(std::recursive_mutex, m_lockable_mutex);
 public:
     void lock() {
         m_lockable_mutex.lock();

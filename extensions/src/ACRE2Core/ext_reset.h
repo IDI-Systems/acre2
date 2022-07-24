@@ -5,7 +5,11 @@
 #include "Types.h"
 #include "Engine.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(ext_reset) {
+    ZoneScopedN("RPC - ext_reset");
+
     const acre::id_t id = vMessage->getParameterAsInt(0);
 
     //

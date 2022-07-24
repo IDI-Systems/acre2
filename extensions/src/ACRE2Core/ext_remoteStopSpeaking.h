@@ -11,7 +11,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(ext_remoteStopSpeaking) {
+    ZoneScopedN("RPC - ext_remoteStopSpeaking");
 
     /*CTextMessage::formatNewMessage("ext_remoteStartSpeaking",
             "%d,%d,%s,%f,",

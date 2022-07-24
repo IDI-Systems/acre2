@@ -7,9 +7,13 @@
 #include "Engine.h"
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 volatile DWORD g_pingTime;
 
 RPC_FUNCTION(ping) {
+    ZoneScopedN("RPC - ping");
+
     g_pingTime = clock() / CLOCKS_PER_SEC;
     vServer->sendMessage(CTextMessage::formatNewMessage("pong", "%f,", g_pingTime));
     return acre::Result::ok;

@@ -7,8 +7,12 @@
 #include "compat.h"
 #include "helpers.h"
 
+#include <Tracy.hpp>
+
 #define FROM_PIPENAME "\\\\.\\pipe\\acre_comm_pipe_fromTS"
 #define TO_PIPENAME   "\\\\.\\pipe\\acre_comm_pipe_toTS"
+
+const char *mumbleThreadName = "Mumble main thread";
 
 extern MumbleAPI_v_1_0_x mumAPI;
 mumble_connection_t activeConnection = -1;
@@ -23,11 +27,15 @@ void mumble_registerAPIFunctions(void *apiStruct) {
 }
 
 mumble_error_t mumble_init(mumble_plugin_id_t id) {
+    ZoneScoped;
+
+    tracy::SetThreadName(mumbleThreadName);
+
     pluginID = id;
 
     acre::MumbleEventLoop::getInstance().start();
 
-    if (mumAPI.getActiveServerConnection(pluginID, &activeConnection) != MUMBLE_STATUS_OK) {
+    if (API_CALL(getActiveServerConnection, pluginID, &activeConnection) != MUMBLE_STATUS_OK) {
         activeConnection = -1;
     }
 
@@ -49,12 +57,22 @@ mumble_error_t mumble_init(mumble_plugin_id_t id) {
 }
 
 void mumble_onServerSynchronized(mumble_connection_t connection) {
+    ZoneScoped;
+
+    tracy::SetThreadName(mumbleThreadName);
+
     acre::MumbleEventLoop::getInstance().queue([connection]() {
+        ZoneScoped;
+
         activeConnection = connection;
 
         // set ID on every new connection
-        acre::id_t clientId = 0;
-        mumAPI.getLocalUserID(pluginID, activeConnection, (mumble_userid_t*)&clientId);
+        acre::id_t clientId = 5;
+        mumble_error_t retCode = API_CALL(getLocalUserID, pluginID, activeConnection, (mumble_userid_t*)&clientId);
+        if (retCode != MUMBLE_STATUS_OK) {
+            LOG("ERROR, FAILED TO FETCH LOCAL USER'S ID: %s (%d)", mumble_errorMessage(retCode), retCode);
+        }
+        TRACE("Local user's ID is %d", clientId);
         CEngine::getInstance()->getSelf()->setId(clientId);
         CEngine::getInstance()->getExternalServer()->setId(clientId);
 
@@ -66,7 +84,11 @@ void mumble_onServerSynchronized(mumble_connection_t connection) {
 }
 
 void mumble_onServerDisconnected(mumble_connection_t connection) {
+    ZoneScoped;
+
     acre::MumbleEventLoop::getInstance().queue([connection]() {
+        ZoneScoped;
+
         activeConnection = -1;
 
         if ((CEngine::getInstance()->getClient()->getState() != acre::State::stopped) &&
@@ -77,7 +99,11 @@ void mumble_onServerDisconnected(mumble_connection_t connection) {
 }
 
 void mumble_shutdown() {
+    ZoneScoped;
+
     acre::MumbleEventLoop::getInstance().queue([]() {
+        ZoneScoped;
+
         if ((CEngine::getInstance()->getClient()->getState() != acre::State::stopped) &&
             (CEngine::getInstance()->getClient()->getState() != acre::State::stopping)) {
             CEngine::getInstance()->getClient()->stop();

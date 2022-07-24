@@ -8,5 +8,5 @@ file(GLOB SOURCES *.h *.hpp *.c *.cpp)
 file(GLOB DSP_SOURCES DspFilters/*.h DspFilters/*.hpp DspFilters/*.c DspFilters/*.cpp)
 
 add_library( ${ACRE_NAME} STATIC ${SOURCES} ${GLOBAL_SOURCES} ${DSP_SOURCES})
-target_link_libraries( ${ACRE_NAME} ACRE2Shared)
+target_link_libraries( ${ACRE_NAME} ACRE2Shared ACRE2Profiling)
 set_target_properties(${ACRE_NAME} PROPERTIES FOLDER ACRE2)

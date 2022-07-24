@@ -6,11 +6,16 @@
 #include "Types.h"
 #include "compat.h"
 
+#include <Tracy.hpp>
 //
 // Mumble Speaking callbacks
 //
 void mumble_onUserTalkingStateChanged(mumble_connection_t connection, mumble_userid_t userID, mumble_talking_state_t status) {
+    ZoneScoped;
+
     acre::MumbleEventLoop::getInstance().queue([connection, userID, status]() {
+        ZoneScoped;
+
         TRACE("mumble_onUserTalkingStateChanged ENTER: %d", status);
         if (static_cast<acre::id_t>(userID) != CEngine::getInstance()->getSelf()->getId()) {
             return;

@@ -11,7 +11,10 @@
 
 #include "TextMessage.h"
 
+#include <Tracy.hpp>
+
 RPC_FUNCTION(localMute) {
+    ZoneScopedN("RPC - localMute");
 
     const bool status = vMessage->getParameterAsInt(0) == 1;
 

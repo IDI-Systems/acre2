@@ -1,0 +1,3 @@
+[submodule "extensions/src/ACRE2Profiling/tracy"]
+	path = extensions/src/ACRE2Profiling/tracy
+	url = https://github.com/wolfpld/tracy.git

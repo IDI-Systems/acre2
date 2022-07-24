@@ -6,6 +6,7 @@ include(${PROJECT_SOURCE_DIR}/CMakeModules/cxx_compiler_functions.cmake)
 
 option(USE_64BIT_BUILD "USE_64BIT_BUILD" OFF)
 option(USE_STATIC_LINKING "USE_STATIC_LINKING" ON)
+option(ENABLE_TRACING "ENABLE_TRACING" OFF)
 
 set(CMAKE_BUILD_TYPE "RelWithDebInfo")
 
@@ -57,6 +58,13 @@ if(MSVC)
     set(GLOBAL_RC ${CMAKE_CURRENT_BINARY_DIR}/src/ACRE2Arma/common/acre_version_win32.rc)
     set(GLOBAL_SOURCES ${GLOBAL_RC})
 endif()
+
+if(ENABLE_TRACING)
+    message(STATUS "Enabling tracing (beware of excessively verbose log output)")
+    add_compile_definitions(_TRACE=1)
+endif()
+
+add_subdirectory(src/ACRE2Profiling)
 
 include_directories(src/ACRE2Shared)
 include_directories(src/ACRE2Core)

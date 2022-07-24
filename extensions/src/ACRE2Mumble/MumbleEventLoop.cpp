@@ -1,5 +1,7 @@
 #include "MumbleEventLoop.h"
 
+#include <Tracy.hpp>
+
 namespace acre {
 
     MumbleEventLoop& MumbleEventLoop::getInstance() {
@@ -17,7 +19,7 @@ namespace acre {
         }
 
         {
-            std::lock_guard<std::mutex> guard(m_lock);
+            std::lock_guard<LockableBase(std::mutex)> guard(m_lock);
             m_keepRunning = true;
         }
 
@@ -25,9 +27,12 @@ namespace acre {
     }
 
     void MumbleEventLoop::stop() {
+        ZoneScoped;
+
         {
-            std::lock_guard<std::mutex> guard(m_lock);
+            std::lock_guard<LockableBase(std::mutex)> guard(m_lock);
             m_keepRunning = false;
+            m_drain       = true;
 
             m_waiter.notify_all();
         }
@@ -39,7 +44,9 @@ namespace acre {
     }
 
     void MumbleEventLoop::queue(const std::function<void()>& callable) {
-        std::lock_guard<std::mutex> guard(m_lock);
+        ZoneScoped;
+
+        std::lock_guard<LockableBase(std::mutex)> guard(m_lock);
 
         m_queuedFunctions.push_back(callable);
 
@@ -47,7 +54,9 @@ namespace acre {
     }
 
     void MumbleEventLoop::queue(std::function<void()>&& callable) {
-        std::unique_lock<std::mutex> guard(m_lock);
+        ZoneScoped;
+
+        std::unique_lock<LockableBase(std::mutex)> guard(m_lock);
 
         m_queuedFunctions.push_back(std::move(callable));
 
@@ -55,9 +64,16 @@ namespace acre {
     }
 
     void MumbleEventLoop::run() {
-        std::unique_lock<std::mutex> guard(m_lock);
+        tracy::SetThreadName("ACRE2-Mumble-EventLoop");
 
-        while (m_keepRunning) {
+        std::unique_lock<LockableBase(std::mutex)> guard(m_lock);
+
+        const char *frameName = "ACRE2 MumbleEventLoop";
+        while (m_keepRunning || m_drain) {
+            FrameMarkStart(frameName);
+
+            m_drain = false;
+
             // Process all pending events
             while (!m_queuedFunctions.empty()) {
                 std::function<void()> currentFunc = std::move(m_queuedFunctions.front());
@@ -72,6 +88,8 @@ namespace acre {
                 currentFunc();
                 guard.lock();
             }
+
+            FrameMarkEnd(frameName);
 
             if (!m_keepRunning) {
                 break;

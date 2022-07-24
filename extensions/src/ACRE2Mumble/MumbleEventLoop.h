@@ -6,6 +6,8 @@
 #include <condition_variable>
 #include <thread>
 
+#include <Tracy.hpp>
+
 namespace acre {
 
     /**
@@ -39,9 +41,10 @@ namespace acre {
         void queue(std::function<void()>&& callable);
 
     protected:
-        std::mutex m_lock;
-        std::condition_variable m_waiter;
+        TracyLockable(std::mutex, m_lock);
+        std::condition_variable_any m_waiter;
         bool m_keepRunning = true;
+        bool m_drain       = false;
         std::deque<std::function<void()>> m_queuedFunctions;
         std::thread m_thread;
 
