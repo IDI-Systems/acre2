@@ -15,6 +15,7 @@
  * Public: No
  */
 
-["getVOIPServerName", ""] call EFUNC(sys_rpc,callRemoteProcedure);;
-["getVOIPChannelName", ""] call EFUNC(sys_rpc,callRemoteProcedure);;
-["getVOIPUID", ""] call EFUNC(sys_rpc,callRemoteProcedure);;
+["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
+["getVOIPServerName", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+["getVOIPChannelName", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+["getVOIPUID", ""] call EFUNC(sys_rpc,callRemoteProcedure);
