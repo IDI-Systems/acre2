@@ -18,4 +18,5 @@
 ["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
 ["getVOIPServerName", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 ["getVOIPChannelName", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+["getVOIPChannelUID", ""] call EFUNC(sys_rpc,callRemoteProcedure);
 ["getVOIPUID", ""] call EFUNC(sys_rpc,callRemoteProcedure);

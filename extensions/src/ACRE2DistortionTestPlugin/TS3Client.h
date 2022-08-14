@@ -66,6 +66,7 @@ public:
     std::string getUniqueId();
     std::string getServerName(void);
     std::string getChannelName(void);
+    std::string getChannelUniqueID(void);
 
     bool getVAD();
 

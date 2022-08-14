@@ -35,6 +35,7 @@ public:
     virtual std::string getUniqueId() = 0;
     virtual std::string getServerName(void) = 0;
     virtual std::string getChannelName(void) = 0;
+    virtual std::string getChannelUniqueID(void) = 0;
 
     virtual acre::Result playSound(std::string path, acre::vec3_fp32_t position, const float32_t volume, const int32_t looping) = 0;
 

@@ -131,6 +131,7 @@ class CfgFunctions {
 
         class VOIP {
             PATHTO_FNC(getVOIPChannelName);
+            PATHTO_FNC(getVOIPChannelUID);
             PATHTO_FNC(getVOIPServerName);
             PATHTO_FNC(getVOIPUID);
         };

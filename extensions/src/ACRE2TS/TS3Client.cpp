@@ -415,6 +415,27 @@ std::string CTS3Client::getChannelName(void) {
     return channelNameString;
 }
 
+std::string CTS3Client::getChannelUniqueID(void) {
+    anyID clientId;
+    uint64_t currentChannelId = INVALID_TS3_CHANNEL;
+
+    std::string channelNameString = "";
+    char *channelName;
+
+    if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+        if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok ) {
+            if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), currentChannelId, CHANNEL_UNIQUE_IDENTIFIER, &channelName) == ERROR_ok) {
+                if (channelName){
+                    channelNameString = std::string(channelName);
+                    ts3Functions.freeMemory(channelName);
+                }
+            }
+        }
+    }
+    return channelNameString;
+}
+
+
 std::string CTS3Client::getConfigFilePath(void) {
     char tempPath[MAX_PATH - 14];
 

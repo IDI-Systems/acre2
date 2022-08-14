@@ -31,6 +31,7 @@
 #include "setTs3ChannelDetails.h"
 #include "getVOIPServerName.h"
 #include "getVOIPChannelName.h"
+#include "getVOIPChannelUID.h"
 #include "getVOIPUID.h"
 #include <shlobj.h>
 
@@ -89,6 +90,7 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
     this->getRpcEngine()->addProcedure(new setTs3ChannelDetails());
     this->getRpcEngine()->addProcedure(new getVOIPServerName());
     this->getRpcEngine()->addProcedure(new getVOIPChannelName());
+    this->getRpcEngine()->addProcedure(new getVOIPChannelUID());
     this->getRpcEngine()->addProcedure(new getVOIPUID());
 
     // Initialize the client, because it never was derp
