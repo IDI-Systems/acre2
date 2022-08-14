@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: SynixeBrett, ACRE2 Team
+ * Author: Brett Mayson, ACRE2 Team
  * Checks if a unit is within range of the player's ears.
  *
  * Arguments:

@@ -3,7 +3,7 @@
 entries:
 - title: sidebar
   product: ACRE2
-  version: v2.9.1
+  version: v2.10.0
   folders:
 
   - title:
@@ -133,7 +133,7 @@ entries:
       url: /wiki/radios/sem-70
       output: web, pdf
 
-    - title: BF 888S 
+    - title: BF 888S
       url: /wiki/radios/bf-888s
       output: web, pdf
 
