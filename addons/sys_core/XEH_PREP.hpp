@@ -34,6 +34,7 @@ PREP(hasItem);
 PREP(inRange);
 PREP(inZeus);
 PREP(isMuted);
+PREP(isPluginConnected);
 PREP(localStartSpeaking);
 PREP(localStopSpeaking);
 PREP(monitorAiPFH);
