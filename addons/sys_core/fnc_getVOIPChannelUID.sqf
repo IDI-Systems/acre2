@@ -15,4 +15,4 @@
  * Public: No
  */
 
-GVAR(ichannelUID)
+GVAR(iChannelUID)
