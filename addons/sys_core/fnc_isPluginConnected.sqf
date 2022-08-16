@@ -15,11 +15,7 @@
  * Public: No
  */
 
-GVAR(connectedPlugin) = false;
-
 // check that server started, no pipe errors, and no generally errors in io
-if (EGVAR(sys_io,pipeCode) == "1" && !EGVAR(sys_io,hasErrored) && EGVAR(sys_io,serverStarted)) then {
-    GVAR(connectedPlugin) = true;
-};
+GVAR(connectedPlugin) = (EGVAR(sys_io,pipeCode) == "1" && !EGVAR(sys_io,hasErrored) && EGVAR(sys_io,serverStarted));
 
 GVAR(connectedPlugin)
