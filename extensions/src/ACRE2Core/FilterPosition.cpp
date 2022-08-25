@@ -7,7 +7,9 @@
 #include "Log.h"
 
 #include <cmath>
+#ifdef WIN32
 #pragma comment(lib, "x3daudio.lib")
+#endif
 
 #define MAX_FALLOFF_DISTANCE    75
 #define MAX_FALLOFF_RANGE        150
@@ -69,7 +71,7 @@ acre::Result CFilterPosition::process(short* samples, int sampleCount, int chann
 
     Emitter.OrientFront = vector_speakerDirection;
     Emitter.OrientTop = this->getUpVector(vector_speakerDirection);
-    Emitter.Velocity = X3DAUDIO_VECTOR( 0, 0, 0 );
+    Emitter.Velocity = X3DAUDIO_VECTOR();
     Emitter.ChannelCount = 1;
 
     if (params->getParam("isWorld") == POSITIONAL_EFFECT_ISWORLD) {
@@ -211,12 +213,16 @@ X3DAUDIO_VECTOR CFilterPosition::getUpVector(X3DAUDIO_VECTOR inVector) {
 
 CFilterPosition::CFilterPosition(void)
 {
+#ifdef WIN32
     CoInitializeEx(NULL, NULL);
+#endif
     this->p_IsInitialized = FALSE;
 }
 
 CFilterPosition::~CFilterPosition(void) {
+#ifdef WIN32
     CoUninitialize();
+#endif
 }
 
 /*
