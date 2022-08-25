@@ -67,7 +67,6 @@ acre::Result CRpcEngine::runProcedure(IServer *const serverInstance, IMessage *m
 }
 
 acre::Result CRpcEngine::runProcedure(IServer *const serverInstance, IMessage *msg, const bool entrant) {
-    
     if (msg == nullptr) {
         return acre::Result::error;
     } else if (msg->getProcedureName() == nullptr) {

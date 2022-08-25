@@ -40,8 +40,8 @@ acre::Result CNamedPipeServer::initialize() {
     while (tryAgain) {
         writeHandle = CreateNamedPipeA(
                 this->getFromPipeName().c_str(), // name of the pipe
-                PIPE_ACCESS_DUPLEX, 
-                PIPE_TYPE_MESSAGE |        // message-type pipe 
+                PIPE_ACCESS_DUPLEX,
+                PIPE_TYPE_MESSAGE |        // message-type pipe
                 PIPE_READMODE_MESSAGE,    // send data as message
                 PIPE_UNLIMITED_INSTANCES,
                 4096, // no outbound buffer
@@ -51,7 +51,7 @@ acre::Result CNamedPipeServer::initialize() {
             );
         if (writeHandle == INVALID_HANDLE_VALUE) {
             char errstr[1024];
-            
+
             _snprintf_s(errstr, sizeof(errstr), "Conflicting game write pipe detected, could not create pipe!\nERROR CODE: %d", GetLastError());
             int ret = MessageBoxA(NULL, errstr, "ACRE Error", MB_RETRYCANCEL | MB_ICONEXCLAMATION);
             if (ret != IDRETRY) {
@@ -70,11 +70,11 @@ acre::Result CNamedPipeServer::initialize() {
     while (tryAgain) {
         readHandle = CreateNamedPipeA(
                 this->getToPipeName().c_str(), // name of the pipe
-                PIPE_ACCESS_DUPLEX, 
-                PIPE_TYPE_MESSAGE |        // message-type pipe 
+                PIPE_ACCESS_DUPLEX,
+                PIPE_TYPE_MESSAGE |        // message-type pipe
                 PIPE_NOWAIT |            // Depricated but fuck it, it is simpler.
                 PIPE_READMODE_MESSAGE,    // send data as message
-                PIPE_UNLIMITED_INSTANCES, 
+                PIPE_UNLIMITED_INSTANCES,
                 4096, // no outbound buffer
                 4096, // no inbound buffer
                 0, // use default wait time
@@ -82,7 +82,7 @@ acre::Result CNamedPipeServer::initialize() {
             );
         if (readHandle == INVALID_HANDLE_VALUE) {
             char errstr[1024];
-            
+
             _snprintf_s(errstr, sizeof(errstr), "Conflicting game read pipe detected, could not create pipe!\nERROR CODE: %d", GetLastError());
             int ret = MessageBoxA(NULL, errstr, "ACRE Error", MB_RETRYCANCEL | MB_ICONEXCLAMATION);
             if (ret != IDRETRY) {
@@ -93,7 +93,6 @@ acre::Result CNamedPipeServer::initialize() {
             tryAgain = false;
         }
     }
-
     this->setPipeHandleRead(readHandle);
     this->setPipeHandleWrite(writeHandle);
 
@@ -142,11 +141,11 @@ acre::Result CNamedPipeServer::shutdown(void) {
 }
 
 acre::Result CNamedPipeServer::sendLoop() {
+#ifdef WIN32
     while (!this->getShuttingDown()) {
-        
         do {
             ConnectNamedPipe(this->m_PipeHandleWrite, NULL);
-            if (GetLastError() == ERROR_PIPE_CONNECTED) {    
+            if (GetLastError() == ERROR_PIPE_CONNECTED) {
                 LOG("Client write connected");
                 CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
                 this->setConnectedWrite(true);
@@ -179,12 +178,12 @@ acre::Result CNamedPipeServer::sendLoop() {
                         // send it and free it
                         //LOCK(this);
                         this->lock();
-                        const bool ret = WriteFile( 
-                            this->m_PipeHandleWrite,     // pipe handle 
-                            msg->getData(),                    // message 
-                            size,                    // message length 
-                            &cbWritten,             // bytes written 
-                            NULL);                  // not overlapped 
+                        const bool ret = WriteFile(
+                            this->m_PipeHandleWrite,     // pipe handle
+                            msg->getData(),                    // message
+                            size,                    // message length
+                            &cbWritten,             // bytes written
+                            NULL);                  // not overlapped
                         this->unlock();
 
                         if (!ret) {
@@ -217,12 +216,12 @@ acre::Result CNamedPipeServer::readLoop() {
         LOG("LocalAlloc() failed: %d", GetLastError());
     }
     /*
-    this->validTSServers.insert(std::string("enter a ts3 server id here")); 
+    this->validTSServers.insert(std::string("enter a ts3 server id here"));
     */
     while (!this->getShuttingDown()) {
         //this->checkServer();
         bool ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
-        if (GetLastError() == ERROR_PIPE_CONNECTED) {    
+        if (GetLastError() == ERROR_PIPE_CONNECTED) {
             LOG("Client read connected");
             CEngine::getInstance()->getClient()->updateShouldSwitchChannel(false);
             CEngine::getInstance()->getClient()->unMuteAll();

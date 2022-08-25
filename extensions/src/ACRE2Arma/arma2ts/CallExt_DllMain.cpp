@@ -9,8 +9,8 @@
 #include <algorithm>
 #include "shlobj.h"
 #include "Shlwapi.h"
-#include <algorithm> 
-#include <functional> 
+#include <algorithm>
+#include <functional>
 #include <cctype>
 #include <locale>
 
@@ -37,7 +37,7 @@ void ClosePipe();
 
 extern "C" {
     __declspec (dllexport) void __stdcall RVExtensionVersion(char *output, int outputSize);
-    __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function); 
+    __declspec(dllexport) void __stdcall RVExtension(char *output, int outputSize, const char *function);
 };
 
 void __stdcall RVExtensionVersion(char *output, int outputSize) {
@@ -57,7 +57,7 @@ inline std::string get_cmdline() {
 inline std::string get_path(std::string filepath) {
     char drive[_MAX_DRIVE];
     char dir [_MAX_DIR];
-    
+
     _splitpath(
         filepath.c_str(),
         drive,
@@ -106,7 +106,7 @@ inline std::string find_mod_file(std::string filename) {
 
     std::string path = std::string(drive) + std::string(dir) + "\\" + filename;
     if (!PathFileExistsA(path.c_str())) {
-        // No mod path was set, it means they used the mod config. It *DOES* mean it relative to a folder in our path at least. 
+        // No mod path was set, it means they used the mod config. It *DOES* mean it relative to a folder in our path at least.
         // So, we just search all the local folders
 
         WIN32_FIND_DATAA data;
@@ -133,7 +133,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 {
     size_t id_length = 1;
     std::string functionStr = std::string(function);
-    
+
     if (functionStr.length() > 1) {
         if (isdigit(functionStr.substr(1, 1).c_str()[0])) {
             id_length = 2;
@@ -149,21 +149,21 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
     int command = atoi(id.c_str());
 
     switch(command) {
-        
+
         case PIPE_COMMAND_WRITE: {
             if (writeConnected) {
                 if (params.length() > 0) {
                     DWORD cbWritten;
                     BOOL ret;
                     //DEBUG("Writing [%s] to pipe [%d]\n", params.c_str(), hPipe);
-            
-                    // Send a message to the pipe server. 
-                    ret = WriteFile( 
-                    writeHandle,                  // pipe handle 
-                    params.c_str(),                    // message 
-                    params.length(),            // message length 
-                    &cbWritten,             // bytes written 
-                    NULL);                  // not overlapped 
+
+                    // Send a message to the pipe server.
+                    ret = WriteFile(
+                    writeHandle,                  // pipe handle
+                    params.c_str(),                    // message
+                    params.length(),            // message length
+                    &cbWritten,             // bytes written
+                    NULL);                  // not overlapped
                     if (cbWritten != params.length()) {
                         FlushFileBuffers(writeHandle);
                         //printf("FLUSHING!\n");
@@ -235,28 +235,28 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             }
             std::string fromPipeName = FROM_PIPENAME_TS;
             std::string toPipeName = TO_PIPENAME_TS;
-            
+
             if (readHandle != INVALID_HANDLE_VALUE) {
                 CloseHandle(readHandle);
                 readConnected = false;
             }
             if (!readConnected) {
                 while (tries < 1) {
-                    readHandle = CreateFileA( 
-                        fromPipeName.c_str(),        // pipe name 
-                        GENERIC_READ | GENERIC_WRITE, 
-                        0,              // no sharing 
+                    readHandle = CreateFileA(
+                        fromPipeName.c_str(),        // pipe name
+                        GENERIC_READ | GENERIC_WRITE,
+                        0,              // no sharing
                         NULL,           // default security attributes
-                        OPEN_EXISTING,  // opens existing pipe 
-                        0,              // default attributes 
-                        NULL);          // no template file 
+                        OPEN_EXISTING,  // opens existing pipe
+                        0,              // default attributes
+                        NULL);          // no template file
                     if (readHandle != INVALID_HANDLE_VALUE) {
                         DWORD dwModeRead = PIPE_NOWAIT | PIPE_READMODE_MESSAGE;
-                        ret = SetNamedPipeHandleState( 
-                                readHandle,    // pipe handle 
-                                &dwModeRead,  // new pipe mode 
-                                NULL,     // don't set maximum bytes 
-                                NULL);    // don't set maximum time 
+                        ret = SetNamedPipeHandleState(
+                                readHandle,    // pipe handle
+                                &dwModeRead,  // new pipe mode
+                                NULL,     // don't set maximum bytes
+                                NULL);    // don't set maximum time
                         if ( ! ret) {
                             //printf("READ PIPE MODE ERROR: %d\n", GetLastError());
                             sprintf(output, "Read SetNamedPipeHandleState WinErrCode: %d", GetLastError());
@@ -288,22 +288,22 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
             if (!writeConnected) {
                 tries = 0;
                 while (tries < 1) {
-                    writeHandle = CreateFileA( 
-                        toPipeName.c_str(),        // pipe name 
+                    writeHandle = CreateFileA(
+                        toPipeName.c_str(),        // pipe name
                         GENERIC_WRITE | GENERIC_READ,
-                        0,              // no sharing 
+                        0,              // no sharing
                         NULL,           // default security attributes
-                        OPEN_EXISTING,  // opens existing pipe 
-                        0,              // default attributes 
-                        NULL);          // no template file 
+                        OPEN_EXISTING,  // opens existing pipe
+                        0,              // default attributes
+                        NULL);          // no template file
 
                     if (writeHandle != INVALID_HANDLE_VALUE) {
                         DWORD dwModeWrite = PIPE_READMODE_MESSAGE;
-                        ret = SetNamedPipeHandleState( 
-                                writeHandle,    // pipe handle 
-                                &dwModeWrite,  // new pipe mode 
-                                NULL,     // don't set maximum bytes 
-                                NULL);    // don't set maximum time 
+                        ret = SetNamedPipeHandleState(
+                                writeHandle,    // pipe handle
+                                &dwModeWrite,  // new pipe mode
+                                NULL,     // don't set maximum bytes
+                                NULL);    // don't set maximum time
                         if ( ! ret) {
                             //printf("WRITE PIPE MODE ERROR: %d\n", GetLastError());
                             sprintf(output, "Write SetNamedPipeHandleState WinErrCode: %d", GetLastError());
