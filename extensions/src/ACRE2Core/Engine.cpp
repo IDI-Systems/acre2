@@ -29,21 +29,34 @@
 #include "setSelectableVoiceCurve.h"
 #include "setSetting.h"
 #include "setChannelDetails.h"
+
+#ifdef WIN32
 #include <shlobj.h>
+#else
+#include <stdlib.h>
+#endif
 
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
 
     if (!g_Log) {
         std::string acrePluginLog{"acre2_plugin.log"};
+#ifdef WIN32
         std::array<char, MAX_PATH> appDataPath{""};
         if (SUCCEEDED(SHGetFolderPath(NULL, CSIDL_LOCAL_APPDATA, NULL, 0, appDataPath.data()))) {
             acrePluginLog = std::string(appDataPath.data()) + "\\Arma 3\\" + acrePluginLog;
         }
+#else
+        if (getenv("XDG_DATA_HOME")) {
+          acrePluginLog = std::string(getenv("XDG_DATA_HOME")) + "/" + acrePluginLog;
+        } else {
+          acrePluginLog = std::string(getenv("HOME")) + "/.local/share/" + acrePluginLog;
+        }
+#endif
         g_Log = (Log *) new Log(acrePluginLog.c_str());
         LOG("* Logging engine initialized.");
     }
-    LOG("Configuration Path: {%s\\acre2.ini}", client->getConfigFilePath().c_str());
-    CAcreSettings::getInstance()->load(client->getConfigFilePath() + "\\acre2.ini");
+    LOG("Configuration Path: {%s%sacre2.ini}", client->getConfigFilePath().c_str(), PATH_SEPARATOR);
+    CAcreSettings::getInstance()->load(client->getConfigFilePath() + PATH_SEPARATOR + "acre2.ini");
 
     this->setClient(client);
     this->setExternalServer(externalServer);

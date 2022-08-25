@@ -218,15 +218,24 @@ std::string CMumbleClient::getUniqueId() {
 }
 
 std::string CMumbleClient::getConfigFilePath(void) {
+#ifdef WIN32
     std::string tempFolder = ".\\acre";
     if (!PathFileExistsA(tempFolder.c_str()) && !CreateDirectoryA(tempFolder.c_str(), nullptr)) {
         LOG("ERROR: UNABLE TO CREATE TEMP DIR");
     }
 
     return tempFolder;
+#else
+    if (getenv("XDG_CONFIG_HOME")) {
+      return std::string(getenv("XDG_CONFIG_HOME"));
+    } else {
+      return std::string(getenv("HOME")) + "/.config";
+    }
+#endif
 }
 
 std::string CMumbleClient::getTempFilePath(void) {
+#ifdef WIN32
     char tempPath[MAX_PATH - 14];
     GetTempPathA(sizeof(tempPath), tempPath);
     std::string tempFolder = std::string(tempPath);
@@ -236,6 +245,14 @@ std::string CMumbleClient::getTempFilePath(void) {
     }
 
     return tempFolder;
+#else
+    std::string dirname = std::string("/tmp/acre-") + getenv("USER");
+    int result = mkdir(dirname.c_str(), 0755);
+    if (result == -1 && errno != EEXIST) {
+        LOG("ERROR: UNABLE TO CREATE TEMP DIR");
+    }
+    return dirname;
+#endif
 }
 
 acre::Result CMumbleClient::microphoneOpen(bool status_) {
