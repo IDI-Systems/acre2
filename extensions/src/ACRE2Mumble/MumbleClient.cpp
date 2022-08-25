@@ -3,12 +3,17 @@
 #include "Log.h"
 #include "MumbleClient.h"
 #include "MumbleFunctions.h"
-#include "Shlwapi.h"
 #include "Types.h"
 #include "compat.h"
+
+#ifdef WIN32
+#include "Shlwapi.h"
 #include "shlobj.h"
 
 #pragma comment(lib, "Shlwapi.lib")
+#else
+#include <sys/stat.h>
+#endif
 
 static constexpr std::int32_t invalid_mumble_channel = -1;
 constexpr char default_mumble_channel[]              = "ACRE";
