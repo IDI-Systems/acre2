@@ -71,7 +71,6 @@ CAcreSettings::CAcreSettings() :
     {
     // Set defaults!
     //LOG("Config Singleton Initialized");
-    this->load();
 }
 
 
