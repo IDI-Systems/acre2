@@ -4,6 +4,12 @@
 #include <chrono>
 #include <ctime>
 
+#ifdef __linux
+#include <stdarg.h>
+#include <string.h>
+#define strncat(x, y, z) strncat(x, y, z - 1)
+#endif
+
 Log *g_Log = nullptr;
 
 Log::Log(const char * const logFile) {
@@ -23,7 +29,7 @@ Log::~Log(void) {
         logOutput.close();
     }
 }
-size_t Log::Write(const acre::LogLevel msgType, char *function, const uint32_t line, const char *format, ...) {
+size_t Log::Write(const acre::LogLevel msgType, const char *function, const uint32_t line, const char *format, ...) {
     char buffer[4097], tbuffer[1024];
     va_list va;
 
@@ -72,9 +78,11 @@ size_t Log::Write(const acre::LogLevel msgType, char *function, const uint32_t l
     // test debug, print it too
     printf("%s", buffer);
 
+#ifdef WIN32
     if (msgType == acre::LogLevel::Error) {
         MessageBoxA(NULL, buffer, "CRITICAL ERROR", MB_OK);
     }
+#endif
 
     return(ret);
 }
@@ -87,7 +95,9 @@ size_t Log::PopMessage(const acre::LogLevel msgType, const char *format, ...) {
     int32_t ret = vsnprintf(buffer, 4096, format, va);
     va_end(va);
 
+#ifdef WIN32
     ret = MessageBoxA(NULL, buffer, "Log Message", MB_ICONINFORMATION | MB_OK);
+#endif
 
     return(ret);
 }

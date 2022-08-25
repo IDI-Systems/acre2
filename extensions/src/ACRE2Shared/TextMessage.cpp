@@ -170,15 +170,15 @@ IMessage *CTextMessage::formatNewMessage(const char * const procedureName, const
         LOG("LocalAlloc() failed: %d", GetLastError());
         return nullptr;
     }
-    
+
     buffer[0] = 0x00;
-    _snprintf_s(finalBuffer, TEXTMESSAGE_BUFSIZE, TEXTMESSAGE_BUFSIZE-1, "%s:", procedureName); 
-    
+    snprintf(finalBuffer, TEXTMESSAGE_BUFSIZE, "%s:", procedureName);
+
     va_start(va, format);
-    vsprintf_s(buffer, sizeof(buffer), format, va);
+    vsprintf(buffer, format, va);
     va_end(va);
 
-    strcat_s(finalBuffer, TEXTMESSAGE_BUFSIZE, buffer);
+    strncat(finalBuffer, buffer, TEXTMESSAGE_BUFSIZE - strlen(finalBuffer));
 
     CTextMessage *msg = new CTextMessage(finalBuffer, strlen(finalBuffer) + 1);
 
@@ -208,14 +208,14 @@ IMessage *CTextMessage::createNewMessage(char *procedureName, ... ) {
     }
 
     buffer[0] = 0x00;
-    _snprintf_s(buffer, TEXTMESSAGE_BUFSIZE, TEXTMESSAGE_BUFSIZE - 1, "%s:", procedureName); 
-    
+    snprintf(buffer, TEXTMESSAGE_BUFSIZE, "%s:", procedureName);
+
     va_start(va, procedureName);
     char *ptr = va_arg( va, char * );
     while (ptr != nullptr) {
-        strcat_s(buffer, TEXTMESSAGE_BUFSIZE, ptr);
-        strcat_s(buffer, TEXTMESSAGE_BUFSIZE, ",");
-        ptr = va_arg( va, char * );    
+        strncat(buffer, ptr, TEXTMESSAGE_BUFSIZE - strlen(buffer));
+        strncat(buffer, ",", TEXTMESSAGE_BUFSIZE - strlen(buffer));
+        ptr = va_arg( va, char * );
     }
     va_end(va);
 

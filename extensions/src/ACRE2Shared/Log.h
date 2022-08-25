@@ -67,7 +67,7 @@ public:
     Log(const char *const logFile);
     ~Log(void);
 
-    size_t Write(const acre::LogLevel msgType, char *function, const uint32_t line, const char *format, ...);
+    size_t Write(const acre::LogLevel msgType, const char *function, const uint32_t line, const char *format, ...);
     size_t PopMessage(const acre::LogLevel msgType, const char *format, ...);
 
     std::ofstream logOutput;
