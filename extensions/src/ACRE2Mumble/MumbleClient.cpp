@@ -324,7 +324,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
         }
 
         for (std::int32_t idx = 0U; idx < channelCount; idx++) {
-            channelId         = *channelList + idx;
+            channelId         = *(channelList + idx);
             const char *channelName = nullptr;
 
             if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == MUMBLE_STATUS_OK) {

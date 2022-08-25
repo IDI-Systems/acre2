@@ -48,7 +48,7 @@ namespace acre {
 #ifdef _TRACE
     #define LOG(...) g_Log->Write(acre::LogLevel::Info, __FUNCTION__, __LINE__, __VA_ARGS__, NULL)
 #else
-    #define LOG(...) g_Log->Write(acre::LogLevel::Info, NULL, NULL, __VA_ARGS__, NULL)
+    #define LOG(...) g_Log->Write(acre::LogLevel::Info, NULL, 0, __VA_ARGS__, NULL)
 #endif
 
 #ifdef _TRACE
