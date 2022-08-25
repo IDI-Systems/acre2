@@ -1,6 +1,10 @@
+#ifdef WIN32
 #include <SDKDDKVer.h>
-#include <stdio.h>
 #include <tchar.h>
+#else
+#include <cstring>
+#endif
+#include <stdio.h>
 #include "Wave.h"
 #include "math.h"
 #include <fstream>

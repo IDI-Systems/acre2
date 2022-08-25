@@ -1,12 +1,31 @@
 #pragma once
 
-#include <Windows.h>
+#include <compat.h>
+
+#ifdef WIN32
 #include <SDKDDKVer.h>
-#include <stdio.h>
-#include <tchar.h>
 #include "Mmsystem.h"
+#endif
+
+#include <stdio.h>
 #include <string>
 
+#ifdef __linux__
+#define BYTE unsigned char
+#define LPBYTE unsigned char*
+#define SHORT short
+#define HWAVEOUT void*
+typedef struct wavehdr_tag {
+  char*                 lpData;
+  DWORD              dwBufferLength;
+  DWORD              dwBytesRecorded;
+  DWORD*             dwUser;
+  DWORD              dwFlags;
+  DWORD              dwLoops;
+  struct wavehdr_tag    *lpNext;
+  DWORD*             reserved;
+} WAVEHDR, *LPWAVEHDR;
+#endif
 
 typedef struct __WAVEDESCR
 {
