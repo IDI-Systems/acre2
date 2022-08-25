@@ -6,7 +6,12 @@
 #include "SoundMonoChannel.h"
 
 #include <set>
+#ifdef WIN32
 #include <concurrent_unordered_set.h>
+#else
+#include <tbb/concurrent_unordered_set.h>
+namespace concurrency = tbb;
+#endif
 
 class CSoundMixer : public CLockable {
 private:

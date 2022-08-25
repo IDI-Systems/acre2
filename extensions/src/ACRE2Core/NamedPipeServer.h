@@ -4,8 +4,15 @@
 #include "Types.h"
 #include "IMessage.h"
 #include "IServer.h"
+#include "AcreSettings.h"
 
+#ifdef WIN32
 #include <concurrent_queue.h>
+#else
+#include <tbb/concurrent_queue.h>
+namespace concurrency = tbb;
+#endif
+
 #include <thread>
 #include <algorithm>
 #include <set>
@@ -61,7 +68,7 @@ protected:
     bool       m_shuttingDown;
 
 private:
-    Concurrency::concurrent_queue<IMessage *> m_sendQueue;
+    concurrency::concurrent_queue<IMessage *> m_sendQueue;
     std::thread m_readThread;
     std::thread m_sendThread;
     PSECURITY_ATTRIBUTES m_PipeSecurity;
