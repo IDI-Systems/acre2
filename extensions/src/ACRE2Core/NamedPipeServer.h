@@ -41,10 +41,12 @@ public:
 
     char *currentServerId;
 
+#ifdef WIN32
     DECLARE_MEMBER(HANDLE, PipeHandleRead);
     DECLARE_MEMBER(HANDLE, PipeHandleWrite);
     DECLARE_MEMBER(std::string, FromPipeName);
     DECLARE_MEMBER(std::string, ToPipeName);
+#endif
 
     inline void setConnectedWrite(const bool value) { m_connectedWrite = value; }
     inline bool getConnectedWrite() const { return m_connectedWrite; }
@@ -71,6 +73,16 @@ private:
     concurrency::concurrent_queue<IMessage *> m_sendQueue;
     std::thread m_readThread;
     std::thread m_sendThread;
-    PSECURITY_ATTRIBUTES m_PipeSecurity;
     std::set<std::string> validTSServers;
+#ifdef WIN32
+    PSECURITY_ATTRIBUTES m_PipeSecurity;
+#else
+    int m_sockFD;
+    int m_clientFD;
+#endif
+
+#ifdef __linux
+    uint16_t acreListenPort = CAcreSettings::getInstance()->getWineSocketPort();
+#endif
+
 };
