@@ -109,6 +109,30 @@ jobs:
           symbols
         retention-days: 1
 
+  compile-linux:
+    if: github.repository == 'IDI-Systems/acre2' && ! contains(github.event.head_commit.message, '[ci skip]')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@v2
+    - name: Install Packages
+      run: |
+        sudo apt update
+        sudo DEBIAN_FRONTEND=noninteractive apt install -y libfaudio-dev libtbb-dev
+    - name: Build Extensions
+      run: |
+        mkdir -p extensions/build
+        cd extensions/build
+        cmake -DUSE_64BIT_BUILD=ON ..
+        make -j
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: acre2-extensions-linux
+        path: |
+          plugin
+        retention-days: 1
+
   publish-test:
     needs: [build, compile]
     if: github.event_name == 'workflow_dispatch'
@@ -123,6 +147,7 @@ jobs:
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
         mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
+        cp -r acre2-extensions-linux/mumble @acre2/plugin || true
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip @acre2
@@ -171,6 +196,7 @@ jobs:
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
         mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
+        cp -r acre2-extensions-linux/mumble @acre2/plugin || true
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
@@ -229,6 +255,7 @@ jobs:
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
         mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
+        cp -r acre2-extensions-linux/mumble @acre2/plugin || true
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
