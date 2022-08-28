@@ -23,7 +23,11 @@ DFUNC(connectionFnc) = {
             LOG("ATEEEMPTING TO OPEN PIPE!");
             // acre_player sideChat "OPEN PIPE";
             GVAR(pongTime) = diag_tickTime;
-            GVAR(pipeCode) = "ACRE2Arma" callExtension "0ts"; // Connect String
+            extensionParameter = "0";
+            if (!isNil {EGVAR(sys_core,wineSocketPort)}) then {
+                extensionParameter = "0p" + EGVAR(sys_core,wineSocketPort);
+            };
+            GVAR(pipeCode) = "ACRE2Arma" callExtension extensionParameter; // Connect String
             // acre_player sideChat format["RESULT: %1", GVAR(pipeCode)];
             if (GVAR(pipeCode) != "1") then {
                 if (time > 15) then {
