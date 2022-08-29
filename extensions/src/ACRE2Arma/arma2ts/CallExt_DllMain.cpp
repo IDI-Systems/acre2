@@ -162,7 +162,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function)
 
     int command = atoi(id.c_str());
 
-    if (detectWine()) {
+    if (isWine) {
       runCommandWine(output, outputSize, command, params);
     } else {
       runCommand(output, outputSize, command, params);
