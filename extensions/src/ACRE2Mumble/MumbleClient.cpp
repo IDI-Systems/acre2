@@ -13,6 +13,7 @@
 #pragma comment(lib, "Shlwapi.lib")
 #else
 #include <sys/stat.h>
+#include <locale.h>
 #endif
 
 static constexpr std::int32_t invalid_mumble_channel = -1;
@@ -60,6 +61,11 @@ acre::Result CMumbleClient::stop() {
 }
 
 acre::Result CMumbleClient::start(const acre::id_t id_) {
+    #ifdef __linux__
+        // Make sure floats get serialized with period decimal separators
+        setlocale(LC_NUMERIC, "C");
+    #endif
+
     CEngine::getInstance()->start(id_);
     this->setInputActive(false);
     this->setDirectFirst(false);
