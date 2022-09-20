@@ -47,9 +47,9 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
         }
 #else
         if (getenv("XDG_DATA_HOME")) {
-          acrePluginLog = std::string(getenv("XDG_DATA_HOME")) + "/" + acrePluginLog;
+            acrePluginLog = std::string(getenv("XDG_DATA_HOME")) + "/" + acrePluginLog;
         } else {
-          acrePluginLog = std::string(getenv("HOME")) + "/.local/share/" + acrePluginLog;
+            acrePluginLog = std::string(getenv("HOME")) + "/.local/share/" + acrePluginLog;
         }
 #endif
         g_Log = (Log *) new Log(acrePluginLog.c_str());
