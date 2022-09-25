@@ -194,10 +194,10 @@ idi::acre::UpdateCode VOIPPlugin::handle_update_plugin() noexcept {
 
         std::vector<std::pair<std::filesystem::path, std::filesystem::path>> plugin_paths_array;
         if (arch_to_install == Architecture::both || arch_to_install == Architecture::x32) {
-            plugin_paths_array.push_back(std::make_pair(plugin_folder / "acre2_win32.dll", x32_acre_plugin));
+            plugin_paths_array.push_back(std::make_pair(plugin_folder / x32_acre_plugin.filename(), x32_acre_plugin));
         }
         if (arch_to_install == Architecture::both || arch_to_install == Architecture::x64) {
-            plugin_paths_array.push_back(std::make_pair(plugin_folder / "acre2_win64.dll", x64_acre_plugin));
+            plugin_paths_array.push_back(std::make_pair(plugin_folder / x64_acre_plugin.filename(), x64_acre_plugin));
         }
 
         for (const auto &path : plugin_paths_array) {
@@ -226,7 +226,7 @@ idi::acre::UpdateCode VOIPPlugin::handle_update_plugin() noexcept {
             continue;
         }
 
-        std::array<std::filesystem::path, 2> plugin_paths_array = {plugin_folder / "acre2_win32.dll", plugin_folder / "acre2_win64.dll"};
+        std::array<std::filesystem::path, 2> plugin_paths_array = {plugin_folder / x32_acre_plugin.filename(), plugin_folder / x64_acre_plugin.filename()};
 
         for (const auto &path : plugin_paths_array) {
             std::error_code err_code;

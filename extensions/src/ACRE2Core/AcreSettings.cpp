@@ -16,6 +16,9 @@ acre::Result CAcreSettings::save(std::string filename) {
     iniFile << "premixGlobalVolume = " << this->m_PremixGlobalVolume << ";\n";
     iniFile << "disableUnmuteClients = " << (this->m_DisableUnmuteClients ? "true" : "false") << ";\n";
     iniFile << "disableChannelSwitch = " << (this->m_DisableChannelSwitch ? "true" : "false") << ";\n";
+#ifdef __linux__
+    iniFile << "wineSocketPort = " << (this->m_WineSocketPort) << ";\n";
+#endif
 
     //LOG("Config Save: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
     iniFile.flush();
@@ -41,6 +44,9 @@ acre::Result CAcreSettings::load(std::string filename) {
     this->m_PremixGlobalVolume = (float)config.GetReal("acre2", "premixGlobalVolume", 1.0f);
     this->m_DisableUnmuteClients = config.GetBoolean("acre2", "disableUnmuteClients", false);
     this->m_DisableChannelSwitch = config.GetBoolean("acre2", "disableChannelSwitch", false);
+#ifdef __linux__
+    this->m_WineSocketPort = config.GetInteger("acre2", "wineSocketPort", 19141);
+#endif
 
     //LOG("Config Load: %f,%f", m_GlobalVolume, m_PremixGlobalVolume);
     this->m_Path = filename;
@@ -58,6 +64,9 @@ acre::Result CAcreSettings::load() {
 }
 
 CAcreSettings::CAcreSettings() :
+#ifdef __linux__
+    m_WineSocketPort(19141),
+#endif
     m_GlobalVolume(1.0f),
     m_PremixGlobalVolume(1.0f),
     m_DisablePosition(false),
@@ -71,7 +80,6 @@ CAcreSettings::CAcreSettings() :
     {
     // Set defaults!
     //LOG("Config Singleton Initialized");
-    this->load();
 }
 
 

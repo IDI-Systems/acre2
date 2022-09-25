@@ -10,8 +10,14 @@
 volatile DWORD g_pingTime;
 
 RPC_FUNCTION(ping) {
+#ifdef WIN32
     g_pingTime = clock() / CLOCKS_PER_SEC;
-    vServer->sendMessage(CTextMessage::formatNewMessage("pong", "%f,", g_pingTime));
+#else
+    timespec t;
+    clock_gettime(CLOCK_MONOTONIC_RAW, &t);
+    g_pingTime = t.tv_sec;
+#endif
+    vServer->sendMessage(CTextMessage::formatNewMessage("pong", "%f,", (float) g_pingTime));
     return acre::Result::ok;
 }
 public:

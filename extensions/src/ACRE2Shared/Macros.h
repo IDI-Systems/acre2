@@ -34,7 +34,7 @@
 
 
 #define DECLARE_MEMBER_SET(type, name)                            \
-    virtual inline void set##name(##type value) { this->m_##name = value; }
+    virtual inline void set##name(type value) { this->m_##name = value; }
 
 #define DECLARE_MEMBER_GET(type, name)                            \
     virtual inline type get##name() { return this->m_##name; }
@@ -73,7 +73,7 @@ protected:                                            \
 
 
 #define DECLARE_INTERFACE_MEMBER_SET(type, name)                \
-    virtual void set##name(##type value) = 0;
+    virtual void set##name(type value) = 0;
 
 #define DECLARE_INTERFACE_MEMBER_GET(type, name)                \
     virtual type get##name() = 0;
@@ -90,21 +90,21 @@ public:                                                \
     DECLARE_INTERFACE_MEMBER_GET(type, name)
 
 
-#define RPC_FUNCTION(name) class name## : public IRpcFunction {                \
+#define RPC_FUNCTION(name) class name : public IRpcFunction {                \
 public:                                                                        \
-    name##() : m_Name(STR(name)) {}                                    \
-    ~##name(){ }                                                            \
+    name(){ this->m_Name = STR(name); }                                    \
+    ~name(){ }                                                            \
     acre::Result call(IServer *vServer, IMessage *vMessage)
 
 
 #define CREATE_ITERATOR(type, name, from)                \
     type name = from;                                    \
-    type##::iterator iter_##name;
+    type::iterator iter_##name;
 
 #define DO_ITERATOR(type,name,from)                        \
     CREATE_ITERATOR(type,name,from)                        \
-    for (iter_##name = name##.begin();                    \
-        iter_##name != name##.end();                    \
+    for (iter_##name = name.begin();                    \
+        iter_##name != name.end();                    \
         iter_##name++ )
 
 #define WAIT_IF_VALID(handle, wait)        if (handle != INVALID_HANDLE_VALUE) {        \

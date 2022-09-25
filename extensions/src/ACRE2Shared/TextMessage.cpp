@@ -27,7 +27,7 @@ acre::Result CTextMessage::parse(char *const value, const size_t len) {
         this->m_IsValid = false;
         return acre::Result::error;
     }
-    
+
     this->m_DataPtr = (char *)LocalAlloc(0, length);
     memcpy(this->m_DataPtr, value, length);
     this->m_DataPtr[length-1] = 0x00;
@@ -49,7 +49,7 @@ acre::Result CTextMessage::parse(char *const value, const size_t len) {
 
     // now parse parameters..if there are any
     if (pos == (this->m_Data->length() - 1)) {
-        this->m_IsValid = true;    
+        this->m_IsValid = true;
         return acre::Result::ok;
     }
 
@@ -64,7 +64,7 @@ acre::Result CTextMessage::parse(char *const value, const size_t len) {
             this->m_Parameters[x] = new std::string(t.substr(0, t.find(",")).c_str());
             pParamCount += 1;
         }  else if (t.find(",") == std::string::npos) {
-            this->m_IsValid = true;    
+            this->m_IsValid = true;
             this->m_Parameters[x] = new std::string(t.substr(0, t.length()));
             pParamCount += 1;
             break;
@@ -82,7 +82,7 @@ acre::Result CTextMessage::parse(char *const value, const size_t len) {
 
     this->m_ParameterCount = pParamCount;
     this->m_IsValid = true;
-    
+
     //this->setLength((uint32_t)this->m_Data->size());
 
     return acre::Result::ok;
@@ -130,7 +130,7 @@ const unsigned char *const CTextMessage::getParameter(uint32_t index) const {
 }
 
 CTextMessage::~CTextMessage(void) {
-    
+
     for (uint32_t x = 0; x < TEXTMESSAGE_MAX_PARAMETER_COUNT; x++) {
         if (this->m_Parameters[x]) {
             delete this->m_Parameters[x];
@@ -164,21 +164,21 @@ IMessage *CTextMessage::formatNewMessage(const char * const procedureName, const
         LOG("procedureName was null");
         return nullptr;
     }
-    
+
     char *finalBuffer = (char *)LocalAlloc(LPTR, TEXTMESSAGE_BUFSIZE);
     if (buffer == nullptr) {
         LOG("LocalAlloc() failed: %d", GetLastError());
         return nullptr;
     }
-    
+
     buffer[0] = 0x00;
-    _snprintf_s(finalBuffer, TEXTMESSAGE_BUFSIZE, TEXTMESSAGE_BUFSIZE-1, "%s:", procedureName); 
-    
+    snprintf(finalBuffer, TEXTMESSAGE_BUFSIZE, "%s:", procedureName);
+
     va_start(va, format);
-    vsprintf_s(buffer, sizeof(buffer), format, va);
+    vsprintf(buffer, format, va);
     va_end(va);
 
-    strcat_s(finalBuffer, TEXTMESSAGE_BUFSIZE, buffer);
+    strncat(finalBuffer, buffer, TEXTMESSAGE_BUFSIZE - strlen(finalBuffer));
 
     CTextMessage *msg = new CTextMessage(finalBuffer, strlen(finalBuffer) + 1);
 
@@ -195,33 +195,33 @@ IMessage *CTextMessage::formatNewMessage(const char * const procedureName, const
 
 IMessage *CTextMessage::createNewMessage(char *procedureName, ... ) {
     va_list va;
-   
+
     if (!procedureName) {
         LOG("procedureName was null");
         return nullptr;
     }
-    
+
     char *buffer = (char *)LocalAlloc(LPTR, TEXTMESSAGE_BUFSIZE);
     if (buffer == nullptr) {
         LOG("LocalAlloc() failed: %d", GetLastError());
         return nullptr;
     }
-    
+
     buffer[0] = 0x00;
-    _snprintf_s(buffer, TEXTMESSAGE_BUFSIZE, TEXTMESSAGE_BUFSIZE - 1, "%s:", procedureName); 
-    
+    snprintf(buffer, TEXTMESSAGE_BUFSIZE, "%s:", procedureName);
+
     va_start(va, procedureName);
     char *ptr = va_arg( va, char * );
     while (ptr != nullptr) {
-        strcat_s(buffer, TEXTMESSAGE_BUFSIZE, ptr);
-        strcat_s(buffer, TEXTMESSAGE_BUFSIZE, ",");
-        ptr = va_arg( va, char * );    
+        strncat(buffer, ptr, TEXTMESSAGE_BUFSIZE - strlen(buffer));
+        strncat(buffer, ",", TEXTMESSAGE_BUFSIZE - strlen(buffer));
+        ptr = va_arg( va, char * );
     }
     va_end(va);
 
     buffer = (char *)LocalReAlloc(buffer, strlen(buffer) + 1, LMEM_MOVEABLE);
     CTextMessage *msg = new CTextMessage(buffer, strlen(buffer) + 1);
-    
+
     if (!msg->isValid()) {
         LOG("ERR: msg was invalid");
         delete msg;
@@ -233,6 +233,6 @@ IMessage *CTextMessage::createNewMessage(char *procedureName, ... ) {
     return((IMessage *)msg);
 }
 
-uint32_t CTextMessage::getParameterCount() const { 
+uint32_t CTextMessage::getParameterCount() const {
     return this->m_ParameterCount;
 }

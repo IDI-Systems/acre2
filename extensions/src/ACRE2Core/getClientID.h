@@ -5,7 +5,6 @@
 #include "Macros.h"
 #include "Log.h"
 #include "IRpcFunction.h"
-#include <sddl.h>
 
 #include "IServer.h"
 #include "Engine.h"

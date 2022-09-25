@@ -4,7 +4,13 @@
 #include "Lockable.h"
 #include <string>
 #include <map>
+
+#ifdef WIN32
 #include <concurrent_unordered_map.h>
+#else
+#include <tbb/concurrent_unordered_map.h>
+namespace concurrency = tbb;
+#endif
 
 class CSoundMixdownEffect : public CLockable {
 private:

@@ -9,7 +9,7 @@ namespace Dsp {
         const static float c2 = (float)((int)(c1 / 3)) + 1;
         const static float c3 = 1.f / c1;
 
-        float random = ((float)rand() / (float)(RAND_MAX + 1));
+        float random = ((float)rand() / ((float)RAND_MAX + 1));
         float noise = (2.f * ((random * c2) + (random * c2) + (random * c2)) - 3.f * (c2 - 1.f)) * c3;
 
         return noise;

@@ -14,6 +14,7 @@
 #include "Shlwapi.h"
 #include "command_options.hpp"
 #include "mumble_plugin.hpp"
+#include "mumble_linux_plugin.hpp"
 #include "shlobj.h"
 #include "ts3_plugin.hpp"
 
@@ -74,6 +75,7 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
     idi::acre::TS3Plugin ts3_plugin(skip_ts_plugin);
     idi::acre::MumblePlugin mumble_plugin(skip_mumble_plugin, mumble_path);
+    idi::acre::MumbleLinuxPlugin mumble_linux_plugin(skip_mumble_plugin, mumble_path);
 
     switch (command) {
         case SteamCommand::check: {
@@ -116,8 +118,9 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
             const bool ts3_locations_success    = ts3_plugin.collect_plugin_locations();
             const bool mumble_locations_success = mumble_plugin.collect_plugin_locations();
+            const bool mumble_linux_locations_success = mumble_linux_plugin.collect_plugin_locations();
 
-            if (!ts3_locations_success && !mumble_locations_success) {
+            if (!ts3_locations_success && !mumble_locations_success && !mumble_linux_locations_success) {
                 const std::int32_t result = MessageBoxA(nullptr,
                   "ACRE2 was unable to find a TeamSpeak 3 or a Mumble installation. If you do have an installation please copy the plugins "
                   "yourself or reinstall TeamSpeak 3 or Mumble.\n\nIf you are sure you have TeamSpeak 3 and/or Mumble installed and wish to "
@@ -140,9 +143,12 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                   std::async(std::launch::async, [&]() { return ts3_plugin.handle_update_plugin(); });
                 std::future<idi::acre::UpdateCode> update_mumble =
                   std::async(std::launch::async, [&]() { return mumble_plugin.handle_update_plugin(); });
+                std::future<idi::acre::UpdateCode> update_mumble_linux =
+                  std::async(std::launch::async, [&]() { return mumble_linux_plugin.handle_update_plugin(); });
 
                 const idi::acre::UpdateCode ts3_update_result    = update_ts3.get();
                 const idi::acre::UpdateCode mumble_update_result = update_mumble.get();
+                const idi::acre::UpdateCode mumble_linux_update_result = update_mumble_linux.get();
 
                 std::string error_msg;
                 const bool update_ts3_ok =
@@ -157,7 +163,13 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                     error_msg = mumble_plugin.get_last_error_message();
                 }
 
-                if (!update_ts3_ok || !update_mumble_ok) {
+                const bool update_mumble_linux_ok =
+                  (mumble_linux_update_result != idi::acre::UpdateCode::update_failed) && (mumble_linux_update_result != idi::acre::UpdateCode::other);
+                if (!update_mumble_linux_ok) {
+                    error_msg = mumble_linux_plugin.get_last_error_message();
+                }
+
+                if (!update_ts3_ok || !update_mumble_ok || !update_mumble_linux_ok) {
                     std::ostringstream oss;
                     oss << "ACRE2 was unable to copy the Mumble/TeamSpeak 3 plugin. Please check if you have write access to the plugin "
                         << "folder, close any instances of TeamSpeak 3 and/or Mumble and click \"Try Again\".\n\nIf you "
@@ -179,7 +191,8 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
 
                     // Update was not necessary.
                     if ((ts3_update_result == idi::acre::UpdateCode::update_not_necessary) &&
-                        (mumble_update_result == idi::acre::UpdateCode::update_not_necessary)) { // No update was copied etc.
+                        (mumble_update_result == idi::acre::UpdateCode::update_not_necessary) &&
+                        (mumble_linux_update_result == idi::acre::UpdateCode::update_not_necessary)) { // No update was copied etc.
                         strncpy(output, "[0]", outputSize);
                         return;
                     }
@@ -200,23 +213,34 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 oss << "\n";
             }
 
-            if (!mumble_plugin.get_updated_paths().empty()) {
+            if (!mumble_plugin.get_updated_paths().empty() ||
+                !mumble_linux_plugin.get_updated_paths().empty()) {
                 oss << "The Mumble plugins have been copied to the following location(s):\n";
 
-                std::string arch_installed = "";
-                if (mumble_plugin.get_arch_to_install() == idi::acre::Architecture::x32) {
-                    arch_installed = " [32-bit only]";
-                } else if (mumble_plugin.get_arch_to_install() == idi::acre::Architecture::x64) {
-                    arch_installed = " [64-bit only]";
+                if (!mumble_plugin.get_updated_paths().empty()) {
+                    std::string arch_installed = "";
+                    if (mumble_plugin.get_arch_to_install() == idi::acre::Architecture::x32) {
+                        arch_installed = " [32-bit only]";
+                    } else if (mumble_plugin.get_arch_to_install() == idi::acre::Architecture::x64) {
+                        arch_installed = " [64-bit only]";
+                    }
+
+                    for (const auto &path : mumble_plugin.get_updated_paths()) {
+                        oss << path << arch_installed << "\n";
+                        found_paths.append(path + "\n");
+                    }
                 }
 
-                for (const auto &path : mumble_plugin.get_updated_paths()) {
-                    oss << path << arch_installed << "\n";
-                    found_paths.append(path + "\n");
+                if (!mumble_linux_plugin.get_updated_paths().empty()) {
+                    for (const auto &path : mumble_linux_plugin.get_updated_paths()) {
+                        oss << path << " [linux]" << "\n";
+                        found_paths.append(path + "\n");
+                    }
                 }
 
                 oss << "\n";
             }
+
 
             if (!ts3_plugin.get_removed_paths().empty()) {
                 oss << "The TeamSpeak 3 plugin has been removed from the following location(s):\n";
@@ -227,10 +251,19 @@ void __stdcall RVExtension(char *output, int outputSize, const char *function) {
                 oss << "\n";
             }
 
-            if (!mumble_plugin.get_removed_paths().empty()) {
+            if (!mumble_plugin.get_removed_paths().empty() ||
+                !mumble_linux_plugin.get_removed_paths().empty()) {
                 oss << "The Mumble plugin has been removed from the following location(s):\n";
-                for (const auto &path : mumble_plugin.get_removed_paths()) {
-                    oss << path << "\n";
+                if (!mumble_plugin.get_removed_paths().empty()) {
+                    for (const auto &path : mumble_plugin.get_removed_paths()) {
+                        oss << path << "\n";
+                    }
+                }
+
+                if (!mumble_linux_plugin.get_removed_paths().empty()) {
+                    for (const auto &path : mumble_linux_plugin.get_removed_paths()) {
+                        oss << path << "\n";
+                    }
                 }
 
                 oss << "\n";

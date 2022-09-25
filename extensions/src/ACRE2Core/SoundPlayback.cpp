@@ -35,7 +35,7 @@ acre::Result CSoundPlayback::loadSound(std::string id) {
 
 
     std::string tempPath = CEngine::getInstance()->getClient()->getTempFilePath();
-    tempPath += "\\";
+    tempPath += PATH_SEPARATOR;
     tempPath += id;
     std::ofstream out(tempPath, std::ios::out | std::ios::binary);
     if (!out.is_open()) {
@@ -52,7 +52,7 @@ acre::Result CSoundPlayback::loadSound(std::string id) {
 
 acre::Result CSoundPlayback::playSound(std::string id, acre::vec3_fp32_t position, acre::vec3_fp32_t direction, float volume, bool isWorld) {
     std::string tempPath = CEngine::getInstance()->getClient()->getTempFilePath();
-    tempPath += "\\";
+    tempPath += PATH_SEPARATOR;
     tempPath += id;
     CWave waveFile;
     if (waveFile.Load(tempPath)) {

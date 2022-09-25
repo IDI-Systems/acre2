@@ -3,12 +3,18 @@
 #include "Log.h"
 #include "MumbleClient.h"
 #include "MumbleFunctions.h"
-#include "Shlwapi.h"
 #include "Types.h"
 #include "compat.h"
+
+#ifdef WIN32
+#include "Shlwapi.h"
 #include "shlobj.h"
 
 #pragma comment(lib, "Shlwapi.lib")
+#else
+#include <sys/stat.h>
+#include <locale.h>
+#endif
 
 static constexpr std::int32_t invalid_mumble_channel = -1;
 constexpr char default_mumble_channel[]              = "ACRE";
@@ -55,6 +61,11 @@ acre::Result CMumbleClient::stop() {
 }
 
 acre::Result CMumbleClient::start(const acre::id_t id_) {
+    #ifdef __linux__
+        // Make sure floats get serialized with period decimal separators
+        setlocale(LC_NUMERIC, "C");
+    #endif
+
     CEngine::getInstance()->start(id_);
     this->setInputActive(false);
     this->setDirectFirst(false);
@@ -218,15 +229,24 @@ std::string CMumbleClient::getUniqueId() {
 }
 
 std::string CMumbleClient::getConfigFilePath(void) {
+#ifdef WIN32
     std::string tempFolder = ".\\acre";
     if (!PathFileExistsA(tempFolder.c_str()) && !CreateDirectoryA(tempFolder.c_str(), nullptr)) {
         LOG("ERROR: UNABLE TO CREATE TEMP DIR");
     }
 
     return tempFolder;
+#else
+    if (getenv("XDG_CONFIG_HOME")) {
+      return std::string(getenv("XDG_CONFIG_HOME"));
+    } else {
+      return std::string(getenv("HOME")) + "/.config";
+    }
+#endif
 }
 
 std::string CMumbleClient::getTempFilePath(void) {
+#ifdef WIN32
     char tempPath[MAX_PATH - 14];
     GetTempPathA(sizeof(tempPath), tempPath);
     std::string tempFolder = std::string(tempPath);
@@ -236,6 +256,14 @@ std::string CMumbleClient::getTempFilePath(void) {
     }
 
     return tempFolder;
+#else
+    std::string dirname = std::string("/tmp/acre-") + getenv("USER");
+    int result = mkdir(dirname.c_str(), 0755);
+    if (result == -1 && errno != EEXIST) {
+        LOG("ERROR: UNABLE TO CREATE TEMP DIR");
+    }
+    return dirname;
+#endif
 }
 
 acre::Result CMumbleClient::microphoneOpen(bool status_) {
@@ -324,7 +352,7 @@ uint64_t CMumbleClient::findChannelByNames(std::vector<std::string> details_) {
         }
 
         for (std::int32_t idx = 0U; idx < channelCount; idx++) {
-            channelId         = *channelList + idx;
+            channelId         = *(channelList + idx);
             const char *channelName = nullptr;
 
             if (mumAPI.getChannelName(pluginID, activeConnection, channelId, &channelName) == MUMBLE_STATUS_OK) {

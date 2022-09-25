@@ -154,6 +154,18 @@
     {[_this] call FUNC(setRevealToAI)}
 ] call CBA_fnc_addSetting;
 
+if ("ACRE2Arma" callExtension "99" == "1") then {
+  // Wine Socket Port
+  [
+    QGVAR(wineSocketPort),
+    "EDITBOX",
+    ["Wine Socket Port", "(Linux only) What port should ACRE2 try to connect to Mumble on?"],
+    "ACRE2 Wine",
+    "19141",
+    false
+  ] call CBA_fnc_addSetting;
+};
+
 // Notification Settings - not yet implemented
 /*[
     QGVAR(incomingTransmissionNotification),
