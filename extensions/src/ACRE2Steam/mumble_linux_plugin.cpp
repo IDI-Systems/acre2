@@ -32,8 +32,6 @@ bool MumbleLinuxPlugin::collect_plugin_locations() noexcept {
         } else {
             return false;
         }
-        printf("%s\n", check_path.c_str());
-        printf("%d\n", std::filesystem::exists(check_path));
         check_plugin_locations(check_path);
     }
 
