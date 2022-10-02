@@ -27,12 +27,8 @@ if (!hasInterface) exitWith {};
 
         for "_r" from 0 to (_rows - 1) do {
             private _data = _rightPanel lnbData [_r, 0];
-            if ([_data] call EFUNC(api,isRadio)) then {
-                private _displayName = [_data] call EFUNC(api,getDisplayName);
-                private _currentChannel = [_data] call EFUNC(api,getRadioChannel);
-                private _dataNew = format [localize LSTRING(channelShort), _displayName, _currentChannel];
-
-                _rightPanel lnbSetText [[_r, 1], _dataNew];
+            if (_data call EFUNC(api,isRadio)) then {
+                _rightPanel lnbSetText [[_r, 1], _data call EFUNC(sys_core,getDescriptiveName)];
             };
         };
     };

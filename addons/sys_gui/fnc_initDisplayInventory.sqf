@@ -51,8 +51,6 @@ _ctrlContainerItems ctrlAddEventHandler ["MouseButtonUp", {
 private _fnc_update = {
     params ["_display"];
 
-    private _pttAssign = [] call EFUNC(api,getMultiPushToTalkAssignment);
-
     {
         private _ctrl = _display displayCtrl _x;
 
@@ -60,29 +58,7 @@ private _fnc_update = {
             private _item = _ctrl lbData _i;
 
             if (_item call EFUNC(api,isRadio)) then {
-                private _name = _item call EFUNC(api,getDisplayName);
-
-                // Display frequency for single-channel radios (e.g. AN/PRC-77)
-                private _maxChannels = [_item, "getState", "channels"] call EFUNC(sys_data,dataEvent);
-
-                private _text = if (isNil "_maxChannels") then {
-                    private _txData = [_item, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-                    private _currentFreq = HASH_GET(_txData, "frequencyTX");
-                    format ["%1 %2 MHz", _name, _currentFreq];
-                } else {
-                    format [LELSTRING(ace_interact,channelShort), _name, _item call EFUNC(api,getRadioChannel)]
-                };
-
-                // Display radio keys in front of bound radios
-                // Case-insentive since PTT API function returns radio class in lower case while
-                // inventory display provides it in config case
-                private _radioKey = (_pttAssign findIf {_x == _item}) + 1;
-
-                if (_radioKey > 0 && {_radioKey < 4}) then {
-                    _text = format ["%1: %2", _radioKey, _text];
-                };
-
-                _ctrl lbSetText [_i, _text];
+                _ctrl lbSetText [_i, _item call EFUNC(sys_core,getDescriptiveName)];
             };
         };
     } forEach [
