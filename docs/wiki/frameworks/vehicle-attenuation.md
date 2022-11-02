@@ -132,9 +132,9 @@ but the config `ConfigFile >> CfgVehicles >> myTank >> ACRE >> attenuationTurned
 
 ## Debugging
 
-You can toggle the ability to view attenuation behavior at runtime to diagnose issues with compartment configs.
+You can toggle the ability to view attenuation behavior at runtime to diagnose issues with compartment configs. It will draw the current attenuation value over all units and a hint will be shown with information about your crew (and their detected compartments) as well as the attenuation values of units outside of a vehicle. You'll also get a short rundown of the configured compartment connection attenuation values for the current vehicle.
 
 {% include image.html file="attenuation/attenuate_debuginfo.jpg" alt="Attenuation debug info dialog" caption="Attenuation debug info dialog" %}
 
 ### Usage
-Use debug console in a mission or editor preview and execute `call acre_sys_attenuate_fnc_toggleDebugInfo;`.
+Use debug console in a mission or editor preview with some units and/or vehicles placed down and execute `call acre_sys_attenuate_fnc_toggleDebugInfo;`.
