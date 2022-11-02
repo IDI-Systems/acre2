@@ -129,3 +129,12 @@ The same applies between Hans and Jim (<span style="color:#e3aa2b">_**yellow**_ 
 but the config `ConfigFile >> CfgVehicles >> myTank >> ACRE >> attenuationTurnedOut >> Compartment1 >> Compartment2` is looked up which is also `1`.
 
 {% include note.html content="The path in the <span style='color:#e3aa2b'>_**yellow**_</span> scenario is different because the value is looked up in the `attenuationTurnedOut` class instead of `attenuation`." %}
+
+## Debugging
+
+You can toggle the ability to view attenuation behavior at runtime to diagnose issues with compartment configs.
+
+{% include image.html file="attenuation/attenuate_debuginfo.jpg" alt="Attenuation debug info dialog" caption="Attenuation debug info dialog" %}
+
+### Usage
+Use debug console in a mission or editor preview and execute `call acre_sys_attenuate_fnc_toggleDebugInfo;`.

@@ -1,3 +1,14 @@
+#include "script_component.hpp"
+/*
+ * Author: ACRE2Team
+ * Gives the ability to view attenuation behavior at runtime to diagnose issues with compartment configs.
+ *
+ * Example:
+ * [ARGUMENTS] call acre_sys_attenuate_fnc_toggleDebugInfo;
+ *
+ * Public: No
+ */
+ 
 if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 	ACRE_SYS_ATTENUATE_DEBUG_DRAW = {
 		private _speakers = allUnits;
