@@ -3,8 +3,14 @@
  * Author: ACRE2Team
  * Gives the ability to view attenuation behavior at runtime to diagnose issues with compartment configs.
  *
+ * Arguments:
+ * None
+ *
+ * Return Value:
+ * None
+ *
  * Example:
- * [ARGUMENTS] call acre_sys_attenuate_fnc_toggleDebugInfo;
+ * [] call acre_sys_attenuate_fnc_toggleDebugInfo;
  *
  * Public: No
  */
@@ -15,16 +21,17 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 		private _vehicleSpeakers = (_speakers) select {_x in (crew (vehicle acre_player))};
 		private _outsideSpeakers = (_speakers - _vehicleSpeakers);
 
-		private _hintMsg = format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>ACRE Attenuation</t><br/><br />"];
+		private _hintMsg = [];
+		_hintMsg pushBack "<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>ACRE Attenuation</t><br/><br />";
 
 		// Print player's vehicle role and compartment
 		if (!isNull objectParent acre_player) then {
-			_hintMsg = _hintMsg + format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>Vehicle</t><br/>"];
+			_hintMsg pushBack "<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>Vehicle</t><br/>";
 			{
-				_hintMsg = _hintMsg + format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>", 
+				_hintMsg pushBack (format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>", 
 					format ["%1 (%2, %3)", name _x select [0, 10], [_x] call CBA_fnc_vehicleRole, [_x] call acre_sys_core_fnc_getCompartment],
 					([_x] call acre_sys_attenuate_fnc_getUnitAttenuate)
-				];
+				]);
 			} forEach _vehicleSpeakers;
 		};
 
@@ -44,13 +51,13 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 		};
 
 		if (count _outsideSpeakers > 0) then {
-			_hintMsg = _hintMsg + format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", ["Outside", "Speakers"] select (isNull objectParent acre_player)];
+			_hintMsg pushBack (format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", ["Outside", "Speakers"] select (isNull objectParent acre_player)]);
 			{
-				_hintMsg = _hintMsg + ([_x] call _fnc_getSpeakerText);
+				_hintMsg pushBack ([_x] call _fnc_getSpeakerText);
 			} forEach _outsideSpeakers;
 		};
 
-		_hintMsg = _hintMsg + "<br/>";
+		_hintMsg pushBack "<br/>";
 
 		// Print vehicle classname and compartment config values
 		private _type = typeOf (vehicle acre_player);
@@ -65,18 +72,18 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 		_compartments = _compartments - [""];
 
 		if (count _compartments > 0) then {
-			_hintMsg = _hintMsg + format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _type];
+			_hintMsg pushBack (format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _type]);
 		};
 
 		{
 			private _attConfig = _config >> "ACRE" >> "attenuation" >> _x;
 
-			_hintMsg = _hintMsg + format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _x];
+			_hintMsg pushBack (format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _x]);
 
 			{
 				private _attenuation = getNumber(_attConfig >> _x);
 				if (_attenuation > 0) then {
-					_hintMsg = _hintMsg + format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>",  _x, _attenuation];
+					_hintMsg pushBack (format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>",  _x, _attenuation]);
 				};
 			} forEach _compartments;
 		} forEach _compartments;
@@ -91,23 +98,23 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 		_compartmentsTurnedOut = _compartmentsTurnedOut - [""];
 
 		if (count _compartmentsTurnedOut > 0) then {
-			_hintMsg = _hintMsg + format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", "TURNED OUT"];
+			_hintMsg pushBack (format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", "Turned Out"]);
 		};
 
 		{
 			private _attConfig = _config >> "ACRE" >> "attenuationTurnedOut" >> _x;
 
-			_hintMsg = _hintMsg + format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _x];
+			_hintMsg pushBack (format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _x]);
 
 			{
 				private _attenuation = getNumber(_attConfig >> _x);
 				if (_attenuation > 0) then {
-					_hintMsg = _hintMsg + format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>", _x, _attenuation];
+					_hintMsg pushBack (format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>", _x, _attenuation]);
 				};
 			} forEach _compartmentsTurnedOut;
 		} forEach _compartmentsTurnedOut;
 
-		hintSilent parseText _hintMsg;
+		hintSilent parseText (_hintMsg joinString "");
 
 		// Draw attenuation values for all speakers
 		{
