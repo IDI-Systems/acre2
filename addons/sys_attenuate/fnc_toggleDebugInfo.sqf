@@ -14,7 +14,7 @@
  *
  * Public: No
  */
- 
+
 if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 	ACRE_SYS_ATTENUATE_DEBUG_DRAW = {
 		private _speakers = allUnits;
@@ -71,21 +71,30 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 		};
 		_compartments = _compartments - [""];
 
-		if (count _compartments > 0) then {
+		private _compartmentsCount = count _compartments;
+		if (_compartmentsCount > 0) then {
 			_hintMsg pushBack (format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _type]);
 		};
 
 		{
-			private _attConfig = _config >> "ACRE" >> "attenuation" >> _x;
+			private _rootAtt = _x;
+			private _attConfig = _config >> "ACRE" >> "attenuation" >> _rootAtt;
 
-			_hintMsg pushBack (format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _x]);
+			_hintMsg pushBack (format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _rootAtt]);
 
 			{
 				private _attenuation = getNumber(_attConfig >> _x);
 				if (_attenuation > 0) then {
-					_hintMsg pushBack (format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>",  _x, _attenuation]);
+					_hintMsg pushBack (format ["<t align='left' font='PuristaMedium'> %2 = %3",  _rootAtt select [11], _x select [11], _attenuation]);
+					
+					if (_forEachIndex == (_compartmentsCount - 1)) then {
+						_hintMsg pushBack "</t>";
+					} else {
+						_hintMsg pushBack "    |  </t>";
+					};
 				};
 			} forEach _compartments;
+			_hintMsg pushBack "<br/>";
 		} forEach _compartments;
 
 		_compartmentsTurnedOut = ["Compartment1","Compartment2","Compartment3","Compartment4"] apply {
@@ -97,21 +106,30 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 		};
 		_compartmentsTurnedOut = _compartmentsTurnedOut - [""];
 
-		if (count _compartmentsTurnedOut > 0) then {
-			_hintMsg pushBack (format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", "Turned Out"]);
+		private _compartmentsTurnedOutCount = count _compartmentsTurnedOut;
+		if (_compartmentsTurnedOutCount > 0) then {
+			_hintMsg pushBack (format["<t align='left' size='1.15' color='#0051a1' font='PuristaMedium'>%1</t><br/>", "Turned Out"]);
 		};
 
 		{
-			private _attConfig = _config >> "ACRE" >> "attenuationTurnedOut" >> _x;
+			private _rootAtt = _x;
+			private _attConfig = _config >> "ACRE" >> "attenuationTurnedOut" >> _rootAtt;
 
 			_hintMsg pushBack (format ["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", _x]);
 
 			{
 				private _attenuation = getNumber(_attConfig >> _x);
 				if (_attenuation > 0) then {
-					_hintMsg pushBack (format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>", _x, _attenuation]);
+					_hintMsg pushBack (format ["<t align='left' font='PuristaMedium'> %2 = %3",  _rootAtt select [11], _x select [11], _attenuation]);
+					
+					if (_forEachIndex == (_compartmentsCount - 1)) then {
+						_hintMsg pushBack "</t>";
+					} else {
+						_hintMsg pushBack "    |  </t>";
+					};
 				};
 			} forEach _compartmentsTurnedOut;
+			_hintMsg pushBack "<br/>";
 		} forEach _compartmentsTurnedOut;
 
 		hintSilent parseText (_hintMsg joinString "");
