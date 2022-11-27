@@ -24,7 +24,7 @@ class CfgWeapons {
         EGVAR(arsenalStats,frequencyMin) = 400; // internet says 400-470MHz
         EGVAR(arsenalStats,frequencyMax) = 400.62; // code implies 63 channels 0.01 apart?
         EGVAR(arsenalStats,transmitPower) = 5000;
-        EGVAR(arsenalStats,effectiveRange) = "3km"; // internet says everything from 3km to 15miles
+        EGVAR(arsenalStats,effectiveRange) = "5km (3km)"; // 5km in ideal conditions, 3km otherwise?
     };
 
     RADIO_ID_LIST(ACRE_BF888S)
