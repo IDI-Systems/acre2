@@ -20,6 +20,11 @@ class CfgWeapons {
         class Library {
             libTextDesc = QUOTE(NAME_BF888S);
         };
+
+        EGVAR(arsenalStats,frequencyMin) = 400;
+        EGVAR(arsenalStats,frequencyMax) = 470;
+        EGVAR(arsenalStats,transmitPower) = 5000;
+        EGVAR(arsenalStats,effectiveRange) = "3-5km (2-3km)";
     };
 
     RADIO_ID_LIST(ACRE_BF888S)
