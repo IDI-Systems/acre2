@@ -21,10 +21,10 @@ class CfgWeapons {
             libTextDesc = QUOTE(NAME_BF888S);
         };
 
-        EGVAR(arsenalStats,frequencyMin) = 400; // internet says 400-470MHz
-        EGVAR(arsenalStats,frequencyMax) = 400.62; // code implies 63 channels 0.01 apart?
+        EGVAR(arsenalStats,frequencyMin) = 400;
+        EGVAR(arsenalStats,frequencyMax) = 470;
         EGVAR(arsenalStats,transmitPower) = 5000;
-        EGVAR(arsenalStats,effectiveRange) = "5km (3km)"; // 5km in ideal conditions, 3km otherwise?
+        EGVAR(arsenalStats,effectiveRange) = "3-5km (2-3km)";
     };
 
     RADIO_ID_LIST(ACRE_BF888S)
