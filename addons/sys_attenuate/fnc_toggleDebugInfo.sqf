@@ -63,11 +63,7 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
         private _type = typeOf (vehicle acre_player);
         private _config = configFile >> "CfgVehicles" >> (typeOf (vehicle acre_player));
         private _compartments = ["Compartment1","Compartment2","Compartment3","Compartment4"] apply {
-            if (isClass (_config >> "ACRE" >> "attenuation" >> _x)) then {
-                _x
-            } else {
-                ""
-            };
+            ["", _x] select (isClass (_config >> "ACRE" >> "attenuation" >> _x))
         };
         _compartments = _compartments - [""];
 
