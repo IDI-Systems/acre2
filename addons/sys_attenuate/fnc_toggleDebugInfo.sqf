@@ -140,7 +140,7 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
             private _atten = [_x] call acre_sys_attenuate_fnc_getUnitAttenuate;
             private _color = [0, 1 - _atten, _atten, _atten + .6];
             private _text = format ["%1: %2", (name _x) select [0,10], _atten];
-            drawIcon3D ["\a3\ui_f\data\gui\cfg\Hints\icon_text\group_1_ca.paa", _color, _x modelToWorldVisual [0,0,0], 1, 1, _dir, _text, 1, 0.04, "RobotoCondensed"];
+            drawIcon3D ["\a3\ui_f\data\GUI\Cfg\Hints\icon_text\group_1_ca.paa", _color, _x modelToWorldVisual [0,0,0], 1, 1, _dir, _text, 1, 0.04, "RobotoCondensed"];
         } forEach _speakers;
     };
 };
