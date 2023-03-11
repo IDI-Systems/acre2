@@ -94,11 +94,7 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
         } forEach _compartments;
 
         _compartmentsTurnedOut = ["Compartment1","Compartment2","Compartment3","Compartment4"] apply {
-            if (isClass (_config >> "ACRE" >> "attenuationTurnedOut" >> _x)) then {
-                _x
-            } else {
-                ""
-            };
+            ["", _x] select (isClass (_config >> "ACRE" >> "attenuationTurnedOut" >> _x))
         };
         _compartmentsTurnedOut = _compartmentsTurnedOut - [""];
 
