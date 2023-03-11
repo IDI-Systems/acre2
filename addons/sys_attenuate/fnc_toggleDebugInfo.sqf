@@ -100,7 +100,7 @@ if (isNil {missionNameSpace getVariable "ACRE_SYS_ATTENUATE_DEBUG_DRAW"}) then {
 
         private _compartmentsTurnedOutCount = count _compartmentsTurnedOut;
         if (_compartmentsTurnedOutCount > 0) then {
-            _hintMsg pushBack (format["<t align='left' size='1.15' color='#0051a1' font='PuristaMedium'>%1</t><br/>", "Turned Out"]);
+            _hintMsg pushBack (format ["<t align='left' size='1.15' color='#0051a1' font='PuristaMedium'>%1</t><br/>", "Turned Out"]);
         };
 
         {
