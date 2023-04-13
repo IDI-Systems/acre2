@@ -5,23 +5,23 @@ class CfgUIGrids {
                 class Variables {
                     GVAR(volumeControl)[] = {
                         {
-                            VOLUME_CONTROL_DEFAULT_X,
-                            VOLUME_CONTROL_DEFAULT_Y,
-                            VOLUME_CONTROL_DEFAULT_W,
-                            VOLUME_CONTROL_DEFAULT_H
+                            QUOTE(VOLUME_CONTROL_DEFAULT_X),
+                            QUOTE(VOLUME_CONTROL_DEFAULT_Y),
+                            QUOTE(VOLUME_CONTROL_DEFAULT_W),
+                            QUOTE(VOLUME_CONTROL_DEFAULT_H)
                         },
-                        POS_W(1),
-                        POS_H(1)
+                        QUOTE(POS_W(1)),
+                        QUOTE(POS_H(1))
                     };
                     grid_ACRE_vehicleInfo[] = {
                         {
-                            VEHICLE_INFO_DEFAULT_X,
-                            VEHICLE_INFO_DEFAULT_Y,
-                            VEHICLE_INFO_DEFAULT_W,
-                            VEHICLE_INFO_DEFAULT_H
+                            QUOTE(VEHICLE_INFO_DEFAULT_X),
+                            QUOTE(VEHICLE_INFO_DEFAULT_Y),
+                            QUOTE(VEHICLE_INFO_DEFAULT_W),
+                            QUOTE(VEHICLE_INFO_DEFAULT_H)
                         },
-                        IGUI_GRID_VEHICLE_W,
-                        IGUI_GRID_VEHICLE_H
+                        QUOTE(IGUI_GRID_VEHICLE_W),
+                        QUOTE(IGUI_GRID_VEHICLE_H)
                     };
                 };
             };

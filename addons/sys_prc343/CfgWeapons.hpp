@@ -23,8 +23,8 @@ class CfgWeapons {
             libTextDesc = QUOTE(NAME_PRC343);
         };
 
-        EGVAR(arsenalStats,frequencyMin) = 2.4e9;
-        EGVAR(arsenalStats,frequencyMax) = 2.483e9;
+        EGVAR(arsenalStats,frequencyMin) = "2.4e9";
+        EGVAR(arsenalStats,frequencyMax) = "2.483e9";
         EGVAR(arsenalStats,transmitPower) = 100;
         EGVAR(arsenalStats,effectiveRange) = "850m (400m)";
     };
