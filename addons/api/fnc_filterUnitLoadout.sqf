@@ -23,6 +23,10 @@ if !(_loadout isEqualType []) then {
     _loadout = getUnitLoadout _loadout;
 };
 
+if (_loadout isEqualTo []) exitWith {
+    _loadout
+};
+
 // Remove "ItemRadioAcreFlagged"
 if ((_loadout select 9) select 2 == "ItemRadioAcreFlagged") then {
     (_loadout select 9) set [2, ""];

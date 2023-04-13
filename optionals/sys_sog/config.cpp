@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main", "acre_api", "data_f_vietnam"};
+        requiredAddons[] = {"acre_main", "acre_api"};
         author = ECSTRING(main,Author);
         authors[] = {"Savage Game Design", "veteran29"};
         url = ECSTRING(main,URL);
@@ -19,5 +19,11 @@ class CfgPatches {
 class CfgAcreWorlds {
     class cam_lao_nam {
         wrp = "\idi\acre\addons\sys_sog\cam_lao_nam.fakewrp";
+    };
+    class vn_khe_sanh {
+        wrp = "\idi\acre\addons\sys_sog\vn_khe_sanh.fakewrp";
+    };
+    class vn_the_bra {
+        wrp = "\idi\acre\addons\sys_sog\vn_the_bra.fakewrp";
     };
 };

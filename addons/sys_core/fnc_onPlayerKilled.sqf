@@ -27,6 +27,7 @@ if (_unit == acre_player) then {
     GVAR(isDeaf) = false;
 
     acre_player setVariable [QGVAR(isDisabled), false, true];
+    acre_player setVariable [QGVAR(isDisabledRadio), false, true];
 };
 
 true

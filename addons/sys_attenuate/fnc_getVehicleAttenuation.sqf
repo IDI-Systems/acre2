@@ -4,7 +4,7 @@
  * Calculates the attenuation of a unit being heard externally from the vehicle.
  *
  * Arguments:
- * 0: Unit (or vehicle) <Object>
+ * 0: Unit <Object>
  *
  * Return Value:
  * Attenuation <NUMBER>
@@ -15,42 +15,25 @@
  * Public: No
  */
 
-params [["_unit",objNull]];
-private _vehicle = vehicle _unit;
-
-if (isNull _vehicle) exitWith {};
+params [["_unit", objNull, [objNull]]];
 
 private _attenuation = 0;
-private _effectType = getText (configOf _vehicle >> "attenuationEffectType");
 
-private _turret = _vehicle unitTurret _unit;
-if (!(_turret in [[], [-1]])) then {
-    private _config = [_vehicle, _turret] call CBA_fnc_getTurret;
+private _effectType = [_unit] call FUNC(getAttenuationEffectType);
+if (_effectType isEqualTo "") exitWith {_attenuation};
 
-    if ((getNumber (_config >> "disableSoundAttenuation")) == 1) then {
-        _effectType = "";
-    } else {
-        if (isText (_config >> "soundAttenuationTurret")) then {
-            _effectType = getText (_config >> "soundAttenuationTurret");
-        };
-    };
+private _cachedAttenuation = HASH_GET(GVAR(attenuationCache), _effectType);
+if (!isNil "_cachedAttenuation") exitWith {_cachedAttenuation};
+
+private _attenuationsEffectsCfg = configFile >> "CfgSoundEffects" >> "AttenuationsEffects";
+
+private _attenuationCfg = _attenuationsEffectsCfg >> _effectType >> "acreAttenuation";
+if (isNumber (_attenuationCfg)) then {
+    _attenuation = getNumber (_attenuationCfg);
+} else {
+    _attenuation = getNumber (_attenuationsEffectsCfg >> "acreDefaultAttenuation");
 };
 
-if (_effectType != "") then {
-    // CfgSoundEffects >> AttenuationsEffects
-    private _value = HASH_GET(GVAR(attenuationCache), _effectType);
-    if (isNil "_value") then {
-        private _config = configFile >> "CfgSoundEffects" >> "AttenuationsEffects" >> _effectType >> "acreAttenuation";
-        if (isNumber(_config)) then {
-            _attenuation = getNumber (_config);
-            HASH_SET(GVAR(attenuationCache), _effectType, _attenuation);
-        } else {
-            _attenuation = getNumber (configFile >> "CfgSoundEffects" >> "AttenuationsEffects" >> "acreDefaultAttenuation");
-            HASH_SET(GVAR(attenuationCache), _effectType, _attenuation);
-        };
-    } else {
-        _attenuation = _value;
-    };
-};
+HASH_SET(GVAR(attenuationCache), _effectType, _attenuation);
 
-_attenuation;
+_attenuation

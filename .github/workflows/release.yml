@@ -5,6 +5,14 @@ on:
     branches:
     - development-build
     - release-build
+  workflow_dispatch:
+    inputs:
+      path:
+        description: 'Path of upload (after <ftp>/test/)'
+        required: true
+        default: 'acre2'
+      label:
+        description: 'Label to attach to the archive name (with leading underscore)'
 
 jobs:
   build:
@@ -22,6 +30,7 @@ jobs:
         Expand-Archive acre2_tools.zip -DestinationPath ci
         echo "Check HEMTT: $(Test-Path .\\ci\\hemtt.exe)"
         echo "Check Binarize: $(Test-Path .\\ci\\binarize\\binarize_x64.exe)"
+        echo "Check ArmaScriptCompiler: $(Test-Path .\\ci\\ArmaScriptCompiler.exe)"
         .\ci\hemtt.exe --version
         echo "Install Binarize dependencies"
         cp .\ci\binarize\X3DAudio1_7.dll,.\ci\binarize\XAPOFX1_5.dll C:\Windows\System32\
@@ -30,6 +39,11 @@ jobs:
         echo "::endgroup::"
         echo "VERSION=$(.\\ci\\hemtt.exe var version)" >> $env:GITHUB_ENV
         echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $env:GITHUB_ENV
+    - name: Setup P-Drive for ArmaScriptCompiler
+      run: |
+        echo "Creating p: and linking idi\acre\addons"
+        subst p: include
+        New-Item -ItemType Junction -Path "p:\idi\acre\addons" -Target "addons"
     - name: Test Binarize
       run: |
         echo "::group::Run Binarize without arguments (look for missing DLLs)"
@@ -95,6 +109,54 @@ jobs:
           symbols
         retention-days: 1
 
+  publish-test:
+    needs: [build, compile]
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Artifacts
+      uses: actions/download-artifact@v2
+    - name: Prepare Archives
+      run: |
+        echo "Organize"
+        mv acre2/* .
+        mv acre2-extensions-*/*.dll @acre2/
+        mv acre2-extensions-*/extras/*.exe @acre2/extras/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
+        mkdir symbols && mv acre2-extensions-*/symbols/* .
+        echo "::group::Archive build"
+        zip -r acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip @acre2
+        echo "::endgroup::"
+        echo "::group::Archive symbols"
+        zip -r acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}_symbols.zip x86 x64
+        echo "::endgroup::"
+        ls *.zip
+    - name: Upload to FTP (ACRE2)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        source: "acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip"
+        target: "${{ secrets.FTP_SERVER }}/test/${{ github.event.inputs.path }}"
+    - name: Upload to FTP (Symbols)
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        source: "acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}_symbols.zip"
+        target: "${{ secrets.FTP_SERVER }}/test/${{ github.event.inputs.path }}"
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_USERNAME: Publisher
+        SLACK_ICON_EMOJI: ":package:"
+        SLACK_MESSAGE: 'Test-Build uploaded! http://${{ secrets.FTP_SERVER }}/dev/acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip'
+        SLACK_TITLE: Release Status
+        MSG_MINIMAL: actions url
+
   publish-dev:
     needs: [build, compile]
     if: github.ref == 'refs/heads/development-build'
@@ -108,7 +170,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
@@ -166,7 +228,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && mv acre2-extensions-*/plugin/* @acre2/plugin/
+        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
@@ -217,6 +279,26 @@ jobs:
         appId: '107410'
         itemId: '2450980898'  # S.O.G. Prairie Fire Compatibility
         contentPath: '@acre2/optionals/@acre2_sys_sog'
+        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
+      env:
+        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+    - name: Upload to Steam (ACRE2 CSLA Iron Curtain Compatibility)
+      uses: arma-actions/workshop-upload@v1
+      with:
+        appId: '107410'
+        itemId: '2649217268'  # CSLA Iron Curtain Compatibility
+        contentPath: '@acre2/optionals/@acre2_sys_csla'
+        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
+      env:
+        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+    - name: Upload to Steam (ACRE2 Western Sahara Compatibility)
+      uses: arma-actions/workshop-upload@v1
+      with:
+        appId: '107410'
+        itemId: '2657862776'  # Western Sahara Compatibility
+        contentPath: '@acre2/optionals/@acre2_sys_ws'
         changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
       env:
         STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}

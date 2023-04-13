@@ -4,305 +4,458 @@
         <!-- Basic Mission Setup Module-->
         <Key ID="STR_ACRE_api_basicMissionSetup_Module_DisplayName">
             <English>Basic Mission Setup</English>
+            <German>Grundlegende Missionskonfiguration</German>
+            <Italian>Configurazione della missione di base</Italian>
             <French>Réglages de mission</French>
             <Chinese>基本任務設置</Chinese>
             <Chinesesimp>基本任务设置</Chinesesimp>
             <Portuguese>Configuração básica de missão</Portuguese>
+            <Turkish>Temel Görev Düzeni</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_Module_Description">
             <English>This module defines basic ACRE setup for a mission</English>
+            <German>Dieses Modul definiert das grundlegende ACRE-Setup für eine Mission</German>
+            <Italian>Questo modulo definisce la configurazione di base di ACRE per una missione</Italian>
             <French>Ce module permet la configuration du module de base ACRE pour la mission.</French>
             <Chinese>這個模塊為了任務定義基礎的ACRE 設定</Chinese>
             <Chinesesimp>这个模块为了任务定义基础的ACRE 设定</Chinesesimp>
             <Portuguese>Este módulo define configurações básicas do ACRE para a missão</Portuguese>
+            <Turkish>Bu modül bir görev için temel ayarları tanımlar</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_DisplayName">
             <English>Channels Per Side</English>
+            <German>Kanäle pro Seite</German>
+            <Italian>Canali per lato</Italian>
             <French>Canaux séparés par camp</French>
             <Chinese>各陣營不同頻率</Chinese>
             <Chinesesimp>各阵营不同频率</Chinesesimp>
             <Portuguese>Canais exclusivos por Lado</Portuguese>
+            <Turkish>Taraf Başı Kanal</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_Description">
             <English>Set to true to have each side have different ACRE radio frequencies</English>
+            <German>Auf wahr setzen, damit jede Seite unterschiedliche ACRE-Funkfrequenzen hat</German>
+            <Italian>Impostato su true in modo che ogni lato abbia diverse frequenze radio ACRE</Italian>
             <French>Définit si chaque camp doit avoir des fréquences radio qui lui sont propres.</French>
             <Chinese>設為是時會讓不同陣營的玩家有著不同的ACRE 無線電頻率</Chinese>
             <Chinesesimp>设为实时让不同阵营的玩家有着不同的ACRE 无线电频率</Chinesesimp>
             <Portuguese>Determina se cada Lado terá diferentes frequências de rádio ACRE.</Portuguese>
+            <Turkish>Bu ayar ile her tarafın kendi ACRE telsiz frekansları olur</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_DisplayName">
             <English>Babel Language Per Side</English>
+            <German>Babel Sprache pro Seite</German>
+            <Italian>Babel Lingua per lato</Italian>
             <French>Langue Babel par camp</French>
             <Chinese>各陣營多國語言</Chinese>
             <Chinesesimp>各阵营多国语言</Chinesesimp>
             <Portuguese>Linguagem Babel por Lado</Portuguese>
+            <Turkish>Taraf Başı Babel Dili</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_Description">
             <English>Select whether each side has its own language, and whether they also share a common tongue.</English>
+            <German>Auswählen, ob jede Seite Ihre eigene Sprache hat oder ob Sie auch eine gemeinsame Sprache sprechen.</German>
+            <Italian>Seleziona se ogni parte ha la propria lingua e se condividono anche una lingua comune.</Italian>
             <French>Définit si chaque camp a sa propre langue, ou s'ils partagent également une langue commune.</French>
             <Chinese>設定各陣營是否使用自己的母語，或者母語之外還有一個通用語言。</Chinese>
             <Chinesesimp>设定各阵营是否使用自己的母语，或者母语之外还有一个通用语言。</Chinesesimp>
             <Portuguese>Seleciona se cada Lado tem a sua própria linguagem e se eles compartilham uma língua comum.</Portuguese>
+            <Turkish>Her tarafın kendi dili olup olmadığını, ve ortak bir dil paylaşıp paylaşmadıklarını seçin</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_AllDifferent">
             <English>Per-Side</English>
+            <German>Pro-Seite</German>
+            <Italian>Perlato</Italian>
             <French>Une langue par camp</French>
             <Chinese>母語</Chinese>
             <Chinesesimp>母语</Chinesesimp>
             <Portuguese>Uma língua por Lado</Portuguese>
+            <Turkish>Taraf Başı 1 Dil</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_SharingDifferent">
             <English>Per-Side /w Common</English>
+            <German>Pro-Seite mit Gemeinsamer Sprache</German>
+            <Italian>Una lingua per campo/con una lingua comune</Italian>
             <French>Une langue par camp/avec une langue commune</French>
             <Chinese>母語並外加通用語</Chinese>
             <Chinesesimp>母语并外加通用语</Chinesesimp>
             <Portuguese>Uma língua por Lado c/ comum</Portuguese>
+            <Turkish>Taraf Başı 1 Dil + Ortak Dil</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_No">
             <English>No Babel</English>
+            <German>Babel deaktivieren</German>
+            <Italian>Non usare Babel</Italian>
             <French>Ne pas utiliser Babel</French>
             <Chinese>關閉母語</Chinese>
             <Chinesesimp>关闭母语</Chinesesimp>
             <Portuguese>Não utiliza o sistema Babel</Portuguese>
+            <Turkish>Babel Kapat</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_DisplayName">
             <English>Default Radio 1</English>
+            <German>Standard Funkgerät 1</German>
+            <Italian>Radio predefinita 1</Italian>
             <French>Radio par défaut 1</French>
             <Chinese>預設無線電 1</Chinese>
             <Chinesesimp>预设无线电 1</Chinesesimp>
             <Portuguese>Rádio padrão 1</Portuguese>
+            <Turkish>Varsayılan Telsiz 1</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Two_DisplayName">
             <English>Default Radio 2</English>
+            <German>Standard Funkgerät 2</German>
+            <Italian>Radio predefinita 2</Italian>
             <French>Radio par défaut 2</French>
             <Chinese>預設無線電 2</Chinese>
             <Chinesesimp>预设无线电 2</Chinesesimp>
             <Portuguese>Rádio padrão 2</Portuguese>
+            <Turkish>Varsayılan Telsiz 2</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Three_DisplayName">
             <English>Default Radio 3</English>
+            <German>Standard Funkgerät 3</German>
+            <Italian>Radio predefinita 3</Italian>
             <French>Radio par défaut 3</French>
             <Chinese>預設無線電 3</Chinese>
             <Chinesesimp>预设无线电 3</Chinesesimp>
             <Portuguese>Rádio padrão 3</Portuguese>
+            <Turkish>Varsayılan Telsiz 3</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Four_DisplayName">
             <English>Default Radio 4</English>
+            <German>Standard Funkgerät 4</German>
+            <Italian>Radio predefinita 4</Italian>
             <French>Radio par défaut 4</French>
             <Chinese>預設無線電 4</Chinese>
             <Chinesesimp>预设无线电 4</Chinesesimp>
             <Portuguese>Rádio padrão 4</Portuguese>
+            <Turkish>Varsayılan Telsiz 4</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Description">
             <English>Default radio for ACRE to give player</English>
+            <German>Funkgerät, welches den Spielern gegeben wird</German>
+            <Italian>Radio predefinita per ACRE da dare al giocatore</Italian>
             <French>Radio ACRE par défaut à donner au joueur.</French>
             <Chinese>預設給於玩家的ACRE 無線電</Chinese>
             <Chinesesimp>预设给予玩家的ACRE 无线电</Chinesesimp>
             <Portuguese>Rádio padrão para o jogador</Portuguese>
+            <Turkish>ACRE'ın oyunculara vereceği telsiz</Turkish>
         </Key>
         <!-- Name Channels Module-->
         <Key ID="STR_ACRE_api_nameChannels_Module_DisplayName">
             <English>Name Channels</English>
+            <German>Namen Kanäle</German>
+            <Italian>Nomi dei canali</Italian>
             <French>Nommer les canaux</French>
             <Chinese>頻道名</Chinese>
             <Chinesesimp>频道名</Chinesesimp>
             <Portuguese>Nomear canais</Portuguese>
+            <Turkish>Kanal İsimleri</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Module_Description">
             <English>This module defines basic channel naming for a mission in ACRE</English>
+            <German>Dieses Modul definiert Grundlegende Kanal Namen für die Mission mit ACRE</German>
+            <Italian>Questo modulo definisce la denominazione di base del canale per una missione in ACRE</Italian>
             <French>Ce module permet de nommer les canaux radio ACRE pour la mission.</French>
             <Chinese>這個模組為任務定義基礎的ACRE 頻道名稱</Chinese>
             <Chinesesimp>这个模组为任务定义基础的ACRE频道名称</Chinesesimp>
             <Portuguese>Este módulo define a nomeação de canais para a missão no ACRE</Portuguese>
+            <Turkish>Bu modül bir görev için kanal isimlerini tanımlar</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_DisplayName">
             <English>Side</English>
+            <German>Seite</German>
+            <Italian>Lato</Italian>
             <French>Camp(s)</French>
             <Chinese>陣營選擇</Chinese>
             <Chinesesimp>阵营选择</Chinesesimp>
             <Portuguese>Lado</Portuguese>
+            <Spanish>Bando</Spanish>
+            <Turkish>Taraf</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Description">
             <English>Select the side to name channels for</English>
+            <German>Wähle die Seite, für die du Kanal Namen vergeben willst</German>
+            <Italian>Seleziona il lato per cui nominare i canali</Italian>
             <French>Choisir pour quel(s) camp(s) nommer les canaux.</French>
             <Chinese>選擇哪方陣營使用頻道名稱</Chinese>
             <Chinesesimp>选择哪方阵营使用频道名称</Chinesesimp>
             <Portuguese>Selecionar o Lado qual seus canais serão nomeados</Portuguese>
+            <Turkish>Kanal isimlerinin belirlenceği tarafı seçin</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_All">
             <English>All</English>
+            <German>Alle</German>
+            <Italian>Tutto</Italian>
             <French>Tous</French>
             <Chinese>全部</Chinese>
             <Chinesesimp>全部</Chinesesimp>
             <Portuguese>Todos</Portuguese>
+            <Spanish>Todos</Spanish>
+            <Turkish>Hepsi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_West">
             <English>BLUFOR</English>
+            <German>BLUFOR</German>
+            <Italian>BLUFOR</Italian>
             <French>BLUFOR</French>
             <Chinese>藍方</Chinese>
             <Chinesesimp>蓝方</Chinesesimp>
             <Portuguese>BLUFOR</Portuguese>
+            <Turkish>BLUFOR</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_East">
             <English>OPFOR</English>
+            <German>OPFOR</German>
+            <Italian>OPFOR</Italian>
             <French>OPFOR</French>
             <Chinese>對立方</Chinese>
             <Chinesesimp>对立方</Chinesesimp>
             <Portuguese>OPFOR</Portuguese>
+            <Turkish>OPFOR</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Ind">
             <English>Independent</English>
+            <German>Unabhängig</German>
+            <Italian>Indipendente</Italian>
             <French>Indépendants</French>
             <Chinese>獨立方</Chinese>
             <Chinesesimp>独立方</Chinesesimp>
             <Portuguese>Independentes</Portuguese>
+            <Spanish>Independientes</Spanish>
+            <Turkish>Independent</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Civ">
             <English>Civilian</English>
+            <German>Zivil</German>
+            <Italian>Civile</Italian>
             <French>Civils</French>
             <Chinese>市民</Chinese>
             <Chinesesimp>市民</Chinesesimp>
             <Portuguese>Civís</Portuguese>
+            <Spanish>Civiles</Spanish>
+            <Turkish>Sivil</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_1_DisplayName">
             <English>Channel 1</English>
+            <German>Kanal 1</German>
+            <Italian>Canale 1</Italian>
             <French>Canal 1</French>
             <Chinese>頻道 1</Chinese>
             <Chinesesimp>频道 1</Chinesesimp>
             <Portuguese>Canal 1</Portuguese>
+            <Spanish>Canal 1</Spanish>
+            <Turkish>Kanal 1</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_1_Description">
             <English>Name of Channel 1</English>
+            <German>Name von Kanal 1</German>
+            <Italian>Nome del canale 1</Italian>
             <French>Définit le nom du canal 1.</French>
             <Chinese>頻道 1 名稱</Chinese>
             <Chinesesimp>频道 1 名称</Chinesesimp>
             <Portuguese>Nome do Canal 1</Portuguese>
+            <Spanish>Nombre de Canal 1</Spanish>
+            <Turkish>Kanal 1'in İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_2_DisplayName">
             <English>Channel 2</English>
+            <German>Kanal 2</German>
+            <Italian>Canale 2</Italian>
             <French>Canal 2</French>
             <Chinese>頻道 2</Chinese>
             <Chinesesimp>频道 2</Chinesesimp>
             <Portuguese>Canal 2</Portuguese>
+            <Spanish>Canal 2</Spanish>
+            <Turkish>Kanal 2</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_2_Description">
             <English>Name of Channel 2</English>
+            <German>Name von Kanal 2</German>
+            <Italian>Nome del canale 2</Italian>
             <French>Définit le nom du canal 2.</French>
             <Chinese>頻道 2 名稱</Chinese>
             <Chinesesimp>频道 2 名称</Chinesesimp>
             <Portuguese>Nome do Canal 2</Portuguese>
+            <Spanish>Nombre de Canal 2</Spanish>
+            <Turkish>Kanal 2'nin İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_3_DisplayName">
             <English>Channel 3</English>
+            <German>Kanal 3</German>
+            <Italian>Canale 3</Italian>
             <French>Canal 3</French>
             <Chinese>頻道 3</Chinese>
             <Chinesesimp>频道 3</Chinesesimp>
             <Portuguese>Canal 3</Portuguese>
+            <Spanish>Canal 3</Spanish>
+            <Turkish>Kanal 3</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_3_Description">
             <English>Name of Channel 3</English>
+            <German>Name von Kanal 3</German>
+            <Italian>Nome del canale 3</Italian>
             <French>Définit le nom du canal 3.</French>
             <Chinese>頻道 3 名稱</Chinese>
             <Chinesesimp>频道 3 名称</Chinesesimp>
             <Portuguese>Nome do Canal 3</Portuguese>
+            <Spanish>Nombre de Canal 3</Spanish>
+            <Turkish>Kanal 3'ün İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_4_DisplayName">
             <English>Channel 4</English>
+            <German>Kanal 4</German>
+            <Italian>Canale 4</Italian>
             <French>Canal 4</French>
             <Chinese>頻道 4</Chinese>
             <Chinesesimp>频道 4</Chinesesimp>
             <Portuguese>Canal 4</Portuguese>
+            <Spanish>Canal 4</Spanish>
+            <Turkish>Kanal 4</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_4_Description">
             <English>Name of Channel 4</English>
+            <German>Name von Kanal 4</German>
+            <Italian>Nome del canale 4</Italian>
             <French>Définit le nom du canal 4.</French>
             <Chinese>頻道 4 名稱</Chinese>
             <Chinesesimp>频道 4 名称</Chinesesimp>
             <Portuguese>Nome do Canal 4</Portuguese>
+            <Spanish>Nombre de Canal 4</Spanish>
+            <Turkish>Kanal 4'ün İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_5_DisplayName">
             <English>Channel 5</English>
+            <German>Kanal 5</German>
+            <Italian>Canale 5</Italian>
             <French>Canal 5</French>
             <Chinese>頻道 5</Chinese>
             <Chinesesimp>频道 5</Chinesesimp>
             <Portuguese>Canal 5</Portuguese>
+            <Spanish>Canal 5</Spanish>
+            <Turkish>Kanal 5</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_5_Description">
             <English>Name of Channel 5</English>
+            <German>Name von Kanal 5</German>
+            <Italian>Nome del canale 5</Italian>
             <French>Définit le nom du canal 5.</French>
             <Chinese>頻道 5 名稱</Chinese>
             <Chinesesimp>频道 5 名称</Chinesesimp>
             <Portuguese>Nome do Canal 5</Portuguese>
+            <Spanish>Nombre de Canal 5</Spanish>
+            <Turkish>Kanal 5'in İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_6_DisplayName">
             <English>Channel 6</English>
+            <German>Kanal 6</German>
+            <Italian>Canale 6</Italian>
             <French>Canal 6</French>
             <Chinese>頻道 6</Chinese>
             <Chinesesimp>频道 6</Chinesesimp>
             <Portuguese>Canal 6</Portuguese>
+            <Spanish>Canal 6</Spanish>
+            <Turkish>Kanal 6</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_6_Description">
             <English>Name of Channel 6</English>
+            <German>Name von Kanal 6</German>
+            <Italian>Nome del canale 6</Italian>
             <French>Définit le nom du canal 6.</French>
             <Chinese>頻道 6 名稱</Chinese>
             <Chinesesimp>频道 6 名称</Chinesesimp>
             <Portuguese>Nome do Canal 6</Portuguese>
+            <Spanish>Nombre de Canal 6</Spanish>
+            <Turkish>Kanal 6'nın İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_7_DisplayName">
             <English>Channel 7</English>
+            <German>Kanal 7</German>
+            <Italian>Canale 7</Italian>
             <French>Canal 7</French>
             <Chinese>頻道 7</Chinese>
             <Chinesesimp>频道 7</Chinesesimp>
             <Portuguese>Canal 7</Portuguese>
+            <Spanish>Canal 7</Spanish>
+            <Turkish>Kanal 7</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_7_Description">
             <English>Name of Channel 7</English>
+            <German>Name von Kanal 7</German>
+            <Italian>Nome del canale 7</Italian>
             <French>Définit le nom du canal 7.</French>
             <Chinese>頻道 7 名稱</Chinese>
             <Chinesesimp>频道 7 名称</Chinesesimp>
             <Portuguese>Nome do Canal 7</Portuguese>
+            <Spanish>Nombre de Canal 7</Spanish>
+            <Turkish>Kanal 7'nin İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_8_DisplayName">
             <English>Channel 8</English>
+            <German>Kanal 8</German>
+            <Italian>Canale 8</Italian>
             <French>Canal 8</French>
             <Chinese>頻道 8</Chinese>
             <Chinesesimp>频道 8 </Chinesesimp>
             <Portuguese>Canal 8</Portuguese>
+            <Spanish>Canal 8</Spanish>
+            <Turkish>Kanal 8</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_8_Description">
             <English>Name of Channel 8</English>
+            <German>Name von Kanal 8</German>
+            <Italian>Nome del canale 8</Italian>
             <French>Définit le nom du canal 8.</French>
             <Chinese>頻道 8 名稱</Chinese>
             <Chinesesimp>频道 8 名称</Chinesesimp>
             <Portuguese>Nome do Canal 8</Portuguese>
+            <Spanish>Nombre de Canal 8</Spanish>
+            <Turkish>Kanal 8'in İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_9_DisplayName">
             <English>Channel 9</English>
+            <German>Kanal 9</German>
+            <Italian>Canale 9</Italian>
             <French>Canal 9</French>
             <Chinese>頻道 9</Chinese>
             <Chinesesimp>频道 9</Chinesesimp>
             <Portuguese>Canal 9</Portuguese>
+            <Spanish>Canal 9</Spanish>
+            <Turkish>Kanal 9</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_9_Description">
             <English>Name of Channel 9</English>
+            <German>Name von Kanal 9</German>
+            <Italian>Nome del canale 9</Italian>
             <French>Définit le nom du canal 9.</French>
             <Chinese>頻道 9 名稱</Chinese>
             <Chinesesimp>频道 9 名称</Chinesesimp>
             <Portuguese>Nome do Canal 9</Portuguese>
+            <Spanish>Nombre de Canal 9</Spanish>
+            <Turkish>Kanal 9'un İsmi</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_10_DisplayName">
             <English>Channel 10</English>
+            <German>Kanal 10</German>
+            <Italian>Canale 10</Italian>
             <French>Canal 10</French>
             <Chinese>頻道 10</Chinese>
             <Chinesesimp>频道 10 </Chinesesimp>
             <Portuguese>Canal 10</Portuguese>
+            <Spanish>Canal 10</Spanish>
+            <Turkish>Kanal 10</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_10_Description">
             <English>Name of Channel 10</English>
+            <German>Name von Kanal 10</German>
+            <Italian>Nome del canale 10</Italian>
             <French>Définit le nom du canal 10.</French>
             <Chinese>頻道 10 名稱</Chinese>
             <Chinesesimp>频道 10 名称</Chinesesimp>
             <Portuguese>Nome do Canal 10</Portuguese>
+            <Spanish>Nombre de Canal 10</Spanish>
+            <Turkish>Kanal 10'un İsmi</Turkish>
         </Key>
     </Package>
 </Project>

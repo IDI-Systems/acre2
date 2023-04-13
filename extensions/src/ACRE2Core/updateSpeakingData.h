@@ -91,6 +91,7 @@ RPC_FUNCTION(updateSpeakingData) {
                     speaker->channels[channelId]->setEffectInsert(2, "acre_radio");
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", false);
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5));
+                    speaker->channels[channelId]->getEffectInsert(2)->setParam("isLoudSpeaker", vMessage->getParameterAsFloat(7));
 
                     speaker->channels[channelId]->setMixdownEffectInsert(0, "acre_positional");
                 }

@@ -142,14 +142,15 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
 
                 private _radioPos = [0,0,0];
                 private _attenuate = 1;
+                private _occlusion = 1;
                 if ([_recRadio, "isExternalAudio"] call EFUNC(sys_data,dataEvent)) then {
                     _radioPos = [_recRadio, "getExternalAudioPosition"] call EFUNC(sys_data,physicalEvent);
                     // there needs to be handling of vehicle attenuation too
                     private _recRadioObject = [_recRadio] call EFUNC(sys_radio,getRadioObject);
                     _attenuate = [_recRadioObject] call EFUNC(sys_attenuate,getUnitAttenuate);
                     _attenuate = (1 - _attenuate)^3;
-                    _volumeModifier = [_radioPos, ACRE_LISTENER_POS, _recRadioObject] call FUNC(findOcclusion);
-                    _volumeModifier = _volumeModifier^3;
+                    _occlusion = [_radioPos, ACRE_LISTENER_POS, _recRadioObject] call FUNC(findOcclusion);
+                    _occlusion = _occlusion^3;
                 };
 
                 #ifdef ENABLE_PERFORMANCE_COUNTERS
@@ -165,12 +166,13 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
                             HASH_SET(_compiledParams, netId _unit, []);
                         };
                         private _speakingRadios = HASH_GET(_compiledParams, netId _unit);
-                        if (_params select 3) then {
+                        if (_params select 3) then { // speaker / loudspeaker
                             // Possible sound fix: Always double the distance of the radio for hearing purposes
                             // on external speaker to make it 'distant' like a speaker.
                             // This should be moved to plugin probably.
                             _params set [4, _radioPos];
-                            _params set [0, _radioVolume*_volumeModifier*_attenuate];
+                            _params set [0, _radioVolume * _volumeModifier * _attenuate * _occlusion];
+                            TRACE_4("volume (loudspeaker)",_params select 0,_radioVolume,_volumeModifier,_attenuate,_occlusion);
                         } else {
                             private _ear = [_recRadio, "getState", "ACRE_INTERNAL_RADIOSPATIALIZATION"] call EFUNC(sys_data,dataEvent);
                             if (isNil "_ear") then {
@@ -183,7 +185,8 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
                             if (GVAR(lowered)) then {
                                 _radioVolume = _radioVolume * 0.15;
                             };
-                            _params set [0, _radioVolume];
+                            _params set [0, _radioVolume * _volumeModifier];
+                            TRACE_3("volume (normal)",_params select 0,_radioVolume,_volumeModifier);
                         };
                         _params set [1, _signalData select 0];
                         _speakingRadios pushBack _params;
@@ -216,10 +219,8 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
             private _params = HASH_GET(_compiledParams, _x);
             private _canUnderstand = [_unit] call FUNC(canUnderstand);
             private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, count _params];
-            {
-                _paramArray append _x;
-            } forEach _params;
-            CALL_RPC("updateSpeakingData", _paramArray);
+            _paramArray append (flatten _params);
+            ["updateSpeakingData", _paramArray] call EFUNC(sys_rpc,callRemoteProcedure);
         };
     } forEach HASH_KEYS(_compiledParams);
 
@@ -241,17 +242,15 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
             if (_unit call FUNC(inRange)) then {
                 TRACE_1("Calling processDirectSpeaker", _unit);
                 private _params = [_unit] call FUNC(processDirectSpeaker);
-                CALL_RPC("updateSpeakingData", _params);
+                ["updateSpeakingData", _params] call EFUNC(sys_rpc,callRemoteProcedure);
             } else {
                 if !(_unit in _sentMicRadios) then {
-                    private _params = ['m', GET_TS3ID(_unit), 0];
-                    CALL_RPC("updateSpeakingData", _params);
+                    ["updateSpeakingData", ["m", GET_TS3ID(_unit), 0]] call EFUNC(sys_rpc,callRemoteProcedure);
                 };
             };
         } else {
             if (_unit != acre_player) then {
-                private _params = ['m', GET_TS3ID(_unit), 0];
-                CALL_RPC("updateSpeakingData", _params);
+                ["updateSpeakingData", ['m', GET_TS3ID(_unit), 0]] call EFUNC(sys_rpc,callRemoteProcedure);
             };
         };
     };
@@ -262,8 +261,7 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
 
     // Check speaking gods to only allow hearing by the god's target group
     if ((EGVAR(sys_godmode,speakingGods) find _speakingId) != -1) then {
-        private _params = ["g", _speakingId, 0, GVAR(godVolume)];
-        CALL_RPC("updateSpeakingData", _params);
+        ["updateSpeakingData", ["g", _speakingId, 0, GVAR(godVolume)]] call EFUNC(sys_rpc,callRemoteProcedure);
     };
 } forEach GVAR(godSpeakers);
 
@@ -275,7 +273,7 @@ if (ACRE_IS_SPECTATOR) then {
             _volume = 0;
         };
         private _params = ["s", _speakingId, 0, _volume];
-        CALL_RPC("updateSpeakingData", _params);
+        ["updateSpeakingData", ["s", _speakingId, 0, _volume]] call EFUNC(sys_rpc,callRemoteProcedure);
     } forEach GVAR(spectatorSpeakers);
 };
 

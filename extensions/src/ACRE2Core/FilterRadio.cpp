@@ -8,7 +8,7 @@
 
 #define BASE_DISTORTION_LEVEL 0.43f
 
-acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels, acre::volume_t value, bool noise) {
+acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels, acre::volume_t value, bool noise, const bool isLoudSpeaker) {
     float buffer[4096], *floatPointer[1];
     short *shortPointer[1];
 
@@ -43,6 +43,11 @@ acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels
         // shelf it
         this->m_LowPass.process(sampleCount*channels, floatPointer);
         this->m_HighPass.process(sampleCount*channels, floatPointer);
+
+        // Drop low-end if on speakerphone
+        if (isLoudSpeaker) { 
+            this->m_lowShelf.process(sampleCount * channels, floatPointer);
+        }
 
         // Convert it back to shorts
         for (int i = 0; i < sampleCount; ++i) {
@@ -89,6 +94,7 @@ CFilterRadio::CFilterRadio(void)
     srand((unsigned int)time(0));
     this->m_HighPass.setup (TS_SAMPLE_RATE, 750, 0.97);
     this->m_LowPass.setup (TS_SAMPLE_RATE, 4000, 2.0);
+    this->m_lowShelf.setup(TS_SAMPLE_RATE, 1000, -10, 1);
     this->m_PinkNoise.clear();
 }
 

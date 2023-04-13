@@ -44,15 +44,15 @@ CSoundChannelMono::~CSoundChannelMono() {
     }
 }
 
-int CSoundChannelMono::In(short *samples, int sampleCount, const int channels_) {
+int CSoundChannelMono::In(short *samples, int sampleCount, const int channels) {
     //memset(samples, 0x00, sampleCount*sizeof(short));
-    if (this->bufferLength+sampleCount <= this->bufferMaxSize) {
-        if (channels_ == 1) {
+    if (this->bufferLength + sampleCount <= this->bufferMaxSize) {
+        if (channels == 1) {
             memcpy(this->buffer + this->bufferLength, samples, sampleCount * sizeof(short));
         } else {
             // rare but for multi channel input just capture mono, samples[channels*sampleCount]={Left,Right,Left,...}
             for (int i = 0; i < sampleCount; i++) {
-                this->buffer[this->bufferLength + i] = samples[channels_*i];
+                this->buffer[this->bufferLength + i] = samples[channels * i];
             }
         }
         this->bufferLength += sampleCount;

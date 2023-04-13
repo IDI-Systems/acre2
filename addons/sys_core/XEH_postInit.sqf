@@ -3,6 +3,11 @@
 
 [QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
+["CBA_loadoutGet", {
+    params ["", "_loadout", ""];
+    [_loadout] call EFUNC(api,filterUnitLoadout);
+}] call CBA_fnc_addEventHandler;
+
 if (!hasInterface) exitWith {};
 
 // Ensure the TeamSpeak plugin handler code is initialized first
@@ -110,21 +115,22 @@ if ([findDisplay 0] isNotEqualTo allDisplays) then {
         [_wrpLocation, _radioSignalCode],
         true,
         {
-            params ["", "_result"];
+            params ["_callbackArgs", "_result"];
+            _callbackArgs params ["_wrpLocation"];
 
             if (_result < 0) then {
                 if (_result == -1) then {
-                    WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                    WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",_wrpLocation);
                 } else {
-                    ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                    ERROR_MSG_2("ACRE was unable to parse the map [%1]\nACRE will now use Arcade signal propagation model.\nPlease file a ticket on our tracker: %2",_wrpLocation,LELSTRING(Main,URL));
                 };
             } else {
-                INFO_2("Map Load Complete: %1 with radio signal code %2",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"),[worldName] call EFUNC(sys_signal,getRadioClimateCode));
+                INFO_2("Map Load Complete: %1 with radio signal code %2",_wrpLocation,[worldName] call EFUNC(sys_signal,getRadioClimateCode));
             };
 
             ACRE_MAP_LOADED = true;
         },
-        []
+        [_wrpLocation]
     ] call FUNC(callExt);
 };
 [] call FUNC(getClientIdLoop);

@@ -15,6 +15,7 @@
             <Chinese>無線電</Chinese>
             <Chinesesimp>无线电</Chinesesimp>
             <Portuguese>Rádios</Portuguese>
+            <Turkish>Telsizler</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelShort">
             <English>%1 Chn: %2</English>
@@ -30,6 +31,7 @@
             <Chinese>%1 頻道: %2</Chinese>
             <Chinesesimp>%1 频道: %2</Chinesesimp>
             <Portuguese>%1 Cnl: %2</Portuguese>
+            <Turkish>%1 Kanal:%2</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_lowerHeadset">
             <English>Lower Headset</English>
@@ -45,6 +47,7 @@
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
             <Portuguese>Abaixar Fones</Portuguese>
+            <Turkish>Kulaklığını İndir</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_raiseHeadset">
             <English>Raise Headset</English>
@@ -60,6 +63,7 @@
             <Chinese>戴上耳機</Chinese>
             <Chinesesimp>戴上耳机</Chinesesimp>
             <Portuguese>Levantar Fones</Portuguese>
+            <Turkish>Kulaklığını Tak</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bothEars">
             <English>Both Ears</English>
@@ -75,6 +79,7 @@
             <Chinese>雙耳模式</Chinese>
             <Chinesesimp>双耳模式</Chinesesimp>
             <Portuguese>Ambas Orelhas</Portuguese>
+            <Turkish>Her İki Kulak</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_leftEar">
             <English>Left Ear</English>
@@ -90,6 +95,7 @@
             <Chinese>左耳模式</Chinese>
             <Chinesesimp>左耳模式</Chinesesimp>
             <Portuguese>Orelha Esquerda</Portuguese>
+            <Turkish>Sol Kulak</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_rightEar">
             <English>Right Ear</English>
@@ -105,6 +111,7 @@
             <Chinese>右耳模式</Chinese>
             <Chinesesimp>右耳模式</Chinesesimp>
             <Portuguese>Orelha Direita</Portuguese>
+            <Turkish>Sağ Kulak</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsActive">
             <English>Set as Active</English>
@@ -120,6 +127,7 @@
             <Chinese>設為啟用</Chinese>
             <Chinesesimp>设为启用</Chinesesimp>
             <Portuguese>Definir como Ativo</Portuguese>
+            <Turkish>Aktif Olarak Ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bindMultiPushToTalk">
             <English>Bind PTT</English>
@@ -135,6 +143,7 @@
             <Chinese>綁定多個按鍵發話</Chinese>
             <Chinesesimp>绑定多个按键发话</Chinesesimp>
             <Portuguese>Definir como PTT</Portuguese>
+            <Turkish>Bas-Konuş Seç</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_multiPushToTalk">
             <English>PTT %1</English>
@@ -150,6 +159,7 @@
             <Chinese>多個發話 %1</Chinese>
             <Chinesesimp>多个发话 %1</Chinesesimp>
             <Portuguese>PTT %1</Portuguese>
+            <Turkish>Bas-Konuş %1</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_setAsMultiPTT">
             <English>Set as PTT %1</English>
@@ -165,38 +175,65 @@
             <Chinese>設定多個發話 %1</Chinese>
             <Chinesesimp>设定多个发话 %1</Chinesesimp>
             <Portuguese>Definir Como PTT %1</Portuguese>
+            <Turkish>Bas-Konuş Olarak Seç %1</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_straightenAntenna">
             <English>Straighten antenna</English>
             <German>Antenne gerade ausrichten</German>
             <Japanese>アンテナを直立に伸ばす</Japanese>
+            <Italian>Raddrizzare l'antenna</Italian>
             <Russian>Выпрямить антенну</Russian>
             <Chinese>把天線拉直</Chinese>
             <French>Redresser l'antenne</French>
             <Chinesesimp>把天线拉直</Chinesesimp>
             <Portuguese>Endireitar antena</Portuguese>
+            <Spanish>Enderezar antena</Spanish>
+            <Turkish>Anteni Düzleştir</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_bendAntenna">
             <English>Bend antenna upwards</English>
             <German>Antenne hoch biegen</German>
             <Japanese>折り曲げたアンテナを上向きに</Japanese>
+            <Italian>Piegare l'antenna verso l'alto</Italian>
             <Russian>Согнуть антенну</Russian>
             <Chinese>把天線往上彎曲</Chinese>
             <French>Courber l'antenne vers le haut</French>
             <Chinesesimp>把天线往上弯曲</Chinesesimp>
             <Portuguese>Dobrar antena para cima</Portuguese>
+            <Spanish>Doblar antena hacia arriba</Spanish>
+            <Turkish>Anteni Yukarı Bük</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_frequencyRange">
             <English>Frequency Range</English>
+            <German>Frequenzband</German>
+            <Italian>Intervallo di frequenze</Italian>
+            <French>Bande de fréquences</French>
+            <Spanish>Rango de frecuencias</Spanish>
+            <Turkish>Frekans Aralığı</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_transmitPower">
             <English>Transmit Power</English>
+            <German>Sendeleistung</German>
+            <Italian>Potenza di trasmissione</Italian>
+            <French>Puissance d'émission</French>
+            <Spanish>Potencia de transmisión</Spanish>
+            <Turkish>İletim Gücü</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_effectiveRange">
             <English>Effective Range (Urban)</English>
+            <German>Effektive Reichweite (Städte)</German>
+            <Italian>Portata effettiva (urbana)</Italian>
+            <French>Portée pratique (zone urbaine)</French>
+            <Spanish>Rango efectivo (Urbano)</Spanish>
+            <Turkish>Gerçek Güç (Şehir İçi)</Turkish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_externalSpeaker">
             <English>External Speaker</English>
+            <German>Externer Lautsprecher</German>
+            <Italian>Altoparlante esterno</Italian>
+            <French>Haut-parleur externe</French>
+            <Spanish>Altavoz externo</Spanish>
+            <Turkish>Dış Hoparlör</Turkish>
         </Key>
     </Package>
 </Project>

@@ -18,8 +18,10 @@ jobs:
       run: python3 tools/config_style_checker.py
     - name: Validate Headers
       run: python3 docs/tools/document_functions.py . --debug
-    - name: Check Strings
-      run: python3 tools/check_strings.py
+    - name: Check Strings Formatting
+      run: python3 tools/stringtable_validator.py
+    - name: Check Strings Defined
+      run: python3 tools/stringtable_checkDefined.py
     - name: Check for BOM
       uses: arma-actions/bom-check@v1
 

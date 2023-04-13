@@ -86,7 +86,7 @@ class CfgAcreComponents {
         connector = ACRE_CONNECTOR_TNC;
         height = 1.23;
         binaryGainFile = QPATHTOF(binary\Harris_123cm_Whip_gain.aba);
-        compatibleRadios[] = {"ACRE_PRC117F"};
+        compatibleRadios[] = {"ACRE_PRC152", "ACRE_PRC117F"};
     };
 
     class ACRE_270CM_VEH_BNC: ACRE_BaseAntenna {
@@ -132,5 +132,14 @@ class CfgAcreComponents {
         height = 6.43;
         binaryGainFile = QPATHTOF(binary\groundspike_2430cm_mast_gain.aba);
         compatibleRadios[] = {"ACRE_PRC148", "ACRE_PRC152", "ACRE_PRC117F", "ACRE_PRC77", "ACRE_SEM70"};
+    };
+
+    class ACRE_22CM_UHF_SMA: ACRE_BaseAntenna {
+        name = "22cm Nagoya NA-701 Antenna";
+        shortName = "22CM UHF";
+        connector = ACRE_CONNECTOR_SMA;
+        height = 0.22;
+        binaryGainFile = QPATHTOF(binary\na-701_gain.aba);
+        compatibleRadios[] = {"ACRE_BF888S"};
     };
 };

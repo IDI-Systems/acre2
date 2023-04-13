@@ -15,6 +15,7 @@
 #define ACRE_CONNECTOR_U_283 3
 #define ACRE_CONNECTOR_CONN_MC2127 4
 #define ACRE_CONNECTOR_3_8 5
+#define ACRE_CONNECTOR_SMA 6
 
 // Racks
 #define ACRE_CONNECTOR_CONN_32PIN 6 // 32 Pin is the 152 side connector.
