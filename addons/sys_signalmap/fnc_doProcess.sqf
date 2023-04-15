@@ -161,7 +161,10 @@ with uiNamespace do {
                         _res = ["signal_map_progress", ""] call EFUNC(sys_core,callExt);
                     };
                     diag_log text format["res: %1", _res];
-                    private _p = (_res select 0)/(_res select 1);
+                    private _p = 0;
+                    if (_res select 1 > 0) then {
+                        _p = (_res select 0) / (_res select 1);
+                    };
                     GVAR(progressBar) progressSetPosition _p;
                     if (_p != 1) then {
                         GVAR(chunkProgressText) ctrlSetStructuredText (parseText format["<t align='center'>%1/%2</t>", _res select 0, _res select 1]);
