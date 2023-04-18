@@ -19,4 +19,5 @@ Thumbs.db
 *.exe
 *.vscode*
 *.out
+*.zip
 *.sqfc

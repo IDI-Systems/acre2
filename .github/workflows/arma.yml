@@ -45,10 +45,8 @@ jobs:
       run: hemtt build
     - name: Rename build folder
       run: mv .hemttout/build .hemttout/@acre2
-    - name: Set short commit hash
-      run: echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: acre2-${{ env.SHA_SHORT }}-nobin
+        name: acre2-${{ github.sha }}-nobin
         path: .hemttout/@*

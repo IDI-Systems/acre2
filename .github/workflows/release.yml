@@ -26,8 +26,6 @@ jobs:
       uses: actions/checkout@v3
     - name: Setup HEMTT
       uses: arma-actions/hemtt@v1
-      with:
-        version: 'v1.3.0-rc1'
     - name: Setup Binarize
       run: |
         C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
@@ -39,7 +37,8 @@ jobs:
         echo "::group::Set Binarize registry path"
         New-Item "HKCU:\\Software\\Bohemia Interactive\\binarize" -Force | New-ItemProperty -Name path -Value "${{ github.workspace }}\ci\binarize"
         echo "::endgroup::"
-        echo "VERSION=$(.\\ci\\hemtt.exe var version)" >> $env:GITHUB_ENV # TODO Convert, HEMTT v1 does not have this command
+        $version = Select-String -Path "addons\\main\\script_version.hpp" -Pattern '#define (MAJOR|MINOR|PATCHLVL|BUILD) (\d+)' | ForEach-Object { $_.Matches.Groups[2].Value } | Join-String -Separator "."
+        echo "VERSION=$version" >> $env:GITHUB_ENV
         echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $env:GITHUB_ENV
     - name: Test Binarize
       run: |
