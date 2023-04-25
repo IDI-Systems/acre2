@@ -1,3 +1,4 @@
+PREP(debugDraw);
 PREP(getAttenuationEffectType);
 PREP(getAttenuationTurnedOut);
 PREP(getUnitAttenuate);
