@@ -28,7 +28,7 @@
 #include "updateSelf.h"
 #include "setSelectableVoiceCurve.h"
 #include "setSetting.h"
-#include "setTs3ChannelDetails.h"
+#include "setChannelDetails.h"
 #include <shlobj.h>
 
 acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::string fromPipeName, std::string toPipeName) {
@@ -83,7 +83,7 @@ acre::Result CEngine::initialize(IClient *client, IServer *externalServer, std::
     this->getRpcEngine()->addProcedure(new updateSelf());
     this->getRpcEngine()->addProcedure(new setSelectableVoiceCurve());
     this->getRpcEngine()->addProcedure(new setSetting());
-    this->getRpcEngine()->addProcedure(new setTs3ChannelDetails());
+    this->getRpcEngine()->addProcedure(new setChannelDetails());
 
     // Initialize the client, because it never was derp
     this->getClient()->initialize();

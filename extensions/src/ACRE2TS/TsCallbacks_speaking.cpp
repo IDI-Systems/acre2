@@ -16,8 +16,8 @@
 #include "TS3Client.h"
 
 //
-// TS3  Speaking callbacks
-// 
+// TS3 Speaking callbacks
+//
 void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int status, int isReceivedWhisper, anyID clientID) {
 
     if (static_cast<acre::id_t>(clientID) != CEngine::getInstance()->getSelf()->getId()) {
@@ -32,10 +32,10 @@ void ts3plugin_onTalkStatusChangeEvent(uint64 serverConnectionHandlerID, int sta
         return;
     }
 
-    ((CTS3Client *) (CEngine::getInstance()->getClient()))->setTsSpeakingState(status);
+    ((CTS3Client *) (CEngine::getInstance()->getClient()))->setSpeakingState(status);
     if (CEngine::getInstance()->getSoundSystemOverride()) {
         return;
-    } else if ((((CTS3Client *) (CEngine::getInstance()->getClient()))->getOnRadio())) {
+    } else if (((CTS3Client *) (CEngine::getInstance()->getClient()))->getOnRadio()) {
         if (((CTS3Client *) (CEngine::getInstance()->getClient()))->getVAD()) {
             return;
         } else {

@@ -224,7 +224,7 @@ acre::Result CNamedPipeServer::readLoop() {
         bool ret = ConnectNamedPipe(this->m_PipeHandleRead, NULL);
         if (GetLastError() == ERROR_PIPE_CONNECTED) {    
             LOG("Client read connected");
-            CEngine::getInstance()->getClient()->updateShouldSwitchTS3Channel(false);
+            CEngine::getInstance()->getClient()->updateShouldSwitchChannel(false);
             CEngine::getInstance()->getClient()->unMuteAll();
             CEngine::getInstance()->getSoundEngine()->onClientGameConnected();
             this->setConnectedRead(true);
@@ -251,8 +251,8 @@ acre::Result CNamedPipeServer::readLoop() {
             }
 
             //Run channel switch to server channel
-            if (CEngine::getInstance()->getClient()->shouldSwitchTS3Channel()) {
-                CEngine::getInstance()->getClient()->moveToServerTS3Channel();
+            if (CEngine::getInstance()->getClient()->shouldSwitchChannel()) {
+                CEngine::getInstance()->getClient()->moveToServerChannel();
             }
 
             ret = false;
@@ -289,7 +289,7 @@ acre::Result CNamedPipeServer::readLoop() {
         ret = DisconnectNamedPipe(this->m_PipeHandleRead);
 
         //Run channel switch to original channel
-        CEngine::getInstance()->getClient()->moveToPreviousTS3Channel();
+        CEngine::getInstance()->getClient()->moveToPreviousChannel();
         CEngine::getInstance()->getSoundEngine()->onClientGameDisconnected();
         LOG("Client disconnected");
         CEngine::getInstance()->getClient()->unMuteAll();

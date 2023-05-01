@@ -9,13 +9,13 @@
 
 extern TS3Functions ts3Functions;
 
-acre::Result CCommandServer::initialize(void){
+acre::Result CCommandServer::initialize(){
     TRACE("enter");
 
     return acre::Result::ok;
 }
 
-acre::Result CCommandServer::shutdown(void) {
+acre::Result CCommandServer::shutdown() {
     TRACE("enter");
 
     return acre::Result::ok;
@@ -26,8 +26,8 @@ acre::Result CCommandServer::sendMessage(IMessage *msg){
     LOCK(this);
     //LOG("Sending: %s", (const char *)msg->getData());
     ts3Functions.sendPluginCommand((unsigned __int64)ts3Functions.getCurrentServerConnectionHandlerID(),
-        (const char *)this->getCommandId(), 
-        (const char *)msg->getData(), 
+        (const char *)this->getCommandId(),
+        (const char *)msg->getData(),
         PluginCommandTarget_CURRENT_CHANNEL, NULL, NULL);
     //LOG("sending [%s], [%s]", this->getCommandId(), msg->getData());
 
@@ -49,10 +49,10 @@ acre::Result CCommandServer::handleMessage(unsigned char *data){
 }
 
 
-acre::Result CCommandServer::release(void) {
-    
-    if (this->getCommandId())
+acre::Result CCommandServer::release() {
+    if (this->getCommandId()) {
         free(this->getCommandId());
+    }
 
     return acre::Result::ok;
 }
@@ -60,14 +60,11 @@ acre::Result CCommandServer::release(void) {
 
 //
 // constructor/destructor foo
-// 
+//
 CCommandServer::CCommandServer(const acre::id_t id) {
     this->setId(id);
 }
-CCommandServer::CCommandServer(void) {
+CCommandServer::CCommandServer() {
     this->setCommandId(nullptr);
     this->setConnected(true);
-}
-CCommandServer::~CCommandServer() {
-    
 }

@@ -7,11 +7,11 @@ class CLockable {
 private:
     std::recursive_mutex m_lockable_mutex;
 public:
-    void lock( void ) {
+    void lock() {
         m_lockable_mutex.lock();
     };
 
-    void unlock( void ) {
+    void unlock() {
         m_lockable_mutex.unlock();
     };
 };
