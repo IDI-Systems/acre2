@@ -8,6 +8,7 @@
             <Turkish>Spectator Telsizlerini Temizle</Turkish>
             <German>Entferne Zuschauer Funkgeräte</German>
             <Italian>Reimposta le radio degli spettatori</Italian>
+            <Portuguese>Limpar rádios de espectador</Portuguese>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_ClearRadios_Description">
             <English>Clears all radios from the spectator radios list.</English>
@@ -16,6 +17,7 @@
             <Turkish>Spectator telsiz listesindeki bütün telsizleri temizler.</Turkish>
             <German>Entferne alle Funkgeräte aus dem Zuschauermodus.</German>
             <Italian>Cancella tutte le radio dall'elenco delle radio degli spettatori.</Italian>
+            <Portuguese>Limpar todos os rádios da lista de rádios para espectadores</Portuguese>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_NoRadios">
             <English>No Radios</English>
@@ -24,6 +26,7 @@
             <Turkish>Telsiz Yok</Turkish>
             <German>Keine Funkgeräte</German>
             <Italian>Niente radio</Italian>
+            <Portuguese>Sem rádios</Portuguese>
         </Key>
     </Package>
 </Project>
