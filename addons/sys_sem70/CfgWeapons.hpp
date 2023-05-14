@@ -23,7 +23,7 @@ class CfgWeapons {
         };
 
         EGVAR(arsenalStats,frequencyMin) = 46e3;
-        EGVAR(arsenalStats,frequencyMax) = "65.975e6";
+        EGVAR(arsenalStats,frequencyMax) = 65.975e6;
         EGVAR(arsenalStats,transmitPower) = 4000;
         EGVAR(arsenalStats,effectiveRange) = "3-5km (1-3km)"; // not sure?
         EGVAR(arsenalStats,externalSpeaker) = 1;

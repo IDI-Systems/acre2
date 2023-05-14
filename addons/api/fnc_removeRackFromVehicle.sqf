@@ -27,17 +27,17 @@ if (!isServer) exitWith {
 };
 
 if (isNull _vehicle) exitWith {
-    WARNING_1("Trying to remove a rack from an undefined vehicle %1",format ["%1", _vehicle]);
+    WARNING_1("Trying to remove a rack from an undefined vehicle %1",_vehicle);
     false
 };
 
 if (_rackId isEqualTo "") exitWith {
-    WARNING_1("Empty rack name for vehicle %1",format ["%1", _vehicle]);
+    WARNING_1("Empty rack name for vehicle %1",_vehicle);
     false
 };
 
 if (!([_vehicle] call FUNC(areVehicleRacksInitialized))) exitWith {
-    WARNING_1("Vehicle %1 is not initialised. Rack is not being removed.",format ["%1", _vehicle]);
+    WARNING_1("Vehicle %1 is not initialised. Rack is not being removed.",_vehicle);
     false
 };
 
