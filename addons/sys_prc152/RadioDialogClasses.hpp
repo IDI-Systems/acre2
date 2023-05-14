@@ -30,7 +30,7 @@ class Prc152_RscButton {
   x = 0.0;
   y = 0.0;
   w = 0.1;
-  //h = Dlg_CONTROLHGT; // TODO HEMTT Did this ever do anything - undefined macro
+  h = 0.0;
   sizeEx = 0.0325;
   offsetX = 0;
   offsetY = 0.002;
