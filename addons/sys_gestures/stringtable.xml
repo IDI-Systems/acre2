@@ -8,6 +8,7 @@
             <French>ACRE2 Gestuelle</French>
             <Spanish>ACRE2 Gestos</Spanish>
             <Turkish>ACRE2 El Hareketleri</Turkish>
+            <Portuguese>ACRE2 Gestos</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled">
             <English>Enable</English>
@@ -16,6 +17,7 @@
             <French>Activée</French>
             <Spanish>Activos</Spanish>
             <Turkish>Aktifleştir</Turkish>
+            <Portuguese>Ativo</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled_description">
             <English>Animate players using radios.</English>
@@ -24,6 +26,7 @@
             <French>L'avatar des joueurs est animé lorsqu'ils parlent à la radio.</French>
             <Spanish>Animación de los jugadores al usar la radio</Spanish>
             <Turkish>Telsiz kullanan oyunculara animasyonlar ekle</Turkish>
+            <Portuguese>Animar jogadores usando rádios</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS">
             <English>Prevent Aim Down Sights</English>
@@ -32,6 +35,7 @@
             <French>Empêcher la prise de visée</French>
             <Spanish>Prevenir apuntado al usar la radio</Spanish>
             <Turkish>Nişan Almayı Engelle</Turkish>
+            <Portuguese>Impedir mira (ADS)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS_description">
             <English>Keying radios will prevent aiming down sights.</English>
@@ -40,6 +44,7 @@
             <French>Les joueurs ne peuvent plus utiliser les organes de visée de leurs armes lorsqu'ils parlent à la radio.</French>
             <Spanish>No permite a los jugadores usar la mira de sus armas al usar la radio</Spanish>
             <Turkish>Telsiz kullanırken nişan almayı engeller</Turkish>
+            <Portuguese>Usar rádios irá impedir a mira</Portuguese>
         </Key>
     </Package>
 </Project>
