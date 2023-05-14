@@ -23,7 +23,7 @@ jobs:
       SHA_SHORT: ${{ env.SHA_SHORT }}
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Setup Tools
       run: |
         C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
@@ -57,7 +57,7 @@ jobs:
       env:
         BIOUTPUT: 1  # output binarize log
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: acre2
         path: releases/${{ env.VERSION }}/*  # Upload folder to avoid double-zip artifacts
@@ -73,7 +73,7 @@ jobs:
       DXSDK_DIR: "${{ github.workspace }}\\ci\\directx-sdk"  # CMake FindDirectX
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Setup Tools
       run: |
         C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
@@ -82,7 +82,7 @@ jobs:
         echo "Check DirectX SDK: $(Test-Path .\\ci\\directx-sdk\\Include,.\\ci\\directx-sdk\\Lib\\${{ matrix.arch }})"
         echo "DXSDK_DIR: ${{ env.DXSDK_DIR }}"
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v1.3
     - name: Build Extensions (x86)
       if: matrix.arch == 'x86'
       run: |
@@ -99,7 +99,7 @@ jobs:
       run: |
         .\ci\battleye\signtool.exe sign /f .\ci\battleye\idi-systems.pfx /p ${{ secrets.BE_CRED_PASSWORD }} /t http://timestamp.digicert.com *.dll
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: acre2-extensions-${{ matrix.arch }}
         path: |
@@ -115,7 +115,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -163,7 +163,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -221,7 +221,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
     - name: Prepare Archives
       run: |
         echo "Organize"
