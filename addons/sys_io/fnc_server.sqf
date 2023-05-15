@@ -27,7 +27,9 @@ DFUNC(connectionFnc) = {
             // acre_player sideChat format["RESULT: %1", GVAR(pipeCode)];
             if (GVAR(pipeCode) != "1") then {
                 if (time > 15) then {
-                    if (isMultiplayer && {!is3DENPreview}) then {
+#ifndef DEBUG_MODE_FULL
+                    if (!is3DENPreview) then {
+#endif
                         if ((missionNamespace getVariable [QGVAR(notConnectedTime), -15]) + 30 < time ) then {
                             GVAR(notConnectedTime) = time;
                             private _warning = format ["<t color='#FF8021'>WARNING!</t><br/> %1", localize LSTRING(acreNotConnected)];
