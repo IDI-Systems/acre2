@@ -133,8 +133,8 @@ class CfgFunctions {
             PATHTO_FNC(getVOIPChannelName);
             PATHTO_FNC(getVOIPChannelUID);
             PATHTO_FNC(getVOIPServerName);
-            PATHTO_FNC(getVOIPUID);
-            PATHTO_FNC(isPluginConnected);
+            PATHTO_FNC(getVOIPServerUID);
+            PATHTO_FNC(isVOIPConnected);
         };
     };
 

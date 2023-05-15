@@ -23,4 +23,4 @@ DFUNC(utilityFuncPFH) = {
 [] call FUNC(aliveMonitor);
 
 
-[DFUNC(updateServerInfo), 15, []] call CBA_fnc_addPerFrameHandler;
+[DFUNC(updateVOIPInfo), 15, []] call CBA_fnc_addPerFrameHandler;

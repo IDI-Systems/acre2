@@ -6,11 +6,16 @@
  * Arguments:
  * 0: VOIP Server Name from the plugin <STRING>
  *
+ * Return Value:
+ * Handled <BOOL>
+ *
  * Example:
- * ["Antistasi Offical"] call acre_sys_core_fnc_handleGetVOIPServerName
+ * ["Best ACRE Server"] call acre_sys_core_fnc_handleGetVOIPServerName
  *
  * Public: No
  */
 
 params [["_serverName", "", [""]]];
-GVAR(iServerName) = _serverName;
+GVAR(voipServerName) = _serverName;
+
+true

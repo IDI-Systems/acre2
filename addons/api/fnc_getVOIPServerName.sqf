@@ -15,4 +15,4 @@
  * Public: Yes
  */
 
-[] call EFUNC(sys_core,getVOIPServerName)
+EGVAR(sys_core,voipServerName)

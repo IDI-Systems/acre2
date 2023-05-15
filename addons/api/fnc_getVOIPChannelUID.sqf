@@ -15,4 +15,4 @@
  * Public: Yes
  */
 
-[] call EFUNC(sys_core,getVOIPChannelUID)
+EGVAR(sys_core,voipChannelUID)

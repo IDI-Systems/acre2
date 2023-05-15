@@ -14,7 +14,7 @@ if (!hasInterface) exitWith {};
 ["handleGetVOIPChannelName", FUNC(handleGetVOIPChannelName)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetVOIPChannelUID", FUNC(handleGetVOIPChannelUID)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetVOIPServerName", FUNC(handleGetVOIPServerName)] call EFUNC(sys_rpc,addProcedure);
-["handleGetVOIPUID", FUNC(handleGetVOIPUID)] call EFUNC(sys_rpc,addProcedure);
+["handleGetVOIPServerUID", FUNC(handleGetVOIPServerUID)] call EFUNC(sys_rpc,addProcedure);
 ["remoteStartSpeaking", FUNC(remoteStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["remoteStopSpeaking", FUNC(remoteStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["localStartSpeaking", FUNC(localStartSpeaking)] call EFUNC(sys_rpc,addProcedure);

@@ -6,11 +6,16 @@
  * Arguments:
  * 0: VOIP Channel UID from the plugin <STRING>
  *
+ * Return Value:
+ * Handled <BOOL>
+ *
  * Example:
- * ["Chatroom 1"] call acre_sys_core_fnc_handleGetVOIPChannelUID
+ * ["53!%wexg35"] call acre_sys_core_fnc_handleGetVOIPChannelUID
  *
  * Public: No
  */
 
 params [["_channelUID", "", [""]]];
-GVAR(iChannelUID) = _channelUID;
+GVAR(voipChannelUID) = _channelUID;
+
+true

@@ -6,11 +6,16 @@
  * Arguments:
  * 0: VOIP Channel Name from the plugin <STRING>
  *
+ * Return Value:
+ * Handled <BOOL>
+ *
  * Example:
- * ["Chatroom 1"] call acre_sys_core_fnc_handleGetVOIPChannelName
+ * ["ACRE"] call acre_sys_core_fnc_handleGetVOIPChannelName
  *
  * Public: No
  */
 
 params [["_channelName", "", [""]]];
-GVAR(iChannelName) = _channelName;
+GVAR(voipChannelName) = _channelName;
+
+true
