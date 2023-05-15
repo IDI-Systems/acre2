@@ -7,7 +7,7 @@
  * None
  *
  * Return Value:
- * Connected VOIP Plugin <STRING>
+ * Is VOIP Plugin Connected <BOOL>
  *
  * Example:
  * [] call acre_api_fnc_isVOIPConnected
