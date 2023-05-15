@@ -23,4 +23,7 @@ class CfgAcreWorlds {
     class vn_khe_sanh {
         wrp = "\idi\acre\addons\sys_sog\vn_khe_sanh.fakewrp";
     };
+    class vn_the_bra {
+        wrp = "\idi\acre\addons\sys_sog\vn_the_bra.fakewrp";
+    };
 };

@@ -23,27 +23,23 @@ jobs:
       SHA_SHORT: ${{ env.SHA_SHORT }}
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v2
-    - name: Setup Tools
+      uses: actions/checkout@v3
+    - name: Setup HEMTT
+      uses: arma-actions/hemtt@v1
+    - name: Setup Binarize
       run: |
         C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
         Expand-Archive acre2_tools.zip -DestinationPath ci
-        echo "Check HEMTT: $(Test-Path .\\ci\\hemtt.exe)"
         echo "Check Binarize: $(Test-Path .\\ci\\binarize\\binarize_x64.exe)"
-        echo "Check ArmaScriptCompiler: $(Test-Path .\\ci\\ArmaScriptCompiler.exe)"
-        .\ci\hemtt.exe --version
+        hemtt --version
         echo "Install Binarize dependencies"
         cp .\ci\binarize\X3DAudio1_7.dll,.\ci\binarize\XAPOFX1_5.dll C:\Windows\System32\
         echo "::group::Set Binarize registry path"
         New-Item "HKCU:\\Software\\Bohemia Interactive\\binarize" -Force | New-ItemProperty -Name path -Value "${{ github.workspace }}\ci\binarize"
         echo "::endgroup::"
-        echo "VERSION=$(.\\ci\\hemtt.exe var version)" >> $env:GITHUB_ENV
+        $version = Select-String -Path "addons\\main\\script_version.hpp" -Pattern '#define (MAJOR|MINOR|PATCHLVL|BUILD) (\d+)' | ForEach-Object { $_.Matches.Groups[2].Value } | Join-String -Separator "."
+        echo "VERSION=$version" >> $env:GITHUB_ENV
         echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $env:GITHUB_ENV
-    - name: Setup P-Drive for ArmaScriptCompiler
-      run: |
-        echo "Creating p: and linking idi\acre\addons"
-        subst p: include
-        New-Item -ItemType Junction -Path "p:\idi\acre\addons" -Target "addons"
     - name: Test Binarize
       run: |
         echo "::group::Run Binarize without arguments (look for missing DLLs)"
@@ -53,14 +49,12 @@ jobs:
     - name: Build (HEMTT)
       run: |
         echo "ACRE2 v${{ env.VERSION }} (${{ env.SHA_SHORT }})"
-        .\ci\hemtt.exe build --release --ci --time
-      env:
-        BIOUTPUT: 1  # output binarize log
+        hemtt release --no-archive
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: acre2
-        path: releases/${{ env.VERSION }}/*  # Upload folder to avoid double-zip artifacts
+        path: .hemttout/release
         retention-days: 1
 
   compile:
@@ -73,8 +67,8 @@ jobs:
       DXSDK_DIR: "${{ github.workspace }}\\ci\\directx-sdk"  # CMake FindDirectX
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v2
-    - name: Setup Tools
+      uses: actions/checkout@v3
+    - name: Setup BattlEye and DirectX SDK
       run: |
         C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
         Expand-Archive acre2_tools.zip -DestinationPath ci
@@ -82,7 +76,7 @@ jobs:
         echo "Check DirectX SDK: $(Test-Path .\\ci\\directx-sdk\\Include,.\\ci\\directx-sdk\\Lib\\${{ matrix.arch }})"
         echo "DXSDK_DIR: ${{ env.DXSDK_DIR }}"
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v1.3
     - name: Build Extensions (x86)
       if: matrix.arch == 'x86'
       run: |
@@ -99,7 +93,7 @@ jobs:
       run: |
         .\ci\battleye\signtool.exe sign /f .\ci\battleye\idi-systems.pfx /p ${{ secrets.BE_CRED_PASSWORD }} /t http://timestamp.digicert.com *.dll
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: acre2-extensions-${{ matrix.arch }}
         path: |
@@ -115,7 +109,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -163,7 +157,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -221,7 +215,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
     - name: Prepare Archives
       run: |
         echo "Organize"

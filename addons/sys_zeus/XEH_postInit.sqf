@@ -1,5 +1,5 @@
 #include "script_component.hpp"
-#include "\a3\editor_f\Data\Scripts\dikCodes.h"
+#include "\a3\editor_f\data\scripts\dikCodes.h"
 
 private _category = format ["ACRE2 %1", localize "str_a3_cfghints_curator_curator_displayname"];
 

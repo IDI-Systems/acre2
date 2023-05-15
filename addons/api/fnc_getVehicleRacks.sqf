@@ -20,7 +20,7 @@ params [
 ];
 
 if (isNull _vehicle) exitWith {
-    WARNING_1("Vehicle %1 not defined.",format ["%1", _vehicle]);
+    WARNING_1("Vehicle %1 not defined.",_vehicle);
 };
 
 [_vehicle] call EFUNC(sys_rack,getVehicleRacks)
