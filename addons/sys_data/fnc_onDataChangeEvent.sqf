@@ -45,7 +45,7 @@ if (ACRE_DATA_SYNCED) then {
                     _radio = HASH_CREATE;
                     HASH_SET(GVAR(currentRadioStates),_radioId,_radio);
                 };
-                HASH_SET(_radio,_event,[diag_tickTime, _data]);
+                HASH_SET(_radio,_event,[ARR_2(diag_tickTime,_data)]);
             };
         } forEach (_this select 2);
     } else {

@@ -39,14 +39,14 @@ jobs:
     steps:
     - name: Checkout the source code
       uses: actions/checkout@v3
-    - name: Build (HEMTT)
-      uses: arma-actions/hemtt@master
-      with:
-        command: build --release --ci --time
-    - name: Set short commit hash
-      run: echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+    - name: Setup HEMTT
+      uses: arma-actions/hemtt@v1
+    - name: Run HEMTT build
+      run: hemtt build
+    - name: Rename build folder
+      run: mv .hemttout/build .hemttout/@acre2
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
-        name: acre2-${{ env.SHA_SHORT }}-nobin
-        path: releases/*/*  # Upload folder to avoid double-zip artifacts
+        name: acre2-${{ github.sha }}-nobin
+        path: .hemttout/@*

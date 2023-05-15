@@ -1,8 +1,8 @@
 class BF888S_RscBackground {
     type = CT_STATIC;
     idc = -1;
-    style = ST_BACKGROUND + ST_KEEP_ASPECT_RATIO;
-    colorBackground[] = {0, 0, 0, .75};
+    style = QUOTE(ST_BACKGROUND + ST_KEEP_ASPECT_RATIO);
+    colorBackground[] = {0, 0, 0, 0.75};
     colorText[] = {1, 1, 1, 1};
     font = FontM;
     sizeEx = 0.04;
@@ -12,7 +12,7 @@ class BF888S_RscBackground {
 class BF888S_RscText {
     idc = -1;
     type = CT_STATIC;
-    style = ST_LEFT + ST_KEEP_ASPECT_RATIO;
+    style = QUOTE(ST_LEFT + ST_KEEP_ASPECT_RATIO);
     font = "EtelkaMonospaceProBold";
     colorText[] = {1, 1, 1, 1};
     colorBackground[] = {0, 0, 0, 0};
@@ -24,12 +24,12 @@ class BF888S_RscText {
 class BF888S_RscButton {
     type = CT_BUTTON;
     idc = -1;
-    style = ST_CENTER + ST_KEEP_ASPECT_RATIO;
+    style = QUOTE(ST_CENTER + ST_KEEP_ASPECT_RATIO);
 
     x = 0.0;
     y = 0.0;
     w = 0.1;
-    h = Dlg_CONTROLHGT;
+    h = 0.0;
     sizeEx = 0.0325;
     offsetX = 0;
     offsetY = 0.002;
@@ -62,7 +62,7 @@ class BF888S_RscButton {
     soundClick[] = {"", 0.2, 1};
     soundEscape[] = {"", 0.2, 1};
 
-    default = false;
+    default = 0;
     text = "";
     action = "";
 };
@@ -70,6 +70,6 @@ class BF888S_RscButton {
 class BF888S_RscPicture : BF888S_RscButton {
     type = CT_STATIC;
     idc = -1;
-    style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
+    style = QUOTE(ST_PICTURE + ST_KEEP_ASPECT_RATIO);
     text = "";
 };

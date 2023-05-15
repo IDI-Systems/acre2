@@ -29,12 +29,12 @@ if (!isServer) exitWith {
 };
 
 if (isNull _vehicle) exitWith {
-    WARNING_1("Trying to initialize undefined vehicle %1",format ["%1", _vehicle]);
+    WARNING_1("Trying to initialize undefined vehicle %1",_vehicle);
     false
 };
 
 if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
-    WARNING_1("Vehicle %1 is already initialised",format ["%1", _vehicle]);
+    WARNING_1("Vehicle %1 is already initialised",_vehicle);
     false
 };
 
