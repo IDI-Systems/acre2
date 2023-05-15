@@ -90,6 +90,11 @@ DVAR(ACRE_BLOCKED_TRANSMITTING_RADIOS) = [];
 
 DGVAR(arsenalOpen) = false;
 
+DGVAR(voipChannelName) = "";
+DGVAR(voipChannelUID) = "";
+DGVAR(voipServerName) = "";
+DGVAR(voipServerUID) = "";
+
 acre_player = player;
 
 GVAR(coreCache) = HASH_CREATE;

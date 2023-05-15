@@ -23,8 +23,4 @@ DFUNC(utilityFuncPFH) = {
 [] call FUNC(aliveMonitor);
 
 
-DFUNC(getPluginVersion) = {
-    ["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
-};
-["getPluginVersion", ","] call EFUNC(sys_rpc,callRemoteProcedure);
-[DFUNC(getPluginVersion), 15, []] call CBA_fnc_addPerFrameHandler;
+[DFUNC(updateVOIPInfo), 15, []] call CBA_fnc_addPerFrameHandler;

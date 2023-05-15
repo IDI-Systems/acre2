@@ -20,6 +20,10 @@ PREP(getSpokenLanguages);
 PREP(handleGetClientID);
 PREP(handleGetHeadVector);
 PREP(handleGetPluginVersion);
+PREP(handleGetVOIPChannelName);
+PREP(handleGetVOIPChannelUID);
+PREP(handleGetVOIPServerName);
+PREP(handleGetVOIPServerUID);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
 PREP(hasAccessToVehicleSystem);
@@ -52,6 +56,7 @@ PREP(switchRadioEar);
 PREP(toggleHeadset);
 PREP(updateSelf);
 PREP(uniqueItems);
+PREP(updateVOIPInfo);
 PREP(utilityFunction);
 
 PREP(onRevealUnit);
