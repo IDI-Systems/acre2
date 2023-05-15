@@ -37,7 +37,7 @@ acre::Result CSoundEngine::onEditPlaybackVoiceDataEvent(acre::id_t id, short* sa
             for (size_t i = 0; i < player->channels.size(); ++i) {
                 if (player->channels[i]) {
                     player->channels[i]->lock();
-                    player->channels[i]->In(samples, sampleCount);
+                    player->channels[i]->In(samples, sampleCount, channels);
                     player->channels[i]->unlock();
                 }
             }

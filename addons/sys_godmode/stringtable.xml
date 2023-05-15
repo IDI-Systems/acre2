@@ -8,6 +8,7 @@
             <Spanish>Modo Dios</Spanish>
             <French>Mode Dieu</French>
             <Turkish>Tanrı Modu</Turkish>
+            <Portuguese>Modo Deus</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannel_display">
             <English>Current Channel</English>
@@ -16,6 +17,7 @@
             <Spanish>Canal actual</Spanish>
             <French>Canal actuel</French>
             <Turkish>Şu Anki Kanal</Turkish>
+            <Portuguese>Canal atual</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey">
             <English>PTT - Current Chat Channel</English>
@@ -24,6 +26,7 @@
             <Spanish>PTT - Canal actual de chat</Spanish>
             <French>Transmettre au canal textuel</French>
             <Turkish>Bas-Konuş - Şu anki kanal</Turkish>
+            <Portuguese>PTT - Canal atual de chat</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey_description">
             <English>PTT to send a message to all units matching the current chat channel.</English>
@@ -32,6 +35,7 @@
             <Spanish>PTT para enviar un mensaje a todas las unidades en el canal actual de chat.</Spanish>
             <French>Transmission d'un message à toutes les unités étant sur le même canal textuel (chat).</French>
             <Turkish>Bas-Konuş ile şu anki kanalla eşleşen bütün oyunculara mesaj ilet</Turkish>
+            <Portuguese>PTT para mandar uma mensagem à todas as unidades com o mesmo canal de chat atual</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1">
             <English>Group 1</English>
@@ -40,6 +44,7 @@
             <Spanish>Grupo 1</Spanish>
             <French>Groupe 1</French>
             <Turkish>Grup 1</Turkish>
+            <Portuguese>Grupo 1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey">
             <English>PTT - Group 1</English>
@@ -48,6 +53,7 @@
             <Spanish>PTT - Grupo 1</Spanish>
             <French>Transmettre au groupe 1</French>
             <Turkish>Bas-Konuş - Grup 1</Turkish>
+            <Portuguese>PTT - Grupo 1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey_description">
             <English>PTT to send a message to all units in the Group 1 preset.</English>
@@ -56,6 +62,7 @@
             <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 1.</Spanish>
             <French>Transmission d'un message à toutes les unités du groupe 1.</French>
             <Turkish>Bas-Konuş ile Grup 1 setindeki bütün oyunculara mesaj ilet</Turkish>
+            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2">
             <English>Group 2</English>
@@ -64,6 +71,7 @@
             <Spanish>Grupo 2</Spanish>
             <French>Groupe 2</French>
             <Turkish>Grup 2</Turkish>
+            <Portuguese>Grupo 2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2PttKey">
             <English>PTT - Group 2</English>
@@ -72,6 +80,7 @@
             <Spanish>PTT - Grupo 2</Spanish>
             <French>Transmettre au groupe 2</French>
             <Turkish>Bas-Konuş - Grup 2</Turkish>
+            <Portuguese>PTT - Grupo 2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2PttKey_description">
             <English>PTT to send a message to all units in the Group 2 preset.</English>
@@ -80,6 +89,7 @@
             <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 2.</Spanish>
             <French>Transmission d'un message à toutes les unités du groupe 2.</French>
             <Turkish>Bas-Konuş ile Grup 2 setindeki bütün oyunculara mesaj ilet</Turkish>
+            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3">
             <English>Group 3</English>
@@ -88,6 +98,7 @@
             <Spanish>Grupo 3</Spanish>
             <French>Groupe 3</French>
             <Turkish>Grup 3</Turkish>
+            <Portuguese>Grupo 3</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3PttKey">
             <English>PTT - Group 3</English>
@@ -96,6 +107,7 @@
             <Spanish>PTT - Grupo 3</Spanish>
             <French>Transmettre au groupe 3</French>
             <Turkish>Bas-Konuş - Grup 3</Turkish>
+            <Portuguese>PTT - Grupo 3</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3PttKey_description">
             <English>PTT to send a message to all units in the Group 3 preset.</English>
@@ -104,6 +116,7 @@
             <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 3.</Spanish>
             <French>Transmission d'un message à toutes les unités du groupe 3.</French>
             <Turkish>Bas-Konuş ile Grup 3 setindeki bütün oyunculara mesaj ilet</Turkish>
+            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 3</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_god">
             <English>God</English>
@@ -111,6 +124,7 @@
             <Italian>Dio</Italian>
             <French>Dieu</French>
             <Turkish>Tanrı</Turkish>
+            <Portuguese>Deus</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
             <English>Receive Notification</English>
@@ -118,6 +132,7 @@
             <Italian>Ricevi messaggio</Italian>
             <French>Notifications de réception</French>
             <Turkish>Mesaj Al</Turkish>
+            <Portuguese>Notificação de Recepção</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
             <English>Transmit Notification</English>
@@ -125,6 +140,7 @@
             <Italian>Invia messaggio</Italian>
             <French>Notifications d'émission</French>
             <Turkish>Mesaj İlet</Turkish>
+            <Portuguese>Notificação de Transmissão</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotificationColor_displayName">
             <English>Receive Color</English>
@@ -132,6 +148,7 @@
             <Italian>Ricevi colore</Italian>
             <French>Couleur - Réception</French>
             <Turkish>Alınan Mesaj Rengi</Turkish>
+            <Portuguese>Cor: Recepção</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
             <English>Current Chat Channel Transmit Color</English>
@@ -139,6 +156,7 @@
             <Italian>Colore di invio del canale di chat corrente</Italian>
             <French>Couleur - Transmission canal textuel</French>
             <Turkish>Şu Anki Kanal İletim Rengi</Turkish>
+            <Portuguese>Cor: Texto de canal de transmissão</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup1Color_displayName">
             <English>Group 1 Transmit Color</English>
@@ -146,6 +164,7 @@
             <Italian>Colore invio gruppo 1</Italian>
             <French>Couleur - Transmission groupe 1</French>
             <Turkish>Grup 1 İletim Rengi</Turkish>
+            <Portuguese>Cor: Grupo de transmissão 1</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup2Color_displayName">
             <English>Group 2 Transmit Color</English>
@@ -153,6 +172,7 @@
             <Italian>Colore invio gruppo 2</Italian>
             <French>Couleur - Transmission groupe 2</French>
             <Turkish>Grup 2 İletim Rengi</Turkish>
+            <Portuguese>Cor: Grupo de transmissão 2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup3Color_displayName">
             <English>Group 3 Transmit Color</English>
@@ -160,6 +180,7 @@
             <Italian>Colore invio gruppo 3</Italian>
             <French>Couleur - Transmission groupe 3</French>
             <Turkish>Grup 3 İletim Rengi</Turkish>
+            <Portuguese>Cor: Grupo de transmissão 3</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_noTargets">
             <English>No units in God group!</English>
@@ -167,6 +188,7 @@
             <Italian>Nessuna unità nel gruppo di Dio!</Italian>
             <French>Aucune unité dans le groupe Dieu !</French>
             <Turkish>Tanrı Grubunda Hiçbir Birim Yok!</Turkish>
+            <Portuguese>Sem unidades no grupo de Deus!</Portuguese>
         </Key>
     </Package>
 </Project>

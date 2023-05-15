@@ -27,7 +27,9 @@ DFUNC(connectionFnc) = {
             // acre_player sideChat format["RESULT: %1", GVAR(pipeCode)];
             if (GVAR(pipeCode) != "1") then {
                 if (time > 15) then {
-                    if (isMultiplayer) then {
+#ifndef DEBUG_MODE_FULL
+                    if (!is3DENPreview) then {
+#endif
                         if ((missionNamespace getVariable [QGVAR(notConnectedTime), -15]) + 30 < time ) then {
                             GVAR(notConnectedTime) = time;
                             private _warning = format ["<t color='#FF8021'>WARNING!</t><br/> %1", localize LSTRING(acreNotConnected)];
@@ -37,7 +39,9 @@ DFUNC(connectionFnc) = {
                         if (GVAR(connectCount) > 15) then {
                             INFO_1("Pipe error: %1",GVAR(pipeCode));
                             GVAR(connectCount) = 0;
+#ifndef DEBUG_MODE_FULL
                         };
+#endif
                     };
                     LOG("Client not responding, trying again.");
                 };
@@ -45,7 +49,7 @@ DFUNC(connectionFnc) = {
                 //diag_log text format["%1 ACRE: Pipe failed opening: %2", diag_tickTime, GVAR(pipeCode)];
             } else {
                 LOG("PIPE OPENED!");
-                if (GVAR(hasErrored) && isMultiplayer) then {
+                if (GVAR(hasErrored)) then {
                     [[format ["<t color='#2B7319'>%1</t>", localize LSTRING(recoveredClosedPipe)], 1.5]] call CBA_fnc_notify;
                 } else {
                     [format ["<t color='#2B7319'>%1</t>", localize LSTRING(acreConnected)]] call CBA_fnc_notify;
