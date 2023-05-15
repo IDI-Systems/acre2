@@ -11,16 +11,15 @@ This page describes how you can setup your development environment for ACRE2, al
 - P-drive
 - Run Arma 3 and Arma 3 Tools directly from Steam once to install registry entries (and again after every update)
 - [CBA](https://github.com/CBATeam/CBA_A3/releases/latest) mod (release or development version)
+- _(Recommended)_ [ACE3](https://github.com/acemod/ACE3/releases/latest) mod (release or development version)
 
 **HEMTT:** _(recommended)_
 - [Windows] PowerShell v3.0+ _(pre-installed on Windows 8 or newer)_
-- Tools _(included in tools package, see [HEMTT Initial Setup](#initial-setup) below)_
-  - [HEMTT](https://github.com/BrettMayson/HEMTT) 
-  - [ArmaScriptCompiler](https://github.com/dedmen/ArmaScriptCompiler) (for SQFC)
+- [HEMTT](https://github.com/BrettMayson/HEMTT) (>=v1.4.0) in project root _(Windows users can double-click `tools/setup.bat`)_
 
 **Mikero Tools:**
 - [Python 3.x](https://www.python.org/)
-- [Mikero Tools](https://mikero.bytex.digital/Downloads): DePbo, DeTex, DeOgg, Rapify, MakePbo, pboProject
+- [Mikero Tools](https://mikero.bytex.digital/Downloads): DePbo, DeOgg, Rapify, MakePbo, pboProject
   - `*.hpp` removed from PboProject's "Exclude From Pbo" list
   - `-F rebuild RequiredAddons` disabled
 - Python, Mikero Tools and Git in PATH environment variable
@@ -28,9 +27,9 @@ This page describes how you can setup your development environment for ACRE2, al
 
 ## Why so complicated?
 
-ACRE2 uses macros to simplify things and give the developer access to a better debug process, which requires a stricter build environment. The structure of this development environment also allows for [file patching](#file-patching), which is very useful for debugging.
+ACRE2 uses macros to simplify things and give the developer access to a better debug process, which requires a stricter build environment.
 
-Additionally, Mikero Tools are stricter and report more errors than Addon Builder does. HEMTT is still in development and may contain unforseen errors, however it is much simpler to use without any extra requirements and aims to provide a much easier build process with sensible defaults.
+Additionally, HEMTT and Mikero's Tools are stricter and report more errors than Addon Builder does. The structure of this development environment also allows for [file patching](#file-patching), which is very useful for debugging.
 
 Not offering executables for the Python scripts we use allows us to make easy changes without the hassle of compiling self-extracting exes all the time.
 
@@ -49,39 +48,47 @@ If you just want to create a quick and dirty build, you can also directly downlo
 
 ## Setup and Building (HEMTT)
 
+_Replace `hemtt` with `hemtt.exe` on Windows. P-drive is **not** required for HEMTT or file patching._
+
 ### Initial Setup
 
-Execute `setup.bat` in `tools` folder (Windows) or download [tools](http://dev.idi-systems.com/tools/acre2_tools_user.zip) (HEMTT and ArmaScriptCompiler) and place the executables in project root (Windows and Linux - ArmaScriptCompiler supported only on Windows at this time).
+Execute `tools\setup.bat` (double-click on Windows) or download [HEMTT](https://github.com/BrettMayson/HEMTT/releases/latest) and place the executable in project root (Windows and Linux - binarization supported only on Windows at this time).
 
 #### File Patching Setup
 
 _Not available on Linux as there is no officially supported Arma 3 client for Linux._
 
-You can use provided `setup.py` if you have a P-drive setup by following the [same instructions](#initial-setup-1) as for Mikero Tools. **P-drive is not required for HEMTT or file patching!**
+ACRE2 comes pre-configured for testing with [file patching](#file-patching) using only CBA's and ACE3's latest published versions. You must subscribe to [CBA_A3](https://steamcommunity.com/workshop/filedetails/?id=450814997) and [ACE](https://steamcommunity.com/sharedfiles/filedetails/?id=463939057) on the Workshop. _Note: ACRE2 can run with only CBA, however ACE3 is natively supported and recommended to be used for full radio interaction fidelity._
 
-Otherwise navigate to `tools` folder in command line.
+If you intend to test using file patching with CBA/ACE3 versions different than latest published, or with other mods, further setup is required. First, create a folder called `idi` in your Arma 3 directory. Then run the following command as admin, replacing the text in brackets with the appropriate paths:
+
 ```bat
-cd <path-to-cloned-repository>/tools
+mklink /J "[Arma 3 installation folder]\idi\acre" "[location of the ACRE2 project]/.hemttout/dev"
 ```
 
-Create the following link manually. First, create a folder called `idi` in your Arma 3 directory. Then run the following command as admin, replacing the text in brackets with the appropriate paths:
+### Create a Development Build
 
+Run `$ hemtt dev` to build the mod for use with [file patching](#file-patching) (with links to the original addon folders) without binarization (faster and often not needed for development). This will populate the `.hemttout/dev` folder with unbinarized PBOs, with links back to the original addon folders. You cannot distribute this build to others.
+
+Run `$ hemtt launch` to run ACRE2 with pre-configured file patching. _Uses `$ hemtt dev` before launching Arma._
+
+To launch a development build using file patching with CBA/ACE3 versions different than latest published, or with other mods, you must build the mod with `$ hemtt dev` and start the game by providing a modline:
 ```bat
-mklink /J "[Arma 3 installation folder]\idi\acre" "[location of the ACRE2 project]"
+-mod=@CBA_A3;@ace;idi\acre -skipIntro -noSplash -showScriptErrors -debug -filePatching
 ```
 
 ### Create a Test Build
 
-To create a development build to test changes or to debug something, execute `build.bat` (Windows) or run `$ hemtt build` (Linux) in the root folder. This will populate the `addons` folder with binarized PBOs. These PBOs still point to the source files in their respective folders however, which allows you to use [file patching](#file-patching). This also means that you cannot distribute this build to others.
+To create a development build to test changes or to debug something, execute `build.bat` (double-click on Windows) or run `$ hemtt build` in the root folder. This will populate the `.hemttout/build` folder with binarized PBOs. This type of build is meant for sharing, group testing, but not for release.
 
 To start the game using this build, you can use the following modline:
 ```bat
--mod=@CBA_A3;idi\acre
+-mod=@CBA_A3;@ace;idi\acre -skipIntro -noSplash -showScriptErrors -debug
 ```
 
 ### Create a Release Build
 
-To create a complete build that you can use without the source files, execute `build_release.bat` (Windows) or run `$ hemtt build --release` (Linux) in the root folder. This will populate the `releases` folder with binarized PBOs that you can redistribute. These handle like those of any other mod.
+To create a complete build that you can use without the source files, with full binarization and all optimizations, run `$ hemtt release` in the root folder. This will populate the `.hemttout/releases` folder with binarized PBOs and an archive in `releases` that you can redistribute. These handle like those of any other mod.
 
 
 ## Setup and Building (Mikero Tools)
@@ -101,7 +108,7 @@ mklink /J "[Arma 3 installation folder]\idi\acre" "[location of the ACRE2 projec
 mklink /J "P:\idi\acre" "[location of the ACRE2 project]"
 ```
 
-Then, copy the `cba` folder from the `tools` folder to `P:\x\cba`. Create the `x` folder if needed. That folder contains the parts of the CBA source code that are required for the macros to work.
+Then, copy the `cba` folder from the `include\x` folder to `P:\x\cba`. Create the `x` folder if needed. That folder contains the parts of the CBA source code that are required for the macros to work.
 
 ### Create a Test Build
 
