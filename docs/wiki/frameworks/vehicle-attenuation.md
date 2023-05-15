@@ -129,3 +129,13 @@ The same applies between Hans and Jim (<span style="color:#e3aa2b">_**yellow**_ 
 but the config `ConfigFile >> CfgVehicles >> myTank >> ACRE >> attenuationTurnedOut >> Compartment1 >> Compartment2` is looked up which is also `1`.
 
 {% include note.html content="The path in the <span style='color:#e3aa2b'>_**yellow**_</span> scenario is different because the value is looked up in the `attenuationTurnedOut` class instead of `attenuation`." %}
+
+## Debugging
+
+You can toggle the ability to view attenuation behaviour at runtime to diagnose issues with compartment configs. It will draw the current attenuation value over all units and a hint will be shown with information about your crew (and their detected compartments) as well as the attenuation values of units outside of a vehicle. You'll also get a short rundown of the configured compartment connection attenuation values for the current vehicle.
+
+{% include image.html file="attenuation/attenuate_debuginfo.jpg" alt="Attenuation debug info dialog" caption="Attenuation debug info dialog" %}
+
+### Usage
+
+Use the debug console in a mission or editor preview with some units and/or vehicles placed down and execute `call acre_sys_attenuate_fnc_toggleDebugInfo;`.

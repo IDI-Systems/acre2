@@ -26,7 +26,7 @@
             <Chinese>轉讓車外對講機</Chinese>
             <Chinesesimp>转让车外对讲机</Chinesesimp>
             <Korean>보병 전화를 전달</Korean>
-            <Portuguese>Dar Telefone de Infantaria</Portuguese>
+            <Portuguese>Passar Telefone de Infantaria</Portuguese>
             <Italian>Passa telefono fanteria</Italian>
             <French>Passer le téléphone d'infanterie</French>
             <Turkish>Piyade Telefonunu Ver</Turkish>
@@ -161,7 +161,7 @@
             <Chinese>對講機</Chinese>
             <Chinesesimp>对讲机</Chinesesimp>
             <Korean>인터콤</Korean>
-            <Portuguese>Intercomunicação (Intercom)</Portuguese>
+            <Portuguese>Intercom</Portuguese>
             <Italian>Intercom</Italian>
             <French>Interphone</French>
             <Turkish>İnterkom</Turkish>
@@ -186,7 +186,7 @@
             <Chinese>機組員對講機</Chinese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
             <Japanese>乗員インターコム</Japanese>
-            <Portuguese>Intercom. de Tripulação</Portuguese>
+            <Portuguese>Intercom de Tripulação</Portuguese>
             <Polish>Interkom załogi</Polish>
             <Italian>Intercom equipaggio</Italian>
             <French>Équipage d'interphone</French>
@@ -214,7 +214,7 @@
             <Chinese>乘客對講機</Chinese>
             <Chinesesimp>乘客对讲机</Chinesesimp>
             <Japanese>後部座席インターコム</Japanese>
-            <Portuguese>Intercom. Passageiros</Portuguese>
+            <Portuguese>Intercom de passageiros</Portuguese>
             <Polish>Interkom pasażerów</Polish>
             <Italian>Intercom passeggero</Italian>
             <French>Interphone Pax</French>
@@ -261,7 +261,7 @@
             <Chinese>連接至</Chinese>
             <Chinesesimp>连接至</Chinesesimp>
             <Korean>으로 연결</Korean>
-            <Portuguese>Conectar %1</Portuguese>
+            <Portuguese>Conectar</Portuguese>
             <Italian>Connetti</Italian>
             <Spanish>Conectar</Spanish>
             <French>Connecter</French>
@@ -277,7 +277,7 @@
             <Chinese>斷開聯繫</Chinese>
             <Chinesesimp>断开联系</Chinesesimp>
             <Korean>연결 해제</Korean>
-            <Portuguese>Desconectar %1</Portuguese>
+            <Portuguese>Desconectar</Portuguese>
             <Italian>Disconnetti</Italian>
             <French>Déconnecter</French>
             <Turkish>Kapat</Turkish>
@@ -433,7 +433,7 @@
             <French>Transmission inter-véhicules</French>
             <German>Bordfunkübergreifende Übertragung</German>
             <Russian>Трансляция с Интеркома</Russian>
-            <Portuguese>Transmissão Intercom. entre veículos</Portuguese>
+            <Portuguese>Transmissão Intercom entre veículos</Portuguese>
             <Turkish>İnterkom Yayını</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
@@ -568,7 +568,7 @@
             <Chinese>開啟對講機界面。</Chinese>
             <French>Ouvrir l'interface graphique de l'interphone</French>
             <Chinesesimp>开启对讲机界面。</Chinesesimp>
-            <Portuguese>Abrir IUG da Intercom.</Portuguese>
+            <Portuguese>Abrir Interface da Intercom.</Portuguese>
             <Turkish>İnterkom Arayüzünü Aç</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_forcedStatus">

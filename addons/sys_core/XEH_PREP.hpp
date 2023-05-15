@@ -9,6 +9,7 @@ PREP(findOcclusion);
 PREP(getAlive);
 PREP(getClientIdLoop);
 PREP(getCompartment);
+PREP(getDescriptiveName);
 PREP(getGear);
 PREP(getHeadVector);
 PREP(getLanguageId);
