@@ -9,7 +9,7 @@ class CfgAcreComponents {
     class ACRE_PRC148: ACRE_PRC148_base {
         name = QUOTE(NAME_PRC148);
         sinadRating = -116; // SINAD rating for radio
-        sensitivityMin = -116-7;
+        sensitivityMin = -116;
         sensitivityMax = -50;
         isPackRadio = 0;
         isDeployable = 0;

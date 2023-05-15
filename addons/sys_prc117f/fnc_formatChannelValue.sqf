@@ -19,7 +19,7 @@
 params ["_name", "_value"];
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
-#define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
+#define GET_CHANNEL_DATA [] call FUNC(CURRENT_RADIO_CHANNEL);
 
 #define SQUELCH_OFF 0
 #define SQUELCH_ON 1
@@ -45,7 +45,7 @@ switch _name do {
         };
     };
     case "squelch": {
-        private _channel = GET_CHANNEL_DATA();
+        private _channel = GET_CHANNEL_DATA;
         private _ctcss = HASH_GET(_channel, "CTCSSRx");
 
         if (_value > 0) then {

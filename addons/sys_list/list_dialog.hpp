@@ -59,23 +59,23 @@ class GVAR(radioCycleDisplay): RscControlsGroupNoScrollbars {
             colorBackground[] = {1, 1, 1, 0};
             font = "RobotoCondensed";
             sizeEx = 0.06;
-            x = 0.002 + 0.004;
-            y = 0.003 - 0.004;
+            x = "0.002 + 0.004";
+            y = "0.003 - 0.004";
             w = 0.350;
             h = 0.063;
         };
         class CycleDialogLine1: CycleDialogTitle {
             idc = IDC_CONTROLLINE1;
             sizeEx = 0.03;
-            x = 0.002 + 0.004;
-            y = 0.003 + 0.054;
+            x = "0.002 + 0.004";
+            y = "0.003 + 0.054";
             w = 0.350;
             h = 0.023;
         };
         class CycleDialogLine2: CycleDialogLine1 {
             idc = IDC_CONTROLLINE2;
-            x = 0.002 + 0.004;
-            y = 0.003 + 0.084;
+            x = "0.002 + 0.004";
+            y = "0.003 + 0.084";
             w = 0.350;
             h = 0.023;
         };
