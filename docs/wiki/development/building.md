@@ -54,6 +54,8 @@ _Replace `hemtt` with `hemtt.exe` on Windows. P-drive is **not** required for HE
 
 Execute `tools\setup.bat` (double-click on Windows) or download [HEMTT](https://github.com/BrettMayson/HEMTT/releases/latest) and place the executable in project root (Windows and Linux - binarization supported only on Windows at this time).
 
+You will also need `acre_x64.dll` and `ACRE2Arma_x64.dll` (or `acre.dll` and `ACRE2Arma.dll` for 32-bit) placed in `idi\acre` folder. You can obtain those from last release or [build them yourself](building-extensions). TeamSpeak plugin is not required for basic operation, however the `plugins` folder may also be placed in `idi\acre` folder.
+
 #### File Patching Setup
 
 _Not available on Linux as there is no officially supported Arma 3 client for Linux._
@@ -119,7 +121,7 @@ To start the game using this build, you can use the following modline:
 -mod=@CBA_A3;idi\acre
 ```
 
-You will also need `acre.dll` and `ACRE2Arma.dll` (or `acre_x64.dll` and `ACRE2Arma_x64.dll` for 64-bit) placed in `idi\acre` folder. You can obtain those from last release or [build them yourself](building-extensions). TeamSpeak plugin is not required for basic operation.
+You will also need `acre_x64.dll` and `ACRE2Arma_x64.dll` (or `acre.dll` and `ACRE2Arma.dll` for 32-bit) placed in `idi\acre` folder. You can obtain those from last release or [build them yourself](building-extensions). TeamSpeak plugin is not required for basic operation, however the `plugins` folder may also be placed in `idi\acre` folder.
 
 ### Create a Release Build
 
