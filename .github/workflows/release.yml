@@ -50,11 +50,13 @@ jobs:
       run: |
         echo "ACRE2 v${{ env.VERSION }} (${{ env.SHA_SHORT }})"
         hemtt release --no-archive
+    - name: Rename build folder
+      run: mv .hemttout/release .hemttout/@acre2
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
         name: acre2
-        path: .hemttout/release
+        path: .hemttout/@*
         retention-days: 1
 
   compile:
