@@ -15,7 +15,7 @@ This page describes how you can setup your development environment for ACRE2, al
 
 **HEMTT:** _(recommended)_
 - [Windows] PowerShell v3.0+ _(pre-installed on Windows 8 or newer)_
-- [HEMTT](https://github.com/BrettMayson/HEMTT) (>=v1.4.0) in project root _(Windows users can double-click `tools/setup.bat`)_
+- [HEMTT](https://github.com/BrettMayson/HEMTT) (>=v1.5.1) in project root _(Windows users can double-click `tools/setup.bat`)_
 
 **Mikero Tools:**
 - [Python 3.x](https://www.python.org/)
