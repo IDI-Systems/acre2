@@ -48,8 +48,12 @@ _ctrlContainerItems ctrlAddEventHandler ["MouseButtonUp", {
 }];
 
 // Show channel/frequency information for radios
-private _fnc_update = {
-    params ["_display"];
+[{
+    params ["_display", "_pfhID"];
+
+    if (isNull _display) exitWith {
+        [_pfhID] call CBA_fnc_removePerFrameHandler;
+    };
 
     {
         private _ctrl = _display displayCtrl _x;
@@ -68,7 +72,4 @@ private _fnc_update = {
         IDC_FG_GROUND_ITEMS,
         IDC_FG_CHOSEN_CONTAINER
     ];
-};
-
-_display displayAddEventHandler ["MouseHolding", _fnc_update];
-_display displayAddEventHandler ["MouseMoving", _fnc_update];
+}, 0, _display] call CBA_fnc_addPerFrameHandler;
