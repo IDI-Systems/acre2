@@ -69,7 +69,6 @@ GVAR(delayReleasePTT_Handle) = nil;
 
 DVAR(ACRE_ACTIVE_PTTKEY) = -2;
 DVAR(ACRE_BROADCASTING_RADIOID) = "";
-DVAR(ACRE_BROADCASTING_NOTIFICATION_LAYER) = ""; // Name of the notification system layer where the current broadcast is displayed
 
 DVAR(ACRE_CURRENT_LANGUAGE_ID) = 0;
 DVAR(ACRE_SPOKEN_LANGUAGES) = [];
@@ -91,6 +90,11 @@ DVAR(ACRE_BLOCKED_TRANSMITTING_RADIOS) = [];
 
 DGVAR(arsenalOpen) = false;
 
+DGVAR(voipChannelName) = "";
+DGVAR(voipChannelUID) = "";
+DGVAR(voipServerName) = "";
+DGVAR(voipServerUID) = "";
+
 acre_player = player;
 
 GVAR(coreCache) = HASH_CREATE;
@@ -108,7 +112,7 @@ acre_sys_io_ioEventFnc = {
 ["unit", {
     acre_current_player = _this select 0;
     acre_player = acre_current_player;
-    if !(acre_player isEqualTo player) then {
+    if (acre_player isNotEqualTo player) then {
         if (acre_current_player getVariable [QEGVAR(sys_zeus,usePlayer), EGVAR(sys_zeus,zeusDefaultVoiceSource)]) then {
             acre_player = player;
         };
@@ -136,7 +140,7 @@ addMissionEventHandler ["ExtensionCallback", {
     private _callBack = GVAR(threadedExtCalls) select _id;
 
     if (IS_ARRAY(_callBack)) then {
-        if !(_args isEqualTo []) then {
+        if (_args isNotEqualTo []) then {
             _args = _args select 0;
         };
         [_callBack select 0, _args] call (_callBack select 1);

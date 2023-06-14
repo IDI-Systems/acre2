@@ -29,7 +29,7 @@ private _dataHash = HASH_CREATE;
 HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
 private _idRelation = [_player, _player];
 HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
-if !(_replacementId isEqualTo "") then {
+if (_replacementId isNotEqualTo "") then {
     private _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
     HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
 };

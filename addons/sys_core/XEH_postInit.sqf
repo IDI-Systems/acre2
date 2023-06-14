@@ -3,6 +3,11 @@
 
 [QGVAR(onRevealUnit), { _this call FUNC(onRevealUnit) }] call CALLSTACK(CBA_fnc_addEventHandler);
 
+["CBA_loadoutGet", {
+    params ["", "_loadout", ""];
+    [_loadout] call EFUNC(api,filterUnitLoadout);
+}] call CBA_fnc_addEventHandler;
+
 if (!hasInterface) exitWith {};
 
 // Ensure the TeamSpeak plugin handler code is initialized first
@@ -11,6 +16,10 @@ if (!hasInterface) exitWith {};
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetPluginVersion", FUNC(handleGetPluginVersion)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetHeadVector", FUNC(handleGetHeadVector)] call EFUNC(sys_rpc,addProcedure);
+["handleGetVOIPChannelName", FUNC(handleGetVOIPChannelName)] call EFUNC(sys_rpc,addProcedure);
+["handleGetVOIPChannelUID", FUNC(handleGetVOIPChannelUID)] call EFUNC(sys_rpc,addProcedure);
+["handleGetVOIPServerName", FUNC(handleGetVOIPServerName)] call EFUNC(sys_rpc,addProcedure);
+["handleGetVOIPServerUID", FUNC(handleGetVOIPServerUID)] call EFUNC(sys_rpc,addProcedure);
 ["remoteStartSpeaking", FUNC(remoteStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["remoteStopSpeaking", FUNC(remoteStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
 ["localStartSpeaking", FUNC(localStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
@@ -68,7 +77,7 @@ if (!GVAR(aceLoaded)) then {
 // Keybinds - Babel
 ["ACRE2", "BabelCycleKey", localize LSTRING(BabelCycleKey), "", {
     [] call FUNC(cycleLanguage)
-}, [DIK_LWIN, [false, false, false]]] call CBA_fnc_addKeybind;
+}, [DIK_RALT, [false, false, false]]] call CBA_fnc_addKeybind;
 
 // Keybinds - Radio Ear
 ["ACRE2", "RadioLeftEar", localize LSTRING(RadioLeftEar), {
@@ -97,7 +106,7 @@ if (!GVAR(aceLoaded)) then {
 // Load map data
 ACRE_MAP_LOADED = false;
 // Do not load map in Main Menu, allDisplays only returns display 0 in main menu
-if (!([findDisplay 0] isEqualTo allDisplays)) then {
+if ([findDisplay 0] isNotEqualTo allDisplays) then {
     private _wrpLocation = getText(configFile >> "CfgAcreWorlds" >> worldName >> "wrp");
     if (_wrpLocation == "") then {
         _wrpLocation = getText(configFile >> "CfgWorlds" >> worldName >> "worldName");
@@ -110,21 +119,22 @@ if (!([findDisplay 0] isEqualTo allDisplays)) then {
         [_wrpLocation, _radioSignalCode],
         true,
         {
-            params ["", "_result"];
+            params ["_callbackArgs", "_result"];
+            _callbackArgs params ["_wrpLocation"];
 
             if (_result < 0) then {
                 if (_result == -1) then {
-                    WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                    WARNING_1("Map Load [%1] (WRP) parsing error - ACRE will now assume the terrain is flat and all at elevation 0m.",_wrpLocation);
                 } else {
-                    ERROR_MSG_1("ACRE was unable to parse the map [%1]. Please file a ticket on our tracker http://github.com/idi-systems/acre2 ",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"));
+                    ERROR_MSG_2("ACRE was unable to parse the map [%1]\nACRE will now use Arcade signal propagation model.\nPlease file a ticket on our tracker: %2",_wrpLocation,LELSTRING(Main,URL));
                 };
             } else {
-                INFO_2("Map Load Complete: %1 with radio signal code %2",getText (configFile >> "CfgWorlds" >> worldName >> "worldName"),[worldName] call EFUNC(sys_signal,getRadioClimateCode));
+                INFO_2("Map Load Complete: %1 with radio signal code %2",_wrpLocation,[worldName] call EFUNC(sys_signal,getRadioClimateCode));
             };
 
             ACRE_MAP_LOADED = true;
         },
-        []
+        [_wrpLocation]
     ] call FUNC(callExt);
 };
 [] call FUNC(getClientIdLoop);

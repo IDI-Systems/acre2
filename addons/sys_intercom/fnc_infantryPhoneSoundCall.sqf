@@ -25,7 +25,7 @@ _vehicle setVariable [QGVAR(isInfantryPhoneCalling), [true, _intercomNetwork], t
 
 private _duration = INFANTRY_PHONE_SOUND_PFH_DURATION;
 private _customSound = _vehicle getVariable [QGVAR(infPhoneCustomRinging), []];
-if !(_customSound isEqualTo []) then {
+if (_customSound isNotEqualTo []) then {
     _duration = _customSound select 1;
 };
 

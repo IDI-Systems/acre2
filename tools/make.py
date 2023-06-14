@@ -1529,8 +1529,7 @@ See the make.cfg file for additional build options.
     except Exception as e:
         print_yellow("Cancel or some error detected: {}".format(e))
 
-
-    finally:
+    else:
         if compile_ext:
             compile_extensions(extensions_root, force_build)
 

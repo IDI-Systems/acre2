@@ -26,6 +26,37 @@ __Example__
 
 ---
 
+### acre_api_fnc_setRadioAudioSource
+__Description__
+
+Sets the audio source on the provided radio ID.
+Possible Values for ACRE_PRC148: ["INTAUDIO", "TOPAUDIO", "TOPSIDETON", "SIDEAUDIO", "SIDESIDETON"]
+Possible Values for ACRE_PRC152: ["INTAUDIO", "TOPAUDIO"]
+Possible Values for ACRE_SEM52SL: ["INTSPEAKER", "HEADSET"]
+Possible Values for ACRE_SEM70: ["INTSPEAKER", "HEADSET"]
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio ID  | STRING | 
+1 | Audio Source  | STRING | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Success  | BOOLEAN
+
+__Example__
+
+```sqf
+_success = ["ACRE_PRC148_ID_123", "INTAUDIO"] call acre_api_fnc_setRadioAudioSource
+```
+
+
+---
+
 ### acre_api_fnc_setupMission
 __Description__
 
@@ -235,6 +266,34 @@ __Example__
 
 ```sqf
 _ret = [] call acre_api_fnc_getSelectableVoiceCurve;
+```
+
+
+---
+
+### acre_api_fnc_setRadioSpeaker
+__Description__
+
+Sets the audio source to speaker or back to default on the provided radio ID.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio ID  | STRING | 
+1 | Speaker  | BOOL | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Success  | BOOLEAN
+
+__Example__
+
+```sqf
+_success = ["ACRE_PRC148_ID_123", true] call acre_api_fnc_setRadioSpeaker
+_success = ["ACRE_PRC148_ID_123", false] call acre_api_fnc_setRadioSpeaker
 ```
 
 
@@ -793,6 +852,85 @@ __Example__
 
 ```sqf
 _success = ["ACRE_PRC148_ID_7"] call acre_api_fnc_setCurrentRadio;
+```
+
+
+---
+
+### acre_api_fnc_addNotificationDisplay
+__Description__
+
+Adds notification system support to given display ID (IDD).
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Display ID  | NUMBER | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Display priority index  | NUMBER
+
+__Example__
+
+```sqf
+[3333] call acre_api_fnc_addNotificationDisplay
+```
+
+
+---
+
+### acre_api_fnc_godModeGetGroupTargets
+__Description__
+
+Returns given group's current targets.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+1 | Group (0-based index or -1 for current channel)  | NUMBER | 0
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Group targets  | ARRAY
+
+__Example__
+
+```sqf
+[0] call acre_api_fnc_godModeGetGroupTargets
+```
+
+
+---
+
+### acre_api_fnc_godModeConfigureAccess
+__Description__
+
+Configures the access to God Mode.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Access to the BI Chat Channel functionality  | BOOL | false
+1 | Access to Group presets functionality  | BOOL | false
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Handled  | BOOL
+
+__Example__
+
+```sqf
+[true, false] call acre_api_fnc_godModeConfigureAccess
 ```
 
 
@@ -1557,6 +1695,32 @@ __Example__
 
 ---
 
+### acre_api_fnc_getRadioAudioSource
+__Description__
+
+Gets the audio source currently selected on the provided radio ID.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio ID  | STRING | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Audio Source  | STRING
+
+__Example__
+
+```sqf
+_audioSource = ["ACRE_PRC148_ID_123"] call acre_api_fnc_getRadioAudioSource
+```
+
+
+---
+
 ### acre_api_fnc_copyPreset
 __Description__
 
@@ -1662,6 +1826,32 @@ _result = ["ACRE_PRC343"] call acre_api_fnc_isBaseRadio;
 
 ---
 
+### acre_api_fnc_isRadioSpeaker
+__Description__
+
+Returns true or false whether the provided radio ID has audio source set to speaker or not.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Radio ID  | STRING | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Is Audio Source Speaker  | BOOL
+
+__Example__
+
+```sqf
+_isSpeaker = ["ACRE_PRC148_ID_123"] call acre_api_fnc_isRadioSpeaker
+```
+
+
+---
+
 ### acre_api_fnc_setCustomSignalFunc
 __Description__
 
@@ -1686,6 +1876,33 @@ __Example__
 ```sqf
 [mySignalFunc] call acre_api_fnc_setCustomSignalFunc
 [{}] call acre_api_fnc_setCustomSignalFunc
+```
+
+
+---
+
+### acre_api_fnc_godModeNameGroup
+__Description__
+
+Sets a visible name for the given God Mode group.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Name  | STRING | 
+1 | Group to effect (0-based index)  | NUMBER | 0
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Group name set successfully  | BOOL
+
+__Example__
+
+```sqf
+["Admin", 0] call acre_api_fnc_godModeNameGroup
 ```
 
 
@@ -1746,7 +1963,8 @@ __Example__
 ### acre_api_fnc_isRadio
 __Description__
 
-Returns true or false whether the provided weapon is a ACRE radio or not.
+Returns true or false whether the provided classname is a ACRE radio or not.
+This function returns false on Radio Base Classes.
 
 __Parameters__
 
@@ -1764,6 +1982,33 @@ __Example__
 
 ```sqf
 _isRadio = ["NVGoggles"] call acre_api_fnc_isRadio;
+```
+
+
+---
+
+### acre_api_fnc_godModeSendText
+__Description__
+
+Sends a text message to the specified God Mode group.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Text  | STRING | ""
+1 | Group ID (0-based index)  | NUMBER | 0
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Text message sent successfully  | BOOL
+
+__Example__
+
+```sqf
+["sample text", 2] call acre_api_fnc_godModeSendText
 ```
 
 
@@ -1822,6 +2067,36 @@ _success = ["ACRE_PRC148_ID_3", "LEFT" ] call acre_api_fnc_setRadioSpatial;
 
 ---
 
+### acre_api_fnc_godModeModifyGroup
+__Description__
+
+Modifies who can hear a message from God Mode.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Unit or UID or array of either or code returning array of units  | OBJECT, STRING, ARRAY, CODE | []
+1 | Group to effect (0-based index)  | NUMBER | 0
+2 | Action. 0 for set, 1 for add and 2 for subtract  | NUMBER | 0
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Group modified successfully  | BOOL
+
+__Example__
+
+```sqf
+[[unit1, unit2], 0, 1] call acre_api_fnc_godModeModifyGroup
+[["76561198040512062", "76561198046921073"], 0, 1] call acre_api_fnc_godModeModifyGroup
+[{allUnits select {alive _x}}, 0, 1] call acre_api_fnc_godModeModifyGroup
+```
+
+
+---
+
 ### acre_api_fnc_setGlobalVolume
 __Description__
 
@@ -1865,9 +2140,9 @@ Index | Description | Datatype(s) | Default Value
 1 | Rackname - this is diplayed to the user. Ideally short  | STRING | ""
 2 | Rack short name - displayed in GUI information. Max 4 characters  | STRING | ""
 3 | Is mounted radio removable  | BOOLEAN | false
-5 | Access - Determines who can use the rack  | ARRAY | ["inside"]
-6 | Disabled positions - Blacklist rack use positions  | ARRAY | []
-4 | Base classname of the mounted radio (Without ID). Empty string for no radio  | STRING | ""
+4 | Access - Determines who can use the rack  | ARRAY | ["inside"]
+5 | Disabled positions - Blacklist rack use positions  | ARRAY | []
+6 | Base classname of the mounted radio (Without ID). Empty string for no radio  | STRING | ""
 7 | Components  | ARRAY | []
 8 | Connected intercoms  | ARRAY | []
 2 | Force initialisation  | BOOL | false

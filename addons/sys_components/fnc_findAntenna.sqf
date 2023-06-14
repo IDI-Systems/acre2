@@ -46,14 +46,13 @@ private _searchFunction = {
                                     _componentObject = _groundSpikeAntenna;
                                 };
                             };
-                            private _objectType = typeOf _componentObject;
                             private _antennaPos = getPosASL _componentObject;
-                            if (!(_objectType isKindOf "CAManBase") && {!(_objectType isKindOf "House")}) then { // Do not add bounding center to GSA
+                            if (!(_componentObject isKindOf "CAManBase") && {!(_componentObject isKindOf "House")}) then { // Do not add bounding center to GSA
                                 _antennaPos = _antennaPos vectorAdd [0, 0, (boundingCenter _componentObject) select 2];
                             };
                             private _antennaDir = vectorDir _componentObject;
                             private _antennaDirUp = vectorUp _componentObject;
-                            private _configPath = configFile >> "CfgVehicles" >> _objectType;
+                            private _configPath = configOf _componentObject;
                             if (isArray (_configPath >> "acre_antennaMemoryPoints")) then {
                                 private _memoryPoints = getArray (_configPath >> "acre_antennaMemoryPoints");
                                 _memoryPoints = _memoryPoints select (((count _memoryPoints) - 1) min _connectorIndex);

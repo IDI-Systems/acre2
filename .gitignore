@@ -1,8 +1,13 @@
 release/*
 releases/*
+hemtt
+hemtt.exe
+.hemttout
 symbols/*
 keys/*
 .hemtt/local
+idi/*
+a3/*
 *.cache
 *.pbo
 texHeaders.bin
@@ -14,3 +19,5 @@ Thumbs.db
 *.exe
 *.vscode*
 *.out
+*.zip
+*.sqfc

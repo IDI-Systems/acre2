@@ -77,7 +77,6 @@ if (GVAR(doFullSearch)) then {
 
     _searchObjects = _searchObjects arrayIntersect _searchObjects; // Ensure nothing gets searched twice.
     private _cfgWeapons = configFile >> "CfgWeapons";
-    private _cfgVehicles = configFile >> "CfgVehicles";
     {
         private _mainObject = _x;
         private _objects = [_mainObject];
@@ -110,9 +109,9 @@ if (GVAR(doFullSearch)) then {
     } forEach _searchObjects;
     // VEHICLE RACKS
     {
-        private _rackId = typeOf _x;
 
-        if (getNumber (_cfgVehicles >> _rackId >> "acre_isUnique") == 1) then {
+        if (getNumber (configOf _x >> "acre_isUnique") == 1) then {
+            private _rackId = typeOf _x;
             private _vehicle = _x getVariable [QEGVAR(sys_rack,rackVehicle), objNull];
             private _mainObject = _x;
             if (isNull _vehicle || {!alive _vehicle}) then {
@@ -242,7 +241,7 @@ if (GVAR(doFullSearch)) then {
 
         if (HASH_HASKEY(GVAR(masterIdTable), _key)) then {
             private _currentEntry = HASH_GET(GVAR(masterIdTable), _key);
-            if !(_value isEqualTo _currentEntry) then {
+            if (_value isNotEqualTo _currentEntry) then {
                 _toUpdate pushBack [_key, _value];
             };
         } else {
@@ -254,7 +253,7 @@ if (GVAR(doFullSearch)) then {
         };
     } forEach ((HASH_KEYS(_idTable)) - GVAR(unacknowledgedIds));
 
-    if !(_toUpdate isEqualTo []) then {
+    if (_toUpdate isNotEqualTo []) then {
         #ifdef DEBUG_MODE_FULL
             TRACE_1("calling updateIdObjects", _toUpdate);
             acre_player sideChat "Calling updateIdObjects";

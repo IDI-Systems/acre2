@@ -8,9 +8,10 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    if: github.repository == 'IDI-Systems/acre2' && ! contains(github.event.head_commit.message, '[ci skip]')
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
     - name: Install Python packages
       run: |
         pip3 install wheel
@@ -18,7 +19,6 @@ jobs:
         pip3 install pygithub
         pip3 install pygithub3
     - name: Deploy
-      if: github.repository == 'IDI-Systems/acre2' && ! contains(github.event.head_commit.message, '[ci skip]')
+      run: python3 tools/deploy.py
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: python3 tools/deploy.py

@@ -16,3 +16,4 @@ class CfgPatches {
 
 #include "CfgVehicles.hpp"
 #include "CfgEventHandlers.hpp"
+#include "ace_arsenal_stats.hpp"

@@ -61,7 +61,7 @@ _speakingId = parseNumber _speakingId;
                     private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + GVAR(nearRadios), false] call EFUNC(sys_modes,checkAvailability);
                     _okRadios = (_okRadios select 0) select 1;
                     //_okRadios = _okRadios - [ACRE_BROADCASTING_RADIOID];
-                    if !(_okRadios isEqualTo []) then {
+                    if (_okRadios isNotEqualTo []) then {
                         {
                             [_x, "handleEndTransmission", [_radioId]] call EFUNC(sys_data,transEvent);
                         } forEach _okRadios;

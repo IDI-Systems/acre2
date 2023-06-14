@@ -82,7 +82,7 @@ private _currentUniqueItems = [];
 private _dif1 = GVAR(oldUniqueItemList) - _currentUniqueItems;
 private _dif2 = _currentUniqueItems - GVAR(oldUniqueItemList);
 private _dif = _dif1 + _dif2;
-if !(_dif isEqualTo []) then {
+if (_dif isNotEqualTo []) then {
     {
         if (_x in _currentUniqueItems) then {
             [(_currentUniqueItems select 0)] call EFUNC(sys_radio,setActiveRadio);

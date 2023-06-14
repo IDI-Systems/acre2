@@ -22,7 +22,7 @@ TRACE_1("enter", _menu);
 private _ret = false;
 if ((!isNil "_menu") && {(count _menu) > 5}) then {
     private _events = MENU_ACTION_EVENTS(_menu);
-    if (!isNil "_events" && {_events isEqualType []} && {!(_events isEqualTo [])}) then {
+    if (!isNil "_events" && {_events isEqualType []} && {_events isNotEqualTo []}) then {
         private _onEntryFunction = MENU_ACTION_ONENTRY(_menu);
         if (!isNil "_onEntryFunction") then {
             _ret = [_onEntryFunction, _menu] call FUNC(dynamicCall);

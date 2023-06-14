@@ -104,7 +104,7 @@ private _addRadios = {
 
     TRACE_1("Adding Radios", _cleanRadioList);
 
-    if ((backpack _player == "") && {!((["ACRE_PRC77", "ACRE_PRC117F"] arrayIntersect _cleanRadioList) isEqualTo [])}) then {
+    if ((backpack _player == "") && {(["ACRE_PRC77", "ACRE_PRC117F"] arrayIntersect _cleanRadioList) isNotEqualTo []}) then {
         _player addBackpack "B_AssaultPack_khk";
     };
 

@@ -73,7 +73,7 @@ private _accent = [];
 
     // Add limited positions. Positions in which non-intercom members can communicate temporarily
     private _limitedIntercomPositions = [_vehicle, _limitedPositions] call EFUNC(sys_core,processVehicleSystemAccessArray);
-    if (!(_limitedIntercomPositions isEqualto []) && {_numLimPositions isEqualTo []}) then {
+    if (_limitedIntercomPositions isNotEqualTo [] && {_numLimPositions isEqualTo []}) then {
         //_limitedIntercomPositions = [];
         WARNING_2("Intercom %1 has limited positions defined but no actual limit of simultaneous connections for %2 - ignoring limited positions",_name,_type);
     };

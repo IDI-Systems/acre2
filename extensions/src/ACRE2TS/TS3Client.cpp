@@ -76,6 +76,8 @@ acre::Result CTS3Client::start(const acre::id_t id_) {
     this->setMainPTTDown(false);
     this->setRadioPTTDown(false);
     this->setIntercomPTTDown(false);
+    this->setGodPTTDown(false);
+    this->setZeusPTTDown(false);
     this->setHitTSSpeakingEvent(false);
     this->setOnRadio(false);
     this->setState(acre::State::running);
@@ -116,22 +118,23 @@ acre::Result CTS3Client::exPersistVersion( void ) {
 }
 
 acre::Result CTS3Client::setClientMetadata(const char *const data) {
-    char* clientInfo;
+    char* clientInfo{nullptr};
     anyID myID;
     ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &myID);
-    ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), myID, CLIENT_META_DATA, &clientInfo);
-    std::string to_set;
-    std::string_view sharedMsg = clientInfo;
-    const size_t start_pos = sharedMsg.find(START_DATA);
-    const size_t end_pos = sharedMsg.find(END_DATA);
-    if ((start_pos == std::string::npos) || (end_pos == std::string::npos)) {
-        to_set = to_set + START_DATA + data + END_DATA;
-    } else {
-        const std::string before = (std::string)sharedMsg.substr(0, start_pos);
-        const std::string after = (std::string)sharedMsg.substr(end_pos + strlen(END_DATA), std::string::npos);
-        to_set = before + START_DATA + data + END_DATA + after;
+    if (Ts3ErrorType::ERROR_ok == ts3Functions.getClientVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), myID, CLIENT_META_DATA, &clientInfo)) {
+        std::string to_set;
+        std::string_view sharedMsg = clientInfo;
+        const size_t start_pos = sharedMsg.find(START_DATA);
+        const size_t end_pos = sharedMsg.find(END_DATA);
+        if ((start_pos == std::string::npos) || (end_pos == std::string::npos)) {
+            to_set = to_set + START_DATA + data + END_DATA;
+        } else {
+            const std::string before = (std::string)sharedMsg.substr(0, start_pos);
+            const std::string after = (std::string)sharedMsg.substr(end_pos + strlen(END_DATA), std::string::npos);
+            to_set = before + START_DATA + data + END_DATA + after;
+        }
+        ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, to_set.c_str());
     }
-    ts3Functions.setClientSelfVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), CLIENT_META_DATA, to_set.c_str());
     ts3Functions.freeMemory(clientInfo);
     ts3Functions.flushClientSelfUpdates(ts3Functions.getCurrentServerConnectionHandlerID(), NULL);
     return acre::Result::ok;
@@ -159,16 +162,22 @@ acre::Result CTS3Client::localStartSpeaking(const acre::Speaking speakingType_, 
     bool stopDirectSpeaking = false;
 
     /* Open or close the microphone. If the microphone is still active, stop direct speaking before
-     * starting the new PTT method: radio speaking. In theory this would not be needed for intercom since
+     * starting the new PTT method: radio/god speaking. In theory this would not be needed for intercom since
      * at the moment it is a direct speak with audio effect. However, it is planned to have intercoms converted
      * to components and unique IDs.
      */
-    if ((speakingType_ == acre::Speaking::radio) || (speakingType_ == acre::Speaking::intercom)) {
+    if ((speakingType_ == acre::Speaking::radio) || (speakingType_ == acre::Speaking::intercom) || (speakingType_ == acre::Speaking::god) || (speakingType_ == acre::Speaking::zeus)) {
         if (speakingType_ == acre::Speaking::radio) {
             this->setRadioPTTDown(true);
             this->setOnRadio(true);
-        } else {
+        } else if (speakingType_ == acre::Speaking::intercom) {
             this->setIntercomPTTDown(true);
+        } else if (speakingType_ == acre::Speaking::god) {
+            this->setGodPTTDown(true);
+            this->setOnRadio(true);
+        } else if (speakingType_ == acre::Speaking::zeus) {
+            this->setZeusPTTDown(true);
+            this->setOnRadio(true);
         }
 
         if (!this->getVAD()) {
@@ -179,12 +188,6 @@ acre::Result CTS3Client::localStartSpeaking(const acre::Speaking speakingType_, 
             }
         } else if (this->getVAD() && (this->getTsSpeakingState() == STATUS_TALKING)) {
             stopDirectSpeaking = true;
-        }
-    }
-
-    if ((speakingType_ == acre::Speaking::god) || (speakingType_ == acre::Speaking::zeus)) {
-        if (!this->getVAD()) {
-            this->microphoneOpen(true);
         }
     }
 
@@ -201,11 +204,10 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
         case acre::Speaking::direct:
             break;
         case acre::Speaking::god:
-            [[fallthrough]];
+            this->setGodPTTDown(false);
+            break;
         case acre::Speaking::zeus:
-            if (!this->getVAD()) {
-                this->microphoneOpen(false);
-            }
+            this->setZeusPTTDown(false);
             break;
         case acre::Speaking::radio:
             this->setRadioPTTDown(false);
@@ -216,6 +218,8 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
         case acre::Speaking::unknown:
             this->setRadioPTTDown(false);
             this->setIntercomPTTDown(false);
+            this->setGodPTTDown(false);
+            this->setZeusPTTDown(false);
             break;
         default:
             break;
@@ -223,11 +227,13 @@ acre::Result CTS3Client::localStopSpeaking(const acre::Speaking speakingType_) {
 
     if (this->getOnRadio()) {
         if (!this->getVAD()) {
-            if ((speakingType_ == acre::Speaking::radio) && this->getDirectFirst()) {
+            if (((speakingType_ == acre::Speaking::radio) || (speakingType_ == acre::Speaking::god) || (speakingType_ == acre::Speaking::zeus)) && this->getDirectFirst()) {
                 this->setOnRadio(false);
                 resendDirectSpeaking = true;
             } else {
-                if (!((CTS3Client *) (CEngine::getInstance()->getClient()))->getMainPTTDown()) {
+                if ((!((CTS3Client *) (CEngine::getInstance()->getClient()))->getMainPTTDown())
+                      && (!((CTS3Client*)(CEngine::getInstance()->getClient()))->getGodPTTDown())
+                      && (!((CTS3Client*)(CEngine::getInstance()->getClient()))->getZeusPTTDown())) {
                     this->microphoneOpen(false);
                 } else {
                     resendDirectSpeaking = true;
@@ -374,6 +380,61 @@ std::string CTS3Client::getUniqueId( ) {
     }
     return serverUniqueId;
 }
+
+std::string CTS3Client::getServerName(void) {
+    char *serverName;
+    std::string serverNameString = "";
+
+    uint32_t res = ts3Functions.getServerVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), VIRTUALSERVER_NAME, &serverName);
+    if (res == ERROR_ok) {
+        serverNameString = std::string(serverName);
+        if (serverName) {
+            ts3Functions.freeMemory(serverName);
+        }
+    }
+    return serverNameString;
+}
+
+std::string CTS3Client::getChannelName(void) {
+    anyID clientId;
+    uint64_t currentChannelId = INVALID_TS3_CHANNEL;
+
+    std::string channelNameString = "";
+    char *channelName;
+
+    if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+        if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok ) {
+            if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), currentChannelId, CHANNEL_NAME, &channelName) == ERROR_ok) {
+                if (channelName){
+                    channelNameString = std::string(channelName);
+                    ts3Functions.freeMemory(channelName);
+                }
+            }
+        }
+    }
+    return channelNameString;
+}
+
+std::string CTS3Client::getChannelUniqueID(void) {
+    anyID clientId;
+    uint64_t currentChannelId = INVALID_TS3_CHANNEL;
+
+    std::string channelNameString = "";
+    char *channelName;
+
+    if (ts3Functions.getClientID(ts3Functions.getCurrentServerConnectionHandlerID(), &clientId) == ERROR_ok) {
+        if (ts3Functions.getChannelOfClient(ts3Functions.getCurrentServerConnectionHandlerID(), clientId, &currentChannelId) == ERROR_ok ) {
+            if (ts3Functions.getChannelVariableAsString(ts3Functions.getCurrentServerConnectionHandlerID(), currentChannelId, CHANNEL_UNIQUE_IDENTIFIER, &channelName) == ERROR_ok) {
+                if (channelName){
+                    channelNameString = std::string(channelName);
+                    ts3Functions.freeMemory(channelName);
+                }
+            }
+        }
+    }
+    return channelNameString;
+}
+
 
 std::string CTS3Client::getConfigFilePath(void) {
     char tempPath[MAX_PATH - 14];

@@ -1,7 +1,7 @@
 
 #define BUTTON_W     0.027
 #define BUTTON_H    0.036
-#define BUTTONSIZE w = BUTTON_W*SafeZoneW; h = BUTTON_H*SafeZoneW
+#define BUTTONSIZE w = QUOTE(BUTTON_W*SafeZoneW); h = QUOTE(BUTTON_H*SafeZoneW)
 
 #define BUTTON_X    0.309
 #define BUTTON_Y    0.490
@@ -9,11 +9,11 @@
 #define BUTTON_OFFX     0.0047
 #define BUTTON_OFFY     0.0074
 
-#define BUTTON_GRID(BX,BY)    x = (((BUTTON_X) * safeZoneW) + (((BUTTON_OFFX*safeZoneW) + (BUTTON_W*safeZoneW)) * BX) + safeZoneX);\
-                            y = (((BUTTON_Y) * safeZoneW) + (((BUTTON_OFFY*safeZoneW) + (BUTTON_H*safeZoneW)) * BY) + safeZoneX)
+#define BUTTON_GRID(BX,BY)  x = QUOTE(((BUTTON_X) * safeZoneW) + (((BUTTON_OFFX*safeZoneW) + (BUTTON_W*safeZoneW)) * BX) + safeZoneX);\
+                            y = QUOTE(((BUTTON_Y) * safeZoneW) + (((BUTTON_OFFY*safeZoneW) + (BUTTON_H*safeZoneW)) * BY) + safeZoneX)
 
-#define CONTROL_SetRelativePos(xpos,ypos) x = H_OFFSET + (xpos * 0.001); y = H_OFFSET + (ypos * 0.001);
-#define CONTROL_SetDimensions(width, height) w = width * 0.001; h = height * 0.001;
+#define CONTROL_SetRelativePos(xpos,ypos) x = QUOTE(H_OFFSET + (xpos * 0.001)); y = QUOTE(H_OFFSET + (ypos * 0.001));
+#define CONTROL_SetDimensions(width,height) w = QUOTE(width * 0.001); h = QUOTE(height * 0.001);
 
 #define BEGIN_CONTROL(name, parent, idval) class name: parent { idc = idval;
 #define END_CONTROL        };
@@ -83,18 +83,18 @@
 #define ROW_XXLARGE_OFFY         0.055
 #define ROW_XXLARGE_FONT_SIZE     0.030
 
-#define COMBINE(x,y) x####y
+#define COMBINE(x,y) x##y
 
 //colorBackground[] = {44/255,49/255,41/255,0};
 #define TEXT_ROW_ELEMENT(CONTROL_ID,WIDTH,HEIGHT,TEXT_X,TEXT_OFFSETX,OFFSET_NUMX,TEXT_Y,TEXT_OFFSETY,OFFSET_NUMY,FONT_SIZE)\
     BEGIN_CONTROL(CONTROL_ID, Prc117f_RscText, CONTROL_ID)\
-        x = (((TEXT_X) * safeZoneW) + ((TEXT_OFFSETX*safeZoneW) * OFFSET_NUMX) + safeZoneX);\
-        y = (((TEXT_Y) * safeZoneW) + ((TEXT_OFFSETY*safeZoneW) * OFFSET_NUMY) + safeZoneX);\
-        w = WIDTH*SafeZoneW;\
-        h = HEIGHT*SafeZoneW;\
+        x = QUOTE(((TEXT_X) * safeZoneW) + ((TEXT_OFFSETX*safeZoneW) * OFFSET_NUMX) + safeZoneX);\
+        y = QUOTE(((TEXT_Y) * safeZoneW) + ((TEXT_OFFSETY*safeZoneW) * OFFSET_NUMY) + safeZoneX);\
+        w = QUOTE(WIDTH*SafeZoneW);\
+        h = QUOTE(HEIGHT*SafeZoneW);\
         colorText[] = {1,0,0,1};\
         colorBackground[] = {0,1,0,1};\
-        sizeEx = FONT_SIZE*SafeZoneW;\
+        sizeEx = QUOTE(FONT_SIZE*SafeZoneW);\
         text = "";\
     END_CONTROL
 

@@ -6,7 +6,6 @@ ACRE2 allows replacing its default signal strength calculator with a custom sign
 
 The default signal calculator is sophisticated and complex and as such is largely calculated in the C++ extension. However this signal model doesn't always appeal to every community and it doesn't always afford possibilites for various mission mechanics such as radio jammers. This function is intended to be used by communities seeking a specific signal experience or for highly ambitious mission makers.
 
-For the time being this command is highly experimental and is included as of dev-build 940.
 
 ## Function Usage
 
@@ -23,8 +22,8 @@ The input to your custom function will be of the format: `[30, 5000, "ACRE_PRC34
 ### Output
 
 The output of your function should be an array of size 2 with two numerical values:
-- The signal strength as a percentage (0-1). This value is what will be used by the TeamSpeak 3 plugin to adjust the audio of the player being heard on the radio.
-- The decibel signal strength value (dBM). A typical value that is heard is between 0 to about -110 (radio specific). Lower values are not heard.
+- The power as a percentage (0-1). This value is what will be used by the TeamSpeak 3 plugin to adjust the audio of the player being heard on the radio.
+- The decibel signal strength value (dBm). A typical value that is heard is between 0 to about -110 (radio specific). Lower values are not heard.
 
 The decibel signal strength value value is used to determine if the specific radio is capable of hearing the transmission. This process is typically carried out in the `handleMultipleTransmissions` function for that particular radio radio (i.e. AN/PRC-148). Firstly there exists a minimum signal sensitivity that each radio can pick up - This can be thought of as the minimum signal strength the hardware is capable of registering. The minimum that is registered is typically around -100 (AN/PRC343) to -117 (AN/PRC-117F) which is defined in `configFile >> 'CfgAcreComponents' >> RADIO_BASECLASS >> 'sensitivityMin'`. Some radios also make use of Squelch - If you are curious to see this is all handled in the radio specific `handleMultipleTransmissions` function.
 
@@ -35,15 +34,18 @@ The provided inputs are a bit lacking as they don't provide the position or any 
 - `acre_sys_radio_fnc_getRadioObject` - In ACRE2 every radio is typically associated with a game object this returns the associated object. e.g. `["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_getRadioObject;`
 - `acre_sys_radio_fnc_getRadioPos` - This will return the position (ASL) of a radio e.g. `["ACRE_PRC343_ID_1"] call acre_sys_radio_fnc_getRadioPos;`
 - `acre_sys_components_fnc_findAntenna` - This will return data on all the attached antennas to a specified radio `["ACRE_PRC343_ID_1"] call acre_sys_components_fnc_findAntenna;`. The return format is an array of antennas where each antenna contains data on the antenna class name, its position and its orientation.
+- `acre_sys_signal_fnc_getSignalCore` - This will call ACRE2's default implementation of the signal calculation in C++, with currently selected signal model. It will return Power and Maximum signal strenth (dBm) which can be further adjusted with custom processing.
+
 
 ## Examples
 
 ### Simple calculation
+
 Below is an example of a simple calculation that is based on how ACRE1 calculated signal loss. It is a largely based on [free-space path loss](https://en.wikipedia.org/wiki/Free-space_path_loss) over the distance which does not take into account terrain. It is also provides a bit of a boost to the signal strength of the AN/PRC-343. In this example the range of a AN/PRC-343 is around 500m and virtually all other radios will have no problems with Arma terrains (40km+).
 
-As of 2.7.0 this model has been implemented in C++ and it can be selected using the Arcade Mode via CBA Settings.
+{% include note.html content="As of 2.7.0 this model has been implemented in C++ and it can be selected using the Arcade Mode via CBA Settings." %}
 
-```js
+```sqf
 MY_CUSTOM_ACRE_FUNC = {
     params ["_f", "_mW", "_receiverClass", "_transmitterClass"];
 
@@ -63,7 +65,7 @@ MY_CUSTOM_ACRE_FUNC = {
 
     private _ituLoss = 36; /* base loss level (based on empirical testing...) */
 
-     /* Transmitter/Receiver cable/internal loss. */
+    /* Transmitter/Receiver cable/internal loss. */
     private _Ltx = 3; /* Transmitter */
     private _Lrx = 3; /* Receiver */
 
@@ -97,13 +99,35 @@ MY_CUSTOM_ACRE_FUNC = {
 [MY_CUSTOM_ACRE_FUNC] call acre_api_fnc_setCustomSignalFunc;
 ```
 
+### Signal modification
+
+Below is an example of a modification of the signal as calculated by ACRE2's C++ extension, based on the currently selected signal model. This can be used to modify the resulting signal further with custom processing, eg. simple jamming.
+
+```sqf
+[{
+    // ACRE signal processing
+    private _coreSignal = _this call acre_sys_signal_fnc_getSignalCore;
+    _coreSignal params ["_Px", "_maxSignal"];
+
+    // Modify signal (eg. zero-out if in jam area)
+    if (player inArea myTrigger) then {
+        _Px = 0;
+    };
+
+    // Return final signal
+    [_Px, _maxSignal]
+}] call acre_api_fnc_setCustomSignalFunc;
+```
+
+
 ## Reset
 
 To reset the signal handling to default simply call the function with empty code:
 
-```js
+```sqf
 [{}] call acre_api_fnc_setCustomSignalFunc;
 ```
+
 
 ## Debugging
 

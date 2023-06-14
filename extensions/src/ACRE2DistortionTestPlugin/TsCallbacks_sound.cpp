@@ -42,7 +42,7 @@ void ts3plugin_onEditPlaybackVoiceDataEvent(uint64 server, anyID id, short* samp
     //maxSample = std::max(maxSample, samples[0]);
     //LOG("MAX BEFORE: %d", maxSample);
     LOG("ENTER: ts3plugin_onEditPlaybackVoiceDataEvent: sampleCount=%d,channels=%d", sampleCount, channels);
-    g_RadioFilter.process(samples, sampleCount, channels, 0.9f, false);
+    g_RadioFilter.process(samples, sampleCount, channels, 0.9f, false, false);
 
 }
 

@@ -10,6 +10,7 @@ PREP(getAlive);
 PREP(getAllRadios);
 PREP(getClientIdLoop);
 PREP(getCompartment);
+PREP(getDescriptiveName);
 PREP(getGear);
 PREP(getHeadVector);
 PREP(getLanguageId);
@@ -20,6 +21,10 @@ PREP(getSpokenLanguages);
 PREP(handleGetClientID);
 PREP(handleGetHeadVector);
 PREP(handleGetPluginVersion);
+PREP(handleGetVOIPChannelName);
+PREP(handleGetVOIPChannelUID);
+PREP(handleGetVOIPServerName);
+PREP(handleGetVOIPServerUID);
 PREP(handleMultiPttKeyPress);
 PREP(handleMultiPttKeyPressUp);
 PREP(hasAccessToVehicleSystem);
@@ -52,6 +57,7 @@ PREP(switchRadioEar);
 PREP(toggleHeadset);
 PREP(updateSelf);
 PREP(uniqueItems);
+PREP(updateVOIPInfo);
 PREP(utilityFunction);
 
 PREP(onRevealUnit);
@@ -60,6 +66,7 @@ PREP(coreInitPFH);
 
 PREP(arsenalOpen);
 PREP(arsenalClose);
+PREP(avTerminalDisplayLoad);
 PREP(spectatorEGDisplayLoad);
 PREP(spectatorEGDisplayUnload);
 

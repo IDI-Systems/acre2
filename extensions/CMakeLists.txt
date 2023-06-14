@@ -72,4 +72,4 @@ add_subdirectory(src/ACRE2TS)
 
 #Extras
 add_subdirectory(src/Wav2B64)
-add_subdirectory(src/ACRE2DistortionTestPlugin)
+#add_subdirectory(src/ACRE2DistortionTestPlugin)

@@ -66,6 +66,9 @@ public:
     acre::Result playSound(std::string path_, acre::vec3_fp32_t position_, const float32_t volume_, const int32_t looping_);
 
     std::string getUniqueId( );
+    std::string getServerName(void);
+    std::string getChannelName(void);
+    std::string getChannelUniqueID(void);
 
     bool getVAD();
 
@@ -93,6 +96,8 @@ public:
     DECLARE_MEMBER(int32_t, TsSpeakingState);
     DECLARE_MEMBER(bool, RadioPTTDown);
     DECLARE_MEMBER(bool, IntercomPTTDown);
+    DECLARE_MEMBER(bool, GodPTTDown);
+    DECLARE_MEMBER(bool, ZeusPTTDown);
     DECLARE_MEMBER(bool, MainPTTDown);
     DECLARE_MEMBER(bool, DirectFirst);
     DECLARE_MEMBER(bool, HitTSSpeakingEvent);

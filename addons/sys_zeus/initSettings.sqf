@@ -17,7 +17,7 @@ private _zeusCategory = format ["ACRE2 %1", localize "str_a3_cfghints_curator_cu
 [
     QGVAR(zeusCommunicateViaCamera),
     "CHECKBOX",
-    LLSTRING(ZeusCommunicateViaCamera_DisplayName),
+    [LLSTRING(ZeusCommunicateViaCamera_DisplayName), LLSTRING(zeusCommunicateViaCamera_Description)],
     _zeusCategory,
     true
 ] call CBA_fnc_addSetting;
@@ -26,7 +26,7 @@ private _zeusCategory = format ["ACRE2 %1", localize "str_a3_cfghints_curator_cu
 [
     QGVAR(zeusCanSpectate),
     "CHECKBOX",
-    LLSTRING(ZeusCanSpectate_DisplayName),
+    [LLSTRING(ZeusCanSpectate_DisplayName), LLSTRING(ZeusCanSpectate_Description)],
     _zeusCategory,
     true
 ] call CBA_fnc_addSetting;

@@ -21,12 +21,7 @@ params [
 
 if (isNull _unit) exitWith {false};
 
-private _ret = false;
 
-{
-    private _weapon = _x;
-    _ret = [_weapon] call FUNC(isBaseRadio);
-    if (_ret) exitWith { _ret };
-} foreach ([_unit] call EFUNC(sys_core,getGear));
+private _index = ([_unit] call EFUNC(sys_core,getGear)) findIf {_x call FUNC(isBaseRadio)};
 
-_ret
+_index != -1

@@ -23,10 +23,16 @@ if !([_group] call FUNC(accessAllowed)) exitWith { false };
 GVAR(targetUnits) = [];
 
 ["stopGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+GVAR(speaking) = false;
 
-if (GVAR(txNotificationLayer) != "") then {
-    [GVAR(txNotificationLayer)] call EFUNC(sys_list,hideHint);
-    GVAR(txNotificationLayer) = "";
+#ifndef ALLOW_EMPTY_TARGETS
+if (GVAR(targetUnits) isNotEqualTo []) then {
+    #ifndef TEST_SELF_RX
+    ["Acre_GodPingOff", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false, false] call EFUNC(sys_sounds,playSound);
+    #endif
 };
+#endif
+
+[QGVAR(tx)] call EFUNC(sys_list,hideHint);
 
 true

@@ -8,6 +8,7 @@
 
 #include <cmath>
 #pragma comment(lib, "x3daudio.lib")
+#pragma comment(lib, "xaudio2.lib")
 
 #define MAX_FALLOFF_DISTANCE    75
 #define MAX_FALLOFF_RANGE        150

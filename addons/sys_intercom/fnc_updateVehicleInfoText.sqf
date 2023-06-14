@@ -99,7 +99,7 @@ private _colorfnc = {
     };
 } forEach _intercomNames;
 
-if !(_intercomNames isEqualTo []) then {
+if (_intercomNames isNotEqualTo []) then {
     _infoLine = format ["%1<t font='PuristaBold' color='#ffffff' size='0.8'>| </t>", _infoLine];
 };
 

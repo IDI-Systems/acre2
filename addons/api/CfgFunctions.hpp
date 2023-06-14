@@ -6,6 +6,7 @@ class CfgFunctions {
             PATHTO_FNC(setupMission);
 
             PATHTO_FNC(addDisplayPassthroughKeys);
+            PATHTO_FNC(addNotificationDisplay);
 
             PATHTO_FNC(getMultiPushToTalkAssignment);
             PATHTO_FNC(setMultiPushToTalkAssignment);
@@ -50,6 +51,11 @@ class CfgFunctions {
 
             PATHTO_FNC(setCurrentRadioChannelNumber);
             PATHTO_FNC(getCurrentRadioChannelNumber);
+
+            PATHTO_FNC(setRadioAudioSource);
+            PATHTO_FNC(getRadioAudioSource);
+            PATHTO_FNC(setRadioSpeaker);
+            PATHTO_FNC(isRadioSpeaker);
         };
 
         class Racks {
@@ -120,6 +126,14 @@ class CfgFunctions {
             PATHTO_FNC(godModeNameGroup);
             PATHTO_FNC(godModeSendText);
             PATHTO_FNC(godModeGetGroupTargets);
+        };
+
+        class VOIP {
+            PATHTO_FNC(getVOIPChannelName);
+            PATHTO_FNC(getVOIPChannelUID);
+            PATHTO_FNC(getVOIPServerName);
+            PATHTO_FNC(getVOIPServerUID);
+            PATHTO_FNC(isVOIPConnected);
         };
     };
 

@@ -1,17 +1,23 @@
 #include "script_component.hpp"
-#include "\a3\editor_f\Data\Scripts\dikCodes.h"
+#include "\a3\editor_f\data\scripts\dikCodes.h"
 
 if (!hasInterface) exitWith {};
+
+LOAD_SOUND(Acre_GodBeep);
+LOAD_SOUND(Acre_GodPingOn);
+LOAD_SOUND(Acre_GodPingOff);
 
 // CBA Event Handlers
 [QGVAR(startSpeaking), {
     params ["_speakingId", "_speakingName", "_channel", "_channelEx"];
 
-    #ifndef ALLOW_SELF_RX
+    #ifndef TEST_SELF_RX
     if (_speakingId == EGVAR(sys_core,ts3id)) exitWith {};
     #endif
 
     GVAR(speakingGods) pushBackUnique _speakingId;
+
+    ["Acre_GodPingOn", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false, false] call EFUNC(sys_sounds,playSound);
 
     if (GVAR(rxNotification)) then {
         _channel = localize _channel;
@@ -22,14 +28,14 @@ if (!hasInterface) exitWith {};
             _channel = format ["%1 (%2)", _channel, _channelEx];
         };
 
-        private _notificationLayer = [
+        [
+            format [QGVAR(%1), _speakingId],
             format ["RX: %1", localize LSTRING(god)],
             _channel,
             _speakingName,
             -1,
             GVAR(rxNotificationColor)
         ] call EFUNC(sys_list,displayHint);
-        GVAR(rxNotificationLayers) setVariable [str _speakingId, _notificationLayer];
     };
 }] call CBA_fnc_addEventHandler;
 
@@ -38,11 +44,9 @@ if (!hasInterface) exitWith {};
 
     GVAR(speakingGods) deleteAt (GVAR(speakingGods) find _speakingId);
 
-    private _notificationLayer = GVAR(rxNotificationLayers) getVariable [str _speakingId, ""];
-    if (_notificationLayer != "") then {
-        [_notificationLayer] call EFUNC(sys_list,hideHint);
-        GVAR(rxNotificationLayers) setVariable [str _speakingId, ""];
-    }
+    ["Acre_GodPingOff", [0,0,0], [0,0,0], EGVAR(sys_core,godVolume), false, false] call EFUNC(sys_sounds,playSound);
+
+    [format [QGVAR(%1), _speakingId]] call EFUNC(sys_list,hideHint);
 }] call CBA_fnc_addEventHandler;
 
 [QGVAR(showText), {

@@ -22,7 +22,7 @@ params [
 ];
 
 if ((_group < 0) || {_group >= GODMODE_NUMBER_OF_GROUPS}) exitWith {
-    ERROR_1("Invalid group ID. Group ID must be between 0 and %1, but %2 is entered.",GODMODE_NUMBER_OF_GROUPS-1,_group);
+    ERROR_2("Invalid group ID. Group ID must be between 0 and %1, but %2 is entered.",GODMODE_NUMBER_OF_GROUPS-1,_group);
     false
 };
 

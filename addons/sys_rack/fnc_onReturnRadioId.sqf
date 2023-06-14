@@ -32,7 +32,7 @@ _vehicle = _rackObject getVariable [QGVAR(rackVehicle), _rackObject];
 private _crewPlayers =  [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
 private _condition = false;
 
-if !(_crewPlayers isEqualTo []) then {
+if (_crewPlayers isNotEqualTo []) then {
     if (local (_crewPlayers select 0)) then {
         _condition = true;
     };
@@ -67,7 +67,7 @@ if (_condition) then {
         //Mount the radio into the rack.
         [_rackId, _class] call FUNC(mountRadio);
     }  else {
-        WARNING_3("Radio ID %1 for a vehicle rack was returned for a non-existent base class (%2).",_class,_baseRadio);
+        WARNING_2("Radio ID %1 for a vehicle rack was returned for a non-existent base class (%2).",_class,_baseRadio);
     };
 
     ["acre_acknowledgeId", [_class, acre_player]] call CALLSTACK(CBA_fnc_globalEvent);

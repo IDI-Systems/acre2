@@ -1,6 +1,6 @@
 #include "script_component.hpp"
 /*
- * Author: SynixeBrett
+ * Author: Brett Mayson
  * Checks if the local player is in the Zeus interface.
  *
  * Return Value:

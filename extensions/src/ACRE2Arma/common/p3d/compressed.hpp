@@ -14,6 +14,13 @@ namespace acre {
         template<typename T>
         class compressed : public compressed_base<T> {
         public:
+            // Mark template base-class members
+            using compressed_base<T>::size;
+            using compressed_base<T>::fill;
+            using compressed_base<T>::data;
+            using compressed_base<T>::flag;
+            using compressed_base<T>::_compressed_base::_data;
+            using compressed_base<T>::_compressed_base::_decompress_safe;
             compressed() { }
             compressed(std::istream &stream_, bool compressed_ = false, bool fill_ = false, uint32_t version = 68) 
             {

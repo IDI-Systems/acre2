@@ -26,7 +26,7 @@ private _classes = [];
 private _names = [];
 {
     private _isRadio = getNumber (_x >> "type") == ACRE_COMPONENT_RADIO;
-    private _hasComponents = !(getArray (_x >> "defaultComponents") isEqualTo []); // Only non-base classes have that
+    private _hasComponents = getArray (_x >> "defaultComponents") isNotEqualTo []; // Only non-base classes have that
     private _name = getText (_x >> "name");
 
     // Has name and isAcre, assume valid radio class

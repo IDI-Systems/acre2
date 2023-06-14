@@ -57,7 +57,7 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_
 
             call _fnc_removePFEH;
 
-            if (_connectedUnit isKindOf "CAManBase" || {!(crew _connectedUnit isEqualTo [])}) then {
+            if (_connectedUnit isKindOf "CAManBase" || {crew _connectedUnit isNotEqualTo []}) then {
                 if (_connectedUnit isKindOf "CAManBase") then {
                     [QGVAR(notifyPlayer), [localize LSTRING(disconnected)], _connectedUnit] call CBA_fnc_targetEvent;
                 } else {
@@ -69,7 +69,7 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_
 
             if (_connectedUnit != _unit && {_connectedUnit isKindOf "CAManBase"}) then {
                 // The unit that disconnected the antenna is different from the unit that was connected to it
-                private _text = format [localize LSTRING(disconnectedUnit), name _unit];
+                private _text = format [localize LSTRING(disconnectedUnit), name _connectedUnit];
                 [QGVAR(notifyPlayer), [_text], _unit] call CBA_fnc_targetEvent;
             };
         };

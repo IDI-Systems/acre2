@@ -11,15 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
     - name: Validate SQF
       run: python3 tools/sqf_validator.py
     - name: Validate Config
       run: python3 tools/config_style_checker.py
     - name: Validate Headers
       run: python3 docs/tools/document_functions.py . --debug
-    - name: Check Strings
-      run: python3 tools/check_strings.py
+    - name: Check Strings Formatting
+      run: python3 tools/stringtable_validator.py
+    - name: Check Strings Defined
+      run: python3 tools/stringtable_checkDefined.py
     - name: Check for BOM
       uses: arma-actions/bom-check@v1
 
@@ -27,23 +29,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@master
+      uses: actions/checkout@v3
     - name: Lint (sqflint)
       uses: arma-actions/sqflint@master
       continue-on-error: true # No failure due to many false-positives
 
-  # Requires HEMTT 0.8.0-2cf6fb7
-  # build:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Checkout the source code
-  #     uses: actions/checkout@master
-  #   - name: Build using HEMTT
-  #     uses: arma-actions/hemtt@master
-  #     with:
-  #       command: build --release --ci
-  #   - name: Upload Artifact
-  #     uses: actions/upload-artifact@v2-preview
-  #     with:
-  #       name: CBA_A3-${{ github.sha }}-nobin
-  #       path: releases/CBA_A3_*.zip
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@v3
+    - name: Setup HEMTT
+      uses: arma-actions/hemtt@v1
+    - name: Run HEMTT build
+      run: hemtt build
+    - name: Rename build folder
+      run: mv .hemttout/build .hemttout/@acre2
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: acre2-${{ github.sha }}-nobin
+        path: .hemttout/@*
