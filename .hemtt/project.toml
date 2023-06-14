@@ -32,7 +32,7 @@ preset = "Hemtt"
 [hemtt.release]
 folder = "acre2"
 
-[hemtt.launch]
+[hemtt.launch.default]
 workshop = [
     "450814997", # CBA_A3's Workshop ID
     "463939057", # ACE3's Workshop ID
