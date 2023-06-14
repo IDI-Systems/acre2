@@ -22,9 +22,5 @@ GVAR(requestingNewId) = false;
 LOG("Monitor Inventory Starting");
 
 [{ACRE_DATA_SYNCED && {(!isNil "ACRE_SERVER_INIT")} && {time >= 1}},{
-    [
-        "loadout",
-        DFUNC(monitorRadiosHandler),
-        true
-    ] call CBA_fnc_addPlayerEventHandler;
+    ["loadout", DFUNC(monitorRadiosHandler), true] call CBA_fnc_addPlayerEventHandler;
 },[]] call CBA_fnc_waitUntilAndExecute;

@@ -160,10 +160,10 @@
             <Turkish>Telsiz Ayarı Şuna Atandı: %1</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultItemRadioType_DisplayName">
-            <English>Vanilla radio item replacement</English>
+            <English>Radio Item Replacement</English>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultItemRadioType_Description">
-            <English>ItemRadio inventory items will be replaced with this type of radio.</English>
+            <English>Default radio inventory items will be replaced with this type of radio.</English>
         </Key>
     </Package>
 </Project>
