@@ -128,7 +128,7 @@ jobs:
         echo "::endgroup::"
         ls *.zip
     - name: Upload to FTP (ACRE2)
-      uses: appleboy/scp-action@master
+      uses: appleboy/scp-action@v0.1.3
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -136,7 +136,7 @@ jobs:
         source: "acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip"
         target: "${{ secrets.FTP_SERVER }}/test/${{ github.event.inputs.path }}"
     - name: Upload to FTP (Symbols)
-      uses: appleboy/scp-action@master
+      uses: appleboy/scp-action@v0.1.3
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -176,7 +176,7 @@ jobs:
         echo "::endgroup::"
         ls *.zip
     - name: Upload to FTP (ACRE2)
-      uses: appleboy/scp-action@master
+      uses: appleboy/scp-action@v0.1.3
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -184,7 +184,7 @@ jobs:
         source: "acre2_${{ needs.build.outputs.VERSION }}.zip"
         target: "${{ secrets.FTP_SERVER }}/dev"
     - name: Upload to FTP (Symbols)
-      uses: appleboy/scp-action@master
+      uses: appleboy/scp-action@v0.1.3
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -234,7 +234,7 @@ jobs:
         echo "::endgroup::"
         ls *.zip
     - name: Upload to FTP (ACRE2)
-      uses: appleboy/scp-action@master
+      uses: appleboy/scp-action@v0.1.3
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -242,7 +242,7 @@ jobs:
         source: "acre2_${{ needs.build.outputs.VERSION }}.zip"
         target: "${{ secrets.FTP_SERVER }}/release"
     - name: Upload to FTP (Symbols)
-      uses: appleboy/scp-action@master
+      uses: appleboy/scp-action@v0.1.3
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
