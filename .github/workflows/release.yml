@@ -299,30 +299,21 @@ jobs:
       env:
         STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
-    - name: Prepare GitHub
-      id: release_drafter
-      uses: release-drafter/release-drafter@v5
-      with:
-        name: ACRE2 v${{ needs.build.outputs.VERSION }}
-        tag: v${{ needs.build.outputs.VERSION }}
-        version: ${{ needs.build.outputs.VERSION }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload to GitHub
-      uses: actions/upload-release-asset@v1
+      id: github_release
+      uses: actions/action-gh-release@v1
       with:
-        upload_url: ${{ steps.release_drafter.outputs.upload_url }}
-        asset_path: ./acre2_${{ needs.build.outputs.VERSION }}.zip
-        asset_name: acre2_${{ needs.build.outputs.VERSION }}.zip
-        asset_content_type: application/zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        draft: true
+        files: acre2_${{ needs.build.outputs.VERSION }}.zip
+        name: 'ACRE2 v${{ needs.build.outputs.VERSION }}'
+        tag_name: v${{ needs.build.outputs.VERSION }}
+        target_commitish: ${{ github.sha }}
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_USERNAME: Publisher
         SLACK_ICON_EMOJI: ":package:"
-        SLACK_MESSAGE: 'Release uploaded and published! Go to ${{ steps.release_drafter.outputs.html_url }} to finalize release notes and publish on GitHub.'
+        SLACK_MESSAGE: 'Release uploaded and published! Go to ${{ steps.github_release.outputs.url }} to finalize release notes and publish on GitHub.'
         SLACK_TITLE: Release Status
         MSG_MINIMAL: actions url
