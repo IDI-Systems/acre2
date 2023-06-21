@@ -11,3 +11,16 @@ class CfgPatches {
         VERSION_CONFIG;
     };
 };
+
+class CfgSoundEffects {
+    class AttenuationsEffects {
+        class vn_tank_attenuation {
+            acreAttenuation = 0.7;
+            acreAttenuationTurnedOut = 0.25;
+        };
+        class vn_car_attenuation {
+            acreAttenuation = 0.5;
+            acreAttenuationTurnedOut = 0.25;
+        };
+    };
+};
