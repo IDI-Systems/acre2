@@ -51,4 +51,13 @@ class CfgVehicles {
             };
         };
     };
+
+    class vn_wheeled_truck_base;
+    class vn_wheeled_m54_base: vn_wheeled_truck_base {
+        class AcreRacks {
+            class Rack_1 {
+                allowedPositions[] = {"driver", {"ffv", {0}}};
+            };
+        };
+    };
 };
