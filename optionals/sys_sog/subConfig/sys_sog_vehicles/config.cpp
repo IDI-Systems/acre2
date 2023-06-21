@@ -12,6 +12,7 @@ class CfgPatches {
     };
 };
 
+// TODO move to sys_attenuate
 class CfgSoundEffects {
     class AttenuationsEffects {
         class vn_tank_attenuation {
@@ -57,6 +58,23 @@ class CfgVehicles {
         class AcreRacks {
             class Rack_1 {
                 allowedPositions[] = {"driver", {"ffv", {0}}};
+            };
+        };
+    };
+
+    class vn_wheeled_car_base;
+    class vn_wheeled_m151_base: vn_wheeled_car_base {
+        class AcreRacks {
+            class Rack_1 {
+                allowedPositions[] = {"driver", {"ffv", {0}}, "external"};
+            };
+        };
+    };
+    // Armored M151
+    class vn_wheeled_m151_mg_04_base: vn_wheeled_m151_base {
+        class AcreRacks: AcreRacks {
+            class Rack_1: Rack_1 {
+                allowedPositions[] = {"driver", {"cargo", 0}};
             };
         };
     };
