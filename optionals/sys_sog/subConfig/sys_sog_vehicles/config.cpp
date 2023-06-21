@@ -24,3 +24,31 @@ class CfgSoundEffects {
         };
     };
 };
+
+class CfgVehicles {
+    class vn_armor_tank_base;
+    class vn_armor_m48_base: vn_armor_tank_base {
+        class ACRE {
+            class attenuation {
+                class Compartment1  {
+                    Compartment1 = 0;
+                    Compartment2 = 0.8;
+                };
+                class Compartment2  {
+                    Compartment1 = 0.8;
+                    Compartment2 = 0;
+                };
+            };
+            class attenuationTurnedOut {
+                class Compartment1  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                };
+                class Compartment2  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                };
+            };
+        };
+    };
+};
