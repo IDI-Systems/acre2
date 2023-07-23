@@ -33,11 +33,10 @@ if (_intercoms isEqualTo [] || {"none" in _intercoms}) then {
     } else {
         private _intercomIds = _configuredIntercoms apply {_x select 0};
         {
-            private _int = _x;
-            if (_int in _intercomIds) then {
-                _wiredIntercoms pushBack _int;
+            if (_x in _intercomIds) then {
+                _wiredIntercoms pushBack _x;
             } else {
-                WARNING_3("No intercom %1 defined but rack %2 can have access to its network for %3 - skipping",_int,_rack,typeOf _vehicle)
+                WARNING_3("No intercom %1 defined but rack %2 can have access to its network for %3 - skipping",_x,_rack,typeOf _vehicle)
             };
         } forEach _intercoms;
     };
