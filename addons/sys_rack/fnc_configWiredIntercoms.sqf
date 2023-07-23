@@ -8,7 +8,7 @@
  * 1: Rack class <STRING>
  *
  * Return Value:
- * None
+ * Wired Intercoms <ARRAY>
  *
  * Example:
  * [cursorTarget] call acre_sys_rack_configWiredIntercoms
