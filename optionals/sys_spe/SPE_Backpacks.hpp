@@ -1,4 +1,4 @@
-﻿class B_SPE_AssaultPack_Base;
+class B_SPE_AssaultPack_Base;
 
 // American
 class B_SPE_US_Radio : B_SPE_AssaultPack_Base {
