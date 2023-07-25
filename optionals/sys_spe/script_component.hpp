@@ -1,0 +1,13 @@
+#define COMPONENT sys_spe
+#define COMPONENT_BEAUTIFIED Spearhead Compatibility
+#include "\idi\acre\addons\main\script_mod.hpp"
+
+#ifdef DEBUG_ENABLED_SYS_SPE
+    #define DEBUG_MODE_FULL
+#endif
+
+#ifdef DEBUG_ENABLED_SYS_SPE
+    #define DEBUG_SETTINGS DEBUG_SETTINGS_SYS_SPE
+#endif
+
+#include "\idi\acre\addons\main\script_macros.hpp"
