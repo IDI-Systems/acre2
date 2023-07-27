@@ -1,9 +1,6 @@
 #include "script_component.hpp"
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
-// Exit if ACE3 not loaded
-if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
-
 private _addClassEH = {
     ["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
     ["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
