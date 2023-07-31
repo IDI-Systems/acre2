@@ -91,7 +91,7 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
 
     _radioParamsSorted params ["_radios","_sources"];
     GVAR(previousSortedParams) = _radioParamsSorted;
-    
+
     #ifdef ENABLE_PERFORMANCE_COUNTERS
         if (_radios isNotEqualTo []) then {
             BEGIN_COUNTER(radio_loop);
