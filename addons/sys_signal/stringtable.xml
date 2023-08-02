@@ -14,5 +14,18 @@
             <Portuguese>Modelo de propagação de sinal</Portuguese>
             <Turkish>Sinyal İletim Modeli</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_signal_signalModelLR_displayName">
+            <English>Signal Propagation Model for Long-Range Radios</English>
+            <Spanish>Modelo de propagación de señal para radios de largo alcance</Spanish>
+            <Japanese>信号伝搬モデル</Japanese>
+            <Chinese>訊號傳遞模型</Chinese>
+            <German>Signalausbreitungsmodell für Langstreckenfunkgeräte</German>
+            <Italian>Modello di propagazione del segnale per radio a lunga portata</Italian>
+            <Russian>Модель распространения сигнала для радиостанций дальнего действия</Russian>
+            <French>Modèle de propagation des ondes pour les radios longue portée</French>
+            <Chinesesimp>讯号传递模型</Chinesesimp>
+            <Portuguese>Modelo de propagação de sinal para rádios de longo alcance</Portuguese>
+            <Turkish>Uzun menzilli telsizler için sinyal yayılma modeli</Turkish>
+        </Key>
     </Package>
 </Project>

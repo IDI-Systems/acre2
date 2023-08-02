@@ -16,3 +16,22 @@
         INFO_1("Using radio propagation model: %1",_signalModel);
     }
 ] call CBA_fnc_addSetting;
+
+// Signal model for Backpack Radios
+[
+    QGVAR(signalModelLR),
+    "LIST",
+    localize LSTRING(signalModelLR_displayName),
+    "ACRE2",
+    [
+        [SIGNAL_ENUMS],
+        [SIGNAL_NAMES],
+        SIGNAL_MODEL_LOS_MULTIPATH // Default
+    ],
+    true,
+    {
+        params ["_value"];
+        private _signalModelLR = [SIGNAL_NAMES] select _value;
+        INFO_1("Using backpack radio propagation model: %1",_signalModelLR);
+    }
+] call CBA_fnc_addSetting;
