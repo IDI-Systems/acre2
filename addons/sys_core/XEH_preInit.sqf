@@ -27,6 +27,7 @@ DGVAR(speakers) = [];
 DGVAR(enableDistanceMuting) = true;
 DGVAR(ts3id) = -1;
 DGVAR(keyedMicRadios) = [];
+DGVAR(previousSortedParams) = [[],[]];
 DGVAR(keyedRadioIds) = HASH_CREATE;
 DGVAR(globalVolume) = 1.0;
 DGVAR(maxVolume) = 1.0;
