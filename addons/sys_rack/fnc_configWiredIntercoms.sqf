@@ -8,7 +8,7 @@
  * 1: Rack class <STRING>
  *
  * Return Value:
- * None
+ * Wired Intercoms <ARRAY>
  *
  * Example:
  * [cursorTarget] call acre_sys_rack_configWiredIntercoms
@@ -25,18 +25,18 @@ private _wiredIntercoms = [];
 if (_intercoms isEqualTo [] || {"none" in _intercoms}) then {
     _wiredIntercoms = [];
 } else {
+    private _configuredIntercoms = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
     if ("all" in _intercoms) then {
         {
             _wiredIntercoms pushBack (_x select 0);
-        } forEach (_vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []]);
+        } forEach _configuredIntercoms;
     } else {
+        private _intercomIds = _configuredIntercoms apply {_x select 0};
         {
-            private _int = _x;
-            private _configuredIntercoms = _vehicle getVariable [QEGVAR(sys_intercom,intercomNames), []];
-            if (_int in (_configuredIntercoms select 0)) then {
+            if (_x in _intercomIds) then {
                 _wiredIntercoms pushBack _x;
             } else {
-                WARNING_3("No intercom %1 defined but rack %2 can have access to its network for %3 - skipping",_int,_rack,typeOf _vehicle)
+                WARNING_3("No intercom %1 defined but rack %2 can have access to its network for %3 - skipping",_x,_rack,typeOf _vehicle)
             };
         } forEach _intercoms;
     };
