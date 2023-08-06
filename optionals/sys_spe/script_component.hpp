@@ -1,5 +1,5 @@
 #define COMPONENT sys_spe
-#define COMPONENT_BEAUTIFIED Spearhead Compatibility
+#define COMPONENT_BEAUTIFIED Spearhead 1944 Compatibility
 #include "\idi\acre\addons\main\script_mod.hpp"
 
 #ifdef DEBUG_ENABLED_SYS_SPE
