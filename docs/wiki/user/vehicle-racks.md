@@ -2,7 +2,7 @@
 title: Vehicle Racks
 ---
 
-{% include important.html content="Requires ACE3 Interaction Menu!" %}
+{% include important.html content="Requires ACE3 Interaction Menu if no Intercom is configured for a given vehicle!" %}
 
 ACRE2 allows the possibility of using racks in vehicles in order to increase the transmission power of a particular radio. There are different types of vehicle racks:
 
