@@ -1,4 +1,5 @@
 name = "ACRE2"
+mainprefix = "idi"
 prefix = "acre"
 author = "ACRE2 Team"
 
@@ -36,4 +37,9 @@ folder = "acre2"
 workshop = [
     "450814997", # CBA_A3's Workshop ID
     "463939057", # ACE3's Workshop ID
+]
+
+[hemtt.launch.cba]
+workshop = [
+    "450814997", # CBA_A3's Workshop ID
 ]
