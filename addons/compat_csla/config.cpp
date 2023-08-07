@@ -11,11 +11,12 @@ class CfgPatches {
         authors[] = {"CSLA Studio"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
+        skipWhenMissingDependencies = 1;
     };
 };
 
 class CfgAcreWorlds {
     class stozec {
-        wrp = "\idi\acre\addons\sys_csla\stozec.fakewrp";
+        wrp = QPATHTOF(stozec.fakewrp);
     };
 };
