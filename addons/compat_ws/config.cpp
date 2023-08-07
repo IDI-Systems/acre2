@@ -11,11 +11,12 @@ class CfgPatches {
         authors[] = {"Rotators Collective"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
+        skipWhenMissingDependencies = 1;
     };
 };
 
 class CfgAcreWorlds {
     class SefrouRamal {
-        wrp = "\idi\acre\addons\sys_ws\SefrouRamal.fakewrp";
+        wrp = QPATHTOF(SefrouRamal.fakewrp);
     };
 };
