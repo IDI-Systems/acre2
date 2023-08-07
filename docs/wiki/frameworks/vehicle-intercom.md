@@ -87,7 +87,7 @@ class CfgVehicles {
                 displayName = "Passenger intercom";
                 shortName = "Pax";
                 // Units in crew and in cargo positions have access to the passenger intercom
-                allowedPositions[] = {"crew", {"cargo", all}};
+                allowedPositions[] = {"crew", {"cargo", "all"}};
                 // Excludes units from accessing the passenger intercom. In this example, gunner, cargo index 1 and all FFV turrets do not have access to passenger intercom
                 disabledPositions[] = {"gunner", {"cargo", 1}, {"ffv", "all"}};
                 connectedByDefault = 0;
@@ -99,7 +99,7 @@ class CfgVehicles {
                 allowedPositions[] = {{"cargo", 1, 2}, {"ffv", "all"}};
                 // Excludes unit in FFV turret [4] to access from accessing passenger intercom, as well as cargo index 1 and turret [1]
                 // when they are turned out
-                disabledPositions[] = {{"ffv", [4]}, {"turnedOut", 1, [1]}};
+                disabledPositions[] = {{"ffv", [4]}, {"turnedOut", 1, {1}}};
             }
         };
     };
