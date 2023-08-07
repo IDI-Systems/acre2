@@ -6,7 +6,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main"};
+        requiredAddons[] = {"acre_main", "gm_core"};
         author = ECSTRING(main,Author);
         authors[] = {"Vertexmacht"};
         url = ECSTRING(main,URL);
