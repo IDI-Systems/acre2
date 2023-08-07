@@ -11,12 +11,13 @@ class CfgPatches {
         authors[] = {"Vertexmacht"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
+        skipWhenMissingDependencies = 1;
     };
 };
 
 class CfgAcreWorlds {
     class gm_weferlingen_summer {
-        wrp = "\idi\acre\addons\sys_gm\gm_weferlingen.fakewrp";
+        wrp = QPATHTOF(gm_weferlingen.fakewrp);
     };
 
     class gm_weferlingen_winter: gm_weferlingen_summer {};
