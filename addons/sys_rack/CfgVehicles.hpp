@@ -188,7 +188,6 @@ class CfgVehicles {
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 mountedRadio = "ACRE_PRC117F";
-                intercom[] = {"intercom_1"};
             };
         };
     };
@@ -202,7 +201,6 @@ class CfgVehicles {
                 componentName = "ACRE_VRC103";
                 allowedPositions[] = {"driver", "commander", "gunner"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 mountedRadio = "ACRE_PRC117F";
-                intercom[] = {"intercom_1"};
             };
         };
     };
