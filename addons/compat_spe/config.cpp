@@ -36,6 +36,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_main", "acre_api", "WW2_SPE_Assets_c_Vehicles_ZZZ_LastLoaded_c"};
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
         authors[] = {"Heavy Ordnance Works", "drofseh"};
         url = ECSTRING(main,URL);
@@ -45,7 +46,7 @@ class CfgPatches {
 
 class CfgAcreWorlds {
     class SPE_normandy {
-        wrp = "\idi\acre\addons\sys_spe\SPE_normandy.fakewrp";
+        wrp = QPATHTOF(SPE_normandy.fakewrp);
     };
 };
 
