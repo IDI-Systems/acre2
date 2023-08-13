@@ -121,6 +121,50 @@ if (_mountedRadio == "") then { // Empty
         ] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
+
+    // Start using (only if not accessible but wired to intercom)
+    if (!(_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) && {([_mountedRadio, acre_player] call FUNC(isRadioHearable))}) then {
+        private _action = [
+            QGVAR(useMountedRadio),
+            localize LSTRING(useRadio),
+            "",
+            {
+                [_this] spawn {
+                    params ["_this"];
+                    private _mountedRadio = _this select 2;
+                    private _newWorkPos = 0;
+                    private _wiredRacks = [vehicle acre_player, acre_player, EGVAR(sys_intercom,activeIntercom), "wiredRacks"] call EFUNC(sys_intercom,getStationConfiguration);
+                    {
+                        private _rack = _x select 0;
+                        private _radio = [_rack] call FUNC(getMountedRadio);
+                        if (_radio isEqualTo _mountedRadio) exitWith {
+                            _newWorkPos = _forEachIndex + 1;
+                        };
+                    } forEach _wiredRacks;
+
+                    [] call EFUNC(sys_intercom,openGui);
+                    sleep 0.5;
+
+                    private _curWorkPos = [vehicle acre_player, acre_player, EGVAR(sys_intercom,activeIntercom), "workKnob"] call EFUNC(sys_intercom,getStationConfiguration);
+                    private _direction = 0;
+                    if (_newWorkPos < _curWorkPos) then {
+                        _direction = 1;
+                    };
+
+                    private _i = 0;
+                    while {_i < abs (_curWorkPos - _newWorkPos)} do {
+                        [0, _direction] call EFUNC(sys_intercom,vic3ffcsOnWorkKnobPress);
+                        _i = _i + 1;
+                        sleep 0.2;
+                    };
+                };
+            },
+            {true},
+            {},
+            _mountedRadio
+        ] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    };
 };
 
 /* Connectors */

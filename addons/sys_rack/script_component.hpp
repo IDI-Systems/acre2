@@ -25,3 +25,5 @@
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
 #include "\idi\acre\addons\sys_intercom\script_acre_rackIntercom_defines.hpp"
+/*#include "\idi\acre\addons\sys_intercom\script_component.hpp"
+#include "\idi\acre\addons\sys_intercom\vic3\script_component.hpp"*/
