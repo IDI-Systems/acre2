@@ -131,6 +131,8 @@ if (_mountedRadio == "") then { // Empty
             {
                 [_this] spawn {
                     params ["_this"];
+
+                    // Find the work knob position that corresponds to the mounted radio
                     private _mountedRadio = _this select 2;
                     private _newWorkPos = 0;
                     private _wiredRacks = [vehicle acre_player, acre_player, EGVAR(sys_intercom,activeIntercom), "wiredRacks"] call EFUNC(sys_intercom,getStationConfiguration);
@@ -142,15 +144,18 @@ if (_mountedRadio == "") then { // Empty
                         };
                     } forEach _wiredRacks;
 
+                    // Open FFCS GUI
                     [] call EFUNC(sys_intercom,openGui);
                     sleep 0.5;
 
+                    // Find current knob position and the direction to move it to the desired position
                     private _curWorkPos = [vehicle acre_player, acre_player, EGVAR(sys_intercom,activeIntercom), "workKnob"] call EFUNC(sys_intercom,getStationConfiguration);
                     private _direction = 0;
                     if (_newWorkPos < _curWorkPos) then {
                         _direction = 1;
                     };
 
+                    // Turn the work knob N times towards the desired position
                     private _i = 0;
                     while {_i < abs (_curWorkPos - _newWorkPos)} do {
                         [0, _direction] call EFUNC(sys_intercom,vic3ffcsOnWorkKnobPress);
