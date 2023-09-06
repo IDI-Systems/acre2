@@ -6,16 +6,17 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main"};
+        requiredAddons[] = {"acre_main", "data_f_lxWS_Loadorder"};
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
-        authors[] = {"CSLA Studio"};
+        authors[] = {"Rotators Collective"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
 class CfgAcreWorlds {
-    class stozec {
-        wrp = "\idi\acre\addons\sys_csla\stozec.fakewrp";
+    class SefrouRamal {
+        wrp = QPATHTOF(SefrouRamal.fakewrp);
     };
 };

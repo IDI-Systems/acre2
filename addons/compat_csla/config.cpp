@@ -6,18 +6,17 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"acre_main"};
+        requiredAddons[] = {"acre_main", "CSLA"};
+        skipWhenMissingDependencies = 1;
         author = ECSTRING(main,Author);
-        authors[] = {"Vertexmacht"};
+        authors[] = {"CSLA Studio"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
 
 class CfgAcreWorlds {
-    class gm_weferlingen_summer {
-        wrp = "\idi\acre\addons\sys_gm\gm_weferlingen.fakewrp";
+    class stozec {
+        wrp = QPATHTOF(stozec.fakewrp);
     };
-
-    class gm_weferlingen_winter: gm_weferlingen_summer {};
 };
