@@ -1229,3 +1229,22 @@ kbd {
   border-radius: 3px;
   box-shadow: inset 0 -1px 0 #bbb;
 }
+
+@media only screen and (min-width : 481px) {
+    .flex-row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .flex-row > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+    .flex-row.row:after,
+    .flex-row.row:before {
+        display: flex;
+    }
+
+    .flex-row > [class*='col-'] figcaption {
+        margin-bottom: 0px;
+    }
+}
