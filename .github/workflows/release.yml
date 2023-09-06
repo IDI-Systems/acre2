@@ -259,46 +259,6 @@ jobs:
       env:
         STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
         STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
-    - name: Upload to Steam (ACRE2 Global Mobilization Compatibility)
-      uses: arma-actions/workshop-upload@v1
-      with:
-        appId: '107410'
-        itemId: '1740990569'  # Global Mobilization Compatibility
-        contentPath: '@acre2/optionals/@acre2_sys_gm'
-        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
-      env:
-        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
-    - name: Upload to Steam (ACRE2 S.O.G. Prairie Fire Compatibility)
-      uses: arma-actions/workshop-upload@v1
-      with:
-        appId: '107410'
-        itemId: '2450980898'  # S.O.G. Prairie Fire Compatibility
-        contentPath: '@acre2/optionals/@acre2_sys_sog'
-        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
-      env:
-        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
-    - name: Upload to Steam (ACRE2 CSLA Iron Curtain Compatibility)
-      uses: arma-actions/workshop-upload@v1
-      with:
-        appId: '107410'
-        itemId: '2649217268'  # CSLA Iron Curtain Compatibility
-        contentPath: '@acre2/optionals/@acre2_sys_csla'
-        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
-      env:
-        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
-    - name: Upload to Steam (ACRE2 Western Sahara Compatibility)
-      uses: arma-actions/workshop-upload@v1
-      with:
-        appId: '107410'
-        itemId: '2657862776'  # Western Sahara Compatibility
-        contentPath: '@acre2/optionals/@acre2_sys_ws'
-        changelog: 'Version ${{ needs.build.outputs.VERSION }} - See changelog on GitHub: https://github.com/IDI-Systems/acre2/releases'
-      env:
-        STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-        STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
     - name: Upload to GitHub
       id: github_release
       uses: actions/action-gh-release@v1
