@@ -2,12 +2,15 @@
 
 class CfgPatches {
     class ADDON {
-        addonRootClass = QUOTE(COMPONENT);
+        name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"acre_main", "loadorder_f_vietnam"};
         skipWhenMissingDependencies = 1;
+        author = ECSTRING(main,Author);
+        authors[] = {"Savage Game Design", "veteran29"};
+        url = ECSTRING(main,URL);
         VERSION_CONFIG;
     };
 };
