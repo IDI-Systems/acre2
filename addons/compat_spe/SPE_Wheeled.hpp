@@ -13,7 +13,7 @@ class SPE_Car_base : Car_F { // Get rid of any inherited values ACRE may have ad
 };
 
 class Truck_F;
-class SPE_Truck_base : Truck_F { // Get rid of any inherited values
+class SPE_Truck_base: Truck_F { // Get rid of any inherited values
     acre_hasInfantryPhone = 0;
     acre_infantryPhoneDisableRinging = 1;
     acre_infantryPhonePosition[] = {0, 0, 0};
@@ -48,7 +48,7 @@ class SPE_US_M16_Halftrack_base : SPE_Halftrack_base {
 // German
 class SPE_SdKfz250_base;
 
-class SPE_SdKfz250_1 : SPE_SdKfz250_base {
+class SPE_SdKfz250_1: SPE_SdKfz250_base {
     class AcreRacks {
         class Rack_1 {
             displayName = CSTRING(RadioSet);

@@ -2,7 +2,7 @@
 
 class Plane_Base_F;
 
-class SPE_Plane_base : Plane_Base_F {
+class SPE_Plane_base: Plane_Base_F {
     acre_hasInfantryPhone = 0;
     acre_infantryPhoneDisableRinging = 1;
 
@@ -48,7 +48,7 @@ class SPE_Plane_base : Plane_Base_F {
 //American
 class SPE_US_Plane_base;
 
-class SPE_P47 : SPE_US_Plane_base {
+class SPE_P47: SPE_US_Plane_base {
     class AcreRacks {
         class Rack_1 {
             displayName = CSTRING(RadioSet1_US);
@@ -78,7 +78,7 @@ class SPE_P47 : SPE_US_Plane_base {
 //German
 class SPE_GER_Plane_base;
 
-class SPE_FW190F8 : SPE_GER_Plane_base {
+class SPE_FW190F8: SPE_GER_Plane_base {
     class AcreRacks {
         class Rack_1 {
             displayName = CSTRING(RadioSet1_GER);
