@@ -1,6 +1,6 @@
 class Tank_F;
 
-class SPE_Tank_base : Tank_F {
+class SPE_Tank_base: Tank_F {
     // Adds a full crew intercom, and a radio configurable by the entire crew, and infantry phone is set up but disabled.
     // This isn't historically accurate, but will ensure that any new vehicles get comms even if they don't have a vehicle specific config
 
@@ -43,7 +43,7 @@ class SPE_Tank_base : Tank_F {
 };
 
     // American
-class SPE_M10_base : SPE_Tank_base {
+class SPE_M10_base: SPE_Tank_base {
     class AcreRacks {
         class Rack_1 {
             allowedPositions[] = {"commander", {"turret", {1}}}; // restrict configuration of the radio to only and radio operator (historically correct) and the the commander (for gameplay, even though the radio was in the hull)
@@ -51,7 +51,7 @@ class SPE_M10_base : SPE_Tank_base {
     };
 };
 
-class SPE_M18_Hellcat_Base : SPE_Tank_base {
+class SPE_M18_Hellcat_Base: SPE_Tank_base {
     class AcreRacks {
         class Rack_1 {
             allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // restrict radio configuration to the commander, gunner, and loader, as the radio was in the turret
@@ -59,7 +59,7 @@ class SPE_M18_Hellcat_Base : SPE_Tank_base {
     };
 };
 
-class SPE_Sherman_base : SPE_Tank_base {
+class SPE_Sherman_base: SPE_Tank_base {
     acre_hasInfantryPhone = 1; // The Sherman was the first tank to get an infantry phone
     acre_infantryPhoneDisableRinging = 1;
     acre_infantryPhonePosition[] = {0, -2.52, 0};
@@ -72,7 +72,7 @@ class SPE_Sherman_base : SPE_Tank_base {
 };
 
 class SPE_M4A1_75;
-class SPE_M4A1_75_Command : SPE_M4A1_75 {
+class SPE_M4A1_75_Command: SPE_M4A1_75 {
     displayName = CSTRING(M4A1_75_Command);
     scope = 2;
 
@@ -101,14 +101,14 @@ class SPE_M4A1_75_Command : SPE_M4A1_75 {
         };
     };
 };
-class SPE_M4A1_75_Command_DVL : SPE_M4A1_75_Command {
+class SPE_M4A1_75_Command_DVL: SPE_M4A1_75_Command {
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 class SPE_FR_M4A1_75;
-class SPE_FR_M4A1_75_Command : SPE_FR_M4A1_75 {
+class SPE_FR_M4A1_75_Command: SPE_FR_M4A1_75 {
     displayName = CSTRING(M4A1_75_Command);
     scope = 2;
 
@@ -137,14 +137,14 @@ class SPE_FR_M4A1_75_Command : SPE_FR_M4A1_75 {
         };
     };
 };
-class SPE_FR_M4A1_75_Command_DVL : SPE_FR_M4A1_75_Command {
+class SPE_FR_M4A1_75_Command_DVL: SPE_FR_M4A1_75_Command {
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 class SPE_M4A1_76;
-class SPE_M4A1_76_Command : SPE_M4A1_76 {
+class SPE_M4A1_76_Command: SPE_M4A1_76 {
     displayName = CSTRING(M4A1_76_Command);
     scope = 2;
 
@@ -173,14 +173,14 @@ class SPE_M4A1_76_Command : SPE_M4A1_76 {
         };
     };
 };
-class SPE_M4A1_76_Command_DVL : SPE_M4A1_76_Command {
+class SPE_M4A1_76_Command_DVL: SPE_M4A1_76_Command {
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 class SPE_FR_M4A1_76;
-class SPE_FR_M4A1_76_Command : SPE_FR_M4A1_76 {
+class SPE_FR_M4A1_76_Command: SPE_FR_M4A1_76 {
     displayName = CSTRING(M4A1_76_Command);
     scope = 2;
 
@@ -209,14 +209,14 @@ class SPE_FR_M4A1_76_Command : SPE_FR_M4A1_76 {
         };
     };
 };
-class SPE_FR_M4A1_76_Command_DVL : SPE_FR_M4A1_76_Command {
+class SPE_FR_M4A1_76_Command_DVL: SPE_FR_M4A1_76_Command {
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 class SPE_M4A0_75_Early;
-class SPE_M4A0_75_Early_Command : SPE_M4A0_75_Early {
+class SPE_M4A0_75_Early_Command: SPE_M4A0_75_Early {
     displayName = CSTRING(M4A0_75_Early_Command);
     scope = 2;
 
@@ -245,14 +245,14 @@ class SPE_M4A0_75_Early_Command : SPE_M4A0_75_Early {
         };
     };
 };
-class SPE_M4A0_75_Early_Command_DVL : SPE_M4A0_75_Early_Command {
+class SPE_M4A0_75_Early_Command_DVL: SPE_M4A0_75_Early_Command {
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 class SPE_M4A0_75;
-class SPE_M4A0_75_Command : SPE_M4A0_75 {
+class SPE_M4A0_75_Command: SPE_M4A0_75 {
     displayName = CSTRING(M4A0_75_Command);
     scope = 2;
 
@@ -281,14 +281,14 @@ class SPE_M4A0_75_Command : SPE_M4A0_75 {
         };
     };
 };
-class SPE_M4A0_75_Command_DVL : SPE_M4A0_75_Command {
+class SPE_M4A0_75_Command_DVL: SPE_M4A0_75_Command {
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 class SPE_FR_M4A0_75_Early;
-class SPE_FR_M4A0_75_Early_Command : SPE_FR_M4A0_75_Early {
+class SPE_FR_M4A0_75_Early_Command: SPE_FR_M4A0_75_Early {
     displayName = CSTRING(M4A0_75_Early_Command);
     scope = 2;
 
@@ -317,14 +317,14 @@ class SPE_FR_M4A0_75_Early_Command : SPE_FR_M4A0_75_Early {
         };
     };
 };
-class SPE_FR_M4A0_75_Early_Command_DVL : SPE_FR_M4A0_75_Early_Command {
+class SPE_FR_M4A0_75_Early_Command_DVL: SPE_FR_M4A0_75_Early_Command {
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 class SPE_FR_M4A0_75_mid;
-class SPE_FR_M4A0_75_mid_Command : SPE_FR_M4A0_75_mid {
+class SPE_FR_M4A0_75_mid_Command: SPE_FR_M4A0_75_mid {
     displayName = CSTRING(M4A0_75_Command);
     scope = 2;
 
@@ -353,7 +353,7 @@ class SPE_FR_M4A0_75_mid_Command : SPE_FR_M4A0_75_mid {
         };
     };
 };
-class SPE_FR_M4A0_75_mid_Command_DVL : SPE_FR_M4A0_75_mid {
+class SPE_FR_M4A0_75_mid_Command_DVL: SPE_FR_M4A0_75_mid {
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
@@ -361,7 +361,7 @@ class SPE_FR_M4A0_75_mid_Command_DVL : SPE_FR_M4A0_75_mid {
 
     // German
 //Panzer III
-class SPE_PzKpfwIII_Base : SPE_Tank_base {
+class SPE_PzKpfwIII_Base: SPE_Tank_base {
     class AcreRacks {
         class Rack_1 {
             allowedPositions[] = {"commander", {"turret", {1}}}; // commander and radio operator/machine gunner, radio in hull
@@ -370,13 +370,13 @@ class SPE_PzKpfwIII_Base : SPE_Tank_base {
 
     class Turrets;
 };
-class SPE_PzKpfwIII_M : SPE_PzKpfwIII_Base {
+class SPE_PzKpfwIII_M: SPE_PzKpfwIII_Base {
     class Turrets : Turrets {
         class kurs_MG_turret;
     };
 };
 
-class SPE_PzBefWgIII_K_Base : SPE_PzKpfwIII_M { //Command Tank Base, inherit from Panzer III Ausf M because that's the version the Ausf K was based on.
+class SPE_PzBefWgIII_K_Base: SPE_PzKpfwIII_M { //Command Tank Base, inherit from Panzer III Ausf M because that's the version the Ausf K was based on.
     scope = 1;
 
     class AcreRacks {
@@ -405,7 +405,7 @@ class SPE_PzBefWgIII_K_Base : SPE_PzKpfwIII_M { //Command Tank Base, inherit fro
     };
 
     //Remove the front MG and change machine gunner to radio operator
-    class Turrets : Turrets {
+    class Turrets: Turrets {
         class kurs_MG_turret : kurs_MG_turret {
             weapons[] = {};
             magazines[] = {};
@@ -413,7 +413,7 @@ class SPE_PzBefWgIII_K_Base : SPE_PzKpfwIII_M { //Command Tank Base, inherit fro
         };
     };
 };
-class SPE_PzBefWgIII_K : SPE_PzBefWgIII_K_Base { //Werhmacht
+class SPE_PzBefWgIII_K: SPE_PzBefWgIII_K_Base { //Werhmacht
     author = "Heavy Ordnance Works";
     dlc = "SPE";
     scope = 2;
@@ -422,24 +422,24 @@ class SPE_PzBefWgIII_K : SPE_PzBefWgIII_K_Base { //Werhmacht
     //faction = "SPE_WEHRMACHT";
     //crew = "SPE_GER_tank_crew";
 };
-class SPE_PzBefWgIII_K_DLV : SPE_PzBefWgIII_K { //Werhmacht DVL
+class SPE_PzBefWgIII_K_DLV: SPE_PzBefWgIII_K { //Werhmacht DVL
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
-class SPE_ST_PzBefWgIII_K : SPE_PzBefWgIII_K { //Sturmtroopers
+class SPE_ST_PzBefWgIII_K: SPE_PzBefWgIII_K { //Sturmtroopers
     scope = 2;
     //crew = "SPE_sturmtrooper_tank_crew";
     //faction = "SPE_STURM";
 };
-class SPE_ST_PzBefWgIII_K_DLV : SPE_ST_PzBefWgIII_K { //Sturmtroopers DVL
+class SPE_ST_PzBefWgIII_K_DLV: SPE_ST_PzBefWgIII_K { //Sturmtroopers DVL
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 //Panzer IV
-class SPE_PzKpfwIV_G_base : SPE_Tank_base {
+class SPE_PzKpfwIV_G_base: SPE_Tank_base {
     class AcreRacks {
         class Rack_1 {
             allowedPositions[] = {"commander", {"turret", {5}}}; // commander and radio operator/machine gunner, radio in hull
@@ -447,7 +447,7 @@ class SPE_PzKpfwIV_G_base : SPE_Tank_base {
     };
 };
 
-class SPE_PzBefWgIV_base : SPE_PzKpfwIV_G_Base { //Command Tank Base
+class SPE_PzBefWgIV_base: SPE_PzKpfwIV_G_Base { //Command Tank Base
     class AcreRacks {
         class Rack_1 {
             displayName = CSTRING(RadioSet1_GER);
@@ -473,28 +473,28 @@ class SPE_PzBefWgIV_base : SPE_PzKpfwIV_G_Base { //Command Tank Base
         };
     };
 };
-class SPE_PzBefWgIV : SPE_PzBefWgIV_base { //Werhmacht
+class SPE_PzBefWgIV: SPE_PzBefWgIV_base { //Werhmacht
     author = "Heavy Ordnance Works";
     dlc = "SPE";
     scope = 2;
     displayName = CSTRING(PzBefWgIV);
 };
-class SPE_PzBefWgIV_DLV : SPE_PzBefWgIV { //Werhmacht Driverless
+class SPE_PzBefWgIV_DLV: SPE_PzBefWgIV { //Werhmacht Driverless
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
-class SPE_ST_PzBefWgIV : SPE_PzBefWgIV { //Sturmtroopers
+class SPE_ST_PzBefWgIV: SPE_PzBefWgIV { //Sturmtroopers
     scope = 2;
 };
-class SPE_ST_PzBefWgIV_DLV : SPE_ST_PzBefWgIV { //Sturmtroopers Driverless
+class SPE_ST_PzBefWgIV_DLV: SPE_ST_PzBefWgIV { //Sturmtroopers Driverless
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
 //Panzer VI (Tiger I)
-class SPE_PzKpfwVI_H1_base : SPE_Tank_base {
+class SPE_PzKpfwVI_H1_base: SPE_Tank_base {
     class AcreRacks {
         class Rack_1 {
             allowedPositions[] = {"commander", {"turret", {5}}}; // commander and radio operator/machine gunner, radio in hull
@@ -502,7 +502,7 @@ class SPE_PzKpfwVI_H1_base : SPE_Tank_base {
     };
 };
 
-class SPE_PzBefWgVI_base : SPE_PzKpfwVI_H1_base { //Command Tank Base
+class SPE_PzBefWgVI_base: SPE_PzKpfwVI_H1_base { //Command Tank Base
     class AcreRacks {
         class Rack_1 {
             displayName = CSTRING(RadioSet1_GER);
@@ -528,34 +528,34 @@ class SPE_PzBefWgVI_base : SPE_PzKpfwVI_H1_base { //Command Tank Base
         };
     };
 };
-class SPE_PzBefWgVI : SPE_PzBefWgVI_base { //Werhmacht
+class SPE_PzBefWgVI: SPE_PzBefWgVI_base { //Werhmacht
     author = "Heavy Ordnance Works";
     dlc = "SPE";
     scope = 2;
     displayName = "PzBefWg VI";
 };
-class SPE_PzBefWgVI_DLV : SPE_PzBefWgVI { //Werhmacht Driverless
+class SPE_PzBefWgVI_DLV: SPE_PzBefWgVI { //Werhmacht Driverless
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
-class SPE_ST_PzBefWgVI : SPE_PzBefWgVI { //Sturmtroopers
+class SPE_ST_PzBefWgVI: SPE_PzBefWgVI { //Sturmtroopers
     scope = 2;
 };
-class SPE_ST_PzBefWgVI_DLV : SPE_ST_PzBefWgVI { //Sturmtroopers Driverless
+class SPE_ST_PzBefWgVI_DLV: SPE_ST_PzBefWgVI { //Sturmtroopers Driverless
     vehicleClass = "Armored_DLV";
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
 };
 
-class SPE_Nashorn_base : SPE_Tank_base {
+class SPE_Nashorn_base: SPE_Tank_base {
     class AcreRacks {
         class Rack_1 {
             displayName = CSTRING(RadioSet1_GER);
             shortName = CSTRING(RadioSet1_Short);
             allowedPositions[] = {"commander", "gunner", {"turret", {2}}}; // commander, gunner, loader, radio is in an open top fighting compartment
         };
-        class Rack_2 : Rack_1 {
+        class Rack_2: Rack_1 {
             displayName = CSTRING(RadioSet2_GER);
             shortName = CSTRING(RadioSet2_Short);
             allowedPositions[] = {{"turret", {3}}}; // radio operator, radio in hull

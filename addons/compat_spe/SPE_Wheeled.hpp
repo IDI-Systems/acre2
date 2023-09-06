@@ -1,7 +1,7 @@
  // see SPE_Tanks.hpp for explanation of values
 
 class Car_F;
-class SPE_Car_base : Car_F { // Get rid of any inherited values ACRE may have added for modern vehicles
+class SPE_Car_base: Car_F { // Get rid of any inherited values ACRE may have added for modern vehicles
     acre_hasInfantryPhone = 0;
     acre_infantryPhoneDisableRinging = 1;
     acre_infantryPhonePosition[] = {0, 0, 0};
@@ -29,7 +29,7 @@ class SPE_WheeledTracked_APC_base;
 //American
 class SPE_Halftrack_base;
 
-class SPE_US_M16_Halftrack_base : SPE_Halftrack_base {
+class SPE_US_M16_Halftrack_base: SPE_Halftrack_base {
     class AcreRacks {
         class Rack_1 {
             displayName = CSTRING(RadioSet);
