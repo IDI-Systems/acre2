@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ACRE">
+    <Package name="compat_spe">
+        <Key ID="STR_ACRE_compat_spe_RadioSetShort">
+            <English>Radio</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_RadioSet">
+            <English>Radio Set</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_RadioSet1_Short">
+            <English>A-Set</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_RadioSet1_US">
+            <English>Radio Set - Able</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_RadioSet1_GER">
+            <English>Radio Set - Anton</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_RadioSet2_Short">
+            <English>B-Set</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_RadioSet2_US">
+            <English>Radio Set - Baker</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_RadioSet2_GER">
+            <English>Radio Set - Bruno</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_Intercom_Short">
+            <English>IntCm</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_Intercom_Crew">
+            <English>Crew Intercom</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A1_75_Command">
+            <English>M4A1 Sherman (Command)</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A1_76_Command">
+            <English>M4A1 76(W) Sherman (Command)</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A0_75_Early_Command">
+            <English>M4 Sherman (Command)</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A0_75_Command">
+            <English>M4 Sherman (Late) (Command)</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_PzBefWgIII_K">
+            <English>PzBefWg III Ausf. K</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_PzBefWgIV">
+            <English>PzBefWg IV</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_PzBefWgVI">
+            <English>PzBefWg VI</English>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_RadioOperator">
+            <English>Radio Operator</English>
+        </Key>
+    </Package>
+</Project>
