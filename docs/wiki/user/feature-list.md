@@ -91,7 +91,12 @@ Accurate terrain data for signal calculations. Use of AN/PRC-77 in the co-op cam
 Accurate terrain data for signal calculations.
     </div>
     <div class="col-sm-4">
-{% include image.html file="compats/acre2_csla_compat_small-logo.png" url="http://www.global-mobilization.com/" alt="CSLA Iron Curtain Compatibility Logo" caption="CSLA Iron Curtain" %}
+{% include image.html file="compats/acre2_csla_compat_small-logo.png" url="https://www.global-mobilization.com/" alt="CSLA Iron Curtain Compatibility Logo" caption="CSLA Iron Curtain" %}
+
+Accurate terrain data for signal calculations.
+    </div>
+    <div class="col-sm-4">
+{% include image.html file="compats/acre2_spe_compat_small-logo.png" url="https://spearhead-1944.com/" alt="Spearhead 1944 Logo" caption="Spearhead 1944" %}
 
 Accurate terrain data for signal calculations.
     </div>
