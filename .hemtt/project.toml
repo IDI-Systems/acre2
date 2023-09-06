@@ -39,6 +39,11 @@ workshop = [
     "463939057", # ACE3's Workshop ID
 ]
 
+[hemtt.launch.cba]
+workshop = [
+    "450814997", # CBA_A3's Workshop ID
+]
+
 [hemtt.launch.vn]
 workshop = [
     "450814997", # CBA_A3's Workshop ID
