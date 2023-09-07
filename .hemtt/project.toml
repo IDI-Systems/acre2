@@ -50,9 +50,6 @@ workshop = [
     "463939057", # ACE3's Workshop ID
     "2369477168", # ADT Workshop ID
 ]
-optionals = [
-    "sys_sog",
-]
 dlc = [
     "S.O.G. Prairie Fire",
 ]
