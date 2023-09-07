@@ -98,7 +98,7 @@ Accurate terrain data for signal calculations.
     <div class="col-sm-4">
 {% include image.html file="compats/acre2_spe_compat_small-logo.png" url="https://spearhead-1944.com/" alt="Spearhead 1944 Logo" caption="Spearhead 1944" %}
 
-Accurate terrain data for signal calculations.
+Accurate terrain data for signal calculations. AN/PRC-77 equipped automatically in radio backpacks. Customized radio racks, including special command vehicles with additional radios.
     </div>
 </div>
 
