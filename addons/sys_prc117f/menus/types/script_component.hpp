@@ -1,1 +1,1 @@
-#include "\idi\acre\addons\sys_prc117f\script_component.hpp"
+#include "..\..\script_component.hpp"
