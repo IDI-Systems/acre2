@@ -151,13 +151,18 @@ if (_mountedRadio == "") then { // Empty
                     _direction = 1;
                 };
 
-                // After a delay, turn the work knob N times towards the desired position
+                // After a delay, turn the work knob N times towards the desired position in 0.2s intervals
                 [{
                     params ["_direction", "_curWorkPos", "_newWorkPos"];
                     private _i = 0;
+                    private _delay = 0;
                     while {_i < abs (_curWorkPos - _newWorkPos)} do {
-                        [0, _direction] call EFUNC(sys_intercom,vic3ffcsOnWorkKnobPress);
+                        [{
+                            params ["_direction"];
+                            [0, _direction] call EFUNC(sys_intercom,vic3ffcsOnWorkKnobPress);
+                        }, [_direction], _delay] call CBA_fnc_waitAndExecute;
                         _i = _i + 1;
+                        _delay = _delay + 0.2;
                     };
                 }, [_direction, _curWorkPos, _newWorkPos], 0.5] call CBA_fnc_waitAndExecute;
             },
