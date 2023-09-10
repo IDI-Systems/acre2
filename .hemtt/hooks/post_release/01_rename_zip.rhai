@@ -5,5 +5,5 @@ let dst = releases.join(HEMTT.project().name().to_lower() + "_" + HEMTT.project(
 
 print("Moving zip to " + dst);
 if !src.move(dst) {
-    fatal("Failed to move " + src + " to " + dst);
+    warn("Failed to move " + src + " to " + dst + " (maybe --no-archive?)");
 }

@@ -6,6 +6,7 @@ hemtt.exe
 symbols/*
 keys/*
 .hemtt/local
+hemtt.toml
 idi/*
 a3/*
 *.cache

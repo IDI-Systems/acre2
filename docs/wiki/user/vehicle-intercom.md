@@ -2,8 +2,6 @@
 title: Vehicle Intercom
 ---
 
-{% include important.html content="Requires ACE3 Interaction Menu!" %}
-
 ## Vehicle Intercom
 
 Vehicle intercom consists of two separate networks depending on the vehicle type: crew and passenger (pax) intercom. Intercom gives the ability to speak to other players within the same network using a headset. This allows them to communicate without the disturbance of the vehicle's noise.
