@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Close radio GUI. Event raised by onUnload (BF888S_RadioDialog).

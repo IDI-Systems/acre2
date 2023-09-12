@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: ACRE2Team
  * Toggles the player's antenna direction (alignment).
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
 

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles the event of pressing the PTT handle. It triggers an animation and allows changing the actual block.
