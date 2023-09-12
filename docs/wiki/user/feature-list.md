@@ -72,7 +72,7 @@ ACRE has always supported assigning different radios and frequencies to differen
 
 ## Creator DLC Compatibility
 
-ACRE2 provides contributed compatibility components for several Creator DLCs. This includes at least accurate terrain data for signal calculations as it cannot be automatically generated on map load due to encrypted publishing. Compatibility is automatically loaded for any loaded Creator DLC.
+ACRE2 provides contributed compatibility components for several Creator DLCs. This includes accurate terrain data for signal calculations as it cannot be automatically generated on map load due to encrypted publishing. Compatibility is automatically loaded for any loaded Creator DLC.
 
 <div class="row flex-row">
     <div class="col-sm-4">
