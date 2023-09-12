@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Opens the GUI of the radio. This is trigered by either double-click in the inventory,

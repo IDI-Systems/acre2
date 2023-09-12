@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Renders the VIC3 FFCS when opened.

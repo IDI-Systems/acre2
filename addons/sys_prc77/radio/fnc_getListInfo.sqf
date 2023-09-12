@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * For a AN/PRC 77 this function is the same fnc_getChannelDescription, and therefore it is called here.
