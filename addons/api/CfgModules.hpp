@@ -98,28 +98,28 @@ class CfgVehicles {
                 displayName = "Signal Loss";
                 description = "Set to false to disable signal and terrain loss values";
                 typeName = "BOOL";
-                defaultValue = true;
+                defaultValue = 1;
                 class values { };
             };
             class FullDuplex {
                 displayName = "Full-Duplex Transmissions";
                 description = "Set to true to enable full-duplex, or multiple people transmitting";
                 typeName = "BOOL";
-                defaultValue = false;
+                defaultValue = 0;
                 class values { };
             };
             class Interference {
                 displayName = "Signal Interference";
                 description = "Set to false to disable the interference from multiple transmitters";
                 typeName = "BOOL";
-                defaultValue = true;
+                defaultValue = 1;
                 class values { };
             };
             class IgnoreAntennaDirection {
                 displayName = "Ignore Antenna Direction";
                 description = "Set to true to disable loss due to antenna directional radiation patterns.";
                 typeName = "BOOL";
-                defaultValue = false;
+                defaultValue = 0;
                 class values { };
             };
         };
