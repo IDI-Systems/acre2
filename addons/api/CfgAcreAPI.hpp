@@ -1,5 +1,4 @@
-#define true 1
-#define false 0
+// WIP concept
 class CfgAcreAPI {
     class RadioAPIFunctions {
         class setChannel {
