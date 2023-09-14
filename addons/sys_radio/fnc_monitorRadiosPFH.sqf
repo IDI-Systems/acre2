@@ -10,7 +10,7 @@
  * None
  *
  * Example:
- * [] call acre_sys_radio_fnc_monitorRadiosHandler
+ * [] call acre_sys_radio_fnc_monitorRadiosPFH
  *
  * Public: No
  */
@@ -67,7 +67,8 @@ private _currentUniqueItems = [];
         };
     };
 
-    if (_radio call EFUNC(sys_radio,isUniqueRadio)) then {
+    private _isUnique = _radio call EFUNC(sys_radio,isUniqueRadio);
+    if (_isUnique) then {
         if !([_radio] call EFUNC(sys_data,isRadioInitialized)) then {
             WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
             private _baseRadio = BASECLASS(_radio);

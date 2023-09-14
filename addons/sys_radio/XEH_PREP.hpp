@@ -1,5 +1,5 @@
 PREP(monitorRadios);
-PREP(monitorRadiosHandler);
+PREP(monitorRadiosPFH);
 PREP(setActiveRadio);
 
 PREP(openRadio);

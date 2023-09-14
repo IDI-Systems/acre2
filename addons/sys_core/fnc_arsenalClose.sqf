@@ -33,5 +33,3 @@ private _weapons = [acre_player] call EFUNC(sys_core,getGear);
 ACRE_ARSENAL_RADIOS = [];
 GVAR(arsenalRadios) = [];
 GVAR(arsenalOpen) = false;
-
-[] call EFUNC(sys_radio,monitorRadiosHandler);

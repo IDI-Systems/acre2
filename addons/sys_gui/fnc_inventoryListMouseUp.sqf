@@ -23,5 +23,4 @@ params ["", "_button"];
 if (_button == 1) then {
     LOG("inventoryListMouseUp");
     ACRE_HOLD_OFF_ITEMRADIO_CHECK = false;
-    [] call EFUNC(sys_radio,monitorRadiosHandler);
 };
