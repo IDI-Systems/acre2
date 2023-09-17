@@ -25,9 +25,6 @@ if (_count == 0) then {
     private _rxAntennas = [_receiverClass] call EFUNC(sys_components,findAntenna);
     private _txAntennas = [_transmitterClass] call EFUNC(sys_components,findAntenna);
 
-    private _lrRadios = ["PRC77", "PRC117F", "SEM70"];
-    private _lrAntennas = ["SEM70", "AT271", "123CM", "270CM", "FA80", "AS1729", "243CM", "643CM"];
-
     private _model = GVAR(signalModel); // TODO: Change models on the fly if compatible (underwater, better frequency matching)
 
     // Make sure ITWOM is not used for the moment
@@ -42,10 +39,9 @@ if (_count == 0) then {
             private _rxAntenna = _x;
 
             // IF the transmitter is using a LR antenna, use signalModelLR
-            private _txRadioName = [_transmitterClass, "_"] call BIS_fnc_splitString select 1;
             private _txAntennaName = [_txAntenna select 0, "_"] call BIS_fnc_splitString select 1;
 
-            if (_txRadioName in _lrRadios || {_txAntennaName in _lrAntennas}) then {
+            if (_txAntennaName in GVAR(lrAntennas)) then {
                 _model = GVAR(signalModelLR);
                 systemChat "transmission is using signalModelLR";
             } else {

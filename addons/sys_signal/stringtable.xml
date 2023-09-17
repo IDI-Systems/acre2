@@ -27,5 +27,20 @@
             <Portuguese>Modelo de propagação de sinal para rádios de longo alcance</Portuguese>
             <Turkish>Uzun menzilli telsizler için sinyal yayılma modeli</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_signal_radiopacksLR_displayName">
+            <English>Should radiopacks count as Long-Ranged</English>
+            <German>Rucksackfunkgeräte sind langstreckentauglich</German>
+            <Italian>Radio da zaino sono di lunga portata</Italian>
+        </Key>
+        <Key ID="STR_ACRE_sys_signal_racksLR_displayName">
+            <English>Should Vehicle Racks count as Long-Ranged</English>
+            <German>Fahrzeugantennen sind langstreckentauglich</German>
+            <Italian>Racks sui veicoli sono di lunga portata</Italian>
+        </Key>
+        <Key ID="STR_ACRE_sys_signal_groundSpikeLR_displayName">
+            <English>Should Ground Spikes count as Long-Ranged</English>
+            <German>Bodenbefestigte Antennen sind langstreckentauglich</German>
+            <Italian>Antenne piazzabili sono di lunga portata</Italian>
+        </Key>
     </Package>
 </Project>

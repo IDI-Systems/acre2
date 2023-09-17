@@ -32,6 +32,40 @@
     {
         params ["_value"];
         private _signalModelLR = [SIGNAL_NAMES] select _value;
-        INFO_1("Using backpack radio propagation model: %1",_signalModelLR);
+        INFO_1("Using Long-Range radio propagation model: %1",_signalModelLR);
     }
+] call CBA_fnc_addSetting;
+
+// Do backpack radios use signalModelLR
+[
+    QGVAR(radiopacksLR),
+    "CHECKBOX",
+    localize LSTRING(radiopacksLR_displayName),
+    "ACRE2",
+    true,
+    true
+] call CBA_fnc_addSetting;
+
+// Do vehicle racks use signalModelLR
+[
+    QGVAR(racksLR),
+    "CHECKBOX",
+    localize LSTRING(racksLR_displayName),
+    "ACRE2",
+    true,
+    true
+] call CBA_fnc_addSetting;
+
+// Does the ground spike antenna use signalModelLR
+[
+    QGVAR(groundSpikeLR),
+    "LIST",
+    localize LSTRING(groundSpikeLR_displayName),
+    "ACRE2",
+    [
+        [0, 1, 2],
+        ["None", "Only GSA with Mast", "Both"],
+        1 // Default
+    ],
+    true
 ] call CBA_fnc_addSetting;
