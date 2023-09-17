@@ -43,9 +43,6 @@ if (_count == 0) then {
 
             if (_txAntennaName in GVAR(lrAntennas)) then {
                 _model = GVAR(signalModelLR);
-                systemChat "transmission is using signalModelLR";
-            } else {
-                systemChat "transmission is using normal signalModel";
             };
 
             _count = _count + 1;
