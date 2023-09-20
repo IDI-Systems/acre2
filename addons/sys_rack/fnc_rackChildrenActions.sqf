@@ -106,71 +106,31 @@ if (_mountedRadio == "") then { // Empty
             ] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
-    };
-
-    // Start using (only if not yet accessible and not connected to intercom)
-    if (!(_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_mountedRadio, acre_player] call FUNC(isRadioHearable))}) then {
-        private _action = [
-            QGVAR(useMountedRadio),
-            localize LSTRING(useRadio),
-            "",
-            {_this call FUNC(startUsingMountedRadio)},
-            {true},
-            {},
-            _mountedRadio
-        ] call ace_interact_menu_fnc_createAction;
-        _actions pushBack [_action, [], _target];
-    };
-
-    // Start using (only if not accessible but wired to intercom)
-    if (!(_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) && {([_mountedRadio, acre_player] call FUNC(isRadioHearable))}) then {
-        private _action = [
-            QGVAR(useMountedRadio),
-            localize LSTRING(useRadio),
-            "",
-            {
-                // Find the work knob position that corresponds to the mounted radio
-                private _mountedRadio = _this select 2;
-                private _newWorkPos = 0;
-                private _wiredRacks = [vehicle acre_player, acre_player, EGVAR(sys_intercom,activeIntercom), "wiredRacks"] call EFUNC(sys_intercom,getStationConfiguration);
-                {
-                    private _rack = _x select 0;
-                    private _radio = [_rack] call FUNC(getMountedRadio);
-                    if (_radio isEqualTo _mountedRadio) exitWith {
-                        _newWorkPos = _forEachIndex + 1;
-                    };
-                } forEach _wiredRacks;
-
-                // Open FFCS GUI
-                [] call EFUNC(sys_intercom,openGui);
-
-                // Find current knob position and the direction to move it to the desired position
-                private _curWorkPos = [vehicle acre_player, acre_player, EGVAR(sys_intercom,activeIntercom), "workKnob"] call EFUNC(sys_intercom,getStationConfiguration);
-                private _direction = 0;
-                if (_newWorkPos < _curWorkPos) then {
-                    _direction = 1;
-                };
-
-                // After a delay, turn the work knob N times towards the desired position in 0.2s intervals
-                [{
-                    params ["_direction", "_curWorkPos", "_newWorkPos"];
-                    private _i = 0;
-                    private _delay = 0;
-                    while {_i < abs (_curWorkPos - _newWorkPos)} do {
-                        [{
-                            params ["_direction"];
-                            [0, _direction] call EFUNC(sys_intercom,vic3ffcsOnWorkKnobPress);
-                        }, [_direction], _delay] call CBA_fnc_waitAndExecute;
-                        _i = _i + 1;
-                        _delay = _delay + 0.2;
-                    };
-                }, [_direction, _curWorkPos, _newWorkPos], 0.5] call CBA_fnc_waitAndExecute;
-            },
-            {true},
-            {},
-            _mountedRadio
-        ] call ace_interact_menu_fnc_createAction;
-        _actions pushBack [_action, [], _target];
+    } else {
+        // Start using (only if not yet accessible and not connected to intercom)
+        if (!([_mountedRadio, acre_player] call FUNC(isRadioHearable))) then {
+            private _action = [
+                QGVAR(useMountedRadio),
+                localize LSTRING(useRadio),
+                "",
+                {_this call FUNC(startUsingMountedRadio)},
+                {true},
+                {},
+                _mountedRadio
+            ] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        } else {
+            // Open FFCS (only if not accessible but wired to intercom)
+            // mimics standalone radio interaction to radios wired to intercom for easier UX
+            private _action = [
+                QGVAR(useMountedRadio),
+                format [localize LSTRING(useIntercomRadio), ([_mountedRadio] call FUNC(getRackLetterFromRadio))],
+                "",
+                {[] call EFUNC(sys_intercom,openGui)},
+                {true}
+            ] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
     };
 };
 

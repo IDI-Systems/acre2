@@ -21,9 +21,9 @@
 
 #define MAX_EXTERNAL_RACK_DISTANCE 10
 
+#define RACK_LETTERS "A", "B", "C", "D", "E", "F"
+
 #include "script_acre_rack_defines.hpp"
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
 #include "\idi\acre\addons\sys_intercom\script_acre_rackIntercom_defines.hpp"
-/*#include "\idi\acre\addons\sys_intercom\script_component.hpp"
-#include "\idi\acre\addons\sys_intercom\vic3\script_component.hpp"*/
