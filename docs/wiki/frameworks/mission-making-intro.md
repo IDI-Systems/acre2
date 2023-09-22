@@ -4,9 +4,9 @@ title: Mission Making Intro
 
 ## Introduction
 
-When making missions with ACRE2 there are a few things you should be aware of to prevent problems with your missions. For this page we will also assume that you are loosely familiar with the basic features of ACRE, notably [BABEL](http://acre.idi-systems.com/api/api_babel.html). If you aren't familiar with the basic features of ACRE2 please [read this first](/wiki/user/feature-list). We have split this page up into several parts starting with the basics and simple cases and slowly progressing into more detail, at the end we'll give some full examples.
+When making missions with ACRE2 there are a few things you should be aware of to prevent problems with your missions. For this page we will also assume that you are loosely familiar with the basic features of ACRE, notably [babel](/wiki/user/babel). If you aren't familiar with the basic features of ACRE2 please [read this first](/wiki/user/feature-list). We have split this page up into several parts starting with the basics and simple cases and slowly progressing into more detail, at the end we'll give some full examples.
 
-The default behaviour of ACRE2 is to replace any vanilla radio items (classname:"ItemRadio") (which all the vanilla Arma 3 military units have) with AN/PRC 343 radios. If you want players to have custom radios you must add them yourself. All radios by default are set to the same settings and this allow players on other teams to hear each other on the radios. All players will also start out speaking the same babel language.
+The default behaviour of ACRE2 is to replace any vanilla radio items (classname: `"ItemRadio"`) (which all the vanilla Arma 3 military units have) with AN/PRC 343 radios. If you want players to have custom radios you must add them yourself. All radios by default are set to the same settings and this allow players on other teams to hear each other on the radios. All players will also start out speaking the same babel language.
 
 *Several modules are provided by ACRE2 to cater for typical simple setups. If you would rather avoid using the API I'd recommend checking them out first.*
 
@@ -102,13 +102,13 @@ The challenge here is that the IDs are provided by the server and will be unknow
 waitUntil { ([] call acre_api_fnc_isInitialized) };
 [(["ACRE_PRC343"] call acre_api_fnc_getRadioByType), 2] call acre_api_fnc_setRadioChannel;
 ```
-['acre_api_fnc_isInitialized'](http://acre.idi-systems.com/api/api_general.html#acre_api_fnc_isInitialized) will return true once all the radios have been converted to versions with unique IDs. The ['acre_api_fnc_getRadioByType'](http://acre.idi-systems.com/api/api_general.html#acre_api_fnc_getRadioByType) function will take a a radio base class and return the first IDed radio that the local player has matching the radio type.
+['acre_api_fnc_isInitialized'](/wiki/frameworks/functions-list#acre_api_fnc_isinitialized) will return true once all the radios have been converted to versions with unique IDs. The ['acre_api_fnc_getRadioByType'](/wiki/frameworks/functions-list#acre_api_fnc_getradiobytype) function will take a a radio base class and return the first IDed radio that the local player has matching the radio type.
 
 ## Babel
 
 ### Simple setup
 
-For setups where you would like to just set the same languages spoken by the entire team you can use the ['acre_api_fnc_babelSetupMission'](http://acre.idi-systems.com/api/api_babel.html#acre_api_fnc_babelSetupMission) function.
+For setups where you would like to just set the same languages spoken by the entire team you can use the ['acre_api_fnc_babelSetupMission'](/wiki/frameworks/functions-list#acre_api_fnc_babelsetupmission) function.
 
 Example: This function creates the languages and will check the local unit and setup their languages automatically to match the settings.
 ```
@@ -126,7 +126,7 @@ Babel is straightforward to setup, first you must define the languages available
 
 ### Setting the speaking languages of a unit
 
-There are two main commands API commands for setting the languages of a unit. Firstly ['acre_api_fnc_babelSetSpokenLanguages'](http://acre.idi-systems.com/api/api_babel.html#acre_api_fnc_babelSetSpokenLanguages) is used to specify what languages a unit can understand, and then ['acre_api_fnc_babelSetSpeakingLanguage'](http://acre.idi-systems.com/api/api_babel.html#acre_api_fnc_babelSetSpeakingLanguage) should be used to set the language the unit speaks at mission start.
+There are two main commands API commands for setting the languages of a unit. Firstly ['acre_api_fnc_babelSetSpokenLanguages'](/wiki/frameworks/functions-list#acre_api_fnc_babelsetspokenlanguages) is used to specify what languages a unit can understand, and then ['acre_api_fnc_babelSetSpeakingLanguage'](/wiki/frameworks/functions-list#acre_api_fnc_babelsetspeakinglanguage) should be used to set the language the unit speaks at mission start.
 
 For a unit we wish to speak 'English' we would call the following of code. 
 ```
@@ -141,5 +141,5 @@ If we want a unit to speak multiple languages we can easily add more in:
 
 ## Examples
 
-- Included in the @ACRE2/extras/examples/ folder you should find some sample scripts.
-- [ACRE2 API Examples Page](functions-list)
+- Included in the `@ACRE2/extras/examples/` folder you should find some sample scripts.
+- [ACRE2 API Functions List](functions-list)
