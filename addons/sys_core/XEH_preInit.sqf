@@ -46,6 +46,9 @@ DGVAR(pttKeyDown) = false;
 
 DGVAR(speaking_cache_valid) = false;
 
+DGVAR(connectorRope) = objNull;
+DGVAR(connectorRopeHelper) = objNull;
+
 DVAR(ACRE_SPIT_VERSION) = false;
 DVAR(ACRE_IS_SYNCING) = false;
 DVAR(ACRE_SPECTATORS_LIST) = [];
