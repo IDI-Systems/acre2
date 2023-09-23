@@ -47,6 +47,17 @@ if (_target isKindOf "CAManBase") then {
 } else {
     if (vehicle acre_player != _target) then {
         // Pointing at a vehicle. Get or return the infantry telephone
+
+        // Get Infantry phone position (copied fnc_infantryPhoneAction.sqf, probably a better way to pass position info)
+        private _positionConfig = configFile >> "CfgVehicles" >> (typeOf _target) >> "acre_infantryPhonePosition";
+        private _position = [0, 0, 0]; // Default to main action point
+        if (isText _positionConfig) then {
+            _position = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core intercomPFH checks
+        };
+        if (isArray _positionConfig) then {
+            _position = getArray _positionConfig;
+        };
+
         if (isNull _vehicleInfantryPhone) then {
             {
                 private _action = [
@@ -55,8 +66,11 @@ if (_target isKindOf "CAManBase") then {
                     "",
                     {
                         params ["_target", "_player", "_params"];
-                        _params params ["_intercomNetwork"];
-                        [_target, _player, 1, _intercomNetwork] call FUNC(updateInfantryPhoneStatus)
+                        _params params ["_intercomNetwork", "_position"];
+                        [_target, _player, 1, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
+
+                        // Create connector rope
+                        [true, _target, _player, _position] call EFUNC(sys_core,handleConnectorRope);
                     },
                     {
                         params ["_target", "_player", "_params"];
@@ -65,7 +79,7 @@ if (_target isKindOf "CAManBase") then {
                         !(_isCalling select 0) || ((_isCalling select 0) && ((_isCalling select 1) == _intercomNetwork))
                     },
                     {},
-                    _forEachIndex
+                    [_forEachIndex, _position]
                 ] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
             } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
@@ -79,7 +93,10 @@ if (_target isKindOf "CAManBase") then {
                     {
                         params ["_target", "_player", ""];
                         //USES_VARIABLES ["_target", "_player"];
-                        [_target, _player, 0, INTERCOM_DISCONNECTED] call FUNC(updateInfantryPhoneStatus)
+                        [_target, _player, 0, INTERCOM_DISCONNECTED] call FUNC(updateInfantryPhoneStatus);
+
+                        // Destroy connector rope
+                        [false] call EFUNC(sys_core,handleConnectorRope);
                     },
                     {true},
                     {},
