@@ -90,9 +90,9 @@
             <Turkish>Kullan</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useIntercomRadio">
-            <English>Use via Intercom (WK: %1)</English>
-            <German>Durch Intercom verwenden (Work-Knob auf %1 stellen)</German>
-            <Italian>Usa tramite l'intercom (manopola Work su %1)</Italian>
+            <English>Use via Intercom (Work: %1)</English>
+            <German>Durch Intercom verwenden (Work: %1)</German>
+            <Italian>Usa tramite l'intercom (Work: %1)</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
