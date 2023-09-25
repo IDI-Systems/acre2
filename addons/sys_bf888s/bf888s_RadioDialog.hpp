@@ -55,7 +55,7 @@ class BF888S_RadioDialog {
             colorBackground[] = {1, 0, 0, 0};
             text = "";
             onMouseButtonUp = "[_this,0] call acre_sys_bf888s_fnc_onChannelKnobPress";
-            toolTip = QUOTE(Change channel);
+            toolTip = ECSTRING(sys_radio,ui_ChangeChannel);
         END_CONTROL
 
         BEGIN_CONTROL(VolumeKnob, BF888S_RscPicture, 107)
@@ -75,7 +75,7 @@ class BF888S_RadioDialog {
             colorBackground[] = {0, 1, 0, 0};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onVolumeKnobPress));
-            toolTip = QUOTE(Change volume);
+            toolTip = ECSTRING(sys_radio,ui_ChangeVolume);
         END_CONTROL
     };
 };

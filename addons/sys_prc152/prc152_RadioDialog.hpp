@@ -354,7 +354,7 @@ class Prc152_RadioDialog {
             colorBackground[] = {1,1,1,0};
             text = "";
             onMouseButtonUp = QUOTE((['KNOB'] + _this) call FUNC(onButtonPress));
-            tooltip = QUOTE(Change channel);
+            toolTip = ECSTRING(sys_radio,ui_ChangeChannel);
         END_CONTROL
 
 
@@ -369,7 +369,7 @@ class Prc152_RadioDialog {
             onMouseEnter = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseEnter));
             onMouseExit = QUOTE((['VOLUME'] + _this) call FUNC(onKnobMouseExit));
             onMouseButtonUp = QUOTE((['VOLUME'] + _this) call FUNC(onButtonPress));
-            tooltip = QUOTE(Change volume);
+            toolTip = ECSTRING(sys_radio,ui_ChangeVolume);
         END_CONTROL
 
     };

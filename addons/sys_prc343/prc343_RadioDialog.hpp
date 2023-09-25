@@ -54,7 +54,7 @@ class PRC343_RadioDialog {
             colorBackground[] = {1, 0, 0, 0};
             text = "";
             onMouseButtonUp = "[_this,0] call acre_sys_prc343_fnc_onChannelKnobPress";
-            toolTip = QUOTE(Change channel);
+            toolTip = ECSTRING(sys_radio,ui_ChangeChannel);
         END_CONTROL
 
         BEGIN_CONTROL(VolumeKnob, Prc343_RscPicture, 107)
@@ -73,7 +73,7 @@ class PRC343_RadioDialog {
             colorBackground[] = {0, 1, 0, 0};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onVolumeKnobPress));
-            toolTip = QUOTE(Change volume);
+            toolTip = ECSTRING(sys_radio,ui_ChangeVolume);
         END_CONTROL
 
         BEGIN_CONTROL(PTTHandleButton, Prc343_RscButton, 203)
