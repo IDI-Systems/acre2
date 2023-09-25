@@ -7,7 +7,7 @@
  * 0: Radio ID <STRING>
  *
  * Return Value:
- * letter on work knob corresponding to the rack, or "" if radio is not a rack <STRING>
+ * Letter on Work knob corresponding to the rack, or "" if radio is not in a rack <STRING>
  *
  * Example:
  * ["ACRE_PRC152_ID_1"] call acre_sys_rack_fnc_getRackLetterFromRadio

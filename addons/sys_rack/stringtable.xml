@@ -90,7 +90,7 @@
             <Turkish>Kullan</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useIntercomRadio">
-            <English>Use via Intercom (Work-Knob to %1)</English>
+            <English>Use via Intercom (WK: %1)</English>
             <German>Durch Intercom verwenden (Work-Knob auf %1 stellen)</German>
             <Italian>Usa tramite l'intercom (manopola Work su %1)</Italian>
         </Key>
