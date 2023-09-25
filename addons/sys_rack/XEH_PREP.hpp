@@ -29,6 +29,7 @@ PREP(configureRackIntercom);
 PREP(initializeRack);
 PREP(getRackBaseClassname);
 PREP(getRackFromRadio);
+PREP(getRackLetterFromRadio);
 PREP(getMountableRadios);
 PREP(getMountedRadio);
 PREP(getWiredIntercoms);
