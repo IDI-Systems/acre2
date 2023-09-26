@@ -86,7 +86,7 @@ class VIC3FFCS_IntercomDialog {
             h = QUOTE((1.15/0.8)*0.050*SafeZoneH);
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(vic3ffcsOnVolumeKnobPress));
-            toolTip = QUOTE(Change volume);
+            toolTip = ECSTRING(sys_radio,ui_ChangeVolume);
         END_CONTROL
 
         BEGIN_CONTROL(WorkKnobButton, VIC3FFCS_RscButton, 204)

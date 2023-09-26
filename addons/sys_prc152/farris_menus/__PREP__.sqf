@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 // Prepare the menus
 MENU_DEFINITION(farris_menus,Loading);

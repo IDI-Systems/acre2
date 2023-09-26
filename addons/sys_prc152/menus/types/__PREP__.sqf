@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\..\script_component.hpp"
 
 PREP_MENU(Static);
 PREP_MENU(Display);

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Gets the channel data. It consists of mode, transmitting and receiving frequencies and power

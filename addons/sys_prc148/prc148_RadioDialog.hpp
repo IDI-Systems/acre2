@@ -351,7 +351,7 @@ class PRC148_RadioDialog {
             onMouseEnter = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseEnter;";
             onMouseExit = "[_this, 'Channel'] call acre_sys_prc148_fnc_onKnobMouseExit;";
             onMouseButtonUp = "_this call acre_sys_prc148_fnc_onChannelKnobPress;";
-            toolTip = QUOTE(Change channel);
+            toolTip = ECSTRING(sys_radio,ui_ChangeChannel);
         END_CONTROL
     };
 

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Mount radio classname
@@ -19,7 +19,7 @@ params ["_rackId", "", "_eventData", ""];
 
 private _radioId = _eventData;
 
-// 26 Pin Connector
+// 14 Pin Connector
 private _attributes = HASH_CREATE;
 [_rackId, 4, _radioId, 2, _attributes, false] call EFUNC(sys_components,attachComplexComponent);
 

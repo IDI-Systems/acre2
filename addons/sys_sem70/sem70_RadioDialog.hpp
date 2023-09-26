@@ -224,7 +224,7 @@ class SEM70_RadioDialog {
             colorBackground[] = {1, 0, 0, 0};
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onVolumeKnobTurn));
-            toolTip = QUOTE(Change Volume);
+            toolTip = ECSTRING(sys_radio,ui_ChangeVolume);
         END_CONTROL
 
         BEGIN_CONTROL(MainButton, SEM70_RscButton, 202)
