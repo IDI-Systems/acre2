@@ -17,6 +17,8 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
+#include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
+
 #define ACRE_REVEAL_AMOUNT 1.6
 
 #define MAX_DIRECT_RANGE 300
