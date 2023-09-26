@@ -37,4 +37,9 @@ ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
 // Set it as active radio.
 [_radioId] call EFUNC(api,setCurrentRadio);
 
+// If it's a manpack radio, visualize the connection with a connector rope
+if ([_radio] call EFUNC(sys_radio,isManpackRadio)) then {
+    [true, 2, _owner, player] call EFUNC(sys_core,handleConnectorRope);
+};
+
 [[ICON_RADIO_CALL], [format [localize LSTRING(hintTake), _displayName, name _owner]], true] call CBA_fnc_notify;

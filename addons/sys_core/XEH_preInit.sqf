@@ -47,7 +47,7 @@ DGVAR(pttKeyDown) = false;
 DGVAR(speaking_cache_valid) = false;
 
 DGVAR(connectorRope) = objNull;
-DGVAR(connectorRopeHelper) = objNull;
+DGVAR(connectorRopeHelpers) = [];
 
 DVAR(ACRE_SPIT_VERSION) = false;
 DVAR(ACRE_IS_SYNCING) = false;

@@ -70,7 +70,7 @@ if (_target isKindOf "CAManBase") then {
                         [_target, _player, 1, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
 
                         // Create connector rope
-                        [true, _target, _player, _position] call EFUNC(sys_core,handleConnectorRope);
+                        [true, 0, _target, _player, _position] call EFUNC(sys_core,handleConnectorRope);
                     },
                     {
                         params ["_target", "_player", "_params"];
