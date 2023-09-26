@@ -7,8 +7,8 @@
  * None
  *
  * Return Value:
- * 1: Radio Class Names <ARRAY>
- * 2: Radio Display Names <ARRAY>
+ * 0: Radio Class Names <ARRAY>
+ * 1: Radio Display Names <ARRAY>
  *
  * Example:
  * [] call acre_sys_core_fnc_getAllRadios;

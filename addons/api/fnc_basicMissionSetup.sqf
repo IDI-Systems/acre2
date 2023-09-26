@@ -82,7 +82,7 @@ private _addRadios = {
     _player setVariable [QGVAR(basicMissionSetup), true, true];
 
     private _cleanRadioList = [];
-    private _defaultRadio = EGVAR(sys_radio,defaultItemRadioType);
+    private _defaultRadio = (call EFUNC(sys_radio,getDefaultRadio)) select 0;
     if !(_defaultRadio in _defaultRadios) then {
         [_player, "ItemRadio"] call EFUNC(sys_core,removeGear);
         [_player, _defaultRadio] call EFUNC(sys_core,removeGear);

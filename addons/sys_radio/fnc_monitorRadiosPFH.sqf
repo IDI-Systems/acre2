@@ -48,9 +48,10 @@ private _currentUniqueItems = [];
     private _hasUnique = _radio call EFUNC(sys_radio,isBaseClassRadio);
 
     if (_radio == "ItemRadio") then {
-        if (GVAR(defaultItemRadioType) != "") then {
+        private _defaultRadio = (call FUNC(getDefaultRadio)) select 0;
+        if (_defaultRadio != "") then {
             // Replace vanilla radio item
-            _radio = GVAR(defaultItemRadioType);
+            _radio = _defaultRadio;
             GVAR(requestingNewId) = true;
             [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
             ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);

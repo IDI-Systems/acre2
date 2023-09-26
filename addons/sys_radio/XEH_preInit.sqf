@@ -6,12 +6,12 @@ PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"
 PREP_RECOMPILE_END;
 
-#include "initSettings.sqf"
-
 // Define caches to save repetitive config lookups.
 GVAR(radioUniqueCache) = HASH_CREATE;
 GVAR(radioBaseClassCache) = HASH_CREATE;
 GVAR(radioIsBaseClassCache) = HASH_CREATE;
+
+GVAR(defaultRadios) = [] call EFUNC(sys_core,getAllRadios);
 
 if (hasInterface) then {
     //DGVAR(workingRadioList) = [];
@@ -33,5 +33,7 @@ if (hasInterface) then {
     DVAR(ACRE_ACTIVE_RADIO) = "";
     DVAR(ACRE_SPECTATOR_RADIOS) = [];
 };
+
+#include "initSettings.sqf"
 
 ADDON = true;
