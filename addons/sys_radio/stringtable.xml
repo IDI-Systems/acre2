@@ -159,6 +159,12 @@
             <Portuguese>Rádio configurado a %1</Portuguese>
             <Turkish>Telsiz Ayarı Şuna Atandı: %1</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_DefaultRadio_DisplayName">
+            <English>Radio Item Replacement</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
+            <English>Default radio inventory items will be replaced with this type of radio.</English>
+        </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
         </Key>

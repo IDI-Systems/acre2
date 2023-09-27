@@ -46,17 +46,29 @@ private _currentUniqueItems = [];
     if (GVAR(requestingNewId)) exitWith { };
     private _radio = _x;
     private _hasUnique = _radio call EFUNC(sys_radio,isBaseClassRadio);
-    if (_hasUnique || {_radio == "ItemRadio"}) then {
 
-        GVAR(requestingNewId) = true;
-        if (_radio == "ItemRadio") then {
-            _radio = GVAR(defaultItemRadioType);
+    if (_radio == "ItemRadio") then {
+        private _defaultRadio = GVAR(defaultRadio);
+        if (_defaultRadio != "") then {
+            // Replace vanilla radio item
+            _radio = _defaultRadio;
+            GVAR(requestingNewId) = true;
             [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
+            ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
+            TRACE_1("Getting ID for ItemRadio replacement",_radio);
+        } else {
+            // Vanilla radio item replacement disabled, simply remove it.
+            [acre_player, "ItemRadio"] call EFUNC(sys_core,removeGear);
+            TRACE_1("Removing ItemRadio",_radio);
         };
-        TRACE_1("Getting ID for", _radio);
-
-        ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
+    } else {
+        if (_hasUnique) then {
+            GVAR(requestingNewId) = true;
+            ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
+            TRACE_1("Getting ID for", _radio);
+        };
     };
+
     private _isUnique = _radio call EFUNC(sys_radio,isUniqueRadio);
     if (_isUnique) then {
         if !([_radio] call EFUNC(sys_data,isRadioInitialized)) then {

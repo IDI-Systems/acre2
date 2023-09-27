@@ -82,14 +82,15 @@ private _addRadios = {
     _player setVariable [QGVAR(basicMissionSetup), true, true];
 
     private _cleanRadioList = [];
-    if !("ACRE_PRC343" in _defaultRadios) then {
+    private _defaultRadio = EGVAR(sys_radio,defaultRadio);
+    if !(_defaultRadio in _defaultRadios) then {
         [_player, "ItemRadio"] call EFUNC(sys_core,removeGear);
-        [_player, "ACRE_PRC343"] call EFUNC(sys_core,removeGear);
+        [_player, _defaultRadio] call EFUNC(sys_core,removeGear);
         _cleanRadioList = _defaultRadios;
     } else {
         private _countDefaultRadios = 0;
         {
-            if (_x == "ACRE_PRC343") then {
+            if (_x == _defaultRadio) then {
                 _countDefaultRadios = _countDefaultRadios + 1;
                 if (_countDefaultRadios > 1) then {
                     _cleanRadioList pushBack _x;
