@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
  *  The PREP_MODULE macro is similar to the PREP macro

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Handles multiple transmissions in the "singleChannel" mode. In this mode, the following parameters

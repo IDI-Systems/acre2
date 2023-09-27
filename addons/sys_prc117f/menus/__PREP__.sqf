@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 PREP_MODULE(menus,onButtonPress);
 PREP_MODULE(menus,defaultButtonPress);

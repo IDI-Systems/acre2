@@ -13,6 +13,8 @@ GVAR(radioUniqueCache) = HASH_CREATE;
 GVAR(radioBaseClassCache) = HASH_CREATE;
 GVAR(radioIsBaseClassCache) = HASH_CREATE;
 
+GVAR(defaultRadios) = [] call EFUNC(sys_core,getAllRadios);
+
 if (hasInterface) then {
     //DGVAR(workingRadioList) = [];
     DGVAR(currentRadioList) = [];
@@ -33,5 +35,7 @@ if (hasInterface) then {
     DVAR(ACRE_ACTIVE_RADIO) = "";
     DVAR(ACRE_SPECTATOR_RADIOS) = [];
 };
+
+#include "initSettings.sqf"
 
 ADDON = true;

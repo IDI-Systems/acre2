@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 
 GVAR(OptRadioOptions) = ["RADIO_OPTIONS", "RADIO OPTIONS", "OPT-RADIO",
     MENUTYPE_LIST,

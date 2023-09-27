@@ -106,7 +106,7 @@ class SEM52SL_RadioDialog {
             h = QUOTE((1.15/0.8)*0.050*SafeZoneH);
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onChannelKnobPress));
-            toolTip = QUOTE(Change channel);
+            toolTip = ECSTRING(sys_radio,ui_ChangeChannel);
         END_CONTROL
 
         BEGIN_CONTROL(VolumeKnobButton, SEM52SL_RscButton, 202)
@@ -116,7 +116,7 @@ class SEM52SL_RadioDialog {
             h = QUOTE((1.15/0.8)*0.050*SafeZoneH);
             text = "";
             onMouseButtonUp = QUOTE(_this call FUNC(onVolumeKnobPress));
-            toolTip = QUOTE(Change volume);
+            toolTip = ECSTRING(sys_radio,ui_ChangeVolume);
         END_CONTROL
 
         BEGIN_CONTROL(PTTButton, SEM52SL_RscButton, 203)

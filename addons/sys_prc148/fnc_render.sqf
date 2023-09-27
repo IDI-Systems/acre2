@@ -54,7 +54,7 @@ SCRATCH_SET(GVAR(currentRadioId), "animations", []);
 [_display, BIG_LINE_4, "                  ", LEFT_ALIGN] call FUNC(displayLine);
 
 private _currentVolume = GET_STATE("volume"); //from 0 to 1
-RADIO_CTRL(12010+201) ctrlSetTooltip format ["Current Volume: %1%2", round(_currentVolume * 100), "%"];
+RADIO_CTRL(12010+201) ctrlSetTooltip format ["%1: %2%3", LELSTRING(sys_radio,ui_CurrentVolume), round (_currentVolume * 100), "%"];
 
 private _knobImageStr = format["\idi\acre\addons\sys_prc148\Data\knobs\volume\prc148_ui_vol_%1.paa", round(_currentVolume * 5)];
 TRACE_1("VolumeKnob",_knobImageStr);

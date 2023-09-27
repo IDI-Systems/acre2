@@ -48,16 +48,18 @@ private _currentUniqueItems = [];
     private _hasUnique = _radio call EFUNC(sys_radio,isBaseClassRadio);
 
     if (_radio == "ItemRadio") then {
-        if (GVAR(defaultItemRadioType) != "") then {
+        private _defaultRadio = GVAR(defaultRadio);
+        if (_defaultRadio != "") then {
             // Replace vanilla radio item
-            _radio = GVAR(defaultItemRadioType);
+            _radio = _defaultRadio;
             GVAR(requestingNewId) = true;
             [acre_player, "ItemRadio", _radio] call EFUNC(sys_core,replaceGear);
             ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
-            TRACE_1("Getting ID for", _radio);
+            TRACE_1("Getting ID for ItemRadio replacement",_radio);
         } else {
             // Vanilla radio item replacement disabled, simply remove it.
             [acre_player, "ItemRadio"] call EFUNC(sys_core,removeGear);
+            TRACE_1("Removing ItemRadio",_radio);
         };
     } else {
         if (_hasUnique) then {
@@ -67,7 +69,8 @@ private _currentUniqueItems = [];
         };
     };
 
-    if (_radio call EFUNC(sys_radio,isUniqueRadio)) then {
+    private _isUnique = _radio call EFUNC(sys_radio,isUniqueRadio);
+    if (_isUnique) then {
         if !([_radio] call EFUNC(sys_data,isRadioInitialized)) then {
             WARNING_1("%1 was found in personal inventory but is uninitialized! Trying to collect new ID.",_radio);
             private _baseRadio = BASECLASS(_radio);

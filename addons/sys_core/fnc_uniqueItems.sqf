@@ -1,3 +1,4 @@
+#include "script_component.hpp"
 /*
  * Author: mharis001, courtesy of ACE3 project.
  * Returns list of unique items in a unit's inventory. Items are cached if unit is acre_player.
@@ -13,7 +14,6 @@
  *
  * Public: No
  */
-#include "script_component.hpp"
 
 params ["_unit"];
 

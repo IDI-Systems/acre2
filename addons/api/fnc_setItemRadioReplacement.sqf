@@ -1,7 +1,11 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
+<<<<<<< HEAD
  * DEPRECATED
+=======
+ * DEPRECATED! Replaced by CBA Setting.
+>>>>>>> master
  * Set the radio type to replace "ItemRadio" in unit inventories. By default this is the "ACRE_PRC343"
  *
  * Arguments:
@@ -20,6 +24,6 @@ ACRE_DEPRECATED(QFUNC(setItemRadioReplacement),"2.12","CBA Setting")
 
 params ["_radioType"];
 
-[QEGVAR(sys_radio,defaultItemRadioType), _radioType, 1, "mission"] call CBA_settings_fnc_set;
+[QEGVAR(sys_radio,defaultRadio), _radioType, 1, "mission"] call CBA_settings_fnc_set;
 
 true

@@ -22,3 +22,4 @@
 #define ACRE_CONNECTOR_CONN_26PIN 7 // Harris 26 AIC pin - 117F to VRC103
 #define ACRE_CONNECTOR_CONN_18PIN 8 // 18pin for the 148 Side connector
 #define ACRE_CONNECTOR_CONN_57PIN 9 // 57pin is the SEM70/80/90 interconnecting connector
+#define ACRE_CONNECTOR_CONN_14PIN 10 // 14 pin CX-4655

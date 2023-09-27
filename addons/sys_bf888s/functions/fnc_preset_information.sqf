@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Initialises and registers the default presets with the initial values of transmitting and receiving frequencies for each of the channels.

@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -40,12 +40,12 @@ if (_currentVolume != _newVolume) then {
     if (_newVolume >= 0.2) then {
         ["Acre_GenericClick", [0, 0, 0], [0, 0, 0], _newVolume^3, false] call EFUNC(sys_sounds,playSound);
         ["setVolume", _newVolume] call GUI_DATA_EVENT;
-        RADIO_CTRL(12010+201) ctrlSetTooltip format ["Current Volume: %1%2", round (_newVolume*100), "%"];
+        RADIO_CTRL(12010+201) ctrlSetTooltip format ["%1: %2%3", LELSTRING(sys_radio,ui_CurrentVolume), round (_newVolume*100), "%"];
     };
     if (_newVolume < 0.2 /*&& _ctrl*/) then {
         ["setVolume", 0] call GUI_DATA_EVENT;
         ["setOnOffState", 0] call GUI_DATA_EVENT;
-        RADIO_CTRL(12010+201) ctrlSetTooltip format ["Radio off"];
+        RADIO_CTRL(12010+201) ctrlSetTooltip LELSTRING(sys_radio,ui_Radiooff);
     } else {
         if (_newVolume > 0 && _currentVolume < 0.2) then {
             //acre_player sideChat "STARTING RADIO!";

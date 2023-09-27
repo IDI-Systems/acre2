@@ -37,7 +37,7 @@ The project is entirely **open-source** and all contributions are welcome. Core 
 ### Features
 
 - Accurate simulations of AN/PRC-343, AN/PRC-77, AN/PRC-148, AN/PRC-117F, AN/PRC-152, SEM 52 SL, SEM 70, BF-888S.
-- Vehicle racks AN/VRC-103, AN/VRC-110, AN/VRC-111, SEM90.
+- Vehicle racks AN/VRC-64, AN/VRC-103, AN/VRC-110, AN/VRC-111, SEM90.
 - Deployable antennas.
 - Real time voice occlusion for world objects, including buildings.
 - Babel language system that allows you to implement virtual languages on other players.

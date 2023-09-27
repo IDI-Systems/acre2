@@ -21,6 +21,8 @@
 
 #define MAX_EXTERNAL_RACK_DISTANCE 10
 
+#define RACK_LETTERS "A", "B", "C", "D", "E", "F"
+
 #include "script_acre_rack_defines.hpp"
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
