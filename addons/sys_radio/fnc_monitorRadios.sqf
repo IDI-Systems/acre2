@@ -21,6 +21,10 @@ GVAR(requestingNewId) = false;
 
 LOG("Monitor Inventory Starting");
 
-[{ACRE_DATA_SYNCED && {(!isNil "ACRE_SERVER_INIT")} && {time >= 1}},{
+[{
+    ACRE_DATA_SYNCED &&
+    {!isNil "ACRE_SERVER_INIT"} &&
+    {time >= 1}
+}, {
     [DFUNC(monitorRadiosPFH), 0.25, []] call CBA_fnc_addPerFrameHandler;
-},[]] call CBA_fnc_waitUntilAndExecute;
+}, []] call CBA_fnc_waitUntilAndExecute;

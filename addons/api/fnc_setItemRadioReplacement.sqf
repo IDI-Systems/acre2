@@ -20,6 +20,6 @@ ACRE_DEPRECATED(QFUNC(setItemRadioReplacement),"2.12","CBA Setting")
 
 params ["_radioType"];
 
-[QEGVAR(sys_radio,defaultRadio), (EGVAR(sys_radio,defaultRadios) select 0) find (toUpperANSI _radioType), 1, "mission"] call CBA_settings_fnc_set;
+[QEGVAR(sys_radio,defaultRadio), _radioType, 1, "mission"] call CBA_settings_fnc_set;
 
 true
