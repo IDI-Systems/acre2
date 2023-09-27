@@ -447,7 +447,7 @@ class SPE_PzKpfwIV_G_base: SPE_Tank_base {
     };
 };
 
-class SPE_PzBefWgIV_base: SPE_PzKpfwIV_G_Base { //Command Tank Base
+class SPE_PzBefWgIV_base: SPE_PzKpfwIV_G_base { //Command Tank Base
     class AcreRacks {
         class Rack_1 {
             displayName = CSTRING(RadioSet1_GER);
