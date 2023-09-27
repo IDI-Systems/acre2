@@ -16,6 +16,7 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"
 
 class CfgAcreWorlds {
     class cam_lao_nam {
