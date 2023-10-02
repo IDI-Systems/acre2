@@ -57,8 +57,8 @@ if (_state) then {
             hideObject (GVAR(connectorRopeHelpers) select 1);
 
             // Create Rope between helper objects
-            GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 6];
-            [(GVAR(connectorRopeHelpers) select 1), [0, 0, 0]] ropeAttachTo _rope;
+            GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 2.5];
+            [(GVAR(connectorRopeHelpers) select 1), [0, 0, 0]] ropeAttachTo GVAR(connectorRope);
             systemChat "created rope";
         };
         case 2: { // Connect rope to shared backpack radio owner
@@ -73,8 +73,8 @@ if (_state) then {
             hideObject (GVAR(connectorRopeHelpers) select 1);
 
             // Create Rope between helper objects
-            _rope = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 0.5];
-            [GVAR(connectorRopeHelpers) select 1, [0, 0, 0]] ropeAttachTo _rope;
+            GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 0.5];
+            [GVAR(connectorRopeHelpers) select 1, [0, 0, 0]] ropeAttachTo GVAR(connectorRope);
             systemChat "created rope";
         };
     };
