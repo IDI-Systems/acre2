@@ -39,16 +39,10 @@ if (_state) then {
             systemChat "created rope";
         };
         case 1: { // Connect rope to Ground Spike Antenna
-            // Adjust Rope start position to not interfere with interaction
-            if (typeOf _fromObject == "vhf30108spike") then {
-                _fromPoint set [2, (_fromPoint select 2) + 0.2]; // Raise Z coordinate by 20cm
-            } else {
-                _fromPoint set [2, (_fromPoint select 2) - 1]; // Lower Z coordinate by 1m
-            };
-
             // Create helper object on GSA
-            GVAR(connectorRopeHelpers) set [0, "RoadCone_L_F" createVehicle position _fromObject];
-            (GVAR(connectorRopeHelpers) select 0) attachTo [_fromObject, [0,0,0]];
+            GVAR(connectorRopeHelpers) set [0, "PaperCar" createVehicle position _fromObject];
+            (GVAR(connectorRopeHelpers) select 0) disableCollisionWith _fromObject;
+            (GVAR(connectorRopeHelpers) select 0) setPos (position _fromObject);
             hideObject (GVAR(connectorRopeHelpers) select 0);
 
             // Create helper object on player pelvis
@@ -63,7 +57,7 @@ if (_state) then {
         };
         case 2: { // Connect rope to shared backpack radio owner
             // Create helper object on radio owner
-            GVAR(connectorRopeHelpers) set [0, "RoadCone_L_F" createVehicle position _fromObject];
+            GVAR(connectorRopeHelpers) set [0, "PaperCar" createVehicle position _fromObject];
             (GVAR(connectorRopeHelpers) select 0) attachTo [_fromObject, [-0.1, 0.1, 0.15], "Pelvis"];
             hideObject (GVAR(connectorRopeHelpers) select 0);
 
