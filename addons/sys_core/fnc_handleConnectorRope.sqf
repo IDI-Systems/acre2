@@ -22,6 +22,8 @@
 
 params ["_state", ["_type", 0], ["_fromObject", objNull], ["_toObject", objNull], ["_fromPoint", [0, 0, 0]]];
 
+if (!EGVAR(sys_gestures,showConnectorRopes)) exitWith {};
+
 if (_state) then {
     switch (_type) do {
         case 0: { // Connect rope to Infantry Phone
