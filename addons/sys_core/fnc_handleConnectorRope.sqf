@@ -26,7 +26,7 @@ if (_state) then {
     switch (_type) do {
         case 0: { // Connect rope to Infantry Phone
             // Adjust Rope start position to not interfere with interaction
-            _fromPoint set [2, (_fromPoint select 2) - 0.2]; // Lower Z coordinate by 20cm
+            //_fromPoint set [2, (_fromPoint select 2) - 0.3]; // Lower Z coordinate by 30cm ---------------------- CHECK IF NEEDED
 
             // Create Rope
             GVAR(connectorRope) = ropeCreate [_fromObject, _fromPoint, 2, nil, nil, QGVAR(connectorWire)];
@@ -39,6 +39,11 @@ if (_state) then {
             systemChat "created rope";
         };
         case 1: { // Connect rope to Ground Spike Antenna
+            // Adjust Rope start position to not interfere with interaction
+            /*if (typeOf _fromObject == "vhf30108spike") then {
+                _fromPoint set [1, (_fromPoint select 1) - 0.2]; // Shift Y coordinate by 20cm ---------------------- CHECK IF NEEDED
+            };*/
+
             // Create helper object on GSA
             GVAR(connectorRopeHelpers) set [0, "PaperCar" createVehicle position _fromObject];
             (GVAR(connectorRopeHelpers) select 0) disableCollisionWith _fromObject;
