@@ -31,7 +31,7 @@ if (_state) then {
             //_fromPoint set [2, (_fromPoint select 2) - 0.3]; // Lower Z coordinate by 30cm ---------------------- CHECK IF NEEDED
 
             // Create Rope
-            GVAR(connectorRope) = ropeCreate [_fromObject, _fromPoint, 2, nil, nil, QGVAR(connectorWire)];
+            GVAR(connectorRope) = ropeCreate [_fromObject, _fromPoint, 3, nil, nil, QGVAR(connectorWire)];
 
             // Create helper object on player pelvis
             GVAR(connectorRopeHelpers) set [0, "Land_Can_V2_F" createVehicle position _toObject];
@@ -58,7 +58,7 @@ if (_state) then {
             hideObject (GVAR(connectorRopeHelpers) select 1);
 
             // Create Rope between helper objects
-            GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 2.5, nil, nil, QGVAR(connectorWire)];
+            GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 5, nil, nil, QGVAR(connectorWire)];
             [(GVAR(connectorRopeHelpers) select 1), [0, 0, 0]] ropeAttachTo GVAR(connectorRope);
             systemChat "created rope";
         };
@@ -74,7 +74,7 @@ if (_state) then {
             hideObject (GVAR(connectorRopeHelpers) select 1);
 
             // Create Rope between helper objects
-            GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 0.5, nil, nil, QGVAR(connectorWire)];
+            GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 3, nil, nil, QGVAR(connectorWire)];
             [GVAR(connectorRopeHelpers) select 1, [0, 0, 0]] ropeAttachTo GVAR(connectorRope);
             systemChat "created rope";
         };
