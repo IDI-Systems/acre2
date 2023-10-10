@@ -23,7 +23,7 @@ private _radioList = _radios select {_x call EFUNC(sys_radio,isUniqueRadio)};
 if (
     !(alive _unit) ||
     {captive _unit} ||
-    {_unit getVariable ["ACE_isUnconscious", false]}
+    {lifeState _unit isEqualTo "INCAPACITATED"}
     ) exitWith {_radioList};
 
 _radioList select {[_x, "getState", "radioShared"] call EFUNC(sys_data,dataEvent)}
