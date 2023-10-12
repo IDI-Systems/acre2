@@ -13,6 +13,8 @@ if (!hasInterface) exitWith {};
 // Ensure the TeamSpeak plugin handler code is initialized first
 [] call EFUNC(sys_io,startServer);
 
+if (("acre" callExtension "version") == "") then { ERROR_WITH_TITLE("ACRE","Plugin not found"); };
+
 ["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetPluginVersion", FUNC(handleGetPluginVersion)] call EFUNC(sys_rpc,addProcedure);
 ["handleGetHeadVector", FUNC(handleGetHeadVector)] call EFUNC(sys_rpc,addProcedure);
