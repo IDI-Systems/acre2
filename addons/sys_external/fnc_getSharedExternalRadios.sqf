@@ -24,6 +24,6 @@ if (
     !(alive _unit) ||
     {captive _unit} ||
     {lifeState _unit isEqualTo "INCAPACITATED"}
-    ) exitWith {_radioList};
+) exitWith {_radioList};
 
 _radioList select {[_x, "getState", "radioShared"] call EFUNC(sys_data,dataEvent)}
