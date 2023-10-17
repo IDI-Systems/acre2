@@ -261,7 +261,7 @@ jobs:
         STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
     - name: Upload to GitHub
       id: github_release
-      uses: actions/action-gh-release@v1
+      uses: softprops/action-gh-release@v1
       with:
         draft: true
         files: acre2_${{ needs.build.outputs.VERSION }}.zip
