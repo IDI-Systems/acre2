@@ -44,6 +44,7 @@ This playtesting allows us to guarantee that ACRE2 supports, without glitches, 1
 - Antennas and Components
 - Ground spike antenna
 
+
 ## Direct Communications
 
 - Babel (TVT Languages)
@@ -67,3 +68,38 @@ Babel provides a method for a mission maker to give each side or individual play
 #### TVT Radio Setups
 
 ACRE has always supported assigning different radios and frequencies to different sides. We pioneered, almost 4 years ago, making ACRE radio's physical objects. This means that the radio's configuration is tracked with the object. If a radio is dropped, or collected off a dead player, the other player sees that radios configuration and can use it. This, combined with babel, allows for many different TVT scenarios and added levels of great gameplay.
+
+
+## Creator DLC Compatibility
+
+ACRE2 provides contributed compatibility components for several Creator DLCs. This includes accurate terrain data for signal calculations as it cannot be automatically generated on map load due to encrypted publishing. Compatibility is automatically loaded for any loaded Creator DLC.
+
+<div class="row flex-row">
+    <div class="col-sm-4">
+{% include image.html file="compats/acre2_gm_compat_small-logo.png" url="https://store.steampowered.com/app/1294440/Arma_3_Creator_DLC_CSLA_Iron_Curtain/" alt="Global Mobilization Compatibility Logo" caption="Global Mobilization" %}
+
+Accurate terrain data for signal calculations.
+    </div>
+    <div class="col-sm-4">
+{% include image.html file="compats/acre2_sog_compat_small-logo.png" url="https://www.sogpf.com/" alt="S.O.G. Prairie Fire Compatibility Logo" caption="S.O.G. Prairie Fire" %}
+
+Accurate terrain data for signal calculations. Use of AN/PRC-77 in the co-op campaign.
+    </div>
+    <div class="col-sm-4">
+{% include image.html file="compats/acre2_ws_compat_small-logo.png" url="https://store.steampowered.com/app/1681170/Arma_3_Creator_DLC_Western_Sahara/" alt="Western Sahara Compatibility Logo" caption="Western Sahara" %}
+
+Accurate terrain data for signal calculations.
+    </div>
+    <div class="col-sm-4">
+{% include image.html file="compats/acre2_csla_compat_small-logo.png" url="https://www.global-mobilization.com/" alt="CSLA Iron Curtain Compatibility Logo" caption="CSLA Iron Curtain" %}
+
+Accurate terrain data for signal calculations.
+    </div>
+    <div class="col-sm-4">
+{% include image.html file="compats/acre2_spe_compat_small-logo.png" url="https://spearhead-1944.com/" alt="Spearhead 1944 Logo" caption="Spearhead 1944" %}
+
+Accurate terrain data for signal calculations. AN/PRC-77 equipped automatically in radio backpacks. Customized radio racks, including special command vehicles with additional radios.
+    </div>
+</div>
+
+{% include note.html content="Creator DLC compatibilities are contributed by their authors or other contributors. IDI-Systems only serves as a publisher to facilitate easier distribution and collaboration." %}
