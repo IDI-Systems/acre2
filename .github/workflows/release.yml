@@ -23,7 +23,7 @@ jobs:
       SHA_SHORT: ${{ env.SHA_SHORT }}
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup HEMTT
       uses: arma-actions/hemtt@v1
     - name: Setup Binarize
@@ -69,7 +69,7 @@ jobs:
       DXSDK_DIR: "${{ github.workspace }}\\ci\\directx-sdk"  # CMake FindDirectX
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Setup BattlEye and DirectX SDK
       run: |
         C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
