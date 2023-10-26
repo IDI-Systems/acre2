@@ -113,6 +113,30 @@ __Example__
 
 ---
 
+### acre_api_fnc_isVOIPConnected
+__Description__
+
+Check if the VOIP plugin is connected.
+
+__Parameters__
+
+None
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Is VOIP Plugin Connected  | BOOL
+
+__Example__
+
+```sqf
+[] call acre_api_fnc_isVOIPConnected
+```
+
+
+---
+
 ### acre_api_fnc_setPresetChannelField
 __Description__
 
@@ -1299,6 +1323,7 @@ __Example__
 ### acre_api_fnc_setItemRadioReplacement
 __Description__
 
+DEPRECATED! Replaced by CBA Setting.
 Set the radio type to replace "ItemRadio" in unit inventories. By default this is the "ACRE_PRC343"
 
 __Parameters__
@@ -1393,6 +1418,30 @@ __Example__
 
 ```sqf
 [player] call acre_api_fnc_removeAllSpectatorRadios
+```
+
+
+---
+
+### acre_api_fnc_getVOIPChannelName
+__Description__
+
+Get the VOIP channel name.
+
+__Parameters__
+
+None
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+VOIP Channel Name  | STRING
+
+__Example__
+
+```sqf
+[] call acre_api_fnc_getVOIPChannelName
 ```
 
 
@@ -1800,6 +1849,30 @@ __Example__
 
 ---
 
+### acre_api_fnc_getVOIPServerUID
+__Description__
+
+Get the VOIP server UID.
+
+__Parameters__
+
+None
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+VOIP Server UID  | STRING
+
+__Example__
+
+```sqf
+[] call acre_api_fnc_getVOIPServerUID
+```
+
+
+---
+
 ### acre_api_fnc_isBaseRadio
 __Description__
 
@@ -2097,6 +2170,30 @@ __Example__
 
 ---
 
+### acre_api_fnc_getVOIPServerName
+__Description__
+
+Get the VOIP server name.
+
+__Parameters__
+
+None
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+VOIP Server Name  | STRING
+
+__Example__
+
+```sqf
+[] call acre_api_fnc_getVOIPServerName
+```
+
+
+---
+
 ### acre_api_fnc_setGlobalVolume
 __Description__
 
@@ -2158,6 +2255,30 @@ __Example__
 
 ```sqf
 [cursorTarget, ["ACRE_VRC103", "Upper Dash", "Dash", false, ["external"], [], "ACRE_PRC117F", [], ["intercom_1"]], false] call acre_api_fnc_addRackToVehicle
+```
+
+
+---
+
+### acre_api_fnc_getVOIPChannelUID
+__Description__
+
+Get the VOIP channel UID.
+
+__Parameters__
+
+None
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+VOIP Channel UID  | STRING
+
+__Example__
+
+```sqf
+[] call acre_api_fnc_getVOIPChannelUID
 ```
 
 

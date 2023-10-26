@@ -62,8 +62,11 @@ int32_t getTSAPIVersion() {
         api = 22; // 3.2.x
     } else if (tsminor <= 3) {
         api = 23; // 3.3.x
-    } else {
+    } else if (tsminor <= 5) {
         api = 24; // 3.5.x
+        // 25 is backwards compatible with 24
+    } else {
+        api = 26; // 3.6.x
     }
 
     return api;

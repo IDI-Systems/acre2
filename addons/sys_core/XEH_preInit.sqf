@@ -27,6 +27,7 @@ DGVAR(speakers) = [];
 DGVAR(enableDistanceMuting) = true;
 DGVAR(ts3id) = -1;
 DGVAR(keyedMicRadios) = [];
+DGVAR(previousSortedParams) = [[],[]];
 DGVAR(keyedRadioIds) = HASH_CREATE;
 DGVAR(globalVolume) = 1.0;
 DGVAR(maxVolume) = 1.0;
@@ -89,6 +90,11 @@ DVAR(ACRE_ARSENAL_RADIOS) = [];                  // Radios that are 'stashed' wh
 DVAR(ACRE_BLOCKED_TRANSMITTING_RADIOS) = [];
 
 DGVAR(arsenalOpen) = false;
+
+DGVAR(voipChannelName) = "";
+DGVAR(voipChannelUID) = "";
+DGVAR(voipServerName) = "";
+DGVAR(voipServerUID) = "";
 
 acre_player = player;
 

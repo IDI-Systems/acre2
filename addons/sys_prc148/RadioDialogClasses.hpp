@@ -1,8 +1,8 @@
 class Prc148_RscBackground {
         type = CT_STATIC;
         idc = -1;
-        style = ST_BACKGROUND + ST_KEEP_ASPECT_RATIO;
-        colorBackground[] = {0, 0, 0, .75};
+        style = QUOTE(ST_BACKGROUND + ST_KEEP_ASPECT_RATIO);
+        colorBackground[] = {0, 0, 0, 0.75};
         colorText[] = {1, 1, 1, 1};
         font = FontM;
         sizeEx = 0.04;
@@ -22,18 +22,18 @@ class Prc148_RscText {
 };
 
 class Prc148_Cursor: Prc148_RscText {
-    style = ST_CENTER + ST_FRAME;
+    style = QUOTE(ST_CENTER + ST_FRAME);
 };
 
 class Prc148_RscButton {
   type = CT_BUTTON;
   idc = -1;
-  style = ST_CENTER + ST_KEEP_ASPECT_RATIO;
+  style = QUOTE(ST_CENTER + ST_KEEP_ASPECT_RATIO);
 
   x = 0.0;
   y = 0.0;
   w = 0.1;
-  h = Dlg_CONTROLHGT;
+  h = 0.0;
   sizeEx = 0.0325;
   offsetX = 0;
   offsetY = 0.002;
@@ -74,6 +74,6 @@ class Prc148_RscButton {
 class Prc148_RscPicture: Prc148_RscButton {
     type = CT_STATIC;
     idc = -1;
-    style = ST_PICTURE + ST_KEEP_ASPECT_RATIO;
+    style = QUOTE(ST_PICTURE + ST_KEEP_ASPECT_RATIO);
     text = "";
 };

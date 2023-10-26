@@ -1,26 +1,16 @@
 ;@Findstr -bv ;@F "%~f0" | powershell -Command - & pause & goto:eof
 
-# Unzip backwards compatibility (Windows 8)
-Add-Type -AssemblyName System.IO.Compression.FileSystem
-function Unzip {
-    param([string]$zipfile, [string]$outpath)
-
-    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
-}
-
+Write-Output "=> Downloading ..."
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-$client = New-Object Net.WebClient
 
-Write-Output "=> Downloading tools ..."
-$client.DownloadFile("http://dev.idi-systems.com/tools/acre2_tools_user.zip", "acre2_tools_user.zip")
-$client.dispose()
+$url = "https://github.com/BrettMayson/HEMTT/releases/latest/download/windows-x64.zip"
+(New-Object Net.WebClient).DownloadFile($url, "hemtt.zip"); Write-Output "$url => hemtt.zip"
 
-Write-Output "=> Cleaning old ..."
-Remove-Item "..\hemtt.exe"
-Remove-Item "..\ArmaScriptCompiler.exe"
+Write-Output "`n=> Extracting ..."
+Expand-Archive -Path "hemtt.zip" -DestinationPath "..\." -Force; Write-Output "hemtt.zip"
+Remove-Item "hemtt.zip"
 
-Write-Output "=> Extracting ..."
-Unzip "acre2_tools_user.zip" "..\."
-Remove-Item "acre2_tools_user.zip"
+Write-Output "`n=> Verifying ..."
+Start-Process -FilePath ..\hemtt.exe -ArgumentList --version -NoNewWindow -Wait
 
-Write-Output "Tools successfully installed to project!"
+Write-Output "`nTools successfully installed to project!"

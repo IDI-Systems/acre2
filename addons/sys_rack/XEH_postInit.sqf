@@ -1,7 +1,6 @@
 #include "script_component.hpp"
 
 if (!hasInterface) exitWith {};
-if (!isClass (configFile >> "CfgPatches" >> "ace_interact_menu")) exitWith {};
 
 ["vehicle", {
     params ["_player", "_newVehicle"];

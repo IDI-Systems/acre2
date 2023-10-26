@@ -1,33 +1,32 @@
-#define true 1
-#define false 0
+// WIP concept
 class CfgAcreAPI {
     class RadioAPIFunctions {
         class setChannel {
-            required = true;
+            required = 1;
         };
         class setVolume {
-            required = true;
+            required = 1;
         };
         class setTransmitPower {
-            required = false;
+            required = 0;
             defaultFunction = QFUNC(api_setTransmitPower);
         };
         class toggleOnOff {
-            required = false;
+            required = 0;
             defaultFunction = QFUNC(api_toggleOnOffState);
         };
         class getOnOffState {
-            required = false;
+            required = 0;
             defaultFunction = QFUNC(api_getOnOffState);
         };
         class getVolume {
-            required = true;
+            required = 1;
         };
         class getChannel {
-            required = true;
+            required = 1;
         };
         class getTransmitPower {
-            required = true;
+            required = 1;
         };
     };
 };

@@ -30,6 +30,8 @@ RPC_FUNCTION(updateSpeakingData) {
         }
     }
     TRACE("SPEAKING DATA: %s", vMessage->getData());
+    bool unmute = false;
+
     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->lock();
     if (speaker) {
         LOCK(speaker);
@@ -76,9 +78,7 @@ RPC_FUNCTION(updateSpeakingData) {
             // want.
             const int32_t count = vMessage->getParameterAsInt(3);
             speaker->setSpeakingType(acre::Speaking::radio);
-            if (CEngine::getInstance()->getClient()->getMuted(playerId) == acre::Result::ok) {
-                CEngine::getInstance()->getClient()->setMuted(playerId, false);
-            }
+            unmute = true;
             for (int32_t i = 0; i < count; ++i) {
                 const int32_t channelId = i + 1;
                 if (!speaker->channels[channelId]) {
@@ -91,6 +91,7 @@ RPC_FUNCTION(updateSpeakingData) {
                     speaker->channels[channelId]->setEffectInsert(2, "acre_radio");
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("disableNoise", false);
                     speaker->channels[channelId]->getEffectInsert(2)->setParam("signalQuality", vMessage->getParameterAsFloat(5));
+                    speaker->channels[channelId]->getEffectInsert(2)->setParam("isLoudSpeaker", vMessage->getParameterAsFloat(7));
 
                     speaker->channels[channelId]->setMixdownEffectInsert(0, "acre_positional");
                 }
@@ -136,9 +137,7 @@ RPC_FUNCTION(updateSpeakingData) {
             } else {
                 speaker->setSpeakingType(acre::Speaking::god);
             }
-            if (CEngine::getInstance()->getClient()->getMuted(playerId) == acre::Result::ok) {
-                CEngine::getInstance()->getClient()->setMuted(playerId, false);
-            }
+            unmute = true;
             if (speaker->channels[0]) {
                 speaker->channels[0]->getEffectInsert(7)->setParam("volume", vMessage->getParameterAsFloat(3));
             }
@@ -148,6 +147,13 @@ RPC_FUNCTION(updateSpeakingData) {
         UNLOCK(speaker);
     }
     CEngine::getInstance()->getSoundEngine()->getSoundMixer()->unlock();
+
+    if (unmute) {
+        if (CEngine::getInstance()->getClient()->getMuted(playerId) == acre::Result::ok) {
+            CEngine::getInstance()->getClient()->setMuted(playerId, false);
+        }
+    }
+
     return acre::Result::ok;
 }
 public:

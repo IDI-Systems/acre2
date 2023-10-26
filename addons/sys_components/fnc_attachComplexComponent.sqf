@@ -21,6 +21,7 @@
  */
 
 params ["_parentComponentId", "_parentConnector", "_childComponentId", "_childConnector", "_attributes", ["_force",false]];
+TRACE_6("attachComplexComponent",_parentComponentId,_parentConnector,_childComponentId,_childConnector,_attributes,_force);
 
 private _return = false;
 
@@ -41,6 +42,14 @@ if (_componentSimple == 1) exitWith {
 
 private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")) select _parentConnector) select 1;
 private _childConnectorType = ((getArray(_childComponentClass >> "connectors")) select _childConnector) select 1;
+if (isNil {_parentConnectorType}) exitWith {
+    WARNING_2("Parent %1 does not have connector index %2",configName _parentComponentClass,_parentConnector);
+    false
+};
+if (isNil {_childConnectorType}) exitWith {
+    WARNING_2("Child %1 does not have connector index %2",configName _childComponentClass,_childConnector);
+    false
+};
 
 if (_parentConnectorType == _childConnectorType) then {
     private _exit = false;

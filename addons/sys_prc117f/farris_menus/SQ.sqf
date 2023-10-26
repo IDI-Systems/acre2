@@ -1,4 +1,4 @@
-#include "script_component.hpp"
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * SHORT DESCRIPTION
@@ -17,7 +17,7 @@
  */
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
-#define GET_CHANNEL_DATA() [] call FUNC(CURRENT_RADIO_CHANNEL);
+#define GET_CHANNEL_DATA [] call FUNC(CURRENT_RADIO_CHANNEL);
 
 GVAR(SQ_ONLY_AM) = ["SQ_ONLY_AM", "SQ_ONLY_AM", "",
     MENUTYPE_STATIC,
@@ -154,7 +154,7 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
     {
         //Call on series completion
         private _selectAnalogSquelch = SCRATCH_GET(GVAR(currentRadioID), "sq_select_analog");
-        private _channel = GET_CHANNEL_DATA();
+        private _channel = GET_CHANNEL_DATA;
         private _CTCSS = HASH_GET(_channel, "CTCSSRx");
         private _squelch = HASH_GET(_channel, "squelch");
         private _modulation = HASH_GET(_channel, "modulation");
@@ -236,7 +236,7 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
     {
         //Call on series completion
         private _selectSquelch = SCRATCH_GET(GVAR(currentRadioID), "sq_select_squelch");
-        private _channel = GET_CHANNEL_DATA();
+        private _channel = GET_CHANNEL_DATA;
         private _squelch = HASH_GET(_channel, "squelch");
 
         switch _selectSquelch do {
@@ -306,7 +306,7 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
     {
         //Call on series completion
         private _selectctcss = SCRATCH_GET(GVAR(currentRadioID), "sq_select_ctcss");
-        private _channel = GET_CHANNEL_DATA();
+        private _channel = GET_CHANNEL_DATA;
         private _ctcss = HASH_GET(_channel, "CTCSSRx");
 
         _ctcss = parseNumber _selectctcss;

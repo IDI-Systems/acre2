@@ -106,20 +106,31 @@ if (_mountedRadio == "") then { // Empty
             ] call ace_interact_menu_fnc_createAction;
             _actions pushBack [_action, [], _target];
         };
-    };
-
-    // Start using (only if not yet accessible and not connected to intercom)
-    if (!(_mountedRadio in ACRE_ACCESSIBLE_RACK_RADIOS) && {!([_mountedRadio, acre_player] call FUNC(isRadioHearable))}) then {
-        private _action = [
-            QGVAR(useMountedRadio),
-            localize LSTRING(useRadio),
-            "",
-            {_this call FUNC(startUsingMountedRadio)},
-            {true},
-            {},
-            _mountedRadio
-        ] call ace_interact_menu_fnc_createAction;
-        _actions pushBack [_action, [], _target];
+    } else {
+        // Start using (only if not yet accessible and not connected to intercom)
+        if (!([_mountedRadio, acre_player] call FUNC(isRadioHearable))) then {
+            private _action = [
+                QGVAR(useMountedRadio),
+                localize LSTRING(useRadio),
+                "",
+                {_this call FUNC(startUsingMountedRadio)},
+                {true},
+                {},
+                _mountedRadio
+            ] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        } else {
+            // Open FFCS (only if not accessible but wired to intercom)
+            // mimics standalone radio interaction to radios wired to intercom for easier UX
+            private _action = [
+                QGVAR(useMountedRadio),
+                format [localize LSTRING(useIntercomRadio), ([_mountedRadio] call FUNC(getRackLetterFromRadio))],
+                "",
+                {[] call EFUNC(sys_intercom,openGui)},
+                {true}
+            ] call ace_interact_menu_fnc_createAction;
+            _actions pushBack [_action, [], _target];
+        };
     };
 };
 

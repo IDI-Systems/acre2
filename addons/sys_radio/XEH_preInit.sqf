@@ -11,6 +11,8 @@ GVAR(radioUniqueCache) = HASH_CREATE;
 GVAR(radioBaseClassCache) = HASH_CREATE;
 GVAR(radioIsBaseClassCache) = HASH_CREATE;
 
+GVAR(defaultRadios) = [] call EFUNC(sys_core,getAllRadios);
+
 if (hasInterface) then {
     //DGVAR(workingRadioList) = [];
     DGVAR(currentRadioList) = [];
@@ -30,13 +32,8 @@ if (hasInterface) then {
 
     DVAR(ACRE_ACTIVE_RADIO) = "";
     DVAR(ACRE_SPECTATOR_RADIOS) = [];
-
-    // this isn't used anymore i do not think?
-    // acre_player setVariable [QGVAR(currentRadioList), []];
-
-    if (isNil QGVAR(defaultItemRadioType)) then {
-        GVAR(defaultItemRadioType) = "ACRE_PRC343";
-    };
 };
+
+#include "initSettings.sqf"
 
 ADDON = true;

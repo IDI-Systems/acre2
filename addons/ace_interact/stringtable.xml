@@ -210,6 +210,7 @@
             <French>Bande de fréquences</French>
             <Spanish>Rango de frecuencias</Spanish>
             <Turkish>Frekans Aralığı</Turkish>
+            <Portuguese>Alcance de Frequência</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_transmitPower">
             <English>Transmit Power</English>
@@ -218,6 +219,7 @@
             <French>Puissance d'émission</French>
             <Spanish>Potencia de transmisión</Spanish>
             <Turkish>İletim Gücü</Turkish>
+            <Portuguese>Poder de Transmissão</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_effectiveRange">
             <English>Effective Range (Urban)</English>
@@ -226,6 +228,7 @@
             <French>Portée pratique (zone urbaine)</French>
             <Spanish>Rango efectivo (Urbano)</Spanish>
             <Turkish>Gerçek Güç (Şehir İçi)</Turkish>
+            <Portuguese>Alcance Efetivo (Urbano)</Portuguese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_externalSpeaker">
             <English>External Speaker</English>
@@ -234,6 +237,7 @@
             <French>Haut-parleur externe</French>
             <Spanish>Altavoz externo</Spanish>
             <Turkish>Dış Hoparlör</Turkish>
+            <Portuguese>Alto-falante Externo</Portuguese>
         </Key>
     </Package>
 </Project>

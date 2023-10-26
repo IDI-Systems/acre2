@@ -89,6 +89,11 @@
             <Russian>Использовать</Russian>
             <Turkish>Kullan</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_rack_useIntercomRadio">
+            <English>Use via Intercom (Work: %1)</English>
+            <German>Durch Intercom verwenden (Work: %1)</German>
+            <Italian>Usa tramite l'intercom (Work: %1)</Italian>
+        </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
             <German>Funkgerät kann nicht deinstalliert werden. Nicht genug Platz im Inventar.</German>
@@ -141,6 +146,7 @@
             <French>Panneau 2</French>
             <Spanish>Panel 2</Spanish>
             <Turkish>Panel 2</Turkish>
+            <Portuguese>Painel 2</Portuguese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>

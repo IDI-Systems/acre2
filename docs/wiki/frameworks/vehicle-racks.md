@@ -118,6 +118,7 @@ The framework recognises the following entries and wildcards for the configurati
   - `"external"`: rack can be used only externally.
   - `"all"` can be combined with  `"cargo"`, `"turret"`, `"ffv"` and `"turnedout"` and selects all entries of this category. For example `{{"cargo", 1}, {"ffv", "all"}}`.
 - **Racks**:
+  - `"ACRE_VRC64"`: Can mount a `"ACRE_PRC77"`.
   - `"ACRE_VRC103"`: Can mount a `"ACRE_PRC117F"`.
   - `"ACRE_VRC110"`: Can mount a `"ACRE_PRC152"`.
   - `"ACRE_VRC111"`: Can mount a `"ACRE_PRC148"` (20W version).

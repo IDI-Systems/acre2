@@ -10,8 +10,8 @@ FAST RECOMPILING
     #define PREP_RECOMPILE_END      }; call _recomp; ACRE_RECOMPILES pushBack _recomp;
 #else
     #define LINKFUNC(x) FUNC(x)
-    #define PREP_RECOMPILE_START /* disabled */
-    #define PREP_RECOMPILE_END /* disabled */
+    #define PREP_RECOMPILE_START ; /* disabled */
+    #define PREP_RECOMPILE_END ; /* disabled */
 #endif
 
 
@@ -35,7 +35,7 @@ STACK TRACING
 #else
     #define CALLSTACK(function) function /* disabled */
     #define CALLSTACK_NAMED(function, functionName) function /* disabled */
-    #define DUMPSTACK /* disabled */
+    #define DUMPSTACK ; /* disabled */
 #endif
 
 
@@ -56,8 +56,8 @@ PERFORMANCE COUNTERS
 
     #define DUMP_COUNTERS ([__FILE__, __LINE__] call acre_main_fnc_dumpPerformanceCounters)
 #else
-    #define CREATE_COUNTER(x) /* disabled */
-    #define BEGIN_COUNTER(x) /* disabled */
-    #define END_COUNTER(x) /* disabled */
-    #define DUMP_COUNTERS /* disabled */
+    #define CREATE_COUNTER(x) ; /* disabled */
+    #define BEGIN_COUNTER(x) ; /* disabled */
+    #define END_COUNTER(x) ; /* disabled */
+    #define DUMP_COUNTERS ; /* disabled */
 #endif

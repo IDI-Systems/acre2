@@ -2,14 +2,15 @@
 title: Vehicle Racks
 ---
 
-{% include important.html content="Requires ACE3 Interaction Menu!" %}
+{% include important.html content="Requires ACE3 Interaction Menu if no Intercom is configured for a given vehicle!" %}
 
 ACRE2 allows the possibility of using racks in vehicles in order to increase the transmission power of a particular radio. There are different types of vehicle racks:
 
-- **AN/VRC 103**: Allows mounting an *AN/PRC 117F*. Such radio will see its transmitting power increase from 20W to 50W.
-- **AN/VRC 110**: Allows mounting an *AN/PRC 152*. A mounted radio will see its transmitting power increased from 5W to 50W.
-- **AN/VRC 111**: Allows mounting an *AN/PRC 148*. A mounted radio will see its transmitting power increased from 5W to 20W.
-- **SEM 90**: Allows mounting a *SEM 70*. This will increase transmitting power to 4W on low power and 40W on high power for the SEM 70.
+- **AN/VRC 64**: Allows mounting an *AN/PRC 77*, increasing its transmitting power from 3.5W to 50W.
+- **AN/VRC 103**: Allows mounting an *AN/PRC 117F*, increasing its transmitting power from 20W to 50W.
+- **AN/VRC 110**: Allows mounting an *AN/PRC 152*, increasing its transmitting power from 5W to 20W.
+- **AN/VRC 111**: Allows mounting an *AN/PRC 148*, increasing its transmitting power from 5W to 20W.
+- **SEM 90**: Allows mounting a *SEM 70*, maintaining its transmitting power at 4W on low power or increasing it to 40W on high power.
 
 In order to use and mount and unmount (when possible) a vehicle rack, ACE3 Interaction Menu is needed: simply interact with the vehicle when being in a seat with access to vehicle racks and select *use radio*. Multiple players will be able to use the radio simultaneously, except for the case of sending a transmission when the radio is already transmitting! Some vehicle racks, however, can be also accessed from outside the vehicle.
 

@@ -1,0 +1,55 @@
+name = "ACRE2"
+mainprefix = "idi"
+prefix = "acre"
+author = "ACRE2 Team"
+
+[files]
+include = [
+    "*.dll",
+    "mod.cpp",
+    "README.md",
+    "LICENSE",
+    "acre_logo_medium_ca.paa",
+    "meta.cpp",
+    "extras/Wav2B64.exe",
+    "extras/examples/**",
+    "plugin/**",
+]
+
+[version]
+git_hash = 0
+
+[asc]
+enabled = true
+exclude = [
+    "/initsettings.sqf",
+    "/initkeybinds.sqf",
+    "/xeh_prep.sqf",
+]
+
+[hemtt.config]
+preset = "Hemtt"
+
+[hemtt.release]
+folder = "acre2"
+
+[hemtt.launch.default]
+workshop = [
+    "450814997", # CBA_A3's Workshop ID
+    "463939057", # ACE3's Workshop ID
+]
+
+[hemtt.launch.cba]
+workshop = [
+    "450814997", # CBA_A3's Workshop ID
+]
+
+[hemtt.launch.vn]
+workshop = [
+    "450814997", # CBA_A3's Workshop ID
+    "463939057", # ACE3's Workshop ID
+    "2369477168", # ADT Workshop ID
+]
+dlc = [
+    "S.O.G. Prairie Fire",
+]

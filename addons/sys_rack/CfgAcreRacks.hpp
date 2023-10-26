@@ -8,7 +8,7 @@ class CfgAcreComponents {
                             {"Audio In", ACRE_CONNECTOR_U_283},
                             {"Audio Out", ACRE_CONNECTOR_U_283},
                             {"Power In", ACRE_CONNECTOR_U_283},
-                            {"Radio", ACRE_CONNECTOR_CONN_32PIN}
+                            {"Radio", ACRE_CONNECTOR_CONN_14PIN}
                         };
         defaultComponents[] = {
                                 {0, "ACRE_AS1729_38"}

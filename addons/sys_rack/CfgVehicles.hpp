@@ -94,7 +94,7 @@ class CfgVehicles {
                 displayName = CSTRING(dashUpper); // Name is displayed in the interaction menu.
                 shortName = CSTRING(dashUpperShort);
                 componentName = "ACRE_VRC110";
-                allowedPositions[] = {"driver", {"cargo", 0}}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
+                allowedPositions[] = {"driver", {"cargo", 0}, "commander"}; // Who has access "inside" - anyone inside, "external" - provides access upto 10m away, "driver", "gunner", "copilot", "commander"
                 isRadioRemovable = 1;
                 intercom[] = {"intercom_1"};
             };
@@ -102,7 +102,7 @@ class CfgVehicles {
                 displayName = CSTRING(dashLower); // If you have multiple racks a text label helps identify the particular rack.
                 shortName = CSTRING(dashLowerShort);
                 componentName = "ACRE_VRC103";
-                allowedPositions[] = {"driver", {"cargo", 0}};
+                allowedPositions[] = {"driver", {"cargo", 0}, "commander"};
                 mountedRadio = "ACRE_PRC117F";
                 intercom[] = {"intercom_1"};
             };

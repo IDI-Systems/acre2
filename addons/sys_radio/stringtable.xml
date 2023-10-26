@@ -159,5 +159,41 @@
             <Portuguese>Rádio configurado a %1</Portuguese>
             <Turkish>Telsiz Ayarı Şuna Atandı: %1</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_DefaultRadio_DisplayName">
+            <English>Radio Item Replacement</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
+            <English>Default radio inventory items will be replaced with this type of radio.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
+            <English>Change Volume</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_CurrentVolume">
+            <English>Current Volume</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
+            <English>Radio off</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_ChangeChannel">
+            <English>Change Channel</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_CurrentChannel">
+            <English>Current Channel</English>
+            <German>Aktueller Kanal</German>
+            <Italian>Canale Corrente</Italian>
+            <Spanish>Canal actual</Spanish>
+            <French>Canal actuel</French>
+            <Turkish>Şu Anki Kanal</Turkish>
+            <Portuguese>Canal atual</Portuguese>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_CurrentChannelBlock">
+            <English>Current Channel Block</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_handleAttach">
+            <English>Attach handle</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_handleDetach">
+            <English>Detach handle</English>
+        </Key>
     </Package>
 </Project>
