@@ -151,6 +151,11 @@
             <French>Téléphone d'infanterie reçu %1</French>
             <Turkish>Piyade Telefonu Alındı %1</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhoneUnavailable">
+            <English>Infantry Phone used by someone else</English>
+            <German>Hörer wird gerade benutzt</German>
+            <Italian>Telefono fanteria preso da qualcuno</Italian>
+        </Key>
         <Key ID="STR_ACRE_sys_intercom_intercom">
             <English>Intercom</English>
             <Spanish>Intercom</Spanish>

@@ -20,6 +20,7 @@ params ["_target", "_unit", "_position"];
 private _actions = [];
 
 (acre_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
+(_target getVariable [QGVAR(unitInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", "_unitInfantryPhoneNetwork"];
 
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
 
@@ -47,7 +48,7 @@ if (_target isKindOf "CAManBase") then {
 } else {
     if (vehicle acre_player != _target) then {
         // Pointing at a vehicle. Get or return the infantry telephone
-        if (isNull _vehicleInfantryPhone) then {
+        if (isNull _vehicleInfantryPhone && (isNull _unitInfantryPhone)) then {
             {
                 private _action = [
                     format [QGVAR(takeInfantryPhone_%1), _x],
@@ -117,6 +118,18 @@ if (_target isKindOf "CAManBase") then {
                     ] call ace_interact_menu_fnc_createAction;
                     _actions pushBack [_action, [], _target];
                 } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
+            } else {
+                // Generate empty action to show that the infantry phone is being used by someone else
+                private _action = [
+                    QGVAR(infantryPhoneUnavailable),
+                    format [localize LSTRING(infantryPhoneUnavailable)],
+                    "",
+                    {true},
+                    {true},
+                    {},
+                    {}
+                ] call ace_interact_menu_fnc_createAction;
+                _actions pushBack [_action, [], _target];
             };
         };
     } else {
