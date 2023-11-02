@@ -15,7 +15,7 @@
  * Public: No
  */
 
-params ["_target"];
+params ["_target", "_unit", "_position"];
 
 private _actions = [];
 
@@ -47,17 +47,6 @@ if (_target isKindOf "CAManBase") then {
 } else {
     if (vehicle acre_player != _target) then {
         // Pointing at a vehicle. Get or return the infantry telephone
-
-        // Get Infantry phone position (copied fnc_infantryPhoneAction.sqf, probably a better way to pass position info)
-        private _positionConfig = configFile >> "CfgVehicles" >> (typeOf _target) >> "acre_infantryPhonePosition";
-        private _position = [0, 0, 0]; // Default to main action point
-        if (isText _positionConfig) then {
-            _position = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core intercomPFH checks
-        };
-        if (isArray _positionConfig) then {
-            _position = getArray _positionConfig;
-        };
-
         if (isNull _vehicleInfantryPhone) then {
             {
                 private _action = [
