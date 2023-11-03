@@ -20,7 +20,7 @@
  * Public: No
  */
 
-params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]]];
+params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]], ["_position", objNull]];
 
 private _intercomName = ((_vehicle getVariable [QGVAR(intercomNames), []]) select _intercomNetwork) select 1;
 private _intercomText = format ["( %1 )", _intercomName];
@@ -31,6 +31,9 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
 
+        // Destroy connector rope
+        [false] call EFUNC(sys_core,handleConnectorRope);
+
         ACRE_PLAYER_INTERCOM = [];
         [[ICON_RADIO_CALL], [format [localize LSTRING(infantryPhoneDisconnected), _intercomText]], true] call CBA_fnc_notify;
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
@@ -40,6 +43,9 @@ switch (_action) do {
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
 
+        // Create connector rope
+        [true, 0, _vehicle, _unit, _position] call EFUNC(sys_core,handleConnectorRope);
+
         [[ICON_RADIO_CALL], [format [localize LSTRING(infantryPhoneConnected), _intercomText]], true] call CBA_fnc_notify;
         GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
@@ -48,8 +54,11 @@ switch (_action) do {
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
 
+        // Destroy connector rope
+        [false] call EFUNC(sys_core,handleConnectorRope);
+
         private _message = format [localize LSTRING(infantryPhoneReceived), _intercomText];
-        [QGVAR(giveInfantryPhone), [_vehicle, _unit, 1, _message, _intercomNetwork], _unit] call CBA_fnc_targetEvent;
+        [QGVAR(giveInfantryPhone), [_vehicle, _unit, 1, _message, _intercomNetwork, _position], _unit] call CBA_fnc_targetEvent;
     };
     case 3: {
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];

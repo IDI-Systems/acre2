@@ -45,8 +45,6 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
         if (_playerPosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || {vehicle _player == _vehicle} || {!alive _player} || {captive _player}) then {
             [_vehicle, _player, 0, _i] call FUNC(updateInfantryPhoneStatus);
             _intercomUnits = [];
-            // Destroy connector rope
-            [false] call EFUNC(sys_core,handleConnectorRope);
         } else {
             // Infantry phones are receive and transmit positions
             _connectionStatus = INTERCOM_RX_AND_TX;

@@ -37,7 +37,7 @@ if (_target isKindOf "CAManBase") then {
                 _params params ["_intercomNetwork"];
 
                 //USES_VARIABLES ["_target", "_player"];
-                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]] select 0, _target, 2, _intercomNetwork, _player] call FUNC(updateInfantryPhoneStatus)
+                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]] select 0, _target, 2, _intercomNetwork, _player, _position] call FUNC(updateInfantryPhoneStatus)
             },
             {true},
             {},
@@ -57,10 +57,7 @@ if (_target isKindOf "CAManBase") then {
                     {
                         params ["_target", "_player", "_params"];
                         _params params ["_intercomNetwork", "_position"];
-                        [_target, _player, 1, _intercomNetwork] call FUNC(updateInfantryPhoneStatus);
-
-                        // Create connector rope
-                        [true, 0, _target, _player, _position] call EFUNC(sys_core,handleConnectorRope);
+                        [_target, _player, 1, _intercomNetwork, objNull, _position] call FUNC(updateInfantryPhoneStatus);
                     },
                     {
                         params ["_target", "_player", "_params"];
@@ -84,9 +81,6 @@ if (_target isKindOf "CAManBase") then {
                         params ["_target", "_player", ""];
                         //USES_VARIABLES ["_target", "_player"];
                         [_target, _player, 0, INTERCOM_DISCONNECTED] call FUNC(updateInfantryPhoneStatus);
-
-                        // Destroy connector rope
-                        [false] call EFUNC(sys_core,handleConnectorRope);
                     },
                     {true},
                     {},
