@@ -34,7 +34,7 @@ if (_state) then {
             GVAR(connectorRope) = ropeCreate [_fromObject, _fromPoint, 3, nil, nil, QGVAR(connectorWire)];
 
             // Create helper object on player pelvis
-            GVAR(connectorRopeHelpers) set [0, "Land_Can_V2_F" createVehicle position _toObject];
+            GVAR(connectorRopeHelpers) set [0, "PaperCar" createVehicle position _toObject];
             [GVAR(connectorRopeHelpers) select 0, [0, 0, 0]] ropeAttachTo GVAR(connectorRope);
             (GVAR(connectorRopeHelpers) select 0) attachTo [_toObject, [-0.1, 0.1, 0.25], "Pelvis"];
             hideObjectGlobal (GVAR(connectorRopeHelpers) select 0);
@@ -53,7 +53,7 @@ if (_state) then {
             hideObject (GVAR(connectorRopeHelpers) select 0);
 
             // Create helper object on player pelvis
-            GVAR(connectorRopeHelpers) set [1, "Land_Can_V2_F" createVehicle position player];
+            GVAR(connectorRopeHelpers) set [1, "PaperCar" createVehicle position player];
             (GVAR(connectorRopeHelpers) select 1) attachTo [player, [-0.1, 0.1, 0.15], "Pelvis"];
             hideObject (GVAR(connectorRopeHelpers) select 1);
 
@@ -69,7 +69,7 @@ if (_state) then {
             hideObject (GVAR(connectorRopeHelpers) select 0);
 
             // Create helper object on player pelvis
-            GVAR(connectorRopeHelpers) set [1, "Land_Can_V2_F" createVehicle position player];
+            GVAR(connectorRopeHelpers) set [1, "PaperCar" createVehicle position player];
             (GVAR(connectorRopeHelpers) select 1) attachTo [player, [-0.1, 0.1, 0.15], "Pelvis"];
             hideObject (GVAR(connectorRopeHelpers) select 1);
 
