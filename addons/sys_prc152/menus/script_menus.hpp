@@ -28,7 +28,7 @@
 #define MENU_TYPE(x) (x select 3)
 #define MENU_SUBMENUS(x) (x select 4)
 
-#define MENU_SUBMENUS_ITEM(menu, index) (MENU_SUBMENUS(menu) select index)
+#define MENU_SUBMENUS_ITEM(menu,index) (MENU_SUBMENUS(menu) select index)
 
 #define MENU_ACTION_EVENTS(menu) (menu select 5)
 #define MENU_ACTION_ONENTRY(menu) ((menu select 5) select 0)
@@ -44,9 +44,9 @@
 
 #define ADD_MENU(menuObj) HASH_SET(GVAR(Menus),MENU_ID(menuObj),menuObj)
 
-#define MENU_SET_PARENT_ID(submenu, menu) submenu pushBack MENU_ID(menu)
+#define MENU_SET_PARENT_ID(submenu,menu) submenu pushBack MENU_ID(menu)
 #define MENU_PARENT_ID(menu) (menu select ((count menu)-1))
-#define MENU_PARENT(menu) (HASH_GET(GVAR(Menus), MENU_PARENT_ID(menu)))
+#define MENU_PARENT(menu) (HASH_GET(GVAR(Menus),MENU_PARENT_ID(menu)))
 
 #define ALIGN_LEFT 1
 #define ALIGN_RIGHT 2

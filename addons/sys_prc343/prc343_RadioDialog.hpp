@@ -1,9 +1,9 @@
 #define CODE_SPACING    0.0245
 
 #define CONTROL_SetRelativePos(xpos,ypos) x = H_OFFSET + (xpos * 0.001); y = H_OFFSET + (ypos * 0.001);
-#define CONTROL_SetDimensions(width, height) w = width * 0.001; h = height * 0.001;
+#define CONTROL_SetDimensions(width,height) w = width * 0.001; h = height * 0.001;
 
-#define BEGIN_CONTROL(name, parent, idval) class name: parent { idc = idval;
+#define BEGIN_CONTROL(name,parent,idval) class name: parent { idc = idval;
 #define END_CONTROL        };
 
 #define NEW_SCALE 0.85
@@ -38,7 +38,7 @@ class PRC343_RadioDialog {
         text = QPATHTOF(Data\static\prc343_ui_backplate.paa);
     };
     class controls {
-        BEGIN_CONTROL(ChannelKnob, Prc343_RscPicture, 106)
+        BEGIN_CONTROL(ChannelKnob,Prc343_RscPicture,106)
             x = QUOTE(((0.5-(NEW_SCALE*(safeZoneH)/2))));
             y = QUOTE(((0.5-(NEW_SCALE*(safeZoneH)/2))));
             w = QUOTE(NEW_SCALE*safeZoneH);
@@ -46,7 +46,7 @@ class PRC343_RadioDialog {
             text = QPATHTOF(Data\knobs\channel\prc343_ui_pre_1.paa);
         END_CONTROL
 
-        BEGIN_CONTROL(ChannelKnobButton, Prc343_RscButton, 201)
+        BEGIN_CONTROL(ChannelKnobButton,Prc343_RscButton,201)
             x = QUOTE((((((0.416+0.085)-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = QUOTE(((((0.28-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = QUOTE(SCALE*0.072*SafeZoneH);
@@ -57,7 +57,7 @@ class PRC343_RadioDialog {
             toolTip = ECSTRING(sys_radio,ui_ChangeChannel);
         END_CONTROL
 
-        BEGIN_CONTROL(VolumeKnob, Prc343_RscPicture, 107)
+        BEGIN_CONTROL(VolumeKnob,Prc343_RscPicture,107)
             x = QUOTE(((0.5-(NEW_SCALE*(safeZoneH)/2))));
             y = QUOTE(((0.5-(NEW_SCALE*(safeZoneH)/2))));
             w = QUOTE(NEW_SCALE*safeZoneH);
@@ -65,7 +65,7 @@ class PRC343_RadioDialog {
             text = QPATHTOF(Data\knobs\volume\prc343_ui_vol_5.paa);
         END_CONTROL
 
-        BEGIN_CONTROL(VolumeKnobButton, Prc343_RscButton, 202)
+        BEGIN_CONTROL(VolumeKnobButton,Prc343_RscButton,202)
             x = QUOTE(((((0.416-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = QUOTE(((((0.28-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = QUOTE(SCALE*0.072*SafeZoneH);
@@ -76,7 +76,7 @@ class PRC343_RadioDialog {
             toolTip = ECSTRING(sys_radio,ui_ChangeVolume);
         END_CONTROL
 
-        BEGIN_CONTROL(PTTHandleButton, Prc343_RscButton, 203)
+        BEGIN_CONTROL(PTTHandleButton,Prc343_RscButton,203)
             x = QUOTE(((((0.255-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = QUOTE(((((0.377-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = QUOTE(SCALE*0.07*SafeZoneH);
@@ -87,7 +87,7 @@ class PRC343_RadioDialog {
             toolTip = QUOTE(Detach Handle);
         END_CONTROL
 
-        BEGIN_CONTROL(ChannelBlockButton, Prc343_RscButton, 204)
+        BEGIN_CONTROL(ChannelBlockButton,Prc343_RscButton,204)
             x = QUOTE(((((0.515-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = QUOTE(((((0.6-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = QUOTE(SCALE*0.03*SafeZoneH);
