@@ -20,9 +20,9 @@
                             y = QUOTE(((((BUTTON_Y - 0.5)*SCALE)+0.5) * safeZoneH) + (((BUTTON_OFFY*safeZoneH* SCALE) + (BUTTON_H*safeZoneH* SCALE)) * BY) + safeZoneY)
 
 #define CONTROL_SetRelativePos(xpos,ypos) x = QUOTE(H_OFFSET + (xpos * 0.001)); y = QUOTE(H_OFFSET + (ypos * 0.001));
-#define CONTROL_SetDimensions(width,height) w = QUOTE(width * 0.001); h = QUOTE(height * 0.001);
+#define CONTROL_SetDimensions(width, height) w = QUOTE(width * 0.001); h = QUOTE(height * 0.001);
 
-#define BEGIN_CONTROL(name,parent,idval) class name: parent { idc = idval;
+#define BEGIN_CONTROL(name, parent, idval) class name: parent { idc = idval;
 #define END_CONTROL        };
 
 #define ROW_SMALL_X            0.436

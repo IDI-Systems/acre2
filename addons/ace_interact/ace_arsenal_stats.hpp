@@ -2,7 +2,7 @@
     class statBase;
     class GVAR(frequencyRange): statBase {
         scope = 2;
-        stats[] = {QEGVAR(arsenalStats,frequencyMin),QEGVAR(arsenalStats,frequencyMax)};
+        stats[] = {QEGVAR(arsenalStats,frequencyMin), QEGVAR(arsenalStats,frequencyMax)};
         displayName= CSTRING(arsenalStats_frequencyRange);
         showText = 1;
         textStatement = QUOTE(call FUNC(arsenalStats_frequencyRange));
