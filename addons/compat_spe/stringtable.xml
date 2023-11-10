@@ -89,7 +89,7 @@
         <Key ID="STR_ACRE_compat_spe_RadioOperator">
             <English>Radio Operator</English>
             <German>Funker</German>
-            <Italian>operatore radio</Italian>
+            <Italian>Operatore Radio</Italian>
         </Key>
     </Package>
 </Project>
