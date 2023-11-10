@@ -167,7 +167,7 @@
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
             <English>Default radio inventory items will be replaced with this type of radio.</English>
             <German>Standard Funkinventargegenstände werden durch diesen Funkgerätetyp ersetzt.</German>
-            <Italian>Gli elementi dell'inventario radio predefiniti verranno sostituiti con questo tipo di radio.</Italian>
+            <Italian>Le radio vanilla nell'inventario verranno sostituite con questo tipo di radio.</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
