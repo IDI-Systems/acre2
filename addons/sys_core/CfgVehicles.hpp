@@ -15,4 +15,11 @@ class CfgVehicles {
         segmentType = QGVAR(connectorWireSegment);
         model = QPATHTOF(data\wire.p3d);
     };
+
+    class Car;
+    class GVAR(connectorHelper): Car {
+        displayName = "Connector Rope Helper";
+        model = "core\default\default.p3d";
+        scope = 2;
+    };
 };
