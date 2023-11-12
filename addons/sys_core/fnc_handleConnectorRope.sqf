@@ -27,9 +27,6 @@ if (!EGVAR(sys_gestures,showConnectorRopes)) exitWith {};
 if (_state) then {
     switch (_type) do {
         case 0: { // Connect rope to Infantry Phone
-            // Adjust Rope start position to not interfere with interaction
-            //_fromPoint set [2, (_fromPoint select 2) - 0.3]; // Lower Z coordinate by 30cm ---------------------- CHECK IF NEEDED
-
             // Create Rope
             GVAR(connectorRope) = ropeCreate [_fromObject, _fromPoint, 3, nil, nil, QGVAR(connectorWire)];
 
@@ -38,14 +35,8 @@ if (_state) then {
             [GVAR(connectorRopeHelpers) select 0, [0, 0, 0]] ropeAttachTo GVAR(connectorRope);
             (GVAR(connectorRopeHelpers) select 0) attachTo [_toObject, [-0.1, 0.1, 0.25], "Pelvis"];
             hideObjectGlobal (GVAR(connectorRopeHelpers) select 0);
-            systemChat "created rope";
         };
         case 1: { // Connect rope to Ground Spike Antenna
-            // Adjust Rope start position to not interfere with interaction
-            /*if (typeOf _fromObject == "vhf30108spike") then {
-                _fromPoint set [1, (_fromPoint select 1) - 0.2]; // Shift Y coordinate by 20cm ---------------------- CHECK IF NEEDED
-            };*/
-
             // Create helper object on GSA
             GVAR(connectorRopeHelpers) set [0, "PaperCar" createVehicle position _fromObject];
             (GVAR(connectorRopeHelpers) select 0) disableCollisionWith _fromObject;
@@ -60,7 +51,6 @@ if (_state) then {
             // Create Rope between helper objects
             GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 5, nil, nil, QGVAR(connectorWire)];
             [(GVAR(connectorRopeHelpers) select 1), [0, 0, 0]] ropeAttachTo GVAR(connectorRope);
-            systemChat "created rope";
         };
         case 2: { // Connect rope to shared backpack radio owner
             // Create helper object on radio owner
@@ -76,7 +66,6 @@ if (_state) then {
             // Create Rope between helper objects
             GVAR(connectorRope) = ropeCreate [GVAR(connectorRopeHelpers) select 0, _fromPoint, 3, nil, nil, QGVAR(connectorWire)];
             [GVAR(connectorRopeHelpers) select 1, [0, 0, 0]] ropeAttachTo GVAR(connectorRope);
-            systemChat "created rope";
         };
     };
 } else {
@@ -85,5 +74,4 @@ if (_state) then {
     GVAR(connectorRope) = objNull;
     { deleteVehicle _x } forEach GVAR(connectorRopeHelpers);
     GVAR(connectorRopeHelpers) = [objNull, objNull];
-    systemChat "deleted rope";
 };
