@@ -191,6 +191,9 @@
             <French>Volume actuel</French>
             <Chinesesimp>当前音量</Chinesesimp>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_RadioMode">
+            <English>Radio Mode Selector</English>
+        </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
             <German>Funkgerät aus</German>

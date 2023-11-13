@@ -20,7 +20,7 @@
  * Public: No
  */
 
-TRACE_1("INITIALIZING RADIO 343", _this);
+TRACE_1("INITIALIZING RADIO WS38", _this);
 
 params ["_radioId", "_event", "_eventData", "_radioData", ""];
 
@@ -43,6 +43,7 @@ for "_i" from 0 to (count _channels)-1 do {
 };
 
 HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume));
-HASH_SET(_radioData,"radioOn",1);
+HASH_SET(_radioData,"radioOn",0);
+HASH_SET(_radioData,"mode_knob",0);
 HASH_SET(_radioData,"currentView",1);
 HASH_SET(_radioData,"currentChannel",0);
