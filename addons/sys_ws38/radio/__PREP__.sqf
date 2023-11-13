@@ -15,6 +15,7 @@ PREP_MODULE(radio,getCurrentChannel);
 PREP_MODULE(radio,getCurrentChannelInternal);
 
 PREP_MODULE(radio,setCurrentChannel);
+PREP_MODULE(radio,getDefaultState);
 PREP_MODULE(radio,getStates);
 PREP_MODULE(radio,getState);
 PREP_MODULE(radio,setState);

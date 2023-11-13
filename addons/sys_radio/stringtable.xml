@@ -171,6 +171,9 @@
         <Key ID="STR_ACRE_sys_radio_ui_CurrentVolume">
             <English>Current Volume</English>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_RadioMode">
+            <English>Radio Mode Selector</English>
+        </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
         </Key>
