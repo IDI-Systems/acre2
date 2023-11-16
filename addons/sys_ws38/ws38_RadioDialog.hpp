@@ -33,7 +33,7 @@ class WS38_RadioDialog {
         text = QPATHTOF(Data\static\ws38_ui_backplate.paa);
     };
     class controls {
-        BEGIN_CONTROL(ChannelKnob,Ws38_RscPicture,106)
+        BEGIN_CONTROL(ModeKnob,Ws38_RscPicture,106)
             x = "safezoneX";
             y = QUOTE((0.5-((1*safezoneW)/2)));
             w = QUOTE(1*safezoneW);
@@ -41,10 +41,10 @@ class WS38_RadioDialog {
             text = QPATHTOF(Data\knobs\mode\ws38_mode_0.paa);
         END_CONTROL
 
-        BEGIN_CONTROL(ChannelKnobButton,Ws38_RscButton,-1)
-            x = QUOTE((0.64 * safeZoneW) + safeZoneX);
+        BEGIN_CONTROL(ModeKnobButton,Ws38_RscButton,-1)
+            x = QUOTE((0.605 * safeZoneW) + safeZoneX);
             y = QUOTE((0.305 * safeZoneW) + safeZoneX);
-            w = QUOTE(0.15*SafeZoneW);
+            w = QUOTE(0.1*SafeZoneW);
             h = QUOTE(0.19*SafeZoneW);
             colorBackground[] = {1, 0, 0, 0};
             text = "";
