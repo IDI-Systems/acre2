@@ -21,10 +21,8 @@
 
 params ["_radioId", "",  "", "", ""];
 
-private _currentAbsChannel = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
-private _currentBlock = floor (_currentAbsChannel / 16);
-private _currentChannel = _currentAbsChannel - _currentBlock*16;
+private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 
-private _description = format ["Block %1 - Channel %2", _currentBlock + 1, _currentChannel + 1];
+private _description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];
 
 _description

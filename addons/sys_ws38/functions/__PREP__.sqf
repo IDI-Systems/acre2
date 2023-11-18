@@ -4,7 +4,7 @@
 PREP_MODULE(functions,preset_information);
 
 PREP_MODULE(functions,onChannelKnobPress);
-PREP_MODULE(functions,onModeKnobPress);
+PREP_MODULE(functions,onFunctionKnobPress);
 PREP_MODULE(functions,onPTTHandlePress);
 PREP_MODULE(functions,onVolumeKnobPress);
 PREP_MODULE(functions,zoomChannelBlockSelector);

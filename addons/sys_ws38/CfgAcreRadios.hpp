@@ -40,7 +40,7 @@ class CfgAcreComponents {
                 getSpatial = QFUNC(getSpatial);
 
                 setChannelData = QFUNC(setChannelData);            // [channelNumber, [channelData] ]
-                getChannelData = QFUNC(getChannelData);            // [channelNumber] = channelData
+                getChannelData = QFUNC(getCurrentChannelData);            // [channelNumber] = channelData
                 getCurrentChannelData = QFUNC(getCurrentChannelData);        // channelData (of current channel)
 
 

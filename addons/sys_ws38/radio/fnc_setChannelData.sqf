@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets the channel data. On a AN/PRC 343 this cannot be changed.
+ * Sets the channel data. On a Wireless Set No. 38 this cannot be changed.
  *
  * Arguments:
  * 0: Radio ID <STRING> (Unused)

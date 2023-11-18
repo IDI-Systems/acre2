@@ -24,12 +24,12 @@ if (_key == 0) then {
     _dir = 1;
 };
 
-private _currentMode = GET_STATE_DEF("mode_knob",0);
+private _currentMode = GET_STATE_DEF("function",0);
 private _newMode = ((_currentMode + _dir) max 0) min 2;
 TRACE_2("Changing mode",_currentMode, _newMode);
 
 if(_newMode != _currentMode) then {
-    SET_STATE("mode_knob", _newMode);
+    SET_STATE("function", _newMode);
 
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
     if((_newMode == 0 || _newMode == 1) && _currentMode != 2) then {

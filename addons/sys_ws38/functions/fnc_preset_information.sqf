@@ -15,75 +15,50 @@
  * Public: No
  */
 
-private _presetFrequencies = [];
-for "_i" from 0 to 255 do {
-    private _basefrequency = 2400;
-    private _frequencymodifier = _i*0.01;
-    private _frequency = _basefrequency + _frequencymodifier;
-    PUSH(_presetFrequencies,_frequency);
-};
+// WirelessSet No. 38
+// Frequency Range 7.4-9.0 MHz
 
-// channels information
+// channel information
 ///Default
 private _presetData = HASH_CREATE;
 private _channels = HASHLIST_CREATELIST(["frequencyTX"]);
-for "_i" from 0 to 255 do {
-    private _frequency = _presetFrequencies select _i;
-    private _channel = HASHLIST_CREATEHASH(_channels);
 
-    HASH_SET(_channel,"frequencyTX",_frequency);
-    HASH_SET(_channel,"frequencyRX",_frequency);
-    //HASH_SET(_channel,"channelNumber",_i);
+private _channel = HASHLIST_CREATEHASH(_channels);
+HASH_SET(_channel,"frequencyTX",7.40);
+HASHLIST_PUSH(_channels,_channel);
 
-    HASHLIST_PUSH(_channels,_channel);
-};
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_WS38","default",_presetData] call EFUNC(sys_data,registerRadioPreset);
 
 ///Default2
 _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
-for "_i" from 0 to 79 do {
-    private _frequency = _presetFrequencies select _i;
-    private _channel = HASHLIST_CREATEHASH(_channels);
 
-    HASH_SET(_channel,"frequencyTX",_frequency);
-    HASH_SET(_channel,"frequencyRX",_frequency);
-    //HASH_SET(_channel,"channelNumber",_i);
+_channel = HASHLIST_CREATEHASH(_channels);
+HASH_SET(_channel,"frequencyTX",7.80);
+HASHLIST_PUSH(_channels,_channel);
 
-    HASHLIST_PUSH(_channels,_channel);
-};
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_WS38","default2",_presetData] call EFUNC(sys_data,registerRadioPreset);
 
 ///Default3
 _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
-for "_i" from 80 to 159 do {
-    private _frequency = _presetFrequencies select _i;
-    private _channel = HASHLIST_CREATEHASH(_channels);
 
-    HASH_SET(_channel,"frequencyTX",_frequency);
-    HASH_SET(_channel,"frequencyRX",_frequency);
-    //HASH_SET(_channel,"channelNumber",_i);
+_channel = HASHLIST_CREATEHASH(_channels);
+HASH_SET(_channel,"frequencyTX",8.20);
+HASHLIST_PUSH(_channels,_channel);
 
-    HASHLIST_PUSH(_channels,_channel);
-};
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_WS38","default3",_presetData] call EFUNC(sys_data,registerRadioPreset);
 
 ///Default4
 _presetData = HASH_CREATE;
 _channels = HASHLIST_CREATELIST(["frequencyTX"]);
-for "_i" from 160 to 239 do {
-    private _frequency = _presetFrequencies select _i;
-    private _channel = HASHLIST_CREATEHASH(_channels);
 
-    HASH_SET(_channel,"frequencyTX",_frequency);
-    HASH_SET(_channel,"frequencyRX",_frequency);
-    //HASH_SET(_channel,"channelNumber",_i);
+_channel = HASHLIST_CREATEHASH(_channels);
+HASH_SET(_channel,"frequencyTX",8.60);
+HASHLIST_PUSH(_channels,_channel);
 
-    HASHLIST_PUSH(_channels,_channel);
-};
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_WS38","default4",_presetData] call EFUNC(sys_data,registerRadioPreset);

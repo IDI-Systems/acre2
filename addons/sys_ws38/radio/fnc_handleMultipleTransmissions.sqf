@@ -1,8 +1,21 @@
 #include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles multiple transmissions in the "singleChannelPRR" mode. In this mode, the following parameters
- * are passed: transmitting frequency (frequencyTX), receiving frequency (frequencyRX), power and mode.
+ * Handles multiple transmissions in the "singleChannel" mode. In this mode, the following parameters
+ * are used:
+ *
+ *  - frequencyTX
+ *  - frequencyRX
+ *  - power
+ *  - mode
+ *  - CTCSSTx
+ *  - CTCSSRx
+ *  - modulation
+ *  - encryption
+ *  - TEK
+ *  - trafficRate
+ *  - syncLength
+ *
  * Depending on this parameters, the function determines if a transmission is usable by the radio or if it
  * is ignored.
  *
@@ -17,14 +30,14 @@
  * List of usable transmissions <ARRAY>
  *
  * Example:
- * ["ACRE_WS38_ID_1", "handleMultipleTransmissions", ["ACRE_WS38_ID_2", "ACRE_WS38_ID_3"], [], false] call acre_sys_ws38_fnc_handleMultipleTransmissions
+ * ["ACRE_WS38_ID_1", "handleMultipleTransmissions", ["ACRE_WS38_ID_2", "ACRE_WS38_ID_3"], [], false] call acre_sys_WS38_fnc_handleMultipleTransmissions
  *
  * Public: No
  */
 
 params ["_radioId", "", "_radios", "", ""];
 
-if (!([_radioId] call EFUNC(sys_radio,canUnitReceive))) exitWith { [] };
+if !([_radioId] call EFUNC(sys_radio,canUnitReceive)) exitWith { [] };
 
 if (SCRATCH_GET_DEF(_radioId, "PTTDown", false) && !EGVAR(sys_core,fullDuplex)) exitWith { [] };
 private _beeped = SCRATCH_GET(_radioId, "hasBeeped");
@@ -62,11 +75,11 @@ if (diag_tickTime - _lastSortTime > 3) then {
         if (_radioCache isNotEqualTo []) then {
             // Compare BOTH arrays.
             {
-                if (!(_x in _radioCache)) exitWith { _transmissionsChanged = true; };
+                if !(_x in _radioCache) exitWith { _transmissionsChanged = true; };
             } forEach _radios;
             if (!_transmissionsChanged) then {
                 {
-                    if (!(_x in _radios)) exitWith { _transmissionsChanged = true; };
+                    if !(_x in _radios) exitWith { _transmissionsChanged = true; };
                 } forEach _radioCache;
             };
         } else {
@@ -106,27 +119,70 @@ if (_transmissionsChanged) then {
         SCRATCH_SET(_radioId, "currentTransmissions", _currentTransmissions);
     };
 
-
     private _radioRxData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-
-
-    //diag_log text format["%1 NON-CACHED", diag_tickTime];
-    if (HASH_GET(_radioRxData, "mode") == "singleChannelPRR") then {
+    // diag_log text format["%1 NON-CACHED", diag_tickTime];
+    if (HASH_GET(_radioRxData, "mode") == "singleChannel") then {
         private _hearableTransmissions = [];
         private _junkTransmissions = [];
+        private _digital = false;
         {
-            PUSH(_hearableTransmissions, _x);
+            private _txId = _x select 1;
+            private _radioTxData = [_txId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+            if (HASH_GET(_radioRxData, "modulation") == HASH_GET(_radioTxData, "modulation")) then {
+                //diag_log text "MOD OK";
+                if (HASH_GET(_radioRxData, "encryption") == 1 && {HASH_GET(_radioTxData, "encryption") == 1}) then {
+                    //diag_log text "ENCRYPTED";
+                    if (HASH_GET(_radioRxData, "TEK") == HASH_GET(_radioTxData, "TEK") &&
+                        {HASH_GET(_radioRxData, "trafficRate") == HASH_GET(_radioTxData, "trafficRate")}
+                    ) then {
+                        //diag_log text "DIGITAL CRYPTO!";
+                        PUSH(_hearableTransmissions, _x);
+                        _digital = true;
+                    } else {
+                        PUSH(_junkTransmissions, _x);
+                    };
+                } else {
+                    if (HASH_GET(_radioRxData, "encryption") == 0 && {HASH_GET(_radioTxData, "encryption") == 0}) then {
+                        //diag_log text "PT!";
+                        if (HASH_GET(_radioRxData, "modulation") == "FM" || {HASH_GET(_radioRxData, "modulation") == "NB"}) then {
+                            //diag_log text "ITS FM BABY!";
+                            if (HASH_GET(_radioRxData, "CTCSSRx") == HASH_GET(_radioTxData, "CTCSSTx") || {HASH_GET(_radioRxData, "CTCSSRx") == 0}) then {
+                                //diag_log text "THE TONES MATCH!";
+                                PUSH(_hearableTransmissions, _x);
+                            } else {
+                                //diag_log text format["NO TONE BONE: %1 == %2", HASH_GET(_radioRxData, "CTCSSRx"), HASH_GET(_radioTxData, "CTCSSTx")];
+                                PUSH(_junkTransmissions, _x);
+                            };
+                        } else {
+                            if (HASH_GET(_radioRxData, "modulation") == "AM") then {
+                                //diag_log text "AM TALK JUNKIE!";
+                                PUSH(_hearableTransmissions, _x);
+                            } else {
+                                PUSH(_junkTransmissions, _x);
+                            };
+                        };
+                    } else {
+                        PUSH(_junkTransmissions, _x);
+                    };
+                };
+            } else {
+                PUSH(_junkTransmissions, _x);
+            };
         } forEach _sortedRadios;
 
+        //diag_log text format["sorted: %1", _sortedRadios];
+        //diag_log text format["junk: %1", _junkTransmissions];
+        //diag_log text format["ok: %1", _hearableTransmissions];
         if (EGVAR(sys_core,interference)) then {
             if (_hearableTransmissions isNotEqualTo []) then {
-                _junkTransmissions append _hearableTransmissions;
+                _junkTransmissions = _hearableTransmissions + _junkTransmissions;
                 _hearableTransmissions params ["_bestSignal"];
                 (_bestSignal select 2) params ["_highestSignal", "_dbm"];
                 private _newSignal = _highestSignal;
-                for "_i" from 1 to (count _junkTransmissions)-1 do {
+                //diag_log text format["new sig start: %1", _newSignal];
+                for "_i" from 1 to (count _junkTransmissions) - 1 do {
                     private _data = _junkTransmissions select _i;
-                    _data params ["", "", "_signalData"];
+                    _data params ["","_txId","_signalData"];
                     _signalData params ["_signal"];
                     if (_newSignal <= 0) exitWith {
                         _newSignal = 0;
@@ -136,36 +192,42 @@ if (_transmissionsChanged) then {
                         _newSignal = 0;
                     };
                 };
+                //diag_log text format["new sig end: %1", _newSignal];
                 if (_newSignal > 0) then {
                     _okRadios = [_bestSignal];
-                    _bestSignal set [2, [_newSignal, _dbm + (_dbm * (1 - _newSignal / _highestSignal))]];
+                    _bestSignal set [2, [_newSignal, _dbm + _dbm * (1 - (_newSignal / _highestSignal))]];
                 } else {
                     _okRadios = [];
                 };
             };
-        }  else {
+        } else {
             _okRadios = _hearableTransmissions;
         };
     };
 
+
     if (_okRadios isNotEqualTo []) then {
         private _signalData = (_okRadios select 0) select 2;
-        _signalData params ["", "_signalDbM"];  // Parameters are signalPercentage and signalDbm
-        private _squelch = -100;
-        if ((_signalDbM < _squelch) || {!EGVAR(sys_core,interference)}) then {
+        _signalData params ["_signalPercent", "_signalDbM"];
+        //_channelNum = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
+        //_channels = [_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent);
+        //_channel = HASHLIST_SELECT(_channels, _channelNum);
+        private _squelch = [_radioId, "getState", "squelch"] call EFUNC(sys_data,dataEvent);
+        _squelch = -116 + _squelch;
+        // diag_log text format["squelch: %1 signal: %2", _squelch, _signalDbM];
+        if (_signalDbM < _squelch || {!EGVAR(sys_core,interference)}) then {
             if (EGVAR(sys_core,interference)) then {
                 _okRadios = [];
             };
             private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
-            if (!_pttDown) then {
-                if (!isNil "_beeped" && {_beeped}) then {
-                    private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-                    [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
-                };
+            if (!_pttDown && {!isNil "_beeped"} && {_beeped}) then {
+                private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
+                [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
             };
             SCRATCH_SET(_radioId, "hasBeeped", false);
         } else {
             if (isNil "_beeped" || {!_beeped}) then {
+                //diag_log "BEEP!";
                 SCRATCH_SET(_radioId, "hasBeeped", true);
                 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
                 [_radioId, "Acre_GenericClickOn", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
@@ -173,18 +235,15 @@ if (_transmissionsChanged) then {
         };
     } else {
         private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
-        if (!_pttDown) then {
-            if (!isNil "_beeped" && {_beeped}) then {
-                private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-                [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
-            };
+        if (!_pttDown && {!isNil "_beeped"} && {_beeped}) then {
+            private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
+            [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
         };
         SCRATCH_SET(_radioId, "hasBeeped", false);
     };
 
     // Cache it
     SCRATCH_SET(_radioId, "currentTransmissionRadioCache", _okRadios);
-
     //Force a recalculation if data is not ready
     if (_areAllRadiosInitialized) then {
         SCRATCH_SET(_radioId, "lastSortTime", diag_tickTime);
@@ -195,4 +254,6 @@ if (_transmissionsChanged) then {
     _okRadios = _radioCache;
 };
 
+
+// diag_log text format["m: %1", _mend-_mstart];
 _okRadios
