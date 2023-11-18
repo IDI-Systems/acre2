@@ -24,4 +24,9 @@
 
 #define MAIN_DISPLAY (findDisplay 31337)
 
+#define MIN_FREQUENCY 7.4
+#define MAX_FREQUENCY 9.0
+#define INDEX_CONVERSION MIN_FREQUENCY * 10
+#define MAX_DIAL_INDICES MAX_FREQUENCY * 10 - MIN_FREQUENCY * 10
+
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"

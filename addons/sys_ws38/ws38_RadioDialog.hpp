@@ -48,7 +48,26 @@ class WS38_RadioDialog {
             h = QUOTE(0.19*SafeZoneW);
             colorBackground[] = {1, 0, 0, 0};
             text = "";
-            onMouseButtonUp = QUOTE(_this call acre_sys_ws38_fnc_onModeKnobPress);
+            onMouseButtonUp = QUOTE(_this call acre_sys_ws38_fnc_onFunctionKnobPress);
+            toolTip = ECSTRING(sys_radio,ui_RadioMode);
+        END_CONTROL
+
+        BEGIN_CONTROL(FrequencyDial,Ws38_RscPicture,107)
+            x = "safezoneX";
+            y = QUOTE((0.5-((1*safezoneW)/2)));
+            w = QUOTE(1*safezoneW);
+            h = QUOTE(1*safezoneW);
+            text = QPATHTOF(Data\knobs\dials\ws38_freq_0.paa);
+        END_CONTROL
+
+        BEGIN_CONTROL(FrequencyDialButton,Ws38_RscButton,-1)
+            x = QUOTE((0.605 * safeZoneW) + safeZoneX);
+            y = QUOTE((0.305 * safeZoneW) + safeZoneX);
+            w = QUOTE(0.1*SafeZoneW);
+            h = QUOTE(0.19*SafeZoneW);
+            colorBackground[] = {1, 0, 0, 0};
+            text = "";
+            onMouseButtonUp = QUOTE(_this call acre_sys_ws38_fnc_onFunctionKnobPress);
             toolTip = ECSTRING(sys_radio,ui_RadioMode);
         END_CONTROL
     };

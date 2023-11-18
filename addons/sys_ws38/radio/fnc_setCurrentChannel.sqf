@@ -20,10 +20,14 @@
  */
 
 TRACE_1("", _this);
+
 params ["_radioId", "", "_eventData", "_radioData", ""];
 
-private _channelsCount = count ([_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent)) - 1;
-_eventData = (0 max _eventData) min _channelsCount;
-
 TRACE_1("SETTING CURRENT CHANNEL",_this);
-HASH_SET(_radioData,"currentChannel",_eventData);
+
+private _frequencyData = [_eventData] call FUNC(getFrequencyForChannel);
+
+HASH_SET(_radioData,"currentChannel",_frequencyData select 1);
+HASH_SET(_radioData,"frequencyTX",_frequencyData select 0);
+HASH_SET(_radioData,"frequencyRX",_frequency select 0);
+HASH_SET(_radioData,"power",200);
