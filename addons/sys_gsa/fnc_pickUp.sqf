@@ -56,6 +56,12 @@ switch (_classname) do {
             };
         };
     };
+    case "ws38_12ft_antenna": {
+        _item = "ACRE_12FT_ANTENNA";
+        if (_unit canAdd _item) then {
+            _canDelete = true;
+        };
+    };
 };
 
 if (_canDelete) then {

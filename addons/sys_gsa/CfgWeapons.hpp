@@ -31,4 +31,17 @@ class CfgWeapons {
             mass = 100;
         };
     };
+
+    class ACRE_12FT_ANTENNA: CBA_MiscItem {
+        author[] = {"S. Spartan"};
+        scope = 2;
+        displayName = "WS38 12FT Antenna";
+        descriptionShort = CSTRING(WS3812ftAntenna_description);
+        model = QPATHTOF(data\models\acre_antennaBag.p3d);
+        picture = QPATHTOF(data\ui\acre_antennabag_icon.paa);
+
+        class ItemInfo: CBA_MiscItem_ItemInfo {
+            mass = 60;
+        };
+    };
 };
