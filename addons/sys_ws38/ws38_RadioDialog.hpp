@@ -61,11 +61,11 @@ class WS38_RadioDialog {
         END_CONTROL
 
         BEGIN_CONTROL(FrequencyDialButton,Ws38_RscButton,-1)
-            x = QUOTE((0.4 * safeZoneW) + safeZoneX);
+            x = QUOTE((0.409 * safeZoneW) + safeZoneX);
             y = QUOTE((0.305 * safeZoneW) + safeZoneX);
-            w = QUOTE(0.2*SafeZoneW);
-            h = QUOTE(0.19*SafeZoneW);
-            colorBackground[] = {1, 0, 0, 1};
+            w = QUOTE(0.20*SafeZoneW);
+            h = QUOTE(0.25*SafeZoneW);
+            colorBackground[] = {1, 0, 0, 0};
             text = "";
             onMouseButtonUp = QUOTE(_this call acre_sys_ws38_fnc_onFrequencyDialPress);
             toolTip = ECSTRING(sys_radio,ui_changeFrequency);
