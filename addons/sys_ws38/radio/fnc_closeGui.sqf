@@ -23,6 +23,6 @@ params ["_radioId", "", "", "", ""];
 
 [_radioId, false] call EFUNC(sys_radio,setRadioOpenState);
 
+[QGVAR(uiStateChanged), GVAR(uiStateChangedEh)]call CBA_fnc_removeEventHandler;
 GVAR(currentRadioId) = -1;
-
 true

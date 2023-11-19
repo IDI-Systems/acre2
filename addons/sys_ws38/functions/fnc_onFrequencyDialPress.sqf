@@ -30,5 +30,6 @@ if (_newPosition != _currentPosition) then {
     ["setCurrentChannel", _newPosition] call GUI_DATA_EVENT;
 
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
-    [MAIN_DISPLAY] call FUNC(render);
+    [QGVAR(uiStateChanged), []] call CBA_fnc_localEvent;
+    //[MAIN_DISPLAY] call FUNC(render);
 };

@@ -20,6 +20,7 @@
 #define OUT 1
 
 params ["_display"];
+
 private _currentFunction = GET_STATE("function");
 private _currentChannel = GET_STATE("currentChannel");
 TRACE_2("Render", _currentFunction,_currentChannel);
