@@ -43,23 +43,10 @@ private _channels = HASH_GET(_presetData,"channels");
 
 private _channelData = HASH_COPY(_channels select 0);
 private _frequencyTx = HASH_GET(_channelData,"frequencyTX");
-_frequencyTx = ((round (_frequencyTx * 20))/20);
 
-private _secondChannelData = HASH_COPY(_channels select 1);
-private _secondPresetFrequency = HASH_GET(_secondChannelData,"frequencyTX");
-_secondPresetFrequency = ((round (_secondPresetFrequency * 20))/20);
-
-//Finding the MHz
-//interpreting the band selector
-
-// Band is the 30-52,53-75 selector
-private _band = 0;
-if (_frequencyTx >= 53) then {
-    _band = 1;
-};
-
-private _knobPositions = ([_frequencyTx] call _frequencyToKnobPositions);
-private _secondPresetKnobPositions = ([_secondPresetFrequency] call _frequencyToKnobPositions);
+private _channelInfo = [_frequencyTx] call FUNC(getChannelForFrequency);
+private _dialPosition = (_channelInfo select 0);
+_frequencyTx = _channelInfo select 1;
 
 
 SCRATCH_SET(_radioId, "currentTransmissions", []);
@@ -68,7 +55,7 @@ SCRATCH_SET(_radioId, "currentTransmissions", []);
 HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume)); //0-1
 HASH_SET(_radioData,"function",0); //0 - OFF, 1 - RECV, 2 - SEND
 HASH_SET(_radioData,"radioOn",0); //0 - OFF, 1 - ON
-HASH_SET(_radioData,"currentChannel",_knobPositions);
+HASH_SET(_radioData,"currentChannel",_dialPosition);
 HASH_SET(_radioData,"powerSource", "BAT");
 
 //Common Channel Settings

@@ -15,9 +15,7 @@
  * Public: No
  */
 
-params ["_handlerarray"];
-
-private _key = _handlerarray select 1;
+params ["_control", "_key"];
 
 private _dir = -1;
 if (_key == 0) then {
@@ -25,11 +23,11 @@ if (_key == 0) then {
     _dir = 1;
 };
 
-private _currentPosition = GET_STATE_DEF("channel",0);
+private _currentPosition = GET_STATE("currentChannel");
+private _newPosition = ((_currentPosition + _dir) max 0) min MAX_DIAL_INDICES;
 
-
-if (_newAbsChannel != _currentAbsChannel) then {
-    ["setCurrentChannel", _newAbsChannel] call GUI_DATA_EVENT;
+if (_newPosition != _currentPosition) then {
+    ["setCurrentChannel", _newPosition] call GUI_DATA_EVENT;
 
     ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
     [MAIN_DISPLAY] call FUNC(render);

@@ -221,6 +221,9 @@
             <Japanese>現在のチャンネル</Japanese>
             <Chinesesimp>当前频道</Chinesesimp>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_changeFrequency">
+            <English>Change Frequency</English>
+        </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannelBlock">
             <English>Current Channel Block</English>
             <German>Aktueller Kanalblock</German>

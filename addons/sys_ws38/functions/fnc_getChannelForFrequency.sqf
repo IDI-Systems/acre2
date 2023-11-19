@@ -1,3 +1,4 @@
+#include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
  * Converts a frequency to a dial index.
@@ -17,10 +18,11 @@
  */
 
 params ["_frequency"];
-
+TRACE_1("Start Get Channel",_frequency);
 private _channel = ((_frequency * 10 - INDEX_CONVERSION) max 0) min MAX_DIAL_INDICES;
 //Making it Arma-Float-Stable
-_channel = [_frequency, 1, 0] call CBA_fnc_formatNumber;
-_channel = parseNumber _frequency;
-
-[_channel,[_channel] call FUNC(getFrequency) select 0]
+_channel = [_channel, 1, 0] call CBA_fnc_formatNumber;
+_channel = parseNumber _channel;
+private _newFrequency = ([_channel] call FUNC(getFrequencyForChannel) select 0);
+TRACE_2("End Get Channel",_channel,_newFrequency);
+[_channel,_newFrequency]
