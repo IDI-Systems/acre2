@@ -189,6 +189,9 @@
             <Turkish>Şu Anki Kanal</Turkish>
             <Portuguese>Canal atual</Portuguese>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_changeFrequency">
+            <English>Change Frequency</English>
+        </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannelBlock">
             <English>Current Channel Block</English>
         </Key>

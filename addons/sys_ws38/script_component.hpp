@@ -5,7 +5,7 @@
 // #define DEBUG_MODE_FULL
 // #define DISABLE_COMPILE_CACHE
 // #define ENABLE_PERFORMANCE_COUNTERS
-// #define DEBUG_ENABLED_SYS_WS38
+#define DEBUG_ENABLED_SYS_WS38
 
 #ifdef DEBUG_ENABLED_SYS_WS38
     #define DEBUG_MODE_FULL
@@ -26,7 +26,7 @@
 
 #define MIN_FREQUENCY 7.4
 #define MAX_FREQUENCY 9.0
-#define INDEX_CONVERSION MIN_FREQUENCY * 10
-#define MAX_DIAL_INDICES MAX_FREQUENCY * 10 - MIN_FREQUENCY * 10
+#define INDEX_CONVERSION (MIN_FREQUENCY * 10)
+#define MAX_DIAL_INDICES (MAX_FREQUENCY * 10 - MIN_FREQUENCY * 10)
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"

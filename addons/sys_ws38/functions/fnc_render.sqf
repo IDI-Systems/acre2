@@ -21,6 +21,9 @@
 
 params ["_display"];
 
-private _currentMode = GET_STATE_DEF("mode_knob",0);
-RADIO_CTRL(106) ctrlSetText format ["\idi\acre\addons\sys_ws38\Data\knobs\mode\ws38_mode_%1.paa", _currentMode];
+private _currentFunction = GET_STATE_DEF("function",0);
+private _currentChannel = GET_STATE("currentChannel");
+TRACE_2("Render", _currentFunction,_currentChannel);
+RADIO_CTRL(106) ctrlSetText format ["\idi\acre\addons\sys_ws38\Data\knobs\mode\ws38_mode_%1.paa", _currentFunction];
+RADIO_CTRL(107) ctrlSetText format ["\idi\acre\addons\sys_ws38\Data\dials\frequency\ws38_frequency_%1.paa", _currentChannel];
 true
