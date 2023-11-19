@@ -20,6 +20,14 @@ class CfgVehicles {
                     showDisabled = 0;
                     icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
                 };
+
+                class GVAR(placeAntenna) {
+                    displayName = CSTRING(placeAntenna);
+                    condition = QUOTE([ARR_2(_player,'ACRE_12FT_ANTENNA')] call EFUNC(sys_core,hasItem));
+                    statement = QUOTE([ARR_3(_player,'ACRE_12FT_ANTENNA',false)] call FUNC(deploy));
+                    showDisabled = 0;
+                    icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
+                };
             };
         };
     };
@@ -152,6 +160,84 @@ class CfgVehicles {
                     priority = 5;
                     //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
                 };
+
+                class ACRE_connect {
+                    selection = "";
+                    displayName = CSTRING(connect);
+                    distance = 10;
+                    condition = QUOTE(!([ARR_2(_player,_target)] call DFUNC(isAntennaConnected)));
+                    statement = QUOTE(true);
+                    insertChildren = QUOTE([ARR_2(_player,_target)] call DFUNC(connectChildrenActions));
+                    showDisabled = 0;
+                    exceptions[] = {};
+                    priority = 5;
+                    icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                };
+
+                class ACRE_disconnect {
+                    selection = "";
+                    displayName = CSTRING(disconnect);
+                    distance = 10;
+                    condition = QUOTE([ARR_2(_player,_target)] call DFUNC(isAntennaConnected));
+                    statement = QUOTE([ARR_2(_player,_target)] call DFUNC(disconnect));
+                    showDisabled = 0;
+                    exceptions[] = {};
+                    priority = 5;
+                    icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                };
+            };
+        };
+    };
+
+    class ws38_12ft_antenna: House {
+        class EventHandlers {
+            class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers {};
+        };
+
+        scope = 2;
+        scopeCurator = 2;
+        scopeArsenal = 2;
+        displayName = "ACRE WS38 12 feet antenna";
+        model = QPATHTOF(data\vhf30108\models\vhf30108spike.p3d);
+        icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
+        editorPreview = QPATHTOF(data\vhf30108\ui\spike.jpg);
+        vehicleClass = "Items";
+
+        class AcreComponents {
+            componentName = "ACRE_12FT_AERIAL_ROD";
+            mountedAntenna = "";
+            mastMount[] = {};
+        };
+
+        class ACE_Actions {
+            class ACE_MainActions {
+                selection = "interaction_point";
+                distance = 10;
+                condition = "(true)";
+
+                class ACRE_pickup {
+                    selection = "";
+                    displayName = CSTRING(pickUp);
+                    distance = 10;
+                    condition = "true";
+                    statement = QUOTE([ARR_2(_player,_target)] call DFUNC(pickUp));
+                    showDisabled = 0;
+                    exceptions[] = {};
+                    priority = 5;
+                    //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                };
+
+                /*class ACRE_mountMast {
+                    selection = "";
+                    displayName = CSTRING(mountMast);
+                    distance = 10;
+                    condition = QUOTE([ARR_2(_player,'ACRE_12FT_ANTENNA')] call DEFUNC(sys_core,hasItem));
+                    statement = QUOTE([ARR_3(_player,_target,true)] call DFUNC(handleMast));
+                    showDisabled = 0;
+                    exceptions[] = {};
+                    priority = 5;
+                    //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                };*/
 
                 class ACRE_connect {
                     selection = "";
