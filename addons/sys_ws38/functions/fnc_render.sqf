@@ -20,8 +20,7 @@
 #define OUT 1
 
 params ["_display"];
-
-private _currentFunction = GET_STATE_DEF("function",0);
+private _currentFunction = GET_STATE("function");
 private _currentChannel = GET_STATE("currentChannel");
 TRACE_2("Render", _currentFunction,_currentChannel);
 RADIO_CTRL(106) ctrlSetText format ["\idi\acre\addons\sys_ws38\Data\knobs\mode\ws38_mode_%1.paa", _currentFunction];
