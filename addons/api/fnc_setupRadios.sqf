@@ -4,8 +4,13 @@
  * When run locally it will set the currently carried radios to the selected channel numbers.
  *
  * Arguments:
- * 0-N: Radio assignments <ARRAY>
- *   0: Radio Baseclass <STRING>
+ * [RadioSetting1, RadioSetting2, ...] <ARRAY>
+ * 
+ * RadioSetting: [RadioType, Channel] or
+ *               [RadioType, [Channel, Block]] or
+ *               [RadioType, MHz] or
+ *               [RadioType, [MHz, KHz]]
+ *   0: Radio Base Class <STRING>
  *   1: Radio Channel/Block/Frequency <INTEGER> or <ARRAY>
  *
  * Return Value:
@@ -21,9 +26,9 @@
  * Public: Yes
  */
 
-private _assignments = _this;
+private _settings = _this;
 
-if (count(_assignments) isEqualTo 0 || !((_assignments select 0) isEqualType [])) exitWith {}; // Abort if argument is empty or not an array
+if (count(_settings) isEqualTo 0 || !((_settings select 0) isEqualType [])) exitWith {}; // Abort if argument is empty or not an array
 
 private _radios = [] call EFUNC(sys_data,getPlayerRadioList);
 
@@ -34,11 +39,11 @@ if (_radios isEqualTo []) exitWith {}; // Abort if carrying no radios
     private _radioBaseClass = [_radio] call EFUNC(sys_radio,getRadioBaseClassname);
 
     // iterate through arguments and set up radio if baseclass matches
-    for "_i" from 0 to count(_assignments)-1 do {
-        (_assignments select _i) params ["_radioType", "_channel"];
+    for "_i" from 0 to count(_settings)-1 do {
+        (_settings select _i) params ["_radioType", "_channel"];
         private _eventData = [];
 
-        // Skip assignment if its type doesn't match current radio baseclass
+        // Skip setting if its type doesn't match current radio baseclass
         if !(_radioType isEqualTo _radioBaseClass) then { continue; };
 
         // Turn channel argument into an array of 1 or 2 numbers, 0-index them
@@ -70,8 +75,8 @@ if (_radios isEqualTo []) exitWith {}; // Abort if carrying no radios
 
         [_radio, "setCurrentChannel", _eventData] call EFUNC(sys_data,dataEvent);
 
-        // Delete applied assignment and break out to handle next radio
-        _assignments deleteAt _i;
+        // Delete applied setting and break out to handle next radio
+        _settings deleteAt _i;
         break;
     };
 } forEach _radios;
