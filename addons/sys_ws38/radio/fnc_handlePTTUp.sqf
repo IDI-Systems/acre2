@@ -23,12 +23,9 @@
 params ["_radioId", "", "", "", ""];
 
 private _volume = [_radioId,"getVolume"] call EFUNC(sys_data,dataEvent);
-private _currentMode = GET_STATE("function");
-if (_currentMode == 2) then {
-	SET_STATE("function",1);
-    // TODO: Add checking if window is open
-    //[MAIN_DISPLAY] call FUNC(render);
-};
+private _currentMode = [_radioId, "getState", "function"] call EFUNC(sys_data,dataEvent);
+[_radioId, "setState", ["function", 1]] call EFUNC(sys_data,dataEvent);
+[QGVAR(uiStateChanged), []] call CBA_fnc_localEvent;
 [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
 SCRATCH_SET(_radioId,"PTTDown",false);
 true;

@@ -32,7 +32,11 @@ createDialog "WS38_RadioDialog";
 
 // Support reserved keybinds on dialog (eg. Tab)
 MAIN_DISPLAY call (uiNamespace getVariable "CBA_events_fnc_initDisplayCurator");
-
+GVAR(uiStateChangedEh) = [QGVAR(uiStateChanged), {
+    private _mode = GET_STATE("function");
+    TRACE_1("UI State changed", _mode);
+    [MAIN_DISPLAY] call FUNC(render);
+}] call CBA_fnc_addEventHandler;
 [_radioId, true] call EFUNC(sys_radio,setRadioOpenState);
 
 true

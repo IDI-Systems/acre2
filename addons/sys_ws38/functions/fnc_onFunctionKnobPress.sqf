@@ -31,7 +31,6 @@ TRACE_2("Changing mode",_currentMode, _newMode);
 if(_newMode != _currentMode) then {
     SET_STATE("function", _newMode);
 
-    ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
     if((_newMode == 0 || _newMode == 1) && _currentMode != 2) then {
         ["setOnOffState", _newMode] call GUI_DATA_EVENT;
     };
@@ -51,5 +50,7 @@ if(_newMode != _currentMode) then {
             [_index] call EFUNC(sys_core,handleMultiPttKeyPressUp);
         };
     };
-    [MAIN_DISPLAY] call FUNC(render);
+    ["Acre_GenericClick", [0,0,0], [0,0,0], 1, false] call EFUNC(sys_sounds,playSound);
+    [QGVAR(uiStateChanged), []] call CBA_fnc_localEvent;
+    //[MAIN_DISPLAY] call FUNC(render);
 };
