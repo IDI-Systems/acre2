@@ -15,11 +15,11 @@ class CfgAcreComponents {
         isDeployable = 0;
 
         connectors[] = {
-            {"Antenna", ACRE_CONNECTOR_TNC},
+            {"Antenna", ACRE_CONNECTOR_ROD},
             {"Audio/Data", ACRE_CONNECTOR_U_283}
         };
         defaultComponents[] = {
-            {0, "ACRE_2HALFINCH_UHF_TNC"}
+            {0, "ACRE_4FT_AERIAL_ROD"}
         };
 
         class InterfaceClasses {
