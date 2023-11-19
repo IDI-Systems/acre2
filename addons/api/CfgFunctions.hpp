@@ -46,6 +46,7 @@ class CfgFunctions {
 
             PATHTO_FNC(setRadioChannel);
             PATHTO_FNC(getRadioChannel);
+            PATHTO_FNC(setupRadios);
 
             PATHTO_FNC(setRadioVolume);
             PATHTO_FNC(getRadioVolume);
