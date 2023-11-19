@@ -350,6 +350,36 @@ _success = ["ACRE_PRC152_ID_123", 5] call acre_api_fnc_setRadioChannel;
 
 ---
 
+### acre_api_fnc_setupRadios
+__Description__
+
+Sets the currently carried radios to the provided channel numbers.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0-n | Radio Setting  | ARRAY | 
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Successful  | BOOLEAN
+
+__Example__
+
+```sqf
+_success = [ ["ACRE_PRC343", [2,3]], ["ACRE_PRC152", 3], ["ACRE_PRC77", [2,4]] ] call acre_api_fnc_setupRadios;
+// Will set PRC343 to Ch2 Blk3, PRC152 to Ch3 and PRC77 to 31.15 MHz
+
+_success = [ ["ACRE_PRC343", 6], ["ACRE_PRC152", 2], ["ACRE_PRC152", 3] ] call acre_api_fnc_setupRadios;
+// Will set PRC343 to Ch6 Blk1, the first PRC152 to Ch2 and the second PRC152 to Ch3
+```
+
+
+---
+
 ### acre_api_fnc_setPresetChannelData
 __Description__
 
