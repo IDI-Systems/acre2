@@ -29,5 +29,5 @@ private _frequencyData = [_eventData] call FUNC(getFrequencyForChannel);
 
 HASH_SET(_radioData,"currentChannel",_frequencyData select 1);
 HASH_SET(_radioData,"frequencyTX",_frequencyData select 0);
-HASH_SET(_radioData,"frequencyRX",_frequency select 0);
+HASH_SET(_radioData,"frequencyRX",_frequencyData select 0);
 HASH_SET(_radioData,"power",200);
