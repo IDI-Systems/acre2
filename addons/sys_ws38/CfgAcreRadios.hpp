@@ -11,7 +11,7 @@ class CfgAcreComponents {
         sinadRating = -100;
         sensitivityMin = -110;
         sensitivityMax = -50;
-        isPackRadio = 0;
+        isPackRadio = 1;
         isDeployable = 0;
 
         connectors[] = {
