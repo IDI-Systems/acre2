@@ -7,8 +7,8 @@ class CfgWeapons {
     class ACRE_WS38: ACRE_BaseRadio {
         displayName = QUOTE(NAME_WS38);
         useActionTitle = QUOTE(NAME_WS38);
-        picture = QPATHTOF(Data\static\prc343_icon.paa);
-        model = QPATHTOF(Data\models\acre_prc343_model.p3d);
+        picture = QPATHTOF(Data\static\ws38_ui_backplate.paa);
+        model = QPATHTOF(Data\models\ws38_radio.p3d);
         descriptionShort = "Wireless Set No. 38 Mk. II Radio";
 
         scopeCurator = 2;
@@ -25,7 +25,7 @@ class CfgWeapons {
 
         EGVAR(arsenalStats,frequencyMin) = 2.4e9;
         EGVAR(arsenalStats,frequencyMax) = 2.483e9;
-        EGVAR(arsenalStats,transmitPower) = 100;
+        EGVAR(arsenalStats,transmitPower) = 200;
         EGVAR(arsenalStats,effectiveRange) = "850m (400m)";
     };
 

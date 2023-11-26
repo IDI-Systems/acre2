@@ -198,7 +198,7 @@ class CfgVehicles {
         scopeCurator = 2;
         scopeArsenal = 2;
         displayName = "ACRE WS38 12 feet antenna";
-        model = QPATHTOF(data\vhf30108\models\vhf30108spike.p3d);
+        model = QPATHTOEF(sys_ws38,data\Models\ws38_radio_antenna.p3d);
         icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
         editorPreview = QPATHTOF(data\vhf30108\ui\spike.jpg);
         vehicleClass = "Items";
@@ -214,6 +214,7 @@ class CfgVehicles {
                 selection = "interaction_point";
                 distance = 10;
                 condition = "(true)";
+                position = "[0.0,0.2,0.0]";
 
                 class ACRE_pickup {
                     selection = "";
