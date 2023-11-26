@@ -111,5 +111,14 @@ class CfgAcreSounds {
         sound = "\idi\acre\addons\sys_sounds\sounds\baofeng\16.b64";
     };
 
+    class Acre_WS38_start {
+        sound = QPATHTOF(sounds\WS38\start.b64);
+    };
+
+    class Acre_WS38_end {
+        sound = QPATHTOF(sounds\WS38\end.b64);
+    };
+
+
 
 };

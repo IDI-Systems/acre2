@@ -30,6 +30,6 @@ private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
 private _currentMode = [_radioId, "getState", "function"] call EFUNC(sys_data,dataEvent);
 [_radioId, "setState", ["function", 2]] call EFUNC(sys_data,dataEvent);
 [QGVAR(uiStateChanged), []] call CBA_fnc_localEvent;
-[_radioId, "Acre_GenericBeep", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
+//[_radioId, "Acre_WS38_start", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
 SCRATCH_SET(_radioId,"PTTDown",true);
 true
