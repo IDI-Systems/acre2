@@ -41,7 +41,7 @@ class CfgWeapons {
         picture = QPATHTOF(data\ui\acre_antennabag_icon.paa);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
-            mass = 60;
+            mass = 30;
         };
     };
 };

@@ -53,8 +53,8 @@ SCRATCH_SET(_radioId, "currentTransmissions", []);
 
 //Radio Settings
 HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume)); //0-1
-HASH_SET(_radioData,"function",1); //0 - OFF, 1 - RECV, 2 - SEND
-HASH_SET(_radioData,"radioOn",1); //0 - OFF, 1 - ON
+HASH_SET(_radioData,"function",0); //0 - OFF, 1 - RECV, 2 - SEND
+HASH_SET(_radioData,"radioOn",0); //0 - OFF, 1 - ON
 HASH_SET(_radioData,"currentChannel",_dialPosition);
 HASH_SET(_radioData,"powerSource", "BAT");
 
