@@ -222,7 +222,7 @@ if (_transmissionsChanged) then {
             private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
             if (!_pttDown && {!isNil "_beeped"} && {_beeped}) then {
                 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-                [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
+                [_radioId, "Acre_WS38_end", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
             };
             SCRATCH_SET(_radioId, "hasBeeped", false);
         } else {
@@ -230,14 +230,14 @@ if (_transmissionsChanged) then {
                 //diag_log "BEEP!";
                 SCRATCH_SET(_radioId, "hasBeeped", true);
                 private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-                [_radioId, "Acre_GenericClickOn", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
+                [_radioId, "Acre_WS38_start", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
             };
         };
     } else {
         private _pttDown = SCRATCH_GET_DEF(_radioId, "PTTDown", false);
         if (!_pttDown && {!isNil "_beeped"} && {_beeped}) then {
             private _volume = [_radioId, "getVolume"] call EFUNC(sys_data,dataEvent);
-            [_radioId, "Acre_GenericClickOff", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
+            [_radioId, "Acre_WS38_end", [0, 0, 0], [0, 1, 0], _volume] call EFUNC(sys_radio,playRadioSound);
         };
         SCRATCH_SET(_radioId, "hasBeeped", false);
     };

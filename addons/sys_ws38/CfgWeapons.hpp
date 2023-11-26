@@ -23,10 +23,10 @@ class CfgWeapons {
             libTextDesc = QUOTE(NAME_WS38);
         };
 
-        EGVAR(arsenalStats,frequencyMin) = 2.4e9;
-        EGVAR(arsenalStats,frequencyMax) = 2.483e9;
+        EGVAR(arsenalStats,frequencyMin) = 7.4e6;
+        EGVAR(arsenalStats,frequencyMax) = 9e6;
         EGVAR(arsenalStats,transmitPower) = 200;
-        EGVAR(arsenalStats,effectiveRange) = "850m (400m)";
+        EGVAR(arsenalStats,effectiveRange) = "800m (400m)";
     };
 
     RADIO_ID_LIST(ACRE_WS38)
