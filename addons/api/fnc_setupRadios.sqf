@@ -22,6 +22,9 @@
  * 
  * _success = [ ["ACRE_PRC343", 6], ["ACRE_PRC152", 2], ["ACRE_PRC152", 3] ] call acre_api_fnc_setupRadios;
  * // Will set PRC343 to Ch6 Blk1, the first PRC152 to Ch2 and the second PRC152 to Ch3
+ * 
+ * _success = [ ["ACRE_SEM52SL", 8], ["ACRE_SEM70", [34,075]] ] call acre_api_fnc_setupRadios;
+ * // Will set SEM52SL to Ch8 and SEM70 to 34.075 MHz
  *
  * Public: Yes
  */
@@ -72,7 +75,16 @@ if (_radios isEqualTo []) exitWith { false }; // Abort if carrying no radios
                 };
                 _eventData set [0, (0 max ((_eventData select 0) - 30))];
             };
-            // @TODO parsing for SEM52L/SEM70
+            case "ACRE_SEM70": {
+                if (count _eventData < 2) then { // set only MHz, insert 0 to nullify KHz
+                    _eventData pushBack 0;
+                } else {
+                    if (_eventData select 1 > 0) then { // parse KHz if set by user
+                        _eventData set [1, (round ((_eventData select 1) / 25) min 39)];
+                    };
+                };
+                _eventData set [0, (0 max ((_eventData select 0) - 30))];
+            };
             default {
                 _eventData = (_eventData select 0) - 1;
             };
