@@ -200,8 +200,12 @@ class CfgVehicles {
         displayName = "ACRE WS38 12 feet antenna";
         model = QPATHTOEF(sys_ws38,data\Models\ws38_radio_antenna.p3d);
         icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
-        editorPreview = QPATHTOF(data\vhf30108\ui\spike.jpg);
+        editorPreview = QPATHTOF(data\ws38_antenna\ui\12ft_antenna.jpg);
         vehicleClass = "Items";
+        ace_dragging_canCarry = 1;
+        ace_dragging_carryPosition[] = {-0.2, 1, 1.3};
+        ace_dragging_carryDirection = 0;
+        ace_dragging_ignoreWeightCarry = 1;
 
         class AcreComponents {
             componentName = "ACRE_12FT_AERIAL_ROD";
@@ -214,7 +218,7 @@ class CfgVehicles {
                 selection = "interaction_point";
                 distance = 10;
                 condition = "(true)";
-                position = "[0.0,0.2,0.0]";
+                position = "[0.2,0.0,-1.5]";
 
                 class ACRE_pickup {
                     selection = "";
@@ -227,18 +231,6 @@ class CfgVehicles {
                     priority = 5;
                     //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
                 };
-
-                /*class ACRE_mountMast {
-                    selection = "";
-                    displayName = CSTRING(mountMast);
-                    distance = 10;
-                    condition = QUOTE([ARR_2(_player,'ACRE_12FT_ANTENNA')] call DEFUNC(sys_core,hasItem));
-                    statement = QUOTE([ARR_3(_player,_target,true)] call DFUNC(handleMast));
-                    showDisabled = 0;
-                    exceptions[] = {};
-                    priority = 5;
-                    //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
-                };*/
 
                 class ACRE_connect {
                     selection = "";
