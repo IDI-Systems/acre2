@@ -7,7 +7,7 @@ class CfgWeapons {
     class ACRE_WS38: ACRE_BaseRadio {
         displayName = QUOTE(NAME_WS38);
         useActionTitle = QUOTE(NAME_WS38);
-        picture = QPATHTOF(Data\static\ws38_ui_backplate.paa);
+        picture = QPATHTOF(Data\static\ws38_icons.paa);
         model = QPATHTOF(Data\models\ws38_radio.p3d);
         descriptionShort = "Wireless Set No. 38 Mk. II Radio";
 
