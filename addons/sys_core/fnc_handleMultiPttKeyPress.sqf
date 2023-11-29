@@ -35,11 +35,17 @@ if (ACRE_ACTIVE_PTTKEY == -2) then {
         private _radioList = [] call EFUNC(sys_data,getPlayerRadioList);
         if (ACRE_ACTIVE_PTTKEY <= (count _radioList) - 1) then {
             if ((count ACRE_ASSIGNED_PTT_RADIOS) > 0) then {
-                private _sortList = [ACRE_ASSIGNED_PTT_RADIOS, _radioList] call EFUNC(sys_data,sortRadioList);
-                // This will handle cleanup automatically too
-                ACRE_ASSIGNED_PTT_RADIOS = _sortList select 0;
-                _radioList = _sortList select 1;
-
+                if (acre_player isEqualTo player) then { // using zeus player voice
+                    private _sortList = [ACRE_ASSIGNED_PTT_RADIOS, _radioList] call EFUNC(sys_data,sortRadioList);
+                    // This will handle cleanup automatically too
+                    ACRE_ASSIGNED_PTT_RADIOS = _sortList select 0;
+                    _radioList = _sortList select 1;
+                } else {
+                    private _sortList = [ACRE_ASSIGNED_PTT_RADIOS_REMOTE, _radioList] call EFUNC(sys_data,sortRadioList);
+                    // This will handle cleanup automatically too
+                    ACRE_ASSIGNED_PTT_RADIOS_REMOTE = _sortList select 0;
+                    _radioList = _sortList select 1;
+                };
             };
             _sendRadio = _radioList select ACRE_ACTIVE_PTTKEY;
             [_sendRadio] call EFUNC(sys_radio,setActiveRadio);
