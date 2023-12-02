@@ -147,6 +147,21 @@ class CfgVehicles {
         acre_infantryPhonePosition[] = {1.38, -4.77, -1.1};
     };
 
+    class O_MBT_02_railgun_base_F;
+    class O_MBT_02_railgun_F: O_MBT_02_railgun_base_F {
+        acre_infantryPhonePosition[] = {1.38, -4.77, -1.1};
+    };
+
+    class MBT_04_cannon_base_F;
+    class O_MBT_04_cannon_F: MBT_04_cannon_base_F {
+        acre_infantryPhonePosition[] = {-1.47, -5.68, -0.82};
+    };
+
+    class MBT_04_command_base_F;
+    class O_MBT_04_command_F: MBT_04_command_base_F {
+        acre_infantryPhonePosition[] = {-1.47, -5.68, -1.17};
+    };
+
     class O_MBT_02_arty_base_F;
     class O_MBT_02_arty_F: O_MBT_02_arty_base_F {
         acre_infantryPhonePosition[] = {1.4, -5.4, -1.65};
