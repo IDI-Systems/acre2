@@ -154,6 +154,10 @@ class CfgVehicles {
         acre_infantryPhonePosition[] = {-1.24, -4.35, -0.81};
     };
 
+    class AFV_Wheeled_01_up_base_F: AFV_Wheeled_01_base_F {
+        acre_infantryPhonePosition[] = {-1.24, -4.35, -0.92};
+    };
+
     // OPFOR
     class O_MBT_02_base_F;
     class O_MBT_02_cannon_F: O_MBT_02_base_F {
