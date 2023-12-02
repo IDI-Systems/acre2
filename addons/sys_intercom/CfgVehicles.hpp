@@ -28,7 +28,7 @@ class CfgVehicles {
             };
         };
 
-        acre_hasInfantryPhone = 1;
+        acre_hasInfantryPhone = 0;
         acre_infantryPhoneIntercom[] = {"all"};
         acre_infantryPhoneControlActions[] = {"intercom_1"};
         acre_eventInfantryPhone = QFUNC(noApiFunction);
@@ -145,10 +145,12 @@ class CfgVehicles {
             };
         };
 
+        acre_hasInfantryPhone = 1;
         acre_infantryPhonePosition[] = {-0.70, -4.61, -1.00};
     };
 
     class AFV_Wheeled_01_base_F: Wheeled_APC_F {
+        acre_hasInfantryPhone = 1;
         acre_infantryPhonePosition[] = {-1.24, -4.35, -0.81};
     };
 
@@ -229,6 +231,7 @@ class CfgVehicles {
             };
         };
 
+        acre_hasInfantryPhone = 1;
         acre_infantryPhonePosition[] = {1.10, -4.45, -0.65};
     };
 
@@ -285,6 +288,7 @@ class CfgVehicles {
             };
         };
 
+        acre_hasInfantryPhone = 1;
         acre_infantryPhonePosition[] = {-0.70, -4.51, -0.67};
     };
 
