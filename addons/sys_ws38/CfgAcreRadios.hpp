@@ -16,7 +16,8 @@ class CfgAcreComponents {
 
         connectors[] = {
             {"Antenna", ACRE_CONNECTOR_ROD},
-            {"Audio/Data", ACRE_CONNECTOR_U_283}
+            {"Audio/Data", ACRE_CONNECTOR_U_283},
+            {"Radio", ACRE_CONNECTOR_CONN_12PIN},
         };
         defaultComponents[] = {
             {0, "ACRE_4FT_AERIAL_ROD"}
