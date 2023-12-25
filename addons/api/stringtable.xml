@@ -5,7 +5,7 @@
         <Key ID="STR_ACRE_api_basicMissionSetup_Module_DisplayName">
             <English>Basic Mission Setup</English>
             <German>Grundlegende Missionskonfiguration</German>
-            <Italian>Configurazione della missione di base</Italian>
+            <Italian>Configurazione di base della missione</Italian>
             <French>Réglages de mission</French>
             <Chinese>基本任務設置</Chinese>
             <Chinesesimp>基本任务设置</Chinesesimp>
@@ -27,7 +27,7 @@
         <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_DisplayName">
             <English>Channels Per Side</English>
             <German>Kanäle pro Seite</German>
-            <Italian>Canali per lato</Italian>
+            <Italian>Canali per-fazione</Italian>
             <French>Canaux séparés par camp</French>
             <Chinese>各陣營不同頻率</Chinese>
             <Chinesesimp>各阵营不同频率</Chinesesimp>
@@ -38,7 +38,7 @@
         <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_Description">
             <English>Set to true to have each side have different ACRE radio frequencies</English>
             <German>Auf wahr setzen, damit jede Seite unterschiedliche ACRE-Funkfrequenzen hat</German>
-            <Italian>Impostato su true in modo che ogni lato abbia diverse frequenze radio ACRE</Italian>
+            <Italian>Imposta su true per assegnare frequenze radio ACRE diverse a ogni fazione</Italian>
             <French>Définit si chaque camp doit avoir des fréquences radio qui lui sont propres.</French>
             <Chinese>設為是時會讓不同陣營的玩家有著不同的ACRE 無線電頻率</Chinese>
             <Chinesesimp>设为实时让不同阵营的玩家有着不同的ACRE 无线电频率</Chinesesimp>
@@ -49,7 +49,7 @@
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_DisplayName">
             <English>Babel Language Per Side</English>
             <German>Babel Sprache pro Seite</German>
-            <Italian>Babel Lingua per lato</Italian>
+            <Italian>Babel Lingua per Fazione</Italian>
             <French>Langue Babel par camp</French>
             <Chinese>各陣營多國語言</Chinese>
             <Chinesesimp>各阵营多国语言</Chinesesimp>
@@ -60,7 +60,7 @@
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_Description">
             <English>Select whether each side has its own language, and whether they also share a common tongue.</English>
             <German>Auswählen, ob jede Seite Ihre eigene Sprache hat oder ob Sie auch eine gemeinsame Sprache sprechen.</German>
-            <Italian>Seleziona se ogni parte ha la propria lingua e se condividono anche una lingua comune.</Italian>
+            <Italian>Seleziona se ogni fazione ha la propria lingua e se condividono anche una lingua comune.</Italian>
             <French>Définit si chaque camp a sa propre langue, ou s'ils partagent également une langue commune.</French>
             <Chinese>設定各陣營是否使用自己的母語，或者母語之外還有一個通用語言。</Chinese>
             <Chinesesimp>设定各阵营是否使用自己的母语，或者母语之外还有一个通用语言。</Chinesesimp>
@@ -71,7 +71,7 @@
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_AllDifferent">
             <English>Per-Side</English>
             <German>Pro-Seite</German>
-            <Italian>Perlato</Italian>
+            <Italian>Per-Fazione</Italian>
             <French>Une langue par camp</French>
             <Chinese>母語</Chinese>
             <Chinesesimp>母语</Chinesesimp>
@@ -82,7 +82,7 @@
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_SharingDifferent">
             <English>Per-Side /w Common</English>
             <German>Pro-Seite mit Gemeinsamer Sprache</German>
-            <Italian>Una lingua per campo/con una lingua comune</Italian>
+            <Italian>Lingua per-fazione + lingua comune</Italian>
             <French>Une langue par camp/avec une langue commune</French>
             <Chinese>母語並外加通用語</Chinese>
             <Chinesesimp>母语并外加通用语</Chinesesimp>
@@ -148,7 +148,7 @@
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Description">
             <English>Default radio for ACRE to give player</English>
             <German>Funkgerät, welches den Spielern gegeben wird</German>
-            <Italian>Radio predefinita per ACRE da dare al giocatore</Italian>
+            <Italian>Radio predefinita da dare al giocatore</Italian>
             <French>Radio ACRE par défaut à donner au joueur.</French>
             <Chinese>預設給於玩家的ACRE 無線電</Chinese>
             <Chinesesimp>预设给予玩家的ACRE 无线电</Chinesesimp>
@@ -171,7 +171,7 @@
         <Key ID="STR_ACRE_api_nameChannels_Module_Description">
             <English>This module defines basic channel naming for a mission in ACRE</English>
             <German>Dieses Modul definiert Grundlegende Kanal Namen für die Mission mit ACRE</German>
-            <Italian>Questo modulo definisce la denominazione di base del canale per una missione in ACRE</Italian>
+            <Italian>Questo modulo definisce la nomenclatura di base dei canali per una missione con ACRE</Italian>
             <French>Ce module permet de nommer les canaux radio ACRE pour la mission.</French>
             <Chinese>這個模組為任務定義基礎的ACRE 頻道名稱</Chinese>
             <Chinesesimp>这个模组为任务定义基础的ACRE频道名称</Chinesesimp>
@@ -182,7 +182,7 @@
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_DisplayName">
             <English>Side</English>
             <German>Seite</German>
-            <Italian>Lato</Italian>
+            <Italian>Fazione</Italian>
             <French>Camp(s)</French>
             <Chinese>陣營選擇</Chinese>
             <Chinesesimp>阵营选择</Chinesesimp>
@@ -194,7 +194,7 @@
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Description">
             <English>Select the side to name channels for</English>
             <German>Wähle die Seite, für die du Kanal Namen vergeben willst</German>
-            <Italian>Seleziona il lato per cui nominare i canali</Italian>
+            <Italian>Seleziona la fazione per cui nominare i canali</Italian>
             <French>Choisir pour quel(s) camp(s) nommer les canaux.</French>
             <Chinese>選擇哪方陣營使用頻道名稱</Chinese>
             <Chinesesimp>选择哪方阵营使用频道名称</Chinesesimp>
@@ -205,7 +205,7 @@
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_All">
             <English>All</English>
             <German>Alle</German>
-            <Italian>Tutto</Italian>
+            <Italian>Tutte</Italian>
             <French>Tous</French>
             <Chinese>全部</Chinese>
             <Chinesesimp>全部</Chinesesimp>

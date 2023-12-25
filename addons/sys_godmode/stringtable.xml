@@ -34,7 +34,7 @@
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey_description">
             <English>PTT to send a message to all units matching the current chat channel.</English>
             <German>PTT um eine Nachricht an alle Einheiten im aktuellen Chat Kanal zu senden.</German>
-            <Italian>PTT per inviare un messaggio a tutte le unità che corrispondono al canale di chat corrente.</Italian>
+            <Italian>PTT per inviare un messaggio a tutte le unità sul canale di chat corrente.</Italian>
             <Spanish>PTT para enviar un mensaje a todas las unidades en el canal actual de chat.</Spanish>
             <French>Transmission d'un message à toutes les unités étant sur le même canal textuel (chat).</French>
             <Turkish>Bas-Konuş ile şu anki kanalla eşleşen bütün oyunculara mesaj ilet</Turkish>
@@ -170,7 +170,7 @@
         <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
             <English>Current Chat Channel Transmit Color</English>
             <German>Aktueller Chat Kanal Sende Farbe</German>
-            <Italian>Colore di invio del canale di chat corrente</Italian>
+            <Italian>Colore di invio sul canale di chat corrente</Italian>
             <French>Couleur - Transmission canal textuel</French>
             <Turkish>Şu Anki Kanal İletim Rengi</Turkish>
             <Portuguese>Cor: Texto de canal de transmissão</Portuguese>

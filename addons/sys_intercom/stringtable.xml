@@ -162,7 +162,7 @@
             <Chinesesimp>对讲机</Chinesesimp>
             <Korean>인터콤</Korean>
             <Portuguese>Intercom</Portuguese>
-            <Italian>Intercom</Italian>
+            <Italian>Interfono</Italian>
             <French>Interphone</French>
             <Turkish>İnterkom</Turkish>
         </Key>
@@ -174,7 +174,7 @@
             <Japanese>インターコムに接続できません。 最大接続数に到達</Japanese>
             <Portuguese>Impossível Conectar no Intercom. Máximo de Conexões alcançado</Portuguese>
             <Polish>Nie można się połączyć do interkomu. Limit połączeń został osiągnięty.</Polish>
-            <Italian>Impossibile connettersi all'intercom. Numero massimo di connessioni raggiunto.</Italian>
+            <Italian>Impossibile connettersi all'interfono. Numero massimo di connessioni raggiunto.</Italian>
             <French>Connexion impossible à l'interphone. Nombre maximal de connexions atteint.</French>
             <German>Maximale Anzahl an Verbindungen im Bordfunk erreicht. Verbindung kann nicht hergestellt werden.</German>
             <Russian>Невозможно подключиться к Интеркому - достигнуто максимальное кол-во подключений</Russian>
@@ -188,7 +188,7 @@
             <Japanese>乗員 インターコム</Japanese>
             <Portuguese>Intercom de Tripulação</Portuguese>
             <Polish>Interkom załogi</Polish>
-            <Italian>Intercom equipaggio</Italian>
+            <Italian>Interfono Equipaggio</Italian>
             <French>Équipage d'interphone</French>
             <German>Besatzungsbordfunk</German>
             <Russian>Интерком экипажа</Russian>
@@ -198,7 +198,7 @@
             <English>Crew</English>
             <Spanish>Tripulación</Spanish>
             <Polish>Załoga</Polish>
-            <Italian>Equipaggio</Italian>
+            <Italian>Equip.</Italian>
             <Chinese>機組員</Chinese>
             <Chinesesimp>机组员</Chinesesimp>
             <French>Équipage</French>
@@ -216,7 +216,7 @@
             <Japanese>乗客 インターコム</Japanese>
             <Portuguese>Intercom de passageiros</Portuguese>
             <Polish>Interkom pasażerów</Polish>
-            <Italian>Intercom passeggero</Italian>
+            <Italian>Interfono passeggero</Italian>
             <French>Interphone Pax</French>
             <German>Passagierbordfunk</German>
             <Russian>Интерком пассажиров</Russian>
@@ -226,7 +226,7 @@
             <English>Pax</English>
             <Spanish>Pasajeros</Spanish>
             <Polish>Pasażerowie</Polish>
-            <Italian>Passeggero</Italian>
+            <Italian>Pass.</Italian>
             <Chinese>乘客</Chinese>
             <Chinesesimp>乘客</Chinesesimp>
             <French>Pax</French>
@@ -331,7 +331,7 @@
             <English>Mute</English>
             <Spanish>Mutear</Spanish>
             <Polish>Wycisz</Polish>
-            <Italian>Muto</Italian>
+            <Italian>Muta</Italian>
             <Japanese>消音</Japanese>
             <Chinese>靜音</Chinese>
             <Chinesesimp>静音</Chinesesimp>
@@ -345,7 +345,7 @@
             <English>Start Broadcast</English>
             <Spanish>Enviar mensaje prioritario</Spanish>
             <Polish>Rozpocznij transmisję</Polish>
-            <Italian>Incomincia trasmissione</Italian>
+            <Italian>Comincia trasmissione prioritaria</Italian>
             <Japanese>ブロードキャストを開始</Japanese>
             <Chinese>開始撥放</Chinese>
             <Chinesesimp>开始播放</Chinesesimp>
@@ -359,7 +359,7 @@
             <English>Stop Broadcast</English>
             <Spanish>Detener mensaje prioritario</Spanish>
             <Polish>Zatrzymaj transmisję</Polish>
-            <Italian>Termina trasmissione</Italian>
+            <Italian>Termina trasmissione prioritaria</Italian>
             <Japanese>ブロードキャストを停止</Japanese>
             <Chinese>停止撥放</Chinese>
             <Chinesesimp>停止播放</Chinesesimp>
@@ -399,7 +399,7 @@
             <English>Intercom Transmit</English>
             <Spanish>Tecla de intercom</Spanish>
             <Polish>Klawisz interkomu</Polish>
-            <Italian>Pulsante intercom</Italian>
+            <Italian>PTT Interfono</Italian>
             <Chinese>對講機鍵</Chinese>
             <Chinesesimp>对讲机键</Chinesesimp>
             <Japanese>インターコム送信キー</Japanese>
@@ -413,7 +413,7 @@
             <English>Transmit on intercom station.</English>
             <Spanish>Usa la estación de intercom para hablar.</Spanish>
             <Polish>Mów przez interkom</Polish>
-            <Italian>Usa la stazione intercom per parlare.</Italian>
+            <Italian>Trametti su stazione interfono.</Italian>
             <Japanese>インターコム内で会話する為に使用します。</Japanese>
             <Chinese>使用通訊機台來講話</Chinese>
             <Chinesesimp>使用通讯机台来讲话</Chinesesimp>
@@ -426,7 +426,7 @@
             <English>Intercom Broadcast</English>
             <Spanish>Tecla para mensaje prioritario</Spanish>
             <Polish>Klawisz nadawania interkomu</Polish>
-            <Italian>Pulsante trasmissione intercom</Italian>
+            <Italian>PTT Interfono Prioritario</Italian>
             <Chinese>無線電廣播按鍵</Chinese>
             <Chinesesimp>无线电广播按键</Chinesesimp>
             <Japanese>インターコムのブロードキャスト</Japanese>
@@ -440,7 +440,7 @@
             <English>Transmit a priority message on intercom station.</English>
             <Spanish>Usa la estación de intercom para enviar un mensaje prioritario.</Spanish>
             <Polish>Użyj interkomu, aby wysłać wiadomość priorytetową.</Polish>
-            <Italian>Usa la stazione intercom per trasmettere un messaggio prioritario</Italian>
+            <Italian>Trasmetti un messaggio prioritario sulla stazione interfono.</Italian>
             <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
             <Chinese>使用內部對講機廣播優先訊息</Chinese>
             <Chinesesimp>使用内部对讲机广播优先讯息</Chinesesimp>
@@ -454,7 +454,7 @@
             <English>Previous Intercom Network</English>
             <Spanish>Red de intercom previa</Spanish>
             <Polish>Poprzednia sieć interkomu</Polish>
-            <Italian>Rete Intercom precedente</Italian>
+            <Italian>Rete Interfono precedente</Italian>
             <Japanese>前のインターコム ネットワーク</Japanese>
             <Chinese>上一個通訊網路</Chinese>
             <Chinesesimp>上一个通讯网路</Chinesesimp>
@@ -468,7 +468,7 @@
             <English>Connects to the previous Intercom Network. Disconnects from others.</English>
             <Spanish>Red de intercom previa. Desconecta las demás.</Spanish>
             <German>Verbindet mit dem vorheriger Bordfunknetzwerk.</German>
-            <Italian>Si collega alla rete interfono precedente. Si disconnette dagli altri.</Italian>
+            <Italian>Si collega alla rete interfono precedente. Si disconnette dalle altre.</Italian>
             <Russian>Подключается к предыдущей сети Интерком. Отключается от остальных.</Russian>
             <Japanese>前のインターコム ネットワークに接続します。 別のインターコム ネットワークは切断されます。</Japanese>
             <Chinese>從其他通訊網路斷開。並連接至上一個網路。</Chinese>
@@ -481,7 +481,7 @@
             <English>Next Intercom Network</English>
             <Spanish>Siguiente red de intercom</Spanish>
             <Polish>Następna sieć interkomu</Polish>
-            <Italian>Rete interfono successiva</Italian>
+            <Italian>Rete Interfono successiva</Italian>
             <Japanese>次のインターコム ネットワーク</Japanese>
             <Chinese>下一個通訊網路</Chinese>
             <Chinesesimp>下一个通讯网路</Chinesesimp>
@@ -495,7 +495,7 @@
             <English>Connects to the next Intercom Network. Disconnects from others.</English>
             <Spanish>Siguiente red de intercom. Desconecta las demás.</Spanish>
             <German>Verbindet zu dem nächsten Bordfunknetzwerk.</German>
-            <Italian>Si collega alla rete interfono prossimo. Si disconnette dagli altri.</Italian>
+            <Italian>Si collega alla rete interfono successiva. Si disconnette dalle altre.</Italian>
             <Russian>Подключает к следующей сети Интеркома. Отключает от остальных</Russian>
             <Japanese>次のインターコム ネットワークに接続します。 別のインターコム ネットワークは切断されます。</Japanese>
             <Chinese>從其他通訊網路斷開。並連接至下一個網路。</Chinese>
@@ -508,7 +508,7 @@
             <English>Connect Previous Intercom Network</English>
             <Spanish>Conectar a la anterior red de intercom</Spanish>
             <Polish>Połącz się z poprzednią siecią interkomu</Polish>
-            <Italian>Connetti Rete interfono Precedente</Italian>
+            <Italian>Connetti Rete Interfono Precedente</Italian>
             <Chinese>連線上一個通訊網路</Chinese>
             <Chinesesimp>连线上一个通讯网路</Chinesesimp>
             <Japanese>前のインターコム ネットワークに接続</Japanese>
@@ -522,7 +522,7 @@
             <English>Connects to the previous Intercom Network while keeping the already connected ones.</English>
             <Spanish>Conecta la red de intercom anterior manteniendo las demás.</Spanish>
             <German>Verbindet mit dem vorherigen Bordfunknetzwerk während die bereits verbundenen beibehalten werden.</German>
-            <Italian>Si connette alla precedente rete interfono mantenendo quelle già connesse.</Italian>
+            <Italian>Si connette alla rete interfono precedente mantenendo quelle già connesse.</Italian>
             <Russian>Подключает к предыдущей сети Интеркома, сохраняя подключение к текущим</Russian>
             <Japanese>前のインターコム ネットワークに既に接続済みのネットワークを保持したまま接続します。</Japanese>
             <Chinese>維持與其他通訊網路存在的連線。並連接至上一個網路。</Chinese>
@@ -549,7 +549,7 @@
             <English>Connects to the next Intercom Network while keeping the already connected ones.</English>
             <Spanish>Conecta la siguiente red de intercom manteniendo las demás.</Spanish>
             <German>Verbindet mit dem nächsten Bordfunknetzwerk während die bereits verbundenen Netzwerke beibehalten werden.</German>
-            <Italian>Si connette alla prossimo rete interfono mantenendo quelle già connesse.</Italian>
+            <Italian>Si connette alla rete interfono successiva mantenendo quelle già connesse.</Italian>
             <Russian>Подключает к след. сети Интеркома,сохраняя подключение к текущим</Russian>
             <Japanese>次のインターコム ネットワークに既に接続済みのネットワークを保持したまま接続します。</Japanese>
             <Chinese>維持與其他通訊網路存在的連線。並連接至下一個網路。</Chinese>
@@ -563,7 +563,7 @@
             <Spanish>Abrir la interfaz de Intercom</Spanish>
             <Japanese>インターコムのGUIを開く</Japanese>
             <German>Öffne Bordfunknutzeroberfläche</German>
-            <Italian>Apri l'interfaccia utente della Interfono</Italian>
+            <Italian>Apri l'interfaccia utente dell'Interfono</Italian>
             <Russian>Открыть окно Интеркома</Russian>
             <Chinese>開啟對講機界面。</Chinese>
             <French>Ouvrir l'interface graphique de l'interphone</French>
@@ -575,7 +575,7 @@
             <English>Intercom status is being forced. Cannot change configuration.</English>
             <Spanish>La funcionalidad del intercom es forzada. No se puede cambiar la configuración.</Spanish>
             <German>Bordfunkeinstellungen werden erzwungen! Konfiguration kann nicht geändert werden.</German>
-            <Italian>Lo stato dell'interfono viene forzato. Impossibile modificare la configurazione.</Italian>
+            <Italian>Lo stato dell'interfono è forzato. Impossibile modificare la configurazione.</Italian>
             <Russian>Настройки интеркома применены принудительно. Невозможно изменить конфигурацию</Russian>
             <Japanese>インターコム状態が強制表示され、 設定は変更できません。</Japanese>
             <Chinese>對講機狀態以被強制。無法更改設置。</Chinese>

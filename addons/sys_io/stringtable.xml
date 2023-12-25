@@ -5,7 +5,7 @@
             <English>ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.</English>
             <Spanish>ACRE ERROR TUBERÍA: Sin ping de retorno, intentando recuperar la tubería</Spanish>
             <German>ACRE TUNNELFEHLER: Kein Ping empfangen, versuche Tunnel wieder zu verbinden.</German>
-            <Italian>ACRE PIPE ERROR: nessun ping di ritorno, tentativo di recuperare il tubo.</Italian>
+            <Italian>ACRE PIPE ERROR: nessun ping di ritorno, tentativo di recuperare la pipe.</Italian>
             <Russian>ОШИБКА ТУННЕЛЯ ACRE: Нет ответного сигнала, попытка повторного подключения</Russian>
             <Japanese>ACRE PIPE ERROR: 反応が無い為、 命名済みパイプへ再接続を試みます。</Japanese>
             <Chinese>ACRE 管道錯誤：Ping沒有回應，試著掛接在命名的管道重試中。</Chinese>
@@ -18,7 +18,7 @@
             <English>ACRE has recovered from a closed pipe!</English>
             <Spanish>ACRE se ha recuperado de una tubería previamente rota!</Spanish>
             <German>ACRE hat sich wieder verbunden, weiter gehts.</German>
-            <Italian>ACRE si è ripreso da un oleodotto precedentemente rotto.</Italian>
+            <Italian>ACRE si è ripreso da un pipe precedentemente chiuso.</Italian>
             <Russian>ACRE проблема с туннелем устранена!</Russian>
             <Japanese>ACREは閉鎖済みパイプから回復しました！</Japanese>
             <Chinese>ACRE 從封閉的管道恢復！</Chinese>

@@ -78,7 +78,7 @@
         <Key ID="STR_ACRE_sys_core_godVolume_displayName">
             <English>God Volume</English>
             <German>Zeus Lautstärke</German>
-            <Italian>Zeus volume</Italian>
+            <Italian>Volume Zeus</Italian>
             <French>Volume Dieu</French>
             <Spanish>Volumen de Zeus</Spanish>
             <Turkish>Tanrı Sesi</Turkish>
@@ -92,7 +92,7 @@
             <Japanese>クライアントの消音解除</Japanese>
             <Czech>Zrušit ztlumení diváků</Czech>
             <German>Stummschaltung der Clients aufheben</German>
-            <Italian>Disattiva l'Audio dei Clients</Italian>
+            <Italian>Smuta i Client</Italian>
             <Korean>클라이언트 음소거 해제</Korean>
             <Polish>Odmutuj klientów</Polish>
             <Russian>Размьютить клиенты</Russian>
@@ -167,7 +167,7 @@
             <Czech>Aktivní klávesa rádia</Czech>
             <German>Standard Sprechtaste</German>
             <Japanese>アクティブな無線機の送信</Japanese>
-            <Italian>Tasto Radio Attiva</Italian>
+            <Italian>Trasmetti su Radio Attiva</Italian>
             <French>Transmettre sur radio active</French>
             <Korean>기본 무전 단축키</Korean>
             <Polish>Aktywne klawisz nadawania</Polish>
@@ -183,7 +183,7 @@
             <Czech>Použít právě zvolené rádio k mluvení.</Czech>
             <German>Auf aktivem Funkgerät übertragen.</German>
             <Japanese>現在アクティブにしている無線機で話します。</Japanese>
-            <Italian>Trasmetti sulla Radio selezionata.</Italian>
+            <Italian>Trasmetti sulla Radio attualmente selezionata come attiva.</Italian>
             <French>Utilise la radio actuellement sélectionnée pour transmettre.</French>
             <Korean>현재 선택한 무전기 사용해 대화하세요.</Korean>
             <Polish>Użyj aktualnie wybranego radia aby nadawać.</Polish>
@@ -213,7 +213,7 @@
             <Czech>Použít první rádio v inventáři k mluvení.</Czech>
             <German>Auf erstem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>1番目に割当中の無線機で話します。</Japanese>
-            <Italian>Trasmetti sulla Prima Radio nel tuo equipaggiamento.</Italian>
+            <Italian>Trasmetti sulla tua Prima Radio e impostala come attiva.</Italian>
             <French>Utilise la première radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 첫 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na pierwszym radiu z Twojego ekwipunku.</Polish>
@@ -243,7 +243,7 @@
             <Czech>Použít druhé rádio v inventáři k mluvení.</Czech>
             <German>Auf zweitem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>2番目に割当中の無線機で話します。</Japanese>
-            <Italian>Trasmetti sulla Seconda Radio nel tuo equipaggiamento.</Italian>
+            <Italian>Trasmetti sulla tua Seconda Radio e impostala come attiva.</Italian>
             <French>Utilise la seconde radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 두 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na drugim radiu z Twojego ekwipunku.</Polish>
@@ -273,7 +273,7 @@
             <Czech>Použít třetí rádio v inventáři k mluvení.</Czech>
             <German>Auf drittem Funkgerät übertragen und selbiges aktiv setzen.</German>
             <Japanese>3番目に割当中の無線機で話します。</Japanese>
-            <Italian>Trasmetti sulla Terza Radio nel tuo equipaggiamento.</Italian>
+            <Italian>Trasmetti sulla tua Terza Radio e impostala come attiva.</Italian>
             <French>Utilise la troisième radio de l'inventaire pour transmettre.</French>
             <Korean>인벤토리의 세 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
             <Polish>Użyj aby nadawać na trzecim radiu z Twojego ekwipunku.</Polish>
@@ -289,7 +289,7 @@
             <Czech>Předchozí kanál</Czech>
             <German>Vorheriger Funkkanal (aktives Funkgerät)</German>
             <Japanese>前のチャンネル (アクティブな無線機)</Japanese>
-            <Italian>Canale Precedente (Ricetrasmittente Attiva)</Italian>
+            <Italian>Canale Precedente (Radio Attiva)</Italian>
             <French>Canal précédent (radio active)</French>
             <Korean>이전 채널 (활성화된 무전기)</Korean>
             <Polish>Poprzedni kanał</Polish>
@@ -305,7 +305,7 @@
             <Czech>Další kanál</Czech>
             <German>Nächster Funkkanal (aktives Funkgerät)</German>
             <Japanese>次のチャンネル (アクティブな無線機)</Japanese>
-            <Italian>Canale Successivo (Ricetrasmittente Attiva)</Italian>
+            <Italian>Canale Successivo (Radio Attiva)</Italian>
             <French>Canal suivant (radio active)</French>
             <Korean>다음 채널 (활성화된 무전기)</Korean>
             <Polish>Następny kanał</Polish>
@@ -321,7 +321,7 @@
             <Czech>Změnit jazyk Babelu</Czech>
             <German>Babel Sprache wechseln</German>
             <Japanese>バベル言語の切り替え</Japanese>
-            <Italian>Cambia Linguaggio (Babel)</Italian>
+            <Italian>Cambia Lingua (Babel)</Italian>
             <French>Commuter langue Babel</French>
             <Korean>바벨 언어 전환</Korean>
             <Polish>Zmień język (Babel)</Polish>
@@ -337,7 +337,7 @@
             <Czech>Rádio do levého ucha</Czech>
             <German>Linker Ohrhörer</German>
             <Japanese>音声を左耳側から (アクティブな無線機)</Japanese>
-            <Italian>Imposta Auricolare Sinistro</Italian>
+            <Italian>Auricolare Sinistro (Radio Attiva)</Italian>
             <French>Radio oreille gauche (radio active)</French>
             <Korean>왼쪽 이어폰</Korean>
             <Polish>Odsłuch tylko na lewym uchu</Polish>
@@ -353,7 +353,7 @@
             <Czech>Rádio do prostředního ucha</Czech>
             <German>Beide Ohrhörer</German>
             <Japanese>音声を両耳側から (アクティブな無線機)</Japanese>
-            <Italian>Centra gli Auricolari</Italian>
+            <Italian>Centra Auricolari (Radio Attiva)</Italian>
             <French>Radio deux oreilles (radio active)</French>
             <Korean>양쪽 이어폰</Korean>
             <Polish>Odsłuch stereo</Polish>
@@ -369,7 +369,7 @@
             <Czech>Rádio do pravého ucha</Czech>
             <German>Rechter Ohrhörer</German>
             <Japanese>音声を右耳側から (アクティブな無線機)</Japanese>
-            <Italian>Imposta Auricolare Destro</Italian>
+            <Italian>Auricolare Destro (Radio Attiva)</Italian>
             <French>Radio oreille droite (radio active)</French>
             <Korean>오른쪽 이어폰</Korean>
             <Polish>Odsłuch tylko na prawym uchu</Polish>
@@ -398,7 +398,7 @@
         <Key ID="STR_ACRE_sys_core_AntennaDirToggle">
             <English>Antenna Direction Toggle</English>
             <German>Antennenausrichtung wechseln</German>
-            <Italian>Modificare l'allineamento dell'antenna</Italian>
+            <Italian>Modifica l'allineamento dell'antenna</Italian>
             <Japanese>アンテナの指向を切り替え</Japanese>
             <Russian>Изменить направление антенны</Russian>
             <Chinese>天線方向切換</Chinese>
@@ -410,7 +410,7 @@
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
             <German>Antenne gerade</German>
-            <Italian>Antenna diritta</Italian>
+            <Italian>Antenna raddrizzata</Italian>
             <Japanese>アンテナは真っすぐ伸びている</Japanese>
             <Russian>Антенна выпрямлена</Russian>
             <Chinese>天線拉直</Chinese>
@@ -444,7 +444,7 @@
             <Chinese>干擾模型</Chinese>
             <Chinesesimp>干扰模型</Chinesesimp>
             <Portuguese>Interferência do Modelo</Portuguese>
-            <Italian>Modello Interferenza</Italian>
+            <Italian>Modella Interferenza</Italian>
             <Turkish>Parazit Modeli</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
@@ -476,7 +476,7 @@
             <Chinese>忽略天線方向</Chinese>
             <Chinesesimp>忽略天线方向</Chinesesimp>
             <Portuguese>Ignorar Direção da Antena</Portuguese>
-            <Italian>Ignora direzione antenna</Italian>
+            <Italian>Ignora allineamento antenna</Italian>
             <Turkish>Anten Yönünü Yoksay</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_autoAntennaDirection_displayName">
@@ -581,7 +581,7 @@
             <Korean>헤드셋 착용</Korean>
             <Portuguese>Fones Levantados</Portuguese>
             <Polish>Słuchawki założone</Polish>
-            <Italian>Alza cuffie</Italian>
+            <Italian>Cuffia indossata</Italian>
             <Spanish>Subir auriculares</Spanish>
             <French>Casque mis</French>
             <Turkish>Kulaklık Takıldı</Turkish>
@@ -596,7 +596,7 @@
             <Korean>헤드셋 벗기</Korean>
             <Portuguese>Fones Abaixados</Portuguese>
             <Polish>Słuchawki zdjęte</Polish>
-            <Italian>Abbassa cuffie</Italian>
+            <Italian>Cuffie tolta</Italian>
             <Spanish>Bajar auriculares</Spanish>
             <French>Casque enlevé</French>
             <Turkish>Kulaklık İndirildi</Turkish>
@@ -604,7 +604,7 @@
         <Key ID="STR_ACRE_sys_core_incomingTransmissionNotification">
             <English>Show incoming transmissions</English>
             <German>Eingehende Funksprüche anzeigen</German>
-            <Italian>Mostra i messaggi radio in arrivo</Italian>
+            <Italian>Mostra trasmissioni ricevute</Italian>
             <Japanese>受信中の通信を表示</Japanese>
             <Russian>Показывать входящие передачи</Russian>
             <Chinese>顯示接收中的通訊</Chinese>
