@@ -12,6 +12,6 @@ if (hasInterface) then {
     GVAR(disallowedViews) = ["GUNNER", "GROUP"];
 };
 
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 ADDON = true;
