@@ -44,18 +44,29 @@ private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
 TRACE_1("ManualChannel",_manualChannel);
 
 if (_manualChannel isEqualTo 1) then {
-    private _currentMHzFrequency = HASH_GET(_radioData, "MHzKnobPosition");
-    _currentMHzFrequency = _currentMHzFrequency + 30;
-    private _currentkHzFrequency = HASH_GET(_radioData, "kHzKnobPosition");
-    _currentkHzFrequency = _currentkHzFrequency * 25 / 1000;
-    private _newFreq = _currentMHzFrequency + _currentkHzFrequency;
-
     private _channels = HASH_GET(_radioData, "channels");
     private _channel = HASHLIST_SELECT(_channels, GVAR(manualChannel));
 
-    HASH_SET(_channel, "frequencyTX", _newFreq);
-    HASH_SET(_channel, "frequencyRX", _newFreq);
-    TRACE_3("",_currentMHzFrequency,_currentkHzFrequency,_newFreq);
+    if (_eventData isEqualType []) then { // if event data comes from a setChannel-type API in the [MHzKnobPos,KHzKnobPos] format
+        private _newFreq = ((_eventData select 0) + 30) + ((_eventData select 1) * 25 / 1000);
+
+        HASH_SET(_channel, "frequencyTX", _newFreq);
+        HASH_SET(_channel, "frequencyRX", _newFreq);
+        TRACE_1("",_newFreq);
+
+        HASH_SET(_radioData, "MHzKnobPosition", (_eventData select 0));
+        HASH_SET(_radioData, "kHzKnobPosition", (_eventData select 1));
+    } else {
+        private _currentMHzFrequency = HASH_GET(_radioData, "MHzKnobPosition");
+        _currentMHzFrequency = _currentMHzFrequency + 30;
+        private _currentkHzFrequency = HASH_GET(_radioData, "kHzKnobPosition");
+        _currentkHzFrequency = _currentkHzFrequency * 25 / 1000;
+        private _newFreq = _currentMHzFrequency + _currentkHzFrequency;
+
+        HASH_SET(_channel, "frequencyTX", _newFreq);
+        HASH_SET(_channel, "frequencyRX", _newFreq);
+        TRACE_3("",_currentMHzFrequency,_currentkHzFrequency,_newFreq);
+    };
 
     [_radioID,"setChannelData", [GVAR(manualChannel), _channel]] call EFUNC(sys_data,dataEvent);
 
