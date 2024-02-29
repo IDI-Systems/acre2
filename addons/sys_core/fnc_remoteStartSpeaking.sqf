@@ -79,7 +79,7 @@ private _result = false;
     };
 
     if (isNull _unit) exitWith {
-        WARNING_4("START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3,Speaking Type: %4",acre_player,_speakingId,_netId,_speakingType);
+        WARNING_4("START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3 - Speaking Type: %4",acre_player,_speakingId,_netId,_speakingType);
         false
     };
 

@@ -93,7 +93,7 @@ private _setupSides = false;
 {
     if (_x isKindOf QGVAR(basicMissionSetup)) exitWith {
         _setupSides = _x getVariable ["RadioSetup", false];
-        TRACE_1("Dedicated basic mission module,checking sides configuration",_setupSides);
+        TRACE_1("Dedicated basic mission module - checking sides configuration",_setupSides);
     };
 } forEach (allMissionObjects "logic");
 
