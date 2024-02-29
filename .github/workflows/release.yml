@@ -53,7 +53,7 @@ jobs:
     - name: Rename build folder
       run: mv .hemttout/release .hemttout/@acre2
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: acre2
         path: .hemttout/@*
@@ -78,7 +78,7 @@ jobs:
         echo "Check DirectX SDK: $(Test-Path .\\ci\\directx-sdk\\Include,.\\ci\\directx-sdk\\Lib\\${{ matrix.arch }})"
         echo "DXSDK_DIR: ${{ env.DXSDK_DIR }}"
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.3
+      uses: microsoft/setup-msbuild@v2
     - name: Build Extensions (x86)
       if: matrix.arch == 'x86'
       run: |
@@ -95,7 +95,7 @@ jobs:
       run: |
         .\ci\battleye\signtool.exe sign /f .\ci\battleye\idi-systems.pfx /p ${{ secrets.BE_CRED_PASSWORD }} /t http://timestamp.digicert.com *.dll
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: acre2-extensions-${{ matrix.arch }}
         path: |
@@ -111,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -159,7 +159,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -217,7 +217,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
     - name: Prepare Archives
       run: |
         echo "Organize"
