@@ -16,7 +16,7 @@
  * Public: No
  */
 
-TRACE_1("setRowText", _this);
+TRACE_1("setRowText",_this);
 
 private _display = uiNamespace getVariable QGVAR(currentDisplay);
 
@@ -55,7 +55,7 @@ switch _alignment do {
         };
     };
 };
-TRACE_3("setting text", _start, _rowCount, _length);
+TRACE_3("setting text",_start,_rowCount,_length);
 
 private _baseId = (_row * 1000) +1;
 

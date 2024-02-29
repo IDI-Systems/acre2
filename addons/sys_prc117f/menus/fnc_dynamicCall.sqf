@@ -16,14 +16,14 @@
  * Public: No
  */
 
-TRACE_1("dynamicCall", _this);
+TRACE_1("dynamicCall",_this);
 params ["_funcName", "_var"];
 
 private _ret = nil;
 
 if (_funcName isEqualType "") then {
     private _func = missionNamespace getVariable format ["%1_fnc_%2", QUOTE(ADDON), _funcName];
-    _ret = _var call CALLSTACK_NAMED(_func, _funcName);
+    _ret = _var call CALLSTACK_NAMED(_func,_funcName);
 } else {
     if (_funcName isEqualType {}) then {
         // Calling code

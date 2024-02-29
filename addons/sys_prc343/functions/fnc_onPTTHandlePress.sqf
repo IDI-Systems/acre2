@@ -29,7 +29,7 @@ if (_key == 0) then {
         _newView = IN;
     };
     if (_newView != _currentView) then {
-        SET_STATE("currentView", _newView);
+        SET_STATE("currentView",_newView);
         [_newView] call CALLSTACK(FUNC(zoomChannelBlockSelector));
     };
 };

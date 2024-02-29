@@ -46,9 +46,9 @@ params ["", "", "", "_radioData"];
 */
 private _channelNumber = HASH_GET(_radioData,"currentChannel");
 ISNILS(_channelNumber,0);
-private _channels = HASH_GET(_radioData, "channels");
-private _channel = HASHLIST_SELECT(_channels, _channelNumber);
-private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
+private _channels = HASH_GET(_radioData,"channels");
+private _channel = HASHLIST_SELECT(_channels,_channelNumber);
+private _manualChannel = HASH_GET(_radioData,"manualChannelSelection");
 /*
  *  All needed data from the channel hash can be extracted and
  *  consequently written to the _return hash.
@@ -66,27 +66,27 @@ private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
 private _return = HASH_CREATE;
 
 if (_manualChannel isEqualTo 1) then {
-    _channel = HASHLIST_SELECT(_channels, GVAR(manualChannel));
-    HASH_SET(_return, "mode", HASH_GET(_channel, "mode"));
-    HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
-    HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
-    HASH_SET(_return, "CTCSSTx", HASH_GET(_radioData, "CTCSS"));
-    HASH_SET(_return, "CTCSSRx", HASH_GET(_radioData, "CTCSS"));
-    HASH_SET(_return, "modulation", HASH_GET(_radioData, "modulation"));
-    HASH_SET(_return, "encryption", HASH_GET(_radioData, "encryption"));
-    HASH_SET(_return, "power", HASH_GET(_radioData, "power"));
-    HASH_SET(_return, "squelch", HASH_GET(_radioData, "squelch"));
+    _channel = HASHLIST_SELECT(_channels,GVAR(manualChannel));
+    HASH_SET(_return,"mode",HASH_GET(_channel,"mode"));
+    HASH_SET(_return,"frequencyTX",HASH_GET(_channel,"frequencyTX"));
+    HASH_SET(_return,"frequencyRX",HASH_GET(_channel,"frequencyRX"));
+    HASH_SET(_return,"CTCSSTx",HASH_GET(_radioData,"CTCSS"));
+    HASH_SET(_return,"CTCSSRx",HASH_GET(_radioData,"CTCSS"));
+    HASH_SET(_return,"modulation",HASH_GET(_radioData,"modulation"));
+    HASH_SET(_return,"encryption",HASH_GET(_radioData,"encryption"));
+    HASH_SET(_return,"power",HASH_GET(_radioData,"power"));
+    HASH_SET(_return,"squelch",HASH_GET(_radioData,"squelch"));
 } else {
-    HASH_SET(_return, "mode", HASH_GET(_channel, "mode"));
-    HASH_SET(_return, "networkID", HASH_GET(_channel, "networkID"));
-    HASH_SET(_return, "frequencies", HASH_GET(_channel, "frequencies"));
-    HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
-    HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
-    //HASH_SET(_return, "CTCSSTx", HASH_GET(_radioData, "CTCSS"));
-    //HASH_SET(_return, "CTCSSRx", HASH_GET(_radioData, "CTCSS"));
-    //HASH_SET(_return, "modulation", HASH_GET(_radioData, "modulation"));
-    //HASH_SET(_return, "encryption", HASH_GET(_radioData, "encryption"));
-    HASH_SET(_return, "power", HASH_GET(_radioData, "power"));
-    //HASH_SET(_return, "squelch", HASH_GET(_radioData, "squelch"));
+    HASH_SET(_return,"mode",HASH_GET(_channel,"mode"));
+    HASH_SET(_return,"networkID",HASH_GET(_channel,"networkID"));
+    HASH_SET(_return,"frequencies",HASH_GET(_channel,"frequencies"));
+    HASH_SET(_return,"frequencyTX",HASH_GET(_channel,"frequencyTX"));
+    HASH_SET(_return,"frequencyRX",HASH_GET(_channel,"frequencyRX"));
+    //HASH_SET(_return,"CTCSSTx",HASH_GET(_radioData,"CTCSS"));
+    //HASH_SET(_return,"CTCSSRx",HASH_GET(_radioData,"CTCSS"));
+    //HASH_SET(_return,"modulation",HASH_GET(_radioData,"modulation"));
+    //HASH_SET(_return,"encryption",HASH_GET(_radioData,"encryption"));
+    HASH_SET(_return,"power",HASH_GET(_radioData,"power"));
+    //HASH_SET(_return,"squelch",HASH_GET(_radioData,"squelch"));
 };
 _return

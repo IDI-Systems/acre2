@@ -42,4 +42,4 @@
 
 params ["", "", "", "_radioData"];
 
-(HASH_GET(_radioData, "audioPath") == "INTSPEAKER")
+(HASH_GET(_radioData,"audioPath") == "INTSPEAKER")

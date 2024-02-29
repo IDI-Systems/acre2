@@ -49,14 +49,14 @@ if (!GVAR(speaking_cache_valid)) then {
     _okRadios = (_okRadios select 0) select 1;
 
     private _transmittingRadioData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-    private _mode = HASH_GET(_transmittingRadioData, "mode");
+    private _mode = HASH_GET(_transmittingRadioData,"mode");
     _functionName = getText(configFile >> "CfgAcreRadioModes" >> _mode >> "speaking");
-    HASH_SET(GVAR(coreCache), "okRadios"+_radioId, _okRadios);
-    HASH_SET(GVAR(coreCache), "modefunction"+_radioId, _functionName);
+    HASH_SET(GVAR(coreCache),"okRadios"+_radioId,_okRadios);
+    HASH_SET(GVAR(coreCache),"modefunction"+_radioId,_functionName);
 
 } else {
-    _okRadios = HASH_GET(GVAR(coreCache), "okRadios"+_radioId);
-    _functionName = HASH_GET(GVAR(coreCache), "modefunction"+_radioId);
+    _okRadios = HASH_GET(GVAR(coreCache),"okRadios"+_radioId);
+    _functionName = HASH_GET(GVAR(coreCache),"modefunction"+_radioId);
 };
 
 
@@ -71,7 +71,7 @@ if (_okRadios isNotEqualTo []) then {
             #ifdef ENABLE_PERFORMANCE_COUNTERS
                 BEGIN_COUNTER(signal_mode_function);
             #endif
-            private _returnData = [_unit, _radioid, acre_player, _x] call CALLSTACK_NAMED((missionNamespace getVariable _functionName), _functionName);
+            private _returnData = [_unit, _radioid, acre_player, _x] call CALLSTACK_NAMED((missionNamespace getVariable _functionName),_functionName);
             // DATA STRUCTURE: _returnData = [txRadioId, rxRadioId, signalQuality, distortionModel]
             #ifdef ENABLE_PERFORMANCE_COUNTERS
                 END_COUNTER(signal_mode_function);

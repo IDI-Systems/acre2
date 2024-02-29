@@ -20,7 +20,7 @@ params ["_componentId"];
 private _componentData = HASH_GET(EGVAR(sys_data,radioData),_componentId);
 private _return = nil;
 if(!isNil "_componentData") then {
-    private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
+    private _connectorData = HASH_GET(_componentData,"acre_radioConnectionData");
     if(!isNil "_connectorData") then {
         private _componentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_CONFIG(_componentId);
         private _connectors = getArray(_componentClass >> "connectors");

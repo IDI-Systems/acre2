@@ -16,16 +16,16 @@
  * Public: No
  */
 
-TRACE_1("renderMenu", _this);
+TRACE_1("renderMenu",_this);
 params ["_menu", "_callerMenu"];  // the menu to render is passed
 
 [] call FUNC(clearDisplay);
 
 private _menuId = MENU_ID(_menu);
 if (isNil "_menuId") then {
-    SET_STATE("currentRenderMenu", _menu);
+    SET_STATE("currentRenderMenu",_menu);
 } else {
-    SET_STATE("currentRenderMenu", _menuId);
+    SET_STATE("currentRenderMenu",_menuId);
 };
 
 [_menu] call FUNC(callRenderFunctor);
@@ -34,11 +34,11 @@ if (MENU_TYPE(_menu) >= MENU_ACTION_NONE ) then {
     switch ( MENU_TYPE(_menu) ) do {
         // Its not a full submenu, but it references another embedded submenu. Render it
         case MENU_ACTION_SUBMENU: {
-            TRACE_1("MENU_ACTION_SUBMENU", MENU_SUBMENUS_ITEM(_menu,0));
-            [MENU_SUBMENUS_ITEM(_menu,0), _callerMenu] call FUNC(changeMenu);
+            TRACE_1("MENU_ACTION_SUBMENU",MENU_SUBMENUS_ITEM(_menu,0));
+            [MENU_SUBMENUS_ITEM(_menu,0),_callerMenu] call FUNC(changeMenu);
         };
         case MENU_ACTION_CODE: {
-            [_menu, _callerMenu] call MENU_SUBMENUS_ITEM(_menu, 0);
+            [_menu, _callerMenu] call MENU_SUBMENUS_ITEM(_menu,0);
         };
         default {
             WARNING("Unhandled menu action type!")
@@ -75,7 +75,7 @@ if (MENU_TYPE(_menu) >= MENU_ACTION_NONE ) then {
         };
 
         default {
-            TRACE_1("!!! INVALID MENU SPECIFIED", "");
+            TRACE_1("!!! INVALID MENU SPECIFIED","");
         };
     };
 };

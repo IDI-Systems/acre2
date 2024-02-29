@@ -41,6 +41,6 @@
 
 params ["_radioId", "", "", ""];
 
-SCRATCH_SET(_radioId, "cachedTransmissions", false);
+SCRATCH_SET(_radioId,"cachedTransmissions",false);
 
 true;

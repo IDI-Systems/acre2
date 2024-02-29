@@ -35,7 +35,7 @@ GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
 
             private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
 
-            TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
+            TRACE_2("Rendering VOLUME-STAGE-1",_volume,_display);
             if (!isNull _display) then {
                 (_display displayCtrl ICON_LOADING) progressSetPosition _volume;
                 (_display displayCtrl ICON_LOADING) ctrlCommit 0;
@@ -54,15 +54,15 @@ GVAR(NoItems) = ["ERROR_NOENTRY", "ERROR_NOENTRY", "",
     ],
     [
         {
-            TRACE_1("Entry", "");
+            TRACE_1("Entry","");
 
         }, // onEntry
         nil, // onExit
         {
-            TRACE_1("ERROR_NOENTRY:onButtonPress", (_this select 1));
+            TRACE_1("ERROR_NOENTRY:onButtonPress",(_this select 1));
             if (((_this select 1) select 0) == "ENT" || ((_this select 1) select 0) == "CLR") then {
-                TRACE_1("BACK TO HOME", "");
-                private _home = GET_STATE_DEF("currentHome", GVAR(VULOSHOME));
+                TRACE_1("BACK TO HOME","");
+                private _home = GET_STATE_DEF("currentHome",GVAR(VULOSHOME));
                 [_home] call FUNC(changeMenu);
             };
             true
@@ -94,9 +94,9 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
 
                     private _volume = GET_STATE("volume");
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
-                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
+                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID),"receivingSignal",0);
 
-                    TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
+                    TRACE_2("Rendering VOLUME-STAGE-1",_volume,_display);
                     if (!isNull _display) then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
@@ -126,9 +126,9 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
 
                     private _volume = GET_STATE("volume");
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
-                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
+                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID),"receivingSignal",0);
 
-                    TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
+                    TRACE_2("Rendering VOLUME-STAGE-1",_volume,_display);
                     if (!isNull _display) then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
@@ -158,9 +158,9 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
 
                     private _volume = GET_STATE("volume");
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
-                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
+                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID),"receivingSignal",0);
 
-                    TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
+                    TRACE_2("Rendering VOLUME-STAGE-1",_volume,_display);
                     if (!isNull _display) then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
@@ -188,9 +188,9 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
 
                     private _volume = GET_STATE("volume");
                     private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
-                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID), "receivingSignal", 0);
+                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID),"receivingSignal",0);
 
-                    TRACE_2("Rendering VOLUME-STAGE-1",_volume, _display);
+                    TRACE_2("Rendering VOLUME-STAGE-1",_volume,_display);
                     if (!isNull _display) then {
                         (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
                         (_display displayCtrl ICON_VOLUME) ctrlCommit 0;

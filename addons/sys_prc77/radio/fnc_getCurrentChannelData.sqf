@@ -43,20 +43,20 @@ _frequency = _MHz + _kHz;*/
 
 private _return = HASH_CREATE;
 
-HASH_SET(_return, "mode", HASH_GET(_radioData, "mode"));
-HASH_SET(_return, "frequencyTX", HASH_GET(_radioData, "frequencyTX"));
-HASH_SET(_return, "frequencyRX", HASH_GET(_radioData, "frequencyRX"));
-if (HASH_GET(_radioData, "powerSource") == "VAU") then {
-    HASH_SET(_return, "power", VRC64_RACK_POWER);
+HASH_SET(_return,"mode",HASH_GET(_radioData,"mode"));
+HASH_SET(_return,"frequencyTX",HASH_GET(_radioData,"frequencyTX"));
+HASH_SET(_return,"frequencyRX",HASH_GET(_radioData,"frequencyRX"));
+if (HASH_GET(_radioData,"powerSource") == "VAU") then {
+    HASH_SET(_return,"power",VRC64_RACK_POWER);
 } else {
-    HASH_SET(_return, "power", HASH_GET(_radioData, "power"));
+    HASH_SET(_return,"power",HASH_GET(_radioData,"power"));
 };
-HASH_SET(_return, "CTCSSTx", HASH_GET(_radioData, "CTCSSTx"));
-HASH_SET(_return, "CTCSSRx", HASH_GET(_radioData, "CTCSSRx"));
-HASH_SET(_return, "modulation", HASH_GET(_radioData, "modulation"));
-HASH_SET(_return, "encryption", HASH_GET(_radioData, "encryption"));
-HASH_SET(_return, "TEK", HASH_GET(_radioData, "TEK"));
-HASH_SET(_return, "trafficRate", HASH_GET(_radioData, "trafficRate"));
-HASH_SET(_return, "syncLength", HASH_GET(_radioData, "syncLength"));
+HASH_SET(_return,"CTCSSTx",HASH_GET(_radioData,"CTCSSTx"));
+HASH_SET(_return,"CTCSSRx",HASH_GET(_radioData,"CTCSSRx"));
+HASH_SET(_return,"modulation",HASH_GET(_radioData,"modulation"));
+HASH_SET(_return,"encryption",HASH_GET(_radioData,"encryption"));
+HASH_SET(_return,"TEK",HASH_GET(_radioData,"TEK"));
+HASH_SET(_return,"trafficRate",HASH_GET(_radioData,"trafficRate"));
+HASH_SET(_return,"syncLength",HASH_GET(_radioData,"syncLength"));
 
 _return

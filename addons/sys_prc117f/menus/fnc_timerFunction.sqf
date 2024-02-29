@@ -19,7 +19,7 @@
 params ["_radioId", "_endFunction", "_step", "_time"];
 
 
-TRACE_1("Registering a delayed function!", _this);
+TRACE_1("Registering a delayed function!",_this);
 GVAR(timerFunction_NextStep) = diag_tickTime + _step;
 
 [{

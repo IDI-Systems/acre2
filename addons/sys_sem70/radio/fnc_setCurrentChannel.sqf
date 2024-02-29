@@ -40,21 +40,21 @@
 params ["_radioId", "", "_eventData", "_radioData"];
 TRACE_2("setCurrentChannel",_radioID,_eventData);
 
-private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
+private _manualChannel = HASH_GET(_radioData,"manualChannelSelection");
 TRACE_1("ManualChannel",_manualChannel);
 
 if (_manualChannel isEqualTo 1) then {
-    private _currentMHzFrequency = HASH_GET(_radioData, "MHzKnobPosition");
+    private _currentMHzFrequency = HASH_GET(_radioData,"MHzKnobPosition");
     _currentMHzFrequency = _currentMHzFrequency + 30;
-    private _currentkHzFrequency = HASH_GET(_radioData, "kHzKnobPosition");
+    private _currentkHzFrequency = HASH_GET(_radioData,"kHzKnobPosition");
     _currentkHzFrequency = _currentkHzFrequency * 25 / 1000;
     private _newFreq = _currentMHzFrequency + _currentkHzFrequency;
 
-    private _channels = HASH_GET(_radioData, "channels");
-    private _channel = HASHLIST_SELECT(_channels, GVAR(manualChannel));
+    private _channels = HASH_GET(_radioData,"channels");
+    private _channel = HASHLIST_SELECT(_channels,GVAR(manualChannel));
 
-    HASH_SET(_channel, "frequencyTX", _newFreq);
-    HASH_SET(_channel, "frequencyRX", _newFreq);
+    HASH_SET(_channel,"frequencyTX",_newFreq);
+    HASH_SET(_channel,"frequencyRX",_newFreq);
     TRACE_3("",_currentMHzFrequency,_currentkHzFrequency,_newFreq);
 
     [_radioID,"setChannelData", [GVAR(manualChannel), _channel]] call EFUNC(sys_data,dataEvent);
@@ -62,7 +62,7 @@ if (_manualChannel isEqualTo 1) then {
     HASH_SET(_radioData,"currentChannel",GVAR(manualChannel));
 } else {
     // First, we check how many channels are available in total
-    private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;
+    private _channelCount = count (HASH_GET(_radioData,"channels")) - 1;
 
     // Then we define our upper and lower limits
     // And write the new channel to the radioData hash

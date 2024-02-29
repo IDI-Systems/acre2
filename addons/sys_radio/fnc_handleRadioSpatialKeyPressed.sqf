@@ -18,7 +18,7 @@
 params ["_side"];
 
 
-TRACE_1("GOT SPATIAL KEY PRESS", _side);
+TRACE_1("GOT SPATIAL KEY PRESS",_side);
 
 if (ACRE_ACTIVE_RADIO == "") exitWith {
     nil

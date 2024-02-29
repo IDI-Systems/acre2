@@ -18,17 +18,17 @@
 
 #define DEBUG_MODE_REBUILD
 
-TRACE_1("SYSTEM EVENT ENTER", _this);
+TRACE_1("SYSTEM EVENT ENTER",_this);
 
 params ["_eventKind", "_radioId", "_event", ["_data", []], ["_remote", false]];
 private _return = nil;
 
-if (!HASH_HASKEY(GVAR(radioData), _radioId)) exitWith {
+if (!HASH_HASKEY(GVAR(radioData),_radioId)) exitWith {
     WARNING_2("Non-existent radio '%1' called %2 system event!",_radioId,_event);
     nil
 };
 
-private _radioData = HASH_GET(GVAR(radioData), _radioId);
+private _radioData = HASH_GET(GVAR(radioData),_radioId);
 
 private _cachekey = format ["%1:%2:%3", _eventKind, _radioId, _event];
 private _handlerFunction = HASH_GET(GVAR(sysEventCache),_cacheKey);

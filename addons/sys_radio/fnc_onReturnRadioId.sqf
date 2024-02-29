@@ -28,10 +28,10 @@ private _dataHash = HASH_CREATE;
 
 HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
 private _idRelation = [_player, _player];
-HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
+HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
 if (_replacementId isNotEqualTo "") then {
-    private _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
-    HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
+    private _radioData = HASH_GET(EGVAR(sys_data,radioData),_replacementId);
+    HASH_SET(EGVAR(sys_data,radioData),_class,HASH_COPY(_radioData));
 };
 
 if (_player == acre_player) then {
@@ -42,10 +42,10 @@ if (_player == acre_player) then {
     private _weapons = [acre_player] call EFUNC(sys_core,getGear);
 
     //if (_baseRadio in _weapons || ("ItemRadio" in _weapons && _baseRadio == GVAR(defaultItemRadioType) ) ) then {
-    TRACE_2("Check inventory", _baseRadio, _weapons);
+    TRACE_2("Check inventory",_baseRadio,_weapons);
     if ((toLower _baseRadio) in _weapons) then {
         // Add a new radio based on the id we just got
-        TRACE_3("Adding radio", _class, _baseRadio, _replacementId);
+        TRACE_3("Adding radio",_class,_baseRadio,_replacementId);
 
         if (_replacementId isEqualTo "") then {
             // initialize the new radio

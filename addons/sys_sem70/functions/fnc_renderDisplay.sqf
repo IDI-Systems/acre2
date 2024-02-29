@@ -120,7 +120,7 @@ if (_manualChannelSelection == 1) then {
     private _freq = HASH_GET(_channel,"frequencyRX");
     private _numbers = [_freq] call _fnc_formatNumber;
 
-    TRACE_1("Frequency Number", _numbers);
+    TRACE_1("Frequency Number",_numbers);
 
     RADIO_CTRL(301) ctrlSetText (_firstDigit param [_numbers param [0,0]]);
     RADIO_CTRL(302) ctrlSetText (_secondDigit param [_numbers param [1,0]]);

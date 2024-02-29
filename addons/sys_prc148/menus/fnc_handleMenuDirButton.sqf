@@ -65,7 +65,7 @@ if (GET_STATE("editEntry")) then {
                     _index = 0;
                 };
                 _value = _list select _index;
-                SET_STATE("currentEditEntry", _value);
+                SET_STATE("currentEditEntry",_value);
             };
             case MENU_TYPE_TEXT: {
                 private _entryIndex = ENTRY_INDEX;
@@ -91,7 +91,7 @@ if (GET_STATE("editEntry")) then {
                 //acre_player sideChat format["_valArray after: %1", _valArray];
                 _value = toString _valArray;
 
-                SET_STATE("currentEditEntry", _value);
+                SET_STATE("currentEditEntry",_value);
             };
             case MENU_TYPE_NUM: {
 
@@ -112,7 +112,7 @@ if (GET_STATE("editEntry")) then {
                 //acre_player sideChat format["_valArray after: %1", _valArray];
                 _value = toString _valArray;
 
-                SET_STATE("currentEditEntry", _value);
+                SET_STATE("currentEditEntry",_value);
             };
         };
     };

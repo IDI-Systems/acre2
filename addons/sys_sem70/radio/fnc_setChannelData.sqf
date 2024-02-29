@@ -46,8 +46,8 @@ params ["", "", "_eventData", "_radioData"];
 
 TRACE_1("",_this);
 
-private _channels = HASH_GET(_radioData, "channels");
+private _channels = HASH_GET(_radioData,"channels");
 
-HASHLIST_SET(_channels, (_eventData select 0), (_eventData select 1));
+HASHLIST_SET(_channels,(_eventData select 0),(_eventData select 1));
 
 true

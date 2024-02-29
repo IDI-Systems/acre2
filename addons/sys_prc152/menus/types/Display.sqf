@@ -17,10 +17,10 @@
  */
 
 DFUNC(onButtonPress_Display) = {
-    TRACE_1("onButtonPress_Display", _this);
+    TRACE_1("onButtonPress_Display",_this);
     params ["_menu", "_event"];
 
-    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _currentSelection = GET_STATE_DEF("menuSelection",0);
     switch (_event select 0) do {
         case 'PRE_UP': {     // OPT
 
@@ -42,7 +42,7 @@ DFUNC(onButtonPress_Display) = {
                 END_COUNTER(onButtonPress_Display_GuiEvents);
             #endif
 
-            [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
+            [MENU_SUBMENUS_ITEM(_menu,_currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
 
             #ifdef ENABLE_PERFORMANCE_COUNTERS
                 END_COUNTER(onButtonPress_Display_PRE_UP);
@@ -68,7 +68,7 @@ DFUNC(onButtonPress_Display) = {
                 END_COUNTER(onButtonPress_Display_GuiEvents);
             #endif
 
-            [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
+            [MENU_SUBMENUS_ITEM(_menu,_currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
 
             #ifdef ENABLE_PERFORMANCE_COUNTERS
                 END_COUNTER(onButtonPress_Display_PRE_DOWN);
@@ -81,8 +81,8 @@ DFUNC(onButtonPress_Display) = {
             ["PGM"] call FUNC(changeMenu);
         };
         case '0': {
-            TRACE_2("Cycling display", _currentSelection, (count MENU_SUBMENUS(_menu)));
-            [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(callCompleteFunctor);
+            TRACE_2("Cycling display",_currentSelection,(count MENU_SUBMENUS(_menu)));
+            [MENU_SUBMENUS_ITEM(_menu,_currentSelection)] call FUNC(callCompleteFunctor);
 
             if (_currentSelection+1 >= (count MENU_SUBMENUS(_menu))) then {
                 _currentSelection = 0;
@@ -90,13 +90,13 @@ DFUNC(onButtonPress_Display) = {
                 _currentSelection = _currentSelection + 1;
             };
 
-            SET_STATE("menuSelection", _currentSelection);
-            [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(callEntryFunctor);
-            [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(renderMenu_Static);
+            SET_STATE("menuSelection",_currentSelection);
+            [MENU_SUBMENUS_ITEM(_menu,_currentSelection)] call FUNC(callEntryFunctor);
+            [MENU_SUBMENUS_ITEM(_menu,_currentSelection)] call FUNC(renderMenu_Static);
         };
         default {
             // Pass the button press along to the child menu
-            [MENU_SUBMENUS_ITEM(_menu, _currentSelection)] call FUNC(onButtonPress_Static);
+            [MENU_SUBMENUS_ITEM(_menu,_currentSelection)] call FUNC(onButtonPress_Static);
         };
     };
 
@@ -108,17 +108,17 @@ DFUNC(renderMenu_Display) = {
         BEGIN_COUNTER(renderMenu_Display);
     #endif
 
-    TRACE_1("renderMenu_Display", _this);
+    TRACE_1("renderMenu_Display",_this);
     params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 
 
-    private _currentSelection = GET_STATE_DEF("menuSelection", 0);
+    private _currentSelection = GET_STATE_DEF("menuSelection",0);
     private _currentDisplay = MENU_SUBMENUS_ITEM(_menu,_currentSelection);
 
     // A display set has a set of children STATIC displays, which are rendered and canFire
     // be swaped with the 'NEXT' circly button thingy
-    private _entry = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuEntry", false);
+    private _entry = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuEntry",false);
     if (_entry) then {
         [_currentDisplay] call FUNC(callEntryFunctor);
     };

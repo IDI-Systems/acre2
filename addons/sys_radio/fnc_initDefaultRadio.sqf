@@ -17,7 +17,7 @@
  */
 
 LOG("INITIALIZING DEFAULT RADIO");
-TRACE_1("", _this);
+TRACE_1("",_this);
 params ["_radioId", ["_preset", "default"]];
 
 private _baseName = BASECLASS(_radioId);
@@ -29,4 +29,4 @@ private _baseName = BASECLASS(_radioId);
 // External antenna
 [_radioId] call EFUNC(sys_gsa,initRadio);
 
-TRACE_1("", _baseName);
+TRACE_1("",_baseName);

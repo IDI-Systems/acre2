@@ -20,7 +20,7 @@
     BEGIN_COUNTER(renderText);
 #endif
 
-TRACE_1("renderText", _this);
+TRACE_1("renderText",_this);
 
 params ["_row", "_text", ["_alignment", ALIGN_LEFT]];
 
