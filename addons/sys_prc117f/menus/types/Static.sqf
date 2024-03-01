@@ -17,14 +17,14 @@
  */
 
 DFUNC(onButtonPress_Static) = {
-    TRACE_1("onButtonPress_Static", _this);
+    TRACE_1("onButtonPress_Static",_this);
 
 
     false
 };
 
 DFUNC(renderMenu_Static) = {
-    TRACE_1("renderMenu_Static", _this);
+    TRACE_1("renderMenu_Static",_this);
     params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 

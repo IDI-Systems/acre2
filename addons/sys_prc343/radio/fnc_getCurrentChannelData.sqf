@@ -26,11 +26,11 @@ if (isNil "_currentChannelId") then {
     _currentChannelId = 0;
 };
 private _radioChannels = HASH_GET(_radioData,"channels");
-private _currentChannelData = HASHLIST_SELECT(_radioChannels, _currentChannelId);
+private _currentChannelData = HASHLIST_SELECT(_radioChannels,_currentChannelId);
 
 private _return = HASH_CREATE;
-HASH_SET(_return, "mode", "singleChannelPRR");
-HASH_SET(_return, "frequencyTX", HASH_GET(_currentChannelData, "frequencyTX"));
-HASH_SET(_return, "frequencyRX", HASH_GET(_currentChannelData, "frequencyRX"));
-HASH_SET(_return, "power", 100);
+HASH_SET(_return,"mode","singleChannelPRR");
+HASH_SET(_return,"frequencyTX",HASH_GET(_currentChannelData,"frequencyTX"));
+HASH_SET(_return,"frequencyRX",HASH_GET(_currentChannelData,"frequencyRX"));
+HASH_SET(_return,"power",100);
 _return

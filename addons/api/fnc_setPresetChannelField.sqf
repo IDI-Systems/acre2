@@ -54,7 +54,7 @@ TRACE_1("",_channelNumber);
 //_channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
 private _presetData = [_radioClass, _presetName] call EFUNC(sys_data,getPresetData);
 if (isNil "_presetData") exitWith {false};
-TRACE_1("", _presetData);
+TRACE_1("",_presetData);
 
 private _channels = HASH_GET(_presetData,"channels");
 TRACE_1("",_channels);

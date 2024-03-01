@@ -21,7 +21,7 @@
  */
 
 params ["_radioId", "", "_eventData", "_radioData", ""];
-TRACE_1("INITIALIZING RADIO 77", _this);
+TRACE_1("INITIALIZING RADIO 77",_this);
 
 // Function to convert frequency to knob positions.
 private _frequencyToKnobPositions = {
@@ -62,24 +62,24 @@ private _knobPositions = ([_frequencyTx] call _frequencyToKnobPositions);
 private _secondPresetKnobPositions = ([_secondPresetFrequency] call _frequencyToKnobPositions);
 
 
-SCRATCH_SET(_radioId, "currentTransmissions", []);
+SCRATCH_SET(_radioId,"currentTransmissions",[]);
 
 //Radio Settings
 HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume)); //0-1
-HASH_SET(_radioData,"function",2); //0 - OFF, 1 - ON, 2 - SQUELCH, 3 - RETRANS, 4 - LITE (Temp)
+HASH_SET(_radioData,"function",2); //0 - OFF,1 - ON,2 - SQUELCH,3 - RETRANS,4 - LITE (Temp)
 HASH_SET(_radioData,"radioOn",1); //0 - OFF, 1 - ON
 HASH_SET(_radioData,"band",_band); //{0,1}
 HASH_SET(_radioData,"currentPreset",[ARR_2(_knobPositions,_secondPresetKnobPositions)]); //Array of Presetarrays (KnobPositions)
 HASH_SET(_radioData,"currentChannel",_knobPositions);
-HASH_SET(_radioData,"powerSource", "BAT");
+HASH_SET(_radioData,"powerSource","BAT");
 
 //Common Channel Settings
 HASH_SET(_radioData,"frequencyTX",_frequencyTx);
 HASH_SET(_radioData,"frequencyRX",_frequencyTx);
 HASH_SET(_radioData,"power",3500);
 HASH_SET(_radioData,"mode","singleChannel");
-HASH_SET(_radioData,"CTCSSTx", 150);
-HASH_SET(_radioData,"CTCSSRx", 150);
+HASH_SET(_radioData,"CTCSSTx",150);
+HASH_SET(_radioData,"CTCSSRx",150);
 HASH_SET(_radioData,"modulation","FM");
 HASH_SET(_radioData,"encryption",0);
 HASH_SET(_radioData,"TEK","");

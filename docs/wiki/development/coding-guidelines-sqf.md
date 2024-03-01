@@ -637,12 +637,12 @@ The following example is a simple usage using our macros which will be explained
 
 ```sqf
 _hash = HASHCREATE;
-HASH_SET(_hash, "key", "value");
-if (HASH_HASKEY(_hash, "key")) then {
-    player sideChat format ["val: %1", HASH_GET(_hash, "key"); // will print out "val: value"
+HASH_SET(_hash,"key","value");
+if (HASH_HASKEY(_hash,"key")) then {
+    player sideChat format ["val: %1", HASH_GET(_hash,"key"); // will print out "val: value"
 };
-HASH_REM(_hash, "key");
-if (HASH_HASKEY(_hash, "key")) then {
+HASH_REM(_hash,"key");
+if (HASH_HASKEY(_hash,"key")) then {
     // this will never execute because we removed the hash key/val pair "key"
 };
 ```
@@ -670,22 +670,22 @@ _hashList = HASHLIST_CREATELIST(_defaultKeys);
 _hash = HASHLIST_CREATEHASH(_hashList);
 
 //_hash is now a standard hash...
-HASH_SET(_hash, "key1", "1");
+HASH_SET(_hash,"key1","1");
 
 //to store it to the list we need to push it to the list
-HASHLIST_PUSH(_hashList, _hash);
+HASHLIST_PUSH(_hashList,_hash);
 
 //now lets get it out and store it in something else for fun
 //it was pushed to an empty list, so it's index is 0
-_anotherHash = HASHLIST_SELECT(_hashList, 0);
+_anotherHash = HASHLIST_SELECT(_hashList,0);
 
 // this should print "val: 1"
-player sideChat format["val: %1", HASH_GET(_anotherHash, "key1")];
+player sideChat format["val: %1", HASH_GET(_anotherHash,"key1")];
 
 //Say we need to add a new key to the hashlist
 //that we didn't initialize it with? We can simply
 //set a new key using the standard HASH_SET macro
-HASH_SET(_anotherHash, "anotherKey", "another value");
+HASH_SET(_anotherHash,"anotherKey","another value");
 ```
 
 As you can see above working with hashlists are fairly simple, a more in depth explanation of the macros is below.

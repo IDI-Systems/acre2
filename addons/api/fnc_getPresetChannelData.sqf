@@ -44,8 +44,8 @@ if (_channelReference isEqualType []) then {
 private _presetData = [_radioClass, _presetName] call EFUNC(sys_data,getPresetData);
 if (isNil "_presetData") exitWith { nil };
 
-private _channels = HASH_GET(_presetData, "channels");
-private _channel = HASHLIST_SELECT(_channels, _channelNumber);
+private _channels = HASH_GET(_presetData,"channels");
+private _channel = HASHLIST_SELECT(_channels,_channelNumber);
 
 if (isNil "_channel") exitWith { nil };
 _channel

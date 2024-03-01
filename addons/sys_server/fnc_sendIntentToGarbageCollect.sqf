@@ -20,7 +20,7 @@ params ["_radioId"];
 _radioId = toLower _radioId;
 
 private _object = objNull;
-private _idTableEntry = HASH_GET(GVAR(masterIdTable), _radioId);
+private _idTableEntry = HASH_GET(GVAR(masterIdTable),_radioId);
 if (!isNil "_idTableEntry") then { _object = _idTableEntry select 0; };
 
 private _value = [-10, time, _object];

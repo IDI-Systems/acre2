@@ -43,7 +43,7 @@
  *        nil
 */
 
-TRACE_1("INITIALIZING ACRE_SEM70", _this);
+TRACE_1("INITIALIZING ACRE_SEM70",_this);
 
 params ["_radioId", "", "_eventData", "_radioData"];
 
@@ -62,7 +62,7 @@ _eventData params ["_baseName", "_preset"];
 private _presetData = [_baseName, _preset] call EFUNC(sys_data,getPresetData);
 private _channels = HASH_GET(_presetData,"channels");
 
-SCRATCH_SET(_radioId, "currentTransmissions", []);
+SCRATCH_SET(_radioId,"currentTransmissions",[]);
 
 private _currentChannels = HASH_GET(_radioData,"channels");
 if (isNil "_currentChannels") then {
@@ -72,8 +72,8 @@ if (isNil "_currentChannels") then {
 
 for "_i" from 0 to (count _channels)-1 do {
     private _channelData = HASH_COPY(_channels select _i);
-    TRACE_1("Setting " + QUOTE(RADIONAME) + " Init Channel Data", _channelData);
-    PUSH(_currentChannels, _channelData);
+    TRACE_1("Setting " + QUOTE(RADIONAME) + " Init Channel Data",_channelData);
+    PUSH(_currentChannels,_channelData);
 };
 
 
@@ -82,8 +82,8 @@ HASH_SET(_radioData,"radioOn",1);
 HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume));
 HASH_SET(_radioData,"currentChannel",GVAR(manualChannel)); // Manual Channel
 //HASH_SET(_radioData,"lastActiveChannel",GVAR(manualChannel));
-HASH_SET(_radioData,"audioPath", "HEADSET");
-HASH_SET(_radioData,"powerSource", "BAT");
+HASH_SET(_radioData,"audioPath","HEADSET");
+HASH_SET(_radioData,"powerSource","BAT");
 
 // Channel
 //HASH_SET(_radioData,"mode","singleChannel"); // or "sem70AKW"
@@ -101,7 +101,7 @@ HASH_SET(_radioData,"squelch",0);
 HASH_SET(_radioData,"mainKnobPosition",2); // High Power Setting
 HASH_SET(_radioData,"functionKnobPosition",2); // Manual Frequency Selection (no Relais)
 HASH_SET(_radioData,"volumeKnobPosition",EGVAR(sys_core,defaultRadioVolume) * 5);
-HASH_SET(_radioData,"channelSpacingKnobPosition", 1); // 0-3
+HASH_SET(_radioData,"channelSpacingKnobPosition",1); // 0-3
 HASH_SET(_radioData,"kHzKnobPosition",0);
 HASH_SET(_radioData,"MHzKnobPosition",0);
 HASH_SET(_radioData,"MemorySlotKnobPosition",0);

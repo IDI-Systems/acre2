@@ -25,9 +25,9 @@ private _foundRadios = [];
     private _matches = [];
     private _exit = false;
     private _radioId1 = _x;
-    PUSH(_foundRadios, [ARR_2(_radioId1,_matches)]);
+    PUSH(_foundRadios,[ARR_2(_radioId1,_matches)]);
     private _radio1Data = [_radioId1, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-    private _mode1 = HASH_GET(_radio1Data, "mode");
+    private _mode1 = HASH_GET(_radio1Data,"mode");
     private _functionName = getText (configFile >> "CfgAcreRadioModes" >> _mode1 >> "availability");
     if (_functionName != "") then {
         private _function = missionNamespace getVariable _functionName;
@@ -36,9 +36,9 @@ private _foundRadios = [];
             private _on = [_radioId2, "getOnOffState"] call EFUNC(sys_data,dataEvent);
             private _isAvailable = false;
             if (_on == 1) then {
-                _isAvailable = [_radioId1, _radioId2] call CALLSTACK_NAMED(_function, _functionName);
+                _isAvailable = [_radioId1, _radioId2] call CALLSTACK_NAMED(_function,_functionName);
                 if (_isAvailable) then {
-                    PUSH(_matches, _radioId2);
+                    PUSH(_matches,_radioId2);
                 };
             };
             if (_isAvailable && {_quick}) exitWith {};

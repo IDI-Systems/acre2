@@ -34,7 +34,7 @@ if (GVAR(pipeCode) == "1") then {
 
         if (_ret isEqualTo "_JERR_NOCONNECT" || {_ret isEqualTo "_JERR_NULL"}) exitWith {};
 
-        TRACE_1("got message", _ret);
+        TRACE_1("got message",_ret);
         _ret call CALLSTACK(GVAR(ioEventFnc));
     };
     // diag_log text format["~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!! READ COUNT: %1", _count];

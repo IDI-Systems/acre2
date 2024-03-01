@@ -29,7 +29,7 @@ private _currentFunction = GET_STATE("function");
 
 // Define and set new function
 private _newFunction = ((_currentFunction + _dir) max 0) min 4;
-SET_STATE_CRIT("function", _newFunction);
+SET_STATE_CRIT("function",_newFunction);
 
 // Handle new function
 if (_newFunction != _currentFunction) then {

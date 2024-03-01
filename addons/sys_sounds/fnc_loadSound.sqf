@@ -26,7 +26,7 @@ if (EGVAR(sys_core,ts3id) != -1) then {
         if (_fileName != "") then {
             [] call (compile loadFile _fileName);
             if (!isNil "ACRE_B64_FILE") then {
-                TRACE_2("Lounding Sound File", _className, _fileName);
+                TRACE_2("Lounding Sound File",_className,_fileName);
                 if (!isNil "_returnFunction") then {
                     HASH_SET(GVAR(callBacks),_className,_returnFunction);
                 };
@@ -34,7 +34,7 @@ if (EGVAR(sys_core,ts3id) != -1) then {
                     ["loadSound", [_className, _forEachIndex+1, count(ACRE_B64_FILE), _x]] call EFUNC(sys_rpc,callRemoteProcedure);
                 } forEach ACRE_B64_FILE;
                 ACRE_B64_FILE = nil;
-                TRACE_2("Sound File Sent", _className, _fileName);
+                TRACE_2("Sound File Sent",_className,_fileName);
             };
         };
     };

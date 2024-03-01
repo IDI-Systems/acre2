@@ -55,7 +55,7 @@ _speakingId = parseNumber _speakingId;
                     if (_unit != acre_player && {ACRE_SIGNAL_DEBUGGING > 0}) then {
                         private _signalTrace = missionNamespace getVariable [_radioId + "_signal_trace", []];
                         private _signalStartTime = missionNamespace getVariable [_radioId + "_signal_startTime", diag_tickTime];
-                        INFO_5("ACRE TX from %1 (on radio %2, distance at end: %3 m), duration %4s: %5",name _unit,_radioId,_unit distance acre_player,diag_tickTime-_signalStartTime,_signalTrace);
+                        INFO_5("ACRE TX from %1 (on radio: %2 distance at end: %3 m) duration %4s: %5",name _unit,_radioId,_unit distance acre_player,diag_tickTime-_signalStartTime,_signalTrace);
                     };
                     missionNamespace setVariable [_radioId + "_signal_trace", []];
                     private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + GVAR(nearRadios), false] call EFUNC(sys_modes,checkAvailability);
@@ -67,8 +67,8 @@ _speakingId = parseNumber _speakingId;
                         } forEach _okRadios;
                     };
                 };
-                if (HASH_HASKEY(GVAR(keyedRadioIds), _radioId)) then {
-                    HASH_REM(GVAR(keyedRadioIds), _radioId);
+                if (HASH_HASKEY(GVAR(keyedRadioIds),_radioId)) then {
+                    HASH_REM(GVAR(keyedRadioIds),_radioId);
                 };
             };
         // } else {
@@ -86,12 +86,12 @@ _speakingId = parseNumber _speakingId;
 
     if (_speakingId in ACRE_SPECTATORS_LIST) then {
         _found = true;
-        REM(GVAR(spectatorSpeakers), _speakingId);
+        REM(GVAR(spectatorSpeakers),_speakingId);
     };
 
     if (_speakingId in GVAR(godSpeakers)) then {
         _found = true;
-        REM(GVAR(godSpeakers), _speakingId);
+        REM(GVAR(godSpeakers),_speakingId);
     };
 
     if (!_found) then {

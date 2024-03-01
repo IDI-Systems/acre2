@@ -28,7 +28,7 @@ switch _align do {
         private _offset = floor ((_size-(count _textArray))/2);
         private _offsetArray = [];
         for "_i" from 1 to _offset do {
-            PUSH(_offsetArray, (toArray " "));
+            PUSH(_offsetArray,(toArray " "));
         };
         _textArray = _offsetArray + _textArray;
     };
@@ -36,7 +36,7 @@ switch _align do {
         private _offset = floor ((_size-(count _textArray)));
         private _offsetArray = [];
         for "_i" from 1 to _offset do {
-            PUSH(_offsetArray, (toArray " "));
+            PUSH(_offsetArray,(toArray " "));
         };
         _textArray = _offsetArray + _textArray;
     };

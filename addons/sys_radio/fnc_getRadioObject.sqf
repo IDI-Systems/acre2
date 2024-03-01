@@ -21,12 +21,12 @@ private _ret = nil;
 
 // On a dedicated server objectIdRelationTable will not be available, but we can use masterIdTable which has identical data
 if (isDedicated) then { 
-    if (HASH_HASKEY(EGVAR(sys_server,masterIdTable), _class)) then {
-        _ret = (HASH_GET(EGVAR(sys_server,masterIdTable), _class) select 0);
+    if (HASH_HASKEY(EGVAR(sys_server,masterIdTable),_class)) then {
+        _ret = (HASH_GET(EGVAR(sys_server,masterIdTable),_class) select 0);
     };
 } else {
-    if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable), _class)) then {
-        _ret = (HASH_GET(EGVAR(sys_server,objectIdRelationTable), _class) select 0);
+    if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable),_class)) then {
+        _ret = (HASH_GET(EGVAR(sys_server,objectIdRelationTable),_class) select 0);
     };
 };
 _ret;

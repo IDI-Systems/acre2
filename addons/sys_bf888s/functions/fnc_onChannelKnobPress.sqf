@@ -35,7 +35,7 @@ if (_knob == 0) then {
     _newChannel = ((_currentChannel + _currentDirection) max 0) min 15;
 };
 
-TRACE_2("Channel", _newChannel, _currentChannel);
+TRACE_2("Channel",_newChannel,_currentChannel);
 if (_newChannel != _currentChannel) then {
     ["setCurrentChannel", _newChannel] call GUI_DATA_EVENT;
 

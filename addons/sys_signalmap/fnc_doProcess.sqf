@@ -79,25 +79,25 @@ with uiNamespace do {
     ctrlSetFocus GVAR(overlayMessageGrp);
 
     private ["_bg"];
-    CTRLOVERLAY(_bg, "RscBackground");
+    CTRLOVERLAY(_bg,"RscBackground");
     _bg ctrlSetPosition [0, 0, 0.5, 0.75];
     _bg ctrlCommit 0;
 
-    CTRLOVERLAY(GVAR(chunkProgressText), "RscStructuredText");
+    CTRLOVERLAY(GVAR(chunkProgressText),"RscStructuredText");
     GVAR(chunkProgressText) ctrlSetPosition [0.0, 0.25, 0.5, 0.045];
     GVAR(chunkProgressText) ctrlCommit 0;
 
-    CTRLOVERLAY(GVAR(progressBar), "RscProgress");
+    CTRLOVERLAY(GVAR(progressBar),"RscProgress");
     GVAR(progressBar) ctrlSetPosition [0.025, 0.3, 0.45, 0.045];
     GVAR(progressBar) ctrlCommit 0;
     GVAR(progressBar) progressSetPosition 0;
 
-    CTRLOVERLAY(GVAR(areaProgressText), "RscStructuredText");
+    CTRLOVERLAY(GVAR(areaProgressText),"RscStructuredText");
     GVAR(areaProgressText) ctrlSetPosition [0.0, 0.35, 0.5, 0.045];
     GVAR(areaProgressText) ctrlSetStructuredText (parseText format["<t align='center'>Processing Area: %1 of %2</t>", GVAR(areaProgress)+1, (count GVAR(rxAreas))]);
     GVAR(areaProgressText) ctrlCommit 0;
 
-    CTRLOVERLAY(GVAR(progressBarArea), "RscProgress");
+    CTRLOVERLAY(GVAR(progressBarArea),"RscProgress");
     GVAR(progressBarArea) ctrlSetPosition [0.025, 0.4, 0.45, 0.045];
     GVAR(progressBarArea) ctrlCommit 0;
     GVAR(progressBarArea) progressSetPosition 0;
@@ -176,14 +176,14 @@ with uiNamespace do {
                     {
                         (_x select 1) setMarkerAlphaLocal 0;
                     } forEach GVAR(rxAreas);
-                    CTRLOVERLAY(GVAR(modifyButton), "RscButton");
+                    CTRLOVERLAY(GVAR(modifyButton),"RscButton");
                     GVAR(modifyButton) ctrlSetPosition [0.05, 0.055*10, 0.4, 0.045];
                     GVAR(modifyButton) ctrlSetBackgroundColor [0,0,0,0.25];
                     GVAR(modifyButton) ctrlSetText "Modify";
                     GVAR(modifyButton) ctrlSetEventHandler ["MouseButtonUp", QUOTE([] call FUNC(modify))];
                     GVAR(modifyButton) ctrlCommit 0;
 
-                    CTRLOVERLAY(GVAR(clearButton), "RscButton");
+                    CTRLOVERLAY(GVAR(clearButton),"RscButton");
                     GVAR(clearButton) ctrlSetPosition [0.05, 0.055*11, 0.4, 0.045];
                     GVAR(clearButton) ctrlSetBackgroundColor [0,0,0,0.25];
                     GVAR(clearButton) ctrlSetText "Clear";

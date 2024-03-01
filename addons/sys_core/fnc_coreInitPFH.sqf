@@ -21,7 +21,7 @@ acre_player = player;
 
 if (!ACRE_MAP_LOADED || {!ACRE_DATA_SYNCED} || {GVAR(ts3id) == -1}) exitWith {};
 
-TRACE_1("GOT TS3 ID", GVAR(ts3id));
+TRACE_1("GOT TS3 ID",GVAR(ts3id));
 
 [] call FUNC(utilityFunction); // OK
 [] call FUNC(muting);
@@ -39,5 +39,5 @@ GVAR(speakingHandle) = [DFUNC(speaking), 0.06, []] call CBA_fnc_addPerFrameHandl
 EGVAR(sys_gui,volumeLevel) = 0.5;
 
 ACRE_CORE_INIT = true;
-TRACE_1("ACRE CORE INIT", ACRE_CORE_INIT);
+TRACE_1("ACRE CORE INIT",ACRE_CORE_INIT);
 [_this select 1] call CBA_fnc_removePerFrameHandler;

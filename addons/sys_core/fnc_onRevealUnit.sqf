@@ -19,7 +19,7 @@
 
 params ["_player", "_unit", "_revealAmount"];
 
-TRACE_1("onRevealUnit", _this);
+TRACE_1("onRevealUnit",_this);
 
 if (!local _unit) exitWith {false};
 

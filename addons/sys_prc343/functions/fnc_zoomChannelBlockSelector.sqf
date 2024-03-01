@@ -22,11 +22,11 @@ params ["_direction"];
 
 {ctrlEnable [_x, false];} forEach [201, 202, 203, 204];
 
-private _animation = SCRATCH_GET_DEF(GVAR(currentRadioId), "animation", false); //false if no animation is running
+private _animation = SCRATCH_GET_DEF(GVAR(currentRadioId),"animation",false); //false if no animation is running
 if (_animation) exitWith { [] };
 
 if (_direction == OUT) then {
-    SCRATCH_SET(GVAR(currentRadioId), "animation", true);
+    SCRATCH_SET(GVAR(currentRadioId),"animation",true);
     private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
     private _currentBlock = floor (_currentAbsChannel / 16);
     private _currentChannel = _currentAbsChannel - _currentBlock*16;
@@ -43,7 +43,7 @@ if (_direction == OUT) then {
 
         // If the CurrentRadioId is not existing (-1) -> Bug out
         if!(IS_STRING(GVAR(currentRadioId))) exitWith {
-            SCRATCH_SET(_radioId, "animation", false);
+            SCRATCH_SET(_radioId,"animation",false);
             [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
             [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
@@ -51,7 +51,7 @@ if (_direction == OUT) then {
         // If currentRadioId is valid, check if it is equal to the temporary ID (_radioId)
         // and run animation or bug out
         if (GVAR(currentRadioId) == _radioId) then {
-            TRACE_1("Radio Id Match", _radioId);
+            TRACE_1("Radio Id Match",_radioId);
             if (_index < 0) then {
                 if (_channelindex < _currentChannel || {_currentVolume != 3 && {_currentVolume != _volumeindex}}) then {
 
@@ -77,7 +77,7 @@ if (_direction == OUT) then {
                         (MAIN_DISPLAY displayCtrl 107) ctrlSetText format ["\idi\acre\addons\sys_prc343\Data\knobs\volume\prc343_ui_vol_%1.paa", _volumeindex];
                     };
                 } else {
-                    SCRATCH_SET(_radioId, "animation", false);
+                    SCRATCH_SET(_radioId,"animation",false);
                     if (_currentVolume != 0) then {
                         ["setOnOffState", 1] call GUI_DATA_EVENT;
                     };
@@ -97,7 +97,7 @@ if (_direction == OUT) then {
             };
         } else {
             TRACE_2("Mismatch",_radioId,GVAR(currentRadioId));
-            SCRATCH_SET(_radioId, "animation", false);
+            SCRATCH_SET(_radioId,"animation",false);
             [_radioId, "setOnOffState", 1] call EFUNC(sys_data,dataEvent);
             [_PFHid] call CBA_fnc_removePerFrameHandler;
         };
@@ -106,7 +106,7 @@ if (_direction == OUT) then {
 
 
 if (_direction == IN) then {
-    SCRATCH_SET(GVAR(currentRadioId), "animation", true);
+    SCRATCH_SET(GVAR(currentRadioId),"animation",true);
     private _currentAbsChannel = [GVAR(currentRadioId)] call FUNC(getCurrentChannelInternal);
     private _currentBlock = floor (_currentAbsChannel / 16);
     private _currentChannel = _currentAbsChannel - _currentBlock*16;
@@ -131,9 +131,9 @@ if (_direction == IN) then {
         // If currentRadioId is valid, check if it is equal to the temporary ID (_radioId)
         // and run animation or bug out
         if (GVAR(currentRadioId) == _radioId) then {
-            TRACE_1("Radio Id Match", _radioId);
+            TRACE_1("Radio Id Match",_radioId);
             if (_index == (count GVAR(backgroundImages))) then {
-                SCRATCH_SET(_radioId, "animation", false);
+                SCRATCH_SET(_radioId,"animation",false);
                 [MAIN_DISPLAY] call CALLSTACK(FUNC(render));
 
                 [_PFHid] call CBA_fnc_removePerFrameHandler;

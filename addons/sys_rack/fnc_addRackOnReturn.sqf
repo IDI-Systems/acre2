@@ -60,5 +60,5 @@ if (_idx != -1) then {
 };
 
 if (!_handled) then {
-    WARNING_2("Recieved new rack ID (%1) for vehicle (%2) but no entry in queue rack.", _rackId, typeOf _vehicle);
+    WARNING_2("Recieved new rack ID (%1) for vehicle (%2) but no entry in queue rack.",_rackId,typeOf _vehicle);
 };

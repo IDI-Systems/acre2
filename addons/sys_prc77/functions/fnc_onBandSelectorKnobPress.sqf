@@ -30,7 +30,7 @@ private _currentTuneKnobsPosition = GET_STATE("currentChannel");
 
 //Define and set new knob position
 private _newBand = ((_currentBand + _dir) max 0) min 1;
-SET_STATE_CRIT("band", _newBand);
+SET_STATE_CRIT("band",_newBand);
 
 //The setCurrentChannel Event shall be triggered as well!
 ["setCurrentChannel", _currentTuneKnobsPosition] call CALLSTACK(GUI_DATA_EVENT);

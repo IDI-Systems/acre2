@@ -16,7 +16,7 @@
  * Public: No
  */
 
-TRACE_1("drawCursor", _this);
+TRACE_1("drawCursor",_this);
 // Swap the background and foreground colors for a text range
 private ["_saveLength", "_rowCount"]; // TODO undefined in some cases
 private _display = uiNamespace getVariable QGVAR(currentDisplay);
@@ -60,7 +60,7 @@ if (_alignment != ALIGN_LEFT) then {
             _saveLength = _i;
         };
     };
-    TRACE_2("Determined start and save", _start, _saveLength);
+    TRACE_2("Determined start and save",_start,_saveLength);
 } else {
     //TODO _rowCount is undefined
     _saveLength = _rowCount;
@@ -71,7 +71,7 @@ if (_len < 1) then {
     // Find the length of the string, and highlight it
     _len = _saveLength - _start;
 } else {
-    TRACE_2("Highlighting", _start, _len);
+    TRACE_2("Highlighting",_start,_len);
     if (_alignment != ALIGN_LEFT) then {
         _len = _len - 1;
     };

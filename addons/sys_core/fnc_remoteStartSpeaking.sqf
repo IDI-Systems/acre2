@@ -32,7 +32,7 @@ CREATE_COUNTER(radio_loop_single_radio);
 CREATE_COUNTER(hearableRadios);
 // PREP(processRadioSpeaker);
 
-TRACE_1("START SPEAKING ENTER", _this);
+TRACE_1("START SPEAKING ENTER",_this);
 params ["_speakingId","_languageId","_netId","_speakingType",["_radioId",","]];
 
 if (!(_speakingId isEqualType 0)) then { _speakingId = parseNumber _speakingId; };
@@ -79,13 +79,13 @@ private _result = false;
     };
 
     if (isNull _unit) exitWith {
-        WARNING_4("START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3, Speaking Type: %4",acre_player,_speakingId,_netId,_speakingType);
+        WARNING_4("START SPEAKING: acre_player [%1] could not find a player with ID: %2 %3 - Speaking Type: %4",acre_player,_speakingId,_netId,_speakingType);
         false
     };
 
     _unit setVariable [QGVAR(ts3id), _speakingId];
     _unit setVariable [QGVAR(languageId), _languageId];
-    TRACE_1("unit pos", getPosASL _unit);
+    TRACE_1("unit pos",getPosASL _unit);
     private _isMuted = IS_MUTED(_unit);
     _unit setRandomLip true;
 
@@ -103,7 +103,7 @@ private _result = false;
 
                 GVAR(speakers) pushBack _unit;
                 private _val = [_netId, _speakingId];
-                HASH_SET(GVAR(keyedRadioIds), _radioId, _val);
+                HASH_SET(GVAR(keyedRadioIds),_radioId,_val);
                 _unit setVariable [QGVAR(currentSpeakingRadio), _radioId];
                 private _speakerRadio = [];
                 private _nearRadios = [ACRE_LISTENER_POS, NEAR_RADIO_RANGE] call EFUNC(sys_radio,nearRadios);
@@ -152,10 +152,10 @@ private _result = false;
             };
             TRACE_1("REMOVING FROM RADIO MICS LIST",GVAR(keyedMicRadios));
             REM(GVAR(keyedMicRadios),_unit);
-            HASH_REM(GVAR(keyedRadioIds), _radioId);
+            HASH_REM(GVAR(keyedRadioIds),_radioId);
         };
     } else {
-        TRACE_3("MUTED:", _unit, _isMuted, _netId);
+        TRACE_3("MUTED:",_unit,_isMuted,_netId);
     };
 
 

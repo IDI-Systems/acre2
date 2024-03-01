@@ -21,11 +21,11 @@ private _foundAntennas = [];
 private _searchedComponents = [];
 private _searchFunction = {
     params ["_componentParentId"];
-    PUSH(_searchedComponents, _componentParentId);
+    PUSH(_searchedComponents,_componentParentId);
     private _componentData = HASH_GET(EGVAR(sys_data,radioData),_componentParentId);
 
     if (!isNil "_componentData") then {
-        private _connectorData = HASH_GET(_componentData, "acre_radioConnectionData");
+        private _connectorData = HASH_GET(_componentData,"acre_radioConnectionData");
         if (!isNil "_connectorData") then {
             {
                 private _connector = _x;
@@ -79,7 +79,7 @@ private _searchFunction = {
                             };
                             private _antennaPos2 = _antennaPos vectorAdd (_antennaDirUp vectorMultiply (getNumber (_componentClass >> "height")));
                             private _foundAntenna = [_connectedComponent, _componentObject, _antennaPos2, _antennaDir];
-                            PUSH(_foundAntennas, _foundAntenna);
+                            PUSH(_foundAntennas,_foundAntenna);
                         };
                     } else {
                         if !(_connectedComponent in _searchedComponents) then {

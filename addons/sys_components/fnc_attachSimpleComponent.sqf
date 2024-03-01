@@ -35,10 +35,10 @@ private _parentConnectorType = ((getArray(_parentComponentClass >> "connectors")
 private _childConnectorType = getNumber (_childComponentClass >> "connector");
 if (_parentConnectorType == _childConnectorType) then {
     private _exit = false;
-    private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData), _parentComponentId);
+    private _parentComponentData = HASH_GET(EGVAR(sys_data,radioData),_parentComponentId);
 
     if (!isNil "_parentComponentData") then {
-        private _parentConnectorData = HASH_GET(_parentComponentData, "acre_radioConnectionData");
+        private _parentConnectorData = HASH_GET(_parentComponentData,"acre_radioConnectionData");
         if (!isNil "_parentConnectorData") then {
             if (count _parentConnectorData > _parentConnector) then {
                 private _test = _parentConnectorData select _parentConnector;

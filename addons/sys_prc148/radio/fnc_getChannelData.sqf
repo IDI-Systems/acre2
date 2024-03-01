@@ -18,7 +18,7 @@
 
 params ["_radioId", "", "_eventData", "_radioData"];
 
-private _cachedChannels = SCRATCH_GET_DEF(_radioId, "cachedFullChannels", []);
+private _cachedChannels = SCRATCH_GET_DEF(_radioId,"cachedFullChannels",[]);
 private _return = nil;
 if (_eventData < (count _cachedChannels)) then {
     _return = _cachedChannels select _eventData;

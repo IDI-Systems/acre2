@@ -17,4 +17,4 @@
 
 params ["_class"];
 
-HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable), _class)
+HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable),_class)
