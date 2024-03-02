@@ -17,7 +17,6 @@ GVAR(basicMissionSetup) = false;
 // Filter radio IDs when setting unit loadouts
 ["CBA_preLoadoutSet", {
     params ["", "_loadoutArray"];
-
     [_loadoutArray] call FUNC(filterUnitLoadout);
 }] call CBA_fnc_addEventHandler;
 
