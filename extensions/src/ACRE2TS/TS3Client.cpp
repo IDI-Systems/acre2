@@ -36,7 +36,7 @@ acre::Result CTS3Client::setMuted(const acre::id_t id_, const bool muted_) {
     clientArray[0] = static_cast<anyID>(id_);
     clientArray[1] = 0x0000;
 
-    TRACE("MUTE: %d, %d", id_, muted_);
+    LOG("MUTE: %d, %d", id_, muted_);
 
     if (muted_) {
         ts3Functions.requestMuteClients(ts3Functions.getCurrentServerConnectionHandlerID(), clientArray, NULL);

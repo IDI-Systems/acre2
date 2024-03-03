@@ -24,7 +24,7 @@ if (!ACRE_MAP_LOADED || {!ACRE_DATA_SYNCED} || {GVAR(ts3id) == -1}) exitWith {};
 TRACE_1("GOT TS3 ID",GVAR(ts3id));
 
 [] call FUNC(utilityFunction); // OK
-[] call FUNC(muting);
+//[] call FUNC(muting);
 
 // ===== Speaking PFH
 GVAR(persistAlive) = 1;
