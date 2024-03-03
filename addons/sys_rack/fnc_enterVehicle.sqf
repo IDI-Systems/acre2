@@ -18,7 +18,7 @@
 
 params ["_vehicle", "_unit"];
 
-if (_unit != _vehicle) then {
+if (_unit != _vehicle && {isNull remoteControlled _unit}) then {
     private _initialized = _vehicle getVariable [QGVAR(initialized), false];
 
     if (!_initialized) then {

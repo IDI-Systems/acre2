@@ -35,6 +35,10 @@ private _index = _var findIf {
 
 if (_index != -1) exitWith { false };
 
-ACRE_ASSIGNED_PTT_RADIOS = _var;
+if (acre_player isEqualTo player) then { // using zeus player voice
+    ACRE_ASSIGNED_PTT_RADIOS = _var;
+} else { // using zeus remote voice
+    ACRE_ASSIGNED_PTT_RADIOS_REMOTE = _var;
+};
 
 true
