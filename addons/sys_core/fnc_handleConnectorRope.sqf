@@ -51,8 +51,8 @@ if (_state) then {
             (_connectorRopeHelpers select 0) allowDamage false;
 
             // Create helper object on player pelvis
-            _connectorRopeHelpers set [1, _helper createVehicle position player];
-            (_connectorRopeHelpers select 1) attachTo [player, [-0.1, 0.1, 0.15], "Pelvis"];
+            _connectorRopeHelpers set [1, _helper createVehicle position _toObject];
+            (_connectorRopeHelpers select 1) attachTo [_toObject, [-0.1, 0.1, 0.15], "Pelvis"];
             [(_connectorRopeHelpers select 1), true] remoteExec ["hideObjectGlobal", 2];
             (_connectorRopeHelpers select 1) allowDamage false;
 
@@ -68,8 +68,8 @@ if (_state) then {
             (_connectorRopeHelpers select 0) allowDamage false;
 
             // Create helper object on player pelvis
-            _connectorRopeHelpers set [1, _helper createVehicle position player];
-            (_connectorRopeHelpers select 1) attachTo [player, [-0.1, 0.1, 0.15], "Pelvis"];
+            _connectorRopeHelpers set [1, _helper createVehicle position _toObject];
+            (_connectorRopeHelpers select 1) attachTo [_toObject, [-0.1, 0.1, 0.15], "Pelvis"];
             [(_connectorRopeHelpers select 1), true] remoteExec ["hideObjectGlobal", 2];
             (_connectorRopeHelpers select 1) allowDamage false;
 
