@@ -71,6 +71,7 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_
                 // The unit that disconnected the antenna is different from the unit that was connected to it
                 private _text = format [localize LSTRING(disconnectedUnit), name _connectedUnit];
                 [QGVAR(notifyPlayer), [_text], _unit] call CBA_fnc_targetEvent;
+                [QEGVAR(sys_core,deleteConnectorRope), [], _unit] call CBA_fnc_targetEvent;
             };
         };
     };
