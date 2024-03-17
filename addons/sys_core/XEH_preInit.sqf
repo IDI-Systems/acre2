@@ -9,6 +9,13 @@ PREP_RECOMPILE_END;
 // CBA Settings
 #include "initSettings.inc.sqf"
 
+if (isServer) then {
+    [QGVAR(hideConnectorRopeHelpers), {
+        params ["_ropeHelpers"];
+        { hideObjectGlobal _x; } forEach _ropeHelpers;
+    }] call CBA_fnc_addEventHandler;
+};
+
 if (!hasInterface) exitWith {
     ADDON = true;
 };
