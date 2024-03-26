@@ -60,9 +60,11 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_
             if (_connectedUnit isKindOf "CAManBase" || {crew _connectedUnit isNotEqualTo []}) then {
                 if (_connectedUnit isKindOf "CAManBase") then {
                     [QGVAR(notifyPlayer), [localize LSTRING(disconnected)], _connectedUnit] call CBA_fnc_targetEvent;
+                    [QEGVAR(sys_core,handleConnectorRopeEvent), [false], _connectedUnit] call CBA_fnc_targetEvent;
                 } else {
                     {
                         [QGVAR(notifyPlayer), [localize LSTRING(disconnected)], _connectedUnit] call CBA_fnc_targetEvent;
+                        [QEGVAR(sys_core,handleConnectorRopeEvent), [false], _connectedUnit] call CBA_fnc_targetEvent;
                     } forEach (crew _connectedUnit);
                 };
             };
@@ -71,7 +73,7 @@ private _parentComponentClass = configFile >> "CfgAcreComponents" >> BASE_CLASS_
                 // The unit that disconnected the antenna is different from the unit that was connected to it
                 private _text = format [localize LSTRING(disconnectedUnit), name _connectedUnit];
                 [QGVAR(notifyPlayer), [_text], _unit] call CBA_fnc_targetEvent;
-                [QEGVAR(sys_core,deleteConnectorRope), [], _unit] call CBA_fnc_targetEvent;
+                [QEGVAR(sys_core,handleConnectorRopeEvent), [false], _unit] call CBA_fnc_targetEvent;
             };
         };
     };

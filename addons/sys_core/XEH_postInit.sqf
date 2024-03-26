@@ -42,10 +42,6 @@ if (!GVAR(aceLoaded)) then {
     }] call CBA_fnc_addPlayerEventHandler;
 };
 
-[QGVAR(deleteConnectorRope), {
-    [false] call FUNC(handleConnectorRope);
-}] call CBA_fnc_addEventHandler;
-
 // Keybinds - PTT
 ["ACRE2", "AltPTTKey1", [localize LSTRING(AltPTTKey1), localize LSTRING(AltPTTKey1_description)], {
     [0] call FUNC(handleMultiPttKeyPress)

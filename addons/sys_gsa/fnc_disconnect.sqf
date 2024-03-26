@@ -20,4 +20,3 @@ params ["_unit", "_gsa"];
 
 // Fire the event
 [QGVAR(disconnectGsa), [_gsa, _unit]] call CBA_fnc_serverEvent;
-[false] call EFUNC(sys_core,handleConnectorRope);

@@ -20,4 +20,3 @@ params ["_gsa", "_radioId"];
 
 // Fire the event
 [QGVAR(connectGsa), [_gsa, _radioId, acre_player]] call CBA_fnc_serverEvent;
-[true, 1, _gsa, player] call EFUNC(sys_core,handleConnectorRope);
