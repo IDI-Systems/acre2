@@ -18,6 +18,7 @@ PREP(getLanguageName);
 PREP(getPlayersInVehicle);
 PREP(getSpeakingLanguageId);
 PREP(getSpokenLanguages);
+PREP(handleConnectorRope);
 PREP(handleGetClientID);
 PREP(handleGetHeadVector);
 PREP(handleGetPluginVersion);
