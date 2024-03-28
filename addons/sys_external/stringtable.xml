@@ -5,7 +5,7 @@
             <English>Shared Radios</English>
             <Spanish>Radios compartidas</Spanish>
             <German>Geteilte Funkgeräte</German>
-            <Japanese>無線機を共有</Japanese>
+            <Japanese>共有中の無線機</Japanese>
             <Russian>Общие рации</Russian>
             <Polish>Udostępnione radia</Polish>
             <Chinese>共用無線電</Chinese>
@@ -138,7 +138,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_external_hintGiveOwner">
             <English>%1 gave your %2 to %3</English>
-            <Japanese>%1 は %2 を %3 へ渡しました</Japanese>
+            <Japanese>%1 は %2 を %3 へ渡した</Japanese>
             <Chinese>%1把你的%2交給%3</Chinese>
             <Chinesesimp>%1把你的%2交给%3</Chinesesimp>
             <Korean>%1은 %3에게 %2를 주었다</Korean>
@@ -152,7 +152,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturn">
             <English>Stop using %1 from %2</English>
-            <Japanese>%1 を %2 で使用停止する</Japanese>
+            <Japanese>%2 の %1 の使用を終了する</Japanese>
             <Russian>Перестать использовать %1 из %2</Russian>
             <Polish>Przestałeś używać %1 od %2</Polish>
             <Chinese>停止使用%2的%1</Chinese>
@@ -166,7 +166,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturnOwner">
             <English>%1 stopped using your %2</English>
-            <Japanese>%1 は %2 を使用停止しました</Japanese>
+            <Japanese>%1 は %2 の使用を終了した</Japanese>
             <Chinese>%1停止使用你的%2</Chinese>
             <Chinesesimp>%1停止使用你的%2</Chinesesimp>
             <Korean>%1가 %2의 사용을 중지함</Korean>
@@ -180,7 +180,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTake">
             <English>Start using %1 from %2</English>
-            <Japanese>%1 を %2 から使用する</Japanese>
+            <Japanese>%2 の %1 を使用する</Japanese>
             <Russian>Начать использовать %1 из %2</Russian>
             <Polish>Używasz %1 od %2</Polish>
             <Chinese>開始使用%2的%1</Chinese>
@@ -194,7 +194,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTakeOwner">
             <English>%1 started using your %2</English>
-            <Japanese>%1 は %2 を使い始めました</Japanese>
+            <Japanese>%1 は %2 の使用を開始した</Japanese>
             <Chinese>%1開始使用你的%2</Chinese>
             <Chinesesimp>%1开始使用你的%2</Chinesesimp>
             <Korean>%1가 %2의 사용을 시작함</Korean>

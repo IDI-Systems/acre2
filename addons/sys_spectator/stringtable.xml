@@ -9,6 +9,7 @@
             <German>Entferne Zuschauer Funkgeräte</German>
             <Italian>Reimposta le radio degli spettatori</Italian>
             <Portuguese>Limpar rádios de espectador</Portuguese>
+            <Japanese>観戦者の無線機をクリア</Japanese>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_ClearRadios_Description">
             <English>Clears all radios from the spectator radios list.</English>
@@ -18,6 +19,7 @@
             <German>Entferne alle Funkgeräte aus dem Zuschauermodus.</German>
             <Italian>Cancella tutte le radio dall'elenco delle radio degli spettatori.</Italian>
             <Portuguese>Limpar todos os rádios da lista de rádios para espectadores</Portuguese>
+            <Japanese>観戦者の無線機リストからすべての無線機を削除します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_NoRadios">
             <English>No Radios</English>
@@ -27,6 +29,7 @@
             <German>Keine Funkgeräte</German>
             <Italian>Niente radio</Italian>
             <Portuguese>Sem rádios</Portuguese>
+            <Japanese>無線機なし</Japanese>
         </Key>
     </Package>
 </Project>

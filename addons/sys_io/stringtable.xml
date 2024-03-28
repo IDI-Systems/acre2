@@ -7,7 +7,7 @@
             <German>ACRE TUNNELFEHLER: Kein Ping empfangen, versuche Tunnel wieder zu verbinden.</German>
             <Italian>ACRE PIPE ERROR: nessun ping di ritorno, tentativo di recuperare il tubo.</Italian>
             <Russian>ОШИБКА ТУННЕЛЯ ACRE: Нет ответного сигнала, попытка повторного подключения</Russian>
-            <Japanese>ACRE パイプ エラー: 反応が無い為、命名済みパイプへ再接続を試みます。</Japanese>
+            <Japanese>ACRE PIPE ERROR: 反応が無い為、 命名済みパイプへ再接続を試みます。</Japanese>
             <Chinese>ACRE 管道錯誤：Ping沒有回應，試著掛接在命名的管道重試中。</Chinese>
             <French>ERREUR DE TUNNEL ACRE : Pas de retour ping, tentative de reconnection au tunnel.</French>
             <Chineseimp>ACRE 通道错误：Ping没有回应，尝试挂接在命名的通道重试中。</Chineseimp>
@@ -20,7 +20,7 @@
             <German>ACRE hat sich wieder verbunden, weiter gehts.</German>
             <Italian>ACRE si è ripreso da un oleodotto precedentemente rotto.</Italian>
             <Russian>ACRE проблема с туннелем устранена!</Russian>
-            <Japanese>ACRE は閉鎖済みパイプから回復しました！</Japanese>
+            <Japanese>ACREは閉鎖済みパイプから回復しました！</Japanese>
             <Chinese>ACRE 從封閉的管道恢復！</Chinese>
             <French>ACRE a pu se reconnecter !</French>
             <Chineseimp>ACRE 从封闭的通道中恢复！</Chineseimp>
@@ -33,7 +33,7 @@
             <German>ACRE ist nicht mit TeamSpeak verbunden!</German>
             <Italian>ACRE non è connesso a TeamSpeak!</Italian>
             <Russian>ACRE не подключен к TeamSpeak!</Russian>
-            <Japanese>ACRE が TeamSpeak に接続されていません！</Japanese>
+            <Japanese>ACREがTeamSpeakに接続されていません！</Japanese>
             <Chinese>ACRE 尚未與TeamSpeak連接！</Chinese>
             <French>ACRE n'est pas connecté à TeamSpeak !</French>
             <Chineseimp>ACRE 尚未与TeamSpeak连接！</Chineseimp>
