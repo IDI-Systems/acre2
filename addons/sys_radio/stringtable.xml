@@ -161,11 +161,11 @@
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_DisplayName">
             <English>Radio Item Replacement</English>
-            <Japanese>ラジオアイテムの交換</Japanese>
+            <Japanese>無線機アイテムの置き換え</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
             <English>Default radio inventory items will be replaced with this type of radio.</English>
-            <Japanese>デフォルトの無線インベントリ項目は、 このタイプの無線に置き換えられます。</Japanese>
+            <Japanese>インベントリにあるデフォルトの無線機アイテムは、 このタイプの無線機に置き換えられます。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>

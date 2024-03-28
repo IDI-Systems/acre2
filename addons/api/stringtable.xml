@@ -66,7 +66,7 @@
             <Chinesesimp>设定各阵营是否使用自己的母语，或者母语之外还有一个通用语言。</Chinesesimp>
             <Portuguese>Seleciona se cada Lado tem a sua própria linguagem e se eles compartilham uma língua comum.</Portuguese>
             <Turkish>Her tarafın kendi dili olup olmadığını, ve ortak bir dil paylaşıp paylaşmadıklarını seçin</Turkish>
-            <Japanese>各陣営が独自の言語を持っているかどうか、 また共通の言語を共有しているかどうかを選択します。</Japanese>
+            <Japanese>各陣営が独自の言語を持っているかどうか、 また共通言語(Common)を有しているかを設定します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_AllDifferent">
             <English>Per-Side</English>
@@ -77,7 +77,7 @@
             <Chinesesimp>母语</Chinesesimp>
             <Portuguese>Uma língua por Lado</Portuguese>
             <Turkish>Taraf Başı 1 Dil</Turkish>
-            <Japanese>サイド毎</Japanese>
+            <Japanese>陣営毎の母語のみ</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_SharingDifferent">
             <English>Per-Side /w Common</English>
@@ -88,7 +88,7 @@
             <Chinesesimp>母语并外加通用语</Chinesesimp>
             <Portuguese>Uma língua por Lado c/ comum</Portuguese>
             <Turkish>Taraf Başı 1 Dil + Ortak Dil</Turkish>
-            <Japanese>サイド毎及び共通言語</Japanese>
+            <Japanese>陣営毎及び共通言語(Common)</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_No">
             <English>No Babel</English>

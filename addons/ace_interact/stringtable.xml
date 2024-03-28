@@ -180,7 +180,7 @@
         <Key ID="STR_ACRE_ace_interact_straightenAntenna">
             <English>Straighten antenna</English>
             <German>Antenne gerade ausrichten</German>
-            <Japanese>アンテナを直立に伸ばす</Japanese>
+            <Japanese>アンテナを真っすぐにする</Japanese>
             <Italian>Raddrizzare l'antenna</Italian>
             <Russian>Выпрямить антенну</Russian>
             <Chinese>把天線拉直</Chinese>
@@ -193,7 +193,7 @@
         <Key ID="STR_ACRE_ace_interact_bendAntenna">
             <English>Bend antenna upwards</English>
             <German>Antenne hoch biegen</German>
-            <Japanese>折り曲げたアンテナを上向きに</Japanese>
+            <Japanese>アンテナを上向きに曲げる</Japanese>
             <Italian>Piegare l'antenna verso l'alto</Italian>
             <Russian>Согнуть антенну</Russian>
             <Chinese>把天線往上彎曲</Chinese>
@@ -211,7 +211,7 @@
             <Spanish>Rango de frecuencias</Spanish>
             <Turkish>Frekans Aralığı</Turkish>
             <Portuguese>Alcance de Frequência</Portuguese>
-            <Japanese>周波数幅</Japanese>
+            <Japanese>周波数範囲</Japanese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_transmitPower">
             <English>Transmit Power</English>
@@ -231,7 +231,7 @@
             <Spanish>Rango efectivo (Urbano)</Spanish>
             <Turkish>Gerçek Güç (Şehir İçi)</Turkish>
             <Portuguese>Alcance Efetivo (Urbano)</Portuguese>
-            <Japanese>有効範囲 (市街地)</Japanese>
+            <Japanese>有効範囲距離 (市街地)</Japanese>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_externalSpeaker">
             <English>External Speaker</English>
