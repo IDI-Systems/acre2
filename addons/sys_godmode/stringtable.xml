@@ -165,7 +165,7 @@
             <French>Couleur - Réception</French>
             <Turkish>Alınan Mesaj Rengi</Turkish>
             <Portuguese>Cor: Recepção</Portuguese>
-            <Japanese>受信カラー</Japanese>
+            <Japanese>受信通知の表示色</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
             <English>Current Chat Channel Transmit Color</English>
