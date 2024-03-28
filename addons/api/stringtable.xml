@@ -11,6 +11,7 @@
             <Chinesesimp>基本任务设置</Chinesesimp>
             <Portuguese>Configuração básica de missão</Portuguese>
             <Turkish>Temel Görev Düzeni</Turkish>
+            <Japanese>ミッション基本設定</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_Module_Description">
             <English>This module defines basic ACRE setup for a mission</English>
@@ -21,6 +22,7 @@
             <Chinesesimp>这个模块为了任务定义基础的ACRE 设定</Chinesesimp>
             <Portuguese>Este módulo define configurações básicas do ACRE para a missão</Portuguese>
             <Turkish>Bu modül bir görev için temel ayarları tanımlar</Turkish>
+            <Japanese>このモジュールは、 このミッションの為の基本的なACREのセットアップを定義します</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_DisplayName">
             <English>Channels Per Side</English>
@@ -31,6 +33,7 @@
             <Chinesesimp>各阵营不同频率</Chinesesimp>
             <Portuguese>Canais exclusivos por Lado</Portuguese>
             <Turkish>Taraf Başı Kanal</Turkish>
+            <Japanese>陣営毎のチャンネル</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_RadioSetup_Description">
             <English>Set to true to have each side have different ACRE radio frequencies</English>
@@ -41,6 +44,7 @@
             <Chinesesimp>设为实时让不同阵营的玩家有着不同的ACRE 无线电频率</Chinesesimp>
             <Portuguese>Determina se cada Lado terá diferentes frequências de rádio ACRE.</Portuguese>
             <Turkish>Bu ayar ile her tarafın kendi ACRE telsiz frekansları olur</Turkish>
+            <Japanese>true に設定すると、 各陣営によって異なるACRE無線周波数が使用されます。</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_DisplayName">
             <English>Babel Language Per Side</English>
@@ -51,6 +55,7 @@
             <Chinesesimp>各阵营多国语言</Chinesesimp>
             <Portuguese>Linguagem Babel por Lado</Portuguese>
             <Turkish>Taraf Başı Babel Dili</Turkish>
+            <Japanese>陣営毎のバベル言語</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_Description">
             <English>Select whether each side has its own language, and whether they also share a common tongue.</English>
@@ -61,6 +66,7 @@
             <Chinesesimp>设定各阵营是否使用自己的母语，或者母语之外还有一个通用语言。</Chinesesimp>
             <Portuguese>Seleciona se cada Lado tem a sua própria linguagem e se eles compartilham uma língua comum.</Portuguese>
             <Turkish>Her tarafın kendi dili olup olmadığını, ve ortak bir dil paylaşıp paylaşmadıklarını seçin</Turkish>
+            <Japanese>各陣営が独自の言語を持っているかどうか、 また共通の言語を共有しているかどうかを選択します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_AllDifferent">
             <English>Per-Side</English>
@@ -71,6 +77,7 @@
             <Chinesesimp>母语</Chinesesimp>
             <Portuguese>Uma língua por Lado</Portuguese>
             <Turkish>Taraf Başı 1 Dil</Turkish>
+            <Japanese>サイド毎</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_SharingDifferent">
             <English>Per-Side /w Common</English>
@@ -81,6 +88,7 @@
             <Chinesesimp>母语并外加通用语</Chinesesimp>
             <Portuguese>Uma língua por Lado c/ comum</Portuguese>
             <Turkish>Taraf Başı 1 Dil + Ortak Dil</Turkish>
+            <Japanese>サイド毎及び共通言語</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_BabelSetup_No">
             <English>No Babel</English>
@@ -91,6 +99,7 @@
             <Chinesesimp>关闭母语</Chinesesimp>
             <Portuguese>Não utiliza o sistema Babel</Portuguese>
             <Turkish>Babel Kapat</Turkish>
+            <Japanese>バベル無し</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_DisplayName">
             <English>Default Radio 1</English>
@@ -101,6 +110,7 @@
             <Chinesesimp>预设无线电 1</Chinesesimp>
             <Portuguese>Rádio padrão 1</Portuguese>
             <Turkish>Varsayılan Telsiz 1</Turkish>
+            <Japanese>デフォルト無線 1</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Two_DisplayName">
             <English>Default Radio 2</English>
@@ -111,6 +121,7 @@
             <Chinesesimp>预设无线电 2</Chinesesimp>
             <Portuguese>Rádio padrão 2</Portuguese>
             <Turkish>Varsayılan Telsiz 2</Turkish>
+            <Japanese>デフォルト無線 2</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Three_DisplayName">
             <English>Default Radio 3</English>
@@ -121,6 +132,7 @@
             <Chinesesimp>预设无线电 3</Chinesesimp>
             <Portuguese>Rádio padrão 3</Portuguese>
             <Turkish>Varsayılan Telsiz 3</Turkish>
+            <Japanese>デフォルト無線 3</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Four_DisplayName">
             <English>Default Radio 4</English>
@@ -131,6 +143,7 @@
             <Chinesesimp>预设无线电 4</Chinesesimp>
             <Portuguese>Rádio padrão 4</Portuguese>
             <Turkish>Varsayılan Telsiz 4</Turkish>
+            <Japanese>デフォルト無線 4</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_basicMissionSetup_DefaultRadio_Description">
             <English>Default radio for ACRE to give player</English>
@@ -141,6 +154,7 @@
             <Chinesesimp>预设给予玩家的ACRE 无线电</Chinesesimp>
             <Portuguese>Rádio padrão para o jogador</Portuguese>
             <Turkish>ACRE'ın oyunculara vereceği telsiz</Turkish>
+            <Japanese>ACREがプレーヤーに提供するデフォルトの無線機</Japanese>
         </Key>
         <!-- Name Channels Module-->
         <Key ID="STR_ACRE_api_nameChannels_Module_DisplayName">
@@ -152,6 +166,7 @@
             <Chinesesimp>频道名</Chinesesimp>
             <Portuguese>Nomear canais</Portuguese>
             <Turkish>Kanal İsimleri</Turkish>
+            <Japanese>チャンネルに命名</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Module_Description">
             <English>This module defines basic channel naming for a mission in ACRE</English>
@@ -162,6 +177,7 @@
             <Chinesesimp>这个模组为任务定义基础的ACRE频道名称</Chinesesimp>
             <Portuguese>Este módulo define a nomeação de canais para a missão no ACRE</Portuguese>
             <Turkish>Bu modül bir görev için kanal isimlerini tanımlar</Turkish>
+            <Japanese>このモジュールは、 このミッションの為の基本的なACREのチャンネル名を定義します</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_DisplayName">
             <English>Side</English>
@@ -173,6 +189,7 @@
             <Portuguese>Lado</Portuguese>
             <Spanish>Bando</Spanish>
             <Turkish>Taraf</Turkish>
+            <Japanese>陣営</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Description">
             <English>Select the side to name channels for</English>
@@ -183,6 +200,7 @@
             <Chinesesimp>选择哪方阵营使用频道名称</Chinesesimp>
             <Portuguese>Selecionar o Lado qual seus canais serão nomeados</Portuguese>
             <Turkish>Kanal isimlerinin belirlenceği tarafı seçin</Turkish>
+            <Japanese>チャンネルに名前を付ける陣営を選択してください</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_All">
             <English>All</English>
@@ -194,6 +212,7 @@
             <Portuguese>Todos</Portuguese>
             <Spanish>Todos</Spanish>
             <Turkish>Hepsi</Turkish>
+            <Japanese>全て</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_West">
             <English>BLUFOR</English>
@@ -204,6 +223,7 @@
             <Chinesesimp>蓝方</Chinesesimp>
             <Portuguese>BLUFOR</Portuguese>
             <Turkish>BLUFOR</Turkish>
+            <Japanese>BLUFOR軍 (同盟軍)</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_East">
             <English>OPFOR</English>
@@ -214,6 +234,7 @@
             <Chinesesimp>对立方</Chinesesimp>
             <Portuguese>OPFOR</Portuguese>
             <Turkish>OPFOR</Turkish>
+            <Japanese>OPFOR軍</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Ind">
             <English>Independent</English>
@@ -225,6 +246,7 @@
             <Portuguese>Independentes</Portuguese>
             <Spanish>Independientes</Spanish>
             <Turkish>Independent</Turkish>
+            <Japanese>Independent軍 (独立軍)</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_SideSelect_Civ">
             <English>Civilian</English>
@@ -236,6 +258,7 @@
             <Portuguese>Civis</Portuguese>
             <Spanish>Civiles</Spanish>
             <Turkish>Sivil</Turkish>
+            <Japanese>Civilian (民間)</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_1_DisplayName">
             <English>Channel 1</English>
@@ -247,6 +270,7 @@
             <Portuguese>Canal 1</Portuguese>
             <Spanish>Canal 1</Spanish>
             <Turkish>Kanal 1</Turkish>
+            <Japanese>チャンネル1</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_1_Description">
             <English>Name of Channel 1</English>
@@ -258,6 +282,7 @@
             <Portuguese>Nome do Canal 1</Portuguese>
             <Spanish>Nombre de Canal 1</Spanish>
             <Turkish>Kanal 1'in İsmi</Turkish>
+            <Japanese>チャンネル1の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_2_DisplayName">
             <English>Channel 2</English>
@@ -269,6 +294,7 @@
             <Portuguese>Canal 2</Portuguese>
             <Spanish>Canal 2</Spanish>
             <Turkish>Kanal 2</Turkish>
+            <Japanese>チャンネル2</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_2_Description">
             <English>Name of Channel 2</English>
@@ -280,6 +306,7 @@
             <Portuguese>Nome do Canal 2</Portuguese>
             <Spanish>Nombre de Canal 2</Spanish>
             <Turkish>Kanal 2'nin İsmi</Turkish>
+            <Japanese>チャンネル2の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_3_DisplayName">
             <English>Channel 3</English>
@@ -291,6 +318,7 @@
             <Portuguese>Canal 3</Portuguese>
             <Spanish>Canal 3</Spanish>
             <Turkish>Kanal 3</Turkish>
+            <Japanese>チャンネル3</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_3_Description">
             <English>Name of Channel 3</English>
@@ -302,6 +330,7 @@
             <Portuguese>Nome do Canal 3</Portuguese>
             <Spanish>Nombre de Canal 3</Spanish>
             <Turkish>Kanal 3'ün İsmi</Turkish>
+            <Japanese>チャンネル3の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_4_DisplayName">
             <English>Channel 4</English>
@@ -313,6 +342,7 @@
             <Portuguese>Canal 4</Portuguese>
             <Spanish>Canal 4</Spanish>
             <Turkish>Kanal 4</Turkish>
+            <Japanese>チャンネル4</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_4_Description">
             <English>Name of Channel 4</English>
@@ -324,6 +354,7 @@
             <Portuguese>Nome do Canal 4</Portuguese>
             <Spanish>Nombre de Canal 4</Spanish>
             <Turkish>Kanal 4'ün İsmi</Turkish>
+            <Japanese>チャンネル4の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_5_DisplayName">
             <English>Channel 5</English>
@@ -335,6 +366,7 @@
             <Portuguese>Canal 5</Portuguese>
             <Spanish>Canal 5</Spanish>
             <Turkish>Kanal 5</Turkish>
+            <Japanese>チャンネル5</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_5_Description">
             <English>Name of Channel 5</English>
@@ -346,6 +378,7 @@
             <Portuguese>Nome do Canal 5</Portuguese>
             <Spanish>Nombre de Canal 5</Spanish>
             <Turkish>Kanal 5'in İsmi</Turkish>
+            <Japanese>チャンネル5の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_6_DisplayName">
             <English>Channel 6</English>
@@ -357,6 +390,7 @@
             <Portuguese>Canal 6</Portuguese>
             <Spanish>Canal 6</Spanish>
             <Turkish>Kanal 6</Turkish>
+            <Japanese>チャンネル6</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_6_Description">
             <English>Name of Channel 6</English>
@@ -368,6 +402,7 @@
             <Portuguese>Nome do Canal 6</Portuguese>
             <Spanish>Nombre de Canal 6</Spanish>
             <Turkish>Kanal 6'nın İsmi</Turkish>
+            <Japanese>チャンネル6の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_7_DisplayName">
             <English>Channel 7</English>
@@ -379,6 +414,7 @@
             <Portuguese>Canal 7</Portuguese>
             <Spanish>Canal 7</Spanish>
             <Turkish>Kanal 7</Turkish>
+            <Japanese>チャンネル7</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_7_Description">
             <English>Name of Channel 7</English>
@@ -390,6 +426,7 @@
             <Portuguese>Nome do Canal 7</Portuguese>
             <Spanish>Nombre de Canal 7</Spanish>
             <Turkish>Kanal 7'nin İsmi</Turkish>
+            <Japanese>チャンネル7の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_8_DisplayName">
             <English>Channel 8</English>
@@ -401,6 +438,7 @@
             <Portuguese>Canal 8</Portuguese>
             <Spanish>Canal 8</Spanish>
             <Turkish>Kanal 8</Turkish>
+            <Japanese>チャンネル8</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_8_Description">
             <English>Name of Channel 8</English>
@@ -412,6 +450,7 @@
             <Portuguese>Nome do Canal 8</Portuguese>
             <Spanish>Nombre de Canal 8</Spanish>
             <Turkish>Kanal 8'in İsmi</Turkish>
+            <Japanese>チャンネル8の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_9_DisplayName">
             <English>Channel 9</English>
@@ -423,6 +462,7 @@
             <Portuguese>Canal 9</Portuguese>
             <Spanish>Canal 9</Spanish>
             <Turkish>Kanal 9</Turkish>
+            <Japanese>チャンネル9</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_9_Description">
             <English>Name of Channel 9</English>
@@ -434,6 +474,7 @@
             <Portuguese>Nome do Canal 9</Portuguese>
             <Spanish>Nombre de Canal 9</Spanish>
             <Turkish>Kanal 9'un İsmi</Turkish>
+            <Japanese>チャンネル9の名前</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_10_DisplayName">
             <English>Channel 10</English>
@@ -445,6 +486,7 @@
             <Portuguese>Canal 10</Portuguese>
             <Spanish>Canal 10</Spanish>
             <Turkish>Kanal 10</Turkish>
+            <Japanese>チャンネル10</Japanese>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_10_Description">
             <English>Name of Channel 10</English>
@@ -456,6 +498,7 @@
             <Portuguese>Nome do Canal 10</Portuguese>
             <Spanish>Nombre de Canal 10</Spanish>
             <Turkish>Kanal 10'un İsmi</Turkish>
+            <Japanese>チャンネル10の名前</Japanese>
         </Key>
     </Package>
 </Project>

@@ -3,33 +3,43 @@
     <Package name="compat_spe">
         <Key ID="STR_ACRE_compat_spe_RadioSetShort">
             <English>Radio</English>
+            <Japanese>無線</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet">
             <English>Radio Set</English>
+            <Japanese>無線セット</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_Short">
             <English>A-Set</English>
+            <Japanese>Aセット</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_US">
             <English>Radio Set - Able</English>
+            <Japanese>無線セット - Able</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_GER">
             <English>Radio Set - Anton</English>
+            <Japanese>無線セット - Anton</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_Short">
             <English>B-Set</English>
+            <Japanese>Bセット</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_US">
             <English>Radio Set - Baker</English>
+            <Japanese>無線セット - Baker</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_GER">
             <English>Radio Set - Bruno</English>
+            <Japanese>無線セット - Bruno</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_Intercom_Short">
             <English>IntCm</English>
+            <Japanese>インコム</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_Intercom_Crew">
             <English>Crew Intercom</English>
+            <Japanese>乗員インターコム</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_75_Command">
             <English>M4A1 Sherman (Command)</English>
@@ -54,6 +64,7 @@
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioOperator">
             <English>Radio Operator</English>
+            <Japanese>無線手</Japanese>
         </Key>
     </Package>
 </Project>

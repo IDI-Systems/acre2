@@ -63,7 +63,7 @@
             <German>Hintergrundfarbe der visuellen Benachrichtigung</German>
             <Italian>Colore sfondo notifica</Italian>
             <Russian>Цвет фона уведомления</Russian>
-            <Japanese>通知の背景カラー</Japanese>
+            <Japanese>通知背景の表示色</Japanese>
             <Chinese>通知的背景顏色</Chinese>
             <French>Notifications - Couleur d'arrière-plan</French>
             <Chinesesimp>通知的背景颜色</Chinesesimp>
@@ -89,7 +89,7 @@
             <German>Schriftfarbe während Babel Sprachwechsel</German>
             <Italian>Colore della lingua del ciclo di Babel</Italian>
             <Russian>Цвет при изменении языка Babel</Russian>
-            <Japanese>バベル サイクル言語カラー</Japanese>
+            <Japanese>バベル言語切り替え時の表示色</Japanese>
             <Chinese>多國語言切換顏色</Chinese>
             <French>Couleur - Langage Babel</French>
             <Chinesesimp>多国语言切换颜色</Chinesesimp>
@@ -101,7 +101,7 @@
             <German>Farbe bei Funkkanalwechsel</German>
             <Italian>Cambia colore canale</Italian>
             <Russian>Цвет при смене каналов</Russian>
-            <Japanese>チャンネル切り替えカラー</Japanese>
+            <Japanese>チャンネル切り替え時の表示色</Japanese>
             <Chinese>切換頻道顏色</Chinese>
             <French>Couleur - Changement de canal radio</French>
             <Chinesesimp>切换频道颜色</Chinesesimp>
@@ -113,7 +113,7 @@
             <German>Farbe bei Auf- oder Absetzen der Kopfhörer</German>
             <Italian>Colore quando si indossano o si tolgono le cuffie</Italian>
             <Russian>Изменить цвет наушников</Russian>
-            <Japanese>ヘッドセット切り替えカラー</Japanese>
+            <Japanese>ヘッドセット切り替え時の表示色</Japanese>
             <Chinese>耳機切換顏色</Chinese>
             <French>Couleur - Mettre/Retirer les écouteurs</French>
             <Chinesesimp>耳机切换颜色</Chinesesimp>
@@ -125,7 +125,7 @@
             <German>Farbe bei Funkgerätwechsel</German>
             <Italian>Colore quando si cambia radio</Italian>
             <Russian>Цвет при смене рации</Russian>
-            <Japanese>無線機切り替えカラー</Japanese>
+            <Japanese>無線機切り替え時の表示色</Japanese>
             <Chinese>無線電循環顏色</Chinese>
             <French>Couleur - Changement de radio</French>
             <Chinesesimp>无线电循环颜色</Chinesesimp>
@@ -137,7 +137,7 @@
             <German>Farbe Sprechtaste 1</German>
             <Italian>Colore trasmissione radio 1 (PTT 1)</Italian>
             <Russian>Рация 1 (PTT 1) цвет передачи</Russian>
-            <Japanese>無線機 1 (PTT 1) 送信カラー</Japanese>
+            <Japanese>無線機1の送信 (PTT 1) の表示色</Japanese>
             <Chinese>無線電1 (隨按即說1)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 1 (PTT 1)</French>
             <Chinesesimp>无线电1（随按即说1）通讯颜色</Chinesesimp>
@@ -150,7 +150,7 @@
             <German>Farbe Sprechtaste 2</German>
             <Italian>Colore trasmissione radio 2 (PTT 2)</Italian>
             <Russian>Рация 2 (PTT 2) цвет передачи</Russian>
-            <Japanese>無線機 2 (PTT 2) 送信カラー</Japanese>
+            <Japanese>無線機2の送信 (PTT 2) の表示色</Japanese>
             <Chinese>無線電2 (隨按即說2)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 2 (PTT 2)</French>
             <Chinesesimp>无线电2（随按即说2）通讯颜色</Chinesesimp>
@@ -163,7 +163,7 @@
             <German>Farbe Sprechtaste 3</German>
             <Italian>Colore trasmissione radio 3 (PTT 3)</Italian>
             <Russian>Рация 3 (PTT 3) цвет передачи</Russian>
-            <Japanese>無線機 3 (PTT 3) 送信カラー</Japanese>
+            <Japanese>無線機3の送信 (PTT 3) の表示色</Japanese>
             <Chinese>無線電3 (隨按即說3)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 3 (PTT 3)</French>
             <Chinesesimp>无线电3（随按即说3）通讯颜色</Chinesesimp>
@@ -176,7 +176,7 @@
             <German>Farbe für Standardsprechtaste</German>
             <Italian>Colore trasmissione radio attiva</Italian>
             <Russian>Цвет передачи активной рации</Russian>
-            <Japanese>使用中無線機の送信カラー</Japanese>
+            <Japanese>使用中無線の送信 の表示色</Japanese>
             <Chinese>使用中的無線電通訊顏色</Chinese>
             <French>Couleur - Transmission radio active</French>
             <Chinesesimp>使用中的无线电通讯颜色</Chinesesimp>

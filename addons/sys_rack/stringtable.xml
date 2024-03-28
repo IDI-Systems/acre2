@@ -32,7 +32,7 @@
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount</English>
             <German>Deinstalliere</German>
-            <Japanese>降ろす</Japanese>
+            <Japanese>積載解除</Japanese>
             <Chinese>卸載</Chinese>
             <Chinesesimp>卸载</Chinesesimp>
             <Korean>분리</Korean>
@@ -93,6 +93,7 @@
             <English>Use via Intercom (Work: %1)</English>
             <German>Durch Intercom verwenden (Work: %1)</German>
             <Italian>Usa tramite l'intercom (Work: %1)</Italian>
+            <Japanese>をインターコムから使う (%1 として)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
@@ -147,6 +148,7 @@
             <Spanish>Panel 2</Spanish>
             <Turkish>Panel 2</Turkish>
             <Portuguese>Painel 2</Portuguese>
+            <Japanese>ダッシュ2</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
