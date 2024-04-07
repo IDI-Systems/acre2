@@ -38,7 +38,7 @@ switch _channelType do {
         HASH_SET(_return,"CTCSSRx",HASH_GET(_channel,"CTCSSRx"));
         HASH_SET(_return,"modulation",HASH_GET(_channel,"modulation"));
         HASH_SET(_return,"encryption",HASH_GET(_channel,"encryption"));
-        HASH_SET(_return,"TEK",HASH_GET(_channel,"tek"));
+        HASH_SET(_return,"TEK",HASH_GET(_channel,"TEK"));
         HASH_SET(_return,"trafficRate",HASH_GET(_channel,"trafficRate"));
         HASH_SET(_return,"syncLength",HASH_GET(_channel,"phase"));
         HASH_SET(_return,"optionCode",HASH_GET(_channel,"optionCode"));
