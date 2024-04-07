@@ -37,8 +37,8 @@ class CfgWeapons {
         scope = 2;
         displayName = "WS38 12FT Antenna";
         descriptionShort = CSTRING(WS3812ftAntenna_description);
-        model = QPATHTOF(data\models\acre_antennaBag.p3d);
-        picture = QPATHTOF(data\ui\acre_antennabag_icon.paa);
+        model = QPATHTOEF(sys_ws38,data\Models\ws38_aerial_bag.p3d);
+        picture = QPATHTOF(data\ws38_antenna\ui\icon_bag.paa);
 
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 30;
