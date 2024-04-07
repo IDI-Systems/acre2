@@ -1,23 +1,23 @@
 #include "..\script_component.hpp"
 /*
-	 * Author: ACRE2Team
-	 * Function called when PTT key is released. The most important aspect is setting the PTTDown flag
-	 * of the radio to false.
-	 *
-	 * Arguments:
-	 * 0: Radio ID <STRING>
-	 * 1: Event: "handlePTTUp" <STRING> (Unused)
-	 * 2: Event data <ARRAY> (Unused)
-	 * 3: Radio data <HASH> (Unused)
-	 * 4: Remote <BOOL> (Unused)
-	 *
-	 * Return Value:
-	 * true <BOOL>
-	 *
-	 * Example:
-	 * ["ACRE_WS38_ID_1", "handlePTTUp", [], [], false] call acre_sys_ws38_fnc_handlePTTUp
-	 *
-	 * Public: No
+     * Author: ACRE2Team
+     * Function called when PTT key is released. The most important aspect is setting the PTTDown flag
+     * of the radio to false.
+     *
+     * Arguments:
+     * 0: Radio ID <STRING>
+     * 1: Event: "handlePTTUp" <STRING> (Unused)
+     * 2: Event data <ARRAY> (Unused)
+     * 3: Radio data <HASH> (Unused)
+     * 4: Remote <BOOL> (Unused)
+     *
+     * Return Value:
+     * true <BOOL>
+     *
+     * Example:
+     * ["ACRE_WS38_ID_1", "handlePTTUp", [], [], false] call acre_sys_ws38_fnc_handlePTTUp
+     *
+     * Public: No
  */
 
 params ["_radioId", "", "", "", ""];
