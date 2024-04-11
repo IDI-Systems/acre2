@@ -21,11 +21,19 @@ if (_numSpokenLanguages > 1) then {
     if (_nextId > _numSpokenLanguages - 1) then {
         _nextId = 0;
     };
+
+    // Set hint duration to infinite when you're not speaking your first language (setting dependent)
+    //systemChat format ["nextLangID: %1", _nextId];
+    private _hintTime = 1;
+    if (EGVAR(sys_list,LanguageHintPersistence) && {_nextId > 0}) then {
+        _hintTime = -1;
+    };
+
     private _languageId = ACRE_SPOKEN_LANGUAGES select _nextId;
     private _language = GVAR(languages) select _languageId;
     _language params ["_languageKey","_languageName"];
     [_languageKey] call FUNC(setSpeakingLanguage);
-    ["acre_cycleLanguage", _languageName, "Now speaking", "", 1, EGVAR(sys_list,LanguageColor)] call EFUNC(sys_list,displayHint);
+    ["acre_cycleLanguage", _languageName, "Now speaking", "", _hintTime, EGVAR(sys_list,LanguageColor)] call EFUNC(sys_list,displayHint);
     [] call FUNC(updateSelf);
     if (ACRE_LOCAL_SPEAKING) then {
         //@TODO: This is an uber hack, should probably be set up as a TS event.
