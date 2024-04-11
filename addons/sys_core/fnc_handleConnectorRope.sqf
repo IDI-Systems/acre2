@@ -78,7 +78,7 @@ if (_state) then {
             [QGVAR(hideConnectorRopeHelpers), [_connectorRopeHelpers]] call CBA_fnc_serverEvent;
 
             // Create Rope between helper objects
-            _connectorRope = ropeCreate [_connectorRopeHelpers select 0, _fromPoint, 3, nil, nil, QGVAR(connectorWire)];
+            _connectorRope = ropeCreate [_connectorRopeHelpers select 0, _fromPoint, 1.2, nil, nil, QGVAR(connectorWire)];
             [_connectorRopeHelpers select 1, [0, 0, 0]] ropeAttachTo _connectorRope;
         };
     };
