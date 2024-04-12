@@ -23,7 +23,6 @@ if (_numSpokenLanguages > 1) then {
     };
 
     // Set hint duration to infinite when you're not speaking your first language (setting dependent)
-    //systemChat format ["nextLangID: %1", _nextId];
     private _hintTime = 1;
     if (EGVAR(sys_list,LanguageHintPersistence) && {_nextId > 0}) then {
         _hintTime = -1;
