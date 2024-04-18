@@ -35,20 +35,7 @@ if (_isManpack == 0 || {_isRackRadio}) then {
             _channel = ((_channel + _dir) max (_currentBlock*16 + 1)) min ((_currentBlock + 1)*16);
         };
         case "ACRE_PRC152": {
-            if (_dir == 1) then {
-                if (_channel < 99) then {
-                    _channel = _channel + 1;
-                } else {
-                    _channel = 0;
-                };
-            } else {
-                if (_channel > 1) then {
-                    _channel = _channel - 1;
-                } else {
-                    // Go to the last preset
-                    _channel = 99;
-                };
-            };
+            _channel = (_channel + _dir + 98) % 99 + 1;
         };
         default {
             _channel = _channel + _dir;
