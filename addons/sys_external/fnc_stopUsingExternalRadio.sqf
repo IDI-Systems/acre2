@@ -29,7 +29,7 @@ private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "dis
 [[ICON_RADIO_CALL], [format [localize LSTRING(hintReturn), _displayName, name _owner]], true] call CBA_fnc_notify;
 
 // Destroy Rope
-[QEGVAR(sys_core,handleConnectorRopeEvent), [false], _owner] call CBA_fnc_targetEvent;
+[QEGVAR(sys_core,handleConnectorRopeEvent), [false]] call CBA_fnc_localEvent;
 
 if (_target == _owner) then {
     // Handle remote owner
