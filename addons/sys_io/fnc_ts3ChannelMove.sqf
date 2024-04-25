@@ -17,7 +17,7 @@
 
 private _serverName = toString ((toArray serverName) select {_x < 127});
 if (_serverName == "") then {
-	_serverName = "ServerName Fully Sanitized away";
+    _serverName = "ServerName Fully Sanitized away";
 };
 private _ts3ChannelDetails = format ["%1,%2,%3", EGVAR(sys_core,ts3ChannelName), EGVAR(sys_core,ts3ChannelPassword), _serverName];
 TRACE_1("Moving TS3 Channel",_ts3ChannelDetails);
