@@ -185,7 +185,7 @@
             <Spanish>Intercom de tripulación</Spanish>
             <Chinese>機組員對講機</Chinese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
-            <Japanese>乗員インターコム</Japanese>
+            <Japanese>乗員 インターコム</Japanese>
             <Portuguese>Intercom de Tripulação</Portuguese>
             <Polish>Interkom załogi</Polish>
             <Italian>Intercom equipaggio</Italian>
@@ -213,7 +213,7 @@
             <Spanish>Intercom de pasajeros</Spanish>
             <Chinese>乘客對講機</Chinese>
             <Chinesesimp>乘客对讲机</Chinesesimp>
-            <Japanese>後部座席インターコム</Japanese>
+            <Japanese>乗客 インターコム</Japanese>
             <Portuguese>Intercom de passageiros</Portuguese>
             <Polish>Interkom pasażerów</Polish>
             <Italian>Intercom passeggero</Italian>
@@ -232,7 +232,7 @@
             <French>Pax</French>
             <German>Passagier</German>
             <Russian>Пассажиры</Russian>
-            <Japanese>後部座席</Japanese>
+            <Japanese>乗客</Japanese>
             <Portuguese>Passageiros</Portuguese>
             <Turkish>Yolcu</Turkish>
         </Key>

@@ -169,7 +169,7 @@
             <Chinese>儀器版面下降</Chinese>
             <Chinesesimp>仪器版面下降</Chinesesimp>
             <Korean>대쉬보드 하단</Korean>
-            <Japanese>下部ダッシュボード</Japanese>
+            <Japanese>ダッシュボード下部</Japanese>
             <Portuguese>Painel Inferior</Portuguese>
             <Polish>Dolny panel</Polish>
             <Italian>Cruscotto Basso</Italian>
@@ -181,7 +181,7 @@
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
             <Italian>C. Basso</Italian>
-            <Japanese>下部DB</Japanese>
+            <Japanese>DB.下</Japanese>
             <Chinese>儀器.下</Chinese>
             <Chinesesimp>仪器.下</Chinesesimp>
             <Spanish>P.Inf</Spanish>
@@ -197,7 +197,7 @@
             <Chinese>儀器版面上升</Chinese>
             <Chinesesimp>仪器版面上升</Chinesesimp>
             <Korean>대쉬보드 상단</Korean>
-            <Japanese>上部ダッシュボード</Japanese>
+            <Japanese>ダッシュボード上部</Japanese>
             <Portuguese>Painel Superior</Portuguese>
             <Polish>Górny panel</Polish>
             <Italian>Cruscotto Alto</Italian>
@@ -209,7 +209,7 @@
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
             <Italian>C. Alto</Italian>
-            <Japanese>上部DB</Japanese>
+            <Japanese>DB.上</Japanese>
             <Chinese>儀器.上</Chinese>
             <Chinesesimp>仪器.上</Chinesesimp>
             <Spanish>P.Sup</Spanish>
