@@ -22,7 +22,7 @@
             <Spanish>Abrir Radio</Spanish>
             <Czech>Otevřít aktivní rádio</Czech>
             <German>Aktives Funkgerät öffnen</German>
-            <Japanese>使用中の無線機を開く</Japanese>
+            <Japanese>アクティブな無線機を開く</Japanese>
             <Italian>Apri Ricetrasmittente Attiva</Italian>
             <French>Ouvrir radio active</French>
             <Korean>무전기 열기</Korean>
@@ -137,7 +137,7 @@
             <German>Farbe Sprechtaste 1</German>
             <Italian>Colore trasmissione radio 1 (PTT 1)</Italian>
             <Russian>Рация 1 (PTT 1) цвет передачи</Russian>
-            <Japanese>無線機1の送信 (PTT 1)の表示色</Japanese>
+            <Japanese>無線機1 (PTT 1) 送信時の表示色</Japanese>
             <Chinese>無線電1 (隨按即說1)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 1 (PTT 1)</French>
             <Chinesesimp>无线电1（随按即说1）通讯颜色</Chinesesimp>
@@ -150,7 +150,7 @@
             <German>Farbe Sprechtaste 2</German>
             <Italian>Colore trasmissione radio 2 (PTT 2)</Italian>
             <Russian>Рация 2 (PTT 2) цвет передачи</Russian>
-            <Japanese>無線機2の送信 (PTT 2)の表示色</Japanese>
+            <Japanese>無線機2 (PTT 2) 送信時の表示色</Japanese>
             <Chinese>無線電2 (隨按即說2)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 2 (PTT 2)</French>
             <Chinesesimp>无线电2（随按即说2）通讯颜色</Chinesesimp>
@@ -163,7 +163,7 @@
             <German>Farbe Sprechtaste 3</German>
             <Italian>Colore trasmissione radio 3 (PTT 3)</Italian>
             <Russian>Рация 3 (PTT 3) цвет передачи</Russian>
-            <Japanese>無線機3の送信 (PTT 3)の表示色</Japanese>
+            <Japanese>無線機3 (PTT 3) 送信時の表示色</Japanese>
             <Chinese>無線電3 (隨按即說3)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 3 (PTT 3)</French>
             <Chinesesimp>无线电3（随按即说3）通讯颜色</Chinesesimp>
@@ -176,7 +176,7 @@
             <German>Farbe für Standardsprechtaste</German>
             <Italian>Colore trasmissione radio attiva</Italian>
             <Russian>Цвет передачи активной рации</Russian>
-            <Japanese>使用中無線の送信の表示色</Japanese>
+            <Japanese>アクティブな無線機 送信時の表示色</Japanese>
             <Chinese>使用中的無線電通訊顏色</Chinese>
             <French>Couleur - Transmission radio active</French>
             <Chinesesimp>使用中的无线电通讯颜色</Chinesesimp>

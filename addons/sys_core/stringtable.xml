@@ -166,7 +166,7 @@
             <Spanish>Tecla de radio activa</Spanish>
             <Czech>Aktivní klávesa rádia</Czech>
             <German>Standard Sprechtaste</German>
-            <Japanese>使用中無線の送信</Japanese>
+            <Japanese>アクティブな無線機の送信</Japanese>
             <Italian>Tasto Radio Attiva</Italian>
             <French>Transmettre sur radio active</French>
             <Korean>기본 무전 단축키</Korean>
@@ -182,7 +182,7 @@
             <Spanish>Utilizar la radio seleccionada actualmente para hablar</Spanish>
             <Czech>Použít právě zvolené rádio k mluvení.</Czech>
             <German>Auf aktivem Funkgerät übertragen.</German>
-            <Japanese>使用中の無線機で話します。</Japanese>
+            <Japanese>現在アクティブにしている無線機で話します。</Japanese>
             <Italian>Trasmetti sulla Radio selezionata.</Italian>
             <French>Utilise la radio actuellement sélectionnée pour transmettre.</French>
             <Korean>현재 선택한 무전기 사용해 대화하세요.</Korean>
@@ -288,7 +288,7 @@
             <Spanish>Canal anterior (Radio activa)</Spanish>
             <Czech>Předchozí kanál</Czech>
             <German>Vorheriger Funkkanal (aktives Funkgerät)</German>
-            <Japanese>前のチャンネル (使用中の無線機)</Japanese>
+            <Japanese>前のチャンネル (アクティブな無線機)</Japanese>
             <Italian>Canale Precedente (Ricetrasmittente Attiva)</Italian>
             <French>Canal précédent (radio active)</French>
             <Korean>이전 채널 (활성화된 무전기)</Korean>
@@ -304,7 +304,7 @@
             <Spanish>Siguiente canal (Radio activa)</Spanish>
             <Czech>Další kanál</Czech>
             <German>Nächster Funkkanal (aktives Funkgerät)</German>
-            <Japanese>次のチャンネル (使用中の無線機)</Japanese>
+            <Japanese>次のチャンネル (アクティブな無線機)</Japanese>
             <Italian>Canale Successivo (Ricetrasmittente Attiva)</Italian>
             <French>Canal suivant (radio active)</French>
             <Korean>다음 채널 (활성화된 무전기)</Korean>
@@ -336,7 +336,7 @@
             <Spanish>Radio auricular izquierdo</Spanish>
             <Czech>Rádio do levého ucha</Czech>
             <German>Linker Ohrhörer</German>
-            <Japanese>音声を左耳側から (使用中の無線機)</Japanese>
+            <Japanese>音声を左耳側から (アクティブな無線機)</Japanese>
             <Italian>Imposta Auricolare Sinistro</Italian>
             <French>Radio oreille gauche (radio active)</French>
             <Korean>왼쪽 이어폰</Korean>
@@ -352,7 +352,7 @@
             <Spanish>Radio ambas auriculares</Spanish>
             <Czech>Rádio do prostředního ucha</Czech>
             <German>Beide Ohrhörer</German>
-            <Japanese>音声を両耳側から (使用中の無線機)</Japanese>
+            <Japanese>音声を両耳側から (アクティブな無線機)</Japanese>
             <Italian>Centra gli Auricolari</Italian>
             <French>Radio deux oreilles (radio active)</French>
             <Korean>양쪽 이어폰</Korean>
@@ -368,7 +368,7 @@
             <Spanish>Radio auricular derecho</Spanish>
             <Czech>Rádio do pravého ucha</Czech>
             <German>Rechter Ohrhörer</German>
-            <Japanese>音声を右耳側から (使用中の無線機)</Japanese>
+            <Japanese>音声を右耳側から (アクティブな無線機)</Japanese>
             <Italian>Imposta Auricolare Destro</Italian>
             <French>Radio oreille droite (radio active)</French>
             <Korean>오른쪽 이어폰</Korean>
@@ -617,7 +617,7 @@
             <English>Show rack transmissions</English>
             <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
             <Italian>Mostra il traffico radio dalle radio integrate</Italian>
-            <Japanese>架台の通信を表示</Japanese>
+            <Japanese>ラックの通信を表示</Japanese>
             <Russian>Показывать передачи с раций на подставке</Russian>
             <Chinese>顯示架上通訊</Chinese>
             <French>Afficher les transmissions du rack</French>
