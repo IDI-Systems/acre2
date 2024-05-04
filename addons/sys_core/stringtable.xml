@@ -19,7 +19,7 @@
             <English>Post-Mix Global Volume</English>
             <Spanish>Volumen global Post-Mix</Spanish>
             <French>Volume global post-mix</French>
-            <Japanese>ミキシング前の全体音量</Japanese>
+            <Japanese>ミキシング後の全体音量</Japanese>
             <Czech>Hlasitost Post-Mixu</Czech>
             <German>Post-Mix Lautstärke (Global)</German>
             <Italian>Volume Globale Post-Mix</Italian>
@@ -35,7 +35,7 @@
             <English>Pre-Mix Global Volume</English>
             <Spanish>Volumen global Pre-Mix</Spanish>
             <French>Volume global pré-mix</French>
-            <Japanese>ミキシング後の全体音量</Japanese>
+            <Japanese>ミキシング前の全体音量</Japanese>
             <Czech>Hlasitost Pre-Mixu</Czech>
             <German>Pre-Mix Lautstärke (Global)</German>
             <Italian>Volume Globale Pre-Mix</Italian>
