@@ -171,7 +171,7 @@
             <Spanish>No se puede conectar al intercom. Conexiones máximas alcanzadas</Spanish>
             <Chinese>對講機無法連線。已達到同時最大連線數量</Chinese>
             <Chinesesimp>对讲机无法连线。已达到同时最大连线数量</Chinesesimp>
-            <Japanese>インターコムに接続できません。最大接続数に到達</Japanese>
+            <Japanese>インターコムに接続できません。 最大接続数に到達</Japanese>
             <Portuguese>Impossível Conectar no Intercom. Máximo de Conexões alcançado</Portuguese>
             <Polish>Nie można się połączyć do interkomu. Limit połączeń został osiągnięty.</Polish>
             <Italian>Impossibile connettersi all'intercom. Numero massimo di connessioni raggiunto.</Italian>
@@ -185,7 +185,7 @@
             <Spanish>Intercom de tripulación</Spanish>
             <Chinese>機組員對講機</Chinese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
-            <Japanese>乗員インターコム</Japanese>
+            <Japanese>乗員 インターコム</Japanese>
             <Portuguese>Intercom de Tripulação</Portuguese>
             <Polish>Interkom załogi</Polish>
             <Italian>Intercom equipaggio</Italian>
@@ -213,7 +213,7 @@
             <Spanish>Intercom de pasajeros</Spanish>
             <Chinese>乘客對講機</Chinese>
             <Chinesesimp>乘客对讲机</Chinesesimp>
-            <Japanese>後部座席インターコム</Japanese>
+            <Japanese>乗客 インターコム</Japanese>
             <Portuguese>Intercom de passageiros</Portuguese>
             <Polish>Interkom pasażerów</Polish>
             <Italian>Intercom passeggero</Italian>
@@ -232,7 +232,7 @@
             <French>Pax</French>
             <German>Passagier</German>
             <Russian>Пассажиры</Russian>
-            <Japanese>後部座席</Japanese>
+            <Japanese>乗客</Japanese>
             <Portuguese>Passageiros</Portuguese>
             <Turkish>Yolcu</Turkish>
         </Key>
@@ -387,7 +387,7 @@
             <German>Bordfunkpriorität deaktivieren</German>
             <Italian>Disattiva priorità interfono</Italian>
             <Spanish>Desactivar prioridad de intercom</Spanish>
-            <Japanese>強調を無効化化</Japanese>
+            <Japanese>強調を無効化</Japanese>
             <Chinese>禁用強調</Chinese>
             <Russian>Деактивировать приоритет</Russian>
             <French>Désactiver la priorité</French>
@@ -455,7 +455,7 @@
             <Spanish>Red de intercom previa</Spanish>
             <Polish>Poprzednia sieć interkomu</Polish>
             <Italian>Rete Intercom precedente</Italian>
-            <Japanese>前のインターコム ネット</Japanese>
+            <Japanese>前のインターコム ネットワーク</Japanese>
             <Chinese>上一個通訊網路</Chinese>
             <Chinesesimp>上一个通讯网路</Chinesesimp>
             <French>Réseau d'interphonie précédent</French>
@@ -470,7 +470,7 @@
             <German>Verbindet mit dem vorheriger Bordfunknetzwerk.</German>
             <Italian>Si collega alla rete interfono precedente. Si disconnette dagli altri.</Italian>
             <Russian>Подключается к предыдущей сети Интерком. Отключается от остальных.</Russian>
-            <Japanese>前のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
+            <Japanese>前のインターコム ネットワークに接続します。 別のインターコム ネットワークは切断されます。</Japanese>
             <Chinese>從其他通訊網路斷開。並連接至上一個網路。</Chinese>
             <French>Se connecte au réseau précédent d'interphone. Se déconnecte des autres réseaux.</French>
             <Chinesesimp>从其他通讯网路断开。并链接至上一个网路。</Chinesesimp>
@@ -482,7 +482,7 @@
             <Spanish>Siguiente red de intercom</Spanish>
             <Polish>Następna sieć interkomu</Polish>
             <Italian>Rete interfono successiva</Italian>
-            <Japanese>次のインターコム ネット</Japanese>
+            <Japanese>次のインターコム ネットワーク</Japanese>
             <Chinese>下一個通訊網路</Chinese>
             <Chinesesimp>下一个通讯网路</Chinesesimp>
             <French>Réseau d'interphonie suivant</French>
@@ -497,7 +497,7 @@
             <German>Verbindet zu dem nächsten Bordfunknetzwerk.</German>
             <Italian>Si collega alla rete interfono prossimo. Si disconnette dagli altri.</Italian>
             <Russian>Подключает к следующей сети Интеркома. Отключает от остальных</Russian>
-            <Japanese>次のインターコム ネットに接続します。別のインターコム ネットは切断されます。</Japanese>
+            <Japanese>次のインターコム ネットワークに接続します。 別のインターコム ネットワークは切断されます。</Japanese>
             <Chinese>從其他通訊網路斷開。並連接至下一個網路。</Chinese>
             <French>Se connecte au réseau suivant d'interphone. Se déconnecte des autres réseaux.</French>
             <Chinesesimp>从其他通讯网路断开。并连接至下一个网路。</Chinesesimp>
@@ -511,7 +511,7 @@
             <Italian>Connetti Rete interfono Precedente</Italian>
             <Chinese>連線上一個通訊網路</Chinese>
             <Chinesesimp>连线上一个通讯网路</Chinesesimp>
-            <Japanese>前のインターコム ネットに接続</Japanese>
+            <Japanese>前のインターコム ネットワークに接続</Japanese>
             <French>Se connecter au réseau d'interphonie précédent</French>
             <German>Verbinde mit dem vorherigen Bordfunknetzwerk</German>
             <Russian>Подключиться к предыдущей сети Интеркома</Russian>
@@ -524,7 +524,7 @@
             <German>Verbindet mit dem vorherigen Bordfunknetzwerk während die bereits verbundenen beibehalten werden.</German>
             <Italian>Si connette alla precedente rete interfono mantenendo quelle già connesse.</Italian>
             <Russian>Подключает к предыдущей сети Интеркома, сохраняя подключение к текущим</Russian>
-            <Japanese>前のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
+            <Japanese>前のインターコム ネットワークに既に接続済みのネットワークを保持したまま接続します。</Japanese>
             <Chinese>維持與其他通訊網路存在的連線。並連接至上一個網路。</Chinese>
             <French>Se connecte au réseau d'interphonie précédent, tout en conservant les réseaux déjà connectés.</French>
             <Chinesesimp>维持与其他通讯网路存在的连线。并连接至上一个网路。</Chinesesimp>
@@ -536,7 +536,7 @@
             <Spanish>Conectar a la siguiente red de intercom</Spanish>
             <Polish>Połącz się z następną siecią interkomu</Polish>
             <Italian>Connetti Rete interfono Successiva</Italian>
-            <Japanese>次のインターコム ネットに接続</Japanese>
+            <Japanese>次のインターコム ネットワークに接続</Japanese>
             <Chinese>連接至下一個內部通訊網路</Chinese>
             <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
             <French>Se connecter au réseau d'interphonie suivant</French>
@@ -551,7 +551,7 @@
             <German>Verbindet mit dem nächsten Bordfunknetzwerk während die bereits verbundenen Netzwerke beibehalten werden.</German>
             <Italian>Si connette alla prossimo rete interfono mantenendo quelle già connesse.</Italian>
             <Russian>Подключает к след. сети Интеркома,сохраняя подключение к текущим</Russian>
-            <Japanese>次のインターコム ネットに既に接続済みのネットを保持したまま接続します。</Japanese>
+            <Japanese>次のインターコム ネットワークに既に接続済みのネットワークを保持したまま接続します。</Japanese>
             <Chinese>維持與其他通訊網路存在的連線。並連接至下一個網路。</Chinese>
             <French>Se connecte au réseau d'interphonie suivant, tout en conservant les réseaux déjà connectés.</French>
             <Chinesesimp>维持与其他通讯网路存在的连线。并连接至下一个网路。</Chinesesimp>
@@ -561,7 +561,7 @@
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Open Intercom GUI</English>
             <Spanish>Abrir la interfaz de Intercom</Spanish>
-            <Japanese>インターコムの GUI を開く</Japanese>
+            <Japanese>インターコムのGUIを開く</Japanese>
             <German>Öffne Bordfunknutzeroberfläche</German>
             <Italian>Apri l'interfaccia utente della Interfono</Italian>
             <Russian>Открыть окно Интеркома</Russian>
@@ -577,7 +577,7 @@
             <German>Bordfunkeinstellungen werden erzwungen! Konfiguration kann nicht geändert werden.</German>
             <Italian>Lo stato dell'interfono viene forzato. Impossibile modificare la configurazione.</Italian>
             <Russian>Настройки интеркома применены принудительно. Невозможно изменить конфигурацию</Russian>
-            <Japanese>インターコム状態が強制表示され、設定は変更できません。</Japanese>
+            <Japanese>インターコム状態が強制表示され、 設定は変更できません。</Japanese>
             <Chinese>對講機狀態以被強制。無法更改設置。</Chinese>
             <French>L'état de l'interphone est forcé. Impossible de modifier la configuration.</French>
             <Chinesesimp>对讲机状态已被强制。无法更改设置。</Chinesesimp>

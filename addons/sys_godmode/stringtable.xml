@@ -9,6 +9,7 @@
             <French>Mode Dieu</French>
             <Turkish>Tanrı Modu</Turkish>
             <Portuguese>Modo Deus</Portuguese>
+            <Japanese>Godモード</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannel_display">
             <English>Current Channel</English>
@@ -18,6 +19,7 @@
             <French>Canal actuel</French>
             <Turkish>Şu Anki Kanal</Turkish>
             <Portuguese>Canal atual</Portuguese>
+            <Japanese>現在のチャンネル</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey">
             <English>PTT - Current Chat Channel</English>
@@ -27,6 +29,7 @@
             <French>Transmettre au canal textuel</French>
             <Turkish>Bas-Konuş - Şu anki kanal</Turkish>
             <Portuguese>PTT - Canal atual de chat</Portuguese>
+            <Japanese>PTT - 現在のチャットチャンネル</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey_description">
             <English>PTT to send a message to all units matching the current chat channel.</English>
@@ -36,6 +39,7 @@
             <French>Transmission d'un message à toutes les unités étant sur le même canal textuel (chat).</French>
             <Turkish>Bas-Konuş ile şu anki kanalla eşleşen bütün oyunculara mesaj ilet</Turkish>
             <Portuguese>PTT para mandar uma mensagem à todas as unidades com o mesmo canal de chat atual</Portuguese>
+            <Japanese>PTTの使用時に、 現在のチャットチャンネルに一致するすべてのユニットにメッセージを送信します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1">
             <English>Group 1</English>
@@ -45,6 +49,7 @@
             <French>Groupe 1</French>
             <Turkish>Grup 1</Turkish>
             <Portuguese>Grupo 1</Portuguese>
+            <Japanese>グループ1</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey">
             <English>PTT - Group 1</English>
@@ -54,6 +59,7 @@
             <French>Transmettre au groupe 1</French>
             <Turkish>Bas-Konuş - Grup 1</Turkish>
             <Portuguese>PTT - Grupo 1</Portuguese>
+            <Japanese>PTT - グループ1</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey_description">
             <English>PTT to send a message to all units in the Group 1 preset.</English>
@@ -63,6 +69,7 @@
             <French>Transmission d'un message à toutes les unités du groupe 1.</French>
             <Turkish>Bas-Konuş ile Grup 1 setindeki bütün oyunculara mesaj ilet</Turkish>
             <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 1</Portuguese>
+            <Japanese>PTTの使用時に、 グループ1プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2">
             <English>Group 2</English>
@@ -72,6 +79,7 @@
             <French>Groupe 2</French>
             <Turkish>Grup 2</Turkish>
             <Portuguese>Grupo 2</Portuguese>
+            <Japanese>グループ2</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2PttKey">
             <English>PTT - Group 2</English>
@@ -81,6 +89,7 @@
             <French>Transmettre au groupe 2</French>
             <Turkish>Bas-Konuş - Grup 2</Turkish>
             <Portuguese>PTT - Grupo 2</Portuguese>
+            <Japanese>PTT - グループ2</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2PttKey_description">
             <English>PTT to send a message to all units in the Group 2 preset.</English>
@@ -90,6 +99,7 @@
             <French>Transmission d'un message à toutes les unités du groupe 2.</French>
             <Turkish>Bas-Konuş ile Grup 2 setindeki bütün oyunculara mesaj ilet</Turkish>
             <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 2</Portuguese>
+            <Japanese>PTTの使用時に、 グループ2プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3">
             <English>Group 3</English>
@@ -99,6 +109,7 @@
             <French>Groupe 3</French>
             <Turkish>Grup 3</Turkish>
             <Portuguese>Grupo 3</Portuguese>
+            <Japanese>グループ3</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3PttKey">
             <English>PTT - Group 3</English>
@@ -108,6 +119,7 @@
             <French>Transmettre au groupe 3</French>
             <Turkish>Bas-Konuş - Grup 3</Turkish>
             <Portuguese>PTT - Grupo 3</Portuguese>
+            <Japanese>PTT - グループ3</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3PttKey_description">
             <English>PTT to send a message to all units in the Group 3 preset.</English>
@@ -117,6 +129,7 @@
             <French>Transmission d'un message à toutes les unités du groupe 3.</French>
             <Turkish>Bas-Konuş ile Grup 3 setindeki bütün oyunculara mesaj ilet</Turkish>
             <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 3</Portuguese>
+            <Japanese>PTTの使用時に、 グループ3プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_god">
             <English>God</English>
@@ -125,6 +138,7 @@
             <French>Dieu</French>
             <Turkish>Tanrı</Turkish>
             <Portuguese>Deus</Portuguese>
+            <Japanese>God</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
             <English>Receive Notification</English>
@@ -133,6 +147,7 @@
             <French>Notifications de réception</French>
             <Turkish>Mesaj Al</Turkish>
             <Portuguese>Notificação de Recepção</Portuguese>
+            <Japanese>受信通知</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
             <English>Transmit Notification</English>
@@ -141,6 +156,7 @@
             <French>Notifications d'émission</French>
             <Turkish>Mesaj İlet</Turkish>
             <Portuguese>Notificação de Transmissão</Portuguese>
+            <Japanese>送信通知</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotificationColor_displayName">
             <English>Receive Color</English>
@@ -149,6 +165,7 @@
             <French>Couleur - Réception</French>
             <Turkish>Alınan Mesaj Rengi</Turkish>
             <Portuguese>Cor: Recepção</Portuguese>
+            <Japanese>受信通知の表示色</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
             <English>Current Chat Channel Transmit Color</English>
@@ -157,6 +174,7 @@
             <French>Couleur - Transmission canal textuel</French>
             <Turkish>Şu Anki Kanal İletim Rengi</Turkish>
             <Portuguese>Cor: Texto de canal de transmissão</Portuguese>
+            <Japanese>現在のチャットチャンネルへの送信の表示色</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup1Color_displayName">
             <English>Group 1 Transmit Color</English>
@@ -165,6 +183,7 @@
             <French>Couleur - Transmission groupe 1</French>
             <Turkish>Grup 1 İletim Rengi</Turkish>
             <Portuguese>Cor: Grupo de transmissão 1</Portuguese>
+            <Japanese>グループ1への送信の表示色</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup2Color_displayName">
             <English>Group 2 Transmit Color</English>
@@ -173,6 +192,7 @@
             <French>Couleur - Transmission groupe 2</French>
             <Turkish>Grup 2 İletim Rengi</Turkish>
             <Portuguese>Cor: Grupo de transmissão 2</Portuguese>
+            <Japanese>グループ2への送信の表示色</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup3Color_displayName">
             <English>Group 3 Transmit Color</English>
@@ -181,6 +201,7 @@
             <French>Couleur - Transmission groupe 3</French>
             <Turkish>Grup 3 İletim Rengi</Turkish>
             <Portuguese>Cor: Grupo de transmissão 3</Portuguese>
+            <Japanese>グループ3への送信の表示色</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_noTargets">
             <English>No units in God group!</English>
@@ -189,6 +210,7 @@
             <French>Aucune unité dans le groupe Dieu !</French>
             <Turkish>Tanrı Grubunda Hiçbir Birim Yok!</Turkish>
             <Portuguese>Sem unidades no grupo de Deus!</Portuguese>
+            <Japanese>Godグループにユニットがいません!</Japanese>
         </Key>
     </Package>
 </Project>
