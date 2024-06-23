@@ -42,7 +42,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
         private _playerPosition = ASLToAGL (getPosASL _player);
         TRACE_4("Infantry Phone PFH Check",_infantryPhonePosition,_playerPosition,_infantryPhoneMaxDistance,_player distance _infantryPhonePosition);
         // Add an extra meter leeway due to 3d position check height differences and movement
-        if (_playerPosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || {vehicle _player == _vehicle} || {!alive _player} || {captive _player}) then {
+        if (_playerPosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || {vehicle _player == _vehicle} || {!alive _player} || {captive _player} || {lifeState _player isEqualTo "INCAPACITATED"}) then {
             [_vehicle, _player, 0, _i] call FUNC(updateInfantryPhoneStatus);
             _intercomUnits = [];
         } else {
