@@ -35,7 +35,7 @@ if (_isManpack == 0 || {_isRackRadio}) then {
             _channel = ((_channel + _dir) max (_currentBlock*16 + 1)) min ((_currentBlock + 1)*16);
         };
         case "ACRE_PRC152": {
-            _channel = (_channel + _dir) min 5;
+            _channel = (_channel + _dir + 98) % 99 + 1;
         };
         default {
             _channel = _channel + _dir;
