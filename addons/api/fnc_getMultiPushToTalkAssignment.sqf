@@ -17,8 +17,13 @@
 
 //Emulate behaviour of the handleMultiPttKeyPress algorithm
 
-private _radioLists = [+ ACRE_ASSIGNED_PTT_RADIOS, [] call EFUNC(sys_data,getPlayerRadioList)] call EFUNC(sys_data,sortRadioList);
+private _radioLists = [];
 
+if (acre_player isEqualTo player) then { // using zeus player voice
+    _radioLists = [+ ACRE_ASSIGNED_PTT_RADIOS, [] call EFUNC(sys_data,getPlayerRadioList)] call EFUNC(sys_data,sortRadioList);
+} else { // using zeus remote voice
+    _radioLists = [+ ACRE_ASSIGNED_PTT_RADIOS_REMOTE, [] call EFUNC(sys_data,getPlayerRadioList)] call EFUNC(sys_data,sortRadioList);
+};
 
 private _returnValue = (_radioLists select 1);
 
