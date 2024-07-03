@@ -19,7 +19,7 @@
  * Public: No
  */
 
-TRACE_1("", _this);
+TRACE_1("",_this);
 
 params ["_radioId", "", "_eventData", "_radioData", ""];
 

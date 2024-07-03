@@ -21,7 +21,7 @@
  */
 
 params ["_radioId", "", "_eventData", "_radioData", ""];
-TRACE_1("INITIALIZING RADIO 77", _this);
+TRACE_1("INITIALIZING RADIO 77",_this);
 
 // Function to convert frequency to knob positions.
 private _frequencyToKnobPositions = {
@@ -49,14 +49,14 @@ private _dialPosition = (_channelInfo select 0);
 _frequencyTx = _channelInfo select 1;
 
 
-SCRATCH_SET(_radioId, "currentTransmissions", []);
+SCRATCH_SET(_radioId,"currentTransmissions",[]);
 
 //Radio Settings
 HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume)); //0-1
 HASH_SET(_radioData,"function",0); //0 - OFF, 1 - RECV, 2 - SEND
 HASH_SET(_radioData,"radioOn",0); //0 - OFF, 1 - ON
 HASH_SET(_radioData,"currentChannel",_dialPosition);
-HASH_SET(_radioData,"powerSource", "BAT");
+HASH_SET(_radioData,"powerSource","BAT");
 
 //Common Channel Settings
 HASH_SET(_radioData,"frequencyTX",_frequencyTx);
