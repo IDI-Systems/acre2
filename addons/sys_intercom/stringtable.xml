@@ -152,7 +152,7 @@
             <Turkish>Piyade Telefonu Alındı %1</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneUnavailable">
-            <English>Infantry Phone used by someone else</English>
+            <English>Infantry Phone already in use</English>
             <German>Hörer wird gerade benutzt</German>
             <Italian>Telefono fanteria preso da qualcuno</Italian>
         </Key>
