@@ -99,5 +99,5 @@ if (_audioPath == "HEADSET") then {
 //display
 [_display] call FUNC(renderDisplay);
 
-TRACE_3("rendering", _currentChannel, _currentVolume, EGVAR(sys_radio,currentRadioDialog));
+TRACE_3("rendering",_currentChannel,_currentVolume,EGVAR(sys_radio,currentRadioDialog));
 true

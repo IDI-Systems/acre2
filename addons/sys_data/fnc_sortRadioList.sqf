@@ -24,12 +24,12 @@ private _toRemove = [];
 private _sortList = _currentRadioList + [];
 {
     if (!(_x in _currentRadioList)) then {
-        PUSH(_toRemove, _x);
+        PUSH(_toRemove,_x);
     } else {
-        REM(_sortList, _x);
+        REM(_sortList,_x);
     };
 } forEach _prepend;
-{ REM(_prepend, _x); } forEach _toRemove;
+{ REM(_prepend,_x); } forEach _toRemove;
 
 private _return = +_prepend;
 _return append _sortList;

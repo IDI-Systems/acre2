@@ -21,8 +21,8 @@
 params ["", "_txRadioId", "", "_rxRadioId"];
 
 private _txData = [_txRadioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-private _txFreq = HASH_GET(_txData, "frequencyTX");
-private _txPower = HASH_GET(_txData, "power");
+private _txFreq = HASH_GET(_txData,"frequencyTX");
+private _txPower = HASH_GET(_txData,"power");
 
 private _maxSignal = [0, -993];
 

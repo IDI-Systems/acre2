@@ -16,7 +16,7 @@
  * Public: No
  */
 
-private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId), "animations", []);
+private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId),"animations",[]);
 params ["_func", "_args"];
 
 private _id = (count _animations);

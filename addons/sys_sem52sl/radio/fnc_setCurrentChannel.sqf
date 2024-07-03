@@ -40,7 +40,7 @@
 params ["", "", "_eventData", "_radioData"];
 
 // First, we check how many channels are available in total
-private _channelCount = count (HASH_GET(_radioData, "channels")) - 1;
+private _channelCount = count (HASH_GET(_radioData,"channels")) - 1;
 
 // Then we define our upper and lower limits
 // And write the new channel to the radioData hash

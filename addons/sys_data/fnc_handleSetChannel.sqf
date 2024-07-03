@@ -22,10 +22,10 @@ if (hasInterface) then {
     if (_remote) then {
         private _fnc = {
             params ["_radioId", "_previousOkRadios"];
-            if (HASH_HASKEY(EGVAR(sys_core,keyedRadioIds), _radioId)) then {
-                private _vals = HASH_GET(EGVAR(sys_core,keyedRadioIds), _radioId);
+            if (HASH_HASKEY(EGVAR(sys_core,keyedRadioIds),_radioId)) then {
+                private _vals = HASH_GET(EGVAR(sys_core,keyedRadioIds),_radioId);
                 _vals params ["_netId", "_speakingId"];
-                HASH_REM(EGVAR(sys_core,keyedRadioIds), _radioId);
+                HASH_REM(EGVAR(sys_core,keyedRadioIds),_radioId);
                 private _unit = (objectFromNetId _netId);
                 private _languageID = _unit getVariable [QUOTE(EGVAR(core,languageId)),0];
                 [str _speakingId, _languageID, _netId, "1", _radioId] call EFUNC(sys_core,remoteStartSpeaking);
@@ -49,7 +49,7 @@ if (hasInterface) then {
         private _fnc = {
             params ["_radioId", "_keyedRadios"];
             {
-                private _vals = HASH_GET(EGVAR(sys_core,keyedRadioIds), _x);
+                private _vals = HASH_GET(EGVAR(sys_core,keyedRadioIds),_x);
                 _vals params ["_netId", "_speakingId"];
                 private _unit = objectFromNetId _netId;
                 REM(EGVAR(sys_core,keyedMicRadios),_unit);

@@ -33,7 +33,7 @@ if (_keyIndex != -1) then {
     GVAR(masterIdList) deleteAt (GVAR(masterIdList) find _radioId);
     HASH_REM(GVAR(markedForGC),_radioId);
     [QGVAR(clientGCRadio), [_radioId]] call CALLSTACK(CBA_fnc_globalEvent);
-    HASH_SET(EGVAR(sys_data,radioData), _radioId, nil);
+    HASH_SET(EGVAR(sys_data,radioData),_radioId,nil);
 } else {
     WARNING_1("A unique radio of a never initialized base class was attempted to be collected! Possible gear script issue on radio: %1!",_baseRadio);
 };

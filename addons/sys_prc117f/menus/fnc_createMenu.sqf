@@ -16,7 +16,7 @@
  * Public: No
  */
 
-TRACE_1("createMenu", _this);
+TRACE_1("createMenu",_this);
 params ["_menu"];
 
 /*if (count _this > 1) then {

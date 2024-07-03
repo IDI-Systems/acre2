@@ -22,7 +22,7 @@ EGVAR(sys_core,speaking_cache_valid) = false;
 //missionNamespace setVariable [_radioId+"dataCache", nil];
 if (_remote) exitWith { true };
 
-TRACE_1("SET DATA EVENT ENTER", _this);
+TRACE_1("SET DATA EVENT ENTER",_this);
 
 private _radioBaseClass = BASE_CLASS_CONFIG(_radioId);
 
@@ -46,8 +46,8 @@ if (isDedicated) exitWith {
     private _serializedData = _data call FUNC(serialize);
     private _sendEvents = [[objNull, _radioId, _event, _serializedData, _eventKind]];
     private _id = [] call FUNC(createEventMsgId);
-    PUSH(GVAR(pendingNetworkEvents), _id);
-    TRACE_2("SENDING dedicated NETWORK EVENT ", _id, _sendEvents);
+    PUSH(GVAR(pendingNetworkEvents),_id);
+    TRACE_2("SENDING dedicated NETWORK EVENT ",_id,_sendEvents);
     [_id, _sendEvents] call FUNC(sendDataEvent);
     nil
 };

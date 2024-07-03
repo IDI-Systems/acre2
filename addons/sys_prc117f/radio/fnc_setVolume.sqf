@@ -24,12 +24,12 @@ if (_vol % 0.10 != 0) then {
     _vol = _vol- (_vol % 0.10);
 };
 
-HASH_SET(_radioData, "volume", _eventData);
+HASH_SET(_radioData,"volume",_eventData);
 
-TRACE_3("VOLUME SET",_radioId, _vol, _radioData);
+TRACE_3("VOLUME SET",_radioId,_vol,_radioData);
 
 if (IS_STRING(GVAR(currentRadioId)) && {GVAR(currentRadioId) == _radioId}) then {
-    private _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
-    TRACE_2("", GVAR(currentRadioId), _currentMenu);
+    private _currentMenu = GET_STATE_DEF("currentMenu",GVAR(VULOSHOME));
+    TRACE_2("",GVAR(currentRadioId),_currentMenu);
     [_currentMenu, ["VOLUME", _vol] ] call FUNC(changeValueAck);
 };

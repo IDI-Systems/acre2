@@ -25,22 +25,22 @@ _radioTxData = [_txId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 _radioRxData = [_rxId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 
 if (
-    HASH_GET(_radioRxData, "modulation") == HASH_GET(_radioTxData, "modulation") &&
-    {HASH_GET(_radioRxData, "encryption") == HASH_GET(_radioTxData, "encryption")} &&
-    {HASH_GET(_radioRxData, "TEK") == HASH_GET(_radioTxData, "TEK")} &&
-    {HASH_GET(_radioRxData, "trafficRate") == HASH_GET(_radioTxData, "trafficRate")} &&
+    HASH_GET(_radioRxData,"modulation") == HASH_GET(_radioTxData,"modulation") &&
+    {HASH_GET(_radioRxData,"encryption") == HASH_GET(_radioTxData,"encryption")} &&
+    {HASH_GET(_radioRxData,"TEK") == HASH_GET(_radioTxData,"TEK")} &&
+    {HASH_GET(_radioRxData,"trafficRate") == HASH_GET(_radioTxData,"trafficRate")} &&
     {(
-        HASH_GET(_rxChannel, "CTCSSRx") == HASH_GET(_radioTxData, "CTCSSTx") ||
-        {HASH_GET(_rxChannel, "CTCSSRx") == 0}
+        HASH_GET(_rxChannel,"CTCSSRx") == HASH_GET(_radioTxData,"CTCSSTx") ||
+        {HASH_GET(_rxChannel,"CTCSSRx") == 0}
     )}
 ) then {
-    _hearableTransmission = SCRATCH_GET(_rxId, "hearableTransmission");
+    _hearableTransmission = SCRATCH_GET(_rxId,"hearableTransmission");
     if (isNil "_hearableTransmission") then {
         _hearableTransmission = [];
-        SCRATCH_SET(_rxId, "hearableTransmission", _hearableTransmission);
+        SCRATCH_SET(_rxId,"hearableTransmission",_hearableTransmission);
     };
     if (!(_txId in _hearableTransmission)) then {
-        PUSH(_hearableTransmission, _txId);
+        PUSH(_hearableTransmission,_txId);
     };
 };
 */

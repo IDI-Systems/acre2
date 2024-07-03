@@ -55,7 +55,7 @@ if (_condition) then {
 
     if (_baseRadio == GET_STATE_RACK(_rackId,"mountedRadio")) then {
         // Add a new radio based on the id we just got
-        TRACE_2("Adding radio", _class, _baseRadio);
+        TRACE_2("Adding radio",_class,_baseRadio);
 
         // Initialize the new radio
         private _preset = _vehicle getVariable [QGVAR(vehicleRacksPreset), ""];

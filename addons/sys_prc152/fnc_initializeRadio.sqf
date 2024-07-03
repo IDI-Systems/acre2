@@ -16,7 +16,7 @@
  * Public: No
  */
 
-TRACE_1("INITIALIZING RADIO PRC-152", _this);
+TRACE_1("INITIALIZING RADIO PRC-152",_this);
 
 params ["_radioId", "_event", "_eventData", "_radioData"];
 
@@ -26,7 +26,7 @@ private _presetData = [_baseName, _preset] call EFUNC(sys_data,getPresetData);
 private _channels = HASH_GET(_presetData,"channels");
 private _currentChannels = HASH_GET(_radioData,"channels");
 
-SCRATCH_SET(_radioId, "currentTransmissions", []);
+SCRATCH_SET(_radioId,"currentTransmissions",[]);
 
 if (isNil "_currentChannels") then {
     _currentChannels = [];
@@ -35,11 +35,11 @@ if (isNil "_currentChannels") then {
 
 for "_i" from 0 to (count _channels)-1 do {
     private _channelData = HASH_COPY((_channels select _i));
-    TRACE_1("Setting PRC-152 Init Channel Data", _channelData);
-    PUSH(_currentChannels, _channelData);
+    TRACE_1("Setting PRC-152 Init Channel Data",_channelData);
+    PUSH(_currentChannels,_channelData);
 };
 HASH_SET(_radioData,"volume",EGVAR(sys_core,defaultRadioVolume));
 HASH_SET(_radioData,"currentChannel",0);
 HASH_SET(_radioData,"radioOn",1);
-HASH_SET(_radioData,"audioPath", "TOPAUDIO");
+HASH_SET(_radioData,"audioPath","TOPAUDIO");
 HASH_SET(_radioData,"powerSource","BAT");

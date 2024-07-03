@@ -42,5 +42,5 @@ if (IS_ARRAY(_params)) then {
     _params = _array joinString ",";
 };
 private _data = _name + ":" + _params;
-TRACE_1("sendMessage ", _data);
+TRACE_1("sendMessage ",_data);
 _data call EFUNC(sys_io,sendMessage);

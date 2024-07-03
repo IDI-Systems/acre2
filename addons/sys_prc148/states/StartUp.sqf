@@ -22,7 +22,7 @@ DFUNC(PostScreen_Render) = {
     params ["_display"];
 
     [_display, BIG_LINE_3, "TESTING", CENTER_ALIGN] call FUNC(displayLine);
-    SCRATCH_SET(GVAR(currentRadioId), "post_animation_step", 0);
+    SCRATCH_SET(GVAR(currentRadioId),"post_animation_step",0);
     [FUNC(PostScreen_Animation), []] call FUNC(addAnimation);
 
 };
@@ -30,7 +30,7 @@ DFUNC(PostScreen_Render) = {
 DFUNC(PostScreen_Animation) = {
     params ["_args","_id"];
 
-    private _step = SCRATCH_GET_DEF(GVAR(currentRadioId), "post_animation_step", 0);
+    private _step = SCRATCH_GET_DEF(GVAR(currentRadioId),"post_animation_step",0);
     if (_step == 0) then {
         [_display, SMALL_LINE_1, [1,25], false] call FUNC(highlightText);
         [_display, SMALL_LINE_5, [1,25], false] call FUNC(highlightText);
@@ -47,9 +47,9 @@ DFUNC(PostScreen_Animation) = {
         [_display, SMALL_LINE_5, [_stepRight,_stepRight]] call FUNC(highlightText);
     };
     if (_step == 5) then {
-        SCRATCH_SET(GVAR(currentRadioId), "post_animation_step", 0);
+        SCRATCH_SET(GVAR(currentRadioId),"post_animation_step",0);
     } else {
-        SCRATCH_SET(GVAR(currentRadioId), "post_animation_step", _step+1);
+        SCRATCH_SET(GVAR(currentRadioId),"post_animation_step",_step+1);
     };
 };
 
@@ -72,7 +72,7 @@ DFUNC(LogoScreen_Render) = {
 DFUNC(LogoScreen_Animation) = {
     params ["_args","_id"];
 
-    private _step = SCRATCH_GET_DEF(GVAR(currentRadioId), "logo_animation_step", 0);
+    private _step = SCRATCH_GET_DEF(GVAR(currentRadioId),"logo_animation_step",0);
     if (_step == 0) then {
         [_display, SMALL_LINE_1, [1,25], false] call FUNC(highlightText);
         [_display, SMALL_LINE_2, [1,25], false] call FUNC(highlightText);
@@ -108,7 +108,7 @@ DFUNC(LogoScreen_Animation) = {
         };
     };
     if (_step <= 5) then {
-        SCRATCH_SET(GVAR(currentRadioId), "logo_animation_step", _step+1);
+        SCRATCH_SET(GVAR(currentRadioId),"logo_animation_step",_step+1);
     };
 };
 

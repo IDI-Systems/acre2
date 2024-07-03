@@ -17,7 +17,7 @@
 
 // Macro instead of func for performance (may be run each frame)
 #define FNC_SETANTENNAELEVATIONTEXT(theText) \
-    private _ctrl = uiNamespace getVariable [ARR_2("ACRE_AntennaElevationInfo", controlNull)]; \
+    private _ctrl = uiNamespace getVariable [ARR_2("ACRE_AntennaElevationInfo",controlNull)]; \
     if (!isNull _ctrl) then { _ctrl ctrlSetText theText; };
 
 

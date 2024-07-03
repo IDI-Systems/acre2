@@ -18,7 +18,7 @@
  * Public: No
  */
 
-TRACE_1("LOCAL START SPEAKING ENTER", _this);
+TRACE_1("LOCAL START SPEAKING ENTER",_this);
 params ["", "", "_speakingType", ["_radioId", ""]];
 
 if (!(_speakingType isEqualType 0)) then { _speakingType = parseNumber _speakingType; };

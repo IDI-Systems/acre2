@@ -34,6 +34,6 @@ if (hasInterface) then {
     DVAR(ACRE_SPECTATOR_RADIOS) = [];
 };
 
-#include "initSettings.sqf"
+#include "initSettings.inc.sqf"
 
 ADDON = true;

@@ -15,7 +15,7 @@
  * Public: No
  */
 
-TRACE_1("got ptt press", _this);
+TRACE_1("got ptt press",_this);
 
 if (ACRE_IS_SPECTATOR) exitWith { true };
 

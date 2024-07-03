@@ -30,13 +30,13 @@ if (_dir == 0) then {
 };
 
 private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
-TRACE_2("defaultButtonPress", _display, _event);
+TRACE_2("defaultButtonPress",_display,_event);
 switch (_event select 0) do {
     case 'VOLUME': {
         private _volume = GET_STATE("volume");
-        TRACE_2("Volume Before", _volume, _dir);
+        TRACE_2("Volume Before",_volume,_dir);
         _volume = ( (_volume * 10) + _dir) / 10;
-        TRACE_1("Volume After", _volume);
+        TRACE_1("Volume After",_volume);
 
         if (_volume > 1) then {
             _volume = 1.0;
@@ -44,13 +44,13 @@ switch (_event select 0) do {
         if (_volume < 0) then {
             _volume = 0;
         };
-        SET_STATE("volume", _volume);
+        SET_STATE("volume",_volume);
         ["setVolume", _volume] call GUI_DATA_EVENT;
     };
     case 'KNOB': {
         // Knob was clicked
-        private _knobPositionOld = GET_STATE_DEF("knobPosition", 1);
-        TRACE_2("Knob Press", _knobPositionOld, _dir);
+        private _knobPositionOld = GET_STATE_DEF("knobPosition",1);
+        TRACE_2("Knob Press",_knobPositionOld,_dir);
 
         ///////////////////////
         private _knobPosition = _knobPositionOld + _dir;
@@ -61,8 +61,8 @@ switch (_event select 0) do {
             _knobPosition = 0;
         };
 
-        TRACE_1("New knob position", _knobPosition);
-        SET_STATE("knobPosition", _knobPosition);
+        TRACE_1("New knob position",_knobPosition);
+        SET_STATE("knobPosition",_knobPosition);
 
         _this call FUNC(changeMode);
     };

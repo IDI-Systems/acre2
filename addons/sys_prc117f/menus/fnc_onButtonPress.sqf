@@ -26,15 +26,15 @@ if (_control != (99902 + 222)) then {
 };
 
 
-private _currentMenu = GET_STATE_DEF("currentMenu", "");
-TRACE_1("Got current menu", _currentMenu);
+private _currentMenu = GET_STATE_DEF("currentMenu","");
+TRACE_1("Got current menu",_currentMenu);
 if (isNil "_currentMenu") exitWith {
     WARNING("Button press without a selected menu item!");
     true
 };
 
 if (_currentMenu isEqualType "" && {_currentMenu != ""}) then {
-    private _tmpMenu = HASH_GET(GVAR(Menus), _currentMenu);
+    private _tmpMenu = HASH_GET(GVAR(Menus),_currentMenu);
     //diag_log text format["tmp: %1", _tmpMenu];
     if (!isNil "_tmpMenu") then {
         _currentMenu = _tmpMenu;
@@ -42,7 +42,7 @@ if (_currentMenu isEqualType "" && {_currentMenu != ""}) then {
 };
 
 if (_currentMenu isEqualType []) then {
-    TRACE_1("Searching for key handler", MENU_ID(_currentMenu));
+    TRACE_1("Searching for key handler",MENU_ID(_currentMenu));
     // First, call our global key handler
     // We only call it if we had a valid menu, because it means the radio is active. Right!?
     // If it returns true, it means it consumed it and we dont move further
@@ -86,16 +86,16 @@ if (_currentMenu isEqualType []) then {
         if (isNil "_ret") then { _ret = false; };
 
         if (!_ret) then {
-            //TRACE_2("", _currentMenu, _this);
+            //TRACE_2("",_currentMenu,_this);
             _ret = [_currentMenu, _this] call FUNC(defaultButtonPress);
             if (!_ret) then {
                 private ["_newId"];
-                private _newMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
+                private _newMenu = GET_STATE_DEF("currentMenu",GVAR(VULOSHOME));
                 private _oldId = MENU_ID(_currentMenu);
 
                 if (typeName _newMenu == "STRING") then {
                     _newId = _newMenu;
-                    _newMenu = HASH_GET(GVAR(Menus), _newMenu);
+                    _newMenu = HASH_GET(GVAR(Menus),_newMenu);
                 };
 
                 if (!isNil "_oldId" && {!isNil "_newId"}) then {

@@ -33,14 +33,14 @@ if (_ret != -1) then {
         if (isServer) then {
             private _dataHash = HASH_CREATE;
             if (_replacementId != "") then {
-                _dataHash = HASH_COPY(HASH_GET(EGVAR(sys_data,radioData), _replacementId));
+                _dataHash = HASH_COPY(HASH_GET(EGVAR(sys_data,radioData),_replacementId));
             };
             HASH_SET(EGVAR(sys_data,radioData),_uniqueClass,_dataHash);
         };
-        TRACE_1("callback=", _callback);
+        TRACE_1("callback=",_callback);
         GVAR(unacknowledgedIds) pushBack _uniqueClass;
-        HASH_SET(GVAR(unacknowledgedTable), _uniqueClass, time);
-        HASH_SET(GVAR(masterIdTable), _uniqueClass, [ARR_2(acre_player,acre_player)]);
+        HASH_SET(GVAR(unacknowledgedTable),_uniqueClass,time);
+        HASH_SET(GVAR(masterIdTable),_uniqueClass,[ARR_2(acre_player,acre_player)]);
         [_callback, [_entity, _uniqueClass, _ret, _replacementId]] call CALLSTACK(CBA_fnc_globalEvent);
         // GVAR(waitingForIdAck) = true;
     };
