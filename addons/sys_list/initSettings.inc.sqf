@@ -68,7 +68,7 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 
 // Babel Language Hint Persistence
 [
-    QGVAR(LanguageHintPersistence),
+    QGVAR(LanguageHintPersist),
     "CHECKBOX",
     [localize LSTRING(LanguageHintPersistence_DisplayName), localize LSTRING(LanguageHintPersistence_Description)],
     ELSTRING(sys_core,CategoryUI),
