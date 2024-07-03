@@ -102,9 +102,9 @@
             <Italian>Indicatore di lingua persistente</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageHintPersistence_Description">
-            <English>When enabled, the Babel Language Indicator in the bottom right will not fade out if a language other than the "main language" (the first assigned spokenLanguage) is being spoken.</English>
-            <German>Wenn eingeschaltet wird die Babel Sprachanzeige nicht verschwinden während eine andere Sprache als die "Muttersprache" (die erste zugewiesene Sprache) gesprochen wird.</German>
-            <Italian>Se attivato, l'indicatore della lingua selezionata non scomparirà mentre si parla una lingua diversa da quella "madre" (la prima lingua assegnata).</Italian>
+            <English>Prevent the Babel Language Indicator in the bottom right from fading out if a language other than the "main language" (the first assigned spoken language) is selected.</English>
+            <German>Verhindert, wenn eingeschaltet, dass die Babel Sprachanzeige unten-rechts verschwindet während eine andere Sprache als die "Muttersprache" (die erste zugewiesene Sprache) gesprochen wird.</German>
+            <Italian>Se attivato, l'indicatore della lingua selezionata in basso a destra non scomparirà mentre si parla una lingua diversa da quella "madre" (la prima lingua assegnata).</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
             <English>Switch Channel Color</English>
