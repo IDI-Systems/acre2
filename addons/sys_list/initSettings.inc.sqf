@@ -70,7 +70,7 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
 [
     QGVAR(LanguageHintPersist),
     "CHECKBOX",
-    [localize LSTRING(LanguageHintPersistence_DisplayName), localize LSTRING(LanguageHintPersistence_Description)],
+    [localize LSTRING(LanguageHintPersist_DisplayName), localize LSTRING(LanguageHintPersist_Description)],
     ELSTRING(sys_core,CategoryUI),
     true
 ] call CBA_fnc_addSetting;

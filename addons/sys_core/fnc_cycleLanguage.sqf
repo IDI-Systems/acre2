@@ -24,7 +24,7 @@ if (_numSpokenLanguages > 1) then {
 
     // Set hint duration to infinite when you're not speaking your first language (setting dependent)
     private _hintTime = 1;
-    if (EGVAR(sys_list,LanguageHintPersistence) && {_nextId > 0}) then {
+    if (EGVAR(sys_list,LanguageHintPersist) && {_nextId > 0}) then {
         _hintTime = -1;
     };
 
