@@ -25,7 +25,7 @@
             <Korean>무전기가 외부에서 사용되었습니다. 사용자만 설정 할 수 있습니다.</Korean>
             <Portuguese>Rádio usado externamente. Somente o proprietário pode configurar.</Portuguese>
             <Polish>Radio używane na zewnątrz. Tylko właściciel może konfigurować.</Polish>
-            <Italian>Radio usata esternamente. Solo il proprietario puo' configurare</Italian>
+            <Italian>Radio usata esternamente. Solo il proprietario può configurarla</Italian>
             <Spanish>Radio usada externamente. Sólo el propietario puede configurarla</Spanish>
             <French>Radio utilisée à l'extérieur. Seul le propriétaire peut la configurer.</French>
             <Russian>Рация используется извне. Только владелец может изменять настройки</Russian>
@@ -40,7 +40,7 @@
             <Korean>이 위치에서 무전기 선반에 닿지 않습니다.</Korean>
             <Portuguese>Não é possível alcançar o raque de rádio desta posição.</Portuguese>
             <Polish>Nie można dosięgnąć szafy radiowej z tej pozycji.</Polish>
-            <Italian>Il rack non puo' essere raggiunto da questa posizione</Italian>
+            <Italian>Il rack non può essere raggiunto da questa posizione</Italian>
             <Spanish>No se puede acceder a la rack desde esta posición</Spanish>
             <French>Le rack radio ne peut pas être atteint depuis la position actuelle.</French>
             <Russian>Подставка для рации недоступна с этой позиции</Russian>
@@ -55,7 +55,7 @@
             <Korean>이 좌석에서 설정 할 수 없는 무전기 선반.</Korean>
             <Portuguese>O raque de rádio não é acessível para a configuração deste assento.</Portuguese>
             <Polish>Nie można konfigurować szafy radiowej z tego siedzenia.</Polish>
-            <Italian>Il rack non puo' essere configurato da questo sedile</Italian>
+            <Italian>Il rack non può essere configurato da questo sedile</Italian>
             <Spanish>La radio no se puede configurar desde esta posición</Spanish>
             <French>Le rack radio n'est pas accessible pour la configuration depuis ce siège.</French>
             <Russian>Подставку для раций нельзя изменять с этого места</Russian>
@@ -70,7 +70,7 @@
             <Korean>무전기가 외부에서 사용되었습니다. 외부 사용자만 전송 할 수 있습니다.</Korean>
             <Portuguese>Rádio usado externamente. Somente o usuário externo pode transmitir.</Portuguese>
             <Polish>Radio używane na zewnątrz. Tylko użytkownicy znajdujący się na zewnątrz mogą nadawać.</Polish>
-            <Italian>Radio usata esternamente. Solo l'utente esterno puo' trasmettere.</Italian>
+            <Italian>Radio usata esternamente. Solo l'utente esterno può trasmettere.</Italian>
             <Spanish>Radio usada externamente. Sólo el usuario externo puede transmitir.</Spanish>
             <French>Radio utilisée à l'extérieur. Seul un utilisateur extérieur peut transmettre.</French>
             <Russian>Рация используется извне. Только внешний пользователь может производить передачу</Russian>
@@ -138,7 +138,7 @@
             <Spanish>Caja con todas las radios</Spanish>
             <Japanese>全ての無線機入りの箱</Japanese>
             <German>Sämtliche ACRE Funkgeräte</German>
-            <Italian>Tutte le casse radio</Italian>
+            <Italian>Cassa con tutte le radio</Italian>
             <Russian>Ящик со Всеми Рациями</Russian>
             <French>Caisse toutes radios ACRE</French>
             <Chinese>全無線電機種供給箱</Chinese>
@@ -161,26 +161,38 @@
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_DisplayName">
             <English>Radio Item Replacement</English>
+            <German>Austausch des Funkgeräts</German>
+            <Italian>Sostituzione della radio</Italian>
             <Japanese>無線機アイテムの置き換え</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
             <English>Default radio inventory items will be replaced with this type of radio.</English>
+            <German>Standard Funkinventargegenstände werden durch diesen Funkgerätetyp ersetzt.</German>
+            <Italian>Le radio vanilla nell'inventario verranno sostituite con questo tipo di radio.</Italian>
             <Japanese>インベントリにあるデフォルトの無線機アイテムは、 このタイプの無線機に置き換えられます。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
+            <German>Lautstärke ändern</German>
+            <Italian>Cambia volume</Italian>
             <Japanese>音量の変更</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentVolume">
             <English>Current Volume</English>
+            <German>Aktuelle Lautstärke</German>
+            <Italian>Volume attuale</Italian>
             <Japanese>現在の変更</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
+            <German>Funkgerät aus</German>
+            <Italian>Radio spenta</Italian>
             <Japanese>無線オフ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeChannel">
             <English>Change Channel</English>
+            <German>Kanal wechseln</German>
+            <Italian>Cambia canale</Italian>
             <Japanese>チャンネルを変更</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannel">
@@ -195,14 +207,20 @@
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannelBlock">
             <English>Current Channel Block</English>
+            <German>Aktueller Kanalblock</German>
+            <Italian>Blocco di canali corrente</Italian>
             <Japanese>現在のチャンネルブロック</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleAttach">
             <English>Attach handle</English>
+            <German>Griff anbringen</German>
+            <Italian>Attaccare la maniglia</Italian>
             <Japanese>ハンドルを取り付ける</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleDetach">
             <English>Detach handle</English>
+            <German>Griff abnehmen</German>
+            <Italian>Rimuovere la maniglia</Italian>
             <Japanese>ハンドルを外す</Japanese>
         </Key>
     </Package>

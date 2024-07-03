@@ -54,7 +54,7 @@
             <Korean>헤드셋 얻기</Korean>
             <Portuguese>Pegar Aparelho</Portuguese>
             <Polish>Weź słuchawkę</Polish>
-            <Italian>Prendi cuffia</Italian>
+            <Italian>Prendi cornetta</Italian>
             <Spanish>Coger transmisor</Spanish>
             <French>Prendre le combiné</French>
             <German>Handteil nehmen</German>
@@ -84,7 +84,7 @@
             <Korean>헤드셋 돌려놓기</Korean>
             <Portuguese>Retornar Aparelho</Portuguese>
             <Polish>Odłóż słuchawkę</Polish>
-            <Italian>Restituisci cuffia</Italian>
+            <Italian>Restituisci cornetta</Italian>
             <Spanish>Devolver transmisor</Spanish>
             <French>Rendre le combiné</French>
             <German>Handteil zurückgeben</German>
@@ -114,7 +114,7 @@
             <Korean>헤드셋 주기</Korean>
             <Portuguese>Dar Aparelho</Portuguese>
             <Polish>Podaj słuchawkę</Polish>
-            <Italian>Passa cuffie</Italian>
+            <Italian>Passa cornetta</Italian>
             <Spanish>Dar transmisor</Spanish>
             <French>Donner le combiné</French>
             <German>Handteil geben</German>
@@ -132,7 +132,7 @@
             <Chinesesimp>给予耳机</Chinesesimp>
             <Korean>헤드셋 주기</Korean>
             <Portuguese>Dar Fones</Portuguese>
-            <Italian>Passa cuffie</Italian>
+            <Italian>Passa cuffia</Italian>
             <French>Donner le casque</French>
             <Turkish>Kulaklığı Ver</Turkish>
         </Key>
@@ -144,7 +144,7 @@
             <Korean>%1은 %3에게 %2를 주었다</Korean>
             <Portuguese>%1 deu seu %2 para %3</Portuguese>
             <Polish>%1 podał twoje %2 do %3</Polish>
-            <Italian>%1 ha dato il tuo %2 a %3</Italian>
+            <Italian>%1 ha dato la tua %2 a %3</Italian>
             <Spanish>%1 ha dado tu %2 a %3</Spanish>
             <French>%1 a donné votre %2 à %3.</French>
             <German>%1 gab dein %2 an %3</German>
@@ -159,7 +159,7 @@
             <Chinesesimp>停止使用%2的%1</Chinesesimp>
             <Korean>%2의 %1을 사용중지</Korean>
             <Portuguese>Parar de usar %1 de %2</Portuguese>
-            <Italian>Smetti di usare %1 da %2</Italian>
+            <Italian>Smesso di usare %1 da %2</Italian>
             <Spanish>Deja de usar %1 de %2</Spanish>
             <French>Arrêter d'utiliser %1 de %2</French>
             <German>%1 von %2 nicht länger benutzen</German>
@@ -172,7 +172,7 @@
             <Korean>%1가 %2의 사용을 중지함</Korean>
             <Portuguese>%1 parou de usar seu %2</Portuguese>
             <Polish>%1 przestał używać twojego %2</Polish>
-            <Italian>%1 ha smesso di usare il tuo %2</Italian>
+            <Italian>%1 ha smesso di usare la tua %2</Italian>
             <Spanish>%1 ha dejado de usar tu %2</Spanish>
             <French>%1 a arrêté d'utiliser votre %2.</French>
             <German>%1 hat aufgehört dein %2 zu nutzen</German>
@@ -200,7 +200,7 @@
             <Korean>%1가 %2의 사용을 시작함</Korean>
             <Portuguese>%1 começou a usar seu %2</Portuguese>
             <Polish>%1 używa twojego %2</Polish>
-            <Italian>%1 ha iniziato ad usare il tuo %2</Italian>
+            <Italian>%1 ha iniziato ad usare la tua %2</Italian>
             <Spanish>%1 está usando tu %2</Spanish>
             <French>%1 a commencé à utiliser votre %2.</French>
             <German>%1 benutzt jetzt dein %2</German>

@@ -180,7 +180,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
-            <Italian>C. Basso</Italian>
+            <Italian>C.Basso</Italian>
             <Japanese>DB.下</Japanese>
             <Chinese>儀器.下</Chinese>
             <Chinesesimp>仪器.下</Chinesesimp>
@@ -208,7 +208,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
-            <Italian>C. Alto</Italian>
+            <Italian>C.Alto</Italian>
             <Japanese>DB.上</Japanese>
             <Chinese>儀器.上</Chinese>
             <Chinesesimp>仪器.上</Chinesesimp>
@@ -227,7 +227,7 @@
             <Spanish>Usar todas</Spanish>
             <French>Tout utiliser</French>
             <German>Verwende alle</German>
-            <Italian>Usa tutto</Italian>
+            <Italian>Usa tutti</Italian>
             <Russian>Использовать все</Russian>
             <Portuguese>Usar todos</Portuguese>
             <Turkish>Hepsini Kullan</Turkish>
@@ -240,7 +240,7 @@
             <Spanish>Dejar de usar todas</Spanish>
             <French>Ne rien utiliser</French>
             <German>Nicht mehr alle verwenden</German>
-            <Italian>Smetti di usare tutto</Italian>
+            <Italian>Smetti di usare tutti</Italian>
             <Russian>Прекратить использовать все</Russian>
             <Portuguese>Todos: Parar de usar</Portuguese>
             <Turkish>Hepsini Kullanmayı Bırak</Turkish>

@@ -7,7 +7,7 @@
             <Czech>Změnit rádio</Czech>
             <German>Funkgeräte durchschalten</German>
             <Japanese>無線機を切り替え</Japanese>
-            <Italian>Cambia Ricetrasmittente</Italian>
+            <Italian>Cambia Radio</Italian>
             <French>Commuter radio suivante</French>
             <Korean>무전 채널 변경</Korean>
             <Polish>Następne radio</Polish>
@@ -23,7 +23,7 @@
             <Czech>Otevřít aktivní rádio</Czech>
             <German>Aktives Funkgerät öffnen</German>
             <Japanese>アクティブな無線機を開く</Japanese>
-            <Italian>Apri Ricetrasmittente Attiva</Italian>
+            <Italian>Apri Radio Attiva</Italian>
             <French>Ouvrir radio active</French>
             <Korean>무전기 열기</Korean>
             <Polish>Otwórz panel aktywne radia</Polish>
@@ -36,7 +36,7 @@
         <Key ID="STR_ACRE_sys_list_NotificationGrid">
             <English>ACRE2 - Radio Notifications</English>
             <German>ACRE2 - Visuelle Funkbenachrichtigungen</German>
-            <Italian>ACRE2 - Notifiche radio</Italian>
+            <Italian>ACRE2 - Notifiche Radio</Italian>
             <Japanese>ACRE2 - 無線機の通知</Japanese>
             <Chinese>ACRE 2 - 無線電通知</Chinese>
             <Russian>ACRE2 - Уведомления Раций</Russian>
@@ -61,7 +61,7 @@
         <Key ID="STR_ACRE_sys_list_HintBackgroundColor_DisplayName">
             <English>Notification Background Color</English>
             <German>Hintergrundfarbe der visuellen Benachrichtigung</German>
-            <Italian>Colore sfondo notifica</Italian>
+            <Italian>Colore di sfondo notifica</Italian>
             <Russian>Цвет фона уведомления</Russian>
             <Japanese>通知の背景色</Japanese>
             <Chinese>通知的背景顏色</Chinese>
@@ -87,7 +87,7 @@
         <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
             <English>Babel Cycle Language Color</English>
             <German>Schriftfarbe während Babel Sprachwechsel</German>
-            <Italian>Colore della lingua del ciclo di Babel</Italian>
+            <Italian>Colore del cambio lingua Babel</Italian>
             <Russian>Цвет при изменении языка Babel</Russian>
             <Japanese>バベル言語切り替え時の表示色</Japanese>
             <Chinese>多國語言切換顏色</Chinese>
@@ -99,7 +99,7 @@
         <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
             <English>Switch Channel Color</English>
             <German>Farbe bei Funkkanalwechsel</German>
-            <Italian>Cambia colore canale</Italian>
+            <Italian>Colore di Cambio Canale</Italian>
             <Russian>Цвет при смене каналов</Russian>
             <Japanese>チャンネル切り替え時の表示色</Japanese>
             <Chinese>切換頻道顏色</Chinese>
@@ -111,7 +111,7 @@
         <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
             <English>Toggle Headset Color</English>
             <German>Farbe bei Auf- oder Absetzen der Kopfhörer</German>
-            <Italian>Colore quando si indossano o si tolgono le cuffie</Italian>
+            <Italian>Colore quando si indossano/tolgono le cuffie</Italian>
             <Russian>Изменить цвет наушников</Russian>
             <Japanese>ヘッドセット切り替え時の表示色</Japanese>
             <Chinese>耳機切換顏色</Chinese>
@@ -123,7 +123,7 @@
         <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
             <English>Cycle Radio Color</English>
             <German>Farbe bei Funkgerätwechsel</German>
-            <Italian>Colore quando si cambia radio</Italian>
+            <Italian>Colore del cambio radio</Italian>
             <Russian>Цвет при смене рации</Russian>
             <Japanese>無線機切り替え時の表示色</Japanese>
             <Chinese>無線電循環顏色</Chinese>

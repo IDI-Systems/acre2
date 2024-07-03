@@ -7,7 +7,7 @@
             <Czech>Ovládání hlasitosti přímého mluvení</Czech>
             <German>Lautstärke der Charaktersprache</German>
             <Japanese>直接会話の音量設定</Japanese>
-            <Italian>Regolazione Volume Diretto</Italian>
+            <Italian>Regolazione Volume Voce</Italian>
             <French>Réglage volume de voix</French>
             <Korean>육성 음량 조절</Korean>
             <Polish>Głośność mowy bezpośredniej</Polish>
@@ -33,7 +33,7 @@
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
             <German>Zeigt die momentane Lautstärke deiner Charaktersprache an.</German>
-            <Italian>Indica l'attuale livello di volume del parlato diretto.</Italian>
+            <Italian>Indica il volume attuale della voce.</Italian>
             <Russian>Отображает текущую громкость прямой речи</Russian>
             <Japanese>直接会話の現在の音量を表示します。</Japanese>
             <Chinese>顯示妳目前說話的音量</Chinese>
@@ -46,7 +46,7 @@
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>
             <Polish>ACRE2 - Informacje o pojeździe</Polish>
-            <Italian>ACRE2 - Informazione veicolo</Italian>
+            <Italian>ACRE2 - Informazioni Veicolo</Italian>
             <Japanese>ACRE2 - 車両情報</Japanese>
             <Chinese>ACRE2 - 載具資訊</Chinese>
             <Chinesesimp>ACRE2 - 载具资讯</Chinesesimp>
@@ -60,7 +60,7 @@
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_Description">
             <English>Status on available Intercoms and Racks in the vehicle.</English>
             <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
-            <Italian>Status degli intercom e rack disponibili nel veicolo</Italian>
+            <Italian>Stato degli intercom e rack disponibili nel veicolo</Italian>
             <Japanese>車両にある利用可能なインターコムとラックの状態を示します。</Japanese>
             <Chinese>車輛可使用的對講機即機架狀態</Chinese>
             <Chinesesimp>车辆可使用的对讲机即机架状态</Chinesesimp>
@@ -88,7 +88,7 @@
             <English>Color scale used by the Volume Control UI.</English>
             <Russian>Цветовая гамма интефейса управления громкостью</Russian>
             <German>Farbskala, die von der Lautstärkekontrolle benutzt wird.</German>
-            <Italian>Gamma di colori utilizzata dall'interfaccia di controllo del volume.</Italian>
+            <Italian>Gamma di colori utilizzati dall'interfaccia di controllo del volume.</Italian>
             <Japanese>音量操作UIに使う色の組み合わせを設定します。</Japanese>
             <Chinese>在音量控制界面以顏色作為音量等級區分</Chinese>
             <French>Gamme de couleurs utilisée pour l'interface de contrôle du volume.</French>
