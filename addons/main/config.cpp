@@ -36,4 +36,5 @@ class CfgMods {
 #include "CfgSettings.hpp"
 
 #include "CfgEventHandlers.hpp"
+#include "CfgLocationTypes.hpp"
 #include "CfgWeapons.hpp"
