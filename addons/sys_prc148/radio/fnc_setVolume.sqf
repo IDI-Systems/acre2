@@ -24,4 +24,4 @@ if (_vol%0.20 != 0) then {
     _vol = _vol-(_vol%0.20);
 };
 
-HASH_SET(_radioData, "volume", _eventData);
+HASH_SET(_radioData,"volume",_eventData);

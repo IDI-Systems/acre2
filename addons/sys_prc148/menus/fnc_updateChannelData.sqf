@@ -20,13 +20,13 @@ params ["_newVal", "_entry"];
 _entry params ["_key", "_oldVal"];
 
 private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
-private _channel = HASHLIST_SELECT(GET_STATE("channels"), _channelNumber);
+private _channel = HASHLIST_SELECT(GET_STATE("channels"),_channelNumber);
 if (_key == "frequencyRX" || {_key == "frequencyTX"}) then {
     _oldVal = (parseNumber _oldVal)/100000;
     // //diag_log text format["new freq: %1", _newVal];
     _newVal = parseNumber _newVal;
     // //diag_log text format["parse freq: %1", _newVal];
-    private _modulation = HASH_GET(_channel, "modulation");
+    private _modulation = HASH_GET(_channel,"modulation");
     private _spacing = 500;
     if (_modulation == "NB") then {
         _spacing = 625;
@@ -48,27 +48,27 @@ if (_key == "frequencyRX" || {_key == "frequencyTX"}) then {
 };
 switch _key do {
     case "frequencyRX": {
-        HASH_SET(_channel, "frequencyTX", _newVal);
+        HASH_SET(_channel,"frequencyTX",_newVal);
     };
     case "CTCSSRx": {
-        HASH_SET(_channel, "CTCSSTx", _newVal);
+        HASH_SET(_channel,"CTCSSTx",_newVal);
     };
     case "modulation": {
         if (_newVal == "AM") then {
-            private _power = HASH_GET(_channel, "power");
+            private _power = HASH_GET(_channel,"power");
             if (_power != 1000 && {_power != 5000}) then {
-                HASH_SET(_channel, "power", 1000);
+                HASH_SET(_channel,"power",1000);
             };
-            HASH_SET(_channel,"CTCSSTx", 0);
-            HASH_SET(_channel,"CTCSSRx", 0);
+            HASH_SET(_channel,"CTCSSTx",0);
+            HASH_SET(_channel,"CTCSSRx",0);
         };
         if (_newVal == "NB") then {
-            HASH_SET(_channel, "encryption", 0);
+            HASH_SET(_channel,"encryption",0);
         };
     };
 };
 // //diag_log text format["old: %1 new: %2", typeName _oldVal, typeName _newVal];
 if (_newVal != _oldVal) then {
-    HASH_SET(_channel, _key, _newVal);
+    HASH_SET(_channel,_key,_newVal);
     ["setChannelData", [_channelNumber, _channel]] call GUI_DATA_EVENT;
 };

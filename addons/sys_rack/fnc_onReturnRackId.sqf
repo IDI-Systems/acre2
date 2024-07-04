@@ -26,12 +26,12 @@ private _dataHash = HASH_CREATE;
 
 // diag_log text format ["acre_sys_data_radioData: %1", acre_sys_data_radioData];
 
-HASH_SET(EGVAR(sys_data,radioData), _class, _dataHash);
+HASH_SET(EGVAR(sys_data,radioData),_class,_dataHash);
 private _idRelation = [_entity, _entity];
-HASH_SET(EGVAR(sys_server,objectIdRelationTable), _class, _idRelation);
+HASH_SET(EGVAR(sys_server,objectIdRelationTable),_class,_idRelation);
 if (_replacementId != "") then {
-    private _radioData = HASH_GET(EGVAR(sys_data,radioData), _replacementId);
-    HASH_SET(EGVAR(sys_data,radioData), _class, HASH_COPY(_radioData));
+    private _radioData = HASH_GET(EGVAR(sys_data,radioData),_replacementId);
+    HASH_SET(EGVAR(sys_data,radioData),_class,HASH_COPY(_radioData));
 };
 
 // To further check. No isses found.

@@ -51,5 +51,5 @@ params ["", "", "_eventData", "_radioData"];
 
 private _vol = _eventData;
 
-HASH_SET(_radioData, "volume", _eventData);
-//TRACE_3("VOLUME SET",_radioId, _vol, _radioData);
+HASH_SET(_radioData,"volume",_eventData);
+//TRACE_3("VOLUME SET",_radioId,_vol,_radioData);

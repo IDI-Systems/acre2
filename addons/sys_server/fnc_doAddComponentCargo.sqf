@@ -30,8 +30,8 @@ if (_hasUnique) then {
              private _dataHash = HASH_CREATE;
              HASH_SET(EGVAR(sys_data,radioData),_uniqueComponent,_dataHash);
              GVAR(unacknowledgedIds) pushBack _uniqueComponent;
-             HASH_SET(GVAR(unacknowledgedTable), _uniqueComponent, time);
-             HASH_SET(GVAR(masterIdTable), _uniqueComponent, [ARR_2(_container,_container)]);
+             HASH_SET(GVAR(unacknowledgedTable),_uniqueComponent,time);
+             HASH_SET(GVAR(masterIdTable),_uniqueComponent,[ARR_2(_container,_container)]);
              _container addItemCargoGlobal [_uniqueComponent, 1];
              [_uniqueComponent, "initializeComponent", [_type, _preset]] call EFUNC(sys_data,dataEvent);
              if (_callBack != "") then {

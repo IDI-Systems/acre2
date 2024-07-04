@@ -16,19 +16,19 @@
  * Public: No
  */
 
-TRACE_1("changeMode", _this);
+TRACE_1("changeMode",_this);
 
-private _mode = GET_STATE_DEF("knobPosition", 1);
+private _mode = GET_STATE_DEF("knobPosition",1);
 
 if (_mode == 0) then {
-    TRACE_2("Turning radio off!", _mode, GVAR(currentRadioId));
+    TRACE_2("Turning radio off!",_mode,GVAR(currentRadioId));
     [GVAR(currentRadioId), "setOnOffState", 0] call EFUNC(sys_data,dataEvent);
     private _onOffState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
-    TRACE_1("TEST", _onOffState);
+    TRACE_1("TEST",_onOffState);
     [GVAR(OFF)] call FUNC(changeMenu);
 } else {
     private _onOffState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
-    TRACE_2("State", _mode, _onOffState);
+    TRACE_2("State",_mode,_onOffState);
     if (_onOffState >= 1) then {
         switch _mode do {
             case 1: {

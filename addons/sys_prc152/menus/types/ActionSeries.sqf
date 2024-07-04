@@ -17,50 +17,50 @@
  */
 
 DFUNC(onButtonPress_ActionSeries) = {
-    TRACE_1("onButtonPress_List", _this);
+    TRACE_1("onButtonPress_List",_this);
     params ["_menu", "_event"];
 
     WARNING("AN/PRC-152 Menu Error!, This should not have been reached!");
 };
 
 DFUNC(renderMenu_ActionSeries) = {
-    TRACE_1("renderMenu_ActionSeries", _this);
+    TRACE_1("renderMenu_ActionSeries",_this);
     params ["_menu"];
 
     // Its an action list of things to do in series,
     // which can be action menu types. Either way, they always bail back to us once completed
-    private _currentAction = GET_STATE_DEF("menuAction", 0);
+    private _currentAction = GET_STATE_DEF("menuAction",0);
 
     if (_currentAction < (count MENU_SUBMENUS(_menu)) ) then {
         // Annnnnd call it
         if (_currentAction > 0) then {
-            private _subMenu = MENU_SUBMENUS_ITEM(_menu, _currentAction-1);
+            private _subMenu = MENU_SUBMENUS_ITEM(_menu,_currentAction-1);
             [_subMenu] call FUNC(callSingleActionCompleteFunctor);
         };
 
         private _saveAction = -1;
         if (_currentAction < (count MENU_SUBMENUS(_menu)) ) then {
-            private _subMenu = MENU_SUBMENUS_ITEM(_menu, _currentAction);
-            TRACE_1("ACTIONS INCREMENTING", _currentAction);
+            private _subMenu = MENU_SUBMENUS_ITEM(_menu,_currentAction);
+            TRACE_1("ACTIONS INCREMENTING",_currentAction);
             _saveAction = _currentAction;
 
             [_subMenu] call FUNC(changeMenu);
         };
 
         // Get the last menuAction in case it was modified during menu operations (RX only, power level selection, ...)
-        _currentAction = GET_STATE_DEF("menuAction", 0);
+        _currentAction = GET_STATE_DEF("menuAction",0);
         _currentAction = _currentAction + 1;
-        SET_STATE("menuAction", _currentAction);
+        SET_STATE("menuAction",_currentAction);
 
         if (_saveAction+1 != _currentAction) then {
             _this call FUNC(renderMenu_ActionSeries);
         };
     } else {
-        TRACE_1("ACTIONS COMPLETE", _currentAction);
+        TRACE_1("ACTIONS COMPLETE",_currentAction);
         // Call the action completion function
 
-        SET_STATE("menuAction", 0);
-        TRACE_1("Calling", MENU_ACTION_SERIESCOMPLETE(_menu));
+        SET_STATE("menuAction",0);
+        TRACE_1("Calling",MENU_ACTION_SERIESCOMPLETE(_menu));
         private _ret = [MENU_ACTION_SERIESCOMPLETE(_menu), [_menu]] call FUNC(dynamicCall);
 
         // Swap back to our parent
@@ -69,7 +69,7 @@ DFUNC(renderMenu_ActionSeries) = {
         if (isNil "_ret") then { _ret = false; };
         if (!_ret) then {
             private _parent = MENU_PARENT(_menu);
-            TRACE_1("Calling Parent!", _menuParent);
+            TRACE_1("Calling Parent!",_menuParent);
             [_parent] call FUNC(changeMenu);
         };
     };

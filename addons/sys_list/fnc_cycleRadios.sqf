@@ -36,16 +36,16 @@ if (!dialog) then {
         };
         private _typeName = getText (configFile >> "CfgAcreComponents" >> _realRadio >> "name");
         private _radio = [_typeName, _listInfo, _radioClass];
-        TRACE_2("heh", _radioClass, ACRE_ACTIVE_RADIO);
+        TRACE_2("heh",_radioClass,ACRE_ACTIVE_RADIO);
         if (_radioClass == ACRE_ACTIVE_RADIO) then {
-            TRACE_1("found index", _count);
+            TRACE_1("found index",_count);
             _newRadioIndex = _count;
         };
         _radios pushBack _radio;
         _count = _count + 1;
     } foreach _radioList;
-    TRACE_1("index was", _newRadioIndex);
-    TRACE_1("Active was", ACRE_ACTIVE_RADIO);
+    TRACE_1("index was",_newRadioIndex);
+    TRACE_1("Active was",ACRE_ACTIVE_RADIO);
     if ((count _radios) > 1) then {
         if (_direction == 1) then {
             if (_newRadioIndex >= (count _radios)-1) then {
@@ -60,10 +60,10 @@ if (!dialog) then {
                 _newRadioIndex = _newRadioIndex - 1;
             };
         };
-        TRACE_1("radios are", _radios);
-        TRACE_1("index is", _newRadioIndex);
+        TRACE_1("radios are",_radios);
+        TRACE_1("index is",_newRadioIndex);
         private _activateRadio = _radios select _newRadioIndex;
-        TRACE_1("Active is now", _activateRadio);
+        TRACE_1("Active is now",_activateRadio);
         [(_activateRadio select 2)] call EFUNC(sys_radio,setActiveRadio);
         ["acre_cycleRadio", (_activateRadio select 0), (_activateRadio select 1), "", 1, GVAR(CycleRadiosColor)] call FUNC(displayHint);
     };

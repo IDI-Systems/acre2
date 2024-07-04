@@ -29,7 +29,7 @@ if (ACRE_DEBUG_DATA_SYNC > 0) then {
 GVAR(radioData) = (_data select 0) call FUNC(deserialize);
 EGVAR(sys_server,objectIdRelationTable) = (_data select 1) call FUNC(deserialize);
 ACRE_DATA_SYNCED = true;
-INFO_2("Data Processing. %1 pending events, %2 pending data updates.", count GVAR(pendingSyncEvents), count EGVAR(sys_server,pendingIdRelationUpdates));
+INFO_2("Data Processing. %1 pending events - %2 pending data updates.",count GVAR(pendingSyncEvents),count EGVAR(sys_server,pendingIdRelationUpdates));
 {
     _x call FUNC(onDataChangeEvent);
 } forEach GVAR(pendingSyncEvents);

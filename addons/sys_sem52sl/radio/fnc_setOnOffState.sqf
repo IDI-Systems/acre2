@@ -41,7 +41,7 @@
 
 params ["_radioId", "", "_eventData", "_radioData"];
 
-HASH_SET(_radioData, "radioOn", _eventData);
+HASH_SET(_radioData,"radioOn",_eventData);
 if (_radioId == EGVAR(sys_radio,currentRadioDialog)) then {
     if (_eventData isEqualTo 0) then {
 

@@ -19,17 +19,17 @@
  * Public: No
  */
 
-TRACE_1("343 getChannelData", _this);
+TRACE_1("343 getChannelData",_this);
 
 params ["", "", "_eventData", "_radioData", ""];
 
 private _channelNumber = _eventData;
-private _channels = HASH_GET(_radioData, "channels");
-private _channel = HASHLIST_SELECT(_channels, _channelNumber);
+private _channels = HASH_GET(_radioData,"channels");
+private _channel = HASHLIST_SELECT(_channels,_channelNumber);
 
 private _return = HASH_CREATE;
-HASH_SET(_return, "mode", "singleChannelPRR");
-HASH_SET(_return, "frequencyTX", HASH_GET(_channel, "frequencyTX"));
-HASH_SET(_return, "frequencyRX", HASH_GET(_channel, "frequencyRX"));
-HASH_SET(_return, "power", 100);
+HASH_SET(_return,"mode","singleChannelPRR");
+HASH_SET(_return,"frequencyTX",HASH_GET(_channel,"frequencyTX"));
+HASH_SET(_return,"frequencyRX",HASH_GET(_channel,"frequencyRX"));
+HASH_SET(_return,"power",100);
 _return

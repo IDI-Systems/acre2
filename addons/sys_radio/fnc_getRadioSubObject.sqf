@@ -18,7 +18,7 @@
 params ["_class"];
 
 private _ret = nil;
-if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable), _class)) then {
-    _ret = (HASH_GET(EGVAR(sys_server,objectIdRelationTable), _class) select 1);
+if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable),_class)) then {
+    _ret = (HASH_GET(EGVAR(sys_server,objectIdRelationTable),_class) select 1);
 };
 _ret;

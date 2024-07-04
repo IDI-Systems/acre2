@@ -4,7 +4,7 @@
         <Key ID="STR_ACRE_sys_rack_mountRadio">
             <English>Mount</English>
             <German>Installiere</German>
-            <Japanese>積載</Japanese>
+            <Japanese>マウント</Japanese>
             <Chinese>裝載</Chinese>
             <Chinesesimp>装载</Chinesesimp>
             <Korean>설치</Korean>
@@ -19,7 +19,7 @@
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable</English>
             <Italian>Non montabile</Italian>
-            <Japanese>積載不可</Japanese>
+            <Japanese>マウント不可</Japanese>
             <Chinese>無法掛載</Chinese>
             <Chinesesimp>无法挂载</Chinesesimp>
             <Spanish>No montable</Spanish>
@@ -32,7 +32,7 @@
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount</English>
             <German>Deinstalliere</German>
-            <Japanese>降ろす</Japanese>
+            <Japanese>アンマウント</Japanese>
             <Chinese>卸載</Chinese>
             <Chinesesimp>卸载</Chinesesimp>
             <Korean>분리</Korean>
@@ -47,7 +47,7 @@
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted (%1)</English>
             <German>%1 installiert</German>
-            <Japanese>積載した (%1)</Japanese>
+            <Japanese>マウントした (%1)</Japanese>
             <Chinese>裝載 (%1)</Chinese>
             <Chinesesimp>装载 (%1)</Chinesesimp>
             <Korean>설치 (%1)</Korean>
@@ -77,7 +77,7 @@
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use</English>
             <German>Verwenden</German>
-            <Japanese>を使う</Japanese>
+            <Japanese>使う</Japanese>
             <Chinese>使用</Chinese>
             <Chinesesimp>使用</Chinesesimp>
             <Korean>사용</Korean>
@@ -93,11 +93,12 @@
             <English>Use via Intercom (Work: %1)</English>
             <German>Durch Intercom verwenden (Work: %1)</German>
             <Italian>Usa tramite l'intercom (Work: %1)</Italian>
+            <Japanese>インターコムから使う (Work: %1)</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
             <German>Funkgerät kann nicht deinstalliert werden. Nicht genug Platz im Inventar.</German>
-            <Japanese>インベントリに空きが無いため無線機を降ろせません。</Japanese>
+            <Japanese>インベントリに空きが無いため無線機をアンマウントできません。</Japanese>
             <Chinese>無法卸載無線電，因為你的物品欄已經沒有任何空間。</Chinese>
             <Chinesesimp>无法卸载无线电，因为你的物品栏已经没有任何空间。</Chinesesimp>
             <Korean>인벤토리 공간이 없어 무전기를 분리 할 수 없습니다.</Korean>
@@ -115,7 +116,7 @@
             <Chinese>機架</Chinese>
             <Chinesesimp>机架</Chinesesimp>
             <Korean>선반</Korean>
-            <Japanese>架台</Japanese>
+            <Japanese>ラック</Japanese>
             <Portuguese>Raques</Portuguese>
             <Polish>Szafa radiowa</Polish>
             <Italian>Racks</Italian>
@@ -147,11 +148,12 @@
             <Spanish>Panel 2</Spanish>
             <Turkish>Panel 2</Turkish>
             <Portuguese>Painel 2</Portuguese>
+            <Japanese>ダッシュボード 2</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
             <Italian>Cruscotto</Italian>
-            <Japanese>ダッシュ</Japanese>
+            <Japanese>DB</Japanese>
             <Chinese>儀器版面 下</Chinese>
             <Chinesesimp>仪器版面 下</Chinesesimp>
             <Spanish>Panel</Spanish>
@@ -167,7 +169,7 @@
             <Chinese>儀器版面下降</Chinese>
             <Chinesesimp>仪器版面下降</Chinesesimp>
             <Korean>대쉬보드 하단</Korean>
-            <Japanese>ダッシュボードを下げる</Japanese>
+            <Japanese>ダッシュボード下部</Japanese>
             <Portuguese>Painel Inferior</Portuguese>
             <Polish>Dolny panel</Polish>
             <Italian>Cruscotto Basso</Italian>
@@ -178,8 +180,8 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
-            <Italian>C. Basso</Italian>
-            <Japanese>D.下げ</Japanese>
+            <Italian>C.Basso</Italian>
+            <Japanese>DB.下</Japanese>
             <Chinese>儀器.下</Chinese>
             <Chinesesimp>仪器.下</Chinesesimp>
             <Spanish>P.Inf</Spanish>
@@ -195,7 +197,7 @@
             <Chinese>儀器版面上升</Chinese>
             <Chinesesimp>仪器版面上升</Chinesesimp>
             <Korean>대쉬보드 상단</Korean>
-            <Japanese>ダッシュボードを上げる</Japanese>
+            <Japanese>ダッシュボード上部</Japanese>
             <Portuguese>Painel Superior</Portuguese>
             <Polish>Górny panel</Polish>
             <Italian>Cruscotto Alto</Italian>
@@ -206,8 +208,8 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
-            <Italian>C. Alto</Italian>
-            <Japanese>D.上げ</Japanese>
+            <Italian>C.Alto</Italian>
+            <Japanese>DB.上</Japanese>
             <Chinese>儀器.上</Chinese>
             <Chinesesimp>仪器.上</Chinesesimp>
             <Spanish>P.Sup</Spanish>
@@ -219,13 +221,13 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_useAllRacks">
             <English>Use All</English>
-            <Japanese>全て使用</Japanese>
+            <Japanese>全てを使用</Japanese>
             <Chinese>使用全部</Chinese>
             <Chinesesimp>使用全部</Chinesesimp>
             <Spanish>Usar todas</Spanish>
             <French>Tout utiliser</French>
             <German>Verwende alle</German>
-            <Italian>Usa tutto</Italian>
+            <Italian>Usa tutti</Italian>
             <Russian>Использовать все</Russian>
             <Portuguese>Usar todos</Portuguese>
             <Turkish>Hepsini Kullan</Turkish>
@@ -238,7 +240,7 @@
             <Spanish>Dejar de usar todas</Spanish>
             <French>Ne rien utiliser</French>
             <German>Nicht mehr alle verwenden</German>
-            <Italian>Smetti di usare tutto</Italian>
+            <Italian>Smetti di usare tutti</Italian>
             <Russian>Прекратить использовать все</Russian>
             <Portuguese>Todos: Parar de usar</Portuguese>
             <Turkish>Hepsini Kullanmayı Bırak</Turkish>

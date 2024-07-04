@@ -32,36 +32,36 @@ GVAR(NumpadMap) = [
 DFUNC(doAlphanumericButton) = {
     params ["_menu", "_event"];
 
-    private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
+    private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuAlphaCursor",0);
 
-    private _editButtonPress = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursorPress", 0);
+    private _editButtonPress = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuAlphaCursorPress",0);
 
     private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
-    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
+    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuString","");
 
     private _number = parseNumber (_event select 0);
     private _key = _event select 0;
 
-    private _lastButton = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaLastButton", _key);
+    private _lastButton = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuAlphaLastButton",_key);
     if (_lastButton != _key) then {
         _editButtonPress = 0;
         [_menu, ['RIGHT']] call FUNC(onButtonPress_Alphanumeric);
     };
 
-    TRACE_1("", _number);
+    TRACE_1("",_number);
     if (_number > -1 && _number < 10) then {
 
         private _arr = toArray _value;
         private _character = _arr select _editIndex;
 
         _character = ( toArray ((GVAR(NumpadMap) select _number) select _editButtonPress) select 0);
-        TRACE_4("Values", _character, _number, _editButtonPress, _arr);
+        TRACE_4("Values",_character,_number,_editButtonPress,_arr);
 
         _arr set[_editIndex, _character];
         _value = toString _arr;
 
-        TRACE_2("Values 2", _editIndex, _character);
-        TRACE_1("New value", _value);
+        TRACE_2("Values 2",_editIndex,_character);
+        TRACE_1("New value",_value);
 
         // Increment the next character to use
         if (_editButtonPress + 1 >= (count (GVAR(NumpadMap) select _number))) then {
@@ -70,9 +70,9 @@ DFUNC(doAlphanumericButton) = {
             _editButtonPress = _editButtonPress + 1;
         };
 
-        SCRATCH_SET(GVAR(currentRadioId), "menuAlphaLastButton", _key);
-        SCRATCH_SET(GVAR(currentRadioId), "menuAlphaCursorPress", _editButtonPress);
-        SCRATCH_SET(GVAR(currentRadioId), "menuString", _value);
+        SCRATCH_SET(GVAR(currentRadioId),"menuAlphaLastButton",_key);
+        SCRATCH_SET(GVAR(currentRadioId),"menuAlphaCursorPress",_editButtonPress);
+        SCRATCH_SET(GVAR(currentRadioId),"menuString",_value);
 
         // Re-render it
         [_menu] call FUNC(renderMenu_Alphanumeric);
@@ -84,9 +84,9 @@ DFUNC(doAlphanumericButton) = {
 DFUNC(onButtonPress_Alphanumeric) = {
     params ["_menu", "_event"];
 
-    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
+    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuString","");
 
-    TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!", (_event select 0));
+    TRACE_1("!!!!!!!!!!!!!!!!!!!!!!!!!",(_event select 0));
     switch (_event select 0) do {
         case '1': { _this call FUNC(doAlphanumericButton); };
         case '2': { _this call FUNC(doAlphanumericButton); };
@@ -100,50 +100,50 @@ DFUNC(onButtonPress_Alphanumeric) = {
         case '0': { _this call FUNC(doAlphanumericButton); };
         case 'LEFT': {
             private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
-            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuAlphaCursor",0);
             if (_editIndex > 0) then {
                 _editIndex = _editIndex -1;
             } else {
                 _editIndex = _editDigits -1;
             };
-            SCRATCH_SET(GVAR(currentRadioId), "menuAlphaCursor", _editIndex);
-            SCRATCH_SET(GVAR(currentRadioId), "menuAlphaCursorPress", 0);
-            SCRATCH_SET(GVAR(currentRadioId), "menuAlphaLastButton", nil);
+            SCRATCH_SET(GVAR(currentRadioId),"menuAlphaCursor",_editIndex);
+            SCRATCH_SET(GVAR(currentRadioId),"menuAlphaCursorPress",0);
+            SCRATCH_SET(GVAR(currentRadioId),"menuAlphaLastButton",nil);
             [_menu] call FUNC(renderMenu_Alphanumeric);
         };
         case 'RIGHT': {
             private _editDigits = (MENU_SELECTION_DISPLAYSET(_menu) select 0);
-            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
+            private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuAlphaCursor",0);
             if (_editIndex+1 < _editDigits) then {
                 _editIndex = _editIndex + 1;
             } else {
                 _editIndex = 0;
             };
-            SCRATCH_SET(GVAR(currentRadioId), "menuAlphaCursor", _editIndex);
-            SCRATCH_SET(GVAR(currentRadioId), "menuAlphaCursorPress", 0);
-            SCRATCH_SET(GVAR(currentRadioId), "menuAlphaLastButton", nil);
+            SCRATCH_SET(GVAR(currentRadioId),"menuAlphaCursor",_editIndex);
+            SCRATCH_SET(GVAR(currentRadioId),"menuAlphaCursorPress",0);
+            SCRATCH_SET(GVAR(currentRadioId),"menuAlphaLastButton",nil);
             [_menu] call FUNC(renderMenu_Alphanumeric);
         };
         case 'ENT': {
             // swap to the parent
-            TRACE_1("onButtonPress_Alphanumeric: ENT hit", _value);
+            TRACE_1("onButtonPress_Alphanumeric: ENT hit",_value);
 
             private _saveName = MENU_SELECTION_VARIABLE(_menu);
-            SET_STATE(_saveName, _value);
+            SET_STATE(_saveName,_value);
 
-            SCRATCH_SET(GVAR(currentRadioId), "menuString", nil);
-            SCRATCH_SET(GVAR(currentRadioId), "menuAlphaCursorPress", 0);
-            SCRATCH_SET(GVAR(currentRadioId), "menuAlphaLastButton", nil);
+            SCRATCH_SET(GVAR(currentRadioId),"menuString",nil);
+            SCRATCH_SET(GVAR(currentRadioId),"menuAlphaCursorPress",0);
+            SCRATCH_SET(GVAR(currentRadioId),"menuAlphaLastButton",nil);
 
-            TRACE_2("Saved", _saveName, (GET_STATE(_saveName)));
+            TRACE_2("Saved",_saveName,(GET_STATE(_saveName)));
 
             // Our parent?
-            TRACE_1("Parent", MENU_PARENT_ID(_menu));
+            TRACE_1("Parent",MENU_PARENT_ID(_menu));
             [MENU_PARENT_ID(_menu)] call FUNC(changeMenu);
         };
         case 'CLR': {
             TRACE_1("onButtonPress_Alphanumeric: CLR hit","");
-            private _parentMenu = HASH_GET(GVAR(Menus), MENU_PARENT_ID(_menu));
+            private _parentMenu = HASH_GET(GVAR(Menus),MENU_PARENT_ID(_menu));
             private _useParent = true;
 
             //If Parent action series -> Go to its parent.
@@ -151,7 +151,7 @@ DFUNC(onButtonPress_Alphanumeric) = {
                 private _pid = MENU_PARENT_ID(_parentMenu);
                 if (_pid isEqualType "") then {
                     _useParent = false;
-                    SET_STATE("menuAction", 0);
+                    SET_STATE("menuAction",0);
                     [_pid] call FUNC(changeMenu);
                 };
             };
@@ -170,11 +170,11 @@ DFUNC(renderMenu_Alphanumeric) = {
     params ["_menu"]; // the menu to render is passed
     private _displaySet = MENU_SUBMENUS(_menu);
 
-    private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuAlphaCursor", 0);
-    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "menuString", "");
+    private _editIndex = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuAlphaCursor",0);
+    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId),"menuString","");
 
     private _valueHash = HASH_CREATE;
-    HASH_SET(_valueHash, "1", _value);
+    HASH_SET(_valueHash,"1",_value);
 
     [] call FUNC(clearDisplay);
     if (!isNil "_displaySet" && _displaySet isEqualType [] && (count _displaySet) > 0) then {

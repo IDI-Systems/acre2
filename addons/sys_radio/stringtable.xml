@@ -4,7 +4,7 @@
         <Key ID="STR_ACRE_sys_radio_radioSupplyCrate">
             <English>[ACRE] Radio Supply Crate</English>
             <German>[ACRE] Funkgerätekiste</German>
-            <Japanese>[ACRE] 無線機物資箱</Japanese>
+            <Japanese>[ACRE] 無線機材箱</Japanese>
             <Russian>[ACRE] Ящик с рациями</Russian>
             <Chinese>[ACRE] 無線電箱</Chinese>
             <Chinesesimp>[ACRE] 无线电箱</Chinesesimp>
@@ -19,13 +19,13 @@
         <Key ID="STR_ACRE_sys_radio_noGuiExternal">
             <English>Radio used externally. Only owner may configure.</English>
             <German>Das Funkgerät wird extern benutzt. Nur der Besitzer kann es einstellen.</German>
-            <Japanese>無線機は外部で使用されます。オーナーのみ設定可能です。</Japanese>
+            <Japanese>無線機は外で使用されています。 所有者のみが設定できます。</Japanese>
             <Chinese>外部無線電。只有擁有者才能設定。</Chinese>
             <Chinesesimp>外部无线电。只有拥有者才能设定。</Chinesesimp>
             <Korean>무전기가 외부에서 사용되었습니다. 사용자만 설정 할 수 있습니다.</Korean>
             <Portuguese>Rádio usado externamente. Somente o proprietário pode configurar.</Portuguese>
             <Polish>Radio używane na zewnątrz. Tylko właściciel może konfigurować.</Polish>
-            <Italian>Radio usata esternamente. Solo il proprietario puo' configurare</Italian>
+            <Italian>Radio usata esternamente. Solo il proprietario può configurarla</Italian>
             <Spanish>Radio usada externamente. Sólo el propietario puede configurarla</Spanish>
             <French>Radio utilisée à l'extérieur. Seul le propriétaire peut la configurer.</French>
             <Russian>Рация используется извне. Только владелец может изменять настройки</Russian>
@@ -34,13 +34,13 @@
         <Key ID="STR_ACRE_sys_radio_noGuiTurnedOut">
             <English>Radio rack can't be reached from this position.</English>
             <German>Das Funkgerät kann von der aktuellen Position nicht erreicht werden.</German>
-            <Japanese>無線機ラックは身を外に出していると設定できません。</Japanese>
+            <Japanese>この位置からは無線機ラックにアクセスできません。</Japanese>
             <Chinese>無法從這個位置碰到無線電架。</Chinese>
             <Chinesesimp>无法从这个位置碰到无线电架。</Chinesesimp>
             <Korean>이 위치에서 무전기 선반에 닿지 않습니다.</Korean>
             <Portuguese>Não é possível alcançar o raque de rádio desta posição.</Portuguese>
             <Polish>Nie można dosięgnąć szafy radiowej z tej pozycji.</Polish>
-            <Italian>Il rack non puo' essere raggiunto da questa posizione</Italian>
+            <Italian>Il rack non può essere raggiunto da questa posizione</Italian>
             <Spanish>No se puede acceder a la rack desde esta posición</Spanish>
             <French>Le rack radio ne peut pas être atteint depuis la position actuelle.</French>
             <Russian>Подставка для рации недоступна с этой позиции</Russian>
@@ -49,13 +49,13 @@
         <Key ID="STR_ACRE_sys_radio_noGuiSeat">
             <English>Radio rack not accessible for configuration from this seat.</English>
             <German>Das Funkgerät kann von diesem Sitzplatz aus nicht verstellt werden</German>
-            <Japanese>無線機ラックは現在の席から設定できません。</Japanese>
+            <Japanese>この座席からは無線機ラックにアクセスして設定を行うことはできません。</Japanese>
             <Chinese>無線電無法從這個座位進行設定。</Chinese>
             <Chinesesimp>无线电无法从这个座位进行设定。</Chinesesimp>
             <Korean>이 좌석에서 설정 할 수 없는 무전기 선반.</Korean>
             <Portuguese>O raque de rádio não é acessível para a configuração deste assento.</Portuguese>
             <Polish>Nie można konfigurować szafy radiowej z tego siedzenia.</Polish>
-            <Italian>Il rack non puo' essere configurato da questo sedile</Italian>
+            <Italian>Il rack non può essere configurato da questo sedile</Italian>
             <Spanish>La radio no se puede configurar desde esta posición</Spanish>
             <French>Le rack radio n'est pas accessible pour la configuration depuis ce siège.</French>
             <Russian>Подставку для раций нельзя изменять с этого места</Russian>
@@ -64,13 +64,13 @@
         <Key ID="STR_ACRE_sys_radio_noTransmitExternal">
             <English>Radio used externally. Only external user may transmit.</English>
             <German>Das Funkgerät wird extern benutzt. Nur der externe Nutzer kann senden.</German>
-            <Japanese>無線機は外部で使用されます。外にいる人のみ送信できます。</Japanese>
+            <Japanese>無線機は外で使用されています。 外にいる人のみが送信できます。</Japanese>
             <Chinese>外部無線電。只有外部使用者可以發送。</Chinese>
             <Chinesesimp>外部无线电。只有外部使用者可以发送。</Chinesesimp>
             <Korean>무전기가 외부에서 사용되었습니다. 외부 사용자만 전송 할 수 있습니다.</Korean>
             <Portuguese>Rádio usado externamente. Somente o usuário externo pode transmitir.</Portuguese>
             <Polish>Radio używane na zewnątrz. Tylko użytkownicy znajdujący się na zewnątrz mogą nadawać.</Polish>
-            <Italian>Radio usata esternamente. Solo l'utente esterno puo' trasmettere.</Italian>
+            <Italian>Radio usata esternamente. Solo l'utente esterno può trasmettere.</Italian>
             <Spanish>Radio usada externamente. Sólo el usuario externo puede transmitir.</Spanish>
             <French>Radio utilisée à l'extérieur. Seul un utilisateur extérieur peut transmettre.</French>
             <Russian>Рация используется извне. Только внешний пользователь может производить передачу</Russian>
@@ -136,9 +136,9 @@
         <Key ID="STR_ACRE_sys_radio_allRadioCrate">
             <English>All Radio Crate</English>
             <Spanish>Caja con todas las radios</Spanish>
-            <Japanese>全無線機物資箱</Japanese>
+            <Japanese>全ての無線機入りの箱</Japanese>
             <German>Sämtliche ACRE Funkgeräte</German>
-            <Italian>Tutte le casse radio</Italian>
+            <Italian>Cassa con tutte le radio</Italian>
             <Russian>Ящик со Всеми Рациями</Russian>
             <French>Caisse toutes radios ACRE</French>
             <Chinese>全無線電機種供給箱</Chinese>
@@ -152,7 +152,7 @@
             <German>Funkgerät auf %1 gestellt</German>
             <Italian>Radio impostata su %1</Italian>
             <Russian>Рация установлена на %1</Russian>
-            <Japanese>無線機を%1に設置</Japanese>
+            <Japanese>無線を%1にセット</Japanese>
             <French>Radio réglée sur %1.</French>
             <Chinese>設定無線電為 %1</Chinese>
             <Chinesesimp>设定无线电为1%</Chinesesimp>
@@ -161,21 +161,39 @@
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_DisplayName">
             <English>Radio Item Replacement</English>
+            <German>Austausch des Funkgeräts</German>
+            <Italian>Sostituzione della radio</Italian>
+            <Japanese>無線機アイテムの置き換え</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
             <English>Default radio inventory items will be replaced with this type of radio.</English>
+            <German>Standard Funkinventargegenstände werden durch diesen Funkgerätetyp ersetzt.</German>
+            <Italian>Le radio vanilla nell'inventario verranno sostituite con questo tipo di radio.</Italian>
+            <Japanese>インベントリにあるデフォルトの無線機アイテムは、 このタイプの無線機に置き換えられます。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
+            <German>Lautstärke ändern</German>
+            <Italian>Cambia volume</Italian>
+            <Japanese>音量の変更</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentVolume">
             <English>Current Volume</English>
+            <German>Aktuelle Lautstärke</German>
+            <Italian>Volume attuale</Italian>
+            <Japanese>現在の変更</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
+            <German>Funkgerät aus</German>
+            <Italian>Radio spenta</Italian>
+            <Japanese>無線オフ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeChannel">
             <English>Change Channel</English>
+            <German>Kanal wechseln</German>
+            <Italian>Cambia canale</Italian>
+            <Japanese>チャンネルを変更</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannel">
             <English>Current Channel</English>
@@ -185,15 +203,25 @@
             <French>Canal actuel</French>
             <Turkish>Şu Anki Kanal</Turkish>
             <Portuguese>Canal atual</Portuguese>
+            <Japanese>現在のチャンネル</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannelBlock">
             <English>Current Channel Block</English>
+            <German>Aktueller Kanalblock</German>
+            <Italian>Blocco di canali corrente</Italian>
+            <Japanese>現在のチャンネルブロック</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleAttach">
             <English>Attach handle</English>
+            <German>Griff anbringen</German>
+            <Italian>Attaccare la maniglia</Italian>
+            <Japanese>ハンドルを取り付ける</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleDetach">
             <English>Detach handle</English>
+            <German>Griff abnehmen</German>
+            <Italian>Rimuovere la maniglia</Italian>
+            <Japanese>ハンドルを外す</Japanese>
         </Key>
     </Package>
 </Project>

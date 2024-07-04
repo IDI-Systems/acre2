@@ -17,8 +17,8 @@
  */
 
 private _display = uiNamespace getVariable QGVAR(currentDisplay);
-private _flashingText = SCRATCH_GET_DEF(GVAR(currentRadioId), "flashingText", []);
-private _flashingState = SCRATCH_GET_DEF(GVAR(currentRadioId), "flashingTextState", false);
+private _flashingText = SCRATCH_GET_DEF(GVAR(currentRadioId),"flashingText",[]);
+private _flashingState = SCRATCH_GET_DEF(GVAR(currentRadioId),"flashingTextState",false);
 private _color = [0, 0, 0, 1];
 if (_flashingState) then {
     _color = [123/255, 179/255, 118/255, 1];
@@ -34,9 +34,9 @@ if (_flashingState) then {
     };
 
 } forEach _flashingText;
-SCRATCH_SET(GVAR(currentRadioId), "flashingTextState", !_flashingState);
+SCRATCH_SET(GVAR(currentRadioId),"flashingTextState",!_flashingState);
 
-private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId), "animations", []);
+private _animations = SCRATCH_GET_DEF(GVAR(currentRadioId),"animations",[]);
 
 {
     [(_x select 0), (_x select 1)] call (_x select 2);

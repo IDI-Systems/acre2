@@ -65,7 +65,7 @@ private _currentUniqueItems = [];
         if (_hasUnique) then {
             GVAR(requestingNewId) = true;
             ["acre_getRadioId", [acre_player, _radio, QGVAR(returnRadioId)]] call CALLSTACK(CBA_fnc_serverEvent);
-            TRACE_1("Getting ID for", _radio);
+            TRACE_1("Getting ID for",_radio);
         };
     };
 

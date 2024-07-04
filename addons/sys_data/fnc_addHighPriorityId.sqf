@@ -30,5 +30,5 @@ for "_i" from 0 to (count GVAR(forceHighPriorityIds))-1 do {
 };
 
 if (!_found) then {
-    PUSH(GVAR(forceHighPriorityIds), _id);
+    PUSH(GVAR(forceHighPriorityIds),_id);
 };

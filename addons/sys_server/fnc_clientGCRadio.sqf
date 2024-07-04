@@ -27,8 +27,8 @@ if ((toLower _radioId) in _radioList) then {
     [QGVAR(invalidGarbageCollect), [profileName, _radioId]] call CALLSTACK(CBA_fnc_serverEvent);
 };
 
-HASH_SET(EGVAR(sys_data,radioData), _radioId, nil);
-if (HASH_HASKEY(EGVAR(sys_data,radioScratchData), _radioId)) then {
-    HASH_REM(EGVAR(sys_data,radioScratchData), _radioId);
+HASH_SET(EGVAR(sys_data,radioData),_radioId,nil);
+if (HASH_HASKEY(EGVAR(sys_data,radioScratchData),_radioId)) then {
+    HASH_REM(EGVAR(sys_data,radioScratchData),_radioId);
 };
-HASH_REM(GVAR(objectIdRelationTable), _radioId);
+HASH_REM(GVAR(objectIdRelationTable),_radioId);

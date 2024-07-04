@@ -40,7 +40,7 @@
 
 params ["_radioId", "", "", "_radioData"];
 
-private _manualChannel = HASH_GET(_radioData, "manualChannelSelection");
+private _manualChannel = HASH_GET(_radioData,"manualChannelSelection");
 private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 private _description = "";
 if (_manualChannel isEqualTo 1) then {

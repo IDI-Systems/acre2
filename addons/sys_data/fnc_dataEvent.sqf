@@ -51,7 +51,7 @@ private _return = _params call FUNC(acreEvent);
         // if (_cachedIndex != -1) then {
             // _return = (_cache select 1) set[_cachedIndex, _return];
         // } else {
-            // _cachedIndex = PUSH((_cache select 0), _event);
+            // _cachedIndex = PUSH((_cache select 0),_event);
             // (_cache select 1) set[_cachedIndex, _return];
         // };
     // };

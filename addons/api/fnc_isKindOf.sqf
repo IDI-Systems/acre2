@@ -29,11 +29,11 @@ if (_parent == "") then {
 
 private _isAcre = getNumber (configFile >> "CfgAcreComponents" >> _parent >> "isAcre");
 // diag_log text format["_radioId: %1 isAcre: %2", _parent, _isAcre];
-TRACE_2("", _parent, _isAcre);
+TRACE_2("",_parent,_isAcre);
 if (_isAcre == 0) exitWith {
     false
 };
-TRACE_2("", _parent, _radioType);
+TRACE_2("",_parent,_radioType);
 
 if (_parent == _radioType) exitWith {
     true
@@ -49,7 +49,7 @@ if (_parent == _radioType) exitWith {
 
 while { _parent != "" } do {
     if (_parent == _radioType) exitWith {
-        TRACE_2("", _parent, _radioType);
+        TRACE_2("",_parent,_radioType);
         true
     };
     _parent = configName (inheritsFrom ( configFile >> "CfgAcreComponents" >> _parent));

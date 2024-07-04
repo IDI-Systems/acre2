@@ -27,11 +27,11 @@ private _restOfMessage = _message select [(count _procedureCall) +1];
 private _paramArray = _restOfMessage splitString ",";
 
 TRACE_1("PARAMS TO PROCEDURE",_paramArray);
-if (HASH_HASKEY(GVAR(procedures), _procedureCall)) then {
-    private _function = HASH_GET(GVAR(procedures), _procedureCall);
+if (HASH_HASKEY(GVAR(procedures),_procedureCall)) then {
+    private _function = HASH_GET(GVAR(procedures),_procedureCall);
     TRACE_1("!!!!!!!!!!!!_---------------------------- CALLING FUNCTION -----------------!!!!!!",_procedureCall);
     // diag_log text format["CALL FUNC: %1", _function];
-    _paramArray call CALLSTACK_NAMED(_function, _procedureCall);
+    _paramArray call CALLSTACK_NAMED(_function,_procedureCall);
 };
 
 true

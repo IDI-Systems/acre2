@@ -21,9 +21,9 @@ params [
     ["_fieldName", "", [""]]
 ];
 
-TRACE_1("CALLING", "");
+TRACE_1("CALLING","");
 private _baseRadio = [_radioId] call FUNC(getBaseRadio);
-TRACE_1("", _baseRadio);
+TRACE_1("",_baseRadio);
 switch _baseRadio do {
     case "ACRE_PRC148": {
         if (_fieldName == "description" || _fieldName == "name") then {
