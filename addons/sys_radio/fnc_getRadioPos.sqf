@@ -18,7 +18,7 @@
 params ["_class"];
 
 private _ret = [0,0,0];
-if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable), _class)) then {
-    _ret = getPosASL (HASH_GET(EGVAR(sys_server,objectIdRelationTable), _class) select 0);
+if (HASH_HASKEY(EGVAR(sys_server,objectIdRelationTable),_class)) then {
+    _ret = getPosASL (HASH_GET(EGVAR(sys_server,objectIdRelationTable),_class) select 0);
 };
 _ret;

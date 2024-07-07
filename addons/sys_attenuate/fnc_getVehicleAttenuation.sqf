@@ -22,7 +22,7 @@ private _attenuation = 0;
 private _effectType = [_unit] call FUNC(getAttenuationEffectType);
 if (_effectType isEqualTo "") exitWith {_attenuation};
 
-private _cachedAttenuation = HASH_GET(GVAR(attenuationCache), _effectType);
+private _cachedAttenuation = HASH_GET(GVAR(attenuationCache),_effectType);
 if (!isNil "_cachedAttenuation") exitWith {_cachedAttenuation};
 
 private _attenuationsEffectsCfg = configFile >> "CfgSoundEffects" >> "AttenuationsEffects";
@@ -34,6 +34,6 @@ if (isNumber (_attenuationCfg)) then {
     _attenuation = getNumber (_attenuationsEffectsCfg >> "acreDefaultAttenuation");
 };
 
-HASH_SET(GVAR(attenuationCache), _effectType, _attenuation);
+HASH_SET(GVAR(attenuationCache),_effectType,_attenuation);
 
 _attenuation

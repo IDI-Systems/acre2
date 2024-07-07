@@ -74,7 +74,7 @@ handleMultipleTransmission
 
 The sensitivity (minimum signal strength the radio can pick up) should also go in here as well. In the below code the sensitivity of the radio is -117, any signal with a strength less than it is discarded.
 ```
-_squelch = -117 + HASH_GET(_channel, "squelch");
+_squelch = -117 + HASH_GET(_channel,"squelch");
 if(_signalDbM < _squelch) then {
 ```
 

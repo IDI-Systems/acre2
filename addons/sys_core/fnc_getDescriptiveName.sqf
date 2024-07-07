@@ -43,7 +43,7 @@ private _maxChannels = [_radioId, "getState", "channels"] call EFUNC(sys_data,da
 private _text = if (isNil "_maxChannels") then {
     // Display frequency for single-channel radios (e.g. AN/PRC-77)
     private _txData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-    private _currentFreq = HASH_GET(_txData, "frequencyTX");
+    private _currentFreq = HASH_GET(_txData,"frequencyTX");
     format ["%1 %2 MHz", _name, _currentFreq];
 } else {
     format [LELSTRING(ace_interact,channelShort), _name, _radioId call EFUNC(api,getRadioChannel)]

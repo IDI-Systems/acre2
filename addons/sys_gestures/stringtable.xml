@@ -9,42 +9,47 @@
             <Spanish>ACRE2 Gestos</Spanish>
             <Turkish>ACRE2 El Hareketleri</Turkish>
             <Portuguese>ACRE2 Gestos</Portuguese>
+            <Japanese>ACRE2 ジェスチャー</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled">
             <English>Enable</English>
             <German>Aktivieren</German>
-            <Italian>Attivare</Italian>
+            <Italian>Attiva</Italian>
             <French>Activée</French>
             <Spanish>Activos</Spanish>
             <Turkish>Aktifleştir</Turkish>
             <Portuguese>Ativo</Portuguese>
+            <Japanese>有効化</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled_description">
             <English>Animate players using radios.</English>
             <German>Animiere Spieler beim Funken</German>
-            <Italian>Anima i giocatori usando le radio</Italian>
+            <Italian>Anima i giocatori che usano le radio</Italian>
             <French>L'avatar des joueurs est animé lorsqu'ils parlent à la radio.</French>
             <Spanish>Animación de los jugadores al usar la radio</Spanish>
             <Turkish>Telsiz kullanan oyunculara animasyonlar ekle</Turkish>
             <Portuguese>Animar jogadores usando rádios</Portuguese>
+            <Japanese>ラジオを使うプレーヤーにアニメーションさせます</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS">
             <English>Prevent Aim Down Sights</English>
             <German>Verhindern vom Anvisieren</German>
-            <Italian>Prevenire l'avvistamento</Italian>
+            <Italian>Impedisci l'avvistamento</Italian>
             <French>Empêcher la prise de visée</French>
             <Spanish>Prevenir apuntado al usar la radio</Spanish>
             <Turkish>Nişan Almayı Engelle</Turkish>
             <Portuguese>Impedir mira (ADS)</Portuguese>
+            <Japanese>照準を妨げる</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS_description">
             <English>Keying radios will prevent aiming down sights.</English>
             <German>Verhindert das Anvisieren während ein Funkgerät bedient wird.</German>
-            <Italian>La digitazione delle radio impedirà di mirare verso il basso.</Italian>
+            <Italian>Impedisce l'utilizzo del mirino quando si trasmette con una radio.</Italian>
             <French>Les joueurs ne peuvent plus utiliser les organes de visée de leurs armes lorsqu'ils parlent à la radio.</French>
             <Spanish>No permite a los jugadores usar la mira de sus armas al usar la radio</Spanish>
             <Turkish>Telsiz kullanırken nişan almayı engeller</Turkish>
             <Portuguese>Usar rádios irá impedir a mira</Portuguese>
+            <Japanese>無線機のキーを押すと照準を合わせることができなくなります。</Japanese>
         </Key>
     </Package>
 </Project>

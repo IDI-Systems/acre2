@@ -25,12 +25,12 @@ if (_index != -1) then {
         private _fnc = {
             _class = _this;
             GVAR(unacknowledgedIds) deleteAt (GVAR(unacknowledgedIds) find _class);
-            HASH_REM(GVAR(unacknowledgedTable), _class);
+            HASH_REM(GVAR(unacknowledgedTable),_class);
         };
         [_fnc, _class] call CBA_fnc_execNextFrame;
     } else {
         GVAR(unacknowledgedIds) deleteAt _index;
-        HASH_REM(GVAR(unacknowledgedTable), _class);
+        HASH_REM(GVAR(unacknowledgedTable),_class);
     };
 } else {
     WARNING_2("%1 attempted to acknowledge ID %2 which was not awaiting acknowledgement",_player,_class);

@@ -21,7 +21,7 @@ params ["_newTs3Id","_netId"];
 _newTs3Id = parseNumber _newTs3Id;
 
 private _playerObject = objectFromNetId _netId;
-TRACE_1("got client ID", _this);
+TRACE_1("got client ID",_this);
 if (_playerObject == acre_player) then {
     private _resendSpectator = false;
     if (_newTs3Id != GVAR(ts3id)) then {

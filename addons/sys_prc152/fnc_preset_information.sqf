@@ -31,7 +31,7 @@ for "_i" from 0 to 99 do {
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            PUSH(_usedPresetFrequencies, _frequency);
+            PUSH(_usedPresetFrequencies,_frequency);
         };
     };
     // The above frequency generation is taken from the 148 so we match.
@@ -41,23 +41,23 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
     HASH_SET(_channel,"encryption",0);
-    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"channelMode","BASIC");
     private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"description",_desc);
-    HASH_SET(_channel,"CTCSSTx", 250.3);
-    HASH_SET(_channel,"CTCSSRx", 250.3);
+    HASH_SET(_channel,"CTCSSTx",250.3);
+    HASH_SET(_channel,"CTCSSRx",250.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"TEK",1);
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"syncLength",256);
 
     // 152 specific channel settings
-    HASH_SET(_channel,"squelch", 3);
-    HASH_SET(_channel,"deviation", 8.0);
-    HASH_SET(_channel,"optionCode", 201);    // 200 for AM
-    HASH_SET(_channel,"rxOnly", false);
+    HASH_SET(_channel,"squelch",3);
+    HASH_SET(_channel,"deviation",8.0);
+    HASH_SET(_channel,"optionCode",201);    // 200 for AM
+    HASH_SET(_channel,"rxOnly",false);
 
-    HASHLIST_PUSH(_channels, _channel);
+    HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_PRC152","default",_presetData] call EFUNC(sys_data,registerRadioPreset);
@@ -77,7 +77,7 @@ for "_i" from 0 to 99 do {
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            PUSH(_usedPresetFrequencies, _frequency);
+            PUSH(_usedPresetFrequencies,_frequency);
         };
     };
     // The above frequency generation is taken from the 148 so we match.
@@ -87,23 +87,23 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
     HASH_SET(_channel,"encryption",0);
-    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"channelMode","BASIC");
     private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"description",_desc);
-    HASH_SET(_channel,"CTCSSTx", 250.3);
-    HASH_SET(_channel,"CTCSSRx", 250.3);
+    HASH_SET(_channel,"CTCSSTx",250.3);
+    HASH_SET(_channel,"CTCSSRx",250.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"TEK",1);
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"syncLength",256);
 
     // 152 specific channel settings
-    HASH_SET(_channel,"squelch", 3);
-    HASH_SET(_channel,"deviation", 8.0);
-    HASH_SET(_channel,"optionCode", 201);    // 200 for AM
-    HASH_SET(_channel,"rxOnly", false);
+    HASH_SET(_channel,"squelch",3);
+    HASH_SET(_channel,"deviation",8.0);
+    HASH_SET(_channel,"optionCode",201);    // 200 for AM
+    HASH_SET(_channel,"rxOnly",false);
 
-    HASHLIST_PUSH(_channels, _channel);
+    HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_PRC152","default2",_presetData] call EFUNC(sys_data,registerRadioPreset);
@@ -123,7 +123,7 @@ for "_i" from 0 to 99 do {
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            PUSH(_usedPresetFrequencies, _frequency);
+            PUSH(_usedPresetFrequencies,_frequency);
         };
     };
     // The above frequency generation is taken from the 148 so we match.
@@ -133,23 +133,23 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
     HASH_SET(_channel,"encryption",0);
-    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"channelMode","BASIC");
     private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"description",_desc);
-    HASH_SET(_channel,"CTCSSTx", 250.3);
-    HASH_SET(_channel,"CTCSSRx", 250.3);
+    HASH_SET(_channel,"CTCSSTx",250.3);
+    HASH_SET(_channel,"CTCSSRx",250.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"TEK",1);
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"syncLength",256);
 
     // 152 specific channel settings
-    HASH_SET(_channel,"squelch", 3);
-    HASH_SET(_channel,"deviation", 8.0);
-    HASH_SET(_channel,"optionCode", 201);    // 200 for AM
-    HASH_SET(_channel,"rxOnly", false);
+    HASH_SET(_channel,"squelch",3);
+    HASH_SET(_channel,"deviation",8.0);
+    HASH_SET(_channel,"optionCode",201);    // 200 for AM
+    HASH_SET(_channel,"rxOnly",false);
 
-    HASHLIST_PUSH(_channels, _channel);
+    HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_PRC152","default3",_presetData] call EFUNC(sys_data,registerRadioPreset);
@@ -169,7 +169,7 @@ for "_i" from 0 to 99 do {
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            PUSH(_usedPresetFrequencies, _frequency);
+            PUSH(_usedPresetFrequencies,_frequency);
         };
     };
     // The above frequency generation is taken from the 148 so we match.
@@ -179,23 +179,23 @@ for "_i" from 0 to 99 do {
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
     HASH_SET(_channel,"encryption",0);
-    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"channelMode","BASIC");
     private _desc = format["FMLOSVOC%1",([_i+1, 2] call CBA_fnc_formatNumber)];
     HASH_SET(_channel,"description",_desc);
-    HASH_SET(_channel,"CTCSSTx", 250.3);
-    HASH_SET(_channel,"CTCSSRx", 250.3);
+    HASH_SET(_channel,"CTCSSTx",250.3);
+    HASH_SET(_channel,"CTCSSRx",250.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"TEK",1);
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"syncLength",256);
 
     // 152 specific channel settings
-    HASH_SET(_channel,"squelch", 3);
-    HASH_SET(_channel,"deviation", 8.0);
-    HASH_SET(_channel,"optionCode", 201);    // 200 for AM
-    HASH_SET(_channel,"rxOnly", false);
+    HASH_SET(_channel,"squelch",3);
+    HASH_SET(_channel,"deviation",8.0);
+    HASH_SET(_channel,"optionCode",201);    // 200 for AM
+    HASH_SET(_channel,"rxOnly",false);
 
-    HASHLIST_PUSH(_channels, _channel);
+    HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 ["ACRE_PRC152","default4",_presetData] call EFUNC(sys_data,registerRadioPreset);

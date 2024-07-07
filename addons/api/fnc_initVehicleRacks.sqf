@@ -49,7 +49,7 @@ if (_condition isEqualTo {} && {_vehiclePresetName isNotEqualTo ""}) then {
     private _index = _players findIf {[_x] call _condition};
 
     if (_index == -1) then {
-        WARNING_1("No unit found for condition %1, defaulting to first player",_condition);
+        WARNING_1("No unit found for condition %1 - defaulting to first player",_condition);
         _index = 0;
     };
     _player = _players select _index;

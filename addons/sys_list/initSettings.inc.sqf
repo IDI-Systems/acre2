@@ -66,6 +66,15 @@ private _fonts = ["EtelkaMonospacePro", "EtelkaMonospaceProBold", "LCD14", "Puri
     {}
 ] call CBA_fnc_addSetting;
 
+// Babel Language Hint Persistence
+[
+    QGVAR(LanguageHintPersist),
+    "CHECKBOX",
+    [localize LSTRING(LanguageHintPersist_DisplayName), localize LSTRING(LanguageHintPersist_Description)],
+    ELSTRING(sys_core,CategoryUI),
+    true
+] call CBA_fnc_addSetting;
+
 // PTT1 Color
 [
     QGVAR(PTT1Color),

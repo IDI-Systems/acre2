@@ -48,13 +48,13 @@ _channelNumber = _channelNumber - 1;
 private _presetData = [_radioClass, _presetName] call EFUNC(sys_data,getPresetData);
 if (isNil "_presetData") exitWith { nil };
 
-private _channels = HASH_GET(_presetData, "channels");
-private _channel = HASHLIST_SELECT(_channels, _channelNumber);
+private _channels = HASH_GET(_presetData,"channels");
+private _channel = HASHLIST_SELECT(_channels,_channelNumber);
 
 private _fieldName = [_radioClass, _fieldName] call FUNC(mapChannelFieldName);
 
-if (!HASH_HASKEY(_channel, _fieldName)) exitWith { nil };
-private _value = HASH_GET(_channel, _fieldName);
+if (!HASH_HASKEY(_channel,_fieldName)) exitWith { nil };
+private _value = HASH_GET(_channel,_fieldName);
 
 if (isNil "_value") exitWith { nil };
 _value

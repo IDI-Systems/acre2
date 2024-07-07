@@ -22,12 +22,12 @@ DFUNC(GroupDisplay_Render) = {
     private _groups = GET_STATE("groups");
     private _options = [];
     private _labels = [];
-    SET_TEXT("GROUP =", BIG_LINE_3, 4, 10);
+    SET_TEXT("GROUP =",BIG_LINE_3,4,10);
     {
         _x params ["_label", "_channels"];
         if ((count _channels) > 0) then {
-            PUSH(_labels, _label);
-            PUSH(_options, _forEachIndex);
+            PUSH(_labels,_label);
+            PUSH(_options,_forEachIndex);
         };
 
     } forEach _groups;
@@ -35,7 +35,7 @@ DFUNC(GroupDisplay_Render) = {
     GVAR(currentMenu) =
     [
         [
-            ["groupSelect", GET_STATE_DEF("currentGroup", 0), BIG_LINE_3, [12, 14], MENU_TYPE_LIST, FUNC(GroupDisplay_Select), _labels, _options]
+            ["groupSelect", GET_STATE_DEF("currentGroup",0),BIG_LINE_3,[12,14],MENU_TYPE_LIST,FUNC(GroupDisplay_Select), _labels, _options]
         ]
     ];
 
@@ -51,7 +51,7 @@ DFUNC(GroupDisplay_Select) = {
 
     //diag_log text format["new: %1", _newValue];
     private _newGroup = (_menuEntry select 7) select _newValue;
-    SET_STATE_CRIT("currentGroup", _newGroup);
+    SET_STATE_CRIT("currentGroup",_newGroup);
 
     private _group = GET_STATE("groups") select GET_STATE("currentGroup");
     private _channelPosition = GET_STATE("channelKnobPosition");

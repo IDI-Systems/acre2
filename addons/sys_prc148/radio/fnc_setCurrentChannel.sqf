@@ -19,7 +19,7 @@
 params ["_radioId", "", "_eventData", "_radioData"];
 
 TRACE_1("SETTING CURRENT CHANNEL",_this);
-private _groups = HASH_GET(_radioData, "groups");
+private _groups = HASH_GET(_radioData,"groups");
 
 {
     _x params ["","_channelNums"];
@@ -27,8 +27,8 @@ private _groups = HASH_GET(_radioData, "groups");
     if (_eventData in _channelNums) exitWith {
         {
             if (_x == _eventData) then {
-                HASH_SET(_radioData, "currentGroup", _groupIndex);
-                HASH_SET(_radioData, "channelKnobPosition", _forEachIndex);
+                HASH_SET(_radioData,"currentGroup",_groupIndex);
+                HASH_SET(_radioData,"channelKnobPosition",_forEachIndex);
             };
         } forEach _channelNums;
     };

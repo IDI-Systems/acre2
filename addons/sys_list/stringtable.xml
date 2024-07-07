@@ -7,7 +7,7 @@
             <Czech>Změnit rádio</Czech>
             <German>Funkgeräte durchschalten</German>
             <Japanese>無線機を切り替え</Japanese>
-            <Italian>Cambia Ricetrasmittente</Italian>
+            <Italian>Cambia Radio</Italian>
             <French>Commuter radio suivante</French>
             <Korean>무전 채널 변경</Korean>
             <Polish>Następne radio</Polish>
@@ -22,8 +22,8 @@
             <Spanish>Abrir Radio</Spanish>
             <Czech>Otevřít aktivní rádio</Czech>
             <German>Aktives Funkgerät öffnen</German>
-            <Japanese>使用中の無線機を開く</Japanese>
-            <Italian>Apri Ricetrasmittente Attiva</Italian>
+            <Japanese>アクティブな無線機を開く</Japanese>
+            <Italian>Apri Radio Attiva</Italian>
             <French>Ouvrir radio active</French>
             <Korean>무전기 열기</Korean>
             <Polish>Otwórz panel aktywne radia</Polish>
@@ -36,7 +36,7 @@
         <Key ID="STR_ACRE_sys_list_NotificationGrid">
             <English>ACRE2 - Radio Notifications</English>
             <German>ACRE2 - Visuelle Funkbenachrichtigungen</German>
-            <Italian>ACRE2 - Notifiche radio</Italian>
+            <Italian>ACRE2 - Notifiche Radio</Italian>
             <Japanese>ACRE2 - 無線機の通知</Japanese>
             <Chinese>ACRE 2 - 無線電通知</Chinese>
             <Russian>ACRE2 - Уведомления Раций</Russian>
@@ -61,9 +61,9 @@
         <Key ID="STR_ACRE_sys_list_HintBackgroundColor_DisplayName">
             <English>Notification Background Color</English>
             <German>Hintergrundfarbe der visuellen Benachrichtigung</German>
-            <Italian>Colore sfondo notifica</Italian>
+            <Italian>Colore di sfondo notifica</Italian>
             <Russian>Цвет фона уведомления</Russian>
-            <Japanese>通知の背景カラー</Japanese>
+            <Japanese>通知の背景色</Japanese>
             <Chinese>通知的背景顏色</Chinese>
             <French>Notifications - Couleur d'arrière-plan</French>
             <Chinesesimp>通知的背景颜色</Chinesesimp>
@@ -87,21 +87,31 @@
         <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
             <English>Babel Cycle Language Color</English>
             <German>Schriftfarbe während Babel Sprachwechsel</German>
-            <Italian>Colore della lingua del ciclo di Babel</Italian>
+            <Italian>Colore del cambio lingua Babel</Italian>
             <Russian>Цвет при изменении языка Babel</Russian>
-            <Japanese>バベル サイクル言語カラー</Japanese>
+            <Japanese>バベル言語切り替え時の表示色</Japanese>
             <Chinese>多國語言切換顏色</Chinese>
             <French>Couleur - Langage Babel</French>
             <Chinesesimp>多国语言切换颜色</Chinesesimp>
             <Portuguese>Cor: Alternar Idiomas do Babel</Portuguese>
             <Turkish>Babel Dil Değiştirme Rengi</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_list_LanguageHintPersist_DisplayName">
+            <English>Persist Babel Language Indicator</English>
+            <German>Babel Sprachanzeige bleibt sichtbar</German>
+            <Italian>Indicatore di lingua persistente</Italian>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_LanguageHintPersist_Description">
+            <English>Prevent the Babel Language Indicator in the bottom right from fading out if a language other than the "main language" (the first assigned spoken language) is selected.</English>
+            <German>Verhindert, wenn eingeschaltet, dass die Babel Sprachanzeige unten-rechts verschwindet während eine andere Sprache als die "Muttersprache" (die erste zugewiesene Sprache) gesprochen wird.</German>
+            <Italian>Se attivato, l'indicatore della lingua selezionata in basso a destra non scomparirà mentre si parla una lingua diversa da quella "madre" (la prima lingua assegnata).</Italian>
+        </Key>
         <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
             <English>Switch Channel Color</English>
             <German>Farbe bei Funkkanalwechsel</German>
-            <Italian>Cambia colore canale</Italian>
+            <Italian>Colore di Cambio Canale</Italian>
             <Russian>Цвет при смене каналов</Russian>
-            <Japanese>チャンネル切り替えカラー</Japanese>
+            <Japanese>チャンネル切り替え時の表示色</Japanese>
             <Chinese>切換頻道顏色</Chinese>
             <French>Couleur - Changement de canal radio</French>
             <Chinesesimp>切换频道颜色</Chinesesimp>
@@ -111,9 +121,9 @@
         <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
             <English>Toggle Headset Color</English>
             <German>Farbe bei Auf- oder Absetzen der Kopfhörer</German>
-            <Italian>Colore quando si indossano o si tolgono le cuffie</Italian>
+            <Italian>Colore quando si indossano/tolgono le cuffie</Italian>
             <Russian>Изменить цвет наушников</Russian>
-            <Japanese>ヘッドセット切り替えカラー</Japanese>
+            <Japanese>ヘッドセット切り替え時の表示色</Japanese>
             <Chinese>耳機切換顏色</Chinese>
             <French>Couleur - Mettre/Retirer les écouteurs</French>
             <Chinesesimp>耳机切换颜色</Chinesesimp>
@@ -123,9 +133,9 @@
         <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
             <English>Cycle Radio Color</English>
             <German>Farbe bei Funkgerätwechsel</German>
-            <Italian>Colore quando si cambia radio</Italian>
+            <Italian>Colore del cambio radio</Italian>
             <Russian>Цвет при смене рации</Russian>
-            <Japanese>無線機切り替えカラー</Japanese>
+            <Japanese>無線機切り替え時の表示色</Japanese>
             <Chinese>無線電循環顏色</Chinese>
             <French>Couleur - Changement de radio</French>
             <Chinesesimp>无线电循环颜色</Chinesesimp>
@@ -137,7 +147,7 @@
             <German>Farbe Sprechtaste 1</German>
             <Italian>Colore trasmissione radio 1 (PTT 1)</Italian>
             <Russian>Рация 1 (PTT 1) цвет передачи</Russian>
-            <Japanese>無線機 1 (PTT 1) 送信カラー</Japanese>
+            <Japanese>無線機1 (PTT 1) 送信時の表示色</Japanese>
             <Chinese>無線電1 (隨按即說1)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 1 (PTT 1)</French>
             <Chinesesimp>无线电1（随按即说1）通讯颜色</Chinesesimp>
@@ -150,7 +160,7 @@
             <German>Farbe Sprechtaste 2</German>
             <Italian>Colore trasmissione radio 2 (PTT 2)</Italian>
             <Russian>Рация 2 (PTT 2) цвет передачи</Russian>
-            <Japanese>無線機 2 (PTT 2) 送信カラー</Japanese>
+            <Japanese>無線機2 (PTT 2) 送信時の表示色</Japanese>
             <Chinese>無線電2 (隨按即說2)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 2 (PTT 2)</French>
             <Chinesesimp>无线电2（随按即说2）通讯颜色</Chinesesimp>
@@ -163,7 +173,7 @@
             <German>Farbe Sprechtaste 3</German>
             <Italian>Colore trasmissione radio 3 (PTT 3)</Italian>
             <Russian>Рация 3 (PTT 3) цвет передачи</Russian>
-            <Japanese>無線機 3 (PTT 3) 送信カラー</Japanese>
+            <Japanese>無線機3 (PTT 3) 送信時の表示色</Japanese>
             <Chinese>無線電3 (隨按即說3)通訊顏色</Chinese>
             <French>Couleur - Transmission radio 3 (PTT 3)</French>
             <Chinesesimp>无线电3（随按即说3）通讯颜色</Chinesesimp>
@@ -176,7 +186,7 @@
             <German>Farbe für Standardsprechtaste</German>
             <Italian>Colore trasmissione radio attiva</Italian>
             <Russian>Цвет передачи активной рации</Russian>
-            <Japanese>使用中無線機の送信カラー</Japanese>
+            <Japanese>アクティブな無線機 送信時の表示色</Japanese>
             <Chinese>使用中的無線電通訊顏色</Chinese>
             <French>Couleur - Transmission radio active</French>
             <Chinesesimp>使用中的无线电通讯颜色</Chinesesimp>

@@ -18,7 +18,7 @@
 
 params ["_menu"];
 
-TRACE_1("enter", _menu);
+TRACE_1("enter",_menu);
 private _ret = false;
 if ((!isNil "_menu") && {(count _menu) > 5}) then {
     private _events = MENU_ACTION_EVENTS(_menu);

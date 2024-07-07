@@ -18,9 +18,9 @@
 
 params ["_componentId", "_connector"];
 
-private _componentData = HASH_GET(EGVAR(sys_data,radioData), _componentId); // Get Radio Data
+private _componentData = HASH_GET(EGVAR(sys_data,radioData),_componentId); // Get Radio Data
 if (isNil "_componentData") exitWith {false};
-_componentData = HASH_GET(_componentData, "acre_radioConnectionData"); // Get Connection Data
+_componentData = HASH_GET(_componentData,"acre_radioConnectionData"); // Get Connection Data
 if (isNil "_componentData") exitWith {false};
 
 private _return = false;

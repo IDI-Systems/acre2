@@ -18,9 +18,9 @@
 
 params ["", "", "", "_radioData"];
 
-private _volume = HASH_GET(_radioData, "volume");
+private _volume = HASH_GET(_radioData,"volume");
 
-if ((HASH_GET(_radioData, "audioPath") == "INTAUDIO")) then {
+if ((HASH_GET(_radioData,"audioPath") == "INTAUDIO")) then {
     _volume = _volume*0.75;
 };
 

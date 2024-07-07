@@ -17,8 +17,8 @@ GVAR(OptRadioOptions) = ["RADIO_OPTIONS", "RADIO OPTIONS", "OPT-RADIO",
                     private _value = GET_STATE("audioPath");
                     //diag_log text format["render: %1", _value];
                     if (_value == "INTAUDIO") then {
-                        SCRATCH_SET(GVAR(currentRadioId), "opt_radio_speaker", "ON");
-                        SET_STATE("menuSelection", 1);
+                        SCRATCH_SET(GVAR(currentRadioId),"opt_radio_speaker","ON");
+                        SET_STATE("menuSelection",1);
                     };
                 },
                 {
@@ -26,12 +26,12 @@ GVAR(OptRadioOptions) = ["RADIO_OPTIONS", "RADIO OPTIONS", "OPT-RADIO",
                     // If its RX only, zero out the TX frequency and
                     // Skip the rest of the menus
                     private _menu = _this select 0;
-                    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId), "opt_radio_speaker", "OFF");
+                    private _value = SCRATCH_GET_DEF(GVAR(currentRadioId),"opt_radio_speaker","OFF");
                     if (_value == "ON") then {
                         //diag_log text format["ON!!!!!!!"];
-                        SET_STATE("audioPath", "INTAUDIO");
+                        SET_STATE("audioPath","INTAUDIO");
                     } else {
-                        SET_STATE("audioPath", "TOPAUDIO");
+                        SET_STATE("audioPath","TOPAUDIO");
                     };
                 },nil,nil
             ],

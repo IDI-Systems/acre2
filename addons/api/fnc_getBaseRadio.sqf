@@ -19,7 +19,7 @@ params [
     ["_radioId", "", [""]]
 ];
 
-TRACE_1("", _radioId);
+TRACE_1("",_radioId);
 if ( ([_radioId] call FUNC(isBaseRadio)) ) exitWith {
     _radioId
 };

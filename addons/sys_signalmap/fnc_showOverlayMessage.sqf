@@ -26,10 +26,10 @@ with uiNamespace do {
     ctrlSetFocus GVAR(overlayMessageGrp);
 
     private ["_bg", "_customText"];
-    CTRLOVERLAY(_bg, "RscBackground");
+    CTRLOVERLAY(_bg,"RscBackground");
     _bg ctrlSetPosition [0, 0, 0.5, 0.75];
     _bg ctrlCommit 0;
-    CTRLOVERLAY(_customText, "RscStructuredText");
+    CTRLOVERLAY(_customText,"RscStructuredText");
     _customText ctrlSetPosition [0, 0.3, 0.5, 0.75/2];
     _customText ctrlSetStructuredText (parseText (_this select 0));
     _customText ctrlCommit 0;

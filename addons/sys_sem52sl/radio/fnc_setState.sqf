@@ -40,4 +40,4 @@
 
 params ["", "", "_eventData", "_radioData"];
 
-HASH_SET(_radioData, _eventData param [0], _eventData param [1]);
+HASH_SET(_radioData,_eventData param [0],_eventData param [1]);

@@ -32,17 +32,17 @@ for "_i" from 0 to 31 do {
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            PUSH(_usedPresetFrequencies, _frequency);
+            PUSH(_usedPresetFrequencies,_frequency);
         };
     };
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
     HASH_SET(_channel,"encryption",0);
-    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"channelMode","BASIC");
     HASH_SET(_channel,"label","CHAN " + str(_i+1));
-    HASH_SET(_channel,"CTCSSTx", 250.3);
-    HASH_SET(_channel,"CTCSSRx", 250.3);
+    HASH_SET(_channel,"CTCSSTx",250.3);
+    HASH_SET(_channel,"CTCSSRx",250.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"TEK",1);
@@ -51,7 +51,7 @@ for "_i" from 0 to 31 do {
     HASH_SET(_channel,"phase",256);
     HASH_SET(_channel,"squelch",3);
 
-    HASHLIST_PUSH(_channels, _channel);
+    HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 private _groups = [
@@ -91,17 +91,17 @@ for "_i" from 0 to 31 do {
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            PUSH(_usedPresetFrequencies, _frequency);
+            PUSH(_usedPresetFrequencies,_frequency);
         };
     };
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
     HASH_SET(_channel,"encryption",0);
-    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"channelMode","BASIC");
     HASH_SET(_channel,"label","CHAN " + str(_i+1));
-    HASH_SET(_channel,"CTCSSTx", 250.3);
-    HASH_SET(_channel,"CTCSSRx", 250.3);
+    HASH_SET(_channel,"CTCSSTx",250.3);
+    HASH_SET(_channel,"CTCSSRx",250.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"TEK",1);
@@ -110,7 +110,7 @@ for "_i" from 0 to 31 do {
     HASH_SET(_channel,"phase",256);
     HASH_SET(_channel,"squelch",3);
 
-    HASHLIST_PUSH(_channels, _channel);
+    HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 _groups = [
@@ -150,17 +150,17 @@ for "_i" from 0 to 31 do {
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            PUSH(_usedPresetFrequencies, _frequency);
+            PUSH(_usedPresetFrequencies,_frequency);
         };
     };
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
     HASH_SET(_channel,"encryption",0);
-    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"channelMode","BASIC");
     HASH_SET(_channel,"label","CHAN " + str(_i+1));
-    HASH_SET(_channel,"CTCSSTx", 250.3);
-    HASH_SET(_channel,"CTCSSRx", 250.3);
+    HASH_SET(_channel,"CTCSSTx",250.3);
+    HASH_SET(_channel,"CTCSSRx",250.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"TEK",1);
@@ -169,7 +169,7 @@ for "_i" from 0 to 31 do {
     HASH_SET(_channel,"phase",256);
     HASH_SET(_channel,"squelch",3);
 
-    HASHLIST_PUSH(_channels, _channel);
+    HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 _groups = [
@@ -209,17 +209,17 @@ for "_i" from 0 to 31 do {
             };
         } forEach _usedPresetFrequencies;
         if (_ok || (count _usedPresetFrequencies) == 0) then {
-            PUSH(_usedPresetFrequencies, _frequency);
+            PUSH(_usedPresetFrequencies,_frequency);
         };
     };
     HASH_SET(_channel,"frequencyTX",_frequency);
     HASH_SET(_channel,"frequencyRX",_frequency);
     HASH_SET(_channel,"power",5000);
     HASH_SET(_channel,"encryption",0);
-    HASH_SET(_channel,"channelMode", "BASIC");
+    HASH_SET(_channel,"channelMode","BASIC");
     HASH_SET(_channel,"label","CHAN " + str(_i+1));
-    HASH_SET(_channel,"CTCSSTx", 250.3);
-    HASH_SET(_channel,"CTCSSRx", 250.3);
+    HASH_SET(_channel,"CTCSSTx",250.3);
+    HASH_SET(_channel,"CTCSSRx",250.3);
     HASH_SET(_channel,"modulation","FM");
     HASH_SET(_channel,"trafficRate",16);
     HASH_SET(_channel,"TEK",1);
@@ -228,7 +228,7 @@ for "_i" from 0 to 31 do {
     HASH_SET(_channel,"phase",256);
     HASH_SET(_channel,"squelch",3);
 
-    HASHLIST_PUSH(_channels, _channel);
+    HASHLIST_PUSH(_channels,_channel);
 };
 HASH_SET(_presetData,"channels",_channels);
 _groups = [
@@ -264,12 +264,12 @@ private _numeric = "1234567890";
 
 private _array = toArray _alpha;
 {
-    PUSH(GVAR(alpha), (toString [_x]));
+    PUSH(GVAR(alpha),(toString [_x]));
 } forEach _array;
 
 _array = toArray _numeric;
 {
-    PUSH(GVAR(numeric), (toString [_x]));
+    PUSH(GVAR(numeric),(toString [_x]));
 } forEach _array;
 
 DGVAR(alphaNumeric) = GVAR(numeric) + GVAR(alpha);

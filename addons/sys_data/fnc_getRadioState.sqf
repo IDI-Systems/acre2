@@ -28,7 +28,7 @@ if (isNil QEGVAR(sys_server,obelisk)) exitWith {
 // if we dont own it, we push a CBA event requesting they push latest state, then we get the latest oblix data via the reply event
 TRACE_1("_radio",_radio);
 private _state = EGVAR(sys_server,obelisk) getVariable _radio;
-TRACE_2("", _radio, _state);
+TRACE_2("",_radio,_state);
 _stateCopy = nil;
 if (!isNil "_state") then {
     if (IS_ARRAY(_state)) then {

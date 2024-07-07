@@ -42,7 +42,7 @@
 
 params ["", "", "", "_radioData"];
 
-private _spatial = HASH_GET(_radioData, "ACRE_INTERNAL_RADIOSPATIALIZATION");
+private _spatial = HASH_GET(_radioData,"ACRE_INTERNAL_RADIOSPATIALIZATION");
 
 if (!isNil "_spatial") exitWith { _spatial };
 0

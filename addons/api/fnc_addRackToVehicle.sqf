@@ -121,7 +121,7 @@ private _selectPlayer = {
         } forEach ([] call CBA_fnc_players);
 
         if (isNull _player) then {
-            WARNING_1("No unit found for condition %1, defaulting to first player",_condition);
+            WARNING_1("No unit found for condition %1 - defaulting to first player",_condition);
             _player = ([] call CBA_fnc_players) select 0;
         };
     };

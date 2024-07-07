@@ -15,7 +15,7 @@
  * Public: No
  */
 
-TRACE_1("enter", _this);
+TRACE_1("enter",_this);
 if (!ACRE_IS_SPECTATOR) then {
     if (GVAR(lowered)) then {
         GVAR(lowered) = false;

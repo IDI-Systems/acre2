@@ -41,7 +41,7 @@ DFUNC(_hashSerialize) = {
     private _hash = _this;
     private _vals = [];
     private _keys = (allVariables _hash) select {
-        private _val = HASH_GET(_hash, _x);
+        private _val = HASH_GET(_hash,_x);
         if (!isNil "_val") then {
             if (IS_ARRAY(_val)) then {
                 _val = _val call FUNC(_arraySerialize);

@@ -15,7 +15,7 @@
  * Public: No
  */
 
-TRACE_1("SETTING ACTIVE RADIO", _this);
+TRACE_1("SETTING ACTIVE RADIO",_this);
 
 ACRE_ACTIVE_RADIO = _this select 0;
 

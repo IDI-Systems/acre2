@@ -20,7 +20,7 @@
  * Public: No
  */
 
-TRACE_1("OPENING GUI", _this);
+TRACE_1("OPENING GUI",_this);
 params ["_radioId", "", "", "", ""];
 
 // Prevent radio from being opened if it is externally used or it is not accessible
@@ -37,7 +37,7 @@ MAIN_DISPLAY call (uiNamespace getVariable "CBA_events_fnc_initDisplayCurator");
 
 private _onState = [GVAR(currentRadioId), "getOnOffState"] call EFUNC(sys_data,dataEvent);
 if (_onState >= 1) then {
-    private _currentMenu = GET_STATE_DEF("currentMenu", GVAR(VULOSHOME));
+    private _currentMenu = GET_STATE_DEF("currentMenu",GVAR(VULOSHOME));
     [_currentMenu] call FUNC(changeMenu);
 } else {
     //[GVAR(LOADING)] call FUNC(changeMenu);

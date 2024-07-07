@@ -20,7 +20,7 @@
 FUNC(_channelNamesForPresets) = {
     params ["_channelNames", "_presetNames"];
 
-    TRACE_1("enter", _this);
+    TRACE_1("enter",_this);
     if (_presetNames isNotEqualTo []) then {
         {
             if (_x != "") then {
@@ -52,7 +52,7 @@ private _channelNamesNoSides = {
         _presetNames pushBack [_x, _presetName];
     } forEach ((call FUNC(getAllRadios)) select 0);
 
-    TRACE_1("Configuring radio for presets", _presetNames);
+    TRACE_1("Configuring radio for presets",_presetNames);
     [_this, _presetNames] call FUNC(_channelNamesForPresets);
 };
 
@@ -64,7 +64,7 @@ private _channelNamesForPresetGroup = {
         _presetNames pushBack [_x, _presetName];
     } forEach ((call FUNC(getAllRadios)) select 0);
 
-    TRACE_1("Configuring radio for presets", _presetNames);
+    TRACE_1("Configuring radio for presets",_presetNames);
     [_channelNames, _presetNames] call FUNC(_channelNamesForPresets);
 };
 
@@ -73,7 +73,7 @@ params ["_logic", "_units", "_activated"];
 
 if (!_activated) exitWith {};
 
-TRACE_1("enter", _this);
+TRACE_1("enter",_this);
 
 private _sideNumber = _logic getVariable ["SideSelect", false];
 private _channelNames = [
@@ -93,7 +93,7 @@ private _setupSides = false;
 {
     if (_x isKindOf QGVAR(basicMissionSetup)) exitWith {
         _setupSides = _x getVariable ["RadioSetup", false];
-        TRACE_1("Dedicated basic mission module, checking sides configuration", _setupSides);
+        TRACE_1("Dedicated basic mission module - checking sides configuration",_setupSides);
     };
 } forEach (allMissionObjects "logic");
 
