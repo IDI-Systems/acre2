@@ -297,22 +297,22 @@ class CfgVehicles {
     };
 
     class LT_01_base_F;
-    class LT_01_AA_base_F: LT_01_base_F;
+    class LT_01_AA_base_F: LT_01_base_F {};
     class I_LT_01_AA_F: LT_01_AA_base_F {
         acre_infantryPhonePosition[] = {-1.10, -1.66, -0.83};
     };
 
-    class LT_01_AT_base_F: LT_01_base_F;
+    class LT_01_AT_base_F: LT_01_base_F {};
     class I_LT_01_AT_F: LT_01_AT_base_F {
         acre_infantryPhonePosition[] = {-1.10, -1.66, -0.83};
     };
 
-    class LT_01_cannon_base_F: LT_01_base_F;
+    class LT_01_cannon_base_F: LT_01_base_F {};
     class I_LT_01_cannon_F: LT_01_cannon_base_F {
         acre_infantryPhonePosition[] = {-1.10, -1.90, -0.78};
     };
 
-    class LT_01_scout_base_F: LT_01_base_F;
+    class LT_01_scout_base_F: LT_01_base_F {};
     class I_LT_01_scout_F: LT_01_scout_base_F {
         acre_infantryPhonePosition[] = {-1.10, -1.90, -0.78};
     };
