@@ -19,7 +19,12 @@ params ["_vehicle"];
 
 private _initialized = _vehicle getVariable [QGVAR(initialized), false];
 if (!_initialized) then {
-    private _racks = configOf _vehicle >> "AcreRacks";
+    private _racks = configProperties [(configOf _vehicle >> "AcreRacks"), "isClass _x", true];
+
+    // Set initialized flag if vehicle config has no defined Racks
+    if (_racks isEqualTo []) exitWith {
+        _vehicle setVariable [QGVAR(initialized), true, true];
+    };
 
     {
         private _componentName = getText (_x >> "componentName");
@@ -37,7 +42,5 @@ if (!_initialized) then {
         };
 
         [_vehicle, _componentName, _displayName, _shortName, _isRadioRemovable, _allowed, _disabled, _mountedRadio, _components, _intercoms] call FUNC(addRack);
-    } forEach (configProperties [_racks, "isClass _x", true]);
-
-    _vehicle setVariable [QGVAR(initialized), true, true];
+    } forEach _racks;
 };
