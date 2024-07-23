@@ -67,6 +67,7 @@ class CfgFunctions {
             PATHTO_FNC(initVehicleRacks);
             PATHTO_FNC(isRackRadioRemovable);
             PATHTO_FNC(mountRackRadio);
+            PATHTO_FNC(removeAllRacksFromVehicle);
             PATHTO_FNC(removeRackFromVehicle);
             PATHTO_FNC(unmountRackRadio);
         };
