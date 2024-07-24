@@ -26,14 +26,38 @@ if (!_initialized) then {
         _vehicle setVariable [QGVAR(initialized), true, true];
     };
 
+    // Handle acre_api_fnc_replaceRacksOnVehicle having defined a Rack class to replace
+    private _replaceVar = _vehicle getVariable [QGVAR(replaceRacks), false];
+    private ["_fromRack", "_toRack"];
+    if (_replaceVar isEqualType []) then {
+        _fromRack = _replaceVar select 0;
+        _toRack = _replaceVar select 1;
+        _vehicle setVariable [QGVAR(replaceRacks), false, true];
+    };
+
     {
         private _componentName = getText (_x >> "componentName");
+
+        private ["_componentName", "_components", "_mountedRadio"];
+        if (!isNil "_toRack" && {_componentName == _fromRack}) then {
+            private _toRackConfig = configFile >> "CfgAcreRacks" >> _toRack;
+            _componentName = _toRack;
+            _components = getArray (_toRackConfig >> "defaultComponents");
+            _mountedRadio = switch (_toRack) do {
+                case "ACRE_VRC64": { "ACRE_PRC77" };
+                case "ACRE_VRC103": { "ACRE_PRC117F" };
+                case "ACRE_SEM90": { "ACRE_SEM70" };
+                default { "" };
+            };
+        } else {
+            _components = getArray (_x >> "defaultComponents");
+            _mountedRadio = getText (_x >> "mountedRadio");
+        };
+
         private _displayName = getText (_x >> "displayName");
         private _shortName = getText (_x >> "shortName");
         private _allowed = [_vehicle, getArray (_x >> "allowedPositions")] call EFUNC(sys_core,processVehicleSystemAccessArray);
         private _disabled = [_vehicle, getArray (_x >> "disabledPositions")] call EFUNC(sys_core,processVehicleSystemAccessArray);
-        private _components = getArray (_x >> "defaultComponents");
-        private _mountedRadio = getText (_x >> "mountedRadio");
         private _isRadioRemovable = getNumber (_x >> "isRadioRemovable") == 1;
         private _intercoms = [_vehicle, _x] call FUNC(configWiredIntercoms);
 
