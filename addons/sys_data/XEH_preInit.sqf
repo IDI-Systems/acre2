@@ -40,7 +40,7 @@ GVAR(validStates) = HASH_CREATE;
 DFUNC(_hashSerialize) = {
     private _hash = _this;
     private _vals = [];
-    private _keys = HASH_KEYS(_hash) select {
+    private _keys = (allVariables _hash) select {
         private _val = HASH_GET(_hash,_x);
         if (!isNil "_val") then {
             if (IS_ARRAY(_val)) then {
@@ -85,7 +85,7 @@ DFUNC(_hashDeserialize) = {
                 _val = _val call FUNC(_arrayDeserialize);
             };
         };
-        HASH_SET(_hash,_x,_val);
+        _hash setVariable [_x, _val];
     } forEach _keys;
     _hash;
 };
