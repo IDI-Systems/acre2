@@ -2,7 +2,7 @@
 /*
  * Author: mrschick
  * Replaces all config-defined Racks on a vehicle with a different class of Rack, while keeping the same name, allowedPositions, etc.
- * Must be executed in the server.
+ * Must be executed on the server.
  *
  * Arguments:
  * 0: Vehicle <OBJECT> (default: objNull)

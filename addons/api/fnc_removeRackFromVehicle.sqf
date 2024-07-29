@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Removes a specific Rack from a vehicle. Must be executed in the server.
+ * Removes a specific Rack from a vehicle. Must be executed on the server.
  *
  * Arguments:
  * 0: Vehicle <OBJECT> (default: objNull)
