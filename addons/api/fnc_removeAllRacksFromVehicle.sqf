@@ -1,24 +1,22 @@
 #include "script_component.hpp"
 /*
  * Author: mrschick
- * Removes all Racks from a vehicle. Must be executed in the server.
+ * Removes all Racks from a vehicle. Must be executed on the server.
  *
  * Arguments:
  * 0: Vehicle <OBJECT> (default: objNull)
- * 1: Condition called with argument "_unit" for rack init. If a longer function is given, it should be precompiled. <CODE> (default: {})
  *
  * Return Value:
  * Racks removed successfully <BOOL>
  *
  * Example:
- * [cursorTarget, {}] call acre_api_fnc_removeAllRacksFromVehicle
+ * [cursorTarget] call acre_api_fnc_removeAllRacksFromVehicle
  *
  * Public: Yes
  */
 
 params [
-    ["_vehicle", objNull, [objNull]],
-    ["_condition", {}, [{}]]
+    ["_vehicle", objNull, [objNull]]
 ];
 
 if (!isServer) exitWith {
@@ -35,7 +33,7 @@ private _success = true;
 
 if (!([_vehicle] call FUNC(areVehicleRacksInitialized))) then {
     WARNING_1("Forcing initialisation of vehicle %1 in order to remove all racks",_vehicle);
-    _success = [_vehicle, _condition] call EFUNC(api,initVehicleRacks);
+    _success = [_vehicle] call EFUNC(api,initVehicleRacks);
 };
 
 if (!_success) exitWith {
