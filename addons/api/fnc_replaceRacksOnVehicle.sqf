@@ -51,7 +51,7 @@ _vehicle setVariable [QEGVAR(sys_rack,replaceRacks), [_fromRack, _toRack], true]
 
 if ([_vehicle] call FUNC(areVehicleRacksInitialized)) then {
     // If Racks have already been initialized, revert the initialization to run this function again
-    [_vehicle, _condition] call FUNC(removeAllRacksFromVehicle);
+    [_vehicle] call FUNC(removeAllRacksFromVehicle);
 
     [{
         params ["_vehicle"];
