@@ -18,31 +18,22 @@
 
 params ["_vehicle", "_unit"];
 
-if (_unit != _vehicle) then {
-    private _initialized = _vehicle getVariable [QGVAR(initialized), false];
+if (_unit == _vehicle) exitWith {};
 
-    if (!_initialized) then {
-        // Only initialize if we are first in the crew array - This helps prevent multiple requests if multiple players enter a vehicle around the same time.
-        private _crew = [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
-        private _firstPlayer = objNull;
-        {
-            if (!isNull _x) exitWith {
-                _firstPlayer = _x;
-            };
-        } forEach _crew;
+private _initialized = _vehicle getVariable [QGVAR(initialized), false];
 
-        if (!isNull _firstPlayer) then {
-            if (_unit == _firstPlayer) then {
-                [_vehicle] call FUNC(initVehicle);
+if (!_initialized) then {
+    // Only initialize if we are first in the crew array - This helps prevent multiple requests if multiple players enter a vehicle around the same time.
+    private _crew = [_vehicle] call EFUNC(sys_core,getPlayersInVehicle);
+    private _firstPlayer = objNull;
+    {
+        if (!isNull _x) exitWith {
+            _firstPlayer = _x;
+        };
+    } forEach _crew;
 
-                // Give some time for the racks to initialise properly
-                [{
-                    [_this select 0] call FUNC(configureRackIntercom);
-                    // Update the display
-                    [_this select 0, _this select 1] call EFUNC(sys_intercom,updateVehicleInfoText);
-                }, [_vehicle, _unit], 0.5] call CBA_fnc_waitAndExecute;
-            };
-        } else { // No other players.
+    if (!isNull _firstPlayer) then {
+        if (_unit == _firstPlayer) then {
             [_vehicle] call FUNC(initVehicle);
 
             // Give some time for the racks to initialise properly
@@ -52,11 +43,20 @@ if (_unit != _vehicle) then {
                 [_this select 0, _this select 1] call EFUNC(sys_intercom,updateVehicleInfoText);
             }, [_vehicle, _unit], 0.5] call CBA_fnc_waitAndExecute;
         };
-    };
+    } else { // No other players.
+        [_vehicle] call FUNC(initVehicle);
 
-    // Enable the PFH if it is not active (can only be active if the unit is using an external radio before entering the vehicle)
-    if (GVAR(rackPFH) == -1) then {
-        GVAR(rackPFH) = [DFUNC(rackPFH), 1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
-        TRACE_1("rack PFH",GVAR(rackPFH));
+        // Give some time for the racks to initialise properly
+        [{
+            [_this select 0] call FUNC(configureRackIntercom);
+            // Update the display
+            [_this select 0, _this select 1] call EFUNC(sys_intercom,updateVehicleInfoText);
+        }, [_vehicle, _unit], 0.5] call CBA_fnc_waitAndExecute;
     };
+};
+
+// Enable the PFH if it is not active (can only be active if the unit is using an external radio before entering the vehicle)
+if (GVAR(rackPFH) == -1) then {
+    GVAR(rackPFH) = [DFUNC(rackPFH), 1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
+    TRACE_1("rack PFH",GVAR(rackPFH));
 };
