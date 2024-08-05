@@ -61,11 +61,17 @@ if (GVAR(rackPFH) == -1) then {
     TRACE_1("rack PFH",GVAR(rackPFH));
 };
 
+// Re-Use stored radios for the current position
+private _varName = [_vehicle, _unit, QGVAR(usedRacks_%1)] call EFUNC(sys_intercom,getStationVariableName);
+if (_varName isNotEqualTo "") then {
+    private _usedRacks = _vehicle getVariable [_varName, []];
+    {
+        [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
+    } forEach _usedRacks;
+};
+
 // Load saved PTT assignments of previously used Racks
 private _vehiclePTTs = _vehicle getVariable [QGVAR(MPTTAssignment), []];
 if (_vehiclePTTs isNotEqualTo []) then {
-    {
-        [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
-    } forEach _vehiclePTTs;
     [_vehiclePTTs] call EFUNC(api,setMultiPushToTalkAssignment);
 };
