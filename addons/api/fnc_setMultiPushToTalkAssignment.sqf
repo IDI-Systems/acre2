@@ -35,6 +35,12 @@ private _index = _var findIf {
 
 if (_index != -1) exitWith { false };
 
+// Save Rack PTT Assignments to vehicle
+private _vehicle = objectParent acre_player;
+if (!isNull _vehicle) then {
+    _vehicle setVariable [QEGVAR(sys_rack,MPTTAssignment), _var];
+};
+
 ACRE_ASSIGNED_PTT_RADIOS = _var;
 
 true

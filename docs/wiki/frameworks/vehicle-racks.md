@@ -227,4 +227,6 @@ Racks can also be dynamically added, removed or initialised using API functions.
 It is possible through this API function to add and initialise a rack on non-enterable objects like drones or communication tables.
 
 - `acre_api_fnc_removeRackFromVehicle` allows removing a rack with a unique ID from a vehicle.
+- `acre_api_fnc_removeAllRacksFromVehicle` removes all racks from a vehicle.
 - `acre_api_fnc_initVehicleRacks` initialises all racks in a vehicle. This API function can be used to initialise racks on non-enterable vehicles.
+- `acre_api_fnc_replaceRacksOnVehicle` can be used to replace the config-defined racks of a vehicle with a different rack class.
