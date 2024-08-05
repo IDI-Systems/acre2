@@ -60,3 +60,12 @@ if (GVAR(rackPFH) == -1) then {
     GVAR(rackPFH) = [DFUNC(rackPFH), 1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
     TRACE_1("rack PFH",GVAR(rackPFH));
 };
+
+// Load saved PTT assignments of previously used Racks
+private _vehiclePTTs = _vehicle getVariable [QGVAR(MPTTAssignment), []];
+if (_vehiclePTTs isNotEqualTo []) then {
+    {
+        [_vehicle, _unit, _x] call FUNC(startUsingMountedRadio);
+    } forEach _vehiclePTTs;
+    [_vehiclePTTs] call EFUNC(api,setMultiPushToTalkAssignment);
+};
