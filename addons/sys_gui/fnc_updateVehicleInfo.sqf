@@ -30,7 +30,7 @@ _ctrlText ctrlSetStructuredText parseText _str;
 
 // Calculate new height (3 elements per row)
 private _rows = ceil ((1 max _elements) / 3);
-private _newBaseH = (((safezoneW / safezoneH) min 1.2) / 1.2) / 25;
+private _newBaseH = (((safezoneW / safezoneH) min 1.2) / 1.2) / 23;
 private _newH = _newBaseH * _rows;
 private _newContainerH = (0.8 * _newH) + 0.001;
 TRACE_4("vehicle info height",_elements,_rows,_newH,_newContainerH);
