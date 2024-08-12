@@ -31,11 +31,13 @@
 
 private _settings = _this;
 
-if (count(_settings) isEqualTo 0 || !((_settings select 0) isEqualType [])) exitWith { false }; // Abort if argument is empty or not an array
+// Abort if argument is empty or not an array
+if ((_settings isEqualTo []) || {!((_settings select 0) isEqualType [])}) exitWith { false };
 
 private _radios = [] call EFUNC(sys_data,getPlayerRadioList);
 
-if (_radios isEqualTo []) exitWith { false }; // Abort if carrying no radios
+// Abort if carrying no radios
+if (_radios isEqualTo []) exitWith { false };
 
 { // iterate through carried radios
     private _radio = _x;
