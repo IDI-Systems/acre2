@@ -49,7 +49,7 @@ if (_radios isEqualTo []) exitWith { false };
         private _eventData = [];
 
         // Skip setting if its type doesn't match current radio baseclass
-        if !(_radioType isEqualTo _radioBaseClass) then { continue; };
+        if (_radioType != _radioBaseClass) then { continue };
 
         // Turn channel argument into an array of 1 or 2 numbers
         if (_channel isEqualType []) then {
