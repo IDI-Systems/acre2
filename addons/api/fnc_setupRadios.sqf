@@ -32,12 +32,18 @@
 private _settings = _this;
 
 // Abort if argument is empty or not an array
-if ((_settings isEqualTo []) || {!((_settings select 0) isEqualType [])}) exitWith { false };
+if ((_settings isEqualTo []) || {!((_settings select 0) isEqualType [])}) exitWith {
+    WARNING_1("Attempted to import radio setup %1, aborting because it's empty or of the wrong format",_settings);
+    false
+};
 
 private _radios = [] call EFUNC(sys_data,getPlayerRadioList);
 
 // Abort if carrying no radios
-if (_radios isEqualTo []) exitWith { false };
+if (_radios isEqualTo []) exitWith {
+    WARNING_1("Attempted to import radio setup %1, aborting due to no radios carried",_settings);
+    false
+};
 
 { // iterate through carried radios
     private _radio = _x;
@@ -93,6 +99,8 @@ if (_radios isEqualTo []) exitWith { false };
         };
 
         [_radio, "setCurrentChannel", _eventData] call EFUNC(sys_data,dataEvent);
+
+        INFO_2("Applied radio setup %1 onto carried radio %2",_settings select _i,_radio);
 
         // Delete applied setting and break out to handle next radio
         _settings deleteAt _i;
