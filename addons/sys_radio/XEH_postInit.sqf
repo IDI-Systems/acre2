@@ -28,3 +28,15 @@ if (!hasInterface) exitWith {};
 
 // main inventory thread
 [] call FUNC(monitorRadios); // OK
+
+// Set up radios with EDEN-defined object attribute
+private _setup = parseSimpleArray (acre_player getVariable [QGVAR(setup), []]);
+if (_setup isNotEqualTo []) then {
+    [{
+        [] call EFUNC(api,isInitialized)
+    }, {
+        params ["_setup"];
+        _setup call EFUNC(api,setupRadios);
+        INFO("Applying EDEN-Defined Radio Setup attribute to carried radios");
+    }, [_setup]] call CBA_fnc_waitUntilAndExecute;
+};
