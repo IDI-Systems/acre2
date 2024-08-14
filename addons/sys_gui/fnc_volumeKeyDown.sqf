@@ -20,11 +20,8 @@ if (!alive acre_player || ACRE_IS_SPECTATOR || GVAR(volumeOpen)) exitWith {false
 // Abort on open Dialogs that aren't an ACE Progressbar
 private _aceProgressBar = displayNull;
 if (
-    dialog && 
-    {
-        !EGVAR(sys_core,aceLoaded) || 
-        {_aceProgressBar = (uiNamespace getVariable ["ace_common_dlgProgress", displayNull]); _aceProgressBar isEqualTo displayNull}
-    }
+    (dialog && !EGVAR(sys_core,aceLoaded)) || 
+    {_aceProgressBar = (uiNamespace getVariable ["ace_common_dlgProgress", displayNull]); _aceProgressBar isEqualTo displayNull}
 ) exitWith {false};
 
 // Add MouseScroll EH to open ACE Progressbar, for volume control
