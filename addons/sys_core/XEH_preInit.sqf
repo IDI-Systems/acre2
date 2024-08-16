@@ -16,9 +16,7 @@ if (isServer) then {
     }] call CBA_fnc_addEventHandler;
 };
 
-[QGVAR(handleConnectorRopeEvent), {
-    _this call FUNC(handleConnectorRope);
-}] call CBA_fnc_addEventHandler;
+[QGVAR(handleConnectorRopeEvent), FUNC(handleConnectorRope)] call CBA_fnc_addEventHandler;
 
 if (!hasInterface) exitWith {
     ADDON = true;
