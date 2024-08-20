@@ -11,6 +11,8 @@ PREP(onReturnRadioId);
 PREP(getRadioVolume);
 PREP(setRadioVolume);
 
+PREP(getRadioOnOffState);
+
 PREP(isUniqueRadio);
 PREP(isBaseClassRadio);
 
