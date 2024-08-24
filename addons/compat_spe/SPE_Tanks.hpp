@@ -71,6 +71,42 @@ class SPE_Sherman_base: SPE_Tank_base {
     };
 };
 
+class SPE_M4A1_75_erla;
+class SPE_M4A1_75_erla_Command: SPE_M4A1_75_erla {
+    displayName = CSTRING(M4A1_75_erla_Command);
+    scope = 2;
+
+    class AcreRacks {
+        class Rack_1 {
+            displayName = CSTRING(RadioSet1_US);
+            shortName = CSTRING(RadioSet1_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+        class Rack_2 {
+            displayName = CSTRING(RadioSet2_US);
+            shortName = CSTRING(RadioSet2_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+    };
+};
+class SPE_M4A1_75_erla_Command_DVL: SPE_M4A1_75_erla_Command {
+    editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
+    hasDriver = -1;
+    vehicleClass = "Armored_DLV";
+};
+
 class SPE_M4A1_75;
 class SPE_M4A1_75_Command: SPE_M4A1_75 {
     displayName = CSTRING(M4A1_75_Command);
@@ -395,7 +431,7 @@ class SPE_FR_M4A0_75_mid_Command_DVL: SPE_FR_M4A0_75_mid {
     vehicleClass = "Armored_DLV";
 };
 
-class SPE_M4A0_105: SPE_M4A0_75 {
+class SPE_M4A0_105;
 class SPE_M4A0_105_Command: SPE_M4A0_105 {
     displayName = CSTRING(M4A0_105_Command);
     scope = 2;
@@ -426,6 +462,42 @@ class SPE_M4A0_105_Command: SPE_M4A0_105 {
     };
 };
 class SPE_M4A0_105_Command_DVL: SPE_M4A0_105_Command {
+    editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
+    hasDriver = -1;
+    vehicleClass = "Armored_DLV";
+};
+
+class SPE_FR_M4A0_105;
+class SPE_FR_M4A0_105_Command: SPE_FR_M4A0_105 {
+    displayName = CSTRING(M4A0_105_Command);
+    scope = 2;
+
+    class AcreRacks {
+        class Rack_1 {
+            displayName = CSTRING(RadioSet1_US);
+            shortName = CSTRING(RadioSet1_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+        class Rack_2 {
+            displayName = CSTRING(RadioSet2_US);
+            shortName = CSTRING(RadioSet2_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+    };
+};
+class SPE_FR_M4A0_105_Command_DVL: SPE_FR_M4A0_105_Command {
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
     vehicleClass = "Armored_DLV";
@@ -467,6 +539,42 @@ class SPE_M4A3_75_Command_DVL: SPE_M4A3_75_Command {
     vehicleClass = "Armored_DLV";
 };
 
+class SPE_FR_M4A3_75;
+class SPE_FR_M4A3_75_Command: SPE_FR_M4A3_75 {
+    displayName = CSTRING(M4A3_75_Command);
+    scope = 2;
+
+    class AcreRacks {
+        class Rack_1 {
+            displayName = CSTRING(RadioSet1_US);
+            shortName = CSTRING(RadioSet1_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+        class Rack_2 {
+            displayName = CSTRING(RadioSet2_US);
+            shortName = CSTRING(RadioSet2_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+    };
+};
+class SPE_FR_M4A3_75_Command_DVL: SPE_FR_M4A3_75_Command {
+    editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
+    hasDriver = -1;
+    vehicleClass = "Armored_DLV";
+};
+
 class SPE_M4A3_76;
 class SPE_M4A3_76_Command: SPE_M4A3_76 {
     displayName = CSTRING(M4A3_76_Command);
@@ -498,6 +606,42 @@ class SPE_M4A3_76_Command: SPE_M4A3_76 {
     };
 };
 class SPE_M4A3_76_Command_DVL: SPE_M4A3_76_Command {
+    editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
+    hasDriver = -1;
+    vehicleClass = "Armored_DLV";
+};
+
+class SPE_FR_M4A3_76;
+class SPE_FR_M4A3_76_Command: SPE_FR_M4A3_76 {
+    displayName = CSTRING(M4A3_76_Command);
+    scope = 2;
+
+    class AcreRacks {
+        class Rack_1 {
+            displayName = CSTRING(RadioSet1_US);
+            shortName = CSTRING(RadioSet1_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+        class Rack_2 {
+            displayName = CSTRING(RadioSet2_US);
+            shortName = CSTRING(RadioSet2_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+    };
+};
+class SPE_FR_M4A3_76_Command_DVL: SPE_FR_M4A3_76_Command {
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
     vehicleClass = "Armored_DLV";
@@ -689,6 +833,62 @@ class SPE_PzKpfwV_base: SPE_Tank_base {
     };
 };
 
+class SPE_PzBefWgV_base: SPE_PzKpfwV_base { //Command Tank Base
+    scope = 0;
+
+    class AcreRacks {
+        class Rack_1 {
+            displayName = CSTRING(RadioSet1_GER);
+            shortName = CSTRING(RadioSet1_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", {"turret", {5}}}; // commander and radio operator/machine gunner, radio in hull
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+        class Rack_2 {
+            displayName = CSTRING(RadioSet2_GER);
+            shortName = CSTRING(RadioSet2_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+    };
+};
+class SPE_PzBefWgV: SPE_PzBefWgV_base { //Werhmacht
+    author = "Heavy Ordnance Works";
+    crew = "SPE_GER_tank_crew";
+    displayName = CSTRING(PzBefWgV);
+    dlc = "SPE";
+    editorPreview = "\WW2\SPE_Core_t\EditorPreviews_t\SPE_PzKpfwV_G.jpg";
+    faction = "SPE_WEHRMACHT";
+    scope = 2;
+};
+class SPE_PzBefWgV_DLV: SPE_PzBefWgV { //Werhmacht Driverless
+    editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
+    hasDriver = -1;
+    vehicleClass = "Armored_DLV";
+};
+class SPE_ST_PzBefWgV: SPE_PzBefWgV { //Sturmtroopers
+    editorPreview = "\WW2\SPE_Core_t\EditorPreviews_t\SPE_ST_PzKpfwV_G.jpg";
+    crew = "SPE_sturmtrooper_tank_crew";
+    faction = "SPE_STURM";
+    scope = 2;
+};
+class SPE_ST_PzBefWgV_DLV: SPE_ST_PzBefWgV { //Sturmtroopers Driverless
+    editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
+    hasDriver = -1;
+    scopeArsenal = 1;
+    scopeCurator = 2;
+    vehicleClass = "Armored_DLV";
+};
+
 //Panzer VI (Tiger I)
 class SPE_PzKpfwVI_H1_base: SPE_Tank_base {
     class AcreRacks {
@@ -786,4 +986,58 @@ class SPE_Jagdpanther_G1_base: SPE_Tank_base {
             allowedPositions[] = {"commander", {"turret", {3}}}; // commander and radio operator/machine gunner, radio in hull
         };
     };
+};
+
+//Add Jadgpanther command vehicle? They did exist
+//TODO - classname and displayname, reduce ammo from 49 to 39 around for main gun?
+class SPE_BfwJagdpanther_base: SPE_Jagdpanther_G1_base { //Command Tank Base
+    scope = 0;
+
+    class AcreRacks {
+        class Rack_1 {
+            displayName = CSTRING(RadioSet1_GER);
+            shortName = CSTRING(RadioSet1_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", {"turret", {5}}}; // commander and radio operator/machine gunner, radio in hull
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+        class Rack_2 {
+            displayName = CSTRING(RadioSet2_GER);
+            shortName = CSTRING(RadioSet2_Short);
+            mountedRadio = "ACRE_PRC77";
+            componentname = "ACRE_VRC64";
+            defaultComponents[] = {};
+            allowedPositions[] = {"commander", "gunner", {"turret", {0,1}}}; // commander, gunner, and loader, radio in turret
+            disabledPositions[] = {{"turnedout", "all"}};
+            isRadioRemovable = 0;
+            intercom[] = {"intercom_1"};
+        };
+    };
+};
+class SPE_BfwJagdpanther_Command: SPE_BfwJagdpanther_base { //Werhmacht
+    author = "Heavy Ordnance Works";
+    crew = "SPE_GER_tank_crew";
+    displayName = CSTRING(BfwJagdpanther);
+    dlc = "SPE";
+    editorPreview = "\WW2\SPE_Core_t\EditorPreviews_t\SPE_PzKpfwVI_H1.jpg";
+    scope = 2;
+};
+class SPE_BfwJagdpanther_Command_DLV: SPE_BfwJagdpanther_Command { //Werhmacht Driverless
+    editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
+    hasDriver = -1;
+    vehicleClass = "Armored_DLV";
+};
+class SPE_ST_BfwJagdpanther_Command: SPE_BfwJagdpanther_Command { //Sturmtroopers
+    crew = "SPE_sturmtrooper_tank_crew";
+    editorPreview = "\WW2\SPE_Core_t\EditorPreviews_t\SPE_ST_PzKpfwVI_H1.jpg";
+    scope = 2;
+};
+class SPE_ST_BfwJagdpanther_Command_DLV: SPE_ST_BfwJagdpanther_Command { //Sturmtroopers Driverless
+    editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
+    hasDriver = -1;
+    vehicleClass = "Armored_DLV";
 };
