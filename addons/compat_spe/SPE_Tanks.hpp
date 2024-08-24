@@ -1020,11 +1020,14 @@ class SPE_BfwJagdpanther_base: SPE_Jagdpanther_G1_base { //Command Tank Base
 };
 class SPE_BfwJagdpanther_Command: SPE_BfwJagdpanther_base { //Werhmacht
     author = "Heavy Ordnance Works";
-    crew = "SPE_GER_tank_crew";
+    crew = "SPE_GER_spg_crew";
     displayName = CSTRING(BfwJagdpanther);
     dlc = "SPE";
-    editorPreview = "\WW2\SPE_Core_t\EditorPreviews_t\SPE_PzKpfwVI_H1.jpg";
+    editorPreview = "\WW2\SPE_Core_t\EditorPreviews_t\SPE_Jagdpanther_G1.jpg";
+    editorSubcategory = "EdSubcat_Tanks";
+    faction = "SPE_WEHRMACHT";
     scope = 2;
+    side = 1;
 };
 class SPE_BfwJagdpanther_Command_DLV: SPE_BfwJagdpanther_Command { //Werhmacht Driverless
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
@@ -1032,9 +1035,9 @@ class SPE_BfwJagdpanther_Command_DLV: SPE_BfwJagdpanther_Command { //Werhmacht D
     vehicleClass = "Armored_DLV";
 };
 class SPE_ST_BfwJagdpanther_Command: SPE_BfwJagdpanther_Command { //Sturmtroopers
-    crew = "SPE_sturmtrooper_tank_crew";
-    editorPreview = "\WW2\SPE_Core_t\EditorPreviews_t\SPE_ST_PzKpfwVI_H1.jpg";
-    scope = 2;
+    crew = "SPE_ST_spg_crew";
+    editorPreview = "\WW2\SPE_Core_t\EditorPreviews_t\SPE_ST_Jagdpanther_G1.jpg";
+    faction = "SPE_STURM";
 };
 class SPE_ST_BfwJagdpanther_Command_DLV: SPE_ST_BfwJagdpanther_Command { //Sturmtroopers Driverless
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
