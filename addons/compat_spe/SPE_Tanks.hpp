@@ -988,8 +988,6 @@ class SPE_Jagdpanther_G1_base: SPE_Tank_base {
     };
 };
 
-//Add Jadgpanther command vehicle? They did exist
-//TODO - classname and displayname, reduce ammo from 49 to 39 around for main gun?
 class SPE_BfwJagdpanther_base: SPE_Jagdpanther_G1_base { //Command Tank Base
     scope = 0;
 
