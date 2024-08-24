@@ -425,7 +425,7 @@ class SPE_FR_M4A0_75_mid_Command: SPE_FR_M4A0_75_mid {
         };
     };
 };
-class SPE_FR_M4A0_75_mid_Command_DVL: SPE_FR_M4A0_75_mid {
+class SPE_FR_M4A0_75_mid_Command_DVL: SPE_FR_M4A0_75_mid_Command {
     editorSubCategory = "SPE_EdSubcat_Tanks_DLV";
     hasDriver = -1;
     vehicleClass = "Armored_DLV";
