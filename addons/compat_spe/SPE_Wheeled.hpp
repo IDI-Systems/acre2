@@ -70,9 +70,7 @@ class SPE_M20_AUC_Base: SPE_ArmoredCar_base {
             isRadioRemovable = 0;
             intercom[] = {"none"};
         };
-    };
-    class AcreRacks {
-        class Rack_1 {
+        class Rack_2 {
             displayName = CSTRING(RadioSet2_US);
             shortName = CSTRING(RadioSet2_Short);
             mountedRadio = "ACRE_PRC77";
