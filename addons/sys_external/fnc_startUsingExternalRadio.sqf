@@ -37,7 +37,4 @@ ACRE_ACTIVE_EXTERNAL_RADIOS pushBackUnique _radioId;
 // Set it as active radio.
 [_radioId] call EFUNC(api,setCurrentRadio);
 
-// Visualize the connection with a connector rope
-[QEGVAR(sys_core,handleConnectorRopeEvent), [true, 2, _owner, _endUser]] call CBA_fnc_localEvent;
-
 [[ICON_RADIO_CALL], [format [localize LSTRING(hintTake), _displayName, name _owner]], true] call CBA_fnc_notify;

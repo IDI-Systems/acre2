@@ -28,9 +28,6 @@ private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
 private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
 [[ICON_RADIO_CALL], [format [localize LSTRING(hintReturn), _displayName, name _owner]], true] call CBA_fnc_notify;
 
-// Destroy Rope
-[QEGVAR(sys_core,handleConnectorRopeEvent), [false]] call CBA_fnc_localEvent;
-
 if (_target == _owner) then {
     // Handle remote owner
     private _message = format [localize LSTRING(hintReturnOwner), name ([_radioId] call FUNC(getExternalRadioUser)), _displayName];

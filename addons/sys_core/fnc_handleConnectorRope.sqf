@@ -63,24 +63,6 @@ if (_state) then {
             _connectorRope = ropeCreate [_connectorRopeHelpers select 0, _fromPoint, 5, nil, nil, QGVAR(connectorWire)];
             (_connectorRopeHelpers select 1) ropeAttachTo _connectorRope;
         };
-        case 2: { // Connect rope to shared backpack radio owner
-            // Create helper object on radio owner
-            _connectorRopeHelpers set [0, _helper createVehicle position _fromObject];
-            (_connectorRopeHelpers select 0) attachTo [_fromObject, [-0.1, 0.1, 0.15], "Pelvis"];
-            (_connectorRopeHelpers select 0) allowDamage false;
-
-            // Create helper object on player pelvis
-            _connectorRopeHelpers set [1, _helper createVehicle position _toObject];
-            (_connectorRopeHelpers select 1) attachTo [_toObject, [-0.1, 0.1, 0.15], "Pelvis"];
-            (_connectorRopeHelpers select 1) allowDamage false;
-
-            // Hide Helper Objects
-            [QGVAR(hideConnectorRopeHelpers), [_connectorRopeHelpers]] call CBA_fnc_serverEvent;
-
-            // Create Rope between helper objects
-            _connectorRope = ropeCreate [_connectorRopeHelpers select 0, _fromPoint, 1.2, nil, nil, QGVAR(connectorWire)];
-            [_connectorRopeHelpers select 1, [0, 0, 0]] ropeAttachTo _connectorRope;
-        };
     };
 
     GVAR(connectorRope) = _connectorRope;
