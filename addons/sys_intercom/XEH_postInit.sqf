@@ -69,7 +69,7 @@ if (!hasInterface) exitWith {};
 }, true] call CBA_fnc_addPlayerEventHandler;
 
 [QGVAR(giveInfantryPhone), {
-    params ["_vehicle", "_unit", "_action", "_message", ["_intercomNetwork", INTERCOM_DISCONNECTED], ["_position", objNull]];
+    params ["_vehicle", "_unit", "_action", "_message", ["_intercomNetwork", INTERCOM_DISCONNECTED], ["_position", [0, 0, 0]]];
     [[ICON_RADIO_CALL], [_message]] call CBA_fnc_notify;
     [_vehicle, _unit, _action, _intercomNetwork, objNull, _position] call FUNC(updateInfantryPhoneStatus);
 }] call CBA_fnc_addEventHandler;

@@ -30,6 +30,17 @@ if (_state) then {
 
     switch (_type) do {
         case 0: { // Connect rope to Infantry Phone
+            // If _fromPoint could not be provided by the intercom passing action, fetch it again from config
+            if (_fromPoint isEqualTo [-1]) then {
+                private _positionConfig = configFile >> "CfgVehicles" >> typeOf _fromObject >> "acre_infantryPhonePosition";
+                if (isText _positionConfig) then {
+                    _fromPoint = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core intercomPFH checks
+                };
+                if (isArray _positionConfig) then {
+                    _fromPoint = getArray _positionConfig;
+                };
+            };
+
             // Create Rope
             _connectorRope = ropeCreate [_fromObject, _fromPoint, 3, nil, nil, QGVAR(connectorWire)];
 

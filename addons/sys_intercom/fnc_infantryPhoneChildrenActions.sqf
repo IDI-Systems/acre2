@@ -4,7 +4,9 @@
  * Generates a list of actions for using vehicle intercoms externally.
  *
  * Arguments:
- * 0: Vehicle/Unit <OBJECT>
+ * 0: Vehicle/Unit target of interaction <OBJECT>
+ * 1: Unit interacting with target <OBJECT>
+ * 2: Relative position of the infantry phone interaction on the vehicle <POSITION> (default: [0, 0, 0])
  *
  * Return Value:
  * Array of actions <ARRAY>
@@ -37,7 +39,7 @@ if (_target isKindOf "CAManBase") then {
                 _params params ["_intercomNetwork"];
 
                 //USES_VARIABLES ["_target", "_player"];
-                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]] select 0, _target, 2, _intercomNetwork, _player, _position] call FUNC(updateInfantryPhoneStatus)
+                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]] select 0, _target, 2, _intercomNetwork, _player, [-1]] call FUNC(updateInfantryPhoneStatus)
             },
             {true},
             {},

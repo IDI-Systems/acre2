@@ -9,6 +9,7 @@
  * 2: Type of action <NUMBER>
  * 3: Intercom network <NUMBER>
  * 4: Unit giving the infantry phone <OBJECT> (default: objNull)
+ * 5: Relative position of the infantry phone interaction on the vehicle <POSITION> (default: [0, 0, 0])
  *
  * Return Value:
  * None
@@ -20,7 +21,7 @@
  * Public: No
  */
 
-params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]], ["_position", objNull]];
+params ["_vehicle", "_unit", "_action", "_intercomNetwork", ["_givingUnit", objNull, [objNull]], ["_position", [0, 0, 0]]];
 
 private _intercomName = ((_vehicle getVariable [QGVAR(intercomNames), []]) select _intercomNetwork) select 1;
 private _intercomText = format ["( %1 )", _intercomName];
