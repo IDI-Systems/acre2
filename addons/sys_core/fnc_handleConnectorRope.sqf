@@ -25,6 +25,11 @@ params ["_state", ["_type", 0], ["_fromObject", objNull], ["_toObject", objNull]
 if (!EGVAR(sys_gestures,showConnectorRopes)) exitWith {};
 
 if (_state) then {
+    // Destroy any previous connector rope and helpers
+    if (!isNull GVAR(connectorRope) || {GVAR(connectorRopeHelpers) isNotEqualTo [objNull, objNull]}) then {
+        [false] call FUNC(handleConnectorRope);
+    };
+
     private _connectorRopeHelpers = [];
     private _connectorRope = objNull;
 
