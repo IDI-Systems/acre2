@@ -25,3 +25,5 @@
 #define NEAR_RADIO_RANGE 150
 
 #define ZEUS_INTERFACE_DISPLAY 312
+
+#define ROPE_HELPER QGVAR(connectorHelper)

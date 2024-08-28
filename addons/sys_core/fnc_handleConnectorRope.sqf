@@ -24,8 +24,6 @@ params ["_state", ["_type", 0], ["_fromObject", objNull], ["_toObject", objNull]
 
 if (!EGVAR(sys_gestures,showConnectorRopes)) exitWith {};
 
-private _helper = QGVAR(connectorHelper);
-
 if (_state) then {
     private _connectorRopeHelpers = [];
     private _connectorRope = objNull;
@@ -36,7 +34,7 @@ if (_state) then {
             _connectorRope = ropeCreate [_fromObject, _fromPoint, 3, nil, nil, QGVAR(connectorWire)];
 
             // Create helper object on player pelvis
-            _connectorRopeHelpers set [0, _helper createVehicle position _toObject];
+            _connectorRopeHelpers set [0, ROPE_HELPER createVehicle position _toObject];
             (_connectorRopeHelpers select 0) ropeAttachTo _connectorRope;
             (_connectorRopeHelpers select 0) attachTo [_toObject, [-0.1, 0.1, 0.25], "Pelvis"];
             (_connectorRopeHelpers select 0) allowDamage false;
@@ -46,13 +44,13 @@ if (_state) then {
         };
         case 1: { // Connect rope to Ground Spike Antenna
             // Create helper object on GSA
-            _connectorRopeHelpers set [0, _helper createVehicle position _fromObject];
+            _connectorRopeHelpers set [0, ROPE_HELPER createVehicle position _fromObject];
             (_connectorRopeHelpers select 0) disableCollisionWith _fromObject;
             (_connectorRopeHelpers select 0) setPos (position _fromObject);
             (_connectorRopeHelpers select 0) allowDamage false;
 
             // Create helper object on player pelvis
-            _connectorRopeHelpers set [1, _helper createVehicle position _toObject];
+            _connectorRopeHelpers set [1, ROPE_HELPER createVehicle position _toObject];
             (_connectorRopeHelpers select 1) attachTo [_toObject, [-0.1, 0.1, 0.15], "Pelvis"];
             (_connectorRopeHelpers select 1) allowDamage false;
 
