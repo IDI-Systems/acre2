@@ -28,7 +28,7 @@ private _helper = QGVAR(connectorHelper);
 
 if (_state) then {
     private _connectorRopeHelpers = [];
-    private _connectorRope = "";
+    private _connectorRope = objNull;
 
     switch (_type) do {
         case 0: { // Connect rope to Infantry Phone
