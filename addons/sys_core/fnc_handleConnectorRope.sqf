@@ -37,7 +37,7 @@ if (_state) then {
 
             // Create helper object on player pelvis
             _connectorRopeHelpers set [0, _helper createVehicle position _toObject];
-            [_connectorRopeHelpers select 0, [0, 0, 0]] ropeAttachTo _connectorRope;
+            (_connectorRopeHelpers select 0) ropeAttachTo _connectorRope;
             (_connectorRopeHelpers select 0) attachTo [_toObject, [-0.1, 0.1, 0.25], "Pelvis"];
             (_connectorRopeHelpers select 0) allowDamage false;
 
@@ -61,7 +61,7 @@ if (_state) then {
 
             // Create Rope between helper objects
             _connectorRope = ropeCreate [_connectorRopeHelpers select 0, _fromPoint, 5, nil, nil, QGVAR(connectorWire)];
-            [(_connectorRopeHelpers select 1), [0, 0, 0]] ropeAttachTo _connectorRope;
+            (_connectorRopeHelpers select 1) ropeAttachTo _connectorRope;
         };
         case 2: { // Connect rope to shared backpack radio owner
             // Create helper object on radio owner
