@@ -30,7 +30,7 @@ if (!hasInterface) exitWith {};
 [] call FUNC(monitorRadios); // OK
 
 // Set up radios with EDEN-defined object attribute
-private _setup = parseSimpleArray (acre_player getVariable [QGVAR(setup), []]);
+private _setup = parseSimpleArray (acre_player getVariable [QGVAR(setup), "[]"]);
 if (_setup isNotEqualTo []) then {
     [{
         [] call EFUNC(api,isInitialized)
