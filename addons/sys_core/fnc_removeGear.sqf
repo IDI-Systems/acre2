@@ -23,7 +23,7 @@ _item = toLower _item;
 private _assignedItems = (assignedItems _unit) apply {toLower _x};
 
 if (_item in _assignedItems) then {
-    _unit unassignitem _item;
+    _unit unassignItem _item;
 };
 _unit removeItem _item;
 _unit removeWeapon _item;

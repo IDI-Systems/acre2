@@ -38,7 +38,7 @@ private _currentViewFrame = 0;
 if (_currentView == 0) then {
     _currentViewFrame = count (GVAR(backgroundImages)) - 1;
 
-    RADIO_CTRL(203) ctrlSetPosition [(0.3 * safeZoneW + safeZoneX),(0.277 * safeZoneH + safeZoneY), 0.1*SafeZoneW, 0.5*SafeZoneW];
+    RADIO_CTRL(203) ctrlSetPosition [(0.3 * safeZoneW + safeZoneX),(0.277 * safeZoneH + safeZoneY), 0.1*safeZoneW, 0.5*safeZoneW];
     RADIO_CTRL(203) ctrlCommit 0.01;
 
     RADIO_CTRL(203) ctrlSetTooltip LELSTRING(sys_radio,ui_handleAttach);
@@ -56,7 +56,7 @@ if (_currentView == 0) then {
 } else {
     _currentViewFrame = 0;
 
-    RADIO_CTRL(203) ctrlSetPosition [(0.35 * safeZoneW + safeZoneX),(0.377 * safeZoneH + safeZoneY), 0.07*SafeZoneW, 0.4*SafeZoneW];
+    RADIO_CTRL(203) ctrlSetPosition [(0.35 * safeZoneW + safeZoneX),(0.377 * safeZoneH + safeZoneY), 0.07*safeZoneW, 0.4*safeZoneW];
     RADIO_CTRL(203) ctrlCommit 0.01;
 
     RADIO_CTRL(203) ctrlSetTooltip LELSTRING(sys_radio,ui_handleDetach);

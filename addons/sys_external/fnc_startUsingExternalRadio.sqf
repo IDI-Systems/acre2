@@ -20,7 +20,7 @@ params ["_radioID", "_endUser"];
 
 private _owner = [_radioId] call FUNC(getExternalRadioOwner);
 private _baseRadio =  [_radioId] call EFUNC(api,getBaseRadio);
-private _displayName = getText (ConfigFile >> "CfgWeapons" >> _baseRadio >> "displayName");
+private _displayName = getText (configFile >> "CfgWeapons" >> _baseRadio >> "displayName");
 
 // Do not flag as being externally used if it is already so (action give)
 if !([_radioId] call FUNC(isExternalRadioUsed)) then {

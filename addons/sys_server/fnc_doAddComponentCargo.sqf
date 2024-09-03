@@ -24,7 +24,7 @@ private _hasUnique = _type call EFUNC(sys_radio,isBaseClassRadio);
 if (_hasUnique) then {
     private _ret = [_type] call FUNC(getRadioId);
     if (_ret != -1) then {
-         private _uniqueComponent = format ["%1_id_%2", tolower _type, _ret];
+         private _uniqueComponent = format ["%1_id_%2", toLower _type, _ret];
          if !(_uniqueComponent in GVAR(masterIdListd)) then {
              GVAR(masterIdList) pushBack _uniqueComponent;
              private _dataHash = HASH_CREATE;

@@ -56,7 +56,7 @@ private _searchFunction = {
                             if (isArray (_configPath >> "acre_antennaMemoryPoints")) then {
                                 private _memoryPoints = getArray (_configPath >> "acre_antennaMemoryPoints");
                                 _memoryPoints = _memoryPoints select (((count _memoryPoints) - 1) min _connectorIndex);
-                                _antennaPos = AGLtoASL (_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 0)));
+                                _antennaPos = AGLToASL (_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 0)));
                             } else {
                                 if (getText (_configPath >> "acre_antennaPosFnc") != "") then {
                                     _antennaPos = [_componentObject, _connectorIndex] call (missionNamespace getVariable (getText (_configPath >> "acre_antennaPosFnc")));
@@ -65,10 +65,10 @@ private _searchFunction = {
                             if (isArray (_configPath >> "acre_antennaMemoryPointsDir")) then {
                                 private _memoryPoints = getArray (_configPath >> "acre_antennaMemoryPointsDir");
                                 _memoryPoints = _memoryPoints select (((count _memoryPoints) - 1) min _connectorIndex);
-                                _antennaDir = AGLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 0))) vectorFromTo
-                                    AGLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 1)));
-                                _antennaDirUp = AGLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 2))) vectorFromTo
-                                    AGLtoASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 3)));
+                                _antennaDir = AGLToASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 0))) vectorFromTo
+                                    AGLToASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 1)));
+                                _antennaDirUp = AGLToASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 2))) vectorFromTo
+                                    AGLToASL(_componentObject modelToWorld (_componentObject selectionPosition (_memoryPoints select 3)));
 
                             } else {
                                 if (getText (_configPath >> "acre_antennaDirFnc") != "") then {
