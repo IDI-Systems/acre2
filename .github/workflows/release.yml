@@ -58,6 +58,7 @@ jobs:
         name: acre2
         path: .hemttout/@*
         retention-days: 1
+        include-hidden-files: true # Because .hemttout is a hidden directory
 
   compile:
     if: github.repository == 'IDI-Systems/acre2' && ! contains(github.event.head_commit.message, '[ci skip]')

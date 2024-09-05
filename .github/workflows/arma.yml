@@ -50,3 +50,4 @@ jobs:
       with:
         name: acre2-${{ github.sha }}-nobin
         path: .hemttout/@*
+        include-hidden-files: true # Because .hemttout is a hidden directory
