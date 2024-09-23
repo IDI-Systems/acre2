@@ -18,7 +18,7 @@
 
 params ["_vehicle", "_unit"];
 
-if (_unit == _vehicle) exitWith {};
+if (_unit == _vehicle || {!(isNull remoteControlled _unit)}) exitWith {};
 
 private _initialized = _vehicle getVariable [QGVAR(initialized), false];
 

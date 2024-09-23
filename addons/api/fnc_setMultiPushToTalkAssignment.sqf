@@ -41,6 +41,10 @@ if (!isNull _vehicle) then {
     _vehicle setVariable [QEGVAR(sys_rack,MPTTAssignment), _var];
 };
 
-ACRE_ASSIGNED_PTT_RADIOS = _var;
+if (acre_player isEqualTo player) then { // using zeus player voice
+    ACRE_ASSIGNED_PTT_RADIOS = _var;
+} else { // using zeus remote voice
+    ACRE_ASSIGNED_PTT_RADIOS_REMOTE = _var;
+};
 
 true

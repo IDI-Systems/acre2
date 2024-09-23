@@ -26,7 +26,7 @@ if (getNumber (configFile >> "CfgWeapons" >> _class >> "acre_hasUnique") == 0 &&
 
 private _ret = [_class] call FUNC(getRadioId);
 if (_ret != -1) then {
-    private _uniqueClass = format["%1_id_%2", tolower(_class), _ret];
+    private _uniqueClass = format["%1_id_%2", toLower(_class), _ret];
 
     if !(_uniqueClass in GVAR(masterIdList)) then {
         GVAR(masterIdList) pushBack _uniqueClass;
