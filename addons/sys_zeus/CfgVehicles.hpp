@@ -5,13 +5,13 @@ class CfgVehicles {
             class GVAR(remoteEars) {
                 displayName = CSTRING(Remote);
                 condition = QUOTE(acre_current_player isNotEqualTo player && {acre_player isEqualTo player});
-                exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting"};
+                exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotHandcuffed", "isNotSurrendering"};
                 statement = QUOTE([false] call FUNC(setUsePlayer));
             };
             class GVAR(playerEars) {
                 displayName = CSTRING(Player);
                 condition = QUOTE(acre_current_player isNotEqualTo player && {acre_player isNotEqualTo player});
-                exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting"};
+                exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotHandcuffed", "isNotSurrendering"};
                 statement = QUOTE([true] call FUNC(setUsePlayer));
             };
         };
