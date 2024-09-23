@@ -16,6 +16,8 @@ In order to use and mount and unmount (when possible) a vehicle rack, ACE3 Inter
 
 Configuring the vehicle rack (opening the radio GUI) is disabled for *turned out* positions.
 
+**Note:** Vehicle Racks cannot be accessed by AI that is being remote controlled by a Zeus Gamemaster.
+
 ## Vehicle intercom
 
 In addition, vehicle racks are integrated into the intercom system. A rack with access to *crew* or *passenger* intercom allows players without access to the rack to hear incoming transmissions. These players however, will not be able to configure the radio nor transmit through it in the current implementation.
