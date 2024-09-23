@@ -43,7 +43,7 @@ if (!dialog) then {
         };
         _radios pushBack _radio;
         _count = _count + 1;
-    } foreach _radioList;
+    } forEach _radioList;
     TRACE_1("index was",_newRadioIndex);
     TRACE_1("Active was",ACRE_ACTIVE_RADIO);
     if ((count _radios) > 1) then {
