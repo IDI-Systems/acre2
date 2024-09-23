@@ -6,101 +6,119 @@
             <German>Funkgerät</German>
             <Italian>Radio</Italian>
             <Japanese>無線</Japanese>
+            <French>Radio</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet">
             <English>Radio Set</English>
             <German>Funkkanäle</German>
             <Italian>Canali radiofonici</Italian>
             <Japanese>無線セット</Japanese>
+            <French>Canaux radio</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_Short">
             <English>A-Set</English>
             <German>A-Kanäle</German>
             <Italian>Canali A</Italian>
             <Japanese>Aセット</Japanese>
+            <French>Canaux A</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_US">
             <English>Radio Set - Able</English>
             <German>Kanäle - Able</German>
             <Italian>Canali - Able</Italian>
             <Japanese>無線セット - Able</Japanese>
+            <French>Canaux - Able</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_GER">
             <English>Radio Set - Anton</English>
             <German>Kanäle - Anton</German>
             <Italian>Canali - Anton</Italian>
             <Japanese>無線セット - Anton</Japanese>
+            <French>Canaux - Anton</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_Short">
             <English>B-Set</English>
             <German>B-Kanäle</German>
             <Italian>Canali B</Italian>
             <Japanese>Bセット</Japanese>
+            <French>Canaux B</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_US">
             <English>Radio Set - Baker</English>
             <German>Kanäle - Baker</German>
             <Italian>Canali - Baker</Italian>
             <Japanese>無線セット - Baker</Japanese>
+            <French>Canaux - Baker</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_GER">
             <English>Radio Set - Bruno</English>
             <German>Kanäle - Bruno</German>
             <Italian>Canali - Bruno</Italian>
             <Japanese>無線セット - Bruno</Japanese>
+            <French>Canaux - Bruno</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_Intercom_Short">
             <English>IntCm</English>
             <German>BFunk</German>
             <Italian>Rdb</Italian>
             <Japanese>インコム</Japanese>
+            <French>IntPh</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_Intercom_Crew">
             <English>Crew Intercom</English>
             <German>Bordfunk Besatzung</German>
             <Italian>Equipaggio radiofonico di bordo</Italian>
             <Japanese>乗員インターコム</Japanese>
+            <French>Radio de bord d'équipage</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_75_Command">
             <English>M4A1 Sherman (Command)</English>
             <German>M4A1 Sherman (Kommando)</German>
             <Italian>M4A1 Sherman (comando)</Italian>
+            <French>M4A1 Sherman (Commandement)</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_76_Command">
             <English>M4A1 76(W) Sherman (Command)</English>
             <German>M4A1 76(W) Sherman (Kommando)</German>
             <Italian>M4A1 76(W) Sherman (comando)</Italian>
+            <French>M4A1 76(W) Sherman (Commandement)</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Early_Command">
             <English>M4 Sherman (Command)</English>
             <German>M4 Sherman (Kommando)</German>
             <Italian>M4 Sherman (Comando)</Italian>
+            <French>M4 Sherman (Commandement)</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Command">
             <English>M4 Sherman (Late) (Command)</English>
             <German>M4 Sherman (Spät) (Kommando)</German>
             <Italian>M4 Sherman (tardivo) (comando)</Italian>
+            <French>M4 Sherman (tardif) (Commandement)</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIII_K">
             <English>PzBefWg III Ausf. K</English>
             <German>PzBefWg III Ausf. K</German>
             <Italian>PzBefWg IIIAusf</Italian>
+            <French>PzBefWg III Ausf. K</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIV">
             <English>PzBefWg IV</English>
             <German>PzBefWg IV</German>
             <Italian>PzBefWg IV</Italian>
+            <French>PzBefWg IV</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgVI">
             <English>PzBefWg VI</English>
             <German>PzBefWg VI</German>
             <Italian>PzBefWg VI</Italian>
+            <French>PzBefWg VI</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioOperator">
             <English>Radio Operator</English>
             <German>Funker</German>
             <Italian>Operatore Radio</Italian>
             <Japanese>無線手</Japanese>
+            <French>Opérateur radio</French>
         </Key>
     </Package>
 </Project>
