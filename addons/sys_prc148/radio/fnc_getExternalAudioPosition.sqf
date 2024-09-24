@@ -21,7 +21,7 @@ params ["_radioId", "", "", ""];
 private _obj = [_radioId] call EFUNC(sys_radio,getRadioObject);
 private _pos = getPosASL _obj;
 if (_obj isKindOf "Man") then {
-    _pos = AGLtoASL (_obj modelToWorld (_obj selectionPosition "RightShoulder"));
+    _pos = AGLToASL (_obj modelToWorld (_obj selectionPosition "RightShoulder"));
 };
 
 _pos;

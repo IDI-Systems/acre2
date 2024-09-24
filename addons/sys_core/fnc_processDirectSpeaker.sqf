@@ -44,7 +44,7 @@ if (_bothSpectating || {_isIntercomAttenuate}) then {
         _emitterPos = _zeusPosition select 0;
         _emitterDir = _zeusPosition select 1;
     } else {
-        _emitterPos = AGLtoASL (_unit modelToWorldVisual (_unit selectionPosition "head")); //; eyePos _unit;
+        _emitterPos = AGLToASL (_unit modelToWorldVisual (_unit selectionPosition "head")); //; eyePos _unit;
         _emitterDir = eyeDirection _unit;
     };
 };
