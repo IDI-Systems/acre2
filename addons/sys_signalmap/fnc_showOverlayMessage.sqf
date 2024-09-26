@@ -21,7 +21,7 @@ with uiNamespace do {
     GVAR(ctrlGroup) ctrlCommit 0;
     GVAR(overlayMessageGrp) = GVAR(mapDisplay) ctrlCreate ["RscControlsGroupNoScrollbars", 13119];
     GVAR(signal_debug) pushBack GVAR(overlayMessageGrp);
-    GVAR(overlayMessageGrp) ctrlSetPosition [safezoneX + safezoneW - 0.5, safezoneY + safezoneH - 1, 0.5, 0.75];
+    GVAR(overlayMessageGrp) ctrlSetPosition [safeZoneX + safeZoneW - 0.5, safeZoneY + safeZoneH - 1, 0.5, 0.75];
     GVAR(overlayMessageGrp) ctrlCommit 0;
     ctrlSetFocus GVAR(overlayMessageGrp);
 

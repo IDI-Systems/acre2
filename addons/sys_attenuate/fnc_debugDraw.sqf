@@ -79,7 +79,7 @@ if (_compartmentsCount > 0) then {
     {
         private _attenuation = getNumber(_attConfig >> _x);
         if (_attenuation > 0) then {
-            _hintMsg pushBack (format ["<t align='left' font='PuristaMedium'> %2 = %3",  _rootAtt select [11], _x select [11], _attenuation]);
+            _hintMsg pushBack (format ["<t align='left' font='PuristaMedium'> %1 = %2", _x select [11], _attenuation]);
             
             if (_forEachIndex == (_compartmentsCount - 1)) then {
                 _hintMsg pushBack "</t>";
@@ -110,7 +110,7 @@ if (_compartmentsTurnedOutCount > 0) then {
     {
         private _attenuation = getNumber(_attConfig >> _x);
         if (_attenuation > 0) then {
-            _hintMsg pushBack (format ["<t align='left' font='PuristaMedium'> %2 = %3",  _rootAtt select [11], _x select [11], _attenuation]);
+            _hintMsg pushBack (format ["<t align='left' font='PuristaMedium'> %1 = %2", _x select [11], _attenuation]);
             
             if (_forEachIndex == (_compartmentsCount - 1)) then {
                 _hintMsg pushBack "</t>";

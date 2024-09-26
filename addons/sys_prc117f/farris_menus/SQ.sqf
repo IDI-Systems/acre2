@@ -84,7 +84,7 @@ GVAR(SQ) = ["SQ", "SQ", "Squelch Settings",
 
         SCRATCH_SET(GVAR(currentRadioID),"sq_select_digital",nil);
 
-        if (_selectDigital) exitwith {
+        if (_selectDigital) exitWith {
             ["NOT_IMPLEMENTED"] call FUNC(changeMenu);
             true
         };

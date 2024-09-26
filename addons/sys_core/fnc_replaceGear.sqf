@@ -30,7 +30,7 @@ if (!isNull _uniform && {_itemToReplace in _uniforCmargo}) exitWith {
 };
 
 private _vest = vestContainer _unit;
-private _vestCargo = ((getitemCargo _vest) select 0) apply {toLower _x};
+private _vestCargo = ((getItemCargo _vest) select 0) apply {toLower _x};
 if (!isNull _vest && {_itemToReplace in _vestCargo}) exitWith {
     _unit removeItem _itemToReplace;
     _vest addItemCargoGlobal [_itemReplaceWith, 1]; // circumvent limit

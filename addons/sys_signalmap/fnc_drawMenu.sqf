@@ -52,7 +52,7 @@ with uiNamespace do {
     GVAR(ctrlGroup) ctrlSetBackgroundColor [1,1,0,1];
     GVAR(ctrlGroup) ctrlSetForegroundColor [1,1,0,1];
 
-    GVAR(ctrlGroup) ctrlSetPosition [safezoneX + safezoneW - 0.5, safezoneY + safezoneH - 1, 0.5, 0.75];
+    GVAR(ctrlGroup) ctrlSetPosition [safeZoneX + safeZoneW - 0.5, safeZoneY + safeZoneH - 1, 0.5, 0.75];
     GVAR(ctrlGroup) ctrlCommit 0;
 
     private ["_background"];
