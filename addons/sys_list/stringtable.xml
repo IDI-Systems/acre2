@@ -101,12 +101,14 @@
             <German>Babel Sprachanzeige bleibt sichtbar</German>
             <Italian>Indicatore di lingua persistente</Italian>
             <French>L'affichage de la langue de Babel reste visible</French>
+            <Japanese>継続的なバベル言語インジケータ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageHintPersist_Description">
             <English>Prevent the Babel Language Indicator in the bottom right from fading out if a language other than the "main language" (the first assigned spoken language) is selected.</English>
             <German>Verhindert, wenn eingeschaltet, dass die Babel Sprachanzeige unten-rechts verschwindet während eine andere Sprache als die "Muttersprache" (die erste zugewiesene Sprache) gesprochen wird.</German>
             <Italian>Se attivato, l'indicatore della lingua selezionata in basso a destra non scomparirà mentre si parla una lingua diversa da quella "madre" (la prima lingua assegnata).</Italian>
             <French>S'il est activé, l'indicateur de la langue sélectionnée dans le coin inférieur droit ne disparaîtra pas lorsque vous parlerez une langue autre que la langue « maternelle » (la première langue attribuée).</French>
+            <Japanese>主言語 (最初に割り当てられた言語) 以外の言語を選択した場合に、右下に表示されるバベル言語インジケータがフェードアウトしないようにします。</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
             <English>Switch Channel Color</English>
