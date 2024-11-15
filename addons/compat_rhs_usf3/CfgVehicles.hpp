@@ -29,7 +29,6 @@ class CfgVehicles {
         };
     };
 
-    class rhsusf_m998_w_2dr_halftop;
     class rhsusf_m998_w_2dr_fulltop: rhsusf_m998_w_2dr_halftop {
         attenuationEffectType = "SemiOpenCarAttenuation";
     };
@@ -48,12 +47,10 @@ class CfgVehicles {
         };
     };
 
-    class rhsusf_m998_w_4dr_halftop;
     class rhsusf_m998_w_4dr_fulltop: rhsusf_m998_w_4dr_halftop {
         attenuationEffectType = "SemiOpenCarAttenuation";
     };
 
-    class rhsusf_m998_w_4dr_fulltop;
     class rhsusf_m1025_w: rhsusf_m998_w_4dr_fulltop {
         class AcreRacks {
             class Rack_1 {
@@ -69,7 +66,6 @@ class CfgVehicles {
         attenuationEffectType = "RHS_CarAttenuation";
     };
 
-    class rhsusf_m1025_w;
     class rhsusf_m1025_w_m2: rhsusf_m1025_w {
         class AcreRacks {
             class Rack_1 {
@@ -180,7 +176,6 @@ class CfgVehicles {
         };
     };
 
-    class rhsusf_m1151_base;
     class rhsusf_M1165A1_GMV_SAG2_base: rhsusf_m1151_base {
         class AcreRacks {
             class Rack_1 {
