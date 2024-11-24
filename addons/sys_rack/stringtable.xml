@@ -153,13 +153,13 @@
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
-            <Italian>Cruscotto</Italian>
+            <Italian>Crus.</Italian>
             <Japanese>DB</Japanese>
             <Chinese>儀器版面 下</Chinese>
             <Chinesesimp>仪器版面 下</Chinesesimp>
             <Spanish>Panel</Spanish>
             <French>Panneau</French>
-            <German>Anschluss</German>
+            <German>An.</German>
             <Russian>Панель</Russian>
             <Portuguese>Painel</Portuguese>
             <Turkish>Panel</Turkish>
@@ -187,7 +187,7 @@
             <Chinesesimp>仪器.下</Chinesesimp>
             <Spanish>P.Inf</Spanish>
             <French>P. inf</French>
-            <German>Unten</German>
+            <German>An.U</German>
             <Russian>Н-я панель</Russian>
             <Portuguese>P. Inf.</Portuguese>
             <Turkish>A.Pan</Turkish>
@@ -215,7 +215,7 @@
             <Chinesesimp>仪器.上</Chinesesimp>
             <Spanish>P.Sup</Spanish>
             <French>P. sup</French>
-            <German>Oben</German>
+            <German>An.O</German>
             <Russian>В-я панель</Russian>
             <Portuguese>P. Sup.</Portuguese>
             <Turkish>Ü.Pan</Turkish>

@@ -1641,7 +1641,7 @@ __Example__
 ### acre_api_fnc_removeRackFromVehicle
 __Description__
 
-Initialises all racks in the vehicle. Must be executed in the server.
+Removes a specific Rack from a vehicle. Must be executed on the server.
 
 __Parameters__
 
@@ -1660,6 +1660,62 @@ __Example__
 
 ```sqf
 [cursorTarget, "ACRE_VRC103_ID_1"] call acre_api_fnc_removeRackFromVehicle
+```
+
+
+---
+
+### acre_api_fnc_removeAllRacksFromVehicle
+__Description__
+
+Removes all Racks from a vehicle. Must be executed on the server.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Vehicle | OBJECT | objNull
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Racks removed successfully  | BOOL
+
+__Example__
+
+```sqf
+[cursorTarget] call acre_api_fnc_removeAllRacksFromVehicle
+```
+
+
+---
+
+### acre_api_fnc_replaceRacksOnVehicle
+__Description__
+
+Replaces all config-defined Racks on a vehicle with a different class of Rack, while keeping the same name, allowedPositions, etc.
+Must be executed on the server.
+
+__Parameters__
+
+Index | Description | Datatype(s) | Default Value
+--- | --- | --- | ---
+0 | Vehicle | OBJECT | objNull
+1 | Rack classname to remove | STRING | ""
+2 | Rack classname to add | STRING | ""
+3 | Condition called with argument "_unit" for rack init. If a longer function is given, it should be precompiled. | CODE | {}
+
+__Return Value__
+
+Description | Datatype(s)
+--- | ---
+Racks replaced successfully  | BOOL
+
+__Example__
+
+```sqf
+[cursorTarget, "ACRE_VRC103", "ACRE_VRC64", {}] call acre_api_fnc_replaceRacksOnVehicle
 ```
 
 
