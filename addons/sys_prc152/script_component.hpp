@@ -20,6 +20,8 @@
 #define CHANNEL_NAME_MAX_LENGTH 12
 #define CHANNEL_PADDING_STRING "            " // Should be same length as CHANNEL_NAME_MAX_LENGTH
 
+#define MAIN_DISPLAY (findDisplay 31337)
+
 #include "\idi\acre\addons\sys_prc152\menus\script_menus.hpp"
 
 #include "\idi\acre\addons\sys_components\script_acre_component_defines.hpp"
