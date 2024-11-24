@@ -19,3 +19,14 @@
     {},
     true
 ] call CBA_fnc_addSetting;
+
+[
+    QGVAR(showConnectorRopes),
+    "CHECKBOX",
+    [LLSTRING(showConnectorRopes), LLSTRING(showConnectorRopes_description)],
+    LLSTRING(category),
+    true,
+    true,
+    {},
+    true
+] call CBA_fnc_addSetting;
