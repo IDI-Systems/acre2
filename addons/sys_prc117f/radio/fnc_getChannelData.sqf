@@ -47,7 +47,7 @@ switch _channelType do {
         HASH_SET(_return,"squelch",HASH_GET(_channel,"squelch"));
         HASH_SET(_return,"channelmode",HASH_GET(_channel,"channelmode"));
         HASH_SET(_return,"deviation",HASH_GET(_channel,"deviation"));
-        HASH_SET(_reutrn,"name",HASH_GET(_channel,"name"));
+        HASH_SET(_return,"name",HASH_GET(_channel,"name"));
     };
 };
 _return
