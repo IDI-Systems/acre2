@@ -5,18 +5,17 @@
  *
  * Arguments:
  * 0: Radio ID <STRING>
- * 1: PFH ID <NUMBER>
  *
  * Return Value:
  * None
  *
  * Example:
- * ["acre_prc152_id_1", 9] call acre_sys_server_fnc_clientIntentToGarbageCollect
+ * ["acre_prc152_id_1"] call acre_sys_server_fnc_clientIntentToGarbageCollect
  *
  * Public: No
  */
 
-params ["_radioId", "_pfhid"];
+params ["_radioId"];
 
 _radioId = toLower _radioId;
 private _radioList = ([] call EFUNC(sys_data,getPlayerRadioList)) apply {toLower _x};
@@ -49,7 +48,7 @@ if (_radioId in _radioList) then {
             } forEach GVAR(radioGCWatchList);
 
             if (GVAR(radioGCWatchList) isEqualTo []) then {
-                [_pfhid] call CBA_fnc_removePerFrameHandler;
+                [_this select 1] call CBA_fnc_removePerFrameHandler;
                 GVAR(clientGCPFHID) = -1;
             };
         }, 10, []] call CBA_fnc_addPerFrameHandler;
