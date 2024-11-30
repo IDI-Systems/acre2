@@ -24,4 +24,9 @@ if !(_radioId isEqualType "") exitWith { -1 };
 private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
 
 if (isNil "_channelNumber") exitWith { -1 };
+
+private _radioType = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
+
+if (_radioType == "ACRE_PRC77") exitWith { _channelNumber };
+
 _channelNumber + 1
