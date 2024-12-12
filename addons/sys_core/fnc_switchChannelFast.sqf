@@ -37,6 +37,15 @@ if (_isManpack == 0 || {_isRackRadio}) then {
         case "ACRE_PRC152": {
             _channel = (_channel + _dir) min 5;
         };
+        case "ACRE_PRC77": {
+            _channel = (_channel select 0) + _dir;
+            if (_channel > 22) then {
+                _channel = 0;
+            };
+            if (_channel < 0) then {
+                _channel = 22;
+            };
+        };
         default {
             _channel = _channel + _dir;
         };
