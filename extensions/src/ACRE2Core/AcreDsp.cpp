@@ -21,7 +21,7 @@ namespace Dsp {
         if (divisor < 5)
             divisor = 5;
         for (int i = 0; i < count; i += divisor) {
-            for (int x = 1; x < divisor && i + value < count; x++) {
+            for (int x = 1; x < divisor && i + x < count; x++) {
                 samples[i + x] = samples[i];
             }
         }
