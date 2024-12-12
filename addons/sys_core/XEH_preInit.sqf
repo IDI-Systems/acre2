@@ -9,6 +9,15 @@ PREP_RECOMPILE_END;
 // CBA Settings
 #include "initSettings.inc.sqf"
 
+if (isServer) then {
+    [QGVAR(hideConnectorRopeHelpers), {
+        params ["_ropeHelpers"];
+        { hideObjectGlobal _x; } forEach _ropeHelpers;
+    }] call CBA_fnc_addEventHandler;
+};
+
+[QGVAR(handleConnectorRopeEvent), FUNC(handleConnectorRope)] call CBA_fnc_addEventHandler;
+
 if (!hasInterface) exitWith {
     ADDON = true;
 };
@@ -45,6 +54,9 @@ DGVAR(nearRadios) = [];
 DGVAR(pttKeyDown) = false;
 
 DGVAR(speaking_cache_valid) = false;
+
+DGVAR(connectorRope) = objNull;
+DGVAR(connectorRopeHelpers) = [objNull, objNull];
 
 DVAR(ACRE_SPIT_VERSION) = false;
 DVAR(ACRE_IS_SYNCING) = false;
