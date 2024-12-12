@@ -132,6 +132,8 @@ private _selectPlayer = {
 [{
     params ["_selectPlayer", "_condition", "_vehicle"];
 
+    if !([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {false};
+
     private _player = [_condition, _vehicle] call _selectPlayer;
 
     !isNil "_player"
