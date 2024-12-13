@@ -24,10 +24,10 @@ params [
 if !(_radioId isEqualType "") exitWith { false };
 
 if (_channelNumber isEqualType 0) then {
-    private _eventData = if (([_radioId] call FUNC(getBaseRadio)) == "ACRE_PRC77") then {
+    private _eventData = _channelNumber - 1;
+    if (([_radioId] call FUNC(getBaseRadio)) == "ACRE_PRC77") then {
         [_channelNumber, 0] // ACRE_PRC77 expects an array of [mhzKnob, khzKnob]
-    } else {
-        _channelNumber - 1
+    }
     };
     [_radioId, "setCurrentChannel", _eventData] call EFUNC(sys_data,dataEvent);
 } else {
