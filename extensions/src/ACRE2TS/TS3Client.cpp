@@ -562,7 +562,7 @@ acre::Result CTS3Client::moveToServerTS3Channel() {
 
             const uint64_t channelId = findChannelByNames(details);
             if ((channelId != INVALID_TS3_CHANNEL) && (channelId != currentChannelId)) {
-                std::string password = "";
+                std::string password = "acre";
                 if (details.at(1) != "" && details.at(0) != "") {
                     password = details.at(1);
                 }
