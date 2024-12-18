@@ -39,7 +39,7 @@ if (_state) then {
             if (_fromPoint isEqualTo [-1]) then {
                 private _positionConfig = configFile >> "CfgVehicles" >> typeOf _fromObject >> "acre_infantryPhonePosition";
                 if (isText _positionConfig) then {
-                    _fromPoint = _target selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core intercomPFH checks
+                    _fromPoint = _fromObject selectionPosition (getText _positionConfig); // Convert to coordinates for sys_core intercomPFH checks
                 };
                 if (isArray _positionConfig) then {
                     _fromPoint = getArray _positionConfig;
