@@ -35,4 +35,5 @@ if (
 || {(_unit distance _gsa) > ANTENNA_MAXDISTANCE}
 ) then {
     [QGVAR(disconnectGsa), [_gsa, _unit, _radioId]] call CBA_fnc_localEvent;
+    [QEGVAR(sys_core,handleConnectorRopeEvent), [false]] call CBA_fnc_localEvent;
 };
