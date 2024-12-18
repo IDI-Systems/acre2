@@ -187,6 +187,9 @@
             <Japanese>現在の変更</Japanese>
             <French>Volume actuel</French>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_RadioMode">
+            <English>Radio Mode Selector</English>
+        </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
             <German>Funkgerät aus</German>
@@ -210,6 +213,9 @@
             <Turkish>Şu Anki Kanal</Turkish>
             <Portuguese>Canal atual</Portuguese>
             <Japanese>現在のチャンネル</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_changeFrequency">
+            <English>Change Frequency</English>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannelBlock">
             <English>Current Channel Block</English>
