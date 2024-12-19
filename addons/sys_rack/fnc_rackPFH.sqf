@@ -22,7 +22,7 @@ params ["_param", ""];
 _param params ["_player", "_vehicle"];
 
 // Check if the player entered a position with a rack already active in intercom
-if (_player != vehicle _player) then {
+if (!isNull objectParent _player) then {
     {
         private _radioId = [_x] call FUNC(getMountedRadio);
         if (_radioId != "" && {!(_radioId in ACRE_HEARABLE_RACK_RADIOS || {_radioId in ACRE_ACCESSIBLE_RACK_RADIOS})}) then {
@@ -82,7 +82,7 @@ if (_remove isNotEqualTo []) then {
     [_vehicle, _player] call EFUNC(sys_intercom,updateVehicleInfoText);
 };
 
-if ((_player == vehicle _player) && {ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []} && {ACRE_HEARABLE_RACK_RADIOS isEqualTo []}) then {
+if ((isNull objectParent _player) && {ACRE_ACCESSIBLE_RACK_RADIOS isEqualTo []} && {ACRE_HEARABLE_RACK_RADIOS isEqualTo []}) then {
     [GVAR(rackPFH)] call CBA_fnc_removePerFrameHandler;
     TRACE_1("del rack PFH",GVAR(rackPFH));
     GVAR(rackPFH) = -1;

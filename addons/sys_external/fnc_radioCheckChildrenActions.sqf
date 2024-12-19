@@ -19,4 +19,4 @@ params ["_radioId"];
 
 if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS) exitWith {false};
 
-vehicle acre_player == acre_player
+isNull objectParent acre_player

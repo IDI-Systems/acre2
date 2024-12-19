@@ -22,7 +22,7 @@ params ["_vehicle", "_unit"];
 #define WHITE "#ffffff"
 #define GREEN "#008000"
 
-if (vehicle _unit == _unit) exitWith {
+if (isNull objectParent _unit) exitWith {
     [false] call EFUNC(sys_gui,showVehicleInfo); // Hide
 };
 
