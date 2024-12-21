@@ -18,6 +18,7 @@
 private _serverName = toString ((toArray serverName) select {_x < 127});
 if (_serverName == "") then {
     _serverName = "Unsupported Server Name";
+    if (!isMultiplayer) exitWith {};
     WARNING_1("Server name '%1' did not include any valid (ASCII) characters and got fully sanitized!",serverName)
 };
 private _ts3ChannelDetails = format ["%1,%2,%3", EGVAR(sys_core,ts3ChannelName), EGVAR(sys_core,ts3ChannelPassword), _serverName];
