@@ -16,7 +16,7 @@
  */
 
 params ["_unit"];
-_thisArgs params ["_display"];
+_thisArgs params ["_display"]; //IGNORE_PRIVATE_WARNING ["_thisArgs"]
 
 private _speakers = _display getVariable QGVAR(speakers);
 

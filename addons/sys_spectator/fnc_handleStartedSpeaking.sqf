@@ -18,7 +18,7 @@
  */
 
 params ["_unit", "_speakingType", "_radioId"];
-_thisArgs params ["_display"];
+_thisArgs params ["_display"]; //IGNORE_PRIVATE_WARNING ["_thisArgs"]
 
 // Only need to handle radios
 if (_speakingType != SPEAKING_TYPE_RADIO) exitWith {};

@@ -19,7 +19,7 @@
 
 params ["_rackId", "_unit", ["_vehicle", objNull]];
 
-if (isNull _vehicle || {vehicle _unit == _unit}) then {
+if (isNull _vehicle || {isNull objectParent _unit}) then {
     _vehicle = [_rackId] call FUNC(getVehicleFromRack);
 };
 

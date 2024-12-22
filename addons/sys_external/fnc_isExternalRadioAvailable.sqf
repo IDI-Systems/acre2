@@ -29,4 +29,4 @@ if (((_owner distance acre_player) > EXTERNAL_RADIO_MAXDISTANCE) && {vehicle _ow
 if (captive acre_player) exitWith {false};
 
 // Check if actual owner of the radio and the player are on the same vehicle.
-!((vehicle _owner != _owner) && {vehicle acre_player != acre_player} && {vehicle _owner != vehicle acre_player})
+!((!isNull objectParent _owner) && {!isNull objectParent acre_player} && {vehicle _owner != vehicle acre_player})

@@ -25,7 +25,7 @@ private _systemAvailable = false;
 if (!alive _vehicle) exitWith {_systemAvailable};
 
 // Check external systems
-if ((vehicle _unit == _unit) && {"external" in _allowedPositions}) exitWith {
+if ((isNull objectParent _unit) && {"external" in _allowedPositions}) exitWith {
     if (_vehicle distance _unit <= _maxDistance) then {
         _systemAvailable = true
     };
