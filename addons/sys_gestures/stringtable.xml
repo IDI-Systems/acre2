@@ -55,11 +55,13 @@
             <English>Show Connector Wires</English>
             <German>Zeige verbindungskabel</German>
             <Italian>Mostra cavi di collegamento</Italian>
+            <French>Afficher les câbles de connexion</French>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_showConnectorRopes_description">
             <English>Connections to infantry phones, GSAs and shared radios will be visualized with connector wires.</English>
             <German>Verbindungen zu Gegensprechanlage, BBA und Geteilten Funkgeräten werden mit Kabeln visualisiert.</German>
             <Italian>Connessioni a telefoni di fanteria, antenne a pavimento e radio condivise verranno visualizzate con cavi.</Italian>
+            <French>Les connexions aux téléphones de l'infanterie, aux GSA et aux radios partagées seront visualisées à l'aide de fils de connexion.</French>
         </Key>
     </Package>
 </Project>

@@ -100,6 +100,7 @@
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_composite_Command">
             <English>M4 Sherman (Composite) (Command)</English>
+            <French>M4 Sherman (Composite) (Command)</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Command">
             <English>M4 Sherman (Late) (Command)</English>
@@ -161,6 +162,7 @@
         </Key>
         <Key ID="STR_ACRE_compat_spe_BfwJagdpanther">
             <English>Bfw. Jagdpanther</English>
+            <French>Bfw. Jagdpanther</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioOperator">
             <English>Radio Operator</English>
