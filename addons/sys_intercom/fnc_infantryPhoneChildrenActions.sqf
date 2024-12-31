@@ -4,7 +4,9 @@
  * Generates a list of actions for using vehicle intercoms externally.
  *
  * Arguments:
- * 0: Vehicle/Unit <OBJECT>
+ * 0: Vehicle/Unit target of interaction <OBJECT>
+ * 1: Unit interacting with target <OBJECT>
+ * 2: Relative position of the infantry phone interaction on the vehicle <POSITION> (default: [0, 0, 0])
  *
  * Return Value:
  * Array of actions <ARRAY>
@@ -15,11 +17,12 @@
  * Public: No
  */
 
-params ["_target"];
+params ["_target", "_unit", "_position"];
 
 private _actions = [];
 
 (acre_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
+(_target getVariable [QGVAR(unitInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", "_unitInfantryPhoneNetwork"];
 
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
 
@@ -36,7 +39,7 @@ if (_target isKindOf "CAManBase") then {
                 _params params ["_intercomNetwork"];
 
                 //USES_VARIABLES ["_target", "_player"];
-                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]] select 0, _target, 2, _intercomNetwork, _player] call FUNC(updateInfantryPhoneStatus)
+                [_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]] select 0, _target, 2, _intercomNetwork, _player, [-1]] call FUNC(updateInfantryPhoneStatus)
             },
             {true},
             {},
@@ -47,7 +50,7 @@ if (_target isKindOf "CAManBase") then {
 } else {
     if (vehicle acre_player != _target) then {
         // Pointing at a vehicle. Get or return the infantry telephone
-        if (isNull _vehicleInfantryPhone) then {
+        if (isNull _vehicleInfantryPhone && (isNull _unitInfantryPhone)) then {
             {
                 private _action = [
                     format [QGVAR(takeInfantryPhone_%1), _x],
@@ -55,8 +58,8 @@ if (_target isKindOf "CAManBase") then {
                     "",
                     {
                         params ["_target", "_player", "_params"];
-                        _params params ["_intercomNetwork"];
-                        [_target, _player, 1, _intercomNetwork] call FUNC(updateInfantryPhoneStatus)
+                        _params params ["_intercomNetwork", "_position"];
+                        [_target, _player, 1, _intercomNetwork, objNull, _position] call FUNC(updateInfantryPhoneStatus);
                     },
                     {
                         params ["_target", "_player", "_params"];
@@ -65,7 +68,7 @@ if (_target isKindOf "CAManBase") then {
                         !(_isCalling select 0) || ((_isCalling select 0) && ((_isCalling select 1) == _intercomNetwork))
                     },
                     {},
-                    _forEachIndex
+                    [_forEachIndex, _position]
                 ] call ace_interact_menu_fnc_createAction;
                 _actions pushBack [_action, [], _target];
             } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
@@ -79,7 +82,7 @@ if (_target isKindOf "CAManBase") then {
                     {
                         params ["_target", "_player", ""];
                         //USES_VARIABLES ["_target", "_player"];
-                        [_target, _player, 0, INTERCOM_DISCONNECTED] call FUNC(updateInfantryPhoneStatus)
+                        [_target, _player, 0, INTERCOM_DISCONNECTED] call FUNC(updateInfantryPhoneStatus);
                     },
                     {true},
                     {},
@@ -111,6 +114,18 @@ if (_target isKindOf "CAManBase") then {
                     ] call ace_interact_menu_fnc_createAction;
                     _actions pushBack [_action, [], _target];
                 } forEach (_intercomNames select {_x in (_target getVariable [QGVAR(infantryPhoneIntercom), []])});
+            } else {
+                // Generate empty action to show that the infantry phone is being used by someone else
+                private _action = [
+                    QGVAR(infantryPhoneUnavailable),
+                    format [localize LSTRING(infantryPhoneUnavailable)],
+                    "",
+                    {true},
+                    {true},
+                    {},
+                    {}
+                ] call ace_interact_menu_fnc_createAction;
+                _actions pushBack [_action, [], _target];
             };
         };
     } else {

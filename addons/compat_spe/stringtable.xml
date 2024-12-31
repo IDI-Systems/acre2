@@ -71,47 +71,96 @@
             <Japanese>乗員インターコム</Japanese>
             <French>Radio de bord d'équipage</French>
         </Key>
-        <Key ID="STR_ACRE_compat_spe_M4A1_75_Command">
+        <Key ID="STR_ACRE_compat_spe_M4A1_75_erla_Command">
             <English>M4A1 Sherman (Command)</English>
             <German>M4A1 Sherman (Kommando)</German>
-            <Italian>M4A1 Sherman (comando)</Italian>
+            <Italian>M4A1 Sherman (Comando)</Italian>
             <French>M4A1 Sherman (Commandement)</French>
+            <Japanese>M4A1 Sherman (指揮車)</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A1_75_Command">
+            <English>M4A1 Sherman (Late) (Command)</English>
+            <German>M4A1 Sherman (Spät) (Kommando)</German>
+            <Italian>M4A1 Sherman (Tardivo) (Comando)</Italian>
+            <French>M4A1 Sherman (Tardif) (Commandement)</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_76_Command">
-            <English>M4A1 76(W) Sherman (Command)</English>
-            <German>M4A1 76(W) Sherman (Kommando)</German>
-            <Italian>M4A1 76(W) Sherman (comando)</Italian>
-            <French>M4A1 76(W) Sherman (Commandement)</French>
+            <English>M4A1(76)W Sherman (Command)</English>
+            <German>M4A1(76)W Sherman (Kommando)</German>
+            <Italian>M4A1(76)W Sherman (Comando)</Italian>
+            <French>M4A1(76)W Sherman (Commandement)</French>
+            <Japanese>M4A1(76)W Sherman (指揮車)</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Early_Command">
             <English>M4 Sherman (Command)</English>
             <German>M4 Sherman (Kommando)</German>
             <Italian>M4 Sherman (Comando)</Italian>
             <French>M4 Sherman (Commandement)</French>
+            <Japanese>M4 Sherman (指揮車)</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A0_composite_Command">
+            <English>M4 Sherman (Composite) (Command)</English>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Command">
             <English>M4 Sherman (Late) (Command)</English>
             <German>M4 Sherman (Spät) (Kommando)</German>
-            <Italian>M4 Sherman (tardivo) (comando)</Italian>
-            <French>M4 Sherman (tardif) (Commandement)</French>
+            <Italian>M4 Sherman (Tardivo) (Comando)</Italian>
+            <French>M4 Sherman (Tardif) (Commandement)</French>
+            <Japanese>M4 Sherman (Late) (指揮車)</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A0_105_Command">
+            <English>M4(105) Sherman (Command)</English>
+            <German>M4(105) Sherman (Kommando)</German>
+            <Italian>M4(105) Sherman (Comando)</Italian>
+            <French>M4(105) Sherman (Commandement)</French>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A3_75_Command">
+            <English>M4A3(75)W Sherman (Command)</English>
+            <German>M4A3(75)W Sherman (Kommando)</German>
+            <Italian>M4A3(75)W Sherman (Comando)</Italian>
+            <French>M4A3(75)W Sherman (Commandement)</French>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A3_76_Command">
+            <English>M4A3(76)W Sherman (Command)</English>
+            <German>M4A3(76)W Sherman (Kommando)</German>
+            <Italian>M4A3(76)W Sherman (Comando)</Italian>
+            <French>M4A3(76)W Sherman (Commandement)</French>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_M4A3_105_Command">
+            <English>M4A3(105) Sherman (Command)</English>
+            <German>M4A3(105) Sherman (Kommando)</German>
+            <Italian>M4A3(105) Sherman (Comando)</Italian>
+            <French>M4A3(105) Sherman (Commandement)</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIII_K">
             <English>PzBefWg III Ausf. K</English>
             <German>PzBefWg III Ausf. K</German>
-            <Italian>PzBefWg IIIAusf</Italian>
+            <Italian>PzBefWg III Ausf. K</Italian>
             <French>PzBefWg III Ausf. K</French>
+            <Japanese>PzBefWg III Ausf. K</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIV">
             <English>PzBefWg IV</English>
             <German>PzBefWg IV</German>
             <Italian>PzBefWg IV</Italian>
             <French>PzBefWg IV</French>
+            <Japanese>PzBefWg IV</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_PzBefWgV">
+            <English>PzBefWg V</English>
+            <German>PzBefWg V</German>
+            <Italian>PzBefWg V</Italian>
+            <French>PzBefWg V</French>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgVI">
             <English>PzBefWg VI</English>
             <German>PzBefWg VI</German>
             <Italian>PzBefWg VI</Italian>
             <French>PzBefWg VI</French>
+            <Japanese>PzBefWg VI</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_compat_spe_BfwJagdpanther">
+            <English>Bfw. Jagdpanther</English>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioOperator">
             <English>Radio Operator</English>

@@ -38,6 +38,7 @@ _gsa setVariable [QGVAR(connectedRadio), _radioId, true];
 [_radioId, "setState", ["externalAntennaConnected", [true, _gsa]]] call EFUNC(sys_data,dataEvent);
 
 [QGVAR(notifyPlayer), [localize LSTRING(connected)], _player] call CBA_fnc_targetEvent;
+[QEGVAR(sys_core,handleConnectorRopeEvent), [true, 1, _gsa, _player], _player] call CBA_fnc_targetEvent;
 
 // Support for having several radios connected to GSA
 private _pfh = [DFUNC(externalAntennaPFH), 1.0, [_gsa, _radioId]] call CBA_fnc_addPerFrameHandler;

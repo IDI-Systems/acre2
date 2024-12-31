@@ -9,7 +9,7 @@ if (!hasInterface) exitWith {};
 
 // Handle the case of starting inside a vehicle. addPlayerEventhandler retrospectively would not work
 // when initialising the racks since we have to execute it once radios are being initialised
-if (vehicle acre_player != acre_player) then {
+if (!isNull objectParent acre_player) then {
     [FUNC(enterVehicle), [vehicle acre_player, acre_player]] call CBA_fnc_execNextFrame; // Make sure vehicle info UI is created
 };
 

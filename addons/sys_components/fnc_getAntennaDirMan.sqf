@@ -19,7 +19,7 @@ private ["_forwardV", "_upV"];
 params ["_obj"];
 
 // This is a hack fix for vehicles having funky up vectors when people are inside...
-if (vehicle _obj == _obj) then {
+if (isNull objectParent _obj) then {
     // These vectors are in model space (it is assumed these will never be parallel)
     private _spineMV = (_obj selectionPosition "Spine3") vectorFromTo (_obj selectionPosition "Neck");
     private _shoulderMV = (_obj selectionPosition "leftshoulder") vectorFromTo (_obj selectionPosition "rightshoulder");
