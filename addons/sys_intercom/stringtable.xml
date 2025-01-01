@@ -155,6 +155,7 @@
             <English>Infantry Phone already in use</English>
             <German>Hörer wird gerade benutzt</German>
             <Italian>Telefono fanteria preso da qualcuno</Italian>
+            <French>Téléphone d'infanterie déjà utilisé</French>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercom">
             <English>Intercom</English>
