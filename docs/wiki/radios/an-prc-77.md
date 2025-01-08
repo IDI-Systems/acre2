@@ -38,6 +38,18 @@ Two knobs, one for 1 megahertz increments and another for 50 kilohertz (0.05 MHz
 
 This switch toggles between the upper and lower frequency bands that are available. The lower, default, position lets you tune the radio to frequencies from 30.00 MHz to 52.95 MHz, and the upper position is for the  53.00-75.95 MHz range.
 
+### Transmit power
+
+The radio's maximum transmit power is 4W, but depending on the selected frequency its effective transmit power can be lower.
+
+| MHz range (inclusive) | Effective Tx Power |
+| --------------------- | ------------------ |
+| 30-33 MHz | 3.5 W |
+| 34-50 MHz | 4.0 W |
+| 51-53 MHz | 3.5 W |
+| 54-71 MHz | 3.0 W |
+| 72-75 MHz | 2.6 W |
+
 ### Preset buttons
 
 You can save two presets on the PRC-77 by using the two buttons above each tuning knob. Right-click on the button to save the preset, and left-click to recall it.
