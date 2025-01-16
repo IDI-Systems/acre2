@@ -225,12 +225,12 @@
         </Key>
         <Key ID="STR_ACRE_sys_radio_3den_RadioSetup_DisplayName">
             <English>Radio Channel Setup</English>
-            <German>Funkgeräte Kanalwahl</German>
+            <German>Funkkanal-Einstellung</German>
             <Italian>Canali radio preimpostati</Italian>
         </Key>
         <Key ID="STR_ACRE_sys_radio_3den_RadioSetup_Description">
             <English>Array of Arrays (comma separated) to set up radio channels of the given unit.\nIt's possible to set up multiple radios of the same type.\nSingular Examples:\n["ACRE_PRC343",1] -&gt; Channel 1, Block 1\n["ACRE_PRC343",[2,3]] -&gt; Channel 2, Block 3\n["ACRE_PRC148",5] -&gt; Channel 5 (same for PRC-148/152/117F, BF-888S and SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Set first BF-888S to Ch 4, second to Ch 5</English>
-            <German>Array von Arrays (komma-geteilt) um Funkgerätkanäle einer bestimmten Einheit einzustellen.\nEs ist möglich mehrere Funkgeräte der gleichen Modells einzustellen.\nEinzelne Beispiele:\n["ACRE_PRC343",1] -&gt; Channel 1, Block 1\n["ACRE_PRC343",[2,3]] -&gt; Channel 2, Block 3\n["ACRE_PRC148",5] -&gt; Channel 5 (same for PRC-148/152/117F, BF-888S and SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Set first BF-888S to Ch 4, second to Ch 5</German>
+            <German>Array von Arrays (kommagetrennt), um Funkgerätkanäle einer bestimmten Einheit einzustellen.\nEs ist möglich, mehrere Funkgeräte des gleichen Modells einzustellen.\nBeispiele:\n["ACRE_PRC343",1] -&gt; Kanal 1, Block 1\n["ACRE_PRC343",[2,3]] -&gt; Kanal 2, Block 3\n["ACRE_PRC148",5] -&gt; Kanal 5 (dasselbe gilt für PRC-148/152/117F, BF-888S und SEM 52 SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Setzt das erste BF-888S auf Kanal 4, das zweite auf Kanal 5</German>
             <Italian>Array di Array (separati da virgola) per impostare i canali radio di una determinata unità.\nÈ possibile impostare molteplici radio dello stesso tipo.\nEsempi:\n["ACRE_PRC343",1] -&gt; Canale 1, Blocco 1\n["ACRE_PRC343",[2,3]] -&gt; Canale 2, Blocco 3\n["ACRE_PRC148",5] -&gt; Canale 5 (stesso formato per PRC-148/152/117F, BF-888S e SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Imposta la prima BF-888S su Ch 4, la seconda su Ch 5</Italian>
         </Key>
     </Package>

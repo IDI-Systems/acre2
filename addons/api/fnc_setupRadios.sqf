@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: mrschick
- * When run locally it will set the currently carried radios to the selected channel numbers.
+ * When run locally, it will set the currently carried radios to the selected channels.
  *
  * Arguments:
  * [RadioSetting1, RadioSetting2, ...] <ARRAY>
