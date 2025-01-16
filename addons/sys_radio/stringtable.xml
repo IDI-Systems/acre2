@@ -164,36 +164,42 @@
             <German>Austausch des Funkgeräts</German>
             <Italian>Sostituzione della radio</Italian>
             <Japanese>無線機アイテムの置き換え</Japanese>
+            <French>Remplacement de la radio</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
             <English>Default radio inventory items will be replaced with this type of radio.</English>
             <German>Standard Funkinventargegenstände werden durch diesen Funkgerätetyp ersetzt.</German>
             <Italian>Le radio vanilla nell'inventario verranno sostituite con questo tipo di radio.</Italian>
             <Japanese>インベントリにあるデフォルトの無線機アイテムは、 このタイプの無線機に置き換えられます。</Japanese>
+            <French>Les éléments d'inventaire radio par défaut seront remplacés par ce type de radio.</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
             <German>Lautstärke ändern</German>
             <Italian>Cambia volume</Italian>
             <Japanese>音量の変更</Japanese>
+            <French>Changer le volume</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentVolume">
             <English>Current Volume</English>
             <German>Aktuelle Lautstärke</German>
             <Italian>Volume attuale</Italian>
             <Japanese>現在の変更</Japanese>
+            <French>Volume actuel</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
             <German>Funkgerät aus</German>
             <Italian>Radio spenta</Italian>
             <Japanese>無線オフ</Japanese>
+            <French>Radio éteinte</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeChannel">
             <English>Change Channel</English>
             <German>Kanal wechseln</German>
             <Italian>Cambia canale</Italian>
             <Japanese>チャンネルを変更</Japanese>
+            <French>Changer de canal</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannel">
             <English>Current Channel</English>
@@ -210,18 +216,21 @@
             <German>Aktueller Kanalblock</German>
             <Italian>Blocco di canali corrente</Italian>
             <Japanese>現在のチャンネルブロック</Japanese>
+            <French>Blocage actuel des chaînes</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleAttach">
             <English>Attach handle</English>
             <German>Griff anbringen</German>
             <Italian>Attaccare la maniglia</Italian>
             <Japanese>ハンドルを取り付ける</Japanese>
+            <French>Fixation de la poignée</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleDetach">
             <English>Detach handle</English>
             <German>Griff abnehmen</German>
             <Italian>Rimuovere la maniglia</Italian>
             <Japanese>ハンドルを外す</Japanese>
+            <French>Retirer la poignée</French>
         </Key>
         <Key ID="STR_ACRE_sys_radio_3den_RadioSetup_DisplayName">
             <English>Radio Channel Setup</English>

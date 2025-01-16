@@ -36,5 +36,13 @@ if (GVAR(rackPFH) == -1) then {
     GVAR(rackPFH) = [DFUNC(rackPFH), 1.1, [_unit, _vehicle]] call CBA_fnc_addPerFrameHandler;
 };
 
+// Locally store radio use status for the current position in vehicle
+private _varName = [_vehicle, _unit, QGVAR(usedRacks_%1)] call EFUNC(sys_intercom,getStationVariableName);
+if (_varName isNotEqualTo "") then {
+    private _usedRacks = _vehicle getVariable [_varName, []];
+    _usedRacks pushBackUnique _radioId;
+    _vehicle setVariable [_varName, _usedRacks];
+};
+
 // Update the display
 [_vehicle, _unit] call EFUNC(sys_intercom,updateVehicleInfoText);

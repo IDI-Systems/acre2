@@ -19,7 +19,7 @@ private ["_forwardV", "_upV"];
 params ["_obj"];
 
 // This is a hack fix for vehicles having funky up vectors when people are inside...
-if (vehicle _obj == _obj) then {
+if (isNull objectParent _obj) then {
     // These vectors are in model space (it is assumed these will never be parallel)
     private _spineMV = (_obj selectionPosition "Spine3") vectorFromTo (_obj selectionPosition "Neck");
     private _shoulderMV = (_obj selectionPosition "leftshoulder") vectorFromTo (_obj selectionPosition "rightshoulder");
@@ -35,9 +35,9 @@ if (vehicle _obj == _obj) then {
         };
     };
 
-    private _baseASL = AGLtoASL (_obj modelToWorld [0,0,0]);  // convert from model vector to world
-    _upV = _baseASL vectorFromTo AGLtoASL (_obj ModelToWorld _spineMV);
-    _forwardV = _baseASL vectorFromTo AGLtoASL (_obj ModelToWorld (_spineMV vectorCrossProduct _shoulderMV));
+    private _baseASL = AGLToASL (_obj modelToWorld [0,0,0]);  // convert from model vector to world
+    _upV = _baseASL vectorFromTo AGLToASL (_obj modelToWorld _spineMV);
+    _forwardV = _baseASL vectorFromTo AGLToASL (_obj modelToWorld (_spineMV vectorCrossProduct _shoulderMV));
 
     /*
     * In order to debug and visualize the antenna direction this function needs to be called every frame.
@@ -47,8 +47,8 @@ if (vehicle _obj == _obj) then {
     */
     #ifdef DRAW_ANTENNA_POS
         private _spinePos = _obj modelToWorldVisual (_obj selectionPosition "Spine3");
-        drawLine3D [_spinePos, ASLtoAGL ((AGLtoASL _spinePos) vectorAdd _forwardV), [1,0,0,1]];
-        drawLine3D [_spinePos, ASLtoAGL ((AGLtoASL _spinePos) vectorAdd _upV), [0,0,1,1]];
+        drawLine3D [_spinePos, ASLToAGL ((AGLToASL _spinePos) vectorAdd _forwardV), [1,0,0,1]];
+        drawLine3D [_spinePos, ASLToAGL ((AGLToASL _spinePos) vectorAdd _upV), [0,0,1,1]];
     #endif
 } else {
     _forwardV = vectorDir (vehicle _obj);

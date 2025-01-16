@@ -24,6 +24,10 @@ class CfgSoundEffects {
             acreAttenuation = 0;
             acreAttenuationTurnedOut = 0;
         };
+        class MrapAttenuation {
+            acreAttenuation = 0.5;
+            acreAttenuationTurnedOut = 0.25;
+        };
         class TankAttenuation {
             acreAttenuation = 0.6;
             acreAttenuationTurnedOut = 0.3;

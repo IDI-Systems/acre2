@@ -42,7 +42,7 @@ private _ownSharedRadios = [acre_player] call FUNC(getSharedExternalRadios);
     };
 
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
-    private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
+    private _item = configFile >> "CfgWeapons" >> _baseRadio;
     private _displayName = getText (_item >> "displayName") + _owner;
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
     _displayName = format [localize ELSTRING(ace_interact,channelShort), _displayName, _currentChannel];

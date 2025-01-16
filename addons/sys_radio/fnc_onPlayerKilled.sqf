@@ -26,7 +26,7 @@ if (_unit == acre_player) then {
 
         // Make sure the GUI state is closed so that other players can open the radio
         [_radioName, false] call FUNC(setRadioOpenState);
-    } foreach GVAR(currentRadioList);
+    } forEach GVAR(currentRadioList);
     GVAR(currentRadioList) = [];
 
     [""] call FUNC(setActiveRadio);

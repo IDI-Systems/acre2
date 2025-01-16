@@ -1,0 +1,12 @@
+[config.file_type]
+enabled = false
+
+[sqf.banned_commands]
+options.ignore = [
+    "addPublicVariableEventHandler", # Alt syntax is broken, we are using main syntax
+]
+
+[sqf.var_all_caps]
+options.ignore = [
+    "ACRE_*"
+]

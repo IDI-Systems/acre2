@@ -45,6 +45,9 @@ class CfgPatches {
 };
 
 class CfgAcreWorlds {
+    class SPE_mortain {
+        wrp = QPATHTOF(SPE_mortain.fakewrp);
+    };
     class SPE_normandy {
         wrp = QPATHTOF(SPE_normandy.fakewrp);
     };

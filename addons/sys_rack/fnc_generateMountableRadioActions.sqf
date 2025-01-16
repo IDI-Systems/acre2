@@ -27,7 +27,7 @@ _radioList = [_rackClassName, _radioList] call FUNC(getMountableRadios);
 
 {
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
-    private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
+    private _item = configFile >> "CfgWeapons" >> _baseRadio;
     private _displayName = getText (_item >> "displayName");
     private _currentChannel = [_x] call EFUNC(api,getRadioChannel);
     _displayName = format [localize ELSTRING(ace_interact,channelShort), _displayName, _currentChannel];

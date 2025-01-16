@@ -29,7 +29,7 @@ private _actions = [];
     };
 
     private _baseRadio = [_x] call EFUNC(api,getBaseRadio);
-    private _item = ConfigFile >> "CfgWeapons" >> _baseRadio;
+    private _item = configFile >> "CfgWeapons" >> _baseRadio;
 
     private "_displayName";
     if (_x in ACRE_ACCESSIBLE_RACK_RADIOS || {_x in ACRE_HEARABLE_RACK_RADIOS}) then {

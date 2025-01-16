@@ -41,7 +41,7 @@ if (_mountedRadio == "") then { // Empty
 } else {
     private _class = configFile >> "CfgWeapons" >> _mountedRadio;
     private _currentChannel = [_mountedRadio] call EFUNC(api,getRadioChannel);
-    private _displayName = format [localize ELSTRING(ace_interact,channelShort), getText (_class >> "displayName"), _currentChannel];
+    private _displayName = [_mountedRadio] call EFUNC(sys_core,getDescriptiveName);
     private _icon = getText (_class >> "picture");
 
     // General radio
