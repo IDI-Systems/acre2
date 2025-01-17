@@ -19,7 +19,8 @@ class CfgAcreSignal {
                 "clafghan",
                 "esbekistan",
                 "lythium",
-                "takistan"
+                "takistan",
+                "map_north_takistan"
             }
         };
         continentalTemperate[] = {5, {}}; // All undefined maps fall into this category
