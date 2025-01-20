@@ -10,6 +10,7 @@
             <Italian>Rimuovi le radio degli spettatori</Italian>
             <Portuguese>Limpar rádios de espectador</Portuguese>
             <Japanese>観戦者の無線機をクリア</Japanese>
+            <Chinesesimp>移除观战者无线电</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_ClearRadios_Description">
             <English>Clears all radios from the spectator radios list.</English>
@@ -20,6 +21,7 @@
             <Italian>Rimuovi tutte le radio dall'elenco delle radio degli spettatori.</Italian>
             <Portuguese>Limpar todos os rádios da lista de rádios para espectadores</Portuguese>
             <Japanese>観戦者の無線機リストからすべての無線機を削除します。</Japanese>
+            <Chinesesimp>移除观战者正在收听的所有无线电</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_Sys_Spectator_NoRadios">
             <English>No Radios</English>
@@ -30,6 +32,7 @@
             <Italian>Nessuna radio</Italian>
             <Portuguese>Sem rádios</Portuguese>
             <Japanese>無線機なし</Japanese>
+            <Chinesesimp>没有无线电</Chinesesimp>
         </Key>
     </Package>
 </Project>
