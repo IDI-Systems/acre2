@@ -10,6 +10,7 @@
             <Turkish>Tanrı Modu</Turkish>
             <Portuguese>Modo Deus</Portuguese>
             <Japanese>Godモード</Japanese>
+            <Chinesesimp>宙斯通话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannel_display">
             <English>Current Channel</English>
@@ -20,6 +21,7 @@
             <Turkish>Şu Anki Kanal</Turkish>
             <Portuguese>Canal atual</Portuguese>
             <Japanese>現在のチャンネル</Japanese>
+            <Chinesesimp>当前频道</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey">
             <English>PTT - Current Chat Channel</English>
@@ -30,6 +32,7 @@
             <Turkish>Bas-Konuş - Şu anki kanal</Turkish>
             <Portuguese>PTT - Canal atual de chat</Portuguese>
             <Japanese>PTT - 現在のチャットチャンネル</Japanese>
+            <Chinesesimp>按键通话 - 当前聊天频道</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey_description">
             <English>PTT to send a message to all units matching the current chat channel.</English>
@@ -40,6 +43,7 @@
             <Turkish>Bas-Konuş ile şu anki kanalla eşleşen bütün oyunculara mesaj ilet</Turkish>
             <Portuguese>PTT para mandar uma mensagem à todas as unidades com o mesmo canal de chat atual</Portuguese>
             <Japanese>PTTの使用時に、 現在のチャットチャンネルに一致するすべてのユニットにメッセージを送信します。</Japanese>
+            <Chinesesimp>向所有位于当前聊天频道内的玩家发送语音的按键</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1">
             <English>Group 1</English>
@@ -50,6 +54,7 @@
             <Turkish>Grup 1</Turkish>
             <Portuguese>Grupo 1</Portuguese>
             <Japanese>グループ1</Japanese>
+            <Chinesesimp>分组1</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey">
             <English>PTT - Group 1</English>
@@ -60,6 +65,7 @@
             <Turkish>Bas-Konuş - Grup 1</Turkish>
             <Portuguese>PTT - Grupo 1</Portuguese>
             <Japanese>PTT - グループ1</Japanese>
+            <Chinesesimp>分组1 - 按键通话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group1PttKey_description">
             <English>PTT to send a message to all units in the Group 1 preset.</English>
@@ -70,6 +76,7 @@
             <Turkish>Bas-Konuş ile Grup 1 setindeki bütün oyunculara mesaj ilet</Turkish>
             <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 1</Portuguese>
             <Japanese>PTTの使用時に、 グループ1プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
+            <Chinesesimp>向所有位于分组1内的玩家发送语音的按键</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2">
             <English>Group 2</English>
@@ -80,6 +87,7 @@
             <Turkish>Grup 2</Turkish>
             <Portuguese>Grupo 2</Portuguese>
             <Japanese>グループ2</Japanese>
+            <Chinesesimp>分组2</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2PttKey">
             <English>PTT - Group 2</English>
@@ -90,6 +98,7 @@
             <Turkish>Bas-Konuş - Grup 2</Turkish>
             <Portuguese>PTT - Grupo 2</Portuguese>
             <Japanese>PTT - グループ2</Japanese>
+            <Chinesesimp>分组2 - 按键通话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group2PttKey_description">
             <English>PTT to send a message to all units in the Group 2 preset.</English>
@@ -100,6 +109,7 @@
             <Turkish>Bas-Konuş ile Grup 2 setindeki bütün oyunculara mesaj ilet</Turkish>
             <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 2</Portuguese>
             <Japanese>PTTの使用時に、 グループ2プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
+            <Chinesesimp>向所有位于分组2内的玩家发送语音的按键</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3">
             <English>Group 3</English>
@@ -110,6 +120,7 @@
             <Turkish>Grup 3</Turkish>
             <Portuguese>Grupo 3</Portuguese>
             <Japanese>グループ3</Japanese>
+            <Chinesesimp>分组3</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3PttKey">
             <English>PTT - Group 3</English>
@@ -120,6 +131,7 @@
             <Turkish>Bas-Konuş - Grup 3</Turkish>
             <Portuguese>PTT - Grupo 3</Portuguese>
             <Japanese>PTT - グループ3</Japanese>
+            <Chinesesimp>分组3 - 按键通话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_group3PttKey_description">
             <English>PTT to send a message to all units in the Group 3 preset.</English>
@@ -130,6 +142,7 @@
             <Turkish>Bas-Konuş ile Grup 3 setindeki bütün oyunculara mesaj ilet</Turkish>
             <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 3</Portuguese>
             <Japanese>PTTの使用時に、 グループ3プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
+            <Chinesesimp>向所有位于分组3内的玩家发送语音的按键</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_god">
             <English>God</English>
@@ -139,6 +152,7 @@
             <Turkish>Tanrı</Turkish>
             <Portuguese>Deus</Portuguese>
             <Japanese>God</Japanese>
+            <Chinesesimp>宙斯</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
             <English>Receive Notification</English>
@@ -148,6 +162,7 @@
             <Turkish>Mesaj Al</Turkish>
             <Portuguese>Notificação de Recepção</Portuguese>
             <Japanese>受信通知</Japanese>
+            <Chinesesimp>接受提示</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
             <English>Transmit Notification</English>
@@ -157,6 +172,7 @@
             <Turkish>Mesaj İlet</Turkish>
             <Portuguese>Notificação de Transmissão</Portuguese>
             <Japanese>送信通知</Japanese>
+            <Chinesesimp>发话提示</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotificationColor_displayName">
             <English>Receive Color</English>
@@ -166,6 +182,7 @@
             <Turkish>Alınan Mesaj Rengi</Turkish>
             <Portuguese>Cor: Recepção</Portuguese>
             <Japanese>受信通知の表示色</Japanese>
+            <Chinesesimp>接受颜色</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
             <English>Current Chat Channel Transmit Color</English>
@@ -175,6 +192,7 @@
             <Turkish>Şu Anki Kanal İletim Rengi</Turkish>
             <Portuguese>Cor: Texto de canal de transmissão</Portuguese>
             <Japanese>現在のチャットチャンネルへの送信の表示色</Japanese>
+            <Chinesesimp>当前聊天频道颜色</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup1Color_displayName">
             <English>Group 1 Transmit Color</English>
@@ -184,6 +202,7 @@
             <Turkish>Grup 1 İletim Rengi</Turkish>
             <Portuguese>Cor: Grupo de transmissão 1</Portuguese>
             <Japanese>グループ1への送信の表示色</Japanese>
+            <Chinesesimp>分组1颜色</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup2Color_displayName">
             <English>Group 2 Transmit Color</English>
@@ -193,6 +212,7 @@
             <Turkish>Grup 2 İletim Rengi</Turkish>
             <Portuguese>Cor: Grupo de transmissão 2</Portuguese>
             <Japanese>グループ2への送信の表示色</Japanese>
+            <Chinesesimp>分组2颜色</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup3Color_displayName">
             <English>Group 3 Transmit Color</English>
@@ -202,6 +222,7 @@
             <Turkish>Grup 3 İletim Rengi</Turkish>
             <Portuguese>Cor: Grupo de transmissão 3</Portuguese>
             <Japanese>グループ3への送信の表示色</Japanese>
+            <Chinesesimp>分组3颜色</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_noTargets">
             <English>No units in God group!</English>
@@ -211,6 +232,7 @@
             <Turkish>Tanrı Grubunda Hiçbir Birim Yok!</Turkish>
             <Portuguese>Sem unidades no grupo de Deus!</Portuguese>
             <Japanese>Godグループにユニットがいません!</Japanese>
+            <Chinesesimp>分组中没有玩家!</Chinesesimp>
         </Key>
     </Package>
 </Project>

@@ -13,6 +13,7 @@
             <Chinsesimp>已连接至地面天线</Chinsesimp>
             <Portuguese>Conectar à antena</Portuguese>
             <Turkish>GSA'ya Bağlanıldı</Turkish>
+            <Chinesesimp>已连接至地钉天线</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnected">
             <English>Disconnected from GSA</English>
@@ -26,6 +27,7 @@
             <Chinsesimp>从地面天线断开</Chinsesimp>
             <Portuguese>Desconectar da antena</Portuguese>
             <Turkish>GSA'dan Bağlantı Koparıldı</Turkish>
+            <Chinesesimp>已地钉天线断开</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnectedUnit">
             <English>You disconnected %1 from GSA</English>
@@ -39,6 +41,7 @@
             <Chinsesimp>你已经把1%从地面天线断开</Chinsesimp>
             <Portuguese>Você desconectou %1 da antena</Portuguese>
             <Turkish>GSA'dan Bağlantısını Kestin:%1</Turkish>
+            <Chinesesimp>你已经把%1从地钉天线断开</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpike">
             <English>Place Spike</English>
@@ -52,6 +55,7 @@
             <Chinsesimp>设置尖波</Chinsesimp>
             <Portuguese>Cravar antena</Portuguese>
             <Turkish>Spike'ı Yere Koy</Turkish>
+            <Chinesesimp>放置地钉天线</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_placeSpikeMast">
             <English>Place Spike w. Mast</English>
@@ -65,6 +69,7 @@
             <Chinsesimp>设置尖波与桅杆</Chinsesimp>
             <Portuguese>Cravar antena com mastro</Portuguese>
             <Turkish>Spike'ı Sopa İle Koy</Turkish>
+            <Chinesesimp>放置地钉天线和支架</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_pickup">
             <English>Pick up</English>
@@ -78,6 +83,7 @@
             <Chinsesimp>捡起</Chinsesimp>
             <Portuguese>Recuperar</Portuguese>
             <Turkish>Al</Turkish>
+            <Chinesesimp>捡起</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_removeMast">
             <English>Remove mast</English>
@@ -91,6 +97,7 @@
             <Chinsesimp>移除桅杆</Chinsesimp>
             <Portuguese>Remover mastro</Portuguese>
             <Turkish>Sopayı Kaldır</Turkish>
+            <Chinesesimp>移除支架</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_mountMast">
             <English>Mount mast</English>
@@ -104,6 +111,7 @@
             <Chinsesimp>装上桅杆</Chinsesimp>
             <Portuguese>Montar mastro</Portuguese>
             <Turkish>Sopa Tak</Turkish>
+            <Chinesesimp>装上支架</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_alreadyConnected">
             <English>GSA already in use</English>
@@ -117,6 +125,7 @@
             <Chinsesimp>地面天线已经使用中</Chinsesimp>
             <Portuguese>Antena já em uso</Portuguese>
             <Turkish>GSA Zaten Kullanımda</Turkish>
+            <Chinesesimp>地钉天线正在使用</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_connect">
             <English>Connect</English>
@@ -130,6 +139,7 @@
             <Chinsesimp>连接</Chinsesimp>
             <Portuguese>Conectar</Portuguese>
             <Turkish>Bağlan</Turkish>
+            <Chinesesimp>连接</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_disconnect">
             <English>Disconnect</English>
@@ -143,6 +153,7 @@
             <Chinsesimp>断开</Chinsesimp>
             <Portuguese>Desconectar</Portuguese>
             <Turkish>Bağlantıyı Kes</Turkish>
+            <Chinesesimp>断开</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_gsaWithMast_description">
             <English>VHF30108 Ground Spike Antenna with Mast</English>
@@ -156,6 +167,7 @@
             <Chinsesimp>VHF30108 地面突波天线含桅杆</Chinsesimp>
             <Portuguese>Antena VHF30108 com mastro</Portuguese>
             <Turkish>Yükseltici Çubuklu VHF30108 Yer Anteni 'Spike'</Turkish>
+            <Chinesesimp>VHF30108地钉天线和支架</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_gsaWithoutMast_description">
             <English>VHF30108 Ground Spike Antenna</English>
@@ -169,6 +181,7 @@
             <Chinsesimp>VHF30108 地面突波天线</Chinsesimp>
             <Portuguese>Antena VHF30108</Portuguese>
             <Turkish>VHF30108 Yer Anteni 'Spike'</Turkish>
+            <Chinesesimp>VHF30108地钉天线</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_gsaMast_description">
             <English>VHF30108 Mast</English>
@@ -182,6 +195,7 @@
             <Chinsesimp>VHF30108 桅杆</Chinsesimp>
             <Portuguese>Mastro da antena VHF30108</Portuguese>
             <Turkish>VHF30108 Yükseltici Çubuğu</Turkish>
+            <Chinesesimp>VHF30108支架</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_inventoryFull">
             <English>Inventory full</English>
@@ -195,6 +209,7 @@
             <Chinsesimp>物品栏已满</Chinsesimp>
             <Portuguese>Inventário cheio</Portuguese>
             <Turkish>Envanter Dolu</Turkish>
+            <Chinesesimp>物品栏已满</Chinesesimp>
         </Key>
     </Package>
 </Project>

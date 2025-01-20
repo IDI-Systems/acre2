@@ -95,6 +95,7 @@
             <Italian>Usa tramite l'intercom (Work: %1)</Italian>
             <Japanese>インターコムから使う (Work: %1)</Japanese>
             <French>Utilisation de l'interphone (Travail : %1)</French>
+            <Chinesesimp>通过对讲机使用(正在使用: %1)</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
@@ -150,6 +151,7 @@
             <Turkish>Panel 2</Turkish>
             <Portuguese>Painel 2</Portuguese>
             <Japanese>ダッシュボード 2</Japanese>
+            <Chinesesimp>仪器版面2</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>

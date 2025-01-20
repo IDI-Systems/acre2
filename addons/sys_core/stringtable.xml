@@ -14,6 +14,7 @@
             <Spanish>ACRE2 Interfaz</Spanish>
             <Russian>ACRE2 Интерфейс</Russian>
             <Portuguese>IU ACRE2</Portuguese>
+            <Chinesesimp>ACRE2 界面</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
             <English>Post-Mix Global Volume</English>
@@ -58,6 +59,7 @@
             <Portuguese>Volume padrão do rádio</Portuguese>
             <Spanish>Volumen de radio por defecto</Spanish>
             <Turkish>Varsayılan Radyo Sesi</Turkish>
+            <Chinesesimp>默认无线电音量</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
@@ -84,6 +86,7 @@
             <Turkish>Tanrı Sesi</Turkish>
             <Portuguese>Volume de Deus</Portuguese>
             <Japanese>ゼウス(God)の音量</Japanese>
+            <Chinesesimp>宙斯通话音量</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
@@ -206,6 +209,7 @@
             <Japanese>無線機1の送信 (PTT 1)</Japanese>
             <Chinese>無線電 1 發話(隨按即說1)</Chinese>
             <Turkish>Telsiz 1'de Konuşma (Bas-Konuş 1)</Turkish>
+            <Chinesesimp>无线电1发话(按键发话1)</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Transmit on first radio and set it as active.</English>
@@ -236,6 +240,7 @@
             <Japanese>無線機2の送信 (PTT 2)</Japanese>
             <Chinese>無線電 2 發話(隨按即說2)</Chinese>
             <Turkish>Telsiz 2'de Konuşma (Bas-Konuş 2)</Turkish>
+            <Chinesesimp>无线电2发话(按键发话2)</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Transmit on second radio and set it as active.</English>
@@ -266,6 +271,7 @@
             <Japanese>無線機3の送信 (PTT 3)</Japanese>
             <Chinese>無線電 3 發話(隨按即說3)</Chinese>
             <Turkish>Telsiz 3'de Konuşma (Bas-Konuş 3)</Turkish>
+            <Chinesesimp>无线电3发话(按键发话3)</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Transmit on third radio and set it as active.</English>
@@ -406,6 +412,7 @@
             <Portuguese>Alternar direção da antena</Portuguese>
             <Spanish>Cambiar dirección de antena</Spanish>
             <Turkish>Anten Yönünü Değiştir</Turkish>
+            <Chinesesimp>天线方向切换</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
@@ -418,6 +425,7 @@
             <Portuguese>Antena endireitada</Portuguese>
             <Spanish>Antena enderezada</Spanish>
             <Turkish>Anten Düzleştirildi</Turkish>
+            <Chinesesimp>天线已拉直</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
@@ -430,6 +438,7 @@
             <Portuguese>Antena dobrada</Portuguese>
             <Spanish>Antena doblada</Spanish>
             <Turkish>Anten Büküldü</Turkish>
+            <Chinesesimp>天线已弯曲</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -490,6 +499,7 @@
             <Portuguese>Direção automática da Antena</Portuguese>
             <Spanish>Dirección automática de antena</Spanish>
             <Turkish>Otomatik Anten Yönü</Turkish>
+            <Chinesesimp>自动调整天线方向</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -612,6 +622,7 @@
             <Portuguese>Mostrar transmissões recebidas</Portuguese>
             <Spanish>Mostrar transmisiones entrantes</Spanish>
             <Turkish>Gelen Mesajları Göster</Turkish>
+            <Chinesesimp>显示正在进行的通讯</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
@@ -624,6 +635,7 @@
             <Portuguese>Mostras transmissões do raque</Portuguese>
             <Spanish>Mostrar transmisiones de radio vehicular</Spanish>
             <Turkish>Rafta Gelen Mesajları Göster</Turkish>
+            <Chinesesimp>显示机架通讯</Chinesesimp>
         </Key>
     </Package>
 </Project>

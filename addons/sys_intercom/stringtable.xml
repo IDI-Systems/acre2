@@ -156,6 +156,7 @@
             <German>Hörer wird gerade benutzt</German>
             <Italian>Telefono fanteria preso da qualcuno</Italian>
             <French>Téléphone d'infanterie déjà utilisé</French>
+            <Chinesesimp>车外对讲机正在使用</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercom">
             <English>Intercom</English>

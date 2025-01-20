@@ -212,6 +212,7 @@
             <Turkish>Frekans Aralığı</Turkish>
             <Portuguese>Alcance de Frequência</Portuguese>
             <Japanese>周波数範囲</Japanese>
+            <Chinesesimp>频率范围</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_transmitPower">
             <English>Transmit Power</English>
@@ -222,6 +223,7 @@
             <Turkish>İletim Gücü</Turkish>
             <Portuguese>Poder de Transmissão</Portuguese>
             <Japanese>発信出力</Japanese>
+            <Chinesesimp>传输功率</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_effectiveRange">
             <English>Effective Range (Urban)</English>
@@ -232,6 +234,7 @@
             <Turkish>Gerçek Güç (Şehir İçi)</Turkish>
             <Portuguese>Alcance Efetivo (Urbano)</Portuguese>
             <Japanese>有効範囲距離 (市街地)</Japanese>
+            <Chinesesimp>有效距离(城市)</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_ace_interact_arsenalStats_externalSpeaker">
             <English>External Speaker</English>
@@ -242,6 +245,7 @@
             <Turkish>Dış Hoparlör</Turkish>
             <Portuguese>Alto-falante Externo</Portuguese>
             <Japanese>外部スピーカー</Japanese>
+            <Chinesesimp>扬声器</Chinesesimp>
         </Key>
     </Package>
 </Project>
