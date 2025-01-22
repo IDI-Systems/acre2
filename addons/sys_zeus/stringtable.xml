@@ -13,6 +13,7 @@
             <Portuguese>Trocar para Espectador</Portuguese>
             <Spanish>Cambiar a espectador</Spanish>
             <Turkish>Spectator'a Geç</Turkish>
+            <Chinesesimp>切换至观战者</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusEars">
             <English>Switch to Zeus</English>
@@ -26,6 +27,7 @@
             <Portuguese>Trocar para Zeus</Portuguese>
             <Spanish>Cambiar a Zeus</Spanish>
             <Turkish>Zeus'a Geç</Turkish>
+            <Chinesesimp>切换至宙斯</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_Remote">
             <English>Use Remote Controlled Voice</English>
@@ -39,6 +41,7 @@
             <Portuguese>Usar Voz do Controle Remoto</Portuguese>
             <Spanish>Usar voz de control remoto</Spanish>
             <Turkish>Remote Control Edilenin Senini Kullan</Turkish>
+            <Chinesesimp>使用远程操控语音</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_Player">
             <English>Use Player Voice</English>
@@ -52,6 +55,7 @@
             <Portuguese>Usar Voz do Jogador</Portuguese>
             <Spanish>Usar voz del jugador</Spanish>
             <Turkish>Oyuncu Sesini Kullan</Turkish>
+            <Chinesesimp>使用玩家语音</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera">
             <English>Speak through the Camera</English>
@@ -65,6 +69,7 @@
             <Portuguese>Falar por meio da Câmera</Portuguese>
             <Spanish>Hablar desde la cámara</Spanish>
             <Turkish>Kameradan Konuş</Turkish>
+            <Chinesesimp>使用镜头视角说话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_SpeakFromCamera_Description">
             <English>Talk from the Zeus Interface's camera instead of your unit's position. Communicate Through Camera must be enabled.</English>
@@ -78,6 +83,7 @@
             <Portuguese>Falar pela Câmera de Interface do Zeus ao invés da posição da tua unidade. "Comunicar através da câmera" tem de estar ativo.</Portuguese>
             <Spanish>Hablar desde la posición de la cámara de la interfaz del Zeus en lugar de la posición de tu unidad. Hablar desde la cámara debe estar activado.</Spanish>
             <Turkish>Oyuncu karakterinin konumu yerine zeus kamerası konumundan konuş. "Kameradan Konuş" ayarı açık olmalıdır.</Turkish>
+            <Chinesesimp>在宙斯镜头视角的位置发出声音, 而不是你角色的位置. 必须启用使用镜头视角交流</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_NoCameraSpeakInSpectator">
             <English>Unable to speak from camera while in Spectator</English>
@@ -88,6 +94,7 @@
             <Spanish>Imposible hablar desde la cámara cuando se está en modo Espectador.</Spanish>
             <Turkish>Spectator içindeyken kameradan konuşulamaz</Turkish>
             <Japanese>観戦モードにいる間はカメラから話すことはできません</Japanese>
+            <Chinesesimp>无法通过观战者视角说话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusDefaultVoiceSource_DisplayName">
             <English>Default Zeus Voice Source</English>
@@ -101,6 +108,7 @@
             <Portuguese>Origem da voz Zeus padrão</Portuguese>
             <Spanish>Fuente de voz del Zeus por defecto</Spanish>
             <Turkish>Varsayılan Zeus Ses Kaynağı</Turkish>
+            <Chinesesimp>宙斯默认声音来源</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_DisplayName">
             <English>Communicate Through Camera</English>
@@ -114,6 +122,7 @@
             <Portuguese>Comunicar através da câmera</Portuguese>
             <Spanish>Comunicarse a través de la cámara</Spanish>
             <Turkish>Kameradan Konuş</Turkish>
+            <Chinesesimp>使用镜头视角交流</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_zeusCommunicateViaCamera_Description">
             <English>Hear and talk with players through the Zeus Interface's camera.</English>
@@ -127,6 +136,7 @@
             <Portuguese>Ouvir e falar com jogadores através da Câmera de Interface do Zeus</Portuguese>
             <Spanish>Escuchar y hablar a los jugadores a través de la cámara de interfaz del Zeus.</Spanish>
             <Turkish>Oyuncularla Zeus arayüzünün kamerasından konuş.</Turkish>
+            <Chinesesimp>通过宙斯镜头来收听和说话</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_DisplayName">
             <English>Able to Join Spectators</English>
@@ -140,6 +150,7 @@
             <Portuguese>Possibilidade de Juntar-se aos Espectadores</Portuguese>
             <Spanish>Posibilidad de unirse a los Espectadores</Spanish>
             <Turkish>Spectator'lara Katılınabilir</Turkish>
+            <Chinesesimp>允许加入观战者</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_zeus_ZeusCanSpectate_Description">
             <English>Let Zeus join the specators while in the Zeus interface.</English>
@@ -153,6 +164,7 @@
             <Portuguese>Permitir Zeus a juntar-se aos Espectadores quando na Interface do Zeus</Portuguese>
             <Spanish>Permitir al Zeus unirse a los espectadores cuando está en la interfaz del Zeus.</Spanish>
             <Turkish>Zeus arayüzündeyken Zeus'un spectator oyunculara katılmasına izin ver.</Turkish>
+            <Chinesesimp>允许宙斯在宙斯界面加入观战者</Chinesesimp>
         </Key>
     </Package>
 </Project>
