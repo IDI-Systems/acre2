@@ -37,75 +37,82 @@ if ((_settings isEqualTo []) || {!((_settings select 0) isEqualType [])}) exitWi
     false
 };
 
-private _radios = [] call EFUNC(sys_data,getPlayerRadioList);
+// Wait for radio initialization before attempting to iterate through them
+[{
+    [] call EFUNC(api,isInitialized)
+}, {
+    params ["_settings"];
 
-// Abort if carrying no radios
-if (_radios isEqualTo []) exitWith {
-    WARNING_1("Attempted to import radio setup %1, aborting due to no radios carried",_settings);
-    false
-};
+    private _radios = [] call EFUNC(sys_data,getPlayerRadioList);
 
-{ // iterate through carried radios
-    private _radio = _x;
-    private _radioBaseClass = [_radio] call EFUNC(sys_radio,getRadioBaseClassname);
+    // Abort if carrying no radios
+    if (_radios isEqualTo []) exitWith {
+        WARNING_1("Attempted to import radio setup %1, aborting due to no radios carried",_settings);
+        false
+    };
 
-    // iterate through arguments and set up radio if baseclass matches
-    for "_i" from 0 to count(_settings)-1 do {
-        (_settings select _i) params ["_radioType", "_channel"];
-        private _eventData = [];
+    { // iterate through carried radios
+        private _radio = _x;
+        private _radioBaseClass = [_radio] call EFUNC(sys_radio,getRadioBaseClassname);
 
-        // Skip setting if its type doesn't match current radio baseclass
-        if (_radioType != _radioBaseClass) then { continue };
+        // iterate through arguments and set up radio if baseclass matches
+        for "_i" from 0 to count(_settings)-1 do {
+            (_settings select _i) params ["_radioType", "_channel"];
+            private _eventData = [];
 
-        // Turn channel argument into an array of 1 or 2 numbers
-        if (_channel isEqualType []) then {
-            { _eventData pushBack (_x) } forEach _channel;
-        } else {
-            _eventData = [_channel];
-        };
+            // Skip setting if its type doesn't match current radio baseclass
+            if (_radioType != _radioBaseClass) then { continue };
 
-        // Parse eventData to match the expected input for the respective radio's setCurrentChannel function
-        switch (_radioType) do {
-            case "ACRE_PRC343": {
-                if (count _eventData == 2) then { // set channel and block
-                    _eventData = (((_eventData select 1) - 1) * 16) + (_eventData select 0) - 1;
-                } else { // set channel
+            // Turn channel argument into an array of 1 or 2 numbers
+            if (_channel isEqualType []) then {
+                { _eventData pushBack (_x) } forEach _channel;
+            } else {
+                _eventData = [_channel];
+            };
+
+            // Parse eventData to match the expected input for the respective radio's setCurrentChannel function
+            switch (_radioType) do {
+                case "ACRE_PRC343": {
+                    if (count _eventData == 2) then { // set channel and block
+                        _eventData = (((_eventData select 1) - 1) * 16) + (_eventData select 0) - 1;
+                    } else { // set channel
+                        _eventData = (_eventData select 0) - 1;
+                    };
+                };
+                case "ACRE_PRC77": {
+                    if (count _eventData < 2) then { // set only MHz, insert 0 to nullify KHz
+                        _eventData pushBack 0;
+                    } else {
+                        if (_eventData select 1 > 0) then { // parse KHz if set by user
+                            _eventData set [1, (floor ((_eventData select 1) / 5) min 19)];
+                        };
+                    };
+                    _eventData set [0, (0 max ((_eventData select 0) - 30))];
+                };
+                case "ACRE_SEM70": {
+                    if (count _eventData < 2) then { // set only MHz, insert 0 to nullify KHz
+                        _eventData pushBack 0;
+                    } else {
+                        if (_eventData select 1 > 0) then { // parse KHz if set by user
+                            _eventData set [1, (round ((_eventData select 1) / 25) min 39)];
+                        };
+                    };
+                    _eventData set [0, (0 max ((_eventData select 0) - 30))];
+                };
+                default {
                     _eventData = (_eventData select 0) - 1;
                 };
             };
-            case "ACRE_PRC77": {
-                if (count _eventData < 2) then { // set only MHz, insert 0 to nullify KHz
-                    _eventData pushBack 0;
-                } else {
-                    if (_eventData select 1 > 0) then { // parse KHz if set by user
-                        _eventData set [1, (floor ((_eventData select 1) / 5) min 19)];
-                    };
-                };
-                _eventData set [0, (0 max ((_eventData select 0) - 30))];
-            };
-            case "ACRE_SEM70": {
-                if (count _eventData < 2) then { // set only MHz, insert 0 to nullify KHz
-                    _eventData pushBack 0;
-                } else {
-                    if (_eventData select 1 > 0) then { // parse KHz if set by user
-                        _eventData set [1, (round ((_eventData select 1) / 25) min 39)];
-                    };
-                };
-                _eventData set [0, (0 max ((_eventData select 0) - 30))];
-            };
-            default {
-                _eventData = (_eventData select 0) - 1;
-            };
+
+            [_radio, "setCurrentChannel", _eventData] call EFUNC(sys_data,dataEvent);
+
+            INFO_2("Applied radio setup %1 onto carried radio %2",_settings select _i,_radio);
+
+            // Delete applied setting and break out to handle next radio
+            _settings deleteAt _i;
+            break;
         };
-
-        [_radio, "setCurrentChannel", _eventData] call EFUNC(sys_data,dataEvent);
-
-        INFO_2("Applied radio setup %1 onto carried radio %2",_settings select _i,_radio);
-
-        // Delete applied setting and break out to handle next radio
-        _settings deleteAt _i;
-        break;
-    };
-} forEach _radios;
+    } forEach _radios;
+}, [_settings]] call CBA_fnc_waitUntilAndExecute;
 
 true
