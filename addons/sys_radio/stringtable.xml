@@ -155,7 +155,7 @@
             <Japanese>無線を%1にセット</Japanese>
             <French>Radio réglée sur %1.</French>
             <Chinese>設定無線電為 %1</Chinese>
-            <Chinesesimp>设定无线电为1%</Chinesesimp>
+            <Chinesesimp>设定无线电为%1</Chinesesimp>
             <Portuguese>Rádio configurado a %1</Portuguese>
             <Turkish>Telsiz Ayarı Şuna Atandı: %1</Turkish>
         </Key>
@@ -165,6 +165,7 @@
             <Italian>Sostituzione della radio</Italian>
             <Japanese>無線機アイテムの置き換え</Japanese>
             <French>Remplacement de la radio</French>
+            <Chinesesimp>替换默认无线电</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
             <English>Default radio inventory items will be replaced with this type of radio.</English>
@@ -172,6 +173,7 @@
             <Italian>Le radio vanilla nell'inventario verranno sostituite con questo tipo di radio.</Italian>
             <Japanese>インベントリにあるデフォルトの無線機アイテムは、 このタイプの無線機に置き換えられます。</Japanese>
             <French>Les éléments d'inventaire radio par défaut seront remplacés par ce type de radio.</French>
+            <Chinesesimp>自带的默认无线电物品将会被这种无线电替代</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
@@ -179,6 +181,7 @@
             <Italian>Cambia volume</Italian>
             <Japanese>音量の変更</Japanese>
             <French>Changer le volume</French>
+            <Chinesesimp>调整音量</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentVolume">
             <English>Current Volume</English>
@@ -186,6 +189,7 @@
             <Italian>Volume attuale</Italian>
             <Japanese>現在の変更</Japanese>
             <French>Volume actuel</French>
+            <Chinesesimp>当前音量</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
@@ -193,6 +197,7 @@
             <Italian>Radio spenta</Italian>
             <Japanese>無線オフ</Japanese>
             <French>Radio éteinte</French>
+            <Chinesesimp>无线电已关闭</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeChannel">
             <English>Change Channel</English>
@@ -200,6 +205,7 @@
             <Italian>Cambia canale</Italian>
             <Japanese>チャンネルを変更</Japanese>
             <French>Changer de canal</French>
+            <Chinesesimp>修改频道</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannel">
             <English>Current Channel</English>
@@ -210,6 +216,7 @@
             <Turkish>Şu Anki Kanal</Turkish>
             <Portuguese>Canal atual</Portuguese>
             <Japanese>現在のチャンネル</Japanese>
+            <Chinesesimp>当前频道</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannelBlock">
             <English>Current Channel Block</English>
@@ -217,6 +224,7 @@
             <Italian>Blocco di canali corrente</Italian>
             <Japanese>現在のチャンネルブロック</Japanese>
             <French>Blocage actuel des chaînes</French>
+            <Chinesesimp>当前频道区块</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleAttach">
             <English>Attach handle</English>
@@ -224,6 +232,7 @@
             <Italian>Attaccare la maniglia</Italian>
             <Japanese>ハンドルを取り付ける</Japanese>
             <French>Fixation de la poignée</French>
+            <Chinesesimp>安装手柄</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleDetach">
             <English>Detach handle</English>
@@ -231,6 +240,17 @@
             <Italian>Rimuovere la maniglia</Italian>
             <Japanese>ハンドルを外す</Japanese>
             <French>Retirer la poignée</French>
+            <Chinesesimp>取下手柄</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_3den_RadioSetup_DisplayName">
+            <English>Radio Channel Setup</English>
+            <German>Funkkanal-Einstellung</German>
+            <Italian>Canali radio preimpostati</Italian>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_3den_RadioSetup_Description">
+            <English>Array of Arrays (comma-separated) to set up radio channels of the given unit.\nIt's possible to set up multiple radios of the same type.\nSingular Examples:\n["ACRE_PRC343",1] -&gt; Channel 1, Block 1\n["ACRE_PRC343",[2,3]] -&gt; Channel 2, Block 3\n["ACRE_PRC148",5] -&gt; Channel 5 (same for PRC-148/152/117F, BF-888S and SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Set first BF-888S to Ch 4, second to Ch 5</English>
+            <German>Array von Arrays (kommagetrennt), um Funkgerätkanäle einer bestimmten Einheit einzustellen.\nEs ist möglich, mehrere Funkgeräte des gleichen Modells einzustellen.\nBeispiele:\n["ACRE_PRC343",1] -&gt; Kanal 1, Block 1\n["ACRE_PRC343",[2,3]] -&gt; Kanal 2, Block 3\n["ACRE_PRC148",5] -&gt; Kanal 5 (dasselbe gilt für PRC-148/152/117F, BF-888S und SEM 52 SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Setzt das erste BF-888S auf Kanal 4, das zweite auf Kanal 5</German>
+            <Italian>Array di Array (separati da virgola) per impostare i canali radio di una determinata unità.\nÈ possibile impostare molteplici radio dello stesso tipo.\nEsempi:\n["ACRE_PRC343",1] -&gt; Canale 1, Blocco 1\n["ACRE_PRC343",[2,3]] -&gt; Canale 2, Blocco 3\n["ACRE_PRC148",5] -&gt; Canale 5 (stesso formato per PRC-148/152/117F, BF-888S e SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Imposta la prima BF-888S su Ch 4, la seconda su Ch 5</Italian>
         </Key>
     </Package>
 </Project>

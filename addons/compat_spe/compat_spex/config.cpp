@@ -8,7 +8,7 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"compat_spe","SPEX_TEM_carentan_c","SPEX_TEM_Utah_Beach_c"};
         skipWhenMissingDependencies = 1;
-        author = ECSTRING(common,ACETeam);
+        author = ECSTRING(main,Author);
         authors[] = {"Heavy Ordnance Works", "drofseh"};
         url = ECSTRING(main,URL);
         VERSION_CONFIG;
