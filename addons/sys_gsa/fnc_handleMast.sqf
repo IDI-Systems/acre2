@@ -21,9 +21,11 @@ if (_connectedRadio isEqualTo "") then {
     _connectedRadio = _gsa getVariable [QGVAR(connectedRadio), ""];
 };
 
+private _connectedPlayer = [_connectedRadio] call EFUNC(sys_radio,getRadioObject);
+
 // Temporarily disconnect the GSA from the radio
 if (_connectedRadio != "") then {
-    [_player, _gsa] call FUNC(disconnect);
+    [_connectedPlayer, _gsa] call FUNC(disconnect);
 };
 
 // Delete the antenna
@@ -43,5 +45,5 @@ if (_mountMast) then {
 
 // Reconnect the GSA to the radio
 if (_connectedRadio != "") then {
-    [_gsa, _connectedRadio] call FUNC(connect);
+    [QGVAR(connectGsa), [_gsa, _connectedRadio, _connectedPlayer]] call CBA_fnc_serverEvent;
 };

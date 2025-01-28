@@ -23,7 +23,7 @@ private _radioId = ACRE_ACTIVE_RADIO;
 private _radioType = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 private _typeName = getText (configFile >> "CfgAcreComponents" >> _radioType >> "name");
 private _isManpack = getNumber (configFile >> "CfgAcreComponents" >> _radioType >> "isPackRadio");
-private _isRackRadio = (vehicle acre_player != acre_player) && {_radioId in (([vehicle acre_player] call EFUNC(api,getVehicleRacks)) apply {[_x] call EFUNC(api,getMountedRackRadio)})} && {[_radioId, acre_player] call EFUNC(sys_rack,isRadioAccessible)};
+private _isRackRadio = (!isNull objectParent acre_player) && {_radioId in (([vehicle acre_player] call EFUNC(api,getVehicleRacks)) apply {[_x] call EFUNC(api,getMountedRackRadio)})} && {[_radioId, acre_player] call EFUNC(sys_rack,isRadioAccessible)};
 
 if (_isManpack == 0 || {_isRackRadio}) then {
     private _channel = [_radioId] call EFUNC(api,getRadioChannel);
@@ -35,7 +35,16 @@ if (_isManpack == 0 || {_isRackRadio}) then {
             _channel = ((_channel + _dir) max (_currentBlock*16 + 1)) min ((_currentBlock + 1)*16);
         };
         case "ACRE_PRC152": {
-            _channel = (_channel + _dir) min 5;
+            _channel = (_channel + _dir + 98) % 99 + 1;
+        };
+        case "ACRE_PRC77": {
+            _channel = (_channel select 0) + _dir;
+            if (_channel > 22) then {
+                _channel = 0;
+            };
+            if (_channel < 0) then {
+                _channel = 22;
+            };
         };
         default {
             _channel = _channel + _dir;

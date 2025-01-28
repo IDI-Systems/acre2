@@ -59,6 +59,10 @@ if (_idx != -1) then {
     _vehicle setVariable [QGVAR(queue), _queue];
 };
 
+if (_queue isEqualTo []) then {
+    _vehicle setVariable [QGVAR(initialized), true, true];
+};
+
 if (!_handled) then {
     WARNING_2("Recieved new rack ID (%1) for vehicle (%2) but no entry in queue rack.",_rackId,typeOf _vehicle);
 };

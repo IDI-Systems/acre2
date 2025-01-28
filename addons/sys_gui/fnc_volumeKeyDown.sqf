@@ -15,7 +15,19 @@
  * Public: No
  */
 
-if (!alive acre_player || dialog || ACRE_IS_SPECTATOR || GVAR(volumeOpen)) exitWith {false};
+if (!alive acre_player || ACRE_IS_SPECTATOR || GVAR(volumeOpen)) exitWith {false};
+
+// Abort on open Dialogs that aren't an ACE Progressbar
+private _aceProgressBar = displayNull;
+if (
+    dialog && {_aceProgressBar = (uiNamespace getVariable ["ace_common_dlgProgress", displayNull]); isNull _aceProgressBar}
+) exitWith {false};
+
+// Add MouseScroll EH to open ACE Progressbar, for volume control
+if (dialog && {!(_aceProgressBar getVariable [QGVAR(mouseScrollEHAdded), false])}) then {
+    _aceProgressBar displayAddEventHandler ["MouseZChanged", LINKFUNC(onMouseZChanged)];
+    _aceProgressBar setVariable [QGVAR(mouseScrollEHAdded), true];
+};
 
 inGameUISetEventHandler ["PrevAction", "true"];
 inGameUISetEventHandler ["NextAction", "true"];

@@ -6,6 +6,7 @@
  * Arguments:
  * 0: Vehicle with intercom <OBJECT>
  * 1: Unit to be checked <OBJECT>
+ * 2: Component prefix for the variable name <STRING> (default: "acre_sys_intercom_station_%1")
  *
  * Return Value:
  * Variable name, string of length 0 if not found <STRING>
@@ -16,14 +17,14 @@
  * Public: No
  */
 
-params ["_vehicle", "_unit"];
+params ["_vehicle", "_unit", ["_prefix", QGVAR(station_%1)]];
 
 private _found = false;
 private _varName = "";
 {
     if (_unit isEqualTo (_x select 0)) exitWith {
         private _role = toLower (_x select 1);
-        _varName = format [QGVAR(station_%1), _role];
+        _varName = format [_prefix, _role];
         if (_role in ["cargo", "turret"]) then {
             if (_role isEqualTo "cargo") then {
                 _varName = format ["%1_%2", _varName, _x select 2];

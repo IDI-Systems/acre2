@@ -10,6 +10,7 @@
             <Turkish>ACRE2 El Hareketleri</Turkish>
             <Portuguese>ACRE2 Gestos</Portuguese>
             <Japanese>ACRE2 ジェスチャー</Japanese>
+            <Chinesesimp>ACRE2 动作</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled">
             <English>Enable</English>
@@ -20,6 +21,7 @@
             <Turkish>Aktifleştir</Turkish>
             <Portuguese>Ativo</Portuguese>
             <Japanese>有効化</Japanese>
+            <Chinesesimp>启用</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled_description">
             <English>Animate players using radios.</English>
@@ -30,6 +32,7 @@
             <Turkish>Telsiz kullanan oyunculara animasyonlar ekle</Turkish>
             <Portuguese>Animar jogadores usando rádios</Portuguese>
             <Japanese>ラジオを使うプレーヤーにアニメーションさせます</Japanese>
+            <Chinesesimp>玩家使用无线电时启用手部动作</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS">
             <English>Prevent Aim Down Sights</English>
@@ -40,6 +43,7 @@
             <Turkish>Nişan Almayı Engelle</Turkish>
             <Portuguese>Impedir mira (ADS)</Portuguese>
             <Japanese>照準を妨げる</Japanese>
+            <Chinesesimp>禁止瞄准</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS_description">
             <English>Keying radios will prevent aiming down sights.</English>
@@ -50,6 +54,21 @@
             <Turkish>Telsiz kullanırken nişan almayı engeller</Turkish>
             <Portuguese>Usar rádios irá impedir a mira</Portuguese>
             <Japanese>無線機のキーを押すと照準を合わせることができなくなります。</Japanese>
+            <Chinesesimp>使用无线电时禁止瞄准</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_gestures_showConnectorRopes">
+            <English>Show Connector Wires</English>
+            <German>Zeige verbindungskabel</German>
+            <Italian>Mostra cavi di collegamento</Italian>
+            <French>Afficher les câbles de connexion</French>
+            <Chinesesimp>显示连接线缆</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_gestures_showConnectorRopes_description">
+            <English>Connections to infantry phones, GSAs and shared radios will be visualized with connector wires.</English>
+            <German>Verbindungen zu Gegensprechanlage, BBA und Geteilten Funkgeräten werden mit Kabeln visualisiert.</German>
+            <Italian>Connessioni a telefoni di fanteria, antenne a pavimento e radio condivise verranno visualizzate con cavi.</Italian>
+            <French>Les connexions aux téléphones de l'infanterie, aux GSA et aux radios partagées seront visualisées à l'aide de fils de connexion.</French>
+            <Chinesesimp>使用车辆电话, 地钉天线, 共享无线电时显示连接线缆</Chinesesimp>
         </Key>
     </Package>
 </Project>

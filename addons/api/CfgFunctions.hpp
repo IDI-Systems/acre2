@@ -46,9 +46,12 @@ class CfgFunctions {
 
             PATHTO_FNC(setRadioChannel);
             PATHTO_FNC(getRadioChannel);
+            PATHTO_FNC(setupRadios);
 
             PATHTO_FNC(setRadioVolume);
             PATHTO_FNC(getRadioVolume);
+
+            PATHTO_FNC(getRadioOnOffState);
 
             PATHTO_FNC(setCurrentRadioChannelNumber);
             PATHTO_FNC(getCurrentRadioChannelNumber);
@@ -67,7 +70,9 @@ class CfgFunctions {
             PATHTO_FNC(initVehicleRacks);
             PATHTO_FNC(isRackRadioRemovable);
             PATHTO_FNC(mountRackRadio);
+            PATHTO_FNC(removeAllRacksFromVehicle);
             PATHTO_FNC(removeRackFromVehicle);
+            PATHTO_FNC(replaceRacksOnVehicle);
             PATHTO_FNC(unmountRackRadio);
         };
 
