@@ -11,7 +11,7 @@
  * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * Description of the channel in the form "Block x - Channel y" <STRING>
+ * Description of the channel in the form "Frequency: x.y MHz" <STRING>
  *
  * Example:
  * ["ACRE_PRC77_ID_1", "getChannelDescription", [], [], false] call acre_sys_prc77_fnc_getChannelDescription
