@@ -38,15 +38,24 @@ private _name = if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || {_radioId in ACRE
 };
 
 // Display current radio channel
-private _maxChannels = [_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent);
+private _radioClass = [_radioId] call EFUNC(sys_radio,getRadioBaseClassname);
 
-private _text = if (isNil "_maxChannels") then {
-    // Display frequency for single-channel radios (e.g. AN/PRC-77)
-    private _txData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
-    private _currentFreq = HASH_GET(_txData,"frequencyTX");
-    format ["%1 %2 MHz", _name, _currentFreq];
-} else {
-    format [LELSTRING(ace_interact,channelShort), _name, _radioId call EFUNC(api,getRadioChannel)]
+private _text = switch (_radioClass) do {
+    case "ACRE_PRC77": {
+        // Display frequency for single-channel radios (e.g. AN/PRC-77)
+        private _txData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+        private _currentFreq = HASH_GET(_txData,"frequencyTX");
+        format ["%1 %2 MHz", _name, _currentFreq]
+    };
+    case "ACRE_PRC343": {
+        private _channelRaw = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
+        private _block = floor (_channelRaw / 16) + 1;
+        private _channel = (_channelRaw % 16) + 1;
+        format [LELSTRING(ace_interact,channelBlockShort), _name, _block, _channel]
+    };
+    default {
+        format [LELSTRING(ace_interact,channelShort), _name, _radioId call EFUNC(api,getRadioChannel)]
+    };
 };
 
 // Display radio keys in front of those which are bound

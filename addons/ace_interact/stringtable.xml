@@ -33,6 +33,11 @@
             <Portuguese>%1 Cnl: %2</Portuguese>
             <Turkish>%1 Kanal:%2</Turkish>
         </Key>
+        <Key ID="STR_ACRE_ace_interact_channelBlockShort">
+            <English>%1 Bk %2 Ch %3</English>
+            <German>%1 Bk %2 Kn %3</German>
+            <Italian>%1 Bc %2 Cn %3</Italian>
+        </Key>
         <Key ID="STR_ACRE_ace_interact_lowerHeadset">
             <English>Lower Headset</English>
             <Spanish>Bajar auriculares</Spanish>
