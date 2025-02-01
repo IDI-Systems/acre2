@@ -53,6 +53,15 @@ private _text = switch (_radioClass) do {
         private _channel = (_channelRaw % 16) + 1;
         format [LELSTRING(ace_interact,channelBlockShort), _name, _block, _channel]
     };
+    case "ACRE_SEM52SL": {
+        private _channel = _radioId call EFUNC(api,getRadioChannel);
+        _channel = switch (_channel) do {
+            case 13: { "H" };
+            case 14: { "P" };
+            default { _channel };
+        };
+        format [LELSTRING(ace_interact,channelShort), _name, _channel]
+    };
     default {
         format [LELSTRING(ace_interact,channelShort), _name, _radioId call EFUNC(api,getRadioChannel)]
     };
