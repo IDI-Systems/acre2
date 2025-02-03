@@ -45,7 +45,7 @@ private _text = switch (_radioClass) do {
         // Display frequency for single-channel radios (e.g. AN/PRC-77)
         private _txData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
         private _currentFreq = HASH_GET(_txData,"frequencyTX");
-        format ["%1 %2 MHz", _name, _currentFreq]
+        format ["%1 %2 MHz", _name, [_currentFreq, 1, 2] call CBA_fnc_formatNumber]
     };
     case "ACRE_PRC343": {
         private _channelRaw = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);

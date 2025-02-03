@@ -23,6 +23,6 @@ params ["_radioId", "",  "", "", ""];
 
 private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 
-private _description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];
+private _description = format["Frequency: %1 MHz", [HASH_GET(_hashData,"frequencyTX"), 1, 2] call CBA_fnc_formatNumber];
 
 _description
