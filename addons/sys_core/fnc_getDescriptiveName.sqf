@@ -70,7 +70,7 @@ private _text = switch (_radioClass) do {
         } else {
             // AKW (Automatic Channel) Mode
             private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
-            format ["Chn %1 NetID %2", (_channelNumber), HASH_GET(_hashData,"networkID")]
+            format [LELSTRING(ace_interact,channelNetIDShort), (_channelNumber), HASH_GET(_hashData,"networkID")]
         };
         format ["%1 %2", _name, _description]
     };

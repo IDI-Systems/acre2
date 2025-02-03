@@ -38,6 +38,11 @@
             <German>%1 Bk %2 Kn %3</German>
             <Italian>%1 Bc %2 Cn %3</Italian>
         </Key>
+        <Key ID="STR_ACRE_ace_interact_channelNetIDShort">
+            <English>Chn %1 NetID %2</English>
+            <German>SP %1 FK-Nr %2</German>
+            <Italian>Cn %1 Rete %2</Italian>
+        </Key>
         <Key ID="STR_ACRE_ace_interact_lowerHeadset">
             <English>Lower Headset</English>
             <Spanish>Bajar auriculares</Spanish>
