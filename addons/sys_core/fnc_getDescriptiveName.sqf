@@ -62,6 +62,18 @@ private _text = switch (_radioClass) do {
         };
         format [LELSTRING(ace_interact,channelShort), _name, _channel]
     };
+    case "ACRE_SEM70": {
+        private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+        private _description = if (HASH_GET(_hashData,"mode") == "singleChannel") then {
+            // HW (Manual Channel) Mode
+            format ["%1 MHz", [HASH_GET(_hashData,"frequencyTX"), 1, 3] call CBA_fnc_formatNumber]
+        } else {
+            // AKW (Automatic Channel) Mode
+            private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
+            format ["Chn %1 NetID %2", (_channelNumber), HASH_GET(_hashData,"networkID")]
+        };
+        format ["%1 %2", _name, _description]
+    };
     default {
         format [LELSTRING(ace_interact,channelShort), _name, _radioId call EFUNC(api,getRadioChannel)]
     };
