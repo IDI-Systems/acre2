@@ -24,8 +24,8 @@ _radioId = toLower _radioId;
 // Get the radio's name
 private _name = if (_radioId in ACRE_ACCESSIBLE_RACK_RADIOS || {_radioId in ACRE_HEARABLE_RACK_RADIOS}) then {
     private _radioRack = [_radioId] call EFUNC(sys_rack,getRackFromRadio);
-    private _radioClass = [_radioRack] call EFUNC(sys_rack,getRackBaseClassname);
-    getText (configFile >> "CfgAcreComponents" >> _radioClass >> "name")
+    private _rackClass = [_radioRack] call EFUNC(sys_rack,getRackBaseClassname);
+    getText (configFile >> "CfgAcreComponents" >> _rackClass >> "name")
 } else {
     // Include the owner's name for external radios
     private _owner = if (_radioId in ACRE_ACTIVE_EXTERNAL_RADIOS) then {
