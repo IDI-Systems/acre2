@@ -40,7 +40,11 @@
 
 params ["_radioId", "", "", ""];
 
-private _channelNumber = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
-private _description = format ["Channel %1", ([(_channelNumber+1), 2] call CBA_fnc_formatNumber)];
+private _channelNumber = ([_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent)) + 1;
+private _description = switch (_channelNumber) do {
+    case 13: { "Channel H" };
+    case 14: { "Channel P" };
+    default { format ["Channel %1", ([_channelNumber, 2] call CBA_fnc_formatNumber)] };
+};
 
 _description
