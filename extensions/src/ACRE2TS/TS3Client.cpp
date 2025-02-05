@@ -456,7 +456,7 @@ std::string CTS3Client::getTempFilePath( void ) {
     char tempPath[MAX_PATH - 14];
     GetTempPathA(sizeof(tempPath), tempPath);
     std::string tempFolder = std::string(tempPath);
-    tempFolder += "acre";
+    tempFolder += "//acre";
     if (!PathFileExistsA(tempFolder.c_str())) {
         if (!CreateDirectoryA(tempFolder.c_str(), NULL)) {
             LOG("ERROR: UNABLE TO CREATE TEMP DIR");
