@@ -40,26 +40,26 @@ if (!_success) exitWith {
     WARNING_1("Vehicle %1 failed to initialise",_vehicle);
 };
 
-// A player must do the action of removing a rack
-private _player = objNull;
-
-if (isDedicated) then {
-    // Pick the first player
-    _player = (allPlayers - entities "HeadlessClient_F") select 0;
-} else {
-    _player = acre_player;
-};
-
 [{
-    params ["_vehicle", "_player"];
+    params ["_vehicle"];
     [_vehicle] call FUNC(areVehicleRacksInitialized)
 }, {
-    params ["_vehicle", "_player"];
+    params ["_vehicle"];
+
+    // A player must do the action of removing a rack
+    private _player = objNull;
+
+    if (isDedicated) then {
+        // Pick the first player
+        _player = (allPlayers - entities "HeadlessClient_F") select 0;
+    } else {
+        _player = acre_player;
+    };
 
     private _racks = [_vehicle] call FUNC(getVehicleRacks);
     for "_i" from (count _racks) - 1 to 0 step -1 do {
         [QEGVAR(sys_rack,removeVehicleRacks), [_vehicle, _racks select _i], _player] call CBA_fnc_targetEvent;
     };
-}, [_vehicle, _player]] call CBA_fnc_waitUntilAndExecute;
+}, [_vehicle]] call CBA_fnc_waitUntilAndExecute;
 
 true
