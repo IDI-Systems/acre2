@@ -587,7 +587,6 @@ class CfgVehicles {
         };
     };
 
-    class uns_plane;
     class uns_o1: uns_plane {
         class AcreRacks {
             class Rack_1 {
