@@ -11,7 +11,7 @@
  * 4: Remote <BOOL> (Unused)
  *
  * Return Value:
- * Description of the channel in the form "Block x - Channel y" <STRING>
+ * Description of the channel in the form "Frequency: x.y MHz" <STRING>
  *
  * Example:
  * ["ACRE_PRC77_ID_1", "getChannelDescription", [], [], false] call acre_sys_prc77_fnc_getChannelDescription
@@ -23,6 +23,6 @@ params ["_radioId", "",  "", "", ""];
 
 private _hashData = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
 
-private _description = format["Frequency: %1 MHz", HASH_GET(_hashData,"frequencyTX")];
+private _description = format["Frequency: %1 MHz", [HASH_GET(_hashData,"frequencyTX"), 1, 2] call CBA_fnc_formatNumber];
 
 _description

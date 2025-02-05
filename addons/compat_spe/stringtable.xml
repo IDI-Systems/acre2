@@ -95,6 +95,7 @@
             <Italian>M4A1 Sherman (Tardivo) (Comando)</Italian>
             <French>M4A1 Sherman (Tardif) (Commandement)</French>
             <Chinesesimp>M4A1屑尔曼(后期型)(指挥型)</Chinesesimp>
+            <Japanese>M4A1 Sherman (Late) (指揮車)</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_76_Command">
             <English>M4A1(76)W Sherman (Command)</English>
@@ -116,6 +117,7 @@
             <English>M4 Sherman (Composite) (Command)</English>
             <French>M4 Sherman (Composite) (Command)</French>
             <Chinesesimp>M4屑尔曼(复合型)(指挥型)</Chinesesimp>
+            <Japanese>M4 Sherman (Composite) (指揮車)</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Command">
             <English>M4 Sherman (Late) (Command)</English>
@@ -131,6 +133,7 @@
             <Italian>M4(105) Sherman (Comando)</Italian>
             <French>M4(105) Sherman (Commandement)</French>
             <Chinesesimp>M4(105)屑尔曼(指挥型)</Chinesesimp>
+            <Japanese>M4(105) Sherman (指揮車)</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_75_Command">
             <English>M4A3(75)W Sherman (Command)</English>
@@ -138,6 +141,7 @@
             <Italian>M4A3(75)W Sherman (Comando)</Italian>
             <French>M4A3(75)W Sherman (Commandement)</French>
             <Chinesesimp>M4A3(75)W屑尔曼(指挥型)</Chinesesimp>
+            <Japanese>M4A3(75)W Sherman (指揮車)</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_76_Command">
             <English>M4A3(76)W Sherman (Command)</English>
@@ -145,6 +149,7 @@
             <Italian>M4A3(76)W Sherman (Comando)</Italian>
             <French>M4A3(76)W Sherman (Commandement)</French>
             <Chinesesimp>M4A3(76)W屑尔曼(指挥型)</Chinesesimp>
+            <Japanese>M4A3(76)W Sherman (指揮車)</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_105_Command">
             <English>M4A3(105) Sherman (Command)</English>
@@ -152,6 +157,7 @@
             <Italian>M4A3(105) Sherman (Comando)</Italian>
             <French>M4A3(105) Sherman (Commandement)</French>
             <Chinesesimp>M4A3(105)屑尔曼(指挥型)</Chinesesimp>
+            <Japanese>M4A3(105) Sherman (指揮車)</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIII_K">
             <English>PzBefWg III Ausf. K</English>
@@ -175,6 +181,7 @@
             <Italian>PzBefWg V</Italian>
             <French>PzBefWg V</French>
             <Chinesesimp>五号坦克"豹"</Chinesesimp>
+            <Japanese>PzBefWg V</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgVI">
             <English>PzBefWg VI</English>
@@ -188,6 +195,7 @@
             <English>Bfw. Jagdpanther</English>
             <French>Bfw. Jagdpanther</French>
             <Chinesesimp>猎豹坦克歼击车(指挥型)</Chinesesimp>
+            <Japanese>Bfw. Jagdpanther</Japanese>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioOperator">
             <English>Radio Operator</English>

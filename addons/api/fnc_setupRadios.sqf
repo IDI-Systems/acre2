@@ -5,13 +5,8 @@
  *
  * Arguments:
  * [RadioSetting1, RadioSetting2, ...] <ARRAY>
- * 
- * RadioSetting: [RadioType, Channel] or
- *               [RadioType, [Channel, Block]] or
- *               [RadioType, MHz] or
- *               [RadioType, [MHz, KHz]]
- *   0: Radio Base Class <STRING>
- *   1: Radio Channel/Block/Frequency <INTEGER> or <ARRAY>
+ *   0: Radio Type (Base Class) <STRING>
+ *   1: Radio Channel or [Channel, Block] or Frequency (MHz or [MHz, KHz]) <INTEGER> or <ARRAY>
  *
  * Return Value:
  * Successful <BOOLEAN>
@@ -19,10 +14,10 @@
  * Example:
  * _success = [ ["ACRE_PRC343", [2,3]], ["ACRE_PRC152", 3], ["ACRE_PRC77", [31,15]] ] call acre_api_fnc_setupRadios;
  * // Will set PRC343 to Ch2 Blk3, PRC152 to Ch3 and PRC77 to 31.15 MHz
- * 
+ *
  * _success = [ ["ACRE_PRC343", 6], ["ACRE_PRC152", 2], ["ACRE_PRC152", 3] ] call acre_api_fnc_setupRadios;
  * // Will set PRC343 to Ch6 Blk1, the first PRC152 to Ch2 and the second PRC152 to Ch3
- * 
+ *
  * _success = [ ["ACRE_SEM52SL", 8], ["ACRE_SEM70", [34,075]] ] call acre_api_fnc_setupRadios;
  * // Will set SEM52SL to Ch8 and SEM70 to 34.075 MHz
  *

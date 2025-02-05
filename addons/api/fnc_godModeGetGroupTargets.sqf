@@ -4,7 +4,7 @@
  * Returns given group's current targets.
  *
  * Arguments:
- * 1: Group (0-based index or -1 for current channel) <NUMBER> (default: 0)
+ * 0: Group (0-based index or -1 for current channel) <NUMBER> (default: 0)
  *
  * Return Value:
  * Group targets <ARRAY>
