@@ -15,6 +15,20 @@ In order to use and mount and unmount (when possible) a vehicle rack, ACE3 Inter
 
 Configuring the vehicle rack (opening the radio GUI) is disabled for *turned out* positions.
 
+## Removing racks from vehicles
+
+Racks can be removed on a per vehicle basis using `acre_api_fnc_removeAllRacksFromVehicle`.
+
+Example using the init box of a vehicle
+
+```sqf
+[{
+    if (isServer) then {
+        _this call acre_api_fnc_removeAllRacksFromVehicle;
+    };
+}, this] call CBA_fnc_execNextFrame;
+```
+
 ## Vehicle intercom
 
 In addition, vehicle racks are integrated into the intercom system. A rack with access to *crew* or *passenger* intercom allows players without access to the rack to hear incoming transmissions. These players however, will not be able to configure the radio nor transmit through it in the current implementation.
