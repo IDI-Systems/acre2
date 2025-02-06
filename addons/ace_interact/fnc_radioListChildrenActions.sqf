@@ -49,7 +49,7 @@ private _action = [QGVAR(toggleHeadset), _text, _icon, {[] call EFUNC(sys_core,t
 _actions pushBack [_action, [], _target];
 
 if (!EGVAR(sys_core,automaticAntennaDirection)) then {
-    private _dir = _target getVariable [QEGVAR(sys_core,antennaDirUp), false];
+    private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
     private _text = [LLSTRING(bendAntenna), LLSTRING(straightenAntenna)] select _dir;
     private _icon = [QPATHTOF(data\icons\bend_antenna.paa), QPATHTOF(data\icons\straighten_antenna.paa)] select _dir;
 

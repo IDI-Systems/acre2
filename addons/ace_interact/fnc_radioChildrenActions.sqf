@@ -49,7 +49,7 @@ if (!(_radio in ACRE_EXTERNALLY_USED_PERSONAL_RADIOS)) then {
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 
-    if (!((_radio in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut _target}) || _radio in ACRE_HEARABLE_RACK_RADIOS)) then {
+    if (!((_radio in ACRE_ACCESSIBLE_RACK_RADIOS && {isTurnedOut acre_player}) || _radio in ACRE_HEARABLE_RACK_RADIOS)) then {
         _action = [
             QGVAR(openRadio),
             LELSTRING(sys_gui,Open),
