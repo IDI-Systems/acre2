@@ -23,16 +23,16 @@ _params params ["_radio"];
 
 private _actions = [];
 private _playerOwnsRadio = acre_player == [_radio] call FUNC(getExternalRadioOwner);
+private _isManpackRadio = [_radio] call EFUNC(sys_radio,isManpackRadio);
 
 if (_playerOwnsRadio) then {
-    private _string =  localize LSTRING(giveHeadset);
-    if ([_radio] call EFUNC(sys_radio,isManpackRadio)) then {
-        _string = localize LSTRING(giveHandset)
-    };
+    private _text = [LLSTRING(giveHeadset), LLSTRING(giveHandset)] select _isManpackRadio;
+    private _icon = [QPATHTOEF(ace_interact,data\icons\give_headset.paa), QPATHTOEF(ace_interact,data\icons\give_phone.paa)] select _isManpackRadio;
+
     private _action = [
         QGVAR(giveRadio),
-        _string,
-        "",
+        _text,
+        _icon,
         {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
         {!([_this select 2] call FUNC(isExternalRadioUsed))},
         {},
@@ -40,14 +40,13 @@ if (_playerOwnsRadio) then {
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } else {
-    private _string =  localize LSTRING(takeHeadset);
-    if ([_radio] call EFUNC(sys_radio,isManpackRadio)) then {
-        _string =  localize LSTRING(takeHandset)
-    };
+    private _text = [LLSTRING(takeHeadset), LLSTRING(takeHandset)] select _isManpackRadio;
+    private _icon = [QPATHTOEF(ace_interact,data\icons\headset.paa), QPATHTOEF(ace_interact,data\icons\phone.paa)] select _isManpackRadio;
+
     private _action = [
         QGVAR(useRadio),
-        _string,
-        "",
+        _text,
+        _icon,
         {[_this select 2, acre_player] call FUNC(startUsingExternalRadio)},
         {!([_this select 2] call FUNC(isExternalRadioUsed))},
         {},
@@ -58,14 +57,13 @@ if (_playerOwnsRadio) then {
 
 // Check if we are giving or returning the headset
 if ([_radio, _target] call FUNC(checkReturnGive)) then {
-    private _string =  localize LSTRING(returnHeadset);
-    if ([_radio] call EFUNC(sys_radio,isManpackRadio)) then {
-        _string =  localize LSTRING(returnHandset)
-    };
+    private _text = [LLSTRING(returnHeadset), LLSTRING(returnHandset)] select _isManpackRadio;
+    private _icon = [QPATHTOEF(ace_interact,data\icons\return_headset.paa), QPATHTOEF(ace_interact,data\icons\return_phone.paa)] select _isManpackRadio;
+
     private _action = [
         QGVAR(returnRadio),
-        _string,
-        "",
+        _text,
+        _icon,
         {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
         {[_this select 2] call FUNC(isExternalRadioUsed)},
         {},
@@ -73,14 +71,13 @@ if ([_radio, _target] call FUNC(checkReturnGive)) then {
     ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 } else {
-    private _string =  localize LSTRING(giveHeadset);
-    if ([_radio] call EFUNC(sys_radio,isManpackRadio)) then {
-        _string = localize LSTRING(giveHandset)
-    };
+    private _text = [LLSTRING(giveHeadset), LLSTRING(giveHandset)] select _isManpackRadio;
+    private _icon = [QPATHTOEF(ace_interact,data\icons\give_headset.paa), QPATHTOEF(ace_interact,data\icons\give_phone.paa)] select _isManpackRadio;
+
     private _action = [
         QGVAR(giveRadio),
-        _string,
-        "",
+        _text,
+        _icon,
         {[_this select 2, _target] call FUNC(stopUsingExternalRadio)},
         {[_this select 2] call FUNC(isExternalRadioUsed)},
         {},
