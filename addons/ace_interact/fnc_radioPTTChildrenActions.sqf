@@ -1,17 +1,21 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * SHORT DESCRIPTION
+ * Create and return ace actions for assigning Push-To-Talk buttons.
  *
  * Arguments:
- * 0: ARGUMENT ONE <TYPE>
- * 1: ARGUMENT TWO <TYPE>
+ * 0: Target (Player) <OBJECT>
+ * 1: Player <OBJECT>
+ * 2: Arguments <ARRAY>
+ *      0: Radio ID <STRING>
+ *      1: Unused <ANY>
+ *      2: The array of radio ID’s which are assigned to each PTT key. These are returned in order, from key 1-3 <ARRAY>
  *
  * Return Value:
- * RETURN VALUE <TYPE>
+ * ACE actions <ARRAY>
  *
  * Example:
- * [ARGUMENTS] call acre_ace_interact_fnc_radioPTTChildrenActions
+ * _this call acre_ace_interact_fnc_radioPTTChildrenActions
  *
  * Public: No
  */
@@ -22,17 +26,13 @@ _params params ["_radio", "", "_pttAssign"];
 private _actions = [];
 private _idx = _pttAssign find _radio;
 
-if (_idx != 0) then {
-    private _action = [QGVAR(mpttAssign1), format [localize LSTRING(setAsMultiPTT), 1], "", {(_this + [0]) call FUNC(actionSetMTT)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
-};
-if (count _pttAssign > 1 and _idx != 1) then {
-    private _action = [QGVAR(mpttAssign2), format [localize LSTRING(setAsMultiPTT), 2], "", {(_this + [1]) call FUNC(actionSetMTT)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
-};
-if (count _pttAssign > 2 and _idx != 2) then {
-    private _action = [QGVAR(mpttAssign3), format [localize LSTRING(setAsMultiPTT), 3], "", {(_this + [2]) call FUNC(actionSetMTT)}, {true}, {}, _params] call ace_interact_menu_fnc_createAction;
-    _actions pushBack [_action, [], _target];
+for "_i" from 1 to 3 do {
+    if (count _pttAssign > (_i - 1) && _idx isNotEqualTo (_i - 1)) then {
+        private _text = format [LLSTRING(setAsMultiPTT), _i];
+        private _icon = format [QPATHTOF(data\icons\ptt_%1.paa), _i];
+        private _action = [format [QGVAR(mpttAssign%1), _i], _text, _icon, LINKFUNC(actionSetMTT), {true}, {}, [_radio, _pttAssign, _i]] call ace_interact_menu_fnc_createAction;
+        _actions pushBack [_action, [], _target];
+    };
 };
 
 _actions

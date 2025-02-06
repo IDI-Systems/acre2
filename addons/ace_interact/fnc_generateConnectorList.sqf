@@ -27,7 +27,7 @@ private _connectors = getArray (_componentClass >> "connectors");
 
 private _connectorData = _connectedComponents select _connectorIndex;
 
-if (!isNil "_connectorData") then { // Comomponent attached.
+if (!isNil "_connectorData") then { // Component attached.
     //private _connectorConfigData = _connectors select _connectorIndex;
     _connectorData params ["_connectorIndex","_connectorChildData"];
     _connectorChildData params ["_childComponentName"];

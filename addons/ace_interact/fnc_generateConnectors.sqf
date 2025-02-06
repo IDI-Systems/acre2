@@ -34,7 +34,7 @@ private _parentType = getNumber (_componentClass >> "type");
     private _connectorData = _connectedComponents select _forEachIndex;
     private _icon = "";
 
-    if (!isNil "_connectorData") then { // Comomponent attached.
+    if (!isNil "_connectorData") then { // Component attached.
         _connectorData params ["_childComponentName"];
         private _config = configFile >> "CfgAcreComponents" >> _childComponentName;
         if (isNull _config) then {
@@ -44,8 +44,8 @@ private _parentType = getNumber (_componentClass >> "type");
         if (_childDisplayName == "") then { _childDisplayName = getText (_config >> "name"); };
         private _type = getNumber (_config >> "type");
         call {
-            if (_type == ACRE_COMPONENT_ANTENNA) exitWith {_icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";};
-            if (_type == ACRE_COMPONENT_RACK) exitWith {_icon = "\idi\acre\addons\ace_interact\data\icons\racks.paa";};
+            if (_type == ACRE_COMPONENT_ANTENNA) exitWith {_icon = QPATHTOF(data\icons\antenna.paa);};
+            if (_type == ACRE_COMPONENT_RACK) exitWith {_icon = QPATHTOF(data\icons\racks.paa);};
             if (_type == ACRE_COMPONENT_RADIO) exitWith {_icon = getText (configFile >> "CfgWeapons" >> configName (_config) >> "picture");};
         };
         _childParams append [_type, _childDisplayName];
