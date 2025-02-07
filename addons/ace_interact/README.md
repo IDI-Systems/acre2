@@ -15,7 +15,10 @@ License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.
 - [lower_headset.paa](data/icons/lower_headset.paa) - headset (modified)
 - [open.paa](data/icons/open.paa) - arrow-up-right-from-square
 - [phone_call.paa](data/icons/phone_call.paa) - phone-volume
-- [phone.paa](data/icons/phone.paa) - phone
+- [ppt.paa](data/icons/ptt.paa) - microphone
+- [ppt_1.paa](data/icons/ptt_1.paa) - microphone (modified)
+- [ppt_2.paa](data/icons/ptt_2.paa) - microphone (modified)
+- [ppt_3.paa](data/icons/ptt_3.paa) - microphone (modified)
 - [raise_headset.paa](data/icons/raise_headset.paa) - headset (modified)
 - [return_headset.paa](data/icons/return_headset.paa) - headset, slash (modified)
 - [return_phone.paa](data/icons/return_phone.paa) - phone, slash (modified)
