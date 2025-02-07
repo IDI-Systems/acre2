@@ -12,7 +12,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")
     private _acreNode = [
         "ACRE_ZeusEars",
         "ACRE",
-        "",
+        ICON_RADIO_CALL,
         {},
         {true}
     ] call ace_interact_menu_fnc_createAction;
@@ -21,7 +21,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")
     private _spectatorEars = [
         QGVAR(spectatorEars),
         LLSTRING(SpectatorEars),
-        "",
+        "\a3\ui_f\data\gui\rsc\rscdisplayarsenal\binoculars_ca.paa",
         { call EFUNC(sys_core,spectatorOn) },
         { GVAR(zeusCanSpectate) && {!ACRE_IS_SPECTATOR} }
     ] call ace_interact_menu_fnc_createAction;
@@ -30,7 +30,7 @@ if (hasInterface && {isClass (configFile >> "CfgPatches" >> "ace_interact_menu")
     private _zeusEars = [
         QGVAR(zeusEars),
         LLSTRING(ZeusEars),
-        "",
+        "\a3\Ui_F_Curator\Data\Logos\arma3_curator_eye_32_ca.paa",
         { call EFUNC(sys_core,spectatorOff) },
         { GVAR(zeusCanSpectate) && {ACRE_IS_SPECTATOR} }
     ] call ace_interact_menu_fnc_createAction;
