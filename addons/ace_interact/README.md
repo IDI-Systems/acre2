@@ -4,6 +4,7 @@ Some icons were taken (and modified) from Font Awesome Free 6.7.2 by https://fon
 License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.
 
 - [active.paa](data/icons/active.paa) - star
+- [antenna.paa](data/icons/antenna.paa) - tower-cell
 - [bend_antenna.paa](data/icons/bend_antenna.paa) - tower-broadcast (modified)
 - [both_ears.paa](data/icons/both_ears.paa) - headset (modified)
 - [connect.paa](data/icons/connect.paa) - link
@@ -13,6 +14,7 @@ License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.
 - [headset.paa](data/icons/headset.paa) - headset
 - [left_ear.paa](data/icons/left_ear.paa) - volume-high (modified)
 - [lower_headset.paa](data/icons/lower_headset.paa) - headset (modified)
+- [no_antenna.paa](data/icons/no_antenna.paa) - tower-cell, slash (modified)
 - [open.paa](data/icons/open.paa) - arrow-up-right-from-square
 - [phone_call.paa](data/icons/phone_call.paa) - phone-volume
 - [ppt.paa](data/icons/ptt.paa) - microphone
@@ -27,3 +29,4 @@ License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.
 - [stop_phone_call.paa](data/icons/stop_phone_call.paa) - phone-volume, slash (modified)
 - [straighten_antenna.paa](data/icons/straighten_antenna.paa) - tower-broadcast (modified)
 - [unshare.paa](data/icons/unshare.paa) - share, slash (modified)
+- [voice.paa](data/icons/voice.paa) - user, volume-high (modified)
