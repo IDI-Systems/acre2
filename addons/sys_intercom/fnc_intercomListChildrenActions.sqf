@@ -78,17 +78,49 @@ if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMA
             // Params _isBroadcasting, _broadcastingUnit
             ((_target getVariable [QGVAR(broadcasting), [false, objNull]]) select _intercomNetwork) params ["_isBroadcasting", ""];
             if (_isBroadcasting) then {
-                _action = [QGVAR(stopBroadcast), LLSTRING(stopBroadcast), "", {[_target, _player, _this select 2, false] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = [
+                    QGVAR(stopBroadcast),
+                    LLSTRING(stopBroadcast),
+                    QPATHTOEF(ace_interact,data\icons\stop_broadcast.paa),
+                    {[_target, _player, _this select 2, false] call FUNC(handleBroadcasting)},
+                    {true},
+                    {},
+                    _intercomNetwork
+                ] call ace_interact_menu_fnc_createAction;
             } else {
-                _action = [QGVAR(acre_startBroadcast), LLSTRING(startBroadcast), "", {[_target, _player, _this select 2, true] call FUNC(handleBroadcasting)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = [
+                    QGVAR(acre_startBroadcast),
+                    LLSTRING(startBroadcast),
+                    QPATHTOEF(ace_interact,data\icons\broadcast.paa),
+                    {[_target, _player, _this select 2, true] call FUNC(handleBroadcasting)},
+                    {true},
+                    {},
+                    _intercomNetwork
+                ] call ace_interact_menu_fnc_createAction;
             };
             _actions pushBack [_action, [], _target];
 
             private _accentActive = (_target getVariable [QGVAR(accent), [false]]) select _intercomNetwork;
             if (_accentActive) then {
-                _action = [QGVAR(deactivateAccent), LLSTRING(deactivateAccent), "", {[_target, _this select 2, false] call FUNC(handleAccent)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = [
+                    QGVAR(deactivateAccent),
+                    LLSTRING(deactivateAccent),
+                    QPATHTOEF(ace_interact,data\icons\stop_accent.paa),
+                    {[_target, _this select 2, false] call FUNC(handleAccent)},
+                    {true},
+                    {},
+                    _intercomNetwork
+                ] call ace_interact_menu_fnc_createAction;
             } else {
-                _action = [QGVAR(activateAccent), LLSTRING(activateAccent), "", {[_target, _this select 2, true] call FUNC(handleAccent)}, {true}, {}, _intercomNetwork] call ace_interact_menu_fnc_createAction;
+                _action = [
+                    QGVAR(activateAccent),
+                    LLSTRING(activateAccent),
+                    QPATHTOEF(ace_interact,data\icons\accent.paa),
+                    {[_target, _this select 2, true] call FUNC(handleAccent)},
+                    {true},
+                    {},
+                    _intercomNetwork
+                ] call ace_interact_menu_fnc_createAction;
             };
             _actions pushBack [_action, [], _target];
         };
