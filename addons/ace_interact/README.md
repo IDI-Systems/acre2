@@ -3,10 +3,12 @@
 Some icons were taken (and modified) from Font Awesome Free 6.7.2 by https://fontawesome.com.
 License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.
 
+- [accent.paa](data/icons/accent.paa) - user, volume-high, circle-exclamation (modified)
 - [active.paa](data/icons/active.paa) - star
 - [antenna.paa](data/icons/antenna.paa) - tower-cell
 - [bend_antenna.paa](data/icons/bend_antenna.paa) - tower-broadcast (modified)
 - [both_ears.paa](data/icons/both_ears.paa) - headset (modified)
+- [broadcast.paa](data/icons/broadcast.paa) - user, volume-high, volume-xmark (modified)
 - [connect.paa](data/icons/connect.paa) - link
 - [disconnect.paa](data/icons/disconnect.paa) - link, slash (modified)
 - [give_headset.paa](data/icons/give_headset.paa) - headset (modified)
@@ -26,6 +28,8 @@ License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.
 - [return_phone.paa](data/icons/return_phone.paa) - phone, slash (modified)
 - [right_ear.paa](data/icons/right_ear.paa) - volume-high (modified)
 - [share.paa](data/icons/share.paa) - share
+- [stop_accent.paa](data/icons/stop_accent.paa) - user, volume-high, circle-exclamation, slash (modified)
+- [stop_broadcast.paa](data/icons/stop_broadcast.paa) - user, volume-high (modified)
 - [stop_phone_call.paa](data/icons/stop_phone_call.paa) - phone-volume, slash (modified)
 - [straighten_antenna.paa](data/icons/straighten_antenna.paa) - tower-broadcast (modified)
 - [unshare.paa](data/icons/unshare.paa) - share, slash (modified)
