@@ -21,7 +21,7 @@ params ["_target", "_player", "_intercomNetwork"];
 private _actions = [];
 
 // Params _intercomNames and _intercomDisplayNames
-(_target getVariable [QGVAR(intercomNames), []] select _intercomNetwork) params ["_intercomName", ""];
+(_target getVariable [QGVAR(intercomNames), []] select _intercomNetwork) params ["_intercomName"];
 
 if ([_target, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_HASINTERCOMACCESS] call FUNC(getStationConfiguration)) then {
     if (INTERCOM_DISCONNECTED == [_target, _player, _intercomNetwork, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration)) then {

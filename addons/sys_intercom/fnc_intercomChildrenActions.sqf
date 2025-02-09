@@ -22,11 +22,11 @@ private _actions = [];
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
 
 {
-    (_intercomNames select _forEachIndex) params ["_intercomName", "", "_intercomShortName"];
+    (_intercomNames select _forEachIndex) params ["_intercomName", "", "_intercomShortName", ["_icon", ""]];
     private _action = [
         format [QGVAR(_intercom_%1), _intercomName],
         _intercomShortName,
-        "",
+        _icon,
         {
             //USES_VARIABLES ["_target", "_player"];
             params ["", "", "_params"];
