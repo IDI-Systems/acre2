@@ -1,0 +1,13 @@
+CM Aerial Rod 12ft
+CM 
+CM 
+CM 
+CE
+GW	1	4	0	0	0	0	0	3.66	.0015	'Wire 1, 9 segments, halve wavelength long.
+GE	1
+LD	4	1	1	4	50
+GN	1
+EK
+EX	0	1	1	0	1	0	0	'Voltage source (1+j0) at wire 1 segment 1.
+FR	0	482	0	0	7.4	1
+EN
