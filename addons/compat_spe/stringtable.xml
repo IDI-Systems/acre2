@@ -115,6 +115,8 @@
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_composite_Command">
             <English>M4 Sherman (Composite) (Command)</English>
+            <German>M4 Sherman (Hybrid) (Kommando)</German>
+            <Italian>M4 Sherman (Ibrido) (Comando)</Italian>
             <French>M4 Sherman (Composite) (Command)</French>
             <Chinesesimp>M4屑尔曼(复合型)(指挥型)</Chinesesimp>
             <Japanese>M4 Sherman (Composite) (指揮車)</Japanese>
@@ -193,6 +195,8 @@
         </Key>
         <Key ID="STR_ACRE_compat_spe_BfwJagdpanther">
             <English>Bfw. Jagdpanther</English>
+            <German>Bfw. Jagdpanther</German>
+            <Italian>Bfw. Jagdpanther</Italian>
             <French>Bfw. Jagdpanther</French>
             <Chinesesimp>猎豹坦克歼击车(指挥型)</Chinesesimp>
             <Japanese>Bfw. Jagdpanther</Japanese>

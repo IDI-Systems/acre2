@@ -545,7 +545,7 @@
             <German>Auf linken Ohrhörer legen</German>
             <Japanese>左耳側からに設定</Japanese>
             <Czech>Nastavit do levého ucha</Czech>
-            <Italian>Imposta sull'Orecchio Sinistro</Italian>
+            <Italian>Imposta auricolare sinistro</Italian>
             <French>Régler sur l'oreille gauche</French>
             <Korean>왼쪽 귀로 설정</Korean>
             <Polish>Ustaw na lewe ucho</Polish>
@@ -561,7 +561,7 @@
             <German>Auf beide Ohrhörer legen</German>
             <Japanese>両耳側からに設定</Japanese>
             <Czech>Nastavit do obou uší</Czech>
-            <Italian>Imposta su entrambe le orecchie</Italian>
+            <Italian>Centra auricolari</Italian>
             <French>Régler sur les deux oreilles</French>
             <Korean>양쪽 귀로 설정</Korean>
             <Polish>Ustaw na oboje uszu</Polish>
@@ -577,7 +577,7 @@
             <German>Auf rechten Ohrhörer legen</German>
             <Japanese>右耳側からに設定</Japanese>
             <Czech>Nastavit do pravého ucha</Czech>
-            <Italian>Imposta sull'Orecchio Destro</Italian>
+            <Italian>Imposta auricolare destro</Italian>
             <French>Régler sur l'oreille droite</French>
             <Korean>오른쪽 귀로 설정</Korean>
             <Polish>Ustaw na prawe ucho</Polish>
@@ -612,7 +612,7 @@
             <Korean>헤드셋 벗기</Korean>
             <Portuguese>Fones Abaixados</Portuguese>
             <Polish>Słuchawki zdjęte</Polish>
-            <Italian>Cuffie tolta</Italian>
+            <Italian>Cuffia abbassata</Italian>
             <Spanish>Bajar auriculares</Spanish>
             <French>Casque enlevé</French>
             <Turkish>Kulaklık İndirildi</Turkish>
