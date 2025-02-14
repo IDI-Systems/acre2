@@ -114,6 +114,9 @@
             <Portuguese>Desmutar Clientes</Portuguese>
             <Turkish>Diğer Client'ları Susturma</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_core_radioNoise_displayName">
+            <English>Radio FX Noise</English>
+        </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
             <English>TeamSpeak Channel Switch</English>
             <Russian>Смена ТимСпик канала</Russian>
