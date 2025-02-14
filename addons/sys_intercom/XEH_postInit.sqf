@@ -51,10 +51,6 @@ private _category = ["ACRE2", LLSTRING(intercom)];
     [1, false] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [false, true, true]]] call CBA_fnc_addKeybind;
 
-[_category, QGVAR(openGui), LLSTRING(openGui), {
-    [-1] call FUNC(openGui)
-}, "", [DIK_TAB, [true, true, false]]] call CBA_fnc_addKeybind;
-
 [_category, QGVAR(previousWorkingRadio), [LLSTRING(previousWorkingRadioKey), LLSTRING(previousWorkingRadioKey_description)], "", {
     [-1, true] call FUNC(switchWorkingRadioFast)
 }, [DIK_1, [false, true, false]]] call CBA_fnc_addKeybind;
@@ -62,6 +58,10 @@ private _category = ["ACRE2", LLSTRING(intercom)];
 [_category, QGVAR(nextWorkingRadio), [LLSTRING(nextWorkingRadioKey), LLSTRING(nextWorkingRadioKey_description)], "", {
     [1, true] call FUNC(switchWorkingRadioFast)
 }, [DIK_2, [false, true, false]]] call CBA_fnc_addKeybind;
+
+[_category, QGVAR(openGui), LLSTRING(openGui), {
+    [-1] call FUNC(openGui)
+}, "", [DIK_TAB, [true, true, false]]] call CBA_fnc_addKeybind;
 
 // Intercom configuration
 ["vehicle", {
