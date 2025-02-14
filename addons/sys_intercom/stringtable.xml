@@ -597,16 +597,16 @@
             <German>Vorheriger Funkkreis</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousWorkingRadioKey_description">
-            <English>Switch to the previous radio rack capable of receiving and transmitting.</English>
-            <German>Setzt das vorherige Funkgerät als aktiven Funkkreis.</German>
+            <English>Switches to the previous radio rack and sets it as the working radio within the first connected intercom network.</English>
+            <German>Setzt das vorherige Funkgerät als aktiven Funkkreis im ersten verbundenen Bordfunknetzwerk.</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextWorkingRadioKey">
             <English>Next Working Radio</English>
             <German>Nächster Funkkreis</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextWorkingRadioKey_description">
-            <English>Switch to the next radio rack capable of receiving and transmitting.</English>
-            <German>Setzt das nächste Funkgerät als aktiven Funkkreis.</German>
+            <English>Switches to the next radio rack and sets it as the working radio within the first connected intercom network.</English>
+            <German>Setzt das nächste Funkgerät als aktiven Funkkreis im ersten verbundenen Bordfunknetzwerk.</German>
         </Key>
     </Package>
 </Project>
