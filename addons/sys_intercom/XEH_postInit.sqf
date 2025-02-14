@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
+LOAD_SOUND(Acre_GenericClick);
+
 private _addClassEH = {
     ["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
     ["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
@@ -51,6 +53,14 @@ if (!hasInterface) exitWith {};
 ["ACRE2", QGVAR(openGui), localize LSTRING(openGui), {
     [-1] call FUNC(openGui)
 }, "", [DIK_TAB, [true, true, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", QGVAR(previousWorkingRadio), [LLSTRING(previousWorkingRadioKey), LLSTRING(previousWorkingRadioKey_description)], "", {
+    [-1, true] call FUNC(switchWorkingRadioFast)
+}, [DIK_1, [false, true, false]]] call CBA_fnc_addKeybind;
+
+["ACRE2", QGVAR(nextWorkingRadio), [LLSTRING(nextWorkingRadioKey), LLSTRING(nextWorkingRadioKey_description)], "", {
+    [1, true] call FUNC(switchWorkingRadioFast)
+}, [DIK_2, [false, true, false]]] call CBA_fnc_addKeybind;
 
 // Intercom configuration
 ["vehicle", {
