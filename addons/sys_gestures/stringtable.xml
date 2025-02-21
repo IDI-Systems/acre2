@@ -70,7 +70,7 @@
             <Italian>Connessioni a telefoni di fanteria, antenne a pavimento e radio condivise verranno visualizzate con cavi.</Italian>
             <French>Les connexions aux téléphones de l'infanterie, aux GSA et aux radios partagées seront visualisées à l'aide de fils de connexion.</French>
             <Chinesesimp>使用车辆电话, 地钉天线, 共享无线电时显示连接线缆</Chinesesimp>
-            <Japanese>車外電話機、地上アンテナ、共有無線への接続を、ケーブルワイヤーで視覚化します。</Japanese>
+            <Japanese>車外電話機、地上アンテナ、共有無線への接続をケーブルワイヤーで視覚化します。</Japanese>
         </Key>
     </Package>
 </Project>

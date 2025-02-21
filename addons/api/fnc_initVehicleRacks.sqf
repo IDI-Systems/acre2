@@ -38,25 +38,30 @@ if ([_vehicle] call FUNC(areVehicleRacksInitialized)) exitWith {
     false
 };
 
-// A player must do the action of initialising a rack
-private _player = objNull;
+// Exec the rest on the next frame, to prevent issues if the function is called in a 3DEN init box
+[{
+    params ["_vehicle", "_condition"];
 
-private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
-if (_condition isEqualTo {} && {_vehiclePresetName isNotEqualTo ""}) then {
-    _player = ([] call CBA_fnc_players) select 0;
-} else {
-    private _players = [] call CBA_fnc_players;
-    private _index = _players findIf {[_x] call _condition};
+    // A player must do the action of initialising a rack
+    private _player = objNull;
 
-    if (_index == -1) then {
-        WARNING_1("No unit found for condition %1 - defaulting to first player",_condition);
-        _index = 0;
+    private _vehiclePresetName = [_vehicle] call FUNC(getVehicleRacksPreset);
+    if (_condition isEqualTo {} && {_vehiclePresetName isNotEqualTo ""}) then {
+        _player = ([] call CBA_fnc_players) select 0;
+    } else {
+        private _players = [] call CBA_fnc_players;
+        private _index = _players findIf {[_x] call _condition};
+
+        if (_index == -1) then {
+            WARNING_1("No unit found for condition %1 - defaulting to first player",_condition);
+            _index = 0;
+        };
+        _player = _players select _index;
     };
-    _player = _players select _index;
-};
 
-_vehicle setVariable [QEGVAR(sys_rack,initPlayer), _player, true];
+    _vehicle setVariable [QEGVAR(sys_rack,initPlayer), _player, true];
 
-[QEGVAR(sys_rack,initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
+    [QEGVAR(sys_rack,initVehicleRacks), [_vehicle], _player] call CBA_fnc_targetEvent;
+}, [_vehicle, _condition]] call CBA_fnc_execNextFrame;
 
 true
