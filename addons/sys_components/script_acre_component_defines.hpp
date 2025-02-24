@@ -16,6 +16,7 @@
 #define ACRE_CONNECTOR_CONN_MC2127 4
 #define ACRE_CONNECTOR_3_8 5
 #define ACRE_CONNECTOR_SMA 6
+#define ACRE_CONNECTOR_ROD 7
 
 // Racks
 #define ACRE_CONNECTOR_CONN_32PIN 6 // 32 Pin is the 152 side connector.
@@ -23,3 +24,4 @@
 #define ACRE_CONNECTOR_CONN_18PIN 8 // 18pin for the 148 Side connector
 #define ACRE_CONNECTOR_CONN_57PIN 9 // 57pin is the SEM70/80/90 interconnecting connector
 #define ACRE_CONNECTOR_CONN_14PIN 10 // 14 pin CX-4655
+#define ACRE_CONNECTOR_CONN_12PIN 11 // 12 pin for WS-38, interconnecting Wireless Set No. 19 in a vehicle and Wireless Set No. 38
