@@ -38,12 +38,14 @@
             <German>%1 Bk %2 Kn %3</German>
             <Italian>%1 Bc %2 Cn %3</Italian>
             <Japanese>%1 Blk %2 Ch %3</Japanese>
+            <French>%1 Bk %2 Ch %3</French>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelNetIDShort">
             <English>Chn %1 NetID %2</English>
             <German>SP %1 FK-Nr %2</German>
             <Italian>Cn %1 Rete %2</Italian>
             <Japanese>Ch %1 NetID %2</Japanese>
+            <French>Ch %1 NetID %2</French>
         </Key>
         <Key ID="STR_ACRE_ace_interact_lowerHeadset">
             <English>Lower Headset</English>
