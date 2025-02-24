@@ -42,13 +42,13 @@ with uiNamespace do {
         // player sideChat format["%1 %2", _x select 0, _x select 1];
         private _txPos = _sample select 0;
         private _rxPos = _sample select 1;
-        drawLine3D [ASLToATL _txPos, ASLToATL _rxPos, [0, 1, 0, 1]];
+        drawLine3D [ASLToAGL _txPos, ASLToAGL _rxPos, [0, 1, 0, 1]];
         private _reflections = _sample select 3;
         {
             if (count _x == 0) exitWith {};
             private _point = _x select 0;
-            drawLine3D [ASLToATL _txPos, ASLToATL _point, [1, 0, 0, 1]];
-            drawLine3D [ASLToATL _point, ASLToATL _rxPos, [0, 0, 1, 1]];
+            drawLine3D [ASLToAGL _txPos, ASLToAGL _point, [1, 0, 0, 1]];
+            drawLine3D [ASLToAGL _point, ASLToAGL _rxPos, [0, 0, 1, 1]];
         } forEach _reflections;
     } forEach GVAR(sampleData);
 };
