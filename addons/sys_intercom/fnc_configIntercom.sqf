@@ -34,6 +34,7 @@ private _accent = [];
     private _name = toLower (configName _x);
     private _displayName = getText (_x >> "displayName");
     private _shortName = getText (_x >> "shortName");
+    private _icon = getText (_x >> "icon");
     private _allowedPositions = getArray (_x >> "allowedPositions");
     private _disabledPositions = getArray (_x >> "disabledPositions");
     private _limitedPositions = getArray (_x >> "limitedPositions");
@@ -106,7 +107,7 @@ private _accent = [];
         };
     } forEach _limitedIntercomPositions;
 
-    _intercomNames pushBack [_name, _displayName, _shortName];
+    _intercomNames pushBack [_name, _displayName, _shortName, _icon];
     _intercomPositions pushBack _availabeIntercomPositions;
     _intercomExceptions pushBack _exceptionsIntercomPositions;
     _intercomLimitedPositions pushBack _limitedIntercomPositions;
