@@ -442,7 +442,7 @@ std::string CTS3Client::getConfigFilePath(void) {
     ts3Functions.getConfigPath(tempPath, MAX_PATH - 14);
 
     std::string tempFolder = std::string(tempPath);
-    tempFolder += "\\acre";
+    tempFolder += "acre";
     if (!PathFileExistsA(tempFolder.c_str())) {
         if (!CreateDirectoryA(tempFolder.c_str(), NULL)) {
             LOG("ERROR: UNABLE TO CREATE TEMP DIR");
