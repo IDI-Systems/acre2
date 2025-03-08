@@ -76,3 +76,5 @@ if (_newWorkPos isNotEqualTo 0) then {
 };
 
 [_vehicle, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_WORKKNOB, _newWorkPos] call FUNC(setStationConfiguration);
+
+true
