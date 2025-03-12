@@ -14,6 +14,7 @@ acre::Result CAcreSettings::save(std::string filename) {
     iniFile << "lastVersion = " << ACRE_VERSION << ";\n";
     iniFile << "globalVolume = " << this->m_GlobalVolume << ";\n";
     iniFile << "premixGlobalVolume = " << this->m_PremixGlobalVolume << ";\n";
+    iniFile << "disableRadioNoise = " << (this->m_DisableRadioNoise ? "true" : "false") << ";\n";
     iniFile << "disableUnmuteClients = " << (this->m_DisableUnmuteClients ? "true" : "false") << ";\n";
     iniFile << "disableTS3ChannelSwitch = " << (this->m_DisableTS3ChannelSwitch ? "true" : "false") << ";\n";
 
@@ -39,6 +40,7 @@ acre::Result CAcreSettings::load(std::string filename) {
     this->m_LastVersion = config.Get("acre2", "lastVersion", ACRE_VERSION);
     this->m_GlobalVolume = (float)config.GetReal("acre2", "globalVolume", 1.0f);
     this->m_PremixGlobalVolume = (float)config.GetReal("acre2", "premixGlobalVolume", 1.0f);
+    this->m_DisableRadioNoise = config.GetBoolean("acre2", "disableRadioNoise", false);
     this->m_DisableUnmuteClients = config.GetBoolean("acre2", "disableUnmuteClients", false);
     this->m_DisableTS3ChannelSwitch = config.GetBoolean("acre2", "disableTS3ChannelSwitch", false);
 
@@ -63,7 +65,7 @@ CAcreSettings::CAcreSettings() :
     m_DisablePosition(false),
     m_DisableMuting(false),
     m_EnableAudioTest(false),
-    m_DisableRadioFilter(false),
+    m_DisableRadioNoise(false),
     m_DisableUnmuteClients(false),
     m_DisableTS3ChannelSwitch(false),
     m_LastVersion(ACRE_VERSION),
