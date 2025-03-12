@@ -4,6 +4,7 @@ PREP_FOLDER(vic3);
 PREP(configIntercom);
 PREP(configIntercomStations);
 PREP(enterVehicle);
+PREP(getFirstConnectedIntercom);
 PREP(getStationVariableName);
 PREP(getStationConfiguration);
 PREP(getVolumeIntercomUnit);
@@ -45,6 +46,7 @@ PREP(updateVehicleInfoText);
 
 // Keybinding
 PREP(switchIntercomFast);
+PREP(switchWorkingRadioFast);
 PREP(handlePttKeyPress);
 PREP(handlePttKeyPressUp);
 
