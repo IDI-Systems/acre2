@@ -7,12 +7,14 @@ class CfgVehicles {
                 condition = QUOTE(acre_current_player isNotEqualTo player && {acre_player isEqualTo player});
                 exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotHandcuffed", "isNotSurrendering"};
                 statement = QUOTE([false] call FUNC(setUsePlayer));
+                icon = QPATHTOEF(ace_interact,data\icons\voice.paa);
             };
             class GVAR(playerEars) {
                 displayName = CSTRING(Player);
                 condition = QUOTE(acre_current_player isNotEqualTo player && {acre_player isNotEqualTo player});
                 exceptions[] = {"isNotSwimming", "isNotInside", "isNotSitting", "isNotHandcuffed", "isNotSurrendering"};
                 statement = QUOTE([true] call FUNC(setUsePlayer));
+                icon = QPATHTOEF(ace_interact,data\icons\voice.paa);
             };
         };
     };
