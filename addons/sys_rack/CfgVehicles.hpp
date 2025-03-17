@@ -26,6 +26,11 @@ class CfgVehicles {
     };
     RADIO_ID_LIST(ACRE_SEM90)
 
+    class ACRE_WS19 : ACRE_BaseRack {
+        displayName = "Wireless Set No. 19";
+    };
+    RADIO_ID_LIST(ACRE_WS19)
+
     // Define which vehicles have racks.
     class All {
         class AcreRacks {};
