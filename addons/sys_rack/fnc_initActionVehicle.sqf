@@ -29,8 +29,8 @@ if (!isClass (configFile >> "CfgPatches" >> "ace_interaction")) exitWith {}; // 
 
 private _condition = {true};
 private _statement = {}; // With no statement the action will only show if it has children
-private _text = localize LSTRING(Racks);
-private _icon = "\idi\acre\addons\ace_interact\data\icons\rack3.paa";
+private _text = LLSTRING(Racks);
+private _icon = QPATHTOEF(ace_interact,data\icons\rack3.paa);
 private _children = {_this call FUNC(rackListChildrenActions);};
 
 // Passenger action
