@@ -19,7 +19,7 @@
 params ["_vehicle", "_unit"];
 TRACE_2("enterVehicle",_vehicle,_unit);
 
-(_unit getVariable [QGVAR(vehicleInfantryPhone), [objNull]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
+(_unit getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
 if (!isNull _vehicleInfantryPhone) then {
     // Disconnect infantry phone
     [_vehicleInfantryPhone, _unit, 0, _infantryPhoneNetwork] call FUNC(updateInfantryPhoneStatus);
