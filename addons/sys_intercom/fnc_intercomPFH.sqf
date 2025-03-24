@@ -23,7 +23,8 @@ params ["_param", ""];
 _param params ["_player", "_vehicle"];
 
 // Process intercoms
-(_vehicle getVariable [QGVAR(unitInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_unitInfantryPhone", "_infantryPhoneNetwork"];
+(_player getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
+
 private _intercoms = _vehicle getVariable [QGVAR(intercomNames), []];
 private _intercomStations = _vehicle getVariable [QGVAR(intercomStations), []];
 
@@ -36,14 +37,22 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
         _connectionStatus = [_vehicle, _player, _i, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
     };
 
-    if (_player == _unitInfantryPhone && {_infantryPhoneNetwork == _i}) then {
-        (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
-        _infantryPhonePosition = _vehicle modelToWorld _infantryPhonePosition;
+    TRACE_5("Intercom Frame",_vehicle,_player,_vehicleInfantryPhone,_infantryPhoneNetwork,_i);
+    if (!isNull _vehicleInfantryPhone && {_infantryPhoneNetwork == _i}) then {
+        (_vehicleInfantryPhone getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
+        _infantryPhonePosition = _vehicleInfantryPhone modelToWorld _infantryPhonePosition;
         private _playerPosition = ASLToAGL (getPosASL _player);
         TRACE_4("Infantry Phone PFH Check",_infantryPhonePosition,_playerPosition,_infantryPhoneMaxDistance,_player distance _infantryPhonePosition);
-        // Add an extra meter leeway due to 3d position check height differences and movement
-        if (_playerPosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1 || {vehicle _player == _vehicle} || {!alive _player} || {captive _player} || {lifeState _player isEqualTo "INCAPACITATED"}) then {
-            [_vehicle, _player, 0, _i] call FUNC(updateInfantryPhoneStatus);
+
+        if (
+            (_playerPosition distance _infantryPhonePosition >= _infantryPhoneMaxDistance + 1) || // Add an extra meter leeway due to 3d position check height differences and movement
+            {!isNull objectParent _player} ||
+            {!alive _player} ||
+            {captive _player} ||
+            {lifeState _player isEqualTo "INCAPACITATED"}
+        ) then {
+            // Disconnect infantry phone
+            [_vehicleInfantryPhone, _player, 0, _i] call FUNC(updateInfantryPhoneStatus);
             _intercomUnits = [];
         } else {
             // Infantry phones are receive and transmit positions
