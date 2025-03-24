@@ -17,7 +17,7 @@
  */
 
 params ["_vehicle", "_unit"];
-TRACE_2("enterVehicle",typeOf _vehicle,typeOf _unit);
+TRACE_2("enterVehicle",_vehicle,_unit);
 
 if ((_unit == _vehicle) || {GVAR(intercomPFH) > -1}) then {
     [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
