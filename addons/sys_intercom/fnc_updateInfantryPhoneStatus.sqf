@@ -28,6 +28,7 @@ private _intercomText = format ["( %1 )", _intercomName];
 
 switch (_action) do {
     case 0: {
+        TRACE_3("Disconnect infantry phone",_vehicle,_unit,_intercomNetwork);
         // Stop using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), nil, true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
@@ -40,6 +41,7 @@ switch (_action) do {
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
     };
     case 1: {
+        TRACE_3("Connect infantry phone",_vehicle,_unit,_intercomNetwork);
         // Start using the intercom externally
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
@@ -51,6 +53,7 @@ switch (_action) do {
         GVAR(intercomPFH) = [DFUNC(intercomPFH), 1.1, [acre_player, _vehicle]] call CBA_fnc_addPerFrameHandler;
     };
     case 2: {
+        TRACE_4("Give infantry phone to another unit",_vehicle,_unit,_intercomNetwork,_givingUnit);
         // Give the intercom to another unit
         _givingUnit setVariable [QGVAR(vehicleInfantryPhone), nil, true];
         [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
@@ -62,6 +65,7 @@ switch (_action) do {
         [QGVAR(giveInfantryPhone), [_vehicle, _unit, 1, _message, _intercomNetwork, _position], _unit] call CBA_fnc_targetEvent;
     };
     case 3: {
+        TRACE_3("Update infantry phone vars",_vehicle,_unit,_intercomNetwork);
         _vehicle setVariable [QGVAR(unitInfantryPhone), [_unit, _intercomNetwork], true];
         _unit setVariable [QGVAR(vehicleInfantryPhone), [_vehicle, _intercomNetwork], true];
     };
