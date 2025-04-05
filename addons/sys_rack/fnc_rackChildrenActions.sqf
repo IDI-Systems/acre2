@@ -29,7 +29,7 @@ if (_mountedRadio == "") then { // Empty
     if ([_rackClassName] call FUNC(isRadioRemovable)) then {
         private _action = [
             QGVAR(mountRadio),
-            localize LSTRING(mountRadio),
+            LLSTRING(mountRadio),
             QPATHTOEF(ace_interact,data\icons\connector4.paa),
             {true},
             {true},
@@ -59,8 +59,8 @@ if (_mountedRadio == "") then { // Empty
                 // Unmount
                 private _action = [
                     QGVAR(unmount),
-                    localize LSTRING(unmountRadio),
-                    "",
+                    LLSTRING(unmountRadio),
+                    QPATHTOEF(ace_interact,data\icons\connector4_slash.paa),
                     {[_this select 2, _this select 1] call FUNC(unmountRadio)},
                     {true},
                     {},
@@ -71,8 +71,8 @@ if (_mountedRadio == "") then { // Empty
                 // Unmountable
                 private _action = [
                     QGVAR(unmountable),
-                    localize LSTRING(unmountable),
-                    "",
+                    LLSTRING(unmountable),
+                    QPATHTOEF(ace_interact,data\icons\connector4_slash.paa),
                     {true},
                     {true}
                 ] call ace_interact_menu_fnc_createAction;
@@ -97,7 +97,7 @@ if (_mountedRadio == "") then { // Empty
         if !([_mountedRadio, acre_player] call FUNC(isRadioHearable)) then {
             private _action = [
                 QGVAR(stopUsingMountedRadio),
-                localize LSTRING(stopUsingRadio),
+                LLSTRING(stopUsingRadio),
                 "",
                 {_this call FUNC(stopUsingMountedRadio)},
                 {true},
@@ -111,7 +111,7 @@ if (_mountedRadio == "") then { // Empty
         if (!([_mountedRadio, acre_player] call FUNC(isRadioHearable))) then {
             private _action = [
                 QGVAR(useMountedRadio),
-                localize LSTRING(useRadio),
+                LLSTRING(useRadio),
                 "",
                 {_this call FUNC(startUsingMountedRadio)},
                 {true},
@@ -124,7 +124,7 @@ if (_mountedRadio == "") then { // Empty
             // mimics standalone radio interaction to radios wired to intercom for easier UX
             private _action = [
                 QGVAR(useMountedRadio),
-                format [localize LSTRING(useIntercomRadio), ([_mountedRadio] call FUNC(getRackLetterFromRadio))],
+                format [LLSTRING(useIntercomRadio), ([_mountedRadio] call FUNC(getRackLetterFromRadio))],
                 "",
                 {[] call EFUNC(sys_intercom,openGui)},
                 {true}

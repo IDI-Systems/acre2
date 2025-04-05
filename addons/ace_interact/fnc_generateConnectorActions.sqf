@@ -75,7 +75,7 @@ switch (_connectorType) do {
 
                     if (_connectorRackIdx != -1) then {
                         private _name = format ["Connect to %1",getText (configFile >> "CfgAcreComponents" >> _baseClass >> "name")];
-                        private _icon = "\idi\acre\addons\ace_interact\data\icons\rack.paa";
+                        private _icon = QPATHTOF(data\icons\rack.paa);
                         private _action = [format ["acre_con_radio_%1_action", _forEachIndex], _name, _icon, {
                             params ["_target","","_params"];
                             _params params ["_parentComponent","_connectorIndex","_rackId","_connectorRackIdx"];
