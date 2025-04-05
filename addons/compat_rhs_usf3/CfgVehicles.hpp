@@ -332,7 +332,7 @@ class CfgVehicles {
                 displayName = ECSTRING(sys_intercom,crewIntercom);
                 shortName = ECSTRING(sys_intercom,shortCrewIntercom);
                 allowedPositions[] = {"crew"};
-                limitedPositions[] = {{"cargo", "all"}, {"turret", {3}, {4}}};
+                limitedPositions[] = {{"cargo", "all"}, {"turret", {1}, {2}, {3}, {4}}};
                 masterPositions[] = {"gunner"};
                 numLimitedPositions = 1;
                 connectedByDefault = 1;
