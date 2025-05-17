@@ -20,6 +20,8 @@ params ["_dir", ["_playSound", false, [false]]];
 
 private _vehicle = vehicle acre_player;
 private _intercomNetwork = [_vehicle] call FUNC(getFirstConnectedIntercom);
+if (_intercomNetwork < 0) exitWith {false};
+
 private _workPos = [_vehicle, acre_player, _intercomNetwork, INTERCOM_STATIONSTATUS_WORKKNOB] call FUNC(getStationConfiguration);
 private _success = [_intercomNetwork, _workPos + _dir] call FUNC(vic3ffcsSetWork);
 
