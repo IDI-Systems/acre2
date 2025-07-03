@@ -7,6 +7,7 @@
             <Italian>Opzioni ACRE</Italian>
             <Japanese>ACRE 設定</Japanese>
             <French>Options ACRE</French>
+            <Czech>ACRE Nastavení</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_CategoryUI">
             <English>ACRE2 UI</English>
@@ -67,6 +68,7 @@
             <Spanish>Volumen de radio por defecto</Spanish>
             <Turkish>Varsayılan Radyo Sesi</Turkish>
             <Chinesesimp>默认无线电音量</Chinesesimp>
+            <Czech>Základní zvuk rádio</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
             <English>Spectator Volume</English>
@@ -94,6 +96,7 @@
             <Portuguese>Volume de Deus</Portuguese>
             <Japanese>ゼウス(God)の音量</Japanese>
             <Chinesesimp>宙斯通话音量</Chinesesimp>
+            <Czech>Zeusův zvuk</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
             <English>Unmute Clients</English>
@@ -125,6 +128,7 @@
             <French>Changer de canal TeamSpeak</French>
             <German>TeamSpeak Kanalwechsel</German>
             <Turkish>TeamSpeak Kanal Değiştirmesi</Turkish>
+            <Czech>TeamSpeak Změna kanálu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
             <English>TeamSpeak Channel Name</English>
@@ -140,6 +144,7 @@
             <German>TeamSpeak Kanalname</German>
             <Russian>Имя ТимСпик канала</Russian>
             <Turkish>TeamSpeak Kanal İsmi</Turkish>
+            <Czech>TeamSpeak Název kanálu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
             <English>TeamSpeak Channel Password</English>
@@ -154,6 +159,7 @@
             <German>TeamSpeak Kanalpasswort</German>
             <Russian>Пароль ТимСпик канала</Russian>
             <Turkish>Teamspeak Kanal Parolası</Turkish>
+            <Czech>TeamSpeak Heslo kanálu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
             <English>Disable Gear Desync Hint</English>
@@ -420,6 +426,7 @@
             <Spanish>Cambiar dirección de antena</Spanish>
             <Turkish>Anten Yönünü Değiştir</Turkish>
             <Chinesesimp>天线方向切换</Chinesesimp>
+            <Czech>Přepínač směru antény</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
             <English>Antenna straightened</English>
@@ -433,6 +440,7 @@
             <Spanish>Antena enderezada</Spanish>
             <Turkish>Anten Düzleştirildi</Turkish>
             <Chinesesimp>天线已拉直</Chinesesimp>
+            <Czech>Anténa se narovnala</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
@@ -446,6 +454,7 @@
             <Spanish>Antena doblada</Spanish>
             <Turkish>Anten Büküldü</Turkish>
             <Chinesesimp>天线已弯曲</Chinesesimp>
+            <Czech>Anténa je ohnutá</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_interference_displayName">
             <English>Model Interference</English>
@@ -507,6 +516,7 @@
             <Spanish>Dirección automática de antena</Spanish>
             <Turkish>Otomatik Anten Yönü</Turkish>
             <Chinesesimp>自动调整天线方向</Chinesesimp>
+            <Czech>Automatické nasměrování antény</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
             <English>Terrain Loss Coefficient</English>
@@ -602,6 +612,7 @@
             <Spanish>Subir auriculares</Spanish>
             <French>Casque mis</French>
             <Turkish>Kulaklık Takıldı</Turkish>
+            <Czech>Náhlavní souprava zvednutá</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
@@ -617,6 +628,7 @@
             <Spanish>Bajar auriculares</Spanish>
             <French>Casque enlevé</French>
             <Turkish>Kulaklık İndirildi</Turkish>
+            <Czech>Náhlavní souprava snížena</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_incomingTransmissionNotification">
             <English>Show incoming transmissions</English>
@@ -630,6 +642,7 @@
             <Spanish>Mostrar transmisiones entrantes</Spanish>
             <Turkish>Gelen Mesajları Göster</Turkish>
             <Chinesesimp>显示正在进行的通讯</Chinesesimp>
+            <Czech>Zobrazit příchozí přenosy</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
@@ -643,6 +656,7 @@
             <Spanish>Mostrar transmisiones de radio vehicular</Spanish>
             <Turkish>Rafta Gelen Mesajları Göster</Turkish>
             <Chinesesimp>显示机架通讯</Chinesesimp>
+            <Czech>Zobrazit rackové přenosy</Czech>
         </Key>
     </Package>
 </Project>

@@ -15,6 +15,7 @@
             <French>Monter</French>
             <Russian>Установить</Russian>
             <Turkish>Tak</Turkish>
+            <Czech>Namontovat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountable">
             <English>Unmountable</English>
@@ -28,6 +29,7 @@
             <Russian>Нельзя установить</Russian>
             <Portuguese>Não montável</Portuguese>
             <Turkish>Takılamaz</Turkish>
+            <Czech>Nemontovatelné</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unmountRadio">
             <English>Unmount</English>
@@ -43,6 +45,7 @@
             <French>Démonter</French>
             <Russian>Снять</Russian>
             <Turkish>Çıkar</Turkish>
+            <Czech>Vymontovat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_mountedRadio">
             <English>Mounted (%1)</English>
@@ -58,6 +61,7 @@
             <French>%1 montée</French>
             <Russian>Установлено (%1)</Russian>
             <Turkish>Takıldı (%1)</Turkish>
+            <Czech>Namontovaný (%1)</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
             <English>Stop Using</English>
@@ -73,6 +77,7 @@
             <French>Ne plus utiliser</French>
             <Russian>Прекратить использование</Russian>
             <Turkish>Kullanmayı Bırak</Turkish>
+            <Czech>Přestat používat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useRadio">
             <English>Use</English>
@@ -88,6 +93,7 @@
             <French>Utiliser</French>
             <Russian>Использовать</Russian>
             <Turkish>Kullan</Turkish>
+            <Czech>použít</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useIntercomRadio">
             <English>Use via Intercom (Work: %1)</English>
@@ -96,6 +102,7 @@
             <Japanese>インターコムから使う (Work: %1)</Japanese>
             <French>Utilisation de l'interphone (Travail : %1)</French>
             <Chinesesimp>通过对讲机使用(正在使用: %1)</Chinesesimp>
+            <Czech>Use via Intercom (Work: %1)</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_unableUnmount">
             <English>Unable to unmount radio as you have no inventory space.</English>
@@ -111,6 +118,7 @@
             <French>Impossible de démonter la radio, car vous n'avez pas assez d'espace dans l'inventaire.</French>
             <Russian>Не вышло снять рацию - в инвентаре недостаточно места</Russian>
             <Turkish>Envanterinizde yeriniz olmadığı için telsiz çıkarılamadı.</Turkish>
+            <Czech>Nelze odpojit rádio, protože nemáte dostatek místa v inventáři.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
@@ -126,6 +134,7 @@
             <French>Racks</French>
             <Russian>Подставки</Russian>
             <Turkish>Raflar</Turkish>
+            <Czech>Regály</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
@@ -141,6 +150,7 @@
             <French>Panneau</French>
             <Russian>Панель</Russian>
             <Turkish>Panel</Turkish>
+            <Czech>Znamení</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash2">
             <English>Dash 2</English>
@@ -152,6 +162,7 @@
             <Portuguese>Painel 2</Portuguese>
             <Japanese>ダッシュボード 2</Japanese>
             <Chinesesimp>仪器版面2</Chinesesimp>
+            <Czech>Znamení 2</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashShort">
             <English>Dash</English>
@@ -165,6 +176,7 @@
             <Russian>Панель</Russian>
             <Portuguese>Painel</Portuguese>
             <Turkish>Panel</Turkish>
+            <Czech>Znamení</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLower">
             <English>Dash Lower</English>
@@ -180,6 +192,7 @@
             <French>Panneau inférieur</French>
             <Russian>Нижняя панель</Russian>
             <Turkish>Alt Panel</Turkish>
+            <Czech>Spodní panel</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
@@ -193,6 +206,7 @@
             <Russian>Н-я панель</Russian>
             <Portuguese>P. Inf.</Portuguese>
             <Turkish>A.Pan</Turkish>
+            <Czech>S. pnl</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dash Upper</English>
@@ -208,6 +222,7 @@
             <French>Panneau supérieur</French>
             <Russian>Верхняя панель</Russian>
             <Turkish>Üst Panel</Turkish>
+            <Czech>Horní panel</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
@@ -221,6 +236,7 @@
             <Russian>В-я панель</Russian>
             <Portuguese>P. Sup.</Portuguese>
             <Turkish>Ü.Pan</Turkish>
+            <Czech>H. pnl</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_useAllRacks">
             <English>Use All</English>
@@ -234,6 +250,7 @@
             <Russian>Использовать все</Russian>
             <Portuguese>Usar todos</Portuguese>
             <Turkish>Hepsini Kullan</Turkish>
+            <Czech>Použít všechny</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingAllRacks">
             <English>Stop Using All</English>
@@ -247,6 +264,7 @@
             <Russian>Прекратить использовать все</Russian>
             <Portuguese>Todos: Parar de usar</Portuguese>
             <Turkish>Hepsini Kullanmayı Bırak</Turkish>
+            <Czech>Přestat používat všechny</Czech>
         </Key>
     </Package>
 </Project>

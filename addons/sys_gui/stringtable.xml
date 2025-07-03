@@ -29,6 +29,7 @@
             <Portuguese>ACRE2 - Controle de Volume</Portuguese>
             <Spanish>ACRE2 - Control de volumen</Spanish>
             <Turkish>ACRE2 - Ses Kontrolü</Turkish>
+            <Czech>ACRE2 - Nastavení zvuku</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
             <English>Indicates the current direct speech volume level.</English>
@@ -42,6 +43,7 @@
             <Portuguese>Indica o volume atual da comunicação direta.</Portuguese>
             <Spanish>Indica el volumen actual de comunicación directa</Spanish>
             <Turkish>Şu anki yakın konuşma ses seviyesini gösterir</Turkish>
+            <Czech>Označuje aktuální úroveň hlasitosti přímé řeči.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
             <English>ACRE2 - Vehicle Info</English>
@@ -56,6 +58,7 @@
             <Russian>ACRE2 - информация о технике</Russian>
             <Portuguese>ACRE2 - Informação do veículo</Portuguese>
             <Turkish>ACRE2 - Araç Bilgisi</Turkish>
+            <Czech>ACRE2 - Informace o vozidle</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_Description">
             <English>Status on available Intercoms and Racks in the vehicle.</English>
@@ -70,6 +73,7 @@
             <Russian>Состояние на доступных Интеркомах и Подставках в технике</Russian>
             <Portuguese>Situação da intercomunicação e raques disponíveis no veículo</Portuguese>
             <Turkish>Araç içindeki interkomların ve raf telsizlerinin durum bilgisi</Turkish>
+            <Czech>Stav dostupných interkomů a nosičů ve vozidle.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_DisplayName">
             <English>Volume Color Scale</English>
@@ -83,6 +87,7 @@
             <Portuguese>Volume: Gama de cores</Portuguese>
             <Spanish>Volumen: Gama de colores</Spanish>
             <Turkish>Ses Renk Ölçeği</Turkish>
+            <Czech>Zvuková barevná stupnice</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
             <English>Color scale used by the Volume Control UI.</English>
@@ -96,6 +101,7 @@
             <Portuguese>Gama de cores usadas na IU de controle do volume </Portuguese>
             <Spanish>Gama de colores usada por la Interfaz de control de volumen</Spanish>
             <Turkish>Ses kontrol arayüzü tarafından kullanılan renk ölçeği</Turkish>
+            <Czech>Barevná stupnice používaná uživatelským rozhraním pro ovládání hlasitosti.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
             <English>Yellow, Orange, Red</English>
@@ -109,6 +115,7 @@
             <Portuguese>Amarelo, laranja e vermelho</Portuguese>
             <Spanish>Amarillo, Naranja y Rojo</Spanish>
             <Turkish>Sarı, Turuncu, Kırmızı</Turkish>
+            <Czech>Žlutá , Oranžová , Červená</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
             <English>Green, Orange, Red</English>
@@ -122,6 +129,7 @@
             <Portuguese>Verde, laranja e vermelho</Portuguese>
             <Spanish>Verde, Naranja y Rojo</Spanish>
             <Turkish>Yeşil, Turuncu, Kırmızı</Turkish>
+            <Czech>Zelená , Oranžová , Červená</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
             <English>Blue, Magenta, Red</English>
@@ -135,6 +143,7 @@
             <Portuguese>Azul, magenta e vermelho</Portuguese>
             <Spanish>Azul, Magenta y Rojo</Spanish>
             <Turkish>Mavi, Mor, Kırmızı</Turkish>
+            <Czech>Modrá , Magenta, Červená</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_Open">
             <English>Open</English>
