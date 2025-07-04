@@ -13,6 +13,7 @@
             <Chinesesimp>讯号传递模型</Chinesesimp>
             <Portuguese>Modelo de propagação de sinal</Portuguese>
             <Turkish>Sinyal İletim Modeli</Turkish>
+            <Czech>Model šíření signálu</Czech>
         </Key>
     </Package>
 </Project>

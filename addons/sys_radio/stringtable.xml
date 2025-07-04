@@ -15,6 +15,7 @@
             <Spanish>[ACRE] Cajas con radios</Spanish>
             <French>[ACRE] Caisse d'approvisionnement radio</French>
             <Turkish>[ACRE] Telsiz Mühimmat Kutusu</Turkish>
+            <Czech>[ACRE] Bedna se zásobami pro rádio</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiExternal">
             <English>Radio used externally. Only owner may configure.</English>
@@ -30,6 +31,7 @@
             <French>Radio utilisée à l'extérieur. Seul le propriétaire peut la configurer.</French>
             <Russian>Рация используется извне. Только владелец может изменять настройки</Russian>
             <Turkish>Telsiz dışardan kullanılıyor. Sadece sahibi ayarlayabilir.</Turkish>
+            <Czech>Rádio používáno externě. Konfigurovat může pouze majitel.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiTurnedOut">
             <English>Radio rack can't be reached from this position.</English>
@@ -45,6 +47,7 @@
             <French>Le rack radio ne peut pas être atteint depuis la position actuelle.</French>
             <Russian>Подставка для рации недоступна с этой позиции</Russian>
             <Turkish>Radyo rafına bu konuşdan erişilemiyor.</Turkish>
+            <Czech>Z této pozice není možné dosáhnout na stojan rádia.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noGuiSeat">
             <English>Radio rack not accessible for configuration from this seat.</English>
@@ -60,6 +63,7 @@
             <French>Le rack radio n'est pas accessible pour la configuration depuis ce siège.</French>
             <Russian>Подставку для раций нельзя изменять с этого места</Russian>
             <Turkish>Bu koltuktan radyo rafını değiştirmek mümkün değil.</Turkish>
+            <Czech>Držák rádia není z tohoto sedadla přístupný pro konfiguraci.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noTransmitExternal">
             <English>Radio used externally. Only external user may transmit.</English>
@@ -75,6 +79,7 @@
             <French>Radio utilisée à l'extérieur. Seul un utilisateur extérieur peut transmettre.</French>
             <Russian>Рация используется извне. Только внешний пользователь может производить передачу</Russian>
             <Turkish>Telsiz dışardan kullanılıyor. Sadece dış kullanıcı mesaj iletebilir.</Turkish>
+            <Czech>Rádiový signál používán externě. Vysílat může pouze externí uživatel.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_noTransmitIntercom">
             <English>Radio rack disabled for transmitting in intercom.</English>
@@ -89,6 +94,7 @@
             <French>Rack radio désactivé pour la transmission en interphonie.</French>
             <Russian>Подставка для раций отключена из-за передачи по Интеркому</Russian>
             <Turkish>İnterkomda ileti için telsiz rafı devre dışı.</Turkish>
+            <Czech>Rádiový stojan deaktivován pro vysílání v interkomu.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_alreadyTransmitting">
             <English>Radio already transmitting.</English>
@@ -104,6 +110,7 @@
             <French>Radio déjà en transmission.</French>
             <Russian>Рация уже передает</Russian>
             <Turkish>Telsiz zaten mesaj iletiyor.</Turkish>
+            <Czech>Rádio již vysílá.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_alreadyOpenRadio">
             <English>Radio is being configured by another player.</English>
@@ -119,6 +126,7 @@
             <German>Funkgerät wird von einem anderen Spieler konfiguriert.</German>
             <Russian>Рацию настраивает другой игрок</Russian>
             <Turkish>Telsiz başka bir oyuncu tarafından ayarlanıyor.</Turkish>
+            <Czech>Rádio konfiguruje jiný hráč.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_acreBaseBox">
             <English>ACRE Base Box</English>
@@ -132,6 +140,7 @@
             <Chinesesimp>ACRE 基本物资箱</Chinesesimp>
             <Portuguese>Caixa-base ACRE</Portuguese>
             <Turkish>ACRE Temel Kutu</Turkish>
+            <Czech>Základní krabice ACRE</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_allRadioCrate">
             <English>All Radio Crate</English>
@@ -145,6 +154,7 @@
             <Chinesesimp>全无线电种类供给箱</Chinesesimp>
             <Portuguese>Caixa de todos os rádios ACRE</Portuguese>
             <Turkish>Bütün Telsiz Kutusu</Turkish>
+            <Czech>Všechny Radio bedny</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_radioSetTo">
             <English>Radio set to %1</English>
@@ -158,6 +168,7 @@
             <Chinesesimp>设定无线电为%1</Chinesesimp>
             <Portuguese>Rádio configurado a %1</Portuguese>
             <Turkish>Telsiz Ayarı Şuna Atandı: %1</Turkish>
+            <Czech>Rádio nastaveno na %1</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_DisplayName">
             <English>Radio Item Replacement</English>
@@ -166,6 +177,7 @@
             <Japanese>無線機アイテムの置き換え</Japanese>
             <French>Remplacement de la radio</French>
             <Chinesesimp>替换默认无线电</Chinesesimp>
+            <Czech>Výměna položky rádia</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
             <English>Default radio inventory items will be replaced with this type of radio.</English>
@@ -174,6 +186,7 @@
             <Japanese>インベントリにあるデフォルトの無線機アイテムは、 このタイプの無線機に置き換えられます。</Japanese>
             <French>Les éléments d'inventaire radio par défaut seront remplacés par ce type de radio.</French>
             <Chinesesimp>自带的默认无线电物品将会被这种无线电替代</Chinesesimp>
+            <Czech>Výchozí položky inventáře rádií budou nahrazeny tímto typem rádia.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
@@ -182,6 +195,7 @@
             <Japanese>音量の変更</Japanese>
             <French>Changer le volume</French>
             <Chinesesimp>调整音量</Chinesesimp>
+            <Czech>Změnit hlasitost</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentVolume">
             <English>Current Volume</English>
@@ -190,6 +204,7 @@
             <Japanese>現在の変更</Japanese>
             <French>Volume actuel</French>
             <Chinesesimp>当前音量</Chinesesimp>
+            <Czech>Aktuální zvuk</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
@@ -198,6 +213,7 @@
             <Japanese>無線オフ</Japanese>
             <French>Radio éteinte</French>
             <Chinesesimp>无线电已关闭</Chinesesimp>
+            <Czech>Rádio je vypnuté</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeChannel">
             <English>Change Channel</English>
@@ -206,6 +222,7 @@
             <Japanese>チャンネルを変更</Japanese>
             <French>Changer de canal</French>
             <Chinesesimp>修改频道</Chinesesimp>
+            <Czech>Změnit kanál</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannel">
             <English>Current Channel</English>
@@ -217,6 +234,7 @@
             <Portuguese>Canal atual</Portuguese>
             <Japanese>現在のチャンネル</Japanese>
             <Chinesesimp>当前频道</Chinesesimp>
+            <Czech>Aktuální kanál</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannelBlock">
             <English>Current Channel Block</English>
@@ -225,6 +243,7 @@
             <Japanese>現在のチャンネルブロック</Japanese>
             <French>Blocage actuel des chaînes</French>
             <Chinesesimp>当前频道区块</Chinesesimp>
+            <Czech>Aktuální blok kanálu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleAttach">
             <English>Attach handle</English>
@@ -233,6 +252,7 @@
             <Japanese>ハンドルを取り付ける</Japanese>
             <French>Fixation de la poignée</French>
             <Chinesesimp>安装手柄</Chinesesimp>
+            <Czech>Připevněte rukojeť</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleDetach">
             <English>Detach handle</English>
@@ -241,6 +261,7 @@
             <Japanese>ハンドルを外す</Japanese>
             <French>Retirer la poignée</French>
             <Chinesesimp>取下手柄</Chinesesimp>
+            <Czech>Odpojit rukojeť</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_3den_RadioSetup_DisplayName">
             <English>Radio Channel Setup</English>
@@ -248,6 +269,7 @@
             <Italian>Canali radio preimpostati</Italian>
             <Japanese>ラジオチャンネルのセットアップ</Japanese>
             <French>Réglage du canal radio</French>
+            <Czech>Nastavení rádiového kanálu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_radio_3den_RadioSetup_Description">
             <English>Array of Arrays (comma-separated) to set up radio channels of the given unit.\nIt's possible to set up multiple radios of the same type.\nSingular Examples:\n["ACRE_PRC343",1] -&gt; Channel 1, Block 1\n["ACRE_PRC343",[2,3]] -&gt; Channel 2, Block 3\n["ACRE_PRC148",5] -&gt; Channel 5 (same for PRC-148/152/117F, BF-888S and SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Set first BF-888S to Ch 4, second to Ch 5</English>
@@ -255,6 +277,7 @@
             <Italian>Array di Array (separati da virgola) per impostare i canali radio di una determinata unità.\nÈ possibile impostare molteplici radio dello stesso tipo.\nEsempi:\n["ACRE_PRC343",1] -&gt; Canale 1, Blocco 1\n["ACRE_PRC343",[2,3]] -&gt; Canale 2, Blocco 3\n["ACRE_PRC148",5] -&gt; Canale 5 (stesso formato per PRC-148/152/117F, BF-888S e SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Imposta la prima BF-888S su Ch 4, la seconda su Ch 5</Italian>
             <Japanese>指定されたユニットの無線チャンネルを設定するための配列の配列 (カンマ区切り)。\n同じタイプの無線を複数設定できます。\n単数の例:\n["ACRE_PRC343",1] -&gt; チャンネル 1、ブロック 1\n["ACRE_PRC343",[2,3]] -&gt; チャンネル 2、ブロック 3\n["ACRE_PRC148",5] -&gt; チャンネル 5 (PRC-148/152/117F、BF-888S、SEM52SL の場合も同様)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; 最初のBF-888SをCh 4に設定し、2番目をCh 5に設定します</Japanese>
             <French>Tableau de tableaux (séparés par des virgules) pour configurer les canaux radio de l'unité donnée.\nIl est possible de configurer plusieurs radios du même type.\nExemples singuliers:\n["ACRE_PRC343",1] -&gt; Canal 1, Bloc 1\n["ACRE_PRC343",[2,3]] -&gt; Canal 2, Bloc 3\n["ACRE_PRC148",5] -&gt; Canal 5 (identique pour PRC-148/117F, BF-888S et SEML52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31,15 MHz -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]]] -&gt; 34,075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Régler le premier BF-888S sur la voie 4, le second sur la voie 5</French>
+            <Czech>Pole polí (oddělených čárkami) pro nastavení rádiových kanálů dané jednotky.\nJe možné nastavit více rádií stejného typu.\nPříklady v singuláru:\n["ACRE_PRC343";1] -&gt; Kanál 1, Blok 1\n["ACRE_PRC343";[2,3]] -&gt; Kanál 2, Blok 3\n["ACRE_PRC148";5] -&gt; Kanál 5 (stejné pro PRC-148/152/117F, BF-888S a SEM52SL)\n["ACRE_PRC77";[31,15]] -&gt; 31,15 MHz\n["ACRE_SEM70";[34,075]] -&gt; 34,075 MHz\n["ACRE_BF888S";4],["ACRE_BF888S";5] -&gt; Nastavit první BF-888S do kapitoly 4, druhý do kapitoly 5</Czech>
         </Key>
     </Package>
 </Project>

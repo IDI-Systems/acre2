@@ -11,6 +11,7 @@
             <Portuguese>ACRE2 Gestos</Portuguese>
             <Japanese>ACRE2 ジェスチャー</Japanese>
             <Chinesesimp>ACRE2 动作</Chinesesimp>
+            <Czech>Gesta ACRE2</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled">
             <English>Enable</English>
@@ -22,6 +23,7 @@
             <Portuguese>Ativo</Portuguese>
             <Japanese>有効化</Japanese>
             <Chinesesimp>启用</Chinesesimp>
+            <Czech>Povolit</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled_description">
             <English>Animate players using radios.</English>
@@ -33,6 +35,7 @@
             <Portuguese>Animar jogadores usando rádios</Portuguese>
             <Japanese>ラジオを使うプレーヤーにアニメーションさせます</Japanese>
             <Chinesesimp>玩家使用无线电时启用手部动作</Chinesesimp>
+            <Czech>Animujte hráče pomocí rádií.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS">
             <English>Prevent Aim Down Sights</English>
@@ -44,6 +47,7 @@
             <Portuguese>Impedir mira (ADS)</Portuguese>
             <Japanese>照準を妨げる</Japanese>
             <Chinesesimp>禁止瞄准</Chinesesimp>
+            <Czech>Zabraňte zaměřování mířidel</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS_description">
             <English>Keying radios will prevent aiming down sights.</English>
@@ -55,6 +59,7 @@
             <Portuguese>Usar rádios irá impedir a mira</Portuguese>
             <Japanese>無線機のキーを押すと照準を合わせることができなくなります。</Japanese>
             <Chinesesimp>使用无线电时禁止瞄准</Chinesesimp>
+            <Czech>Klíčování rádií zabrání míření dolů.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_showConnectorRopes">
             <English>Show Connector Wires</English>
@@ -63,6 +68,7 @@
             <French>Afficher les câbles de connexion</French>
             <Chinesesimp>显示连接线缆</Chinesesimp>
             <Japanese>通信ケーブルワイヤーの表示</Japanese>
+            <Czech>Zobrazit vodiče konektoru</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_showConnectorRopes_description">
             <English>Connections to infantry phones, GSAs and shared radios will be visualized with connector wires.</English>
@@ -71,6 +77,7 @@
             <French>Les connexions aux téléphones de l'infanterie, aux GSA et aux radios partagées seront visualisées à l'aide de fils de connexion.</French>
             <Chinesesimp>使用车辆电话, 地钉天线, 共享无线电时显示连接线缆</Chinesesimp>
             <Japanese>車外電話機、地上アンテナ、共有無線への接続をケーブルワイヤーで視覚化します。</Japanese>
+            <Czech>Připojení k pěchotním telefonům, GSA a sdíleným rádiím bude vizualizováno pomocí konektorových vodičů.</Czech>
         </Key>
     </Package>
 </Project>

@@ -14,6 +14,7 @@
             <Portuguese>ERRO DE TÚNEL ACRE: Sem ping de retorno, tentando reconectar ao túnel nomeado.</Portuguese>
             <Turkish>ACRE TÜNEL HATASI:Ping'e cevap dönmedi, isimli tüneli tekrar bağlamaya çalışıyor.</Turkish>
             <Chinesesimp>ACRE通信管道错误: 通信无响应, 正在尝试重新连接</Chinesesimp>
+            <Czech>ACRE PIPE ERROR: Žádný ping, pokus o opětovné připojení pojmenovaného potrubí.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_io_recoveredClosedPipe">
             <English>ACRE has recovered from a closed pipe!</English>
@@ -28,6 +29,7 @@
             <Portuguese>ACRE se recuperou de um túnel fechado!</Portuguese>
             <Turkish>ACRE kapalı tünel hatasından başarıyla kurtuldu! </Turkish>
             <Chinesesimp>ACRE已从关闭的通信管道中成功恢复</Chinesesimp>
+            <Czech>ACRE se zotavil ze zavřeného PIPE!</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_io_acreNotConnected">
             <English>ACRE is not connected to TeamSpeak!</English>
@@ -42,6 +44,7 @@
             <Portuguese>ACRE não está conectado ao TeamSpeak!</Portuguese>
             <Turkish>ACRE TeamSpeak'e bağlı değil!</Turkish>
             <Chinesesimp>ACRE 没有与TeamSpeak连接！</Chinesesimp>
+            <Czech>ACRE není připojen k TeamSpeaku!</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_io_acreConnected">
             <English>ACRE connected</English>
@@ -56,6 +59,7 @@
             <Portuguese>ACRE conectado</Portuguese>
             <Turkish>ACRE Bağlandı</Turkish>
             <Chinesesimp>ACRE 已连接</Chinesesimp>
+            <Czech>ACRE je připojen</Czech>
         </Key>
     </Package>
 </Project>

@@ -123,6 +123,7 @@
             <Chinesesimp>切换频道颜色</Chinesesimp>
             <Portuguese>Cor: Troca de Canais</Portuguese>
             <Turkish>Kanal Değiştirme Rengi</Turkish>
+            <Czech>Změnit barvu kanálu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
             <English>Toggle Headset Color</English>
@@ -135,6 +136,7 @@
             <Chinesesimp>耳机切换颜色</Chinesesimp>
             <Portuguese>Cor: Alternar Fones de ouvido</Portuguese>
             <Turkish>Kulaklık Takma/Çıkarma Rengi</Turkish>
+            <Czech>Změnit barvu sluchátek</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
             <English>Cycle Radio Color</English>
@@ -147,6 +149,7 @@
             <Chinesesimp>无线电循环颜色</Chinesesimp>
             <Portuguese>Cor: Alternar Rádio</Portuguese>
             <Turkish>Telsiz Değiştirme Rengi</Turkish>
+            <Czech>Barevný cyklus rádia</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT1Color_DisplayName">
             <English>Radio 1 (PTT 1) Transmit Color</English>
@@ -160,6 +163,7 @@
             <Portuguese>Cor: Transmissão Rádio 1 (PTT 1)</Portuguese>
             <Spanish>Color de transmisión de Radio 1 (PTT 1)</Spanish>
             <Turkish>Telsiz 1 (Bas-Konuş 1) İletme Rengi</Turkish>
+            <Czech>Barevný rádiový přenos 1 (PTT 1)</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT2Color_DisplayName">
             <English>Radio 2 (PTT 2) Transmit Color</English>
@@ -173,9 +177,10 @@
             <Portuguese>Cor: Transmissão Rádio 2 (PTT 2)</Portuguese>
             <Spanish>Color de transmisión de Radio 2 (PTT 2)</Spanish>
             <Turkish>Telsiz 2 (Bas-Konuş 2) İletme Rengi</Turkish>
+            <Czech>Barevný rádiový přenos 2 (PTT 2)</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT3Color_DisplayName">
-            <English>Radio 3 (PTT 3) Transmit Color</English>
+            <English>Radio 1 (PTT 3) Transmit Color</English>
             <German>Farbe Sprechtaste 3</German>
             <Italian>Colore trasmissione radio 3 (PTT 3)</Italian>
             <Russian>Рация 3 (PTT 3) цвет передачи</Russian>
@@ -186,6 +191,7 @@
             <Portuguese>Cor: Transmissão Rádio 3 (PTT 3)</Portuguese>
             <Spanish>Color de transmisión de Radio 3 (PTT 3)</Spanish>
             <Turkish>Telsiz 3 (Bas-Konuş 3) İletme Rengi</Turkish>
+            <Czech>Barevný rádiový přenos 3 (PTT 3)</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
             <English>Active Radio Transmit Color</English>
@@ -199,6 +205,7 @@
             <Portuguese>Cor: Transmissão do Rádio Ativo</Portuguese>
             <Spanish>Color de transmisión de Radio activa</Spanish>
             <Turkish>Aktif Telsiz İletme Rengi</Turkish>
+            <Czech>Barva - Aktivní rádiový přenos</Czech>
         </Key>
     </Package>
 </Project>

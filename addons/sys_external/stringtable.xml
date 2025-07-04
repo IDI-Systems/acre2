@@ -15,6 +15,7 @@
             <Italian>Radio Condivise</Italian>
             <French>Radios partagées</French>
             <Turkish>Paylaşılan Telsizler</Turkish>
+            <Czech>Sdílené rádia</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_shareRadio">
             <English>Share</English>
@@ -30,6 +31,7 @@
             <Italian>Condividi</Italian>
             <French>Partager</French>
             <Turkish>Paylaş</Turkish>
+            <Czech>Sdílet</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_unshareRadio">
             <English>Unshare</English>
@@ -45,6 +47,7 @@
             <Italian>Non condividere</Italian>
             <French>Ne plus partager</French>
             <Turkish>Paylaşmayı Bırak</Turkish>
+            <Czech>Přestat sdílet</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHandset">
             <English>Take Handset</English>
@@ -60,6 +63,7 @@
             <German>Handteil nehmen</German>
             <Russian>Взять трубку</Russian>
             <Turkish>Ahizeyi Al</Turkish>
+            <Czech>Nandat si sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_takeHeadset">
             <English>Take Headset</English>
@@ -75,6 +79,7 @@
             <Italian>Prendi cuffia</Italian>
             <French>Prendre le casque</French>
             <Turkish>Kulaklığı Al</Turkish>
+            <Czech>Nandat si sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHandset">
             <English>Return Handset</English>
@@ -90,6 +95,7 @@
             <German>Handteil zurückgeben</German>
             <Russian>Вернуть трубку</Russian>
             <Turkish>Ahizeyi Bırak</Turkish>
+            <Czech>Vrátit sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_returnHeadset">
             <English>Return Headset</English>
@@ -105,6 +111,7 @@
             <Italian>Restituisci cuffia</Italian>
             <French>Rendre le casque</French>
             <Turkish>Kulaklığı Bırak</Turkish>
+            <Czech>Vrátit sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHandset">
             <English>Give Handset</English>
@@ -120,6 +127,7 @@
             <German>Handteil geben</German>
             <Russian>Дать трубку</Russian>
             <Turkish>Ahizeyi Ver</Turkish>
+            <Czech>Dát sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHeadset">
             <English>Give Headset</English>
@@ -135,6 +143,7 @@
             <Italian>Passa cuffia</Italian>
             <French>Donner le casque</French>
             <Turkish>Kulaklığı Ver</Turkish>
+            <Czech>Dát sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintGiveOwner">
             <English>%1 gave your %2 to %3</English>
@@ -149,6 +158,7 @@
             <French>%1 a donné votre %2 à %3.</French>
             <German>%1 gab dein %2 an %3</German>
             <Russian>%1 передал вашу %2 %3</Russian>
+            <Czech>%1 dal tvůj %2 uživateli %3</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturn">
             <English>Stop using %1 from %2</English>
@@ -163,6 +173,7 @@
             <Spanish>Deja de usar %1 de %2</Spanish>
             <French>Arrêter d'utiliser %1 de %2</French>
             <German>%1 von %2 nicht länger benutzen</German>
+            <Czech>Přestat používat %1 z %2</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturnOwner">
             <English>%1 stopped using your %2</English>
@@ -177,6 +188,7 @@
             <French>%1 a arrêté d'utiliser votre %2.</French>
             <German>%1 hat aufgehört dein %2 zu nutzen</German>
             <Russian>%1 прекратил использовать вашу %2</Russian>
+            <Czech>%1 přestal(a) používat váš %2</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTake">
             <English>Start using %1 from %2</English>
@@ -191,6 +203,7 @@
             <Spanish>Usa %1 de %2</Spanish>
             <French>Commencer à utiliser %1 de %2</French>
             <German>Beginne %1 von %2 zu nutzen</German>
+            <Czech>Začněte používat %1 z %2</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTakeOwner">
             <English>%1 started using your %2</English>
@@ -205,6 +218,7 @@
             <French>%1 a commencé à utiliser votre %2.</French>
             <German>%1 benutzt jetzt dein %2</German>
             <Russian>%1 начал использовать вашу %2</Russian>
+            <Czech>%1 začal(a) používat váš %2</Czech>
         </Key>
     </Package>
 </Project>

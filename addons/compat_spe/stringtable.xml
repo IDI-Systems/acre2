@@ -8,6 +8,7 @@
             <Japanese>無線</Japanese>
             <French>Radio</French>
             <Chinesesimp>电台</Chinesesimp>
+            <Czech>Rádio</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet">
             <English>Radio Set</English>
@@ -16,6 +17,7 @@
             <Japanese>無線セット</Japanese>
             <French>Canaux radio</French>
             <Chinesesimp>电台装置</Chinesesimp>
+            <Czech>Rádiový set</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_Short">
             <English>A-Set</English>
@@ -24,6 +26,7 @@
             <Japanese>Aセット</Japanese>
             <French>Canaux A</French>
             <Chinesesimp>电台A</Chinesesimp>
+            <Czech>Sada-A</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_US">
             <English>Radio Set - Able</English>
@@ -32,6 +35,7 @@
             <Japanese>無線セット - Able</Japanese>
             <French>Canaux - Able</French>
             <Chinesesimp>电台A - 美国</Chinesesimp>
+            <Czech>Rádiový set - Able</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_GER">
             <English>Radio Set - Anton</English>
@@ -40,6 +44,7 @@
             <Japanese>無線セット - Anton</Japanese>
             <French>Canaux - Anton</French>
             <Chinesesimp>电台A - 德国</Chinesesimp>
+            <Czech>Rádiový set - Anton</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_Short">
             <English>B-Set</English>
@@ -48,6 +53,7 @@
             <Japanese>Bセット</Japanese>
             <French>Canaux B</French>
             <Chinesesimp>电台B</Chinesesimp>
+            <Czech>Sada-B</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_US">
             <English>Radio Set - Baker</English>
@@ -56,6 +62,7 @@
             <Japanese>無線セット - Baker</Japanese>
             <French>Canaux - Baker</French>
             <Chinesesimp>电台B - 美国</Chinesesimp>
+            <Czech>Rádiový set - Baker</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_GER">
             <English>Radio Set - Bruno</English>
@@ -64,6 +71,7 @@
             <Japanese>無線セット - Bruno</Japanese>
             <French>Canaux - Bruno</French>
             <Chinesesimp>电台B - 德国</Chinesesimp>
+            <Czech>Rádiový set - Bruno</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_Intercom_Short">
             <English>IntCm</English>
@@ -72,6 +80,7 @@
             <Japanese>インコム</Japanese>
             <French>IntPh</French>
             <Chinesesimp>机组员对讲机</Chinesesimp>
+            <Czech>IntCm</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_Intercom_Crew">
             <English>Crew Intercom</English>
@@ -80,6 +89,7 @@
             <Japanese>乗員インターコム</Japanese>
             <French>Radio de bord d'équipage</French>
             <Chinesesimp>机组员对讲机</Chinesesimp>
+            <Czech>Posádkový intercom</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_75_erla_Command">
             <English>M4A1 Sherman (Command)</English>
@@ -88,6 +98,7 @@
             <French>M4A1 Sherman (Commandement)</French>
             <Japanese>M4A1 Sherman (指揮車)</Japanese>
             <Chinesesimp>M4A1屑尔曼(指挥型)</Chinesesimp>
+            <Czech>M4A1 Sherman (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_75_Command">
             <English>M4A1 Sherman (Late) (Command)</English>
@@ -96,6 +107,7 @@
             <French>M4A1 Sherman (Tardif) (Commandement)</French>
             <Chinesesimp>M4A1屑尔曼(后期型)(指挥型)</Chinesesimp>
             <Japanese>M4A1 Sherman (Late) (指揮車)</Japanese>
+            <Czech>M4A1 Sherman (Pozdní) (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_76_Command">
             <English>M4A1(76)W Sherman (Command)</English>
@@ -104,6 +116,7 @@
             <French>M4A1(76)W Sherman (Commandement)</French>
             <Japanese>M4A1(76)W Sherman (指揮車)</Japanese>
             <Chinesesimp>M4A1(76)W屑尔曼(指挥型)</Chinesesimp>
+            <Czech>M4A1(76)W Sherman (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Early_Command">
             <English>M4 Sherman (Command)</English>
@@ -112,6 +125,7 @@
             <French>M4 Sherman (Commandement)</French>
             <Japanese>M4 Sherman (指揮車)</Japanese>
             <Chinesesimp>M4屑尔曼(指挥型)</Chinesesimp>
+            <Czech>M4 Sherman (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_composite_Command">
             <English>M4 Sherman (Composite) (Command)</English>
@@ -120,6 +134,7 @@
             <French>M4 Sherman (Composite) (Command)</French>
             <Chinesesimp>M4屑尔曼(复合型)(指挥型)</Chinesesimp>
             <Japanese>M4 Sherman (Composite) (指揮車)</Japanese>
+            <Czech>M4 Sherman (Kombinovaný) (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Command">
             <English>M4 Sherman (Late) (Command)</English>
@@ -128,6 +143,7 @@
             <French>M4 Sherman (Tardif) (Commandement)</French>
             <Japanese>M4 Sherman (Late) (指揮車)</Japanese>
             <Chinesesimp>M4屑尔曼(后期型)(指挥型)</Chinesesimp>
+            <Czech>M4 Sherman (Pozdní) (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_105_Command">
             <English>M4(105) Sherman (Command)</English>
@@ -136,6 +152,7 @@
             <French>M4(105) Sherman (Commandement)</French>
             <Chinesesimp>M4(105)屑尔曼(指挥型)</Chinesesimp>
             <Japanese>M4(105) Sherman (指揮車)</Japanese>
+            <Czech>M4(105) Sherman (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_75_Command">
             <English>M4A3(75)W Sherman (Command)</English>
@@ -144,6 +161,7 @@
             <French>M4A3(75)W Sherman (Commandement)</French>
             <Chinesesimp>M4A3(75)W屑尔曼(指挥型)</Chinesesimp>
             <Japanese>M4A3(75)W Sherman (指揮車)</Japanese>
+            <Czech>M4A3(75)W Sherman (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_76_Command">
             <English>M4A3(76)W Sherman (Command)</English>
@@ -152,6 +170,7 @@
             <French>M4A3(76)W Sherman (Commandement)</French>
             <Chinesesimp>M4A3(76)W屑尔曼(指挥型)</Chinesesimp>
             <Japanese>M4A3(76)W Sherman (指揮車)</Japanese>
+            <Czech>M4A3(76)W Sherman (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_105_Command">
             <English>M4A3(105) Sherman (Command)</English>
@@ -160,6 +179,7 @@
             <French>M4A3(105) Sherman (Commandement)</French>
             <Chinesesimp>M4A3(105)屑尔曼(指挥型)</Chinesesimp>
             <Japanese>M4A3(105) Sherman (指揮車)</Japanese>
+            <Czech>M4A3(105) Sherman (Příkaz)</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIII_K">
             <English>PzBefWg III Ausf. K</English>
@@ -168,6 +188,7 @@
             <French>PzBefWg III Ausf. K</French>
             <Japanese>PzBefWg III Ausf. K</Japanese>
             <Chinesesimp>三号坦克K型</Chinesesimp>
+            <Czech>PzBefWg III Ausf. K</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIV">
             <English>PzBefWg IV</English>
@@ -176,6 +197,7 @@
             <French>PzBefWg IV</French>
             <Japanese>PzBefWg IV</Japanese>
             <Chinesesimp>四号坦克</Chinesesimp>
+            <Czech>PzBefWg IV</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgV">
             <English>PzBefWg V</English>
@@ -184,6 +206,7 @@
             <French>PzBefWg V</French>
             <Chinesesimp>五号坦克"豹"</Chinesesimp>
             <Japanese>PzBefWg V</Japanese>
+            <Czech>PzBefWg V</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgVI">
             <English>PzBefWg VI</English>
@@ -192,6 +215,7 @@
             <French>PzBefWg VI</French>
             <Japanese>PzBefWg VI</Japanese>
             <Chinesesimp>六号坦克"虎"</Chinesesimp>
+            <Czech>PzBefWg VI</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_BfwJagdpanther">
             <English>Bfw. Jagdpanther</English>
@@ -200,6 +224,7 @@
             <French>Bfw. Jagdpanther</French>
             <Chinesesimp>猎豹坦克歼击车(指挥型)</Chinesesimp>
             <Japanese>Bfw. Jagdpanther</Japanese>
+            <Czech>Bfw. Jagdpanther</Czech>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioOperator">
             <English>Radio Operator</English>
@@ -208,6 +233,7 @@
             <Japanese>無線手</Japanese>
             <French>Opérateur radio</French>
             <Chinesesimp>无线电操作员</Chinesesimp>
+            <Czech>Radiový Operátor</Czech>
         </Key>
     </Package>
 </Project>
