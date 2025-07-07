@@ -1550,7 +1550,7 @@ namespace acre {
 #endif
 
                     ja = (long) (3.0 + 0.1 * elev[0]);
-                    jb = np - ja + 6;
+                    jb = std::min<long>(np - ja + 6, np + 1);
                     for (i = ja - 1; i < jb; ++i)
                         zsys += elev[i];
                     zsys /= (jb - ja + 1);
