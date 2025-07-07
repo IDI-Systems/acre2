@@ -15,6 +15,7 @@
             <Italian>Telefono fanteria</Italian>
             <French>Téléphone d'infanterie</French>
             <Turkish>Piyade Telefonu</Turkish>
+            <Czech>Pěchotní telefon</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_giveInfantryPhone">
             <English>Pass Infantry Phone</English>
@@ -30,6 +31,7 @@
             <Italian>Passa telefono fanteria</Italian>
             <French>Passer le téléphone d'infanterie</French>
             <Turkish>Piyade Telefonunu Ver</Turkish>
+            <Czech>Podat pěchotní telefon</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_takeInfantryPhone">
             <English>Take Infantry Phone %1</English>
@@ -45,6 +47,7 @@
             <Italian>Prendi telefono fanteria %1</Italian>
             <French>Prendre le téléphone d'infanterie %1</French>
             <Turkish>Piyade Telefonunu Al %1</Turkish>
+            <Czech>Vzít pěchotní telefon</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_switchInfantryPhone">
             <English>Switch Network %1</English>
@@ -60,6 +63,7 @@
             <Italian>Cambia canale %1</Italian>
             <French>Changer de réseau %1</French>
             <Turkish>Ağ Değiştir %1</Turkish>
+            <Czech>Změnit síť %1</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_returnInfantryPhone">
             <English>Return Infantry Phone</English>
@@ -75,6 +79,7 @@
             <Italian>Riaggancia telefono fanteria</Italian>
             <French>Raccrocher le téléphone d'infanterie</French>
             <Turkish>Piyade Telefonunu Geri Ver</Turkish>
+            <Czech>Vrátit pěchotní telefon</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
             <English>Start Calling %1</English>
@@ -90,6 +95,7 @@
             <Italian>Chiama %1</Italian>
             <French>Commencer d'appeler %1</French>
             <Turkish>Aramaya Başla %1</Turkish>
+            <Czech>Začít telefonovat %1</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_stopCalling">
             <English>Stop Calling</English>
@@ -105,6 +111,7 @@
             <Italian>Riaggancia</Italian>
             <French>Arrêter d'appeler %1</French>
             <Turkish>Aramayı Durdur</Turkish>
+            <Czech>Přestat telefonovat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneDisconnected">
             <English>Infantry Phone Disconnected</English>
@@ -120,6 +127,7 @@
             <Italian>Telefono fanteria disconnesso</Italian>
             <French>Téléphone d'infanterie déconnecté</French>
             <Turkish>Piyade Telefonunun Bağlantısı Kesildi</Turkish>
+            <Czech>Pěchotní telefon je odpojený</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneConnected">
             <English>Infantry Phone Connected %1</English>
@@ -135,6 +143,7 @@
             <Italian>Telefono fanteria connesso %1</Italian>
             <French>Téléphone d'infanterie connecté %1</French>
             <Turkish>Piyade Telefonu Bağlandı %1</Turkish>
+            <Czech>Pěchotní telefon je připojen %1</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
             <English>Infantry Phone Received %1</English>
@@ -150,6 +159,7 @@
             <Italian>Telefono fanteria %1 ricevuto</Italian>
             <French>Téléphone d'infanterie reçu %1</French>
             <Turkish>Piyade Telefonu Alındı %1</Turkish>
+            <Czech>Pěchotní telefon přijat %1</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhoneUnavailable">
             <English>Infantry Phone already in use</English>
@@ -158,6 +168,7 @@
             <French>Téléphone d'infanterie déjà utilisé</French>
             <Chinesesimp>车外对讲机正在使用</Chinesesimp>
             <Japanese>車外電話機は使用中です。</Japanese>
+            <Czech>Pěchotní telefon se právě používá</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercom">
             <English>Intercom</English>
@@ -173,6 +184,7 @@
             <Italian>Interfono</Italian>
             <French>Interphone</French>
             <Turkish>İnterkom</Turkish>
+            <Czech>Interkom</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_maxConnections">
             <English>Cannot connect to intercom. Maximum connections reached</English>
@@ -187,6 +199,7 @@
             <German>Maximale Anzahl an Verbindungen im Bordfunk erreicht. Verbindung kann nicht hergestellt werden.</German>
             <Russian>Невозможно подключиться к Интеркому - достигнуто максимальное кол-во подключений</Russian>
             <Turkish>İnterkom'a bağlanılamadı. Maksimum bağlantı sayısı geçildi</Turkish>
+            <Czech>Nelze se připojit k interkomu. Dosažen maximální počet připojení.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercom">
             <English>Crew Intercom</English>
@@ -201,6 +214,7 @@
             <German>Besatzungsbordfunk</German>
             <Russian>Интерком экипажа</Russian>
             <Turkish>Mürettebat İnterkomu</Turkish>
+            <Czech>Posádkový interkom</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_shortCrewIntercom">
             <English>Crew</English>
@@ -215,6 +229,7 @@
             <Japanese>乗員</Japanese>
             <Portuguese>Tripulação</Portuguese>
             <Turkish>Mürettebat</Turkish>
+            <Czech>Posádka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
             <English>Pax Intercom</English>
@@ -229,6 +244,7 @@
             <German>Passagierbordfunk</German>
             <Russian>Интерком пассажиров</Russian>
             <Turkish>Yolcu İnterkomu</Turkish>
+            <Czech>Pax interkom</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_shortPassengerIntercom">
             <English>Pax</English>
@@ -243,6 +259,7 @@
             <Japanese>乗客</Japanese>
             <Portuguese>Passageiros</Portuguese>
             <Turkish>Yolcu</Turkish>
+            <Czech>Pax</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_open">
             <English>Open</English>
@@ -274,6 +291,7 @@
             <Spanish>Conectar</Spanish>
             <French>Connecter</French>
             <Turkish>Bağlan</Turkish>
+            <Czech>Připojit</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_disconnect">
             <English>Disconnect</English>
@@ -289,6 +307,7 @@
             <Italian>Disconnetti</Italian>
             <French>Déconnecter</French>
             <Turkish>Kapat</Turkish>
+            <Czech>Odpojit</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_transOnly">
             <English>Transmit Only</English>
@@ -304,6 +323,7 @@
             <French>Seulement transmettre</French>
             <Russian>Только передача</Russian>
             <Turkish>Sadece İletme</Turkish>
+            <Czech>Jenom odesílat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_recOnly">
             <English>Receive Only</English>
@@ -319,6 +339,7 @@
             <French>Seulement recevoir</French>
             <Russian>Только прием</Russian>
             <Turkish>Sadece Alma</Turkish>
+            <Czech>Jenom přímat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_recAndTrans">
             <English>Receive and Transmit</English>
@@ -334,6 +355,7 @@
             <French>Recevoir et transmettre</French>
             <Russian>Прием и передача</Russian>
             <Turkish>İletme ve Alma</Turkish>
+            <Czech>Přímat a odesílat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_mute">
             <English>Mute</English>
@@ -348,6 +370,7 @@
             <Russian>Заглушить</Russian>
             <Portuguese>Mutar</Portuguese>
             <Turkish>Sustur</Turkish>
+            <Czech>Ztlumit</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_startBroadcast">
             <English>Start Broadcast</English>
@@ -362,6 +385,7 @@
             <Russian>Начать трансляцию</Russian>
             <Portuguese>Começar transmissão interveicular</Portuguese>
             <Turkish>Yayına Başla</Turkish>
+            <Czech>Začít vysílat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
             <English>Stop Broadcast</English>
@@ -376,6 +400,7 @@
             <Russian>Остановить трансляцию</Russian>
             <Portuguese>Parar transmissão interveicular</Portuguese>
             <Turkish>Yayını Durdur</Turkish>
+            <Czech>Přestat vysílat</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_activateAccent">
             <English>Activate Accent</English>
@@ -389,6 +414,7 @@
             <Chinesesimp>启用强调</Chinesesimp>
             <Portuguese>Ativar comunicação prioritária</Portuguese>
             <Turkish>İnterkom Mesajlarına Öncelik Ver</Turkish>
+            <Czech>Spustit přízvuk</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
             <English>Deactivate Accent</English>
@@ -402,6 +428,7 @@
             <Chinesesimp>禁用强调</Chinesesimp>
             <Portuguese>Desativar comunicação prioritária</Portuguese>
             <Turkish>İnterkom Mesajlarına Öncelik Verme</Turkish>
+            <Czech>Vypnout přízvuk</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
             <English>Intercom Transmit</English>
@@ -416,6 +443,7 @@
             <Russian>Передача по Интеркому</Russian>
             <Portuguese>Transmitir na Intercom.</Portuguese>
             <Turkish>İnterkomda İlet</Turkish>
+            <Czech>Přenos interkomu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
             <English>Transmit on intercom station.</English>
@@ -429,6 +457,7 @@
             <German>Im Bordfunk sprechen</German>
             <Portuguese>Transmitir na estação da Intercom.</Portuguese>
             <Turkish>İnterkom istasyonunda mesaj ilet</Turkish>
+            <Czech>Vysílejte na interkomové stanici.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
             <English>Intercom Broadcast</English>
@@ -443,6 +472,7 @@
             <Russian>Трансляция с Интеркома</Russian>
             <Portuguese>Transmissão Intercom entre veículos</Portuguese>
             <Turkish>İnterkom Yayını</Turkish>
+            <Czech>Vysílání interkomu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
             <English>Transmit a priority message on intercom station.</English>
@@ -457,6 +487,7 @@
             <Russian>Передавать важное сообщение на станцию Интеркома</Russian>
             <Portuguese>Transmitir mensagem prioritária em estação da Intercom.</Portuguese>
             <Turkish>İnterkom istasyonunda yüksek öncelikli mesaj ilet.</Turkish>
+            <Czech>Odešlete prioritní zprávu na interkomovou stanici.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousIntercomKey">
             <English>Previous Intercom Network</English>
@@ -471,6 +502,7 @@
             <Russian>Предыдущая сеть Интеркома</Russian>
             <Portuguese>Última rede de Intercom.</Portuguese>
             <Turkish>Önceki İnterkom Ağı</Turkish>
+            <Czech>Předchozí síť interkomu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousIntercomKey_description">
             <English>Connects to the previous Intercom Network. Disconnects from others.</English>
@@ -484,9 +516,10 @@
             <Chinesesimp>从其他通讯网路断开。并链接至上一个网路。</Chinesesimp>
             <Portuguese>Conecta-se na última rede de intercom. Desconecta-se das outras</Portuguese>
             <Turkish>Önceki interkom ağına bağlanıp diğerlerinden ayrılır</Turkish>
+            <Czech>Připojuje se k předchozí síti interkomu. Odpojuje se od ostatních.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercomKey">
-            <English>Next Intercom Network</English>
+            <English>Another intercom network</English>
             <Spanish>Siguiente red de intercom</Spanish>
             <Polish>Następna sieć interkomu</Polish>
             <Italian>Rete Interfono successiva</Italian>
@@ -498,6 +531,7 @@
             <Russian>Следующая сеть Интеркома</Russian>
             <Portuguese>Próxima rede de Intercom.</Portuguese>
             <Turkish>Sonraki İnterkom Ağı</Turkish>
+            <Czech>Další síť interkomu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextIntercomKey_description">
             <English>Connects to the next Intercom Network. Disconnects from others.</English>
@@ -511,6 +545,7 @@
             <Chinesesimp>从其他通讯网路断开。并连接至下一个网路。</Chinesesimp>
             <Portuguese>Conecta-se na próxima rede de Intercom. Desconecta-se das outras</Portuguese>
             <Turkish>Sonraki interkom ağına bağlanıp diğerlerinden ayrılır</Turkish>
+            <Czech>Připojuje se k další síti interkomu. Odpojuje se od ostatních.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
             <English>Connect Previous Intercom Network</English>
@@ -525,6 +560,7 @@
             <Russian>Подключиться к предыдущей сети Интеркома</Russian>
             <Portuguese>Conecta-se na última rede de Intercom.</Portuguese>
             <Turkish>Önceki İnterkom Ağını Bağla</Turkish>
+            <Czech>Připojení předchozí interkomové sítě</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey_description">
             <English>Connects to the previous Intercom Network while keeping the already connected ones.</English>
@@ -538,6 +574,7 @@
             <Chinesesimp>维持与其他通讯网路存在的连线。并连接至上一个网路。</Chinesesimp>
             <Portuguese>Conecta-se na última rede de Intercom. enquanto mantém as outras conectadas</Portuguese>
             <Turkish>Önceki interkom ağına bağlanıp diğerlerine de bağlı kal</Turkish>
+            <Czech>Připojuje se k předchozí síti interkomu a zároveň zachovává ty již připojené.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey">
             <English>Connect Next Intercom Network</English>
@@ -552,6 +589,7 @@
             <Russian>Подключиться к следующей сети Интеркома</Russian>
             <Portuguese>Conecta-se na próxima rede de Intercom.</Portuguese>
             <Turkish>Sonraki İnterkom Ağını Bağla</Turkish>
+            <Czech>Připojte další interkomovou síť</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey_description">
             <English>Connects to the next Intercom Network while keeping the already connected ones.</English>
@@ -565,6 +603,7 @@
             <Chinesesimp>维持与其他通讯网路存在的连线。并连接至下一个网路。</Chinesesimp>
             <Portuguese>Conecta-se na próxima rede de Intercom. enquanto mantém as outras conectadas</Portuguese>
             <Turkish>Sonraki interkom ağına bağlanıp diğerlerine de bağlı kal</Turkish>
+            <Czech>Připojuje se k další síti interkomu a zároveň zachovává ty již připojené.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Open Intercom GUI</English>
@@ -578,6 +617,7 @@
             <Chinesesimp>开启对讲机界面。</Chinesesimp>
             <Portuguese>Abrir Interface da Intercom.</Portuguese>
             <Turkish>İnterkom Arayüzünü Aç</Turkish>
+            <Czech>Otevřete GUI interkomu</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_forcedStatus">
             <English>Intercom status is being forced. Cannot change configuration.</English>
@@ -591,6 +631,7 @@
             <Chinesesimp>对讲机状态已被强制。无法更改设置。</Chinesesimp>
             <Portuguese>Situação da Intercomunicação está sendo forçado. As configurações não podem ser alteraradas.</Portuguese>
             <Turkish>İnterkom ayarı zorla atanmış. Ayarlar değiştirilemiyor. </Turkish>
+            <Czech>Vynucuje se stav interkomu. Nelze změnit konfiguraci.</Czech>
         </Key>
     </Package>
 </Project>
