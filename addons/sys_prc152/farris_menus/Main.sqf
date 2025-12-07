@@ -1,14 +1,14 @@
 #include "..\script_component.hpp"
 //#define DEBUG_MODE_FULL
 
-
+ #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 GVAR(OFF) = ["OFF", "OFF", "", MENUTYPE_STATIC, [],[ nil,nil, nil ] ];
 [GVAR(OFF)] call FUNC(createMenu);
 
 GVAR(INVALID_MODE) = ["INVALID_MODE", "INVALID_MODE", "",
     MENUTYPE_STATIC,
     [
-        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch $cch-encryption"],
         [ROW_XLARGE_1, ALIGN_LEFT, "INVALID MODE"],
         [ROW_LARGE_2, ALIGN_LEFT, "ONLY PT SUPPORTED"]
     ],
@@ -24,7 +24,7 @@ GVAR(INVALID_MODE) = ["INVALID_MODE", "INVALID_MODE", "",
 GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
     MENUTYPE_STATIC,
     [
-        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch $cch-encryption"],
         [ROW_LARGE_2, ALIGN_CENTER, "VOLUME"]
     ],
     [
@@ -48,8 +48,8 @@ GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
 GVAR(NoItems) = ["ERROR_NOENTRY", "ERROR_NOENTRY", "",
     MENUTYPE_STATIC,
     [
-        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
-        [ROW_LARGE_2, ALIGN_LEFT, "<NO ITEMS IN MENU>"],
+        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch $cch-encryption"],
+        [ROW_LARGE_2, ALIGN_CENTER, "<NO ITEMS IN MENU>"],
         [ROW_SMALL_5, ALIGN_CENTER, "ENT OR CLR TO CONT"]
     ],
     [
@@ -77,10 +77,10 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
         ["VULOSHOME-MAIN", "VULOSHOME-MAIN", "",
             MENUTYPE_STATIC,
             [
-                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat        $cch-channelmode $cch-squelch $cch-encryption"],
                 [ROW_LARGE_2, ALIGN_LEFT, "$cch-number-$cch-description"],
-                [ROW_LARGE_3, ALIGN_LEFT, "LOS  VOC  $cch-modulation  ---  --"],
-                [ROW_SMALL_5, ALIGN_LEFT, "TYPE    TRF    MOD   CHAN    KEY"]
+                [ROW_LARGE_3, ALIGN_LEFT, "LOS  VOC  $cch-modulation  ---  $cch-tek"],
+                [ROW_SMALL_5, ALIGN_LEFT, " TYPE   TRF    MOD   CHAN   KEY"]
             ],
             [
                 nil,
@@ -109,7 +109,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
         ["VULOSHOME-CHANNEL", "VULOSHOME-CHANNEL", "",
             MENUTYPE_STATIC,
             [
-                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat        $cch-channelmode $cch-squelch $cch-encryption"],
                 [ROW_LARGE_2, ALIGN_LEFT, "R: $cch-frequencyrx"],
                 [ROW_LARGE_3, ALIGN_LEFT, "T: $cch-frequencytx       ---"],
                 [ROW_SMALL_5, ALIGN_LEFT, " FREQUENCY                  CHAN"]
@@ -141,9 +141,9 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
         ["VULOSHOME-DATA", "VULOSHOME-DATA", "",
             MENUTYPE_STATIC,
             [
-                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
-                [ROW_LARGE_2, ALIGN_LEFT, "--- -----   --"],
-                [ROW_LARGE_3, ALIGN_LEFT, "$cch-optioncode ---- ANLG -- OFF"],
+                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat        $cch-channelmode $cch-squelch $cch-encryption"],
+                [ROW_LARGE_2, ALIGN_LEFT, "25K $cch-trafficrate.0K   --"],
+                [ROW_LARGE_3, ALIGN_LEFT, "$cch-optioncode ---- CLR  --  OFF"],
                 [ROW_SMALL_5, ALIGN_LEFT, "OPT   DATA   VOICE  INTLV   FEC"]
             ],
             [
@@ -173,7 +173,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
         ["VULOSHOME-LARGEFONT", "VULOSHOME-LARGEFONT", "",
             MENUTYPE_STATIC,
             [
-                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat        $cch-channelmode $cch-squelch $cch-encryption"],
                 [ROW_XLARGE_2, ALIGN_LEFT, "$cch-number*$cch-description"]
             ],
             [
