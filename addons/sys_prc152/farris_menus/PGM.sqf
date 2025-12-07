@@ -1,5 +1,5 @@
 #include "..\script_component.hpp"
-#define DEBUG_MODE_FULL
+//#define DEBUG_MODE_FULL
 
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 
@@ -435,7 +435,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 
                 private _channelTEK = parseNumber (SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_tek","0") SELECT [3]);
                 
-                systemChat format["pos is %1", _channelTEK];
+                
                 private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                 private _channels = GET_STATE("channels");
                 private _channel = HASHLIST_SELECT(_channels,_channelNumber);
@@ -443,11 +443,11 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     default{
                         HASH_SET(_channel,"encryption",1);
                         HASH_SET(_channel,"trafficRate",16); 
-                        systemChat format["env is %1", 1];
+
                     };
                     case 'NONE': {
                         HASH_SET(_channel,"encryption",0);
-                        systemChat format["env is %1", 0];
+
                     };
                 };
                                
