@@ -420,7 +420,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         nil
                     ],
                     [
-                        ["TEK01", "TEK02", "TEK03"],
+                        ["TEK01", "TEK02", "TEK03", "TEK04", "TEK05", "TEK06", "TEK07", "TEK08", "TEK09", "TEK10", "TEK11", "TEK12", "TEK13", "TEK14", "TEK15", "TEK16", "TEK17", "TEK18", "TEK19", "TEK20", "TEK21", "TEK22", "TEK23", "TEK24", "TEK25"],
                         [ROW_LARGE_3, 0, -1] // Highlighting cursor information
                     ],
                     "pgm_tek"

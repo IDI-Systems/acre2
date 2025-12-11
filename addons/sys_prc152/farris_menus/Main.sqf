@@ -142,7 +142,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
             MENUTYPE_STATIC,
             [
                 [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat        $cch-channelmode $cch-squelch $cch-encryption"],
-                [ROW_LARGE_2, ALIGN_LEFT, "25K $cch-trafficrate.0K   --"],
+                [ROW_LARGE_2, ALIGN_LEFT, "25K $cch-trafficrate.0K    $cch-modulation"],
                 [ROW_LARGE_3, ALIGN_LEFT, "$cch-optioncode ---- CLR  --  OFF"],
                 [ROW_SMALL_5, ALIGN_LEFT, "OPT   DATA   VOICE  INTLV   FEC"]
             ],
@@ -174,30 +174,13 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
             MENUTYPE_STATIC,
             [
                 [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat        $cch-channelmode $cch-squelch $cch-encryption"],
-                [ROW_XLARGE_2, ALIGN_LEFT, "$cch-number*$cch-description"]
+                [ROW_XLARGE_2, ALIGN_LEFT, "$cch-number-$cch-description"]
             ],
             [
                 nil, // onEntry
                 nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
                 nil,
-                {
-                    [ICON_BATTERY, false] call FUNC(toggleIcon);
-                    [ICON_VOLUME, true] call FUNC(toggleIcon);
-                    [ICON_TRANSMIT, true] call FUNC(toggleIcon);
-                    [ICON_TRANSMITBAR, true] call FUNC(toggleIcon);
-
-                    private _volume = GET_STATE("volume");
-                    private _display = uiNamespace getVariable [QGVAR(currentDisplay), displayNull];
-                    private _recStrength = SCRATCH_GET_DEF(GVAR(currentRadioID),"receivingSignal",0);
-
-                    TRACE_2("Rendering VOLUME-STAGE-1",_volume,_display);
-                    if (!isNull _display) then {
-                        (_display displayCtrl ICON_VOLUME) progressSetPosition _volume;
-                        (_display displayCtrl ICON_VOLUME) ctrlCommit 0;
-                        (_display displayCtrl ICON_TRANSMITBAR) progressSetPosition _recStrength;
-                        (_display displayCtrl ICON_TRANSMITBAR) ctrlCommit 0;
-                    };
-                }
+                nil
             ]
         ]
     ],
