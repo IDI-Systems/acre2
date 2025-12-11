@@ -20,6 +20,7 @@
 #ifndef DEBUG_MODE_FULL
 if (!isMultiplayer) exitWith {};
 #endif
+if (!hasInterface) exitWith {};
 
 params ["_name", "_value"];
 
