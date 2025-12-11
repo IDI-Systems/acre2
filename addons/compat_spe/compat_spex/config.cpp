@@ -17,9 +17,9 @@ class CfgPatches {
 
 class CfgAcreWorlds {
     class SPEX_Carentan {
-        wrp = QPATHTOF(SPEX_Carentan.fakewrp);
+        wrp = QPATHTOEF(compat_spe,compat_spex\SPEX_Carentan.fakewrp);
     };
     class SPEX_Utah_Beach {
-        wrp = QPATHTOF(SPEX_Utah_Beach.fakewrp);
+        wrp = QPATHTOEF(compat_spe,compat_spex\SPEX_Utah_Beach.fakewrp);
     };
 };
