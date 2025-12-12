@@ -68,5 +68,33 @@ class CfgSoundEffects {
             acreAttenuation = 0;
             acreAttenuationTurnedOut = 0;
         };
+        class vn_car_attenuation {
+            acreAttenuation = 0.5;
+            acreAttenuationTurnedOut = 0.25;
+        };
+        class vn_helicopter_attenuation {
+            acreAttenuation = 0.6;
+            acreAttenuationTurnedOut = 0.3;
+        };
+        class vn_mrap_attenuation {
+            acreAttenuation = 0.5;
+            acreAttenuationTurnedOut = 0.25;
+        };
+        class vn_openvehicle_attenuation {
+            acreAttenuation = 0;
+            acreAttenuationTurnedOut = 0;
+        };
+        class vn_semiopencar_attenuation {
+            acreAttenuation = 0;
+            acreAttenuationTurnedOut = 0;
+        };
+        class vn_tank_attenuation {
+            acreAttenuation = 0.6;
+            acreAttenuationTurnedOut = 0.3;
+        };
+        class vn_truck_attenuation {
+            acreAttenuation = 0.5;
+            acreAttenuationTurnedOut = 0.25;
+        };
     };
 };
