@@ -27,7 +27,7 @@ acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels
         }
 
         // Add noise unless setting disabled
-        if (noise && CAcreSettings::getInstance()->getDisableRadioNoise() != 1) {
+        if (noise && (CAcreSettings::getInstance()->getDisableRadioNoise() != 1)) {
             this->mixPinkNoise(floatPointer[0], sampleCount*channels, value);
             this->mixWhiteNoise(floatPointer[0], sampleCount*channels, value);
         }
