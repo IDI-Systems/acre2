@@ -233,12 +233,12 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
         ["FREQ", "FREQ", "",
             MENUTYPE_ACTIONSERIES,
             [
-                [nil, "RX FREQUENCY", "",
+                [nil, "RECEIVE FREQUENCY", "",
                     MENUTYPE_FREQUENCY,
                     [
-                        [ROW_LARGE_2, ALIGN_CENTER, "RX FREQUENCY"],
+                        [ROW_LARGE_2, ALIGN_CENTER, "RECEIVE FREQUENCY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
-                        [ROW_SMALL_5, ALIGN_CENTER, "ENTER FREQUENCY"]
+                        [ROW_SMALL_5, ALIGN_CENTER, "30 MHz - 51.99999 MHz"]
                     ],
                     [
                         {
@@ -249,7 +249,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                         nil     // We've implemented dynamic button press handlers for static displays
                     ],
                     [
-                        0.0001,  // min number/start default
+                        30,  // min number/start default
                         599.9999,  // Max number
                         7,    // Digit count
                         [ROW_LARGE_3, 0, 1] // Highlighting cursor information
@@ -259,9 +259,9 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 [nil, "TX FREQUENCY", "",
                     MENUTYPE_FREQUENCY,
                     [
-                        [ROW_LARGE_2, ALIGN_CENTER, "TX FREQUENCY"],
+                        [ROW_LARGE_2, ALIGN_CENTER, "TRANSMIT FREQUENCY"],
                         [ROW_LARGE_3, ALIGN_CENTER, "%1"],
-                        [ROW_SMALL_5, ALIGN_CENTER, "ENTER FREQUENCY"]
+                        [ROW_SMALL_5, ALIGN_CENTER, "30 MHz - 51.99999 MHz"]
                     ],
                     [
                         {
@@ -272,7 +272,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                         nil     // We've implemented dynamic button press handlers for static displays
                     ],
                     [
-                        1,  // min number/start default
+                        30,  // min number/start default
                         599.9999,  // Max number
                         7,    // Digit count
                         [ROW_LARGE_3, 0, 1] // Highlighting cursor information
@@ -335,9 +335,124 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
             }
         ],
         [nil, "COMSEC", "", MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ],
-        [nil, "DATA", "", MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ],
-        [nil, "SQUELCH", "", MENU_ACTION_SUBMENU, ["SQ"], nil ],
-        [nil, "TXPOWER", "",
+        ["DATA/VOC", "DATA/VOC", "", 
+            MENUTYPE_ACTIONSERIES,
+            [                
+                [nil, "VOICE MODE", "",
+                    MENUTYPE_SELECTION,
+                    [
+                        [ROW_LARGE_2, ALIGN_CENTER, "VOICE MODE"],
+                        [ROW_LARGE_3, ALIGN_CENTER, "%1"],
+                        [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
+                    ],
+                    [
+                        nil,
+                        nil,
+                        nil
+                    ],
+                    [
+                        ["CLEAR", "MODEM"],
+                        [ROW_LARGE_3, 0, -1] // Highlighting cursor information
+                    ],
+                    "pgm_voice_mode"
+                ],
+                [nil, "MODULATION", "",
+                    MENUTYPE_SELECTION,
+                    [
+                        [ROW_LARGE_2, ALIGN_CENTER, "MODULATION"],
+                        [ROW_LARGE_3, ALIGN_CENTER, "%1"],
+                        [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
+                    ],
+                    [
+                         {
+                            private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
+                            private _txTone = GET_RADIO_VALUE("modulation");                            
+                            {
+                                if (_txTone == _x) exitWith {
+                                    SET_STATE("menuSelection",_forEachIndex);
+                                };
+                            } forEach _options;
+                        },
+                        nil,
+                        nil,
+                        nil,
+                        {
+                            private _check = SCRATCH_GET(GVAR(currentRadioId),"pgm_modulation");
+                            if (_check == "AM") then {
+                                private _currentAction = GET_STATE("menuAction");
+                                _currentAction = _currentAction + 1;
+                                SET_STATE("pgm_fmd","8.0");
+
+                                SET_STATE("menuAction",_currentAction);
+                            };
+                        }
+                    ],
+                    [
+                        ["AM", "FM"],
+                        [ROW_LARGE_3, 0, -1] // Highlighting cursor information
+                    ],
+                    "pgm_modulation"
+                ],
+                [nil, "FM DEVIATION", "",
+                    MENUTYPE_SELECTION,
+                    [
+                        [ROW_LARGE_2, ALIGN_CENTER, "FM DEVIATION"],
+                        [ROW_LARGE_3, ALIGN_CENTER, "%1"],
+                        [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
+                    ],
+                    [
+                        {
+                            private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
+                            private _deviation = GET_RADIO_VALUE("deviation");                            
+                            {
+                                if (_deviation == parseNumber _x) exitWith {
+                                    SET_STATE("menuSelection",_forEachIndex);
+                                };
+                            } forEach _options;
+                        },
+                        nil,
+                        nil // We've implemented dynamic button press handlers for static displays
+                    ],
+                    [
+                        ["8.0 kHz","6.5 kHz","5.0 kHz"],
+                        [ROW_LARGE_3, 0, -1] // Highlighting cursor information
+                    ],
+                    "pgm_deviation"
+                ]
+            ],
+            [nil, nil],
+            {
+                 // Set the current channel to the edited preset, and save the so-far-edited values
+                private _channelModulation = SCRATCH_GET(GVAR(currentRadioId),"pgm_modulation");
+                private _channelDeviation = parseNumber SCRATCH_GET(GVAR(currentRadioId),"pgm_deviation");
+                
+                private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+                private _channels = GET_STATE("channels");
+                private _channel = HASHLIST_SELECT(_channels,_channelNumber);
+
+                switch _channelModulation do{
+                    case "AM": {
+                        HASH_SET(_channel,"squelch",0);
+                        HASH_SET(_channel,"CTCSSTx",0);
+                        HASH_SET(_channel,"CTCSSRx",0);
+                        HASH_SET(_channel,"optionCode",200);
+                    };
+                    case "FM": {
+                        HASH_SET(_channel,"optionCode",201);
+                    };
+                };
+                HASH_SET(_channel,"modulation",_channelModulation);                
+                HASH_SET(_channel,"deviation",_channelDeviation);
+
+                HASHLIST_SET(_channels,_channelNumber,_channel);
+                SET_STATE("channels",_channels);
+
+                SET_STATE("pgm_modulation",nil);
+                SET_STATE("pgm_deviation",nil);  
+            }
+        ],
+        [nil, "SQ", "", MENU_ACTION_SUBMENU, ["SQ"], nil ],
+        [nil, "PWR", "",
             MENUTYPE_SELECTION,
             [
                 [ROW_LARGE_2, ALIGN_CENTER, "TX POWER LEVEL"],

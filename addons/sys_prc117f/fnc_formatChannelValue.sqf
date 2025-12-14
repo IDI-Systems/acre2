@@ -39,7 +39,7 @@ switch _name do {
     case "encryption": {
         if (_value > 1) then { _value = "CT"; } else { _value = "PT"; };
     };
-    case "channelMode": {
+    case "channelmode": {
         switch _value do {
             case "BASIC": { _value = "NORM"; }
         };
