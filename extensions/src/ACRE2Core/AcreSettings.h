@@ -25,7 +25,7 @@ public:
 
     DECLARE_MEMBER(bool, DisablePosition);
     DECLARE_MEMBER(bool, DisableMuting);
-    DECLARE_MEMBER(bool, DisableRadioFilter);
+    DECLARE_MEMBER(bool, DisableRadioNoise);
     DECLARE_MEMBER(bool, DisableUnmuteClients);
     DECLARE_MEMBER(bool, DisableTS3ChannelSwitch);
 

@@ -25,6 +25,10 @@ RPC_FUNCTION(setSetting) {
         if (CAcreSettings::getInstance()->getDisableTS3ChannelSwitch() != (value != 1)) {
             CAcreSettings::getInstance()->setDisableTS3ChannelSwitch(value != 1);
         }
+    } else if (name == "disableRadioNoise") {
+        if (CAcreSettings::getInstance()->getDisableRadioNoise() != (value != 1)) {
+            CAcreSettings::getInstance()->setDisableRadioNoise(value != 1);
+        }
     } else {
         LOG("Setting [%s] failed to change to [%f]", name.c_str(), value);
         return acre::Result::error;

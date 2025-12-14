@@ -12,9 +12,6 @@ acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels
     float buffer[4096], *floatPointer[1];
     short *shortPointer[1];
 
-    if (CAcreSettings::getInstance()->getDisableRadioFilter())
-        return acre::Result::ok;
-
     if (value > 0.0f) {
         floatPointer[0] = buffer;
         shortPointer[0] = samples;
@@ -24,12 +21,13 @@ acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels
             floatPointer[0][i] = static_cast<float>(samples[i]) * mul;
         }
 
-
         // Boost it
         for (int i = 0; i < sampleCount*channels; i++) {
             floatPointer[0][i] = floatPointer[0][i] * 3.0f;
         }
-        if (noise) {
+
+        // Add noise unless setting disabled
+        if (noise && (CAcreSettings::getInstance()->getDisableRadioNoise() != 1)) {
             this->mixPinkNoise(floatPointer[0], sampleCount*channels, value);
             this->mixWhiteNoise(floatPointer[0], sampleCount*channels, value);
         }
@@ -45,7 +43,7 @@ acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels
         this->m_HighPass.process(sampleCount*channels, floatPointer);
 
         // Drop low-end if on speakerphone
-        if (isLoudSpeaker) { 
+        if (isLoudSpeaker) {
             this->m_lowShelf.process(sampleCount * channels, floatPointer);
         }
 
@@ -68,7 +66,7 @@ acre::Result CFilterRadio::process(short* samples, int sampleCount, int channels
 }
 
 acre::Result CFilterRadio::mixPinkNoise(float *buffer, int numSamples, acre::volume_t value) {
-    
+
     float inverse_value = 1.25f - value;
     for (int i = 0; i < numSamples; i++) {
         float noise = this->m_PinkNoise.tick() * (0.35f * inverse_value);
@@ -85,7 +83,7 @@ acre::Result CFilterRadio::mixWhiteNoise(float *buffer, int numSamples, acre::vo
         float noise = Dsp::whitenoise() * (0.001f *inverse_value);
         buffer[i] = buffer[i] + noise;
     }
-    
+
     return acre::Result::ok;
 }
 

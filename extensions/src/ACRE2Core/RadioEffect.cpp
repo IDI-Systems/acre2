@@ -10,7 +10,7 @@ CRadioEffect::~CRadioEffect() {
     delete radioFilter;
 }
 void CRadioEffect::process(short *samples, int sampleCount) {
-    
+
     bool noise = true;
     if (this->getParam("disableNoise"))
         noise = false;
