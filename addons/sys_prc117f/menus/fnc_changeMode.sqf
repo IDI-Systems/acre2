@@ -33,6 +33,11 @@ if (_mode == 0) then {
         switch _mode do {
             case 1: {
                 [GVAR(VULOSHOME)] call FUNC(changeMenu);
+                HASH_SET([] call FUNC(CURRENT_RADIO_CHANNEL), "encryption", 0);
+            };
+            case 2: {
+                [GVAR(VULOSHOME)] call FUNC(changeMenu);
+                HASH_SET([] call FUNC(CURRENT_RADIO_CHANNEL), "encryption", 1);
             };
             default {
                 [GVAR(INVALID_MODE)] call FUNC(changeMenu);

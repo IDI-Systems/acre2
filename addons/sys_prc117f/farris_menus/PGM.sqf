@@ -334,7 +334,101 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 SET_STATE("pgm_rx_only",nil);
             }
         ],
-        [nil, "COMSEC", "", MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ],
+        ["COMSEC", "COMSEC", "", 
+            MENUTYPE_ACTIONSERIES,
+            [               
+                [nil, "CRYPTO MODE", "",
+                    MENUTYPE_SELECTION,
+                    [
+                        [ROW_LARGE_2, ALIGN_CENTER, "CRYPTO MODE"],
+                        [ROW_LARGE_3, ALIGN_CENTER, "%1"],
+                        [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
+                    ],
+                    [
+                        {
+                            private _encryption = GET_RADIO_VALUE("encryption");                            
+                            if (_encryption > 0) exitWith {
+                                SET_STATE("menuSelection",1);
+                            };
+                        },
+                        nil,  // onExit. Our parent static display generic event handler handles the 'Next' key
+                        nil,
+                        nil,
+                        {
+                            private _check = SCRATCH_GET(GVAR(currentRadioId),"pgm_encryption");
+                            systemChat "WTF";
+                            if (_check == "NONE") then {
+                                systemChat "WTF";
+                                private _currentAction = GET_STATE("menuAction");
+                                _currentAction = _currentAction + 1;
+                                SET_STATE("menuAction",_currentAction);
+                            };
+                        } 
+                    ],
+                    [
+                        ["NONE", "VINSON",  "KG84", "FASCINATOR"],
+                        [ROW_LARGE_3, 0, -1] // Highlighting cursor information
+                    ],
+                    "pgm_encryption"
+                ],
+                [nil, "ENCRYPTION KEY", "",
+                    MENUTYPE_SELECTION,
+                    [
+                        [ROW_LARGE_2, ALIGN_CENTER, "ENCRYPTION KEY"],
+                        [ROW_LARGE_3, ALIGN_CENTER, "%1"],
+                        [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
+                    ],
+                    [
+                        {
+                            private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
+                            private _tek = GET_RADIO_VALUE("TEK");                            
+                            SET_STATE("menuSelection",_tek-1);
+                        },
+                        nil,
+                        nil,
+                        nil,
+                        nil
+                    ],
+                    [
+                        ["TEK01", "TEK02", "TEK03", "TEK04", "TEK05", "TEK06", "TEK07", "TEK08", "TEK09", "TEK10", "TEK11", "TEK12", "TEK13", "TEK14", "TEK15", "TEK16", "TEK17", "TEK18", "TEK19", "TEK20", "TEK21", "TEK22", "TEK23", "TEK24", "TEK25"],
+                        [ROW_LARGE_3, 0, -1] // Highlighting cursor information
+                    ],
+                    "pgm_tek"
+                ]
+            ],
+            [nil,
+            nil],    // This will be called after every action within the action list
+             // This will get called on series completion
+            {
+                // Set the current channel to the edited preset, and save the so-far-edited values
+                private _channelEncryption = SCRATCH_GET(GVAR(currentRadioId),"pgm_encryption");
+
+                private _channelTEK = parseNumber (SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_tek","0") SELECT [3]);
+
+
+                private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+                private _channels = GET_STATE("channels");
+                private _channel = HASHLIST_SELECT(_channels,_channelNumber);
+                switch _channelEncryption do{
+                    default{
+                        HASH_SET(_channel,"trafficRate",16);
+                        HASH_SET(_channel,"TEK",_channelTEK);
+                    };
+                    case 'NONE': {
+                        HASH_SET(_channel,"TEK",1);
+                    };
+                };
+
+                
+
+                HASHLIST_SET(_channels,_channelNumber,_channel);
+                SET_STATE("channels",_channels);
+
+                SET_STATE("pgm_encryption",nil);
+                SET_STATE("pgm_tek",nil);                
+
+            }
+        ],
         ["DATA/VOC", "DATA/VOC", "", 
             MENUTYPE_ACTIONSERIES,
             [                
