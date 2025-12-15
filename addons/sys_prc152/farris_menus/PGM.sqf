@@ -708,17 +708,27 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            private _sqType = GET_RADIO_VALUE("squelch");                           
-                            switch _sqType do {
-                                default {
-                                    SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_tx_select","TONE");
-                                    SET_STATE("menuSelection",1);
+                            private _sqType = GET_RADIO_VALUE("squelch");
+                            private _ctcss = GET_RADIO_VALUE("CTCSSTx");
+                            if (_sqType > 0) then {
+                                if (_ctcss == 0) then {
+                                    SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_tx_select","NOISE");
+                                    SET_STATE("menuSelection",2);
+                                } else {
+                                    if (_ctcss == 150) then {
+                                        SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_tx_select","TONE");
+                                        SET_STATE("menuSelection",1);
+                                    };
+                                    if (_ctcss != 150) then {
+                                        SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_tx_select","CTCSS");
+                                        SET_STATE("menuSelection",3);
+                                    };
                                 };
-                                case 3: {
-                                    SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_tx_select","CTCSS");
-                                    SET_STATE("menuSelection",3);
-                                };
-                            };
+                            } else {
+                                SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_tx_select","OFF");
+                                SET_STATE("menuSelection",0);
+                            };                           
+                            
                             private _modulationType = GET_RADIO_VALUE("modulation");  
                             switch _modulationType do {
                                 default {};
@@ -891,26 +901,31 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
                 private _channels = GET_STATE("channels");
                 private _channel = HASHLIST_SELECT(_channels,_channelNumber);
-
-                switch _sqType do {
-                    default { 
-                        HASH_SET(_channel,"squelch",0);
-                        HASH_SET(_channel,"CTCSSTx",0);
-                        HASH_SET(_channel,"CTCSSRx",0);
+                private _squelch = 0;
+                private _CTCSSTx = 0;
+                private _CTCSSRx = 0;
+                switch _sqType do {                    
+                    case 'TONE': {
+                        _squelch = 3;
+                        _CTCSSTx = 150;
+                        _CTCSSRx = 150;
+                    };
+                    case 'NOISE': {
+                        _squelch = 3;
+                        _CTCSSTx = 0;
+                        _CTCSSRx = 0;
                     };
                     case 'CTCSS': {
                         private _sqToneStr = SCRATCH_GET(GVAR(currentRadioId),"pgm_sq_tx_ctcss_tone");
-                        private _txValue = parseNumber _sqToneStr;
+                         _CTCSSTx = parseNumber _sqToneStr;
                         private _sqToneStr = SCRATCH_GET(GVAR(currentRadioId),"pgm_sq_rx_ctcss_tone");
-                        private _rxValue = parseNumber _sqToneStr;
-                        TRACE_3("Set squelch",_sqType,_sqToneStr,_value);
-                        HASH_SET(_channel,"squelch",3);
-                        HASH_SET(_channel,"CTCSSTx",_txValue);
-                        HASH_SET(_channel,"CTCSSRx",_rxValue);
+                        _CTCSSRx = parseNumber _sqToneStr;
+                        _squelch = 3;                        
                     };
                 };
-                
-                
+                HASH_SET(_channel,"squelch",_squelch);
+                HASH_SET(_channel,"CTCSSTx",_CTCSSTx);
+                HASH_SET(_channel,"CTCSSRx",_CTCSSRx);
 
                 SET_STATE("channels",_channels);
             }

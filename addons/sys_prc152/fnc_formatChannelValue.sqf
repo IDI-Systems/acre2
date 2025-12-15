@@ -21,6 +21,9 @@ params ["_name","_value"];
 #define SQUELCH_NOISE 0
 #define SQUELCH_CTCSS 3
 
+#define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
+#define GET_CHANNEL_DATA [] call FUNC(CURRENT_RADIO_CHANNEL);
+
 TRACE_1("Formatting",_this);
 
 switch _name do {
@@ -47,9 +50,19 @@ switch _name do {
         };
     };
     case "squelch": {
-        switch _value do {
-            case SQUELCH_NOISE: { _value = "NOI"; };
-            case SQUELCH_CTCSS: { _value = "TCS"; };
+        private _channel = GET_CHANNEL_DATA;
+        private _ctcss = HASH_GET(_channel,"CTCSSTx");
+
+        if (_value > 0) then {
+            _value = "TON";
+            if (_ctcss != 150) then {
+                _value = "TCS";
+            };
+            if (_ctcss == 0) then {
+                _value = "NOI";
+            };
+        } else{
+            _value = "OFF";
         };
     };
 };
