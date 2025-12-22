@@ -356,9 +356,8 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                         nil,
                         {
                             private _check = SCRATCH_GET(GVAR(currentRadioId),"pgm_encryption");
-                            systemChat "WTF";
+                            
                             if (_check == "NONE") then {
-                                systemChat "WTF";
                                 private _currentAction = GET_STATE("menuAction");
                                 _currentAction = _currentAction + 1;
                                 SET_STATE("menuAction",_currentAction);
@@ -540,7 +539,6 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
 
                 HASHLIST_SET(_channels,_channelNumber,_channel);
                 SET_STATE("channels",_channels);
-
                 SET_STATE("pgm_modulation",nil);
                 SET_STATE("pgm_deviation",nil);  
             }

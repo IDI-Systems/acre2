@@ -27,6 +27,7 @@ DFUNC(onButtonPress_Display) = {
     switch (_event select 0) do {
         case 'PRE_UP': {     // OPT
             private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+            private _channels = GET_STATE("channels");
 
             private _active = false;
             private _encryption = GET_RADIO_VALUE("encryption");
@@ -38,6 +39,8 @@ DFUNC(onButtonPress_Display) = {
                 };
                 private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
                 HASH_SET(_channel, "encryption", _encryption );
+                HASHLIST_SET(_channels,_channelNumber,_channel);
+                SET_STATE("channels",_channels);  
                 _active = HASH_GET(_channel,"active");
 
             };
@@ -49,6 +52,7 @@ DFUNC(onButtonPress_Display) = {
         };
         case 'PRE_DOWN': { // PGM
             private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+            private _channels = GET_STATE("channels");
 
             private _active = false;
             private _encryption = GET_RADIO_VALUE("encryption");
@@ -60,6 +64,8 @@ DFUNC(onButtonPress_Display) = {
                 };
                 private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
                 HASH_SET(_channel, "encryption", _encryption );
+                HASHLIST_SET(_channels,_channelNumber,_channel);
+                SET_STATE("channels",_channels); 
                 _active = HASH_GET(_channel,"active");
 
             };

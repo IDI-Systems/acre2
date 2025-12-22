@@ -158,8 +158,12 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
     ],
     {
         //Call on series completion
-        private _selectAnalogSquelch = SCRATCH_GET(GVAR(currentRadioID),"sq_select_analog");
-        private _channel = GET_CHANNEL_DATA;
+        private _selectAnalogSquelch = SCRATCH_GET(GVAR(currentRadioID),"sq_select_analog"); 
+
+        private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+        private _channels = GET_STATE("channels");
+        private _channel = HASHLIST_SELECT(_channels,_channelNumber);
+
         private _CTCSSTx = HASH_GET(_channel,"CTCSSTx");
         private _CTCSSRx = HASH_GET(_channel,"CTCSSRx");
         private _squelch = HASH_GET(_channel,"squelch");
@@ -186,7 +190,8 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
         HASH_SET(_channel,"CTCSSTx",_CTCSSTx);
         HASH_SET(_channel,"CTCSSRx",_CTCSSRx);
         HASH_SET(_channel,"squelch",_squelch);
-
+        
+        
         SCRATCH_SET(GVAR(currentRadioID),"sq_select_analog",nil);
         _selectAnalogSquelch = 4;
         
@@ -194,7 +199,8 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
             
             [_nextMenu] call FUNC(changeMenu);
         };
-        
+        HASHLIST_SET(_channels,_channelNumber,_channel);
+        SET_STATE("channels",_channels);  
         private _home = GET_STATE_DEF("currentHome",GVAR(VULOSHOME));
         [_home] call FUNC(changeMenu);
         true
@@ -242,7 +248,9 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
     {
         //Call on series completion
         private _selectSquelch = SCRATCH_GET(GVAR(currentRadioID),"sq_select_squelch");
-        private _channel = GET_CHANNEL_DATA;
+        private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+        private _channels = GET_STATE("channels");
+        private _channel = HASHLIST_SELECT(_channels,_channelNumber);
         private _squelch = HASH_GET(_channel,"squelch");
 
         switch _selectSquelch do {
@@ -258,8 +266,9 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
             ["ERROR_NOENTRY"] call FUNC(changeMenu);
         };
 
-        HASH_SET(_channel,"squelch",_selectSquelch);
-
+        HASH_SET(_channel,"squelch",_selectSquelch);      
+        HASHLIST_SET(_channels,_channelNumber,_channel);
+        SET_STATE("channels",_channels);  
         SCRATCH_SET(GVAR(currentRadioID),"sq_select_squelch",nil);
         private _home = GET_STATE_DEF("currentHome",GVAR(VULOSHOME));
         [_home] call FUNC(changeMenu);
@@ -377,12 +386,16 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
         //Call on series completion
         private _selectctcsstx = SCRATCH_GET(GVAR(currentRadioID),"sq_select_ctcsstx");
         private _selectctcssrx = SCRATCH_GET(GVAR(currentRadioID),"sq_select_ctcssrx");
-        private _channel = GET_CHANNEL_DATA;
+        private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+        private _channels = GET_STATE("channels");
+        private _channel = HASHLIST_SELECT(_channels,_channelNumber);
         
         private _ctcsstx = parseNumber _selectctcsstx;
         private _ctcssrx = parseNumber _selectctcssrx;
         HASH_SET(_channel,"CTCSSRx",_ctcssrx);
-        HASH_SET(_channel,"CTCSSTx",_ctcsstx);        
+        HASH_SET(_channel,"CTCSSTx",_ctcsstx);
+        HASHLIST_SET(_channels,_channelNumber,_channel);
+        SET_STATE("channels",_channels);  
         SCRATCH_SET(GVAR(currentRadioID),"sq_select_ctcsstx",nil);
         SCRATCH_SET(GVAR(currentRadioID),"sq_select_ctcssrx",nil);
         false
