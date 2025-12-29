@@ -76,6 +76,10 @@
             <Chinesesimp>放置地钉天线和支架</Chinesesimp>
             <Czech>Nainstalujte anténu a její stožár</Czech>
         </Key>
+        <Key ID="STR_ACRE_sys_gsa_placeAntenna">
+            <English>Place Antenna</English>
+            <German>Antenne setzen</German>
+        </Key>
         <Key ID="STR_ACRE_sys_gsa_pickup">
             <English>Pick up</English>
             <Spanish>Recoger</Spanish>
@@ -210,6 +214,10 @@
             <Turkish>VHF30108 Yükseltici Çubuğu</Turkish>
             <Chinesesimp>VHF30108支架</Chinesesimp>
             <Czech>VHF30108 Stožár</Czech>
+        </Key>
+        <Key ID="STR_ACRE_sys_gsa_WS3812ftAntenna_description">
+            <English>12ft Antenna for Wireless Set No. 38 Mk. II</English>
+            <German>12 Fuß Antenne für Wireless Set No. 38 Mk. II</German>
         </Key>
         <Key ID="STR_ACRE_sys_gsa_inventoryFull">
             <English>Inventory full</English>
