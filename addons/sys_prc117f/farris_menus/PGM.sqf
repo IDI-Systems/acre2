@@ -336,7 +336,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
         ],
         ["COMSEC", "COMSEC", "", 
             MENUTYPE_ACTIONSERIES,
-            [               
+            [
                 [nil, "CRYPTO MODE", "",
                     MENUTYPE_SELECTION,
                     [
@@ -346,7 +346,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     ],
                     [
                         {
-                            private _encryption = GET_RADIO_VALUE("encryption");                            
+                            private _encryption = GET_RADIO_VALUE("encryption");
                             if (_encryption > 0) exitWith {
                                 SET_STATE("menuSelection",1);
                             };
@@ -380,7 +380,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     [
                         {
                             private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-                            private _tek = GET_RADIO_VALUE("TEK");                            
+                            private _tek = GET_RADIO_VALUE("TEK");
                             SET_STATE("menuSelection",_tek-1);
                         },
                         nil,
@@ -424,13 +424,13 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 SET_STATE("channels",_channels);
 
                 SET_STATE("pgm_encryption",nil);
-                SET_STATE("pgm_tek",nil);                
+                SET_STATE("pgm_tek",nil);
 
             }
         ],
         ["DATA/VOC", "DATA/VOC", "", 
             MENUTYPE_ACTIONSERIES,
-            [                
+            [
                 [nil, "VOICE MODE", "",
                     MENUTYPE_SELECTION,
                     [
@@ -459,7 +459,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     [
                          {
                             private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-                            private _txTone = GET_RADIO_VALUE("modulation");                            
+                            private _txTone = GET_RADIO_VALUE("modulation");
                             {
                                 if (_txTone == _x) exitWith {
                                     SET_STATE("menuSelection",_forEachIndex);
@@ -496,7 +496,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                     [
                         {
                             private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-                            private _deviation = GET_RADIO_VALUE("deviation");                            
+                            private _deviation = GET_RADIO_VALUE("deviation");
                             {
                                 if (_deviation == parseNumber _x) exitWith {
                                     SET_STATE("menuSelection",_forEachIndex);
@@ -534,7 +534,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                         HASH_SET(_channel,"optionCode",201);
                     };
                 };
-                HASH_SET(_channel,"modulation",_channelModulation);                
+                HASH_SET(_channel,"modulation",_channelModulation);
                 HASH_SET(_channel,"deviation",_channelDeviation);
 
                 HASHLIST_SET(_channels,_channelNumber,_channel);

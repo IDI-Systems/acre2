@@ -36,7 +36,7 @@ if (_mode == 0) then {
         switch _mode do {
             case 1: {                
                 [GVAR(VULOSHOME)] call FUNC(changeMenu);
-                HASH_SET(_channel,"encryption",0);                
+                HASH_SET(_channel,"encryption",0);
             };
             case 2: {
                 [GVAR(VULOSHOME)] call FUNC(changeMenu);

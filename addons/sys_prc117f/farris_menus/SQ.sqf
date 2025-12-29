@@ -333,13 +333,13 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
                             
                             private _currentAction = GET_STATE("menuAction");
                             _currentAction = _currentAction + 999;
-                            SET_STATE("menuAction",_currentAction);                                    
+                            SET_STATE("menuAction",_currentAction);
                         };
                         case 'CTCSS': {
                             // Next menu is CTCSS
                         };
                     };
-                }                    
+                }
             ],
             [
                 ["DISABLED", "CTCSS", "NOISE"],

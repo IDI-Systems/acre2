@@ -40,7 +40,7 @@ DFUNC(onButtonPress_Display) = {
                 private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
                 HASH_SET(_channel, "encryption", _encryption );
                 HASHLIST_SET(_channels,_channelNumber,_channel);
-                SET_STATE("channels",_channels);  
+                SET_STATE("channels",_channels);
                 _active = HASH_GET(_channel,"active");
 
             };
