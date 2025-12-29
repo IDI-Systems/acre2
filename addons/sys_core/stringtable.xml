@@ -1,665 +1,665 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_core">
-        <Key ID="STR_ACRE_sys_core_Options">
-            <English>ACRE Options</English>
-            <German>ACRE-Optionen</German>
-            <Italian>Opzioni ACRE</Italian>
-            <Japanese>ACRE 設定</Japanese>
-            <French>Options ACRE</French>
-            <Czech>ACRE Nastavení</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_CategoryUI">
-            <English>ACRE2 UI</English>
-            <German>ACRE2 Nutzeroberfläche</German>
-            <Polish>ACRE2 UI</Polish>
-            <French>ACRE2 IU</French>
-            <Turkish>ACRE2 Arayüz</Turkish>
-            <Japanese>ACRE2 UI</Japanese>
-            <Chinese>ACRE 2 界面</Chinese>
-            <Czech>ACRE2 UI</Czech>
-            <Italian>ACRE2 IU</Italian>
-            <Spanish>ACRE2 Interfaz</Spanish>
-            <Russian>ACRE2 Интерфейс</Russian>
-            <Portuguese>IU ACRE2</Portuguese>
-            <Chinesesimp>ACRE2 界面</Chinesesimp>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
-            <English>Post-Mix Global Volume</English>
-            <Spanish>Volumen global Post-Mix</Spanish>
-            <French>Volume global post-mix</French>
-            <Japanese>ミキシング後の全体音量</Japanese>
-            <Czech>Hlasitost Post-Mixu</Czech>
-            <German>Post-Mix Lautstärke (Global)</German>
-            <Italian>Volume Globale Post-Mix</Italian>
-            <Korean>Post-Mix 전체 음량</Korean>
-            <Polish>Głośność Post-Mix</Polish>
-            <Russian>Громкость после смешивания</Russian>
-            <Chinese>後期混音 全域音量</Chinese>
-            <Chinesesimp>后期混音 全域音量</Chinesesimp>
-            <Portuguese>Volume Global Pós-Mix</Portuguese>
-            <Turkish>Mix Sonrası Global Ses</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
-            <English>Pre-Mix Global Volume</English>
-            <Spanish>Volumen global Pre-Mix</Spanish>
-            <French>Volume global pré-mix</French>
-            <Japanese>ミキシング前の全体音量</Japanese>
-            <Czech>Hlasitost Pre-Mixu</Czech>
-            <German>Pre-Mix Lautstärke (Global)</German>
-            <Italian>Volume Globale Pre-Mix</Italian>
-            <Korean>Pre-Mix 전체 음량</Korean>
-            <Polish>Głośność Pre-Mix</Polish>
-            <Russian>Громкость перед смешиванием</Russian>
-            <Chinese>前期混音 全域音量</Chinese>
-            <Chinesesimp>前期混音 全域音量</Chinesesimp>
-            <Portuguese>Volume Global Pré-Mix</Portuguese>
-            <Turkish>Mix Öncesi Global Ses</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_defaultRadioVolume_displayName">
-            <English>Default Radio Volume</English>
-            <German>Standardlautstärke Funkgerät</German>
-            <Italian>Volume radio predefinito</Italian>
-            <Russian>Громкость рации по умолчанию</Russian>
-            <Japanese>無線機の標準音量</Japanese>
-            <Chinese>預設無線電音量</Chinese>
-            <French>Volume radio par défaut</French>
-            <Portuguese>Volume padrão do rádio</Portuguese>
-            <Spanish>Volumen de radio por defecto</Spanish>
-            <Turkish>Varsayılan Radyo Sesi</Turkish>
-            <Chinesesimp>默认无线电音量</Chinesesimp>
-            <Czech>Základní zvuk rádio</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
-            <English>Spectator Volume</English>
-            <Spanish>Volumen de espectador</Spanish>
-            <French>Volume spectateur</French>
-            <Japanese>観戦時の音量</Japanese>
-            <Czech>Hlasitost diváků</Czech>
-            <German>Lautstärke der Zuschauer</German>
-            <Italian>Volume Spettatore</Italian>
-            <Korean>관전자 음량</Korean>
-            <Polish>Głośność jako widz</Polish>
-            <Russian>Громкость спектаторов</Russian>
-            <Chinese>觀戰模式音量</Chinese>
-            <Chinesesimp>观战模式音量</Chinesesimp>
-            <Portuguese>Volume do Espectador</Portuguese>
-            <Turkish>Spectator Sesi</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_godVolume_displayName">
-            <English>God Volume</English>
-            <German>Zeus Lautstärke</German>
-            <Italian>Volume Zeus</Italian>
-            <French>Volume Dieu</French>
-            <Spanish>Volumen de Zeus</Spanish>
-            <Turkish>Tanrı Sesi</Turkish>
-            <Portuguese>Volume de Deus</Portuguese>
-            <Japanese>ゼウス(God)の音量</Japanese>
-            <Chinesesimp>宙斯通话音量</Chinesesimp>
-            <Czech>Zeusův zvuk</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
-            <English>Unmute Clients</English>
-            <Spanish>Desmutear clientes</Spanish>
-            <French>Démuter les clients</French>
-            <Japanese>クライアントの消音解除</Japanese>
-            <Czech>Zrušit ztlumení diváků</Czech>
-            <German>Stummschaltung der Clients aufheben</German>
-            <Italian>Smuta i Client</Italian>
-            <Korean>클라이언트 음소거 해제</Korean>
-            <Polish>Odmutuj klientów</Polish>
-            <Russian>Размьютить клиенты</Russian>
-            <Chinese>客戶端取消禁音</Chinese>
-            <Chinesesimp>客户端取消禁音</Chinesesimp>
-            <Portuguese>Desmutar Clientes</Portuguese>
-            <Turkish>Diğer Client'ları Susturma</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_radioNoise_displayName">
-            <English>Radio FX Noise</English>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
-            <English>TeamSpeak Channel Switch</English>
-            <Russian>Смена ТимСпик канала</Russian>
-            <Japanese>TeamSpeak チャンネル切り替え</Japanese>
-            <Chinese>Teamspeak頻道切換</Chinese>
-            <Chinesesimp>Teamspeak频道切换</Chinesesimp>
-            <Korean>팀스피크 채널 변경</Korean>
-            <Portuguese>Trocar para Canal do TeamSpeak</Portuguese>
-            <Polish>Zmiana kanału TeamSpeak</Polish>
-            <Italian>Cambio canale TeamSpeak</Italian>
-            <Spanish>Cambio de canal de TeamSpeak</Spanish>
-            <French>Changer de canal TeamSpeak</French>
-            <German>TeamSpeak Kanalwechsel</German>
-            <Turkish>TeamSpeak Kanal Değiştirmesi</Turkish>
-            <Czech>TeamSpeak Změna kanálu</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
-            <English>TeamSpeak Channel Name</English>
-            <Japanese>TeamSpeak チャンネル名</Japanese>
-            <Chinese>Teamspeak頻道名稱</Chinese>
-            <Chinesesimp>Teamspeak频道名称</Chinesesimp>
-            <Korean>팀스피크 채널 이름</Korean>
-            <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
-            <Polish>Nazwa kanału TeamSpeak</Polish>
-            <Italian>Nome canale Teamspeak</Italian>
-            <Spanish>Nombre de canal de TeamSpeak</Spanish>
-            <French>Nom du canal TeamSpeak</French>
-            <German>TeamSpeak Kanalname</German>
-            <Russian>Имя ТимСпик канала</Russian>
-            <Turkish>TeamSpeak Kanal İsmi</Turkish>
-            <Czech>TeamSpeak Název kanálu</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
-            <English>TeamSpeak Channel Password</English>
-            <Chinese>Teamspeak頻道密碼</Chinese>
-            <Chinesesimp>Teamspeak频道密码</Chinesesimp>
-            <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
-            <Polish>Hasło kanału TeamSpeak</Polish>
-            <Italian>Password canale Teamspeak</Italian>
-            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
-            <Spanish>Contraseña del canal de TeamSpeak</Spanish>
-            <French>Mot de passe du canal TeamSpeak</French>
-            <German>TeamSpeak Kanalpasswort</German>
-            <Russian>Пароль ТимСпик канала</Russian>
-            <Turkish>Teamspeak Kanal Parolası</Turkish>
-            <Czech>TeamSpeak Heslo kanálu</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
-            <English>Disable Gear Desync Hint</English>
-            <Spanish>Desactiva la notificación de desincronización del equipaje</Spanish>
-            <French>Désactiver la notification de désynchronisation d'équipement</French>
-            <Japanese>装備の非同期時のヒントを無効化</Japanese>
-            <Czech>Vypnout upozornění o desynchronizaci vybavení</Czech>
-            <German>Desyncronisierungshinweis ausschalten</German>
-            <Italian>Disattiva le Notifiche della Desincronizzazione dell'Equipaggiamento</Italian>
-            <Korean>장비 디싱크 힌트 해제</Korean>
-            <Polish>Wyłącz hinta o desynchro</Polish>
-            <Russian>Выключить подсказку о рассинхронизации инвентаря</Russian>
-            <Chinese>關閉裝備不同步提示</Chinese>
-            <Chinesesimp>关闭装备不同步提示</Chinesesimp>
-            <Portuguese>Desabilitar Dica de Dessincronização do Equipamento</Portuguese>
-            <Turkish>Ekipman Desenkronize Uyarısını Gösterme</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
-            <English>Active Radio Transmit</English>
-            <Spanish>Tecla de radio activa</Spanish>
-            <Czech>Aktivní klávesa rádia</Czech>
-            <German>Standard Sprechtaste</German>
-            <Japanese>アクティブな無線機の送信</Japanese>
-            <Italian>Trasmetti su Radio Attiva</Italian>
-            <French>Transmettre sur radio active</French>
-            <Korean>기본 무전 단축키</Korean>
-            <Polish>Aktywne klawisz nadawania</Polish>
-            <Russian>активное радио кнопка</Russian>
-            <Chinese>預設無線電按鍵</Chinese>
-            <Chinesesimp>预设无线电按键</Chinesesimp>
-            <Portuguese>Tecla Ativa do Rádio</Portuguese>
-            <Turkish>Aktif Telsizde Konuşma</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
-            <English>Transmit on currently active radio.</English>
-            <Spanish>Utilizar la radio seleccionada actualmente para hablar</Spanish>
-            <Czech>Použít právě zvolené rádio k mluvení.</Czech>
-            <German>Auf aktivem Funkgerät übertragen.</German>
-            <Japanese>現在アクティブにしている無線機で話します。</Japanese>
-            <Italian>Trasmetti sulla Radio attualmente selezionata come attiva.</Italian>
-            <French>Utilise la radio actuellement sélectionnée pour transmettre.</French>
-            <Korean>현재 선택한 무전기 사용해 대화하세요.</Korean>
-            <Polish>Użyj aktualnie wybranego radia aby nadawać.</Polish>
-            <Russian>Использовать текущее радио для разговора.</Russian>
-            <Chinese>使用目前選擇的無線電進行通話。</Chinese>
-            <Chinesesimp>使用目前选择的无线电进行通话。</Chinesesimp>
-            <Portuguese>Usar o rádio atualmente selecionado para falar.</Portuguese>
-            <Turkish>Aktif olan telsizde konuşmak için</Turkish>
-        </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1">
             <English>Radio 1 Transmit (PTT 1)</English>
-            <Spanish>Tecla de transmisión 1</Spanish>
             <Czech>Klávesa rádia 1</Czech>
-            <German>Sprechtaste 1</German>
-            <Italian>Trasmetti sulla Radio n.1</Italian>
             <French>Transmettre sur radio 1</French>
+            <Spanish>Tecla de transmisión 1</Spanish>
+            <Italian>Trasmetti sulla Radio n.1</Italian>
             <Polish>Klawisz radia 1</Polish>
-            <Russian>радио кнопка 1</Russian>
             <Portuguese>Tecla de transmissão do Rádio 1 (PTT 1)</Portuguese>
+            <Russian>радио кнопка 1</Russian>
+            <German>Sprechtaste 1</German>
             <Japanese>無線機1の送信 (PTT 1)</Japanese>
             <Chinese>無線電 1 發話(隨按即說1)</Chinese>
-            <Turkish>Telsiz 1'de Konuşma (Bas-Konuş 1)</Turkish>
             <Chinesesimp>无线电1发话(按键发话1)</Chinesesimp>
+            <Turkish>Telsiz 1'de Konuşma (Bas-Konuş 1)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey1_description">
             <English>Transmit on first radio and set it as active.</English>
-            <Spanish>Utiliza la primera radio en el inventario para hablar</Spanish>
             <Czech>Použít první rádio v inventáři k mluvení.</Czech>
-            <German>Auf erstem Funkgerät übertragen und selbiges aktiv setzen.</German>
-            <Japanese>1番目に割当中の無線機で話します。</Japanese>
-            <Italian>Trasmetti sulla tua Prima Radio e impostala come attiva.</Italian>
             <French>Utilise la première radio de l'inventaire pour transmettre.</French>
-            <Korean>인벤토리의 첫 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Spanish>Utiliza la primera radio en el inventario para hablar</Spanish>
+            <Italian>Trasmetti sulla tua Prima Radio e impostala come attiva.</Italian>
             <Polish>Użyj aby nadawać na pierwszym radiu z Twojego ekwipunku.</Polish>
+            <Portuguese>Transmitir e usar o primeiro rádio do inventário para falar.</Portuguese>
             <Russian>Использовать первое радио из инвентаря.</Russian>
+            <German>Auf erstem Funkgerät übertragen und selbiges aktiv setzen.</German>
+            <Korean>인벤토리의 첫 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Japanese>1番目に割当中の無線機で話します。</Japanese>
             <Chinese>使用物品欄內第一個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第一个无线电进行通话。</Chinesesimp>
-            <Portuguese>Transmitir e usar o primeiro rádio do inventário para falar.</Portuguese>
             <Turkish>İlk telsizde konuş ve telsizi aktif olarak ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2">
             <English>Radio 2 Transmit (PTT 2)</English>
-            <Spanish>Tecla de transmisión 2</Spanish>
             <Czech>Klávesa rádia 2</Czech>
-            <German>Sprechtaste 2</German>
-            <Italian>Trasmetti sulla Radio n.2</Italian>
             <French>Transmettre sur radio 2</French>
+            <Spanish>Tecla de transmisión 2</Spanish>
+            <Italian>Trasmetti sulla Radio n.2</Italian>
             <Polish>Klawisz radia 2</Polish>
-            <Russian>радио кнопка 2</Russian>
             <Portuguese>Tecla de transmissão do Rádio 2</Portuguese>
+            <Russian>радио кнопка 2</Russian>
+            <German>Sprechtaste 2</German>
             <Japanese>無線機2の送信 (PTT 2)</Japanese>
             <Chinese>無線電 2 發話(隨按即說2)</Chinese>
-            <Turkish>Telsiz 2'de Konuşma (Bas-Konuş 2)</Turkish>
             <Chinesesimp>无线电2发话(按键发话2)</Chinesesimp>
+            <Turkish>Telsiz 2'de Konuşma (Bas-Konuş 2)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey2_description">
             <English>Transmit on second radio and set it as active.</English>
-            <Spanish>Utiliza la segunda radio en el inventario para hablar</Spanish>
             <Czech>Použít druhé rádio v inventáři k mluvení.</Czech>
-            <German>Auf zweitem Funkgerät übertragen und selbiges aktiv setzen.</German>
-            <Japanese>2番目に割当中の無線機で話します。</Japanese>
-            <Italian>Trasmetti sulla tua Seconda Radio e impostala come attiva.</Italian>
             <French>Utilise la seconde radio de l'inventaire pour transmettre.</French>
-            <Korean>인벤토리의 두 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Spanish>Utiliza la segunda radio en el inventario para hablar</Spanish>
+            <Italian>Trasmetti sulla tua Seconda Radio e impostala come attiva.</Italian>
             <Polish>Użyj aby nadawać na drugim radiu z Twojego ekwipunku.</Polish>
+            <Portuguese>Transmitir e usar o segundo rádio do inventário para falar.</Portuguese>
             <Russian>Использовать второе радио из инвентаря.</Russian>
+            <German>Auf zweitem Funkgerät übertragen und selbiges aktiv setzen.</German>
+            <Korean>인벤토리의 두 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Japanese>2番目に割当中の無線機で話します。</Japanese>
             <Chinese>使用物品欄內第二個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第二个无线电进行通话。</Chinesesimp>
-            <Portuguese>Transmitir e usar o segundo rádio do inventário para falar.</Portuguese>
             <Turkish>İkinci telsizde konuş ve telsizi aktif olarak ata</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3">
             <English>Radio 3 Transmit (PTT 3)</English>
-            <Spanish>Tecla de transmisión 3</Spanish>
             <Czech>Klávesa rádia 3</Czech>
-            <German>Sprechtaste 3</German>
-            <Italian>Trasmetti sulla Radio n.3</Italian>
             <French>Transmettre sur radio 3</French>
+            <Spanish>Tecla de transmisión 3</Spanish>
+            <Italian>Trasmetti sulla Radio n.3</Italian>
             <Polish>Klawisz radia 3</Polish>
-            <Russian>радио кнопка 3</Russian>
             <Portuguese>Tecla de transmissão do Rádio 3</Portuguese>
+            <Russian>радио кнопка 3</Russian>
+            <German>Sprechtaste 3</German>
             <Japanese>無線機3の送信 (PTT 3)</Japanese>
             <Chinese>無線電 3 發話(隨按即說3)</Chinese>
-            <Turkish>Telsiz 3'de Konuşma (Bas-Konuş 3)</Turkish>
             <Chinesesimp>无线电3发话(按键发话3)</Chinesesimp>
+            <Turkish>Telsiz 3'de Konuşma (Bas-Konuş 3)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_AltPTTKey3_description">
             <English>Transmit on third radio and set it as active.</English>
-            <Spanish>Utiliza la tercera radio en el inventario para hablar</Spanish>
             <Czech>Použít třetí rádio v inventáři k mluvení.</Czech>
-            <German>Auf drittem Funkgerät übertragen und selbiges aktiv setzen.</German>
-            <Japanese>3番目に割当中の無線機で話します。</Japanese>
-            <Italian>Trasmetti sulla tua Terza Radio e impostala come attiva.</Italian>
             <French>Utilise la troisième radio de l'inventaire pour transmettre.</French>
-            <Korean>인벤토리의 세 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Spanish>Utiliza la tercera radio en el inventario para hablar</Spanish>
+            <Italian>Trasmetti sulla tua Terza Radio e impostala come attiva.</Italian>
             <Polish>Użyj aby nadawać na trzecim radiu z Twojego ekwipunku.</Polish>
+            <Portuguese>Transmitir e usar o terceiro rádio do inventário para falar.</Portuguese>
             <Russian>Использовать третье радио из инвентаря.</Russian>
+            <German>Auf drittem Funkgerät übertragen und selbiges aktiv setzen.</German>
+            <Korean>인벤토리의 세 번째에 위치한 무전기를 사용해 대화하세요.</Korean>
+            <Japanese>3番目に割当中の無線機で話します。</Japanese>
             <Chinese>使用物品欄內第三個無線電進行通話。</Chinese>
             <Chinesesimp>使用物品栏内第三个无线电进行通话。</Chinesesimp>
-            <Portuguese>Transmitir e usar o terceiro rádio do inventário para falar.</Portuguese>
             <Turkish>Üçüncü telsizde konuş ve telsizi aktif olarak ata</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_PreviousChannel">
-            <English>Previous Channel (Active Radio)</English>
-            <Spanish>Canal anterior (Radio activa)</Spanish>
-            <Czech>Předchozí kanál</Czech>
-            <German>Vorheriger Funkkanal (aktives Funkgerät)</German>
-            <Japanese>前のチャンネル (アクティブな無線機)</Japanese>
-            <Italian>Canale Precedente (Radio Attiva)</Italian>
-            <French>Canal précédent (radio active)</French>
-            <Korean>이전 채널 (활성화된 무전기)</Korean>
-            <Polish>Poprzedni kanał</Polish>
-            <Russian>Предыдущий канал (Активное радио)</Russian>
-            <Chinese>上一個頻道 (目前使用的無線電)</Chinese>
-            <Chinesesimp>上一个频道 (目前使用的无线电)</Chinesesimp>
-            <Portuguese>Canal Anterior (Rádio Ativo)</Portuguese>
-            <Turkish>Önceki Kanal (Aktif Telsizde)</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_NextChannel">
-            <English>Next Channel (Active Radio)</English>
-            <Spanish>Siguiente canal (Radio activa)</Spanish>
-            <Czech>Další kanál</Czech>
-            <German>Nächster Funkkanal (aktives Funkgerät)</German>
-            <Japanese>次のチャンネル (アクティブな無線機)</Japanese>
-            <Italian>Canale Successivo (Radio Attiva)</Italian>
-            <French>Canal suivant (radio active)</French>
-            <Korean>다음 채널 (활성화된 무전기)</Korean>
-            <Polish>Następny kanał</Polish>
-            <Russian>Следующий канал (Активное радио)</Russian>
-            <Chinese>下一個頻道 (目前使用的無線電)</Chinese>
-            <Chinesesimp>下一个频道 (目前使用的无线电)</Chinesesimp>
-            <Portuguese>Canal Posterior (Rádio Ativo)</Portuguese>
-            <Turkish>Sonraki Kanal (Aktif Telsizde)</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_BabelCycleKey">
-            <English>Babel Cycle Language</English>
-            <Spanish>Cambiar idioma (Babel)</Spanish>
-            <Czech>Změnit jazyk Babelu</Czech>
-            <German>Babel Sprache wechseln</German>
-            <Japanese>バベル言語の切り替え</Japanese>
-            <Italian>Cambia Lingua (Babel)</Italian>
-            <French>Commuter langue Babel</French>
-            <Korean>바벨 언어 전환</Korean>
-            <Polish>Zmień język (Babel)</Polish>
-            <Russian>Листать язык (Вавилон)</Russian>
-            <Chinese>切換模擬多國語言</Chinese>
-            <Chinesesimp>切换模拟多国语言</Chinesesimp>
-            <Portuguese>Mudar Idioma (Babel)</Portuguese>
-            <Turkish>Babel Dil Değiştir</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_RadioLeftEar">
-            <English>Radio Left Ear (Active Radio)</English>
-            <Spanish>Radio auricular izquierdo</Spanish>
-            <Czech>Rádio do levého ucha</Czech>
-            <German>Linker Ohrhörer</German>
-            <Japanese>音声を左耳側から (アクティブな無線機)</Japanese>
-            <Italian>Auricolare Sinistro (Radio Attiva)</Italian>
-            <French>Radio oreille gauche (radio active)</French>
-            <Korean>왼쪽 이어폰</Korean>
-            <Polish>Odsłuch tylko na lewym uchu</Polish>
-            <Russian>Радио левое ухо</Russian>
-            <Chinese>用左耳收聽無線電</Chinese>
-            <Chinesesimp>用左耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Orelha Esquerda (ativo)</Portuguese>
-            <Turkish>Telsiz Sol Kulak (Aktif Telsiz)</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_RadioBothEars">
-            <English>Radio Both Ears (Active Radio)</English>
-            <Spanish>Radio ambas auriculares</Spanish>
-            <Czech>Rádio do prostředního ucha</Czech>
-            <German>Beide Ohrhörer</German>
-            <Japanese>音声を両耳側から (アクティブな無線機)</Japanese>
-            <Italian>Centra Auricolari (Radio Attiva)</Italian>
-            <French>Radio deux oreilles (radio active)</French>
-            <Korean>양쪽 이어폰</Korean>
-            <Polish>Odsłuch stereo</Polish>
-            <Russian>Радио оба уха</Russian>
-            <Chinese>用雙耳收聽無線電</Chinese>
-            <Chinesesimp>用双耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Ambas Orelhas (ativo)</Portuguese>
-            <Turkish>Telsiz Her İki Kulak (Aktif Telsiz)</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_RightRightEar">
-            <English>Radio Right Ear (Active Radio)</English>
-            <Spanish>Radio auricular derecho</Spanish>
-            <Czech>Rádio do pravého ucha</Czech>
-            <German>Rechter Ohrhörer</German>
-            <Japanese>音声を右耳側から (アクティブな無線機)</Japanese>
-            <Italian>Auricolare Destro (Radio Attiva)</Italian>
-            <French>Radio oreille droite (radio active)</French>
-            <Korean>오른쪽 이어폰</Korean>
-            <Polish>Odsłuch tylko na prawym uchu</Polish>
-            <Russian>Радио правое ухо</Russian>
-            <Chinese>用右耳收聽無線電</Chinese>
-            <Chinesesimp>用右耳收听无线电</Chinesesimp>
-            <Portuguese>Rádio Orelha Direita (ativo)</Portuguese>
-            <Turkish>Telsiz Sağ Kulak (Aktif Telsiz)</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_HeadSet">
-            <English>Toggle Headset/Spectators</English>
-            <Spanish>Activar auriculares/espectadores</Spanish>
-            <Czech>Přepnout headset/diváky</Czech>
-            <German>Headset / Zuschauer umschalten</German>
-            <Japanese>ヘッドセット/観戦者の切り替え</Japanese>
-            <Italian>Attiva/Disattiva Cuffia/Spettatori</Italian>
-            <French>Alterner casque/haut-parleur</French>
-            <Korean>헤드셋 전환 / 관전자 전환</Korean>
-            <Polish>Zdejmij/załóż słuchawki. / Wł/wył widzów.</Polish>
-            <Russian>Переключить наушники/спектаторов</Russian>
-            <Chinese>切換耳機 / 切換觀戰</Chinese>
-            <Chinesesimp>切换耳机 / 切换观战</Chinesesimp>
-            <Portuguese>Alternar Fones/Espectadores</Portuguese>
-            <Turkish>Kulaklık/Spectator Arasında Geçiş Yap</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_AntennaDirToggle">
-            <English>Antenna Direction Toggle</English>
-            <German>Antennenausrichtung wechseln</German>
-            <Italian>Modifica l'allineamento dell'antenna</Italian>
-            <Japanese>アンテナの指向を切り替え</Japanese>
-            <Russian>Изменить направление антенны</Russian>
-            <Chinese>天線方向切換</Chinese>
-            <French>Changer l'orientation de l'antenne</French>
-            <Portuguese>Alternar direção da antena</Portuguese>
-            <Spanish>Cambiar dirección de antena</Spanish>
-            <Turkish>Anten Yönünü Değiştir</Turkish>
-            <Chinesesimp>天线方向切换</Chinesesimp>
-            <Czech>Přepínač směru antény</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
-            <English>Antenna straightened</English>
-            <German>Antenne gerade</German>
-            <Italian>Antenna raddrizzata</Italian>
-            <Japanese>アンテナは真っすぐ伸びている</Japanese>
-            <Russian>Антенна выпрямлена</Russian>
-            <Chinese>天線拉直</Chinese>
-            <French>Antenne redressée</French>
-            <Portuguese>Antena endireitada</Portuguese>
-            <Spanish>Antena enderezada</Spanish>
-            <Turkish>Anten Düzleştirildi</Turkish>
-            <Chinesesimp>天线已拉直</Chinesesimp>
-            <Czech>Anténa se narovnala</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_core_AntennaDirBent">
             <English>Antenna bent</English>
-            <German>Antenne gebogen</German>
-            <Italian>Antenna piegata</Italian>
-            <Japanese>アンテナは曲がっている</Japanese>
-            <Russian>Антенна согнута</Russian>
-            <Chinese>彎曲天線</Chinese>
-            <French>Antenne courbée</French>
-            <Portuguese>Antena dobrada</Portuguese>
-            <Spanish>Antena doblada</Spanish>
-            <Turkish>Anten Büküldü</Turkish>
-            <Chinesesimp>天线已弯曲</Chinesesimp>
             <Czech>Anténa je ohnutá</Czech>
+            <French>Antenne courbée</French>
+            <Spanish>Antena doblada</Spanish>
+            <Italian>Antenna piegata</Italian>
+            <Portuguese>Antena dobrada</Portuguese>
+            <Russian>Антенна согнута</Russian>
+            <German>Antenne gebogen</German>
+            <Japanese>アンテナは曲がっている</Japanese>
+            <Chinese>彎曲天線</Chinese>
+            <Chinesesimp>天线已弯曲</Chinesesimp>
+            <Turkish>Anten Büküldü</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_core_interference_displayName">
-            <English>Model Interference</English>
-            <Spanish>Modelar interferencias</Spanish>
-            <Japanese>モデル干渉</Japanese>
-            <French>Modèle d'interférence</French>
-            <German>Interferenz modellieren</German>
-            <Czech>Interference radiových vln</Czech>
-            <Korean>모델 간섭</Korean>
-            <Polish>Interferencja fal radiowych</Polish>
-            <Russian>Модель помех</Russian>
-            <Chinese>干擾模型</Chinese>
-            <Chinesesimp>干扰模型</Chinesesimp>
-            <Portuguese>Interferência do Modelo</Portuguese>
-            <Italian>Modella Interferenza</Italian>
-            <Turkish>Parazit Modeli</Turkish>
+        <Key ID="STR_ACRE_sys_core_AntennaDirStraight">
+            <English>Antenna straightened</English>
+            <Czech>Anténa se narovnala</Czech>
+            <French>Antenne redressée</French>
+            <Spanish>Antena enderezada</Spanish>
+            <Italian>Antenna raddrizzata</Italian>
+            <Portuguese>Antena endireitada</Portuguese>
+            <Russian>Антенна выпрямлена</Russian>
+            <German>Antenne gerade</German>
+            <Japanese>アンテナは真っすぐ伸びている</Japanese>
+            <Chinese>天線拉直</Chinese>
+            <Chinesesimp>天线已拉直</Chinesesimp>
+            <Turkish>Anten Düzleştirildi</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
-            <English>Full Duplex radios</English>
-            <Spanish>Radios Dúplex</Spanish>
-            <Japanese>全二重通信ラジオ</Japanese>
-            <French>Radios full duplex</French>
-            <German>Vollduplexbetrieb</German>
-            <Czech>Režim plného duplexu vysílaček</Czech>
-            <Korean>풀 양방향 통신</Korean>
-            <Polish>Ustaw pełny duplex</Polish>
-            <Russian>Полный дуплекс раций</Russian>
-            <Chinese>全雙工無線電台</Chinese>
-            <Chinesesimp>全双工无线电台</Chinesesimp>
-            <Portuguese>Rádios Full Duplex</Portuguese>
-            <Italian>Radio Full Duplex</Italian>
-            <Turkish>Tam Duplex Telsizler</Turkish>
+        <Key ID="STR_ACRE_sys_core_AntennaDirToggle">
+            <English>Antenna Direction Toggle</English>
+            <Czech>Přepínač směru antény</Czech>
+            <French>Changer l'orientation de l'antenne</French>
+            <Spanish>Cambiar dirección de antena</Spanish>
+            <Italian>Modifica l'allineamento dell'antenna</Italian>
+            <Portuguese>Alternar direção da antena</Portuguese>
+            <Russian>Изменить направление антенны</Russian>
+            <German>Antennenausrichtung wechseln</German>
+            <Japanese>アンテナの指向を切り替え</Japanese>
+            <Chinese>天線方向切換</Chinese>
+            <Chinesesimp>天线方向切换</Chinesesimp>
+            <Turkish>Anten Yönünü Değiştir</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_BabelCycleKey">
+            <English>Babel Cycle Language</English>
+            <Czech>Změnit jazyk Babelu</Czech>
+            <French>Commuter langue Babel</French>
+            <Spanish>Cambiar idioma (Babel)</Spanish>
+            <Italian>Cambia Lingua (Babel)</Italian>
+            <Polish>Zmień język (Babel)</Polish>
+            <Portuguese>Mudar Idioma (Babel)</Portuguese>
+            <Russian>Листать язык (Вавилон)</Russian>
+            <German>Babel Sprache wechseln</German>
+            <Korean>바벨 언어 전환</Korean>
+            <Japanese>バベル言語の切り替え</Japanese>
+            <Chinese>切換模擬多國語言</Chinese>
+            <Chinesesimp>切换模拟多国语言</Chinesesimp>
+            <Turkish>Babel Dil Değiştir</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_CategoryUI">
+            <English>ACRE2 UI</English>
+            <Czech>ACRE2 UI</Czech>
+            <French>ACRE2 IU</French>
+            <Spanish>ACRE2 Interfaz</Spanish>
+            <Italian>ACRE2 IU</Italian>
+            <Polish>ACRE2 UI</Polish>
+            <Portuguese>IU ACRE2</Portuguese>
+            <Russian>ACRE2 Интерфейс</Russian>
+            <German>ACRE2 Nutzeroberfläche</German>
+            <Japanese>ACRE2 UI</Japanese>
+            <Chinese>ACRE 2 界面</Chinese>
+            <Chinesesimp>ACRE2 界面</Chinesesimp>
+            <Turkish>ACRE2 Arayüz</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_DefaultPTTKey">
+            <English>Active Radio Transmit</English>
+            <Czech>Aktivní klávesa rádia</Czech>
+            <French>Transmettre sur radio active</French>
+            <Spanish>Tecla de radio activa</Spanish>
+            <Italian>Trasmetti su Radio Attiva</Italian>
+            <Polish>Aktywne klawisz nadawania</Polish>
+            <Portuguese>Tecla Ativa do Rádio</Portuguese>
+            <Russian>активное радио кнопка</Russian>
+            <German>Standard Sprechtaste</German>
+            <Korean>기본 무전 단축키</Korean>
+            <Japanese>アクティブな無線機の送信</Japanese>
+            <Chinese>預設無線電按鍵</Chinese>
+            <Chinesesimp>预设无线电按键</Chinesesimp>
+            <Turkish>Aktif Telsizde Konuşma</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_DefaultPTTKey_description">
+            <English>Transmit on currently active radio.</English>
+            <Czech>Použít právě zvolené rádio k mluvení.</Czech>
+            <French>Utilise la radio actuellement sélectionnée pour transmettre.</French>
+            <Spanish>Utilizar la radio seleccionada actualmente para hablar</Spanish>
+            <Italian>Trasmetti sulla Radio attualmente selezionata come attiva.</Italian>
+            <Polish>Użyj aktualnie wybranego radia aby nadawać.</Polish>
+            <Portuguese>Usar o rádio atualmente selecionado para falar.</Portuguese>
+            <Russian>Использовать текущее радио для разговора.</Russian>
+            <German>Auf aktivem Funkgerät übertragen.</German>
+            <Korean>현재 선택한 무전기 사용해 대화하세요.</Korean>
+            <Japanese>現在アクティブにしている無線機で話します。</Japanese>
+            <Chinese>使用目前選擇的無線電進行通話。</Chinese>
+            <Chinesesimp>使用目前选择的无线电进行通话。</Chinesesimp>
+            <Turkish>Aktif olan telsizde konuşmak için</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_HeadSet">
+            <English>Toggle Headset/Spectators</English>
+            <Czech>Přepnout headset/diváky</Czech>
+            <French>Alterner casque/haut-parleur</French>
+            <Spanish>Activar auriculares/espectadores</Spanish>
+            <Italian>Attiva/Disattiva Cuffia/Spettatori</Italian>
+            <Polish>Zdejmij/załóż słuchawki. / Wł/wył widzów.</Polish>
+            <Portuguese>Alternar Fones/Espectadores</Portuguese>
+            <Russian>Переключить наушники/спектаторов</Russian>
+            <German>Headset / Zuschauer umschalten</German>
+            <Korean>헤드셋 전환 / 관전자 전환</Korean>
+            <Japanese>ヘッドセット/観戦者の切り替え</Japanese>
+            <Chinese>切換耳機 / 切換觀戰</Chinese>
+            <Chinesesimp>切换耳机 / 切换观战</Chinesesimp>
+            <Turkish>Kulaklık/Spectator Arasında Geçiş Yap</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_NextChannel">
+            <English>Next Channel (Active Radio)</English>
+            <Czech>Další kanál</Czech>
+            <French>Canal suivant (radio active)</French>
+            <Spanish>Siguiente canal (Radio activa)</Spanish>
+            <Italian>Canale Successivo (Radio Attiva)</Italian>
+            <Polish>Następny kanał</Polish>
+            <Portuguese>Canal Posterior (Rádio Ativo)</Portuguese>
+            <Russian>Следующий канал (Активное радио)</Russian>
+            <German>Nächster Funkkanal (aktives Funkgerät)</German>
+            <Korean>다음 채널 (활성화된 무전기)</Korean>
+            <Japanese>次のチャンネル (アクティブな無線機)</Japanese>
+            <Chinese>下一個頻道 (目前使用的無線電)</Chinese>
+            <Chinesesimp>下一个频道 (目前使用的无线电)</Chinesesimp>
+            <Turkish>Sonraki Kanal (Aktif Telsizde)</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_Options">
+            <English>ACRE Options</English>
+            <Czech>ACRE Nastavení</Czech>
+            <French>Options ACRE</French>
+            <Italian>Opzioni ACRE</Italian>
+            <German>ACRE-Optionen</German>
+            <Japanese>ACRE 設定</Japanese>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_PreviousChannel">
+            <English>Previous Channel (Active Radio)</English>
+            <Czech>Předchozí kanál</Czech>
+            <French>Canal précédent (radio active)</French>
+            <Spanish>Canal anterior (Radio activa)</Spanish>
+            <Italian>Canale Precedente (Radio Attiva)</Italian>
+            <Polish>Poprzedni kanał</Polish>
+            <Portuguese>Canal Anterior (Rádio Ativo)</Portuguese>
+            <Russian>Предыдущий канал (Активное радио)</Russian>
+            <German>Vorheriger Funkkanal (aktives Funkgerät)</German>
+            <Korean>이전 채널 (활성화된 무전기)</Korean>
+            <Japanese>前のチャンネル (アクティブな無線機)</Japanese>
+            <Chinese>上一個頻道 (目前使用的無線電)</Chinese>
+            <Chinesesimp>上一个频道 (目前使用的无线电)</Chinesesimp>
+            <Turkish>Önceki Kanal (Aktif Telsizde)</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_RadioBothEars">
+            <English>Radio Both Ears (Active Radio)</English>
+            <Czech>Rádio do prostředního ucha</Czech>
+            <French>Radio deux oreilles (radio active)</French>
+            <Spanish>Radio ambas auriculares</Spanish>
+            <Italian>Centra Auricolari (Radio Attiva)</Italian>
+            <Polish>Odsłuch stereo</Polish>
+            <Portuguese>Rádio Ambas Orelhas (ativo)</Portuguese>
+            <Russian>Радио оба уха</Russian>
+            <German>Beide Ohrhörer</German>
+            <Korean>양쪽 이어폰</Korean>
+            <Japanese>音声を両耳側から (アクティブな無線機)</Japanese>
+            <Chinese>用雙耳收聽無線電</Chinese>
+            <Chinesesimp>用双耳收听无线电</Chinesesimp>
+            <Turkish>Telsiz Her İki Kulak (Aktif Telsiz)</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_RadioLeftEar">
+            <English>Radio Left Ear (Active Radio)</English>
+            <Czech>Rádio do levého ucha</Czech>
+            <French>Radio oreille gauche (radio active)</French>
+            <Spanish>Radio auricular izquierdo</Spanish>
+            <Italian>Auricolare Sinistro (Radio Attiva)</Italian>
+            <Polish>Odsłuch tylko na lewym uchu</Polish>
+            <Portuguese>Rádio Orelha Esquerda (ativo)</Portuguese>
+            <Russian>Радио левое ухо</Russian>
+            <German>Linker Ohrhörer</German>
+            <Korean>왼쪽 이어폰</Korean>
+            <Japanese>音声を左耳側から (アクティブな無線機)</Japanese>
+            <Chinese>用左耳收聽無線電</Chinese>
+            <Chinesesimp>用左耳收听无线电</Chinesesimp>
+            <Turkish>Telsiz Sol Kulak (Aktif Telsiz)</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_RightRightEar">
+            <English>Radio Right Ear (Active Radio)</English>
+            <Czech>Rádio do pravého ucha</Czech>
+            <French>Radio oreille droite (radio active)</French>
+            <Spanish>Radio auricular derecho</Spanish>
+            <Italian>Auricolare Destro (Radio Attiva)</Italian>
+            <Polish>Odsłuch tylko na prawym uchu</Polish>
+            <Portuguese>Rádio Orelha Direita (ativo)</Portuguese>
+            <Russian>Радио правое ухо</Russian>
+            <German>Rechter Ohrhörer</German>
+            <Korean>오른쪽 이어폰</Korean>
+            <Japanese>音声を右耳側から (アクティブな無線機)</Japanese>
+            <Chinese>用右耳收聽無線電</Chinese>
+            <Chinesesimp>用右耳收听无线电</Chinesesimp>
+            <Turkish>Telsiz Sağ Kulak (Aktif Telsiz)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_antennaDirection_displayName">
             <English>Ignore Antenna Direction</English>
-            <Spanish>Ignorar dirección de antena</Spanish>
-            <Japanese>アンテナの指向を無視</Japanese>
-            <French>Ignorer l'orientation de l'antenne</French>
-            <German>Antennenausrichtung ignorieren</German>
             <Czech>Ignorovat orientaci antény</Czech>
-            <Korean>안테나 방향 무시</Korean>
+            <French>Ignorer l'orientation de l'antenne</French>
+            <Spanish>Ignorar dirección de antena</Spanish>
+            <Italian>Ignora allineamento antenna</Italian>
             <Polish>Ignoruj kierunek anteny</Polish>
+            <Portuguese>Ignorar Direção da Antena</Portuguese>
             <Russian>Игнорировать направление антенны</Russian>
+            <German>Antennenausrichtung ignorieren</German>
+            <Korean>안테나 방향 무시</Korean>
+            <Japanese>アンテナの指向を無視</Japanese>
             <Chinese>忽略天線方向</Chinese>
             <Chinesesimp>忽略天线方向</Chinesesimp>
-            <Portuguese>Ignorar Direção da Antena</Portuguese>
-            <Italian>Ignora allineamento antenna</Italian>
             <Turkish>Anten Yönünü Yoksay</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_autoAntennaDirection_displayName">
             <English>Automatic Antenna Direction</English>
-            <German>Automatische Antennenausrichtung</German>
-            <Italian>Allineamento automatico dell'antenna</Italian>
-            <Japanese>アンテナの自動指向</Japanese>
-            <Russian>Авто направление антенны</Russian>
-            <Chinese>自動調整天線方向</Chinese>
-            <French>Orientation automatique de l'antenne</French>
-            <Portuguese>Direção automática da Antena</Portuguese>
-            <Spanish>Dirección automática de antena</Spanish>
-            <Turkish>Otomatik Anten Yönü</Turkish>
-            <Chinesesimp>自动调整天线方向</Chinesesimp>
             <Czech>Automatické nasměrování antény</Czech>
+            <French>Orientation automatique de l'antenne</French>
+            <Spanish>Dirección automática de antena</Spanish>
+            <Italian>Allineamento automatico dell'antenna</Italian>
+            <Portuguese>Direção automática da Antena</Portuguese>
+            <Russian>Авто направление антенны</Russian>
+            <German>Automatische Antennenausrichtung</German>
+            <Japanese>アンテナの自動指向</Japanese>
+            <Chinese>自動調整天線方向</Chinese>
+            <Chinesesimp>自动调整天线方向</Chinesesimp>
+            <Turkish>Otomatik Anten Yönü</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
-            <English>Terrain Loss Coefficient</English>
-            <Spanish>Coeficiente de pérdida de señal por terreno</Spanish>
-            <Japanese>地形による干渉係数</Japanese>
-            <French>Coefficient d'atténuation du terrain</French>
-            <German>Topografie-Signalverlustskoeffizient</German>
-            <Czech>Koeficient ztráty signálu způsobené terénem</Czech>
-            <Korean>지형 방해 계수</Korean>
-            <Polish>Wpływ ukształtowania terenu</Polish>
-            <Russian>Коэффициент потерь от местности</Russian>
-            <Chinese>地形干擾係數</Chinese>
-            <Chinesesimp>地形干扰系数</Chinesesimp>
-            <Portuguese>Coeficiente de perda de sinal por terreno </Portuguese>
-            <Italian>Coefficiente di attenuazione del terreno</Italian>
-            <Turkish>Arasi Kaynaklı Parazit Katsayısı</Turkish>
+        <Key ID="STR_ACRE_sys_core_defaultRadioVolume_displayName">
+            <English>Default Radio Volume</English>
+            <Czech>Základní zvuk rádio</Czech>
+            <French>Volume radio par défaut</French>
+            <Spanish>Volumen de radio por defecto</Spanish>
+            <Italian>Volume radio predefinito</Italian>
+            <Portuguese>Volume padrão do rádio</Portuguese>
+            <Russian>Громкость рации по умолчанию</Russian>
+            <German>Standardlautstärke Funkgerät</German>
+            <Japanese>無線機の標準音量</Japanese>
+            <Chinese>預設無線電音量</Chinese>
+            <Chinesesimp>默认无线电音量</Chinesesimp>
+            <Turkish>Varsayılan Radyo Sesi</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
-            <English>AI Voice Detection</English>
-            <Spanish>Detección del habla por parte de la IA</Spanish>
-            <Japanese>AIによる声の検知</Japanese>
-            <French>Détection de la voix par l'IA</French>
-            <German>Sprachwahrnehmung durch KI</German>
-            <Czech>Detekce hlasu hráčů AIčky</Czech>
-            <Korean>AI 음성 감지</Korean>
-            <Polish>AI wykrywa głos graczy</Polish>
-            <Russian>АИ обнаружение голоса</Russian>
-            <Chinese>AI偵測玩家語音</Chinese>
-            <Chinesesimp>AI侦测玩家语音</Chinesesimp>
-            <Portuguese>Detecção de Voz de IA</Portuguese>
-            <Italian>Rilevamento Voce IA</Italian>
-            <Turkish>Yapay Zeka Ses Fark Etmesi</Turkish>
+        <Key ID="STR_ACRE_sys_core_disableDesyncHint_displayName">
+            <English>Disable Gear Desync Hint</English>
+            <Czech>Vypnout upozornění o desynchronizaci vybavení</Czech>
+            <French>Désactiver la notification de désynchronisation d'équipement</French>
+            <Spanish>Desactiva la notificación de desincronización del equipaje</Spanish>
+            <Italian>Disattiva le Notifiche della Desincronizzazione dell'Equipaggiamento</Italian>
+            <Polish>Wyłącz hinta o desynchro</Polish>
+            <Portuguese>Desabilitar Dica de Dessincronização do Equipamento</Portuguese>
+            <Russian>Выключить подсказку о рассинхронизации инвентаря</Russian>
+            <German>Desyncronisierungshinweis ausschalten</German>
+            <Korean>장비 디싱크 힌트 해제</Korean>
+            <Japanese>装備の非同期時のヒントを無効化</Japanese>
+            <Chinese>關閉裝備不同步提示</Chinese>
+            <Chinesesimp>关闭装备不同步提示</Chinesesimp>
+            <Turkish>Ekipman Desenkronize Uyarısını Gösterme</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_core_switchRadioEarLeft">
-            <English>Set to Left Ear</English>
-            <Spanish>Usar auricular izquierdo</Spanish>
-            <German>Auf linken Ohrhörer legen</German>
-            <Japanese>左耳側からに設定</Japanese>
-            <Czech>Nastavit do levého ucha</Czech>
-            <Italian>Imposta auricolare sinistro</Italian>
-            <French>Régler sur l'oreille gauche</French>
-            <Korean>왼쪽 귀로 설정</Korean>
-            <Polish>Ustaw na lewe ucho</Polish>
-            <Russian>Назначить на левое ухо</Russian>
-            <Chinese>設置為左耳收聽</Chinese>
-            <Chinesesimp>设置为左耳收听</Chinesesimp>
-            <Portuguese>Definir Para Orelha Esquerda</Portuguese>
-            <Turkish>Sol Kulağa Ata</Turkish>
+        <Key ID="STR_ACRE_sys_core_fullDuplex_displayName">
+            <English>Full Duplex radios</English>
+            <Czech>Režim plného duplexu vysílaček</Czech>
+            <French>Radios full duplex</French>
+            <Spanish>Radios Dúplex</Spanish>
+            <Italian>Radio Full Duplex</Italian>
+            <Polish>Ustaw pełny duplex</Polish>
+            <Portuguese>Rádios Full Duplex</Portuguese>
+            <Russian>Полный дуплекс раций</Russian>
+            <German>Vollduplexbetrieb</German>
+            <Korean>풀 양방향 통신</Korean>
+            <Japanese>全二重通信ラジオ</Japanese>
+            <Chinese>全雙工無線電台</Chinese>
+            <Chinesesimp>全双工无线电台</Chinesesimp>
+            <Turkish>Tam Duplex Telsizler</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_core_switchRadioEarBoth">
-            <English>Set to Both Ears</English>
-            <Spanish>Usar ambos auriculares</Spanish>
-            <German>Auf beide Ohrhörer legen</German>
-            <Japanese>両耳側からに設定</Japanese>
-            <Czech>Nastavit do obou uší</Czech>
-            <Italian>Centra auricolari</Italian>
-            <French>Régler sur les deux oreilles</French>
-            <Korean>양쪽 귀로 설정</Korean>
-            <Polish>Ustaw na oboje uszu</Polish>
-            <Russian>Назначить на оба уха</Russian>
-            <Chinese>設置為雙耳收聽</Chinese>
-            <Chinesesimp>设置为双耳收听</Chinesesimp>
-            <Portuguese>Definir Para Ambas Orelhas</Portuguese>
-            <Turkish>Her İki Kulağa Ata</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_switchRadioEarRight">
-            <English>Set to Right Ear</English>
-            <Spanish>Usar auricular derecho</Spanish>
-            <German>Auf rechten Ohrhörer legen</German>
-            <Japanese>右耳側からに設定</Japanese>
-            <Czech>Nastavit do pravého ucha</Czech>
-            <Italian>Imposta auricolare destro</Italian>
-            <French>Régler sur l'oreille droite</French>
-            <Korean>오른쪽 귀로 설정</Korean>
-            <Polish>Ustaw na prawe ucho</Polish>
-            <Russian>Назначить на правое ухо</Russian>
-            <Chinese>設置為右耳收聽</Chinese>
-            <Chinesesimp>设置为右耳收听</Chinesesimp>
-            <Portuguese>Definir Para Orelha Direita</Portuguese>
-            <Turkish>Sağ Kulağa Ata</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_core_headsetRaised">
-            <English>Headset Raised</English>
-            <German>Headset aufgesetzt</German>
-            <Japanese>ヘッドセットを装着しました</Japanese>
-            <Russian>Наушники были подняты</Russian>
-            <Chinese>戴上耳機</Chinese>
-            <Chinesesimp>戴上耳机</Chinesesimp>
-            <Korean>헤드셋 착용</Korean>
-            <Portuguese>Fones Levantados</Portuguese>
-            <Polish>Słuchawki założone</Polish>
-            <Italian>Cuffia indossata</Italian>
-            <Spanish>Subir auriculares</Spanish>
-            <French>Casque mis</French>
-            <Turkish>Kulaklık Takıldı</Turkish>
-            <Czech>Náhlavní souprava zvednutá</Czech>
+        <Key ID="STR_ACRE_sys_core_godVolume_displayName">
+            <English>God Volume</English>
+            <Czech>Zeusův zvuk</Czech>
+            <French>Volume Dieu</French>
+            <Spanish>Volumen de Zeus</Spanish>
+            <Italian>Volume Zeus</Italian>
+            <Portuguese>Volume de Deus</Portuguese>
+            <German>Zeus Lautstärke</German>
+            <Japanese>ゼウス(God)の音量</Japanese>
+            <Chinesesimp>宙斯通话音量</Chinesesimp>
+            <Turkish>Tanrı Sesi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_headsetLowered">
             <English>Headset Lowered</English>
-            <German>Headset abgesetzt</German>
-            <Japanese>ヘッドセットを外しました</Japanese>
+            <Czech>Náhlavní souprava snížena</Czech>
+            <French>Casque enlevé</French>
+            <Spanish>Bajar auriculares</Spanish>
+            <Italian>Cuffia abbassata</Italian>
+            <Polish>Słuchawki zdjęte</Polish>
+            <Portuguese>Fones Abaixados</Portuguese>
             <Russian>Наушники были опущены</Russian>
+            <German>Headset abgesetzt</German>
+            <Korean>헤드셋 벗기</Korean>
+            <Japanese>ヘッドセットを外しました</Japanese>
             <Chinese>取下耳機</Chinese>
             <Chinesesimp>取下耳机</Chinesesimp>
-            <Korean>헤드셋 벗기</Korean>
-            <Portuguese>Fones Abaixados</Portuguese>
-            <Polish>Słuchawki zdjęte</Polish>
-            <Italian>Cuffia abbassata</Italian>
-            <Spanish>Bajar auriculares</Spanish>
-            <French>Casque enlevé</French>
             <Turkish>Kulaklık İndirildi</Turkish>
-            <Czech>Náhlavní souprava snížena</Czech>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_headsetRaised">
+            <English>Headset Raised</English>
+            <Czech>Náhlavní souprava zvednutá</Czech>
+            <French>Casque mis</French>
+            <Spanish>Subir auriculares</Spanish>
+            <Italian>Cuffia indossata</Italian>
+            <Polish>Słuchawki założone</Polish>
+            <Portuguese>Fones Levantados</Portuguese>
+            <Russian>Наушники были подняты</Russian>
+            <German>Headset aufgesetzt</German>
+            <Korean>헤드셋 착용</Korean>
+            <Japanese>ヘッドセットを装着しました</Japanese>
+            <Chinese>戴上耳機</Chinese>
+            <Chinesesimp>戴上耳机</Chinesesimp>
+            <Turkish>Kulaklık Takıldı</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_incomingTransmissionNotification">
             <English>Show incoming transmissions</English>
-            <German>Eingehende Funksprüche anzeigen</German>
-            <Italian>Mostra trasmissioni ricevute</Italian>
-            <Japanese>受信中の通信を表示</Japanese>
-            <Russian>Показывать входящие передачи</Russian>
-            <Chinese>顯示接收中的通訊</Chinese>
-            <French>Afficher les transmissions entrantes</French>
-            <Portuguese>Mostrar transmissões recebidas</Portuguese>
-            <Spanish>Mostrar transmisiones entrantes</Spanish>
-            <Turkish>Gelen Mesajları Göster</Turkish>
-            <Chinesesimp>显示正在进行的通讯</Chinesesimp>
             <Czech>Zobrazit příchozí přenosy</Czech>
+            <French>Afficher les transmissions entrantes</French>
+            <Spanish>Mostrar transmisiones entrantes</Spanish>
+            <Italian>Mostra trasmissioni ricevute</Italian>
+            <Portuguese>Mostrar transmissões recebidas</Portuguese>
+            <Russian>Показывать входящие передачи</Russian>
+            <German>Eingehende Funksprüche anzeigen</German>
+            <Japanese>受信中の通信を表示</Japanese>
+            <Chinese>顯示接收中的通訊</Chinese>
+            <Chinesesimp>显示正在进行的通讯</Chinesesimp>
+            <Turkish>Gelen Mesajları Göster</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_interference_displayName">
+            <English>Model Interference</English>
+            <Czech>Interference radiových vln</Czech>
+            <French>Modèle d'interférence</French>
+            <Spanish>Modelar interferencias</Spanish>
+            <Italian>Modella Interferenza</Italian>
+            <Polish>Interferencja fal radiowych</Polish>
+            <Portuguese>Interferência do Modelo</Portuguese>
+            <Russian>Модель помех</Russian>
+            <German>Interferenz modellieren</German>
+            <Korean>모델 간섭</Korean>
+            <Japanese>モデル干渉</Japanese>
+            <Chinese>干擾模型</Chinese>
+            <Chinesesimp>干扰模型</Chinesesimp>
+            <Turkish>Parazit Modeli</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_postmixGlobalVolume_displayName">
+            <English>Post-Mix Global Volume</English>
+            <Czech>Hlasitost Post-Mixu</Czech>
+            <French>Volume global post-mix</French>
+            <Spanish>Volumen global Post-Mix</Spanish>
+            <Italian>Volume Globale Post-Mix</Italian>
+            <Polish>Głośność Post-Mix</Polish>
+            <Portuguese>Volume Global Pós-Mix</Portuguese>
+            <Russian>Громкость после смешивания</Russian>
+            <German>Post-Mix Lautstärke (Global)</German>
+            <Korean>Post-Mix 전체 음량</Korean>
+            <Japanese>ミキシング後の全体音量</Japanese>
+            <Chinese>後期混音 全域音量</Chinese>
+            <Chinesesimp>后期混音 全域音量</Chinesesimp>
+            <Turkish>Mix Sonrası Global Ses</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_premixGlobalVolume_displayName">
+            <English>Pre-Mix Global Volume</English>
+            <Czech>Hlasitost Pre-Mixu</Czech>
+            <French>Volume global pré-mix</French>
+            <Spanish>Volumen global Pre-Mix</Spanish>
+            <Italian>Volume Globale Pre-Mix</Italian>
+            <Polish>Głośność Pre-Mix</Polish>
+            <Portuguese>Volume Global Pré-Mix</Portuguese>
+            <Russian>Громкость перед смешиванием</Russian>
+            <German>Pre-Mix Lautstärke (Global)</German>
+            <Korean>Pre-Mix 전체 음량</Korean>
+            <Japanese>ミキシング前の全体音量</Japanese>
+            <Chinese>前期混音 全域音量</Chinese>
+            <Chinesesimp>前期混音 全域音量</Chinesesimp>
+            <Turkish>Mix Öncesi Global Ses</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_core_rackTransmissionNotification">
             <English>Show rack transmissions</English>
-            <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
-            <Italian>Mostra il traffico radio dalle radio integrate</Italian>
-            <Japanese>ラックの通信を表示</Japanese>
-            <Russian>Показывать передачи с раций на подставке</Russian>
-            <Chinese>顯示架上通訊</Chinese>
-            <French>Afficher les transmissions du rack</French>
-            <Portuguese>Mostras transmissões do raque</Portuguese>
-            <Spanish>Mostrar transmisiones de radio vehicular</Spanish>
-            <Turkish>Rafta Gelen Mesajları Göster</Turkish>
-            <Chinesesimp>显示机架通讯</Chinesesimp>
             <Czech>Zobrazit rackové přenosy</Czech>
+            <French>Afficher les transmissions du rack</French>
+            <Spanish>Mostrar transmisiones de radio vehicular</Spanish>
+            <Italian>Mostra il traffico radio dalle radio integrate</Italian>
+            <Portuguese>Mostras transmissões do raque</Portuguese>
+            <Russian>Показывать передачи с раций на подставке</Russian>
+            <German>Funkverkehr von eingebauten Funkgeräten anzeigen</German>
+            <Japanese>ラックの通信を表示</Japanese>
+            <Chinese>顯示架上通訊</Chinese>
+            <Chinesesimp>显示机架通讯</Chinesesimp>
+            <Turkish>Rafta Gelen Mesajları Göster</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_radioNoise_displayName">
+            <English>Radio FX Noise</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
+            <English>AI Voice Detection</English>
+            <Czech>Detekce hlasu hráčů AIčky</Czech>
+            <French>Détection de la voix par l'IA</French>
+            <Spanish>Detección del habla por parte de la IA</Spanish>
+            <Italian>Rilevamento Voce IA</Italian>
+            <Polish>AI wykrywa głos graczy</Polish>
+            <Portuguese>Detecção de Voz de IA</Portuguese>
+            <Russian>АИ обнаружение голоса</Russian>
+            <German>Sprachwahrnehmung durch KI</German>
+            <Korean>AI 음성 감지</Korean>
+            <Japanese>AIによる声の検知</Japanese>
+            <Chinese>AI偵測玩家語音</Chinese>
+            <Chinesesimp>AI侦测玩家语音</Chinesesimp>
+            <Turkish>Yapay Zeka Ses Fark Etmesi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_spectatorVolume_displayName">
+            <English>Spectator Volume</English>
+            <Czech>Hlasitost diváků</Czech>
+            <French>Volume spectateur</French>
+            <Spanish>Volumen de espectador</Spanish>
+            <Italian>Volume Spettatore</Italian>
+            <Polish>Głośność jako widz</Polish>
+            <Portuguese>Volume do Espectador</Portuguese>
+            <Russian>Громкость спектаторов</Russian>
+            <German>Lautstärke der Zuschauer</German>
+            <Korean>관전자 음량</Korean>
+            <Japanese>観戦時の音量</Japanese>
+            <Chinese>觀戰模式音量</Chinese>
+            <Chinesesimp>观战模式音量</Chinesesimp>
+            <Turkish>Spectator Sesi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_switchRadioEarBoth">
+            <English>Set to Both Ears</English>
+            <Czech>Nastavit do obou uší</Czech>
+            <French>Régler sur les deux oreilles</French>
+            <Spanish>Usar ambos auriculares</Spanish>
+            <Italian>Centra auricolari</Italian>
+            <Polish>Ustaw na oboje uszu</Polish>
+            <Portuguese>Definir Para Ambas Orelhas</Portuguese>
+            <Russian>Назначить на оба уха</Russian>
+            <German>Auf beide Ohrhörer legen</German>
+            <Korean>양쪽 귀로 설정</Korean>
+            <Japanese>両耳側からに設定</Japanese>
+            <Chinese>設置為雙耳收聽</Chinese>
+            <Chinesesimp>设置为双耳收听</Chinesesimp>
+            <Turkish>Her İki Kulağa Ata</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_switchRadioEarLeft">
+            <English>Set to Left Ear</English>
+            <Czech>Nastavit do levého ucha</Czech>
+            <French>Régler sur l'oreille gauche</French>
+            <Spanish>Usar auricular izquierdo</Spanish>
+            <Italian>Imposta auricolare sinistro</Italian>
+            <Polish>Ustaw na lewe ucho</Polish>
+            <Portuguese>Definir Para Orelha Esquerda</Portuguese>
+            <Russian>Назначить на левое ухо</Russian>
+            <German>Auf linken Ohrhörer legen</German>
+            <Korean>왼쪽 귀로 설정</Korean>
+            <Japanese>左耳側からに設定</Japanese>
+            <Chinese>設置為左耳收聽</Chinese>
+            <Chinesesimp>设置为左耳收听</Chinesesimp>
+            <Turkish>Sol Kulağa Ata</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_switchRadioEarRight">
+            <English>Set to Right Ear</English>
+            <Czech>Nastavit do pravého ucha</Czech>
+            <French>Régler sur l'oreille droite</French>
+            <Spanish>Usar auricular derecho</Spanish>
+            <Italian>Imposta auricolare destro</Italian>
+            <Polish>Ustaw na prawe ucho</Polish>
+            <Portuguese>Definir Para Orelha Direita</Portuguese>
+            <Russian>Назначить на правое ухо</Russian>
+            <German>Auf rechten Ohrhörer legen</German>
+            <Korean>오른쪽 귀로 설정</Korean>
+            <Japanese>右耳側からに設定</Japanese>
+            <Chinese>設置為右耳收聽</Chinese>
+            <Chinesesimp>设置为右耳收听</Chinesesimp>
+            <Turkish>Sağ Kulağa Ata</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_terrainLoss_displayName">
+            <English>Terrain Loss Coefficient</English>
+            <Czech>Koeficient ztráty signálu způsobené terénem</Czech>
+            <French>Coefficient d'atténuation du terrain</French>
+            <Spanish>Coeficiente de pérdida de señal por terreno</Spanish>
+            <Italian>Coefficiente di attenuazione del terreno</Italian>
+            <Polish>Wpływ ukształtowania terenu</Polish>
+            <Portuguese>Coeficiente de perda de sinal por terreno </Portuguese>
+            <Russian>Коэффициент потерь от местности</Russian>
+            <German>Topografie-Signalverlustskoeffizient</German>
+            <Korean>지형 방해 계수</Korean>
+            <Japanese>地形による干渉係数</Japanese>
+            <Chinese>地形干擾係數</Chinese>
+            <Chinesesimp>地形干扰系数</Chinesesimp>
+            <Turkish>Arasi Kaynaklı Parazit Katsayısı</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
+            <English>TeamSpeak Channel Name</English>
+            <Czech>TeamSpeak Název kanálu</Czech>
+            <French>Nom du canal TeamSpeak</French>
+            <Spanish>Nombre de canal de TeamSpeak</Spanish>
+            <Italian>Nome canale Teamspeak</Italian>
+            <Polish>Nazwa kanału TeamSpeak</Polish>
+            <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
+            <Russian>Имя ТимСпик канала</Russian>
+            <German>TeamSpeak Kanalname</German>
+            <Korean>팀스피크 채널 이름</Korean>
+            <Japanese>TeamSpeak チャンネル名</Japanese>
+            <Chinese>Teamspeak頻道名稱</Chinese>
+            <Chinesesimp>Teamspeak频道名称</Chinesesimp>
+            <Turkish>TeamSpeak Kanal İsmi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
+            <English>TeamSpeak Channel Password</English>
+            <Czech>TeamSpeak Heslo kanálu</Czech>
+            <French>Mot de passe du canal TeamSpeak</French>
+            <Spanish>Contraseña del canal de TeamSpeak</Spanish>
+            <Italian>Password canale Teamspeak</Italian>
+            <Polish>Hasło kanału TeamSpeak</Polish>
+            <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
+            <Russian>Пароль ТимСпик канала</Russian>
+            <German>TeamSpeak Kanalpasswort</German>
+            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
+            <Chinese>Teamspeak頻道密碼</Chinese>
+            <Chinesesimp>Teamspeak频道密码</Chinesesimp>
+            <Turkish>Teamspeak Kanal Parolası</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
+            <English>TeamSpeak Channel Switch</English>
+            <Czech>TeamSpeak Změna kanálu</Czech>
+            <French>Changer de canal TeamSpeak</French>
+            <Spanish>Cambio de canal de TeamSpeak</Spanish>
+            <Italian>Cambio canale TeamSpeak</Italian>
+            <Polish>Zmiana kanału TeamSpeak</Polish>
+            <Portuguese>Trocar para Canal do TeamSpeak</Portuguese>
+            <Russian>Смена ТимСпик канала</Russian>
+            <German>TeamSpeak Kanalwechsel</German>
+            <Korean>팀스피크 채널 변경</Korean>
+            <Japanese>TeamSpeak チャンネル切り替え</Japanese>
+            <Chinese>Teamspeak頻道切換</Chinese>
+            <Chinesesimp>Teamspeak频道切换</Chinesesimp>
+            <Turkish>TeamSpeak Kanal Değiştirmesi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
+            <English>Unmute Clients</English>
+            <Czech>Zrušit ztlumení diváků</Czech>
+            <French>Démuter les clients</French>
+            <Spanish>Desmutear clientes</Spanish>
+            <Italian>Smuta i Client</Italian>
+            <Polish>Odmutuj klientów</Polish>
+            <Portuguese>Desmutar Clientes</Portuguese>
+            <Russian>Размьютить клиенты</Russian>
+            <German>Stummschaltung der Clients aufheben</German>
+            <Korean>클라이언트 음소거 해제</Korean>
+            <Japanese>クライアントの消音解除</Japanese>
+            <Chinese>客戶端取消禁音</Chinese>
+            <Chinesesimp>客户端取消禁音</Chinesesimp>
+            <Turkish>Diğer Client'ları Susturma</Turkish>
         </Key>
     </Package>
 </Project>

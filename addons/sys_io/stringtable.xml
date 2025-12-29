@@ -1,65 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_io">
-        <Key ID="STR_ACRE_sys_io_noPingReturn">
-            <English>ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.</English>
-            <Spanish>ACRE ERROR TUBERÍA: Sin ping de retorno, intentando recuperar la tubería</Spanish>
-            <German>ACRE TUNNELFEHLER: Kein Ping empfangen, versuche Tunnel wieder zu verbinden.</German>
-            <Italian>ACRE PIPE ERROR: nessun ping di ritorno, tentativo di recuperare la pipe.</Italian>
-            <Russian>ОШИБКА ТУННЕЛЯ ACRE: Нет ответного сигнала, попытка повторного подключения</Russian>
-            <Japanese>ACRE PIPE ERROR: 反応が無い為、 命名済みパイプへ再接続を試みます。</Japanese>
-            <Chinese>ACRE 管道錯誤：Ping沒有回應，試著掛接在命名的管道重試中。</Chinese>
-            <French>ERREUR DE TUNNEL ACRE : Pas de retour ping, tentative de reconnection au tunnel.</French>
-            <Chineseimp>ACRE 通道错误：Ping没有回应，尝试挂接在命名的通道重试中。</Chineseimp>
-            <Portuguese>ERRO DE TÚNEL ACRE: Sem ping de retorno, tentando reconectar ao túnel nomeado.</Portuguese>
-            <Turkish>ACRE TÜNEL HATASI:Ping'e cevap dönmedi, isimli tüneli tekrar bağlamaya çalışıyor.</Turkish>
-            <Chinesesimp>ACRE通信管道错误: 通信无响应, 正在尝试重新连接</Chinesesimp>
-            <Czech>ACRE PIPE ERROR: Žádný ping, pokus o opětovné připojení pojmenovaného potrubí.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_io_recoveredClosedPipe">
-            <English>ACRE has recovered from a closed pipe!</English>
-            <Spanish>ACRE se ha recuperado de una tubería previamente rota!</Spanish>
-            <German>ACRE hat sich wieder verbunden, weiter gehts.</German>
-            <Italian>ACRE si è ripreso da un pipe precedentemente chiuso.</Italian>
-            <Russian>ACRE проблема с туннелем устранена!</Russian>
-            <Japanese>ACREは閉鎖済みパイプから回復しました！</Japanese>
-            <Chinese>ACRE 從封閉的管道恢復！</Chinese>
-            <French>ACRE a pu se reconnecter !</French>
-            <Chineseimp>ACRE 从封闭的通道中恢复！</Chineseimp>
-            <Portuguese>ACRE se recuperou de um túnel fechado!</Portuguese>
-            <Turkish>ACRE kapalı tünel hatasından başarıyla kurtuldu! </Turkish>
-            <Chinesesimp>ACRE已从关闭的通信管道中成功恢复</Chinesesimp>
-            <Czech>ACRE se zotavil ze zavřeného PIPE!</Czech>
+        <Key ID="STR_ACRE_sys_io_acreConnected">
+            <English>ACRE connected</English>
+            <Czech>ACRE je připojen</Czech>
+            <French>ACRE connecté</French>
+            <Spanish>ACRE conectado</Spanish>
+            <Italian>ACRE connesso</Italian>
+            <Portuguese>ACRE conectado</Portuguese>
+            <Russian>ACRE подключен</Russian>
+            <German>ACRE verbunden</German>
+            <Japanese>ACRE 接続完了</Japanese>
+            <Chinese>ACRE 已連接</Chinese>
+            <Chinesesimp>ACRE 已连接</Chinesesimp>
+            <Turkish>ACRE Bağlandı</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_io_acreNotConnected">
             <English>ACRE is not connected to TeamSpeak!</English>
+            <Czech>ACRE není připojen k TeamSpeaku!</Czech>
+            <French>ACRE n'est pas connecté à TeamSpeak !</French>
             <Spanish>ACRE no está connectado al TeamSpeak!</Spanish>
-            <German>ACRE ist nicht mit TeamSpeak verbunden!</German>
             <Italian>ACRE non è connesso a TeamSpeak!</Italian>
+            <Portuguese>ACRE não está conectado ao TeamSpeak!</Portuguese>
             <Russian>ACRE не подключен к TeamSpeak!</Russian>
+            <German>ACRE ist nicht mit TeamSpeak verbunden!</German>
             <Japanese>ACREがTeamSpeakに接続されていません！</Japanese>
             <Chinese>ACRE 尚未與TeamSpeak連接！</Chinese>
-            <French>ACRE n'est pas connecté à TeamSpeak !</French>
-            <Chineseimp>ACRE 尚未与TeamSpeak连接！</Chineseimp>
-            <Portuguese>ACRE não está conectado ao TeamSpeak!</Portuguese>
-            <Turkish>ACRE TeamSpeak'e bağlı değil!</Turkish>
             <Chinesesimp>ACRE 没有与TeamSpeak连接！</Chinesesimp>
-            <Czech>ACRE není připojen k TeamSpeaku!</Czech>
+            <Turkish>ACRE TeamSpeak'e bağlı değil!</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_io_acreConnected">
-            <English>ACRE connected</English>
-            <Spanish>ACRE conectado</Spanish>
-            <German>ACRE verbunden</German>
-            <Italian>ACRE connesso</Italian>
-            <Russian>ACRE подключен</Russian>
-            <Japanese>ACRE 接続完了</Japanese>
-            <Chinese>ACRE 已連接</Chinese>
-            <French>ACRE connecté</French>
-            <Chineseimp>ACRE 已连接</Chineseimp>
-            <Portuguese>ACRE conectado</Portuguese>
-            <Turkish>ACRE Bağlandı</Turkish>
-            <Chinesesimp>ACRE 已连接</Chinesesimp>
-            <Czech>ACRE je připojen</Czech>
+        <Key ID="STR_ACRE_sys_io_noPingReturn">
+            <English>ACRE PIPE ERROR: No ping return, attempting to reattach named pipe.</English>
+            <Czech>ACRE PIPE ERROR: Žádný ping, pokus o opětovné připojení pojmenovaného potrubí.</Czech>
+            <French>ERREUR DE TUNNEL ACRE : Pas de retour ping, tentative de reconnection au tunnel.</French>
+            <Spanish>ACRE ERROR TUBERÍA: Sin ping de retorno, intentando recuperar la tubería</Spanish>
+            <Italian>ACRE PIPE ERROR: nessun ping di ritorno, tentativo di recuperare la pipe.</Italian>
+            <Portuguese>ERRO DE TÚNEL ACRE: Sem ping de retorno, tentando reconectar ao túnel nomeado.</Portuguese>
+            <Russian>ОШИБКА ТУННЕЛЯ ACRE: Нет ответного сигнала, попытка повторного подключения</Russian>
+            <German>ACRE TUNNELFEHLER: Kein Ping empfangen, versuche Tunnel wieder zu verbinden.</German>
+            <Japanese>ACRE PIPE ERROR: 反応が無い為、 命名済みパイプへ再接続を試みます。</Japanese>
+            <Chinese>ACRE 管道錯誤：Ping沒有回應，試著掛接在命名的管道重試中。</Chinese>
+            <Chinesesimp>ACRE通信管道错误: 通信无响应, 正在尝试重新连接</Chinesesimp>
+            <Turkish>ACRE TÜNEL HATASI:Ping'e cevap dönmedi, isimli tüneli tekrar bağlamaya çalışıyor.</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_io_recoveredClosedPipe">
+            <English>ACRE has recovered from a closed pipe!</English>
+            <Czech>ACRE se zotavil ze zavřeného PIPE!</Czech>
+            <French>ACRE a pu se reconnecter !</French>
+            <Spanish>ACRE se ha recuperado de una tubería previamente rota!</Spanish>
+            <Italian>ACRE si è ripreso da un pipe precedentemente chiuso.</Italian>
+            <Portuguese>ACRE se recuperou de um túnel fechado!</Portuguese>
+            <Russian>ACRE проблема с туннелем устранена!</Russian>
+            <German>ACRE hat sich wieder verbunden, weiter gehts.</German>
+            <Japanese>ACREは閉鎖済みパイプから回復しました！</Japanese>
+            <Chinese>ACRE 從封閉的管道恢復！</Chinese>
+            <Chinesesimp>ACRE已从关闭的通信管道中成功恢复</Chinesesimp>
+            <Turkish>ACRE kapalı tünel hatasından başarıyla kurtuldu! </Turkish>
         </Key>
     </Package>
 </Project>

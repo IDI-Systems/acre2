@@ -38,8 +38,6 @@ class SPE_ArmoredCar_base: Wheeled_APC_F { // Get rid of any inherited values
 
 class SPE_Halftrack_base;
 
-class SPE_WheeledTracked_APC_base;
-
 //American
 class SPE_M8_LAC_base: SPE_ArmoredCar_base {
     class AcreRacks {

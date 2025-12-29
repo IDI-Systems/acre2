@@ -45,7 +45,7 @@
 #define ADD_MENU(menuObj) HASH_SET(GVAR(Menus),MENU_ID(menuObj),menuObj)
 
 #define MENU_SET_PARENT_ID(submenu, menu) submenu pushBack MENU_ID(menu)
-#define MENU_PARENT_ID(menu) (menu select ((count menu)-1))
+#define MENU_PARENT_ID(menu) (menu select -1)
 #define MENU_PARENT(menu) (HASH_GET(GVAR(Menus),MENU_PARENT_ID(menu)))
 
 #define ALIGN_LEFT 1
