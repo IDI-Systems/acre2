@@ -150,6 +150,9 @@ SQF equivalent of extensions/src/ACRE2Shared/Types.h
 
 // Icons
 #define ICON_RADIO_CALL "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa"
+#define ICON_INTERCOM_CREW "\a3\ui_f\data\IGUI\Cfg\Actions\getindriver_ca.paa"
+#define ICON_INTERCOM_AIRCREW "\a3\ui_f\data\IGUI\Cfg\Actions\getinpilot_ca.paa"
+#define ICON_INTERCOM_PAX "\a3\ui_f\data\IGUI\Cfg\Actions\getincargo_ca.paa"
 
 #define BASE_CLASS_CONFIG(configName) call { private _baseClass = getText(configFile >> "CfgWeapons" >> configName >> "acre_baseClass"); if (_baseClass == "") then { _baseClass = getText(configFile >> "CfgVehicles" >> configName >> "acre_baseClass"); }; _baseClass }
 

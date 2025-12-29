@@ -40,8 +40,8 @@ if (isArray _positionConfig) then {
 
 private _infantryPhoneAction = [
     QGVAR(infantryPhone),
-    localize LSTRING(infantryPhone),
-    ICON_RADIO_CALL,
+    LLSTRING(infantryPhone),
+    QPATHTOEF(ace_interact,data\icons\phone.paa),
     {true},
     {
         // Only manually check distance if under main node (not a custom position on hull)
@@ -69,8 +69,8 @@ if (_position isEqualTo [0, 0, 0]) then {
 // Passenger actions
 private _infantryPhoneSpeakerAction = [
     QGVAR(infantryPhoneSpeaker),
-    localize LSTRING(infantryPhone),
-    ICON_RADIO_CALL,
+    LLSTRING(infantryPhone),
+    QPATHTOEF(ace_interact,data\icons\phone.paa),
     {true},
     {
         private _intercomNames = _target getVariable [QGVAR(intercomNames), []];

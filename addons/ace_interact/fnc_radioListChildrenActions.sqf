@@ -34,26 +34,26 @@ private _pttAssign = [] call EFUNC(api,getMultiPushToTalkAssignment);
         _x,
         _name,
         _picture,
-        {
-            [(_this select 2) select 0] call EFUNC(sys_radio,openRadio)
-        },
+        {[(_this select 2) select 0] call EFUNC(sys_radio,openRadio)},
         {true},
-        {_this call FUNC(radioChildrenActions)},
+        LINKFUNC(radioChildrenActions),
         [_x, _isActive, _pttAssign]
     ] call ace_interact_menu_fnc_createAction;
+
     _actions pushBack [_action, [], _target];
 } forEach _radioList;
 
-private _text = localize LSTRING(lowerHeadset);
-if (EGVAR(sys_core,lowered)) then { _text = localize LSTRING(raiseHeadset); };
-private _action = [QGVAR(toggleHeadset), _text, "", {[] call EFUNC(sys_core,toggleHeadset)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
+private _text = [LLSTRING(lowerHeadset), LLSTRING(raiseHeadset)] select EGVAR(sys_core,lowered);
+private _icon = [QPATHTOF(data\icons\lower_headset.paa), QPATHTOF(data\icons\raise_headset.paa)] select EGVAR(sys_core,lowered);
+private _action = [QGVAR(toggleHeadset), _text, _icon, {[] call EFUNC(sys_core,toggleHeadset)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
 _actions pushBack [_action, [], _target];
 
 if (!EGVAR(sys_core,automaticAntennaDirection)) then {
-    _text = localize LSTRING(bendAntenna);
     private _dir = acre_player getVariable [QEGVAR(sys_core,antennaDirUp), false];
-    if (_dir) then { _text = localize LSTRING(straightenAntenna);};
-    _action = [QGVAR(antennaDirUp), _text, "", {[] call EFUNC(sys_components,toggleAntennaDir)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
+    private _text = [LLSTRING(bendAntenna), LLSTRING(straightenAntenna)] select _dir;
+    private _icon = [QPATHTOF(data\icons\bend_antenna.paa), QPATHTOF(data\icons\straighten_antenna.paa)] select _dir;
+
+    _action = [QGVAR(antennaDirUp), _text, _icon, {[] call EFUNC(sys_components,toggleAntennaDir)}, {true}, {}, []] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 

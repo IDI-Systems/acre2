@@ -23,15 +23,39 @@ _params params ["_radioID", "", "", "_spatial"];
 private _actions  = [];
 
 if (_spatial != "RIGHT") then {
-    private _action = [QGVAR(audioRight), localize ELSTRING(sys_core,switchRadioEarRight), "", {(_this select 2) call EFUNC(sys_core,switchRadioEar)}, {true}, {}, [1, _radioID]] call ace_interact_menu_fnc_createAction;
+    private _action = [
+        QGVAR(audioRight),
+        LELSTRING(sys_core,switchRadioEarRight),
+        QPATHTOF(data\icons\right_ear.paa),
+        {(_this select 2) call EFUNC(sys_core,switchRadioEar)},
+        {true},
+        {},
+        [1, _radioID]
+    ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 if (_spatial != "CENTER") then {
-    private _action = [QGVAR(audioCenter), localize ELSTRING(sys_core,switchRadioEarBoth), "", {(_this select 2) call EFUNC(sys_core,switchRadioEar)}, {true}, {}, [0, _radioID]] call ace_interact_menu_fnc_createAction;
+    private _action = [
+        QGVAR(audioCenter),
+        LELSTRING(sys_core,switchRadioEarBoth),
+        QPATHTOF(data\icons\both_ears.paa),
+        {(_this select 2) call EFUNC(sys_core,switchRadioEar)},
+        {true},
+        {},
+        [0, _radioID]
+    ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 if (_spatial != "LEFT") then {
-    private _action = [QGVAR(audioLeft), localize ELSTRING(sys_core,switchRadioEarLeft), "", {(_this select 2) call EFUNC(sys_core,switchRadioEar)}, {true}, {}, [-1, _radioID]] call ace_interact_menu_fnc_createAction;
+    private _action = [
+        QGVAR(audioLeft),
+        LELSTRING(sys_core,switchRadioEarLeft),
+        QPATHTOF(data\icons\left_ear.paa),
+        {(_this select 2) call EFUNC(sys_core,switchRadioEar)},
+        {true},
+        {},
+        [-1, _radioID]
+    ] call ace_interact_menu_fnc_createAction;
     _actions pushBack [_action, [], _target];
 };
 

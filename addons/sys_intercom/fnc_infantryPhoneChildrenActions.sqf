@@ -27,13 +27,13 @@ private _actions = [];
 private _intercomNames = _target getVariable [QGVAR(intercomNames), []];
 
 if (_target isKindOf "CAManBase") then {
-    // Pointing at an infantry unit. Check if the infantry telelphone can be given
+    // Pointing at an infantry unit. Check if the infantry telephone can be given
     if (!isNull _vehicleInfantryPhone) then {
         // Generate the action to give the intercom
         private _action = [
             QGVAR(giveInfantryPhone),
-            localize LSTRING(giveInfantryPhone),
-            "",
+            LLSTRING(giveInfantryPhone),
+            QPATHTOEF(ace_interact,data\icons\give_phone.paa),
             {
                 params ["_target", "_player", "_params"];
                 _params params ["_intercomNetwork"];
@@ -54,8 +54,8 @@ if (_target isKindOf "CAManBase") then {
             {
                 private _action = [
                     format [QGVAR(takeInfantryPhone_%1), _x],
-                    format [localize LSTRING(takeInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 2]],
-                    "",
+                    format [LLSTRING(takeInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 2]],
+                    QPATHTOEF(ace_interact,data\icons\phone.paa),
                     {
                         params ["_target", "_player", "_params"];
                         _params params ["_intercomNetwork", "_position"];
@@ -77,8 +77,8 @@ if (_target isKindOf "CAManBase") then {
                 // Generate the action to return the infantry telephone
                 private _action = [
                     QGVAR(returnInfantryPhone),
-                    format [localize LSTRING(returnInfantryPhone)],
-                    "",
+                    LLSTRING(returnInfantryPhone),
+                    QPATHTOEF(ace_interact,data\icons\return_phone.paa),
                     {
                         params ["_target", "_player", ""];
                         //USES_VARIABLES ["_target", "_player"];
@@ -94,8 +94,8 @@ if (_target isKindOf "CAManBase") then {
                 {
                     _action = [
                         format [QGVAR(switchInfantryPhone_%1), _x],
-                        format [localize LSTRING(switchInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 2]],
-                        "",
+                        format [LLSTRING(switchInfantryPhone), format ["(%1)", (_intercomNames select _forEachIndex) select 2]],
+                        QPATHTOEF(ace_interact,data\icons\phone.paa),
                         {
                             params ["_target", "_player", "_params"];
                             _params params ["_intercomNetwork"];
@@ -118,8 +118,8 @@ if (_target isKindOf "CAManBase") then {
                 // Generate empty action to show that the infantry phone is being used by someone else
                 private _action = [
                     QGVAR(infantryPhoneUnavailable),
-                    format [localize LSTRING(infantryPhoneUnavailable)],
-                    "",
+                    LLSTRING(infantryPhoneUnavailable),
+                    QPATHTOEF(ace_interact,data\icons\return_phone.paa),
                     {true},
                     {true},
                     {},
@@ -135,8 +135,8 @@ if (_target isKindOf "CAManBase") then {
         if (_isCalling select 0) then {
             private _action = [
                 QGVAR(infantryPhoneStopCalling),
-                localize LSTRING(infantryPhone_stopCalling),
-                "",
+                LLSTRING(infantryPhone_stopCalling),
+                QPATHTOEF(ace_interact,data\icons\stop_phone_call.paa),
                 {
                     params ["_target", "", "_params"];
                     _params params ["_intercomNetwork"];
@@ -152,8 +152,8 @@ if (_target isKindOf "CAManBase") then {
                 {
                     private _action = [
                         format [QGVAR(infantryPhoneStartCalling_%1), _x],
-                        format [localize LSTRING(infantryPhone_startCalling), format["(%1)", (_intercomNames select _forEachIndex) select 2]],
-                        "",
+                        format [LLSTRING(infantryPhone_startCalling), format["(%1)", (_intercomNames select _forEachIndex) select 2]],
+                        QPATHTOEF(ace_interact,data\icons\phone_call.paa),
                         {
                              params ["_target", "", "_params"];
                             _params params ["_intercomNetwork"];
