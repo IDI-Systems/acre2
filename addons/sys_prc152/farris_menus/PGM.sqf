@@ -378,7 +378,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     ],
                     [
                         {
-                            private _encryption = GET_RADIO_VALUE("encryption");                            
+                            private _encryption = GET_RADIO_VALUE("encryption");
                             if (_encryption > 0) exitWith {
                                 SET_STATE("menuSelection",1);
                             };
@@ -411,7 +411,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         {
                             private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-                            private _tek = GET_RADIO_VALUE("TEK");                            
+                            private _tek = GET_RADIO_VALUE("TEK");
                             SET_STATE("menuSelection",_tek-1);
                         },
                         nil,
@@ -457,7 +457,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 SET_STATE("channels",_channels);
 
                 SET_STATE("pgm_encryption",nil);
-                SET_STATE("pgm_tek",nil);                
+                SET_STATE("pgm_tek",nil);
                 
             }
         ],
@@ -493,7 +493,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         {
                             private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-                            private _txTone = GET_RADIO_VALUE("modulation");                            
+                            private _txTone = GET_RADIO_VALUE("modulation");
                             {
                                 if (_txTone == _x) exitWith {
                                     SET_STATE("menuSelection",_forEachIndex);
@@ -530,7 +530,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                     [
                         {
                             private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
-                            private _deviation = GET_RADIO_VALUE("deviation");                            
+                            private _deviation = GET_RADIO_VALUE("deviation");
                             {
                                 if (_deviation == parseNumber _x) exitWith {
                                     SET_STATE("menuSelection",_forEachIndex);
@@ -575,7 +575,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                         HASH_SET(_channel,"optionCode",201);
                     };
                 };
-                HASH_SET(_channel,"modulation",_channelModulation);                
+                HASH_SET(_channel,"modulation",_channelModulation);
                 HASH_SET(_channel,"deviation",_channelDeviation);
 
                 HASHLIST_SET(_channels,_channelNumber,_channel);
@@ -583,7 +583,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
 
                 SET_STATE("pgm_traffic_type",nil);
                 SET_STATE("pgm_modulation",nil);
-                SET_STATE("pgm_deviation",nil);                      
+                SET_STATE("pgm_deviation",nil);
                 
             }
         ],
@@ -727,7 +727,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                             } else {
                                 SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_tx_select","OFF");
                                 SET_STATE("menuSelection",0);
-                            };                           
+                            };
                             
                             private _modulationType = GET_RADIO_VALUE("modulation");  
                             switch _modulationType do {
@@ -816,7 +816,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                                     
                                     private _currentAction = GET_STATE("menuAction");
                                     _currentAction = _currentAction + 999;
-                                    SET_STATE("menuAction",_currentAction);                                    
+                                    SET_STATE("menuAction",_currentAction);
                                 };
                                 case 'CTCSS': {
                                     // Next menu is CTCSS
@@ -904,7 +904,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 private _squelch = 0;
                 private _CTCSSTx = 0;
                 private _CTCSSRx = 0;
-                switch _sqType do {                    
+                switch _sqType do {
                     case 'TONE': {
                         _squelch = 3;
                         _CTCSSTx = 150;
@@ -920,7 +920,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                          _CTCSSTx = parseNumber _sqToneStr;
                         private _sqToneStr = SCRATCH_GET(GVAR(currentRadioId),"pgm_sq_rx_ctcss_tone");
                         _CTCSSRx = parseNumber _sqToneStr;
-                        _squelch = 3;                        
+                        _squelch = 3;
                     };
                 };
                 HASH_SET(_channel,"squelch",_squelch);
