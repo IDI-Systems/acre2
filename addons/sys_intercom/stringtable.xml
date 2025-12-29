@@ -1,637 +1,637 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_intercom">
-        <Key ID="STR_ACRE_sys_intercom_infantryPhone">
-            <English>Infantry Phone</English>
-            <Spanish>Teléfono de infantería</Spanish>
-            <German>Gegensprechanlage</German>
-            <Japanese>車外電話機</Japanese>
-            <Russian>Телефон пехоты</Russian>
-            <Polish>Telefon piechoty</Polish>
-            <Chinese>車外對講機</Chinese>
-            <Chinesesimp>车外对讲机</Chinesesimp>
-            <Korean>보병 전화</Korean>
-            <Portuguese>Telefone de Infantaria</Portuguese>
-            <Italian>Telefono fanteria</Italian>
-            <French>Téléphone d'infanterie</French>
-            <Turkish>Piyade Telefonu</Turkish>
-            <Czech>Pěchotní telefon</Czech>
+        <Key ID="STR_ACRE_sys_intercom_activateAccent">
+            <English>Activate Accent</English>
+            <Czech>Spustit přízvuk</Czech>
+            <French>Activer la priorité</French>
+            <Spanish>Activar prioridad de intercom</Spanish>
+            <Italian>Attiva priorità interfono</Italian>
+            <Portuguese>Ativar comunicação prioritária</Portuguese>
+            <Russian>Активировать приоритет</Russian>
+            <German>Bordfunkpriorität aktivieren</German>
+            <Japanese>強調を有効化</Japanese>
+            <Chinese>啟用強調</Chinese>
+            <Chinesesimp>启用强调</Chinesesimp>
+            <Turkish>İnterkom Mesajlarına Öncelik Ver</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_giveInfantryPhone">
-            <English>Pass Infantry Phone</English>
-            <Spanish>Dar teléfono de infantería</Spanish>
-            <German>Hörer übergeben</German>
-            <Japanese>車外電話機を渡す</Japanese>
-            <Russian>Передать телефон пехоты</Russian>
-            <Polish>Podaj telefon piechoty</Polish>
-            <Chinese>轉讓車外對講機</Chinese>
-            <Chinesesimp>转让车外对讲机</Chinesesimp>
-            <Korean>보병 전화를 전달</Korean>
-            <Portuguese>Passar Telefone de Infantaria</Portuguese>
-            <Italian>Passa telefono fanteria</Italian>
-            <French>Passer le téléphone d'infanterie</French>
-            <Turkish>Piyade Telefonunu Ver</Turkish>
-            <Czech>Podat pěchotní telefon</Czech>
+        <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey">
+            <English>Connect Next Intercom Network</English>
+            <Czech>Připojte další interkomovou síť</Czech>
+            <French>Se connecter au réseau d'interphonie suivant</French>
+            <Spanish>Conectar a la siguiente red de intercom</Spanish>
+            <Italian>Connetti Rete interfono Successiva</Italian>
+            <Polish>Połącz się z następną siecią interkomu</Polish>
+            <Portuguese>Conecta-se na próxima rede de Intercom.</Portuguese>
+            <Russian>Подключиться к следующей сети Интеркома</Russian>
+            <German>Verbinde nächstes Bordfunknetzwerk</German>
+            <Japanese>次のインターコム ネットワークに接続</Japanese>
+            <Chinese>連接至下一個內部通訊網路</Chinese>
+            <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
+            <Turkish>Sonraki İnterkom Ağını Bağla</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_takeInfantryPhone">
-            <English>Take Infantry Phone %1</English>
-            <Spanish>Coger teléfono de infantería %1</Spanish>
-            <German>Hörer %1 abnehmen</German>
-            <Japanese>車外電話機 %1 を取る</Japanese>
-            <Russian>Взять телефон пехоты %1</Russian>
-            <Polish>Podnieś telefon piechoty %1</Polish>
-            <Chinese>拿起車外對講機 %1</Chinese>
-            <Chinesesimp>拿起车外对讲机 %1</Chinesesimp>
-            <Korean>보병 전화 %1을 얻음</Korean>
-            <Portuguese>Pegar Telefone de Infantaria %1</Portuguese>
-            <Italian>Prendi telefono fanteria %1</Italian>
-            <French>Prendre le téléphone d'infanterie %1</French>
-            <Turkish>Piyade Telefonunu Al %1</Turkish>
-            <Czech>Vzít pěchotní telefon</Czech>
+        <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey_description">
+            <English>Connects to the next Intercom Network while keeping the already connected ones.</English>
+            <Czech>Připojuje se k další síti interkomu a zároveň zachovává ty již připojené.</Czech>
+            <French>Se connecte au réseau d'interphonie suivant, tout en conservant les réseaux déjà connectés.</French>
+            <Spanish>Conecta la siguiente red de intercom manteniendo las demás.</Spanish>
+            <Italian>Si connette alla rete interfono successiva mantenendo quelle già connesse.</Italian>
+            <Portuguese>Conecta-se na próxima rede de Intercom. enquanto mantém as outras conectadas</Portuguese>
+            <Russian>Подключает к след. сети Интеркома,сохраняя подключение к текущим</Russian>
+            <German>Verbindet mit dem nächsten Bordfunknetzwerk während die bereits verbundenen Netzwerke beibehalten werden.</German>
+            <Japanese>次のインターコム ネットワークに既に接続済みのネットワークを保持したまま接続します。</Japanese>
+            <Chinese>維持與其他通訊網路存在的連線。並連接至下一個網路。</Chinese>
+            <Chinesesimp>维持与其他通讯网路存在的连线。并连接至下一个网路。</Chinesesimp>
+            <Turkish>Sonraki interkom ağına bağlanıp diğerlerine de bağlı kal</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_switchInfantryPhone">
-            <English>Switch Network %1</English>
-            <Spanish>Cambiar a %1</Spanish>
-            <German>Zu Netzwerk %1 wechseln</German>
-            <Japanese>%1 ネットワークに切り替え</Japanese>
-            <Russian>Переключить сеть %1</Russian>
-            <Polish>Przełącz sieć %1</Polish>
-            <Chinese>切換通訊網 %1</Chinese>
-            <Chinesesimp>切换通讯网 %1</Chinesesimp>
-            <Korean>네트워크 교체</Korean>
-            <Portuguese>Trocar Rede %1</Portuguese>
-            <Italian>Cambia canale %1</Italian>
-            <French>Changer de réseau %1</French>
-            <Turkish>Ağ Değiştir %1</Turkish>
-            <Czech>Změnit síť %1</Czech>
+        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
+            <English>Connect Previous Intercom Network</English>
+            <Czech>Připojení předchozí interkomové sítě</Czech>
+            <French>Se connecter au réseau d'interphonie précédent</French>
+            <Spanish>Conectar a la anterior red de intercom</Spanish>
+            <Italian>Connetti Rete Interfono Precedente</Italian>
+            <Polish>Połącz się z poprzednią siecią interkomu</Polish>
+            <Portuguese>Conecta-se na última rede de Intercom.</Portuguese>
+            <Russian>Подключиться к предыдущей сети Интеркома</Russian>
+            <German>Verbinde mit dem vorherigen Bordfunknetzwerk</German>
+            <Japanese>前のインターコム ネットワークに接続</Japanese>
+            <Chinese>連線上一個通訊網路</Chinese>
+            <Chinesesimp>连线上一个通讯网路</Chinesesimp>
+            <Turkish>Önceki İnterkom Ağını Bağla</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_returnInfantryPhone">
-            <English>Return Infantry Phone</English>
-            <Spanish>Colgar teléfono de infanteria</Spanish>
-            <German>Höhrer aufhängen</German>
-            <Japanese>車外電話機を戻す</Japanese>
-            <Russian>Вернуть телефон пехоты</Russian>
-            <Polish>Odłóż telefon</Polish>
-            <Chinese>放回車外對講機</Chinese>
-            <Chinesesimp>放回车外对讲机</Chinesesimp>
-            <Korean>보병 전화를 돌려놓기</Korean>
-            <Portuguese>Retornar Telefone de Infantaria</Portuguese>
-            <Italian>Riaggancia telefono fanteria</Italian>
-            <French>Raccrocher le téléphone d'infanterie</French>
-            <Turkish>Piyade Telefonunu Geri Ver</Turkish>
-            <Czech>Vrátit pěchotní telefon</Czech>
+        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey_description">
+            <English>Connects to the previous Intercom Network while keeping the already connected ones.</English>
+            <Czech>Připojuje se k předchozí síti interkomu a zároveň zachovává ty již připojené.</Czech>
+            <French>Se connecte au réseau d'interphonie précédent, tout en conservant les réseaux déjà connectés.</French>
+            <Spanish>Conecta la red de intercom anterior manteniendo las demás.</Spanish>
+            <Italian>Si connette alla rete interfono precedente mantenendo quelle già connesse.</Italian>
+            <Portuguese>Conecta-se na última rede de Intercom. enquanto mantém as outras conectadas</Portuguese>
+            <Russian>Подключает к предыдущей сети Интеркома, сохраняя подключение к текущим</Russian>
+            <German>Verbindet mit dem vorherigen Bordfunknetzwerk während die bereits verbundenen beibehalten werden.</German>
+            <Japanese>前のインターコム ネットワークに既に接続済みのネットワークを保持したまま接続します。</Japanese>
+            <Chinese>維持與其他通訊網路存在的連線。並連接至上一個網路。</Chinese>
+            <Chinesesimp>维持与其他通讯网路存在的连线。并连接至上一个网路。</Chinesesimp>
+            <Turkish>Önceki interkom ağına bağlanıp diğerlerine de bağlı kal</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
-            <English>Start Calling %1</English>
-            <Spanish>Llamar al exterior %1</Spanish>
-            <German>Läute %1</German>
-            <Japanese>%1 を呼び出す</Japanese>
-            <Russian>Начать звонок %1</Russian>
-            <Polish>Zadzwoń %1</Polish>
-            <Chinese>開始呼叫 %1</Chinese>
-            <Chinesesimp>开始呼叫 %1</Chinesesimp>
-            <Korean>전화 시작 %1</Korean>
-            <Portuguese>Iniciar Ligação %1</Portuguese>
-            <Italian>Chiama %1</Italian>
-            <French>Commencer d'appeler %1</French>
-            <Turkish>Aramaya Başla %1</Turkish>
-            <Czech>Začít telefonovat %1</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_infantryPhone_stopCalling">
-            <English>Stop Calling</English>
-            <Spanish>Dejar de llamar</Spanish>
-            <German>Läuten beenden</German>
-            <Japanese>呼び出しを止める</Japanese>
-            <Russian>Остановить звонок</Russian>
-            <Polish>Przestań dzwonić</Polish>
-            <Chinese>停止呼叫</Chinese>
-            <Chinesesimp>停止呼叫</Chinesesimp>
-            <Korean>전화 중지</Korean>
-            <Portuguese>Terminar Ligação</Portuguese>
-            <Italian>Riaggancia</Italian>
-            <French>Arrêter d'appeler %1</French>
-            <Turkish>Aramayı Durdur</Turkish>
-            <Czech>Přestat telefonovat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_infantryPhoneDisconnected">
-            <English>Infantry Phone Disconnected</English>
-            <Spanish>Colgar teléfono</Spanish>
-            <German>Gegensprechen beendet</German>
-            <Japanese>車外電話機を切断しました</Japanese>
-            <Russian>Телефон пехоты был отключен</Russian>
-            <Polish>Telefon odłączony</Polish>
-            <Chinese>車外對講機已斷開聯繫</Chinese>
-            <Chinesesimp>车外对讲机已断开联系</Chinesesimp>
-            <Korean>보병 전화 연결해제</Korean>
-            <Portuguese>Telefone de Infantaria Desconectado</Portuguese>
-            <Italian>Telefono fanteria disconnesso</Italian>
-            <French>Téléphone d'infanterie déconnecté</French>
-            <Turkish>Piyade Telefonunun Bağlantısı Kesildi</Turkish>
-            <Czech>Pěchotní telefon je odpojený</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_infantryPhoneConnected">
-            <English>Infantry Phone Connected %1</English>
-            <Spanish>Teléfono connectado %1</Spanish>
-            <German>Gegensprechen mit %1 begonnen</German>
-            <Japanese>車外電話機 %1 に接続しました</Japanese>
-            <Russian>Телефон пехоты подключен %1</Russian>
-            <Polish>Telefon podłączony %1</Polish>
-            <Chinese>車外對講機已連接 %1</Chinese>
-            <Chinesesimp>车外对讲机已连接%1</Chinesesimp>
-            <Korean>보병 전화 %1에 연결됨</Korean>
-            <Portuguese>Telefone de Infantaria Conectado %1</Portuguese>
-            <Italian>Telefono fanteria connesso %1</Italian>
-            <French>Téléphone d'infanterie connecté %1</French>
-            <Turkish>Piyade Telefonu Bağlandı %1</Turkish>
-            <Czech>Pěchotní telefon je připojen %1</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
-            <English>Infantry Phone Received %1</English>
-            <Spanish>Recibido teléfono connectado a %1</Spanish>
-            <German>Hörer mit Verbindung zu %1 erhalten</German>
-            <Japanese>車外電話機 %1 が受信されました</Japanese>
-            <Russian>Получен телефон пехоты %1</Russian>
-            <Polish>Odebrano telefon piechoty %1</Polish>
-            <Chinese>車外對講機已收到 %1</Chinese>
-            <Chinesesimp>车外对讲机已收到%1</Chinesesimp>
-            <Korean>보병 전화 %1 수신</Korean>
-            <Portuguese>Telefone de Infantaria Recebido %1</Portuguese>
-            <Italian>Telefono fanteria %1 ricevuto</Italian>
-            <French>Téléphone d'infanterie reçu %1</French>
-            <Turkish>Piyade Telefonu Alındı %1</Turkish>
-            <Czech>Pěchotní telefon přijat %1</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_infantryPhoneUnavailable">
-            <English>Infantry Phone already in use</English>
-            <German>Hörer wird gerade benutzt</German>
-            <Italian>Telefono fanteria preso da qualcuno</Italian>
-            <French>Téléphone d'infanterie déjà utilisé</French>
-            <Chinesesimp>车外对讲机正在使用</Chinesesimp>
-            <Japanese>車外電話機は使用中です。</Japanese>
-            <Czech>Pěchotní telefon se právě používá</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_intercom">
-            <English>Intercom</English>
-            <Spanish>Intercom</Spanish>
-            <German>Bordfunk</German>
-            <Japanese>インターコム</Japanese>
-            <Russian>Внутренняя связь</Russian>
-            <Polish>Interkom</Polish>
-            <Chinese>對講機</Chinese>
-            <Chinesesimp>对讲机</Chinesesimp>
-            <Korean>인터콤</Korean>
-            <Portuguese>Intercom</Portuguese>
-            <Italian>Interfono</Italian>
-            <French>Interphone</French>
-            <Turkish>İnterkom</Turkish>
-            <Czech>Interkom</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_maxConnections">
-            <English>Cannot connect to intercom. Maximum connections reached</English>
-            <Spanish>No se puede conectar al intercom. Conexiones máximas alcanzadas</Spanish>
-            <Chinese>對講機無法連線。已達到同時最大連線數量</Chinese>
-            <Chinesesimp>对讲机无法连线。已达到同时最大连线数量</Chinesesimp>
-            <Japanese>インターコムに接続できません。 最大接続数に到達</Japanese>
-            <Portuguese>Impossível Conectar no Intercom. Máximo de Conexões alcançado</Portuguese>
-            <Polish>Nie można się połączyć do interkomu. Limit połączeń został osiągnięty.</Polish>
-            <Italian>Impossibile connettersi all'interfono. Numero massimo di connessioni raggiunto.</Italian>
-            <French>Connexion impossible à l'interphone. Nombre maximal de connexions atteint.</French>
-            <German>Maximale Anzahl an Verbindungen im Bordfunk erreicht. Verbindung kann nicht hergestellt werden.</German>
-            <Russian>Невозможно подключиться к Интеркому - достигнуто максимальное кол-во подключений</Russian>
-            <Turkish>İnterkom'a bağlanılamadı. Maksimum bağlantı sayısı geçildi</Turkish>
-            <Czech>Nelze se připojit k interkomu. Dosažen maximální počet připojení.</Czech>
+        <Key ID="STR_ACRE_sys_intercom_connect">
+            <English>Connect</English>
+            <Czech>Připojit</Czech>
+            <French>Connecter</French>
+            <Spanish>Conectar</Spanish>
+            <Italian>Connetti</Italian>
+            <Polish>Połącz</Polish>
+            <Portuguese>Conectar</Portuguese>
+            <Russian>Подключен</Russian>
+            <German>Verbinden</German>
+            <Korean>으로 연결</Korean>
+            <Japanese>接続</Japanese>
+            <Chinese>連接至</Chinese>
+            <Chinesesimp>连接至</Chinesesimp>
+            <Turkish>Bağlan</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_crewIntercom">
             <English>Crew Intercom</English>
+            <Czech>Posádkový interkom</Czech>
+            <French>Équipage d'interphone</French>
             <Spanish>Intercom de tripulación</Spanish>
+            <Italian>Interfono Equipaggio</Italian>
+            <Polish>Interkom załogi</Polish>
+            <Portuguese>Intercom de Tripulação</Portuguese>
+            <Russian>Интерком экипажа</Russian>
+            <German>Besatzungsbordfunk</German>
+            <Japanese>乗員 インターコム</Japanese>
             <Chinese>機組員對講機</Chinese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
-            <Japanese>乗員 インターコム</Japanese>
-            <Portuguese>Intercom de Tripulação</Portuguese>
-            <Polish>Interkom załogi</Polish>
-            <Italian>Interfono Equipaggio</Italian>
-            <French>Équipage d'interphone</French>
-            <German>Besatzungsbordfunk</German>
-            <Russian>Интерком экипажа</Russian>
             <Turkish>Mürettebat İnterkomu</Turkish>
-            <Czech>Posádkový interkom</Czech>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_shortCrewIntercom">
-            <English>Crew</English>
-            <Spanish>Tripulación</Spanish>
-            <Polish>Załoga</Polish>
-            <Italian>Equip.</Italian>
-            <Chinese>機組員</Chinese>
-            <Chinesesimp>机组员</Chinesesimp>
-            <French>Équipage</French>
-            <German>Besatzung</German>
-            <Russian>Экипаж</Russian>
-            <Japanese>乗員</Japanese>
-            <Portuguese>Tripulação</Portuguese>
-            <Turkish>Mürettebat</Turkish>
-            <Czech>Posádka</Czech>
+        <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
+            <English>Deactivate Accent</English>
+            <Czech>Vypnout přízvuk</Czech>
+            <French>Désactiver la priorité</French>
+            <Spanish>Desactivar prioridad de intercom</Spanish>
+            <Italian>Disattiva priorità interfono</Italian>
+            <Portuguese>Desativar comunicação prioritária</Portuguese>
+            <Russian>Деактивировать приоритет</Russian>
+            <German>Bordfunkpriorität deaktivieren</German>
+            <Japanese>強調を無効化</Japanese>
+            <Chinese>禁用強調</Chinese>
+            <Chinesesimp>禁用强调</Chinesesimp>
+            <Turkish>İnterkom Mesajlarına Öncelik Verme</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
-            <English>Pax Intercom</English>
-            <Spanish>Intercom de pasajeros</Spanish>
-            <Chinese>乘客對講機</Chinese>
-            <Chinesesimp>乘客对讲机</Chinesesimp>
-            <Japanese>乗客 インターコム</Japanese>
-            <Portuguese>Intercom de passageiros</Portuguese>
-            <Polish>Interkom pasażerów</Polish>
-            <Italian>Interfono passeggero</Italian>
-            <French>Interphone Pax</French>
-            <German>Passagierbordfunk</German>
-            <Russian>Интерком пассажиров</Russian>
-            <Turkish>Yolcu İnterkomu</Turkish>
-            <Czech>Pax interkom</Czech>
+        <Key ID="STR_ACRE_sys_intercom_disconnect">
+            <English>Disconnect</English>
+            <Czech>Odpojit</Czech>
+            <French>Déconnecter</French>
+            <Spanish>Desconnectar</Spanish>
+            <Italian>Disconnetti</Italian>
+            <Polish>Rozłącz</Polish>
+            <Portuguese>Desconectar</Portuguese>
+            <Russian>Отключен</Russian>
+            <German>Trennen</German>
+            <Korean>연결 해제</Korean>
+            <Japanese>切断</Japanese>
+            <Chinese>斷開聯繫</Chinese>
+            <Chinesesimp>断开联系</Chinesesimp>
+            <Turkish>Kapat</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_shortPassengerIntercom">
-            <English>Pax</English>
-            <Spanish>Pasajeros</Spanish>
-            <Polish>Pasażerowie</Polish>
-            <Italian>Pass.</Italian>
-            <Chinese>乘客</Chinese>
-            <Chinesesimp>乘客</Chinesesimp>
-            <French>Pax</French>
-            <German>Passagier</German>
-            <Russian>Пассажиры</Russian>
-            <Japanese>乗客</Japanese>
-            <Portuguese>Passageiros</Portuguese>
-            <Turkish>Yolcu</Turkish>
-            <Czech>Pax</Czech>
+        <Key ID="STR_ACRE_sys_intercom_forcedStatus">
+            <English>Intercom status is being forced. Cannot change configuration.</English>
+            <Czech>Vynucuje se stav interkomu. Nelze změnit konfiguraci.</Czech>
+            <French>L'état de l'interphone est forcé. Impossible de modifier la configuration.</French>
+            <Spanish>La funcionalidad del intercom es forzada. No se puede cambiar la configuración.</Spanish>
+            <Italian>Lo stato dell'interfono è forzato. Impossibile modificare la configurazione.</Italian>
+            <Portuguese>Situação da Intercomunicação está sendo forçado. As configurações não podem ser alteraradas.</Portuguese>
+            <Russian>Настройки интеркома применены принудительно. Невозможно изменить конфигурацию</Russian>
+            <German>Bordfunkeinstellungen werden erzwungen! Konfiguration kann nicht geändert werden.</German>
+            <Japanese>インターコム状態が強制表示され、 設定は変更できません。</Japanese>
+            <Chinese>對講機狀態以被強制。無法更改設置。</Chinese>
+            <Chinesesimp>对讲机状态已被强制。无法更改设置。</Chinesesimp>
+            <Turkish>İnterkom ayarı zorla atanmış. Ayarlar değiştirilemiyor. </Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_giveInfantryPhone">
+            <English>Pass Infantry Phone</English>
+            <Czech>Podat pěchotní telefon</Czech>
+            <French>Passer le téléphone d'infanterie</French>
+            <Spanish>Dar teléfono de infantería</Spanish>
+            <Italian>Passa telefono fanteria</Italian>
+            <Polish>Podaj telefon piechoty</Polish>
+            <Portuguese>Passar Telefone de Infantaria</Portuguese>
+            <Russian>Передать телефон пехоты</Russian>
+            <German>Hörer übergeben</German>
+            <Korean>보병 전화를 전달</Korean>
+            <Japanese>車外電話機を渡す</Japanese>
+            <Chinese>轉讓車外對講機</Chinese>
+            <Chinesesimp>转让车外对讲机</Chinesesimp>
+            <Turkish>Piyade Telefonunu Ver</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhone">
+            <English>Infantry Phone</English>
+            <Czech>Pěchotní telefon</Czech>
+            <French>Téléphone d'infanterie</French>
+            <Spanish>Teléfono de infantería</Spanish>
+            <Italian>Telefono fanteria</Italian>
+            <Polish>Telefon piechoty</Polish>
+            <Portuguese>Telefone de Infantaria</Portuguese>
+            <Russian>Телефон пехоты</Russian>
+            <German>Gegensprechanlage</German>
+            <Korean>보병 전화</Korean>
+            <Japanese>車外電話機</Japanese>
+            <Chinese>車外對講機</Chinese>
+            <Chinesesimp>车外对讲机</Chinesesimp>
+            <Turkish>Piyade Telefonu</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhoneConnected">
+            <English>Infantry Phone Connected %1</English>
+            <Czech>Pěchotní telefon je připojen %1</Czech>
+            <French>Téléphone d'infanterie connecté %1</French>
+            <Spanish>Teléfono connectado %1</Spanish>
+            <Italian>Telefono fanteria connesso %1</Italian>
+            <Polish>Telefon podłączony %1</Polish>
+            <Portuguese>Telefone de Infantaria Conectado %1</Portuguese>
+            <Russian>Телефон пехоты подключен %1</Russian>
+            <German>Gegensprechen mit %1 begonnen</German>
+            <Korean>보병 전화 %1에 연결됨</Korean>
+            <Japanese>車外電話機 %1 に接続しました</Japanese>
+            <Chinese>車外對講機已連接 %1</Chinese>
+            <Chinesesimp>车外对讲机已连接%1</Chinesesimp>
+            <Turkish>Piyade Telefonu Bağlandı %1</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhoneDisconnected">
+            <English>Infantry Phone Disconnected</English>
+            <Czech>Pěchotní telefon je odpojený</Czech>
+            <French>Téléphone d'infanterie déconnecté</French>
+            <Spanish>Colgar teléfono</Spanish>
+            <Italian>Telefono fanteria disconnesso</Italian>
+            <Polish>Telefon odłączony</Polish>
+            <Portuguese>Telefone de Infantaria Desconectado</Portuguese>
+            <Russian>Телефон пехоты был отключен</Russian>
+            <German>Gegensprechen beendet</German>
+            <Korean>보병 전화 연결해제</Korean>
+            <Japanese>車外電話機を切断しました</Japanese>
+            <Chinese>車外對講機已斷開聯繫</Chinese>
+            <Chinesesimp>车外对讲机已断开联系</Chinesesimp>
+            <Turkish>Piyade Telefonunun Bağlantısı Kesildi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhoneReceived">
+            <English>Infantry Phone Received %1</English>
+            <Czech>Pěchotní telefon přijat %1</Czech>
+            <French>Téléphone d'infanterie reçu %1</French>
+            <Spanish>Recibido teléfono connectado a %1</Spanish>
+            <Italian>Telefono fanteria %1 ricevuto</Italian>
+            <Polish>Odebrano telefon piechoty %1</Polish>
+            <Portuguese>Telefone de Infantaria Recebido %1</Portuguese>
+            <Russian>Получен телефон пехоты %1</Russian>
+            <German>Hörer mit Verbindung zu %1 erhalten</German>
+            <Korean>보병 전화 %1 수신</Korean>
+            <Japanese>車外電話機 %1 が受信されました</Japanese>
+            <Chinese>車外對講機已收到 %1</Chinese>
+            <Chinesesimp>车外对讲机已收到%1</Chinesesimp>
+            <Turkish>Piyade Telefonu Alındı %1</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhoneUnavailable">
+            <English>Infantry Phone already in use</English>
+            <Czech>Pěchotní telefon se právě používá</Czech>
+            <French>Téléphone d'infanterie déjà utilisé</French>
+            <Italian>Telefono fanteria preso da qualcuno</Italian>
+            <German>Hörer wird gerade benutzt</German>
+            <Japanese>車外電話機は使用中です。</Japanese>
+            <Chinesesimp>车外对讲机正在使用</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
+            <English>Start Calling %1</English>
+            <Czech>Začít telefonovat %1</Czech>
+            <French>Commencer d'appeler %1</French>
+            <Spanish>Llamar al exterior %1</Spanish>
+            <Italian>Chiama %1</Italian>
+            <Polish>Zadzwoń %1</Polish>
+            <Portuguese>Iniciar Ligação %1</Portuguese>
+            <Russian>Начать звонок %1</Russian>
+            <German>Läute %1</German>
+            <Korean>전화 시작 %1</Korean>
+            <Japanese>%1 を呼び出す</Japanese>
+            <Chinese>開始呼叫 %1</Chinese>
+            <Chinesesimp>开始呼叫 %1</Chinesesimp>
+            <Turkish>Aramaya Başla %1</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_infantryPhone_stopCalling">
+            <English>Stop Calling</English>
+            <Czech>Přestat telefonovat</Czech>
+            <French>Arrêter d'appeler %1</French>
+            <Spanish>Dejar de llamar</Spanish>
+            <Italian>Riaggancia</Italian>
+            <Polish>Przestań dzwonić</Polish>
+            <Portuguese>Terminar Ligação</Portuguese>
+            <Russian>Остановить звонок</Russian>
+            <German>Läuten beenden</German>
+            <Korean>전화 중지</Korean>
+            <Japanese>呼び出しを止める</Japanese>
+            <Chinese>停止呼叫</Chinese>
+            <Chinesesimp>停止呼叫</Chinesesimp>
+            <Turkish>Aramayı Durdur</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercom">
+            <English>Intercom</English>
+            <Czech>Interkom</Czech>
+            <French>Interphone</French>
+            <Spanish>Intercom</Spanish>
+            <Italian>Interfono</Italian>
+            <Polish>Interkom</Polish>
+            <Portuguese>Intercom</Portuguese>
+            <Russian>Внутренняя связь</Russian>
+            <German>Bordfunk</German>
+            <Korean>인터콤</Korean>
+            <Japanese>インターコム</Japanese>
+            <Chinese>對講機</Chinese>
+            <Chinesesimp>对讲机</Chinesesimp>
+            <Turkish>İnterkom</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
+            <English>Intercom Broadcast</English>
+            <Czech>Vysílání interkomu</Czech>
+            <French>Transmission inter-véhicules</French>
+            <Spanish>Tecla para mensaje prioritario</Spanish>
+            <Italian>PTT Interfono Prioritario</Italian>
+            <Polish>Klawisz nadawania interkomu</Polish>
+            <Portuguese>Transmissão Intercom entre veículos</Portuguese>
+            <Russian>Трансляция с Интеркома</Russian>
+            <German>Bordfunkübergreifende Übertragung</German>
+            <Japanese>インターコムのブロードキャスト</Japanese>
+            <Chinese>無線電廣播按鍵</Chinese>
+            <Chinesesimp>无线电广播按键</Chinesesimp>
+            <Turkish>İnterkom Yayını</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
+            <English>Transmit a priority message on intercom station.</English>
+            <Czech>Odešlete prioritní zprávu na interkomovou stanici.</Czech>
+            <French>Utilise le poste d'interphone pour diffuser un message prioritaire.</French>
+            <Spanish>Usa la estación de intercom para enviar un mensaje prioritario.</Spanish>
+            <Italian>Trasmetti un messaggio prioritario sulla stazione interfono.</Italian>
+            <Polish>Użyj interkomu, aby wysłać wiadomość priorytetową.</Polish>
+            <Portuguese>Transmitir mensagem prioritária em estação da Intercom.</Portuguese>
+            <Russian>Передавать важное сообщение на станцию Интеркома</Russian>
+            <German>Sende Prioritätsmeldung über Bordfunk.</German>
+            <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
+            <Chinese>使用內部對講機廣播優先訊息</Chinese>
+            <Chinesesimp>使用内部对讲机广播优先讯息</Chinesesimp>
+            <Turkish>İnterkom istasyonunda yüksek öncelikli mesaj ilet.</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
+            <English>Intercom Transmit</English>
+            <Czech>Přenos interkomu</Czech>
+            <French>Transmission interphone</French>
+            <Spanish>Tecla de intercom</Spanish>
+            <Italian>PTT Interfono</Italian>
+            <Polish>Klawisz interkomu</Polish>
+            <Portuguese>Transmitir na Intercom.</Portuguese>
+            <Russian>Передача по Интеркому</Russian>
+            <German>Standard Bordfunksprechtaste</German>
+            <Japanese>インターコム送信キー</Japanese>
+            <Chinese>對講機鍵</Chinese>
+            <Chinesesimp>对讲机键</Chinesesimp>
+            <Turkish>İnterkomda İlet</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
+            <English>Transmit on intercom station.</English>
+            <Czech>Vysílejte na interkomové stanici.</Czech>
+            <French>Permet de parler via l'interphone.</French>
+            <Spanish>Usa la estación de intercom para hablar.</Spanish>
+            <Italian>Trametti su stazione interfono.</Italian>
+            <Polish>Mów przez interkom</Polish>
+            <Portuguese>Transmitir na estação da Intercom.</Portuguese>
+            <German>Im Bordfunk sprechen</German>
+            <Japanese>インターコム内で会話する為に使用します。</Japanese>
+            <Chinese>使用通訊機台來講話</Chinese>
+            <Chinesesimp>使用通讯机台来讲话</Chinesesimp>
+            <Turkish>İnterkom istasyonunda mesaj ilet</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_maxConnections">
+            <English>Cannot connect to intercom. Maximum connections reached</English>
+            <Czech>Nelze se připojit k interkomu. Dosažen maximální počet připojení.</Czech>
+            <French>Connexion impossible à l'interphone. Nombre maximal de connexions atteint.</French>
+            <Spanish>No se puede conectar al intercom. Conexiones máximas alcanzadas</Spanish>
+            <Italian>Impossibile connettersi all'interfono. Numero massimo di connessioni raggiunto.</Italian>
+            <Polish>Nie można się połączyć do interkomu. Limit połączeń został osiągnięty.</Polish>
+            <Portuguese>Impossível Conectar no Intercom. Máximo de Conexões alcançado</Portuguese>
+            <Russian>Невозможно подключиться к Интеркому - достигнуто максимальное кол-во подключений</Russian>
+            <German>Maximale Anzahl an Verbindungen im Bordfunk erreicht. Verbindung kann nicht hergestellt werden.</German>
+            <Japanese>インターコムに接続できません。 最大接続数に到達</Japanese>
+            <Chinese>對講機無法連線。已達到同時最大連線數量</Chinese>
+            <Chinesesimp>对讲机无法连线。已达到同时最大连线数量</Chinesesimp>
+            <Turkish>İnterkom'a bağlanılamadı. Maksimum bağlantı sayısı geçildi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_mute">
+            <English>Mute</English>
+            <Czech>Ztlumit</Czech>
+            <French>Muet</French>
+            <Spanish>Mutear</Spanish>
+            <Italian>Muta</Italian>
+            <Polish>Wycisz</Polish>
+            <Portuguese>Mutar</Portuguese>
+            <Russian>Заглушить</Russian>
+            <German>Stummschalten</German>
+            <Japanese>消音</Japanese>
+            <Chinese>靜音</Chinese>
+            <Chinesesimp>静音</Chinesesimp>
+            <Turkish>Sustur</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_nextIntercomKey">
+            <English>Another intercom network</English>
+            <Czech>Další síť interkomu</Czech>
+            <French>Réseau d'interphonie suivant</French>
+            <Spanish>Siguiente red de intercom</Spanish>
+            <Italian>Rete Interfono successiva</Italian>
+            <Polish>Następna sieć interkomu</Polish>
+            <Portuguese>Próxima rede de Intercom.</Portuguese>
+            <Russian>Следующая сеть Интеркома</Russian>
+            <German>Nächstes Bordfunknetzwerk auswählen</German>
+            <Japanese>次のインターコム ネットワーク</Japanese>
+            <Chinese>下一個通訊網路</Chinese>
+            <Chinesesimp>下一个通讯网路</Chinesesimp>
+            <Turkish>Sonraki İnterkom Ağı</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_nextIntercomKey_description">
+            <English>Connects to the next Intercom Network. Disconnects from others.</English>
+            <Czech>Připojuje se k další síti interkomu. Odpojuje se od ostatních.</Czech>
+            <French>Se connecte au réseau suivant d'interphone. Se déconnecte des autres réseaux.</French>
+            <Spanish>Siguiente red de intercom. Desconecta las demás.</Spanish>
+            <Italian>Si collega alla rete interfono successiva. Si disconnette dalle altre.</Italian>
+            <Portuguese>Conecta-se na próxima rede de Intercom. Desconecta-se das outras</Portuguese>
+            <Russian>Подключает к следующей сети Интеркома. Отключает от остальных</Russian>
+            <German>Verbindet zu dem nächsten Bordfunknetzwerk.</German>
+            <Japanese>次のインターコム ネットワークに接続します。 別のインターコム ネットワークは切断されます。</Japanese>
+            <Chinese>從其他通訊網路斷開。並連接至下一個網路。</Chinese>
+            <Chinesesimp>从其他通讯网路断开。并连接至下一个网路。</Chinesesimp>
+            <Turkish>Sonraki interkom ağına bağlanıp diğerlerinden ayrılır</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_open">
             <English>Open</English>
             <Czech>Otevřít</Czech>
-            <German>Öffnen</German>
-            <Russian>Открыть</Russian>
-            <Polish>Otwórz</Polish>
-            <Italian>Apri</Italian>
-            <Spanish>Abrir</Spanish>
             <French>Ouvrir</French>
+            <Spanish>Abrir</Spanish>
+            <Italian>Apri</Italian>
+            <Polish>Otwórz</Polish>
+            <Portuguese>Abrir</Portuguese>
+            <Russian>Открыть</Russian>
+            <German>Öffnen</German>
+            <Korean>열기</Korean>
             <Japanese>開く</Japanese>
             <Chinese>打開</Chinese>
             <Chinesesimp>打开</Chinesesimp>
-            <Korean>열기</Korean>
-            <Portuguese>Abrir</Portuguese>
             <Turkish>Aç</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_connect">
-            <English>Connect</English>
-            <German>Verbinden</German>
-            <Japanese>接続</Japanese>
-            <Russian>Подключен</Russian>
-            <Polish>Połącz</Polish>
-            <Chinese>連接至</Chinese>
-            <Chinesesimp>连接至</Chinesesimp>
-            <Korean>으로 연결</Korean>
-            <Portuguese>Conectar</Portuguese>
-            <Italian>Connetti</Italian>
-            <Spanish>Conectar</Spanish>
-            <French>Connecter</French>
-            <Turkish>Bağlan</Turkish>
-            <Czech>Připojit</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_disconnect">
-            <English>Disconnect</English>
-            <Spanish>Desconnectar</Spanish>
-            <German>Trennen</German>
-            <Japanese>切断</Japanese>
-            <Russian>Отключен</Russian>
-            <Polish>Rozłącz</Polish>
-            <Chinese>斷開聯繫</Chinese>
-            <Chinesesimp>断开联系</Chinesesimp>
-            <Korean>연결 해제</Korean>
-            <Portuguese>Desconectar</Portuguese>
-            <Italian>Disconnetti</Italian>
-            <French>Déconnecter</French>
-            <Turkish>Kapat</Turkish>
-            <Czech>Odpojit</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_transOnly">
-            <English>Transmit Only</English>
-            <Spanish>Sólo transmitir</Spanish>
-            <German>Nur Senden</German>
-            <Japanese>送信のみ</Japanese>
-            <Chinese>只發送</Chinese>
-            <Chinesesimp>只发送</Chinesesimp>
-            <Korean>송신 전용</Korean>
-            <Portuguese>Apenas Transmitir</Portuguese>
-            <Polish>Tylko nadawaj</Polish>
-            <Italian>Solo trasmissione</Italian>
-            <French>Seulement transmettre</French>
-            <Russian>Только передача</Russian>
-            <Turkish>Sadece İletme</Turkish>
-            <Czech>Jenom odesílat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_recOnly">
-            <English>Receive Only</English>
-            <Spanish>Sólo recibir</Spanish>
-            <German>Nur Empfangen</German>
-            <Japanese>受信のみ</Japanese>
-            <Chinese>只接收</Chinese>
-            <Chinesesimp>只接收</Chinesesimp>
-            <Korean>수신 전용</Korean>
-            <Portuguese>Apenas Receber</Portuguese>
-            <Polish>Tylko nasłuchuj</Polish>
-            <Italian>Solo ricezione</Italian>
-            <French>Seulement recevoir</French>
-            <Russian>Только прием</Russian>
-            <Turkish>Sadece Alma</Turkish>
-            <Czech>Jenom přímat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_recAndTrans">
-            <English>Receive and Transmit</English>
-            <Spanish>Recibir y transmitir</Spanish>
-            <German>Senden und Empfangen</German>
-            <Japanese>受信と送信</Japanese>
-            <Chinese>接收和發送</Chinese>
-            <Chinesesimp>接收和发送</Chinesesimp>
-            <Korean>송수신</Korean>
-            <Portuguese>Receber e Transmitir</Portuguese>
-            <Polish>Nasłuchuj i nadawaj</Polish>
-            <Italian>Ricevi e trasmetti</Italian>
-            <French>Recevoir et transmettre</French>
-            <Russian>Прием и передача</Russian>
-            <Turkish>İletme ve Alma</Turkish>
-            <Czech>Přímat a odesílat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_mute">
-            <English>Mute</English>
-            <Spanish>Mutear</Spanish>
-            <Polish>Wycisz</Polish>
-            <Italian>Muta</Italian>
-            <Japanese>消音</Japanese>
-            <Chinese>靜音</Chinese>
-            <Chinesesimp>静音</Chinesesimp>
-            <French>Muet</French>
-            <German>Stummschalten</German>
-            <Russian>Заглушить</Russian>
-            <Portuguese>Mutar</Portuguese>
-            <Turkish>Sustur</Turkish>
-            <Czech>Ztlumit</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_startBroadcast">
-            <English>Start Broadcast</English>
-            <Spanish>Enviar mensaje prioritario</Spanish>
-            <Polish>Rozpocznij transmisję</Polish>
-            <Italian>Comincia trasmissione prioritaria</Italian>
-            <Japanese>ブロードキャストを開始</Japanese>
-            <Chinese>開始撥放</Chinese>
-            <Chinesesimp>开始播放</Chinesesimp>
-            <French>Commencer à diffuser</French>
-            <German>Beginne Bordfunkübergreifende Übertragung</German>
-            <Russian>Начать трансляцию</Russian>
-            <Portuguese>Começar transmissão interveicular</Portuguese>
-            <Turkish>Yayına Başla</Turkish>
-            <Czech>Začít vysílat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
-            <English>Stop Broadcast</English>
-            <Spanish>Detener mensaje prioritario</Spanish>
-            <Polish>Zatrzymaj transmisję</Polish>
-            <Italian>Termina trasmissione prioritaria</Italian>
-            <Japanese>ブロードキャストを停止</Japanese>
-            <Chinese>停止撥放</Chinese>
-            <Chinesesimp>停止播放</Chinesesimp>
-            <French>Arrêter de diffuser</French>
-            <German>Stoppe Bordfunkübergreifende Übertragung</German>
-            <Russian>Остановить трансляцию</Russian>
-            <Portuguese>Parar transmissão interveicular</Portuguese>
-            <Turkish>Yayını Durdur</Turkish>
-            <Czech>Přestat vysílat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_activateAccent">
-            <English>Activate Accent</English>
-            <German>Bordfunkpriorität aktivieren</German>
-            <Italian>Attiva priorità interfono</Italian>
-            <Spanish>Activar prioridad de intercom</Spanish>
-            <Japanese>強調を有効化</Japanese>
-            <Chinese>啟用強調</Chinese>
-            <Russian>Активировать приоритет</Russian>
-            <French>Activer la priorité</French>
-            <Chinesesimp>启用强调</Chinesesimp>
-            <Portuguese>Ativar comunicação prioritária</Portuguese>
-            <Turkish>İnterkom Mesajlarına Öncelik Ver</Turkish>
-            <Czech>Spustit přízvuk</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_deactivateAccent">
-            <English>Deactivate Accent</English>
-            <German>Bordfunkpriorität deaktivieren</German>
-            <Italian>Disattiva priorità interfono</Italian>
-            <Spanish>Desactivar prioridad de intercom</Spanish>
-            <Japanese>強調を無効化</Japanese>
-            <Chinese>禁用強調</Chinese>
-            <Russian>Деактивировать приоритет</Russian>
-            <French>Désactiver la priorité</French>
-            <Chinesesimp>禁用强调</Chinesesimp>
-            <Portuguese>Desativar comunicação prioritária</Portuguese>
-            <Turkish>İnterkom Mesajlarına Öncelik Verme</Turkish>
-            <Czech>Vypnout přízvuk</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_intercomPttKey">
-            <English>Intercom Transmit</English>
-            <Spanish>Tecla de intercom</Spanish>
-            <Polish>Klawisz interkomu</Polish>
-            <Italian>PTT Interfono</Italian>
-            <Chinese>對講機鍵</Chinese>
-            <Chinesesimp>对讲机键</Chinesesimp>
-            <Japanese>インターコム送信キー</Japanese>
-            <French>Transmission interphone</French>
-            <German>Standard Bordfunksprechtaste</German>
-            <Russian>Передача по Интеркому</Russian>
-            <Portuguese>Transmitir na Intercom.</Portuguese>
-            <Turkish>İnterkomda İlet</Turkish>
-            <Czech>Přenos interkomu</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_intercomPttKey_description">
-            <English>Transmit on intercom station.</English>
-            <Spanish>Usa la estación de intercom para hablar.</Spanish>
-            <Polish>Mów przez interkom</Polish>
-            <Italian>Trametti su stazione interfono.</Italian>
-            <Japanese>インターコム内で会話する為に使用します。</Japanese>
-            <Chinese>使用通訊機台來講話</Chinese>
-            <Chinesesimp>使用通讯机台来讲话</Chinesesimp>
-            <French>Permet de parler via l'interphone.</French>
-            <German>Im Bordfunk sprechen</German>
-            <Portuguese>Transmitir na estação da Intercom.</Portuguese>
-            <Turkish>İnterkom istasyonunda mesaj ilet</Turkish>
-            <Czech>Vysílejte na interkomové stanici.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey">
-            <English>Intercom Broadcast</English>
-            <Spanish>Tecla para mensaje prioritario</Spanish>
-            <Polish>Klawisz nadawania interkomu</Polish>
-            <Italian>PTT Interfono Prioritario</Italian>
-            <Chinese>無線電廣播按鍵</Chinese>
-            <Chinesesimp>无线电广播按键</Chinesesimp>
-            <Japanese>インターコムのブロードキャスト</Japanese>
-            <French>Transmission inter-véhicules</French>
-            <German>Bordfunkübergreifende Übertragung</German>
-            <Russian>Трансляция с Интеркома</Russian>
-            <Portuguese>Transmissão Intercom entre veículos</Portuguese>
-            <Turkish>İnterkom Yayını</Turkish>
-            <Czech>Vysílání interkomu</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_intercomBroadcastKey_description">
-            <English>Transmit a priority message on intercom station.</English>
-            <Spanish>Usa la estación de intercom para enviar un mensaje prioritario.</Spanish>
-            <Polish>Użyj interkomu, aby wysłać wiadomość priorytetową.</Polish>
-            <Italian>Trasmetti un messaggio prioritario sulla stazione interfono.</Italian>
-            <Japanese>インターコム内で優先メッセージをブロードキャストをする為に使用します。</Japanese>
-            <Chinese>使用內部對講機廣播優先訊息</Chinese>
-            <Chinesesimp>使用内部对讲机广播优先讯息</Chinesesimp>
-            <French>Utilise le poste d'interphone pour diffuser un message prioritaire.</French>
-            <German>Sende Prioritätsmeldung über Bordfunk.</German>
-            <Russian>Передавать важное сообщение на станцию Интеркома</Russian>
-            <Portuguese>Transmitir mensagem prioritária em estação da Intercom.</Portuguese>
-            <Turkish>İnterkom istasyonunda yüksek öncelikli mesaj ilet.</Turkish>
-            <Czech>Odešlete prioritní zprávu na interkomovou stanici.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_previousIntercomKey">
-            <English>Previous Intercom Network</English>
-            <Spanish>Red de intercom previa</Spanish>
-            <Polish>Poprzednia sieć interkomu</Polish>
-            <Italian>Rete Interfono precedente</Italian>
-            <Japanese>前のインターコム ネットワーク</Japanese>
-            <Chinese>上一個通訊網路</Chinese>
-            <Chinesesimp>上一个通讯网路</Chinesesimp>
-            <French>Réseau d'interphonie précédent</French>
-            <German>Vorheriges Bordfunknetzwerk auswählen</German>
-            <Russian>Предыдущая сеть Интеркома</Russian>
-            <Portuguese>Última rede de Intercom.</Portuguese>
-            <Turkish>Önceki İnterkom Ağı</Turkish>
-            <Czech>Předchozí síť interkomu</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_previousIntercomKey_description">
-            <English>Connects to the previous Intercom Network. Disconnects from others.</English>
-            <Spanish>Red de intercom previa. Desconecta las demás.</Spanish>
-            <German>Verbindet mit dem vorheriger Bordfunknetzwerk.</German>
-            <Italian>Si collega alla rete interfono precedente. Si disconnette dalle altre.</Italian>
-            <Russian>Подключается к предыдущей сети Интерком. Отключается от остальных.</Russian>
-            <Japanese>前のインターコム ネットワークに接続します。 別のインターコム ネットワークは切断されます。</Japanese>
-            <Chinese>從其他通訊網路斷開。並連接至上一個網路。</Chinese>
-            <French>Se connecte au réseau précédent d'interphone. Se déconnecte des autres réseaux.</French>
-            <Chinesesimp>从其他通讯网路断开。并链接至上一个网路。</Chinesesimp>
-            <Portuguese>Conecta-se na última rede de intercom. Desconecta-se das outras</Portuguese>
-            <Turkish>Önceki interkom ağına bağlanıp diğerlerinden ayrılır</Turkish>
-            <Czech>Připojuje se k předchozí síti interkomu. Odpojuje se od ostatních.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_nextIntercomKey">
-            <English>Another intercom network</English>
-            <Spanish>Siguiente red de intercom</Spanish>
-            <Polish>Następna sieć interkomu</Polish>
-            <Italian>Rete Interfono successiva</Italian>
-            <Japanese>次のインターコム ネットワーク</Japanese>
-            <Chinese>下一個通訊網路</Chinese>
-            <Chinesesimp>下一个通讯网路</Chinesesimp>
-            <French>Réseau d'interphonie suivant</French>
-            <German>Nächstes Bordfunknetzwerk auswählen</German>
-            <Russian>Следующая сеть Интеркома</Russian>
-            <Portuguese>Próxima rede de Intercom.</Portuguese>
-            <Turkish>Sonraki İnterkom Ağı</Turkish>
-            <Czech>Další síť interkomu</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_nextIntercomKey_description">
-            <English>Connects to the next Intercom Network. Disconnects from others.</English>
-            <Spanish>Siguiente red de intercom. Desconecta las demás.</Spanish>
-            <German>Verbindet zu dem nächsten Bordfunknetzwerk.</German>
-            <Italian>Si collega alla rete interfono successiva. Si disconnette dalle altre.</Italian>
-            <Russian>Подключает к следующей сети Интеркома. Отключает от остальных</Russian>
-            <Japanese>次のインターコム ネットワークに接続します。 別のインターコム ネットワークは切断されます。</Japanese>
-            <Chinese>從其他通訊網路斷開。並連接至下一個網路。</Chinese>
-            <French>Se connecte au réseau suivant d'interphone. Se déconnecte des autres réseaux.</French>
-            <Chinesesimp>从其他通讯网路断开。并连接至下一个网路。</Chinesesimp>
-            <Portuguese>Conecta-se na próxima rede de Intercom. Desconecta-se das outras</Portuguese>
-            <Turkish>Sonraki interkom ağına bağlanıp diğerlerinden ayrılır</Turkish>
-            <Czech>Připojuje se k další síti interkomu. Odpojuje se od ostatních.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey">
-            <English>Connect Previous Intercom Network</English>
-            <Spanish>Conectar a la anterior red de intercom</Spanish>
-            <Polish>Połącz się z poprzednią siecią interkomu</Polish>
-            <Italian>Connetti Rete Interfono Precedente</Italian>
-            <Chinese>連線上一個通訊網路</Chinese>
-            <Chinesesimp>连线上一个通讯网路</Chinesesimp>
-            <Japanese>前のインターコム ネットワークに接続</Japanese>
-            <French>Se connecter au réseau d'interphonie précédent</French>
-            <German>Verbinde mit dem vorherigen Bordfunknetzwerk</German>
-            <Russian>Подключиться к предыдущей сети Интеркома</Russian>
-            <Portuguese>Conecta-se na última rede de Intercom.</Portuguese>
-            <Turkish>Önceki İnterkom Ağını Bağla</Turkish>
-            <Czech>Připojení předchozí interkomové sítě</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_addPreviousIntercomKey_description">
-            <English>Connects to the previous Intercom Network while keeping the already connected ones.</English>
-            <Spanish>Conecta la red de intercom anterior manteniendo las demás.</Spanish>
-            <German>Verbindet mit dem vorherigen Bordfunknetzwerk während die bereits verbundenen beibehalten werden.</German>
-            <Italian>Si connette alla rete interfono precedente mantenendo quelle già connesse.</Italian>
-            <Russian>Подключает к предыдущей сети Интеркома, сохраняя подключение к текущим</Russian>
-            <Japanese>前のインターコム ネットワークに既に接続済みのネットワークを保持したまま接続します。</Japanese>
-            <Chinese>維持與其他通訊網路存在的連線。並連接至上一個網路。</Chinese>
-            <French>Se connecte au réseau d'interphonie précédent, tout en conservant les réseaux déjà connectés.</French>
-            <Chinesesimp>维持与其他通讯网路存在的连线。并连接至上一个网路。</Chinesesimp>
-            <Portuguese>Conecta-se na última rede de Intercom. enquanto mantém as outras conectadas</Portuguese>
-            <Turkish>Önceki interkom ağına bağlanıp diğerlerine de bağlı kal</Turkish>
-            <Czech>Připojuje se k předchozí síti interkomu a zároveň zachovává ty již připojené.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey">
-            <English>Connect Next Intercom Network</English>
-            <Spanish>Conectar a la siguiente red de intercom</Spanish>
-            <Polish>Połącz się z następną siecią interkomu</Polish>
-            <Italian>Connetti Rete interfono Successiva</Italian>
-            <Japanese>次のインターコム ネットワークに接続</Japanese>
-            <Chinese>連接至下一個內部通訊網路</Chinese>
-            <Chinesesimp>连接至下一个内部通讯网路</Chinesesimp>
-            <French>Se connecter au réseau d'interphonie suivant</French>
-            <German>Verbinde nächstes Bordfunknetzwerk</German>
-            <Russian>Подключиться к следующей сети Интеркома</Russian>
-            <Portuguese>Conecta-se na próxima rede de Intercom.</Portuguese>
-            <Turkish>Sonraki İnterkom Ağını Bağla</Turkish>
-            <Czech>Připojte další interkomovou síť</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_intercom_addNextIntercomKey_description">
-            <English>Connects to the next Intercom Network while keeping the already connected ones.</English>
-            <Spanish>Conecta la siguiente red de intercom manteniendo las demás.</Spanish>
-            <German>Verbindet mit dem nächsten Bordfunknetzwerk während die bereits verbundenen Netzwerke beibehalten werden.</German>
-            <Italian>Si connette alla rete interfono successiva mantenendo quelle già connesse.</Italian>
-            <Russian>Подключает к след. сети Интеркома,сохраняя подключение к текущим</Russian>
-            <Japanese>次のインターコム ネットワークに既に接続済みのネットワークを保持したまま接続します。</Japanese>
-            <Chinese>維持與其他通訊網路存在的連線。並連接至下一個網路。</Chinese>
-            <French>Se connecte au réseau d'interphonie suivant, tout en conservant les réseaux déjà connectés.</French>
-            <Chinesesimp>维持与其他通讯网路存在的连线。并连接至下一个网路。</Chinesesimp>
-            <Portuguese>Conecta-se na próxima rede de Intercom. enquanto mantém as outras conectadas</Portuguese>
-            <Turkish>Sonraki interkom ağına bağlanıp diğerlerine de bağlı kal</Turkish>
-            <Czech>Připojuje se k další síti interkomu a zároveň zachovává ty již připojené.</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_openGui">
             <English>Open Intercom GUI</English>
-            <Spanish>Abrir la interfaz de Intercom</Spanish>
-            <Japanese>インターコムのGUIを開く</Japanese>
-            <German>Öffne Bordfunknutzeroberfläche</German>
-            <Italian>Apri l'interfaccia utente dell'Interfono</Italian>
-            <Russian>Открыть окно Интеркома</Russian>
-            <Chinese>開啟對講機界面。</Chinese>
-            <French>Ouvrir l'interface graphique de l'interphone</French>
-            <Chinesesimp>开启对讲机界面。</Chinesesimp>
-            <Portuguese>Abrir Interface da Intercom.</Portuguese>
-            <Turkish>İnterkom Arayüzünü Aç</Turkish>
             <Czech>Otevřete GUI interkomu</Czech>
+            <French>Ouvrir l'interface graphique de l'interphone</French>
+            <Spanish>Abrir la interfaz de Intercom</Spanish>
+            <Italian>Apri l'interfaccia utente dell'Interfono</Italian>
+            <Portuguese>Abrir Interface da Intercom.</Portuguese>
+            <Russian>Открыть окно Интеркома</Russian>
+            <German>Öffne Bordfunknutzeroberfläche</German>
+            <Japanese>インターコムのGUIを開く</Japanese>
+            <Chinese>開啟對講機界面。</Chinese>
+            <Chinesesimp>开启对讲机界面。</Chinesesimp>
+            <Turkish>İnterkom Arayüzünü Aç</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_intercom_forcedStatus">
-            <English>Intercom status is being forced. Cannot change configuration.</English>
-            <Spanish>La funcionalidad del intercom es forzada. No se puede cambiar la configuración.</Spanish>
-            <German>Bordfunkeinstellungen werden erzwungen! Konfiguration kann nicht geändert werden.</German>
-            <Italian>Lo stato dell'interfono è forzato. Impossibile modificare la configurazione.</Italian>
-            <Russian>Настройки интеркома применены принудительно. Невозможно изменить конфигурацию</Russian>
-            <Japanese>インターコム状態が強制表示され、 設定は変更できません。</Japanese>
-            <Chinese>對講機狀態以被強制。無法更改設置。</Chinese>
-            <French>L'état de l'interphone est forcé. Impossible de modifier la configuration.</French>
-            <Chinesesimp>对讲机状态已被强制。无法更改设置。</Chinesesimp>
-            <Portuguese>Situação da Intercomunicação está sendo forçado. As configurações não podem ser alteraradas.</Portuguese>
-            <Turkish>İnterkom ayarı zorla atanmış. Ayarlar değiştirilemiyor. </Turkish>
-            <Czech>Vynucuje se stav interkomu. Nelze změnit konfiguraci.</Czech>
+        <Key ID="STR_ACRE_sys_intercom_passengerIntercom">
+            <English>Pax Intercom</English>
+            <Czech>Pax interkom</Czech>
+            <French>Interphone Pax</French>
+            <Spanish>Intercom de pasajeros</Spanish>
+            <Italian>Interfono passeggero</Italian>
+            <Polish>Interkom pasażerów</Polish>
+            <Portuguese>Intercom de passageiros</Portuguese>
+            <Russian>Интерком пассажиров</Russian>
+            <German>Passagierbordfunk</German>
+            <Japanese>乗客 インターコム</Japanese>
+            <Chinese>乘客對講機</Chinese>
+            <Chinesesimp>乘客对讲机</Chinesesimp>
+            <Turkish>Yolcu İnterkomu</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_previousIntercomKey">
+            <English>Previous Intercom Network</English>
+            <Czech>Předchozí síť interkomu</Czech>
+            <French>Réseau d'interphonie précédent</French>
+            <Spanish>Red de intercom previa</Spanish>
+            <Italian>Rete Interfono precedente</Italian>
+            <Polish>Poprzednia sieć interkomu</Polish>
+            <Portuguese>Última rede de Intercom.</Portuguese>
+            <Russian>Предыдущая сеть Интеркома</Russian>
+            <German>Vorheriges Bordfunknetzwerk auswählen</German>
+            <Japanese>前のインターコム ネットワーク</Japanese>
+            <Chinese>上一個通訊網路</Chinese>
+            <Chinesesimp>上一个通讯网路</Chinesesimp>
+            <Turkish>Önceki İnterkom Ağı</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_previousIntercomKey_description">
+            <English>Connects to the previous Intercom Network. Disconnects from others.</English>
+            <Czech>Připojuje se k předchozí síti interkomu. Odpojuje se od ostatních.</Czech>
+            <French>Se connecte au réseau précédent d'interphone. Se déconnecte des autres réseaux.</French>
+            <Spanish>Red de intercom previa. Desconecta las demás.</Spanish>
+            <Italian>Si collega alla rete interfono precedente. Si disconnette dalle altre.</Italian>
+            <Portuguese>Conecta-se na última rede de intercom. Desconecta-se das outras</Portuguese>
+            <Russian>Подключается к предыдущей сети Интерком. Отключается от остальных.</Russian>
+            <German>Verbindet mit dem vorheriger Bordfunknetzwerk.</German>
+            <Japanese>前のインターコム ネットワークに接続します。 別のインターコム ネットワークは切断されます。</Japanese>
+            <Chinese>從其他通訊網路斷開。並連接至上一個網路。</Chinese>
+            <Chinesesimp>从其他通讯网路断开。并链接至上一个网路。</Chinesesimp>
+            <Turkish>Önceki interkom ağına bağlanıp diğerlerinden ayrılır</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_recAndTrans">
+            <English>Receive and Transmit</English>
+            <Czech>Přímat a odesílat</Czech>
+            <French>Recevoir et transmettre</French>
+            <Spanish>Recibir y transmitir</Spanish>
+            <Italian>Ricevi e trasmetti</Italian>
+            <Polish>Nasłuchuj i nadawaj</Polish>
+            <Portuguese>Receber e Transmitir</Portuguese>
+            <Russian>Прием и передача</Russian>
+            <German>Senden und Empfangen</German>
+            <Korean>송수신</Korean>
+            <Japanese>受信と送信</Japanese>
+            <Chinese>接收和發送</Chinese>
+            <Chinesesimp>接收和发送</Chinesesimp>
+            <Turkish>İletme ve Alma</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_recOnly">
+            <English>Receive Only</English>
+            <Czech>Jenom přímat</Czech>
+            <French>Seulement recevoir</French>
+            <Spanish>Sólo recibir</Spanish>
+            <Italian>Solo ricezione</Italian>
+            <Polish>Tylko nasłuchuj</Polish>
+            <Portuguese>Apenas Receber</Portuguese>
+            <Russian>Только прием</Russian>
+            <German>Nur Empfangen</German>
+            <Korean>수신 전용</Korean>
+            <Japanese>受信のみ</Japanese>
+            <Chinese>只接收</Chinese>
+            <Chinesesimp>只接收</Chinesesimp>
+            <Turkish>Sadece Alma</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_returnInfantryPhone">
+            <English>Return Infantry Phone</English>
+            <Czech>Vrátit pěchotní telefon</Czech>
+            <French>Raccrocher le téléphone d'infanterie</French>
+            <Spanish>Colgar teléfono de infanteria</Spanish>
+            <Italian>Riaggancia telefono fanteria</Italian>
+            <Polish>Odłóż telefon</Polish>
+            <Portuguese>Retornar Telefone de Infantaria</Portuguese>
+            <Russian>Вернуть телефон пехоты</Russian>
+            <German>Höhrer aufhängen</German>
+            <Korean>보병 전화를 돌려놓기</Korean>
+            <Japanese>車外電話機を戻す</Japanese>
+            <Chinese>放回車外對講機</Chinese>
+            <Chinesesimp>放回车外对讲机</Chinesesimp>
+            <Turkish>Piyade Telefonunu Geri Ver</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_shortCrewIntercom">
+            <English>Crew</English>
+            <Czech>Posádka</Czech>
+            <French>Équipage</French>
+            <Spanish>Tripulación</Spanish>
+            <Italian>Equip.</Italian>
+            <Polish>Załoga</Polish>
+            <Portuguese>Tripulação</Portuguese>
+            <Russian>Экипаж</Russian>
+            <German>Besatzung</German>
+            <Japanese>乗員</Japanese>
+            <Chinese>機組員</Chinese>
+            <Chinesesimp>机组员</Chinesesimp>
+            <Turkish>Mürettebat</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_shortPassengerIntercom">
+            <English>Pax</English>
+            <Czech>Pax</Czech>
+            <French>Pax</French>
+            <Spanish>Pasajeros</Spanish>
+            <Italian>Pass.</Italian>
+            <Polish>Pasażerowie</Polish>
+            <Portuguese>Passageiros</Portuguese>
+            <Russian>Пассажиры</Russian>
+            <German>Passagier</German>
+            <Japanese>乗客</Japanese>
+            <Chinese>乘客</Chinese>
+            <Chinesesimp>乘客</Chinesesimp>
+            <Turkish>Yolcu</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_startBroadcast">
+            <English>Start Broadcast</English>
+            <Czech>Začít vysílat</Czech>
+            <French>Commencer à diffuser</French>
+            <Spanish>Enviar mensaje prioritario</Spanish>
+            <Italian>Comincia trasmissione prioritaria</Italian>
+            <Polish>Rozpocznij transmisję</Polish>
+            <Portuguese>Começar transmissão interveicular</Portuguese>
+            <Russian>Начать трансляцию</Russian>
+            <German>Beginne Bordfunkübergreifende Übertragung</German>
+            <Japanese>ブロードキャストを開始</Japanese>
+            <Chinese>開始撥放</Chinese>
+            <Chinesesimp>开始播放</Chinesesimp>
+            <Turkish>Yayına Başla</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_stopBroadcast">
+            <English>Stop Broadcast</English>
+            <Czech>Přestat vysílat</Czech>
+            <French>Arrêter de diffuser</French>
+            <Spanish>Detener mensaje prioritario</Spanish>
+            <Italian>Termina trasmissione prioritaria</Italian>
+            <Polish>Zatrzymaj transmisję</Polish>
+            <Portuguese>Parar transmissão interveicular</Portuguese>
+            <Russian>Остановить трансляцию</Russian>
+            <German>Stoppe Bordfunkübergreifende Übertragung</German>
+            <Japanese>ブロードキャストを停止</Japanese>
+            <Chinese>停止撥放</Chinese>
+            <Chinesesimp>停止播放</Chinesesimp>
+            <Turkish>Yayını Durdur</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_switchInfantryPhone">
+            <English>Switch Network %1</English>
+            <Czech>Změnit síť %1</Czech>
+            <French>Changer de réseau %1</French>
+            <Spanish>Cambiar a %1</Spanish>
+            <Italian>Cambia canale %1</Italian>
+            <Polish>Przełącz sieć %1</Polish>
+            <Portuguese>Trocar Rede %1</Portuguese>
+            <Russian>Переключить сеть %1</Russian>
+            <German>Zu Netzwerk %1 wechseln</German>
+            <Korean>네트워크 교체</Korean>
+            <Japanese>%1 ネットワークに切り替え</Japanese>
+            <Chinese>切換通訊網 %1</Chinese>
+            <Chinesesimp>切换通讯网 %1</Chinesesimp>
+            <Turkish>Ağ Değiştir %1</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_takeInfantryPhone">
+            <English>Take Infantry Phone %1</English>
+            <Czech>Vzít pěchotní telefon</Czech>
+            <French>Prendre le téléphone d'infanterie %1</French>
+            <Spanish>Coger teléfono de infantería %1</Spanish>
+            <Italian>Prendi telefono fanteria %1</Italian>
+            <Polish>Podnieś telefon piechoty %1</Polish>
+            <Portuguese>Pegar Telefone de Infantaria %1</Portuguese>
+            <Russian>Взять телефон пехоты %1</Russian>
+            <German>Hörer %1 abnehmen</German>
+            <Korean>보병 전화 %1을 얻음</Korean>
+            <Japanese>車外電話機 %1 を取る</Japanese>
+            <Chinese>拿起車外對講機 %1</Chinese>
+            <Chinesesimp>拿起车外对讲机 %1</Chinesesimp>
+            <Turkish>Piyade Telefonunu Al %1</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_intercom_transOnly">
+            <English>Transmit Only</English>
+            <Czech>Jenom odesílat</Czech>
+            <French>Seulement transmettre</French>
+            <Spanish>Sólo transmitir</Spanish>
+            <Italian>Solo trasmissione</Italian>
+            <Polish>Tylko nadawaj</Polish>
+            <Portuguese>Apenas Transmitir</Portuguese>
+            <Russian>Только передача</Russian>
+            <German>Nur Senden</German>
+            <Korean>송신 전용</Korean>
+            <Japanese>送信のみ</Japanese>
+            <Chinese>只發送</Chinese>
+            <Chinesesimp>只发送</Chinesesimp>
+            <Turkish>Sadece İletme</Turkish>
         </Key>
     </Package>
 </Project>

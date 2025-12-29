@@ -1,165 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_gui">
-        <Key ID="STR_ACRE_sys_gui_VolumeControl">
-            <English>Direct Speech Volume Control</English>
-            <Spanish>Control del volumen de comunicación directa</Spanish>
-            <Czech>Ovládání hlasitosti přímého mluvení</Czech>
-            <German>Lautstärke der Charaktersprache</German>
-            <Japanese>直接会話の音量設定</Japanese>
-            <Italian>Regolazione Volume Voce</Italian>
-            <French>Réglage volume de voix</French>
-            <Korean>육성 음량 조절</Korean>
-            <Polish>Głośność mowy bezpośredniej</Polish>
-            <Russian>Громкость прямой речи</Russian>
-            <Chinese>語音音量控制</Chinese>
-            <Chinesesimp>语音音量控制</Chinesesimp>
-            <Portuguese>Controle de Volume de Comunicação Direta</Portuguese>
-            <Turkish>Yakın Konuşma Ses Kontrolü</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_DisplayName">
-            <English>ACRE2 - Volume Control</English>
-            <German>ACRE2 - Lautstärke</German>
-            <Italian>ACRE2 - Controllo del volume</Italian>
-            <Russian>ACRE2 - громкость</Russian>
-            <Japanese>ACRE2 - 音量操作</Japanese>
-            <Chinese>ACRE2 - 音量控制</Chinese>
-            <French>ACRE2 - Réglage du volume</French>
-            <Chinesesimp>ACRE2 - 音量控制</Chinesesimp>
-            <Portuguese>ACRE2 - Controle de Volume</Portuguese>
-            <Spanish>ACRE2 - Control de volumen</Spanish>
-            <Turkish>ACRE2 - Ses Kontrolü</Turkish>
-            <Czech>ACRE2 - Nastavení zvuku</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
-            <English>Indicates the current direct speech volume level.</English>
-            <German>Zeigt die momentane Lautstärke deiner Charaktersprache an.</German>
-            <Italian>Indica il volume attuale della voce.</Italian>
-            <Russian>Отображает текущую громкость прямой речи</Russian>
-            <Japanese>直接会話の現在の音量を表示します。</Japanese>
-            <Chinese>顯示妳目前說話的音量</Chinese>
-            <French>Indique le niveau actuel du volume de la voix.</French>
-            <Chinesesimp>显示你目前说话的音量</Chinesesimp>
-            <Portuguese>Indica o volume atual da comunicação direta.</Portuguese>
-            <Spanish>Indica el volumen actual de comunicación directa</Spanish>
-            <Turkish>Şu anki yakın konuşma ses seviyesini gösterir</Turkish>
-            <Czech>Označuje aktuální úroveň hlasitosti přímé řeči.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
-            <English>ACRE2 - Vehicle Info</English>
-            <Polish>ACRE2 - Informacje o pojeździe</Polish>
-            <Italian>ACRE2 - Informazioni Veicolo</Italian>
-            <Japanese>ACRE2 - 車両情報</Japanese>
-            <Chinese>ACRE2 - 載具資訊</Chinese>
-            <Chinesesimp>ACRE2 - 载具资讯</Chinesesimp>
-            <Spanish>ACRE2 - Información del vehículo</Spanish>
-            <French>ACRE2 - Informations véhicule</French>
-            <German>ACRE2 - Fahrzeuginformation</German>
-            <Russian>ACRE2 - информация о технике</Russian>
-            <Portuguese>ACRE2 - Informação do veículo</Portuguese>
-            <Turkish>ACRE2 - Araç Bilgisi</Turkish>
-            <Czech>ACRE2 - Informace o vozidle</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_Description">
-            <English>Status on available Intercoms and Racks in the vehicle.</English>
-            <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
-            <Italian>Stato degli intercom e rack disponibili nel veicolo</Italian>
-            <Japanese>車両にある利用可能なインターコムとラックの状態を示します。</Japanese>
-            <Chinese>車輛可使用的對講機即機架狀態</Chinese>
-            <Chinesesimp>车辆可使用的对讲机即机架状态</Chinesesimp>
-            <Spanish>Estado de los intercoms y racks del vehículo.</Spanish>
-            <French>Statut des interphones et des racks disponibles dans le véhicule.</French>
-            <German>Informationen bezüglich verfügbarer Interkommunikations- oder Festfunkgeräte.</German>
-            <Russian>Состояние на доступных Интеркомах и Подставках в технике</Russian>
-            <Portuguese>Situação da intercomunicação e raques disponíveis no veículo</Portuguese>
-            <Turkish>Araç içindeki interkomların ve raf telsizlerinin durum bilgisi</Turkish>
-            <Czech>Stav dostupných interkomů a nosičů ve vozidle.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gui_VolumeColorScale_DisplayName">
-            <English>Volume Color Scale</English>
-            <Russian>Цветовая гамма громкости</Russian>
-            <German>Lautstärke Farbskala</German>
-            <Italian>Volume: Gamma di colori</Italian>
-            <Japanese>音量の表示色の組み合わせ</Japanese>
-            <Chinese>音量界面顏色化</Chinese>
-            <French>Volume - Gamme de couleurs</French>
-            <Chinesesimp>音量界面颜色化</Chinesesimp>
-            <Portuguese>Volume: Gama de cores</Portuguese>
-            <Spanish>Volumen: Gama de colores</Spanish>
-            <Turkish>Ses Renk Ölçeği</Turkish>
-            <Czech>Zvuková barevná stupnice</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
-            <English>Color scale used by the Volume Control UI.</English>
-            <Russian>Цветовая гамма интефейса управления громкостью</Russian>
-            <German>Farbskala, die von der Lautstärkekontrolle benutzt wird.</German>
-            <Italian>Gamma di colori utilizzati dall'interfaccia di controllo del volume.</Italian>
-            <Japanese>音量操作UIに使う色の組み合わせを設定します。</Japanese>
-            <Chinese>在音量控制界面以顏色作為音量等級區分</Chinese>
-            <French>Gamme de couleurs utilisée pour l'interface de contrôle du volume.</French>
-            <Chinesesimp>在音量控制界面以颜色作为音量等级区分</Chinesesimp>
-            <Portuguese>Gama de cores usadas na IU de controle do volume </Portuguese>
-            <Spanish>Gama de colores usada por la Interfaz de control de volumen</Spanish>
-            <Turkish>Ses kontrol arayüzü tarafından kullanılan renk ölçeği</Turkish>
-            <Czech>Barevná stupnice používaná uživatelským rozhraním pro ovládání hlasitosti.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
-            <English>Yellow, Orange, Red</English>
-            <Russian>Желтый, Оранжевый,Красный</Russian>
-            <German>Gelb, Orange, Rot</German>
-            <Italian>Giallo, Arancione, Rosso</Italian>
-            <Japanese>イエロー, オレンジ, レッド</Japanese>
-            <Chinese>黃，橘，紅</Chinese>
-            <French>Jaune, Orange, Rouge</French>
-            <Chinesesimp>黄，橘，红</Chinesesimp>
-            <Portuguese>Amarelo, laranja e vermelho</Portuguese>
-            <Spanish>Amarillo, Naranja y Rojo</Spanish>
-            <Turkish>Sarı, Turuncu, Kırmızı</Turkish>
-            <Czech>Žlutá , Oranžová , Červená</Czech>
+        <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
+            <English>Blue, Magenta, Red</English>
+            <Czech>Modrá , Magenta, Červená</Czech>
+            <French>Bleu, Magenta, Rouge</French>
+            <Spanish>Azul, Magenta y Rojo</Spanish>
+            <Italian>Blu, Magenta, Rosso</Italian>
+            <Portuguese>Azul, magenta e vermelho</Portuguese>
+            <Russian>Синий,Пурпурный,Красный</Russian>
+            <German>Blau, Magenta, Rot</German>
+            <Japanese>ブルー, マゼンタ, レッド</Japanese>
+            <Chinese>藍，洋紅色，紅色</Chinese>
+            <Chinesesimp>蓝，洋红，红</Chinesesimp>
+            <Turkish>Mavi, Mor, Kırmızı</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_gui_GreenOrangeRed">
             <English>Green, Orange, Red</English>
+            <Czech>Zelená , Oranžová , Červená</Czech>
+            <French>Vert, Orange, Rouge</French>
+            <Spanish>Verde, Naranja y Rojo</Spanish>
+            <Italian>Verde, Arancione, Rosso</Italian>
+            <Portuguese>Verde, laranja e vermelho</Portuguese>
             <Russian>Зеленый, Оранжевый, Красный</Russian>
             <German>Grün, Orange, Rot</German>
-            <Italian>Verde, Arancione, Rosso</Italian>
             <Japanese>グリーン, オレンジ, レッド</Japanese>
             <Chinese>綠，橘，紅</Chinese>
-            <French>Vert, Orange, Rouge</French>
             <Chinesesimp>绿，橘，红</Chinesesimp>
-            <Portuguese>Verde, laranja e vermelho</Portuguese>
-            <Spanish>Verde, Naranja y Rojo</Spanish>
             <Turkish>Yeşil, Turuncu, Kırmızı</Turkish>
-            <Czech>Zelená , Oranžová , Červená</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gui_BlueMagentaRed">
-            <English>Blue, Magenta, Red</English>
-            <Russian>Синий,Пурпурный,Красный</Russian>
-            <German>Blau, Magenta, Rot</German>
-            <Italian>Blu, Magenta, Rosso</Italian>
-            <Japanese>ブルー, マゼンタ, レッド</Japanese>
-            <Chinese>藍，洋紅色，紅色</Chinese>
-            <French>Bleu, Magenta, Rouge</French>
-            <Chinesesimp>蓝，洋红，红</Chinesesimp>
-            <Portuguese>Azul, magenta e vermelho</Portuguese>
-            <Spanish>Azul, Magenta y Rojo</Spanish>
-            <Turkish>Mavi, Mor, Kırmızı</Turkish>
-            <Czech>Modrá , Magenta, Červená</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_gui_Open">
             <English>Open</English>
             <Czech>Otevřít</Czech>
-            <German>Öffnen</German>
-            <Russian>Открыть</Russian>
-            <Polish>Otwórz</Polish>
-            <Italian>Apri</Italian>
-            <Spanish>Abrir</Spanish>
             <French>Ouvrir</French>
+            <Spanish>Abrir</Spanish>
+            <Italian>Apri</Italian>
+            <Polish>Otwórz</Polish>
+            <Portuguese>Abrir</Portuguese>
+            <Russian>Открыть</Russian>
+            <German>Öffnen</German>
+            <Korean>열기</Korean>
             <Japanese>開く</Japanese>
             <Chinese>打開</Chinese>
             <Chinesesimp>打开</Chinesesimp>
-            <Korean>열기</Korean>
-            <Portuguese>Abrir</Portuguese>
             <Turkish>Açık</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_Description">
+            <English>Status on available Intercoms and Racks in the vehicle.</English>
+            <Czech>Stav dostupných interkomů a nosičů ve vozidle.</Czech>
+            <French>Statut des interphones et des racks disponibles dans le véhicule.</French>
+            <Spanish>Estado de los intercoms y racks del vehículo.</Spanish>
+            <Italian>Stato degli intercom e rack disponibili nel veicolo</Italian>
+            <Polish>Status dostępnych interkomów i stojaków w pojeździe.</Polish>
+            <Portuguese>Situação da intercomunicação e raques disponíveis no veículo</Portuguese>
+            <Russian>Состояние на доступных Интеркомах и Подставках в технике</Russian>
+            <German>Informationen bezüglich verfügbarer Interkommunikations- oder Festfunkgeräte.</German>
+            <Japanese>車両にある利用可能なインターコムとラックの状態を示します。</Japanese>
+            <Chinese>車輛可使用的對講機即機架狀態</Chinese>
+            <Chinesesimp>车辆可使用的对讲机即机架状态</Chinesesimp>
+            <Turkish>Araç içindeki interkomların ve raf telsizlerinin durum bilgisi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VehicleInfoGrid_DisplayName">
+            <English>ACRE2 - Vehicle Info</English>
+            <Czech>ACRE2 - Informace o vozidle</Czech>
+            <French>ACRE2 - Informations véhicule</French>
+            <Spanish>ACRE2 - Información del vehículo</Spanish>
+            <Italian>ACRE2 - Informazioni Veicolo</Italian>
+            <Polish>ACRE2 - Informacje o pojeździe</Polish>
+            <Portuguese>ACRE2 - Informação do veículo</Portuguese>
+            <Russian>ACRE2 - информация о технике</Russian>
+            <German>ACRE2 - Fahrzeuginformation</German>
+            <Japanese>ACRE2 - 車両情報</Japanese>
+            <Chinese>ACRE2 - 載具資訊</Chinese>
+            <Chinesesimp>ACRE2 - 载具资讯</Chinesesimp>
+            <Turkish>ACRE2 - Araç Bilgisi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VolumeColorScale_Description">
+            <English>Color scale used by the Volume Control UI.</English>
+            <Czech>Barevná stupnice používaná uživatelským rozhraním pro ovládání hlasitosti.</Czech>
+            <French>Gamme de couleurs utilisée pour l'interface de contrôle du volume.</French>
+            <Spanish>Gama de colores usada por la Interfaz de control de volumen</Spanish>
+            <Italian>Gamma di colori utilizzati dall'interfaccia di controllo del volume.</Italian>
+            <Portuguese>Gama de cores usadas na IU de controle do volume </Portuguese>
+            <Russian>Цветовая гамма интефейса управления громкостью</Russian>
+            <German>Farbskala, die von der Lautstärkekontrolle benutzt wird.</German>
+            <Japanese>音量操作UIに使う色の組み合わせを設定します。</Japanese>
+            <Chinese>在音量控制界面以顏色作為音量等級區分</Chinese>
+            <Chinesesimp>在音量控制界面以颜色作为音量等级区分</Chinesesimp>
+            <Turkish>Ses kontrol arayüzü tarafından kullanılan renk ölçeği</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VolumeColorScale_DisplayName">
+            <English>Volume Color Scale</English>
+            <Czech>Zvuková barevná stupnice</Czech>
+            <French>Volume - Gamme de couleurs</French>
+            <Spanish>Volumen: Gama de colores</Spanish>
+            <Italian>Volume: Gamma di colori</Italian>
+            <Portuguese>Volume: Gama de cores</Portuguese>
+            <Russian>Цветовая гамма громкости</Russian>
+            <German>Lautstärke Farbskala</German>
+            <Japanese>音量の表示色の組み合わせ</Japanese>
+            <Chinese>音量界面顏色化</Chinese>
+            <Chinesesimp>音量界面颜色化</Chinesesimp>
+            <Turkish>Ses Renk Ölçeği</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VolumeControl">
+            <English>Direct Speech Volume Control</English>
+            <Czech>Ovládání hlasitosti přímého mluvení</Czech>
+            <French>Réglage volume de voix</French>
+            <Spanish>Control del volumen de comunicación directa</Spanish>
+            <Italian>Regolazione Volume Voce</Italian>
+            <Polish>Głośność mowy bezpośredniej</Polish>
+            <Portuguese>Controle de Volume de Comunicação Direta</Portuguese>
+            <Russian>Громкость прямой речи</Russian>
+            <German>Lautstärke der Charaktersprache</German>
+            <Korean>육성 음량 조절</Korean>
+            <Japanese>直接会話の音量設定</Japanese>
+            <Chinese>語音音量控制</Chinese>
+            <Chinesesimp>语音音量控制</Chinesesimp>
+            <Turkish>Yakın Konuşma Ses Kontrolü</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_Description">
+            <English>Indicates the current direct speech volume level.</English>
+            <Czech>Označuje aktuální úroveň hlasitosti přímé řeči.</Czech>
+            <French>Indique le niveau actuel du volume de la voix.</French>
+            <Spanish>Indica el volumen actual de comunicación directa</Spanish>
+            <Italian>Indica il volume attuale della voce.</Italian>
+            <Portuguese>Indica o volume atual da comunicação direta.</Portuguese>
+            <Russian>Отображает текущую громкость прямой речи</Russian>
+            <German>Zeigt die momentane Lautstärke deiner Charaktersprache an.</German>
+            <Japanese>直接会話の現在の音量を表示します。</Japanese>
+            <Chinese>顯示妳目前說話的音量</Chinese>
+            <Chinesesimp>显示你目前说话的音量</Chinesesimp>
+            <Turkish>Şu anki yakın konuşma ses seviyesini gösterir</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_VolumeControlGrid_DisplayName">
+            <English>ACRE2 - Volume Control</English>
+            <Czech>ACRE2 - Nastavení zvuku</Czech>
+            <French>ACRE2 - Réglage du volume</French>
+            <Spanish>ACRE2 - Control de volumen</Spanish>
+            <Italian>ACRE2 - Controllo del volume</Italian>
+            <Portuguese>ACRE2 - Controle de Volume</Portuguese>
+            <Russian>ACRE2 - громкость</Russian>
+            <German>ACRE2 - Lautstärke</German>
+            <Japanese>ACRE2 - 音量操作</Japanese>
+            <Chinese>ACRE2 - 音量控制</Chinese>
+            <Chinesesimp>ACRE2 - 音量控制</Chinesesimp>
+            <Turkish>ACRE2 - Ses Kontrolü</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_YellowOrangeRed">
+            <English>Yellow, Orange, Red</English>
+            <Czech>Žlutá , Oranžová , Červená</Czech>
+            <French>Jaune, Orange, Rouge</French>
+            <Spanish>Amarillo, Naranja y Rojo</Spanish>
+            <Italian>Giallo, Arancione, Rosso</Italian>
+            <Portuguese>Amarelo, laranja e vermelho</Portuguese>
+            <Russian>Желтый, Оранжевый,Красный</Russian>
+            <German>Gelb, Orange, Rot</German>
+            <Japanese>イエロー, オレンジ, レッド</Japanese>
+            <Chinese>黃，橘，紅</Chinese>
+            <Chinesesimp>黄，橘，红</Chinesesimp>
+            <Turkish>Sarı, Turuncu, Kırmızı</Turkish>
         </Key>
     </Package>
 </Project>
