@@ -26,7 +26,7 @@ _hintMsg pushBack "<t align='left' size='1.15' color='#68bbff' font='PuristaMedi
 if (!isNull objectParent acre_player) then {
     _hintMsg pushBack "<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>Vehicle</t><br/>";
     {
-        _hintMsg pushBack (format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>", 
+        _hintMsg pushBack (format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>",
             format ["%1 (%2, %3)", name _x select [0, 10], [_x] call CBA_fnc_vehicleRole, [_x] call acre_sys_core_fnc_getCompartment],
             ([_x] call acre_sys_attenuate_fnc_getUnitAttenuate)
         ]);
@@ -42,7 +42,7 @@ private _fnc_getSpeakerText = {
         _name = _name + format[" <t color='#0051a1'>(vehicle, %1)</t>", [_unit] call CBA_fnc_vehicleRole];
     };
 
-    format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>", 
+    format ["<t align='left' font='PuristaMedium'>%1</t><t align='right' font='PuristaBold'>%2</t><br/>",
         _name,
         ([_unit] call acre_sys_attenuate_fnc_getUnitAttenuate)
     ]
@@ -59,7 +59,7 @@ _hintMsg pushBack "<br/>";
 
 // Print vehicle classname and compartment config values
 private _type = typeOf (vehicle acre_player);
-private _config = configFile >> "CfgVehicles" >> (typeOf (vehicle acre_player));
+private _config = configOf (vehicle acre_player);
 private _compartments = ["Compartment1","Compartment2","Compartment3","Compartment4"] apply {
     ["", _x] select (isClass (_config >> "ACRE" >> "attenuation" >> _x))
 };
@@ -80,7 +80,7 @@ if (_compartmentsCount > 0) then {
         private _attenuation = getNumber(_attConfig >> _x);
         if (_attenuation > 0) then {
             _hintMsg pushBack (format ["<t align='left' font='PuristaMedium'> %1 = %2", _x select [11], _attenuation]);
-            
+
             if (_forEachIndex == (_compartmentsCount - 1)) then {
                 _hintMsg pushBack "</t>";
             } else {
@@ -111,7 +111,7 @@ if (_compartmentsTurnedOutCount > 0) then {
         private _attenuation = getNumber(_attConfig >> _x);
         if (_attenuation > 0) then {
             _hintMsg pushBack (format ["<t align='left' font='PuristaMedium'> %1 = %2", _x select [11], _attenuation]);
-            
+
             if (_forEachIndex == (_compartmentsCount - 1)) then {
                 _hintMsg pushBack "</t>";
             } else {
