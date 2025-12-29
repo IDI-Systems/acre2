@@ -16,6 +16,8 @@
  * Public: No
  */
 
+#define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
+
 DFUNC(onButtonPress_Display) = {
 
     TRACE_1("onButtonPress_Display",_this);
@@ -25,8 +27,10 @@ DFUNC(onButtonPress_Display) = {
     switch (_event select 0) do {
         case 'PRE_UP': {     // OPT
             private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+            private _channels = GET_STATE("channels");
 
             private _active = false;
+            private _encryption = GET_RADIO_VALUE("encryption");
             while { !_active } do {
                 if (_channelNumber < 98) then {
                     _channelNumber = _channelNumber + 1;
@@ -34,17 +38,24 @@ DFUNC(onButtonPress_Display) = {
                     _channelNumber = 0;
                 };
                 private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
+                HASH_SET(_channel, "encryption", _encryption );
+                HASHLIST_SET(_channels,_channelNumber,_channel);
+                SET_STATE("channels",_channels);
                 _active = HASH_GET(_channel,"active");
+
             };
 
 
             ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
+
             [MENU_SUBMENUS_ITEM(_menu,_currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
         };
         case 'PRE_DOWN': { // PGM
             private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+            private _channels = GET_STATE("channels");
 
             private _active = false;
+            private _encryption = GET_RADIO_VALUE("encryption");
             while { !_active } do {
                 if (_channelNumber > 0) then {
                     _channelNumber = _channelNumber - 1;
@@ -52,10 +63,15 @@ DFUNC(onButtonPress_Display) = {
                     _channelNumber = 98;
                 };
                 private _channel = [GVAR(currentRadioId), _channelNumber] call FUNC(getChannelDataInternal);
+                HASH_SET(_channel, "encryption", _encryption );
+                HASHLIST_SET(_channels,_channelNumber,_channel);
+                SET_STATE("channels",_channels); 
                 _active = HASH_GET(_channel,"active");
+
             };
 
             ["setCurrentChannel", _channelNumber] call GUI_DATA_EVENT;
+
             [MENU_SUBMENUS_ITEM(_menu,_currentSelection)] call CALLSTACK(FUNC(renderMenu_Static));
         };
         case '4': {     // SQ

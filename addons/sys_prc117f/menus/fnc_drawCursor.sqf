@@ -79,11 +79,11 @@ for "_i" from _start to (_start+_len) do {
     private _textCtrl = _display displayCtrl (_id+_i);
     if (_highlight) then {
 
-        _textCtrl ctrlSetBackgroundColor [0.2, 0.2, 0.2, 1];
-        _textCtrl ctrlSetTextColor [115/255, 126/255, 42/255, 1];
+        _textCtrl ctrlSetBackgroundColor [0.1, 0.1, 0.1, 1];
+        _textCtrl ctrlSetTextColor [82/255, 85/255, 74/255, 1];
     } else {
-        _textCtrl ctrlSetBackgroundColor [0.2, 0.2, 0.2 ,0];
-        _textCtrl ctrlSetTextColor [0.2, 0.2, 0.2, 1]
+        _textCtrl ctrlSetBackgroundColor [0.1, 0.1, 0.1 ,0];
+        _textCtrl ctrlSetTextColor [0.1, 0.1, 0.1, 1]
     };
     _textCtrl ctrlCommit 0;
 };

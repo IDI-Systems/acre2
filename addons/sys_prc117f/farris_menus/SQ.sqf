@@ -19,10 +19,10 @@
 #define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
 #define GET_CHANNEL_DATA [] call FUNC(CURRENT_RADIO_CHANNEL);
 
-GVAR(SQ_ONLY_AM) = ["SQ_ONLY_AM", "SQ_ONLY_AM", "",
+GVAR(SQ_ONLY_AM) = ["SQ_ONLY_FM", "SQ_ONLY_FM", "",
     MENUTYPE_STATIC,
     [
-        [ROW_LARGE_2, ALIGN_CENTER, "N/A FOR FM MODULATION"]
+        [ROW_LARGE_2, ALIGN_CENTER, "N/A FOR AM MODULATION"]
     ],
     [
         {
@@ -123,7 +123,12 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
                             _mode = "TONE";
                         };
                     } else {
-                        _mode = "OFF";
+                        if (_squelch == 0) then {
+                            _mode = "OFF";
+                        } else {
+                            _mode = "NOISE";
+                        };
+                        
                     };
 
                     private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
@@ -153,48 +158,49 @@ GVAR(SQ_NO_DIGITAL) = ["SQ_NO_DIGITAL", "SQ_NO_DIGITAL", "",
     ],
     {
         //Call on series completion
-        private _selectAnalogSquelch = SCRATCH_GET(GVAR(currentRadioID),"sq_select_analog");
-        private _channel = GET_CHANNEL_DATA;
-        private _CTCSS = HASH_GET(_channel,"CTCSSRx");
+        private _selectAnalogSquelch = SCRATCH_GET(GVAR(currentRadioID),"sq_select_analog"); 
+
+        private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+        private _channels = GET_STATE("channels");
+        private _channel = HASHLIST_SELECT(_channels,_channelNumber);
+
+        private _CTCSSTx = HASH_GET(_channel,"CTCSSTx");
+        private _CTCSSRx = HASH_GET(_channel,"CTCSSRx");
         private _squelch = HASH_GET(_channel,"squelch");
         private _modulation = HASH_GET(_channel,"modulation");
 
-        switch _selectAnalogSquelch do {
-            case 'OFF': {_selectAnalogSquelch = 0; _CTCSS = 0; _squelch = 0; };
-            case 'TONE': {_selectAnalogSquelch = 1; _CTCSS = 150; _squelch = 3; };
-            case 'NOISE': {_selectAnalogSquelch = 2;  _CTCSS = 0; };
-            case 'CTCSS': {_selectAnalogSquelch = 3; _squelch = 3; };
-            case 'CDCSS': {_selectAnalogSquelch = 4; };
-            default {_selectAnalogSquelch = -1; };
+        private _nextMenu = "";
+        if (_modulation == "FM") then{
+            switch _selectAnalogSquelch do {
+                case 'OFF': {_CTCSSTx = 0; _CTCSSRx = 0; _squelch = 0; };
+                case 'TONE': {_CTCSSTx = 150; _CTCSSRx = 150;; _squelch = 3; };
+                case 'NOISE': {_CTCSSTx = 0; _CTCSSRx = 0; _squelch = 3;};
+                case 'CTCSS': {_squelch = 3; _nextMenu="SQ_SELECT_CTCSS";};
+                case 'CDCSS': {_nextMenu="NOT_IMPLEMENTED";};
+                default {_selectAnalogSquelch = -1;_nextMenu="ERROR_NOENTRY";};
+            };
+        } else {
+            switch _selectAnalogSquelch do {
+                case 'OFF': {_CTCSSTx = 0; _CTCSSRx = 0; _squelch = 0; };
+                case 'NOISE': { _CTCSSTx = 0; _CTCSSRx = 0; _nextMenu="SQ_SELECT_SQUELCH";};                
+                default {_selectAnalogSquelch = 2;  _CTCSSTx = 0; _CTCSSRx = 0; _nextMenu="SQ_ONLY_FM";};
+            };
         };
-
-        if (_selectAnalogSquelch < 0) exitWith {
-            ["ERROR_NOENTRY"] call FUNC(changeMenu);
-        };
-
-        HASH_SET(_channel,"CTCSSTx",_CTCSS);
-        HASH_SET(_channel,"CTCSSRx",_CTCSS);
+        
+        HASH_SET(_channel,"CTCSSTx",_CTCSSTx);
+        HASH_SET(_channel,"CTCSSRx",_CTCSSRx);
         HASH_SET(_channel,"squelch",_squelch);
-
+        
+        
         SCRATCH_SET(GVAR(currentRadioID),"sq_select_analog",nil);
-
-        if (_selectAnalogSquelch > 1) exitWith {
-            if (_selectAnalogSquelch > 2) exitWith {
-                if (_selectAnalogSquelch > 3) exitWith {
-                    ["NOT_IMPLEMENTED"] call FUNC(changeMenu);
-                    true
-                };
-                ["SQ_SELECT_CTCSS"] call FUNC(changeMenu);
-                true
-            };
-            if (_modulation == "AM") then {
-                ["SQ_SELECT_SQUELCH"] call FUNC(changeMenu);
-                true
-            } else {
-                ["SQ_ONLY_AM"] call FUNC(changeMenu);
-                true
-            };
+        _selectAnalogSquelch = 4;
+        
+        if (_nextMenu != "") exitWith {
+            
+            [_nextMenu] call FUNC(changeMenu);
         };
+        HASHLIST_SET(_channels,_channelNumber,_channel);
+        SET_STATE("channels",_channels);  
         private _home = GET_STATE_DEF("currentHome",GVAR(VULOSHOME));
         [_home] call FUNC(changeMenu);
         true
@@ -216,7 +222,13 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
             ],
             [
                 {
-                    // Need to pull the current squelch type and set to selection correctly
+                    private _squelch = GET_RADIO_VALUE("squelch");
+                    if (_squelch == 0) then {
+                        _squelch = 3;
+                    };
+                    _squelch=_squelch-1;
+                    SET_STATE("menuSelection",_squelch);
+                    
 
                 }, // onEntry,,
                 nil,
@@ -236,7 +248,9 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
     {
         //Call on series completion
         private _selectSquelch = SCRATCH_GET(GVAR(currentRadioID),"sq_select_squelch");
-        private _channel = GET_CHANNEL_DATA;
+        private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+        private _channels = GET_STATE("channels");
+        private _channel = HASHLIST_SELECT(_channels,_channelNumber);
         private _squelch = HASH_GET(_channel,"squelch");
 
         switch _selectSquelch do {
@@ -252,12 +266,15 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
             ["ERROR_NOENTRY"] call FUNC(changeMenu);
         };
 
-        HASH_SET(_channel,"squelch",_squelch);
-
+        HASH_SET(_channel,"squelch",_selectSquelch);      
+        HASHLIST_SET(_channels,_channelNumber,_channel);
+        SET_STATE("channels",_channels);  
         SCRATCH_SET(GVAR(currentRadioID),"sq_select_squelch",nil);
-
+        private _home = GET_STATE_DEF("currentHome",GVAR(VULOSHOME));
+        [_home] call FUNC(changeMenu);
+        true
     },
-    "SQ_NO_DIGITAL"
+    "VULOSHOME"
 ];
 [GVAR(SQ_SELECT_SQUELCH)] call FUNC(createMenu);
 
@@ -265,25 +282,19 @@ GVAR(SQ_SELECT_SQUELCH) = ["SQ_SELECT_SQUELCH", "SQ_SELECT_SQUELCH", "",
 GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
     MENUTYPE_ACTIONSERIES,
     [
-        [nil, "SQ_SELECT_CTCSS", "",
+        [nil, "SQ_SELECT_CTCSSTx", "",
             MENUTYPE_SELECTION,
             [
-                [ROW_LARGE_2, ALIGN_CENTER, "SELECT CTCSS FREQ"],
+                [ROW_LARGE_2, ALIGN_CENTER, "CTCSS TX TONE"],
                 [ROW_LARGE_3, ALIGN_CENTER, "%1"],
                 [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
             ],
             [
                 {
-                    TRACE_1("Entering ctcss value","");
-                    private _ctcss = GET_RADIO_VALUE("CTCSSRx");
-                    SET_STATE("menuSelection",0);
-
                     private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
+                    private _txTone = GET_RADIO_VALUE("CTCSSTx");
                     {
-                        private _ctcssInt = (parseNumber _x);
-                        TRACE_2("COMPARE",_ctcssInt,_ctcss);
-                        if (_ctcssInt == _ctcss) exitWith {
-                            TRACE_1("FOUND MATCH",_forEachIndex);
+                        if (_txTone ==  (parseNumber _x))exitWith {
                             SET_STATE("menuSelection",_forEachIndex);
                         };
                     } forEach _options;
@@ -296,7 +307,75 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
                 ],
                 [ROW_LARGE_3, 0, -1]
             ],
-            "sq_select_ctcss"
+            "sq_select_ctcsstx"
+        ],
+        [nil, "RX_SQUELCH_TYPE", "",
+        MENUTYPE_SELECTION,
+            [
+                [ROW_LARGE_2, ALIGN_CENTER, "RX SQUELCH TYPE"],
+                [ROW_LARGE_3, ALIGN_CENTER, "%1"],
+                [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
+            ],
+            [
+                {
+                    SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_rx_select","CTCSS");
+                    SET_STATE("menuSelection",1);
+                },
+                nil,
+                nil,
+                nil,
+                {
+                    //_sqTone = SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_sq_tx_ctcss_tone","250.3");
+                    private _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_sq_rx_select","CTCSS");
+                    switch _sqType do {
+                        default {        // Default is go to end, we only have 1 configurable SQ for now
+                            SCRATCH_SET(GVAR(currentRadioId),"sq_select_ctcssrx", "0");
+                            
+                            private _currentAction = GET_STATE("menuAction");
+                            _currentAction = _currentAction + 999;
+                            SET_STATE("menuAction",_currentAction);
+                        };
+                        case 'CTCSS': {
+                            // Next menu is CTCSS
+                        };
+                    };
+                }
+            ],
+            [
+                ["DISABLED", "CTCSS", "NOISE"],
+                [ROW_LARGE_3, 0, -1]
+            ],
+            "pgm_sq_rx_select"
+        ],
+        [nil, "SQ_SELECT_CTCSSRx", "",
+            MENUTYPE_SELECTION,
+            [
+                [ROW_LARGE_2, ALIGN_CENTER, "CTCSS RX TONE"],
+                [ROW_LARGE_3, ALIGN_CENTER, "%1"],
+                [ROW_SMALL_5, ALIGN_CENTER, "^ TO SCROLL / ENT TO CONT"]
+            ],
+            [
+                {
+                    private _options = MENU_SELECTION_DISPLAYSET(_this) select 0;
+                    private _txTone = SCRATCH_GET(GVAR(currentRadioId),"sq_select_ctcsstx");
+                    {
+                        if (_txTone ==  _x )exitWith {
+                            SET_STATE("menuSelection",_forEachIndex);
+                        };
+                    } forEach _options;
+                },
+                nil,
+                nil,
+                nil,
+                {
+                    //_sqTone = SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_sq_tx_ctcss_tone","250.3");
+                }
+            ],
+            [
+                ["67.0", "69.3", "71.9", "74.4", "77.0", "79.7", "82.5", "85.4", "88.5", "91.5", "94.8", "97.4", "100.0", "103.5", "107.2", "110.9", "114.8", "118.8", "123.0", "127.3", "131.8", "136.5", "141.3", "146.2", "151.4", "156.7", "162.2", "167.9", "173.8", "179.9", "186.2", "192.8", "203.5", "206.5", "210.7", "218.1", "225.7", "229.1", "233.6", "241.8", "250.3", "254.1" ],
+                [ROW_LARGE_3, 0, -1]
+            ],
+            "sq_select_ctcssrx"
         ]
     ],
     [
@@ -305,16 +384,20 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
     ],
     {
         //Call on series completion
-        private _selectctcss = SCRATCH_GET(GVAR(currentRadioID),"sq_select_ctcss");
-        private _channel = GET_CHANNEL_DATA;
-        private _ctcss = HASH_GET(_channel,"CTCSSRx");
-
-        _ctcss = parseNumber _selectctcss;
-
-        HASH_SET(_channel,"CTCSSRx",_ctcss);
-        HASH_SET(_channel,"CTCSSTx",_ctcss);
-        TRACE_1("SERIES COMPLETE ON CTCSS",_ctcss);
-        SCRATCH_SET(GVAR(currentRadioID),"sq_select_ctcss",nil);
+        private _selectctcsstx = SCRATCH_GET(GVAR(currentRadioID),"sq_select_ctcsstx");
+        private _selectctcssrx = SCRATCH_GET(GVAR(currentRadioID),"sq_select_ctcssrx");
+        private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
+        private _channels = GET_STATE("channels");
+        private _channel = HASHLIST_SELECT(_channels,_channelNumber);
+        
+        private _ctcsstx = parseNumber _selectctcsstx;
+        private _ctcssrx = parseNumber _selectctcssrx;
+        HASH_SET(_channel,"CTCSSRx",_ctcssrx);
+        HASH_SET(_channel,"CTCSSTx",_ctcsstx);
+        HASHLIST_SET(_channels,_channelNumber,_channel);
+        SET_STATE("channels",_channels);  
+        SCRATCH_SET(GVAR(currentRadioID),"sq_select_ctcsstx",nil);
+        SCRATCH_SET(GVAR(currentRadioID),"sq_select_ctcssrx",nil);
         false
     },
     "VULOSHOME"

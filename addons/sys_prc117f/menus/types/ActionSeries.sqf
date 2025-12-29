@@ -46,7 +46,7 @@ DFUNC(renderMenu_ActionSeries) = {
 
             [_subMenu] call FUNC(changeMenu);
         };
-
+        _currentAction = GET_STATE_DEF("menuAction",0);
         _currentAction = _currentAction + 1;
         SET_STATE("menuAction",_currentAction);
 
