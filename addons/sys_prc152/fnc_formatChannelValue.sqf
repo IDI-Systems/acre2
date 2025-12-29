@@ -18,7 +18,11 @@
 
 params ["_name","_value"];
 
+#define SQUELCH_NOISE 0
 #define SQUELCH_CTCSS 3
+
+#define GET_RADIO_VALUE(x) [x] call FUNC(CURRENT_RADIO_VALUE)
+#define GET_CHANNEL_DATA [] call FUNC(CURRENT_RADIO_CHANNEL);
 
 TRACE_1("Formatting",_this);
 
@@ -33,16 +37,32 @@ switch _name do {
         _value = [_value, 3, 4] call CBA_fnc_formatNumber;
     };
     case "encryption": {
-        if (_value > 1) then { _value = "CT"; } else { _value = "PT"; };
+        if (_value == 1) then { _value = "VINSON CT"; } else { _value = "------ PT"; };
     };
-    case "channelMode": {
+    case "channelmode": {
         switch _value do {
             case "BASIC": { _value = "VULOS"; }
         };
     };
-    case "squelch": {
+    case "tek": {
         switch _value do {
-            case SQUELCH_CTCSS: { _value = "TCS"; }
+            if (_value < 10) then { _value = format["0%1",_value]; } else { };
+        };
+    };
+    case "squelch": {
+        private _channel = GET_CHANNEL_DATA;
+        private _ctcss = HASH_GET(_channel,"CTCSSTx");
+
+        if (_value > 0) then {
+            _value = "TON";
+            if (_ctcss != 150) then {
+                _value = "TCS";
+            };
+            if (_ctcss == 0) then {
+                _value = "NOI";
+            };
+        } else{
+            _value = "OFF";
         };
     };
 };
