@@ -17,35 +17,23 @@ on:
 jobs:
   build:
     if: github.repository == 'IDI-Systems/acre2' && ! contains(github.event.head_commit.message, '[ci skip]')
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     outputs:
       VERSION: ${{ env.VERSION }}
       SHA_SHORT: ${{ env.SHA_SHORT }}
     steps:
     - name: Checkout the source code
       uses: actions/checkout@v6
+    - name: Setup Arma 3 Tools # contains only Binarize
+      uses: arma-actions/arma3-tools@master
+      with:
+        toolsUrl: ${{ secrets.FTP_SERVER }}/tools/arma3tools.zip
     - name: Setup HEMTT
       uses: arma-actions/hemtt@v1
-    - name: Setup Binarize
+    - name: Prepare Metadata
       run: |
-        C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
-        Expand-Archive acre2_tools.zip -DestinationPath ci
-        echo "Check Binarize: $(Test-Path .\\ci\\binarize\\binarize_x64.exe)"
-        hemtt --version
-        echo "Install Binarize dependencies"
-        cp .\ci\binarize\X3DAudio1_7.dll,.\ci\binarize\XAPOFX1_5.dll C:\Windows\System32\
-        echo "::group::Set Binarize registry path"
-        New-Item "HKCU:\\Software\\Bohemia Interactive\\binarize" -Force | New-ItemProperty -Name path -Value "${{ github.workspace }}\ci\binarize"
-        echo "::endgroup::"
-        $version = Select-String -Path "addons\\main\\script_version.hpp" -Pattern '#define (MAJOR|MINOR|PATCHLVL|BUILD) (\d+)' | ForEach-Object { $_.Matches.Groups[2].Value } | Join-String -Separator "."
-        echo "VERSION=$version" >> $env:GITHUB_ENV
-        echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $env:GITHUB_ENV
-    - name: Test Binarize
-      run: |
-        echo "::group::Run Binarize without arguments (look for missing DLLs)"
-        ./ci/binarize/binarize_x64.exe || true  # binarize exits with 1 if no file given
-        echo "::endgroup::"
-      shell: bash  # outputs missing dll information
+        echo "VERSION=$(hemtt value project.version.short)" >> $GITHUB_ENV
+        echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
     - name: Build (HEMTT)
       run: |
         echo "ACRE2 v${{ env.VERSION }} (${{ env.SHA_SHORT }})"
