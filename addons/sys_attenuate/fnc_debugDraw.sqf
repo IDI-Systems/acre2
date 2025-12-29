@@ -48,7 +48,7 @@ private _fnc_getSpeakerText = {
     ]
 };
 
-if (count _outsideSpeakers > 0) then {
+if (_outsideSpeakers isNotEqualTo []) then {
     _hintMsg pushBack (format["<t align='left' size='1.15' color='#68bbff' font='PuristaMedium'>%1</t><br/>", ["Outside", "Speakers"] select (isNull objectParent acre_player)]);
     {
         _hintMsg pushBack ([_x] call _fnc_getSpeakerText);

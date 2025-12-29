@@ -30,7 +30,7 @@ for "_i" from 0 to 99 do {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
-        if (_ok || (count _usedPresetFrequencies) == 0) then {
+        if (_ok || (_usedPresetFrequencies isEqualTo [])) then {
             PUSH(_usedPresetFrequencies,_frequency);
         };
     };
@@ -76,7 +76,7 @@ for "_i" from 0 to 99 do {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
-        if (_ok || (count _usedPresetFrequencies) == 0) then {
+        if (_ok || (_usedPresetFrequencies isEqualTo [])) then {
             PUSH(_usedPresetFrequencies,_frequency);
         };
     };
@@ -121,7 +121,7 @@ for "_i" from 0 to 99 do {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
-        if (_ok || (count _usedPresetFrequencies) == 0) then {
+        if (_ok || (_usedPresetFrequencies isEqualTo [])) then {
             PUSH(_usedPresetFrequencies,_frequency);
         };
     };
@@ -166,7 +166,7 @@ for "_i" from 0 to 99 do {
                 _ok = false;
             };
         } forEach _usedPresetFrequencies;
-        if (_ok || (count _usedPresetFrequencies) == 0) then {
+        if (_ok || (_usedPresetFrequencies isEqualTo [])) then {
             PUSH(_usedPresetFrequencies,_frequency);
         };
     };
