@@ -1,11 +1,11 @@
 #include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets the working radio in the FFCS.
+ * Sets the Work knob in the FFCS.
  *
  * Arguments:
  * 0: Intercom network <NUMBER>
- * 1: Working radio index <NUMBER>
+ * 1: Work knob position <NUMBER>
  *
  * Return Value:
  * Success <BOOL>

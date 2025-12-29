@@ -1,17 +1,17 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles the working radio switching keybind.
+ * Handles the work knob switching keybind.
  *
  * Arguments:
- * 0: Working radio switch amount (expected -1 or 1) <NUMBER>
+ * 0: Work knob switch amount (expected -1 or 1) <NUMBER>
  * 1: Play sound <BOOL> (default: false)
  *
  * Return Value:
  * Handled <BOOL>
  *
  * Example:
- * [1, true] call acre_sys_intercom_fnc_switchWorkingRadioFast
+ * [1, true] call acre_sys_intercom_fnc_switchWorkKnobFast
  *
  * Public: No
  */

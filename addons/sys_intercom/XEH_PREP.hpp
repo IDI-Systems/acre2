@@ -46,7 +46,7 @@ PREP(updateVehicleInfoText);
 
 // Keybinding
 PREP(switchIntercomFast);
-PREP(switchWorkingRadioFast);
+PREP(switchWorkKnobFast);
 PREP(handlePttKeyPress);
 PREP(handlePttKeyPressUp);
 
