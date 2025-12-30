@@ -433,7 +433,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                 // Set the current channel to the edited preset, and save the so-far-edited values
                 private _channelEncryption = SCRATCH_GET(GVAR(currentRadioId),"pgm_encryption");
                 
-                private _channelTEK = parseNumber (SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_tek","0") SELECT [3]);
+                private _channelTEK = parseNumber (SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_tek","0") select [3]);
                 
                 
                 private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;
@@ -812,7 +812,7 @@ GVAR(PGMChannelMenu) = ["PGM PRESET", "PGM PRESET", "PGM-SYS PRESETS-CFG",
                             private _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_sq_rx_select","CTCSS");
                             switch _sqType do {
                                 default {        // Default is go to end, we only have 1 configurable SQ for now
-                                    SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_rx_ctcss_tone", "0");
+                                    SCRATCH_SET(GVAR(currentRadioId),"pgm_sq_rx_ctcss_tone","0");
                                     
                                     private _currentAction = GET_STATE("menuAction");
                                     _currentAction = _currentAction + 999;
