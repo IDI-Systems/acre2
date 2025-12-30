@@ -30,7 +30,7 @@ if (_radioId isEqualTo "") exitWith {
 };
 
 private _fnc_removePFEH = {
-    private _pfh = [GVAR(gsaPFH), _radioId, _pfh] call CBA_fnc_hashGet;
+    private _pfh = [GVAR(gsaPFH), _radioId] call CBA_fnc_hashGet;
     if (!isNil "_pfh") then {
         [_pfh] call CBA_fnc_removePerFrameHandler;
         [GVAR(gsaPFH), _radioId, nil] call CBA_fnc_hashSet;

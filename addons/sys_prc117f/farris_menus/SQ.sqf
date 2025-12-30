@@ -329,7 +329,7 @@ GVAR(SQ_SELECT_CTCSS) = ["SQ_SELECT_CTCSS", "SQ_SELECT_CTCSS", "",
                     private _sqType = SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_sq_rx_select","CTCSS");
                     switch _sqType do {
                         default {        // Default is go to end, we only have 1 configurable SQ for now
-                            SCRATCH_SET(GVAR(currentRadioId),"sq_select_ctcssrx", "0");
+                            SCRATCH_SET(GVAR(currentRadioId),"sq_select_ctcssrx","0");
                             
                             private _currentAction = GET_STATE("menuAction");
                             _currentAction = _currentAction + 999;

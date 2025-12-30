@@ -402,7 +402,7 @@ GVAR(PGM_NORM_LOS) = ["PGM_NORM_LOS", "PGM_NORM_LOS", "",
                 // Set the current channel to the edited preset, and save the so-far-edited values
                 private _channelEncryption = SCRATCH_GET(GVAR(currentRadioId),"pgm_encryption");
 
-                private _channelTEK = parseNumber (SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_tek","0") SELECT [3]);
+                private _channelTEK = parseNumber (SCRATCH_GET_DEF(GVAR(currentRadioId),"pgm_tek","0") select [3]);
 
 
                 private _channelNumber = ["getCurrentChannel"] call GUI_DATA_EVENT;

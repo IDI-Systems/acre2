@@ -20,6 +20,6 @@ class CfgVehicles {
     class GVAR(connectorHelper): Car {
         displayName = "Connector Rope Helper";
         model = "core\default\default.p3d";
-        scope = 2;
+        scope = 1;
     };
 };
