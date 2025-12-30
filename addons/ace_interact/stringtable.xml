@@ -120,6 +120,17 @@
             <Chinesesimp>%1 频道: %2</Chinesesimp>
             <Turkish>%1 Kanal:%2</Turkish>
         </Key>
+        <Key ID="STR_ACRE_ace_interact_connectors">
+            <English>Connectors</English>
+            <French>Connecteurs</French>
+            <Spanish>Conectores</Spanish>
+            <Italian>Connettori</Italian>
+            <Portuguese>Conectores</Portuguese>
+            <German>Verbinder</German>
+            <Japanese>接続器</Japanese>
+            <Chinesesimp>连接器</Chinesesimp>
+            <Turkish>Bağlayıcılar</Turkish>
+        </Key>
         <Key ID="STR_ACRE_ace_interact_leftEar">
             <English>Left Ear</English>
             <Czech>Levé ucho</Czech>
