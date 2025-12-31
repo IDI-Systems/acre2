@@ -78,9 +78,9 @@ private _fourthDigit = [
 
 private _fifthDigit = [
     QPATHTOF(data\display\5char_0.paa),
-    QPATHTOF(data\display\5char_2.paa),
+    //QPATHTOF(data\display\5char_2.paa),
     QPATHTOF(data\display\5char_5.paa),
-    QPATHTOF(data\display\5char_6.paa),
+    //QPATHTOF(data\display\5char_6.paa),
     QPATHTOF(data\display\5char_8.paa)
 ];
 
@@ -146,9 +146,9 @@ if (GVAR(backlightOn)) then {
 
     _fifthDigit = [
         QPATHTOF(data\display\backlight\5char_0.paa),
-        QPATHTOF(data\display\backlight\5char_2.paa),
+        //QPATHTOF(data\display\backlight\5char_2.paa),
         QPATHTOF(data\display\backlight\5char_5.paa),
-        QPATHTOF(data\display\backlight\5char_6.paa),
+        //QPATHTOF(data\display\backlight\5char_6.paa),
         QPATHTOF(data\display\backlight\5char_8.paa)
     ];
 
@@ -166,7 +166,7 @@ if (GVAR(booting)) exitWith {
     RADIO_CTRL(302) ctrlSetText (_secondDigit select 8);
     RADIO_CTRL(303) ctrlSetText (_thirdDigit select 8);
     RADIO_CTRL(304) ctrlSetText (_fourthDigit select 8);
-    RADIO_CTRL(305) ctrlSetText (_fifthDigit select 4);
+    RADIO_CTRL(305) ctrlSetText (_fifthDigit select 2);
 };
 
 
@@ -259,10 +259,7 @@ switch _channelKnobPosition do {
                     RADIO_CTRL(304) ctrlSetText (_fourthDigit select (_numbers select 3));
                     switch (_numbers select 4) do {
                         case 0: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 0); };
-                        case 2: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 1); };
-                        case 5: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 2); };
-                        case 6: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 3); };
-                        case 8: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 4); };
+                        case 5: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 1); };
                     };
 
                 };
@@ -282,10 +279,7 @@ switch _channelKnobPosition do {
                         RADIO_CTRL(304) ctrlSetText (_fourthDigit select (_numbers select 3));
                         switch (_numbers select 4) do {
                             case 0: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 0); };
-                            case 2: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 1); };
-                            case 5: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 2); };
-                            case 6: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 3); };
-                            case 8: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 4); };
+                            case 5: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 1); };
                         };
                     };
                 }; // PTT = confirm (back to step 0).
@@ -313,10 +307,7 @@ switch _channelKnobPosition do {
                 RADIO_CTRL(304) ctrlSetText (_fourthDigit select (_numbers select 3));
                 switch (_numbers select 4) do {
                     case 0: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 0); };
-                    case 2: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 1); };
-                    case 5: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 2); };
-                    case 6: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 3); };
-                    case 8: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 4); };
+                    case 5: { RADIO_CTRL(305) ctrlSetText (_fifthDigit select 1); };
                 };
             };
 
