@@ -271,7 +271,9 @@ if (_transmissionsChanged) then {
     if (_okRadios isNotEqualTo []) then {
         private _signalData = (_okRadios select 0) select 2;
         _signalData params ["_signalPercent","_signalDbM"];
-        private _channel = [_radioId, "getCurrentChannelData"] call EFUNC(sys_data,dataEvent);
+        private _channelNum = [_radioId, "getCurrentChannel"] call EFUNC(sys_data,dataEvent);
+        private _channels = [_radioId, "getState", "channels"] call EFUNC(sys_data,dataEvent);
+        private _channel = HASHLIST_SELECT(_channels,_channelNum);
         private _squelch = -117 + HASH_GET(_channel,"squelch");
         // diag_log text format["squelch: %1 signal: %2", _squelch, _signalDbM];
         if (_signalDbM < _squelch) then {
