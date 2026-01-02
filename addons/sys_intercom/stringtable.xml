@@ -146,7 +146,7 @@
             <Japanese>インターコム状態が強制表示され、 設定は変更できません。</Japanese>
             <Chinese>對講機狀態以被強制。無法更改設置。</Chinese>
             <Chinesesimp>对讲机状态已被强制。无法更改设置。</Chinesesimp>
-            <Turkish>İnterkom ayarı zorla atanmış. Ayarlar değiştirilemiyor. </Turkish>
+            <Turkish>İnterkom ayarı zorla atanmış. Ayarlar değiştirilemiyor.</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_giveInfantryPhone">
             <English>Pass Infantry Phone</English>

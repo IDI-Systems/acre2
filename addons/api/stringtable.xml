@@ -193,7 +193,7 @@
             <German>Kanal 10</German>
             <Japanese>チャンネル10</Japanese>
             <Chinese>頻道 10</Chinese>
-            <Chinesesimp>频道 10 </Chinesesimp>
+            <Chinesesimp>频道 10</Chinesesimp>
             <Turkish>Kanal 10</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_1_Description">
@@ -401,7 +401,7 @@
             <German>Kanal 8</German>
             <Japanese>チャンネル8</Japanese>
             <Chinese>頻道 8</Chinese>
-            <Chinesesimp>频道 8 </Chinesesimp>
+            <Chinesesimp>频道 8</Chinesesimp>
             <Turkish>Kanal 8</Turkish>
         </Key>
         <Key ID="STR_ACRE_api_nameChannels_Channel_9_Description">
