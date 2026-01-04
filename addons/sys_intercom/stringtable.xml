@@ -594,19 +594,19 @@
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousWorkKnobKey">
             <English>Previous Work Knob Position</English>
-            <German>Vorheriger Funkkreis</German>
+            <German>Vorherige Work-Knopfposition</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousWorkKnobKey_description">
-            <English>Switches to the previous radio rack and sets it as the work knob within the first connected intercom network.</English>
-            <German>Setzt das vorherige Funkgerät als aktiven Funkkreis im ersten verbundenen Bordfunknetzwerk.</German>
+            <English>Switches to the previous radio rack and sets it as the transmitting radio within the first connected intercom network.</English>
+            <German>Setzt das vorherige Fahrzeugfunkgerät als sendendes Funkgerät im ersten verbundenen Bordfunknetzwerk.</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextWorkKnobKey">
             <English>Next Work Knob Position</English>
-            <German>Nächster Funkkreis</German>
+            <German>Nächste Work-Knopfposition</German>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextWorkKnobKey_description">
-            <English>Switches to the next radio rack and sets it as the work knob within the first connected intercom network.</English>
-            <German>Setzt das nächste Funkgerät als aktiven Funkkreis im ersten verbundenen Bordfunknetzwerk.</German>
+            <English>Switches to the next radio rack and sets it as the transmitting radio within the first connected intercom network.</English>
+            <German>Setzt das nächste Fahrzeugfunkgerät als sendendes Funkgerät im ersten verbundenen Bordfunknetzwerk.</German>
         </Key>
     </Package>
 </Project>
