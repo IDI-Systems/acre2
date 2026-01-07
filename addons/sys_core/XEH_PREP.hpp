@@ -49,6 +49,7 @@ PREP(replaceGear);
 PREP(setPluginSetting);
 PREP(setSpeakingLanguage);
 PREP(setSpokenLanguages);
+PREP(shouldBeMuted);
 PREP(showBroadCastHint);
 PREP(speaking);
 PREP(spectatorOff);
