@@ -39,6 +39,10 @@ jobs:
     steps:
     - name: Checkout the source code
       uses: actions/checkout@v6
+    - name: Setup Arma 3 Tools
+      uses: arma-actions/arma3-tools@master
+      with:
+        toolsUrl: ${{ secrets.FTP_SERVER }}/tools/arma3tools.zip
     - name: Setup HEMTT
       uses: arma-actions/hemtt@v1
     - name: Run HEMTT build
@@ -48,6 +52,6 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v6
       with:
-        name: acre2-${{ github.sha }}-nobin
+        name: acre2-${{ github.sha }}
         path: .hemttout/@*
         include-hidden-files: true # Because .hemttout is a hidden directory
