@@ -32,7 +32,7 @@ jobs:
       uses: arma-actions/hemtt@v1
     - name: Prepare Metadata
       run: |
-        echo "VERSION=$(hemtt value project.version.short)" >> $GITHUB_ENV
+        echo "VERSION=$(hemtt value project.version)" >> $GITHUB_ENV
         echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
     - name: Build (HEMTT)
       run: |
