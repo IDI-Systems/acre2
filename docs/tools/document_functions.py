@@ -275,7 +275,7 @@ def crawl_dir(directory, debug=False, lint_private=False):
     errors = 0
 
     for root, dirs, files in os.walk(directory):
-        for file in files:
+        for file in sorted(files):
             if file.endswith(".sqf") and file.startswith("fnc_"):
                 file_path = os.path.join(root, file)
 
