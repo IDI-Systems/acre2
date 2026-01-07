@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 #include "\a3\ui_f\hpp\defineDIKCodes.inc"
 
+LOAD_SOUND(Acre_GenericClick);
+
 private _addClassEH = {
     ["Tank", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
     ["Car_F", "init", FUNC(initVehicleIntercom), nil, nil, true] call CBA_fnc_addClassEventHandler;
@@ -20,35 +22,44 @@ if (didJIP) then {
 if (!hasInterface) exitWith {};
 
 // Keybinds - Intercom
-["ACRE2", "IntercomPTTKey", [localize LSTRING(intercomPttKey), localize LSTRING(intercomPttKey_description)], {
+private _category = ["ACRE2", LLSTRING(intercom)];
+[_category, "IntercomPTTKey", [LLSTRING(intercomPttKey), LLSTRING(intercomPttKey_description)], {
     [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPress)
 }, {
     [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPressUp)
 }] call CBA_fnc_addKeybind;
 
-["ACRE2", "IntercomBroadcastKey", [localize LSTRING(intercomBroadcastKey), localize LSTRING(intercomBroadcastKey_description)], {
+[_category, "IntercomBroadcastKey", [LLSTRING(intercomBroadcastKey), LLSTRING(intercomBroadcastKey_description)], {
     [ACTION_BROADCAST] call FUNC(handlePttKeyPress)
 }, {
     [ACTION_BROADCAST] call FUNC(handlePttKeyPressUp)
 }] call CBA_fnc_addKeybind;
 
-["ACRE2", "PreviousIntercom", [localize LSTRING(previousIntercomKey), localize LSTRING(previousIntercomKey_description)], "", {
+[_category, "PreviousIntercom", [LLSTRING(previousIntercomKey), LLSTRING(previousIntercomKey_description)], "", {
     [-1, true] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [true, false, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "NextIntercom", [localize LSTRING(nextIntercomKey), localize LSTRING(nextIntercomKey_description)], "", {
+[_category, "NextIntercom", [LLSTRING(nextIntercomKey), LLSTRING(nextIntercomKey_description)], "", {
     [1, true] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [false, true, false]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "AddPreviousIntercom", [localize LSTRING(addPreviousIntercomKey), localize LSTRING(addPreviousIntercomKey_description)], "", {
+[_category, "AddPreviousIntercom", [LLSTRING(addPreviousIntercomKey), LLSTRING(addPreviousIntercomKey_description)], "", {
     [-1, false] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [true, false, true]]] call CBA_fnc_addKeybind;
 
-["ACRE2", "AddNextIntercom", [localize LSTRING(addNextIntercomKey), localize LSTRING(addNextIntercomKey_description)], "", {
+[_category, "AddNextIntercom", [LLSTRING(addNextIntercomKey), LLSTRING(addNextIntercomKey_description)], "", {
     [1, false] call FUNC(switchIntercomFast)
 }, [DIK_COMMA, [false, true, true]]] call CBA_fnc_addKeybind;
 
-["ACRE2", QGVAR(openGui), localize LSTRING(openGui), {
+[_category, QGVAR(previousWorkKnob), [LLSTRING(previousWorkKnobKey), LLSTRING(previousWorkKnobKey_description)], {
+    [-1, true] call FUNC(switchWorkKnobFast)
+}, "", [DIK_Q, [false, true, false]]] call CBA_fnc_addKeybind;
+
+[_category, QGVAR(nextWorkKnob), [LLSTRING(nextWorkKnobKey), LLSTRING(nextWorkKnobKey_description)], {
+    [1, true] call FUNC(switchWorkKnobFast)
+}, "", [DIK_E, [false, true, false]]] call CBA_fnc_addKeybind;
+
+[_category, QGVAR(openGui), LLSTRING(openGui), {
     [-1] call FUNC(openGui)
 }, "", [DIK_TAB, [true, true, false]]] call CBA_fnc_addKeybind;
 
