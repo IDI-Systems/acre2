@@ -3,7 +3,7 @@ class CfgVehicles {
     class vn_armor_m113_base: APC_Tracked_01_base_F {
         class ACRE {
             class attenuation {
-            forceSoundAttenuation = 1;
+                forceSoundAttenuation = 1;
                 class Compartment1  {
                     Compartment1 = 0;
                     Compartment2 = 0.6;
