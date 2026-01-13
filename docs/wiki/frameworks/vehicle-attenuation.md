@@ -139,3 +139,50 @@ You can toggle the ability to view attenuation behaviour at runtime to diagnose 
 ### Usage
 
 Use the debug console in a mission or editor preview with some units and/or vehicles placed down and execute `call acre_sys_attenuate_fnc_toggleDebugInfo;`.
+
+
+### forceSoundAttenuation
+
+By Default, most, if not all FiringFromVehicle-seats inherit `disableSoundAttenuation = 1` from their `CargoTurret` config parent.
+
+This causes all FFV Seats to ignore any configured sound attenuations.
+
+`forceSoundAttenuation = 1;` has been added as a shortcut, to avoid having to edit each individual turret manually and can be used like in the following example:
+
+```hpp
+
+class CfgVehicles {
+	class APC_Tracked_01_base_F;
+    class vn_armor_m113_base: APC_Tracked_01_base_F {
+        class ACRE {
+            class attenuation {
+                
+                forceSoundAttenuation = 1;
+                
+                class Compartment1  {
+                    Compartment1 = 0;
+                    Compartment2 = 0.6;
+                };
+                class Compartment2  {
+                    Compartment1 = 0.6;
+                    Compartment2 = 0;
+                };
+            };
+            
+            class attenuationTurnedOut {
+            
+                class Compartment1  {
+                    Compartment1 = 0.3;
+                    Compartment2 = 0;
+                };
+            
+                class Compartment2  {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                };
+            };
+        };
+    };
+};
+
+```
