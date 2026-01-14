@@ -27,7 +27,7 @@ if (_turret in [[], [-1]]) exitWith {_effectType};
 
 private _config = [_vehicle, _turret] call CBA_fnc_getTurret;
 
-if ((getNumber (_config >> "disableSoundAttenuation")) isEqualTo 1) exitWith {""};
+if (getNumber (configOf _vehicle >> "ACRE" >> "attenuation" >> "forceSoundAttenuation") isEqualTo 0 && {getNumber (_config >> "disableSoundAttenuation") isEqualTo 1}) exitWith {""};
 
 if (isText (_config >> "soundAttenuationTurret")) then {
     _effectType = getText (_config >> "soundAttenuationTurret");

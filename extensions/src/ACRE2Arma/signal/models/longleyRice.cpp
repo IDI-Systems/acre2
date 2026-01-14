@@ -74,6 +74,7 @@ void acre::signal::model::longleyRice::process(
     itmElevations.push_back(static_cast<float64_t>(sampleSize));           // ITM: Distance between points
     _map->terrain_profile(tx_pos, rx_pos, sampleSize, itmElevations);      // Get Terrain elevations
     itmElevations[0] = static_cast<float64_t>(itmElevations.size() - 1u);  // ITM: Update the number of points
+    itmElevations.insert(itmElevations.end(), 10, itmElevations.back());   // Pad the end with dummy values to avoid access violations
 
     if (useITWOM) {
         acre::signal::model::itwom::point_to_point(itmElevations.data(), static_cast<float64_t>(rx_pos.z), static_cast<float64_t>(tx_pos.z),

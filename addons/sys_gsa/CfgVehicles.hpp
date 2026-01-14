@@ -10,7 +10,7 @@ class CfgVehicles {
                     condition = QUOTE([ARR_2(_player,'ACRE_VHF30108SPIKE')] call EFUNC(sys_core,hasItem) || [ARR_2(_player,'ACRE_VHF30108')] call EFUNC(sys_core,hasItem));
                     statement = QUOTE([ARR_3(_player,'ACRE_VHF30108SPIKE',false)] call FUNC(deploy));
                     showDisabled = 0;
-                    icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
+                    icon = QPATHTOEF(ace_interact,data\icons\antenna.paa);
                 };
 
                 class GVAR(placeSpikeMast) {
@@ -18,7 +18,7 @@ class CfgVehicles {
                     condition = QUOTE([ARR_2(_player,'ACRE_VHF30108')] call EFUNC(sys_core,hasItem));
                     statement = QUOTE([ARR_3(_player,'ACRE_VHF30108',true)] call FUNC(deploy));
                     showDisabled = 0;
-                    icon = QPATHTOF(data\vhf30108\ui\icon_antenna_ca.paa);
+                    icon = QPATHTOEF(ace_interact,data\icons\antenna.paa);
                 };
 
                 class GVAR(placeAntenna) {
@@ -68,7 +68,7 @@ class CfgVehicles {
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
-                    //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                    icon = "\a3\Ui_f\data\IGUI\Cfg\Actions\take_ca.paa";
                 };
 
                 class ACRE_removeMast {
@@ -80,7 +80,7 @@ class CfgVehicles {
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
-                    //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                    icon = QPATHTOEF(ace_interact,data\icons\no_antenna.paa);
                 };
 
                 class ACRE_connect {
@@ -93,7 +93,7 @@ class CfgVehicles {
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
-                    icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                    icon = QPATHTOEF(ace_interact,data\icons\connect.paa);
                 };
 
                 class ACRE_disconnect {
@@ -105,7 +105,7 @@ class CfgVehicles {
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
-                    icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                    icon = QPATHTOEF(ace_interact,data\icons\disconnect.paa);
                 };
             };
         };
@@ -146,7 +146,7 @@ class CfgVehicles {
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
-                    //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                    icon = "\a3\Ui_f\data\IGUI\Cfg\Actions\take_ca.paa";
                 };
 
                 class ACRE_mountMast {
@@ -158,7 +158,7 @@ class CfgVehicles {
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
-                    //icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                    icon = QPATHTOEF(ace_interact,data\icons\antenna.paa);
                 };
 
                 class ACRE_connect {
@@ -171,7 +171,7 @@ class CfgVehicles {
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
-                    icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                    icon = QPATHTOEF(ace_interact,data\icons\connect.paa);
                 };
 
                 class ACRE_disconnect {
@@ -183,7 +183,7 @@ class CfgVehicles {
                     showDisabled = 0;
                     exceptions[] = {};
                     priority = 5;
-                    icon = "\idi\acre\addons\ace_interact\data\icons\antenna.paa";
+                    icon = QPATHTOEF(ace_interact,data\icons\disconnect.paa);
                 };
             };
         };

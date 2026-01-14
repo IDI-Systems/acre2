@@ -3,14 +3,14 @@
     <Package name="Main">
         <Key ID="STR_ACRE_Main_Author">
             <English>ACRE2Team</English>
-            <German>ACRE2Team</German>
+            <Czech>ACRE2Team</Czech>
+            <French>ACRE2Team</French>
+            <Spanish>ACRE2Team</Spanish>
+            <Italian>ACRE2Team</Italian>
             <Polish>ACRE2Team</Polish>
             <Portuguese>ACRE2Team</Portuguese>
             <Russian>ACRE2Team</Russian>
-            <Czech>ACRE2Team</Czech>
-            <Spanish>ACRE2Team</Spanish>
-            <Italian>ACRE2Team</Italian>
-            <French>ACRE2Team</French>
+            <German>ACRE2Team</German>
             <Korean>ACRE2Team</Korean>
             <Japanese>ACRE2チーム</Japanese>
             <Chinese>ACRE2製作組</Chinese>
@@ -19,14 +19,14 @@
         </Key>
         <Key ID="STR_ACRE_Main_URL">
             <English>https://github.com/IDI-Systems/acre2</English>
-            <German>https://github.com/IDI-Systems/acre2</German>
+            <Czech>https://github.com/IDI-Systems/acre2</Czech>
+            <French>https://github.com/IDI-Systems/acre2</French>
+            <Spanish>https://github.com/IDI-Systems/acre2</Spanish>
+            <Italian>https://github.com/IDI-Systems/acre2</Italian>
             <Polish>https://github.com/IDI-Systems/acre2</Polish>
             <Portuguese>https://github.com/IDI-Systems/acre2</Portuguese>
             <Russian>https://github.com/IDI-Systems/acre2</Russian>
-            <Czech>https://github.com/IDI-Systems/acre2</Czech>
-            <Spanish>https://github.com/IDI-Systems/acre2</Spanish>
-            <Italian>https://github.com/IDI-Systems/acre2</Italian>
-            <French>https://github.com/IDI-Systems/acre2</French>
+            <German>https://github.com/IDI-Systems/acre2</German>
             <Korean>https://github.com/IDI-Systems/acre2</Korean>
             <Japanese>https://github.com/IDI-Systems/acre2</Japanese>
             <Chinese>https://github.com/IDI-Systems/acre2</Chinese>

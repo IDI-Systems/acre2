@@ -47,6 +47,16 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(radioNoise),
+    "CHECKBOX",
+    localize LSTRING(radioNoise_displayName),
+    "ACRE2",
+    true,
+    false,
+    {["disableRadioNoise", _this] call FUNC(setPluginSetting)}
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(unmuteClients),
     "CHECKBOX",
     localize LSTRING(unmuteClients_displayName),

@@ -39,25 +39,25 @@ class CfgVehicles {
         class ACRE {
             // Attenuation between players inside (turned in) separate in compartments
             class attenuation {
-                class Compartment1  {
+                class Compartment1 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-                class Compartment2  {
+                class Compartment2 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-                class Compartment3  {
+                class Compartment3 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-                class Compartment4  {
+                class Compartment4 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                     Compartment3 = 0;
@@ -67,25 +67,25 @@ class CfgVehicles {
 
             // Attenuation between a turned out player and turned in player sitting in separate compartments
             class attenuationTurnedOut {
-                class Compartment1  {
+                class Compartment1 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-                class Compartment2  {
+                class Compartment2 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-                class Compartment3  {
+                class Compartment3 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                     Compartment3 = 0;
                     Compartment4 = 0;
                 };
-                class Compartment4  {
+                class Compartment4 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                     Compartment3 = 0;
@@ -130,6 +130,7 @@ but the config `ConfigFile >> CfgVehicles >> myTank >> ACRE >> attenuationTurned
 
 {% include note.html content="The path in the <span style='color:#e3aa2b'>_**yellow**_</span> scenario is different because the value is looked up in the `attenuationTurnedOut` class instead of `attenuation`." %}
 
+
 ## Debugging
 
 You can toggle the ability to view attenuation behaviour at runtime to diagnose issues with compartment configs. It will draw the current attenuation value over all units and a hint will be shown with information about your crew (and their detected compartments) as well as the attenuation values of units outside of a vehicle. You'll also get a short rundown of the configured compartment connection attenuation values for the current vehicle.
@@ -139,3 +140,43 @@ You can toggle the ability to view attenuation behaviour at runtime to diagnose 
 ### Usage
 
 Use the debug console in a mission or editor preview with some units and/or vehicles placed down and execute `call acre_sys_attenuate_fnc_toggleDebugInfo;`.
+
+#### Disable and Force Attenuation
+
+Most if not all FFV seats inherit `disableSoundAttenuation = 1` from their `CargoTurret` config parent. This causes all FFV seats to ignore any configured sound attenuations.
+
+`forceSoundAttenuation` is available as a shortcut. This avoids having to edit each individual turret and can be used like this:
+
+```cpp
+class CfgVehicles {
+    class ParentVehicle;
+    class MyVehicle: ParentVehicle {
+        class ACRE {
+            class attenuation {
+                // Force enable attenuation
+                forceSoundAttenuation = 1;
+
+                class Compartment1 {
+                    Compartment1 = 0;
+                    Compartment2 = 0.6;
+                };
+                class Compartment2 {
+                    Compartment1 = 0.6;
+                    Compartment2 = 0;
+                };
+            };
+
+            class attenuationTurnedOut {
+                class Compartment1 {
+                    Compartment1 = 0.3;
+                    Compartment2 = 0;
+                };
+                class Compartment2 {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                };
+            };
+        };
+    };
+};
+```

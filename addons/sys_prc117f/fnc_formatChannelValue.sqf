@@ -37,16 +37,33 @@ switch _name do {
         _value = [_value, 3, 4] call CBA_fnc_formatNumber;
     };
     case "encryption": {
-        if (_value > 1) then { _value = "CT"; } else { _value = "PT"; };
+        if (_value > 0) then { _value = "CT"; } else { _value = "PT"; };
     };
-    case "channelMode": {
+    case "channelmode": {
         switch _value do {
             case "BASIC": { _value = "NORM"; }
         };
     };
+    case "tek": {
+        private _channel = GET_CHANNEL_DATA;
+        private _encryption = HASH_GET(_channel,"encryption");
+        switch _encryption do {
+            case 0: { 
+                _value = "              "
+            };
+            case 1: { 
+                if (_value< 10) then {
+                    _value = format["VINSON  TEK0%1 ", _value];
+                } else{
+                    _value = format["VINSON  TEK%1 ", _value];
+                }
+                
+            };
+        };
+    };
     case "squelch": {
         private _channel = GET_CHANNEL_DATA;
-        private _ctcss = HASH_GET(_channel,"CTCSSRx");
+        private _ctcss = HASH_GET(_channel,"CTCSSTx");
 
         if (_value > 0) then {
             _value = "TONE";

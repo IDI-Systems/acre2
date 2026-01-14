@@ -36,6 +36,7 @@ for "_i" from 0 to ((count _intercoms) - 1) do {
         _connectionStatus = [_vehicle, _player, _i, INTERCOM_STATIONSTATUS_CONNECTION] call FUNC(getStationConfiguration);
     };
 
+    TRACE_4("Intercom Frame",_vehicle,_player,_infantryPhoneNetwork,_i);
     if (_player == _unitInfantryPhone && {_infantryPhoneNetwork == _i}) then {
         (_vehicle getVariable [QGVAR(infantryPhoneInfo), [[0, 0, 0], 10]]) params ["_infantryPhonePosition", "_infantryPhoneMaxDistance"];
         _infantryPhonePosition = _vehicle modelToWorld _infantryPhonePosition;

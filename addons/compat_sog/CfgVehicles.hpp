@@ -1,23 +1,51 @@
 class CfgVehicles {
+    class APC_Tracked_01_base_F;
+    class vn_armor_m113_base: APC_Tracked_01_base_F {
+        class ACRE {
+            class attenuation {
+                forceSoundAttenuation = 1;
+                class Compartment1 {
+                    Compartment1 = 0;
+                    Compartment2 = 0.6;
+                };
+                class Compartment2 {
+                    Compartment1 = 0.6;
+                    Compartment2 = 0;
+                };
+            };
+            class attenuationTurnedOut {
+                class Compartment1 {
+                    Compartment1 = 0.3;
+                    Compartment2 = 0;
+                };
+                class Compartment2 {
+                    Compartment1 = 0;
+                    Compartment2 = 0;
+                };
+            };
+        };
+    };
+
     class vn_armor_tank_base;
     class vn_armor_m48_base: vn_armor_tank_base {
         class ACRE {
             class attenuation {
-                class Compartment1  {
+                forceSoundAttenuation = 1;
+                class Compartment1 {
                     Compartment1 = 0;
                     Compartment2 = 0.8;
                 };
-                class Compartment2  {
+                class Compartment2 {
                     Compartment1 = 0.8;
                     Compartment2 = 0;
                 };
             };
             class attenuationTurnedOut {
-                class Compartment1  {
+                class Compartment1 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                 };
-                class Compartment2  {
+                class Compartment2 {
                     Compartment1 = 0;
                     Compartment2 = 0;
                 };

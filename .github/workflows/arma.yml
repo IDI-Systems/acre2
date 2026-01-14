@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Validate SQF
       run: python3 tools/sqf_validator.py
     - name: Validate Config
@@ -29,16 +29,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Lint (sqflint)
       uses: arma-actions/sqflint@master
       continue-on-error: true # No failure due to many false-positives
 
   build:
     runs-on: ubuntu-latest
+    env:
+      FPT_SERVER: ${{ secrets.FTP_SERVER }}
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
+    - name: Setup Arma 3 Tools
+      uses: arma-actions/arma3-tools@master
+      if: ${{ env.FTP_SERVER != '' }} # Avoid binarizing on forks (exposed secrets)
+      with:
+        toolsUrl: ${{ secrets.FTP_SERVER }}/tools/arma3tools.zip
     - name: Setup HEMTT
       uses: arma-actions/hemtt@v1
     - name: Run HEMTT build
@@ -46,8 +53,8 @@ jobs:
     - name: Rename build folder
       run: mv .hemttout/build .hemttout/@acre2
     - name: Upload Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
-        name: acre2-${{ github.sha }}-nobin
+        name: acre2-${{ github.sha }}
         path: .hemttout/@*
         include-hidden-files: true # Because .hemttout is a hidden directory

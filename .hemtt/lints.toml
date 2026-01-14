@@ -1,6 +1,9 @@
 [config.file_type]
 enabled = false
 
+[stringtables.usage]
+options.ignore_unused = true
+
 [sqf.banned_commands]
 options.ignore = [
     "addPublicVariableEventHandler", # Alt syntax is broken, we are using main syntax

@@ -17,7 +17,13 @@
  */
 
 params ["_vehicle", "_unit"];
-TRACE_2("enterVehicle",typeOf _vehicle,typeOf _unit);
+TRACE_2("enterVehicle",_vehicle,_unit);
+
+(_unit getVariable [QGVAR(vehicleInfantryPhone), [objNull, INTERCOM_DISCONNECTED]]) params ["_vehicleInfantryPhone", "_infantryPhoneNetwork"];
+if (!isNull _vehicleInfantryPhone) then {
+    // Disconnect infantry phone
+    [_vehicleInfantryPhone, _unit, 0, _infantryPhoneNetwork] call FUNC(updateInfantryPhoneStatus);
+};
 
 if ((_unit == _vehicle) || {GVAR(intercomPFH) > -1}) then {
     [GVAR(intercomPFH)] call CBA_fnc_removePerFrameHandler;
