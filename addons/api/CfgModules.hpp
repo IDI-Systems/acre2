@@ -6,7 +6,9 @@ class CfgFactionClasses {
 };
 class CfgVehicles {
     class Logic;
-    class Module_F: Logic { class ArgumentsBaseUnits { class Units; }; class ModuleDescription { class AnyBrain; }; };
+    class Module_F: Logic {
+        class ModuleDescription;
+    };
 
     class GVAR(basicMissionSetup): Module_F {
         scope = 2;

@@ -3,81 +3,81 @@
     <Package name="sys_gestures">
         <Key ID="STR_ACRE_sys_gestures_category">
             <English>ACRE2 Gestures</English>
-            <German>ACRE2 Gesten</German>
-            <Italian>ACRE2 Gesti</Italian>
+            <Czech>Gesta ACRE2</Czech>
             <French>ACRE2 Gestuelle</French>
             <Spanish>ACRE2 Gestos</Spanish>
-            <Turkish>ACRE2 El Hareketleri</Turkish>
+            <Italian>ACRE2 Gesti</Italian>
             <Portuguese>ACRE2 Gestos</Portuguese>
+            <German>ACRE2 Gesten</German>
             <Japanese>ACRE2 ジェスチャー</Japanese>
             <Chinesesimp>ACRE2 动作</Chinesesimp>
-            <Czech>Gesta ACRE2</Czech>
+            <Turkish>ACRE2 El Hareketleri</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled">
             <English>Enable</English>
-            <German>Aktivieren</German>
-            <Italian>Attiva</Italian>
+            <Czech>Povolit</Czech>
             <French>Activée</French>
             <Spanish>Activos</Spanish>
-            <Turkish>Aktifleştir</Turkish>
+            <Italian>Attiva</Italian>
             <Portuguese>Ativo</Portuguese>
+            <German>Aktivieren</German>
             <Japanese>有効化</Japanese>
             <Chinesesimp>启用</Chinesesimp>
-            <Czech>Povolit</Czech>
+            <Turkish>Aktifleştir</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_enabled_description">
             <English>Animate players using radios.</English>
-            <German>Animiere Spieler beim Funken</German>
-            <Italian>Anima i giocatori che usano le radio</Italian>
+            <Czech>Animujte hráče pomocí rádií.</Czech>
             <French>L'avatar des joueurs est animé lorsqu'ils parlent à la radio.</French>
             <Spanish>Animación de los jugadores al usar la radio</Spanish>
-            <Turkish>Telsiz kullanan oyunculara animasyonlar ekle</Turkish>
+            <Italian>Anima i giocatori che usano le radio</Italian>
             <Portuguese>Animar jogadores usando rádios</Portuguese>
+            <German>Animiere Spieler beim Funken</German>
             <Japanese>ラジオを使うプレーヤーにアニメーションさせます</Japanese>
             <Chinesesimp>玩家使用无线电时启用手部动作</Chinesesimp>
-            <Czech>Animujte hráče pomocí rádií.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gestures_stopADS">
-            <English>Prevent Aim Down Sights</English>
-            <German>Verhindern vom Anvisieren</German>
-            <Italian>Impedisci l'avvistamento</Italian>
-            <French>Empêcher la prise de visée</French>
-            <Spanish>Prevenir apuntado al usar la radio</Spanish>
-            <Turkish>Nişan Almayı Engelle</Turkish>
-            <Portuguese>Impedir mira (ADS)</Portuguese>
-            <Japanese>照準を妨げる</Japanese>
-            <Chinesesimp>禁止瞄准</Chinesesimp>
-            <Czech>Zabraňte zaměřování mířidel</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_gestures_stopADS_description">
-            <English>Keying radios will prevent aiming down sights.</English>
-            <German>Verhindert das Anvisieren während ein Funkgerät bedient wird.</German>
-            <Italian>Impedisce l'utilizzo del mirino quando si trasmette con una radio.</Italian>
-            <French>Les joueurs ne peuvent plus utiliser les organes de visée de leurs armes lorsqu'ils parlent à la radio.</French>
-            <Spanish>No permite a los jugadores usar la mira de sus armas al usar la radio</Spanish>
-            <Turkish>Telsiz kullanırken nişan almayı engeller</Turkish>
-            <Portuguese>Usar rádios irá impedir a mira</Portuguese>
-            <Japanese>無線機のキーを押すと照準を合わせることができなくなります。</Japanese>
-            <Chinesesimp>使用无线电时禁止瞄准</Chinesesimp>
-            <Czech>Klíčování rádií zabrání míření dolů.</Czech>
+            <Turkish>Telsiz kullanan oyunculara animasyonlar ekle</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_showConnectorRopes">
             <English>Show Connector Wires</English>
-            <German>Zeige verbindungskabel</German>
-            <Italian>Mostra cavi di collegamento</Italian>
-            <French>Afficher les câbles de connexion</French>
-            <Chinesesimp>显示连接线缆</Chinesesimp>
-            <Japanese>通信ケーブルワイヤーの表示</Japanese>
             <Czech>Zobrazit vodiče konektoru</Czech>
+            <French>Afficher les câbles de connexion</French>
+            <Italian>Mostra cavi di collegamento</Italian>
+            <German>Zeige verbindungskabel</German>
+            <Japanese>通信ケーブルワイヤーの表示</Japanese>
+            <Chinesesimp>显示连接线缆</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_showConnectorRopes_description">
             <English>Connections to infantry phones, GSAs and shared radios will be visualized with connector wires.</English>
-            <German>Verbindungen zu Gegensprechanlage, BBA und Geteilten Funkgeräten werden mit Kabeln visualisiert.</German>
-            <Italian>Connessioni a telefoni di fanteria, antenne a pavimento e radio condivise verranno visualizzate con cavi.</Italian>
-            <French>Les connexions aux téléphones de l'infanterie, aux GSA et aux radios partagées seront visualisées à l'aide de fils de connexion.</French>
-            <Chinesesimp>使用车辆电话, 地钉天线, 共享无线电时显示连接线缆</Chinesesimp>
-            <Japanese>車外電話機、地上アンテナ、共有無線への接続をケーブルワイヤーで視覚化します。</Japanese>
             <Czech>Připojení k pěchotním telefonům, GSA a sdíleným rádiím bude vizualizováno pomocí konektorových vodičů.</Czech>
+            <French>Les connexions aux téléphones de l'infanterie, aux GSA et aux radios partagées seront visualisées à l'aide de fils de connexion.</French>
+            <Italian>Connessioni a telefoni di fanteria, antenne a pavimento e radio condivise verranno visualizzate con cavi.</Italian>
+            <German>Verbindungen zu Gegensprechanlage, BBA und Geteilten Funkgeräten werden mit Kabeln visualisiert.</German>
+            <Japanese>車外電話機、地上アンテナ、共有無線への接続をケーブルワイヤーで視覚化します。</Japanese>
+            <Chinesesimp>使用车辆电话, 地钉天线, 共享无线电时显示连接线缆</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_gestures_stopADS">
+            <English>Prevent Aim Down Sights</English>
+            <Czech>Zabraňte zaměřování mířidel</Czech>
+            <French>Empêcher la prise de visée</French>
+            <Spanish>Prevenir apuntado al usar la radio</Spanish>
+            <Italian>Impedisci l'avvistamento</Italian>
+            <Portuguese>Impedir mira (ADS)</Portuguese>
+            <German>Verhindern vom Anvisieren</German>
+            <Japanese>照準を妨げる</Japanese>
+            <Chinesesimp>禁止瞄准</Chinesesimp>
+            <Turkish>Nişan Almayı Engelle</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gestures_stopADS_description">
+            <English>Keying radios will prevent aiming down sights.</English>
+            <Czech>Klíčování rádií zabrání míření dolů.</Czech>
+            <French>Les joueurs ne peuvent plus utiliser les organes de visée de leurs armes lorsqu'ils parlent à la radio.</French>
+            <Spanish>No permite a los jugadores usar la mira de sus armas al usar la radio</Spanish>
+            <Italian>Impedisce l'utilizzo del mirino quando si trasmette con una radio.</Italian>
+            <Portuguese>Usar rádios irá impedir a mira</Portuguese>
+            <German>Verhindert das Anvisieren während ein Funkgerät bedient wird.</German>
+            <Japanese>無線機のキーを押すと照準を合わせることができなくなります。</Japanese>
+            <Chinesesimp>使用无线电时禁止瞄准</Chinesesimp>
+            <Turkish>Telsiz kullanırken nişan almayı engeller</Turkish>
         </Key>
     </Package>
 </Project>

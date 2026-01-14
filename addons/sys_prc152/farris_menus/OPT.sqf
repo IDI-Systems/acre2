@@ -64,6 +64,7 @@ GVAR(OPT) = ["OPT", "OPT", "OPT",
     MENUTYPE_LIST,
     [
         // TODO: Locks all but next. 1,3,7,9 series unlocks. Display "Keypad is Locked"
+        
         [nil, "LOCK KEYPAD", "", MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ],
         [nil, "RADIO OPTIONS", "", MENU_ACTION_SUBMENU, ["RADIO_OPTIONS"], nil ],
         [nil, "WAVEFORM OPTIONS", "", MENU_ACTION_SUBMENU, ["ERROR_NOENTRY"], nil ],

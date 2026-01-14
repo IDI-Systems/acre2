@@ -17,35 +17,23 @@ on:
 jobs:
   build:
     if: github.repository == 'IDI-Systems/acre2' && ! contains(github.event.head_commit.message, '[ci skip]')
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     outputs:
       VERSION: ${{ env.VERSION }}
       SHA_SHORT: ${{ env.SHA_SHORT }}
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
+    - name: Setup Arma 3 Tools # contains only Binarize
+      uses: arma-actions/arma3-tools@master
+      with:
+        toolsUrl: ${{ secrets.FTP_SERVER }}/tools/arma3tools.zip
     - name: Setup HEMTT
       uses: arma-actions/hemtt@v1
-    - name: Setup Binarize
+    - name: Prepare Metadata
       run: |
-        C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
-        Expand-Archive acre2_tools.zip -DestinationPath ci
-        echo "Check Binarize: $(Test-Path .\\ci\\binarize\\binarize_x64.exe)"
-        hemtt --version
-        echo "Install Binarize dependencies"
-        cp .\ci\binarize\X3DAudio1_7.dll,.\ci\binarize\XAPOFX1_5.dll C:\Windows\System32\
-        echo "::group::Set Binarize registry path"
-        New-Item "HKCU:\\Software\\Bohemia Interactive\\binarize" -Force | New-ItemProperty -Name path -Value "${{ github.workspace }}\ci\binarize"
-        echo "::endgroup::"
-        $version = Select-String -Path "addons\\main\\script_version.hpp" -Pattern '#define (MAJOR|MINOR|PATCHLVL|BUILD) (\d+)' | ForEach-Object { $_.Matches.Groups[2].Value } | Join-String -Separator "."
-        echo "VERSION=$version" >> $env:GITHUB_ENV
-        echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $env:GITHUB_ENV
-    - name: Test Binarize
-      run: |
-        echo "::group::Run Binarize without arguments (look for missing DLLs)"
-        ./ci/binarize/binarize_x64.exe || true  # binarize exits with 1 if no file given
-        echo "::endgroup::"
-      shell: bash  # outputs missing dll information
+        echo "VERSION=$(hemtt value project.version)" >> $GITHUB_ENV
+        echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
     - name: Build (HEMTT)
       run: |
         echo "ACRE2 v${{ env.VERSION }} (${{ env.SHA_SHORT }})"
@@ -53,7 +41,7 @@ jobs:
     - name: Rename build folder
       run: mv .hemttout/release .hemttout/@acre2
     - name: Upload Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: acre2
         path: .hemttout/@*
@@ -70,7 +58,7 @@ jobs:
       DXSDK_DIR: "${{ github.workspace }}\\ci\\directx-sdk"  # CMake FindDirectX
     steps:
     - name: Checkout the source code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Setup BattlEye and DirectX SDK
       run: |
         C:\msys64\usr\bin\wget.exe ${{ secrets.FTP_SERVER }}/tools/acre2_tools.zip --user ${{ secrets.FTP_USERNAME }} --password ${{ secrets.FTP_PASSWORD }} -q
@@ -96,7 +84,7 @@ jobs:
       run: |
         .\ci\battleye\signtool.exe sign /f .\ci\battleye\idi-systems.pfx /p ${{ secrets.BE_CRED_PASSWORD }} /t http://timestamp.digicert.com *.dll
     - name: Upload Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: acre2-extensions-${{ matrix.arch }}
         path: |
@@ -112,7 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -129,7 +117,7 @@ jobs:
         echo "::endgroup::"
         ls *.zip
     - name: Upload to FTP (ACRE2)
-      uses: appleboy/scp-action@v0.1.3
+      uses: appleboy/scp-action@v1.0.0
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -137,7 +125,7 @@ jobs:
         source: "acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip"
         target: "${{ secrets.FTP_SERVER }}/test/${{ github.event.inputs.path }}"
     - name: Upload to FTP (Symbols)
-      uses: appleboy/scp-action@v0.1.3
+      uses: appleboy/scp-action@v1.0.0
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -160,7 +148,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -177,7 +165,7 @@ jobs:
         echo "::endgroup::"
         ls *.zip
     - name: Upload to FTP (ACRE2)
-      uses: appleboy/scp-action@v0.1.3
+      uses: appleboy/scp-action@v1.0.0
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -185,7 +173,7 @@ jobs:
         source: "acre2_${{ needs.build.outputs.VERSION }}.zip"
         target: "${{ secrets.FTP_SERVER }}/dev"
     - name: Upload to FTP (Symbols)
-      uses: appleboy/scp-action@v0.1.3
+      uses: appleboy/scp-action@v1.0.0
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -218,7 +206,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Download Artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
     - name: Prepare Archives
       run: |
         echo "Organize"
@@ -235,7 +223,7 @@ jobs:
         echo "::endgroup::"
         ls *.zip
     - name: Upload to FTP (ACRE2)
-      uses: appleboy/scp-action@v0.1.3
+      uses: appleboy/scp-action@v1.0.0
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -243,7 +231,7 @@ jobs:
         source: "acre2_${{ needs.build.outputs.VERSION }}.zip"
         target: "${{ secrets.FTP_SERVER }}/release"
     - name: Upload to FTP (Symbols)
-      uses: appleboy/scp-action@v0.1.3
+      uses: appleboy/scp-action@v1.0.0
       with:
         host: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
@@ -262,7 +250,7 @@ jobs:
         STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
     - name: Upload to GitHub
       id: github_release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       with:
         draft: true
         files: acre2_${{ needs.build.outputs.VERSION }}.zip

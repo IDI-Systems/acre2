@@ -38,8 +38,6 @@ class SPE_Tank_base: Tank_F {
             intercom[] = {"intercom_1"}; // list of intercoms that can talk over the radio even if not a slot in allowedPositions
         };
     };
-
-    class Turrets;
 };
 
     // American

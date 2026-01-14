@@ -1,260 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_godmode">
-        <Key ID="STR_ACRE_sys_godmode_godMode">
-            <English>God Mode</English>
-            <German>Gott Modus</German>
-            <Italian>Modalità Dio</Italian>
-            <Spanish>Modo Dios</Spanish>
-            <French>Mode Dieu</French>
-            <Turkish>Tanrı Modu</Turkish>
-            <Portuguese>Modo Deus</Portuguese>
-            <Japanese>Godモード</Japanese>
-            <Chinesesimp>宙斯通话</Chinesesimp>
-            <Czech>Božský režim</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_currentChannel_display">
-            <English>Current Channel</English>
-            <German>Aktueller Kanal</German>
-            <Italian>Canale Corrente</Italian>
-            <Spanish>Canal actual</Spanish>
-            <French>Canal actuel</French>
-            <Turkish>Şu Anki Kanal</Turkish>
-            <Portuguese>Canal atual</Portuguese>
-            <Japanese>現在のチャンネル</Japanese>
-            <Chinesesimp>当前频道</Chinesesimp>
-            <Czech>Aktuální kanál</Czech>
-        </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey">
             <English>PTT - Current Chat Channel</English>
-            <German>PTT - Aktueller Chat-Kanal</German>
-            <Italian>PTT - Canale di chat corrente</Italian>
-            <Spanish>PTT - Canal actual de chat</Spanish>
+            <Czech>PTT - Aktuální chatovací kanál</Czech>
             <French>Transmettre au canal textuel</French>
-            <Turkish>Bas-Konuş - Şu anki kanal</Turkish>
+            <Spanish>PTT - Canal actual de chat</Spanish>
+            <Italian>PTT - Canale di chat corrente</Italian>
             <Portuguese>PTT - Canal atual de chat</Portuguese>
+            <German>PTT - Aktueller Chat-Kanal</German>
             <Japanese>PTT - 現在のチャットチャンネル</Japanese>
             <Chinesesimp>按键通话 - 当前聊天频道</Chinesesimp>
-            <Czech>PTT - Aktuální chatovací kanál</Czech>
+            <Turkish>Bas-Konuş - Şu anki kanal</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_currentChannelPttKey_description">
             <English>PTT to send a message to all units matching the current chat channel.</English>
-            <German>PTT um eine Nachricht an alle Einheiten im aktuellen Chat Kanal zu senden.</German>
-            <Italian>PTT per inviare un messaggio a tutte le unità sul canale di chat corrente.</Italian>
-            <Spanish>PTT para enviar un mensaje a todas las unidades en el canal actual de chat.</Spanish>
+            <Czech>PTT pro odeslání zprávy všem jednotkám odpovídajícím aktuálnímu chatovacímu kanálu.</Czech>
             <French>Transmission d'un message à toutes les unités étant sur le même canal textuel (chat).</French>
-            <Turkish>Bas-Konuş ile şu anki kanalla eşleşen bütün oyunculara mesaj ilet</Turkish>
+            <Spanish>PTT para enviar un mensaje a todas las unidades en el canal actual de chat.</Spanish>
+            <Italian>PTT per inviare un messaggio a tutte le unità sul canale di chat corrente.</Italian>
             <Portuguese>PTT para mandar uma mensagem à todas as unidades com o mesmo canal de chat atual</Portuguese>
+            <German>PTT um eine Nachricht an alle Einheiten im aktuellen Chat Kanal zu senden.</German>
             <Japanese>PTTの使用時に、 現在のチャットチャンネルに一致するすべてのユニットにメッセージを送信します。</Japanese>
             <Chinesesimp>向所有位于当前聊天频道内的玩家发送语音的按键</Chinesesimp>
-            <Czech>PTT pro odeslání zprávy všem jednotkám odpovídajícím aktuálnímu chatovacímu kanálu.</Czech>
+            <Turkish>Bas-Konuş ile şu anki kanalla eşleşen bütün oyunculara mesaj ilet</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_group1">
-            <English>Group 1</English>
-            <German>Gruppe 1</German>
-            <Italian>Gruppo 1</Italian>
-            <Spanish>Grupo 1</Spanish>
-            <French>Groupe 1</French>
-            <Turkish>Grup 1</Turkish>
-            <Portuguese>Grupo 1</Portuguese>
-            <Japanese>グループ1</Japanese>
-            <Chinesesimp>分组1</Chinesesimp>
-            <Czech>Skupina 1</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_group1PttKey">
-            <English>PTT - Group 1</English>
-            <German>PTT - Gruppe 1</German>
-            <Italian>PTT - Gruppo 1</Italian>
-            <Spanish>PTT - Grupo 1</Spanish>
-            <French>Transmettre au groupe 1</French>
-            <Turkish>Bas-Konuş - Grup 1</Turkish>
-            <Portuguese>PTT - Grupo 1</Portuguese>
-            <Japanese>PTT - グループ1</Japanese>
-            <Chinesesimp>分组1 - 按键通话</Chinesesimp>
-            <Czech>PTT - Skupina 1</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_group1PttKey_description">
-            <English>PTT to send a message to all units in the Group 1 preset.</English>
-            <German>PTT um eine Nachricht an alle Einheiten der voreingestellten Gruppe 1 zu senden.</German>
-            <Italian>PTT per inviare un messaggio a tutte le unità nel preset Gruppo 1.</Italian>
-            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 1.</Spanish>
-            <French>Transmission d'un message à toutes les unités du groupe 1.</French>
-            <Turkish>Bas-Konuş ile Grup 1 setindeki bütün oyunculara mesaj ilet</Turkish>
-            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 1</Portuguese>
-            <Japanese>PTTの使用時に、 グループ1プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
-            <Chinesesimp>向所有位于分组1内的玩家发送语音的按键</Chinesesimp>
-            <Czech>PTT pro odeslání zprávy všem jednotkám v předvolbě Skupiny 1.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_group2">
-            <English>Group 2</English>
-            <German>Gruppe 2</German>
-            <Italian>Gruppo 1</Italian>
-            <Spanish>Grupo 2</Spanish>
-            <French>Groupe 2</French>
-            <Turkish>Grup 2</Turkish>
-            <Portuguese>Grupo 2</Portuguese>
-            <Japanese>グループ2</Japanese>
-            <Chinesesimp>分组2</Chinesesimp>
-            <Czech>Skupina 2</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_group2PttKey">
-            <English>PTT - Group 2</English>
-            <German>PTT - Gruppe 2</German>
-            <Italian>PTT - Gruppo 2</Italian>
-            <Spanish>PTT - Grupo 2</Spanish>
-            <French>Transmettre au groupe 2</French>
-            <Turkish>Bas-Konuş - Grup 2</Turkish>
-            <Portuguese>PTT - Grupo 2</Portuguese>
-            <Japanese>PTT - グループ2</Japanese>
-            <Chinesesimp>分组2 - 按键通话</Chinesesimp>
-            <Czech>PTT - Skupina 2</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_group2PttKey_description">
-            <English>PTT to send a message to all units in the Group 2 preset.</English>
-            <German>PTT um eine Nachricht an alle Einheiten der voreingestellten Gruppe 2 zu senden.</German>
-            <Italian>PTT per inviare un messaggio a tutte le unità nel preset Gruppo 2.</Italian>
-            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 2.</Spanish>
-            <French>Transmission d'un message à toutes les unités du groupe 2.</French>
-            <Turkish>Bas-Konuş ile Grup 2 setindeki bütün oyunculara mesaj ilet</Turkish>
-            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 2</Portuguese>
-            <Japanese>PTTの使用時に、 グループ2プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
-            <Chinesesimp>向所有位于分组2内的玩家发送语音的按键</Chinesesimp>
-            <Czech>PTT pro odeslání zprávy všem jednotkám v předvolbě Skupiny 2.</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_group3">
-            <English>Group 3</English>
-            <German>Gruppe 3</German>
-            <Italian>Gruppo 3</Italian>
-            <Spanish>Grupo 3</Spanish>
-            <French>Groupe 3</French>
-            <Turkish>Grup 3</Turkish>
-            <Portuguese>Grupo 3</Portuguese>
-            <Japanese>グループ3</Japanese>
-            <Chinesesimp>分组3</Chinesesimp>
-            <Czech>Skupina 3</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_group3PttKey">
-            <English>PTT - Group 3</English>
-            <German>PTT - Gruppe 3</German>
-            <Italian>PTT - Gruppo 3</Italian>
-            <Spanish>PTT - Grupo 3</Spanish>
-            <French>Transmettre au groupe 3</French>
-            <Turkish>Bas-Konuş - Grup 3</Turkish>
-            <Portuguese>PTT - Grupo 3</Portuguese>
-            <Japanese>PTT - グループ3</Japanese>
-            <Chinesesimp>分组3 - 按键通话</Chinesesimp>
-            <Czech>PTT - Skupina 3</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_godmode_group3PttKey_description">
-            <English>PTT to send a message to all units in the Group 3 preset.</English>
-            <German>PTT um eine Nachricht an alle Einheiten der voreingestellten Gruppe 3 zu senden.</German>
-            <Italian>PTT per inviare un messaggio a tutte le unità nel preset Gruppo 3.</Italian>
-            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 3.</Spanish>
-            <French>Transmission d'un message à toutes les unités du groupe 3.</French>
-            <Turkish>Bas-Konuş ile Grup 3 setindeki bütün oyunculara mesaj ilet</Turkish>
-            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 3</Portuguese>
-            <Japanese>PTTの使用時に、 グループ3プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
-            <Chinesesimp>向所有位于分组3内的玩家发送语音的按键</Chinesesimp>
-            <Czech>PTT pro odeslání zprávy všem jednotkám v předvolbě Skupiny 3.</Czech>
+        <Key ID="STR_ACRE_sys_godmode_currentChannel_display">
+            <English>Current Channel</English>
+            <Czech>Aktuální kanál</Czech>
+            <French>Canal actuel</French>
+            <Spanish>Canal actual</Spanish>
+            <Italian>Canale Corrente</Italian>
+            <Portuguese>Canal atual</Portuguese>
+            <German>Aktueller Kanal</German>
+            <Japanese>現在のチャンネル</Japanese>
+            <Chinesesimp>当前频道</Chinesesimp>
+            <Turkish>Şu Anki Kanal</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_god">
             <English>God</English>
-            <German>Gott</German>
-            <Italian>Dio</Italian>
+            <Czech>Bůh</Czech>
             <French>Dieu</French>
-            <Turkish>Tanrı</Turkish>
+            <Italian>Dio</Italian>
             <Portuguese>Deus</Portuguese>
+            <German>Gott</German>
             <Japanese>God</Japanese>
             <Chinesesimp>宙斯</Chinesesimp>
-            <Czech>Bůh</Czech>
+            <Turkish>Tanrı</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
-            <English>Receive Notification</English>
-            <German>Empfangsbenachrichtigung</German>
-            <Italian>Ricevi messaggio</Italian>
-            <French>Notifications de réception</French>
-            <Turkish>Mesaj Al</Turkish>
-            <Portuguese>Notificação de Recepção</Portuguese>
-            <Japanese>受信通知</Japanese>
-            <Chinesesimp>接受提示</Chinesesimp>
-            <Czech>Přijmout oznámení</Czech>
+        <Key ID="STR_ACRE_sys_godmode_godMode">
+            <English>God Mode</English>
+            <Czech>Božský režim</Czech>
+            <French>Mode Dieu</French>
+            <Spanish>Modo Dios</Spanish>
+            <Italian>Modalità Dio</Italian>
+            <Portuguese>Modo Deus</Portuguese>
+            <German>Gott Modus</German>
+            <Japanese>Godモード</Japanese>
+            <Chinesesimp>宙斯通话</Chinesesimp>
+            <Turkish>Tanrı Modu</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
-            <English>Transmit Notification</English>
-            <German>Sendebenachrichtigung</German>
-            <Italian>Invia messaggio</Italian>
-            <French>Notifications d'émission</French>
-            <Turkish>Mesaj İlet</Turkish>
-            <Portuguese>Notificação de Transmissão</Portuguese>
-            <Japanese>送信通知</Japanese>
-            <Chinesesimp>发话提示</Chinesesimp>
-            <Czech>Odeslat oznámení</Czech>
+        <Key ID="STR_ACRE_sys_godmode_group1">
+            <English>Group 1</English>
+            <Czech>Skupina 1</Czech>
+            <French>Groupe 1</French>
+            <Spanish>Grupo 1</Spanish>
+            <Italian>Gruppo 1</Italian>
+            <Portuguese>Grupo 1</Portuguese>
+            <German>Gruppe 1</German>
+            <Japanese>グループ1</Japanese>
+            <Chinesesimp>分组1</Chinesesimp>
+            <Turkish>Grup 1</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_rxNotificationColor_displayName">
-            <English>Receive Color</English>
-            <German>Empfange Farbe</German>
-            <Italian>Ricevi colore</Italian>
-            <French>Couleur - Réception</French>
-            <Turkish>Alınan Mesaj Rengi</Turkish>
-            <Portuguese>Cor: Recepção</Portuguese>
-            <Japanese>受信通知の表示色</Japanese>
-            <Chinesesimp>接受颜色</Chinesesimp>
-            <Czech>Přijmout barvu</Czech>
+        <Key ID="STR_ACRE_sys_godmode_group1PttKey">
+            <English>PTT - Group 1</English>
+            <Czech>PTT - Skupina 1</Czech>
+            <French>Transmettre au groupe 1</French>
+            <Spanish>PTT - Grupo 1</Spanish>
+            <Italian>PTT - Gruppo 1</Italian>
+            <Portuguese>PTT - Grupo 1</Portuguese>
+            <German>PTT - Gruppe 1</German>
+            <Japanese>PTT - グループ1</Japanese>
+            <Chinesesimp>分组1 - 按键通话</Chinesesimp>
+            <Turkish>Bas-Konuş - Grup 1</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
-            <English>Current Chat Channel Transmit Color</English>
-            <German>Aktueller Chat Kanal Sende Farbe</German>
-            <Italian>Colore di invio sul canale di chat corrente</Italian>
-            <French>Couleur - Transmission canal textuel</French>
-            <Turkish>Şu Anki Kanal İletim Rengi</Turkish>
-            <Portuguese>Cor: Texto de canal de transmissão</Portuguese>
-            <Japanese>現在のチャットチャンネルへの送信の表示色</Japanese>
-            <Chinesesimp>当前聊天频道颜色</Chinesesimp>
-            <Czech>Barva vysílání aktuálního chatovacího kanálu</Czech>
+        <Key ID="STR_ACRE_sys_godmode_group1PttKey_description">
+            <English>PTT to send a message to all units in the Group 1 preset.</English>
+            <Czech>PTT pro odeslání zprávy všem jednotkám v předvolbě Skupiny 1.</Czech>
+            <French>Transmission d'un message à toutes les unités du groupe 1.</French>
+            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 1.</Spanish>
+            <Italian>PTT per inviare un messaggio a tutte le unità nel preset Gruppo 1.</Italian>
+            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 1</Portuguese>
+            <German>PTT um eine Nachricht an alle Einheiten der voreingestellten Gruppe 1 zu senden.</German>
+            <Japanese>PTTの使用時に、 グループ1プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
+            <Chinesesimp>向所有位于分组1内的玩家发送语音的按键</Chinesesimp>
+            <Turkish>Bas-Konuş ile Grup 1 setindeki bütün oyunculara mesaj ilet</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_txNotificationGroup1Color_displayName">
-            <English>Group 1 Transmit Color</English>
-            <German>Gruppe 1 Sende Farbe</German>
-            <Italian>Colore invio gruppo 1</Italian>
-            <French>Couleur - Transmission groupe 1</French>
-            <Turkish>Grup 1 İletim Rengi</Turkish>
-            <Portuguese>Cor: Grupo de transmissão 1</Portuguese>
-            <Japanese>グループ1への送信の表示色</Japanese>
-            <Chinesesimp>分组1颜色</Chinesesimp>
-            <Czech>Skupina 1 Vysílat barvě</Czech>
+        <Key ID="STR_ACRE_sys_godmode_group2">
+            <English>Group 2</English>
+            <Czech>Skupina 2</Czech>
+            <French>Groupe 2</French>
+            <Spanish>Grupo 2</Spanish>
+            <Italian>Gruppo 1</Italian>
+            <Portuguese>Grupo 2</Portuguese>
+            <German>Gruppe 2</German>
+            <Japanese>グループ2</Japanese>
+            <Chinesesimp>分组2</Chinesesimp>
+            <Turkish>Grup 2</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_txNotificationGroup2Color_displayName">
-            <English>Group 2 Transmit Color</English>
-            <German>Gruppe 2 Sende Farbe</German>
-            <Italian>Colore invio gruppo 2</Italian>
-            <French>Couleur - Transmission groupe 2</French>
-            <Turkish>Grup 2 İletim Rengi</Turkish>
-            <Portuguese>Cor: Grupo de transmissão 2</Portuguese>
-            <Japanese>グループ2への送信の表示色</Japanese>
-            <Chinesesimp>分组2颜色</Chinesesimp>
-            <Czech>Skupina 2 Vysílat barvě</Czech>
+        <Key ID="STR_ACRE_sys_godmode_group2PttKey">
+            <English>PTT - Group 2</English>
+            <Czech>PTT - Skupina 2</Czech>
+            <French>Transmettre au groupe 2</French>
+            <Spanish>PTT - Grupo 2</Spanish>
+            <Italian>PTT - Gruppo 2</Italian>
+            <Portuguese>PTT - Grupo 2</Portuguese>
+            <German>PTT - Gruppe 2</German>
+            <Japanese>PTT - グループ2</Japanese>
+            <Chinesesimp>分组2 - 按键通话</Chinesesimp>
+            <Turkish>Bas-Konuş - Grup 2</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_godmode_txNotificationGroup3Color_displayName">
-            <English>Group 3 Transmit Color</English>
-            <German>Gruppe 3 Sende Farbe</German>
-            <Italian>Colore invio gruppo 3</Italian>
-            <French>Couleur - Transmission groupe 3</French>
-            <Turkish>Grup 3 İletim Rengi</Turkish>
-            <Portuguese>Cor: Grupo de transmissão 3</Portuguese>
-            <Japanese>グループ3への送信の表示色</Japanese>
-            <Chinesesimp>分组3颜色</Chinesesimp>
-            <Czech>Group 3 Broadcast color</Czech>
+        <Key ID="STR_ACRE_sys_godmode_group2PttKey_description">
+            <English>PTT to send a message to all units in the Group 2 preset.</English>
+            <Czech>PTT pro odeslání zprávy všem jednotkám v předvolbě Skupiny 2.</Czech>
+            <French>Transmission d'un message à toutes les unités du groupe 2.</French>
+            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 2.</Spanish>
+            <Italian>PTT per inviare un messaggio a tutte le unità nel preset Gruppo 2.</Italian>
+            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 2</Portuguese>
+            <German>PTT um eine Nachricht an alle Einheiten der voreingestellten Gruppe 2 zu senden.</German>
+            <Japanese>PTTの使用時に、 グループ2プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
+            <Chinesesimp>向所有位于分组2内的玩家发送语音的按键</Chinesesimp>
+            <Turkish>Bas-Konuş ile Grup 2 setindeki bütün oyunculara mesaj ilet</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group3">
+            <English>Group 3</English>
+            <Czech>Skupina 3</Czech>
+            <French>Groupe 3</French>
+            <Spanish>Grupo 3</Spanish>
+            <Italian>Gruppo 3</Italian>
+            <Portuguese>Grupo 3</Portuguese>
+            <German>Gruppe 3</German>
+            <Japanese>グループ3</Japanese>
+            <Chinesesimp>分组3</Chinesesimp>
+            <Turkish>Grup 3</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group3PttKey">
+            <English>PTT - Group 3</English>
+            <Czech>PTT - Skupina 3</Czech>
+            <French>Transmettre au groupe 3</French>
+            <Spanish>PTT - Grupo 3</Spanish>
+            <Italian>PTT - Gruppo 3</Italian>
+            <Portuguese>PTT - Grupo 3</Portuguese>
+            <German>PTT - Gruppe 3</German>
+            <Japanese>PTT - グループ3</Japanese>
+            <Chinesesimp>分组3 - 按键通话</Chinesesimp>
+            <Turkish>Bas-Konuş - Grup 3</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_group3PttKey_description">
+            <English>PTT to send a message to all units in the Group 3 preset.</English>
+            <Czech>PTT pro odeslání zprávy všem jednotkám v předvolbě Skupiny 3.</Czech>
+            <French>Transmission d'un message à toutes les unités du groupe 3.</French>
+            <Spanish>PTT para enviar un mensaje a todas las unidades configuradas en el grupo 3.</Spanish>
+            <Italian>PTT per inviare un messaggio a tutte le unità nel preset Gruppo 3.</Italian>
+            <Portuguese>PTT para enviar uma mensagem à todas as unidades configuradas no grupo 3</Portuguese>
+            <German>PTT um eine Nachricht an alle Einheiten der voreingestellten Gruppe 3 zu senden.</German>
+            <Japanese>PTTの使用時に、 グループ3プリセット内のすべてのユニットにメッセージを送信します。</Japanese>
+            <Chinesesimp>向所有位于分组3内的玩家发送语音的按键</Chinesesimp>
+            <Turkish>Bas-Konuş ile Grup 3 setindeki bütün oyunculara mesaj ilet</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_noTargets">
             <English>No units in God group!</English>
-            <German>Keine Einheiten in der Gruppe von Gott!</German>
-            <Italian>Nessuna unità nel gruppo di Dio!</Italian>
+            <Czech>Žádné jednotky v Bohově skupině!</Czech>
             <French>Aucune unité dans le groupe Dieu !</French>
-            <Turkish>Tanrı Grubunda Hiçbir Birim Yok!</Turkish>
+            <Italian>Nessuna unità nel gruppo di Dio!</Italian>
             <Portuguese>Sem unidades no grupo de Deus!</Portuguese>
+            <German>Keine Einheiten in der Gruppe von Gott!</German>
             <Japanese>Godグループにユニットがいません!</Japanese>
             <Chinesesimp>分组中没有玩家!</Chinesesimp>
-            <Czech>Žádné jednotky v Bohově skupině!</Czech>
+            <Turkish>Tanrı Grubunda Hiçbir Birim Yok!</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_rxNotificationColor_displayName">
+            <English>Receive Color</English>
+            <Czech>Přijmout barvu</Czech>
+            <French>Couleur - Réception</French>
+            <Italian>Ricevi colore</Italian>
+            <Portuguese>Cor: Recepção</Portuguese>
+            <German>Empfange Farbe</German>
+            <Japanese>受信通知の表示色</Japanese>
+            <Chinesesimp>接受颜色</Chinesesimp>
+            <Turkish>Alınan Mesaj Rengi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
+            <English>Receive Notification</English>
+            <Czech>Přijmout oznámení</Czech>
+            <French>Notifications de réception</French>
+            <Italian>Ricevi messaggio</Italian>
+            <Portuguese>Notificação de Recepção</Portuguese>
+            <German>Empfangsbenachrichtigung</German>
+            <Japanese>受信通知</Japanese>
+            <Chinesesimp>接受提示</Chinesesimp>
+            <Turkish>Mesaj Al</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
+            <English>Current Chat Channel Transmit Color</English>
+            <Czech>Barva vysílání aktuálního chatovacího kanálu</Czech>
+            <French>Couleur - Transmission canal textuel</French>
+            <Italian>Colore di invio sul canale di chat corrente</Italian>
+            <Portuguese>Cor: Texto de canal de transmissão</Portuguese>
+            <German>Aktueller Chat Kanal Sende Farbe</German>
+            <Japanese>現在のチャットチャンネルへの送信の表示色</Japanese>
+            <Chinesesimp>当前聊天频道颜色</Chinesesimp>
+            <Turkish>Şu Anki Kanal İletim Rengi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_txNotificationGroup1Color_displayName">
+            <English>Group 1 Transmit Color</English>
+            <Czech>Skupina 1 Vysílat barvě</Czech>
+            <French>Couleur - Transmission groupe 1</French>
+            <Italian>Colore invio gruppo 1</Italian>
+            <Portuguese>Cor: Grupo de transmissão 1</Portuguese>
+            <German>Gruppe 1 Sende Farbe</German>
+            <Japanese>グループ1への送信の表示色</Japanese>
+            <Chinesesimp>分组1颜色</Chinesesimp>
+            <Turkish>Grup 1 İletim Rengi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_txNotificationGroup2Color_displayName">
+            <English>Group 2 Transmit Color</English>
+            <Czech>Skupina 2 Vysílat barvě</Czech>
+            <French>Couleur - Transmission groupe 2</French>
+            <Italian>Colore invio gruppo 2</Italian>
+            <Portuguese>Cor: Grupo de transmissão 2</Portuguese>
+            <German>Gruppe 2 Sende Farbe</German>
+            <Japanese>グループ2への送信の表示色</Japanese>
+            <Chinesesimp>分组2颜色</Chinesesimp>
+            <Turkish>Grup 2 İletim Rengi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_txNotificationGroup3Color_displayName">
+            <English>Group 3 Transmit Color</English>
+            <Czech>Group 3 Broadcast color</Czech>
+            <French>Couleur - Transmission groupe 3</French>
+            <Italian>Colore invio gruppo 3</Italian>
+            <Portuguese>Cor: Grupo de transmissão 3</Portuguese>
+            <German>Gruppe 3 Sende Farbe</German>
+            <Japanese>グループ3への送信の表示色</Japanese>
+            <Chinesesimp>分组3颜色</Chinesesimp>
+            <Turkish>Grup 3 İletim Rengi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
+            <English>Transmit Notification</English>
+            <Czech>Odeslat oznámení</Czech>
+            <French>Notifications d'émission</French>
+            <Italian>Invia messaggio</Italian>
+            <Portuguese>Notificação de Transmissão</Portuguese>
+            <German>Sendebenachrichtigung</German>
+            <Japanese>送信通知</Japanese>
+            <Chinesesimp>发话提示</Chinesesimp>
+            <Turkish>Mesaj İlet</Turkish>
         </Key>
     </Package>
 </Project>

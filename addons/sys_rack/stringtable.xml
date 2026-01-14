@@ -1,270 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="ACRE">
     <Package name="sys_rack">
-        <Key ID="STR_ACRE_sys_rack_mountRadio">
-            <English>Mount</English>
-            <German>Installiere</German>
-            <Japanese>マウント</Japanese>
-            <Chinese>裝載</Chinese>
-            <Chinesesimp>装载</Chinesesimp>
-            <Korean>설치</Korean>
-            <Portuguese>Montar</Portuguese>
-            <Polish>Zamontuj</Polish>
-            <Italian>Monta</Italian>
-            <Spanish>Montar</Spanish>
-            <French>Monter</French>
-            <Russian>Установить</Russian>
-            <Turkish>Tak</Turkish>
-            <Czech>Namontovat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_unmountable">
-            <English>Unmountable</English>
-            <Italian>Non montabile</Italian>
-            <Japanese>マウント不可</Japanese>
-            <Chinese>無法掛載</Chinese>
-            <Chinesesimp>无法挂载</Chinesesimp>
-            <Spanish>No montable</Spanish>
-            <French>Inamovible</French>
-            <German>Nicht installierbar</German>
-            <Russian>Нельзя установить</Russian>
-            <Portuguese>Não montável</Portuguese>
-            <Turkish>Takılamaz</Turkish>
-            <Czech>Nemontovatelné</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_unmountRadio">
-            <English>Unmount</English>
-            <German>Deinstalliere</German>
-            <Japanese>アンマウント</Japanese>
-            <Chinese>卸載</Chinese>
-            <Chinesesimp>卸载</Chinesesimp>
-            <Korean>분리</Korean>
-            <Portuguese>Desmontar</Portuguese>
-            <Polish>Wymontuj</Polish>
-            <Italian>Smonta</Italian>
-            <Spanish>Desmontar</Spanish>
-            <French>Démonter</French>
-            <Russian>Снять</Russian>
-            <Turkish>Çıkar</Turkish>
-            <Czech>Vymontovat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_mountedRadio">
-            <English>Mounted (%1)</English>
-            <German>%1 installiert</German>
-            <Japanese>マウントした (%1)</Japanese>
-            <Chinese>裝載 (%1)</Chinese>
-            <Chinesesimp>装载 (%1)</Chinesesimp>
-            <Korean>설치 (%1)</Korean>
-            <Portuguese>Montado (%1)</Portuguese>
-            <Polish>Zamontowane (%1)</Polish>
-            <Italian>Montata (%1)</Italian>
-            <Spanish>Montada (%1)</Spanish>
-            <French>%1 montée</French>
-            <Russian>Установлено (%1)</Russian>
-            <Turkish>Takıldı (%1)</Turkish>
-            <Czech>Namontovaný (%1)</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
-            <English>Stop Using</English>
-            <German>Nicht mehr verwenden</German>
-            <Japanese>使用を止める</Japanese>
-            <Chinese>停止使用</Chinese>
-            <Chinesesimp>停止使用</Chinesesimp>
-            <Korean>사용 중지</Korean>
-            <Portuguese>Parar de usar</Portuguese>
-            <Polish>Przestań używać</Polish>
-            <Italian>Termina uso</Italian>
-            <Spanish>Deja de usar</Spanish>
-            <French>Ne plus utiliser</French>
-            <Russian>Прекратить использование</Russian>
-            <Turkish>Kullanmayı Bırak</Turkish>
-            <Czech>Přestat používat</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_useRadio">
-            <English>Use</English>
-            <German>Verwenden</German>
-            <Japanese>使う</Japanese>
-            <Chinese>使用</Chinese>
-            <Chinesesimp>使用</Chinesesimp>
-            <Korean>사용</Korean>
-            <Portuguese>Usar</Portuguese>
-            <Polish>Użyj</Polish>
-            <Italian>Usa</Italian>
-            <Spanish>Usar</Spanish>
-            <French>Utiliser</French>
-            <Russian>Использовать</Russian>
-            <Turkish>Kullan</Turkish>
-            <Czech>použít</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_useIntercomRadio">
-            <English>Use via Intercom (Work: %1)</English>
-            <German>Durch Intercom verwenden (Work: %1)</German>
-            <Italian>Usa tramite l'intercom (Work: %1)</Italian>
-            <Japanese>インターコムから使う (Work: %1)</Japanese>
-            <French>Utilisation de l'interphone (Travail : %1)</French>
-            <Chinesesimp>通过对讲机使用(正在使用: %1)</Chinesesimp>
-            <Czech>Use via Intercom (Work: %1)</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_unableUnmount">
-            <English>Unable to unmount radio as you have no inventory space.</English>
-            <German>Funkgerät kann nicht deinstalliert werden. Nicht genug Platz im Inventar.</German>
-            <Japanese>インベントリに空きが無いため無線機をアンマウントできません。</Japanese>
-            <Chinese>無法卸載無線電，因為你的物品欄已經沒有任何空間。</Chinese>
-            <Chinesesimp>无法卸载无线电，因为你的物品栏已经没有任何空间。</Chinesesimp>
-            <Korean>인벤토리 공간이 없어 무전기를 분리 할 수 없습니다.</Korean>
-            <Portuguese>Impossível desmontar o rádio, você não tem espaço no inventário.</Portuguese>
-            <Polish>Nie można wymontować radia. Brak miejsca w ekwipunku.</Polish>
-            <Italian>Impossibile smontare radio. Inventario pieno.</Italian>
-            <Spanish>Imposible desmontar la radio. Inventario lleno.</Spanish>
-            <French>Impossible de démonter la radio, car vous n'avez pas assez d'espace dans l'inventaire.</French>
-            <Russian>Не вышло снять рацию - в инвентаре недостаточно места</Russian>
-            <Turkish>Envanterinizde yeriniz olmadığı için telsiz çıkarılamadı.</Turkish>
-            <Czech>Nelze odpojit rádio, protože nemáte dostatek místa v inventáři.</Czech>
-        </Key>
         <Key ID="STR_ACRE_sys_rack_Racks">
             <English>Racks</English>
+            <Czech>Regály</Czech>
+            <French>Racks</French>
+            <Spanish>Racks</Spanish>
+            <Italian>Racks</Italian>
+            <Polish>Szafa radiowa</Polish>
+            <Portuguese>Raques</Portuguese>
+            <Russian>Подставки</Russian>
             <German>Anlage</German>
-            <Chinese>機架</Chinese>
-            <Chinesesimp>机架</Chinesesimp>
             <Korean>선반</Korean>
             <Japanese>ラック</Japanese>
-            <Portuguese>Raques</Portuguese>
-            <Polish>Szafa radiowa</Polish>
-            <Italian>Racks</Italian>
-            <Spanish>Racks</Spanish>
-            <French>Racks</French>
-            <Russian>Подставки</Russian>
+            <Chinese>機架</Chinese>
+            <Chinesesimp>机架</Chinesesimp>
             <Turkish>Raflar</Turkish>
-            <Czech>Regály</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash">
             <English>Dash</English>
+            <Czech>Znamení</Czech>
+            <French>Panneau</French>
+            <Spanish>Panel</Spanish>
+            <Italian>Cruscotto</Italian>
+            <Polish>Panel</Polish>
+            <Portuguese>Painel</Portuguese>
+            <Russian>Панель</Russian>
             <German>Schacht</German>
-            <Chinese>儀器版面</Chinese>
-            <Chinesesimp>仪器版面</Chinesesimp>
             <Korean>대쉬보드</Korean>
             <Japanese>ダッシュボード</Japanese>
-            <Portuguese>Painel</Portuguese>
-            <Polish>Panel</Polish>
-            <Italian>Cruscotto</Italian>
-            <Spanish>Panel</Spanish>
-            <French>Panneau</French>
-            <Russian>Панель</Russian>
+            <Chinese>儀器版面</Chinese>
+            <Chinesesimp>仪器版面</Chinesesimp>
             <Turkish>Panel</Turkish>
-            <Czech>Znamení</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dash2">
             <English>Dash 2</English>
-            <German>2. Schacht</German>
-            <Italian>Cruscotto 2</Italian>
+            <Czech>Znamení 2</Czech>
             <French>Panneau 2</French>
             <Spanish>Panel 2</Spanish>
-            <Turkish>Panel 2</Turkish>
+            <Italian>Cruscotto 2</Italian>
             <Portuguese>Painel 2</Portuguese>
+            <German>2. Schacht</German>
             <Japanese>ダッシュボード 2</Japanese>
             <Chinesesimp>仪器版面2</Chinesesimp>
-            <Czech>Znamení 2</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_rack_dashShort">
-            <English>Dash</English>
-            <Italian>Crus.</Italian>
-            <Japanese>DB</Japanese>
-            <Chinese>儀器版面 下</Chinese>
-            <Chinesesimp>仪器版面 下</Chinesesimp>
-            <Spanish>Panel</Spanish>
-            <French>Panneau</French>
-            <German>An.</German>
-            <Russian>Панель</Russian>
-            <Portuguese>Painel</Portuguese>
-            <Turkish>Panel</Turkish>
-            <Czech>Znamení</Czech>
+            <Turkish>Panel 2</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLower">
             <English>Dash Lower</English>
+            <Czech>Spodní panel</Czech>
+            <French>Panneau inférieur</French>
+            <Spanish>Panel inferior</Spanish>
+            <Italian>Cruscotto Basso</Italian>
+            <Polish>Dolny panel</Polish>
+            <Portuguese>Painel Inferior</Portuguese>
+            <Russian>Нижняя панель</Russian>
             <German>Unterer</German>
-            <Chinese>儀器版面下降</Chinese>
-            <Chinesesimp>仪器版面下降</Chinesesimp>
             <Korean>대쉬보드 하단</Korean>
             <Japanese>ダッシュボード下部</Japanese>
-            <Portuguese>Painel Inferior</Portuguese>
-            <Polish>Dolny panel</Polish>
-            <Italian>Cruscotto Basso</Italian>
-            <Spanish>Panel inferior</Spanish>
-            <French>Panneau inférieur</French>
-            <Russian>Нижняя панель</Russian>
+            <Chinese>儀器版面下降</Chinese>
+            <Chinesesimp>仪器版面下降</Chinesesimp>
             <Turkish>Alt Panel</Turkish>
-            <Czech>Spodní panel</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashLowerShort">
             <English>D.Low</English>
+            <Czech>S. pnl</Czech>
+            <French>P. inf</French>
+            <Spanish>P.Inf</Spanish>
             <Italian>C.Basso</Italian>
+            <Portuguese>P. Inf.</Portuguese>
+            <Russian>Н-я панель</Russian>
+            <German>An.U</German>
             <Japanese>DB.下</Japanese>
             <Chinese>儀器.下</Chinese>
             <Chinesesimp>仪器.下</Chinesesimp>
-            <Spanish>P.Inf</Spanish>
-            <French>P. inf</French>
-            <German>An.U</German>
-            <Russian>Н-я панель</Russian>
-            <Portuguese>P. Inf.</Portuguese>
             <Turkish>A.Pan</Turkish>
-            <Czech>S. pnl</Czech>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_dashShort">
+            <English>Dash</English>
+            <Czech>Znamení</Czech>
+            <French>Panneau</French>
+            <Spanish>Panel</Spanish>
+            <Italian>Crus.</Italian>
+            <Portuguese>Painel</Portuguese>
+            <Russian>Панель</Russian>
+            <German>An.</German>
+            <Japanese>DB</Japanese>
+            <Chinese>儀器版面 下</Chinese>
+            <Chinesesimp>仪器版面 下</Chinesesimp>
+            <Turkish>Panel</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpper">
             <English>Dash Upper</English>
+            <Czech>Horní panel</Czech>
+            <French>Panneau supérieur</French>
+            <Spanish>Panel superior</Spanish>
+            <Italian>Cruscotto Alto</Italian>
+            <Polish>Górny panel</Polish>
+            <Portuguese>Painel Superior</Portuguese>
+            <Russian>Верхняя панель</Russian>
             <German>Oberer</German>
-            <Chinese>儀器版面上升</Chinese>
-            <Chinesesimp>仪器版面上升</Chinesesimp>
             <Korean>대쉬보드 상단</Korean>
             <Japanese>ダッシュボード上部</Japanese>
-            <Portuguese>Painel Superior</Portuguese>
-            <Polish>Górny panel</Polish>
-            <Italian>Cruscotto Alto</Italian>
-            <Spanish>Panel superior</Spanish>
-            <French>Panneau supérieur</French>
-            <Russian>Верхняя панель</Russian>
+            <Chinese>儀器版面上升</Chinese>
+            <Chinesesimp>仪器版面上升</Chinesesimp>
             <Turkish>Üst Panel</Turkish>
-            <Czech>Horní panel</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_rack_dashUpperShort">
             <English>D.Up</English>
+            <Czech>H. pnl</Czech>
+            <French>P. sup</French>
+            <Spanish>P.Sup</Spanish>
             <Italian>C.Alto</Italian>
+            <Portuguese>P. Sup.</Portuguese>
+            <Russian>В-я панель</Russian>
+            <German>An.O</German>
             <Japanese>DB.上</Japanese>
             <Chinese>儀器.上</Chinese>
             <Chinesesimp>仪器.上</Chinesesimp>
-            <Spanish>P.Sup</Spanish>
-            <French>P. sup</French>
-            <German>An.O</German>
-            <Russian>В-я панель</Russian>
-            <Portuguese>P. Sup.</Portuguese>
             <Turkish>Ü.Pan</Turkish>
-            <Czech>H. pnl</Czech>
         </Key>
-        <Key ID="STR_ACRE_sys_rack_useAllRacks">
-            <English>Use All</English>
-            <Japanese>全てを使用</Japanese>
-            <Chinese>使用全部</Chinese>
-            <Chinesesimp>使用全部</Chinesesimp>
-            <Spanish>Usar todas</Spanish>
-            <French>Tout utiliser</French>
-            <German>Verwende alle</German>
-            <Italian>Usa tutti</Italian>
-            <Russian>Использовать все</Russian>
-            <Portuguese>Usar todos</Portuguese>
-            <Turkish>Hepsini Kullan</Turkish>
-            <Czech>Použít všechny</Czech>
+        <Key ID="STR_ACRE_sys_rack_mountRadio">
+            <English>Mount</English>
+            <Czech>Namontovat</Czech>
+            <French>Monter</French>
+            <Spanish>Montar</Spanish>
+            <Italian>Monta</Italian>
+            <Polish>Zamontuj</Polish>
+            <Portuguese>Montar</Portuguese>
+            <Russian>Установить</Russian>
+            <German>Installiere</German>
+            <Korean>설치</Korean>
+            <Japanese>マウント</Japanese>
+            <Chinese>裝載</Chinese>
+            <Chinesesimp>装载</Chinesesimp>
+            <Turkish>Tak</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_mountedRadio">
+            <English>Mounted (%1)</English>
+            <Czech>Namontovaný (%1)</Czech>
+            <French>%1 montée</French>
+            <Spanish>Montada (%1)</Spanish>
+            <Italian>Montata (%1)</Italian>
+            <Polish>Zamontowane (%1)</Polish>
+            <Portuguese>Montado (%1)</Portuguese>
+            <Russian>Установлено (%1)</Russian>
+            <German>%1 installiert</German>
+            <Korean>설치 (%1)</Korean>
+            <Japanese>マウントした (%1)</Japanese>
+            <Chinese>裝載 (%1)</Chinese>
+            <Chinesesimp>装载 (%1)</Chinesesimp>
+            <Turkish>Takıldı (%1)</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_rack_stopUsingAllRacks">
             <English>Stop Using All</English>
+            <Czech>Přestat používat všechny</Czech>
+            <French>Ne rien utiliser</French>
+            <Spanish>Dejar de usar todas</Spanish>
+            <Italian>Smetti di usare tutti</Italian>
+            <Portuguese>Todos: Parar de usar</Portuguese>
+            <Russian>Прекратить использовать все</Russian>
+            <German>Nicht mehr alle verwenden</German>
             <Japanese>全ての使用を止める</Japanese>
             <Chinese>停止使用全部</Chinese>
             <Chinesesimp>停止使用全部</Chinesesimp>
-            <Spanish>Dejar de usar todas</Spanish>
-            <French>Ne rien utiliser</French>
-            <German>Nicht mehr alle verwenden</German>
-            <Italian>Smetti di usare tutti</Italian>
-            <Russian>Прекратить использовать все</Russian>
-            <Portuguese>Todos: Parar de usar</Portuguese>
             <Turkish>Hepsini Kullanmayı Bırak</Turkish>
-            <Czech>Přestat používat všechny</Czech>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_stopUsingRadio">
+            <English>Stop Using</English>
+            <Czech>Přestat používat</Czech>
+            <French>Ne plus utiliser</French>
+            <Spanish>Deja de usar</Spanish>
+            <Italian>Termina uso</Italian>
+            <Polish>Przestań używać</Polish>
+            <Portuguese>Parar de usar</Portuguese>
+            <Russian>Прекратить использование</Russian>
+            <German>Nicht mehr verwenden</German>
+            <Korean>사용 중지</Korean>
+            <Japanese>使用を止める</Japanese>
+            <Chinese>停止使用</Chinese>
+            <Chinesesimp>停止使用</Chinesesimp>
+            <Turkish>Kullanmayı Bırak</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_unableUnmount">
+            <English>Unable to unmount radio as you have no inventory space.</English>
+            <Czech>Nelze odpojit rádio, protože nemáte dostatek místa v inventáři.</Czech>
+            <French>Impossible de démonter la radio, car vous n'avez pas assez d'espace dans l'inventaire.</French>
+            <Spanish>Imposible desmontar la radio. Inventario lleno.</Spanish>
+            <Italian>Impossibile smontare radio. Inventario pieno.</Italian>
+            <Polish>Nie można wymontować radia. Brak miejsca w ekwipunku.</Polish>
+            <Portuguese>Impossível desmontar o rádio, você não tem espaço no inventário.</Portuguese>
+            <Russian>Не вышло снять рацию - в инвентаре недостаточно места</Russian>
+            <German>Funkgerät kann nicht deinstalliert werden. Nicht genug Platz im Inventar.</German>
+            <Korean>인벤토리 공간이 없어 무전기를 분리 할 수 없습니다.</Korean>
+            <Japanese>インベントリに空きが無いため無線機をアンマウントできません。</Japanese>
+            <Chinese>無法卸載無線電，因為你的物品欄已經沒有任何空間。</Chinese>
+            <Chinesesimp>无法卸载无线电，因为你的物品栏已经没有任何空间。</Chinesesimp>
+            <Turkish>Envanterinizde yeriniz olmadığı için telsiz çıkarılamadı.</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_unmountRadio">
+            <English>Unmount</English>
+            <Czech>Vymontovat</Czech>
+            <French>Démonter</French>
+            <Spanish>Desmontar</Spanish>
+            <Italian>Smonta</Italian>
+            <Polish>Wymontuj</Polish>
+            <Portuguese>Desmontar</Portuguese>
+            <Russian>Снять</Russian>
+            <German>Deinstalliere</German>
+            <Korean>분리</Korean>
+            <Japanese>アンマウント</Japanese>
+            <Chinese>卸載</Chinese>
+            <Chinesesimp>卸载</Chinesesimp>
+            <Turkish>Çıkar</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_unmountable">
+            <English>Unmountable</English>
+            <Czech>Nemontovatelné</Czech>
+            <French>Inamovible</French>
+            <Spanish>No montable</Spanish>
+            <Italian>Non montabile</Italian>
+            <Portuguese>Não montável</Portuguese>
+            <Russian>Нельзя установить</Russian>
+            <German>Nicht installierbar</German>
+            <Japanese>マウント不可</Japanese>
+            <Chinese>無法掛載</Chinese>
+            <Chinesesimp>无法挂载</Chinesesimp>
+            <Turkish>Takılamaz</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_useAllRacks">
+            <English>Use All</English>
+            <Czech>Použít všechny</Czech>
+            <French>Tout utiliser</French>
+            <Spanish>Usar todas</Spanish>
+            <Italian>Usa tutti</Italian>
+            <Portuguese>Usar todos</Portuguese>
+            <Russian>Использовать все</Russian>
+            <German>Verwende alle</German>
+            <Japanese>全てを使用</Japanese>
+            <Chinese>使用全部</Chinese>
+            <Chinesesimp>使用全部</Chinesesimp>
+            <Turkish>Hepsini Kullan</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_useIntercomRadio">
+            <English>Use via Intercom (Work: %1)</English>
+            <Czech>Use via Intercom (Work: %1)</Czech>
+            <French>Utilisation de l'interphone (Travail : %1)</French>
+            <Italian>Usa tramite l'intercom (Work: %1)</Italian>
+            <German>Durch Intercom verwenden (Work: %1)</German>
+            <Japanese>インターコムから使う (Work: %1)</Japanese>
+            <Chinesesimp>通过对讲机使用(正在使用: %1)</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_rack_useRadio">
+            <English>Use</English>
+            <Czech>použít</Czech>
+            <French>Utiliser</French>
+            <Spanish>Usar</Spanish>
+            <Italian>Usa</Italian>
+            <Polish>Użyj</Polish>
+            <Portuguese>Usar</Portuguese>
+            <Russian>Использовать</Russian>
+            <German>Verwenden</German>
+            <Korean>사용</Korean>
+            <Japanese>使う</Japanese>
+            <Chinese>使用</Chinese>
+            <Chinesesimp>使用</Chinesesimp>
+            <Turkish>Kullan</Turkish>
         </Key>
     </Package>
 </Project>

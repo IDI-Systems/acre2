@@ -3,209 +3,209 @@
     <Package name="sys_list">
         <Key ID="STR_ACRE_sys_list_CycleRadio">
             <English>Cycle/Next Radio</English>
-            <Spanish>Cambiar Radio</Spanish>
             <Czech>Změnit rádio</Czech>
-            <German>Funkgeräte durchschalten</German>
-            <Japanese>無線機を切り替え</Japanese>
-            <Italian>Cambia Radio</Italian>
             <French>Commuter radio suivante</French>
-            <Korean>무전 채널 변경</Korean>
+            <Spanish>Cambiar Radio</Spanish>
+            <Italian>Cambia Radio</Italian>
             <Polish>Następne radio</Polish>
+            <Portuguese>Trocar Rádio</Portuguese>
             <Russian>Листать радио</Russian>
+            <German>Funkgeräte durchschalten</German>
+            <Korean>무전 채널 변경</Korean>
+            <Japanese>無線機を切り替え</Japanese>
             <Chinese>切換無線電</Chinese>
             <Chinesesimp>切换无线电</Chinesesimp>
-            <Portuguese>Trocar Rádio</Portuguese>
             <Turkish>Sıradaki Telsiz</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_list_OpenRadio">
-            <English>Open Active Radio</English>
-            <Spanish>Abrir Radio</Spanish>
-            <Czech>Otevřít aktivní rádio</Czech>
-            <German>Aktives Funkgerät öffnen</German>
-            <Japanese>アクティブな無線機を開く</Japanese>
-            <Italian>Apri Radio Attiva</Italian>
-            <French>Ouvrir radio active</French>
-            <Korean>무전기 열기</Korean>
-            <Polish>Otwórz panel aktywne radia</Polish>
-            <Russian>Открыть радио</Russian>
-            <Chinese>打開無線電</Chinese>
-            <Chinesesimp>打开无线电</Chinesesimp>
-            <Portuguese>Abrir Rádio Ativo</Portuguese>
-            <Turkish>Aktif Telsizi Aç</Turkish>
+        <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
+            <English>Cycle Radio Color</English>
+            <Czech>Barevný cyklus rádia</Czech>
+            <French>Couleur - Changement de radio</French>
+            <Italian>Colore del cambio radio</Italian>
+            <Portuguese>Cor: Alternar Rádio</Portuguese>
+            <Russian>Цвет при смене рации</Russian>
+            <German>Farbe bei Funkgerätwechsel</German>
+            <Japanese>無線機切り替え時の表示色</Japanese>
+            <Chinese>無線電循環顏色</Chinese>
+            <Chinesesimp>无线电循环颜色</Chinesesimp>
+            <Turkish>Telsiz Değiştirme Rengi</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_list_NotificationGrid">
-            <English>ACRE2 - Radio Notifications</English>
-            <German>ACRE2 - Visuelle Funkbenachrichtigungen</German>
-            <Italian>ACRE2 - Notifiche Radio</Italian>
-            <Japanese>ACRE2 - 無線機の通知</Japanese>
-            <Chinese>ACRE 2 - 無線電通知</Chinese>
-            <Russian>ACRE2 - Уведомления Раций</Russian>
-            <French>ACRE2 - Notifications radio</French>
-            <Chinesesimp>ACRE 2 -无线电通知</Chinesesimp>
-            <Portuguese>ACRE2 - Notificações de Rádio</Portuguese>
-            <Spanish>Notificaciones de radio</Spanish>
-            <Turkish>ACRE2 - Telsiz Bildirimleri</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_list_NotificationGridDesc">
-            <English>Shows notifications regarding radios and transmissions.</English>
-            <German>Zeigt Benachrichtigungen für Funk und Funkgeräte.</German>
-            <Italian>Mostra le notifiche relative a radio e trasmissioni.</Italian>
-            <Japanese>無線機と送信に関する通知を表示します。</Japanese>
-            <Chinese>顯示哪個無線電通訊通知</Chinese>
-            <Russian>Показывает уведомления с рациями и переговорами</Russian>
-            <French>Affiche les notifications concernant les radios et les transmissions.</French>
-            <Chinesesimp>显示哪个无线电通讯通知</Chinesesimp>
-            <Portuguese>Mostra as notificações referentes a rádios e transmissões</Portuguese>
-            <Turkish>Telsiz ve iletim ile ilgili bildirimler göster</Turkish>
+        <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
+            <English>Active Radio Transmit Color</English>
+            <Czech>Barva - Aktivní rádiový přenos</Czech>
+            <French>Couleur - Transmission radio active</French>
+            <Spanish>Color de transmisión de Radio activa</Spanish>
+            <Italian>Colore trasmissione radio attiva</Italian>
+            <Portuguese>Cor: Transmissão do Rádio Ativo</Portuguese>
+            <Russian>Цвет передачи активной рации</Russian>
+            <German>Farbe für Standardsprechtaste</German>
+            <Japanese>アクティブな無線機 送信時の表示色</Japanese>
+            <Chinese>使用中的無線電通訊顏色</Chinese>
+            <Chinesesimp>使用中的无线电通讯颜色</Chinesesimp>
+            <Turkish>Aktif Telsiz İletme Rengi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_list_HintBackgroundColor_DisplayName">
             <English>Notification Background Color</English>
-            <German>Hintergrundfarbe der visuellen Benachrichtigung</German>
+            <French>Notifications - Couleur d'arrière-plan</French>
+            <Spanish>Color de fondo de la notificación</Spanish>
             <Italian>Colore di sfondo notifica</Italian>
+            <Portuguese>Cor de plano de fundo da Notificação</Portuguese>
             <Russian>Цвет фона уведомления</Russian>
+            <German>Hintergrundfarbe der visuellen Benachrichtigung</German>
             <Japanese>通知の背景色</Japanese>
             <Chinese>通知的背景顏色</Chinese>
-            <French>Notifications - Couleur d'arrière-plan</French>
             <Chinesesimp>通知的背景颜色</Chinesesimp>
-            <Portuguese>Cor de plano de fundo da Notificação</Portuguese>
-            <Spanish>Color de fondo de la notificación</Spanish>
             <Turkish>Bildirim Arkaplan Rengi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_list_HintTextFont_DisplayName">
             <English>Notification Text Font</English>
-            <German>Schriftart der visuellen Benachrichtigung</German>
+            <French>Notifications - Police de caractère</French>
+            <Spanish>Fuente de la notificación</Spanish>
             <Italian>Carattere del testo di notifica</Italian>
+            <Portuguese>Fonte de texto da Notificação</Portuguese>
             <Russian>Шрифт текста уведомлений</Russian>
+            <German>Schriftart der visuellen Benachrichtigung</German>
             <Japanese>通知テキストのフォント</Japanese>
             <Chinese>通知的字型</Chinese>
-            <French>Notifications - Police de caractère</French>
             <Chinesesimp>通知的字形</Chinesesimp>
-            <Portuguese>Fonte de texto da Notificação</Portuguese>
-            <Spanish>Fuente de la notificación</Spanish>
             <Turkish>Bildirim Yazı Rengi</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageColor_DisplayName">
             <English>Babel Cycle Language Color</English>
-            <German>Schriftfarbe während Babel Sprachwechsel</German>
+            <French>Couleur - Langage Babel</French>
             <Italian>Colore del cambio lingua Babel</Italian>
+            <Portuguese>Cor: Alternar Idiomas do Babel</Portuguese>
             <Russian>Цвет при изменении языка Babel</Russian>
+            <German>Schriftfarbe während Babel Sprachwechsel</German>
             <Japanese>バベル言語切り替え時の表示色</Japanese>
             <Chinese>多國語言切換顏色</Chinese>
-            <French>Couleur - Langage Babel</French>
             <Chinesesimp>多国语言切换颜色</Chinesesimp>
-            <Portuguese>Cor: Alternar Idiomas do Babel</Portuguese>
             <Turkish>Babel Dil Değiştirme Rengi</Turkish>
-        </Key>
-        <Key ID="STR_ACRE_sys_list_LanguageHintPersist_DisplayName">
-            <English>Persist Babel Language Indicator</English>
-            <German>Babel Sprachanzeige bleibt sichtbar</German>
-            <Italian>Indicatore di lingua persistente</Italian>
-            <French>L'affichage de la langue de Babel reste visible</French>
-            <Japanese>継続的なバベル言語インジケータ</Japanese>
-            <Chinesesimp>永久显示多国语言提示</Chinesesimp>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageHintPersist_Description">
             <English>Prevent the Babel Language Indicator in the bottom right from fading out if a language other than the "main language" (the first assigned spoken language) is selected.</English>
-            <German>Verhindert, wenn eingeschaltet, dass die Babel Sprachanzeige unten-rechts verschwindet während eine andere Sprache als die "Muttersprache" (die erste zugewiesene Sprache) gesprochen wird.</German>
-            <Italian>Se attivato, l'indicatore della lingua selezionata in basso a destra non scomparirà mentre si parla una lingua diversa da quella "madre" (la prima lingua assegnata).</Italian>
             <French>S'il est activé, l'indicateur de la langue sélectionnée dans le coin inférieur droit ne disparaîtra pas lorsque vous parlerez une langue autre que la langue « maternelle » (la première langue attribuée).</French>
+            <Italian>Se attivato, l'indicatore della lingua selezionata in basso a destra non scomparirà mentre si parla una lingua diversa da quella "madre" (la prima lingua assegnata).</Italian>
+            <German>Verhindert, wenn eingeschaltet, dass die Babel Sprachanzeige unten-rechts verschwindet während eine andere Sprache als die "Muttersprache" (die erste zugewiesene Sprache) gesprochen wird.</German>
             <Japanese>主言語 (最初に割り当てられた言語) 以外の言語を選択した場合に、右下に表示されるバベル言語インジケータがフェードアウトしないようにします。</Japanese>
             <Chinesesimp>当选择非"母语"(设置的第一种说话语言)说话时, 防止右下角多国语言提示消失</Chinesesimp>
         </Key>
-        <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
-            <English>Switch Channel Color</English>
-            <German>Farbe bei Funkkanalwechsel</German>
-            <Italian>Colore di Cambio Canale</Italian>
-            <Russian>Цвет при смене каналов</Russian>
-            <Japanese>チャンネル切り替え時の表示色</Japanese>
-            <Chinese>切換頻道顏色</Chinese>
-            <French>Couleur - Changement de canal radio</French>
-            <Chinesesimp>切换频道颜色</Chinesesimp>
-            <Portuguese>Cor: Troca de Canais</Portuguese>
-            <Turkish>Kanal Değiştirme Rengi</Turkish>
-            <Czech>Změnit barvu kanálu</Czech>
+        <Key ID="STR_ACRE_sys_list_LanguageHintPersist_DisplayName">
+            <English>Persist Babel Language Indicator</English>
+            <French>L'affichage de la langue de Babel reste visible</French>
+            <Italian>Indicatore di lingua persistente</Italian>
+            <German>Babel Sprachanzeige bleibt sichtbar</German>
+            <Japanese>継続的なバベル言語インジケータ</Japanese>
+            <Chinesesimp>永久显示多国语言提示</Chinesesimp>
         </Key>
-        <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
-            <English>Toggle Headset Color</English>
-            <German>Farbe bei Auf- oder Absetzen der Kopfhörer</German>
-            <Italian>Colore quando si indossano/tolgono le cuffie</Italian>
-            <Russian>Изменить цвет наушников</Russian>
-            <Japanese>ヘッドセット切り替え時の表示色</Japanese>
-            <Chinese>耳機切換顏色</Chinese>
-            <French>Couleur - Mettre/Retirer les écouteurs</French>
-            <Chinesesimp>耳机切换颜色</Chinesesimp>
-            <Portuguese>Cor: Alternar Fones de ouvido</Portuguese>
-            <Turkish>Kulaklık Takma/Çıkarma Rengi</Turkish>
-            <Czech>Změnit barvu sluchátek</Czech>
+        <Key ID="STR_ACRE_sys_list_NotificationGrid">
+            <English>ACRE2 - Radio Notifications</English>
+            <French>ACRE2 - Notifications radio</French>
+            <Spanish>Notificaciones de radio</Spanish>
+            <Italian>ACRE2 - Notifiche Radio</Italian>
+            <Portuguese>ACRE2 - Notificações de Rádio</Portuguese>
+            <Russian>ACRE2 - Уведомления Раций</Russian>
+            <German>ACRE2 - Visuelle Funkbenachrichtigungen</German>
+            <Japanese>ACRE2 - 無線機の通知</Japanese>
+            <Chinese>ACRE 2 - 無線電通知</Chinese>
+            <Chinesesimp>ACRE 2 -无线电通知</Chinesesimp>
+            <Turkish>ACRE2 - Telsiz Bildirimleri</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_list_CycleRadiosColor_DisplayName">
-            <English>Cycle Radio Color</English>
-            <German>Farbe bei Funkgerätwechsel</German>
-            <Italian>Colore del cambio radio</Italian>
-            <Russian>Цвет при смене рации</Russian>
-            <Japanese>無線機切り替え時の表示色</Japanese>
-            <Chinese>無線電循環顏色</Chinese>
-            <French>Couleur - Changement de radio</French>
-            <Chinesesimp>无线电循环颜色</Chinesesimp>
-            <Portuguese>Cor: Alternar Rádio</Portuguese>
-            <Turkish>Telsiz Değiştirme Rengi</Turkish>
-            <Czech>Barevný cyklus rádia</Czech>
+        <Key ID="STR_ACRE_sys_list_NotificationGridDesc">
+            <English>Shows notifications regarding radios and transmissions.</English>
+            <French>Affiche les notifications concernant les radios et les transmissions.</French>
+            <Italian>Mostra le notifiche relative a radio e trasmissioni.</Italian>
+            <Portuguese>Mostra as notificações referentes a rádios e transmissões</Portuguese>
+            <Russian>Показывает уведомления с рациями и переговорами</Russian>
+            <German>Zeigt Benachrichtigungen für Funk und Funkgeräte.</German>
+            <Japanese>無線機と送信に関する通知を表示します。</Japanese>
+            <Chinese>顯示哪個無線電通訊通知</Chinese>
+            <Chinesesimp>显示哪个无线电通讯通知</Chinesesimp>
+            <Turkish>Telsiz ve iletim ile ilgili bildirimler göster</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_OpenRadio">
+            <English>Open Active Radio</English>
+            <Czech>Otevřít aktivní rádio</Czech>
+            <French>Ouvrir radio active</French>
+            <Spanish>Abrir Radio</Spanish>
+            <Italian>Apri Radio Attiva</Italian>
+            <Polish>Otwórz panel aktywne radia</Polish>
+            <Portuguese>Abrir Rádio Ativo</Portuguese>
+            <Russian>Открыть радио</Russian>
+            <German>Aktives Funkgerät öffnen</German>
+            <Korean>무전기 열기</Korean>
+            <Japanese>アクティブな無線機を開く</Japanese>
+            <Chinese>打開無線電</Chinese>
+            <Chinesesimp>打开无线电</Chinesesimp>
+            <Turkish>Aktif Telsizi Aç</Turkish>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT1Color_DisplayName">
             <English>Radio 1 (PTT 1) Transmit Color</English>
-            <German>Farbe Sprechtaste 1</German>
+            <Czech>Barevný rádiový přenos 1 (PTT 1)</Czech>
+            <French>Couleur - Transmission radio 1 (PTT 1)</French>
+            <Spanish>Color de transmisión de Radio 1 (PTT 1)</Spanish>
             <Italian>Colore trasmissione radio 1 (PTT 1)</Italian>
+            <Portuguese>Cor: Transmissão Rádio 1 (PTT 1)</Portuguese>
             <Russian>Рация 1 (PTT 1) цвет передачи</Russian>
+            <German>Farbe Sprechtaste 1</German>
             <Japanese>無線機1 (PTT 1) 送信時の表示色</Japanese>
             <Chinese>無線電1 (隨按即說1)通訊顏色</Chinese>
-            <French>Couleur - Transmission radio 1 (PTT 1)</French>
             <Chinesesimp>无线电1（随按即说1）通讯颜色</Chinesesimp>
-            <Portuguese>Cor: Transmissão Rádio 1 (PTT 1)</Portuguese>
-            <Spanish>Color de transmisión de Radio 1 (PTT 1)</Spanish>
             <Turkish>Telsiz 1 (Bas-Konuş 1) İletme Rengi</Turkish>
-            <Czech>Barevný rádiový přenos 1 (PTT 1)</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT2Color_DisplayName">
             <English>Radio 2 (PTT 2) Transmit Color</English>
-            <German>Farbe Sprechtaste 2</German>
+            <Czech>Barevný rádiový přenos 2 (PTT 2)</Czech>
+            <French>Couleur - Transmission radio 2 (PTT 2)</French>
+            <Spanish>Color de transmisión de Radio 2 (PTT 2)</Spanish>
             <Italian>Colore trasmissione radio 2 (PTT 2)</Italian>
+            <Portuguese>Cor: Transmissão Rádio 2 (PTT 2)</Portuguese>
             <Russian>Рация 2 (PTT 2) цвет передачи</Russian>
+            <German>Farbe Sprechtaste 2</German>
             <Japanese>無線機2 (PTT 2) 送信時の表示色</Japanese>
             <Chinese>無線電2 (隨按即說2)通訊顏色</Chinese>
-            <French>Couleur - Transmission radio 2 (PTT 2)</French>
             <Chinesesimp>无线电2（随按即说2）通讯颜色</Chinesesimp>
-            <Portuguese>Cor: Transmissão Rádio 2 (PTT 2)</Portuguese>
-            <Spanish>Color de transmisión de Radio 2 (PTT 2)</Spanish>
             <Turkish>Telsiz 2 (Bas-Konuş 2) İletme Rengi</Turkish>
-            <Czech>Barevný rádiový přenos 2 (PTT 2)</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_list_PTT3Color_DisplayName">
             <English>Radio 1 (PTT 3) Transmit Color</English>
-            <German>Farbe Sprechtaste 3</German>
+            <Czech>Barevný rádiový přenos 3 (PTT 3)</Czech>
+            <French>Couleur - Transmission radio 3 (PTT 3)</French>
+            <Spanish>Color de transmisión de Radio 3 (PTT 3)</Spanish>
             <Italian>Colore trasmissione radio 3 (PTT 3)</Italian>
+            <Portuguese>Cor: Transmissão Rádio 3 (PTT 3)</Portuguese>
             <Russian>Рация 3 (PTT 3) цвет передачи</Russian>
+            <German>Farbe Sprechtaste 3</German>
             <Japanese>無線機3 (PTT 3) 送信時の表示色</Japanese>
             <Chinese>無線電3 (隨按即說3)通訊顏色</Chinese>
-            <French>Couleur - Transmission radio 3 (PTT 3)</French>
             <Chinesesimp>无线电3（随按即说3）通讯颜色</Chinesesimp>
-            <Portuguese>Cor: Transmissão Rádio 3 (PTT 3)</Portuguese>
-            <Spanish>Color de transmisión de Radio 3 (PTT 3)</Spanish>
             <Turkish>Telsiz 3 (Bas-Konuş 3) İletme Rengi</Turkish>
-            <Czech>Barevný rádiový přenos 3 (PTT 3)</Czech>
         </Key>
-        <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
-            <English>Active Radio Transmit Color</English>
-            <German>Farbe für Standardsprechtaste</German>
-            <Italian>Colore trasmissione radio attiva</Italian>
-            <Russian>Цвет передачи активной рации</Russian>
-            <Japanese>アクティブな無線機 送信時の表示色</Japanese>
-            <Chinese>使用中的無線電通訊顏色</Chinese>
-            <French>Couleur - Transmission radio active</French>
-            <Chinesesimp>使用中的无线电通讯颜色</Chinesesimp>
-            <Portuguese>Cor: Transmissão do Rádio Ativo</Portuguese>
-            <Spanish>Color de transmisión de Radio activa</Spanish>
-            <Turkish>Aktif Telsiz İletme Rengi</Turkish>
-            <Czech>Barva - Aktivní rádiový přenos</Czech>
+        <Key ID="STR_ACRE_sys_list_SwitchChannelColor_DisplayName">
+            <English>Switch Channel Color</English>
+            <Czech>Změnit barvu kanálu</Czech>
+            <French>Couleur - Changement de canal radio</French>
+            <Italian>Colore di Cambio Canale</Italian>
+            <Portuguese>Cor: Troca de Canais</Portuguese>
+            <Russian>Цвет при смене каналов</Russian>
+            <German>Farbe bei Funkkanalwechsel</German>
+            <Japanese>チャンネル切り替え時の表示色</Japanese>
+            <Chinese>切換頻道顏色</Chinese>
+            <Chinesesimp>切换频道颜色</Chinesesimp>
+            <Turkish>Kanal Değiştirme Rengi</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
+            <English>Toggle Headset Color</English>
+            <Czech>Změnit barvu sluchátek</Czech>
+            <French>Couleur - Mettre/Retirer les écouteurs</French>
+            <Italian>Colore quando si indossano/tolgono le cuffie</Italian>
+            <Portuguese>Cor: Alternar Fones de ouvido</Portuguese>
+            <Russian>Изменить цвет наушников</Russian>
+            <German>Farbe bei Auf- oder Absetzen der Kopfhörer</German>
+            <Japanese>ヘッドセット切り替え時の表示色</Japanese>
+            <Chinese>耳機切換顏色</Chinese>
+            <Chinesesimp>耳机切换颜色</Chinesesimp>
+            <Turkish>Kulaklık Takma/Çıkarma Rengi</Turkish>
         </Key>
     </Package>
 </Project>

@@ -16,7 +16,7 @@
  * Public: Yes
  */
 
-ACRE_DEPRECATED(QFUNC(setItemRadioReplacement),"2.12","CBA Setting")
+ACRE_DEPRECATED(QFUNC(setItemRadioReplacement),"2.12","CBA Setting");
 
 params ["_radioType"];
 

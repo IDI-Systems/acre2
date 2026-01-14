@@ -1,5 +1,4 @@
 class CfgMovesBasic {
-    class DefaultDie;
     class ManActions {
         GVAR(helmet) = QGVAR(helmet);
         GVAR(helmet_noADS) = QGVAR(helmet_noADS);
@@ -8,7 +7,6 @@ class CfgMovesBasic {
         GVAR(stop) = QGVAR(stop);
     };
     class Actions {
-        class Default;
         class NoActions: ManActions {
             GVAR(helmet)[] = {QGVAR(helmet), "Gesture"};
             GVAR(helmet_noADS)[] = {QGVAR(helmet_noADS), "Gesture"};

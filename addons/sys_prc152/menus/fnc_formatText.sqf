@@ -89,8 +89,12 @@ if (_result != -1) then {
     TRACE_2("channel data",_channelNumber,_channel);
     {
         private _repStr = "$cch-" + _x;
+        
         private _value = [ _x, HASH_GET(_channel,_x) ] call FUNC(formatChannelValue);
         TRACE_3("Calling replace",_text,_repStr,_value);
+        if (_x == 'tek' && HASH_GET(_channel,'encryption') == 0) then {
+            _value = '---';
+        }; //One off replacement so key isn't shown in PT... not super elegant
         _result = [_text, _x] call CBA_fnc_find;
         if (_result != -1) then {
             _text = [_text, _repStr, _value] call CBA_fnc_replace;
