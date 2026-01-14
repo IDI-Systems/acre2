@@ -36,11 +36,14 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    env:
+      FPT_SERVER: ${{ secrets.FTP_SERVER }}
     steps:
     - name: Checkout the source code
       uses: actions/checkout@v6
     - name: Setup Arma 3 Tools
       uses: arma-actions/arma3-tools@master
+      if: ${{ env.FTP_SERVER != '' }} # Avoid binarizing on forks (exposed secrets)
       with:
         toolsUrl: ${{ secrets.FTP_SERVER }}/tools/arma3tools.zip
     - name: Setup HEMTT
