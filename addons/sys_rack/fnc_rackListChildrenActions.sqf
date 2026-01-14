@@ -49,7 +49,7 @@ TRACE_7("rack actions",_accessibleRacks,_hearableRacks,_racks,_radios,_usableRad
 if (_usableInaccessibleRadios isNotEqualTo []) then {
     private _action = [
         QGVAR(useAllRacks),
-        localize LSTRING(useAllRacks),
+        LLSTRING(useAllRacks),
         "",
         {
             params ["_vehicle", "_unit", "_radios"];
@@ -67,7 +67,7 @@ if (_usableInaccessibleRadios isNotEqualTo []) then {
 if (_usableAccessibleRadios isNotEqualTo []) then {
     private _action = [
         QGVAR(stopUsingAllRacks),
-        localize LSTRING(stopUsingAllRacks),
+        LLSTRING(stopUsingAllRacks),
         "",
         {
             params ["_vehicle", "_unit", "_radios"];

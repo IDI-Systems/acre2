@@ -260,49 +260,49 @@ class PRC148_RadioDialog {
             text = "";
         };
 
-        BEGIN_CONTROL(BUTTON_MODE,Prc148_RscButton,"12010+104")
+        BEGIN_CONTROL(BUTTON_MODE,Prc148_RscButton,12010+104)
             BUTTON_GRID(0,0);
             BUTTONSIZE;
             text = "";
             onMouseButtonUp = QUOTE((['MODE'] + _this) call FUNC(onButtonPress));
         END_CONTROL
 
-        BEGIN_CONTROL(BUTTON_GR,Prc148_RscButton,"12010+105")
+        BEGIN_CONTROL(BUTTON_GR,Prc148_RscButton,12010+105)
             BUTTON_GRID(1,0);
             BUTTONSIZE;
             text = "";
             onMouseButtonUp = QUOTE((['GR'] + _this) call FUNC(onButtonPress));
         END_CONTROL
 
-        BEGIN_CONTROL(BUTTON_DOWN,Prc148_RscButton,"12010+106")
+        BEGIN_CONTROL(BUTTON_DOWN,Prc148_RscButton,12010+106)
             BUTTON_GRID(0,1);
             BUTTONSIZE;
             text = "";
             onMouseButtonUp = QUOTE((['DOWN'] + _this) call FUNC(onButtonPress));
         END_CONTROL
 
-        BEGIN_CONTROL(BUTTON_UP,Prc148_RscButton,"12010+107")
+        BEGIN_CONTROL(BUTTON_UP,Prc148_RscButton,12010+107)
             BUTTON_GRID(1,1);
             BUTTONSIZE;
             text = "";
             onMouseButtonUp = QUOTE((['UP'] + _this) call FUNC(onButtonPress));
         END_CONTROL
 
-        BEGIN_CONTROL(BUTTON_ESC,Prc148_RscButton,"12010+108")
+        BEGIN_CONTROL(BUTTON_ESC,Prc148_RscButton,12010+108)
             BUTTON_GRID(2,0);
             BUTTONSIZE;
             text = "";
             onMouseButtonUp = QUOTE((['ESC'] + _this) call FUNC(onButtonPress));
         END_CONTROL
 
-        BEGIN_CONTROL(BUTTON_ENT,Prc148_RscButton,"12010+109")
+        BEGIN_CONTROL(BUTTON_ENT,Prc148_RscButton,12010+109)
             BUTTON_GRID(2,1);
             BUTTONSIZE;
             text = "";
             onMouseButtonUp = QUOTE((['ENT'] + _this) call FUNC(onButtonPress));
         END_CONTROL
 
-        BEGIN_CONTROL(BUTTON_ALT,Prc148_RscButton,"12010+110")
+        BEGIN_CONTROL(BUTTON_ALT,Prc148_RscButton,12010+110)
             BUTTON_GRID(0,2);
             w = QUOTE(SCALE*0.029*SafeZoneH);
             h = QUOTE(SCALE*0.037*SafeZoneH);
@@ -310,7 +310,7 @@ class PRC148_RadioDialog {
             onMouseButtonUp = QUOTE(['ALT'] call FUNC(onButtonPress));
         END_CONTROL
 
-        BEGIN_CONTROL(BUTTON_VOLUME,Prc148_RscButton,"12010+201")
+        BEGIN_CONTROL(BUTTON_VOLUME,Prc148_RscButton,12010+201)
             x = QUOTE(((((0.41-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = QUOTE(((((0.1-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = QUOTE(SCALE*0.0435*SafeZoneH);
@@ -332,7 +332,7 @@ class PRC148_RadioDialog {
             toolTip = QUOTE(Current volume: 100%);
         END_CONTROL
 
-        BEGIN_CONTROL(BUTTON_CHANNEL,Prc148_RscButton,"12010+202")
+        BEGIN_CONTROL(BUTTON_CHANNEL,Prc148_RscButton,12010+202)
             x = QUOTE(((((0.480-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             y = QUOTE(((((0.1-0.5)*SCALE)+0.5) * SafeZoneH) + SafeZoneY);
             w = QUOTE(SCALE*0.0435*SafeZoneH);

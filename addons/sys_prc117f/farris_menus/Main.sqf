@@ -24,7 +24,7 @@ GVAR(INVALID_MODE) = ["INVALID_MODE", "INVALID_MODE", "",
     [
         //[ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
         [ROW_XLARGE_1, ALIGN_LEFT, "INVALID MODE"],
-        [ROW_LARGE_3, ALIGN_LEFT, "ONLY PT SUPPORTED"]
+        [ROW_LARGE_3, ALIGN_LEFT, "ONLY PT/CT SUPPORTED"]
     ],
     [
         nil, // onEntry
@@ -37,7 +37,7 @@ GVAR(INVALID_MODE) = ["INVALID_MODE", "INVALID_MODE", "",
 GVAR(NoItems) = ["ERROR_NOENTRY", "ERROR_NOENTRY", "",
     MENUTYPE_STATIC,
     [
-        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat      $cch-channelmode              $cch-encryption"],
+        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting VOL         $cch-channelmode $cch-squelch $cch-encryption"],
         [ROW_LARGE_2, ALIGN_LEFT, "<NO ITEMS IN MENU>"],
         [ROW_SMALL_5, ALIGN_CENTER, "ENT OR CLR TO CONT"]
     ],
@@ -86,7 +86,7 @@ GVAR(NOT_IMPLEMENTED) = ["NOT_IMPLEMENTED", "NOT_IMPLEMENTED", "",
 GVAR(VOLUME) = ["VOLUME", "VOLUME", "",
     MENUTYPE_STATIC,
     [
-        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting VOL         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+        [ROW_SMALL_1, ALIGN_LEFT, "$transmitting VOL         $cch-channelmode $cch-squelch $cch-encryption"],
         [ROW_LARGE_2, ALIGN_CENTER, "VOLUME"]
     ],
     [
@@ -115,7 +115,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
         ["VULOSHOME-MAIN", "VULOSHOME-MAIN", "",
             MENUTYPE_STATIC,
             [
-                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat      $cch-channelmode              $cch-encryption"],
+                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting VOL     $cch-channelmode $cch-tek $cch-encryption"],
                 [ROW_LARGE_2, ALIGN_LEFT, "$cch-number-$cch-name"],
                 [ROW_LARGE_3, ALIGN_LEFT, "LOS  VOC  OFF $cch-modulation   $cch-squelch"],
                 [ROW_SMALL_5, ALIGN_LEFT, "TYPE    ADF   DATA  MOD     SQL"]
@@ -147,7 +147,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
         ["VULOSHOME-CHANNEL", "VULOSHOME-CHANNEL", "",
             MENUTYPE_STATIC,
             [
-                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting VOL         $cch-channelmode $cch-squelch $cch-encryption"],
                 [ROW_LARGE_2, ALIGN_LEFT, "R: $cch-frequencyrx"],
                 [ROW_LARGE_3, ALIGN_LEFT, "T: $cch-frequencytx              $cch-trafficrate "],
                 [ROW_SMALL_5, ALIGN_LEFT, " FREQUENCY            RATE"]
@@ -175,7 +175,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
         ["VULOSHOME-DATA", "VULOSHOME-DATA", "",
             MENUTYPE_STATIC,
             [
-                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting VOL         $cch-channelmode $cch-squelch $cch-encryption"],
                 [ROW_LARGE_2, ALIGN_LEFT, "--- -----   --"],
                 [ROW_LARGE_3, ALIGN_LEFT, "$cch-optioncode ---- ANLG --   OFF"],
                 [ROW_SMALL_5, ALIGN_LEFT, "OPT   DATA   VOICE  INTLV   FEC"]
@@ -203,7 +203,7 @@ GVAR(VULOSHOME) = ["VULOSHOME", "VULOSHOME", "",
         ["VULOSHOME-LARGEFONT", "VULOSHOME-LARGEFONT", "",
             MENUTYPE_STATIC,
             [
-                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting $bat         $cch-channelmode $cch-squelch ----- $cch-encryption"],
+                [ROW_SMALL_1, ALIGN_LEFT, "$transmitting VOL         $cch-channelmode $cch-squelch $cch-encryption"],
                 [ROW_XLARGE_2, ALIGN_LEFT, "$cch-number*$cch-name"]
             ],
             [

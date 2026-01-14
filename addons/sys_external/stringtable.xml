@@ -3,222 +3,222 @@
     <Package name="sys_external">
         <Key ID="STR_ACRE_sys_external_externalRadios">
             <English>Shared Radios</English>
+            <Czech>Sdílené rádia</Czech>
+            <French>Radios partagées</French>
             <Spanish>Radios compartidas</Spanish>
-            <German>Geteilte Funkgeräte</German>
-            <Japanese>共有中の無線機</Japanese>
-            <Russian>Общие рации</Russian>
+            <Italian>Radio Condivise</Italian>
             <Polish>Udostępnione radia</Polish>
+            <Portuguese>Rádios Compartilhados</Portuguese>
+            <Russian>Общие рации</Russian>
+            <German>Geteilte Funkgeräte</German>
+            <Korean>무전기가 공유됨</Korean>
+            <Japanese>共有中の無線機</Japanese>
             <Chinese>共用無線電</Chinese>
             <Chinesesimp>共用无线电</Chinesesimp>
-            <Korean>무전기가 공유됨</Korean>
-            <Portuguese>Rádios Compartilhados</Portuguese>
-            <Italian>Radio Condivise</Italian>
-            <French>Radios partagées</French>
             <Turkish>Paylaşılan Telsizler</Turkish>
-            <Czech>Sdílené rádia</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_external_shareRadio">
-            <English>Share</English>
-            <Spanish>Compartir</Spanish>
-            <German>Teilen</German>
-            <Japanese>共有</Japanese>
-            <Russian>Передать</Russian>
-            <Polish>Udostępnij</Polish>
-            <Chinese>共用</Chinese>
-            <Chinesesimp>共用</Chinesesimp>
-            <Korean>공유</Korean>
-            <Portuguese>Compartilhar</Portuguese>
-            <Italian>Condividi</Italian>
-            <French>Partager</French>
-            <Turkish>Paylaş</Turkish>
-            <Czech>Sdílet</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_external_unshareRadio">
-            <English>Unshare</English>
-            <Spanish>No compartir</Spanish>
-            <German>Nicht teilen</German>
-            <Japanese>共有解除</Japanese>
-            <Russian>Забрать</Russian>
-            <Polish>Wył.</Polish>
-            <Chinese>取消共用</Chinese>
-            <Chinesesimp>取消共用</Chinesesimp>
-            <Korean>공유 해제</Korean>
-            <Portuguese>Descompartilhar</Portuguese>
-            <Italian>Non condividere</Italian>
-            <French>Ne plus partager</French>
-            <Turkish>Paylaşmayı Bırak</Turkish>
-            <Czech>Přestat sdílet</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_external_takeHandset">
-            <English>Take Handset</English>
-            <Japanese>ハンドセットを取る</Japanese>
-            <Chinese>拿起聽筒</Chinese>
-            <Chinesesimp>拿起听筒</Chinesesimp>
-            <Korean>헤드셋 얻기</Korean>
-            <Portuguese>Pegar Aparelho</Portuguese>
-            <Polish>Weź słuchawkę</Polish>
-            <Italian>Prendi cornetta</Italian>
-            <Spanish>Coger transmisor</Spanish>
-            <French>Prendre le combiné</French>
-            <German>Handteil nehmen</German>
-            <Russian>Взять трубку</Russian>
-            <Turkish>Ahizeyi Al</Turkish>
-            <Czech>Nandat si sluchátka</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_external_takeHeadset">
-            <English>Take Headset</English>
-            <Spanish>Coger auriculares</Spanish>
-            <German>Kopfhörer nehmen</German>
-            <Japanese>ヘッドセットを取る</Japanese>
-            <Russian>Взять наушники</Russian>
-            <Polish>Weź słuchawki</Polish>
-            <Chinese>拿起耳機</Chinese>
-            <Chinesesimp>拿起耳机</Chinesesimp>
-            <Korean>헤드셋 얻기</Korean>
-            <Portuguese>Pegar Fones</Portuguese>
-            <Italian>Prendi cuffia</Italian>
-            <French>Prendre le casque</French>
-            <Turkish>Kulaklığı Al</Turkish>
-            <Czech>Nandat si sluchátka</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_external_returnHandset">
-            <English>Return Handset</English>
-            <Japanese>ハンドセットを戻す</Japanese>
-            <Chinese>放回聽筒</Chinese>
-            <Chinesesimp>放回听筒</Chinesesimp>
-            <Korean>헤드셋 돌려놓기</Korean>
-            <Portuguese>Retornar Aparelho</Portuguese>
-            <Polish>Odłóż słuchawkę</Polish>
-            <Italian>Restituisci cornetta</Italian>
-            <Spanish>Devolver transmisor</Spanish>
-            <French>Rendre le combiné</French>
-            <German>Handteil zurückgeben</German>
-            <Russian>Вернуть трубку</Russian>
-            <Turkish>Ahizeyi Bırak</Turkish>
-            <Czech>Vrátit sluchátka</Czech>
-        </Key>
-        <Key ID="STR_ACRE_sys_external_returnHeadset">
-            <English>Return Headset</English>
-            <Spanish>Devolver auriculares</Spanish>
-            <German>Kopfhörer zurückgeben</German>
-            <Japanese>ヘッドセットを戻す</Japanese>
-            <Russian>Вернуть наушники</Russian>
-            <Polish>Odłóż słuchawki</Polish>
-            <Chinese>放回耳機</Chinese>
-            <Chinesesimp>放回耳机</Chinesesimp>
-            <Korean>헤드셋 돌려놓기</Korean>
-            <Portuguese>Retornar Fones</Portuguese>
-            <Italian>Restituisci cuffia</Italian>
-            <French>Rendre le casque</French>
-            <Turkish>Kulaklığı Bırak</Turkish>
-            <Czech>Vrátit sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHandset">
             <English>Give Handset</English>
+            <Czech>Dát sluchátka</Czech>
+            <French>Donner le combiné</French>
+            <Spanish>Dar transmisor</Spanish>
+            <Italian>Passa cornetta</Italian>
+            <Polish>Podaj słuchawkę</Polish>
+            <Portuguese>Dar Aparelho</Portuguese>
+            <Russian>Дать трубку</Russian>
+            <German>Handteil geben</German>
+            <Korean>헤드셋 주기</Korean>
             <Japanese>ハンドセットを渡す</Japanese>
             <Chinese>給予聽筒</Chinese>
             <Chinesesimp>给予听筒</Chinesesimp>
-            <Korean>헤드셋 주기</Korean>
-            <Portuguese>Dar Aparelho</Portuguese>
-            <Polish>Podaj słuchawkę</Polish>
-            <Italian>Passa cornetta</Italian>
-            <Spanish>Dar transmisor</Spanish>
-            <French>Donner le combiné</French>
-            <German>Handteil geben</German>
-            <Russian>Дать трубку</Russian>
             <Turkish>Ahizeyi Ver</Turkish>
-            <Czech>Dát sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_giveHeadset">
             <English>Give Headset</English>
+            <Czech>Dát sluchátka</Czech>
+            <French>Donner le casque</French>
             <Spanish>Dar auriculares</Spanish>
-            <German>Kopfhörer geben</German>
-            <Japanese>ヘッドセットを渡す</Japanese>
-            <Russian>Дать наушники</Russian>
+            <Italian>Passa cuffia</Italian>
             <Polish>Podaj słuchawki</Polish>
+            <Portuguese>Dar Fones</Portuguese>
+            <Russian>Дать наушники</Russian>
+            <German>Kopfhörer geben</German>
+            <Korean>헤드셋 주기</Korean>
+            <Japanese>ヘッドセットを渡す</Japanese>
             <Chinese>給予耳機</Chinese>
             <Chinesesimp>给予耳机</Chinesesimp>
-            <Korean>헤드셋 주기</Korean>
-            <Portuguese>Dar Fones</Portuguese>
-            <Italian>Passa cuffia</Italian>
-            <French>Donner le casque</French>
             <Turkish>Kulaklığı Ver</Turkish>
-            <Czech>Dát sluchátka</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintGiveOwner">
             <English>%1 gave your %2 to %3</English>
+            <Czech>%1 dal tvůj %2 uživateli %3</Czech>
+            <French>%1 a donné votre %2 à %3.</French>
+            <Spanish>%1 ha dado tu %2 a %3</Spanish>
+            <Italian>%1 ha dato la tua %2 a %3</Italian>
+            <Polish>%1 podał twoje %2 do %3</Polish>
+            <Portuguese>%1 deu seu %2 para %3</Portuguese>
+            <Russian>%1 передал вашу %2 %3</Russian>
+            <German>%1 gab dein %2 an %3</German>
+            <Korean>%1은 %3에게 %2를 주었다</Korean>
             <Japanese>%1 は %2 を %3 へ渡した</Japanese>
             <Chinese>%1把你的%2交給%3</Chinese>
             <Chinesesimp>%1把你的%2交给%3</Chinesesimp>
-            <Korean>%1은 %3에게 %2를 주었다</Korean>
-            <Portuguese>%1 deu seu %2 para %3</Portuguese>
-            <Polish>%1 podał twoje %2 do %3</Polish>
-            <Italian>%1 ha dato la tua %2 a %3</Italian>
-            <Spanish>%1 ha dado tu %2 a %3</Spanish>
-            <French>%1 a donné votre %2 à %3.</French>
-            <German>%1 gab dein %2 an %3</German>
-            <Russian>%1 передал вашу %2 %3</Russian>
-            <Czech>%1 dal tvůj %2 uživateli %3</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturn">
             <English>Stop using %1 from %2</English>
-            <Japanese>%2 の %1 の使用を終了する</Japanese>
-            <Russian>Перестать использовать %1 из %2</Russian>
+            <Czech>Přestat používat %1 z %2</Czech>
+            <French>Arrêter d'utiliser %1 de %2</French>
+            <Spanish>Deja de usar %1 de %2</Spanish>
+            <Italian>Smesso di usare %1 da %2</Italian>
             <Polish>Przestałeś używać %1 od %2</Polish>
+            <Portuguese>Parar de usar %1 de %2</Portuguese>
+            <Russian>Перестать использовать %1 из %2</Russian>
+            <German>%1 von %2 nicht länger benutzen</German>
+            <Korean>%2의 %1을 사용중지</Korean>
+            <Japanese>%2 の %1 の使用を終了する</Japanese>
             <Chinese>停止使用%2的%1</Chinese>
             <Chinesesimp>停止使用%2的%1</Chinesesimp>
-            <Korean>%2의 %1을 사용중지</Korean>
-            <Portuguese>Parar de usar %1 de %2</Portuguese>
-            <Italian>Smesso di usare %1 da %2</Italian>
-            <Spanish>Deja de usar %1 de %2</Spanish>
-            <French>Arrêter d'utiliser %1 de %2</French>
-            <German>%1 von %2 nicht länger benutzen</German>
-            <Czech>Přestat používat %1 z %2</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintReturnOwner">
             <English>%1 stopped using your %2</English>
+            <Czech>%1 přestal(a) používat váš %2</Czech>
+            <French>%1 a arrêté d'utiliser votre %2.</French>
+            <Spanish>%1 ha dejado de usar tu %2</Spanish>
+            <Italian>%1 ha smesso di usare la tua %2</Italian>
+            <Polish>%1 przestał używać twojego %2</Polish>
+            <Portuguese>%1 parou de usar seu %2</Portuguese>
+            <Russian>%1 прекратил использовать вашу %2</Russian>
+            <German>%1 hat aufgehört dein %2 zu nutzen</German>
+            <Korean>%1가 %2의 사용을 중지함</Korean>
             <Japanese>%1 は %2 の使用を終了した</Japanese>
             <Chinese>%1停止使用你的%2</Chinese>
             <Chinesesimp>%1停止使用你的%2</Chinesesimp>
-            <Korean>%1가 %2의 사용을 중지함</Korean>
-            <Portuguese>%1 parou de usar seu %2</Portuguese>
-            <Polish>%1 przestał używać twojego %2</Polish>
-            <Italian>%1 ha smesso di usare la tua %2</Italian>
-            <Spanish>%1 ha dejado de usar tu %2</Spanish>
-            <French>%1 a arrêté d'utiliser votre %2.</French>
-            <German>%1 hat aufgehört dein %2 zu nutzen</German>
-            <Russian>%1 прекратил использовать вашу %2</Russian>
-            <Czech>%1 přestal(a) používat váš %2</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTake">
             <English>Start using %1 from %2</English>
-            <Japanese>%2 の %1 を使用する</Japanese>
-            <Russian>Начать использовать %1 из %2</Russian>
+            <Czech>Začněte používat %1 z %2</Czech>
+            <French>Commencer à utiliser %1 de %2</French>
+            <Spanish>Usa %1 de %2</Spanish>
+            <Italian>Inizia ad usare %1 da %2</Italian>
             <Polish>Używasz %1 od %2</Polish>
+            <Portuguese>Começar a usar %1 de %2</Portuguese>
+            <Russian>Начать использовать %1 из %2</Russian>
+            <German>Beginne %1 von %2 zu nutzen</German>
+            <Korean>%2의 %1을 사용시작</Korean>
+            <Japanese>%2 の %1 を使用する</Japanese>
             <Chinese>開始使用%2的%1</Chinese>
             <Chinesesimp>开始使用%2的%1</Chinesesimp>
-            <Korean>%2의 %1을 사용시작</Korean>
-            <Portuguese>Começar a usar %1 de %2</Portuguese>
-            <Italian>Inizia ad usare %1 da %2</Italian>
-            <Spanish>Usa %1 de %2</Spanish>
-            <French>Commencer à utiliser %1 de %2</French>
-            <German>Beginne %1 von %2 zu nutzen</German>
-            <Czech>Začněte používat %1 z %2</Czech>
         </Key>
         <Key ID="STR_ACRE_sys_external_hintTakeOwner">
             <English>%1 started using your %2</English>
+            <Czech>%1 začal(a) používat váš %2</Czech>
+            <French>%1 a commencé à utiliser votre %2.</French>
+            <Spanish>%1 está usando tu %2</Spanish>
+            <Italian>%1 ha iniziato ad usare la tua %2</Italian>
+            <Polish>%1 używa twojego %2</Polish>
+            <Portuguese>%1 começou a usar seu %2</Portuguese>
+            <Russian>%1 начал использовать вашу %2</Russian>
+            <German>%1 benutzt jetzt dein %2</German>
+            <Korean>%1가 %2의 사용을 시작함</Korean>
             <Japanese>%1 は %2 の使用を開始した</Japanese>
             <Chinese>%1開始使用你的%2</Chinese>
             <Chinesesimp>%1开始使用你的%2</Chinesesimp>
-            <Korean>%1가 %2의 사용을 시작함</Korean>
-            <Portuguese>%1 começou a usar seu %2</Portuguese>
-            <Polish>%1 używa twojego %2</Polish>
-            <Italian>%1 ha iniziato ad usare la tua %2</Italian>
-            <Spanish>%1 está usando tu %2</Spanish>
-            <French>%1 a commencé à utiliser votre %2.</French>
-            <German>%1 benutzt jetzt dein %2</German>
-            <Russian>%1 начал использовать вашу %2</Russian>
-            <Czech>%1 začal(a) používat váš %2</Czech>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_returnHandset">
+            <English>Return Handset</English>
+            <Czech>Vrátit sluchátka</Czech>
+            <French>Rendre le combiné</French>
+            <Spanish>Devolver transmisor</Spanish>
+            <Italian>Restituisci cornetta</Italian>
+            <Polish>Odłóż słuchawkę</Polish>
+            <Portuguese>Retornar Aparelho</Portuguese>
+            <Russian>Вернуть трубку</Russian>
+            <German>Handteil zurückgeben</German>
+            <Korean>헤드셋 돌려놓기</Korean>
+            <Japanese>ハンドセットを戻す</Japanese>
+            <Chinese>放回聽筒</Chinese>
+            <Chinesesimp>放回听筒</Chinesesimp>
+            <Turkish>Ahizeyi Bırak</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_returnHeadset">
+            <English>Return Headset</English>
+            <Czech>Vrátit sluchátka</Czech>
+            <French>Rendre le casque</French>
+            <Spanish>Devolver auriculares</Spanish>
+            <Italian>Restituisci cuffia</Italian>
+            <Polish>Odłóż słuchawki</Polish>
+            <Portuguese>Retornar Fones</Portuguese>
+            <Russian>Вернуть наушники</Russian>
+            <German>Kopfhörer zurückgeben</German>
+            <Korean>헤드셋 돌려놓기</Korean>
+            <Japanese>ヘッドセットを戻す</Japanese>
+            <Chinese>放回耳機</Chinese>
+            <Chinesesimp>放回耳机</Chinesesimp>
+            <Turkish>Kulaklığı Bırak</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_shareRadio">
+            <English>Share</English>
+            <Czech>Sdílet</Czech>
+            <French>Partager</French>
+            <Spanish>Compartir</Spanish>
+            <Italian>Condividi</Italian>
+            <Polish>Udostępnij</Polish>
+            <Portuguese>Compartilhar</Portuguese>
+            <Russian>Передать</Russian>
+            <German>Teilen</German>
+            <Korean>공유</Korean>
+            <Japanese>共有</Japanese>
+            <Chinese>共用</Chinese>
+            <Chinesesimp>共用</Chinesesimp>
+            <Turkish>Paylaş</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_takeHandset">
+            <English>Take Handset</English>
+            <Czech>Nandat si sluchátka</Czech>
+            <French>Prendre le combiné</French>
+            <Spanish>Coger transmisor</Spanish>
+            <Italian>Prendi cornetta</Italian>
+            <Polish>Weź słuchawkę</Polish>
+            <Portuguese>Pegar Aparelho</Portuguese>
+            <Russian>Взять трубку</Russian>
+            <German>Handteil nehmen</German>
+            <Korean>헤드셋 얻기</Korean>
+            <Japanese>ハンドセットを取る</Japanese>
+            <Chinese>拿起聽筒</Chinese>
+            <Chinesesimp>拿起听筒</Chinesesimp>
+            <Turkish>Ahizeyi Al</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_takeHeadset">
+            <English>Take Headset</English>
+            <Czech>Nandat si sluchátka</Czech>
+            <French>Prendre le casque</French>
+            <Spanish>Coger auriculares</Spanish>
+            <Italian>Prendi cuffia</Italian>
+            <Polish>Weź słuchawki</Polish>
+            <Portuguese>Pegar Fones</Portuguese>
+            <Russian>Взять наушники</Russian>
+            <German>Kopfhörer nehmen</German>
+            <Korean>헤드셋 얻기</Korean>
+            <Japanese>ヘッドセットを取る</Japanese>
+            <Chinese>拿起耳機</Chinese>
+            <Chinesesimp>拿起耳机</Chinesesimp>
+            <Turkish>Kulaklığı Al</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_external_unshareRadio">
+            <English>Unshare</English>
+            <Czech>Přestat sdílet</Czech>
+            <French>Ne plus partager</French>
+            <Spanish>No compartir</Spanish>
+            <Italian>Non condividere</Italian>
+            <Polish>Wył.</Polish>
+            <Portuguese>Descompartilhar</Portuguese>
+            <Russian>Забрать</Russian>
+            <German>Nicht teilen</German>
+            <Korean>공유 해제</Korean>
+            <Japanese>共有解除</Japanese>
+            <Chinese>取消共用</Chinese>
+            <Chinesesimp>取消共用</Chinesesimp>
+            <Turkish>Paylaşmayı Bırak</Turkish>
         </Key>
     </Package>
 </Project>
