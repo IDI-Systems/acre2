@@ -30,7 +30,7 @@ for "_i" from 1 to 3 do {
     if (count _pttAssign > (_i - 1) && _idx isNotEqualTo (_i - 1)) then {
         private _text = format [LLSTRING(setAsMultiPTT), _i];
         private _icon = format [QPATHTOF(data\icons\ptt_%1.paa), _i];
-        private _action = [format [QGVAR(mpttAssign%1), _i], _text, _icon, LINKFUNC(actionSetMTT), {true}, {}, [_radio, _pttAssign, _i]] call ace_interact_menu_fnc_createAction;
+        private _action = [format [QGVAR(mpttAssign%1), _i], _text, _icon, LINKFUNC(actionSetMTT), {true}, {}, [_radio, _pttAssign, _i - 1]] call ace_interact_menu_fnc_createAction;
         _actions pushBack [_action, [], _target];
     };
 };
