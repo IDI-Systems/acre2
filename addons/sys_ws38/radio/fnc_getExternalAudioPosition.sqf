@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
  * Author: ACRE2Team
- * Only used if a radio has an internal speaker. Since the AN/PRC 343 has none, this function returns an
+ * Only used if a radio has an internal speaker. Since the WS38 has none, this function returns an
  * array of zeros and does nothing.
  *
  * Arguments:

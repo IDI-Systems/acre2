@@ -2,8 +2,6 @@ class CfgWeapons {
     class ACRE_BaseRadio;
     class CBA_MiscItem_ItemInfo;
 
-    // replace ItemRadios icon with the 343 icon for stupid people
-
     class ACRE_WS38: ACRE_BaseRadio {
         displayName = QUOTE(NAME_WS38);
         useActionTitle = QUOTE(NAME_WS38);
