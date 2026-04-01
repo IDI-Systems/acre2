@@ -236,6 +236,7 @@
             <German>Hörer wird gerade benutzt</German>
             <Japanese>車外電話機は使用中です。</Japanese>
             <Chinesesimp>车外对讲机正在使用</Chinesesimp>
+            <Spanish>Teléfono de Infantería actualmente en uso</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_infantryPhone_startCalling">
             <English>Start Calling %1</English>
@@ -636,18 +637,22 @@
         <Key ID="STR_ACRE_sys_intercom_previousWorkKnobKey">
             <English>Previous Work Knob Position</English>
             <German>Vorherige Work-Knopfposition</German>
+            <Spanish>Posición Anterior del Mando de Trabajo</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_previousWorkKnobKey_description">
             <English>Switches to the previous radio rack and sets it as the transmitting radio within the first connected intercom network.</English>
             <German>Setzt das vorherige Fahrzeugfunkgerät als sendendes Funkgerät im ersten verbundenen Bordfunknetzwerk.</German>
+            <Spanish>Cambia al rack de radio anterior y lo establece como la radio transmisora dentro de la primera red de intercomunicador conectada.</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextWorkKnobKey">
             <English>Next Work Knob Position</English>
             <German>Nächste Work-Knopfposition</German>
+            <Spanish>Posición Siguiente del Mando de Trabajo</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_intercom_nextWorkKnobKey_description">
             <English>Switches to the next radio rack and sets it as the transmitting radio within the first connected intercom network.</English>
             <German>Setzt das nächste Fahrzeugfunkgerät als sendendes Funkgerät im ersten verbundenen Bordfunknetzwerk.</German>
+            <Spanish>Cambia al siguiente rack de radio y lo establece como la radio transmisora dentro de la primera red de intercomunicador conectada.</Spanish>
         </Key>
     </Package>
 </Project>

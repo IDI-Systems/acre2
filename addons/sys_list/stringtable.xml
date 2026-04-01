@@ -29,6 +29,7 @@
             <Chinese>無線電循環顏色</Chinese>
             <Chinesesimp>无线电循环颜色</Chinesesimp>
             <Turkish>Telsiz Değiştirme Rengi</Turkish>
+            <Spanish>Cambiar Color de Radio</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_DefaultPTTColor_DisplayName">
             <English>Active Radio Transmit Color</English>
@@ -81,6 +82,7 @@
             <Chinese>多國語言切換顏色</Chinese>
             <Chinesesimp>多国语言切换颜色</Chinesesimp>
             <Turkish>Babel Dil Değiştirme Rengi</Turkish>
+            <Spanish>Cambiar Color de Idioma de Babel</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageHintPersist_Description">
             <English>Prevent the Babel Language Indicator in the bottom right from fading out if a language other than the "main language" (the first assigned spoken language) is selected.</English>
@@ -89,6 +91,7 @@
             <German>Verhindert, wenn eingeschaltet, dass die Babel Sprachanzeige unten-rechts verschwindet während eine andere Sprache als die "Muttersprache" (die erste zugewiesene Sprache) gesprochen wird.</German>
             <Japanese>主言語 (最初に割り当てられた言語) 以外の言語を選択した場合に、右下に表示されるバベル言語インジケータがフェードアウトしないようにします。</Japanese>
             <Chinesesimp>当选择非"母语"(设置的第一种说话语言)说话时, 防止右下角多国语言提示消失</Chinesesimp>
+            <Spanish>Evita que el indicador de idioma Babel en la esquina inferior derecha se desvanezca si se selecciona un idioma distinto al "idioma principal" (el primer idioma hablado asignado).</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_LanguageHintPersist_DisplayName">
             <English>Persist Babel Language Indicator</English>
@@ -97,6 +100,7 @@
             <German>Babel Sprachanzeige bleibt sichtbar</German>
             <Japanese>継続的なバベル言語インジケータ</Japanese>
             <Chinesesimp>永久显示多国语言提示</Chinesesimp>
+            <Spanish>Mantener visible el indicador de idioma Babel</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_NotificationGrid">
             <English>ACRE2 - Radio Notifications</English>
@@ -122,6 +126,7 @@
             <Chinese>顯示哪個無線電通訊通知</Chinese>
             <Chinesesimp>显示哪个无线电通讯通知</Chinesesimp>
             <Turkish>Telsiz ve iletim ile ilgili bildirimler göster</Turkish>
+            <Spanish>Muestra notificaciones relacionadas con las radios y las transmisiones.</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_OpenRadio">
             <English>Open Active Radio</English>
@@ -193,6 +198,7 @@
             <Chinese>切換頻道顏色</Chinese>
             <Chinesesimp>切换频道颜色</Chinesesimp>
             <Turkish>Kanal Değiştirme Rengi</Turkish>
+            <Spanish>Color del Conmutador de Canal</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_list_ToggleHeadsetColor_DisplayName">
             <English>Toggle Headset Color</English>
@@ -206,6 +212,7 @@
             <Chinese>耳機切換顏色</Chinese>
             <Chinesesimp>耳机切换颜色</Chinesesimp>
             <Turkish>Kulaklık Takma/Çıkarma Rengi</Turkish>
+            <Spanish>Alternar Color de Auricular</Spanish>
         </Key>
     </Package>
 </Project>

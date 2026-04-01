@@ -8,6 +8,7 @@
             <Italian>Array di Array (separati da virgola) per impostare i canali radio di una determinata unità.\nÈ possibile impostare molteplici radio dello stesso tipo.\nEsempi:\n["ACRE_PRC343",1] -&gt; Canale 1, Blocco 1\n["ACRE_PRC343",[2,3]] -&gt; Canale 2, Blocco 3\n["ACRE_PRC148",5] -&gt; Canale 5 (stesso formato per PRC-148/152/117F, BF-888S e SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Imposta la prima BF-888S su Ch 4, la seconda su Ch 5</Italian>
             <German>Array von Arrays (kommagetrennt), um Funkgerätkanäle einer bestimmten Einheit einzustellen.\nEs ist möglich, mehrere Funkgeräte des gleichen Modells einzustellen.\nBeispiele:\n["ACRE_PRC343",1] -&gt; Kanal 1, Block 1\n["ACRE_PRC343",[2,3]] -&gt; Kanal 2, Block 3\n["ACRE_PRC148",5] -&gt; Kanal 5 (dasselbe gilt für PRC-148/152/117F, BF-888S und SEM 52 SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Setzt das erste BF-888S auf Kanal 4, das zweite auf Kanal 5</German>
             <Japanese>指定されたユニットの無線チャンネルを設定するための配列の配列 (カンマ区切り)。\n同じタイプの無線を複数設定できます。\n単数の例:\n["ACRE_PRC343",1] -&gt; チャンネル 1、ブロック 1\n["ACRE_PRC343",[2,3]] -&gt; チャンネル 2、ブロック 3\n["ACRE_PRC148",5] -&gt; チャンネル 5 (PRC-148/152/117F、BF-888S、SEM52SL の場合も同様)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; 最初のBF-888SをCh 4に設定し、2番目をCh 5に設定します</Japanese>
+            <Spanish>Array de arrays (separados por comas) para configurar los canales de radio de la unidad indicada.\nEs posible configurar múltiples radios del mismo tipo.\nEjemplos individuales:\n["ACRE_PRC343",1] -&gt; Canal 1, Bloque 1\n["ACRE_PRC343",[2,3]] -&gt; Canal 2, Bloque 3\n["ACRE_PRC148",5] -&gt; Canal 5 (igual para PRC-148/152/117F, BF-888S y SEM52SL)\n["ACRE_PRC77",[31,15]] -&gt; 31.15 MHz\n["ACRE_SEM70",[34,075]] -&gt; 34.075 MHz\n["ACRE_BF888S",4],["ACRE_BF888S",5] -&gt; Configura el primer BF-888S en Canal 4, el segundo en Canal 5</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_3den_RadioSetup_DisplayName">
             <English>Radio Channel Setup</English>
@@ -16,6 +17,7 @@
             <Italian>Canali radio preimpostati</Italian>
             <German>Funkkanal-Einstellung</German>
             <Japanese>ラジオチャンネルのセットアップ</Japanese>
+            <Spanish>Configuración de Canales de Radio</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_Description">
             <English>Default radio inventory items will be replaced with this type of radio.</English>
@@ -25,6 +27,7 @@
             <German>Standard Funkinventargegenstände werden durch diesen Funkgerätetyp ersetzt.</German>
             <Japanese>インベントリにあるデフォルトの無線機アイテムは、 このタイプの無線機に置き換えられます。</Japanese>
             <Chinesesimp>自带的默认无线电物品将会被这种无线电替代</Chinesesimp>
+            <Spanish>Los elementos predeterminados del inventario de radios serán reemplazados por este tipo de radio.</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_DefaultRadio_DisplayName">
             <English>Radio Item Replacement</English>
@@ -34,6 +37,7 @@
             <German>Austausch des Funkgeräts</German>
             <Japanese>無線機アイテムの置き換え</Japanese>
             <Chinesesimp>替换默认无线电</Chinesesimp>
+            <Spanish>Reemplazo de Radio</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_acreBaseBox">
             <English>ACRE Base Box</English>
@@ -212,6 +216,7 @@
             <German>Kanal wechseln</German>
             <Japanese>チャンネルを変更</Japanese>
             <Chinesesimp>修改频道</Chinesesimp>
+            <Spanish>Cambiar Canal</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
@@ -221,6 +226,7 @@
             <German>Lautstärke ändern</German>
             <Japanese>音量の変更</Japanese>
             <Chinesesimp>调整音量</Chinesesimp>
+            <Spanish>Cambiar Volumen</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentChannel">
             <English>Current Channel</English>
@@ -242,6 +248,7 @@
             <German>Aktueller Kanalblock</German>
             <Japanese>現在のチャンネルブロック</Japanese>
             <Chinesesimp>当前频道区块</Chinesesimp>
+            <Spanish>Bloque de Canal Actual</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_CurrentVolume">
             <English>Current Volume</English>
@@ -251,6 +258,7 @@
             <German>Aktuelle Lautstärke</German>
             <Japanese>現在の変更</Japanese>
             <Chinesesimp>当前音量</Chinesesimp>
+            <Spanish>Volumen Actual</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
@@ -260,6 +268,7 @@
             <German>Funkgerät aus</German>
             <Japanese>無線オフ</Japanese>
             <Chinesesimp>无线电已关闭</Chinesesimp>
+            <Spanish>Radio Apagada</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleAttach">
             <English>Attach handle</English>
@@ -269,6 +278,7 @@
             <German>Griff anbringen</German>
             <Japanese>ハンドルを取り付ける</Japanese>
             <Chinesesimp>安装手柄</Chinesesimp>
+            <Spanish>Colocar el asa</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_handleDetach">
             <English>Detach handle</English>
@@ -278,6 +288,7 @@
             <German>Griff abnehmen</German>
             <Japanese>ハンドルを外す</Japanese>
             <Chinesesimp>取下手柄</Chinesesimp>
+            <Spanish>Desmontar el asa</Spanish>
         </Key>
     </Package>
 </Project>

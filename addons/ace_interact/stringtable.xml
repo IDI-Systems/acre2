@@ -96,6 +96,7 @@
             <Italian>%1 Bc %2 Cn %3</Italian>
             <German>%1 Bk %2 Kn %3</German>
             <Japanese>%1 Blk %2 Ch %3</Japanese>
+            <Spanish>%1 Bq %2 Cn %3</Spanish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelNetIDShort">
             <English>Chn %1 NetID %2</English>
@@ -103,6 +104,7 @@
             <Italian>Cn %1 Rete %2</Italian>
             <German>SP %1 FK-Nr %2</German>
             <Japanese>Ch %1 NetID %2</Japanese>
+            <Spanish>Cn %1 IDRed %2</Spanish>
         </Key>
         <Key ID="STR_ACRE_ace_interact_channelShort">
             <English>%1 Chn: %2</English>

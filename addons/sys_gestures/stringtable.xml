@@ -45,6 +45,7 @@
             <German>Zeige verbindungskabel</German>
             <Japanese>通信ケーブルワイヤーの表示</Japanese>
             <Chinesesimp>显示连接线缆</Chinesesimp>
+            <Spanish>Mostrar Cables de Conexión</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_showConnectorRopes_description">
             <English>Connections to infantry phones, GSAs and shared radios will be visualized with connector wires.</English>
@@ -54,6 +55,7 @@
             <German>Verbindungen zu Gegensprechanlage, BBA und Geteilten Funkgeräten werden mit Kabeln visualisiert.</German>
             <Japanese>車外電話機、地上アンテナ、共有無線への接続をケーブルワイヤーで視覚化します。</Japanese>
             <Chinesesimp>使用车辆电话, 地钉天线, 共享无线电时显示连接线缆</Chinesesimp>
+            <Spanish>Las conexiones a los teléfonos de infantería, antena de estaca al suelo y radios compartidas serán visualizadas con cables de conexión.</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_gestures_stopADS">
             <English>Prevent Aim Down Sights</English>

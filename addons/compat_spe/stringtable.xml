@@ -9,6 +9,7 @@
             <German>Bfw. Jagdpanther</German>
             <Japanese>Bfw. Jagdpanther</Japanese>
             <Chinesesimp>猎豹坦克歼击车(指挥型)</Chinesesimp>
+            <Spanish>Bfw. Jagdpanther</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_Intercom_Crew">
             <English>Crew Intercom</English>
@@ -18,6 +19,7 @@
             <German>Bordfunk Besatzung</German>
             <Japanese>乗員インターコム</Japanese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
+            <Spanish>Intercomunicador de Tripulación</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_Intercom_Short">
             <English>IntCm</English>
@@ -27,6 +29,7 @@
             <German>BFunk</German>
             <Japanese>インコム</Japanese>
             <Chinesesimp>机组员对讲机</Chinesesimp>
+            <Spanish>IntCm</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_105_Command">
             <English>M4(105) Sherman (Command)</English>
@@ -36,6 +39,7 @@
             <German>M4(105) Sherman (Kommando)</German>
             <Japanese>M4(105) Sherman (指揮車)</Japanese>
             <Chinesesimp>M4(105)屑尔曼(指挥型)</Chinesesimp>
+            <Spanish>M4(105) Sherman (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Command">
             <English>M4 Sherman (Late) (Command)</English>
@@ -45,6 +49,7 @@
             <German>M4 Sherman (Spät) (Kommando)</German>
             <Japanese>M4 Sherman (Late) (指揮車)</Japanese>
             <Chinesesimp>M4屑尔曼(后期型)(指挥型)</Chinesesimp>
+            <Spanish>M4 Sherman (Tardío) (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_75_Early_Command">
             <English>M4 Sherman (Command)</English>
@@ -54,6 +59,7 @@
             <German>M4 Sherman (Kommando)</German>
             <Japanese>M4 Sherman (指揮車)</Japanese>
             <Chinesesimp>M4屑尔曼(指挥型)</Chinesesimp>
+            <Spanish>M4 Sherman (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A0_composite_Command">
             <English>M4 Sherman (Composite) (Command)</English>
@@ -63,6 +69,7 @@
             <German>M4 Sherman (Hybrid) (Kommando)</German>
             <Japanese>M4 Sherman (Composite) (指揮車)</Japanese>
             <Chinesesimp>M4屑尔曼(复合型)(指挥型)</Chinesesimp>
+            <Spanish>M4 Sherman (Compuesto) (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_75_Command">
             <English>M4A1 Sherman (Late) (Command)</English>
@@ -72,6 +79,7 @@
             <German>M4A1 Sherman (Spät) (Kommando)</German>
             <Japanese>M4A1 Sherman (Late) (指揮車)</Japanese>
             <Chinesesimp>M4A1屑尔曼(后期型)(指挥型)</Chinesesimp>
+            <Spanish>M4A1 Sherman (Tardío) (Command)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_75_erla_Command">
             <English>M4A1 Sherman (Command)</English>
@@ -81,6 +89,7 @@
             <German>M4A1 Sherman (Kommando)</German>
             <Japanese>M4A1 Sherman (指揮車)</Japanese>
             <Chinesesimp>M4A1屑尔曼(指挥型)</Chinesesimp>
+            <Spanish>M4A1 Sherman (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A1_76_Command">
             <English>M4A1(76)W Sherman (Command)</English>
@@ -90,6 +99,7 @@
             <German>M4A1(76)W Sherman (Kommando)</German>
             <Japanese>M4A1(76)W Sherman (指揮車)</Japanese>
             <Chinesesimp>M4A1(76)W屑尔曼(指挥型)</Chinesesimp>
+            <Spanish>M4A1(76)W Sherman (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_105_Command">
             <English>M4A3(105) Sherman (Command)</English>
@@ -99,6 +109,7 @@
             <German>M4A3(105) Sherman (Kommando)</German>
             <Japanese>M4A3(105) Sherman (指揮車)</Japanese>
             <Chinesesimp>M4A3(105)屑尔曼(指挥型)</Chinesesimp>
+            <Spanish>M4A3(105) Sherman (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_75_Command">
             <English>M4A3(75)W Sherman (Command)</English>
@@ -108,6 +119,7 @@
             <German>M4A3(75)W Sherman (Kommando)</German>
             <Japanese>M4A3(75)W Sherman (指揮車)</Japanese>
             <Chinesesimp>M4A3(75)W屑尔曼(指挥型)</Chinesesimp>
+            <Spanish>M4A3(75)W Sherman (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_M4A3_76_Command">
             <English>M4A3(76)W Sherman (Command)</English>
@@ -117,6 +129,7 @@
             <German>M4A3(76)W Sherman (Kommando)</German>
             <Japanese>M4A3(76)W Sherman (指揮車)</Japanese>
             <Chinesesimp>M4A3(76)W屑尔曼(指挥型)</Chinesesimp>
+            <Spanish>M4A3(76)W Sherman (Mando)</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIII_K">
             <English>PzBefWg III Ausf. K</English>
@@ -126,6 +139,7 @@
             <German>PzBefWg III Ausf. K</German>
             <Japanese>PzBefWg III Ausf. K</Japanese>
             <Chinesesimp>三号坦克K型</Chinesesimp>
+            <Spanish>PzBefWg III Ausf. K</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgIV">
             <English>PzBefWg IV</English>
@@ -135,6 +149,7 @@
             <German>PzBefWg IV</German>
             <Japanese>PzBefWg IV</Japanese>
             <Chinesesimp>四号坦克</Chinesesimp>
+            <Spanish>PzBefWg IV</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgV">
             <English>PzBefWg V</English>
@@ -144,6 +159,7 @@
             <German>PzBefWg V</German>
             <Japanese>PzBefWg V</Japanese>
             <Chinesesimp>五号坦克"豹"</Chinesesimp>
+            <Spanish>PzBefWg V</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_PzBefWgVI">
             <English>PzBefWg VI</English>
@@ -153,6 +169,7 @@
             <German>PzBefWg VI</German>
             <Japanese>PzBefWg VI</Japanese>
             <Chinesesimp>六号坦克"虎"</Chinesesimp>
+            <Spanish>PzBefWg VI</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioOperator">
             <English>Radio Operator</English>
@@ -162,6 +179,7 @@
             <German>Funker</German>
             <Japanese>無線手</Japanese>
             <Chinesesimp>无线电操作员</Chinesesimp>
+            <Spanish>Operador de Radio</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet">
             <English>Radio Set</English>
@@ -171,6 +189,7 @@
             <German>Funkkanäle</German>
             <Japanese>無線セット</Japanese>
             <Chinesesimp>电台装置</Chinesesimp>
+            <Spanish>Equipo de Radio</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_GER">
             <English>Radio Set - Anton</English>
@@ -180,6 +199,7 @@
             <German>Kanäle - Anton</German>
             <Japanese>無線セット - Anton</Japanese>
             <Chinesesimp>电台A - 德国</Chinesesimp>
+            <Spanish>Equipo de Radio - Anton</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_Short">
             <English>A-Set</English>
@@ -189,6 +209,7 @@
             <German>A-Kanäle</German>
             <Japanese>Aセット</Japanese>
             <Chinesesimp>电台A</Chinesesimp>
+            <Spanish>Equipo A</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet1_US">
             <English>Radio Set - Able</English>
@@ -198,6 +219,7 @@
             <German>Kanäle - Able</German>
             <Japanese>無線セット - Able</Japanese>
             <Chinesesimp>电台A - 美国</Chinesesimp>
+            <Spanish>Equipo de Radio - Able</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_GER">
             <English>Radio Set - Bruno</English>
@@ -207,6 +229,7 @@
             <German>Kanäle - Bruno</German>
             <Japanese>無線セット - Bruno</Japanese>
             <Chinesesimp>电台B - 德国</Chinesesimp>
+            <Spanish>Equipo de Radio - Bruno</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_Short">
             <English>B-Set</English>
@@ -216,6 +239,7 @@
             <German>B-Kanäle</German>
             <Japanese>Bセット</Japanese>
             <Chinesesimp>电台B</Chinesesimp>
+            <Spanish>Equipo B</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSet2_US">
             <English>Radio Set - Baker</English>
@@ -225,6 +249,7 @@
             <German>Kanäle - Baker</German>
             <Japanese>無線セット - Baker</Japanese>
             <Chinesesimp>电台B - 美国</Chinesesimp>
+            <Spanish>Equipo de Radio - Baker</Spanish>
         </Key>
         <Key ID="STR_ACRE_compat_spe_RadioSetShort">
             <English>Radio</English>
@@ -234,6 +259,7 @@
             <German>Funkgerät</German>
             <Japanese>無線</Japanese>
             <Chinesesimp>电台</Chinesesimp>
+            <Spanish>Radio</Spanish>
         </Key>
     </Package>
 </Project>
