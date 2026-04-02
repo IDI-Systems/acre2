@@ -213,6 +213,9 @@
             <Japanese>チャンネルを変更</Japanese>
             <Chinesesimp>修改频道</Chinesesimp>
         </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_changeFrequency">
+            <English>Change Frequency</English>
+        </Key>
         <Key ID="STR_ACRE_sys_radio_ui_ChangeVolume">
             <English>Change Volume</English>
             <Czech>Změnit hlasitost</Czech>
@@ -251,6 +254,9 @@
             <German>Aktuelle Lautstärke</German>
             <Japanese>現在の変更</Japanese>
             <Chinesesimp>当前音量</Chinesesimp>
+        </Key>
+        <Key ID="STR_ACRE_sys_radio_ui_RadioMode">
+            <English>Radio Mode Selector</English>
         </Key>
         <Key ID="STR_ACRE_sys_radio_ui_Radiooff">
             <English>Radio off</English>
