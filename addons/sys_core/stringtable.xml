@@ -501,6 +501,7 @@
         </Key>
         <Key ID="STR_ACRE_sys_core_radioNoise_displayName">
             <English>Radio FX Noise</English>
+            <Japanese>無線効果のノイズ</Japanese>
         </Key>
         <Key ID="STR_ACRE_sys_core_revealToAI_displayName">
             <English>AI Voice Detection</English>
