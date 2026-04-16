@@ -47,6 +47,7 @@
             <Japanese>God</Japanese>
             <Chinesesimp>宙斯</Chinesesimp>
             <Turkish>Tanrı</Turkish>
+            <Spanish>Dios</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_godMode">
             <English>God Mode</English>
@@ -178,6 +179,7 @@
             <Japanese>Godグループにユニットがいません!</Japanese>
             <Chinesesimp>分组中没有玩家!</Chinesesimp>
             <Turkish>Tanrı Grubunda Hiçbir Birim Yok!</Turkish>
+            <Spanish>No hay unidades en el grupo de Dios</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotificationColor_displayName">
             <English>Receive Color</English>
@@ -189,6 +191,7 @@
             <Japanese>受信通知の表示色</Japanese>
             <Chinesesimp>接受颜色</Chinesesimp>
             <Turkish>Alınan Mesaj Rengi</Turkish>
+            <Spanish>Color de Recepción</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_rxNotification_displayName">
             <English>Receive Notification</English>
@@ -200,6 +203,7 @@
             <Japanese>受信通知</Japanese>
             <Chinesesimp>接受提示</Chinesesimp>
             <Turkish>Mesaj Al</Turkish>
+            <Spanish>Notificación de Recepción</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationCurrentChatColor_displayName">
             <English>Current Chat Channel Transmit Color</English>
@@ -211,6 +215,7 @@
             <Japanese>現在のチャットチャンネルへの送信の表示色</Japanese>
             <Chinesesimp>当前聊天频道颜色</Chinesesimp>
             <Turkish>Şu Anki Kanal İletim Rengi</Turkish>
+            <Spanish>Color de transmisión del canal de chat actual</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup1Color_displayName">
             <English>Group 1 Transmit Color</English>
@@ -222,6 +227,7 @@
             <Japanese>グループ1への送信の表示色</Japanese>
             <Chinesesimp>分组1颜色</Chinesesimp>
             <Turkish>Grup 1 İletim Rengi</Turkish>
+            <Spanish>Color de Transmisión de Grupo 1</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup2Color_displayName">
             <English>Group 2 Transmit Color</English>
@@ -233,6 +239,7 @@
             <Japanese>グループ2への送信の表示色</Japanese>
             <Chinesesimp>分组2颜色</Chinesesimp>
             <Turkish>Grup 2 İletim Rengi</Turkish>
+            <Spanish>Color de Transmisión de Grupo 2</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotificationGroup3Color_displayName">
             <English>Group 3 Transmit Color</English>
@@ -244,6 +251,7 @@
             <Japanese>グループ3への送信の表示色</Japanese>
             <Chinesesimp>分组3颜色</Chinesesimp>
             <Turkish>Grup 3 İletim Rengi</Turkish>
+            <Spanish>Color de Transmisión de Grupo 3</Spanish>
         </Key>
         <Key ID="STR_ACRE_sys_godmode_txNotification_displayName">
             <English>Transmit Notification</English>
@@ -255,6 +263,7 @@
             <Japanese>送信通知</Japanese>
             <Chinesesimp>发话提示</Chinesesimp>
             <Turkish>Mesaj İlet</Turkish>
+            <Spanish>Notificación de Transmisión</Spanish>
         </Key>
     </Package>
 </Project>
