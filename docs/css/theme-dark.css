@@ -1,0 +1,12 @@
+/* These colors are used to override bootstrap.min.css */
+
+body {
+    background-color: #333333;
+    color: #d0d0d0;
+}
+
+table {
+    color: #808080;
+}
+
+/* The rest of these settings are from the original light theme */
