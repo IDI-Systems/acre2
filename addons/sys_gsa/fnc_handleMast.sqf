@@ -30,18 +30,22 @@ if (_connectedRadio != "") then {
 
 // Delete the antenna
 private _pos = getPosASL _gsa;
+private _vectorDir = vectorDir _gsa;
+private _vectorUp = vectorUp _gsa;
 deleteVehicle _gsa;
 
 // Create the new vehicle
 if (_mountMast) then {
-    _gsa = "vhf30108Item" createVehicle _pos;
+    _gsa = "vhf30108Item" createVehicle [0,0,0];
 
     _player removeItem "ACRE_VHF30108MAST";
 } else {
-    _gsa = "vhf30108spike" createVehicle _pos;
-
+    _gsa = "vhf30108spike" createVehicle [0,0,0];
+    _pos set [2, (_pos select 2) + 0.168]; // The spike will sink into the ground if not
     [_player, "ACRE_VHF30108MAST", true] call CBA_fnc_addItem;
 };
+_gsa setPosASL _pos;
+_gsa setVectorDirAndUp [_vectorDir, _vectorUp];
 
 // Reconnect the GSA to the radio
 if (_connectedRadio != "") then {
