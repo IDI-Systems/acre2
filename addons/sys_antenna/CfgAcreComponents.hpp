@@ -142,4 +142,22 @@ class CfgAcreComponents {
         binaryGainFile = QPATHTOF(binary\na-701_gain.aba);
         compatibleRadios[] = {"ACRE_BF888S"};
     };
+
+    class ACRE_4FT_AERIAL_ROD: ACRE_BaseAntenna {
+        name = "4ft Aerial Rod";
+        shortName = "4ft Aerial Rod";
+        connector = ACRE_CONNECTOR_ROD;
+        height = 1.22;
+        binaryGainFile = QPATHTOF(binary\AerialRod_4ft_gain.aba);
+        compatibleRadios[] = {"ACRE_WS38"};
+    };
+
+    class ACRE_12FT_AERIAL_ROD: ACRE_BaseAntenna {
+        name = "12ft Aerial Rod";
+        shortName = "12ft Aerial Rod";
+        connector = ACRE_CONNECTOR_ROD;
+        height = 3.66;
+        binaryGainFile = QPATHTOF(binary\AerialRod_12ft_gain.aba);
+        compatibleRadios[] = {"ACRE_WS38"};
+    };
 };

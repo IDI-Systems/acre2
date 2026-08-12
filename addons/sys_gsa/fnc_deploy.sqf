@@ -32,6 +32,10 @@ switch (_gsaItem) do {
         _gsa = "vhf30108spike";
         _canDeploy = true;
     };
+    case "ACRE_12FT_ANTENNA" : {
+        _gsa = "ws38_12ft_antenna";
+        _canDeploy = true;
+    };
 };
 
 if (_canDeploy) then {
