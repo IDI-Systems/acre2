@@ -7,7 +7,7 @@
  * None
  *
  * Return Value:
- * Channel number. Returns -1 if no active radio or the channel can't be found. <NUMBER>
+ * Channel number (or array for PRC77). Returns -1 if no active radio or the channel can't be found. <NUMBER><ARRAY>
  *
  * Example:
  * [] call acre_api_fnc_getCurrentRadioChannelNumber;

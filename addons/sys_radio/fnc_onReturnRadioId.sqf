@@ -7,7 +7,7 @@
  * 0: Player <OBJECT>
  * 1: Base radio class <STRING>
  * 2: Return ID number <NUMBER>
- * 3: Replacement number <NUMBER>
+ * 3: Replacement ID <STRING>
  *
  * Return Value:
  * RETURN VALUE <TYPE>

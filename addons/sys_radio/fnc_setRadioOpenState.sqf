@@ -8,7 +8,7 @@
  * 1: Radio open state <BOOL>
  *
  * Return Value:
- * Can open radio <BOOL>
+ * None
  *
  * Example:
  * ["acre_prc152_id_1", false] call acre_sys_radio_fnc_setRadioOpenState

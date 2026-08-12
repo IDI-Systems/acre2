@@ -22,6 +22,7 @@ params [
 
 if (!([_rackId] call EFUNC(sys_radio,radioExists))) exitWith {
     WARNING_1("Non existant rack ID provided: %1",_rackId);
+    ""
 };
 
 private _return = "";

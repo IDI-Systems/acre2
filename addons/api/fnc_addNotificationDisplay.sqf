@@ -15,7 +15,7 @@
  * Public: Yes
  */
 
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith {-1};
 
 params [["_displayId", -1, [0]]];
 

@@ -7,7 +7,7 @@
  * 0: Terrain loss scale (value between 0 and 1) <NUMBER>
  *
  * Return Value:
- * Terrain loss scale <NUMBER>
+ * Terrain loss scale (or false on headless) <NUMBER><BOOL>
  *
  * Example:
  * [0.5] call acre_sys_core_fnc_setLossModelScale

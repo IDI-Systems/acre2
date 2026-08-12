@@ -4,13 +4,13 @@
  * Show or hide Vehicle Info UI.
  *
  * Arguments:
- * 0: Player <OBJECT>
+ * 0: Show <BOOL>
  *
  * Return Value:
  * None
  *
  * Example:
- * [player] call acre_sys_gui_fnc_showVehicleInfo
+ * [true] call acre_sys_gui_fnc_showVehicleInfo
  *
  * Public: No
  */

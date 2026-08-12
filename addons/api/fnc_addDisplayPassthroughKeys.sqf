@@ -16,6 +16,6 @@
  * Public: Yes
  */
 
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith {false};
 
 _this call EFUNC(sys_core,addDisplayPassthroughKeys);

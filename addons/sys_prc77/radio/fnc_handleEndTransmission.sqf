@@ -7,7 +7,7 @@
  * Arguments:
  * 0: Radio ID <STRING>
  * 1: Event: "handleEndTransmission" <STRING> (Unused)
- * 2: Event data with transmitting ID <STRING>
+ * 2: Event data with transmitting ID <ARRAY>
  * 3: Radio data <HASH> (Unused)
  * 4: Remote <BOOL> (Unused)
  *

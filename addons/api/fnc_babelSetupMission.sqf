@@ -10,7 +10,7 @@
  *   1: Language display name <STRING>
  *
  * Return Value:
- * Setup successful <BOOL>
+ * None
  *
  * Example:
  * [ [west, "English", "French"], [east, "Russian"], [civilian, "French"] ] call acre_api_fnc_babelSetupMission;

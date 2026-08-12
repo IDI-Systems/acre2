@@ -4,7 +4,7 @@
  * Renders the VIC3 FFCS when opened.
  *
  * Arguments:
- * 0: Display identifier <NUMBER>
+ * 0: Display identifier <DISPLAY>
  *
  * Return Value:
  * True <BOOL>

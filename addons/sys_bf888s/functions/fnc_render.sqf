@@ -4,7 +4,7 @@
  * Renders the radio when opened.
  *
  * Arguments:
- * 0: Display identifier <NUMBER>
+ * 0: Display <DISPLAY>
  *
  * Return Value:
  * True <BOOL>

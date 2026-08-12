@@ -5,7 +5,7 @@
  *
  * Arguments:
  * 0: Vehicle <OBJECT>
- * 1: Rack class <STRING>
+ * 1: Rack class <CONFIG>
  *
  * Return Value:
  * Wired Intercoms <ARRAY>

@@ -7,7 +7,7 @@
  * 0: Radio ID <STRING>
  *
  * Return Value:
- * Channel number, 1-N depending on the radio <NUMBER>
+ * Channel number, 1-N depending on the radio (or array for PRC77) <NUMBER><ARRAY>
  *
  * Example:
  * _currentChannel = ["ACRE_PRC152_ID_123"] call acre_api_fnc_getRadioChannel;

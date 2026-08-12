@@ -38,6 +38,7 @@ if (!([_vehicle] call FUNC(areVehicleRacksInitialized))) then {
 
 if (!_success) exitWith {
     WARNING_1("Vehicle %1 failed to initialise",_vehicle);
+    false
 };
 
 [{

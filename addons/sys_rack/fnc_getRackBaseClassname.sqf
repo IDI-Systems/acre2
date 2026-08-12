@@ -7,7 +7,7 @@
  * 0: Classname <STRING>
  *
  * Return Value:
- * Is Unique <BOOL>
+ * Base classname <STRING>
  *
  * Example:
  * ["acre_vrc111_id_1"] call acre_sys_rack_fnc_getRackBaseClassname

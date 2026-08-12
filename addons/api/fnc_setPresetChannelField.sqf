@@ -7,7 +7,7 @@
  * Arguments:
  * 0: Radio Base class <STRING>
  * 1: Preset name <STRING>
- * 2: Channel number <NUMBER>
+ * 2: Channel number <NUMBER><STRING>
  * 3: Field name <STRING>
  * 4: value <ANY>
  *

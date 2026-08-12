@@ -8,7 +8,7 @@
  * 0: Display ID <NUMBER>
  *
  * Return Value:
- * None
+ * Index <NUMBER>
  *
  * Example:
  * [312] call acre_sys_list_fnc_addDisplaySupport

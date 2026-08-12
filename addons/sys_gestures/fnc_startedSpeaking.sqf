@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Unit that started speaking <OBJECT>
  * 1: Is unit on radio <BOOL>
- * 2: Radio unit is currently using <OBJECT>
+ * 2: Radio unit is currently using <STRING>
  *
  * Return Value:
  * None

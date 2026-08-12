@@ -6,7 +6,7 @@
  * Arguments:
  * 0: Radio ID <STRING>
  * 1: Event: "setCurrentChannel" <STRING> (Unused)
- * 2: Event data <NUMBER>
+ * 2: Event data <ARRAY>
  * 3: Radio data <HASH>
  * 4: Remote <BOOL> (Unused)
  *

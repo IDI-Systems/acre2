@@ -8,7 +8,7 @@
  * 0: Reveal factor players to AI that speak <NUMBER>
  *
  * Return Value:
- * Reveal factor for revealing players to AI <NUMBER>
+ * Reveal factor for revealing players to AI (or false on headless) <NUMBER><BOOL>
  *
  * Example:
  * _status = [0.5] call acre_sys_core_fnc_setRevealToAI

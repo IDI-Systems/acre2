@@ -17,7 +17,7 @@
  */
 
 // Babel is not maintained on non-clients.
-if (!hasInterface) exitWith {};
+if (!hasInterface) exitWith {false};
 
 params [
     ["_languageKey", "", [""]],

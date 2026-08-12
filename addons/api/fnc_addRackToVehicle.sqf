@@ -70,6 +70,7 @@ if (_forceInitialisation) then {
 
 if (!_success) exitWith {
     WARNING_1("Vehicle %1 failed to initialise",_vehicle);
+    false
 };
 
 if (count _rackConfiguration != 9) exitWith {

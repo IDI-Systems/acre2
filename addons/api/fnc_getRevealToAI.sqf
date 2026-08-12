@@ -7,7 +7,7 @@
  * None
  *
  * Return Value:
- * AI enabled <NUMBER>
+ * AI enabled (or false if setting not ready) <NUMBER><BOOL>
  *
  * Example:
  * [] call acre_api_fnc_getRevealToAI;

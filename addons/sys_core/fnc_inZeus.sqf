@@ -3,6 +3,9 @@
  * Author: Brett Mayson
  * Checks if the local player is in the Zeus interface.
  *
+ * Arguments:
+ * None
+ *
  * Return Value:
  * In Zeus Interface <BOOL>
  *

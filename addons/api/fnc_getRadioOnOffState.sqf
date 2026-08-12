@@ -7,7 +7,7 @@
  * 0: Radio ID <STRING>
  *
  * Return Value:
- * TRUE if radio is ON, False if the radio is OFF <BOOLEAN>
+ * TRUE if radio is ON, False if the radio is OFF (or -1 if not valid) <BOOLEAN><NUMBER>
  *
  * Example:
  * ["ACRE_PR77_ID_1"] call acre_api_fnc_getRadioOnOffState

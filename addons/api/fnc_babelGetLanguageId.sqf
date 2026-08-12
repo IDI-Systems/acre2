@@ -7,7 +7,7 @@
  * 0: Language display name <STRING>
  *
  * Return Value:
- * Language ID <STRING>
+ * Language ID (or false on bad input) <STRING><BOOL>
  *
  * Example:
  * ["English"] call acre_api_fnc_babelGetLanguageId;

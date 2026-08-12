@@ -9,7 +9,7 @@
  * 1: Optional unit or List of String <ARRAY, OBJECT> (default: [])
  *
  * Return Value:
- * Radio ID <STRING>
+ * Radio ID (or nil if not found) <STRING><NIL>
  *
  * Example:
  * _radioId = ["ACRE_PRC152"] call acre_api_fnc_getRadioByType

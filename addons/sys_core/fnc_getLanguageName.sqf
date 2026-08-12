@@ -4,7 +4,7 @@
  * Get the language display name from the language key.
  *
  * Arguments:
- * 0: Language key <STRING>
+ * 0: Language key or index <STRING><NUMBER>
  *
  * Return Value:
  * Language display name ("" if not found) <STRING>
