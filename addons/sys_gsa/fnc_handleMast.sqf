@@ -36,11 +36,11 @@ deleteVehicle _gsa;
 
 // Create the new vehicle
 if (_mountMast) then {
-    _gsa = "vhf30108Item" createVehicle [0,0,0];
+    _gsa = "vhf30108Item" createVehicle [0, 0, 0];
 
     _player removeItem "ACRE_VHF30108MAST";
 } else {
-    _gsa = "vhf30108spike" createVehicle [0,0,0];
+    _gsa = "vhf30108spike" createVehicle [0, 0, 0];
     _pos set [2, (_pos select 2) + 0.168]; // The spike will sink into the ground if not
     [_player, "ACRE_VHF30108MAST", true] call CBA_fnc_addItem;
 };
