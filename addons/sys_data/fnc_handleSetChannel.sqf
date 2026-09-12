@@ -27,7 +27,7 @@ if (hasInterface) then {
                 _vals params ["_netId", "_speakingId"];
                 HASH_REM(EGVAR(sys_core,keyedRadioIds),_radioId);
                 private _unit = (objectFromNetId _netId);
-                private _languageID = _unit getVariable [QUOTE(EGVAR(core,languageId)),0];
+                private _languageID = _unit getVariable [QUOTE(EGVAR(sys_core,languageId)),0];
                 [str _speakingId, _languageID, _netId, "1", _radioId] call EFUNC(sys_core,remoteStartSpeaking);
                 if (!(_unit in EGVAR(sys_core,keyedMicRadios))) then {
                     private _okRadios = [[_radioId], ([] call EFUNC(sys_data,getPlayerRadioList)) + EGVAR(sys_core,nearRadios), false] call EFUNC(sys_modes,checkAvailability);
@@ -53,7 +53,7 @@ if (hasInterface) then {
                 _vals params ["_netId", "_speakingId"];
                 private _unit = objectFromNetId _netId;
                 REM(EGVAR(sys_core,keyedMicRadios),_unit);
-                private _languageID = _unit getVariable [QEGVAR(core,languageId), 0];
+                private _languageID = _unit getVariable [QEGVAR(sys_core,languageId), 0];
                 [str _speakingId, _languageID, _netId, "1", _x] call EFUNC(sys_core,remoteStartSpeaking);
                 if !(_unit in EGVAR(sys_core,keyedMicRadios)) then {
                     [_radioId, "handleEndTransmission", [_x]] call EFUNC(sys_data,transEvent);

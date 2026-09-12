@@ -25,7 +25,7 @@ if (_hasUnique) then {
     private _ret = [_type] call FUNC(getRadioId);
     if (_ret != -1) then {
          private _uniqueComponent = format ["%1_id_%2", toLower _type, _ret];
-         if !(_uniqueComponent in GVAR(masterIdListd)) then {
+         if !(_uniqueComponent in GVAR(masterIdList)) then {
              GVAR(masterIdList) pushBack _uniqueComponent;
              private _dataHash = HASH_CREATE;
              HASH_SET(EGVAR(sys_data,radioData),_uniqueComponent,_dataHash);

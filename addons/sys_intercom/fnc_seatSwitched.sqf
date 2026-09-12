@@ -24,7 +24,7 @@ private _oldSeat = _unit getVariable [QGVAR(role), ""];
 private _newSeat = [_vehicle, _unit] call FUNC(getStationVariableName);
 
 // If unit is transmitting through intercom, stop the transmittion during the seat switch
-if (GVAR(intercomPTT)) then {
+if (_unit getVariable [QGVAR(intercomPTT), false]) then {
     [ACTION_INTERCOM_PTT] call FUNC(handlePttKeyPressUp);
 };
 
