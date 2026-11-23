@@ -30,7 +30,7 @@ switch (_function) do {
     case "authority_disconnected": {
         _args params ["_reason"];
         GVAR(voiceReady) = false;
-        WARNING_1("Voice server connection lost or refused: %1. Retrying.",_reason);
+        WARNING_1("Voice server connection lost or refused: %1. Restarting it.",_reason);
         [FUNC(startAuthority), [], VOICE_RETRY_INTERVAL] call CBA_fnc_waitAndExecute;
     };
     case "token": {

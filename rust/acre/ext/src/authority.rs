@@ -33,54 +33,10 @@ fn hex(bytes: &[u8; 32]) -> String {
     Token(*bytes).to_hex()
 }
 
-/// The server-side config file, so the secret never passes through SQF (or CBA settings, which
-/// are sent to clients).
-///
-/// ```toml
-/// address = "127.0.0.1:9987"          # where this Arma server reaches the voice server
-/// secret = "…"                         # the voice server's authority_secret
-/// fingerprint = "…"                    # optional: pin the voice server's certificate
-/// client_address = "voice.example.com:9987"  # optional: where players connect
-/// ```
-#[derive(Debug, serde::Deserialize)]
-#[serde(deny_unknown_fields)]
-struct ServerConfig {
-    address: String,
-    secret: String,
-    #[serde(default)]
-    fingerprint: String,
-    #[serde(default)]
-    client_address: String,
-}
-
-/// Where the config lives: `ACRE2_VOICE_CONFIG`, else `acre2_voice.toml` in the working
-/// directory (the Arma server's folder).
-fn config_path() -> std::path::PathBuf {
-    std::env::var_os("ACRE2_VOICE_CONFIG").map_or_else(
-        || std::path::PathBuf::from("acre2_voice.toml"),
-        std::path::PathBuf::from,
-    )
-}
-
-/// `["authority:start", []]`: connects using the config file. Errors (synchronously) if it's
-/// missing or invalid; otherwise like `authority:connect`.
-fn start() -> Result<&'static str, String> {
-    let path = config_path();
-    let text = std::fs::read_to_string(&path).map_err(|e| format!("{}: {e}", path.display()))?;
-    let config: ServerConfig =
-        toml::from_str(&text).map_err(|e| format!("{}: {e}", path.display()))?;
-    connect(
-        config.address,
-        config.secret,
-        config.fingerprint,
-        config.client_address,
-    )
-}
-
 /// `["authority:connect", [address, secret, fingerprintHex, clientAddress]]`. An empty
 /// fingerprint trusts any certificate; an empty client address uses the server's configured
 /// public address, else `address`.
-fn connect(
+pub(crate) fn connect(
     address: String,
     secret: String,
     fingerprint: String,
@@ -246,7 +202,6 @@ fn status() -> (bool, String, String) {
 
 pub fn group() -> Group {
     Group::new()
-        .command("start", start)
         .command("connect", connect)
         .command("token", token)
         .command("world", world)

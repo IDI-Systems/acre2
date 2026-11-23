@@ -23,7 +23,8 @@ ACRE_FULL_SERVER_VERSION = QUOTE(VERSION_STR);
 
 publicVariable "ACRE_FULL_SERVER_VERSION";
 
-[] call FUNC(startAuthority);
+// Host the voice server once the CBA settings (port, address) are known.
+["CBA_settingsInitialized", {[] call FUNC(startAuthority)}] call CBA_fnc_addEventHandler;
 
 // Event handler to remove disconnected clients from the spectator list and the voice server
 addMissionEventHandler ["PlayerDisconnected", {_this call FUNC(handlePlayerDisconnected);}];

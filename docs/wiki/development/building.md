@@ -54,7 +54,7 @@ _Replace `hemtt` with `hemtt.exe` on Windows. P-drive is **not** required for HE
 
 Execute `tools\setup.bat` (double-click on Windows) or download [HEMTT](https://github.com/BrettMayson/HEMTT/releases/latest) and place the executable in project root (Windows and Linux - binarization supported only on Windows at this time).
 
-You will also need `acre_x64.dll` (signal extension) and `acre_voice_x64.dll` (voice extension) placed in `idi\acre` folder. You can obtain those from last release or build them yourself: the signal extension with [CMake/MSBuild](building-extensions), the voice extension with `cargo build --release -p acre2_ext` in `rust/` (see `rust/README.md`). To talk in multiplayer you also need a [voice server](../user/voice-server).
+You will also need `acre_x64.dll` (signal extension) and `acre_voice_x64.dll` (voice extension) placed in `idi\acre` folder. You can obtain those from last release or build them yourself: the signal extension with [CMake/MSBuild](building-extensions), the voice extension with `cargo build --release -p acre2_ext` in `rust/` (see `rust/README.md`). The server hosts voice itself; see [Voice Server](../user/voice-server).
 
 #### File Patching Setup
 
@@ -121,7 +121,7 @@ To start the game using this build, you can use the following modline:
 -mod=@CBA_A3;idi\acre
 ```
 
-You will also need `acre_x64.dll` (signal extension) and `acre_voice_x64.dll` (voice extension) placed in `idi\acre` folder. You can obtain those from last release or build them yourself: the signal extension with [CMake/MSBuild](building-extensions), the voice extension with `cargo build --release -p acre2_ext` in `rust/` (see `rust/README.md`). To talk in multiplayer you also need a [voice server](../user/voice-server).
+You will also need `acre_x64.dll` (signal extension) and `acre_voice_x64.dll` (voice extension) placed in `idi\acre` folder. You can obtain those from last release or build them yourself: the signal extension with [CMake/MSBuild](building-extensions), the voice extension with `cargo build --release -p acre2_ext` in `rust/` (see `rust/README.md`). The server hosts voice itself; see [Voice Server](../user/voice-server).
 
 ### Create a Release Build
 

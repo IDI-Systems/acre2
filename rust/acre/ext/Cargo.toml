@@ -16,17 +16,15 @@ acre2_dsp = { workspace = true, optional = true }
 acre2_voice_client = { workspace = true }
 acre2_voice_codec = { workspace = true, optional = true }
 acre2_voice_proto = { workspace = true }
+acre2_voice_server = { workspace = true }
+getrandom = { workspace = true }
 arma-rs = { workspace = true }
 base64 = { version = "0.22", optional = true }
 postcard = { workspace = true }
 serde = { workspace = true }
 tokio = { workspace = true }
-toml = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
-
-[dev-dependencies]
-acre2_voice_server = { workspace = true }
 
 [features]
 default = ["client"]

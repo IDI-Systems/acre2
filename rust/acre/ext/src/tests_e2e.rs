@@ -1,15 +1,13 @@
-//! The extension end to end, as Arma would drive it: a real voice server, the extension as the
-//! authority issuing a token, and as a player connecting with it and transmitting.
+//! The extension end to end, as Arma would drive it: hosting the voice server and issuing a token
+//! (the Arma server's side), and as a player connecting with it and transmitting.
 //!
 //! One test, because the extension's state is process-global. Uses ALSA's null devices so no
 //! real microphone or speakers are touched.
 
 use std::time::Duration;
 
-use acre2_voice_server::{Config, Identity, Server};
 use arma_rs::{Value, testing::Result as CbResult};
 
-const SECRET: &str = "ext-test-secret";
 const WAIT: Duration = Duration::from_secs(10);
 
 fn s(v: &str) -> String {
@@ -88,25 +86,22 @@ fn call(ext: &arma_rs::testing::Extension, function: &str, args: &[String]) -> S
 
 #[test]
 fn authority_token_connect_and_transmit() {
-    // The voice server, on the extension's own runtime.
-    let rt = crate::runtime::get();
-    let mut config = Config::new(SECRET);
-    config.bind = "127.0.0.1:0".parse().unwrap();
-    let server =
-        rt.block_on(async { Server::start(config, &Identity::generate().unwrap()).unwrap() });
-    let addr = server.local_addr().unwrap().to_string();
-
     let ext = super::init().testing();
     assert_eq!(call(&ext, "init", &[]), env!("CARGO_PKG_VERSION"));
 
-    // Server side: connect as the authority, place the player, get them a token.
-    call(
-        &ext,
-        "authority:connect",
-        &[s(&addr), s(SECRET), s(""), s("")],
-    );
+    // Server side: a missing address is refused up front.
+    let (out, code) = ext.call("server:start", Some(vec!["0".into(), s("")]));
+    assert_ne!(code, 0);
+    assert!(out.contains("address"), "{out}");
+
+    // Host the voice server (any free port), place the player, get them a token.
+    call(&ext, "server:start", &["0".into(), s("127.0.0.1")]);
     let welcome = wait_for(&ext, "authority_connected", "authority_failed");
-    assert_eq!(welcome[1], addr);
+    let addr = welcome[1].clone();
+    assert!(
+        addr.starts_with("127.0.0.1:") && !addr.ends_with(":0"),
+        "{addr}"
+    );
     call(
         &ext,
         "authority:world",
@@ -176,5 +171,5 @@ fn authority_token_connect_and_transmit() {
 
     call(&ext, "voice:disconnect", &[]);
     assert!(call(&ext, "voice:status", &[]).contains("disconnected"));
-    rt.block_on(server.shutdown());
+    call(&ext, "server:stop", &[]);
 }

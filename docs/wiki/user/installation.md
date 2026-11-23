@@ -4,7 +4,7 @@ title: Installation
 
 {% include tip.html content="Steam or community-provided installation methods are recommended over manual setup for ease of use." %}
 
-ACRE2 carries voice itself: there is no TeamSpeak or other voice program to install. Servers run a small voice server alongside Arma (see [Voice Server](/wiki/user/voice-server)); players just join.
+ACRE2 carries voice itself: there is no TeamSpeak or other voice program to install. The Arma server hosts voice (see [Voice Server](/wiki/user/voice-server)); players just join.
 
 ### Steam
 
@@ -38,7 +38,7 @@ Server administrators can get available settings using the [export/import featur
 ### Troubleshooting
 
 - **WARNING: ACRE IS NOT CONNECTED TO THE VOICE SERVER!**  
-The server isn't connected to its voice server, or your firewall blocks it. ACRE2 retries on its own. If it persists, let your server administrator know (the server's RPT log says why), and check that outgoing UDP to the voice server's port (default 9987) is allowed.
+The server's voice port isn't reachable, or your firewall blocks it. ACRE2 retries on its own. If it persists, let your server administrator know (the server's RPT log says why), and check that outgoing UDP to the voice server's port (default 9987) is allowed.
 
 - **Nobody hears me / I transmit all the time**  
 Check *Voice activation sensitivity*, or switch *Direct speech activation* to *Push to talk*. Make sure Windows uses the microphone you expect, or set *Microphone* explicitly.

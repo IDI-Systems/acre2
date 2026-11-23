@@ -98,6 +98,29 @@
     {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
+// Voice server (hosted by the Arma server; server settings)
+[
+    QEGVAR(sys_server,voicePort),
+    "EDITBOX",
+    [localize LSTRING(voicePort_displayName), localize LSTRING(voicePort_description)],
+    localize LSTRING(voiceServerCategory),
+    "9987",
+    1,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+[
+    QEGVAR(sys_server,voiceAddress),
+    "EDITBOX",
+    [localize LSTRING(voiceAddress_displayName), localize LSTRING(voiceAddress_description)],
+    localize LSTRING(voiceServerCategory),
+    "",
+    1,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
 // Difficulty settings
 // Interference
 [

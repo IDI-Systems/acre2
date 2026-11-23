@@ -11,7 +11,7 @@ Living document. Update the checkboxes and the **Decisions** / **Open questions*
 
 | # | Decision | Notes |
 |---|----------|-------|
-| D1 | **Standalone voice server, fed by Arma** | A standalone Rust binary (the server is also a library crate). The Arma dedicated server's ACRE extension connects to it as a trusted *authority*: it pushes player positions/state and issues join tokens. Clients can only join with a token handed to them by the mission. |
+| D1 | ~~Standalone voice server, fed by Arma~~ → **hosted inside the Arma server's extension** (D10) | The server/authority split stays (the authority is just a local QUIC connection now), and `acre2_voice_server` still builds as a standalone binary for testing. |
 | D2 | **Scope: pipe + DSP now, signal later** | Replace `ACRE2Arma/arma2ts` (pipe), `ACRE2Core` (TS plugin DSP) and drop `ACRE2Steam` and `ACRE2TS`. Keep `acre.dll` (signal/terrain/antenna, `fnc_callExt`) unchanged for now and port it in a later phase. |
 | D3 | **Hard cut from TS3** | No backend abstraction. TS3 users stay on the last 2.x release. |
 | D4 | **Cargo workspace in `rust/`** | A separate `rust/` directory keeps it apart from the C++ in `extensions/`. Crates use the `acre2_` prefix. The voice library crates stay free of ACRE/Arma code so they could be split out later. |
@@ -20,6 +20,7 @@ Living document. Update the checkboxes and the **Decisions** / **Open questions*
 | D7 | **Clients report their radio rx subscriptions** | This is only a bandwidth optimisation (a modded client can eavesdrop on any radio anyway), and the server SQF doesn't have cheap access to every player's tuned radios. Positions and identity still come from the authority. |
 | D8 | **Clients can report extra positions when the authority allows it** | Zeus (camera comms) and spectators speak or listen from the camera, which only the client knows. Today the Zeus client already broadcasts `zeusPosition` = `[getPosASL curatorCamera, getCameraViewDirection curatorCamera]` as a public variable every 0.2 s ([sys_zeus/fnc_handleZeusSpeakPress.sqf](addons/sys_zeus/fnc_handleZeusSpeakPress.sqf)). The library supports this generically: a peer has an authority position plus client-reported *extra positions* (`emitter` and/or `listener`). The client may report them only while the authority has granted that peer the matching permission (e.g. while it's a curator or spectator). See "Positions" below. |
 | D9 | **Any PTT always opens the mic** | Holding any push-to-talk key (direct PTT, radio PTT, intercom, Zeus, god mode) transmits regardless of the voice-activation threshold. Direct speech is also sent while a radio PTT is held, as today. Voice activation only gates direct speech when no PTT is held. |
+| D10 | **The Arma server hosts the voice server** | `["server:start", [port, address]]` binds UDP `port` in the extension and connects to it locally as the authority with a random in-memory secret, so there's no config file or secret. Port and public address come from CBA server settings (`acre_sys_server_voicePort`, default 9987, and `acre_sys_server_voiceAddress`, required) or `ACRE2_VOICE_PORT` / `ACRE2_VOICE_ADDRESS`, which take priority. |
 
 ## Current architecture (what we're replacing)
 
@@ -211,7 +212,7 @@ Batching `authority:world` stays within `callExtension`'s 2048-arg limit. Chunk 
 
 ### Phase 4 — ACRE extension (`acre/ext`, built as `acre_voice_x64`)
 - [x] arma-rs client commands (`voice:*`, `tx:*`, `rx:*`, `vox:*`, `self:*`, `speaker:*`, `settings:*`, `sound:*`, `audio:*`) and `ExtensionCallback` events, documented in [client.rs](rust/acre/ext/src/client.rs)
-- [x] Authority commands (`authority:start/connect/token/world/remove/rules/report_position/status`), [authority.rs](rust/acre/ext/src/authority.rs); `authority:start` reads `acre2_voice.toml` so the secret never touches SQF
+- [x] Authority commands (`authority:connect/token/world/remove/rules/report_position/status`), [authority.rs](rust/acre/ext/src/authority.rs); `server:start/stop` host the voice server ([host.rs](rust/acre/ext/src/host.rs), D10)
 - [x] Every RPC mapped (see table below); `AcreRenderer` runs the ported chains per speaker; [speakers.rs](rust/acre/ext/src/speakers.rs) merges a speaker's streams into ACRE's single speaking state
 - [x] Logging to `%LOCALAPPDATA%\Arma 3\acre2_ext.log`; command errors return non-zero codes (logged by `acre_sys_io_fnc_ext`)
 - [x] In-process e2e test with the arma-rs harness: server + extension as authority (token) and as player (connect, voice activation, radio PTT, disconnect)
@@ -231,7 +232,7 @@ Batching `authority:world` stays within `callExtension`'s 2048-arg limit. Chunk 
 
 ### Phase 5 — SQF migration
 - [x] `sys_io` rewritten (`fnc_ext`, `fnc_handleCallback`, token flow, reconnects); `sys_rpc` deleted
-- [x] Server: `startAuthority` (config file, retries), `voiceStatePFH` (10 Hz world feed + camera permissions), `requestVoiceToken` via `remoteExecCall` (caller identified by `remoteExecutedOwner`; `CfgRemoteExec` entry), `authority:remove` on disconnect
+- [x] Server: `startAuthority` (hosts the voice server from the CBA settings once they're loaded), `voiceStatePFH` (10 Hz world feed + camera permissions), `requestVoiceToken` via `remoteExecCall` (caller identified by `remoteExecutedOwner`; `CfgRemoteExec` entry), `authority:remove` on disconnect
 - [x] All `callRemoteProcedure` sites converted
 - [x] Rx subscriptions: `acre_sys_core_fnc_voiceStatePFH` polls hearable radios every 0.25 s and sends `rx:channels` when the set changes (simpler than hooking every radio event; Q13)
 - [x] Peer IDs replace TS3 IDs (same `ts3id` variables, so the rest of SQF is unchanged)
@@ -246,9 +247,8 @@ Batching `authority:world` stays within `callExtension`'s 2048-arg limit. Chunk 
 ### Phase 6 — Cleanup & release
 - [x] Removed `ACRE2Arma/arma2ts`, `ACRE2Core`, `ACRE2TS`, `ACRE2DistortionTestPlugin`, `ACRE2Steam`; CMake updated. (`acre.dll`/`acre_x64.dll` signal extension stays until Phase 7.) **The remaining C++ build is unverified here (no MSVC)**
 - [x] `tools/make.py`: packages `acre_voice_x64.dll`, builds it with cargo, drops the TeamSpeak plugin
-- [x] Release workflow: builds the voice extension + Windows voice server, packages `@acre2/server` (server binary + both example configs); BattlEye signing covers `acre_voice_x64.dll`. Linux voice server/extension come from [rust.yml](.github/workflows/rust.yml) artifacts
-- [x] Docs: [installation](docs/wiki/user/installation.md) (players), [voice server](docs/wiki/user/voice-server.md) (admins), building, tips; TS channel switching page removed
-- [ ] Optional Docker image for the voice server
+- [x] Release workflow: builds `acre_voice_x64.dll` (signed with the rest) and `acre_voice_x64.so` for Linux dedicated servers (`compile-linux` job)
+- [x] Docs: [installation](docs/wiki/user/installation.md) (players), [voice server](docs/wiki/user/voice-server.md) (admins: two settings and a port), building, tips; TS channel switching page removed
 - [ ] Playtests with real groups at increasing size
 - [ ] BattlEye: confirm `acre_voice_x64.dll` (networking + audio) is accepted once signed
 
@@ -272,7 +272,7 @@ Details that later phases depend on, settled while building:
 - **Barriers**: `Authority::ping()` and a client `Ping`/`Pong` guarantee everything sent earlier on that connection has been applied. The tests use these. The ext can use them after a world update when ordering matters.
 - **Radio channel keys**: `radio:<mode>:<frequency, 5 decimals>` for `singleChannel`/`singleChannelPRR` (TX frequency when sending, RX when listening), `radio:sem70AKW:<hashValue of the frequency list>`, `radio:other:<mode>` for unknown modes. Other channels: `god` (everyone listens; SQF filters by target group), `spectator`, `briefing`.
 - **What each speaking type targets**: direct = spatial (range from the curve model: 150 m × curve scale for selectable B, else 300 m); radio = spatial + its channel; intercom and Zeus = spatial; god = `god` only; spectators = `spectator` only.
-- **Server-side config**: `acre2_voice.toml` (Arma server folder or `ACRE2_VOICE_CONFIG`): `address`, `secret`, optional `fingerprint`, `client_address`.
+- **Hosting**: the certificate is generated fresh each `server:start` (clients get the fingerprint with every token, so nothing is persisted). The address gets `:port` appended unless it has one.
 - **Crypto**: rustls with `ring` only (no aws-lc, so no cmake/nasm for that). TLS 1.3 only.
 - **Opus**: `opusic-c`. Dev builds link the system libopus; release builds enable `acre2_voice_codec/bundled` (static, needs cmake). The encoder is capped at super-wideband: fullband lets Opus switch to CELT on tonal input, and CELT packets carry no in-band FEC.
 - **Audio threads**: device callbacks only touch lock-free `rtrb` rings. A `acre2-voice-tx` thread encodes 20 ms frames; `acre2-voice-mix` renders frames to keep ~60 ms queued ahead of the speakers (or self-clocks with no output device). Control/voice from the network go through a tokio task into the mixer.
@@ -281,7 +281,6 @@ Details that later phases depend on, settled while building:
 ## Open questions
 
 - **Q4 — Mission-less voice**: the briefing is covered (a `briefing` channel). The lobby (before a unit exists) isn't: players connect once they have a unit.
-- **Q5 — Voice server deployment**: should we also offer "spawn `acre2_voice_server` as a child process of the Arma server" as a convenience, alongside running it standalone?
 - **Q6 — Opus frame size**: 20 ms (robust) or 10 ms (lower latency, more overhead)? *Default: 20 ms, configurable.*
 - **Q7 — Recording/admin tools**: should the server support admin mute, kick or recording hooks?
 - **Q11 — Extension name**: the voice extension is `acre_voice_x64` because `acre_x64` is still the C++ signal extension. Merge them in Phase 7, or keep two?

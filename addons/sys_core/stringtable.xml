@@ -634,5 +634,20 @@
         <Key ID="STR_ACRE_sys_core_DirectPTTKey_description">
             <English>Push to talk for direct speech, when direct speech activation is set to push to talk.</English>
         </Key>
+        <Key ID="STR_ACRE_sys_core_voiceServerCategory">
+            <English>ACRE2 Voice Server</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voicePort_displayName">
+            <English>Voice port (UDP)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voicePort_description">
+            <English>UDP port the server hosts voice on. Open it in the firewall. ACRE2_VOICE_PORT overrides this.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceAddress_displayName">
+            <English>Public address</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceAddress_description">
+            <English>Public IP or hostname players reach this server at (optionally with :port). Required. ACRE2_VOICE_ADDRESS overrides this.</English>
+        </Key>
     </Package>
 </Project>

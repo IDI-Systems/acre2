@@ -1,9 +1,9 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Connects the server to the voice server as its authority, using the voice extension's config
- * file (acre2_voice.toml in the server folder, or ACRE2_VOICE_CONFIG). Retries until it
- * succeeds, and starts feeding player positions.
+ * Hosts the voice server inside the voice extension, on the port and public address from the
+ * CBA server settings (or ACRE2_VOICE_PORT / ACRE2_VOICE_ADDRESS), and starts feeding it player
+ * positions.
  *
  * Arguments:
  * None
@@ -30,7 +30,12 @@ if (isNil QGVAR(voiceStatePFH)) then {
     GVAR(voiceStatePFH) = [FUNC(voiceStatePFH), VOICE_WORLD_INTERVAL, []] call CBA_fnc_addPerFrameHandler;
 };
 
-if ((["authority:start", []] call EFUNC(sys_io,ext)) != "ok") then {
-    ERROR("Could not start the voice server connection: check acre2_voice.toml in the server folder. Retrying.");
-    [FUNC(startAuthority), [], VOICE_RETRY_INTERVAL] call CBA_fnc_waitAndExecute;
+private _port = parseNumber (missionNamespace getVariable [QGVAR(voicePort), "9987"]);
+if (_port < 0 || {_port > 65535}) exitWith {
+    ERROR_1("Voice port %1 is not a valid UDP port. Set it in the ACRE2 Voice Server settings.",_port);
+};
+private _address = missionNamespace getVariable [QGVAR(voiceAddress), ""];
+
+if ((["server:start", [_port, _address]] call EFUNC(sys_io,ext)) != "ok") then {
+    ERROR("Could not start the voice server. Check the ACRE2 Voice Server settings (port, public address) and the RPT warning above.");
 };

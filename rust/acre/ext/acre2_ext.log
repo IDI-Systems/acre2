@@ -1,9 +1,10 @@
-2026-11-23T22:42:45.650667Z  INFO acre_voice: ACRE extension initialised version="0.1.0"
-2026-11-23T22:42:45.650738Z  WARN acre2_voice_client::authority: connecting to the voice server without a pinned certificate fingerprint
-2026-11-23T22:42:45.653613Z  INFO acre2_voice_server::net: authority connected addr=127.0.0.1:37778
-2026-11-23T22:42:45.653900Z  INFO acre_voice::authority: authority connected to voice server address=127.0.0.1:42325 client_address=127.0.0.1:42325
-2026-11-23T22:42:45.657081Z  INFO acre2_voice_server::net: client joined peer=peer#1 external_id=7656 addr=127.0.0.1:60257
-2026-11-23T22:42:45.697980Z  INFO acre_voice::client: connected to voice server peer=peer#1 address=127.0.0.1:42325
-2026-11-23T22:42:45.709275Z  INFO acre2_voice_server::net: authority disconnected
-2026-11-23T22:42:45.709311Z  INFO acre2_voice_server::net: client left peer=peer#1 external_id=7656
-2026-11-23T22:42:45.709445Z  WARN acre_voice::authority: authority disconnected from voice server reason=server shutting down
+2026-11-23T23:18:52.785367Z  INFO acre_voice: ACRE extension initialised version="0.1.0"
+2026-11-23T23:18:52.786227Z  INFO acre2_voice_server::net: voice server listening addr=0.0.0.0:50481 fingerprint=0f1953120eb792fc08d54aa003e9336f092040aa9edce32637201adb7d0a0a38
+2026-11-23T23:18:52.786282Z  INFO acre_voice::host: voice server started port=50481 client_address=127.0.0.1:50481
+2026-11-23T23:18:52.789145Z  INFO acre2_voice_server::net: authority connected addr=127.0.0.1:50368
+2026-11-23T23:18:52.789493Z  INFO acre_voice::authority: authority connected to voice server address=127.0.0.1:50481 client_address=127.0.0.1:50481
+2026-11-23T23:18:52.792534Z  INFO acre2_voice_server::net: client joined peer=peer#1 external_id=7656 addr=127.0.0.1:41624
+2026-11-23T23:18:52.834963Z  INFO acre_voice::client: connected to voice server peer=peer#1 address=127.0.0.1:50481
+2026-11-23T23:18:52.846371Z  INFO acre2_voice_server::net: authority disconnected
+2026-11-23T23:18:52.846431Z  INFO acre2_voice_server::net: client left peer=peer#1 external_id=7656
+2026-11-23T23:18:52.846543Z  WARN acre_voice::authority: authority disconnected from voice server reason=server shutting down

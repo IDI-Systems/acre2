@@ -77,7 +77,6 @@ jobs:
         cp target/${{ matrix.target }}/release/${{ matrix.ext }} dist/${{ matrix.ext_out }}
         cp target/${{ matrix.target }}/release/${{ matrix.server }} dist/
         cp voice/server/acre2_voice_server.example.toml dist/
-        cp acre/ext/acre2_voice.example.toml dist/
     - uses: actions/upload-artifact@v4
       with:
         name: acre2-rust-${{ matrix.target }}

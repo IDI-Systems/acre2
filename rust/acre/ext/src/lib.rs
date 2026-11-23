@@ -9,7 +9,8 @@
 //!
 //! - Player side ([`client`], with the `client` feature): voice connection, transmissions,
 //!   the parameters for how others sound, local sounds, audio devices.
-//! - Server side ([`authority`]): the Arma server feeding the voice server and issuing tokens.
+//! - Server side: [`host`] runs the voice server inside the Arma server, and [`authority`]
+//!   feeds it positions and issues tokens.
 
 // Command handlers take owned arguments and mirror the SQF argument lists.
 #![allow(clippy::needless_pass_by_value, clippy::too_many_arguments)]
@@ -18,6 +19,7 @@ pub mod authority;
 mod callback;
 #[cfg(feature = "client")]
 pub mod client;
+pub mod host;
 pub mod meta;
 #[cfg(feature = "client")]
 pub mod render;
@@ -37,7 +39,8 @@ fn init() -> Extension {
         .version(env!("CARGO_PKG_VERSION").to_string())
         .command("version", version)
         .command("init", init_callbacks)
-        .group("authority", authority::group());
+        .group("authority", authority::group())
+        .group("server", host::group());
     #[cfg(feature = "client")]
     let ext = client::groups()
         .into_iter()

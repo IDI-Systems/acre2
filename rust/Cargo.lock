@@ -17,10 +17,10 @@ dependencies = [
  "acre2_voice_server",
  "arma-rs",
  "base64 0.22.1",
+ "getrandom 0.3.4",
  "postcard",
  "serde",
  "tokio",
- "toml",
  "tracing",
  "tracing-subscriber",
 ]
