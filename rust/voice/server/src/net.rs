@@ -36,6 +36,9 @@ use tracing::{debug, info, warn};
 use crate::{
     config::Config,
     identity::Identity,
+    ratelimit::{
+        CONTROL_BURST, CONTROL_PER_SEC, MAX_VOICE_PAYLOAD, TokenBucket, VOICE_BURST, VOICE_PER_SEC,
+    },
     tokens::Tokens,
     world::{Outgoing, World},
 };
@@ -622,6 +625,12 @@ async fn run_client(conn: Connection, events: mpsc::Sender<Event>) {
             r = client_voice_loop(&conn, peer, &routes) => r,
         };
         debug!(%peer, ?reason, "client connection ended");
+        if let Err(e) = &reason
+            && e.to_string().contains("rate limit")
+        {
+            warn!(%peer, "client exceeded the control message rate limit; disconnecting");
+            close(&conn, close_code::KICKED, "too many requests");
+        }
         writer.abort();
     }
     let _ = events.send(Event::ClientGone(peer)).await;
@@ -632,7 +641,11 @@ async fn client_control_loop(
     peer: PeerId,
     events: &mpsc::Sender<Event>,
 ) -> anyhow::Result<()> {
+    let mut bucket = TokenBucket::new(CONTROL_PER_SEC, CONTROL_BURST, Instant::now());
     while let Some(msg) = frame::read::<ClientMsg, _>(recv).await? {
+        if !bucket.take(Instant::now()) {
+            anyhow::bail!("control message rate limit exceeded");
+        }
         events.send(Event::Client(peer, msg)).await?;
     }
     Ok(())
@@ -643,11 +656,18 @@ async fn client_voice_loop(
     peer: PeerId,
     routes: &ArcSwap<Routes>,
 ) -> anyhow::Result<()> {
+    let mut bucket = TokenBucket::new(VOICE_PER_SEC, VOICE_BURST, Instant::now());
     loop {
         let data = conn.read_datagram().await?;
+        if !bucket.take(Instant::now()) {
+            continue;
+        }
         let Ok(voice) = ClientVoice::decode(data) else {
             continue;
         };
+        if voice.payload.len() > MAX_VOICE_PAYLOAD {
+            continue;
+        }
         let routes = routes.load();
         let Some(recipients) = routes.get(&voice.tx) else {
             continue;

@@ -322,3 +322,25 @@ async fn server_full() -> anyhow::Result<()> {
     assert!(err.to_string().contains("full"), "{err}");
     Ok(())
 }
+
+#[tokio::test]
+async fn flooding_control_messages_gets_kicked() -> anyhow::Result<()> {
+    let h = Harness::start().await?;
+    let mut a = h.join("a").await?;
+    // Far beyond the 200-message burst, faster than 50/s refills it.
+    for nonce in 0..1000 {
+        if a.client
+            .send(acre2_voice_proto::ClientMsg::Ping { nonce })
+            .is_err()
+        {
+            tokio::task::yield_now().await;
+        }
+    }
+    loop {
+        if let ClientEvent::Closed { reason } = a.next().await? {
+            assert!(reason.contains("too many"), "{reason}");
+            break;
+        }
+    }
+    Ok(())
+}

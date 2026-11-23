@@ -1,9 +1,9 @@
-2026-11-23T22:40:49.011345Z  INFO acre_voice: ACRE extension initialised version="0.1.0"
-2026-11-23T22:40:49.011439Z  WARN acre2_voice_client::authority: connecting to the voice server without a pinned certificate fingerprint
-2026-11-23T22:40:49.014339Z  INFO acre2_voice_server::net: authority connected addr=127.0.0.1:51590
-2026-11-23T22:40:49.014733Z  INFO acre_voice::authority: authority connected to voice server address=127.0.0.1:58574 client_address=127.0.0.1:58574
-2026-11-23T22:40:49.018253Z  INFO acre2_voice_server::net: client joined peer=peer#1 external_id=7656 addr=127.0.0.1:48236
-2026-11-23T22:40:49.059063Z  INFO acre_voice::client: connected to voice server peer=peer#1 address=127.0.0.1:58574
-2026-11-23T22:40:49.070391Z  INFO acre2_voice_server::net: authority disconnected
-2026-11-23T22:40:49.070452Z  INFO acre2_voice_server::net: client left peer=peer#1 external_id=7656
-2026-11-23T22:40:49.070594Z  WARN acre_voice::authority: authority disconnected from voice server reason=server shutting down
+2026-11-23T22:42:45.650667Z  INFO acre_voice: ACRE extension initialised version="0.1.0"
+2026-11-23T22:42:45.650738Z  WARN acre2_voice_client::authority: connecting to the voice server without a pinned certificate fingerprint
+2026-11-23T22:42:45.653613Z  INFO acre2_voice_server::net: authority connected addr=127.0.0.1:37778
+2026-11-23T22:42:45.653900Z  INFO acre_voice::authority: authority connected to voice server address=127.0.0.1:42325 client_address=127.0.0.1:42325
+2026-11-23T22:42:45.657081Z  INFO acre2_voice_server::net: client joined peer=peer#1 external_id=7656 addr=127.0.0.1:60257
+2026-11-23T22:42:45.697980Z  INFO acre_voice::client: connected to voice server peer=peer#1 address=127.0.0.1:42325
+2026-11-23T22:42:45.709275Z  INFO acre2_voice_server::net: authority disconnected
+2026-11-23T22:42:45.709311Z  INFO acre2_voice_server::net: client left peer=peer#1 external_id=7656
+2026-11-23T22:42:45.709445Z  WARN acre_voice::authority: authority disconnected from voice server reason=server shutting down

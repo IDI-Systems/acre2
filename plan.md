@@ -181,7 +181,8 @@ Batching `authority:world` stays within `callExtension`'s 2048-arg limit. Chunk 
 - [x] `proto`: control messages, datagram format, framing, protocol version handshake
 - [x] `server`: QUIC endpoint, authority link, token issuing, sessions, world state, subscriptions, router (spatial + channel), periodic re-resolve, channel rules
 - [x] `server`: extra positions (D8): permission gate, multiple listener positions, emitter override
-- [ ] `server`: rate-limit extra-position reports and voice datagrams per peer; optional sanity clamp on reported positions
+- [x] `server`: per-client token buckets: voice 250 datagrams/s (excess dropped, oversized payloads dropped), control 50 msg/s burst 200 (sustained excess disconnects)
+- [ ] `server`: optional sanity clamp on reported camera positions
 - [x] `server` bin: TOML config ([example](rust/voice/server/acre2_voice_server.example.toml)), logging (`RUST_LOG`), cert persistence + `fingerprint.txt`
 - [x] `client`: connect with token + fingerprint pin, control stream, datagram send/recv; `Authority` with `issue_token`/`ping`/world/rules
 - [ ] `client`: reconnect/backoff (needs a fresh token from the authority, so it belongs partly to the ext)
@@ -189,7 +190,7 @@ Batching `authority:world` stays within `callExtension`'s 2048-arg limit. Chunk 
 - [x] `testkit`: in-process harness (server + authority + bots) and 13 end-to-end tests over real QUIC (routing, rules, Zeus camera, tokens, kicks, pinning)
 - [x] `testkit`: speaker/listener bots through the real transmitter → server → mixer path, asserting latency (<150 ms) and FEC recovery under 10% loss ([audio.rs](rust/voice/testkit/tests/audio.rs)), with a synthetic speech signal
 - [ ] `testkit`: bursty-loss/reordering/jitter simulation (currently only periodic loss)
-- [ ] Load test: 100+ peers, 20+ concurrent speakers, measure server CPU and bandwidth
+- [x] Load test ([load.rs](rust/voice/testkit/tests/load.rs), `--ignored`): 120 peers / 24 speakers → 100% delivered, 27.7k datagrams/s, 15 Mbit/s; 250 peers / 50 speakers → 100% delivered, 125k datagrams/s, 69 Mbit/s, 61% of one core *including all 250 client endpoints* (release build, localhost)
 
 ### Phase 2 — Client audio
 - [x] `cpal` capture/playback, device enumeration by stable id (`alsa:…`, `wasapi:…`) and selection, reopen on device change (`VoiceSession::set_devices`)
