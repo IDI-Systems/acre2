@@ -26,7 +26,8 @@ if (call EFUNC(sys_core,inZeus) && {GVAR(zeusCommunicateViaCamera)}) then {
     player setVariable [QGVAR(inZeus), true, true];
 
     // Start speaking
-    ["startZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+    // Heard around the camera (the camera position is sent by acre_sys_core_fnc_voiceStatePFH).
+    ["zeus", SPEAKING_TYPE_ZEUS, "", []] call EFUNC(sys_core,startTransmission);
 
     // Update Zeus position
     GVAR(speakFromZeusHandle) = [{

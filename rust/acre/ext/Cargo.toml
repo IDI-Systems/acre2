@@ -1,6 +1,6 @@
 [package]
 name = "acre2_ext"
-description = "ACRE Arma 3 extension: voice client and server authority"
+description = "ACRE Arma 3 voice extension (acre_voice_x64): voice client and server authority"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -8,19 +8,20 @@ repository.workspace = true
 rust-version.workspace = true
 
 [lib]
-name = "acre"
+name = "acre_voice"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-acre2_dsp = { workspace = true }
+acre2_dsp = { workspace = true, optional = true }
 acre2_voice_client = { workspace = true }
-acre2_voice_codec = { workspace = true }
+acre2_voice_codec = { workspace = true, optional = true }
 acre2_voice_proto = { workspace = true }
 arma-rs = { workspace = true }
-base64 = "0.22"
+base64 = { version = "0.22", optional = true }
 postcard = { workspace = true }
 serde = { workspace = true }
 tokio = { workspace = true }
+toml = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 
@@ -31,7 +32,7 @@ acre2_voice_server = { workspace = true }
 default = ["client"]
 # Player-side voice (audio devices). Dedicated Linux servers build without it, so the library
 # doesn't need ALSA there.
-client = ["acre2_voice_client/devices"]
+client = ["acre2_voice_client/devices", "dep:acre2_dsp", "dep:acre2_voice_codec", "dep:base64"]
 
 [lints]
 workspace = true

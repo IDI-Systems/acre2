@@ -16,4 +16,8 @@
 
 #include "\idi\acre\addons\main\script_macros.hpp"
 
+// Voice server authority: seconds between position updates, and between connection retries.
+#define VOICE_WORLD_INTERVAL 0.1
+#define VOICE_RETRY_INTERVAL 10
+
 #define MAX_RADIO 512

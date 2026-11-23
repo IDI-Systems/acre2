@@ -43,8 +43,8 @@ if (_changes) then {
     _vehicle setVariable [QGVAR(broadcasting), _broadcastConfig, true];
 
     if (_isBroadcasting) then {
-        ["startIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["intercom", SPEAKING_TYPE_INTERCOM, "", []] call EFUNC(sys_core,startTransmission);
     } else {
-        ["stopIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["intercom"] call EFUNC(sys_core,stopTransmission);
     };
 };

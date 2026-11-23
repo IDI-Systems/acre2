@@ -20,6 +20,7 @@ dependencies = [
  "postcard",
  "serde",
  "tokio",
+ "toml",
  "tracing",
  "tracing-subscriber",
 ]

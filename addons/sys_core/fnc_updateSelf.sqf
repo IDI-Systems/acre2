@@ -37,10 +37,4 @@ if (_height < 0) then {
     ACRE_LISTENER_DIVE = 0;
 };
 
-private _additionalValues = [[] call FUNC(getSpeakingLanguageId)];
-private _updateSelf = [];
-_updateSelf append ACRE_LISTENER_POS;
-_updateSelf append ACRE_LISTENER_DIR;
-_updateSelf append _additionalValues;
-
-["updateSelf", _updateSelf] call EFUNC(sys_rpc,callRemoteProcedure);
+["self:update", [ACRE_LISTENER_POS, ACRE_LISTENER_DIR]] call EFUNC(sys_io,ext);

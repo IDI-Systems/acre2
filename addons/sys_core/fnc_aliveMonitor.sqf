@@ -24,7 +24,7 @@ GVAR(waitTime) = diag_tickTime + 3;
     };
     if ((_isMuted != GVAR(oldMute)) || {diag_tickTime > GVAR(waitTime)}) then {
         GVAR(waitTime) = diag_tickTime + 3;
-        ["localMute", (str _isMuted)] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["vox:mute", [_isMuted == 1]] call EFUNC(sys_io,ext);
     };
 
     GVAR(oldMute) = _isMuted;

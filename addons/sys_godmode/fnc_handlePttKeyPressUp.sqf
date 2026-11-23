@@ -22,7 +22,7 @@ if !([_group] call FUNC(accessAllowed)) exitWith { false };
 [QGVAR(stopSpeaking), [EGVAR(sys_core,ts3id)], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 GVAR(targetUnits) = [];
 
-["stopGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+["god"] call EFUNC(sys_core,stopTransmission);
 GVAR(speaking) = false;
 
 #ifndef ALLOW_EMPTY_TARGETS

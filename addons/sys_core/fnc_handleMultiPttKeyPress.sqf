@@ -62,7 +62,8 @@ if (ACRE_ACTIVE_PTTKEY == -2) then {
                 // diag_log text format["ASSIGNED ACRE_BROADCASTING_RADIOID KEYDOWN: %1", ACRE_BROADCASTING_RADIOID];
                 GVAR(pttKeyDown) = true;
 
-                ["startRadioSpeaking", _sendRadio] call EFUNC(sys_rpc,callRemoteProcedure);
+                private _channel = [_sendRadio, true] call FUNC(getRadioChannelKey);
+                [_sendRadio, SPEAKING_TYPE_RADIO, _sendRadio, [_channel] - [""]] call FUNC(startTransmission);
                 [] call FUNC(showBroadCastHint);
             };
         };

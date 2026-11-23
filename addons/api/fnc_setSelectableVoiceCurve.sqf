@@ -18,7 +18,8 @@
 params [["_curveScale", 0, [0]]];
 
 if (_curveScale >= 0) then {
-    ["setSelectableVoiceCurve", format["%1,", _curveScale]] call EFUNC(sys_rpc,callRemoteProcedure);
+    // Sent to listeners with our transmissions (see acre_sys_core_fnc_voiceStatePFH).
+    EGVAR(sys_core,curveScale) = _curveScale;
     GVAR(selectableCurveScale) = _curveScale;
 } else {
     WARNING("Voice curve scale must be a number greater or equal to 0!");

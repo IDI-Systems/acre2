@@ -219,9 +219,9 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
             _sentMicRadios pushBack _unit;
             private _params = HASH_GET(_compiledParams,_x);
             private _canUnderstand = [_unit] call FUNC(canUnderstand);
-            private _paramArray = ["r", GET_TS3ID(_unit), !_canUnderstand, count _params];
-            _paramArray append (flatten _params);
-            ["updateSpeakingData", _paramArray] call EFUNC(sys_rpc,callRemoteProcedure);
+            // Per radio: [volume, signal quality, loudspeaker, position]
+            private _radios = _params apply {[_x select 0, _x select 1, _x select 3, _x select 4]};
+            ["speaker:radio", [GET_TS3ID(_unit), !_canUnderstand, _radios]] call EFUNC(sys_io,ext);
         };
     } forEach HASH_KEYS(_compiledParams);
 
@@ -242,16 +242,17 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
         if (!IS_MUTED(_unit) && {_unit != acre_player}) then {
             if (_unit call FUNC(inRange)) then {
                 TRACE_1("Calling processDirectSpeaker",_unit);
-                private _params = [_unit] call FUNC(processDirectSpeaker);
-                ["updateSpeakingData", _params] call EFUNC(sys_rpc,callRemoteProcedure);
+                // [type, id, babel, volume, emitterPos, emitterDir]
+                ([_unit] call FUNC(processDirectSpeaker)) params ["_type", "_id", "_babel", "_volume", "_position", "_direction"];
+                ["speaker:direct", [_id, _type, _babel, _volume, _position, _direction]] call EFUNC(sys_io,ext);
             } else {
                 if !(_unit in _sentMicRadios) then {
-                    ["updateSpeakingData", ["m", GET_TS3ID(_unit), 0]] call EFUNC(sys_rpc,callRemoteProcedure);
+                    ["speaker:silence", [GET_TS3ID(_unit)]] call EFUNC(sys_io,ext);
                 };
             };
         } else {
             if (_unit != acre_player) then {
-                ["updateSpeakingData", ['m', GET_TS3ID(_unit), 0]] call EFUNC(sys_rpc,callRemoteProcedure);
+                ["speaker:silence", [GET_TS3ID(_unit)]] call EFUNC(sys_io,ext);
             };
         };
     };
@@ -262,7 +263,7 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
 
     // Check speaking gods to only allow hearing by the god's target group
     if ((EGVAR(sys_godmode,speakingGods) find _speakingId) != -1) then {
-        ["updateSpeakingData", ["g", _speakingId, 0, GVAR(godVolume)]] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["speaker:direct", [_speakingId, "g", false, GVAR(godVolume), [0, 0, 0], [0, 1, 0]]] call EFUNC(sys_io,ext);
     };
 } forEach GVAR(godSpeakers);
 
@@ -273,8 +274,7 @@ if (ACRE_IS_SPECTATOR) then {
         if (ACRE_MUTE_SPECTATORS) then {
             _volume = 0;
         };
-        private _params = ["s", _speakingId, 0, _volume];
-        ["updateSpeakingData", ["s", _speakingId, 0, _volume]] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["speaker:direct", [_speakingId, "s", false, _volume, [0, 0, 0], [0, 1, 0]]] call EFUNC(sys_io,ext);
     } forEach GVAR(spectatorSpeakers);
 };
 

@@ -35,7 +35,7 @@ fn strings(data: Option<Value>) -> Vec<String> {
 fn wait_for(ext: &arma_rs::testing::Extension, want: &str, fail: &str) -> Vec<String> {
     let result = ext.callback_handler(
         |name, func, data| {
-            assert_eq!(name, "acre");
+            assert_eq!(name, "acre_voice");
             if func == want {
                 CbResult::Ok(strings(data))
             } else if func == fail {

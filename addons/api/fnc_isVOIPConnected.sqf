@@ -15,4 +15,4 @@
  * Public: Yes
  */
 
-EGVAR(sys_io,pipeCode) == "1" && {!EGVAR(sys_io,hasErrored) && {EGVAR(sys_io,serverStarted)}}
+EGVAR(sys_io,connected)

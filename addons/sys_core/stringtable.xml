@@ -601,68 +601,38 @@
             <Chinesesimp>地形干扰系数</Chinesesimp>
             <Turkish>Arasi Kaynaklı Parazit Katsayısı</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
-            <English>TeamSpeak Channel Name</English>
-            <Czech>TeamSpeak Název kanálu</Czech>
-            <French>Nom du canal TeamSpeak</French>
-            <Spanish>Nombre de canal de TeamSpeak</Spanish>
-            <Italian>Nome canale Teamspeak</Italian>
-            <Polish>Nazwa kanału TeamSpeak</Polish>
-            <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
-            <Russian>Имя ТимСпик канала</Russian>
-            <German>TeamSpeak Kanalname</German>
-            <Korean>팀스피크 채널 이름</Korean>
-            <Japanese>TeamSpeak チャンネル名</Japanese>
-            <Chinese>Teamspeak頻道名稱</Chinese>
-            <Chinesesimp>Teamspeak频道名称</Chinesesimp>
-            <Turkish>TeamSpeak Kanal İsmi</Turkish>
+        <Key ID="STR_ACRE_sys_core_voiceActivation_displayName">
+            <English>Direct speech activation</English>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
-            <English>TeamSpeak Channel Password</English>
-            <Czech>TeamSpeak Heslo kanálu</Czech>
-            <French>Mot de passe du canal TeamSpeak</French>
-            <Spanish>Contraseña del canal de TeamSpeak</Spanish>
-            <Italian>Password canale Teamspeak</Italian>
-            <Polish>Hasło kanału TeamSpeak</Polish>
-            <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
-            <Russian>Пароль ТимСпик канала</Russian>
-            <German>TeamSpeak Kanalpasswort</German>
-            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
-            <Chinese>Teamspeak頻道密碼</Chinese>
-            <Chinesesimp>Teamspeak频道密码</Chinesesimp>
-            <Turkish>Teamspeak Kanal Parolası</Turkish>
+        <Key ID="STR_ACRE_sys_core_voiceActivation_description">
+            <English>How direct speech starts. Holding any radio, intercom, Zeus or god mode PTT always transmits.</English>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
-            <English>TeamSpeak Channel Switch</English>
-            <Czech>TeamSpeak Změna kanálu</Czech>
-            <French>Changer de canal TeamSpeak</French>
-            <Spanish>Cambio de canal de TeamSpeak</Spanish>
-            <Italian>Cambio canale TeamSpeak</Italian>
-            <Polish>Zmiana kanału TeamSpeak</Polish>
-            <Portuguese>Trocar para Canal do TeamSpeak</Portuguese>
-            <Russian>Смена ТимСпик канала</Russian>
-            <German>TeamSpeak Kanalwechsel</German>
-            <Korean>팀스피크 채널 변경</Korean>
-            <Japanese>TeamSpeak チャンネル切り替え</Japanese>
-            <Chinese>Teamspeak頻道切換</Chinese>
-            <Chinesesimp>Teamspeak频道切换</Chinesesimp>
-            <Turkish>TeamSpeak Kanal Değiştirmesi</Turkish>
+        <Key ID="STR_ACRE_sys_core_voiceActivation_vad">
+            <English>Voice activation</English>
         </Key>
-        <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
-            <English>Unmute Clients</English>
-            <Czech>Zrušit ztlumení diváků</Czech>
-            <French>Démuter les clients</French>
-            <Spanish>Desmutear clientes</Spanish>
-            <Italian>Smuta i Client</Italian>
-            <Polish>Odmutuj klientów</Polish>
-            <Portuguese>Desmutar Clientes</Portuguese>
-            <Russian>Размьютить клиенты</Russian>
-            <German>Stummschaltung der Clients aufheben</German>
-            <Korean>클라이언트 음소거 해제</Korean>
-            <Japanese>クライアントの消音解除</Japanese>
-            <Chinese>客戶端取消禁音</Chinese>
-            <Chinesesimp>客户端取消禁音</Chinesesimp>
-            <Turkish>Diğer Client'ları Susturma</Turkish>
+        <Key ID="STR_ACRE_sys_core_voiceActivation_ptt">
+            <English>Push to talk</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceThreshold_displayName">
+            <English>Voice activation sensitivity (dB)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceThreshold_description">
+            <English>Microphone level that starts direct speech with voice activation. Lower is more sensitive.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_inputDevice_displayName">
+            <English>Microphone</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_outputDevice_displayName">
+            <English>Speakers / headphones</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_audioDevice_description">
+            <English>Audio device id (see acre_api_fnc_getAudioDevices). Leave empty for the system default.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_DirectPTTKey">
+            <English>Direct Speech PTT</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_DirectPTTKey_description">
+            <English>Push to talk for direct speech, when direct speech activation is set to push to talk.</English>
         </Key>
     </Package>
 </Project>

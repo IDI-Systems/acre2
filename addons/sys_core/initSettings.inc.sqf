@@ -56,48 +56,46 @@
     {["disableRadioNoise", _this] call FUNC(setPluginSetting)}
 ] call CBA_fnc_addSetting;
 
+// Voice: how direct speech is triggered (any radio/intercom/zeus/god PTT always transmits)
 [
-    QGVAR(unmuteClients),
-    "CHECKBOX",
-    localize LSTRING(unmuteClients_displayName),
+    QGVAR(voiceActivation),
+    "LIST",
+    [localize LSTRING(voiceActivation_displayName), localize LSTRING(voiceActivation_description)],
     "ACRE2",
-    true,
+    [[0, 1], [localize LSTRING(voiceActivation_vad), localize LSTRING(voiceActivation_ptt)], 0],
     false,
-    {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
+    {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
-// Teamspeak Channel Switching
-// Switch channels
 [
-    QGVAR(ts3ChannelSwitch),
-    "CHECKBOX",
-    localize LSTRING(ts3ChannelSwitch_displayName),
+    QGVAR(voiceThreshold),
+    "SLIDER",
+    [localize LSTRING(voiceThreshold_displayName), localize LSTRING(voiceThreshold_description)],
     "ACRE2",
-    true,
+    [-80, -10, -45, 0],
     false,
-    {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
+    {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
-// Channel Name
+// Audio devices, by id (see acre_api_fnc_getAudioDevices); empty for the system default
 [
-    QGVAR(ts3ChannelName),
+    QGVAR(inputDevice),
     "EDITBOX",
-    localize LSTRING(ts3ChannelName_displayName),
+    [localize LSTRING(inputDevice_displayName), localize LSTRING(audioDevice_description)],
     "ACRE2",
     "",
-    true,
-    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
+    false,
+    {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
-// Channel Password
 [
-    QGVAR(ts3ChannelPassword),
+    QGVAR(outputDevice),
     "EDITBOX",
-    localize LSTRING(ts3ChannelPassword_displayName),
+    [localize LSTRING(outputDevice_displayName), localize LSTRING(audioDevice_description)],
     "ACRE2",
-    ["", true],
-    true,
-    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
+    "",
+    false,
+    {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
 // Difficulty settings

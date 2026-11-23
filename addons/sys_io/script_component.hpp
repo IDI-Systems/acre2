@@ -15,3 +15,8 @@
 #endif
 
 #include "\idi\acre\addons\main\script_macros.hpp"
+
+// The voice extension (acre_voice_x64), and the name its ExtensionCallbacks use.
+#define EXTENSION_NAME "acre_voice"
+// Seconds between token requests while not connected.
+#define TOKEN_RETRY_INTERVAL 10

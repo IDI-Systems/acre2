@@ -24,7 +24,7 @@ DFUNC(doHandleMultiPttKeyPressUp) = {
 
         if (GVAR(pttKeyDown)) then {
             [_radioid, "handlePTTUp"] call EFUNC(sys_data,transEvent);
-            ["stopRadioSpeaking", ","] call EFUNC(sys_rpc,callRemoteProcedure);
+            [_radioId] call FUNC(stopTransmission);
             GVAR(pttKeyDown) = false;
             ["acre_broadcast"] call EFUNC(sys_list,hideHint);
         };

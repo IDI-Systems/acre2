@@ -29,7 +29,7 @@ DFUNC(mutingPFHLoop) = {
     if (diag_tickTime > GVAR(waitFullSend)) then {
         GVAR(fullListTime) = true;
     };
-    private _mutingParams = "";
+    private _mutingParams = []; // [peer ID, muted (0/1)]
     private _muting = [];
     //private _playerIdList = [];
 
@@ -61,10 +61,10 @@ DFUNC(mutingPFHLoop) = {
                         };
 
                         if (GVAR(fullListTime)) then {
-                            _mutingParams = _mutingParams + format ["%1,%2,", _remoteTs3Id, _muted];
+                            _mutingParams pushBack [_remoteTs3Id, _muted];
                         } else {
                             if ((_muted == 0 && {_remoteUser in GVAR(muting)}) || {(_muted == 1 && {!(_remoteUser in GVAR(muting))})}) then {
-                                _mutingParams = _mutingParams + format ["%1,%2,", _remoteTs3Id, _muted];
+                                _mutingParams pushBack [_remoteTs3Id, _muted];
                             };
                         };
                     };
@@ -83,7 +83,7 @@ DFUNC(mutingPFHLoop) = {
         if (_newSpectators isNotEqualTo []) then {
             {
                 if (_x != GVAR(ts3id)) then {
-                    _mutingParams = _mutingParams + format ["%1,1,", _x];
+                    _mutingParams pushBack [_x, 1];
                 };
             } forEach _newSpectators;
             if (!GVAR(fullListTime)) then {
@@ -95,7 +95,7 @@ DFUNC(mutingPFHLoop) = {
             if (ACRE_IS_SPECTATOR) then {
                 {
                     if (_x != GVAR(ts3id)) then {
-                        _mutingParams = _mutingParams + format ["%1,0,", _x];
+                        _mutingParams pushBack [_x, 0];
                     };
                 } forEach ACRE_SPECTATORS_LIST;
             };
@@ -106,7 +106,7 @@ DFUNC(mutingPFHLoop) = {
     if (ACRE_IS_SPECTATOR && {GVAR(fullListTime)}) then {
         {
             if (_x != GVAR(ts3id)) then {
-                _mutingParams = _mutingParams + format ["%1,0,", _x];
+                _mutingParams pushBack [_x, 0];
             };
         } forEach ACRE_SPECTATORS_LIST;
     };
@@ -116,9 +116,10 @@ DFUNC(mutingPFHLoop) = {
         GVAR(waitFullSend) = diag_tickTime + FULL_SEND_INTERVAL;
         GVAR(fullListTime) = false;
     };
-    if (_mutingParams != "") then {
-        ["setMuted", _mutingParams] call EFUNC(sys_rpc,callRemoteProcedure);
-    };
+    {
+        _x params ["_id", "_muted"];
+        ["speaker:mute", [_id, _muted == 1]] call EFUNC(sys_io,ext);
+    } forEach _mutingParams;
     true
 };
 

@@ -151,9 +151,9 @@ fn targets(range: f32, channels: Vec<String>) -> Result<Vec<Target>, String> {
 
 // ---- voice ------------------------------------------------------------------------------------
 
-/// `["voice:connect", [address, tokenHex, fingerprintHex]]`. Answers with the `connected`
+/// `["voice:connect", [address, tokenHex, fingerprintHex]]` → `"ok"`, then the `connected`
 /// (`[peerId]`) or `connect_failed` (`[reason]`) callback.
-fn connect(address: String, token: String, fingerprint: String) -> Result<(), String> {
+fn connect(address: String, token: String, fingerprint: String) -> Result<&'static str, String> {
     let token = Token::from_hex(&token).ok_or("invalid token")?;
     let fingerprint = parse_fingerprint(&fingerprint).ok_or("invalid fingerprint")?;
     let (old, generation, render, config) = {
@@ -196,16 +196,16 @@ fn connect(address: String, token: String, fingerprint: String) -> Result<(), St
                     .name("acre2-events".into())
                     .spawn(move || pump_events(&session_events, generation))
                     .expect("spawning event thread");
-                emit("connected", peer.0);
+                emit("connected", vec![peer.0]);
             }
             Err(e) => {
                 tracing::warn!(error = %e, %address, "could not connect to voice server");
                 drop(st);
-                emit("connect_failed", e);
+                emit("connect_failed", vec![e]);
             }
         }
     });
-    Ok(())
+    Ok("ok")
 }
 
 fn pump_events(events: &std::sync::mpsc::Receiver<SessionEvent>, generation: u64) {
@@ -248,7 +248,7 @@ fn pump_events(events: &std::sync::mpsc::Receiver<SessionEvent>, generation: u64
             SessionEvent::Server(ServerMsg::Error { message }) => {
                 drop(st);
                 tracing::warn!(%message, "voice server refused a request");
-                emit("server_error", message);
+                emit("server_error", vec![message]);
             }
             SessionEvent::Server(_) => {}
             SessionEvent::Transmitting { tx, active } => {
@@ -262,14 +262,14 @@ fn pump_events(events: &std::sync::mpsc::Receiver<SessionEvent>, generation: u64
             }
             SessionEvent::Device(d) => {
                 drop(st);
-                emit("device", format!("{d:?}"));
+                emit("device", vec![format!("{d:?}")]);
             }
             SessionEvent::Closed { reason } => {
                 let old = st.take_session();
                 drop(st);
                 drop(old);
                 tracing::info!(%reason, "disconnected from voice server");
-                emit("disconnected", reason);
+                emit("disconnected", vec![reason]);
                 return;
             }
         }

@@ -34,13 +34,19 @@ DGVAR(lowered) = false;
 DGVAR(muting) = [];
 DGVAR(speakers) = [];
 DGVAR(enableDistanceMuting) = true;
-DGVAR(ts3id) = -1;
+DGVAR(ts3id) = -1; // Our voice peer ID (named for its TeamSpeak origins)
+DGVAR(curveScale) = 1; // Our selectable voice curve scale
+DGVAR(inBriefing) = false;
+DGVAR(lastAudioDevices) = ["", ""];
+DGVAR(lastDirectTx) = [];
+DGVAR(lastRxChannels) = [];
+DGVAR(lastExtraPositions) = [];
 DGVAR(keyedMicRadios) = [];
 DGVAR(previousSortedParams) = [[],[]];
 DGVAR(keyedRadioIds) = HASH_CREATE;
 DGVAR(globalVolume) = 1.0;
 DGVAR(maxVolume) = 1.0;
-DGVAR(playerList) = []; // Paired array: [TS_ID, Object]
+DGVAR(playerList) = []; // Paired array: [voice peer ID, Object]
 //DGVAR(ts3IdPlayerList) = [];
 DGVAR(isDeaf) = false;
 //DGVAR(playerListHash) = HASH_CREATE;
@@ -113,15 +119,6 @@ acre_player = player;
 
 GVAR(coreCache) = HASH_CREATE;
 
-acre_sys_io_ioEventFnc = {
-    #ifdef ENABLE_PERFORMANCE_COUNTERS
-        BEGIN_COUNTER(ioEventFunction);
-    #endif
-    _this call EFUNC(sys_rpc,handleData);
-    #ifdef ENABLE_PERFORMANCE_COUNTERS
-        END_COUNTER(ioEventFunction);
-    #endif
-};
 
 ["unit", {
     acre_current_player = _this select 0;

@@ -1,7 +1,11 @@
-//! ACRE's Arma 3 extension, `acre_x64.dll` / `acre_x64.so`.
+//! ACRE's voice extension, `acre_voice_x64.dll` / `acre_voice_x64.so`.
 //!
-//! Called as `"acre" callExtension ["group:command", [args…]]` with typed arguments, and answers
-//! asynchronous work through `ExtensionCallback` (name `"acre"`). Call `init` first.
+//! Called as `"acre_voice" callExtension ["group:command", [args…]]` with typed arguments, and
+//! answers asynchronous work through `ExtensionCallback` (name `"acre_voice"`). Call `init`
+//! first.
+//!
+//! (Separate from the `acre` extension, which still does signal propagation and terrain until
+//! that is ported too.)
 //!
 //! - Player side ([`client`], with the `client` feature): voice connection, transmissions,
 //!   the parameters for how others sound, local sounds, audio devices.

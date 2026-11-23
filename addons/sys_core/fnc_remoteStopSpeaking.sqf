@@ -17,7 +17,7 @@
  */
 
 params ["_speakingId","_netId"];
-_speakingId = parseNumber _speakingId;
+if (IS_STRING(_speakingId)) then { _speakingId = parseNumber _speakingId; };
 // if (_speakingId != GVAR(ts3id)) then {
     private _found = false;
     private _unit = objectFromNetId _netId;
