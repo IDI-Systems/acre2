@@ -202,37 +202,57 @@ Batching `authority:world` stays within `callExtension`'s 2048-arg limit. Chunk 
 - [x] Standalone test app [`acre2_voice_cli`](rust/voice/testkit/src/bin/acre2_voice_cli.rs) (`devices`, `talk` with voice activation or `--ptt`, `--radio`); smoke-tested server + two clients on null devices
 
 ### Phase 3 — ACRE DSP port (`acre/dsp`)
-- [ ] Inventory of [ACRE2Core](extensions/src/ACRE2Core) effects: `PositionalMixdownEffect`, `RadioEffect`/`FilterRadio`, `BabelFilter`, `VolumeEffect`, `FilterOcclusion`, `FilterPosition`, `FilterGain`, `AmplitudeAttenuation`, `PinkNoise`, `DspFilters` (Butterworth etc.)
-- [ ] Port each effect and parameter. Golden tests: render the same wav and params through the C++ and the Rust code, then compare (by tolerance or spectrum)
-- [ ] Voice curve models (`setVoiceCurveModel`, selectable curve scale)
-- [ ] Positional/HRTF behaviour parity (same speaker-position and head-vector math)
+- [x] Inventory: in use were `FilterRadio` (+ `PinkNoise`, ring modulation, foldback, RBJ biquads), `BabbelEffect`, `FilterVolume` and `FilterPosition` (X3DAudio). `FilterOcclusion`, `FilterGain`, `AmplitudeAttenuation` and `BabelFilter` were dead code and are not ported
+- [x] Ported to [acre2_dsp](rust/acre/dsp), processing in TeamSpeak's 480-sample blocks where the originals restart per block
+- [x] Golden tests: [reference/generate.sh](rust/acre/dsp/reference/generate.sh) builds the original C++ effects with g++ and writes outputs. Radio matches within 1 LSB (70–75 dB SNR), babel ~47 dB (the C++ rounds to `i16` between stages). Noise can't be compared (it used `rand()`)
+- [x] Voice curve models 0–3 and selectable curve scale; ACRE's 151-point distance table; kill fade
+- [x] Positional: X3DAudio (Windows-only, closed) replaced by a documented reimplementation: distance curves, emitter cone (1.2× front), equal-power stereo pan with a 2 m inner radius, the headset "ear" positions. Exact X3DAudio panning can't be matched; worth a listening test (Q12)
 
-### Phase 4 — ACRE extension (`acre/ext`)
-- [ ] arma-rs client mode: commands above, `FromArma` structs, `ExtensionCallback` events
-- [ ] Authority mode: link to the voice server, token issuing, world feed
-- [ ] Map every RPC in the inventory to a new command or callback, or mark it as removed
-- [ ] Logging to the ACRE log dir. Errors are reported to SQF via callback, not swallowed
-- [ ] Ext unit tests via the arma-rs test harness
+### Phase 4 — ACRE extension (`acre/ext`, built as `acre_voice_x64`)
+- [x] arma-rs client commands (`voice:*`, `tx:*`, `rx:*`, `vox:*`, `self:*`, `speaker:*`, `settings:*`, `sound:*`, `audio:*`) and `ExtensionCallback` events, documented in [client.rs](rust/acre/ext/src/client.rs)
+- [x] Authority commands (`authority:start/connect/token/world/remove/rules/report_position/status`), [authority.rs](rust/acre/ext/src/authority.rs); `authority:start` reads `acre2_voice.toml` so the secret never touches SQF
+- [x] Every RPC mapped (see table below); `AcreRenderer` runs the ported chains per speaker; [speakers.rs](rust/acre/ext/src/speakers.rs) merges a speaker's streams into ACRE's single speaking state
+- [x] Logging to `%LOCALAPPDATA%\Arma 3\acre2_ext.log`; command errors return non-zero codes (logged by `acre_sys_io_fnc_ext`)
+- [x] In-process e2e test with the arma-rs harness: server + extension as authority (token) and as player (connect, voice activation, radio PTT, disconnect)
+
+| TS3 RPC | Now |
+|---|---|
+| `updateSelf`, `setHeadVector` | `self:update` |
+| `updateSpeakingData` d/i/z/s/g, r, m | `speaker:direct`, `speaker:radio`, `speaker:silence` |
+| `setMuted` / `localMute` | `speaker:mute` / `vox:mute` |
+| `start/stop{Radio,Intercom,Zeus,GodMode}Speaking` | `tx:start` / `tx:stop` (via `acre_sys_core_fnc_start/stopTransmission`) |
+| `setVoiceCurveModel`, `setSelectableVoiceCurve` | `settings:curve_model`; curve scale travels in transmission metadata |
+| `setSetting`, `setSoundSystemMasterOverride` | `settings:set`, `settings:override` |
+| `loadSound`, `playLoadedSound` | `sound:load` (whole base64 WAV), `sound:play` |
+| `remoteStart/StopSpeaking`, `localStart/StopSpeaking` | callbacks `remote_start/stop`, `local_start/stop` |
+| `getClientID`/`handleGetClientID` | peer ID from `connected`, published as a unit variable |
+| `getPluginVersion`, `getVOIP*`, `setTs3ChannelDetails`, `ping`/`pong`, `gen`, `ext_reset` | removed |
 
 ### Phase 5 — SQF migration
-- [ ] Rewrite `sys_io` / `sys_rpc`: remove the pipe and polling, add an `ExtensionCallback` handler, and a thin `FUNC(ext)` wrapper
-- [ ] Server side: start the authority, a PFH world feed, and token issue on `PlayerConnected` → `remoteExec` to the client; handle respawn and team switch
-- [ ] Replace all `callRemoteProcedure` call sites (see the list in the RPC inventory)
-- [ ] Rx subscription sync whenever radio power, frequency or channel changes (hook the existing sys_data/sys_radio events)
-- [ ] Replace the TS3 IDs (`GET_TS3ID`, client ID loops) with voice `peerId` / UID
-- [ ] Remove TS-specific features: `ts3ChannelMove`, VOIP channel/server name/UID, the Steam plugin installer (`steam_boot.sqf`), and the "Plugin not found" check. Add a "voice server not reachable" UX instead
-- [ ] D6: CBA settings for activation mode (default voice activation) and sensitivity, a direct-speech PTT keybind, device selection, and a mic test/level meter
-- [ ] D8: Zeus/spectator cameras → `self:positions`; the server grants `authority:report_position` on curator/spectator enter and exit
-- [ ] Zeus, spectator, god mode, intercom and babel parity checks
+- [x] `sys_io` rewritten (`fnc_ext`, `fnc_handleCallback`, token flow, reconnects); `sys_rpc` deleted
+- [x] Server: `startAuthority` (config file, retries), `voiceStatePFH` (10 Hz world feed + camera permissions), `requestVoiceToken` via `remoteExecCall` (caller identified by `remoteExecutedOwner`; `CfgRemoteExec` entry), `authority:remove` on disconnect
+- [x] All `callRemoteProcedure` sites converted
+- [x] Rx subscriptions: `acre_sys_core_fnc_voiceStatePFH` polls hearable radios every 0.25 s and sends `rx:channels` when the set changes (simpler than hooking every radio event; Q13)
+- [x] Peer IDs replace TS3 IDs (same `ts3id` variables, so the rest of SQF is unchanged)
+- [x] TS-specific features removed (channel switching settings, VOIP info, plugin version check, Steam plugin installer); "not connected to the voice server" notifications
+- [x] D6: CBA settings for activation mode, sensitivity, input/output device; Direct Speech PTT keybind (unbound by default); `acre_api_fnc_getAudioDevices`, `acre_api_fnc_getMicrophoneLevel`
+- [x] D8: Zeus/spectator cameras → `self:positions`; server grants `report_position` to curators and spectators
+- [x] Briefing: while ACRE's briefing override is on, direct speech also goes to a `briefing` channel everyone listens to (TS3 let everyone hear everyone then)
+- [ ] **Run it in Arma.** None of the SQF has been executed yet; only the repo's validators (SQF, config, headers, stringtables) were run
+- [ ] Zeus, spectator, god mode, intercom and babel parity checks in game
+- [ ] A settings dialog with a device list and live mic meter (currently edit boxes + API functions)
 
 ### Phase 6 — Cleanup & release
-- [ ] Remove `ACRE2Arma/arma2ts`, `ACRE2Core`, `ACRE2TS`, `ACRE2DistortionTestPlugin`, `ACRE2Steam`, and the 32-bit DLLs
-- [ ] Docs: server setup (voice server bin, config, ports, secret), player setup (devices), migration notes
-- [ ] Packaging: voice server binaries in releases; optionally a Docker image
+- [x] Removed `ACRE2Arma/arma2ts`, `ACRE2Core`, `ACRE2TS`, `ACRE2DistortionTestPlugin`, `ACRE2Steam`; CMake updated. (`acre.dll`/`acre_x64.dll` signal extension stays until Phase 7.) **The remaining C++ build is unverified here (no MSVC)**
+- [x] `tools/make.py`: packages `acre_voice_x64.dll`, builds it with cargo, drops the TeamSpeak plugin
+- [x] Release workflow: builds the voice extension + Windows voice server, packages `@acre2/server` (server binary + both example configs); BattlEye signing covers `acre_voice_x64.dll`. Linux voice server/extension come from [rust.yml](.github/workflows/rust.yml) artifacts
+- [x] Docs: [installation](docs/wiki/user/installation.md) (players), [voice server](docs/wiki/user/voice-server.md) (admins), building, tips; TS channel switching page removed
+- [ ] Optional Docker image for the voice server
 - [ ] Playtests with real groups at increasing size
+- [ ] BattlEye: confirm `acre_voice_x64.dll` (networking + audio) is accepted once signed
 
 ### Phase 7 — Later
-- [ ] Port `acre.dll` (signal, antenna, terrain/WRP loading, signal map) to Rust inside the same extension, and drop `acre_dynload`
+- [ ] Port `acre.dll` (signal, antenna, terrain/WRP loading, signal map) to Rust and merge it with `acre_voice` into one extension; drop `acre_dynload`
 - [ ] Optional: server-side signal estimation for smarter radio routing
 
 ## Implementation notes
@@ -249,6 +269,9 @@ Details that later phases depend on, settled while building:
 - **Channel rules**: longest prefix wins. A player's own rules are checked before the global ones, and access is allowed when nothing matches. Tx is checked at start and on every re-resolve; rx on every resolve.
 - **Voice before routes**: datagrams that arrive before the server has processed `StartTransmission` are dropped (at most a frame or two). The client should send `StartTransmission` as soon as the PTT or voice activation fires, before the first encoded frame is ready.
 - **Barriers**: `Authority::ping()` and a client `Ping`/`Pong` guarantee everything sent earlier on that connection has been applied. The tests use these. The ext can use them after a world update when ordering matters.
+- **Radio channel keys**: `radio:<mode>:<frequency, 5 decimals>` for `singleChannel`/`singleChannelPRR` (TX frequency when sending, RX when listening), `radio:sem70AKW:<hashValue of the frequency list>`, `radio:other:<mode>` for unknown modes. Other channels: `god` (everyone listens; SQF filters by target group), `spectator`, `briefing`.
+- **What each speaking type targets**: direct = spatial (range from the curve model: 150 m × curve scale for selectable B, else 300 m); radio = spatial + its channel; intercom and Zeus = spatial; god = `god` only; spectators = `spectator` only.
+- **Server-side config**: `acre2_voice.toml` (Arma server folder or `ACRE2_VOICE_CONFIG`): `address`, `secret`, optional `fingerprint`, `client_address`.
 - **Crypto**: rustls with `ring` only (no aws-lc, so no cmake/nasm for that). TLS 1.3 only.
 - **Opus**: `opusic-c`. Dev builds link the system libopus; release builds enable `acre2_voice_codec/bundled` (static, needs cmake). The encoder is capped at super-wideband: fullband lets Opus switch to CELT on tonal input, and CELT packets carry no in-band FEC.
 - **Audio threads**: device callbacks only touch lock-free `rtrb` rings. A `acre2-voice-tx` thread encodes 20 ms frames; `acre2-voice-mix` renders frames to keep ~60 ms queued ahead of the speakers (or self-clocks with no output device). Control/voice from the network go through a tokio task into the mixer.
@@ -256,10 +279,13 @@ Details that later phases depend on, settled while building:
 
 ## Open questions
 
-- **Q4 — Mission-less voice**: should players be able to talk in the lobby or briefing before they have a unit? (Perhaps a `lobby` channel with no spatial routing.)
+- **Q4 — Mission-less voice**: the briefing is covered (a `briefing` channel). The lobby (before a unit exists) isn't: players connect once they have a unit.
 - **Q5 — Voice server deployment**: should we also offer "spawn `acre2_voice_server` as a child process of the Arma server" as a convenience, alongside running it standalone?
 - **Q6 — Opus frame size**: 20 ms (robust) or 10 ms (lower latency, more overhead)? *Default: 20 ms, configurable.*
 - **Q7 — Recording/admin tools**: should the server support admin mute, kick or recording hooks?
+- **Q11 — Extension name**: the voice extension is `acre_voice_x64` because `acre_x64` is still the C++ signal extension. Merge them in Phase 7, or keep two?
+- **Q12 — Positional sound**: X3DAudio's exact panning isn't public. The reimplementation follows its documented behaviour; does it sound right to people who know ACRE? (A listening test before release.)
+- **Q13 — Radio subscription updates**: polled every 0.25 s from SQF. Fast enough, or should retuning push immediately via sys_data events?
 - **Q9 — Audio outside Arma focus/alt-tab**: keep playing (TS3 behaviour)? *Default: yes.*
 
 ## Risks

@@ -14,8 +14,12 @@ Reference [Radio Signal Debugging](/wiki/frameworks/radio-signal-debugging) page
 
 ## Extensions
 
-### TeamSpeak 3
+### Voice
 
-**Skip Plugin Auto-Copy**
+**Local voice server**
 
-Run Arma 3 with `-skipAcrePluginCopy` startup parameter.
+Run `cargo run -p acre2_voice_server -- -c voice/server/acre2_voice_server.example.toml` in `rust/` and point a local `acre2_voice.toml` at it. `cargo run -p acre2_voice_testkit --features devices --bin acre2_voice_cli -- talk …` joins it from the command line, without Arma (see `rust/README.md`).
+
+**Logs**
+
+The voice extension logs to `%LOCALAPPDATA%\Arma 3\acre2_ext.log` (set `ACRE2_LOG=debug` for more). The voice server logs to its console (`RUST_LOG=debug`).

@@ -73,13 +73,27 @@ jobs:
       run: |
         cd extensions\\vcproj
         cmake .. -A Win32
-        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Steam;ACRE2\ACRE2TS;Extras\Wav2B64' /p:Configuration=RelWithDebInfo
+        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;Extras\Wav2B64' /p:Configuration=RelWithDebInfo
     - name: Build Extensions (x64)
       if: matrix.arch == 'x64'
       run: |
         cd extensions\\vcproj64
         cmake .. -A x64
-        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Steam;ACRE2\ACRE2TS' /p:Configuration=RelWithDebInfo
+        msbuild ACRE.sln /m '/t:ACRE2Arma\acre' /p:Configuration=RelWithDebInfo
+    - name: Setup Rust
+      if: matrix.arch == 'x64'
+      uses: dtolnay/rust-toolchain@stable
+    - name: Build Voice Extension and Server (x64)
+      if: matrix.arch == 'x64'
+      run: |
+        cd rust
+        cargo build --release -p acre2_ext -p acre2_voice_server --features acre2_voice_codec/bundled
+        cd ..
+        Copy-Item rust\target\release\acre_voice.dll acre_voice_x64.dll
+        New-Item -ItemType Directory -Force server
+        Copy-Item rust\target\release\acre2_voice_server.exe server\
+        Copy-Item rust\voice\server\acre2_voice_server.example.toml server\
+        Copy-Item rust\acre\ext\acre2_voice.example.toml server\
     - name: Sign (BattlEye)
       run: |
         .\ci\battleye\signtool.exe sign /f .\ci\battleye\idi-systems.pfx /p ${{ secrets.BE_CRED_PASSWORD }} /t http://timestamp.digicert.com *.dll
@@ -90,7 +104,7 @@ jobs:
         path: |
           *.dll
           extras/*.exe
-          plugin
+          server
           symbols
         retention-days: 1
 
@@ -107,7 +121,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
+        mkdir -p @acre2/server && cp -r acre2-extensions-*/server/* @acre2/server/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip @acre2
@@ -155,7 +169,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
+        mkdir -p @acre2/server && cp -r acre2-extensions-*/server/* @acre2/server/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
@@ -213,7 +227,7 @@ jobs:
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
+        mkdir -p @acre2/server && cp -r acre2-extensions-*/server/* @acre2/server/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2

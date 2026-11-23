@@ -33,7 +33,7 @@ This playtesting allows us to guarantee that ACRE2 supports, without glitches, 1
 - Multiple Push-To-Talk keys, for assigning different radios to different hotkeys
 - Preset naming and descriptions for radios that support it. Includes name showing in hints
 - External radios; radios in other player's inventory can be accessed and used
-- Automatic TeamSpeak 3 Channel Switching
+- Built-in voice: no TeamSpeak or other VoIP program needed
 
 ### Radio Communications
 

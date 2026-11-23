@@ -72,12 +72,11 @@ dssignfile = ""
 prefix = "acre"
 pbo_name_prefix = "acre_"
 signature_blacklist = []
-importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "acre_x64.dll", "ACRE2Arma.dll", "ACRE2Arma_x64.dll", "ACRE2Steam.dll", "ACRE2Steam_x64.dll"]
+importantFiles = ["acre_logo_medium_ca.paa", "meta.cpp", "mod.cpp", "LICENSE", "README.md", "acre.dll", "acre_x64.dll", "acre_voice_x64.dll"]
 extrasFiles = ["examples", "Wav2B64.exe"]
-pluginFiles = ["acre2_win32.dll", "acre2_win64.dll"]
 versionFiles = ["README.md", "extensions\\src\\ACRE2Shared\\version.h", "docs\\_data\\sidebar.yml"]
-extensions32 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS", "Extras\\Wav2B64"]
-extensions64 = ["ACRE2Arma\\acre", "ACRE2Arma\\arma2ts", "ACRE2\\ACRE2Steam", "ACRE2\\ACRE2TS"]
+extensions32 = ["ACRE2Arma\\acre", "Extras\\Wav2B64"]
+extensions64 = ["ACRE2Arma\\acre"]
 # be_cred_file expected to be in folder defined by enviorment variable CBA_PUBLISH_CREDENTIALS_PATH
 be_cred_filename = "acre_battleye_creds.json"
 
@@ -369,6 +368,25 @@ def compile_extensions(extensions_root, force_build):
     finally:
         os.chdir(originalDir)
 
+    compile_rust_extension(os.path.dirname(extensions_root))
+
+
+def compile_rust_extension(repo_root):
+    """Builds the voice extension (rust/acre/ext) and copies it to the repo root as acre_voice_x64.dll."""
+    rust_root = os.path.join(repo_root, "rust")
+    print_blue("\nCompiling the voice extension in {}".format(rust_root))
+
+    if shutil.which("cargo") == None:
+        print_error("Failed to find cargo (https://rustup.rs)!")
+        return
+
+    ret = subprocess.call(["cargo", "build", "--release", "-p", "acre2_ext", "--features", "acre2_voice_codec/bundled"], cwd=rust_root)
+    if ret != 0:
+        print_error("Building the voice extension failed.")
+        return
+    shutil.copy(os.path.join(rust_root, "target", "release", "acre_voice.dll"), os.path.join(repo_root, "acre_voice_x64.dll"))
+    print_green("Built acre_voice_x64.dll")
+
 
 def copy_important_files(source_dir,destination_dir):
     originalDir = os.getcwd()
@@ -417,30 +435,6 @@ def copy_important_files(source_dir,destination_dir):
                 print_error("Failed copying file/directory => {}".format(filePath))
     except:
         print_error("COPYING EXTRAS FILES.")
-        raise
-
-    # Copy pluginFiles
-    try:
-        source_plugin_dir = os.path.join(source_dir, "plugin")
-        destination_plugin_dir = os.path.join(destination_dir, "plugin")
-        print_blue("\nSearching for plugin files in {}".format(source_plugin_dir))
-        print("Source_dir: {}".format(source_plugin_dir))
-        print("Destination_dir: {}".format(destination_plugin_dir))
-
-        if os.path.exists(destination_plugin_dir):
-            shutil.rmtree(destination_plugin_dir, True)
-        os.mkdir(destination_plugin_dir)
-
-        for file in pluginFiles:
-            filePath = os.path.join(source_plugin_dir, file)
-            if os.path.exists(filePath):
-                print_green("Copying plugin dll => {}".format(filePath))
-                shutil.copy(filePath, destination_plugin_dir)
-            else:
-                missingFiles.append("{}".format(filePath))
-                print_error("Failed copying plugin dll => {}".format(filePath))
-    except:
-        print_error("COPYING PLUGIN FILES.")
         raise
 
 
@@ -1269,19 +1263,11 @@ See the make.cfg file for additional build options.
                         print_error("\nFailed to delete {}".format(os.path.join(obsolete_check_path,file)))
                         pass
 
+        # The TeamSpeak plugin is gone.
         obsolete_check_path = os.path.join(module_root, release_dir, project, "plugin")
         if os.path.exists(obsolete_check_path):
-            for file in os.listdir(obsolete_check_path):
-                if (file.endswith(".dll") and os.path.isfile(os.path.join(obsolete_check_path,file))):
-                    if not os.path.exists(os.path.join(module_root_parent, "plugin", file)):
-                        print_yellow("Removing obsolete plugin dll => {}".format(file))
-                        try:
-                            os.remove(os.path.join(obsolete_check_path,file))
-                        except:
-                            print_error("\nFailed to delete {}".format(os.path.join(obsolete_check_path,file)))
-                            pass
-            if len(os.listdir(obsolete_check_path)) == 0:
-                shutil.rmtree(obsolete_check_path, True)
+            print_yellow("Removing obsolete TeamSpeak plugin folder")
+            shutil.rmtree(obsolete_check_path, True)
 
         obsolete_check_path = os.path.join(module_root, release_dir, project, "extras")
         if os.path.exists(obsolete_check_path):

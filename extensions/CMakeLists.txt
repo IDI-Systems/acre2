@@ -59,17 +59,12 @@ if(MSVC)
 endif()
 
 include_directories(src/ACRE2Shared)
-include_directories(src/ACRE2Core)
 
 # ACRE2 Core Functionality
 add_subdirectory(src/ACRE2Shared)
-add_subdirectory(src/ACRE2Core)
 
 add_subdirectory(src/ACRE2Arma)
-add_subdirectory(src/ACRE2Steam)
 
-add_subdirectory(src/ACRE2TS)
 
 #Extras
 add_subdirectory(src/Wav2B64)
-#add_subdirectory(src/ACRE2DistortionTestPlugin)
