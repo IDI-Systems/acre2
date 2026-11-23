@@ -171,6 +171,12 @@ async fn main() -> anyhow::Result<()> {
                     match ev {
                         SessionEvent::Server(m) => println!("server: {m:?}"),
                         SessionEvent::Device(d) => println!("device: {d:?}"),
+                        SessionEvent::Transmitting { tx, active } => {
+                            println!(
+                                "{} transmitting on {tx:?}",
+                                if active { "started" } else { "stopped" }
+                            );
+                        }
                         SessionEvent::Closed { reason } => {
                             println!("disconnected: {reason}");
                             std::process::exit(0);

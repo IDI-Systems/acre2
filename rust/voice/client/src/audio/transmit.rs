@@ -41,6 +41,7 @@ pub enum TxAction {
 }
 
 #[derive(Debug)]
+#[allow(clippy::struct_excessive_bools)]
 pub struct Transmitter {
     encoder: VoiceEncoder,
     frame_ms: u32,
@@ -50,9 +51,13 @@ pub struct Transmitter {
     keyed: BTreeMap<TxId, Outgoing>,
     /// Started on the server, with the next sequence number.
     active: BTreeMap<TxId, u16>,
+    /// Next sequence number of stopped transmissions. Sequence numbers carry on across talk
+    /// spurts so listeners' jitter buffers don't mistake a restart for late packets.
+    next_seq: BTreeMap<TxId, u16>,
     /// Active transmissions whose definition changed and must be re-announced.
     changed: BTreeSet<TxId>,
     muted: bool,
+    exclusive: bool,
     level_db: f32,
     mic_open: bool,
 }
@@ -67,8 +72,10 @@ impl Transmitter {
             direct_ptt: false,
             keyed: BTreeMap::new(),
             active: BTreeMap::new(),
+            next_seq: BTreeMap::new(),
             changed: BTreeSet::new(),
             muted: false,
+            exclusive: false,
             level_db: -100.0,
             mic_open: false,
         })
@@ -115,6 +122,13 @@ impl Transmitter {
         self.keyed.remove(&tx);
     }
 
+    /// Exclusive mode: while any keyed transmission is held, direct speech isn't sent (the keyed
+    /// transmission's own targets should then cover nearby listeners). Off by default, where a
+    /// held key sends on its own transmission *and* direct speech.
+    pub fn set_exclusive(&mut self, exclusive: bool) {
+        self.exclusive = exclusive;
+    }
+
     /// Mutes the microphone: nothing is sent, but PTT state is kept.
     pub fn set_muted(&mut self, muted: bool) {
         self.muted = muted;
@@ -150,7 +164,8 @@ impl Transmitter {
         // What should be running this frame.
         let mut want: BTreeMap<TxId, &Outgoing> = BTreeMap::new();
         if !self.muted {
-            if let (true, Some(direct)) = (direct_open, &self.direct) {
+            let suppressed = self.exclusive && !self.keyed.is_empty();
+            if let (true, false, Some(direct)) = (direct_open, suppressed, &self.direct) {
                 want.insert(DIRECT_TX, direct);
             }
             for (tx, o) in &self.keyed {
@@ -181,7 +196,8 @@ impl Transmitter {
                     targets: o.targets.clone(),
                     metadata: o.metadata.clone(),
                 });
-                self.active.entry(*tx).or_insert(0);
+                let seq = self.next_seq.get(tx).copied().unwrap_or(0);
+                self.active.entry(*tx).or_insert(seq);
             }
         }
         self.changed.clear();
@@ -198,7 +214,9 @@ impl Transmitter {
             *seq = seq.wrapping_add(1);
         }
         for tx in stopping {
-            self.active.remove(&tx);
+            if let Some(seq) = self.active.remove(&tx) {
+                self.next_seq.insert(tx, seq);
+            }
             actions.push(TxAction::Stop { tx });
         }
         self.mic_open = !want.is_empty();
@@ -310,6 +328,23 @@ mod tests {
             metadata: vec![1],
         }));
         assert_eq!(kinds(&t.process(&loud()).unwrap()), ["start0", "voice0#1"]);
+    }
+
+    #[test]
+    fn exclusive_mode_swaps_direct_for_keyed() {
+        let mut t = tx();
+        t.set_exclusive(true);
+        assert_eq!(kinds(&t.process(&loud()).unwrap()), ["start0", "voice0#0"]);
+        t.key(TxId(5), radio());
+        assert_eq!(
+            kinds(&t.process(&loud()).unwrap()),
+            ["start5", "voice0#1!", "voice5#0", "stop0"]
+        );
+        t.unkey(TxId(5));
+        assert_eq!(
+            kinds(&t.process(&loud()).unwrap()),
+            ["start0", "voice0#2", "voice5#1!", "stop5"]
+        );
     }
 
     #[test]

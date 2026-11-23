@@ -1,0 +1,9 @@
+2026-11-23T22:26:17.076460Z  INFO acre: ACRE extension initialised version="0.1.0"
+2026-11-23T22:26:17.076529Z  WARN acre2_voice_client::authority: connecting to the voice server without a pinned certificate fingerprint
+2026-11-23T22:26:17.079540Z  INFO acre2_voice_server::net: authority connected addr=127.0.0.1:52969
+2026-11-23T22:26:17.079773Z  INFO acre::authority: authority connected to voice server address=127.0.0.1:48787 client_address=127.0.0.1:48787
+2026-11-23T22:26:17.082683Z  INFO acre2_voice_server::net: client joined peer=peer#1 external_id=7656 addr=127.0.0.1:36004
+2026-11-23T22:26:17.123218Z  INFO acre::client: connected to voice server peer=peer#1 address=127.0.0.1:48787
+2026-11-23T22:26:17.134550Z  INFO acre2_voice_server::net: authority disconnected
+2026-11-23T22:26:17.134601Z  INFO acre2_voice_server::net: client left peer=peer#1 external_id=7656
+2026-11-23T22:26:17.134695Z  WARN acre::authority: authority disconnected from voice server reason=server shutting down

@@ -11,7 +11,7 @@ use std::{
 };
 
 use acre2_voice_codec::{CodecError, EncoderConfig, JitterConfig, SAMPLE_RATE};
-use acre2_voice_proto::ServerMsg;
+use acre2_voice_proto::{ServerMsg, TxId};
 use tokio::sync::mpsc;
 use tracing::debug;
 
@@ -42,6 +42,11 @@ pub enum SessionEvent {
     /// A control message from the server (transmission start/end, errors, …).
     Server(ServerMsg),
     Device(DeviceEvent),
+    /// One of our own transmissions started or stopped sending (a talk spurt began or ended).
+    Transmitting {
+        tx: TxId,
+        active: bool,
+    },
     /// The connection closed; the session is dead.
     Closed {
         reason: String,
@@ -57,6 +62,7 @@ struct Shared {
     epoch: Instant,
     /// Microphone level of the last frame, `f32` bits.
     level_bits: AtomicU32,
+    events: std_mpsc::Sender<SessionEvent>,
 }
 
 impl Shared {
@@ -153,6 +159,7 @@ impl VoiceSession {
             renderer: Mutex::new(renderer),
             epoch: Instant::now(),
             level_bits: AtomicU32::new((-100.0f32).to_bits()),
+            events: app_tx.clone(),
         });
         let device_events: DeviceCallback = {
             let app_tx = Mutex::new(app_tx.clone());
@@ -289,7 +296,25 @@ fn transmit_loop(shared: &Shared, stop: &AtomicBool, mut capture: rtrb::Consumer
             };
             buf.drain(..frame);
             match actions {
-                Ok(actions) => super::apply_actions(&shared.client, actions),
+                Ok(actions) => {
+                    // Stops before starts, so a switch (e.g. direct → radio) reads as one ending
+                    // and the other beginning.
+                    let mut events: Vec<(TxId, bool)> = actions
+                        .iter()
+                        .filter_map(|a| match a {
+                            super::TxAction::Start { tx, .. } => Some((*tx, true)),
+                            super::TxAction::Stop { tx } => Some((*tx, false)),
+                            super::TxAction::Voice { .. } => None,
+                        })
+                        .collect();
+                    events.sort_by_key(|(_, active)| *active);
+                    for (tx, active) in events {
+                        let _ = shared
+                            .events
+                            .send(SessionEvent::Transmitting { tx, active });
+                    }
+                    super::apply_actions(&shared.client, actions);
+                }
                 Err(e) => debug!(error = %e, "encoding failed"),
             }
         }
