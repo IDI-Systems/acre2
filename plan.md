@@ -185,17 +185,21 @@ Batching `authority:world` stays within `callExtension`'s 2048-arg limit. Chunk 
 - [x] `server` bin: TOML config ([example](rust/voice/server/acre2_voice_server.example.toml)), logging (`RUST_LOG`), cert persistence + `fingerprint.txt`
 - [x] `client`: connect with token + fingerprint pin, control stream, datagram send/recv; `Authority` with `issue_token`/`ping`/world/rules
 - [ ] `client`: reconnect/backoff (needs a fresh token from the authority, so it belongs partly to the ext)
-- [ ] `codec`: Opus encode/decode, jitter buffer, FEC/PLC, loss stats
+- [x] `codec`: Opus encode/decode (speech-tuned, 24 kbps VBR, FEC, DTX), adaptive jitter buffer, FEC recovery + PLC, per-stream stats
 - [x] `testkit`: in-process harness (server + authority + bots) and 13 end-to-end tests over real QUIC (routing, rules, Zeus camera, tokens, kicks, pinning)
-- [ ] `testkit`: bots that play wav clips and record what they hear; latency/loss assertions with a network simulator
+- [x] `testkit`: speaker/listener bots through the real transmitter → server → mixer path, asserting latency (<150 ms) and FEC recovery under 10% loss ([audio.rs](rust/voice/testkit/tests/audio.rs)), with a synthetic speech signal
+- [ ] `testkit`: bursty-loss/reordering/jitter simulation (currently only periodic loss)
 - [ ] Load test: 100+ peers, 20+ concurrent speakers, measure server CPU and bandwidth
 
 ### Phase 2 — Client audio
-- [ ] `cpal` capture/playback, device enumeration and selection, hot-plug handling
-- [ ] Resampling, optional noise suppression and AGC
-- [ ] Activation (D6): voice activation with an adjustable threshold, hangover/attack times and a mic level meter; PTT gate; voice activation is the default
-- [ ] Mixer: per-speaker channels, local sounds, master volume/override
-- [ ] Standalone test app (CLI) that joins a server and talks, for testing without Arma
+- [x] `cpal` capture/playback, device enumeration by stable id (`alsa:…`, `wasapi:…`) and selection, reopen on device change (`VoiceSession::set_devices`)
+- [ ] Hot-plug: reopen automatically when a device disappears (currently reported as a `DeviceEvent` error)
+- [x] Resampling (cubic, streaming) and downmix
+- [ ] Optional noise suppression (`nnnoiseless`) and AGC
+- [x] Activation (D6/D9): voice activation with threshold + hangover, direct PTT, any held PTT opens the mic, mute; mic level for a meter
+- [x] Mixer: per-stream jitter buffers, `Renderer` hook for per-speaker effects, local mute, soft clip
+- [ ] Mixer: local sounds (`loadSound`/`playSound`) — will live in the ACRE renderer (Phase 4)
+- [x] Standalone test app [`acre2_voice_cli`](rust/voice/testkit/src/bin/acre2_voice_cli.rs) (`devices`, `talk` with voice activation or `--ptt`, `--radio`); smoke-tested server + two clients on null devices
 
 ### Phase 3 — ACRE DSP port (`acre/dsp`)
 - [ ] Inventory of [ACRE2Core](extensions/src/ACRE2Core) effects: `PositionalMixdownEffect`, `RadioEffect`/`FilterRadio`, `BabelFilter`, `VolumeEffect`, `FilterOcclusion`, `FilterPosition`, `FilterGain`, `AmplitudeAttenuation`, `PinkNoise`, `DspFilters` (Butterworth etc.)
@@ -246,6 +250,9 @@ Details that later phases depend on, settled while building:
 - **Voice before routes**: datagrams that arrive before the server has processed `StartTransmission` are dropped (at most a frame or two). The client should send `StartTransmission` as soon as the PTT or voice activation fires, before the first encoded frame is ready.
 - **Barriers**: `Authority::ping()` and a client `Ping`/`Pong` guarantee everything sent earlier on that connection has been applied. The tests use these. The ext can use them after a world update when ordering matters.
 - **Crypto**: rustls with `ring` only (no aws-lc, so no cmake/nasm for that). TLS 1.3 only.
+- **Opus**: `opusic-c`. Dev builds link the system libopus; release builds enable `acre2_voice_codec/bundled` (static, needs cmake). The encoder is capped at super-wideband: fullband lets Opus switch to CELT on tonal input, and CELT packets carry no in-band FEC.
+- **Audio threads**: device callbacks only touch lock-free `rtrb` rings. A `acre2-voice-tx` thread encodes 20 ms frames; `acre2-voice-mix` renders frames to keep ~60 ms queued ahead of the speakers (or self-clocks with no output device). Control/voice from the network go through a tokio task into the mixer.
+- **Transmissions from a client**: `TxId(0)` is direct speech; keyed transmissions (radios etc.) use other ids chosen by the caller. A held key sends on its own tx *and* direct speech. Each talk spurt is a Start → frames (last with `END_OF_SPURT`) → Stop, so listeners get a fresh `TransmissionStarted` per spurt, like ACRE's `remoteStartSpeaking` today.
 
 ## Open questions
 

@@ -1,6 +1,8 @@
 //! Test harness: an in-process voice server with a connected authority, and helpers for
 //! joining clients and waiting on events.
 
+pub mod signals;
+
 use std::time::Duration;
 
 use acre2_voice_client::{Authority, AuthorityEvent, Client, ClientEvent};

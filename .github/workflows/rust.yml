@@ -30,12 +30,14 @@ jobs:
     - uses: Swatinem/rust-cache@v2
       with:
         workspaces: rust
+    - name: Install ALSA and libopus headers
+      run: sudo apt-get update && sudo apt-get install -y libasound2-dev libopus-dev
     - name: Format
       run: cargo fmt --all --check
     - name: Clippy
-      run: cargo clippy --workspace --all-targets -- -D warnings
+      run: cargo clippy --workspace --all-targets --features acre2_voice_testkit/devices -- -D warnings
     - name: Test
-      run: cargo test --workspace
+      run: cargo test --workspace --features acre2_voice_testkit/devices
 
   build:
     needs: check
@@ -61,8 +63,12 @@ jobs:
     - uses: Swatinem/rust-cache@v2
       with:
         workspaces: rust
+    - name: Install ALSA headers
+      if: runner.os == 'Linux'
+      run: sudo apt-get update && sudo apt-get install -y libasound2-dev
     - name: Build
-      run: cargo build --release --target ${{ matrix.target }} -p acre2_ext -p acre2_voice_server
+      # `bundled` compiles libopus in statically (cmake is preinstalled on the runners).
+      run: cargo build --release --target ${{ matrix.target }} -p acre2_ext -p acre2_voice_server --features acre2_voice_codec/bundled
     - name: Collect
       shell: bash
       run: |

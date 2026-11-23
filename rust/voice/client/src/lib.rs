@@ -5,8 +5,10 @@
 //! - [`Authority`]: the game server's connection, which issues join tokens and feeds the world
 //!   state.
 //!
-//! Audio capture, encoding and playback build on top of this (Phase 2).
+//! - [`audio`]: voice activation, encoding, mixing, and (with the `devices` feature) live
+//!   capture and playback.
 
+pub mod audio;
 mod authority;
 mod client;
 mod transport;

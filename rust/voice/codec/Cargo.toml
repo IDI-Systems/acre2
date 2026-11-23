@@ -8,6 +8,15 @@ repository.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+bytes = { workspace = true }
+opusic-c = { version = "1.6", default-features = false }
+thiserror = { workspace = true }
+
+[features]
+default = []
+# Build libopus from source and link it statically (needs cmake). Without it, the system
+# libopus is linked dynamically (set OPUS_LIB_DIR / OPUS_LIB_STATIC=true to change that).
+bundled = ["opusic-c/bundled"]
 
 [lints]
 workspace = true

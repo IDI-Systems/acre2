@@ -21,6 +21,7 @@ rust-version = "1.88"
 acre2_voice_proto = { path = "voice/proto" }
 acre2_voice_server = { path = "voice/server" }
 acre2_voice_client = { path = "voice/client" }
+acre2_voice_codec = { path = "voice/codec" }
 
 anyhow = "1"
 arc-swap = "1"
@@ -52,6 +53,11 @@ missing_errors_doc = "allow"
 missing_panics_doc = "allow"
 cast_possible_truncation = "allow"
 cast_precision_loss = "allow"
+# Audio and DSP code is full of deliberate float/int and signed/unsigned conversions.
+cast_sign_loss = "allow"
+cast_possible_wrap = "allow"
+assert_is_empty = "allow"
+too_many_lines = "allow"
 
 [profile.release]
 lto = "thin"
