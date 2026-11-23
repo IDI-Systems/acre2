@@ -1,0 +1,18 @@
+[package]
+name = "acre2_ext"
+description = "ACRE Arma 3 extension: voice client and server authority"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[lib]
+name = "acre"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+arma-rs = { workspace = true }
+
+[lints]
+workspace = true

@@ -1,0 +1,13 @@
+[package]
+name = "acre2_voice_codec"
+description = "Opus encoding/decoding, jitter buffer and loss concealment for acre2 voice"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+
+[lints]
+workspace = true

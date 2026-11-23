@@ -1,0 +1,21 @@
+[package]
+name = "acre2_voice_client"
+description = "acre2 voice client: connection, voice transport and audio pipeline"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+acre2_voice_proto = { workspace = true, features = ["io"] }
+bytes = { workspace = true }
+quinn = { workspace = true }
+ring = { workspace = true }
+rustls = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+
+[lints]
+workspace = true

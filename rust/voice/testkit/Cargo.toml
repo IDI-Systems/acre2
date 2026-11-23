@@ -1,0 +1,21 @@
+[package]
+name = "acre2_voice_testkit"
+description = "Headless bots and test harness for acre2 voice"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+acre2_voice_client = { workspace = true }
+acre2_voice_proto = { workspace = true }
+acre2_voice_server = { workspace = true }
+anyhow = { workspace = true }
+bytes = { workspace = true }
+tokio = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+[lints]
+workspace = true

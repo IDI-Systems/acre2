@@ -1,0 +1,76 @@
+name: Rust
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - 'rust/**'
+    - '.github/workflows/rust.yml'
+  pull_request:
+    paths:
+    - 'rust/**'
+    - '.github/workflows/rust.yml'
+
+defaults:
+  run:
+    working-directory: rust
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt, clippy
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: rust
+    - name: Format
+      run: cargo fmt --all --check
+    - name: Clippy
+      run: cargo clippy --workspace --all-targets -- -D warnings
+    - name: Test
+      run: cargo test --workspace
+
+  build:
+    needs: check
+    strategy:
+      matrix:
+        include:
+        - os: windows-latest
+          target: x86_64-pc-windows-msvc
+          ext: acre.dll
+          ext_out: acre_x64.dll
+          server: acre2_voice_server.exe
+        - os: ubuntu-latest
+          target: x86_64-unknown-linux-gnu
+          ext: libacre.so
+          ext_out: acre_x64.so
+          server: acre2_voice_server
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v6
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        targets: ${{ matrix.target }}
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: rust
+    - name: Build
+      run: cargo build --release --target ${{ matrix.target }} -p acre2_ext -p acre2_voice_server
+    - name: Collect
+      shell: bash
+      run: |
+        mkdir -p dist
+        cp target/${{ matrix.target }}/release/${{ matrix.ext }} dist/${{ matrix.ext_out }}
+        cp target/${{ matrix.target }}/release/${{ matrix.server }} dist/
+        cp voice/server/acre2_voice_server.example.toml dist/
+    - uses: actions/upload-artifact@v4
+      with:
+        name: acre2-rust-${{ matrix.target }}
+        path: rust/dist
