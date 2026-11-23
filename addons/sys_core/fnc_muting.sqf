@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets up the per frame event handler to mute and unmute clients on TeamSpeak. The muting occurs to optimize TeamSpeak bandwidth as voice data is not sent for muted clients.
+ * Sets up the per frame event handler to locally mute and unmute players (spectators, distance) in the voice extension.
  *
  * Arguments:
  * None

@@ -45,24 +45,23 @@ Arma (SQF) ──callExtension "2name:a,b,c,"──► ACRE2Arma.dll ──named
 
 **Plugin ↔ plugin** (TS plugin commands): `ext_remoteStartSpeaking` / `ext_remoteStopSpeaking` (id, languageId, netId, speakingType, radioId, curveScale), `ext_handleGetClientID`.
 
-## Target architecture
+## Target architecture (as built)
 
 ```
-                         ┌──────────────── Voice Server (standalone bin) ────────────────┐
-                         │ sessions · world state · channel subscriptions · router         │
-                         └──▲──────────────────────────▲─────────────────────────▲─────────┘
-           authority link   │ QUIC (reliable)          │ QUIC: control stream    │
-           (shared secret)  │                          │ + datagrams (Opus)      │
-                            │                          │                         │
- Arma dedicated server ─────┘            Arma client A ┘           Arma client B ┘
-  acre_x64.so/.dll (server mode)          acre_x64.dll (client mode)
-  · pushes positions @ ~10 Hz             · mic capture → VAD/PTT → Opus → send
-  · issues join tokens                    · recv → jitter buffer → decode → ACRE DSP → mixer → out
-  · sends token/addr/cert to clients      · SQF ⇄ ext via typed args + ExtensionCallback
-    via remoteExec
+ Arma dedicated server: acre_voice_x64 (.dll/.so)
+ ┌────────────────────────────────────────────────────────────┐
+ │ voice server (sessions · world · subscriptions · router)    │◄── UDP port (QUIC) ──┐
+ │        ▲ local QUIC, random secret                          │                      │
+ │ authority: positions @10 Hz, join tokens, camera permission │                      │
+ └────────────────────────────────────────────────────────────┘                      │
+      ▲ SQF (typed callExtension + ExtensionCallback); tokens to clients via CBA events  │
+                                                                                         │
+ Arma client: acre_voice_x64.dll                                                       │
+  · mic → voice activation/PTT → Opus → datagrams ───────────────────────────────────────┤
+  · datagrams → jitter buffer → decode → ACRE DSP (per speaker, params from SQF) → mixer ◄┘
 ```
 
-### Workspace layout (proposed)
+### Workspace layout
 
 ```
 rust/
@@ -72,13 +71,13 @@ rust/
     codec/             acre2_voice_codec    Opus wrapper, FEC/DTX config, jitter buffer, PLC
     server/            acre2_voice_server   lib: sessions, world state, routing; + bin `acre2_voice_server`
     client/            acre2_voice_client   lib: connection, capture/playback (cpal), activation, send/recv pipeline, mixer hooks
-    testkit/           acre2_voice_testkit  headless bots (play wav, record), loss/latency simulator
+    testkit/           acre2_voice_testkit  harness, e2e/audio/load tests, acre2_voice_cli
   acre/
-    dsp/               acre2_dsp            port of ACRE2Core effects (positional, radio, babel, volume, occlusion, pink noise)
-    ext/               acre2_ext            cdylib built as `acre_x64` (arma-rs): client mode + server/authority mode
+    dsp/               acre2_dsp            port of ACRE2Core effects (radio, babel, volume, positional)
+    ext/               acre2_ext            cdylib `acre_voice_x64` (arma-rs): voice client + hosted server/authority
 ```
 
-The existing C++ stays where it is until Phase 6 removes it.
+The TeamSpeak C++ was removed in Phase 6; `extensions/` now only holds the signal extension (`acre_x64`).
 
 ### Library concepts (generic, no ACRE knowledge)
 
@@ -97,11 +96,11 @@ The existing C++ stays where it is until Phase 6 removes it.
 ### Transport & security
 
 - **QUIC via `quinn`**: one bidirectional reliable stream for control messages (serde + postcard or bincode) and **unreliable datagrams** for voice frames. QUIC gives us encryption, congestion awareness and NAT-friendly single UDP port for free.
-- **Certificates**: the server generates a self-signed cert on first run. Its SHA-256 fingerprint travels with the join token: voice server → authority → Arma server → `remoteExec` → client. The client pins it, so the trust chain is Arma's own network.
+- **Certificates**: the server generates a self-signed cert at startup. Its SHA-256 fingerprint travels with the join token: voice server → authority → Arma server → `remoteExec` → client. The client pins it, so the trust chain is Arma's own network.
 - **Join flow**:
-  1. Arma server ext (authority) connects to the voice server with a shared secret from config.
+  1. The Arma server's extension hosts the voice server and connects to it locally as the authority, with a secret generated in memory (D10).
   2. When a player joins the mission, the server ext requests a token for their UID. The voice server returns `{token, addr, fingerprint}`.
-  3. The server `remoteExec`s that to the client. The client ext connects and presents the token, which is single-use and has a short TTL.
+  3. The client asked via `remoteExecCall` (the server identifies it by `remoteExecutedOwner`); the server answers with a CBA owner event. The client ext connects and presents the token, which is single-use and has a short TTL.
   4. The voice server maps peer ↔ UID ↔ unit (netId). The authority keeps the unit mapping current on respawn and team switch.
 - **Voice datagram**: `[tx_id: u16][seq: u16][flags: u8][opus payload]`, kept ≤ ~200 B. The server stamps `speaker peer_id` when forwarding.
 
@@ -118,64 +117,32 @@ The existing C++ stays where it is until Phase 6 removes it.
 | ACRE concept | Library |
 |---|---|
 | Direct speech (`d`), shouting/whisper curve | Spatial target; `range` from `setSelectableVoiceCurve`/curve scale |
-| Radio TX on radio X | Channel target `radio:<freq>` (or `radio:<freq>:<modulation>`) plus metadata `{radioId, languageId, curveScale, netId}` |
+| Radio TX on radio X | Spatial target + channel `radio:<mode>:<freq>` (see Implementation notes) plus metadata `{speakingType, radioId, netId, languageId, curveScale}` |
 | Radio RX | The client subscribes to the channels of all radios it has powered on and tuned, and re-syncs when radios change |
-| Intercom (`i`) | Channel `intercom:<vehicleNetId>:<intercomId>` |
+| Intercom (`i`) | Spatial target (crew are close); the listener's SQF decides it's intercom, as before |
 | Zeus (`z`) | Spatial target. The client reports the curator camera as its `emitter` and `listener` extra position (D8). The authority grants `report_position` while the player is a curator. Listeners keep the current emitter-position DSP logic, which reads `zeusPosition`. That variable broadcast can later be replaced by the position sent in the transmission. |
-| God mode (`g`) | Channel `god:<group>` with an authority permission gate |
+| God mode (`g`) | Channel `god` (everyone listens); the listener's SQF filters by target group, as before |
 | Spectator (`s`) | Channel `spectator`. The spectator camera is reported as a `listener` extra position (D8) where spatial hearing applies |
 | Babel/languages | Metadata `languageId`. The listener applies the babel effect as today |
-| Signal quality, radio distortion | Still listener-side: SQF + `acre.dll` compute it and pass it to the DSP via `speaking:update` (same as today) |
+| Signal quality, radio distortion | Still listener-side: SQF + `acre.dll` compute it and pass it to the DSP via `speaker:radio` (same as before) |
 | `remoteStartSpeaking` / `remoteStopSpeaking` | Fired from the ext as `ExtensionCallback` on TransmissionStart/End |
 
 The server-side routing for radio is **frequency only** (no distance cut). The listener decides audibility and quality, as today. Direct speech gets a distance cut, which is where the bandwidth savings are.
 
-### New extension API (arma-rs)
+### Extension API (arma-rs)
 
-Typed args with arma-rs `FromArma`/`IntoArma` (derive where possible). Commands are grouped. Events arrive through `ExtensionCallback` (`"acre"`, `<event>`, `<data>`), which **replaces the per-frame `sys_io` polling**.
+`"acre_voice" callExtension ["group:command", [args…]]`, typed arguments; asynchronous results and events come through `ExtensionCallback` (name `"acre_voice"`, data always an SQF array). This replaces the per-frame `sys_io` polling. Each command is documented where it's defined:
 
-Client mode (sketch, final names TBD in Phase 4):
-
-```
-acre callExtension ["voice:connect",   [addr, token, fingerprint]]
-acre callExtension ["voice:disconnect",[]]
-acre callExtension ["self:update",     [[listenerPosASL...], [listenerDir...], languageId]]   // replaces updateSelf/setHeadVector (local DSP only)
-acre callExtension ["self:positions",  [[[posASL...], [dir...], "emitter"|"listener"|"both"], ...]]  // D8 extra positions (Zeus/spectator cam); [] clears
-acre callExtension ["vox:settings",    [mode, threshold]]    // mode: "vad"|"ptt"; threshold in dBFS
-acre callExtension ["vox:ptt",         [pressed]]            // direct-speech PTT key state (when mode == "ptt")
-acre callExtension ["tx:start",        [kind, radioId|"", channelKey|"", languageId, curveScale]]
-acre callExtension ["tx:stop",         [kind, radioId|""]]
-acre callExtension ["rx:subscriptions",[["radio:43.100", ...]]]
-acre callExtension ["speaker:update",  [peerId, kind, babel, volume, [pos], [dir], <radio params...>]]   // replaces updateSpeakingData
-acre callExtension ["speaker:mute",    [peerId, bool]]
-acre callExtension ["sound:load",      [id, base64|path]]
-acre callExtension ["sound:play",      [id, [pos], volume, isWorld]]
-acre callExtension ["settings:set",    [key, value]]                                    // incl. voice curve model, master override
-acre callExtension ["audio:devices",   []]   → [[inputs...],[outputs...]]
-acre callExtension ["audio:select",    [inputId, outputId]]
-acre callExtension ["version",         []]
-```
-
-Callbacks: `connected`, `disconnected(reason)`, `mic_level(dBFS)` (only while the settings UI is open), `remote_start(peerId, netId, kind, radioId, languageId, curveScale, targets)`, `remote_stop(peerId, kind, radioId)`, `local_start/local_stop`, `sound_loaded(id)`, `stats(...)`.
-
-Server/authority mode (only on a dedicated or hosted server):
-
-```
-acre callExtension ["authority:start",   [addr, secret]]
-acre callExtension ["authority:token",   [uid, netId]]         → async callback with {token, addr, fingerprint}
-acre callExtension ["authority:world",   [[[uid, [pos], alive, flags], ...]]]   // batched, ~10 Hz from a PFH
-acre callExtension ["authority:perm",    [uid, channelPrefix, allowTx, allowRx]]
-acre callExtension ["authority:report_position", [uid, allowed]]   // D8: grant/revoke while curator/spectator
-```
-
-Batching `authority:world` stays within `callExtension`'s 2048-arg limit. Chunk the call if a mission is larger than that.
+- Player side ([client.rs](rust/acre/ext/src/client.rs)): `voice:connect/disconnect/status`, `tx:direct/start/stop/stop_all`, `rx:channels`, `vox:settings/ptt/mute`, `self:update/positions`, `speaker:direct/radio/silence/mute`, `settings:curve_model/set/override`, `sound:load/play`, `audio:devices/select/level`. Callbacks: `connected`, `connect_failed`, `disconnected`, `remote_start`, `remote_stop`, `local_start`, `local_stop`, `server_error`, `device`.
+- Server side ([host.rs](rust/acre/ext/src/host.rs), [authority.rs](rust/acre/ext/src/authority.rs)): `server:start/stop`, `authority:connect/token/world/remove/rules/report_position/status`. Callbacks: `authority_connected`, `authority_failed`, `authority_disconnected`, `token`, `token_failed`, `peer_connected`, `peer_disconnected`, `authority_error`.
+- `init` (once, enables callbacks), `version`.
 
 ## Phases
 
 ### Phase 0 — Scaffolding
 - [x] Cargo workspace + crates as above, `rust-toolchain.toml`, clippy/fmt config
-- [x] CI: [.github/workflows/rust.yml](.github/workflows/rust.yml) runs fmt, clippy (`-D warnings`) and tests, then builds `acre_x64.dll` + `acre2_voice_server.exe` (Windows MSVC) and `acre_x64.so` + `acre2_voice_server` (Linux) as artifacts
-- [ ] Hook the Rust artifacts into [tools/make.py](tools/make.py) / [release.yml](.github/workflows/release.yml) (when the ext replaces the C++ in Phase 4–6)
+- [x] CI: [.github/workflows/rust.yml](.github/workflows/rust.yml) runs fmt, clippy (`-D warnings`) and tests, then builds `acre_voice_x64.dll` (Windows MSVC) and `acre_voice_x64.so` (Linux) plus the standalone `acre2_voice_server` as artifacts
+- [x] Rust artifacts in [tools/make.py](tools/make.py) and [release.yml](.github/workflows/release.yml) (Phase 6)
 - [x] Decide crate names and location (D4: `rust/`, `acre2_` prefix)
 
 ### Phase 1 — Voice library core

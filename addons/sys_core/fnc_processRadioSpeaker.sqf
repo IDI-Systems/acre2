@@ -1,14 +1,14 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Calculates the information required by TeamSpeak for a radio speaker.
+ * Calculates how a radio speaker should sound on each of our radios (for speaker:radio).
  *
  * Arguments:
  * 0: Unit to process <OBJECT>
  * 1: List of radio classnames <ARRAY>
  *
  * Return Value:
- * Parameters to send to TeamSpeak  <ARRAY>
+ * Per-radio parameters <ARRAY>
  *
  * Example:
  * [unit,["ACRE_PRC343_ID_1"]] call acre_sys_core_fnc_processRadioSpeaker

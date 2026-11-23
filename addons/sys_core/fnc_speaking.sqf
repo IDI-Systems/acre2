@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Sets up the the per frame event handler for processing all the speaking data which in turn will send data to TeamSpeak.
+ * Sets up the the per frame event handler for processing all the speaking data which in turn sends it to the voice extension.
  *
  * Arguments:
  * None
@@ -170,7 +170,6 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
                         if (_params select 3) then { // speaker / loudspeaker
                             // Possible sound fix: Always double the distance of the radio for hearing purposes
                             // on external speaker to make it 'distant' like a speaker.
-                            // This should be moved to plugin probably.
                             _params set [4, _radioPos];
                             _params set [0, _radioVolume * _volumeModifier * _attenuate * _occlusion];
                             TRACE_5("volume (loudspeaker)",_params select 0,_radioVolume,_volumeModifier,_attenuate,_occlusion);

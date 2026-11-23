@@ -1,10 +1,10 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Retrieves the game object of a player from a TeamSpeak ID.
+ * Retrieves the game object of a player from a voice peer ID.
  *
  * Arguments:
- * 0: TeamSpeak ID <STRING>
+ * 0: Voice peer ID <STRING|NUMBER>
  *
  * Return Value:
  * Player <OBJECT>

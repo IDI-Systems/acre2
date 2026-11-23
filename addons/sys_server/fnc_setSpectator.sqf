@@ -4,7 +4,7 @@
  * Updates the ACRE_SPECTATORS_LIST global variable.
  *
  * Arguments:
- * 0: TeamSpeak ID <NUMBER>
+ * 0: Voice peer ID <NUMBER>
  * 1: Specatator status (1 = on, 0 = off) <NUMBER>
  * 2: Arma 3 Client ID <NUMBER>
  *

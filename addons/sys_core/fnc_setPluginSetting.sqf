@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles setting TeamSpeak plugin settings. Waits for pipe to open and then applies them.
+ * Applies an audio setting (global volumes, radio noise) in the voice extension.
  *
  * Arguments:
  * 0: Setting Name <STRING>
