@@ -118,7 +118,7 @@ async fn many_peers_many_speakers() -> anyhow::Result<()> {
     }
     tokio::time::sleep(Duration::from_millis(500)).await;
     let elapsed = start.elapsed();
-    let cpu = cpu_time().zip(cpu_before).map(|(a, b)| a - b);
+    let cpu = cpu_time().zip(cpu_before).map(|(a, b)| a.saturating_sub(b));
 
     let got = received.load(Ordering::Relaxed);
     let want = expected.load(Ordering::Relaxed);
