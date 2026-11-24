@@ -17,6 +17,8 @@ The `voice/*` crates know nothing about ACRE or Arma.
 
 ## Building and testing
 
+To build both release binaries on Linux and copy them to the repo root for `hemtt release`, run `./build-extension.sh` from the repo root (`windows` or `linux` to build just one).
+
 Linux needs the ALSA and libopus development packages (`libasound2-dev libopus-dev`). Release builds compile libopus in instead (`--features acre2_voice_codec/bundled`, needs CMake).
 
 ```sh
