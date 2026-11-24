@@ -196,9 +196,33 @@ impl Client {
         self.conn.rtt()
     }
 
+    /// Transport statistics: round trip, packets sent and lost, bytes each way.
+    #[must_use]
+    pub fn stats(&self) -> ConnectionStats {
+        let s = self.conn.stats();
+        ConnectionStats {
+            rtt: self.conn.rtt(),
+            sent_packets: s.path.sent_packets,
+            lost_packets: s.path.lost_packets,
+            rx_bytes: s.udp_rx.bytes,
+            tx_bytes: s.udp_tx.bytes,
+        }
+    }
+
     pub fn close(&self) {
         self.conn.close(0u32.into(), b"bye");
     }
+}
+
+/// See [`Client::stats`].
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct ConnectionStats {
+    pub rtt: std::time::Duration,
+    pub sent_packets: u64,
+    /// Our packets the connection detected as lost (outgoing loss).
+    pub lost_packets: u64,
+    pub rx_bytes: u64,
+    pub tx_bytes: u64,
 }
 
 impl Drop for Client {

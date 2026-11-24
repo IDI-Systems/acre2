@@ -96,6 +96,30 @@ pub struct Mixer {
     mono: Vec<f32>,
     out: StereoFrame,
     muted: std::collections::HashSet<PeerId>,
+    totals: ReceiveTotals,
+}
+
+/// Frames played from all streams so far, by how they were produced. Recovered and concealed
+/// frames are incoming packet loss.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct ReceiveTotals {
+    pub audio: u64,
+    pub recovered: u64,
+    pub concealed: u64,
+}
+
+impl ReceiveTotals {
+    /// Share of frames that were lost (recovered or concealed), 0–1.
+    #[must_use]
+    pub fn loss(&self) -> f64 {
+        let lost = self.recovered + self.concealed;
+        let total = self.audio + lost;
+        if total == 0 {
+            0.0
+        } else {
+            lost as f64 / total as f64
+        }
+    }
 }
 
 impl Mixer {
@@ -108,6 +132,7 @@ impl Mixer {
             mono: vec![0.0; samples],
             out: StereoFrame::new(samples),
             muted: std::collections::HashSet::new(),
+            totals: ReceiveTotals::default(),
         }
     }
 
@@ -186,6 +211,20 @@ impl Mixer {
     }
 
     #[must_use]
+    pub fn totals(&self) -> ReceiveTotals {
+        self.totals
+    }
+
+    /// Streams currently playing.
+    #[must_use]
+    pub fn playing(&self) -> usize {
+        self.streams
+            .values()
+            .filter(|s| s.info.is_some() && s.voice.is_playing())
+            .count()
+    }
+
+    #[must_use]
     pub fn stats(&self, speaker: PeerId, tx: TxId) -> Option<JitterStats> {
         self.streams.get(&(speaker, tx)).map(|s| s.voice.stats())
     }
@@ -200,6 +239,12 @@ impl Mixer {
         let mut removed = Vec::new();
         for (key, s) in &mut self.streams {
             let kind = s.voice.next_frame(&mut self.mono)?;
+            match kind {
+                FrameKind::Audio => self.totals.audio += 1,
+                FrameKind::Recovered => self.totals.recovered += 1,
+                FrameKind::Concealed => self.totals.concealed += 1,
+                FrameKind::Silence => {}
+            }
             match &s.info {
                 Some(info) => {
                     if kind != FrameKind::Silence && !self.muted.contains(&info.speaker) {

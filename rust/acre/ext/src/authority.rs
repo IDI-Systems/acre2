@@ -33,6 +33,17 @@ fn hex(bytes: &[u8; 32]) -> String {
     Token(*bytes).to_hex()
 }
 
+/// Forgets the current authority connection without reporting it as lost (its own events are
+/// ignored from now on). Used before deliberately stopping the hosted voice server.
+pub(crate) fn detach() {
+    let old = {
+        let mut st = state();
+        st.generation += 1;
+        st.authority.take()
+    };
+    drop(old);
+}
+
 /// `["authority:connect", [address, secret, fingerprintHex, clientAddress]]`. An empty
 /// fingerprint trusts any certificate; an empty client address uses the server's configured
 /// public address, else `address`.

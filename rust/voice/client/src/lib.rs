@@ -14,7 +14,7 @@ mod client;
 mod transport;
 
 pub use authority::{Authority, AuthorityEvent, AuthorityWelcome, IssuedToken};
-pub use client::{Client, ClientEvent};
+pub use client::{Client, ClientEvent, ConnectionStats};
 pub use transport::{fingerprint, parse_fingerprint};
 
 #[derive(Debug, thiserror::Error)]

@@ -16,6 +16,8 @@ if (!hasInterface) exitWith {};
 // Keep the extension up to date with our transmissions, radio channels and camera, and keep our
 // voice peer ID published on whichever unit we control.
 [FUNC(voiceStatePFH), 0.25, []] call CBA_fnc_addPerFrameHandler;
+// Map diary page with the voice connection status
+[FUNC(updateDiary), 2, []] call CBA_fnc_addPerFrameHandler;
 ["unit", {
     params ["_newUnit"];
     if (GVAR(ts3id) != -1) then {

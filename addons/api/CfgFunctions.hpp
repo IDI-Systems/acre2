@@ -142,6 +142,7 @@ class CfgFunctions {
             PATHTO_FNC(isVOIPConnected);
             PATHTO_FNC(getAudioDevices);
             PATHTO_FNC(getMicrophoneLevel);
+            PATHTO_FNC(openMicrophoneTest);
         };
     };
 

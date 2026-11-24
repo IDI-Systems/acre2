@@ -152,7 +152,8 @@ async fn main() -> anyhow::Result<()> {
                         } else {
                             ActivationMode::Voice
                         },
-                        threshold_db: threshold,
+                        open_db: threshold,
+                        close_db: threshold - 5.0,
                         ..ActivationConfig::default()
                     },
                     input_device: input,

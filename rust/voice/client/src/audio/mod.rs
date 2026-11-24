@@ -14,6 +14,8 @@ mod activation;
 #[cfg(feature = "devices")]
 mod device;
 mod mixer;
+#[cfg(feature = "devices")]
+mod monitor;
 mod resample;
 #[cfg(feature = "devices")]
 mod session;
@@ -21,8 +23,10 @@ mod transmit;
 
 pub use activation::{ActivationConfig, ActivationMode, VoiceGate, level_db};
 #[cfg(feature = "devices")]
-pub use device::{AudioDevice, DeviceEvent, DeviceList, list_devices};
-pub use mixer::{Mixer, PassthroughRenderer, Renderer, StereoFrame, StreamInfo};
+pub use device::{AudioDevice, DeviceCallback, DeviceEvent, DeviceList, list_devices};
+pub use mixer::{Mixer, PassthroughRenderer, ReceiveTotals, Renderer, StereoFrame, StreamInfo};
+#[cfg(feature = "devices")]
+pub use monitor::MicMonitor;
 pub use resample::{Resampler, downmix};
 #[cfg(feature = "devices")]
 pub use session::{SessionConfig, SessionEvent, VoiceSession};

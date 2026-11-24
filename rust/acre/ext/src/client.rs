@@ -9,10 +9,10 @@ use std::{
 
 use acre2_dsp::positional::{CurveModel, Listener, from_arma};
 use acre2_voice_client::{
-    Client,
+    Client, ConnectionStats,
     audio::{
-        ActivationConfig, ActivationMode, Outgoing, SessionConfig, SessionEvent, VoiceSession,
-        list_devices,
+        ActivationConfig, ActivationMode, MicMonitor, Outgoing, SessionConfig, SessionEvent,
+        VoiceSession, list_devices,
     },
     parse_fingerprint,
 };
@@ -53,6 +53,13 @@ struct State {
     keys: HashMap<String, TxId>,
     /// What each of our transmissions was last announced as, for local start/stop events.
     tx_meta: HashMap<TxId, Meta>,
+    /// Where we're connected (or last tried), and why the last attempt failed.
+    address: String,
+    last_error: String,
+    /// Microphone meter for when there's no session (mic test before joining).
+    monitor: Option<MicMonitor>,
+    /// Previous `voice:stats` sample, for rates.
+    last_stats: Option<(std::time::Instant, ConnectionStats)>,
 }
 
 static STATE: LazyLock<Mutex<State>> = LazyLock::new(|| {
@@ -65,6 +72,10 @@ static STATE: LazyLock<Mutex<State>> = LazyLock::new(|| {
         wanted: Wanted::default(),
         keys: HashMap::new(),
         tx_meta: HashMap::new(),
+        address: String::new(),
+        last_error: String::new(),
+        monitor: None,
+        last_stats: None,
     })
 });
 
@@ -160,6 +171,7 @@ fn connect(address: String, token: String, fingerprint: String) -> Result<&'stat
         let mut st = state();
         let old = st.take_session();
         st.connecting = true;
+        st.address.clone_from(&address);
         let config = SessionConfig {
             activation: st.wanted.activation,
             input_device: st.wanted.input.clone(),
@@ -190,6 +202,8 @@ fn connect(address: String, token: String, fingerprint: String) -> Result<&'stat
             Ok((peer, session, session_events)) => {
                 tracing::info!(%peer, %address, "connected to voice server");
                 st.session = Some(Arc::new(session));
+                st.last_error.clear();
+                st.last_stats = None;
                 st.apply();
                 drop(st);
                 std::thread::Builder::new()
@@ -200,6 +214,7 @@ fn connect(address: String, token: String, fingerprint: String) -> Result<&'stat
             }
             Err(e) => {
                 tracing::warn!(error = %e, %address, "could not connect to voice server");
+                st.last_error.clone_from(&e);
                 drop(st);
                 emit("connect_failed", vec![e]);
             }
@@ -389,8 +404,9 @@ fn rx_channels(channels: Vec<String>) -> Result<(), String> {
 
 // ---- voice activation -------------------------------------------------------------------------
 
-/// `["vox:settings", ["vad" | "ptt", thresholdDb]]`
-fn vox_settings(mode: String, threshold_db: f32) -> Result<(), String> {
+/// `["vox:settings", ["vad" | "ptt", openDb, closeDb]]`: voice activation opens at `openDb` and
+/// closes once below `closeDb` (after a short hangover).
+fn vox_settings(mode: String, open_db: f32, close_db: f32) -> Result<(), String> {
     let mode = match mode.as_str() {
         "vad" => ActivationMode::Voice,
         "ptt" => ActivationMode::PushToTalk,
@@ -399,7 +415,8 @@ fn vox_settings(mode: String, threshold_db: f32) -> Result<(), String> {
     let mut st = state();
     st.wanted.activation = ActivationConfig {
         mode,
-        threshold_db,
+        open_db,
+        close_db: close_db.min(open_db),
         ..st.wanted.activation
     };
     if let Some(s) = &st.session {
@@ -598,10 +615,87 @@ fn audio_select(input: String, output: String) {
 
 /// `["audio:level", []]` → microphone level in dBFS (for a settings meter).
 fn audio_level() -> f32 {
-    state()
-        .session
-        .as_ref()
-        .map_or(-100.0, |s| s.mic_level_db())
+    let st = state();
+    match (&st.session, &st.monitor) {
+        (Some(s), _) => s.mic_level_db(),
+        (None, Some(m)) => m.level_db(),
+        (None, None) => -100.0,
+    }
+}
+
+/// `["audio:monitor", [enabled]]`: keeps the microphone open for `audio:level` while not
+/// connected (the mic test). Connected sessions always measure.
+fn audio_monitor(enabled: bool) {
+    let mut st = state();
+    if enabled {
+        if st.monitor.is_none() {
+            let input = st.wanted.input.clone();
+            st.monitor = Some(MicMonitor::start(input, Arc::new(|_| {})));
+        }
+    } else {
+        let old = st.monitor.take();
+        drop(st);
+        drop(old);
+    }
+}
+
+/// `["voice:stats", []]` → `[state, peerId, address, rttMs, sentLossPct, receivedLossPct,
+/// kbitInPerSec, kbitOutPerSec, speakingNow, lastError]`. Rates are since the previous call.
+fn stats() -> (String, u32, String, f64, f64, f64, f64, f64, u32, String) {
+    let mut st = state();
+    let (state_name, peer) = match &st.session {
+        Some(s) => ("connected", s.client().peer_id().0),
+        None if st.connecting => ("connecting", 0),
+        None => ("disconnected", 0),
+    };
+    let Some(session) = st.session.clone() else {
+        return (
+            state_name.into(),
+            0,
+            st.address.clone(),
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0,
+            st.last_error.clone(),
+        );
+    };
+    let now = std::time::Instant::now();
+    let conn = session.client().stats();
+    let (kbit_in, kbit_out) = match st.last_stats {
+        Some((then, prev)) => {
+            let secs = now.duration_since(then).as_secs_f64().max(0.001);
+            (
+                (conn.rx_bytes.saturating_sub(prev.rx_bytes)) as f64 * 8.0 / 1000.0 / secs,
+                (conn.tx_bytes.saturating_sub(prev.tx_bytes)) as f64 * 8.0 / 1000.0 / secs,
+            )
+        }
+        None => (0.0, 0.0),
+    };
+    st.last_stats = Some((now, conn));
+    let sent_loss = if conn.sent_packets == 0 {
+        0.0
+    } else {
+        conn.lost_packets as f64 / conn.sent_packets as f64 * 100.0
+    };
+    let (received_loss, speaking) = {
+        let mixer = session.mixer();
+        (mixer.totals().loss() * 100.0, mixer.playing() as u32)
+    };
+    (
+        state_name.into(),
+        peer,
+        st.address.clone(),
+        conn.rtt.as_secs_f64() * 1000.0,
+        sent_loss,
+        received_loss,
+        kbit_in,
+        kbit_out,
+        speaking,
+        String::new(),
+    )
 }
 
 /// The client command groups, e.g. `voice:connect`.
@@ -612,7 +706,8 @@ pub fn groups() -> Vec<(&'static str, Group)> {
             Group::new()
                 .command("connect", connect)
                 .command("disconnect", disconnect)
-                .command("status", status),
+                .command("status", status)
+                .command("stats", stats),
         ),
         (
             "tx",
@@ -662,7 +757,8 @@ pub fn groups() -> Vec<(&'static str, Group)> {
             Group::new()
                 .command("devices", audio_devices)
                 .command("select", audio_select)
-                .command("level", audio_level),
+                .command("level", audio_level)
+                .command("monitor", audio_monitor),
         ),
     ]
 }

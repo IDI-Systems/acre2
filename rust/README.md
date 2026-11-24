@@ -5,6 +5,7 @@ ACRE's voice: a game-agnostic voice library and the Arma extension built on it, 
 | Crate | Path | |
 |---|---|---|
 | `acre2_voice_proto` | `voice/proto` | Wire protocol: control messages, voice datagrams, framing |
+| `acre2_voice_net` | `voice/net` | QUIC endpoint setup with a plain-UDP fallback (Wine/Proton). `cargo run -p acre2_voice_net --example socket_probe` shows which path a platform uses |
 | `acre2_voice_server` | `voice/server` | Voice server: sessions, routing (spatial + channels), tokens, rate limits. Also a standalone `acre2_voice_server` binary for testing |
 | `acre2_voice_client` | `voice/client` | Player connection (`Client`), game-server connection (`Authority`), and the audio pipeline (`audio`; live devices with the `devices` feature) |
 | `acre2_voice_codec` | `voice/codec` | Opus encoding/decoding, adaptive jitter buffer, FEC/PLC |

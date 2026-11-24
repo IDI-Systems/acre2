@@ -97,6 +97,29 @@ fn authority_token_connect_and_transmit() {
     // Host the voice server (any free port), place the player, get them a token.
     call(&ext, "server:start", &["0".into(), s("127.0.0.1")]);
     let welcome = wait_for(&ext, "authority_connected", "authority_failed");
+    assert!(welcome[1].starts_with("127.0.0.1:"), "{welcome:?}");
+
+    // Starting again restarts quietly: no "disconnected" for the server we stopped ourselves.
+    call(&ext, "server:start", &["0".into(), s("127.0.0.1")]);
+    let lost = std::cell::Cell::new(false);
+    let restarted = ext.callback_handler(
+        |_, func, data| match func {
+            "authority_disconnected" => {
+                lost.set(true);
+                CbResult::Continue
+            }
+            "authority_connected" => CbResult::Ok(strings(data)),
+            _ => CbResult::<Vec<String>, ()>::Continue,
+        },
+        WAIT,
+    );
+    let CbResult::Ok(welcome) = restarted else {
+        panic!("restart never connected")
+    };
+    assert!(
+        !lost.get(),
+        "a deliberate restart was reported as the server being lost"
+    );
     let addr = welcome[1].clone();
     assert!(
         addr.starts_with("127.0.0.1:") && !addr.ends_with(":0"),
@@ -137,7 +160,11 @@ fn authority_token_connect_and_transmit() {
         "tx:direct",
         &["50".into(), "[]".into(), s("2:5"), "0".into(), "1".into()],
     );
-    call(&ext, "vox:settings", &[s("vad"), "-200".into()]);
+    call(
+        &ext,
+        "vox:settings",
+        &[s("vad"), "-200".into(), "-200".into()],
+    );
     let started = wait_for(&ext, "local_start", "disconnected");
     assert_eq!(started[0], peer.to_string());
     assert_eq!(started[2], "0", "direct speech");
@@ -165,8 +192,18 @@ fn authority_token_connect_and_transmit() {
         ("1", "ACRE_PRC152_ID_1")
     );
 
+    // Stats while connected: [state, peer, address, rtt, …].
+    let stats = call(&ext, "voice:stats", &[]);
+    assert!(
+        stats.starts_with(&format!("[\"connected\",{peer},")),
+        "{stats}"
+    );
+
     // Bad arguments are refused rather than panicking.
-    let (_, code) = ext.call("vox:settings", Some(vec![s("loud"), "0".into()]));
+    let (_, code) = ext.call(
+        "vox:settings",
+        Some(vec![s("loud"), "0".into(), "0".into()]),
+    );
     assert_ne!(code, 0);
 
     call(&ext, "voice:disconnect", &[]);

@@ -209,7 +209,9 @@ The server-side routing for radio is **frequency only** (no distance cut). The l
 - [x] Briefing: while ACRE's briefing override is on, direct speech also goes to a `briefing` channel everyone listens to (TS3 let everyone hear everyone then)
 - [ ] **Run it in Arma.** None of the SQF has been executed yet; only the repo's validators (SQF, config, headers, stringtables) were run
 - [ ] Zeus, spectator, god mode, intercom and babel parity checks in game
-- [ ] A settings dialog with a device list and live mic meter (currently edit boxes + API functions)
+- [x] Device dropdowns (CBA lists filled from the extension at startup), separate voice activation open/close levels
+- [x] Microphone test (Escape → Options, the map page, or `acre_api_fnc_openMicrophoneTest`): silence/typing/speech, suggests open/close levels or push-to-talk; works before connecting (`audio:monitor`)
+- [x] "ACRE Voice" map diary page: connection, address, latency, packet loss sent/received, bandwidth, active speakers, mic settings (`voice:stats`)
 
 ### Phase 6 — Cleanup & release
 - [x] Removed `ACRE2Arma/arma2ts`, `ACRE2Core`, `ACRE2TS`, `ACRE2DistortionTestPlugin`, `ACRE2Steam`; CMake updated. (`acre.dll`/`acre_x64.dll` signal extension stays until Phase 7.) **The remaining C++ build is unverified here (no MSVC)**
@@ -240,7 +242,9 @@ Details that later phases depend on, settled while building:
 - **Radio channel keys**: `radio:<mode>:<frequency, 5 decimals>` for `singleChannel`/`singleChannelPRR` (TX frequency when sending, RX when listening), `radio:sem70AKW:<hashValue of the frequency list>`, `radio:other:<mode>` for unknown modes. Other channels: `god` (everyone listens; SQF filters by target group), `spectator`, `briefing`.
 - **What each speaking type targets**: direct = spatial (range from the curve model: 150 m × curve scale for selectable B, else 300 m); radio = spatial + its channel; intercom and Zeus = spatial; god = `god` only; spectators = `spectator` only.
 - **Hosting**: the certificate is generated fresh each `server:start` (clients get the fingerprint with every token, so nothing is persisted). The address gets `:port` appended unless it has one.
-- **Crypto**: rustls with `ring` only (no aws-lc, so no cmake/nasm for that). TLS 1.3 only.
+- **Wine/Proton**: quinn's default Windows UDP socket fails there (`WSAEOPNOTSUPP`, OS error 10045: Wine rejects one of its socket options). [acre2_voice_net](rust/voice/net) falls back to a plain UDP socket (no ECN/packet info/GSO). Reproduced and verified by running the Windows build of the e2e suite under Wine.
+- **Hosted server restarts**: restarting the hosted voice server detaches the authority first, so its connection closing isn't reported as the server being lost (that used to loop: lost → restart → lost, every 10 s).
+- - **Crypto**: rustls with `ring` only (no aws-lc, so no cmake/nasm for that). TLS 1.3 only.
 - **Opus**: `opusic-c`. Dev builds link the system libopus; release builds enable `acre2_voice_codec/bundled` (static, needs cmake). The encoder is capped at super-wideband: fullband lets Opus switch to CELT on tonal input, and CELT packets carry no in-band FEC.
 - **Audio threads**: device callbacks only touch lock-free `rtrb` rings. A `acre2-voice-tx` thread encodes 20 ms frames; `acre2-voice-mix` renders frames to keep ~60 ms queued ahead of the speakers (or self-clocks with no output device). Control/voice from the network go through a tokio task into the mixer.
 - **Transmissions from a client**: `TxId(0)` is direct speech; keyed transmissions (radios etc.) use other ids chosen by the caller. A held key sends on its own tx *and* direct speech. Each talk spurt is a Start → frames (last with `END_OF_SPURT`) → Stop, so listeners get a fresh `TransmissionStarted` per spurt, like ACRE's `remoteStartSpeaking` today.

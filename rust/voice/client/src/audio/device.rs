@@ -174,6 +174,30 @@ impl Devices {
             rings,
         )
     }
+
+    /// Opens only a microphone (for level metering), returning its 48 kHz mono ring.
+    pub fn open_input(input: Option<String>, events: DeviceCallback) -> (Self, Consumer<f32>) {
+        let (cmd_tx, cmd_rx) = std_mpsc::channel();
+        let (setup_tx, setup_rx) = std_mpsc::channel();
+        let thread = std::thread::Builder::new()
+            .name("acre2-voice-mic".into())
+            .spawn(move || {
+                let (cap_prod, cap_cons) = RingBuffer::<f32>::new(CAPTURE_RING);
+                let input_stream = open_input(input.as_deref(), cap_prod, &events);
+                let _ = setup_tx.send(cap_cons);
+                let _ = cmd_rx.recv();
+                drop(input_stream);
+            })
+            .expect("spawning device thread");
+        let capture = setup_rx.recv().expect("device thread sends its ring");
+        (
+            Self {
+                commands: cmd_tx,
+                thread: Some(thread),
+            },
+            capture,
+        )
+    }
 }
 
 impl Drop for Devices {

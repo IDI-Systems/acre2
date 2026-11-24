@@ -1,0 +1,20 @@
+[package]
+name = "acre2_voice_net"
+description = "QUIC endpoint setup for acre2 voice, with a plain-UDP fallback for platforms like Wine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+quinn = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+bytes = { workspace = true }
+rcgen = { workspace = true }
+
+[lints]
+workspace = true

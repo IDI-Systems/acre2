@@ -28,6 +28,7 @@ switch (_function) do {
         GVAR(connecting) = false;
         GVAR(connected) = true;
         GVAR(peerId) = _peerId;
+        GVAR(lastConnectError) = "";
         INFO_1("Connected to the voice server as peer %1.",_peerId);
         [_peerId] call EFUNC(sys_core,handleVoiceConnected);
         if (GVAR(hasConnectedBefore)) then {
@@ -40,6 +41,9 @@ switch (_function) do {
     case "connect_failed": {
         _args params ["_reason"];
         GVAR(connecting) = false;
+        // Retries happen every few seconds: only log when the reason changes.
+        if (_reason isEqualTo GVAR(lastConnectError)) exitWith {};
+        GVAR(lastConnectError) = _reason;
         WARNING_1("Could not connect to the voice server: %1",_reason);
         if (time > 15) then {
             [[format ["<t color='#FF8021'>%1</t><br/>%2", localize LSTRING(acreNotConnected), _reason], 1.5]] call CBA_fnc_notify;

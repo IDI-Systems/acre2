@@ -140,7 +140,7 @@ pub(crate) async fn connect(
     } else {
         "0.0.0.0:0".parse().expect("valid")
     };
-    let mut endpoint = quinn::Endpoint::client(local).map_err(Error::Io)?;
+    let mut endpoint = acre2_voice_net::bind(local, None).map_err(Error::Io)?;
     endpoint.set_default_client_config(client_config(pinned, alpn)?);
     let conn = tokio::time::timeout(CONNECT_TIMEOUT, async {
         endpoint

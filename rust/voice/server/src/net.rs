@@ -76,7 +76,7 @@ impl Server {
     /// Binds the endpoint and starts serving.
     pub fn start(config: Config, identity: &Identity) -> anyhow::Result<Self> {
         config.validate()?;
-        let endpoint = quinn::Endpoint::server(server_config(identity)?, config.bind)
+        let endpoint = acre2_voice_net::bind(config.bind, Some(server_config(identity)?))
             .with_context(|| format!("binding {}", config.bind))?;
         let fingerprint = identity.fingerprint();
         info!(addr = %endpoint.local_addr()?, fingerprint = %identity.fingerprint_hex(), "voice server listening");

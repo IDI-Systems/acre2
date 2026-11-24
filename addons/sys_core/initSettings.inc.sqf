@@ -77,23 +77,51 @@
     {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
-// Audio devices, by id (see acre_api_fnc_getAudioDevices); empty for the system default
+[
+    QGVAR(voiceThresholdClose),
+    "SLIDER",
+    [localize LSTRING(voiceThresholdClose_displayName), localize LSTRING(voiceThresholdClose_description)],
+    "ACRE2",
+    [-80, -10, -50, 0],
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
+// Audio devices: dropdowns of what this machine has ("" is the system default). A device that
+// is no longer present falls back to the default.
+private _inputDevices = [[""], [localize LSTRING(audioDevice_default)]];
+private _outputDevices = [[""], [localize LSTRING(audioDevice_default)]];
+if (hasInterface) then {
+    private _result = ["audio:devices", []] call EFUNC(sys_io,ext);
+    if (_result != "") then {
+        (parseSimpleArray _result) params [["_inputs", []], ["_outputs", []]];
+        {
+            (_inputDevices select 0) pushBack (_x select 0);
+            (_inputDevices select 1) pushBack (_x select 1);
+        } forEach _inputs;
+        {
+            (_outputDevices select 0) pushBack (_x select 0);
+            (_outputDevices select 1) pushBack (_x select 1);
+        } forEach _outputs;
+    };
+};
+
 [
     QGVAR(inputDevice),
-    "EDITBOX",
+    "LIST",
     [localize LSTRING(inputDevice_displayName), localize LSTRING(audioDevice_description)],
     "ACRE2",
-    "",
+    [_inputDevices select 0, _inputDevices select 1, 0],
     false,
     {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
 [
     QGVAR(outputDevice),
-    "EDITBOX",
+    "LIST",
     [localize LSTRING(outputDevice_displayName), localize LSTRING(audioDevice_description)],
     "ACRE2",
-    "",
+    [_outputDevices select 0, _outputDevices select 1, 0],
     false,
     {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;

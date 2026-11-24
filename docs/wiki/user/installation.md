@@ -21,12 +21,17 @@ ACRE2 carries voice itself: there is no TeamSpeak or other voice program to inst
 
 ### Microphone and speakers
 
-ACRE2 uses your system's default microphone and output device. Everything is in the in-game addon options (`Options → Addon Options → ACRE2`):
+ACRE2 uses your system's default microphone and output device unless you pick others. Everything is in the in-game addon options (`Options → Addon Options → ACRE2`):
 
+- **Microphone** / **Speakers / headphones**: pick a device from the list, or *System default*.
 - **Direct speech activation**: *Voice activation* (default) or *Push to talk*. With push to talk, bind the *Direct Speech PTT* key under `Options → Controls → Configure Addons → ACRE2`. Radio, intercom, Zeus and god mode PTT keys always transmit, whatever this is set to.
-- **Voice activation sensitivity**: the microphone level (dB) that starts direct speech. Lower is more sensitive; raise it if background noise keeps you transmitting.
-- **Microphone** / **Speakers / headphones**: a device id to use instead of the system default. Run `call acre_api_fnc_getAudioDevices` in the debug console to list ids. Leave empty for the default.
+- **Voice activation open / close level**: direct speech starts when your microphone gets louder than the open level, and stops a moment after it drops below the close level.
 
+The easiest way to set the levels is the **microphone test**: `Escape → Options → ACRE Microphone Test` (also linked from the *ACRE Voice* page on the map). It asks you to stay silent, type without talking, then talk, about 5 seconds each, and suggests levels that ignore your background and keyboard noise. Nothing is transmitted while it runs. If your typing is as loud as your voice, it suggests push to talk instead.
+
+### Connection status
+
+The map has an **ACRE Voice** page (in the diary, on the left) showing whether you're connected, your latency, packet loss each way, bandwidth, who you're hearing, and your microphone settings.
 
 ### Configuration
 
@@ -41,7 +46,7 @@ Server administrators can get available settings using the [export/import featur
 The server's voice port isn't reachable, or your firewall blocks it. ACRE2 retries on its own. If it persists, let your server administrator know (the server's RPT log says why), and check that outgoing UDP to the voice server's port (default 9987) is allowed.
 
 - **Nobody hears me / I transmit all the time**  
-Check *Voice activation sensitivity*, or switch *Direct speech activation* to *Push to talk*. Make sure Windows uses the microphone you expect, or set *Microphone* explicitly.
+Run the microphone test, or switch *Direct speech activation* to *Push to talk*. Check *Microphone* is the device you talk into.
 
 - **Radio beeps not audible on dedicated server**  
 Make sure your `server.cfg` has `"b64"` whitelisted in `allowedLoadFileExtensions[]` and `allowedPreprocessFileExtensions[]` if you are using that. Let your server administrator know if you have no idea what this means.

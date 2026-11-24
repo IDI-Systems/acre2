@@ -18,8 +18,9 @@
 if (!hasInterface) exitWith {};
 
 private _mode = ["vad", "ptt"] select (missionNamespace getVariable [QGVAR(voiceActivation), 0]);
-private _threshold = missionNamespace getVariable [QGVAR(voiceThreshold), -45];
-["vox:settings", [_mode, _threshold]] call EFUNC(sys_io,ext);
+private _open = missionNamespace getVariable [QGVAR(voiceThreshold), -45];
+private _close = (missionNamespace getVariable [QGVAR(voiceThresholdClose), -50]) min _open;
+["vox:settings", [_mode, _open, _close]] call EFUNC(sys_io,ext);
 
 private _devices = [
     missionNamespace getVariable [QGVAR(inputDevice), ""],

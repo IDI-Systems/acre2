@@ -32,6 +32,10 @@ class Extended_DisplayLoad_EventHandlers {
     class RscDisplayEGSpectator {
         ADDON = QUOTE(_this call FUNC(spectatorEGDisplayLoad));
     };
+    // Escape → Options: adds the ACRE Microphone Test button
+    class RscDisplayOptions {
+        ADDON = QUOTE(_this call FUNC(optionsDisplayLoad));
+    };
 };
 
 class Extended_DisplayUnload_EventHandlers {

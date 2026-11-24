@@ -14,8 +14,11 @@ pub enum ActivationMode {
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct ActivationConfig {
     pub mode: ActivationMode,
-    /// Voice activation threshold in dBFS (RMS of a frame). Typical speech is -30 to -10.
-    pub threshold_db: f32,
+    /// Level (dBFS, RMS of a frame) that opens voice activation. Typical speech is -30 to -10.
+    pub open_db: f32,
+    /// Level it must fall below before closing (after the hangover). At most `open_db`; the gap
+    /// keeps quiet syllables from chopping.
+    pub close_db: f32,
     /// How long voice activation stays open after the level drops, so word gaps don't cut out.
     pub hangover_ms: u32,
 }
@@ -24,7 +27,8 @@ impl Default for ActivationConfig {
     fn default() -> Self {
         Self {
             mode: ActivationMode::Voice,
-            threshold_db: -45.0,
+            open_db: -45.0,
+            close_db: -50.0,
             hangover_ms: 400,
         }
     }
@@ -48,6 +52,8 @@ pub fn level_db(frame: &[f32]) -> f32 {
 #[derive(Debug, Clone)]
 pub struct VoiceGate {
     config: ActivationConfig,
+    /// Above the close level since opening.
+    open: bool,
     remaining_ms: u32,
 }
 
@@ -56,6 +62,7 @@ impl VoiceGate {
     pub fn new(config: ActivationConfig) -> Self {
         Self {
             config,
+            open: false,
             remaining_ms: 0,
         }
     }
@@ -71,10 +78,13 @@ impl VoiceGate {
 
     /// Feeds one frame's level and returns whether voice activation is open.
     pub fn update(&mut self, level_db: f32, frame_ms: u32) -> bool {
-        if level_db >= self.config.threshold_db {
+        let close_db = self.config.close_db.min(self.config.open_db);
+        if level_db >= self.config.open_db || (self.open && level_db >= close_db) {
+            self.open = true;
             self.remaining_ms = self.config.hangover_ms.max(frame_ms);
             true
         } else if self.remaining_ms > 0 {
+            self.open = false;
             self.remaining_ms = self.remaining_ms.saturating_sub(frame_ms);
             true
         } else {
@@ -137,5 +147,22 @@ mod tests {
         let mut g = VoiceGate::new(ActivationConfig::default());
         assert!(!g.direct_open(-100.0, 20, false, false));
         assert!(g.direct_open(-100.0, 20, false, true));
+    }
+
+    #[test]
+    fn stays_open_between_close_and_open_levels() {
+        let mut g = VoiceGate::new(ActivationConfig {
+            open_db: -30.0,
+            close_db: -40.0,
+            hangover_ms: 20,
+            ..ActivationConfig::default()
+        });
+        assert!(!g.update(-35.0, 20), "below open: stays closed");
+        assert!(g.update(-25.0, 20), "opens");
+        assert!(g.update(-35.0, 20), "between: stays open");
+        assert!(g.update(-38.0, 20), "still above close");
+        assert!(g.update(-45.0, 20), "below close: hangover");
+        assert!(!g.update(-45.0, 20), "closed");
+        assert!(!g.update(-35.0, 20), "needs the open level again");
     }
 }

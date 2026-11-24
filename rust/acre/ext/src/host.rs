@@ -35,6 +35,9 @@ fn with_port(address: &str, port: u16) -> String {
 }
 
 fn stop_running() {
+    // Retire the authority first, or its connection closing would be reported as the voice
+    // server being lost (and SQF would restart it, forever).
+    authority::detach();
     let old = SERVER.lock().expect("hosted server").take();
     if let Some(old) = old {
         runtime::get().block_on(old.shutdown());

@@ -6,7 +6,7 @@
  * positions.
  *
  * Arguments:
- * None
+ * 0: Restart (the voice server was lost); otherwise only the first call starts it <BOOL> (default: false)
  *
  * Return Value:
  * None
@@ -17,7 +17,11 @@
  * Public: No
  */
 
+params [["_restart", false]];
+
 if (!isMultiplayer) exitWith {};
+if (!_restart && {!isNil QGVAR(voiceHostStarted)}) exitWith {};
+GVAR(voiceHostStarted) = true;
 
 if (!EGVAR(sys_io,initialized)) then {
     EGVAR(sys_io,initialized) = (["init"] call EFUNC(sys_io,ext)) != "";

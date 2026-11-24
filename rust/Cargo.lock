@@ -30,6 +30,7 @@ name = "acre2_voice_client"
 version = "0.1.0"
 dependencies = [
  "acre2_voice_codec",
+ "acre2_voice_net",
  "acre2_voice_proto",
  "bytes",
  "cpal",
@@ -52,6 +53,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "acre2_voice_net"
+version = "0.1.0"
+dependencies = [
+ "bytes",
+ "quinn",
+ "rcgen",
+ "tokio",
+ "tracing",
+]
+
+[[package]]
 name = "acre2_voice_proto"
 version = "0.1.0"
 dependencies = [
@@ -66,6 +78,7 @@ dependencies = [
 name = "acre2_voice_server"
 version = "0.1.0"
 dependencies = [
+ "acre2_voice_net",
  "acre2_voice_proto",
  "anyhow",
  "arc-swap",

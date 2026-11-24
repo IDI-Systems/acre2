@@ -12,6 +12,7 @@ name = "acre2_voice_server"
 path = "src/main.rs"
 
 [dependencies]
+acre2_voice_net = { workspace = true }
 acre2_voice_proto = { workspace = true, features = ["io"] }
 anyhow = { workspace = true }
 arc-swap = { workspace = true }

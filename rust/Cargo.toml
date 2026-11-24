@@ -2,6 +2,7 @@
 resolver = "3"
 members = [
     "voice/proto",
+    "voice/net",
     "voice/codec",
     "voice/server",
     "voice/client",
@@ -19,6 +20,7 @@ rust-version = "1.88"
 
 [workspace.dependencies]
 acre2_voice_proto = { path = "voice/proto" }
+acre2_voice_net = { path = "voice/net" }
 acre2_voice_server = { path = "voice/server" }
 acre2_voice_client = { path = "voice/client" }
 acre2_voice_codec = { path = "voice/codec" }
