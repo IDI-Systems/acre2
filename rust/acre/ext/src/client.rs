@@ -491,16 +491,22 @@ fn speaker_direct(
 ) -> Result<(), String> {
     let kind = DirectKind::parse(&kind).ok_or_else(|| format!("unknown kind {kind}"))?;
     let st = state();
-    let mut render = st.render();
-    if let Some(s) = render.speakers.get_mut(&PeerId(peer)) {
-        s.muted = false;
-        s.direct = Some(DirectParams {
-            kind,
-            babel,
-            volume,
-            position,
-            direction,
-        });
+    {
+        let mut render = st.render();
+        if let Some(s) = render.speakers.get_mut(&PeerId(peer)) {
+            s.muted = false;
+            s.direct = Some(DirectParams {
+                kind,
+                babel,
+                volume,
+                position,
+                direction,
+            });
+        }
+    }
+    // Spectators and god mode are heard at any distance (ACRE2Core unmuted them too).
+    if matches!(kind, DirectKind::Spectate | DirectKind::God) {
+        unmute(&st, peer);
     }
     Ok(())
 }
@@ -509,19 +515,30 @@ fn speaker_direct(
 /// hearing the speaker. Headset radios use position `[ear * 2, 0, 0]`.
 fn speaker_radio(peer: u32, babel: bool, radios: Vec<(f32, f32, bool, [f32; 3])>) {
     let st = state();
-    let mut render = st.render();
-    if let Some(s) = render.speakers.get_mut(&PeerId(peer)) {
-        s.muted = false;
-        s.radio_babel = babel;
-        s.radios = radios
-            .into_iter()
-            .map(|(volume, signal, loudspeaker, position)| RadioOut {
-                volume,
-                signal,
-                loudspeaker,
-                position,
-            })
-            .collect();
+    {
+        let mut render = st.render();
+        if let Some(s) = render.speakers.get_mut(&PeerId(peer)) {
+            s.muted = false;
+            s.radio_babel = babel;
+            s.radios = radios
+                .into_iter()
+                .map(|(volume, signal, loudspeaker, position)| RadioOut {
+                    volume,
+                    signal,
+                    loudspeaker,
+                    position,
+                })
+                .collect();
+        }
+    }
+    // Heard over the radio: lift distance muting now rather than at the next muting pass, as
+    // ACRE2Core did.
+    unmute(&st, peer);
+}
+
+fn unmute(st: &State, peer: u32) {
+    if let Some(s) = &st.session {
+        s.mixer().set_muted(PeerId(peer), false);
     }
 }
 

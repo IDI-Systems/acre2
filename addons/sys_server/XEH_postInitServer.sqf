@@ -25,6 +25,12 @@ publicVariable "ACRE_FULL_SERVER_VERSION";
 
 // Host the voice server once the CBA settings (port, address) are known.
 ["CBA_settingsInitialized", {[] call FUNC(startAuthority)}] call CBA_fnc_addEventHandler;
+// Stop it when the mission ends, freeing the port for the next mission. (Missions left without
+// ending, e.g. #missions, are handled by the next mission's start, which restarts it.)
+addMissionEventHandler ["MPEnded", {
+    GVAR(voiceReady) = false;
+    ["server:stop"] call EFUNC(sys_io,ext);
+}];
 
 // Event handler to remove disconnected clients from the spectator list and the voice server
 addMissionEventHandler ["PlayerDisconnected", {_this call FUNC(handlePlayerDisconnected);}];

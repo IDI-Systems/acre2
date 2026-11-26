@@ -29,8 +29,19 @@ INFO_1("Voice extension %1 loaded.",_version);
 if (!isMultiplayer) exitWith {};
 #endif
 
+// The server stops its voice server when the mission ends: leave quietly instead of retrying.
+addMissionEventHandler ["MPEnded", {
+    GVAR(missionEnded) = true;
+    ["voice:disconnect"] call FUNC(ext);
+    if (GVAR(connected)) then {
+        GVAR(connected) = false;
+        GVAR(peerId) = -1;
+        [] call EFUNC(sys_core,handleVoiceDisconnected);
+    };
+}];
+
 [{
-    if (GVAR(connected) || {GVAR(connecting)}) exitWith {};
+    if (GVAR(missionEnded) || {GVAR(connected)} || {GVAR(connecting)}) exitWith {};
     if (diag_tickTime - GVAR(lastTokenRequest) < TOKEN_RETRY_INTERVAL) exitWith {};
     [] call FUNC(requestToken);
 }, 1, []] call CBA_fnc_addPerFrameHandler;

@@ -13,6 +13,7 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 acre2_dsp = { workspace = true, optional = true }
+anyhow = { workspace = true }
 acre2_voice_client = { workspace = true }
 acre2_voice_codec = { workspace = true, optional = true }
 acre2_voice_proto = { workspace = true }

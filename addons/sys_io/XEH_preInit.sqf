@@ -15,6 +15,7 @@ GVAR(peerId) = -1;
 GVAR(lastTokenRequest) = -1e10;
 GVAR(hasConnectedBefore) = false;
 GVAR(lastConnectError) = "";
+GVAR(missionEnded) = false;
 
 // Results and events from the voice extension (both clients and the server use it).
 addMissionEventHandler ["ExtensionCallback", {

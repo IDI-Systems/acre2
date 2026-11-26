@@ -101,15 +101,19 @@ impl Server {
         self.fingerprint
     }
 
-    /// Closes every connection and stops the server.
+    /// Closes every connection and stops the server. The UDP socket is released once the closed
+    /// connections have drained (a few round trips), normally before this returns; a caller
+    /// rebinding the same port should still retry briefly.
     pub async fn shutdown(self) {
-        self.accept.abort();
         self.endpoint.close(
             VarInt::from_u32(close_code::SHUTDOWN),
             b"server shutting down",
         );
-        let _ = timeout(Duration::from_secs(2), self.endpoint.wait_idle()).await;
+        self.accept.abort();
         self.core.abort();
+        let _ = self.accept.await;
+        let _ = self.core.await;
+        let _ = timeout(Duration::from_secs(3), self.endpoint.wait_idle()).await;
     }
 }
 
@@ -499,10 +503,15 @@ fn constant_time_eq(a: &[u8], b: &[u8]) -> bool {
 
 // ---- connections ----------------------------------------------------------------------------
 
+/// Accepts connections. Each runs in a task owned by this loop, so aborting the loop (on
+/// shutdown) also ends every connection's task and drops its handle, letting the endpoint
+/// release its socket.
 async fn accept_loop(endpoint: quinn::Endpoint, events: mpsc::Sender<Event>) {
+    let mut connections = tokio::task::JoinSet::new();
     while let Some(incoming) = endpoint.accept().await {
+        while connections.try_join_next().is_some() {}
         let events = events.clone();
-        tokio::spawn(async move {
+        connections.spawn(async move {
             let conn = match incoming.await {
                 Ok(conn) => conn,
                 Err(e) => {

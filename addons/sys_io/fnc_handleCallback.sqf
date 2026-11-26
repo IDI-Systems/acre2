@@ -54,9 +54,14 @@ switch (_function) do {
         GVAR(connecting) = false;
         GVAR(connected) = false;
         GVAR(peerId) = -1;
+        [] call EFUNC(sys_core,handleVoiceDisconnected);
+        // The server stops its voice server at mission end (possibly just before our own
+        // mission end event): expected, so no warning.
+        if (GVAR(missionEnded) || {_reason == "server shutting down"}) exitWith {
+            INFO_1("Disconnected from the voice server: %1",_reason);
+        };
         WARNING_1("Disconnected from the voice server: %1",_reason);
         [[format ["<t color='#FF8021'>%1</t><br/>%2", localize LSTRING(acreNotConnected), _reason], 1.5]] call CBA_fnc_notify;
-        [] call EFUNC(sys_core,handleVoiceDisconnected);
     };
     case "remote_start": {
         // [peerId, languageId, netId, speakingType, radioId]

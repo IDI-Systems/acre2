@@ -100,7 +100,14 @@ fn authority_token_connect_and_transmit() {
     assert!(welcome[1].starts_with("127.0.0.1:"), "{welcome:?}");
 
     // Starting again restarts quietly: no "disconnected" for the server we stopped ourselves.
-    call(&ext, "server:start", &["0".into(), s("127.0.0.1")]);
+    // From here on a fixed port, as on a real server, so restarts must wait for the port.
+    let port = std::net::UdpSocket::bind("127.0.0.1:0")
+        .unwrap()
+        .local_addr()
+        .unwrap()
+        .port()
+        .to_string();
+    call(&ext, "server:start", &[port.clone(), s("127.0.0.1")]);
     let lost = std::cell::Cell::new(false);
     let restarted = ext.callback_handler(
         |_, func, data| match func {
@@ -199,6 +206,55 @@ fn authority_token_connect_and_transmit() {
         "{stats}"
     );
 
+    // Receiving a radio transmission: another player (a bare client, far out of direct range)
+    // talks on a radio channel we listen to.
+    let channel = "radio:singleChannel:43.10000";
+    call(&ext, "rx:channels", &[format!("[{}]", s(channel))]);
+    call(
+        &ext,
+        "authority:world",
+        &[r#"[["7656", [0, 0, 0], true], ["bot", [5000, 0, 0], true]]"#.into()],
+    );
+    call(&ext, "authority:token", &[s("bot")]);
+    let bot_token = wait_for(&ext, "token", "token_failed");
+    let (bot_peer_tx, bot_peer_rx) = std::sync::mpsc::channel();
+    let bot = std::thread::spawn(move || radio_bot(&bot_token, channel, &bot_peer_tx));
+    let bot_peer = bot_peer_rx.recv_timeout(WAIT).expect("bot connected");
+    let start = wait_for(&ext, "remote_start", "disconnected");
+    assert_eq!(start[0], bot_peer.to_string());
+    assert_eq!(
+        (start[3].as_str(), start[4].as_str()),
+        ("1", "ACRE_PRC152_ID_2"),
+        "radio speech: {start:?}"
+    );
+    call(
+        &ext,
+        "speaker:radio",
+        &[
+            bot_peer.to_string(),
+            "false".into(),
+            "[[1, 1, false, [0, 0, 0]]]".into(),
+        ],
+    );
+    let deadline = std::time::Instant::now() + WAIT;
+    loop {
+        let stats = call(&ext, "voice:stats", &[]);
+        let fields: Vec<&str> = stats.trim_matches(['[', ']']).split(',').collect();
+        // Playing now, or at least decoded: the null output device drains as fast as it's fed,
+        // so the jitter buffer can run dry between polls and conceal most frames.
+        let rx_loss: f64 = fields[5].parse().unwrap();
+        if fields[8] != "0" || (rx_loss > 0.0 && rx_loss < 100.0) {
+            break;
+        }
+        assert!(
+            std::time::Instant::now() < deadline,
+            "radio speech never played: {stats}"
+        );
+        std::thread::sleep(Duration::from_millis(50));
+    }
+    bot.join().expect("bot thread");
+    wait_for(&ext, "remote_stop", "disconnected");
+
     // Bad arguments are refused rather than panicking.
     let (_, code) = ext.call(
         "vox:settings",
@@ -206,7 +262,69 @@ fn authority_token_connect_and_transmit() {
     );
     assert_ne!(code, 0);
 
-    call(&ext, "voice:disconnect", &[]);
+    // The next mission starts the server again on the same port, with players still connected
+    // to the old one: it must not fail with "address in use".
+    call(&ext, "server:start", &[port.clone(), s("127.0.0.1")]);
+    let seen = wait_all(&ext, &["authority_connected", "disconnected"]);
+    assert_eq!(seen["authority_connected"][1], format!("127.0.0.1:{port}"));
     assert!(call(&ext, "voice:status", &[]).contains("disconnected"));
+    call(&ext, "voice:disconnect", &[]);
     call(&ext, "server:stop", &[]);
+}
+
+/// Connects as another player with `token` (`[id, token, address, fingerprint]`) and talks for a
+/// second on `channel` with radio metadata.
+fn radio_bot(token: &[String], channel: &str, peer: &std::sync::mpsc::Sender<u32>) {
+    use acre2_voice_proto::{ChannelKey, Target, Token, TxId};
+    let rt = tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+        .unwrap();
+    rt.block_on(async {
+        let (client, _events) = acre2_voice_client::Client::connect(
+            &token[2],
+            acre2_voice_client::parse_fingerprint(&token[3]).unwrap(),
+            Token::from_hex(&token[1]).unwrap(),
+        )
+        .await
+        .expect("bot connects");
+        peer.send(client.peer_id().0).unwrap();
+        let meta = crate::meta::Meta {
+            speaking_type: crate::meta::speaking_type::RADIO,
+            radio_id: "ACRE_PRC152_ID_2".into(),
+            net_id: "2:9".into(),
+            language_id: 0,
+            curve_scale: 1.0,
+        };
+        let tx = TxId(1);
+        client
+            .start_transmission(
+                tx,
+                vec![
+                    Target::Spatial { range: 50.0 },
+                    Target::Channel(ChannelKey::new(channel).unwrap()),
+                ],
+                meta.encode(),
+            )
+            .unwrap();
+        let mut encoder =
+            acre2_voice_codec::VoiceEncoder::new(acre2_voice_codec::EncoderConfig::default())
+                .unwrap();
+        let n = encoder.frame_samples();
+        let mut t = 0usize;
+        for seq in 0..100u16 {
+            let frame: Vec<f32> = (0..n)
+                .map(|i| {
+                    let x = (t + i) as f32 / 48_000.0;
+                    0.3 * (x * 2.0 * std::f32::consts::PI * 220.0).sin()
+                })
+                .collect();
+            t += n;
+            let payload = encoder.encode(&frame).unwrap();
+            client.send_voice(tx, seq, 0, payload).unwrap();
+            tokio::time::sleep(Duration::from_millis(20)).await;
+        }
+        client.stop_transmission(tx).unwrap();
+        tokio::time::sleep(Duration::from_millis(200)).await;
+    });
 }

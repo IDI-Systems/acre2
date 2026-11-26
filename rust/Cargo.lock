@@ -15,6 +15,7 @@ dependencies = [
  "acre2_voice_codec",
  "acre2_voice_proto",
  "acre2_voice_server",
+ "anyhow",
  "arma-rs",
  "base64 0.22.1",
  "getrandom 0.3.4",
