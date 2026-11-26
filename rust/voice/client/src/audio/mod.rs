@@ -11,6 +11,7 @@
 //! With the `devices` feature, [`VoiceSession`] wires them to real audio devices.
 
 mod activation;
+mod denoise;
 #[cfg(feature = "devices")]
 mod device;
 mod mixer;
@@ -21,7 +22,10 @@ mod resample;
 mod session;
 mod transmit;
 
-pub use activation::{ActivationConfig, ActivationMode, VoiceGate, level_db};
+pub use activation::{
+    ActivationConfig, ActivationMode, SPEECH_FRAMES, SPEECH_OPEN, VoiceGate, level_db,
+};
+pub use denoise::{Denoiser, NoiseConfig};
 #[cfg(feature = "devices")]
 pub use device::{AudioDevice, DeviceCallback, DeviceEvent, DeviceList, list_devices};
 pub use mixer::{Mixer, PassthroughRenderer, ReceiveTotals, Renderer, StereoFrame, StreamInfo};

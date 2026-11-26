@@ -2,13 +2,16 @@
 //!
 //! Device-free: feed it 48 kHz mono frames, apply the [`TxAction`]s it returns.
 
-use std::collections::{BTreeMap, BTreeSet};
+use std::collections::{BTreeMap, BTreeSet, VecDeque};
 
 use acre2_voice_codec::{CodecError, EncoderConfig, VoiceEncoder};
 use acre2_voice_proto::{Target, TxId, datagram::flags};
 use bytes::Bytes;
 
-use super::activation::{ActivationConfig, VoiceGate, level_db};
+use super::{
+    activation::{ActivationConfig, SPEECH_FRAMES, VoiceGate, level_db},
+    denoise::{Denoiser, NoiseConfig},
+};
 
 /// Transmission id used for direct (voice-activated or direct-PTT) speech. Keyed transmissions
 /// must use other ids.
@@ -60,6 +63,14 @@ pub struct Transmitter {
     exclusive: bool,
     level_db: f32,
     mic_open: bool,
+    noise: NoiseConfig,
+    denoiser: Denoiser,
+    /// The frame being processed, after the noise filter.
+    filtered: Vec<f32>,
+    speech: f32,
+    /// The last frames before talking started, while speech detection is on: it needs a few
+    /// frames to recognise speech, and these are sent first so the start of a word isn't lost.
+    preroll: VecDeque<Vec<f32>>,
 }
 
 impl Transmitter {
@@ -78,6 +89,11 @@ impl Transmitter {
             exclusive: false,
             level_db: -100.0,
             mic_open: false,
+            noise: NoiseConfig::default(),
+            denoiser: Denoiser::new(),
+            filtered: Vec::new(),
+            speech: 0.0,
+            preroll: VecDeque::new(),
         })
     }
 
@@ -129,12 +145,32 @@ impl Transmitter {
         self.exclusive = exclusive;
     }
 
+    /// Sets the microphone filter (noise suppression, speech detection for voice activation).
+    pub fn set_noise(&mut self, noise: NoiseConfig) {
+        if noise.active() && !self.noise.active() {
+            // Don't resume from whatever it heard when last used.
+            self.denoiser = Denoiser::new();
+        }
+        self.noise = noise;
+    }
+
+    #[must_use]
+    pub fn noise(&self) -> NoiseConfig {
+        self.noise
+    }
+
+    /// Speech probability of the last frame (0 while the filter is off).
+    #[must_use]
+    pub fn speech_probability(&self) -> f32 {
+        self.speech
+    }
+
     /// Mutes the microphone: nothing is sent, but PTT state is kept.
     pub fn set_muted(&mut self, muted: bool) {
         self.muted = muted;
     }
 
-    /// Level of the last frame, in dBFS.
+    /// Level of the last frame, in dBFS (after noise suppression, if on).
     #[must_use]
     pub fn level_db(&self) -> f32 {
         self.level_db
@@ -153,9 +189,21 @@ impl Transmitter {
 
     /// Processes one frame of 48 kHz mono audio.
     pub fn process(&mut self, frame: &[f32]) -> Result<Vec<TxAction>, CodecError> {
-        self.level_db = level_db(frame);
+        self.filtered.clear();
+        self.filtered.extend_from_slice(frame);
+        let speech = if self.noise.active() {
+            self.speech = self
+                .denoiser
+                .process(&mut self.filtered, self.noise.suppress);
+            Some(self.speech)
+        } else {
+            self.speech = 0.0;
+            None
+        };
+        self.level_db = level_db(&self.filtered);
         let direct_open = self.gate.direct_open(
             self.level_db,
+            speech.filter(|_| self.noise.speech_gate),
             self.frame_ms,
             self.direct_ptt,
             !self.keyed.is_empty(),
@@ -182,12 +230,25 @@ impl Transmitter {
             .collect();
         if want.is_empty() && stopping.is_empty() {
             self.mic_open = false;
+            if self.noise.speech_gate && !self.muted {
+                self.preroll.push_back(self.filtered.clone());
+                while self.preroll.len() > usize::from(SPEECH_FRAMES) {
+                    self.preroll.pop_front();
+                }
+            } else {
+                self.preroll.clear();
+            }
             return Ok(actions);
         }
+        let mut payloads = Vec::new();
         if !self.mic_open && !want.is_empty() {
             // New talk spurt: no state carried over from the last one.
             self.encoder.reset()?;
+            for f in std::mem::take(&mut self.preroll) {
+                payloads.push(self.encoder.encode(&f)?);
+            }
         }
+        self.preroll.clear();
 
         for (tx, o) in &want {
             if !self.active.contains_key(tx) || self.changed.contains(tx) {
@@ -202,16 +263,19 @@ impl Transmitter {
         }
         self.changed.clear();
 
-        let payload = self.encoder.encode(frame)?;
+        payloads.push(self.encoder.encode(&self.filtered)?);
         for (tx, seq) in &mut self.active {
-            let last = stopping.contains(tx);
-            actions.push(TxAction::Voice {
-                tx: *tx,
-                seq: *seq,
-                flags: if last { flags::END_OF_SPURT } else { 0 },
-                payload: payload.clone(),
-            });
-            *seq = seq.wrapping_add(1);
+            let stops = stopping.contains(tx);
+            for (i, payload) in payloads.iter().enumerate() {
+                let last = stops && i + 1 == payloads.len();
+                actions.push(TxAction::Voice {
+                    tx: *tx,
+                    seq: *seq,
+                    flags: if last { flags::END_OF_SPURT } else { 0 },
+                    payload: payload.clone(),
+                });
+                *seq = seq.wrapping_add(1);
+            }
         }
         for tx in stopping {
             if let Some(seq) = self.active.remove(&tx) {
@@ -353,6 +417,32 @@ mod tests {
         t.set_muted(true);
         t.key(TxId(1), radio());
         assert!(t.process(&loud()).unwrap().is_empty());
+    }
+
+    #[test]
+    fn speech_detection_sends_the_frames_before_it_opened() {
+        let mut t = tx();
+        t.set_noise(NoiseConfig {
+            suppress: false,
+            speech_gate: true,
+        });
+        for _ in 0..5 {
+            assert!(t.process(&quiet()).unwrap().is_empty());
+        }
+        // A PTT press stands in for the moment voice activation recognises speech.
+        t.set_direct_ptt(true);
+        let n = usize::from(SPEECH_FRAMES);
+        let mut want = vec!["start0".to_string()];
+        want.extend((0..=n).map(|i| format!("voice0#{i}")));
+        assert_eq!(
+            kinds(&t.process(&loud()).unwrap()),
+            want,
+            "the last {n} idle frames lead the spurt"
+        );
+        assert_eq!(
+            kinds(&t.process(&loud()).unwrap()),
+            [format!("voice0#{}", n + 1)]
+        );
     }
 
     #[test]

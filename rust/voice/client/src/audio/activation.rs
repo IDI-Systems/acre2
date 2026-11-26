@@ -48,6 +48,13 @@ pub fn level_db(frame: &[f32]) -> f32 {
     }
 }
 
+/// Speech probability (from [`Denoiser`](super::Denoiser)) a frame needs to count as speech
+/// when speech detection is on.
+pub const SPEECH_OPEN: f32 = 0.5;
+/// Consecutive speech frames needed to open: a single loud click can briefly look like speech,
+/// a word doesn't stop after 20 ms.
+pub const SPEECH_FRAMES: u8 = 2;
+
 /// Voice-activation detector with hangover.
 #[derive(Debug, Clone)]
 pub struct VoiceGate {
@@ -55,6 +62,8 @@ pub struct VoiceGate {
     /// Above the close level since opening.
     open: bool,
     remaining_ms: u32,
+    /// Consecutive frames that sounded like speech.
+    speech_run: u8,
 }
 
 impl VoiceGate {
@@ -64,6 +73,7 @@ impl VoiceGate {
             config,
             open: false,
             remaining_ms: 0,
+            speech_run: 0,
         }
     }
 
@@ -78,8 +88,32 @@ impl VoiceGate {
 
     /// Feeds one frame's level and returns whether voice activation is open.
     pub fn update(&mut self, level_db: f32, frame_ms: u32) -> bool {
+        self.update_with_speech(level_db, None, frame_ms)
+    }
+
+    /// Like [`update`](Self::update), with speech detection: given the frame's speech
+    /// probability, opening also needs [`SPEECH_FRAMES`] frames in a row of at least
+    /// [`SPEECH_OPEN`] (staying open, once talking, only needs the level).
+    pub fn update_with_speech(
+        &mut self,
+        level_db: f32,
+        speech: Option<f32>,
+        frame_ms: u32,
+    ) -> bool {
         let close_db = self.config.close_db.min(self.config.open_db);
-        if level_db >= self.config.open_db || (self.open && level_db >= close_db) {
+        let is_speech = match speech {
+            None => true,
+            Some(p) => {
+                self.speech_run = if p >= SPEECH_OPEN {
+                    self.speech_run.saturating_add(1)
+                } else {
+                    0
+                };
+                self.speech_run >= SPEECH_FRAMES
+            }
+        };
+        let opens = level_db >= self.config.open_db && is_speech;
+        if opens || (self.open && level_db >= close_db) {
             self.open = true;
             self.remaining_ms = self.config.hangover_ms.max(frame_ms);
             true
@@ -99,11 +133,12 @@ impl VoiceGate {
     pub fn direct_open(
         &mut self,
         level_db: f32,
+        speech: Option<f32>,
         frame_ms: u32,
         direct_ptt: bool,
         any_keyed: bool,
     ) -> bool {
-        let voice = self.update(level_db, frame_ms);
+        let voice = self.update_with_speech(level_db, speech, frame_ms);
         direct_ptt || any_keyed || (self.config.mode == ActivationMode::Voice && voice)
     }
 }
@@ -138,15 +173,40 @@ mod tests {
             mode: ActivationMode::PushToTalk,
             ..ActivationConfig::default()
         });
-        assert!(!g.direct_open(-10.0, 20, false, false));
-        assert!(g.direct_open(-100.0, 20, true, false));
+        assert!(!g.direct_open(-10.0, None, 20, false, false));
+        assert!(g.direct_open(-100.0, None, 20, true, false));
     }
 
     #[test]
     fn any_keyed_ptt_opens_mic() {
         let mut g = VoiceGate::new(ActivationConfig::default());
-        assert!(!g.direct_open(-100.0, 20, false, false));
-        assert!(g.direct_open(-100.0, 20, false, true));
+        assert!(!g.direct_open(-100.0, None, 20, false, false));
+        assert!(g.direct_open(-100.0, None, 20, false, true));
+    }
+
+    #[test]
+    fn speech_detection_keeps_loud_noise_out() {
+        let mut g = VoiceGate::new(ActivationConfig {
+            open_db: -30.0,
+            close_db: -40.0,
+            hangover_ms: 20,
+            ..ActivationConfig::default()
+        });
+        assert!(
+            !g.update_with_speech(-10.0, Some(0.05), 20),
+            "loud click: closed"
+        );
+        assert!(
+            !g.update_with_speech(-10.0, Some(0.7), 20),
+            "one speech-like frame isn't enough"
+        );
+        assert!(!g.update_with_speech(-10.0, Some(0.1), 20));
+        assert!(!g.update_with_speech(-20.0, Some(0.9), 20));
+        assert!(g.update_with_speech(-20.0, Some(0.9), 20), "speech opens");
+        assert!(
+            g.update_with_speech(-35.0, Some(0.1), 20),
+            "a quiet syllable while talking keeps it open"
+        );
     }
 
     #[test]

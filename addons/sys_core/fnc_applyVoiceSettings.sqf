@@ -21,6 +21,13 @@ private _mode = ["vad", "ptt"] select (missionNamespace getVariable [QGVAR(voice
 private _open = missionNamespace getVariable [QGVAR(voiceThreshold), -45];
 private _close = (missionNamespace getVariable [QGVAR(voiceThresholdClose), -50]) min _open;
 ["vox:settings", [_mode, _open, _close]] call EFUNC(sys_io,ext);
+[
+    "vox:noise",
+    [
+        missionNamespace getVariable [QGVAR(noiseSuppression), true],
+        missionNamespace getVariable [QGVAR(speechDetection), true]
+    ]
+] call EFUNC(sys_io,ext);
 
 private _devices = [
     missionNamespace getVariable [QGVAR(inputDevice), ""],

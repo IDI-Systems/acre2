@@ -11,8 +11,8 @@ use acre2_dsp::positional::{CurveModel, Listener, from_arma};
 use acre2_voice_client::{
     Client, ConnectionStats,
     audio::{
-        ActivationConfig, ActivationMode, MicMonitor, Outgoing, SessionConfig, SessionEvent,
-        VoiceSession, list_devices,
+        ActivationConfig, ActivationMode, MicMonitor, NoiseConfig, Outgoing, SessionConfig,
+        SessionEvent, VoiceSession, list_devices,
     },
     parse_fingerprint,
 };
@@ -32,6 +32,7 @@ use crate::{
 #[derive(Debug, Default)]
 struct Wanted {
     activation: ActivationConfig,
+    noise: NoiseConfig,
     input: Option<String>,
     output: Option<String>,
     direct: Option<(Outgoing, Meta)>,
@@ -69,7 +70,10 @@ static STATE: LazyLock<Mutex<State>> = LazyLock::new(|| {
         session: None,
         connecting: false,
         generation: 0,
-        wanted: Wanted::default(),
+        wanted: Wanted {
+            noise: NoiseConfig::ON,
+            ..Wanted::default()
+        },
         keys: HashMap::new(),
         tx_meta: HashMap::new(),
         address: String::new(),
@@ -95,6 +99,7 @@ impl State {
             let mut t = s.transmitter();
             t.set_exclusive(true);
             t.set_activation(self.wanted.activation);
+            t.set_noise(self.wanted.noise);
             t.set_direct_ptt(self.wanted.direct_ptt);
             t.set_muted(self.wanted.muted);
             t.set_direct(self.wanted.direct.as_ref().map(|(o, _)| o.clone()));
@@ -434,6 +439,33 @@ fn vox_ptt(pressed: bool) {
     }
 }
 
+/// `["vox:noise", [suppress, speechDetection]]`: the microphone filter. `suppress` removes
+/// background noise from what's sent; `speechDetection` makes voice activation open only on
+/// speech, not on any loud enough sound (keyboard clacks). Both on by default.
+fn vox_noise(suppress: bool, speech_detection: bool) {
+    let noise = NoiseConfig {
+        suppress,
+        speech_gate: speech_detection,
+    };
+    let mut st = state();
+    if st.wanted.noise == noise {
+        return;
+    }
+    st.wanted.noise = noise;
+    if let Some(s) = &st.session {
+        s.transmitter().set_noise(noise);
+    }
+    // A running mic test measures with the new filter.
+    if st.monitor.is_some() {
+        let input = st.wanted.input.clone();
+        let old = st
+            .monitor
+            .replace(MicMonitor::start(input, Arc::new(|_| {}), noise));
+        drop(st);
+        drop(old);
+    }
+}
+
 /// `["vox:mute", [muted]]`: mutes our microphone (`localMute`).
 fn vox_mute(muted: bool) {
     let mut st = state();
@@ -647,7 +679,8 @@ fn audio_monitor(enabled: bool) {
     if enabled {
         if st.monitor.is_none() {
             let input = st.wanted.input.clone();
-            st.monitor = Some(MicMonitor::start(input, Arc::new(|_| {})));
+            let noise = st.wanted.noise;
+            st.monitor = Some(MicMonitor::start(input, Arc::new(|_| {}), noise));
         }
     } else {
         let old = st.monitor.take();
@@ -740,7 +773,8 @@ pub fn groups() -> Vec<(&'static str, Group)> {
             Group::new()
                 .command("settings", vox_settings)
                 .command("ptt", vox_ptt)
-                .command("mute", vox_mute),
+                .command("mute", vox_mute)
+                .command("noise", vox_noise),
         ),
         (
             "self",

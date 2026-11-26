@@ -5,8 +5,9 @@
  * works out open/close levels at the end.
  *
  * The three phases measure the noise floor (silence), keyboard noise (typing without talking)
- * and speech. Voice activation should open above the louder of silence and typing, and close a
- * little above the noise floor, so quiet syllables don't chop.
+ * and speech, after noise suppression if it's on. Voice activation should open above the louder
+ * of silence and typing (just silence with speech detection on, which keeps typing out anyway),
+ * and close a little above the noise floor, so quiet syllables don't chop.
  *
  * Arguments:
  * None
@@ -66,7 +67,13 @@ switch (true) do {
                 private _noise = [GVAR(micTest) get "silent", 0.95] call _percentile;
                 private _typing = [GVAR(micTest) get "typing", 0.95] call _percentile;
                 private _speech = [GVAR(micTest) get "talking", 0.7] call _percentile;
-                private _floor = _noise max _typing;
+                // With speech detection on, typing doesn't open voice activation whatever its
+                // level: only the background noise sets the threshold.
+                private _floor = if (missionNamespace getVariable [QGVAR(speechDetection), true]) then {
+                    _noise
+                } else {
+                    _noise max _typing
+                };
                 private _separable = _speech - _floor >= 6;
                 private _newOpen = if (_separable) then {
                     (_floor + 4) min (_speech - 3)

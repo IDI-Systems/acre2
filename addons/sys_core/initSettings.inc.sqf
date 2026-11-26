@@ -87,6 +87,28 @@
     {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
+// Microphone filter (RNNoise): background noise removal, and voice activation that only opens
+// on speech (not keyboard clacks or other loud noises).
+[
+    QGVAR(noiseSuppression),
+    "CHECKBOX",
+    [localize LSTRING(noiseSuppression_displayName), localize LSTRING(noiseSuppression_description)],
+    "ACRE2",
+    true,
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(speechDetection),
+    "CHECKBOX",
+    [localize LSTRING(speechDetection_displayName), localize LSTRING(speechDetection_description)],
+    "ACRE2",
+    true,
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
 // Audio devices: dropdowns of what this machine has ("" is the system default). A device that
 // is no longer present falls back to the default.
 private _inputDevices = [[""], [localize LSTRING(audioDevice_default)]];

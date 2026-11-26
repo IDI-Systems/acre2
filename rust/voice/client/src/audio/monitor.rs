@@ -12,6 +12,7 @@ use acre2_voice_codec::FRAME_SAMPLES;
 
 use super::{
     activation::level_db,
+    denoise::{Denoiser, NoiseConfig},
     device::{DeviceCallback, Devices, PUMP_INTERVAL},
 };
 
@@ -32,9 +33,10 @@ impl std::fmt::Debug for MicMonitor {
 }
 
 impl MicMonitor {
-    /// Opens the named microphone (or the default).
+    /// Opens the named microphone (or the default). With noise suppression on, levels are
+    /// measured after it, as the transmitter would see them.
     #[must_use]
-    pub fn start(input: Option<String>, events: DeviceCallback) -> Self {
+    pub fn start(input: Option<String>, events: DeviceCallback, noise: NoiseConfig) -> Self {
         let (devices, mut capture) = Devices::open_input(input, events);
         let level_bits = Arc::new(AtomicU32::new((-100.0f32).to_bits()));
         let stop = Arc::new(AtomicBool::new(false));
@@ -44,6 +46,7 @@ impl MicMonitor {
                 let (level_bits, stop) = (level_bits.clone(), stop.clone());
                 move || {
                     let mut buf: Vec<f32> = Vec::with_capacity(FRAME_SAMPLES * 4);
+                    let mut denoiser = noise.suppress.then(Denoiser::new);
                     while !stop.load(Ordering::Relaxed) {
                         if let Ok(chunk) = capture.read_chunk(capture.slots()) {
                             let (a, b) = chunk.as_slices();
@@ -52,10 +55,11 @@ impl MicMonitor {
                             chunk.commit_all();
                         }
                         while buf.len() >= FRAME_SAMPLES {
-                            level_bits.store(
-                                level_db(&buf[..FRAME_SAMPLES]).to_bits(),
-                                Ordering::Relaxed,
-                            );
+                            let frame = &mut buf[..FRAME_SAMPLES];
+                            if let Some(d) = &mut denoiser {
+                                d.process(frame, true);
+                            }
+                            level_bits.store(level_db(frame).to_bits(), Ordering::Relaxed);
                             buf.drain(..FRAME_SAMPLES);
                         }
                         std::thread::sleep(PUMP_INTERVAL);

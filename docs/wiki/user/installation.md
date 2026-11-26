@@ -26,8 +26,10 @@ ACRE2 uses your system's default microphone and output device unless you pick ot
 - **Microphone** / **Speakers / headphones**: pick a device from the list, or *System default*.
 - **Direct speech activation**: *Voice activation* (default) or *Push to talk*. With push to talk, bind the *Direct Speech PTT* key under `Options → Controls → Configure Addons → ACRE2`. Radio, intercom, Zeus and god mode PTT keys always transmit, whatever this is set to.
 - **Voice activation open / close level**: direct speech starts when your microphone gets louder than the open level, and stops a moment after it drops below the close level.
+- **Noise suppression** (on by default): removes steady background noise, such as fans, hum and room noise, from your microphone before it's sent.
+- **Voice activation: speech only** (on by default): voice activation only opens on sound that seems to be speech, so typing, mouse clicks and other loud noises don't transmit. Push-to-talk keys are not affected.
 
-The easiest way to set the levels is the **microphone test**: `Escape → Options → ACRE Microphone Test` (also linked from the *ACRE Voice* page on the map). It asks you to stay silent, type without talking, then talk, about 5 seconds each, and suggests levels that ignore your background and keyboard noise. Nothing is transmitted while it runs. If your typing is as loud as your voice, it suggests push to talk instead.
+The easiest way to set the levels is the **microphone test**: `Escape → Options → ACRE Microphone Test` (also linked from the *ACRE Voice* page on the map). It asks you to stay silent, type without talking, then talk, about 5 seconds each, and suggests levels that ignore your background and keyboard noise. Nothing is transmitted while it runs. If your typing is as loud as your voice and *speech only* is off, it suggests push to talk instead.
 
 ### Connection status
 

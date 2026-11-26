@@ -655,6 +655,18 @@
         <Key ID="STR_ACRE_sys_core_voiceThresholdClose_description">
             <English>Direct speech keeps going until your level drops below this (then a short pause). At or below the open level; a few dB lower stops quiet syllables cutting out.</English>
         </Key>
+        <Key ID="STR_ACRE_sys_core_noiseSuppression_displayName">
+            <English>Noise suppression</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_noiseSuppression_description">
+            <English>Removes steady background noise (fans, hum, room noise) from your microphone before it's sent.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_speechDetection_displayName">
+            <English>Voice activation: speech only</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_speechDetection_description">
+            <English>Voice activation only opens on sound that seems to be speech, so typing, clicks and other loud noises don't transmit. Push-to-talk is not affected.</English>
+        </Key>
         <Key ID="STR_ACRE_sys_core_audioDevice_default">
             <English>System default</English>
         </Key>

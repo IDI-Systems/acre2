@@ -167,6 +167,9 @@ fn authority_token_connect_and_transmit() {
         "tx:direct",
         &["50".into(), "[]".into(), s("2:5"), "0".into(), "1".into()],
     );
+    // The null microphone's silence isn't speech: switch speech detection (and suppression)
+    // off for this.
+    call(&ext, "vox:noise", &["false".into(), "false".into()]);
     call(
         &ext,
         "vox:settings",

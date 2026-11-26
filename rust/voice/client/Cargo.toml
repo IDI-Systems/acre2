@@ -20,6 +20,7 @@ rustls = { workspace = true }
 thiserror = { workspace = true }
 tokio = { workspace = true }
 tracing = { workspace = true }
+nnnoiseless = { version = "0.5.2", default-features = false }
 
 [features]
 default = []
