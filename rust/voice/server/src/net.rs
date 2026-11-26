@@ -92,6 +92,12 @@ impl Server {
         })
     }
 
+    /// Whether the server is still serving (its tasks haven't ended).
+    #[must_use]
+    pub fn is_running(&self) -> bool {
+        !self.core.is_finished() && !self.accept.is_finished()
+    }
+
     pub fn local_addr(&self) -> std::io::Result<SocketAddr> {
         self.endpoint.local_addr()
     }

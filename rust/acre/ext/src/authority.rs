@@ -44,6 +44,20 @@ pub(crate) fn detach() {
     drop(old);
 }
 
+/// Reports the current authority connection again (`authority_connected`), for a new mission
+/// on a voice server that kept running. `false` if there is none to report.
+pub(crate) fn reannounce() -> bool {
+    let (fingerprint, client_address) = {
+        let st = state();
+        if st.authority.is_none() {
+            return false;
+        }
+        (st.fingerprint.clone(), st.client_address.clone())
+    };
+    emit("authority_connected", (fingerprint, client_address));
+    true
+}
+
 /// `["authority:connect", [address, secret, fingerprintHex, clientAddress]]`. An empty
 /// fingerprint trusts any certificate; an empty client address uses the server's configured
 /// public address, else `address`.

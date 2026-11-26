@@ -19,7 +19,19 @@ use arma_rs::Group;
 
 use crate::{authority, callback::emit, runtime};
 
-static SERVER: Mutex<Option<Server>> = Mutex::new(None);
+/// The running server and what it was started with.
+struct Hosted {
+    server: Server,
+    /// The port asked for (0: any).
+    port: u16,
+    /// The address asked for, as given.
+    address: String,
+    secret: String,
+    fingerprint: String,
+    client_address: String,
+}
+
+static SERVER: Mutex<Option<Hosted>> = Mutex::new(None);
 
 /// Adds the port unless `address` already has one.
 fn with_port(address: &str, port: u16) -> String {
@@ -73,7 +85,7 @@ fn stop_running() {
     authority::detach();
     let old = SERVER.lock().expect("hosted server").take();
     if let Some(old) = old {
-        runtime::get().block_on(old.shutdown());
+        runtime::get().block_on(old.server.shutdown());
         tracing::info!("voice server stopped");
     }
 }
@@ -104,6 +116,9 @@ fn addr_in_use(e: &anyhow::Error) -> bool {
 }
 
 fn run_start(port: u16, address: &str) -> Result<(), String> {
+    if reuse(port, address) {
+        return Ok(());
+    }
     stop_running();
 
     let mut secret = [0u8; 32];
@@ -119,7 +134,14 @@ fn run_start(port: u16, address: &str) -> Result<(), String> {
     let bound = server.local_addr().map_err(|e| e.to_string())?.port();
     let client_address = with_port(address, bound);
     tracing::info!(port = bound, %client_address, "voice server started");
-    *SERVER.lock().expect("hosted server") = Some(server);
+    *SERVER.lock().expect("hosted server") = Some(Hosted {
+        server,
+        port,
+        address: address.to_string(),
+        secret: secret.clone(),
+        fingerprint: fingerprint.clone(),
+        client_address: client_address.clone(),
+    });
 
     authority::connect(
         format!("127.0.0.1:{bound}"),
@@ -130,8 +152,42 @@ fn run_start(port: u16, address: &str) -> Result<(), String> {
     .map(|_| ())
 }
 
+/// A start for the server that's already running (a new mission after `#restart` or
+/// `#missions`, or SQF recovering a lost authority): keep it, and its players' connections,
+/// and report it to the new mission instead of restarting. `false` if it has to (re)start: not
+/// running, or a different port or address.
+fn reuse(port: u16, address: &str) -> bool {
+    let hosted = SERVER.lock().expect("hosted server");
+    let Some(h) = hosted.as_ref() else {
+        return false;
+    };
+    if !h.server.is_running() || h.port != port || h.address != address {
+        return false;
+    }
+    let Ok(bound) = h.server.local_addr().map(|a| a.port()) else {
+        return false;
+    };
+    tracing::info!(port = bound, "voice server already running, keeping it");
+    if authority::reannounce() {
+        return true;
+    }
+    // Running, but the authority connection is gone: connect it again.
+    let reconnect = authority::connect(
+        format!("127.0.0.1:{bound}"),
+        h.secret.clone(),
+        h.fingerprint.clone(),
+        h.client_address.clone(),
+    );
+    if let Err(e) = reconnect {
+        tracing::warn!(error = %e, "could not reconnect to the running voice server");
+        return false;
+    }
+    true
+}
+
 /// `["server:start", [port, address]]` → `"ok"`, then the `authority_connected` callback (or
-/// `authority_failed`). Restarts the voice server if it was already running.
+/// `authority_failed`). A server already running on the same port and address is kept;
+/// otherwise it's restarted.
 fn start(port: u16, address: String) -> Result<&'static str, String> {
     let port = match std::env::var("ACRE2_VOICE_PORT") {
         Ok(p) => p
@@ -149,8 +205,6 @@ fn start(port: u16, address: String) -> Result<&'static str, String> {
                 .into(),
         );
     }
-    // Retire the current authority now, so nothing it reports before the restart reaches SQF.
-    authority::detach();
     worker()
         .send(Job::Start { port, address })
         .map_err(|e| e.to_string())?;

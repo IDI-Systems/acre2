@@ -262,11 +262,26 @@ fn authority_token_connect_and_transmit() {
     );
     assert_ne!(code, 0);
 
-    // The next mission starts the server again on the same port, with players still connected
-    // to the old one: it must not fail with "address in use".
+    // The next mission (#restart, #missions) asks for the same server again: it keeps running,
+    // with the same certificate and its players still connected.
     call(&ext, "server:start", &[port.clone(), s("127.0.0.1")]);
+    let again = wait_for(&ext, "authority_connected", "authority_failed");
+    assert_eq!(
+        again, welcome,
+        "the running server is reported, not restarted"
+    );
+    std::thread::sleep(Duration::from_millis(300));
+    assert!(call(&ext, "voice:status", &[]).contains("\"connected\""));
+
+    // A changed setting restarts it on the same port, with players still connected to the old
+    // one: it must not fail with "address in use".
+    call(&ext, "server:start", &[port.clone(), s("localhost")]);
     let seen = wait_all(&ext, &["authority_connected", "disconnected"]);
-    assert_eq!(seen["authority_connected"][1], format!("127.0.0.1:{port}"));
+    assert_eq!(seen["authority_connected"][1], format!("localhost:{port}"));
+    assert_ne!(
+        seen["authority_connected"][0], welcome[0],
+        "new certificate"
+    );
     assert!(call(&ext, "voice:status", &[]).contains("disconnected"));
     call(&ext, "voice:disconnect", &[]);
     call(&ext, "server:stop", &[]);
