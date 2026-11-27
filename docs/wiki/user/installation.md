@@ -31,7 +31,7 @@ ACRE2 uses your system's default microphone and output device unless you pick ot
 - **Push-to-talk release delay** (0.2 s by default): how long any push-to-talk key (direct, radio, intercom, Zeus, god mode) keeps transmitting after you let go, so the end of your last word isn't cut off.
 - **Hear yourself on other radios** (on by default): while you transmit, your other radios tuned to the same channel play your own voice, and so do loudspeaker radios near you. The radio you're transmitting on doesn't.
 
-To mute your microphone, bind *Mute Microphone (toggle)* under `Options → Controls → Configure Addons → ACRE2` (it has no default key). While muted nothing is transmitted, push-to-talk included, and an icon shows in the top right corner (move it with `Options → Game → Layout`). Other players see a muted icon next to your name in the Players screen.
+To mute your microphone, press `Ctrl+Shift+M` (*Mute Microphone (toggle)*, rebindable under `Options → Controls → Configure Addons → ACRE2`). While muted nothing is transmitted, push-to-talk included, and an icon shows in the top right corner (move it with `Options → Game → Layout`). Other players see a muted icon next to your name in the Players screen.
 
 The easiest way to set the levels is the **microphone test**: `Escape → Options → ACRE Microphone Test` (also linked from the *ACRE Voice* page on the map). It asks you to stay silent, type without talking, then talk, about 5 seconds each, and suggests levels that ignore your background and keyboard noise. Nothing is transmitted while it runs. If your typing is as loud as your voice and *speech only* is off, it suggests push to talk instead.
 

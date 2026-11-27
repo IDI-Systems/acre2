@@ -76,7 +76,7 @@ if (!GVAR(aceLoaded)) then {
 ["ACRE2", "MicMute", [localize LSTRING(MicMute), localize LSTRING(MicMute_description)], {
     [!GVAR(micMuted)] call FUNC(setMicMuted);
     true
-}, ""] call CBA_fnc_addKeybind;
+}, "", [DIK_M, [true, true, false]]] call CBA_fnc_addKeybind;
 
 // Keybinds - Channel Switch
 ["ACRE2", "PreviousChannel", localize LSTRING(PreviousChannel), "", {
