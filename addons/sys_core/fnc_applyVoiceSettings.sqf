@@ -28,6 +28,7 @@ private _close = (missionNamespace getVariable [QGVAR(voiceThresholdClose), -50]
         missionNamespace getVariable [QGVAR(speechDetection), true]
     ]
 ] call EFUNC(sys_io,ext);
+["tx:loopback", [missionNamespace getVariable [QGVAR(selfHearing), true]]] call EFUNC(sys_io,ext);
 
 private _devices = [
     missionNamespace getVariable [QGVAR(inputDevice), ""],

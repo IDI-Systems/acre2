@@ -23,6 +23,9 @@ if (!hasInterface) exitWith {};
     if (GVAR(ts3id) != -1) then {
         _newUnit setVariable [QGVAR(ts3id), GVAR(ts3id), true];
     };
+    if (GVAR(micMuted)) then {
+        _newUnit setVariable [QGVAR(micMuted), true, true];
+    };
 }] call CBA_fnc_addPlayerEventHandler;
 
 GVAR(aceLoaded) = isClass (configFile >> "CfgPatches" >> "ace_common");
@@ -59,13 +62,21 @@ if (!GVAR(aceLoaded)) then {
 }, [0, [false, false, false]]] call CBA_fnc_addKeybind;
 
 // Keybind - direct speech push-to-talk (when voice activation is set to push-to-talk)
+// Released after ACRE_PTT_RELEASE_DELAY like the radio keys; pressing again meanwhile keeps it open.
 ["ACRE2", "DirectPTTKey", [localize LSTRING(DirectPTTKey), localize LSTRING(DirectPTTKey_description)], {
+    ["direct"] call FUNC(pttPressed);
     ["vox:ptt", [true]] call EFUNC(sys_io,ext);
     false
 }, {
-    ["vox:ptt", [false]] call EFUNC(sys_io,ext);
+    ["direct", {["vox:ptt", [false]] call EFUNC(sys_io,ext)}] call FUNC(pttReleased);
     false
 }, [0, [false, false, false]]] call CBA_fnc_addKeybind;
+
+// Keybind - mute our microphone (toggle)
+["ACRE2", "MicMute", [localize LSTRING(MicMute), localize LSTRING(MicMute_description)], {
+    [!GVAR(micMuted)] call FUNC(setMicMuted);
+    true
+}, ""] call CBA_fnc_addKeybind;
 
 // Keybinds - Channel Switch
 ["ACRE2", "PreviousChannel", localize LSTRING(PreviousChannel), "", {

@@ -258,6 +258,78 @@ fn authority_token_connect_and_transmit() {
     bot.join().expect("bot thread");
     wait_for(&ext, "remote_stop", "disconnected");
 
+    // Hearing ourselves on another radio: with loopback on, a radio transmission is also played
+    // back to us as our own peer's stream (rendered with speaker:radio for our own id), without
+    // telling SQF that we're a remote speaker.
+    call(&ext, "tx:loopback", &["true".into()]);
+    call(
+        &ext,
+        "tx:start",
+        &[
+            s("radio2"),
+            "1".into(),
+            s("ACRE_PRC152_ID_3"),
+            "30".into(),
+            r#"["radio:43.200"]"#.into(),
+            s("2:5"),
+            "0".into(),
+            "1".into(),
+        ],
+    );
+    let result: CbResult<(), Vec<String>> = ext.callback_handler(
+        |_, func, data| {
+            let data = strings(data);
+            match func {
+                "remote_start" if data[0] == peer.to_string() => CbResult::Err(data),
+                "local_start" if data[3] == "ACRE_PRC152_ID_3" => CbResult::Ok(()),
+                _ => CbResult::Continue,
+            }
+        },
+        WAIT,
+    );
+    assert!(result.is_ok(), "radio2 didn't start cleanly: {result:?}");
+    call(
+        &ext,
+        "speaker:radio",
+        &[
+            peer.to_string(),
+            "false".into(),
+            "[[1, 1, false, [2, 0, 0]]]".into(),
+        ],
+    );
+    let deadline = std::time::Instant::now() + WAIT;
+    while crate::client::own_streams() != (1, true) {
+        assert!(
+            std::time::Instant::now() < deadline,
+            "own radio not looped back: {:?}",
+            crate::client::own_streams()
+        );
+        std::thread::sleep(Duration::from_millis(20));
+    }
+    call(&ext, "tx:stop", &[s("radio2")]);
+    let deadline = std::time::Instant::now() + WAIT;
+    while crate::client::own_streams() != (0, false) {
+        assert!(
+            std::time::Instant::now() < deadline,
+            "loopback didn't end: {:?}",
+            crate::client::own_streams()
+        );
+        std::thread::sleep(Duration::from_millis(20));
+    }
+    // No remote_start/remote_stop for ourselves came meanwhile.
+    let leaked: CbResult<(), Vec<String>> = ext.callback_handler(
+        |_, func, data| {
+            let data = strings(data);
+            if func.starts_with("remote_") && data[0] == peer.to_string() {
+                CbResult::Err(data)
+            } else {
+                CbResult::Continue
+            }
+        },
+        Duration::from_millis(300),
+    );
+    assert!(!matches!(leaked, CbResult::Err(_)), "{leaked:?}");
+
     // Bad arguments are refused rather than panicking.
     let (_, code) = ext.call(
         "vox:settings",

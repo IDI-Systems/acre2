@@ -667,6 +667,24 @@
         <Key ID="STR_ACRE_sys_core_speechDetection_description">
             <English>Voice activation only opens on sound that seems to be speech, so typing, clicks and other loud noises don't transmit. Push-to-talk is not affected.</English>
         </Key>
+        <Key ID="STR_ACRE_sys_core_pttReleaseDelay_displayName">
+            <English>Push-to-talk release delay</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_pttReleaseDelay_description">
+            <English>Seconds a push-to-talk key keeps transmitting after you let go of it, so the end of your last word isn't cut off.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_selfHearing_displayName">
+            <English>Hear yourself on other radios</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_selfHearing_description">
+            <English>While you transmit, your other radios on the same channel (and loudspeaker radios near you) play your own voice, as a real radio would.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_MicMute">
+            <English>Mute Microphone (toggle)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_MicMute_description">
+            <English>Mutes your microphone: nothing is transmitted, push-to-talk included, until pressed again. Other players see it in the Players screen.</English>
+        </Key>
         <Key ID="STR_ACRE_sys_core_audioDevice_default">
             <English>System default</English>
         </Key>

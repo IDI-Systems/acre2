@@ -109,6 +109,33 @@
     {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
+// How long a push-to-talk keeps transmitting after it's released, so the last word isn't cut
+// off. acre_api_fnc_setPTTDelay still overrides it.
+[
+    QGVAR(pttReleaseDelay),
+    "SLIDER",
+    [localize LSTRING(pttReleaseDelay_displayName), localize LSTRING(pttReleaseDelay_description)],
+    "ACRE2",
+    [0, 1, 0.2, 2],
+    false,
+    {
+        params ["_value"];
+        ACRE_PTT_RELEASE_DELAY = _value;
+    }
+] call CBA_fnc_addSetting;
+
+// Hear yourself on your other radios (or a loudspeaker radio near you) tuned to the channel
+// you're transmitting on.
+[
+    QGVAR(selfHearing),
+    "CHECKBOX",
+    [localize LSTRING(selfHearing_displayName), localize LSTRING(selfHearing_description)],
+    "ACRE2",
+    true,
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
 // Audio devices: dropdowns of what this machine has ("" is the system default). A device that
 // is no longer present falls back to the default.
 private _inputDevices = [[""], [localize LSTRING(audioDevice_default)]];

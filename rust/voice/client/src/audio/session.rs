@@ -16,7 +16,7 @@ use tokio::sync::mpsc;
 use tracing::debug;
 
 use super::{
-    ActivationConfig, Mixer, Renderer, Transmitter,
+    ActivationConfig, Loopback, Looped, Mixer, Renderer, Transmitter,
     device::{DeviceCallback, DeviceEvent, Devices, PUMP_INTERVAL, Rings},
     resample::Resampler,
 };
@@ -277,6 +277,7 @@ fn transmit_loop(shared: &Shared, stop: &AtomicBool, mut capture: rtrb::Consumer
         .expect("transmitter lock")
         .frame_samples();
     let mut buf: Vec<f32> = Vec::with_capacity(frame * 4);
+    let mut loopback = Loopback::default();
     while !stop.load(Ordering::Relaxed) {
         let n = capture.slots();
         if let Ok(chunk) = capture.read_chunk(n) {
@@ -286,15 +287,22 @@ fn transmit_loop(shared: &Shared, stop: &AtomicBool, mut capture: rtrb::Consumer
             chunk.commit_all();
         }
         while buf.len() >= frame {
-            let actions = {
+            let (actions, looped) = {
                 let mut t = shared.transmitter.lock().expect("transmitter lock");
                 let actions = t.process(&buf[..frame]);
                 shared
                     .level_bits
                     .store(t.level_db().to_bits(), Ordering::Relaxed);
-                actions
+                let looped = match &actions {
+                    Ok(a) => {
+                        loopback.copy(&t, a, shared.client.peer_id(), shared.client.external_id())
+                    }
+                    Err(_) => Vec::new(),
+                };
+                (actions, looped)
             };
             buf.drain(..frame);
+            deliver_locally(shared, looped);
             match actions {
                 Ok(actions) => {
                     // Stops before starts, so a switch (e.g. direct → radio) reads as one ending
@@ -319,6 +327,33 @@ fn transmit_loop(shared: &Shared, stop: &AtomicBool, mut capture: rtrb::Consumer
             }
         }
         std::thread::sleep(PUMP_INTERVAL);
+    }
+}
+
+/// Our looped-back transmissions, into the mixer and the events like remote ones.
+fn deliver_locally(shared: &Shared, looped: Vec<Looped>) {
+    if looped.is_empty() {
+        return;
+    }
+    let now = shared.now_ms();
+    for l in looped {
+        match l {
+            Looped::Voice(v) => {
+                let _ = shared
+                    .mixer
+                    .lock()
+                    .expect("mixer lock")
+                    .handle_voice(v, now);
+            }
+            Looped::Message(m) => {
+                let _ = shared
+                    .mixer
+                    .lock()
+                    .expect("mixer lock")
+                    .handle_message(&m, now);
+                let _ = shared.events.send(SessionEvent::Server(m));
+            }
+        }
     }
 }
 

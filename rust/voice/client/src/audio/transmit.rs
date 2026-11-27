@@ -71,6 +71,8 @@ pub struct Transmitter {
     /// The last frames before talking started, while speech detection is on: it needs a few
     /// frames to recognise speech, and these are sent first so the start of a word isn't lost.
     preroll: VecDeque<Vec<f32>>,
+    /// Transmissions also played back to ourselves (see [`Transmitter::set_loopback`]).
+    loopback: BTreeSet<TxId>,
 }
 
 impl Transmitter {
@@ -94,6 +96,7 @@ impl Transmitter {
             filtered: Vec::new(),
             speech: 0.0,
             preroll: VecDeque::new(),
+            loopback: BTreeSet::new(),
         })
     }
 
@@ -136,6 +139,23 @@ impl Transmitter {
     /// Releases a keyed transmission.
     pub fn unkey(&mut self, tx: TxId) {
         self.keyed.remove(&tx);
+    }
+
+    /// Also plays a transmission back to ourselves, e.g. to hear yourself on a second radio tuned
+    /// to the one you transmit on. A [`super::VoiceSession`] delivers its start, voice and end to
+    /// its own mixer and events like a remote transmission, with our own peer id as the speaker.
+    /// Takes effect from the next start of the transmission.
+    pub fn set_loopback(&mut self, tx: TxId, on: bool) {
+        if on {
+            self.loopback.insert(tx);
+        } else {
+            self.loopback.remove(&tx);
+        }
+    }
+
+    #[must_use]
+    pub fn loops_back(&self, tx: TxId) -> bool {
+        self.loopback.contains(&tx)
     }
 
     /// Exclusive mode: while any keyed transmission is held, direct speech isn't sent (the keyed

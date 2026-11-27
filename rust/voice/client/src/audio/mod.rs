@@ -14,6 +14,7 @@ mod activation;
 mod denoise;
 #[cfg(feature = "devices")]
 mod device;
+mod loopback;
 mod mixer;
 #[cfg(feature = "devices")]
 mod monitor;
@@ -28,6 +29,7 @@ pub use activation::{
 pub use denoise::{Denoiser, NoiseConfig};
 #[cfg(feature = "devices")]
 pub use device::{AudioDevice, DeviceCallback, DeviceEvent, DeviceList, list_devices};
+pub use loopback::{Loopback, Looped};
 pub use mixer::{Mixer, PassthroughRenderer, ReceiveTotals, Renderer, StereoFrame, StreamInfo};
 #[cfg(feature = "devices")]
 pub use monitor::MicMonitor;

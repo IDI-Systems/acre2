@@ -85,7 +85,10 @@ DVAR(ACRE_LISTENER_POS) = [0,0,0];
 DVAR(ACRE_LISTENER_DIR) = [0,1,0];
 DVAR(ACRE_LISTENER_DIVE) = 0;
 
-DVAR(ACRE_PTT_RELEASE_DELAY) = 0.2;
+DVAR(ACRE_PTT_RELEASE_DELAY) = missionNamespace getVariable [QGVAR(pttReleaseDelay), 0.2]; // the setting
+GVAR(pttPresses) = createHashMap; // acre_sys_core_fnc_pttPressed
+GVAR(micMuted) = false; // the mute keybind (acre_sys_core_fnc_setMicMuted)
+GVAR(hearingSelf) = objNull; // our unit while transmitting on a radio with self hearing on
 DVAR(ACRE_ASSIGNED_PTT_RADIOS) = [];
 DVAR(ACRE_ASSIGNED_PTT_RADIOS_REMOTE) = []; // Remote controlled unit
 GVAR(delayReleasePTT_Handle) = nil;

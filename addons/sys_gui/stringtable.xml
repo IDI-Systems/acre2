@@ -29,6 +29,12 @@
             <Chinesesimp>绿，橘，红</Chinesesimp>
             <Turkish>Yeşil, Turuncu, Kırmızı</Turkish>
         </Key>
+        <Key ID="STR_ACRE_sys_gui_MicMutedGrid_Description">
+            <English>Shown while your microphone is muted with the ACRE2 mute key.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_MicMutedGrid_DisplayName">
+            <English>ACRE2 - Microphone Muted</English>
+        </Key>
         <Key ID="STR_ACRE_sys_gui_Open">
             <English>Open</English>
             <Czech>Otevřít</Czech>
@@ -160,6 +166,9 @@
             <Chinese>黃，橘，紅</Chinese>
             <Chinesesimp>黄，橘，红</Chinesesimp>
             <Turkish>Sarı, Turuncu, Kırmızı</Turkish>
+        </Key>
+        <Key ID="STR_ACRE_sys_gui_playerMicMuted">
+            <English>Microphone muted (ACRE2)</English>
         </Key>
     </Package>
 </Project>

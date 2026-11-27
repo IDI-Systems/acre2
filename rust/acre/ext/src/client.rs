@@ -24,6 +24,7 @@ use arma_rs::Group;
 use crate::{
     callback::emit,
     meta::Meta,
+    meta::speaking_type,
     render::{AcreRenderer, DirectKind, DirectParams, RadioOut, RenderState, SharedState},
     runtime, sounds,
     speakers::{SpeakingEvent, Tracker},
@@ -39,6 +40,8 @@ struct Wanted {
     keyed: BTreeMap<TxId, (Outgoing, Meta)>,
     direct_ptt: bool,
     muted: bool,
+    /// Hear our own radio transmissions on our other radios (`tx:loopback`).
+    loopback: bool,
     subscriptions: Vec<ChannelKey>,
     extra: Vec<ExtraPosition>,
 }
@@ -116,10 +119,20 @@ impl State {
         let mut t = s.transmitter();
         for tx in self.keys.values() {
             match self.wanted.keyed.get(tx) {
-                Some((o, _)) => t.key(*tx, o.clone()),
+                Some((o, meta)) => {
+                    // Only radio is heard elsewhere by our own radios; SQF decides which (if
+                    // any) and how, with `speaker:radio` for our own peer id.
+                    let looped = self.wanted.loopback && meta.speaking_type == speaking_type::RADIO;
+                    t.set_loopback(*tx, looped);
+                    t.key(*tx, o.clone());
+                }
                 None => t.unkey(*tx),
             }
         }
+    }
+
+    fn me(&self) -> Option<PeerId> {
+        self.session.as_ref().map(|s| s.client().peer_id())
     }
 
     fn take_session(&mut self) -> Option<Arc<VoiceSession>> {
@@ -129,13 +142,21 @@ impl State {
             let mut st = self.render.lock().expect("render state");
             self.tracker.clear(&mut st)
         };
-        emit_speaking(events);
+        emit_speaking(events, self.me());
         self.session.take()
     }
 }
 
-fn emit_speaking(events: Vec<SpeakingEvent>) {
+/// Tells SQF about remote speakers. Our own looped-back radio transmissions (`tx:loopback`) are
+/// tracked like a remote speaker's, so they render, but SQF already knows we're speaking.
+fn emit_speaking(events: Vec<SpeakingEvent>, me: Option<PeerId>) {
     for e in events {
+        let peer = match &e {
+            SpeakingEvent::Start { peer, .. } | SpeakingEvent::Stop { peer, .. } => *peer,
+        };
+        if Some(peer) == me {
+            continue;
+        }
         match e {
             SpeakingEvent::Start { peer, meta } => emit(
                 "remote_start",
@@ -241,6 +262,7 @@ fn pump_events(events: &std::sync::mpsc::Receiver<SessionEvent>, generation: u64
                 metadata,
                 ..
             }) => {
+                let me = st.me();
                 let events = {
                     let State {
                         render, tracker, ..
@@ -253,9 +275,10 @@ fn pump_events(events: &std::sync::mpsc::Receiver<SessionEvent>, generation: u64
                     )
                 };
                 drop(st);
-                emit_speaking(events);
+                emit_speaking(events, me);
             }
             SessionEvent::Server(ServerMsg::TransmissionEnded { speaker, tx }) => {
+                let me = st.me();
                 let events = {
                     let State {
                         render, tracker, ..
@@ -263,7 +286,7 @@ fn pump_events(events: &std::sync::mpsc::Receiver<SessionEvent>, generation: u64
                     tracker.ended(&mut render.lock().expect("render state"), speaker, tx)
                 };
                 drop(st);
-                emit_speaking(events);
+                emit_speaking(events, me);
             }
             SessionEvent::Server(ServerMsg::Error { message }) => {
                 drop(st);
@@ -382,6 +405,16 @@ fn tx_stop(key: String) {
         st.wanted.keyed.remove(&tx);
         st.apply_keyed();
     }
+}
+
+/// `["tx:loopback", [enabled]]`: hear our own radio transmissions on our other radios. Each radio
+/// transmission is then also played back locally as a stream from our own peer id, rendered by
+/// `speaker:radio` for that id like a remote speaker (no `remote_start`/`remote_stop`). Applies
+/// from the next transmission.
+fn tx_loopback(enabled: bool) {
+    let mut st = state();
+    st.wanted.loopback = enabled;
+    st.apply_keyed();
 }
 
 /// `["tx:stop_all", []]`
@@ -748,6 +781,23 @@ fn stats() -> (String, u32, String, f64, f64, f64, f64, f64, u32, String) {
     )
 }
 
+/// Our own looped-back transmissions in the mixer, and whether we're rendering them (tests).
+#[cfg(test)]
+pub(crate) fn own_streams() -> (usize, bool) {
+    let st = state();
+    let Some(s) = &st.session else {
+        return (0, false);
+    };
+    let me = s.client().peer_id();
+    let streams = s.mixer().streams().filter(|(i, _)| i.speaker == me).count();
+    let rendered = st
+        .render()
+        .speakers
+        .get(&me)
+        .is_some_and(|sp| sp.primary.is_some());
+    (streams, rendered)
+}
+
 /// The client command groups, e.g. `voice:connect`.
 pub fn groups() -> Vec<(&'static str, Group)> {
     vec![
@@ -765,7 +815,8 @@ pub fn groups() -> Vec<(&'static str, Group)> {
                 .command("direct", tx_direct)
                 .command("start", tx_start)
                 .command("stop", tx_stop)
-                .command("stop_all", tx_stop_all),
+                .command("stop_all", tx_stop_all)
+                .command("loopback", tx_loopback),
         ),
         ("rx", Group::new().command("channels", rx_channels)),
         (

@@ -56,4 +56,25 @@ class RscTitles {
             };
         };
     };
+
+    #define MIC_MUTED_POSITION \
+        x = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,GVAR(micMuted),X)',MIC_MUTED_DEFAULT_X)]); \
+        y = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,GVAR(micMuted),Y)',MIC_MUTED_DEFAULT_Y)]); \
+        w = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,GVAR(micMuted),W)',MIC_MUTED_DEFAULT_W)]); \
+        h = QUOTE(profileNamespace getVariable [ARR_2('TRIPLES(IGUI,GVAR(micMuted),H)',MIC_MUTED_DEFAULT_H)]); \
+
+    class GVAR(micMuted) {
+        idd = -1;
+        fadeIn = 0;
+        fadeOut = 0;
+        duration = 999999;
+        class controls {
+            class Icon: RscPictureKeepAspect {
+                idc = -1;
+                text = MIC_MUTED_ICON;
+                colorText[] = {1, 0.25, 0.25, 0.9};
+                MIC_MUTED_POSITION
+            };
+        };
+    };
 };

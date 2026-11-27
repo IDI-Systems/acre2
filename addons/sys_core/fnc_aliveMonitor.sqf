@@ -19,8 +19,9 @@ GVAR(oldMute) = 0;
 GVAR(waitTime) = diag_tickTime + 3;
 [{
     private _isMuted = 0;
-    // Also muted while the microphone test runs, so test noises aren't transmitted.
-    if (IS_MUTED(acre_player) || {GVAR(micTestActive)}) then {
+    // Also muted by the mute keybind, and while the microphone test runs so test noises aren't
+    // transmitted.
+    if (GVAR(micMuted) || {IS_MUTED(acre_player)} || {GVAR(micTestActive)}) then {
         _isMuted = 1;
     };
     if ((_isMuted != GVAR(oldMute)) || {diag_tickTime > GVAR(waitTime)}) then {

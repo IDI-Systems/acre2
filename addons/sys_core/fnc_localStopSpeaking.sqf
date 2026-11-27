@@ -33,6 +33,12 @@ if (_speakingType == SPEAKING_TYPE_RADIO && {_radioId == ACRE_BROADCASTING_RADIO
     ACRE_BROADCASTING_RADIOID = "";
 };
 
+if (_speakingType == SPEAKING_TYPE_RADIO && {!isNull GVAR(hearingSelf)}) then {
+    GVAR(hearingSelf) setVariable [QGVAR(currentSpeakingRadio), ""];
+    GVAR(hearingSelf) = objNull;
+    GVAR(speaking_cache_valid) = false;
+};
+
 // Reset lowered voice curve level when not using a custom voice curve
 if (isNil "ACRE_CustomVolumeControl") then {
     EGVAR(sys_gui,volumeLevel) call EFUNC(sys_gui,setVoiceCurveLevel);

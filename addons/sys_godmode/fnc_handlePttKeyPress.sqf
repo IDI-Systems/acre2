@@ -19,6 +19,8 @@ params ["_group"];
 
 if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
+[QGVAR(ptt)] call EFUNC(sys_core,pttPressed);
+
 private _channel = "";
 private _channelEx = "";
 private _color = [ACRE_NOTIFICATION_WHITE];

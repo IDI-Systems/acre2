@@ -20,4 +20,4 @@ GVAR(micTestActive) = false;
 uiNamespace setVariable [QGVAR(micTestDisplay), displayNull];
 
 ["audio:monitor", [false]] call EFUNC(sys_io,ext);
-["vox:mute", [IS_MUTED(acre_player)]] call EFUNC(sys_io,ext);
+["vox:mute", [GVAR(micMuted) || {IS_MUTED(acre_player)}]] call EFUNC(sys_io,ext);

@@ -4,6 +4,12 @@
 if (!hasInterface) exitWith {};
 
 
+// Microphone mute icon (the mute keybind is in sys_core)
+["acre_micMuted", {
+    params ["_muted"];
+    [_muted] call FUNC(showMicMuted);
+}] call CBA_fnc_addEventHandler;
+
 // Volume Control - keybind, unit change event, and scroll wheel EH
 ["ACRE2", "VolumeControl", localize LSTRING(VolumeControl),
     LINKFUNC(volumeKeyDown),

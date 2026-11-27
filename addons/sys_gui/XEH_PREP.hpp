@@ -15,3 +15,7 @@ PREP(openRadio);
 PREP(antennaElevationDisplay);
 PREP(showVehicleInfo);
 PREP(updateVehicleInfo);
+
+// Microphone mute
+PREP(playersDisplayLoad);
+PREP(showMicMuted);

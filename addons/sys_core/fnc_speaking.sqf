@@ -29,7 +29,14 @@ private _radioParamsSorted = [[],[]];
 #endif
 
 private _sentMicRadios = [];
-if (GVAR(keyedMicRadios) isNotEqualTo []) then {
+// Radio speakers: remote ones, and ourselves while transmitting with self hearing on (heard on
+// our other radios on the channel; the transmitting radio itself is skipped below).
+private _radioSpeakers = GVAR(keyedMicRadios);
+if (!isNull GVAR(hearingSelf)) then {
+    _radioSpeakers = +_radioSpeakers; // a copy: keyedMicRadios stays remote speakers only
+    _radioSpeakers pushBack GVAR(hearingSelf);
+};
+if (_radioSpeakers isNotEqualTo []) then {
 
     #ifdef ENABLE_PERFORMANCE_COUNTERS
         BEGIN_COUNTER(speaking_loop_with_transmissions);
@@ -80,7 +87,7 @@ if (GVAR(keyedMicRadios) isNotEqualTo []) then {
                 };
             } forEach _returnedRadios;
         };
-    } forEach GVAR(keyedMicRadios);
+    } forEach _radioSpeakers;
     if (_signalHint != "") then {
         hintSilent ("Current transmissions:\n\n" + _signalHint);
     };
