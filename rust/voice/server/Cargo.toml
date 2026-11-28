@@ -1,0 +1,34 @@
+[package]
+name = "acre2_voice_server"
+description = "acre2 voice server: sessions, world state and voice routing"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "acre2_voice_server"
+path = "src/main.rs"
+
+[dependencies]
+acre2_voice_net = { workspace = true }
+acre2_voice_proto = { workspace = true, features = ["io"] }
+anyhow = { workspace = true }
+arc-swap = { workspace = true }
+bytes = { workspace = true }
+clap = { workspace = true }
+getrandom = { workspace = true }
+quinn = { workspace = true }
+rcgen = { workspace = true }
+ring = { workspace = true }
+rustls = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+toml = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+[lints]
+workspace = true

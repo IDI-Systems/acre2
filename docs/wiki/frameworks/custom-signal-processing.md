@@ -22,7 +22,7 @@ The input to your custom function will be of the format: `[30, 5000, "ACRE_PRC34
 ### Output
 
 The output of your function should be an array of size 2 with two numerical values:
-- The power as a percentage (0-1). This value is what will be used by the TeamSpeak 3 plugin to adjust the audio of the player being heard on the radio.
+- The power as a percentage (0-1). This value is what will be used by the voice extension to adjust the audio of the player being heard on the radio.
 - The decibel signal strength value (dBm). A typical value that is heard is between 0 to about -110 (radio specific). Lower values are not heard.
 
 The decibel signal strength value value is used to determine if the specific radio is capable of hearing the transmission. This process is typically carried out in the `handleMultipleTransmissions` function for that particular radio radio (i.e. AN/PRC-148). Firstly there exists a minimum signal sensitivity that each radio can pick up - This can be thought of as the minimum signal strength the hardware is capable of registering. The minimum that is registered is typically around -100 (AN/PRC343) to -117 (AN/PRC-117F) which is defined in `configFile >> 'CfgAcreComponents' >> RADIO_BASECLASS >> 'sensitivityMin'`. Some radios also make use of Squelch - If you are curious to see this is all handled in the radio specific `handleMultipleTransmissions` function.

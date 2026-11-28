@@ -1,0 +1,22 @@
+[package]
+name = "acre2_voice_codec"
+description = "Opus encoding/decoding, jitter buffer and loss concealment for acre2 voice"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+bytes = { workspace = true }
+opusic-c = { version = "1.6", default-features = false }
+thiserror = { workspace = true }
+
+[features]
+default = []
+# Build libopus from source and link it statically (needs cmake). Without it, the system
+# libopus is linked dynamically (set OPUS_LIB_DIR / OPUS_LIB_STATIC=true to change that).
+bundled = ["opusic-c/bundled"]
+
+[lints]
+workspace = true

@@ -27,7 +27,7 @@ if (_keyPressed) then {
 
     if (GVAR(pttKeyDown)) then {
         [_broadcastRadio, "handlePTTUp"] call EFUNC(sys_data,transEvent);
-        ["stopIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["intercom"] call EFUNC(sys_core,stopTransmission);
         GVAR(pttKeyDown) = false;
     };
 } else {

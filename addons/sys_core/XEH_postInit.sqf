@@ -10,29 +10,23 @@
 
 if (!hasInterface) exitWith {};
 
-// Ensure the TeamSpeak plugin handler code is initialized first
-[] call EFUNC(sys_io,startServer);
+// Connect to the voice server (via the voice extension); the core init waits for it.
+[] call EFUNC(sys_io,startClient);
 
-if (("acre" callExtension "version") == "") then { ERROR_WITH_TITLE("ACRE","Plugin not found"); };
-
-["handleGetClientID", FUNC(handleGetClientID)] call EFUNC(sys_rpc,addProcedure);
-["handleGetPluginVersion", FUNC(handleGetPluginVersion)] call EFUNC(sys_rpc,addProcedure);
-["handleGetHeadVector", FUNC(handleGetHeadVector)] call EFUNC(sys_rpc,addProcedure);
-["handleGetVOIPChannelName", FUNC(handleGetVOIPChannelName)] call EFUNC(sys_rpc,addProcedure);
-["handleGetVOIPChannelUID", FUNC(handleGetVOIPChannelUID)] call EFUNC(sys_rpc,addProcedure);
-["handleGetVOIPServerName", FUNC(handleGetVOIPServerName)] call EFUNC(sys_rpc,addProcedure);
-["handleGetVOIPServerUID", FUNC(handleGetVOIPServerUID)] call EFUNC(sys_rpc,addProcedure);
-["remoteStartSpeaking", FUNC(remoteStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
-["remoteStopSpeaking", FUNC(remoteStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
-["localStartSpeaking", FUNC(localStartSpeaking)] call EFUNC(sys_rpc,addProcedure);
-["localStopSpeaking", FUNC(localStopSpeaking)] call EFUNC(sys_rpc,addProcedure);
-["pong", FUNC(pong)] call EFUNC(sys_rpc,addProcedure);
-["gen", FUNC(gen)] call EFUNC(sys_rpc,addProcedure);
-
-DFUNC(gen) = {
-    params ["_code"];
-    [] call (compile _code);
-};
+// Keep the extension up to date with our transmissions, radio channels and camera, and keep our
+// voice peer ID published on whichever unit we control.
+[FUNC(voiceStatePFH), 0.25, []] call CBA_fnc_addPerFrameHandler;
+// Map diary page with the voice connection status
+[FUNC(updateDiary), 2, []] call CBA_fnc_addPerFrameHandler;
+["unit", {
+    params ["_newUnit"];
+    if (GVAR(ts3id) != -1) then {
+        _newUnit setVariable [QGVAR(ts3id), GVAR(ts3id), true];
+    };
+    if (GVAR(micMuted)) then {
+        _newUnit setVariable [QGVAR(micMuted), true, true];
+    };
+}] call CBA_fnc_addPlayerEventHandler;
 
 GVAR(aceLoaded) = isClass (configFile >> "CfgPatches" >> "ace_common");
 // Do not use ACRE2 unique items if ACE3 is loaded.
@@ -66,6 +60,23 @@ if (!GVAR(aceLoaded)) then {
 }, {
     [-1] call FUNC(handleMultiPttKeyPressUp)
 }, [0, [false, false, false]]] call CBA_fnc_addKeybind;
+
+// Keybind - direct speech push-to-talk (when voice activation is set to push-to-talk)
+// Released after ACRE_PTT_RELEASE_DELAY like the radio keys; pressing again meanwhile keeps it open.
+["ACRE2", "DirectPTTKey", [localize LSTRING(DirectPTTKey), localize LSTRING(DirectPTTKey_description)], {
+    ["direct"] call FUNC(pttPressed);
+    ["vox:ptt", [true]] call EFUNC(sys_io,ext);
+    false
+}, {
+    ["direct", {["vox:ptt", [false]] call EFUNC(sys_io,ext)}] call FUNC(pttReleased);
+    false
+}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
+
+// Keybind - mute our microphone (toggle)
+["ACRE2", "MicMute", [localize LSTRING(MicMute), localize LSTRING(MicMute_description)], {
+    [!GVAR(micMuted)] call FUNC(setMicMuted);
+    true
+}, "", [DIK_M, [true, true, false]]] call CBA_fnc_addKeybind;
 
 // Keybinds - Channel Switch
 ["ACRE2", "PreviousChannel", localize LSTRING(PreviousChannel), "", {
@@ -139,8 +150,6 @@ if ([findDisplay 0] isNotEqualTo allDisplays) then {
         [_wrpLocation]
     ] call FUNC(callExt);
 };
-[] call FUNC(getClientIdLoop);
-
 
 // Check whether ACRE2 is fully loaded
 [DFUNC(coreInitPFH), 0, []] call CBA_fnc_addPerFrameHandler;
@@ -148,16 +157,16 @@ if ([findDisplay 0] isNotEqualTo allDisplays) then {
 //Store objects occupying crew seats, note this is empty if the player is not a crew member
 ACRE_PLAYER_INTERCOM = [];
 
-// Disable positional audio whilst in briefing
+// Disable positional audio whilst in briefing (everyone heard plainly)
 if (getClientStateNumber < 10) then { // Check before game has started (in briefing state or earlier)
-    ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
+    // Everyone talks to everyone: the voice server routes direct speech over the briefing channel.
+    GVAR(inBriefing) = true;
+    ["settings:override", [true]] call EFUNC(sys_io,ext);
     [{
         if (getClientStateNumber > 9 && {CBA_missionTime > 0}) then { // Briefing has been read AND Mission has started
-            ["setSoundSystemMasterOverride", [0]] call EFUNC(sys_rpc,callRemoteProcedure);
+            GVAR(inBriefing) = false;
+            ["settings:override", [false]] call EFUNC(sys_io,ext);
             [_this select 1] call CBA_fnc_removePerFrameHandler;
-        } else {
-            // Keep calling incase ACRE is not connected to TeamSpeak
-            ["setSoundSystemMasterOverride", [1]] call EFUNC(sys_rpc,callRemoteProcedure);
         };
     }, 0, []] call CBA_fnc_addPerFrameHandler;
 };

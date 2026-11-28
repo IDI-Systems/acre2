@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Handles setting TeamSpeak plugin settings. Waits for pipe to open and then applies them.
+ * Applies an audio setting (global volumes, radio noise) in the voice extension.
  *
  * Arguments:
  * 0: Setting Name <STRING>
@@ -16,40 +16,21 @@
  * Public: No
  */
 
-// Can only be connected in multiplayer or in debug mode
-#ifndef DEBUG_MODE_FULL
-if (!isMultiplayer) exitWith {};
-#endif
 if (!hasInterface) exitWith {};
 
 params ["_name", "_value"];
 
-// Plugin initialized, apply setting directly
-if (EGVAR(sys_io,serverStarted)) exitWith {
-    ["setSetting", [_name, _value]] call EFUNC(sys_rpc,callRemoteProcedure);
-};
-
-// Already waiting for plugin initialization, add setting to delayed settings array
-if (GVAR(delayedPluginSettings) isNotEqualTo []) exitWith {
-    // Filter settings already set in case of prolonged wait where user can modify it multiple times
-    GVAR(delayedPluginSettings) = GVAR(delayedPluginSettings) select {_x select 0 != _name};
-    GVAR(delayedPluginSettings) pushBack _this;
-};
-
-// Start PFH for waiting for plugin initialization
-GVAR(delayedPluginSettings) = [_this];
-[{
-    if (EGVAR(sys_io,serverStarted)) exitWith {
-        // Save settings to local variable in case settings are changed while delayed ones are being applied
-        private _delayedSettings = GVAR(delayedPluginSettings);
-        GVAR(delayedPluginSettings) = [];
-
-        [_this select 1] call CBA_fnc_removePerFrameHandler;
-
-        // Set settings in plugin
-        {
-            _x params ["_name", "_value"];
-            ["setSetting", [_name, _value]] call EFUNC(sys_rpc,callRemoteProcedure);
-        } forEach _delayedSettings;
+// The voice extension keeps settings across (re)connections, so they can be applied any time.
+switch (_name) do {
+    case "globalVolume";
+    case "premixGlobalVolume": {
+        ["settings:set", [_name, _value]] call EFUNC(sys_io,ext);
     };
-}, 1, []] call CBA_fnc_addPerFrameHandler;
+    case "disableRadioNoise": {
+        // The CBA setting is "radio noise enabled", despite the name.
+        ["settings:set", ["radioNoise", [0, 1] select _value]] call EFUNC(sys_io,ext);
+    };
+    default {
+        WARNING_1("Unknown plugin setting %1",_name);
+    };
+};

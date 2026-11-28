@@ -31,6 +31,13 @@
 #define VOLUME_CONTROL_DEFAULT_W POS_W(12)
 #define VOLUME_CONTROL_DEFAULT_H POS_H(0.9)
 
+// Microphone muted indicator (top right)
+#define MIC_MUTED_DEFAULT_W POS_W(1.5)
+#define MIC_MUTED_DEFAULT_H POS_H(1.5)
+#define MIC_MUTED_DEFAULT_X (safeZoneX + safeZoneW - MIC_MUTED_DEFAULT_W - POS_W(0.5))
+#define MIC_MUTED_DEFAULT_Y (safeZoneY + POS_H(0.5))
+#define MIC_MUTED_ICON "\A3\Ui_f\data\IGUI\RscIngameUI\RscDisplayChannel\MuteVON_crossed_ca.paa"
+
 #define VOLUME_CONTROL_LAYER (QGVAR(VolumeControl) call BIS_fnc_rscLayer)
 
 // Color scales for the volume control

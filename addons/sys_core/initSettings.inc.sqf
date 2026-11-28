@@ -56,48 +56,146 @@
     {["disableRadioNoise", _this] call FUNC(setPluginSetting)}
 ] call CBA_fnc_addSetting;
 
+// Voice: how direct speech is triggered (any radio/intercom/zeus/god PTT always transmits)
 [
-    QGVAR(unmuteClients),
+    QGVAR(voiceActivation),
+    "LIST",
+    [localize LSTRING(voiceActivation_displayName), localize LSTRING(voiceActivation_description)],
+    "ACRE2",
+    [[0, 1], [localize LSTRING(voiceActivation_vad), localize LSTRING(voiceActivation_ptt)], 0],
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(voiceThreshold),
+    "SLIDER",
+    [localize LSTRING(voiceThreshold_displayName), localize LSTRING(voiceThreshold_description)],
+    "ACRE2",
+    [-80, -10, -45, 0],
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(voiceThresholdClose),
+    "SLIDER",
+    [localize LSTRING(voiceThresholdClose_displayName), localize LSTRING(voiceThresholdClose_description)],
+    "ACRE2",
+    [-80, -10, -50, 0],
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
+// Microphone filter (RNNoise): background noise removal, and voice activation that only opens
+// on speech (not keyboard clacks or other loud noises).
+[
+    QGVAR(noiseSuppression),
     "CHECKBOX",
-    localize LSTRING(unmuteClients_displayName),
+    [localize LSTRING(noiseSuppression_displayName), localize LSTRING(noiseSuppression_description)],
     "ACRE2",
     true,
     false,
-    {["disableUnmuteClients", _this] call FUNC(setPluginSetting)}
+    {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
-// Teamspeak Channel Switching
-// Switch channels
 [
-    QGVAR(ts3ChannelSwitch),
+    QGVAR(speechDetection),
     "CHECKBOX",
-    localize LSTRING(ts3ChannelSwitch_displayName),
+    [localize LSTRING(speechDetection_displayName), localize LSTRING(speechDetection_description)],
     "ACRE2",
     true,
     false,
-    {["disableTS3ChannelSwitch", _this] call FUNC(setPluginSetting)}
+    {[] call FUNC(applyVoiceSettings)}
 ] call CBA_fnc_addSetting;
 
-// Channel Name
+// How long a push-to-talk keeps transmitting after it's released, so the last word isn't cut
+// off. acre_api_fnc_setPTTDelay still overrides it.
 [
-    QGVAR(ts3ChannelName),
+    QGVAR(pttReleaseDelay),
+    "SLIDER",
+    [localize LSTRING(pttReleaseDelay_displayName), localize LSTRING(pttReleaseDelay_description)],
+    "ACRE2",
+    [0, 1, 0.2, 2],
+    false,
+    {
+        params ["_value"];
+        ACRE_PTT_RELEASE_DELAY = _value;
+    }
+] call CBA_fnc_addSetting;
+
+// Hear yourself on your other radios (or a loudspeaker radio near you) tuned to the channel
+// you're transmitting on.
+[
+    QGVAR(selfHearing),
+    "CHECKBOX",
+    [localize LSTRING(selfHearing_displayName), localize LSTRING(selfHearing_description)],
+    "ACRE2",
+    true,
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
+// Audio devices: dropdowns of what this machine has ("" is the system default). A device that
+// is no longer present falls back to the default.
+private _inputDevices = [[""], [localize LSTRING(audioDevice_default)]];
+private _outputDevices = [[""], [localize LSTRING(audioDevice_default)]];
+if (hasInterface) then {
+    private _result = ["audio:devices", []] call EFUNC(sys_io,ext);
+    if (_result != "") then {
+        (parseSimpleArray _result) params [["_inputs", []], ["_outputs", []]];
+        {
+            (_inputDevices select 0) pushBack (_x select 0);
+            (_inputDevices select 1) pushBack (_x select 1);
+        } forEach _inputs;
+        {
+            (_outputDevices select 0) pushBack (_x select 0);
+            (_outputDevices select 1) pushBack (_x select 1);
+        } forEach _outputs;
+    };
+};
+
+[
+    QGVAR(inputDevice),
+    "LIST",
+    [localize LSTRING(inputDevice_displayName), localize LSTRING(audioDevice_description)],
+    "ACRE2",
+    [_inputDevices select 0, _inputDevices select 1, 0],
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(outputDevice),
+    "LIST",
+    [localize LSTRING(outputDevice_displayName), localize LSTRING(audioDevice_description)],
+    "ACRE2",
+    [_outputDevices select 0, _outputDevices select 1, 0],
+    false,
+    {[] call FUNC(applyVoiceSettings)}
+] call CBA_fnc_addSetting;
+
+// Voice server (hosted by the Arma server; server settings)
+[
+    QEGVAR(sys_server,voicePort),
     "EDITBOX",
-    localize LSTRING(ts3ChannelName_displayName),
-    "ACRE2",
+    [localize LSTRING(voicePort_displayName), localize LSTRING(voicePort_description)],
+    localize LSTRING(voiceServerCategory),
+    "9987",
+    1,
+    {},
+    true
+] call CBA_fnc_addSetting;
+
+[
+    QEGVAR(sys_server,voiceAddress),
+    "EDITBOX",
+    [localize LSTRING(voiceAddress_displayName), localize LSTRING(voiceAddress_description)],
+    localize LSTRING(voiceServerCategory),
     "",
-    true,
-    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
-] call CBA_fnc_addSetting;
-
-// Channel Password
-[
-    QGVAR(ts3ChannelPassword),
-    "EDITBOX",
-    localize LSTRING(ts3ChannelPassword_displayName),
-    "ACRE2",
-    ["", true],
-    true,
-    {if (!isNull (findDisplay 46)) then {call EFUNC(sys_io,ts3ChannelMove)};}
+    1,
+    {},
+    true
 ] call CBA_fnc_addSetting;
 
 // Difficulty settings

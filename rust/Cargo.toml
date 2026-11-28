@@ -1,0 +1,69 @@
+[workspace]
+resolver = "3"
+members = [
+    "voice/proto",
+    "voice/net",
+    "voice/codec",
+    "voice/server",
+    "voice/client",
+    "voice/testkit",
+    "acre/dsp",
+    "acre/ext",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-only"
+repository = "https://github.com/IDI-Systems/acre2"
+rust-version = "1.88"
+
+[workspace.dependencies]
+acre2_voice_proto = { path = "voice/proto" }
+acre2_voice_net = { path = "voice/net" }
+acre2_voice_server = { path = "voice/server" }
+acre2_voice_client = { path = "voice/client" }
+acre2_voice_codec = { path = "voice/codec" }
+acre2_dsp = { path = "acre/dsp" }
+
+anyhow = "1"
+arc-swap = "1"
+arma-rs = "1.13"
+bytes = "1"
+clap = { version = "4", features = ["derive"] }
+getrandom = "0.3"
+postcard = { version = "1", features = ["use-std"] }
+quinn = { version = "0.11", default-features = false, features = ["runtime-tokio", "rustls-ring", "log"] }
+rcgen = "0.14"
+ring = "0.17"
+rustls = { version = "0.23", default-features = false, features = ["ring", "std"] }
+serde = { version = "1", features = ["derive"] }
+thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "time", "io-util", "net", "signal"] }
+toml = "0.9"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+missing_debug_implementations = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+cast_possible_truncation = "allow"
+cast_precision_loss = "allow"
+# Audio and DSP code is full of deliberate float/int and signed/unsigned conversions.
+cast_sign_loss = "allow"
+cast_possible_wrap = "allow"
+assert_is_empty = "allow"
+too_many_lines = "allow"
+# Prose mentions names like ACRE2Core, X3DAudio and TeamSpeak.
+doc_markdown = "allow"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

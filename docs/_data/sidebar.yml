@@ -49,6 +49,10 @@ entries:
       url: /wiki/user/installation
       output: web, pdf
 
+    - title: Voice Server
+      url: /wiki/user/voice-server
+      output: web, pdf
+
     - title: Feature List
       url: /wiki/user/feature-list
       output: web, pdf
@@ -81,9 +85,6 @@ entries:
       url: /wiki/user/radio-signal-loss
       output: web, pdf
 
-    - title: TeamSpeak Channel Switching
-      url: /wiki/user/ts-channel-switching
-      output: web, pdf
 
     - title: Gestures
       url: /wiki/user/gestures

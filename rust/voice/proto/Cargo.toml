@@ -1,0 +1,26 @@
+[package]
+name = "acre2_voice_proto"
+description = "Wire protocol for the acre2 voice server: control messages and voice datagrams"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+bytes = { workspace = true }
+postcard = { workspace = true }
+serde = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true, optional = true }
+
+[features]
+default = []
+# Async length-prefixed framing over `AsyncRead`/`AsyncWrite` streams.
+io = ["dep:tokio"]
+
+[dev-dependencies]
+tokio = { workspace = true }
+
+[lints]
+workspace = true

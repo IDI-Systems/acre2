@@ -1,0 +1,31 @@
+[package]
+name = "acre2_voice_client"
+description = "acre2 voice client: connection, voice transport and audio pipeline"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+acre2_voice_codec = { workspace = true }
+acre2_voice_net = { workspace = true }
+acre2_voice_proto = { workspace = true, features = ["io"] }
+bytes = { workspace = true }
+cpal = { version = "0.18", optional = true }
+rtrb = { version = "0.4", optional = true }
+quinn = { workspace = true }
+ring = { workspace = true }
+rustls = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+nnnoiseless = { version = "0.5.2", default-features = false }
+
+[features]
+default = []
+# Real audio devices (cpal). Needs ALSA headers on Linux.
+devices = ["dep:cpal", "dep:rtrb"]
+
+[lints]
+workspace = true

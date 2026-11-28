@@ -1,0 +1,83 @@
+name: Rust
+
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - 'rust/**'
+    - '.github/workflows/rust.yml'
+  pull_request:
+    paths:
+    - 'rust/**'
+    - '.github/workflows/rust.yml'
+
+defaults:
+  run:
+    working-directory: rust
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        components: rustfmt, clippy
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: rust
+    - name: Install ALSA and libopus headers
+      run: sudo apt-get update && sudo apt-get install -y libasound2-dev libopus-dev
+    - name: Format
+      run: cargo fmt --all --check
+    - name: Clippy
+      run: cargo clippy --workspace --all-targets --features acre2_voice_testkit/devices -- -D warnings
+    - name: Test
+      run: cargo test --workspace --features acre2_voice_testkit/devices
+
+  build:
+    needs: check
+    strategy:
+      matrix:
+        include:
+        - os: windows-latest
+          target: x86_64-pc-windows-msvc
+          ext: acre_voice.dll
+          ext_out: acre_voice_x64.dll
+          server: acre2_voice_server.exe
+        - os: ubuntu-latest
+          target: x86_64-unknown-linux-gnu
+          ext: libacre_voice.so
+          ext_out: acre_voice_x64.so
+          server: acre2_voice_server
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v6
+    - uses: dtolnay/rust-toolchain@stable
+      with:
+        targets: ${{ matrix.target }}
+    - uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: rust
+    - name: Install ALSA headers
+      if: runner.os == 'Linux'
+      run: sudo apt-get update && sudo apt-get install -y libasound2-dev
+    - name: Build
+      # `bundled` compiles libopus in statically (cmake is preinstalled on the runners). The
+      # Linux extension is for dedicated servers only, so it's built without audio devices.
+      run: cargo build --release --target ${{ matrix.target }} -p acre2_ext -p acre2_voice_server --features acre2_voice_codec/bundled ${{ runner.os == 'Linux' && '--no-default-features' || '' }}
+    - name: Collect
+      shell: bash
+      run: |
+        mkdir -p dist
+        cp target/${{ matrix.target }}/release/${{ matrix.ext }} dist/${{ matrix.ext_out }}
+        cp target/${{ matrix.target }}/release/${{ matrix.server }} dist/
+        cp voice/server/acre2_voice_server.example.toml dist/
+    - uses: actions/upload-artifact@v4
+      with:
+        name: acre2-rust-${{ matrix.target }}
+        path: rust/dist

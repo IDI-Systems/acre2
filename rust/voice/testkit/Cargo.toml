@@ -1,0 +1,32 @@
+[package]
+name = "acre2_voice_testkit"
+description = "Headless bots and test harness for acre2 voice"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+publish = false
+
+[dependencies]
+acre2_voice_client = { workspace = true }
+acre2_voice_codec = { workspace = true }
+acre2_voice_proto = { workspace = true }
+acre2_voice_server = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+bytes = { workspace = true }
+tokio = { workspace = true }
+tracing-subscriber = { workspace = true }
+
+[features]
+default = []
+# Builds the `acre2_voice_cli` tool, which uses real audio devices.
+devices = ["acre2_voice_client/devices"]
+
+[[bin]]
+name = "acre2_voice_cli"
+required-features = ["devices"]
+
+[lints]
+workspace = true

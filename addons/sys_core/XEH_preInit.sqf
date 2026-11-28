@@ -34,13 +34,22 @@ DGVAR(lowered) = false;
 DGVAR(muting) = [];
 DGVAR(speakers) = [];
 DGVAR(enableDistanceMuting) = true;
-DGVAR(ts3id) = -1;
+DGVAR(ts3id) = -1; // Our voice peer ID (named for its TeamSpeak origins)
+DGVAR(curveScale) = 1; // Our selectable voice curve scale
+DGVAR(inBriefing) = false;
+DGVAR(micTestActive) = false;
+DGVAR(diaryUnit) = objNull;
+DGVAR(diaryRecord) = diaryRecordNull;
+DGVAR(lastAudioDevices) = ["", ""];
+DGVAR(lastDirectTx) = [];
+DGVAR(lastRxChannels) = [];
+DGVAR(lastExtraPositions) = [];
 DGVAR(keyedMicRadios) = [];
 DGVAR(previousSortedParams) = [[],[]];
 DGVAR(keyedRadioIds) = HASH_CREATE;
 DGVAR(globalVolume) = 1.0;
 DGVAR(maxVolume) = 1.0;
-DGVAR(playerList) = []; // Paired array: [TS_ID, Object]
+DGVAR(playerList) = []; // Paired array: [voice peer ID, Object]
 //DGVAR(ts3IdPlayerList) = [];
 DGVAR(isDeaf) = false;
 //DGVAR(playerListHash) = HASH_CREATE;
@@ -76,7 +85,10 @@ DVAR(ACRE_LISTENER_POS) = [0,0,0];
 DVAR(ACRE_LISTENER_DIR) = [0,1,0];
 DVAR(ACRE_LISTENER_DIVE) = 0;
 
-DVAR(ACRE_PTT_RELEASE_DELAY) = 0.2;
+DVAR(ACRE_PTT_RELEASE_DELAY) = missionNamespace getVariable [QGVAR(pttReleaseDelay), 0.2]; // the setting
+GVAR(pttPresses) = createHashMap; // acre_sys_core_fnc_pttPressed
+GVAR(micMuted) = false; // the mute keybind (acre_sys_core_fnc_setMicMuted)
+GVAR(hearingSelf) = objNull; // our unit while transmitting on a radio with self hearing on
 DVAR(ACRE_ASSIGNED_PTT_RADIOS) = [];
 DVAR(ACRE_ASSIGNED_PTT_RADIOS_REMOTE) = []; // Remote controlled unit
 GVAR(delayReleasePTT_Handle) = nil;
@@ -113,15 +125,6 @@ acre_player = player;
 
 GVAR(coreCache) = HASH_CREATE;
 
-acre_sys_io_ioEventFnc = {
-    #ifdef ENABLE_PERFORMANCE_COUNTERS
-        BEGIN_COUNTER(ioEventFunction);
-    #endif
-    _this call EFUNC(sys_rpc,handleData);
-    #ifdef ENABLE_PERFORMANCE_COUNTERS
-        END_COUNTER(ioEventFunction);
-    #endif
-};
 
 ["unit", {
     acre_current_player = _this select 0;

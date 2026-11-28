@@ -54,7 +54,7 @@ _Replace `hemtt` with `hemtt.exe` on Windows. P-drive is **not** required for HE
 
 Execute `tools\setup.bat` (double-click on Windows) or download [HEMTT](https://github.com/BrettMayson/HEMTT/releases/latest) and place the executable in project root (Windows and Linux - binarization supported only on Windows at this time).
 
-You will also need `acre_x64.dll` and `ACRE2Arma_x64.dll` (or `acre.dll` and `ACRE2Arma.dll` for 32-bit) placed in `idi\acre` folder. You can obtain those from last release or [build them yourself](building-extensions). TeamSpeak plugin is not required for basic operation, however the `plugins` folder may also be placed in `idi\acre` folder.
+You will also need `acre_x64.dll` (signal extension) and `acre_voice_x64.dll` (voice extension) placed in `idi\acre` folder. You can obtain those from last release or build them yourself: the signal extension with [CMake/MSBuild](building-extensions), the voice extension with `cargo build --release -p acre2_ext` in `rust/` (see `rust/README.md`). The server hosts voice itself; see [Voice Server](../user/voice-server).
 
 #### File Patching Setup
 
@@ -121,7 +121,7 @@ To start the game using this build, you can use the following modline:
 -mod=@CBA_A3;idi\acre
 ```
 
-You will also need `acre_x64.dll` and `ACRE2Arma_x64.dll` (or `acre.dll` and `ACRE2Arma.dll` for 32-bit) placed in `idi\acre` folder. You can obtain those from last release or [build them yourself](building-extensions). TeamSpeak plugin is not required for basic operation, however the `plugins` folder may also be placed in `idi\acre` folder.
+You will also need `acre_x64.dll` (signal extension) and `acre_voice_x64.dll` (voice extension) placed in `idi\acre` folder. You can obtain those from last release or build them yourself: the signal extension with [CMake/MSBuild](building-extensions), the voice extension with `cargo build --release -p acre2_ext` in `rust/` (see `rust/README.md`). The server hosts voice itself; see [Voice Server](../user/voice-server).
 
 ### Create a Release Build
 
@@ -129,6 +129,7 @@ To create a complete build of ACRE2 that you can use without the source files yo
 
 - All [C++ requirements](building-extensions)
 - `msbuild` in `PATH` environment variable (usually `C:\Program Files (x86)\MSBuild\14.0\Bin`)
+- [Rust](https://rustup.rs) (`cargo` in `PATH`) and CMake, for the voice extension
 - Ensure `.hpp` is **NOT** in pboProject's "Exclude From Pbo" list
 
 When the requirements are met:

@@ -13,6 +13,16 @@ class CfgUIGrids {
                         QUOTE(POS_W(1)),
                         QUOTE(POS_H(1))
                     };
+                    GVAR(micMuted)[] = {
+                        {
+                            QUOTE(MIC_MUTED_DEFAULT_X),
+                            QUOTE(MIC_MUTED_DEFAULT_Y),
+                            QUOTE(MIC_MUTED_DEFAULT_W),
+                            QUOTE(MIC_MUTED_DEFAULT_H)
+                        },
+                        QUOTE(POS_W(1)),
+                        QUOTE(POS_H(1))
+                    };
                     grid_ACRE_vehicleInfo[] = {
                         {
                             QUOTE(VEHICLE_INFO_DEFAULT_X),
@@ -31,6 +41,13 @@ class CfgUIGrids {
                 displayName = CSTRING(VolumeControlGrid_DisplayName);
                 description = CSTRING(VolumeControlGrid_Description);
                 preview = QPATHTOF(data\ui\volume_control_preview.paa);
+                saveToProfile[] = {0, 1, 2, 3};
+                canResize = 1;
+            };
+            class GVAR(micMuted) {
+                displayName = CSTRING(MicMutedGrid_DisplayName);
+                description = CSTRING(MicMutedGrid_Description);
+                preview = MIC_MUTED_ICON;
                 saveToProfile[] = {0, 1, 2, 3};
                 canResize = 1;
             };

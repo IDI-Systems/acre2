@@ -31,6 +31,14 @@ ACRE_LOCAL_SPEAKING = true;
 if (_onRadio) then {
     ACRE_LOCAL_BROADCASTING = true;
 
+    // Hear ourselves on our other radios on this channel: the speaking loop processes us like a
+    // remote speaker on this radio (the voice extension plays our transmission back locally).
+    if (GVAR(selfHearing)) then {
+        acre_player setVariable [QGVAR(currentSpeakingRadio), _radioId];
+        GVAR(hearingSelf) = acre_player;
+        GVAR(speaking_cache_valid) = false;
+    };
+
     // Shift volume down by 25% (one step) when not using a custom voice curve
     if (isNil "ACRE_CustomVolumeControl") then {
         [EGVAR(sys_gui,volumeLevel) - 0.25] call EFUNC(sys_gui,setVoiceCurveLevel);
@@ -48,7 +56,7 @@ if (!GVAR(fullDuplex) && {ACRE_BROADCASTING_RADIOID != ""}) then {
                 private _unit = _x select 0;
                 if (!isNull _unit && {_unit != acre_player}) then {
                     private _canUnderstand = [_unit] call FUNC(canUnderstand);
-                    ["updateSpeakingData", ["r", GET_TS3ID(_unit), !_canUnderstand, 1, 0, 1, 0, false, [0, 0, 0]]] call EFUNC(sys_rpc,callRemoteProcedure);
+                    ["speaker:radio", [GET_TS3ID(_unit), !_canUnderstand, [[0, 1, false, [0, 0, 0]]]]] call EFUNC(sys_io,ext);
                 };
             } forEach (_sources select _forEachIndex);
         };

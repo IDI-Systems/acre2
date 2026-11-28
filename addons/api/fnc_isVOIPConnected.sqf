@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 /*
  * Author: Killerswin2
- * Check if the VOIP plugin is connected.
+ * Check if ACRE is connected to the voice server.
  *
  * Arguments:
  * None
  *
  * Return Value:
- * Is VOIP Plugin Connected <BOOL>
+ * Is connected to the voice server <BOOL>
  *
  * Example:
  * [] call acre_api_fnc_isVOIPConnected
@@ -15,4 +15,4 @@
  * Public: Yes
  */
 
-EGVAR(sys_io,pipeCode) == "1" && {!EGVAR(sys_io,hasErrored) && {EGVAR(sys_io,serverStarted)}}
+EGVAR(sys_io,connected)

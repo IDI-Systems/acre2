@@ -19,6 +19,8 @@ params ["_group"];
 
 if !([_group] call FUNC(accessAllowed)) exitWith { false };
 
+[QGVAR(ptt)] call EFUNC(sys_core,pttPressed);
+
 private _channel = "";
 private _channelEx = "";
 private _color = [ACRE_NOTIFICATION_WHITE];
@@ -81,7 +83,8 @@ GVAR(targetUnits) = GVAR(targetUnits) apply {
 
 [QGVAR(startSpeaking), [EGVAR(sys_core,ts3id), profileName, _channel, _channelEx], GVAR(targetUnits)] call CBA_fnc_targetEvent;
 
-["startGodModeSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+// God mode isn't heard directly; listeners filter by target group.
+["god", SPEAKING_TYPE_GOD, "", ["god"], false] call EFUNC(sys_core,startTransmission);
 GVAR(speaking) = true;
 
 #ifndef TEST_SELF_RX

@@ -19,12 +19,12 @@
 params ["_unit", "_voiceActivation"];
 
 // TODO: Remove synchronisation once intercom system has been converted to components and unique IDs.
-//       It will help in reduce the bandwith, since information will be exchanged through the TS plugin.
+//       It will help in reduce the bandwith, since information will be exchanged through the voice extension.
 _unit setVariable [QGVAR(intercomPTT), _voiceActivation, true];
 GVAR(intercomPttKey) = _voiceActivation;
 
 if (_voiceActivation) then {
-    ["startIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+    ["intercom", SPEAKING_TYPE_INTERCOM, "", []] call EFUNC(sys_core,startTransmission);
 } else {
-    ["stopIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+    ["intercom"] call EFUNC(sys_core,stopTransmission);
 };

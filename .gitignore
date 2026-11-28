@@ -18,6 +18,7 @@ texHeaders.bin
 *.hemttprivatekey
 Thumbs.db
 *.dll
+*.so
 *.exe
 *.vscode*
 *.out

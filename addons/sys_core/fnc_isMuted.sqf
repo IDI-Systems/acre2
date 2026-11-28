@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * This function determines is used to check if the unit should be muted on TeamSpeak or not.
+ * Checks if the unit should be muted (not heard at all).
  *
  * Arguments:
  * 0: unit <OBJECT>

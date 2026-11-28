@@ -23,7 +23,7 @@ DFUNC(doHandleZeusSpeakPressUp) = {
     player setVariable [QGVAR(inZeus), false, true];
 
     // Stop speaking
-    ["stopZeusSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+    ["zeus"] call EFUNC(sys_core,stopTransmission);
 
     // Stop updating Zeus position
     [GVAR(speakFromZeusHandle)] call CBA_fnc_removePerFrameHandler;

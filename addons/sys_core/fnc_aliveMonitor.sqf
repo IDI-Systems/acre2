@@ -19,12 +19,14 @@ GVAR(oldMute) = 0;
 GVAR(waitTime) = diag_tickTime + 3;
 [{
     private _isMuted = 0;
-    if (IS_MUTED(acre_player)) then {
+    // Also muted by the mute keybind, and while the microphone test runs so test noises aren't
+    // transmitted.
+    if (GVAR(micMuted) || {IS_MUTED(acre_player)} || {GVAR(micTestActive)}) then {
         _isMuted = 1;
     };
     if ((_isMuted != GVAR(oldMute)) || {diag_tickTime > GVAR(waitTime)}) then {
         GVAR(waitTime) = diag_tickTime + 3;
-        ["localMute", (str _isMuted)] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["vox:mute", [_isMuted == 1]] call EFUNC(sys_io,ext);
     };
 
     GVAR(oldMute) = _isMuted;

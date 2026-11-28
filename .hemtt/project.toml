@@ -6,6 +6,7 @@ author = "ACRE2 Team"
 [files]
 include = [
     "*.dll",
+    "*.so",
     "mod.cpp",
     "README.md",
     "LICENSE",
@@ -13,7 +14,6 @@ include = [
     "meta.cpp",
     "extras/Wav2B64.exe",
     "extras/examples/**",
-    "plugin/**",
 ]
 
 [version]

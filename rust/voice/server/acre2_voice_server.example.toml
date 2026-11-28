@@ -1,0 +1,28 @@
+# acre2 voice server configuration.
+
+# UDP address to listen on. Open this port (UDP) in your firewall.
+bind = "0.0.0.0:9987"
+
+# Address players should connect to. Leave unset to let the game server hand out the address it
+# used itself, which is right when both run on the same machine and that address is public.
+# public_address = "voice.example.com:9987"
+
+# Shared secret the Arma server's ACRE extension must present. Required, at least 8 characters.
+authority_secret = "change me please"
+
+# Where the certificate (cert.der, key.der) and its fingerprint are stored.
+data_dir = "data"
+
+# Seconds a join token stays valid.
+token_ttl = 120
+
+# Milliseconds between re-routing transmissions as players move.
+reresolve_interval = 200
+
+# Furthest distance (metres) direct speech is sent. Listeners still attenuate by voice curve.
+max_spatial_range = 300.0
+
+# Positions a client may report itself (Zeus/spectator cameras).
+max_extra_positions = 4
+
+max_peers = 512

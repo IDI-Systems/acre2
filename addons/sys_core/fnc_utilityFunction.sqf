@@ -16,11 +16,10 @@
  */
 
 DFUNC(utilityFuncPFH) = {
-    ["setVoiceCurveModel", format["%1,%2,", ACRE_VOICE_CURVE_MODEL, ACRE_VOICE_CURVE_SCALE]] call EFUNC(sys_rpc,callRemoteProcedure);
+    ["settings:curve_model", [ACRE_VOICE_CURVE_MODEL]] call EFUNC(sys_io,ext);
 };
 [DFUNC(utilityFuncPFH), 5, []] call CBA_fnc_addPerFrameHandler;
 
 [] call FUNC(aliveMonitor);
 
 
-[DFUNC(updateVOIPInfo), 15, []] call CBA_fnc_addPerFrameHandler;

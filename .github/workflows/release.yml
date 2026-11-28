@@ -73,13 +73,23 @@ jobs:
       run: |
         cd extensions\\vcproj
         cmake .. -A Win32
-        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Steam;ACRE2\ACRE2TS;Extras\Wav2B64' /p:Configuration=RelWithDebInfo
+        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;Extras\Wav2B64' /p:Configuration=RelWithDebInfo
     - name: Build Extensions (x64)
       if: matrix.arch == 'x64'
       run: |
         cd extensions\\vcproj64
         cmake .. -A x64
-        msbuild ACRE.sln /m '/t:ACRE2Arma\acre;ACRE2Arma\arma2ts;ACRE2\ACRE2Steam;ACRE2\ACRE2TS' /p:Configuration=RelWithDebInfo
+        msbuild ACRE.sln /m '/t:ACRE2Arma\acre' /p:Configuration=RelWithDebInfo
+    - name: Setup Rust
+      if: matrix.arch == 'x64'
+      uses: dtolnay/rust-toolchain@stable
+    - name: Build Voice Extension (x64)
+      if: matrix.arch == 'x64'
+      run: |
+        cd rust
+        cargo build --release -p acre2_ext --features acre2_voice_codec/bundled
+        cd ..
+        Copy-Item rust\target\release\acre_voice.dll acre_voice_x64.dll
     - name: Sign (BattlEye)
       run: |
         .\ci\battleye\signtool.exe sign /f .\ci\battleye\idi-systems.pfx /p ${{ secrets.BE_CRED_PASSWORD }} /t http://timestamp.digicert.com *.dll
@@ -90,12 +100,31 @@ jobs:
         path: |
           *.dll
           extras/*.exe
-          plugin
           symbols
         retention-days: 1
 
+  compile-linux:
+    # The voice extension for Linux dedicated servers (no audio devices needed there).
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the source code
+      uses: actions/checkout@v6
+    - uses: dtolnay/rust-toolchain@stable
+    - name: Build Voice Extension (Linux x64)
+      run: |
+        cd rust
+        cargo build --release -p acre2_ext --no-default-features --features acre2_voice_codec/bundled
+        cd ..
+        mkdir dist && cp rust/target/release/libacre_voice.so dist/acre_voice_x64.so
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v6
+      with:
+        name: acre2-linux
+        path: dist
+        retention-days: 1
+
   publish-test:
-    needs: [build, compile]
+    needs: [build, compile, compile-linux]
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
@@ -106,8 +135,8 @@ jobs:
         echo "Organize"
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
+        mv acre2-linux/*.so @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}${{ github.event.inputs.label }}.zip @acre2
@@ -143,7 +172,7 @@ jobs:
         MSG_MINIMAL: actions url
 
   publish-dev:
-    needs: [build, compile]
+    needs: [build, compile, compile-linux]
     if: github.ref == 'refs/heads/development-build'
     runs-on: ubuntu-latest
     steps:
@@ -154,8 +183,8 @@ jobs:
         echo "Organize"
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
+        mv acre2-linux/*.so @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2
@@ -201,7 +230,7 @@ jobs:
         MSG_MINIMAL: actions url
 
   publish-release:
-    needs: [build, compile]
+    needs: [build, compile, compile-linux]
     if: github.ref == 'refs/heads/release-build'
     runs-on: ubuntu-latest
     steps:
@@ -212,8 +241,8 @@ jobs:
         echo "Organize"
         mv acre2/* .
         mv acre2-extensions-*/*.dll @acre2/
+        mv acre2-linux/*.so @acre2/
         mv acre2-extensions-*/extras/*.exe @acre2/extras/
-        mkdir @acre2/plugin && cp -r acre2-extensions-*/plugin/* @acre2/plugin/ # mv can't merge directories
         mkdir symbols && mv acre2-extensions-*/symbols/* .
         echo "::group::Archive build"
         zip -r acre2_${{ needs.build.outputs.VERSION }}.zip @acre2

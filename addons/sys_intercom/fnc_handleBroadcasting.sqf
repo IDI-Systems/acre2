@@ -37,14 +37,14 @@ private _changes = false;
 
 // Only broadcast if changes have been made.
 // TODO: Remove synchronisation once intercom system has been converted to components and unique IDs.
-//       It will help in reduce the bandwith, since information will be exchanged through the TS plugin.
+//       It will help in reduce the bandwith, since information will be exchanged through the voice extension.
 if (_changes) then {
     [_vehicle, _unit] call FUNC(updateVehicleInfoText);
     _vehicle setVariable [QGVAR(broadcasting), _broadcastConfig, true];
 
     if (_isBroadcasting) then {
-        ["startIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["intercom", SPEAKING_TYPE_INTERCOM, "", []] call EFUNC(sys_core,startTransmission);
     } else {
-        ["stopIntercomSpeaking", ""] call EFUNC(sys_rpc,callRemoteProcedure);
+        ["intercom"] call EFUNC(sys_core,stopTransmission);
     };
 };

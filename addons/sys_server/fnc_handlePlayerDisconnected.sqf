@@ -19,7 +19,12 @@
  * Public: No
  */
 
-private _ownerId = param [4,-1];
+params ["", ["_uid", ""], "", "", ["_ownerId", -1]];
+
+if (GVAR(voiceReady) && {_uid != ""}) then {
+    ["authority:remove", [_uid]] call EFUNC(sys_io,ext);
+};
+
 
 private _idx = ACRE_SPECTATORS_A3_CLIENT_ID_LIST find _ownerId;
 while {_idx != -1} do {

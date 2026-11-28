@@ -23,11 +23,15 @@ private _vehicle = vehicle acre_player;
 
 if (_vehicle == acre_player) exitWith { true };
 
-switch (_action) do {
-    case ACTION_INTERCOM_PTT: {[acre_player, false] call FUNC(handleIntercomActivation);};
-    case ACTION_BROADCAST: {[_vehicle, acre_player, ALL_INTERCOMS, false] call FUNC(handleBroadcasting);};
-};
+// After the PTT release delay, unless pressed again meanwhile.
+[QGVAR(ptt), {
+    params ["_action", "_vehicle"];
+    switch (_action) do {
+        case ACTION_INTERCOM_PTT: {[acre_player, false] call FUNC(handleIntercomActivation);};
+        case ACTION_BROADCAST: {[_vehicle, acre_player, ALL_INTERCOMS, false] call FUNC(handleBroadcasting);};
+    };
 
-[_vehicle, acre_player] call FUNC(updateVehicleInfoText);
+    [_vehicle, acre_player] call FUNC(updateVehicleInfoText);
+}, [_action, _vehicle]] call EFUNC(sys_core,pttReleased);
 
 true

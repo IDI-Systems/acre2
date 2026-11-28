@@ -59,7 +59,6 @@ set(GLOBAL_SOURCES ${GLOBAL_RC})
 add_subdirectory(common)
 add_subdirectory(controller)
 add_subdirectory(data)
-add_subdirectory(arma2ts)
 add_subdirectory(signal)
 add_subdirectory(acre)
 

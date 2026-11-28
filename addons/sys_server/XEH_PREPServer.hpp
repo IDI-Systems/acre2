@@ -12,3 +12,7 @@ PREP(sendIntentToGarbageCollect);
 PREP(removeGCQueue);
 PREP(handlePlayerDisconnected);
 PREP(invalidGarbageCollect);
+PREP(handleAuthorityCallback);
+PREP(requestVoiceToken);
+PREP(startAuthority);
+PREP(voiceStatePFH);

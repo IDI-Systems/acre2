@@ -9,9 +9,3 @@ class Extended_PreInit_EventHandlers {
         init = QUOTE(call COMPILE_SCRIPT(XEH_preInit));
     };
 };
-
-class Extended_DisplayLoad_EventHandlers {
-    class RscDisplayMission {
-        ADDON = QUOTE(_this call FUNC(missionDisplayLoad));
-    };
-};

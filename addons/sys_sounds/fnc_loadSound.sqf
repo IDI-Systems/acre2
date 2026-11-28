@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Function to send a b64 sound to the teamspeak plugin to be loaded. Once loaded the sound will always be available.
+ * Loads a b64 sound into the voice extension. Once loaded the sound will always be available.
  *
  * Arguments:
  * 0: Sound classname (in CfgAcreSounds) <STRING>
@@ -17,38 +17,22 @@
  * Public: No
  */
 
-params ["_className",["_returnFunction",nil],["_force",false]];
+params ["_className", ["_returnFunction", nil], ["_force", false]];
 
-// If teamspeak is connected.
-if (EGVAR(sys_core,ts3id) != -1) then { 
-    if (!(_className in GVAR(loadedSounds)) && {!_force}) then {
-        private _fileName = getText(configFile >> "CfgAcreSounds" >> _className >> "sound");
-        if (_fileName != "") then {
-            [] call (compile loadFile _fileName);
-            if (!isNil "ACRE_B64_FILE") then {
-                TRACE_2("Lounding Sound File",_className,_fileName);
-                if (!isNil "_returnFunction") then {
-                    HASH_SET(GVAR(callBacks),_className,_returnFunction);
-                };
-                {
-                    ["loadSound", [_className, _forEachIndex+1, count(ACRE_B64_FILE), _x]] call EFUNC(sys_rpc,callRemoteProcedure);
-                } forEach ACRE_B64_FILE;
-                ACRE_B64_FILE = nil;
-                TRACE_2("Sound File Sent",_className,_fileName);
-            };
-        };
-    };
-} else {
-    //teamspeak is not connected store in a buffer.
-    if (isNil QGVAR(soundLoadBuffer)) then {
-        GVAR(soundLoadBuffer) = [_this];
-        [{EGVAR(sys_core,ts3id) != -1}, {
-            {
-                _x call FUNC(loadSound);
-            } forEach (GVAR(soundLoadBuffer));
-            GVAR(soundLoadBuffer) = nil;
-        },[]] call CBA_fnc_waitUntilAndExecute;
-    } else {
-        GVAR(soundLoadBuffer) pushBackUnique _this;
-    };
+if (_className in GVAR(loadedSounds) && {!_force}) exitWith {};
+
+private _fileName = getText (configFile >> "CfgAcreSounds" >> _className >> "sound");
+if (_fileName == "") exitWith {};
+
+// The file sets ACRE_B64_FILE to the base64 WAV, in pieces.
+[] call (compile loadFile _fileName);
+if (isNil "ACRE_B64_FILE") exitWith {};
+private _base64 = ACRE_B64_FILE joinString "";
+ACRE_B64_FILE = nil;
+
+TRACE_2("Loading sound",_className,_fileName);
+if (!isNil "_returnFunction") then {
+    HASH_SET(GVAR(callBacks),_className,_returnFunction);
 };
+private _ok = (["sound:load", [_className, _base64]] call EFUNC(sys_io,ext)) == "true";
+[_className, ["0", "1"] select _ok] call FUNC(handleLoadedSound);

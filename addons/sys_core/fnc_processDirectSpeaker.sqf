@@ -1,13 +1,13 @@
 #include "script_component.hpp"
 /*
  * Author: ACRE2Team
- * Calculates the information required by TeamSpeak for a direct speech speaker.
+ * Calculates how a direct speech speaker should sound (for speaker:direct).
  *
  * Arguments:
  * 0: Unit <OBJECT>
  *
  * Return Value:
- * Parameters to send to TeamSpeak <ARRAY>
+ * [type, peer ID, babel, volume, emitter position, emitter direction] <ARRAY>
  *
  * Example:
  * [unit] call acre_sys_core_fnc_processDirectSpeaker

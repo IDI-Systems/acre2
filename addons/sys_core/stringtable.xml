@@ -601,68 +601,167 @@
             <Chinesesimp>地形干扰系数</Chinesesimp>
             <Turkish>Arasi Kaynaklı Parazit Katsayısı</Turkish>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelName_displayName">
-            <English>TeamSpeak Channel Name</English>
-            <Czech>TeamSpeak Název kanálu</Czech>
-            <French>Nom du canal TeamSpeak</French>
-            <Spanish>Nombre de canal de TeamSpeak</Spanish>
-            <Italian>Nome canale Teamspeak</Italian>
-            <Polish>Nazwa kanału TeamSpeak</Polish>
-            <Portuguese>Nome do Canal do TeamSpeak</Portuguese>
-            <Russian>Имя ТимСпик канала</Russian>
-            <German>TeamSpeak Kanalname</German>
-            <Korean>팀스피크 채널 이름</Korean>
-            <Japanese>TeamSpeak チャンネル名</Japanese>
-            <Chinese>Teamspeak頻道名稱</Chinese>
-            <Chinesesimp>Teamspeak频道名称</Chinesesimp>
-            <Turkish>TeamSpeak Kanal İsmi</Turkish>
+        <Key ID="STR_ACRE_sys_core_voiceActivation_displayName">
+            <English>Direct speech activation</English>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelPassword_displayName">
-            <English>TeamSpeak Channel Password</English>
-            <Czech>TeamSpeak Heslo kanálu</Czech>
-            <French>Mot de passe du canal TeamSpeak</French>
-            <Spanish>Contraseña del canal de TeamSpeak</Spanish>
-            <Italian>Password canale Teamspeak</Italian>
-            <Polish>Hasło kanału TeamSpeak</Polish>
-            <Portuguese>Senha do Canal do TeamSpeak</Portuguese>
-            <Russian>Пароль ТимСпик канала</Russian>
-            <German>TeamSpeak Kanalpasswort</German>
-            <Japanese>TeamSpeak チャンネルのパスワード</Japanese>
-            <Chinese>Teamspeak頻道密碼</Chinese>
-            <Chinesesimp>Teamspeak频道密码</Chinesesimp>
-            <Turkish>Teamspeak Kanal Parolası</Turkish>
+        <Key ID="STR_ACRE_sys_core_voiceActivation_description">
+            <English>How direct speech starts. Holding any radio, intercom, Zeus or god mode PTT always transmits.</English>
         </Key>
-        <Key ID="STR_ACRE_sys_core_ts3ChannelSwitch_displayName">
-            <English>TeamSpeak Channel Switch</English>
-            <Czech>TeamSpeak Změna kanálu</Czech>
-            <French>Changer de canal TeamSpeak</French>
-            <Spanish>Cambio de canal de TeamSpeak</Spanish>
-            <Italian>Cambio canale TeamSpeak</Italian>
-            <Polish>Zmiana kanału TeamSpeak</Polish>
-            <Portuguese>Trocar para Canal do TeamSpeak</Portuguese>
-            <Russian>Смена ТимСпик канала</Russian>
-            <German>TeamSpeak Kanalwechsel</German>
-            <Korean>팀스피크 채널 변경</Korean>
-            <Japanese>TeamSpeak チャンネル切り替え</Japanese>
-            <Chinese>Teamspeak頻道切換</Chinese>
-            <Chinesesimp>Teamspeak频道切换</Chinesesimp>
-            <Turkish>TeamSpeak Kanal Değiştirmesi</Turkish>
+        <Key ID="STR_ACRE_sys_core_voiceActivation_vad">
+            <English>Voice activation</English>
         </Key>
-        <Key ID="STR_ACRE_sys_core_unmuteClients_displayName">
-            <English>Unmute Clients</English>
-            <Czech>Zrušit ztlumení diváků</Czech>
-            <French>Démuter les clients</French>
-            <Spanish>Desmutear clientes</Spanish>
-            <Italian>Smuta i Client</Italian>
-            <Polish>Odmutuj klientów</Polish>
-            <Portuguese>Desmutar Clientes</Portuguese>
-            <Russian>Размьютить клиенты</Russian>
-            <German>Stummschaltung der Clients aufheben</German>
-            <Korean>클라이언트 음소거 해제</Korean>
-            <Japanese>クライアントの消音解除</Japanese>
-            <Chinese>客戶端取消禁音</Chinese>
-            <Chinesesimp>客户端取消禁音</Chinesesimp>
-            <Turkish>Diğer Client'ları Susturma</Turkish>
+        <Key ID="STR_ACRE_sys_core_voiceActivation_ptt">
+            <English>Push to talk</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceThreshold_displayName">
+            <English>Voice activation open level (dB)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceThreshold_description">
+            <English>Microphone level that starts direct speech with voice activation. Lower is more sensitive. The microphone test (Escape → Options) sets this for you.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_inputDevice_displayName">
+            <English>Microphone</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_outputDevice_displayName">
+            <English>Speakers / headphones</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_audioDevice_description">
+            <English>Audio device to use. Takes effect immediately.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_DirectPTTKey">
+            <English>Direct Speech PTT</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_DirectPTTKey_description">
+            <English>Push to talk for direct speech, when direct speech activation is set to push to talk.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceServerCategory">
+            <English>ACRE2 Voice Server</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voicePort_displayName">
+            <English>Voice port (UDP)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voicePort_description">
+            <English>UDP port the server hosts voice on. Open it in the firewall. ACRE2_VOICE_PORT overrides this.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceAddress_displayName">
+            <English>Public address</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceAddress_description">
+            <English>Public IP or hostname players reach this server at (optionally with :port). Required. ACRE2_VOICE_ADDRESS overrides this.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceThresholdClose_displayName">
+            <English>Voice activation close level (dB)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_voiceThresholdClose_description">
+            <English>Direct speech keeps going until your level drops below this (then a short pause). At or below the open level; a few dB lower stops quiet syllables cutting out.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_noiseSuppression_displayName">
+            <English>Noise suppression</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_noiseSuppression_description">
+            <English>Removes steady background noise (fans, hum, room noise) from your microphone before it's sent.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_speechDetection_displayName">
+            <English>Voice activation: speech only</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_speechDetection_description">
+            <English>Voice activation only opens on sound that seems to be speech, so typing, clicks and other loud noises don't transmit. Push-to-talk is not affected.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_pttReleaseDelay_displayName">
+            <English>Push-to-talk release delay</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_pttReleaseDelay_description">
+            <English>Seconds a push-to-talk key keeps transmitting after you let go of it, so the end of your last word isn't cut off.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_selfHearing_displayName">
+            <English>Hear yourself on other radios</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_selfHearing_description">
+            <English>While you transmit, your other radios on the same channel (and loudspeaker radios near you) play your own voice, as a real radio would.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_MicMute">
+            <English>Mute Microphone (toggle)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_MicMute_description">
+            <English>Mutes your microphone: nothing is transmitted, push-to-talk included, until pressed again. Other players see it in the Players screen.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_audioDevice_default">
+            <English>System default</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_title">
+            <English>ACRE Microphone Test</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_start">
+            <English>Start test</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_apply">
+            <English>Apply</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_close">
+            <English>Close</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_meter">
+            <English>Microphone: %1 dB    (opens at %2 dB, closes at %3 dB)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_intro">
+            <English>This test sets your voice activation levels. It takes about 20 seconds in three steps:&lt;br/&gt;&lt;br/&gt;1. Stay silent&lt;br/&gt;2. Type on your keyboard, without talking&lt;br/&gt;3. Talk normally&lt;br/&gt;&lt;br/&gt;Nothing is transmitted while the test is open. Press Start when ready.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_phaseSilent">
+            <English>Stay silent</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_phaseTyping">
+            <English>Type on your keyboard, without talking</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_phaseTalking">
+            <English>Talk normally (count to ten)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_secondsLeft">
+            <English>%1 s</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_result">
+            <English>Background: %1 dB&lt;br/&gt;Typing: %2 dB&lt;br/&gt;Speech: %3 dB&lt;br/&gt;&lt;br/&gt;Recommended: open at &lt;t color='#33CC33'&gt;%4 dB&lt;/t&gt;, close at &lt;t color='#33CC33'&gt;%5 dB&lt;/t&gt;.&lt;br/&gt;Press Apply to use these, or Start test to try again.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_notSeparable">
+            <English>Your typing or background noise is almost as loud as your speech, so voice activation would pick it up. Apply also switches you to push-to-talk.</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_micTest_applied">
+            <English>Voice activation: opens at %1 dB, closes at %2 dB</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_subject">
+            <English>ACRE Voice</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_title">
+            <English>Voice status</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_connected">
+            <English>&lt;t color='#33CC33'&gt;Connected&lt;/t&gt; to %1 (peer %2)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_connecting">
+            <English>&lt;t color='#FFCC33'&gt;Connecting&lt;/t&gt; to %1…</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_disconnected">
+            <English>&lt;t color='#FF5533'&gt;Not connected&lt;/t&gt;</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_lastError">
+            <English>Last error: %1</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_latency">
+            <English>Latency: %1 ms</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_loss">
+            <English>Packet loss: %1% sent, %2% received</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_bandwidth">
+            <English>Bandwidth: %1 kbit/s in, %2 kbit/s out</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_speaking">
+            <English>Hearing now: %1</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_activation">
+            <English>Direct speech: %1 (opens at %2 dB, closes at %3 dB)</English>
+        </Key>
+        <Key ID="STR_ACRE_sys_core_diary_micLevel">
+            <English>Microphone level: %1 dB</English>
         </Key>
     </Package>
 </Project>

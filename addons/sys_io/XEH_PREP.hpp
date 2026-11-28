@@ -1,7 +1,5 @@
-PREP(missionDisplayLoad);
-PREP(sendMessage);
-PREP(startServer);
-PREP(serverReadLoop);
-PREP(server);
-PREP(ping);
-PREP(ts3ChannelMove);
+PREP(ext);
+PREP(handleCallback);
+PREP(handleToken);
+PREP(requestToken);
+PREP(startClient);

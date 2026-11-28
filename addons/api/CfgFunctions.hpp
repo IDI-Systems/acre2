@@ -140,6 +140,9 @@ class CfgFunctions {
             PATHTO_FNC(getVOIPServerName);
             PATHTO_FNC(getVOIPServerUID);
             PATHTO_FNC(isVOIPConnected);
+            PATHTO_FNC(getAudioDevices);
+            PATHTO_FNC(getMicrophoneLevel);
+            PATHTO_FNC(openMicrophoneTest);
         };
     };
 
