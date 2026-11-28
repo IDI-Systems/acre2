@@ -8,10 +8,6 @@
 #include "shared.hpp"
 namespace acre {
 
-    template <typename T> T acos(T n) { return -1; }
-    template <typename T> T cos(T n) { return -1; }
-    template <typename T> T sin(T n) { return -1; }
-
     template<typename T>
     class vector3 {
     public:
