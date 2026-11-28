@@ -76,12 +76,17 @@ void acre::signal::model::longleyRice::process(
     itmElevations[0] = static_cast<float64_t>(itmElevations.size() - 1u);  // ITM: Update the number of points
     itmElevations.insert(itmElevations.end(), 10, itmElevations.back());   // Pad the end with dummy values to avoid access violations
 
+    // ITM expects antenna heights above ground level, transmitter first (the terrain profile runs from tx to rx).
+    // Clamped to ITM's valid range: an antenna slightly below the interpolated terrain would otherwise give NaN.
+    const float64_t txHeight = (std::min)((std::max)(static_cast<float64_t>(tx_pos.z - _map->elevation(tx_pos.x, tx_pos.y)), 0.5), 3000.0);
+    const float64_t rxHeight = (std::min)((std::max)(static_cast<float64_t>(rx_pos.z - _map->elevation(rx_pos.x, rx_pos.y)), 0.5), 3000.0);
+
     if (useITWOM) {
-        acre::signal::model::itwom::point_to_point(itmElevations.data(), static_cast<float64_t>(rx_pos.z), static_cast<float64_t>(tx_pos.z),
+        acre::signal::model::itwom::point_to_point(itmElevations.data(), txHeight, rxHeight,
                                                    eps_dielect, sgm_conductivity, eno, static_cast<float64_t>(frequency_MHz), static_cast<int32_t>(radioClimate),
                                                    static_cast<int32_t>(polarization), conf, rel, dbloss, strmode, errnum);
     } else {
-        acre::signal::model::itm::point_to_point(itmElevations.data(), static_cast<float64_t>(rx_pos.z), static_cast<float64_t>(tx_pos.z),
+        acre::signal::model::itm::point_to_point(itmElevations.data(), txHeight, rxHeight,
                                                  eps_dielect, sgm_conductivity, eno, static_cast<float64_t>(frequency_MHz), static_cast<int32_t>(radioClimate),
                                                  static_cast<int32_t>(polarization), conf, rel, dbloss, strmode, p_mode, horizons, errnum);
     }
